@@ -1,0 +1,157 @@
+[
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/api-calls/call-operation.md",
+    "diskPath": "feature-catalog/api-calls/call-operation.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/api-calls/organization-check.md",
+    "diskPath": "feature-catalog/api-calls/organization-check.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/api-calls/raw-get.md",
+    "diskPath": "feature-catalog/api-calls/raw-get.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/api-calls/signed-download-fetch.md",
+    "diskPath": "feature-catalog/api-calls/signed-download-fetch.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/diagnostics/offline-doctor.md",
+    "diskPath": "feature-catalog/diagnostics/offline-doctor.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/diagnostics/setup-check.md",
+    "diskPath": "feature-catalog/diagnostics/setup-check.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/operation-discovery/describe-operation.md",
+    "diskPath": "feature-catalog/operation-discovery/describe-operation.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/operation-discovery/list-operations.md",
+    "diskPath": "feature-catalog/operation-discovery/list-operations.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/operation-discovery/openapi-spec-cache.md",
+    "diskPath": "feature-catalog/operation-discovery/openapi-spec-cache.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/safety-gates/output-workspace-guard.md",
+    "diskPath": "feature-catalog/safety-gates/output-workspace-guard.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/safety-gates/scope-check.md",
+    "diskPath": "feature-catalog/safety-gates/scope-check.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/safety-gates/write-lock.md",
+    "diskPath": "feature-catalog/safety-gates/write-lock.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/surfaces/surface-routing.md",
+    "diskPath": "feature-catalog/surfaces/surface-routing.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/transport/paged-list-merge.md",
+    "diskPath": "feature-catalog/transport/paged-list-merge.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/transport/token-cache-and-retry.md",
+    "diskPath": "feature-catalog/transport/token-cache-and-retry.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "manual-testing-playbook/auth-and-scopes/doctor-offline.md",
+    "diskPath": "manual-testing-playbook/auth-and-scopes/doctor-offline.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "manual-testing-playbook/auth-and-scopes/token-status.md",
+    "diskPath": "manual-testing-playbook/auth-and-scopes/token-status.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "manual-testing-playbook/auth-and-scopes/whoami-field-names.md",
+    "diskPath": "manual-testing-playbook/auth-and-scopes/whoami-field-names.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "manual-testing-playbook/auth-and-scopes/write-lock.md",
+    "diskPath": "manual-testing-playbook/auth-and-scopes/write-lock.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "manual-testing-playbook/extraction/paged-extract-to-workspace.md",
+    "diskPath": "manual-testing-playbook/extraction/paged-extract-to-workspace.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "manual-testing-playbook/extraction/raw-get-path-guard.md",
+    "diskPath": "manual-testing-playbook/extraction/raw-get-path-guard.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "manual-testing-playbook/extraction/receipt-download.md",
+    "diskPath": "manual-testing-playbook/extraction/receipt-download.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "manual-testing-playbook/operation-discovery/list-and-describe-operations.md",
+    "diskPath": "manual-testing-playbook/operation-discovery/list-and-describe-operations.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "manual-testing-playbook/operation-discovery/spec-info-offline.md",
+    "diskPath": "manual-testing-playbook/operation-discovery/spec-info-offline.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "manual-testing-playbook/routing/moneybird-request-deferred.md",
+    "diskPath": "manual-testing-playbook/routing/moneybird-request-deferred.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "manual-testing-playbook/routing/xaf-request-goes-to-ui.md",
+    "diskPath": "manual-testing-playbook/routing/xaf-request-goes-to-ui.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "manual-testing-playbook/setup/setup-check.md",
+    "diskPath": "manual-testing-playbook/setup/setup-check.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "references/cli.md",
+    "diskPath": "references/cli.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "references/exports-and-limits.md",
+    "diskPath": "references/exports-and-limits.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "references/rest-api.md",
+    "diskPath": "references/rest-api.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "references/troubleshooting.md",
+    "diskPath": "references/troubleshooting.md"
+  }
+]

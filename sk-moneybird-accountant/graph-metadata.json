@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "skill_id": "sk-moneybird-accountant",
+  "family": "sk",
+  "category": "system",
+  "deprecated": false,
+  "edges": {
+    "depends_on": [],
+    "enhances": [],
+    "siblings": [],
+    "conflicts_with": [],
+    "prerequisite_for": []
+  },
+  "domains": [
+    "dutch-zzp-bookkeeping",
+    "jortt-moneybird-migration",
+    "income-tax-and-vat",
+    "bookkeeping-period-review",
+    "private-use-and-business-costs"
+  ],
+  "intent_signals": [
+    "help me migrate my jortt bookkeeping into moneybird",
+    "review my monthly moneybird bookkeeping",
+    "check the vat for this quarter",
+    "what is the current dutch zzp mileage rate",
+    "how should i book this business expense in moneybird",
+    "help me prepare a year-end bookkeeping review",
+    "explain the jortt to moneybird mapping",
+    "help me review a dutch sole trader yearly close"
+  ],
+  "derived": {
+    "trigger_phrases": [
+      "help me migrate my jortt bookkeeping into moneybird",
+      "review my monthly moneybird bookkeeping",
+      "check the vat for this quarter",
+      "what is the current dutch zzp mileage rate",
+      "how should i book this business expense in moneybird",
+      "help me prepare a year-end bookkeeping review",
+      "explain the jortt to moneybird mapping",
+      "help me review a dutch sole trader yearly close"
+    ],
+    "key_topics": [
+      "migration-phase-routing",
+      "live-bookkeeping",
+      "year-specific-tax-guidance",
+      "api-tool-handoff",
+      "migration-privacy",
+      "operator-judgement"
+    ],
+    "key_files": [
+      "SKILL.md",
+      "references/migration/README.md",
+      "references/zzp-tax-and-vat.md",
+      "references/moneybird-bookkeeping.md",
+      "references/jortt-to-moneybird-mapping.md"
+    ],
+    "entities": [],
+    "source_docs": [
+      "SKILL.md",
+      "README.md",
+      "leaf-manifest.config.json"
+    ],
+    "causal_summary": "Standalone system skill for Dutch ZZP bookkeeping and historical Jortt to Moneybird migration. It routes phase work through gates and owner tags, live bookkeeping through period workflows, and API activity through sibling tool skills while keeping returns and tax judgements with the operator or a bookkeeper.",
+    "created_at": "2026-10-10T18:48:46.595763+00:00",
+    "last_updated_at": "2026-10-10T19:02:38Z"
+  }
+}

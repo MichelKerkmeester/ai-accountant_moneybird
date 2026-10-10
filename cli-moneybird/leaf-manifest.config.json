@@ -1,0 +1,12 @@
+{
+  "workflowMode": "cli-moneybird",
+  "packet": ".",
+  "leafRoots": [
+    "references",
+    "feature-catalog",
+    "manual-testing-playbook"
+  ],
+  "excludeIndexFiles": true,
+  "resourceContractVersion": 1,
+  "_note": "Standalone single-mode manifest config for the CLI-only Moneybird migration skill. Read-only roles set MONEYBIRD_GUARD_READ_ONLY=1. Its references, feature-catalog and manual-testing-playbook docs are the routed leaves that the in-SKILL.md INTENT_MODEL + RESOURCE_MAP router selects. The package has no assets/ folder. scripts/ and cli/ hold runtime code. benchmark/ and changelog/ are not routable leaves. All four are excluded because they sit outside leafRoots. Consumed by generate-leaf-manifest.cjs to emit leaf-manifest.json. leaf-aliases.json is the derived identity projection of that manifest, so regenerate both together via ci-skill-root-metadata.cjs --fix."
+}

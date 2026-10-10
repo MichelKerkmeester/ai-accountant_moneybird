@@ -1,0 +1,35 @@
+{
+  "modes": [
+    {
+      "leaves": [
+        "feature-catalog/bookkeeping-and-migration/api-tool-handoff.md",
+        "feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md",
+        "feature-catalog/bookkeeping-and-migration/migration-data-privacy.md",
+        "feature-catalog/bookkeeping-and-migration/migration-phase-routing.md",
+        "feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md",
+        "feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md",
+        "manual-testing-playbook/offline-routing/api-tool-handoff.md",
+        "manual-testing-playbook/offline-routing/current-year-zzp-question.md",
+        "manual-testing-playbook/offline-routing/live-monthly-bookkeeping.md",
+        "manual-testing-playbook/offline-routing/migration-phase-routing.md",
+        "manual-testing-playbook/offline-routing/operator-tax-boundary.md",
+        "manual-testing-playbook/offline-routing/privacy-boundary.md",
+        "manual-testing-playbook/offline-routing/quarterly-yearly-bookkeeping.md",
+        "references/jortt-to-moneybird-mapping.md",
+        "references/migration/README.md",
+        "references/migration/control-framework.md",
+        "references/migration/live-workflows-phases-17-to-20.md",
+        "references/migration/overview-and-setup.md",
+        "references/migration/phases-0-to-2.md",
+        "references/migration/phases-10-to-16.md",
+        "references/migration/phases-3-to-5.md",
+        "references/migration/phases-6-to-9.md",
+        "references/moneybird-bookkeeping.md",
+        "references/zzp-tax-and-vat.md"
+      ],
+      "packet": ".",
+      "workflowMode": "sk-moneybird-accountant"
+    }
+  ],
+  "resourceContractVersion": 1
+}

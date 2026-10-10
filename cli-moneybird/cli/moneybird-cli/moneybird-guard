@@ -1,0 +1,416 @@
+#!/usr/bin/env bash
+# WHY: Preview every Moneybird API call and hold writes behind a pilot-aware confirmation.
+set -euo pipefail
+
+usage() {
+  cat <<'USAGE'
+Usage: moneybird-guard [--confirm-write] [--production] [--out FILE] [--quiet] <moneybird-cli args...>
+       moneybird-guard login-from-env [--writer]
+
+Guard flags are read anywhere before a literal --. Other arguments pass to moneybird-cli.
+USAGE
+}
+
+die() {
+  local status="$1"
+  shift
+  printf 'moneybird-guard: %s\n' "$*" >&2
+  exit "$status"
+}
+
+SOURCE="${BASH_SOURCE[0]}"
+while [[ -h "$SOURCE" ]]; do
+  SOURCE_DIR="$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd -P)"
+  SOURCE_LINK="$(readlink "$SOURCE")"
+  case "$SOURCE_LINK" in
+    /*) SOURCE="$SOURCE_LINK" ;;
+    *) SOURCE="$SOURCE_DIR/$SOURCE_LINK" ;;
+  esac
+done
+SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd -P)"
+DEFAULT_ENV_DIR="$(cd -P "$SCRIPT_DIR/../../.." >/dev/null 2>&1 && pwd -P)"
+ACCOUNTANT_ROOT_INPUT="${MONEYBIRD_ENV_DIR:-$DEFAULT_ENV_DIR}"
+case "$ACCOUNTANT_ROOT_INPUT" in /*) ;; *) ACCOUNTANT_ROOT_INPUT="$PWD/$ACCOUNTANT_ROOT_INPUT" ;; esac
+ACCOUNTANT_ROOT="$ACCOUNTANT_ROOT_INPUT"
+if [[ -d "$ACCOUNTANT_ROOT" ]]; then
+  ACCOUNTANT_ROOT="$(cd -P "$ACCOUNTANT_ROOT" >/dev/null 2>&1 && pwd -P)"
+else
+  die 1 "Accountant root is not a directory."
+fi
+
+CLI="${MONEYBIRD_CLI:-moneybird-cli}"
+CONFIRM_WRITE=0
+PRODUCTION=0
+QUIET=0
+WRITER_LOGIN=0
+OUT_ARG=""
+OUT_SET=0
+CLI_BEFORE=()
+CLI_AFTER=()
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --)
+      CLI_AFTER+=("--")
+      shift
+      while [[ $# -gt 0 ]]; do
+        CLI_AFTER+=("$1")
+        shift
+      done
+      break
+      ;;
+    --confirm-write)
+      CONFIRM_WRITE=1
+      shift
+      ;;
+    --production)
+      PRODUCTION=1
+      shift
+      ;;
+    --quiet)
+      QUIET=1
+      shift
+      ;;
+    --writer)
+      WRITER_LOGIN=1
+      shift
+      ;;
+    --out)
+      [[ $# -ge 2 ]] || die 2 "--out needs a file path."
+      OUT_ARG="$2"
+      OUT_SET=1
+      shift 2
+      ;;
+    *)
+      CLI_BEFORE+=("$1")
+      shift
+      ;;
+  esac
+done
+
+read_env_value() {
+  local file="$1"
+  local key="$2"
+  local line=""
+  local value=""
+  [[ -f "$file" ]] || return 1
+  while IFS= read -r line || [[ -n "$line" ]]; do
+    line="${line%$'\r'}"
+    while [[ "$line" == [[:space:]]* ]]; do line="${line#?}"; done
+    case "$line" in
+      "$key="*) value="${line#*=}" ;;
+      "export $key="*) value="${line#*=}" ;;
+      *) continue ;;
+    esac
+    while [[ "$value" == [[:space:]]* ]]; do value="${value#?}"; done
+    while [[ "$value" == *[[:space:]] ]]; do value="${value%?}"; done
+    case "$value" in
+      "\"*\"") value="${value#\"}"; value="${value%\"}" ;;
+      "'*'") value="${value#\'}"; value="${value%\'}" ;;
+    esac
+    printf '%s' "$value"
+    return 0
+  done < "$file"
+  return 1
+}
+
+is_passthrough() {
+  local arg=""
+  for arg in ${CLI_BEFORE[@]+"${CLI_BEFORE[@]}"}; do
+    case "$arg" in --help|--version) return 0 ;; esac
+  done
+  [[ "${CLI_BEFORE[0]:-}" == "help" ]] && return 0
+  if [[ "${CLI_BEFORE[0]:-}" == "administration" ]]; then
+    case "${CLI_BEFORE[1]:-}" in
+      list|current) return 0 ;;
+      use)
+        [[ -n "${CLI_BEFORE[2]:-}" ]] && return 0
+        ;;
+    esac
+  fi
+  return 1
+}
+
+run_passthrough() {
+  if "$CLI" ${CLI_BEFORE[@]+"${CLI_BEFORE[@]}"} ${CLI_AFTER[@]+"${CLI_AFTER[@]}"}; then
+    exit 0
+  else
+    local status="$?"
+    exit "$status"
+  fi
+}
+
+run_dry() {
+  local -a args=()
+  [[ ${#CLI_BEFORE[@]} -gt 0 ]] && args+=("${CLI_BEFORE[@]}")
+  args+=(--dry-run)
+  [[ ${#CLI_AFTER[@]} -gt 0 ]] && args+=("${CLI_AFTER[@]}")
+  if DRY_OUTPUT="$("$CLI" "${args[@]}")"; then
+    return 0
+  else
+    DRY_STATUS="$?"
+    [[ -n "$DRY_OUTPUT" ]] && printf '%s\n' "$DRY_OUTPUT" >&2
+    return "$DRY_STATUS"
+  fi
+}
+
+parse_dry_line() {
+  local dry_line="${DRY_OUTPUT%%$'\n'*}"
+  local extra=""
+  IFS=' ' read -r METHOD URL extra <<< "$dry_line"
+  [[ "$METHOD" =~ ^[A-Z]+$ && "$URL" == http* ]] || return 1
+  [[ -z "$extra" ]] || return 1
+  URL_HOST_PATH="${URL#*://}"
+  [[ "$URL_HOST_PATH" == */* ]] || return 1
+  URL_PATH="/${URL_HOST_PATH#*/}"
+  URL_PATH="${URL_PATH%%\?*}"
+  URL_PATH="${URL_PATH%%\#*}"
+  case "$URL_PATH" in
+    /api/v2/*/*) ;;
+    *) return 1 ;;
+  esac
+  local remainder="${URL_PATH#/api/v2/}"
+  ADMIN_ID="${remainder%%/*}"
+  [[ -n "$ADMIN_ID" ]] || return 1
+  return 0
+}
+
+has_period_filter() {
+  local i=0
+  local arg=""
+  while [[ $i -lt ${#CLI_BEFORE[@]} ]]; do
+    arg="${CLI_BEFORE[$i]}"
+    case "$arg" in
+      --filter)
+        if [[ $((i + 1)) -lt ${#CLI_BEFORE[@]} && "${CLI_BEFORE[$((i + 1))]}" == *period:* ]]; then
+          return 0
+        fi
+        ;;
+      --filter=*)
+        [[ "$arg" == *period:* ]] && return 0
+        ;;
+    esac
+    i=$((i + 1))
+  done
+  return 1
+}
+
+is_list_action() {
+  local arg=""
+  for arg in ${CLI_BEFORE[@]+"${CLI_BEFORE[@]}"}; do
+    [[ "$arg" == "list" ]] && return 0
+  done
+  return 1
+}
+
+validate_out_path() {
+  local candidate=""
+  local relative=""
+  local segment=""
+  local rest=""
+  local cursor=""
+  local workspace_root="$ACCOUNTANT_ROOT/migration-workspace"
+  if [[ "$OUT_ARG" == /* ]]; then
+    candidate="$OUT_ARG"
+    case "$OUT_ARG" in
+      "$ACCOUNTANT_ROOT_INPUT"/migration-workspace/*)
+        relative="${OUT_ARG#"$ACCOUNTANT_ROOT_INPUT"/migration-workspace/}"
+        candidate="$workspace_root/$relative"
+        ;;
+    esac
+  else
+    candidate="$ACCOUNTANT_ROOT/$OUT_ARG"
+  fi
+  case "/$candidate/" in
+    *"/../"*) return 1 ;;
+  esac
+  case "$candidate" in
+    "$workspace_root"/*) ;;
+    *) return 1 ;;
+  esac
+  relative="${candidate#"$ACCOUNTANT_ROOT"/}"
+  cursor="$ACCOUNTANT_ROOT"
+  rest="$relative"
+  while [[ -n "$rest" ]]; do
+    if [[ "$rest" == */* ]]; then
+      segment="${rest%%/*}"
+      rest="${rest#*/}"
+    else
+      segment="$rest"
+      rest=""
+    fi
+    [[ -z "$segment" || "$segment" == "." ]] && continue
+    [[ "$segment" == ".." ]] && return 1
+    cursor="$cursor/$segment"
+    [[ -L "$cursor" ]] && return 1
+    if [[ -e "$cursor" && -n "$rest" && ! -d "$cursor" ]]; then
+      return 1
+    fi
+  done
+  [[ -d "$candidate" ]] && return 1
+  OUT_PATH="$candidate"
+  return 0
+}
+
+run_actual() {
+  local status=0
+  local summary=""
+  local output_dir=""
+  local temporary=""
+  local -a args=()
+  [[ ${#CLI_BEFORE[@]} -gt 0 ]] && args+=("${CLI_BEFORE[@]}")
+  if [[ $OUT_SET -eq 1 ]]; then
+    args+=(--output raw)
+  fi
+  [[ ${#CLI_AFTER[@]} -gt 0 ]] && args+=("${CLI_AFTER[@]}")
+  if [[ $OUT_SET -eq 1 ]]; then
+    output_dir="${OUT_PATH%/*}"
+    mkdir -p "$output_dir" || die 5 "Could not create the output folder inside migration-workspace."
+    [[ -L "$output_dir" ]] && die 5 "The output folder resolves through a symlink."
+    temporary="$(mktemp "$output_dir/.moneybird-guard.XXXXXX")" || die 5 "Could not create a temporary output file."
+    if "$CLI" "${args[@]}" > "$temporary"; then
+      mv -f "$temporary" "$OUT_PATH"
+      if [[ -s "$OUT_PATH" ]]; then
+        summary="$(jq -r 'if type == "array" then "items: \(length)" elif type == "object" then "keys: \((keys | join(",")))" else "top-level type: \(type)" end' "$OUT_PATH" 2>/dev/null || true)"
+        [[ -n "$summary" ]] || summary="response body saved"
+      else
+        summary="no response body"
+      fi
+      [[ $QUIET -eq 1 ]] || printf '%s\n' "$summary"
+      status=0
+    else
+      status="$?"
+      rm -f "$temporary"
+    fi
+  else
+    if "$CLI" "${args[@]}"; then
+      status=0
+    else
+      status="$?"
+    fi
+  fi
+  return "$status"
+}
+
+if [[ "${CLI_BEFORE[0]:-}" == "login-from-env" ]]; then
+  [[ $OUT_SET -eq 0 ]] || die 2 "--out does not apply to login-from-env."
+  [[ ${#CLI_BEFORE[@]} -eq 1 && ${#CLI_AFTER[@]} -eq 0 ]] || die 2 "Use login-from-env with no CLI arguments."
+  TOKEN_FILE="$ACCOUNTANT_ROOT/.env"
+  if [[ $WRITER_LOGIN -eq 1 ]]; then
+    TOKEN_FILE="$ACCOUNTANT_ROOT/.env.writer"
+    WRITER_CONFIG_DIR="${MONEYBIRD_WRITER_CONFIG_DIR:-$HOME/.config/moneybird-cli-writer}"
+    export MONEYBIRD_CONFIG_DIR="$WRITER_CONFIG_DIR"
+  fi
+  [[ $WRITER_LOGIN -eq 1 || $WRITER_LOGIN -eq 0 ]] || die 2 "Invalid login mode."
+  if ! TOKEN="$(read_env_value "$TOKEN_FILE" MONEYBIRD_API_TOKEN)" || [[ -z "$TOKEN" ]]; then
+    die 1 "MONEYBIRD_API_TOKEN is unset in the selected credential file."
+  fi
+  if printf '%s\n' "$TOKEN" | "$CLI" login >/dev/null 2>&1; then
+    unset TOKEN
+    [[ $QUIET -eq 1 ]] || printf 'Moneybird login completed. CLI output was suppressed.\n'
+    exit 0
+  else
+    local_status="$?"
+    unset TOKEN
+    printf 'Moneybird login failed with exit status %s. Check the selected credential file and CLI setup.\n' "$local_status" >&2
+    exit "$local_status"
+  fi
+fi
+
+[[ $WRITER_LOGIN -eq 0 ]] || die 2 "--writer is valid only with login-from-env."
+[[ ${#CLI_BEFORE[@]} -gt 0 || ${#CLI_AFTER[@]} -gt 0 ]] || { usage >&2; exit 2; }
+if is_passthrough; then
+  run_passthrough
+fi
+if [[ $OUT_SET -eq 1 ]]; then
+  if ! validate_out_path; then
+    die 5 "--out must resolve to a file inside migration-workspace and cannot cross a symlink."
+  fi
+fi
+
+DRY_OUTPUT=""
+DRY_STATUS=0
+if ! run_dry; then
+  exit "$DRY_STATUS"
+fi
+if ! parse_dry_line; then
+  die 2 "The CLI dry-run did not begin with a METHOD URL line."
+fi
+DRY_LINE="${DRY_OUTPUT%%$'\n'*}"
+
+if [[ "$METHOD" == "GET" ]]; then
+  if is_list_action && ! has_period_filter; then
+    printf 'Warning: Moneybird lists default to period:this_year. Older years will be missing unless --filter includes period:.\n' >&2
+  fi
+  if run_actual; then
+    exit 0
+  else
+    exit "$?"
+  fi
+fi
+
+if [[ "${MONEYBIRD_GUARD_READ_ONLY:-}" == "1" ]]; then
+  printf '%s\n' "$DRY_LINE" >&2
+  die 6 "Read-only lock is enabled. Non-GET $METHOD calls are blocked."
+fi
+
+if [[ $CONFIRM_WRITE -ne 1 ]]; then
+  printf '%s\n' "$DRY_LINE" >&2
+  die 3 "Write blocked. Re-run with --confirm-write after reviewing the dry-run."
+fi
+
+WRITER_CONFIG_DIR="${MONEYBIRD_WRITER_CONFIG_DIR:-$HOME/.config/moneybird-cli-writer}"
+if [[ -d "$WRITER_CONFIG_DIR" ]]; then
+  export MONEYBIRD_CONFIG_DIR="$WRITER_CONFIG_DIR"
+  if ! run_dry; then
+    exit "$DRY_STATUS"
+  fi
+  if ! parse_dry_line; then
+    die 2 "The writer configuration dry-run did not begin with a METHOD URL line."
+  fi
+  DRY_LINE="${DRY_OUTPUT%%$'\n'*}"
+else
+  printf 'Warning: writer configuration is not present. The reader session will be used.\n' >&2
+fi
+
+PILOT_ADMIN_ID="${MONEYBIRD_PILOT_ADMINISTRATION_ID:-}"
+if [[ -z "$PILOT_ADMIN_ID" ]]; then
+  PILOT_ADMIN_ID="$(read_env_value "$ACCOUNTANT_ROOT/.env" MONEYBIRD_PILOT_ADMINISTRATION_ID || true)"
+fi
+if [[ -z "$PILOT_ADMIN_ID" ]]; then
+  if [[ $PRODUCTION -ne 1 ]]; then
+    die 4 "Pilot administration is unset and target '$ADMIN_ID' is treated as production. Pass --production only after operator approval."
+  fi
+elif [[ "$ADMIN_ID" != "$PILOT_ADMIN_ID" && $PRODUCTION -ne 1 ]]; then
+  die 4 "Pilot administration '$PILOT_ADMIN_ID' differs from target '$ADMIN_ID'. Pass --production only after operator approval."
+fi
+
+if ! command -v jq >/dev/null 2>&1; then
+  die 1 "jq is required to append the write log."
+fi
+if run_actual; then
+  WRITE_STATUS=0
+else
+  WRITE_STATUS="$?"
+fi
+if [[ $WRITE_STATUS -eq 0 ]]; then
+  printf 'Moneybird write succeeded: %s %s\n' "$METHOD" "$URL_PATH" >&2
+  printf 'An immediate GET may return cached data. The write response status is the proof.\n' >&2
+  if [[ "$METHOD" == "DELETE" ]]; then
+    printf 'A DELETE response of 204 can mean nothing was deleted. Confirm with a separate read.\n' >&2
+  fi
+fi
+LOG_DIR="$ACCOUNTANT_ROOT/migration-workspace/logs"
+LOG_FILE="$LOG_DIR/moneybird-writes.jsonl"
+LOG_TIMESTAMP="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+LOG_RECORD="$(jq -cn --arg timestamp "$LOG_TIMESTAMP" --arg method "$METHOD" --arg path "$URL_PATH" --arg administration_id "$ADMIN_ID" --argjson exit_status "$WRITE_STATUS" '{timestamp:$timestamp,method:$method,path:$path,administration_id:$administration_id,exit_status:$exit_status}')"
+if (umask 077; mkdir -p "$LOG_DIR" && printf '%s\n' "$LOG_RECORD" >> "$LOG_FILE"); then
+  chmod 600 "$LOG_FILE" 2>/dev/null || true
+else
+  if [[ $WRITE_STATUS -eq 0 ]]; then
+    printf 'Write succeeded, but the local write log could not be appended.\n' >&2
+  else
+    printf 'The failed write attempt could not be appended to the local write log.\n' >&2
+  fi
+fi
+exit "$WRITE_STATUS"

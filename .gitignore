@@ -1,0 +1,15 @@
+# Personal financial data, linked from outside the repo
+/personal database
+
+# Migration working data: registers, mappings, exceptions, reports, snapshots
+/migration-workspace/
+
+# Local credentials
+.env
+.env.*
+!.env.example
+
+.DS_Store
+
+# Spec Kit packets for this system, kept local on purpose
+/specs/

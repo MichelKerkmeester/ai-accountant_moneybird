@@ -1,0 +1,143 @@
+{
+  "schema_version": 2,
+  "skill_id": "cli-jortt",
+  "family": "accounting",
+  "category": "cli-skill",
+  "deprecated": false,
+  "edges": {
+    "depends_on": [],
+    "enhances": [],
+    "siblings": [
+      {
+        "target": "cli-moneybird",
+        "weight": 0.4,
+        "context": "Jortt is the source system and Moneybird is the target. This skill extracts and documents source data while the sibling handles Moneybird imports and target-side verification."
+      }
+    ],
+    "conflicts_with": [],
+    "prerequisite_for": []
+  },
+  "domains": [
+    "jortt",
+    "jortt-api",
+    "jortt-cli",
+    "bookkeeping-extraction",
+    "accounting-migration",
+    "source-registers",
+    "accounting-exports"
+  ],
+  "intent_signals": [
+    "extract Jortt expenses by VAT date",
+    "list all Jortt invoices for migration",
+    "download Jortt receipts from the inbox",
+    "read Jortt bank transactions per account",
+    "check Jortt API scopes and paging",
+    "export a Jortt XAF auditfile",
+    "get annual accounts from Jortt",
+    "inspect Jortt REST operation slugs",
+    "route Moneybird imports to the target skill",
+    "jortt-cli",
+    "Jortt inbox receipts",
+    "Jortt XAF auditfile",
+    "list jortt-cli commands and safety gates",
+    "run the Jortt manual test scenarios"
+  ],
+  "derived": {
+    "trigger_phrases": [
+      "Jortt bookkeeping",
+      "Jortt migration",
+      "jortt-cli",
+      "Jortt REST API",
+      "Jortt expenses by VAT date",
+      "Jortt inbox receipts",
+      "Jortt API scopes",
+      "Jortt XAF auditfile",
+      "Jortt annual accounts"
+    ],
+    "key_topics": [
+      "REST-first extraction",
+      "OpenAPI operation routing",
+      "read-only scope control",
+      "paged list merging",
+      "migration workspace output",
+      "signed download links",
+      "UI-only exports",
+      "CLI and API route selection",
+      "Moneybird source to target handoff",
+      "write lock and scope check",
+      "output guard to migration-workspace"
+    ],
+    "intent_signals": [
+      "read Jortt bookkeeping for migration",
+      "extract and page Jortt REST records",
+      "request supported Jortt data through the CLI",
+      "request XAF and other UI-only exports",
+      "set up or troubleshoot the Jortt CLI"
+    ],
+    "key_files": [
+      "AI Systems/Moneybird Accountant/cli-jortt/SKILL.md",
+      "AI Systems/Moneybird Accountant/cli-jortt/cli/jortt-cli/jortt-cli",
+      "AI Systems/Moneybird Accountant/cli-jortt/references/rest-api.md",
+      "AI Systems/Moneybird Accountant/cli-jortt/references/cli.md",
+      "AI Systems/Moneybird Accountant/cli-jortt/references/exports-and-limits.md",
+      "AI Systems/Moneybird Accountant/cli-jortt/scripts/doctor.sh",
+      "AI Systems/Moneybird Accountant/cli-jortt/references/troubleshooting.md",
+      "AI Systems/Moneybird Accountant/cli-jortt/INSTALL-GUIDE.md",
+      "AI Systems/Moneybird Accountant/cli-jortt/README.md",
+      "AI Systems/Moneybird Accountant/cli-jortt/feature-catalog/feature-catalog.md",
+      "AI Systems/Moneybird Accountant/cli-jortt/manual-testing-playbook/manual-testing-playbook.md"
+    ],
+    "entities": [
+      {
+        "name": "cli-jortt",
+        "kind": "skill",
+        "path": "AI Systems/Moneybird Accountant/cli-jortt/SKILL.md",
+        "source": "derived"
+      },
+      {
+        "name": "jortt-cli",
+        "kind": "tool",
+        "path": "AI Systems/Moneybird Accountant/cli-jortt/cli/jortt-cli/jortt-cli",
+        "source": "derived"
+      },
+      {
+        "name": "Jortt REST API catalogue",
+        "kind": "reference",
+        "path": "AI Systems/Moneybird Accountant/cli-jortt/references/rest-api.md",
+        "source": "derived"
+      },
+      {
+        "name": "Jortt export limits",
+        "kind": "reference",
+        "path": "AI Systems/Moneybird Accountant/cli-jortt/references/exports-and-limits.md",
+        "source": "derived"
+      },
+      {
+        "name": "Jortt feature catalog",
+        "kind": "reference",
+        "path": "AI Systems/Moneybird Accountant/cli-jortt/feature-catalog/feature-catalog.md",
+        "source": "derived"
+      },
+      {
+        "name": "Jortt manual testing playbook",
+        "kind": "reference",
+        "path": "AI Systems/Moneybird Accountant/cli-jortt/manual-testing-playbook/manual-testing-playbook.md",
+        "source": "derived"
+      }
+    ],
+    "source_docs": [
+      "SKILL.md",
+      "README.md",
+      "leaf-manifest.config.json",
+      "references/cli.md",
+      "references/rest-api.md",
+      "references/exports-and-limits.md",
+      "references/troubleshooting.md",
+      "manual-testing-playbook/manual-testing-playbook.md",
+      "feature-catalog/feature-catalog.md"
+    ],
+    "causal_summary": "The standalone cli-jortt skill turns Jortt REST operations into repeatable read-first extraction for a Moneybird migration. Its OpenAPI-driven jortt-cli finds all operations, checks scopes and write flags, merges paged responses and confines saved output to the ignored migration workspace. It sends XAF and other UI-only exports to the operator and hands target-side work to the sibling cli-moneybird skill.",
+    "created_at": "2026-10-10T14:16:02.771026+00:00",
+    "last_updated_at": "2026-10-10T17:00:14Z"
+  }
+}

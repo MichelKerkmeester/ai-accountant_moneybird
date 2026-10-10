@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+# WHY: Provide deterministic Moneybird CLI responses without network access.
+set -euo pipefail
+
+STUB_LOG="${MONEYBIRD_TEST_LOG:-}"
+ADMIN_ID="${MONEYBIRD_TEST_ADMINISTRATION_ID:-PILOT_ADMIN}"
+RESOURCE=""
+ACTION=""
+RECORD_ID="stub-record"
+DRY_RUN=0
+LOGIN=0
+ARGS=()
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    login)
+      LOGIN=1
+      shift
+      ;;
+    --dry-run)
+      DRY_RUN=1
+      shift
+      ;;
+    --administration)
+      [[ $# -ge 2 ]] || exit 2
+      ADMIN_ID="$2"
+      shift 2
+      ;;
+    --output|--select|--fields|--child-id)
+      [[ $# -ge 2 ]] || exit 2
+      shift 2
+      ;;
+    --*)
+      if [[ $# -ge 2 && "$2" != --* ]]; then
+        shift 2
+      else
+        shift
+      fi
+      ;;
+    *)
+      ARGS+=("$1")
+      shift
+      ;;
+  esac
+done
+
+if [[ $LOGIN -eq 1 ]]; then
+  IFS= read -r TOKEN_INPUT || true
+  [[ -n "$STUB_LOG" ]] && printf 'LOGIN %s\n' "${MONEYBIRD_CONFIG_DIR:-default}" >> "$STUB_LOG"
+  printf 'stub accepted token: %s\n' "${TOKEN_INPUT:-}"
+  exit 0
+fi
+
+RESOURCE="${ARGS[0]:-contacts}"
+ACTION="${ARGS[1]:-list}"
+RECORD_ID="${ARGS[2]:-stub-record}"
+case "$ACTION" in
+  list|get) METHOD="GET" ;;
+  create) METHOD="POST" ;;
+  update) METHOD="PATCH" ;;
+  delete) METHOD="DELETE" ;;
+  *) METHOD="GET" ;;
+esac
+
+if [[ "$ACTION" == "list" || "$ACTION" == "create" ]]; then
+  URL="https://moneybird.com/api/v2/$ADMIN_ID/$RESOURCE.json"
+else
+  URL="https://moneybird.com/api/v2/$ADMIN_ID/$RESOURCE/$RECORD_ID.json"
+fi
+
+if [[ $DRY_RUN -eq 1 ]]; then
+  if [[ -n "${MONEYBIRD_TEST_DRY_STATUS:-}" ]]; then
+    printf 'stub dry-run failure\n' >&2
+    exit "$MONEYBIRD_TEST_DRY_STATUS"
+  fi
+  printf '%s %s\n' "$METHOD" "$URL"
+  if [[ "$METHOD" == "POST" || "$METHOD" == "PATCH" ]]; then
+    printf '{"%s":{}}\n' "$RESOURCE"
+  fi
+  exit 0
+fi
+
+[[ -n "$STUB_LOG" ]] && printf 'REAL %s %s\n' "$METHOD" "$URL" >> "$STUB_LOG"
+if [[ -n "${MONEYBIRD_TEST_REAL_STATUS:-}" ]]; then
+  printf 'stub request failure\n' >&2
+  exit "$MONEYBIRD_TEST_REAL_STATUS"
+fi
+case "$METHOD" in
+  GET) printf '[{"id":"stub-record"}]\n' ;;
+  POST|PATCH) printf '{"id":"stub-record"}\n' ;;
+  DELETE) ;;
+esac

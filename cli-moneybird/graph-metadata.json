@@ -1,0 +1,93 @@
+{
+  "schema_version": 2,
+  "skill_id": "cli-moneybird",
+  "family": "accounting",
+  "category": "cli-skill",
+  "deprecated": false,
+  "edges": {
+    "depends_on": [],
+    "enhances": [],
+    "siblings": [
+      {
+        "target": "cli-jortt",
+        "weight": 0.4,
+        "context": "Jortt is the source system and Moneybird is the target system in the bookkeeping migration."
+      }
+    ],
+    "conflicts_with": [],
+    "prerequisite_for": []
+  },
+  "domains": [
+    "moneybird",
+    "moneybird-api",
+    "moneybird-cli",
+    "bookkeeping",
+    "accounting-migration",
+    "migration-verification",
+    "moneybird-guard"
+  ],
+  "intent_signals": [
+    "use moneybird rest api for a bookkeeping migration",
+    "install the official moneybird cli",
+    "preview and confirm a moneybird write",
+    "import historical sales invoices into moneybird",
+    "attach a document to a moneybird invoice",
+    "verify an older moneybird accounting period",
+    "run a read-only Moneybird CLI session",
+    "export a moneybird auditfile",
+    "rehearse a pilot correction in moneybird",
+    "link a moneybird payment to a booking",
+    "block an unconfirmed moneybird write",
+    "keep moneybird writes on the pilot administration",
+    "list moneybird records for an older year",
+    "moneybird rest api migration",
+    "official moneybird cli",
+    "guarded moneybird writes",
+    "set the Moneybird read-only guard",
+    "moneybird accounting verification"
+  ],
+  "derived": {
+    "trigger_phrases": [
+      "moneybird rest api migration",
+      "official moneybird cli",
+      "guarded moneybird writes",
+      "Moneybird read-only guard",
+      "moneybird accounting verification"
+    ],
+    "key_topics": [
+      "Moneybird REST API v2",
+      "guarded CLI writes",
+      "accounting migration",
+      "pilot administration",
+      "period verification",
+      "read-only CLI lock",
+      "write log",
+      "feature catalog",
+      "manual testing playbook"
+    ],
+    "key_files": [
+      "AI Systems/Moneybird Accountant/cli-moneybird/SKILL.md",
+      "AI Systems/Moneybird Accountant/cli-moneybird/cli/moneybird-cli/moneybird-guard",
+      "AI Systems/Moneybird Accountant/cli-moneybird/references/rest-api.md",
+      "AI Systems/Moneybird Accountant/cli-moneybird/references/migration-recipes.md",
+      "AI Systems/Moneybird Accountant/cli-moneybird/feature-catalog/feature-catalog.md",
+      "AI Systems/Moneybird Accountant/cli-moneybird/feature-catalog/write-guard/read-only-lock.md",
+      "AI Systems/Moneybird Accountant/cli-moneybird/manual-testing-playbook/manual-testing-playbook.md"
+    ],
+    "entities": [
+      {
+        "name": "cli-moneybird",
+        "kind": "skill",
+        "path": "AI Systems/Moneybird Accountant/cli-moneybird/SKILL.md",
+        "source": "derived"
+      }
+    ],
+    "source_docs": [
+      "SKILL.md",
+      "leaf-manifest.config.json"
+    ],
+    "causal_summary": "Routes Moneybird bookkeeping migration work through the official CLI and a local write guard so API coverage can include reads, writes and attachments while the read-only lock, confirmation, pilot administration, safe output paths and write logging stay consistent. Jortt source reads remain with the sibling cli-jortt skill and bank imports or other UI-only tasks stay with the operator.",
+    "created_at": "2026-10-10T14:16:02.867668+00:00",
+    "last_updated_at": "2026-10-10T00:00:00Z"
+  }
+}

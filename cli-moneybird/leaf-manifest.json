@@ -1,0 +1,41 @@
+{
+  "modes": [
+    {
+      "leaves": [
+        "feature-catalog/api-knowledge/documented-api-traps.md",
+        "feature-catalog/official-cli-and-setup/official-cli-pinned-commit.md",
+        "feature-catalog/official-cli-and-setup/setup-script.md",
+        "feature-catalog/reads-and-saved-output/output-guard.md",
+        "feature-catalog/reads-and-saved-output/period-filter-warning.md",
+        "feature-catalog/sessions-and-diagnostics/local-doctor.md",
+        "feature-catalog/sessions-and-diagnostics/reader-and-writer-login.md",
+        "feature-catalog/write-guard/delete-caution.md",
+        "feature-catalog/write-guard/dry-run-first-pass.md",
+        "feature-catalog/write-guard/pilot-administration-gate.md",
+        "feature-catalog/write-guard/read-only-lock.md",
+        "feature-catalog/write-guard/write-confirmation-lock.md",
+        "feature-catalog/write-guard/write-log.md",
+        "manual-testing-playbook/reads/output-guard-confines-saves.md",
+        "manual-testing-playbook/reads/period-filter-warning.md",
+        "manual-testing-playbook/routing/attachment-through-cli.md",
+        "manual-testing-playbook/routing/bank-file-import-goes-to-ui.md",
+        "manual-testing-playbook/setup/doctor-offline.md",
+        "manual-testing-playbook/setup/login-keeps-tokens-hidden.md",
+        "manual-testing-playbook/setup/setup-plan-and-check.md",
+        "manual-testing-playbook/write-safety/delete-needs-separate-read.md",
+        "manual-testing-playbook/write-safety/pilot-write-and-undo-rehearsal.md",
+        "manual-testing-playbook/write-safety/pilot-write-is-logged.md",
+        "manual-testing-playbook/write-safety/production-write-blocked.md",
+        "manual-testing-playbook/write-safety/read-only-lock.md",
+        "manual-testing-playbook/write-safety/unconfirmed-write-blocked.md",
+        "references/cli.md",
+        "references/migration-recipes.md",
+        "references/rest-api.md",
+        "references/troubleshooting.md"
+      ],
+      "packet": ".",
+      "workflowMode": "cli-moneybird"
+    }
+  ],
+  "resourceContractVersion": 1
+}
