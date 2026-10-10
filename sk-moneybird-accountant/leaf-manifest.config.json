@@ -1,0 +1,12 @@
+{
+  "workflowMode": "sk-moneybird-accountant",
+  "packet": ".",
+  "leafRoots": [
+    "references",
+    "feature-catalog",
+    "manual-testing-playbook"
+  ],
+  "excludeIndexFiles": true,
+  "resourceContractVersion": 1,
+  "_note": "Standalone single-mode manifest config. The routed leaves are migration, tax, bookkeeping, mapping, feature catalog, and offline playbook references. Changelog and benchmark reports are release history and run output, not routed documentation."
+}

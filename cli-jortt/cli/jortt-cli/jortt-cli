@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+# WHY: OpenAPI-driven Jortt access keeps migration reads repeatable and every write gated.
+set -euo pipefail
+
+jortt_resolve_script() {
+  local source="$1"
+  local directory target
+  while [ -h "$source" ]; do
+    directory="$(cd -P "$(dirname "$source")" >/dev/null 2>&1 && pwd)"
+    target="$(readlink "$source")"
+    case "$target" in
+      /*) source="$target" ;;
+      *) source="$directory/$target" ;;
+    esac
+  done
+  JORTT_SCRIPT_DIR="$(cd -P "$(dirname "$source")" >/dev/null 2>&1 && pwd)"
+}
+
+jortt_resolve_script "${BASH_SOURCE[0]}"
+# shellcheck disable=SC2034
+ACCOUNTANT_ROOT="$(cd -P "$JORTT_SCRIPT_DIR/../../.." >/dev/null 2>&1 && pwd)"
+# shellcheck disable=SC1091
+. "$JORTT_SCRIPT_DIR/lib/common.sh"
+# shellcheck disable=SC1091
+. "$JORTT_SCRIPT_DIR/lib/workspace.sh"
+# shellcheck disable=SC1091
+. "$JORTT_SCRIPT_DIR/lib/api.sh"
+# shellcheck disable=SC1091
+. "$JORTT_SCRIPT_DIR/lib/commands.sh"
+
+jortt_usage() {
+  cat <<'EOF_HELP'
+jortt-cli 1.0.0
+
+Read Jortt through its OpenAPI document. Writes require --allow-write and the
+matching scope in JORTT_SCOPES. Saved files must stay in migration-workspace.
+
+Commands:
+  jortt-cli ops [--tag TAG] [--writes] [--json]
+  jortt-cli describe SLUG
+  jortt-cli call SLUG [--PARAM VALUE ...] [--data JSON | --data-file FILE]
+                    [--all] [--out FILE] [--raw] [--dry-run] [--allow-write]
+  jortt-cli get PATH [name=value ...] [--all] [--out FILE] [--raw]
+  jortt-cli fetch URL --out FILE
+  jortt-cli whoami
+  jortt-cli spec update | info
+  jortt-cli token status | clear
+  jortt-cli help [SLUG]
+  jortt-cli --version
+
+Exit codes:
+  0 success
+  1 API or transport failure
+  2 usage, input or spec failure
+  3 write blocked because --allow-write is missing
+  4 required scope is not configured
+  5 output path is outside migration-workspace
+  6 token or authentication failure
+EOF_HELP
+}
+
+main() {
+  [ "$#" -gt 0 ] || { jortt_usage; return 0; }
+  local command_name="$1"
+  shift
+  case "$command_name" in
+    --help|-h|help)
+      if [ "$#" -gt 0 ]; then jortt_cmd_describe "$1"; else jortt_usage; fi
+      ;;
+    --version|-V) printf 'jortt-cli 1.0.0\n' ;;
+    ops) jortt_cmd_ops "$@" ;;
+    describe) [ "$#" -eq 1 ] || jortt_error 2 "Usage: jortt-cli describe SLUG"; jortt_cmd_describe "$1" ;;
+    call) [ "$#" -ge 1 ] || jortt_error 2 "Usage: jortt-cli call SLUG [options]"; jortt_cmd_call "$@" ;;
+    get) [ "$#" -ge 1 ] || jortt_error 2 "Usage: jortt-cli get PATH [name=value ...]"; jortt_cmd_get "$@" ;;
+    fetch) [ "$#" -ge 1 ] || jortt_error 2 "Usage: jortt-cli fetch URL --out FILE"; jortt_cmd_fetch "$@" ;;
+    whoami) [ "$#" -eq 0 ] || jortt_error 2 "Usage: jortt-cli whoami"; jortt_cmd_whoami ;;
+    spec)
+      [ "$#" -ge 1 ] || jortt_error 2 "Usage: jortt-cli spec update|info"
+      case "$1" in
+        update) shift; [ "$#" -eq 0 ] || jortt_error 2 "Usage: jortt-cli spec update"; jortt_spec_update ;;
+        info) shift; [ "$#" -eq 0 ] || jortt_error 2 "Usage: jortt-cli spec info"; jortt_spec_info ;;
+        *) jortt_error 2 "Unknown spec command: $1" ;;
+      esac
+      ;;
+    token)
+      [ "$#" -ge 1 ] || jortt_error 2 "Usage: jortt-cli token status|clear"
+      case "$1" in
+        status) shift; [ "$#" -eq 0 ] || jortt_error 2 "Usage: jortt-cli token status"; jortt_token_status ;;
+        clear) shift; [ "$#" -eq 0 ] || jortt_error 2 "Usage: jortt-cli token clear"; jortt_token_clear ;;
+        *) jortt_error 2 "Unknown token command: $1" ;;
+      esac
+      ;;
+    *) jortt_error 2 "Unknown command: $command_name. Run jortt-cli --help." ;;
+  esac
+}
+
+main "$@"

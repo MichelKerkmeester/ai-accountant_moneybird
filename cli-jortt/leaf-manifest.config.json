@@ -1,0 +1,12 @@
+{
+  "workflowMode": "cli-jortt",
+  "packet": ".",
+  "leafRoots": [
+    "references",
+    "feature-catalog",
+    "manual-testing-playbook"
+  ],
+  "excludeIndexFiles": true,
+  "resourceContractVersion": 1,
+  "_note": "Standalone Jortt extraction skill. The local CLI is its only API surface. Leaf resources are the REST and CLI references, the feature catalog and the operator testing scenarios, which are the three trees the SKILL.md router discovers. scripts/ and cli/ contain runtime code, not documentation leaves. Consumed by generate-leaf-manifest.cjs to emit leaf-manifest.json. leaf-aliases.json is the derived identity projection of that manifest, so regenerate both together via ci-skill-root-metadata.cjs --fix."
+}

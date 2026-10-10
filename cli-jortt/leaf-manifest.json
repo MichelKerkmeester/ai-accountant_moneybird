@@ -1,0 +1,42 @@
+{
+  "modes": [
+    {
+      "leaves": [
+        "feature-catalog/api-calls/call-operation.md",
+        "feature-catalog/api-calls/organization-check.md",
+        "feature-catalog/api-calls/raw-get.md",
+        "feature-catalog/api-calls/signed-download-fetch.md",
+        "feature-catalog/diagnostics/offline-doctor.md",
+        "feature-catalog/diagnostics/setup-check.md",
+        "feature-catalog/operation-discovery/describe-operation.md",
+        "feature-catalog/operation-discovery/list-operations.md",
+        "feature-catalog/operation-discovery/openapi-spec-cache.md",
+        "feature-catalog/safety-gates/output-workspace-guard.md",
+        "feature-catalog/safety-gates/scope-check.md",
+        "feature-catalog/safety-gates/write-lock.md",
+        "feature-catalog/surfaces/surface-routing.md",
+        "feature-catalog/transport/paged-list-merge.md",
+        "feature-catalog/transport/token-cache-and-retry.md",
+        "manual-testing-playbook/auth-and-scopes/doctor-offline.md",
+        "manual-testing-playbook/auth-and-scopes/token-status.md",
+        "manual-testing-playbook/auth-and-scopes/whoami-field-names.md",
+        "manual-testing-playbook/auth-and-scopes/write-lock.md",
+        "manual-testing-playbook/extraction/paged-extract-to-workspace.md",
+        "manual-testing-playbook/extraction/raw-get-path-guard.md",
+        "manual-testing-playbook/extraction/receipt-download.md",
+        "manual-testing-playbook/operation-discovery/list-and-describe-operations.md",
+        "manual-testing-playbook/operation-discovery/spec-info-offline.md",
+        "manual-testing-playbook/routing/moneybird-request-deferred.md",
+        "manual-testing-playbook/routing/xaf-request-goes-to-ui.md",
+        "manual-testing-playbook/setup/setup-check.md",
+        "references/cli.md",
+        "references/exports-and-limits.md",
+        "references/rest-api.md",
+        "references/troubleshooting.md"
+      ],
+      "packet": ".",
+      "workflowMode": "cli-jortt"
+    }
+  ],
+  "resourceContractVersion": 1
+}

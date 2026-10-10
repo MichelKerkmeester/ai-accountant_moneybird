@@ -1,0 +1,122 @@
+[
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/api-tool-handoff.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/api-tool-handoff.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-data-privacy.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-data-privacy.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-phase-routing.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-phase-routing.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/api-tool-handoff.md",
+    "diskPath": "manual-testing-playbook/offline-routing/api-tool-handoff.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/current-year-zzp-question.md",
+    "diskPath": "manual-testing-playbook/offline-routing/current-year-zzp-question.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/live-monthly-bookkeeping.md",
+    "diskPath": "manual-testing-playbook/offline-routing/live-monthly-bookkeeping.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/migration-phase-routing.md",
+    "diskPath": "manual-testing-playbook/offline-routing/migration-phase-routing.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/operator-tax-boundary.md",
+    "diskPath": "manual-testing-playbook/offline-routing/operator-tax-boundary.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/privacy-boundary.md",
+    "diskPath": "manual-testing-playbook/offline-routing/privacy-boundary.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/quarterly-yearly-bookkeeping.md",
+    "diskPath": "manual-testing-playbook/offline-routing/quarterly-yearly-bookkeeping.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/jortt-to-moneybird-mapping.md",
+    "diskPath": "references/jortt-to-moneybird-mapping.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/README.md",
+    "diskPath": "references/migration/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/control-framework.md",
+    "diskPath": "references/migration/control-framework.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/live-workflows-phases-17-to-20.md",
+    "diskPath": "references/migration/live-workflows-phases-17-to-20.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/overview-and-setup.md",
+    "diskPath": "references/migration/overview-and-setup.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/phases-0-to-2.md",
+    "diskPath": "references/migration/phases-0-to-2.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/phases-10-to-16.md",
+    "diskPath": "references/migration/phases-10-to-16.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/phases-3-to-5.md",
+    "diskPath": "references/migration/phases-3-to-5.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/phases-6-to-9.md",
+    "diskPath": "references/migration/phases-6-to-9.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/moneybird-bookkeeping.md",
+    "diskPath": "references/moneybird-bookkeeping.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/zzp-tax-and-vat.md",
+    "diskPath": "references/zzp-tax-and-vat.md"
+  }
+]

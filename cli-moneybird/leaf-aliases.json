@@ -1,0 +1,152 @@
+[
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/api-knowledge/documented-api-traps.md",
+    "diskPath": "feature-catalog/api-knowledge/documented-api-traps.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/official-cli-and-setup/official-cli-pinned-commit.md",
+    "diskPath": "feature-catalog/official-cli-and-setup/official-cli-pinned-commit.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/official-cli-and-setup/setup-script.md",
+    "diskPath": "feature-catalog/official-cli-and-setup/setup-script.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/reads-and-saved-output/output-guard.md",
+    "diskPath": "feature-catalog/reads-and-saved-output/output-guard.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/reads-and-saved-output/period-filter-warning.md",
+    "diskPath": "feature-catalog/reads-and-saved-output/period-filter-warning.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/sessions-and-diagnostics/local-doctor.md",
+    "diskPath": "feature-catalog/sessions-and-diagnostics/local-doctor.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/sessions-and-diagnostics/reader-and-writer-login.md",
+    "diskPath": "feature-catalog/sessions-and-diagnostics/reader-and-writer-login.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/write-guard/delete-caution.md",
+    "diskPath": "feature-catalog/write-guard/delete-caution.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/write-guard/dry-run-first-pass.md",
+    "diskPath": "feature-catalog/write-guard/dry-run-first-pass.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/write-guard/pilot-administration-gate.md",
+    "diskPath": "feature-catalog/write-guard/pilot-administration-gate.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/write-guard/read-only-lock.md",
+    "diskPath": "feature-catalog/write-guard/read-only-lock.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/write-guard/write-confirmation-lock.md",
+    "diskPath": "feature-catalog/write-guard/write-confirmation-lock.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/write-guard/write-log.md",
+    "diskPath": "feature-catalog/write-guard/write-log.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/reads/output-guard-confines-saves.md",
+    "diskPath": "manual-testing-playbook/reads/output-guard-confines-saves.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/reads/period-filter-warning.md",
+    "diskPath": "manual-testing-playbook/reads/period-filter-warning.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/routing/attachment-through-cli.md",
+    "diskPath": "manual-testing-playbook/routing/attachment-through-cli.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/routing/bank-file-import-goes-to-ui.md",
+    "diskPath": "manual-testing-playbook/routing/bank-file-import-goes-to-ui.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/setup/doctor-offline.md",
+    "diskPath": "manual-testing-playbook/setup/doctor-offline.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/setup/login-keeps-tokens-hidden.md",
+    "diskPath": "manual-testing-playbook/setup/login-keeps-tokens-hidden.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/setup/setup-plan-and-check.md",
+    "diskPath": "manual-testing-playbook/setup/setup-plan-and-check.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/write-safety/delete-needs-separate-read.md",
+    "diskPath": "manual-testing-playbook/write-safety/delete-needs-separate-read.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/write-safety/pilot-write-and-undo-rehearsal.md",
+    "diskPath": "manual-testing-playbook/write-safety/pilot-write-and-undo-rehearsal.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/write-safety/pilot-write-is-logged.md",
+    "diskPath": "manual-testing-playbook/write-safety/pilot-write-is-logged.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/write-safety/production-write-blocked.md",
+    "diskPath": "manual-testing-playbook/write-safety/production-write-blocked.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/write-safety/read-only-lock.md",
+    "diskPath": "manual-testing-playbook/write-safety/read-only-lock.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/write-safety/unconfirmed-write-blocked.md",
+    "diskPath": "manual-testing-playbook/write-safety/unconfirmed-write-blocked.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "references/cli.md",
+    "diskPath": "references/cli.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "references/migration-recipes.md",
+    "diskPath": "references/migration-recipes.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "references/rest-api.md",
+    "diskPath": "references/rest-api.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "references/troubleshooting.md",
+    "diskPath": "references/troubleshooting.md"
+  }
+]

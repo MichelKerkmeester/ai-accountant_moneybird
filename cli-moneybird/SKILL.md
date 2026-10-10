@@ -1,0 +1,357 @@
+---
+name: cli-moneybird
+description: Works Moneybird through the official moneybird-cli behind a write guard for bookkeeping migration.
+allowed-tools: [Bash, Read, Write, Edit, Glob, Grep]
+version: 1.0.0.0
+---
+
+<!-- Keywords: moneybird, moneybird-cli, moneybird-guard, moneybird rest api, bookkeeping migration, accounting migration, jortt migration, pilot administration, confirm write, period filter, read-only lock -->
+
+# Moneybird Migration Skill
+
+Rebuild historical bookkeeping in Moneybird through REST API v2. The official `moneybird-cli` is the API surface behind `moneybird-guard`.
+
+---
+
+## 1. WHEN TO USE
+
+### Activation Triggers
+
+Use this skill when the user asks to:
+
+- Read Moneybird administrations, contacts, documents, ledger accounts, reports or synchronization data.
+- Create or correct Moneybird records during a Jortt to Moneybird migration.
+- Attach historical source documents, import external sales invoices or link payments.
+- Prepare a pilot write, repeat a verified batch or rehearse the correction path.
+- Set up or diagnose the official Moneybird CLI and guard.
+
+Keyword triggers: `moneybird`, `moneybird-cli`, `moneybird-guard`, Moneybird REST API v2, opening balance, external sales invoice, purchase invoice, financial mutation, auditfile, pilot administration, write confirmation, read-only lock and period filter.
+
+### Use Cases
+
+- **Migration writes:** pilot administration first, then approved production batches.
+- **Verification reads:** an explicit period per year and synchronization for bulk pulls.
+- **Setup and diagnosis:** the pinned CLI and reader and writer logins.
+
+### When NOT to Use
+
+- Jortt reads and source exports belong to the sibling `cli-jortt` skill.
+- Bank statement file import, tax rate creation, period locking and manual VAT filing stay in the Moneybird UI.
+- Do not use the skill to move private finance files or to write data outside the migration workspace.
+
+---
+
+## 2. SMART ROUTING
+
+### Primary Detection Signal
+
+The operation the request names picks the guarded CLI route or the Moneybird UI. Read-only roles set `MONEYBIRD_GUARD_READ_ONLY=1` before CLI reads. The pseudocode below then picks the resources to load. Commands use shell variables for identifiers, periods, files and payloads.
+
+| Operation | CLI route or boundary |
+|---|---|
+| Administration sessions | `moneybird-guard administration list` or `moneybird-guard administration current` | Select the intended administration and verify it before a write. |
+| Contacts | `moneybird-guard contacts list` or `moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" contacts create --...` | Reads use the guard. Create or update only through the guarded CLI. |
+| Ledger accounts | `moneybird-guard ledger_accounts list` or `moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" ledger_accounts create --rgs_code "$RGS_CODE"` | `rgs_code` is required on create. |
+| Tax rates | `moneybird-guard tax_rates list` | Create a tax rate in the UI. |
+| Historical sales invoice and PDF | `moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" external_sales_invoices create --...` then `moneybird-guard --confirm-write external_sales_invoices attachment "$INVOICE_ID" --file "$PDF"` | Guard every write and verify it with a later read. |
+| Purchase invoice and attachment | `moneybird-guard --confirm-write documents purchase_invoices create --...` then `moneybird-guard --confirm-write documents purchase_invoices attachments "$DOCUMENT_ID" --file "$PDF"` | Guard every write and verify it with a later read. |
+| Receipt and attachment | `moneybird-guard --confirm-write documents receipts create --...` then `moneybird-guard --confirm-write documents receipts attachments "$DOCUMENT_ID" --file "$PDF"` | Guard every write and verify it with a later read. |
+| General journal document | `moneybird-guard --confirm-write documents general_journal_documents create --journal_type "$JOURNAL_TYPE" --"$ENTRY_FIELD" "$ENTRIES_JSON"` | The body field name is `UNVERIFIED` until confirmed with pinned CLI help. |
+| Financial statement mutations | `moneybird-guard --confirm-write financial_statements create --"$MUTATION_FIELD" "$MUTATIONS_JSON"` | Do not use for bank statement imports. Resolve the JSON field from pinned CLI help. |
+| Link a payment | `moneybird-guard --confirm-write financial_mutations link_booking "$MUTATION_ID"` | Request body fields are `UNVERIFIED` until confirmed with pinned CLI help. |
+| Document payment | `moneybird-guard --confirm-write documents purchase_invoices payments "$DOCUMENT_ID" --"$PAYMENT_FIELD" "$PAYMENT_JSON"` | Resolve body fields from CLI help. |
+| Fixed asset | `moneybird-guard --confirm-write assets create --...` then use the confirmed `assets` value change action | Confirm the action with pinned CLI help. |
+| Reports | `moneybird-guard reports profit_loss "${REPORT_DATE_ARGS[@]}"` and the matching `balance_sheet`, `general_ledger`, `journal_entries` or `tax` action | Confirm date argument names from pinned CLI help. Each request covers at most twelve months. |
+| Bulk reads | `moneybird-guard sales_invoices sync` then `moneybird-guard sales_invoices sync_fetch --ids "$ID_BATCH_JSON"` | Use REST synchronization for complete bulk pulls. |
+| Auditfile export | `moneybird-guard --confirm-write reports export auditfile --year "$YEAR" --version "$AUDITFILE_VERSION"` then fetch the returned download through the confirmed downloads route | Confirm the route with pinned CLI help. |
+| CAMT.053 or MT940 import, tax rate creation, period lock or a historical VAT return | Moneybird UI only. Mark VAT returns filed with **Handmatig indienen** in chronological order. | Operator action. |
+
+### Read-only Access
+
+Moneybird token scopes do not separate read access from write access. Read-only roles set `MONEYBIRD_GUARD_READ_ONLY=1` so every non-GET CLI call is blocked before the real request. Historical sales invoices use `external_sales_invoices` and its attachment route.
+
+Body fields and report date arguments that the supplied facts do not name stay `UNVERIFIED` until pinned CLI help and a dry-run confirm them. Never guess a field name.
+
+### Phase Detection
+
+```text
+MONEYBIRD REQUEST
+    |
+    +- STEP 0: Detect the operation and pick the guarded CLI route or UI handoff
+    +- STEP 1: Score intents (top-2 when close)
+    +- Phase 1: Read or plan with explicit periods and a dry-run
+    +- Phase 2: Confirmed pilot write or a UI handoff
+    +- Phase 3: Verify by write status, then a later sync read
+```
+
+### Resource Domains
+
+The references are flat, so the routing key selects a `RESOURCE_MAP` entry rather than a keyed folder. Discovery covers `references/` for operational guidance, `feature-catalog/` for the current-state inventory, `manual-testing-playbook/` for operator scenarios and the root `INSTALL-GUIDE.md`. Runtime code in `scripts/` and `cli/` is never routed.
+
+### Resource Loading Levels
+
+| Level | When to load | Resources |
+|---|---|---|
+| ALWAYS | Every Moneybird task | This file |
+| CONDITIONAL | REST route, auth or API limit | `references/rest-api.md` and `references/cli.md` |
+| CONDITIONAL | A multi-record migration action | `references/migration-recipes.md` |
+| CONDITIONAL | A feature inventory or manual validation request | `feature-catalog/feature-catalog.md` and `manual-testing-playbook/manual-testing-playbook.md` |
+| ON_DEMAND | Setup or failure | `INSTALL-GUIDE.md` and `references/troubleshooting.md` |
+
+### Smart Router Pseudocode
+
+```python
+from pathlib import Path
+
+SKILL_ROOT = Path(__file__).resolve().parent
+RESOURCE_BASES = tuple(SKILL_ROOT / name for name in ("references", "feature-catalog", "manual-testing-playbook"))
+ROOT_RESOURCES = ("INSTALL-GUIDE.md",)
+DEFAULT_RESOURCE = "references/cli.md"
+AMBIGUITY_DELTA = 1
+
+INTENT_MODEL = {
+    "CLI_READ": {"weight": 6, "keywords": ["read moneybird", "list contacts", "verify a year", "moneybird report", "administration"]},
+    "CLI_WRITE": {"weight": 7, "keywords": ["create in moneybird", "update moneybird", "delete moneybird", "attach invoice", "link payment"]},
+    "MIGRATION_RECIPE": {"weight": 7, "keywords": ["opening balance", "external sales invoice", "purchase invoice", "journal entry", "pilot migration", "correct a wrong write"]},
+    "UI_ONLY": {"weight": 8, "keywords": ["camt.053 import", "mt940 import", "create tax rate", "lock a period", "handmatig indienen"]},
+    "INSTALL": {"weight": 6, "keywords": ["install moneybird-cli", "moneybird token", "login-from-env"]},
+    "TROUBLESHOOT": {"weight": 8, "keywords": ["401", "403 scope", "404 administration", "422", "429", "stale get", "exit 3", "exit 4", "exit 5", "needs authentication"]},
+    "FEATURE_INVENTORY": {"weight": 6, "keywords": ["feature catalog", "moneybird capabilities", "what does the moneybird skill do"]},
+    "MANUAL_TEST": {"weight": 6, "keywords": ["manual testing playbook", "test scenario", "validate the guard"]},
+}
+
+RESOURCE_MAP = {
+    "CLI_READ": ["references/rest-api.md", "references/cli.md"],
+    "CLI_WRITE": ["references/cli.md", "references/rest-api.md", "references/troubleshooting.md"],
+    "MIGRATION_RECIPE": ["references/migration-recipes.md", "references/rest-api.md"],
+    "UI_ONLY": ["references/rest-api.md", "references/migration-recipes.md"],
+    "INSTALL": ["INSTALL-GUIDE.md", "references/cli.md"],
+    "TROUBLESHOOT": ["references/troubleshooting.md"],
+    "FEATURE_INVENTORY": ["feature-catalog/feature-catalog.md"],
+    "MANUAL_TEST": ["manual-testing-playbook/manual-testing-playbook.md", "feature-catalog/feature-catalog.md"],
+}
+
+UNKNOWN_FALLBACK_CHECKLIST = [
+    "Confirm whether the task is a REST read, confirmed write, migration recipe or UI task",
+    "Ask for the resource, period or intended output when the request does not name one",
+    "Keep writes on the pilot administration until the migration plan permits production",
+]
+
+def _guard_in_skill(relative_path):
+    root = SKILL_ROOT.resolve()
+    resolved = (root / relative_path).resolve()
+    resolved.relative_to(root)
+    if resolved.suffix.lower() != ".md":
+        raise ValueError("Only skill-local markdown resources are routable")
+    return resolved.relative_to(root).as_posix()
+
+def discover_markdown_resources():
+    docs = [p for base in RESOURCE_BASES if base.exists() for p in base.rglob("*.md") if p.is_file()]
+    docs += [SKILL_ROOT / name for name in ROOT_RESOURCES if (SKILL_ROOT / name).is_file()]
+    return {doc.relative_to(SKILL_ROOT).as_posix() for doc in docs}
+
+def classify_intents(request):
+    text = str(request or "").lower()
+    scores = {name: sum(cfg["weight"] for word in cfg["keywords"] if word in text) for name, cfg in INTENT_MODEL.items()}
+    ranked = sorted(scores.items(), key=lambda pair: pair[1], reverse=True)
+    (first, top), (second, runner_up) = ranked[0], ranked[1]
+    if top == 0:
+        return [], scores
+    return ([first, second] if runner_up and top - runner_up <= AMBIGUITY_DELTA else [first]), scores
+
+def get_routing_key(task, intents):
+    override = str(getattr(task, "routing_key", "")).strip().upper()
+    return override if override in RESOURCE_MAP else (intents[0] if intents else "unknown")
+
+def route_moneybird_resources(request, task=None):
+    inventory = discover_markdown_resources()
+    intents, scores = classify_intents(request)
+    routing_key = get_routing_key(task, intents)
+    loaded, seen = [], set()
+
+    def load_if_available(relative_path):
+        guarded = _guard_in_skill(relative_path)
+        if guarded in inventory and guarded not in seen:
+            load(guarded)
+            loaded.append(guarded)
+            seen.add(guarded)
+
+    if routing_key == "unknown":
+        load_if_available(DEFAULT_RESOURCE)
+        return {"load_level": "UNKNOWN_FALLBACK", "needs_disambiguation": True,
+                "disambiguation_checklist": UNKNOWN_FALLBACK_CHECKLIST, "resources": loaded}
+    for intent in dict.fromkeys([routing_key] + intents):
+        for relative_path in RESOURCE_MAP.get(intent, []):
+            load_if_available(relative_path)
+    if not loaded:
+        load_if_available(DEFAULT_RESOURCE)
+        return {"routing_key": routing_key, "notice": "No mapped resource exists on disk", "resources": loaded}
+    return {"routing_key": routing_key, "intents": intents, "intent_scores": scores, "resources": loaded}
+```
+
+---
+
+## 3. HOW IT WORKS
+
+### Surface Comparison
+
+| Surface | Best use | Auth and limits |
+|---|---|---|
+| `moneybird-guard` and official CLI | REST v2 reads, writes, attachments and synchronization | Set `MONEYBIRD_GUARD_READ_ONLY=1` for read-only roles. Other writes need `--confirm-write` and the pilot gate. |
+| Moneybird UI | Bank file imports, tax rates, period locks and manual VAT status | Operator action only. |
+
+### Reader and Writer Sessions
+
+The reader token lives in `.env` and, from the pilot phase onward, the write token lives in `.env.writer`. `moneybird-guard login-from-env` logs in the reader. Adding `--writer` logs in the writer under `${MONEYBIRD_WRITER_CONFIG_DIR:-$HOME/.config/moneybird-cli-writer}`, a session separate from the reader. The guard never puts a token in CLI arguments and suppresses the CLI login output.
+
+Moneybird token scopes do not separate read from write. Read-only roles set `MONEYBIRD_GUARD_READ_ONLY=1` before guarded CLI reads. The lock blocks every non-GET method even if write flags are present.
+
+### Read Path
+
+1. Select the resource and check its route with the pinned CLI help when needed.
+2. Set an explicit period on every verification list. Moneybird defaults list endpoints to `period:this_year`.
+3. Use `sync` and `sync_fetch` for bulk reads. Batch synchronization IDs in groups of no more than one hundred.
+4. Save any record output with `--out` under `migration-workspace/`. The guard writes raw JSON there and prints only an item count or top-level keys.
+
+### Write Path
+
+```text
+STEP 1: Approve the batch in the migration plan
+       ↓
+STEP 2: Guarded dry-run reads the first METHOD URL line
+       ↓
+STEP 3: Gates
+       ├─ No --confirm-write: print the preview and exit 3
+       └─ Target is not the pilot and no --production: exit 4
+       ↓
+STEP 4: Real call, then one body-free JSONL record in migration-workspace/logs/
+       ↓
+STEP 5: Later read-back
+       └─ Synchronization reads confirm the record in a later pass
+```
+
+Writes target the pilot administration unless the plan's gate allows a production batch and the operator gives an explicit go for that batch. The log record holds the time, method, path, administration and exit status, never a request or response body.
+
+### Output Location
+
+Saved records, attachments, reports and migration logs belong under `migration-workspace/`. Keep personal finance data out of this skill, tracked files, commits and other services. This skill does not use Code Mode.
+
+---
+
+## 4. RULES
+
+### ✅ ALWAYS
+
+- Use the official pinned CLI through `moneybird-guard` for REST calls. Review `--dry-run` output before each confirmed write.
+- Keep writes on the pilot administration until the migration plan's gate permits the production batch.
+- Use `--production` only after the operator explicitly approves that batch.
+- Set an explicit period on every verification list. Use synchronization for bulk reads.
+- Check the write's own status first. Treat an immediate GET as potentially stale.
+- Keep under 150 requests per five minutes and under 50 requests per five minutes for reports. On `429`, wait for `Retry-After` before retrying.
+- Keep outputs under `migration-workspace/` and use the guard's `--out` boundary for saved API responses.
+
+### ❌ NEVER
+
+- Never write without `--confirm-write` or use `--production` without the operator's explicit go for that batch.
+- Never trust the default period on a verification list. It can silently omit older years.
+- Never use `GET /financial_mutations` as a complete bulk export. The endpoint is capped at one hundred records.
+- Never use the deprecated sales invoice `register_payment` action. Its sunset is 2026-12-31. Use `financial_mutations link_booking` or document payments.
+- Never call an API write directly through `moneybird-cli`. Use the guarded CLI and confirm deletion with a separate read because `204` can mean nothing was deleted.
+- Never write financial data outside `migration-workspace/` or into tracked files, commits or other services.
+- Never print or inspect `.env`, `.env.writer` or a credential. Use `login-from-env` and the doctor checks.
+- Never open, list, search or read `personal database/`.
+
+### ⚠️ ESCALATE IF
+
+- The operation, request fields or administration cannot be confirmed from the pinned CLI help and supplied facts.
+- The planned target is not the pilot and the operator has not approved the production batch.
+- A duplicate, missing source document, uncertain tax treatment, locked period or unexplained difference appears.
+- A write response does not match the approved record or a `429` persists after `Retry-After`.
+
+---
+
+## 5. REFERENCES
+
+### Core References
+
+- [`references/cli.md`](references/cli.md) covers the adopted CLI, guard flags, login and the project survey.
+- [`references/rest-api.md`](references/rest-api.md) records API auth, scopes, paging, caching and endpoint limits.
+- [`references/migration-recipes.md`](references/migration-recipes.md) gives guarded command sequences for migration work.
+- [`references/troubleshooting.md`](references/troubleshooting.md) maps common failures to safe next steps.
+- [`INSTALL-GUIDE.md`](INSTALL-GUIDE.md) covers setup, credentials, verification and rollback.
+
+### Inventory and Validation
+
+- [`feature-catalog/feature-catalog.md`](feature-catalog/feature-catalog.md) lists what the package does today, with source and test anchors for each feature.
+- [`manual-testing-playbook/manual-testing-playbook.md`](manual-testing-playbook/manual-testing-playbook.md) indexes the operator scenarios that validate those features.
+
+### Reference Loading Notes
+
+Load only the reference the selected operation needs. Section 2 is the single authority for loading rules.
+
+---
+
+## 6. SUCCESS CRITERIA
+
+### Package Check Completion Checklist
+
+A local package check is complete when:
+
+- [ ] `bash scripts/doctor.sh` completes the offline checks without printing credential values.
+- [ ] `bash cli/moneybird-cli/tests/run-tests.sh` passes against its local stub.
+- [ ] `setup.sh --check` reports the pinned CLI state accurately.
+- [ ] With an operator-approved live check, `bash scripts/doctor.sh --live` reports HTTP 200 from the administrations endpoint and whether configured administration selections are present, without printing their IDs.
+
+### Migration Batch Quality Gates
+
+A migration batch is verified when:
+
+- [ ] The plan gate and operator approval cover the exact batch.
+- [ ] The pilot write and its undo rehearsal have passed before production work begins.
+- [ ] Write responses match the approved records and later synchronization reads confirm the records.
+- [ ] Required reports cover explicit periods and no unresolved stop condition remains.
+
+---
+
+## 7. INTEGRATION POINTS
+
+### Migration Plan
+
+The migration plan is [migration/README.md](../sk-moneybird-accountant/references/migration/README.md). Phase 7 runs the pilot and rehearses an undo. Phase 8 moves approved records quarter by quarter. Later phases verify VAT, year-end totals and period locks.
+
+### Sibling Skill and Credentials
+
+Use [`../cli-jortt/`](../cli-jortt/SKILL.md) for read-only Jortt source work. `.env` holds the Moneybird reader token and administration settings. `.env.writer` holds the separate write token after the pilot gate. Never read either file directly.
+
+### External Surfaces
+
+The official `moneybird/moneybird-cli` owns REST routing from the OpenAPI spec. `moneybird-guard` adds the local safety checks. The UI owns the operator-only steps.
+
+---
+
+## 8. QUICK REFERENCE
+
+| Goal | Command |
+|---|---|
+| Check the local CLI pin | `bash cli/moneybird-cli/setup.sh --check` |
+| Log in with the reader token | `moneybird-guard login-from-env` |
+| Log in with the writer token | `moneybird-guard login-from-env --writer` |
+| Inspect an API route | `moneybird-cli contacts create --help` |
+| Read a year of invoices | `moneybird-guard sales_invoices list --filter period:YYYY` |
+| Bulk read a resource | `moneybird-guard sales_invoices sync` then `moneybird-guard sales_invoices sync_fetch --ids "$ID_BATCH_JSON"` |
+| Preview a write | `moneybird-guard contacts create --...` |
+| Run offline diagnostics | `bash scripts/doctor.sh` |
+| Run offline guard tests | `bash cli/moneybird-cli/tests/run-tests.sh` |
+| Run a read-only session | `MONEYBIRD_GUARD_READ_ONLY=1 moneybird-guard contacts list --filter period:YYYY` |
+
+---
+
+## 9. REFERENCES AND RELATED RESOURCES
+
+The router discovers reference, catalog and playbook docs dynamically. Start with `references/cli.md`, then follow Section 2.
+
+Scripts: `scripts/doctor.sh` and `cli/moneybird-cli/setup.sh` plus `moneybird-guard` beside it.
+
+Related skills: `cli-jortt` reads the Jortt source data that this skill writes into Moneybird.
+
+Install guide: [INSTALL-GUIDE.md](INSTALL-GUIDE.md).
