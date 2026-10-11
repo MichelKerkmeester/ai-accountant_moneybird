@@ -31,7 +31,7 @@ Prove the annual mirror against ledger, bank, source documents, filed VAT, and a
 ### 2. Nested sub-goals
 
 - **SG-10.1**: Compare annual reports. Check: required report classes and account rows compared 100%.
-- **SG-10.2**: Generate or obtain a Moneybird XAF 4.0. Check: year and version match 1, the route actually used is verified, either the Phase 0 Operator UI route or the pinned guarded POST route with its Operator approval and flushed WRITE_INTENT 1, artifact receipt and SHA-256 recorded 1.
+- **SG-10.2**: Generate or obtain a Moneybird XAF 4.0. Check: year and version match 1, the route actually used is verified, either the Phase 0 Operator UI route or the pinned guarded POST route with its Operator approval and flushed WRITE_INTENT 1, artifact receipt and SHA-256 recorded 1. Year-end closing entries in the exported year at export time 0, or the closing entry was removed before export and restored after it 1. Per Moneybird help reviewed on 2026-10-11, an auditfile downloaded after the year-end closing may lack the profit-and-loss data.
 - **SG-10.3**: Reconcile account and period totals. Check: unexplained differences 0 and approved exception count equals the exception ledger.
 
 ### 3. Entry criteria
