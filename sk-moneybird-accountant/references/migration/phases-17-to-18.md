@@ -30,7 +30,7 @@ Freeze Jortt for new entries at an Operator-set date, capture the final source d
 
 ### 2. Nested sub-goals
 
-- **SG-17.1**: Set and apply the source freeze. Check: Operator-approved freeze date and time recorded 1, new Jortt entries after that boundary 0 or captured in a dated delta 100%.
+- **SG-17.1**: Set and apply the source freeze. Check: Operator-approved freeze date and time recorded 1, last included source key at the freeze boundary recorded 1, new Jortt entries after that boundary 0 or captured in a dated delta 100%.
 - **SG-17.2**: Capture the final source delta. Check: source page, record, attachment, and control-total coverage 100%, unexplained delta items 0.
 - **SG-17.3**: Reconcile mandatory archive classes. Check: invoices, expenses, receipts, loose Inbox items, attachments, bank files, XAF files, annual accounts, filed returns, assessments, and reconstructed asset schedules accounted for 100%, unexplained exclusions 0.
 - **SG-17.4**: Complete and validate each retention rule. Check: Operator-approved source basis, class duration, start event, derived end date, independent archive location, owner, and readability evidence 100%, Independent Auditor recomputation matches 100%, unsupported or unapproved rules 0.
@@ -55,7 +55,7 @@ Jortt API reads use jortt-cli with read scopes and a complete next-link chain. X
 
 ### 7. Outputs and evidence artifacts
 
-Source freeze decision and timestamp, final delta manifest, boundary reconciliation, independent source-side control totals, mandatory class inventory, byte and link reconciliation, Operator-approved retention matrix with verified end dates, per-class restore reports, access and renewal evidence, and gate checkpoint under Archive/, Manifests/, Reports/, Handoff/, and RunJournal/. The go-live decision belongs to Phase 18 after both reconciliations pass.
+Source freeze decision and timestamp, last source key at the freeze boundary, final delta manifest, boundary reconciliation, independent source-side control totals, mandatory class inventory, byte and link reconciliation, Operator-approved retention matrix with verified end dates, per-class restore reports, access and renewal evidence, and gate checkpoint under Archive/, Manifests/, Reports/, Handoff/, and RunJournal/. The go-live decision belongs to Phase 18 after both reconciliations pass.
 
 ### 8. Numeric exit gate
 
@@ -89,7 +89,7 @@ Move authority to Moneybird only after source freeze, final delta reconciliation
 
 ### 3. Entry criteria
 
-Phases 16 and 17 passed. Archive is independently readable and the source freeze is recorded. M6 access covers any final write, synchronization, read-back, and verification.
+Phases 16 and 17 passed. Archive is independently readable and the source freeze is recorded. The write-isolation review date is current. M6 access covers any final write, synchronization, read-back, and verification.
 
 ### 4. Inputs
 
@@ -125,7 +125,7 @@ Final delta coverage 100%, boundary reconciliation 100%, unexplained boundary di
 
 ### 9. Stop conditions
 
-Source activity after freeze, archive failure, incomplete delta, unknown write, missing compensation owner, any open Operator NO-GO without a linked resolution event, or missing signed Operator GO after both reconciliations pass. A NO-GO leaves the phase STOPPED with a named owner and resolution path and cannot pass the gate.
+Source activity after freeze, archive failure, incomplete delta, unknown write, missing compensation owner, an absent or expired write-isolation review, any open Operator NO-GO without a linked resolution event, or missing signed Operator GO after both reconciliations pass. A NO-GO leaves the phase STOPPED with a named owner and resolution path and cannot pass the gate.
 
 ### 10. Rollback or compensation
 

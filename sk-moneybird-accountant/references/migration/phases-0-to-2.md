@@ -32,7 +32,7 @@ Build a controlled migration workspace and establish the single empty Moneybird 
 
 - **SG-0.1**: Record the administration selector relationship. Check: both selector values resolve to the same administration, equality count 1, separate pilot administration count 0.
 - **SG-0.2**: Prove the guard boundary. Check: local stub suite cli-moneybird/cli/moneybird-cli/tests/run-tests.sh passes 1, an official CLI non-GET invocation under MONEYBIRD_GUARD_READ_ONLY=1 returns exit code 6 before any real call 1, real call count 0.
-- **SG-0.3**: Set threshold and expiry fields. Check: required configuration coverage 100%, unapproved threshold rows 0, next expiry date recorded 1.
+- **SG-0.3**: Set threshold and expiry fields. Check: config fields due by Phase 0 in the Needed by column populated 100%, unapproved threshold rows 0, next expiry date recorded 1.
 - **SG-0.4**: Verify the Phase 0 auditfile UI export route. Check: the Operator UI completes an approved test auditfile export in Phase 0 1, product version, XAF version, and year match the approved request 1, receipt and artifact SHA-256 recorded 1.
 - **SG-0.5**: Verify a complete Moneybird bulk-read route. Check: synchronization with timestamp and completion counts or a complete paginated fallback with page counts is verified 1, Operator-approved cache-wait value and source basis recorded 1, Independent Auditor verification 1.
 - **SG-0.6**: Verify Jortt read-only access. Check: provider scope evidence shows read-only access 1, a local non-GET `jortt-cli call` without `--allow-write` exits 3 before any token request as documented in `cli-jortt/README.md` 1, API request count 0, real Jortt write calls 0.
@@ -70,7 +70,7 @@ MIGRATION_CONFIG, threshold approval, subscription observation, isolation decisi
 
 ### 8. Numeric exit gate
 
-Required config fields populated 100%, selector equality 1, second administration count 0, guard stub suite pass count 1, locked non-GET exit code 6 count 1, Jortt read-scope evidence 1, Jortt no-write exit code 3 before token request 1, Jortt API requests 0, real calls from local tests 0, completed Operator UI auditfile test export 1, receipt and artifact hash 1, complete bulk-read route verification 1, cache horizon approved and independently verified 1, phase-contract checks 23 of 23, exposed secret count 0, missing threshold values 0.
+Config fields due by Phase 0 populated 100%, selector equality 1, second administration count 0, guard stub suite pass count 1, locked non-GET exit code 6 count 1, Jortt read-scope evidence 1, Jortt no-write exit code 3 before token request 1, Jortt API requests 0, real calls from local tests 0, completed Operator UI auditfile test export 1, receipt and artifact hash 1, complete bulk-read route verification 1, cache horizon approved and independently verified 1, phase-contract checks 23 of 23, exposed secret count 0, missing threshold values 0.
 
 ### 9. Stop conditions
 

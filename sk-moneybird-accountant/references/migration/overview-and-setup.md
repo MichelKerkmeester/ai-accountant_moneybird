@@ -101,68 +101,69 @@ Prompts and tool transcripts contain only schemas, field names, phase or record-
 
 ## Required `MIGRATION_CONFIG` fields
 
-The Orchestrator maintains the versioned config. The Operator supplies or approves human decisions. Every value has an owner, evidence path, timestamp, and approval where required. No current year is hard-coded. Derive the next historical work year from the configured start date and last locked year. Use the actual calendar year for parallel current-year work only when it is at or after the configured start date and is not already locked.
+The Orchestrator maintains the versioned config. The Operator supplies or approves human decisions. Every value has an owner, evidence path, timestamp, and approval where required. The Needed by column names the first phase whose gate requires the field. A phase gate counts only fields due at or before that phase, so a field due later never blocks an earlier phase. A field may be recorded during its listed phase. A field still missing at that phase gate stops the phase. A derived or event field is outside gate counting until its named event happens. From then on, every phase that uses the field checks it, and a missing value stops that phase. No current year is hard-coded. Derive the next historical work year from the configured start date and last locked year. Use the actual calendar year for parallel current-year work only when it is at or after the configured start date and is not already locked.
 
-| Field | Owner | Required value or evidence |
-|---|---|---|
-| `config_version` | [Orchestrator] | Monotonic config version and schema hash. |
-| `configured_start_date` | [Operator] | Approved bookkeeping start boundary. |
-| `start_year_basis` | [Operator] | Prior closing evidence or an approved first-business-year opening schedule. |
-| `opening_position.rule` | [Operator] | Prior closing position or source-based first-business-year schedule with its evidence basis. |
-| `opening_position.components` | [Operator] | Account composition, supported start date, source schedule, and treatment of pre-business funds. |
-| `opening_position.approval` | [Operator] | Approval identity, role, timestamp, rationale, and evidence path. |
-| `last_locked_year` | [Orchestrator] | Latest year with verified lock evidence, or empty before a lock exists. |
-| `next_historical_year` | [Orchestrator] | Derived as the first unlocked year at or after the configured start year, using `last_locked_year + 1` where years are contiguous. Never enter a fixed calendar year. |
-| `source_scope` | [Operator] | Approved source systems, record classes, periods, exclusions, and source-total method. |
-| `pilot_administration_alias` | [Operator] | Opaque alias for the single empty target administration. |
-| `mirror_administration_alias` | [Operator] | Must equal the pilot alias. |
-| `selector_equality_evidence` | [Orchestrator] | Read-only evidence that both selectors resolve to the same administration. |
-| `second_administration_count` | [Independent Auditor] | Must be zero. |
-| `source_freeze_at` | [Operator] | Approved freeze date and time. Set before Phase 17. |
-| `last_source_key` | [Evidence Archivist] | Last included source key at the freeze boundary. |
-| `delta_schema` | [Evidence Archivist] | Versioned fields for capturing post-freeze changes. |
-| `source_total_method` | [Evidence Archivist] | Independent UI or portal control outside each exported artifact, with derivation and verifier. |
-| `jortt.read_scope_evidence` | [Operator] | Provider evidence of read-only granted scopes and result of the local no-write check. No credential value is recorded. |
-| `access.state` | [Operator] | Observed trial or paid-package state before each write batch. |
-| `access.expiry_date` | [Operator] | Observed trial or package expiry date. |
-| `access.evidence_source` | [Operator] | Evidence path and source used to confirm access state. |
-| `access.observed_at` | [Operator] | Observation date and time. Refresh before every non-GET batch. |
-| `access.renewal_owner` | [Operator] | Named role or person responsible for renewal. |
-| `access.alert_evidence` | [Orchestrator] | Evidence that an expiry alert is active and assigned. |
-| `access.paid_package_horizon` | [Operator] | Before Phase 17, confirm coverage through the next live VAT period and year close. |
-| `monitoring.start_date` | [Orchestrator] | Date Phase 18 passes. |
-| `monitoring.duration` | [Operator] | Positive configured monitoring duration and unit. |
-| `monitoring.end_date` | [Orchestrator] | Derived from the approved start date and duration. |
-| `monitoring.monthly_cycles_required` | [Operator] | Positive minimum number of monthly cycles or an approved schedule rule. |
-| `monitoring.vat_cycles_required` | [Operator] | Positive minimum number of VAT-period cycles or an approved schedule rule. |
-| `monitoring.yearly_cycles_required` | [Operator] | Required yearly cycle count or explicit applicability rule. |
-| `sample.rule` | [Operator] | Reproducible sampling method and population boundary. |
-| `sample.minimum_size` | [Operator] | Positive minimum sample size or approved population coverage floor. |
-| `sample.seed` | [Orchestrator] | Fixed seed or reproducible seed source. |
-| `sample.rationale` | [Operator] | Why the sample size and rule provide adequate coverage. |
-| `sample.approver` | [Operator] | Approval identity and role. |
-| `sample.approved_at` | [Orchestrator] | Approval timestamp and evidence reference. |
-| `thresholds.*.value` | [Operator] | Numeric value and unit for every reconciliation, risk, materiality, and cumulative VAT limit. |
-| `thresholds.*.approver` | [Operator] | Approval identity and role for each threshold. |
-| `thresholds.*.approved_at` | [Orchestrator] | Approval timestamp and evidence reference. |
-| `thresholds.*.rationale` | [Operator] | Source-linked reason for each value. |
-| `thresholds.*.evidence_path` | [Orchestrator] | Controlled evidence supporting the value and approval. |
-| `isolation.decision` | [Operator] | Isolated writer identity or approved guard-only exception. |
-| `isolation.rationale` | [Operator] | Reason and residual risk accepted if isolation is unavailable. |
-| `isolation.owner` | [Orchestrator] | Owner responsible for the control. |
-| `isolation.evidence_path` | [Orchestrator] | Evidence for the selected boundary. |
-| `isolation.review_date` | [Operator] | Current review date. An absent or expired review blocks Phase 18. |
-| `auditfile.route` | [Operator] | Phase 0 Operator UI export route, requested product and XAF versions, year, and artifact evidence. Record the pinned guarded POST route at its first use after a phase gate passes. |
-| `auditfile.approval_reference` | [Operator] | Human approval for the exact year and version before each UI export or guarded export POST. |
-| `auditfile.receipt_hash` | [Evidence Archivist] | Receipt and SHA-256 for the exported artifact. |
-| `bulk_read.route` | [Independent Auditor] | Verified synchronization route or complete paginated fallback. |
-| `bulk_read.completeness_evidence` | [Independent Auditor] | Timestamp, page counts, completion counts, and independent verification of the approved cache-wait rule. |
-| `bulk_read.cache_horizon` | [Operator] | Operator-approved value and unit, applicable route, source basis, approval identity and time, and evidence path. Missing or unapproved values block wait-based retries. |
-| `retention.rules[]` | [Operator] | For every class, record source-supported basis, duration, start event, derived end date, independent archive, owner, approver, approval, and readability. Apply seven years to basic administration and ten years to immovable-property and OSS records where those source facts apply. Record any longer contract-survival term as an Operator-approved value with its basis. |
-| `auditfile.session_boundary` | [Orchestrator] | For a guarded POST, dedicated writer session reference, start and close evidence, and separate locked read-back session. Mark pending until the first gated POST. |
-| `auditfile.job_status` | [Evidence Archivist] | Completed Moneybird export job, product version, XAF version, year, receipt, and artifact SHA-256. |
-| `write_approval_reference` | [Operator] | Approval for each non-GET batch, linked from the journal. |
-| `run_journal_path` | [Orchestrator] | Controlled JSONL journal location. |
+| Field | Owner | Needed by | Required value or evidence |
+|---|---|---|---|
+| `config_version` | [Orchestrator] | Phase 0 | Monotonic config version and schema hash. |
+| `configured_start_date` | [Operator] | Phase 0 | Approved bookkeeping start boundary. |
+| `start_year_basis` | [Operator] | Phase 2 | Prior closing evidence or an approved first-business-year opening schedule. |
+| `opening_position.rule` | [Operator] | Phase 2 | Prior closing position or source-based first-business-year schedule with its evidence basis. |
+| `opening_position.components` | [Operator] | Phase 2 | Account composition, supported start date, source schedule, and treatment of pre-business funds. |
+| `opening_position.approval` | [Operator] | Phase 2 | Approval identity, role, timestamp, rationale, and evidence path. |
+| `last_locked_year` | [Orchestrator] | Derived after each Phase 14 lock | Latest year with verified lock evidence, or empty before a lock exists. |
+| `next_historical_year` | [Orchestrator] | Derived after each Phase 14 lock | Derived as the first unlocked year at or after the configured start year, using `last_locked_year + 1` where years are contiguous. Never enter a fixed calendar year. |
+| `source_scope` | [Operator] | Phase 0 | Approved source systems, record classes, periods, exclusions, and source-total method. |
+| `pilot_administration_alias` | [Operator] | Phase 0 | Opaque alias for the single empty target administration. |
+| `mirror_administration_alias` | [Operator] | Phase 0 | Must equal the pilot alias. |
+| `selector_equality_evidence` | [Orchestrator] | Phase 0 | Read-only evidence that both selectors resolve to the same administration. |
+| `second_administration_count` | [Independent Auditor] | Phase 0 | Must be zero. |
+| `source_freeze_at` | [Operator] | Phase 16 | Approved freeze date and time, recorded in Phase 16 before the Phase 17 freeze. |
+| `last_source_key` | [Evidence Archivist] | Phase 17 | Last included source key at the freeze boundary. |
+| `delta_schema` | [Evidence Archivist] | Phase 16 | Versioned fields for capturing post-freeze changes. |
+| `source_total_method` | [Evidence Archivist] | Phase 1 | Independent UI or portal control outside each exported artifact, with derivation and verifier. |
+| `jortt.read_scope_evidence` | [Operator] | Phase 0 | Provider evidence of read-only granted scopes and result of the local no-write check. No credential value is recorded. |
+| `access.state` | [Operator] | Phase 0 | Observed trial or paid-package state before each write batch. |
+| `access.expiry_date` | [Operator] | Phase 0 | Observed trial or package expiry date. |
+| `access.evidence_source` | [Operator] | Phase 0 | Evidence path and source used to confirm access state. |
+| `access.observed_at` | [Operator] | Phase 0 | Observation date and time. First recorded by Phase 0. M6 requires a fresh observation before every non-GET batch and blocks the batch when it is stale or missing. |
+| `access.renewal_owner` | [Operator] | Phase 0 | Named role or person responsible for renewal. |
+| `access.alert_evidence` | [Orchestrator] | Phase 0 | Evidence that an expiry alert is active and assigned. |
+| `access.paid_package_horizon` | [Operator] | Phase 17 | By the Phase 17 gate, confirm coverage through the next live VAT period and year close. |
+| `parallel.cycles_required` | [Operator] | Phase 0 | Positive minimum number of pre-cutover parallel comparison cycles or a duration, with rationale. Phase 16 checks completed cycles against it. |
+| `monitoring.start_date` | [Orchestrator] | Derived when Phase 18 passes | Date Phase 18 passes. |
+| `monitoring.duration` | [Operator] | Phase 0 | Positive configured monitoring duration and unit. |
+| `monitoring.end_date` | [Orchestrator] | Derived when Phase 18 passes | Derived from the approved start date and duration. |
+| `monitoring.monthly_cycles_required` | [Operator] | Phase 0 | Positive minimum number of monthly cycles or an approved schedule rule. |
+| `monitoring.vat_cycles_required` | [Operator] | Phase 0 | Positive minimum number of VAT-period cycles or an approved schedule rule. |
+| `monitoring.yearly_cycles_required` | [Operator] | Phase 0 | Required yearly cycle count or explicit applicability rule. |
+| `sample.rule` | [Operator] | Phase 0 | Reproducible sampling method and population boundary. |
+| `sample.minimum_size` | [Operator] | Phase 0 | Positive minimum sample size or approved population coverage floor. |
+| `sample.seed` | [Orchestrator] | Phase 0 | Fixed seed or reproducible seed source. |
+| `sample.rationale` | [Operator] | Phase 0 | Why the sample size and rule provide adequate coverage. |
+| `sample.approver` | [Operator] | Phase 0 | Approval identity and role. |
+| `sample.approved_at` | [Orchestrator] | Phase 0 | Approval timestamp and evidence reference. |
+| `thresholds.*.value` | [Operator] | Phase 0 | Numeric value and unit for every reconciliation, risk, materiality, and cumulative VAT limit, and for every cutover stop threshold and rollback trigger that Phase 16 checks. |
+| `thresholds.*.approver` | [Operator] | Phase 0 | Approval identity and role for each threshold. |
+| `thresholds.*.approved_at` | [Orchestrator] | Phase 0 | Approval timestamp and evidence reference. |
+| `thresholds.*.rationale` | [Operator] | Phase 0 | Source-linked reason for each value. |
+| `thresholds.*.evidence_path` | [Orchestrator] | Phase 0 | Controlled evidence supporting the value and approval. |
+| `isolation.decision` | [Operator] | Phase 0 | Isolated writer identity or approved guard-only exception. |
+| `isolation.rationale` | [Operator] | Phase 0 | Reason and residual risk accepted if isolation is unavailable. |
+| `isolation.owner` | [Orchestrator] | Phase 0 | Owner responsible for the control. |
+| `isolation.evidence_path` | [Orchestrator] | Phase 0 | Evidence for the selected boundary. |
+| `isolation.review_date` | [Operator] | Phase 0, current again at Phase 18 entry | Current review date. An absent or expired review blocks Phase 18. |
+| `auditfile.route` | [Operator] | Phase 0 for the UI route, first guarded export POST for the pinned route | Phase 0 Operator UI export route, requested product and XAF versions, year, and artifact evidence. Record the pinned guarded POST route at its first use after a phase gate passes. |
+| `auditfile.approval_reference` | [Operator] | Phase 0 | Human approval for the exact year and version before each UI export or guarded export POST. |
+| `auditfile.receipt_hash` | [Evidence Archivist] | Phase 0 | Receipt and SHA-256 for the exported artifact. |
+| `bulk_read.route` | [Independent Auditor] | Phase 0 | Verified synchronization route or complete paginated fallback. |
+| `bulk_read.completeness_evidence` | [Independent Auditor] | Phase 0 | Timestamp, page counts, completion counts, and independent verification of the approved cache-wait rule. |
+| `bulk_read.cache_horizon` | [Operator] | Phase 0 | Operator-approved value and unit, applicable route, source basis, approval identity and time, and evidence path. Missing or unapproved values block wait-based retries. |
+| `retention.rules[]` | [Operator] | Phase 2 | For every class, record source-supported basis, duration, start event, derived end date, independent archive, owner, approver, approval, and readability. Apply seven years to basic administration and ten years to immovable-property and OSS records where those source facts apply. Record any longer contract-survival term as an Operator-approved value with its basis. |
+| `auditfile.session_boundary` | [Orchestrator] | First guarded export POST, Phase 10 at the earliest | For a guarded POST, dedicated writer session reference, start and close evidence, and separate locked read-back session. Mark pending until the first gated POST. |
+| `auditfile.job_status` | [Evidence Archivist] | Phase 0 | Completed Moneybird export job, product version, XAF version, year, receipt, and artifact SHA-256. |
+| `write_approval_reference` | [Operator] | Phase 7 | Approval for each non-GET batch, linked from the journal. |
+| `run_journal_path` | [Orchestrator] | Phase 0 | Controlled JSONL journal location. |
 
 Missing fields, unapproved thresholds, unknown access expiry, unsupported source scope, unsupported retention basis, missing approver, or an incomplete read route block Phase 0 or the affected gate. The guarded auditfile POST route may remain pending through Phase 0 and must be verified before its first use after a phase gate passes. Situation-dependent retention terms require an Operator-approved `MIGRATION_CONFIG` value with its approver and basis recorded. Threshold values do not authorize a balancing entry.
 
@@ -186,10 +187,10 @@ Thresholds are applied only to their named check. Do not net values across accou
 ## Phase 0 setup sequence
 
 1. [Operator] Confirms the one empty Moneybird administration and sets both pilot and mirror selectors to it.
-2. [Operator] Records the configured start date and start-year evidence.
+2. [Operator] Records the configured start date and any start-year evidence already available. Phase 2 completes the start-year basis and opening position.
 3. [Orchestrator] Creates the workspace folders and versioned `MIGRATION_CONFIG`.
 4. [Operator] Records the trial or package state, observed expiry, evidence source, renewal owner, and expiry alert evidence.
-5. [Operator] Proposes and approves numeric thresholds, sample sizes, the sample rule, and monitoring period with rationale.
+5. [Operator] Proposes and approves numeric thresholds, sample sizes, the sample rule, the minimum pre-cutover parallel comparison cycles, the monitoring period, and the minimum monthly, VAT-period, and yearly cycle counts, each with rationale. Fixing the cycle counts now keeps the monitoring target from moving once live results exist.
 6. [Operator] Decides whether writer isolation is available, records the decision, and sets a review date.
 7. [Operator + AI] Verifies the local guard stub suite and the read-only negative test. A non-GET under the read-only lock must exit with code 6 before a real call. Real call count is zero.
 8. [Operator] Performs an approved auditfile test export through the Moneybird UI. Record the exact year and version, job completion, receipt, and artifact SHA-256. [Independent Auditor] verifies the artifact and complete Moneybird bulk-read route. Defer the guarded report-export POST until a phase gate has passed.
