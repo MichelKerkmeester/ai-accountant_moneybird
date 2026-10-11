@@ -4,9 +4,9 @@
 [![License](https://img.shields.io/github/license/MichelKerkmeester/ai-accountant_moneybird?style=for-the-badge&color=7bd88f&labelColor=222222)](LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/MichelKerkmeester/ai-accountant_moneybird?style=for-the-badge&color=5ad4e6&labelColor=222222)](https://github.com/MichelKerkmeester/ai-accountant_moneybird/commits/main)
 
-> An AI bookkeeping assistant for a Dutch sole trader. It moves your history from Jortt to Moneybird in gated steps, helps with the monthly books afterwards and leaves every tax decision to you.
+> Like it? https://buymeacoffee.com/michelkerkmeester
 
----
+&nbsp;
 
 ## 1. 📝 SUMMARY
 
@@ -22,13 +22,7 @@ It organizes evidence and explains general Dutch ZZP rules. It never files a ret
 - **A 23-phase migration plan** - each phase has an owner, an evidence trail and a numeric exit gate
 - **Offline checks** - 11 Jortt contract tests and 13 Moneybird guard tests run without an accounting login
 
-**Why it earns a place**
-
-- Jortt is only ever read. Moneybird writes need a passed gate, your approval and an explicit confirm flag
-- Your records stay on your machine. Outside agents see filtered summaries and nothing else
-- A phase cannot start until the previous exit gate has passed, and the assistant never claims a gate it has no evidence for
-
----
+&nbsp;
 
 ## 2. 🗺️ OVERVIEW
 
@@ -56,7 +50,7 @@ The skill keeps the workflow in one place. The two CLI skills own API details, s
 
 If the mode is unclear, the assistant asks one question instead of guessing a phase or a tax year. It checks the current tax year before it uses any rate or threshold. Tax decisions and return filing stay with the Operator or a bookkeeper.
 
----
+&nbsp;
 
 ## 3. 🚀 QUICK START
 
@@ -69,6 +63,14 @@ cp .env.example .env
 ```
 
 Fill in `.env` on your machine only. Git ignores `.env` and `.env.writer`. Never paste a credential into a prompt or a document.
+
+Then switch on the privacy gate and add your own private terms:
+
+```bash
+bash scripts/install-hooks.sh
+```
+
+This points Git at the repo's `.githooks/` and creates `.privacy-denylist`. Put your name variants, client and supplier names, IBANs, KvK, VAT and BSN numbers, address and email there, one per line. Git ignores that file and it stays on your machine.
 
 ### Install the two CLIs
 
@@ -105,7 +107,7 @@ Help me review my current Moneybird bookkeeping.
 
 For historical work, name the migration task or the last gate that passed. If the mode or phase is unclear, the assistant asks before it picks a route.
 
----
+&nbsp;
 
 ## 4. 🛤️ MIGRATION PLAN
 
@@ -166,7 +168,7 @@ Twelve controls apply across the phases. The [shared mechanisms reference](sk-mo
 
 The [control framework](sk-moneybird-accountant/references/migration/control-framework.md) defines the roles, risk levels, exception fields and dashboard states.
 
----
+&nbsp;
 
 ## 5. 🤖 EXTERNAL AGENT ROUTE
 
@@ -183,7 +185,7 @@ M12 splits the work across seats so no single agent drafts, checks and approves 
 
 External seats receive typed, allowlisted summaries with opaque record aliases and approved aggregate counts. The exact payload is scanned before every dispatch. Names, amounts, IBANs, addresses, emails, descriptions, invoice numbers, IDs and source payloads never leave your machine.
 
----
+&nbsp;
 
 ## 6. 🔒 SAFETY AND PRIVACY
 
@@ -192,9 +194,10 @@ External seats receive typed, allowlisted summaries with opaque record aliases a
 - **A write needs four things.** A passed phase gate, your approval, a flushed `WRITE_INTENT` journal entry and `--confirm-write`. A production batch also needs your approval for that batch and `--production`.
 - **Migration data stays in `migration-workspace/`.** Git ignores it. Both CLIs refuse to save output anywhere else.
 - **A private finance folder stays unread.** The assistant never lists, searches or opens it. The one exception is a single file you name during a migration phase.
+- **A privacy gate guards every commit and push.** `scripts/privacy-gate.py` blocks a commit or push that adds a path from the private folders, a file type outside the allowlist, a binary or a large file, or content that looks like an IBAN, a BSN, a Dutch VAT ID, an email address, a long ID number, a home-folder path, a euro amount outside the tax references, a secret, or a term from your local `.privacy-denylist`. It reports where, never the value. A GitHub Action reruns it over the whole history on every push.
 - **Tax decisions stay with you.** The assistant explains general rules with their year and source. It does not file returns and does not present a case-specific conclusion as final.
 
----
+&nbsp;
 
 ## 7. 🧪 CHECKS
 
@@ -206,18 +209,23 @@ The doctors are offline by default. The Jortt tests check the CLI contract again
 | `cli-jortt/cli/jortt-cli/tests/run-tests.sh` | Operation slugs, parameter checks, the write gate, the scope gate and the output boundary |
 | `cli-moneybird/scripts/doctor.sh` | Local tools, the pinned official CLI, config folders and whether credential files and settings exist |
 | `cli-moneybird/cli/moneybird-cli/tests/run-tests.sh` | Period warning, write confirmation, the pilot gate, the read-only lock, delete caution, the output boundary and logins |
+| `scripts/privacy-gate-test.sh` | Every privacy-gate rule, that no blocked value is ever printed, and the commit and push modes |
 | Manual testing playbooks | Offline routing and guard scenarios in each skill folder, with one live Moneybird scenario that needs your approval |
 
 A passing local test does not prove a live connection. For Jortt, `jortt-cli whoami` returning HTTP 200 is that proof. For Moneybird, `bash cli-moneybird/scripts/doctor.sh --live` reports the administrations check with your approval.
 
----
+&nbsp;
 
 ## 8. 🗂️ REPOSITORY STRUCTURE
 
 ```text
 .
 ├── .env.example                          local configuration template, no credentials
+├── .githooks/                            privacy gate before commit and push, forwards to your global hooks
+├── .github/workflows/privacy-gate.yml    reruns the privacy gate over the history on every push
 ├── .gitignore                            keeps secrets and private work data out of Git
+├── .privacy-denylist.example             template for your local list of private terms
+├── .privacy-gate.json                    privacy-gate allowlists and blocked paths
 ├── AGENTS.md                             entry point, boundaries and privacy rules
 ├── LICENSE                               MIT license
 ├── cli-jortt/
@@ -238,6 +246,7 @@ A passing local test does not prove a live connection. For Jortt, `jortt-cli who
 │   ├── scripts/doctor.sh                 read-only local diagnostics
 │   ├── feature-catalog/                  what the package does today
 │   └── manual-testing-playbook/          operator scenarios
+├── scripts/                              privacy gate, its tests and the hook installer
 └── sk-moneybird-accountant/
     ├── README.md                         skill guide
     ├── SKILL.md                          mode router and operating contract
@@ -248,7 +257,7 @@ A passing local test does not prove a live connection. For Jortt, `jortt-cli who
 
 Both CLI skills and the main skill also carry a `changelog/` and a `benchmark/` folder for release notes and run reports.
 
----
+&nbsp;
 
 ## 9. ❓ FAQ
 
@@ -276,7 +285,7 @@ Yes. LIVE mode covers monthly, quarterly and yearly review and one-off ZZP quest
 
 No. It covers the Dutch sole-trader tax system only.
 
----
+&nbsp;
 
 ## 10. 🔧 TROUBLESHOOTING
 
@@ -304,7 +313,7 @@ Exit 3 means `--confirm-write` is missing. Exit 4 means the target is not the pi
 
 The Jortt API does not provide them. Download them yourself from the Jortt UI.
 
----
+&nbsp;
 
 ## 11. 📚 RELATED DOCUMENTS
 
@@ -329,7 +338,7 @@ The Jortt API does not provide them. Download them yourself from the Jortt UI.
 - **[→ Moneybird Bookkeeping](sk-moneybird-accountant/references/moneybird-bookkeeping.md)** - accounting treatment for common events
 - **[→ Jortt to Moneybird Mapping](sk-moneybird-accountant/references/jortt-to-moneybird-mapping.md)** - concept matches and migration traps
 
----
+&nbsp;
 
 ## 12. 📄 LICENSE
 
