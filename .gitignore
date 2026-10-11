@@ -13,3 +13,10 @@
 
 # Spec Kit packets for this system, kept local on purpose
 /specs/
+
+# Local list of private terms checked by the privacy gate, never committed
+/.privacy-denylist
+
+# Python bytecode caches
+__pycache__/
+*.pyc

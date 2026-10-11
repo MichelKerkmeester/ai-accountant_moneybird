@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This repo points core.hooksPath at .githooks for the privacy gate, which hides
+# the global hooks. Forward to the global post-merge so its checks still run.
+set -u
+global="$(git config --global core.hooksPath 2>/dev/null || true)"
+case "$global" in
+  "~") global="$HOME" ;;
+  "~/"*) global="$HOME${global#\~}" ;;
+esac
+[ -n "$global" ] || exit 0
+self_dir="$(cd "$(dirname "$0")" && pwd)"
+hook_dir="$(cd "$global" 2>/dev/null && pwd)" || exit 0
+if [ "$hook_dir" != "$self_dir" ] && [ -x "$hook_dir/post-merge" ]; then
+  exec "$hook_dir/post-merge" "$@"
+fi
+exit 0

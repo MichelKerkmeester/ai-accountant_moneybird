@@ -1,0 +1,29 @@
+name: privacy-gate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  privacy-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+      - name: Self test the patterns
+        run: python3 -I scripts/privacy-gate.py --self-test-patterns
+      - name: Check the tracked tree
+        run: python3 -I scripts/privacy-gate.py --tree
+      - name: Check every commit
+        run: python3 -I scripts/privacy-gate.py --history
+      - name: Run the gate test suite
+        run: bash scripts/privacy-gate-test.sh

@@ -1,0 +1,64 @@
+{
+  "allowed_extensions": [
+    "md",
+    "json",
+    "sh",
+    "py",
+    "yml"
+  ],
+  "allowed_files": [
+    "LICENSE",
+    ".gitignore",
+    ".env.example",
+    ".privacy-gate.json",
+    ".privacy-denylist.example",
+    "cli-jortt/cli/jortt-cli/jortt-cli",
+    "cli-moneybird/cli/moneybird-cli/moneybird-guard",
+    "cli-moneybird/cli/moneybird-cli/tests/stub-moneybird-cli",
+    ".githooks/pre-commit",
+    ".githooks/pre-push",
+    ".githooks/commit-msg",
+    ".githooks/prepare-commit-msg",
+    ".githooks/post-commit",
+    ".githooks/post-merge",
+    ".githooks/post-rewrite"
+  ],
+  "blocked_paths": [
+    "personal database",
+    "migration-workspace/",
+    "specs/",
+    ".env",
+    ".privacy-denylist"
+  ],
+  "max_file_bytes": 524288,
+  "amount_allowed_files": [
+    "sk-moneybird-accountant/references/zzp-tax-and-vat.md",
+    "sk-moneybird-accountant/references/moneybird-bookkeeping.md",
+    "sk-moneybird-accountant/references/migration/overview-and-setup.md",
+    "sk-moneybird-accountant/references/migration/phases-10-to-16.md",
+    "scripts/privacy-gate.py",
+    "scripts/privacy-gate-test.sh"
+  ],
+  "secret_allowed_files": [
+    "cli-moneybird/cli/moneybird-cli/tests/run-tests.sh",
+    "cli-jortt/cli/jortt-cli/tests/run-tests.sh",
+    "scripts/privacy-gate.py",
+    "scripts/privacy-gate-test.sh"
+  ],
+  "email_allowed_domains": [
+    "example.com",
+    "example.org",
+    "example.net",
+    "users.noreply.github.com"
+  ],
+  "gate_files": [
+    ".privacy-gate.json",
+    "scripts/privacy-gate.py",
+    "scripts/privacy-gate-test.sh",
+    "scripts/install-hooks.sh",
+    ".github/workflows/privacy-gate.yml"
+  ],
+  "gate_directories": [
+    ".githooks/"
+  ]
+}
