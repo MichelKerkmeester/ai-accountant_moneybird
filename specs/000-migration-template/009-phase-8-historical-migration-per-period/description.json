@@ -1,0 +1,26 @@
+{
+  "level": "3",
+  "specFolder": "000-migration-template/009-phase-8-historical-migration-per-period",
+  "description": "At the start of Phase 8: Historical migration per period, the migration cannot move on because the purpose of this phase is not yet met",
+  "keywords": [
+    "start",
+    "phase",
+    "historical",
+    "migration",
+    "per",
+    "period",
+    "cannot",
+    "move",
+    "because",
+    "purpose",
+    "met"
+  ],
+  "lastUpdated": "2026-10-11T15:08:01.739Z",
+  "specId": "009",
+  "folderSlug": "phase-8-historical-migration-per-period",
+  "parentChain": [
+    "000-migration-template"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

@@ -4,31 +4,61 @@
 set -u
 umask 077
 
-DRY_RUN=no
-case "${1:-}" in
-    "")
-        ;;
-    --dry-run)
-        DRY_RUN=yes
-        ;;
-    -h|--help)
-        cat <<'USAGE'
-usage: init-workspace.sh [--dry-run]
+fail() {
+    printf 'error: %s\n' "$1" >&2
+    exit 1
+}
+
+usage() {
+    cat <<'USAGE'
+usage: init-workspace.sh [--dry-run] [--spec-name <NNN-slug>]
 
 Create migration-workspace/ at the repository root and copy the generated
-templates from assets/migration/ into it. Existing files are never overwritten.
+templates from assets/migration/ into it. Copy the spec packet template from
+specs/000-migration-template/ to specs/<NNN-slug>/. Existing files are never
+overwritten.
 USAGE
-        exit 0
-        ;;
-    *)
-        printf 'error: unknown argument %s\n' "$1" >&2
-        exit 1
+}
+
+DRY_RUN=no
+SPEC_NAME=001-migration
+
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        --dry-run)
+            DRY_RUN=yes
+            shift
+            ;;
+        --spec-name)
+            if [ "$#" -lt 2 ]; then
+                fail "--spec-name needs a value"
+            fi
+            SPEC_NAME="$2"
+            shift 2
+            ;;
+        --spec-name=*)
+            SPEC_NAME="${1#--spec-name=}"
+            shift
+            ;;
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        *)
+            printf 'error: unknown argument %s\n' "$1" >&2
+            exit 1
+            ;;
+    esac
+done
+
+case "$SPEC_NAME" in
+    000-migration-template)
+        fail "--spec-name must not be 000-migration-template, that name belongs to the template packet"
         ;;
 esac
 
-if [ "$#" -gt 1 ]; then
-    printf 'error: too many arguments\n' >&2
-    exit 1
+if ! printf '%s\n' "$SPEC_NAME" | grep -Eq '^[0-9]{3}-[a-z0-9][a-z0-9-]*$'; then
+    fail "--spec-name must match ^[0-9]{3}-[a-z0-9][a-z0-9-]*$"
 fi
 
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd -P) || exit 1
@@ -40,15 +70,16 @@ ASSETS="$SKILL_DIR/assets/migration"
 FOLDER_LIST="$ASSETS/workspace-folders.txt"
 WORKSPACE="$REPO_ROOT/migration-workspace"
 WORKSPACE_REL="migration-workspace"
+SPEC_TEMPLATE="$REPO_ROOT/specs/000-migration-template"
+SPEC_TEMPLATE_REL="specs/000-migration-template"
+SPEC_DIR="$REPO_ROOT/specs/$SPEC_NAME"
+SPEC_DIR_REL="specs/$SPEC_NAME"
 
 created_folders=0
 copied_files=0
 skipped_files=0
-
-fail() {
-    printf 'error: %s\n' "$1" >&2
-    exit 1
-}
+spec_files_copied=0
+spec_files_skipped=0
 
 ensure_folder() {
     folder_rel="$1"
@@ -117,21 +148,21 @@ create_empty_file() {
     copied_files=$((copied_files + 1))
 }
 
+is_ignored() {
+    check_rel="$1"
+    for probe in "$check_rel" "$check_rel/" "$check_rel/.gitkeep"; do
+        if (cd "$REPO_ROOT" && git check-ignore -q "$probe" >/dev/null 2>&1); then
+            return 0
+        fi
+    done
+    return 1
+}
+
 if [ ! -d "$ASSETS" ]; then
     fail "missing $SKILL_NAME/assets/migration, run scripts/generate-plan-kit.py first"
 fi
 if [ ! -f "$FOLDER_LIST" ]; then
     fail "missing $SKILL_NAME/assets/migration/workspace-folders.txt, run scripts/generate-plan-kit.py first"
-fi
-
-plan_count=0
-for plan in "$ASSETS/phases"/phase-[0-9][0-9]-plan.md; do
-    if [ -f "$plan" ]; then
-        plan_count=$((plan_count + 1))
-    fi
-done
-if [ "$plan_count" -ne 23 ]; then
-    fail "assets/migration/phases holds $plan_count phase plans, expected 23, run scripts/generate-plan-kit.py first"
 fi
 
 # WHY: a symlinked workspace could redirect writes outside the ignored folder.
@@ -142,19 +173,28 @@ if [ -e "$WORKSPACE" ] && [ ! -d "$WORKSPACE" ]; then
     fail "$WORKSPACE_REL exists and is not a folder"
 fi
 
-# WHY: the workspace must never be committed, so refuse unless git ignores it.
-if ! command -v git >/dev/null 2>&1; then
-    fail "git is not available, cannot confirm that $WORKSPACE_REL is ignored"
+# WHY: a symlinked spec folder could redirect writes outside the ignored folder.
+if [ -L "$SPEC_DIR" ]; then
+    fail "$SPEC_DIR_REL is a symlink, refusing to run"
 fi
-ignored=no
-for probe in "$WORKSPACE_REL" "$WORKSPACE_REL/" "$WORKSPACE_REL/.gitkeep"; do
-    if (cd "$REPO_ROOT" && git check-ignore -q "$probe" >/dev/null 2>&1); then
-        ignored=yes
-        break
-    fi
-done
-if [ "$ignored" != yes ]; then
+if [ -e "$SPEC_DIR" ] && [ ! -d "$SPEC_DIR" ]; then
+    fail "$SPEC_DIR_REL exists and is not a folder"
+fi
+
+# WHY: the workspace and the spec packet must never be committed, so refuse
+# unless git ignores both targets.
+if ! command -v git >/dev/null 2>&1; then
+    fail "git is not available, cannot confirm that $WORKSPACE_REL and $SPEC_DIR_REL are ignored"
+fi
+if ! is_ignored "$WORKSPACE_REL"; then
     fail "$WORKSPACE_REL is not git-ignored, refusing to run"
+fi
+if ! is_ignored "$SPEC_DIR_REL"; then
+    fail "$SPEC_DIR_REL is not git-ignored, refusing to run"
+fi
+
+if [ ! -d "$SPEC_TEMPLATE" ]; then
+    fail "missing $SPEC_TEMPLATE_REL, run scripts/generate-plan-kit.py first"
 fi
 
 ensure_folder "$WORKSPACE_REL"
@@ -173,14 +213,108 @@ done < "$FOLDER_LIST"
 
 copy_file "assets/migration/migration-config.template.json" "$WORKSPACE_REL/MIGRATION_CONFIG.json"
 copy_file "assets/migration/phase-dashboard.template.md" "$WORKSPACE_REL/Plans/phase-dashboard.md"
-
-for plan in "$ASSETS/phases"/phase-[0-9][0-9]-plan.md; do
-    plan_name=$(basename "$plan")
-    copy_file "assets/migration/phases/$plan_name" "$WORKSPACE_REL/Plans/$plan_name"
-done
-
 copy_file "assets/migration/run-journal-event.template.json" "$WORKSPACE_REL/RunJournal/run-journal-event.template.json"
 create_empty_file "$WORKSPACE_REL/RunJournal/run-journal.jsonl"
 
-printf 'summary folders_created=%d files_copied=%d files_skipped=%d\n' \
-    "$created_folders" "$copied_files" "$skipped_files"
+if [ ! -d "$SPEC_DIR" ]; then
+    if [ "$DRY_RUN" = yes ]; then
+        printf 'dry-run: would create folder %s\n' "$SPEC_DIR_REL"
+        created_folders=$((created_folders + 1))
+    else
+        mkdir "$SPEC_DIR" || fail "cannot create folder $SPEC_DIR_REL"
+        chmod 700 "$SPEC_DIR" || fail "cannot set mode 700 on $SPEC_DIR_REL"
+        printf 'created folder %s\n' "$SPEC_DIR_REL"
+        created_folders=$((created_folders + 1))
+    fi
+fi
+
+# WHY: the packet is copied once and the template name inside every doc must
+# point at the new folder, without ever touching an existing file.
+while IFS= read -r src_path || [ -n "$src_path" ]; do
+    if [ "$src_path" = "$SPEC_TEMPLATE" ]; then
+        continue
+    fi
+    rel="${src_path#"$SPEC_TEMPLATE"/}"
+    src_rel="$SPEC_TEMPLATE_REL/$rel"
+    dst_rel="$SPEC_DIR_REL/$rel"
+    dst_path="$SPEC_DIR/$rel"
+    if [ -d "$src_path" ]; then
+        if [ -L "$dst_path" ]; then
+            fail "$dst_rel is a symlink, refusing to run"
+        fi
+        if [ -e "$dst_path" ] && [ ! -d "$dst_path" ]; then
+            fail "$dst_rel exists and is not a folder"
+        fi
+        if [ -d "$dst_path" ]; then
+            continue
+        fi
+        if [ "$DRY_RUN" = yes ]; then
+            printf 'dry-run: would create folder %s\n' "$dst_rel"
+            created_folders=$((created_folders + 1))
+            continue
+        fi
+        mkdir "$dst_path" || fail "cannot create folder $dst_rel"
+        chmod 700 "$dst_path" || fail "cannot set mode 700 on $dst_rel"
+        printf 'created folder %s\n' "$dst_rel"
+        created_folders=$((created_folders + 1))
+        continue
+    fi
+    if [ -e "$dst_path" ] || [ -L "$dst_path" ]; then
+        spec_files_skipped=$((spec_files_skipped + 1))
+        if [ "$DRY_RUN" = yes ]; then
+            printf 'dry-run: would skip existing %s\n' "$dst_rel"
+        fi
+        continue
+    fi
+    if [ "$DRY_RUN" = yes ]; then
+        printf 'dry-run: would copy %s to %s\n' "$src_rel" "$dst_rel"
+        spec_files_copied=$((spec_files_copied + 1))
+        continue
+    fi
+    case "$rel" in
+        *.md|*.json)
+            # WHY: the generated notice is true for the template only. The
+            # working copy belongs to the Operator and is edited by hand.
+            sed -e "s|000-migration-template|$SPEC_NAME|g" \
+                -e '/^<!-- Generated by sk-moneybird-accountant\/scripts\/generate-plan-kit.py /d' \
+                "$src_path" >"$dst_path" \
+                || fail "cannot copy $src_rel to $dst_rel"
+            ;;
+        *)
+            cp "$src_path" "$dst_path" || fail "cannot copy $src_rel to $dst_rel"
+            ;;
+    esac
+    chmod 600 "$dst_path" || fail "cannot set mode 600 on $dst_rel"
+    printf 'copied %s\n' "$dst_rel"
+    spec_files_copied=$((spec_files_copied + 1))
+done < <(find "$SPEC_TEMPLATE" \( -type d -o -type f \) -print | sort)
+
+# WHY: the template tracks no empty folders, and every spec-kit packet keeps a
+# scratch/ folder for working notes.
+while IFS= read -r spec_doc || [ -n "$spec_doc" ]; do
+    packet_rel="${spec_doc#"$SPEC_TEMPLATE"}"
+    packet_rel="${packet_rel%spec.md}"
+    scratch_rel="$SPEC_DIR_REL${packet_rel}scratch"
+    scratch_path="$SPEC_DIR${packet_rel}scratch"
+    if [ -L "$scratch_path" ]; then
+        fail "$scratch_rel is a symlink, refusing to run"
+    fi
+    if [ -d "$scratch_path" ]; then
+        continue
+    fi
+    if [ -e "$scratch_path" ]; then
+        fail "$scratch_rel exists and is not a folder"
+    fi
+    if [ "$DRY_RUN" = yes ]; then
+        printf 'dry-run: would create folder %s\n' "$scratch_rel"
+        created_folders=$((created_folders + 1))
+        continue
+    fi
+    mkdir "$scratch_path" || fail "cannot create folder $scratch_rel"
+    chmod 700 "$scratch_path" || fail "cannot set mode 700 on $scratch_rel"
+    printf 'created folder %s\n' "$scratch_rel"
+    created_folders=$((created_folders + 1))
+done < <(find "$SPEC_TEMPLATE" -type f -name spec.md -print | sort)
+
+printf 'summary folders_created=%d files_copied=%d files_skipped=%d spec_files_copied=%d spec_files_skipped=%d\n' \
+    "$created_folders" "$copied_files" "$skipped_files" "$spec_files_copied" "$spec_files_skipped"

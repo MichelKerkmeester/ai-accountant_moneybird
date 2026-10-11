@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "packet_id": "000-migration-template",
+  "spec_folder": "000-migration-template",
+  "parent_id": null,
+  "children_ids": [
+    "000-migration-template/001-phase-0-safety-and-system-setup",
+    "000-migration-template/002-phase-1-full-source-inventory",
+    "000-migration-template/003-phase-2-collect-missing-sources-and-seed-archive",
+    "000-migration-template/004-phase-3-reconstruct-each-source-independently",
+    "000-migration-template/005-phase-4-cross-reconciliation",
+    "000-migration-template/006-phase-5-completeness-and-anomaly-scan",
+    "000-migration-template/007-phase-6-design-the-moneybird-mapping",
+    "000-migration-template/008-phase-7-pilot-migration",
+    "000-migration-template/009-phase-8-historical-migration-per-period",
+    "000-migration-template/010-phase-9-vat-verification-loop",
+    "000-migration-template/011-phase-10-year-end-check",
+    "000-migration-template/012-phase-11-ib-cross-verification",
+    "000-migration-template/013-phase-12-continuity-between-years",
+    "000-migration-template/014-phase-13-year-red-team",
+    "000-migration-template/015-phase-14-year-lock",
+    "000-migration-template/016-phase-15-repeat-from-oldest-to-newest-year",
+    "000-migration-template/017-phase-16-current-year-parallel-mirror-and-cutover-preparation",
+    "000-migration-template/018-phase-17-source-freeze-and-archive-readiness",
+    "000-migration-template/019-phase-18-switch-to-live-bookkeeping",
+    "000-migration-template/020-phase-19-live-monthly-workflow",
+    "000-migration-template/021-phase-20-live-vat-period-workflow",
+    "000-migration-template/022-phase-21-live-yearly-workflow",
+    "000-migration-template/023-phase-22-migration-completion-and-jortt-decommission"
+  ],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "migration phase parent spec",
+      "jortt to moneybird migration overview",
+      "migration phase parent goal",
+      "jortt to moneybird migration goal"
+    ],
+    "key_topics": [
+      "migration",
+      "phase",
+      "parent",
+      "spec",
+      "jortt",
+      "moneybird",
+      "overview",
+      "goal",
+      "dutch",
+      "sole",
+      "trader",
+      "keeps"
+    ],
+    "importance_tier": "important",
+    "status": "draft",
+    "key_files": [
+      "spec.md",
+      "goal.md",
+      "001-phase-0-safety-and-system-setup/goal.md",
+      "002-phase-1-full-source-inventory/goal.md",
+      "003-phase-2-collect-missing-sources-and-seed-archive/goal.md",
+      "004-phase-3-reconstruct-each-source-independently/goal.md",
+      "005-phase-4-cross-reconciliation/goal.md",
+      "006-phase-5-completeness-and-anomaly-scan/goal.md",
+      "007-phase-6-design-the-moneybird-mapping/goal.md",
+      "008-phase-7-pilot-migration/goal.md",
+      "009-phase-8-historical-migration-per-period/goal.md",
+      "010-phase-9-vat-verification-loop/goal.md",
+      "011-phase-10-year-end-check/goal.md",
+      "012-phase-11-ib-cross-verification/goal.md",
+      "013-phase-12-continuity-between-years/goal.md",
+      "014-phase-13-year-red-team/goal.md",
+      "015-phase-14-year-lock/goal.md",
+      "016-phase-15-repeat-from-oldest-to-newest-year/goal.md",
+      "017-phase-16-current-year-parallel-mirror-and-cutover-preparation/goal.md",
+      "018-phase-17-source-freeze-and-archive-readiness/goal.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Parent Spec",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Parent Packet",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Handoff Criteria",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Problem Statement",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Purpose This",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Decisions Frozen",
+        "kind": "proper_noun",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "Every Moneybird",
+        "kind": "proper_noun",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "Every Operator",
+        "kind": "proper_noun",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "The Phase",
+        "kind": "proper_noun",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "its",
+        "kind": "key_phrase",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "zero",
+        "kind": "key_phrase",
+        "path": "goal.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "A Dutch sole trader keeps bookkeeping in Jortt and moves to Moneybird",
+    "created_at": "2026-10-11T14:34:45.105Z",
+    "last_save_at": "2026-10-11T15:08:40.810Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "goal.md"
+    ],
+    "source_fingerprint": "sha256:0c6f2fbf9c9ff68543b8e710a1d87e4fcc3ba67f5288680fb9e4eb7704e51d43",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "08392f2c84356c05acca2ef28df5490cec8c32d195a1da3ef210dbe4aec83bb5"
+    },
+    "last_active_child_id": null,
+    "last_active_at": null
+  }
+}

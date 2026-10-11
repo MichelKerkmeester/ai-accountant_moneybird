@@ -1,0 +1,21 @@
+{
+  "level": "2",
+  "specFolder": "000-migration-template",
+  "description": "A Dutch sole trader keeps bookkeeping in Jortt and moves to Moneybird",
+  "keywords": [
+    "dutch",
+    "sole",
+    "trader",
+    "keeps",
+    "bookkeeping",
+    "jortt",
+    "moves",
+    "moneybird"
+  ],
+  "lastUpdated": "2026-10-11T15:08:01.752Z",
+  "specId": "000",
+  "folderSlug": "migration-template",
+  "parentChain": [],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

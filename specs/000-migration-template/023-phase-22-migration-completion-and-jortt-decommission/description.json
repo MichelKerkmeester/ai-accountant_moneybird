@@ -1,0 +1,26 @@
+{
+  "level": "3",
+  "specFolder": "000-migration-template/023-phase-22-migration-completion-and-jortt-decommission",
+  "description": "At the start of Phase 22: Migration completion and Jortt decommission, the migration cannot move on because the purpose of this phase is not yet met",
+  "keywords": [
+    "start",
+    "phase",
+    "migration",
+    "completion",
+    "jortt",
+    "decommission",
+    "cannot",
+    "move",
+    "because",
+    "purpose",
+    "met"
+  ],
+  "lastUpdated": "2026-10-11T15:08:01.752Z",
+  "specId": "023",
+  "folderSlug": "phase-22-migration-completion-and-jortt-decommission",
+  "parentChain": [
+    "000-migration-template"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

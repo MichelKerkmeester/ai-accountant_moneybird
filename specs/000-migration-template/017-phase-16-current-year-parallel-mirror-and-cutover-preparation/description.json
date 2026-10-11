@@ -1,0 +1,27 @@
+{
+  "level": "3",
+  "specFolder": "000-migration-template/017-phase-16-current-year-parallel-mirror-and-cutover-preparation",
+  "description": "At the start of Phase 16: Current-year parallel mirror and cutover preparation, the migration cannot move on because the purpose of this phase is not",
+  "keywords": [
+    "start",
+    "phase",
+    "current-year",
+    "parallel",
+    "mirror",
+    "cutover",
+    "preparation",
+    "migration",
+    "cannot",
+    "move",
+    "because",
+    "purpose"
+  ],
+  "lastUpdated": "2026-10-11T15:08:01.746Z",
+  "specId": "017",
+  "folderSlug": "phase-16-current-year-parallel-mirror-and-cutover-preparation",
+  "parentChain": [
+    "000-migration-template"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

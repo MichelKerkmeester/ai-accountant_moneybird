@@ -91,6 +91,10 @@ count_named() {
     ) 2>/dev/null || true
 }
 
+count_files() {
+    find "$1" -type f 2>/dev/null | wc -l | tr -d ' '
+}
+
 make_fake_repo() {
     root="$1"
     ignored="$2"
@@ -101,13 +105,19 @@ make_fake_repo() {
         fi
     done
     if [ "$ignored" = yes ]; then
-        printf '/migration-workspace/\n' > "$root/.gitignore" || return 1
+        printf '/migration-workspace/\n/specs/*\n!/specs/000-migration-template/\n' >"$root/.gitignore" || return 1
     fi
     (
         cd "$root" || exit 1
         git init -q .
     ) || return 1
     return 0
+}
+
+generate_repo() {
+    root="$1"
+    tag="$2"
+    python3 -I "$root/sk-moneybird-accountant/scripts/generate-plan-kit.py" >"$TMP_ROOT/generate-$tag.txt" 2>&1
 }
 
 group "Real skill folder"
@@ -122,79 +132,310 @@ fi
 group "Generated copy"
 
 REPO_A="$TMP_ROOT/repo-a"
+SKILL_A="$REPO_A/sk-moneybird-accountant"
+GEN_A="$SKILL_A/scripts/generate-plan-kit.py"
+INIT_A="$SKILL_A/scripts/init-workspace.sh"
+ASSETS_A="$SKILL_A/assets/migration"
+SPECS_A="$REPO_A/specs/000-migration-template"
+SPEC_COPY="$REPO_A/specs/001-migration"
+WS_A="$REPO_A/migration-workspace"
+
 if make_fake_repo "$REPO_A" yes; then
     pass "fake repository is created"
 else
     fail "fake repository is created"
 fi
 
-GEN_A="$REPO_A/sk-moneybird-accountant/scripts/generate-plan-kit.py"
-INIT_A="$REPO_A/sk-moneybird-accountant/scripts/init-workspace.sh"
-ASSETS_A="$REPO_A/sk-moneybird-accountant/assets/migration"
-PHASES_A="$ASSETS_A/phases"
-WS_A="$REPO_A/migration-workspace"
-
-if python3 -I "$GEN_A" >"$TMP_ROOT/generate-copy.txt" 2>&1; then
-    pass "generating the assets in the copy succeeds"
+if generate_repo "$REPO_A" a; then
+    pass "generating the kit in the copy succeeds"
 else
-    fail "generating the assets in the copy succeeds"
+    fail "generating the kit in the copy succeeds"
+    sed -n '1,3p' "$TMP_ROOT/generate-a.txt"
 fi
 
 if python3 -I "$GEN_A" --check >"$TMP_ROOT/check-copy.txt" 2>&1; then
     pass "--check passes on the generated copy"
 else
     fail "--check passes on the generated copy"
+    sed -n '1,3p' "$TMP_ROOT/check-copy.txt"
 fi
 
-printf 'injected drift\n' >> "$PHASES_A/phase-05-plan.md"
-python3 -I "$GEN_A" --check >"$TMP_ROOT/check-drift.txt" 2>&1
-drift_status=$?
-if [ "$drift_status" -eq 1 ] && grep -q 'phase-05-plan.md' "$TMP_ROOT/check-drift.txt"; then
-    pass "--check fails and names the edited phase plan"
+assert "the old assets/migration/phases folder is gone after generation" test ! -e "$ASSETS_A/phases"
+
+DRIFT_DOC=$(ls "$SPECS_A"/001-phase-*/spec.md 2>/dev/null | head -n 1)
+if [ -n "${DRIFT_DOC:-}" ] && [ -f "$DRIFT_DOC" ]; then
+    printf 'injected drift\n' >>"$DRIFT_DOC"
+    python3 -I "$GEN_A" --check >"$TMP_ROOT/check-drift.txt" 2>&1
+    drift_status=$?
+    drift_folder=$(basename "$(dirname "$DRIFT_DOC")")
+    if [ "$drift_status" -eq 1 ] && grep -q "$drift_folder" "$TMP_ROOT/check-drift.txt"; then
+        pass "--check fails and names the edited child doc"
+    else
+        fail "--check fails and names the edited child doc"
+        sed -n '1,3p' "$TMP_ROOT/check-drift.txt"
+    fi
 else
-    fail "--check fails and names the edited phase plan"
+    fail "--check fails and names the edited child doc (no child doc found to edit)"
 fi
 
 if python3 -I "$GEN_A" >/dev/null 2>&1 && python3 -I "$GEN_A" --check >/dev/null 2>&1; then
-    pass "regenerating the assets repairs the drift"
+    pass "regenerating the kit repairs the drift"
 else
-    fail "regenerating the assets repairs the drift"
+    fail "regenerating the kit repairs the drift"
 fi
 
-plan_count=$(count_named "$PHASES_A" '^phase-[0-9][0-9]-plan\.md$')
-plan_count=${plan_count:-0}
-if [ "$plan_count" -eq 23 ]; then
-    pass "23 phase plan files exist"
+printf 'stray\n' >"$SPECS_A/stray-note.md"
+python3 -I "$GEN_A" --check >"$TMP_ROOT/check-stray.txt" 2>&1
+stray_status=$?
+if [ "$stray_status" -eq 1 ] && grep -q 'stray-note.md' "$TMP_ROOT/check-stray.txt"; then
+    pass "--check fails and names a stray .md file in the packet"
 else
-    fail "23 phase plan files exist (found $plan_count)"
+    fail "--check fails and names a stray .md file in the packet"
+    sed -n '1,3p' "$TMP_ROOT/check-stray.txt"
+fi
+rm -f "$SPECS_A/stray-note.md"
+first_child=$(find "$SPECS_A" -mindepth 1 -maxdepth 1 -type d -name '001-phase-*' | head -1)
+printf 'a,b\n' >"$first_child/export.csv"
+python3 -I "$GEN_A" --check >"$TMP_ROOT/check-stray-csv.txt" 2>&1
+stray_csv_status=$?
+if [ "$stray_csv_status" -eq 1 ] && grep -q 'export.csv' "$TMP_ROOT/check-stray-csv.txt"; then
+    pass "--check fails and names a stray non-doc file in a phase packet"
+else
+    fail "--check fails and names a stray non-doc file in a phase packet"
+    sed -n '1,3p' "$TMP_ROOT/check-stray-csv.txt"
+fi
+rm -f "$first_child/export.csv"
+
+if python3 -I "$GEN_A" --check >/dev/null 2>&1; then
+    pass "--check passes again after the stray file is removed"
+else
+    fail "--check passes again after the stray file is removed"
 fi
 
-if [ -f "$PHASES_A/phase-00-plan.md" ] && [ -f "$PHASES_A/phase-22-plan.md" ]; then
-    pass "phase-00 and phase-22 plans are present"
+mkdir -p "$ASSETS_A/phases"
+printf 'legacy\n' >"$ASSETS_A/phases/phase-00-plan.md"
+python3 -I "$GEN_A" --check >"$TMP_ROOT/check-legacy.txt" 2>&1
+legacy_status=$?
+if [ "$legacy_status" -eq 1 ] && grep -q 'assets/migration/phases' "$TMP_ROOT/check-legacy.txt"; then
+    pass "--check fails and names the old assets/migration/phases folder"
 else
-    fail "phase-00 and phase-22 plans are present"
+    fail "--check fails and names the old assets/migration/phases folder"
+    sed -n '1,3p' "$TMP_ROOT/check-legacy.txt"
+fi
+if python3 -I "$GEN_A" >/dev/null 2>&1 && [ ! -e "$ASSETS_A/phases" ]; then
+    pass "write mode deletes the old assets/migration/phases folder"
+else
+    fail "write mode deletes the old assets/migration/phases folder"
 fi
 
-missing_sections=0
-for plan in "$PHASES_A"/phase-*-plan.md; do
-    if [ ! -f "$plan" ]; then
+assert "the packet holds 23 child folders" test "$(count_named "$SPECS_A" '^[0-9][0-9][0-9]-phase-')" -eq 23
+
+if python3 -I - "$SPECS_A" "$SKILL_A/references/migration" <<'PY' >"$TMP_ROOT/packet.txt" 2>&1
+import os
+import re
+import sys
+
+packet = sys.argv[1]
+refs = sys.argv[2]
+
+errors = []
+
+name_re = re.compile(r"^([0-9]{3})-phase-([0-9]+)-([a-z0-9]+(?:-[a-z0-9]+)*)$")
+child_docs = [
+    "spec.md",
+    "plan.md",
+    "tasks.md",
+    "acceptance-criteria.md",
+    "decision-record.md",
+    "implementation-summary.md",
+    "goal.md",
+]
+
+
+def slugify(title):
+    return re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
+
+
+children = sorted(
+    name
+    for name in os.listdir(packet)
+    if name_re.match(name) and os.path.isdir(os.path.join(packet, name))
+)
+
+if len(children) != 23:
+    errors.append("expected 23 child folders, found %d" % len(children))
+
+phases = []
+for name in children:
+    match = name_re.match(name)
+    number = int(match.group(1))
+    phase = int(match.group(2))
+    if number != phase + 1:
+        errors.append("child folder %s does not match phase number plus one" % name)
+    phases.append(phase)
+    child_dir = os.path.join(packet, name)
+    for doc in child_docs:
+        if not os.path.isfile(os.path.join(child_dir, doc)):
+            errors.append("missing %s/%s" % (name, doc))
+    goal_path = os.path.join(child_dir, "goal.md")
+    if os.path.isfile(goal_path):
+        with open(goal_path, encoding="utf-8") as handle:
+            criteria = [line for line in handle if line.startswith("- [ ]")]
+        if len(criteria) < 3 or len(criteria) > 7:
+            errors.append("%s/goal.md holds %d checklist criteria lines" % (name, len(criteria)))
+
+if phases != list(range(23)):
+    errors.append("child phase numbers are not 0 to 22: %s" % ", ".join(str(item) for item in phases))
+
+for doc in ("spec.md", "goal.md"):
+    if not os.path.isfile(os.path.join(packet, doc)):
+        errors.append("missing parent %s" % doc)
+
+map_rows = []
+spec_path = os.path.join(packet, "spec.md")
+if os.path.isfile(spec_path):
+    with open(spec_path, encoding="utf-8") as handle:
+        for line in handle:
+            stripped = line.strip()
+            if not stripped.startswith("|"):
+                continue
+            cells = [cell.strip() for cell in stripped.strip("|").split("|")]
+            if len(cells) < 4 or not cells[0].isdigit():
+                continue
+            map_rows.append(cells)
+
+if len(map_rows) != 23:
+    errors.append("parent spec.md holds %d phase map rows" % len(map_rows))
+
+map_folders = set()
+map_titles = []
+for cells in map_rows:
+    link = re.search(r"\]\(\./([^)/]+)/spec\.md\)", cells[1])
+    if not link:
+        errors.append("phase map row without a child packet link: %s" % " | ".join(cells))
         continue
-    fi
-    for heading in "## Status" "## Goal" "## Nested sub-goals" "## Entry criteria" "## Inputs" "## Owner-tagged actions" "## Tool route" "## Outputs and evidence artifacts" "## Numeric exit gate" "## Stop conditions" "## Rollback or compensation" "## Resume rule" "## Run record"; do
-        if ! grep -qxF "$heading" "$plan"; then
-            missing_sections=$((missing_sections + 1))
-        fi
-    done
-done
-if [ "$missing_sections" -eq 0 ]; then
-    pass "every phase plan holds the 11 contract sections, Status and Run record"
+    folder = link.group(1)
+    map_folders.add(folder)
+    title = cells[2]
+    prefix = re.match(r"^Phase\s+([0-9]+)\s*[:\-]\s*(.+)$", title)
+    if prefix:
+        title = prefix.group(2).strip()
+    map_titles.append(title)
+    if folder not in children:
+        errors.append("phase map points at unknown folder %s" % folder)
+        continue
+    match = name_re.match(folder)
+    if slugify(title) != match.group(3):
+        errors.append("phase title '%s' does not slug to folder %s" % (title, folder))
+    row_phase = int(match.group(2))
+    if int(cells[0]) not in (row_phase, row_phase + 1):
+        errors.append("phase map row number %s does not match phase %d" % (cells[0], row_phase))
+
+if len(map_folders) != len(map_rows):
+    errors.append("phase map rows repeat child folders")
+if sorted(map_folders) != children:
+    errors.append("phase map rows and child folders are not the same packets")
+
+parts = []
+for root, dirs, files in os.walk(refs):
+    for name in sorted(files):
+        if name.endswith(".md"):
+            with open(os.path.join(root, name), encoding="utf-8", errors="replace") as handle:
+                parts.append(handle.read())
+reference_text = re.sub(r"\s+", " ", " ".join(parts).lower())
+
+for title in map_titles:
+    probe = re.sub(r"\s+", " ", title).strip().lower()
+    if probe and probe not in reference_text:
+        errors.append("phase title not found in the references: %s" % title)
+
+if errors:
+    for item in errors:
+        print(item)
+    sys.exit(1)
+print("packet structure matches the contract with %d child folders" % len(children))
+sys.exit(0)
+PY
+then
+    pass "the packet holds 23 exact child packets with every doc and goal criteria"
 else
-    fail "every phase plan holds the 11 contract sections, Status and Run record (missing $missing_sections)"
+    fail "the packet holds 23 exact child packets with every doc and goal criteria"
+    sed -n '1,5p' "$TMP_ROOT/packet.txt"
+fi
+
+if grep -rqF '{{' "$SPECS_A" >/dev/null 2>&1; then
+    fail "no rendered file contains {{"
+    grep -rlF '{{' "$SPECS_A" 2>/dev/null | sed -n '1,3p'
+else
+    pass "no rendered file contains {{"
+fi
+
+if python3 -I - "$SPECS_A" <<'PY' >"$TMP_ROOT/links.txt" 2>&1
+import os
+import re
+import sys
+
+root = sys.argv[1]
+pattern = re.compile(r"\]\(\.\./\.\./\.\./sk-moneybird-accountant/references/migration/([^)#]+)")
+checked = 0
+unresolved = []
+children_with_links = set()
+children = [
+    name
+    for name in sorted(os.listdir(root))
+    if re.match(r"^[0-9]{3}-phase-", name) and os.path.isdir(os.path.join(root, name))
+]
+for name in children:
+    child_dir = os.path.join(root, name)
+    for fname in sorted(os.listdir(child_dir)):
+        if not fname.endswith(".md"):
+            continue
+        path = os.path.join(child_dir, fname)
+        if not os.path.isfile(path):
+            continue
+        with open(path, encoding="utf-8") as handle:
+            text = handle.read()
+        for target in pattern.findall(text):
+            checked += 1
+            children_with_links.add(name)
+            candidate = os.path.normpath(
+                os.path.join(
+                    child_dir,
+                    "..",
+                    "..",
+                    "..",
+                    "sk-moneybird-accountant",
+                    "references",
+                    "migration",
+                    target,
+                )
+            )
+            if not os.path.isfile(candidate):
+                unresolved.append("%s/%s -> %s" % (name, fname, target))
+
+if not checked:
+    print("no rewritten reference links found in the child docs")
+    sys.exit(1)
+missing = [name for name in children if name not in children_with_links]
+if missing:
+    print("child folders without a rewritten reference link: %s" % ", ".join(missing))
+if unresolved:
+    for item in sorted(set(unresolved)):
+        print("unresolved: %s" % item)
+if missing or unresolved:
+    sys.exit(1)
+sys.exit(0)
+PY
+then
+    pass "every child doc links to an existing reference file through the rewritten path"
+else
+    fail "every child doc links to an existing reference file through the rewritten path"
+    sed -n '1,5p' "$TMP_ROOT/links.txt"
 fi
 
 group "Config template"
 
-if python3 -I - "$REPO_A/sk-moneybird-accountant/references/migration/overview-and-setup.md" "$ASSETS_A/migration-config.template.json" <<'PY' >"$TMP_ROOT/config-check.txt" 2>&1
+if python3 -I - "$SKILL_A/references/migration/overview-and-setup.md" "$ASSETS_A/migration-config.template.json" <<'PY' >"$TMP_ROOT/config-check.txt" 2>&1
 import json
 import re
 import sys
@@ -271,6 +512,12 @@ else
     pass "no workspace exists before init"
 fi
 
+if [ -e "$SPEC_COPY" ] || [ -L "$SPEC_COPY" ]; then
+    fail "no spec copy exists before init"
+else
+    pass "no spec copy exists before init"
+fi
+
 if "$INIT_A" --dry-run >"$TMP_ROOT/init-dry.txt" 2>&1; then
     pass "init-workspace --dry-run exits 0"
 else
@@ -279,9 +526,15 @@ else
 fi
 
 if [ -e "$WS_A" ] || [ -L "$WS_A" ]; then
-    fail "init-workspace --dry-run creates nothing"
+    fail "init-workspace --dry-run creates no workspace"
 else
-    pass "init-workspace --dry-run creates nothing"
+    pass "init-workspace --dry-run creates no workspace"
+fi
+
+if [ -e "$SPEC_COPY" ] || [ -L "$SPEC_COPY" ]; then
+    fail "init-workspace --dry-run creates no spec copy"
+else
+    pass "init-workspace --dry-run creates no spec copy"
 fi
 
 if "$INIT_A" >"$TMP_ROOT/init-run1.txt" 2>&1; then
@@ -293,16 +546,17 @@ fi
 
 copied_one=$(summary_value "$TMP_ROOT/init-run1.txt" files_copied)
 copied_one=${copied_one:-0}
-if [ "$copied_one" -ge 25 ]; then
-    pass "init-workspace copies the plans, the dashboard, the config and the journal files"
+if [ "$copied_one" -ge 4 ]; then
+    pass "init-workspace copies the dashboard, the config and the journal files"
 else
-    fail "init-workspace copies the plans, the dashboard, the config and the journal files (copied $copied_one)"
+    fail "init-workspace copies the dashboard, the config and the journal files (copied $copied_one)"
 fi
 
-ws_plans=$(count_named "$WS_A/Plans" '^phase-[0-9][0-9]-plan\.md$')
-ws_plans=${ws_plans:-0}
-assert "23 phase plans are copied into Plans/" test "$ws_plans" -eq 23
 assert "the phase dashboard is copied" test -f "$WS_A/Plans/phase-dashboard.md"
+
+plans_entries=$(ls "$WS_A/Plans" 2>/dev/null | wc -l | tr -d ' ')
+assert "Plans/ holds only the dashboard" test "$plans_entries" -eq 1
+
 assert "the config template is copied to MIGRATION_CONFIG.json" test -f "$WS_A/MIGRATION_CONFIG.json"
 assert "the run journal template is copied" test -f "$WS_A/RunJournal/run-journal-event.template.json"
 assert "the empty run journal is created" test -f "$WS_A/RunJournal/run-journal.jsonl"
@@ -339,6 +593,159 @@ while IFS= read -r entry || [ -n "$entry" ]; do
 done <"$TMP_ROOT/ws-files.txt"
 assert "every copied workspace file has mode 600" test "$bad_modes" -eq 0
 
+group "Spec packet copy"
+
+scratch_count=$(find "$SPEC_COPY" -type d -name scratch | wc -l | tr -d ' ')
+assert "the copy holds one scratch folder per packet (24)" test "$scratch_count" -eq 24
+assert "the copy drops the generated notice" sh -c '! grep -rq "Generated by sk-moneybird-accountant/scripts/generate-plan-kit.py" "$1"' _ "$SPEC_COPY"
+
+assert "the packet is copied to specs/001-migration" test -f "$SPEC_COPY/spec.md"
+assert "the copied packet holds 23 child folders" test "$(count_named "$SPEC_COPY" '^[0-9][0-9][0-9]-phase-')" -eq 23
+
+spec_copied_one=$(summary_value "$TMP_ROOT/init-run1.txt" spec_files_copied)
+spec_copied_one=${spec_copied_one:-0}
+template_files=$(count_files "$SPECS_A")
+if [ "$spec_copied_one" -eq "$template_files" ]; then
+    pass "init-workspace copies every spec packet file ($spec_copied_one)"
+else
+    fail "init-workspace copies every spec packet file (copied $spec_copied_one of $template_files)"
+fi
+
+if python3 -I - "$SPECS_A" "$SPEC_COPY" "001-migration" <<'PY' >"$TMP_ROOT/spec-copy.txt" 2>&1
+import os
+import sys
+
+template = sys.argv[1]
+copy_dir = sys.argv[2]
+name = sys.argv[3]
+
+errors = []
+count = 0
+for root, dirs, files in os.walk(template):
+    for fname in sorted(files):
+        src = os.path.join(root, fname)
+        rel = os.path.relpath(src, template)
+        dst = os.path.join(copy_dir, rel)
+        count += 1
+        if not os.path.isfile(dst):
+            errors.append("missing copy of %s" % rel)
+            continue
+        with open(src, "rb") as handle:
+            expected = handle.read()
+        if rel.endswith(".md") or rel.endswith(".json"):
+            expected = expected.replace(b"000-migration-template", name.encode("utf-8"))
+            expected = b"".join(
+                line for line in expected.splitlines(True)
+                if not line.startswith(b"<!-- Generated by sk-moneybird-accountant/scripts/generate-plan-kit.py "))
+        with open(dst, "rb") as handle:
+            actual = handle.read()
+        if actual != expected:
+            errors.append("copy differs from the template: %s" % rel)
+
+for root, dirs, files in os.walk(copy_dir):
+    for fname in sorted(files):
+        if not fname.endswith(".md") and not fname.endswith(".json"):
+            continue
+        path = os.path.join(root, fname)
+        with open(path, "rb") as handle:
+            if b"000-migration-template" in handle.read():
+                errors.append("stale template name in %s" % os.path.relpath(path, copy_dir))
+
+if not count:
+    errors.append("template holds no files")
+
+if errors:
+    for item in errors:
+        print(item)
+    sys.exit(1)
+print("copied packet matches the template with the name replaced, %d files" % count)
+sys.exit(0)
+PY
+then
+    pass "the copied packet matches the template with the name replaced"
+else
+    fail "the copied packet matches the template with the name replaced"
+    sed -n '1,5p' "$TMP_ROOT/spec-copy.txt"
+fi
+
+stale=$(find "$SPEC_COPY" -type f \( -name '*.md' -o -name '*.json' \) -exec grep -lF '000-migration-template' {} + 2>/dev/null | wc -l | tr -d ' ')
+assert "the copy no longer contains 000-migration-template in md or json files" test "$stale" -eq 0
+
+if python3 -I - "$SPEC_COPY" <<'PY' >"$TMP_ROOT/copy-links.txt" 2>&1
+import os
+import re
+import sys
+
+root = sys.argv[1]
+pattern = re.compile(r"\]\(\.\./\.\./\.\./sk-moneybird-accountant/references/migration/([^)#]+)")
+checked = 0
+unresolved = []
+children = [
+    name
+    for name in sorted(os.listdir(root))
+    if re.match(r"^[0-9]{3}-phase-", name) and os.path.isdir(os.path.join(root, name))
+]
+for name in children:
+    child_dir = os.path.join(root, name)
+    for fname in sorted(os.listdir(child_dir)):
+        if not fname.endswith(".md"):
+            continue
+        path = os.path.join(child_dir, fname)
+        if not os.path.isfile(path):
+            continue
+        with open(path, encoding="utf-8") as handle:
+            text = handle.read()
+        for target in pattern.findall(text):
+            checked += 1
+            candidate = os.path.normpath(
+                os.path.join(
+                    child_dir,
+                    "..",
+                    "..",
+                    "..",
+                    "sk-moneybird-accountant",
+                    "references",
+                    "migration",
+                    target,
+                )
+            )
+            if not os.path.isfile(candidate):
+                unresolved.append("%s/%s -> %s" % (name, fname, target))
+
+if not checked:
+    print("no rewritten reference links found in the copied child docs")
+    sys.exit(1)
+if unresolved:
+    for item in sorted(set(unresolved)):
+        print("unresolved: %s" % item)
+    sys.exit(1)
+sys.exit(0)
+PY
+then
+    pass "the copied child docs still resolve their reference links"
+else
+    fail "the copied child docs still resolve their reference links"
+    sed -n '1,5p' "$TMP_ROOT/copy-links.txt"
+fi
+
+if "$INIT_A" --spec-name 002-my-books >"$TMP_ROOT/init-run3.txt" 2>&1; then
+    pass "init-workspace --spec-name 002-my-books exits 0"
+else
+    fail "init-workspace --spec-name 002-my-books exits 0"
+    sed -n '1,3p' "$TMP_ROOT/init-run3.txt"
+fi
+
+assert "specs/002-my-books is created" test -f "$REPO_A/specs/002-my-books/spec.md"
+
+spec_three=$(summary_value "$TMP_ROOT/init-run3.txt" spec_files_copied)
+spec_three=${spec_three:-0}
+assert "the 002-my-books run copies every packet file" test "$spec_three" -eq "$spec_copied_one"
+
+stale_two=$(find "$REPO_A/specs/002-my-books" -type f \( -name '*.md' -o -name '*.json' \) -exec grep -lF '000-migration-template' {} + 2>/dev/null | wc -l | tr -d ' ')
+assert "specs/002-my-books holds no 000-migration-template text" test "$stale_two" -eq 0
+
+group "Repeat runs"
+
 if "$INIT_A" >"$TMP_ROOT/init-run2.txt" 2>&1; then
     pass "a second init-workspace run exits 0"
 else
@@ -347,32 +754,36 @@ fi
 
 copied_two=$(summary_value "$TMP_ROOT/init-run2.txt" files_copied)
 copied_two=${copied_two:-0}
-if [ "$copied_two" -eq 0 ]; then
-    pass "a second run copies 0 files"
-else
-    fail "a second run copies 0 files (copied $copied_two)"
-fi
+assert "a second run copies 0 workspace files" test "$copied_two" -eq 0
 
 skipped_two=$(summary_value "$TMP_ROOT/init-run2.txt" files_skipped)
 skipped_two=${skipped_two:-0}
-if [ "$skipped_two" -eq "$copied_one" ]; then
-    pass "a second run skips every file"
-else
-    fail "a second run skips every file (skipped $skipped_two, first run copied $copied_one)"
-fi
+assert "a second run skips every workspace file" test "$skipped_two" -eq "$copied_one"
+
+spec_copied_two=$(summary_value "$TMP_ROOT/init-run2.txt" spec_files_copied)
+spec_copied_two=${spec_copied_two:-0}
+assert "a second run copies 0 spec files" test "$spec_copied_two" -eq 0
+
+spec_skipped_two=$(summary_value "$TMP_ROOT/init-run2.txt" spec_files_skipped)
+spec_skipped_two=${spec_skipped_two:-0}
+assert "a second run skips every spec file" test "$spec_skipped_two" -eq "$spec_copied_one"
 
 group "Existing files"
 
 REPO_D="$TMP_ROOT/repo-d"
 if make_fake_repo "$REPO_D" yes; then
-    pass "second fake repository is created"
+    pass "repository for the existing files check is created"
 else
-    fail "second fake repository is created"
+    fail "repository for the existing files check is created"
 fi
+generate_repo "$REPO_D" d
 WS_D="$REPO_D/migration-workspace"
 mkdir -p "$WS_D"
 printf '{"custom": "keep me"}\n' >"$WS_D/MIGRATION_CONFIG.json"
 cp "$WS_D/MIGRATION_CONFIG.json" "$TMP_ROOT/custom-config.json"
+mkdir -p "$REPO_D/specs/001-migration"
+printf 'custom spec\n' >"$REPO_D/specs/001-migration/spec.md"
+cp "$REPO_D/specs/001-migration/spec.md" "$TMP_ROOT/custom-spec.md"
 
 if "$REPO_D/sk-moneybird-accountant/scripts/init-workspace.sh" >"$TMP_ROOT/init-run-d.txt" 2>&1; then
     pass "init-workspace runs with an existing workspace folder"
@@ -381,15 +792,21 @@ else
 fi
 
 assert "a pre-existing MIGRATION_CONFIG.json is left byte-identical" cmp -s "$WS_D/MIGRATION_CONFIG.json" "$TMP_ROOT/custom-config.json"
+assert "a pre-existing spec.md is left byte-identical" cmp -s "$REPO_D/specs/001-migration/spec.md" "$TMP_ROOT/custom-spec.md"
+
+spec_skipped_d=$(summary_value "$TMP_ROOT/init-run-d.txt" spec_files_skipped)
+spec_skipped_d=${spec_skipped_d:-0}
+assert "the pre-existing spec.md is counted as skipped" test "$spec_skipped_d" -eq 1
 
 group "Refusals"
 
 REPO_B="$TMP_ROOT/repo-b"
 if make_fake_repo "$REPO_B" yes; then
-    pass "third fake repository is created"
+    pass "repository for the symlink refusal is created"
 else
-    fail "third fake repository is created"
+    fail "repository for the symlink refusal is created"
 fi
+generate_repo "$REPO_B" b
 mkdir -p "$TMP_ROOT/symlink-target"
 ln -s "$TMP_ROOT/symlink-target" "$REPO_B/migration-workspace"
 "$REPO_B/sk-moneybird-accountant/scripts/init-workspace.sh" >"$TMP_ROOT/init-symlink.txt" 2>&1
@@ -406,13 +823,16 @@ else
 fi
 assert "the symlink is left in place" test -L "$REPO_B/migration-workspace"
 assert "nothing is written through the symlink" test ! -e "$TMP_ROOT/symlink-target/MIGRATION_CONFIG.json"
+assert "no spec copy is written when the workspace is a symlink" test ! -e "$REPO_B/specs/001-migration"
 
 REPO_C="$TMP_ROOT/repo-c"
 if make_fake_repo "$REPO_C" no; then
-    pass "fourth fake repository is created"
+    pass "repository for the ignored refusal is created"
 else
-    fail "fourth fake repository is created"
+    fail "repository for the ignored refusal is created"
 fi
+printf '/specs/*\n!/specs/000-migration-template/\n' >"$REPO_C/.gitignore"
+generate_repo "$REPO_C" c
 "$REPO_C/sk-moneybird-accountant/scripts/init-workspace.sh" >"$TMP_ROOT/init-not-ignored.txt" 2>&1
 not_ignored_status=$?
 if [ "$not_ignored_status" -ne 0 ]; then
@@ -420,46 +840,91 @@ if [ "$not_ignored_status" -ne 0 ]; then
 else
     fail "a workspace that is not git-ignored is refused"
 fi
-assert "nothing is created when the workspace is not ignored" test ! -e "$REPO_C/migration-workspace"
-
-group "Reference links"
-
-if python3 -I - "$PHASES_A" <<'PY' >"$TMP_ROOT/links.txt" 2>&1
-import os
-import re
-import sys
-
-phases_dir = sys.argv[1]
-pattern = re.compile(r"\]\(\.\./\.\./\.\./references/migration/([^)#]+)")
-checked = 0
-unresolved = []
-for name in sorted(os.listdir(phases_dir)):
-    if not (name.startswith("phase-") and name.endswith("-plan.md")):
-        continue
-    with open(os.path.join(phases_dir, name), "r", encoding="utf-8") as handle:
-        text = handle.read()
-    for target in pattern.findall(text):
-        checked += 1
-        candidate = os.path.normpath(
-            os.path.join(phases_dir, "..", "..", "..", "references", "migration", target)
-        )
-        if not os.path.isfile(candidate):
-            unresolved.append("%s -> %s" % (name, target))
-
-if not checked:
-    print("no rewritten reference links found in the generated plans")
-    sys.exit(1)
-if unresolved:
-    for item in sorted(set(unresolved)):
-        print("unresolved: %s" % item)
-    sys.exit(1)
-sys.exit(0)
-PY
-then
-    pass "every link that points into ../../../references/migration/ resolves"
+if grep -qi ignored "$TMP_ROOT/init-not-ignored.txt"; then
+    pass "the not-ignored refusal names the ignored rule"
 else
-    fail "every link that points into ../../../references/migration/ resolves"
-    sed -n '1,5p' "$TMP_ROOT/links.txt"
+    fail "the not-ignored refusal names the ignored rule"
+fi
+assert "nothing is created when the workspace is not ignored" test ! -e "$REPO_C/migration-workspace"
+assert "no spec copy is written when the workspace is not ignored" test ! -e "$REPO_C/specs/001-migration"
+
+REPO_E="$TMP_ROOT/repo-e"
+if make_fake_repo "$REPO_E" no; then
+    pass "repository for the spec ignore refusal is created"
+else
+    fail "repository for the spec ignore refusal is created"
+fi
+printf '/migration-workspace/\n' >"$REPO_E/.gitignore"
+generate_repo "$REPO_E" e
+"$REPO_E/sk-moneybird-accountant/scripts/init-workspace.sh" >"$TMP_ROOT/init-spec-not-ignored.txt" 2>&1
+spec_not_ignored_status=$?
+if [ "$spec_not_ignored_status" -ne 0 ]; then
+    pass "a spec target that is not git-ignored is refused"
+else
+    fail "a spec target that is not git-ignored is refused"
+fi
+if grep -qi ignored "$TMP_ROOT/init-spec-not-ignored.txt"; then
+    pass "the spec refusal names the ignored rule"
+else
+    fail "the spec refusal names the ignored rule"
+fi
+assert "nothing is written when the spec target is not ignored" test ! -e "$REPO_E/specs/001-migration"
+assert "no workspace is written when the spec target is not ignored" test ! -e "$REPO_E/migration-workspace"
+
+REPO_F="$TMP_ROOT/repo-f"
+if make_fake_repo "$REPO_F" yes; then
+    pass "repository for the spec symlink refusal is created"
+else
+    fail "repository for the spec symlink refusal is created"
+fi
+generate_repo "$REPO_F" f
+mkdir -p "$TMP_ROOT/spec-link-target"
+ln -s "$TMP_ROOT/spec-link-target" "$REPO_F/specs/001-migration"
+"$REPO_F/sk-moneybird-accountant/scripts/init-workspace.sh" >"$TMP_ROOT/init-spec-symlink.txt" 2>&1
+spec_symlink_status=$?
+if [ "$spec_symlink_status" -ne 0 ]; then
+    pass "a symlinked spec target is refused"
+else
+    fail "a symlinked spec target is refused"
+fi
+if grep -qi symlink "$TMP_ROOT/init-spec-symlink.txt"; then
+    pass "the spec symlink refusal is explained in one line"
+else
+    fail "the spec symlink refusal is explained in one line"
+fi
+assert "the spec symlink is left in place" test -L "$REPO_F/specs/001-migration"
+assert "nothing is written through the spec symlink" test ! -e "$TMP_ROOT/spec-link-target/spec.md"
+assert "no workspace is written when the spec target is a symlink" test ! -e "$REPO_F/migration-workspace"
+
+REPO_H="$TMP_ROOT/repo-h"
+if make_fake_repo "$REPO_H" yes; then
+    pass "repository for the name refusals is created"
+else
+    fail "repository for the name refusals is created"
+fi
+generate_repo "$REPO_H" h
+INIT_H="$REPO_H/sk-moneybird-accountant/scripts/init-workspace.sh"
+
+invalid_accepted=0
+for bad in 1-migration 001-Migration 001_migration 001-migration/../x 000-migration-template; do
+    if "$INIT_H" --spec-name "$bad" >/dev/null 2>&1; then
+        invalid_accepted=$((invalid_accepted + 1))
+    fi
+done
+assert "invalid and reserved --spec-name values are refused" test "$invalid_accepted" -eq 0
+assert "a refused name creates no target folder" test ! -e "$REPO_H/specs/1-migration"
+assert "a refused name creates no default spec copy" test ! -e "$REPO_H/specs/001-migration"
+
+if "$INIT_H" --spec-name >/dev/null 2>&1; then
+    fail "--spec-name without a value is refused"
+else
+    pass "--spec-name without a value is refused"
+fi
+
+if "$INIT_H" --bogus >/dev/null 2>&1; then
+    fail "an unknown argument is refused"
+else
+    pass "an unknown argument is refused"
 fi
 
 printf '\nResult: %d passed, %d failed\n' "$passed" "$failed"

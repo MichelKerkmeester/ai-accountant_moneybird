@@ -1,0 +1,25 @@
+{
+  "level": "3",
+  "specFolder": "000-migration-template/015-phase-14-year-lock",
+  "description": "At the start of Phase 14: Year lock, the migration cannot move on because the purpose of this phase is not yet met",
+  "keywords": [
+    "start",
+    "phase",
+    "year",
+    "lock",
+    "migration",
+    "cannot",
+    "move",
+    "because",
+    "purpose",
+    "met"
+  ],
+  "lastUpdated": "2026-10-11T15:08:01.744Z",
+  "specId": "015",
+  "folderSlug": "phase-14-year-lock",
+  "parentChain": [
+    "000-migration-template"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}
