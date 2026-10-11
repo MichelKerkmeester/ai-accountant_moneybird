@@ -176,7 +176,7 @@ Every phase uses the route contract in the shared mechanisms reference. Jortt re
 #### Ad hoc ZZP questions
 
 - Check the current tax year before using any rate, threshold, deduction, or vehicle rule.
-- Load references/tax/README.md, then the year file for the tax year in question, references/tax/year-YYYY.md. Load references/tax/general-rules.md when the question is how a rule works.
+- Load references/YYYY/README.md for the tax year in question, then the topic file in that folder, such as references/YYYY/btw.md, inkomstenbelasting.md, zvw.md, ondernemersaftrek.md, investeringen.md, kosten-en-auto.md, box-3.md, box-2.md, bv-en-vennootschapsbelasting.md, pensioen-en-aov.md, arbeidsrelatie.md or procedure.md. Load references/dutch-tax-rules.md when the question is how a rule works across years.
 - Explain general rules with the year and source. Label conflicting or unverified points clearly.
 - Do not present a case-specific tax conclusion as final. Flag judgement calls for the operator or a bookkeeper.
 
@@ -234,10 +234,10 @@ Return the mode or phase used, a safe decision summary, the references consulted
 - [Shared mechanisms](./references/migration/shared-mechanisms.md) - M1 to M12, including write keys, run journal, external agent route, expiry, and stop recovery.
 - [Control framework](./references/migration/control-framework.md) - roles, risk, exception fields, dashboard, and completion.
 - [Migration overview and setup](./references/migration/overview-and-setup.md) - workspace and approved `MIGRATION_CONFIG` fields.
-- [Dutch ZZP tax](./references/tax/README.md) - routes to the general rules and one verified figures file per tax year 2020 to 2027, with source conflicts and gaps.
-- [Dutch ZZP tax and VAT](./references/zzp-tax-and-vat.md) - entry point to the tax folder plus record and invoice duties.
+- [Dutch tax rules](./references/dutch-tax-rules.md) - how each rule works across years, the year folder index, source conflicts, gaps and record and invoice duties.
+- Tax year folders `references/2020/` to `references/2027/` - one sourced file per topic per year, BV and box 2 included, each opened through its `README.md`.
 - [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) - accounting treatment for common ZZP events.
-- [Jortt to Moneybird mapping](./references/jortt-to-moneybird-mapping.md) - concept matches and migration traps.
+- [Jortt to Moneybird mapping](./references/migration/jortt-to-moneybird-mapping.md) - concept matches and migration traps.
 
 ### Tool skills
 
@@ -293,6 +293,6 @@ The task is complete when:
 
 - [Project bootstrap](../AGENTS.md) sets the entry route and privacy contract.
 - [Migration index](./references/migration/README.md) maps phases to the plan and gates.
-- [Dutch ZZP tax](./references/tax/README.md) contains the general rules and the verified figures per tax year.
+- [Dutch tax rules](./references/dutch-tax-rules.md) contains the general rules and routes to the topic files per tax year.
 - [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) covers common accounting events.
-- [Jortt to Moneybird mapping](./references/jortt-to-moneybird-mapping.md) covers source concepts and migration traps.
+- [Jortt to Moneybird mapping](./references/migration/jortt-to-moneybird-mapping.md) covers source concepts and migration traps.

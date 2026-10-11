@@ -50,9 +50,9 @@
     "key_files": [
       "SKILL.md",
       "references/migration/README.md",
-      "references/zzp-tax-and-vat.md",
+      "references/dutch-tax-rules.md",
       "references/moneybird-bookkeeping.md",
-      "references/jortt-to-moneybird-mapping.md"
+      "references/migration/jortt-to-moneybird-mapping.md"
     ],
     "entities": [],
     "source_docs": [

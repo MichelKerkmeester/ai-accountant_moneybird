@@ -77,6 +77,6 @@ CLI route for target review or write work: [cli-moneybird](../../cli-moneybird/S
 
 ## 5. RELATED RESOURCES
 
-- [Migration phase index](./migration/README.md) contains phase routing and gates.
-- [Moneybird bookkeeping](./moneybird-bookkeeping.md) describes target accounting treatment.
-- [Dutch ZZP tax and VAT](./zzp-tax-and-vat.md) carries current-year rules and values.
+- [Migration phase index](./README.md) contains phase routing and gates.
+- [Moneybird bookkeeping](../moneybird-bookkeeping.md) describes target accounting treatment.
+- [Dutch tax rules](../dutch-tax-rules.md) explains the tax rules and routes to the year folders with the values per year.

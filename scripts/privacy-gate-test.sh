@@ -330,8 +330,8 @@ expect_blocked "staged amount" amount --staged
 reset_tree
 
 mkdir -p sk-moneybird-accountant/references
-printf 'rate EUR %s\n' '0.00' > sk-moneybird-accountant/references/zzp-tax-and-vat.md
-git add sk-moneybird-accountant/references/zzp-tax-and-vat.md
+printf 'rate EUR %s\n' '0.00' > sk-moneybird-accountant/references/dutch-tax-rules.md
+git add sk-moneybird-accountant/references/dutch-tax-rules.md
 expect_clean "amount in an allowed reference file" --staged
 reset_tree
 

@@ -45,7 +45,7 @@ A local-only check can confirm that the skill chooses its mode and references wh
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| API-001 | CLI tool handoff | Route Jortt reads and Moneybird reads or writes through their owning sibling skills. | I need a read from Jortt and a gated write in Moneybird. Which CLI and sibling skills own those actions? Do not execute either action. | 1. Read AI Systems/Moneybird Accountant/AGENTS.md -> 2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md -> 3. Read references/jortt-to-moneybird-mapping.md -> 4. Name jortt-cli for the Jortt read and moneybird-guard for the Moneybird read or write -> 5. Confirm that no CLI action was executed | Names jortt-cli for read-only Jortt work and moneybird-guard for Moneybird work, sets MONEYBIRD_GUARD_READ_ONLY=1 for read-only sessions, preserves the gate and approval rule, and executes nothing. | Capture the prompt, each tool handoff, the write gate, and confirmation that no CLI call occurred. | PASS if the CLI routes are correct, Moneybird write approval is retained, and no action is executed. FAIL if Jortt write access is suggested, a Moneybird write bypasses moneybird-guard or the gate, or an API call occurs. | Check the system boundaries, then the relevant sibling skill links. Repeat with API tools unavailable. |
+| API-001 | CLI tool handoff | Route Jortt reads and Moneybird reads or writes through their owning sibling skills. | I need a read from Jortt and a gated write in Moneybird. Which CLI and sibling skills own those actions? Do not execute either action. | 1. Read AI Systems/Moneybird Accountant/AGENTS.md -> 2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md -> 3. Read references/migration/jortt-to-moneybird-mapping.md -> 4. Name jortt-cli for the Jortt read and moneybird-guard for the Moneybird read or write -> 5. Confirm that no CLI action was executed | Names jortt-cli for read-only Jortt work and moneybird-guard for Moneybird work, sets MONEYBIRD_GUARD_READ_ONLY=1 for read-only sessions, preserves the gate and approval rule, and executes nothing. | Capture the prompt, each tool handoff, the write gate, and confirmation that no CLI call occurred. | PASS if the CLI routes are correct, Moneybird write approval is retained, and no action is executed. FAIL if Jortt write access is suggested, a Moneybird write bypasses moneybird-guard or the gate, or an API call occurs. | Check the system boundaries, then the relevant sibling skill links. Repeat with API tools unavailable. |
 
 ### Prompt
 
@@ -55,7 +55,7 @@ A local-only check can confirm that the skill chooses its mode and references wh
 
 1. Read AI Systems/Moneybird Accountant/AGENTS.md
 2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md
-3. Read references/jortt-to-moneybird-mapping.md
+3. Read references/migration/jortt-to-moneybird-mapping.md
 4. Name jortt-cli for the Jortt read and moneybird-guard for the Moneybird read or write
 5. Confirm that no CLI action was executed
 
@@ -103,6 +103,6 @@ Check the system boundaries, then the relevant sibling skill links. Repeat with 
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/api-tool-handoff.md
 
-**Exact command sequence:** 1. Read AI Systems/Moneybird Accountant/AGENTS.md -> 2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md -> 3. Read references/jortt-to-moneybird-mapping.md -> 4. Name jortt-cli for the Jortt read and moneybird-guard for the Moneybird read or write -> 5. Confirm that no CLI action was executed
+**Exact command sequence:** 1. Read AI Systems/Moneybird Accountant/AGENTS.md -> 2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md -> 3. Read references/migration/jortt-to-moneybird-mapping.md -> 4. Name jortt-cli for the Jortt read and moneybird-guard for the Moneybird read or write -> 5. Confirm that no CLI action was executed
 
-**Expected resources:** references/jortt-to-moneybird-mapping.md
+**Expected resources:** references/migration/jortt-to-moneybird-mapping.md

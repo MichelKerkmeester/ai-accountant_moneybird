@@ -77,7 +77,7 @@ Post proprietor contributions and withdrawals against private or equity accounts
 
 ### Business kilometres in a private vehicle
 
-Record the supported business distance with the rate for the travel year and a trip purpose. Keep the trip log. Do not separately deduct fuel, insurance, repairs, or parking that the kilometre allowance already covers. The amount changes by year, so first check [the tax reference](./zzp-tax-and-vat.md).
+Record the supported business distance with the rate for the travel year and a trip purpose. Keep the trip log. Do not separately deduct fuel, insurance, repairs, or parking that the kilometre allowance already covers. The amount changes by year, so first check `kosten-en-auto.md` in the folder for the travel year, routed from [the Dutch tax rules](./dutch-tax-rules.md).
 
 - Product reference: [business kilometres](https://helpcenter.moneybird.nl/nl/articles/207993-zakelijke-gereden-kilometers-verwerken), per Moneybird help reviewed on 2026-10-10.
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
@@ -127,6 +127,6 @@ Moneybird does not prepare the proprietor's complete personal income-tax return.
 
 ## 8. RELATED RESOURCES
 
-- [Dutch ZZP tax and VAT](./zzp-tax-and-vat.md) provides yearly amounts and general tax rules.
-- [Jortt to Moneybird mapping](./jortt-to-moneybird-mapping.md) explains source-to-target concept mapping.
+- [Dutch tax rules](./dutch-tax-rules.md) explains the general tax rules and routes to the year folders with the yearly amounts.
+- [Jortt to Moneybird mapping](./migration/jortt-to-moneybird-mapping.md) explains source-to-target concept mapping.
 - [Migration phase index](./migration/README.md) routes historical migration work.

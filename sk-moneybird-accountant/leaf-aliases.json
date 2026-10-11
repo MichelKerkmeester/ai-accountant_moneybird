@@ -131,8 +131,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/jortt-to-moneybird-mapping.md",
-    "diskPath": "references/jortt-to-moneybird-mapping.md"
+    "leafResourceId": "references/migration/jortt-to-moneybird-mapping.md",
+    "diskPath": "references/migration/jortt-to-moneybird-mapping.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -196,7 +196,7 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/zzp-tax-and-vat.md",
-    "diskPath": "references/zzp-tax-and-vat.md"
+    "leafResourceId": "references/dutch-tax-rules.md",
+    "diskPath": "references/dutch-tax-rules.md"
   }
 ]

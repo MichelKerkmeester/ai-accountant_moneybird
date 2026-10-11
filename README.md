@@ -46,7 +46,7 @@ The skill keeps the workflow in one place. The two CLI skills own API details, s
 | Mode | Use it for | Start with |
 |---|---|---|
 | **MIGRATION** | Moving historical Jortt records into Moneybird | The [migration index](sk-moneybird-accountant/references/migration/README.md), the matching phase file and the [shared mechanisms](sk-moneybird-accountant/references/migration/shared-mechanisms.md) |
-| **LIVE** | A monthly or quarterly review, a yearly close or a one-off ZZP question | The [Moneybird bookkeeping reference](sk-moneybird-accountant/references/moneybird-bookkeeping.md) and the [tax reference](sk-moneybird-accountant/references/tax/README.md) |
+| **LIVE** | A monthly or quarterly review, a yearly close or a one-off ZZP question | The [Moneybird bookkeeping reference](sk-moneybird-accountant/references/moneybird-bookkeeping.md) and the [Dutch tax rules](sk-moneybird-accountant/references/dutch-tax-rules.md) with one folder per tax year |
 
 If the mode is unclear, the assistant asks one question instead of guessing a phase or a tax year. It checks the current tax year before it uses any rate or threshold. Tax decisions and return filing stay with the Operator or a bookkeeper.
 
@@ -348,9 +348,9 @@ The Jortt API does not provide them. Download them yourself from the Jortt UI.
 
 **Bookkeeping references**
 
-- **[→ Dutch Tax](sk-moneybird-accountant/references/tax/README.md)** - general rules and verified figures for each tax year from 2020 to 2027, with their sources
+- **[→ Dutch Tax](sk-moneybird-accountant/references/dutch-tax-rules.md)** - how the rules work across years, plus one folder per tax year from 2020 to 2027 with a detailed, sourced file per topic, BV and box 2 included
 - **[→ Moneybird Bookkeeping](sk-moneybird-accountant/references/moneybird-bookkeeping.md)** - accounting treatment for common events
-- **[→ Jortt to Moneybird Mapping](sk-moneybird-accountant/references/jortt-to-moneybird-mapping.md)** - concept matches and migration traps
+- **[→ Jortt to Moneybird Mapping](sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md)** - concept matches and migration traps
 
 &nbsp;
 

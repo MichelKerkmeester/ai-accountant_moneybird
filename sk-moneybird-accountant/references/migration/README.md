@@ -72,4 +72,4 @@ Phases 19 to 21 are recurring loops. They start when Phase 18 passes and continu
 - [Control framework](./control-framework.md) defines roles, risk review, exception handling, dashboard status, and completion.
 - [Shared mechanisms](./shared-mechanisms.md) defines M1 to M12, the external agent route, and the tool route contract.
 - [Moneybird bookkeeping](../moneybird-bookkeeping.md) covers accounting treatment for common events.
-- [Jortt to Moneybird mapping](../jortt-to-moneybird-mapping.md) covers concept matches and migration traps.
+- [Jortt to Moneybird mapping](./jortt-to-moneybird-mapping.md) covers concept matches and migration traps.

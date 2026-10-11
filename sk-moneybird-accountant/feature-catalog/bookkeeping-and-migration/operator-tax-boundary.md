@@ -35,8 +35,7 @@ A return-submission request is handed to the operator. A personal eligibility or
 |---|---|---|
 | AI Systems/Moneybird Accountant/AGENTS.md | Shared | Makes return filing operator-only and requires escalation of tax judgement. |
 | AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Shared | Defines the tax and return boundaries. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/tax/README.md | Shared | Separates verified rules from conflicts, unverified points and proposals. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/tax/general-rules.md | Shared | Gives the general rule that the operator or bookkeeper applies to a personal case. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/dutch-tax-rules.md | Shared | Gives the general rule that the operator or bookkeeper applies to a personal case and separates verified rules from conflicts, unverified points and proposals. |
 
 ### Validation And Tests
 
