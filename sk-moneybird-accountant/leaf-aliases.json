@@ -11,6 +11,16 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-archive-decommission-gate.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-archive-decommission-gate.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-auditfile-export-route.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-auditfile-export-route.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-data-privacy.md",
     "diskPath": "feature-catalog/bookkeeping-and-migration/migration-data-privacy.md"
   },
@@ -18,6 +28,21 @@
     "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-phase-routing.md",
     "diskPath": "feature-catalog/bookkeeping-and-migration/migration-phase-routing.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-stop-and-resume.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-stop-and-resume.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-trial-and-package-expiry.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-trial-and-package-expiry.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-write-keys-and-run-journal.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-write-keys-and-run-journal.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -36,8 +61,18 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/auditfile-read-only-route.md",
+    "diskPath": "manual-testing-playbook/offline-routing/auditfile-read-only-route.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "manual-testing-playbook/offline-routing/current-year-zzp-question.md",
     "diskPath": "manual-testing-playbook/offline-routing/current-year-zzp-question.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/jortt-decommission-gate.md",
+    "diskPath": "manual-testing-playbook/offline-routing/jortt-decommission-gate.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -66,6 +101,16 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/trial-expiry-stop.md",
+    "diskPath": "manual-testing-playbook/offline-routing/trial-expiry-stop.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/write-journal-crash-resume.md",
+    "diskPath": "manual-testing-playbook/offline-routing/write-journal-crash-resume.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "references/jortt-to-moneybird-mapping.md",
     "diskPath": "references/jortt-to-moneybird-mapping.md"
   },
@@ -81,13 +126,13 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/migration/live-workflows-phases-17-to-20.md",
-    "diskPath": "references/migration/live-workflows-phases-17-to-20.md"
+    "leafResourceId": "references/migration/overview-and-setup.md",
+    "diskPath": "references/migration/overview-and-setup.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/migration/overview-and-setup.md",
-    "diskPath": "references/migration/overview-and-setup.md"
+    "leafResourceId": "references/migration/phase-22-completion.md",
+    "diskPath": "references/migration/phase-22-completion.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -101,6 +146,16 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/phases-17-to-18.md",
+    "diskPath": "references/migration/phases-17-to-18.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/phases-19-to-21.md",
+    "diskPath": "references/migration/phases-19-to-21.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "references/migration/phases-3-to-5.md",
     "diskPath": "references/migration/phases-3-to-5.md"
   },
@@ -108,6 +163,11 @@
     "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "references/migration/phases-6-to-9.md",
     "diskPath": "references/migration/phases-6-to-9.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/shared-mechanisms.md",
+    "diskPath": "references/migration/shared-mechanisms.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",

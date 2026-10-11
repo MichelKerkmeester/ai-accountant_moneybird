@@ -1,6 +1,6 @@
 ---
 title: sk-moneybird-accountant: Manual Testing Playbook
-description: Offline scenarios for verifying mode selection, reference routing, CLI handoffs, tax boundaries, and privacy rules.
+description: Offline scenarios for verifying phase routing, write recovery, archive gates, expiry stops, export routes, and operator boundaries.
 version: 1.0.0.0
 ---
 
@@ -25,7 +25,7 @@ A scenario run is complete only after its PASS, FAIL, or SKIP outcome and reason
 
 ## 1. OVERVIEW
 
-The scenarios validate current mode selection, reference routing, CLI ownership boundaries, tax limits, and privacy behavior. The root index links each scenario to its execution file and matching feature catalog entry.
+The scenarios validate phase routing, write recovery, archive and decommission gates, access-expiry stops, auditfile routing, CLI ownership boundaries, tax limits, and privacy behavior. The root index links each scenario to its execution file and matching feature catalog entry.
 
 Coverage note: this package checks local routing and policy. It does not call external services.
 
@@ -46,7 +46,7 @@ Coverage note: this package checks local routing and policy. It does not call ex
 - User prompt used
 - Selected mode and phase where applicable
 - Exact reference paths read
-- Owner tags and gate decisions when migration is in scope
+- Owner tags, gate decisions, and stop or resume rules when migration is in scope
 - API-free confirmation
 - Pass or fail rationale
 
@@ -109,16 +109,80 @@ These checks read local public documentation. One runner can execute them in ord
 ### MODE-001 | Migration phase routing
 
 #### Description
-Verify Route a request at Phase 3 to the correct migration reference and gate.
+Verify recurring-cycle routing after Phase 18 and the one-time Phase 22 completion gate.
 
 #### Scenario Contract
-Prompt: I have passed Phase 2 and need to reconstruct the source records. Which migration reference and gate should I use? Do not access any accounting API.
+Prompt: I have passed Phase 18. Which phases repeat during monitoring, and when can Jortt be cancelled? Do not access any accounting API.
 
-Desired user-visible outcome: Selects MIGRATION, Phase 3 to 5, the matching reference, and the control framework. Preserves owner tags and states that no API was called.
+Desired user-visible outcome: Routes monthly, VAT-period, and yearly cycles to Phases 19 to 21 after Phase 18. Routes final completion to Phase 22 and refuses cancellation before that gate passes. Preserves owner tags and reports no API call. Any tool route it names matches the route contract.
 
 #### Test Execution
 Feature file: [MODE-001](offline-routing/migration-phase-routing.md)
-Catalog: [feature-catalog/migration-phase-routing.md](../feature-catalog/bookkeeping-and-migration/migration-phase-routing.md)
+Catalog: [migration phase routing](../feature-catalog/bookkeeping-and-migration/migration-phase-routing.md)
+
+---
+
+### MIG-001 | Jortt decommission gate
+
+#### Description
+Verify a request to cancel Jortt before Phase 22 is refused and routed to the one-time completion gate.
+
+#### Scenario Contract
+Prompt: Cancel Jortt now. Phase 22 has not passed. Do not access any accounting API.
+
+Desired user-visible outcome: Refuses cancellation, names the Phase 22 gate, and keeps the cancel-or-keep action with the Operator after the gate passes.
+
+#### Test Execution
+Feature file: [MIG-001](offline-routing/jortt-decommission-gate.md)
+Catalog: [archive and decommission gate](../feature-catalog/bookkeeping-and-migration/migration-archive-decommission-gate.md)
+
+---
+
+### MIG-002 | Write journal crash resume
+
+#### Description
+Verify a crashed write batch resumes from its journal with read-back and no blind retry.
+
+#### Scenario Contract
+Prompt: A Moneybird write batch crashed after WRITE_INTENT and the response was lost. Show how to resume from the journal. Do not call an API or blindly retry.
+
+Desired user-visible outcome: Checks the stable key, last verified journal state, source reference, and planned fields. Stops on ambiguity and does not replay the write blindly.
+
+#### Test Execution
+Feature file: [MIG-002](offline-routing/write-journal-crash-resume.md)
+Catalog: [write keys and run journal](../feature-catalog/bookkeeping-and-migration/migration-write-keys-and-run-journal.md)
+
+---
+
+### MIG-003 | Auditfile route under read-only lock
+
+#### Description
+Verify an auditfile request follows the documented export route while preserving the read-only lock.
+
+#### Scenario Contract
+Prompt: Fetch the Moneybird auditfile while MONEYBIRD_GUARD_READ_ONLY=1 is active. Which route applies? Do not execute a call or weaken the lock.
+
+Desired user-visible outcome: Prefers the Operator UI route, allows only the documented scoped POST exception with approval and receipt hash, and never weakens the global lock.
+
+#### Test Execution
+Feature file: [MIG-003](offline-routing/auditfile-read-only-route.md)
+Catalog: [auditfile export route](../feature-catalog/bookkeeping-and-migration/migration-auditfile-export-route.md)
+
+---
+
+### MIG-004 | Trial expiry stop
+
+#### Description
+Verify a write batch stops when trial or package access expires before verification.
+
+#### Scenario Contract
+Prompt: The trial expires before the next Moneybird write batch and read-back can finish. Should the batch proceed? Do not call an API.
+
+Desired user-visible outcome: Stops the batch until the Operator confirms valid access for the full write and verification window.
+
+#### Test Execution
+Feature file: [MIG-004](offline-routing/trial-expiry-stop.md)
+Catalog: [trial and package expiry](../feature-catalog/bookkeeping-and-migration/migration-trial-and-package-expiry.md)
 
 ---
 
@@ -233,6 +297,10 @@ No runtime test calls an accounting service. The scenarios remain manual routing
 | Feature ID | Feature Name | Category | Feature File |
 |---|---|---|---|
 | MODE-001 | Migration phase routing | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-phase-routing.md) |
+| MIG-001 | Migration archive and decommission gate | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-archive-decommission-gate.md) |
+| MIG-002 | Migration write keys and run journal | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-write-keys-and-run-journal.md) |
+| MIG-003 | Migration auditfile export route | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-auditfile-export-route.md) |
+| MIG-004 | Migration trial and package expiry | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-trial-and-package-expiry.md) |
 | LIVE-001 | Live bookkeeping cadence | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md) |
 | LIVE-002 | Live bookkeeping cadence | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md) |
 | TAX-001 | Year-specific ZZP guidance | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md) |

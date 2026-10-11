@@ -15,17 +15,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-Selects a Jortt to Moneybird migration phase, its reference, owner tags, and exit gate.
+Selects the Jortt to Moneybird migration phase, reference, owner tags, and exit gate.
 
-The skill routes historical Jortt to Moneybird work to a phase-group reference and its gate. The index maps phase groups, while the control framework carries cross-phase verification and stop conditions.
-
----
+The index lists all 23 phases in execution order and carries the old-to-new phase map. Phase 17 is source freeze, Phase 18 switches to live bookkeeping, Phases 19 to 21 recur after Phase 18, and Phase 22 is a one-time completion and decommission gate.
 
 ## 2. HOW IT WORKS
 
-The operator request and last passed exit gate determine the current phase. The agent loads the migration index, one phase group, and the control framework when gate, risk, exception, or year-lock details apply. Each source plan owner tag remains attached to its step.
+The last verified gate and the request determine the next phase. Load the index, the matching phase file, and shared mechanisms. Load the control framework for gate, risk, exception, stop, or year-lock details. Preserve exact owner tags. Keep Jortt uncancelled until Phase 22 passes and the Operator records a cancel-or-keep decision.
 
----
+Every phase uses the route contract in `shared-mechanisms.md`. Jortt reads run through jortt-cli only, XAF and other Jortt exports are Operator UI tasks, Moneybird reads run through moneybird-guard with `MONEYBIRD_GUARD_READ_ONLY=1`, a Moneybird write needs a passed gate, Operator approval and `--confirm-write`, plus `--production` for a production batch, and an HTTP 429 stops the call sequence for a guarded read-back before any retry.
 
 ## 3. SOURCE FILES
 
@@ -33,17 +31,18 @@ The operator request and last passed exit gate determine the current phase. The 
 
 | File | Layer | Role |
 |---|---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Shared | Defines phase detection, reference routing, owner-tag handling, and gate behavior. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/README.md | Shared | Maps phase ranges to the preserved migration references. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/phases-3-to-5.md | Shared | Carries the reconstruction and reconciliation phase group. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Shared | Defines phase detection, reference routing, owner tags, and decommission boundary. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/README.md | Shared | Lists all phases, execution order, and old-to-new map. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/shared-mechanisms.md | Shared | Defines cross-phase controls and the route contract. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/phases-17-to-18.md | Shared | Defines source freeze and live switch. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/phases-19-to-21.md | Shared | Defines recurring monthly, VAT-period, and yearly loops. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/phase-22-completion.md | Shared | Defines one-time completion and Jortt decision gate. |
 
 ### Validation And Tests
 
 | File | Type | Role |
 |---|---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/manual-testing-playbook/offline-routing/migration-phase-routing.md | Manual playbook | Offline routing scenario for this feature. |
-
----
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/manual-testing-playbook/offline-routing/migration-phase-routing.md | Manual playbook | Offline phase map and routing scenario. |
 
 ## 4. SOURCE METADATA
 
@@ -52,5 +51,6 @@ The operator request and last passed exit gate determine the current phase. The 
 - Feature file path: bookkeeping-and-migration/migration-phase-routing.md
 
 Related references:
-- [live-bookkeeping-cadence.md](live-bookkeeping-cadence.md) - Related workflow behavior.
-- [year-specific-zzp-guidance.md](year-specific-zzp-guidance.md) - Related workflow behavior.
+- [migration-write-keys-and-run-journal.md](migration-write-keys-and-run-journal.md) - Write gate and uncertain-outcome handling.
+- [migration-archive-decommission-gate.md](migration-archive-decommission-gate.md) - Source freeze and completion gate.
+- [migration-stop-and-resume.md](migration-stop-and-resume.md) - Stop recovery and checkpoint rules.

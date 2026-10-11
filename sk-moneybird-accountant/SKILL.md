@@ -63,7 +63,7 @@ If the request is ambiguous between the two modes, ask one concise question abou
 |---|---|---|
 | ALWAYS | Every task | This skill and the project bootstrap |
 | MIGRATION | Historical migration request | Migration index, the matching phase group, and control framework when a gate, exception, risk, or year lock applies |
-| LIVE BOOKKEEPING | Monthly, quarterly, yearly, or event-level bookkeeping | Moneybird bookkeeping reference and any relevant tax topic |
+| LIVE BOOKKEEPING | Monthly, quarterly, yearly, or event-level bookkeeping | Moneybird bookkeeping reference and any relevant tax topic. During post-cutover migration monitoring, also load references/migration/README.md and references/migration/phases-19-to-21.md. |
 | ZZP QUESTION | Tax, VAT, costs, vehicle, or administration question | Tax and VAT reference, then bookkeeping reference if a posting is also requested |
 | CLI ACTION | A Jortt or Moneybird CLI operation is needed | The matching sibling tool skill before using that CLI |
 
@@ -123,13 +123,17 @@ Discover local references at request time, guard each selected path inside the s
 
 ### Migration Phase Routing
 
-- Phases 0 to 2 cover safety, setup, inventory, and source collection.
-- Phases 3 to 5 cover independent reconstruction, reconciliation, and anomaly review.
-- Phases 6 to 9 cover mapping, the pilot, historical quarterly work, and VAT verification.
-- Phases 10 to 16 cover year-end checks, income-tax cross-checks, continuity, red-team review, year locks, and the current-year mirror.
-- Phases 17 to 20 cover the switch to live bookkeeping and the monthly, quarterly, and yearly workflows.
+- Phases 0 to 2 cover setup, source inventory, and archive seeding.
+- Phases 3 to 5 cover independent reconstruction, cross-reconciliation, and anomaly review.
+- Phases 6 to 9 cover mapping, pilot, historical period writes, and VAT verification.
+- Phases 10 to 16 cover annual checks, continuity, year locks, and cutover preparation.
+- Phase 17 freezes the source and verifies the archive. Phase 18 switches to live bookkeeping.
+- Phases 19 to 21 are recurring monthly, VAT-period, and yearly loops that start when Phase 18 passes.
+- Phase 22 is a one-time completion and Jortt decommission gate after the configured monitoring period.
 
-The index maps each phase to its reference file. Use the plan's existing exit gate before advancing. Do not infer that a phase passed because its work appears complete.
+The index maps every phase to its reference file. Use the last verified exit gate before advancing. Do not infer a pass from work that appears complete. Jortt stays uncancelled until Phase 22 passes and the Operator records a cancel-or-keep decision.
+
+Every phase uses the route contract in the shared mechanisms reference. Jortt reads run through jortt-cli only, XAF and other Jortt exports are Operator UI tasks, Moneybird reads run through moneybird-guard with `MONEYBIRD_GUARD_READ_ONLY=1`, a Moneybird write needs a passed gate, Operator approval and `--confirm-write`, plus `--production` for a production batch, and an HTTP 429 stops the call sequence for a guarded read-back before any retry.
 
 ---
 
@@ -138,12 +142,12 @@ The index maps each phase to its reference file. Use the plan's existing exit ga
 ### MIGRATION Mode
 
 1. Read the project bootstrap, then this skill.
-2. Read the migration index and identify the phase from the request and the last documented passed gate.
-3. Load the one phase-group reference for that phase. Load the control framework for gate criteria, verification, exceptions, stop conditions, or year locks.
-4. Preserve the plan's owner tags: [Operator], [AI], and [Operator + AI]. The operator owns credentials, source-system UI exports, approvals, and tax return filing.
-5. Route Jortt data reads through jortt-cli and Moneybird reads or writes through moneybird-guard. Follow the matching sibling skill's current CLI instructions.
-6. Keep migration data, working registers, reports, snapshots, and write journals in migration-workspace/.
-7. Stop at the phase exit gate. Record evidence and unresolved exceptions before moving forward.
+2. Read the migration index and identify the next phase from the last verified gate.
+3. Load the matching phase file and [shared mechanisms](./references/migration/shared-mechanisms.md). Load the control framework when a gate, risk, exception, stop, or year lock applies.
+4. Keep the phase contract's exact owner tags. The Operator owns approvals, UI exports, bank imports, period locks, return filing, and accounting decisions.
+5. Route Jortt reads through jortt-cli. Route Moneybird reads and approved writes through moneybird-guard. Keep `MONEYBIRD_GUARD_READ_ONLY=1` for every reader session. Open a separate approved writer session for non-GET calls and do read-back in a new locked reader session.
+6. Before every Moneybird non-GET batch, verify the current trial or package expiry, phase gate, Operator approval, and flushed `WRITE_INTENT`. Use stable local write keys and journal every state change.
+7. Keep work in migration-workspace/. Stop on any failed gate or open stop condition. Resume from the last verified journal state. After Phase 18 passes, use the phase 19 to 21 contracts for recurring migration cycles until Phase 22 passes. Never cancel Jortt before Phase 22 passes.
 
 ### LIVE Mode
 
@@ -178,7 +182,7 @@ The index maps each phase to its reference file. Use the plan's existing exit ga
 
 ### Output Contract
 
-Return the mode or phase used, the relevant records or decision basis, the references consulted, and any exception or operator action that remains. Put migration deliverables under migration-workspace/. Do not create an export/ folder.
+Return the mode or phase used, a safe decision summary, the references consulted, and any exception or Operator action that remains. Use only phase and record-class labels, opaque keys, aggregate counts, status, and evidence paths. Do not expose names, account identifiers, invoice numbers, amounts, or source payloads. Put migration deliverables under migration-workspace/. Do not create an export/ folder.
 
 ---
 
@@ -189,25 +193,26 @@ Return the mode or phase used, the relevant records or decision basis, the refer
 1. Check the current year before relying on any tax figure.
 2. Keep a clear distinction between confirmed rules, product documentation, conflicting values, and unverified points.
 3. Route every Jortt CLI read through jortt-cli, following cli-jortt/SKILL.md.
-4. Route every Moneybird CLI read or write through moneybird-guard, following cli-moneybird/SKILL.md. Mapping Agent, Independent Auditor and Red Team set MONEYBIRD_GUARD_READ_ONLY=1 before Moneybird reads.
-5. Treat a Moneybird write as gated work. Require the phase gate and operator approval described by the migration plan and the Moneybird tool skill.
-6. Keep migration data only in migration-workspace/.
-7. Preserve source evidence and record exceptions rather than making unexplained balancing entries.
-8. Preserve the migration plan's owner tags and stop at a failed gate.
-9. Refer legal, VAT, asset classification, private-use, and other judgement calls to the operator or a bookkeeper.
-10. Keep account records and source documents private.
+4. Route every Moneybird CLI read or write through moneybird-guard, following cli-moneybird/SKILL.md. Every read session sets `MONEYBIRD_GUARD_READ_ONLY=1`.
+5. Require the passed phase gate, Operator approval, current access window, stable local write key, flushed `WRITE_INTENT`, and read-back for every non-GET batch.
+6. Use the documented auditfile export route. Never weaken the global read-only lock for an analysis session.
+7. Keep migration records and evidence in migration-workspace/. Record exceptions rather than making unexplained balancing entries.
+8. Keep exact phase owner tags and stop at a failed gate. Resume from the last verified run-journal state.
+9. Refer legal, VAT, asset classification, private-use, and other judgement calls to the Operator or a bookkeeper.
+10. Keep source documents and account records private.
 
 ### ❌ NEVER
 
-1. Never file or submit an income-tax or VAT return. Filing is operator-only.
-2. Never give tax advice as the final answer. Explain general information and flag judgement calls for the operator or a bookkeeper.
-3. Never read personal database/ unless the operator names a specific file during a migration phase. Do not list that folder, search it, use wildcards, or follow its symlink.
+1. Never file or submit an income-tax or VAT return. Filing is Operator-only.
+2. Never present personal tax advice as final. Explain general information and flag judgement calls for the Operator or a bookkeeper.
+3. Never read the private database unless the project privacy rule names a specific source file. Do not list, search, wildcard, or follow its symlink.
 4. Never put migration data in skill references, chat summaries, or any folder outside migration-workspace/.
 5. Never request Jortt write access or use a Jortt write operation.
-6. Never write to Moneybird without the active migration gate and the required operator approval.
-7. Never invent a passed gate, reconciled value, source record, or tax eligibility.
-8. Never duplicate a Jortt category into Moneybird by label alone. Map by accounting purpose and tax treatment.
-9. Never expose credentials, account identifiers, personal names, amounts, or private source records in documentation.
+6. Never write to Moneybird without the active migration gate, current access check, and required Operator approval.
+7. Never cancel Jortt before Phase 22 passes. Never clear the read-only lock in a reader session. Use the guarded auditfile report-export route only in a separate approved writer session.
+8. Never invent a passed gate, reconciled value, source record, or tax eligibility.
+9. Never duplicate a Jortt category into Moneybird by label alone. Map by accounting purpose and tax treatment.
+10. Never expose credentials, account identifiers, personal names, amounts, or private source records in documentation.
 
 ### ⚠️ ESCALATE IF
 
@@ -225,7 +230,10 @@ Return the mode or phase used, the relevant records or decision basis, the refer
 
 ### Core references
 
-- [Migration index](./references/migration/README.md) - phase groups, gates, and owner-tag locations.
+- [Migration index](./references/migration/README.md) - execution-order phase map, old-to-new map, and routing.
+- [Shared mechanisms](./references/migration/shared-mechanisms.md) - write keys, run journal, route contract, expiry, and stop recovery.
+- [Control framework](./references/migration/control-framework.md) - roles, risk, exception fields, dashboard, and completion.
+- [Migration overview and setup](./references/migration/overview-and-setup.md) - workspace and approved `MIGRATION_CONFIG` fields.
 - [Dutch ZZP tax and VAT](./references/zzp-tax-and-vat.md) - year-specific figures, VAT, costs, private use, and administration duties.
 - [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) - accounting treatment for common ZZP events.
 - [Jortt to Moneybird mapping](./references/jortt-to-moneybird-mapping.md) - concept matches and migration traps.

@@ -17,7 +17,7 @@ version: 1.0.0.0
 
 Routes current monthly, quarterly, and yearly bookkeeping through the appropriate review steps.
 
-The LIVE mode guides recurring bookkeeping for current periods. It separates monthly reconciliation, quarterly VAT review, and yearly close work.
+The LIVE mode guides recurring bookkeeping for current periods. It separates monthly reconciliation, VAT-period review, and yearly close work. Migration Phases 19 to 21 start when Phase 18 passes and recur through the configured monitoring period.
 
 ---
 
@@ -35,7 +35,8 @@ The agent reviews sales, purchase records, bank transactions, private movements,
 |---|---|---|
 | AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Shared | Defines live mode and monthly, quarterly, and yearly workflows. |
 | AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/moneybird-bookkeeping.md | Shared | Explains common posting and reconciliation treatment. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/live-workflows-phases-17-to-20.md | Shared | Preserves the transition and live workflow instructions. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/phases-17-to-18.md | Shared | Defines the source freeze and live switch. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/phases-19-to-21.md | Shared | Defines recurring monthly, VAT-period, and yearly workflows. | |
 
 ### Validation And Tests
 
