@@ -98,6 +98,7 @@ Keep finance artifacts in the ignored `migration-workspace/` and preserve existi
 - `Archive/` for source exports, post-freeze deltas, and restoration evidence.
 - `Reviews/` for independent audit and red-team reports.
 - `Handoff/` for the approved final handoff.
+- `Plans/` for the phase dashboard and the 23 working phase plans copied from the plan kit in `assets/migration/`.
 - `AgentDesk/` for agent-facing briefs, drafts, fixtures, scripts, checks, summaries, verdicts, final reviews, and logs.
 
 Prompts and tool transcripts contain only schemas, field names, phase or record-class labels, opaque record keys, aggregate counts, status, and evidence paths. Keep personal names, supplier or customer details, account identifiers, invoice numbers, amounts, and source payloads in the controlled workspace only. Redact tool output before it enters a session transcript.
@@ -201,7 +202,7 @@ Thresholds are applied only to their named check. Do not net values across accou
 
 1. [Operator] Confirms the one empty Moneybird administration and sets both pilot and mirror selectors to it.
 2. [Operator] Records the configured start date and any start-year evidence already available. Phase 2 completes the start-year basis and opening position.
-3. [Orchestrator] Creates the workspace folders and versioned `MIGRATION_CONFIG`.
+3. [Orchestrator] Runs `bash sk-moneybird-accountant/scripts/init-workspace.sh` from the repository root. It creates the workspace folders, the versioned `MIGRATION_CONFIG` from its template, the phase dashboard and the 23 phase plans under `Plans/`, and never overwrites an existing file.
 4. [Operator] Records the trial or package state, observed expiry, evidence source, renewal owner, and expiry alert evidence.
 5. [Operator] Proposes and approves numeric thresholds, sample sizes, the sample rule, the minimum pre-cutover parallel comparison cycles, the monitoring period, and the minimum monthly, VAT-period, and yearly cycle counts, each with rationale. Fixing the cycle counts now keeps the monitoring target from moving once live results exist.
 6. [Operator] Decides whether writer isolation is available, records the decision, and sets a review date.

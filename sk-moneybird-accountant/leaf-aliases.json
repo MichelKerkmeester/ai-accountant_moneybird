@@ -36,6 +36,11 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-plan-kit.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-plan-kit.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-stop-and-resume.md",
     "diskPath": "feature-catalog/bookkeeping-and-migration/migration-stop-and-resume.md"
   },
@@ -93,6 +98,11 @@
     "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "manual-testing-playbook/offline-routing/migration-phase-routing.md",
     "diskPath": "manual-testing-playbook/offline-routing/migration-phase-routing.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/migration-plan-kit.md",
+    "diskPath": "manual-testing-playbook/offline-routing/migration-plan-kit.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",

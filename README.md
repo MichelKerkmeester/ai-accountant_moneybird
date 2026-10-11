@@ -107,6 +107,16 @@ Help me review my current Moneybird bookkeeping.
 
 For historical work, name the migration task or the last gate that passed. If the mode or phase is unclear, the assistant asks before it picks a route.
 
+### Start a migration
+
+Create your private working folder from the plan kit once:
+
+```bash
+bash sk-moneybird-accountant/scripts/init-workspace.sh
+```
+
+This builds the git-ignored `migration-workspace/` with every folder the plan uses, a `MIGRATION_CONFIG.json` with each field marked `PENDING`, a phase dashboard and one fill-in plan per phase in `migration-workspace/Plans/`. It never overwrites a file you already filled in, so you can run it again safely. Add `--dry-run` to see what it would create.
+
 &nbsp;
 
 ## 4. 🛤️ MIGRATION PLAN
@@ -209,6 +219,7 @@ The doctors are offline by default. The Jortt tests check the CLI contract again
 | `cli-jortt/cli/jortt-cli/tests/run-tests.sh` | Operation slugs, parameter checks, the write gate, the scope gate and the output boundary |
 | `cli-moneybird/scripts/doctor.sh` | Local tools, the pinned official CLI, config folders and whether credential files and settings exist |
 | `cli-moneybird/cli/moneybird-cli/tests/run-tests.sh` | Period warning, write confirmation, the pilot gate, the read-only lock, delete caution, the output boundary and logins |
+| `sk-moneybird-accountant/scripts/plan-kit-test.sh` | Phase plan generation, the drift check, workspace setup, no-overwrite and the refusals |
 | `scripts/privacy-gate-test.sh` | Every privacy-gate rule, that no blocked value is ever printed, and the commit and push modes |
 | Manual testing playbooks | Offline routing and guard scenarios in each skill folder, with one live Moneybird scenario that needs your approval |
 
@@ -222,7 +233,7 @@ A passing local test does not prove a live connection. For Jortt, `jortt-cli who
 .
 ├── .env.example                          local configuration template, no credentials
 ├── .githooks/                            privacy gate before commit and push, forwards to your global hooks
-├── .github/workflows/privacy-gate.yml    reruns the privacy gate over the history on every push
+├── .github/workflows/                    reruns the privacy gate and the plan kit checks on every push
 ├── .gitignore                            keeps secrets and private work data out of Git
 ├── .privacy-denylist.example             template for your local list of private terms
 ├── .privacy-gate.json                    privacy-gate allowlists and blocked paths
@@ -250,9 +261,11 @@ A passing local test does not prove a live connection. For Jortt, `jortt-cli who
 └── sk-moneybird-accountant/
     ├── README.md                         skill guide
     ├── SKILL.md                          mode router and operating contract
+    ├── assets/migration/                 plan kit: config, dashboard, journal and 23 phase plan templates
     ├── feature-catalog/                  what the skill does today
     ├── manual-testing-playbook/          offline routing scenarios
-    └── references/                       migration plan, tax, mapping and bookkeeping guides
+    ├── references/                       migration plan, tax, mapping and bookkeeping guides
+    └── scripts/                          plan kit generator, workspace setup and their tests
 ```
 
 Both CLI skills and the main skill also carry a `changelog/` and a `benchmark/` folder for release notes and run reports.
