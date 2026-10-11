@@ -11,8 +11,10 @@
 
 .DS_Store
 
-# Spec Kit packets for this system, kept local on purpose
-/specs/
+# Spec Kit packets stay local, except the public migration template packet
+!/specs/
+/specs/*
+!/specs/000-migration-template/
 
 # Local list of private terms checked by the privacy gate, never committed
 /.privacy-denylist

@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "packet_id": "000-migration-template/016-phase-15-repeat-from-oldest-to-newest-year",
+  "spec_folder": "000-migration-template/016-phase-15-repeat-from-oldest-to-newest-year",
+  "parent_id": "000-migration-template",
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "Repeat from oldest to newest year",
+      "phase 15 Repeat from oldest to newest year",
+      "Repeat from oldest to newest year plan",
+      "phase 15 Repeat from oldest to newest year plan",
+      "Repeat from oldest to newest year tasks",
+      "Repeat from oldest to newest year acceptance criteria",
+      "Repeat from oldest to newest year goal",
+      "Repeat from oldest to newest year decision record",
+      "Repeat from oldest to newest year implementation summary"
+    ],
+    "key_topics": [
+      "repeat",
+      "oldest",
+      "newest",
+      "year",
+      "phase",
+      "plan",
+      "tasks",
+      "acceptance",
+      "criteria",
+      "goal",
+      "decision",
+      "record"
+    ],
+    "importance_tier": "normal",
+    "status": "planned",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "decision-record.md",
+      "implementation-summary.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "decision-record.md",
+        "kind": "doc",
+        "path": "decision-record.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "The Operator",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Key Decisions",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "All Moneybird",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Critical Dependencies",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Phase Context",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Implementation Plan",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Technical Context",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Overview Inputs",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Every Operator",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Pattern Other",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Task Format",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Task Notation",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Completion Criteria",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Verification Checklist",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Verification Protocol",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Acceptance Criteria",
+        "kind": "proper_noun",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "At the start of Phase 15: Repeat from oldest to newest year, the migration cannot move on because the purpose of this phase is not yet met",
+    "created_at": "2026-10-11T14:34:55.561Z",
+    "last_save_at": "2026-10-11T15:08:45.847Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "decision-record.md",
+      "implementation-summary.md"
+    ],
+    "source_fingerprint": "sha256:ca591acb4ebd8a1ac26f60f1f9526a581f7bcbdb51b53cfbee802077de08c40a",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "c35f093353d17b56382a1e837f1294fb390a929acdb3750dcc78bdcbe9602400",
+      "plan.md": "51c38953d98ddc61ec258360284cd100923e931524dace8c6810002582821c00",
+      "tasks.md": "a90b5b386e5a8696a06a31d7620904fb554271977111416926ee1bf53298ccc4",
+      "decision-record.md": "9a081ec68081e39ac24c0a44a8e77a304f7b297a011f6a31c14e6a3264e82013",
+      "implementation-summary.md": "0998cd4c2a7c3771b22a3681e89dddaeaebf0ffd7354359c1e98c633db25e235"
+    },
+    "last_active_child_id": null,
+    "last_active_at": null
+  }
+}

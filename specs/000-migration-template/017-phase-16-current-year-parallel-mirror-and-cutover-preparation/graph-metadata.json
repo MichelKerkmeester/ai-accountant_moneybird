@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "packet_id": "000-migration-template/017-phase-16-current-year-parallel-mirror-and-cutover-preparation",
+  "spec_folder": "000-migration-template/017-phase-16-current-year-parallel-mirror-and-cutover-preparation",
+  "parent_id": "000-migration-template",
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "Current-year parallel mirror and cutover preparation",
+      "phase 16 Current-year parallel mirror and cutover preparation",
+      "Current-year parallel mirror and cutover preparation plan",
+      "phase 16 Current-year parallel mirror and cutover preparation plan",
+      "Current-year parallel mirror and cutover preparation tasks",
+      "Current-year parallel mirror and cutover preparation acceptance criteria",
+      "Current-year parallel mirror and cutover preparation goal",
+      "Current-year parallel mirror and cutover preparation decision record",
+      "Current-year parallel mirror and cutover preparation implementation summary"
+    ],
+    "key_topics": [
+      "current-year",
+      "parallel",
+      "mirror",
+      "cutover",
+      "preparation",
+      "phase",
+      "plan",
+      "tasks",
+      "acceptance",
+      "criteria",
+      "goal",
+      "decision"
+    ],
+    "importance_tier": "normal",
+    "status": "planned",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "decision-record.md",
+      "implementation-summary.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "decision-record.md",
+        "kind": "doc",
+        "path": "decision-record.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "The Operator",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Key Decisions",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "All Moneybird",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Critical Dependencies",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Phase Context",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Implementation Plan",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Technical Context",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Overview Inputs",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Every Operator",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Pattern Other",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Task Format",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Task Notation",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Completion Criteria",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Verification Checklist",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Verification Protocol",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Acceptance Criteria",
+        "kind": "proper_noun",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "At the start of Phase 16: Current-year parallel mirror and cutover preparation, the migration cannot move on because the purpose of this phase is not yet met",
+    "created_at": "2026-10-11T14:34:55.735Z",
+    "last_save_at": "2026-10-11T15:08:46.152Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "decision-record.md",
+      "implementation-summary.md"
+    ],
+    "source_fingerprint": "sha256:0a03536defc4cce0c0c9f11ab196979cef7dcec09ecf7cf30c5c7d44e7189b4f",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "0dbf9971cf87334c2df430395693c2f1124cf26ea71792752510e47c9e061e9c",
+      "plan.md": "3540ca49a86332dfca02b927761728c9e84dd597b5cf353abf3578a275c80003",
+      "tasks.md": "aa695c24e00cd274f3e7d9bf8e808bbd51ef919b18f2857e774a61776a0b0a1c",
+      "decision-record.md": "510a80775899874baf4f58414b8782a91f5f5ceeda68f5fd6a70c95c7a77db16",
+      "implementation-summary.md": "c9d11d5f9314ca78810f1cf8c97077722e8144421c9e2e802996527c2753efc5"
+    },
+    "last_active_child_id": null,
+    "last_active_at": null
+  }
+}

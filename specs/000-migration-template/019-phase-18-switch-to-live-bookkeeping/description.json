@@ -1,0 +1,26 @@
+{
+  "level": "3",
+  "specFolder": "000-migration-template/019-phase-18-switch-to-live-bookkeeping",
+  "description": "At the start of Phase 18: Switch to live bookkeeping, the migration cannot move on because the purpose of this phase is not yet met",
+  "keywords": [
+    "start",
+    "phase",
+    "switch",
+    "live",
+    "bookkeeping",
+    "migration",
+    "cannot",
+    "move",
+    "because",
+    "purpose",
+    "met"
+  ],
+  "lastUpdated": "2026-10-11T15:08:01.748Z",
+  "specId": "019",
+  "folderSlug": "phase-18-switch-to-live-bookkeeping",
+  "parentChain": [
+    "000-migration-template"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

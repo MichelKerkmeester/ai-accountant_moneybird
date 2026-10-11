@@ -1,0 +1,24 @@
+{
+  "level": "3",
+  "specFolder": "000-migration-template/008-phase-7-pilot-migration",
+  "description": "At the start of Phase 7: Pilot migration, the migration cannot move on because the purpose of this phase is not yet met",
+  "keywords": [
+    "start",
+    "phase",
+    "pilot",
+    "migration",
+    "cannot",
+    "move",
+    "because",
+    "purpose",
+    "met"
+  ],
+  "lastUpdated": "2026-10-11T15:08:01.738Z",
+  "specId": "008",
+  "folderSlug": "phase-7-pilot-migration",
+  "parentChain": [
+    "000-migration-template"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

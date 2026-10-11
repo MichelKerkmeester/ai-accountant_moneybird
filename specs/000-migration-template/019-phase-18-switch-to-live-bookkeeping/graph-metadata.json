@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "packet_id": "000-migration-template/019-phase-18-switch-to-live-bookkeeping",
+  "spec_folder": "000-migration-template/019-phase-18-switch-to-live-bookkeeping",
+  "parent_id": "000-migration-template",
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "Switch to live bookkeeping",
+      "phase 18 Switch to live bookkeeping",
+      "Switch to live bookkeeping plan",
+      "phase 18 Switch to live bookkeeping plan",
+      "Switch to live bookkeeping tasks",
+      "Switch to live bookkeeping acceptance criteria",
+      "Switch to live bookkeeping goal",
+      "Switch to live bookkeeping decision record",
+      "Switch to live bookkeeping implementation summary"
+    ],
+    "key_topics": [
+      "switch",
+      "live",
+      "bookkeeping",
+      "phase",
+      "plan",
+      "tasks",
+      "acceptance",
+      "criteria",
+      "goal",
+      "decision",
+      "record",
+      "implementation"
+    ],
+    "importance_tier": "normal",
+    "status": "planned",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "decision-record.md",
+      "implementation-summary.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "decision-record.md",
+        "kind": "doc",
+        "path": "decision-record.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "The Operator",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Key Decisions",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "All Moneybird",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Critical Dependencies",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Phase Context",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Implementation Plan",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Technical Context",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Overview Inputs",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Every Operator",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Pattern Other",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Task Format",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Task Notation",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Completion Criteria",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Verification Checklist",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Verification Protocol",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Acceptance Criteria",
+        "kind": "proper_noun",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "At the start of Phase 18: Switch to live bookkeeping, the migration cannot move on because the purpose of this phase is not yet met",
+    "created_at": "2026-10-11T14:34:56.074Z",
+    "last_save_at": "2026-10-11T15:08:46.767Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "decision-record.md",
+      "implementation-summary.md"
+    ],
+    "source_fingerprint": "sha256:77505a43db59dcc18203053e15e62eb71ff17f5ff6f3e15f71b2619b0dbb2ef3",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "5a8fd57eb79af72c7e2309fd964f9d556fc6e0158469030237e3b2a113b98e2f",
+      "plan.md": "b1eb1f6eafdbdb558adf7e6e2e49b053695f8cd2655e70cc8e1a0aecab171c6d",
+      "tasks.md": "a4e8cf77ebb42995ba9ecc39e25b668757d37aa038bd4f6cb5f1e8160c9eeb76",
+      "decision-record.md": "06b7d2a6e3270da480aa7960a6f75b66b1a5cb76dddf015e2a8a8c1e11950326",
+      "implementation-summary.md": "557d92a9451b1ddfcb35b90b5ca3c73e29fd6ec036fa580b479f5fb904eafa99"
+    },
+    "last_active_child_id": null,
+    "last_active_at": null
+  }
+}

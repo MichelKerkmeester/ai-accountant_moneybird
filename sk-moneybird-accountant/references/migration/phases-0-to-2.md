@@ -58,7 +58,7 @@ Tool skills, frozen gap register, approved source scope, empty trial setup facts
 2. [Operator + AI] Configure approved tool sessions using the sibling CLI skills. Read-only Moneybird work uses MONEYBIRD_GUARD_READ_ONLY=1 and explicit periods. Do not expose credentials in prompts, arguments, logs, reports, or tracked files.
 3. [Operator + AI] Confirm read routes and the selected administration with safe local evidence only. Report status codes and field names, not source names or amounts.
 4. [Operator + AI] Confirm the source archive boundary without opening, listing, searching, or reorganizing private source locations. Record the allowed input route and read-only rule.
-5. [Orchestrator] Run `scripts/init-workspace.sh` from this skill to create the folders listed in overview-and-setup.md under migration-workspace/ and copy the plan kit, the config template, the dashboard and the 23 phase plans, without overwriting an existing file.
+5. [Orchestrator] Run `scripts/init-workspace.sh` from this skill to create the folders listed in overview-and-setup.md under migration-workspace/ and copy the config template, the dashboard and the 23 phase packets, without overwriting an existing file.
 6. [Operator] Record the operating rules: no historical VAT, supplementary VAT, or income-tax filing, no historical tax payment, no invented amounts, no unexplained balancing entry, and no newly issued sales invoice. Historical sales documents use the approved external-invoice mapping.
 7. [Operator] Create required Moneybird tax rates in the UI and record the configured bookkeeping start date.
 8. [Operator] Verify the Jortt provider grant is limited to the required read scopes. Record scope evidence without credential values.

@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "packet_id": "000-migration-template/021-phase-20-live-vat-period-workflow",
+  "spec_folder": "000-migration-template/021-phase-20-live-vat-period-workflow",
+  "parent_id": "000-migration-template",
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "Live VAT-period workflow",
+      "phase 20 Live VAT-period workflow",
+      "Live VAT-period workflow plan",
+      "phase 20 Live VAT-period workflow plan",
+      "Live VAT-period workflow tasks",
+      "Live VAT-period workflow acceptance criteria",
+      "Live VAT-period workflow goal",
+      "Live VAT-period workflow decision record",
+      "Live VAT-period workflow implementation summary"
+    ],
+    "key_topics": [
+      "live",
+      "vat-period",
+      "workflow",
+      "phase",
+      "plan",
+      "tasks",
+      "acceptance",
+      "criteria",
+      "goal",
+      "decision",
+      "record",
+      "implementation"
+    ],
+    "importance_tier": "normal",
+    "status": "planned",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "decision-record.md",
+      "implementation-summary.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "decision-record.md",
+        "kind": "doc",
+        "path": "decision-record.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "The Operator",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Key Decisions",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "All Moneybird",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Critical Dependencies",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Phase Context",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Implementation Plan",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Technical Context",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Overview Inputs",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Every Operator",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Pattern Other",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Task Format",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Task Notation",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Completion Criteria",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Verification Checklist",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Verification Protocol",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Acceptance Criteria",
+        "kind": "proper_noun",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "At the start of Phase 20: Live VAT-period workflow, the migration cannot move on because the purpose of this phase is not yet met",
+    "created_at": "2026-10-11T14:34:56.420Z",
+    "last_save_at": "2026-10-11T15:08:47.378Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "decision-record.md",
+      "implementation-summary.md"
+    ],
+    "source_fingerprint": "sha256:6a2e540ce2f90e112c562a88252384dd78acd0d734b175a5db69e674270cf559",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "499f58b2cc2f78d495c4f6ee93cac9c3223b5c69bc6669de4b36138851827e8a",
+      "plan.md": "95822e31e35656f4817b985645af4372e61527aaee1b8b3013b663c6d45e87ce",
+      "tasks.md": "b56d944b5ffaf2e70fac30b0c1235ddc4d894c8c27053d242b55ed7622df97f6",
+      "decision-record.md": "874924828b056275924ba98a53a839440c5c2e134ab3eab31fe2790148ef2367",
+      "implementation-summary.md": "c5c8adcf14a4192abb9240e7c58e827dd679f3f1fa5fa998df331edb858a1a22"
+    },
+    "last_active_child_id": null,
+    "last_active_at": null
+  }
+}

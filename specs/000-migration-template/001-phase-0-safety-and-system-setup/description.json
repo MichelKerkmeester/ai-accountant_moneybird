@@ -1,0 +1,26 @@
+{
+  "level": "3",
+  "specFolder": "000-migration-template/001-phase-0-safety-and-system-setup",
+  "description": "At the start of Phase 0: Safety and system setup, the migration cannot move on because the purpose of this phase is not yet met",
+  "keywords": [
+    "start",
+    "phase",
+    "safety",
+    "system",
+    "setup",
+    "migration",
+    "cannot",
+    "move",
+    "because",
+    "purpose",
+    "met"
+  ],
+  "lastUpdated": "2026-10-11T15:08:01.731Z",
+  "specId": "001",
+  "folderSlug": "phase-0-safety-and-system-setup",
+  "parentChain": [
+    "000-migration-template"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

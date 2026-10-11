@@ -1,0 +1,156 @@
+---
+title: "Feature Specification: [Migration name] phase parent"
+description: "Phase parent for the Jortt to Moneybird bookkeeping migration of a Dutch sole trader. Tracks the 23 ordered child phase folders, the contract rules and the resume pointer."
+trigger_phrases:
+  - "migration phase parent spec"
+  - "jortt to moneybird migration overview"
+importance_tier: "important"
+contextType: "implementation"
+_memory:
+  continuity:
+    packet_pointer: "{{PACKET_POINTER}}"
+    last_updated_at: "2026-10-11T00:00:00Z"
+    last_updated_by: "operator"
+    recent_action: "Authored the migration phase parent spec"
+    next_safe_action: "Open the first packet whose exit gate is not yet passed"
+    blockers: []
+    key_files:
+      - "{{MECHANISMS_LINK}}"
+    completion_pct: 0
+    open_questions: []
+    answered_questions: []
+---
+<!-- SPECKIT_TEMPLATE_SOURCE: phase-parent-spec | v2.2 -->
+
+<!-- SPECKIT_LEVEL: 2 -->
+<!-- CONTENT DISCIPLINE: PHASE PARENT
+  FORBIDDEN content (do NOT author at phase-parent level):
+    - narrative history of earlier migrations, tools or folder layouts
+    - merged from, renamed from, ported from, X to Y rewrite stories
+    - heavy docs: plan.md, tasks.md, decision-record.md, implementation-summary.md. These belong in child phase folders only
+  REQUIRED content (MUST author at phase-parent level):
+    - Root purpose: why the migration is split into ordered phases at all
+    - Sub-phase list: every child phase folder and what it covers
+    - What needs done: the outcome the 23 phases work toward
+-->
+
+# Feature Specification: [Migration name] phase parent
+
+<!-- ANCHOR:metadata -->
+## 1. METADATA
+
+| Field | Value |
+|-------|-------|
+| **Level** | 2 |
+| **Priority** | P1 |
+| **Status** | Draft |
+| **Created** | [YYYY-MM-DD] |
+| **Branch** | `main` |
+| **Parent Spec** | `../spec.md` |
+| **Parent Packet** | {{PARENT_FOLDER}} |
+| **Predecessor** | None. This packet is the migration root |
+| **Successor** | None. Child phase packets hang off this parent |
+| **Handoff Criteria** | Each child folder passes `validate.sh` and records its exit gate before the next phase starts |
+<!-- /ANCHOR:metadata -->
+
+---
+
+<!-- ANCHOR:problem -->
+## 2. PROBLEM & PURPOSE
+
+### Problem Statement
+A Dutch sole trader keeps bookkeeping in Jortt and moves to Moneybird. The move touches real administration data, so an unplanned bulk change risks wrong ledgers, duplicate invoices or lost history. One large migration session also cannot be reviewed or interrupted safely.
+
+### Purpose
+This phase parent splits the migration into {{CHILD_COUNT}} ordered child phases (Phase 0 through Phase 22) with fixed rules, so each step is small, evidence-backed, reversible where possible and approved by the Operator before the next step starts. Source contract: [the source contract]({{REFERENCE_LINK}}) and [shared mechanisms]({{MECHANISMS_LINK}}).
+
+> **Phase-parent note:** This spec.md is the ONLY authored document at the parent level. All detailed planning, task breakdowns, checklists, and decisions live in the child phase folders listed in the Phase Documentation Map below. This keeps the parent from drifting stale as phases execute and pivot.
+<!-- /ANCHOR:problem -->
+
+---
+
+<!-- ANCHOR:scope -->
+## 3. SCOPE
+
+### In Scope
+- Phase 0 safety and system setup through Phase 22 cleanup, cancel or keep and archive, in order
+- Jortt read-only. Every Jortt touch is a read that feeds an input list or a reconciliation
+- Moneybird writes through moneybird-guard only, with the guard gate passed and Operator approval recorded before the write
+- Migration records and evidence inside `migration-workspace/`, which stays git ignored, so no migration file enters version control
+- One child folder per phase with its own spec, goal, plan, tasks, acceptance criteria and decision record
+
+### Out of Scope
+- The Jortt to Moneybird data conversion rules themselves. Each child phase references the matching section of [the source contract]({{REFERENCE_LINK}})
+- The shared mechanisms catalogue. It lives in [shared mechanisms]({{MECHANISMS_LINK}}) and is linked, not copied
+- Repo level tooling changes to the skills that drive the phases
+
+### Files to Change
+Summary of artifacts touched across all phases. Per-phase detail lives in each child's plan.md.
+
+| File Path | Change Type | Phase | Description |
+|-----------|-------------|-------|-------------|
+| `[NNN-phase-folder]/spec.md` | Create | all phases | Per-phase migration specification |
+| `[NNN-phase-folder]/acceptance-criteria.md` | Create | all phases | Gate status and Operator approval status |
+| `migration-workspace/[evidence path]/` | Create | all phases | Raw tool output, reconciliations and approval notes |
+<!-- /ANCHOR:scope -->
+
+---
+
+<!-- ANCHOR:phase-map -->
+## PHASE DOCUMENTATION MAP
+
+> This spec uses phased decomposition. Each phase is an independently executable child spec folder. All implementation details (plan, tasks, checklist, decisions, continuity) live inside the phase children. New phases MUST be added as child folders and rows, never appended as extra sections here.
+
+| Phase | Folder | Focus | Status |
+|-------|--------|-------|--------|
+{{PHASE_MAP_ROWS}}
+
+### Phase Transition Rules
+
+- Each phase MUST pass `validate.sh` independently, with its exit gate recorded in `acceptance-criteria.md` and Operator approval recorded in `decision-record.md`, before the next phase begins
+- Parent spec tracks aggregate progress via this map
+- Use `/spec_kit:resume {{PACKET_POINTER}}/[NNN-phase]/` to resume a specific phase
+- Run `validate.sh --recursive` on parent to validate all phases as integrated unit
+- Phase 22 owns the cancel-or-keep decision and the archive verification. The archive is verified before the migration is called done
+
+### Phase Handoff Criteria
+
+| From | To | Criteria | Verification |
+|------|-----|----------|--------------|
+| Each phase | The next phase in order | Following the ordered list in [the source contract]({{REFERENCE_LINK}}), the phase exit gate passes, zero stop conditions stay open, and Operator approval is recorded | `acceptance-criteria.md` statuses in the child folder plus the `decision-record.md` entry |
+<!-- /ANCHOR:phase-map -->
+
+---
+
+<!-- ANCHOR:questions -->
+## 4. OPEN QUESTIONS
+
+- Which administration alias in Moneybird receives the migrated data. Owner: [Operator name]
+- Whether the Jortt subscription is cancelled or kept read-only during a review period. Decided in Phase 22 by [Operator name]
+- Where the sealed migration archive is stored after Phase 22. Candidate: `migration-workspace/`
+- Whether the repo that hosts `migration-workspace/` already ignores it in `.gitignore`. Owner: [Operator name]
+- Whether any pre-check is skipped and whether a skipped pre-check needs a fresh gate before execution. Both go in the decision record.
+<!-- /ANCHOR:questions -->
+
+---
+
+## RELATED DOCUMENTS
+
+- **Source contract**: [the source contract]({{REFERENCE_LINK}})
+- **Shared mechanisms**: [shared mechanisms]({{MECHANISMS_LINK}})
+- **Phase children**: See sub-folders `[0-9][0-9][0-9]-*/` for per-phase spec.md, plan.md, tasks.md
+- **Parent Spec**: See `../spec.md`
+- **Graph Metadata**: See `graph-metadata.json` for `derived.last_active_child_id` pointer
+
+---
+
+<!-- ANCHOR:requirements -->
+## 4. REQUIREMENTS
+
+- Every phase owns one child folder named `<phase + 1>-phase-<n>-<slug>/` under {{PARENT_FOLDER}} and its own spec, goal, plan, tasks and acceptance criteria
+- Jortt stays read-only in every phase. Reads are allowed as inputs. Any Jortt write is a stop condition
+- Moneybird writes happen through moneybird-guard only, with the guard gate passed and Operator approval recorded
+- Phase records and evidence stay in the git ignored `migration-workspace/`, outside version control
+- Phases run in order. A phase that fails its entry check waits or rolls back. It does not push into the next phase
+- No phase closes with an unresolved stop condition or an unrecorded Operator decision
+<!-- /ANCHOR:requirements -->

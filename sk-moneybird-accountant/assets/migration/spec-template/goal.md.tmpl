@@ -1,0 +1,83 @@
+---
+title: "Goal: Phase {{PHASE_NUMBER}}: {{PHASE_TITLE}}"
+description: "The durable directive this packet executes against and the criteria that decide when it is done."
+trigger_phrases:
+  - "{{PHASE_TITLE}} goal"
+importance_tier: "important"
+contextType: "planning"
+_memory:
+  continuity:
+    packet_pointer: "{{PACKET_POINTER}}"
+    last_updated_at: "2026-10-11T00:00:00Z"
+    last_updated_by: "operator"
+    recent_action: "Authored the durable directive for Phase {{PHASE_NUMBER}}"
+    next_safe_action: "Execute against the completion criteria"
+    blockers: []
+    key_files: []
+    completion_pct: 0
+    open_questions: []
+    answered_questions: []
+---
+<!-- SPECKIT_TEMPLATE_SOURCE: goal | v2.2 -->
+# Goal: Phase {{PHASE_NUMBER}}: {{PHASE_TITLE}}
+
+
+---
+
+<!-- ANCHOR:directive -->
+## 1. DURABLE DIRECTIVE
+
+**Objective** (from the phase reference):
+
+{{GOAL}}
+
+**Parent binding:** this goal executes under [the parent goal](../goal.md) in `{{PARENT_FOLDER}}`. Parent decisions outrank this file, and a conflict gets named to the Operator rather than resolved silently.
+
+**Contract:** [{{REFERENCE_FILE}}]({{REFERENCE_LINK}}) and [shared-mechanisms.md]({{MECHANISMS_LINK}}).
+
+### Decisions
+
+Frozen choices. Changing one is an amendment.
+
+| ID | Decision |
+|----|----------|
+| D1 | Jortt stays read-only for this phase, reads and exports only. |
+| D2 | Every Moneybird write goes through moneybird-guard and stops at each Operator gate. |
+| D3 | Evidence stays in the ignored migration-workspace/, bookkeeping records stay in the administrations. |
+
+<!-- /ANCHOR:directive -->
+
+---
+
+<!-- ANCHOR:completion -->
+## 3. COMPLETION CRITERIA
+
+**Exit gate** (from the phase reference):
+
+{{EXIT_GATE}}
+
+{{GOAL_CRITERIA}}
+<!-- /ANCHOR:completion -->
+
+---
+
+<!-- ANCHOR:log -->
+## 4. LOG
+
+Everything below is VOLATILE. It is not part of the directive, it is not copied
+into the objective, and it is expected to grow. Progress, evidence, deviations
+and findings belong here.
+
+### Progress
+
+| Item | State | Evidence |
+|------|-------|----------|
+| Phase {{PHASE_NUMBER}} work | Pending | [evidence path in migration-workspace/] |
+| Operator decisions | Pending | decision-record.md |
+
+### Deviations and findings
+
+| Item | Note |
+|------|------|
+| None recorded | Frozen decisions D1 to D3 held. Any divergence gets written here with the Operator's call. |
+<!-- /ANCHOR:log -->

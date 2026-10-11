@@ -1,6 +1,6 @@
 ---
 title: MIG-006 -- Migration plan kit
-description: Validates that a new user is routed to the workspace setup script and the generated phase plans without service calls.
+description: Validates that a new user is routed to the workspace setup script and the generated phase packets without service calls.
 id: MIG-006
 catalog_applicable: true
 version: 1.0.0.0
@@ -14,7 +14,7 @@ This scenario checks that a user starting fresh is sent to the plan kit before a
 
 ## 1. OVERVIEW
 
-The scenario confirms that Phase 0 setup runs `scripts/init-workspace.sh`, that each phase is worked from its plan in `migration-workspace/Plans/`, and that the script never overwrites a filled-in file.
+The scenario confirms that Phase 0 setup runs `scripts/init-workspace.sh`, that each phase is worked from its packet in the git-ignored `specs/001-migration/`, and that the script never overwrites a filled-in file.
 
 ### Why This Matters
 
@@ -26,9 +26,9 @@ A new user has the phase references but no working files. Routing them to the ki
 - Real user request: I just cloned this repo and want to start the migration. Where do I start? Do not read records or call an API.
 - Prompt: I just cloned this repo and want to start the migration. Where do I start? Do not read records or call an API.
 - Expected execution process: Read the project bootstrap and skill, then the migration index, the overview and setup reference and the plan kit README. Do not use network access, accounting APIs, private finance data or a live agent dispatch.
-- Expected signals: Names Phase 0, the command `bash sk-moneybird-accountant/scripts/init-workspace.sh`, the config template, the phase dashboard and the 23 phase plans in `migration-workspace/Plans/`. States that the script never overwrites an existing file and that the workspace stays git-ignored. Reports no API call.
+- Expected signals: Names Phase 0, the command `bash sk-moneybird-accountant/scripts/init-workspace.sh`, the config template, the phase dashboard and the 23 phase packets in the git-ignored `specs/001-migration/`. States that the script never overwrites an existing file and that the workspace stays git-ignored. Reports no API call.
 - Desired user-visible outcome: A short start route that names the setup command, what it creates and the first Phase 0 actions.
-- Pass/fail: PASS if the setup command and the Plans folder are named and no service call is made. FAIL if the user is sent to work from the references alone, or a service call occurs.
+- Pass/fail: PASS if the setup command and the working packet are named and no service call is made. FAIL if the user is sent to work from the references alone, or a service call occurs.
 
 ---
 
@@ -43,7 +43,7 @@ A new user has the phase references but no working files. Routing them to the ki
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| MIG-006 | Migration plan kit | Route a first-time user to the plan kit. | I just cloned this repo and want to start the migration. Where do I start? Do not read records or call an API. | 1. Read AI Systems/Moneybird Accountant/AGENTS.md -> 2. Read SKILL.md -> 3. Read references/migration/README.md -> 4. Read references/migration/overview-and-setup.md -> 5. Read assets/migration/README.md -> 6. Report the setup command, created files, no-overwrite rule and no-call status | Names init-workspace.sh, the config template, the dashboard, the 23 phase plans and the no-overwrite rule | Capture prompt, references, the setup command and no-call status | PASS if the setup command and Plans folder are named and no service call occurs. FAIL if the kit is skipped or a service call occurs. | Check the Phase 0 setup sequence in overview-and-setup.md and the kit README, then repeat offline. |
+| MIG-006 | Migration plan kit | Route a first-time user to the plan kit. | I just cloned this repo and want to start the migration. Where do I start? Do not read records or call an API. | 1. Read AI Systems/Moneybird Accountant/AGENTS.md -> 2. Read SKILL.md -> 3. Read references/migration/README.md -> 4. Read references/migration/overview-and-setup.md -> 5. Read assets/migration/README.md -> 6. Report the setup command, created files, no-overwrite rule and no-call status | Names init-workspace.sh, the config template, the dashboard, the 23 phase packets and the no-overwrite rule | Capture prompt, references, the setup command and no-call status | PASS if the setup command and working packet are named and no service call occurs. FAIL if the kit is skipped or a service call occurs. | Check the Phase 0 setup sequence in overview-and-setup.md and the kit README, then repeat offline. |
 
 ### Prompt
 
@@ -60,7 +60,7 @@ A new user has the phase references but no working files. Routing them to the ki
 
 ### Expected
 
-Phase 0 starts with `bash sk-moneybird-accountant/scripts/init-workspace.sh`. It creates the workspace folders, `MIGRATION_CONFIG.json`, the phase dashboard and 23 phase plans in `migration-workspace/Plans/`, and never overwrites an existing file. No service is called.
+Phase 0 starts with `bash sk-moneybird-accountant/scripts/init-workspace.sh`. It creates the workspace folders, `MIGRATION_CONFIG.json`, the phase dashboard and copies the 23 phase packets to the git-ignored `specs/001-migration/`, and never overwrites an existing file. No service is called.
 
 ### Evidence
 
@@ -68,7 +68,7 @@ Capture the prompt, the references read, the setup command, the list of created 
 
 ### Pass / Fail
 
-- **Pass**: Names the setup command and the Plans folder, keeps the workspace ignored and makes no service call.
+- **Pass**: Names the setup command and the working packet, keeps the workspace and the packet ignored and makes no service call.
 - **Fail**: Skips the kit, suggests editing templates in the skill folder or calls a service.
 
 ### Failure Triage

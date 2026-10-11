@@ -1,0 +1,24 @@
+{
+  "level": "3",
+  "specFolder": "000-migration-template/012-phase-11-ib-cross-verification",
+  "description": "At the start of Phase 11: IB cross-verification, the migration cannot move on because the purpose of this phase is not yet met",
+  "keywords": [
+    "start",
+    "phase",
+    "cross-verification",
+    "migration",
+    "cannot",
+    "move",
+    "because",
+    "purpose",
+    "met"
+  ],
+  "lastUpdated": "2026-10-11T15:08:01.741Z",
+  "specId": "012",
+  "folderSlug": "phase-11-ib-cross-verification",
+  "parentChain": [
+    "000-migration-template"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

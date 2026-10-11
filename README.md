@@ -115,7 +115,7 @@ Create your private working folder from the plan kit once:
 bash sk-moneybird-accountant/scripts/init-workspace.sh
 ```
 
-This builds the git-ignored `migration-workspace/` with every folder the plan uses, a `MIGRATION_CONFIG.json` with each field marked `PENDING`, a phase dashboard and one fill-in plan per phase in `migration-workspace/Plans/`. It never overwrites a file you already filled in, so you can run it again safely. Add `--dry-run` to see what it would create.
+This builds the git-ignored `migration-workspace/` with every folder the plan uses, a `MIGRATION_CONFIG.json` with each field marked `PENDING` and a phase dashboard. It also copies the spec-kit template packet `specs/000-migration-template/` to the git-ignored `specs/001-migration/`: a phase parent plus one Level 3 packet per phase, each with a spec, plan, tasks, acceptance criteria, decision record, implementation summary and nested goal. Fill the bracketed placeholders with your own context as you work each phase. The script never overwrites a file you already filled in, so you can run it again safely. Add `--spec-name 002-my-books` to pick another packet name and `--dry-run` to see what it would create.
 
 &nbsp;
 
@@ -219,7 +219,7 @@ The doctors are offline by default. The Jortt tests check the CLI contract again
 | `cli-jortt/cli/jortt-cli/tests/run-tests.sh` | Operation slugs, parameter checks, the write gate, the scope gate and the output boundary |
 | `cli-moneybird/scripts/doctor.sh` | Local tools, the pinned official CLI, config folders and whether credential files and settings exist |
 | `cli-moneybird/cli/moneybird-cli/tests/run-tests.sh` | Period warning, write confirmation, the pilot gate, the read-only lock, delete caution, the output boundary and logins |
-| `sk-moneybird-accountant/scripts/plan-kit-test.sh` | Phase plan generation, the drift check, workspace setup, no-overwrite and the refusals |
+| `sk-moneybird-accountant/scripts/plan-kit-test.sh` | Phase packet generation, the drift check, workspace and packet setup, no-overwrite and the refusals |
 | `scripts/privacy-gate-test.sh` | Every privacy-gate rule, that no blocked value is ever printed, and the commit and push modes |
 | Manual testing playbooks | Offline routing and guard scenarios in each skill folder, with one live Moneybird scenario that needs your approval |
 
@@ -258,10 +258,11 @@ A passing local test does not prove a live connection. For Jortt, `jortt-cli who
 │   ├── feature-catalog/                  what the package does today
 │   └── manual-testing-playbook/          operator scenarios
 ├── scripts/                              privacy gate, its tests and the hook installer
+├── specs/000-migration-template/        spec-kit phase packets with placeholders, copied for your migration
 └── sk-moneybird-accountant/
     ├── README.md                         skill guide
     ├── SKILL.md                          mode router and operating contract
-    ├── assets/migration/                 plan kit: config, dashboard, journal and 23 phase plan templates
+    ├── assets/migration/                 plan kit: config, dashboard, journal and the packet doc templates
     ├── feature-catalog/                  what the skill does today
     ├── manual-testing-playbook/          offline routing scenarios
     ├── references/                       migration plan, tax, mapping and bookkeeping guides

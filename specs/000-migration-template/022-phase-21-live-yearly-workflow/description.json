@@ -1,0 +1,26 @@
+{
+  "level": "3",
+  "specFolder": "000-migration-template/022-phase-21-live-yearly-workflow",
+  "description": "At the start of Phase 21: Live yearly workflow, the migration cannot move on because the purpose of this phase is not yet met",
+  "keywords": [
+    "start",
+    "phase",
+    "live",
+    "yearly",
+    "workflow",
+    "migration",
+    "cannot",
+    "move",
+    "because",
+    "purpose",
+    "met"
+  ],
+  "lastUpdated": "2026-10-11T15:08:01.751Z",
+  "specId": "022",
+  "folderSlug": "phase-21-live-yearly-workflow",
+  "parentChain": [
+    "000-migration-template"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

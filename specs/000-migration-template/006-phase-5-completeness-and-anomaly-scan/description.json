@@ -1,0 +1,26 @@
+{
+  "level": "3",
+  "specFolder": "000-migration-template/006-phase-5-completeness-and-anomaly-scan",
+  "description": "At the start of Phase 5: Completeness and anomaly scan, the migration cannot move on because the purpose of this phase is not yet met",
+  "keywords": [
+    "start",
+    "phase",
+    "completeness",
+    "anomaly",
+    "scan",
+    "migration",
+    "cannot",
+    "move",
+    "because",
+    "purpose",
+    "met"
+  ],
+  "lastUpdated": "2026-10-11T15:08:01.736Z",
+  "specId": "006",
+  "folderSlug": "phase-5-completeness-and-anomaly-scan",
+  "parentChain": [
+    "000-migration-template"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

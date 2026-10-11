@@ -141,12 +141,12 @@ Catalog: [migration agent route](../feature-catalog/bookkeeping-and-migration/mi
 ### MIG-006 | Migration plan kit
 
 #### Description
-Verify that a first-time user is routed to the workspace setup script and the generated phase plans.
+Verify that a first-time user is routed to the workspace setup script and the generated phase packets.
 
 #### Scenario Contract
 Prompt: I just cloned this repo and want to start the migration. Where do I start? Do not read records or call an API.
 
-Desired user-visible outcome: Names the setup command, the config template, the dashboard and the 23 phase plans, keeps the no-overwrite rule and makes no service call.
+Desired user-visible outcome: Names the setup command, the config template, the dashboard and the 23 phase packets, keeps the no-overwrite rule and makes no service call.
 
 #### Test Execution
 Feature file: [MIG-006](offline-routing/migration-plan-kit.md)

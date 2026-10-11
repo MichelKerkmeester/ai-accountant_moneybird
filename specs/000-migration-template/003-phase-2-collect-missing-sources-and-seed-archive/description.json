@@ -1,0 +1,28 @@
+{
+  "level": "3",
+  "specFolder": "000-migration-template/003-phase-2-collect-missing-sources-and-seed-archive",
+  "description": "At the start of Phase 2: Collect missing sources and seed archive, the migration cannot move on because the purpose of this phase is not yet met",
+  "keywords": [
+    "start",
+    "phase",
+    "collect",
+    "missing",
+    "sources",
+    "seed",
+    "archive",
+    "migration",
+    "cannot",
+    "move",
+    "because",
+    "purpose",
+    "met"
+  ],
+  "lastUpdated": "2026-10-11T15:08:01.733Z",
+  "specId": "003",
+  "folderSlug": "phase-2-collect-missing-sources-and-seed-archive",
+  "parentChain": [
+    "000-migration-template"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

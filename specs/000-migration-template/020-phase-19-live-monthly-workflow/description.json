@@ -1,0 +1,26 @@
+{
+  "level": "3",
+  "specFolder": "000-migration-template/020-phase-19-live-monthly-workflow",
+  "description": "At the start of Phase 19: Live monthly workflow, the migration cannot move on because the purpose of this phase is not yet met",
+  "keywords": [
+    "start",
+    "phase",
+    "live",
+    "monthly",
+    "workflow",
+    "migration",
+    "cannot",
+    "move",
+    "because",
+    "purpose",
+    "met"
+  ],
+  "lastUpdated": "2026-10-11T15:08:01.749Z",
+  "specId": "020",
+  "folderSlug": "phase-19-live-monthly-workflow",
+  "parentChain": [
+    "000-migration-template"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

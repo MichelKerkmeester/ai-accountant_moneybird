@@ -1,0 +1,27 @@
+{
+  "level": "3",
+  "specFolder": "000-migration-template/016-phase-15-repeat-from-oldest-to-newest-year",
+  "description": "At the start of Phase 15: Repeat from oldest to newest year, the migration cannot move on because the purpose of this phase is not yet met",
+  "keywords": [
+    "start",
+    "phase",
+    "repeat",
+    "oldest",
+    "newest",
+    "year",
+    "migration",
+    "cannot",
+    "move",
+    "because",
+    "purpose",
+    "met"
+  ],
+  "lastUpdated": "2026-10-11T15:08:01.745Z",
+  "specId": "016",
+  "folderSlug": "phase-15-repeat-from-oldest-to-newest-year",
+  "parentChain": [
+    "000-migration-template"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}
