@@ -336,6 +336,17 @@ def identity_allowed(email):
 
 
 def path_blocked(path, config):
+    # An exception admits only the exact file shape its pattern names below
+    # its prefix, so scratch notes, dotfiles or a private folder nested in a
+    # tracked template stay blocked. Matching is case-sensitive so a case
+    # variant on a case-insensitive filesystem stays blocked too.
+    for entry in config.get("blocked_path_exceptions", ()):
+        prefix = entry.get("prefix", "") if isinstance(entry, dict) else ""
+        pattern = entry.get("pattern", "") if isinstance(entry, dict) else ""
+        if not prefix.endswith("/") or not pattern or not path.startswith(prefix):
+            continue
+        if re.fullmatch(pattern, path[len(prefix):]):
+            return False
     lowered = path.lower()
     for entry in config["blocked_paths"]:
         entry = entry.lower()
@@ -852,6 +863,30 @@ def run_self_test():
            not path_blocked(".env.example", {"blocked_paths": [".env"]}))
     expect("env sibling is blocked",
            path_blocked(".env.local", {"blocked_paths": [".env"]}))
+    exception = {"blocked_paths": ["specs/", "personal database", ".env"],
+                 "blocked_path_exceptions": [{
+                     "prefix": "specs/000-template/",
+                     "pattern": r"([0-9]{3}-phase-[0-9]+-[a-z0-9-]+/)?(spec\.md|goal\.md)"}]}
+    expect("exception admits a parent doc",
+           not path_blocked("specs/000-template/spec.md", exception))
+    expect("exception admits a phase doc",
+           not path_blocked("specs/000-template/001-phase-0-setup/goal.md", exception))
+    expect("sibling of an exception stays blocked",
+           path_blocked("specs/001-work/spec.md", exception))
+    expect("case variant of an exception stays blocked",
+           path_blocked("Specs/000-template/spec.md", exception))
+    expect("scratch note under an exception stays blocked",
+           path_blocked("specs/000-template/scratch/notes.md", exception))
+    expect("private folder nested in an exception stays blocked",
+           path_blocked("specs/000-template/personal database/x.md", exception))
+    expect("dotfile under an exception stays blocked",
+           path_blocked("specs/000-template/.env", exception))
+    expect("parent traversal under an exception stays blocked",
+           path_blocked("specs/000-template/../secret.md", exception))
+    expect("other file type under an exception stays blocked",
+           path_blocked("specs/000-template/export.csv", exception))
+    expect("unlisted doc name under an exception stays blocked",
+           path_blocked("specs/000-template/personal-notes.md", exception))
 
     planted = "api" + "_key = \"" + "zq" + ("9" * 12) + "\""
     expect("plain assignment blocks", bool(secret_hits(planted)))

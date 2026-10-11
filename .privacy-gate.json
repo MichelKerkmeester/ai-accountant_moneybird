@@ -4,7 +4,8 @@
     "json",
     "sh",
     "py",
-    "yml"
+    "yml",
+    "tmpl"
   ],
   "allowed_files": [
     "LICENSE",
@@ -30,6 +31,12 @@
     "specs/",
     ".env",
     ".privacy-denylist"
+  ],
+  "blocked_path_exceptions": [
+    {
+      "prefix": "specs/000-migration-template/",
+      "pattern": "([0-9]{3}-phase-[0-9]+-[a-z0-9-]+/)?((spec|plan|tasks|goal|acceptance-criteria|decision-record|implementation-summary)\\.md|(description|graph-metadata)\\.json)"
+    }
   ],
   "max_file_bytes": 524288,
   "amount_allowed_files": [
