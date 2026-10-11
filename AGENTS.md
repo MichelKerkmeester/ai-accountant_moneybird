@@ -36,7 +36,7 @@ Load only the relevant resource after reading the skill:
 
 - MIGRATION: read references/migration/README.md, then the one phase group that matches the active phase. Load control-framework.md when a gate, risk, exception, stop condition, or year lock applies.
 - Monthly, quarterly, or yearly bookkeeping: read references/moneybird-bookkeeping.md and the relevant tax section when needed.
-- Ad hoc ZZP question: read references/zzp-tax-and-vat.md and check the current tax year.
+- Ad hoc ZZP question: check the tax year first, then read references/tax/README.md and the year file for that year. Read references/tax/general-rules.md for how a rule works.
 - Concept mapping: read references/jortt-to-moneybird-mapping.md.
 - Jortt CLI work: read cli-jortt/SKILL.md and use `jortt-cli`.
 - Moneybird CLI work: read cli-moneybird/SKILL.md and use `moneybird-guard`.

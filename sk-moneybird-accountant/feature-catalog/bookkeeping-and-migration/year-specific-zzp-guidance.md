@@ -34,7 +34,17 @@ Before using a changing amount or rate, the agent checks the relevant tax year a
 | File | Layer | Role |
 |---|---|---|
 | AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Shared | Requires a current-year check and prohibits final tax advice. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/zzp-tax-and-vat.md | Shared | Provides year tables and general Dutch ZZP rules. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/zzp-tax-and-vat.md | Shared | Points to the tax folder and keeps the record and invoice duties. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/tax/README.md | Shared | Routes a tax question to the general rules or a year file and lists conflicts and gaps. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/tax/general-rules.md | Shared | Explains how each Dutch ZZP rule works across years. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/tax/year-2020.md | Shared | Verified 2020 figures with status and source. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/tax/year-2021.md | Shared | Verified 2021 figures with status and source. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/tax/year-2022.md | Shared | Verified 2022 figures with status and source. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/tax/year-2023.md | Shared | Verified 2023 figures with status and source. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/tax/year-2024.md | Shared | Verified 2024 figures with status and source. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/tax/year-2025.md | Shared | Verified 2025 figures with status and source. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/tax/year-2026.md | Shared | Verified 2026 figures with status and source. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/tax/year-2027.md | Shared | Verified 2027 figures with status and source. |
 
 ### Validation And Tests
 

@@ -63,7 +63,7 @@ If the request is ambiguous between the two modes, ask one concise question abou
 |---|---|---|
 | ALWAYS | Every task | This skill and the project bootstrap |
 | MIGRATION | Historical migration request | Migration index, the matching phase group, and control framework when a gate, exception, risk, or year lock applies |
-| LIVE BOOKKEEPING | Monthly, quarterly, yearly, or event-level bookkeeping | Moneybird bookkeeping reference and any relevant tax topic. During post-cutover migration monitoring, also load references/migration/README.md and references/migration/phases-19-to-21.md. |
+| LIVE BOOKKEEPING | Monthly, quarterly, yearly, or event-level bookkeeping | Moneybird bookkeeping reference, plus the tax index and the year file for any tax topic. During post-cutover migration monitoring, also load references/migration/README.md and references/migration/phases-19-to-21.md. |
 | ZZP QUESTION | Tax, VAT, costs, vehicle, or administration question | Tax and VAT reference, then bookkeeping reference if a posting is also requested |
 | CLI ACTION | A Jortt or Moneybird CLI operation is needed | The matching sibling tool skill before using that CLI |
 
@@ -176,7 +176,7 @@ Every phase uses the route contract in the shared mechanisms reference. Jortt re
 #### Ad hoc ZZP questions
 
 - Check the current tax year before using any rate, threshold, deduction, or vehicle rule.
-- Load the relevant section of references/zzp-tax-and-vat.md.
+- Load references/tax/README.md, then the year file for the tax year in question, references/tax/year-YYYY.md. Load references/tax/general-rules.md when the question is how a rule works.
 - Explain general rules with the year and source. Label conflicting or unverified points clearly.
 - Do not present a case-specific tax conclusion as final. Flag judgement calls for the operator or a bookkeeper.
 
@@ -234,7 +234,8 @@ Return the mode or phase used, a safe decision summary, the references consulted
 - [Shared mechanisms](./references/migration/shared-mechanisms.md) - M1 to M12, including write keys, run journal, external agent route, expiry, and stop recovery.
 - [Control framework](./references/migration/control-framework.md) - roles, risk, exception fields, dashboard, and completion.
 - [Migration overview and setup](./references/migration/overview-and-setup.md) - workspace and approved `MIGRATION_CONFIG` fields.
-- [Dutch ZZP tax and VAT](./references/zzp-tax-and-vat.md) - year-specific figures, VAT, costs, private use, and administration duties.
+- [Dutch ZZP tax](./references/tax/README.md) - routes to the general rules and one verified figures file per tax year 2020 to 2027, with source conflicts and gaps.
+- [Dutch ZZP tax and VAT](./references/zzp-tax-and-vat.md) - entry point to the tax folder plus record and invoice duties.
 - [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) - accounting treatment for common ZZP events.
 - [Jortt to Moneybird mapping](./references/jortt-to-moneybird-mapping.md) - concept matches and migration traps.
 
@@ -292,6 +293,6 @@ The task is complete when:
 
 - [Project bootstrap](../AGENTS.md) sets the entry route and privacy contract.
 - [Migration index](./references/migration/README.md) maps phases to the plan and gates.
-- [Dutch ZZP tax and VAT](./references/zzp-tax-and-vat.md) contains year-specific values and general rules.
+- [Dutch ZZP tax](./references/tax/README.md) contains the general rules and the verified figures per tax year.
 - [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) covers common accounting events.
 - [Jortt to Moneybird mapping](./references/jortt-to-moneybird-mapping.md) covers source concepts and migration traps.

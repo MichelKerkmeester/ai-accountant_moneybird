@@ -97,7 +97,7 @@ For historical work, name the migration phase or the last gate that passed. The 
 | **MIGRATION** | Moving historical Jortt records into Moneybird | The migration index, the matching phase file, the shared mechanisms and the two CLI skills |
 | **LIVE** | A monthly, VAT-period or yearly review, or a one-off ZZP question | The matching topic route in `SKILL.md` |
 
-Check the current tax year and its source in the [tax reference](references/zzp-tax-and-vat.md) before you use any rate or threshold. The [Moneybird bookkeeping reference](references/moneybird-bookkeeping.md) covers the accounting treatment of common events. The [Jortt to Moneybird mapping](references/jortt-to-moneybird-mapping.md) lists concept matches and migration traps. Exports the Jortt API does not provide come from you, through the Jortt UI.
+Check the current tax year and its source in the [tax reference](references/tax/README.md) before you use any rate or threshold. The [Moneybird bookkeeping reference](references/moneybird-bookkeeping.md) covers the accounting treatment of common events. The [Jortt to Moneybird mapping](references/jortt-to-moneybird-mapping.md) lists concept matches and migration traps. Exports the Jortt API does not provide come from you, through the Jortt UI.
 
 ---
 
@@ -198,5 +198,6 @@ No. A connection needs separate, current evidence from the relevant CLI.
 | [Control framework](references/migration/control-framework.md) | Roles, exceptions and dashboard states |
 | [Jortt tool skill](../cli-jortt/SKILL.md) | Jortt reads and source extraction |
 | [Moneybird tool skill](../cli-moneybird/SKILL.md) | Guarded Moneybird operations |
-| [Tax reference](references/zzp-tax-and-vat.md) | Year-specific tax and VAT guidance |
+| [Tax reference](references/tax/README.md) | General rules and verified figures per tax year, 2020 to 2027 |
+| [Tax and VAT entry point](references/zzp-tax-and-vat.md) | Points to the tax folder and keeps the record and invoice duties |
 | [Bookkeeping reference](references/moneybird-bookkeeping.md) | Common Moneybird accounting events |
