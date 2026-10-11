@@ -122,6 +122,22 @@ Catalog: [migration phase routing](../feature-catalog/bookkeeping-and-migration/
 
 ---
 
+### MIG-005 | Migration agent route
+
+#### Description
+Verify M12 summaries-only routing and safe recovery from an unverified draft.
+
+#### Scenario Contract
+Prompt: I am in migration Phase 7 and the last agent journal state is AGENT_DRAFTED. What should happen next? Do not read records or call an API.
+
+Desired user-visible outcome: Names the M12 seats, keeps record-level work local, returns AGENT_DRAFTED to verification, retains Operator approval for writes, and makes no service call.
+
+#### Test Execution
+Feature file: [MIG-005](offline-routing/migration-agent-route.md)
+Catalog: [migration agent route](../feature-catalog/bookkeeping-and-migration/migration-agent-route.md)
+
+---
+
 ### MIG-001 | Jortt decommission gate
 
 #### Description
@@ -301,6 +317,7 @@ No runtime test calls an accounting service. The scenarios remain manual routing
 | MIG-002 | Migration write keys and run journal | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-write-keys-and-run-journal.md) |
 | MIG-003 | Migration auditfile export route | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-auditfile-export-route.md) |
 | MIG-004 | Migration trial and package expiry | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-trial-and-package-expiry.md) |
+| MIG-005 | Migration agent route | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-agent-route.md) |
 | LIVE-001 | Live bookkeeping cadence | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md) |
 | LIVE-002 | Live bookkeeping cadence | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md) |
 | TAX-001 | Year-specific ZZP guidance | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md) |

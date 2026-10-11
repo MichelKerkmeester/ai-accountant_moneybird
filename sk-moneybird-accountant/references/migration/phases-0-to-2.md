@@ -22,11 +22,11 @@ Each phase below uses the same eleven-field contract. Run only the phase selecte
 
 ## Phase 0: Safety and system setup
 
-Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M4](./shared-mechanisms.md#m4-evidence-privacy-and-session-boundary), [M6](./shared-mechanisms.md#m6-access-window-through-writes-and-verification), [M10](./shared-mechanisms.md#m10-write-isolation-decision). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
+Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M4](./shared-mechanisms.md#m4-evidence-privacy-and-session-boundary), [M6](./shared-mechanisms.md#m6-access-window-through-writes-and-verification), [M10](./shared-mechanisms.md#m10-write-isolation-decision), [M12](./shared-mechanisms.md#m12-external-agent-route). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
 
 ### 1. Goal
 
-Build a controlled migration workspace and establish the single empty Moneybird trial as both pilot and mirror.
+Build a controlled migration workspace and establish the single empty Moneybird trial as both pilot and mirror. The Implementer drafts agent runner, fixture generator, canary harness, and sandbox profile, and the Verifier owns the privacy filter, payload scanner, and adversarial corpus and checks the boundary, egress, and route canaries for Phase 0.
 
 ### 2. Nested sub-goals
 
@@ -36,6 +36,8 @@ Build a controlled migration workspace and establish the single empty Moneybird 
 - **SG-0.4**: Verify the Phase 0 auditfile UI export route. Check: the Operator UI completes an approved test auditfile export in Phase 0 1, product version, XAF version, and year match the approved request 1, receipt and artifact SHA-256 recorded 1.
 - **SG-0.5**: Verify a complete Moneybird bulk-read route. Check: synchronization with timestamp and completion counts or a complete paginated fallback with page counts is verified 1, Operator-approved cache-wait value and source basis recorded 1, Independent Auditor verification 1.
 - **SG-0.6**: Verify Jortt read-only access. Check: provider scope evidence shows read-only access 1, a local non-GET `jortt-cli call` without `--allow-write` exits 3 before any token request as documented in `cli-jortt/README.md` 1, API request count 0, real Jortt write calls 0.
+
+- **SG-0.7**: Run the agent route. Check: M12 route proof: runner ready 1, script sandbox canary pass 1, OS read-boundary canary pass 1, egress canary pass 1, planted private values blocked 100%, both route canary dispatches complete 2 of 2, agents.* config populated 100%, work units with Verifier PASS or Operator disposition 100%, payload-scan prohibited fields 0, phase-entry boundary canary passed 1, Final review PASS 1.
 
 ### 3. Entry criteria
 
@@ -48,6 +50,8 @@ Tool skills, frozen gap register, approved source scope, empty trial setup facts
 ### 5. Owner-tagged actions
 
 [Operator] confirms the single administration, expiry evidence, numeric thresholds, isolation decision, Jortt read scopes, test export approval, and cache-horizon value and source basis. [Orchestrator] records configuration, source scope, and owner assignments. [Evidence Archivist] verifies archive read-only boundaries. [Operator + AI] runs the official Moneybird CLI dry-run test under the read-only lock and captures exit code 6 before any real call. [Operator + AI] invokes a local non-GET `jortt-cli call` without `--allow-write` and records exit code 3 before token request, with zero API requests. Gate verifier: [Independent Auditor] checks both local test results, zero-call evidence, completed Operator UI auditfile artifact, and bulk-read completeness and cache-horizon approval.
+
+[Agent runner] runs the M12 route proof for every sub-goal. [Implementer] drafts the runner, fixtures, canary harness, and sandbox profile. [Verifier] owns the privacy filter, payload scanner, and adversarial corpus, then checks boundary, egress, and both route canaries. [Final reviewer] reviews the phase before Operator approvals.
 
 **Detailed operating sequence retained from the original setup steps:**
 1. [Operator] Select one empty Moneybird administration for both pilot and mirror. Set both selectors to that administration. Do not create a second pilot administration and do not write historical records during setup.
@@ -72,9 +76,13 @@ MIGRATION_CONFIG, threshold approval, subscription observation, isolation decisi
 
 Config fields due by Phase 0 populated 100%, selector equality 1, second administration count 0, guard stub suite pass count 1, locked non-GET exit code 6 count 1, Jortt read-scope evidence 1, Jortt no-write exit code 3 before token request 1, Jortt API requests 0, real calls from local tests 0, completed Operator UI auditfile test export 1, receipt and artifact hash 1, complete bulk-read route verification 1, cache horizon approved and independently verified 1, phase-contract checks 23 of 23, exposed secret count 0, missing threshold values 0.
 
+M12 gate: runner ready 1, script sandbox canary pass 1, OS read-boundary canary pass 1, egress canary pass 1, planted private values blocked 100%, both route canary dispatches complete 2 of 2, agents.* config populated 100%, work units with Verifier PASS or Operator disposition 100%, Final review PASS 1, payload-scan prohibited fields 0, phase-entry boundary canary passed 1.
+
 ### 9. Stop conditions
 
 Selector mismatch, unknown expiry, missing numeric threshold, stub suite failure, locked non-GET exit other than 6, Jortt no-write exit other than 3 or any token or API request, unverified Jortt scope, any real call from a local test, failed UI auditfile export or artifact hash, no complete bulk-read route, missing or unapproved cache horizon, any failed phase-contract check, missing isolation review date, or any request for unapproved write access.
+
+Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
@@ -84,13 +92,15 @@ No bookkeeping mutation is permitted. Retain prior config versions and mark a su
 
 Resume from the last config hash and journal checkpoint. Repeat the failed read-only check and record a new event. Never reuse a failed gate result.
 
+For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
+
 ## Phase 1: Full source inventory
 
-Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M4](./shared-mechanisms.md#m4-evidence-privacy-and-session-boundary), [M8](./shared-mechanisms.md#m8-jortt-pagination-and-source-request-evidence). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
+Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M4](./shared-mechanisms.md#m4-evidence-privacy-and-session-boundary), [M8](./shared-mechanisms.md#m8-jortt-pagination-and-source-request-evidence), [M12](./shared-mechanisms.md#m12-external-agent-route). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
 
 ### 1. Goal
 
-Establish the source population and inventory each relevant record class before reconstruction.
+Establish the source population and inventory each relevant record class before reconstruction. The Implementer drafts per-class extraction and manifest builders for M1 and M8, and the Verifier independently reproduces source counts and the page chain for Phase 1.
 
 ### 2. Nested sub-goals
 
@@ -99,6 +109,8 @@ Establish the source population and inventory each relevant record class before 
 - **SG-1.3**: Inventory annual tax regimes and filing periods. Check: year-regime rows 100%, every KOR, ICP, OSS, and other relevant declaration marked applicable or not applicable with evidence, unknown statuses 0.
 - **SG-1.4**: Resolve the Jortt general-ledger printout status. Check: capability decision recorded 1, gates relying on an unverified printout 0.
 - **SG-1.5**: Build the document registry with source identity and file evidence. Check: required registry fields populated 100%, source hash coverage 100%.
+
+- **SG-1.6**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, source counts and page-chain reproduction 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 
 ### 3. Entry criteria
 
@@ -111,6 +123,8 @@ Source archive inventory, Jortt account and transaction lists, bank file catalog
 ### 5. Owner-tagged actions
 
 [Evidence Archivist] inventories classes, captures source-side totals, and hashes. [Document Agent] builds the invoice inventory. [Operator] supplies UI-only XAF, annual accounts, return, assessment, and bank export evidence. [Tax Filing Agent] records annual regimes and declaration applicability. [Orchestrator] records whether a Jortt ledger printout is usable, unavailable, or unverified. Gate verifier: [Independent Auditor] reproduces source totals, full page counts, account-to-file counts, and declaration coverage.
+
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts per-class extraction and manifest builders for M1 and M8. [Verifier] independently reproduces source counts and the page chain. [Final reviewer] reviews the phase before Operator approvals.
 
 **Detailed inventory fields retained from the original source scan:**
 1. [Evidence Archivist] Inventory sales invoices, purchase invoices, receipts, credit notes, annual accounts, XAF files, bank exports, VAT returns, income-tax returns, assessments, and asset evidence.
@@ -138,9 +152,13 @@ Versioned SOURCE_MANIFEST, CLOUD_INVOICE_REGISTRY, YEAR_SOURCE_MATRIX, bank acco
 
 Source class and attachment or Inbox link coverage 100%, independent source totals compared 100%, paged-list completion 100%, account-year bank pair coverage 100%, year regime and declaration rows 100%, unverified printout dependencies 0, unexplained missing source links 0.
 
+M12 gate: work units with Verifier PASS or Operator disposition 100%, source counts and page-chain reproduction 100%, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
+
 ### 9. Stop conditions
 
 Missing page link, unexplained empty result, unavailable year scope, unclassified declaration, missing bank account file, missing attachment class, absent source-side export total, or total and manifest count mismatch.
+
+Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
@@ -150,13 +168,15 @@ Do not change source records. Quarantine an incomplete extract, preserve its has
 
 Continue from the last manifest page or file checkpoint. Re-read the affected source scope and compare its new artifact hash before resuming downstream work.
 
+For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
+
 ## Phase 2: Collect missing sources and seed archive
 
-Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M4](./shared-mechanisms.md#m4-evidence-privacy-and-session-boundary), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
+Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M4](./shared-mechanisms.md#m4-evidence-privacy-and-session-boundary), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M12](./shared-mechanisms.md#m12-external-agent-route). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
 
 ### 1. Goal
 
-Complete the required evidence set and create an independently inspectable source archive before any reconstruction.
+Complete the required evidence set and create an independently inspectable source archive before any reconstruction. The Implementer drafts the missing-source checklist, archive seeding and hash scripts, and retention table template, and the Verifier repeats the archive restore test and hash recompute for Phase 2.
 
 ### 2. Nested sub-goals
 
@@ -165,6 +185,8 @@ Complete the required evidence set and create an independently inspectable sourc
 - **SG-2.3**: Seed and test the archive. Check: manifest checksums and independent source totals match 100%, independent sample readability passes 100%, each record-class retention rule has an Operator-approved source basis, duration, start event, derived end date, owner, independent location, and readability evidence 100%, unresolved retention rules 0.
 - **SG-2.4**: Establish first-business-year opening support. Check: start-year basis recorded 1, each opening account component has source evidence 100%, approver and treatment of pre-business funds recorded 100%, unsupported opening positions 0. Without prior closing evidence, the Operator or adviser approves a source-based schedule before the gate passes.
 - **SG-2.5**: Select the start boundary. Check: configured start date and start-year basis recorded 100%, unsupported opening positions 0.
+
+- **SG-2.6**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, archive restore test pass 1, archive hash recompute 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 
 ### 3. Entry criteria
 
@@ -177,6 +199,8 @@ Missing-source report, Jortt inventory, operator UI exports, bank files, filed r
 ### 5. Owner-tagged actions
 
 [Operator] exports Jortt XAF, annual accounts, filed VAT evidence, tax evidence, and bank files and records independent source UI or portal totals for every export. [Evidence Archivist] downloads supported records and attachments through Jortt CLI, reconciles pages and class links, and builds the archive manifest. [Tax Filing Agent] distinguishes filed returns from summaries. [Operator] approves each situation-dependent retention rule from its source basis and approves the first-business-year opening schedule. Gate verifier: [Independent Auditor] reproduces all class counts, source totals, retention date calculations, and restore samples. [Operator] owns missing UI exports and opening-balance approval.
+
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the missing-source checklist, archive seeding and hash scripts, and retention table template. [Verifier] repeats the archive restore test and hash recompute. [Final reviewer] reviews the phase before Operator approvals.
 
 **Detailed source collection sequence retained from the original plan:**
 1. [Operator] For each in-scope period, export Jortt XAF, annual accounts, and actual filed VAT returns through the documented UI routes. A VAT summary is not a filed return.
@@ -198,9 +222,13 @@ SOURCE_MANIFEST_v2, Archive/ source bundle, mandatory class inventory, independe
 
 Required source class coverage 100%, actual filed VAT return and confirmation evidence for every filed VAT period or evidence-backed not-applicable status 100%, exceptions waiving filed VAT return evidence 0, source totals and account-year pairs reconciled 100%, artifact hashes verified after transfer 100%, retention rules and approvals complete 100%, independently recomputed end dates match 100%, unresolved retention rules 0, first-business-year component support complete 100%, independent restore sample pass 1, missing required sources 0, unsupported opening positions 0.
 
+M12 gate: work units with Verifier PASS or Operator disposition 100%, archive restore test pass 1, archive hash recompute 100%, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
+
 ### 9. Stop conditions
 
 Missing actual filed VAT return or confirmation for any filed VAT period, any exception offered to waive that evidence, income-tax return or assessment missing without approved unavailability status, unverified archive file, missing attachment or loose Inbox class, missing independent source-side total, bank account without full-period source, unsupported or unapproved retention rule, or opening position without supported account components and an approved basis.
+
+Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
@@ -209,3 +237,5 @@ Preserve Jortt unchanged. Mark the archive snapshot incomplete and create a new 
 ### 11. Resume rule
 
 Resume from the failed artifact or source class. Recompute its hash, append a journal event, then rerun archive reconciliation for the affected class.
+
+For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.

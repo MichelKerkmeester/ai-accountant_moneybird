@@ -22,17 +22,19 @@ Each phase below uses the same eleven-field contract. Run only the phase selecte
 
 ## Phase 19: Live monthly workflow
 
-Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M2](./shared-mechanisms.md#m2-stable-local-write-keys-and-uncertain-outcomes), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M5](./shared-mechanisms.md#m5-moneybird-rate-limits-and-recovery), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M9](./shared-mechanisms.md#m9-master-phase-dashboard). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
+Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M2](./shared-mechanisms.md#m2-stable-local-write-keys-and-uncertain-outcomes), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M5](./shared-mechanisms.md#m5-moneybird-rate-limits-and-recovery), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M9](./shared-mechanisms.md#m9-master-phase-dashboard), [M12](./shared-mechanisms.md#m12-external-agent-route). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
 
 ### 1. Goal
 
-Detect and resolve monthly document, bank, and Moneybird differences before they accumulate.
+Detect and resolve monthly document, bank, and Moneybird differences before they accumulate. The Implementer drafts monthly check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 19.
 
 ### 2. Nested sub-goals
 
 - **SG-19.1**: Compare monthly document and target populations. Check: linked or excepted records 100%, unexplained records 0.
 - **SG-19.2**: Review bank and open-item state. Check: bank statement transactions linked or excepted 100%, unexplained bank items 0.
 - **SG-19.3**: Assign every open exception. Check: owner and due date coverage 100%, expired accepted exceptions 0.
+
+- **SG-19.4**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, read-only run summary checks pass 100%, record-level check pass 100%, changed-hash code reviews complete 100%, reuse fast path valid 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 
 ### 3. Entry criteria
 
@@ -45,6 +47,8 @@ New document inventory, Moneybird period report, bank statement, open invoice sc
 ### 5. Owner-tagged actions
 
 [Document Agent] inventories source documents. [Reconciliation Agent] compares records and bank items. [VAT Agent] reviews high-risk invoices. [Operator] approves corrections and owns escalations. A named backup owner covers absence. Gate verifier: [Reconciliation Agent] owns the monthly report. [Independent Auditor] reproduces counts. [Operator] owns decisions.
+
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts monthly check scripts using the reuse fast path. [Verifier] checks the run summary and record-level result every cycle, with code review only when a hash changes. [Final reviewer] reviews the phase before Operator approvals.
 
 **Monthly review steps retained from the original live workflow:**
 1. [Document Agent] Detect new source documents from the approved archive route.
@@ -67,9 +71,13 @@ Monthly input snapshot and report hash, bank and open-item report, complete M7 e
 
 Monthly check coverage 100%, source and report hashes 100%, unexplained items 0, M7 exception fields complete 100%, primary and backup owner coverage 100%, due dates and escalation deadlines 100%, corrective journal links 100%, unknown writes 0, expired accepted exceptions 0.
 
+M12 gate: work units with Verifier PASS or Operator disposition 100%, read-only run summary checks pass 100%, record-level check pass 100%, changed-hash code reviews complete 100%, reuse fast path valid 100%, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
+
 ### 9. Stop conditions
 
 Missing statement, incomplete month, duplicate, uncertain tax class, unexplained difference, incomplete M7 exception, absent backup owner, missed escalation deadline, or overdue unaccepted exception.
+
+Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
@@ -79,19 +87,23 @@ Preserve the month report. Correct through linked records and approved entries. 
 
 Resume from the first unresolved monthly exception or journal checkpoint after confirming the source snapshot hash, assigned backup owner, corrective journal, and escalation state.
 
+For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
+
 ## Phase 20: Live VAT-period workflow
 
-Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M2](./shared-mechanisms.md#m2-stable-local-write-keys-and-uncertain-outcomes), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M5](./shared-mechanisms.md#m5-moneybird-rate-limits-and-recovery), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M9](./shared-mechanisms.md#m9-master-phase-dashboard). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
+Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M2](./shared-mechanisms.md#m2-stable-local-write-keys-and-uncertain-outcomes), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M5](./shared-mechanisms.md#m5-moneybird-rate-limits-and-recovery), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M9](./shared-mechanisms.md#m9-master-phase-dashboard), [M12](./shared-mechanisms.md#m12-external-agent-route). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
 
 ### 1. Goal
 
-Prepare each VAT return for the assigned cadence and period from complete evidence, with filing owned by the Operator.
+Prepare each VAT return for the assigned cadence and period from complete evidence, with filing owned by the Operator. The Implementer drafts VAT-period check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 20.
 
 ### 2. Nested sub-goals
 
 - **SG-20.1**: Confirm each Operator-assigned filing cadence, period start and end, and required declarations. Check: assigned-period calendar coverage 100%, actual filing evidence or evidence-backed not-applicable status 100%, unknown periods 0.
 - **SG-20.2**: Reconcile each VAT box and prior-period correction. Check: box coverage 100%, unexplained box count 0, cumulative cap breaches 0.
 - **SG-20.3**: File and retain confirmation. Check: Operator filing action 1, portal confirmation artifact 1 for each filed period.
+
+- **SG-20.4**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, read-only run summary checks pass 100%, record-level check pass 100%, changed-hash code reviews complete 100%, reuse fast path valid 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 
 ### 3. Entry criteria
 
@@ -104,6 +116,8 @@ Source invoices, Moneybird tax report, filing calendar, KOR, ICP, OSS and other 
 ### 5. Owner-tagged actions
 
 [VAT Agent] recalculates VAT. [Tax Filing Agent] checks period, declaration, and correction history. [Independent Auditor] verifies boxes and correction links. [Operator] alone decides and files the return. A named backup owner covers absence. Gate verifier: [Independent Auditor] reproduces period, box, correction, and owner counts.
+
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts VAT-period check scripts using the reuse fast path. [Verifier] checks the run summary and record-level result every cycle, with code review only when a hash changes. [Final reviewer] reviews the phase before Operator approvals.
 
 **VAT-period review steps retained from the original filing workflow:**
 1. [Document Agent] Check source document completeness.
@@ -131,9 +145,13 @@ VAT-period reconciliation, year-by-year declaration applicability matrix, manual
 
 Assigned-period coverage 100%, KOR, ICP, OSS and other declarations marked applicable or evidence-backed not applicable 100%, box comparison coverage 100%, manual correction ownership 100%, unexplained boxes 0, cap breaches 0, M7 exception fields complete 100%, backup owner and escalation coverage 100%, filed-period confirmation coverage 100%.
 
+M12 gate: work units with Verifier PASS or Operator disposition 100%, read-only run summary checks pass 100%, record-level check pass 100%, changed-hash code reviews complete 100%, reuse fast path valid 100%, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
+
 ### 9. Stop conditions
 
 Unknown cadence or declaration status, missing source or portal evidence, unowned manual correction, unsupported correction, unapproved cap, unresolved previous period, absent backup owner, missed escalation deadline, or request for agent filing.
+
+Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
@@ -143,19 +161,23 @@ No automated filing reversal. Operator or adviser decides any amendment. Link it
 
 Resume at the first failed period after refreshing evidence hashes. Record the corrective journal and backup owner. Do not advance while an earlier required period is unresolved.
 
+For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
+
 ## Phase 21: Live yearly workflow
 
-Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M2](./shared-mechanisms.md#m2-stable-local-write-keys-and-uncertain-outcomes), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M5](./shared-mechanisms.md#m5-moneybird-rate-limits-and-recovery), [M6](./shared-mechanisms.md#m6-access-window-through-writes-and-verification), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M9](./shared-mechanisms.md#m9-master-phase-dashboard). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
+Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M2](./shared-mechanisms.md#m2-stable-local-write-keys-and-uncertain-outcomes), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M5](./shared-mechanisms.md#m5-moneybird-rate-limits-and-recovery), [M6](./shared-mechanisms.md#m6-access-window-through-writes-and-verification), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M9](./shared-mechanisms.md#m9-master-phase-dashboard), [M12](./shared-mechanisms.md#m12-external-agent-route). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
 
 ### 1. Goal
 
-Close each live year with complete monthly, VAT, balance, asset, tax, and human review evidence.
+Close each live year with complete monthly, VAT, balance, asset, tax, and human review evidence. The Implementer drafts yearly check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 21.
 
 ### 2. Nested sub-goals
 
 - **SG-21.1**: Confirm all subordinate cycles. Check: applicable monthly and filing-period checks passed 100%.
 - **SG-21.2**: Reconcile continuity, assets, profit, and tax bridge. Check: account and bridge coverage 100%, unexplained differences 0.
 - **SG-21.3**: Approve and preserve close evidence. Check: sealed snapshot hash 1, Operator close approval 1.
+
+- **SG-21.4**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, read-only run summary checks pass 100%, record-level check pass 100%, changed-hash code reviews complete 100%, reuse fast path valid 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 
 ### 3. Entry criteria
 
@@ -168,6 +190,8 @@ Monthly reports, VAT reconciliations, bank statements, receivable and payable sc
 ### 5. Owner-tagged actions
 
 [Tax Filing Agent] prepares the tax bridge and post-lock assessment routing. [Independent Auditor] challenges year close. [Operator] decides accounting and tax judgments, files returns, and approves lock or close. A named backup owner covers absence. [Orchestrator] checks gate evidence. Gate verifier: [Independent Auditor] verifies arithmetic and evidence links. [Operator] owns filings and close.
+
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts yearly check scripts using the reuse fast path. [Verifier] checks the run summary and record-level result every cycle, with code review only when a hash changes. [Final reviewer] reviews the phase before Operator approvals.
 
 **Year-end checklist retained from the original annual workflow:**
 1. Confirm every required month and filing period is closed.
@@ -197,9 +221,13 @@ Annual close report, balance continuity, filed return and assessment links, tax 
 
 Subordinate cycle coverage 100%, annual comparison coverage 100%, unexplained differences 0, M7 exception fields complete 100%, expired accepted exceptions 0, snapshot hash verified 1, backup owner and escalation coverage 100%, Operator close approval 1.
 
+M12 gate: work units with Verifier PASS or Operator disposition 100%, read-only run summary checks pass 100%, record-level check pass 100%, changed-hash code reviews complete 100%, reuse fast path valid 100%, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
+
 ### 9. Stop conditions
 
 Missing month, tax period, filing confirmation, or required assessment without approved unavailability, unsupported adjustment, incomplete exception, absent backup owner, missed escalation deadline, unresolved exception, or failed snapshot hash.
+
+Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
@@ -208,3 +236,5 @@ Reopen only through the Operator exception and unlock process. Link any correcti
 ### 11. Resume rule
 
 Resume from the first failed annual check. Record the corrective journal, escalation, and backup owner. If new evidence changes a prior period, reopen dependent VAT, continuity, and tax checks before closing.
+
+For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.

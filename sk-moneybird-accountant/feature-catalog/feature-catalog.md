@@ -39,6 +39,22 @@ See [bookkeeping-and-migration/migration-phase-routing.md](bookkeeping-and-migra
 
 ---
 
+### Migration agent route
+
+#### Description
+
+Defines the M12 external agent route for migration work units.
+
+#### Current Reality
+
+The Agent runner coordinates local role sessions, Implementer drafts, Verifier checks, and Final reviewer approval. Record-level processing stays local. Agent-facing payloads contain only typed allowlisted summaries and use opaque aliases. Every phase gates the route with numeric evidence and uses verified-state resume rules.
+
+#### Source Files
+
+See [bookkeeping-and-migration/migration-agent-route.md](bookkeeping-and-migration/migration-agent-route.md) for source and validation anchors.
+
+---
+
 ### Migration write keys and run journal
 
 #### Description

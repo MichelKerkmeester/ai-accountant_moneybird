@@ -22,11 +22,11 @@ Each phase below uses the same eleven-field contract. Run only the phase selecte
 
 ## Phase 6: Design the Moneybird mapping
 
-Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M2](./shared-mechanisms.md#m2-stable-local-write-keys-and-uncertain-outcomes), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M6](./shared-mechanisms.md#m6-access-window-through-writes-and-verification), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
+Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M2](./shared-mechanisms.md#m2-stable-local-write-keys-and-uncertain-outcomes), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M6](./shared-mechanisms.md#m6-access-window-through-writes-and-verification), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M12](./shared-mechanisms.md#m12-external-agent-route). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
 
 ### 1. Goal
 
-Map each approved migration object to a supported Moneybird object and establish source-based opening and continuity schedules.
+Map each approved migration object to a supported Moneybird object and establish source-based opening and continuity schedules. The Implementer drafts mapping tables, opening schedules, and continuity schedules, and the Verifier checks every mapped field against the target schema and verifies planted unmappable cases for Phase 6.
 
 ### 2. Nested sub-goals
 
@@ -35,6 +35,8 @@ Map each approved migration object to a supported Moneybird object and establish
 - **SG-6.3**: Prepare opening balances and invoice-level open-item schedules. Check: each AR/AP item has source key, counterparty, invoice number and date, amount, VAT, due date, target mapping, and settlement status 100%, unbalanced opening lines 0, duplicate open-item keys 0, unsupported target representation 0.
 - **SG-6.4**: Resolve first-business-year case. Check: supported opening schedule approved 1 or phase stop remains active.
 - **SG-6.5**: Select a target representation for opening AR/AP. Check: supported Moneybird object or Operator-approved subledger selected 1, settlement-link test plan approved 1.
+
+- **SG-6.6**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, mapped fields supported by target schema 100%, planted unmappable cases blocked 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 
 ### 3. Entry criteria
 
@@ -47,6 +49,8 @@ Canonical dataset, category and vendor tax data, RGS codes, source closing balan
 ### 5. Owner-tagged actions
 
 [Mapping Agent] prepares category, tax, and separate PDF and UBL field mappings. [Operator] creates tax rates in the UI and approves accounting judgments and any subledger. [Independent Auditor] checks mapping uniqueness and target support. [Reconciliation Agent] prepares source closing-to-opening schedules. Gate verifier: [Independent Auditor] verifies opening arithmetic, invoice-level links, and the target representation plan.
+
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts mapping tables, opening schedules, and continuity schedules. [Verifier] checks every mapped field against the target schema and verifies planted unmappable cases. [Final reviewer] reviews the phase before Operator approvals.
 
 **Mapping tables and object routes retained from the original mapping design:**
 
@@ -86,9 +90,13 @@ CATEGORY_MAPPING, VENDOR_TAX_MATRIX, PDF and UBL field matrices, document-class 
 
 Mapping coverage 100%, each applicable source-type field trace 100%, unknown write fields 0, account imbalance 0, item-level AR/AP schedule coverage 100%, duplicate open-item keys 0, target representation decision 1, accepted Operator decisions 100%.
 
+M12 gate: work units with Verifier PASS or Operator disposition 100%, mapped fields supported by target schema 100%, planted unmappable cases blocked 100%, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
+
 ### 9. Stop conditions
 
 No RGS code, unverified CLI field, absent tax rate, unsupported PDF-derived field, missing item-level AR/AP, unsupported target representation, no prior closing XAF without an approved alternative, or non-zero unsupported opening difference.
+
+Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
@@ -98,13 +106,15 @@ Version mappings instead of overwriting. No Moneybird mutation occurs in this ph
 
 Resume from the last approved mapping version and schema hash. Revalidate only rows that depend on changed source evidence.
 
+For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
+
 ## Phase 7: Pilot migration
 
-Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M2](./shared-mechanisms.md#m2-stable-local-write-keys-and-uncertain-outcomes), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M5](./shared-mechanisms.md#m5-moneybird-rate-limits-and-recovery), [M6](./shared-mechanisms.md#m6-access-window-through-writes-and-verification), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M10](./shared-mechanisms.md#m10-write-isolation-decision), [M11](./shared-mechanisms.md#m11-stop-state-recovery-matrix). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
+Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M2](./shared-mechanisms.md#m2-stable-local-write-keys-and-uncertain-outcomes), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M5](./shared-mechanisms.md#m5-moneybird-rate-limits-and-recovery), [M6](./shared-mechanisms.md#m6-access-window-through-writes-and-verification), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M10](./shared-mechanisms.md#m10-write-isolation-decision), [M11](./shared-mechanisms.md#m11-stop-state-recovery-matrix), [M12](./shared-mechanisms.md#m12-external-agent-route). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
 
 ### 1. Goal
 
-Prove the complete controlled write and verification path in the one empty trial administration, which remains the mirror.
+Prove the complete controlled write and verification path in the one empty trial administration, which remains the mirror. The Implementer drafts the pilot batch builder, pre-write report, and read-back comparer, and the Verifier checks the pre-write report and read-back comparison for Phase 7.
 
 ### 2. Nested sub-goals
 
@@ -114,6 +124,8 @@ Prove the complete controlled write and verification path in the one empty trial
 - **SG-7.4**: Rehearse safe compensation. Check: approved undo or linked correction rehearsal passes 1, independent read confirms final state 1.
 - **SG-7.5**: Test the item-level AR/AP target representation. Check: representative opening item and settlement link read-back pass 1, source item and target link coverage 100%.
 - **SG-7.6**: Test lock behavior for each used record class in the safe pilot. Check: Operator-approved probe and correction plan 1, record-class coverage 100%, expected lock result recorded for every class, successful probes reversed or corrected and read back 100%, final lock state verified 1.
+
+- **SG-7.7**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, pre-write report and read-back comparisons pass 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 
 ### 3. Entry criteria
 
@@ -126,6 +138,8 @@ Pilot records, mapping hash, source hashes, pre-write report, risk review, openi
 ### 5. Owner-tagged actions
 
 [Operator] approves the exact batch and performs bank-file import in UI. [Migration Writer] records and flushes WRITE_INTENT before every non-GET call and journals returned IDs. [Operator] approves the temporary pilot lock and a disposable probe record for each used record class, with a correction path for any probe that succeeds. [Independent Auditor] reads back records, verifies every attachment byte hash and AR/AP settlement link, and confirms lock probe results and final lock state. [Red Team] challenges duplicates and field mapping. [Operator + AI] selects pilot items for crash and compensation rehearsals. Gate verifier: [Independent Auditor] verifies read-back, payload fields, attachment bytes, settlement linkage, lock coverage, and resume states.
+
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the pilot batch builder, pre-write report, and read-back comparer. [Verifier] checks the pre-write report and read-back comparison. [Final reviewer] reviews the phase before Operator approvals.
 
 **Pilot selection and numbered execution retained from the original plan:**
 Select a representative period from the oldest eligible year. Include a sales invoice, a domestic purchase, an EU service purchase, a non-EU service purchase, a normal bank payment, and a private payment if present.
@@ -152,9 +166,13 @@ Pilot pre-write report, PDF and UBL field matrices, pilot key manifest, opening 
 
 Each source-type pilot coverage 100%, required field checks 100%, read-back coverage 100%, attachment read route verified 1, attachment byte and SHA-256 matches 100%, opening AR/AP representation and settlement-link test pass 1, lock behavior coverage 100%, successful probes corrected and read back 100%, final lock state verified 1, durable intent coverage 100%, ambiguous adoption count 0, unknown writes 0, duplicate records 0, unexplained differences 0, crash rehearsal pass 1, compensation rehearsal pass 1.
 
+M12 gate: work units with Verifier PASS or Operator disposition 100%, pre-write report and read-back comparisons pass 100%, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
+
 ### 9. Stop conditions
 
 M6 access window fails, any approved hash changes, uncertain write is unresolved, missing attachment read route, attachment mismatch, unsupported AR/AP representation or settlement link, unapproved lock probe, unexpected probe write without verified correction, failed or incomplete crash rehearsal, no safe correction route, 429 without recovery, ambiguous target match, or any record does not match the approved payload.
+
+Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
@@ -164,13 +182,15 @@ Use the approved safe pilot undo. For an issued or settled object, do not defaul
 
 Resume only from M3's last verified object state. Any WRITE_UNKNOWN key is reconciled first. Recheck hashes and M6 through the required verification window before opening another batch.
 
+For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
+
 ## Phase 8: Historical migration per period
 
-Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M2](./shared-mechanisms.md#m2-stable-local-write-keys-and-uncertain-outcomes), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
+Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M2](./shared-mechanisms.md#m2-stable-local-write-keys-and-uncertain-outcomes), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M12](./shared-mechanisms.md#m12-external-agent-route). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
 
 ### 1. Goal
 
-Rebuild approved historical records in controlled batches and reconcile each batch before advancing.
+Rebuild approved historical records in controlled batches and reconcile each batch before advancing. The Implementer drafts per-period batch plans and builders, and the Verifier checks each batch pre-write report and read-back for Phase 8.
 
 ### 2. Nested sub-goals
 
@@ -179,6 +199,8 @@ Rebuild approved historical records in controlled batches and reconcile each bat
 - **SG-8.3**: Reconcile counts, pilot identity, and balances. Check: every source key already verified in the pilot reuses its matching target ID and is excluded from the historical write set 100%, exact source reference and planned fields match 100%, duplicates across pilot and historical key manifests 0, unexplained differences 0, write-key duplicates 0.
 - **SG-8.4**: Verify every target attachment. Check: source and target byte counts and SHA-256 match 100%, unavailable attachment reads 0, mismatches 0.
 - **SG-8.5**: Track opening AR/AP through settlement. Check: each cut-over item has settled-with-link, still-open-with-aging, or approved-exception status 100%, settled items link to the same source key 100%, unexplained open items 0.
+
+- **SG-8.6**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, per-batch pre-write and read-back checks pass 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 
 ### 3. Entry criteria
 
@@ -191,6 +213,8 @@ Frozen canonical records, batch manifest, prior journal state, mapping, bank fil
 ### 5. Owner-tagged actions
 
 [Migration Writer] writes only approved items and maintains stable keys. [Operator] approves each batch and imports bank files. [Independent Auditor] checks timestamped synchronization read-back. [Red Team] challenges period coverage and duplicates across pilot and historical manifests. Gate verifier: [Independent Auditor] verifies sync results, payload equality, union-key uniqueness, and reconciliations.
+
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts per-period batch plans and builders. [Verifier] checks each batch pre-write report and read-back. [Final reviewer] reviews the phase before Operator approvals.
 
 **Historical batch sequence retained from the original per-period workflow:**
 1. [Migration Writer] Freeze the period's source files and hashes in Snapshots/.
@@ -219,9 +243,13 @@ Frozen batch manifest, pre-write report, pilot key manifest, union duplicate rep
 
 Input hashes match immediately before writing 100%, approved objects with verified read-back 100%, attachment byte counts and SHA-256 match 100%, opening AR/AP status coverage 100%, settled-item links match source keys 100%, durable intent coverage 100%, unknown write states 0, duplicates across pilot and historical keys 0, unresolved exceptions above approved threshold 0, UNEXPLAINED count 0.
 
+M12 gate: work units with Verifier PASS or Operator disposition 100%, per-batch pre-write and read-back checks pass 100%, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
+
 ### 9. Stop conditions
 
 M6 access check fails, input drift, 429, unknown write state, schema error, duplicate in either manifest, missing source attachment, attachment byte or hash mismatch, failed or stale read-back, unsupported difference, or missing pilot key manifest.
+
+Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
@@ -231,13 +259,15 @@ Stop the affected batch. Never delete or overwrite a committed target record as 
 
 Start at the last `READBACK_CONFIRMED` or `RECONCILED` checkpoint. Reconcile every unknown item and revalidate input hashes, approval scope, and expiry before the next write.
 
+For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
+
 ## Phase 9: VAT verification loop
 
-Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M5](./shared-mechanisms.md#m5-moneybird-rate-limits-and-recovery), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M8](./shared-mechanisms.md#m8-jortt-pagination-and-source-request-evidence). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
+Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M5](./shared-mechanisms.md#m5-moneybird-rate-limits-and-recovery), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M8](./shared-mechanisms.md#m8-jortt-pagination-and-source-request-evidence), [M12](./shared-mechanisms.md#m12-external-agent-route). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
 
 ### 1. Goal
 
-Reconcile document, ledger, filed, and Moneybird tax values for every assigned tax period.
+Reconcile document, ledger, filed, and Moneybird tax values for every assigned tax period. The Implementer drafts the per-period VAT reconciliation, and the Verifier independently recomputes VAT from the source registers for Phase 9.
 
 ### 2. Nested sub-goals
 
@@ -245,6 +275,8 @@ Reconcile document, ledger, filed, and Moneybird tax values for every assigned t
 - **SG-9.2**: Compare each return box across all available sources. Check: box comparisons 100%, unexplained boxes 0.
 - **SG-9.3**: Enforce cumulative tolerances. Check: quarter and year cap fields are numeric and Operator-approved, cap breaches 0.
 - **SG-9.4**: Reconcile external and missed-period corrections. Check: manual correction register has period, correction reference, owner, evidence, source and target linkage, and status 100%, unowned corrections 0.
+
+- **SG-9.5**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, VAT recompute from source registers differences 0, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 
 ### 3. Entry criteria
 
@@ -257,6 +289,8 @@ Original invoices, XAF, actual filed VAT returns and portal confirmations, assig
 ### 5. Owner-tagged actions
 
 [VAT Agent] calculates document VAT independently. [Tax Filing Agent] checks filed periods, KOR, ICP, OSS, and correction history. [Independent Auditor] checks boxes and manual correction links. [Operator] decides corrections and performs any filing. Gate verifier: [Independent Auditor] reproduces period, box, applicability, and correction-owner counts.
+
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the per-period VAT reconciliation. [Verifier] independently recomputes VAT from the source registers. [Final reviewer] reviews the phase before Operator approvals.
 
 **Four-source VAT comparison retained from the original plan:**
 For each actually assigned filing period, compare A) document VAT, B) ledger VAT, C) filed VAT, and D) Moneybird VAT by return box. Classify differences as EXACT, ROUNDING, EXPLAINED, SOURCE DIFFERENCE, FILING DIFFERENCE, MONEYBIRD DIFFERENCE, or UNEXPLAINED. Record each manual correction with period, source and target links, evidence, owner, and status. Apply the configured per-box allowance and cumulative quarter and year caps without netting periods. The Operator may mark historical filing status in Moneybird through the UI in chronological order after evidence review. Agents never file or pay a return.
@@ -278,9 +312,13 @@ Period-by-period four-source reconciliation, filed-return evidence index, roundi
 
 Assigned-period coverage 100%, filed evidence coverage 100% for applicable filed periods, declaration applicability or evidence-backed not-applicable status 100%, manual correction fields and ownership 100%, unowned corrections 0, box comparisons 100%, unexplained boxes 0, cumulative cap breaches 0.
 
+M12 gate: work units with Verifier PASS or Operator disposition 100%, VAT recompute from source registers differences 0, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
+
 ### 9. Stop conditions
 
 Unknown filing cadence or declaration status, any missing actual filed VAT return or confirmation for a filed VAT period, an exception used to waive that evidence, stale or incomplete Moneybird report, unowned manual correction, unsupported cap, cross-period netting, or unapproved supplementary filing.
+
+Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
@@ -289,3 +327,5 @@ No filing or payment is performed by agents. Preserve the prior reconciliation a
 ### 11. Resume rule
 
 Resume at the first failed period after refreshing the source evidence manifest and assigned-period calendar. Prior passed periods remain immutable unless their source changes.
+
+For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
