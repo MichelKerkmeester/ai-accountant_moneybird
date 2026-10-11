@@ -52,7 +52,7 @@ On 429, stop the affected call sequence and wait the stated interval. The Orches
 
 `MIGRATION_CONFIG` records the observed trial or package state, expiry date, evidence source, observation date, renewal owner, and alert evidence. Before each Moneybird non-GET batch, the Operator reconfirms the state and date against expected batch completion, synchronization, read-back, and verification. A missing, expired, or uncertain access window blocks the batch.
 
-Before Phase 17, require an active paid package that covers the next live VAT period and year close, with a named renewal owner and alert evidence. Recheck the access window before Phase 22 verification. Confirm archive coverage and export before any lapse or decommission decision.
+By the Phase 17 gate, require an active paid package that covers the next live VAT period and year close, with a named renewal owner and alert evidence. Recheck the access window before Phase 22 verification. Confirm archive coverage and export before any lapse or decommission decision.
 
 ## M7. Exception and threshold control
 

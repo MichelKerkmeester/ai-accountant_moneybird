@@ -369,8 +369,8 @@ Compare the existing source administration and Moneybird mirror through a config
 ### 2. Nested sub-goals
 
 - **SG-16.1**: Derive the next work year from the configured start date and last locked year. Check: next historical year is the first unlocked year at or after the configured start year 1, current mirror year is the actual calendar year only when it is at or after the configured start date and is not locked 1, hard-coded current-year labels 0.
-- **SG-16.2**: Complete configured parallel comparisons. Check: a positive minimum cycle count or duration and rationale are approved in MIGRATION_CONFIG, completed cycles meet that minimum 100%, unresolved differences 0.
-- **SG-16.3**: Prepare the source freeze and final delta contract. Check: Operator-set freeze date and time, last source key, delta schema, and source-total method recorded 100%. The actual freeze and delta capture occur in Phase 17.
+- **SG-16.2**: Complete configured parallel comparisons. Check: a positive minimum cycle count or duration and rationale are approved in `MIGRATION_CONFIG` as `parallel.cycles_required`, completed cycles meet that minimum 100%, unresolved differences 0.
+- **SG-16.3**: Prepare the source freeze and final delta contract. Check: Operator-set freeze date and time, delta schema, and source-total method recorded 100%. The actual freeze, its last source key, and delta capture occur in Phase 17.
 - **SG-16.4**: Prepare objective rollback controls. Check: numeric trigger thresholds and named decision owner 100%, rehearsal scenarios complete 100%, post-cutover write reconciliation rehearsal 100%.
 
 ### 3. Entry criteria
@@ -395,7 +395,7 @@ Jortt reads through `jortt-cli`. Moneybird reads through guarded read-only acces
 
 ### 7. Outputs and evidence artifacts
 
-Parallel comparison reports, minimum-cycle rationale, planned freeze date, last source key, delta schema, numeric rollback trigger table, rehearsal evidence, and cutover readiness packet without a live GO or NO-GO decision.
+Parallel comparison reports, minimum-cycle rationale, planned freeze date, delta schema, numeric rollback trigger table, rehearsal evidence, and cutover readiness packet without a live GO or NO-GO decision.
 
 ### 8. Numeric exit gate
 
