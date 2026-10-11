@@ -1,0 +1,45 @@
+{
+  "_note": "Each real event is one line in migration-workspace/RunJournal/run-journal.jsonl. The file is append-only, so never rewrite or remove an earlier line.",
+  "phase": "PENDING",
+  "checkpoint_key": "PENDING",
+  "input_manifest_hash": "PENDING",
+  "item_counts": {
+    "planned": 0,
+    "written": 0,
+    "skipped": 0,
+    "failed": 0
+  },
+  "prior_state": "PENDING",
+  "new_state": "PENDING",
+  "timestamp": "PENDING",
+  "owner_tag": "PENDING",
+  "evidence_paths": [
+    "PENDING"
+  ],
+  "approval_reference": "PENDING",
+  "payload_hash": "PENDING",
+  "stop_reason": "PENDING",
+  "seat": "PENDING",
+  "executor_route": "PENDING",
+  "brief_hash": "PENDING",
+  "artifact_hash": "PENDING",
+  "round": 0,
+  "verdict": "PENDING",
+  "payload_scan_count": 0,
+  "allowed_states": [
+    "PLANNED",
+    "INPUT_FROZEN",
+    "ACCESS_CHECK_RECORDED",
+    "WRITE_INTENT",
+    "IN_PROGRESS",
+    "WRITE_UNKNOWN",
+    "WRITE_CONFIRMED",
+    "READBACK_CONFIRMED",
+    "RECONCILED",
+    "GATE_PASSED",
+    "STOPPED",
+    "AGENT_DRAFTED",
+    "AGENT_VERIFIED",
+    "FINAL_REVIEWED"
+  ]
+}

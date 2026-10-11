@@ -55,6 +55,22 @@ See [bookkeeping-and-migration/migration-agent-route.md](bookkeeping-and-migrati
 
 ---
 
+### Migration plan kit
+
+#### Description
+
+Ships fill-in templates and a workspace setup script so any user can run the 23 migration phases.
+
+#### Current Reality
+
+`scripts/init-workspace.sh` builds `migration-workspace/` with a configuration template, a phase dashboard, a run-journal event template and 23 phase plans. It never overwrites a file. `scripts/generate-plan-kit.py --check` fails when a template drifts from its phase reference.
+
+#### Source Files
+
+See [bookkeeping-and-migration/migration-plan-kit.md](bookkeeping-and-migration/migration-plan-kit.md) for source and validation anchors.
+
+---
+
 ### Migration write keys and run journal
 
 #### Description

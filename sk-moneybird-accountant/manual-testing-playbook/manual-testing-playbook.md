@@ -138,6 +138,22 @@ Catalog: [migration agent route](../feature-catalog/bookkeeping-and-migration/mi
 
 ---
 
+### MIG-006 | Migration plan kit
+
+#### Description
+Verify that a first-time user is routed to the workspace setup script and the generated phase plans.
+
+#### Scenario Contract
+Prompt: I just cloned this repo and want to start the migration. Where do I start? Do not read records or call an API.
+
+Desired user-visible outcome: Names the setup command, the config template, the dashboard and the 23 phase plans, keeps the no-overwrite rule and makes no service call.
+
+#### Test Execution
+Feature file: [MIG-006](offline-routing/migration-plan-kit.md)
+Catalog: [migration plan kit](../feature-catalog/bookkeeping-and-migration/migration-plan-kit.md)
+
+---
+
 ### MIG-001 | Jortt decommission gate
 
 #### Description
@@ -318,6 +334,7 @@ No runtime test calls an accounting service. The scenarios remain manual routing
 | MIG-003 | Migration auditfile export route | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-auditfile-export-route.md) |
 | MIG-004 | Migration trial and package expiry | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-trial-and-package-expiry.md) |
 | MIG-005 | Migration agent route | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-agent-route.md) |
+| MIG-006 | Migration plan kit | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-plan-kit.md) |
 | LIVE-001 | Live bookkeeping cadence | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md) |
 | LIVE-002 | Live bookkeeping cadence | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md) |
 | TAX-001 | Year-specific ZZP guidance | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md) |

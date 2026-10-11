@@ -40,7 +40,7 @@ Never rewrite journal history. Resume only from the last verified state. Reconci
 
 ## M4. Evidence, privacy, and session boundary
 
-Keep finance artifacts under the ignored `migration-workspace/`. Preserve existing folders and add `Schemas/`, `Manifests/`, `Registers/`, `Inputs/<role>/`, `Mappings/`, `Exceptions/`, `Reports/`, `Snapshots/`, `WriteJournal/`, `RunJournal/`, `Archive/`, `Reviews/`, `Handoff/`, and `AgentDesk/`. Link each run-journal event to its checkpoint artifacts.
+Keep finance artifacts under the ignored `migration-workspace/`. Preserve existing folders and add `Schemas/`, `Manifests/`, `Registers/`, `Inputs/<role>/`, `Mappings/`, `Exceptions/`, `Reports/`, `Snapshots/`, `WriteJournal/`, `RunJournal/`, `Archive/`, `Reviews/`, `Handoff/`, `Plans/`, and `AgentDesk/`. Link each run-journal event to its checkpoint artifacts.
 
 Local role sessions run by the Agent runner read only their assigned controlled input folders to prepare registers. The Implementer and Verifier seats never receive record-level content. Prompts, tool logs, and session transcripts may contain only schemas, field names, phase and record-class labels, opaque record keys, aggregate counts, status, and evidence paths. Do not put source payloads, personal names, supplier or customer details, account identifiers, invoice numbers, or amounts in those surfaces. Before sharing output, the Independent Auditor scans it against this allowlist and records the count of prohibited private fields. Keep record-level evidence in the controlled workspace. The recorded prohibited-field count must equal zero. External seats use the M12 route, which preserves this allowlist and scan rule.
 

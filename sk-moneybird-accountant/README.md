@@ -144,6 +144,8 @@ The seats receive typed, allowlisted summaries with stable opaque aliases and ap
 
 The ignored `migration-workspace/` holds migration inputs, manifests, registers, run journals, reports and archived evidence. Both CLIs refuse to save an extract anywhere else.
 
+The plan kit creates it. Run `bash sk-moneybird-accountant/scripts/init-workspace.sh` from the repository root once. It builds every workspace and AgentDesk folder and copies the templates from [assets/migration/](assets/migration/README.md): `MIGRATION_CONFIG.json` with each field marked `PENDING`, a phase dashboard, a run-journal event template and one plan per phase in `migration-workspace/Plans/`. It never overwrites a file you already filled in. `scripts/generate-plan-kit.py` builds the phase plans from the phase references, and its `--check` mode fails when a plan drifts from its reference.
+
 Each phase records its inputs, owner actions, tool route, outputs and exit evidence. You review the result of every phase and approve each gated Moneybird write. Read-only Moneybird sessions keep `MONEYBIRD_GUARD_READ_ONLY=1` set.
 
 ---
