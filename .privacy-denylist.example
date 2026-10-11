@@ -1,0 +1,25 @@
+# Private terms for the local privacy gate.
+#
+# This file is git-ignored and stays on this machine. The gate reads it on
+# every run and blocks any line that contains one of the terms. The terms are
+# also applied to commit messages, to annotated tag messages and to the path
+# of every changed file.
+#
+# Add one term per line, for example:
+#   client and supplier names
+#   your IBANs, written with or without spaces
+#   your KvK number, VAT number and BSN
+#   your home address and private email addresses
+#
+# Your own name needs no entry. It is already public as the author of your
+# commits and in LICENSE, and the gate never applies the denylist to LICENSE
+# or to author and committer names. An entry for your own name would only
+# block commit messages that mention it.
+#
+# Matching is case-insensitive and also ignores whitespace, so an IBAN can be
+# written with or without spaces. Lines starting with # are comments. Terms
+# shorter than 4 characters are ignored.
+#
+# Run scripts/install-hooks.sh to copy this file to .privacy-denylist and to
+# put your own terms in the copy. The copy is never committed, so keep real
+# terms out of this example file.

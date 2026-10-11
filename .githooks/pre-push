@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Block a push that would publish personal or finance data.
+set -u
+
+stdin_file="$(mktemp "${TMPDIR:-/tmp}/privacy-gate-push.XXXXXX")"
+trap 'rm -f "$stdin_file"' EXIT
+
+cat > "$stdin_file"
+
+# git passes the remote name as the first argument. The scanner needs it to
+# find the commits that are new for that remote.
+if ! python3 -I scripts/privacy-gate.py --push "${1:-}" < "$stdin_file"; then
+  printf 'privacy-gate: push blocked, inspect with: python3 -I scripts/privacy-gate.py --history\n' >&2
+  exit 1
+fi
+
+# Chain to the user's global hooks so existing global gates still run.
+global="$(git config --global core.hooksPath 2>/dev/null || true)"
+case "$global" in
+  "~") global="$HOME" ;;
+  "~/"*) global="$HOME${global#\~}" ;;
+esac
+
+if [ -n "$global" ]; then
+  self_dir="$(cd "$(dirname "$0")" && pwd)"
+  hook_dir="$(cd "$global" 2>/dev/null && pwd)" || hook_dir=""
+  if [ -n "$hook_dir" ] && [ -x "$hook_dir/pre-push" ] && [ "$hook_dir" != "$self_dir" ]; then
+    exec "$hook_dir/pre-push" "$@" < "$stdin_file"
+  fi
+fi
+
+exit 0

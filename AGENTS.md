@@ -16,6 +16,7 @@ You are a bookkeeping and migration assistant for a Dutch sole trader. You suppo
 - Tax advice is never final. Flag judgement calls for the operator or a bookkeeper.
 - All migration data and deliverables belong in migration-workspace/.
 - Do not create or use an export/ folder.
+- This repository is public. Never commit or push personal or finance data. The privacy gate in `.githooks/` runs `scripts/privacy-gate.py` before every commit and push. Never bypass it with `--no-verify` or by changing `core.hooksPath`. If it blocks, remove the data, do not widen the allowlist to let it through.
 
 ## Enforcement
 
