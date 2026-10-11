@@ -1,10 +1,36 @@
 #!/usr/bin/env python3
+# ───────────────────────────────────────────────────────────────
+# COMPONENT: PRIVACY GATE
+# ───────────────────────────────────────────────────────────────
 """Privacy gate for a public repository.
 
 Personal data and finance records live in git-ignored folders. Anything that
 reaches the index, a commit message or a pushed tag is treated as a leak.
 Findings are masked and never contain the matched value.
+
+Usage: python3 -I scripts/privacy-gate.py <mode> [argument] [options]
+
+Modes:
+    --staged                Check the index and the git identity
+    --push <remote>         Check everything a push would publish
+    --tree                  Check the tree at HEAD
+    --history               Check all commits and annotated tags
+    --message <file>        Check one commit message file
+    --self-test-patterns    Run the built-in pattern checks
+
+Options:
+    --config-ref <rev>      Read the rules from this revision
+    --trusted-code          The running copy is the remote anchor copy
+
+Output:
+    One masked line per finding on stdout, then a blocked summary line.
+    A clean scan prints one clean line with the mode and the file count.
+    The self-test prints one line with its check count.
 """
+
+# ───────────────────────────────────────────────────────────────
+# 1. IMPORTS
+# ───────────────────────────────────────────────────────────────
 
 import hashlib
 import json
@@ -14,6 +40,11 @@ import subprocess
 import sys
 import tempfile
 import unicodedata
+from typing import Any, Dict, List, NoReturn, Optional, Set, Tuple, Union
+
+# ───────────────────────────────────────────────────────────────
+# 2. MODES AND CONFIGURATION
+# ───────────────────────────────────────────────────────────────
 
 STAGED = "--staged"
 PUSH = "--push"
@@ -65,6 +96,10 @@ GIT_CONFIG = [
     "-c", "diff.noprefix=false",
     "-c", "diff.mnemonicPrefix=false",
 ]
+
+# ───────────────────────────────────────────────────────────────
+# 3. DETECTION PATTERNS
+# ───────────────────────────────────────────────────────────────
 
 # Country lengths from the IBAN registry, covering every SEPA country.
 IBAN_LENGTHS = {
@@ -123,17 +158,38 @@ WHITESPACE_RE = re.compile(r"\s+")
 STATUS_RE = re.compile(r"^[ACDMRTUXB][0-9]{0,3}$")
 ZERO_WIDTH_TABLE = dict.fromkeys([0x200B, 0x200C, 0x200D, 0x2060, 0xFEFF])
 
+# ───────────────────────────────────────────────────────────────
+# 4. DIAGNOSTICS AND ARGUMENT PARSING
+# ───────────────────────────────────────────────────────────────
 
-def die(message):
+def die(message: str) -> NoReturn:
+    """Write an error line to stderr and exit with status 2.
+
+    Args:
+        message: The reason shown after the gate prefix.
+
+    Raises:
+        SystemExit: Always, with exit status 2.
+    """
     sys.stderr.write("privacy-gate: %s\n" % message)
     sys.exit(2)
 
 
-def warn(message):
+def warn(message: str) -> None:
+    """Write a warning line to stderr and continue.
+
+    Args:
+        message: The reason shown after the warning prefix.
+    """
     sys.stderr.write("privacy-gate: warning: %s\n" % message)
 
 
-def usage():
+def usage() -> NoReturn:
+    """Write the usage block to stderr and exit with status 2.
+
+    Raises:
+        SystemExit: Always, with exit status 2.
+    """
     sys.stderr.write(
         "usage: python3 -I scripts/privacy-gate.py\n"
         "       (--staged|--push <remote>|--tree|--history|"
@@ -143,8 +199,18 @@ def usage():
     sys.exit(2)
 
 
-def parse_args(argv):
-    """Return the mode, its argument, the config ref and the code flag."""
+def parse_args(argv: List[str]) -> Tuple[str, Optional[str], Optional[str], bool]:
+    """Return the mode, its argument, the config ref and the code flag.
+
+    Args:
+        argv: The full command line, the program name included.
+
+    Returns:
+        Tuple of (mode, argument, config ref, trusted code flag).
+
+    Raises:
+        SystemExit: When the arguments do not match a known mode.
+    """
     if len(argv) < 2:
         usage()
     mode = argv[1]
@@ -179,8 +245,28 @@ def parse_args(argv):
         return mode, argument, config_ref, trusted_code
     usage()
 
+# ───────────────────────────────────────────────────────────────
+# 5. GIT HELPERS AND RULE LOADING
+# ───────────────────────────────────────────────────────────────
 
-def git_soft(args, cwd, stdin_data=None):
+def git_soft(
+    args: List[str],
+    cwd: str,
+    stdin_data: Optional[bytes] = None,
+) -> Tuple[int, bytes, bytes]:
+    """Run git and return its exit status and streams.
+
+    Args:
+        args: Git arguments, without the leading program name.
+        cwd: Directory the command runs in.
+        stdin_data: Bytes piped to git, or None.
+
+    Returns:
+        Tuple of (exit status, stdout, stderr).
+
+    Raises:
+        SystemExit: If git cannot be started.
+    """
     command = ["git"] + GIT_CONFIG + args
     try:
         process = subprocess.run(
@@ -195,10 +281,21 @@ def git_soft(args, cwd, stdin_data=None):
     return process.returncode, process.stdout, process.stderr
 
 
-def git_out(args, cwd, stdin_data=None):
+def git_out(args: List[str], cwd: str, stdin_data: Optional[bytes] = None) -> bytes:
     """Run git and die with one line when it fails.
 
     A failed git call must never look like empty content that passes.
+
+    Args:
+        args: Git arguments, without the leading program name.
+        cwd: Directory the command runs in.
+        stdin_data: Bytes piped to git, or None.
+
+    Returns:
+        The standard output of git.
+
+    Raises:
+        SystemExit: If git fails or cannot be started.
     """
     status, stdout, stderr = git_soft(args, cwd, stdin_data)
     if status != 0:
@@ -208,15 +305,34 @@ def git_out(args, cwd, stdin_data=None):
     return stdout
 
 
-def find_root():
+def find_root() -> str:
+    """Return the root directory of the repository.
+
+    Returns:
+        The absolute path of the repository root.
+
+    Raises:
+        SystemExit: If the repository root cannot be resolved.
+    """
     status, stdout, _stderr = git_soft(["rev-parse", "--show-toplevel"], os.getcwd())
     if status != 0:
         die("not inside a git repository")
     return stdout.decode("utf-8", "replace").strip()
 
 
-def config_bytes_at(root, ref):
-    """Return the config blob at ref, or None when that revision has none."""
+def config_bytes_at(root: str, ref: str) -> Optional[bytes]:
+    """Return the config blob at ref, or None when that revision has none.
+
+    Args:
+        root: The repository root.
+        ref: The revision that holds the config.
+
+    Returns:
+        The raw config bytes, or None when that revision has no config.
+
+    Raises:
+        SystemExit: If the blob exists but git cannot show it.
+    """
     status, _stdout, _stderr = git_soft(
         ["cat-file", "-e", "%s:%s" % (ref, CONFIG_FILE)], root)
     if status != 0:
@@ -224,7 +340,18 @@ def config_bytes_at(root, ref):
     return git_out(["show", "%s:%s" % (ref, CONFIG_FILE)], root)
 
 
-def worktree_config_bytes(root):
+def worktree_config_bytes(root: str) -> bytes:
+    """Return the config bytes from the working tree.
+
+    Args:
+        root: The repository root.
+
+    Returns:
+        The raw bytes of the config file in the working tree.
+
+    Raises:
+        SystemExit: If the file cannot be read.
+    """
     path = os.path.join(root, CONFIG_FILE)
     try:
         with open(path, "rb") as handle:
@@ -233,12 +360,22 @@ def worktree_config_bytes(root):
         die("cannot read %s: %s" % (CONFIG_FILE, exc))
 
 
-def load_config(root, ref):
+def load_config(root: str, ref: str) -> Dict[str, Any]:
     """Return the rules read from ref.
 
     Staged and message checks read the committed config, so a rewrite of the
     same index cannot widen the rules that are applied to it. A repository
     without a commit yet has only the working tree to read.
+
+    Args:
+        root: The repository root.
+        ref: The revision whose rules bind this check.
+
+    Returns:
+        The parsed config as a dictionary.
+
+    Raises:
+        SystemExit: If the config is missing, unreadable or incomplete.
     """
     raw = config_bytes_at(root, ref)
     if raw is None and ref == "HEAD":
@@ -259,8 +396,19 @@ def load_config(root, ref):
     return config
 
 
-def load_denylist(root):
-    """Return (present, terms, ignored)."""
+def load_denylist(root: str) -> Tuple[bool, List[Tuple[int, str, str, int]], int]:
+    """Return (present, terms, ignored).
+
+    Args:
+        root: The repository root.
+
+    Returns:
+        Tuple of (file present, terms, count of short terms ignored). Each
+        term holds (ordinal, lowered text, squeezed text, length).
+
+    Raises:
+        SystemExit: If the denylist file cannot be read.
+    """
     path = os.path.join(root, DENYLIST_FILE)
     if not os.path.isfile(path):
         return False, [], 0
@@ -284,14 +432,31 @@ def load_denylist(root):
         )
     return True, terms, ignored
 
+# ───────────────────────────────────────────────────────────────
+# 6. TEXT NORMALIZATION AND VALUE VALIDATORS
+# ───────────────────────────────────────────────────────────────
 
-def normalize(text):
-    """Fold Unicode tricks and zero-width characters before matching."""
+def normalize(text: str) -> str:
+    """Fold Unicode tricks and zero-width characters before matching.
+
+    Args:
+        text: Text to fold.
+
+    Returns:
+        The NFKC-normalized text with zero-width characters removed.
+    """
     return unicodedata.normalize("NFKC", text).translate(ZERO_WIDTH_TABLE)
 
 
-def decode_content(content):
-    """Return (text, False), or (None, True) when the blob is binary."""
+def decode_content(content: bytes) -> "Tuple[Optional[str], bool]":
+    """Decode a blob into text, or mark it binary.
+
+    Args:
+        content: Raw blob bytes.
+
+    Returns:
+        Tuple of (text, False), or (None, True) when the blob is binary.
+    """
     if content[:2] in (b"\xff\xfe", b"\xfe\xff"):
         try:
             return normalize(content.decode("utf-16")), False
@@ -302,11 +467,27 @@ def decode_content(content):
     return normalize(content.decode("utf-8", "replace")), False
 
 
-def iban_body(candidate):
+def iban_body(candidate: str) -> str:
+    """Strip separators from a candidate and upper-case it.
+
+    Args:
+        candidate: Text that may hold an IBAN.
+
+    Returns:
+        The separator-free uppercase body.
+    """
     return IBAN_SEPARATORS_RE.sub("", candidate).upper()
 
 
-def iban_valid(candidate):
+def iban_valid(candidate: str) -> bool:
+    """Check a candidate against the registry length and checksum rules.
+
+    Args:
+        candidate: Text that may hold an IBAN.
+
+    Returns:
+        True when the candidate is a structurally valid IBAN.
+    """
     body = iban_body(candidate)
     length = IBAN_LENGTHS.get(body[:2])
     if length is None or len(body) != length:
@@ -323,11 +504,17 @@ def iban_valid(candidate):
     return int("".join(digits)) % 97 == 1
 
 
-def iban_lengths_in(text):
+def iban_lengths_in(text: str) -> "List[int]":
     """Stripped lengths of valid IBANs in one line.
 
     A trailing word can make the match longer than the IBAN itself, so the
     country length is used as the cut.
+
+    Args:
+        text: One line of text to scan.
+
+    Returns:
+        Country lengths of the valid IBANs found.
     """
     lengths = []
     for match in IBAN_RE.finditer(text):
@@ -340,12 +527,27 @@ def iban_lengths_in(text):
     return lengths
 
 
-def squeeze(text):
+def squeeze(text: str) -> str:
+    """Remove whitespace, dots and hyphens so a split IBAN joins up.
+
+    Args:
+        text: Text to squeeze.
+
+    Returns:
+        The squeezed text.
+    """
     return SQUEEZE_RE.sub("", text)
 
 
-def squeezed_iban_lengths(text):
-    """Valid IBANs in a blob with whitespace and separators removed."""
+def squeezed_iban_lengths(text: str) -> "List[int]":
+    """Valid IBANs in a blob with whitespace and separators removed.
+
+    Args:
+        text: Blob text that may hold a split IBAN.
+
+    Returns:
+        Country lengths of the valid IBANs found.
+    """
     lengths = []
     for match in SQUEEZED_IBAN_RE.finditer(squeeze(text)):
         body = match.group(0).upper()
@@ -357,7 +559,15 @@ def squeezed_iban_lengths(text):
     return lengths
 
 
-def bsn_valid(digits):
+def bsn_valid(digits: str) -> bool:
+    """Check a digit run against the BSN length and checksum rules.
+
+    Args:
+        digits: Digit run with its separators already removed.
+
+    Returns:
+        True when the run has the right length and passes the weight check.
+    """
     if len(digits) != 9 or digits == "000000000":
         return False
     total = 0
@@ -367,7 +577,16 @@ def bsn_valid(digits):
     return total % 11 == 0
 
 
-def domain_allowed(domain, allowed):
+def domain_allowed(domain: str, allowed: "List[str]") -> bool:
+    """Check a domain against the allowed entries, subdomains included.
+
+    Args:
+        domain: Domain taken from a matched address.
+        allowed: Allowed domain entries.
+
+    Returns:
+        True when the domain is an allowed entry or sits under one.
+    """
     domain = domain.lower().rstrip(".")
     for entry in allowed:
         entry = entry.lower()
@@ -376,14 +595,34 @@ def domain_allowed(domain, allowed):
     return False
 
 
-def identity_allowed(email):
+def identity_allowed(email: str) -> bool:
+    """Check whether an address is a public no-reply identity.
+
+    Args:
+        email: Address to check.
+
+    Returns:
+        True when the address matches the allowed identity shape.
+    """
     lowered = email.strip().lower()
     if not lowered:
         return False
     return lowered == IDENTITY_EXACT or lowered.endswith(IDENTITY_SUFFIX)
 
+# ───────────────────────────────────────────────────────────────
+# 7. PATH AND CONTENT MATCHERS
+# ───────────────────────────────────────────────────────────────
 
-def path_blocked(path, config):
+def path_blocked(path: str, config: "Dict[str, Any]") -> bool:
+    """Check a path against the private name, exception and prefix rules.
+
+    Args:
+        path: Repository-relative path to check.
+        config: Loaded gate configuration.
+
+    Returns:
+        True when the path may not appear on a public remote.
+    """
     # Private folder and file names are blocked at any depth, before any
     # exception, so a copy nested inside another folder or a tracked template
     # cannot slip past the root-anchored rules below.
@@ -423,7 +662,15 @@ def path_blocked(path, config):
     return False
 
 
-def extension_of(path):
+def extension_of(path: str) -> str:
+    """Return the lowercased extension of a path.
+
+    Args:
+        path: Path to inspect.
+
+    Returns:
+        Extension without its dot, or an empty string when there is none.
+    """
     base = path.rsplit("/", 1)[-1]
     dot = base.rfind(".")
     if dot <= 0:
@@ -431,14 +678,30 @@ def extension_of(path):
     return base[dot + 1:].lower()
 
 
-def mask(value, keep=0):
+def mask(value: str, keep: int = 0) -> str:
+    """Describe a matched value by its length and an optional short prefix.
+
+    Args:
+        value: Matched text that must never be printed.
+        keep: Number of leading characters to show.
+
+    Returns:
+        A length marker, with the kept prefix when keep is positive.
+    """
     if keep > 0:
         return "%s...(len %d)" % (value[:keep], len(value))
     return "(len %d)" % len(value)
 
 
-def placeholder_value(value):
-    """True when the captured value itself is marked as not real."""
+def placeholder_value(value: str) -> bool:
+    """True when the captured value itself is marked as not real.
+
+    Args:
+        value: Captured assignment value.
+
+    Returns:
+        True when the value is a reference or carries a placeholder marker.
+    """
     lowered = value.lower()
     # A value that starts with $ is a shell or environment reference, not a
     # literal secret.
@@ -454,7 +717,15 @@ def placeholder_value(value):
     return False
 
 
-def secret_hits(line):
+def secret_hits(line: str) -> "List[Tuple[str, str]]":
+    """Return the secret hits for one line.
+
+    Args:
+        line: Line to scan for keys, tokens and private key headers.
+
+    Returns:
+        List of (rule, hint) pairs, each hint fully masked.
+    """
     hits = []
     if PEM_HEADER_RE.search(line):
         hits.append(("secret", "private key header"))
@@ -470,7 +741,16 @@ def secret_hits(line):
     return hits
 
 
-def denylist_hit(line, terms):
+def denylist_hit(line: str, terms: "List[Tuple[int, str, str, int]]") -> "Optional[Tuple[int, int]]":
+    """Find the first private term present in a line.
+
+    Args:
+        line: Line to compare against the private terms.
+        terms: Prepared terms as (ordinal, lowered, squeezed, length).
+
+    Returns:
+        Tuple of (ordinal, length) for the first hit, or None.
+    """
     lowered = line.lower()
     squeezed = WHITESPACE_RE.sub("", lowered)
     for ordinal, needle, needle_squeezed, length in terms:
@@ -478,9 +758,20 @@ def denylist_hit(line, terms):
             return ordinal, length
     return None
 
+# ───────────────────────────────────────────────────────────────
+# 8. CHECKER
+# ───────────────────────────────────────────────────────────────
 
 class Checker(object):
-    def __init__(self, config, denylist):
+    """Collect findings while walking index entries, trees and commits."""
+
+    def __init__(self, config: "Dict[str, Any]", denylist: "List[Tuple[int, str, str, int]]") -> None:
+        """Set up the checker from the loaded rules and private terms.
+
+        Args:
+            config: Loaded gate configuration.
+            denylist: Prepared private terms as (ordinal, lowered, squeezed, length).
+        """
         self.config = config
         self.allowed_extensions = set(
             entry.lower() for entry in config["allowed_extensions"])
@@ -503,13 +794,29 @@ class Checker(object):
         self.files_checked = 0
         self._seen = set()
 
-    def add(self, rule, path, number, hint):
+    def add(self, rule: str, path: str, number: "Union[str, int]", hint: str) -> None:
+        """Record one finding, skipping a duplicate.
+
+        Args:
+            rule: Rule name shown in the report.
+            path: Path or commit label the finding belongs to.
+            number: Line number, or a dash label for whole-file findings.
+            hint: Masked detail shown in the report.
+        """
         finding = (rule, path, str(number), hint)
         if finding not in self._seen:
             self._seen.add(finding)
             self.findings.append(finding)
 
-    def is_gate_file(self, path):
+    def is_gate_file(self, path: str) -> bool:
+        """Check whether a path belongs to the gate itself.
+
+        Args:
+            path: Normalized repository path.
+
+        Returns:
+            True when the path is a gate file or sits in a gate directory.
+        """
         if path in self.gate_files:
             return True
         for entry in self.gate_directories:
@@ -517,7 +824,14 @@ class Checker(object):
                 return True
         return False
 
-    def check_path(self, path, mode, content):
+    def check_path(self, path: str, mode: str, content: bytes) -> None:
+        """Check one blob for path, type, size and text findings.
+
+        Args:
+            path: Repository path of the entry.
+            mode: Git mode string of the entry.
+            content: Blob bytes, empty for a gitlink.
+        """
         self.files_checked += 1
         display = normalize(path)
         if path_blocked(display, self.config):
@@ -539,12 +853,23 @@ class Checker(object):
             return
         self.check_text(display, text)
 
-    def check_path_string(self, path):
+    def check_path_string(self, path: str) -> None:
+        """Check the path text itself, so a leaky name cannot pass.
+
+        Args:
+            path: Repository path to scan.
+        """
         display = normalize(path)
         for rule, hint in self.line_hits(display, display):
             self.add(rule, display, "path", hint)
 
-    def check_text(self, path, text):
+    def check_text(self, path: str, text: str) -> None:
+        """Check every line of a blob, then IBANs split across lines.
+
+        Args:
+            path: Path or commit label the text belongs to.
+            text: Decoded text to scan.
+        """
         iban_lengths = set()
         for number, line in enumerate(text.split("\n"), 1):
             for rule, hint in self.line_hits(path, line):
@@ -556,7 +881,16 @@ class Checker(object):
             if hint not in iban_lengths:
                 self.add("iban", path, "-", hint)
 
-    def line_hits(self, path, line):
+    def line_hits(self, path: str, line: str) -> "List[Tuple[str, str]]":
+        """Return every finding for one line under the active rules.
+
+        Args:
+            path: Path used for the per-file rule exceptions.
+            line: Line of text to scan.
+
+        Returns:
+            List of (rule, hint) pairs, each hint fully masked.
+        """
         hits = []
         for length in iban_lengths_in(line):
             hits.append(("iban", "(len %d)" % length))
@@ -588,14 +922,28 @@ class Checker(object):
                 hits.append(("denylist", "term #%d (len %d)" % match))
         return hits
 
-    def check_identity_name(self, path, role, name):
+    def check_identity_name(self, path: str, role: str, name: str) -> None:
+        """Check a personal name against the private term list.
+
+        Args:
+            path: Path or commit label the name belongs to.
+            role: Role label reported with the finding.
+            name: Name to compare against the private terms.
+        """
         # A name is personal, so it is held to the private term list. With an
         # empty list there is nothing to compare against.
         if self.denylist and denylist_hit(normalize(name), self.denylist):
             self.add("identity-name", path, "-",
                      "%s matches a private term" % role)
 
-    def check_identity_email(self, path, role, email):
+    def check_identity_email(self, path: str, role: str, email: str) -> None:
+        """Check that an address is an allowed public identity.
+
+        Args:
+            path: Path or commit label the address belongs to.
+            role: Role label reported with the finding.
+            email: Address to check.
+        """
         if identity_allowed(email):
             return
         self.add(
@@ -603,12 +951,38 @@ class Checker(object):
             "%s must end with %s or equal %s"
             % (role, IDENTITY_SUFFIX, IDENTITY_EXACT))
 
+# ───────────────────────────────────────────────────────────────
+# 9. GIT OBJECT READERS AND COMMIT CHECKS
+# ───────────────────────────────────────────────────────────────
 
-def decode_z(raw):
+# Only the readers and checks below need these type names.
+
+
+def decode_z(raw: bytes) -> List[str]:
+    """Split a NUL separated byte string into its decoded chunks.
+
+    Args:
+        raw: Byte string of NUL separated records
+
+    Returns:
+        The records that are not empty, decoded as UTF-8 with replacement
+    """
     return [chunk.decode("utf-8", "replace") for chunk in raw.split(b"\0") if chunk]
 
 
-def index_entry(root, path):
+def index_entry(root: str, path: str) -> Tuple[str, str]:
+    """Return the staged mode and blob of one index entry.
+
+    Args:
+        root: Repository root
+        path: Repository relative path of the file
+
+    Returns:
+        Tuple of (mode, blob) read from the index entry
+
+    Raises:
+        SystemExit: When git fails or the entry cannot be parsed, through die()
+    """
     # The literal magic keeps a name with wildcards from matching other files.
     raw = git_out(["ls-files", "-s", "-z", "--", ":(literal)" + path], root)
     entry = raw.split(b"\0", 1)[0]
@@ -620,13 +994,38 @@ def index_entry(root, path):
     return fields[0], fields[1]
 
 
-def blob_content(root, blob, cache):
+def blob_content(root: str, blob: str, cache: Dict[str, bytes]) -> bytes:
+    """Return one blob's bytes, read at most once per run.
+
+    Args:
+        root: Repository root
+        blob: Object id of the blob
+        cache: Per run cache of blob id to content
+
+    Returns:
+        The raw bytes of the blob
+
+    Raises:
+        SystemExit: When git cannot read the blob, through die()
+    """
     if blob not in cache:
         cache[blob] = git_out(["cat-file", "blob", blob], root)
     return cache[blob]
 
 
-def list_tree(root, rev):
+def list_tree(root: str, rev: str) -> List[Tuple[str, str, str]]:
+    """Return every file entry of a revision as (mode, blob, path).
+
+    Args:
+        root: Repository root
+        rev: Revision whose tree is read
+
+    Returns:
+        List of (mode, blob, path) tuples for the files in the tree
+
+    Raises:
+        SystemExit: When git cannot list the tree, through die()
+    """
     raw = git_out(["ls-tree", "-r", "-z", rev], root)
     entries = []
     for chunk in raw.split(b"\0"):
@@ -642,11 +1041,17 @@ def list_tree(root, rev):
     return entries
 
 
-def parse_name_status(raw):
+def parse_name_status(raw: bytes) -> List[str]:
     """Return the paths of a `diff-tree --name-status -z` listing.
 
     With -z the record is `status NUL path NUL`. A tab separated token is
     accepted as well so a format change cannot turn into an empty path list.
+
+    Args:
+        raw: Raw bytes of the listing
+
+    Returns:
+        The path of every record, in listing order
     """
     paths = []
     tokens = raw.split(b"\0")
@@ -671,12 +1076,23 @@ def parse_name_status(raw):
     return paths
 
 
-def changed_paths(root, sha, include_deleted=False):
+def changed_paths(root: str, sha: str, include_deleted: bool = False) -> List[str]:
     """Paths changed against every parent, including typechanges.
 
     For a merge this covers each parent through -m. For a root commit --root
     makes the whole tree the change set. The gate-change decision needs the
     deletions too, the content pass does not.
+
+    Args:
+        root: Repository root
+        sha: Commit whose change set is read
+        include_deleted: Keep the D statuses as well (default: False)
+
+    Returns:
+        Deduplicated paths of the change set
+
+    Raises:
+        SystemExit: When git cannot read the change set, through die()
     """
     diff_filter = "ACMRTD" if include_deleted else "ACMRT"
     raw = git_out(
@@ -694,7 +1110,20 @@ def changed_paths(root, sha, include_deleted=False):
     return paths
 
 
-def commit_metadata(root, sha):
+def commit_metadata(root: str, sha: str) -> Tuple[str, ...]:
+    """Return the message and the identity fields of one commit.
+
+    Args:
+        root: Repository root
+        sha: Commit whose metadata is read
+
+    Returns:
+        Tuple of the message, the author email, the committer email, the
+        author name and the committer name
+
+    Raises:
+        SystemExit: When git fails or the record cannot be split, through die()
+    """
     raw = git_out(
         ["log", "-1", "--no-show-signature",
          "--format=%B%x00%ae%x00%ce%x00%an%x00%cn", sha],
@@ -708,12 +1137,23 @@ def commit_metadata(root, sha):
         + [part.decode("utf-8", "replace").strip() for part in parts[1:]])
 
 
-def baseline_commits(root, config, cache):
+def baseline_commits(root: str, config: Dict[str, Any], cache: Dict[str, Any]) -> Set[str]:
     """The baseline commit and its ancestors, empty when there is none.
 
     Those commits built the gate itself and predate the trailer rule. A
     missing or unknown baseline exempts nothing, so an old approval can
     never keep covering a new gate change.
+
+    Args:
+        root: Repository root
+        config: Loaded gate configuration
+        cache: Per run cache that also holds this answer
+
+    Returns:
+        The commit hashes exempt from the trailer rule
+
+    Raises:
+        SystemExit: When git cannot be run at all, through die()
     """
     if "gate-baseline" not in cache:
         baseline = config.get("gate_change_baseline")
@@ -726,15 +1166,33 @@ def baseline_commits(root, config, cache):
     return cache["gate-baseline"]
 
 
-def has_gate_trailer(message):
-    """True when the message carries the exact approval trailer line."""
+def has_gate_trailer(message: str) -> bool:
+    """True when the message carries the exact approval trailer line.
+
+    Args:
+        message: Full commit or tag message text
+
+    Returns:
+        True when one stripped line equals the trailer line
+    """
     for line in message.split("\n"):
         if line.strip() == GATE_TRAILER:
             return True
     return False
 
 
-def check_commit(checker, root, sha, cache):
+def check_commit(checker: Checker, root: str, sha: str, cache: Dict[str, Any]) -> None:
+    """Check one commit message, its identities and its changed content.
+
+    Args:
+        checker: Finding collector of this run
+        root: Repository root
+        sha: Commit to check
+        cache: Per run cache of blob content and the baseline set
+
+    Raises:
+        SystemExit: When git fails while reading the commit, through die()
+    """
     short = sha[:12]
     (message, author_email, committer_email,
      author_name, committer_name) = commit_metadata(root, sha)
@@ -773,9 +1231,19 @@ def check_commit(checker, root, sha, cache):
             continue
         checker.check_path(path, mode, blob_content(root, blob, cache))
 
+# ───────────────────────────────────────────────────────────────
+# 10. TAG AND PUSH HANDLING
+# ───────────────────────────────────────────────────────────────
 
-def parse_tagger(header):
-    """The tagger name and email from a tag header, or None."""
+def parse_tagger(header: bytes) -> Optional[Tuple[str, str]]:
+    """The tagger name and email from a tag header, or None.
+
+    Args:
+        header: Raw tag header, the part above the message body
+
+    Returns:
+        Tuple of (name, email), or None when no tagger line is present
+    """
     for line in header.decode("utf-8", "replace").split("\n"):
         if not line.startswith("tagger "):
             continue
@@ -785,7 +1253,18 @@ def parse_tagger(header):
     return None
 
 
-def check_tag_message(checker, root, ref, sha):
+def check_tag_message(checker: Checker, root: str, ref: str, sha: str) -> None:
+    """Check the tagger identity and the message body of an annotated tag.
+
+    Args:
+        checker: Finding collector of this run
+        root: Repository root
+        ref: Ref name the tag is pushed under
+        sha: Object id of the tag
+
+    Raises:
+        SystemExit: When git cannot read the tag object, through die()
+    """
     kind = git_out(["cat-file", "-t", sha], root).decode("utf-8", "replace").strip()
     if kind != "tag":
         return
@@ -807,7 +1286,20 @@ def check_tag_message(checker, root, ref, sha):
     checker.check_text(display, text)
 
 
-def rev_list_not_on_remote(root, local_sha, remote):
+def rev_list_not_on_remote(root: str, local_sha: str, remote: Optional[str]) -> List[str]:
+    """Return the commits reachable from local_sha but not from the remote.
+
+    Args:
+        root: Repository root
+        local_sha: Local tip that bounds the walk
+        remote: Remote name, empty or None for every remote
+
+    Returns:
+        Commit hashes that local_sha adds on top of the remote
+
+    Raises:
+        SystemExit: When git cannot list the commits, through die()
+    """
     args = ["rev-list", local_sha, "--not"]
     if remote:
         args.append("--remotes=" + remote)
@@ -816,7 +1308,21 @@ def rev_list_not_on_remote(root, local_sha, remote):
     return git_out(args, root).decode("utf-8", "replace").split()
 
 
-def commits_for_push(root, local_sha, remote_sha, remote):
+def commits_for_push(root: str, local_sha: str, remote_sha: str, remote: Optional[str]) -> List[str]:
+    """Return the commits a push would add to the remote.
+
+    Args:
+        root: Repository root
+        local_sha: Local tip being pushed
+        remote_sha: Remote tip, all zeros for a new ref
+        remote: Remote name, empty or None for every remote
+
+    Returns:
+        Commit hashes to scan, the new ref case included
+
+    Raises:
+        SystemExit: When the fallback listing fails, through die()
+    """
     if re.match(r"^0+$", remote_sha):
         return rev_list_not_on_remote(root, local_sha, remote)
     status, stdout, _stderr = git_soft(
@@ -828,12 +1334,23 @@ def commits_for_push(root, local_sha, remote_sha, remote):
     return rev_list_not_on_remote(root, local_sha, remote)
 
 
-def push_config_ref(root, remote, stdin_bytes):
+def push_config_ref(root: str, remote: str, stdin_bytes: bytes) -> str:
     """The revision whose rules bind this push.
 
     The remote tip is the state the remote already holds, so a local rewrite
     of the config cannot widen the rules applied here. A remote that is new
     or unknown falls back to its remote HEAD, then to the local HEAD.
+
+    Args:
+        root: Repository root
+        remote: Remote name, empty for every remote
+        stdin_bytes: Raw pre-push lines read from stdin
+
+    Returns:
+        Revision to read the configuration from
+
+    Raises:
+        SystemExit: When git cannot be run at all, through die()
     """
     for raw_line in stdin_bytes.decode("utf-8", "replace").splitlines():
         fields = raw_line.split()
@@ -855,8 +1372,19 @@ def push_config_ref(root, remote, stdin_bytes):
     return "HEAD"
 
 
-def gate_code_at(root, ref):
-    """The gate script at ref, or None when that revision has none."""
+def gate_code_at(root: str, ref: str) -> Optional[bytes]:
+    """The gate script at ref, or None when that revision has none.
+
+    Args:
+        root: Repository root
+        ref: Revision that should hold a copy of the gate
+
+    Returns:
+        The script bytes at ref, or None when that revision has no copy
+
+    Raises:
+        SystemExit: When the script exists but git cannot show it, through die()
+    """
     status, _stdout, _stderr = git_soft(
         ["cat-file", "-e", "%s:%s" % (ref, GATE_SCRIPT)], root)
     if status != 0:
@@ -864,8 +1392,15 @@ def gate_code_at(root, ref):
     return git_out(["show", "%s:%s" % (ref, GATE_SCRIPT)], root)
 
 
-def running_gate_bytes():
-    """The bytes of the file that is running this check."""
+def running_gate_bytes() -> bytes:
+    """The bytes of the file that is running this check.
+
+    Returns:
+        Content of the running gate script
+
+    Raises:
+        SystemExit: When the running script cannot be read, through die()
+    """
     path = os.path.abspath(__file__)
     try:
         with open(path, "rb") as handle:
@@ -874,11 +1409,24 @@ def running_gate_bytes():
         die("cannot read %s: %s" % (path, exc))
 
 
-def rerun_trusted_code(root, remote, ref, code, stdin_bytes):
+def rerun_trusted_code(root: str, remote: str, ref: str, code: bytes, stdin_bytes: bytes) -> int:
     """Run the copy of the gate that the remote already holds.
 
     The temporary file is readable and writable by its owner only and is
     removed whether the child passes or fails.
+
+    Args:
+        root: Repository root
+        remote: Remote name the trusted copy runs for
+        ref: Revision the trusted code comes from
+        code: Bytes of the trusted gate script
+        stdin_bytes: Raw pre-push lines, passed on to the child
+
+    Returns:
+        Exit code of the child gate
+
+    Raises:
+        SystemExit: When the child process cannot be started, through die()
     """
     handle, path = tempfile.mkstemp(prefix="privacy-gate-trusted.", suffix=".py")
     try:
@@ -906,11 +1454,23 @@ def rerun_trusted_code(root, remote, ref, code, stdin_bytes):
     return process.returncode
 
 
-def rerun_anchor_code(root, remote, anchor, stdin_bytes):
+def rerun_anchor_code(root: str, remote: str, anchor: str, stdin_bytes: bytes) -> Optional[int]:
     """Re-run the anchor copy of the gate, or None when it is not needed.
 
     The code that judges a push has to be the code the remote already agreed
     to, so a local edit can never weaken the check.
+
+    Args:
+        root: Repository root
+        remote: Remote name the push targets
+        anchor: Revision that holds the copy the remote agreed to
+        stdin_bytes: Raw pre-push lines to replay for the anchor
+
+    Returns:
+        Exit code of the anchor, or None when the local gate may judge the push
+
+    Raises:
+        SystemExit: When the anchor code exists but cannot be shown or run, through die()
     """
     code = gate_code_at(root, anchor)
     if code is None:
@@ -922,8 +1482,30 @@ def rerun_anchor_code(root, remote, anchor, stdin_bytes):
         "privacy-gate: info: re-running the gate code at %s\n" % anchor)
     return rerun_trusted_code(root, remote, anchor, code, stdin_bytes)
 
+# ───────────────────────────────────────────────────────────────
+# 11. MODE CHECKS
+# ───────────────────────────────────────────────────────────────
 
-def check_push(checker, root, remote, stdin_bytes, cache):
+
+def check_push(
+    checker: Checker,
+    root: str,
+    remote: Optional[str],
+    stdin_bytes: bytes,
+    cache: Dict[str, Any],
+) -> None:
+    """Check the commits and tags a pre-push hook reports on standard input.
+
+    Args:
+        checker: Collector that records every finding.
+        root: Repository root for the git calls.
+        remote: Remote name for the push, or None when the hook gives none.
+        stdin_bytes: Raw pre-push records, one ref pair per line.
+        cache: Shared cache of blob contents and the baseline set.
+
+    Raises:
+        SystemExit: If a pre-push record cannot be split into four fields.
+    """
     seen = set()
     for raw_line in stdin_bytes.decode("utf-8", "replace").splitlines():
         fields = raw_line.split()
@@ -943,7 +1525,14 @@ def check_push(checker, root, remote, stdin_bytes, cache):
             check_commit(checker, root, sha, cache)
 
 
-def check_staged(checker, root, cache):
+def check_staged(checker: Checker, root: str, cache: Dict[str, Any]) -> None:
+    """Check the staged index content and any staged gate file change.
+
+    Args:
+        checker: Collector that records every finding.
+        root: Repository root for the git calls.
+        cache: Shared cache of blob contents.
+    """
     # A staged deletion of a gate file is a gate change too.
     changed = decode_z(git_out(
         ["diff", "--cached", "--name-only", "-z", "--diff-filter=ACMRTDU"],
@@ -972,7 +1561,13 @@ def check_staged(checker, root, cache):
         checker.check_path(path, mode, blob_content(root, blob, cache))
 
 
-def check_staged_identity(checker, root):
+def check_staged_identity(checker: Checker, root: str) -> None:
+    """Check the git identity that a new commit would record.
+
+    Args:
+        checker: Collector that records every finding.
+        root: Repository root for the git config calls.
+    """
     status, stdout, _stderr = git_soft(["config", "--get", "user.email"], root)
     email = stdout.decode("utf-8", "replace").strip() if status == 0 else ""
     checker.check_identity_email("user.email", "git config user.email", email)
@@ -981,7 +1576,14 @@ def check_staged_identity(checker, root):
     checker.check_identity_name("user.name", "git config user.name", name)
 
 
-def check_tree(checker, root, cache):
+def check_tree(checker: Checker, root: str, cache: Dict[str, Any]) -> None:
+    """Check every blob in the HEAD tree.
+
+    Args:
+        checker: Collector that records every finding.
+        root: Repository root for the git calls.
+        cache: Shared cache of blob contents.
+    """
     for mode, blob, path in list_tree(root, "HEAD"):
         if mode == "160000":
             checker.check_path(path, mode, b"")
@@ -989,7 +1591,14 @@ def check_tree(checker, root, cache):
         checker.check_path(path, mode, blob_content(root, blob, cache))
 
 
-def check_history(checker, root, cache):
+def check_history(checker: Checker, root: str, cache: Dict[str, Any]) -> None:
+    """Check every commit reachable from HEAD and every annotated tag.
+
+    Args:
+        checker: Collector that records every finding.
+        root: Repository root for the git calls.
+        cache: Shared cache of blob contents and the baseline set.
+    """
     for sha in git_out(["rev-list", "HEAD"], root).decode("utf-8", "replace").split():
         check_commit(checker, root, sha, cache)
     # Annotated tags carry their own message and tagger, which no commit scan
@@ -1002,10 +1611,17 @@ def check_history(checker, root, cache):
             check_tag_message(checker, root, ref, sha)
 
 
-def staged_gate_paths(checker, root):
-    """Gate files in the index, deletions included.
+def staged_gate_paths(checker: Checker, root: str) -> List[str]:
+    """Return the staged gate file paths, deletions included.
 
     Removing a gate file is as much a gate change as rewriting one.
+
+    Args:
+        checker: Collector that knows the configured gate files.
+        root: Repository root for the git call.
+
+    Returns:
+        Normalized paths of the staged gate files.
     """
     paths = []
     for path in decode_z(git_out(
@@ -1017,7 +1633,17 @@ def staged_gate_paths(checker, root):
     return paths
 
 
-def check_message(checker, root, message_file):
+def check_message(checker: Checker, root: str, message_file: str) -> None:
+    """Check a commit message file and the gate change approval it carries.
+
+    Args:
+        checker: Collector that records every finding.
+        root: Repository root for the git calls.
+        message_file: Path to the file that holds the commit message.
+
+    Raises:
+        SystemExit: If the message file cannot be read.
+    """
     try:
         with open(message_file, "r", encoding="utf-8", errors="replace") as handle:
             raw = handle.read()
@@ -1041,15 +1667,37 @@ def check_message(checker, root, message_file):
                 "gate-change", path, "-",
                 "only the Operator may set %s=1" % APPROVAL_ENV)
 
+# ───────────────────────────────────────────────────────────────
+# 12. SELF-TEST AND ENTRY POINT
+# ───────────────────────────────────────────────────────────────
 
-def build_iban(country, bban):
+
+def build_iban(country: str, bban: str) -> str:
+    """Build a valid IBAN for the self-test.
+
+    Args:
+        country: Two-letter country code
+        bban: Basic bank account number, check digits excluded
+
+    Returns:
+        Full IBAN with its check digits included
+    """
     rotated = bban + country + "00"
     digits = "".join(str(int(char, 36)) for char in rotated)
     check = 98 - int(digits) % 97
     return "%s%02d%s" % (country, check, bban)
 
 
-def build_bsn(base):
+def build_bsn(base: str) -> Optional[str]:
+    """Build a checksum-valid value from eight leading digits for the self-test.
+
+    Args:
+        base: Eight leading digits as a string
+
+    Returns:
+        The complete value, or None when the checksum digit would
+        need two digits
+    """
     weights = (9, 8, 7, 6, 5, 4, 3, 2)
     total = sum(weight * int(char) for weight, char in zip(weights, base))
     check = total % 11
@@ -1058,10 +1706,21 @@ def build_bsn(base):
     return "%s%d" % (base, check)
 
 
-def run_self_test():
+def run_self_test() -> int:
+    """Run the built-in pattern checks and print their outcome.
+
+    Returns:
+        Zero when every check passes, one when any check fails
+    """
     results = []
 
-    def expect(name, condition):
+    def expect(name: str, condition: Any) -> None:
+        """Record one self-test result.
+
+        Args:
+            name: Label printed when this check fails
+            condition: Value whose truthiness is the result
+        """
         results.append((name, bool(condition)))
 
     # Planted strings are assembled at run time so this file scans clean under
@@ -1218,12 +1877,29 @@ def run_self_test():
     return 0
 
 
-def report(checker, mode):
+def report(checker: Checker, mode: str) -> int:
+    """Write every finding and return the process status.
+
+    Args:
+        checker: Checker holding the findings and the file count
+        mode: Mode flag that this run was started with
+
+    Returns:
+        Zero when nothing was found, one otherwise
+    """
     # A path that itself holds a finding would leak the value if printed, so
     # every line naming it shows a short hash instead.
     leaky = {path for _, path, number, _ in checker.findings if number == "path"}
 
-    def shown(path):
+    def shown(path: str) -> str:
+        """Return a printable path, hidden behind a hash when it holds a finding.
+
+        Args:
+            path: Repository-relative path from a finding
+
+        Returns:
+            The path itself, or a redacted stand-in for a leaky path
+        """
         if path in leaky:
             digest = hashlib.sha256(path.encode("utf-8", "replace")).hexdigest()
             return "<redacted path %s>" % digest[:8]
@@ -1240,7 +1916,18 @@ def report(checker, mode):
     return 0
 
 
-def main(argv):
+def main(argv: List[str]) -> int:
+    """Run the gate in the mode named by the command line.
+
+    Args:
+        argv: Full argument vector, program name included
+
+    Returns:
+        Process exit status, zero when the content is clean
+
+    Raises:
+        SystemExit: When the arguments, the repository or the rules are unusable
+    """
     mode, argument, config_ref, trusted_code = parse_args(argv)
     if mode == SELF_TEST:
         return run_self_test()

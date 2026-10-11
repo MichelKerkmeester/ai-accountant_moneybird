@@ -1,7 +1,19 @@
 #!/usr/bin/env bash
-# Exercise scripts/privacy-gate.py against a throwaway repository.
+# ───────────────────────────────────────────────────────────────
+# COMPONENT: PRIVACY GATE TEST SUITE
+# ───────────────────────────────────────────────────────────────
+# Exercises scripts/privacy-gate.py against throwaway repositories.
 # Every sensitive value is generated at runtime so this file stays clean.
-set -u
+# Usage: scripts/privacy-gate-test.sh
+# Exit Codes:
+#   0 - All checks pass
+#   1 - One or more checks fail
+# Failing gate runs are asserted through $?, so -e must stay off
+set -uo pipefail
+
+# ───────────────────────────────────────────────────────────────
+# 1. CONFIGURATION
+# ───────────────────────────────────────────────────────────────
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 WORK="$(mktemp -d "${TMPDIR:-/tmp}/privacy-gate-test.XXXXXX")"
@@ -14,30 +26,51 @@ GATE_STDIN="/dev/null"
 GATE_APPROVED=""
 ZERO_SHA="$(python3 -c 'print("0" * 40)')"
 
+# ───────────────────────────────────────────────────────────────
+# 2. TEST HARNESS HELPERS
+# ───────────────────────────────────────────────────────────────
+
+# Record a passing check and print its name
+# Args:
+#   $1 - Check name to report
 pass() {
   PASSED=$((PASSED + 1))
   printf 'PASS %s\n' "$1"
 }
 
+# Record a failing check and print its name
+# Args:
+#   $1 - Check name to report
 fail() {
   FAILED=$((FAILED + 1))
   printf 'FAIL %s\n' "$1"
 }
 
+# Restore the gate environment variables to their default values
 reset_gate_env() {
   GATE_STDIN="/dev/null"
   GATE_APPROVED=""
 }
 
+# Run the gate with the current environment and stdin source
+# Args:
+#   $@ - Arguments passed through to the gate
+# Returns:
+#   The gate exit status
 # The scanner reads the pushed refs from stdin, so every run gets a stdin file.
 run_gate() {
-  if [ -n "$GATE_APPROVED" ]; then
+  if [[ -n "$GATE_APPROVED" ]]; then
     PRIVACY_GATE_CHANGE_APPROVED=1 python3 -I scripts/privacy-gate.py "$@" < "$GATE_STDIN" 2>&1
   else
-    PRIVACY_GATE_CHANGE_APPROVED= python3 -I scripts/privacy-gate.py "$@" < "$GATE_STDIN" 2>&1
+    PRIVACY_GATE_CHANGE_APPROVED='' python3 -I scripts/privacy-gate.py "$@" < "$GATE_STDIN" 2>&1
   fi
 }
 
+# Assert that a gate run exits 1 with the expected rule finding
+# Args:
+#   $1 - Check name to report
+#   $2 - Rule id the finding must name
+#   $@ - Arguments passed to the gate
 expect_blocked() {
   local name rule out status
   name="$1"
@@ -46,7 +79,7 @@ expect_blocked() {
   out="$(run_gate "$@")"
   status=$?
   LAST_OUT="$out"
-  if [ "$status" -ne 1 ]; then
+  if [[ "$status" -ne 1 ]]; then
     fail "$name (exit $status, expected 1)"
     return 0
   fi
@@ -60,6 +93,10 @@ expect_blocked() {
   esac
 }
 
+# Assert that a gate run exits 0 for the given check
+# Args:
+#   $1 - Check name to report
+#   $@ - Arguments passed to the gate
 expect_clean() {
   local name out status
   name="$1"
@@ -67,24 +104,35 @@ expect_clean() {
   out="$(run_gate "$@")"
   status=$?
   LAST_OUT="$out"
-  if [ "$status" -eq 0 ]; then
+  if [[ "$status" -eq 0 ]]; then
     pass "$name"
   else
     fail "$name (exit $status, expected 0)"
   fi
 }
 
+# Assert that the last gate output never contains the sensitive value
+# Args:
+#   $1 - Check name to report
+#   $2 - Sensitive value that must not appear
 expect_no_leak() {
+  local name="$1"
+  local value="$2"
   case "$LAST_OUT" in
-    *"$2"*)
-      fail "$1"
+    *"$value"*)
+      fail "$name"
       ;;
     *)
-      pass "$1"
+      pass "$name"
       ;;
   esac
 }
 
+# ───────────────────────────────────────────────────────────────
+# 3. VALUE GENERATORS AND FIXTURES
+# ───────────────────────────────────────────────────────────────
+
+# Print an IBAN with a valid checksum
 gen_iban() {
   python3 -c '
 def build(country, bban):
@@ -95,6 +143,7 @@ print(build("NL", "ABNA0417164300"))
 '
 }
 
+# Print a generated BSN that passes the mod 11 check
 gen_bsn() {
   python3 -c '
 weights = [9, 8, 7, 6, 5, 4, 3, 2]
@@ -107,43 +156,60 @@ for base in range(10000000, 10000100):
 '
 }
 
+# Print a generated VAT identifier that matches the gate pattern
 gen_vat() {
   python3 -c 'print("NL" + "0" * 9 + "B01")'
 }
 
+# Print a generated personal email address that trips the email rule
 gen_email() {
   python3 -c 'print("zoe" + "@" + "example" + ".nl")'
 }
 
+# Print a generated email address for the identity checks
 # An allowed domain, so only the identity rule can fire on it.
 gen_other_email() {
   python3 -c 'print("leaky" + "@" + "example" + ".org")'
 }
 
+# Print a run of one repeated digit
+# Args:
+#   $1 - Number of digits to print
+#   $2 - Digit to repeat
 gen_digits() {
   python3 -c 'import sys
 print(sys.argv[2] * int(sys.argv[1]))' "$1" "$2"
 }
 
+# Print a repeated character run that trips the secret rule
 gen_secret() {
   python3 -c 'print("k" * 32)'
 }
 
+# Print fullwidth digit variants of a digit string
+# Args:
+#   $1 - Digit string to convert
 wide_digits() {
   python3 -c 'import sys
 print("".join(chr(ord("\uff10") + int(digit)) for digit in sys.argv[1]))' "$1"
 }
 
+# Print an IBAN grouped into blocks of four joined by hyphens
+# Args:
+#   $1 - IBAN text to group
 hyphenate_iban() {
   python3 -c 'import sys
 text = sys.argv[1]
 print("-".join(text[i:i + 4] for i in range(0, len(text), 4)))' "$1"
 }
 
+# Write a denylist that holds no private terms
 write_clean_denylist() {
   printf '# no private terms are needed for these tests\n' > .privacy-denylist
 }
 
+# Build a throwaway repository with the gate installed and a seed commit
+# Leaves the working directory inside the new repository
 new_repo() {
   rm -rf "$WORK/repo"
   mkdir -p "$WORK/repo/scripts" "$WORK/repo/.githooks"
@@ -165,12 +231,17 @@ new_repo() {
   write_clean_denylist
 }
 
+# Discard local changes, remove untracked files and restore a clean denylist
 reset_tree() {
   git reset -q
   git checkout -q -- .
   git clean -qfd
   write_clean_denylist
 }
+
+# ───────────────────────────────────────────────────────────────
+# 4. BASIC MODE CHECKS
+# ───────────────────────────────────────────────────────────────
 
 printf 'privacy gate test suite\n'
 new_repo
@@ -211,7 +282,10 @@ git add big.md
 expect_blocked "staged size" size --staged
 reset_tree
 
-# Content rules.
+# ───────────────────────────────────────────────────────────────
+# 5. CONTENT RULE CHECKS
+# ───────────────────────────────────────────────────────────────
+
 IBAN="$(gen_iban)"
 printf 'payment to %s\n' "$IBAN" > payments.md
 git add payments.md
@@ -272,6 +346,10 @@ printf 'api_key=%s\n' 'EXAMPLE_FAKE_TOKEN_9k2n' > example-notes.md
 git add example-notes.md
 expect_clean "fake secret is ignored" --staged
 reset_tree
+
+# ───────────────────────────────────────────────────────────────
+# 6. DENYLIST AND PATH CHECKS
+# ───────────────────────────────────────────────────────────────
 
 # Denylist terms, with and without the space.
 TERM="Client$(printf ' ')Alpha"
@@ -355,9 +433,13 @@ git add bedrag.md
 expect_blocked "dutch bare amount" amount --staged
 reset_tree
 
+# ───────────────────────────────────────────────────────────────
+# 7. VARIANT AND GATE FILE CHECKS
+# ───────────────────────────────────────────────────────────────
+
 # IBAN variants.
 IBAN="$(gen_iban)"
-IBAN_LOWER="$(printf '%s' "$IBAN" | tr 'A-Z' 'a-z')"
+IBAN_LOWER="$(printf '%s' "$IBAN" | tr '[:upper:]' '[:lower:]')"
 printf 'iban %s\n' "$IBAN_LOWER" > iban-lower.md
 git add iban-lower.md
 expect_blocked "lowercase iban" iban --staged
@@ -458,6 +540,10 @@ reset_gate_env
 reset_tree
 reset_gate_env
 
+# ───────────────────────────────────────────────────────────────
+# 8. MESSAGE AND PUSH MODE CHECKS
+# ───────────────────────────────────────────────────────────────
+
 # Commit message mode reads the message before the commit exists.
 IBAN_MSG="$(gen_iban)"
 printf 'reserve %s\n' "$IBAN_MSG" > "$WORK/commit-message.txt"
@@ -509,6 +595,10 @@ printf '%s %s %s %s\n' refs/heads/main "$TIP_ID" refs/heads/main "$TIP_ID" > "$W
 GATE_STDIN="$WORK/push-clean.txt"
 expect_clean "push passes an empty range" --push origin
 reset_gate_env
+
+# ───────────────────────────────────────────────────────────────
+# 9. PUSH MODE EDGE CASES
+# ───────────────────────────────────────────────────────────────
 
 # A pushed annotated tag carries its own message.
 new_repo
@@ -602,7 +692,7 @@ reported=no
 case "$out" in
   *".privacy-gate.json"*) reported=yes ;;
 esac
-if [ "$status" -eq 2 ] && [ "$reported" = yes ]; then
+if [[ "$status" -eq 2 ]] && [[ "$reported" = yes ]]; then
   pass "a remote tip without the config fails closed"
 else
   fail "a remote tip without the config fails closed (exit $status)"
@@ -616,6 +706,10 @@ write_clean_denylist
 git rm -q .privacy-gate.json
 expect_blocked "staged deletion of a gate file" gate-change --staged
 reset_tree
+
+# ───────────────────────────────────────────────────────────────
+# 10. BASELINE AND COMMIT-MSG CHECKS
+# ───────────────────────────────────────────────────────────────
 
 # Commits at or before the recorded baseline are exempt.
 new_repo
@@ -671,6 +765,10 @@ reset_tree
 printf 'plain message\n' > "$WORK/message-plain.txt"
 expect_clean "message without a staged gate change is fine" --message "$WORK/message-plain.txt"
 reset_gate_env
+
+# ───────────────────────────────────────────────────────────────
+# 11. ANCHOR, CONFIG REF AND HOOK CHECKS
+# ───────────────────────────────────────────────────────────────
 
 # Push mode reads the rules from the remote tip, so a local rewrite of the
 # config cannot widen them.
@@ -765,7 +863,7 @@ expect_blocked "history reads the rules from the given ref" file-type --history 
 out="$(run_gate --tree --config-ref missing-ref)"
 status=$?
 LAST_OUT="$out"
-if [ "$status" -eq 2 ]; then
+if [[ "$status" -eq 2 ]]; then
   pass "an unknown config ref fails closed"
 else
   fail "an unknown config ref fails closed (exit $status)"
@@ -797,8 +895,12 @@ fi
 git merge --abort >/dev/null 2>&1 || true
 reset_tree
 
+# ───────────────────────────────────────────────────────────────
+# 12. FINAL REPORT
+# ───────────────────────────────────────────────────────────────
+
 printf 'Result: %d passed, %d failed\n' "$PASSED" "$FAILED"
-if [ "$FAILED" -ne 0 ]; then
+if [[ "$FAILED" -ne 0 ]]; then
   exit 1
 fi
 exit 0

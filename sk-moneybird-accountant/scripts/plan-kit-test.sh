@@ -1,12 +1,31 @@
 #!/usr/bin/env bash
+# ───────────────────────────────────────────────────────────────
+# COMPONENT: PLAN KIT TEST
+# ───────────────────────────────────────────────────────────────
+# Tests generate-plan-kit.py and init-workspace.sh end to end.
+# Usage: plan-kit-test.sh [skill folder]
+# Exit Codes:
+#   0 - All checks pass
+#   1 - One or more checks fail
+#   2 - Invalid arguments or missing skill files
+#
 # WHY: the kit is only trustworthy when the generated files match the references
 # and init-workspace never overwrites existing finance data. This suite proves both.
-set -u
+# WHY: the suite inspects $? after commands that are expected to fail, so -e stays off.
+set -uo pipefail
+
+# ───────────────────────────────────────────────────────────────
+# 1. SCRIPT PATHS
+# ───────────────────────────────────────────────────────────────
 
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd -P) || exit 1
 DEFAULT_SKILL=$(dirname "$SCRIPT_DIR")
 
-if [ "$#" -gt 1 ]; then
+# ───────────────────────────────────────────────────────────────
+# 2. ARGUMENT AND SKILL VALIDATION
+# ───────────────────────────────────────────────────────────────
+
+if [[ "$#" -gt 1 ]]; then
     printf 'error: usage: plan-kit-test.sh [skill folder]\n' >&2
     exit 2
 fi
@@ -18,18 +37,22 @@ if ! SKILL_SRC=$(cd "$SKILL_SRC" 2>/dev/null && pwd -P); then
 fi
 
 GENERATOR="$SKILL_SRC/scripts/generate-plan-kit.py"
-if [ ! -f "$GENERATOR" ]; then
+if [[ ! -f "$GENERATOR" ]]; then
     printf 'error: missing scripts/generate-plan-kit.py in the skill folder\n' >&2
     exit 2
 fi
-if [ ! -f "$SKILL_SRC/scripts/init-workspace.sh" ]; then
+if [[ ! -f "$SKILL_SRC/scripts/init-workspace.sh" ]]; then
     printf 'error: missing scripts/init-workspace.sh in the skill folder\n' >&2
     exit 2
 fi
-if [ ! -d "$SKILL_SRC/references/migration" ]; then
+if [[ ! -d "$SKILL_SRC/references/migration" ]]; then
     printf 'error: missing references/migration in the skill folder\n' >&2
     exit 2
 fi
+
+# ───────────────────────────────────────────────────────────────
+# 3. TEMP ROOT, GIT ISOLATION AND CLEANUP
+# ───────────────────────────────────────────────────────────────
 
 TMP_ROOT=$(mktemp -d "${TMPDIR:-/tmp}/plan-kit-test.XXXXXX") || exit 2
 mkdir -p "$TMP_ROOT/gitenv"
@@ -38,32 +61,51 @@ export HOME="$TMP_ROOT/gitenv"
 export XDG_CONFIG_HOME="$TMP_ROOT/gitenv/.config"
 export GIT_CONFIG_NOSYSTEM=1
 
+# Remove the temp root on exit so no fixture survives the run
+# shellcheck disable=SC2329  # the EXIT trap calls it
 cleanup() {
-    if [ -n "${TMP_ROOT:-}" ] && [ -d "$TMP_ROOT" ]; then
+    if [[ -n "${TMP_ROOT:-}" ]] && [[ -d "$TMP_ROOT" ]]; then
         rm -rf "$TMP_ROOT"
     fi
 }
 trap cleanup EXIT
 
+# ───────────────────────────────────────────────────────────────
+# 4. TEST HELPERS AND FIXTURE BUILDERS
+# ───────────────────────────────────────────────────────────────
+
 passed=0
 failed=0
 
+# Record a passing check and print its report line
+# Args:
+#   $1 - Check description
 pass() {
     passed=$((passed + 1))
     printf 'PASS %s\n' "$1"
 }
 
+# Record a failing check and print its report line
+# Args:
+#   $1 - Check description
 fail() {
     failed=$((failed + 1))
     printf 'FAIL %s\n' "$1"
 }
 
+# Print a section heading before the next block of checks
+# Args:
+#   $1 - Group title
 group() {
     printf '\n== %s\n' "$1"
 }
 
+# Run a command as a check and record whether it passes
+# Args:
+#   $1 - Check description
+#   $2... - Command and arguments to run
 assert() {
-    description="$1"
+    local description="$1"
     shift
     if "$@" >/dev/null 2>&1; then
         pass "$description"
@@ -72,10 +114,21 @@ assert() {
     fi
 }
 
+# Print the last stored value of a key from captured command output
+# Args:
+#   $1 - File holding the captured output
+#   $2 - Summary key such as files_copied
+# Returns:
+#   0, printing the value or an empty line
 summary_value() {
     tr ' ' '\n' < "$1" | sed -n "s/^$2=//p" | tail -n 1
 }
 
+# Print the octal permission mode of a path, using GNU stat or BSD stat
+# Args:
+#   $1 - Path to inspect
+# Returns:
+#   0 when a stat call succeeds, printing the mode
 file_mode() {
     if stat -c '%a' "$1" >/dev/null 2>&1; then
         stat -c '%a' "$1"
@@ -84,27 +137,47 @@ file_mode() {
     fi
 }
 
+# Count folder entries whose names match a grep pattern
+# Args:
+#   $1 - Folder to list
+#   $2 - Pattern applied to the entry names
+# Returns:
+#   0, printing the number of matching entries
 count_named() {
     (
         cd "$1" 2>/dev/null || exit 1
-        ls | grep -c "$2"
+        for entry in *; do
+            [[ -e "$entry" || -L "$entry" ]] && printf '%s\n' "$entry"
+        done | grep -c "$2"
     ) 2>/dev/null || true
 }
 
+# Count regular files below a folder
+# Args:
+#   $1 - Folder to walk
+# Returns:
+#   0 when the walk succeeds, printing the count
 count_files() {
     find "$1" -type f 2>/dev/null | wc -l | tr -d ' '
 }
 
+# Build a throwaway git repository that holds a copy of the skill
+# Args:
+#   $1 - Repository root to create
+#   $2 - "yes" writes a .gitignore that ignores the workspace and the spec names
+# Returns:
+#   0 when the fixture is ready, 1 when a copy or git init fails
 make_fake_repo() {
-    root="$1"
-    ignored="$2"
+    local root="$1"
+    local ignored="$2"
     mkdir -p "$root/sk-moneybird-accountant" || return 1
+    local part
     for part in scripts assets references; do
-        if [ -e "$SKILL_SRC/$part" ]; then
+        if [[ -e "$SKILL_SRC/$part" ]]; then
             cp -R "$SKILL_SRC/$part" "$root/sk-moneybird-accountant/" || return 1
         fi
     done
-    if [ "$ignored" = yes ]; then
+    if [[ "$ignored" = yes ]]; then
         printf '/migration-workspace/\n/specs/*\n!/specs/000-migration-template/\n' >"$root/.gitignore" || return 1
     fi
     (
@@ -114,11 +187,21 @@ make_fake_repo() {
     return 0
 }
 
+# Run the plan kit generator inside a fixture repository
+# Args:
+#   $1 - Repository root that holds the copied skill
+#   $2 - Tag for the captured output file under the temp root
+# Returns:
+#   The generator exit status
 generate_repo() {
-    root="$1"
-    tag="$2"
+    local root="$1"
+    local tag="$2"
     python3 -I "$root/sk-moneybird-accountant/scripts/generate-plan-kit.py" >"$TMP_ROOT/generate-$tag.txt" 2>&1
 }
+
+# ───────────────────────────────────────────────────────────────
+# 5. REAL SKILL FOLDER AND GENERATED COPY CHECKS
+# ───────────────────────────────────────────────────────────────
 
 group "Real skill folder"
 
@@ -162,13 +245,19 @@ fi
 
 assert "the old assets/migration/phases folder is gone after generation" test ! -e "$ASSETS_A/phases"
 
-DRIFT_DOC=$(ls "$SPECS_A"/001-phase-*/spec.md 2>/dev/null | head -n 1)
-if [ -n "${DRIFT_DOC:-}" ] && [ -f "$DRIFT_DOC" ]; then
+DRIFT_DOC=""
+for candidate in "$SPECS_A"/001-phase-*/spec.md; do
+    if [[ -f "$candidate" ]]; then
+        DRIFT_DOC="$candidate"
+        break
+    fi
+done
+if [[ -n "${DRIFT_DOC:-}" ]] && [[ -f "$DRIFT_DOC" ]]; then
     printf 'injected drift\n' >>"$DRIFT_DOC"
     python3 -I "$GEN_A" --check >"$TMP_ROOT/check-drift.txt" 2>&1
     drift_status=$?
     drift_folder=$(basename "$(dirname "$DRIFT_DOC")")
-    if [ "$drift_status" -eq 1 ] && grep -q "$drift_folder" "$TMP_ROOT/check-drift.txt"; then
+    if [[ "$drift_status" -eq 1 ]] && grep -q "$drift_folder" "$TMP_ROOT/check-drift.txt"; then
         pass "--check fails and names the edited child doc"
     else
         fail "--check fails and names the edited child doc"
@@ -187,7 +276,7 @@ fi
 printf 'stray\n' >"$SPECS_A/stray-note.md"
 python3 -I "$GEN_A" --check >"$TMP_ROOT/check-stray.txt" 2>&1
 stray_status=$?
-if [ "$stray_status" -eq 1 ] && grep -q 'stray-note.md' "$TMP_ROOT/check-stray.txt"; then
+if [[ "$stray_status" -eq 1 ]] && grep -q 'stray-note.md' "$TMP_ROOT/check-stray.txt"; then
     pass "--check fails and names a stray .md file in the packet"
 else
     fail "--check fails and names a stray .md file in the packet"
@@ -198,7 +287,7 @@ first_child=$(find "$SPECS_A" -mindepth 1 -maxdepth 1 -type d -name '001-phase-*
 printf 'a,b\n' >"$first_child/export.csv"
 python3 -I "$GEN_A" --check >"$TMP_ROOT/check-stray-csv.txt" 2>&1
 stray_csv_status=$?
-if [ "$stray_csv_status" -eq 1 ] && grep -q 'export.csv' "$TMP_ROOT/check-stray-csv.txt"; then
+if [[ "$stray_csv_status" -eq 1 ]] && grep -q 'export.csv' "$TMP_ROOT/check-stray-csv.txt"; then
     pass "--check fails and names a stray non-doc file in a phase packet"
 else
     fail "--check fails and names a stray non-doc file in a phase packet"
@@ -216,19 +305,23 @@ mkdir -p "$ASSETS_A/phases"
 printf 'legacy\n' >"$ASSETS_A/phases/phase-00-plan.md"
 python3 -I "$GEN_A" --check >"$TMP_ROOT/check-legacy.txt" 2>&1
 legacy_status=$?
-if [ "$legacy_status" -eq 1 ] && grep -q 'assets/migration/phases' "$TMP_ROOT/check-legacy.txt"; then
+if [[ "$legacy_status" -eq 1 ]] && grep -q 'assets/migration/phases' "$TMP_ROOT/check-legacy.txt"; then
     pass "--check fails and names the old assets/migration/phases folder"
 else
     fail "--check fails and names the old assets/migration/phases folder"
     sed -n '1,3p' "$TMP_ROOT/check-legacy.txt"
 fi
-if python3 -I "$GEN_A" >/dev/null 2>&1 && [ ! -e "$ASSETS_A/phases" ]; then
+if python3 -I "$GEN_A" >/dev/null 2>&1 && [[ ! -e "$ASSETS_A/phases" ]]; then
     pass "write mode deletes the old assets/migration/phases folder"
 else
     fail "write mode deletes the old assets/migration/phases folder"
 fi
 
 assert "the packet holds 23 child folders" test "$(count_named "$SPECS_A" '^[0-9][0-9][0-9]-phase-')" -eq 23
+
+# ───────────────────────────────────────────────────────────────
+# 6. PACKET STRUCTURE, PLACEHOLDERS AND LINK CHECKS
+# ───────────────────────────────────────────────────────────────
 
 if python3 -I - "$SPECS_A" "$SKILL_A/references/migration" <<'PY' >"$TMP_ROOT/packet.txt" 2>&1
 import os
@@ -433,6 +526,10 @@ else
     sed -n '1,5p' "$TMP_ROOT/links.txt"
 fi
 
+# ───────────────────────────────────────────────────────────────
+# 7. CONFIG TEMPLATE CHECK
+# ───────────────────────────────────────────────────────────────
+
 group "Config template"
 
 if python3 -I - "$SKILL_A/references/migration/overview-and-setup.md" "$ASSETS_A/migration-config.template.json" <<'PY' >"$TMP_ROOT/config-check.txt" 2>&1
@@ -504,15 +601,19 @@ else
     sed -n '1,3p' "$TMP_ROOT/config-check.txt"
 fi
 
+# ───────────────────────────────────────────────────────────────
+# 8. WORKSPACE CREATION CHECKS
+# ───────────────────────────────────────────────────────────────
+
 group "Workspace creation"
 
-if [ -e "$WS_A" ] || [ -L "$WS_A" ]; then
+if [[ -e "$WS_A" ]] || [[ -L "$WS_A" ]]; then
     fail "no workspace exists before init"
 else
     pass "no workspace exists before init"
 fi
 
-if [ -e "$SPEC_COPY" ] || [ -L "$SPEC_COPY" ]; then
+if [[ -e "$SPEC_COPY" ]] || [[ -L "$SPEC_COPY" ]]; then
     fail "no spec copy exists before init"
 else
     pass "no spec copy exists before init"
@@ -525,13 +626,13 @@ else
     sed -n '1,3p' "$TMP_ROOT/init-dry.txt"
 fi
 
-if [ -e "$WS_A" ] || [ -L "$WS_A" ]; then
+if [[ -e "$WS_A" ]] || [[ -L "$WS_A" ]]; then
     fail "init-workspace --dry-run creates no workspace"
 else
     pass "init-workspace --dry-run creates no workspace"
 fi
 
-if [ -e "$SPEC_COPY" ] || [ -L "$SPEC_COPY" ]; then
+if [[ -e "$SPEC_COPY" ]] || [[ -L "$SPEC_COPY" ]]; then
     fail "init-workspace --dry-run creates no spec copy"
 else
     pass "init-workspace --dry-run creates no spec copy"
@@ -546,7 +647,7 @@ fi
 
 copied_one=$(summary_value "$TMP_ROOT/init-run1.txt" files_copied)
 copied_one=${copied_one:-0}
-if [ "$copied_one" -ge 4 ]; then
+if [[ "$copied_one" -ge 4 ]]; then
     pass "init-workspace copies the dashboard, the config and the journal files"
 else
     fail "init-workspace copies the dashboard, the config and the journal files (copied $copied_one)"
@@ -554,7 +655,7 @@ fi
 
 assert "the phase dashboard is copied" test -f "$WS_A/Plans/phase-dashboard.md"
 
-plans_entries=$(ls "$WS_A/Plans" 2>/dev/null | wc -l | tr -d ' ')
+plans_entries=$(find "$WS_A/Plans" -mindepth 1 -maxdepth 1 ! -name '.*' 2>/dev/null | wc -l | tr -d ' ')
 assert "Plans/ holds only the dashboard" test "$plans_entries" -eq 1
 
 assert "the config template is copied to MIGRATION_CONFIG.json" test -f "$WS_A/MIGRATION_CONFIG.json"
@@ -563,13 +664,13 @@ assert "the empty run journal is created" test -f "$WS_A/RunJournal/run-journal.
 assert "the run journal is empty" test ! -s "$WS_A/RunJournal/run-journal.jsonl"
 
 missing_folders=0
-while IFS= read -r folder || [ -n "$folder" ]; do
+while IFS= read -r folder || [[ -n "$folder" ]]; do
     case "$folder" in
         "" | "#"*)
             continue
             ;;
     esac
-    if [ ! -d "$WS_A/$folder" ]; then
+    if [[ ! -d "$WS_A/$folder" ]]; then
         missing_folders=$((missing_folders + 1))
     fi
 done < "$ASSETS_A/workspace-folders.txt"
@@ -583,20 +684,25 @@ assert "the workspace folder has mode 700" test "$ws_mode" = "700"
     find . -type f
 ) >"$TMP_ROOT/ws-files.txt" 2>/dev/null
 bad_modes=0
-while IFS= read -r entry || [ -n "$entry" ]; do
-    if [ -z "$entry" ]; then
+while IFS= read -r entry || [[ -n "$entry" ]]; do
+    if [[ -z "$entry" ]]; then
         continue
     fi
-    if [ "$(file_mode "$WS_A/$entry")" != "600" ]; then
+    if [[ "$(file_mode "$WS_A/$entry")" != "600" ]]; then
         bad_modes=$((bad_modes + 1))
     fi
 done <"$TMP_ROOT/ws-files.txt"
 assert "every copied workspace file has mode 600" test "$bad_modes" -eq 0
 
+# ───────────────────────────────────────────────────────────────
+# 9. SPEC PACKET COPY CHECKS
+# ───────────────────────────────────────────────────────────────
+
 group "Spec packet copy"
 
 scratch_count=$(find "$SPEC_COPY" -type d -name scratch | wc -l | tr -d ' ')
 assert "the copy holds one scratch folder per packet (24)" test "$scratch_count" -eq 24
+# shellcheck disable=SC2016  # $1 expands inside the sh -c child, not here
 assert "the copy drops the generated notice" sh -c '! grep -rq "Generated by sk-moneybird-accountant/scripts/generate-plan-kit.py" "$1"' _ "$SPEC_COPY"
 
 assert "the packet is copied to specs/001-migration" test -f "$SPEC_COPY/spec.md"
@@ -605,7 +711,7 @@ assert "the copied packet holds 23 child folders" test "$(count_named "$SPEC_COP
 spec_copied_one=$(summary_value "$TMP_ROOT/init-run1.txt" spec_files_copied)
 spec_copied_one=${spec_copied_one:-0}
 template_files=$(count_files "$SPECS_A")
-if [ "$spec_copied_one" -eq "$template_files" ]; then
+if [[ "$spec_copied_one" -eq "$template_files" ]]; then
     pass "init-workspace copies every spec packet file ($spec_copied_one)"
 else
     fail "init-workspace copies every spec packet file (copied $spec_copied_one of $template_files)"
@@ -744,6 +850,10 @@ assert "the 002-my-books run copies every packet file" test "$spec_three" -eq "$
 stale_two=$(find "$REPO_A/specs/002-my-books" -type f \( -name '*.md' -o -name '*.json' \) -exec grep -lF '000-migration-template' {} + 2>/dev/null | wc -l | tr -d ' ')
 assert "specs/002-my-books holds no 000-migration-template text" test "$stale_two" -eq 0
 
+# ───────────────────────────────────────────────────────────────
+# 10. REPEAT RUN AND EXISTING FILE CHECKS
+# ───────────────────────────────────────────────────────────────
+
 group "Repeat runs"
 
 if "$INIT_A" >"$TMP_ROOT/init-run2.txt" 2>&1; then
@@ -798,6 +908,10 @@ spec_skipped_d=$(summary_value "$TMP_ROOT/init-run-d.txt" spec_files_skipped)
 spec_skipped_d=${spec_skipped_d:-0}
 assert "the pre-existing spec.md is counted as skipped" test "$spec_skipped_d" -eq 1
 
+# ───────────────────────────────────────────────────────────────
+# 11. REFUSAL CHECKS
+# ───────────────────────────────────────────────────────────────
+
 group "Refusals"
 
 REPO_B="$TMP_ROOT/repo-b"
@@ -811,7 +925,7 @@ mkdir -p "$TMP_ROOT/symlink-target"
 ln -s "$TMP_ROOT/symlink-target" "$REPO_B/migration-workspace"
 "$REPO_B/sk-moneybird-accountant/scripts/init-workspace.sh" >"$TMP_ROOT/init-symlink.txt" 2>&1
 symlink_status=$?
-if [ "$symlink_status" -ne 0 ]; then
+if [[ "$symlink_status" -ne 0 ]]; then
     pass "a symlinked workspace is refused"
 else
     fail "a symlinked workspace is refused"
@@ -835,7 +949,7 @@ printf '/specs/*\n!/specs/000-migration-template/\n' >"$REPO_C/.gitignore"
 generate_repo "$REPO_C" c
 "$REPO_C/sk-moneybird-accountant/scripts/init-workspace.sh" >"$TMP_ROOT/init-not-ignored.txt" 2>&1
 not_ignored_status=$?
-if [ "$not_ignored_status" -ne 0 ]; then
+if [[ "$not_ignored_status" -ne 0 ]]; then
     pass "a workspace that is not git-ignored is refused"
 else
     fail "a workspace that is not git-ignored is refused"
@@ -858,7 +972,7 @@ printf '/migration-workspace/\n' >"$REPO_E/.gitignore"
 generate_repo "$REPO_E" e
 "$REPO_E/sk-moneybird-accountant/scripts/init-workspace.sh" >"$TMP_ROOT/init-spec-not-ignored.txt" 2>&1
 spec_not_ignored_status=$?
-if [ "$spec_not_ignored_status" -ne 0 ]; then
+if [[ "$spec_not_ignored_status" -ne 0 ]]; then
     pass "a spec target that is not git-ignored is refused"
 else
     fail "a spec target that is not git-ignored is refused"
@@ -882,7 +996,7 @@ mkdir -p "$TMP_ROOT/spec-link-target"
 ln -s "$TMP_ROOT/spec-link-target" "$REPO_F/specs/001-migration"
 "$REPO_F/sk-moneybird-accountant/scripts/init-workspace.sh" >"$TMP_ROOT/init-spec-symlink.txt" 2>&1
 spec_symlink_status=$?
-if [ "$spec_symlink_status" -ne 0 ]; then
+if [[ "$spec_symlink_status" -ne 0 ]]; then
     pass "a symlinked spec target is refused"
 else
     fail "a symlinked spec target is refused"
@@ -927,9 +1041,13 @@ else
     pass "an unknown argument is refused"
 fi
 
+# ───────────────────────────────────────────────────────────────
+# 12. RESULT SUMMARY AND EXIT
+# ───────────────────────────────────────────────────────────────
+
 printf '\nResult: %d passed, %d failed\n' "$passed" "$failed"
 
-if [ "$failed" -gt 0 ]; then
+if [[ "$failed" -gt 0 ]]; then
     exit 1
 fi
 exit 0

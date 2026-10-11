@@ -1,18 +1,32 @@
 #!/usr/bin/env python3
+# ───────────────────────────────────────────────────────────────
+# COMPONENT: PLAN KIT GENERATOR
+# ───────────────────────────────────────────────────────────────
 """Generate the migration plan kit and the migration packet templates.
 
 Generated packet files hold placeholders only. Real migration data lives in
 the git-ignored migration-workspace/ folder, so the tracked kit stays
 shareable. The json files that spec-kit tooling writes into a packet are
-never produced or deleted by this script. --check only confirms they sit
-beside a generated packet and reports any other stray file.
-
-Output is byte-stable: sorted inputs, no timestamps, no randomness.
+never produced or deleted by this script. Output is byte-stable: sorted
+inputs, no timestamps, no randomness.
 
 Usage:
     python3 -I scripts/generate-plan-kit.py
     python3 -I scripts/generate-plan-kit.py --check
+
+Options:
+    --check     Verify the generated files without writing them. Confirms the
+                packet json files sit beside a generated packet and reports
+                any other stray file.
+
+Output:
+    The kit templates under the skill assets folder, the packet files under
+    specs, and a progress or check summary on stdout.
 """
+
+# ───────────────────────────────────────────────────────────────
+# 1. IMPORTS
+# ───────────────────────────────────────────────────────────────
 
 import argparse
 import json
@@ -20,6 +34,11 @@ import os
 import re
 import shutil
 import sys
+from typing import Any, Dict, List, NoReturn
+
+# ───────────────────────────────────────────────────────────────
+# 2. CONFIGURATION
+# ───────────────────────────────────────────────────────────────
 
 GENERATOR = "scripts/generate-plan-kit.py"
 PACKET_GENERATOR = "sk-moneybird-accountant/scripts/generate-plan-kit.py"
@@ -107,6 +126,10 @@ AGENT_DESK_FOLDERS = (
     "AgentDesk/Logs/",
 )
 
+# ───────────────────────────────────────────────────────────────
+# 3. REGEX PATTERNS
+# ───────────────────────────────────────────────────────────────
+
 PHASE_HEADING = re.compile(r"^## Phase (\d+): (.+?)\s*$")
 FIELD_HEADING = re.compile(r"^### (\d+)\. (.+?)\s*$")
 SUBGOAL_LINE = re.compile(r"^- \*\*SG-(\d+)\.(\d+)\*\*: (.+?)\s*$")
@@ -124,13 +147,33 @@ ROW_PATTERNS = {
     "T": re.compile(r"(?<![A-Za-z0-9])T(\d{3})(?!\d)"),
 }
 
+# ───────────────────────────────────────────────────────────────
+# 4. ERROR AND FILE HELPERS
+# ───────────────────────────────────────────────────────────────
 
-def fail(message):
+def fail(message: str) -> NoReturn:
+    """Write an error message to stderr and exit with code 2.
+
+    Args:
+        message: The error text to report.
+
+    Raises:
+        SystemExit: Always, with exit code 2.
+    """
     sys.stderr.write("generate-plan-kit: error: %s\n" % message)
     raise SystemExit(2)
 
 
-def display(path):
+def display(path: str) -> str:
+    """Return a repo-relative path for display.
+
+    Args:
+        path: The path to display.
+
+    Returns:
+        The path relative to the repository root, or the original path when
+        no relative form exists.
+    """
     # WHY: only repo-relative paths are printed, so no home folder ever leaks.
     try:
         return os.path.relpath(path, REPO_DIR)
@@ -138,7 +181,19 @@ def display(path):
         return path
 
 
-def read_text(path):
+def read_text(path: str) -> str:
+    """Read a UTF-8 file without newline translation.
+
+    Args:
+        path: Path of the file to read.
+
+    Returns:
+        The full file content.
+
+    Raises:
+        SystemExit: If the operating system cannot open or read the file.
+        UnicodeDecodeError: If the file is not valid UTF-8.
+    """
     try:
         with open(path, "r", encoding="utf-8", newline="") as handle:
             return handle.read()
@@ -146,15 +201,48 @@ def read_text(path):
         fail("cannot read %s: %s" % (display(path), exc))
 
 
-def read_lines(path):
+def read_lines(path: str) -> List[str]:
+    """Read a file and split it on newline characters.
+
+    Args:
+        path: Path of the file to read.
+
+    Returns:
+        The file content as a list of lines.
+
+    Raises:
+        SystemExit: If the operating system cannot open or read the file.
+        UnicodeDecodeError: If the file is not valid UTF-8.
+    """
     return read_text(path).split("\n")
 
 
-def template_path(name):
+def template_path(name: str) -> str:
+    """Return the full path of a packet template.
+
+    Args:
+        name: Template file name inside the spec-template folder.
+
+    Returns:
+        The full path to the named template file.
+    """
     return os.path.join(TEMPLATE_DIR, name)
 
+# ───────────────────────────────────────────────────────────────
+# 5. PHASE PARSING
+# ───────────────────────────────────────────────────────────────
 
-def phase_reference_paths():
+def phase_reference_paths() -> List[str]:
+    """List the phase reference files to read.
+
+    Returns:
+        One path per selected phase reference, with the completion reference
+        appended when it is not already listed.
+
+    Raises:
+        SystemExit: If the references folder cannot be listed or a selected
+            file is missing.
+    """
     try:
         names = sorted(os.listdir(REFERENCE_DIR))
     except OSError as exc:
@@ -171,11 +259,32 @@ def phase_reference_paths():
     return paths
 
 
-def rewrite_links(text):
+def rewrite_links(text: str) -> str:
+    """Rewrite sibling reference links so child packets resolve them.
+
+    Args:
+        text: Field text that may hold relative markdown links.
+
+    Returns:
+        The text with every matching link target replaced.
+    """
     return text.replace(LINK_FROM, CHILD_LINK_ROOT)
 
 
-def parse_subgoals(name, number, text):
+def parse_subgoals(name: str, number: int, text: str) -> List[Dict[str, str]]:
+    """Parse the sub-goal bullets of the nested sub-goals field.
+
+    Args:
+        name: Reference file name, used in error messages.
+        number: Phase number, used in error messages.
+        text: Body of the nested sub-goals field.
+
+    Returns:
+        One dict per sub-goal with `id`, `text` and `check` keys.
+
+    Raises:
+        SystemExit: If a sub-goal bullet lacks the check separator.
+    """
     subgoals = []
     for line in text.split("\n"):
         match = SUBGOAL_LINE.match(line)
@@ -194,7 +303,23 @@ def parse_subgoals(name, number, text):
     return subgoals
 
 
-def parse_phase(name, number, title, body):
+def parse_phase(name: str, number: int, title: str, body: List[str]) -> Dict[str, Any]:
+    """Parse one phase section into a structured record.
+
+    Args:
+        name: Reference file name, used in error messages.
+        number: Phase number from the heading.
+        title: Phase title from the heading.
+        body: Lines of the phase section below the heading.
+
+    Returns:
+        A dict holding the phase number, title, file name, mechanism numbers,
+        field bodies and parsed sub-goals.
+
+    Raises:
+        SystemExit: If the mechanisms line or a field heading is missing or
+            out of order, or a sub-goal bullet lacks its check separator.
+    """
     index = 0
     while index < len(body) and not body[index].strip():
         index += 1
@@ -234,7 +359,18 @@ def parse_phase(name, number, title, body):
     }
 
 
-def parse_phase_file(path, phases):
+def parse_phase_file(path: str, phases: Dict[int, Dict[str, Any]]) -> None:
+    """Parse every phase section of one reference file.
+
+    Args:
+        path: Path of the phase reference file.
+        phases: Mapping of phase number to parsed phase, updated in place.
+
+    Raises:
+        SystemExit: If the operating system cannot read the file, it has no
+            phase heading, or it repeats a phase number.
+        UnicodeDecodeError: If the file is not valid UTF-8.
+    """
     name = os.path.basename(path)
     lines = read_lines(path)
     starts = [index for index, line in enumerate(lines) if PHASE_HEADING.match(line)]
@@ -253,25 +389,74 @@ def parse_phase_file(path, phases):
             fail("%s phase %d: number already used in %s" % (name, number, phases[number]["file"]))
         phases[number] = parse_phase(name, number, title, lines[start + 1:stop])
 
+# ───────────────────────────────────────────────────────────────
+# 6. SETUP REFERENCE PARSING
+# ───────────────────────────────────────────────────────────────
 
-def find_heading(lines, heading):
+def find_heading(lines: list[str], heading: str) -> int:
+    """
+    Return the index of the line whose stripped text matches the heading.
+
+    Args:
+        lines: Lines of the reference file to scan
+        heading: Heading text to match
+
+    Returns:
+        Zero-based index of the matching line
+
+    Raises:
+        SystemExit: If no line matches the heading
+    """
     for index, line in enumerate(lines):
         if line.strip() == heading:
             return index
     fail("%s: heading `%s` not found" % (SETUP_REFERENCE, heading))
 
 
-def split_row(line):
+def split_row(line: str) -> list[str]:
+    """
+    Split a pipe-bounded markdown table row into stripped cells.
+
+    Args:
+        line: Table row text
+
+    Returns:
+        Cell values in column order
+
+    Raises:
+        SystemExit: If the row is not bounded by pipes
+    """
     if len(line) < 2 or not line.startswith("|") or not line.endswith("|"):
         fail("%s: table row is not bounded by pipes" % SETUP_REFERENCE)
     return [cell.strip() for cell in line[1:-1].split("|")]
 
 
-def is_separator_row(cells):
+def is_separator_row(cells: list[str]) -> bool:
+    """
+    Report whether every cell holds only separator characters.
+
+    Args:
+        cells: Table row cells to inspect
+
+    Returns:
+        True when every cell is non-empty and holds only dashes, colons or spaces
+    """
     return all(cell and set(cell) <= set("-: ") for cell in cells)
 
 
-def parse_config_rows(lines):
+def parse_config_rows(lines: list[str]) -> list[dict[str, str]]:
+    """
+    Read the required migration config table from the setup reference.
+
+    Args:
+        lines: Lines of the setup reference file
+
+    Returns:
+        One record per data row with field, owner, needed_by and requirement
+
+    Raises:
+        SystemExit: If the config table is missing, malformed, or empty
+    """
     start = find_heading(lines, CONFIG_HEADING)
     rows = []
     header_seen = False
@@ -311,7 +496,16 @@ def parse_config_rows(lines):
     return rows
 
 
-def folder_name(value):
+def folder_name(value: str) -> str:
+    """
+    Reduce a workspace bullet to the folder path the generator creates.
+
+    Args:
+        value: Folder pattern from a workspace layout bullet
+
+    Returns:
+        Folder path ending in a slash, or empty when only placeholders remain
+    """
     # WHY: Inputs/<role>/ is a pattern, only the shared parent folder is created.
     parts = [part for part in value.split("/") if part and "<" not in part and ">" not in part]
     if not parts:
@@ -319,7 +513,19 @@ def folder_name(value):
     return "/".join(parts) + "/"
 
 
-def parse_workspace_folders(lines):
+def parse_workspace_folders(lines: list[str]) -> list[str]:
+    """
+    Collect the workspace folders the setup reference lists, plus fixed extras.
+
+    Args:
+        lines: Lines of the setup reference file
+
+    Returns:
+        Folder paths in reference order with the agent desk folders appended
+
+    Raises:
+        SystemExit: If the workspace section lists no folder bullets
+    """
     start = find_heading(lines, WORKSPACE_HEADING)
     folders = []
     for line in lines[start + 1:]:
@@ -338,24 +544,63 @@ def parse_workspace_folders(lines):
             folders.append(name)
     return folders
 
+# ───────────────────────────────────────────────────────────────
+# 7. TEXT RENDERERS
+# ───────────────────────────────────────────────────────────────
 
-def generated_comment(source_reference):
+def generated_comment(source_reference: str) -> str:
+    """
+    Build the notice that marks a generated kit file as machine-written.
+
+    Args:
+        source_reference: Reference file the content was generated from
+
+    Returns:
+        Markdown comment line naming the generator and its source
+    """
     return "<!-- Generated by %s from %s. Do not edit by hand. -->" % (GENERATOR, source_reference)
 
 
-def packet_comment(source_reference):
+def packet_comment(source_reference: str) -> str:
+    """
+    Build the notice that marks a packet file as regenerable from its reference.
+
+    Args:
+        source_reference: Reference file the packet content came from
+
+    Returns:
+        Markdown comment line naming the packet generator and its source
+    """
     return "<!-- Generated by %s from %s. Edit the phase reference and regenerate. -->" % (
         PACKET_GENERATOR, source_reference)
 
 
-def reference_text(value):
+def reference_text(value: str) -> str:
+    """
+    Return trimmed field text, or the pending placeholder when it is blank.
+
+    Args:
+        value: Raw field text from a phase record
+
+    Returns:
+        Trimmed text, or the placeholder used for empty values
+    """
     stripped = value.strip()
     if not stripped:
         return EMPTY_VALUE
     return stripped
 
 
-def render_dashboard(phases):
+def render_dashboard(phases: list[dict[str, object]]) -> str:
+    """
+    Render the phase dashboard with one status row per phase.
+
+    Args:
+        phases: Phase records in numbering order
+
+    Returns:
+        Dashboard document text ready to write
+    """
     lines = []
     lines.append("---")
     lines.append("title: Migration phase dashboard")
@@ -382,7 +627,16 @@ def render_dashboard(phases):
     return "\n".join(lines) + "\n"
 
 
-def render_config(rows):
+def render_config(rows: list[dict[str, str]]) -> str:
+    """
+    Render the migration config template as pretty-printed json.
+
+    Args:
+        rows: Config table records parsed from the setup reference
+
+    Returns:
+        Json document text with every value left pending
+    """
     fields = []
     for row in rows:
         fields.append({
@@ -404,28 +658,77 @@ def render_config(rows):
     return json.dumps(document, indent=2, ensure_ascii=False) + "\n"
 
 
-def render_folders(folders):
+def render_folders(folders: list[str]) -> str:
+    """
+    Render the workspace folder list file.
+
+    Args:
+        folders: Folder paths in creation order
+
+    Returns:
+        Folder list text with the generated notice first
+    """
     lines = ["# Generated by %s from %s. Do not edit by hand." % (GENERATOR, SETUP_REFERENCE)]
     lines.extend(folders)
     return "\n".join(lines) + "\n"
 
+# ───────────────────────────────────────────────────────────────
+# 8. PACKET CONTENT HELPERS
+# ───────────────────────────────────────────────────────────────
 
-def phase_title_slug(title):
+def phase_title_slug(title: str) -> str:
+    """
+    Turn a phase title into a lowercase hyphenated slug.
+
+    Args:
+        title: Phase title text
+
+    Returns:
+        Slug safe for use as a child folder name
+    """
     # WHY: child folder names must stay stable and link-safe.
     return re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
 
 
-def child_folder(phase):
+def child_folder(phase: dict[str, object]) -> str:
+    """
+    Build the child packet folder name for a phase.
+
+    Args:
+        phase: Phase record holding a number and a title
+
+    Returns:
+        Folder name with the one-based position, phase number and title slug
+    """
     return "%03d-phase-%d-%s" % (phase["number"] + 1, phase["number"],
                                  phase_title_slug(phase["title"]))
 
 
-def packet_link(phase):
+def packet_link(phase: dict[str, object]) -> str:
+    """
+    Build the relative markdown link that points at a neighbouring packet.
+
+    Args:
+        phase: Phase record for the target packet
+
+    Returns:
+        Markdown link text pointing at the packet file
+    """
     folder = child_folder(phase)
     return "[%s](../%s/spec.md)" % (folder, folder)
 
 
-def next_row_number(text, kind):
+def next_row_number(text: str, kind: str) -> int:
+    """
+    Return the first free row number for a row kind.
+
+    Args:
+        text: Template text holding the fixed rows
+        kind: Row pattern key from ROW_PATTERNS
+
+    Returns:
+        One above the highest fixed row number found in the text
+    """
     # Template rows numbered 900 and up are fixed phase-wide rows, so the
     # generated rows count up from the lower range and never collide.
     highest = 0
@@ -436,13 +739,33 @@ def next_row_number(text, kind):
     return highest + 1
 
 
-def row_identifier(kind, number):
+def row_identifier(kind: str, number: int) -> str:
+    """
+    Format a stable row identifier for a row kind and number.
+
+    Args:
+        kind: Row pattern key from ROW_PATTERNS
+        number: Row number to encode
+
+    Returns:
+        Identifier text with the number zero padded to three digits
+    """
     if kind == "T":
         return "T%03d" % number
     return "%s-%03d" % (kind, number)
 
 
-def subgoal_requirements(subgoals, start):
+def subgoal_requirements(subgoals: list[dict[str, str]], start: int) -> str:
+    """
+    Render requirement table rows for the sub-goals.
+
+    Args:
+        subgoals: Sub-goal records with their id, text and check values
+        start: First number to assign
+
+    Returns:
+        Markdown table rows joined by newlines
+    """
     rows = []
     number = start
     for subgoal in subgoals:
@@ -452,7 +775,17 @@ def subgoal_requirements(subgoals, start):
     return "\n".join(rows)
 
 
-def subgoal_tasks(subgoals, start):
+def subgoal_tasks(subgoals: list[dict[str, str]], start: int) -> str:
+    """
+    Render checkbox task lines for the sub-goals.
+
+    Args:
+        subgoals: Sub-goal records with their id, text and check values
+        start: First number to assign
+
+    Returns:
+        Task lines joined by newlines
+    """
     lines = []
     number = start
     for subgoal in subgoals:
@@ -462,7 +795,17 @@ def subgoal_tasks(subgoals, start):
     return "\n".join(lines)
 
 
-def subgoal_acceptance(subgoals, start):
+def subgoal_acceptance(subgoals: list[dict[str, str]], start: int) -> str:
+    """
+    Render acceptance table rows for the sub-goals.
+
+    Args:
+        subgoals: Sub-goal records with their id, text and check values
+        start: First number to assign
+
+    Returns:
+        Markdown table rows joined by newlines
+    """
     rows = []
     number = start
     for subgoal in subgoals:
@@ -472,11 +815,29 @@ def subgoal_acceptance(subgoals, start):
     return "\n".join(rows)
 
 
-def subgoal_criteria(subgoals):
+def subgoal_criteria(subgoals: list[dict[str, str]]) -> str:
+    """
+    Render goal criteria lines from the sub-goal check texts.
+
+    Args:
+        subgoals: Sub-goal records with their id, text and check values
+
+    Returns:
+        Criterion lines joined by newlines
+    """
     return "\n".join("- [ ] %s: %s" % (subgoal["id"], subgoal["check"]) for subgoal in subgoals)
 
 
-def operator_actions(actions):
+def operator_actions(actions: str) -> list[str]:
+    """
+    Extract operator-tagged sentences from the owner-tagged actions text.
+
+    Args:
+        actions: Raw owner-tagged actions block
+
+    Returns:
+        Action texts with the list numbering and operator tag removed
+    """
     found = []
     for raw in actions.split("\n"):
         line = NUMBERED_LINE.sub("", raw.strip(), count=1)
@@ -489,7 +850,16 @@ def operator_actions(actions):
     return found
 
 
-def operator_heading(text):
+def operator_heading(text: str) -> str:
+    """
+    Build a compact decision heading from an action text.
+
+    Args:
+        text: Action text to shorten
+
+    Returns:
+        Collapsed text cut at a word boundary, or the default title when empty
+    """
     clean = " ".join(text.split())
     if not clean:
         return "[Decision title]"
@@ -502,7 +872,17 @@ def operator_heading(text):
     return cut[:space]
 
 
-def operator_decisions(actions, start):
+def operator_decisions(actions: str, start: int) -> str:
+    """
+    Render decision record blocks for the operator actions.
+
+    Args:
+        actions: Raw owner-tagged actions block
+        start: First number to assign
+
+    Returns:
+        Decision blocks joined by blank lines, always at least one block
+    """
     entries = operator_actions(actions)
     if not entries:
         entries = [""]
@@ -515,15 +895,37 @@ def operator_decisions(actions, start):
         number += 1
     return "\n\n".join(blocks)
 
+# ───────────────────────────────────────────────────────────────
+# 9. PACKET RENDERING
+# ───────────────────────────────────────────────────────────────
 
-def read_templates():
+
+def read_templates() -> Dict[str, str]:
+    """Read every child and parent packet template.
+
+    Returns:
+        Mapping of template file name to template text.
+    """
     texts = {}
     for name, _ in CHILD_TEMPLATES + PARENT_TEMPLATES:
         texts[name] = read_text(template_path(name))
     return texts
 
 
-def insert_generated_comment(text, source, name):
+def insert_generated_comment(text: str, source: str, name: str) -> str:
+    """Insert the generated-file notice after the frontmatter fence.
+
+    Args:
+        text: Template text to annotate.
+        source: Reference path recorded in the notice.
+        name: Template file name used in error messages.
+
+    Returns:
+        Template text with the notice inserted.
+
+    Raises:
+        SystemExit: If the template has no frontmatter block.
+    """
     lines = text.split("\n")
     if not lines or lines[0] != "---":
         fail("%s does not start with frontmatter" % display(template_path(name)))
@@ -536,7 +938,16 @@ def insert_generated_comment(text, source, name):
     fail("%s has no closing frontmatter fence" % display(template_path(name)))
 
 
-def check_block_tokens(template, name):
+def check_block_tokens(template: str, name: str) -> None:
+    """Reject block tokens that repeat or sit outside a standalone line.
+
+    Args:
+        template: Template text to inspect.
+        name: Template file name used in error messages.
+
+    Raises:
+        SystemExit: If a block token is repeated or misplaced.
+    """
     lines = template.split("\n")
     for token in BLOCK_TOKENS:
         uses = [index for index, line in enumerate(lines) if token in line]
@@ -550,7 +961,21 @@ def check_block_tokens(template, name):
                      % (display(template_path(name)), token))
 
 
-def render_packet(template, name, values, source):
+def render_packet(template: str, name: str, values: Dict[str, str], source: str) -> str:
+    """Render one packet file by replacing every placeholder token.
+
+    Args:
+        template: Template text to fill in.
+        name: Template file name used in error messages.
+        values: Mapping of placeholder token to replacement text.
+        source: Reference path recorded in the generated notice.
+
+    Returns:
+        Rendered packet text.
+
+    Raises:
+        SystemExit: If the template holds an unknown or leftover token.
+    """
     for match in PLACEHOLDER.finditer(template):
         if match.group(0) not in values:
             fail("%s has unknown token %s" % (display(template_path(name)), match.group(0)))
@@ -565,7 +990,18 @@ def render_packet(template, name, values, source):
     return insert_generated_comment(text, source, name)
 
 
-def child_tokens(phase, phases, texts):
+def child_tokens(phase: Dict[str, Any], phases: List[Dict[str, Any]],
+                 texts: Dict[str, str]) -> Dict[str, str]:
+    """Build the placeholder values for one child packet.
+
+    Args:
+        phase: Parsed phase record for this packet.
+        phases: All parsed phases in number order.
+        texts: Mapping of template file name to template text.
+
+    Returns:
+        Mapping of placeholder token to replacement text.
+    """
     number = phase["number"]
     folder = child_folder(phase)
     fields = phase["fields"]
@@ -613,7 +1049,15 @@ def child_tokens(phase, phases, texts):
     return values
 
 
-def parent_tokens(phases):
+def parent_tokens(phases: List[Dict[str, Any]]) -> Dict[str, str]:
+    """Build the placeholder values for the parent packet.
+
+    Args:
+        phases: All parsed phases in number order.
+
+    Returns:
+        Mapping of placeholder token to replacement text.
+    """
     map_rows = []
     binding_rows = []
     for phase in phases:
@@ -633,7 +1077,18 @@ def parent_tokens(phases):
     return values
 
 
-def add_packet_outputs(outputs, phases, texts):
+def add_packet_outputs(outputs: Dict[str, str], phases: List[Dict[str, Any]],
+                       texts: Dict[str, str]) -> None:
+    """Add every generated child and parent packet to the output mapping.
+
+    Args:
+        outputs: Mapping of output path to expected text, updated in place.
+        phases: All parsed phases in number order.
+        texts: Mapping of template file name to template text.
+
+    Raises:
+        SystemExit: If a template cannot be rendered.
+    """
     for phase in phases:
         folder = child_folder(phase)
         values = child_tokens(phase, phases, texts)
@@ -646,8 +1101,19 @@ def add_packet_outputs(outputs, phases, texts):
         outputs[os.path.join(PACKET_DIR, output_name)] = render_packet(
             texts[template_name], template_name, values, PARENT_SOURCE)
 
+# ───────────────────────────────────────────────────────────────
+# 10. OUTPUT BUILD, CHECK AND WRITE
+# ───────────────────────────────────────────────────────────────
 
-def build_outputs():
+def build_outputs() -> Dict[str, str]:
+    """Parse the references and build the full set of expected outputs.
+
+    Returns:
+        Mapping of output path to expected text.
+
+    Raises:
+        SystemExit: If a phase or setup reference cannot be parsed.
+    """
     collected = {}
     for path in phase_reference_paths():
         parse_phase_file(path, collected)
@@ -672,7 +1138,15 @@ def build_outputs():
     return outputs
 
 
-def unexpected_markdown_files(outputs):
+def unexpected_markdown_files(outputs: Dict[str, str]) -> List[str]:
+    """Find packet markdown files that the generator does not produce.
+
+    Args:
+        outputs: Mapping of output path to expected text.
+
+    Returns:
+        Paths of unexpected markdown files.
+    """
     found = []
     for root, dirs, files in os.walk(PACKET_DIR):
         dirs.sort()
@@ -685,7 +1159,15 @@ def unexpected_markdown_files(outputs):
     return found
 
 
-def unexpected_files(outputs):
+def unexpected_files(outputs: Dict[str, str]) -> List[str]:
+    """Find packet files that are neither generated docs nor packet metadata.
+
+    Args:
+        outputs: Mapping of output path to expected text.
+
+    Returns:
+        Paths of unexpected files.
+    """
     # The template packet is published, so every file in it must be either a
     # generated doc or spec-kit metadata beside a generated packet. Anything
     # else is reported, never deleted, because the generator does not own it.
@@ -704,21 +1186,45 @@ def unexpected_files(outputs):
     return found
 
 
-def remove_tree(path):
+def remove_tree(path: str) -> None:
+    """Delete a directory tree.
+
+    Args:
+        path: Directory to remove.
+
+    Raises:
+        SystemExit: If the directory cannot be removed.
+    """
     try:
         shutil.rmtree(path)
     except OSError as exc:
         fail("cannot remove %s: %s" % (display(path), exc))
 
 
-def remove_file(path):
+def remove_file(path: str) -> None:
+    """Delete a single file.
+
+    Args:
+        path: File to remove.
+
+    Raises:
+        SystemExit: If the file cannot be removed.
+    """
     try:
         os.remove(path)
     except OSError as exc:
         fail("cannot remove %s: %s" % (display(path), exc))
 
 
-def check_outputs(outputs):
+def check_outputs(outputs: Dict[str, str]) -> int:
+    """Compare the files on disk with the expected generated outputs.
+
+    Args:
+        outputs: Mapping of output path to expected text.
+
+    Returns:
+        Zero when every file matches, otherwise 1.
+    """
     problems = []
     for path in sorted(outputs):
         expected = outputs[path]
@@ -745,7 +1251,18 @@ def check_outputs(outputs):
     return 0
 
 
-def write_outputs(outputs):
+def write_outputs(outputs: Dict[str, str]) -> int:
+    """Write the expected outputs and drop obsolete generated files.
+
+    Args:
+        outputs: Mapping of output path to expected text.
+
+    Returns:
+        Zero on success.
+
+    Raises:
+        SystemExit: If a file cannot be removed or written.
+    """
     removed = []
     if os.path.isdir(LEGACY_PHASE_DIR):
         remove_tree(LEGACY_PHASE_DIR)
@@ -782,8 +1299,22 @@ def write_outputs(outputs):
     print("%d written, %d unchanged" % (written, unchanged))
     return 0
 
+# ───────────────────────────────────────────────────────────────
+# 11. ENTRY POINT
+# ───────────────────────────────────────────────────────────────
 
-def main(argv):
+def main(argv: List[str]) -> int:
+    """Parse arguments and run the check or write mode.
+
+    Args:
+        argv: Command line arguments without the program name.
+
+    Returns:
+        Exit code reported by the check or write step.
+
+    Raises:
+        SystemExit: If the arguments are invalid or the references cannot be processed.
+    """
     parser = argparse.ArgumentParser(
         prog=GENERATOR,
         description="Generate the migration plan kit and the migration packet templates.",
