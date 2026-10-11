@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Block a merge that would publish personal or finance data.
+set -u
+
+if ! python3 -I scripts/privacy-gate.py --staged; then
+  printf 'privacy-gate: merge blocked, inspect with: python3 -I scripts/privacy-gate.py --staged\n' >&2
+  exit 1
+fi
+
+# Chain to the user's global hooks so existing global gates still run.
+global="$(git config --global core.hooksPath 2>/dev/null || true)"
+case "$global" in
+  "~") global="$HOME" ;;
+  "~/"*) global="$HOME${global#\~}" ;;
+esac
+
+if [ -n "$global" ]; then
+  self_dir="$(cd "$(dirname "$0")" && pwd)"
+  hook_dir="$(cd "$global" 2>/dev/null && pwd)" || hook_dir=""
+  if [ -n "$hook_dir" ] && [ -x "$hook_dir/pre-merge-commit" ] && [ "$hook_dir" != "$self_dir" ]; then
+    exec "$hook_dir/pre-merge-commit" "$@"
+  fi
+fi
+
+exit 0
