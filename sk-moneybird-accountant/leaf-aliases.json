@@ -11,6 +11,11 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-agent-route.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-agent-route.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-archive-decommission-gate.md",
     "diskPath": "feature-catalog/bookkeeping-and-migration/migration-archive-decommission-gate.md"
   },
@@ -78,6 +83,11 @@
     "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "manual-testing-playbook/offline-routing/live-monthly-bookkeeping.md",
     "diskPath": "manual-testing-playbook/offline-routing/live-monthly-bookkeeping.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/migration-agent-route.md",
+    "diskPath": "manual-testing-playbook/offline-routing/migration-agent-route.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",

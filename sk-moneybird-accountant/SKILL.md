@@ -143,7 +143,7 @@ Every phase uses the route contract in the shared mechanisms reference. Jortt re
 
 1. Read the project bootstrap, then this skill.
 2. Read the migration index and identify the next phase from the last verified gate.
-3. Load the matching phase file and [shared mechanisms](./references/migration/shared-mechanisms.md). Load the control framework when a gate, risk, exception, stop, or year lock applies.
+3. Load the matching phase file and [shared mechanisms](./references/migration/shared-mechanisms.md). Use M12 for the Agent runner, Implementer, Verifier, Final reviewer, and separate Migration Writer seats. Load the control framework when a gate, risk, exception, stop, or year lock applies.
 4. Keep the phase contract's exact owner tags. The Operator owns approvals, UI exports, bank imports, period locks, return filing, and accounting decisions.
 5. Route Jortt reads through jortt-cli. Route Moneybird reads and approved writes through moneybird-guard. Keep `MONEYBIRD_GUARD_READ_ONLY=1` for every reader session. Open a separate approved writer session for non-GET calls and do read-back in a new locked reader session.
 6. Before every Moneybird non-GET batch, verify the current trial or package expiry, phase gate, Operator approval, and flushed `WRITE_INTENT`. Use stable local write keys and journal every state change.
@@ -231,7 +231,7 @@ Return the mode or phase used, a safe decision summary, the references consulted
 ### Core references
 
 - [Migration index](./references/migration/README.md) - execution-order phase map, old-to-new map, and routing.
-- [Shared mechanisms](./references/migration/shared-mechanisms.md) - write keys, run journal, route contract, expiry, and stop recovery.
+- [Shared mechanisms](./references/migration/shared-mechanisms.md) - M1 to M12, including write keys, run journal, external agent route, expiry, and stop recovery.
 - [Control framework](./references/migration/control-framework.md) - roles, risk, exception fields, dashboard, and completion.
 - [Migration overview and setup](./references/migration/overview-and-setup.md) - workspace and approved `MIGRATION_CONFIG` fields.
 - [Dutch ZZP tax and VAT](./references/zzp-tax-and-vat.md) - year-specific figures, VAT, costs, private use, and administration duties.

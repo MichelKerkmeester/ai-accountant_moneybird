@@ -35,39 +35,41 @@ Every phase from 0 through 22 uses these 11 fields in this order. Each nested su
 
 ## Agent structure
 
-| Owner | Reads | Writes | Moneybird route |
-|---|---|---|---|
-| [Operator] | Source system, portals, approvals, reports | Human decisions, UI exports and imports, filing and lock actions | Operator UI or approved guarded route |
-| [Orchestrator] | Reports, registers, gate status | `MIGRATION_CONFIG`, input folders, dashboard | None |
-| [Evidence Archivist] | Approved source exports and archive workspace | Manifests, registry, archive and restore evidence | None |
-| [Document Agent] | `Inputs/document/` only | `DOCUMENT_REGISTER` | None |
-| [Ledger Agent] | `Inputs/ledger/` only | `LEDGER_REGISTER` | None |
-| [Bank Agent] | `Inputs/bank/` only | `BANK_REGISTER` | None |
-| [Tax Filing Agent] | `Inputs/tax/` only | `TAX_REGISTER` | None |
-| [VAT Agent] | `Inputs/vat/` with original invoices only | `VAT_CLASSIFICATION_REGISTER` | None |
-| [Reconciliation Agent] | Approved registers | `CANONICAL_DATASET`, reconciliation reports | None |
-| [Mapping Agent] | Canonical data and supported target fields | Mapping tables and validation reports | Guarded reads with `MONEYBIRD_GUARD_READ_ONLY=1` |
-| [Migration Writer] | Approved pre-write reports and frozen inputs | Target records and write journal | Isolated writer through `moneybird-guard` |
-| [Independent Auditor] | Originals, manifests, reports, target read-back | Independent audit reports | Guarded reads with `MONEYBIRD_GUARD_READ_ONLY=1` |
-| [Red Team] | Sealed evidence and target read-back | Challenge and sample reports | Guarded reads with `MONEYBIRD_GUARD_READ_ONLY=1` |
-| [Operator + AI] | Approved task inputs | Prepared evidence and human approval record | Human action remains with Operator |
+| Owner | Seat | Reads | Writes | Moneybird route |
+|---|---|---|---|---|
+| [Operator] | Operator | Source system, portals, approvals, reports, and local record evidence for AMBER or high-risk items | Human decisions, UI exports and imports, filing and lock actions | Operator UI or approved guarded route |
+| [Orchestrator] | Agent runner, local and deterministic | Phase contracts, configuration, filtered summaries, and gate status | MIGRATION_CONFIG, briefs, AgentDesk artifacts, journal, and dashboard rows | None |
+| [Agent runner] | Agent runner, local and deterministic | Assigned input folders only for local role sessions, plus approved schemas and phase inputs | Local role artifacts, sandbox outputs, filtered summaries, logs, journal, and dashboard rows | Runs local reader sessions with the required read-only lock. It does not book records. |
+| [Evidence Archivist] | Implementer drafts, Agent runner executes local role session | Assigned archive input folder through its local role session | Manifests, registry, archive, and restore evidence | None |
+| [Document Agent] | Implementer drafts, Agent runner executes local role session | Inputs/document/ through its local role session | DOCUMENT_REGISTER | None |
+| [Ledger Agent] | Implementer drafts, Agent runner executes local role session | Inputs/ledger/ through its local role session | LEDGER_REGISTER | None |
+| [Bank Agent] | Implementer drafts, Agent runner executes local role session | Inputs/bank/ through its local role session | BANK_REGISTER | None |
+| [Tax Filing Agent] | Implementer drafts, Agent runner executes local role session | Inputs/tax/ through its local role session | TAX_REGISTER | None |
+| [VAT Agent] | Implementer drafts, Agent runner executes local role session | Inputs/vat/ with original invoices only through its local role session | VAT_CLASSIFICATION_REGISTER | None |
+| [Reconciliation Agent] | Implementer drafts, Agent runner executes local role session | Approved local registers | CANONICAL_DATASET and reconciliation reports | None |
+| [Mapping Agent] | Implementer drafts, Agent runner executes local role session | Approved local canonical data and supported target fields | Mapping tables and validation reports | Guarded reads stay in the local runner session with MONEYBIRD_GUARD_READ_ONLY=1 |
+| [Migration Writer] | Separate writer session using the configured write-executor seat | Approved pre-write reports and frozen inputs | Target records and write journal | Isolated writer through moneybird-guard |
+| [Independent Auditor] | Verifier designs and judges, Agent runner executes locally | Schemas, independent fixtures, filtered summaries, and local check results | Independent audit verdicts and filtered findings | No direct record-level read. The Agent runner executes local checks. |
+| [Red Team] | Verifier in a separate session | Clean working copy of agent-facing inputs without verdicts, final reviews, or earlier findings | Challenge and sample verdicts | No direct record-level read. The Agent runner executes local checks. |
+| [Final reviewer] | Final reviewer seat | Phase evidence, filtered summaries, verdicts, and gate results | Final review record and one decision summary for the Operator | None |
+| [Operator + AI] | Operator with the named seat | Approved task inputs | Prepared evidence and human approval record | Human action remains with Operator |
 
-The Orchestrator manages phase checkpoints and prepares a gate decision. It does not book records. The Migration Writer is the only agent role that may issue an approved Moneybird write. Keep independent analysis roles in separate sessions and folders. The Operator owns credentials, UI exports, bank-file imports, tax-rate creation, return filing, period locks, account lifecycle choices, and production go or no-go.
+The Orchestrator manages phase checkpoints and prepares a gate decision. It does not book records. The Migration Writer is the only agent role that may issue an approved Moneybird write. Keep independent analysis roles in separate sessions and folders. The Operator owns credentials, UI exports, bank-file imports, tax-rate creation, return filing, period locks, account lifecycle choices, and production go or no-go. M12 defines the external seats and their data boundary.
 
 ## Verification loop per record
 
-Risk determines the amount of review. Every written record follows the same evidence path:
+Risk determines the amount of review. Every written record follows the same evidence path.
 
-1. [Document Agent], [Ledger Agent], [Bank Agent], and [VAT Agent] prepare independent source records within their assigned input folders.
-2. [Reconciliation Agent] links source evidence and creates the canonical record.
-3. [Independent Auditor] assigns or verifies risk and the batch pre-write report.
+1. [Implementer] drafts each role's schema, script, mapping table, or report template from allowlisted summaries. [Agent runner] executes one local role session per assigned input folder and keeps record-level work local.
+2. [Implementer] drafts the reconciliation logic. [Agent runner] runs the local Reconciliation Agent session to link approved registers and create the canonical record.
+3. [Implementer] drafts the deterministic risk rules and the batch pre-write report template. [Agent runner] applies the rules and builds the pre-write report locally. [Verifier] independently checks the rules, their application counts, and the batch pre-write report. [Operator] reviews AMBER and high-risk records locally.
 4. [Operator] approves the batch and all required access checks.
-5. [Migration Writer] issues a write only after a flushed `WRITE_INTENT` and records the response.
-6. [Independent Auditor] verifies the target through a later synchronized read or a complete read after the documented cache wait.
-7. [Red Team] samples each historical period and each year. The named phase contract may require broader coverage.
-8. Mark a record `VERIFIED` only after read-back and reconciliation pass.
+5. [Migration Writer] issues a write only after a flushed WRITE_INTENT and records the response under M2, M3, and M10.
+6. [Verifier] designs an independent record-level check with its own fixtures. [Agent runner] executes the check locally against every target record, through a later synchronized read or a complete read after the documented cache wait, and returns only a filtered summary.
+7. [Verifier, Red Team session] challenges each historical period and year from a clean working copy. The named phase contract may require broader coverage.
+8. [Agent runner] records target read-back and reconciliation. [Final reviewer] confirms the verified phase evidence. Mark a record `VERIFIED` only after read-back and reconciliation pass.
 
-AMBER and high-risk records receive individual Independent Auditor and Red Team review before they count as verified. RED and BLACK records are never written. An uncertain result is handled under M2, M3, and M11. Never replay a write from a missing or ambiguous read.
+AMBER and high-risk records receive an individual Verifier record-level check and local Operator review before they count as verified. RED and BLACK records are never written. An uncertain result is handled under M2, M3, and M11. Never replay a write from a missing or ambiguous read.
 
 ## Risk model
 

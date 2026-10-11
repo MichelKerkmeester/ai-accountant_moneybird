@@ -22,17 +22,19 @@ Each phase below uses the same eleven-field contract. Run only the phase selecte
 
 ## Phase 3: Reconstruct each source independently
 
-Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M4](./shared-mechanisms.md#m4-evidence-privacy-and-session-boundary). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
+Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M4](./shared-mechanisms.md#m4-evidence-privacy-and-session-boundary), [M12](./shared-mechanisms.md#m12-external-agent-route). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
 
 ### 1. Goal
 
-Produce independent document, ledger, bank, tax, and VAT registers without cross-contamination.
+Produce independent document, ledger, bank, tax, and VAT registers without cross-contamination. The Implementer drafts one register builder per source, each in its own session, and the Verifier independently reproduces register totals and statically checks each builder reads only its folder for Phase 3.
 
 ### 2. Nested sub-goals
 
 - **SG-3.1**: Seal one input folder per role. Check: role folders with schema and checksum manifest 100%, VAT folder contains original invoices only 100%, Jortt booking exports in VAT inputs 0, unapproved files 0.
 - **SG-3.2**: Process each applicable source. Check: in-scope source items assigned a terminal register status 100%.
 - **SG-3.3**: Validate ledger arithmetic. Check: unbalanced journal or year totals 0.
+
+- **SG-3.4**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, register totals independently reproduced 100%, role-folder read violations 0, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 
 ### 3. Entry criteria
 
@@ -45,6 +47,8 @@ Original document archive, XAF files, bank files, filed returns and assessments,
 ### 5. Owner-tagged actions
 
 [Document Agent] processes original documents. [Ledger Agent] processes XAF only. [Bank Agent] processes bank files only. [Tax Filing Agent] processes filings and accounts only. [VAT Agent] classifies original invoices without bookings. [Orchestrator] seals each folder and verifies the VAT input manifest classifies every file as an original invoice. Gate verifier: [Independent Auditor] verifies folder hashes, zero booking exports, arithmetic, and session output redaction.
+
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts one register builder per source, each in its own session. [Verifier] independently reproduces register totals and statically checks each builder reads only its folder. [Final reviewer] reviews the phase before Operator approvals.
 
 **Independent register fields retained from the original reconstruction:**
 1. [Document Agent] From original documents only, record supplier, legal entity, country, invoice number and date, VAT identifier, currency, net, VAT, gross, reverse-charge status, and purchase or sale type.
@@ -65,9 +69,13 @@ DOCUMENT_REGISTER, LEDGER_REGISTER, BANK_REGISTER, TAX_REGISTER, VAT_CLASSIFICAT
 
 Input folders sealed 100%, applicable source items processed 100%, VAT input originals 100%, booking export files in VAT input 0, private record fields in prompts, logs, and session outputs 0, unbalanced journals 0, cross-register reads before Phase 4 equal 0.
 
+M12 gate: work units with Verifier PASS or Operator disposition 100%, register totals independently reproduced 100%, role-folder read violations 0, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
+
 ### 9. Stop conditions
 
 Hash mismatch, wrong-role file, booking export in the VAT folder, missing source, unsupported file type, register schema mismatch, private record data in an uncontrolled prompt or log, or agent access to another role's register.
+
+Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
@@ -77,19 +85,23 @@ Preserve the register version and mark it invalid. Reprocess only the affected s
 
 Resume by role and last source-item key whose register state is verified. Reconcile its input-manifest hash before continuing.
 
+For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
+
 ## Phase 4: Cross-reconciliation
 
-Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M2](./shared-mechanisms.md#m2-stable-local-write-keys-and-uncertain-outcomes), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
+Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M2](./shared-mechanisms.md#m2-stable-local-write-keys-and-uncertain-outcomes), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M12](./shared-mechanisms.md#m12-external-agent-route). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
 
 ### 1. Goal
 
-Link independent evidence into one canonical record set with a stable source identity.
+Link independent evidence into one canonical record set with a stable source identity. The Implementer drafts the linker and stable-key builder, and the Verifier independently recounts matches and checks duplicate keys for Phase 4.
 
 ### 2. Nested sub-goals
 
 - **SG-4.1**: Link source evidence for each event. Check: in-scope source items linked or explicitly excepted 100%.
 - **SG-4.2**: Assign deterministic migration keys. Check: key collisions 0 and duplicate source keys 0.
 - **SG-4.3**: Preserve source-to-target identity fields. Check: canonical records with source key, period, and evidence reference 100%.
+
+- **SG-4.4**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, match recount differences 0, duplicate stable keys 0, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 
 ### 3. Entry criteria
 
@@ -102,6 +114,8 @@ The five independent registers, schema manifests, and approved source scope.
 ### 5. Owner-tagged actions
 
 `[Reconciliation Agent]` creates event links and canonical records. `[Orchestrator]` checks counts and exception linkage. `[Independent Auditor]` samples identity uniqueness. Gate verifier: `[Reconciliation Agent]` owns the dataset. `[Independent Auditor]` verifies uniqueness and link counts.
+
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the linker and stable-key builder. [Verifier] independently recounts matches and checks duplicate keys. [Final reviewer] reviews the phase before Operator approvals.
 
 **Canonical event fields retained from the original cross-reconciliation:**
 1. [Reconciliation Agent] Link DOCUMENT, XAF ENTRY, BANK TRANSACTION, and TAX PERIOD where each source exists. Record explicit exceptions for absent links.
@@ -120,9 +134,13 @@ Workspace registers only. No Moneybird writes. Read-only Moneybird route is avai
 
 Source-item linkage coverage 100%, canonical records with required identity fields 100%, key collisions 0, unlinked items without an exception 0.
 
+M12 gate: work units with Verifier PASS or Operator disposition 100%, match recount differences 0, duplicate stable keys 0, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
+
 ### 9. Stop conditions
 
 Conflicting identity, duplicate source key, unsupported cross-source match, or checksum mismatch.
+
+Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
@@ -132,19 +150,23 @@ Retain the prior canonical dataset and issue a new version with a changed key or
 
 Continue from the last canonical key in the journal. Reconcile source-register hashes before processing the next key.
 
+For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
+
 ## Phase 5: Completeness and anomaly scan
 
-Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M11](./shared-mechanisms.md#m11-stop-state-recovery-matrix). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
+Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M11](./shared-mechanisms.md#m11-stop-state-recovery-matrix), [M12](./shared-mechanisms.md#m12-external-agent-route). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
 
 ### 1. Goal
 
-Find unmatched, duplicate, high-risk, or unsupported items before mapping and writing.
+Find unmatched, duplicate, high-risk, or unsupported items before mapping and writing. The Implementer drafts the anomaly scan rules, and the Verifier checks planted-anomaly fixtures are detected for Phase 5.
 
 ### 2. Nested sub-goals
 
 - **SG-5.1**: Classify the full population. Check: canonical records with risk class 100%.
 - **SG-5.2**: Review every high-risk record. Check: high-risk reviewed count equals high-risk population, coverage 100%.
 - **SG-5.3**: Draw a reproducible sample for remaining records. Check: sample rule, positive minimum size or population coverage floor, and rationale are numeric in approved config, selected records reviewed 100%, unexplained material findings 0.
+
+- **SG-5.4**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, planted-anomaly fixtures detected 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 
 ### 3. Entry criteria
 
@@ -157,6 +179,8 @@ Canonical dataset, original evidence references, risk model, sample configuratio
 ### 5. Owner-tagged actions
 
 `[Red Team]` searches for adversarial failure cases. `[Independent Auditor]` executes the sample. `[Reconciliation Agent]` records exceptions. `[Operator]` approves threshold values and accepts any residual accounting judgment. Gate verifier: `[Red Team]` owns adversarial checks. `[Independent Auditor]` verifies sample reproducibility. `[Operator]` owns acceptance decisions.
+
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the anomaly scan rules. [Verifier] checks planted-anomaly fixtures are detected. [Final reviewer] reviews the phase before Operator approvals.
 
 **Completeness checks retained from the original anomaly scan:**
 1. [Reconciliation Agent] Check documents without ledger entries and classify each as unbooked, duplicate, private, another period, or a supported alternate relation.
@@ -178,9 +202,13 @@ Read source artifacts from the workspace. Moneybird reads use guarded read-only 
 
 Risk-classified records 100%, high-risk review coverage 100%, configured sample meets its approved minimum 100%, duplicate candidates unresolved 0, unresolved material findings 0.
 
+M12 gate: work units with Verifier PASS or Operator disposition 100%, planted-anomaly fixtures detected 100%, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
+
 ### 9. Stop conditions
 
 Missing sample configuration, duplicate fingerprint, RED or BLACK record in a proposed write set, uncertain tax treatment, unsupported exception acceptance, or missing original evidence.
+
+Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
@@ -189,3 +217,5 @@ No account mutation. Preserve the review run and re-open only impacted exception
 ### 11. Resume rule
 
 Continue from the last reviewed canonical key after confirming the input hash and sample seed. Re-run the affected selection if the population hash changed.
+
+For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.

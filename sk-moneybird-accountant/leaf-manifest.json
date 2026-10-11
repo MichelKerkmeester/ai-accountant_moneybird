@@ -4,6 +4,7 @@
       "leaves": [
         "feature-catalog/bookkeeping-and-migration/api-tool-handoff.md",
         "feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md",
+        "feature-catalog/bookkeeping-and-migration/migration-agent-route.md",
         "feature-catalog/bookkeeping-and-migration/migration-archive-decommission-gate.md",
         "feature-catalog/bookkeeping-and-migration/migration-auditfile-export-route.md",
         "feature-catalog/bookkeeping-and-migration/migration-data-privacy.md",
@@ -18,6 +19,7 @@
         "manual-testing-playbook/offline-routing/current-year-zzp-question.md",
         "manual-testing-playbook/offline-routing/jortt-decommission-gate.md",
         "manual-testing-playbook/offline-routing/live-monthly-bookkeeping.md",
+        "manual-testing-playbook/offline-routing/migration-agent-route.md",
         "manual-testing-playbook/offline-routing/migration-phase-routing.md",
         "manual-testing-playbook/offline-routing/operator-tax-boundary.md",
         "manual-testing-playbook/offline-routing/privacy-boundary.md",

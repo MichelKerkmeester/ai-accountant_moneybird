@@ -28,6 +28,8 @@ Moneybird becomes the authoritative historical record only after the four source
 
 The public skill package contains no personal or financial records. Keep record-level evidence in the ignored controlled `migration-workspace/`. Do not alter original source files. Only approved inputs enter the workspace.
 
+The work runs on the M12 agent route. DeepSeek drafts, Codex verifies, Claude gives the final review per phase, and the Operator decides. No real record leaves the machine.
+
 ## Tool and access boundaries
 
 ### Jortt
@@ -96,6 +98,7 @@ Keep finance artifacts in the ignored `migration-workspace/` and preserve existi
 - `Archive/` for source exports, post-freeze deltas, and restoration evidence.
 - `Reviews/` for independent audit and red-team reports.
 - `Handoff/` for the approved final handoff.
+- `AgentDesk/` for agent-facing briefs, drafts, fixtures, scripts, checks, summaries, verdicts, final reviews, and logs.
 
 Prompts and tool transcripts contain only schemas, field names, phase or record-class labels, opaque record keys, aggregate counts, status, and evidence paths. Keep personal names, supplier or customer details, account identifiers, invoice numbers, amounts, and source payloads in the controlled workspace only. Redact tool output before it enters a session transcript.
 
@@ -164,6 +167,16 @@ The Orchestrator maintains the versioned config. The Operator supplies or approv
 | `auditfile.job_status` | [Evidence Archivist] | Phase 0 | Completed Moneybird export job, product version, XAF version, year, receipt, and artifact SHA-256. |
 | `write_approval_reference` | [Operator] | Phase 7 | Approval for each non-GET batch, linked from the journal. |
 | `run_journal_path` | [Orchestrator] | Phase 0 | Controlled JSONL journal location. |
+| `agents.implementer.route` | [Operator] | Phase 0 | DeepSeek V4.1 Flash at max thinking through the Pi CLI with the llmgateway provider. Disable tools, extensions, skills, context files, and sessions. |
+| `agents.implementer.fallback_route` | [Operator] | Phase 0 | One fallback provider for the same configured model. Record the route and use it only after a provider failure. |
+| `agents.verifier.route` | [Operator] | Phase 0 | GPT-6 Luna at max effort on the fast service tier through the Codex CLI. Require a read-only sandbox and proven OS boundary. |
+| `agents.final_reviewer` | [Operator] | Phase 0 | Claude in the skill-running session for final phase review. |
+| `agents.data_policy` | [Operator] | Phase 0 | SUMMARIES_ONLY. No names, amounts, IBANs, addresses, emails, descriptions, invoice numbers, document or administration IDs, or source payloads leave the machine. |
+| `agents.write_executor` | [Operator] | Phase 0 | CONDUCTOR. Claude uses a separate Migration Writer session after Verifier PASS and Operator approval. The guard loads the token locally and no seat sees it. |
+| `agents.max_rounds` | [Operator] | Phase 0 | Positive round limit. Default 3. |
+| `agents.read_boundary_evidence` | [Operator] | Phase 0 | Operating-system deny results for every protected path, outbound egress canary, phase-entry canary evidence, and evidence for any path change. |
+| `agents.script_sandbox_evidence` | [Operator] | Phase 0 | Local script sandbox profile, fixture review, own-input-folder read boundary, output path outside AgentDesk, and blocked network evidence. |
+| `agents.alias_secret_location` | [Operator] | Phase 0 | Local path to the HMAC secret only. Never record or share the secret value. |
 
 Missing fields, unapproved thresholds, unknown access expiry, unsupported source scope, unsupported retention basis, missing approver, or an incomplete read route block Phase 0 or the affected gate. The guarded auditfile POST route may remain pending through Phase 0 and must be verified before its first use after a phase gate passes. Situation-dependent retention terms require an Operator-approved `MIGRATION_CONFIG` value with its approver and basis recorded. Threshold values do not authorize a balancing entry.
 

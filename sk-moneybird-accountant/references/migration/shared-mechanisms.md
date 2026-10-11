@@ -12,7 +12,7 @@ version: 1.0.0.0
 
 # Migration shared mechanisms
 
-These controls are defined once and referenced by the phase contracts. They describe required behavior and do not claim that a tool already implements each control. Load the [migration index](./README.md) to route a request to its phase.
+These controls are defined once and referenced by the phase contracts. They describe required behavior and do not claim that a tool already implements each control. Load the [migration index](./README.md) to route a request to its phase. M12 defines the external agent route used with those phase contracts.
 
 ## M1. Register schemas and complete source manifests
 
@@ -30,17 +30,19 @@ Make wait-based retry decisions only after a read-back waits beyond the Operator
 
 ## M3. Append-only run journal, approvals, and crash resume
 
-Keep one append-only JSONL run journal under `migration-workspace/RunJournal/`, with one event per state change. Required states are `PLANNED`, `INPUT_FROZEN`, `ACCESS_CHECK_RECORDED`, `WRITE_INTENT`, `IN_PROGRESS`, `WRITE_UNKNOWN`, `WRITE_CONFIRMED`, `READBACK_CONFIRMED`, `RECONCILED`, `GATE_PASSED`, and `STOPPED`.
+Keep one append-only JSONL run journal under `migration-workspace/RunJournal/`, with one event per state change. Required states are `PLANNED`, `INPUT_FROZEN`, `ACCESS_CHECK_RECORDED`, `WRITE_INTENT`, `IN_PROGRESS`, `WRITE_UNKNOWN`, `WRITE_CONFIRMED`, `READBACK_CONFIRMED`, `RECONCILED`, `AGENT_DRAFTED`, `AGENT_VERIFIED`, `FINAL_REVIEWED`, `GATE_PASSED`, and `STOPPED`.
 
 Every non-GET call has a flushed `WRITE_INTENT` immediately before the call. Each event records phase, batch or checkpoint key, input-manifest hash, item counts, prior state, new state, timestamp, owner tag, evidence paths, approval reference, payload hash when applicable, and stop reason when present. Each material human approval records identity, role, decision, timestamp, evidence references, and accepted exceptions.
 
-Never rewrite journal history. Resume only from the last verified state. Reconcile every `WRITE_UNKNOWN` item before another write.
+Each `AGENT_DRAFTED`, `AGENT_VERIFIED`, and `FINAL_REVIEWED` event records the seat, executor route, brief hash, artifact hash, round, verdict, and payload-scan count. These events contain no record content.
+
+Never rewrite journal history. Resume only from the last verified state. Reconcile every `WRITE_UNKNOWN` item before another write. `AGENT_DRAFTED` is not a verified state. Resume agent work only from `AGENT_VERIFIED`, `FINAL_REVIEWED`, or a later verified and approved state. If the last agent event is `AGENT_DRAFTED`, restart at verification.
 
 ## M4. Evidence, privacy, and session boundary
 
-Keep finance artifacts under the ignored `migration-workspace/`. Preserve existing folders and add `Schemas/`, `Manifests/`, `Registers/`, `Inputs/<role>/`, `Mappings/`, `Exceptions/`, `Reports/`, `Snapshots/`, `WriteJournal/`, `RunJournal/`, `Archive/`, `Reviews/`, and `Handoff/`. Link each run-journal event to its checkpoint artifacts.
+Keep finance artifacts under the ignored `migration-workspace/`. Preserve existing folders and add `Schemas/`, `Manifests/`, `Registers/`, `Inputs/<role>/`, `Mappings/`, `Exceptions/`, `Reports/`, `Snapshots/`, `WriteJournal/`, `RunJournal/`, `Archive/`, `Reviews/`, `Handoff/`, and `AgentDesk/`. Link each run-journal event to its checkpoint artifacts.
 
-Agents may read record-level fields inside their assigned controlled input folders to prepare their registers. Prompts, tool logs, and session transcripts may contain only schemas, field names, phase and record-class labels, opaque record keys, aggregate counts, status, and evidence paths. Do not put source payloads, personal names, supplier or customer details, account identifiers, invoice numbers, or amounts in those surfaces. Before sharing output, the Independent Auditor scans it against this allowlist and records the count of prohibited private fields. Keep record-level evidence in the controlled workspace. The recorded prohibited-field count must equal zero.
+Local role sessions run by the Agent runner read only their assigned controlled input folders to prepare registers. The Implementer and Verifier seats never receive record-level content. Prompts, tool logs, and session transcripts may contain only schemas, field names, phase and record-class labels, opaque record keys, aggregate counts, status, and evidence paths. Do not put source payloads, personal names, supplier or customer details, account identifiers, invoice numbers, or amounts in those surfaces. Before sharing output, the Independent Auditor scans it against this allowlist and records the count of prohibited private fields. Keep record-level evidence in the controlled workspace. The recorded prohibited-field count must equal zero. External seats use the M12 route, which preserves this allowlist and scan rule.
 
 ## M5. Moneybird rate limits and recovery
 
@@ -89,7 +91,76 @@ Record one recovery row for every stop event, including its owner, evidence, ret
 | `STALE_OR_INCOMPLETE_READ` | Independent Auditor | Synchronization timestamp, page counts, cache wait, expected total | Do not use zero-match results for retry or pass decisions. Repeat only after the documented wait or complete synchronization. | Freshness and completeness are evidenced and counts reconcile. |
 | `RECONCILIATION_MISMATCH` | Reconciliation Agent | Source and target reports, linked exception, correction evidence | Do not net across periods or accounts. Correct only through the approved append-only correction path. | Difference is zero or a complete, approved exception is within configured limits. |
 
+## M12. External agent route
+
+M12 runs every migration work unit through a deterministic local Agent runner. A work unit is one nested sub-goal, one batch artifact, or one recurring cycle. The Operator keeps approvals, UI exports and imports, filing, period locks, source freeze, go-live, decommission, and local review of AMBER, high-risk, and content-judgment records.
+
+| Seat | Operator default | Role and boundary |
+|---|---|---|
+| Operator | Operator | Decides, approves, and reviews sensitive records locally. |
+| Agent runner | Local deterministic runner | Orchestrates briefs, dispatch, local role sessions, sandbox runs, filtering, scanning, journal events, and dashboard rows. It does not book records. |
+| Implementer | DeepSeek V4.1 Flash at max thinking through the Pi CLI with the llmgateway provider | Drafts scripts, schemas, mapping tables, and report templates from summaries. Tools, extensions, skills, context files, and sessions are disabled. |
+| Verifier | GPT-6 Luna at max effort on the fast service tier through the Codex CLI | Owns independent checks, fixtures, privacy filter, payload scanner, and adversarial corpus. It receives no record-level content. |
+| Final reviewer | Claude, the session running this skill | Reviews the final phase after every work unit passes or has an Operator disposition. |
+| Migration Writer | Claude in a separate writer session | Issues only approved Moneybird writes under M2, M3, and M10. The guard loads its token from the local environment file. No seat sees the token. |
+| Local role sessions | Agent runner executes Implementer drafts | Evidence Archivist, Document, Ledger, Bank, Tax Filing, VAT, Reconciliation, and Mapping duties remain local and read only their assigned input folders. |
+| Risk assignment | Local deterministic rules | The Implementer drafts the rules through the work unit loop. The Verifier checks rule logic and application counts. The Operator reviews AMBER and high-risk records locally. |
+| Red Team | Verifier in a separate session | Uses a clean working copy without verdicts, final reviews, or earlier findings. |
+
+These table routes are the Operator's defaults. Implementer dispatch disables tools, extensions, skills, context files, and sessions. Verifier dispatch uses a read-only sandbox in a fresh working copy of required agent-facing files, inside an OS-level boundary that denies protected reads and network egress except to its approved model endpoint. The operating system deny result proves the boundary, not the agent event log. Keep stdin closed and capture a JSON event log for each dispatch.
+
+Create `migration-workspace/AgentDesk/` with `Briefs/`, `Drafts/`, `Fixtures/`, `Scripts/`, `Checks/`, `Summaries/`, `Verdicts/`, `FinalReviews/`, and `Logs/`. Only agent-facing material belongs there. Every other `migration-workspace/` location and the private source archive are protected by a deny-by-default boundary. A new folder is protected without a configuration change. Phase 0 proves the boundary with a canary marker in every protected location and a blocked outbound request. The Agent runner repeats the boundary canary at every phase entry and after any boundary path change. If the boundary cannot be proven, the Verifier does not run with tools. Verification falls back to the same configured model through Pi with tools disabled, or the work stops. No Operator residual-risk acceptance permits a tool-enabled Verifier without a proven boundary. Until the Phase 0 boundary canary passes, the Verifier runs only through that text-only route, except for the canary dispatch itself, which names only the canary marker files. In Phase 0 that passed route proof counts as the phase-entry boundary canary.
+
+Every Implementer- or Verifier-drafted script runs in a local sandbox with read access to its own input folder only, write access to a local output folder outside `AgentDesk/` only, and no network. The Verifier reviews the code on independent fixtures before its first run on controlled data. Raw stdout, stderr, and tracebacks go to a protected local log. The Agent runner, Claude, and the agents see only a filtered summary and an error-class code.
+
+Summaries are structured and fail closed. Only allowlisted keys with typed integer, boolean, enum, or alias values pass. Never copy record free text. Field labels come from schemas, not records. Agent-facing record keys use one stable random alias per record for a whole phase, or for one cycle of a recurring phase, because a fix loop never crosses that boundary. A finding and its fix therefore name the same record. Aliases rotate only when a new phase or cycle starts. Artifact and evidence paths are opaque aliases with the real map kept locally. Digests of record-derived values use HMAC with a local secret. Plain SHA-256 is used only for whole artifacts. Amount checks report equality or within-threshold results, mismatch counts, and aliases, never amounts. Aggregate counts are allowed by the Operator's summaries-only choice. No real record leaves the machine.
+
+The Verifier owns the privacy filter, payload scanner, and adversarial corpus. Scan the exact provider payload bytes before every dispatch and fail closed with prohibited-field count 0. The Independent Auditor rescans logged payload copies as its M4 check. The Verifier's independent fixtures, record-level check, and summary extraction do not reuse Implementer code, fixtures, or filters. The Agent runner executes the check over every record locally and returns only a filtered summary. A write cannot proceed until the independent local record-level check passes and all existing phase gates and Operator approvals pass.
+
+### Work unit loop
+
+Each phase's "Run the agent route" sub-goal is the phase's route record, not a work unit. It passes when every work unit of the phase has Verifier PASS or an Operator disposition, and its last check is the final review.
+
+1. **Brief, Agent runner:** Build one brief from the phase contract with its sub-goal, check, allowed summary inputs, output format, and END line. Save its SHA-256 and require payload-scan count 0.
+2. **Draft, Implementer:** Return the artifact as text with a self-check. Require a normal stop reason and END line. An empty or cut answer means split the brief, not add a round. A provider failure permits one fallback route using the same model through another provider, logged as transport rather than a round.
+3. **Code review, Verifier:** Review on independent fixtures before any controlled-data run. The Agent runner hashes the exact applied artifact and its dependencies. Nobody edits a draft. Any change, including a path fix, starts a new round and needs new verification.
+4. **Run, Agent runner:** Run the script in the local sandbox when the sub-goal needs controlled data. Return only the filtered summary.
+5. **Verify, Verifier:** Run its own record-level check through the Agent runner and compare every record, not only totals. Return PASS, FAIL with severity and reproduction for each finding, or BLOCKED for an Operator decision.
+6. **Fix loop, Implementer and Operator:** A FAIL returns findings to the Implementer in a new brief. Stop after `agents.max_rounds` rounds, default 3. The Operator then directs a brief, approves an exception under M7, records a descope in configuration, or stops the work under M11. Final review waits for that disposition.
+7. **Final review, Final reviewer:** After every work unit has Verifier PASS or an Operator disposition, rerun the Verifier checks from the final state. Confirm every numeric exit-gate item against evidence, payload-scan and boundary audits at 0, and no agent or script write outside its allowed folder. Record Final review PASS or FAIL. Operator approvals follow as one decision summary per phase.
+8. **Reuse fast path, Agent runner and Verifier:** In recurring phases, a read-only script with unchanged artifact hash, unchanged configuration hash, and recorded input hash skips code review only. The record-level check still runs every cycle. A changed tax rate, rule, configuration, or environment invalidates the fast path.
+
+A provider failure on both configured routes, Verifier FAIL after the maximum rounds without disposition, payload-scan finding above 0, boundary canary failure, any write outside an allowed folder, an applied artifact hash that differs from the verified hash, or an unverified artifact used in a gate stops the work. A rejected draft never touches the ledger and remains marked superseded.
+
+### Per-phase agent work
+
+| Phase | Implementer drafts | Verifier independently checks | Stays with the Operator |
+|---|---|---|---|
+| 0 | Agent runner, fixture generator, canary harness, and sandbox profile | Own privacy filter, payload scanner, and adversarial corpus. Boundary and egress canaries, planted private values blocked, and both route canaries | Route configuration approval |
+| 1 | Per-class extraction and manifest builders for M1 and M8 | Source counts and page-chain reproduction | UI-only exports and source-side counts |
+| 2 | Missing-source checklist, archive seeding and hash scripts, and retention table template | Archive restore test and hash recompute | Collecting sources |
+| 3 | One register builder per source, each in its own session | Register totals and static check that each builder reads only its folder | None new |
+| 4 | Linker and stable-key builder | Match recount and duplicate-key check | None new |
+| 5 | Anomaly scan rules | Planted-anomaly fixtures detected | Exception decisions |
+| 6 | Mapping tables, opening schedules, and continuity schedules | Every mapped field against the target schema and planted unmappable cases | Accounting treatment approval |
+| 7 | Pilot batch builder, pre-write report, and read-back comparer | Pre-write report and read-back comparison | Batch approval |
+| 8 | Per-period batch plans and builders | Per-batch pre-write and read-back | Batch approvals |
+| 9 | Per-period VAT reconciliation | VAT recompute from source registers | Filed-return evidence |
+| 10 | Year-end comparison | Year-end recompute | Auditfile export and year-end closing |
+| 11 | Income-tax bridge template | Bridge checks and no invented adjustment | Adviser decisions |
+| 12 | Continuity checker | Account-by-account check | None new |
+| 13 | Fixes for Red Team findings only | Red Team tries to falsify the year from a clean working copy | Accepting residual exceptions |
+| 14 | Snapshot sealing and hash manifest | Hash recompute | Period lock in the UI |
+| 15 | Year-advance checklist | Prior-year lock evidence | None new |
+| 16 | Parallel comparison and delta schema | Delta check | Parallel cycle sign-off |
+| 17 | Freeze delta extraction and archive restore test | Restore proof and freeze-boundary check | Freezing Jortt |
+| 18 | Go-live checklist and final delta batch | Final delta and isolation review | Go-live approval |
+| 19 to 21 | Monthly, VAT-period, and yearly check scripts using the reuse fast path | Run summaries, with code review only when the hash changes and a record-level check every cycle | Filing and yearly approval |
+| 22 | Completion report and definition-of-done evidence index | Definition of done, archive, and retention recheck | Cancel-or-keep decision |
+
 ## Route contract
+
+The external agent seats and work-unit handoffs follow M12. Jortt and Moneybird operations still use only the required routes below.
 
 ### Jortt reads and exports
 
