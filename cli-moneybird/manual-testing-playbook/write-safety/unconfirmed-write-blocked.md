@@ -51,18 +51,21 @@ Operators run the exact prompt and command sequence for `MBD-002` and confirm th
 
 ### Command Block
 
-Run the block from the `cli-moneybird/` package root. It uses only the packaged stub and a temporary folder that the block removes on exit. It never touches the real CLI session, `.env` or `.env.writer`.
+Run the block from the `cli-moneybird/` package root. It uses only the packaged stub and a temporary folder that the block removes on exit. It never touches the real CLI session, `.env` or `.env.writer`. `MONEYBIRD_GUARD_TEST=1` is a test-only setting for the offline test suite. Never set it in a real session.
 
 ```bash
 bash <<'SCENARIO'
 SKILL_ROOT="$PWD"
 TEST_ROOT="$(mktemp -d "${TMPDIR:-/tmp}/cli-moneybird.XXXXXX")"
 trap 'rm -rf "$TEST_ROOT"' EXIT
-mkdir -p "$TEST_ROOT/home" "$TEST_ROOT/accountant/migration-workspace"
-export HOME="$TEST_ROOT/home" MONEYBIRD_ENV_DIR="$TEST_ROOT/accountant"
+mkdir -p "$TEST_ROOT/home" "$TEST_ROOT/writer-config" "$TEST_ROOT/accountant/migration-workspace/RunJournal"
+export HOME="$TEST_ROOT/home" MONEYBIRD_GUARD_TEST=1 MONEYBIRD_ENV_DIR="$TEST_ROOT/accountant"
 export MONEYBIRD_CLI="$SKILL_ROOT/cli/moneybird-cli/tests/stub-moneybird-cli"
+export MONEYBIRD_WRITER_CONFIG_DIR="$TEST_ROOT/writer-config"
 export MONEYBIRD_TEST_LOG="$TEST_ROOT/invocations.log" MONEYBIRD_TEST_ADMINISTRATION_ID="PILOT_ADMIN"
 GUARD="$SKILL_ROOT/cli/moneybird-cli/moneybird-guard"
+APPROVAL_REF="APR-EXAMPLE"
+printf '{"new_state":"WRITE_INTENT","approval_reference":"%s"}\n' "$APPROVAL_REF" > "$MONEYBIRD_ENV_DIR/migration-workspace/RunJournal/run-journal.jsonl"
 "$GUARD" contacts create
 echo "exit=$?"
 grep -c '^REAL ' "$MONEYBIRD_TEST_LOG"

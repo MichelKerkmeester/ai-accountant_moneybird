@@ -57,7 +57,7 @@ The CLI supports `list`, `get`, `create`, `update` and `delete` where the spec e
 | `--file PATH` | Supplies a file to a multipart field when the endpoint declares it |
 | `login [token]` | Logs in with a token argument or prompts for a token when omitted |
 | `administration list` | Lists administrations available in the local CLI session |
-| `administration use ID` | Selects a local CLI administration |
+| `administration use ID` | Selects a local CLI administration. A switch to the pilot administration passes. Any other switch is gated like a production write |
 | `administration current` | Prints the selected local CLI administration |
 | `RESOURCE sync` | Reads synchronization IDs and versions when that resource supports synchronization |
 | `RESOURCE sync_fetch --ids JSON` | Fetches a batch of synchronized records |
@@ -68,34 +68,54 @@ The CLI's normal success status is zero for an HTTP 2xx response. Its request, r
 
 The pinned CLI handles `moneybird-cli login` by prompting with `read` when no token argument is supplied. It reads that prompt from stdin. `moneybird-guard login-from-env` sends the token from `.env` through stdin. `moneybird-guard login-from-env --writer` reads `.env.writer` and selects the separate writer config directory. The guard suppresses CLI output so neither a token accidentally echoed by a future CLI nor administration details appear in its login message.
 
-The CLI's default configuration is `${MONEYBIRD_CONFIG_DIR:-$HOME/.config/moneybird-cli}`. Session files contain tokens. Writer login uses `${MONEYBIRD_WRITER_CONFIG_DIR:-$HOME/.config/moneybird-cli-writer}`.
+The CLI's default configuration is `${MONEYBIRD_CONFIG_DIR:-$HOME/.config/moneybird-cli}`. Session files contain tokens. The guard's writer login always uses the pinned writer configuration folder `$HOME/.config/moneybird-cli-writer`. `MONEYBIRD_WRITER_CONFIG_DIR` does not change it.
 
 ---
 
 ## 3. GUARD COMMAND
 
 ```text
-moneybird-guard [--confirm-write] [--production] [--out FILE] [--quiet] <moneybird-cli args...>
+moneybird-guard [--confirm-write] [--production] [--approval <ref>] [--out FILE] [--print-body] [--quiet] <moneybird-cli args...>
 moneybird-guard login-from-env [--writer]
 ```
 
 Guard flags are recognized anywhere before a literal `--`. Every other CLI argument is passed through. For API calls, the guard adds `--dry-run`, reads the first `METHOD URL` line and classifies the request.
 
+The guard root is always the guard's own repository root, three folders above the script. The CLI binary is always `moneybird-cli` on `PATH`. The writer configuration folder is always `$HOME/.config/moneybird-cli-writer`. The pilot administration ID comes only from the `MONEYBIRD_PILOT_ADMINISTRATION_ID=` line in the root `.env` file.
+
+`MONEYBIRD_ENV_DIR`, `MONEYBIRD_CLI`, `MONEYBIRD_WRITER_CONFIG_DIR` and the `MONEYBIRD_PILOT_ADMINISTRATION_ID` environment variable are honored only when `MONEYBIRD_GUARD_TEST=1` is set. That flag exists for the offline test suite only. Agents and Operators never set it in real use. Without the flag the guard prints a warning that the variable is ignored and carries on with the pinned value.
+
 Set `MONEYBIRD_GUARD_READ_ONLY=1` to refuse every non-GET method before its real call. The guard prints the dry-run line, exits 6 and lets the read-only lock take precedence over `--confirm-write` and `--production`. GET calls still run. Values other than `1` leave the lock off. This lock is the boundary for read-only roles because Moneybird token scopes do not separate read from write.
+
+A write passes these gates in order. First the read-only lock must be off, or the guard exits 6. Then `--confirm-write` is required, or the guard exits 3. Then the writer configuration folder must exist, or the write stops with exit 7. The guard never falls back to the reader session. Then the target must be the pilot administration, or `--production` after Operator approval, or the guard exits 4. Then `--approval <ref>` must match the `approval_reference` of a `WRITE_INTENT` event in `migration-workspace/RunJournal/run-journal.jsonl`. A missing flag, a missing journal or no matching entry stops the write with exit 8. This applies to pilot writes and production writes alike.
+
+The write command shape is `moneybird-guard --confirm-write --approval "$APPROVAL_REF" <moneybird-cli args...>`, plus `--production` for a non-pilot administration.
+
+`administration use <id>` is gated. Switching to the pilot administration passes. Switching to any other administration is blocked by the read-only lock with exit 6. Otherwise it needs `--confirm-write`, the writer configuration, `--production` and `--approval`, the same as a production write.
 
 | Exit | Meaning |
 |---:|---|
-| 0 | CLI call succeeded or a pass-through command completed |
-| 1 | CLI, login, required dependency or local logging error |
-| 2 | Invalid guard usage or malformed dry-run header |
-| 3 | Non-GET call lacks `--confirm-write` |
-| 4 | Target is outside the pilot or no pilot is configured and production was not enabled |
-| 5 | `--out` escapes `migration-workspace/` or crosses a symlink |
-| 6 | `MONEYBIRD_GUARD_READ_ONLY=1` blocked a non-GET method |
+| 0 | Success. The CLI call or a pass-through command completed |
+| 1 | Tool or dependency failure |
+| 2 | Usage error, including a malformed dry-run header |
+| 3 | Write not confirmed with `--confirm-write` |
+| 4 | Pilot gate. The target is not the pilot administration and `--production` was not passed |
+| 5 | Output path or folder rejected |
+| 6 | Read-only lock blocked a non-GET method |
+| 7 | Writer configuration missing |
+| 8 | Approval reference missing or not found |
 
-For writes, an existing writer config directory is selected before the actual call. Without it, the guard warns and uses the current reader session. A successful write prints the method and path, notes that an immediate GET may be cached and appends a JSONL record without a request or response body. Confirmed write attempts also record their exit status.
+Any other exit code is passed through from `moneybird-cli`.
 
-`--out FILE` accepts only a file inside `<Accountant root>/migration-workspace/`. The CLI uses `--output raw`. The response body is saved to the file and stdout contains only an item count, top-level keys or a no-body message. `--quiet` suppresses guard summaries. It does not hide warnings, safety messages or the normal CLI response when no `--out` path is set.
+A successful write prints the method and path, notes that an immediate GET may be cached and appends a JSONL record without a request or response body. Confirmed write attempts also record their exit status.
+
+Without `--out`, the guard captures the response body to a private temporary file under `migration-workspace/tmp/`. The folder uses mode 700 and the file uses mode 600. The guard prints one summary line and deletes the file. The summary line looks like `response: 2048 bytes, records: 12` for a list or `response: 512 bytes, fields: id,name` for an object. `--quiet` hides the summary. Record content does not reach the terminal by default.
+
+`--out FILE` accepts only a file inside `<Accountant root>/migration-workspace/`. The CLI uses `--output raw`. The full body is saved to the file and stdout holds only an item count, the top-level keys or a no-body message, such as `items: 12`.
+
+`--print-body` streams the full body to the terminal. It is for the Operator only. The guard refuses it with exit 2 when any agent session marker is set: `CLAUDECODE`, `AI_SESSION_CHILD`, `ACCOUNTANT_AGENT_SESSION` or `CODEX_SANDBOX`. The markers are a speed bump, not a boundary. Agents never use `--print-body`. `--print-body` with `--out` is refused with exit 2. It does not apply to `login-from-env`.
+
+`--out` on a passthrough command (`help`, `--help`, `--version`, `administration list`, `administration current` and `administration use <id>`) is refused with exit 2.
 
 ---
 

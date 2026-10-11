@@ -26,9 +26,9 @@ Moneybird tokens do not separate read and write scopes. The local lock gives rea
 
 Operators run the exact prompt and command sequence for MBD-013 and confirm the expected signals without contradictory evidence.
 
-- Objective: Confirm that MONEYBIRD_GUARD_READ_ONLY=1 allows GET and blocks a non-GET method even with both write flags.
-- Real user request: Check that a read-only Moneybird session can read contacts but cannot create one, even with both write flags.
-- Prompt: Check that a read-only Moneybird session can read contacts but cannot create one, even with both write flags.
+- Objective: Confirm that MONEYBIRD_GUARD_READ_ONLY=1 allows GET and blocks a non-GET method even with the write flags.
+- Real user request: Check that a read-only Moneybird session can read contacts but cannot create one, even with the write flags.
+- Prompt: Check that a read-only Moneybird session can read contacts but cannot create one, even with the write flags.
 - Expected execution process: Set the lock in a temporary scenario environment, run a GET against the packaged stub, then run a confirmed production create against the stub.
 - Expected signals: The GET exits 0 and has a REAL GET log line. The create exits 6, prints its POST dry-run line and lock message, and has no REAL POST log line.
 - Desired user-visible outcome: The operator sees that the read-only CLI can read and that a write is blocked before the real call.
@@ -48,11 +48,11 @@ Operators run the exact prompt and command sequence for MBD-013 and confirm the 
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| MBD-013 | Read-only lock blocks writes | Confirm that the lock permits GET and refuses a confirmed production write | Check that a read-only Moneybird session can read contacts but cannot create one, even with both write flags. | 1. Set MONEYBIRD_GUARD_READ_ONLY=1 and run moneybird-guard contacts list --filter period:2023 -> 2. Run moneybird-guard --confirm-write --production contacts create -> 3. Check exit status 6 and inspect the invocation log | The GET exits 0 and logs REAL GET. The write exits 6 with a POST preview and lock message, with no REAL POST log line. | Record both exit statuses, guard output, and the stub invocation log. | PASS if GET succeeds and the write exits 6 without a real POST. FAIL if the GET is blocked or the stub records a real POST. | Confirm the lock is exactly 1, inspect the non-GET lock branch, then rerun the automated guard suite. |
+| MBD-013 | Read-only lock blocks writes | Confirm that the lock permits GET and refuses a confirmed production write | Check that a read-only Moneybird session can read contacts but cannot create one, even with the write flags. | 1. Set MONEYBIRD_GUARD_READ_ONLY=1 and run moneybird-guard contacts list --filter period:2023 -> 2. Run moneybird-guard --confirm-write --production --approval "$APPROVAL_REF" contacts create -> 3. Check exit status 6 and inspect the invocation log | The GET exits 0 and logs REAL GET. The write exits 6 with a POST preview and lock message, with no REAL POST log line. | Record both exit statuses, guard output, and the stub invocation log. | PASS if GET succeeds and the write exits 6 without a real POST. FAIL if the GET is blocked or the stub records a real POST. | Confirm the lock is exactly 1, inspect the non-GET lock branch, then rerun the automated guard suite. |
 
 ### Prompt
 
-Check that a read-only Moneybird session can read contacts but cannot create one, even with both write flags.
+Check that a read-only Moneybird session can read contacts but cannot create one, even with the write flags.
 
 ### Exact Command Sequence
 
@@ -75,21 +75,24 @@ Confirm MONEYBIRD_GUARD_READ_ONLY is set to exactly 1. Check the guard lock bran
 
 ### Command Block
 
-Run from the cli-moneybird package root. It uses only the packaged stub and a temporary folder.
+Run from the cli-moneybird package root. It uses only the packaged stub and a temporary folder. `MONEYBIRD_GUARD_TEST=1` is a test-only setting for the offline test suite. Never set it in a real session.
 
 ```bash
 set -euo pipefail
 SKILL_ROOT="$PWD"
 TEST_ROOT="$(mktemp -d "/tmp/moneybird-read-only.XXXXXX")"
 trap 'rm -rf "$TEST_ROOT"' EXIT
-mkdir -p "$TEST_ROOT/home" "$TEST_ROOT/accountant/migration-workspace"
-export HOME="$TEST_ROOT/home" MONEYBIRD_ENV_DIR="$TEST_ROOT/accountant"
+mkdir -p "$TEST_ROOT/home" "$TEST_ROOT/writer-config" "$TEST_ROOT/accountant/migration-workspace/RunJournal"
+export HOME="$TEST_ROOT/home" MONEYBIRD_GUARD_TEST=1 MONEYBIRD_ENV_DIR="$TEST_ROOT/accountant"
 export MONEYBIRD_CLI="$SKILL_ROOT/cli/moneybird-cli/tests/stub-moneybird-cli"
+export MONEYBIRD_WRITER_CONFIG_DIR="$TEST_ROOT/writer-config"
 export MONEYBIRD_TEST_LOG="$TEST_ROOT/invocations.log" MONEYBIRD_TEST_ADMINISTRATION_ID="PRODUCTION_ADMIN"
 export MONEYBIRD_GUARD_READ_ONLY=1
 GUARD="$SKILL_ROOT/cli/moneybird-cli/moneybird-guard"
 "$GUARD" contacts list --filter period:2023
-if "$GUARD" --confirm-write --production contacts create; then
+APPROVAL_REF="APR-EXAMPLE"
+printf '{"new_state":"WRITE_INTENT","approval_reference":"%s"}\n' "$APPROVAL_REF" > "$MONEYBIRD_ENV_DIR/migration-workspace/RunJournal/run-journal.jsonl"
+if "$GUARD" --confirm-write --production --approval "$APPROVAL_REF" contacts create; then
   printf '%s
 ' 'unexpected write success' >&2
   exit 1
@@ -99,7 +102,6 @@ else
 fi
 grep -q '^REAL GET ' "$MONEYBIRD_TEST_LOG"
 ! grep -q '^REAL POST ' "$MONEYBIRD_TEST_LOG"
-SCENARIO
 ```
 
 ---

@@ -121,7 +121,7 @@ The old instruction to cancel Jortt after the early source download is supersede
 
 **Tool route** (from the phase reference):
 
-Jortt reads remain CLI read-only. Moneybird reads use guarded read-only access. The final-delta writes use the approved mirror route until the Operator go-live decision passes. After Phase 18 passes, production batches in Phases 19 to 21 require Operator approval and use `--production`. Tax filing remains Operator-only.
+Jortt reads remain CLI read-only. Moneybird reads use guarded read-only access. The final-delta writes use the approved mirror route until the Operator go-live decision passes. After Phase 18 passes, production batches in Phases 19 to 21 require Operator approval and use `--production` with `--approval <ref>`. Tax filing remains Operator-only.
 
 Stop at the exit gate in spec.md section 5 and record the Operator approval in `decision-record.md`.
 <!-- /ANCHOR:phases -->

@@ -39,14 +39,19 @@ Commands:
   jortt-cli ops [--tag TAG] [--writes] [--json]
   jortt-cli describe SLUG
   jortt-cli call SLUG [--PARAM VALUE ...] [--data JSON | --data-file FILE]
-                    [--all] [--out FILE] [--raw] [--dry-run] [--allow-write]
-  jortt-cli get PATH [name=value ...] [--all] [--out FILE] [--raw]
+                    [--all] [--out FILE] [--print-body] [--raw] [--dry-run]
+                    [--allow-write]
+  jortt-cli get PATH [name=value ...] [--all] [--out FILE] [--print-body] [--raw]
   jortt-cli fetch URL --out FILE
   jortt-cli whoami
   jortt-cli spec update | info
   jortt-cli token status | clear
   jortt-cli help [SLUG]
   jortt-cli --version
+
+Responses print a summary with the status, record counts and top-level field
+names. --out saves the full body in migration-workspace. --print-body prints the
+full body, which agent sessions refuse.
 
 Exit codes:
   0 success

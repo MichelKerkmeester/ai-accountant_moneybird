@@ -122,7 +122,7 @@ Select a representative period from the oldest eligible year. Include a sales in
 
 **Tool route** (from the phase reference):
 
-All Moneybird writes use moneybird-guard after dry-run review, with --confirm-write and the single pilot/mirror administration. Run separate PDF and UBL pilots where both source types exist. Verify every attachment through a documented target read route. Reads use the guard lock and synchronization with a recorded timestamp. No real write occurs during the crash-boundary stub rehearsal.
+All Moneybird writes use moneybird-guard after dry-run review, with --confirm-write, --approval for the flushed WRITE_INTENT, and the single pilot/mirror administration. Run separate PDF and UBL pilots where both source types exist. Verify every attachment through a documented target read route. Reads use the guard lock and synchronization with a recorded timestamp. No real write occurs during the crash-boundary stub rehearsal.
 
 Stop at the exit gate in spec.md section 5 and record the Operator approval in `decision-record.md`.
 <!-- /ANCHOR:phases -->

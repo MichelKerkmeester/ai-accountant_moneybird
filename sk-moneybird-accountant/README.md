@@ -54,7 +54,7 @@ Read [the project contract](../AGENTS.md) first, then [SKILL.md](SKILL.md). The 
 
 ### Operating boundary
 
-Jortt access is read-only. Moneybird calls go through `moneybird-guard`. Reader sessions set `MONEYBIRD_GUARD_READ_ONLY=1`, which blocks every non-GET call before it reaches the official CLI. A write needs the phase gate and Operator approval.
+Jortt access is read-only. Moneybird calls go through `moneybird-guard`. Reader sessions set `MONEYBIRD_GUARD_READ_ONLY=1`, which blocks every non-GET call before it reaches the official CLI. A write needs the writer configuration, the phase gate, Operator approval, `--confirm-write` and `--approval <ref>` for a flushed `WRITE_INTENT` journal entry. A write to a non-pilot administration also needs `--production`.
 
 ---
 
@@ -129,14 +129,14 @@ M12 splits migration work across separate seats. These are the Operator's defaul
 
 | Seat | Default responsibility |
 |---|---|
-| **Agent runner** | Runs local briefs, filtering, scans, journal events and dashboard updates. It never books a record. |
+| **Agent runner** | Runs local briefs, filtering, scans, journal events, dashboard updates and the local deterministic payload assembler that builds each Moneybird request payload from the frozen inputs and approved mapping tables. It never books a record. |
 | **Implementer** | Drafts scripts and templates from approved summaries, with tools and extensions off. |
 | **Verifier** | Checks the work independently and sees no record-level content. Tool-enabled checks need a proven read-only sandbox and OS boundary. |
-| **Final reviewer** | Reviews each phase once every work unit has passed verification or has an Operator decision. |
-| **Migration Writer** | Makes approved Moneybird writes through `moneybird-guard`, in a separate session. |
+| **Final reviewer** | Reviews each phase once every work unit has passed verification or has an Operator decision. It sees filtered summaries, verdicts, gate results and alias-level evidence only. |
+| **Migration Writer** | Runs `moneybird-guard --confirm-write --approval <ref>` against the assembled payload file, in a separate session. It never reads or composes payload content. The guard's summary output keeps the response body out of the writer session. |
 | **Operator** | Owns the configuration, high-risk review, approvals, filing and cutover. |
 
-The seats receive typed, allowlisted summaries with stable opaque aliases and approved aggregate counts. The exact payload is scanned before every dispatch. Source records and record-level evidence stay on your machine.
+The seats receive typed, allowlisted summaries with schemas, field names, phase and record-class labels, opaque record aliases, HMAC hashes, approved aggregate counts, status, approval references and evidence paths. No seat receives record-level content. In agent-facing output, a count from 1 to 9 appears as `<10`. Zero stays `0`. The exact payload is scanned before every dispatch. Source records and record-level evidence stay on your machine.
 
 ---
 

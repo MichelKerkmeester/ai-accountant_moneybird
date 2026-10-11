@@ -61,7 +61,7 @@ New document inventory, Moneybird period report, bank statement, open invoice sc
 
 ### 6. Tool route
 
-Moneybird reads use `moneybird-guard` with read-only lock and explicit month. After Phase 18 passes, each Operator-approved production correction uses the separate guarded writer session and `--production`. Bank import is Operator UI-only.
+Moneybird reads use `moneybird-guard` with read-only lock and explicit month. After Phase 18 passes, each Operator-approved production correction uses the separate guarded writer session, `--production`, and `--approval <ref>`. Bank import is Operator UI-only.
 
 ### 7. Outputs and evidence artifacts
 
@@ -211,7 +211,7 @@ Monthly reports, VAT reconciliations, bank statements, receivable and payable sc
 
 ### 6. Tool route
 
-Moneybird reads use guarded read-only access with explicit periods. Period lock is Operator UI-only. Tax filing and portal evidence are Operator-only. After Phase 18 passes, each Operator-approved production correction uses the separate guarded writer session and `--production`.
+Moneybird reads use guarded read-only access with explicit periods. Period lock is Operator UI-only. Tax filing and portal evidence are Operator-only. After Phase 18 passes, each Operator-approved production correction uses the separate guarded writer session, `--production`, and `--approval <ref>`.
 
 ### 7. Outputs and evidence artifacts
 

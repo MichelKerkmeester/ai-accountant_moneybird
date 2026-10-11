@@ -4,10 +4,11 @@ set -euo pipefail
 
 usage() {
   cat <<'USAGE'
-Usage: moneybird-guard [--confirm-write] [--production] [--out FILE] [--quiet] <moneybird-cli args...>
+Usage: moneybird-guard [--confirm-write] [--production] [--approval REF] [--out FILE] [--print-body] [--quiet] <moneybird-cli args...>
        moneybird-guard login-from-env [--writer]
 
 Guard flags are read anywhere before a literal --. Other arguments pass to moneybird-cli.
+Without --out the response body is captured and only a summary is printed. --print-body streams the body for an operator.
 USAGE
 }
 
@@ -29,7 +30,27 @@ while [[ -h "$SOURCE" ]]; do
 done
 SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd -P)"
 DEFAULT_ENV_DIR="$(cd -P "$SCRIPT_DIR/../../.." >/dev/null 2>&1 && pwd -P)"
-ACCOUNTANT_ROOT_INPUT="${MONEYBIRD_ENV_DIR:-$DEFAULT_ENV_DIR}"
+# WHY: The guard pins its own repository root, the CLI binary and the writer configuration. The
+# overrides exist for the test suite only, so an agent with a shell cannot redirect them.
+GUARD_TEST=0
+if [[ "${MONEYBIRD_GUARD_TEST:-}" == "1" ]]; then
+  GUARD_TEST=1
+fi
+warn_ignored_var() {
+  printf 'moneybird-guard: %s is ignored unless MONEYBIRD_GUARD_TEST=1.\n' "$1" >&2
+}
+if [[ $GUARD_TEST -eq 1 ]]; then
+  ACCOUNTANT_ROOT_INPUT="${MONEYBIRD_ENV_DIR:-$DEFAULT_ENV_DIR}"
+  CLI="${MONEYBIRD_CLI:-moneybird-cli}"
+  WRITER_CONFIG_DIR="${MONEYBIRD_WRITER_CONFIG_DIR:-$HOME/.config/moneybird-cli-writer}"
+else
+  [[ -z "${MONEYBIRD_ENV_DIR:-}" ]] || warn_ignored_var MONEYBIRD_ENV_DIR
+  [[ -z "${MONEYBIRD_CLI:-}" ]] || warn_ignored_var MONEYBIRD_CLI
+  [[ -z "${MONEYBIRD_WRITER_CONFIG_DIR:-}" ]] || warn_ignored_var MONEYBIRD_WRITER_CONFIG_DIR
+  ACCOUNTANT_ROOT_INPUT="$DEFAULT_ENV_DIR"
+  CLI="moneybird-cli"
+  WRITER_CONFIG_DIR="$HOME/.config/moneybird-cli-writer"
+fi
 case "$ACCOUNTANT_ROOT_INPUT" in /*) ;; *) ACCOUNTANT_ROOT_INPUT="$PWD/$ACCOUNTANT_ROOT_INPUT" ;; esac
 ACCOUNTANT_ROOT="$ACCOUNTANT_ROOT_INPUT"
 if [[ -d "$ACCOUNTANT_ROOT" ]]; then
@@ -37,14 +58,14 @@ if [[ -d "$ACCOUNTANT_ROOT" ]]; then
 else
   die 1 "Accountant root is not a directory."
 fi
-
-CLI="${MONEYBIRD_CLI:-moneybird-cli}"
 CONFIRM_WRITE=0
 PRODUCTION=0
 QUIET=0
 WRITER_LOGIN=0
 OUT_ARG=""
 OUT_SET=0
+PRINT_BODY=0
+APPROVAL_REF=""
 CLI_BEFORE=()
 CLI_AFTER=()
 
@@ -73,6 +94,15 @@ while [[ $# -gt 0 ]]; do
       ;;
     --writer)
       WRITER_LOGIN=1
+      shift
+      ;;
+    --approval)
+      [[ $# -ge 2 && -n "$2" ]] || die 2 "--approval needs a run journal reference."
+      APPROVAL_REF="$2"
+      shift 2
+      ;;
+    --print-body)
+      PRINT_BODY=1
       shift
       ;;
     --out)
@@ -112,6 +142,21 @@ read_env_value() {
     return 0
   done < "$file"
   return 1
+}
+
+# WHY: The pilot administration id is read from the pinned root, never from an environment an
+# agent can edit.
+pilot_admin_id() {
+  local value=""
+  if [[ $GUARD_TEST -eq 1 ]]; then
+    value="${MONEYBIRD_PILOT_ADMINISTRATION_ID:-}"
+  elif [[ -n "${MONEYBIRD_PILOT_ADMINISTRATION_ID:-}" ]]; then
+    warn_ignored_var MONEYBIRD_PILOT_ADMINISTRATION_ID
+  fi
+  if [[ -z "$value" ]]; then
+    value="$(read_env_value "$ACCOUNTANT_ROOT/.env" MONEYBIRD_PILOT_ADMINISTRATION_ID || true)"
+  fi
+  printf '%s' "$value"
 }
 
 is_passthrough() {
@@ -252,14 +297,126 @@ validate_out_path() {
   return 0
 }
 
+require_writer_config() {
+  if [[ ! -d "$WRITER_CONFIG_DIR" ]]; then
+    die 7 "Writer configuration is missing. A write needs the writer session and never falls back to the reader token."
+  fi
+}
+
+approval_verified() {
+  local journal="$1"
+  command -v python3 >/dev/null 2>&1 || die 1 "python3 is required to check the approval reference."
+  python3 -I - "$journal" "$APPROVAL_REF" <<'PY'
+import json
+import sys
+
+path = sys.argv[1]
+reference = sys.argv[2]
+try:
+    with open(path, encoding="utf-8") as handle:
+        for line in handle:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                record = json.loads(line)
+            except ValueError:
+                continue
+            if not isinstance(record, dict):
+                continue
+            if record.get("approval_reference") == reference and record.get("new_state") == "WRITE_INTENT":
+                raise SystemExit(0)
+except OSError:
+    raise SystemExit(1)
+raise SystemExit(1)
+PY
+}
+
+require_approval() {
+  local journal="$ACCOUNTANT_ROOT/migration-workspace/RunJournal/run-journal.jsonl"
+  [[ -n "$APPROVAL_REF" ]] || die 8 "A write requires --approval <ref> for a WRITE_INTENT entry in the run journal."
+  [[ -f "$journal" ]] || die 8 "The run journal is missing, so the approval reference cannot be checked."
+  approval_verified "$journal" || die 8 "The run journal has no WRITE_INTENT entry for the given approval reference."
+}
+
+gate_administration_use() {
+  local target="${CLI_BEFORE[2]:-}"
+  local pilot_id=""
+  pilot_id="$(pilot_admin_id)"
+  if [[ -n "$pilot_id" && "$target" == "$pilot_id" ]]; then
+    return 0
+  fi
+  if [[ "${MONEYBIRD_GUARD_READ_ONLY:-}" == "1" ]]; then
+    die 6 "Read-only lock is enabled. Switching to a non-pilot administration is blocked."
+  fi
+  [[ $CONFIRM_WRITE -eq 1 ]] || die 3 "Administration switch blocked. Re-run with --confirm-write after reviewing the target."
+  require_writer_config
+  [[ $PRODUCTION -eq 1 ]] || die 4 "Administration '$target' is not the pilot administration '${pilot_id:-unset}'. Pass --production only after operator approval."
+  require_approval
+}
+
+refuse_print_body_in_agent_session() {
+  # WHY: A marker is a speed bump, not a boundary. An agent can unset a marker, so the pinned root,
+  # the writer configuration and the approval journal remain the real controls.
+  local marker=""
+  local marker_value=""
+  for marker in CLAUDECODE AI_SESSION_CHILD ACCOUNTANT_AGENT_SESSION CODEX_SANDBOX; do
+    marker_value="$(printenv "$marker" 2>/dev/null || true)"
+    if [[ -n "$marker_value" ]]; then
+      die 2 "--print-body is refused while $marker is set. A human operator must run it outside an agent session."
+    fi
+  done
+}
+
+summarize_body() {
+  python3 -I - "$1" <<'PY'
+import json
+import os
+import sys
+
+path = sys.argv[1]
+parts = []
+try:
+    parts.append("%d bytes" % os.path.getsize(path))
+except OSError:
+    parts.append("body size unknown")
+try:
+    with open(path, encoding="utf-8") as handle:
+        text = handle.read()
+except OSError:
+    text = ""
+if not text.strip():
+    parts.append("no response body")
+else:
+    try:
+        data = json.loads(text)
+    except ValueError:
+        parts.append("body is not JSON")
+    else:
+        if isinstance(data, list):
+            parts.append("records: %d" % len(data))
+        elif isinstance(data, dict):
+            parts.append("fields: %s" % ",".join(data.keys()))
+            for value in data.values():
+                if isinstance(value, list):
+                    parts.append("records: %d" % len(value))
+                    break
+        else:
+            parts.append("top-level type: %s" % type(data).__name__)
+print("response: " + ", ".join(parts))
+PY
+}
+
 run_actual() {
   local status=0
   local summary=""
   local output_dir=""
   local temporary=""
+  local tmp_dir=""
   local -a args=()
   [[ ${#CLI_BEFORE[@]} -gt 0 ]] && args+=("${CLI_BEFORE[@]}")
-  if [[ $OUT_SET -eq 1 ]]; then
+  # WHY: The captured body is machine-read for the summary, so ask for the raw form unless it streams.
+  if [[ $PRINT_BODY -eq 0 ]]; then
     args+=(--output raw)
   fi
   [[ ${#CLI_AFTER[@]} -gt 0 ]] && args+=("${CLI_AFTER[@]}")
@@ -282,23 +439,41 @@ run_actual() {
       status="$?"
       rm -f "$temporary"
     fi
-  else
+  elif [[ $PRINT_BODY -eq 1 ]]; then
+    refuse_print_body_in_agent_session
     if "$CLI" "${args[@]}"; then
       status=0
     else
       status="$?"
     fi
+  else
+    tmp_dir="$ACCOUNTANT_ROOT/migration-workspace/tmp"
+    (umask 077; mkdir -p "$tmp_dir") || die 5 "Could not create the summary folder inside migration-workspace."
+    [[ -L "$tmp_dir" ]] && die 5 "The summary folder resolves through a symlink."
+    chmod 700 "$tmp_dir" 2>/dev/null || die 5 "Could not secure the summary folder."
+    temporary="$(umask 077 && mktemp "$tmp_dir/.moneybird-guard.XXXXXX")" || die 5 "Could not create a temporary summary file."
+    chmod 600 "$temporary" 2>/dev/null || die 5 "Could not secure the temporary summary file."
+    if "$CLI" "${args[@]}" > "$temporary"; then
+      status=0
+    else
+      status="$?"
+    fi
+    if [[ $status -eq 0 ]]; then
+      summary="$(summarize_body "$temporary")" || die 1 "python3 is required to summarise a response body."
+      [[ $QUIET -eq 1 ]] || printf '%s\n' "$summary"
+    fi
+    rm -f "$temporary"
   fi
   return "$status"
 }
 
 if [[ "${CLI_BEFORE[0]:-}" == "login-from-env" ]]; then
   [[ $OUT_SET -eq 0 ]] || die 2 "--out does not apply to login-from-env."
+  [[ $PRINT_BODY -eq 0 ]] || die 2 "--print-body does not apply to login-from-env."
   [[ ${#CLI_BEFORE[@]} -eq 1 && ${#CLI_AFTER[@]} -eq 0 ]] || die 2 "Use login-from-env with no CLI arguments."
   TOKEN_FILE="$ACCOUNTANT_ROOT/.env"
   if [[ $WRITER_LOGIN -eq 1 ]]; then
     TOKEN_FILE="$ACCOUNTANT_ROOT/.env.writer"
-    WRITER_CONFIG_DIR="${MONEYBIRD_WRITER_CONFIG_DIR:-$HOME/.config/moneybird-cli-writer}"
     export MONEYBIRD_CONFIG_DIR="$WRITER_CONFIG_DIR"
   fi
   [[ $WRITER_LOGIN -eq 1 || $WRITER_LOGIN -eq 0 ]] || die 2 "Invalid login mode."
@@ -319,7 +494,12 @@ fi
 
 [[ $WRITER_LOGIN -eq 0 ]] || die 2 "--writer is valid only with login-from-env."
 [[ ${#CLI_BEFORE[@]} -gt 0 || ${#CLI_AFTER[@]} -gt 0 ]] || { usage >&2; exit 2; }
+[[ $PRINT_BODY -eq 0 || $OUT_SET -eq 0 ]] || die 2 "--print-body and --out cannot be combined."
 if is_passthrough; then
+  [[ $OUT_SET -eq 0 ]] || die 2 "--out does not apply to passthrough commands."
+  if [[ "${CLI_BEFORE[0]:-}" == "administration" && "${CLI_BEFORE[1]:-}" == "use" ]]; then
+    gate_administration_use
+  fi
   run_passthrough
 fi
 if [[ $OUT_SET -eq 1 ]]; then
@@ -359,24 +539,17 @@ if [[ $CONFIRM_WRITE -ne 1 ]]; then
   die 3 "Write blocked. Re-run with --confirm-write after reviewing the dry-run."
 fi
 
-WRITER_CONFIG_DIR="${MONEYBIRD_WRITER_CONFIG_DIR:-$HOME/.config/moneybird-cli-writer}"
-if [[ -d "$WRITER_CONFIG_DIR" ]]; then
-  export MONEYBIRD_CONFIG_DIR="$WRITER_CONFIG_DIR"
-  if ! run_dry; then
-    exit "$DRY_STATUS"
-  fi
-  if ! parse_dry_line; then
-    die 2 "The writer configuration dry-run did not begin with a METHOD URL line."
-  fi
-  DRY_LINE="${DRY_OUTPUT%%$'\n'*}"
-else
-  printf 'Warning: writer configuration is not present. The reader session will be used.\n' >&2
+require_writer_config
+export MONEYBIRD_CONFIG_DIR="$WRITER_CONFIG_DIR"
+if ! run_dry; then
+  exit "$DRY_STATUS"
 fi
+if ! parse_dry_line; then
+  die 2 "The writer configuration dry-run did not begin with a METHOD URL line."
+fi
+DRY_LINE="${DRY_OUTPUT%%$'\n'*}"
 
-PILOT_ADMIN_ID="${MONEYBIRD_PILOT_ADMINISTRATION_ID:-}"
-if [[ -z "$PILOT_ADMIN_ID" ]]; then
-  PILOT_ADMIN_ID="$(read_env_value "$ACCOUNTANT_ROOT/.env" MONEYBIRD_PILOT_ADMINISTRATION_ID || true)"
-fi
+PILOT_ADMIN_ID="$(pilot_admin_id)"
 if [[ -z "$PILOT_ADMIN_ID" ]]; then
   if [[ $PRODUCTION -ne 1 ]]; then
     die 4 "Pilot administration is unset and target '$ADMIN_ID' is treated as production. Pass --production only after operator approval."
@@ -384,6 +557,8 @@ if [[ -z "$PILOT_ADMIN_ID" ]]; then
 elif [[ "$ADMIN_ID" != "$PILOT_ADMIN_ID" && $PRODUCTION -ne 1 ]]; then
   die 4 "Pilot administration '$PILOT_ADMIN_ID' differs from target '$ADMIN_ID'. Pass --production only after operator approval."
 fi
+
+require_approval
 
 if ! command -v jq >/dev/null 2>&1; then
   die 1 "jq is required to append the write log."

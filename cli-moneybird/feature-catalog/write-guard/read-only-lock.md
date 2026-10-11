@@ -19,7 +19,7 @@ When `MONEYBIRD_GUARD_READ_ONLY=1`, `moneybird-guard` blocks every non-GET metho
 
 ## 2. HOW IT WORKS
 
-The guard classifies the request from the CLI dry-run line. The read-only lock then takes precedence over `--confirm-write` and `--production`. Values other than `1` leave the lock off. Moneybird token scopes do not split read access from write access, so read-only roles set this variable for guarded CLI reads.
+The guard classifies the request from the CLI dry-run line. The read-only lock then takes precedence over `--confirm-write` and `--production`. The lock also blocks `administration use <id>` for any administration other than the pilot. Values other than `1` leave the lock off. Moneybird token scopes do not split read access from write access, so read-only roles set this variable for guarded CLI reads.
 
 ## 3. SOURCE FILES
 

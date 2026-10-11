@@ -133,7 +133,7 @@ Discover local references at request time, guard each selected path inside the s
 
 The index maps every phase to its reference file. Use the last verified exit gate before advancing. Do not infer a pass from work that appears complete. Jortt stays uncancelled until Phase 22 passes and the Operator records a cancel-or-keep decision.
 
-Every phase uses the route contract in the shared mechanisms reference. Jortt reads run through jortt-cli only, XAF and other Jortt exports are Operator UI tasks, Moneybird reads run through moneybird-guard with `MONEYBIRD_GUARD_READ_ONLY=1`, a Moneybird write needs a passed gate, Operator approval and `--confirm-write`, plus `--production` for a production batch, and an HTTP 429 stops the call sequence for a guarded read-back before any retry.
+Every phase uses the route contract in the shared mechanisms reference. Jortt reads run through jortt-cli only, XAF and other Jortt exports are Operator UI tasks, Moneybird reads run through moneybird-guard with `MONEYBIRD_GUARD_READ_ONLY=1`, a Moneybird write needs a passed gate, Operator approval, `--confirm-write` and `--approval <ref>` for a flushed `WRITE_INTENT` journal entry, plus `--production` for a production batch, and an HTTP 429 stops the call sequence for a guarded read-back before any retry.
 
 ---
 
@@ -194,7 +194,7 @@ Return the mode or phase used, a safe decision summary, the references consulted
 2. Keep a clear distinction between confirmed rules, product documentation, conflicting values, and unverified points.
 3. Route every Jortt CLI read through jortt-cli, following cli-jortt/SKILL.md.
 4. Route every Moneybird CLI read or write through moneybird-guard, following cli-moneybird/SKILL.md. Every read session sets `MONEYBIRD_GUARD_READ_ONLY=1`.
-5. Require the passed phase gate, Operator approval, current access window, stable local write key, flushed `WRITE_INTENT`, and read-back for every non-GET batch.
+5. Require the passed phase gate, Operator approval, current access window, stable local write key, a flushed `WRITE_INTENT` with a matching `--approval <ref>`, and read-back for every non-GET batch.
 6. Use the documented auditfile export route. Never weaken the global read-only lock for an analysis session.
 7. Keep migration records and evidence in migration-workspace/. Record exceptions rather than making unexplained balancing entries.
 8. Keep exact phase owner tags and stop at a failed gate. Resume from the last verified run-journal state.

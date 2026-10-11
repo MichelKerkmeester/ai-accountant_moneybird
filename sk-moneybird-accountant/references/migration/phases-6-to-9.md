@@ -156,7 +156,7 @@ Select a representative period from the oldest eligible year. Include a sales in
 
 ### 6. Tool route
 
-All Moneybird writes use moneybird-guard after dry-run review, with --confirm-write and the single pilot/mirror administration. Run separate PDF and UBL pilots where both source types exist. Verify every attachment through a documented target read route. Reads use the guard lock and synchronization with a recorded timestamp. No real write occurs during the crash-boundary stub rehearsal.
+All Moneybird writes use moneybird-guard after dry-run review, with --confirm-write, --approval for the flushed WRITE_INTENT, and the single pilot/mirror administration. Run separate PDF and UBL pilots where both source types exist. Verify every attachment through a documented target read route. Reads use the guard lock and synchronization with a recorded timestamp. No real write occurs during the crash-boundary stub rehearsal.
 
 ### 7. Outputs and evidence artifacts
 
@@ -233,7 +233,7 @@ Frozen canonical records, batch manifest, prior journal state, mapping, bank fil
 
 ### 6. Tool route
 
-Before every non-GET call, flush WRITE_INTENT with the stable key, mapping schema version, source reference, and planned payload hash. Moneybird writes use guarded CLI with --confirm-write. Keep within general and reports request limits. Retry decisions use a timestamped synchronization read or wait beyond the Operator-approved, Independent Auditor verified `bulk_read.cache_horizon` in `MIGRATION_CONFIG`, then a complete paginated read. Missing or unapproved horizon blocks a wait-based retry. Bank-file imports are Operator UI-only.
+Before every non-GET call, flush WRITE_INTENT with the stable key, mapping schema version, source reference, planned payload hash, and approval reference. Moneybird writes use guarded CLI with --confirm-write and --approval for that reference, against the payload file the local payload assembler built. Keep within general and reports request limits. Retry decisions use a timestamped synchronization read or wait beyond the Operator-approved, Independent Auditor verified `bulk_read.cache_horizon` in `MIGRATION_CONFIG`, then a complete paginated read. Missing or unapproved horizon blocks a wait-based retry. Bank-file imports are Operator UI-only.
 
 ### 7. Outputs and evidence artifacts
 

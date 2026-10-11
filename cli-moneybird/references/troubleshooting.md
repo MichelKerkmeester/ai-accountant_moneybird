@@ -41,11 +41,13 @@ If the route fails after local checks, inspect `moneybird-cli RESOURCE ACTION --
 |---|---|---|
 | `moneybird-cli` is not found | The CLI is missing or its symlink directory is not on `PATH` | Review `setup.sh` output. An operator can run `setup.sh --install` and add `$HOME/.local/bin` to `PATH`. |
 | Pin check fails | The local source is not at the reviewed commit | Review the diff before pin changes. Reinstall the reviewed commit with the setup script. |
+| Guard exit 2 | A usage error, such as `--print-body` in an agent session or `--print-body` with `--out` | Use `--out` and read the saved file. Agents never use `--print-body`. |
 | Guard exit 3 | A non-GET call lacks `--confirm-write` | Review the dry-run line and approved batch. Retry only after explicit operator approval. |
-| Guard exit 4 | The target differs from the pilot or the pilot is unset | Set the intended pilot ID in the operator-managed environment. Use `--production` only after the operator approves that batch. |
+| Guard exit 4 | The target differs from the pilot or the pilot is unset | Set the intended pilot ID in the `MONEYBIRD_PILOT_ADMINISTRATION_ID=` line of the root `.env` file. Use `--production` only after the operator approves that batch. |
 | Guard exit 5 | `--out` is outside `migration-workspace/` or crosses a symlink | Choose a path below `<Accountant root>/migration-workspace/`. |
 | Guard exit 6 | `MONEYBIRD_GUARD_READ_ONLY=1` blocks a non-GET method | Keep the lock set for read-only work. Use a write role only when the migration gate requires a write. |
-| Guard says writer config is missing | The separate writer CLI config directory does not exist | Run `moneybird-guard login-from-env --writer` after the pilot gate. |
+| Guard exit 7 | The writer configuration folder `$HOME/.config/moneybird-cli-writer` does not exist | Run `moneybird-guard login-from-env --writer` after the pilot gate. The guard never falls back to the reader session. |
+| Guard exit 8 | The write lacks `--approval <ref>` or the reference is not in the run journal | Check the `WRITE_INTENT` entry in `migration-workspace/RunJournal/run-journal.jsonl` and repeat with `--approval "$APPROVAL_REF"`. |
 | CLI dry-run does not begin with `METHOD URL` | Route help or the local spec does not resolve the operation | Stop. Check the resource and action with pinned CLI help. Do not hand-build an unguarded request. |
 
 ---

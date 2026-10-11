@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 21: Live yearly workflow, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:56.607Z",
-    "last_save_at": "2026-10-11T15:08:47.684Z",
+    "last_save_at": "2026-10-11T16:43:44.152Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,11 +206,11 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:4d32d14145b7dbfab7204d91949024ae2eeb631d541f2d475e16cf9a279dd783",
+    "source_fingerprint": "sha256:856261866b6ef664c6c4d3d51fab9d05c8ebad6c14596e80b3dca29672845eea",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
       "spec.md": "12d48852890bf26b8b62039b77a93b306e0d8fb2e0ec4598cfd052075a727736",
-      "plan.md": "956e3a028372e7a2736e34761f5b83283db88ecd4adef3f6146635e7db3017b5",
+      "plan.md": "1f24bdd0ddf316753a6dba484d422a8a29c994931edc0c41bdcecb3ed652723f",
       "tasks.md": "14f7b4e09cda7800e885ac8ccc11c911aba02d23e0ccbec1a7c05d45c8488416",
       "decision-record.md": "ef1bbcae6de2ab2cf3808da7d65507e90b278c646869ba14ef247b58cd5a508c",
       "implementation-summary.md": "cda7e4852128bd6b291dab9da6a63ce4f9bbff7820e26df5d9befbaadfdd72af"

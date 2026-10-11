@@ -49,21 +49,21 @@ The operation the request names picks the guarded CLI route or the Moneybird UI.
 
 | Operation | CLI route or boundary |
 |---|---|
-| Administration sessions | `moneybird-guard administration list` or `moneybird-guard administration current` | Select the intended administration and verify it before a write. |
-| Contacts | `moneybird-guard contacts list` or `moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" contacts create --...` | Reads use the guard. Create or update only through the guarded CLI. |
-| Ledger accounts | `moneybird-guard ledger_accounts list` or `moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" ledger_accounts create --rgs_code "$RGS_CODE"` | `rgs_code` is required on create. |
+| Administration sessions | `moneybird-guard administration list`, `moneybird-guard administration current` or `moneybird-guard administration use "$ADMIN_ID"` | Select the intended administration and verify it before a write. Switching to the pilot passes. Any other switch is blocked by the read-only lock and otherwise needs `--confirm-write`, the writer configuration, `--production` and `--approval`. |
+| Contacts | `moneybird-guard contacts list` or `moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$ADMIN_ID" contacts create --...` | Reads use the guard. Create or update only through the guarded CLI. |
+| Ledger accounts | `moneybird-guard ledger_accounts list` or `moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$ADMIN_ID" ledger_accounts create --rgs_code "$RGS_CODE"` | `rgs_code` is required on create. |
 | Tax rates | `moneybird-guard tax_rates list` | Create a tax rate in the UI. |
-| Historical sales invoice and PDF | `moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" external_sales_invoices create --...` then `moneybird-guard --confirm-write external_sales_invoices attachment "$INVOICE_ID" --file "$PDF"` | Guard every write and verify it with a later read. |
-| Purchase invoice and attachment | `moneybird-guard --confirm-write documents purchase_invoices create --...` then `moneybird-guard --confirm-write documents purchase_invoices attachments "$DOCUMENT_ID" --file "$PDF"` | Guard every write and verify it with a later read. |
-| Receipt and attachment | `moneybird-guard --confirm-write documents receipts create --...` then `moneybird-guard --confirm-write documents receipts attachments "$DOCUMENT_ID" --file "$PDF"` | Guard every write and verify it with a later read. |
-| General journal document | `moneybird-guard --confirm-write documents general_journal_documents create --journal_type "$JOURNAL_TYPE" --"$ENTRY_FIELD" "$ENTRIES_JSON"` | The body field name is `UNVERIFIED` until confirmed with pinned CLI help. |
-| Financial statement mutations | `moneybird-guard --confirm-write financial_statements create --"$MUTATION_FIELD" "$MUTATIONS_JSON"` | Do not use for bank statement imports. Resolve the JSON field from pinned CLI help. |
-| Link a payment | `moneybird-guard --confirm-write financial_mutations link_booking "$MUTATION_ID"` | Request body fields are `UNVERIFIED` until confirmed with pinned CLI help. |
-| Document payment | `moneybird-guard --confirm-write documents purchase_invoices payments "$DOCUMENT_ID" --"$PAYMENT_FIELD" "$PAYMENT_JSON"` | Resolve body fields from CLI help. |
-| Fixed asset | `moneybird-guard --confirm-write assets create --...` then use the confirmed `assets` value change action | Confirm the action with pinned CLI help. |
+| Historical sales invoice and PDF | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$ADMIN_ID" external_sales_invoices create --...` then `moneybird-guard --confirm-write --approval "$APPROVAL_REF" external_sales_invoices attachment "$INVOICE_ID" --file "$PDF"` | Guard every write and verify it with a later read. |
+| Purchase invoice and attachment | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" documents purchase_invoices create --...` then `moneybird-guard --confirm-write --approval "$APPROVAL_REF" documents purchase_invoices attachments "$DOCUMENT_ID" --file "$PDF"` | Guard every write and verify it with a later read. |
+| Receipt and attachment | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" documents receipts create --...` then `moneybird-guard --confirm-write --approval "$APPROVAL_REF" documents receipts attachments "$DOCUMENT_ID" --file "$PDF"` | Guard every write and verify it with a later read. |
+| General journal document | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" documents general_journal_documents create --journal_type "$JOURNAL_TYPE" --"$ENTRY_FIELD" "$ENTRIES_JSON"` | The body field name is `UNVERIFIED` until confirmed with pinned CLI help. |
+| Financial statement mutations | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" financial_statements create --"$MUTATION_FIELD" "$MUTATIONS_JSON"` | Do not use for bank statement imports. Resolve the JSON field from pinned CLI help. |
+| Link a payment | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" financial_mutations link_booking "$MUTATION_ID"` | Request body fields are `UNVERIFIED` until confirmed with pinned CLI help. |
+| Document payment | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" documents purchase_invoices payments "$DOCUMENT_ID" --"$PAYMENT_FIELD" "$PAYMENT_JSON"` | Resolve body fields from CLI help. |
+| Fixed asset | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" assets create --...` then use the confirmed `assets` value change action | Confirm the action with pinned CLI help. |
 | Reports | `moneybird-guard reports profit_loss "${REPORT_DATE_ARGS[@]}"` and the matching `balance_sheet`, `general_ledger`, `journal_entries` or `tax` action | Confirm date argument names from pinned CLI help. Each request covers at most twelve months. |
 | Bulk reads | `moneybird-guard sales_invoices sync` then `moneybird-guard sales_invoices sync_fetch --ids "$ID_BATCH_JSON"` | Use REST synchronization for complete bulk pulls. |
-| Auditfile export | `moneybird-guard --confirm-write reports export auditfile --year "$YEAR" --version "$AUDITFILE_VERSION"` then fetch the returned download through the confirmed downloads route | Confirm the route with pinned CLI help. |
+| Auditfile export | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" reports export auditfile --year "$YEAR" --version "$AUDITFILE_VERSION"` then fetch the returned download through the confirmed downloads route | Confirm the route with pinned CLI help. |
 | CAMT.053 or MT940 import, tax rate creation, period lock or a historical VAT return | Moneybird UI only. Mark VAT returns filed with **Handmatig indienen** in chronological order. | Operator action. |
 
 ### Read-only Access
@@ -115,7 +115,7 @@ INTENT_MODEL = {
     "MIGRATION_RECIPE": {"weight": 7, "keywords": ["opening balance", "external sales invoice", "purchase invoice", "journal entry", "pilot migration", "correct a wrong write"]},
     "UI_ONLY": {"weight": 8, "keywords": ["camt.053 import", "mt940 import", "create tax rate", "lock a period", "handmatig indienen"]},
     "INSTALL": {"weight": 6, "keywords": ["install moneybird-cli", "moneybird token", "login-from-env"]},
-    "TROUBLESHOOT": {"weight": 8, "keywords": ["401", "403 scope", "404 administration", "422", "429", "stale get", "exit 3", "exit 4", "exit 5", "needs authentication"]},
+    "TROUBLESHOOT": {"weight": 8, "keywords": ["401", "403 scope", "404 administration", "422", "429", "stale get", "exit 3", "exit 4", "exit 5", "exit 6", "exit 7", "exit 8", "needs authentication"]},
     "FEATURE_INVENTORY": {"weight": 6, "keywords": ["feature catalog", "moneybird capabilities", "what does the moneybird skill do"]},
     "MANUAL_TEST": {"weight": 6, "keywords": ["manual testing playbook", "test scenario", "validate the guard"]},
 }
@@ -197,12 +197,12 @@ def route_moneybird_resources(request, task=None):
 
 | Surface | Best use | Auth and limits |
 |---|---|---|
-| `moneybird-guard` and official CLI | REST v2 reads, writes, attachments and synchronization | Set `MONEYBIRD_GUARD_READ_ONLY=1` for read-only roles. Other writes need `--confirm-write` and the pilot gate. |
+| `moneybird-guard` and official CLI | REST v2 reads, writes, attachments and synchronization | Set `MONEYBIRD_GUARD_READ_ONLY=1` for read-only roles. Other writes need `--confirm-write`, the writer configuration, `--approval` and the pilot gate, with `--production` only after operator approval. |
 | Moneybird UI | Bank file imports, tax rates, period locks and manual VAT status | Operator action only. |
 
 ### Reader and Writer Sessions
 
-The reader token lives in `.env` and, from the pilot phase onward, the write token lives in `.env.writer`. `moneybird-guard login-from-env` logs in the reader. Adding `--writer` logs in the writer under `${MONEYBIRD_WRITER_CONFIG_DIR:-$HOME/.config/moneybird-cli-writer}`, a session separate from the reader. The guard never puts a token in CLI arguments and suppresses the CLI login output.
+The reader token lives in `.env` and, from the pilot phase onward, the write token lives in `.env.writer`. `moneybird-guard login-from-env` logs in the reader. Adding `--writer` logs in the writer under `~/.config/moneybird-cli-writer`, a session separate from the reader. The guard pins its own repository root, the `moneybird-cli` binary on PATH and the writer configuration folder. It reads the pilot administration ID only from the root `.env` file. `MONEYBIRD_GUARD_TEST=1` is a test-only flag. The variables `MONEYBIRD_ENV_DIR`, `MONEYBIRD_CLI`, `MONEYBIRD_WRITER_CONFIG_DIR` and `MONEYBIRD_PILOT_ADMINISTRATION_ID` are honored only when that flag is set. Real sessions never set it. Without the flag the guard warns that an override is ignored and carries on with the pinned value. The guard never puts a token in CLI arguments and suppresses the CLI login output.
 
 Moneybird token scopes do not separate read from write. Read-only roles set `MONEYBIRD_GUARD_READ_ONLY=1` before guarded CLI reads. The lock blocks every non-GET method even if write flags are present.
 
@@ -211,7 +211,7 @@ Moneybird token scopes do not separate read from write. Read-only roles set `MON
 1. Select the resource and check its route with the pinned CLI help when needed.
 2. Set an explicit period on every verification list. Moneybird defaults list endpoints to `period:this_year`.
 3. Use `sync` and `sync_fetch` for bulk reads. Batch synchronization IDs in groups of no more than one hundred.
-4. Save any record output with `--out` under `migration-workspace/`. The guard writes raw JSON there and prints only an item count or top-level keys.
+4. Save any record output with `--out` under `migration-workspace/`. `--out` writes the full body there and prints only an item count, the top-level keys or a no-body message. Without `--out`, the guard captures the body to a private temporary file under `migration-workspace/tmp/`, prints one summary line and deletes the file. That line gives the byte size plus a record count for a list or the top-level field names for an object, for example `response: 2048 bytes, records: 12` or `response: 512 bytes, fields: id,name`. Record content does not reach the terminal by default. The guard refuses `--out` (exit 2) on passthrough commands such as `help` or `administration list`.
 
 ### Write Path
 
@@ -220,9 +220,12 @@ STEP 1: Approve the batch in the migration plan
        ↓
 STEP 2: Guarded dry-run reads the first METHOD URL line
        ↓
-STEP 3: Gates
+STEP 3: Gates, in this order
+       ├─ Read-only lock on: exit 6
        ├─ No --confirm-write: print the preview and exit 3
-       └─ Target is not the pilot and no --production: exit 4
+       ├─ Writer configuration folder missing: exit 7
+       ├─ Target is not the pilot and no --production: exit 4
+       └─ Missing or unmatched --approval: exit 8
        ↓
 STEP 4: Real call, then one body-free JSONL record in migration-workspace/logs/
        ↓
@@ -230,7 +233,7 @@ STEP 5: Later read-back
        └─ Synchronization reads confirm the record in a later pass
 ```
 
-Writes target the pilot administration unless the plan's gate allows a production batch and the operator gives an explicit go for that batch. The log record holds the time, method, path, administration and exit status, never a request or response body.
+Writes target the pilot administration unless the plan's gate allows a production batch and the operator gives an explicit go for that batch. Every write, pilot or production, carries `--approval "$APPROVAL_REF"`, which must match the `approval_reference` of a `WRITE_INTENT` event in `migration-workspace/RunJournal/run-journal.jsonl`. The write command shape is `moneybird-guard --confirm-write --approval "$APPROVAL_REF" <moneybird-cli args...>`, plus `--production` for a non-pilot administration. A missing writer configuration stops the write with exit 7 and never falls back to the reader session. The log record holds the time, method, path, administration and exit status, never a request or response body.
 
 ### Output Location
 
@@ -252,11 +255,12 @@ Saved records, attachments, reports and migration logs belong under `migration-w
 
 ### ❌ NEVER
 
-- Never write without `--confirm-write` or use `--production` without the operator's explicit go for that batch.
+- Never write without `--confirm-write` and a matching `--approval` reference, or use `--production` without the operator's explicit go for that batch.
 - Never trust the default period on a verification list. It can silently omit older years.
 - Never use `GET /financial_mutations` as a complete bulk export. The endpoint is capped at one hundred records.
 - Never use the deprecated sales invoice `register_payment` action. Its sunset is 2026-12-31. Use `financial_mutations link_booking` or document payments.
 - Never call an API write directly through `moneybird-cli`. Use the guarded CLI and confirm deletion with a separate read because `204` can mean nothing was deleted.
+- Never pass `--print-body` to `moneybird-guard`. It is for the operator only, and the guard refuses it (exit 2) when any agent session marker is set (`CLAUDECODE`, `AI_SESSION_CHILD`, `ACCOUNTANT_AGENT_SESSION` or `CODEX_SANDBOX`). Use `--out` and read the saved file instead.
 - Never write financial data outside `migration-workspace/` or into tracked files, commits or other services.
 - Never print or inspect `.env`, `.env.writer` or a credential. Use `login-from-env` and the doctor checks.
 - Never open, list, search or read `personal database/`.

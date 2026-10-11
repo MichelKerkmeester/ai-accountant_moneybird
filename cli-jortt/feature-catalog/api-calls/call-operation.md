@@ -37,7 +37,7 @@ Each `--NAME VALUE` pair must match a path or query parameter of the operation. 
 
 ### Output
 
-Without `--out` the response prints as formatted JSON, or unformatted with `--raw`. With `--out` the response is saved inside the migration workspace and stdout shows only the HTTP status and an item count or the top-level keys.
+Without `--out` the command prints a summary line by default: `HTTP 200, items: 25` for a list, or `HTTP 200, data items: 25, top-level keys: data, meta` for an object. Record content does not reach the terminal by default. `--print-body` prints the full body as formatted JSON, or unformatted with `--raw`. `--raw` alone only changes the form of `--print-body` output. The command refuses `--print-body` with exit 2 when any agent session marker is set (`CLAUDECODE`, `AI_SESSION_CHILD`, `ACCOUNTANT_AGENT_SESSION` or `CODEX_SANDBOX`). The refusal message says to use `--out` and read the saved file instead. Agents never use `--print-body`. With `--out` the response is saved inside the migration workspace and stdout shows the same summary.
 
 ---
 

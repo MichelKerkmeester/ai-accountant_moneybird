@@ -51,7 +51,7 @@ Operators run the exact prompt and command sequence for `MBD-010` and confirm th
 
 ### Command Block
 
-Run the block from the `cli-moneybird/` package root. It uses only the packaged stub and a temporary folder that the block removes on exit. It never touches the real CLI session, `.env` or `.env.writer`.
+Run the block from the `cli-moneybird/` package root. It uses only the packaged stub and a temporary folder that the block removes on exit. It never touches the real CLI session, `.env` or `.env.writer`. The block sets `MONEYBIRD_GUARD_TEST=1`, a test-only setting for the offline test suite. Never set it in a real session.
 
 ```bash
 bash <<'SCENARIO'
@@ -60,6 +60,7 @@ TEST_ROOT="$(mktemp -d "${TMPDIR:-/tmp}/cli-moneybird.XXXXXX")"
 trap 'rm -rf "$TEST_ROOT"' EXIT
 mkdir -p "$TEST_ROOT/home" "$TEST_ROOT/accountant/migration-workspace"
 export HOME="$TEST_ROOT/home" MONEYBIRD_ENV_DIR="$TEST_ROOT/accountant"
+export MONEYBIRD_GUARD_TEST=1
 export MONEYBIRD_CLI="$SKILL_ROOT/cli/moneybird-cli/tests/stub-moneybird-cli"
 export MONEYBIRD_TEST_LOG="$TEST_ROOT/invocations.log" MONEYBIRD_TEST_ADMINISTRATION_ID="PILOT_ADMIN"
 GUARD="$SKILL_ROOT/cli/moneybird-cli/moneybird-guard"

@@ -201,10 +201,10 @@ External seats receive typed, allowlisted summaries with opaque record aliases a
 
 - **Jortt is read-only.** `jortt-cli` uses read scopes only and refuses any write without `--allow-write` and the matching scope. XAF auditfiles, annual accounts and filed VAT returns come from you, through the Jortt UI.
 - **Every Moneybird call goes through `moneybird-guard`.** Read sessions set `MONEYBIRD_GUARD_READ_ONLY=1`. The guard then blocks every non-GET call before it reaches the official CLI.
-- **A write needs four things.** A passed phase gate, your approval, a flushed `WRITE_INTENT` journal entry and `--confirm-write`. A production batch also needs your approval for that batch and `--production`.
+- **A write needs five things.** A passed phase gate, your approval, a flushed `WRITE_INTENT` journal entry, `--confirm-write` and `--approval <ref>` naming that entry. The guard checks the reference against the run journal, needs the writer session and never falls back to the reader session. A production batch also needs your approval for that batch and `--production`.
 - **Migration data stays in `migration-workspace/`.** Git ignores it. Both CLIs refuse to save output anywhere else.
 - **A private finance folder stays unread.** The assistant never lists, searches or opens it. The one exception is a single file you name during a migration phase.
-- **A privacy gate guards every commit and push.** `scripts/privacy-gate.py` blocks a commit or push that adds a path from the private folders, a file type outside the allowlist, a binary or a large file, or content that looks like an IBAN, a BSN, a Dutch VAT ID, an email address, a long ID number, a home-folder path, a euro amount outside the tax references, a secret, or a term from your local `.privacy-denylist`. It reports where, never the value. A GitHub Action reruns it over the whole history on every push.
+- **A privacy gate guards every commit and push.** `scripts/privacy-gate.py` blocks a commit or push that adds a path from the private folders, a file type outside the allowlist, a binary or a large file, or content that looks like an IBAN, a BSN, a Dutch VAT ID, an email address, a long ID number, a home-folder path, a euro amount outside the tax references, a secret, or a term from your local `.privacy-denylist`. It reports where, never the value. A commit that changes a gate file needs you to set `PRIVACY_GATE_CHANGE_APPROVED=1` for that commit and the commit message to carry the trailer `Privacy-Gate-Change: approved`. A GitHub Action reruns it over the whole history on every push.
 - **Tax decisions stay with you.** The assistant explains general rules with their year and source. It does not file returns and does not present a case-specific conclusion as final.
 
 &nbsp;
@@ -216,11 +216,11 @@ The doctors are offline by default. The Jortt tests check the CLI contract again
 | Check | What it covers |
 |---|---|
 | `cli-jortt/scripts/doctor.sh` | Local tools, whether `jortt-cli` is available, which Jortt settings are set and the API description cache |
-| `cli-jortt/cli/jortt-cli/tests/run-tests.sh` | Operation slugs, parameter checks, the write gate, the scope gate and the output boundary |
+| `cli-jortt/cli/jortt-cli/tests/run-tests.sh` | Operation slugs, parameter checks, the write gate, the scope gate, the output boundary, summary output and redacted errors |
 | `cli-moneybird/scripts/doctor.sh` | Local tools, the pinned official CLI, config folders and whether credential files and settings exist |
-| `cli-moneybird/cli/moneybird-cli/tests/run-tests.sh` | Period warning, write confirmation, the pilot gate, the read-only lock, delete caution, the output boundary and logins |
+| `cli-moneybird/cli/moneybird-cli/tests/run-tests.sh` | Period warning, write confirmation, the pilot gate, the approval check, the writer session, the read-only lock, delete caution, the output boundary, summary output and logins |
 | `sk-moneybird-accountant/scripts/plan-kit-test.sh` | Phase packet generation, the drift check, workspace and packet setup, no-overwrite and the refusals |
-| `scripts/privacy-gate-test.sh` | Every privacy-gate rule, that no blocked value is ever printed, and the commit and push modes |
+| `scripts/privacy-gate-test.sh` | Every privacy-gate rule, that no blocked value is ever printed, the commit, merge and push modes, and the gate change trailer |
 | Manual testing playbooks | Offline routing and guard scenarios in each skill folder, with one live Moneybird scenario that needs your approval |
 
 A passing local test does not prove a live connection. For Jortt, `jortt-cli whoami` returning HTTP 200 is that proof. For Moneybird, `bash cli-moneybird/scripts/doctor.sh --live` reports the administrations check with your approval.
@@ -232,7 +232,7 @@ A passing local test does not prove a live connection. For Jortt, `jortt-cli who
 ```text
 .
 ├── .env.example                          local configuration template, no credentials
-├── .githooks/                            privacy gate before commit and push, forwards to your global hooks
+├── .githooks/                            privacy gate before commit, merge and push, forwards to your global hooks
 ├── .github/workflows/                    reruns the privacy gate and the plan kit checks on every push
 ├── .gitignore                            keeps secrets and private work data out of Git
 ├── .privacy-denylist.example             template for your local list of private terms
@@ -321,7 +321,7 @@ The API can return cached data. Do not repeat the write. Check the write's own r
 
 **The guard blocks a write**
 
-Exit 3 means `--confirm-write` is missing. Exit 4 means the target is not the pilot and `--production` is missing. Exit 6 means `MONEYBIRD_GUARD_READ_ONLY=1` is set. Keep that lock for read-only work. Review the preview first, and write only after your approval.
+Exit 3 means `--confirm-write` is missing. Exit 4 means the target is not the pilot and `--production` is missing. Exit 6 means `MONEYBIRD_GUARD_READ_ONLY=1` is set. Keep that lock for read-only work. Exit 7 means the writer configuration folder is missing. Exit 8 means `--approval` is missing or its reference is not in the run journal. Review the preview first, and write only after your approval.
 
 **You need a Jortt auditfile or a filed return**
 

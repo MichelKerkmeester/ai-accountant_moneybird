@@ -28,7 +28,7 @@ Keep all migration records under migration-workspace. Do not run a production wr
 
 ## 1. OVERVIEW
 
-The skill uses the official `moneybird-cli` pinned to one reviewed commit and a local `moneybird-guard`. The guard wraps every CLI call with a dry-run preview, a write confirmation lock, a pilot administration gate, a body-free write log and an output boundary.
+The skill uses the official `moneybird-cli` pinned to one reviewed commit and a local `moneybird-guard`. The guard wraps every CLI call with a dry-run preview, a write confirmation lock, a writer configuration check, a pilot administration gate, an approval reference check, a body-free write log and an output boundary.
 
 | Component | Installed by | Location |
 |---|---|---|
@@ -78,7 +78,7 @@ The operator creates credentials locally. Do not put a token in a prompt, termin
 
 - `.env` is the reader file. It holds `MONEYBIRD_API_TOKEN` and the Moneybird administration settings from `.env.example`.
 - `.env.writer` is the separate writer file. From the pilot phase onward, put the write token there under `MONEYBIRD_API_TOKEN`.
-- Set `MONEYBIRD_PILOT_ADMINISTRATION_ID` to the pilot administration before the pilot write.
+- Set `MONEYBIRD_PILOT_ADMINISTRATION_ID` in the root `.env` file before the pilot write. The guard reads the pilot administration from that file only, not from the environment.
 - Set `MONEYBIRD_ADMINISTRATION_ID` only when the migration plan needs a specific administration for a read.
 - Set `MONEYBIRD_GUARD_READ_ONLY=1` for read-only sessions. The guard then blocks every non-GET call before the real call, even when write flags are present.
 
@@ -91,7 +91,7 @@ moneybird-guard login-from-env
 moneybird-guard login-from-env --writer
 ```
 
-Expected: a completion message with no token or administration details. The writer command reads `.env.writer` and stores its session under `${MONEYBIRD_WRITER_CONFIG_DIR:-$HOME/.config/moneybird-cli-writer}`. The reader command uses the CLI default config directory unless `MONEYBIRD_CONFIG_DIR` is already set.
+Expected: a completion message with no token or administration details. The writer command reads `.env.writer` and stores its session under `$HOME/.config/moneybird-cli-writer`. The guard keeps that path fixed and ignores `MONEYBIRD_WRITER_CONFIG_DIR` in a real session. The reader command uses the CLI default config directory unless `MONEYBIRD_CONFIG_DIR` is already set.
 
 The pinned CLI prompts for a token when `login` has no token argument. The guard sends the selected file value through stdin, so it does not put the token in the CLI argument list.
 
@@ -117,7 +117,7 @@ bash scripts/doctor.sh
 bash cli/moneybird-cli/tests/run-tests.sh
 ```
 
-Expected: doctor prints offline command, config and credential-file presence checks. It makes no network call without `--live`. The test script prints a pass and fail count and uses a local stub under a temporary `MONEYBIRD_ENV_DIR`.
+Expected: doctor prints offline command, config and credential-file presence checks. It makes no network call without `--live`. The test script prints a pass and fail count. It sets `MONEYBIRD_GUARD_TEST=1` and uses a local stub under a temporary `MONEYBIRD_ENV_DIR`. That flag is for the offline test suite only.
 
 An operator may run `bash scripts/doctor.sh --live` when live checks are needed. That option calls the administrations endpoint. This guide does not run it automatically.
 

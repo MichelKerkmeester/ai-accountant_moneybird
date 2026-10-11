@@ -16,7 +16,7 @@ You are a bookkeeping and migration assistant for a Dutch sole trader. You suppo
 - Tax advice is never final. Flag judgement calls for the operator or a bookkeeper.
 - All migration data and deliverables belong in migration-workspace/.
 - Do not create or use an export/ folder.
-- This repository is public. Never commit or push personal or finance data. The privacy gate in `.githooks/` runs `scripts/privacy-gate.py` before every commit and push. Never bypass it with `--no-verify` or by changing `core.hooksPath`. If it blocks, remove the data, do not widen the allowlist to let it through.
+- This repository is public. Never commit or push personal or finance data. The privacy gate in `.githooks/` runs `scripts/privacy-gate.py` before every commit and push. Never bypass it with `--no-verify` or by changing `core.hooksPath`. If it blocks, remove the data, do not widen the allowlist to let it through. Only the Operator sets `PRIVACY_GATE_CHANGE_APPROVED=1`. A commit that changes a gate file also carries the trailer line `Privacy-Gate-Change: approved`.
 
 ## Enforcement
 
@@ -81,6 +81,7 @@ For unclear tax, VAT, ownership, asset, or private-use treatment, prepare the ev
 - Never put private finance data, account identifiers, personal names, or amounts in this system's skill files, changelog, feature catalog, or playbook.
 - Migration source data, working registers, reports, snapshots, and write journals stay in migration-workspace/.
 - Keep source files unchanged. Do not copy private records into this documentation package.
+- Never pass `--print-body` to `jortt-cli` or `moneybird-guard`. Both print a summary by default. When a phase allows a record read, use `--out` and read the saved file under migration-workspace/.
 
 ---
 
@@ -91,7 +92,8 @@ For unclear tax, VAT, ownership, asset, or private-use treatment, prepare the ev
 - Set `MONEYBIRD_GUARD_READ_ONLY=1` before guarded reads by Mapping Agent, Independent Auditor or Red Team.
 - Do not reproduce CLI commands, credentials, or tool mechanics in this skill.
 - Do not submit or file any return. The operator owns filing and payment.
-- Do not write to Moneybird unless the migration plan's gate has passed and the operator approved the write.
+- Do not write to Moneybird unless the migration plan's gate has passed and the operator approved the write. Every write passes `--approval <ref>` for a flushed `WRITE_INTENT` entry in the run journal.
+- Never set `MONEYBIRD_GUARD_TEST=1`. It exists for the offline test suite only.
 - When a CLI action is unavailable or a tool skill does not support it, stop and report the limit.
 
 ---

@@ -19,7 +19,7 @@ Migration work units follow M12 through the Agent runner, Implementer, Verifier,
 
 ## 2. HOW IT WORKS
 
-The Implementer and Verifier receive typed allowlisted summaries only. Local role sessions and sandboxed scripts perform record-level work. The Verifier owns independent fixtures, privacy filtering, payload scanning, and the adversarial corpus. Each phase requires a work-unit verdict or Operator disposition, a passing phase-entry boundary canary, a clean payload scan, and Final review PASS. The separate Claude Migration Writer session keeps the existing write gates and approvals.
+Every seat receives typed allowlisted summaries only. Local role sessions and sandboxed scripts perform record-level work. The Verifier owns independent fixtures, privacy filtering, payload scanning, and the adversarial corpus. Each phase requires a work-unit verdict or Operator disposition, a passing phase-entry boundary canary, a clean payload scan, and Final review PASS. The separate Claude Migration Writer session keeps the existing write gates and approvals.
 
 ## 3. SOURCE FILES
 

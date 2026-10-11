@@ -51,16 +51,18 @@ Operators run the exact prompt and command sequence for `MBD-003` and confirm th
 
 ### Command Block
 
-Run the block from the `cli-moneybird/` package root. It uses only the packaged stub and a temporary folder that the block removes on exit. It never touches the real CLI session, `.env` or `.env.writer`.
+Run the block from the `cli-moneybird/` package root. It uses only the packaged stub and a temporary folder that the block removes on exit. It never touches the real CLI session, `.env` or `.env.writer`. `MONEYBIRD_GUARD_TEST=1` is a test-only setting. It lets the guard honor the scratch root, the stub CLI and the temporary writer configuration folder. Never set it in a real session.
 
 ```bash
 bash <<'SCENARIO'
 SKILL_ROOT="$PWD"
 TEST_ROOT="$(mktemp -d "${TMPDIR:-/tmp}/cli-moneybird.XXXXXX")"
 trap 'rm -rf "$TEST_ROOT"' EXIT
-mkdir -p "$TEST_ROOT/home" "$TEST_ROOT/accountant/migration-workspace"
-export HOME="$TEST_ROOT/home" MONEYBIRD_ENV_DIR="$TEST_ROOT/accountant"
+mkdir -p "$TEST_ROOT/home" "$TEST_ROOT/accountant/migration-workspace" "$TEST_ROOT/writer"
+export HOME="$TEST_ROOT/home" MONEYBIRD_GUARD_TEST=1 MONEYBIRD_ENV_DIR="$TEST_ROOT/accountant"
 export MONEYBIRD_CLI="$SKILL_ROOT/cli/moneybird-cli/tests/stub-moneybird-cli"
+export MONEYBIRD_WRITER_CONFIG_DIR="$TEST_ROOT/writer"
+unset CLAUDECODE AI_SESSION_CHILD ACCOUNTANT_AGENT_SESSION CODEX_SANDBOX
 export MONEYBIRD_TEST_LOG="$TEST_ROOT/invocations.log" MONEYBIRD_TEST_ADMINISTRATION_ID="PILOT_ADMIN"
 GUARD="$SKILL_ROOT/cli/moneybird-cli/moneybird-guard"
 printf 'MONEYBIRD_PILOT_ADMINISTRATION_ID=PILOT_ADMIN\n' > "$MONEYBIRD_ENV_DIR/.env"

@@ -30,7 +30,7 @@ Operators run the exact prompt and command sequence for `JRT-004` and confirm th
 - Real user request: `Download one receipt through its Jortt link into the migration workspace.`
 - Prompt: `Download one receipt through its Jortt link into the migration workspace.`
 - Expected execution process: The agent confirms the operator approved a live read, requests the signed link and fetches it at once.
-- Expected signals: Step 1: a response that carries an HTTPS signed link. Step 2: `HTTP 200, file saved` and a file below `migration-workspace/`.
+- Expected signals: Step 1: a summary line and the HTTPS signed link in the saved file. Step 2: `HTTP 200, file saved` and a file below `migration-workspace/`.
 - Desired user-visible outcome: The API call returns a signed URL and fetch saves its file under migration-workspace.
 - Pass/fail: PASS if fetch uses HTTPS, sends no bearer header and writes only in the workspace, FAIL if the API token is sent to the signed host or output escapes the workspace.
 
@@ -44,12 +44,12 @@ Operators run the exact prompt and command sequence for `JRT-004` and confirm th
 
 ### Commands
 
-1. `bash: jortt-cli call download-url-for-a-receipt --id RECEIPT_ID --raw`
+1. `bash: jortt-cli call download-url-for-a-receipt --id RECEIPT_ID --out receipt-link.json`
 2. `bash: jortt-cli fetch SIGNED_HTTPS_URL --out receipt-test.pdf`
 
 ### Expected
 
-- Step 1: a response that carries an HTTPS signed link.
+- Step 1: a summary line and the HTTPS signed link in the saved file.
 - Step 2: `HTTP 200, file saved` and a file below `migration-workspace/`.
 
 ### Evidence

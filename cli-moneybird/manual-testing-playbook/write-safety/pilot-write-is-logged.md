@@ -27,8 +27,8 @@ Operators run the exact prompt and command sequence for `MBD-009` and confirm th
 - Objective: Confirm that a confirmed pilot write appends one body-free line to the write log.
 - Real user request: `Make the approved pilot write and show me what was recorded locally.`
 - Prompt: `Run a confirmed contact create in the pilot administration and show me the write log line it leaves.`
-- Expected execution process: The agent sets the pilot label `PILOT_ADMIN`, runs a confirmed create against the stub and reads the last log line with `jq`.
-- Expected signals: The guard reports the write and the cache note. The log line holds the method, path, administration, exit status and time, with no body field.
+- Expected execution process: The agent sets the pilot label `PILOT_ADMIN`, runs a confirmed create with `--approval "$APPROVAL_REF"` against the stub and reads the last log line with `jq`.
+- Expected signals: The guard reports the write, the cache note and a `response:` summary line. The log line holds the method, path, administration, exit status and time, with no body field.
 - Desired user-visible outcome: The operator sees one log line per write and no record content in it.
 - Pass/fail: PASS if the guard exits 0, the log line shows `POST`, `PILOT_ADMIN` and exit status 0 and `jq` finds no `body` key. FAIL if no line is written or the line carries a request or response body.
 - Feature catalog: [Write log](../../feature-catalog/write-guard/write-log.md)
@@ -47,24 +47,28 @@ Operators run the exact prompt and command sequence for `MBD-009` and confirm th
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| MBD-009 | Pilot write is logged | Confirm that a confirmed pilot write appends one body-free line to the write log | `Run a confirmed contact create in the pilot administration and show me the write log line it leaves.` | 1. `bash: write PILOT_ADMIN to temporary .env` -> 2. `moneybird-guard --confirm-write contacts create` -> 3. `bash: jq . moneybird-writes.jsonl` -> 4. `bash: jq -e "has(\"body\") | not"` | Step 1: the temporary `.env` holds the pilot label. Step 2: `Moneybird write succeeded: POST` and the cached GET note. Step 3: one JSON line. Step 4: `true` | Captured guard output and the single log line | PASS if the guard exits 0, the log line shows `POST`, `PILOT_ADMIN` and exit status 0 and `jq` finds no `body` key. FAIL if no line is written or the line carries a request or response body. | 1. Confirm `jq` is installed. 2. Confirm the write passed the pilot gate. 3. Read the log block at the end of `moneybird-guard` |
+| MBD-009 | Pilot write is logged | Confirm that a confirmed pilot write appends one body-free line to the write log | `Run a confirmed contact create in the pilot administration and show me the write log line it leaves.` | 1. `bash: write PILOT_ADMIN to the temporary .env and a WRITE_INTENT line to the run journal` -> 2. `moneybird-guard --confirm-write --approval "$APPROVAL_REF" contacts create` -> 3. `bash: jq . moneybird-writes.jsonl` -> 4. `bash: jq -e "has(\"body\") | not"` | Step 1: the temporary `.env` holds the pilot label. Step 2: `Moneybird write succeeded: POST`, the cached GET note and a `response:` summary line. Step 3: one JSON line. Step 4: `true` | Captured guard output and the single log line | PASS if the guard exits 0, the log line shows `POST`, `PILOT_ADMIN` and exit status 0 and `jq` finds no `body` key. FAIL if no line is written or the line carries a request or response body. | 1. Confirm `jq` is installed. 2. Confirm the write passed the pilot gate. 3. Read the log block at the end of `moneybird-guard` |
 
 ### Command Block
 
-Run the block from the `cli-moneybird/` package root. It uses only the packaged stub and a temporary folder that the block removes on exit. It never touches the real CLI session, `.env` or `.env.writer`. The write targets the pilot label only and goes to the stub, not to Moneybird.
+Run the block from the `cli-moneybird/` package root. It uses only the packaged stub and a temporary folder that the block removes on exit. It never touches the real CLI session, `.env` or `.env.writer`. `MONEYBIRD_GUARD_TEST=1` is a test-only setting. It lets the guard honor the scratch root, the stub CLI and the temporary writer configuration folder. Never set it in a real session. The write targets the pilot label only and goes to the stub, not to Moneybird.
 
 ```bash
 bash <<'SCENARIO'
 SKILL_ROOT="$PWD"
 TEST_ROOT="$(mktemp -d "${TMPDIR:-/tmp}/cli-moneybird.XXXXXX")"
 trap 'rm -rf "$TEST_ROOT"' EXIT
-mkdir -p "$TEST_ROOT/home" "$TEST_ROOT/accountant/migration-workspace"
-export HOME="$TEST_ROOT/home" MONEYBIRD_ENV_DIR="$TEST_ROOT/accountant"
+mkdir -p "$TEST_ROOT/home" "$TEST_ROOT/accountant/migration-workspace/RunJournal" "$TEST_ROOT/writer"
+export HOME="$TEST_ROOT/home" MONEYBIRD_GUARD_TEST=1 MONEYBIRD_ENV_DIR="$TEST_ROOT/accountant"
 export MONEYBIRD_CLI="$SKILL_ROOT/cli/moneybird-cli/tests/stub-moneybird-cli"
+export MONEYBIRD_WRITER_CONFIG_DIR="$TEST_ROOT/writer"
+unset CLAUDECODE AI_SESSION_CHILD ACCOUNTANT_AGENT_SESSION CODEX_SANDBOX
 export MONEYBIRD_TEST_LOG="$TEST_ROOT/invocations.log" MONEYBIRD_TEST_ADMINISTRATION_ID="PILOT_ADMIN"
 GUARD="$SKILL_ROOT/cli/moneybird-cli/moneybird-guard"
 printf 'MONEYBIRD_PILOT_ADMINISTRATION_ID=PILOT_ADMIN\n' > "$MONEYBIRD_ENV_DIR/.env"
-"$GUARD" --confirm-write contacts create
+APPROVAL_REF="test-approval-ref"
+printf '{"new_state": "WRITE_INTENT", "approval_reference": "%s"}\n' "$APPROVAL_REF" > "$MONEYBIRD_ENV_DIR/migration-workspace/RunJournal/run-journal.jsonl"
+"$GUARD" --confirm-write --approval "$APPROVAL_REF" contacts create
 echo "exit=$?"
 LOG="$MONEYBIRD_ENV_DIR/migration-workspace/logs/moneybird-writes.jsonl"
 jq . "$LOG"

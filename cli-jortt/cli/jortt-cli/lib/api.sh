@@ -124,16 +124,71 @@ jortt_raw_request() {
   esac
 }
 
-jortt_error_message() {
+# WHY: Error bodies can carry customer data, so the terminal shows codes and field
+# names only while the full text goes to the ignored workspace log.
+jortt_error_detail() {
   local body="$1"
   if printf '%s' "$body" | jq -e . >/dev/null 2>&1; then
     printf '%s' "$body" | jq -r '
-      [(.error // empty), (.error_description // empty), (.message // empty), (.errors // empty)]
-      | map(if type == "string" then . else tostring end)
-      | map(select(length > 0))
-      | unique
-      | join(" | ")
+      def codeish: type == "string" and length > 0 and length <= 64 and test("^[A-Za-z0-9_.-]+$");
+      if (.errors | type) == "object" then
+        (.errors | keys) as $fields
+        | if ($fields | length) > 0 then "fields: \($fields | join(", "))" else empty end
+      elif (.errors | type) == "array" then
+        ([.errors[]? | if type == "object" then (.field // .code // empty) else empty end]
+          | map(select(codeish)) | unique)
+        | if length > 0 then "fields: \(join(", "))" else empty end
+      elif (.error | codeish) then
+        "error code: \(.error)"
+      elif (.code | codeish) then
+        "error code: \(.code)"
+      else empty end
     ' 2>/dev/null
+  fi
+}
+
+jortt_error_log_path() {
+  local resolved
+  resolved="$(
+    umask 077
+    jortt_resolve_output 'migration-workspace/logs/jortt-errors.log' 1 >/dev/null 2>&1 && printf '%s' "$JORTT_RESOLVED_OUT"
+  )" || return 1
+  [ -n "$resolved" ] || return 1
+  printf '%s' "$resolved"
+}
+
+jortt_log_api_error() {
+  local context="$1"
+  local status="$2"
+  local body="$3"
+  local log_path
+  log_path="$(jortt_error_log_path)" || return 1
+  if [ ! -f "$log_path" ]; then
+    (umask 077; : > "$log_path") 2>/dev/null || return 1
+  fi
+  chmod 600 "$log_path" 2>/dev/null || return 1
+  (umask 077; printf '%s HTTP %s\n%s\n' "$context" "$status" "$body" >> "$log_path") 2>/dev/null || return 1
+}
+
+jortt_api_error_report() {
+  local prefix="$1"
+  local status="$2"
+  local context="$3"
+  local body="$4"
+  local detail log_note
+  detail="$(jortt_error_detail "$body")"
+  log_note=''
+  if [ -n "$body" ]; then
+    if jortt_log_api_error "$context" "$status" "$body"; then
+      log_note=' Full response logged to migration-workspace/logs/jortt-errors.log'
+    else
+      log_note=' Full response could not be logged.'
+    fi
+  fi
+  if [ -n "$detail" ]; then
+    printf '%sHTTP %s, %s.%s\n' "$prefix" "$status" "$detail" "$log_note" >&2
+  else
+    printf '%sHTTP %s.%s\n' "$prefix" "$status" "$log_note" >&2
   fi
 }
 
@@ -163,7 +218,7 @@ jortt_request() {
   local method="$1"
   local url="$2"
   local body_data="$3"
-  local auth_retry=0 rate_retry=0 delay api_message
+  local auth_retry=0 rate_retry=0 delay
   jortt_get_token
   while :; do
     jortt_raw_request "$method" "$url" "$body_data"
@@ -185,12 +240,7 @@ jortt_request() {
   case "$JORTT_HTTP_STATUS" in
     2??) return 0 ;;
     *)
-      api_message="$(jortt_error_message "$JORTT_HTTP_BODY")"
-      if [ -n "$api_message" ]; then
-        printf 'jortt-cli: HTTP %s: %s\n' "$JORTT_HTTP_STATUS" "$api_message" >&2
-      else
-        printf 'jortt-cli: HTTP %s\n' "$JORTT_HTTP_STATUS" >&2
-      fi
+      jortt_api_error_report 'jortt-cli: ' "$JORTT_HTTP_STATUS" "$method $url" "$JORTT_HTTP_BODY"
       return 1
       ;;
   esac

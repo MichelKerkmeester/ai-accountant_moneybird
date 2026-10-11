@@ -9,6 +9,31 @@ jortt_error() {
   exit "$code"
 }
 
+# WHY: Agent session markers are a speed bump, not a security boundary. An agent
+# can unset them, and AGENTS.md forbids agents from using --print-body at all.
+# The check stops an agent that inherits its own session environment.
+JORTT_AGENT_SESSION_MARKERS="CLAUDECODE AI_SESSION_CHILD ACCOUNTANT_AGENT_SESSION CODEX_SANDBOX"
+
+jortt_print_body_blocked_by() {
+  local marker value
+  for marker in $JORTT_AGENT_SESSION_MARKERS; do
+    value=''
+    eval "value=\${$marker-}"
+    if [ -n "$value" ]; then
+      printf '%s' "$marker"
+      return 0
+    fi
+  done
+  return 1
+}
+
+jortt_check_print_body_allowed() {
+  local marker
+  if marker="$(jortt_print_body_blocked_by)"; then
+    jortt_error 2 "--print-body is refused because $marker is set. Use --out and read the saved file instead."
+  fi
+}
+
 jortt_need_tools() {
   command -v jq >/dev/null 2>&1 || jortt_error 2 "jq is required. Install jq and retry."
   command -v curl >/dev/null 2>&1 || jortt_error 2 "curl is required. Install curl and retry."

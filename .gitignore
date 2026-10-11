@@ -1,8 +1,8 @@
 # Personal financial data, linked from outside the repo
-/personal database
+personal database
 
 # Migration working data: registers, mappings, exceptions, reports, snapshots
-/migration-workspace/
+migration-workspace/
 
 # Local credentials
 .env

@@ -157,9 +157,11 @@ new_repo() {
   git config core.hooksPath .githooks
   printf 'seed\n' > notes.md
   git add -A
-  # Only the one commit that installs the gate files carries the approval
-  # variable. Every other commit in these tests runs without it.
-  PRIVACY_GATE_CHANGE_APPROVED=1 git commit -qm "install the privacy gate"
+  # The install commit starts the history, so it carries the approval variable
+  # and the trailer that every later gate change needs. Commits after it run
+  # without either unless a test says otherwise.
+  PRIVACY_GATE_CHANGE_APPROVED=1 git commit -qm "install the privacy gate" \
+    -m "Privacy-Gate-Change: approved"
   write_clean_denylist
 }
 
@@ -544,13 +546,256 @@ expect_blocked "merge commit that introduces an iban" iban --push origin
 expect_no_leak "merge commit value never printed" "$MERGE_IBAN"
 reset_gate_env
 
-# A new branch is checked against the remote, gate files stay informational.
+# A new branch is checked against the remote, the install commit already
+# carries the gate trailer.
 new_repo
 BASE_NEW="$(git rev-parse HEAD)"
 printf '%s %s %s %s\n' refs/heads/main "$BASE_NEW" refs/heads/main "$ZERO_SHA" > "$WORK/push-new.txt"
 GATE_STDIN="$WORK/push-new.txt"
 expect_clean "push passes a clean new branch with gate files" --push origin
 reset_gate_env
+
+# A pushed commit that touches a gate file needs the trailer line.
+new_repo
+GATE_ANCHOR="$(git rev-parse HEAD)"
+printf 'scratch/\n' > .gitignore
+git add .gitignore
+git commit -qm "ignore scratch files"
+GATE_TIP="$(git rev-parse HEAD)"
+printf '%s %s %s %s\n' refs/heads/main "$GATE_TIP" refs/heads/main "$GATE_ANCHOR" > "$WORK/push-gate-file.txt"
+GATE_STDIN="$WORK/push-gate-file.txt"
+expect_blocked "push blocks a gate change without the trailer" gate-change --push origin
+case "$LAST_OUT" in
+  *"Privacy-Gate-Change: approved"*)
+    pass "gate change finding names the trailer"
+    ;;
+  *)
+    fail "gate change finding names the trailer"
+    ;;
+esac
+
+printf 'build/\n' > .gitignore
+git add .gitignore
+git commit -qm "ignore build output" -m "Privacy-Gate-Change: approved"
+GATE_OK="$(git rev-parse HEAD)"
+printf '%s %s %s %s\n' refs/heads/main "$GATE_OK" refs/heads/main "$GATE_TIP" > "$WORK/push-gate-approved.txt"
+GATE_STDIN="$WORK/push-gate-approved.txt"
+expect_clean "push accepts a gate change with the trailer" --push origin
+reset_tree
+
+# Removing a gate file is a gate change too.
+new_repo
+DELETE_ANCHOR="$(git rev-parse HEAD)"
+git rm -q .privacy-gate.json
+git commit -qm "drop the config file"
+DELETE_TIP="$(git rev-parse HEAD)"
+printf '%s %s %s %s\n' refs/heads/main "$DELETE_TIP" refs/heads/main "$DELETE_ANCHOR" > "$WORK/push-gate-delete.txt"
+GATE_STDIN="$WORK/push-gate-delete.txt"
+expect_blocked "push blocks a deleted gate file" gate-change --push origin
+
+printf '%s %s %s %s\n' refs/heads/main "$DELETE_TIP" refs/heads/main "$DELETE_TIP" > "$WORK/push-no-config.txt"
+GATE_STDIN="$WORK/push-no-config.txt"
+out="$(run_gate --push origin)"
+status=$?
+LAST_OUT="$out"
+reported=no
+case "$out" in
+  *".privacy-gate.json"*) reported=yes ;;
+esac
+if [ "$status" -eq 2 ] && [ "$reported" = yes ]; then
+  pass "a remote tip without the config fails closed"
+else
+  fail "a remote tip without the config fails closed (exit $status)"
+fi
+reset_tree
+# The commit above removed the config, so step back to a HEAD that still has
+# it before testing a staged deletion.
+git reset -q --hard "$DELETE_ANCHOR"
+write_clean_denylist
+
+git rm -q .privacy-gate.json
+expect_blocked "staged deletion of a gate file" gate-change --staged
+reset_tree
+
+# Commits at or before the recorded baseline are exempt.
+new_repo
+printf 'scratch/\n' > .gitignore
+git add .gitignore
+git commit -qm "ignore scratch files"
+printf 'build/\n' > .gitignore
+git add .gitignore
+git commit -qm "ignore build output"
+BASELINE_SHA="$(git rev-parse HEAD)"
+python3 - "$BASELINE_SHA" <<'PY'
+import json
+import sys
+
+with open(".privacy-gate.json", "r", encoding="utf-8") as handle:
+    config = json.load(handle)
+config["gate_change_baseline"] = sys.argv[1]
+with open(".privacy-gate.json", "w", encoding="utf-8") as handle:
+    json.dump(config, handle, indent=2)
+    handle.write("\n")
+PY
+git add .privacy-gate.json
+git commit -qm "record the gate baseline" -m "Privacy-Gate-Change: approved"
+BASELINE_TIP="$(git rev-parse HEAD)"
+printf '%s %s %s %s\n' refs/heads/main "$BASELINE_TIP" refs/heads/main "$ZERO_SHA" > "$WORK/push-baseline.txt"
+GATE_STDIN="$WORK/push-baseline.txt"
+expect_clean "commits at or before the baseline are exempt" --push origin
+reset_tree
+
+# The commit-msg check needs the trailer and the approval variable.
+new_repo
+printf '{}\n' > .privacy-gate.json
+git add .privacy-gate.json
+printf 'plain message\n' > "$WORK/message-gate.txt"
+expect_blocked "message on a staged gate change needs the trailer" gate-change --message "$WORK/message-gate.txt"
+case "$LAST_OUT" in
+  *"Privacy-Gate-Change: approved"*)
+    pass "message finding names the trailer"
+    ;;
+  *)
+    fail "message finding names the trailer"
+    ;;
+esac
+
+printf 'gate change\n\nPrivacy-Gate-Change: approved\n' > "$WORK/message-gate-ok.txt"
+expect_blocked "message trailer without the approval is blocked" gate-change --message "$WORK/message-gate-ok.txt"
+GATE_APPROVED=1
+expect_blocked "message approval without the trailer is blocked" gate-change --message "$WORK/message-gate.txt"
+expect_clean "message trailer plus approval passes" --message "$WORK/message-gate-ok.txt"
+reset_gate_env
+reset_tree
+
+printf 'plain message\n' > "$WORK/message-plain.txt"
+expect_clean "message without a staged gate change is fine" --message "$WORK/message-plain.txt"
+reset_gate_env
+
+# Push mode reads the rules from the remote tip, so a local rewrite of the
+# config cannot widen them.
+new_repo
+ANCHOR_SHA="$(git rev-parse HEAD)"
+python3 - <<'PY'
+import json
+
+with open(".privacy-gate.json", "r", encoding="utf-8") as handle:
+    config = json.load(handle)
+config["allowed_extensions"] = sorted(set(config["allowed_extensions"]) | {"txt"})
+with open(".privacy-gate.json", "w", encoding="utf-8") as handle:
+    json.dump(config, handle, indent=2)
+    handle.write("\n")
+PY
+printf 'plain notes\n' > widen.txt
+git add widen.txt
+git commit -qm "add notes"
+ANCHOR_TIP="$(git rev-parse HEAD)"
+printf '%s %s %s %s\n' refs/heads/main "$ANCHOR_TIP" refs/heads/main "$ANCHOR_SHA" > "$WORK/push-anchor.txt"
+GATE_STDIN="$WORK/push-anchor.txt"
+expect_blocked "push reads the rules from the remote tip" file-type --push origin
+reset_tree
+
+# Push mode runs the anchor copy of the gate when the local copy differs.
+new_repo
+CODE_ANCHOR="$(git rev-parse HEAD)"
+RERUN_IBAN="$(gen_iban)"
+printf 'pay %s\n' "$RERUN_IBAN" > payments.md
+git add payments.md
+git commit -qm "payments note"
+CODE_TIP="$(git rev-parse HEAD)"
+python3 - <<'PY'
+with open("scripts/privacy-gate.py", "r", encoding="utf-8") as handle:
+    text = handle.read()
+patched = text.replace("    return report(checker, mode)",
+                       "    report(checker, mode)\n    return 0")
+if patched == text:
+    raise SystemExit("the gate script was not weakened")
+with open("scripts/privacy-gate.py", "w", encoding="utf-8") as handle:
+    handle.write(patched)
+PY
+printf '%s %s %s %s\n' refs/heads/main "$CODE_TIP" refs/heads/main "$CODE_ANCHOR" > "$WORK/push-anchor-code.txt"
+GATE_STDIN="$WORK/push-anchor-code.txt"
+expect_blocked "push runs the anchor gate code" iban --push origin
+expect_no_leak "anchor gate code never prints the iban" "$RERUN_IBAN"
+reset_tree
+
+# An anchor gate older than the re-run rule gets no flag it cannot parse.
+new_repo
+cat > scripts/privacy-gate.py <<'PY'
+import sys
+if sys.argv[1:] != ["--push", "origin"]:
+    sys.stderr.write("old gate: unexpected arguments\n")
+    sys.exit(2)
+sys.stdout.write("old gate ran\n")
+PY
+git add scripts/privacy-gate.py
+git commit -qm "older gate
+
+Privacy-Gate-Change: approved"
+OLD_ANCHOR="$(git rev-parse HEAD)"
+cp "$ROOT/scripts/privacy-gate.py" scripts/privacy-gate.py
+printf '%s %s %s %s\n' refs/heads/main "$OLD_ANCHOR" refs/heads/main "$OLD_ANCHOR" > "$WORK/push-old-anchor.txt"
+GATE_STDIN="$WORK/push-old-anchor.txt"
+expect_clean "an older anchor gate runs without the re-run flag" --push origin
+case "$LAST_OUT" in
+  *"old gate ran"*) pass "the older anchor gate is the one that judged the push" ;;
+  *) fail "the older anchor gate is the one that judged the push" ;;
+esac
+reset_tree
+
+# The rules can also be read from an explicit ref.
+new_repo
+CONFIG_OLD="$(git rev-parse HEAD)"
+python3 - <<'PY'
+import json
+
+with open(".privacy-gate.json", "r", encoding="utf-8") as handle:
+    config = json.load(handle)
+config["allowed_extensions"] = sorted(set(config["allowed_extensions"]) | {"txt"})
+with open(".privacy-gate.json", "w", encoding="utf-8") as handle:
+    json.dump(config, handle, indent=2)
+    handle.write("\n")
+PY
+printf 'plain notes\n' > widen.txt
+git add .privacy-gate.json widen.txt
+git commit -qm "allow notes files" -m "Privacy-Gate-Change: approved"
+expect_clean "tree reads the rules from HEAD" --tree
+expect_blocked "tree reads the rules from the given ref" file-type --tree --config-ref "$CONFIG_OLD"
+expect_blocked "history reads the rules from the given ref" file-type --history --config-ref "$CONFIG_OLD"
+out="$(run_gate --tree --config-ref missing-ref)"
+status=$?
+LAST_OUT="$out"
+if [ "$status" -eq 2 ]; then
+  pass "an unknown config ref fails closed"
+else
+  fail "an unknown config ref fails closed (exit $status)"
+fi
+reset_tree
+
+# The pre-merge-commit hook stops a merge that stages a blocked path.
+new_repo
+printf 'base\n' > shared.md
+git add shared.md
+git commit -qm base
+git checkout -q -b side
+mkdir -p migration-workspace
+printf 'draft\n' > migration-workspace/x.md
+git add migration-workspace/x.md
+git commit -qm "side adds a blocked path"
+git checkout -q main
+printf 'main side\n' > other.md
+git add other.md
+git commit -qm "main side"
+mkdir -p .githooks
+cp "$ROOT/.githooks/pre-merge-commit" .githooks/pre-merge-commit
+chmod +x .githooks/pre-merge-commit
+if git merge -q --no-edit side > "$WORK/merge-hook.txt" 2>&1; then
+  fail "pre-merge-commit hook blocks a merge with a blocked path"
+else
+  pass "pre-merge-commit hook blocks a merge with a blocked path"
+fi
+git merge --abort >/dev/null 2>&1 || true
+reset_tree
 
 printf 'Result: %d passed, %d failed\n' "$PASSED" "$FAILED"
 if [ "$FAILED" -ne 0 ]; then

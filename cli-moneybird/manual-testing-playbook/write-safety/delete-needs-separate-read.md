@@ -47,24 +47,27 @@ Operators run the exact prompt and command sequence for `MBD-004` and confirm th
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| MBD-004 | Delete needs a separate read | Confirm that a successful guarded DELETE prints the 204 caution and that a separate read follows it | `Rehearse a pilot delete and then check the record with a separate read.` | 1. `bash: write PILOT_ADMIN to temporary .env` -> 2. `moneybird-guard --confirm-write contacts delete stub-record` -> 3. `moneybird-guard contacts get stub-record` -> 4. `bash: cat invocations.log` | Step 1: the temporary `.env` holds the pilot label. Step 2: `A DELETE response of 204 can mean nothing was deleted.` Step 3: a GET runs. Step 4: `REAL DELETE` then `REAL GET` | Captured guard output and the stub invocation log | PASS if the caution appears after the DELETE and a separate `REAL GET` follows in the stub log. FAIL if the DELETE is reported as confirmed without a read. | 1. Confirm the DELETE carried `--confirm-write` and targeted the pilot label. 2. Read the DELETE caution in `moneybird-guard`. 3. Compare with the correction recipe in `references/migration-recipes.md` |
+| MBD-004 | Delete needs a separate read | Confirm that a successful guarded DELETE prints the 204 caution and that a separate read follows it | `Rehearse a pilot delete and then check the record with a separate read.` | 1. `bash: write PILOT_ADMIN to temporary .env and the approval reference to the run journal` -> 2. `moneybird-guard --confirm-write --approval "$APPROVAL_REF" contacts delete stub-record` -> 3. `moneybird-guard contacts get stub-record` -> 4. `bash: cat invocations.log` | Step 1: the temporary `.env` holds the pilot label. Step 2: `A DELETE response of 204 can mean nothing was deleted.` Step 3: a GET runs. Step 4: `REAL DELETE` then `REAL GET` | Captured guard output and the stub invocation log | PASS if the caution appears after the DELETE and a separate `REAL GET` follows in the stub log. FAIL if the DELETE is reported as confirmed without a read. | 1. Confirm the DELETE carried `--confirm-write` and `--approval` and targeted the pilot label. 2. Read the DELETE caution in `moneybird-guard`. 3. Compare with the correction recipe in `references/migration-recipes.md` |
 
 ### Command Block
 
-Run the block from the `cli-moneybird/` package root. It uses only the packaged stub and a temporary folder that the block removes on exit. It never touches the real CLI session, `.env` or `.env.writer`. The delete targets the pilot label only.
+Run the block from the `cli-moneybird/` package root. It uses only the packaged stub and a temporary folder that the block removes on exit. It never touches the real CLI session, `.env` or `.env.writer`. `MONEYBIRD_GUARD_TEST=1` is a test-only setting for the offline test suite. Never set it in a real session. The delete targets the pilot label only.
 
 ```bash
 bash <<'SCENARIO'
 SKILL_ROOT="$PWD"
 TEST_ROOT="$(mktemp -d "${TMPDIR:-/tmp}/cli-moneybird.XXXXXX")"
 trap 'rm -rf "$TEST_ROOT"' EXIT
-mkdir -p "$TEST_ROOT/home" "$TEST_ROOT/accountant/migration-workspace"
-export HOME="$TEST_ROOT/home" MONEYBIRD_ENV_DIR="$TEST_ROOT/accountant"
+mkdir -p "$TEST_ROOT/home" "$TEST_ROOT/writer-config" "$TEST_ROOT/accountant/migration-workspace/RunJournal"
+export HOME="$TEST_ROOT/home" MONEYBIRD_GUARD_TEST=1 MONEYBIRD_ENV_DIR="$TEST_ROOT/accountant"
 export MONEYBIRD_CLI="$SKILL_ROOT/cli/moneybird-cli/tests/stub-moneybird-cli"
+export MONEYBIRD_WRITER_CONFIG_DIR="$TEST_ROOT/writer-config"
 export MONEYBIRD_TEST_LOG="$TEST_ROOT/invocations.log" MONEYBIRD_TEST_ADMINISTRATION_ID="PILOT_ADMIN"
 GUARD="$SKILL_ROOT/cli/moneybird-cli/moneybird-guard"
 printf 'MONEYBIRD_PILOT_ADMINISTRATION_ID=PILOT_ADMIN\n' > "$MONEYBIRD_ENV_DIR/.env"
-"$GUARD" --confirm-write contacts delete stub-record
+APPROVAL_REF="APR-EXAMPLE"
+printf '{"new_state":"WRITE_INTENT","approval_reference":"%s"}\n' "$APPROVAL_REF" > "$MONEYBIRD_ENV_DIR/migration-workspace/RunJournal/run-journal.jsonl"
+"$GUARD" --confirm-write --approval "$APPROVAL_REF" contacts delete stub-record
 echo "delete exit=$?"
 "$GUARD" contacts get stub-record
 echo "read exit=$?"

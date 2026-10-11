@@ -23,9 +23,9 @@ A confirmation cannot move a record into a different administration. The product
 
 ## 2. HOW IT WORKS
 
-The pilot ID comes from `MONEYBIRD_PILOT_ADMINISTRATION_ID` in the process environment. When the process does not set it, the guard reads the same key from the Accountant folder `.env`. The guard compares it with the administration in the preview path. A mismatch exits 4 and names both IDs. With no pilot set, every confirmed write is treated as production and also exits 4. `--production` lifts the gate and is reserved for a batch the operator has approved.
+The pilot ID comes only from the `MONEYBIRD_PILOT_ADMINISTRATION_ID=` line in the Accountant folder `.env`. The environment variable of that name is ignored unless the test-only `MONEYBIRD_GUARD_TEST=1` flag is set. That flag is for the offline test suite only. The guard compares it with the administration in the preview path. A mismatch exits 4 and names both IDs. With no pilot set, every confirmed write is treated as production and also exits 4. `--production` lifts the gate and is reserved for a batch the operator has approved.
 
-When the writer config folder exists, the guard repeats the preview with the writer session before this comparison, so the gate checks the session that will perform the write. When it is missing the guard warns and uses the reader session. A write that passes the gate also needs `jq`, which the write log uses.
+The guard repeats the preview with the writer session before this comparison, so the gate checks the session that will perform the write. A missing writer configuration stops the write with exit 7 and the guard never falls back to the reader session. A write that passes the gate also needs `--approval <ref>` matching the `approval_reference` of a `WRITE_INTENT` event in `migration-workspace/RunJournal/run-journal.jsonl`, for pilot writes and production writes alike. A missing flag, a missing journal or no match stops the write with exit 8. A write that passes the gates also needs `jq`, which the write log uses.
 
 ---
 

@@ -4,7 +4,8 @@
 Generated packet files hold placeholders only. Real migration data lives in
 the git-ignored migration-workspace/ folder, so the tracked kit stays
 shareable. The json files that spec-kit tooling writes into a packet are
-never produced, deleted or checked by this script.
+never produced or deleted by this script. --check only confirms they sit
+beside a generated packet and reports any other stray file.
 
 Output is byte-stable: sorted inputs, no timestamps, no randomness.
 

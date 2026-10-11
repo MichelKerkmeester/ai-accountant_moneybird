@@ -52,9 +52,9 @@ Coverage note: offline scenarios exercise `moneybird-guard`, `setup.sh` and `doc
 ## 2. GLOBAL PRECONDITIONS
 
 1. The working directory is the `cli-moneybird/` package root unless a scenario names the Moneybird Accountant folder.
-2. Offline scenarios use only the packaged stub `cli/moneybird-cli/tests/stub-moneybird-cli` and a temporary folder from `mktemp`. They never touch the real CLI session, `.env` or `.env.writer`.
+2. Offline scenarios use only the packaged stub `cli/moneybird-cli/tests/stub-moneybird-cli` and a temporary folder from `mktemp`. They set `MONEYBIRD_GUARD_TEST=1` beside `MONEYBIRD_ENV_DIR` and `MONEYBIRD_CLI`, and point `MONEYBIRD_WRITER_CONFIG_DIR` at a temporary writer configuration folder. `MONEYBIRD_GUARD_TEST=1` is a test-only setting for the offline suite and is never set in a real session. They write a run journal at `<root>/migration-workspace/RunJournal/run-journal.jsonl`. It holds a `WRITE_INTENT` line with an `approval_reference`, so stub writes pass `--approval` with that reference. They never touch the real CLI session, `.env` or `.env.writer`.
 3. `bash`, `jq` and `rg` are installed. `jq` is required for the write log scenarios.
-4. Live scenario MBD-012 runs only after the operator approves it. Every live write targets the pilot administration named by `MONEYBIRD_PILOT_ADMINISTRATION_ID` and never another administration.
+4. Live scenario MBD-012 runs only after the operator approves it. It needs a real `WRITE_INTENT` entry with an approval reference the operator recorded. Every live write targets the pilot administration named by the `MONEYBIRD_PILOT_ADMINISTRATION_ID=` line in the root `.env` file and never another administration.
 5. Destructive scenario MBD-012 MUST verify recovery is possible: it deletes the record it created, confirms removal with a separate read and falls back to the correction recipe in `references/migration-recipes.md`.
 6. No scenario reads or lists `personal database/`. No evidence carries a token, a real administration ID or record content.
 
@@ -309,7 +309,7 @@ Rehearse one live create and its undo in the pilot administration through the gu
 
 Prompt: `In the pilot administration only, create one throwaway test contact through the guard, delete it again and prove with a separate read that it is gone.`
 
-The preview path contains the pilot administration. The create succeeds. The delete prints the 204 caution. The log ends with a POST line and a DELETE line. The later read finds no record.
+The preview path contains the pilot administration. Each write carries `--approval "$APPROVAL_REF"` matching a real `WRITE_INTENT` entry the operator recorded. The create succeeds. The delete prints the 204 caution. The log ends with a POST line and a DELETE line. The later read finds no record.
 
 Desired user-visible outcome: The operator has evidence that the pilot write path and its undo both work, with nothing left behind in the pilot administration.
 
@@ -374,7 +374,7 @@ Confirm that an invoice attachment routes through the guarded CLI and requires w
 
 Prompt: `Which guarded CLI command attaches a PDF to an invoice in the pilot administration?`
 
-The answer names a `moneybird-guard --confirm-write ... attachment` command and identifies the pilot administration.
+The answer names a `moneybird-guard --confirm-write --approval "$APPROVAL_REF" ... attachment` command and identifies the pilot administration.
 
 Desired user-visible outcome: The operator receives the guarded command pattern and knows that the write needs approval.
 
@@ -414,7 +414,7 @@ Confirm that `MONEYBIRD_GUARD_READ_ONLY=1` blocks writes even when the write fla
 
 #### Scenario Contract
 
-Prompt: `Check that a read-only Moneybird session can read contacts but cannot create one, even with both write flags.`
+Prompt: `Check that a read-only Moneybird session can read contacts but cannot create one, even with the write flags.`
 
 The contact list reaches the stub. The confirmed production create exits 6, prints the POST preview and has no `REAL` log line.
 
@@ -431,7 +431,7 @@ Desired user-visible outcome: The operator sees that the read-only session can r
 
 | Test Module | Coverage | Playbook Overlap |
 |---|---|---|
-| [`cli/moneybird-cli/tests/run-tests.sh`](../cli/moneybird-cli/tests/run-tests.sh) | Offline guard suite for the period warning, the confirmation lock, the pilot gate, the write log, the DELETE caution, the output guard and both logins | MBD-002, MBD-003, MBD-004, MBD-005, MBD-009, MBD-010, MBD-011 |
+| [`cli/moneybird-cli/tests/run-tests.sh`](../cli/moneybird-cli/tests/run-tests.sh) | Offline guard suite for the period warning, the confirmation lock, the pilot gate, the writer configuration gate, the approval gate, the write log, the DELETE caution, the output guard, the summary output, the `--print-body` refusal under an agent marker, the `--out` refusal on a passthrough, the ignored environment overrides without the test flag, the `administration use` gate and both logins | MBD-002, MBD-003, MBD-004, MBD-005, MBD-009, MBD-010, MBD-011 |
 | [`cli/moneybird-cli/tests/stub-moneybird-cli`](../cli/moneybird-cli/tests/stub-moneybird-cli) | Deterministic CLI stand-in that prints dry-run lines and logs real calls | Every offline guard scenario |
 
 ---

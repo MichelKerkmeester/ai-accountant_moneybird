@@ -23,13 +23,13 @@ Use these recipes only for approved migration batches. They use variable placeho
 
 ### Before a Write
 
-Confirm the source register, mapping, record ID strategy and target administration. Run every write against the pilot first. Review the guard's `METHOD URL` preview, then use `--confirm-write` only after the operator approves that batch.
+Confirm the source register, mapping, record ID strategy and target administration. Run every write against the pilot first. Review the guard's `METHOD URL` preview, then use `--confirm-write` only after the operator approves that batch. Every write also needs `--approval "$APPROVAL_REF"`. The reference must match the `approval_reference` of a `WRITE_INTENT` event in `migration-workspace/RunJournal/run-journal.jsonl`.
 
 The CLI parameter names for a route can vary with the OpenAPI schema. For every field not named in the supplied facts, check `moneybird-cli RESOURCE ACTION --help` and mark it `UNVERIFIED` until confirmed. Do not infer a field from a similar endpoint.
 
 ### Output Rules
 
-Use `--out migration-workspace/...` for saved reads. The guard rejects paths outside the workspace. Keep source files and API output out of this skill and other tracked files.
+Use `--out migration-workspace/...` for saved reads. Without `--out`, the guard prints one summary line instead of the response body. The guard rejects paths outside the workspace. Keep source files and API output out of this skill and other tracked files.
 
 ---
 
@@ -41,7 +41,7 @@ The entry JSON uses the documented fields `ledger_account_id`, `debit` and `cred
 
 ```bash
 moneybird-cli documents general_journal_documents create --help
-moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" documents general_journal_documents create --journal_type fiscal_year_ending --"$ENTRY_FIELD" "$ENTRIES_JSON"
+moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" documents general_journal_documents create --journal_type fiscal_year_ending --"$ENTRY_FIELD" "$ENTRIES_JSON"
 ```
 
 Set `ENTRY_FIELD` to the field name confirmed by the pinned CLI help. The supplied facts do not confirm that request parameter name, so it is `UNVERIFIED` until checked.
@@ -56,9 +56,9 @@ Use `external_sales_invoices` for an invoice issued outside Moneybird. Do not re
 
 ```bash
 moneybird-cli external_sales_invoices create --help
-moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" external_sales_invoices create --...
+moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" external_sales_invoices create --...
 moneybird-cli external_sales_invoices attachment --help
-moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" external_sales_invoices attachment "$INVOICE_ID" --file "$PDF"
+moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" external_sales_invoices attachment "$INVOICE_ID" --file "$PDF"
 ```
 
 Expected: the first write creates the external invoice. The second uploads its PDF with multipart form data. Confirm both write statuses and later read the record and attachment metadata.
@@ -71,12 +71,12 @@ Create the document record first. Upload its source file through the document's 
 
 ```bash
 moneybird-cli documents purchase_invoices create --help
-moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" documents purchase_invoices create --...
-moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" documents purchase_invoices attachments "$DOCUMENT_ID" --file "$PDF"
+moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" documents purchase_invoices create --...
+moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" documents purchase_invoices attachments "$DOCUMENT_ID" --file "$PDF"
 
 moneybird-cli documents receipts create --help
-moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" documents receipts create --...
-moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" documents receipts attachments "$RECEIPT_ID" --file "$PDF"
+moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" documents receipts create --...
+moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" documents receipts attachments "$RECEIPT_ID" --file "$PDF"
 ```
 
 Expected: each document write returns its own status. Confirm the file upload status separately. Keep original files and response output under the migration workspace.
@@ -89,7 +89,7 @@ The API creates financial statements from JSON mutations. The supplied facts do 
 
 ```bash
 moneybird-cli financial_statements create --help
-moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" financial_statements create --"$MUTATION_FIELD" "$MUTATIONS_JSON"
+moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" financial_statements create --"$MUTATION_FIELD" "$MUTATIONS_JSON"
 ```
 
 Expected: the guard previews the JSON request. Do not use this route to upload CAMT.053 or MT940 files. Those files are imported in the UI.
@@ -102,14 +102,14 @@ The confirmed REST route is `PATCH /financial_mutations/{id}/link_booking`. The 
 
 ```bash
 moneybird-cli financial_mutations link_booking --help
-moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" financial_mutations link_booking "$MUTATION_ID" --"$BOOKING_FIELD" "$BOOKING_JSON"
+moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" financial_mutations link_booking "$MUTATION_ID" --"$BOOKING_FIELD" "$BOOKING_JSON"
 ```
 
 Document payment endpoints use `POST /documents/{type}/{id}/payments`. Confirm the type-specific route and fields before using it:
 
 ```bash
 moneybird-cli documents purchase_invoices payments --help
-moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" documents purchase_invoices payments "$DOCUMENT_ID" --"$PAYMENT_FIELD" "$PAYMENT_JSON"
+moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" documents purchase_invoices payments "$DOCUMENT_ID" --"$PAYMENT_FIELD" "$PAYMENT_JSON"
 ```
 
 Do not use the deprecated sales invoice `register_payment` action. Its sunset is 2026-12-31.
@@ -122,7 +122,7 @@ The RGS code is required when creating a ledger account. Resolve other required 
 
 ```bash
 moneybird-cli ledger_accounts create --help
-moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" ledger_accounts create --rgs_code "$RGS_CODE" --...
+moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" ledger_accounts create --rgs_code "$RGS_CODE" --...
 ```
 
 Expected: the guard previews a POST to the pilot. Read the account back after the write response succeeds.
@@ -135,9 +135,9 @@ The API supports `assets`, value changes, retroactive linear value changes and d
 
 ```bash
 moneybird-cli assets create --help
-moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" assets create --...
+moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" assets create --...
 moneybird-cli assets retroactive_linear_value_changes --help
-moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" assets retroactive_linear_value_changes "$ASSET_ID" --...
+moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" assets retroactive_linear_value_changes "$ASSET_ID" --...
 ```
 
 Expected: each call is previewed. Do not write dates inside a locked period. The asset API rejects dates in a locked period.
@@ -150,7 +150,7 @@ The export endpoint is `POST /reports/export/auditfile`. The body takes a year a
 
 ```bash
 moneybird-cli reports export auditfile --help
-moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" reports export auditfile --year "$YEAR" --version "$AUDITFILE_VERSION"
+moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" reports export auditfile --year "$YEAR" --version "$AUDITFILE_VERSION"
 moneybird-cli downloads get --help
 moneybird-guard downloads get "$DOWNLOAD_ID" --out migration-workspace/auditfile-download
 ```
@@ -190,7 +190,7 @@ The migration plan rehearses an undo in the pilot before production work. Stop t
 6. Do not edit a locked period until the operator has opened an exception and deliberately unlocked it.
 
 ```bash
-moneybird-guard --confirm-write --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" "$RESOURCE" delete "$RECORD_ID"
+moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" "$RESOURCE" delete "$RECORD_ID"
 moneybird-guard "$RESOURCE" get "$RECORD_ID"
 ```
 

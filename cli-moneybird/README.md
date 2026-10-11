@@ -92,8 +92,8 @@ The skill routes each request by operation. REST work goes through the official 
 
 - A GET call runs.
 - A non-GET call is blocked when `MONEYBIRD_GUARD_READ_ONLY=1` is set.
-- Otherwise a non-GET call needs `--confirm-write`, and its target must be the pilot administration.
-- A production batch needs your approval for that batch before you add `--production`.
+- Otherwise a non-GET call needs `--confirm-write`, an existing writer configuration folder and the pilot administration as its target. It also needs `--approval <ref>` matching the `approval_reference` of a `WRITE_INTENT` entry in `migration-workspace/RunJournal/run-journal.jsonl`.
+- A production batch needs the same checks plus `--production`, after the Operator approves that batch.
 
 UI-only tasks stay with the Operator.
 
@@ -143,9 +143,11 @@ Use it for Moneybird API reads, a pilot migration write, document attachments an
 | What you see | Why | Next step |
 |---|---|---|
 | Guard exits 3 | The write lacks confirmation | Review the preview. Repeat with `--confirm-write` only after approval |
-| Guard exits 4 | The target is not the pilot, or no pilot is configured | Check the target and the pilot setting. Use `--production` only after the Operator approves that batch |
+| Guard exits 4 | The target is not the pilot, or no pilot is configured | Check the target and the pilot ID in the root `.env` file. Use `--production` only after the Operator approves that batch |
 | Guard exits 5 | The `--out` path leaves `migration-workspace/` | Choose a path inside the workspace |
 | Guard exits 6 | The read-only lock blocks a non-GET call | Keep the lock for read-only work. Use a write session only when the approved migration gate requires a write |
+| Guard exits 7 | The writer configuration folder is missing | Run `moneybird-guard login-from-env --writer` after the pilot gate |
+| Guard exits 8 | The write lacks `--approval`, or the reference is not in the run journal | Check the `WRITE_INTENT` entry and repeat with `--approval "$APPROVAL_REF"` |
 | A list leaves out older records | The API defaults to the current year | Add an explicit period filter, such as `--filter period:YYYY`, and read again |
 
 [`references/troubleshooting.md`](references/troubleshooting.md) has the full diagnostic sequence.

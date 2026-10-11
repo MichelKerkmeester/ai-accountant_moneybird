@@ -23,7 +23,7 @@ The lock turns every write into a two-step action. The first run shows what woul
 
 ## 2. HOW IT WORKS
 
-After the preview, any method other than GET is a write. Without `--confirm-write` the guard prints the preview line to stderr, explains that the write is held and exits 3. The real CLI call never runs. The lock covers creates, updates, deletes, attachments and custom actions alike, because it reads the method rather than the command name. Repeating the same command with `--confirm-write` moves the request on to the pilot administration gate.
+After the preview, any method other than GET is a write. Without `--confirm-write` the guard prints the preview line to stderr, explains that the write is held and exits 3. The real CLI call never runs. The lock covers creates, updates, deletes, attachments and custom actions alike, because it reads the method rather than the command name. Repeating the same command with `--confirm-write` moves the request on to the writer configuration check, the pilot administration gate and the approval gate. The write command shape is `moneybird-guard --confirm-write --approval "$APPROVAL_REF" <moneybird-cli args...>`, plus `--production` for a non-pilot administration.
 
 ---
 

@@ -7,6 +7,7 @@ cd "$root"
 
 for file in \
   .githooks/pre-commit \
+  .githooks/pre-merge-commit \
   .githooks/pre-push \
   .githooks/commit-msg \
   scripts/privacy-gate.py \
@@ -40,3 +41,5 @@ fi
 
 printf 'privacy-gate: gate file changes are approved with %s=1, which only the Operator sets\n' \
   PRIVACY_GATE_CHANGE_APPROVED
+printf 'privacy-gate: a commit that changes a gate file also carries the trailer line %s\n' \
+  'Privacy-Gate-Change: approved'
