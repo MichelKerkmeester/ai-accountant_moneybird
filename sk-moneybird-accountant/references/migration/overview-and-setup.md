@@ -44,7 +44,7 @@ Use `moneybird-guard` for reads and approved writes. Every read session sets `MO
 
 The documented shared-IP limit is 150 requests per five minutes overall and 50 report requests per five minutes. Keep one shared request ledger. On 429, stop the affected sequence and wait the recorded `Retry-After`. Do not automatically replay a request.
 
-Every non-GET call requires a passed phase gate, Operator approval, a flushed `WRITE_INTENT`, and `--confirm-write`. Phases 7, 8, and 16 are pilot or mirror batches and do not use `--production`. Phase 18 final-delta writes remain mirror batches until the Operator approves go-live. Phases 19 to 21 are production batches after Phase 18 passes and require the Operator's approval for each use of `--production`. Verify each write with a later synchronized read or after the approved and independently verified cache wait. Reader sessions always keep the read-only lock enabled. Phase 0 auditfile testing uses the Operator UI. A guarded auditfile POST is allowed only after a phase gate passes and uses an operation-scoped approval and flushed intent in a separate writer session. Never clear the lock in a reader session.
+Every non-GET call requires a passed phase gate, Operator approval, a flushed `WRITE_INTENT` with its approval reference, `--confirm-write`, and `--approval <ref>`. The guard checks the reference against the run journal and refuses a write without the writer configuration. Phases 7, 8, and 16 are pilot or mirror batches and do not use `--production`. Phase 18 final-delta writes remain mirror batches until the Operator approves go-live. Phases 19 to 21 are production batches after Phase 18 passes and require the Operator's approval for each use of `--production`. Verify each write with a later synchronized read or after the approved and independently verified cache wait. Reader sessions always keep the read-only lock enabled. Phase 0 auditfile testing uses the Operator UI. A guarded auditfile POST is allowed only after a phase gate passes and uses an operation-scoped approval and flushed intent in a separate writer session. Never clear the lock in a reader session.
 
 CAMT.053 and MT940 imports, tax-rate creation, period locking, manual historical VAT status, and Jortt UI exports are Operator UI actions. Moneybird list and report behavior can be period-limited or cached. Use explicit periods, complete reads, and the current sibling tool instructions before relying on a result. Reports cover no more than the documented period per request. Confirm any delete or correction with a separate read-back.
 
@@ -61,7 +61,7 @@ CAMT.053 and MT940 imports, tax-rate creation, period locking, manual historical
 | Tax rates | Read existing rates through the guarded route. | Operator creates rates in the UI. |
 | Fixed assets and depreciation | Asset records with historic value changes and read-back. | Operator approves asset treatment. |
 | Profit, balance, and general-ledger reports | Guarded read with explicit periods. Reports may cover at most 12 months per request. | Operator may use UI reports as independent evidence. |
-| Moneybird auditfile | Operator UI test export in Phase 0. Guarded report-export POST followed by a download read only after a phase gate passes. | Operator approves the exact year and version. Each POST has an operation-scoped flushed `WRITE_INTENT`, separate writer session, receipt, and artifact hash. |
+| Moneybird auditfile | Operator UI test export in Phase 0. Guarded report-export POST followed by a download read only after a phase gate passes. | Operator approves the exact year and version. Each POST has an operation-scoped flushed `WRITE_INTENT`, `--approval <ref>`, separate writer session, receipt, and artifact hash. |
 | Historical VAT filing status | No agent write route. | Operator uses the documented manual filing-status action. |
 | Period lock or unlock | Guarded read for lock state only. | Operator locks or unlocks through the UI. |
 | Wrong record correction or deletion | Gated guarded write, linked exception, and separate read-back. | Operator approves the correction and any unlock. |
@@ -101,7 +101,7 @@ Keep finance artifacts in the ignored `migration-workspace/` and preserve existi
 - `Plans/` for the phase dashboard copied from the plan kit in `assets/migration/`. The phase packets live in the git-ignored working copy of `specs/000-migration-template/`.
 - `AgentDesk/` for agent-facing briefs, drafts, fixtures, scripts, checks, summaries, verdicts, final reviews, and logs.
 
-Prompts and tool transcripts contain only schemas, field names, phase or record-class labels, opaque record keys, aggregate counts, status, and evidence paths. Keep personal names, supplier or customer details, account identifiers, invoice numbers, amounts, and source payloads in the controlled workspace only. Redact tool output before it enters a session transcript.
+Prompts and tool transcripts contain only schemas, field names, phase or record-class labels, opaque record keys, HMAC hashes, aggregate counts with values from 1 to 9 shown as `<10`, status, approval references, and evidence paths. CLI calls in agent sessions print summaries only and never use `--print-body`. Keep personal names, supplier or customer details, account identifiers, invoice numbers, amounts, and source payloads in the controlled workspace only. Redact tool output before it enters a session transcript.
 
 ## Required `MIGRATION_CONFIG` fields
 
@@ -172,12 +172,12 @@ The Orchestrator maintains the versioned config. The Operator supplies or approv
 | `agents.implementer.fallback_route` | [Operator] | Phase 0 | One fallback provider for the same configured model. Record the route and use it only after a provider failure. |
 | `agents.verifier.route` | [Operator] | Phase 0 | GPT-6 Luna at max effort on the fast service tier through the Codex CLI. Require a read-only sandbox and proven OS boundary. |
 | `agents.final_reviewer` | [Operator] | Phase 0 | Claude in the skill-running session for final phase review. |
-| `agents.data_policy` | [Operator] | Phase 0 | SUMMARIES_ONLY. No names, amounts, IBANs, addresses, emails, descriptions, invoice numbers, document or administration IDs, or source payloads leave the machine. |
-| `agents.write_executor` | [Operator] | Phase 0 | CONDUCTOR. Claude uses a separate Migration Writer session after Verifier PASS and Operator approval. The guard loads the token locally and no seat sees it. |
+| `agents.data_policy` | [Operator] | Phase 0 | SUMMARIES_ONLY. No names, amounts, IBANs, addresses, emails, descriptions, invoice numbers, document or administration IDs, or source payloads leave the machine. Agent-facing counts from 1 to 9 show as <10. |
+| `agents.write_executor` | [Operator] | Phase 0 | CONDUCTOR. Claude uses a separate Migration Writer session after Verifier PASS and Operator approval. The local payload assembler builds every payload, and the writer receives only aliases, payload hashes, counts, and the approval reference. The guard loads the token locally and no seat sees it. |
 | `agents.max_rounds` | [Operator] | Phase 0 | Positive round limit. Default 3. |
 | `agents.read_boundary_evidence` | [Operator] | Phase 0 | Operating-system deny results for every protected path, outbound egress canary, phase-entry canary evidence, and evidence for any path change. |
 | `agents.script_sandbox_evidence` | [Operator] | Phase 0 | Local script sandbox profile, fixture review, own-input-folder read boundary, output path outside AgentDesk, and blocked network evidence. |
-| `agents.alias_secret_location` | [Operator] | Phase 0 | Local path to the HMAC secret only. Never record or share the secret value. |
+| `agents.alias_secret_location` | [Operator] | Phase 0 | Local path to the HMAC-SHA256 key only, by default migration-workspace/.secrets/alias-hmac.key with 32 random bytes and file mode 600. The Operator creates it, owns it, and rotates it when a new phase or cycle starts. Never record or share the key value. |
 
 Missing fields, unapproved thresholds, unknown access expiry, unsupported source scope, unsupported retention basis, missing approver, or an incomplete read route block Phase 0 or the affected gate. The guarded auditfile POST route may remain pending through Phase 0 and must be verified before its first use after a phase gate passes. Situation-dependent retention terms require an Operator-approved `MIGRATION_CONFIG` value with its approver and basis recorded. Threshold values do not authorize a balancing entry.
 

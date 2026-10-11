@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Scan the commit message before the commit exists, then forward to the
-# global commit-msg hook so its checks still run.
+# Scan the commit message before the commit exists. A staged gate file change
+# needs the trailer line in the message and the Operator's approval variable,
+# then the global commit-msg hook is forwarded to so its checks still run.
 set -u
 
 message="${1:-}"
@@ -8,6 +9,8 @@ if [ -n "$message" ]; then
   if ! python3 -I scripts/privacy-gate.py --message "$message"; then
     printf 'privacy-gate: commit message blocked, run the gate again with:\n' >&2
     printf '  python3 -I scripts/privacy-gate.py --message %s\n' "$message" >&2
+    printf 'privacy-gate: a gate file change needs the trailer line %s\n' \
+      'Privacy-Gate-Change: approved' >&2
     exit 1
   fi
 fi

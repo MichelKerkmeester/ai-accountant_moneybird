@@ -1,6 +1,6 @@
 ---
 title: "Output guard"
-description: "--out saves the raw response only to a file inside migration-workspace and prints an item count or top-level keys instead of the records. Any other path exits 5."
+description: "--out saves the raw response only to a file inside migration-workspace and prints an item count or top-level keys instead of the records. Without --out the guard prints a one-line summary and no records. Any other path exits 5."
 trigger_phrases:
   - "output guard"
   - "moneybird output guard"
@@ -15,7 +15,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
---out saves the raw response only to a file inside migration-workspace and prints an item count or top-level keys instead of the records. Any other path exits 5.
+--out saves the raw response only to a file inside migration-workspace and prints an item count or top-level keys instead of the records. Without --out the guard prints a one-line summary and no records. Any other path exits 5.
 
 Saved Moneybird data stays inside the ignored migration workspace and out of the chat. The terminal only shows the shape of what was saved.
 
@@ -23,9 +23,11 @@ Saved Moneybird data stays inside the ignored migration workspace and out of the
 
 ## 2. HOW IT WORKS
 
-`--out FILE` accepts an absolute path or a relative path that resolves against the Accountant folder. The resolved file must sit below `migration-workspace/`. The guard checks this before any CLI call and exits 5 for a path outside the workspace, a `..` segment, a symlink anywhere on the way, a file used as a folder or a directory target.
+`--out FILE` accepts an absolute path or a relative path that resolves against the Accountant folder. The resolved file must sit below `migration-workspace/`. The guard checks this before any CLI call and exits 5 for a path outside the workspace, a `..` segment, a symlink anywhere on the way, a file used as a folder or a directory target. The guard refuses `--out` on a passthrough command (`help`, `--help`, `--version`, `administration list`, `administration current` or `administration use <id>`) with exit 2.
 
-On a valid path the guard adds `--output raw`, writes the response to a temporary file in the target folder and moves it into place when the call succeeds. Stdout then shows only `items: N` for an array, `keys:` with the top-level keys for an object or a short no-body message. `--quiet` hides that summary. A failed call removes the temporary file.
+On a valid path the guard adds `--output raw`, writes the response to a temporary file in the target folder and moves it into place when the call succeeds. Stdout then shows only `items: N` for an array, `keys:` with the top-level keys for an object or a short no-body message. Without `--out` the guard captures the body to a private temporary file under `migration-workspace/tmp/`, with folder mode 700 and file mode 600, prints the summary and deletes the file. The summary is one line. It shows the byte size and then a record count for a list (`response: 2048 bytes, records: 12`) or the top-level field names for an object (`response: 512 bytes, fields: id,name`). Record content does not reach the terminal by default. `--quiet` hides the summary. A failed call removes the temporary file.
+
+`--print-body` streams the full body to the terminal. It is for the Operator only and agents never use it. The guard refuses it with exit 2 when any agent session marker is set (`CLAUDECODE`, `AI_SESSION_CHILD`, `ACCOUNTANT_AGENT_SESSION` or `CODEX_SANDBOX`) or when `--out` is present. The markers are a speed bump, not a boundary. `--print-body` does not apply to `login-from-env`.
 
 ---
 

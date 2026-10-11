@@ -127,7 +127,7 @@ The old instruction to cancel Jortt after the early source download is supersede
 
 ### 6. Tool route
 
-Jortt reads remain CLI read-only. Moneybird reads use guarded read-only access. The final-delta writes use the approved mirror route until the Operator go-live decision passes. After Phase 18 passes, production batches in Phases 19 to 21 require Operator approval and use `--production`. Tax filing remains Operator-only.
+Jortt reads remain CLI read-only. Moneybird reads use guarded read-only access. The final-delta writes use the approved mirror route until the Operator go-live decision passes. After Phase 18 passes, production batches in Phases 19 to 21 require Operator approval and use `--production` with `--approval <ref>`. Tax filing remains Operator-only.
 
 ### 7. Outputs and evidence artifacts
 

@@ -12,6 +12,7 @@ import os
 import re
 import subprocess
 import sys
+import tempfile
 import unicodedata
 
 STAGED = "--staged"
@@ -25,6 +26,10 @@ CONFIG_FILE = ".privacy-gate.json"
 DENYLIST_FILE = ".privacy-denylist"
 APPROVAL_ENV = "PRIVACY_GATE_CHANGE_APPROVED"
 MIN_TERM_LENGTH = 4
+TRUSTED_CODE = "--trusted-code"
+CONFIG_REF = "--config-ref"
+GATE_SCRIPT = "scripts/privacy-gate.py"
+GATE_TRAILER = "Privacy-Gate-Change: approved"
 
 REQUIRED_CONFIG_KEYS = (
     "allowed_extensions",
@@ -38,10 +43,15 @@ REQUIRED_CONFIG_KEYS = (
 
 DEFAULT_GATE_FILES = (
     CONFIG_FILE,
-    "scripts/privacy-gate.py",
+    GATE_SCRIPT,
     "scripts/privacy-gate-test.sh",
     "scripts/install-hooks.sh",
     ".github/workflows/privacy-gate.yml",
+    ".gitignore",
+    ".github/dependabot.yml",
+    "sk-moneybird-accountant/scripts/generate-plan-kit.py",
+    "sk-moneybird-accountant/scripts/plan-kit-test.sh",
+    "sk-moneybird-accountant/scripts/init-workspace.sh",
 )
 DEFAULT_GATE_DIRECTORIES = (".githooks/",)
 
@@ -98,8 +108,15 @@ PEM_HEADER_RE = re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")
 BEARER_RE = re.compile(r"Bearer\s+[A-Za-z0-9._/+=-]{20,}")
 KEY_ASSIGN_RE = re.compile(
     r"(?i)([A-Za-z0-9_.\-]*(?:secret|token|password|passwd|api[_-]?key|apikey"
-    r"|access[_-]?key|private[_-]?key|credential|auth)[A-Za-z0-9_.\-]*)"
-    r"\s*[:=]\s*[\"']?([A-Za-z0-9._/+=\-]{8,}|\$\{[A-Za-z0-9_]+\})"
+    r"|access[_-]?key|private[_-]?key|credential|auth)[A-Za-z0-9_.\-]*"
+    # pass and pwd count only as a whole name part, so bypass, compass and
+    # passthrough stay quiet.
+    r"|(?<![A-Za-z0-9])(?:[A-Za-z0-9]+[_.\-])*(?:pass|pwd)"
+    r"(?:[_.\-][A-Za-z0-9]+)*(?![A-Za-z0-9]))"
+    # A quoted value may hold symbols and spaces, so it runs to its closing
+    # quote. A bare value runs to whitespace or a delimiter.
+    r"\s*[:=]\s*(?:\"([^\"\n]{8,})\"|'([^'\n]{8,})'"
+    r"|([^\s\"'`#;,)\\]{8,}|\$\{[A-Za-z0-9_]+\}))"
 )
 PLACEHOLDER_MARKERS = ("fake", "example", "placeholder", "dummy", "changeme", "${")
 WHITESPACE_RE = re.compile(r"\s+")
@@ -121,25 +138,45 @@ def usage():
         "usage: python3 -I scripts/privacy-gate.py\n"
         "       (--staged|--push <remote>|--tree|--history|"
         "--message <file>|--self-test-patterns)\n"
+        "       [--config-ref <rev>] [--trusted-code]\n"
     )
     sys.exit(2)
 
 
 def parse_args(argv):
-    if len(argv) < 2 or len(argv) > 3:
+    """Return the mode, its argument, the config ref and the code flag."""
+    if len(argv) < 2:
         usage()
     mode = argv[1]
-    argument = argv[2] if len(argv) > 2 else None
+    rest = list(argv[2:])
+    trusted_code = False
+    if TRUSTED_CODE in rest:
+        if mode != PUSH:
+            usage()
+        rest.remove(TRUSTED_CODE)
+        trusted_code = True
+    config_ref = None
+    if CONFIG_REF in rest:
+        if mode not in (TREE, HISTORY):
+            usage()
+        index = rest.index(CONFIG_REF)
+        if index + 1 >= len(rest):
+            usage()
+        config_ref = rest[index + 1]
+        del rest[index:index + 2]
+    if len(rest) > 1:
+        usage()
+    argument = rest[0] if rest else None
     if mode == PUSH:
         # The remote name is new. An older hook may still call without it, so
         # the fall back is every remote instead of a silent skip.
-        return mode, argument
+        return mode, argument, config_ref, trusted_code
     if mode == MESSAGE:
         if argument is None:
             usage()
-        return mode, argument
+        return mode, argument, config_ref, trusted_code
     if mode in (STAGED, TREE, HISTORY, SELF_TEST) and argument is None:
-        return mode, None
+        return mode, argument, config_ref, trusted_code
     usage()
 
 
@@ -178,29 +215,40 @@ def find_root():
     return stdout.decode("utf-8", "replace").strip()
 
 
-def head_config_bytes(root):
-    """Return the HEAD copy of the config, or None when HEAD has none."""
+def config_bytes_at(root, ref):
+    """Return the config blob at ref, or None when that revision has none."""
     status, _stdout, _stderr = git_soft(
-        ["cat-file", "-e", "HEAD:" + CONFIG_FILE], root)
+        ["cat-file", "-e", "%s:%s" % (ref, CONFIG_FILE)], root)
     if status != 0:
         return None
-    return git_out(["show", "HEAD:" + CONFIG_FILE], root)
+    return git_out(["show", "%s:%s" % (ref, CONFIG_FILE)], root)
 
 
-def load_config(root, mode):
-    """Return the rules.
+def worktree_config_bytes(root):
+    path = os.path.join(root, CONFIG_FILE)
+    try:
+        with open(path, "rb") as handle:
+            return handle.read()
+    except OSError as exc:
+        die("cannot read %s: %s" % (CONFIG_FILE, exc))
 
-    Staged checks read the committed config so a staged rewrite cannot widen
-    the rules that are applied to the same index.
+
+def load_config(root, ref):
+    """Return the rules read from ref.
+
+    Staged and message checks read the committed config, so a rewrite of the
+    same index cannot widen the rules that are applied to it. A repository
+    without a commit yet has only the working tree to read.
     """
-    raw = head_config_bytes(root) if mode == STAGED else None
+    raw = config_bytes_at(root, ref)
+    if raw is None and ref == "HEAD":
+        status, _stdout, _stderr = git_soft(
+            ["rev-parse", "--verify", "--quiet", "HEAD^{commit}"], root)
+        if status != 0:
+            raw = worktree_config_bytes(root)
     if raw is None:
-        path = os.path.join(root, CONFIG_FILE)
-        try:
-            with open(path, "rb") as handle:
-                raw = handle.read()
-        except OSError as exc:
-            die("cannot read %s: %s" % (CONFIG_FILE, exc))
+        die("no %s at %s, the rules must be committed there"
+            % (CONFIG_FILE, ref))
     try:
         config = json.loads(raw.decode("utf-8"))
     except (UnicodeDecodeError, ValueError) as exc:
@@ -336,6 +384,18 @@ def identity_allowed(email):
 
 
 def path_blocked(path, config):
+    # Private folder and file names are blocked at any depth, before any
+    # exception, so a copy nested inside another folder or a tracked template
+    # cannot slip past the root-anchored rules below.
+    segments = path.lower().split("/")
+    for name in config.get("blocked_names_anywhere", ()):
+        name = name.lower()
+        for segment in segments:
+            if segment == name:
+                return True
+            if (name == ".env" and segment.startswith(".env.")
+                    and segment != ".env.example"):
+                return True
     # An exception admits only the exact file shape its pattern names below
     # its prefix, so scratch notes, dotfiles or a private folder nested in a
     # tracked template stay blocked. Matching is case-sensitive so a case
@@ -380,6 +440,14 @@ def mask(value, keep=0):
 def placeholder_value(value):
     """True when the captured value itself is marked as not real."""
     lowered = value.lower()
+    # A value that starts with $ is a shell or environment reference, not a
+    # literal secret.
+    if lowered.startswith("$"):
+        return True
+    # A plain link is a reference too. One that carries user:password@ before
+    # its host still counts as a secret.
+    if re.match(r"^https?://[^\s@/]+(?:/|$)", lowered):
+        return True
     for marker in PLACEHOLDER_MARKERS:
         if marker in lowered:
             return True
@@ -394,7 +462,8 @@ def secret_hits(line):
     if match:
         hits.append(("secret", mask(match.group(0), 0)))
     for match in KEY_ASSIGN_RE.finditer(line):
-        if placeholder_value(match.group(2)):
+        value = match.group(2) or match.group(3) or match.group(4) or ""
+        if placeholder_value(value):
             continue
         hits.append(("secret", mask(match.group(0), 0)))
         break
@@ -519,6 +588,13 @@ class Checker(object):
                 hits.append(("denylist", "term #%d (len %d)" % match))
         return hits
 
+    def check_identity_name(self, path, role, name):
+        # A name is personal, so it is held to the private term list. With an
+        # empty list there is nothing to compare against.
+        if self.denylist and denylist_hit(normalize(name), self.denylist):
+            self.add("identity-name", path, "-",
+                     "%s matches a private term" % role)
+
     def check_identity_email(self, path, role, email):
         if identity_allowed(email):
             return
@@ -595,15 +671,17 @@ def parse_name_status(raw):
     return paths
 
 
-def changed_paths(root, sha):
+def changed_paths(root, sha, include_deleted=False):
     """Paths changed against every parent, including typechanges.
 
     For a merge this covers each parent through -m. For a root commit --root
-    makes the whole tree the change set.
+    makes the whole tree the change set. The gate-change decision needs the
+    deletions too, the content pass does not.
     """
+    diff_filter = "ACMRTD" if include_deleted else "ACMRT"
     raw = git_out(
         ["diff-tree", "-r", "-m", "--root", "--no-commit-id", "--name-status",
-         "-z", "--diff-filter=ACMRT", sha],
+         "-z", "--diff-filter=" + diff_filter, sha],
         root,
     )
     seen = set()
@@ -618,34 +696,73 @@ def changed_paths(root, sha):
 
 def commit_metadata(root, sha):
     raw = git_out(
-        ["log", "-1", "--no-show-signature", "--format=%B%x00%ae%x00%ce", sha],
+        ["log", "-1", "--no-show-signature",
+         "--format=%B%x00%ae%x00%ce%x00%an%x00%cn", sha],
         root,
     )
-    parts = raw.rsplit(b"\0", 2)
-    if len(parts) != 3:
+    parts = raw.rsplit(b"\0", 4)
+    if len(parts) != 5:
         die("cannot read commit metadata for %s" % sha)
-    return (
-        parts[0].decode("utf-8", "replace"),
-        parts[1].decode("utf-8", "replace").strip(),
-        parts[2].decode("utf-8", "replace").strip(),
-    )
+    return tuple(
+        [parts[0].decode("utf-8", "replace")]
+        + [part.decode("utf-8", "replace").strip() for part in parts[1:]])
+
+
+def baseline_commits(root, config, cache):
+    """The baseline commit and its ancestors, empty when there is none.
+
+    Those commits built the gate itself and predate the trailer rule. A
+    missing or unknown baseline exempts nothing, so an old approval can
+    never keep covering a new gate change.
+    """
+    if "gate-baseline" not in cache:
+        baseline = config.get("gate_change_baseline")
+        exempt = set()
+        if isinstance(baseline, str) and re.match(r"^[0-9a-fA-F]{40}$", baseline):
+            status, stdout, _stderr = git_soft(["rev-list", baseline], root)
+            if status == 0:
+                exempt = set(stdout.decode("utf-8", "replace").split())
+        cache["gate-baseline"] = exempt
+    return cache["gate-baseline"]
+
+
+def has_gate_trailer(message):
+    """True when the message carries the exact approval trailer line."""
+    for line in message.split("\n"):
+        if line.strip() == GATE_TRAILER:
+            return True
+    return False
 
 
 def check_commit(checker, root, sha, cache):
     short = sha[:12]
-    message, author_email, committer_email = commit_metadata(root, sha)
+    (message, author_email, committer_email,
+     author_name, committer_name) = commit_metadata(root, sha)
     checker.check_text(short, normalize(message))
     checker.check_identity_email(short, "author email", author_email)
     checker.check_identity_email(short, "committer email", committer_email)
+    checker.check_identity_name(short, "author name", author_name)
+    checker.check_identity_name(short, "committer name", committer_name)
+    approved = has_gate_trailer(message)
+    if sha not in baseline_commits(root, checker.config, cache):
+        # A deletion is a gate change too, so this pass reads the D statuses
+        # that the content pass below skips.
+        for path in changed_paths(root, sha, include_deleted=True):
+            display = normalize(path)
+            if not checker.is_gate_file(display):
+                continue
+            if approved:
+                sys.stdout.write(
+                    "privacy-gate: info: gate change approved in %s: %s\n"
+                    % (short, display))
+            else:
+                checker.add(
+                    "gate-change", display, "-",
+                    "add the trailer line %s to the commit message" % GATE_TRAILER)
     tree = {}
     for mode, blob, path in list_tree(root, sha):
         tree[path] = (mode, blob)
     for path in changed_paths(root, sha):
-        display = normalize(path)
-        if checker.is_gate_file(display):
-            sys.stdout.write(
-                "privacy-gate: info: gate file changed in %s: %s\n"
-                % (short, display))
         checker.check_path_string(path)
         entry = tree.get(path)
         if entry is None:
@@ -657,16 +774,32 @@ def check_commit(checker, root, sha, cache):
         checker.check_path(path, mode, blob_content(root, blob, cache))
 
 
+def parse_tagger(header):
+    """The tagger name and email from a tag header, or None."""
+    for line in header.decode("utf-8", "replace").split("\n"):
+        if not line.startswith("tagger "):
+            continue
+        match = re.match(r"^tagger (.*?)\s*<([^>]*)>", line)
+        if match:
+            return match.group(1).strip(), match.group(2).strip()
+    return None
+
+
 def check_tag_message(checker, root, ref, sha):
     kind = git_out(["cat-file", "-t", sha], root).decode("utf-8", "replace").strip()
     if kind != "tag":
         return
     raw = git_out(["cat-file", "tag", sha], root)
-    # The tag header carries the tagger identity, so only the message body is
-    # content here.
+    # The header carries the tagger identity, which is checked as an identity.
+    # The body below it is content.
     parts = raw.split(b"\n\n", 1)
     message = parts[1] if len(parts) == 2 else b""
     display = normalize(ref)
+    tagger = parse_tagger(parts[0])
+    if tagger is not None:
+        name, email = tagger
+        checker.check_identity_email(display, "tagger email", email)
+        checker.check_identity_name(display, "tagger name", name)
     text, is_binary = decode_content(message)
     if is_binary:
         checker.add("binary", display, "-", "NUL byte in tag message")
@@ -695,6 +828,101 @@ def commits_for_push(root, local_sha, remote_sha, remote):
     return rev_list_not_on_remote(root, local_sha, remote)
 
 
+def push_config_ref(root, remote, stdin_bytes):
+    """The revision whose rules bind this push.
+
+    The remote tip is the state the remote already holds, so a local rewrite
+    of the config cannot widen the rules applied here. A remote that is new
+    or unknown falls back to its remote HEAD, then to the local HEAD.
+    """
+    for raw_line in stdin_bytes.decode("utf-8", "replace").splitlines():
+        fields = raw_line.split()
+        if len(fields) != 4:
+            continue
+        remote_sha = fields[3]
+        if re.match(r"^0+$", remote_sha):
+            continue
+        status, _stdout, _stderr = git_soft(["cat-file", "-e", remote_sha], root)
+        if status == 0:
+            return remote_sha
+    if remote:
+        candidate = "refs/remotes/%s/HEAD" % remote
+        status, _stdout, _stderr = git_soft(
+            ["rev-parse", "--verify", "--quiet", candidate + "^{commit}"], root)
+        if status == 0:
+            return candidate
+    warn("no remote config anchor, reading the rules from HEAD")
+    return "HEAD"
+
+
+def gate_code_at(root, ref):
+    """The gate script at ref, or None when that revision has none."""
+    status, _stdout, _stderr = git_soft(
+        ["cat-file", "-e", "%s:%s" % (ref, GATE_SCRIPT)], root)
+    if status != 0:
+        return None
+    return git_out(["show", "%s:%s" % (ref, GATE_SCRIPT)], root)
+
+
+def running_gate_bytes():
+    """The bytes of the file that is running this check."""
+    path = os.path.abspath(__file__)
+    try:
+        with open(path, "rb") as handle:
+            return handle.read()
+    except OSError as exc:
+        die("cannot read %s: %s" % (path, exc))
+
+
+def rerun_trusted_code(root, remote, ref, code, stdin_bytes):
+    """Run the copy of the gate that the remote already holds.
+
+    The temporary file is readable and writable by its owner only and is
+    removed whether the child passes or fails.
+    """
+    handle, path = tempfile.mkstemp(prefix="privacy-gate-trusted.", suffix=".py")
+    try:
+        os.chmod(path, 0o600)
+        with os.fdopen(handle, "wb") as stream:
+            stream.write(code)
+        try:
+            # A gate older than the re-run rule rejects the flag it does not
+            # know, and it never re-runs anything itself, so it gets none.
+            args = ["python3", "-I", path, PUSH, remote]
+            if TRUSTED_CODE.encode("ascii") in code:
+                args.append(TRUSTED_CODE)
+            process = subprocess.run(
+                args,
+                cwd=root,
+                input=stdin_bytes,
+            )
+        except OSError as exc:
+            die("cannot run the gate code at %s: %s" % (ref, exc))
+    finally:
+        try:
+            os.unlink(path)
+        except OSError:
+            pass
+    return process.returncode
+
+
+def rerun_anchor_code(root, remote, anchor, stdin_bytes):
+    """Re-run the anchor copy of the gate, or None when it is not needed.
+
+    The code that judges a push has to be the code the remote already agreed
+    to, so a local edit can never weaken the check.
+    """
+    code = gate_code_at(root, anchor)
+    if code is None:
+        warn("no gate script at %s, judging with the local one" % anchor)
+        return None
+    if code == running_gate_bytes():
+        return None
+    sys.stdout.write(
+        "privacy-gate: info: re-running the gate code at %s\n" % anchor)
+    return rerun_trusted_code(root, remote, anchor, code, stdin_bytes)
+
+
 def check_push(checker, root, remote, stdin_bytes, cache):
     seen = set()
     for raw_line in stdin_bytes.decode("utf-8", "replace").splitlines():
@@ -716,7 +944,10 @@ def check_push(checker, root, remote, stdin_bytes, cache):
 
 
 def check_staged(checker, root, cache):
-    changed = decode_z(git_out(["diff", "--cached", "--name-only", "-z"], root))
+    # A staged deletion of a gate file is a gate change too.
+    changed = decode_z(git_out(
+        ["diff", "--cached", "--name-only", "-z", "--diff-filter=ACMRTDU"],
+        root))
     approved = os.environ.get(APPROVAL_ENV) == "1"
     for path in changed:
         display = normalize(path)
@@ -745,6 +976,9 @@ def check_staged_identity(checker, root):
     status, stdout, _stderr = git_soft(["config", "--get", "user.email"], root)
     email = stdout.decode("utf-8", "replace").strip() if status == 0 else ""
     checker.check_identity_email("user.email", "git config user.email", email)
+    status, stdout, _stderr = git_soft(["config", "--get", "user.name"], root)
+    name = stdout.decode("utf-8", "replace").strip() if status == 0 else ""
+    checker.check_identity_name("user.name", "git config user.name", name)
 
 
 def check_tree(checker, root, cache):
@@ -758,9 +992,32 @@ def check_tree(checker, root, cache):
 def check_history(checker, root, cache):
     for sha in git_out(["rev-list", "HEAD"], root).decode("utf-8", "replace").split():
         check_commit(checker, root, sha, cache)
+    # Annotated tags carry their own message and tagger, which no commit scan
+    # sees.
+    refs = git_out(
+        ["for-each-ref", "--format=%(objectname) %(refname)", "refs/tags"], root)
+    for line in refs.decode("utf-8", "replace").splitlines():
+        sha, _space, ref = line.partition(" ")
+        if sha and ref:
+            check_tag_message(checker, root, ref, sha)
 
 
-def check_message(checker, message_file):
+def staged_gate_paths(checker, root):
+    """Gate files in the index, deletions included.
+
+    Removing a gate file is as much a gate change as rewriting one.
+    """
+    paths = []
+    for path in decode_z(git_out(
+            ["diff", "--cached", "--name-only", "-z", "--diff-filter=ACMRTDU"],
+            root)):
+        display = normalize(path)
+        if checker.is_gate_file(display):
+            paths.append(display)
+    return paths
+
+
+def check_message(checker, root, message_file):
     try:
         with open(message_file, "r", encoding="utf-8", errors="replace") as handle:
             raw = handle.read()
@@ -770,6 +1027,19 @@ def check_message(checker, message_file):
     kept = ["" if line.startswith("#") else line for line in raw.split("\n")]
     checker.files_checked += 1
     checker.check_text(normalize(message_file), normalize("\n".join(kept)))
+    approved = os.environ.get(APPROVAL_ENV) == "1"
+    trailer = has_gate_trailer("\n".join(kept))
+    # A gate change needs the trailer in the message and the Operator's
+    # approval in the environment before the commit may exist.
+    for path in staged_gate_paths(checker, root):
+        if not trailer:
+            checker.add(
+                "gate-change", path, "-",
+                "add the trailer line %s to the commit message" % GATE_TRAILER)
+        elif not approved:
+            checker.add(
+                "gate-change", path, "-",
+                "only the Operator may set %s=1" % APPROVAL_ENV)
 
 
 def build_iban(country, bban):
@@ -899,6 +1169,44 @@ def run_self_test():
                "AWS_SECRET_ACCESS" + "_KEY = \"" + "example" + "-value-01\"")))
     expect("shell reference ignored",
            not secret_hits('password: "${DB_PASSWORD}"'))
+    spaced = "pass" + "word = \"" + "correct horse battery" + "\""
+    expect("quoted value with spaces blocks", bool(secret_hits(spaced)))
+    symbols = "tok" + "en: '" + "zq9!@#$%^&*q" + "'"
+    expect("quoted value with symbols blocks", bool(secret_hits(symbols)))
+    expect("db_pass name blocks",
+           bool(secret_hits("db_" + "pass = " + "zq9" + "x" * 8)))
+    expect("pwd name blocks",
+           bool(secret_hits("pw" + "d: " + "zq9" + "x" * 8)))
+    expect("shell variable value stays quiet",
+           not secret_hits('JORTT_TOK' + 'EN_DIR="$cache_root"'))
+    expect("escaped newline ends a bare value",
+           not secret_hits("printf 'Cached tok" + "en: no\\nRemaining minutes'"))
+    expect("plain link value stays quiet",
+           not secret_hits("- Moneybird auth" + "entication: https://developer.example.com/x"))
+    expect("link with credentials blocks",
+           bool(secret_hits("auth" + "_url: https://user:" + "zq9" + "x" * 8 + "@db.internal/")))
+    expect("bypass name stays quiet",
+           not secret_hits("bypass = somethingelse"))
+    expect("passthrough name stays quiet",
+           not secret_hits("passthrough = commandname"))
+    anywhere = {"blocked_paths": [],
+                "blocked_names_anywhere": ["personal database",
+                                           "migration-workspace", ".env"]}
+    expect("nested private folder is blocked",
+           path_blocked("sub/personal database/x.md", anywhere))
+    expect("nested workspace is blocked",
+           path_blocked("cli-x/migration-workspace/out.json", anywhere))
+    expect("nested env file is blocked", path_blocked("docs/.env", anywhere))
+    expect("nested env variant is blocked",
+           path_blocked("docs/.env.local", anywhere))
+    expect("nested env example stays allowed",
+           not path_blocked("docs/.env.example", anywhere))
+    expect("similar folder name stays allowed",
+           not path_blocked("docs/migration-workspace-notes.md", anywhere))
+    expect("tagger is read from a tag header",
+           parse_tagger(b"object abc\ntype commit\ntag v1\n"
+                        b"tagger Some One <x@example.org> 1 +0000")
+           == ("Some One", "x@example.org"))
 
     failed = [name for name, ok in results if not ok]
     for name in failed:
@@ -933,12 +1241,22 @@ def report(checker, mode):
 
 
 def main(argv):
-    mode, argument = parse_args(argv)
+    mode, argument, config_ref, trusted_code = parse_args(argv)
     if mode == SELF_TEST:
         return run_self_test()
 
     root = find_root()
-    config = load_config(root, mode)
+    stdin_bytes = sys.stdin.buffer.read() if mode == PUSH else b""
+    if mode == PUSH:
+        remote = argument or ""
+        anchor = push_config_ref(root, remote, stdin_bytes)
+        if not trusted_code:
+            status = rerun_anchor_code(root, remote, anchor, stdin_bytes)
+            if status is not None:
+                return status
+    else:
+        anchor = config_ref or "HEAD"
+    config = load_config(root, anchor)
     present, denylist, ignored_terms = load_denylist(root)
     checker = Checker(config, denylist)
 
@@ -958,13 +1276,13 @@ def main(argv):
         check_staged(checker, root, cache)
         check_staged_identity(checker, root)
     elif mode == PUSH:
-        check_push(checker, root, argument, sys.stdin.buffer.read(), cache)
+        check_push(checker, root, argument, stdin_bytes, cache)
     elif mode == TREE:
         check_tree(checker, root, cache)
     elif mode == HISTORY:
         check_history(checker, root, cache)
     else:
-        check_message(checker, argument)
+        check_message(checker, root, argument)
     return report(checker, mode)
 
 

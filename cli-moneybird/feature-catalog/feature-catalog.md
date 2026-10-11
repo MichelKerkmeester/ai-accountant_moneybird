@@ -20,7 +20,7 @@ This document combines the current feature inventory for the `cli-moneybird` ski
 
 Use this catalog as the canonical inventory for the live `cli-moneybird` feature surface. The numbered sections below group the skill by capability area so readers can move from a top-level summary into per-feature reference files without losing implementation or validation context.
 
-The skill has two working layers. The official `moneybird-cli` owns REST routing. The local `moneybird-guard` wraps every API call with a dry-run preview, a read-only lock, a confirmation lock, a pilot administration gate, a write log and an output boundary. Bank file imports, tax rate creation, period locks and manual VAT filing stay with the operator in the Moneybird UI.
+The skill has two working layers. The official `moneybird-cli` owns REST routing. The local `moneybird-guard` wraps every API call with a dry-run preview, a read-only lock, a confirmation lock, a writer configuration check, a pilot administration gate, an approval gate, a write log and an output boundary. Bank file imports, tax rate creation, period locks and manual VAT filing stay with the operator in the Moneybird UI.
 
 Every live write in this skill targets the pilot administration until the operator approves a production batch. The offline guard suite and the manual testing playbook are the validation anchors cited in each per-feature file.
 
@@ -70,7 +70,7 @@ Every guarded API call first runs the official CLI with --dry-run and reads its 
 
 #### Current Reality
 
-Help, version and local administration commands pass straight through. Every other call is previewed first. A preview that does not start with a `METHOD URL` line under `/api/v2/` stops the guard with exit 2. A GET runs after the preview and any other method moves on to the write gates.
+Help, version and local administration commands pass straight through. `administration use <id>` is gated: switching to the pilot administration passes, and switching to any other administration is treated as a production write. Every other call is previewed first. A preview that does not start with a `METHOD URL` line under `/api/v2/` stops the guard with exit 2. A GET runs after the preview and any other method moves on to the write gates.
 
 #### Source Files
 
@@ -116,7 +116,7 @@ A confirmed write must target the pilot administration unless the operator passe
 
 #### Current Reality
 
-The guard reads the pilot ID from the process environment or from `.env`. A different target needs `--production`. A write with no pilot set needs it too. When the writer session folder exists the guard repeats the dry-run with that session before the gate, so the gate checks the session that will write.
+The guard reads the pilot ID only from the Accountant folder `.env`. The environment variable of that name is ignored. A different target needs `--production`. A write with no pilot set needs it too. The guard repeats the dry-run with the writer session before the gate, so the gate checks the session that will write. A missing writer configuration stops the write with exit 7.
 
 #### Source Files
 
@@ -178,7 +178,7 @@ See [`reads-and-saved-output/period-filter-warning.md`](reads-and-saved-output/p
 
 #### Description
 
---out saves the raw response only to a file inside migration-workspace and prints an item count or top-level keys instead of the records. Any other path exits 5.
+--out saves the raw response only to a file inside migration-workspace and prints an item count or top-level keys instead of the records. Without --out the guard prints a one-line summary and no records. Any other path exits 5.
 
 #### Current Reality
 

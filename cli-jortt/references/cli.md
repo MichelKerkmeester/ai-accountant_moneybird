@@ -107,7 +107,7 @@ jortt-cli call get-customer-by-id --customer_id CUSTOMER_ID --dry-run
 
 `--PARAM VALUE` names must match path or query parameters in the spec. Unknown names fail with the valid parameter list. Required parameters and basic integer, number, boolean and enum values are checked before a request. Pass request bodies with `--data JSON` or `--data-file FILE`.
 
-`--all` follows `_links.next.href` and merges each page's `data` array into one JSON array. The API page size is at most 100 items. `--raw` prints the response without `jq` formatting. `--dry-run` prints the method, URL and JSON body without requesting a token or making a network call.
+`--all` follows `_links.next.href` and merges each page's `data` array into one JSON array. The API page size is at most 100 items. `--print-body` prints the full body (pretty JSON, or raw with `--raw`). `--raw` alone only changes the form of `--print-body` output. `--dry-run` prints the method, URL and JSON body without requesting a token or making a network call.
 
 ### Raw GET
 
@@ -128,11 +128,11 @@ This calls the organizations/me operation and prints only the HTTP status and to
 ### Fetch a signed download
 
 ```bash
-jortt-cli call download-url-for-a-receipt --id RECEIPT_ID --raw
+jortt-cli call download-url-for-a-receipt --id RECEIPT_ID --out receipt-url.json
 jortt-cli fetch SIGNED_HTTPS_URL --out receipt.pdf
 ```
 
-The API returns a short-lived link. `fetch` requires HTTPS and does not send an authorization header to the signed URL.
+The API returns a short-lived link. Read it from the saved file. `fetch` requires HTTPS and does not send an authorization header to the signed URL.
 
 ---
 
@@ -140,7 +140,11 @@ The API returns a short-lived link. `fetch` requires HTTPS and does not send an 
 
 Every `--out` and `fetch --out` destination must resolve inside `<Accountant root>/migration-workspace/`. Relative names resolve under that directory. Absolute paths must already be inside it. The CLI creates parent directories for a real write and rejects parent traversal, symlink parents and symlink output files.
 
-The migration workspace is gitignored. With `--out`, stdout contains only the HTTP status and an item count or top-level keys.
+The migration workspace is gitignored. `call` and `get` print a short summary by default. A list shows `HTTP 200, items: 25`. An object shows `HTTP 200, data items: 25, top-level keys: data, meta` (each array-valued key with its item count, then the top-level key names). Record content stays out of the terminal by default. `--out` saves the full body inside the workspace and prints the same summary.
+
+`--print-body` prints the full body to the terminal. The CLI refuses it with exit 2 when any agent session marker is set (`CLAUDECODE`, `AI_SESSION_CHILD`, `ACCOUNTANT_AGENT_SESSION` or `CODEX_SANDBOX`), and tells you to use `--out` and read the saved file instead. Agents never use `--print-body`.
+
+A non-2xx response prints only the status and safe labels to stderr. For example `jortt-cli: HTTP 422, fields: amount, customer_id.` or `jortt-cli: HTTP 401, error code: invalid_token.` Field names and short code-like error codes only, never free text. The full error body is appended to `migration-workspace/logs/jortt-errors.log` (file mode 600, gitignored), and the message says so.
 
 A non-GET operation is a write. The CLI exits 3 unless that call includes `--allow-write`. It exits 4 when the operation's scope is missing from `JORTT_SCOPES`. Both checks run before the network call. A dry-run write still requires the flag and scope.
 

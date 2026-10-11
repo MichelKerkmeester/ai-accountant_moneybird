@@ -23,7 +23,7 @@ The index lists all 23 phases in execution order and carries the old-to-new phas
 
 The last verified gate and the request determine the next phase. Load the index, the matching phase file, and shared mechanisms. Load the control framework for gate, risk, exception, stop, or year-lock details. Preserve exact owner tags. Keep Jortt uncancelled until Phase 22 passes and the Operator records a cancel-or-keep decision.
 
-Every phase uses the route contract in `shared-mechanisms.md`. Jortt reads run through jortt-cli only, XAF and other Jortt exports are Operator UI tasks, Moneybird reads run through moneybird-guard with `MONEYBIRD_GUARD_READ_ONLY=1`, a Moneybird write needs a passed gate, Operator approval and `--confirm-write`, plus `--production` for a production batch, and an HTTP 429 stops the call sequence for a guarded read-back before any retry.
+Every phase uses the route contract in `shared-mechanisms.md`. Jortt reads run through jortt-cli only, XAF and other Jortt exports are Operator UI tasks, Moneybird reads run through moneybird-guard with `MONEYBIRD_GUARD_READ_ONLY=1`, a Moneybird write needs a passed gate, Operator approval, `--confirm-write` and `--approval <ref>` for a flushed `WRITE_INTENT`, plus `--production` for a production batch, and an HTTP 429 stops the call sequence for a guarded read-back before any retry.
 
 ## 3. SOURCE FILES
 

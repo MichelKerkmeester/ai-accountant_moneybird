@@ -118,7 +118,7 @@ Phase 19 runs the actions in the order given, and every Moneybird write goes thr
 
 **Tool route** (from the phase reference):
 
-Moneybird reads use `moneybird-guard` with read-only lock and explicit month. After Phase 18 passes, each Operator-approved production correction uses the separate guarded writer session and `--production`. Bank import is Operator UI-only.
+Moneybird reads use `moneybird-guard` with read-only lock and explicit month. After Phase 18 passes, each Operator-approved production correction uses the separate guarded writer session, `--production`, and `--approval <ref>`. Bank import is Operator UI-only.
 
 Stop at the exit gate in spec.md section 5 and record the Operator approval in `decision-record.md`.
 <!-- /ANCHOR:phases -->

@@ -50,10 +50,10 @@ The operation decides the route. Use `jortt-cli` for supported reads. UI-only ta
 | Organization | `jortt-cli call get-the-organization-associated-with-the-api-credentials` or `jortt-cli whoami` | `organizations:read` |
 | Customers | `jortt-cli call list-customers --all --out customers.json` | `customers:read` |
 | Invoices | `jortt-cli call list-invoices-v3 --all --out invoices.json` | `invoices:read`. Fetch every page then filter locally because there is no date filter. |
-| Invoice download | `jortt-cli call download-invoice-pdf --id INVOICE_ID --raw` then `jortt-cli fetch SIGNED_URL --out invoice.pdf` | `invoices:read` |
+| Invoice download | `jortt-cli call download-invoice-pdf --id INVOICE_ID --out download-url.json`, read the signed URL from the saved file, then `jortt-cli fetch SIGNED_URL --out invoice.pdf` | `invoices:read` |
 | Expenses | `jortt-cli call list-expenses --vat_date_from YYYY-01-01 --vat_date_till YYYY-12-31 --all --out expenses-YYYY.json` | `expenses:read` |
 | Receipts and inbox | `jortt-cli call list-receipts --scope in_inbox --all --out receipts-inbox.json` | `receipts:read` |
-| Receipt download | `jortt-cli call download-url-for-a-receipt --id RECEIPT_ID --raw` then `jortt-cli fetch SIGNED_URL --out receipt.pdf` | `receipts:read` |
+| Receipt download | `jortt-cli call download-url-for-a-receipt --id RECEIPT_ID --out download-url.json`, read the signed URL from the saved file, then `jortt-cli fetch SIGNED_URL --out receipt.pdf` | `receipts:read` |
 | Bank accounts | `jortt-cli call list-bank-accounts-v3 --out bank-accounts.json` | `financing:read` |
 | Bank transactions | `jortt-cli call list-bank-transactions-v3 --id BANK_ACCOUNT_ID --all --out bank-transactions.json` | `financing:read` |
 | Ledger account categories | `jortt-cli call list-cost-ledger-accounts`, `jortt-cli call list-income-ledger-accounts`, `jortt-cli call list-balance-ledger-accounts` or `jortt-cli call list-invoice-ledger-accounts` | Scope follows each operation in `jortt-cli describe`. |
@@ -61,7 +61,7 @@ The operation decides the route. Use `jortt-cli` for supported reads. UI-only ta
 | Profit and loss | `jortt-cli call profit-and-loss-report --year YYYY --out profit-and-loss.json` | `reports:read` |
 | Balance | `jortt-cli call balance-report --year YYYY --out balance.json` | `reports:read` |
 | VAT period summary | `jortt-cli call dashboard-btw --out vat-summary.json` | `reports:read`. This is a summary, not the filed return. |
-| Attachment download | `jortt-cli call download-url-for-attachments --id ATTACHMENT_ID --name FILE_NAME --raw` then `jortt-cli fetch SIGNED_URL --out attachment.bin` | `organizations:read` |
+| Attachment download | `jortt-cli call download-url-for-attachments --id ATTACHMENT_ID --name FILE_NAME --out download-url.json`, read the signed URL from the saved file, then `jortt-cli fetch SIGNED_URL --out attachment.bin` | `organizations:read` |
 | Labels | `jortt-cli call list-labels --out labels.json` | `organizations:read` |
 | Projects | `jortt-cli call list-projects --all --out projects.json` | `invoices:read` |
 | Data question | Use the smallest `jortt-cli` read that answers the question. State the API limit when no route exists. | Select and describe the matching operation, then request only the needed records. |
@@ -70,7 +70,7 @@ The operation decides the route. Use `jortt-cli` for supported reads. UI-only ta
 | Filed VAT returns | Download through the Jortt UI. | Ask the operator. There is no filed-return API endpoint. |
 | General ledger export | No API or UI export exists. | Unavailable. Do not label another report as a general ledger. |
 
-All relative `--out` names resolve inside `<Accountant root>/migration-workspace/`, which is gitignored. A command without `--out` prints the response to stdout. Use `--out` for migration extracts.
+All relative `--out` names resolve inside `<Accountant root>/migration-workspace/`, which is gitignored. A command without `--out` prints a summary, not the record content. Use `--out` for migration extracts.
 
 ### Resource Domains
 

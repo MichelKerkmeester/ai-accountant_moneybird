@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 18: Switch to live bookkeeping, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:56.074Z",
-    "last_save_at": "2026-10-11T15:08:46.767Z",
+    "last_save_at": "2026-10-11T16:43:43.485Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,11 +206,11 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:77505a43db59dcc18203053e15e62eb71ff17f5ff6f3e15f71b2619b0dbb2ef3",
+    "source_fingerprint": "sha256:c7e6c3224acde639382d9c03d5507e581d219e3c994e1b88b81abfee26c30c0f",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
       "spec.md": "5a8fd57eb79af72c7e2309fd964f9d556fc6e0158469030237e3b2a113b98e2f",
-      "plan.md": "b1eb1f6eafdbdb558adf7e6e2e49b053695f8cd2655e70cc8e1a0aecab171c6d",
+      "plan.md": "b62aa2fc9a8296d72a3f0445cb9cfe199af336459e2d52e7d9856f67e6d30629",
       "tasks.md": "a4e8cf77ebb42995ba9ecc39e25b668757d37aa038bd4f6cb5f1e8160c9eeb76",
       "decision-record.md": "06b7d2a6e3270da480aa7960a6f75b66b1a5cb76dddf015e2a8a8c1e11950326",
       "implementation-summary.md": "557d92a9451b1ddfcb35b90b5ca3c73e29fd6ec036fa580b479f5fb904eafa99"

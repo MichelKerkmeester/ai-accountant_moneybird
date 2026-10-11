@@ -33,7 +33,7 @@ A `..` segment, a symlinked workspace, a symlink in any parent directory, a syml
 
 ### Output Summary
 
-With `--out` set, stdout shows only `HTTP` with the status and either `items:` with a count or `top-level keys:`. The records themselves stay in the file.
+With `--out` set, stdout shows only the summary line: `HTTP 200, items: 25` for a list, or `HTTP 200, data items: 25, top-level keys: data, meta` for an object. The records themselves stay in the file.
 
 ---
 

@@ -17,6 +17,7 @@
     "cli-moneybird/cli/moneybird-cli/moneybird-guard",
     "cli-moneybird/cli/moneybird-cli/tests/stub-moneybird-cli",
     ".githooks/pre-commit",
+    ".githooks/pre-merge-commit",
     ".githooks/pre-push",
     ".githooks/commit-msg",
     ".githooks/prepare-commit-msg",
@@ -32,6 +33,12 @@
     ".env",
     ".privacy-denylist"
   ],
+  "blocked_names_anywhere": [
+    "personal database",
+    "migration-workspace",
+    ".env",
+    ".privacy-denylist"
+  ],
   "blocked_path_exceptions": [
     {
       "prefix": "specs/000-migration-template/",
@@ -39,6 +46,7 @@
     }
   ],
   "max_file_bytes": 524288,
+  "gate_change_baseline": "08a0ab12c30cc2b5302bea2a9a47b9b0d7a8b732",
   "amount_allowed_files": [
     "sk-moneybird-accountant/references/moneybird-bookkeeping.md",
     "sk-moneybird-accountant/references/migration/overview-and-setup.md",
@@ -63,9 +71,15 @@
     "scripts/privacy-gate.py",
     "scripts/privacy-gate-test.sh",
     "scripts/install-hooks.sh",
-    ".github/workflows/privacy-gate.yml"
+    ".github/workflows/privacy-gate.yml",
+    ".gitignore",
+    ".github/dependabot.yml",
+    "sk-moneybird-accountant/scripts/generate-plan-kit.py",
+    "sk-moneybird-accountant/scripts/plan-kit-test.sh",
+    "sk-moneybird-accountant/scripts/init-workspace.sh"
   ],
   "gate_directories": [
-    ".githooks/"
+    ".githooks/",
+    ".github/workflows/"
   ]
 }

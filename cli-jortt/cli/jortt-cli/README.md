@@ -22,7 +22,7 @@ version: 1.0.0.0
 | **Use it for** | Find and call Jortt REST operations from a terminal or agent |
 | **Invoke with** | `jortt-cli ops`, `describe`, `call`, `get`, `fetch`, `whoami` or `spec` |
 | **Works on** | Bash 3.2 or newer with curl and jq |
-| **Produces** | JSON output or files saved inside the ignored migration workspace |
+| **Produces** | Response summaries by default, the full body with `--print-body`, or files saved inside the ignored migration workspace |
 
 ---
 
@@ -77,7 +77,7 @@ Expected: local spec details, an HTTP status with field names, the expense opera
 | `token status` | Print token cache presence and remaining minutes |
 | `token clear` | Delete the token cache entry for the configured client and scopes |
 
-`call` accepts `--PARAM VALUE`, `--data JSON`, `--data-file FILE`, `--all`, `--out FILE`, `--raw`, `--dry-run` and `--allow-write`. See [`../../references/cli.md`](../../references/cli.md) for full details.
+`call` accepts `--PARAM VALUE`, `--data JSON`, `--data-file FILE`, `--all`, `--out FILE`, `--print-body`, `--raw`, `--dry-run` and `--allow-write`. See [`../../references/cli.md`](../../references/cli.md) for full details.
 
 ---
 
@@ -89,6 +89,7 @@ Expected: local spec details, an HTTP status with field names, the expense opera
 - `--dry-run` does not fetch a token or make a network call.
 - `--all` follows next links and merges `data` arrays.
 - `--out` and `fetch --out` reject paths outside migration-workspace.
+- `--print-body` prints the full body but is refused with exit 2 when any agent session marker is set, and the message says to use `--out` and read the saved file.
 - Signed downloads use HTTPS and do not receive the Jortt bearer token.
 
 ---

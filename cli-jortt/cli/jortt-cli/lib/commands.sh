@@ -159,30 +159,46 @@ jortt_page_all() {
   JORTT_RESULT_BODY="$accumulated"
 }
 
+jortt_body_summary() {
+  local body="$1"
+  printf '%s' "$body" | jq -r '
+    if type == "array" then
+      "items: \(length)"
+    elif type == "object" then
+      ([to_entries[] | select(.value | type == "array") | "\(.key) items: \(.value | length)"]
+        + [if (keys | length) == 0 then "top-level keys: none" else "top-level keys: \(keys | join(", "))" end]
+        | join(", "))
+    else
+      "top-level type: \(type)"
+    end
+  ' 2>/dev/null || printf 'top-level keys: unavailable'
+}
+
 jortt_print_or_save() {
   local body="$1"
   local status="$2"
   local raw="$3"
   local out_path="$4"
-  local summary
+  local print_body="$5"
+  if [ "$print_body" = "1" ]; then
+    jortt_check_print_body_allowed
+  fi
   if [ -n "$out_path" ]; then
     jortt_write_output "$out_path" "$body"
-    summary="$(printf '%s' "$body" | jq -r '
-      if type == "array" then "items: \(length)"
-      elif (.data | type) == "array" then "items: \(.data | length)"
-      elif type == "object" then "top-level keys: \(keys | join(", "))"
-      else "top-level type: \(type)" end
-    ' 2>/dev/null || printf 'top-level keys: unavailable')"
-    printf 'HTTP %s, %s\n' "$status" "$summary"
+    printf 'HTTP %s, %s\n' "$status" "$(jortt_body_summary "$body")"
     return 0
   fi
-  if [ "$raw" = "1" ]; then
-    printf '%s\n' "$body"
-  elif printf '%s' "$body" | jq . 2>/dev/null; then
-    :
-  else
-    printf '%s\n' "$body"
+  if [ "$print_body" = "1" ]; then
+    if [ "$raw" = "1" ]; then
+      printf '%s\n' "$body"
+    elif printf '%s' "$body" | jq . 2>/dev/null; then
+      :
+    else
+      printf '%s\n' "$body"
+    fi
+    return 0
   fi
+  printf 'HTTP %s, %s\n' "$status" "$(jortt_body_summary "$body")"
 }
 
 jortt_cmd_ops() {
@@ -244,7 +260,7 @@ EOF_QUERIES
 jortt_cmd_call() {
   local slug="$1"
   shift
-  local operation method path scope body_data data_set=0 all=0 raw=0 dry_run=0 allow_write=0 out='' names=() values=() url summary
+  local operation method path scope body_data data_set=0 all=0 raw=0 print_body=0 dry_run=0 allow_write=0 out='' names=() values=() url
   while [ "$#" -gt 0 ]; do
     case "$1" in
       --data)
@@ -260,6 +276,7 @@ jortt_cmd_call() {
         ;;
       --all) all=1; shift ;;
       --raw) raw=1; shift ;;
+      --print-body) print_body=1; shift ;;
       --dry-run) dry_run=1; shift ;;
       --allow-write) allow_write=1; shift ;;
       --out)
@@ -277,6 +294,9 @@ jortt_cmd_call() {
       *) jortt_error 2 "Unexpected argument: $1" ;;
     esac
   done
+  if [ "$print_body" = "1" ]; then
+    jortt_check_print_body_allowed
+  fi
   jortt_ensure_spec
   operation="$(jortt_operation "$slug")"
   [ -n "$operation" ] || jortt_error 2 "Unknown operation slug: $slug. Run jortt-cli ops to list operations."
@@ -330,17 +350,17 @@ jortt_cmd_call() {
   if [ "$all" = "1" ]; then
     [ "$method" = "GET" ] || jortt_error 2 "--all is supported for GET operations only."
     jortt_page_all "$method" "$url" "$body_data" || return 1
-    jortt_print_or_save "$JORTT_RESULT_BODY" "$JORTT_HTTP_STATUS" "$raw" "$out"
+    jortt_print_or_save "$JORTT_RESULT_BODY" "$JORTT_HTTP_STATUS" "$raw" "$out" "$print_body"
   else
     jortt_request "$method" "$url" "$body_data" || return 1
-    jortt_print_or_save "$JORTT_HTTP_BODY" "$JORTT_HTTP_STATUS" "$raw" "$out"
+    jortt_print_or_save "$JORTT_HTTP_BODY" "$JORTT_HTTP_STATUS" "$raw" "$out" "$print_body"
   fi
 }
 
 jortt_cmd_get() {
   local path="$1"
   shift
-  local all=0 raw=0 out='' url separator pair name value encoded
+  local all=0 raw=0 print_body=0 out='' url separator pair name value encoded
   local pairs=()
   case "$path" in
     http://*|https://*|*\?*|*\#*) jortt_error 2 "get accepts an API path without a host, query string or fragment." ;;
@@ -350,6 +370,7 @@ jortt_cmd_get() {
     case "$1" in
       --all) all=1; shift ;;
       --raw) raw=1; shift ;;
+      --print-body) print_body=1; shift ;;
       --out)
         [ "$#" -ge 2 ] || jortt_error 2 "--out requires a file path."
         out="$2"; shift 2
@@ -363,6 +384,9 @@ jortt_cmd_get() {
         ;;
     esac
   done
+  if [ "$print_body" = "1" ]; then
+    jortt_check_print_body_allowed
+  fi
   if [ -n "$out" ]; then
     JORTT_CREATE_WORKSPACE=1
     jortt_resolve_output "$out" "$JORTT_CREATE_WORKSPACE"
@@ -379,10 +403,10 @@ jortt_cmd_get() {
   done
   if [ "$all" = "1" ]; then
     jortt_page_all GET "$url" '' || return 1
-    jortt_print_or_save "$JORTT_RESULT_BODY" "$JORTT_HTTP_STATUS" "$raw" "$out"
+    jortt_print_or_save "$JORTT_RESULT_BODY" "$JORTT_HTTP_STATUS" "$raw" "$out" "$print_body"
   else
     jortt_request GET "$url" '' || return 1
-    jortt_print_or_save "$JORTT_HTTP_BODY" "$JORTT_HTTP_STATUS" "$raw" "$out"
+    jortt_print_or_save "$JORTT_HTTP_BODY" "$JORTT_HTTP_STATUS" "$raw" "$out" "$print_body"
   fi
 }
 

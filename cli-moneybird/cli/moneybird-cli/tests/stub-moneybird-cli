@@ -86,7 +86,13 @@ if [[ -n "${MONEYBIRD_TEST_REAL_STATUS:-}" ]]; then
   exit "$MONEYBIRD_TEST_REAL_STATUS"
 fi
 case "$METHOD" in
-  GET) printf '[{"id":"stub-record"}]\n' ;;
+  GET)
+    if [[ "$ACTION" == "get" ]]; then
+      printf '{"id":"stub-record","company_name":"Secret Name","contacts":[{"id":"child-record"}]}\n'
+    else
+      printf '[{"id":"stub-record"}]\n'
+    fi
+    ;;
   POST|PATCH) printf '{"id":"stub-record"}\n' ;;
   DELETE) ;;
 esac

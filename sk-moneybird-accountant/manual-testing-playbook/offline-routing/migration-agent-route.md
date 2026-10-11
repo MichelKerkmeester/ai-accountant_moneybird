@@ -60,7 +60,7 @@ A local-only check verifies route and journal behavior while keeping accounting 
 
 ### Expected
 
-The Agent runner coordinates the Implementer, Verifier, Final reviewer, and separate Migration Writer seat. The Implementer and Verifier receive summaries only. Local scripts perform record-level work. AGENT_DRAFTED is not verified and restarts at verification. No write proceeds without Verifier PASS and Operator approval. No service is called.
+The Agent runner coordinates the Implementer, Verifier, Final reviewer, and separate Migration Writer seat. Every seat receives summaries only. Local scripts perform record-level work. AGENT_DRAFTED is not verified and restarts at verification. No write proceeds without Verifier PASS and Operator approval. No service is called.
 
 ### Evidence
 

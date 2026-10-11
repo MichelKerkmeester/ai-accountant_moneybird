@@ -103,7 +103,7 @@ Phase 10 runs the actions in the order given, and every Moneybird write goes thr
 
 **Phase actions** (from the phase reference):
 
-[Independent Auditor] runs account-level comparisons. [Mapping Agent] maps source accounts. [Operator] approves the exact guarded report-export request, year, and version after the Phase 9 gate. [Migration Writer] flushes an operation-scoped WRITE_INTENT containing the requested operation and payload hash, then uses the separate writer session for that report export. [Red Team] checks missing accounts and periods. Gate verifier: [Independent Auditor] verifies the receipt, artifact hash, and mapped account comparisons. The export approver cannot grant general write access to analysis sessions.
+[Independent Auditor] runs account-level comparisons. [Mapping Agent] maps source accounts. [Operator] approves the exact guarded report-export request, year, and version after the Phase 9 gate. [Migration Writer] flushes an operation-scoped WRITE_INTENT containing the requested operation, payload hash, and approval reference, then uses the separate writer session for that report export with `--approval <ref>`. [Red Team] checks missing accounts and periods. Gate verifier: [Independent Auditor] verifies the receipt, artifact hash, and mapped account comparisons. The export approver cannot grant general write access to analysis sessions.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the year-end comparison. [Verifier] independently recomputes year-end values. [Final reviewer] reviews the phase before Operator approvals.
 
@@ -122,7 +122,7 @@ Phase 10 runs the actions in the order given, and every Moneybird write goes thr
 
 **Tool route** (from the phase reference):
 
-Moneybird report reads use guarded read-only access with explicit year. The first guarded auditfile report-export POST occurs only after the Phase 9 gate passes, using the exact Operator approval, a flushed operation-scoped WRITE_INTENT, and `--confirm-write` in a separate approved writer session. The pinned route and dry-run must match the approved report operation and version. Download and hash the completed artifact in a separate locked reader session. Never clear the read-only lock in a reader session. Jortt XAF is Operator UI-only.
+Moneybird report reads use guarded read-only access with explicit year. The first guarded auditfile report-export POST occurs only after the Phase 9 gate passes, using the exact Operator approval, a flushed operation-scoped WRITE_INTENT, `--confirm-write`, and `--approval <ref>` for that entry in a separate approved writer session. The pinned route and dry-run must match the approved report operation and version. Download and hash the completed artifact in a separate locked reader session. Never clear the read-only lock in a reader session. Jortt XAF is Operator UI-only.
 
 Stop at the exit gate in spec.md section 5 and record the Operator approval in `decision-record.md`.
 <!-- /ANCHOR:phases -->

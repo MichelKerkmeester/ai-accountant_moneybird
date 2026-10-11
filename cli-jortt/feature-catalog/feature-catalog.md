@@ -97,7 +97,7 @@ Calls any spec operation by slug after validating parameter names, required valu
 
 #### Current Reality
 
-`call SLUG` accepts `--PARAM VALUE`, `--data`, `--data-file`, `--all`, `--out`, `--raw`, `--dry-run` and `--allow-write`. Every input check runs before a token is requested.
+`call SLUG` accepts `--PARAM VALUE`, `--data`, `--data-file`, `--all`, `--out`, `--print-body`, `--raw`, `--dry-run` and `--allow-write`. It prints a short summary by default and keeps record content out of the terminal. `--print-body` is refused when an agent session marker is set. Every input check runs before a token is requested.
 
 #### Source Files
 

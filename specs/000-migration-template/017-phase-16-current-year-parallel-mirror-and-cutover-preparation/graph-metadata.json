@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 16: Current-year parallel mirror and cutover preparation, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:55.735Z",
-    "last_save_at": "2026-10-11T15:08:46.152Z",
+    "last_save_at": "2026-10-11T16:43:43.151Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,11 +206,11 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:0a03536defc4cce0c0c9f11ab196979cef7dcec09ecf7cf30c5c7d44e7189b4f",
+    "source_fingerprint": "sha256:335d3c5dbf4aa10f36cb7b717961838a2446cb98d5edafde12fe8f52edd2f695",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
       "spec.md": "0dbf9971cf87334c2df430395693c2f1124cf26ea71792752510e47c9e061e9c",
-      "plan.md": "3540ca49a86332dfca02b927761728c9e84dd597b5cf353abf3578a275c80003",
+      "plan.md": "1fe6e2b5f2c121e761ea2903e499a5940cfc8a8ba4e53c1ecc4b98a9cf96d6e3",
       "tasks.md": "aa695c24e00cd274f3e7d9bf8e808bbd51ef919b18f2857e774a61776a0b0a1c",
       "decision-record.md": "510a80775899874baf4f58414b8782a91f5f5ceeda68f5fd6a70c95c7a77db16",
       "implementation-summary.md": "c9d11d5f9314ca78810f1cf8c97077722e8144421c9e2e802996527c2753efc5"

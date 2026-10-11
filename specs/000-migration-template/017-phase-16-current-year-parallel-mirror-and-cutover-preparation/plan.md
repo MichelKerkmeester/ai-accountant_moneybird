@@ -113,7 +113,7 @@ For each assigned period: process new documents, compare to source ledger eviden
 
 **Tool route** (from the phase reference):
 
-Jortt reads through `jortt-cli`. Moneybird reads through guarded read-only access with explicit periods. Approved mirror writes use `moneybird-guard` with `--confirm-write` and M6. Bank imports remain Operator UI-only.
+Jortt reads through `jortt-cli`. Moneybird reads through guarded read-only access with explicit periods. Approved mirror writes use `moneybird-guard` with `--confirm-write`, `--approval <ref>`, and M6. Bank imports remain Operator UI-only.
 
 Stop at the exit gate in spec.md section 5 and record the Operator approval in `decision-record.md`.
 <!-- /ANCHOR:phases -->

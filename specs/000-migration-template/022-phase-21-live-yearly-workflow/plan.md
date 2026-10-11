@@ -125,7 +125,7 @@ Phase 21 runs the actions in the order given, and every Moneybird write goes thr
 
 **Tool route** (from the phase reference):
 
-Moneybird reads use guarded read-only access with explicit periods. Period lock is Operator UI-only. Tax filing and portal evidence are Operator-only. After Phase 18 passes, each Operator-approved production correction uses the separate guarded writer session and `--production`.
+Moneybird reads use guarded read-only access with explicit periods. Period lock is Operator UI-only. Tax filing and portal evidence are Operator-only. After Phase 18 passes, each Operator-approved production correction uses the separate guarded writer session, `--production`, and `--approval <ref>`.
 
 Stop at the exit gate in spec.md section 5 and record the Operator approval in `decision-record.md`.
 <!-- /ANCHOR:phases -->

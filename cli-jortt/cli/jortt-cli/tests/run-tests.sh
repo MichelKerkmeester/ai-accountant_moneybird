@@ -90,5 +90,183 @@ CODE=$?
 set -e
 if [ "$CODE" -eq 5 ]; then record "out-of-workspace fetch exits 5" 1; else record "out-of-workspace fetch exits 5" 0; fi
 
+STUB_DIR="$TEMP_ROOT/bin"
+FAKE_ROOT="$TEMP_ROOT/repo"
+FAKE_CLI="$FAKE_ROOT/cli-jortt/cli/jortt-cli/jortt-cli"
+mkdir -p "$STUB_DIR" "$TEMP_ROOT/tmp" "$FAKE_ROOT/cli-jortt/cli/jortt-cli/lib"
+cp "$CLI" "$FAKE_CLI"
+cp "$HERE/../lib/"*.sh "$FAKE_ROOT/cli-jortt/cli/jortt-cli/lib/"
+chmod +x "$FAKE_CLI"
+
+cat > "$STUB_DIR/curl" <<'STUB_CURL'
+#!/usr/bin/env bash
+# WHY: Answer requests from files so the CLI contract is testable offline.
+set -euo pipefail
+config_file=''
+destination=''
+read_stdin=0
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --config)
+      config_file="$2"
+      shift 2
+      ;;
+    -D)
+      : > "$2"
+      shift 2
+      ;;
+    -o)
+      destination="$2"
+      shift 2
+      ;;
+    -w)
+      shift 2
+      ;;
+    --data-binary)
+      case "$2" in
+        @-) read_stdin=1 ;;
+      esac
+      shift 2
+      ;;
+    -fsSL|-sS|-L|-f|-S)
+      shift
+      ;;
+    --retry)
+      shift 2
+      ;;
+    *)
+      shift
+      ;;
+  esac
+done
+if [ "$read_stdin" = "1" ]; then
+  cat >/dev/null 2>&1 || true
+fi
+url="$(awk -F'"' '/^url = "/ { print $2; exit }' "$config_file" 2>/dev/null)" || url=''
+case "$url" in
+  https://app.jortt.nl/oauth-provider/oauth/token*)
+    body='{"access_token":"stub-token","expires_in":3600}'
+    status='200'
+    ;;
+  *)
+    body="$(cat "${STUB_HTTP_BODY_FILE:?}")"
+    status="${STUB_HTTP_STATUS:-200}"
+    ;;
+esac
+if [ -n "$destination" ]; then
+  printf '%s' "$body" > "$destination"
+  printf '%s' "$status"
+else
+  printf '%s\n%s' "$body" "$status"
+fi
+STUB_CURL
+chmod +x "$STUB_DIR/curl"
+
+fake_body() {
+  printf '%s' "$1" > "$FAKE_ROOT/response.json"
+}
+
+run_fake() {
+  env -u CLAUDECODE -u AI_SESSION_CHILD -u ACCOUNTANT_AGENT_SESSION -u CODEX_SANDBOX \
+    PATH="$STUB_DIR:$PATH" TMPDIR="$TEMP_ROOT/tmp" \
+    STUB_HTTP_BODY_FILE="$FAKE_ROOT/response.json" STUB_HTTP_STATUS="${STUB_HTTP_STATUS:-200}" \
+    JORTT_OPENAPI_FILE="$SPEC" JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null \
+    "$FAKE_CLI" "$@"
+}
+
+fake_body '{"data":[{"id":1,"name":"Secret Customer"},{"id":2,"name":"Other Customer"}],"_links":{"next":null}}'
+set +e
+SUMMARY="$(run_fake get /customers 2>&1)"
+SUMMARY_CODE=$?
+set -e
+if [ "$SUMMARY_CODE" -eq 0 ] \
+  && printf '%s' "$SUMMARY" | grep -q 'HTTP 200' \
+  && printf '%s' "$SUMMARY" | grep -q 'data items: 2' \
+  && printf '%s' "$SUMMARY" | grep -q 'top-level keys: _links, data' \
+  && ! printf '%s' "$SUMMARY" | grep -q 'Secret Customer'; then
+  record "summary is the default output and hides values" 1
+else
+  record "summary is the default output and hides values" 0
+fi
+
+set +e
+SAVE_OUTPUT="$(run_fake get /customers --out migration-workspace/exports/customers.json 2>&1)"
+SAVE_CODE=$?
+set -e
+SAVED_FILE="$FAKE_ROOT/migration-workspace/exports/customers.json"
+if [ "$SAVE_CODE" -eq 0 ] \
+  && printf '%s' "$SAVE_OUTPUT" | grep -q 'data items: 2' \
+  && jq -e '.data | length == 2' "$SAVED_FILE" >/dev/null 2>&1 \
+  && grep -q 'Secret Customer' "$SAVED_FILE"; then
+  record "--out saves the full body and still prints a summary" 1
+else
+  record "--out saves the full body and still prints a summary" 0
+fi
+
+set +e
+BODY_OUTPUT="$(run_fake get /customers --print-body 2>&1)"
+BODY_CODE=$?
+set -e
+if [ "$BODY_CODE" -eq 0 ] \
+  && printf '%s' "$BODY_OUTPUT" | grep -q 'Secret Customer' \
+  && printf '%s' "$BODY_OUTPUT" | grep -q '"name"'; then
+  record "--print-body prints the full body without session markers" 1
+else
+  record "--print-body prints the full body without session markers" 0
+fi
+
+MARKER_FAILURES=0
+for MARKER in CLAUDECODE AI_SESSION_CHILD ACCOUNTANT_AGENT_SESSION CODEX_SANDBOX; do
+  set +e
+  MARKER_OUTPUT="$(env "$MARKER=1" PATH="$STUB_DIR:$PATH" TMPDIR="$TEMP_ROOT/tmp" \
+    STUB_HTTP_BODY_FILE="$FAKE_ROOT/response.json" \
+    JORTT_OPENAPI_FILE="$SPEC" JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null \
+    "$FAKE_CLI" call list-expenses --print-body 2>&1)"
+  MARKER_CODE=$?
+  set -e
+  case "$MARKER_OUTPUT" in
+    *$'\n'*) MARKER_FAILURES=$((MARKER_FAILURES + 1)) ;;
+  esac
+  if [ "$MARKER_CODE" -ne 2 ] || ! printf '%s' "$MARKER_OUTPUT" | grep -q -- '--print-body'; then
+    MARKER_FAILURES=$((MARKER_FAILURES + 1))
+  fi
+done
+if [ "$MARKER_FAILURES" -eq 0 ]; then record "--print-body is refused with a one-line reason for every marker" 1; else record "--print-body is refused with a one-line reason for every marker" 0; fi
+
+set +e
+GET_MARKER_OUTPUT="$(env CLAUDECODE=1 PATH="$STUB_DIR:$PATH" TMPDIR="$TEMP_ROOT/tmp" \
+  STUB_HTTP_BODY_FILE="$FAKE_ROOT/response.json" \
+  JORTT_OPENAPI_FILE="$SPEC" JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null \
+  "$FAKE_CLI" get /customers --print-body 2>&1)"
+GET_MARKER_CODE=$?
+set -e
+if [ "$GET_MARKER_CODE" -eq 2 ] && printf '%s' "$GET_MARKER_OUTPUT" | grep -q -- '--print-body'; then
+  record "get refuses --print-body in an agent session" 1
+else
+  record "get refuses --print-body in an agent session" 0
+fi
+
+fake_body '{"message":"Secret Customer is invalid","errors":{"vat_number":["is not valid"]}}'
+export STUB_HTTP_STATUS=422
+set +e
+ERROR_OUTPUT="$(run_fake get /customers 2>&1)"
+ERROR_CODE=$?
+set -e
+unset STUB_HTTP_STATUS
+ERROR_LOG="$FAKE_ROOT/migration-workspace/logs/jortt-errors.log"
+ERROR_LOG_MODE="$(stat -c '%a' "$ERROR_LOG" 2>/dev/null || stat -f '%Lp' "$ERROR_LOG" 2>/dev/null || printf '')"
+if [ "$ERROR_CODE" -eq 1 ] \
+  && printf '%s' "$ERROR_OUTPUT" | grep -q 'HTTP 422' \
+  && printf '%s' "$ERROR_OUTPUT" | grep -q 'fields: vat_number' \
+  && ! printf '%s' "$ERROR_OUTPUT" | grep -q 'Secret Customer' \
+  && ! printf '%s' "$ERROR_OUTPUT" | grep -q 'is not valid' \
+  && printf '%s' "$ERROR_OUTPUT" | grep -q 'jortt-errors.log' \
+  && [ "$ERROR_LOG_MODE" = "600" ] \
+  && grep -q 'Secret Customer is invalid' "$ERROR_LOG"; then
+  record "API errors hide message text and log the full body at mode 600" 1
+else
+  record "API errors hide message text and log the full body at mode 600" 0
+fi
+
 printf 'Result: %s passed, %s failed\n' "$PASS" "$FAIL"
 [ "$FAIL" -eq 0 ]
