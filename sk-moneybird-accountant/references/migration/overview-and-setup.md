@@ -132,8 +132,8 @@ The Orchestrator maintains the versioned config. The Operator supplies or approv
 | `access.paid_package_horizon` | [Operator] | Phase 17 | By the Phase 17 gate, confirm coverage through the next live VAT period and year close. |
 | `parallel.cycles_required` | [Operator] | Phase 0 | Positive minimum number of pre-cutover parallel comparison cycles or a duration, with rationale. Phase 16 checks completed cycles against it. |
 | `monitoring.start_date` | [Orchestrator] | Derived when Phase 18 passes | Date Phase 18 passes. |
-| `monitoring.duration` | [Operator] | Phase 0 | Positive configured monitoring duration and unit. |
-| `monitoring.end_date` | [Orchestrator] | Derived when Phase 18 passes | Derived from the approved start date and duration. |
+| `monitoring.duration` | [Operator] | Phase 0 | Positive configured monitoring duration and unit, or `OPEN_ENDED`, where monitoring runs until the Operator records its end. |
+| `monitoring.end_date` | [Orchestrator] | Derived when Phase 18 passes, or when the Operator ends `OPEN_ENDED` monitoring | Derived from the approved start date and duration. For `OPEN_ENDED`, the date of the Operator's recorded end decision, with approval and evidence path. The Phase 22 entry checks still apply in full. |
 | `monitoring.monthly_cycles_required` | [Operator] | Phase 0 | Positive minimum number of monthly cycles or an approved schedule rule. |
 | `monitoring.vat_cycles_required` | [Operator] | Phase 0 | Positive minimum number of VAT-period cycles or an approved schedule rule. |
 | `monitoring.yearly_cycles_required` | [Operator] | Phase 0 | Required yearly cycle count or explicit applicability rule. |
