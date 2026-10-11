@@ -21,7 +21,8 @@
     ".githooks/prepare-commit-msg",
     ".githooks/post-commit",
     ".githooks/post-merge",
-    ".githooks/post-rewrite"
+    ".githooks/post-rewrite",
+    "sk-moneybird-accountant/assets/migration/workspace-folders.txt"
   ],
   "blocked_paths": [
     "personal database",
