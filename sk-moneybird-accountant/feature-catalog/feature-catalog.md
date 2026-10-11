@@ -31,11 +31,91 @@ Selects a Jortt to Moneybird migration phase, its reference, owner tags, and exi
 
 #### Current Reality
 
-The skill routes historical Jortt to Moneybird work to a phase-group reference and its gate. The index maps phase groups, while the control framework carries cross-phase verification and stop conditions. The corresponding manual scenario checks route selection and the stated boundary without API access.
+The skill routes each historical Jortt to Moneybird request through the execution-order phase map and its gate. Phase 17 is source freeze and archive readiness, Phase 18 is the live switch, Phases 19 to 21 are recurring loops that begin after Phase 18, and Phase 22 is the one-time completion and Jortt decommission gate. Shared mechanisms define write keys, the run journal, access expiry, stop recovery, and the auditfile route. The route contract keeps the same tool boundaries in every phase. Jortt reads run through jortt-cli only, XAF and other Jortt exports are Operator UI tasks, Moneybird reads run through moneybird-guard with `MONEYBIRD_GUARD_READ_ONLY=1`, a Moneybird write needs a passed gate, Operator approval and `--confirm-write`, plus `--production` for a production batch, and an HTTP 429 stops the call sequence for a guarded read-back before any retry. The corresponding manual scenarios check routing without API access.
 
 #### Source Files
 
 See [bookkeeping-and-migration/migration-phase-routing.md](bookkeeping-and-migration/migration-phase-routing.md) for source and validation anchors.
+
+---
+
+### Migration write keys and run journal
+
+#### Description
+
+Defines stable local write keys and append-only run-journal evidence for each migration batch.
+
+#### Current Reality
+
+Every non-GET call requires a flushed `WRITE_INTENT`. Uncertain outcomes require source-reference and planned-field read-back before any retry. The offline crash scenario checks journal-based resume and no blind replay.
+
+#### Source Files
+
+See [bookkeeping-and-migration/migration-write-keys-and-run-journal.md](bookkeeping-and-migration/migration-write-keys-and-run-journal.md) for source and validation anchors.
+
+---
+
+### Migration archive and decommission gate
+
+#### Description
+
+Keeps Jortt available until final archive, monitoring, and completion checks pass.
+
+#### Current Reality
+
+Phase 17 verifies source freeze and archive readiness. Phase 22 is the one-time completion gate. An early cancellation request is refused and routed to the Operator decision after Phase 22.
+
+#### Source Files
+
+See [bookkeeping-and-migration/migration-archive-decommission-gate.md](bookkeeping-and-migration/migration-archive-decommission-gate.md) for source and validation anchors.
+
+---
+
+### Migration trial and package expiry
+
+#### Description
+
+Checks trial or paid-package coverage before each non-GET batch and before final verification.
+
+#### Current Reality
+
+A missing, expired, or uncertain access window stops the batch. The offline scenario verifies that expiry before a write prevents the write.
+
+#### Source Files
+
+See [bookkeeping-and-migration/migration-trial-and-package-expiry.md](bookkeeping-and-migration/migration-trial-and-package-expiry.md) for source and validation anchors.
+
+---
+
+### Migration stop and resume
+
+#### Description
+
+Routes a stopped migration through its owner, evidence, retry rule, and closure test.
+
+#### Current Reality
+
+Batches resume from the last verified journal state only after the stop closure condition passes. The crash scenario checks this behavior for an uncertain write.
+
+#### Source Files
+
+See [bookkeeping-and-migration/migration-stop-and-resume.md](bookkeeping-and-migration/migration-stop-and-resume.md) for source and validation anchors.
+
+---
+
+### Migration auditfile export route
+
+#### Description
+
+Routes an auditfile request through the documented export path while preserving the read-only lock.
+
+#### Current Reality
+
+Phase 0 verifies the route. The Operator UI export is preferred. A guarded POST requires a scoped allowance, approval, and artifact receipt hash. The offline scenario verifies that the global lock is not weakened.
+
+#### Source Files
+
+See [bookkeeping-and-migration/migration-auditfile-export-route.md](bookkeeping-and-migration/migration-auditfile-export-route.md) for source and validation anchors.
 
 ---
 

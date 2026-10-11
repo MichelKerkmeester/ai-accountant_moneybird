@@ -1,11 +1,11 @@
 ---
 title: Migration control framework
-description: Agent roles, verification, risks, exceptions, stop conditions, dashboard, first runs, and completion.
+description: Agent roles, risk and verification rules, exception controls, stop recovery, dashboard, and completion.
 trigger_phrases:
-  - moneybird migration
-  - jortt historical bookkeeping
-  - migration phase gate
-  - sole trader accounting migration
+  - moneybird migration control
+  - migration exception and stop recovery
+  - migration phase dashboard
+  - Jortt historical bookkeeping
 importance_tier: important
 contextType: implementation
 version: 1.0.0.0
@@ -13,224 +13,210 @@ version: 1.0.0.0
 
 # Migration control framework
 
-Agent roles, verification, risks, exceptions, stop conditions, dashboard, first runs, and completion. Use the migration index to select this phase group and preserve the source plan's owner tags.
+Use this reference with the [migration index](./README.md), the selected phase contract, and [shared mechanisms](./shared-mechanisms.md). The phase contract sets its own gate. This file defines controls that apply across phases.
 
----
+## Phase contract schema
 
-## 1. OVERVIEW
+Every phase from 0 through 22 uses these 11 fields in this order. Each nested sub-goal has a check that names a count, percentage, date, equality, or artifact result that a verifier can reproduce. Before Phase 0 passes, the Independent Auditor records exactly one phase heading and all 11 fields plus a numeric exit gate for each phase. The check covers all 23 phases and is linked from the master dashboard.
 
-This file preserves the source plan text for its named phase group. The source body below keeps the plan wording and section order. Only source heading levels were adjusted to fit this reference.
+| # | Field | Required content |
+|---:|---|---|
+| 1 | Goal | The phase outcome. |
+| 2 | Nested sub-goals | One or more measurable outcomes under the goal, each with its own check. |
+| 3 | Entry criteria | Prior gate, approvals, date or scope facts, and a zero-blocker condition. |
+| 4 | Inputs | Named source records, registers, configuration, or prior evidence. |
+| 5 | Owner-tagged actions | Exact owner tags for actions and the gate verifier. Human decisions stay with the Operator. |
+| 6 | Tool route | Named CLI or UI route with read, write, approval, and privacy boundary. |
+| 7 | Outputs and evidence artifacts | Exact artifact class and location under `migration-workspace/`. |
+| 8 | Numeric exit gate | Reproducible count, percentage, date, equality, or explicit zero. Numeric thresholds come from approved `MIGRATION_CONFIG` values. |
+| 9 | Stop conditions | A falsifiable event that blocks the phase or affected batch. |
+| 10 | Rollback or compensation | Reversal, correction, preservation, or safe no-op rule. |
+| 11 | Resume rule | Journal state and evidence required to continue after a stop or crash. |
 
----
+## Agent structure
 
-<!-- SOURCE PLAN BODY START -->
-
-## 4. AGENT STRUCTURE
-
-| Agent | Reads | Writes | Moneybird access |
+| Owner | Reads | Writes | Moneybird route |
 |---|---|---|---|
-| Orchestrator | Reports, registers, gate status | `MIGRATION_CONFIG`, input folders | None |
-| Evidence Archivist | Document archive | Manifest, registry | None |
-| Document Agent | `Inputs/document/` only | `DOCUMENT_REGISTER` | None |
-| Ledger Agent | `Inputs/ledger/` (XAF) only | `LEDGER_REGISTER` | None |
-| Bank Agent | `Inputs/bank/` only | `BANK_REGISTER` | None |
-| Tax Filing Agent | `Inputs/tax/` only | `TAX_REGISTER` | None |
-| VAT Agent | `Inputs/vat/` (invoices, no bookings) | `VAT_CLASSIFICATION_REGISTER` | None |
-| Reconciliation Agent | All registers | `CANONICAL_DATASET` | None |
-| Mapping Agent | Canonical dataset | Mappings | Guarded CLI reads with `MONEYBIRD_GUARD_READ_ONLY=1` |
-| Migration Writer | Approved pre-write reports | Moneybird, write journal | Writer token through `moneybird-guard` |
-| Independent Auditor | Originals and Moneybird | Audit reports | Guarded CLI reads with `MONEYBIRD_GUARD_READ_ONLY=1` |
-| Red Team | Everything | Red team reports | Guarded CLI reads with `MONEYBIRD_GUARD_READ_ONLY=1` |
+| [Operator] | Source system, portals, approvals, reports | Human decisions, UI exports and imports, filing and lock actions | Operator UI or approved guarded route |
+| [Orchestrator] | Reports, registers, gate status | `MIGRATION_CONFIG`, input folders, dashboard | None |
+| [Evidence Archivist] | Approved source exports and archive workspace | Manifests, registry, archive and restore evidence | None |
+| [Document Agent] | `Inputs/document/` only | `DOCUMENT_REGISTER` | None |
+| [Ledger Agent] | `Inputs/ledger/` only | `LEDGER_REGISTER` | None |
+| [Bank Agent] | `Inputs/bank/` only | `BANK_REGISTER` | None |
+| [Tax Filing Agent] | `Inputs/tax/` only | `TAX_REGISTER` | None |
+| [VAT Agent] | `Inputs/vat/` with original invoices only | `VAT_CLASSIFICATION_REGISTER` | None |
+| [Reconciliation Agent] | Approved registers | `CANONICAL_DATASET`, reconciliation reports | None |
+| [Mapping Agent] | Canonical data and supported target fields | Mapping tables and validation reports | Guarded reads with `MONEYBIRD_GUARD_READ_ONLY=1` |
+| [Migration Writer] | Approved pre-write reports and frozen inputs | Target records and write journal | Isolated writer through `moneybird-guard` |
+| [Independent Auditor] | Originals, manifests, reports, target read-back | Independent audit reports | Guarded reads with `MONEYBIRD_GUARD_READ_ONLY=1` |
+| [Red Team] | Sealed evidence and target read-back | Challenge and sample reports | Guarded reads with `MONEYBIRD_GUARD_READ_ONLY=1` |
+| [Operator + AI] | Approved task inputs | Prepared evidence and human approval record | Human action remains with Operator |
 
-The Orchestrator manages phases and decides whether gates pass. It books nothing. The Migration Writer is the only agent with write access. Every independent agent runs in its own session (see Phase 3).
+The Orchestrator manages phase checkpoints and prepares a gate decision. It does not book records. The Migration Writer is the only agent role that may issue an approved Moneybird write. Keep independent analysis roles in separate sessions and folders. The Operator owns credentials, UI exports, bank-file imports, tax-rate creation, return filing, period locks, account lifecycle choices, and production go or no-go.
 
----
+## Verification loop per record
 
-## 5. VERIFICATION LOOP PER RECORD
+Risk determines the amount of review. Every written record follows the same evidence path:
 
-How much checking a record gets depends on its risk class.
+1. [Document Agent], [Ledger Agent], [Bank Agent], and [VAT Agent] prepare independent source records within their assigned input folders.
+2. [Reconciliation Agent] links source evidence and creates the canonical record.
+3. [Independent Auditor] assigns or verifies risk and the batch pre-write report.
+4. [Operator] approves the batch and all required access checks.
+5. [Migration Writer] issues a write only after a flushed `WRITE_INTENT` and records the response.
+6. [Independent Auditor] verifies the target through a later synchronized read or a complete read after the documented cache wait.
+7. [Red Team] samples each historical period and each year. The named phase contract may require broader coverage.
+8. Mark a record `VERIFIED` only after read-back and reconciliation pass.
 
-**GREEN records:**
+AMBER and high-risk records receive individual Independent Auditor and Red Team review before they count as verified. RED and BLACK records are never written. An uncertain result is handled under M2, M3, and M11. Never replay a write from a missing or ambiguous read.
 
-```
-original document
-  -> Document, Ledger, Bank and VAT agents, each independent
-  -> Reconciliation Agent
-  -> risk classification
-  -> batch pre-write report, approved by the operator
-  -> Migration Writer
-  -> read-back through the synchronization endpoints
-  -> Independent Auditor sample per batch
-  -> Red Team per quarter (Phase 8) and per year (Phase 13)
-  -> VERIFIED
-```
+## Risk model
 
-**AMBER records and every high-risk transaction:** the same path, plus an individual review by the Independent Auditor and the Red Team before the record counts as `VERIFIED`.
-
-**RED and BLACK records:** never written.
-
-Reviewing every green record one by one would multiply the runs without finding more. The per-quarter and per-year Red Team passes still cover green records.
-
----
-
-## 6. RISK MODEL
-
-| Class | Meaning | Write |
+| Class | Meaning | Write rule |
 |---|---|---|
-| **GREEN** | Several sources support the same conclusion | Allowed after batch approval |
-| **AMBER** | Probably correct, but a secondary source is missing or differs for a known reason | After individual review |
-| **RED** | Primary sources contradict each other | Never |
-| **BLACK** | Not enough evidence | Never |
+| GREEN | Multiple independent sources support the same conclusion. | Allowed after the phase gate and approved batch review. |
+| AMBER | Likely correct, with a missing secondary source or a documented difference. | Individual review and an approved exception or evidence note are required. |
+| RED | Primary sources contradict one another. | Never write until the contradiction is resolved and the record is reclassified. |
+| BLACK | Evidence is insufficient to support a conclusion. | Never write. Obtain evidence or stop the record. |
 
----
+Risk assignment rules and any count or monetary threshold are numeric, recorded in `MIGRATION_CONFIG`, and approved by the Operator with rationale and evidence. Missing threshold values or an unapproved assignment rule block the gate.
 
-## 7. HIGH-RISK TRANSACTIONS
+## High-risk transactions
 
-Always add an extra check for:
+Require an extra review for:
 
-- EU reverse charge and non-EU reverse charge.
-- Foreign VAT.
-- A new international supplier.
-- Assets and depreciation.
-- Private versus business.
-- Journal entries.
-- The opening balance and the year-end closing.
-- A historical tax difference.
-- A credit note.
-- An unusual currency.
+- EU or non-EU reverse charge and foreign VAT.
+- A new international supplier or a change in supplier legal entity.
+- Assets, historic value changes, and depreciation.
+- Private versus business use.
+- General journal documents.
+- Opening balances and year-end closing balances.
+- Historical tax differences, credit notes, and unusual currencies.
+- Invoice-level open receivables or payables and their settlement links.
+- Any write with an uncertain response, a changed schema, or a correction after a period lock.
 
----
+## Exception ledger and thresholds
 
-## 8. EXCEPTION LEDGER
+Every exception remains visible under a stable key. Preserve the following M7 fields for every row:
 
-Every difference gets a permanent ID.
+| Required field | Meaning |
+|---|---|
+| Stable exception key | Immutable identifier used by reports and journal events. |
+| Phase | Phase where the issue was found and any dependent gate. |
+| Source and target references | Opaque keys or evidence links that let an auditor reproduce the issue. |
+| Owner | Named role accountable for the next action. |
+| Backup owner | Named alternate when the primary owner is unavailable or the due date requires coverage. |
+| Reviewer | Independent person or role checking resolution or acceptance. |
+| Due date | Date for the next action. |
+| Escalation deadline | Date to escalate an unresolved item. |
+| Status | Current controlled status from the list below. |
+| Evidence path | Controlled workspace location for supporting evidence. |
+| Resolution | Action taken and reproducible result, or why it remains open. |
+| Acceptance authority | Human role and decision record for any accepted residual. |
+| Expiry or reopen date | Date when accepted status must be reviewed again. |
+| Corrective-entry link | Linked reversal, replacement, or correction entry when one exists. |
 
-| ID | Year | Migration ID | Problem | € impact | VAT impact | Risk | Status |
-|---|---|---|---|---:|---:|---|---|
+Use these statuses: `OPEN`, `INVESTIGATING`, `RESOLVED`, `ACCEPTED HISTORICAL DIFFERENCE`, `TAX REVIEW REQUIRED`, `SOURCE MISSING`, and `EXPIRED`. An expired accepted item returns to active review and blocks dependent gates. Do not delete exceptions or net differences across periods.
 
-Status values:
+Each threshold row in `MIGRATION_CONFIG` carries a numeric value, unit, affected check, approval identity and role, approval timestamp, rationale, and evidence reference. The historical plan's proposed figures remain proposals until the Operator approves them. Exact copied data defaults to zero unexplained difference. No threshold authorizes a balancing entry.
 
-- `OPEN`
-- `INVESTIGATING`
-- `RESOLVED`
-- `ACCEPTED HISTORICAL DIFFERENCE`
-- `TAX REVIEW REQUIRED`
-- `SOURCE MISSING`
+| Check | Configured threshold |
+|---|---|
+| Bank balance per account at period end | Numeric amount, normally zero unexplained difference. |
+| VAT per return box and cumulative period caps | Numeric amount per box, plus numeric quarter and year caps. |
+| Revenue and costs by main group per year | Numeric amount for explained residuals. |
+| Profit compared with annual accounts and filed income-tax evidence | Zero unexplained difference, with every accepted difference documented. |
+| Balance-sheet line by year | Zero unexplained difference, with any approved threshold explicit. |
+| Original-document coverage | Numeric required coverage by risk or amount band. |
+| Missing original document | Always an exception. Never ignore it. |
 
-An exception is never removed automatically.
+## Stop conditions and recovery
 
----
+Stop the affected batch and block dependent phases on any of these events:
 
-## 9. STOP CONDITIONS
-
-Stop all writes when any of these occur:
-
-- A duplicate fingerprint.
-- An invoice amount that differs from the ledger.
-- An unexplained currency difference.
-- An uncertain supplier.
-- Uncertain VAT.
-- A `RED` or `BLACK` record.
-- An unexplained bank balance.
-- An unexplained VAT difference.
-- A missing original document.
-- An unexpected depreciation.
-- An unexplained opening item.
-- A material difference between the annual accounts and the ledger.
-- A `429` rate-limit response that persists after waiting for `Retry-After`.
+- Duplicate fingerprint or conflicting source and target identity.
+- An invoice field or total differs from the approved plan.
+- Unexplained currency, bank, VAT, opening-balance, annual-account, or ledger difference.
+- Uncertain supplier, tax treatment, VAT treatment, or record risk.
+- RED or BLACK risk classification.
+- Missing original evidence, attachment hash mismatch, or incomplete source page chain.
+- Unexpected depreciation or unsupported opening item.
+- A 429 without the required wait and request-ledger evidence.
 - A write response that does not match the planned record.
+- Missing, expired, or uncertain access window before a write batch.
+- An incomplete M7 exception, missing approval, or expired accepted exception.
 
-Never invent a closing entry to make a difference disappear.
+Use this stop-state recovery table. Record one recovery row for every stop event, then follow the full field definitions in [M11](./shared-mechanisms.md#m11-stop-state-recovery-matrix).
 
----
+| Stop state | Owner | Recovery evidence | Retry rule | Closure test |
+|---|---|---|---|---|
+| `WRITE_UNKNOWN` | Migration Writer | Flushed intent, request status, source reference, planned fields, target read-back | Wait beyond the Operator-approved and Independent Auditor verified `bulk_read.cache_horizon`, or use complete timestamped synchronization. Missing or unapproved horizon blocks wait-based retry. No retry while ambiguous. | Exact source-reference and planned-field match is adopted, or an approved safe retry has no duplicate. |
+| `HTTP_429` | Orchestrator | Shared request ledger, response status, `Retry-After`, affected batch | Wait the stated interval. The Orchestrator may authorize one paced read reissue. For a write, require guarded read-back and a new approved intent proving the target is absent. | The ledger records wait, authorization, read-back when needed, intent, and result. |
+| `VALIDATION_FAILURE` | Mapping Agent | Validation result, mapping version, planned payload | Correct, approve, rehash, and issue a new intent. Do not retry the same payload. | Corrected payload passes validation and approval evidence is linked. |
+| `MISSING_SOURCE_OR_HASH_MISMATCH` | Evidence Archivist | Manifest, page chain, source total, file hash | No dependent write. Re-extract or restore the affected class under a new manifest version. | Required coverage and independent totals reconcile to 100%. |
+| `STALE_OR_INCOMPLETE_READ` | Independent Auditor | Sync timestamp, page counts, cache wait, expected total | Repeat only after the documented wait or complete synchronization. | Freshness and completeness are evidenced and counts reconcile. |
+| `RECONCILIATION_MISMATCH` | Reconciliation Agent | Source and target reports, exception, correction evidence | No cross-period netting. Use the approved append-only correction path. | Difference is zero or a complete approved exception is within configured limits. |
 
-## 10. MASTER DASHBOARD
+Never invent a closing entry to make a difference disappear. Compensation uses the approved append-only reversal or credit and replacement where supported, followed by independent read-back and reconciliation. Resume from the last verified journal state, not from the last attempted action.
 
-| Phase | Status | Blocking issues |
-|---|---|---|
-| 0 Setup | | |
-| 1 Inventory | | |
-| 2 Sources | | |
-| 3 Independent extraction | | |
-| 4 Reconciliation | | |
-| 5 Anomalies | | |
-| 6 Mapping | | |
-| 7 Pilot | | |
-| 8 Migration | | |
-| 9 VAT | | |
-| 10 Year-end | | |
-| 11 IB | | |
-| 12 Continuity | | |
-| 13 Red Team | | |
-| 14 Lock | | |
+## Master dashboard
 
-Per year:
+Keep one row per phase. Every row carries phase ID, status, phase-contract check status and evidence, named owner, evidence link, due date, exception count, and last verified resume checkpoint. Update the dashboard for every gate, stop, resume, and recurring cycle. Reconcile it with the run journal.
 
-| Year | Docs | Ledger | Bank | VAT | IB | Balance | Exceptions | Status |
+Allowed dashboard statuses are:
+
+- `NOT_STARTED`: no work event is recorded for this phase.
+- `IN_PROGRESS`: the phase has started and no stop is active.
+- `STOPPED`: a stop event is active and its closure test has not passed.
+- `GATE_PASSED`: all exit criteria passed and evidence is linked.
+- `REOPENED`: changed evidence invalidated a prior pass and the affected checks must run again.
+
+| Phase | Gate | Status | Contract check |
+|---:|---|---|---|
+| 0 | Safety and system setup | `NOT_STARTED`  | `NOT_RUN` |
+| 1 | Full source inventory | `NOT_STARTED`  | `NOT_RUN` |
+| 2 | Collect missing sources and seed archive | `NOT_STARTED`  | `NOT_RUN` |
+| 3 | Reconstruct each source independently | `NOT_STARTED`  | `NOT_RUN` |
+| 4 | Cross-reconciliation | `NOT_STARTED`  | `NOT_RUN` |
+| 5 | Completeness and anomaly scan | `NOT_STARTED`  | `NOT_RUN` |
+| 6 | Design the Moneybird mapping | `NOT_STARTED`  | `NOT_RUN` |
+| 7 | Pilot migration | `NOT_STARTED`  | `NOT_RUN` |
+| 8 | Historical migration per period | `NOT_STARTED`  | `NOT_RUN` |
+| 9 | VAT verification loop | `NOT_STARTED`  | `NOT_RUN` |
+| 10 | Year-end check | `NOT_STARTED`  | `NOT_RUN` |
+| 11 | Income-tax cross-verification | `NOT_STARTED`  | `NOT_RUN` |
+| 12 | Continuity between years | `NOT_STARTED`  | `NOT_RUN` |
+| 13 | Year Red Team | `NOT_STARTED`  | `NOT_RUN` |
+| 14 | Year lock | `NOT_STARTED`  | `NOT_RUN` |
+| 15 | Repeat from oldest to newest year | `NOT_STARTED`  | `NOT_RUN` |
+| 16 | Current-year parallel mirror and cutover preparation | `NOT_STARTED`  | `NOT_RUN` |
+| 17 | Source freeze and archive readiness | `NOT_STARTED`  | `NOT_RUN` |
+| 18 | Switch to live bookkeeping | `NOT_STARTED`  | `NOT_RUN` |
+| 19 | Live monthly workflow | `NOT_STARTED`  | `NOT_RUN` |
+| 20 | Live VAT-period workflow | `NOT_STARTED`  | `NOT_RUN` |
+| 21 | Live yearly workflow | `NOT_STARTED`  | `NOT_RUN` |
+| 22 | Migration completion and Jortt decommission | `NOT_STARTED`  | `NOT_RUN` |
+
+Phases 19 to 21 are recurring loops that begin after Phase 18. Phase 22 is a one-time gate. It requires all 23 rows to be current and complete for their applicable status, with every phase-contract check marked PASS and no missing owners, evidence, due dates, exception counts, or resume checkpoints.
+
+Keep the historical per-year summary as a companion to the phase dashboard. It does not replace the 23 phase rows.
+
+| Year | Documents | Ledger | Bank | VAT | Income tax | Balance | Exceptions | Status |
 |---|---|---|---|---|---|---|---|---|
+| Derived year from configured start and lock ledger | Evidence link or count | Evidence link or count | Evidence link or count | Evidence link or count | Evidence link or count | Evidence link or count | Exception count | One allowed dashboard status |
 
----
 
-## 11. CONCRETE FIRST RUNS
+## Concrete first runs
 
-**Run 1.** Do Phase 0 and Phase 1 only. Then generate the `INITIAL MIGRATION REPORT` with:
-
-1. The business years found.
-2. The number of archive invoices per year.
-3. The Jortt data available through the API.
-4. The bank data available.
-5. The tax documents available.
-6. Missing sources, as an operator task list.
-7. Duplicates.
-8. The proposed Moneybird start year.
-9. The proposed pilot month.
-
-Make no Moneybird write.
-
-**Run 2.** After the missing sources are collected, run Phases 2 to 6. Generate the `MIGRATION BLUEPRINT`.
-
-**Run 3.** Run Phase 7, the pilot in the trial administration, only.
-
-**Run 4 onward.** Migrate one quarter per run through Phases 8 and 9.
-
-**After a full year.** Run Phases 10 to 14. Only then start the next year.
-
----
+1. Run Phase 0 and Phase 1 only. Produce an initial inventory report with business years found, archive class counts, source-system availability, bank and tax evidence availability, missing-source tasks, duplicate candidates, proposed start-year basis, and proposed pilot period. Make no Moneybird write.
+2. After missing sources are collected, run Phases 2 to 6 and produce the migration blueprint.
+3. Run Phase 7 as the pilot in the same empty Moneybird administration used as the mirror.
+4. Run one approved historical period at a time through Phases 8 and 9. Continue only when both gates pass.
+5. After a complete year, run Phases 10 to 14. Continue oldest to newest through Phase 15 without skipping a year.
+6. Run Phase 16 for current-year parallel work and cutover preparation. Derive the next historical year from the configured start date and last locked year. Do not store a hard-coded current year.
+7. Run Phase 17 for source freeze and archive readiness, then Phase 18 for the live switch.
+8. After Phase 18 passes, run Phases 19 to 21 on their configured monthly, VAT-period, and yearly schedules.
+9. Run Phase 22 once, after the first live VAT reconciliation, the monitoring end date, and every recurring cycle through that date have passed.
 
 ## Definition of done
 
-The migration as a whole is done only when every year from the start year onward is `YEAR VERIFIED & LOCKED`. The newest year must also connect without unexplained discontinuity.
-
-From then on, Moneybird is the complete, verified historical administration and the base for future bookkeeping.
-
----
-
-## Sources
-
-Checked on 2026-10-10.
-
-- Jortt developer docs: https://developer.jortt.nl/
-- Jortt OpenAPI spec: https://api.jortt.nl/swagger_doc
-- Jortt auditfile: https://www.jortt.nl/boekhouder/boekhouder-uitleg/auditfile/
-- Jortt general ledger export: https://www.jortt.nl/uitleg/faq/uitdraai-maken-van-een-grootboek/
-- Leaving Jortt: https://www.jortt.nl/boekhouder/boekhouder-uitleg/weggaan-bij-jortt/
-- Moneybird AI connection: https://helpcenter.moneybird.nl/nl/articles/396511-ai-koppeling
-- Moneybird API introduction: https://developer.moneybird.com/introduction.md
-- Moneybird authentication: https://developer.moneybird.com/authentication
-- Moneybird CLI: https://developer.moneybird.com/tools/cli
-- Moneybird OpenAPI spec: https://github.com/moneybird/openapi
-- Moneybird external invoices: https://developer.moneybird.com/integration/importing-external-invoices.md
-- Moneybird reports: https://developer.moneybird.com/api/reports
-- Switching to Moneybird: https://helpcenter.moneybird.nl/nl/articles/207241-overstappen-naar-moneybird
-- Moneybird period locking: https://helpcenter.moneybird.nl/nl/articles/207253-periodes-vergrendelen
-- Moneybird VAT filing: https://helpcenter.moneybird.nl/nl/articles/223650-de-btw-aangifte-indienen
-
-<!-- SOURCE PLAN BODY END -->
-
----
-
-## 2. RELATED RESOURCES
-
-- [Migration index](./README.md) maps every phase to its reference.
-- [cli-jortt](../../../cli-jortt/SKILL.md) owns Jortt reads.
-- [cli-moneybird](../../../cli-moneybird/SKILL.md) owns Moneybird reads and writes.
+The migration is complete only after Phase 22 passes. The gate requires Phase 18 and the first live VAT period under Phase 20 to pass, the configured monitoring period to end, all recurring cycles through that date to pass, final archive delta and class restores to reconcile, retention evidence to be current, all required reconciliations and filed-return bridges to be complete, unexplained differences to equal zero, accepted exceptions to be complete and current, historical years to be locked, cutover approval to be recorded, and live ownership to be assigned. The Operator then records whether Jortt will be kept or cancelled. No agent cancels it.
