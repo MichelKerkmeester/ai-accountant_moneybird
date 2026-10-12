@@ -16,11 +16,13 @@ Modes:
     --tree                  Check the tree at HEAD
     --history               Check all commits and annotated tags
     --message <file>        Check one commit message file
+    --answer <file>         Check a drafted answer before it is sent
     --self-test-patterns    Run the built-in pattern checks
 
 Options:
     --config-ref <rev>      Read the rules from this revision
     --trusted-code          The running copy is the remote anchor copy
+    --transcript <file>     With --answer, also check the loaded context
 
 Output:
     One masked line per finding on stdout, then a blocked summary line.
@@ -52,6 +54,8 @@ TREE = "--tree"
 HISTORY = "--history"
 MESSAGE = "--message"
 SELF_TEST = "--self-test-patterns"
+ANSWER = "--answer"
+TRANSCRIPT = "--transcript"
 
 CONFIG_FILE = ".privacy-gate.json"
 DENYLIST_FILE = ".privacy-denylist"
@@ -124,6 +128,9 @@ IBAN_RE = re.compile(
 )
 SQUEEZED_IBAN_RE = re.compile(
     r"(?<![0-9A-Z])[A-Z]{2}[0-9]{2}[A-Z0-9]{10,31}", re.IGNORECASE)
+# Wide enough for a 34 character IBAN with a separator after every character.
+IBAN_TAIL_LIMIT = 4096
+IBAN_START_RE = re.compile(r"(?<![0-9A-Za-z])[A-Za-z]{2}[0-9]{2}")
 IBAN_SEPARATORS_RE = re.compile(r"[ \t.\-]")
 SQUEEZE_RE = re.compile(r"[\s.\-]")
 BSN_RE = re.compile(
@@ -193,20 +200,22 @@ def usage() -> NoReturn:
     sys.stderr.write(
         "usage: python3 -I scripts/privacy-gate.py\n"
         "       (--staged|--push <remote>|--tree|--history|"
-        "--message <file>|--self-test-patterns)\n"
-        "       [--config-ref <rev>] [--trusted-code]\n"
+        "--message <file>|--answer <file>|--self-test-patterns)\n"
+        "       [--config-ref <rev>] [--trusted-code] [--transcript <file>]\n"
     )
     sys.exit(2)
 
 
-def parse_args(argv: List[str]) -> Tuple[str, Optional[str], Optional[str], bool]:
-    """Return the mode, its argument, the config ref and the code flag.
+def parse_args(
+    argv: List[str],
+) -> Tuple[str, Optional[str], Optional[str], bool, Optional[str]]:
+    """Return the mode, its argument, the config ref, the code flag and the transcript.
 
     Args:
         argv: The full command line, the program name included.
 
     Returns:
-        Tuple of (mode, argument, config ref, trusted code flag).
+        Tuple of (mode, argument, config ref, trusted code flag, transcript).
 
     Raises:
         SystemExit: When the arguments do not match a known mode.
@@ -230,19 +239,28 @@ def parse_args(argv: List[str]) -> Tuple[str, Optional[str], Optional[str], bool
             usage()
         config_ref = rest[index + 1]
         del rest[index:index + 2]
+    transcript = None
+    if TRANSCRIPT in rest:
+        if mode != ANSWER:
+            usage()
+        index = rest.index(TRANSCRIPT)
+        if index + 1 >= len(rest):
+            usage()
+        transcript = rest[index + 1]
+        del rest[index:index + 2]
     if len(rest) > 1:
         usage()
     argument = rest[0] if rest else None
     if mode == PUSH:
         # The remote name is new. An older hook may still call without it, so
         # the fall back is every remote instead of a silent skip.
-        return mode, argument, config_ref, trusted_code
-    if mode == MESSAGE:
+        return mode, argument, config_ref, trusted_code, transcript
+    if mode in (MESSAGE, ANSWER):
         if argument is None:
             usage()
-        return mode, argument, config_ref, trusted_code
+        return mode, argument, config_ref, trusted_code, transcript
     if mode in (STAGED, TREE, HISTORY, SELF_TEST) and argument is None:
-        return mode, argument, config_ref, trusted_code
+        return mode, argument, config_ref, trusted_code, transcript
     usage()
 
 # ───────────────────────────────────────────────────────────────
@@ -548,13 +566,29 @@ def squeezed_iban_lengths(text: str) -> "List[int]":
     Returns:
         Country lengths of the valid IBANs found.
     """
+    bodies = []
+    squeezed = squeeze(text)
+    for match in SQUEEZED_IBAN_RE.finditer(squeezed):
+        bodies.append(match.group(0))
+    # Squeezing the whole blob joins a word to an IBAN that follows it, so a
+    # second pass starts where a word starts in the original text and squeezes
+    # only from there on.
+    for start in IBAN_START_RE.finditer(text):
+        tail = squeeze(text[start.start():start.start() + IBAN_TAIL_LIMIT])
+        match = SQUEEZED_IBAN_RE.match(tail)
+        if match is not None:
+            bodies.append(match.group(0))
     lengths = []
-    for match in SQUEEZED_IBAN_RE.finditer(squeeze(text)):
-        body = match.group(0).upper()
+    seen = set()
+    for raw in bodies:
+        body = raw.upper()
         length = IBAN_LENGTHS.get(body[:2])
         if length is None or len(body) < length:
             continue
+        if body[:length] in seen:
+            continue
         if iban_valid(body[:length]):
+            seen.add(body[:length])
             lengths.append(length)
     return lengths
 
@@ -1877,6 +1911,100 @@ def run_self_test() -> int:
     return 0
 
 
+CITED_PATH_RE = re.compile(r"[A-Za-z0-9_./-]+\.md")
+
+
+def cited_reference_text(checker: Checker, root: str, text: str) -> str:
+    """Return the text of every amount-allowed reference the text cites.
+
+    Args:
+        checker: Collector holding the amount-allowed file list.
+        root: Repository root the cited paths resolve against.
+        text: Answer or transcript text to read citations from.
+
+    Returns:
+        The cited files joined, or an empty string when none is cited.
+    """
+    parts = []
+    # A citation resolves to the committed file, never the working tree, so a
+    # draft saved over a reference path cannot vouch for its own figures.
+    for match in CITED_PATH_RE.finditer(text):
+        cited = match.group(0).lstrip("./")
+        for allowed in sorted(checker.amount_files):
+            if allowed == cited or allowed.endswith("/" + cited):
+                status, out, _ = git_soft(["show", "HEAD:" + allowed], root)
+                if status == 0:
+                    parts.append(normalize(out.decode("utf-8", "replace")))
+    return "\n".join(parts)
+
+
+def amounts_cited(line: str, cited: str) -> bool:
+    """Return True when every amount on the line occurs in a cited reference.
+
+    Args:
+        line: One line of the answer or transcript.
+        cited: Text of the references the answer cites.
+
+    Returns:
+        True when the line holds amounts and each one is a cited public figure.
+    """
+    found = [m.group(0) for m in DUTCH_AMOUNT_RE.finditer(line)]
+    for match in re.finditer(r"(?:\u20ac|EUR)\s?[0-9][0-9.,]*|[0-9][0-9.,]*\s?(?:\u20ac|EUR)", line):
+        found.append(match.group(0))
+    if not found or not cited:
+        return False
+    squeeze = re.compile(r"\s+")
+    flat = squeeze.sub(" ", cited)
+    # A figure must match whole, so a prefix such as 5.70 of 5.700 is no match.
+    return all(
+        re.search(r"(?<![0-9])" + re.escape(squeeze.sub(" ", value).strip(" .,"))
+                  + r"(?![0-9]|[.,][0-9])", flat)
+        for value in found)
+
+
+def check_answer(checker: Checker, root: str, answer_file: str,
+                 transcript_file: Optional[str]) -> None:
+    """Check a drafted answer and the context it was written from.
+
+    Args:
+        checker: Collector that records every finding.
+        root: Repository root that cited reference paths resolve against.
+        answer_file: File holding the drafted answer.
+        transcript_file: Optional file holding the loaded context.
+
+    Raises:
+        SystemExit: If a file cannot be read.
+    """
+    # The answer is scanned with the same rules as a commit. Masking after the
+    # fact is not a control, so any hit blocks the answer. The one allowance is
+    # a public figure that a cited, amount-allowed reference file holds.
+    for path in [answer_file] + ([transcript_file] if transcript_file else []):
+        try:
+            with open(path, "r", encoding="utf-8", errors="replace") as handle:
+                text = normalize(handle.read())
+        except OSError as exc:
+            die("cannot read %s: %s" % (path, exc))
+        checker.files_checked += 1
+        cited = cited_reference_text(checker, root, text)
+        label = normalize(path)
+        # The rules run under a neutral label, so a draft saved at an
+        # amount-allowed or secret-allowed path gets no per-file exception.
+        neutral = "<answer>"
+        iban_lengths = set()
+        for number, line in enumerate(text.split("\n"), 1):
+            public = amounts_cited(line, cited)
+            for rule, hint in checker.line_hits(neutral, line):
+                if rule == "amount" and public:
+                    continue
+                if rule == "iban":
+                    iban_lengths.add(hint)
+                checker.add(rule, label, number, hint)
+        for length in squeezed_iban_lengths(text):
+            hint = "(len %d)" % length
+            if hint not in iban_lengths:
+                checker.add("iban", label, "-", hint)
+
+
 def report(checker: Checker, mode: str) -> int:
     """Write every finding and return the process status.
 
@@ -1928,7 +2056,7 @@ def main(argv: List[str]) -> int:
     Raises:
         SystemExit: When the arguments, the repository or the rules are unusable
     """
-    mode, argument, config_ref, trusted_code = parse_args(argv)
+    mode, argument, config_ref, trusted_code, transcript = parse_args(argv)
     if mode == SELF_TEST:
         return run_self_test()
 
@@ -1950,7 +2078,7 @@ def main(argv: List[str]) -> int:
     if ignored_terms:
         warn("%d denylist term(s) shorter than %d characters ignored"
              % (ignored_terms, MIN_TERM_LENGTH))
-    if mode in (STAGED, PUSH, MESSAGE):
+    if mode in (STAGED, PUSH, MESSAGE, ANSWER):
         if not present:
             checker.add("denylist-missing", DENYLIST_FILE, "-",
                         "missing, run: bash scripts/install-hooks.sh")
@@ -1968,6 +2096,8 @@ def main(argv: List[str]) -> int:
         check_tree(checker, root, cache)
     elif mode == HISTORY:
         check_history(checker, root, cache)
+    elif mode == ANSWER:
+        check_answer(checker, root, argument, transcript)
     else:
         check_message(checker, root, argument)
     return report(checker, mode)

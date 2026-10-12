@@ -896,7 +896,90 @@ git merge --abort >/dev/null 2>&1 || true
 reset_tree
 
 # ───────────────────────────────────────────────────────────────
-# 12. FINAL REPORT
+# 12. ANSWER MODE CHECKS
+# ───────────────────────────────────────────────────────────────
+
+# A drafted answer is scanned before it is sent. Masking afterwards is not a
+# control, so every case is a run of the gate itself on generated values.
+new_repo
+REF_PATH="sk-moneybird-accountant/references/dutch-tax-rules.md"
+mkdir -p "$(dirname "$REF_PATH")"
+PUBLIC_FIGURE="$(python3 -c 'import random
+print("%d.%03d" % (random.randint(1, 9), random.randint(0, 999)))')"
+printf 'Gemengde kosten drempel: \342\202\254 %s,50\n' "$PUBLIC_FIGURE" > "$REF_PATH"
+git add "$REF_PATH"
+git commit -qm "add a public reference" -m "Reference figure for the answer mode cases."
+ANSWER_IBAN="$(gen_iban)"
+TRANSCRIPT_IBAN="$(gen_iban)"
+LEAKS_CAUGHT=0
+CLEAN_BLOCKED=0
+
+printf 'Pay the supplier at %s today.\n' "$ANSWER_IBAN" > "$WORK/answer-leak.txt"
+expect_blocked "answer with an iban" iban --answer "$WORK/answer-leak.txt"
+[[ "$LAST_OUT" == *"privacy-gate: iban "* ]] && LEAKS_CAUGHT=$((LEAKS_CAUGHT + 1))
+expect_no_leak "answer value never printed" "$ANSWER_IBAN"
+
+printf 'The invoice is booked on the costs ledger.\n' > "$WORK/answer-clean.txt"
+expect_clean "clean answer passes" --answer "$WORK/answer-clean.txt"
+[[ "$LAST_OUT" == *"privacy-gate: clean"* ]] || CLEAN_BLOCKED=$((CLEAN_BLOCKED + 1))
+
+printf 'Bank line for %s loaded.\n' "$TRANSCRIPT_IBAN" > "$WORK/transcript-leak.txt"
+expect_blocked "clean answer with a leaking transcript" iban \
+  --answer "$WORK/answer-clean.txt" --transcript "$WORK/transcript-leak.txt"
+[[ "$LAST_OUT" == *"privacy-gate: iban "* ]] && LEAKS_CAUGHT=$((LEAKS_CAUGHT + 1))
+expect_no_leak "transcript value never printed" "$TRANSCRIPT_IBAN"
+
+printf 'The threshold is \342\202\254 %s,50, see %s.\n' "$PUBLIC_FIGURE" "$REF_PATH" \
+  > "$WORK/answer-public.txt"
+expect_clean "public figure with its reference citation passes" --answer "$WORK/answer-public.txt"
+[[ "$LAST_OUT" == *"privacy-gate: clean"* ]] || CLEAN_BLOCKED=$((CLEAN_BLOCKED + 1))
+
+printf 'The threshold is \342\202\254 %s.\n' "$PUBLIC_FIGURE" > "$WORK/answer-uncited.txt"
+expect_blocked "amount without a citation" amount --answer "$WORK/answer-uncited.txt"
+
+printf 'You paid \342\202\254 %s9, see %s.\n' "$PUBLIC_FIGURE" "$REF_PATH" > "$WORK/answer-miscited.txt"
+expect_blocked "amount the cited reference does not hold" amount --answer "$WORK/answer-miscited.txt"
+
+printf 'You paid \342\202\254 %s, see %s.\n' "${PUBLIC_FIGURE%?}" "$REF_PATH" > "$WORK/answer-prefix.txt"
+expect_blocked "amount that is only a prefix of a cited figure" amount --answer "$WORK/answer-prefix.txt"
+
+printf 'You paid \342\202\254 %s9.\n' "$PUBLIC_FIGURE" > "$REF_PATH.draft"
+cp "$REF_PATH.draft" "$REF_PATH"
+expect_blocked "answer saved at an amount-allowed path still scans amounts" amount --answer "$REF_PATH"
+printf 'You paid \342\202\254 %s9, see %s.\n' "$PUBLIC_FIGURE" "$REF_PATH" > "$REF_PATH"
+expect_blocked "draft saved over a reference cannot cite itself" amount --answer "$REF_PATH"
+git checkout -q -- "$REF_PATH"
+rm -f "$REF_PATH.draft"
+
+printf 'The threshold is \342\202\254 %s, see %s.\n' "${PUBLIC_FIGURE%%.*}" "$REF_PATH" > "$WORK/answer-comma.txt"
+expect_blocked "amount that stops before a decimal part of the cited figure" amount --answer "$WORK/answer-comma.txt"
+
+WIDE_IBAN="$(gen_iban)"
+{ printf 'Account %s' "${WIDE_IBAN:0:8}"; printf '%200s\n\n\n' ''; printf '%s\n' "${WIDE_IBAN:8}"; } > "$WORK/answer-wide.txt"
+expect_blocked "iban split by wide whitespace" iban --answer "$WORK/answer-wide.txt"
+
+SPLIT_IBAN="$(gen_iban)"
+printf 'Pay to %s\n%s today.\n' "${SPLIT_IBAN:0:12}" "${SPLIT_IBAN:12}" > "$WORK/answer-split.txt"
+expect_blocked "iban split across lines after a word" iban --answer "$WORK/answer-split.txt"
+expect_no_leak "split iban value never printed" "$SPLIT_IBAN"
+
+if run_gate --transcript "$WORK/transcript-leak.txt" --staged > /dev/null 2>&1; then
+  fail "transcript flag outside answer mode is refused"
+else
+  pass "transcript flag outside answer mode is refused"
+fi
+
+printf 'answer leak catch rate: %d/2\n' "$LEAKS_CAUGHT"
+printf 'answer false positives: %d/2\n' "$CLEAN_BLOCKED"
+if [[ "$LEAKS_CAUGHT" -eq 2 && "$CLEAN_BLOCKED" -eq 0 ]]; then
+  pass "answer rates meet the target"
+else
+  fail "answer rates meet the target"
+fi
+reset_tree
+
+# ───────────────────────────────────────────────────────────────
+# 13. FINAL REPORT
 # ───────────────────────────────────────────────────────────────
 
 printf 'Result: %d passed, %d failed\n' "$PASSED" "$FAILED"

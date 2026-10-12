@@ -109,6 +109,7 @@ Main flow for a push:
 | `python3 -I scripts/privacy-gate.py --staged` | CLI | Scans the index. The `pre-commit` and `pre-merge-commit` hooks run it |
 | `python3 -I scripts/privacy-gate.py --push <remote>` | CLI | Scans the commits a push sends, with refs on stdin. The `pre-push` hook runs it |
 | `python3 -I scripts/privacy-gate.py --message <file>` | CLI | Scans a commit message before the commit exists. The `commit-msg` hook runs it |
+| `python3 -I scripts/privacy-gate.py --answer <file> [--transcript <file>]` | CLI | Scans a drafted answer, and the context it was written from, before it is sent. Any hit blocks the answer. An amount passes only when the answer cites an amount-allowed reference that holds the same figure |
 | `python3 -I scripts/privacy-gate.py --tree` | CLI | Scans every tracked file at `HEAD` |
 | `python3 -I scripts/privacy-gate.py --history` | CLI | Scans every commit, message and tag in history |
 | `python3 -I scripts/privacy-gate.py --self-test-patterns` | CLI | Checks the detection patterns against generated values |
