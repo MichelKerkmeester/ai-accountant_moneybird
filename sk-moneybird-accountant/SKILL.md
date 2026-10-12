@@ -192,7 +192,7 @@ Monthly, quarterly and yearly cycles are in `references/moneybird-bookkeeping.md
 
 #### LIVE write authority
 
-LIVE Moneybird writes have three states. `JOURNAL_BACKED`: writes inside the LIVE workflows of migration phases 19 to 21, which carry a run-journal WRITE_INTENT and pass moneybird-guard. `UI_ONLY`: every other LIVE write, made by the Operator in the Moneybird UI. Bank import, period lock, tax-rate creation and payment-term changes are always `UI_ONLY`. `BLOCKED`: anything the guard or a gate refuses. Every answer names the write state. Everything else stays `UI_ONLY` until the Operator decides otherwise.
+LIVE Moneybird writes have three states. `JOURNAL_BACKED`: writes inside the LIVE workflows of migration phases 19 to 21, which carry a run-journal WRITE_INTENT and pass moneybird-guard. `UI_ONLY`: every other LIVE write, made by the Operator in the Moneybird UI. Bank import, period lock, tax-rate creation and payment-term changes are always `UI_ONLY`. `BLOCKED`: anything the guard or a gate refuses. Every answer names the write state. Everything else stays `UI_ONLY` by standing Operator decision.
 
 #### Ad hoc ZZP questions
 
