@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Kosten en auto 2024
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 238.
-Part 1: lines 1-237, 49165 bytes, first heading "# Kosten en auto 2024"
-Part 2: lines 238-271, 7648 bytes, first heading "## 6. IN THE BOOKS"
+Read plan: 2 parts. Next read offset: line 248.
+Part 1: lines 1-247, 49303 bytes, first heading "# Kosten en auto 2024"
+Part 2: lines 248-287, 7739 bytes, first heading "## 6. IN THE BOOKS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 238-271, 7648 bytes, first heading "## 6. IN THE BOOKS"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the deductibility of business costs and the car rules for tax year 2024 for a sole trader (eenmanszaak) and, where noted, a BV. The most important 2024 figures are the gemengde kosten drempel (threshold for mixed costs) of € 5.600, the € 0,23 kilometre allowance for a private vehicle, the 22% bijtelling (private-use addition) for a car that is available for private use, and the 6% zero-emission reduction capped at € 1.800 for a car first admitted in 2024. The fiscal studiekostenaftrek (study cost deduction) no longer exists except in the prestatiebeurs (performance grant) case, and the STAP-budget regeling is marked lapsed per 1 January 2024. All 2024 values in this file are enacted and Verified, and the law for 2024 is in force.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
@@ -66,6 +70,8 @@ This file covers the deductibility of business costs and the car rules for tax y
 ---
 
 ## 3. HOW IT WORKS IN 2024
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Gemengde kosten drempel
 
@@ -183,6 +189,8 @@ Deduct costs excluding VAT when the VAT is deductible in the btw-aangifte (VAT r
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 **Calculated example 1. Gemengde kosten, drempel against 80%.**
 A sole trader has € 7.000 of gemengde kosten in 2024. Route A, the drempel: the first € 5.600 is not deductible, so € 7.000 minus € 5.600 is € 1.400 deductible. Route B, the election in the return: 80% of € 7.000 is € 5.600 deductible. The election gives the higher deduction here, and the choice is made in the return.
 
@@ -226,6 +234,8 @@ FISIN 2024 gives an mbo study from August 2014 to July 2018, with the diplomater
 
 ## 5. CHANGES FROM 2023
 
+<a id="5-changes"></a>
+
 - Gemengde kosten drempel: € 5.100 in 2023 to € 5.600 in 2024 ([Wet inkomstenbelasting, art. 3.15 lid 1 en art. 10.1, jaargang 2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01) en [jaargang 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01)).
 - Kilometervergoeding: € 0,21 in 2023 to € 0,23 in 2024 ([Wet inkomstenbelasting, art. 3.15 lid 6 en art. 3.17 lid 1 onderdeel b, jaargang 2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01) en [jaargang 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01)).
 - Zero-emission zonnecellen: in de 2023 tekst waren zonnecellen met een vermogen van ten minste 1 kilowattpiek en een accu zonder lood onbeperkt. Vanaf de 2024 tekst is de toets dat het paneelvermogen in wattpiek gedeeld door het verbruik in wattuur per km ten minste 7 is ([Wet inkomstenbelasting, art. 3.20 lid 2, jaargang 2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01) en [jaargang 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01)).
@@ -236,6 +246,8 @@ FISIN 2024 gives an mbo study from August 2014 to July 2018, with the diplomater
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Record every business cost with the receipt or invoice, and keep receipts and invoices ([Belastingdienst, welke kosten mag ik aftrekken](https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/welke-kosten-mag-ik-aftrekken-van-mijn-bijverdiensten)).
 - Record costs excluding btw when the btw is deductible in the btw-aangifte. Under the KOR record the costs including btw in the IB return ([Belastingdienst, welke kosten mag ik aftrekken](https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/welke-kosten-mag-ik-aftrekken-van-mijn-bijverdiensten) en [Belastingdienst, kleineondernemersregeling](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/)).
@@ -253,6 +265,8 @@ FISIN 2024 gives an mbo study from August 2014 to July 2018, with the diplomater
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 No value in section 2 is UNVERIFIED, proposed or unknown, and the checked material lists no open points for 2024. The following points need care.
 
 - Zonnecellen. The Belastingdienst page on the 2026 bijtelling says at least 1 kilowattpiek for the uncapped solar exemption ([Belastingdienst, bijtelling privégebruik auto 2026](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/bijtelling-privegebruik-auto-2026)). The statute says 1 kilowattpiek only in the 2021 to 2023 texts and requires from the 2024 text a panel power in wattpiek divided by consumption in wattuur per km of at least 7 ([Wet inkomstenbelasting, art. 3.20 lid 2, jaargang 2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01) en [jaargang 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01)). For 2024 the statute decides, so this file uses the ratio test of at least 7.
@@ -264,6 +278,8 @@ No value in section 2 is UNVERIFIED, proposed or unknown, and the checked materi
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2024 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

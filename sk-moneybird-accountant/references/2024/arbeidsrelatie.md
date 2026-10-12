@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Arbeidsrelatie en zelfstandigheid 2024
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 281.
-Part 1: lines 1-280, 47004 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2024"
-Part 2: lines 281-300, 4928 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Read plan: 2 parts. Next read offset: line 293.
+Part 1: lines 1-292, 47171 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2024"
+Part 2: lines 293-316, 4990 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 281-300, 4928 bytes, first heading "## 7. OPEN POINTS AND CONFLICT
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the work relationship (arbeidsrelatie) part of a ZZP sole trader's position in 2024: the Wet DBA (Wet deregulering beoordeling arbeidsrelaties, the law on the assessment of work relationships), its enforcement, modelovereenkomsten (model contracts) and the VBAR bill with the low hourly rate presumption. 2024 is the last year of the handhavingsmoratorium (enforcement moratorium), so in a non-kwaadwillend case the Belastingdienst still gave an aanwijzing (instruction) before correcting a relationship, and during 2024 the end of the moratorium per 1 January 2025 was announced. The Wet DBA is enacted law, the moratorium, the modelovereenkomsten stop and the 2024 handhavingsplan are enacted policy, and the VBAR was only a bill in preparation in 2024.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
@@ -67,6 +71,8 @@ This file covers the work relationship (arbeidsrelatie) part of a ZZP sole trade
 ---
 
 ## 3. HOW IT WORKS IN 2024
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Wet DBA
 
@@ -188,6 +194,8 @@ AWR art. 52 lid 4, the same in 2020 and 2026: administratieplichtigen keep the g
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Example 1. Official example, the VBAR amount build-up to € 36
 
 The memorie van toelichting gives the build-up of the € 36 at peildatum 1 January 2025.
@@ -250,6 +258,8 @@ An invented naheffingsaanslag loonheffingen dated 10 March 2025 is collectible 1
 
 ## 5. CHANGES FROM 2023
 
+<a id="5-changes"></a>
+
 - DBA enforcement regime: 2023 ran under the handhavingsmoratorium with the aanwijzing route. 2024 is the last year of that moratorium, and the end per 1 January 2025 was announced on 6 September 2024. Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving and https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file.
 - Modelovereenkomsten: in 2023 the approval of the modelovereenkomsten vrije vervanging was withdrawn on 14 August 2023. In 2024 no new modelovereenkomsten are assessed and none are renewed from 6 September 2024, and agreements valid on that date can be used up to and including 31 December 2029. Sources: https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file and https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/geen-nieuwe-modelovereenkomsten-meer.
 - VBAR: the internet consultation started on 6 October 2023 with an intended start on 1 July 2025. In 2024 the bill went to the Raad van State on 21 June 2024 and the advice was published on 11 November 2024, still proposed. Source: https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file.
@@ -264,6 +274,8 @@ An invented naheffingsaanslag loonheffingen dated 10 March 2025 is collectible 1
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Keep the records that show the actual work relationship per opdrachtgever: the agreement, any modelovereenkomst, and evidence of how work and working hours are set, inbedding, who performs the work, how pay is set and paid, commercial risk and entrepreneurial activity. The qualification turns on the actual work, and a modelovereenkomst only helps if the parties work as described. Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst and https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/werken-met-modelovereenkomsten.
 - If the opt-out for thuiswerkers, gelijkgestelden or artiesten is used, keep the written clause. It must be in the contract before the first payment of pay. Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst and https://zoek.officielebekendmakingen.nl/stb-2016-165.html.
@@ -280,6 +292,8 @@ An invented naheffingsaanslag loonheffingen dated 10 March 2025 is collectible 1
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - HR Uber date UNVERIFIED. The date 21 February 2025 and ECLI:NL:HR:2025:319 come from a later court citation found by search, not from a fetched copy of the ruling. Sources: https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file and https://www.rijksoverheid.nl/actueel/nieuws/2025/03/27/ondernemerschap-blijft-volwaardig-criterium-bij-beoordelen-schijnzelfstandigheid. A fetched copy of the ruling would settle it.
 - VBAR is proposed for the purpose of tax year 2024. In 2024 the bill was at the Raad van State stage, to the Raad van State on 21 June 2024, advice published 11 November 2024. The bill was introduced in 2025 and became the Wet van 18 juni 2026, Stb. 2026, 158, published 29 June 2026, in force on 31 December 2026 by Besluit van 13 juli 2026, Stb. 2026, 207, published 15 July 2026. Sources: https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file, https://www.eerstekamer.nl/wetsvoorstel/36783_wet_invoering, https://zoek.officielebekendmakingen.nl/stb-2026-158.html and https://zoek.officielebekendmakingen.nl/stb-2026-207.html. Nothing of it applied to 2024.
 - The ministeriële regeling under art. III lid 2 of the VBAR that sets the amount for the first application was not found on 2026-10-11. Sources: https://zoek.officielebekendmakingen.nl/stb-2026-158.html and https://www.eerstekamer.nl/wetsvoorstel/36783_wet_invoering. Publication in the Staatscourant would settle it.
@@ -293,6 +307,8 @@ An invented naheffingsaanslag loonheffingen dated 10 March 2025 is collectible 1
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2024 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

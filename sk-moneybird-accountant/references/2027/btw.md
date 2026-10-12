@@ -14,9 +14,9 @@ version: 1.0.0.0
 # BTW 2027
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 279.
-Part 1: lines 1-278, 51193 bytes, first heading "# BTW 2027"
-Part 2: lines 279-352, 13937 bytes, first heading "### Suppletie timing: Calculated example"
+Read plan: 2 parts. Next read offset: line 283.
+Part 1: lines 1-282, 50408 bytes, first heading "# BTW 2027"
+Part 2: lines 283-368, 14962 bytes, first heading "### EU distance-sales threshold: Calculated example"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 279-352, 13937 bytes, first heading "### Suppletie timing: Calcula
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the Dutch VAT rates, exemptions, small-business scheme, returns, invoices, private use, and cross-border transactions that matter to a sole trader or a BV. The enacted rate structure remains 21% standard, 9% reduced and 0% for qualifying zero-rated supplies. [Wet op de omzetbelasting 1968](https://wetten.overheid.nl/BWBR0002629/2026-01-01) The year's rules also include an adopted law that is scheduled to take effect in 2027 and proposed changes whose VAT effects are scheduled for a later year. [Bill 36.920](https://www.eerstekamer.nl/wetsvoorstel/36920_wet_implementatie_richtlijn), [Belastingplan 2027](https://zoek.officielebekendmakingen.nl/kst-37022-2.html)
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
@@ -77,6 +81,8 @@ This file covers the Dutch VAT rates, exemptions, small-business scheme, returns
 ---
 
 ## 3. HOW IT WORKS IN 2027
+
+<a id="3-how-it-works"></a>
 
 ### Standard VAT rate
 
@@ -250,6 +256,8 @@ Businesses with tax debt accumulated during the period in the figures table repa
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### VAT rates: Calculated example
 
 A business sells taxable goods for € 1.000,00 excluding VAT.
@@ -300,6 +308,8 @@ This example applies only to the penalty page for businesses established outside
 
 ## 5. CHANGES FROM 2026
 
+<a id="5-changes"></a>
+
 - The enacted VAT rates remain 21%, 9% and 0%. No 2027 rate change was found. [Wet op de omzetbelasting 1968](https://wetten.overheid.nl/BWBR0002629/2026-01-01)
 - Lodging remains at 21% in 2027. The change from 9% to 21% took effect in 2026, so this is not a new 2027 change. [Stb. 2025, 339](https://zoek.officielebekendmakingen.nl/stb-2025-339.html)
 - The Dutch KOR ceiling remains € 20.000 and the EU KOR Union ceiling remains € 100.000. The KOR registration threshold without prior notice remains € 2.200. No 2027 change was found. [Wet op de omzetbelasting 1968](https://wetten.overheid.nl/BWBR0002629/2026-01-01), [KOR registration threshold decision](https://zoek.officielebekendmakingen.nl/stcrt-2024-38565.html)
@@ -311,6 +321,8 @@ This example applies only to the penalty page for businesses established outside
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 Keep sales invoices and supporting records that show the supply, rate, VAT amount, customer and supply date. Issue invoices by the 15th day of the month after supply when invoicing is required. Keep digital invoices in a form that preserves their origin, contents and readability. [Invoice guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/), [Invoice requirements](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/factuureisen)
 
@@ -327,6 +339,8 @@ File and pay by the applicable due date. The checked material states the general
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - **Annual VAT return limit:** Less than € 1.883 is marked UNVERIFIED for 2027. The current page has no 2027 publication, and the checked material does not include a 2027 handbook. A 2027 handbook or an updated official period page would settle it. [Belastingdienst period-change page](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/wijziging-aangiftetijdvak-btw)
 - **Annual return cross-border limits:** The less-than-€ 10.000 limit per activity is confirmed in the 2020 and 2026 handbooks but not confirmed for 2027. A 2027 handbook would settle it. [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
@@ -345,6 +359,8 @@ File and pay by the applicable due date. The checked material states the general
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2027 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

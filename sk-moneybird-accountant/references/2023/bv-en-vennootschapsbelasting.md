@@ -14,9 +14,9 @@ version: 1.0.0.0
 # BV en vennootschapsbelasting 2023
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 282.
-Part 1: lines 1-281, 50309 bytes, first heading "# BV en vennootschapsbelasting 2023"
-Part 2: lines 282-394, 14618 bytes, first heading "### Calculated example: geruisloze omzetting compared with ruisende inbreng"
+Read plan: 2 parts. Next read offset: line 290.
+Part 1: lines 1-289, 50423 bytes, first heading "# BV en vennootschapsbelasting 2023"
+Part 2: lines 290-410, 14733 bytes, first heading "### Calculated example: geruisloze omzetting compared with ruisende inbreng"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 282-394, 14618 bytes, first heading "### Calculated example: gerui
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the Dutch vennootschapsbelasting (Vpb, corporate income tax) for a BV in 2023, plus the main related rules for a directeur-grootaandeelhouder (DGA, director and major shareholder), dividendbelasting (dividend withholding tax), the conditionele bronbelasting (conditional withholding tax), the jaarrekening (annual accounts) and the switch from a sole trader to a BV. The 2023 rate is 19% up to a belastbaar bedrag (taxable amount) of € 200.000 and € 38.000 plus 25,8% above that amount. The gebruikelijk loon (customary salary) comparable wage moves to 100% in 2023. The law for 2023 is enacted.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
@@ -71,6 +75,8 @@ This file covers the Dutch vennootschapsbelasting (Vpb, corporate income tax) fo
 ---
 
 ## 3. HOW IT WORKS IN 2023
+
+<a id="3-how-it-works"></a>
 
 ### Vpb rate
 The rate applies to a BV and other lichamen subject to vennootschapsbelasting. Article 22 sets the table. For 2023 the first bracket is t/m € 200.000 at 19%. For the part of the belastbaar bedrag above € 200.000 the tax is € 38.000 plus 25,8%. The Belastingdienst tarieven page states 19,0% and 25,8% for 2023. https://wetten.overheid.nl/BWBR0002672/2023-01-01 and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/tarieven_vennootschapsbelasting The rate interacts with verliesverrekening, the art. 15b renteaftrekbeperking, the innovatiebox and the deelnemingsvrijstelling. The result goes on the aangifte vennootschapsbelasting.
@@ -174,6 +180,8 @@ The Besluit winstsplitsing, spoedreparatie en artikel 10a, Stcrt. 2022, 11028, i
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 The checked material for 2023 lists no official example. Every example below is a `Calculated example` and uses the section 2 figures. Every product is written with two decimals and the rounding step is marked.
 
@@ -329,6 +337,8 @@ Answer: 7 years for the general records, nine years following the year in which 
 
 ## 5. CHANGES FROM 2022
 
+<a id="5-changes"></a>
+
 - Vpb first bracket: 2022 t/m € 395.000 at 15% to 2023 t/m € 200.000 at 19%. https://wetten.overheid.nl/BWBR0002672/2022-01-01 and https://wetten.overheid.nl/BWBR0002672/2023-01-01
 - Vpb above the bracket: 2022 € 59.250 plus 25,8% to 2023 € 38.000 plus 25,8%. https://wetten.overheid.nl/BWBR0002672/2022-01-01 and https://wetten.overheid.nl/BWBR0002672/2023-01-01
 - Art. 31 apportionment applies to a book year straddling 1 January 2023. https://wetten.overheid.nl/BWBR0002672/2022-01-01
@@ -361,6 +371,8 @@ Answer: 7 years for the general records, nine years following the year in which 
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the DGA wage through the loonadministratie. The BV withholds loonheffing. For an uninsured DGA, withhold the bijdrage Zvw on net wage and pay it through the aangifte loonheffingen. For an insured DGA, the BV pays the werkgeversheffing Zvw. https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf
 - Keep the gebruikelijk loon test in the records, including the comparable wage, the highest wage in connected bodies and the normbedrag of € 51.000. https://wetten.overheid.nl/BWBR0002471/2023-01-01
 - File the Vpb return for a calendar book year 2023 before 1 June 2024. Online extension to 1 November 2024 can be requested from 1 March to 1 June 2024. https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/aangifte-vennootschapsbelasting-doen/aangifte-vennootschapsbelasting-doen and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/uitstel_aangifte_vennootschapsbelasting/uitstel_aangifte_vennootschapsbelasting
@@ -380,6 +392,8 @@ Answer: 7 years for the general records, nine years following the year in which 
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 None for 2023.
 
 The checked 2023 material records no UNVERIFIED, proposed or unknown value for 2023. Two items are marked Corrected and are explained in section 3. The dividend stripping rule sits in art. 4 lid 7 Wet DB 1965, not in art. 4 lid 3 as the research said. https://wetten.overheid.nl/BWBR0002515/2020-01-01 The Zvw route for an uninsured DGA is that the BV withholds the bijdrage on net wage, not that the DGA pays it by aanslag. https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf
@@ -387,6 +401,8 @@ The checked 2023 material records no UNVERIFIED, proposed or unknown value for 2
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2023 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

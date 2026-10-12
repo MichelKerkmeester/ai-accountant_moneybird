@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 Box 3 (sparen en beleggen, savings and investments) taxes a forfaitair (fixed) return on assets and debts. For 2022 the old band method applies, with the grondslag sparen en beleggen (the base for savings and investments) split over three bands that each mix rendementsklasse I (return class I, savings) and rendementsklasse II (return class II, investments) (https://wetten.overheid.nl/BWBR0011353/2022-01-01). The Wet rechtsherstel box 3 (Box 3 Legal Restoration Act) is enacted and adds a second calculation for 2022 with the actual composition of the assets in three categories (https://zoek.officielebekendmakingen.nl/stb-2022-533.html). The Belastingdienst computes both methods and applies the more favourable one to the definitive assessment (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen). All 2022 values in this file are enacted and Verified.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
@@ -46,6 +50,8 @@ Box 3 (sparen en beleggen, savings and investments) taxes a forfaitair (fixed) r
 ---
 
 ## 3. HOW IT WORKS IN 2022
+
+<a id="3-how-it-works"></a>
 
 ### Heffingsvrij vermogen
 
@@ -131,6 +137,8 @@ The Wet tegenbewijsregeling box 3 (counter-evidence scheme) is the law of 14 Jul
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 All examples use invented amounts and only the 2022 figures from section 2. The asset and debt values are the values on 1 January 2022 that the Wet rechtsherstel calculation uses.
 
 **Calculated example 1. Single person, mixed portfolio, old method against category method.**
@@ -189,6 +197,8 @@ The Belastingdienst example for 2022: € 1.000 of interest received and shares 
 
 ## 5. CHANGES FROM 2021
 
+<a id="5-changes"></a>
+
 - Heffingsvrij vermogen: € 50.000 per person and € 100.000 with a fiscal partner in 2021, to € 50.650 and € 101.300 in 2022 (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen, https://wetten.overheid.nl/BWBR0011353/2021-01-01 and https://wetten.overheid.nl/BWBR0011353/2022-01-01).
 - Rendementsklasse I: 0,03% in 2021 to -0,01% in 2022. Rendementsklasse II: 5,69% in 2021 to 5,53% in 2022 (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen, https://wetten.overheid.nl/BWBR0011353/2021-01-01 and https://wetten.overheid.nl/BWBR0011353/2022-01-01).
 - Band 1: the upper limit moves from € 50.000 in 2021 (page: tot € 50.001) to € 50.650 in 2022 (page: tot € 50.651), and the average drops from 1,898% to 1,818% (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen and https://wetten.overheid.nl/BWBR0011353/2022-01-01).
@@ -209,6 +219,8 @@ The Belastingdienst example for 2022: € 1.000 of interest received and shares 
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - The 2022 box 3 return and the recalculation need the values at 1 January of the banktegoeden, the overige bezittingen and the schulden, because art. 3 of the Wet rechtsherstel uses the amounts at 1 January (https://zoek.officielebekendmakingen.nl/stb-2022-533.html).
 - Only the debts above the schuldendrempel of € 3.200 count, or € 6.400 with a whole-year partner, and the Belastingdienst computes the drempel in the return (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/bezittingen_en_schulden_box_3_ and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/wat_zijn_uw_bezittingen_en_schulden/uw_schulden/drempel).
 - Whole-year partners: heffingsvrij vermogen € 101.300, drempel € 6.400, and the partners divide the joint grondslag sparen en beleggen. A joint drempel needs both partners' signatures on the return(s), and whole-year partners use the joint figures in the recalculation (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/wat_zijn_uw_bezittingen_en_schulden/uw_schulden/drempel and https://zoek.officielebekendmakingen.nl/stb-2022-533.html).
@@ -223,6 +235,8 @@ The Belastingdienst example for 2022: € 1.000 of interest received and shares 
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 The checked 2022 figures are all enacted and Verified, and the year's list of values records no open points. The points below still matter for 2022 work.
 
 - UNVERIFIED. The claim that the Hoge Raad itself ordered rechtsherstel on the basis of the actual return. The memorie van toelichting describes the Kerstarrest as a breach of "artikel 1 EP, in samenhang met artikel 14 EVRM" and says the legislator chose a recalculation with the actual composition of the assets in three categories instead (https://zoek.officielebekendmakingen.nl/kst-36203-3.html). The Rijksoverheid timeline confirms the ruling and names the right to property and the discrimination ban (https://www.rijksoverheid.nl/themas/werk/inkomstenbelasting/box-3/tijdlijn-rechtsherstel-box-3). hogeraad.nl returned HTTP 403 on 2026-10-11, so the ruling text could not be checked. What would settle it: the text of ECLI:NL:HR:2021:1963 on hogeraad.nl.
@@ -233,6 +247,8 @@ The checked 2022 figures are all enacted and Verified, and the year's list of va
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2022 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

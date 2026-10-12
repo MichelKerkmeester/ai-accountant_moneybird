@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Box 2 en aanmerkelijk belang 2027
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 276.
-Part 1: lines 1-275, 49980 bytes, first heading "# Box 2 en aanmerkelijk belang 2027"
-Part 2: lines 276-315, 11250 bytes, first heading "## 6. IN THE BOOKS"
+Read plan: 2 parts. Next read offset: line 286.
+Part 1: lines 1-285, 50118 bytes, first heading "# Box 2 en aanmerkelijk belang 2027"
+Part 2: lines 286-331, 11341 bytes, first heading "## 6. IN THE BOOKS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 276-315, 11250 bytes, first heading "## 6. IN THE BOOKS"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers box 2 income from an aanmerkelijk belang (substantial shareholding) in tax year 2027, so the 5% test, the two-bracket rate, dividends and vervreemdingsvoordelen, the belastingkorting on an unoffset loss, the excessief lenen (excessive borrowing) fiction for loans from the own BV and the link with the gebruikelijk loon (customary salary) of a director-major shareholder. The law for 2027 is a mix of enacted law, bills and an announcement. The future Wet IB 2001 text per 1 January 2027 keeps the 2026 box 2 table, the € 500.000 excessief lenen maximum and the art. 4.6 to 4.16 texts, and the future Wet LB 1964 text keeps € 58.000 and € 5.000. The December 2026 indexation regulation, the Belastingplan 2027 bill (Kamerstuk 37 022 nr. 2), the Overige fiscale maatregelen 2027 bill (Kamerstuk 37 023) and the cabinet letter of 29 September 2026 still have to settle the final numbers. The most important open items are the indexed 2027 bracket boundary, the proposed 29,2% second-bracket rate from 2027 and the proposed phase-down of the excessief lenen maximum. All sources in this file were checked on 2026-10-11.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
@@ -60,6 +64,8 @@ This file covers box 2 income from an aanmerkelijk belang (substantial sharehold
 ---
 
 ## 3. HOW IT WORKS IN 2027
+
+<a id="3-how-it-works"></a>
 
 ### Box 2 bracket 1 (art. 2.12)
 
@@ -152,6 +158,8 @@ The memorie van toelichting of Overige fiscale maatregelen 2027 (Kamerstuk 37 02
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Calculated example: dividend inside bracket 1
 
@@ -259,6 +267,8 @@ No primary page states a summed two-partner first-bracket amount. The totals abo
 
 ## 5. CHANGES FROM 2026
 
+<a id="5-changes"></a>
+
 - Box 2 bracket 1. 2026, enacted: 24,5% up to € 68.843 (https://wetten.overheid.nl/BWBR0011353/2026-01-01). 2027 future text, adopted-not-yet-in-force: still 24,5% up to € 68.843, pre-indexation (https://wetten.overheid.nl/BWBR0011353/2027-01-01). The Belastingplan 2027 bill proposes the 1,01248 multiplier for the art. 10.1 amounts, which include art. 2.12, so the final 2027 boundary is still open (https://zoek.officielebekendmakingen.nl/kst-37022-2.html).
 - Tax at the top of bracket 1. 2026: € 16.866 (https://wetten.overheid.nl/BWBR0011353/2026-01-01). 2027 future text: € 16.866 (https://wetten.overheid.nl/BWBR0011353/2027-01-01).
 - Box 2 bracket 2. 2026, enacted: 31% above € 68.843 (https://wetten.overheid.nl/BWBR0011353/2026-01-01). 2027 future text: 31% (https://wetten.overheid.nl/BWBR0011353/2027-01-01). Proposed new: 29,2% for 4 years from 2027 in the cabinet letter of 29 September 2026 (https://open.overheid.nl/documenten/5d1a02b8-ff11-4b87-b6a4-bb0f9828eca0/file).
@@ -275,6 +285,8 @@ No primary page states a summed two-partner first-bracket amount. The totals abo
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record every dividend and other profit distribution from the BV with the date, the amount and the dividendbelasting withheld. Dividendbelasting is not deducted from the box 2 income but credited as voorheffing (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang).
 - Keep the verkrijgingsprijs per share. Notary costs are added to the verkrijgingsprijs, selling costs reduce the overdrachtsprijs, and at an onzakelijke prijs the value in het economisch verkeer applies to both sides (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang).
 - Keep the balance of all debts to the company at 31 December, at nominal value. Debts at several companies are added, receivables on the company do not reduce the debts, and the drempel "never drops below € 500.000 (€ 700.000 in 2023)". Keep the amounts taxed earlier in a separate record (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/bijzondere_situaties/geld_lenen_van_uw_bv/excessief-lenen-van-bv-beperkt).
@@ -288,6 +300,8 @@ No primary page states a summed two-partner first-bracket amount. The totals abo
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - Indexed 2027 bracket 1 boundary: unknown and UNVERIFIED. Two secondary sources conflict, € 69.607 (ABN AMRO, https://financialfocus.abnamro.nl/fiscaliteiten/prinsjesdag-2026-negen-fiscale-aandachtspunten-voor-de-dga/) against € 69.703 (holdwise.nl, https://holdwise.nl/kennisbank/box-2-tarief-2027). The Belastingplan 2027 multiplier of 1,01248 for the art. 10.1 amounts is proposed and not adopted (https://zoek.officielebekendmakingen.nl/kst-37022-2.html). Section 4 works the multiplication out and the outcome about € 69.702 fits the higher figure. The December 2026 ministerial regulation settles it (https://zoek.officielebekendmakingen.nl/kst-37022-2.html).
 - The 29,2% second-bracket rate for 4 years from 2027 is proposed in the cabinet letter of 29 September 2026 (https://open.overheid.nl/documenten/5d1a02b8-ff11-4b87-b6a4-bb0f9828eca0/file). No bill text was found on 2026-10-11, the letter does not name the legislative vehicle, and it is open whether the rate enters a nota van wijziging or a separate bill and whether it is adopted before 1 January 2027 (https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?qry=wetsvoorstel%3A37022&cfg=wetsvoorsteldetails). The Tweede Kamer dossier and the Staatsblad settle it.
@@ -308,6 +322,8 @@ No primary page states a summed two-partner first-bracket amount. The totals abo
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2027 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

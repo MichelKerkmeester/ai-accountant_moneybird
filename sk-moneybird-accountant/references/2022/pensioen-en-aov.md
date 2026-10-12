@@ -15,9 +15,9 @@ version: 1.0.0.0
 # Pensioen, lijfrente en AOV 2022
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 329.
-Part 1: lines 1-328, 50017 bytes, first heading "# Pensioen, lijfrente en AOV 2022"
-Part 2: lines 329-355, 8712 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Read plan: 2 parts. Next read offset: line 341.
+Part 1: lines 1-340, 50184 bytes, first heading "# Pensioen, lijfrente en AOV 2022"
+Part 2: lines 341-371, 8774 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -27,11 +27,15 @@ Part 2: lines 329-355, 8712 bytes, first heading "## 7. OPEN POINTS AND CONFLICT
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the income-provision rules for tax year 2022 for a ZZP sole trader, and for a reader who may also own a BV: the jaarruimte (annual room for deductible lijfrentepremies) and reserveringsruimte (catch-up room for unused jaarruimte), the conditions for lijfrenteverzekering, lijfrenterekening and lijfrentebeleggingsrecht, the stakingswinst conversion of art. 3.129, the oudedagsreserve (FOR, old-age reserve), and the deductibility of AOV (arbeidsongeschiktheidsverzekering, disability insurance) premiums. The 2022 values come from the text of the Wet inkomstenbelasting valid on 1 January 2022 and from the Belastingdienst FISIN 2022 chapter, so the law for this year is enacted. Two features of 2022 matter most: it is the last year in which a FOR dotatie is possible, and it is the last year in which the jaarruimte is reduced by dotaties aan de oudedagsreserve. Section 7 lists the open points and conflicts in the checked material, including the age boundary for the higher reserveringsruimte.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
@@ -69,6 +73,8 @@ This file covers the income-provision rules for tax year 2022 for a ZZP sole tra
 ---
 
 ## 3. HOW IT WORKS IN 2022
+
+<a id="3-how-it-works"></a>
 
 ### Jaarruimte percentage
 
@@ -194,6 +200,8 @@ For a nabestaandenlijfrente the termijn is 2 full calendar years after the year 
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 All inputs in the calculated examples are invented and use round amounts. Every statutory amount used comes from section 2 or from the 2021 figures in section 5. The jaarruimte examples assume a pensioentekort, no nettopensioenpremies and a taxpayer who has not yet reached the AOW age at the start of 2022. Products are shown before rounding, and each rounding step says rounded or rounded down.
 
 **Calculated example: jaarruimte with a profit of € 60.000,00 (no pension accrual, no FOR dotatie).**
@@ -297,6 +305,8 @@ All inputs in the calculated examples are invented and use round amounts. Every 
 
 ## 5. CHANGES FROM 2021
 
+<a id="5-changes"></a>
+
 - The structure of the jaarruimte stayed the same as in 2021: 13,3% of the premiegrondslag, reduced by factor A (6,27) and by dotaties aan de oudedagsreserve, with a 7-year look-back. [art. 3.127, text 2022-01-01](https://wetten.overheid.nl/BWBR0011353/2022-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
 - Maximum jaarruimte: € 13.236 (2021) to € 13.570 (2022). [Ministry 2022 table](https://open.overheid.nl/documenten/ronl-04947996-d528-4eac-afb0-6aa936dc577e/pdf), [Ministry 2023 table](https://open.overheid.nl/documenten/ronl-acc574eb-1c51-43d6-a2ac-69b39bcb6d35/pdf).
 - Aftoppingsgrens premiegrondslag: € 112.189 to € 114.866. [art. 3.127, text 2021-01-01](https://wetten.overheid.nl/BWBR0011353/2021-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [art. 3.127, text 2022-01-01](https://wetten.overheid.nl/BWBR0011353/2022-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
@@ -315,6 +325,8 @@ All inputs in the calculated examples are invented and use round amounts. Every 
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record every lijfrentepremie with its payment date. Art. 3.130 lid 1 counts a premium in the year of payment or verrekening, and art. 3.130 lid 2 lets a payment before 1 July 2023 count in 2022 for the FOR conversion and the stakingswinst conversion. [art. 3.130, text 2020-01-01](https://wetten.overheid.nl/BWBR0011353/2020-01-01), [FISIN 2022](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/uitgaven_voor_inkomensvoorzieningen).
 - Record per policy whether the uitkeringen are periodic or a lump sum. A periodic AOV premium is fully deductible under art. 3.124 lid 1 c. A lump-sum policy is not deductible and its payout belongs in box 3. [art. 3.124, text 2022-01-01](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [FISIN 2022](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/uitgaven_voor_inkomensvoorzieningen), [Belastingdienst, AOV voor ondernemers](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers).
 - Record the FOR toevoeging and the FOR afname. For 2022 a toevoeging of 9,44% of the winst up to € 9.632 is still possible if the urencriterium is met and the taxpayer has not yet reached the AOW age at the start of the year. This is the last year of the toevoeging. On death the FOR is taxed unless the partner continues and takes it over on request. [art. 3.67, 3.68 and 3.70, text 2022-01-01](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [art. 10a.29, text 2024-01-01](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [Belastingdienst, oudedagsreserve](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/fiscale_reserves/oudedagsreserve).
@@ -327,6 +339,8 @@ All inputs in the calculated examples are invented and use round amounts. Every 
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 **Open points and conflicts for 2022.**
 
@@ -348,6 +362,8 @@ All inputs in the calculated examples are invented and use round amounts. Every 
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2022 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

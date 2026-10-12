@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 In 2020 box 3 tax is calculated with the old band method (oude berekening) over three bands of the grondslag sparen en beleggen (basis for savings and investments). The box 3 rate is 30% and the values are measured on the peildatum (reference date) 1 January 2020. The 2020 law is enacted. Later, the Wet rechtsherstel box 3 (restoration of rights) of 21 December 2022 can recalculate a 2020 assessment that was not yet irrevocable on 24 December 2021, but only when the recalculation gives a lower voordeel. The Hoge Raad ruling of 25 June 2026 confirms that taxpayers who did not object for 2017 to 2020 have no right to herstel of paid box 3 tax over that period.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
@@ -49,6 +53,8 @@ In 2020 box 3 tax is calculated with the old band method (oude berekening) over 
 ---
 
 ## 3. HOW IT WORKS IN 2020
+
+<a id="3-how-it-works"></a>
 
 ### Peildatum
 The box 3 values for 2020 are measured on the peildatum (reference date) 1 January 2020. The Belastingdienst FISIN 2020 page states that the values are on the peildatum 1 January 2020. In the old band method the actual composition of the assets does not matter for the band calculation. The value on the peildatum determines the rendementsgrondslag (return basis). For the Wet rechtsherstel recalculation, art. 3 uses the banktegoeden (bank balances), overige bezittingen (other assets) and schulden (debts) at 1 January. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/bezittingen_en_schulden_box_3_ and https://zoek.officielebekendmakingen.nl/stb-2022-533.html.
@@ -108,6 +114,8 @@ Taxpayers who did not object for 2017 to 2020 "hebben geen recht op herstel van 
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 No official examples were found in the checked material for 2020. All examples below are calculated examples.
 
 **Calculated example 1: old band method with a single person.**
@@ -161,6 +169,8 @@ For 2020 the online form in Mijn Belastingdienst can only be used if you receive
 
 ## 5. CHANGES FROM 2019
 
+<a id="5-changes"></a>
+
 The checked material contains no 2019 figures for box 3. This section therefore lists what began in 2020 where the checked material says so.
 
 - The old band method applies from 2020 to 2022. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen.
@@ -177,6 +187,8 @@ The checked material contains no 2019 figures for box 3. This section therefore 
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the value of banktegoeden, overige bezittingen and schulden on the peildatum 1 January 2020. These values determine the rendementsgrondslag for the 2020 box 3 return. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/bezittingen_en_schulden_box_3_.
 - Box 3 is reported in the income tax return (aangifte inkomstenbelasting) for 2020. The Belastingdienst computes the schuldendrempel in the return. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/wat_zijn_uw_bezittingen_en_schulden/uw_schulden/drempel.
 - For a whole-year fiscal partner, the heffingsvrij vermogen doubles to € 61.692 and the schuldendrempel doubles to € 6.200. A joint drempel needs both partners' signatures on the return(s). The partners may divide the joint grondslag sparen en beleggen in any way that totals 100%. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/wat_zijn_uw_bezittingen_en_schulden/uw_schulden/drempel.
@@ -189,6 +201,8 @@ The checked material contains no 2019 figures for box 3. This section therefore 
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - The claim that the Hoge Raad itself ordered rechtsherstel on the basis of the actual return stays UNVERIFIED. hogeraad.nl returned HTTP 403 on 2026-10-11. This would be settled by the ruling text on hogeraad.nl or rechtspraak.nl.
 - The "or objected late" part of the Hoge Raad 25 June 2026 ruling is not on the Rijksoverheid timeline and stays UNVERIFIED. This would be settled by the ruling text on hogeraad.nl or rechtspraak.nl, which returned HTTP 403 for hogeraad.nl.
 - Band limit presentation conflict: the statute writes "meer dan / niet meer dan" with € 72.797 and € 1.005.572. The Belastingdienst page writes "tot / vanaf" with € 72.798 and € 1.005.573. Both describe the same bands. Sources: https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen.
@@ -198,6 +212,8 @@ The checked material contains no 2019 figures for box 3. This section therefore 
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2020 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

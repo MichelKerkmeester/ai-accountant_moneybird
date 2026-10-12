@@ -15,9 +15,9 @@ version: 1.0.0.0
 # BV en vennootschapsbelasting 2025
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 310.
-Part 1: lines 1-309, 49785 bytes, first heading "# BV en vennootschapsbelasting 2025"
-Part 2: lines 310-361, 13229 bytes, first heading "## 5. CHANGES FROM 2024"
+Read plan: 2 parts. Next read offset: line 318.
+Part 1: lines 1-317, 49899 bytes, first heading "# BV en vennootschapsbelasting 2025"
+Part 2: lines 318-377, 13344 bytes, first heading "## 5. CHANGES FROM 2024"
 <!-- GENERATED:nav:end -->
 
 
@@ -27,11 +27,15 @@ Part 2: lines 310-361, 13229 bytes, first heading "## 5. CHANGES FROM 2024"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the BV (besloten vennootschap, private limited company) and the vennootschapsbelasting (Vpb, corporate income tax) for tax year 2025. It sets out the Vpb rates and computation, verliesverrekening (loss set-off), the generic interest deduction limit, the gebruikelijk loon (customary wage) for a DGA (directeur-grootaandeelhouder, director and substantial shareholder), the Zvw route for that DGA, box 2 and dividendbelasting (dividend tax), conditionele bronbelasting (conditional withholding tax), the fiscale eenheid (fiscal unity), the innovatiebox, the jaarrekening (annual accounts) and administratie duties, and the switch from an eenmanszaak (sole proprietorship) to a BV. What matters most in 2025 is that the generic interest deduction percentage rises from 20% to 24,5%, the gebruikelijk loon normbedrag stays at € 56.000, the start-up transitional right lapses for all starters, and a new Besluit geruisloze omzetting applies from the day after its publication on 4 November 2025. The law for 2025 is enacted, and the Check tags mark the corrected descriptions and the one UNVERIFIED item.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
@@ -75,6 +79,8 @@ This file covers the BV (besloten vennootschap, private limited company) and the
 ---
 
 ## 3. HOW IT WORKS IN 2025
+
+<a id="3-how-it-works"></a>
 
 ### Vpb tarief (art. 22 Wet Vpb 1969)
 Art. 22 Wet Vpb 1969 computes the tax as the column III amount plus the column IV percentage of the part of the belastbaar bedrag (taxable amount) above the column I amount. For 2025 the first € 200.000 is taxed at 19% and the part above € 200.000 at € 38.000 plus 25,8% ([Wet Vpb 1969, 2025 text](https://wetten.overheid.nl/BWBR0002672/2025-01-01)). The Belastingdienst states 19,0% and 25,8% for 2023, 2024, 2025 and 2026 ([tarieven vennootschapsbelasting](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/tarieven_vennootschapsbelasting)). The same series runs for 2023 to 2026, so no change of art. 22 takes effect during 2025. Art. 31 still carries the split formula (X/B x To) + (Y/B x Tn) for a book year that straddles a change of art. 22, with X the days before the change, Y the days from the change, B all days of the year, To the old tax and Tn the new tax ([2020 text](https://wetten.overheid.nl/BWBR0002672/2020-01-01), [2026 text](https://wetten.overheid.nl/BWBR0002672/2026-01-01)).
@@ -187,6 +193,8 @@ The online extension, which exists only for a calendar book year, runs to 1 Nove
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 Each example uses the figures from section 2. Products are written with two decimals. Where a step rounds, it says rounded.
 
@@ -309,6 +317,8 @@ Uses the section 2 figures 15% and 100/85.
 
 ## 5. CHANGES FROM 2024
 
+<a id="5-changes"></a>
+
 - Generieke renteaftrekbeperking: the art. 15b percentage goes from 20% in 2024 to 24,5% in 2025 ([2024 text](https://wetten.overheid.nl/BWBR0002672/2024-01-01), [2025 text](https://wetten.overheid.nl/BWBR0002672/2025-01-01), [Belastingdienst change page 2025](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/veranderingen-vennootschapsbelasting-vorige-jaren/veranderingen-vennootschapsbelasting-2025)). The threshold of € 1.000.000 stays the same.
 - Zvw: the bijdrage goes from 5,32% in 2024 to 5,26% in 2025, the maximum bijdrage-inkomen from € 71.628 to € 75.864, and the werkgeversheffing from 6,57% to 6,51% ([FISIN 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet), [FISIN 2025](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet), [DGA table](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/bijdrage_zorgverzekeringswet/hoe_wordt_de_inkomensafhankelijke_bijdrage_zvw_betaald/tabel_werkgeversheffing_zvw_of_bijdrage_zvw/ik_ben_directeur_grootaandeelhouder/)).
 - Box 2: the first bracket goes from € 67.000 at 24,5% to € 67.804 at 24,5%, the column III amount from € 16.415 to € 16.611, and the rate above the bracket from 33% to 31% ([2024 text](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01)).
@@ -332,6 +342,8 @@ Corrections carried into this 2025 file, not changes of law:
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Aangifte Vpb: a book year equal to the calendar year is filed before 1 June of the next year, a broken book year within 5 months after its end, and a short book year ending 31 December before 1 June or ending in another month before 1 April of the next calendar year ([aangifte vennootschapsbelasting doen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/aangifte-vennootschapsbelasting-doen/aangifte-vennootschapsbelasting-doen)). The online extension runs to 1 November and is requested from 1 March to 1 June, and a paper request within 5 months after the book year ends with reasons is needed for a broken book year or for more than 5 months ([uitstel](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/uitstel_aangifte_vennootschapsbelasting/uitstel_aangifte_vennootschapsbelasting)).
 - Loonadministratie: the BV runs the DGA wage through its loonadministratie and withholds loonheffing. The wage is at least € 56.000 or the higher of the comparable wage and the highest wage in connected bodies, the test wage includes the car bijtelling, and for an uninsured DGA the BV withholds 5,26% Zvw on net wage up to € 75.864 and pays it through the aangifte loonheffingen ([Handboek 2025](https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf), [Wet LB 1964 2025 text](https://wetten.overheid.nl/BWBR0002471/2025-01-01)).
 - Dividend: record the dividendnota once the opbrengst is paid, credited, settled or handed over, withhold 15%, and file and pay within 1 month after the day the dividend is made available. A deelnemingsdividend of 5% or more to a Dutch shareholder is usually exempt and needs no return unless the Belastingdienst invites one. A kwalificatiebeschikking needs a return. The shareholder credits the withheld tax in the aangifte inkomstenbelasting or, for a body, in the aangifte Vpb ([aangifte en betalen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/dividendbelasting/als_u_dividend_uitkeert/dividendbelasting-aangifte-betalen), [als u dividend uitkeert](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/dividendbelasting/als_u_dividend_uitkeert/als_u_dividend_uitkeert)).
@@ -346,6 +358,8 @@ Corrections carried into this 2025 file, not changes of law:
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Koepelvrijstelling and BUA: Status unknown and Check UNVERIFIED in section 2. The beleidsbesluit on belastingplicht en fiscale eenheid omzetbelasting (Stcrt. 2024, 38545) does not cover them, and the Wet OB 1968 article and the BUA were not opened ([Stcrt. 2024, 38545](https://zoek.officielebekendmakingen.nl/stcrt-2024-38545.html)). Reading the Wet OB 1968 article on the koepelvrijstelling and the BUA would settle it.
 - Conflict on the large class turnover bound: the KVK table prints more than € 51 mln ([KVK](https://www.kvk.nl/deponeren/in-welke-bedrijfsklasse-valt-je-bedrijf/)), while Stb. 2024, 52 art. 3 and Boek 2 BW art. 397 print € 50 miljoen ([Stb. 2024, 52](https://zoek.officielebekendmakingen.nl/stb-2024-52.html), [Boek 2 BW 2025](https://wetten.overheid.nl/BWBR0003045/2025-01-01)). Settled at € 50 miljoen.
 - Conflict on the micro thresholds: Stb. 2024, 52 art. 1 raises art. 395a to € 450.000 and € 900.000, and KVK applies these ([Stb. 2024, 52](https://zoek.officielebekendmakingen.nl/stb-2024-52.html), [KVK](https://www.kvk.nl/deponeren/in-welke-bedrijfsklasse-valt-je-bedrijf/)), while the consolidated Boek 2 BW at 2025-01-01 and at 2026-07-01 still prints € 350.000 and € 700.000 in art. 395a and prints the raised amounts in art. 396 and 397 ([Boek 2 BW 2025-01-01](https://wetten.overheid.nl/BWBR0003045/2025-01-01), [Boek 2 BW 2026-07-01](https://wetten.overheid.nl/BWBR0003045/2026-07-01)). The Nota van toelichting says the AMvB basis for art. 395a was missing and was to be added to art. 2:398 lid 4, which the 2026-07-01 text now does. The value used in section 2 is € 450.000 and € 900.000. A KVK or Justitie statement on the legal effect for the book year would close it.
@@ -354,6 +368,8 @@ Corrections carried into this 2025 file, not changes of law:
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2025 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

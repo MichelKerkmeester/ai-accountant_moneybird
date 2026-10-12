@@ -20,11 +20,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the deduction of business costs and the car rules for a ZZP sole trader (self-employed without employees), plus the BV variant of the gemengde-kosten drempel, in tax year 2020. The most important 2020 items are the drempel (threshold) of € 4.700 for gemengde kosten (mixed costs) with the 80% election, the kilometre allowance of € 0,19 for a private vehicle, and the car bijtelling (private-use addition) of 22% with separate rules for cars first admitted on or before 31 December 2016, youngtimers and zero-emission cars first admitted in 2020. All values in this file come from the 2020 statute text or from Belastingdienst pages that carry no year label, and all are enacted law for 2020. Nothing in this file is proposed or not yet in force. Points that remain open are in section 7.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
@@ -56,6 +60,8 @@ This file covers the deduction of business costs and the car rules for a ZZP sol
 ---
 
 ## 3. HOW IT WORKS IN 2020
+
+<a id="3-how-it-works"></a>
 
 ### Gemengde kosten drempel (art. 3.15 lid 1)
 
@@ -175,6 +181,8 @@ Btw on use and maintenance of a private car that is also used for business is de
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Official example: bijtelling of 22% and the cap at the costs
 
 Marked `Official example`. Source: [voorbeelden berekening privégebruik auto](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/privegebruik_auto/voorbeelden_berekening_privegebruik_auto). The page has no year label and uses 22%.
@@ -285,6 +293,8 @@ Part year control: six months gives € 450,00 × 6/12 = € 225,00.
 
 ## 5. CHANGES FROM 2019
 
+<a id="5-changes"></a>
+
 - The checked material for this file holds no 2019 values for this topic. No old-to-new amounts can be given. The values above are the values printed in the 2020 statute ([art. 3.15 and art. 3.16, 2020 text](https://wetten.overheid.nl/BWBR0011353/2020-01-01)).
 - What began in 2020 for zero-emission cars: for a car first admitted in 2020 the reduction is 14% off with a cap of € 6.300, giving 8% up to € 45.000 and 22% above. This reduction stays fixed for 60 months from the first day of the month after first admission ([art. 3.20 lid 2 en lid 11, 2020 text](https://wetten.overheid.nl/BWBR0011353/2020-01-01)).
 - Rule that applies to 2020 by retroactive effect: the nil onttrekking for a business fiets stalled no more than incidentally at the home address was added by Stb. 2025, 444 with retroactive effect to 1 January 2020 ([art. 3.20a, 2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01)).
@@ -292,6 +302,8 @@ Part year control: six months gives € 450,00 × 6/12 = € 225,00.
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Deduct costs excluding btw when the btw is deductible in the btw-aangifte. When no btw-aangifte is filed or the btw may not be deducted, the KOR (kleineondernemersregeling, small business scheme) case, deduct the costs including btw in the IB return ([welke kosten mag ik aftrekken](https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/welke-kosten-mag-ik-aftrekken-van-mijn-bijverdiensten), [wat betekent meedoen met de KOR](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/)).
 - Under the KOR no btw is charged or paid, no btw on business costs and investments is deducted, also not btw paid in another EU country, and earlier deductions may need herziening (revision) ([wat betekent meedoen met de KOR](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/)). The choice is per ondernemer and covers all subnummers ([wat betekent meedoen met de KOR](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/)).
@@ -307,6 +319,8 @@ Part year control: six months gives € 450,00 × 6/12 = € 225,00.
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - FISIN 2020 studiekosten: the FISIN 2020 page under the slug aftrek_studiekosten did not return content when the sources were checked. Status unknown. The statute settles the 2020 values ([art. 6.27, 6.28 en 6.30, 2020 text](https://wetten.overheid.nl/BWBR0011353/2020-01-01)). A working FISIN 2020 page would settle the remaining uncertainty.
 - Zero-emission 2020 description: one description gives 8% up to € 45.000, another gives 14% off capped at € 6.300. The material resolves these as the same regime. The 2020 statute prints 14% with a maximum of € 6.300 ([art. 3.20 lid 2, 2020 text](https://wetten.overheid.nl/BWBR0011353/2020-01-01)). Only waterstof was uncapped in 2020. The statute decides.
 - Old-car minimum, 35% against 25%: these are sometimes presented as competing values. They apply to different cars, 35% of the waarde in het economische verkeer for a youngtimer (art. 3.20 lid 1 b) and at least 25% instead of 22% for a car first admitted on or before 31 December 2016 (art. 10a.4) ([2020 text](https://wetten.overheid.nl/BWBR0011353/2020-01-01)). No open conflict for 2020.
@@ -316,6 +330,8 @@ Part year control: six months gives € 450,00 × 6/12 = € 225,00.
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2020 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

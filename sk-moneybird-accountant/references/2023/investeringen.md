@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Investeringsaftrek en afschrijving 2023
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 338.
-Part 1: lines 1-337, 47845 bytes, first heading "# Investeringsaftrek en afschrijving 2023"
-Part 2: lines 338-369, 8240 bytes, first heading "## 6. IN THE BOOKS"
+Read plan: 2 parts. Next read offset: line 348.
+Part 1: lines 1-347, 47983 bytes, first heading "# Investeringsaftrek en afschrijving 2023"
+Part 2: lines 348-385, 8331 bytes, first heading "## 6. IN THE BOOKS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 338-369, 8240 bytes, first heading "## 6. IN THE BOOKS"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the investment deductions and depreciation rules for tax year 2023: the kleinschaligheidsinvesteringsaftrek (KIA, small-scale investment deduction), the energie-investeringsaftrek (EIA, energy investment deduction), the milieu-investeringsaftrek (MIA, environmental investment deduction), the Vamil (willekeurige afschrijving milieu-investeringen, random depreciation for environmental investments), ordinary depreciation, the bodemwaarde (floor value) for buildings, the willekeurige afschrijving for starters and the temporary 2023 scheme, and the desinvesteringsbijtelling (disposal addition). The most important 2023 points are the wider KIA table (nil up to € 2.600 and a top of € 353.973), the EIA at 45,5%, the MIA at 45%, 36% and 27%, the Vamil at 75% random depreciation, and a temporary willekeurige afschrijving of at most 50% for assets with 2023 costs that are in use before 1 January 2026. The 2023 rules are enacted law, checked against the 2023 statute text and the Belastingdienst pages. 2023 is the last year in which the bodemwaarde of an own-use building is 50% of the WOZ-waarde, from 2024 one bodemwaarde applies.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
@@ -58,6 +62,8 @@ This file covers the investment deductions and depreciation rules for tax year 2
 ---
 
 ## 3. HOW IT WORKS IN 2023
+
+<a id="3-how-it-works"></a>
 
 ### KIA table (art. 3.41 lid 2)
 
@@ -142,6 +148,8 @@ Art. 13 lid 1 designates assets not used before, for which obligations were ente
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 No official example for 2023 was found in the checked sources. Every example below is a `Calculated example` built from the figures in section 2.
 
@@ -317,6 +325,8 @@ Sources: [URWA art. 8](https://wetten.overheid.nl/BWBR0012035/2025-01-01/0), [ar
 
 ## 5. CHANGES FROM 2022
 
+<a id="5-changes"></a>
+
 - KIA table, nil band: up to € 2.400 in 2022, up to € 2.600 in 2023 ([art. 3.41 lid 2](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [art. 3.41 lid 2](https://wetten.overheid.nl/BWBR0011353/2023-01-01)).
 - KIA table, end of the 28% band: € 59.939 in 2022, € 63.716 in 2023 ([art. 3.41 lid 2](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [art. 3.41 lid 2](https://wetten.overheid.nl/BWBR0011353/2023-01-01)).
 - KIA table, fixed amount and its ceiling: € 16.784 up to € 110.998 in 2022, € 17.841 up to € 117.991 in 2023 ([art. 3.41 lid 2](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [art. 3.41 lid 2](https://wetten.overheid.nl/BWBR0011353/2023-01-01)).
@@ -337,6 +347,8 @@ Sources: [URWA art. 8](https://wetten.overheid.nl/BWBR0012035/2025-01-01/0), [ar
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - The KIA is claimed by choice in the aangifte over the total investment in bedrijfsmiddelen of the calendar year, per onderneming, so the annual investment list has to be complete and split per asset ([art. 3.41](https://wetten.overheid.nl/BWBR0011353/2023-01-01)).
 - Keep the koopovereenkomst or the order date. The EIA, MIA and Vamil must be reported to RVO within 3 months after signing or ordering, and the Milieulijst valid on that date governs the application ([RVO voorwaarden](https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden), [RVO MIA en Vamil](https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers)).
 - The EIA must be reported to RVO in advance ([Belastingdienst Vpb 2023](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/veranderingen-vennootschapsbelasting-vorige-jaren/veranderingen-vennootschapsbelasting-2023)).
@@ -352,6 +364,8 @@ Sources: [URWA art. 8](https://wetten.overheid.nl/BWBR0012035/2025-01-01/0), [ar
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - EIA and MIA for a medegerechtigde or geldverstrekker: UNVERIFIED. The rule that a medegerechtigde or geldverstrekker cannot use the EIA or the MIA was not found on the fetched RVO and Belastingdienst pages ([RVO MIA en Vamil](https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers), [RVO voorwaarden](https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden), [Belastingdienst EIA](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/energie_investeringsaftrek_eia)). What would settle it: the statutory text of [art. 3.42 and art. 3.42a](https://wetten.overheid.nl/BWBR0011353/2023-01-01) or an RVO page that names which persons can use the EIA and the MIA.
 - Settled conflict, EIA and MIA maximum investment amount 2023: € 136.000.000 against € 128.000.000. [art. 3.42 lid 4](https://wetten.overheid.nl/BWBR0011353/2023-01-01) and the [Belastingdienst Vpb 2023](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/veranderingen-vennootschapsbelasting-vorige-jaren/veranderingen-vennootschapsbelasting-2023) page ("€ 136 miljoen") give € 136.000.000. The [FISIN 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek) chapter prints € 128.000.000 in its EIA sentence and € 136.000.000 in its MIA sentence. The 2023 value is settled at € 136.000.000 on the statute text and the Vpb page, and the FISIN EIA sentence is the losing source.
 - Settled conflict, MIA percentages 2023: [art. 3.42a lid 3](https://wetten.overheid.nl/BWBR0011353/2023-01-01), the [Milieulijst 2022](https://zoek.officielebekendmakingen.nl/stcrt-2021-47737.html) in force on 1 January 2022 and the [Rijksoverheid Belastingplan 2022](https://www.rijksoverheid.nl/actueel/nieuws/2021/09/21/belastingplan-2022-beter-belastingstelsel) news give 45%, 36% and 27%, with the increase "vanaf 1 januari 2022 verhoogd van 13,5%, 27% en 36% naar respectievelijk 27%, 36% en 45%". The [FISIN 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek) chapter prints 36%, 27% and 13,5%. The 2023 value is settled at 45%, 36% and 27%, and the FISIN chapter is the losing source. 2023 itself brought no MIA change.
@@ -362,6 +376,8 @@ Sources: [URWA art. 8](https://wetten.overheid.nl/BWBR0012035/2025-01-01/0), [ar
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2023 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

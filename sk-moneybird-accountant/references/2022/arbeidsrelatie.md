@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Arbeidsrelatie en zelfstandigheid 2022
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 322.
-Part 1: lines 1-321, 48467 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2022"
-Part 2: lines 322-353, 4386 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Read plan: 2 parts. Next read offset: line 334.
+Part 1: lines 1-333, 48634 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2022"
+Part 2: lines 334-369, 4448 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 322-353, 4386 bytes, first heading "## 7. OPEN POINTS AND CONFLICT
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the work relationship part of the 2022 rules: the Wet DBA (Wet deregulering beoordeling arbeidsrelaties, the Act on deregulating the assessment of work relationships) and the loondienst test, the handhavingsmoratorium (enforcement moratorium) with the aanwijzing (instruction) route, modelovereenkomsten (model agreements) and the Webmodule Beoordeling Arbeidsrelatie (web module for the assessment of the work relationship). The year's rules were enacted and in force, and the main 2022 development was policy: the Rutte IV coalition agreement of 10 January 2022 and the achtste voortgangsbrief (eighth progress letter) of 16 December 2022 announced stronger handhaving and the end of the moratorium per 1 January 2025 or earlier. The later instruments named in the checked sources, the VBAR bill with the low hourly rate presumption and the BAZ bill, were not law in 2022, because the VBAR internet consultation started on 6 October 2023 and the BAZ bill was submitted on 24 March 2026.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
@@ -59,6 +63,8 @@ This file covers the work relationship part of the 2022 rules: the Wet DBA (Wet 
 ---
 
 ## 3. HOW IT WORKS IN 2022
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Wet DBA
 
@@ -206,6 +212,8 @@ The Belastingdienst takes a standpoint on a complete verzoek vooroverleg (reques
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Example 1, Calculated example: the gelijkgestelden test
 
 Inputs, invented: a ZZP works for one client 2 days a week and is paid a rate well above 2/5 of the minimum wage.
@@ -298,6 +306,8 @@ Step 3. Only in 2030 can the Belastingdienst again go back the full 5 years. Che
 
 ## 5. CHANGES FROM 2021
 
+<a id="5-changes"></a>
+
 - Enforcement regime: unchanged. The handhavingsmoratorium with the aanwijzing route was in force in 2021 and in 2022, including the rule that kwaadwillend cases could get correctieverplichtingen, naheffingsaanslagen loonheffingen and boetes. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving.
 - Webmodule: in 2021 the pilot ran from 11 January 2021, for 6 months, and ended on 10 July 2021. In 2022 the pilot had ended, the online pilot environment stayed active, with no rechtskracht during or after the pilot. Sources: https://ondernemersplein.overheid.nl/personeel/inhuren/webmodule-beoordeling-arbeidsrelatie/ and https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file.
 - Policy: in 2021 the zevende voortgangsbrief (seventh progress letter) of 20 September 2021 extended the moratorium at least to 1 October 2021 and left decisions on the webmodule and the moratorium to the next cabinet. In 2022 the Rutte IV coalition agreement of 10 January 2022 and the kabinetsreactie of 24 June 2022 aimed to strengthen handhaving and lift the moratorium per 1 January 2025 or earlier. Source: https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file.
@@ -310,6 +320,8 @@ Step 3. Only in 2030 can the Belastingdienst again go back the full 5 years. Che
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Keep the contract, any approved modelovereenkomst and any webmodule outcome with the administration, and record how the work is actually done. An approved modelovereenkomst means no loondienst only if the parties work as described, and the qualification depends on how the work is actually done. Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/werken-met-modelovereenkomsten and https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/geen-nieuwe-modelovereenkomsten-meer.
 - Keep the administratie for 7 years. AWR art. 52 lid 4 (Algemene wet inzake rijksbelastingen, General Tax Act) says administratieplichtigen (persons with an administration duty) keep the gegevensdragers for seven years unless the tax law says otherwise. Lid 2 covers among others natural persons with winst uit onderneming (profit from business) or resultaat uit overige werkzaamheden (result from other activities). The text is the same in the version for 1 January 2020 and the version for 1 January 2026. Sources: https://wetten.overheid.nl/BWBR0002320/2020-01-01 and https://wetten.overheid.nl/BWBR0002320/2026-01-01.
 - Basisgegevens for the administration include the grootboek (general ledger), debiteuren- and crediteurenadministratie (debtors and creditors records), voorraadadministratie (stock records), in- and verkoopadministratie (purchase and sales records), loonadministratie (payroll records), and data relevant for the taxation of third parties. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/hoelang-moet-u-gegevens-bewaren.
@@ -320,6 +332,8 @@ Step 3. Only in 2030 can the Belastingdienst again go back the full 5 years. Che
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 Open points:
 
@@ -346,6 +360,8 @@ No open conflicts between the sources for 2022.
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2022 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

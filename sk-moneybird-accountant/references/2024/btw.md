@@ -14,9 +14,9 @@ version: 1.0.0.0
 # BTW 2024
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 351.
-Part 1: lines 1-350, 50100 bytes, first heading "# BTW 2024"
-Part 2: lines 351-371, 4847 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Read plan: 2 parts. Next read offset: line 363.
+Part 1: lines 1-362, 50267 bytes, first heading "# BTW 2024"
+Part 2: lines 363-387, 4909 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 351-371, 4847 bytes, first heading "## 7. OPEN POINTS AND CONFLICT
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This reference covers VAT for a Dutch sole trader, including a sole trader who may also own a BV, and the general VAT rules that affect domestic and cross-border transactions. The main rate structure, the old KOR and the ordinary filing rules applied in 2024. The old KOR turnover test used the current calendar year only, and 2024 was its final year before the new KOR rules took effect.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
@@ -77,6 +81,8 @@ This reference covers VAT for a Dutch sole trader, including a sole trader who m
 ---
 
 ## 3. HOW IT WORKS IN 2024
+
+<a id="3-how-it-works"></a>
 
 ### Standard VAT rate
 
@@ -250,6 +256,8 @@ The EU KOR was not in force in 2024. The published law took effect from 2025. [S
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### VAT rates on domestic sales
 
 **Calculated example.** A sale of goods subject to the standard rate has a net price of € 1.000.
@@ -328,6 +336,8 @@ This assumes the previous-year test and the other threshold conditions are met. 
 
 ## 5. CHANGES FROM 2023
 
+<a id="5-changes"></a>
+
 - From 1 January 2024, an employee’s own contribution is no longer subtracted when testing total BUA costs against € 227 per recipient. In 2023, the own contribution could reduce the tested amount. [2023 BUA decision](https://zoek.officielebekendmakingen.nl/stcrt-2023-28124.html), [BUA decision ending subtraction from 2024](https://zoek.officielebekendmakingen.nl/stcrt-2023-28124.html)
 - The KOR ceiling and current-year turnover test remained the same. The 2024 test used the current calendar year only. The old regime’s minimum participation and re-entry rules also remained in place. [Wet OB, 1 January 2023](https://wetten.overheid.nl/BWBR0002629/2023-01-01), [Wet OB, 1 January 2024](https://wetten.overheid.nl/BWBR0002629/2024-01-01)
 - The new KOR law had been published in 2023 but was not yet in force for 2024. Its transition provisions took effect on 1 October 2024, ahead of the new rules taking effect in 2025. [Stb. 2023, 278](https://zoek.officielebekendmakingen.nl/stb-2023-278.html)
@@ -336,6 +346,8 @@ This assumes the previous-year test and the other threshold conditions are met. 
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Keep sales and purchase invoices with the required parties, dates, descriptions, amounts by VAT rate and VAT amounts. Issue invoices to other entrepreneurs and legal persons by the 15th day of the month after supply. [Belastingdienst invoice rules](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/), [invoice requirements](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/factuureisen)
 - Separate zero-rated turnover from exempt turnover. Keep the records needed to establish eligibility for the zero rate, including transport evidence and the buyer’s valid VAT ID for an intra-EU goods supply. [Belastingdienst ICP guidance](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf)
@@ -349,6 +361,8 @@ This assumes the previous-year test and the other threshold conditions are met. 
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - **Yearly VAT return amount and 2024 conditions: UNVERIFIED.** The checked 2024 handbook URL returns 404. The value below € 1.883 and the related yearly-return conditions appear in the checked 2020 and 2026 handbooks, but that does not verify the exact 2024 wording. A working copy of the 2024 handbook would settle it. Sources: [2024 handbook URL](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2024_aa9701z42fd.pdf), [2020 handbook](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf), [2026 handbook](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf).
 - **Suppletie small-correction boundary: UNVERIFIED.** The 2024 handbook URL returns 404. A working copy of that edition would settle whether the 2024 rule allowed a small correction in the next return and the exact boundary. Source: [2024 handbook URL](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2024_aa9701z42fd.pdf).
@@ -364,6 +378,8 @@ This assumes the previous-year test and the other threshold conditions are met. 
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2024 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

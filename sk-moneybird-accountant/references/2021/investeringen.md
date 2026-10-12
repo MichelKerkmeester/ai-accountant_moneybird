@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the 2021 investment allowances, the KIA (kleinschaligheidsinvesteringsaftrek, small-scale investment allowance), the EIA (energie-investeringsaftrek, energy investment allowance), the MIA (milieu-investeringsaftrek, environmental investment allowance) and the Vamil, plus the per-asset exclusions and minimums, the payment cap, the desinvesteringsbijtelling (disposal addition to profit) and the depreciation rules for bedrijfsmiddelen (business assets) of a sole trader who may also own a BV. What matters most in 2021 is the KIA table with a top of € 328.721, the EIA of 45,5%, the MIA percentages still at 36%, 27% and 13,5%, the 3-month RVO notification for EIA, MIA and Vamil, and the starters willekeurige afschrijving (free depreciation for starting entrepreneurs) whose yearly cap equals the top of the KIA table. The year is fully enacted law. The values come from the Wet inkomstenbelasting 2001 as it read for 2021 (https://wetten.overheid.nl/BWBR0011353/2021-01-01) and from the Belastingdienst FISIN 2021 chapter (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/ondernemersaftrek_en_investeringsaftrek), and the cross-year rules of the checked sources apply in full (https://wetten.overheid.nl/BWBR0011353/2027-01-01).
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
@@ -47,6 +51,8 @@ This file covers the 2021 investment allowances, the KIA (kleinschaligheidsinves
 ---
 
 ## 3. HOW IT WORKS IN 2021
+
+<a id="3-how-it-works"></a>
 
 ### KIA table (art. 3.41 lid 2)
 
@@ -127,6 +133,8 @@ No temporary willekeurige afschrijving scheme was found for 2021 (status unknown
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 All inputs below are invented and round. Calculated examples are built from the figures in section 2, with every step written out.
 
@@ -229,6 +237,8 @@ Step 2: 15 March 2021 plus 3 months is 15 June 2021.
 
 ## 5. CHANGES FROM 2020
 
+<a id="5-changes"></a>
+
 - KIA table: 2020 had nil up to € 2.400, 28% to € 58.238, € 16.307 to € 107.848, € 16.307 minus 7,56% of the excess over € 107.848 up to € 323.544 and nil above € 323.544 (https://wetten.overheid.nl/BWBR0011353/2020-01-01 art. 3.41 lid 2). For 2021 the 28% band ends at € 59.170, the fixed amount is € 16.568, the phase-out starts above € 109.574 and the table ends at € 328.721 (https://wetten.overheid.nl/BWBR0011353/2021-01-01 art. 3.41 lid 2).
 - Starters willekeurige afschrijving yearly cap: € 323.544 in 2020 to € 328.721 in 2021, both being the top of the KIA table of the year (URWA art. 8 read with the KIA table, https://wetten.overheid.nl/BWBR0012035/2025-01-01/0, https://wetten.overheid.nl/BWBR0011353/2020-01-01 art. 3.41 lid 2, https://wetten.overheid.nl/BWBR0011353/2021-01-01 art. 3.41 lid 2).
 - EIA percentage: 45% in 2020 to 45,5% in 2021, with the maximum moving from € 124.000.000 to € 126.000.000 (https://wetten.overheid.nl/BWBR0011353/2020-01-01 art. 3.42 lid 3 and lid 4, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/ondernemersaftrek_en_investeringsaftrek).
@@ -246,6 +256,8 @@ Step 2: 15 March 2021 plus 3 months is 15 June 2021.
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record per bedrijfsmiddel the date of the koopovereenkomst or the order, the cost, the amount paid in the year and the date the asset is taken into use. The 3-month RVO notification runs from the signing or order date, the Milieulijst valid on that date applies, and the 25% within twelve months and three-year use tests in art. 3.47 lid 6 use the obligation date and the investment year (https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden, https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.47).
 - Keep the RVO notification and the RVO decision with the investment records. The deduction itself is claimed in the aangifte, and the KIA is a per-onderneming deduction claimed by choice on the total investment in bedrijfsmiddelen in the calendar year (art. 3.41, https://wetten.overheid.nl/BWBR0011353/2021-01-01). FISIN 2021 repeats that the investment is reported to RVO within 3 months (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/ondernemersaftrek_en_investeringsaftrek).
 - Mark per asset which regeling is used: KIA alone, KIA with EIA, KIA with MIA, or MIA with Vamil. EIA and MIA cannot be combined on one asset, and MIA is not available on costs that already received EIA (https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers).
@@ -257,6 +269,8 @@ Step 2: 15 March 2021 plus 3 months is 15 June 2021.
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - Temporary willekeurige afschrijving for 2021: unknown. No temporary scheme was found for 2021. The Eindejaarsregeling 2022 toelichting says the 2023 scheme is "op hoofdlijnen gelijk aan de regeling die gold voor de jaren 2009, 2010, 2011 en (deels) 2013" and names no other year (https://zoek.officielebekendmakingen.nl/stcrt-2022-33377.html), and the URWA 2025 text lists no 2020 or 2021 scheme (https://wetten.overheid.nl/BWBR0012035/2025-01-01/0). An absence cannot be confirmed on one page. A scheme in a 2021 ministerial regulation or an announcement of the Minister would settle it. The 2023 scheme itself sits in URWA art. 13 to 15, applies to assets with obligations entered or voortbrengingskosten made in calendar year 2023 that are taken into use before 1 January 2026, and allows at most 50% of the costs to be depreciated at will, so it is not a 2021 rule (https://wetten.overheid.nl/BWBR0012035/2025-01-01/0, https://zoek.officielebekendmakingen.nl/stcrt-2022-33377.html).
 - Starters willekeurige afschrijving cap: the € 328.721 rests on reading the URWA art. 8 cross-reference to the maximum amount in the art. 3.41 lid 2 table over which KIA can be obtained, which is the top of the KIA table. The pages do not print the cap as a number (https://wetten.overheid.nl/BWBR0012035/2025-01-01/0). The cap has also been read as the end of the 28% band of the KIA table, which gives € 58.238 for 2020 and € 59.170 for 2021, and that reading is not what the URWA wording says. A primary text that states the maximum amount for willekeurige afschrijving as a number would settle it.
@@ -270,6 +284,8 @@ Step 2: 15 March 2021 plus 3 months is 15 June 2021.
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2021 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the income-dependent Zvw contribution (inkomensafhankelijke bijdrage Zorgverzekeringswet, a contribution towards the basic health insurance) that a ZZP'er (sole trader) pays over the winst uit onderneming (profit from business) through the aanslag (assessment). For 2026 the aanslag rate is 4,85% over a maximum bijdrage-inkomen (contribution income) of € 79.409, while loon uit loondienst (wages from employment) carries a werkgeversheffing (employer levy) of 6,10%. The 2026 rates, the maximum and the base rule are enacted and verified, and the base is the belastbare winst uit onderneming (taxable business profit) after the ondernemersaftrek (entrepreneur's deductions) and the MKB-winstvrijstelling (small business profit exemption). The one gap is the AOW-age rate for the verlaagde inkomensafhankelijke bijdrage (reduced contribution), which the checked material does not give, see section 7.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
@@ -40,6 +44,8 @@ This file covers the income-dependent Zvw contribution (inkomensafhankelijke bij
 ---
 
 ## 3. HOW IT WORKS IN 2026
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Inkomensafhankelijke bijdrage Zvw by (voorlopige) aanslag, 4,85%
 
@@ -93,6 +99,8 @@ The aanslag Zvw comes with the (voorlopige) aanslag inkomstenbelasting and premi
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 **Example 1: loon plus winst (Official example, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet).**
 The 2026 page works with loon of € 40.000 plus freelance income of € 50.000. Step 1: the two amounts together are € 40.000 plus € 50.000 is € 90.000. Step 2: the bijdrage-inkomen is capped at € 79.409. Step 3: the loon of € 40.000 already fills part of that room, so the remaining headroom is € 79.409 minus € 40.000 is € 39.409. Step 4: the 4,85% applies to € 39.409 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The same page states that loon of € 80.000 plus freelance income of € 15.000 gives no bijdrage at all, because the loon of € 80.000 lies above the maximum of € 79.409 and leaves no headroom (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 
@@ -111,6 +119,8 @@ No example can be built for the AOW-age rate, because the checked sources give n
 
 ## 5. CHANGES FROM 2025
 
+<a id="5-changes"></a>
+
 - Bijdrage by aanslag: 5,26% in 2025 to 4,85% in 2026 (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 - Maximum bijdrage-inkomen: € 75.864 in 2025 to € 79.409 in 2026 (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 - Werkgeversheffing: 6,51% in 2025 to 6,10% in 2026 (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw).
@@ -126,6 +136,8 @@ No example can be built for the AOW-age rate, because the checked sources give n
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - The Zvw base follows the belastbare winst uit onderneming, so the same calculation as the box 1 winst serves: winst minus ondernemersaftrek minus MKB-winstvrijstelling (https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.2 and https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01).
 - Keep the records that support the ondernemersaftrek and the MKB-winstvrijstelling, because those deductions also lower the Zvw base, including the profit figures and the hours on which the hour-band deductions rest (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/ondernemersaftrek_en_investeringsaftrek and MKB).
 - The base is capped at € 79.409 and floored at nil, even when the profit is higher or a loss arises (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01).
@@ -138,6 +150,8 @@ No example can be built for the AOW-age rate, because the checked sources give n
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Declaration and deadlines: UNVERIFIED. Confirmed is only that the aanslag Zvw comes with the (voorlopige) aanslag inkomstenbelasting and premie volksverzekeringen (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The further statements that the same aangifte is used, that a voorlopige aanslag Zvw exists and that the Zvw follows the inkomstenbelasting filing timeline come from earlier notes and were not re-opened. The filing deadline belongs to the procedure topic. A read of the 2026 Belastingdienst pages on the aangifte and the aanslag Zvw, and of the Zvw procedural articles, would settle it.
 - Zvw rate at AOW age: unknown. https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/xvi-volksgezondheid-welzijn-en-sport-rijksbegroting-2027/16-volksgezondheid-welzijn-en-sport.pdf Tabel 77 footnote 2 states that zelfstandigen and gepensioneerden pay the verlaagde inkomensafhankelijke bijdrage, and no AOW-age exemption appears in Zvw art. 41 to 45 as read, which is an inference from absence and not a stated rule (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01). The FISIN Zvw pages read do not mention the AOW age (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet). No 2026 percentage for the verlaagde bijdrage is in the checked material. The 2026 ministerial regulation that sets the Zvw percentages, including the AOW-age rate, would settle it.
 - Scope of the base rule: Zvw art. 43 and Wet IB 2001 art. 3.2 were read in the 2026 version only (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01 and https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.2). The base rule for a winst-ondernemer is verified for 2026 and UNVERIFIED for the other years in this series.
@@ -147,6 +161,8 @@ No example can be built for the AOW-age rate, because the checked sources give n
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2026 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

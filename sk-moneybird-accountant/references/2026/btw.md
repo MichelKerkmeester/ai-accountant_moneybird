@@ -14,9 +14,9 @@ version: 1.0.0.0
 # BTW 2026
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 278.
-Part 1: lines 1-277, 50636 bytes, first heading "# BTW 2026"
-Part 2: lines 278-419, 18009 bytes, first heading "### Annual VAT return conditions"
+Read plan: 2 parts. Next read offset: line 286.
+Part 1: lines 1-285, 50750 bytes, first heading "# BTW 2026"
+Part 2: lines 286-435, 18124 bytes, first heading "### Annual VAT return conditions"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 278-419, 18009 bytes, first heading "### Annual VAT return conditi
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers VAT for a sole trader, a BV and other entrepreneurs, including rates, exemptions, special schemes, returns and records. The main domestic rates are 21% and 9%, with a zero rate for qualifying supplies. The 2026 VAT rules described here are enacted, while a ViDA bill has been adopted but is not yet in force and the announced national B2B e-invoicing timetable remains proposed. [Wet op de omzetbelasting 1968, version 2026](https://wetten.overheid.nl/BWBR0002629/2026-01-01), [Eerste Kamer bill 36.920](https://www.eerstekamer.nl/wetsvoorstel/36920_wet_implementatie_richtlijn), [Government announcement on e-invoicing](https://www.rijksoverheid.nl/actueel/nieuws/2026/09/11/kabinet-kiest-voor-invoering-e-facturatie-en-rapportage-voor-bedrijven)
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
@@ -97,6 +101,8 @@ This file covers VAT for a sole trader, a BV and other entrepreneurs, including 
 ---
 
 ## 3. HOW IT WORKS IN 2026
+
+<a id="3-how-it-works"></a>
 
 ### Standard rate
 
@@ -236,6 +242,8 @@ The special arrangement covers debts built up from 12 March 2020 through 31 Marc
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Core rates
 
 **Calculated example.** A business makes a taxable sale of € 1.000,00 excluding VAT at the standard rate.
@@ -353,6 +361,8 @@ The cap is the VAT deducted in the year plus one-fifth of the purchase VAT. Assu
 
 ## 5. CHANGES FROM 2025
 
+<a id="5-changes"></a>
+
 - Logies moved from 9% to 21% from 1 January 2026. The change also applies to the linked facilities described above and to relevant advance payments and single-use vouchers. [Stb. 2025, 339](https://zoek.officielebekendmakingen.nl/stb-2025-339.html), [Belastingdienst logies guidance](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/btw-logies)
 
 - Culture, media and sport posts remain at 9%. The planned lapse of these reduced-rate posts was withdrawn by Stb. 2025, 339. [Stb. 2025, 339](https://zoek.officielebekendmakingen.nl/stb-2025-339.html)
@@ -370,6 +380,8 @@ The cap is the VAT deducted in the year plus one-fifth of the purchase VAT. Assu
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Keep sales and purchase records that support the VAT rates applied, exempt supplies, zero-rated supplies, reverse-charge treatment and input VAT deductions. For intra-EU zero-rated goods, retain proof that the goods left for another EU country, verify the customer's VAT ID and file the ICP accurately and on time. [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf), [ICP explanation](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf)
 
@@ -390,6 +402,8 @@ The cap is the VAT deducted in the year plus one-fifth of the purchase VAT. Assu
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - **Monthly VAT trigger:** The Handboek 2020 said that paying more than € 15.000 per quarter generally meant monthly returns. The Handboek 2026 and current period page omit that trigger. Its status for 2026 is unknown and UNVERIFIED. A current Belastingdienst rule or updated Handbook stating the trigger would settle it. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf), [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf), [period-change page](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/wijziging-aangiftetijdvak-btw)
 
@@ -412,6 +426,8 @@ The cap is the VAT deducted in the year plus one-fifth of the purchase VAT. Assu
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2026 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

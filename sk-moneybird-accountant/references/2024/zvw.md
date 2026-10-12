@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the income-dependent Zvw contribution (bijdrage Zvw, the health-insurance contribution) for an entrepreneur in 2024. The entrepreneur pays 5,32% by aanslag (assessment) over the belastbare winst uit onderneming (taxable business profit) up to a maximum bijdrage-inkomen (contribution income) of € 71.628, while an employer or uitkeringsinstantie (benefit agency) pays the 6,57% werkgeversheffing (employer's levy) over loon and benefits. The 2024 rules are enacted. The Zvw base for the winst-ondernemer (the entrepreneur with business profit) is UNVERIFIED for 2024 because only the 2026 article text was read, and the AOW-age treatment is only verified in part.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
@@ -40,6 +44,8 @@ This file covers the income-dependent Zvw contribution (bijdrage Zvw, the health
 ---
 
 ## 3. HOW IT WORKS IN 2024
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Bijdrage Zvw bij (voorlopige) aanslag: 5,32%
 
@@ -125,6 +131,8 @@ No AOW-age exemption appears in Zvw art. 41 to 45 as read, and the Zvw pages on 
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 The checked material contains no usable official 2024 example. The [Zvw page 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet) repeats the 2023 examples (the 2023 amounts € 26.956 and loon € 70.000) with 2024 figures that do not fit the € 71.628 maximum, so that page is not usable as a 2024 example. Every example below is a Calculated example built from the section 2 figures.
 
 ### Example 1: profit of € 60.000 (Calculated example)
@@ -177,6 +185,8 @@ For the same € 40.000 of contribution income the employer channel carries € 
 
 ## 5. CHANGES FROM 2023
 
+<a id="5-changes"></a>
+
 - Zvw contribution by aanslag: 5,43% in 2023 to 5,32% in 2024 ([Zvw page 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet) and [Zvw page 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet)). In 2023 the ingehouden bijdrage was also 5,43%. The checked material gives no 2024 figure for that channel.
 - Maximum bijdrage-inkomen: € 66.956 in 2023 to € 71.628 in 2024 ([Zvw page 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet) and [Zvw page 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet)).
 - Werkgeversheffing: 6,68% in 2023 to 6,57% in 2024 ([Zvw page 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet) and [Zvw page 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet)). Both values are marked Corrected.
@@ -189,6 +199,8 @@ For the same € 40.000 of contribution income the employer channel carries € 
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - The Zvw contribution over winst is not collected through a payroll. It is charged by aanslag, and the aanslag Zvw comes with the (voorlopige) aanslag inkomstenbelasting ([Zvw page 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet)).
 - The amount to expect follows the same profit steps as the winstaangifte. Winst, minus the ondernemersaftrek (the zelfstandigenaftrek of € 3.750, or € 1.875 at AOW age), minus the MKB-winstvrijstelling of 13,31%, then 5,32% over the result up to € 71.628 ([zelfstandigenaftrek 2024](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/verandering_inkomstenbelasting_vorige_jaren/veranderingen-inkomstenbelasting-2024/ondernemersaftrek-2024/zelfstandigenaftrek-2024), [MKB-winstvrijstelling page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/mkb_winstvrijstelling), [Zvw page 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet) and [Zvw art. 43, 2026 version](https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01), the last marked UNVERIFIED for 2024).
 - An existing oudedagsreserve can stay on the balance sheet. No new addition is made in 2024 ([oudedagsreserve page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/fiscale_reserves/oudedagsreserve)). The amount added to the profit under art. 3.70 lid 2 when the reserve decreases stays outside the Zvw base ([Zvw art. 43, 2026 version](https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01), UNVERIFIED for 2024).
@@ -198,6 +210,8 @@ For the same € 40.000 of contribution income the employer channel carries € 
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - Zvw base for the winst-ondernemer: UNVERIFIED. This file uses the belastbare winst uit onderneming after the ondernemersaftrek and the MKB-winstvrijstelling, excluding the amount added under art. 3.70 lid 2 for a decrease of the oudedagsreserve. [Zvw art. 43](https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01) and [Wet IB 2001](https://wetten.overheid.nl/BWBR0011353/2026-01-01) were read in the 2026 version only, so the text valid for 2024 is not confirmed. Reading the Zvw text and the Wet IB 2001 text as valid on 1 January 2024 would settle it.
 - Declaration and deadlines: UNVERIFIED, not re-opened in the checked material. The checked material states that the same aangifte is used, that a voorlopige aanslag Zvw exists and that the Zvw follows the IB filing timeline. The [Zvw page 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet) confirms that the aanslag Zvw comes with the (voorlopige) aanslag inkomstenbelasting. The 2024 deadline belongs to the procedure topic. The 2024 aangifte instructions and the [Zvw page 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet) would settle it.
@@ -211,6 +225,8 @@ For the same € 40.000 of contribution income the employer channel carries € 
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2024 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

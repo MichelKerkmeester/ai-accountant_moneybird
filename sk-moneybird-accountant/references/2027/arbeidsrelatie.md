@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Arbeidsrelatie en zelfstandigheid 2027
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 248.
-Part 1: lines 1-247, 46956 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2027"
-Part 2: lines 248-273, 6374 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Read plan: 2 parts. Next read offset: line 260.
+Part 1: lines 1-259, 47123 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2027"
+Part 2: lines 260-289, 6436 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 248-273, 6374 bytes, first heading "## 7. OPEN POINTS AND CONFLICT
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 Tax year 2027 is the second calendar year in which the normal enforcement rules for arbeidsrelaties apply, after the handhavingsmoratorium (enforcement moratorium) ended on 1 January 2025. The Wet DBA (the law on assessing work relationships) and the case law on loondienst (employment) still decide whether work is an arbeidsovereenkomst (employment contract). The VBAR (the act on a legal presumption of an employment contract based on an hourly rate) is in force from 31 December 2026, so its low hourly rate presumption applies throughout 2027 at about € 38. On 1 January 2027 the remaining parts of the DBA zachte landing (soft landing) lapse, and the Belastingdienst ambition is to move to regular handhaving, but no separate 2027 handhavingsplan was published on 2026-10-11. The BAZ bill and the Zelfstandigenwet (Self-Employed Act) are proposed and are not in force in 2027.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
@@ -56,6 +60,8 @@ Tax year 2027 is the second calendar year in which the normal enforcement rules 
 ---
 
 ## 3. HOW IT WORKS IN 2027
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Wet DBA
 
@@ -153,6 +159,8 @@ Applies to future qualification rules for self-employed persons. The internet co
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 No official example for this topic was found in the checked 2027 material, so every example below is marked `Calculated example`.
 
 **Example 1, `Calculated example`: the VBAR amounts and the unsettled 2027 rate test.**
@@ -215,6 +223,8 @@ No example is given for BAZ (bill 36 912). It is a proposed bill, and the checke
 
 ## 5. CHANGES FROM 2026
 
+<a id="5-changes"></a>
+
 - DBA boetebeleid: 2026 had no verzuimboetes and allowed vergrijpboetes under the normal rules from 1 January 2026, with no vergrijpboetes for correcties over 2025. In 2027 the remaining parts of the zachte landing lapse on 1 January 2027. From 1 January 2027 verzuimboetes are possible again and there is no default bedrijfsbezoek start. Sources: [plan 2026](https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z62fd.pdf) and [handhaving page](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving).
 - Start of a control: in 2026 the control started in principle with a bedrijfsbezoek, and the starting point to examine only the most recent aangiftetijdvak in a boekenonderzoek lapsed. In 2027 there is no default bedrijfsbezoek start. Source: [plan 2026](https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z62fd.pdf).
 - Handhavingsplan: 2026 had a separate plan, versie 2.0 of 31 December 2025, made after Kamerstukken 31 311, nrs. 298 and 301 of 18 December 2025 and the Kamerbrief of 19 December 2025, with 80 fte capacity. For 2027 the ambition is full integration into regular handhaving with no separate plan, and no 2027 plan was published on 2026-10-11. Sources: [plan 2026](https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z62fd.pdf) and [handhaving page](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving).
@@ -233,6 +243,8 @@ No example is given for BAZ (bill 36 912). It is a proposed bill, and the checke
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the facts that decide the qualification for each engagement. The contract, any modelovereenkomst, how work and working hours are set, embedding in the organisation, whether the work must be done personally, how pay is set and paid and its level, commercial risk, and how far the opdrachtnemer acts or can act as an entrepreneur. These are the weighing factors of the loondienst test. Source: [loondienst page](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst).
 - Not being in loondienst does not by itself make the income winst uit onderneming (business profit) for income tax or a business for VAT. Check the qualification separately for each box. Source: [loondienst page](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst). The checked sources for this topic do not state the exact return line. They state only that not being in loondienst does not make someone an ondernemer for income tax or VAT.
 - Record the hourly rate for each engagement. Under art. 7:610aa BW a rate of at most € 36 per hour, or the indexed amount, gives the werkende a rechtsvermoeden (legal presumption). The opdrachtgever then must prove there is no arbeidsovereenkomst. Sources: [Stb. 2026, 158](https://zoek.officielebekendmakingen.nl/stb-2026-158.html) and [MvT](https://zoek.officielebekendmakingen.nl/kst-36783-3.html). The first-application regulation is not published, see section 7.
@@ -246,6 +258,8 @@ No example is given for BAZ (bill 36 912). It is a proposed bill, and the checke
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - Separate 2027 handhavingsplan: unknown, UNVERIFIED. It was not published on 2026-10-11. Source: [handhaving page](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving). A new plan or an update of the page would settle it.
 - Regular handhaving from 1 January 2027: proposed, Verified. It is stated as an ambition, not as a fixed legal change. Source: [plan 2026](https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z62fd.pdf). A later plan or a published decision would settle it.
@@ -266,6 +280,8 @@ No example is given for BAZ (bill 36 912). It is a proposed bill, and the checke
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2027 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

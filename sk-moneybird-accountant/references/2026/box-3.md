@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 Box 3 for 2026 taxes a fictitious return on savings and investments under the Overbruggingswet box 3. The year uses the category method with a provisional bank percentage of 1,28%, an other-assets percentage of 6,00% and a provisional debt percentage of 2,70%. The heffingsvrij vermogen (tax-free allowance) is € 59.357 per person and the schuldendrempel (debt threshold) is € 3.800 per person. New from 1 January 2026 is art. 5.27a on own use of real estate, while the Wet werkelijk rendement box 3 is still a bill and not law on 11 October 2026.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
@@ -52,6 +56,8 @@ Box 3 for 2026 taxes a fictitious return on savings and investments under the Ov
 ---
 
 ## 3. HOW IT WORKS IN 2026
+
+<a id="3-how-it-works"></a>
 
 From 1 January 2023 the Overbruggingswet box 3 applies the category method to everyone. The 2026 and later texts of the act still carry the category method in art. 5.2. The Wet werkelijk rendement box 3 is not law on 11 October 2026. Belastingdienst says the fictitious system stays until new legislation takes effect, probably 1 January 2028. Sources: https://zoek.officielebekendmakingen.nl/stb-2022-534.html https://wetten.overheid.nl/BWBR0011353/2027-01-01 https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/wat-is-mijn-werkelijk-rendement https://www.eerstekamer.nl/wetsvoorstel/36748_wet_werkelijk_rendement_box
 
@@ -146,6 +152,8 @@ Art. 5.24 disregards transactions around 1 January within a three-month continuo
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Official example: single with € 150.000 savings
 
@@ -303,6 +311,8 @@ This is a `Calculated example`. It uses the content rules that no heffingsvrij v
 
 ## 5. CHANGES FROM 2025
 
+<a id="5-changes"></a>
+
 - Heffingsvrij vermogen: € 57.684 to € 59.357 per person. With a fiscal partner € 115.368 to € 118.714. Sources: https://wetten.overheid.nl/BWBR0011353/2025-01-01 https://wetten.overheid.nl/BWBR0011353/2026-01-01 https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen
 - Schuldendrempel: € 3.800 per person and € 7.600 with a whole-year partner in both years. No change. Sources: https://wetten.overheid.nl/BWBR0011353/2025-01-01 https://wetten.overheid.nl/BWBR0011353/2026-01-01
 - Box 3 tarief: 36% in 2025 and 36% in 2026. No change. Sources: https://wetten.overheid.nl/BWBR0011353/2025-01-01 https://wetten.overheid.nl/BWBR0011353/2026-01-01
@@ -321,6 +331,8 @@ This is a `Calculated example`. It uses the content rules that no heffingsvrij v
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the peildatum values on 1 January 2026 for banktegoeden, overige bezittingen and schulden. These values feed steps 1 and 2 of the 2026 calculation. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026
 - Keep the split between banktegoeden, overige bezittingen, green investments and schulden. Each category has its own percentage and the green exemption has its own order. Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026 https://wetten.overheid.nl/BWBR0011353/2026-01-01
 - For own-use real estate, keep the WOZ value with peildatum 1 January 2025 and a day count of own use, days let or leased, days under construction and days unusable. Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/wat-is-mijn-werkelijk-rendement https://zoek.officielebekendmakingen.nl/stb-2025-195.html
@@ -333,6 +345,8 @@ This is a `Calculated example`. It uses the content rules that no heffingsvrij v
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - Aandeel rounding conflict. The 2026 calculation page instruction says round to 3 decimals. The official examples on the same page show 2 decimals and cut off rather than round. The page gives 90.643 / 150.000 = 60,4287% shown as 60,42%, 15.643 / 150.000 shown as 10,42%, and 269.443 / 328.800 = 81,947% shown as 81,94%. Both are on https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026. The 2026 aangifte software or a corrected page would settle it.
 - Final 2026 bank and debt percentages are unknown. The 2026 calculation page carries 1,28% and 2,70% provisionally. The 2026 statute text still printed 1,44% and 2,61% as carry-over under art. 10.6ter. Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026 https://wetten.overheid.nl/BWBR0011353/2027-01-01. A ministerial regulation early 2027 under art. 10.6ter lid 2 and lid 4 would settle it.
@@ -349,6 +363,8 @@ This is a `Calculated example`. It uses the content rules that no heffingsvrij v
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2026 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

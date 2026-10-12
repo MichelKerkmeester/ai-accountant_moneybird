@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the investment deductions and depreciation rules of tax year 2020: the kleinschaligheidsinvesteringsaftrek (KIA, small-scale investment deduction), the energie-investeringsaftrek (EIA, energy investment deduction), the milieu-investeringsaftrek (MIA, environmental investment deduction), the Vamil (willekeurige afschrijving milieu-bedrijfsmiddelen, random depreciation of designated environmental business assets), the ordinary depreciation of bedrijfsmiddelen (business assets), the bodemwaarde (floor value) for buildings, the desinvesteringsbijtelling (disposal addition) and the willekeurige afschrijving for starters. The 2020 law is enacted and the 2020 values in this file are verified, except the rows marked Corrected and the rows marked UNVERIFIED. What matters most in 2020 is the KIA table with a top amount of € 323.544, the 45% EIA, the MIA percentages of 36%, 27% and 13,5%, the € 450 and € 2.500 per-asset minimums, the € 124.000.000 EIA and MIA maximum and the € 2.400 desinvesteringsbijtelling threshold. Two items are unknown: the checked sources find no temporary willekeurige afschrijving scheme for 2020, and an RVO maximum of € 25 miljoen for MIA and Vamil stands on a page that states no year.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 The 2020 values. Status and Check follow the checked material.
 
@@ -55,6 +59,8 @@ The 2020 values. Status and Check follow the checked material.
 ---
 
 ## 3. HOW IT WORKS IN 2020
+
+<a id="3-how-it-works"></a>
 
 ### KIA table (art. 3.41 lid 2)
 
@@ -147,6 +153,8 @@ URWA art. 13 to 15 contain a temporary willekeurige afschrijving scheme for cale
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 The checked material for 2020 contains no official examples. Every example below is a Calculated example built from the figures in section 2. The inputs are chosen to illustrate the figures. Where the checked material does not state a rule clearly, the example is left out.
 
@@ -251,6 +259,8 @@ Sources of the figures: [Wet IB 2001 art. 3.44](https://wetten.overheid.nl/BWBR0
 
 ## 5. CHANGES FROM 2019
 
+<a id="5-changes"></a>
+
 - 2020 is the first year in this knowledge base, so no previous-year file exists.
 - The checked material holds no 2019 values for this topic, so no old-to-new comparison can be written. 2020 is the baseline year for the later files.
 - What the 2020 year block fixes: the KIA bands nil up to € 2.400, 28% up to € 58.238, € 16.307 up to € 107.848, the 7,56% reduction up to € 323.544, then nil. The € 450 KIA per-asset minimum, the 45% EIA, the MIA percentages 36%, 27% and 13,5%, the € 2.500 EIA and MIA per-asset minimum, the € 124.000.000 EIA and MIA maximum, the € 2.400 desinvesteringsbijtelling threshold, the 75% Vamil, the 10% goodwill and 20% other depreciation caps, the bodemwaarde rules and the starters cap of € 323.544 ([Wet IB 2001 art. 3.41 lid 2, art. 3.42 lid 3 and lid 4, art. 3.42a lid 3, art. 3.45, art. 3.47 lid 1, art. 3.31 lid 1, art. 3.30 lid 2 and art. 3.30a lid 3](https://wetten.overheid.nl/BWBR0011353/2020-01-01), [FISIN 2020](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek), [URWA art. 8](https://wetten.overheid.nl/BWBR0012035/2025-01-01/0)).
@@ -260,6 +270,8 @@ Sources of the figures: [Wet IB 2001 art. 3.44](https://wetten.overheid.nl/BWBR0
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - The KIA is a per-onderneming deduction, claimed by choice in the aangifte, on the total investment in bedrijfsmiddelen in the calendar year, so record every 2020 investment with its amount. ([Wet IB 2001 art. 3.41](https://wetten.overheid.nl/BWBR0011353/2020-01-01))
 - Record the date of the koopovereenkomst or the order for every EIA, MIA and Vamil asset. The notification to RVO must be made within 3 months of that date, and the Milieulijst valid on that date applies. ([RVO voorwaarden](https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden))
@@ -275,6 +287,8 @@ Sources of the figures: [Wet IB 2001 art. 3.44](https://wetten.overheid.nl/BWBR0
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Temporary willekeurige afschrijving for 2020: none found. UNVERIFIED absence. The Eindejaarsregeling 2022 toelichting says the 2023 scheme is "op hoofdlijnen gelijk aan de regeling die gold voor de jaren 2009, 2010, 2011 en (deels) 2013" and names no other year, and the URWA text opened for this check lists no 2020 or 2021 scheme. An absence cannot be confirmed on one page. Sources: https://zoek.officielebekendmakingen.nl/stcrt-2022-33377.html and https://wetten.overheid.nl/BWBR0012035/2025-01-01/0. What would settle it: a 2020 regulation or a 2020 Eindejaarsregeling that names a temporary scheme.
 - MIA and Vamil maximum of € 25 miljoen per bedrijfsmiddel and per applicant per year: the RVO page states no year, so the 2020 value is not confirmed in the checked sources. Source: https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers. What would settle it: an RVO page or a Milieulijst for 2020 that prints this maximum for 2020.
 - The statement that a medegerechtigde (co-entitled person) or a geldverstrekker (financier) cannot use the EIA or the MIA was not found on the fetched pages. UNVERIFIED. Sources: https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers and https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden. What would settle it: a primary page on EIA or MIA entitlement for a medegerechtigde or a geldverstrekker.
@@ -285,6 +299,8 @@ Sources of the figures: [Wet IB 2001 art. 3.44](https://wetten.overheid.nl/BWBR0
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2020 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Pensioen, lijfrente en AOV 2021
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 293.
-Part 1: lines 1-292, 48330 bytes, first heading "# Pensioen, lijfrente en AOV 2021"
-Part 2: lines 293-312, 5432 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Read plan: 2 parts. Next read offset: line 305.
+Part 1: lines 1-304, 48497 bytes, first heading "# Pensioen, lijfrente en AOV 2021"
+Part 2: lines 305-328, 5494 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 293-312, 5432 bytes, first heading "## 7. OPEN POINTS AND CONFLICT
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the income-provision rules for a sole trader (and the BV links where they exist) in 2021: the jaarruimte (annual room for deducting annuity premiums), the reserveringsruimte (catch-up room for unused jaarruimte from earlier years), the lijfrente product conditions, the conversion of stakingswinst (profit on cessation) into an annuity, the oudedagsreserve (FOR, old-age reserve) link, and the deductibility of the AOV premium (arbeidsongeschiktheidsverzekering, disability insurance). The whole of 2021 is enacted law. The percentage, the caps, the franchise and the aftoppingsgrens (the income ceiling used in the premium base) all come from the law text valid on 1 January 2021 and from the 2021 FISIN chapter of the Belastingdienst. The most important 2021 point for a sole trader is that the deduction is built on the income and the pension accrual of 2020, and that a 2020 FOR toevoeging (addition) still shrinks the 2021 jaarruimte.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
@@ -62,6 +66,8 @@ This file covers the income-provision rules for a sole trader (and the BV links 
 ---
 
 ## 3. HOW IT WORKS IN 2021
+
+<a id="3-how-it-works"></a>
 
 ### Jaarruimte percentage
 
@@ -163,6 +169,8 @@ A nabestaandenlijfrente must start within two full calendar years after the year
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 **Calculated example 1: jaarruimte on a winst of € 60.000.**
 Facts: winst uit ondernemen 2020 of € 60.000, being the amount before the ondernemersaftrek and before any toevoeging aan en afneming van de oudedagsreserve, no belastbaar loon, no belastbaar resultaat uit overige werkzaamheden, no belastbare periodieke uitkeringen en verstrekkingen, no pension accrual, no FOR toevoeging.
 - Step 1, cap at the aftoppingsgrens: min(€ 60.000, € 112.189) = € 60.000.
@@ -249,6 +257,8 @@ An oudedagslijfrente with an AOW age in 2030 must start at the latest on 31 Dece
 
 ## 5. CHANGES FROM 2020
 
+<a id="5-changes"></a>
+
 - Jaarruimte percentage stays 13,3%, unchanged from 2020 (https://wetten.overheid.nl/BWBR0011353/2020-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 and https://wetten.overheid.nl/BWBR0011353/2021-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
 - Maximum jaarruimte rises from € 12.986 to € 13.236 (https://open.overheid.nl/documenten/ronl-423637a0-c7a6-4123-a683-148a64e343fa/pdf and https://open.overheid.nl/documenten/ronl-04947996-d528-4eac-afb0-6aa936dc577e/pdf).
 - Aftoppingsgrens premiegrondslag rises from € 110.111 to € 112.189 (https://wetten.overheid.nl/BWBR0011353/2020-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 and https://wetten.overheid.nl/BWBR0011353/2021-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
@@ -276,6 +286,8 @@ An oudedagslijfrente with an AOW age in 2030 must start at the latest on 31 Dece
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the AOV premium separately from business costs. As ondernemer the premium is not a business cost but an "uitgave voor andere inkomensvoorzieningen", claimed in the box 1 return (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers).
 - Keep the policy documents that show the uitkeringen are periodic. A policy that pays a lump sum gives no deduction and its payout counts in box 3 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen).
 - Lijfrentepremies count in the year they are paid or verrekend. Premiums for the FOR conversion, the staking option and the stakingswinst conversion may still be counted in 2021 if paid before 1 July 2022 (https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen).
@@ -292,6 +304,8 @@ An oudedagslijfrente with an AOW age in 2030 must start at the latest on 31 Dece
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 No 2021 value in this file is UNVERIFIED, proposed or unknown, and the checked material records no unresolved conflict for 2021 itself. The points below are wording issues and forward-looking items that are not 2021 law.
 
 - Look-back window: the law text of 1 January 2021 reads "zeven jaar" and FISIN 2021 gives jaarruimte 2014 to 2020. A ten-year reading for 2021 is wrong (https://wetten.overheid.nl/BWBR0011353/2021-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen).
@@ -305,6 +319,8 @@ No 2021 value in this file is UNVERIFIED, proposed or unknown, and the checked m
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2021 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

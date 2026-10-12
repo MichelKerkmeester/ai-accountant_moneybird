@@ -15,9 +15,9 @@ version: 1.0.0.0
 # Pensioen, lijfrente en AOV 2020
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 308.
-Part 1: lines 1-307, 49626 bytes, first heading "# Pensioen, lijfrente en AOV 2020"
-Part 2: lines 308-325, 4822 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Read plan: 2 parts. Next read offset: line 320.
+Part 1: lines 1-319, 49793 bytes, first heading "# Pensioen, lijfrente en AOV 2020"
+Part 2: lines 320-341, 4884 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -27,11 +27,15 @@ Part 2: lines 308-325, 4822 bytes, first heading "## 7. OPEN POINTS AND CONFLICT
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 Pensioen, lijfrente en AOV 2020 covers the deduction of lijfrentepremies (annuity premiums) through the jaarruimte (annual room) and reserveringsruimte (reserve room), the conditions for lijfrente products and their uitkeringen (benefits), the conversion of stakingswinst (cessation profit) into a lijfrente, the oudedagsreserve (old-age reserve, FOR) and the deductibility of AOV premiums (arbeidsongeschiktheidsverzekering, disability insurance for the self-employed). The central 2020 figures are the 13,3% jaarruimte percentage with a maximum jaarruimte of € 12.986, the reserveringsruimte caps of € 7.371 and € 14.552, and the fully deductible AOV premium with periodic benefits. Every value in this file is enacted law as it reads in the Wet inkomstenbelasting 2001 text of 1 January 2020, with the Belastingdienst FISIN 2020 chapter for the practice rules. Two 2020 source conflicts about the FOR and the later-year proposals (BAZ and Belastingplan 2027) sit in section 7.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
@@ -68,6 +72,8 @@ Pensioen, lijfrente en AOV 2020 covers the deduction of lijfrentepremies (annuit
 ---
 
 ## 3. HOW IT WORKS IN 2020
+
+<a id="3-how-it-works"></a>
 
 ### Jaarruimte percentage
 
@@ -189,6 +195,8 @@ A refund of a premium that was deducted is a negatieve uitgave (negative expendi
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Calculated example 1: jaarruimte with income below the aftoppingsgrens
 
 Fact pattern: a self-employed person has a winst uit onderneming of € 60.000 in 2019. That amount is the winst vóór toevoeging aan en afneming van de oudedagsreserve en vóór de ondernemersaftrek, and there are no other income components in 2019. There is no pension accrual and no toevoeging or afneming of the oudedagsreserve in 2019. The jaarruimte for the 2020 aangifte is based on the income of 2019.
@@ -275,6 +283,8 @@ FISIN 2020 works out the deadlines for the 2020 year: an ingangsdatum in 2019 me
 
 ## 5. CHANGES FROM 2019
 
+<a id="5-changes"></a>
+
 - The checked sources for tax year 2019 are not available, so this file cannot set old 2019 values against new 2020 values. The bullets below state what the sources establish for 2020 itself, and they mark the items that change in later years so that a change from another year is not read into 2020.
 - Jaarruimte percentage: 13,3% of the premiegrondslag in the law text of 1 January 2020 (https://wetten.overheid.nl/BWBR0011353/2020-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127). The same percentage stays in the 2021 and 2022 texts and only becomes 30% in the 2023-07-01 text, and the Belastingdienst ties the 30% to the Wtp with retroactive effect from 1 January 2023, so 13,3% is the 2020 value (https://wetten.overheid.nl/BWBR0011353/2023-07-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 and https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/nieuwe-regels-voor-pensioenen-wat-betekent-dat-voor-mij).
 - Maximum jaarruimte: € 12.986 for 2020 (https://open.overheid.nl/documenten/ronl-423637a0-c7a6-4123-a683-148a64e343fa/pdf).
@@ -294,6 +304,8 @@ FISIN 2020 works out the deadlines for the 2020 year: an ingangsdatum in 2019 me
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record lijfrentepremies and AOV premiums as uitgaven voor inkomensvoorzieningen in box 1, not as business costs of the onderneming. For the AOV this is expressly stated: as ondernemer the premium is not a business cost but an uitgave voor andere inkomensvoorzieningen (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers). Art. 3.124 lid 1 c places the AOV premium in that category and puts no ruimte cap on it (https://wetten.overheid.nl/BWBR0011353/2020-01-01, art. 3.124 lid 1 c).
 - Keep the premium statements per product and per payment date. Art. 3.130 lid 1 counts premiums in the year they are paid or verrekend, and the six-month option of art. 3.130 lid 2 for the stakingswinst conversion, the art. 3.127 lid 5 staking option and the FOR conversion only works on choice, so the payment date decides which year is claimed (https://wetten.overheid.nl/BWBR0011353/2020-01-01, art. 3.130).
 - The lijfrente maximum applies to all lijfrenteproducten together, and premiums above the ruimte are never deductible while they are still taken into account when the uitkering is taxed (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies). Reserveringsruimte is claimed on request in the aangifte, oldest unused year first, and the Belastingdienst advises using it before the jaarruimte (same source).
@@ -307,6 +319,8 @@ FISIN 2020 works out the deadlines for the 2020 year: an ingangsdatum in 2019 me
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - FOR maximum 2020, conflict between the law and FISIN 2020. The law art. 3.68 and the Ministry of Finance 2020 table give € 9.218, while FISIN 2020 prints € 9.214 in the winst en verliesrekening chapter (https://wetten.overheid.nl/BWBR0011353/2020-01-01, https://open.overheid.nl/documenten/ronl-423637a0-c7a6-4123-a683-148a64e343fa/pdf and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/winst_en_verliesrekening_en_balans). The law text and the Ministry table settle it at € 9.218, and the FISIN figure is a page error.
 - FOR payment line 2020, conflict between FISIN 2020 and art. 3.130 lid 2. FISIN 2020 prints "in 2020 of vóór 1 juli 2020" for the FOR conversion, while the law gives six months after the year end, so before 1 July 2021, and the FISIN stakingswinst line itself says before 1 July 2021 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen and https://wetten.overheid.nl/BWBR0011353/2020-01-01, art. 3.130 lid 2). The law text settles it for before 1 July 2021.
 - Maximum jaarruimte 2020, provenance. The research phase had € 12.986 as a derived and UNVERIFIED figure. The Ministry of Finance table "Uitgaven inkomensvoorzieningen" lists the same amount, so the figures table marks it Verified with the Ministry table as source (https://open.overheid.nl/documenten/ronl-423637a0-c7a6-4123-a683-148a64e343fa/pdf).
@@ -318,6 +332,8 @@ FISIN 2020 works out the deadlines for the 2020 year: an ingangsdatum in 2019 me
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2020 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

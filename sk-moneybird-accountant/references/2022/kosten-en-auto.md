@@ -20,11 +20,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the deduction of business costs and the car, bicycle and travel rules for a Dutch sole trader in tax year 2022, plus the gemengde kosten (mixed costs) rules that also apply to a BV. The most important change in 2022 is the end of the persoonsgebonden aftrek voor scholingsuitgaven (personal deduction for training costs) on 1 January 2022, with the non-fiscal STAP-budget as its replacement. Study costs stayed deductible as business costs only when they maintain existing vakkennis (professional knowledge). The gemengde kosten drempel (threshold) rose to € 4.800, and a zero-emission car first admitted in 2022 gets a reduction of 6% capped at € 2.100. The 2022 rules in the checked material are enacted law, verified in the statute text valid on 1 January 2022.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
@@ -61,6 +65,8 @@ This file covers the deduction of business costs and the car, bicycle and travel
 ---
 
 ## 3. HOW IT WORKS IN 2022
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Gemengde kosten drempel
 
@@ -177,6 +183,8 @@ Under art. 8 lid 5 Wet Vpb 1969 the art. 3.15 restriction applies to a body when
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 All input amounts below are invented round amounts. The rates and thresholds are from section 2. Every product is written with two decimals before rounding. No step below rounds.
 
@@ -359,6 +367,8 @@ A second BV has employees and a wage total of € 1.000.000,00.
 
 ## 5. CHANGES FROM 2021
 
+<a id="5-changes"></a>
+
 - Gemengde kosten drempel: € 4.700 in 2021 to € 4.800 in 2022 (https://wetten.overheid.nl/BWBR0011353/2021-01-01 and https://wetten.overheid.nl/BWBR0011353/2022-01-01, art. 3.15 lid 1).
 - Zero-emission reduction for a car first admitted in the year: a 2021 admission got 10% off capped € 4.000, rendered as 12% up to € 40.000. A 2022 admission gets 6% off capped € 2.100, rendered as 16% up to € 35.000. A car first admitted in 2021 keeps the reduction that applied at first admission for 60 months from the first day of the month after first admission (art. 3.20 lid 11). Sources: https://wetten.overheid.nl/BWBR0011353/2021-01-01 and https://wetten.overheid.nl/BWBR0011353/2022-01-01.
 - Scholingsuitgaven: the persoonsgebonden aftrek ends. In 2021 art. 6.27 to 6.30 still applied with a drempel of € 250 and a maximum of € 15 000 outside the standaardstudieperiode (https://wetten.overheid.nl/BWBR0011353/2021-01-01). In 2022 art. 6.27, 6.28 and 6.30 are marked vervallen per 01-01-2022 (https://wetten.overheid.nl/BWBR0011353/2022-01-01), and the Wet afschaffing fiscale aftrek scholingsuitgaven took effect on 1 January 2022 by Stb. 2021, 349 (https://zoek.officielebekendmakingen.nl/stb-2021-349.html).
@@ -370,6 +380,8 @@ A second BV has employees and a wage total of € 1.000.000,00.
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Deduct costs excluding btw when the btw is deductible in the btw-aangifte. When no btw-aangifte is filed or the btw may not be deducted, deduct the costs including btw in the IB return (https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/welke-kosten-mag-ik-aftrekken-van-mijn-bijverdiensten and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/).
 - Under the KOR (kleineondernemersregeling, small business scheme) no btw is charged or paid, no btw on business costs and investments is deducted (also not btw paid in another EU country), earlier deductions may need herziening (revision), the low bestelauto mrb rate stays available, exit is possible from the first day of the next quarter and is immediate once turnover exceeds € 20.000 in a calendar year, and the choice is per ondernemer covering all subnummers (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/).
@@ -385,11 +397,15 @@ A second BV has employees and a wage total of € 1.000.000,00.
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 None for 2022.
 
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2022 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

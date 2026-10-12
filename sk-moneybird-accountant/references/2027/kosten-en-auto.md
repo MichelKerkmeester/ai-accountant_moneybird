@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Kosten en auto 2027
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 365.
-Part 1: lines 1-364, 50996 bytes, first heading "# Kosten en auto 2027"
-Part 2: lines 365-425, 15476 bytes, first heading "### 4.17 Calculated example: werkruimte test"
+Read plan: 2 parts. Next read offset: line 373.
+Part 1: lines 1-372, 51110 bytes, first heading "# Kosten en auto 2027"
+Part 2: lines 373-441, 15591 bytes, first heading "### 4.17 Calculated example: werkruimte test"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 365-425, 15476 bytes, first heading "### 4.17 Calculated example: 
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers which business costs a sole trader with a winst uit onderneming (business profit) may deduct in tax year 2027, and how the car, fiets and bestelauto rules work, including the BV variant where the checked material states one. Three layers matter for 2027. The published 2027 text of the Wet IB is the base layer and its values carry the status adopted-not-yet-in-force. Belastingplan 2027 is a bill that is still in the Tweede Kamer on 2026-10-11, so its values carry the status proposed, and the effective gemengde kosten drempel for 2027 is unknown because it waits for the December 2026 indexation regulation.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
@@ -71,6 +75,8 @@ Status adopted-not-yet-in-force means the value applies to tax year 2027 and com
 ---
 
 ## 3. HOW IT WORKS IN 2027
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Gemengde kosten drempel, base in the 2027 text
 
@@ -219,6 +225,8 @@ Separate from the income-tax car rules, and on the same Rijksoverheid page, from
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 All inputs below are invented round numbers. Calculated examples use only the section 2 figures and the checked material. Every product is shown with two decimals. No step in these examples requires rounding, so no rounding step is marked.
 
@@ -374,6 +382,8 @@ Official example from Rijksoverheid: a car of € 30.000 gives 12% = € 3.600,0
 
 ## 5. CHANGES FROM 2026
 
+<a id="5-changes"></a>
+
 - Gemengde kosten drempel: 2026 was € 5.700, final and enacted ([2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01) and [Belastingdienst 2026](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/drempel-beperkt-aftrekbare-kosten-2026)). For 2027 the 2027 text gives € 5.700 before indexation, and the effective amount is not published yet, so the 2027 value is unknown until the December 2026 indexation regulation ([2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01)).
 - Keuze in plaats van de drempel: 80% in both years, also for resultaatgenieters ([2026 change page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/drempel-beperkt-aftrekbare-kosten-2026), [2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01)).
 - Vpb variant: 73,5% and the fixed amount or 0,4% of loon if higher, verified for 2026 ([2026 text](https://wetten.overheid.nl/BWBR0002672/2026-01-01)). The 2027 text of art. 8 lid 5 Wet Vpb 1969 was not checked, see section 7.
@@ -392,6 +402,8 @@ Official example from Rijksoverheid: a car of € 30.000 gives 12% = € 3.600,0
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record gemengde kosten separately from other costs, so the drempel or the 80% keuze can be computed. The keuze is made in the return per art. 3.15 lid 5, and the drempel is not time-proportioned when the enterprise starts during the year ([art. 3.15, 2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01), [besluit section 3.1](https://zoek.officielebekendmakingen.nl/stcrt-2020-25430.html)).
 - Keep receipts and invoices for deductible costs. Deduct costs excluding btw when the btw is deductible in the btw-aangifte, and including btw when no btw-aangifte is filed or the btw may not be deducted ([welke kosten mag ik aftrekken van mijn bijverdiensten](https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/welke-kosten-mag-ik-aftrekken-van-mijn-bijverdiensten)).
 - Under the KOR, no btw is charged or paid and no btw on business costs and investments is deducted, the choice is per ondernemer covering all subnummers, and exit is immediate once turnover exceeds € 20.000 in a calendar year ([KOR](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/)).
@@ -404,6 +416,8 @@ Official example from Rijksoverheid: a car of € 30.000 gives 12% = € 3.600,0
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - Effective gemengde kosten drempel for 2027 is unknown. It waits for the December 2026 indexation regulation. Belastingplan 2027 does not amend art. 3.15 lid 1. The bill uses a tabelcorrectiefactor of 1,01248 for other amounts in art. L, and that factor is not confirmed for art. 3.15. Sources: [2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01) and [Belastingplan 2027](https://zoek.officielebekendmakingen.nl/kst-37022-2.html). The published regulation settles it.
 - Kilometre allowance 2027, € 0,23 against € 0,25. The enacted 2027 text prints € 0,23 in art. 3.15 lid 6 and art. 3.17 lid 1 b ([2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01)). Belastingplan 2027 proposes € 0,25 (art. I onderdelen C and D, [kst-37022-2](https://zoek.officielebekendmakingen.nl/kst-37022-2.html)). The bill is not adopted on 2026-10-11 ([wetsvoorstel 37022](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A37022)), so use € 0,23 until adoption.
@@ -418,6 +432,8 @@ Official example from Rijksoverheid: a car of € 30.000 gives 12% = € 3.600,0
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2027 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

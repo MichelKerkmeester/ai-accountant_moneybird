@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Arbeidsrelatie en zelfstandigheid 2026
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 243.
-Part 1: lines 1-242, 49142 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2026"
-Part 2: lines 243-263, 3682 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Read plan: 2 parts. Next read offset: line 255.
+Part 1: lines 1-254, 49309 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2026"
+Part 2: lines 255-279, 3744 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 243-263, 3682 bytes, first heading "## 7. OPEN POINTS AND CONFLICT
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the work relationship rules for a ZZP sole trader and for a BV that hires one. It covers the Wet DBA (Wet deregulering beoordeling arbeidsrelaties, the law on assessing work relationships), its enforcement in 2026, modelovereenkomsten (model agreements), the VBAR bill with its low hourly rate presumption, and the BAZ bill. The most important 2026 changes are that vergrijpboetes (penalties for intent or gross negligence) become possible from 1 January 2026, that the VBAR is adopted and enters into force on 31 December 2026, and that the Zelfstandigenwet and the BAZ are still proposed. The year's law is mixed: the DBA enforcement policy and the modelovereenkomsten rules are enacted, the VBAR is adopted-not-yet-in-force, and the Zelfstandigenwet and BAZ are proposed.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
@@ -64,6 +68,8 @@ This file covers the work relationship rules for a ZZP sole trader and for a BV 
 ---
 
 ## 3. HOW IT WORKS IN 2026
+
+<a id="3-how-it-works"></a>
 
 ### Wet DBA and the loondienst test
 
@@ -175,6 +181,8 @@ Handelsregisterwet 2007 art. 20 lid 1 says the opgave for the first inschrijving
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 **Official example: VBAR indexation from the MvT.**
 The MvT gives a fictitious example. Start from the unrounded base of € 35,43. A 3,75% WML rise gives € 35,43 x 1,0375 = € 36,758625. Rounded to two decimals this is € 36,76. Rounded up to a whole euro this is € 37,00. A further 1,2% rise gives € 36,76 x 1,012 = € 37,20112. Rounded to two decimals this is € 37,20. Rounded up to a whole euro this is € 38,00. Source: [Kst. 36 783, nr. 3](https://zoek.officielebekendmakingen.nl/kst-36783-3.html).
 
@@ -209,6 +217,8 @@ An approved modelovereenkomst valid on 6 September 2024 can be used up to and in
 
 ## 5. CHANGES FROM 2025
 
+<a id="5-changes"></a>
+
 - DBA boetes: in 2025 there were no verzuimboetes and no vergrijpboetes for the qualification of arbeidsrelaties (motie Flach/Aartsen, Kamerstuk 31 311, nr. 266). In 2026 there are no verzuimboetes, but vergrijpboetes are possible under the normal rules from 1 January 2026, also for correcties over 2026. For correcties over 2025 the 2025 regime stays. Source: [Handhavingsplan Arbeidsrelaties 2026](https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z62fd.pdf).
 - Start of control: in 2025 the control started in principle with a bedrijfsbezoek, possibly a waarschuwing that was not an official instrument like the aanwijzing, and a boekenonderzoek remained possible with large risks. In 2026 the control starts in principle with a bedrijfsbezoek and the starting point to examine only the most recent aangiftetijdvak in a boekenonderzoek lapses. Source: [Handhavingsplan Arbeidsrelaties 2026](https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z62fd.pdf).
 - Regular handhaving: the tranche 2025 plan stated integration from 1 January 2026. The 2026 plan records that the ambition was 1 January 2026, that a separate plan was made again for 2026, and that the Belastingdienst aims to integrate from 2027. Source: [Handhavingsplan Arbeidsrelaties 2026](https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z62fd.pdf).
@@ -226,6 +236,8 @@ An approved modelovereenkomst valid on 6 September 2024 can be used up to and in
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record how the work is actually carried out, not only what the contract says. An approved modelovereenkomst gives no loondienst only if the parties work as described. Source: [Werken met modelovereenkomsten](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/werken-met-modelovereenkomsten).
 - Keep the written opt-out for thuiswerkers, gelijkgestelden and artiesten before the first payment. The opdrachtnemer then has no entitlement to ZW, WIA and WW. Source: [Belastingdienst loondienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst).
 - For a BV as opdrachtgever, if the relationship is loondienst, process it as a dienstbetrekking in the loonaangifte. A correction can give a naheffingsaanslag loonheffingen, payable 14 days after the date. Sources: [Belastingdienst handhaving](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving), [Invorderingswet 1990 art. 9](https://wetten.overheid.nl/BWBR0004770/2026-01-01 art. 9).
@@ -242,6 +254,8 @@ An approved modelovereenkomst valid on 6 September 2024 can be used up to and in
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - VBAR first-application regulation: UNVERIFIED. The ministeriële regeling under art. III lid 2 was not found on 2026-10-11. It would settle the exact figure for 31 December 2026. See the calculated example in section 4 for an illustration based on the WML of € 14,99. Source: [Stb. 2026, 158](https://zoek.officielebekendmakingen.nl/stb-2026-158.html), [Rijksoverheid minimumloon 2026](https://www.rijksoverheid.nl/themas/werk/minimumloon/bedragen-minimumloon/bedragen-minimumloon-2026).
 - BAZ waiting period: 104 weeks in the bill text against about one year in the docket summary. UNVERIFIED. Stays open until the bill text or the nota is read. Sources: [Tweede Kamer document](https://www.tweedekamer.nl/downloads/document?id=2026D13313), [Tweede Kamer 36 912](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912).
 - Case law date: 21 February 2025 and ECLI:NL:HR:2025:319 come from a later court citation found by search, not from a fetched copy of the ruling. UNVERIFIED. Sources: [Rijksoverheid](https://www.rijksoverheid.nl/actueel/nieuws/2025/03/27/ondernemerschap-blijft-volwaardig-criterium-bij-beoordelen-schijnzelfstandigheid), [open.overheid.nl](https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file).
@@ -256,6 +270,8 @@ An approved modelovereenkomst valid on 6 September 2024 can be used up to and in
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2026 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

@@ -14,9 +14,9 @@ version: 1.0.0.0
 # BV en vennootschapsbelasting 2020
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 259.
-Part 1: lines 1-258, 49738 bytes, first heading "# BV en vennootschapsbelasting 2020"
-Part 2: lines 259-304, 7220 bytes, first heading "## 5. CHANGES FROM 2019"
+Read plan: 2 parts. Next read offset: line 267.
+Part 1: lines 1-266, 49852 bytes, first heading "# BV en vennootschapsbelasting 2020"
+Part 2: lines 267-320, 7335 bytes, first heading "## 5. CHANGES FROM 2019"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 259-304, 7220 bytes, first heading "## 5. CHANGES FROM 2019"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the BV and the vennootschapsbelasting (corporate income tax) for tax year 2020. It sets out the 2020 Vpb rates, loss relief, the interest deduction limit, the gebruikelijk loonregeling (customary salary rule) for a DGA (directeur-grootaandeelhouder, director and major shareholder), dividendbelasting (dividend withholding tax), box 2, the fiscale eenheid (fiscal unity), the deelnemingsvrijstelling (participation exemption), the innovatiebox (innovation box), the switch from an eenmanszaak (sole proprietorship) to a BV, and the jaarrekening (annual accounts) rules. The year's law is enacted. The checked 2020 sources state the values. One point about the 2020 text of the geruisloze omzetting (tax-neutral conversion) conditions is UNVERIFIED, see section 7.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
@@ -61,6 +65,8 @@ This file covers the BV and the vennootschapsbelasting (corporate income tax) fo
 ---
 
 ## 3. HOW IT WORKS IN 2020
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Vpb-tarief en berekening 2020
 
@@ -157,6 +163,8 @@ The new legal form is a new business for btw and may get a new btw-identificatie
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Example 1: Vpb on a profit of € 60.000
 
@@ -258,6 +266,8 @@ The new legal form is a new business for btw and may get a new btw-identificatie
 
 ## 5. CHANGES FROM 2019
 
+<a id="5-changes"></a>
+
 - The checked material for 2019 is not available. This file cannot give old-to-new values for the step from 2019 to 2020. The 2020 sources state the 2020 position.
 - Vpb 2020: t/m € 200.000 16,5%, above that € 33.000 plus 25%. Source: https://wetten.overheid.nl/BWBR0002672/2020-01-01 (art. 22).
 - Verliesverrekening 2020: 1 year back and 6 years forward, after a beschikking. Source: https://wetten.overheid.nl/BWBR0002672/2020-01-01 (art. 20 lid 2).
@@ -273,6 +283,8 @@ The new legal form is a new business for btw and may get a new btw-identificatie
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Run the DGA wage through the loonadministratie and withhold loonheffing. For an uninsured DGA, withhold the inkomensafhankelijke bijdrage Zvw from net wage and pay it through the aangifte loonheffingen. For 2020 the bijdrage is 5,45% up to a maximum bijdrage-inkomen of € 57.232. Sources: https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet.
 - Record dividend decisions. A dividendnota is due once the opbrengst is paid, credited, settled or handed over. The dividendbelasting return and payment are due within 1 month after the dividend is made available. Source: https://wetten.overheid.nl/BWBR0002515/2020-01-01 (art. 9 lid 1) and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/dividendbelasting/als_u_dividend_uitkeert/dividendbelasting-aangifte-betalen.
 - File the Vpb return for a calendar book year before 1 June of the next year. For 2020 that is before 1 June 2021. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/aangifte-vennootschapsbelasting-doen/aangifte-vennootschapsbelasting-doen.
@@ -286,6 +298,8 @@ The new legal form is a new business for btw and may get a new btw-identificatie
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - UNVERIFIED: the 2020 wording of the nine-month and three-year conditions for the geruisloze omzetting. The Besluit geruisloze omzetting of 30 June 2010 was in force through 4 November 2025 but was not read. The 2020 wording therefore rests on the 2025 successor. Reading Stcrt. 2010, 10512 would settle it. Source: https://zoek.officielebekendmakingen.nl/stcrt-2025-37092.html.
 - Unknown: the WML amount of art. 8 lid 1 sub a WML for 2020 is not in the checked sources. The start-up relief minimum of 108% of twelve times that amount therefore cannot be worked out here. Source: https://wetten.overheid.nl/BWBR0002471/2020-01-01.
 - Source vintage: the filing and extension rules come from current Belastingdienst pages read for the 2025 and 2026 filing seasons. The checked material does not contain a 2020-dated page for these deadlines. Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/aangifte-vennootschapsbelasting-doen/aangifte-vennootschapsbelasting-doen and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/uitstel_aangifte_vennootschapsbelasting/uitstel_aangifte_vennootschapsbelasting.
@@ -297,6 +311,8 @@ The new legal form is a new business for btw and may get a new btw-identificatie
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2020 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

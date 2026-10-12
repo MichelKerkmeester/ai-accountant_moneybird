@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the 2020 box 1 rates, the AOW-age variants, the heffingskortingen, tariefsaanpassing and how taxable business profit enters box 1. The main points are the distinction between the combined first-bracket rate and the income-tax rate in the statute, the separate AOW-age tables, and the reductions for the algemene heffingskorting, arbeidskorting and IACK. The checked 2020 rates and amounts are marked enacted, with unresolved items identified below.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
@@ -48,6 +52,8 @@ This file covers the 2020 box 1 rates, the AOW-age variants, the heffingskorting
 ---
 
 ## 3. HOW IT WORKS IN 2020
+
+<a id="3-how-it-works"></a>
 
 ### Box 1 rates below AOW age
 
@@ -117,6 +123,8 @@ An eligible entrepreneur could add 9,44% of profit to an oudedagsreserve, subjec
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Box 1 rates below AOW age
 
 **Calculated example.** Assume taxable box 1 income of € 70.000 and no deductions or credits. The tax at the top-bracket boundary is € 15.989. The amount above € 68.507 is € 70.000 minus € 68.507, which is € 1.493. The tax on that excess is € 1.493 × 49,50%, which is € 739,035. The total before credits is € 15.989 plus € 739,035, or € 16.728,035, approximately € 16.728,04. This uses the statutory schedule in section 2. [https://wetten.overheid.nl/BWBR0011353/2020-01-01, art. 2.10](https://wetten.overheid.nl/BWBR0011353/2020-01-01)
@@ -159,11 +167,15 @@ For a full year at AOW age, using the same arbeidsinkomen and eligibility assump
 
 ## 5. CHANGES FROM 2019
 
+<a id="5-changes"></a>
+
 The checked material contains no 2019 figures or rules for comparison. It does not identify a rule that began in 2020 for this topic.
 
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 Record business income and expenses, keep the records that support the profit calculation, and determine whether the business profit qualifies as winst uit onderneming for income-tax purposes. The return applies the relevant deductions and reports taxable box 1 income. The checked material does not provide a 2020 filing deadline for this topic. [FISIN page at https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/winst_uit_onderneming]
 
@@ -172,6 +184,8 @@ The Zvw contribution exists and is handled in the separate Zvw file. [https://ww
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - **Heffingskortingen in the year AOW age is reached:** The 2020 page states no rule or amount. The 2020 transition-year treatment is unknown and UNVERIFIED. The 2020 FISIN page or another official 2020 source stating the rule would settle it. [https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/heffingskortingen, URL not supplied in checked material]
 
@@ -192,6 +206,8 @@ The Zvw contribution exists and is handled in the separate Zvw file. [https://ww
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2020 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

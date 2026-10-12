@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the investeringsaftrek (investment allowance) in its four forms, the KIA (kleinschaligheidsinvesteringsaftrek, small-scale investment allowance), the EIA (energie-investeringsaftrek, energy investment allowance), the MIA (milieu-investeringsaftrek, environment investment allowance) and the Vamil (willekeurige afschrijving milieu-investeringen, random depreciation for environmental investments), together with the ordinary and random depreciation of bedrijfsmiddelen (business assets) in tax year 2024. It is written for a sole trader and notes where the checked sources describe the same instruments for a BV. The 2024 law is enacted. The headline change for 2024 is the bodemwaarde (floor value) for buildings: the 50% rule for a building in own use is gone from 1 January 2024 and one bodemwaarde applies, the full WOZ-waarde of the building.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
@@ -47,6 +51,8 @@ This file covers the investeringsaftrek (investment allowance) in its four forms
 ---
 
 ## 3. HOW IT WORKS IN 2024
+
+<a id="3-how-it-works"></a>
 
 ### KIA table (art. 3.41 lid 2)
 
@@ -126,6 +132,8 @@ RVO states a maximum of € 25 miljoen per bedrijfsmiddel and per applicant per 
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Official example: starters willekeurige afschrijving on a truck
 
 **Official example.** The Belastingdienst gives this example on its page for the starting entrepreneur. A truck is bought on 1 July 2024 for € 150.000,00, with a 7-year life and a residual value of € 10.000,00. The entrepreneur depreciates € 60.000,00 at will in 2024 and € 80.000,00 at will in 2025, which leaves a book value of € 10.000,00 at the end of 2025 against a normal book value of € 120.000,00 on 1 January 2026. Rental from 1 January 2026 falls within 5 years after 1 January 2024, so herwaardering to € 120.000,00 gives € 110.000,00 boekwinst in 2026, and a normal depreciation of € 20.000,00 in 2026 remains. The arithmetic: € 150.000,00 - € 60.000,00 - € 80.000,00 = € 10.000,00, and € 120.000,00 - € 10.000,00 = € 110.000,00. Source: [Belastingdienst page on willekeurige afschrijving for the starting entrepreneur](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/willekeurige_afschrijving/startende_ondernemer).
@@ -186,6 +194,8 @@ RVO states a maximum of € 25 miljoen per bedrijfsmiddel and per applicant per 
 
 ## 5. CHANGES FROM 2023
 
+<a id="5-changes"></a>
+
 - KIA table, old to new: 2023 was nil up to € 2.600, 28% up to € 63.716, € 17.841 up to € 117.991, € 17.841 minus 7,56% of the excess over € 117.991 up to € 353.973 and nil above € 353.973. 2024 is nil up to € 2.800, 28% up to € 69.765, € 19.535 up to € 129.194, € 19.535 minus 7,56% of the excess over € 129.194 up to € 387.580 and nil above € 387.580. Sources: [art. 3.41 lid 2 in the 2023 text](https://wetten.overheid.nl/BWBR0011353/2023-01-01), [art. 3.41 lid 2 in the 2024 text](https://wetten.overheid.nl/BWBR0011353/2024-01-01). The Belastingdienst phrased the 2023 window as "moet u een bedrag tussen € 2.601 en € 353.973 investeren" on the [vennootschapsbelasting 2023 page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/veranderingen-vennootschapsbelasting-vorige-jaren/veranderingen-vennootschapsbelasting-2023).
 - EIA percentage, € 45,5% in 2023 to 40% in 2024. Sources: [art. 3.42 lid 3 in the 2023 text](https://wetten.overheid.nl/BWBR0011353/2023-01-01), [art. 3.42 lid 3 in the 2024 text](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [FISIN 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek).
 - EIA and MIA maximum investment amount, € 136.000.000 in 2023 to € 149.000.000 in 2024. Sources: [art. 3.42 lid 4 in the 2023 text](https://wetten.overheid.nl/BWBR0011353/2023-01-01), [vennootschapsbelasting 2023 page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/veranderingen-vennootschapsbelasting-vorige-jaren/veranderingen-vennootschapsbelasting-2023), [art. 3.42 lid 4 in the 2024 text](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [FISIN 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek).
@@ -199,6 +209,8 @@ RVO states a maximum of € 25 miljoen per bedrijfsmiddel and per applicant per 
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Record the investment per bedrijfsmiddel with the date of the obligation, the aanschafkosten or voortbrengingskosten and the payments made in the year, because an asset that is not in use at the year end carries the investeringsaftrek only over the payments made and the excess follows in later years, and because at staking the full investeringsaftrek is taken in the year of staking. Sources: [art. 3.44](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [FISIN 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek).
 - Claim the KIA in the aangifte itself, as a per-onderneming choice on the total investment in the calendar year. Source: [Belastingdienst KIA page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/kleinschaligheidsinvesteringsaftrek_kia).
@@ -214,6 +226,8 @@ RVO states a maximum of € 25 miljoen per bedrijfsmiddel and per applicant per 
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Unknown: the RVO maximum of € 25 miljoen per bedrijfsmiddel and per applicant per year for the MIA and Vamil. The RVO page at https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden states the ceiling and the exception for a lower maximum in the Milieulijst, but it does not print a year, so the value is not confirmed for 2024 specifically. The same page family prints the combined MIA and Vamil benefit as "ruim 14%" of the investment amount on https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers, also without a year. What would settle it: a year-stamped RVO page for 2024 or the Milieulijst for 2024.
 - UNVERIFIED: the rule that a medegerechtigde or geldverstrekker cannot use the EIA or MIA. It was not found on the fetched pages https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/energie_investeringsaftrek_eia. What would settle it: the full EIA and MIA conditions text on those pages, or a policy statement on the point.
 - Open caveat on the starters willekeurige afschrijving cap of € 387.580. The amount is read from the cross-reference in URWA art. 8 (https://wetten.overheid.nl/BWBR0012035/2025-01-01/0) to the maximum amount over which KIA can be obtained in the art. 3.41 lid 2 table (https://wetten.overheid.nl/BWBR0011353/2024-01-01). No fetched page prints the cap as a number. What would settle it: a Belastingdienst or URWA page that prints the maximum in figures.
@@ -222,6 +236,8 @@ RVO states a maximum of € 25 miljoen per bedrijfsmiddel and per applicant per 
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2024 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

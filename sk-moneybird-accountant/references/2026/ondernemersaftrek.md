@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the ondernemersaftrek (entrepreneur's allowance) and the MKB-winstvrijstelling (small business profit exemption) for a sole trader in tax year 2026. The rules are the same as in 2025, with new amounts: the zelfstandigenaftrek is € 1.200, the startersaftrek is € 2.123, the MKB-winstvrijstelling is 12,7% and the tariefsaanpassing (rate adjustment) on these deductions is 11,94% above € 78.426. Every 2026 value in this file is enacted and verified against the statute valid on 1 January 2026, and the current Belastingdienst pages on the urencriterium, startersaftrek, meewerkaftrek, stakingsaftrek, MKB-winstvrijstelling and oudedagsreserve match the statute. The MvT of Belastingplan 2027 states that ondernemers can still use the startersaftrek in 2026, and later-year proposals are kept apart in section 7.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
@@ -52,6 +56,8 @@ This file covers the ondernemersaftrek (entrepreneur's allowance) and the MKB-wi
 ---
 
 ## 3. HOW IT WORKS IN 2026
+
+<a id="3-how-it-works"></a>
 
 The ondernemersaftrek of art. 3.74 has five parts: the zelfstandigenaftrek, the aftrek voor speur- en ontwikkelingswerk, the meewerkaftrek, the startersaftrek bij arbeidsongeschiktheid and the stakingsaftrek. The startersaftrek is not a separate list item, it is a verhoging (increase) of the zelfstandigenaftrek in art. 3.76 lid 3 (https://wetten.overheid.nl/BWBR0011353/2026-01-01). Only an IB-ondernemer can use these schemes. Whether someone is an ondernemer for the inkomstenbelasting is judged per activity by the Belastingdienst, separately from the btw, on profit, independence, capital, time spent, number of clients, publicity, entrepreneurial risk and liability for business debts. Someone who is not an IB-ondernemer reports inkomsten uit overig werk, calculates the profit the same way but has no right to the zelfstandigenaftrek or the investeringsaftrek (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/wanneer_bent_u_ondernemer_voor_de_inkomstenbelasting/ and https://ondernemersplein.overheid.nl/bedrijf-starten/inschrijven-bij-kvk/wanneer-bent-u-ondernemer/). Medegerechtigden get no zelfstandigenaftrek, meewerkaftrek, stakingsaftrek or MKB-winstvrijstelling on their medegerechtigde profit. The order of application is the profit, then the ondernemersaftrek, then the MKB-winstvrijstelling (art. 3.2 and 3.79a, https://wetten.overheid.nl/BWBR0011353/2026-01-01).
 
@@ -144,6 +150,8 @@ The maximum value of the ondernemersaftrek and the MKB-winstvrijstelling in 2026
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Example 1, urencriterium in a part year (Official example)
 
@@ -259,6 +267,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/onderneme
 
 ## 5. CHANGES FROM 2025
 
+<a id="5-changes"></a>
+
 - Zelfstandigenaftrek: € 2.470 in 2025 to € 1.200 in 2026 (https://wetten.overheid.nl/BWBR0011353/2025-01-01 and https://wetten.overheid.nl/BWBR0011353/2026-01-01).
 - Zelfstandigenaftrek at AOW age: € 1.235 in 2025 to € 600 in 2026 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/ondernemersaftrek_en_investeringsaftrek).
 - Aftrek voor speur- en ontwikkelingswerk: € 15.738 in 2025 to € 15.979 in 2026 (https://wetten.overheid.nl/BWBR0011353/2025-01-01 and https://wetten.overheid.nl/BWBR0011353/2026-01-01).
@@ -274,6 +284,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/onderneme
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the hours spent on the business, because the 1.225 hours must be made plausible, for example with an agenda, quotes, timesheets and invoices. All hours on the business count, including non-billable work, but standby time does not count (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium).
 - Record the partner's hours in the business, because the meewerkaftrek bands of 1,25% to 4% depend on those hours and the hours must be made plausible (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/meewerkaftrek).
 - Pay to a partner below € 5.000 is not deductible from profit and is no income for the partner. The Belastingdienst treats such a partner as working without pay, so the meewerkaftrek can apply (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/meewerkaftrek).
@@ -287,6 +299,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/onderneme
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Not in the checked sources for 2026: the dated starter examples for the second test of the urencriterium (starter in 2026, since 2024, since 2022, a 2018 starter who stopped in 2023 and restarted in 2026, since 2018). Fetched on 2026-10-11 the Belastingdienst urencriterium page has only the two webhosting examples. They are consistent with the statute and with the FISIN 2026 window of 2021 to 2025, but keep them out unless a Belastingdienst page with them is found (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium).
 - Conflict in the FISIN 2026 carry-forward example. FISIN 2026 section 8.4.3 prints € 2.740 unused in the loss year, while the material marks € 2.470 as correct. The 2025 statute prints € 2.470. The example also has typos in the year labels and amounts. Both values and both URLs: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/ondernemersaftrek_en_investeringsaftrek and https://wetten.overheid.nl/BWBR0011353/2025-01-01. The statute and the FISIN 2025 table settle it at € 2.470.
 - Not in the checked sources: the base of the meewerkaftrek percentage. Art. 3.78 gives the aftrek as a percentage of the profit, and the checked sources do not state whether that base is first reduced by the other parts of the ondernemersaftrek. The statute text of art. 3.78 as valid on 1 January 2026 and a Belastingdienst calculation example would settle it (https://wetten.overheid.nl/BWBR0011353/2026-01-01 and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/meewerkaftrek).
@@ -298,6 +312,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/onderneme
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2026 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

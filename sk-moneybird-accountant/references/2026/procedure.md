@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Aangifte en procedure 2026
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 266.
-Part 1: lines 1-265, 48068 bytes, first heading "# Aangifte en procedure 2026"
-Part 2: lines 266-294, 6322 bytes, first heading "## 6. IN THE BOOKS"
+Read plan: 2 parts. Next read offset: line 276.
+Part 1: lines 1-275, 48206 bytes, first heading "# Aangifte en procedure 2026"
+Part 2: lines 276-310, 6413 bytes, first heading "## 6. IN THE BOOKS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,6 +26,8 @@ Part 2: lines 266-294, 6322 bytes, first heading "## 6. IN THE BOOKS"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the procedural side of tax year 2026 for a sole trader, and where relevant for a BV. It gives the filing and payment deadlines for income tax and btw, the uitstel rules, the voorlopige aanslag, belastingrente, the navorderingstermijn, bezwaar, the bewaarplicht and the KVK and Belastingdienst registration duties.
 
 Most 2026 figures are enacted and verified in the checked sources. The belastingrente rate for income tax and btw is 5% from 1 January 2026. The exact income tax filing deadline for the 2026 return was not published on 2026-10-11 and the Belastingdienst page states it is usually 1 May 2027.
@@ -33,6 +35,8 @@ Most 2026 figures are enacted and verified in the checked sources. The belasting
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
@@ -72,6 +76,8 @@ Most 2026 figures are enacted and verified in the checked sources. The belasting
 ---
 
 ## 3. HOW IT WORKS IN 2026
+
+<a id="3-how-it-works"></a>
 
 ### Aangifte inkomstenbelasting 2026, uiterste datum
 
@@ -205,6 +211,8 @@ KVK passes the data to the Belastingdienst, so no separate registration is neede
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Official example: navordering with uitstel
 
 The Belastingdienst page gives tax year 2016 with 5 months uitstel, navordering possible until 31 May 2022. Source: [navorderingsaanslag](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/navorderingsaanslag). This is copied from the primary source.
@@ -249,6 +257,8 @@ A monthly trader for January 2026 must have the return and payment received by 2
 
 ## 5. CHANGES FROM 2025
 
+<a id="5-changes"></a>
+
 - Belastingrente for the general taxes, including income tax and btw, changes from 6,5% in 2025 to 5% from 1 January 2026. Source: [overzicht percentages belastingrente](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente).
 - The belastingrente on tax year 2025 income tax runs from 1 July 2026 at 5%. Source: [overzicht percentages belastingrente](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente).
 - Aanslaggrens and teruggaafgrens change from € 57 and € 18 in 2025 to € 58 and € 18 in 2026. Source: [definitieve aanslag](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag).
@@ -265,6 +275,8 @@ A monthly trader for January 2026 must have the return and payment received by 2
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the btw per tijdvak and make sure the return and the payment are both received by the date in the Belastingdienst table. For 2026 the monthly, quarterly and yearly dates are in section 2. Source: [uiterste aangifte- en betaaldatums](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums).
 - Keep the administratie for seven years. Keep onroerende zaken and One Stop Shop data for ten years. The term starts when the gegeven is no longer actual. Source: [hoelang moet u gegevens bewaren](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/hoelang-moet-u-gegevens-bewaren).
 - Keep the basisgegevens: grootboek, debiteuren- and crediteurenadministratie, voorraadadministratie, in- and verkoopadministratie, loonadministratie, and data relevant for the taxation of third parties. Source: [hoelang moet u gegevens bewaren](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/hoelang-moet-u-gegevens-bewaren).
@@ -279,6 +291,8 @@ A monthly trader for January 2026 must have the return and payment received by 2
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - The exact income tax return deadline for tax year 2026 is unknown and UNVERIFIED. On 2026-10-11 the Belastingdienst page had not published it and stated it is usually 1 May 2027. The aangiftebrief sets the date. Source: [wanneer moet ik aangifte doen](https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen). The aangiftebrief would settle it.
 - Uitstel channel conflict, settled. The form page says online in Mijn Belastingdienst until 1 May is possible for someone who received an aangiftebrief. The uitstel page says online is not possible. Both are current Belastingdienst text. The settled reading is online until 1 May for the regular 1 May date, paper form otherwise. Sources: [aanvraag uitstel](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/programmas_en_formulieren/aanvraag-uitstel-aangifte-inkomstenbelasting) and [kan ik nog uitstel aanvragen](https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/kan-ik-nog-uitstel-aanvragen-belastingaangifte). Reading both pages in full settles it.
 - KVK btw-number term conflict, settled. The KVK page uses both two weeks and ten werkdagen after the start date for the btw-id and omzetbelastingnummer. Ten werkdagen equals two calendar weeks. The Belastingdienst page states the registration takes at most 10 werkdagen. Sources: [KVK hulp bij inschrijven](https://www.kvk.nl/hulp-en-contact/hulp-bij-inschrijven/) and [schrijf uw onderneming in](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/). The Belastingdienst wording settles it.
@@ -287,6 +301,8 @@ A monthly trader for January 2026 must have the return and payment received by 2
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2026 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

@@ -15,18 +15,40 @@ version: 1.0.0.0
 # Dutch tax rules
 
 <!-- GENERATED:nav:start -->
-Read plan: 10 parts. Next read offset: line 225.
-Part 1: lines 1-224, 47680 bytes, first heading "# Dutch tax rules"
-Part 2: lines 225-344, 29441 bytes, first heading "### 3.2 Income tax box 1 and the Zvw contribution"
-Part 3: lines 345-517, 48865 bytes, first heading "### 3.3 Ondernemersaftrek and MKB-winstvrijstelling"
-Part 4: lines 518-638, 29242 bytes, first heading "### 3.5 Costs and the car"
-Part 5: lines 639-746, 22282 bytes, first heading "### 3.6 Box 3 savings and investments"
-Part 6: lines 747-898, 32160 bytes, first heading "### 3.7 Box 2 and the substantial interest"
-Part 7: lines 899-1030, 32538 bytes, first heading "### 3.8 The BV and vennootschapsbelasting"
-Part 8: lines 1031-1124, 23022 bytes, first heading "### 3.9 Pension, lijfrente and AOV"
-Part 9: lines 1125-1305, 50608 bytes, first heading "### 3.10 Work relationship and procedure"
-Part 10: lines 1306-1547, 47161 bytes, first heading "### Ondernemersaftrek and MKB-winstvrijstelling"
+Read plan: 10 parts. Next read offset: line 247.
+Part 1: lines 1-246, 48744 bytes, first heading "# Dutch tax rules"
+Part 2: lines 247-366, 29441 bytes, first heading "### 3.2 Income tax box 1 and the Zvw contribution"
+Part 3: lines 367-539, 48865 bytes, first heading "### 3.3 Ondernemersaftrek and MKB-winstvrijstelling"
+Part 4: lines 540-660, 29242 bytes, first heading "### 3.5 Costs and the car"
+Part 5: lines 661-768, 22282 bytes, first heading "### 3.6 Box 3 savings and investments"
+Part 6: lines 769-920, 32160 bytes, first heading "### 3.7 Box 2 and the substantial interest"
+Part 7: lines 921-1052, 32538 bytes, first heading "### 3.8 The BV and vennootschapsbelasting"
+Part 8: lines 1053-1146, 23022 bytes, first heading "### 3.9 Pension, lijfrente and AOV"
+Part 9: lines 1147-1327, 50608 bytes, first heading "### 3.10 Work relationship and procedure"
+Part 10: lines 1328-1569, 47161 bytes, first heading "### Ondernemersaftrek and MKB-winstvrijstelling"
 <!-- GENERATED:nav:end -->
+
+<!-- GENERATED:toc:start -->
+Sections and line ranges
+- 1. OVERVIEW: lines 58-63
+- 2. HOW TO USE IT: lines 64-115
+- 3. GENERAL RULES: lines 116-1285
+- 3.1 BTW (VAT): lines 120-246
+- 3.2 Income tax box 1 and the Zvw contribution: lines 247-366
+- 3.3 Ondernemersaftrek and MKB-winstvrijstelling: lines 367-466
+- 3.4 Investment deductions and depreciation: lines 467-539
+- 3.5 Costs and the car: lines 540-660
+- 3.6 Box 3 savings and investments: lines 661-768
+- 3.7 Box 2 and the substantial interest: lines 769-920
+- 3.8 The BV and vennootschapsbelasting: lines 921-1052
+- 3.9 Pension, lijfrente and AOV: lines 1053-1146
+- 3.10 Work relationship and procedure: lines 1147-1285
+- 4. SETTLED SOURCE CONFLICTS: lines 1286-1424
+- 5. OPEN POINTS AND GAPS: lines 1425-1553
+- 6. RECORD AND INVOICE DUTIES: lines 1554-1563
+- 7. RELATED RESOURCES: lines 1564-1569
+<!-- GENERATED:toc:end -->
+
 
 
 **Rule:** Find the tax year first, then read that year's topic file. A rule that holds across years is here, a figure for one year is in the year folder. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
@@ -42,8 +64,8 @@ This file is the entry point for Dutch tax questions for a ZZP freelancer with a
 ## 2. HOW TO USE IT
 
 1. Find the tax year the work belongs to. A transaction belongs to the year of its date, and a return to the year it covers.
-2. Open that year's README, then the topic file. Each year folder holds the same twelve topic files.
-3. For how a rule works across years, read section 3 of this file.
+2. Open that year's README, then the topic file. For a figure question, start at section 2 KEY FIGURES (`#2-key-figures`) and load other sections only for the mechanics. Each year folder holds the same twelve topic files.
+3. For how a rule works across years, read only subsection 3.n, by the line range in the section list at the top of this file.
 4. Respect the tags. Do not present an UNVERIFIED, proposed or unknown value as settled. Say what would confirm it.
 5. For 2027, check the Status column on every row. On 2026-10-11 the Belastingplan 2027 was not adopted and the December 2026 indexation was not published.
 

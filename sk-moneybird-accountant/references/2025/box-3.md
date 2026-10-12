@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 Box 3 taxes savings and investments on a fictitious return. In 2025 the category method of the Overbruggingswet box 3 applies to everyone, with three categories: banktegoeden (bank and savings balances), overige bezittingen (other assets such as investments and a second home) and schulden (debts). The percentages for 2025 are 1,37% for banktegoeden, 5,88% for overige bezittingen and 2,70% for schulden, the heffingsvrij vermogen is € 57.684 and the rate is 36%. The Wet tegenbewijsregeling box 3 entered into force on 19 July 2025, so a taxpayer who makes it plausible that the actual return is lower pays over the actual return, and from 2025 the actual return is reported inside the income tax return. The fictitious system stays until new legislation takes effect, "probably 1 January 2028", and the Wet werkelijk rendement box 3 (bill 36 748) is not law on 2026-10-11.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
@@ -42,6 +46,8 @@ Box 3 taxes savings and investments on a fictitious return. In 2025 the category
 ---
 
 ## 3. HOW IT WORKS IN 2025
+
+<a id="3-how-it-works"></a>
 
 ### Heffingsvrij vermogen
 
@@ -143,6 +149,8 @@ Earlier routes: 2017 to 2019 used a form directly with DigiD, outside Mijn Belas
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Official example: single person, savings only
 
@@ -263,6 +271,8 @@ Built from the section 2 figures. Invented inputs: € 110.000,00 of green inves
 
 ## 5. CHANGES FROM 2024
 
+<a id="5-changes"></a>
+
 - Heffingsvrij vermogen: € 57.000 to € 57.684 per person, and € 114.000 to € 115.368 with a fiscal partner ([2024](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen), [2025](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen), [statute text, 1 January 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [statute text, 1 January 2025](https://wetten.overheid.nl/BWBR0011353/2025-01-01)).
 - Schuldendrempel: € 3.700 to € 3.800 per person, and € 7.400 to € 7.600 with a whole-year partner ([statute text, 1 January 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [statute text, 1 January 2025](https://wetten.overheid.nl/BWBR0011353/2025-01-01), [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/wat_zijn_uw_bezittingen_en_schulden/uw_schulden/drempel)).
 - Bank percentage: 1,44% to 1,37% ([regeling 7 March 2025](https://zoek.officielebekendmakingen.nl/stcrt-2025-8295.html), [regeling 12 February 2026](https://zoek.officielebekendmakingen.nl/stcrt-2026-3708.html)).
@@ -279,6 +289,8 @@ Built from the section 2 figures. Invented inputs: € 110.000,00 of green inves
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Value the box 3 assets and debts at the peildatum 1 January 2025 and keep them split over the three categories, because each category uses its own percentage: 1,37% for banktegoeden, 5,88% for overige bezittingen and 2,70% for the deductible part of the schulden ([2025 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2025), [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/met-welke-percentages-is-het-fictief-rendement-berekend)).
 - Only the part of the total debts above € 3.800, or above € 7.600 with a whole-year partner, enters the calculation. The Belastingdienst computes this in the return ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/wat_zijn_uw_bezittingen_en_schulden/uw_schulden/drempel)).
 - Partners choose the split of the joint grondslag sparen en beleggen, and the shares must total 100%. A joint drempel needs both partners' signatures on the return or returns ([2025 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2025), [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/wat_zijn_uw_bezittingen_en_schulden/uw_schulden/drempel)).
@@ -292,6 +304,8 @@ Built from the section 2 figures. Invented inputs: € 110.000,00 of green inves
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Open point 2025: the rekenvoorbeelden page prints € 11.500 in step 4 of the debt example while its own sum is € 13.000. Only a correction of the page by the Belastingdienst settles it. https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/rekenvoorbeelden-berekening-werkelijk-rendement
 - Conflict in the bank and debt percentages: the yearly regulation replaces the figures in the statute text and works back to 1 January, so the two can differ. Operative for 2025 are 1,37% for banktegoeden and 2,70% for schulden under the regeling of 12 February 2026, which replaced 1,44% and 2,61% back to 1 January 2025. The statute text at https://wetten.overheid.nl/BWBR0011353/2025-01-01 carries the earlier figures. https://zoek.officielebekendmakingen.nl/stcrt-2026-3708.html and https://wetten.overheid.nl/BWBR0011353/2025-01-01
 - Conflict on the entry date of the Wet rechtsherstel box 3: statute art. 7 gives the day after the issue date of 27 December 2022, so 28 December 2022, with retroactive effect to 1 January 2017. The Rijksoverheid timeline says the law "trad op 1 januari 2023 in werking". The statute text settles it. https://zoek.officielebekendmakingen.nl/stb-2022-533.html and https://www.rijksoverheid.nl/themas/werk/inkomstenbelasting/box-3/tijdlijn-rechtsherstel-box-3
@@ -303,6 +317,8 @@ Built from the section 2 figures. Invented inputs: € 110.000,00 of green inves
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2025 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

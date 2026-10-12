@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the ondernemersaftrek (entrepreneur's deductions) and the MKB-winstvrijstelling (small business profit exemption) for tax year 2020, including the urencriterium (hours criterion), the startersaftrek (starter's allowance), the meewerkaftrek (allowance for unpaid work by the partner), the stakingsaftrek (cessation allowance), the aftrek voor speur- en ontwikkelingswerk (R&D deduction) and the interaction with the oudedagsreserve (old-age reserve) and the Zvw contribution. The law for 2020 is enacted and the amounts below come from the statute as valid on 1 January 2020, with the FISIN 2020 handbook of the Belastingdienst as a secondary source. Two FISIN 2020 misprints are flagged in section 7: the oudedagsreserve maximum and the lookback window of the second test of the urencriterium. No value for 2020 in the checked material is UNVERIFIED, proposed or unknown.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
@@ -53,6 +57,8 @@ This file covers the ondernemersaftrek (entrepreneur's deductions) and the MKB-w
 ---
 
 ## 3. HOW IT WORKS IN 2020
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Urencriterium
 
@@ -175,6 +181,8 @@ The maximum contribution income for the self-assessed Zvw contribution in 2020 i
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Example 1 (Calculated example): zelfstandigenaftrek and MKB-winstvrijstelling at a profit of € 60.000
 
@@ -303,6 +311,8 @@ The Belastingdienst example: a business started on 1 July means 6 months as an o
 
 ## 5. CHANGES FROM 2019
 
+<a id="5-changes"></a>
+
 - The checked material contains no 2019 figures for this topic, so this file cannot give an old-to-new comparison for 2020. The points below state what the sources say about the 2020 position.
 - 2020 is the first year in this knowledge base, so there is no previous-year file to compare with.
 - The oudedagsreserve could still be added to in 2020. Art. 3.67 to 3.72 were in force (https://wetten.overheid.nl/BWBR0011353/2020-01-01). The addition percentage was 9,44% and the maximum was € 9.218 (art. 3.68 lid 1, https://wetten.overheid.nl/BWBR0011353/2020-01-01). Those articles lapsed on 1 January 2023, so no addition is possible from 2023 (https://wetten.overheid.nl/BWBR0011353/2023-01-01).
@@ -314,6 +324,8 @@ The Belastingdienst example: a business started on 1 July means 6 months as an o
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Keep an agenda, quotes, timesheets and invoices to make the hours of the ondernemer and of a working partner plausible. Non-billable hours count, standby time does not (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium).
 - The ondernemersaftrek and the MKB-winstvrijstelling are applied in the inkomstenbelasting return in the winst uit onderneming, in the order profit, then ondernemersaftrek, then MKB-winstvrijstelling (art. 3.2 and 3.79a, https://wetten.overheid.nl/BWBR0011353/2020-01-01).
@@ -328,6 +340,8 @@ The Belastingdienst example: a business started on 1 July means 6 months as an o
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - No value for 2020 in the checked material is UNVERIFIED, proposed or unknown.
 - Conflict, settled by the statute: oudedagsreserve addition maximum 2020. Art. 3.68 lid 1 as valid on 1 January 2020 gives € 9.218 (https://wetten.overheid.nl/BWBR0011353/2020-01-01). FISIN 2020 prints € 9.214 in two places (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/winst_en_verliesrekening_en_balans). The statute is the primary source and prevails. A corrected FISIN page or a Belastingdienst statement would settle it fully.
 - Conflict, settled by the statute: the lookback window of the second test of the urencriterium for 2020. Art. 3.6 gives the five preceding calendar years, so 2015 to 2019 (https://wetten.overheid.nl/BWBR0011353/2020-01-01). FISIN 2020 prints 2014 to 2018 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek). The statute prevails.
@@ -338,6 +352,8 @@ The Belastingdienst example: a business started on 1 July means 6 months as an o
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2020 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

@@ -183,6 +183,43 @@ sys.exit(0 if placed else 1)
 PY
 }
 
+# Replace one fixture file with a read plan body of an exact size
+# Args:
+#   $1 - File to replace
+#   $2 - Total size of the file in bytes
+#   $3 - Size of the read plan body in bytes
+#   $4 - Marker word of the fence lines
+# Returns:
+#   0 when the file is in place, 1 when the sizes do not fit
+shape_nav_file() {
+    python3 - "$1" "$2" "$3" "$4" <<'PY'
+import sys
+
+path, size, body_bytes = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
+word = sys.argv[4]
+start_line = "<!-- %s:nav:start -->\n" % word
+end_line = "<!-- %s:nav:end -->\n" % word
+unit = "Nav body filler text that is long enough to fill one line.\n"
+body = ""
+while len(body) + len(unit) <= body_bytes - 1:
+    body += unit
+body += "x" * (body_bytes - len(body) - 1) + "\n"
+head = "# Large budget fixture\n\n" + start_line + body + end_line + "\n"
+tail_unit = "Filler line that gives the fixture file its length.\n"
+tail = ""
+remaining = size - len(head)
+while len(tail) + len(tail_unit) <= remaining:
+    tail += tail_unit
+tail += "y" * (remaining - len(tail))
+text = head + tail
+if len(text) != size or len(body.encode("utf-8")) != body_bytes:
+    sys.exit(1)
+with open(path, "w", encoding="utf-8") as handle:
+    handle.write(text)
+sys.exit(0)
+PY
+}
+
 # ───────────────────────────────────────────────────────────────
 # 5. FIXTURE BUILDER
 # ───────────────────────────────────────────────────────────────
@@ -580,7 +617,79 @@ else
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 12. RESULT SUMMARY AND EXIT
+# 12. NAV BUDGET
+# ───────────────────────────────────────────────────────────────
+
+# WHY: the budget of a block is the smaller of the fixed byte cap and one
+# percent of the file size, so a body just over either cap must fail --check
+# and the budget line must name the cap that fires.
+group "nav budget"
+BUDGET_CAP="$TMP_ROOT/budget-cap/sk-moneybird-accountant"
+if make_fixture "$BUDGET_CAP" \
+    && run_generator "$BUDGET_CAP" --init \
+    && run_generator "$BUDGET_CAP" \
+    && shape_nav_file "$BUDGET_CAP/references/2020/large-fixture.md" 200000 1300 "$GEN_WORD"; then
+    run_generator "$BUDGET_CAP" --check
+    status=$?
+    if [[ "$status" -ne 0 ]] \
+        && grep -q '^budget 2020/large-fixture.md nav 1300 over 1200$' "$TMP_ROOT/out.txt"; then
+        pass "a 1300 byte plan in a 200000 byte file fails on the 1200 byte cap"
+    else
+        fail "a 1300 byte plan in a 200000 byte file fails on the 1200 byte cap"
+    fi
+else
+    fail "a 1300 byte plan in a 200000 byte file fails on the 1200 byte cap"
+fi
+
+BUDGET_PERCENT="$TMP_ROOT/budget-percent/sk-moneybird-accountant"
+if make_fixture "$BUDGET_PERCENT" \
+    && run_generator "$BUDGET_PERCENT" --init \
+    && run_generator "$BUDGET_PERCENT" \
+    && shape_nav_file "$BUDGET_PERCENT/references/2020/large-fixture.md" 51300 600 "$GEN_WORD"; then
+    run_generator "$BUDGET_PERCENT" --check
+    status=$?
+    if [[ "$status" -ne 0 ]] \
+        && grep -q '^budget 2020/large-fixture.md nav 600 over 513$' "$TMP_ROOT/out.txt"; then
+        pass "a 600 byte plan in a 51300 byte file fails on the 1 percent cap"
+    else
+        fail "a 600 byte plan in a 51300 byte file fails on the 1 percent cap"
+    fi
+else
+    fail "a 600 byte plan in a 51300 byte file fails on the 1 percent cap"
+fi
+
+# ───────────────────────────────────────────────────────────────
+# 13. REAL SECTION LIST
+# ───────────────────────────────────────────────────────────────
+
+group "real section list"
+TOC_FENCE_START="<!-- ${GEN_WORD}:toc:start -->"
+TOC_FENCE_END="<!-- ${GEN_WORD}:toc:end -->"
+GUIDE_FILE="$SKILL_SRC/references/dutch-tax-rules.md"
+awk -v start="$TOC_FENCE_START" -v end="$TOC_FENCE_END" '
+    $0 == start { inside = 1; next }
+    $0 == end { inside = 0; next }
+    inside
+' "$GUIDE_FILE" >"$TMP_ROOT/toc-body.txt"
+toc_missing=""
+for number in 1 2 3 4 5 6 7 8 9 10; do
+    if ! grep -qE -- "^- 3\.${number} .*: lines [0-9]+-[0-9]+$" "$TMP_ROOT/toc-body.txt"; then
+        toc_missing="$toc_missing 3.${number}"
+    fi
+done
+if [[ -z "$toc_missing" ]]; then
+    pass "the real section list names subsections 3.1 to 3.10 with a range each"
+else
+    fail "the real section list names subsections 3.1 to 3.10 with a range each"
+fi
+if run_generator "$SKILL_SRC" --check; then
+    pass "the real corpus passes --check, which confirms every section list range"
+else
+    fail "the real corpus passes --check, which confirms every section list range"
+fi
+
+# ───────────────────────────────────────────────────────────────
+# 14. RESULT SUMMARY AND EXIT
 # ───────────────────────────────────────────────────────────────
 
 printf '\n%d passed, %d failed\n' "$passed" "$failed"

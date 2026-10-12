@@ -14,9 +14,9 @@ version: 1.0.0.0
 # BV en vennootschapsbelasting 2027
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 222.
-Part 1: lines 1-221, 50832 bytes, first heading "# BV en vennootschapsbelasting 2027"
-Part 2: lines 222-415, 27531 bytes, first heading "### 3.36 Jaarrekening deposit (art. 394 Boek 2 BW)"
+Read plan: 2 parts. Next read offset: line 228.
+Part 1: lines 1-227, 50914 bytes, first heading "# BV en vennootschapsbelasting 2027"
+Part 2: lines 228-431, 27678 bytes, first heading "### 3.36 Jaarrekening deposit (art. 394 Boek 2 BW)"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 222-415, 27531 bytes, first heading "### 3.36 Jaarrekening deposit
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 2027 is the last year covered by this knowledge base. This file covers the vennootschapsbelasting (Vpb, corporate income tax) of a BV, the DGA (directeur-grootaandeelhouder, director and substantial shareholder) pay rules, the Zvw (Zorgverzekeringswet, Health Insurance Act) contributions, box 2, dividendbelasting (dividend withholding tax) and the filing and jaarrekening (annual accounts) duties of a BV. The year's law is a mix: the 2026 text of the Wet Vpb 1969 still reads "Geldend van 01-01-2026 t/m heden" and no dated 2027 text exists, so every Vpb value is carried and marked UNVERIFIED ([Wet Vpb 1969](https://wetten.overheid.nl/BWBR0002672/2026-01-01)). Belastingplan 2027 (bill 37 022) was not adopted on 2026-10-11, and the December 2026 indexation is not published ([bill 37 022](https://zoek.officielebekendmakingen.nl/kst-37022-2.html)).
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 Values marked carried come from the 2026-01-01 text of the Wet Vpb 1969 because the 2027-01-01 URL returns HTTP 404 on 2026-10-11. The future texts of the Wet LB 1964 and the Wet IB 2001 for 2027 do exist.
 
@@ -78,6 +82,8 @@ Values marked carried come from the 2026-01-01 text of the Wet Vpb 1969 because 
 ---
 
 ## 3. HOW IT WORKS IN 2027
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Vpb rate table (art. 22 Wet Vpb 1969)
 
@@ -235,6 +241,8 @@ Art. 34a Wet OB 1968 keeps records on onroerende zaken (immovable property) for 
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 No official examples were found in the checked material for 2027. Every example below is a calculated example built from the section 2 figures, with each step written out.
 
 ### Example 1. Vpb on a profit of € 60.000 (Calculated example)
@@ -352,6 +360,8 @@ No official examples were found in the checked material for 2027. Every example 
 
 ## 5. CHANGES FROM 2026
 
+<a id="5-changes"></a>
+
 - Vpb rate table: 2026 read t/m € 200.000 at 19% and above that € 38.000 plus 25,8%, Verified ([2026 text](https://wetten.overheid.nl/BWBR0002672/2026-01-01), [Belastingdienst 2026 change page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/veranderingen-vennootschapsbelasting-2026)). 2027 carries the same values because no dated 2027 text exists, so the Check tag drops to UNVERIFIED ([2026 text](https://wetten.overheid.nl/BWBR0002672/2026-01-01)). Belastingplan 2027 does not touch art. 22 ([bill 37 022](https://zoek.officielebekendmakingen.nl/kst-37022-2.html)).
 - Art. 15b: 2026 read 24,5% with a € 1.000.000 threshold, Verified ([2026 text](https://wetten.overheid.nl/BWBR0002672/2026-01-01)). 2027 carries both, UNVERIFIED ([2026 text](https://wetten.overheid.nl/BWBR0002672/2026-01-01)).
 - Verliesverrekening: 2026 read € 1.000.000 plus 50% with unlimited forward set-off, Verified ([2026 text](https://wetten.overheid.nl/BWBR0002672/2026-01-01)). 2027 carries it, UNVERIFIED ([2026 text](https://wetten.overheid.nl/BWBR0002672/2026-01-01)).
@@ -374,6 +384,8 @@ No official examples were found in the checked material for 2027. Every example 
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the DGA wage and run it through the loonadministratie. Withhold loonheffing and, for an uninsured DGA, the inkomensafhankelijke bijdrage Zvw on net wage up to the maximum bijdrageloon, and pay it through the aangifte loonheffingen. An insured DGA falls under the werkgeversheffing Zvw ([Handboek Loonheffingen 2025](https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf), [Belastingdienst DGA table](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/bijdrage_zorgverzekeringswet/hoe_wordt_de_inkomensafhankelijke_bijdrage_zvw_betaald/tabel_werkgeversheffing_zvw_of_bijdrage_zvw/ik_ben_directeur_grootaandeelhouder/)).
 - Keep the file that shows the gebruikelijk loon test, the comparable wage, the highest employee wage, the normbedrag and any vaststellingsovereenkomst ([Handboek Loonheffingen 2025](https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf), [Belastingdienst loon en aanmerkelijk belang](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/loon_en_aanmerkelijk_belang/loon_en_aanmerkelijk_belang)).
 - File the Vpb return for a calendar book year before 1 June of the next year, or ask for the online extension to 1 November between 1 March and 1 June ([aangifte vennootschapsbelasting doen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/aangifte-vennootschapsbelasting-doen/aangifte-vennootschapsbelasting-doen), [uitstel aangifte vennootschapsbelasting](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/uitstel_aangifte_vennootschapsbelasting/uitstel_aangifte_vennootschapsbelasting)).
@@ -390,6 +402,8 @@ No official examples were found in the checked material for 2027. Every example 
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - No dated 2027 Wet Vpb 1969 text. The 2027-01-01 URL returns HTTP 404 on 2026-10-11, so every Vpb value for 2027 is carried and UNVERIFIED. This touches the rate table, art. 15b (24,5% and € 1.000.000), verliesverrekening (€ 1.000.000 plus 50%), the innovatiebox fraction 9/H, the € 25.000 forfait, the smaller taxpayer thresholds € 37.500.000 and € 250.000.000, the 5% deelneming threshold and the 95% fiscale eenheid bezitseis ([Wet Vpb 1969](https://wetten.overheid.nl/BWBR0002672/2026-01-01)). A 2027-01-01 version on wetten.overheid.nl would settle them.
 - Dividendbelasting has no dated 2027 text either. The 2025-01-01 version reads "geldend t/m heden", so 15% and art. 4 lid 7 are carried and UNVERIFIED ([Wet DB 1965](https://wetten.overheid.nl/BWBR0002515/2025-01-01)). A 2027 text would settle it.
@@ -408,6 +422,8 @@ No official examples were found in the checked material for 2027. Every example 
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2027 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

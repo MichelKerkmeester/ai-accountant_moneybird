@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Aangifte en procedure 2023
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 329.
-Part 1: lines 1-328, 50085 bytes, first heading "# Aangifte en procedure 2023"
-Part 2: lines 329-422, 17000 bytes, first heading "### Calculated example, btw deadlines in 2023"
+Read plan: 2 parts. Next read offset: line 337.
+Part 1: lines 1-336, 50199 bytes, first heading "# Aangifte en procedure 2023"
+Part 2: lines 337-438, 17115 bytes, first heading "### Calculated example, btw deadlines in 2023"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 329-422, 17000 bytes, first heading "### Calculated example, btw d
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the procedural side of tax year 2023 for a sole trader and for a BV where a rule applies to a BV: the income tax filing deadline and uitstel (deferral), the btw (VAT) filing and payment calendar, the voorlopige aanslag (preliminary assessment), belastingrente (tax interest), the navorderingstermijn (recovery period), bezwaar (objection), the bewaarplicht (record-keeping duty) and registration at KVK and the Belastingdienst. The law for 2023 is enacted, so every Status tag below is enacted. The two 2023 events with the widest effect are the belastingrente rate moving from 4% to 6% on 1 July 2023 and the new rentestop for requested naheffingsaanslagen (additional assessments) from 1 January 2023, which is not yet in force for btw. The return for tax year 2023 is filed in 2024, so the filing deadline, the definitieve aanslag (final assessment) window and the belastingrente on tax year 2023 all run in 2024 and later.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
@@ -73,6 +77,8 @@ This file covers the procedural side of tax year 2023 for a sole trader and for 
 ---
 
 ## 3. HOW IT WORKS IN 2023
+
+<a id="3-how-it-works"></a>
 
 ### Aangifteperiode inkomstenbelasting
 
@@ -213,6 +219,8 @@ KVK passes the registration data to the Belastingdienst, so no separate registra
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Official example, belastingrente when the 2023 return arrives after 1 May
 
@@ -367,6 +375,8 @@ Steps, built from the section 2 figures:
 
 ## 5. CHANGES FROM 2022
 
+<a id="5-changes"></a>
+
 - Belastingrente rate: 2022 had 4% for the whole year. In 2023 the rate is 4% to 30 June 2023 and 6% from 1 July 2023 ([source](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente)).
 - Belastingrente per tax year: rente on the tax year 2022 starts 1 July 2023 at 6%, rente on the tax year 2023 starts 1 July 2024 at 7,5% and moves to 6,5% from 1 January 2025 ([source](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_inkomstenbelasting)).
 - New in 2023: the rentestop for requested naheffingsaanslagen applies from 1 January 2023, rente ends at most 10 weeks after receipt of the request, and the extension is not in force for btw ([source](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_loonbelasting_btw_en_overdrachtsbelasting)).
@@ -384,6 +394,8 @@ Steps, built from the section 2 figures:
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Diarise the filing date from the aangiftebrief. The filing period opens on 1 March and the 2023 return is due before 1 May 2024 ([source](https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen), [source](https://web.archive.org/web/20240413/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag)).
 - Request uitstel before the filing date if the administratie is not ready. It gives 4 months extra to 1 September 2024 and usually means belastingrente ([source](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/programmas_en_formulieren/aanvraag-uitstel-aangifte-inkomstenbelasting)).
 - File and pay each btw period by the date in the table, return and payment together, and note the 7 kalenderdagen coulance and the € 68 boete for 2023 ([source](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums), [source](https://web.archive.org/web/20230127/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/boetes/u_doet_geen_of_te_laat_aangifte)).
@@ -397,6 +409,8 @@ Steps, built from the section 2 figures:
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 ### Wording of the aanslaggrens and the teruggaafgrens
 
@@ -415,6 +429,8 @@ No other 2023 value in this file is marked UNVERIFIED, proposed or unknown in th
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2023 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Ondernemersaftrek en MKB-winstvrijstelling 2027
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 357.
-Part 1: lines 1-356, 49266 bytes, first heading "# Ondernemersaftrek en MKB-winstvrijstelling 2027"
-Part 2: lines 357-410, 14484 bytes, first heading "## 5. CHANGES FROM 2026"
+Read plan: 2 parts. Next read offset: line 365.
+Part 1: lines 1-364, 49380 bytes, first heading "# Ondernemersaftrek en MKB-winstvrijstelling 2027"
+Part 2: lines 365-426, 14599 bytes, first heading "## 5. CHANGES FROM 2026"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 357-410, 14484 bytes, first heading "## 5. CHANGES FROM 2026"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the ondernemersaftrek (entrepreneur's allowance) and the MKB-winstvrijstelling (small-business profit exemption) for tax year 2027, the last year in this knowledge base, and every part of it requires status as an IB-ondernemer (ondernemer for the inkomstenbelasting), which the Belastingdienst tests per activity and separately from the btw ([Belastingdienst, wanneer bent u ondernemer](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/wanneer_bent_u_ondernemer_voor_de_inkomstenbelasting/), [art. 3.4 and 3.5](https://wetten.overheid.nl/BWBR0011353/2020-01-01)). The ondernemersaftrek has five parts under art. 3.74, and the startersaftrek is not a sixth part but a verhoging of the zelfstandigenaftrek under art. 3.76 lid 3 ([art. 3.74](https://wetten.overheid.nl/BWBR0011353/2027-01-01)). The 2027 statute text, the version of the law valid on 1 January 2027, is adopted but not yet in force, so the rows taken from it carry the status adopted-not-yet-in-force, and it largely repeats 2026: the zelfstandigenaftrek is € 900, the MKB-winstvrijstelling is 12,7% and the enacted tariefsaanpassing is 11,91% above € 79.569 ([art. 2.10, 3.6, 3.74, 3.76, 3.78, 3.78a, 3.79, 3.79a and 10a.29](https://wetten.overheid.nl/BWBR0011353/2027-01-01)). Against that adopted text stand two pending proposals, Belastingplan 2027 (bill 37 022), which would cut the startersaftrek to € 10 from 1 January 2027 and abolish it from 1 January 2028, and the Wet fiscale stimulering start-ups en scale-ups, which would cut the meewerkaftrek and the stakingsaftrek and abolish both in 2030 ([bill 37 022](https://zoek.officielebekendmakingen.nl/kst-37022-2.html), [start-ups bill](https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/wetsvoorstel-fiscale-stimulering-start-ups-en-scale-ups/wetsvoorstel-wet-fiscale-stimulering-start-ups-en-scale-ups-wetsvoorstel.pdf)).
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
@@ -70,6 +74,8 @@ This file covers the ondernemersaftrek (entrepreneur's allowance) and the MKB-wi
 ---
 
 ## 3. HOW IT WORKS IN 2027
+
+<a id="3-how-it-works"></a>
 
 ### Urencriterium
 
@@ -202,6 +208,8 @@ The belastbare winst uit onderneming is part of the income on which the self-ass
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 No official example for the tax year 2027 was found in the checked sources, so every example below is marked `Calculated example` and is built from the section 2 figures and the checked material. The inputs are invented round numbers and no real person's data is used. The enacted 2027 figures used here are adopted-not-yet-in-force. Every product is written with two decimals, and every step that rounds says "rounded" or "rounded down". Where an example touches a proposal, the proposal is named as proposed.
 
@@ -356,6 +364,8 @@ Inputs: belastbaar inkomen uit werk en woning after the deductions € 90.000, o
 
 ## 5. CHANGES FROM 2026
 
+<a id="5-changes"></a>
+
 - Zelfstandigenaftrek: € 1.200 in 2026 to € 900 in 2027 ([art. 3.76, 2026 version](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [art. 3.76, 2027 version](https://wetten.overheid.nl/BWBR0011353/2027-01-01)). The 2027 amount is not indexed.
 - Zelfstandigenaftrek at AOW age: € 600 in 2026 to € 450 in 2027, both being 50% of the amount for someone below the AOW age ([Belastingdienst, FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/ondernemersaftrek_en_investeringsaftrek), [art. 3.76, 2027 version](https://wetten.overheid.nl/BWBR0011353/2027-01-01)).
 - Urencriterium: unchanged at 1.225 hours ([art. 3.6, 2027 version](https://wetten.overheid.nl/BWBR0011353/2027-01-01)).
@@ -378,6 +388,8 @@ Inputs: belastbaar inkomen uit werk en woning after the deductions € 90.000, o
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the hours spent on the business in a way that can be made plausible, for example with an agenda, quotes, timesheets and invoices. All hours on the business count, also non-billable work such as quotes, administration and building the business website. Standby time does not count, so the Belastingdienst example counts only the 4 hours spent fixing the one outage for an owner who is reachable 24 hours a day in the weekend ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium)).
 - Record the hours of a partner who works in the business without pay, because the meewerkaftrek band depends on them and those hours must be made plausible ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/meewerkaftrek)).
 - The ondernemersaftrek and the MKB-winstvrijstelling are applied on the winst uit onderneming in the inkomstenbelasting return, in the order profit, then ondernemersaftrek, then MKB-winstvrijstelling ([art. 3.2 and 3.79a](https://wetten.overheid.nl/BWBR0011353/2020-01-01)).
@@ -391,6 +403,8 @@ Inputs: belastbaar inkomen uit werk en woning after the deductions € 90.000, o
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Conflict on the € 10 startersaftrek date. Artikel LXIII lid 1 onderdeel a of bill 37 022 names Artikel I onderdeel G, the startersaftrek of € 10, among the parts that work back to 1 January 2026, while the MvT says the € 10 applies from 1 January 2027 and that 2026 is unaffected ([bill 37 022 and MvT](https://zoek.officielebekendmakingen.nl/kst-37022-2.html), [MvT](https://www.tweedekamer.nl/downloads/document?id=2026D43301)). The nota van wijziging of 2 October 2026 (2026D48289) does not change this. Settled only by a later nota van wijziging or the adopted text.
 - Conflict on the first meewerkaftrek band under the start-ups bill: 0,32% in the bill article text against 0,313% in the bill MvT table and on Ondernemersplein ([start-ups bill](https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/wetsvoorstel-fiscale-stimulering-start-ups-en-scale-ups/wetsvoorstel-wet-fiscale-stimulering-start-ups-en-scale-ups-wetsvoorstel.pdf), [Ondernemersplein](https://ondernemersplein.overheid.nl/wetswijzigingen/meewerkaftrek-wordt-minder-en-verdwijnt-daarna/)). The article text is the operative proposal. Settled by the adopted text.
 - Open timing of the start-ups bill: its text leaves the date to a koninklijk besluit, and only the MvT and Ondernemersplein name 1 January 2027 and 2030 ([start-ups bill](https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/wetsvoorstel-fiscale-stimulering-start-ups-en-scale-ups/wetsvoorstel-wet-fiscale-stimulering-start-ups-en-scale-ups-wetsvoorstel.pdf), [Ondernemersplein](https://ondernemersplein.overheid.nl/wetswijzigingen/meewerkaftrek-wordt-minder-en-verdwijnt-daarna/)). Settled by the koninklijk besluit or the adopted text.
@@ -403,6 +417,8 @@ Inputs: belastbaar inkomen uit werk en woning after the deductions € 90.000, o
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2027 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

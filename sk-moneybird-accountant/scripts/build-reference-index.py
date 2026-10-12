@@ -29,6 +29,14 @@ then rebuilds the plan on the file that holds it until two rounds agree. A
 plan is measured on the file as a write would leave it, so every other block
 body of that file is in place before the parts are sized.
 
+The reference guide gets a second generated block, a compact list of its H2
+sections and its 3.n subsections with the line range of each on the final
+file. The list sits right after the read plan, so the two bodies shift the
+same lines and are rebuilt together until neither changes. A guide over the
+byte limit gets the list. A nav or a list body over the block budget fails
+--check. The budget of one file is the smaller of a fixed byte count and one
+percent of its file size.
+
 Section 3 of the reference guide holds the rules that span tax years, and it
 restates figures that the year files own. One generated block sits in every
 subsection of that section, right after the line that names the year files of
@@ -71,8 +79,9 @@ Usage:
 
 Options:
     --check         Compute every output in memory and report each block or
-                    index that differs, without writing. Exits 1 on drift or
-                    on an unreachable manifest leaf.
+                    index that differs, without writing. Exits 1 on drift, on
+                    a block over its byte budget or on an unreachable
+                    manifest leaf.
     --init          Insert the fence pair of every registered block that a
                     file misses, at its anchor. A pair may frame bytes that
                     are already in the file, so a table that is already
@@ -86,10 +95,11 @@ Options:
 
 Output:
     references/index.json and the fence bodies, one "drift" line per stale
-    block in check mode, the overlap summary line in overlap mode, or the
-    reachability summary and one line per unreachable leaf. Exit 0 when
-    everything matches, 1 on drift or an unreachable leaf, and 2 on a usage
-    error, a read error, a fence error or a write error.
+    block and one "budget" line per block over its cap in check mode, the
+    overlap summary line in overlap mode, or the reachability summary and one
+    line per unreachable leaf. Exit 0 when everything matches, 1 on drift, a
+    block over its cap or an unreachable leaf, and 2 on a usage error, a read
+    error, a fence error or a write error.
 """
 
 # ───────────────────────────────────────────────────────────────
@@ -195,6 +205,21 @@ NAV_HEADING_LEVELS = (2, 3)
 # WHY: every round can only move the first boundary back, at most once per
 # heading, so the round cap is a guard and never the stop of a real plan.
 NAV_MAX_ROUNDS = 4096
+
+# The guide gets a list of its sections with the line range of each on the
+# final file. It sits right after the read plan, so a plan of another length
+# moves the ranges and the list bytes move the part sizes. Both bodies are
+# rebuilt together until they settle on the same file.
+TOC_BLOCK_ID = "toc"
+TOC_SECTIONS_HEADING = "Sections and line ranges"
+TOC_ENTRY_PREFIX = "- "
+TOC_SECTION_PREFIX = "3."
+NAVIGATION_BLOCK_IDS = (NAV_BLOCK_ID, TOC_BLOCK_ID)
+
+# A nav or a section list body over its budget fails --check. The budget of
+# one file is the smaller of a fixed byte count and one percent of its size.
+BUDGET_BYTE_LIMIT = 1200
+BUDGET_PERCENT = 1
 
 # The reachability check reads the leaf manifest at the skill root and the
 # pages that route a reader to a leaf. A leaf under the routed reference
@@ -1283,7 +1308,7 @@ def register_section_three_blocks(section: Dict[str, Any]) -> None:
 
 
 # ───────────────────────────────────────────────────────────────
-# 10. NAV BLOCKS
+# 10. NAVIGATION BLOCKS
 # ───────────────────────────────────────────────────────────────
 
 def markdown_headings(text: str) -> List[Dict[str, Any]]:
@@ -1347,6 +1372,59 @@ def nav_h1_offset(text: str) -> Optional[int]:
     for _, content, _, end in spans[frontmatter_end(spans):]:
         match = HEADING_RE.match(content)
         if match and len(match.group(1)) == 1:
+            return end
+    return None
+
+
+def block_of(file: Dict[str, Any], block_id: str) -> Optional[Dict[str, Any]]:
+    """Return the parsed fence block of one id in a file record.
+
+    Args:
+        file: File record from load_files().
+        block_id: Fence id of the block.
+
+    Returns:
+        The block record, or None when the file holds no such pair.
+    """
+    return next((item for item in file["blocks"] if item["id"] == block_id), None)
+
+
+def find_block_body(text: str, block_id: str) -> Optional[Tuple[int, int]]:
+    """Return the body offsets of one fence pair inside a text.
+
+    Args:
+        text: File text.
+        block_id: Fence id of the block.
+
+    Returns:
+        The start and end offset of the bytes between the markers, or None
+        when the text holds no pair with that id.
+    """
+    body_start: Optional[int] = None
+    for _, content, start, end in line_spans(text):
+        if body_start is None:
+            match = FENCE_START_RE.match(content)
+            if match and match.group(1) == block_id:
+                body_start = end
+            continue
+        match = FENCE_END_RE.match(content)
+        if match and match.group(1) == block_id:
+            return body_start, start
+    return None
+
+
+def nav_end_offset(text: str) -> Optional[int]:
+    """Return the offset just after the nav end marker line.
+
+    Args:
+        text: File text.
+
+    Returns:
+        The offset, or None when the text holds no nav end marker line.
+    """
+    for _, content, _, end in line_spans(text):
+        match = FENCE_END_RE.match(content)
+        if match and match.group(1) == NAV_BLOCK_ID:
             return end
     return None
 
@@ -1526,6 +1604,198 @@ def nav_source_text(file: Dict[str, Any], bodies: Dict[str, Dict[str, str]]) -> 
     return text
 
 
+def toc_entries(text: str) -> List[Dict[str, Any]]:
+    """List the guide sections and subsections with their line ranges.
+
+    A range starts on its heading line and ends on the line before the next
+    heading of the same level or higher, so a range covers every line of its
+    section.
+
+    Args:
+        text: File text.
+
+    Returns:
+        One record per H2 heading and per H3 heading whose text starts with
+        the section number, in file order, with the heading text, the first
+        line and the last line.
+    """
+    headings = markdown_headings(text)
+    total = len(line_spans(text))
+    entries: List[Dict[str, Any]] = []
+    for index, heading in enumerate(headings):
+        if heading["level"] != 2 and not (
+            heading["level"] == 3 and heading["text"].startswith(TOC_SECTION_PREFIX)
+        ):
+            continue
+        last = total
+        for following in headings[index + 1:]:
+            if following["level"] <= heading["level"]:
+                last = following["line"] - 1
+                break
+        entries.append({"text": heading["text"], "first": heading["line"], "last": last})
+    return entries
+
+
+def toc_plan(text: str) -> str:
+    """Render the section list of the reference guide.
+
+    Args:
+        text: File text with the read plan and the list in place.
+
+    Returns:
+        The list text, one header line and one line per entry.
+    """
+    lines = [TOC_SECTIONS_HEADING]
+    for entry in toc_entries(text):
+        lines.append(
+            "%s%s: lines %d-%d" % (TOC_ENTRY_PREFIX, entry["text"], entry["first"], entry["last"])
+        )
+    return "".join(line + "\n" for line in lines)
+
+
+def toc_anchor(file: Dict[str, Any]) -> Optional[int]:
+    """Return where --init plants the empty section list pair.
+
+    The pair sits right after the read plan pair, or right after the H1 when
+    the file holds no read plan pair. Only a guide over the byte limit gets
+    one, because a smaller file would not fit the block budget.
+
+    Args:
+        file: File record from load_files().
+
+    Returns:
+        The offset, or None for every file but a large reference guide.
+    """
+    if file["path"] != TOPIC_ORDER_FILE or not nav_target(file):
+        return None
+    offset = nav_end_offset(file["text"])
+    if offset is None:
+        offset = nav_h1_offset(file["text"])
+    return offset
+
+
+def toc_final_text(file: Dict[str, Any], body: str) -> str:
+    """Return one guide text with a section list body in place.
+
+    Args:
+        file: File record whose text already holds the read plan.
+        body: List text that sits between the two markers.
+
+    Returns:
+        The expected file text, unchanged when the text holds neither a list
+        pair nor a line to anchor one on.
+    """
+    found = find_block_body(file["text"], TOC_BLOCK_ID)
+    if found is not None:
+        return file["text"][:found[0]] + body + file["text"][found[1]:]
+    offset = nav_end_offset(file["text"])
+    if offset is None:
+        offset = nav_h1_offset(file["text"])
+    if offset is None:
+        return file["text"]
+    insertion = (
+        "\n"
+        + fence_line(TOC_BLOCK_ID, "start")
+        + "\n"
+        + body
+        + fence_line(TOC_BLOCK_ID, "end")
+        + "\n\n"
+    )
+    return file["text"][:offset] + insertion + file["text"][offset:]
+
+
+def navigation_text(
+    file: Dict[str, Any],
+    others: Dict[str, Dict[str, str]],
+    nav_body: str,
+    toc_body: str,
+) -> str:
+    """Return one guide text with the read plan and the section list in place.
+
+    Every other block body of the file is applied first, so the line ranges
+    and the part sizes are measured on the file a write would leave.
+
+    Args:
+        file: File record from load_files().
+        others: Bodies of every other block, keyed by block id and then by
+            path.
+        nav_body: Read plan text that sits between the nav markers.
+        toc_body: List text that sits between the list markers.
+
+    Returns:
+        The expected file text.
+    """
+    source = {"path": file["path"], "text": nav_source_text(file, others)}
+    nav_pair = block_of(file, NAV_BLOCK_ID)
+    if nav_pair is None and not nav_target(file):
+        text = source["text"]
+    else:
+        text = nav_final_text(source, nav_pair, nav_body)
+    return toc_final_text({"path": file["path"], "text": text}, toc_body)
+
+
+def navigation_pair(file: Dict[str, Any], others: Dict[str, Dict[str, str]]) -> Tuple[str, str]:
+    """Return the read plan and the section list of the guide, converged.
+
+    The list sits right after the read plan, so a plan of another length
+    moves every line range in the list, and the list bytes move the part
+    sizes of the plan. Both bodies are rebuilt on the file that holds them
+    until a round leaves both unchanged, which is the same reserve rule that
+    the read plan uses alone.
+
+    Args:
+        file: File record of the reference guide.
+        others: Bodies of every other block, keyed by block id and then by
+            path.
+
+    Returns:
+        The read plan text and the section list text.
+
+    Raises:
+        SystemExit: If the two bodies do not settle after the round limit.
+    """
+    nav_pair = block_of(file, NAV_BLOCK_ID)
+    nav_body = nav_pair["body"] if nav_pair is not None else ""
+    toc_pair = block_of(file, TOC_BLOCK_ID)
+    toc_body = toc_pair["body"] if toc_pair is not None else ""
+    reserve = len(nav_body.encode("utf-8"))
+    for _ in range(NAV_MAX_ROUNDS):
+        text = navigation_text(file, others, nav_body, toc_body)
+        plan = nav_body
+        if nav_target(file):
+            # WHY: the plan counts toward the first part. The limit lowers by
+            # the longest plan seen so far and then adds the current body
+            # back, so the part content around the plan stays under the cap
+            # once the new plan is in place. The reserve only grows, so the
+            # first boundary can only move back and the plan settles.
+            plan = nav_plan(text, NAV_LIMIT - reserve + len(nav_body.encode("utf-8")))
+        listing = toc_plan(text)
+        if plan == nav_body and listing == toc_body:
+            return plan, listing
+        nav_body = plan
+        toc_body = listing
+        reserve = max(reserve, len(nav_body.encode("utf-8")))
+    fail("read plan and section list in %s do not settle" % file["path"])
+
+
+def other_block_bodies(files: List[Dict[str, Any]]) -> Dict[str, Dict[str, str]]:
+    """Run every block builder but the nav and the section list.
+
+    Args:
+        files: Result of load_files().
+
+    Returns:
+        Bodies keyed by block id and then by relative path.
+    """
+    blocks: Dict[str, Dict[str, str]] = {}
+    for block_id in sorted(BLOCK_BUILDERS):
+        if block_id in NAVIGATION_BLOCK_IDS:
+            continue
+        for path, body in BLOCK_BUILDERS[block_id](files).items():
+            blocks.setdefault(block_id, {})[path] = body
+    return blocks
+
+
 @register_block(NAV_BLOCK_ID, anchor=nav_anchor)
 def nav_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
     """Build the read plan body of every file over the byte limit.
@@ -1538,7 +1808,8 @@ def nav_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
     file. Every other block body of the same file is spliced in before the
     parts are measured, so a block written in the same pass cannot leave the
     plan stale. A file that has no pair yet is measured with an empty pair in
-    place, so the body is ready for the run after --init.
+    place, so the body is ready for the run after --init. The guide holds the
+    section list too, so its two bodies converge together.
 
     Args:
         files: Result of load_files().
@@ -1549,17 +1820,15 @@ def nav_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
     Raises:
         SystemExit: If a plan does not settle after the round limit.
     """
-    blocks: Dict[str, Dict[str, str]] = {}
-    for block_id in sorted(BLOCK_BUILDERS):
-        if block_id == NAV_BLOCK_ID:
-            continue
-        for path, body in BLOCK_BUILDERS[block_id](files).items():
-            blocks.setdefault(block_id, {})[path] = body
+    blocks = other_block_bodies(files)
     bodies: Dict[str, str] = {}
     for file in files:
         if not nav_target(file):
             continue
-        block = next((item for item in file["blocks"] if item["id"] == NAV_BLOCK_ID), None)
+        if file["path"] == TOPIC_ORDER_FILE:
+            bodies[file["path"]] = navigation_pair(file, blocks)[0]
+            continue
+        block = block_of(file, NAV_BLOCK_ID)
         source = {"path": file["path"], "text": nav_source_text(file, blocks)}
         body = block["body"] if block is not None else ""
         reserve = len(body.encode("utf-8"))
@@ -1579,6 +1848,25 @@ def nav_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
         else:
             fail("read plan in %s does not settle" % file["path"])
         bodies[file["path"]] = body
+    return bodies
+
+
+@register_block(TOC_BLOCK_ID, anchor=toc_anchor)
+def toc_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
+    """Build the section list body of the reference guide.
+
+    Args:
+        files: Result of load_files().
+
+    Returns:
+        The list text keyed by the guide path, empty for every other file.
+    """
+    blocks = other_block_bodies(files)
+    bodies: Dict[str, str] = {}
+    for file in files:
+        if file["path"] != TOPIC_ORDER_FILE or not nav_target(file):
+            continue
+        bodies[file["path"]] = navigation_pair(file, blocks)[1]
     return bodies
 
 
@@ -1726,8 +2014,35 @@ def expected_index(files: List[Dict[str, Any]], rendered: Dict[str, str]) -> str
 # 12. CHECK AND WRITE
 # ───────────────────────────────────────────────────────────────
 
+def budget_problems(files: List[Dict[str, Any]]) -> List[str]:
+    """List the nav and section list blocks that exceed their byte budget.
+
+    The budget of one file is the smaller of a fixed byte count and one
+    percent of the file size, so a small file allows a shorter block than a
+    large one.
+
+    Args:
+        files: Result of load_files().
+
+    Returns:
+        One line per oversized block, with its path, its block id, its body
+        bytes and its budget.
+    """
+    problems: List[str] = []
+    for file in files:
+        size = len(file["text"].encode("utf-8"))
+        budget = min(BUDGET_BYTE_LIMIT, size * BUDGET_PERCENT // 100)
+        for block in file["blocks"]:
+            if block["id"] not in NAVIGATION_BLOCK_IDS:
+                continue
+            body = len(block["body"].encode("utf-8"))
+            if body > budget:
+                problems.append("budget %s %s %d over %d" % (file["path"], block["id"], body, budget))
+    return problems
+
+
 def check_all(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]], rendered: Dict[str, str]) -> int:
-    """Report every block or index that differs from its generated form.
+    """Report every block, index or budget that differs from its generated form.
 
     Args:
         files: Result of load_files().
@@ -1737,7 +2052,8 @@ def check_all(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]], re
     Returns:
         Zero when nothing differs, one otherwise.
     """
-    problems = ["drift %s %s" % pair for pair in missing_fences(files, bodies)]
+    problems = budget_problems(files)
+    problems += ["drift %s %s" % pair for pair in missing_fences(files, bodies)]
     for file in files:
         reported = False
         for block in file["blocks"]:

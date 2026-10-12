@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the deduction of business costs (zakelijke kosten) and the car rules for a sole trader in tax year 2023. It runs through the drempel (threshold) for gemengde kosten (mixed costs such as food, drink and representation) against the 80% election, the kilometre allowance for a private vehicle, bijtelling (the profit addition for private use of a business asset), the workspace, telephone, computer and fine exclusions, and the studiekosten position. The most important 2023 figures are the drempel of € 5.100, the kilometre allowance of € 0,21 per kilometre, the 22% standard bijtelling with the 35% youngtimer rule and the zero-emission reduction of 6% capped at € 1.800 for cars first admitted in 2023. All 2023 amounts are enacted law, read in the statute text valid on 1 January 2023 (https://wetten.overheid.nl/BWBR0011353/2023-01-01).
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
@@ -63,6 +67,8 @@ This file covers the deduction of business costs (zakelijke kosten) and the car 
 ---
 
 ## 3. HOW IT WORKS IN 2023
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Gemengde kosten drempel
 
@@ -195,6 +201,8 @@ Deduct costs excluding VAT when the VAT is deductible in the btw-aangifte (https
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 The calculated examples use invented round amounts. Every step uses only the section 2 figures. Every product is written with two decimals before rounding. No step in these examples requires rounding.
 
@@ -332,6 +340,8 @@ The car-rental company passes on a Wahv verkeersboete of € 340,00 for a busine
 
 ## 5. CHANGES FROM 2022
 
+<a id="5-changes"></a>
+
 - Gemengde kosten drempel: € 4.800 in 2022 to € 5.100 in 2023 (art. 3.15 lid 1, https://wetten.overheid.nl/BWBR0011353/2022-01-01 and https://wetten.overheid.nl/BWBR0011353/2023-01-01).
 - Kilometervergoeding: € 0,19 per km in 2022 to € 0,21 per km in 2023 (art. 3.15 lid 6 and art. 3.17 lid 1 b, https://wetten.overheid.nl/BWBR0011353/2022-01-01 and https://wetten.overheid.nl/BWBR0011353/2023-01-01).
 - Zero-emissie bijtelling for cars first admitted in the year: 2022 gave 6% off capped at € 2.100, which is 16% up to € 35.000, and 2023 gives 6% off capped at € 1.800, which is 16% up to € 30.000 (art. 3.20 lid 2, https://wetten.overheid.nl/BWBR0011353/2022-01-01 and https://wetten.overheid.nl/BWBR0011353/2023-01-01).
@@ -344,6 +354,8 @@ The car-rental company passes on a Wahv verkeersboete of € 340,00 for a busine
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Keep receipts and invoices for every cost. A purchase under € 450 or a cost that covers one year is deducted at once, and a purchase of € 450 or more used longer than a year is depreciated taking the restwaarde into account (https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/welke-kosten-mag-ik-aftrekken-van-mijn-bijverdiensten).
 - Book the gemengde kosten posts together. The € 5.100 drempel applies to the yearly total of those posts, and the choice for the 80% alternative is made in the return (art. 3.15 lid 1 and lid 5, https://wetten.overheid.nl/BWBR0011353/2023-01-01).
@@ -362,6 +374,8 @@ The car-rental company passes on a Wahv verkeersboete of € 340,00 for a busine
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 None for 2023.
 
 One scope note outside the 2023 figures. The Wet Vpb 1969 variant of the gemengde kosten drempel in the cross-year checked material (0,4% of the employees' wage total when higher than the fixed amount, election at 73,5%, per body, once at the parent in a fiscale eenheid) is marked Verified for 2020 and 2026 only, and the checked sources do not state the 2023 text. So those two BV percentages are not confirmed for 2023 in this file. Reading art. 8 lid 5 Wet Vpb 1969 in the version valid on 1 January 2023 would settle it, in the same statute series that the checked sources used for 2020 (https://wetten.overheid.nl/BWBR0002672/2020-01-01) and 2026 (https://wetten.overheid.nl/BWBR0002672/2026-01-01).
@@ -369,6 +383,8 @@ One scope note outside the 2023 figures. The Wet Vpb 1969 variant of the gemengd
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2023 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

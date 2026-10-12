@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the inkomensafhankelijke bijdrage Zvw, the income-dependent contribution under the Zorgverzekeringswet (Dutch Health Insurance Act), that an ondernemer pays for tax year 2023. The rate by aanslag (assessment) is 5,43%, the maximum bijdrage-inkomen is € 66.956, and an employer or uitkeringsinstantie pays a higher werkgeversheffing of 6,68% over loon (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The 2023 figures are enacted. The base for a winst-ondernemer is the belastbare winst uit onderneming after the ondernemersaftrek (entrepreneur's deductions) and the MKB-winstvrijstelling (SME profit exemption), a rule that was read in a later version and is UNVERIFIED for 2023.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
@@ -43,6 +47,8 @@ This file covers the inkomensafhankelijke bijdrage Zvw, the income-dependent con
 ---
 
 ## 3. HOW IT WORKS IN 2023
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Maximum bijdrage-inkomen
 
@@ -95,6 +101,8 @@ From 2023 no new oudedagsreserve (old-age reserve) can be formed. An existing re
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Example 1. Official example, loon plus freelance income (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet)
 
@@ -161,6 +169,8 @@ Step 4: € 50.000 is below the maximum of € 66.956 in both cases, so no cap a
 
 ## 5. CHANGES FROM 2022
 
+<a id="5-changes"></a>
+
 - Bijdrage Zvw by aanslag: 5,50% in 2022 to 5,43% in 2023 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/inkomensafhankelijke_bijdrage_zorgverzekeringswet, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 - Maximum bijdrage-inkomen: € 59.706 in 2022 to € 66.956 in 2023 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/inkomensafhankelijke_bijdrage_zorgverzekeringswet, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 - Ingehouden bijdrage: 5,50% in 2022 to 5,43% in 2023 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/inkomensafhankelijke_bijdrage_zorgverzekeringswet, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
@@ -174,6 +184,8 @@ Step 4: € 50.000 is below the maximum of € 66.956 in both cases, so no cap a
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - For the winst of the ondernemer, the Zvw contribution is not withheld during the year. It is assessed with the (voorlopige) aanslag inkomstenbelasting (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 - The figures that determine it are the same figures as in the inkomstenbelasting return: the winst, the ondernemersaftrek and the MKB-winstvrijstelling (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01, https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.2).
 - Keep track of income that already bore a Zvw contribution in 2023, such as loon, benefits or pension, because the € 66.956 maximum applies once per person and that income shrinks the headroom for the winst (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
@@ -185,6 +197,8 @@ Step 4: € 50.000 is below the maximum of € 66.956 in both cases, so no cap a
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Zvw base for a winst-ondernemer: UNVERIFIED for 2023. The rule, belastbare winst uit onderneming after the ondernemersaftrek and the MKB-winstvrijstelling, rests on Zvw art. 43 and Wet IB 2001 art. 3.2 read in their 2026 versions only (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01, https://wetten.overheid.nl/BWBR0011353/2026-01-01). Reading both articles in the versions valid on 1 January 2023 would settle it.
 - Zvw at AOW age: verified in part. No AOW-age exemption appears in Zvw art. 41 to 45 as read, which is an inference from absence (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01). The FISIN Zvw pages do not mention the AOW age. https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/xvi-volksgezondheid-welzijn-en-sport-rijksbegroting-2027/16-volksgezondheid-welzijn-en-sport.pdf Tabel 77 footnote 2 states that zelfstandigen and gepensioneerden pay the verlaagde IAB. UNVERIFIED.
 - Aangifte and deadlines for 2023: UNVERIFIED. The checked sources confirm only that the aanslag Zvw comes with the (voorlopige) aanslag inkomstenbelasting (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The filing deadline belongs to the procedure topic.
@@ -195,6 +209,8 @@ Step 4: € 50.000 is below the maximum of € 66.956 in both cases, so no cap a
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2023 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

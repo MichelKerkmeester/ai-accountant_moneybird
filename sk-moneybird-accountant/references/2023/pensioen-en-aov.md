@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Pensioen, lijfrente en AOV 2023
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 293.
-Part 1: lines 1-292, 48449 bytes, first heading "# Pensioen, lijfrente en AOV 2023"
-Part 2: lines 293-322, 8088 bytes, first heading "## 6. IN THE BOOKS"
+Read plan: 2 parts. Next read offset: line 303.
+Part 1: lines 1-302, 48587 bytes, first heading "# Pensioen, lijfrente en AOV 2023"
+Part 2: lines 303-338, 8179 bytes, first heading "## 6. IN THE BOOKS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 293-322, 8088 bytes, first heading "## 6. IN THE BOOKS"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the lijfrente (annuity) rules for a sole trader in 2023, the jaarruimte (annual deduction room) and reserveringsruimte (catch-up room), the lijfrente product conditions and their deadlines, the end of the oudedagsreserve (old-age reserve, FOR) toevoeging, the stakingswinst (profit on cessation) conversion and the deductibility of AOV (arbeidsongeschiktheidsverzekering, disability insurance) premiums. 2023 is the year the Wet toekomst pensioenen (Future Pensions Act, Wtp) widened the lijfrente rules. The text of art. 3.127 as valid from 1 July 2023 gives a 30% jaarruimte percentage, a ten-year look-back, an age window of the AOW age plus five years and a flat reserveringsruimte maximum of € 38.000, and the Belastingdienst states that this widening applies retroactively from 1 January 2023, so these values hold for the whole year even though the text valid on 1 January 2023 still reads 13,3%. Every value in section 2 is enacted law, so no bill or announcement affects the 2023 return.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
@@ -62,6 +66,8 @@ This file covers the lijfrente (annuity) rules for a sole trader in 2023, the ja
 ---
 
 ## 3. HOW IT WORKS IN 2023
+
+<a id="3-how-it-works"></a>
 
 ### Jaarruimte percentage
 
@@ -162,6 +168,8 @@ A nabestaandenlijfrente (survivor's annuity) must start within the year of death
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Example 1: Jaarruimte with a profit of € 60.000 (Calculated example)
 
@@ -268,6 +276,8 @@ Source: [FISIN 2023, uitgaven voor inkomensvoorzieningen](https://www.belastingd
 
 ## 5. CHANGES FROM 2022
 
+<a id="5-changes"></a>
+
 - Jaarruimte percentage: 13,3% in 2022 to 30% for 2023, with the text of 1 July 2023 and retroactive effect for the whole of 2023. Sources: [art. 3.127, text 1 January 2022](https://wetten.overheid.nl/BWBR0011353/2022-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [art. 3.127, text 1 July 2023](https://wetten.overheid.nl/BWBR0011353/2023-07-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [Belastingdienst, nieuwe regels voor pensioenen](https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/nieuwe-regels-voor-pensioenen-wat-betekent-dat-voor-mij).
 - Maximum jaarruimte: € 13.570 in 2022 to € 34.550 in 2023. The 2023 table of 9 January 2023 still printed € 15.317 for 2023, and that pre-Wtp amount was superseded retroactively. Sources: [Ministry 2023 table](https://open.overheid.nl/documenten/ronl-acc574eb-1c51-43d6-a2ac-69b39bcb6d35/pdf), [Ministry 2024 table](https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2023/12/20/belangrijkste-wijzigingen-belastingen-2024/20240108+-+Eindejaarsbericht+-+V1.2.pdf).
 - Look-back window: 7 years for 2022, jaarruimte 2015 to 2021, to 10 years for 2023, jaarruimte 2013 to 2022. Source: [art. 3.127, text 1 January 2022](https://wetten.overheid.nl/BWBR0011353/2022-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [FISIN 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/uitgaven_voor_inkomensvoorzieningen).
@@ -292,6 +302,8 @@ Source: [FISIN 2023, uitgaven voor inkomensvoorzieningen](https://www.belastingd
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record AOV premiums for a policy with periodic uitkeringen as an uitgave voor inkomensvoorzieningen in box 1, and not as a business cost of the onderneming. They are fully deductible with no ruimte cap ([FISIN 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/uitgaven_voor_inkomensvoorzieningen), [Belastingdienst, arbeidsongeschiktheidsverzekering voor ondernemers](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers)).
 - Do not deduct premiums for AOV policies that pay a lump sum. Keep those policies in the box 3 records, because the payout is not box 1 income and counts in box 3 ([FISIN 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/uitgaven_voor_inkomensvoorzieningen)).
 - Book a mandatory beroepspensioen premium for an ondernemer as a business cost with a restriction, and not as a lijfrentepremie ([Belastingdienst, aftrekken lijfrentepremies](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies)).
@@ -306,6 +318,8 @@ Source: [FISIN 2023, uitgaven voor inkomensvoorzieningen](https://www.belastingd
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Maximum jaarruimte 2023, rounding. The Ministry table prints € 34.550. Plain arithmetic on the same figures gives 30% x (€ 128.810 minus € 13.646) = 34.549,2, so the printed figure sits slightly above the plain arithmetic outcome. This file follows the Ministry figure of € 34.550. A Belastingdienst calculation (hulpmiddel) would show the rounding the Belastingdienst uses. URLs: [Ministry 2024 table](https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2023/12/20/belangrijkste-wijzigingen-belastingen-2024/20240108+-+Eindejaarsbericht+-+V1.2.pdf) and [art. 3.127, text 1 July 2023](https://wetten.overheid.nl/BWBR0011353/2023-07-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
 - Two law texts for 2023. The text of art. 3.127 valid on 1 January 2023 still reads 13,3%, with a maximum jaarruimte of € 15.317, a reserveringsruimte of € 8.065 or € 15.922, a seven-year look-back and an age limit of not yet AOW age. The text valid from 1 July 2023 reads 30%, with € 34.550, € 38.000, ten years and AOW age plus five. The Belastingdienst Wtp page states the 30% applies "met terugwerkende kracht vanaf 1 januari 2023" and confirms the lijfrente widening applies retroactively from 1 January 2023, so this file follows the Wtp values for the whole of 2023. URLs: [art. 3.127, text 1 January 2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127) and [Belastingdienst, nieuwe regels voor pensioenen](https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/nieuwe-regels-voor-pensioenen-wat-betekent-dat-voor-mij).
 - Proposed items that do not apply to 2023. The BAZ bill (Wet basisverzekering arbeidsongeschiktheid zelfstandigen, 36 912) is proposed and had docket status "In afwachting nota nav verslag" on 2026-10-11. Bill art. 16 proposes a wachttijd of 104 weken, the MvT proposes a benefit of 70% of the grondslag with the grondslag at most 142,86% of the minimumloon, so at most the minimumloon, and a premium set yearly by UWV estimated at about 5,4% of winst uit onderneming up to the maximum grondslag. The MvT examples use a maximum grondslag of € 38.000 and about € 171 gross per month, and assume 1 January 2030 for entry into force by koninklijk besluit. The public premium is proposed to be deductible as an uitgave voor inkomensvoorzieningen and not from the winst, and UWV benefits would carry loonheffing. Private policies keep the current tax treatment. The docket summary says "wachttijd van ongeveer één jaar", which conflicts with bill art. 16. URLs: [dossier 36 912](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912), [MvT](https://www.tweedekamer.nl/downloads/document?id=2026D13313), [bill text](https://www.tweedekamer.nl/downloads/document?id=2026D13315).
@@ -315,6 +329,8 @@ Source: [FISIN 2023, uitgaven voor inkomensvoorzieningen](https://www.belastingd
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2023 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

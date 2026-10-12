@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 Box 3 (sparen en beleggen, savings and investments) taxes a fictitious return on banktegoeden (bank balances), overige bezittingen (other assets) and schulden (debts) with the category method, because the Wet werkelijk rendement box 3 (bill 36 748) is still a bill and the Belastingdienst says the fictitious system stays until new legislation takes effect, "probably 1 January 2028" ([Eerste Kamer dossier](https://www.eerstekamer.nl/wetsvoorstel/36748_wet_werkelijk_rendement_box), [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/wat-is-mijn-werkelijk-rendement)). For 2027 the published text of the act, adopted but not yet in force on 2026-10-11, carries a rate of 36%, a heffingsvrij vermogen (tax-free allowance) of € 59.357 before the December 2026 indexation, a schuldendrempel (debt threshold) of € 3.800 per person and € 7.600 with a whole-year partner, and green investment facilities of € 200 per person and € 400 with a whole-year partner plus a 0,1% korting (tax credit) ([2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01)). The year is a mix of law, bill and announcement: bill 37 022 proposes an indexation factor of 1,01248 for the art. 10.1 amounts, and the Cabinet letter of 29 September 2026 proposes an heffingsvrij vermogen of € 30.846 and a rise of 1,5 percentage point in the forfait for overige bezittingen ([bill](https://zoek.officielebekendmakingen.nl/kst-37022-2.html), [letter](https://www.tweedekamer.nl/downloads/document?id=2026D47255)). The December 2026 indexation and the final 2027 percentages for banktegoeden, schulden and overige bezittingen are not published on 2026-10-11, so the figures printed in the 2027 text are the working values for this year.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
@@ -47,6 +51,8 @@ Box 3 (sparen en beleggen, savings and investments) taxes a fictitious return on
 ---
 
 ## 3. HOW IT WORKS IN 2027
+
+<a id="3-how-it-works"></a>
 
 ### Rekenmethode (categorieënmethode, art. 5.2)
 
@@ -133,6 +139,8 @@ Route: 2017 to 2019 used a form directly with DigiD, outside Mijn Belastingdiens
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 The checked material lists no official example for 2027 ("None found"), so every example below is a **Calculated example**. Each example uses the figures printed in the 2027 text from section 2. The bank percentage (1,37%), the debt percentage (2,70%) and the other-assets percentage (6%) are not final for 2027, and the heffingsvrij vermogen (€ 59.357) and the schuldendrempel (€ 3.800 and € 7.600) are still before the December 2026 indexation. The outcomes show the method, not a final 2027 assessment. No example applies the proposed indexation factor 1,01248 or the proposed plus 1,5 percentage point, because the checked sources do not state the resulting figures. Example 7 shows the effect of the proposed heffingsvrij vermogen of € 30.846, which is a stated amount.
 
 **Example 1. Calculated example. Single taxpayer, banktegoeden € 150.000 on 1 January 2027, no other assets, no debts.**
@@ -203,6 +211,8 @@ The checked material lists no official example for 2027 ("None found"), so every
 
 ## 5. CHANGES FROM 2026
 
+<a id="5-changes"></a>
+
 - Heffingsvrij vermogen: 2026 was € 59.357 per person and € 118.714 with a fiscal partner, enacted ([2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [heffingsvrij vermogen page](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen)). The 2027 text prints € 59.357 per person before the December 2026 indexation, adopted-not-yet-in-force ([2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01)). Belastingplan 2026 (Stb. 2025, 444) art. XLI lid 3 kept art. 5.5 out of the special 2026 indexation factor 1,027782 ([Stb. 2025, 444](https://zoek.officielebekendmakingen.nl/stb-2025-444.html)).
 - Heffingsvrij vermogen, new proposal: the Cabinet letter of 29 September 2026 wants the 2020 level of € 30.846 back from 2027. The proposal is not in bill 37 022 as published ([Cabinet letter](https://www.tweedekamer.nl/downloads/document?id=2026D47255), [bill 37 022](https://zoek.officielebekendmakingen.nl/kst-37022-2.html)).
 - Tarief box 3: 36% in 2026 and 36% in the 2027 text, so no change ([2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01)).
@@ -223,6 +233,8 @@ The checked material lists no official example for 2027 ("None found"), so every
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the value of banktegoeden, overige bezittingen and schulden on the peildatum 1 January 2027, because the fictitious calculation works from the peildatum values (the peildatum is named in art. 5.24 and in art. 5.13, [Stb. 2022, 534](https://zoek.officielebekendmakingen.nl/stb-2022-534.html), [art. 5.13, 2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01/0/Hoofdstuk5/Afdeling5.3/Artikel5.13/informatie)). Real estate such as a second home or a holiday home belongs in overige bezittingen in the official examples ([2026 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026)).
 - Keep green investment records: the value on 1 January, the split between green overige bezittingen and green banktegoeden because art. 5.13 lid 2 fills the exemption in that order, and the balance per partner because the korting is split in the same ratio as the green balance and is computed automatically ([art. 5.13, 2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01/0/Hoofdstuk5/Afdeling5.3/Artikel5.13/informatie), [groene beleggingen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/beleggen_met_belastingvoordeel/groene_beleggingen), [korting voor groene beleggingen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/korting_voor_groene_beleggingen)). A minor child must file its own return for its part and the parents report the rest as a normal asset ([groene beleggingen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/beleggen_met_belastingvoordeel/groene_beleggingen)).
 - The schuldendrempel is applied by the Belastingdienst in the return, so no manual step is needed. A joint drempel needs both partners' signatures on the return(s) ([drempel page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/wat_zijn_uw_bezittingen_en_schulden/uw_schulden/drempel)).
@@ -236,6 +248,8 @@ The checked material lists no official example for 2027 ("None found"), so every
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - Indexed 2027 heffingsvrij vermogen and schuldendrempel: unknown until the December 2026 regulation and the vote on bill 37 022. The 2027 text prints € 59.357, € 3.800 and € 7.600 before indexation ([2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01), [bill 37 022](https://zoek.officielebekendmakingen.nl/kst-37022-2.html)).
 - 2027 other-assets percentage: unknown until the start-of-year ministerial regulation under art. 10.6ter lid 3. The 2027 text prints 6%. The Cabinet letter's plus 1,5 percentage point has no bill text and the resulting percentage is not stated ([2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01), [Cabinet letter](https://www.tweedekamer.nl/downloads/document?id=2026D47255)).
@@ -254,6 +268,8 @@ The checked material lists no official example for 2027 ("None found"), so every
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2027 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

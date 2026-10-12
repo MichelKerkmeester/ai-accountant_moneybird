@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 Box 2 en aanmerkelijk belang (substantial shareholding) covers income from a stake of at least 5% in a company, most visibly dividends from and gains on shares in the taxpayer's own BV. For 2026 the enacted art. 2.12 Wet IB 2001 table charges 24,5% up to € 68.843 and 31% above it, per taxpayer, and the excessief-lenen (excessive borrowing) fiction above € 500.000 of debts to the own company is also box 2 income. The 2026 law is enacted: Overige fiscale maatregelen 2026 (Stb. 2025, 445) took effect on 1 January 2026, repaired a cross-reference in the excessief-lenen rules retroactively and added art. 4.6 sub f, while the box 2 table and the € 500.000 maximum are unchanged (https://zoek.officielebekendmakingen.nl/stb-2025-445.html). One figure, the sum of two partners' first brackets of € 137.686, is stated by no primary page and is marked unknown below.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
@@ -53,6 +57,8 @@ Box 2 en aanmerkelijk belang (substantial shareholding) covers income from a sta
 ---
 
 ## 3. HOW IT WORKS IN 2026
+
+<a id="3-how-it-works"></a>
 
 ### Box 2 bracket 1
 
@@ -146,6 +152,8 @@ The amount € 137.686 is the arithmetic sum of two times € 68.843. No primary
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 **Official example 1, box 2 table on a dividend of € 70.000 (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_2/box_2).** A dividend of € 70.000 is received without dividendbelasting. Step 1, the part up to the boundary: € 68.843 × 24,5% = € 16.866,54, rounded down to € 16.866. Step 2, the part above the boundary: € 70.000 minus € 68.843 = € 1.157. € 1.157 × 31% = € 358,67, rounded down to € 358. Step 3, the total is € 16.866 + € 358 = € 17.224.
 
 **Official example 2, excessief lenen with an earlier taxed amount (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang).** The 2026 drempel is € 600.000, being € 500.000 plus € 100.000 taxed in 2025. The loan to the BV is € 650.000 on 31 December 2026. The part above the drempel is € 650.000 minus € 600.000 = € 50.000, and that € 50.000 is taxed as fictief regulier voordeel.
@@ -188,6 +196,8 @@ The amount € 137.686 is the arithmetic sum of two times € 68.843. No primary
 
 ## 5. CHANGES FROM 2025
 
+<a id="5-changes"></a>
+
 - Box 2 bracket 1 boundary moves from € 67.804 in 2025 to € 68.843 in 2026 (https://wetten.overheid.nl/BWBR0011353/2025-01-01, https://wetten.overheid.nl/BWBR0011353/2026-01-01).
 - The tax at the top of bracket 1 moves from € 16.611 in 2025 to € 16.866 in 2026 (https://wetten.overheid.nl/BWBR0011353/2025-01-01, https://wetten.overheid.nl/BWBR0011353/2026-01-01).
 - Box 2 bracket 2 stays at 31% above the boundary in both years (https://wetten.overheid.nl/BWBR0011353/2025-01-01, https://wetten.overheid.nl/BWBR0011353/2026-01-01).
@@ -205,6 +215,8 @@ The amount € 137.686 is the arithmetic sum of two times € 68.843. No primary
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record a dividend from the own BV at the gross amount as box 2 income, deduct the costs of the shareholding from the voordeel, and treat dividendbelasting as a voorheffing that is credited, not as a cost (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang).
 - Keep a per-share record of the verkrijgingsprijs, with notary costs included, and of the value at acquisition for the special cases described by the Belastingdienst (inheritance, gift with or without doorschuiving, reaching 5% during the year, onzakelijke prijs) (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang).
 - Interest on a loan taken to buy the shares is deductible in box 2. Interest on a receivable on the own company belongs to income from making assets available, and salary from the company is box 1 loon (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang).
@@ -221,6 +233,8 @@ The amount € 137.686 is the arithmetic sum of two times € 68.843. No primary
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Sum of two partners' first brackets, € 137.686: unknown and UNVERIFIED. It is the arithmetic sum of two times € 68.843, and no primary page states it. The Belastingdienst box 2 page has no partner column (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_2/box_2). The sourced rules are only that art. 2.12 applies per taxpayer and that partners may divide the income (https://wetten.overheid.nl/BWBR0011353/2026-01-01, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang). A Belastingdienst page or form that states a combined partner amount would settle it.
 - Loss-conversion korting, 26,9% against 24,5%: FISIN 2026 states "De korting is 26,9%" and its loss example gives a loss of € 20.000 a korting of € 5.380 at 26,9% (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang). The statute and the live page give 24,5% for 2026, which on the same loss is € 4.900 (https://wetten.overheid.nl/BWBR0011353/2026-01-01, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/verlies_uit_aanmerkelijk_belang/verlies_omzetten_in_belastingkorting). Settled at 24,5% by art. 4.53 lid 2 with art. 2.12. A corrected FISIN page would close it.
 - Doorschuiving list, gift, inheritance and emigration rollovers: UNVERIFIED. The rollover on request for gift, inheritance and emigration is not confirmed on a primary page in the checked sources. FISIN 2020 and FISIN 2026 are the available pages (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/aanmerkelijk_belang, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang). The art. 4.17 to 4.17c texts or a Belastingdienst page would settle it.
@@ -230,6 +244,8 @@ The amount € 137.686 is the arithmetic sum of two times € 68.843. No primary
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2026 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

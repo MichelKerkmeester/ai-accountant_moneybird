@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 Box 3 (sparen en beleggen, savings and investments) for 2021 taxes a fictitious return on the assets and debts held on the peildatum (reference date) of 1 January 2021. The year runs on the old band method with three bands over the grondslag sparen en beleggen and a rate of 31%. The Kerstarrest of the Hoge Raad of 24 December 2021 (ECLI:NL:HR:2021:1963) falls in this year, and the later Wet rechtsherstel box 3 brings every 2021 IB/PVV assessment into scope of a category recalculation, with the Belastingdienst applying the most favourable of the two methods. All 2021 values in the checked material are enacted, the rechtsherstel law itself was enacted on 21 December 2022 with retroactive effect to 1 January 2017.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
@@ -47,6 +51,8 @@ Box 3 (sparen en beleggen, savings and investments) for 2021 taxes a fictitious 
 ---
 
 ## 3. HOW IT WORKS IN 2021
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Heffingsvrij vermogen
 
@@ -115,6 +121,8 @@ The Wet tegenbewijsregeling box 3 is the law of 14 July 2025, Stb. 2025, 195. It
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 The checked material contains no official example for 2021, so every example below is a `Calculated example` built from the section 2 figures. The inputs are invented round amounts.
 
@@ -217,6 +225,8 @@ Outcome: the lowest fictitious amount is € 590,03 from the category method, th
 
 ## 5. CHANGES FROM 2020
 
+<a id="5-changes"></a>
+
 - Heffingsvrij vermogen: € 30.846 per person becomes € 50.000, and € 61.692 becomes € 100.000 with a fiscal partner ([Belastingdienst, heffingsvrij vermogen](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen), [art. 5.5 as at 1 January 2020](https://wetten.overheid.nl/BWBR0011353/2020-01-01), [art. 5.5 as at 1 January 2021](https://wetten.overheid.nl/BWBR0011353/2021-01-01)).
 - Schuldendrempel: € 3.100 becomes € 3.200 per person, and € 6.200 becomes € 6.400 with a whole-year partner ([FISIN 2020](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/bezittingen_en_schulden_box_3_), [FISIN 2021](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/bezittingen_en_schulden_box_3_)).
 - Box 3 tarief: 30% becomes 31% ([art. 2.13 as at 1 January 2020](https://wetten.overheid.nl/BWBR0011353/2020-01-01), [art. 2.13 as at 1 January 2021](https://wetten.overheid.nl/BWBR0011353/2021-01-01), [Belastingdienst, oude berekening box 3-inkomen](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen)).
@@ -235,6 +245,8 @@ Outcome: the lowest fictitious amount is € 590,03 from the category method, th
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the box 3 assets and debts at 1 January 2021. The category recalculation of art. 3 of the Wet rechtsherstel uses the banktegoeden, overige bezittingen and schulden at 1 January ([Stb. 2022, 533](https://zoek.officielebekendmakingen.nl/stb-2022-533.html)).
 - Debts count only above the schuldendrempel of € 3.200, or € 6.400 for whole-year partners. The Belastingdienst computes the drempel in the return, so the records only need to show the total debts on the peildatum ([Belastingdienst, drempel](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/wat_zijn_uw_bezittingen_en_schulden/uw_schulden/drempel)).
 - Keep the 1 January valuation of green investments. The exemption of € 60.429 (€ 120.858 for whole-year partners) never exceeds that value, and the 0,7% korting is computed on the exempt amount and split between whole-year partners in the same ratio as the green balance ([art. 5.13](https://wetten.overheid.nl/BWBR0011353/2021-01-01), [art. 8.19 lid 2](https://wetten.overheid.nl/BWBR0011353/2021-01-01), [Belastingdienst, groene beleggingen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/beleggen_met_belastingvoordeel/groene_beleggingen), [Belastingdienst, korting voor groene beleggingen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/korting_voor_groene_beleggingen)).
@@ -246,6 +258,8 @@ Outcome: the lowest fictitious amount is € 590,03 from the category method, th
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Whether the Hoge Raad itself ordered rechtsherstel on the basis of the actual return is UNVERIFIED. The memorie van toelichting describes a breach of art. 1 EP with art. 14 EVRM and a recalculation in three categories, and hogeraad.nl returned HTTP 403 on 2026-10-11. Sources: https://zoek.officielebekendmakingen.nl/kst-36203-3.html and https://www.rijksoverheid.nl/themas/werk/inkomstenbelasting/box-3/tijdlijn-rechtsherstel-box-3. The ruling text on hogeraad.nl or rechtspraak.nl would settle it.
 - Entry date of the Wet rechtsherstel box 3. The statute art. 7 says the day after the issue date of 27 December 2022, so 28 December 2022, with retroactive effect to 1 January 2017 (https://zoek.officielebekendmakingen.nl/stb-2022-533.html). The Rijksoverheid timeline says the law "trad op 1 januari 2023 in werking" (https://www.rijksoverheid.nl/themas/werk/inkomstenbelasting/box-3/tijdlijn-rechtsherstel-box-3). The text of the statute settles it.
 - Whether the Hoge Raad ruling of 25 June 2026 also covers late objectors is UNVERIFIED. The part about non-objectors for 2017 to 2020 is confirmed by the Rijksoverheid timeline (https://www.rijksoverheid.nl/themas/werk/inkomstenbelasting/box-3/tijdlijn-rechtsherstel-box-3). The "or objected late" part is not on that page. The ruling text on hogeraad.nl or rechtspraak.nl would settle it, and hogeraad.nl returned HTTP 403 on 2026-10-11.
@@ -255,6 +269,8 @@ Outcome: the lowest fictitious amount is € 590,03 from the category method, th
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2021 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

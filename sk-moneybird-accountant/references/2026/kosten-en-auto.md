@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Kosten en auto 2026
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 252.
-Part 1: lines 1-251, 50344 bytes, first heading "# Kosten en auto 2026"
-Part 2: lines 252-351, 22221 bytes, first heading "### Example 7: Zero-emission car first admitted in 2021 and 60-month end in 2026"
+Read plan: 2 parts. Next read offset: line 260.
+Part 1: lines 1-259, 50458 bytes, first heading "# Kosten en auto 2026"
+Part 2: lines 260-367, 22336 bytes, first heading "### Example 7: Zero-emission car first admitted in 2021 and 60-month end in 2026"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 252-351, 22221 bytes, first heading "### Example 7: Zero-emission 
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 The 2026 rules for business costs and cars are largely enacted in the Wet inkomstenbelasting (Income Tax Act) and the Wet Vpb 1969 (Corporate Income Tax Act). For 2026 the gemengde kosten drempel (mixed costs threshold) is € 5.700, with an 80% election, the applied kilometre allowance for a private vehicle is € 0,25 although the statute still prints € 0,23, and the youngtimer age for the 35% rule is 16 years. Two decrees give temporary approvals for 2026, the kilometre allowance and the youngtimer transition, and Belastingplan 2027 contains proposed retroactive codification. The remaining fixed exclusions and the zero-emission car regime are enacted, with open points listed in section 7.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
@@ -74,6 +78,8 @@ The 2026 rules for business costs and cars are largely enacted in the Wet inkoms
 ---
 
 ## 3. HOW IT WORKS IN 2026
+
+<a id="3-how-it-works"></a>
 
 ### 1. Gemengde kosten drempel
 
@@ -225,6 +231,8 @@ Deductible when incurred in the interest of the enterprise and only to maintain 
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Example 1: Gemengde kosten drempel and 80% election
 
 Calculated example. Gemengde kosten are € 8.000,00. The drempel is € 5.700,00. Without the election, the deductible amount is € 8.000,00 minus € 5.700,00 = € 2.300,00. With the 80% election, the deductible amount is 0,80 x € 8.000,00 = € 6.400,00. The election is made in the return. Sources: https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 3.15 lid 1 and lid 5) and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/drempel-beperkt-aftrekbare-kosten-2026.
@@ -287,6 +295,8 @@ Calculated example. Huur of a pand is € 12.000,00. The business part is 60% an
 
 ## 5. CHANGES FROM 2025
 
+<a id="5-changes"></a>
+
 - Gemengde kosten drempel: € 5.700 in 2025 to € 5.700 in 2026, unchanged. The 2026 Belastingdienst page also says In 2025 was de drempel ook € 5.700. Sources: https://wetten.overheid.nl/BWBR0011353/2025-01-01, https://wetten.overheid.nl/BWBR0011353/2026-01-01 and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/drempel-beperkt-aftrekbare-kosten-2026.
 - Keuze in plaats van drempel: 80% aftrekbaar in 2025 to 80% aftrekbaar in 2026, unchanged. Source: https://wetten.overheid.nl/BWBR0011353/2025-01-01 and https://wetten.overheid.nl/BWBR0011353/2026-01-01.
 - Reis en verblijf congressen en cursussen: not deductible above € 1500 in 2025 to not deductible above € 1.500 in 2026, unchanged. Source: https://wetten.overheid.nl/BWBR0011353/2025-01-01 and https://wetten.overheid.nl/BWBR0011353/2026-01-01.
@@ -311,6 +321,8 @@ Calculated example. Huur of a pand is € 12.000,00. The business part is 60% an
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record business costs in the winst from onderneming. Deduct costs excluding VAT when the VAT is deductible in the btw-aangifte. When no btw-aangifte is filed or the VAT may not be deducted, for example under the KOR, deduct the costs including VAT in the IB return. Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/welke-kosten-mag-ik-aftrekken-van-mijn-bijverdiensten and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/.
 - Record the 80% election in the return when it is chosen instead of the € 5.700 drempel. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/drempel-beperkt-aftrekbare-kosten-2026.
 - Keep receipts and invoices for all costs. The Belastingdienst requires this for the € 450 rule, for depreciation and for costs made before the start of the business. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/welke-kosten-mag-ik-aftrekken-van-mijn-bijverdiensten.
@@ -332,6 +344,8 @@ Calculated example. Huur of a pand is € 12.000,00. The business part is 60% an
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - WEV switch age in 2026. The statute art. 3.20 lid 5 b in the 2026 text says meer dan vijftien jaar, source https://wetten.overheid.nl/BWBR0011353/2026-01-01. The Belastingdienst applies 16 years, source https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/privegebruik_auto/waarde_van_de_auto. Belastingplan 2027 art. I onderdeel E onder 2 replaces vijftien by 16 retroactively to 1 January 2026, source https://zoek.officielebekendmakingen.nl/kst-37022-2.html, and the bill is proposed on 2026-10-11. This is settled in practice by the Belastingdienst position. It is settled in law only when the bill is adopted. What would settle it is adoption of Belastingplan 2027.
 - Legal codification of the € 0,25 kilometre allowance and of the youngtimer transition for 2026. The codification sits in Belastingplan 2027 art. I onderdelen C, D, H, I and art. XLVII lid 1, retroactive to 1 January 2026 per art. LXIII lid 1 a, source https://zoek.officielebekendmakingen.nl/kst-37022-2.html. The bill is proposed on 2026-10-11. What would settle it is adoption of Belastingplan 2027. Until then the 2026 decree of 17 May 2026, Stcrt. 2026, 18302, applies, and it lapses on 1 January 2027, source https://zoek.officielebekendmakingen.nl/stcrt-2026-18302.html.
 - Studiekostenaftrek 2026 caps. FISIN 2026 narrows the prestatiebeurs case to an extended diplomatermijn of maximum 15 years, study years 2010/2011 to 2014/2015, source https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aftrek_studiekosten. The checked material does not restate the per-study-year caps for 2026. The caps verified for 2022 to 2025 are € 1.693 per study year for mbo, € 2.443 per study year for hbo or wo, € 141,09 per month part-year for mbo, € 203,59 per month part-year for hbo or wo, and a € 250 drempel per person, source https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/aftrek_studiekosten. What would settle it is a 2026 FISIN page or law text that states the caps for 2026.
@@ -344,6 +358,8 @@ Calculated example. Huur of a pand is € 12.000,00. The business part is 60% an
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2026 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

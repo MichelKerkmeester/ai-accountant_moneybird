@@ -21,11 +21,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the work-relationship side of the rules for a ZZP (self-employed person without employees): the Wet DBA (Wet deregulering beoordeling arbeidsrelaties, the act on the assessment of work relationships) and its enforcement, the loondienst test (test for employment), modelovereenkomsten (model agreements), the VBAR bill with the low hourly rate presumption, and the status of the BAZ bill. The most important fact for 2025 is that the handhavingsmoratorium (enforcement moratorium) ended on 1 January 2025: the normal rules apply, no aanwijzingen (formal instructions) are given, and schijnzelfstandigheid (apparent self-employment) can lead directly to correctieverplichtingen (correction liabilities) and naheffingsaanslagen loonheffingen (additional payroll tax assessments). The ingroeimodel (phase-in model) keeps corrections to 1 January 2025 and later unless there is kwaadwillendheid (bad faith) or an aanwijzing given before that date was not followed, and for 2025 no verzuimboetes (default penalties) and no vergrijpboetes (intent penalties) are charged for the qualification of arbeidsrelaties. The Wet DBA itself is enacted law since 2016, the 2025 enforcement stance is policy rather than statute, modelovereenkomsten valid on 6 September 2024 stay usable to and including 31 December 2029, and the VBAR and BAZ bills were not in force in tax year 2025.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
@@ -58,6 +62,8 @@ This file covers the work-relationship side of the rules for a ZZP (self-employe
 ---
 
 ## 3. HOW IT WORKS IN 2025
+
+<a id="3-how-it-works"></a>
 
 ### Wet DBA
 
@@ -163,6 +169,8 @@ The BAZ bill was ingediend on 24 March 2026. A technische briefing followed on 1
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 The checked material contains no official example for this topic, so every example below is a Calculated example built from the section 2 figures.
 
 ### Calculated example: applying the loondienst elements
@@ -263,6 +271,8 @@ The docket summary gives about 70% of income up to the minimum wage. Illustratio
 
 ## 5. CHANGES FROM 2024
 
+<a id="5-changes"></a>
+
 - Handhavingsmoratorium: 2024 was the last year of the moratorium. From 1 January 2025 the normal rules apply, no aanwijzingen are given, and schijnzelfstandigheid can lead directly to correctieverplichtingen and naheffingsaanslagen loonheffingen. Sources: [Belastingdienst, handhaving](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving) and [Handhavingsplan arbeidsrelaties, tranche 2025](https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z52fd.pdf).
 - Aanwijzing route: under the moratorium a non-kwaadwillend case first got an aanwijzing to reshape the relationship or process it as a dienstbetrekking in the loonaangifte, usually within 3 months, and a correctieverplichting applied from the date of the aanwijzing. From 1 January 2025 no aanwijzingen are given. Source: [Belastingdienst, handhaving](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving).
 - Look-back: the old route gave a correctieverplichting from the date of the aanwijzing. The new rule keeps corrections to 1 January 2025 and later, unless kwaadwillendheid or an aanwijzing given before that date was not followed, and then up to 5 years. The full 5 years is possible again only in 2030. Sources: [Belastingdienst, handhaving](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving) and [Handhavingsplan arbeidsrelaties, tranche 2025](https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z52fd.pdf).
@@ -277,6 +287,8 @@ The docket summary gives about 70% of income up to the minimum wage. Illustratio
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Keep the basis of the qualification together: the written contract, any approved modelovereenkomst and any vooroverleg standpoint. Be able to show that the work is carried out exactly as described, because the qualification depends on how the work is actually done and a modelovereenkomst can create schijnzekerheid. Sources: [Belastingdienst, werken met modelovereenkomsten](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/werken-met-modelovereenkomsten), [Belastingdienst, geen nieuwe modelovereenkomsten meer](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/geen-nieuwe-modelovereenkomsten-meer) and [Handhavingsplan arbeidsrelaties, tranche 2025](https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z52fd.pdf).
 - For thuiswerkers, gelijkgestelden and artiesten the exclusion must be agreed in writing in the contract before the first payment of pay, otherwise the fictieve dienstbetrekking stands and the entitlement to ZW, WIA and WW is not excluded. Source: [Belastingdienst, wanneer is sprake van loondienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst).
 - A reclassification correction lands at the opdrachtgever as a correctieverplichting and a naheffingsaanslag loonheffingen. For correcties over 2025 this carries no verzuimboete and no vergrijpboete for the qualification, per the 2025 policy. Sources: [Belastingdienst, handhaving](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving) and [Handhavingsplan arbeidsrelaties, tranche 2025](https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z52fd.pdf).
@@ -288,6 +300,8 @@ The docket summary gives about 70% of income up to the minimum wage. Illustratio
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - VBAR ingediend date: the Eerste Kamer page gives 4 July 2025, the Tweede Kamer page gives 7 July 2025, and the bill documents are dated 9 July 2025. Sources: [Eerste Kamer, wetsvoorstel 36783](https://www.eerstekamer.nl/wetsvoorstel/36783_wet_invoering) and [Tweede Kamer, wetsvoorstel 36783](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36783). What would settle it: the date of the Koninklijke Boodschap in the Kamerstuk.
 - VBAR first-application amount: unknown. The ministeriële regeling under art. III lid 2 that sets the amount for the first application after entry into force was not found on 2026-10-11. Source: [Stb. 2026, 158](https://zoek.officielebekendmakingen.nl/stb-2026-158.html). What would settle it: publication of that ministeriële regeling.
 - HR Uber ruling date: UNVERIFIED. The date 21 February 2025 and ECLI:NL:HR:2025:319 come from a later court citation found by search, not from a fetched copy of the ruling. The substance, no rangorde between the gezichtspunten and ondernemerschap as a full criterion with no effect on handhaving, is verified on the government page. Source: [rijksoverheid.nl, 27 March 2025](https://www.rijksoverheid.nl/actueel/nieuws/2025/03/27/ondernemerschap-blijft-volwaardig-criterium-bij-beoordelen-schijnzelfstandigheid). What would settle it: opening the ruling itself.
@@ -298,6 +312,8 @@ The docket summary gives about 70% of income up to the minimum wage. Illustratio
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2025 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 In 2023 the Wet DBA (Wet deregulering beoordeling arbeidsrelaties, the law on assessing work relationships) was in force and the handhavingsmoratorium (enforcement moratorium) still applied, so in a non-kwaadwillend case the Belastingdienst first gave an aanwijzing (instruction) instead of correcting straight away (https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving). The two legal markers of the year were the Deliveroo ruling of the Hoge Raad on 24 March 2023, which put inbedding (embedding in the organisation) and ondernemerschap (entrepreneurship) in the catalogue of circumstances and treated vrije vervanging (free replacement of the worker) as no absolute element, and the withdrawal of the approval of the modelovereenkomsten vrije vervanging on 14 August 2023 (https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file). The VBAR (Wet verduidelijking beoordeling arbeidsrelaties en rechtsvermoeden, the bill on clarifying the assessment of work relationships and a legal presumption) was still in internet consultation from 6 October 2023, with an intended entry into force of 1 July 2025, so the low hourly rate presumption was proposed law in 2023 and not in force (same URL). The richtlijnen doorwerking IH and OB (guidelines on how payroll tax corrections at the client carry over to income tax and VAT for the contractor) exist since 2023 (https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z52fd.pdf).
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
@@ -51,6 +55,8 @@ In 2023 the Wet DBA (Wet deregulering beoordeling arbeidsrelaties, the law on as
 ---
 
 ## 3. HOW IT WORKS IN 2023
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Wet DBA
 
@@ -136,6 +142,8 @@ The definitive aanslag (definitive assessment) for 2023 follows no later than 31
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 **Calculated example: applying the loondienst elements to a 2023 engagement.**
 An opdrachtnemer does the bookkeeping for one client in 2023. Step 1, check the three elements. Werkgeversgezag: the client sets the working hours and can direct the opdrachtnemer to other tasks. Persoonlijke arbeid: the work must be done by the opdrachtnemer in person. Pay: the client pays for the work. All three elements are present in this invented case (https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst). Step 2, weigh the factors. Points toward loondienst: the work is embedded in the client's organisation and the client sets how and when the work is done. Points away: the opdrachtnemer carries commercial risk, works for several clients and can act as an entrepreneur. Step 3, the checked material gives no fixed score, the qualification follows from the whole picture (same URL). No arithmetic.
 
@@ -155,6 +163,8 @@ A return for 2023 filed before 1 May 2024 gives a definitive aanslag no later th
 
 ## 5. CHANGES FROM 2022
 
+<a id="5-changes"></a>
+
 - DBA enforcement regime: unchanged. In 2022 the handhavingsmoratorium was in force with the aanwijzing route (https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving). In 2023 it was still in force with the same aanwijzing route, and a Handhavingsplan was made for 2023 per the 2026 plan (same URL and https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z62fd.pdf).
 - VBAR: in 2022 the achtste voortgangsbrief of 16 December 2022 announced a rechtsvermoeden tied to an uurtarief, with no effect outside arbeidsrecht, legislation for 1 January 2025 and the moratorium lifted uiterlijk 1 January 2025 (proposed, https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file). In 2023 the internet consultation of the original VBAR opened on 6 October 2023, with an intended entry into force of 1 July 2025, mits uitvoerbaar (proposed, same URL). So the 2022 announcement became a concrete consultation draft in 2023.
 - Cabinet aim: the Rutte IV coalition agreement of 10 January 2022 and the kabinetsreactie of 24 June 2022 aimed to strengthen handhaving and lift the moratorium per 1 January 2025 or earlier (proposed, https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file). The enforcement sources for 2023 record the moratorium as still in force (https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving).
@@ -165,6 +175,8 @@ A return for 2023 filed before 1 May 2024 gives a definitive aanslag no later th
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Keep the whole qualification story, not only the label. The qualification depends on how the work is actually done, which is the reason the Belastingdienst gives for stopping new modelovereenkomsten (https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/geen-nieuwe-modelovereenkomsten-meer). For a 2023 file, store the written contract or modelovereenkomst, the invoice trail, and the facts that show how work and working hours are set, where the commercial risk sits and how the opdrachtnemer acts as an entrepreneur (https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst).
 - If an opt-out for thuiswerkers, gelijkgestelden or artiesten is used, keep the written clause that was agreed before the first payment of pay. The opdrachtnemer then has no entitlement to ZW, WIA and WW (https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst).
@@ -178,6 +190,8 @@ A return for 2023 filed before 1 May 2024 gives a definitive aanslag no later th
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 **Proposed or not yet law for 2023**
 
@@ -206,6 +220,8 @@ A return for 2023 filed before 1 May 2024 gives a definitive aanslag no later th
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2023 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

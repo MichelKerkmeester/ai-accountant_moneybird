@@ -14,9 +14,9 @@ version: 1.0.0.0
 # BTW 2022
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 292.
-Part 1: lines 1-291, 50961 bytes, first heading "# BTW 2022"
-Part 2: lines 292-339, 15081 bytes, first heading "## 5. CHANGES FROM 2021"
+Read plan: 2 parts. Next read offset: line 300.
+Part 1: lines 1-299, 51075 bytes, first heading "# BTW 2022"
+Part 2: lines 300-355, 15196 bytes, first heading "## 5. CHANGES FROM 2021"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 292-339, 15081 bytes, first heading "## 5. CHANGES FROM 2021"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers VAT (btw) for a Dutch sole trader and the general VAT rules that also apply to a business with a BV. The fixed points for 2022 are the 21 percent standard rate, the 9 percent reduced rate for the goods and services in Tabel I, the nil rate for Tabel II, and the old kleineondernemersregeling (KOR, small businesses scheme) with its € 20.000 ceiling tested on the current calendar year. The 2022 rules described here were enacted. The corona deferral of tax debt closed for new debts on 31 maart 2022 and repayment of the built-up debt started on 1 oktober 2022, and a few 2022 filing details could not be confirmed from a 2022 publication and are marked UNVERIFIED.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
@@ -76,6 +80,8 @@ This file covers VAT (btw) for a Dutch sole trader and the general VAT rules tha
 ---
 
 ## 3. HOW IT WORKS IN 2022
+
+<a id="3-how-it-works"></a>
 
 ### Standard, reduced and zero rates
 
@@ -233,6 +239,8 @@ No general B2B e-invoicing duty for 2022 could be verified. The current governme
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 **Calculated example, VAT rate.** A taxable sale of € 100 excluding VAT.
 
 1. At 21%, € 100 × 0,21 = € 21 VAT, so the invoice total is € 100 + € 21 = € 121.
@@ -291,6 +299,8 @@ No general B2B e-invoicing duty for 2022 could be verified. The current governme
 
 ## 5. CHANGES FROM 2021
 
+<a id="5-changes"></a>
+
 - The corona bijzonder uitstel ran through 2021 as an open deferral. In 2022 the build-up window closed on 31 maart 2022, new tax debts had to be paid on time again from 1 april 2022, and repayment of the built-up debt started on 1 oktober 2022 with the first term due on 31 oktober 2022. [Belastingdienst, betalingsregeling voor opgebouwde belastingschuld door bijzonder uitstel](https://www.belastingdienst.nl/wps/wcm/connect/nl/betalenenontvangen/content/betalingsregeling-voor-opgebouwde-belastingschuld-door-bijzonder-uitstel).
 - The rates did not change. The standard rate stayed at 21%, the reduced rate stayed at 9% for Tabel I and the zero rate stayed nihil for Tabel II. Logies stayed at 9%. [Wet OB, version 1 July 2021](https://wetten.overheid.nl/BWBR0002629/2021-07-01), [version 1 January 2022](https://wetten.overheid.nl/BWBR0002629/2022-01-01), [Stb. 2025, 339](https://zoek.officielebekendmakingen.nl/stb-2025-339.html).
 - The KOR rules did not change. The ceiling stayed at € 20.000, the test stayed on the current calendar year only, and the notice, three-year participation and three-year re-entry rules stayed the same. [Wet OB art. 25, version 1 July 2021](https://wetten.overheid.nl/BWBR0002629/2021-07-01), [version 1 January 2022](https://wetten.overheid.nl/BWBR0002629/2022-01-01).
@@ -300,6 +310,8 @@ No general B2B e-invoicing duty for 2022 could be verified. The current governme
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Keep sales and purchase records that support the VAT rate used, the amounts per rate, VAT charged and input VAT deducted. Issue invoices to entrepreneurs and to legal persons that are not entrepreneurs by the 15th day of the month after the month of supply, and retain the invoice details the Belastingdienst requires. [Belastingdienst, facturen maken](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/), [Belastingdienst, factuureisen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/factuureisen).
 - Record reverse-charged purchases and sales with the btw verlegd note, the customer's VAT ID and the consideration per rate. Report domestic reverse charges in rubriek 2 and reverse charges from abroad in rubriek 4, and deduct input VAT only where the taxable use permits it. [Belastingdienst, hoe werkt btw verleggen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_berekenen_aan_uw_klanten/waarover_btw_berekenen/verleggingsregeling/hoe_werkt_btw_verleggen).
@@ -313,6 +325,8 @@ No general B2B e-invoicing duty for 2022 could be verified. The current governme
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - **Yearly return VAT limit for 2022:** the amount of less than € 1.883 a year is stated in the Handboek Ondernemen 2020 and the Handboek Ondernemen 2026, and the current page names no year. No 2022 text was found, so the 2022 wording is UNVERIFIED. A 2022 Handboek Ondernemen would settle it. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf), [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf), [Belastingdienst, wijziging aangiftetijdvak btw](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/wijziging-aangiftetijdvak-btw).
 - **Other yearly return conditions for 2022:** the conditions (no vergunning artikel 23, natural person or partnership of natural persons only, less than € 10.000 a year per intra-EU category) are identical in the 2020 and 2026 handbooks. No 2022 handbook text was found, so the 2022 wording of the whole condition set is not confirmed from a 2022 publication. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf), [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf).
@@ -332,6 +346,8 @@ No general B2B e-invoicing duty for 2022 could be verified. The current governme
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2022 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

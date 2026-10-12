@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers only the income-dependent Zvw contribution (inkomensafhankelijke bijdrage Zorgverzekeringswet) that an entrepreneur pays over the profit, its rate of 5,75% for 2021 and the maximum bijdrage-inkomen of € 58.311. It also covers who pays through the aanslag, how the base follows the belastbare winst uit onderneming and how the rate differs from the 7,00% werkgeversheffing that an employer pays. The 2021 rates and the maximum are enacted and verified in the checked sources. One element stays UNVERIFIED for 2021: the base rule rests on Zvw art. 43 read in the 2026 version, because the 2021 version of that article was not read.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
@@ -38,6 +42,8 @@ This file covers only the income-dependent Zvw contribution (inkomensafhankelijk
 ---
 
 ## 3. HOW IT WORKS IN 2021
+
+<a id="3-how-it-works"></a>
 
 ### Zvw bijdrage by (voorlopige) aanslag, 5,75%
 
@@ -70,6 +76,8 @@ Interaction only. The MKB-winstvrijstelling for 2021 is 14% of the winst after t
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 **Example 1. Official example (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet), the multiplication written out here.**
 Loon € 40.000 plus freelance income € 20.000.
@@ -116,6 +124,8 @@ Step 3: difference is € 2.800,00 minus € 2.300,00 = € 500,00.
 
 ## 5. CHANGES FROM 2020
 
+<a id="5-changes"></a>
+
 - Zvw bijdrage by aanslag and ingehouden bijdrage: 5,45% in 2020 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet) to 5,75% in 2021 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 - Maximum bijdrage-inkomen: € 57.232 in 2020 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet) to € 58.311 in 2021 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 - Zvw werkgeversheffing: 6,70% in 2020 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet, also the werkgeversheffing series 2020 to 2024) to 7,00% in 2021 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
@@ -125,6 +135,8 @@ Step 3: difference is € 2.800,00 minus € 2.300,00 = € 500,00.
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - The entrepreneur's own Zvw contribution is billed by aanslag, and the aanslag Zvw comes with the (voorlopige) aanslag inkomstenbelasting (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet). Record the billed amount as a separate liability from the income tax entry when the aanslag is received.
 - The base is the belastbare winst uit onderneming after the ondernemersaftrek and the MKB-winstvrijstelling (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01, https://wetten.overheid.nl/BWBR0011353/2026-01-01, 2026 versions, UNVERIFIED for 2021). Keep the winst calculation so that the zelfstandigenaftrek of € 6.670 and the MKB-winstvrijstelling of 14% for 2021 are visible (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/ondernemersaftrek_en_investeringsaftrek).
@@ -136,6 +148,8 @@ Step 3: difference is € 2.800,00 minus € 2.300,00 = € 500,00.
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Zvw base for the winst-ondernemer, UNVERIFIED for 2021. The rule, belastbare winst uit onderneming after the ondernemersaftrek and the MKB-winstvrijstelling, with the art. 3.70 lid 2 addition for an oudedagsreserve decrease excluded, rests on Zvw art. 43 and Wet IB 2001 art. 3.2 as read in the 2026 version only (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01, https://wetten.overheid.nl/BWBR0011353/2026-01-01). Reading the text valid on 1 January 2021 of Zvw art. 43 and of Wet IB 2001 afdeling 3.2 would settle it.
 - Declaration and deadlines, UNVERIFIED. The checked 2021 material does not state whether the same aangifte is used or which deadlines apply. https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet confirms that the aanslag Zvw comes with the (voorlopige) aanslag inkomstenbelasting, and the filing deadline belongs to the procedure topic. The 2021 procedure pages would settle it.
 - AOW age, no stated rule. https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/xvi-volksgezondheid-welzijn-en-sport-rijksbegroting-2027/16-volksgezondheid-welzijn-en-sport.pdf Tabel 77 footnote 2 states that zelfstandigen and gepensioneerden pay the verlaagde IAB. No AOW-age exemption or reduction appears in Zvw art. 41 to 45 as read, which is an inference from absence (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01). The FISIN Zvw pages do not mention the AOW age. The 2021 text of Zvw art. 41 to 45 would settle it.
@@ -144,6 +158,8 @@ Step 3: difference is € 2.800,00 minus € 2.300,00 = € 500,00.
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2021 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

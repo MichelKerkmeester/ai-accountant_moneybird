@@ -14,9 +14,9 @@ version: 1.0.0.0
 # BV en vennootschapsbelasting 2024
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 313.
-Part 1: lines 1-312, 49134 bytes, first heading "# BV en vennootschapsbelasting 2024"
-Part 2: lines 313-360, 11880 bytes, first heading "## 5. CHANGES FROM 2023"
+Read plan: 2 parts. Next read offset: line 321.
+Part 1: lines 1-320, 49248 bytes, first heading "# BV en vennootschapsbelasting 2024"
+Part 2: lines 321-376, 11995 bytes, first heading "## 5. CHANGES FROM 2023"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 313-360, 11880 bytes, first heading "## 5. CHANGES FROM 2023"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the vennootschapsbelasting (Vpb, corporate income tax) for tax year 2024 and the rules that come with a BV, including the rate table, verliesverrekening (loss relief), the generieke renteaftrekbeperking (generic interest deduction limitation), the innovatiebox (innovation box), the deelnemingsvrijstelling (participation exemption), the fiscale eenheid (fiscal unity), the gebruikelijk loonregeling (customary wage rule) for a directeur-grootaandeelhouder (DGA, director and major shareholder), Zvw, box 2, dividendbelasting (dividend withholding tax), the conditionele bronbelasting (conditional withholding tax), the jaarrekening (annual accounts) size classes and the administratieplicht (record-keeping duty). The law for 2024 is enacted and every value below carries its Check tag. What matters most in 2024: the Vpb rates stay at 19% up to € 200.000 and 25,8% above it, the art. 15b percentage stays at 20%, the gebruikelijk loon normbedrag rises to € 56.000, box 2 becomes a two bracket rate, the conditionele bronbelasting now also covers dividends, and the jaarrekening size thresholds are raised for book years from 1 January 2024. The open points for this year sit in section 7.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
@@ -71,6 +75,8 @@ This file covers the vennootschapsbelasting (Vpb, corporate income tax) for tax 
 ---
 
 ## 3. HOW IT WORKS IN 2024
+
+<a id="3-how-it-works"></a>
 
 ### Vennootschapsbelasting, eerste schijf (art. 22 Wet Vpb 1969)
 
@@ -208,6 +214,8 @@ Art. 52 AWR (Algemene wet inzake rijksbelastingen) makes lichamen administratiep
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Vpb on a belastbaar bedrag of € 60.000, € 200.000 and € 300.000 (Calculated example)
 
 - € 60.000: below € 200.000, so only the first bracket applies. 19% of € 60.000 = € 11.400.
@@ -312,6 +320,8 @@ Figures from section 2. Sources: https://wetten.overheid.nl/BWBR0011353/2024-01-
 
 ## 5. CHANGES FROM 2023
 
+<a id="5-changes"></a>
+
 - Gebruikelijk loon normbedrag: € 51.000 in 2023 to € 56.000 in 2024 (https://wetten.overheid.nl/BWBR0002471/2023-01-01, https://wetten.overheid.nl/BWBR0002471/2024-01-01).
 - Start-up relief gebruikelijk loon: in 2023 lapsed for new cases with 2021 starters continuing, in 2024 only 2022 starters continue and it is the last year for them, and the Handboek Loonheffingen 2025 says the transitional right lapsed for all starters from 2025 (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/loon_en_aanmerkelijk_belang/loon_en_aanmerkelijk_belang, https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf).
 - Bijdrage Zvw: 5,43% in 2023 to 5,32% in 2024 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
@@ -329,6 +339,8 @@ Figures from section 2. Sources: https://wetten.overheid.nl/BWBR0011353/2024-01-
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - The BV runs the DGA wage through its loonadministratie and withholds loonheffing. For a DGA who is not insured for the werknemersverzekeringen the BV withholds the Zvw bijdrage on the net wage at 5,32% up to a maximum bijdrage-inkomen of € 71.628 and pays it through the aangifte loonheffingen. For an insured DGA the BV pays the werkgeversheffing Zvw of 6,57% (https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/bijdrage_zorgverzekeringswet/tabel_werkgeversheffing_zvw_of_bijdrage_zvw/).
 - Record the gebruikelijk loon test in the payroll file: the normbedrag of € 56.000, the comparable wage and the highest wage in connected bodies, tested on the loon for loonbelasting and premie volksverzekeringen including the car bijtelling (https://wetten.overheid.nl/BWBR0002471/2024-01-01, https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf).
 - On a dividend, issue the dividendnota when the opbrengst is paid, credited, settled or handed over, file the dividendbelasting return and pay within 1 month after the day the dividend is made available, and credit the withheld tax in the aangifte Vpb (https://wetten.overheid.nl/BWBR0002515/2024-01-01, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/dividendbelasting/als_u_dividend_uitkeert/dividendbelasting-aangifte-betalen).
@@ -343,6 +355,8 @@ Figures from section 2. Sources: https://wetten.overheid.nl/BWBR0011353/2024-01-
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Micro size thresholds. Stb. 2024, 52 art. 1 raises art. 2:395a Boek 2 BW to € 450.000 and € 900.000, and KVK applies those amounts. The consolidated Boek 2 BW at 2025-01-01 and 2026-07-01 still prints € 350.000 and € 700.000 in art. 395a, while it prints the raised amounts in art. 396 and 397. The Nota van toelichting says the AMvB basis for 395a was missing and was to be added to art. 2:398 lid 4, which the 2026-07-01 text now does. The settled value used in this file is € 450.000 and € 900.000. A KVK or Justitie statement on the legal effect for boekjaar 2024 would close the point (https://wetten.overheid.nl/BWBR0003045/2025-01-01, https://wetten.overheid.nl/BWBR0003045/2026-07-01, https://zoek.officielebekendmakingen.nl/stb-2024-52.html).
 - Large class turnover bound. KVK prints more than € 51 mln, Stb. 2024, 52 art. 3 and Boek 2 BW art. 397 print € 50 miljoen. Settled at € 50 miljoen, recorded here because the two sources differ (https://zoek.officielebekendmakingen.nl/stb-2024-52.html, https://wetten.overheid.nl/BWBR0003045/2025-01-01, https://www.kvk.nl/deponeren/in-welke-bedrijfsklasse-valt-je-bedrijf/).
 - Koepelvrijstelling and BUA. Status unknown, Check UNVERIFIED. The beleidsbesluit does not cover them and the Wet OB article and the BUA were not opened in the sources for this file (https://zoek.officielebekendmakingen.nl/stcrt-2024-38545.html).
@@ -353,6 +367,8 @@ Figures from section 2. Sources: https://wetten.overheid.nl/BWBR0011353/2024-01-
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2024 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

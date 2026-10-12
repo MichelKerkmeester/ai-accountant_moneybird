@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers Dutch VAT (omzetbelasting, or BTW) for a sole trader, including general VAT rules that also matter to a BV. The main practical points are choosing the correct rate, keeping taxable and exempt turnover separate, and reporting VAT in the right return and period. The core rules for 2023 are enacted. A KOR reform published during 2023 was scheduled to start in 2025, so the existing KOR rules still govern 2023. [2023 VAT Act](https://wetten.overheid.nl/BWBR0002629/2023-01-01) · [2023 KOR reform](https://zoek.officielebekendmakingen.nl/stb-2023-278.html)
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
@@ -62,6 +66,8 @@ This file covers Dutch VAT (omzetbelasting, or BTW) for a sole trader, including
 ---
 
 ## 3. HOW IT WORKS IN 2023
+
+<a id="3-how-it-works"></a>
 
 ### Standard rate
 
@@ -185,6 +191,8 @@ The checked source states that suppliers to central government must send e-invoi
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### VAT rates and the difference between zero-rated and exempt supplies
 
 **Calculated example.** Assume an invented net sale of € 100,00.
@@ -280,6 +288,8 @@ For the commuting-bicycle exception, an invented bicycle cost of € 700,00 incl
 
 ## 5. CHANGES FROM 2022
 
+<a id="5-changes"></a>
+
 - The qualifying solar-panel zero rate began on 1 January 2023. The checked material does not provide a separate 2022 solar-panel rate for comparison. [Decision of 16 June 2023](https://zoek.officielebekendmakingen.nl/stcrt-2023-17463.html)
 - The KOR reform was published in 2023 and scheduled to take effect in 2025. It was therefore adopted but not yet in force for 2023. The old current-calendar-year test remained applicable in 2023, as it was in 2022. [Stb. 2023, 278](https://zoek.officielebekendmakingen.nl/stb-2023-278.html) · [2022 VAT Act](https://wetten.overheid.nl/BWBR0002629/2022-01-01) · [2023 VAT Act](https://wetten.overheid.nl/BWBR0002629/2023-01-01)
 - The 21%, 9%, and zero-rate structure did not change from 2022. [2022 VAT Act](https://wetten.overheid.nl/BWBR0002629/2022-01-01) · [2023 VAT Act](https://wetten.overheid.nl/BWBR0002629/2023-01-01)
@@ -290,6 +300,8 @@ For the commuting-bicycle exception, an invented bicycle cost of € 700,00 incl
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Keep sales and purchase records that support the rates used, exempt turnover, input VAT deductions, and any zero-rated intra-EU supply. For the zero rate, retain evidence of transport to another EU country, the buyer’s valid VAT ID, and a correct ICP filing. [ICP guidance](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf)
 - Reconcile the VAT return to the sales and purchase records for its period. Report domestic reverse-charge transactions in rubriek 2 and foreign reverse-charge transactions in rubriek 4. Deduct reverse-charged VAT only when the purchase is used for taxable activity. [Reverse-charge guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_berekenen_aan_uw_klanten/waarover_btw_berekenen/verleggingsregeling/hoe_werkt_btw_verleggen)
@@ -302,6 +314,8 @@ For the commuting-bicycle exception, an invented bicycle cost of € 700,00 incl
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - **Annual-return VAT limit:** less than € 1.883 is listed, but its application to 2023 is UNVERIFIED. The checked handbooks establish the amount for 2020 and 2026, not a 2023 publication. A 2023 Belastingdienst publication or dated handbook would settle this. [Return-period guidance](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/wijziging-aangiftetijdvak-btw) · [Handbook 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf) · [Handbook 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
 - **Annual-return EU conditions:** the checked handbooks state less than € 10.000 for each of four EU activities, but a 2023 publication was not checked. A 2023 dated handbook or official publication would settle year-specific application. [Handbook 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf) · [Handbook 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
@@ -318,6 +332,8 @@ For the commuting-bicycle exception, an invented bicycle cost of € 700,00 incl
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2023 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

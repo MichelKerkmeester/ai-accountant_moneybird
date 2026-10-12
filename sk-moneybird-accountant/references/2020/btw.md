@@ -14,9 +14,9 @@ version: 1.0.0.0
 # BTW 2020
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 356.
-Part 1: lines 1-355, 49012 bytes, first heading "# BTW 2020"
-Part 2: lines 356-385, 4900 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Read plan: 2 parts. Next read offset: line 368.
+Part 1: lines 1-367, 49179 bytes, first heading "# BTW 2020"
+Part 2: lines 368-401, 4962 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 356-385, 4900 bytes, first heading "## 7. OPEN POINTS AND CONFLICT
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers Dutch VAT for a sole trader or a BV, including rates, exemptions, input VAT, the small-business scheme, returns, cross-border supplies, invoicing and private use. The main rates were 21%, 9% for supplies in Tabel I and nihil for supplies in Tabel II when the required conditions were met. The new KOR applied from 1 January 2020. The rules described for 2020 are enacted, with historical source gaps and one corrected KOR turnover test identified below.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
@@ -94,6 +98,8 @@ This file covers Dutch VAT for a sole trader or a BV, including rates, exemption
 ---
 
 ## 3. HOW IT WORKS IN 2020
+
+<a id="3-how-it-works"></a>
 
 ### Standard rate
 
@@ -299,6 +305,8 @@ The standard arrangement uses 60 monthly terms, with quarterly payment also poss
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 **Calculated example (domestic rates).** Assume a taxable supply with a price excluding VAT of € 1.000. At 21%, calculate € 1.000 × 21 ÷ 100 = € 210 VAT, then € 1.000 + € 210 = € 1.210 including VAT. At 9%, calculate € 1.000 × 9 ÷ 100 = € 90 VAT, then € 1.000 + € 90 = € 1.090 including VAT. At the zero rate, output VAT is nil, but the right to deduct input VAT can remain if the supply qualifies. The rates and deduction distinction come from [Wet OB, article 9](https://wetten.overheid.nl/BWBR0002629/2020-01-01), [the intra-EU supply guidance](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf) and [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf).
 
 **Calculated example (KOR ceiling).** Assume an entrepreneur has € 19.000 of Dutch turnover in the current calendar year and makes another supply worth € 1.500. Calculate € 19.000 + € 1.500 = € 20.500. The ceiling is crossed by that supply, so the exemption stops from that supply onward. The preceding year is not part of the 2020 test. [Wet OB, article 25](https://wetten.overheid.nl/BWBR0002629/2020-01-01).
@@ -323,6 +331,8 @@ The standard arrangement uses 60 monthly terms, with quarterly payment also poss
 
 ## 5. CHANGES FROM 2019
 
+<a id="5-changes"></a>
+
 The checked material does not include a complete 2019 comparison. It identifies these changes or transitions that began in 2020:
 
 - The new KOR replaced the old VAT-based reduction from 1 January 2020. The new exemption used a Dutch calendar-year turnover ceiling of € 20.000. The old scheme reduced VAT due by 2,5 times the difference between € 1.883 and VAT due, down to nil. The full-relief point of € 1.345 is not printed in the old statute and is treated as UNVERIFIED in section 7. [Wet OB, 2019 version](https://wetten.overheid.nl/BWBR0002629/2019-01-01), [Wet OB, 2020 version](https://wetten.overheid.nl/BWBR0002629/2020-01-01) and [Wet modernisering kleineondernemersregeling](https://wetten.overheid.nl/BWBR0041782).
@@ -343,6 +353,8 @@ The checked material does not include a complete 2019 comparison. It identifies 
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 Record sales by VAT treatment and rate, and keep invoices showing the taxable amount and VAT per rate. Invoices to another entrepreneur or a legal person that is not an entrepreneur need the required party details, VAT ID, KVK number where registered, invoice date, unique consecutive number, description and quantity or scope, supply or prepayment date, and amounts excluding VAT by rate. [Belastingdienst invoice requirements](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/factuureisen) and [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
 
 Keep evidence for zero-rated intra-EU goods supplies, including the buyer's valid VAT ID, transport records and ICP submission. For intra-EU B2B services, verify the customer’s VAT ID, invoice without VAT marked “btw verlegd”, and report the service in the VAT return and ICP where required. [Belastingdienst ICP instructions](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf) and [Belastingdienst intra-EU services](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/btw_berekenen_bij_diensten/btw_berekenen_bij_diensten_aan_afnemers_in_andere_eu_landen).
@@ -354,6 +366,8 @@ Reconcile the VAT return to the sales and purchase records for the period. File 
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - **Old KOR full-relief point: UNVERIFIED.** The figure € 1.345 is derived from the old statutory formula and is not printed in the statute. The statute states the € 1.883 limit and the reduction formula. The primary statute does not independently confirm the derived point. [Wet OB, 2019 version](https://wetten.overheid.nl/BWBR0002629/2019-01-01).
 
@@ -378,6 +392,8 @@ Reconcile the VAT return to the sales and purchase records for the period. File 
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2020 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

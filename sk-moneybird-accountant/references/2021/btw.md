@@ -14,9 +14,9 @@ version: 1.0.0.0
 # BTW 2021
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 413.
-Part 1: lines 1-412, 48844 bytes, first heading "# BTW 2021"
-Part 2: lines 413-432, 5056 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Read plan: 2 parts. Next read offset: line 425.
+Part 1: lines 1-424, 49011 bytes, first heading "# BTW 2021"
+Part 2: lines 425-448, 5118 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 413-432, 5056 bytes, first heading "## 7. OPEN POINTS AND CONFLICT
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 Dutch VAT (btw) in 2021 generally used the standard rate, with a reduced rate for supplies in Tabel I and a zero rate for qualifying supplies in Tabel II. The optional small businesses scheme (KOR) exempted qualifying businesses from charging VAT, while denying deduction of input VAT. The main change during the year was the e-commerce package from 1 July 2021, including the EU distance-sales threshold and replacement of MOSS by the one-stop shop. The laws described here were enacted, but some 2021 filing details and historical guidance remain unverified.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
@@ -75,6 +79,8 @@ Dutch VAT (btw) in 2021 generally used the standard rate, with a reduced rate fo
 ---
 
 ## 3. HOW IT WORKS IN 2021
+
+<a id="3-how-it-works"></a>
 
 ### Standard VAT rate
 
@@ -227,6 +233,8 @@ The checked material does not establish whether a general B2B e-invoicing duty a
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Standard rate: calculated example
 
@@ -388,6 +396,8 @@ A staff meal has an invented cost of € 100 and is charged below cost plus the 
 
 ## 5. CHANGES FROM 2020
 
+<a id="5-changes"></a>
+
 - The 21%, 9% and zero rates continued from 2020 into 2021. The 2020 and 2021 statutory versions show the same rate structure. [2020 Wet op de omzetbelasting](https://wetten.overheid.nl/BWBR0002629/2020-01-01), [2021 Wet op de omzetbelasting](https://wetten.overheid.nl/BWBR0002629/2021-07-01)
 - The KOR ceiling remained € 20.000, and the 2021 rule still tested the current calendar year only. The preceding-year test described in later guidance does not apply to the old 2021 Article 25 rule. [2020 Wet op de omzetbelasting](https://wetten.overheid.nl/BWBR0002629/2020-01-01), [2021 Wet op de omzetbelasting](https://wetten.overheid.nl/BWBR0002629/2021-07-01)
 - From 1 July 2021, the e-commerce package introduced the € 10.000 EU distance-sales threshold for qualifying goods and digital services together. [Wet implementatie richtlijnen elektronische handel](https://zoek.officielebekendmakingen.nl/stb-2021-261.html), [Belastingdienst, goods to private customers in the EU](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/btw-goederen-eu-particulieren)
@@ -398,6 +408,8 @@ A staff meal has an invented cost of € 100 and is charged below cost plus the 
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Keep sales and purchase records that support the VAT return, including invoices, the rate applied, and any reverse-charge treatment. An invoice record should show the required parties, dates, consecutive invoice number, description, taxable amounts per rate, rate and VAT amount. [Belastingdienst, invoice requirements](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/factuureisen)
 - Issue invoices by the 15th day of the month after supply when an invoice is required. A customer must agree to digital invoices, and the supplier must preserve authenticity of origin, content integrity and readability. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf), [Belastingdienst, invoice requirements](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/factuureisen)
@@ -412,6 +424,8 @@ A staff meal has an invented cost of € 100 and is charged below cost plus the 
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - **2021 VAT due-date calendar: unknown.** The current Belastingdienst date table does not contain an archived 2021 table. An archived 2021 official table would settle the specific dates. [Belastingdienst, VAT due dates](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums)
 - **Yearly VAT-return limit: UNVERIFIED for 2021.** Less than € 1.883 is recorded in the 2020 and 2026 handbooks, but the checked materials do not establish the 2021 amount. A 2021 handbook or dated official instruction would settle it. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf), [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
 - **Other yearly-return conditions: UNVERIFIED for 2021.** The 2020 and 2026 handbooks require a natural person or a partnership of natural persons, no Article 23 licence, and less than € 10.000 for each of four intra-EU activities separately. The 2021-specific guidance was not found. A 2021 handbook would settle it. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf), [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
@@ -425,6 +439,8 @@ A staff meal has an invented cost of € 100 and is charged below cost plus the 
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2021 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

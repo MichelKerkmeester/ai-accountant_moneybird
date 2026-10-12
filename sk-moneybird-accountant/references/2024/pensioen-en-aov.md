@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Pensioen, lijfrente en AOV 2024
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 347.
-Part 1: lines 1-346, 46395 bytes, first heading "# Pensioen, lijfrente en AOV 2024"
-Part 2: lines 347-409, 14649 bytes, first heading "## 5. CHANGES FROM 2023"
+Read plan: 2 parts. Next read offset: line 355.
+Part 1: lines 1-354, 46509 bytes, first heading "# Pensioen, lijfrente en AOV 2024"
+Part 2: lines 355-425, 14764 bytes, first heading "## 5. CHANGES FROM 2023"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 347-409, 14649 bytes, first heading "## 5. CHANGES FROM 2023"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the jaarruimte (annual lijfrente room) and reserveringsruimte for 2024, the lijfrente product caps, the stakingswinst conversion, the AOV (arbeidsongeschiktheidsverzekering, disability insurance) premium deduction and the proposed BAZ consultation. Tax year 2024 is enacted law. The jaarruimte percentage is 30%, the aftoppingsgrens is € 137.800, the franchise is € 17.545, the maximum jaarruimte is € 36.077 and the reserveringsruimte maximum is € 41.608. FOR toevoeging (oudedagsreserve addition) is no longer possible and 2024 is the last year of the FOR transition in the jaarruimte. The BAZ consultation of 11 June 2024 is proposed only and was later replaced, see 2025.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
@@ -69,6 +73,8 @@ This file covers the jaarruimte (annual lijfrente room) and reserveringsruimte f
 ---
 
 ## 3. HOW IT WORKS IN 2024
+
+<a id="3-how-it-works"></a>
 
 ### Jaarruimte percentage
 
@@ -197,6 +203,8 @@ The 11 June 2024 consultation proposed a wachttijd of 1 year, a benefit of 70% o
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Calculated example. Jaarruimte 2024 with a winst uit onderneming of € 60.000
 
@@ -346,6 +354,8 @@ FISIN 2024. Death in 2023 means start the nabestaandenlijfrente by 31 December 2
 
 ## 5. CHANGES FROM 2023
 
+<a id="5-changes"></a>
+
 - Jaarruimte percentage. 30% in the 2023-07-01 text and 30% in the 2024-01-01 text. The 2023-01-01 text still read 13,3%. The Belastingdienst Wtp page states the 30% applies with retroactive effect from 1 January 2023. https://wetten.overheid.nl/BWBR0011353/2023-07-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 and https://wetten.overheid.nl/BWBR0011353/2024-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 and https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/nieuwe-regels-voor-pensioenen-wat-betekent-dat-voor-mij
 - Maximum jaarruimte. € 34.550 in 2023 to € 36.077 in 2024. The 2023 figure was changed retroactively for the Wtp. The pre-Wtp 2023 table printed € 15.317. https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2023/12/20/belangrijkste-wijzigingen-belastingen-2024/20240108+-+Eindejaarsbericht+-+V1.2.pdf and https://open.overheid.nl/documenten/ronl-a585ce5bd38ddc5d9e2adb1fd6f796a7cbaaa775/pdf
 - Aftoppingsgrens premiegrondslag. € 128.810 in 2023 to € 137.800 in 2024. https://wetten.overheid.nl/BWBR0011353/2023-07-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 and https://wetten.overheid.nl/BWBR0011353/2024-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127
@@ -371,6 +381,8 @@ FISIN 2024. Death in 2023 means start the nabestaandenlijfrente by 31 December 2
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the AOV premium for a policy with periodic uitkeringen as an uitgave voor inkomensvoorzieningen, not as a business cost. It is fully deductible under art. 3.124 lid 1 onderdeel c. https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/uitgaven_voor_inkomensvoorzieningen
 - Do not deduct an AOV premium for a lump-sum policy. The payout is not box 1 income and counts in box 3. https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/uitgaven_voor_inkomensvoorzieningen
 - Record a mandatory beroepspensioen premium as a business cost of the onderneming with the restriction in the source. It is not a lijfrentepremie. https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies
@@ -389,6 +401,8 @@ FISIN 2024. Death in 2023 means start the nabestaandenlijfrente by 31 December 2
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - BAZ consultation premium. About 6,5% of winst, up to about € 195 per month. Status proposed, from the internetconsultatie of 11 June 2024. Not enacted for 2024 and later replaced, see 2025. Source https://www.rijksoverheid.nl/actueel/nieuws/2024/06/11/verplichte-verzekering-arbeidsongeschiktheid-voor-zelfstandigen-in-internetconsultatie
 - BAZ consultation design. Wachttijd 1 year, benefit 70% of winst up to minimumloon, until AOW age, opt-out with minimum conditions. Status proposed, same source. https://www.rijksoverheid.nl/actueel/nieuws/2024/06/11/verplichte-verzekering-arbeidsongeschiktheid-voor-zelfstandigen-in-internetconsultatie
 - Formula variables. The checked material gives the art. 10a.25 lid 2 formula A = ((1 - (X - Y) / X) x B) + Z but does not define X, Y and B. Source https://wetten.overheid.nl/BWBR0011353/2024-01-01 (art. 10a.25). Reading art. 10a.25 lid 2 together with the art. 38r Wet LB 1964 definitions would settle this.
@@ -402,6 +416,8 @@ FISIN 2024. Death in 2023 means start the nabestaandenlijfrente by 31 December 2
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2024 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

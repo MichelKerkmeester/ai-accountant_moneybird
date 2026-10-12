@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Pensioen, lijfrente en AOV 2027
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 296.
-Part 1: lines 1-295, 50163 bytes, first heading "# Pensioen, lijfrente en AOV 2027"
-Part 2: lines 296-334, 8107 bytes, first heading "## 6. IN THE BOOKS"
+Read plan: 2 parts. Next read offset: line 306.
+Part 1: lines 1-305, 50301 bytes, first heading "# Pensioen, lijfrente en AOV 2027"
+Part 2: lines 306-350, 8198 bytes, first heading "## 6. IN THE BOOKS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 296-334, 8107 bytes, first heading "## 6. IN THE BOOKS"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the jaarruimte (annual deduction room) and reserveringsruimte (carry-forward room) for lijfrentepremies, the lijfrente products and their uitkering conditions, the stakingswinst conversion, the AOV premium deduction and the state of the arbeidsongeschiktheid rules for a ZZP sole trader in 2027. The jaarruimte percentage of 30% is enacted in the 2027-01-01 text of the law, but almost every indexed 2027 amount is still missing and waits for the December 2026 indexation regulation. The year is a mix of three layers: the enacted 2027-01-01 text of the law with 2026 amounts still in place, the Belastingplan 2027 bill that proposes a freeze of the aftoppingsgrens and a limited indexation of the lijfrente maxima, and the BAZ bill that is not in force. There is no mandatory AOV for self-employed persons in 2027.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
@@ -63,6 +67,8 @@ This file covers the jaarruimte (annual deduction room) and reserveringsruimte (
 ---
 
 ## 3. HOW IT WORKS IN 2027
+
+<a id="3-how-it-works"></a>
 
 ### Jaarruimte percentage
 
@@ -186,6 +192,8 @@ A self-employed person may join the pensioenfonds of the branch if the fund allo
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 No official examples for 2027 were found in the checked sources, so every example below is marked `Calculated example`. Every figure used comes from section 2. All inputs are invented round amounts.
 
 ### Calculated example: jaarruimte 2027 with a profit of € 60.000
@@ -272,6 +280,8 @@ The BAZ is not in force in 2027, so this example only shows the proposed percent
 
 ## 5. CHANGES FROM 2026
 
+<a id="5-changes"></a>
+
 - Maximum jaarruimte: € 35.589 in 2026 to not published for 2027. The open point is that with the frozen aftoppingsgrens and a higher franchise the 2027 maximum would fall below € 35.589 ([Ministry 2026 table](https://open.overheid.nl/documenten/c3d48c04-1009-4ffe-a54b-cebf13427ab5/file), [art. 3.127, 2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01)).
 - Jaarruimte percentage: 30% in 2026 to 30% in 2027, unchanged ([art. 3.127, 2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [art. 3.127, 2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01)).
 - Aftoppingsgrens premiegrondslag: € 137.800 in 2026, not indexed in 2026 by the amendement Grinwis c.s., to € 137.800 still in the 2027 text and not yet indexed. Belastingplan 2027 art. LVII proposes a freeze at € 137.800 for 2027 to 2032 ([art. 3.127, 2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [art. 3.127, 2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01), [Belastingplan 2027](https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/wetsvoorstel-belastingplan-2027/wetsvoorstel-belastingplan-2027.pdf)).
@@ -295,6 +305,8 @@ The BAZ is not in force in 2027, so this example only shows the proposed percent
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record lijfrentepremies in the year of payment or verrekening, because art. 3.130 lid 1 counts them in that year ([art. 3.130, 2020 text](https://wetten.overheid.nl/BWBR0011353/2020-01-01)).
 - Keep the premiums above the ruimte visible in the records. They are never deductible but they are taken into account when the uitkering is taxed, and the maximum applies to all lijfrenteproducten together ([Belastingdienst, aftrekken lijfrentepremies](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies)).
 - Book the AOV premium as an uitgave voor inkomensvoorzieningen and keep it out of the winst uit onderneming, because it is not a business cost ([Belastingdienst, AOV voor ondernemers](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers)).
@@ -308,6 +320,8 @@ The BAZ is not in force in 2027, so this example only shows the proposed percent
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - Franchise premiegrondslag 2027 is UNVERIFIED. The 2027-01-01 text still shows € 19.172. Settling source: the Staatscourant indexation regulation of December 2026 and the 2027-01-01 law text after that regulation ([art. 3.127, 2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01)).
 - Maximum jaarruimte 2027 is not published and no Ministry table for 2027 exists. With the frozen aftoppingsgrens of € 137.800 and a higher franchise the 2027 maximum would fall below € 35.589, but the exact figure cannot be given until the franchise is published ([art. 3.127, 2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01)).
@@ -327,6 +341,8 @@ The BAZ is not in force in 2027, so this example only shows the proposed percent
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2027 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

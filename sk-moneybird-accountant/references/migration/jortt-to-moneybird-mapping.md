@@ -19,7 +19,7 @@ Map each record by accounting purpose and evidence. Product behavior is per Jort
 
 ## 1. OVERVIEW
 
-This reference describes conceptual matches and common migration traps. It does not duplicate CLI mechanics. Use jortt-cli for Jortt reads, following [cli-jortt](../../cli-jortt/SKILL.md), and moneybird-guard for Moneybird reads or writes, following [cli-moneybird](../../cli-moneybird/SKILL.md). Set MONEYBIRD_GUARD_READ_ONLY=1 for read-only Moneybird sessions.
+This reference describes conceptual matches and common migration traps. It does not duplicate CLI mechanics. Use jortt-cli for Jortt reads, following [cli-jortt](../../../cli-jortt/SKILL.md), and moneybird-guard for Moneybird reads or writes, following [cli-moneybird](../../../cli-moneybird/SKILL.md). Set MONEYBIRD_GUARD_READ_ONLY=1 for read-only Moneybird sessions.
 
 ---
 
@@ -46,20 +46,20 @@ This reference describes conceptual matches and common migration traps. It does 
 Per Jortt help reviewed on 2026-10-10, uploaded document attachments are not included in the Jortt auditfile. Reconcile the auditfile against the original documents and attachment register as distinct items.
 
 Source: [Jortt export options](https://www.jortt.nl/uitleg/faq/exportmogelijkheden-in-jortt/).
-CLI route for source reads: [cli-jortt](../../cli-jortt/SKILL.md).
+CLI route for source reads: [cli-jortt](../../../cli-jortt/SKILL.md).
 
 ### Asset list
 
 Per Jortt help reviewed on 2026-10-10, the asset list is not a separate export, although asset data appear in the auditfile or annual report. Reconcile asset evidence and the source balance sheet independently.
 
 Source: [Jortt export options](https://www.jortt.nl/uitleg/faq/exportmogelijkheden-in-jortt/).
-CLI route for source reads: [cli-jortt](../../cli-jortt/SKILL.md).
+CLI route for source reads: [cli-jortt](../../../cli-jortt/SKILL.md).
 
 ### Categories and opening balance
 
 Jortt groups categories as income, costs, and balance items. Private withdrawals and deposits are balance items, per [Jortt category guidance](https://www.jortt.nl/boekhouden/boekhouden-uitleg/op-de-juiste-categorie-boeken/). Compare the source trial balance with the target category and ledger mappings before any approved write.
 
-CLI route for target review or write work: [cli-moneybird](../../cli-moneybird/SKILL.md).
+CLI route for target review or write work: [cli-moneybird](../../../cli-moneybird/SKILL.md).
 
 ---
 

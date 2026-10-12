@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 Box 2 covers the income of a taxpayer with an aanmerkelijk belang (substantial shareholding), mainly dividends, deemed benefits and gains on shares. For 2022 the box has one flat rate of 26,9% with no bracket, the same rate as 2021, and the year's law is fully enacted. The main points for a dga (directeur-grootaandeelhouder, director and major shareholder) or any shareholder in a BV are the 5% test of art. 4.6 with its new sub e, the 5,53% forfaitair voordeel for a vbi (vrijgestelde beleggingsinstelling, exempt investment institution) and comparable foreign investment companies, and the gebruikelijk loon (customary salary) fixed amount of € 48.000. The Wet excessief lenen bij eigen vennootschap was enacted on 21 December 2022 but applies only from 1 January 2023, so it does not touch 2022 itself.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
@@ -52,6 +56,8 @@ Box 2 covers the income of a taxpayer with an aanmerkelijk belang (substantial s
 ---
 
 ## 3. HOW IT WORKS IN 2022
+
+<a id="3-how-it-works"></a>
 
 ### Box 2 rate (art. 2.12 Wet IB 2001)
 
@@ -165,6 +171,8 @@ Art. 7.5 confirms the base for a non-resident. The base is an aanmerkelijk belan
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 Every product below is written with two decimals. No product in these examples needs rounding, so no step is marked rounded or rounded down.
 
 ### Official example: an unoffset loss converted into a belastingkorting (FISIN 2022)
@@ -267,6 +275,8 @@ Any other division is allowed as long as the total is 100%, and with a single fl
 
 ## 5. CHANGES FROM 2021
 
+<a id="5-changes"></a>
+
 - Aanmerkelijk belang (art. 4.6): the 2021 text has sub a to d only, the 2022 text adds sub e, a share in a body as meant in art. 2 lid 12 Wet Vpb 1969 with at least 5% of its profit ([2021 text](https://wetten.overheid.nl/BWBR0011353/2021-01-01), [2022 text](https://wetten.overheid.nl/BWBR0011353/2022-01-01)).
 - Aanmerkelijk belang (art. 4.6 sub d): the word "tot" of the 2021 text became "om" in the 2022 text ([2021 text](https://wetten.overheid.nl/BWBR0011353/2021-01-01), [2022 text](https://wetten.overheid.nl/BWBR0011353/2022-01-01)).
 - Forfaitair voordeel (art. 4.14 lid 1): 5,69% in 2021 to 5,53% in 2022 ([2021 text](https://wetten.overheid.nl/BWBR0011353/2021-01-01), [2022 text](https://wetten.overheid.nl/BWBR0011353/2022-01-01)).
@@ -279,6 +289,8 @@ Any other division is allowed as long as the total is 100%, and with a single fl
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Box 2 income lands in the inkomstenbelasting return for the year as reguliere voordelen minus deductible costs plus vervreemdingsvoordelen, minus persoonsgebonden aftrek (art. 4.12) ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang)).
 - Record a dividend from the BV as a reguliere voordeel, and treat dividendbelasting on it as a voorheffing, not as a cost ([FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang)).
@@ -297,6 +309,8 @@ Any other division is allowed as long as the total is 100%, and with a single fl
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - The act that inserted art. 4.6 sub e is not identified in the checked sources. Only the text change between the 1 January 2021 and the 1 January 2022 versions of art. 4.6 is known ([2021 text](https://wetten.overheid.nl/BWBR0011353/2021-01-01), [2022 text](https://wetten.overheid.nl/BWBR0011353/2022-01-01)). What would settle it: the amending act and the Staatsblad issue behind the 2022 text of art. 4.6.
 - Proposed: the excessief-lenen maximum in the bill after the derde nota van wijziging of 25 March 2022 is € 700.000 in art. 4.14a lid 2, art. 4.14b and art. 4.14c lid 1 ([Kamerstuk 35 496 nr. 15](https://zoek.officielebekendmakingen.nl/kst-35496-15.html)). The bill had proposed € 500.000, and amendement Grinwis c.s. (Kamerstuk 36 418 nr. 60), included in the adopted text (nr. A), replaced € 700.000 by € 500.000 in the same articles ([Kamerstuk 36 418 nr. 60](https://zoek.officielebekendmakingen.nl/kst-36418-60.html), [nr. A](https://zoek.officielebekendmakingen.nl/kst-36418-A.html)). The checked 2023 text prints € 700.000 in art. 4.14a while the 2024, 2025, 2026 and 2027 texts print € 500.000 ([2023 text](https://wetten.overheid.nl/BWBR0011353/2023-01-01), [2024 text](https://wetten.overheid.nl/BWBR0011353/2024-01-01)). Nothing of this applies to 2022. What would settle the threshold for each year: the Staatsblad text of Stb. 2022, 531 and the consolidated Wet IB 2001 text per year ([Stb. 2022, 531](https://zoek.officielebekendmakingen.nl/stb-2022-531.html)).
 - UNVERIFIED: the doorschuiving list on request for gift, inheritance and emigration. It was not re-fetched on a primary page in the check ([FISIN 2020](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/aanmerkelijk_belang), [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang)). What would settle it: the 2022 consolidated texts of the rollover articles named in art. 4.11 (art. 3.65, 4.17, 4.17a, 4.17b, 4.17c, 4.40 and 4.41) ([2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01)).
@@ -308,6 +322,8 @@ Any other division is allowed as long as the total is 100%, and with a single fl
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2022 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

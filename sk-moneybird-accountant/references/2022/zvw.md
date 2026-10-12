@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 The income-dependent Zvw contribution (inkomensafhankelijke bijdrage Zorgverzekeringswet) is a health-care contribution charged on income. For a sole trader in 2022 the contribution by (voorlopige) aanslag is 5,50% of the belastbare winst uit onderneming (taxable profit from business), up to a maximum bijdrage-inkomen (contribution income) of € 59.706. The employer rate for the same year is 6,75%, and an ingehouden bijdrage (withheld contribution) of 5,50% applies to certain uitkeringen (benefits). The 2022 figures are enacted and verified on the FISIN Zvw page, but the statutory base rule for profit was read only in the 2026 version of Zvw art. 43 and is therefore UNVERIFIED for 2022.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
@@ -43,6 +47,8 @@ The income-dependent Zvw contribution (inkomensafhankelijke bijdrage Zorgverzeke
 ---
 
 ## 3. HOW IT WORKS IN 2022
+
+<a id="3-how-it-works"></a>
 
 ### Zvw bijdrage by aanslag
 
@@ -95,6 +101,8 @@ The oudedagsreserve (old-age reserve) addition for 2022 is 9,44% of the profit, 
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Example 1. Official example: loon and freelance income
 
@@ -167,6 +175,8 @@ The oudedagsreserve (old-age reserve) addition for 2022 is 9,44% of the profit, 
 
 ## 5. CHANGES FROM 2021
 
+<a id="5-changes"></a>
+
 - Zvw bijdrage by aanslag: 5,75% in 2021 to 5,50% in 2022 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 - Ingehouden Zvw bijdrage: 5,75% in 2021 to 5,50% in 2022 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 - Maximum bijdrage-inkomen: € 58.311 in 2021 to € 59.706 in 2022 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
@@ -186,6 +196,8 @@ The oudedagsreserve (old-age reserve) addition for 2022 is 9,44% of the profit, 
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - The amount to record for the Zvw aanslag is the belastbare winst uit onderneming after the ondernemersaftrek and the MKB-winstvrijstelling. The 2022 version of the statutory base rule was not read, so this is UNVERIFIED for 2022 (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01, 2026 version).
 - Record the profit, each ondernemersaftrek item and the MKB-winstvrijstelling separately, because they determine the Zvw base. The checked 2022 sources do not list specific Zvw records beyond this calculation (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 - The Zvw aanslag comes with the (voorlopige) aanslag inkomstenbelasting (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The checked sources do not state a separate 2022 Zvw filing deadline. That belongs to the procedure topic and is UNVERIFIED here.
@@ -196,6 +208,8 @@ The oudedagsreserve (old-age reserve) addition for 2022 is 9,44% of the profit, 
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Zvw base for winst 2022: UNVERIFIED. The 2022 version of Zvw art. 43 was not read. The rule used here comes from the 2026 version and from https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.2 (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01, 2026 version, https://wetten.overheid.nl/BWBR0011353/2026-01-01). Reading the 2022 version of Zvw art. 43 would settle it.
 - Zvw declaration and deadlines 2022: UNVERIFIED. The checked material states that the aanslag Zvw comes with the (voorlopige) aanslag inkomstenbelasting (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The separate filing deadline belongs to the procedure topic. A 2022 primary source on the Zvw filing timeline would settle it.
 - Zvw at AOW age 2022: UNVERIFIED in part. https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/xvi-volksgezondheid-welzijn-en-sport-rijksbegroting-2027/16-volksgezondheid-welzijn-en-sport.pdf Tabel 77 footnote 2 states that zelfstandigen and gepensioneerden pay the verlaagde IAB. No AOW-age exemption appears in Zvw art. 41 to 45 as read, which is inference from absence (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01, 2026 version). The FISIN Zvw pages do not mention the AOW age (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/inkomensafhankelijke_bijdrage_zorgverzekeringswet). A 2022 source on the AOW-age treatment of the Zvw base would settle it.
@@ -205,6 +219,8 @@ The oudedagsreserve (old-age reserve) addition for 2022 is 9,44% of the profit, 
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2022 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Inkomstenbelasting box 1 2026
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 302.
-Part 1: lines 1-301, 43672 bytes, first heading "# Inkomstenbelasting box 1 2026"
-Part 2: lines 302-351, 19676 bytes, first heading "## 5. CHANGES FROM 2025"
+Read plan: 2 parts. Next read offset: line 310.
+Part 1: lines 1-309, 43786 bytes, first heading "# Inkomstenbelasting box 1 2026"
+Part 2: lines 310-367, 19791 bytes, first heading "## 5. CHANGES FROM 2025"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 302-351, 19676 bytes, first heading "## 5. CHANGES FROM 2025"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the 2026 box 1 rates, the main heffingskortingen (tax credits), the tariefsaanpassing (rate adjustment for high incomes with deductions) and the calculation of taxable income from business profit. The enacted 2026 box 1 table has three brackets below AOW age (state pension age), with separate first-bracket rates and limits for people at AOW age. The 2026 values below are enacted and carry their Check tags.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
@@ -67,6 +71,8 @@ This file covers the 2026 box 1 rates, the main heffingskortingen (tax credits),
 ---
 
 ## 3. HOW IT WORKS IN 2026
+
+<a id="3-how-it-works"></a>
 
 ### Box 1 below AOW age
 
@@ -188,6 +194,8 @@ No new oudedagsreserve (old-age reserve) can be formed in 2026. An existing rese
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Official example: box 1 calculation on a salary of € 80.000
 
 Copied from the 2026 box 1 page, without heffingskortingen.
@@ -301,6 +309,8 @@ This example applies the credits in full and does not model the split into belas
 
 ## 5. CHANGES FROM 2025
 
+<a id="5-changes"></a>
+
 - Below AOW age the combined first-bracket rate changed from 35,82% to 35,75%, and its ceiling from € 38.441 to € 38.883. The income-tax part changed from 8,17% to 8,10%. The second-bracket rate changed from 37,48% to 37,56%, and its boundary from € 76.817 to € 78.426. The top rate stayed 49,50%. The statutory fixed amounts changed from € 3.140 to € 3.149 and from € 17.523 to € 18.001. Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/belastingberekening, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/belastingberekening, https://wetten.overheid.nl/jci1.3:c:BWBR0011353&hoofdstuk=2&afdeling=2.2&artikel=2.10&z=2025-01-01&g=2025-01-01, https://wetten.overheid.nl/jci1.3:c:BWBR0011353&hoofdstuk=2&afdeling=2.2&artikel=2.10&z=2026-01-01&g=2026-01-01.
 - At AOW age the first-bracket rate changed from 17,92% to 17,85%. For people born before 1 January 1946 the first-bracket ceiling changed from € 40.502 to € 41.123. The statutory fixed amounts changed from € 3.309 to € 3.330 and from € 16.919 to € 17.341. Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1, https://wetten.overheid.nl/jci1.3:c:BWBR0011353&hoofdstuk=2&afdeling=2.2&artikel=2.10&z=2025-01-01&g=2025-01-01 art. 2.10a, https://wetten.overheid.nl/jci1.3:c:BWBR0011353&hoofdstuk=2&afdeling=2.2&artikel=2.10&z=2026-01-01&g=2026-01-01 art. 2.10a.
 - The first-bracket rate for the year AOW age is reached changed month by month: January 17,92% to 17,85%, February 19,41% to 19,34%, March 20,90% to 20,83%, April 22,39% to 22,33%, May 23,88% to 23,82%, June 25,37% to 25,31%, July 26,87% to 26,80%, August 28,36% to 28,29%, September 29,85% to 29,78%, October 31,34% to 31,28%, November 32,83% to 32,77% and December 34,32% to 34,26%. Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/belastingberekening, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/belastingberekening.
@@ -321,6 +331,8 @@ This example applies the credits in full and does not model the split into belas
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Track the profit used as winst uit onderneming, the vrijgestelde winstbestanddelen, the applicable ondernemersaftrek, the MKB-winstvrijstelling and te verrekenen verliezen. These amounts determine the belastbare winst uit onderneming and the belastbaar inkomen uit werk en woning. Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/ondernemersaftrek_en_investeringsaftrek, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/mkb_winstvrijstelling, https://wetten.overheid.nl/BWBR0011353/2026-01-01 arts. 3.1 and 3.2.
 - Apply the ondernemersaftrek first and compute the MKB-winstvrijstelling on the profit after that aftrek. Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/ondernemersaftrek_en_investeringsaftrek, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/mkb_winstvrijstelling.
 - Keep the profit before ondernemersaftrek and MKB-winstvrijstelling visible, because the arbeidskorting is calculated on that arbeidsinkomen. Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/heffingskortingen, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/arbeidskorting/tabel-arbeidskorting-2026.
@@ -333,6 +345,8 @@ This example applies the credits in full and does not model the split into belas
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - **Monthly AOW transition rates:** the dedicated box 1 page gives the baseline monthly rates in section 2. The FISIN 2026 calculation page gives April 22,32%, May 23,81%, June 25,30%, October 31,27%, November 32,76% and December 34,25%, which are 0,01 point lower than the dedicated page in those six months. The dedicated box 1 page is the current page for box 1 and is used for the baseline, but no statute text holds the monthly rates. A direct official correction or clarification would settle the difference. Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1 and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/belastingberekening.
 - **IACK maximum point:** the 2026 IACK table says € 32.711, the 2026 FISIN heffingskortingen table says € 32.719 and the Rijksoverheid answer says € 32.720. Arithmetic with € 3.032 / 11,45% plus € 6.239 gives about € 32.719, so the table's € 32.710 band end looks like a print slip. The exact point remains UNVERIFIED until an authoritative correction or clarification. Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting-2026, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/heffingskortingen and https://www.rijksoverheid.nl/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting-en-welke-heffingskortingen-zijn-er.
 - **IACK maximum for a full year at AOW age:** the 2026 year table gives € 1.513 and the 2026 FISIN heffingskortingen table gives € 1.514. The year table is used in section 2 with Check tag Corrected, but the difference stays open. An authoritative correction or clarification would settle it. Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting-2026 and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/heffingskortingen.
@@ -344,6 +358,8 @@ This example applies the credits in full and does not model the split into belas
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2026 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

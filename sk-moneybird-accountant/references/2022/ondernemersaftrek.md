@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the ondernemersaftrek (entrepreneur's deduction) and the MKB-winstvrijstelling (small business profit exemption) for tax year 2022. It sets out the urencriterium (hours test), the five parts of the ondernemersaftrek, the € 6.310 zelfstandigenaftrek (self-employed person's deduction), the € 2.123 startersaftrek (starter's deduction), the 14% MKB-winstvrijstelling and the 9,44% addition to the oudedagsreserve (old-age reserve). All 2022 values are enacted and verified against the statute text valid on 1 January 2022 and against the Belastingdienst pages. 2022 is the last year in which an addition to the oudedagsreserve can be made, because art. 3.67 to 3.72 lapsed on 1 January 2023.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
@@ -56,6 +60,8 @@ This file covers the ondernemersaftrek (entrepreneur's deduction) and the MKB-wi
 ---
 
 ## 3. HOW IT WORKS IN 2022
+
+<a id="3-how-it-works"></a>
 
 Who is an ondernemer for the inkomstenbelasting is judged by the Belastingdienst per activity, separately from the btw. A btw-ondernemer is not automatically an IB-ondernemer, because the Belastingdienst looks at more conditions for the inkomstenbelasting (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/wanneer_bent_u_ondernemer_voor_de_inkomstenbelasting/). The Belastingdienst weighs whether profit is made and how much, independence, capital, time spent, number of clients, publicity, entrepreneurial risk and liability for business debts. Activities are judged one by one and only sufficiently connected activities form one source. Activities in the hobby or family sphere do not make someone an IB-ondernemer. Someone who is not an IB-ondernemer reports inkomsten uit overig werk, the profit is calculated the same way, but there is no right to schemes such as the zelfstandigenaftrek or the investeringsaftrek (https://ondernemersplein.overheid.nl/bedrijf-starten/inschrijven-bij-kvk/wanneer-bent-u-ondernemer/). Art. 3.4 defines the ondernemer as the taxpayer for whose account a business is run and who is directly bound for its obligations, and art. 3.5 counts the zelfstandig beroep as an onderneming (https://wetten.overheid.nl/BWBR0011353/2020-01-01, art. 3.4 and 3.5). Medegerechtigden (persons entitled to a profit share) get no zelfstandigenaftrek, meewerkaftrek, stakingsaftrek or MKB-winstvrijstelling on their medegerechtigde profit (https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://wetten.overheid.nl/BWBR0011353/2027-01-01, art. 3.74).
 
@@ -162,6 +168,8 @@ The maximum value of these deductions is the top rate of 49,50% minus the tarief
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 All examples use the 2022 figures unless stated otherwise.
 
@@ -270,6 +278,8 @@ Inputs: profit € 100.000, ondernemer below the AOW age, meets the urencriteriu
 
 ## 5. CHANGES FROM 2021
 
+<a id="5-changes"></a>
+
 - Zelfstandigenaftrek: € 6.670 in 2021 to € 6.310 in 2022 (https://wetten.overheid.nl/BWBR0011353/2021-01-01 and https://wetten.overheid.nl/BWBR0011353/2022-01-01).
 - Zelfstandigenaftrek at AOW age: € 3.335 in 2021 to € 3.155 in 2022 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/ondernemersaftrek_en_investeringsaftrek and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek).
 - Aftrek voor speur- en ontwikkelingswerk: € 13.188 in 2021 to € 13.360 in 2022 (https://wetten.overheid.nl/BWBR0011353/2021-01-01 and https://wetten.overheid.nl/BWBR0011353/2022-01-01).
@@ -286,6 +296,8 @@ Inputs: profit € 100.000, ondernemer below the AOW age, meets the urencriteriu
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record all hours worked on the business, including non-billable work such as quotes, administration and the business website, because the urencriterium is tested at 1.225 hours in the calendar year and the hours must be made plausible with evidence such as an agenda, quotes, timesheets and invoices (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium).
 - Keep the beschikking for the niet-gerealiseerde zelfstandigenaftrek and the carry-forward saldo in the records, because the inspecteur sets both in a beschikking open to bezwaar and the offset runs over the next nine calendar years, oldest first (https://wetten.overheid.nl/BWBR0011353/2022-01-01, art. 3.76 lid 6 to 8, and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/zelfstandigenaftrek1/verrekenen_niet_gerealiseerde_zelfstandigenaftrek).
 - Record an addition to the oudedagsreserve as a movement in a fiscal reserve. The percentage base is the profit before the addition, the addition is capped at € 9.632 for 2022, and 2022 is the last year for additions (https://wetten.overheid.nl/BWBR0011353/2022-01-01, art. 3.68 and 3.71, and https://wetten.overheid.nl/BWBR0011353/2023-01-01).
@@ -299,6 +311,8 @@ Inputs: profit € 100.000, ondernemer below the AOW age, meets the urencriteriu
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - FISIN 2022 prints the lookback window for the second test as "20167 tot en met 2021". This is a misprint. Art. 3.6 gives the five preceding calendar years, so 2017 to 2021, and FISIN 2021 prints 2016 to 2020 for 2021 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek and https://wetten.overheid.nl/BWBR0011353/2022-01-01, art. 3.6). The statute settles it.
 - FISIN 2022 prints "20223" in the sentence on the lijfrente deadline. The intended year is 2022, with a deadline of 1 July 2023 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/uitgaven_voor_inkomensvoorzieningen). The page context of the 2022 return settles it.
 - The Zvw interaction is verified in the checked material for 2020 and 2021 only. The 2022 self-assessed Zvw rate and maximum contribution income are unknown here (verified years: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The FISIN 2022 Zvw page or the Zvw statute for 2022 would settle it.
@@ -309,6 +323,8 @@ Inputs: profit € 100.000, ondernemer below the AOW age, meets the urencriteriu
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2022 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

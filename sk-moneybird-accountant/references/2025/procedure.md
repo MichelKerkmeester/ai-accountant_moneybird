@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Aangifte en procedure 2025
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 228.
-Part 1: lines 1-227, 45835 bytes, first heading "# Aangifte en procedure 2025"
-Part 2: lines 228-275, 13261 bytes, first heading "## 5. CHANGES FROM 2024"
+Read plan: 2 parts. Next read offset: line 236.
+Part 1: lines 1-235, 45949 bytes, first heading "# Aangifte en procedure 2025"
+Part 2: lines 236-291, 13376 bytes, first heading "## 5. CHANGES FROM 2024"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 228-275, 13261 bytes, first heading "## 5. CHANGES FROM 2024"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the procedural side of Dutch tax for a ZZP sole trader. It lists the filing and payment deadlines for income tax and btw, uitstel (extension), the voorlopige aanslag (provisional assessment), belastingrente (tax interest), the navorderingstermijn (additional assessment term), bezwaar (objection), the bewaarplicht (record-keeping duty) and the KVK and Belastingdienst registration duties. For 2025 the key values are the income tax return deadline of 1 May 2026 with uitstel to 1 September 2026, the belastingrente of 6,5% in 2025 that drops to 5% from 1 January 2026, and the btw suppletie (supplementary return) term of 8 weeks that applies since 1 January 2025. All values for tax year 2025 in this file are enacted and Verified.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
@@ -59,6 +63,8 @@ This file covers the procedural side of Dutch tax for a ZZP sole trader. It list
 ---
 
 ## 3. HOW IT WORKS IN 2025
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Aangifte inkomstenbelasting 2025 filing deadline
 
@@ -148,6 +154,8 @@ Handelsregisterwet 2007 art. 20 lid 1: the opgave (notification) for the first i
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 **Official example, definitive aanslag for tax year 2025** ([definitieve aanslag](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag)).
 - Step 1: the return is filed before 1 May 2026.
 - Step 2: the Belastingdienst counts the 3 years from 1 January after the tax year, so from 1 January 2026.
@@ -227,6 +235,8 @@ Handelsregisterwet 2007 art. 20 lid 1: the opgave (notification) for the first i
 
 ## 5. CHANGES FROM 2024
 
+<a id="5-changes"></a>
+
 - Belastingrente for IB and btw: 7,5% in 2024 to 6,5% in 2025, then 5% from 1 January 2026. The rate regime is set once a year since 1 January 2024, with 2024 as the first year at 7,5% ([overzicht percentages belastingrente](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente)).
 - Belastingrente on the tax year: tax year 2024 runs from 1 July 2025 at 6,5% and 5% from 1 January 2026, tax year 2025 runs from 1 July 2026 at 5% ([overzicht percentages belastingrente](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente)).
 - IB return deadline: tax year 2024 was due 1 May 2025 with uitstel to 1 September 2025, tax year 2025 is due 1 May 2026 with uitstel to 1 September 2026 ([archief 22 mei 2025](https://web.archive.org/web/20250522/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/kan-ik-nog-uitstel-aanvragen-belastingaangifte), [kan ik nog uitstel aanvragen](https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/kan-ik-nog-uitstel-aanvragen-belastingaangifte)).
@@ -244,6 +254,8 @@ Handelsregisterwet 2007 art. 20 lid 1: the opgave (notification) for the first i
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - File and pay each btw return by the last day of the month after the tijdvak, or by 31 March 2026 for the 2025 yearly return. Return and payment must both be received by that date ([uiterste aangifte en betaaldatums btw](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums), [archief 30 april 2025](https://web.archive.org/web/20250430/https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums)).
 - Correct a btw error within 8 weeks after discovering it to stay boetevrij ([boete](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete)).
 - Record the voorlopige aanslag termijnen as they are paid or received, because paid or received amounts are settled in the income tax return. A paid voorlopige aanslag does not count toward the aanslaggrens, monthly refunds received before year end do, and a refund received after filing does not ([in welke situaties moet ik mijn voorlopige aanslag wijzigen](https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/in-welke-situaties-moet-ik-mijn-voorlopige-aanslag-wijzigen), [definitieve aanslag](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag)).
@@ -255,6 +267,8 @@ Handelsregisterwet 2007 art. 20 lid 1: the opgave (notification) for the first i
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 No value in this file is UNVERIFIED, proposed or unknown. All 2025 values are enacted and Verified. The points below are conflicts between sources or places where a source does not state a detail.
 
@@ -268,6 +282,8 @@ No value in this file is UNVERIFIED, proposed or unknown. All 2025 values are en
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2025 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

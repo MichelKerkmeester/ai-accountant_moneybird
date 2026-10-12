@@ -14,9 +14,9 @@ version: 1.0.0.0
 # BV en vennootschapsbelasting 2021
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 386.
-Part 1: lines 1-385, 50005 bytes, first heading "# BV en vennootschapsbelasting 2021"
-Part 2: lines 386-420, 6605 bytes, first heading "## 6. IN THE BOOKS"
+Read plan: 2 parts. Next read offset: line 396.
+Part 1: lines 1-395, 50143 bytes, first heading "# BV en vennootschapsbelasting 2021"
+Part 2: lines 396-436, 6696 bytes, first heading "## 6. IN THE BOOKS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 386-420, 6605 bytes, first heading "## 6. IN THE BOOKS"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the vennootschapsbelasting (corporate income tax, Vpb) for a BV in 2021, the DGA (directeur-grootaandeelhouder, director and major shareholder) wage rules, dividendbelasting (dividend withholding tax), the conditionele bronbelasting (conditional withholding tax), the fiscale eenheid (fiscal unity) and the switch from an eenmanszaak (sole proprietorship) to a BV. The 2021 Vpb rate is 15% for the first € 245.000 of belastbaar bedrag (taxable amount) and € 36.750 plus 25% above that bracket, and the innovatiebox effective rate is 9%, up from 7% in 2020. https://wetten.overheid.nl/BWBR0002672/2021-01-01 All stated 2021 values are enacted. The only Corrected items are the dividend stripping article in the Wet DB 1965 and the Zvw route for an uninsured DGA.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
@@ -66,6 +70,8 @@ This file covers the vennootschapsbelasting (corporate income tax, Vpb) for a BV
 ---
 
 ## 3. HOW IT WORKS IN 2021
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Vennootschapsbelasting tarief
 
@@ -182,6 +188,8 @@ The new legal form is a new business for btw and may get a new btw-identificatie
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Calculated example: Vpb in the two brackets
 
@@ -365,6 +373,8 @@ KG:212:2022:1 works a geruisloze omzetting with retroactive effect to 1 January 
 
 ## 5. CHANGES FROM 2020
 
+<a id="5-changes"></a>
+
 - Vpb first bracket: 2020 had t/m € 200.000 at 16,5%, 2021 has t/m € 245.000 at 15%. The amount above the bracket changed from € 33.000 plus 25% in 2020 to € 36.750 plus 25% in 2021. https://wetten.overheid.nl/BWBR0002672/2020-01-01 and https://wetten.overheid.nl/BWBR0002672/2021-01-01
 - Innovatiebox fraction: 2020 had 7/H with an effective 7%, 2021 to 2026 have 9/H with an effective 9%. https://wetten.overheid.nl/BWBR0002672/2020-01-01 and https://wetten.overheid.nl/BWBR0002672/2021-01-01 and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/innovatiebox/innovatiebox
 - Gebruikelijk loon normbedrag: € 46.000 in 2020 to € 47.000 in 2021. https://wetten.overheid.nl/BWBR0002471/2020-01-01 and https://wetten.overheid.nl/BWBR0002471/2021-01-01
@@ -385,6 +395,8 @@ KG:212:2022:1 works a geruisloze omzetting with retroactive effect to 1 January 
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 A BV records the DGA wage in its loonadministratie and withholds loonheffing. For a DGA who is not insured for the werknemersverzekeringen, the BV withholds the inkomensafhankelijke bijdrage Zvw on the net wage up to the maximum bijdrage-inkomen and pays it through the aangifte loonheffingen. For 2021 that is 5,75% up to € 58.311. An insured DGA falls under the werkgeversheffing Zvw of 7,00% paid by the BV. https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet
 
 File the aangifte vennootschapsbelasting. A calendar book year is filed before 1 June of the next year, a broken book year within 5 months after its end, a short book year ending 31 December before 1 June and a short book year ending in another month before 1 April of the next calendar year. Online extension to 1 November is requested from 1 March to 1 June and is only for a calendar book year. A paper request is needed for a broken book year or for more than 5 months and must be filed within 5 months after the book year ends, with reasons. These rules come from the current Belastingdienst pages, read for the 2025 and 2026 filing seasons. https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/aangifte-vennootschapsbelasting-doen/aangifte-vennootschapsbelasting-doen and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/uitstel_aangifte_vennootschapsbelasting/uitstel_aangifte_vennootschapsbelasting
@@ -403,6 +415,8 @@ In a fiscale eenheid the daughter files no separate return and the results of th
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - The Besluit geruisloze omzetting of 30 June 2010, in force through 4 November 2025, was not read. The 2021 wording of the nine-month and three-year conditions in this file therefore rests on the successor Besluit of 24 October 2025, Stcrt. 2025, 37092. Reading Stcrt. 2010, 10512 would settle the 2021 text. https://zoek.officielebekendmakingen.nl/stcrt-2025-37092.html
 - Corrected: the dividend stripping rule is art. 4 lid 7 Wet DB 1965, not art. 4 lid 3. The rule can be read in the dated texts. https://wetten.overheid.nl/BWBR0002515/2020-01-01
 - Corrected route for the Zvw bijdrage of an uninsured DGA: the Handboek Loonheffingen 2025 paragraph 8.2.2 states that the BV withholds the bijdrage on net wage and pays it through the aangifte loonheffingen. The Belastingdienst table says the DGA pays the bijdrage himself, collected by inhouding op nettoloon or by aanslag. https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/bijdrage_zorgverzekeringswet/hoe_wordt_de_inkomensafhankelijke_bijdrage_zvw_betaald/tabel_werkgeversheffing_zvw_of_bijdrage_zvw/ik_ben_directeur_grootaandeelhouder/
@@ -413,6 +427,8 @@ In a fiscale eenheid the daughter files no separate return and the results of th
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2021 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Inkomstenbelasting box 1 2025
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 325.
-Part 1: lines 1-324, 50880 bytes, first heading "# Inkomstenbelasting box 1 2025"
-Part 2: lines 325-342, 4475 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Read plan: 2 parts. Next read offset: line 337.
+Part 1: lines 1-336, 51047 bytes, first heading "# Inkomstenbelasting box 1 2025"
+Part 2: lines 337-358, 4537 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 325-342, 4475 bytes, first heading "## 7. OPEN POINTS AND CONFLICT
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the 2025 box 1 rates, the general tax credit, employment tax credit, income-related combination tax credit, and the rate adjustment for certain deductions. The 2025 rates and credit tables in the checked material are enacted. Below AOW age, box 1 has three published brackets, and the first-bracket rate differs for people who have reached AOW age.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
@@ -64,6 +68,8 @@ This file covers the 2025 box 1 rates, the general tax credit, employment tax cr
 ---
 
 ## 3. HOW IT WORKS IN 2025
+
+<a id="3-how-it-works"></a>
 
 ### Box 1 below AOW age
 
@@ -172,6 +178,8 @@ An income-related Zvw contribution also exists. Its amounts and calculation belo
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Box 1 below AOW age
 
@@ -293,6 +301,8 @@ For a taxpayer at AOW age for the whole year, the same income above the threshol
 
 ## 5. CHANGES FROM 2024
 
+<a id="5-changes"></a>
+
 - The published below-AOW box 1 table changed from 36,97% up to € 75.518 and 49,50% above, to three brackets: 35,82% up to € 38.441, 37,48% to € 76.817, and 49,50% above. The top rate remained 49,50%. (Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/belastingberekening, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/belastingberekening, https://wetten.overheid.nl/BWBR0011353/2024-01-01, https://wetten.overheid.nl/BWBR0011353/2025-01-01.)
 - For taxpayers at AOW age for the whole year, the first rate changed from 19,07% to 17,92%. The second rate changed from 36,97% to 37,48%, and its upper boundary changed from € 75.518 to € 76.817. The first-bracket boundary changed from € 38.098 to € 38.441 for people born on or after 1 January 1946, and from € 40.021 to € 40.502 for those born before that date. (Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1, https://wetten.overheid.nl/BWBR0011353/2024-01-01, https://wetten.overheid.nl/BWBR0011353/2025-01-01.)
 - The first-bracket rate in the AOW transition year changed month by month. January 19,07% to 17,92%. February 20,56% to 19,41%. March 22,05% to 20,90%. April 23,54% to 22,39%. May 25,03% to 23,88%. June 26,52% to 25,37%. July 28,02% to 26,87%. August 29,51% to 28,36%. September 31,00% to 29,85%. October 32,49% to 31,34%. November 33,99% to 32,83%. December 35,47% to 34,32%. (Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/belastingberekening, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/belastingberekening.)
@@ -316,6 +326,8 @@ For a taxpayer at AOW age for the whole year, the same income above the threshol
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 Keep the business records needed to establish profit and identify exempt profit components and applicable ondernemersaftrek. Use the resulting taxable business profit in the box 1 calculation, where it forms part of income from work and home. The checked material describes the calculation but does not state a record-retention period or an income tax filing deadline. (Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/winst_uit_onderneming, https://wetten.overheid.nl/BWBR0011353/2026-01-01 arts. 3.1 and 3.2.)
 
 The AHK is applied automatically in the return and may also be applied in payroll. The AK can be affected by an amount already applied by an employer. The IACK is claimed in the return or through a voorlopige aanslag, not in payroll. In the year AOW age is reached, use the 2025 provisional assessment form for the AHK, AK, and IACK. (Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/heffingskortingen, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/arbeidskorting/tabel-arbeidskorting-2025, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/algemene_heffingskorting/tabel-algemene-heffingskorting-2025, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting-2025.)
@@ -323,6 +335,8 @@ The AHK is applied automatically in the return and may also be applied in payrol
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - **IACK co-parent day test, unresolved for 2025.** The conditions page at https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting says at least 156 days per calendar year in each household, prorated where co-parenting lasts at least 6 months but not the full year. The page https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/heffingskortingen says at least 78 days in a period of 6 months in a repeating pattern with each parent. Both are marked enacted and Verified in the checked material. The checked material does not settle how the tests apply to shorter or irregular periods. The current statutory text or a clarifying primary-source statement from the Belastingdienst would settle the wording.
 - **AOW transition-year bracket 2 conflict, resolved in favor of 37,48%.** The page https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/belastingberekening returned 36,97% for bracket 2 in the transition-year table. The pages https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1 and https://wetten.overheid.nl/BWBR0011353/2025-01-01 give 37,48%, which governs.
@@ -335,6 +349,8 @@ The AHK is applied automatically in the return and may also be applied in payrol
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2025 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the investment deductions (KIA, EIA, MIA and Vamil), ordinary and willekeurige afschrijving (random depreciation), the bodemwaarde (floor value) for buildings and the desinvesteringsbijtelling (disposal addition) for tax year 2022. The largest change in 2022 is the MIA step-up on 1 January 2022 from 36% / 27% / 13,5% to 45% / 36% / 27%, coupled with a new Milieulijst (environmental list) code mapping for the three MIA categories and for the Vamil codes A, B, C and F. The KIA table and the EIA and MIA maximum investment amount were indexed. The 2022 rules are enacted law, read as the Wet inkomstenbelasting 2001 stands for 2022.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
@@ -44,6 +48,8 @@ This file covers the investment deductions (KIA, EIA, MIA and Vamil), ordinary a
 ---
 
 ## 3. HOW IT WORKS IN 2022
+
+<a id="3-how-it-works"></a>
 
 ### KIA table (art. 3.41 lid 2)
 
@@ -153,6 +159,8 @@ The 2023 scheme itself sits in URWA art. 13 to 15. Art. 13 lid 1 covers assets n
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Example 1: KIA on a single investment (Calculated example)
 
 A sole trader buys one machine in 2022 for € 60.000,00 and takes it into use in 2022. The machine is the only investment of the year, so the total investment in bedrijfsmiddelen is € 60.000,00. That total is above € 59.939,00 and not above € 110.998,00, so the third band of the KIA table (art. 3.41 lid 2) applies.
@@ -261,6 +269,8 @@ Source: [Belastingdienst starters](https://www.belastingdienst.nl/wps/wcm/connec
 
 ## 5. CHANGES FROM 2021
 
+<a id="5-changes"></a>
+
 - KIA table: nil up to € 2.400 in both years, but the rest of the table was indexed. The end of the 28% band moved from € 59.170 to € 59.939. The fixed amount moved from € 16.568 to € 16.784. The third amount moved from € 109.574 to € 110.998. The top amount moved from € 328.721 to € 332.994 ([https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 3.41 lid 2](https://wetten.overheid.nl/BWBR0011353/2027-01-01)).
 - MIA percentages: 36% (categorie I) / 27% (categorie II) / 13,5% (categorie III) in the 2021 text of art. 3.42a lid 3, to 45% (I) / 36% (II) / 27% (III) from 1 January 2022 ([https://wetten.overheid.nl/BWBR0011353/2021-01-01 and https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 3.42a lid 3](https://zoek.officielebekendmakingen.nl/stcrt-2021-47737.html), [Rijksoverheid](https://www.rijksoverheid.nl/actueel/nieuws/2021/09/21/belastingplan-2022-beter-belastingstelsel)). The FISIN 2022 chapter still prints the old 36% / 27% / 13,5%, see section 7 ([FISIN 2022](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek)).
 - Milieulijst code mapping: from 1 January 2022 codes starting with F or G map to categorie I (45%), A or D to categorie II (36%) and B or E to categorie III (27%). Codes starting with A, B, C or F qualify for 75% Vamil ([Milieulijst 2022](https://zoek.officielebekendmakingen.nl/stcrt-2021-47737.html)).
@@ -279,6 +289,8 @@ Source: [Belastingdienst starters](https://www.belastingdienst.nl/wps/wcm/connec
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Claim the KIA in the aangifte on the total investment in bedrijfsmiddelen of the calendar year. It is a per-onderneming deduction and it is claimed by choice ([FISIN 2022](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek)).
 - Keep per asset the aanschaffings- or voortbrengingskosten, the date the obligation was entered or the order was placed, the date the asset was taken into use and the payments made in the year. Art. 3.44 lid 1 caps the deduction at the payments made when the asset is not in use at the end of the calendar year and moves the excess to later years ([art. 3.44](https://wetten.overheid.nl/BWBR0011353/2027-01-01)).
 - Record the payment and use dates that art. 3.47 lid 6 needs. Undoing an investment includes not having paid at least 25% of the investment amount within twelve months after the obligation, unless the asset is in use, and not having taken the asset into use within three years after the start of the investment year ([art. 3.47](https://wetten.overheid.nl/BWBR0011353/2027-01-01)).
@@ -292,6 +304,8 @@ Source: [Belastingdienst starters](https://www.belastingdienst.nl/wps/wcm/connec
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Temporary willekeurige afschrijving 2022: none found, so the value is UNVERIFIED as an absence. One page cannot confirm an absence. The Eindejaarsregeling 2022 sets the 2023 scheme and names 2009, 2010, 2011 and (deels) 2013 as comparable years, and the URWA 2025 text lists no 2020, 2021 or 2022 scheme ([Eindejaarsregeling 2022](https://zoek.officielebekendmakingen.nl/stcrt-2022-33377.html), [URWA](https://wetten.overheid.nl/BWBR0012035/2025-01-01/0)). Reading the URWA text valid on 1 January 2022 and the Eindejaarsregeling for 2021 and 2022 would settle it.
 - MIA percentages 2022, source conflict. The FISIN 2022 chapter prints 36% / 27% / 13,5% ([FISIN 2022](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek)). Art. 3.42a lid 3 in https://wetten.overheid.nl/BWBR0011353/2022-01-01, the Milieulijst 2022 in force on 1 January 2022 and the Rijksoverheid Belastingplan 2022 news item all give 45% / 36% / 27% from 1 January 2022 ([Milieulijst 2022](https://zoek.officielebekendmakingen.nl/stcrt-2021-47737.html), [Rijksoverheid](https://www.rijksoverheid.nl/actueel/nieuws/2021/09/21/belastingplan-2022-beter-belastingstelsel)). The conflict is settled to 45% / 36% / 27% from 1 January 2022. The FISIN 2022 chapter is the losing source.
 - Starters willekeurige afschrijving cap: the € 332.994 for 2022 is a reading of the URWA art. 8 cross-reference to the maximum amount in the art. 3.41 lid 2 table over which KIA can be obtained. No primary page prints the cap as a number, so the amount rests on reading a cross-reference ([URWA art. 8](https://wetten.overheid.nl/BWBR0012035/2025-01-01/0), [https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 3.41 lid 2](https://wetten.overheid.nl/BWBR0011353/2027-01-01)).
@@ -302,6 +316,8 @@ Source: [Belastingdienst starters](https://www.belastingdienst.nl/wps/wcm/connec
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2022 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

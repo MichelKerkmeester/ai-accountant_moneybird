@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Investeringsaftrek en afschrijving 2025
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 376.
-Part 1: lines 1-375, 48828 bytes, first heading "# Investeringsaftrek en afschrijving 2025"
-Part 2: lines 376-394, 2875 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Read plan: 2 parts. Next read offset: line 388.
+Part 1: lines 1-387, 48995 bytes, first heading "# Investeringsaftrek en afschrijving 2025"
+Part 2: lines 388-410, 2937 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 376-394, 2875 bytes, first heading "## 7. OPEN POINTS AND CONFLICT
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the 2025 rules for investment deductions and depreciation: the kleinschaligheidsinvesteringsaftrek (KIA, small-scale investment deduction), the energie-investeringsaftrek (EIA, energy investment deduction), the milieu-investeringsaftrek (MIA, environmental investment deduction), the Vamil (extra random depreciation for designated environmental assets), the desinvesteringsbijtelling (addition to profit on disposal) and ordinary depreciation. The 2025 KIA table runs from € 2.900 to € 392.230 with a fixed € 19.769 in the middle band, the EIA is 40%, the MIA is 45%, 36% or 27%, the Vamil lets 75% of the cost be depreciated at will, the EIA and MIA maximum investment amount is € 151.000.000 and the desinvesteringsbijtelling threshold is € 2.900. All 2025 law values here are enacted and verified against the 2025 text of the Wet IB 2001, the URWA and the Belastingdienst pages for 2025. A few figures on the RVO applicant pages come without a stated year and are marked unknown and UNVERIFIED in section 2 and section 7.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
@@ -61,6 +65,8 @@ This file covers the 2025 rules for investment deductions and depreciation: the 
 ---
 
 ## 3. HOW IT WORKS IN 2025
+
+<a id="3-how-it-works"></a>
 
 ### Kleinschaligheidsinvesteringsaftrek (KIA), table
 
@@ -175,6 +181,8 @@ Art. 13 lid 1 of the URWA: assets not used before, with obligations entered or v
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Example 1. KIA in the 28% band (Calculated example)
 
@@ -348,6 +356,8 @@ The Belastingdienst starters willekeurige afschrijving example. A truck is bough
 
 ## 5. CHANGES FROM 2024
 
+<a id="5-changes"></a>
+
 - KIA table, every amount moves up. The window start goes from € 2.800 to € 2.900. The end of the 28% band goes from € 69.765 to € 70.602. The fixed amount goes from € 19.535 to € 19.769. The end of the fixed band goes from € 129.194 to € 130.744. The top of the table goes from € 387.580 to € 392.230 ([2024 text of art. 3.41 lid 2](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [2025 text of art. 3.41 lid 2](https://wetten.overheid.nl/BWBR0011353/2025-01-01)).
 - EIA and MIA maximum investment amount: € 149.000.000 in 2024 to € 151.000.000 in 2025 ([2024 text of art. 3.42 lid 4](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [FISIN 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek), [2025 text of art. 3.42 lid 4](https://wetten.overheid.nl/BWBR0011353/2025-01-01)).
 - Desinvesteringsbijtelling threshold: € 2.800 in 2024 to € 2.900 in 2025 ([2024 text of art. 3.47 lid 1](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [Belastingdienst desinvesteringsbijtelling page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/desinvesteringsbijtelling), [2025 text of art. 3.47 lid 1](https://wetten.overheid.nl/BWBR0011353/2025-01-01)).
@@ -359,6 +369,8 @@ The Belastingdienst starters willekeurige afschrijving example. A truck is bough
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Claim the KIA by choice in the aangifte, per onderneming, on the total investment in bedrijfsmiddelen in the calendar year ([art. 3.41 lid 2, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01)).
 - Record each investment per bedrijfsmiddel with the date of the koopovereenkomst or the order, because the RVO notification must go out within 3 months ([RVO](https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers), [RVO voorwaarden](https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden)).
@@ -375,6 +387,8 @@ The Belastingdienst starters willekeurige afschrijving example. A truck is bough
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 The 2025 figures themselves are settled. The items below are the unknown values, UNVERIFIED points and the resolved conflict that touch 2025.
 
 - Desinvesteringsbijtelling 2025 amount: FISIN 2025 prints "€ 2.800 of minder" ([FISIN 2025](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek)) against € 2.900 in art. 3.47 lid 1 of the 2025 text ([art. 3.47 lid 1, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01)). The conflict is settled to € 2.900, the statute prevails. A corrected FISIN page would settle it fully.
@@ -387,6 +401,8 @@ The 2025 figures themselves are settled. The items below are the unknown values,
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2025 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

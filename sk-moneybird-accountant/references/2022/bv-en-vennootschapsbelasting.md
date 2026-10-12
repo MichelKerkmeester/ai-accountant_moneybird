@@ -14,9 +14,9 @@ version: 1.0.0.0
 # BV en vennootschapsbelasting 2022
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 275.
-Part 1: lines 1-274, 50867 bytes, first heading "# BV en vennootschapsbelasting 2022"
-Part 2: lines 275-371, 16899 bytes, first heading "### Example 12: Inkoop van eigen aandelen (Calculated example)"
+Read plan: 2 parts. Next read offset: line 283.
+Part 1: lines 1-282, 50981 bytes, first heading "# BV en vennootschapsbelasting 2022"
+Part 2: lines 283-387, 17014 bytes, first heading "### Example 12: Inkoop van eigen aandelen (Calculated example)"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 275-371, 16899 bytes, first heading "### Example 12: Inkoop van ei
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 The vennootschapsbelasting (corporate income tax, Vpb) for 2022 has a first bracket of 15% up to € 395.000 and 25,8% above it, read in the text valid on 1 January 2022, and these 2022 figures are enacted law. Two large switches in the same year matter for a BV owner, the generieke renteaftrekbeperking (generic limitation on interest deduction) falls from 30% to 20%, and verliesverrekening (loss set-off) becomes one year back with unlimited forward set-off, capped at € 1.000.000 plus 50% of the profit above € 1.000.000 per year. For the directeur-grootaandeelhouder (DGA, director and major shareholder) the gebruikelijk loon (customary salary) normbedrag (standard amount) is € 48.000, and 2022 is the last year in which the comparable wage counts at 75%. This file also covers the dividendbelasting (dividend withholding tax), the fiscale eenheid (fiscal unity), the innovatiebox (innovation box) and the switch from an eenmanszaak (sole proprietorship) to a BV.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
@@ -71,6 +75,8 @@ The vennootschapsbelasting (corporate income tax, Vpb) for 2022 has a first brac
 ---
 
 ## 3. HOW IT WORKS IN 2022
+
+<a id="3-how-it-works"></a>
 
 ### Vpb-tarief (art. 22 Wet Vpb 1969)
 A BV established in the Netherlands is a taxpayer for the vennootschapsbelasting. In the text valid on 1 January 2022 the first € 395.000 of the belastbaar bedrag (taxable amount) carries 15%. Above € 395.000 the tax is € 59.250 plus 25,8% of the part above that amount. Art. 22 is built as a column I amount, a column III amount and a column IV percentage, so the tax is the column III amount plus the column IV percentage of the part of the belastbaar bedrag above the column I amount. Every year from 2020 to 2026 has its own series in the dated text, so the 2022 figures must be read in the 2022 text. Source: https://wetten.overheid.nl/BWBR0002672/2022-01-01.
@@ -174,6 +180,8 @@ The new legal form is a new business for btw and may get a new btw-identificatie
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Example 1: Vpb on € 60.000 and on € 500.000 (Calculated example)
 Invented inputs. Profit € 60.000 for 2022.
@@ -319,6 +327,8 @@ Source: https://kennisgroepen.belastingdienst.nl/publicaties/kg21220221-geruislo
 
 ## 5. CHANGES FROM 2021
 
+<a id="5-changes"></a>
+
 - Vpb first bracket: € 245.000 at 15% in 2021 moved to € 395.000 at 15% in 2022. Above the bracket: € 36.750 plus 25% in 2021 moved to € 59.250 plus 25,8% in 2022. Sources: https://wetten.overheid.nl/BWBR0002672/2021-01-01 and https://wetten.overheid.nl/BWBR0002672/2022-01-01.
 - Generieke renteaftrekbeperking (art. 15b): 30% in 2021 moved to 20% in 2022. The drempel of € 1.000.000 is unchanged. Sources: https://wetten.overheid.nl/BWBR0002672/2021-01-01 and https://wetten.overheid.nl/BWBR0002672/2022-01-01.
 - Verliesverrekening (art. 20): 2021 was one year back and six years forward, with the loss fixed by beschikking. From 2022 it is one year back and unlimited forward, but per year only € 1.000.000 plus 50% of the profit above € 1.000.000. Sources: https://wetten.overheid.nl/BWBR0002672/2021-01-01 and https://wetten.overheid.nl/BWBR0002672/2022-01-01.
@@ -340,6 +350,8 @@ Source: https://kennisgroepen.belastingdienst.nl/publicaties/kg21220221-geruislo
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the DGA wage in the loonadministratie. The DGA is in dienst of his own company for loonbelasting, premie volksverzekeringen and Zvw, so the BV withholds loonheffing. For an uninsured DGA record no premies werknemersverzekeringen and no werkgeversheffing Zvw, and record the bijdrage Zvw of 5,50% withheld on the net wage up to € 59.706 and paid through the aangifte loonheffingen. For an insured DGA record the werkgeversheffing Zvw of 6,75% paid by the BV. Source: https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/bijdrage_zorgverzekeringswet/hoe_wordt_de_inkomensafhankelijke_bijdrage_zvw_betaald/tabel_werkgeversheffing_zvw_of_bijdrage_zvw/ik_ben_directeur_grootaandeelhouder/ and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/inkomensafhankelijke_bijdrage_zorgverzekeringswet.
 - Keep the evidence for the gebruikelijk loon test, including the comparable wage used for the 75% escape and the highest wage in the body and in connected bodies. Source: https://wetten.overheid.nl/BWBR0002471/2022-01-01 and https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf.
 - Record a dividend with the opbrengst, the 15% dividendbelasting and the dividendnota, and note the day the dividend is made available, because the return and payment are due within 1 month after that day. A fully exempt deelnemingsdividend usually needs no return unless the Belastingdienst invites one. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/dividendbelasting/als_u_dividend_uitkeert/als_u_dividend_uitkeert and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/dividendbelasting/als_u_dividend_uitkeert/dividendbelasting-aangifte-betalen.
@@ -353,6 +365,8 @@ Source: https://kennisgroepen.belastingdienst.nl/publicaties/kg21220221-geruislo
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - The contents of the Besluit winstsplitsing, spoedreparatie en artikel 10a, Stcrt. 2022, 11028, were not read. Only its citation in the 2024 Verzamelbesluit is checked, where it is named as withdrawn. Source: https://zoek.officielebekendmakingen.nl/stcrt-2024-11814.html. Reading the 2022 besluit itself would settle the conditions it contained for 2022.
 - The art. 12bc drempel amount and the full definition of T in the K/T formula are not in the checked material. The 2022 text of art. 12bb and 12bc would settle both. Source: https://wetten.overheid.nl/BWBR0002672/2022-01-01.
 - The 2022 WML amount and the starterspercentage of art. 23 lid 7 WVA are not in the checked material, so the 108% floor of the startersaftrek has no euro value in this file. The 2022 WML and WVA texts would settle it. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/loon_en_aanmerkelijk_belang/loon_en_aanmerkelijk_belang.
@@ -364,6 +378,8 @@ Source: https://kennisgroepen.belastingdienst.nl/publicaties/kg21220221-geruislo
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2022 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

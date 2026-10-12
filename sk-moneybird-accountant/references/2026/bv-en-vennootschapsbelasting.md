@@ -15,9 +15,9 @@ version: 1.0.0.0
 # BV en vennootschapsbelasting 2026
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 340.
-Part 1: lines 1-339, 44715 bytes, first heading "# BV en vennootschapsbelasting 2026"
-Part 2: lines 340-392, 13415 bytes, first heading "## 5. CHANGES FROM 2025"
+Read plan: 2 parts. Next read offset: line 348.
+Part 1: lines 1-347, 44829 bytes, first heading "# BV en vennootschapsbelasting 2026"
+Part 2: lines 348-408, 13530 bytes, first heading "## 5. CHANGES FROM 2025"
 <!-- GENERATED:nav:end -->
 
 
@@ -27,11 +27,15 @@ Part 2: lines 340-392, 13415 bytes, first heading "## 5. CHANGES FROM 2025"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the vennootschapsbelasting (Vpb, corporate income tax) position of a BV in 2026 and the rules that touch the BV and its directeur-grootaandeelhouder (DGA, director and majority shareholder). It runs through the two Vpb brackets, loss set-off, the generic interest deduction limit, the innovatiebox, the fiscale eenheid (fiscal unity), the gebruikelijk loon (customary salary) test, the Zvw contribution, box 2, dividendbelasting, the conditionele bronbelasting, the jaarrekening (annual accounts) rules and the switch from an eenmanszaak to a BV. The headline 2026 figures stay familiar, with 19% up to € 200.000 and 25,8% above it, a 24,5% interest limit with a € 1.000.000 threshold and a gebruikelijk loon normbedrag of € 58.000. The 2026 law is enacted, and the values below come from the Wet Vpb 1969 text valid on 1 January 2026 and from current Belastingdienst pages.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
@@ -68,6 +72,8 @@ This file covers the vennootschapsbelasting (Vpb, corporate income tax) position
 ---
 
 ## 3. HOW IT WORKS IN 2026
+
+<a id="3-how-it-works"></a>
 
 ### Vpb-tarief, eerste schijf
 
@@ -184,6 +190,8 @@ The new legal form is a new business for the btw and may receive a new btw-ident
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 No official examples were found in the checked sources for 2026, so every example below is a `Calculated example` built from the section 2 figures.
 
@@ -339,6 +347,8 @@ Stille reserves realised by a direct onttrekking before a geruisloze omzetting d
 
 ## 5. CHANGES FROM 2025
 
+<a id="5-changes"></a>
+
 - Vpb rates: unchanged. Both 2025 and 2026 tax the first € 200.000 at 19% and the part above it at € 38.000 plus 25,8%, and the Belastingdienst prints 19,0% and 25,8% for both years. Sources: https://wetten.overheid.nl/BWBR0002672/2025-01-01 (art. 22), https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 22), https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/tarieven_vennootschapsbelasting.
 - Generieke renteaftrekbeperking: unchanged at 24,5% with a € 1.000.000 threshold, and non-deductible interest still carries forward. Sources: https://wetten.overheid.nl/BWBR0002672/2025-01-01 (art. 15b), https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 15b).
 - Verliesverrekening: unchanged from 2025, € 1.000.000 plus 50% per year, one year back and unlimited forward. Sources: https://wetten.overheid.nl/BWBR0002672/2025-01-01 (art. 20), https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 20).
@@ -363,6 +373,8 @@ Stille reserves realised by a direct onttrekking before a geruisloze omzetting d
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Aangifte Vpb: record the return for book year 2025 before 1 June 2026, or request the online extension between 1 March and 1 June, which runs to 1 November. A broken book year is filed within 5 months after its end, with a paper extension request if needed. Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/aangifte-vennootschapsbelasting-doen/aangifte-vennootschapsbelasting-doen, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/uitstel_aangifte_vennootschapsbelasting/uitstel_aangifte_vennootschapsbelasting.
 - Loonadministratie: run the DGA wage through the loonadministratie and withhold loonheffing. Record the gebruikelijk loon test against € 58.000 and the comparable wage, and use the € 5.000 floor only when all work in the body and connected bodies stays at or below it. Sources: https://wetten.overheid.nl/BWBR0002471/2026-01-01 (art. 12a), https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf.
 - Zvw: for a non-insured DGA record the 4,85% bijdrage on net wage up to € 79.409 and pay it through the aangifte loonheffingen. For an insured DGA record the 6,10% werkgeversheffing paid by the BV up to € 79.409. Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/bijdrage_zorgverzekeringswet/hoe_wordt_de_inkomensafhankelijke_bijdrage_zvw_betaald/tabel_werkgeversheffing_zvw_of_bijdrage_zvw/ik_ben_directeur_grootaandeelhouder/.
@@ -376,6 +388,8 @@ Stille reserves realised by a direct onttrekking before a geruisloze omzetting d
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - The Handboek Loonheffingen 2026 was not read, so the 2026 Zvw withholding route for a non-insured DGA rests on the Handboek Loonheffingen 2025 (paragraphs 8.2.2 and 18.1.1) and on the 2026 Belastingdienst table. A Handboek Loonheffingen 2026 would settle it. Sources: https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/bijdrage_zorgverzekeringswet/hoe_wordt_de_inkomensafhankelijke_bijdrage_zvw_betaald/tabel_werkgeversheffing_zvw_of_bijdrage_zvw/ik_ben_directeur_grootaandeelhouder/.
 - The 2026-01-01 URL of the Wet DB 1965 returns 404. The 15% rate is read from the version geldend 01-01-2025 t/m heden. A consolidated 2026-01-01 text would settle it. Source: https://wetten.overheid.nl/BWBR0002515/2025-01-01.
 - The Wet Vpb 1969 text valid on 2026-01-01 reads "Geldend van 01-01-2026 t/m heden" and announces "Toekomstige wijziging(en) voorzien met ingang van: 01-01-2029". Art. 22 carries a note that changes without an entry date exist. The 2027-01-01 URL of the Wet Vpb 1969 returned HTTP 404 on 2026-10-11. Belastingplan 2027 (bill 37 022) is proposed and not enacted, it changes art. 12bd, art. 13 lid 7 and adds art. 34j in Article XIX, and it deletes ", 3.11" from art. 8 lid 1 from 1 January 2029 in Article XX. It does not touch art. 22, art. 15 or art. 15b. Publication of the entry dates in a later consolidated text would settle the picture. Sources: https://wetten.overheid.nl/BWBR0002672/2026-01-01, https://zoek.officielebekendmakingen.nl/kst-37022-2.html.
@@ -385,6 +399,8 @@ Stille reserves realised by a direct onttrekking before a geruisloze omzetting d
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2026 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

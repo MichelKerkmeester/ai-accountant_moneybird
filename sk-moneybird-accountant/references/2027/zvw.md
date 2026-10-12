@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the income-dependent contribution under the Zorgverzekeringswet (Zvw, the Dutch Health Insurance Act) for an entrepreneur in tax year 2027. For 2027 the contribution that a zelfstandige pays by aanslag is 5,02% and the werkgeversheffing that an employer or uitkeringsinstantie pays is 6,27%, both taken from the https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/xvi-volksgezondheid-welzijn-en-sport-rijksbegroting-2027/16-volksgezondheid-welzijn-en-sport.pdf budget estimate https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/xvi-volksgezondheid-welzijn-en-sport-rijksbegroting-2027/16-volksgezondheid-welzijn-en-sport.pdf Tabel 77 and both proposed. The maximum bijdrage-inkomen for 2027 is € 82.547 in a secondary source only, so it is UNVERIFIED, while https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/xvi-volksgezondheid-welzijn-en-sport-rijksbegroting-2027/16-volksgezondheid-welzijn-en-sport.pdf Tabel 77 and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw give no 2027 maximum. The year's law is a mix of layers: the Wet IB 2001 text valid from 1 January 2027 is adopted but not yet in force, Belastingplan 2027 (bill 37 022 of 15 September 2026) is proposed, and the Cabinet letter of 29 September 2026 is now in the bill through the Tweede nota van wijziging and is still proposed.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
@@ -52,6 +56,8 @@ Source column note: the checked material supplies exact URLs for some rows. Wher
 ---
 
 ## 3. HOW IT WORKS IN 2027
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Zvw-bijdrage by aanslag for a zelfstandige (verlaagde IAB)
 
@@ -133,6 +139,8 @@ Belastingplan 2027 reduces the startersaftrek by € 2.113, to € 10 (proposed,
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 The checked material holds no official worked example with amounts for the Zvw in 2027. https://www.tweedekamer.nl/downloads/document?id=2026D50335 holds 2027 koopkracht rekenvoorbeelden and a startersaftrek effect table including the Zvw, but they are policy illustrations, not year-table examples, and the checked material prints no amounts from them (https://www.tweedekamer.nl/downloads/document?id=2026D50335). All examples below are therefore calculated from the section 2 figures, with invented inputs.
 
 **Calculated example 1. Winst-ondernemer, profit of € 60.000, no startersaftrek.**
@@ -206,6 +214,8 @@ Difference between the two variants: € 2.589,60 minus € 2.496,99 = € 92,61
 
 ## 5. CHANGES FROM 2026
 
+<a id="5-changes"></a>
+
 - Zvw bijdrage by aanslag: 4,85% in 2026 to 5,02% in 2027. Source 2026: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet. Source 2027: https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/xvi-volksgezondheid-welzijn-en-sport-rijksbegroting-2027/16-volksgezondheid-welzijn-en-sport.pdf Tabel 77 (proposed).
 - Zvw werkgeversheffing: 6,10% in 2026 to 6,27% in 2027. Source 2026: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet. Source 2027: https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/xvi-volksgezondheid-welzijn-en-sport-rijksbegroting-2027/16-volksgezondheid-welzijn-en-sport.pdf Tabel 77 (proposed).
 - Maximum bijdrage-inkomen: € 79.409 in 2026 to € 82.547 in 2027. Source 2026: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet (enacted, Verified). Source 2027: https://mijn.bovag.nl/actueel/nieuws/voorlopige-sociale-en-sectorpremies-2027-bekendgemaakt (proposed, UNVERIFIED, secondary only).
@@ -220,6 +230,8 @@ Difference between the two variants: € 2.589,60 minus € 2.496,99 = € 92,61
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - The entrepreneur's Zvw contribution is not collected through a payroll step. The aanslag Zvw comes with the (voorlopige) aanslag inkomstenbelasting (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 - Build the Zvw base from the same figures as the winst: the belastbare winst uit onderneming after the ondernemersaftrek and the MKB-winstvrijstelling, at least nil and capped at the yearly maximum (Zvw art. 43 lid 2 onderdeel b and lid 3, Wet IB 2001 art. 3.2). Keep the profit calculation, the ondernemersaftrek items and the MKB-winstvrijstelling together in the file so the base can be followed (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01, https://wetten.overheid.nl/BWBR0011353/2026-01-01).
 - Keep the loon and uitkering statements that show income which already bore a contribution, because the maximum applies once per person across channels (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw).
@@ -231,6 +243,8 @@ Difference between the two variants: € 2.589,60 minus € 2.496,99 = € 92,61
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - 2027 maximum bijdrage-inkomen: € 82.547 is UNVERIFIED and comes from a secondary source only (https://mijn.bovag.nl/actueel/nieuws/voorlopige-sociale-en-sectorpremies-2027-bekendgemaakt). https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/xvi-volksgezondheid-welzijn-en-sport-rijksbegroting-2027/16-volksgezondheid-welzijn-en-sport.pdf Tabel 77 and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw give no 2027 maximum. The Regeling or the Belastingdienst Zvw page in late 2026 would settle it.
 - 2027 Zvw rates: 5,02% for the verlaagde IAB and 6,27% for the normale IAB are proposed budget estimates in https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/xvi-volksgezondheid-welzijn-en-sport-rijksbegroting-2027/16-volksgezondheid-welzijn-en-sport.pdf Tabel 77. The final rates follow by ministerial regulation under Zvw art. 45, so the regulation would settle them (https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/xvi-volksgezondheid-welzijn-en-sport-rijksbegroting-2027/16-volksgezondheid-welzijn-en-sport.pdf Tabel 77, https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01).
@@ -246,6 +260,8 @@ Difference between the two variants: € 2.589,60 minus € 2.496,99 = € 92,61
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2027 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

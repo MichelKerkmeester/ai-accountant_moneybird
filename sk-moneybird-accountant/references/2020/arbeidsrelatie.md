@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Arbeidsrelatie en zelfstandigheid 2020
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 354.
-Part 1: lines 1-353, 47315 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2020"
-Part 2: lines 354-374, 4852 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Read plan: 2 parts. Next read offset: line 366.
+Part 1: lines 1-365, 47482 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2020"
+Part 2: lines 366-390, 4914 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,6 +26,8 @@ Part 2: lines 354-374, 4852 bytes, first heading "## 7. OPEN POINTS AND CONFLICT
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the work-relationship side of being a sole trader in 2020: whether the work is loondienst or zelfstandigheid (employment or self-employment), the Wet DBA test, the handhavingsmoratorium and the aanwijzing route, the use of modelovereenkomsten, and the case law of that year. In 2020 the prohibition on schijnzelfstandigheid (disguised employment) was not actively enforced against parties who were not kwaadwillend. A first restriction of the moratorium exception took effect on 1 January 2020 and the end of the moratorium was then postponed to 1 January 2021.
 
 The year's law is enacted law on the DBA side plus enforcement policy. The rechtsvermoeden op basis van een uurtarief that later became the VBAR (Wet verduidelijking beoordeling arbeidsrelaties en rechtsvermoeden) did not exist in 2020. The material for 2020 records no consultation, bill or statute on it. Work on new legislation was stopped by the vijfde voortgangsbrief of 18 June 2020.
@@ -33,6 +35,8 @@ The year's law is enacted law on the DBA side plus enforcement policy. The recht
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
@@ -64,6 +68,8 @@ The year's law is enacted law on the DBA side plus enforcement policy. The recht
 ---
 
 ## 3. HOW IT WORKS IN 2020
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 DBA enforcement regime
 
@@ -237,6 +243,8 @@ Source: https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsv
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Example 1: aanwijzing route for a non-kwaadwillende opdrachtgever (Calculated example)
 
 This example uses only the rules in section 3.1 and 3.2. Inputs are invented.
@@ -317,6 +325,8 @@ This example uses the section 3.26 figures to show the method. It is not 2020 la
 
 ## 5. CHANGES FROM 2019
 
+<a id="5-changes"></a>
+
 - Second restriction of the moratorium exception: from 1 January 2020 enforcement also when aanwijzingen are not followed within a reasonable term, for periods from 1 January 2020. Announced in the derde voortgangsbrief of 24 June 2019. https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file
 - Moratorium end date: the fourth postponement set it at 1 January 2021, decided on 24 June 2019, so this date framed 2020. https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file
 - Legislative pause: the vijfde voortgangsbrief of 18 June 2020 records that the cabinet stops working out new legislation. That is a 2020 event. https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file
@@ -333,6 +343,8 @@ This example uses the section 3.26 figures to show the method. It is not 2020 la
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Record per client and per engagement what the parties agreed and how the work was actually done. The qualification depends on facts such as werkgeversgezag, personal work, pay, embedding, commercial risk and ondernemerschap. https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst
 - If an engagement falls under an approved modelovereenkomst, keep that agreement in the file and check that the actual work matches the description. Working under an approved modelovereenkomst means no loondienst only if the parties work as described. https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/werken-met-modelovereenkomsten
@@ -353,6 +365,8 @@ This example uses the section 3.26 figures to show the method. It is not 2020 la
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Modelovereenkomsten 2020 carries Status enacted and Check UNVERIFIED. The material lists no 2020-specific change for modelovereenkomsten. What would settle it is a Belastingdienst page or beleidsbesluit dated in 2020 on the assessment or withdrawal of modelovereenkomsten. https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file
 - The aanslaggrens and teruggaafgrens for 2020 have two wordings. The current page says higher than and prints € 47 and € 15. Pages up to the 2023 captures used gelijk aan of meer dan and printed € 48 and € 16. Both are Belastingdienst text. For whole-euro amounts the two forms describe the same threshold, which is the reading used here. What would settle it is a Belastingdienst page version that states the 2020 threshold and its exact wording together. https://web.archive.org/web/20250328/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag https://web.archive.org/web/20210413/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag
 - The 2021 definitive-aanslag page still uses before 1 May 2021 in its example while the deadline page and the Staatscourant besluit give 8 May 2021. Both are Belastingdienst text. The 8 May date is the operative one for 2021 per the besluit. What would settle it is a later version of the definitive-aanslag page using 8 May in the example. https://zoek.officielebekendmakingen.nl/stcrt-2021-24144.html https://web.archive.org/web/20210413/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag
@@ -367,6 +381,8 @@ This example uses the section 3.26 figures to show the method. It is not 2020 la
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2020 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

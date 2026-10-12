@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 The ondernemersaftrek (entrepreneur's allowance) has five parts in art. 3.74: the zelfstandigenaftrek (self-employed person's allowance), the aftrek voor speur- en ontwikkelingswerk (research and development deduction), the meewerkaftrek (allowance for a partner who works in the business), the startersaftrek bij arbeidsongeschiktheid (starter's allowance on occupational disability) and the stakingsaftrek (cessation allowance). The startersaftrek that most starters use is not a separate part of that list, it is an increase of the zelfstandigenaftrek in art. 3.76 lid 3. For 2023 the zelfstandigenaftrek is € 5.030, the MKB-winstvrijstelling (small business profit exemption) stays at 14% and additions to the oudedagsreserve (old-age reserve) end on 1 January 2023 while an existing reserve continues under art. 10a.29. All 2023 values in this file are enacted law and Verified, with the source per item in section 2.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
@@ -54,6 +58,8 @@ The ondernemersaftrek (entrepreneur's allowance) has five parts in art. 3.74: th
 ---
 
 ## 3. HOW IT WORKS IN 2023
+
+<a id="3-how-it-works"></a>
 
 ### Urencriterium (1.225 hours)
 
@@ -158,6 +164,8 @@ The maximum value of these deductions is the top rate of 49,50% minus the tarief
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Official example: carry-forward of the niet-gerealiseerde zelfstandigenaftrek
 
@@ -288,6 +296,8 @@ The maximum value of these deductions is the top rate of 49,50% minus the tarief
 
 ## 5. CHANGES FROM 2022
 
+<a id="5-changes"></a>
+
 - Zelfstandigenaftrek: € 6.310 in 2022 to € 5.030 in 2023 ([2022](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01)).
 - Zelfstandigenaftrek at the AOW age: € 3.155 in 2022 to € 2.515 in 2023 ([FISIN 2022](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek), [FISIN 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek)).
 - Aftrek speur- en ontwikkelingswerk: € 13.360 in 2022 to € 14.202 in 2023 ([2022](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01)).
@@ -303,6 +313,8 @@ The maximum value of these deductions is the top rate of 49,50% minus the tarief
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Judge IB-ondernemer status per activity before claiming anything, separately from the btw registration ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/wanneer_bent_u_ondernemer_voor_de_inkomstenbelasting/), [Ondernemersplein](https://ondernemersplein.overheid.nl/bedrijf-starten/inschrijven-bij-kvk/wanneer-bent-u-ondernemer/)).
 - Keep an hours record. Hours must be made plausible with an agenda, quotes, timesheets and invoices ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium)).
@@ -320,11 +332,15 @@ The maximum value of these deductions is the top rate of 49,50% minus the tarief
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 None for 2023. Every value in this file for 2023 is enacted and Verified in the checked sources.
 
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2023 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

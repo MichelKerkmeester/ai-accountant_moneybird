@@ -14,9 +14,9 @@ version: 1.0.0.0
 # BTW 2025
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 343.
-Part 1: lines 1-342, 50688 bytes, first heading "# BTW 2025"
-Part 2: lines 343-374, 8581 bytes, first heading "## 6. IN THE BOOKS"
+Read plan: 2 parts. Next read offset: line 353.
+Part 1: lines 1-352, 50826 bytes, first heading "# BTW 2025"
+Part 2: lines 353-390, 8672 bytes, first heading "## 6. IN THE BOOKS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 343-374, 8581 bytes, first heading "## 6. IN THE BOOKS"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the Dutch VAT rules relevant to a sole trader, including rates, exemptions, the small-business scheme, returns, invoicing and cross-border transactions. The main changes for 2025 are the revised KOR rules and a new eight-week deadline for correcting VAT returns. The 2025 rules described here are enacted unless a row is marked otherwise or the open-points section says the value is unverified.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
@@ -94,6 +98,8 @@ This file covers the Dutch VAT rules relevant to a sole trader, including rates,
 ---
 
 ## 3. HOW IT WORKS IN 2025
+
+<a id="3-how-it-works"></a>
 
 ### Standard rate
 
@@ -235,6 +241,8 @@ The special repayment arrangement concerns tax debts built up during the stated 
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Standard and reduced rates
 
 **Calculated example.** A business sells a taxable service for € 1.000 before VAT at the standard rate.
@@ -330,6 +338,8 @@ The example does not calculate the deductible VAT because the applicable VAT rat
 
 ## 5. CHANGES FROM 2024
 
+<a id="5-changes"></a>
+
 - The KOR changed from the previous scheme, which tested turnover in the current calendar year, allowed a Dutch fixed establishment, and had a minimum participation and re-entry period, to the 2025 rules for a business established in the Netherlands. The 2025 notification requires turnover information for the preceding and current calendar years. The new scheme has no minimum term and uses the re-entry restriction described above. [2024 version of Article 25](https://wetten.overheid.nl/BWBR0002629/2024-01-01), [2025 version of Articles 25 to 25e](https://wetten.overheid.nl/BWBR0002629/2025-01-01).
 - The KOR registration threshold without notification rose from € 1.800 to € 2.200 from 1 januari 2025. [Decision of 21 November 2024, no. 2024-29602](https://zoek.officielebekendmakingen.nl/stcrt-2024-38565.html).
 - The EU KOR became available from 1 januari 2025. It was not in force in 2024. [Stb. 2023, 278](https://zoek.officielebekendmakingen.nl/stb-2023-278.html).
@@ -341,6 +351,8 @@ The example does not calculate the deductible VAT because the applicable VAT rat
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Keep sales records that identify the supply, customer, date, consideration, VAT rate and VAT amount. Issue invoices to business customers and relevant legal persons by the stated deadline. Retain the required invoice details and make sure simplified invoices are used only where allowed. [Belastingdienst invoice guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/), [invoice requirements](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/factuureisen).
 - Separate taxable, zero-rated and exempt turnover in the records. Track input VAT by the business use that supports deduction. Zero-rated turnover can retain input VAT deduction, while exempt turnover does not. Reconcile mixed taxable and exempt use in the final return. [Article 11, Wet op de omzetbelasting 1968](https://wetten.overheid.nl/BWBR0002629/2020-01-01), [Belastingdienst exemptions](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/vrijstellingen/).
@@ -355,6 +367,8 @@ The example does not calculate the deductible VAT because the applicable VAT rat
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - **Yearly return VAT limit, UNVERIFIED.** The checked 2025 material states less than € 1.883, but the 2025 handbook URL returned 404. The condition is otherwise supported by the checked 2020 and 2026 handbooks. A working 2025 handbook or a year-specific primary confirmation would settle whether the value applied unchanged in 2025. [Belastingdienst return-period guidance](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/wijziging-aangiftetijdvak-btw), [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf), [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf).
 - **Suppletie amount boundary, UNVERIFIED.** The checked value says a correction of € 1.000 or less may go in the next return, but the cited January 2025 guide was not re-read. A checked copy of that guide or a year-specific Belastingdienst confirmation would settle the boundary. [January 2025 suppletie guide](https://download.belastingdienst.nl/belastingdienst/docs/toelichting_suppletie_btw_ob1431t21pl.pdf).
 - **ICP deadline, unknown and UNVERIFIED for 2025.** The checked ICP guide is for 2024 and does not verify the domestic 2025 deadline. A 2025 Belastingdienst deadline page or guide would settle it. [2024 digital ICP guide](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf).
@@ -367,6 +381,8 @@ The example does not calculate the deductible VAT because the applicable VAT rat
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2025 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

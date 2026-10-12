@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the ondernemersaftrek (self-employed deduction) and the MKB-winstvrijstelling (small business profit exemption) for tax year 2021. The 2021 figures are enacted law. The main changes from 2020 are a lower zelfstandigenaftrek, a higher S&O-aftrek, a higher oudedagsreserve maximum, a higher tariefsaanpassing and a higher Zvw rate. The rules for the urencriterium and the components of the ondernemersaftrek are otherwise the same as in 2020.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
@@ -60,6 +64,8 @@ This file covers the ondernemersaftrek (self-employed deduction) and the MKB-win
 ---
 
 ## 3. HOW IT WORKS IN 2021
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 IB-ondernemer status
 An IB-ondernemer (income tax entrepreneur) is judged separately from a btw-ondernemer (VAT entrepreneur). The Belastingdienst looks per activity at whether profit is made and how much, independence, capital, time spent, number of clients, publicity, entrepreneurial risk and liability for business debts. Activities are judged one by one and only sufficiently connected activities form one source. Activities in the hobby or family sphere do not make someone an IB-ondernemer. Someone who is not an IB-ondernemer reports inkomsten uit overig werk (income from other work). The profit is calculated the same way, but there is no right to schemes such as the zelfstandigenaftrek or the investeringsaftrek. The statute defines the ondernemer as the taxpayer for whose account a business is run and who is directly bound for its obligations under art. 3.4, and the zelfstandig beroep counts as an onderneming under art. 3.5. The checked pages do not literally say that KVK registration alone does not make someone an IB-ondernemer. They say the Belastingdienst makes its own assessment after registration. Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/wanneer_bent_u_ondernemer_voor_de_inkomstenbelasting/ and https://ondernemersplein.overheid.nl/bedrijf-starten/inschrijven-bij-kvk/wanneer-bent-u-ondernemer/ and https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.4 and 3.5).
@@ -151,6 +157,8 @@ The maximum contribution income for the self-assessed Zvw contribution is € 58
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Official example 1: FISIN 2021 8.4.3, niet-gerealiseerde zelfstandigenaftrek
 Official example. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/ondernemersaftrek_en_investeringsaftrek.
@@ -286,6 +294,8 @@ Calculated example from the section 2 figures.
 
 ## 5. CHANGES FROM 2020
 
+<a id="5-changes"></a>
+
 - Zelfstandigenaftrek: € 7.030 in 2020 to € 6.670 in 2021. Sources: https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://wetten.overheid.nl/BWBR0011353/2021-01-01.
 - Zelfstandigenaftrek at AOW age: € 3.515 in 2020 to € 3.335 in 2021. Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/ondernemersaftrek_en_investeringsaftrek.
 - Aftrek voor speur- en ontwikkelingswerk: € 12.980 in 2020 to € 13.188 in 2021. Sources: https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://wetten.overheid.nl/BWBR0011353/2021-01-01.
@@ -304,6 +314,8 @@ Calculated example from the section 2 figures.
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Record the hours spent on the business so the 1.225-hour urencriterium can be made plausible. The Belastingdienst names an agenda, quotes, timesheets and invoices. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium.
 - Include non-billable work such as quotes, administration and building the business website. Standby time does not count. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium.
@@ -324,6 +336,8 @@ Calculated example from the section 2 figures.
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 No open points for 2021. One known misprint in an official example is recorded for completeness.
 
 - Known misprint: FISIN 2021 8.4.3 prints "€ 7.30" once for the 2020 unused zelfstandigenaftrek amount. The same example uses € 7.030 for the 2020 right, and € 2.280 + € 7.030 = € 9.310. The intended amount is € 7.030. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/ondernemersaftrek_en_investeringsaftrek. This misprint does not change any 2021 figure.
@@ -333,6 +347,8 @@ No open points for 2021. One known misprint in an official example is recorded f
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2021 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

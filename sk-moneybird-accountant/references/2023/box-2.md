@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Box 2 en aanmerkelijk belang 2023
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 236.
-Part 1: lines 1-235, 49007 bytes, first heading "# Box 2 en aanmerkelijk belang 2023"
-Part 2: lines 236-266, 7084 bytes, first heading "## 6. IN THE BOOKS"
+Read plan: 2 parts. Next read offset: line 246.
+Part 1: lines 1-245, 49145 bytes, first heading "# Box 2 en aanmerkelijk belang 2023"
+Part 2: lines 246-282, 7175 bytes, first heading "## 6. IN THE BOOKS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 236-266, 7084 bytes, first heading "## 6. IN THE BOOKS"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 Box 2 is the income from an aanmerkelijk belang (substantial shareholding, a holding of at least 5% in a company). It covers dividends, gains on a sale or liquidation of shares, the forfaitair voordeel (standardised benefit) from certain investment companies, and the fictitious benefits the law adds to that income. For 2023 the rate is one flat 26,9%, and the main event of the year is the entry into force on 1 January 2023 of the Wet excessief lenen bij eigen vennootschap (Act on excessive borrowing from one's own company), which taxes debts to the own company above € 700.000 as a fictief regulier voordeel (fictitious regular benefit). The gebruikelijk loon (customary salary) rules changed too: the comparable-loon test moved from 75% to 100% and the fixed amount to € 51.000. All 2023 items in this file are enacted law, except the points marked UNVERIFIED or proposed in section 7.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
@@ -60,6 +64,8 @@ Box 2 is the income from an aanmerkelijk belang (substantial shareholding, a hol
 ---
 
 ## 3. HOW IT WORKS IN 2023
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Box 2 rate (art. 2.12)
 
@@ -196,6 +202,8 @@ Art. 7.5 confirms the base for a non-resident: an aanmerkelijk belang in a Nethe
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 **Example 1, Official example, loss converted into a belastingkorting ([FISIN 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/aanmerkelijk_belang)).** FISIN 2023 gives a verlies uit aanmerkelijk belang of € 20.000 that arose in 2021, a belastingkorting of € 5.380 in 2023 and a remainder usable until 2030. Check with the section 2 figures: the belastingkorting is 26,9% of the unoffset loss, so € 20.000 × 0,269 = € 5.380,00, rounded to whole euros € 5.380. The belastingkorting is a credit against box 1 tax, so it is not deducted from the € 20.000 loss. Any remainder is the part of the € 5.380 belastingkorting not yet used against box 1 tax. Art. 4.53 lid 4 allows use in the year of the korting and the seven following years, at the latest the ninth year after the loss year. Both limits give 2030 here: the seven following years of the 2023 korting end in 2030, and the ninth year after the loss year 2021 is 2030 (2021 + 9 = 2030). This matches the remainder period in FISIN 2023 ([wetten.overheid.nl, art. 4.53](https://wetten.overheid.nl/BWBR0011353/2023-01-01)).
 
 **Example 2, Calculated example, dividend at the 2023 rate.** Invented inputs: a BV pays a dividend of € 60.000 in 2023 to its sole shareholder, who has an aanmerkelijk belang in the BV, there are no deductible costs and no other box 2 items. Step 1: box 2 income is € 60.000. Step 2: the 2023 box 2 rate is 26,9%, so the tax is € 60.000 × 0,269 = € 16.140,00, rounded to whole euros € 16.140. Step 3: dividendbelasting is not deducted from the income but credited as voorheffing, so the € 16.140 is reduced by the voorheffing in the aanslag ([Belastingdienst, inkomsten uit aanmerkelijk belang](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang)).
@@ -218,6 +226,8 @@ Art. 7.5 confirms the base for a non-resident: an aanmerkelijk belang in a Nethe
 
 ## 5. CHANGES FROM 2022
 
+<a id="5-changes"></a>
+
 - Excessief lenen: not in force in 2022, in force from 1 January 2023. The new fiction sits in art. 4.13 lid 1 sub f, with art. 4.14a to 4.14c. The 2023 text sets the maximum at € 700.000 plus amounts taxed earlier ([Stb. 2022, 531](https://zoek.officielebekendmakingen.nl/stb-2022-531.html), [wetten.overheid.nl](https://wetten.overheid.nl/BWBR0011353/2023-01-01)). In 2022 the act was already issued but not yet in force ([Stb. 2022, 531](https://zoek.officielebekendmakingen.nl/stb-2022-531.html)).
 - Excessief lenen threshold history: the bill proposed € 500.000, the derde nota van wijziging of 25 March 2022 replaced that by € 700.000, and the amendement Grinwis c.s. in the adopted text replaced € 700.000 by € 500.000, which the 2024 to 2027 texts print ([Kamerstuk 35 496 nr. 15](https://zoek.officielebekendmakingen.nl/kst-35496-15.html), [Kamerstuk 36 418 nr. 60](https://zoek.officielebekendmakingen.nl/kst-36418-60.html), [Kamerstuk 36 418 nr. A](https://zoek.officielebekendmakingen.nl/kst-36418-A.html), [wetten.overheid.nl 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01)).
 - Eigenwoningschuld: art. 10a.23, new for 2023, also excludes an eigenwoningschuld that existed on 31 December 2022 without a mortgage to the company ([Stb. 2022, 531](https://zoek.officielebekendmakingen.nl/stb-2022-531.html)).
@@ -235,6 +245,8 @@ Art. 7.5 confirms the base for a non-resident: an aanmerkelijk belang in a Nethe
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Borrowing from the BV: keep a list of all debts of the taxpayer and the partner to the company or companies at 31 December, at nominal value. The fictief regulier voordeel is measured against one € 700.000 maximum for the two together. Receivables on the company do not reduce the debts, and debts at several companies are added ([wetten.overheid.nl, art. 4.14a](https://wetten.overheid.nl/BWBR0011353/2023-01-01), [Belastingdienst, excessief lenen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/bijzondere_situaties/geld_lenen_van_uw_bv/excessief-lenen-van-bv-beperkt)).
 - The BV side: the loan stays a loan in full. The company keeps charging interest on the whole loan and pays Vpb on it, and the other terms stay. The company does not withhold dividendbelasting on the part taxed as box 2 income ([Belastingdienst, excessief lenen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/bijzondere_situaties/geld_lenen_van_uw_bv/excessief-lenen-van-bv-beperkt)).
 - Dividends: dividendbelasting is not deducted from the box 2 income but credited as voorheffing ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang)).
@@ -249,6 +261,8 @@ Art. 7.5 confirms the base for a non-resident: an aanmerkelijk belang in a Nethe
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - The doorschuiving list (rollover on request for gift, inheritance and emigration) is UNVERIFIED for 2023. The doorschuiving list was not re-fetched on a primary page in the check. The 10-year APV term is Verified. Sources: [FISIN 2020](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/aanmerkelijk_belang), [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang). What would settle it: a primary statute text or Belastingdienst page on the doorschuiving articles.
 - The statement that a 2025 beschikking partiële buitenlandse belastingplicht has the same effect for a non-resident as art. 7.5 was not found on the fetched Belastingdienst pages. UNVERIFIED. Source: [wetten.overheid.nl, art. 7.5](https://wetten.overheid.nl/BWBR0011353/2026-01-01). What would settle it: the beschikking text or a Belastingdienst page on partial non-resident liability.
 - FISIN 2023 works its excessief-lenen example into 2024 with a drempel of € 800.000 (€ 700.000 plus € 100.000) and € 50.000 taxed, written before the 2024 cut to € 500.000. Under the 2024 law the 2024 drempel is € 600.000. The FISIN 2023 example is outdated for 2024. The 2023 step of that example matches the 2023 statute. Sources: [FISIN 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/aanmerkelijk_belang), [Belastingdienst, excessief lenen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/bijzondere_situaties/geld_lenen_van_uw_bv/excessief-lenen-van-bv-beperkt).
@@ -259,6 +273,8 @@ Art. 7.5 confirms the base for a non-resident: an aanmerkelijk belang in a Nethe
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2023 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

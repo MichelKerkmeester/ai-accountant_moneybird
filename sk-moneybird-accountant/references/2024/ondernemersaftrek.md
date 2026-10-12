@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the ondernemersaftrek (entrepreneur's allowance), the MKB-winstvrijstelling (small-business profit exemption) and the tariefsaanpassing (rate adjustment on those deductions) for tax year 2024, together with the urencriterium (hours criterion) that gates most of the ondernemersaftrek. It also covers who counts as an IB-ondernemer (income tax entrepreneur), because without that status there is no right to the ondernemersaftrek and no exemption on profit as ondernemer. The law for 2024 is enacted, with the zelfstandigenaftrek at € 3.750 and the MKB-winstvrijstelling at 13,31% as printed in the statute valid on 1 January 2024. Two amounts printed differently in FISIN 2024 are settled in favour of the statute and are listed in section 7.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
@@ -51,6 +55,8 @@ This file covers the ondernemersaftrek (entrepreneur's allowance), the MKB-winst
 ---
 
 ## 3. HOW IT WORKS IN 2024
+
+<a id="3-how-it-works"></a>
 
 ### IB-ondernemer status
 
@@ -168,6 +174,8 @@ For 2024 the maximum value of the ondernemersaftrek and the MKB-winstvrijstellin
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### No pro-rating of the 1.225 hours
 
 **Official example** (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium). The Belastingdienst example: a webhosting business started on 1 July leaves 6 months as an ondernemer, and the taxpayer must still make at least 1.225 hours in that period. Hours are not recalculated to the part of the year.
@@ -269,6 +277,8 @@ For 2024 the maximum value of the ondernemersaftrek and the MKB-winstvrijstellin
 
 ## 5. CHANGES FROM 2023
 
+<a id="5-changes"></a>
+
 - Zelfstandigenaftrek: € 5.030 in 2023 to € 3.750 in 2024 (https://wetten.overheid.nl/BWBR0011353/2023-01-01 and https://wetten.overheid.nl/BWBR0011353/2024-01-01).
 - Zelfstandigenaftrek at AOW age: € 2.515 in 2023 to € 1.875 in 2024 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek and https://wetten.overheid.nl/BWBR0011353/2024-01-01).
 - Aftrek voor speur- en ontwikkelingswerk: € 14.202 in 2023 to € 15.551 in 2024 (https://wetten.overheid.nl/BWBR0011353/2023-01-01 and https://wetten.overheid.nl/BWBR0011353/2024-01-01).
@@ -285,6 +295,8 @@ For 2024 the maximum value of the ondernemersaftrek and the MKB-winstvrijstellin
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - The ondernemersaftrek and the MKB-winstvrijstelling are inkomstenbelasting items for the 2024 return. The order is profit as ondernemer, then the ondernemersaftrek, then the MKB-winstvrijstelling, which together give the belastbare winst uit onderneming (art. 3.2 and 3.79a, https://wetten.overheid.nl/BWBR0011353/2024-01-01).
 - Keep the records that make the urencriterium hours plausible, for example an agenda, quotes, timesheets and invoices (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium).
 - Keep the records that make the partner's hours plausible for the meewerkaftrek (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/meewerkaftrek).
@@ -299,6 +311,8 @@ For 2024 the maximum value of the ondernemersaftrek and the MKB-winstvrijstellin
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 None for 2024.
 
 Two FISIN 2024 printings differ from the 2024 statute and are settled in favour of the statute:
@@ -309,6 +323,8 @@ Two FISIN 2024 printings differ from the 2024 statute and are settled in favour 
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2024 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

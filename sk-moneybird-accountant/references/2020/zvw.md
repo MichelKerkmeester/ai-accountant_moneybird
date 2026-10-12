@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the income-dependent Zvw contribution (inkomensafhankelijke bijdrage Zorgverzekeringswet, contribution under the Health Insurance Act) for an entrepreneur in tax year 2020. The rate paid by aanslag (assessment) is 5,45% and the maximum bijdrage-inkomen (contribution income) is € 57.232. The employer rate, the werkgeversheffing (employer levy), is 6,70%. The 2020 law is enacted. The rule that the Zvw base for a winst-ondernemer (profit entrepreneur) is the belastbare winst uit onderneming (taxable profit from business) after the ondernemersaftrek (entrepreneur's deduction) and the MKB-winstvrijstelling (small business profit exemption) is UNVERIFIED for 2020 because only the 2026 statutory versions were read.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
@@ -43,6 +47,8 @@ Source note: the checked material records these sources by identifier. It does n
 ---
 
 ## 3. HOW IT WORKS IN 2020
+
+<a id="3-how-it-works"></a>
 
 ### Zvw-bijdrage by aanslag
 
@@ -87,6 +93,8 @@ The checked material marks this UNVERIFIED and not re-opened (checked material, 
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Calculated example: Zvw on winst below the maximum
 
@@ -142,6 +150,8 @@ The exclusion is from https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=
 
 ## 5. CHANGES FROM 2019
 
+<a id="5-changes"></a>
+
 - The checked sources do not include tax year 2019 for this topic. A 2019 to 2020 comparison is not possible from the checked material.
 - For 2020 the enacted values are 5,45% by aanslag, 5,45% ingehouden, 6,70% werkgeversheffing and a maximum bijdrage-inkomen of € 57.232 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 - The cross-year rule that the maximum applies once per person across channels is stated for 2020 to 2026 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The checked material does not state whether this rule began in 2020.
@@ -150,6 +160,8 @@ The exclusion is from https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Record the belastbare winst uit onderneming that forms the Zvw base after the ondernemersaftrek and the MKB-winstvrijstelling (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01 and https://wetten.overheid.nl/BWBR0011353/2026-01-01, 2026 versions, UNVERIFIED for 2020).
 - Record income that already bore a Zvw contribution, such as loon uit loondienst, a pension or a lijfrente, because it uses up the € 57.232 maximum (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
@@ -162,6 +174,8 @@ The exclusion is from https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Zvw base for winst: UNVERIFIED for 2020. The rule comes from https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01 and https://wetten.overheid.nl/BWBR0011353/2026-01-01, both read in the 2026 version only. Reading the 2020 versions of Zvw art. 43 and Wet IB 2001 art. 3.2 would settle it.
 - Zvw declaration and filing deadline: UNVERIFIED. The topic file states the same aangifte is used, a voorlopige aanslag Zvw exists and the Zvw follows the IB filing timeline. https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet confirms the aanslag Zvw comes with the (voorlopige) aanslag inkomstenbelasting. The filing deadline belongs to the procedure topic. Reading a primary source on the 2020 filing deadline would settle it.
 - Zvw at AOW age: https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/xvi-volksgezondheid-welzijn-en-sport-rijksbegroting-2027/16-volksgezondheid-welzijn-en-sport.pdf Tabel 77 footnote 2 states zelfstandigen and gepensioneerden pay the verlaagde IAB. No AOW-age exemption appears in Zvw art. 41 to 45 as read. That is inference from absence (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01). The FISIN Zvw pages do not mention the AOW age. The amount is not in the checked sources. Reading the 2020 Zvw statute and https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/xvi-volksgezondheid-welzijn-en-sport-rijksbegroting-2027/16-volksgezondheid-welzijn-en-sport.pdf Tabel 77 would settle it.
@@ -171,6 +185,8 @@ The exclusion is from https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2020 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

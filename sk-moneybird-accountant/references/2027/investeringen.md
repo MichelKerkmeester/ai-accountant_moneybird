@@ -16,9 +16,9 @@ version: 1.0.0.0
 # Investeringsaftrek en afschrijving 2027
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 362.
-Part 1: lines 1-361, 47396 bytes, first heading "# Investeringsaftrek en afschrijving 2027"
-Part 2: lines 362-396, 7536 bytes, first heading "## 6. IN THE BOOKS"
+Read plan: 2 parts. Next read offset: line 372.
+Part 1: lines 1-371, 47534 bytes, first heading "# Investeringsaftrek en afschrijving 2027"
+Part 2: lines 372-412, 7627 bytes, first heading "## 6. IN THE BOOKS"
 <!-- GENERATED:nav:end -->
 
 
@@ -28,11 +28,15 @@ Part 2: lines 362-396, 7536 bytes, first heading "## 6. IN THE BOOKS"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the investment deductions for 2027, the kleinschaligheidsinvesteringsaftrek (KIA, small-scale investment deduction), the energie-investeringsaftrek (EIA, energy investment deduction), the milieu-investeringsaftrek (MIA, environmental investment deduction), the Vamil (random depreciation for designated environmental assets), the desinvesteringsbijtelling (disposal clawback), ordinary depreciation including the bodemwaarde (floor value) for buildings, and the willekeurige afschrijving (random depreciation) for starters. The year is a mix: the text of the Wet IB 2001 that is valid on 1 January 2027 has been published and still prints the 2026 amounts before indexation, bill 37 022 was submitted on Prinsjesdag, its kamerstuk was published on 29 September 2026 and it was not adopted on 2026-10-11, and the December 2026 indexation regulation with the final 2027 amounts is not yet published. The bill proposes a higher EIA percentage, a multiplier of 1,01248 on the art. 10.1 amounts and the abolition of the starters scheme per 2028. Everything proposed or not yet published is marked in section 2 and collected in section 7.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
@@ -66,6 +70,8 @@ This file covers the investment deductions for 2027, the kleinschaligheidsinvest
 ---
 
 ## 3. HOW IT WORKS IN 2027
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 KIA base table in the 2027 text, before indexation
 
@@ -227,6 +233,8 @@ Sources: https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 13 to 15, http
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 No official examples were found for 2027, so every example below is a `Calculated example`. All inputs are invented round amounts. Every calculation uses the 2027 base figures before indexation, because the indexed 2027 KIA table, the indexed desinvestering threshold and the indexed EIA and MIA maximum were not yet published.
 
 ### Calculated example, KIA on a total investment of € 60.000
@@ -343,6 +351,8 @@ Basis: https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 8 and art. 9, ht
 
 ## 5. CHANGES FROM 2026
 
+<a id="5-changes"></a>
+
 - KIA table. 2026 was enacted with nil up to € 2.900, 28% to € 71.683, € 20.072 to € 132.746, € 20.072 minus 7,56% of the excess over € 132.746 up to € 398.236 and nil above € 398.236. The 2027 text prints the same amounts before indexation, and bill 37 022 Article LI lid 1 multiplies the art. 10.1 amounts by 1,01248 at the start of 2027, so the final 2027 amounts will be higher. The final amounts are not published. Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/investeringsaftrek-2026/kleinschaligheidsinvesteringsaftrek-2026, https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 3.41 lid 2, https://zoek.officielebekendmakingen.nl/kst-37022-2.html Article LI lid 1
 - EIA percentage. 2026 was enacted at 40%. The 2027 text also reads 40%, and bill 37 022 proposes 45,5% from 1 January 2027. The Rijksoverheid news item says 45%. Sources: https://zoek.officielebekendmakingen.nl/kst-37022-2.html Article I part F, https://www.rijksoverheid.nl/actueel/nieuws/2026/09/15/belastingplan-2027-voorstellen-voor-beter-werkend-belastingstelsel-en-gezonde-overheidsfinancien, https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 3.42 lid 3
 - EIA and MIA maximum investment amount. € 153.000.000 in 2026 and € 153.000.000 in the 2027 text before indexation. Source: https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 3.42 lid 4
@@ -361,6 +371,8 @@ Basis: https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 8 and art. 9, ht
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record each investment with the date of the obligation or the voortbrengingskosten, the supplier invoice and the amount paid, because the investeringsaftrek is taken on the total investment in the calendar year and the KIA is claimed by choice in the aangifte. https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 3.41 lid 1 and lid 2
 - If an asset is not in use at the end of the calendar year, take the investeringsaftrek only over the payments made and carry the excess to later years. At staking of the onderneming the full investeringsaftrek is taken in the year of staking. https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 3.44
 - Keep the newness evidence for assets intended for the EIA or the MIA, because a second-hand, revised, refurbished or rebuilt asset does not qualify, and a vehicle counts as new only if it was used for less than 6 months and at most 6.000 km. https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden
@@ -378,6 +390,8 @@ Basis: https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 8 and art. 9, ht
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - EIA 2027 conflict. The bill text says 45,5%, the Rijksoverheid news item says "van 40% naar 45%". Bill text: https://zoek.officielebekendmakingen.nl/kst-37022-2.html Article I part F. News item: https://www.rijksoverheid.nl/actueel/nieuws/2026/09/15/belastingplan-2027-voorstellen-voor-beter-werkend-belastingstelsel-en-gezonde-overheidsfinancien. The bill text is the legal proposal. The conflict is settled only by the adopted law.
 - Indexed 2027 KIA amounts, desinvesteringsbijtelling threshold and EIA and MIA maximum. Not published. They wait for the December 2026 indexation regulation and the vote on bill 37 022. Until then the 2027 text amounts apply, with status adopted-not-yet-in-force. https://wetten.overheid.nl/BWBR0011353/2027-01-01, https://zoek.officielebekendmakingen.nl/kst-37022-2.html Article LI lid 1
 - Share of the inflation correction applied. The 48% of 2,6% rests on secondary sources only, and those documents were not readable to the fetch tool. The bill text states the factor 1,01248. A readable kader document or the December 2026 indexation regulation would settle it. https://zoek.officielebekendmakingen.nl/kst-37022-2.html Article LI lid 1
@@ -389,6 +403,8 @@ Basis: https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 8 and art. 9, ht
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2027 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

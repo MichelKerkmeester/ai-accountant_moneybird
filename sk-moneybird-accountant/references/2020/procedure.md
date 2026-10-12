@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Aangifte en procedure 2020
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 347.
-Part 1: lines 1-346, 50627 bytes, first heading "# Aangifte en procedure 2020"
-Part 2: lines 347-374, 6447 bytes, first heading "## 6. IN THE BOOKS"
+Read plan: 2 parts. Next read offset: line 357.
+Part 1: lines 1-356, 50765 bytes, first heading "# Aangifte en procedure 2020"
+Part 2: lines 357-390, 6538 bytes, first heading "## 6. IN THE BOOKS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 347-374, 6447 bytes, first heading "## 6. IN THE BOOKS"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the procedure around tax year 2020 for a sole trader who may also own a BV: the income tax return deadline and uitstel (deferral of the filing date), the definitive aanslag (assessment) and the aanslaggrens (assessment threshold), navordering (additional assessment), bezwaar (objection), the voorlopige aanslag (provisional assessment), belastingrente (tax interest), the VAT filing and payment dates, boetes (penalties), the bewaarplicht (record-keeping duty) and the KVK and Belastingdienst registration duties. The two most notable points for 2020 are the income tax return date of 8 May 2021 instead of 1 May 2021, and the belastingrente rate that fell to 0,01% in the middle of 2020 and returned to 4% on 1 October 2020. The values checked for 2020 are enacted law or policy in force. 2020 is the first year in this set, so there is no earlier year file.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
@@ -79,6 +83,8 @@ This file covers the procedure around tax year 2020 for a sole trader who may al
 ---
 
 ## 3. HOW IT WORKS IN 2020
+
+<a id="3-how-it-works"></a>
 
 ### Aangifte inkomstenbelasting 2020, uiterste datum
 
@@ -248,6 +254,8 @@ KVK passes the data to the Belastingdienst, so no separate registration is neede
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Example 1. Definitive aanslag 2020 (Official example)
 
 The Belastingdienst gives this example itself. A return before 1 May 2021 gives the definitive aanslag at the latest on 31 December 2023. With 4 months uitstel the return is due before 1 September 2021 and the aanslag comes at the latest on 30 April 2024. Source: https://web.archive.org/web/20210413/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag.
@@ -334,6 +342,8 @@ Registering inside that window gives the KVK-nummer immediately, and the Belasti
 
 ## 5. CHANGES FROM 2019
 
+<a id="5-changes"></a>
+
 - The checked material holds no 2019 values for this topic, so this section states what began in 2020 and what the 2020 sources say about the 2020 tax year.
 - Belastingrente rate for calendar year 2020: 4% until 31 May 2020 for btw and until 30 June 2020 for the inkomstenbelasting, then 0,01% until 30 September 2020, then 4% from 1 October 2020. The 0,01% period is the new element in 2020, and for the inkomstenbelasting it started one month later than for the other taxes. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente.
 - Belastingrente on the tax year 2020 runs from 1 July 2021 at 4%. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_inkomstenbelasting.
@@ -346,6 +356,8 @@ Registering inside that window gives the KVK-nummer immediately, and the Belasti
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - File the income tax return for 2020 before 8 May 2021, or with uitstel before 1 September 2021. Record the amounts of the voorlopige aanslag that were paid or received, because they are settled in the return. Sources: https://web.archive.org/web/20210318/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen and https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/tot-wanneer-voorlopige-aanslag-aanvragen-wijzigen.
 - Record the btw per tijdvak. For a quarterly filer in 2020 the dates are Q1 30 April 2020, Q2 31 July 2020, Q3 31 October 2020 and Q4 31 January 2021, and the return and the payment must both be received by that date. Source: https://web.archive.org/web/20201101/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte.
 - A btw return that is more than 7 kalenderdagen late after the coulance triggers the aangifteverzuimboete of € 68 for 2020. Source: https://web.archive.org/web/20201112/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/boetes/u_doet_geen_of_te_laat_aangifte.
@@ -357,6 +369,8 @@ Registering inside that window gives the KVK-nummer immediately, and the Belasti
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Conflict on the 2020 return deadline inside Belastingdienst text. The archived deadline page, capture of 18 March 2021, gives before 8 May 2021 (https://web.archive.org/web/20210318/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen), and the Staatscourant besluit Stcrt. 2021, 24144 records the move (https://zoek.officielebekendmakingen.nl/stcrt-2021-24144.html). The archived definitive-aanslag page, capture of 13 April 2021, still uses before 1 May 2021 in its example for the 2020 return (https://web.archive.org/web/20210413/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag). The 8 May 2021 date is the operative one per the besluit.
 - Unknown: whether the uitstel request deadline for the 2020 return also moved to 8 May 2021. No primary page that was opened states this. A Belastingdienst page or a besluit that gives the uitstel request deadline for the 2020 return would settle it. Related source: https://zoek.officielebekendmakingen.nl/stcrt-2021-24144.html.
 - The aanslaggrens and teruggaafgrens 2020 appear in two wordings. The table from the 2024 capture onwards prints € 47 and € 15 with the wording hoger dan (https://web.archive.org/web/20250328/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag). Pages up to the 2023 captures print € 48 and € 16 with the wording gelijk aan of meer dan (https://web.archive.org/web/20230401/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag). No opened source states that the two wordings describe the same threshold. For whole-euro amounts they describe the same boundary, but that reading is an interpretation, not a statement in a primary source. A Belastingdienst text that prints each grens with a defined operator would settle it.
@@ -367,6 +381,8 @@ Registering inside that window gives the KVK-nummer immediately, and the Belasti
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2020 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

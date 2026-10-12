@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Inkomstenbelasting box 1 2027
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 328.
-Part 1: lines 1-327, 49516 bytes, first heading "# Inkomstenbelasting box 1 2027"
-Part 2: lines 328-391, 18911 bytes, first heading "## 5. CHANGES FROM 2026"
+Read plan: 2 parts. Next read offset: line 336.
+Part 1: lines 1-335, 49630 bytes, first heading "# Inkomstenbelasting box 1 2027"
+Part 2: lines 336-407, 19026 bytes, first heading "## 5. CHANGES FROM 2026"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 328-391, 18911 bytes, first heading "## 5. CHANGES FROM 2026"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the box 1 brackets and rates for 2027, the algemene heffingskorting, arbeidskorting and inkomensafhankelijke combinatiekorting, the tariefsaanpassing and the route from winst uit onderneming (business profit) to taxable box 1 income. Three layers apply for 2027. The Wet IB 2001 text valid from 1 January 2027 is adopted but not yet in force, Belastingplan 2027 is still a bill with a Tweede nota van wijziging, and several tables and amounts are not published at all. The proposed box 1 tables, the heffingskortingen and the startersaftrek can therefore still change before the year starts.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
@@ -76,6 +80,8 @@ This file covers the box 1 brackets and rates for 2027, the algemene heffingskor
 ---
 
 ## 3. HOW IT WORKS IN 2027
+
+<a id="3-how-it-works"></a>
 
 ### Box 1 table, enacted text (art. 2.10)
 
@@ -235,6 +241,8 @@ The belastbare winst uit onderneming is part of the belastbaar inkomen uit werk 
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 The nota naar aanleiding van het verslag holds 2027 koopkracht rekenvoorbeelden for households with two children and with hypotheekrenteaftrek, and a startersaftrek effect table including the Zvw (https://www.tweedekamer.nl/downloads/document?id=2026D50335). Those are policy illustrations, not year-table examples, and they are not reproduced here. All examples below are calculated examples that use only the section 2 figures of this file.
 
 ### Calculated example: bill box 1 table below AOW age
@@ -327,6 +335,8 @@ Assume the taxpayer meets the child and partner conditions and has an arbeidsink
 
 ## 5. CHANGES FROM 2026
 
+<a id="5-changes"></a>
+
 - Box 1 below AOW age. In 2026 the table was 35,75% up to € 38.883, with 8,10% as the income-tax part and 27,65% as the premium part, then 37,56% to € 78.426, then 49,50% above, with statute fixed amounts of € 3.149 and € 18.001 (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1 and https://wetten.overheid.nl/BWBR0011353/2026-01-01). For 2027 the enacted text gives 8,01% up to € 38.883, € 3.114 plus 37,59% to € 79.569 and € 18.407 plus 49,50% above (https://wetten.overheid.nl/BWBR0011353/2027-01-01). The amended bill gives 36,23% with an income-tax part of 8,58% up to € 39.247, 38,16% to € 80.578 and € 19.138 plus 49,50% above (https://www.tweedekamer.nl/downloads/document?id=2026D50329 and https://www.tweedekamer.nl/downloads/document?id=2026D50335). The top rate stays 49,50%.
 - AOW age, full year. In 2026 the first rate was 17,85% up to € 38.883, then 37,56% to € 78.426, then 49,50% (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1). For 2027 the bill gives 18,33%, with the first boundary at € 39.247 for people born in 1946 or later (https://www.tweedekamer.nl/downloads/document?id=2026D43301).
 - People born before 1 January 1946. In 2026 the first rate was 17,85% up to € 41.123, then 37,56% to € 78.426, then 49,50% (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1). For 2027 the enacted text keeps the € 41.123 boundary at 8,01%, and the amended bill moves the first boundary to € 41.637 and the top-band fixed amount to € 18.431 (https://wetten.overheid.nl/BWBR0011353/2027-01-01 and https://www.tweedekamer.nl/downloads/document?id=2026D50329).
@@ -349,6 +359,8 @@ Assume the taxpayer meets the child and partner conditions and has an arbeidsink
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the profit calculation in the steps the law uses: winst, then removal of the vrijgestelde winstbestanddelen, then the ondernemersaftrek (including the zelfstandigenaftrek of € 900 for 2027 and the startersaftrek when it applies), then the MKB-winstvrijstelling of 12,70% over the profit after the ondernemersaftrek (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/ondernemersaftrek_en_investeringsaftrek and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/mkb_winstvrijstelling and https://www.tweedekamer.nl/downloads/document?id=2026D43301).
 - The result is the belastbare winst uit onderneming that enters box 1. That income is combined with the other income from work and home and reduced by te verrekenen verliezen at that level (https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.1 and https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.2).
 - Keep the deduction items visible in the records, because the tariefsaanpassing is calculated from them when the income before deductions exceeds the top bracket boundary of € 79.569 in the enacted text. The adjustment is applied automatically and shown on the aanslag (https://www.belastingdienst.nl/wps/wcm/connect/nl/aftrek-en-kortingen/content/afbouw-tarief-aftrekposten-bij-hoog-inkomen).
@@ -361,6 +373,8 @@ Assume the taxpayer meets the child and partner conditions and has an arbeidsink
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - Belastingplan 2027 is still a bill. The Tweede Kamer overview shows no vote at the time checked and a wetgevingsoverleg was scheduled around 11 or 12 October 2026 (https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A37022). The adopted law decides box 1, the algemene heffingskorting, the arbeidskorting and the IACK for 2027.
 - Every proposed value in this file is open until the bill is adopted. That includes the bill box 1 tables (36,23%, 38,16% and 49,50% with boundaries € 39.247, € 41.637 and € 80.578 and fixed amounts € 19.138 and € 18.431), the algemene heffingskorting (€ 3.154, € 30.910, 6,350% and the AOW-age € 1.596 and 3,358%), the arbeidskorting (€ 1.142, € 5.500, € 5.889, € 47.834 and 6,51%), the IACK (€ 6.316, 11,45% and € 2.918), the aftrektarief of 38,16%, the startersaftrek reduction by € 2.113 to € 10, the meewerkaftrek rates and the stakingsaftrek of € 908 (https://www.tweedekamer.nl/downloads/document?id=2026D50335 and https://www.tweedekamer.nl/downloads/document?id=2026D50329).
@@ -384,6 +398,8 @@ Assume the taxpayer meets the child and partner conditions and has an arbeidsink
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2027 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

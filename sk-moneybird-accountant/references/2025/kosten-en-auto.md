@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Kosten en auto 2025
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 296.
-Part 1: lines 1-295, 47726 bytes, first heading "# Kosten en auto 2025"
-Part 2: lines 296-324, 6262 bytes, first heading "## 6. IN THE BOOKS"
+Read plan: 2 parts. Next read offset: line 306.
+Part 1: lines 1-305, 47864 bytes, first heading "# Kosten en auto 2025"
+Part 2: lines 306-340, 6353 bytes, first heading "## 6. IN THE BOOKS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 296-324, 6262 bytes, first heading "## 6. IN THE BOOKS"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 For tax year 2025 this file covers the business costs that a sole trader can deduct and the treatment of the car. The year's key figures are the gemengde kosten drempel (mixed-costs threshold) of € 5.700, the kilometre allowance of € 0,23 per business kilometre, and the car percentages of 22%, at least 25% for a car first admitted by 31 December 2016, and 35% of the value for an old car. Two 2025 points stand out: art. 3.16 lid 14 is new from 1 January 2025 and limits the costs of a workspace in an owned home, and zero-emission cars first admitted in 2020 lose their 60-month fixation during the year. All 2025 values in this file are enacted and Verified, except the art. 3.16 lid 14 item, which is Corrected and returns in section 7.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
@@ -64,6 +68,8 @@ For tax year 2025 this file covers the business costs that a sole trader can ded
 ---
 
 ## 3. HOW IT WORKS IN 2025
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Gemengde kosten drempel
 
@@ -216,6 +222,8 @@ The € 250 drempel applies per person ([FISIN 2025](https://www.belastingdienst
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Example 1. Gemengde kosten, drempel against the 80% keuze
 
 **Calculated example.** A sole trader has € 8.000 of gemengde kosten in 2025.
@@ -285,6 +293,8 @@ For a waarde of exactly € 30.000 the outcome is 17% x € 30.000 = € 5.100,0
 
 ## 5. CHANGES FROM 2024
 
+<a id="5-changes"></a>
+
 - Gemengde kosten drempel: € 5.600 in 2024 to € 5.700 in 2025 ([2024 text](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01)). The 2026 Belastingdienst page also says "In 2025 was de drempel ook € 5.700" ([page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/drempel-beperkt-aftrekbare-kosten-2026)).
 - Art. 3.16 lid 14 is new from 1 January 2025. The lid is absent in the 1 January 2024 text and present in the 1 January 2025 text ([2024 text](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01)). The MvT names inrichting, gas, water en licht as the huurderslasten caught ([MvT section 5.3](https://zoek.officielebekendmakingen.nl/kst-36602-3.html)).
 - Zero-emission, first admission 2025: 5% off capped at € 1.500, so 17% up to € 30.000. For a car first admitted in 2024 the rates were 6% off capped at € 1.800, so 16% up to € 30.000 ([2024 text](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01)).
@@ -294,6 +304,8 @@ For a waarde of exactly € 30.000 the outcome is 17% x € 30.000 = € 5.100,0
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Business costs go into the winstaangifte, the profit part of the IB return. Book them net of btw when the btw is deductible in the btw-aangifte. When no btw-aangifte is filed or the btw may not be deducted, which is the KOR case, deduct the costs including btw in the IB return ([welke-kosten page](https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/welke-kosten-mag-ik-aftrekken-van-mijn-bijverdiensten), [KOR page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/)).
 - The gemengde kosten drempel or the 80% election is applied in the winstaangifte. The election is made in the return ([art. 3.15 lid 5](https://wetten.overheid.nl/BWBR0011353/2025-01-01)).
@@ -310,6 +322,8 @@ For a waarde of exactly € 30.000 the outcome is 17% x € 30.000 = € 5.100,0
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Werkruimte in an owned home in the ondernemingsvermogen. The Belastingdienst page on the werkruimte in de woning has no date, does not mention art. 3.16 lid 14 and still presents the route for an owner whose home is in the ondernemingsvermogen ([page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/werkruimte_in_de_woning)). The 2025 statute and the MvT bar costs that lid 1 would bar for a private home, and the MvT names the huurderslasten ([2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01), [MvT section 5.3](https://zoek.officielebekendmakingen.nl/kst-36602-3.html)). A dated Belastingdienst publication or case law on art. 3.16 lid 14 would settle the practical line for 2025.
 - Which owner costs of a non-zelfstandige workspace stay deductible, for example afschrijving or onderhoud, is not stated on a fetched primary page beyond the MvT's huurderslasten list. A Belastingdienst page on the werkruimte or an official publication would settle it.
 - The BV variant of the drempel rests here on the checked 2020 and 2026 texts of art. 8 lid 5 Wet Vpb 1969 and on section 3.4 of the besluit ([2020 text](https://wetten.overheid.nl/BWBR0002672/2020-01-01), [2026 text](https://wetten.overheid.nl/BWBR0002672/2026-01-01), [besluit](https://zoek.officielebekendmakingen.nl/stcrt-2020-25430.html)). A 2025 text of the Wet Vpb was not among the checked sources. The 2025 statute text would settle the exact 2025 wording.
@@ -317,6 +331,8 @@ For a waarde of exactly € 30.000 the outcome is 17% x € 30.000 = € 5.100,0
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2025 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the filing and procedure rules for tax year 2021 for a Dutch sole trader (ZZP) and, where relevant, a BV. The most important dates are the income tax return before 1 May 2022, uitstel (extension) to 1 September 2022, and the definitive aanslag (final assessment) at the latest 31 December 2024 or 30 April 2025 with uitstel. Belastingrente (tax interest) is 4% all year for income tax and btw. The VAT return and payment dates are monthly or quarterly as listed in section 2. The law for 2021 is enacted.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
@@ -46,6 +50,8 @@ This file covers the filing and procedure rules for tax year 2021 for a Dutch so
 ---
 
 ## 3. HOW IT WORKS IN 2021
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 IB return 2021 and uitstel
 The income tax return (inkomstenbelasting) for tax year 2021 must arrive before 1 May 2022. The filing period opens on 1 March 2022. Source: https://web.archive.org/web/20220401/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen.
@@ -155,6 +161,8 @@ Where KVK registration is not possible, the form Opgaaf startende onderneming (n
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Example 1: Definitive aanslag 2021 (Official example)
 This example is copied from the Belastingdienst page. Source: https://web.archive.org/web/20220309/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag
 - Return before 1 May 2022: the definitive aanslag comes at the latest 31 December 2024.
@@ -225,6 +233,8 @@ The values are in section 2. A refund is paid only if it is higher than the 2021
 
 ## 5. CHANGES FROM 2020
 
+<a id="5-changes"></a>
+
 - IB return 2020 deadline: before 8 May 2021, because the 1 May 2021 date was moved one week due to a technical storing (Stcrt. 2021, 24144). IB return 2021 deadline: before 1 May 2022. Source: https://zoek.officielebekendmakingen.nl/stcrt-2021-24144.html and https://web.archive.org/web/20220401/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen.
 - IB return 2020 with uitstel: before 1 September 2021. IB return 2021 with uitstel: before 1 September 2022. Source: https://web.archive.org/web/20220309/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag.
 - Definitive aanslag 2020 latest: 31 December 2023, with 4 months uitstel 30 April 2024. Definitive aanslag 2021 latest: 31 December 2024, with 4 months uitstel 30 April 2025. Source: same archived page.
@@ -245,6 +255,8 @@ The values are in section 2. A refund is paid only if it is higher than the 2021
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the administratie so the bewaarplicht can be met. Keep basisgegevens 7 years, onroerende zaken 10 years, One Stop Shop data 10 years, other data 7 years or shorter by agreement with the belastingkantoor. The term starts when the gegeven is no longer actual. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/hoelang-moet-u-gegevens-bewaren.
 - File the IB return 2021 before 1 May 2022, or request uitstel before the filing date to get to 1 September 2022. Source: https://web.archive.org/web/20220401/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen and https://web.archive.org/web/20220309/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag.
 - File and pay VAT by the monthly or quarterly dates in section 2. Return and payment must both be received by that date. Source: https://web.archive.org/web/20210820/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte.
@@ -258,6 +270,8 @@ The values are in section 2. A refund is paid only if it is higher than the 2021
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Aanslaggrens and teruggaafgrens 2021 conflict. The live page prints € 48 and € 15 under the "higher than" wording. Captures up to 2023 print € 49 and € 16 under the "gelijk aan of meer dan" wording. The checked material's reading is that for whole-euro amounts the two forms describe the same threshold, but that reading is not a primary statement. What would settle it: a primary page that states the exact wording and values for 2021. Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag and https://web.archive.org/web/20230401/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag.
 - Exact last date for an online verzoek om vermindering for aanslag 2021. The rule is fewer than 5 years after the tax year. The sources give aanslag 2020 online until 31 December 2025 and aanslag 2023 until 31 December 2028. The exact 2021 date is not in the checked sources. What would settle it: a primary page that states the date for aanslag 2021. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/bezwaar-en-beroep/content/verzoek-om-vermindering-van-aanslag-inkomstenbelasting.
 - Whether the uitstel request deadline for the 2020 return also moved to 8 May 2021 is not stated on a primary page that was opened. This affects filing in calendar 2021. What would settle it: a primary page that states the uitstel request deadline for the 2020 return. Source: https://zoek.officielebekendmakingen.nl/stcrt-2021-24144.html.
@@ -266,6 +280,8 @@ The values are in section 2. A refund is paid only if it is higher than the 2021
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2021 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the jaarruimte (annual pension contribution room), the reserveringsruimte (catch-up room for unused jaarruimte), lijfrente (annuity) products and their conditions, converting stakingswinst (cessation profit) into a lijfrente, the interaction with the oudedagsreserve (FOR, old-age reserve), the deductibility of AOV premiums (arbeidsongeschiktheidsverzekering, disability insurance), and the proposed BAZ (Wet basisverzekering arbeidsongeschiktheid zelfstandigen, basic disability insurance for self-employed persons). The main 2025 values are a 30% jaarruimte percentage, an aftoppingsgrens (income cap) of € 137.800, a franchise (offset) of € 18.475, a maximum jaarruimte of € 35.798 and a reserveringsruimte maximum of € 42.108. The 2025 rules for these items are enacted. The BAZ is proposed only and has no enacted law in the checked material.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
@@ -56,6 +60,8 @@ This file covers the jaarruimte (annual pension contribution room), the reserver
 ---
 
 ## 3. HOW IT WORKS IN 2025
+
+<a id="3-how-it-works"></a>
 
 ### Jaarruimte percentage
 
@@ -289,6 +295,8 @@ Art. 10a.26 keeps the experimenteerbepaling (experimental provision) zelfstandig
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 Unless stated otherwise, the amounts below are the 2025 amounts. Official examples are taken from the Belastingdienst publication cited with them. Calculated examples use invented inputs with the published amounts.
 
 ### Calculated example: jaarruimte with a profit of € 60.000
@@ -427,6 +435,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_
 
 ## 5. CHANGES FROM 2024
 
+<a id="5-changes"></a>
+
 - Maximum jaarruimte: € 36.077 in 2024 to € 35.798 in 2025. Source: https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2023/12/20/belangrijkste-wijzigingen-belastingen-2024/20240108+-+Eindejaarsbericht+-+V1.2.pdf and https://open.overheid.nl/documenten/dcbb490f-d406-4842-ac33-b5c397e19df0/file
 - Reserveringsruimte maximum: € 41.608 in 2024 to € 42.108 in 2025. Source: https://wetten.overheid.nl/BWBR0011353/2024-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 and https://wetten.overheid.nl/BWBR0011353/2025-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127
 - Aftoppingsgrens: € 137.800 in 2024 to € 137.800 in 2025, not indexed in 2025. Source: https://wetten.overheid.nl/BWBR0011353/2024-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 and https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/wetsvoorstel-belastingplan-2027/wetsvoorstel-belastingplan-2027.pdf
@@ -449,6 +459,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record lijfrentepremies in the year they are paid or verrekend. Source: https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 3.130)
 - For a FOR or stakingswinst conversion, the payment deadline for 2025 is before 1 July 2026. The premium may on choice be counted in 2025. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen and https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 3.130 lid 2)
 - Record an AOV premium with periodic uitkeringen as an uitgave voor inkomensvoorzieningen, not as a business cost. It is fully deductible with no ruimte cap. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers
@@ -465,6 +477,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - The BAZ values are proposed, not enacted. The Raad van State version states a premium of 5,4% of winst, at most € 171 gross per month, a wachttijd of 2 years and 2260 consultation responses. Source: https://www.rijksoverheid.nl/actueel/nieuws/2025/09/12/wetsvoorstel-voor-basisverzekering-arbeidsongeschiktheid-voor-zelfstandigen-naar-de-raad-van-state. What would settle it: enactment of a BAZ law.
 - The 2025 proposed BAZ wachttijd of 2 years differs from later material. Bill art. 16 of the 2026 bill states 104 weken, and the docket summary still says "ongeveer één jaar". Source: https://www.tweedekamer.nl/downloads/document?id=2026D13313 and https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912. What would settle it: the final enacted text. For 2025 the proposed value is 2 years.
 - FISIN 2025 prints "€ 26.7813" in the tijdelijke oudedagslijfrente rekening row. The law text valid on 1 January 2025 states € 26.781. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen and https://wetten.overheid.nl/BWBR0011353/2025-01-01. What would settle it: use the law text and a corrected FISIN page.
@@ -474,6 +488,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2025 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

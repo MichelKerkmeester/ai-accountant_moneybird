@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the box 1 bands and rates for 2022, the AOW-age variants, the algemene heffingskorting (general tax credit), the arbeidskorting (labour tax credit), the inkomensafhankelijke combinatiekorting (income-dependent combination credit), the tariefsaanpassing (rate adjustment for deductions) and the route from winst uit onderneming (business profit) to taxable box 1 income. The published first-bracket rate combines the income tax with the premie volksverzekeringen (national insurance contributions) below AOW age, while the statutory table separates those components. The 2022 figures in this file are enacted. The inkomensafhankelijke bijdrage Zvw (income-related health insurance contribution) exists alongside the income tax and its calculation belongs to the Zvw reference.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
@@ -49,6 +53,8 @@ This file covers the box 1 bands and rates for 2022, the AOW-age variants, the a
 ---
 
 ## 3. HOW IT WORKS IN 2022
+
+<a id="3-how-it-works"></a>
 
 ### Box 1 below AOW age
 
@@ -125,6 +131,8 @@ In 2022 an ondernemer who met het urencriterium (hours criterion) and was below 
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 Every example below uses the section 2 figures. Official examples are copied from the linked source page. Calculated examples are built here from the section 2 figures.
 
@@ -290,6 +298,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/winst_en_
 
 ## 5. CHANGES FROM 2021
 
+<a id="5-changes"></a>
+
 - Below AOW age, the published first rate changed from 37,10% up to € 68.507 to 37,07% up to € 69.398, and the top rate stayed 49,50%. The statutory first boundary changed from € 35.129 to € 35.472, the income-tax part from 9,45% to 9,42%, and the fixed amounts from € 3.319 and € 15.702 to € 3.341 and € 15.917. Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/belastingberekening and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/belastingberekening and https://wetten.overheid.nl/BWBR0011353/2021-01-01 and https://wetten.overheid.nl/BWBR0011353/2022-01-01.
 
 - For a full year at AOW age, the first rate changed from 19,20% to 19,17%, the first boundary from € 35.129 to € 35.472 for people born on or after 1 January 1946, the pre-1946 boundary from € 35.941 to € 36.409, and the middle boundary from € 68.507 to € 69.398. The pre-1946 fixed amounts changed from € 3.396 and € 15.477 to € 3.429 and € 15.658. Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/belastingberekening and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/belastingberekening and https://wetten.overheid.nl/BWBR0011353/2021-01-01 and https://wetten.overheid.nl/BWBR0011353/2022-01-01.
@@ -318,6 +328,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/winst_en_
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 Record the profit and the steps to the belastbare winst uit onderneming, including the ondernemersaftrek, the MKB-winstvrijstelling, any vrijgestelde winstbestanddelen, te verrekenen verliezen and the grondslagverminderende posten. Keep the calculations that support the amounts entered in the income tax return. The checked material does not state a filing deadline or a record-retention period for this topic. Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/mkb_winstvrijstelling and https://wetten.overheid.nl/BWBR0011353/2026-01-01 arts. 3.1 and 3.2.
 
 The AHK and AK are applied automatically in the return and can also be applied through the payroll. The IACK is claimed in the return or through a voorlopige aanslag and is not applied through the payroll. The tariefsaanpassing is applied automatically and appears on the aanslag. The payout of unused heffingskortingen to a partner depends on the partner's tax and on the payout income limits. Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/heffingskortingen and https://www.belastingdienst.nl/wps/wcm/connect/nl/aftrek-en-kortingen/content/afbouw-tarief-aftrekposten-bij-hoog-inkomen.
@@ -327,6 +339,8 @@ An inkomensafhankelijke bijdrage Zvw exists for 2022 on top of the income tax. I
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - The 2022 payout income limit for people born before 1963 is printed as both € 8.885 and € 8.845 on https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/heffingskortingen. A corrected primary page or an official correction would settle it.
 
@@ -345,6 +359,8 @@ An inkomensafhankelijke bijdrage Zvw exists for 2022 on top of the income tax. I
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2022 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

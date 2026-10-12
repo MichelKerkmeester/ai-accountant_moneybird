@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Box 2 en aanmerkelijk belang 2020
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 256.
-Part 1: lines 1-255, 46567 bytes, first heading "# Box 2 en aanmerkelijk belang 2020"
-Part 2: lines 256-298, 9508 bytes, first heading "## 6. IN THE BOOKS"
+Read plan: 2 parts. Next read offset: line 266.
+Part 1: lines 1-265, 46705 bytes, first heading "# Box 2 en aanmerkelijk belang 2020"
+Part 2: lines 266-314, 9599 bytes, first heading "## 6. IN THE BOOKS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 256-298, 9508 bytes, first heading "## 6. IN THE BOOKS"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 Box 2 is the income tax box for a taxpayer with an aanmerkelijk belang (substantial shareholding), normally at least 5% of the capital, the winstbewijzen (profit-sharing certificates) or the votes in a company. For 2020 the law is enacted and box 2 has one flat rate of 26,25%, with no brackets. The main events of the year are the end of the afkoop (commutation) and conversion routes for a pensioen in eigen beheer (PEB, pension in own company) on 1 January 2020 and a negative market rate of -0,107% for the oudedagsverplichting (ODV, old-age obligation). The excessief lenen (excessive borrowing from the own company) rules exist only from 1 January 2023 and do not apply to 2020.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
@@ -65,6 +69,8 @@ Box 2 is the income tax box for a taxpayer with an aanmerkelijk belang (substant
 ---
 
 ## 3. HOW IT WORKS IN 2020
+
+<a id="3-how-it-works"></a>
 
 ### Box 2 rate (art. 2.12 Wet IB 2001)
 
@@ -178,6 +184,8 @@ Art. 7.5 confirms that the base for a non-resident is an aanmerkelijk belang in 
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 Every example below is marked as an **Official example**, copied from the source named in it, or as a **Calculated example**, built here from the section 2 figures. The amounts in the calculated examples are invented round numbers.
 
 **Calculated example, dividend and the 26,25% rate.** A taxpayer with an aanmerkelijk belang receives a gross dividend of € 10.000 in 2020. The bank charges € 400. The BV withholds € 1.500 dividendbelasting.
@@ -238,6 +246,8 @@ Part B: an ODV in the instalment route has a balance of € 200.000 at the start
 
 ## 5. CHANGES FROM 2019
 
+<a id="5-changes"></a>
+
 The checked material holds no 2019 values for this topic, so the bullets state what began in 2020 or the 2020 form of a rule where the sources say it.
 
 - Pensioen in eigen beheer: the afkoop and the geruisloze conversion into an oudedagsverplichting ended on 1 January 2020. The routes had been open from 1 April 2017 to 31 December 2019. Artikel VI of Stb. 2017, 115 makes art. 38n lid 2 to 5, art. 38o, art. 38p lid 5 and art. 38q lapse from 1 January 2020, and the 2020 Wet LB text shows art. 38o and 38q as "[Vervallen per 01-01-2020]" ([Stb. 2017, 115](https://zoek.officielebekendmakingen.nl/stb-2017-115.html), [Wet LB 2020](https://wetten.overheid.nl/BWBR0002471/2020-01-01), [CAP](https://centraalaanspreekpuntpensioenen.belastingdienst.nl/publicaties/va_17-007_v170401/)).
@@ -254,6 +264,8 @@ The checked material holds no 2019 values for this topic, so the bullets state w
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Record dividends and other profit distributions as reguliere voordelen in box 2 ([Belastingdienst inkomen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang)).
 - Do not deduct dividendbelasting from the box 2 income. It is credited as voorheffing, so keep the dividend notes that show the withheld amount ([FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang)).
@@ -273,6 +285,8 @@ The checked material holds no 2019 values for this topic, so the bullets state w
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 Open points for 2020:
 
 - The summed box 2 amount of two fiscal partners is UNVERIFIED. No primary page in the checked material states a summed two-partner amount. The rule is that the partners may divide the income in any proportion as long as the total is 100%, and art. 2.12 applies per taxpayer ([2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang)). A primary page that shows how the two individual amounts are presented together would settle it.
@@ -291,6 +305,8 @@ Resolved conflicts, listed for context and not open for 2020:
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2020 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the rules for deducting pension premiums, lijfrentepremies (annuity premiums), and arbeidsongeschiktheidsverzekering (AOV, disability insurance) premiums for a Dutch sole trader (ZZP) in tax year 2026. The most important figures are the jaarruimte (annual deduction room) of up to € 35.589 and the reserveringsruimte (catch-up room) of up to € 42.753. The law for 2026 is enacted and in force. The Wet basisverzekering arbeidsongeschiktheid zelfstandigen (BAZ) is a proposed law that is not yet in force.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
@@ -53,6 +57,8 @@ This file covers the rules for deducting pension premiums, lijfrentepremies (ann
 ---
 
 ## 3. HOW IT WORKS IN 2026
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Jaarruimte percentage
 
@@ -146,6 +152,8 @@ The BAZ entry into force is by koninklijk besluit (royal decree). There is no st
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Example 1: Jaarruimte calculation (Calculated example)
 
 A sole trader has a winst uit onderneming (profit) of € 60.000 in 2025 and no pension accrual. The premiegrondslag for 2026 is: min(€ 60.000, € 137.800) = € 60.000 minus franchise € 19.172 = € 40.828. The jaarruimte is 30% x € 40.828 = € 12.248,40. This is the maximum deductible lijfrentepremie for 2026, assuming no reduction for pension accrual. Source for figures: [Art. 3.127](https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
@@ -170,6 +178,8 @@ The MvT gives examples for the proposed BAZ. At a winst of € 38.000 or € 45.
 
 ## 5. CHANGES FROM 2025
 
+<a id="5-changes"></a>
+
 - Maximum jaarruimte: € 35.798 (2025) to € 35.589 (2026). Source: [Ministry 2025 table](https://open.overheid.nl/documenten/dcbb490f-d406-4842-ac33-b5c397e19df0/file), [Ministry 2026 table](https://open.overheid.nl/documenten/c3d48c04-1009-4ffe-a54b-cebf13427ab5/file).
 - Franchise premiegrondslag: € 18.475 (2025) to € 19.172 (2026). Source: [Art. 3.127 lid 3, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [Art. 3.127 lid 3, 2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
 - Reserveringsruimte maximum: € 42.108 (2025) to € 42.753 (2026). Source: [Art. 3.127 lid 2, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [Art. 3.127 lid 2, 2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
@@ -189,11 +199,15 @@ The MvT gives examples for the proposed BAZ. At a winst of € 38.000 or € 45.
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 For a sole trader, record lijfrentepremies and AOV premiums as private expenditures that are deductible in the inkomstenbelasting (income tax) return, not as business costs on the winst. The AOV premium is an "uitgave voor andere inkomensvoorzieningen" under art. 3.124 lid 1 c. Keep the policy documents and payment records. For a FOR or stakingswinst conversion, pay before 1 July of the following year (before 1 July 2027 for 2026). The deduction is claimed in the aangifte inkomstenbelasting. Source: [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/uitgaven_voor_inkomensvoorzieningen), [Art. 3.124](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [Belastingdienst: AOV voor ondernemers](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers).
 
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - The 2026 Belastingdienst birth date limit (1 September 1953) was not recomputed against the AOW age table of art. 7a AOW. Settling source: art. 7a AOW at wetten.overheid.nl. Source: [Belastingdienst: Aftrekken lijfrentepremies](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies).
 - The ODB 2026 sheet lists factor A 6,27 under art. 3.127 lid 4 sub a, but the 2026 law text no longer has a factor A in lid 4. It survives only through art. 10a.25 lid 1. Treat the ODB factor A line as outdated. Source: [ODB 2026 sheet](https://odb.belastingdienst.nl/wp-content/uploads/2026/01/20251218-Overzicht-cijfers-leven-2026-FsL.pdf), [Art. 3.127](https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
@@ -205,6 +219,8 @@ For a sole trader, record lijfrentepremies and AOV premiums as private expenditu
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2026 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

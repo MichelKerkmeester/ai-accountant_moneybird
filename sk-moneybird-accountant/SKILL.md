@@ -115,7 +115,7 @@ Illustrative only. The Task-Type Table is the source of truth: read one row, loa
 
     SKILL_ROOT = Path(__file__).resolve().parent
     RESOURCE_BASES = (SKILL_ROOT / "references",)
-    ROUTE_TABLE = parse_route_table()  # from the route-table block
+    ROUTE_TABLE = parse_route_table()
     CONTEXT = read_session_context("session-context.json")  # generated, never a workspace path
     UNKNOWN_FALLBACK = {"load": "nothing", "tiers": {
         "Tier A": "Refuse with the out-of-scope boundary, load nothing",
@@ -147,8 +147,7 @@ Illustrative only. The Task-Type Table is the source of truth: read one row, loa
         return resolved.relative_to(SKILL_ROOT).as_posix()
 
     def load_if_available(relative_path, inventory, loaded, missing):
-        """Guard one path, load it when present, record absent paths.
-        load appends its text to the answer context."""
+        """Guard one path, load it when present, record absent paths."""
         guarded = _guard_in_skill(relative_path)
         if guarded in inventory and guarded not in loaded:
             load(guarded)
@@ -157,7 +156,6 @@ Illustrative only. The Task-Type Table is the source of truth: read one row, loa
             missing.append(guarded)
 
     def route_resources(request):
-        """Route one request and load only its read set."""
         inventory = discover_markdown_resources()
         loaded, missing = [], []
         row = classify(request, ROUTE_TABLE)
@@ -197,7 +195,8 @@ LIVE Moneybird writes have three states. `JOURNAL_BACKED`: writes inside the LIV
 #### Ad hoc ZZP questions
 
 - Resolve the year through `year_key` from session-context.json before using any rate, threshold, deduction, or vehicle rule.
-- Load references/YYYY/README.md, then the one topic file it names. Load references/dutch-tax-rules.md when the question is how a rule works across years.
+- For a figure question, load references/YYYY/README.md, then the topic file at `#2-key-figures`, its KEY FIGURES. Other sections only for mechanics.
+- For a cross-year rule question, read only subsection 3.n of references/dutch-tax-rules.md by the line range its generated section list gives.
 - Explain general rules with the year and source. Label conflicting or unverified points.
 
 ### CLI Preflight

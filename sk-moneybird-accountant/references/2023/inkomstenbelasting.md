@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the 2023 Box 1 brackets, the heffingskortingen (tax credits), tariefsaanpassing (rate adjustment) and how taxable sole-trader profit enters Box 1 income. The 2023 rules and figures shown here are enacted, with the stated corrections and open points identified below. A separate Zvw income-related contribution exists and is covered by the Zvw file (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
@@ -59,6 +63,8 @@ This file covers the 2023 Box 1 brackets, the heffingskortingen (tax credits), t
 ---
 
 ## 3. HOW IT WORKS IN 2023
+
+<a id="3-how-it-works"></a>
 
 ### Box 1 below AOW age
 
@@ -184,6 +190,8 @@ No new oudedagsreserve (retirement reserve) additions can be formed from 2023. A
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Business profit flowing into Box 1
 
 **Calculated example.** Assume an income-tax entrepreneur qualifies for a € 5.030 zelfstandigenaftrek and has € 60.000 profit before ondernemersaftrek. No other entrepreneur deductions, exempt profit components or loss offsets apply.
@@ -292,6 +300,8 @@ Both results are below their applicable maximums. The rates and limits are from 
 
 ## 5. CHANGES FROM 2022
 
+<a id="5-changes"></a>
+
 - The below-AOW published Box 1 rate changed from 37,07% up to € 69.398 to 36,93% up to € 73.031. The top rate remained 49,50% (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/belastingberekening, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/belastingberekening, https://wetten.overheid.nl/BWBR0011353/2022-01-01, https://wetten.overheid.nl/BWBR0011353/2023-01-01).
 - For a full year at AOW age and birth on or after 1 January 1946, the first rate changed from 19,17% up to € 35.472 to 19,03% up to € 37.149. The next rate changed from 37,07% to 36,93%, and its boundary moved from € 69.398 to € 73.031. The top rate remained 49,50% (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/belastingberekening, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/belastingberekening).
 - For a full year at AOW age and birth before 1 January 1946, the first boundary changed from € 36.409 to € 38.703. The rates changed from 19,17%, 37,07% and 49,50% to 19,03%, 36,93% and 49,50% (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/belastingberekening, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/belastingberekening, https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 2.10a, https://wetten.overheid.nl/BWBR0011353/2023-01-01 art. 2.10a).
@@ -314,6 +324,8 @@ Both results are below their applicable maximums. The rates and limits are from 
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Track business profit, exempt profit components, eligible ondernemersaftrek, the MKB-winstvrijstelling and any losses that affect taxable Box 1 income. These items determine the taxable business profit and taxable income described in section 3 (https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.1 and art. 3.2, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/mkb_winstvrijstelling).
 - Record whether the income qualifies as winst uit onderneming. Handelsregister registration alone does not determine that classification. The Belastingdienst considers the business relationship and risk factors listed in section 3 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/winst_uit_onderneming).
 - The algemene heffingskorting and arbeidskorting may be applied through the return and payroll. The IACK is applied in the return or through a provisional assessment, not payroll (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/heffingskortingen).
@@ -322,6 +334,8 @@ Both results are below their applicable maximums. The rates and limits are from 
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - **UNVERIFIED, heffingskortingen in the AOW transition year:** The checked 2023 sources give no rule or amount for the year AOW age is reached. https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/heffingskortingen would need to be supplemented with a 2023 transition-year rule or amount to settle this point.
 - **UNVERIFIED, Anw and Wlz at AOW age:** The checked source states that the AOW premium stops at AOW age. The continuation of Anw and Wlz is inferred from the AOW-age rates, not stated as a verified rule (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/sociale_verzekeringen/premies_volks_en_werknemersverzekeringen/volksverzekeringen/hoeveel_moet_u_betalen, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/belastingberekening).
@@ -333,6 +347,8 @@ Both results are below their applicable maximums. The rates and limits are from 
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2023 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

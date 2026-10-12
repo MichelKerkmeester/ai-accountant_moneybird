@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Aangifte en procedure 2027
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 266.
-Part 1: lines 1-265, 46377 bytes, first heading "# Aangifte en procedure 2027"
-Part 2: lines 266-422, 26153 bytes, first heading "## 4. WORKED EXAMPLES"
+Read plan: 2 parts. Next read offset: line 272.
+Part 1: lines 1-271, 46459 bytes, first heading "# Aangifte en procedure 2027"
+Part 2: lines 272-438, 26300 bytes, first heading "## 4. WORKED EXAMPLES"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 266-422, 26153 bytes, first heading "## 4. WORKED EXAMPLES"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the procedure for tax year 2027 for a ZZP sole trader and for a BV owner. It describes the income tax return deadline and uitstel (extension), the VAT filing and payment dates, the voorlopige aanslag (provisional assessment), belastingrente (tax interest), the navorderingstermijn (recovery period), bezwaar (objection), the bewaarplicht (record retention duty) and the KVK and Belastingdienst registration duties. 2027 is a mixed year: the AWR terms, the Invorderingswet terms and the VBAR hold in their current texts, the Belastingplan 2027 bill as introduced changes no AWR, Invorderingswet or belastingrente rule, and several 2027 amounts were still unpublished on 2026-10-11, including the belastingrente rate, the aanslaggrens and teruggaafgrens, the boete amounts and the VBAR hourly amount after the 1 January 2027 indexation. From 1 January 2027 the remaining zachte landing in the enforcement of arbeidsrelaties lapses, so verzuimboetes are possible again and the default bedrijfsbezoek start ends.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
@@ -82,6 +86,8 @@ This file covers the procedure for tax year 2027 for a ZZP sole trader and for a
 ---
 
 ## 3. HOW IT WORKS IN 2027
+
+<a id="3-how-it-works"></a>
 
 One subsection per item in the key figures table, in the same order. Every statement follows the linked checked source.
 
@@ -265,6 +271,8 @@ A text search of the Belastingplan 2027 bill as introduced shows that it changes
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 All rules, rates, thresholds and official examples below come from the figures table or the checked material. Round example inputs are used only to show the method. Every step is written out. Calculated examples are built here. Official examples are copied from a primary source with the URL.
 
 **Example 1. Uitstel for the income tax return over 2026 (Calculated example).**
@@ -356,6 +364,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_fu
 
 ## 5. CHANGES FROM 2026
 
+<a id="5-changes"></a>
+
 - DBA verzuimboetes: in 2026 no verzuimboetes and vergrijpboetes possible under the normal rules from 1 January 2026, also for correcties over 2026. From 1 January 2027 the remaining parts of the zachte landing lapse, so verzuimboetes are possible again and the default bedrijfsbezoek start ends. Source: https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z62fd.pdf
 - DBA handhaving organisation: 2026 had a separate handhavingsplan, versie 2.0 of 31 December 2025, with 80 fte, NLA meldingen usable from 2026 and extra attention for government bodies as opdrachtgevers, the detectiemodule TKA and horizontal supervision levels. For 2027 the ambition is full integration into regular handhaving with no separate plan, and no separate 2027 plan was published on 2026-10-11. Sources: https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z62fd.pdf and https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving
 - VBAR: in 2026 adopted but not yet in force. Entry into force on 31 December 2026 by Stb. 2026, 207, so the rechtsvermoeden applies throughout 2027. Sources: https://zoek.officielebekendmakingen.nl/stb-2026-158.html and https://zoek.officielebekendmakingen.nl/stb-2026-207.html
@@ -378,6 +388,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_fu
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - File the income tax return over 2026 in 2027 before the date in the aangiftebrief, usually 1 May 2027. Request uitstel before the filing date if needed. Uitstel gives 4 months, to 1 September, and usually means belastingrente. Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/programmas_en_formulieren/aanvraag-uitstel-aangifte-inkomstenbelasting
 - File and pay each btw-aangifte by the date in the table. The return and the payment must both be received by that date. The yearly return is due by 31 March of the next year. Q4 2026 and December 2026 are due by 31 January 2027 and the yearly return 2026 by 31 March 2027. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums
 - Settle the amounts of the voorlopige aanslag in the return. When the expected profit changes, change it in the Winst uit onderneming screen before the deadline, usually 1 May of the next year and not after filing. Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/in-welke-situaties-moet-ik-mijn-voorlopige-aanslag-wijzigen and https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/tot-wanneer-voorlopige-aanslag-aanvragen-wijzigen
@@ -390,6 +402,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_fu
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 ### Open points for 2027
 
@@ -415,6 +429,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_fu
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2027 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

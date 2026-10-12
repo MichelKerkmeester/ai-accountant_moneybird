@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 The Zvw-bijdrage (contribution under the Zorgverzekeringswet, the Dutch Health Insurance Act) is the income-dependent contribution that funds the basic health insurance. A sole trader (IB-ondernemer) pays this contribution by aanslag (assessment) over the profit that counts as bijdrage-inkomen, in 2025 at 5,26% of at most € 75.864. The same maximum applies once per person across all income channels, so loon, a pension or a benefit that already carried a contribution uses up the headroom. The 2025 figures in this file are enacted law and verified, except the exact 2025 statutory basis of the profit base and the treatment at AOW age, which are UNVERIFIED and marked as such.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
@@ -50,6 +54,8 @@ The Zvw-bijdrage (contribution under the Zorgverzekeringswet, the Dutch Health I
 ---
 
 ## 3. HOW IT WORKS IN 2025
+
+<a id="3-how-it-works"></a>
 
 ### Zvw-bijdrage by aanslag
 
@@ -131,6 +137,8 @@ https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/20
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 **Official example 1 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet).** Loon € 40.000 plus freelance income of € 50.000. The maximum bijdrage-inkomen is € 75.864 and the loon already carried a contribution, so the headroom is € 75.864 minus € 40.000 = € 35.864, and the 5,26% applies to that € 35.864 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The euro amount of the contribution is not printed on the page.
 
 **Official example 2 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet).** Loon € 80.000 plus freelance income of € 15.000 gives no bijdrage, because the loon alone is above the maximum of € 75.864 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
@@ -148,6 +156,8 @@ https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/20
 ---
 
 ## 5. CHANGES FROM 2024
+
+<a id="5-changes"></a>
 
 - Zvw-bijdrage by aanslag: 5,32% in 2024 to 5,26% in 2025 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw).
 - Maximum bijdrage-inkomen: € 71.628 in 2024 to € 75.864 in 2025 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
@@ -167,6 +177,8 @@ https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/20
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the winst, the ondernemersaftrek and the MKB-winstvrijstelling for the year, because the belastbare winst uit onderneming under afdeling 3.2 Wet IB 2001 is the Zvw base for a winst-ondernemer (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01, https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.2).
 - Record which income in the year already carried a Zvw contribution, such as loon, a pension, a benefit or an ingehouden bijdrage, because the maximum bijdrage-inkomen applies once per person across channels and that income uses up the headroom (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 - Keep the balance sheet movement of any oudedagsreserve, because the amount added under art. 3.70 lid 2 on a decrease is not part of the Zvw base and the conversion into a lijfrente is not covered by the aanslag (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
@@ -179,6 +191,8 @@ https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/20
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Zvw base for a winst-ondernemer: UNVERIFIED for 2025. https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01 and https://wetten.overheid.nl/BWBR0011353/2026-01-01 were read in the 2026 version only, and the 2025 version was not read. Reading Zvw art. 43 and Wet IB 2001 art. 3.2 in the version valid on 1 January 2025 on wetten.overheid.nl would settle it.
 - Zvw base and an oudedagsreserve decrease: UNVERIFIED for 2025 for the same reason, the exception in art. 43 lid 2 onderdeel b was read in the 2026 version only.
 - Zvw declaration and deadlines: UNVERIFIED. That the same aangifte is used, that a voorlopige aanslag Zvw exists and that the Zvw follows the IB filing timeline comes from the topic file and was not re-opened. https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet confirms only that the aanslag Zvw comes with the (voorlopige) aanslag inkomstenbelasting. The procedure topic carries the deadline.
@@ -189,6 +203,8 @@ https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/20
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2025 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

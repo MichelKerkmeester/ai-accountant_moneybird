@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the 2021 box 1 rates, the variants for people at AOW age, the heffingskortingen (tax credits, being the algemene heffingskorting, arbeidskorting and inkomensafhankelijke combinatiekorting), the tariefsaanpassing (rate adjustment for deductions) and the route from winst uit onderneming (business profit) to taxable income. The ordinary below-AOW table applies 37,10% up to € 68.507 and 49,50% above that amount. AOW age changes the first-bracket rate and the heffingskorting tables, and the tariefsaanpassing of 6,5% limits the value of a deduction in the top bracket to 43%. The 2021 rules in this file are enacted. A separate Zvw contribution also exists on profit, and its calculation belongs in the Zvw file for 2021.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
@@ -55,6 +59,8 @@ This file covers the 2021 box 1 rates, the variants for people at AOW age, the h
 ---
 
 ## 3. HOW IT WORKS IN 2021
+
+<a id="3-how-it-works"></a>
 
 ### Box 1 below AOW age
 
@@ -174,6 +180,8 @@ The box 1 saldo is taxed by article 2.10 lid 1, then lid 2 adds the tariefsaanpa
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Calculated example: box 1 below AOW age
 
 Assume a taxable amount in box 1 of € 40.000 for a taxpayer below AOW age.
@@ -268,6 +276,8 @@ This does not establish a separate IACK payout percentage (https://www.belasting
 
 ## 5. CHANGES FROM 2020
 
+<a id="5-changes"></a>
+
 - The below-AOW combined first rate changed from 37,35% to 37,10%. The first statutory boundary changed from € 34.712 to € 35.129. The top rate stayed 49,50% and the € 68.507 boundary stayed the same. The income-tax part changed from 9,70% to 9,45%, while the premium components stayed AOW 17,90%, Anw 0,10% and Wlz 9,65% (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/belastingberekening and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/belastingberekening).
 - For a whole year at AOW age the first rate changed from 19,45% to 19,20%. The first boundary changed from € 34.712 to € 35.129 for people born on or after 1 January 1946, and from € 35.375 to € 35.941 for people born before 1 January 1946. The middle rate changed from 37,35% to 37,10% and the top rate stayed 49,50% (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/belastingberekening and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/belastingberekening and https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://wetten.overheid.nl/BWBR0011353/2021-01-01).
 - The monthly first-bracket transition rates changed from January through December as follows: 19,45% to 19,20%, 20,94% to 20,69%, 22,43% to 22,18%, 23,92% to 23,67%, 25,41% to 25,16%, 26,90% to 26,65%, 28,40% to 28,15%, 30,09% to 29,84%, 31,38% to 31,13%, 32,87% to 32,62%, 34,36% to 34,11% and 35,85% to 35,60% (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/belastingberekening and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/belastingberekening).
@@ -288,6 +298,8 @@ This does not establish a separate IACK payout percentage (https://www.belasting
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 Reconcile the business profit to the ondernemersaftrek and the MKB-winstvrijstelling and to any losses used in the box 1 calculation (https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.1 and art. 3.2 and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/ondernemersaftrek_en_investeringsaftrek).
 
 Keep the arbeidsinkomen base for the arbeidskorting in view, because it includes the winst uit onderneming before the ondernemersaftrek and the MKB-winstvrijstelling and excludes income as medegerechtigde or winstdelende schuldeiser (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/heffingskortingen and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/heffingskortingen).
@@ -299,6 +311,8 @@ The checked sources do not state a bookkeeping retention period or a filing dead
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - The IACK-specific payout percentage for 2021 is unknown. The checked 2021 page states no separate percentage, and the general 86⅔% afbouw figure is not confirmed for the IACK (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/heffingskortingen).
 - The amount and the calculation rule for the heffingskortingen in the year in which the AOW age is reached are UNVERIFIED for 2021. The checked 2021 page states no rule (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/heffingskortingen).
@@ -313,6 +327,8 @@ The checked sources do not state a bookkeeping retention period or a filing dead
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2021 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

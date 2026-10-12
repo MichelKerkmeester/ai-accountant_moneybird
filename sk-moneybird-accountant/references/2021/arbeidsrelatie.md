@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 In 2021 the Wet DBA (Wet deregulering beoordeling arbeidsrelaties) was in force and the handhavingsmoratorium still applied, so a case that was not kwaadwillend first got an aanwijzing instead of a direct correction. The webmodule Beoordeling Arbeidsrelatie ran as a pilot from 11 January 2021 to 10 July 2021 and had no rechtskracht, and the moratorium was extended at least to 1 October 2021 by the zevende voortgangsbrief of 20 September 2021, which left the decisions on the webmodule and the moratorium to the next cabinet. The 2021 rules are enacted law and enforcement policy, while the VBAR hourly rate presumption and the BAZ bill in section 2 are later items that did not apply to tax year 2021.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
@@ -42,6 +46,8 @@ In 2021 the Wet DBA (Wet deregulering beoordeling arbeidsrelaties) was in force 
 ---
 
 ## 3. HOW IT WORKS IN 2021
+
+<a id="3-how-it-works"></a>
 
 ### Wet DBA
 
@@ -90,6 +96,8 @@ Not applicable to tax year 2021. Bill 36 912 was ingediend on 24 March 2026 (htt
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 The checked sources give no official examples for this topic for 2021. Every example below is a Calculated example built here from the section 2 figures, with clearly invented facts. No real person's data is used.
 
@@ -217,6 +225,8 @@ Source: https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsv
 
 ## 5. CHANGES FROM 2020
 
+<a id="5-changes"></a>
+
 - **Moratorium end date.** 2020: the fourth postponement to 1 January 2021 was announced in the derde voortgangsbrief of 24 June 2019, and the zesde voortgangsbrief of 16 November 2020 put the restart of handhaving at the earliest 1 October 2021 (https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file). 2021: the zevende voortgangsbrief of 20 September 2021 extended the moratorium at least to 1 October 2021 and left the decisions on the webmodule and the moratorium to the next cabinet (same source).
 - **Webmodule status.** 2020: not yet live, with the pilot expected to start on 11 January 2021 (zesde voortgangsbrief of 16 November 2020, same source). 2021: the pilot ran from 11 January 2021 to 10 July 2021, the online environment stayed active and there was no rechtskracht during or after the pilot (same source and https://ondernemersplein.overheid.nl/personeel/inhuren/webmodule-beoordeling-arbeidsrelatie/).
 - **Enforcement exception.** From 1 January 2020: enforcement also when aanwijzingen were not followed within a reasonable term, for periods from 1 January 2020 (derde voortgangsbrief of 24 June 2019, https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file). 2021: this stayed in force through the extension (https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving).
@@ -228,6 +238,8 @@ Source: https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsv
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Keep the signed overeenkomst, the approved modelovereenkomst if one is used, and a record of how the work is actually done. Working under an approved modelovereenkomst means no loondienst only if the parties work as described (https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/werken-met-modelovereenkomsten).
 - If a thuiswerker, gelijkgestelde or artiest is used and the parties want to exclude the fictieve dienstbetrekking, the written exclusion must be in the contract before the first payment of pay. The consequence is no entitlement to ZW, WIA and WW for the opdrachtnemer (https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst).
@@ -241,6 +253,8 @@ Source: https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsv
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - **Modelovereenkomsten 2021.** The checked material contains no 2021-specific event for modelovereenkomsten. The 2020 file recorded the same gap as UNVERIFIED (https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file). A 2021 Belastingdienst page or a 2021 voortgangsbrief that lists a modelovereenkomsten change would settle whether anything changed in 2021.
 - **Uber ruling date.** The date 21 February 2025 and ECLI:NL:HR:2025:319 come from a later court citation found by search, not from a fetched copy of the ruling, so they are UNVERIFIED (https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file and https://www.rijksoverheid.nl/actueel/nieuws/2025/03/27/ondernemerschap-blijft-volwaardig-criterium-bij-beoordelen-schijnzelfstandigheid). The ruling text on rechtspraak.nl or the Hoge Raad site would settle the date and the ECLI.
@@ -256,6 +270,8 @@ Source: https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsv
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2021 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the deduction of business costs and the car rules for a sole trader, plus the BV variant of the gemengde kosten rule, in tax year 2021. The law for 2021 is enacted, and the checked statute text is the version valid on 1 January 2021 (https://wetten.overheid.nl/BWBR0011353/2021-01-01). The year is almost a copy of 2020, and the one real change is the zero-emission bijtelling for cars first admitted in 2021, where the reduction drops to 10% with a cap of € 4.000, so 12% up to € 40.000 (https://wetten.overheid.nl/BWBR0011353/2021-01-01). Two other facts shape the year: the gemengde kosten drempel of € 4.700 with the alternative of deducting 80%, and 2021 as the last year of the scholingsuitgaven as a persoonsgebonden aftrek, with the abolition taking effect on 1 January 2022 (https://zoek.officielebekendmakingen.nl/stb-2021-349.html).
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
@@ -47,6 +51,8 @@ This file covers the deduction of business costs and the car rules for a sole tr
 ---
 
 ## 3. HOW IT WORKS IN 2021
+
+<a id="3-how-it-works"></a>
 
 ### Gemengde kosten drempel (art. 3.15 lid 1)
 
@@ -168,6 +174,8 @@ Misdrijf scope: only costs connected with the misdrijf for which the taxpayer wa
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 **Calculated example 1, gemengde kosten, drempel against the 80% election.** Suppose a sole trader has € 6.000,00 of gemengde kosten in 2021, made up of zakenlunches and recepties. Step 1, drempel route: the first € 4.700,00 is not deductible, so the deduction is € 6.000,00 - € 4.700,00 = € 1.300,00. Step 2, 80% election: the taxpayer elects in the return to deduct 80% of the costs, 80% × € 6.000,00 = € 4.800,00. Step 3, compare: the election gives the higher deduction here, € 4.800,00 against € 1.300,00. With costs of € 3.000,00 the drempel route gives € 0,00 and the election gives 80% × € 3.000,00 = € 2.400,00, so the election is again better. The election is made in the return of the year (art. 3.15 lid 5, https://wetten.overheid.nl/BWBR0011353/2021-01-01).
 
 **Calculated example 2, congres travel cap and the gemengde-kosten drempel.** Travel and stay of € 2.200,00 for a congres in 2021. Art. 3.16 lid 2 onderdeel f makes the part above € 1.500,00 not deductible, so € 2.200,00 - € 1.500,00 = € 700,00 is not deductible. The remaining € 1.500,00 is reis en verblijf that counts in the gemengde kosten posts under art. 3.15 lid 2. With no other gemengde kosten, the drempel route gives € 0,00 because € 1.500,00 is below the € 4.700,00 drempel. The 80% election gives 80% × € 1.500,00 = € 1.200,00, so the election is better here. If the nature of the work makes attendance necessary, the art. 3.16 lid 2 onderdeel f cap does not apply, and the full € 2.200,00 goes into the art. 3.15 posts. The drempel route then still gives € 0,00, while the 80% election gives 80% × € 2.200,00 = € 1.760,00 (https://wetten.overheid.nl/BWBR0011353/2021-01-01).
@@ -202,6 +210,8 @@ A car on waterstof is uncapped, so a € 60.000,00 car on waterstof first admitt
 
 ## 5. CHANGES FROM 2020
 
+<a id="5-changes"></a>
+
 - Zero-emission bijtelling, the one real change. A car first admitted in 2020 got a reduction of 14% with a cap of € 6300, so 8% up to € 45.000 and 22% above. A car first admitted in 2021 gets a reduction of 10% with a cap of € 4.000, so 12% up to € 40.000 (https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://wetten.overheid.nl/BWBR0011353/2021-01-01).
 - Solar panels. The uncapped treatment for a car with integrated solar panels of at least 1 kilowattpiek and a battery without lead starts with the 2021 text. In the 2020 text only waterstof was uncapped (https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://wetten.overheid.nl/BWBR0011353/2021-01-01).
 - Everything else in this topic is the same in 2021 as in 2020: the gemengde kosten drempel of € 4.700, the 80% election, the € 1.500 travel cap, the € 0,19 kilometre allowance, the verhuiskosten of the inboedel plus € 7750, the 22% standard, the 25% minimum for pre-2017 cars, the 35% youngtimer, the 7% fiets, the € 250 drempel, the € 15 000 maximum, and the 0% items for werkruimte thuis, telefoonabonnement thuis, private computers and geldboetes (https://wetten.overheid.nl/BWBR0011353/2021-01-01 and https://wetten.overheid.nl/BWBR0011353/2020-01-01).
@@ -212,6 +222,8 @@ A car on waterstof is uncapped, so a € 60.000,00 car on waterstof first admitt
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Deduct costs excluding VAT when the VAT is deductible in the btw-aangifte. When no btw-aangifte is filed or the VAT may not be deducted, deduct the costs including VAT in the IB return (https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/welke-kosten-mag-ik-aftrekken-van-mijn-bijverdiensten).
 - Under the KOR (kleineondernemersregeling, small business scheme) no VAT is charged or paid, no VAT on business costs and investments is deducted (also not VAT paid in another EU country), earlier deductions may need herziening, the low bestelauto mrb rate stays available, exit is possible from the first day of the next quarter and is immediate once turnover exceeds € 20.000 in a calendar year, and the choice is per ondernemer covering all subnummers (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/). The KOR threshold history by year belongs to the BTW topic.
@@ -227,6 +239,8 @@ A car on waterstof is uncapped, so a € 60.000,00 car on waterstof first admitt
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 The 2021 material records no open points for the year itself. The points below come from the surrounding checked material.
 
 - Wet Vpb 1969 art. 8 lid 5, the BV variant of the gemengde kosten rule. The statute was checked for 2020 and 2026 only (https://wetten.overheid.nl/BWBR0002672/2020-01-01 and https://wetten.overheid.nl/BWBR0002672/2026-01-01). The 2021 text of art. 8 lid 5 was not read for this file, so the exact 2021 fixed amount in the Vpb rule is not confirmed here. Reading the 2021 Wet Vpb text would settle it. The 2021 drempel for the IB is € 4.700 from the 2021 statute text.
@@ -239,6 +253,8 @@ The 2021 material records no open points for the year itself. The points below c
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2021 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

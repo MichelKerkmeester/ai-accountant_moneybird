@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Aangifte en procedure 2022
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 284.
-Part 1: lines 1-283, 50822 bytes, first heading "# Aangifte en procedure 2022"
-Part 2: lines 284-436, 17588 bytes, first heading "### Example 5: Navorderingstermijn for tax year 2022 (Calculated example)"
+Read plan: 2 parts. Next read offset: line 292.
+Part 1: lines 1-291, 50936 bytes, first heading "# Aangifte en procedure 2022"
+Part 2: lines 292-452, 17703 bytes, first heading "### Example 5: Navorderingstermijn for tax year 2022 (Calculated example)"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 284-436, 17588 bytes, first heading "### Example 5: Navorderingste
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the procedural side of tax year 2022 for a sole trader and for a BV owner: the income tax filing deadline and uitstel (extension), the voorlopige aanslag (provisional assessment), belastingrente (tax interest), the navorderingstermijn (period for an additional assessment), bezwaar (objection), the bewaarplicht (record-keeping duty) and the KVK and Belastingdienst registration duties. The dates that matter most for the 2022 income tax return are the filing deadline before 1 May 2023 and the uitstel date before 1 September 2023, while the btw deadlines for 2022 periods run to 31 January 2023 for the last period. The belastingrente for 2022 is 4% all year, and the definitive aanslag for 2022 could be set until 31 December 2025, or 30 April 2026 with uitstel. The tax year 2022 items used in this file are enacted law, and the 2022 check material records no open points beyond the cross-year items.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
@@ -80,6 +84,8 @@ This file covers the procedural side of tax year 2022 for a sole trader and for 
 ---
 
 ## 3. HOW IT WORKS IN 2022
+
+<a id="3-how-it-works"></a>
 
 ### IB return 2022 filing deadline
 
@@ -253,6 +259,8 @@ KVK passes the data to the Belastingdienst, so no separate registration is neede
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Example 1: Definitive aanslag 2022 timing (Official example)
 
 The archived page gives the example itself. Return over 2022 filed before 1 May 2023 gives the definitive aanslag at the latest on 31 December 2025. With 4 months uitstel the return is due before 1 September 2023 and the definitive aanslag at the latest on 30 April 2026 ([source](https://web.archive.org/web/20230401/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag)).
@@ -385,6 +393,8 @@ A return for 2022 filed on 1 December 2027 is in time. A return filed on 1 Janua
 
 ## 5. CHANGES FROM 2021
 
+<a id="5-changes"></a>
+
 - IB return deadline: the 2021 return was due before 1 May 2022, the 2022 return before 1 May 2023 ([2021 archived page](https://web.archive.org/web/20220401/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen), [2022 archived page](https://web.archive.org/web/20230305/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen)).
 - IB return with uitstel: from before 1 September 2022 for the 2021 return to before 1 September 2023 for the 2022 return ([2021 archived page](https://web.archive.org/web/20220309/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag), [2022 archived page](https://web.archive.org/web/20230401/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag)).
 - Definitive aanslag: from 31 December 2024 for 2021, or 30 April 2025 with 4 months uitstel, to 31 December 2025 for 2022, or 30 April 2026 with 4 months uitstel ([2021 archived page](https://web.archive.org/web/20220309/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag), [2022 archived page](https://web.archive.org/web/20230401/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag)).
@@ -400,6 +410,8 @@ A return for 2022 filed on 1 December 2027 is in time. A return filed on 1 Janua
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Keep the administratie for at least 7 years under AWR art. 52 lid 4, with 10 years for onroerende zaken and One Stop Shop data, and start the count when a gegeven is no longer actual ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/hoelang-moet-u-gegevens-bewaren)).
 - The bewaarplicht covers a sole trader with winst uit onderneming under AWR art. 52 lid 2 ([AWR](https://wetten.overheid.nl/BWBR0002320/2026-01-01)).
@@ -417,6 +429,8 @@ A return for 2022 filed on 1 December 2027 is in time. A return filed on 1 Janua
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 The tax year 2022 material states no open points of its own for 2022 beyond the cross-year items. The cross-year points are these.
 
 - Conflict, aanslaggrens and teruggaafgrens 2022. The current page prints € 48 and € 15 and words the test as higher than. The captures up to 2023 printed € 49 and € 16 and worded the test as gelijk aan of meer dan (equal to or more than). Both URLs: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag and https://web.archive.org/web/20230401/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag. For whole-euro amounts the two forms describe the same threshold, which is a reading of the two captures rather than a sentence on either page. A Belastingdienst statement on the rounding, or a page that prints both forms, would settle it.
@@ -429,6 +443,8 @@ The tax year 2022 material states no open points of its own for 2022 beyond the 
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2022 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

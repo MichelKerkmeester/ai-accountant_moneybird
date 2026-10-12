@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Box 2 en aanmerkelijk belang 2024
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 188.
-Part 1: lines 1-187, 46854 bytes, first heading "# Box 2 en aanmerkelijk belang 2024"
-Part 2: lines 188-345, 20446 bytes, first heading "## 4. WORKED EXAMPLES"
+Read plan: 2 parts. Next read offset: line 194.
+Part 1: lines 1-193, 46936 bytes, first heading "# Box 2 en aanmerkelijk belang 2024"
+Part 2: lines 194-361, 20593 bytes, first heading "## 4. WORKED EXAMPLES"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 188-345, 20446 bytes, first heading "## 4. WORKED EXAMPLES"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 Tax year 2024 is the first year of the two-bracket box 2 rate. A taxpayer pays 24,5% on box 2 income up to € 67.000 and 33% above that. The excessief lenen (excessive borrowing) maximum drops from € 700.000 in 2023 to € 500.000 in 2024. The forfaitair voordeel (notional benefit) for a vbi or foreign investment company is 6,04%, the belastingkorting (tax credit) on an unoffset loss is 24,5%, and the gebruikelijk loon (customary salary) fixed amount is € 56.000. All 2024 values in this file are enacted. The file covers the aanmerkelijk belang (substantial interest) definition, box 2 income and rates, loss offset and conversion, excessief lenen, gebruikelijk loon and the pension interactions.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
@@ -55,6 +59,8 @@ Tax year 2024 is the first year of the two-bracket box 2 rate. A taxpayer pays 2
 ---
 
 ## 3. HOW IT WORKS IN 2024
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Box 2 bracket 1
 
@@ -187,6 +193,8 @@ For a body with an S&O-verklaring to which the verhoogd starterspercentage appli
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 **Calculated example 1: Box 2 rate on a profit distribution of € 100.000.**
 Step 1: bracket 1 is 24,5% up to € 67.000.
 Step 2: the tax at the top of bracket 1 is 24,5% of € 67.000 = € 16.415,00, matching column III of the art. 2.12 table.
@@ -268,6 +276,8 @@ All figures come from section 2. [art. 4.12a](https://wetten.overheid.nl/BWBR001
 
 ## 5. CHANGES FROM 2023
 
+<a id="5-changes"></a>
+
 - Box 2 rate: 2023 had one rate of 26,9%. 2024 has two brackets, 24,5% up to € 67.000 and 33% above € 67.000, with € 16.415 tax at the top of bracket 1. [art. 2.12, 2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01) [art. 2.12, 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01) [rijksoverheid.nl](https://www.rijksoverheid.nl/actueel/nieuws/2023/12/20/belangrijkste-belastingwijzigingen-per-1-januari-2024) [Kamerstuk 36 602 nr. 3](https://zoek.officielebekendmakingen.nl/kst-36602-3.html)
 - Belastingkorting on an unoffset loss: 2023 was 26,9%. 2024 is 24,5%. Art. 4.53 lid 2 now refers to "het in de eerste regel van de vierde kolom van de tabel in artikel 2.12 opgenomen percentage". [art. 4.53, 2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01) [art. 4.53, 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01) [FISIN 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/aanmerkelijk_belang)
 - Forfaitair voordeel (art. 4.14): 2023 was 6,17%. 2024 is 6,04%. [art. 4.14, 2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01) [art. 4.14, 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01)
@@ -287,6 +297,8 @@ All figures come from section 2. [art. 4.12a](https://wetten.overheid.nl/BWBR001
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 For a sole trader who owns a BV, the following records and entries matter in 2024. A dividend from the BV is a regulier voordeel in box 2. Record the dividend decision and the dividend received. [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang) The BV withholds dividendbelasting. Record it as voorheffing, not as a deduction. [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang)
 
 Record the gebruikelijk loon as box 1 loon on the payroll. It is not a box 2 voordeel. [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang) [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang)
@@ -304,6 +316,8 @@ A non-resident declares only an aanmerkelijk belang in a Netherlands company und
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 None for the 2024 values. [2024 values table](https://wetten.overheid.nl/BWBR0011353/2024-01-01)
 
@@ -338,6 +352,8 @@ Outdated for 2024: FISIN 2023 works its excessief-lenen example into 2024 with a
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2024 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

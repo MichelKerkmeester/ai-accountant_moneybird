@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the Dutch investment deductions for 2026, the kleinschaligheidsinvesteringsaftrek (KIA, small-scale investment deduction), the energie-investeringsaftrek (EIA, energy investment deduction), the milieu-investeringsaftrek (MIA, environmental investment deduction) and the Vamil (willekeurige afschrijving milieu-investeringen, random depreciation for environmental investments). It also covers ordinary depreciation of bedrijfsmiddelen (business assets), the bodemwaarde of buildings, willekeurige afschrijving for starters and the desinvesteringsbijtelling. The 2026 figures are higher than the 2025 figures on several points, the EIA and MIA maximum investment amount is € 153.000.000, and from 2026 the EIA investments of an eenmanszaak and of a samenwerkingsverband are added together for that maximum. All 2026 values in this file are enacted law or published conditions, except the RVO cap of € 25 miljoen for MIA and Vamil, which carries no year on the checked page and is listed in section 7.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
@@ -47,6 +51,8 @@ This file covers the Dutch investment deductions for 2026, the kleinschaligheids
 ---
 
 ## 3. HOW IT WORKS IN 2026
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Kleinschaligheidsinvesteringsaftrek (KIA), table
 
@@ -137,6 +143,8 @@ The Belastingdienst page phrases rental as counting only for the KIA, not for th
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Example 1. KIA in the 28% band (Calculated example)
 
@@ -273,6 +281,8 @@ Source, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdie
 
 ## 5. CHANGES FROM 2025
 
+<a id="5-changes"></a>
+
 - KIA, second band endpoint, € 70.602 in 2025 to € 71.683 in 2026 (https://wetten.overheid.nl/BWBR0011353/2025-01-01 art. 3.41 lid 2, https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.41 lid 2).
 - KIA, fixed amount and third band endpoint, € 19.769 up to € 130.744 in 2025 to € 20.072 up to € 132.746 in 2026 (https://wetten.overheid.nl/BWBR0011353/2025-01-01 art. 3.41 lid 2, https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.41 lid 2).
 - KIA, top amount, € 392.230 in 2025 to € 398.236 in 2026, and nil above that amount in both years (https://wetten.overheid.nl/BWBR0011353/2025-01-01 art. 3.41 lid 2, https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.41 lid 2, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/investeringsaftrek-2026/kleinschaligheidsinvesteringsaftrek-2026).
@@ -287,6 +297,8 @@ Source, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdie
 ---
 
 ## 6. IN THE BOOKS
+
+<a id="6-in-the-books"></a>
 
 - Keep a list of every bedrijfsmiddel with its aanschaffings- or voortbrengingskosten and the date of the obligation or the costs. The KIA is taken per onderneming on the total investment in bedrijfsmiddelen in the calendar year (https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.41).
 - Assets below € 450 do not count for the KIA, and assets below € 2.500 do not count for the EIA or the MIA (https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.45 lid 2 onderdeel b, https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.45 lid 4 onderdeel b).
@@ -303,6 +315,8 @@ Source, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdie
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - MIA and Vamil maximum of € 25 miljoen per bedrijfsmiddel and per applicant per year. Status unknown, Check UNVERIFIED. The value stands on the current RVO page without a stated year, https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden, and it is separate from the statutory € 153.000.000 in https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.42 lid 4 and on the Belastingdienst EIA page, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/energie_investeringsaftrek_eia. The Milieulijst regulation of the relevant year would settle which years this cap covers.
 - The rule that a medegerechtigde or a geldverstrekker cannot use the EIA or the MIA is UNVERIFIED. It was not found on the fetched pages, https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers, https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/energie_investeringsaftrek_eia. A statement in the statutory text of the Wet IB 2001 or on a Belastingdienst page for 2026 would settle it.
 - The starters willekeurige afschrijving cap of € 398.236 rests on reading the cross-reference in art. 8 of the URWA to the maximum amount of the art. 3.41 lid 2 table, https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 7 to 9, read with the Belastingdienst KIA window of "tussen € 2.901 en € 398.236", https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/investeringsaftrek-2026/kleinschaligheidsinvesteringsaftrek-2026. No primary page prints this cap as a number. An earlier reading used € 71.683, the end of the 28% band, and that value is not used here. A Belastingdienst or RVO publication that prints the cap as a number would settle it.
@@ -311,6 +325,8 @@ Source, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdie
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2026 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

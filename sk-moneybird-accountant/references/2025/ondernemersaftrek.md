@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the ondernemersaftrek (entrepreneur's deductions) and the MKB-winstvrijstelling (small business profit exemption) for the IB-ondernemer (entrepreneur for income tax purposes) in tax year 2025. The main figures are the zelfstandigenaftrek (self-employed persons' deduction) of € 2.470, the startersaftrek (starter's deduction) of € 2.123 and the MKB-winstvrijstelling of 12,7%, all built on the urencriterium (hour criterion) of 1.225 hours. Tax year 2025 is enacted law and the rules are the same as 2024 apart from the indexed and reduced amounts. Additions to the oudedagsreserve (old-age reserve) are not possible in 2025, an existing reserve stays in place under the transitional rules of art. 10a.29.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
@@ -54,6 +58,8 @@ This file covers the ondernemersaftrek (entrepreneur's deductions) and the MKB-w
 ---
 
 ## 3. HOW IT WORKS IN 2025
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 IB-ondernemer status
 
@@ -150,6 +156,8 @@ For 2025 the maximum value of the ondernemersaftrek and the MKB-winstvrijstellin
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Example 1: urencriterium in a part year (Official example)
 
@@ -264,6 +272,8 @@ Source: [FISIN 2025, ondernemersaftrek en investeringsaftrek](https://www.belast
 
 ## 5. CHANGES FROM 2024
 
+<a id="5-changes"></a>
+
 - Zelfstandigenaftrek: € 3.750 in 2024 to € 2.470 in 2025. Source: [art. 3.76, version 1 January 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01) and [art. 3.76, version 1 January 2025](https://wetten.overheid.nl/BWBR0011353/2025-01-01). The FISIN 2025 table agrees.
 - Zelfstandigenaftrek at AOW age: € 1.875 in 2024 to € 1.235 in 2025. Source: [art. 3.76, version 1 January 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01) for the 2024 amount under the 50% rule of lid 4, and [FISIN 2025](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek) for the 2025 amount.
 - Aftrek speur- en ontwikkelingswerk: € 15.551 in 2024 to € 15.738 in 2025, indexed. Source: [art. 3.77, version 1 January 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01) and [art. 3.77, version 1 January 2025](https://wetten.overheid.nl/BWBR0011353/2025-01-01).
@@ -278,6 +288,8 @@ Source: [FISIN 2025, ondernemersaftrek en investeringsaftrek](https://www.belast
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the hours of the ondernemer. An agenda, quotes, timesheets and invoices make the 1.225 hours plausible, and only hours actually spent on the business count. Standby time does not count. Source: [Belastingdienst, voorwaarden urencriterium](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium).
 - Record the hours of the partner when the meewerkaftrek is used, those hours must be made plausible. Source: [Belastingdienst, meewerkaftrek](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/meewerkaftrek).
 - Keep the S&O-verklaring from RVO with the records when the aftrek voor speur- en ontwikkelingswerk is used. Source: [FISIN 2025, ondernemersaftrek en investeringsaftrek](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek).
@@ -291,6 +303,8 @@ Source: [FISIN 2025, ondernemersaftrek en investeringsaftrek](https://www.belast
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 None for 2025.
 
 - The € 2.740 that the FISIN 2025 and FISIN 2026 carry-forward examples print as the 2025 zelfstandigenaftrek is an example typo. The statute valid on 1 January 2025 and the FISIN 2025 table print € 2.470. Sources: [art. 3.76, version 1 January 2025](https://wetten.overheid.nl/BWBR0011353/2025-01-01) and [FISIN 2025, ondernemersaftrek en investeringsaftrek](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek).
@@ -299,6 +313,8 @@ None for 2025.
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2025 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

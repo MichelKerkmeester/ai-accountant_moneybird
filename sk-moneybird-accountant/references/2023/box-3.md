@@ -20,11 +20,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers box 3 (sparen en beleggen, savings and investments) for the 2023 income tax year of a sole trader and for anyone who also owns a BV. For 2023 the Overbruggingswet box 3 replaced the old band method with a category method for everyone, with three category percentages, a rate of 32% and a heffingsvrij vermogen (tax-free allowance) of € 57.000 per person. 2023 is a fully enacted year. The tegenbewijsregeling (counter-evidence scheme), which lets a taxpayer prove a lower actual return, takes statutory effect from 1 January 2023, but the law that introduced it entered into force on 19 July 2025.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
@@ -47,6 +51,8 @@ This file covers box 3 (sparen en beleggen, savings and investments) for the 202
 ---
 
 ## 3. HOW IT WORKS IN 2023
+
+<a id="3-how-it-works"></a>
 
 ### System
 
@@ -143,6 +149,8 @@ The Wet rechtsherstel box 3 keeps covering 2017 to 2022. Art. 1 lid 2: applies t
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 Every example below uses only the 2023 figures from section 2. Mark each example either `Official example` (copied from a primary source, linked) or `Calculated example` (built here from the section 2 figures).
 
 ### Example 1: single person with € 150.000 savings (Official example)
@@ -218,6 +226,8 @@ Inputs: a single taxpayer holds € 40.000 green banktegoeden and € 40.000 gre
 
 ## 5. CHANGES FROM 2022
 
+<a id="5-changes"></a>
+
 - System: the old band method with rendementsklassen I and II in art. 5.2 lid 1 applies to 2020 to 2022. From 1 January 2023 the Overbruggingswet box 3 applies the category method to everyone. https://zoek.officielebekendmakingen.nl/stb-2022-534.html https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen
 - Box 3 tarief: 31% in 2022 to 32% in 2023. https://wetten.overheid.nl/BWBR0011353/2022-01-01 https://wetten.overheid.nl/BWBR0011353/2023-01-01 https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2023
 - Heffingsvrij vermogen: € 50.650 per person and € 101.300 with fiscal partner in 2022 to € 57.000 per person and € 114.000 with fiscal partner in 2023. https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen
@@ -235,6 +245,8 @@ Inputs: a single taxpayer holds € 40.000 green banktegoeden and € 40.000 gre
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - The box 3 calculation uses the values on 1 January 2023. Step 1 takes banktegoeden x 0,92%, overige bezittingen x 6,17% and (schulden minus drempel) x 2,46%. Step 2 takes bezittingen minus (schulden minus drempel). Keep the 1 January 2023 balance statements, the bank and investment overviews, the debt statements and the WOZ or valuation records with the records of the year. https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2023
 - The Belastingdienst computes the deductible part of the debts in the return, so the drempel of € 3.400 per person (€ 6.800 with a whole-year partner) does not need to be entered manually. https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/wat_zijn_uw_bezittingen_en_schulden/uw_schulden/drempel https://wetten.overheid.nl/BWBR0011353/2023-01-01
 - Box 3 assets and debts land on the income tax return (IB/PVV) for 2023, not on the business profit. The box 3 result is separate from the winst uit onderneming of the sole trader. https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2023
@@ -251,6 +263,8 @@ Inputs: a single taxpayer holds € 40.000 green banktegoeden and € 40.000 gre
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - The 2026 calculation page uses 3 decimals for the aandeel, which differs from the 2023 and 2025 pages that use 2 decimals. This does not affect 2023. https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026
 - The 2027 and 2028 texts of the act still carry the category method in art. 5.2. The Wet werkelijk rendement box 3 (bill 36 748) is not law on 2026-10-11. Belastingdienst says the fictitious system stays until new legislation takes effect, "probably 1 January 2028". For 2023 this changes nothing. https://wetten.overheid.nl/BWBR0011353/2027-01-01 https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/wat-is-mijn-werkelijk-rendement
 - For the tegenbewijsregeling inside the Wet rechtsherstel, art. IV works back to 1 January 2017, and the law itself entered into force on 19 July 2025. For 2023 the statutory effect runs from 1 January 2023. https://zoek.officielebekendmakingen.nl/stb-2025-195.html
@@ -260,6 +274,8 @@ Inputs: a single taxpayer holds € 40.000 green banktegoeden and € 40.000 gre
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2023 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

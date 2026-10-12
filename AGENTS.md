@@ -37,6 +37,8 @@ Classify the request with the Task-Type Table in `sk-moneybird-accountant/SKILL.
 
 Do not bulk-read the entire reference set.
 
+For a figure question, read the year README first, then the topic file at `#2-key-figures`, its KEY FIGURES section, and load other sections only for the mechanics. For a cross-year rule question, do not read the whole of `sk-moneybird-accountant/references/dutch-tax-rules.md`. Read subsection 3.n by the line range its generated section list gives, near the top of that file.
+
 ---
 
 # 3. Core workflow

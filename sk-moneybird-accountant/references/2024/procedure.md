@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Aangifte en procedure 2024
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 283.
-Part 1: lines 1-282, 48853 bytes, first heading "# Aangifte en procedure 2024"
-Part 2: lines 283-313, 8387 bytes, first heading "## 6. IN THE BOOKS"
+Read plan: 2 parts. Next read offset: line 293.
+Part 1: lines 1-292, 48991 bytes, first heading "# Aangifte en procedure 2024"
+Part 2: lines 293-329, 8478 bytes, first heading "## 6. IN THE BOOKS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 283-313, 8387 bytes, first heading "## 6. IN THE BOOKS"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers the procedural side of tax year 2024 for a sole trader, the filing deadlines and uitstel (deferral) for income tax and btw (VAT), the voorlopige aanslag (provisional assessment), belastingrente (tax interest), the navorderingstermijn (additional assessment period), bezwaar (objection) and verzoek om vermindering (request for reduction), the bewaarplicht (record-keeping duty), and the KVK and Belastingdienst registration duties. All items for 2024 in the checked material are enacted. The 2024 income tax return is filed in 2025, with 1 May 2025 as the deadline and 1 September 2025 with uitstel, and the definitive aanslag (assessment) can be set until 31 December 2027, or 30 April 2028 with uitstel. The belastingrente rate during 2024 is 7,5%, the first year in which the rate is set once a year, and rente on the 2024 income tax runs at 6,5% from 1 July 2025 and 5% from 1 January 2026.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
@@ -64,6 +68,8 @@ This file covers the procedural side of tax year 2024 for a sole trader, the fil
 ---
 
 ## 3. HOW IT WORKS IN 2024
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Income tax return 2024, filing deadline
 
@@ -173,6 +179,8 @@ Handelsregisterwet 2007 art. 20 lid 1 says the opgave (notification) for the fir
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 ### Example 1. Official example: the definitive aanslag for tax year 2024
 
 The Belastingdienst example for the 2024 return: filing before 1 May 2025 gives a definitive aanslag at the latest on 31 December 2027. With uitstel to 1 September 2025 the latest date is 30 April 2028 (https://web.archive.org/web/20250328/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag).
@@ -262,6 +270,8 @@ The Belastingdienst example is a 4-year lease. The gegeven is no longer actual a
 
 ## 5. CHANGES FROM 2023
 
+<a id="5-changes"></a>
+
 - Income tax return deadline: 2023 before 1 May 2024, with uitstel before 1 September 2024 (https://web.archive.org/web/20240413/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag). 2024 before 1 May 2025, with uitstel before 1 September 2025 (https://web.archive.org/web/20250522/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/kan-ik-nog-uitstel-aanvragen-belastingaangifte and https://web.archive.org/web/20250328/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag).
 - Definitive aanslag: 2023 at the latest 31 December 2026, or 30 April 2027 with uitstel (https://web.archive.org/web/20240413/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag). 2024 at the latest 31 December 2027, or 30 April 2028 with uitstel (https://web.archive.org/web/20250328/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag).
 - Aanslaggrens and teruggaafgrens: 2023 € 51 and € 16 in the higher-than wording, with € 52 and € 17 under the older gelijk-aan-of-meer-dan wording (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag and https://web.archive.org/web/20230401/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag). 2024 € 56 and € 18 (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag).
@@ -282,6 +292,8 @@ The Belastingdienst example is a 4-year lease. The gegeven is no longer actual a
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Register the onderneming with KVK inside the two-week window, one week before to one week after the start of the business. KVK passes the data to the Belastingdienst, so no separate registration is needed. Record the start date, the KVK-nummer and the RSIN where the form is not an eenmanszaak (https://www.kvk.nl/hulp-en-contact/hulp-bij-inschrijven/ and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/).
 - Keep the administratie as basisgegevens for 7 years, onroerende zaken and One Stop Shop data for 10 years, with the term starting when the gegeven is no longer actual (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/hoelang-moet-u-gegevens-bewaren).
 - Record the aangiftebrief and its date. The 2024 income tax return is due before 1 May 2025, or before 1 September 2025 with uitstel, and uitstel must be requested before the filing date (https://web.archive.org/web/20250522/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/kan-ik-nog-uitstel-aanvragen-belastingaangifte and https://web.archive.org/web/20250328/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag).
@@ -295,6 +307,8 @@ The Belastingdienst example is a 4-year lease. The gegeven is no longer actual a
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Online end date of the verzoek om vermindering for an aanslag 2024 is not stated in the checked sources. The rule is fewer than 5 years after the tax year (https://www.belastingdienst.nl/wps/wcm/connect/nl/bezwaar-en-beroep/content/verzoek-om-vermindering-van-aanslag-inkomstenbelasting). The stated examples are aanslag 2020 until 31 December 2025 and aanslag 2023 until 31 December 2028 (same page). Applying the rule to 2024 lands on 31 December 2029, which is also the stated final date for filing the 2024 return without an invitation (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aangifte_doen/hoeveel-jaar-terug-belastingaangifte-doen). A Belastingdienst statement for the 2024 assessment year would settle it.
 - End date of the navorderingstermijn for tax year 2024 is not stated in the checked sources. The rule is 5 years after the belastingschuld arose, extended by uitstel (https://wetten.overheid.nl/BWBR0002320/2026-01-01). The stated example is tax year 2016 with 5 months uitstel, until 31 May 2022 (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/navorderingsaanslag). A Belastingdienst example for tax year 2024 would settle it.
 - Aanslaggrens wording. The current page uses hoger dan with € 56 and € 18 for 2024 (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag). Captures up to 2023 used gelijk aan of meer dan and printed each grens one euro higher, such as € 52 and € 17 for 2023 in the April 2023 capture (https://web.archive.org/web/20230401/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag). The checked material marks the equivalence of the two wordings for whole-euro amounts as its own reading, not as a statement from the source. Two of the three standing examples on the live page also print a € 20 aanslag, an amount below the 2024 aanslaggrens of € 56, and the material says the examples are unchanged since the 2023 capture. A Belastingdienst explanation of the current wording, or updated examples, would settle it.
@@ -306,6 +320,8 @@ The Belastingdienst example is a 4-year lease. The gegeven is no longer actual a
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2024 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Box 2 en aanmerkelijk belang 2025
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 315.
-Part 1: lines 1-314, 47581 bytes, first heading "# Box 2 en aanmerkelijk belang 2025"
-Part 2: lines 315-364, 12739 bytes, first heading "## 5. CHANGES FROM 2024"
+Read plan: 2 parts. Next read offset: line 323.
+Part 1: lines 1-322, 47695 bytes, first heading "# Box 2 en aanmerkelijk belang 2025"
+Part 2: lines 323-380, 12854 bytes, first heading "## 5. CHANGES FROM 2024"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 315-364, 12739 bytes, first heading "## 5. CHANGES FROM 2024"
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 For 2025 box 2 has two brackets: 24,5% over the first € 67.804 and 31% above that, with € 16.611 of tax at the top of bracket 1 in the art. 2.12 Wet IB 2001 table. The second-bracket rate went down from 33% to 31% on 1 January 2025 through the Belastingplan 2025 measure "Terugdraaien verhoging box 2-tarief". An aanmerkelijk belang (substantial shareholding) starts at 5% of the issued capital, alone or together with a fiscal partner, and art. 4.6 gained a sixth ground (sub f) with retroactive effect to 1 January 2025 by Stb. 2025, 445. For a sole trader who also owns a BV, the same year's excessief lenen (excessive borrowing from the own company) maximum of € 500.000, the gebruikelijk loon (customary salary) fixed amount of € 56.000 and the ODV market rate of 2,602% sit next to the rate table. The 2025 rules described here are enacted law.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
@@ -65,6 +69,8 @@ For 2025 box 2 has two brackets: 24,5% over the first € 67.804 and 31% above t
 ---
 
 ## 3. HOW IT WORKS IN 2025
+
+<a id="3-how-it-works"></a>
 
 ### 3.1 Box 2 bracket 1 (24,5% up to € 67.804)
 
@@ -177,6 +183,8 @@ A non-resident declares only an aanmerkelijk belang in a Netherlands company, no
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### 4.1 Dividend inside bracket 1
 
@@ -314,6 +322,8 @@ A negative market rate must also be applied, which would lower the balance. Sour
 
 ## 5. CHANGES FROM 2024
 
+<a id="5-changes"></a>
+
 - Box 2 bracket 2 rate: 33% in 2024 to 31% in 2025. Belastingplan 2025 ("Terugdraaien verhoging box 2-tarief", Kamerstuk 36 602 nr. 3, section 5.2) lowered the rate by 2 percentage points from 1 January 2025 ([Kamerstuk 36 602 nr. 3](https://zoek.officielebekendmakingen.nl/kst-36602-3.html), [art. 2.12 Wet IB 2001, 2024 text](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [art. 2.12 Wet IB 2001, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01)).
 - Bracket 1 boundary: € 67.000 in 2024 to € 67.804 in 2025, indexed under art. 10.1 lid 1 ([art. 2.12 Wet IB 2001, 2024 text](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [art. 2.12 Wet IB 2001, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01)).
 - Tax at the top of bracket 1: € 16.415 in 2024 to € 16.611 in 2025 ([art. 2.12 Wet IB 2001, 2024 text](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [art. 2.12 Wet IB 2001, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01)).
@@ -331,6 +341,8 @@ A negative market rate must also be applied, which would lower the balance. Sour
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Box 2 income is declared as inkomsten uit aanmerkelijk belang, separately from salary and from the making available of assets. Interest on a receivable on the own company is not a box 2 voordeel but income from making assets available, and salary from the company is box 1 loon ([Belastingdienst, inkomsten uit aanmerkelijk belang](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang)).
 - Record each dividend gross with the dividendbelasting withheld, since the dividendbelasting is not a cost but a voorheffing credited against the box 2 tax ([Belastingdienst, inkomsten uit aanmerkelijk belang](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang)).
 - Add notary costs to the verkrijgingsprijs and subtract selling costs from the overdrachtsprijs. Record the interest on a loan taken to buy the shares as a deductible cost ([Belastingdienst, inkomsten uit aanmerkelijk belang](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang)).
@@ -347,6 +359,8 @@ A negative market rate must also be applied, which would lower the balance. Sour
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 - Loss-conversion korting 24,5% against 26,9%. FISIN 2025 states "De korting is 26,9%" in its rule text, while the statute for 2025 gives 24,5%, FISIN 2024 states 24,5% and the FISIN 2025 example itself uses 24,5%. The statute decides, and the Belastingdienst may correct the handbook. Sources: [FISIN 2025, aanmerkelijk belang](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/aanmerkelijk_belang), [art. 4.53 Wet IB 2001, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01), [FISIN 2024, aanmerkelijk belang](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/aanmerkelijk_belang). What would settle it: a corrected FISIN text or a Kennisgroep publication.
 - Doorschuiving list UNVERIFIED. The list of rollover cases for gift, inheritance and emigration comes from the research and was not re-fetched on a primary page in this check. The 10-year APV term is confirmed by FISIN 2020. Sources: [FISIN 2020, aanmerkelijk belang](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/aanmerkelijk_belang), [FISIN 2026, aanmerkelijk belang](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang). What would settle it: the 2025 consolidated text of art. 4.17 and 4.17a to 4.17c on wetten.overheid.nl or a Belastingdienst page that lists the rollover cases.
 - 30%-rule beschikking partiële buitenlandse belastingplicht UNVERIFIED. The statement that such a beschikking has the same effect as an aanmerkelijk belang in a Netherlands company was not found on the fetched Belastingdienst pages. Art. 7.5 itself is verified. Source: [art. 7.5 Wet IB 2001, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01). What would settle it: a Belastingdienst page on partiële buitenlandse belastingplicht or the text of the beschikking.
@@ -357,6 +371,8 @@ A negative market rate must also be applied, which would lower the balance. Sour
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2025 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

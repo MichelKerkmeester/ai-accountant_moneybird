@@ -19,11 +19,15 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 Tax year 2024 uses the enacted category method of the Overbruggingswet box 3. The Belastingdienst calculates a fictitious return on banktegoeden, overige bezittingen and schulden, and taxes the part above the heffingsvrij vermogen at 36%. For 2024 the percentages are 1,44% for banktegoeden, 6,04% for overige bezittingen and 2,61% for schulden. Green investments get a separate exemption and a korting, and a taxpayer may report the actual return when it is lower than the fictitious voordeel, also after the Hoge Raad ruling of 6 June 2024.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
@@ -44,6 +48,8 @@ Tax year 2024 uses the enacted category method of the Overbruggingswet box 3. Th
 ---
 
 ## 3. HOW IT WORKS IN 2024
+
+<a id="3-how-it-works"></a>
 
 ### System 2024
 
@@ -126,6 +132,8 @@ Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/bereken
 ---
 
 ## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
 
 ### Example 1: Single, savings only (Official example)
 
@@ -226,6 +234,8 @@ Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/wat-is-
 
 ## 5. CHANGES FROM 2023
 
+<a id="5-changes"></a>
+
 - System: the category method of the Overbruggingswet box 3 stays in force. It applied from 1 January 2023 and continues in 2024. Source: https://zoek.officielebekendmakingen.nl/stb-2022-534.html
 - Box 3 tarief: 32% in 2023 to 36% in 2024. Sources: https://wetten.overheid.nl/BWBR0011353/2023-01-01 https://wetten.overheid.nl/BWBR0011353/2024-01-01 https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2024
 - Heffingsvrij vermogen: unchanged at € 57.000 per person and € 114.000 with a fiscal partner. Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen https://wetten.overheid.nl/BWBR0011353/2024-01-01
@@ -244,6 +254,8 @@ Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/wat-is-
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Record the values of banktegoeden, overige bezittingen and schulden on 1 January 2024. The six-step calculation uses those values. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2024
 - Record the green investments on 1 January 2024 and separate green overige bezittingen from green banktegoeden. The exemption applies first to green overige bezittingen. Source: https://wetten.overheid.nl/BWBR0011353/2024-01-01
 - The Belastingdienst computes the schuldendrempel in the return. Only the part of total debts above € 3.700 per person or € 7.400 with a whole-year partner is deductible. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/wat_zijn_uw_bezittingen_en_schulden/uw_schulden/drempel
@@ -257,11 +269,15 @@ Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/wat-is-
 
 ## 7. OPEN POINTS AND CONFLICTS
 
+<a id="7-open-points"></a>
+
 None for 2024. No 2024 value in the checked material is UNVERIFIED, proposed or unknown, and the checked material records no conflict for 2024.
 
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2024 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)

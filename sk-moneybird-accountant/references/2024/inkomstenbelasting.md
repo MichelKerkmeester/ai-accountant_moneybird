@@ -14,9 +14,9 @@ version: 1.0.0.0
 # Inkomstenbelasting box 1 2024
 
 <!-- GENERATED:nav:start -->
-Read plan: 2 parts. Next read offset: line 337.
-Part 1: lines 1-336, 49481 bytes, first heading "# Inkomstenbelasting box 1 2024"
-Part 2: lines 337-357, 5434 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Read plan: 2 parts. Next read offset: line 349.
+Part 1: lines 1-348, 49648 bytes, first heading "# Inkomstenbelasting box 1 2024"
+Part 2: lines 349-373, 5496 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -26,11 +26,15 @@ Part 2: lines 337-357, 5434 bytes, first heading "## 7. OPEN POINTS AND CONFLICT
 
 ## 1. OVERVIEW
 
+<a id="1-overview"></a>
+
 This file covers Box 1 rates, AOW-age variants, heffingskortingen, tariefsaanpassing and how winst uit onderneming enters taxable income. The 2024 rules covered here are enacted. Source differences and unresolved points are identified below.
 
 ---
 
 ## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
 
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
@@ -67,6 +71,8 @@ This file covers Box 1 rates, AOW-age variants, heffingskortingen, tariefsaanpas
 ---
 
 ## 3. HOW IT WORKS IN 2024
+
+<a id="3-how-it-works"></a>
 
 ### Box 1 below AOW age
 
@@ -188,6 +194,8 @@ The ordinary AHK, AK and IACK tables do not apply in the year AOW age is reached
 
 ## 4. WORKED EXAMPLES
 
+<a id="4-worked-examples"></a>
+
 Each example is marked as an Official example or a Calculated example. The Official examples come from the source given with them. The Calculated examples use the 2024 figures in section 2 and invented inputs. All amounts are in euros and cents. Every product is written with two decimals. Where a product cannot be written exactly in two decimals, the step says "rounded down" or "rounded".
 
 ### Calculated example: Box 1 below AOW age
@@ -308,6 +316,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdie
 
 ## 5. CHANGES FROM 2023
 
+<a id="5-changes"></a>
+
 - The Box 1 below-AOW combined rate rose from 36,93% up to € 73.031 to 36,97% up to € 75.518. The top rate stayed 49,50%. The statutory first-band income-tax part changed from 9,28% to 9,32%. (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/belastingberekening, https://wetten.overheid.nl/BWBR0011353/2023-01-01, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/belastingberekening, https://wetten.overheid.nl/BWBR0011353/2024-01-01)
 - For taxpayers at AOW age, the first-bracket rate rose from 19,03% to 19,07%. The first boundary for people born on or after 1 January 1946 rose from € 37.149 to € 38.098. For people born before 1 January 1946, it rose from € 38.703 to € 40.021. The upper boundary rose from € 73.031 to € 75.518. (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/belastingberekening, https://wetten.overheid.nl/BWBR0011353/2023-01-01, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/belastingberekening, https://wetten.overheid.nl/BWBR0011353/2024-01-01)
 - In the AOW transition year, the monthly first-bracket rates changed from January 19,03%, February 20,52%, March 22,01%, April 23,50%, May 24,99%, June 26,48%, July 27,98%, August 29,47%, September 30,96%, October 32,45%, November 33,94% and December 35,43% to January 19,07%, February 20,56%, March 22,05%, April 23,54%, May 25,03%, June 26,52%, July 28,02%, August 29,51%, September 31,00%, October 32,49%, November 33,99% and December 35,47%. The first-bracket boundary changed from € 37.149 to € 38.098. (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/belastingberekening, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/belastingberekening)
@@ -325,6 +335,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdie
 
 ## 6. IN THE BOOKS
 
+<a id="6-in-the-books"></a>
+
 - Keep the profit calculation distinct from exempt profit components, ondernemersaftrek and the MKB-winstvrijstelling. The taxable business profit includes the relevant reductions, and it flows into taxable income from work and home. ([Belastingdienst, Winst uit onderneming](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/winst_uit_onderneming), https://wetten.overheid.nl/BWBR0011353/2026-01-01 arts. 3.1 and 3.2, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/ondernemersaftrek_en_investeringsaftrek, MKB)
 - Record the basis for treating an activity as winst uit onderneming, including who runs it for their account, who can make binding agreements and who is liable for debts. The Belastingdienst also considers profit, independence, capital, time, customers, marketing and business risk. ([Belastingdienst, Winst uit onderneming](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/winst_uit_onderneming))
 - The algemene heffingskorting is applied automatically in the return and may also be applied by an employer or benefit agency through payroll. The arbeidskorting may include business profit before ondernemersaftrek and MKB-winstvrijstelling. The IACK is claimed through the return or a provisional assessment, not payroll. (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/heffingskortingen, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/heffingskortingen, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/heffingskortingen, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting-2024)
@@ -335,6 +347,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdie
 ---
 
 ## 7. OPEN POINTS AND CONFLICTS
+
+<a id="7-open-points"></a>
 
 - **AHK phase-out rate for a full year at AOW age:** the year table gives 3,421%, while https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/heffingskortingen gives 3,420%. The arithmetic from € 1.735 divided by the difference between € 75.518 and € 24.812 is about 3,4217%. The year table is used in this file. The fetched text of Wet IB art. 8.10 was not reachable. The statutory text or an authoritative corrected table would settle the rate. Sources named in the supplied material: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/algemene_heffingskorting/tabel-algemene-heffingskorting-2024 and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/heffingskortingen.
 - **IACK maximum point:** https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting-2024 gives a maximum of € 2.950 from € 31.839, while https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/heffingskortingen says it is reached at € 31.837. Both state the same maximum. The statutory text or a corrected authoritative table would settle the exact point.
@@ -350,6 +364,8 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdie
 ---
 
 ## 8. RELATED RESOURCES
+
+<a id="8-related-resources"></a>
 
 - [2024 overview](README.md)
 - [Dutch tax rules](../dutch-tax-rules.md)
