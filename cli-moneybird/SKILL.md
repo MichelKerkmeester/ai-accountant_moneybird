@@ -115,7 +115,7 @@ INTENT_MODEL = {
     "MIGRATION_RECIPE": {"weight": 7, "keywords": ["opening balance", "external sales invoice", "purchase invoice", "journal entry", "pilot migration", "correct a wrong write"]},
     "UI_ONLY": {"weight": 8, "keywords": ["camt.053 import", "mt940 import", "create tax rate", "lock a period", "handmatig indienen"]},
     "INSTALL": {"weight": 6, "keywords": ["install moneybird-cli", "moneybird token", "login-from-env"]},
-    "TROUBLESHOOT": {"weight": 8, "keywords": ["401", "403 scope", "404 administration", "422", "429", "stale get", "exit 3", "exit 4", "exit 5", "exit 6", "exit 7", "exit 8", "needs authentication"]},
+    "TROUBLESHOOT": {"weight": 8, "keywords": ["401", "403 scope", "404 administration", "422", "429", "stale get", "exit 2", "exit 3", "exit 4", "exit 5", "exit 6", "exit 7", "exit 8", "--print-body", "needs authentication"]},
     "FEATURE_INVENTORY": {"weight": 6, "keywords": ["feature catalog", "moneybird capabilities", "what does the moneybird skill do"]},
     "MANUAL_TEST": {"weight": 6, "keywords": ["manual testing playbook", "test scenario", "validate the guard"]},
 }
@@ -218,9 +218,14 @@ Moneybird token scopes do not separate read from write. Read-only roles set `MON
 ```text
 STEP 1: Approve the batch in the migration plan
        ↓
+STEP 1b: Preconditions: the trial or package has not expired, the phase gate has passed, the Operator approved the batch and a WRITE_INTENT was flushed to the run journal. The guard does not check expiry.
+       ↓
 STEP 2: Guarded dry-run reads the first METHOD URL line
        ↓
 STEP 3: Gates, in this order
+       ├─ Argument conflict, or --out on a passthrough command: exit 2
+       ├─ --out outside migration-workspace or through a symlink: exit 5
+       ├─ Dry-run did not start with a METHOD URL line: exit 2
        ├─ Read-only lock on: exit 6
        ├─ No --confirm-write: print the preview and exit 3
        ├─ Writer configuration folder missing: exit 7
@@ -232,6 +237,8 @@ STEP 4: Real call, then one body-free JSONL record in migration-workspace/logs/
 STEP 5: Later read-back
        └─ Synchronization reads confirm the record in a later pass
 ```
+
+Trial or package expiry is the Operator's check before STEP 2. See `sk-moneybird-accountant/SKILL.md` and `sk-moneybird-accountant/references/migration/shared-mechanisms.md`.
 
 Writes target the pilot administration unless the plan's gate allows a production batch and the operator gives an explicit go for that batch. Every write, pilot or production, carries `--approval "$APPROVAL_REF"`, which must match the `approval_reference` of a `WRITE_INTENT` event in `migration-workspace/RunJournal/run-journal.jsonl`. The write command shape is `moneybird-guard --confirm-write --approval "$APPROVAL_REF" <moneybird-cli args...>`, plus `--production` for a non-pilot administration. A missing writer configuration stops the write with exit 7 and never falls back to the reader session. The log record holds the time, method, path, administration and exit status, never a request or response body.
 

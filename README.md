@@ -199,7 +199,7 @@ External seats receive typed, allowlisted summaries with opaque record aliases a
 
 ## 6. 🔒 SAFETY AND PRIVACY
 
-- **Jortt is read-only.** `jortt-cli` uses read scopes only and refuses any write without `--allow-write` and the matching scope. XAF auditfiles, annual accounts and filed VAT returns come from you, through the Jortt UI.
+- **Jortt is read-only.** `jortt-cli` uses read scopes only and refuses every non-GET call. There is no write path for an agent. XAF auditfiles, annual accounts and filed VAT returns come from you, through the Jortt UI.
 - **Every Moneybird call goes through `moneybird-guard`.** Read sessions set `MONEYBIRD_GUARD_READ_ONLY=1`. The guard then blocks every non-GET call before it reaches the official CLI.
 - **A write needs five things.** A passed phase gate, your approval, a flushed `WRITE_INTENT` journal entry, `--confirm-write` and `--approval <ref>` naming that entry. The guard checks the reference against the run journal, needs the writer session and never falls back to the reader session. A production batch also needs your approval for that batch and `--production`.
 - **Migration data stays in `migration-workspace/`.** Git ignores it. Both CLIs refuse to save output anywhere else.
