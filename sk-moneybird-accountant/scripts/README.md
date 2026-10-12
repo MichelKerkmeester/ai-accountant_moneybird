@@ -68,6 +68,8 @@ Dependency direction: references ───▶ generator ───▶ tracked tem
 | `reference-index-test.sh` | Builds a fixture repository, runs the generator on it and on the real corpus, and checks the fence rules, drift detection, byte stability and the mutation cases |
 | `check-fragments.py` | Resolves every relative link path and fragment in the skill family, matches a fragment against an `<a id>` line or a GitHub-style heading slug, rejects a duplicate-suffixed slug, and requires the eight section ids of every year topic file in order |
 | `fragment-check-test.sh` | Builds fixtures for a resolving slug, a renamed id, a renamed heading, a missing file and a duplicate-suffix slug, then runs the checker on the real corpus and on a throwaway copy with one renamed heading |
+| `token-baseline.py` | Counts every reference file and the named units in `o200k_base` and `cl100k_base`, writes or checks `../benchmark/token-baseline.json`, and refuses to run when a pinned encoding data file is missing or changed |
+| `token-canary-test.sh` | Runs the car-question route, a whole-file mutant, a swapped-encoding mutant and a byte-only fixture in a throwaway copy |
 
 ---
 
@@ -90,6 +92,9 @@ Dependency direction: references ───▶ generator ───▶ tracked tem
 | `python3 -I sk-moneybird-accountant/scripts/generate-plan-kit.py --check` | CLI | Confirms the tracked kit matches the references, exit 1 on drift |
 | `bash sk-moneybird-accountant/scripts/init-workspace.sh [--dry-run] [--spec-name <NNN-slug>]` | CLI | Creates the private workspace and the working spec packet |
 | `bash sk-moneybird-accountant/scripts/plan-kit-test.sh` | CLI | Runs the kit test suite |
+| `TIKTOKEN_CACHE_DIR=<cache> python3 -I sk-moneybird-accountant/scripts/token-baseline.py` | CLI | Re-measures the corpus and writes the baseline after a reference change |
+| `TIKTOKEN_CACHE_DIR=<cache> python3 -I sk-moneybird-accountant/scripts/token-baseline.py --check` | CLI | Confirms the baseline matches the corpus, exit 1 on drift |
+| `TIKTOKEN_CACHE_DIR=<cache> bash sk-moneybird-accountant/scripts/token-canary-test.sh` | CLI | Runs the token canary suite |
 
 ---
 
@@ -134,7 +139,53 @@ The local shape uses no `{#id}` heading form and no anchor line on an H3. A rule
 
 ---
 
-## 8. VALIDATION
+## 8. TOKEN BASELINE
+
+`token-baseline.py` counts every markdown file under `../references/` in `o200k_base` and `cl100k_base`, whole file and per H2 section, and adds the named units, the overhead rows and the car route. `../benchmark/token-baseline.json` holds the result. The file holds paths and counts only, sorts its keys and carries no timestamp, so two runs produce the same bytes.
+
+The read budget ladder, in tokens:
+
+| Unit | Budget |
+|---|---|
+| One year README | 3,000 tokens |
+| One section | 5,000 tokens |
+| One full topic file | 15,000 tokens |
+| `dutch-tax-rules.md` section 3 | 80,000 tokens, only behind a TOC jump |
+
+The task-type table in `../SKILL.md` states every row budget from this ladder. The canary route reads the year README and one topic section, and its 8,000 `cl100k_base` ceiling is the first two ladder rows together.
+
+The pin names the two encodings, the library version and the sha256 of each encoding data file:
+
+| Encoding | Role | Cache file | Data sha256 |
+|---|---|---|---|
+| `o200k_base` | lead | `fb374d419588a4632f3f557e76b4b70aebbca790` | `446a9538cb6c348e3516120d7c08b09f57c36495e2acfffe59a5bf8b0cfb1a2d` |
+| `cl100k_base` | second column | `9b5ad71b2ce5302211f9c61530b329a4922fc6a4` | `223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7` |
+
+The library is `tiktoken` 0.11.0. The Operator chose `o200k_base` as the lead on 2026-10-12, with `cl100k_base` kept as a second column. Both encodings are proxies, so every count stands in for a model family and none is exact.
+
+Offline rule: the two data files come from a seeded cache. Point `TIKTOKEN_CACHE_DIR` at it, for example `../tiktoken-cache` from the repository root. The run checks that each file exists and that its sha256 matches the pin before it loads an encoder. A missing file or a changed file stops the run with exit code 2. Nothing downloads an encoding.
+
+Re-measure rule: re-measure on every reference change. Run `token-baseline.py` and commit the JSON with the change. A run with nothing to write ends with `baseline unchanged, 122 files, 917 sections`. `--check` recomputes every row in memory and names each drifted row, so a stale baseline fails the run. The final lines of a passing check:
+
+```text
+token-baseline: check ok, 122 files, 917 sections
+token-baseline: unit car route proposed: 23004 bytes, o200k_base 6684, cl100k_base 7289
+token-baseline: car route ratio: o200k_base 0.2814, cl100k_base 0.2846
+```
+
+The canary covers the 2026 car question on the KEY FIGURES route, which reads the year README and section 2 of `kosten-en-auto.md`. It asserts the proposed route stays at or under 35 percent of the current route and at or under the 8,000 token ceiling. Three mutants prove the gate: the proposed route pointed at the whole topic file, a cache that holds the lead encoding data under the second name, and a fixture that passes a four-bytes-per-token budget and fails the token budget. The measured route:
+
+```text
+route current: o200k_base 23750, cl100k_base 25608
+route proposed: o200k_base 6684, cl100k_base 7289
+route ratio: o200k_base 0.2814, cl100k_base 0.2846
+```
+
+The suite ends with `7 passed, 0 failed`.
+
+---
+
+## 9. VALIDATION
 
 Run from the repository root.
 
@@ -145,13 +196,15 @@ python3 -I sk-moneybird-accountant/scripts/build-reference-index.py --check
 bash sk-moneybird-accountant/scripts/reference-index-test.sh
 python3 -I sk-moneybird-accountant/scripts/check-fragments.py
 bash sk-moneybird-accountant/scripts/fragment-check-test.sh
+TIKTOKEN_CACHE_DIR=<cache> python3 -I sk-moneybird-accountant/scripts/token-baseline.py --check
+TIKTOKEN_CACHE_DIR=<cache> bash sk-moneybird-accountant/scripts/token-canary-test.sh
 ```
 
-Expected result: `generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems, and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The last two commands print `check-fragments: 1958 links, 159 fragment links, 0 problems` and `19 passed, 0 failed`.
+Expected result: `generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems, and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 1959 links, 159 fragment links, 0 problems` and `19 passed, 0 failed`. The token commands print `token-baseline: check ok, 122 files, 917 sections` and `7 passed, 0 failed`.
 
 ---
 
-## 9. RELATED
+## 10. RELATED
 
 - [`../references/migration/README.md`](../references/migration/README.md) for the phase references the generator reads
 - [`../assets/migration/README.md`](../assets/migration/README.md) for the generated templates

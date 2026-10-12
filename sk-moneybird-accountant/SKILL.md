@@ -15,13 +15,13 @@ A bookkeeping and migration assistant for a Dutch sole trader. It routes work th
 
 ### Activation Triggers
 
-Use for requests about:
+Use for:
 
 - Moving historical sole-trader records from Jortt to Moneybird.
 - Monthly, quarterly, or yearly bookkeeping in Moneybird.
 - Classifying a cost, private-use event, asset, mileage record, or VAT item.
 - A general Dutch ZZP question about income tax, VAT, deductions, or administration.
-- A reconciliation, exception, or migration gate that needs review.
+- A reconciliation, exception, or migration gate.
 
 ### Use Cases
 
@@ -42,7 +42,7 @@ Do not use this skill to file an income-tax or VAT return, make a final tax deci
 
 Select MIGRATION for historical records, Jortt exports, a migration phase, reconciliation, pilot writes, year locks, or moving records into Moneybird.
 
-Select LIVE for current bookkeeping cadence, an ordinary income or cost event, a VAT period, an annual close, or an ad hoc ZZP question.
+Select LIVE for bookkeeping cadence, an ordinary income or cost event, a VAT period, an annual close, or an ad hoc ZZP question.
 
 If ambiguous, ask one question: historical migration or current bookkeeping? Do not guess a phase or a tax year.
 
@@ -66,6 +66,8 @@ Every request matches exactly one row, which decides files read and tool skill.
 
 <!-- route-table:end -->
 
+Read budget ladder in o200k_base tokens, cl100k_base counts beside it in `benchmark/token-baseline.json`: year README 3,000, one section 5,000, full topic file 15,000, `references/dutch-tax-rules.md` section 3 at most 80,000 only after a jump through its section list. `tok:Tn` keys resolve in `references/routing-signals.md`.
+
 Signal sources and their Belastingdienst pages: `references/routing-signals.md`.
 
 ### Route Classes
@@ -84,7 +86,7 @@ Per-row routes:
 - T4: KNOWLEDGE (`references/purchase-invoices.md`, year `btw.md`), then MONEYBIRD_READ `tax_rates list`, then MONEYBIRD_GATED_WRITE through the "Purchase invoice and attachment" row where LIVE write authority allows, else OPERATOR_UI.
 - T7: the matching tool skill after the CLI preflight in section 3.
 
-`btw` alone is a weak signal that never decides a row. It only confirms a route chosen by a strong noun such as `aangifte`, `tarief` or `voorbelasting`.
+`btw` alone is a weak signal that never decides a row. It confirms a route chosen by a strong noun such as `aangifte`, `tarief` or `voorbelasting`.
 
 ### Ties and Abstain
 
@@ -109,7 +111,7 @@ Details: `references/year-and-state.md`.
 
 ### Smart Router Pseudocode
 
-Illustrative only. The Task-Type Table is the source of truth: read one row, load only its read set, and report mode, type, year, loaded and missing paths as the route record.
+Illustrative. The Task-Type Table is the source of truth: read one row, load only its read set.
 
     from pathlib import Path
 
@@ -127,12 +129,12 @@ Illustrative only. The Task-Type Table is the source of truth: read one row, loa
         """Parse the route-table rows."""
 
     def read_session_context(path):
-        """Read the generated session context file, never a workspace path."""
+        """Read the generated session context file."""
 
     def classify(request, table):
         """Score every row, apply the tie clauses, and return the winner
-        with its read set and the year resolved through CONTEXT, or abstain
-        with the candidate rows or tax years."""
+        with its read set and year, or abstain with the candidate rows or tax
+        years."""
 
     def discover_markdown_resources():
         return {p.relative_to(SKILL_ROOT).as_posix()
@@ -262,15 +264,15 @@ Keep the route record and figures safe: only phase and record-class labels, opaq
 - [Control framework](./references/migration/control-framework.md) - roles, risk and exceptions.
 - [Migration overview and setup](./references/migration/overview-and-setup.md) - workspace and `MIGRATION_CONFIG`.
 - [Dutch tax rules](./references/dutch-tax-rules.md) - rules across years.
-- Tax year folders `references/2020/` to `references/2027/` - one sourced file per topic per year.
+- Tax year folders `references/2020/` to `references/2027/` - one sourced file per topic.
 - [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) - ZZP accounting treatment.
 - [Purchase invoices](./references/purchase-invoices.md) - booking and VAT per case.
 - [Jortt to Moneybird mapping](./references/migration/jortt-to-moneybird-mapping.md) - concepts and traps.
 - [Source library](./references/source-library.md) - every cited source, `assets/source-library.json`.
 - [Routing signals](./references/routing-signals.md) - tie mechanics.
-- [Feature catalog](./feature-catalog/feature-catalog.md) - current feature inventory.
+- [Feature catalog](./feature-catalog/feature-catalog.md) - feature inventory.
 - [Manual testing playbook](./manual-testing-playbook/manual-testing-playbook.md) - offline verification scenarios.
-- [Year and state](./references/year-and-state.md) - year and state resolution.
+- [Year and state](./references/year-and-state.md).
 
 ### Tool skills
 
@@ -294,7 +296,7 @@ Complete when:
 - Current-year figures checked and sourced.
 - No return filed and no tax judgement presented as final.
 - Migration data stays in migration-workspace/.
-- Remaining human decisions and exceptions clearly stated.
+- Remaining human decisions and exceptions stated.
 
 ---
 
