@@ -93,6 +93,8 @@ The write command shape is `moneybird-guard --confirm-write --approval "$APPROVA
 
 `administration use <id>` is gated. Switching to the pilot administration passes. Switching to any other administration is blocked by the read-only lock with exit 6. Otherwise it needs `--confirm-write`, the writer configuration, `--production` and `--approval`, the same as a production write.
 
+The table below is the one canonical exit-code table, the target of the gate ladder above, the TROUBLESHOOT keywords in `cli-moneybird/SKILL.md` and the rows in `references/troubleshooting.md`, and `scripts/exit-code-parity.sh` checks those surfaces against the guard.
+
 | Exit | Meaning |
 |---:|---|
 | 0 | Success. The CLI call or a pass-through command completed |

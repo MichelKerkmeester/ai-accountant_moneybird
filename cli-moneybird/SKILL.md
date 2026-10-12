@@ -49,20 +49,22 @@ The operation the request names picks the guarded CLI route or the Moneybird UI.
 
 | Operation | CLI route or boundary |
 |---|---|
-| Administration sessions | `moneybird-guard administration list`, `moneybird-guard administration current` or `moneybird-guard administration use "$ADMIN_ID"` | Select the intended administration and verify it before a write. Switching to the pilot passes. Any other switch is blocked by the read-only lock and otherwise needs `--confirm-write`, the writer configuration, `--production` and `--approval`. |
-| Contacts | `moneybird-guard contacts list` or `moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$ADMIN_ID" contacts create --...` | Reads use the guard. Create or update only through the guarded CLI. |
-| Ledger accounts | `moneybird-guard ledger_accounts list` or `moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$ADMIN_ID" ledger_accounts create --rgs_code "$RGS_CODE"` | `rgs_code` is required on create. |
-| Tax rates | `moneybird-guard tax_rates list` | Create a tax rate in the UI. |
+| Administration sessions | `moneybird-guard administration list`, `moneybird-guard administration current` (Read Step Contract) or `moneybird-guard administration use "$ADMIN_ID"` | Select the intended administration and verify it before a write. Switching to the pilot passes. Any other switch is blocked by the read-only lock and otherwise needs `--confirm-write`, the writer configuration, `--production` and `--approval`. |
+| Contacts | `moneybird-guard contacts list` (Read Step Contract) or `moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$ADMIN_ID" contacts create --...` | Reads use the guard. Create or update only through the guarded CLI. |
+| Ledger accounts | `moneybird-guard ledger_accounts list` (Read Step Contract) or `moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$ADMIN_ID" ledger_accounts create --rgs_code "$RGS_CODE"` | `rgs_code` is required on create. |
+| Tax rates | `moneybird-guard tax_rates list` (Read Step Contract) | Create a tax rate in the UI. |
 | Historical sales invoice and PDF | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$ADMIN_ID" external_sales_invoices create --...` then `moneybird-guard --confirm-write --approval "$APPROVAL_REF" external_sales_invoices attachment "$INVOICE_ID" --file "$PDF"` | Guard every write and verify it with a later read. |
 | Purchase invoice and attachment | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" documents purchase_invoices create --...` then `moneybird-guard --confirm-write --approval "$APPROVAL_REF" documents purchase_invoices attachments "$DOCUMENT_ID" --file "$PDF"` | Guard every write and verify it with a later read. |
 | Receipt and attachment | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" documents receipts create --...` then `moneybird-guard --confirm-write --approval "$APPROVAL_REF" documents receipts attachments "$DOCUMENT_ID" --file "$PDF"` | Guard every write and verify it with a later read. |
 | General journal document | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" documents general_journal_documents create --journal_type "$JOURNAL_TYPE" --"$ENTRY_FIELD" "$ENTRIES_JSON"` | The body field name is `UNVERIFIED` until confirmed with pinned CLI help. |
 | Financial statement mutations | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" financial_statements create --"$MUTATION_FIELD" "$MUTATIONS_JSON"` | Do not use for bank statement imports. Resolve the JSON field from pinned CLI help. |
+| Bank transactions to match | `MONEYBIRD_GUARD_READ_ONLY=1 moneybird-guard financial_mutations list --filter "period:YYYY,state:unprocessed"` (Read Step Contract). The list defaults to `period:this_year` since API version `v2-20260710`, and a passed filter replaces every default. The comma filter form is `UNVERIFIED`. Past 100 records, read through `financial_mutations sync` and `sync_fetch` and filter the state locally. Linking is the separate gated write row "Link a payment". |
+| Financial accounts | `MONEYBIRD_GUARD_READ_ONLY=1 moneybird-guard financial_accounts list` (Read Step Contract) | Needed before narrowing to one account. `UNVERIFIED`. |
 | Link a payment | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" financial_mutations link_booking "$MUTATION_ID"` | Request body fields are `UNVERIFIED` until confirmed with pinned CLI help. |
 | Document payment | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" documents purchase_invoices payments "$DOCUMENT_ID" --"$PAYMENT_FIELD" "$PAYMENT_JSON"` | Resolve body fields from CLI help. |
 | Fixed asset | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" assets create --...` then use the confirmed `assets` value change action | Confirm the action with pinned CLI help. |
-| Reports | `moneybird-guard reports profit_loss "${REPORT_DATE_ARGS[@]}"` and the matching `balance_sheet`, `general_ledger`, `journal_entries` or `tax` action | Confirm date argument names from pinned CLI help. Each request covers at most twelve months. |
-| Bulk reads | `moneybird-guard sales_invoices sync` then `moneybird-guard sales_invoices sync_fetch --ids "$ID_BATCH_JSON"` | Use REST synchronization for complete bulk pulls. |
+| Reports | `moneybird-guard reports profit_loss "${REPORT_DATE_ARGS[@]}"` and the matching `balance_sheet`, `general_ledger`, `journal_entries` or `tax` action (Read Step Contract) | Confirm date argument names from pinned CLI help. Each request covers at most twelve months. |
+| Bulk reads | `moneybird-guard sales_invoices sync` then `moneybird-guard sales_invoices sync_fetch --ids "$ID_BATCH_JSON"` (Read Step Contract) | Use REST synchronization for complete bulk pulls. |
 | Auditfile export | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" reports export auditfile --year "$YEAR" --version "$AUDITFILE_VERSION"` then fetch the returned download through the confirmed downloads route | Confirm the route with pinned CLI help. |
 | CAMT.053 or MT940 import, tax rate creation, period lock or a historical VAT return | Moneybird UI only. Mark VAT returns filed with **Handmatig indienen** in chronological order. | Operator action. |
 
@@ -115,7 +117,7 @@ INTENT_MODEL = {
     "MIGRATION_RECIPE": {"weight": 7, "keywords": ["opening balance", "external sales invoice", "purchase invoice", "journal entry", "pilot migration", "correct a wrong write"]},
     "UI_ONLY": {"weight": 8, "keywords": ["camt.053 import", "mt940 import", "create tax rate", "lock a period", "handmatig indienen"]},
     "INSTALL": {"weight": 6, "keywords": ["install moneybird-cli", "moneybird token", "login-from-env"]},
-    "TROUBLESHOOT": {"weight": 8, "keywords": ["401", "403 scope", "404 administration", "422", "429", "stale get", "exit 2", "exit 3", "exit 4", "exit 5", "exit 6", "exit 7", "exit 8", "--print-body", "needs authentication"]},
+    "TROUBLESHOOT": {"weight": 8, "keywords": ["401", "403 scope", "404 administration", "422", "429", "stale get", "exit 2", "exit 3", "exit 4", "exit 5", "exit 6", "exit 7", "exit 8", "--print-body", "needs authentication"]},  # canonical exit-code table: references/cli.md
     "FEATURE_INVENTORY": {"weight": 6, "keywords": ["feature catalog", "moneybird capabilities", "what does the moneybird skill do"]},
     "MANUAL_TEST": {"weight": 6, "keywords": ["manual testing playbook", "test scenario", "validate the guard"]},
 }
@@ -206,12 +208,14 @@ The reader token lives in `.env` and, from the pilot phase onward, the write tok
 
 Moneybird token scopes do not separate read from write. Read-only roles set `MONEYBIRD_GUARD_READ_ONLY=1` before guarded CLI reads. The lock blocks every non-GET method even if write flags are present.
 
-### Read Path
+### Read Step Contract
 
-1. Select the resource and check its route with the pinned CLI help when needed.
-2. Set an explicit period on every verification list. Moneybird defaults list endpoints to `period:this_year`.
-3. Use `sync` and `sync_fetch` for bulk reads. Batch synchronization IDs in groups of no more than one hundred.
-4. Save any record output with `--out` under `migration-workspace/`. `--out` writes the full body there and prints only an item count, the top-level keys or a no-body message. Without `--out`, the guard captures the body to a private temporary file under `migration-workspace/tmp/`, prints one summary line and deletes the file. That line gives the byte size plus a record count for a list or the top-level field names for an object, for example `response: 2048 bytes, records: 12` or `response: 512 bytes, fields: id,name`. Record content does not reach the terminal by default. The guard refuses `--out` (exit 2) on passthrough commands such as `help` or `administration list`.
+- **Lock** Set `MONEYBIRD_GUARD_READ_ONLY=1` on every guarded read.
+- **Period** Pass an explicit period on every list.
+- **Paging** Prove completeness. Page until a short page, dedupe by record id and record the count.
+- **Caps** A list caps at 100 records, so larger reads use synchronization. A report longer than twelve months splits into parts that each record period and count and reconcile to the whole. Reports are limited to 50 per five minutes.
+- **Staleness** LIVE: the write response is first proof, read-back comes from a later synchronization, and a wait-based read-back needs an Operator-recorded horizon, pending Operator decision, read-back by synchronization only until then. MIGRATION keeps the M2 and M5 approved horizon.
+- **Retry** One owner per tool, GET only. Wait for `Retry-After` first. Otherwise use capped exponential backoff with full jitter and a bounded attempt count `LIVE_GET_MAX_ATTEMPTS` and a backoff ceiling `LIVE_GET_BACKOFF_CEILING`, both pending Operator decision. Never retry a non-GET call.
 
 ### Write Path
 
@@ -222,7 +226,7 @@ STEP 1b: Preconditions: the trial or package has not expired, the phase gate has
        ↓
 STEP 2: Guarded dry-run reads the first METHOD URL line
        ↓
-STEP 3: Gates, in this order
+STEP 3: Gates, in this order (canonical exit-code table: references/cli.md)
        ├─ Argument conflict, or --out on a passthrough command: exit 2
        ├─ --out outside migration-workspace or through a symlink: exit 5
        ├─ Dry-run did not start with a METHOD URL line: exit 2

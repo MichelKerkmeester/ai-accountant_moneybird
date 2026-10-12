@@ -37,11 +37,13 @@ If the route fails after local checks, inspect `moneybird-cli RESOURCE ACTION --
 
 ## 2. CLI AND GUARD FAILURES
 
+The canonical exit-code table lives in [`cli.md`](cli.md) section 3. The rows below cover the guard's own exits 2 to 8.
+
 | What you see | Why | Fix |
 |---|---|---|
 | `moneybird-cli` is not found | The CLI is missing or its symlink directory is not on `PATH` | Review `setup.sh` output. An operator can run `setup.sh --install` and add `$HOME/.local/bin` to `PATH`. |
 | Pin check fails | The local source is not at the reviewed commit | Review the diff before pin changes. Reinstall the reviewed commit with the setup script. |
-| Guard exit 2 | A usage error, such as `--print-body` in an agent session or `--print-body` with `--out` | Use `--out` and read the saved file. Agents never use `--print-body`. |
+| Guard exit 2 | A usage error, including a malformed dry-run header, `--print-body` in an agent session or `--print-body` with `--out` | Use `--out` and read the saved file. Agents never use `--print-body`. |
 | Guard exit 3 | A non-GET call lacks `--confirm-write` | Review the dry-run line and approved batch. Retry only after explicit operator approval. |
 | Guard exit 4 | The target differs from the pilot or the pilot is unset | Set the intended pilot ID in the `MONEYBIRD_PILOT_ADMINISTRATION_ID=` line of the root `.env` file. Use `--production` only after the operator approves that batch. |
 | Guard exit 5 | `--out` is outside `migration-workspace/` or crosses a symlink | Choose a path below `<Accountant root>/migration-workspace/`. |
@@ -73,6 +75,8 @@ The API rejected a field, value or write in a locked period. Check the pinned CL
 ### `429 Too Many Requests`
 
 Wait for the response's `Retry-After` value. Keep under 150 requests per five minutes and under 50 requests per five minutes for reports. Do not retry immediately or increase concurrency.
+
+The Read Step Contract in `cli-moneybird/SKILL.md` section 3 owns the retry rule. It allows a GET retry only. Wait for `Retry-After` first. Never retry a non-GET call.
 
 ---
 

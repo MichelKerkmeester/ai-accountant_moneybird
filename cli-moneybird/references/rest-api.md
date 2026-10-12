@@ -44,6 +44,24 @@ Tokens with these scopes can change Moneybird records. Keep the writer token in 
 
 Do not increase concurrency to catch up after a throttle. Resume at a pace that stays inside both the general and report limits.
 
+### Completeness Proof
+
+A paged list read proves it is complete before any count is reported:
+
+1. Request a page size and page through the list until a short page returns. A page smaller than the requested size is the last page.
+2. Dedupe by record id. A record seen again on a refetch counts once.
+3. Record the count for the read together with the period it covers.
+
+### Twelve-Month Report Split
+
+A report covering more than twelve months is split into parts of at most twelve months each:
+
+- Each part records its own period and count.
+- The parts reconcile to the whole. The part counts add up to the whole figure, and a difference means the read is incomplete.
+- Reports are limited to 50 per five minutes. Space the parts so the split stays inside that limit.
+
+These rules implement the Read Step Contract in `cli-moneybird/SKILL.md` section 3.
+
 ---
 
 ## 3. VERIFICATION TRAPS
@@ -60,6 +78,26 @@ moneybird-guard financial_mutations list --filter period:YYYY
 ```
 
 Use date parameters for reports when their route accepts a start and end date. Keep each report request within twelve months.
+
+### Unmatched Bank Mutations
+
+The bank read names the state and an explicit period:
+
+```bash
+moneybird-guard financial_mutations list --filter "period:YYYY,state:unprocessed"
+```
+
+The comma filter form is `UNVERIFIED` until pinned CLI help confirms it. The state values are:
+
+| Bookkeeping outcome | State value |
+|---|---|
+| Unmatched | `unprocessed` |
+| Processed | `processed` |
+| Booked from a suggestion | `auto_booked` |
+
+A filtered bank list caps at 100 records. When the list returns 100 records, treat the count as capped and fall back to `financial_mutations sync` plus `financial_mutations sync_fetch --ids JSON`, then filter the state locally on the returned records. Keep each synchronization ID batch within the cap of 100.
+
+This read and its fallback follow the Read Step Contract in `cli-moneybird/SKILL.md` section 3.
 
 ### Caching
 

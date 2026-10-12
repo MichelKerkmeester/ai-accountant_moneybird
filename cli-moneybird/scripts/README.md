@@ -20,6 +20,8 @@ version: 1.0.0.0
 | File | Purpose |
 |---|---|
 | `doctor.sh` | Reports local command, CLI pin, config folder, credential-file presence and process-environment status |
+| `exit-code-parity.sh` | Compares the guard exit codes with the exit table, the troubleshooting rows and the SKILL keywords |
+| `exit-code-parity-test.sh` | Runs the parity check on a clean copy and on six mutated copies |
 
 ---
 
