@@ -10651,7 +10651,7 @@
       }
     },
     {
-      "bytes": 30739,
+      "bytes": 32606,
       "path": "sk-moneybird-accountant/references/migration/shared-mechanisms.md",
       "sections": [
         {
@@ -10678,13 +10678,13 @@
         },
         {
           "anchor": "m3-append-only-run-journal-approvals-and-crash-resume",
-          "bytes": 1414,
+          "bytes": 1673,
           "line": 31,
           "lines": 10,
           "title": "M3. Append-only run journal, approvals, and crash resume",
           "tokens": {
-            "cl100k_base": 333,
-            "o200k_base": 340
+            "cl100k_base": 396,
+            "o200k_base": 404
           }
         },
         {
@@ -10766,19 +10766,19 @@
         },
         {
           "anchor": "m11-stop-state-recovery-matrix",
-          "bytes": 3145,
+          "bytes": 3530,
           "line": 81,
-          "lines": 15,
+          "lines": 16,
           "title": "M11. Stop-state recovery matrix",
           "tokens": {
-            "cl100k_base": 646,
-            "o200k_base": 654
+            "cl100k_base": 737,
+            "o200k_base": 746
           }
         },
         {
           "anchor": "m12-external-agent-route",
           "bytes": 12730,
-          "line": 96,
+          "line": 97,
           "lines": 69,
           "title": "M12. External agent route",
           "tokens": {
@@ -10788,19 +10788,19 @@
         },
         {
           "anchor": "route-contract",
-          "bytes": 3237,
-          "line": 165,
-          "lines": 19,
+          "bytes": 4460,
+          "line": 166,
+          "lines": 23,
           "title": "Route contract",
           "tokens": {
-            "cl100k_base": 677,
-            "o200k_base": 681
+            "cl100k_base": 972,
+            "o200k_base": 979
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 6364,
-        "o200k_base": 6381
+        "cl100k_base": 6813,
+        "o200k_base": 6835
       }
     },
     {
@@ -11372,7 +11372,7 @@
   },
   "units": [
     {
-      "bytes": 5693909,
+      "bytes": 5695776,
       "files": 122,
       "name": "corpus total",
       "reads": [
@@ -11380,8 +11380,8 @@
       ],
       "sections": 917,
       "tokens": {
-        "cl100k_base": 1757595,
-        "o200k_base": 1640455
+        "cl100k_base": 1758044,
+        "o200k_base": 1640909
       }
     },
     {
@@ -11407,14 +11407,14 @@
       }
     },
     {
-      "bytes": 22245,
+      "bytes": 22428,
       "name": "sk-moneybird-accountant/SKILL.md",
       "reads": [
         "sk-moneybird-accountant/SKILL.md"
       ],
       "tokens": {
-        "cl100k_base": 5277,
-        "o200k_base": 5248
+        "cl100k_base": 5320,
+        "o200k_base": 5283
       }
     },
     {

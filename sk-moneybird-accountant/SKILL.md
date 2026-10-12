@@ -171,7 +171,7 @@ Illustrative. The Task-Type Table is the source of truth: read one row, load onl
 
 `references/migration/README.md` maps every phase. Advance only on the last verified exit gate, never on work that appears complete. Jortt stays uncancelled until Phase 22 passes and the Operator records a cancel-or-keep decision.
 
-Every phase uses the shared mechanisms route contract. Jortt reads run through jortt-cli only, XAF and other Jortt exports are Operator UI tasks, Moneybird reads run through moneybird-guard with `MONEYBIRD_GUARD_READ_ONLY=1`, a Moneybird write needs a passed gate, Operator approval, `--confirm-write` and `--approval <ref>` for a flushed `WRITE_INTENT`, plus `--production` for production batches, and an HTTP 429 stops the sequence for a guarded read-back before retry.
+Every phase uses the shared mechanisms route contract. A Moneybird read runs with `MONEYBIRD_GUARD_READ_ONLY=1` and a write needs a passed gate, Operator approval, `--confirm-write` and `--approval <ref>` for a flushed `WRITE_INTENT` that carries the `payload_digest`, plus `--production` for an approved production batch. The gate tokens, the evidence rule, the idempotency rule and the exit set are in the [write contract](./references/migration/shared-mechanisms.md#route-contract).
 
 ---
 
@@ -182,7 +182,7 @@ Every phase uses the shared mechanisms route contract. Jortt reads run through j
 1. Read the migration index for the next phase past the last verified gate.
 2. Load the matching phase file and [shared mechanisms](./references/migration/shared-mechanisms.md). Use M12 for the Agent runner, Implementer, Verifier, Final reviewer and separate Migration Writer seats. Load the control framework for any gate, risk, exception, stop or year lock. Work the phase from its packet in the Operator's spec-kit copy, `specs/001-migration/` by default, copied by `scripts/init-workspace.sh` from `specs/000-migration-template/`. After editing a phase reference, run `python3 -I scripts/generate-plan-kit.py` and confirm `--check` passes.
 3. Keep the phase contract's exact owner tags. The Operator owns approvals, UI exports, bank imports, period locks, return filing and accounting decisions.
-4. Route Jortt reads through jortt-cli, Moneybird reads and approved writes through moneybird-guard, keeping `MONEYBIRD_GUARD_READ_ONLY=1` in every reader session. Non-GET calls run in a separate approved writer session, with read-back in a new locked reader session.
+4. Route Jortt reads through jortt-cli, Moneybird reads and approved writes through moneybird-guard, keeping `MONEYBIRD_GUARD_READ_ONLY=1` in every reader session. Non-GET calls run in a separate approved writer session. Read-back follows the canonical read-back sentence in the [write contract](./references/migration/shared-mechanisms.md#route-contract).
 5. Before every Moneybird non-GET batch, verify trial or package expiry, phase gate, Operator approval, and a flushed `WRITE_INTENT`. Use stable local write keys and journal every state change.
 6. Keep work in migration-workspace/. Stop on any failed gate or open stop condition and resume from the last verified journal state. After Phase 18 passes, use the phase 19 to 21 contracts for recurring cycles until Phase 22. Never cancel Jortt before Phase 22 passes.
 
@@ -207,9 +207,11 @@ Before the first CLI call of a session, run the tool skill's readiness check by 
 
 ### Output Contract
 
-Every answer ends with a route record block: `mode` (MIGRATION or LIVE), `type` (T1 to T9 or abstain), `year` (resolved tax year or none), `year_key` (`transaction_date` or `return_coverage`), `clock_source` (`SOURCE_DATE_EPOCH` or `runtime`), `loaded` (repository-relative paths read) and `missing` (routed paths absent). Every reported figure adds `source` (reference path or official URL) and `checked_on` (date the reference states, or `not stated` when none).
+Answers end with a route record: `mode` (MIGRATION or LIVE), `type` (T1 to T9 or abstain), `year` (resolved or none), `year_key` (`transaction_date` or `return_coverage`), `clock_source` (`SOURCE_DATE_EPOCH` or `runtime`), `loaded` (paths read), `missing` (routed paths absent). Figures add `source` (reference or official URL) and `checked_on` (the reference's date or `not stated`).
 
-Keep the route record and figures safe: only phase and record-class labels, opaque keys, aggregate counts, status, and evidence paths. Never expose names, account identifiers, invoice numbers, amounts, or source payloads. Put migration deliverables under migration-workspace/. Never create an export/ folder.
+Keep the route record and figures safe: phase and record-class labels, opaque keys, aggregate counts, status, evidence paths only. Never expose names, account identifiers, invoice numbers, amounts or source payloads. Deliverables stay in migration-workspace/. No export/ folder.
+
+Answer order: avoid loading unneeded record content, then scan the draft with the gate's answer mode before sending. Never rely on masking afterwards.
 
 ---
 
@@ -221,7 +223,7 @@ Keep the route record and figures safe: only phase and record-class labels, opaq
 2. Distinguish confirmed rules, product documentation, conflicting values and unverified points.
 3. Route every Jortt CLI read through jortt-cli, following cli-jortt/SKILL.md.
 4. Route every Moneybird CLI read or write through moneybird-guard, following cli-moneybird/SKILL.md. Every read session sets `MONEYBIRD_GUARD_READ_ONLY=1`.
-5. Require the passed phase gate, Operator approval, current access window, stable local write key, a flushed `WRITE_INTENT` with a matching `--approval <ref>`, and read-back for every non-GET batch.
+5. Require the passed phase gate, Operator approval, the current access window, a stable local write key and a flushed `WRITE_INTENT` for every non-GET batch. See the [write contract](./references/migration/shared-mechanisms.md#route-contract).
 6. Use the documented auditfile export route. Never weaken the global read-only lock for an analysis session.
 7. Keep migration records and evidence in migration-workspace/. Record exceptions rather than making unexplained balancing entries.
 8. Keep exact phase owner tags and stop at a failed gate. Resume from the last verified run-journal state.

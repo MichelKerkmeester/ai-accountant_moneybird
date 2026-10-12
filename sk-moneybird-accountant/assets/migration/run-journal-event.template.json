@@ -13,11 +13,13 @@
   "new_state": "PENDING",
   "timestamp": "PENDING",
   "owner_tag": "PENDING",
+  "session_profile": "PENDING",
+  "read_only_lock": "PENDING",
   "evidence_paths": [
     "PENDING"
   ],
   "approval_reference": "PENDING",
-  "payload_hash": "PENDING",
+  "payload_digest": "PENDING",
   "stop_reason": "PENDING",
   "seat": "PENDING",
   "executor_route": "PENDING",
