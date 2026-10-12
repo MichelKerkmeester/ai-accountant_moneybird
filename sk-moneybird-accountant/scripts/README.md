@@ -59,6 +59,8 @@ Dependency direction: references ───▶ generator ───▶ tracked tem
 | `generate-plan-kit.py` | Parses the phase references and the setup reference, renders the phase dashboard, the config template, the workspace folder list and one spec packet per phase, then writes them or checks them |
 | `init-workspace.sh` | Creates `migration-workspace/` from `assets/migration/` and copies `specs/000-migration-template/` to `specs/<NNN-slug>/`, skipping every file that already exists |
 | `plan-kit-test.sh` | Builds throwaway repositories, runs the generator and the workspace script, and checks the generated files, placeholders, links, refusals and repeat runs |
+| `check-route-table.py` | Checks the task-type route table in `../SKILL.md`: markers, header, rows T1 to T9, budgets, tool routes, read-set paths, constants, margin overrides and signal source links |
+| `route-table-test.sh` | Runs the route table checker on the real SKILL.md and on mutated copies, and expects every mutant to fail |
 
 ---
 

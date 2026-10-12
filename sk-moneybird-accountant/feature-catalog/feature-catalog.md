@@ -215,6 +215,22 @@ See [bookkeeping-and-migration/external-source-library.md](bookkeeping-and-migra
 
 ---
 
+### Task type routing
+
+#### Description
+
+Classifies each request to one of nine task types that decide the tool route, read set, token budget, and tie rule.
+
+#### Current Reality
+
+The skill scores the Dutch and English signal columns of the Task-Type Table in SKILL.md section 2 and routes each request to exactly one of the nine task types T1 to T9. Each row names its tool route, its read set, a token budget key such as `tok:T3`, and a tie rule that settles overlaps before the route margin is applied. A near tie abstains, names the candidate rows, and asks one question. The CLI action row is additive and never wins alone. Every answer ends with a route record that names the selected row, the references read, and the boundary result. The corresponding manual scenarios check route selection and the stated boundary without API access.
+
+#### Source Files
+
+See [bookkeeping-and-migration/task-type-routing.md](bookkeeping-and-migration/task-type-routing.md) for source and validation anchors.
+
+---
+
 ### CLI tool handoff
 
 #### Description

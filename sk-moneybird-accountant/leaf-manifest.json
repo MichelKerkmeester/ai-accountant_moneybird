@@ -16,6 +16,7 @@
         "feature-catalog/bookkeeping-and-migration/migration-write-keys-and-run-journal.md",
         "feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md",
         "feature-catalog/bookkeeping-and-migration/purchase-invoice-booking.md",
+        "feature-catalog/bookkeeping-and-migration/task-type-routing.md",
         "feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md",
         "manual-testing-playbook/offline-routing/api-tool-handoff.md",
         "manual-testing-playbook/offline-routing/auditfile-read-only-route.md",
@@ -151,6 +152,7 @@
         "references/migration/shared-mechanisms.md",
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
+        "references/routing-signals.md",
         "references/source-library.md"
       ],
       "packet": ".",

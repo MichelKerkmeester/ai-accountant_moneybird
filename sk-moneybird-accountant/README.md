@@ -92,10 +92,12 @@ For historical work, name the migration phase or the last gate that passed. The 
 
 ## 4. MODES AND ROUTING
 
-| Mode | Use it for | Main route |
-|---|---|---|
-| **MIGRATION** | Moving historical Jortt records into Moneybird | The migration index, the matching phase file, the shared mechanisms and the two CLI skills |
-| **LIVE** | A monthly, VAT-period or yearly review, or a one-off ZZP question | The matching topic route in `SKILL.md` |
+| Mode | Use it for |
+|---|---|
+| **MIGRATION** | Moving historical Jortt records into Moneybird |
+| **LIVE** | A monthly, VAT-period or yearly review, or a one-off ZZP question |
+
+Topic routes live in one place, the Task-Type Table in `SKILL.md` section 2. This README does not repeat them.
 
 Check the current tax year before you use any rate or threshold. The [Dutch tax rules](references/dutch-tax-rules.md) explain each rule and route to the year folder, such as [2024](references/2024/README.md), where every topic has its own sourced file. The [Moneybird bookkeeping reference](references/moneybird-bookkeeping.md) covers the accounting treatment of common events. The [Jortt to Moneybird mapping](references/migration/jortt-to-moneybird-mapping.md) lists concept matches and migration traps. Exports the Jortt API does not provide come from you, through the Jortt UI.
 

@@ -33,16 +33,7 @@ Read sk-moneybird-accountant/SKILL.md before processing any bookkeeping or migra
 
 ## Step 2: Load routed references
 
-Load only the relevant resource after reading the skill:
-
-- MIGRATION: read references/migration/README.md, then the one phase group that matches the active phase. Load control-framework.md when a gate, risk, exception, stop condition, or year lock applies.
-- Monthly, quarterly, or yearly bookkeeping: read references/moneybird-bookkeeping.md and the relevant tax section when needed.
-- Booking a purchase invoice, receipt or order, including a foreign invoice with reverse-charged VAT: read references/purchase-invoices.md, then the year's btw.md for the rate.
-- Ad hoc ZZP question: check the tax year first, then read references/YYYY/README.md and the topic file for that year, such as references/2024/btw.md or references/2024/box-2.md. Read references/dutch-tax-rules.md for how a rule works across years, the source conflicts and the record duties.
-- Checking where a figure or rule comes from, or reading an official source: read references/source-library.md, then grep assets/source-library.json for the host, topic or citing file.
-- Concept mapping: read references/migration/jortt-to-moneybird-mapping.md.
-- Jortt CLI work: read cli-jortt/SKILL.md and use `jortt-cli`.
-- Moneybird CLI work: read cli-moneybird/SKILL.md and use `moneybird-guard`.
+Classify the request with the Task-Type Table in `sk-moneybird-accountant/SKILL.md` section 2 and read only what its row names.
 
 Do not bulk-read the entire reference set.
 

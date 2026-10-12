@@ -43,12 +43,12 @@ The skill keeps the workflow in one place. The two CLI skills own API details, s
 
 ### Two modes
 
-| Mode | Use it for | Start with |
-|---|---|---|
-| **MIGRATION** | Moving historical Jortt records into Moneybird | The [migration index](sk-moneybird-accountant/references/migration/README.md), the matching phase file and the [shared mechanisms](sk-moneybird-accountant/references/migration/shared-mechanisms.md) |
-| **LIVE** | A monthly or quarterly review, a yearly close or a one-off ZZP question | The [Moneybird bookkeeping reference](sk-moneybird-accountant/references/moneybird-bookkeeping.md) and the [Dutch tax rules](sk-moneybird-accountant/references/dutch-tax-rules.md) with one folder per tax year |
+| Mode | Use it for |
+|---|---|
+| **MIGRATION** | Moving historical Jortt records into Moneybird |
+| **LIVE** | A monthly or quarterly review, a yearly close or a one-off ZZP question |
 
-If the mode is unclear, the assistant asks one question instead of guessing a phase or a tax year. It checks the current tax year before it uses any rate or threshold. Tax decisions and return filing stay with the Operator or a bookkeeper.
+The routes into the matching phase file, bookkeeping reference or tax-year folder are written in one place only, the Task-Type Table in section 2 of `sk-moneybird-accountant/SKILL.md`. If the mode is unclear, the assistant asks one question instead of guessing a phase or a tax year. It checks the current tax year before it uses any rate or threshold. Tax decisions and return filing stay with the Operator or a bookkeeper.
 
 &nbsp;
 
