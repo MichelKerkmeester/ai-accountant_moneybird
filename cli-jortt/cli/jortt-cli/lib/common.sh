@@ -158,12 +158,19 @@ jortt_load_config() {
   fi
   if [ -z "${JORTT_SCOPES:-}" ]; then
     found="$(jortt_read_env_value "$env_file" JORTT_SCOPES)"
+    JORTT_SCOPES_SOURCE='env file'
     if [ -z "$found" ]; then
       found="$(jortt_read_env_value "$example_file" JORTT_SCOPES)"
+      JORTT_SCOPES_SOURCE='.env.example fallback'
+    fi
+    if [ -z "$found" ]; then
+      JORTT_SCOPES_SOURCE='unset'
     fi
     JORTT_SCOPES="$found"
+  else
+    JORTT_SCOPES_SOURCE='environment'
   fi
-  export JORTT_CLIENT_ID JORTT_CLIENT_SECRET JORTT_SCOPES
+  export JORTT_CLIENT_ID JORTT_CLIENT_SECRET JORTT_SCOPES JORTT_SCOPES_SOURCE
 }
 
 jortt_require_credentials() {

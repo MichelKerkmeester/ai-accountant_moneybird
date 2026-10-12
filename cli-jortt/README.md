@@ -133,7 +133,7 @@ Use `cli-jortt` for Jortt source records, source documents and Jortt API diagnos
 |---|---|---|
 | `jortt-cli` not found | The CLI is not on your `PATH` yet | Run `bash cli-jortt/cli/jortt-cli/setup.sh` and apply the symlink command it prints |
 | The API description is missing | No cached copy exists | Run `jortt-cli spec update` when you have network access |
-| Exit 3 | A write call lacks `--allow-write` | Stop unless the Operator asked for that one operation |
+| Exit 3 | A write call lacks `--allow-write` | Stop. Jortt is read-only, and no write path exists for an agent |
 | Exit 4 | The key lacks the operation's scope | Name the scope and ask the Operator before changing key scopes |
 | Exit 5 | The output path leaves `migration-workspace/` | Use a relative name inside the workspace |
 

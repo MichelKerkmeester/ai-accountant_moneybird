@@ -82,6 +82,19 @@ jortt_token_clear() {
 
 jortt_token_status() {
   local expires now remaining
+  if [ -z "${JORTT_SCOPES_SOURCE:-}" ]; then
+    jortt_load_config
+  fi
+  case "${JORTT_SCOPES_SOURCE:-}" in
+    '.env.example fallback')
+      printf 'warning: JORTT_SCOPES came from .env.example and may not match the configured key\n' >&2
+      ;;
+  esac
+  if [ -n "${JORTT_SCOPES_SOURCE:-}" ]; then
+    printf 'scope source: %s\n' "$JORTT_SCOPES_SOURCE"
+  else
+    printf 'scope source: unset\n'
+  fi
   if ! jortt_token_paths || [ ! -f "$JORTT_TOKEN_FILE" ]; then
     printf 'Cached token: no\nRemaining minutes: 0\n'
     return 0

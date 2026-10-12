@@ -100,6 +100,8 @@ The router discovers markdown at call time from three local trees and one root d
 
 ### Smart Router Pseudocode
 
+The intents map requests to resources. WRITE_REFUSED loads `references/troubleshooting.md` and stops because Jortt is read-only.
+
 ```python
 from pathlib import Path
 
@@ -114,7 +116,7 @@ AMBIGUITY_DELTA = 1
 
 INTENT_MODEL = {
     "CLI_EXTRACT": {"weight": 6, "keywords": ["extract", "export", "list expenses", "invoices", "receipts", "bank transactions", "source register", "--all"]},
-    "CLI_WRITE": {"weight": 5, "keywords": ["create in jortt", "update jortt", "delete jortt", "send invoice", "write operation"]},
+    "WRITE_REFUSED": {"weight": 5, "keywords": ["create in jortt", "update jortt", "delete jortt", "send invoice", "write operation"]},
     "EXPORT_UI": {"weight": 6, "keywords": ["xaf", "auditfile", "annual accounts", "filed vat return", "jaarrekening"]},
     "INSTALL": {"weight": 5, "keywords": ["install jortt-cli", "configure jortt", "jortt_client_id"]},
     "TROUBLESHOOT": {"weight": 6, "keywords": ["401", "invalid_scope", "403", "429", "422", "exit 3", "exit 4", "exit 5", "needs authentication", "expired link"]},
@@ -124,7 +126,7 @@ INTENT_MODEL = {
 
 RESOURCE_MAP = {
     "CLI_EXTRACT": ["references/rest-api.md", "references/cli.md"],
-    "CLI_WRITE": ["references/cli.md", "references/troubleshooting.md"],
+    "WRITE_REFUSED": ["references/troubleshooting.md"],
     "EXPORT_UI": ["references/exports-and-limits.md"],
     "INSTALL": ["INSTALL-GUIDE.md", "references/cli.md"],
     "TROUBLESHOOT": ["references/troubleshooting.md"],
@@ -135,7 +137,7 @@ RESOURCE_MAP = {
 UNKNOWN_FALLBACK_CHECKLIST = [
     "Confirm whether the request is a REST extract, UI export, setup task or error",
     "Ask for an operation name or expected output when the request does not identify the resource",
-    "Keep the work read-only unless the operator names one write operation",
+    "Keep the work read-only. Jortt has no write path for an agent",
     "Do not load a default reference when no intent scores",
 ]
 
@@ -198,7 +200,7 @@ def route_resources(request):
 
 | Surface | Best use | Output and limits |
 |---|---|---|
-| `jortt-cli` | Repeatable API reads, paging, downloads and full OpenAPI operation coverage | Primary. Writes require `--allow-write` plus the operation scope. |
+| `jortt-cli` | Repeatable API reads, paging, downloads and full OpenAPI operation coverage | Primary. Read-only. Non-GET calls are refused. |
 | Jortt UI | XAF, annual accounts and filed VAT returns | Operator-only exports. XAF requires a Beheerder and is generated per year. |
 
 ### CLI Extraction Path
@@ -239,13 +241,13 @@ Use relative output names under `migration-workspace/`. Keep `--allow-write` off
 - Use `--all` for paged list operations. Treat an empty array as a valid result.
 - Save extracts with `--out` inside `migration-workspace/` and fetch signed links promptly.
 - Respect the 10 requests per second limit and the 100 item page limit.
-- Run `--dry-run` before a write. Confirm the exact operation, body and target with the operator.
+- Treat every Jortt request as a read. If a task seems to need a write, stop and hand it to the Operator for the Jortt UI.
 - Mark behavior absent from the local facts as `UNVERIFIED`.
 - Ask the operator for XAF and other UI-only documents.
 
 ### ❌ NEVER
 
-- Never add a `:write` scope, pass `--allow-write` or choose `Read and write` on consent without the operator's explicit instruction for that one operation.
+- Never add a `:write` scope, pass `--allow-write` or choose `Read and write` on consent. This holds even when the Operator asks, because Jortt writes happen only in the Jortt UI.
 - Never write extracted data outside `migration-workspace/`.
 - Never paste personal financial data into tracked files, commits or prompts to other services.
 - Never touch `AI Systems/Moneybird Accountant/personal database`.
@@ -254,10 +256,14 @@ Use relative output names under `migration-workspace/`. Keep `--allow-write` off
 ### ⚠️ ESCALATE IF
 
 - A requested operation needs a scope that the key does not have.
-- The user requests a write, a broad scope change or `Read and write` consent.
+- The user requests a write, a broad scope change or `Read and write` consent. Refuse it and point to the Jortt UI.
 - An API response conflicts with the local spec or the migration plan.
 - A 422, unexplained empty page or incomplete next-link chain could change the source register.
 - The task needs an XAF auditfile, annual accounts or a filed VAT return.
+
+### Tool-level wall
+
+The CLI refuses every non-GET call. `--allow-write` is a per-call flag on the same command and is not a read-only mode. The actual wall is `JORTT_SCOPES` holding read scopes only. An agent has no Jortt write path, with or without Operator permission.
 
 ---
 

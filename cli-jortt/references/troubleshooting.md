@@ -47,12 +47,12 @@ Diagnose with read-only checks first. Never widen scopes or consent to make an e
 |---|---|---|
 | `HTTP 401` | Token was rejected. The CLI clears its cache and retries once. | If it repeats, run `jortt-cli token clear` and verify the client credentials with the operator. |
 | `invalid_scope` | The configured scope string is not accepted for this key. | Compare the requested read scopes with the key configuration in `JORTT_SCOPES`. Do not add write scopes to fix a read error. |
-| Exit 3 | A non-GET operation lacks `--allow-write`. | Stop unless the operator explicitly requested that one write. Preview it first with `--dry-run`. |
+| Exit 3 | A non-GET operation lacks `--allow-write`. | Stop. Jortt is read-only, and no write path exists for an agent. Hand the change to the Operator for the Jortt UI. |
 | Exit 4 | The operation's required scope is absent. | Name the missing scope and ask the operator to update key scopes only when the task requires it. |
 | Exit 5 | An output path is outside migration-workspace or crosses a symlink. | Choose a destination inside the ignored workspace. |
 | HTTP 403 | The token is authenticated but lacks permission or access to the resource. | Check the operation scope and account access. Do not retry with broader access without instruction. |
 | HTTP 429 | The API rate limit was reached. | The CLI respects `Retry-After` when supplied and retries with backoff. Let it finish before retrying. |
-| HTTP 422 | The API rejected the request. A write to a closed year is a known cause. | Stop and inspect the operation and year state. Do not repeat a write blindly. |
+| HTTP 422 | The API rejected the request. A write to a closed year is a known cause. | Stop and inspect the operation and year state. Jortt is read-only for an agent, and no write path exists. Hand any change to the Operator for the Jortt UI. |
 
 ---
 

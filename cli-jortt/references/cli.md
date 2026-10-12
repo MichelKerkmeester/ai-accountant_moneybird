@@ -21,7 +21,7 @@ Use this reference when installing the CLI, selecting an operation or diagnosing
 
 `jortt-cli` is a Bash 3.2 command line client that reads Jortt OpenAPI 2.0 metadata at runtime. It exposes every operation in the supplied spec through a stable slug. It needs `curl` and `jq`.
 
-The CLI is designed for repeatable migration reads. It can call the full REST API, but every non-GET method needs `--allow-write` and every operation needs its documented scope in `JORTT_SCOPES`.
+The CLI is designed for repeatable migration reads. Jortt is read-only for an agent. The CLI can call the full REST API, and a non-GET method runs only when the call carries `--allow-write`. `--allow-write` is a per-call flag on the same command and is not a read-only mode. The actual wall is `JORTT_SCOPES` holding read scopes only. Every operation also needs its documented scope in `JORTT_SCOPES`.
 
 ---
 
@@ -65,14 +65,14 @@ Set `JORTT_CLIENT_ID`, `JORTT_CLIENT_SECRET` and `JORTT_SCOPES` in the environme
 
 When `JORTT_SCOPES` is empty, the CLI reads the read-only scope list from `.env.example`. Token requests use the client credentials grant at `https://app.jortt.nl/oauth-provider/oauth/token`. Credentials travel through a private curl config stream. They do not appear in curl arguments or CLI output.
 
-The bearer token is cached under `${TMPDIR:-/tmp}/jortt-cli-$(id -u)/` with mode `0600`. The cache key uses the client ID and configured scopes. The CLI refreshes a token when it is within sixty seconds of expiry. A 401 clears the cache and retries once.
+The bearer token is cached under `${TMPDIR:-/tmp}/jortt-cli-$(id -u)/` with mode `0600`. The cache key is the SHA-256 of the client ID and the configured scopes. A scope change therefore gives a new cache entry. The old entry stays until it expires or `jortt-cli token clear` runs. The CLI refreshes a token when it is within sixty seconds of expiry. A 401 clears the cache and retries once.
 
 ```bash
 jortt-cli token status
 jortt-cli token clear
 ```
 
-These commands show token presence and remaining minutes or clear the current cache entry. They never print the token.
+`token status` shows token presence, remaining minutes and a line `scope source: <label>`. The label is `environment` when `JORTT_SCOPES` is set in the shell, `env file` when the scopes were read from `JORTT_ENV_FILE` or the root `.env`, `.env.example fallback` when they came from `.env.example`, or `unset`. When the label is `.env.example fallback`, the output also carries a warning, because the example scopes may not match the real key. Only the label is printed, never the scope value. `token clear` removes the current cache entry. These commands never print the token.
 
 ---
 
@@ -146,7 +146,7 @@ The migration workspace is gitignored. `call` and `get` print a short summary by
 
 A non-2xx response prints only the status and safe labels to stderr. For example `jortt-cli: HTTP 422, fields: amount, customer_id.` or `jortt-cli: HTTP 401, error code: invalid_token.` Field names and short code-like error codes only, never free text. The full error body is appended to `migration-workspace/logs/jortt-errors.log` (file mode 600, gitignored), and the message says so.
 
-A non-GET operation is a write. The CLI exits 3 unless that call includes `--allow-write`. It exits 4 when the operation's scope is missing from `JORTT_SCOPES`. Both checks run before the network call. A dry-run write still requires the flag and scope.
+Jortt is read-only for an agent. A non-GET operation is a write. The CLI exits 3 unless that call includes `--allow-write`. `--allow-write` is a per-call flag on the same command and is not a read-only mode. The actual wall is `JORTT_SCOPES` holding read scopes only. The CLI exits 4 when the operation's scope is missing from `JORTT_SCOPES`. Both checks run before the network call. A dry-run write still requires the flag and scope.
 
 ---
 

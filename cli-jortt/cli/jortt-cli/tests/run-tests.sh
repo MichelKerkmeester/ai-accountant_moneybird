@@ -54,6 +54,34 @@ CODE=$?
 set -e
 if [ "$CODE" -eq 4 ] && printf '%s' "$OUTPUT" | grep -q 'expenses:write'; then record "missing write scope exits 4" 1; else record "missing write scope exits 4" 0; fi
 
+# WHY: token status must report where JORTT_SCOPES came from without exposing the value.
+set +e
+OUTPUT="$(env JORTT_OPENAPI_FILE="$SPEC" JORTT_SCOPES=expenses:read JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null "$CLI" token status 2>&1)"
+CODE=$?
+set -e
+if [ "$CODE" -eq 0 ] && printf '%s' "$OUTPUT" | grep -q 'scope source: environment'; then record "token status reports the environment scope source" 1; else record "token status reports the environment scope source" 0; fi
+
+ENV_FILE="$(mktemp "$TEMP_ROOT/scopes-env.XXXXXX")"
+printf 'JORTT_SCOPES=expenses:read\n' > "$ENV_FILE"
+set +e
+OUTPUT="$(env -u JORTT_SCOPES JORTT_OPENAPI_FILE="$SPEC" JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE="$ENV_FILE" "$CLI" token status 2>&1)"
+CODE=$?
+set -e
+if [ "$CODE" -eq 0 ] && printf '%s' "$OUTPUT" | grep -q 'scope source: env file'; then record "token status reports the env file scope source" 1; else record "token status reports the env file scope source" 0; fi
+rm -f "$ENV_FILE"
+
+set +e
+OUTPUT="$(env -u JORTT_SCOPES JORTT_OPENAPI_FILE="$SPEC" JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null "$CLI" token status 2>"$TEMP_ROOT/fallback-stderr.txt")"
+CODE=$?
+set -e
+if [ "$CODE" -eq 0 ] \
+  && printf '%s' "$OUTPUT" | grep -q 'scope source: .env.example fallback' \
+  && grep -q 'warning: JORTT_SCOPES came from .env.example and may not match the configured key' "$TEMP_ROOT/fallback-stderr.txt"; then
+  record "token status warns for the .env.example fallback scope source" 1
+else
+  record "token status warns for the .env.example fallback scope source" 0
+fi
+
 set +e
 OUTPUT="$(run_cli call list-expenses --unknown_filter value --dry-run 2>&1)"
 CODE=$?
