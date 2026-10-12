@@ -91,7 +91,7 @@ Per-row routes:
 ### Ties and Abstain
 
 - `ROUTE_MARGIN = 0.25`, with a 0.08 warning band.
-- `FALLBACK_FLOOR` (`calibration: pending`).
+- `FALLBACK_FLOOR = 0.5`, frozen on the calibration split.
 - A tie with no deciding specificity clause abstains through tier B.
 - Margin override T2: `default`
 - Margin override T6: `default`
@@ -118,7 +118,7 @@ Illustrative. The Task-Type Table is the source of truth: read one row, load onl
     SKILL_ROOT = Path(__file__).resolve().parent
     RESOURCE_BASES = (SKILL_ROOT / "references",)
     ROUTE_TABLE = parse_route_table()
-    CONTEXT = read_session_context("session-context.json")  # generated, never a workspace path
+    CONTEXT = read_session_context("session-context.json")
     UNKNOWN_FALLBACK = {"load": "nothing", "tiers": {
         "Tier A": "Refuse with the out-of-scope boundary, load nothing",
         "Tier B": "Ask one question, print the candidate route per answer",

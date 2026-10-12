@@ -12,6 +12,8 @@
 # WHY: the checker is only trustworthy when it accepts the real files and
 # rejects every drift this suite introduces. This suite proves both.
 # WHY: the suite inspects $? after commands that are expected to fail, so -e stays off.
+# WHY: the sed scripts hold backticks and dollar signs that must stay literal, so they use single quotes.
+# shellcheck disable=SC2016
 set -uo pipefail
 
 # ───────────────────────────────────────────────────────────────
@@ -107,6 +109,22 @@ signals_mutant() {
     fi
 }
 
+# Run the checker against a mutated calibration file expected to fail with exit 1
+# Args:
+#   $1 - Check name
+#   $2 - Calibration file copy to check
+calibration_mutant() {
+    local name="$1"
+    local file="$2"
+    python3 -I "$CHECKER" --calibration "$file" >"$TMP_ROOT/out.txt" 2>&1
+    status=$?
+    if [[ "$status" -eq 1 ]]; then
+        pass "$name"
+    else
+        fail "$name"
+    fi
+}
+
 # ───────────────────────────────────────────────────────────────
 # 4. REAL SKILL MARKDOWN
 # ───────────────────────────────────────────────────────────────
@@ -192,7 +210,88 @@ signals_mutant "belastingdienst link removed" "$TMP_ROOT/m-signals-link.md"
 signals_mutant "signals file deleted" "$TMP_ROOT/no-such-routing-signals.md"
 
 # ───────────────────────────────────────────────────────────────
-# 7. SUMMARY
+# 7. CALIBRATION MUTANTS
+# ───────────────────────────────────────────────────────────────
+
+CALIBRATION="$SKILL_DIR/assets/route-calibration.json"
+
+# Build one mutant record per mismatch from the real record
+python3 - "$CALIBRATION" "$TMP_ROOT" <<'PY'
+import json
+import os
+import sys
+
+source = sys.argv[1]
+target = sys.argv[2]
+with open(source, "r", encoding="utf-8") as handle:
+    data = json.load(handle)
+
+def copy():
+    return json.loads(json.dumps(data))
+
+margin = copy()
+margin["route_margin"] = 0.5
+with open(os.path.join(target, "cal-margin.json"), "w", encoding="utf-8") as handle:
+    json.dump(margin, handle, indent=2)
+floor = copy()
+floor["fallback_floor"] = 0.85
+with open(os.path.join(target, "cal-floor.json"), "w", encoding="utf-8") as handle:
+    json.dump(floor, handle, indent=2)
+rate = copy()
+rate["held_out"] = dict(data["held_out"], false_abstain_rate=0.5)
+with open(os.path.join(target, "cal-rate.json"), "w", encoding="utf-8") as handle:
+    json.dump(rate, handle, indent=2)
+sweep_gone = copy()
+sweep_gone.pop("sweep", None)
+with open(os.path.join(target, "cal-sweep-gone.json"), "w", encoding="utf-8") as handle:
+    json.dump(sweep_gone, handle, indent=2)
+sweep_beheaded = copy()
+sweep_beheaded["sweep"]["candidates"] = [
+    candidate for candidate in sweep_beheaded["sweep"]["candidates"]
+    if candidate["floor"] != data["fallback_floor"]
+]
+with open(os.path.join(target, "cal-sweep-beheaded.json"), "w", encoding="utf-8") as handle:
+    json.dump(sweep_beheaded, handle, indent=2)
+sweep_off = copy()
+sweep_off["sweep"]["candidates"][0]["false_abstains"] = 3
+with open(os.path.join(target, "cal-sweep-off.json"), "w", encoding="utf-8") as handle:
+    json.dump(sweep_off, handle, indent=2)
+sweep_frozen = copy()
+sweep_frozen["calibration"] = dict(data["calibration"], route_matches=31)
+with open(os.path.join(target, "cal-sweep-frozen.json"), "w", encoding="utf-8") as handle:
+    json.dump(sweep_frozen, handle, indent=2)
+sweep_twin = copy()
+sweep_twin["sweep"]["candidates"].append(dict(data["sweep"]["candidates"][0]))
+with open(os.path.join(target, "cal-sweep-twin.json"), "w", encoding="utf-8") as handle:
+    json.dump(sweep_twin, handle, indent=2)
+PY
+
+calibration_mutant "calibration margin differs from the table" "$TMP_ROOT/cal-margin.json"
+calibration_mutant "calibration floor differs from the table" "$TMP_ROOT/cal-floor.json"
+calibration_mutant "calibration false-abstain rate above the cap" "$TMP_ROOT/cal-rate.json"
+calibration_mutant "calibration file deleted" "$TMP_ROOT/no-such-calibration.json"
+calibration_mutant "calibration sweep missing" "$TMP_ROOT/cal-sweep-gone.json"
+calibration_mutant "calibration chosen floor not swept" "$TMP_ROOT/cal-sweep-beheaded.json"
+calibration_mutant "calibration sweep rate disagrees with its counts" "$TMP_ROOT/cal-sweep-off.json"
+calibration_mutant "calibration frozen block differs from the sweep" "$TMP_ROOT/cal-sweep-frozen.json"
+calibration_mutant "calibration sweep holds a duplicate floor" "$TMP_ROOT/cal-sweep-twin.json"
+
+# A table that states values the record does not match fails the check
+python3 - "$(copy)" "$TMP_ROOT/m-table-margin.md" "$TMP_ROOT/m-table-floor.md" <<'PY'
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    text = handle.read()
+with open(sys.argv[2], "w", encoding="utf-8") as handle:
+    handle.write(text.replace("ROUTE_MARGIN = 0.25", "ROUTE_MARGIN = 0.50"))
+with open(sys.argv[3], "w", encoding="utf-8") as handle:
+    handle.write(text.replace("- `FALLBACK_FLOOR = 0.5`, frozen on the calibration split.", "- `FALLBACK_FLOOR = 0.85`, frozen on the calibration split."))
+PY
+mutant "table margin differs from the record" "$TMP_ROOT/m-table-margin.md"
+mutant "table floor differs from the record" "$TMP_ROOT/m-table-floor.md"
+
+# ───────────────────────────────────────────────────────────────
+# 8. SUMMARY
 # ───────────────────────────────────────────────────────────────
 
 printf '\n%d passed, %d failed\n' "$passed" "$failed"

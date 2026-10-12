@@ -8,20 +8,24 @@ Reads SKILL.md and verifies the route-table block between its markers. The
 check validates the header, the row types, the Dutch and English cells, the
 budget cells, the tool routes, the read-set paths, the routing constants,
 the warning band, the abstain wording, the margin override bullets, the
-pointer to the signal sources file and the source lines of that file. The
-script uses the Python standard library only and makes no network call.
+pointer to the signal sources file, the source lines of that file and the
+frozen calibration record in assets/route-calibration.json. The script uses
+the Python standard library only and makes no network call.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/check-route-table.py
     python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check
     python3 -I sk-moneybird-accountant/scripts/check-route-table.py --signals /tmp/routing-signals.md
+    python3 -I sk-moneybird-accountant/scripts/check-route-table.py --calibration /tmp/route-calibration.json
 
 Options:
-    --check       Run the check. This is the default and only mode.
-    --skill-md P  Read this markdown file instead of the skill's own SKILL.md.
-                  Read-set paths still resolve against the skill folder.
-    --signals P   Read the signal sources from this file instead of the
-                  skill's references/routing-signals.md.
+    --check          Run the check. This is the default and only mode.
+    --skill-md P     Read this markdown file instead of the skill's own SKILL.md.
+                     Read-set paths still resolve against the skill folder.
+    --signals P      Read the signal sources from this file instead of the
+                     skill's references/routing-signals.md.
+    --calibration P  Read the frozen constants from this file instead of the
+                     skill's assets/route-calibration.json.
 
 Output:
     One line per problem, or "route-table: ok" when the file passes. Exit 0
@@ -33,10 +37,11 @@ Output:
 # ───────────────────────────────────────────────────────────────
 
 import argparse
+import json
 import os
 import re
 import sys
-from typing import List, NoReturn
+from typing import Any, Dict, List, NoReturn, Optional
 
 # ───────────────────────────────────────────────────────────────
 # 2. CONFIGURATION
@@ -66,10 +71,14 @@ OVERRIDE_PREFIX = "- Margin override"
 SIGNAL_HEAD = "Signal sources"
 SIGNALS_REF = "references/routing-signals.md"
 SIGNALS_MD = os.path.join(SKILL_FOLDER, "references", "routing-signals.md")
+CALIBRATION_PATH = os.path.join(SKILL_FOLDER, "assets", "route-calibration.json")
 SOURCES_HEAD = "SIGNAL SOURCES"
 VOCABULARY_PREFIX = "- Skill vocabulary"
 TIE_HEADING = "Ties and Abstain"
 YEAR_TOKEN = "YYYY"
+FALSE_ABSTAIN_MAX = 0.05
+PENDING_MARKER = "calibration: pending"
+CONSTANT_NUMBER_RE = re.compile(r"([0-9]+(?:\.[0-9]+)?)")
 
 ROW_RE = re.compile(r"^\|\s*(T\d+)\s*\|")
 OVERRIDE_BULLET_RE = re.compile(r"^\s*(T\d+):\s*(.*)$")
@@ -348,6 +357,224 @@ def check_signal_sources(path: str, problems: List[str]) -> None:
     if bullets == 0:
         problems.append("%s holds no signal source lines" % path)
 
+
+def constant_number(text: str, name: str) -> Optional[float]:
+    """Read the number stated after one routing constant.
+
+    Args:
+        text: SKILL.md text.
+        name: Constant name such as ROUTE_MARGIN.
+
+    Returns:
+        The number on the constant line, or None when the line states none.
+    """
+    match = re.search(re.escape(name) + r"[^\n]*?([0-9]+(?:\.[0-9]+)?)", text)
+    if not match:
+        return None
+    return float(match.group(1))
+
+
+def is_number(value: Any) -> bool:
+    """Tell whether one JSON value is a real number.
+
+    Args:
+        value: Value from the calibration record.
+
+    Returns:
+        True for an int or float that is not a bool.
+    """
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def check_rate(value: Any, label: str, problems: List[str]) -> Optional[float]:
+    """Check one rate value and return it as a float.
+
+    Args:
+        value: Value from the calibration record.
+        label: Field name used in a problem line.
+        problems: Problem list to append to.
+
+    Returns:
+        The rate as a float, or None when it is not a valid rate.
+    """
+    if not is_number(value) or value < 0 or value > 1:
+        problems.append("calibration %s must be a number from 0 to 1" % label)
+        return None
+    return float(value)
+
+
+def check_rate_block(block: Any, label: str, problems: List[str]) -> None:
+    """Check the two rates of one calibration split block.
+
+    Args:
+        block: JSON object with route_accuracy and false_abstain_rate.
+        label: Split name used in a problem line.
+        problems: Problem list to append to.
+    """
+    if not isinstance(block, dict):
+        problems.append("calibration %s must be an object" % label)
+        return
+    check_rate(block.get("route_accuracy"), "%s route_accuracy" % label, problems)
+    rate = check_rate(block.get("false_abstain_rate"), "%s false_abstain_rate" % label, problems)
+    if rate is not None and rate > FALSE_ABSTAIN_MAX:
+        problems.append(
+            "calibration %s false_abstain_rate %.3f is above the %.2f cap" % (label, rate, FALSE_ABSTAIN_MAX)
+        )
+    rows = block.get("rows")
+    matches = block.get("route_matches")
+    if rows is not None and (not is_number(rows) or rows <= 0):
+        problems.append("calibration %s rows must be a positive number" % label)
+    if matches is not None and (not is_number(matches) or matches < 0):
+        problems.append("calibration %s route_matches must not be negative" % label)
+    accuracy = block.get("route_accuracy")
+    if is_number(rows) and is_number(matches) and is_number(accuracy) and rows > 0:
+        if abs(float(matches) / float(rows) - float(accuracy)) > 0.001:
+            problems.append("calibration %s route_accuracy does not match its counts" % label)
+
+
+def check_candidate_block(candidate: Dict[str, Any], floor: Any, problems: List[str]) -> None:
+    """Check the counts and rates of one swept floor candidate.
+
+    Args:
+        candidate: One sweep candidate object.
+        floor: Floor value of the candidate, used in problem lines.
+        problems: Problem list to append to.
+    """
+    rows = candidate.get("rows")
+    matches = candidate.get("route_matches")
+    abstains = candidate.get("false_abstains")
+    if not is_number(rows) or rows <= 0:
+        problems.append("calibration sweep floor %s rows must be a positive number" % floor)
+    if not is_number(matches) or matches < 0:
+        problems.append("calibration sweep floor %s route_matches must not be negative" % floor)
+    if not is_number(abstains) or abstains < 0:
+        problems.append("calibration sweep floor %s false_abstains must not be negative" % floor)
+    accuracy = check_rate(candidate.get("route_accuracy"), "sweep floor %s route_accuracy" % floor, problems)
+    rate = check_rate(candidate.get("false_abstain_rate"), "sweep floor %s false_abstain_rate" % floor, problems)
+    if is_number(rows) and is_number(matches) and is_number(accuracy) and rows > 0:
+        if abs(float(matches) / float(rows) - float(accuracy)) > 0.001:
+            problems.append("calibration sweep floor %s route_accuracy does not match its counts" % floor)
+    if is_number(rows) and is_number(abstains) and is_number(rate) and rows > 0:
+        if abs(float(abstains) / float(rows) - float(rate)) > 0.001:
+            problems.append("calibration sweep floor %s false_abstain_rate does not match its counts" % floor)
+
+
+def check_sweep(data: Dict[str, Any], problems: List[str]) -> None:
+    """Check the sweep table and its link to the frozen block.
+
+    The record must hold one candidate per swept floor, each with the
+    calibration counts and the two rates. The frozen fallback floor must
+    name one candidate and the frozen calibration block must repeat that
+    candidate's counts.
+
+    Args:
+        data: The calibration record.
+        problems: Problem list to append to.
+    """
+    sweep = data.get("sweep")
+    if not isinstance(sweep, dict):
+        problems.append("calibration sweep must be an object")
+        return
+    rule = sweep.get("selection_rule")
+    if not isinstance(rule, str) or not rule.strip():
+        problems.append("calibration sweep selection_rule must be a non-empty string")
+    step = sweep.get("step")
+    if step is not None and (not is_number(step) or step <= 0):
+        problems.append("calibration sweep step must be a positive number")
+    candidates = sweep.get("candidates")
+    if not isinstance(candidates, list) or not candidates:
+        problems.append("calibration sweep must hold a non-empty candidate list")
+        return
+    seen: List[float] = []
+    chosen_block: Optional[Dict[str, Any]] = None
+    chosen = data.get("fallback_floor")
+    for candidate in candidates:
+        if not isinstance(candidate, dict):
+            problems.append("calibration sweep candidate must be an object")
+            continue
+        floor = candidate.get("floor")
+        if not is_number(floor) or float(floor) < 0:
+            problems.append("calibration sweep candidate floor must be a number that is not negative")
+            continue
+        if float(floor) in seen:
+            problems.append("calibration sweep holds duplicate floor %s" % floor)
+        seen.append(float(floor))
+        check_candidate_block(candidate, floor, problems)
+        if is_number(chosen) and abs(float(chosen) - float(floor)) <= 0.000001:
+            chosen_block = candidate
+    if not seen:
+        problems.append("calibration sweep holds no usable candidate")
+        return
+    if not is_number(chosen):
+        return
+    if chosen_block is None:
+        problems.append("calibration fallback_floor %s is not a swept candidate" % chosen)
+        return
+    frozen = data.get("calibration")
+    if isinstance(frozen, dict):
+        for key in ("rows", "route_matches", "route_accuracy", "false_abstains", "false_abstain_rate"):
+            if frozen.get(key) != chosen_block.get(key):
+                problems.append("calibration %s differs from the swept floor %s" % (key, chosen))
+
+
+def check_calibration(path: str, skill_text: str, problems: List[str]) -> None:
+    """Check the frozen constants against the table that states them.
+
+    The effective table value is the number the table states, or zero while
+    the fallback floor is marked pending, because the scorer treats a
+    pending floor as no floor. The checker fails when the record and the
+    effective table state differ, when a rate is outside its range, when a
+    false-abstain rate is above the cap and when the record is missing or
+    malformed.
+
+    Args:
+        path: Path of the calibration record.
+        skill_text: SKILL.md text that states the constants.
+        problems: Problem list to append to.
+    """
+    if not os.path.isfile(path):
+        problems.append("calibration file not found: %s" % path)
+        return
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except (OSError, ValueError) as exc:
+        problems.append("cannot read %s: %s" % (path, exc))
+        return
+    if not isinstance(data, dict):
+        problems.append("calibration file must hold one object")
+        return
+    split_id = data.get("split_id")
+    if not isinstance(split_id, str) or not split_id.strip():
+        problems.append("calibration split_id must be a non-empty string")
+    table_margin = constant_number(skill_text, "ROUTE_MARGIN")
+    record_margin = data.get("route_margin")
+    if not is_number(record_margin):
+        problems.append("calibration route_margin must be a number")
+    elif table_margin is not None and abs(float(record_margin) - table_margin) > 0.000001:
+        problems.append(
+            "calibration route_margin %s differs from the table %s" % (record_margin, table_margin)
+        )
+    record_floor = data.get("fallback_floor")
+    if not is_number(record_floor) or float(record_floor) < 0:
+        problems.append("calibration fallback_floor must be a number that is not negative")
+    else:
+        table_floor = constant_number(skill_text, "FALLBACK_FLOOR")
+        if table_floor is None:
+            if PENDING_MARKER not in skill_text:
+                problems.append("calibration fallback_floor is neither stated in the table nor marked pending")
+            elif abs(float(record_floor)) > 0.000001:
+                problems.append(
+                    "calibration fallback_floor %s differs from the pending table value 0.0" % record_floor
+                )
+        elif abs(float(record_floor) - table_floor) > 0.000001:
+            problems.append(
+                "calibration fallback_floor %s differs from the table %s" % (record_floor, table_floor)
+            )
+    check_rate_block(data.get("held_out"), "held_out", problems)
+    check_rate_block(data.get("calibration"), "frozen", problems)
+    check_sweep(data, problems)
+
 # ───────────────────────────────────────────────────────────────
 # 6. ENTRY POINT
 # ───────────────────────────────────────────────────────────────
@@ -378,6 +605,12 @@ def main(argv: List[str]) -> int:
         default=SIGNALS_MD,
         help="read the signal sources from this file instead of the skill's references/routing-signals.md",
     )
+    parser.add_argument(
+        "--calibration",
+        metavar="PATH",
+        default=CALIBRATION_PATH,
+        help="read the frozen constants from this file instead of the skill's assets/route-calibration.json",
+    )
     args = parser.parse_args(argv)
     if not os.path.isfile(args.skill_md):
         fail("skill markdown not found: %s" % args.skill_md)
@@ -393,6 +626,7 @@ def main(argv: List[str]) -> int:
     check_overrides(lines, problems)
     check_signals_pointer(lines, problems)
     check_signal_sources(args.signals, problems)
+    check_calibration(args.calibration, text, problems)
     if problems:
         for problem in problems:
             print(problem)

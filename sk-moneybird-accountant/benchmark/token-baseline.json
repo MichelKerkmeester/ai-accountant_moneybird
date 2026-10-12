@@ -11066,7 +11066,7 @@
       }
     },
     {
-      "bytes": 6822,
+      "bytes": 6801,
       "path": "sk-moneybird-accountant/references/routing-signals.md",
       "sections": [
         {
@@ -11093,13 +11093,13 @@
         },
         {
           "anchor": "3-tie-margin-floor-warning-band-and-abstain",
-          "bytes": 1001,
+          "bytes": 980,
           "line": 41,
           "lines": 11,
           "title": "3. TIE MARGIN, FLOOR, WARNING BAND AND ABSTAIN",
           "tokens": {
-            "cl100k_base": 228,
-            "o200k_base": 228
+            "cl100k_base": 230,
+            "o200k_base": 230
           }
         },
         {
@@ -11137,8 +11137,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1928,
-        "o200k_base": 1831
+        "cl100k_base": 1930,
+        "o200k_base": 1833
       }
     },
     {
@@ -11340,12 +11340,12 @@
     },
     {
       "blocks": 1,
-      "bytes": 96018,
+      "bytes": 96017,
       "files": 1,
       "name": "references/index.json",
       "tokens": {
-        "cl100k_base": 30799,
-        "o200k_base": 31124
+        "cl100k_base": 30798,
+        "o200k_base": 31123
       }
     }
   ],
@@ -11372,7 +11372,7 @@
   },
   "units": [
     {
-      "bytes": 5695776,
+      "bytes": 5695755,
       "files": 122,
       "name": "corpus total",
       "reads": [
@@ -11380,8 +11380,8 @@
       ],
       "sections": 917,
       "tokens": {
-        "cl100k_base": 1758044,
-        "o200k_base": 1640909
+        "cl100k_base": 1758046,
+        "o200k_base": 1640911
       }
     },
     {
@@ -11407,14 +11407,14 @@
       }
     },
     {
-      "bytes": 22428,
+      "bytes": 22405,
       "name": "sk-moneybird-accountant/SKILL.md",
       "reads": [
         "sk-moneybird-accountant/SKILL.md"
       ],
       "tokens": {
-        "cl100k_base": 5320,
-        "o200k_base": 5283
+        "cl100k_base": 5315,
+        "o200k_base": 5278
       }
     },
     {

@@ -43,7 +43,7 @@ Every signal word in the Task-Type Table has a source. Most signal words come fr
 These four constants and one outcome govern what happens when two rows score close together.
 
 - `ROUTE_MARGIN = 0.25`. When the top two row scores differ by less than 0.25 and no specificity clause decides between them, the answer does not pick a row. The margin is the distance a winning row must keep over the runner-up.
-- `FALLBACK_FLOOR`. This is the minimum top score for any route. A winner below the floor is not trusted even when it leads alone. Its value is set at calibration and stays marked `calibration: pending` until the held-out fixtures freeze it. The fallback threshold stays below the route threshold.
+- `FALLBACK_FLOOR = 0.5`. This is the minimum top score for any route. A winner below the floor is not trusted even when it leads alone. The value was frozen on the calibration split. The frozen sweep and the held-out result are recorded in `../assets/route-calibration.json`.
 - The 0.08 warning band. A gap under 0.08 above the margin means the winner cleared the margin only barely. The router logs such a case for telemetry only and never changes the route.
 - The abstain outcome. When the router abstains, the answer names the candidate rows and asks one question through tier B of the fallback.
 
