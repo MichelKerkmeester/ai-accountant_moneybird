@@ -42,6 +42,10 @@ When the top two rows sit inside the route margin and no tie rule decides, the a
 | File | Type | Role |
 |---|---|---|
 | AI Systems/Moneybird Accountant/sk-moneybird-accountant/manual-testing-playbook/manual-testing-playbook.md | Manual playbook | Root index of the offline routing scenarios that exercise the task type rows. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/scripts/route-replay/route-replay.py | Automated harness | Scores the routing corpus offline and replays each refusal through the guard and the stub. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh | Automated test | Checks the harness with a deleted path, a twin mismatch and two dated runs. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/scripts/run-evals.py | Automated grader | Grades captured answers against the eval cases in `evals/evals.json`. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/hardening-matrix.md | Matrix | Names the test behind each failure mode, checked by `check-hardening-matrix.py`. |
 
 ---
 
