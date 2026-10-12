@@ -89,7 +89,7 @@ For unclear tax, VAT, ownership, asset, or private-use treatment, prepare the ev
 - Do not write to Moneybird unless the migration plan's gate has passed and the operator approved the write. Every write passes `--approval <ref>` for a flushed `WRITE_INTENT` entry in the run journal.
 - LIVE write authority: outside the LIVE workflows of migration phases 19 to 21, Moneybird writes are UI-only for the Operator. See `sk-moneybird-accountant/SKILL.md` section 3.
 - Never set `MONEYBIRD_GUARD_TEST=1`. It exists for the offline test suite only.
-- When a CLI action is unavailable or a tool skill does not support it, stop and report the limit.
+- When a CLI action is unavailable or a tool skill does not support it, stop and report the limit. An administration fact (a record, a period total, a balance, an effective rate, a report figure) is never answered from memory or from a reference when the required CLI read is unavailable or failed, and the answer then says blocked and names the missing capability.
 
 ---
 

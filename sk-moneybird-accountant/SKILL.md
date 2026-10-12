@@ -68,6 +68,22 @@ Every request matches exactly one row, which decides files read and tool skill.
 
 Signal sources and their Belastingdienst pages: `references/routing-signals.md`.
 
+### Route Classes
+
+- `KNOWLEDGE`: reference files only, no CLI call.
+- `JORTT_READ`: jortt-cli reads only.
+- `MONEYBIRD_READ`: moneybird-guard reads under `MONEYBIRD_GUARD_READ_ONLY=1` per the Read Step Contract in `cli-moneybird/SKILL.md` section 3.
+- `MONEYBIRD_GATED_WRITE`: a guarded write after a passed gate and Operator approval, within LIVE write authority.
+- `OPERATOR_UI`: the Operator acts in the Moneybird UI.
+- `BLOCKED`: stops before any CLI call or dry-run, records the refusal and names the owner. Members: a Jortt write, a return filing, a Moneybird write without a passed gate and approval, `--production` without the per-batch go, a read under `personal database/`, `--print-body`, a LIVE write without recorded authority.
+- `CLI_FAILURE`: on any nonzero CLI or guard exit, stop the call sequence, load the tool skill's `references/troubleshooting.md`, follow its row and never reissue the call unchanged. It is separate from the unknown-request fallback and loads no migration file.
+
+Per-row routes:
+
+- T3: MONEYBIRD_READ through the "Bank transactions to match" row in `cli-moneybird/SKILL.md` section 2.
+- T4: KNOWLEDGE (`references/purchase-invoices.md`, year `btw.md`), then MONEYBIRD_READ `tax_rates list`, then MONEYBIRD_GATED_WRITE through the "Purchase invoice and attachment" row where LIVE write authority allows, else OPERATOR_UI.
+- T7: the matching tool skill after the CLI preflight in section 3.
+
 `btw` alone is a weak signal that never decides a row. It only confirms a route chosen by a strong noun such as `aangifte`, `tarief` or `voorbelasting`.
 
 ### Ties and Abstain
@@ -172,58 +188,25 @@ Every phase uses the shared mechanisms route contract. Jortt reads run through j
 
 ### LIVE Mode
 
-#### Monthly bookkeeping
-
-- Review the period's sales, purchase documents, bank transactions, private movements, and outstanding exceptions.
-- Match each bank transaction to its invoice, receipt, category, or private account.
-- Check purchase documents are processed before counting them as booked or in VAT.
-- Keep source documents and explain unmatched items. Route Moneybird CLI reads through moneybird-guard. For writes, apply LIVE write authority.
-
-#### Quarterly bookkeeping
-
-- Confirm the administration's VAT period and return deadline.
-- Reconcile VAT by return box against source documents and booked transactions.
-- Prepare a review summary for the operator. Never submit or file the return.
-- Treat cross-border VAT, reverse charge, mixed-use VAT, and corrections as judgement points for the operator or a bookkeeper.
-- Route Moneybird CLI reads through moneybird-guard with MONEYBIRD_GUARD_READ_ONLY=1 for read-only sessions. For writes, apply LIVE write authority.
-
-#### Yearly bookkeeping
-
-- Reconcile profit and loss, balance sheet, assets, depreciation, private use, mileage, and year-end VAT adjustments.
-- Compare annual totals to the evidence and filed records.
-- Lock a period only when the applicable workflow has passed and the operator directs the action.
-- Route Moneybird CLI reads through moneybird-guard. For writes, apply LIVE write authority. Keep income-tax return preparation and filing with the operator or a bookkeeper.
+Monthly, quarterly and yearly cycles are in `references/moneybird-bookkeeping.md` (LIVE Bookkeeping Cycles). Every Moneybird read follows the Read Step Contract in `cli-moneybird/SKILL.md` section 3. Writes follow LIVE write authority below. The return is never filed.
 
 #### LIVE write authority
 
-LIVE Moneybird writes have three states. `JOURNAL_BACKED`: writes inside the LIVE workflows of migration phases 19 to 21, which carry a run-journal WRITE_INTENT and pass moneybird-guard. `UI_ONLY`: every other LIVE write. The Operator makes it in the Moneybird UI. Bank import, period lock, tax-rate creation and payment-term changes are always `UI_ONLY`. `BLOCKED`: anything the guard or a gate refuses. Every answer about a LIVE write names its state. LIVE writes outside phases 19 to 21 stay `UI_ONLY` until the Operator decides otherwise.
+LIVE Moneybird writes have three states. `JOURNAL_BACKED`: writes inside the LIVE workflows of migration phases 19 to 21, which carry a run-journal WRITE_INTENT and pass moneybird-guard. `UI_ONLY`: every other LIVE write, made by the Operator in the Moneybird UI. Bank import, period lock, tax-rate creation and payment-term changes are always `UI_ONLY`. `BLOCKED`: anything the guard or a gate refuses. Every answer names the write state. Everything else stays `UI_ONLY` until the Operator decides otherwise.
 
 #### Ad hoc ZZP questions
 
 - Resolve the year through `year_key` from session-context.json before using any rate, threshold, deduction, or vehicle rule.
-- Load references/YYYY/README.md for the tax year, then the one topic file the README names. Load references/dutch-tax-rules.md when the question is how a rule works across years.
+- Load references/YYYY/README.md, then the one topic file it names. Load references/dutch-tax-rules.md when the question is how a rule works across years.
 - Explain general rules with the year and source. Label conflicting or unverified points.
-- Do not present a case-specific tax conclusion as final. Flag judgement calls for the operator or a bookkeeper.
+
+### CLI Preflight
+
+Before the first CLI call of a session, run the tool skill's own readiness check by section name: `cli-moneybird` section 6 (package check) and `cli-jortt` section 3 (CLI Extraction Path steps 1 and 2). Copy no CLI command text. A failed preflight goes to CLI_FAILURE.
 
 ### Output Contract
 
 Every answer ends with a route record block: `mode` (MIGRATION or LIVE), `type` (T1 to T9 or abstain), `year` (resolved tax year or none), `year_key` (`transaction_date` or `return_coverage`), `clock_source` (`SOURCE_DATE_EPOCH` or `runtime`), `loaded` (repository-relative paths read) and `missing` (routed paths absent). Every reported figure adds `source` (reference path or official URL) and `checked_on` (date the reference states, or `not stated` when none).
-
-Example route record, placeholders only:
-
-    mode: <MIGRATION or LIVE>
-    type: <T1 to T9 or abstain>
-    year: <resolved tax year or none>
-    year_key: <transaction_date or return_coverage>
-    clock_source: <SOURCE_DATE_EPOCH or runtime>
-    loaded:
-      - <repository-relative path>
-    missing:
-      - <routed path that was absent>
-    figures:
-      - name: <reported figure>
-        source: <reference path or official URL>
-        checked_on: <date the reference states, or not stated>
 
 Keep the route record and figures safe: only phase and record-class labels, opaque keys, aggregate counts, status, and evidence paths. Never expose names, account identifiers, invoice numbers, amounts, or source payloads. Put migration deliverables under migration-workspace/. Never create an export/ folder.
 
@@ -257,6 +240,7 @@ Keep the route record and figures safe: only phase and record-class labels, opaq
 8. Never invent a passed gate, reconciled value, source record, or tax eligibility.
 9. Never duplicate a Jortt category into Moneybird by label alone. Map by accounting purpose and tax treatment.
 10. Never expose credentials, account identifiers, personal names, amounts, or private source records in documentation.
+11. Never answer an administration fact (a record, a period total, a balance, an effective rate, a report figure) from memory or from a reference when the required CLI read is unavailable or failed. Say blocked, name the missing capability and stop.
 
 ### ⚠️ ESCALATE IF
 

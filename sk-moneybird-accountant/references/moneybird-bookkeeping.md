@@ -106,6 +106,8 @@ Use the final closing balance sheet from the previous system. An opening journal
 
 Reconcile each bank transaction to the right invoice, receipt, category, or private account. Review automatic suggestions and handle unmatched transactions explicitly. A VAT-bearing cost should retain its invoice or receipt and be matched to that evidence. Do not leave unexplained balances.
 
+The guarded bank read names a Moneybird state for each bookkeeping outcome. Unmatched is `unprocessed`, processed is `processed`, and booked from a suggestion is `auto_booked`. Read unmatched transactions through the row "Bank transactions to match" in [cli-moneybird](../../cli-moneybird/SKILL.md) section 2.
+
 - Product references: [automatic bank transaction processing](https://helpcenter.moneybird.nl/nl/articles/207581-automatisch-je-banktransacties-verwerken) and [matching an invoice or category](https://helpcenter.moneybird.nl/nl/articles/207583-factuur-of-categorie-koppelen-aan-transactie), per Moneybird help reviewed on 2026-10-10.
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
 
@@ -125,7 +127,33 @@ Moneybird does not prepare the proprietor's complete personal income-tax return.
 
 ---
 
-## 8. RELATED RESOURCES
+## 8. LIVE BOOKKEEPING CYCLES
+
+### Monthly bookkeeping
+
+- Review the period's sales, purchase documents, bank transactions, private movements, and outstanding exceptions.
+- Match each bank transaction to its invoice, receipt, category, or private account.
+- Check purchase documents are processed before counting them as booked or in VAT.
+- Keep source documents and explain unmatched items. Route Moneybird CLI reads through moneybird-guard under the Read Step Contract in `cli-moneybird/SKILL.md` section 3. For writes, apply LIVE write authority.
+
+### Quarterly bookkeeping
+
+- Confirm the administration's VAT period and return deadline.
+- Reconcile VAT by return box against source documents and booked transactions.
+- Prepare a review summary for the operator. Never submit or file the return.
+- Treat cross-border VAT, reverse charge, mixed-use VAT, and corrections as judgement points for the operator or a bookkeeper.
+- Route Moneybird CLI reads through moneybird-guard with MONEYBIRD_GUARD_READ_ONLY=1 for read-only sessions, under the Read Step Contract in `cli-moneybird/SKILL.md` section 3. For writes, apply LIVE write authority.
+
+### Yearly bookkeeping
+
+- Reconcile profit and loss, balance sheet, assets, depreciation, private use, mileage, and year-end VAT adjustments.
+- Compare annual totals to the evidence and filed records.
+- Lock a period only when the applicable workflow has passed and the operator directs the action.
+- Route Moneybird CLI reads through moneybird-guard under the Read Step Contract in `cli-moneybird/SKILL.md` section 3. For writes, apply LIVE write authority. Keep income-tax return preparation and filing with the operator or a bookkeeper.
+
+---
+
+## 9. RELATED RESOURCES
 
 - [Dutch tax rules](./dutch-tax-rules.md) explains the general tax rules and routes to the year folders with the yearly amounts.
 - [Purchase invoices](./purchase-invoices.md) explains booking purchase invoices, receipts and orders with Dutch or reverse-charged VAT.
