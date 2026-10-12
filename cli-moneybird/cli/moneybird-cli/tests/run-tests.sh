@@ -460,7 +460,7 @@ capture_guard contacts list --filter period:2023
 SUMMARY_TMP="$MONEYBIRD_ENV_DIR/migration-workspace/tmp"
 SUMMARY_MODE="missing"
 if [[ -d "$SUMMARY_TMP" ]]; then
-  SUMMARY_MODE="$(stat -f '%Lp' "$SUMMARY_TMP" 2>/dev/null || stat -c '%a' "$SUMMARY_TMP" 2>/dev/null || printf 'unknown')"
+  SUMMARY_MODE="$(stat -c '%a' "$SUMMARY_TMP" 2>/dev/null || stat -f '%Lp' "$SUMMARY_TMP" 2>/dev/null || printf 'unknown')"
 fi
 if [[ $STATUS -eq 0 && "$OUTPUT" == *"response: 23 bytes"* && "$OUTPUT" == *"records: 1"* && "$OUTPUT" != *"stub-record"* ]] &&
    grep -q '^REAL GET ' "$MONEYBIRD_TEST_LOG" && [[ "$SUMMARY_MODE" == "700" && -z "$(ls -A "$SUMMARY_TMP")" ]]; then

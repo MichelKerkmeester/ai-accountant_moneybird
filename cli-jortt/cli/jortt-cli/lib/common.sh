@@ -49,7 +49,7 @@ jortt_cache_path() {
 
 jortt_stat_mtime() {
   local file="$1"
-  stat -f '%m' "$file" 2>/dev/null || stat -c '%Y' "$file" 2>/dev/null || printf '0\n'
+  stat -c '%Y' "$file" 2>/dev/null || stat -f '%m' "$file" 2>/dev/null || printf '0\n'
 }
 
 jortt_spec_file() {
