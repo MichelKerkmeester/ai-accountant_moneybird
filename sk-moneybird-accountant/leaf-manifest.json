@@ -3,6 +3,7 @@
     {
       "leaves": [
         "feature-catalog/bookkeeping-and-migration/api-tool-handoff.md",
+        "feature-catalog/bookkeeping-and-migration/external-source-library.md",
         "feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md",
         "feature-catalog/bookkeeping-and-migration/migration-agent-route.md",
         "feature-catalog/bookkeeping-and-migration/migration-archive-decommission-gate.md",
@@ -28,6 +29,7 @@
         "manual-testing-playbook/offline-routing/privacy-boundary.md",
         "manual-testing-playbook/offline-routing/purchase-invoice-booking.md",
         "manual-testing-playbook/offline-routing/quarterly-yearly-bookkeeping.md",
+        "manual-testing-playbook/offline-routing/source-lookup.md",
         "manual-testing-playbook/offline-routing/trial-expiry-stop.md",
         "manual-testing-playbook/offline-routing/write-journal-crash-resume.md",
         "references/2020/README.md",
@@ -148,7 +150,8 @@
         "references/migration/phases-6-to-9.md",
         "references/migration/shared-mechanisms.md",
         "references/moneybird-bookkeeping.md",
-        "references/purchase-invoices.md"
+        "references/purchase-invoices.md",
+        "references/source-library.md"
       ],
       "packet": ".",
       "workflowMode": "sk-moneybird-accountant"

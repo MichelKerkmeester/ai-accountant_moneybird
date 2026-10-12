@@ -330,11 +330,28 @@ Catalog: [feature-catalog/operator-tax-boundary.md](../feature-catalog/bookkeepi
 
 ---
 
+### TAX-003 | Source lookup
+
+#### Description
+Verify Route a request for the official VAT law text to the source library and its index.
+
+#### Scenario Contract
+Prompt: Where is the official text of the Dutch VAT law, and how do I read the article on reverse charge? Keep this as an offline routing check.
+
+Desired user-visible outcome: Names the source library, finds BWBR0002629 in its statute table, says the law page is reachable through WebFetch only and greps the index instead of reading it whole.
+
+#### Test Execution
+Feature file: [TAX-003](offline-routing/source-lookup.md)
+Catalog: [feature-catalog/external-source-library.md](../feature-catalog/bookkeeping-and-migration/external-source-library.md)
+
+---
+
 ## 8. AUTOMATED TEST CROSS-REFERENCE
 
 | Test Module | Coverage | Playbook Overlap |
 |---|---|---|
 | .skilled/skills/sk-doc/sk-create-manual-testing-playbook/scripts/validate-playbook-package.cjs | Checks operator scenario structure and local package links | All offline scenarios |
+| sk-moneybird-accountant/scripts/source-library-test.sh | Proves the source index builder on a fixture and checks the real index | TAX-003 |
 
 No runtime test calls an accounting service. The scenarios remain manual routing checks.
 
@@ -358,3 +375,4 @@ No runtime test calls an accounting service. The scenarios remain manual routing
 | API-001 | CLI tool handoff | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/api-tool-handoff.md) |
 | PRIV-001 | Migration data privacy | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-data-privacy.md) |
 | TAX-002 | Operator tax boundary | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md) |
+| TAX-003 | External source library | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/external-source-library.md) |

@@ -38,6 +38,7 @@ Load only the relevant resource after reading the skill:
 - Monthly, quarterly, or yearly bookkeeping: read references/moneybird-bookkeeping.md and the relevant tax section when needed.
 - Booking a purchase invoice, receipt or order, including a foreign invoice with reverse-charged VAT: read references/purchase-invoices.md, then the year's btw.md for the rate.
 - Ad hoc ZZP question: check the tax year first, then read references/YYYY/README.md and the topic file for that year, such as references/2024/btw.md or references/2024/box-2.md. Read references/dutch-tax-rules.md for how a rule works across years, the source conflicts and the record duties.
+- Checking where a figure or rule comes from, or reading an official source: read references/source-library.md, then grep assets/source-library.json for the host, topic or citing file.
 - Concept mapping: read references/migration/jortt-to-moneybird-mapping.md.
 - Jortt CLI work: read cli-jortt/SKILL.md and use `jortt-cli`.
 - Moneybird CLI work: read cli-moneybird/SKILL.md and use `moneybird-guard`.

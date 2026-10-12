@@ -201,6 +201,11 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/source-library.md",
+    "diskPath": "references/source-library.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "references/dutch-tax-rules.md",
     "diskPath": "references/dutch-tax-rules.md"
   }

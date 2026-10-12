@@ -52,6 +52,7 @@ If the request is ambiguous between the two modes, ask one concise question abou
 
 - Migration references contain the phase plan, gates, controls, and Jortt to Moneybird mapping.
 - Tax and bookkeeping references contain general Dutch ZZP rules and accounting treatment.
+- The source library reference lists every external source with its authority and access method. Its index in assets/ is grepped, never read whole.
 - The Jortt tool skill owns Jortt CLI reads.
 - The Moneybird tool skill owns Moneybird CLI reads and writes through moneybird-guard.
 - Feature catalog files describe this skill's current behavior.
@@ -64,7 +65,7 @@ If the request is ambiguous between the two modes, ask one concise question abou
 | ALWAYS | Every task | This skill and the project bootstrap |
 | MIGRATION | Historical migration request | Migration index, the matching phase group, and control framework when a gate, exception, risk, or year lock applies |
 | LIVE BOOKKEEPING | Monthly, quarterly, yearly, or event-level bookkeeping | Moneybird bookkeeping reference, the purchase invoice reference when a purchase invoice, receipt or order is booked, plus the tax index and the year file for any tax topic. During post-cutover migration monitoring, also load references/migration/README.md and references/migration/phases-19-to-21.md. |
-| ZZP QUESTION | Tax, VAT, costs, vehicle, or administration question | Tax and VAT reference, then bookkeeping reference if a posting is also requested |
+| ZZP QUESTION | Tax, VAT, costs, vehicle, or administration question | Tax and VAT reference, then bookkeeping reference if a posting is also requested. Add the source library when a figure or rule needs its official source checked |
 | CLI ACTION | A Jortt or Moneybird CLI operation is needed | The matching sibling tool skill before using that CLI |
 
 ### Smart Router Pseudocode
@@ -239,6 +240,7 @@ Return the mode or phase used, a safe decision summary, the references consulted
 - [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) - accounting treatment for common ZZP events.
 - [Purchase invoices](./references/purchase-invoices.md) - booking a purchase invoice, receipt or order, with the VAT rate per case: Dutch VAT, reverse charge from the EU or outside it, foreign VAT, KOR.
 - [Jortt to Moneybird mapping](./references/migration/jortt-to-moneybird-mapping.md) - concept matches and migration traps.
+- [Source library](./references/source-library.md) - every cited external source by authority, how to reach each one, and the generated index `assets/source-library.json`.
 
 ### Tool skills
 
@@ -297,4 +299,5 @@ The task is complete when:
 - [Dutch tax rules](./references/dutch-tax-rules.md) contains the general rules and routes to the topic files per tax year.
 - [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) covers common accounting events.
 - [Purchase invoices](./references/purchase-invoices.md) covers booking purchase invoices and reverse-charged VAT.
+- [Source library](./references/source-library.md) traces a figure or rule to its official source.
 - [Jortt to Moneybird mapping](./references/migration/jortt-to-moneybird-mapping.md) covers source concepts and migration traps.

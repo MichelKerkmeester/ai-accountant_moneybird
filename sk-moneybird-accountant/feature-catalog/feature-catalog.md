@@ -199,6 +199,22 @@ See [bookkeeping-and-migration/year-specific-zzp-guidance.md](bookkeeping-and-mi
 
 ---
 
+### External source library
+
+#### Description
+
+Lists every external source the skill family cites, with its authority and how an agent can reach it, so a figure can be traced to the page that states it.
+
+#### Current Reality
+
+The source library reference groups the cited sources by authority, names the most-cited statutes and pages, and records dead links. A generated index holds one row per source with its access result and citing files, and a builder checks it for drift without any network call. The corresponding manual scenario checks the route to the library and the access method without API access.
+
+#### Source Files
+
+See [bookkeeping-and-migration/external-source-library.md](bookkeeping-and-migration/external-source-library.md) for source and validation anchors.
+
+---
+
 ### CLI tool handoff
 
 #### Description

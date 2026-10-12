@@ -1,0 +1,167 @@
+---
+title: External source library
+description: Every external source the skill family was built from, grouped by authority, with what each answers and how an AI agent can reach it.
+trigger_phrases:
+  - source library
+  - where does this figure come from
+  - official tax source
+  - bronnen belastingdienst
+  - check a source
+  - wetten.overheid.nl
+importance_tier: important
+contextType: general
+version: 1.0.0.0
+---
+
+# External source library
+
+**Rule:** Access notes below were observed on 2026-10-12 with a plain `curl` and with the WebFetch tool. A source is evidence only after you read it. A figure still comes from the year file that cites it, and that file's Check tag still applies.
+
+---
+
+## 1. OVERVIEW
+
+This library lists the external sources cited by `AGENTS.md`, the root README and the three skills. The full list lives in [source-library.json](../assets/source-library.json), one source per line with its host, authority, title, type, access result, check date and the files that cite it. `scripts/build-source-library.py` generates that index from the markdown, so it never holds a source no file cites.
+
+| Measure | Count |
+|---|---|
+| Sources | 493 |
+| Readable as a web page | 343 |
+| Readable through WebFetch only | 73 |
+| PDF, downloads but needs a PDF reader | 32 |
+| Archive copy an agent cannot fetch | 31 |
+| Dead link | 4 |
+| Tool endpoint, not a source | 10 |
+
+Look up a source with a grep, never a full read. The index is over 300 KB and one source sits on one line:
+
+```bash
+grep 'belastingrente' sk-moneybird-accountant/assets/source-library.json
+grep '"authority":"statute"' sk-moneybird-accountant/assets/source-library.json
+grep 'references/2026/btw.md' sk-moneybird-accountant/assets/source-library.json
+```
+
+---
+
+## 2. HOW TO REACH A SOURCE
+
+| `access` value | What was observed | What to do |
+|---|---|---|
+| `ok` | Plain HTTP fetch returns the page | Read it with WebFetch. Ask for the one paragraph you need |
+| `webfetch-only` | WebFetch returns the page. A plain `curl` from the Operator's machine gets no reply | Use WebFetch. A whole law page runs to about 350,000 characters, so ask for one article or read on with the `offset` the tool returns |
+| `pdf-needs-reader` | The file downloads, but WebFetch shows compressed PDF streams and the Read tool needs `pdftoppm` | Read the HTML page that links the PDF when one exists. Otherwise ask the Operator to install poppler, then Read the saved file by page |
+| `archive-not-fetchable` | WebFetch refuses web.archive.org outright | Find the live page first. If only the archive copy holds the text, ask the Operator to open it |
+| `dead` | HTTP 404 through both curl and WebFetch | Do not cite it. Report it to the Operator with the citing file |
+| `endpoint` | An API, OAuth or MCP address | Never fetch it. Reach it only through `jortt-cli` or `moneybird-guard` |
+| `unchecked` | Added after the last access check | Fetch it once and record the result before relying on it |
+
+---
+
+## 3. SOURCES BY AUTHORITY
+
+Prefer the higher row when two sources disagree. A statute beats a help page, and a help page beats commentary.
+
+| Authority | Hosts | Sources | Use it for |
+|---|---|---|---|
+| `statute` | wetten.overheid.nl | 73 | The law text in force on a date. Dated links pin the version |
+| `official-publication` | zoek.officielebekendmakingen.nl, open.overheid.nl | 56 | Staatsblad texts, Kamerstukken and their explanatory memoranda |
+| `parliament` | tweedekamer.nl, eerstekamer.nl | 15 | Bills not yet in the Staatsblad, and their status |
+| `tax-authority` | belastingdienst.nl and its subdomains | 241 | Rates, thresholds, deadlines and how the Belastingdienst applies a rule. FISIN pages hold per-year figures |
+| `government` | rijksoverheid.nl, ondernemersplein.overheid.nl, business.gov.nl, kvk.nl, rvo.nl | 36 | Plain-language explanations, the Belastingplan documents, KVK and subsidy rules |
+| `eu` | taxation-customs.ec.europa.eu | 2 | EU VAT rules that Dutch pages refer to |
+| `product-docs` | helpcenter.moneybird.nl, moneybird.com, jortt.nl, github.com | 26 | How Moneybird and Jortt work. Never a tax rule |
+| `secondary` | financialfocus.abnamro.nl, holdwise.nl, mijn.bovag.nl | 3 | Early reports of announced figures. Confirm on a primary source before use |
+| `archive` | web.archive.org | 31 | Old page versions that back a past-year figure |
+
+---
+
+## 4. STATUTES
+
+Names were read from each law's own page. Add a date to pin a version, as in `https://wetten.overheid.nl/BWBR0002629/2026-01-01`.
+
+| BWBR id | Regulation | Citing files |
+|---|---|---|
+| BWBR0011353 | Wet inkomstenbelasting 2001 | 73 |
+| BWBR0002320 | Algemene wet inzake rijksbelastingen | 31 |
+| BWBR0002629 | Wet op de omzetbelasting 1968 | 18 |
+| BWBR0002471 | Wet op de loonbelasting 1964 | 17 |
+| BWBR0002672 | Wet op de vennootschapsbelasting 1969 | 17 |
+| BWBR0004770 | Invorderingswet 1990 | 12 |
+| BWBR0018450 | Zorgverzekeringswet | 11 |
+| BWBR0021777 | Handelsregisterwet 2007 | 10 |
+| BWBR0002515 | Wet op de dividendbelasting 1965 | 9 |
+| BWBR0002633 | Uitvoeringsbesluit omzetbelasting 1968 | 9 |
+| BWBR0002636 | Besluit uitsluiting aftrek omzetbelasting 1968 | 9 |
+| BWBR0003045 | Burgerlijk Wetboek Boek 2, Rechtspersonen | 9 |
+| BWBR0012035 | Uitvoeringsregeling willekeurige afschrijving 2001 | 9 |
+| BWBR0042952 | Wet bronbelasting 2021 | 9 |
+| BWBR0043783 | Omzetbelasting, heffing privégebruik auto en toepassing BUA | 9 |
+
+Citing files count the files that link any version of the law.
+
+---
+
+## 5. MOST-CITED PAGES
+
+### Belastingdienst
+
+| Topic | Page | Files |
+|---|---|---|
+| Oudedagsreserve | [belastingdienst.nl](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/fiscale_reserves/oudedagsreserve) | 26 |
+| MKB-winstvrijstelling | [belastingdienst.nl](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/mkb_winstvrijstelling) | 19 |
+| Ondernemersaftrek, FISIN 2026 | [belastingdienst.nl](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/ondernemersaftrek_en_investeringsaftrek) | 19 |
+| VAT filing and payment deadlines | [belastingdienst.nl](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums) | 17 |
+| How long to keep records | [belastingdienst.nl](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/hoelang-moet-u-gegevens-bewaren) | 16 |
+| Winst uit onderneming, FISIN 2026 | [belastingdienst.nl](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/winst_uit_onderneming) | 13 |
+| Zvw income-related contribution, FISIN 2026 | [belastingdienst.nl](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet) | 12 |
+| Filing deadline extension | [belastingdienst.nl](https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/kan-ik-nog-uitstel-aanvragen-belastingaangifte) | 12 |
+| When to file a return | [belastingdienst.nl](https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen) | 11 |
+
+FISIN pages carry the year in the path, as in `fisin2020` to `fisin2026`. Change the year to reach another year's figures, then check that the page exists.
+
+### Laws in progress and announcements
+
+| Source | Page | Files |
+|---|---|---|
+| Tweede Kamer bill 36 912 | [tweedekamer.nl](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912) | 17 |
+| Kamerstuk 37 022 nr. 2 | [officielebekendmakingen.nl](https://zoek.officielebekendmakingen.nl/kst-37022-2.html) | 14 |
+| Kamerstuk 36 602 nr. 3 | [officielebekendmakingen.nl](https://zoek.officielebekendmakingen.nl/kst-36602-3.html) | 12 |
+| Belastingplan 2027 bill | [rijksoverheid.nl](https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/wetsvoorstel-belastingplan-2027/wetsvoorstel-belastingplan-2027.pdf) | 11 |
+| Staatsblad 2026, 158 | [officielebekendmakingen.nl](https://zoek.officielebekendmakingen.nl/stb-2026-158.html) | 10 |
+
+Officielebekendmakingen addresses follow a fixed pattern: `kst-<dossier>-<number>.html` for a Kamerstuk and `stb-<year>-<number>.html` for a Staatsblad text.
+
+### Moneybird help center
+
+23 articles, all readable. Product behaviour changes without notice, so recheck an article before quoting a menu path. The purchase-invoice articles are 207118 (add), 207134 (process), 207131 (reverse charge sign), 207143 (VAT-only invoices), 207144 (invoices from abroad), 207656 (reverse charge with the KOR) and 223671 (VAT rates). Use `grep helpcenter.moneybird` on the index for the full list.
+
+---
+
+## 6. DEAD LINKS
+
+These returned HTTP 404 through both curl and WebFetch on 2026-10-12. The citing files still link them and need a replacement source.
+
+| Dead link | Cited by |
+|---|---|
+| `download.belastingdienst.nl/.../handboek_ondernemen_2024_aa9701z42fd.pdf` | `references/2024/btw.md` |
+| `rijksoverheid.nl/vraag-en-antwoord/.../ik-krijg-een-auto-van-de-zaak...` | `references/2026/kosten-en-auto.md`, `references/2027/kosten-en-auto.md` |
+| `rijksoverheid.nl/vraag-en-antwoord/duurzame-economie/groen-sparen-in-een-groenfonds` | `references/2026/box-3.md`, `references/2027/box-3.md` |
+| `rijksoverheid.nl/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting...` | `references/2026/inkomstenbelasting.md`, `references/dutch-tax-rules.md` |
+
+---
+
+## 7. KEEPING THE LIBRARY CURRENT
+
+1. After adding or removing a link anywhere in the skills, run `python3 -I sk-moneybird-accountant/scripts/build-source-library.py`. It adds new sources as `unchecked` and keeps every recorded access result.
+2. `--check` exits 1 when a cited source is missing from the index, an indexed source is no longer cited, or an access value is outside section 2.
+3. To record access, fetch each `unchecked` source once with WebFetch, then set its `access`, `http_status` and `checked_on` in the index. The builder never calls the network.
+4. `scripts/source-library-test.sh` proves the builder on a fixture repository and checks the real index.
+
+---
+
+## 8. RELATED RESOURCES
+
+- [dutch-tax-rules.md](./dutch-tax-rules.md): how a rule works across years, the source conflicts and the Check tags.
+- [Year folders](./2026/README.md): the per-year topic files that cite these sources.
+- [purchase-invoices.md](./purchase-invoices.md): the purchase booking flow and its Moneybird help sources.
+- [cli-jortt](../../cli-jortt/SKILL.md) and [cli-moneybird](../../cli-moneybird/SKILL.md): the only route to the endpoints in section 2.
