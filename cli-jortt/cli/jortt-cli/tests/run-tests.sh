@@ -4,9 +4,9 @@ set -euo pipefail
 
 HERE="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 CLI="$(cd -P "$HERE/.." >/dev/null 2>&1 && pwd)/jortt-cli"
-SPEC="${JORTT_OPENAPI_FILE:-}"
-if [ -z "$SPEC" ] || [ ! -f "$SPEC" ]; then
-  printf 'Set JORTT_OPENAPI_FILE to the local OpenAPI JSON before running tests.\n' >&2
+SPEC="${JORTT_OPENAPI_FILE:-$HERE/fixtures/openapi-trimmed.json}"
+if [ ! -f "$SPEC" ]; then
+  printf 'OpenAPI file not found. Set JORTT_OPENAPI_FILE or restore the trimmed fixture under tests/fixtures/.\n' >&2
   exit 2
 fi
 TEMP_ROOT="$HERE/.tmp-run-$$"
@@ -32,7 +32,8 @@ run_cli() {
 }
 
 OPS="$(run_cli ops --json)"
-if printf '%s' "$OPS" | jq -e 'length == 158 and ([.[].slug] | unique | length == 158)' >/dev/null 2>&1; then record "158 operations have unique slugs" 1; else record "158 operations have unique slugs" 0; fi
+SPEC_OPERATIONS="$(jq '[.paths | to_entries[] | .value | to_entries[] | select(.key | IN("get", "post", "put", "patch", "delete"))] | length' "$SPEC")"
+if printf '%s' "$OPS" | jq -e --argjson expected "$SPEC_OPERATIONS" 'length == $expected and ([.[].slug] | unique | length == $expected)' >/dev/null 2>&1; then record "every spec operation has a unique slug" 1; else record "every spec operation has a unique slug" 0; fi
 
 if printf '%s' "$OPS" | jq -e '([.[] | select(.path == "/customers" and .method == "GET")][0].slug == "list-customers") and ([.[] | select(.path == "/v1/customers" and .method == "GET")][0].slug == "list-customers-v1")' >/dev/null 2>&1; then record "collision prefers unversioned path over v1" 1; else record "collision prefers unversioned path over v1" 0; fi
 
@@ -173,8 +174,13 @@ fi
 url="$(awk -F'"' '/^url = "/ { print $2; exit }' "$config_file" 2>/dev/null)" || url=''
 case "$url" in
   https://app.jortt.nl/oauth-provider/oauth/token*)
-    body='{"access_token":"stub-token","expires_in":3600}'
-    status='200'
+    if [ -n "${STUB_TOKEN_STATUS:-}" ]; then
+      body='{"error":"invalid_client"}'
+      status="$STUB_TOKEN_STATUS"
+    else
+      body='{"access_token":"stub-token","expires_in":3600}'
+      status='200'
+    fi
     ;;
   *)
     body="$(cat "${STUB_HTTP_BODY_FILE:?}")"
@@ -294,6 +300,83 @@ if [ "$ERROR_CODE" -eq 1 ] \
   record "API errors hide message text and log the full body at mode 600" 1
 else
   record "API errors hide message text and log the full body at mode 600" 0
+fi
+
+# Fault injection: one case per exit code, 1 to 6. The stub answers and the
+# trimmed spec drive codes 1, 2 and 6, and the CLI's own gates drive 3, 4 and 5.
+
+# An upstream server error exits 1.
+fake_body '{"message":"the stub answered with a server error"}'
+export STUB_HTTP_STATUS=500
+set +e
+FAULT_1_OUTPUT="$(run_fake get /customers 2>&1)"
+FAULT_1_CODE=$?
+set -e
+unset STUB_HTTP_STATUS
+if [ "$FAULT_1_CODE" -eq 1 ] && printf '%s' "$FAULT_1_OUTPUT" | grep -q 'HTTP 500'; then
+  record "fault case 1: an upstream 500 exits 1" 1
+else
+  record "fault case 1: an upstream 500 exits 1" 0
+fi
+
+# A file that is not a Swagger 2.0 document exits 2.
+BAD_SPEC="$TEMP_ROOT/not-swagger.json"
+printf '{"paths":{}}' > "$BAD_SPEC"
+set +e
+FAULT_2_OUTPUT="$(env JORTT_OPENAPI_FILE="$BAD_SPEC" JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null "$CLI" ops --json 2>&1)"
+FAULT_2_CODE=$?
+set -e
+if [ "$FAULT_2_CODE" -eq 2 ] && printf '%s' "$FAULT_2_OUTPUT" | grep -q 'not a readable Swagger 2.0 document'; then
+  record "fault case 2: a broken OpenAPI file exits 2" 1
+else
+  record "fault case 2: a broken OpenAPI file exits 2" 0
+fi
+
+# A write without --allow-write exits 3.
+set +e
+FAULT_3_OUTPUT="$(env JORTT_OPENAPI_FILE="$SPEC" JORTT_SCOPES=expenses:write JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null "$CLI" call create-an-expense --dry-run 2>&1)"
+FAULT_3_CODE=$?
+set -e
+if [ "$FAULT_3_CODE" -eq 3 ] && printf '%s' "$FAULT_3_OUTPUT" | grep -q -- '--allow-write'; then
+  record "fault case 3: a write without --allow-write exits 3" 1
+else
+  record "fault case 3: a write without --allow-write exits 3" 0
+fi
+
+# A write without its scope exits 4.
+set +e
+FAULT_4_OUTPUT="$(env JORTT_OPENAPI_FILE="$SPEC" JORTT_SCOPES=expenses:read JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null "$CLI" call create-an-expense --allow-write --dry-run 2>&1)"
+FAULT_4_CODE=$?
+set -e
+if [ "$FAULT_4_CODE" -eq 4 ] && printf '%s' "$FAULT_4_OUTPUT" | grep -q 'expenses:write'; then
+  record "fault case 4: a write without its scope exits 4" 1
+else
+  record "fault case 4: a write without its scope exits 4" 0
+fi
+
+# An output path outside the workspace exits 5.
+set +e
+FAULT_5_OUTPUT="$(run_cli call list-expenses --out "$TEMP_ROOT/outside.json" --dry-run 2>&1)"
+FAULT_5_CODE=$?
+set -e
+if [ "$FAULT_5_CODE" -eq 5 ] && printf '%s' "$FAULT_5_OUTPUT" | grep -q 'must resolve inside migration-workspace'; then
+  record "fault case 5: an output path outside the workspace exits 5" 1
+else
+  record "fault case 5: an output path outside the workspace exits 5" 0
+fi
+
+# A refused token request exits 6.
+run_fake token clear >/dev/null 2>&1
+export STUB_TOKEN_STATUS=401
+set +e
+FAULT_6_OUTPUT="$(run_fake get /customers 2>&1)"
+FAULT_6_CODE=$?
+set -e
+unset STUB_TOKEN_STATUS
+if [ "$FAULT_6_CODE" -eq 6 ] && printf '%s' "$FAULT_6_OUTPUT" | grep -q 'token request failed with HTTP 401'; then
+  record "fault case 6: a refused token request exits 6" 1
+else
+  record "fault case 6: a refused token request exits 6" 0
 fi
 
 printf 'Result: %s passed, %s failed\n' "$PASS" "$FAIL"

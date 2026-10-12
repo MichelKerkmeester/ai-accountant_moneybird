@@ -27,6 +27,7 @@ A wrong VAT rate on a reverse-charged invoice drops VAT that is owed or claims a
 - Objective: Route a reverse-charged EU purchase invoice to the purchase invoice reference and its VAT case.
 - Real user request: Book this purchase invoice from an EU software supplier. It shows 0% VAT and says reverse charge. Which steps, VAT rate and references apply? Keep this as an offline routing check.
 - Prompt: Book this purchase invoice from an EU software supplier. It shows 0% VAT and says reverse charge. Which steps, VAT rate and references apply? Keep this as an offline routing check.
+- Fixture rows: LIVE-003 (en) and LIVE-003-nl (nl twin).
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references. Do not use network access or accounting APIs.
 - Expected signals: Selects LIVE, names the purchase invoice reference, classifies the invoice as EU reverse charge, picks the Binnen EU rate, reports rubriek 4b with the deduction in 5b, flags a KOR or exempt business as different, and says a write needs a passed gate and Operator approval.
 - Desired user-visible outcome: A concise route report with selected mode, reference path, VAT case, rate, rubrieken, boundary result, and no API activity.

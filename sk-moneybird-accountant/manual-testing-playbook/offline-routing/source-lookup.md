@@ -27,6 +27,7 @@ A figure is only as good as the page behind it. An agent that cannot find the so
 - Objective: Route a request for the official VAT law text to the source library and its index.
 - Real user request: Where is the official text of the Dutch VAT law, and how do I read the article on reverse charge? Keep this as an offline routing check.
 - Prompt: Where is the official text of the Dutch VAT law, and how do I read the article on reverse charge? Keep this as an offline routing check.
+- Fixture rows: TAX-003 (en) and TAX-003-nl (nl twin).
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references. Do not use network access or accounting APIs.
 - Expected signals: Names the source library reference, finds Wet op de omzetbelasting 1968 under BWBR0002629 in the statute table, says the access value is webfetch-only, advises asking WebFetch for one article or reading on with an offset, and greps the index instead of reading it whole.
 - Desired user-visible outcome: A concise route report with the reference path, the law and its identifier, the access method, and no network or API activity.

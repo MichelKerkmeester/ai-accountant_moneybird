@@ -600,6 +600,106 @@ else
 fi
 printf 'MONEYBIRD_PILOT_ADMINISTRATION_ID=PILOT_ADMIN\n' > "$MONEYBIRD_ENV_DIR/.env"
 
+# Fault injection: one case per guard exit code, 1 to 8 plus the payload-mismatch 9.
+# The stub injects the upstream failures and the guard's own gates drive the rest.
+
+# An upstream CLI failure is surfaced as exit 1, never swallowed.
+reset_state
+export MONEYBIRD_TEST_FAULT=upstream-fail
+capture_guard contacts list --filter period:2023
+unset MONEYBIRD_TEST_FAULT
+if [[ $STATUS -eq 1 && "$OUTPUT" == *"the upstream CLI failed"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "Fault 1: an upstream CLI failure exits 1 (stub fault)"
+else
+  fail "Fault 1: an upstream CLI failure exits 1 (stub fault)"
+fi
+
+# A dry-run line that is not METHOD URL is refused with exit 2.
+reset_state
+export MONEYBIRD_TEST_FAULT=bad-dry-line
+capture_guard contacts list --filter period:2023
+unset MONEYBIRD_TEST_FAULT
+if [[ $STATUS -eq 2 && "$OUTPUT" == *"did not begin with a METHOD URL line"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "Fault 2: a malformed dry-run line exits 2 (stub fault)"
+else
+  fail "Fault 2: a malformed dry-run line exits 2 (stub fault)"
+fi
+
+# An unconfirmed write is blocked with exit 3.
+reset_state
+capture_guard contacts create
+if [[ $STATUS -eq 3 && "$OUTPUT" == *"Write blocked"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "Fault 3: an unconfirmed write exits 3 (guard gate)"
+else
+  fail "Fault 3: an unconfirmed write exits 3 (guard gate)"
+fi
+
+# A non-pilot target without --production is blocked with exit 4.
+reset_state
+export MONEYBIRD_TEST_ADMINISTRATION_ID="OTHER_ADMIN"
+capture_guard --confirm-write contacts create
+export MONEYBIRD_TEST_ADMINISTRATION_ID="PILOT_ADMIN"
+if [[ $STATUS -eq 4 && "$OUTPUT" == *"differs from target"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "Fault 4: a non-pilot target exits 4 (guard gate)"
+else
+  fail "Fault 4: a non-pilot target exits 4 (guard gate)"
+fi
+
+# An --out path outside migration-workspace is rejected with exit 5.
+reset_state
+capture_guard --out "$TEST_ROOT/outside.json" contacts list
+if [[ $STATUS -eq 5 && "$OUTPUT" == *"inside migration-workspace"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "Fault 5: an output path outside the workspace exits 5 (guard gate)"
+else
+  fail "Fault 5: an output path outside the workspace exits 5 (guard gate)"
+fi
+
+# The read-only lock blocks a non-GET call with exit 6.
+reset_state
+export MONEYBIRD_GUARD_READ_ONLY=1
+capture_guard --confirm-write --production contacts create
+unset MONEYBIRD_GUARD_READ_ONLY
+if [[ $STATUS -eq 6 && "$OUTPUT" == *"Read-only lock is enabled"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "Fault 6: the read-only lock exits 6 (guard gate)"
+else
+  fail "Fault 6: the read-only lock exits 6 (guard gate)"
+fi
+
+# A missing writer configuration stops the write with exit 7.
+reset_state
+export MONEYBIRD_WRITER_CONFIG_DIR="$TEST_ROOT/missing-writer-config"
+capture_guard --confirm-write --approval APPROVED-1 contacts create
+export MONEYBIRD_WRITER_CONFIG_DIR="$TEST_ROOT/writer-config"
+if [[ $STATUS -eq 7 && "$OUTPUT" == *"Writer configuration is missing"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "Fault 7: a missing writer configuration exits 7 (guard gate)"
+else
+  fail "Fault 7: a missing writer configuration exits 7 (guard gate)"
+fi
+
+# A confirmed write without an approval reference stops with exit 8.
+reset_state
+capture_guard --confirm-write contacts create
+if [[ $STATUS -eq 8 && "$OUTPUT" == *"requires --approval"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "Fault 8: a missing approval reference exits 8 (guard gate)"
+else
+  fail "Fault 8: a missing approval reference exits 8 (guard gate)"
+fi
+
+# A payload that changed after approval is refused with exit 9.
+reset_state
+write_intent "FAULT-9" "$CREATE_DIGEST" "" "batch-fault"
+if OUTPUT="$(MONEYBIRD_TEST_DRY_BODY='{"contacts":{"company_name":"changed"}}' "$GUARD" --confirm-write --approval FAULT-9 contacts create 2>&1)"; then
+  STATUS=0
+else
+  STATUS="$?"
+fi
+printf '%s\n' "$OUTPUT" >> "$CAPTURED"
+if [[ $STATUS -eq 9 && "$OUTPUT" == *"PAYLOAD_MISMATCH"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "Fault 9: a changed payload exits 9 (guard gate)"
+else
+  fail "Fault 9: a changed payload exits 9 (guard gate)"
+fi
+
 # The key never reaches the captured output, the write log or the journal.
 KEY_HITS="$(grep -rlF "$TEST_KEY" "$MONEYBIRD_ENV_DIR/migration-workspace" 2>/dev/null | grep -v '/\.secrets/' || true)"
 if [[ -z "$KEY_HITS" ]] && ! grep -Fq "$TEST_KEY" "$CAPTURED" && ! grep -Fq "$TEST_KEY" "$WRITE_LOG" && ! grep -Fq "$TEST_KEY" "$JOURNAL"; then

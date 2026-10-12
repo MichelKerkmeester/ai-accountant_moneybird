@@ -27,6 +27,7 @@ A local-only check can confirm that the skill chooses its mode and references wh
 - Objective: Route VAT review and annual close work to the period workflow and current-year guidance.
 - Real user request: Help me prepare my quarterly VAT review and year-end close. Do not submit a return and do not call an API.
 - Prompt: Help me prepare my quarterly VAT review and year-end close. Do not submit a return and do not call an API.
+- Fixture rows: LIVE-002 (en) and LIVE-002-nl (nl twin).
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references. Do not use network access or accounting APIs.
 - Expected signals: Selects LIVE, separates quarterly VAT from yearly close, requires a year check, and says the operator files the return.
 - Desired user-visible outcome: A concise route report with selected mode, reference paths, boundary result, and no API activity.

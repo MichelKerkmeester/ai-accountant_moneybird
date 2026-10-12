@@ -1,0 +1,136 @@
+name: skill-health
+
+on:
+  push:
+  pull_request:
+  schedule:
+    # Monthly link check on the first of the month.
+    - cron: "0 6 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: true
+
+jobs:
+  offline:
+    if: github.event_name == 'push' || github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      TIKTOKEN_CACHE_DIR: ${{ github.workspace }}/.tiktoken-cache
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Install the pinned tokenizer
+        run: python3 -m pip install --disable-pip-version-check "tiktoken==0.11.0"
+      - name: Seed the tokenizer cache and let the baseline check the pinned hashes
+        # The encoding files are public. The token baseline refuses to count
+        # unless each file matches its pinned sha256, so a changed file fails.
+        run: |
+          mkdir -p "$TIKTOKEN_CACHE_DIR"
+          for name in cl100k_base o200k_base; do
+            url="https://openaipublic.blob.core.windows.net/encodings/${name}.tiktoken"
+            key="$(printf '%s' "$url" | sha1sum | cut -d' ' -f1)"
+            curl --fail --silent --show-error --location --retry 3 -o "$TIKTOKEN_CACHE_DIR/$key" "$url"
+          done
+      - name: Guard suite
+        run: bash cli-moneybird/cli/moneybird-cli/tests/run-tests.sh
+      - name: Jortt suite
+        run: bash cli-jortt/cli/jortt-cli/tests/run-tests.sh
+      - name: Exit code parity
+        run: bash cli-moneybird/scripts/exit-code-parity.sh && bash cli-moneybird/scripts/exit-code-parity-test.sh
+      - name: Route table, write contract and fragments
+        run: |
+          python3 -I sk-moneybird-accountant/scripts/check-route-table.py
+          python3 -I sk-moneybird-accountant/scripts/write-contract-check.py
+          python3 -I sk-moneybird-accountant/scripts/check-fragments.py
+      - name: Generated references and token baseline are current
+        run: |
+          python3 -I sk-moneybird-accountant/scripts/build-reference-index.py --check
+          python3 -I sk-moneybird-accountant/scripts/token-baseline.py --check
+          python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check
+      - name: Hostile invoice set and hardening matrix
+        run: |
+          python3 -I sk-moneybird-accountant/scripts/check-hostile-invoice-set.py --check
+          python3 -I sk-moneybird-accountant/scripts/check-hardening-matrix.py --check
+      # Every suite is named on its own line. The regression trailer check
+      # reads this file to learn which tests are registered.
+      - name: Suite fragment-check
+        run: bash sk-moneybird-accountant/scripts/fragment-check-test.sh
+      - name: Suite hardening-matrix
+        run: bash sk-moneybird-accountant/scripts/hardening-matrix-test.sh
+      - name: Suite hostile-invoice-set
+        run: bash sk-moneybird-accountant/scripts/hostile-invoice-set-test.sh
+      - name: Suite plan-kit
+        run: bash sk-moneybird-accountant/scripts/plan-kit-test.sh
+      - name: Suite reference-index
+        run: bash sk-moneybird-accountant/scripts/reference-index-test.sh
+      - name: Suite regression-trailer
+        run: bash sk-moneybird-accountant/scripts/regression-trailer-test.sh
+      - name: Suite route-replay
+        run: bash sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh
+      - name: Suite route-table
+        run: bash sk-moneybird-accountant/scripts/route-table-test.sh
+      - name: Suite run-evals
+        run: bash sk-moneybird-accountant/scripts/run-evals-test.sh
+      - name: Suite session-context
+        run: bash sk-moneybird-accountant/scripts/session-context-test.sh
+      - name: Suite source-library
+        run: bash sk-moneybird-accountant/scripts/source-library-test.sh
+      - name: Suite token-canary
+        run: bash sk-moneybird-accountant/scripts/token-canary-test.sh
+      - name: Suite write-contract
+        run: bash sk-moneybird-accountant/scripts/write-contract-test.sh
+      - name: Route replay
+        run: |
+          python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode resolve
+          python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode replay
+      - name: Eval grader suite cases
+        run: python3 -I -c "import json; json.load(open('sk-moneybird-accountant/evals/evals.json'))"
+      - name: Regression trailer on the pushed range
+        if: github.event_name == 'push' && !startsWith(github.event.before, '00000')
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: python3 -I sk-moneybird-accountant/scripts/check-regression-trailer.py --range "$BEFORE..$AFTER"
+
+  links:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Check every cited source link
+        id: links
+        run: |
+          set +e
+          python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-links > link-report.json
+          echo "status=$?" >> "$GITHUB_OUTPUT"
+      - name: Open one issue when a link fails
+        if: steps.links.outputs.status != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          title="Source link check failed on $(date -u +%Y-%m-%d)"
+          if ! gh issue list --state open --search "Source link check failed in:title" --json number --jq '.[0].number' | grep -q .; then
+            gh issue create --title "$title" --body-file link-report.json
+          fi
+          exit 1

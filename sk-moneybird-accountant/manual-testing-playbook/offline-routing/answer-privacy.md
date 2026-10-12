@@ -27,6 +27,7 @@ A drafted answer can carry a private value out of the session even when every fi
 - Objective: Run the privacy gate's answer mode on generated values in both directions on both surfaces and report the two rates against the target.
 - Real user request: Run the answer privacy check and tell me how many leaking answers and transcripts were caught and how many clean cases were blocked. Keep this as an offline check.
 - Prompt: Run the answer privacy check and tell me how many leaking answers and transcripts were caught and how many clean cases were blocked. Keep this as an offline check.
+- Fixture rows: none in routing-gold.json. The answer privacy suite generates its cases at run time.
 - Expected execution process: Read the project bootstrap and skill, read the answer mode usage, run the gate suite on values generated at run time, record one verdict per case, read the two rate lines and make no network or accounting API call.
 - Expected signals: Runs the answer mode on generated values, blocks the leaking answer and the clean answer whose transcript leaks, passes the clean answer and the cited public figure, reports `answer leak catch rate: 2/2` and `answer false positives: 0/2` and makes no network call.
 - Desired user-visible outcome: The four case verdicts, the two gate lines with the rates against the target and a clear PASS or FAIL verdict.

@@ -74,6 +74,20 @@ Dependency direction: references ───▶ generator ───▶ tracked tem
 | `hostile-invoice-set-test.sh` | Runs the checker on the real set and on seven seeded mutations. Scores results fixtures in both directions and refuses an incomplete results file |
 | `write-contract-check.py` | Checks the write contract restatements in `AGENTS.md` and the two skill files against the canonical contract in `../references/migration/shared-mechanisms.md`: the pointer anchor, the gate tokens, the two named rules, the exit codes and the read-back sentence. The guard's own die codes must stay a subset of the canonical set |
 | `write-contract-test.sh` | Runs the drift check on the real tree and on a clean copy, then seeds five divergences. Each one must fail and name its file, and a missing root is refused |
+| `route-replay/route-replay.py` | Scores the route fixture corpus offline in `resolve` mode and replays the refusal and hostile rows through the guard and the stub in `replay` mode, with a connectivity gate, a router snapshot hash, `--rev`, `--covers` and `results.csv` plus `report.md` output |
+| `route-replay/routing-gold.json` | The route fixture corpus: one row per offline routing scenario, its Dutch twin, the gap, tie, tier, out-of-scope, follow-up, mixed, refusal and hostile rows, with the calibration and held-out labels written before any tuning |
+| `route-replay/route-replay-test.sh` | Runs the harness on a temp copy of the skill and proves both modes, the deleted path, the twin mismatch, the unmet claim, a wrong expected exit and two dated runs |
+| `run-evals.py` | Grades captured with-skill and baseline answers against the assertion blocks in `../evals/evals.json` and writes `grading.json` and `benchmark.json` with the skill hash, the pass rates and the refusal false-positive rate |
+| `run-evals-test.sh` | Builds capture fixtures for a compliant run, a broken answer, a refuse-everything run, a forbidden-pattern trip, another capture year and three skill snapshots |
+| `../evals/evals.json` | The eval cases, each with a prompt, an expected route and an assertion block of required tokens and forbidden patterns |
+| `check-hardening-matrix.py` | Parses `../hardening-matrix.md` and fails a P0 row with a missing test path or a case name that does not occur in that file |
+| `hardening-matrix-test.sh` | Proves the matrix check on the real matrix and on copies with a removed P0 test path, a blank P0 cell and a renamed case |
+| `../hardening-matrix.md` | One row per failure mode with a control, a test, an owner and a status, including the offline suites that now cover most rows |
+| `check-regression-trailer.py` | Fails a commit range where a gate file changed with no registered test change and no `Regression-Test:` trailer |
+| `regression-trailer-test.sh` | Builds fixture git repositories for the trailer check, including a deleted covering test, valid and invalid trailers, an unknown range and a missing root |
+| `build-source-library.py` | Scans the skill family for external links and writes `../assets/source-library.json`, with `--check`, `--check-links` and `--trace` modes |
+| `source-library-test.sh` | Proves the index builder, the link check and the trace on fixture repositories, a fixture server on 127.0.0.1, and the real index |
+| `../assets/route-calibration.json` | The frozen calibration record: the route margin, the fallback floor, the sweep over the calibration split and the held-out result |
 
 ---
 
@@ -85,6 +99,9 @@ Dependency direction: references ───▶ generator ───▶ tracked tem
 | Generated output | `assets/migration/` and `specs/000-migration-template/` are tracked and hold placeholders only |
 | Private output | `migration-workspace/` and `specs/<NNN-slug>/` are git-ignored. The scripts refuse a symlinked target and a target git does not ignore |
 | Imports | The generator uses the Python standard library only and runs with `python3 -I`. The shell scripts run on Bash 3.2 |
+| Fixture data | `route-replay/routing-gold.json`, `../evals/evals.json` and `../hardening-matrix.md` hold synthetic prompts and placeholders only, with no real name, amount, IBAN or administration id |
+| Network | Only `build-source-library.py --check-links` makes a network call, and it runs in the scheduled job. Every other script and suite is offline |
+| Token cache | Token counts read the pinned cache beside the repository. A missing cache folder or a changed data file exits 2 |
 
 ---
 
@@ -99,6 +116,19 @@ Dependency direction: references ───▶ generator ───▶ tracked tem
 | `TIKTOKEN_CACHE_DIR=<cache> python3 -I sk-moneybird-accountant/scripts/token-baseline.py` | CLI | Re-measures the corpus and writes the baseline after a reference change |
 | `TIKTOKEN_CACHE_DIR=<cache> python3 -I sk-moneybird-accountant/scripts/token-baseline.py --check` | CLI | Confirms the baseline matches the corpus, exit 1 on drift |
 | `TIKTOKEN_CACHE_DIR=<cache> bash sk-moneybird-accountant/scripts/token-canary-test.sh` | CLI | Runs the token canary suite |
+| `TIKTOKEN_CACHE_DIR=<cache> python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode resolve` | CLI | Scores the route corpus offline and writes `results.csv` and `report.md` |
+| `python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode replay` | CLI | Replays the refusal and hostile rows through the guard and the stub CLI |
+| `TIKTOKEN_CACHE_DIR=<cache> bash sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh` | CLI | Runs the route replay suite |
+| `python3 -I sk-moneybird-accountant/scripts/run-evals.py --grade <capture>` | CLI | Grades a captured run and writes `grading.json` and `benchmark.json` |
+| `bash sk-moneybird-accountant/scripts/run-evals-test.sh` | CLI | Runs the eval grader suite |
+| `python3 -I sk-moneybird-accountant/scripts/check-hardening-matrix.py --check` | CLI | Checks the hardening matrix for complete rows and covered P0 tests |
+| `bash sk-moneybird-accountant/scripts/hardening-matrix-test.sh` | CLI | Runs the hardening matrix suite |
+| `python3 -I sk-moneybird-accountant/scripts/check-regression-trailer.py --range <base>..<head>` | CLI | Checks a commit range for gate changes without a covering test |
+| `bash sk-moneybird-accountant/scripts/regression-trailer-test.sh` | CLI | Runs the regression trailer suite |
+| `python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check` | CLI | Verifies the external source index offline |
+| `python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-links` | CLI | Fetches every reachable source and prints the JSON report, for the scheduled job only |
+| `python3 -I sk-moneybird-accountant/scripts/build-source-library.py --trace <file>:<line>` | CLI | Prints the index result for every URL on one citation line |
+| `bash sk-moneybird-accountant/scripts/source-library-test.sh` | CLI | Runs the source library suite |
 
 ---
 
@@ -219,7 +249,90 @@ write-contract: ok
 
 ---
 
-## 11. VALIDATION
+## 11. ROUTE REPLAY
+
+`route-replay/route-replay.py` scores the route fixture corpus offline. In `resolve` mode it builds a router snapshot from the task-type table in `../SKILL.md` section 2, the constants in `../references/routing-signals.md` and the resource map, prints the snapshot sha256, runs a connectivity gate over every routed path and scores each row for mode, task type, read set, expected facts and the token ceiling. In `replay` mode it runs `moneybird-guard` in test mode against the stub CLI and asserts the recorded command line and exit code of every refusal row and every hostile invoice case. Time, environment and absolute paths never enter an output. `--rev` scores a git worktree of one revision, `--covers` filters the rows by their tag, and `--corpus`, `--out`, `--guard` and `--stub` point at other inputs. Token counts read the pinned `o200k_base` cache and a missing or changed data file exits 2 before any download.
+
+Output is `results.csv` and `report.md`. The CSV columns are `scenario_id`, `lang`, `split`, `gold_mode`, `gold_task_type`, `score`, `verdict`, `reason` and `tokens_loaded`, plus `command`, `expected_exit` and `actual_exit` in replay mode. The report holds the route accuracy per language and per split, the abstain and false-abstain counts, the facts and tokens per row and the held-out result. A passing resolve run over the full corpus prints:
+
+```text
+route-replay: ok, 42 rows passed
+```
+
+A passing replay run prints:
+
+```text
+route-replay: ok, 31 replay rows passed
+```
+
+`route-replay/route-replay-test.sh` copies the skill to a temp root and ends with `Result: 33 passed, 0 failed`. It proves the deleted routed path exits 2 and names the path, the twin mismatch and the unmet claim exit 1, a wrong expected exit fails the replay, an empty corpus and a missing cache exit 2, and two dated runs give byte-identical `results.csv` and `report.md`.
+
+---
+
+## 12. EVAL GRADER
+
+`run-evals.py` grades a captured run against `../evals/evals.json`. The captured folder holds `metadata.json` with `model_id`, `captured_on` and an optional `skill_hash`, one `with-skill/<case id>.md` answer per case and one `baseline/<case id>.md` answer per case. The grader checks the required tokens and the forbidden patterns of every case. `grading.json` holds the per-case assertion rows and the always-pass count. `benchmark.json` holds the pass rate, the baseline pass rate, the refusal false-positive rate and the always-pass list. Both record the sha256 skill hash of `SKILL.md` plus every routed reference and the model id. A `{year}` token in a required value resolves to the year of the capture date. No model judges an answer.
+
+`../evals/evals.json` holds 23 cases, each with a prompt, an expected route and an assertion block of required tokens and forbidden patterns. The baseline is the previous skill snapshot. A grader run on the suite fixture capture, whose baseline answers carry none of the tokens, prints:
+
+```text
+run-evals: 23 cases, 23 with-skill passed, 0 baseline passed
+run-evals: pass rate 1.0000, baseline pass rate 0.0000
+run-evals: refusal false positives 0 of 16 benign cases
+run-evals: always-pass assertions: 47
+```
+
+`run-evals-test.sh` builds the capture fixtures at run time and ends with `Result: 23 passed, 0 failed`.
+
+---
+
+## 13. HARDENING MATRIX
+
+`check-hardening-matrix.py` reads `../hardening-matrix.md` and parses the table between its markers. Every row must name a failure mode, a priority, a control, a test, an owner and a status. A P0 row must name an existing test path as `path :: case name`, and the case name must occur in that file, so a deleted test or a renamed case fails the check. P1 and P2 rows with a missing test path are reported as notes. A passing run prints:
+
+```text
+hardening-matrix: ok (27 rows, 21 P0 rows)
+```
+
+`hardening-matrix-test.sh` builds fixture copies with one P0 test path removed, one P0 test cell blanked and one case string renamed. Every mutant exits 1 and names the row. The suite ends with `Result: 9 passed, 0 failed`.
+
+---
+
+## 14. REGRESSION TRAILER
+
+`check-regression-trailer.py --range <base>..<head>` lists the range with `git rev-list` and then reads one commit at a time. The message comes from `git log -1` and the changed paths come from `git diff-tree` against the first parent, so a merge commit gets its paths and a message that holds a control character cannot move the boundary of the next commit. A commit that changes `AGENTS.md`, `cli-jortt/SKILL.md`, `cli-moneybird/SKILL.md`, `cli-moneybird/cli/moneybird-cli/moneybird-guard`, `sk-moneybird-accountant/SKILL.md` or `sk-moneybird-accountant/references/migration/shared-mechanisms.md` must add, modify or type-change a registered test in the same commit, or carry a `Regression-Test:` trailer naming a registered test that exists at that commit. A deleted path never counts as a test change. A rename reads as a deletion of its source and an addition of its destination, and a copy reads as an addition of its destination, so both paths of a rename or a copy reach the gate match. The registered set is read from the parent of the commit. It holds the test paths `../hardening-matrix.md` names and the test files the skill health workflow runs, read from its run lines. A named test registers only when it exists at the parent and at the commit, so a test created in the commit under check cannot cover it. A suite path that a name or a glob happens to match does not register. A passing range prints:
+
+```text
+regression-trailer: ok (0 commits scanned)
+```
+
+`regression-trailer-test.sh` builds fixture git repositories with signing and hooks off and ends with `Result: 43 passed, 0 failed`. It proves a gate change with no test and no trailer exits 1, the same change with a valid trailer exits 0, a deleted covering test does not register, and an unknown range or a missing root exits 2.
+
+---
+
+## 15. SOURCE LIBRARY
+
+`build-source-library.py` scans `AGENTS.md`, `README.md` and the three skill folders for external links and writes `../assets/source-library.json`, one row per URL with its host, the citing files and its recorded access result. `--check` verifies the index offline and reports every cited URL missing from the index and every indexed URL no file cites. `--check-links` fetches every row a plain fetch can reach, reports `endpoint` and `webfetch-only` rows as skipped and never as failed, retries once and prints one JSON report with a summary and one row per URL. A row is ok only when the final answer after followed redirects is 2xx. `--trace <file>:<line>` prints the index row of every URL on one line with `access`, `http_status` and `checked_on`, and fails when a URL is dead, unchecked or missing from the index. Only `--check-links` makes a network call and it runs in the monthly job.
+
+A passing offline check prints `496 sources match the index`. A trace of one live citation line prints:
+
+```text
+sk-moneybird-accountant/references/2024/btw.md:56
+<the cited Belastingdienst URL> access=ok http_status=200 checked_on=2026-10-12
+1 URLs, all usable
+```
+
+`source-library-test.sh` proves the index, the link check and the trace on fixture repositories, a fixture server on 127.0.0.1, and the real index. It ends with `38 passed, 0 failed`.
+
+---
+
+## 16. ROUTE CALIBRATION
+
+`../assets/route-calibration.json` records the frozen routing constants that `../SKILL.md` section 2 and `../references/routing-signals.md` state. It holds `ROUTE_MARGIN = 0.25`, `FALLBACK_FLOOR = 0.5`, the sweep that chose the floor in steps of 0.05 over the 32 calibration rows and the result over the 10 held-out rows. Both splits matched every row with no false abstains. `check-route-table.py` reads the frozen constants from this file by default and a passing run prints `route-table: ok`.
+
+---
+
+## 17. VALIDATION
 
 Run from the repository root.
 
@@ -236,13 +349,24 @@ python3 -I sk-moneybird-accountant/scripts/write-contract-check.py
 bash sk-moneybird-accountant/scripts/write-contract-test.sh
 TIKTOKEN_CACHE_DIR=<cache> python3 -I sk-moneybird-accountant/scripts/token-baseline.py --check
 TIKTOKEN_CACHE_DIR=<cache> bash sk-moneybird-accountant/scripts/token-canary-test.sh
+TIKTOKEN_CACHE_DIR=<cache> python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode resolve
+python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode replay
+TIKTOKEN_CACHE_DIR=<cache> bash sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh
+python3 -I sk-moneybird-accountant/scripts/run-evals.py --grade <capture>
+bash sk-moneybird-accountant/scripts/run-evals-test.sh
+python3 -I sk-moneybird-accountant/scripts/check-hardening-matrix.py --check
+bash sk-moneybird-accountant/scripts/hardening-matrix-test.sh
+python3 -I sk-moneybird-accountant/scripts/check-regression-trailer.py --range <base>..<head>
+bash sk-moneybird-accountant/scripts/regression-trailer-test.sh
+python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check
+bash sk-moneybird-accountant/scripts/source-library-test.sh
 ```
 
-Expected result: `generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems, and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 1996 links, 166 fragment links, 0 problems` and `19 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 122 files, 917 sections` and `7 passed, 0 failed`.
+Expected result: `generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems, and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 1996 links, 166 fragment links, 0 problems` and `19 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 122 files, 917 sections` and `7 passed, 0 failed`. The route replay commands print `route-replay: ok, 42 rows passed` and `route-replay: ok, 31 replay rows passed`, and the suite ends with `Result: 33 passed, 0 failed`. The eval suite ends with `Result: 23 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `496 sources match the index` and its suite ends with `38 passed, 0 failed`.
 
 ---
 
-## 12. RELATED
+## 18. RELATED
 
 - [`../references/migration/README.md`](../references/migration/README.md) for the phase references the generator reads
 - [`../assets/migration/README.md`](../assets/migration/README.md) for the generated templates

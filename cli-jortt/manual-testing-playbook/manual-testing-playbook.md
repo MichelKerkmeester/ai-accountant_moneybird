@@ -417,7 +417,7 @@ Desired user-visible outcome: The agent hands off the request without calling Jo
 
 | Test Module | Coverage | Playbook Overlap |
 |---|---|---|
-| [`cli/jortt-cli/tests/run-tests.sh`](../cli/jortt-cli/tests/run-tests.sh) | Unique slugs, slug collision choice, describe output, dry-run URL, write lock, scope check, parameter validation and output path guard, all offline | JRT-002, JRT-003, JRT-004, JRT-007 |
+| [`cli/jortt-cli/tests/run-tests.sh`](../cli/jortt-cli/tests/run-tests.sh) | Unique slugs, slug collision choice, describe output, dry-run URL, write lock, scope check, parameter validation and output path guard, all offline against the trimmed fixture OpenAPI by default, plus one fault case per Jortt exit code 1 to 6 | JRT-002, JRT-003, JRT-004, JRT-007 |
 
 ---
 

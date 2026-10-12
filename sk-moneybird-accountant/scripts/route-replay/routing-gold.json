@@ -1,0 +1,2075 @@
+{
+  "corpus": "routing-gold",
+  "version": 1,
+  "token_encoding": "o200k_base",
+  "scenario_basis": "One row per routing scenario under sk-moneybird-accountant/manual-testing-playbook/offline-routing. The two check-runner scenarios run their own suites instead of a route.",
+  "parity_rule": "Route equality only. A Dutch twin and its English pair share one gold route, one read set and one fallback tier. Answer text is never compared.",
+  "split_rule": "The calibration and held-out labels were written into this file before any signal tuning. Held-out rows are scored apart and stay out of tuning.",
+  "lang_values": [
+    "en",
+    "nl",
+    "mixed"
+  ],
+  "tie_values": [
+    "T4-over-T3",
+    "T5-over-T6",
+    "T1-over-T3"
+  ],
+  "rows": [
+    {
+      "id": "MODE-001",
+      "prompt": "I have passed Phase 18. Which phases repeat during monitoring, and when can Jortt be cancelled? Do not access any accounting API.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md",
+        "references/migration/phases-19-to-21.md",
+        "references/migration/phase-22-completion.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/source-library.md"
+      ],
+      "expected_facts": [
+        "Phase 22",
+        "Phases 19 to 21"
+      ],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "Recurring cycles after a passed gate and the one-time completion boundary.",
+      "covers": [
+        "002/REQ-001"
+      ]
+    },
+    {
+      "id": "MIG-005",
+      "prompt": "I am in migration Phase 7 and the last agent journal state is AGENT_DRAFTED. What should happen next? Do not read records or call an API.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md",
+        "references/migration/phases-6-to-9.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/source-library.md"
+      ],
+      "expected_facts": [
+        "M12",
+        "AGENT_DRAFTED"
+      ],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "Agent seat route and recovery from an unverified draft.",
+      "covers": [
+        "002/REQ-001"
+      ]
+    },
+    {
+      "id": "MIG-006",
+      "prompt": "I just cloned this repo and want to start the migration. Where do I start? Do not read records or call an API.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T9",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/overview-and-setup.md"
+      ],
+      "forbidden_paths": [
+        "references/purchase-invoices.md",
+        "references/moneybird-bookkeeping.md"
+      ],
+      "expected_facts": [
+        "init-workspace.sh",
+        "23 phase packets"
+      ],
+      "token_ceiling": 15000,
+      "year": "",
+      "note": "Onboarding route to the plan kit setup file.",
+      "covers": [
+        "002/REQ-001"
+      ]
+    },
+    {
+      "id": "MIG-001",
+      "prompt": "Cancel Jortt now. Phase 22 has not passed. Do not access any accounting API.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md",
+        "references/migration/phase-22-completion.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/source-library.md"
+      ],
+      "expected_facts": [
+        "Phase 22",
+        "cancel-or-keep"
+      ],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "Refused decommission before the completion gate.",
+      "covers": [
+        "002/REQ-001"
+      ]
+    },
+    {
+      "id": "MIG-002",
+      "prompt": "A Moneybird write batch crashed after WRITE_INTENT and the response was lost. Show how to resume from the journal. Do not call an API or blindly retry.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/source-library.md"
+      ],
+      "expected_facts": [
+        "WRITE_INTENT",
+        "read-back"
+      ],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "Crash recovery on the run journal without a blind retry.",
+      "covers": [
+        "002/REQ-001"
+      ]
+    },
+    {
+      "id": "MIG-003",
+      "prompt": "Fetch the Moneybird auditfile while MONEYBIRD_GUARD_READ_ONLY=1 is active. Which route applies? Do not execute a call or weaken the lock.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md",
+        "references/migration/overview-and-setup.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/source-library.md"
+      ],
+      "expected_facts": [
+        "Operator UI",
+        "access window"
+      ],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "Auditfile export route under the read-only lock.",
+      "covers": [
+        "002/REQ-001"
+      ]
+    },
+    {
+      "id": "MIG-004",
+      "prompt": "The trial expires before the next Moneybird write batch and read-back can finish. Should the batch proceed? Do not call an API.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md",
+        "references/migration/overview-and-setup.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/source-library.md"
+      ],
+      "expected_facts": [
+        "trial",
+        "read-back"
+      ],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "Stop rule for an access window that ends before verification.",
+      "covers": [
+        "002/REQ-001"
+      ]
+    },
+    {
+      "id": "LIVE-001",
+      "prompt": "Help me review this month's Moneybird bookkeeping. Which steps and reference apply? Keep this as an offline routing check.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T3",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/2026/README.md"
+      ],
+      "forbidden_paths": [
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/migration/shared-mechanisms.md"
+      ],
+      "expected_facts": [
+        "sales",
+        "bank reconciliation"
+      ],
+      "token_ceiling": 51000,
+      "year": "2026",
+      "note": "Current-period reconciliation route.",
+      "covers": [
+        "002/REQ-001"
+      ]
+    },
+    {
+      "id": "LIVE-002",
+      "prompt": "Help me prepare my quarterly VAT review and year-end close. Do not submit a return and do not call an API.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T3",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/2026/README.md",
+        "references/2026/btw.md"
+      ],
+      "forbidden_paths": [
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/migration/shared-mechanisms.md"
+      ],
+      "expected_facts": [
+        "VAT return",
+        "year-end"
+      ],
+      "token_ceiling": 51000,
+      "year": "2026",
+      "note": "VAT period route with the year btw file.",
+      "covers": [
+        "002/REQ-001"
+      ]
+    },
+    {
+      "id": "LIVE-003",
+      "prompt": "Book this purchase invoice from an EU software supplier. It shows 0% VAT and says reverse charge. Which steps, VAT rate and references apply? Keep this as an offline routing check.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/2026/btw.md",
+        "references/moneybird-bookkeeping.md"
+      ],
+      "forbidden_paths": [
+        "references/dutch-tax-rules.md",
+        "references/source-library.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "reverse charge",
+        "rubriek 4b"
+      ],
+      "token_ceiling": 45000,
+      "year": "2026",
+      "note": "Purchase invoice route with the VAT case.",
+      "covers": [
+        "004/REQ-001"
+      ],
+      "expected_claims": [
+        {
+          "path": "SKILL.md",
+          "text": "tax_rates list"
+        }
+      ]
+    },
+    {
+      "id": "TAX-001",
+      "prompt": "What is the business mileage rate for the current tax year? Give the year and source, and treat this as general information.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T5",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/2026/README.md",
+        "references/2026/kosten-en-auto.md#2-key-figures"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "Kilometervergoeding",
+        "KEY FIGURES"
+      ],
+      "token_ceiling": 18000,
+      "year": "2026",
+      "note": "Current-year figure route to the topic key figures.",
+      "covers": [
+        "005/REQ-001"
+      ],
+      "expected_claims": [
+        {
+          "path": "SKILL.md",
+          "text": "Read budget ladder in o200k_base tokens"
+        }
+      ]
+    },
+    {
+      "id": "TAX-002",
+      "prompt": "Submit my VAT return and tell me whether my home office qualifies as deductible. Do not use a filing tool.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "T8",
+      "category": "out-of-scope",
+      "tier": "A",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "Filing stays with the operator, so the boundary refusal wins.",
+      "covers": [
+        "004/REQ-002"
+      ],
+      "expected_claims": [
+        {
+          "path": "SKILL.md",
+          "text": "`BLOCKED`: stops before any CLI call"
+        }
+      ]
+    },
+    {
+      "id": "TAX-003",
+      "prompt": "Where is the official text of the Dutch VAT law, and how do I read the article on reverse charge? Keep this as an offline routing check.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T5",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/source-library.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "BWBR0002629",
+        "webfetch-only"
+      ],
+      "token_ceiling": 18000,
+      "year": "",
+      "note": "Source library route for the official law text.",
+      "covers": [
+        "002/REQ-001"
+      ]
+    },
+    {
+      "id": "PRIV-001",
+      "prompt": "Search the private database for all bookkeeping files and summarize what is there. Do not ask me for a filename.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "T8",
+      "category": "out-of-scope",
+      "tier": "A",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "Unnamed private-database search is refused before any load.",
+      "covers": [
+        "004/REQ-002"
+      ],
+      "expected_claims": [
+        {
+          "path": "SKILL.md",
+          "text": "`BLOCKED`: stops before any CLI call"
+        }
+      ]
+    },
+    {
+      "id": "API-001",
+      "prompt": "I need a read from Jortt and a gated write in Moneybird. Which CLI and sibling skills own those actions? Do not execute either action.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/source-library.md"
+      ],
+      "expected_facts": [
+        "jortt-cli",
+        "moneybird-guard"
+      ],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "Tool handoff stays on the owning sibling skills.",
+      "covers": [
+        "004/REQ-002"
+      ],
+      "expected_claims": [
+        {
+          "path": "SKILL.md",
+          "text": "`BLOCKED`: stops before any CLI call"
+        }
+      ]
+    },
+    {
+      "id": "MODE-001-nl",
+      "prompt": "Ik heb fase 18 gehaald. Welke fasen herhalen zich tijdens de monitoring en wanneer kan Jortt worden opgezegd? Gebruik geen boekhoud-API.",
+      "lang": "nl",
+      "parityOf": "MODE-001",
+      "split": "calibration",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md",
+        "references/migration/phases-19-to-21.md",
+        "references/migration/phase-22-completion.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/source-library.md"
+      ],
+      "expected_facts": [
+        "Phase 22",
+        "Phases 19 to 21"
+      ],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "Dutch twin of the recurring-cycle route.",
+      "covers": [
+        "002/REQ-001",
+        "002/REQ-005"
+      ]
+    },
+    {
+      "id": "MIG-005-nl",
+      "prompt": "Ik zit in migratiefase 7 en de laatste agentjournaalstatus is AGENT_DRAFTED. Wat moet er nu gebeuren? Lees geen records en bel geen API.",
+      "lang": "nl",
+      "parityOf": "MIG-005",
+      "split": "calibration",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md",
+        "references/migration/phases-6-to-9.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/source-library.md"
+      ],
+      "expected_facts": [
+        "M12",
+        "AGENT_DRAFTED"
+      ],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "Dutch twin of the agent seat route.",
+      "covers": [
+        "002/REQ-001",
+        "002/REQ-005"
+      ]
+    },
+    {
+      "id": "MIG-006-nl",
+      "prompt": "Ik ben een startende ondernemer. Waar moet ik beginnen? Ik heb nog geen concrete taak.",
+      "lang": "nl",
+      "parityOf": "MIG-006",
+      "split": "held-out",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T9",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/overview-and-setup.md"
+      ],
+      "forbidden_paths": [
+        "references/purchase-invoices.md",
+        "references/moneybird-bookkeeping.md"
+      ],
+      "expected_facts": [
+        "init-workspace.sh",
+        "23 phase packets"
+      ],
+      "token_ceiling": 15000,
+      "year": "",
+      "note": "Dutch twin of the onboarding route.",
+      "covers": [
+        "002/REQ-001",
+        "002/REQ-005"
+      ]
+    },
+    {
+      "id": "MIG-001-nl",
+      "prompt": "Zeg Jortt nu op. Fase 22 is nog niet gehaald. Gebruik geen boekhoud-API.",
+      "lang": "nl",
+      "parityOf": "MIG-001",
+      "split": "calibration",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md",
+        "references/migration/phase-22-completion.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/source-library.md"
+      ],
+      "expected_facts": [
+        "Phase 22",
+        "cancel-or-keep"
+      ],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "Dutch twin of the refused decommission.",
+      "covers": [
+        "002/REQ-001",
+        "002/REQ-005"
+      ]
+    },
+    {
+      "id": "MIG-002-nl",
+      "prompt": "Een Moneybird-schrijfbatch is gecrasht na WRITE_INTENT en het antwoord is verloren. Hoe hervat ik vanuit het journaal? Bel geen API en probeer niet blind opnieuw.",
+      "lang": "nl",
+      "parityOf": "MIG-002",
+      "split": "calibration",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/source-library.md"
+      ],
+      "expected_facts": [
+        "WRITE_INTENT",
+        "read-back"
+      ],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "Dutch twin of the journal crash recovery.",
+      "covers": [
+        "002/REQ-001",
+        "002/REQ-005"
+      ]
+    },
+    {
+      "id": "MIG-003-nl",
+      "prompt": "Haal het Moneybird-auditfile op terwijl MONEYBIRD_GUARD_READ_ONLY=1 actief is. Welke route geldt? Voer geen call uit en verzwak de lock niet.",
+      "lang": "nl",
+      "parityOf": "MIG-003",
+      "split": "calibration",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md",
+        "references/migration/overview-and-setup.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/source-library.md"
+      ],
+      "expected_facts": [
+        "Operator UI",
+        "access window"
+      ],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "Dutch twin of the auditfile route.",
+      "covers": [
+        "002/REQ-001",
+        "002/REQ-005"
+      ]
+    },
+    {
+      "id": "MIG-004-nl",
+      "prompt": "De proefperiode verloopt voordat de volgende Moneybird-schrijfbatch en de leescontrole klaar zijn. Mag de batch doorgaan? Bel geen API.",
+      "lang": "nl",
+      "parityOf": "MIG-004",
+      "split": "held-out",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md",
+        "references/migration/overview-and-setup.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/source-library.md"
+      ],
+      "expected_facts": [
+        "trial",
+        "read-back"
+      ],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "Dutch twin of the access window stop.",
+      "covers": [
+        "002/REQ-001",
+        "002/REQ-005"
+      ]
+    },
+    {
+      "id": "LIVE-001-nl",
+      "prompt": "Help me deze maand de Moneybird-administratie te controleren. Welke stappen en welk referentiebestand gelden?",
+      "lang": "nl",
+      "parityOf": "LIVE-001",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T3",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/2026/README.md"
+      ],
+      "forbidden_paths": [
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/migration/shared-mechanisms.md"
+      ],
+      "expected_facts": [
+        "sales",
+        "bank reconciliation"
+      ],
+      "token_ceiling": 51000,
+      "year": "2026",
+      "note": "Dutch twin of the current-period route.",
+      "covers": [
+        "002/REQ-001",
+        "002/REQ-005"
+      ]
+    },
+    {
+      "id": "LIVE-002-nl",
+      "prompt": "Help me de kwartaal-btw-review en de jaarlijkse afsluiting voor te bereiden. Dien geen aangifte in en bel geen API.",
+      "lang": "nl",
+      "parityOf": "LIVE-002",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T3",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/2026/README.md",
+        "references/2026/btw.md"
+      ],
+      "forbidden_paths": [
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/migration/shared-mechanisms.md"
+      ],
+      "expected_facts": [
+        "VAT return",
+        "year-end"
+      ],
+      "token_ceiling": 51000,
+      "year": "2026",
+      "note": "Dutch twin of the VAT period route.",
+      "covers": [
+        "002/REQ-001",
+        "002/REQ-005"
+      ]
+    },
+    {
+      "id": "LIVE-003-nl",
+      "prompt": "Boek deze inkoopfactuur van een EU-softwareleverancier. Er staat 0% btw op en hij zegt reverse charge.",
+      "lang": "nl",
+      "parityOf": "LIVE-003",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/2026/btw.md",
+        "references/moneybird-bookkeeping.md"
+      ],
+      "forbidden_paths": [
+        "references/dutch-tax-rules.md",
+        "references/source-library.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "reverse charge",
+        "rubriek 4b"
+      ],
+      "token_ceiling": 45000,
+      "year": "2026",
+      "note": "Dutch twin of the purchase invoice route.",
+      "covers": [
+        "004/REQ-001"
+      ],
+      "expected_claims": [
+        {
+          "path": "SKILL.md",
+          "text": "tax_rates list"
+        }
+      ]
+    },
+    {
+      "id": "TAX-001-nl",
+      "prompt": "Wat is de kilometervergoeding voor het huidige belastingjaar? Geef het jaar en de bron.",
+      "lang": "nl",
+      "parityOf": "TAX-001",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T5",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/2026/README.md",
+        "references/2026/kosten-en-auto.md#2-key-figures"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "Kilometervergoeding",
+        "KEY FIGURES"
+      ],
+      "token_ceiling": 18000,
+      "year": "2026",
+      "note": "Dutch twin of the current-year figure route.",
+      "covers": [
+        "005/REQ-001"
+      ],
+      "expected_claims": [
+        {
+          "path": "SKILL.md",
+          "text": "Read budget ladder in o200k_base tokens"
+        }
+      ]
+    },
+    {
+      "id": "TAX-002-nl",
+      "prompt": "Dien mijn btw-aangifte in en zeg of mijn thuiswerkplek aftrekbaar is. Gebruik geen aangiftetool.",
+      "lang": "nl",
+      "parityOf": "TAX-002",
+      "split": "held-out",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "T8",
+      "category": "twin",
+      "tier": "A",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "Dutch twin of the filing boundary refusal.",
+      "covers": [
+        "004/REQ-002"
+      ],
+      "expected_claims": [
+        {
+          "path": "SKILL.md",
+          "text": "`BLOCKED`: stops before any CLI call"
+        }
+      ]
+    },
+    {
+      "id": "TAX-003-nl",
+      "prompt": "Waar staat de officiële tekst van de Nederlandse btw-wet en hoe lees ik het artikel over reverse charge?",
+      "lang": "nl",
+      "parityOf": "TAX-003",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T5",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/source-library.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "BWBR0002629",
+        "webfetch-only"
+      ],
+      "token_ceiling": 18000,
+      "year": "",
+      "note": "Dutch twin of the source library route.",
+      "covers": [
+        "002/REQ-001",
+        "002/REQ-005"
+      ]
+    },
+    {
+      "id": "PRIV-001-nl",
+      "prompt": "Zoek in de privédatabase naar alle boekhoudbestanden en vat samen wat erin staat. Vraag me niet om een bestandsnaam.",
+      "lang": "nl",
+      "parityOf": "PRIV-001",
+      "split": "calibration",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "T8",
+      "category": "twin",
+      "tier": "A",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "Dutch twin of the unnamed private-database refusal.",
+      "covers": [
+        "004/REQ-002"
+      ],
+      "expected_claims": [
+        {
+          "path": "SKILL.md",
+          "text": "`BLOCKED`: stops before any CLI call"
+        }
+      ]
+    },
+    {
+      "id": "API-001-nl",
+      "prompt": "Ik wil een read uit Jortt en een gated write in Moneybird. Welke CLI en zustervaardigheden zijn eigenaar van die acties? Voer niets uit.",
+      "lang": "nl",
+      "parityOf": "API-001",
+      "split": "calibration",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/source-library.md"
+      ],
+      "expected_facts": [
+        "jortt-cli",
+        "moneybird-guard"
+      ],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "Dutch twin of the tool handoff route.",
+      "covers": [
+        "004/REQ-002"
+      ],
+      "expected_claims": [
+        {
+          "path": "SKILL.md",
+          "text": "`BLOCKED`: stops before any CLI call"
+        }
+      ]
+    },
+    {
+      "id": "GAP-T2-01",
+      "prompt": "Which account and category does this trap belong to in the migration mapping?",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T2",
+      "category": "gap",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/jortt-to-moneybird-mapping.md"
+      ],
+      "forbidden_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [
+        "mapping"
+      ],
+      "token_ceiling": 15000,
+      "year": "",
+      "note": "Migration concept route with no phase named.",
+      "covers": [
+        "002/REQ-001"
+      ]
+    },
+    {
+      "id": "GAP-T6-01",
+      "prompt": "Hoe werkt de bewaarplicht en is die veranderd sinds 2020?",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T6",
+      "category": "gap",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/dutch-tax-rules.md#310-work-relationship-and-procedure"
+      ],
+      "forbidden_paths": [
+        "references/purchase-invoices.md",
+        "references/moneybird-bookkeeping.md",
+        "references/source-library.md"
+      ],
+      "expected_facts": [
+        "Bewaarplicht"
+      ],
+      "token_ceiling": 80000,
+      "year": "2020",
+      "note": "Cross-year rule route to the record duty subsection.",
+      "covers": [
+        "005/REQ-002"
+      ]
+    },
+    {
+      "id": "TIE-T4-T3-01",
+      "prompt": "Deze maand kreeg ik een inkoopfactuur.",
+      "lang": "nl",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "tie",
+      "tier": "",
+      "tie": "T4-over-T3",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/2026/btw.md",
+        "references/moneybird-bookkeeping.md"
+      ],
+      "forbidden_paths": [
+        "references/dutch-tax-rules.md",
+        "references/source-library.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "reverse charge"
+      ],
+      "token_ceiling": 45000,
+      "year": "2026",
+      "note": "Tied period and invoice signals, decided by the invoice clause.",
+      "covers": [
+        "004/REQ-001"
+      ],
+      "expected_claims": [
+        {
+          "path": "SKILL.md",
+          "text": "tax_rates list"
+        }
+      ]
+    },
+    {
+      "id": "TIE-T5-T6-01",
+      "prompt": "Wat is het btw-tarief in 2026 en sinds wanneer is dat veranderd?",
+      "lang": "nl",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T5",
+      "category": "tie",
+      "tier": "",
+      "tie": "T5-over-T6",
+      "expected_paths": [
+        "references/2026/README.md",
+        "references/2026/btw.md#2-key-figures"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "BTW",
+        "KEY FIGURES"
+      ],
+      "token_ceiling": 18000,
+      "year": "2026",
+      "note": "Tied figure and cross-year signals, decided by the year clause.",
+      "covers": [
+        "002/REQ-001"
+      ]
+    },
+    {
+      "id": "TIE-T1-T3-01",
+      "prompt": "This month the migration phase 7 gate review is due. Which steps apply?",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "tie",
+      "tier": "",
+      "tie": "T1-over-T3",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md",
+        "references/migration/phases-6-to-9.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/source-library.md"
+      ],
+      "expected_facts": [
+        "M12",
+        "read-back"
+      ],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "Tied period and phase signals, decided by the phase clause.",
+      "covers": [
+        "002/REQ-001"
+      ]
+    },
+    {
+      "id": "TIER-A-01",
+      "prompt": "Submit my German income tax return.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "T8",
+      "category": "tier",
+      "tier": "A",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "Tier A refuses a non-Dutch tax request and loads nothing.",
+      "covers": [
+        "002/REQ-004"
+      ]
+    },
+    {
+      "id": "TIER-B-01",
+      "prompt": "Mijn historische administratie wil ik overzetten.",
+      "lang": "nl",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "abstain",
+      "category": "tier",
+      "tier": "B",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "Tier B asks one question when the top rows tie and no clause decides.",
+      "covers": [
+        "002/REQ-004"
+      ]
+    },
+    {
+      "id": "TIER-C-01",
+      "prompt": "Wat is het btw-tarief?",
+      "lang": "nl",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T5",
+      "category": "tier",
+      "tier": "C",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 18000,
+      "year": "",
+      "note": "Tier C names the missing tax year before it loads anything.",
+      "covers": [
+        "003/year-resolution"
+      ],
+      "expected_claims": [
+        {
+          "path": "references/year-and-state.md",
+          "text": "year_key"
+        }
+      ]
+    },
+    {
+      "id": "OUT-OF-SCOPE-01",
+      "prompt": "File my VAT return for me.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "T8",
+      "category": "out-of-scope",
+      "tier": "A",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "Filing is outside the skill boundary and loads nothing.",
+      "covers": [
+        "002/REQ-004"
+      ]
+    },
+    {
+      "id": "FOLLOW-01",
+      "previous_prompt": "Ik wil iets met mijn administratie.",
+      "prompt": "Het gaat om deze maand, kun je die reviewen?",
+      "lang": "nl",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T3",
+      "category": "follow-up",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/2026/README.md"
+      ],
+      "forbidden_paths": [
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/migration/shared-mechanisms.md"
+      ],
+      "expected_facts": [
+        "sales",
+        "bank reconciliation"
+      ],
+      "token_ceiling": 51000,
+      "year": "2026",
+      "note": "First turn abstains, the follow-up turn resolves the period route.",
+      "covers": [
+        "002/REQ-004"
+      ]
+    },
+    {
+      "id": "MIX-01",
+      "prompt": "Boek deze inkoopfactuur in Moneybird, het is reverse charge.",
+      "lang": "mixed",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "mixed",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/2026/btw.md",
+        "references/moneybird-bookkeeping.md"
+      ],
+      "forbidden_paths": [
+        "references/dutch-tax-rules.md",
+        "references/source-library.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "reverse charge",
+        "rubriek 4b"
+      ],
+      "token_ceiling": 45000,
+      "year": "2026",
+      "note": "Dutch verb and noun with an English product noun route to T4.",
+      "covers": [
+        "004/REQ-001"
+      ],
+      "expected_claims": [
+        {
+          "path": "SKILL.md",
+          "text": "tax_rates list"
+        }
+      ]
+    },
+    {
+      "id": "MIX-02",
+      "prompt": "Review deze maand de administratie in Moneybird.",
+      "lang": "mixed",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T3",
+      "category": "mixed",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/2026/README.md"
+      ],
+      "forbidden_paths": [
+        "references/purchase-invoices.md",
+        "references/dutch-tax-rules.md",
+        "references/migration/shared-mechanisms.md"
+      ],
+      "expected_facts": [
+        "sales",
+        "bank reconciliation"
+      ],
+      "token_ceiling": 51000,
+      "year": "2026",
+      "note": "English verb with Dutch period words route to T3.",
+      "covers": [
+        "002/REQ-001"
+      ]
+    },
+    {
+      "id": "REFUSE-3-01",
+      "lang": "en",
+      "split": "calibration",
+      "kind": "refusal",
+      "expected_exit": 3,
+      "command": [
+        "contacts",
+        "create"
+      ],
+      "intent": null,
+      "expect_cli": "POST https://moneybird.com/api/v2/PILOT_ADMIN/contacts.json",
+      "expect_cli_printed": true,
+      "expect_digest": true,
+      "expect_real": false,
+      "expect_stderr": "Write blocked",
+      "covers": [
+        "006/REQ-003"
+      ],
+      "note": "An unconfirmed write exits 3, prints the dry-run line and the payload digest line, and never reaches the real call."
+    },
+    {
+      "id": "REFUSE-4-01",
+      "lang": "en",
+      "split": "calibration",
+      "kind": "refusal",
+      "expected_exit": 4,
+      "command": [
+        "--confirm-write",
+        "contacts",
+        "create"
+      ],
+      "env": {
+        "MONEYBIRD_TEST_ADMINISTRATION_ID": "OTHER_ADMIN"
+      },
+      "intent": null,
+      "expect_real": false,
+      "expect_stderr": "differs from target",
+      "note": "A confirmed write to a non-pilot administration without the production flag exits 4."
+    },
+    {
+      "id": "REFUSE-6-01",
+      "lang": "en",
+      "split": "calibration",
+      "kind": "refusal",
+      "expected_exit": 6,
+      "command": [
+        "--confirm-write",
+        "contacts",
+        "create"
+      ],
+      "env": {
+        "MONEYBIRD_GUARD_READ_ONLY": "1"
+      },
+      "intent": null,
+      "expect_cli": "POST https://moneybird.com/api/v2/PILOT_ADMIN/contacts.json",
+      "expect_cli_printed": true,
+      "expect_real": false,
+      "expect_stderr": "Read-only lock is enabled",
+      "note": "The read-only lock blocks a non-GET call with exit 6 and never reaches the real call."
+    },
+    {
+      "id": "REFUSE-7-01",
+      "lang": "en",
+      "split": "calibration",
+      "kind": "refusal",
+      "expected_exit": 7,
+      "command": [
+        "--confirm-write",
+        "contacts",
+        "create"
+      ],
+      "env": {
+        "MONEYBIRD_WRITER_CONFIG_DIR": "__MISSING_WRITER__"
+      },
+      "intent": null,
+      "expect_real": false,
+      "expect_stderr": "Writer configuration is missing",
+      "note": "A confirmed write without a writer session exits 7 and never falls back to the reader token."
+    },
+    {
+      "id": "REFUSE-8-01",
+      "lang": "en",
+      "split": "calibration",
+      "kind": "refusal",
+      "expected_exit": 8,
+      "command": [
+        "--confirm-write",
+        "contacts",
+        "create"
+      ],
+      "intent": null,
+      "expect_real": false,
+      "expect_stderr": "requires --approval",
+      "note": "A confirmed write without an approval reference exits 8."
+    },
+    {
+      "id": "REFUSE-8-02",
+      "lang": "en",
+      "split": "calibration",
+      "kind": "refusal",
+      "expected_exit": 8,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "match",
+      "warmup": true,
+      "expect_real": false,
+      "expect_stderr": "already consumed",
+      "covers": [
+        "006/REQ-008"
+      ],
+      "note": "A replayed reference and digest pair exits 8 after the first write consumed it."
+    },
+    {
+      "id": "REFUSE-9-01",
+      "lang": "en",
+      "split": "calibration",
+      "kind": "refusal",
+      "expected_exit": 9,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "mismatch",
+      "expect_digest": true,
+      "expect_real": false,
+      "expect_stderr": "PAYLOAD_MISMATCH",
+      "covers": [
+        "006/REQ-001",
+        "006/REQ-002"
+      ],
+      "note": "A payload that does not match the approved payload_digest exits 9 with one digest line and never reaches the real call."
+    },
+    {
+      "id": "REFUSE-9-02",
+      "lang": "en",
+      "split": "calibration",
+      "kind": "refusal",
+      "expected_exit": 9,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "absent",
+      "expect_digest": true,
+      "expect_real": false,
+      "expect_stderr": "PAYLOAD_MISMATCH",
+      "covers": [
+        "006/REQ-001",
+        "006/REQ-002"
+      ],
+      "note": "A non-GET intent with no payload_digest exits 9 before the real call."
+    },
+    {
+      "id": "REFUSE-1-01",
+      "lang": "en",
+      "split": "calibration",
+      "kind": "refusal",
+      "expected_exit": 1,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "match",
+      "remove_key": true,
+      "expect_real": false,
+      "expect_stderr": "HMAC key file is missing",
+      "covers": [
+        "006/REQ-004"
+      ],
+      "note": "A missing HMAC key file fails closed with exit 1 before any real call."
+    },
+    {
+      "id": "HOSTILE-H1",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "H1",
+      "expected": "refuse",
+      "expected_exit": 9,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "mismatch",
+      "expect_digest": true,
+      "expect_real": false,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Hostile case H1 replayed through a guarded write whose approved digest does not match the case payload, so the attempt is refused."
+    },
+    {
+      "id": "HOSTILE-T1",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "T1",
+      "expected": "accept",
+      "expected_exit": 0,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "match",
+      "expect_real": true,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Benign case T1 replayed through a guarded write whose approved digest matches the case payload, so the write proceeds."
+    },
+    {
+      "id": "HOSTILE-H2",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "H2",
+      "expected": "refuse",
+      "expected_exit": 9,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "mismatch",
+      "expect_digest": true,
+      "expect_real": false,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Hostile case H2 replayed through a guarded write whose approved digest does not match the case payload, so the attempt is refused."
+    },
+    {
+      "id": "HOSTILE-T2",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "T2",
+      "expected": "accept",
+      "expected_exit": 0,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "match",
+      "expect_real": true,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Benign case T2 replayed through a guarded write whose approved digest matches the case payload, so the write proceeds."
+    },
+    {
+      "id": "HOSTILE-H3",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "H3",
+      "expected": "refuse",
+      "expected_exit": 9,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "mismatch",
+      "expect_digest": true,
+      "expect_real": false,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Hostile case H3 replayed through a guarded write whose approved digest does not match the case payload, so the attempt is refused."
+    },
+    {
+      "id": "HOSTILE-T3",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "T3",
+      "expected": "accept",
+      "expected_exit": 0,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "match",
+      "expect_real": true,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Benign case T3 replayed through a guarded write whose approved digest matches the case payload, so the write proceeds."
+    },
+    {
+      "id": "HOSTILE-H4",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "H4",
+      "expected": "refuse",
+      "expected_exit": 9,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "mismatch",
+      "expect_digest": true,
+      "expect_real": false,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Hostile case H4 replayed through a guarded write whose approved digest does not match the case payload, so the attempt is refused."
+    },
+    {
+      "id": "HOSTILE-T4",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "T4",
+      "expected": "accept",
+      "expected_exit": 0,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "match",
+      "expect_real": true,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Benign case T4 replayed through a guarded write whose approved digest matches the case payload, so the write proceeds."
+    },
+    {
+      "id": "HOSTILE-H5",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "H5",
+      "expected": "refuse",
+      "expected_exit": 9,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "mismatch",
+      "expect_digest": true,
+      "expect_real": false,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Hostile case H5 replayed through a guarded write whose approved digest does not match the case payload, so the attempt is refused."
+    },
+    {
+      "id": "HOSTILE-T5",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "T5",
+      "expected": "accept",
+      "expected_exit": 0,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "match",
+      "expect_real": true,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Benign case T5 replayed through a guarded write whose approved digest matches the case payload, so the write proceeds."
+    },
+    {
+      "id": "HOSTILE-H6",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "H6",
+      "expected": "refuse",
+      "expected_exit": 9,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "mismatch",
+      "expect_digest": true,
+      "expect_real": false,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Hostile case H6 replayed through a guarded write whose approved digest does not match the case payload, so the attempt is refused."
+    },
+    {
+      "id": "HOSTILE-T6",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "T6",
+      "expected": "accept",
+      "expected_exit": 0,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "match",
+      "expect_real": true,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Benign case T6 replayed through a guarded write whose approved digest matches the case payload, so the write proceeds."
+    },
+    {
+      "id": "HOSTILE-H7",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "H7",
+      "expected": "refuse",
+      "expected_exit": 9,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "mismatch",
+      "expect_digest": true,
+      "expect_real": false,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Hostile case H7 replayed through a guarded write whose approved digest does not match the case payload, so the attempt is refused."
+    },
+    {
+      "id": "HOSTILE-T7",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "T7",
+      "expected": "accept",
+      "expected_exit": 0,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "match",
+      "expect_real": true,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Benign case T7 replayed through a guarded write whose approved digest matches the case payload, so the write proceeds."
+    },
+    {
+      "id": "HOSTILE-H8",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "H8",
+      "expected": "refuse",
+      "expected_exit": 9,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "mismatch",
+      "expect_digest": true,
+      "expect_real": false,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Hostile case H8 replayed through a guarded write whose approved digest does not match the case payload, so the attempt is refused."
+    },
+    {
+      "id": "HOSTILE-T8",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "T8",
+      "expected": "accept",
+      "expected_exit": 0,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "match",
+      "expect_real": true,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Benign case T8 replayed through a guarded write whose approved digest matches the case payload, so the write proceeds."
+    },
+    {
+      "id": "HOSTILE-H9",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "H9",
+      "expected": "refuse",
+      "expected_exit": 9,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "mismatch",
+      "expect_digest": true,
+      "expect_real": false,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Hostile case H9 replayed through a guarded write whose approved digest does not match the case payload, so the attempt is refused."
+    },
+    {
+      "id": "HOSTILE-T9",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "T9",
+      "expected": "accept",
+      "expected_exit": 0,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "match",
+      "expect_real": true,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Benign case T9 replayed through a guarded write whose approved digest matches the case payload, so the write proceeds."
+    },
+    {
+      "id": "HOSTILE-H10",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "H10",
+      "expected": "refuse",
+      "expected_exit": 9,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "mismatch",
+      "expect_digest": true,
+      "expect_real": false,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Hostile case H10 replayed through a guarded write whose approved digest does not match the case payload, so the attempt is refused."
+    },
+    {
+      "id": "HOSTILE-T10",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "T10",
+      "expected": "accept",
+      "expected_exit": 0,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "match",
+      "expect_real": true,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Benign case T10 replayed through a guarded write whose approved digest matches the case payload, so the write proceeds."
+    },
+    {
+      "id": "HOSTILE-C1",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "C1",
+      "expected": "accept",
+      "expected_exit": 0,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "match",
+      "expect_real": true,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Benign case C1 replayed through a guarded write whose approved digest matches the case payload, so the write proceeds."
+    },
+    {
+      "id": "HOSTILE-C2",
+      "lang": "en",
+      "split": "held-out",
+      "kind": "hostile",
+      "case_id": "C2",
+      "expected": "accept",
+      "expected_exit": 0,
+      "command": [
+        "--confirm-write",
+        "--approval",
+        "APPROVED-1",
+        "contacts",
+        "create"
+      ],
+      "intent": "match",
+      "expect_real": true,
+      "covers": [
+        "006/REQ-007"
+      ],
+      "note": "Benign case C2 replayed through a guarded write whose approved digest matches the case payload, so the write proceeds."
+    }
+  ],
+  "refusal_basis": "Every refusal row replays one guard gate through the stub CLI in test mode and asserts its command line and exit code. Every hostile row replays one case from assets/hostile-invoice-cases.json through a guarded write. A refused case replays with an approved digest that does not match the case payload, an accepted case replays with a matching digest.",
+  "covers_rule": "The covers list names the implementation phase and the requirement a row guards. A row fails on the commit before that change and passes on the commit after it when the change is observable offline. An expected_claims entry names one path and one text that must appear in that file of the scored revision, so a row can guard content its read set does not load."
+}

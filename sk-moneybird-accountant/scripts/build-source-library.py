@@ -7,20 +7,31 @@
 Scans the bootstrap, the root README and the markdown of the three skills for
 external links and writes one row per source to the source library index. The
 scan never touches the workspace, the spec folders or any private folder, and
-the script makes no network call. Access results come from a live check that
-the Operator or an agent runs, and a rewrite keeps them per URL. Output is
+only --check-links makes a network call. Access results come from a live check
+that the Operator or an agent runs, and a rewrite keeps them per URL. Output is
 byte-stable: sorted rows, no timestamps, no randomness.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/build-source-library.py
     python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check
+    python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-links
+    python3 -I sk-moneybird-accountant/scripts/build-source-library.py --trace <file>:<line>
 
 Options:
-    --check     Verify the index without writing it. Reports every cited URL
-                missing from the index and every indexed URL no file cites.
+    --check       Verify the index without writing it. Reports every cited URL
+                  missing from the index and every indexed URL no file cites.
+    --check-links Fetch every row a plain fetch can reach and print a JSON
+                  report. Endpoint rows and rows recorded as reachable only
+                  through WebFetch are reported as skipped, never as failed.
+                  A row is ok only when the final answer after followed
+                  redirects is 2xx. An unfollowed redirect is a failure of
+                  its own kind.
+    --trace       Print the index result for every URL on one line of one file,
+                  and fail on a dead, unchecked or unindexed URL.
 
 Output:
     sk-moneybird-accountant/assets/source-library.json and a summary on stdout.
+    --check-links prints only its JSON report.
 """
 
 # ───────────────────────────────────────────────────────────────
@@ -28,11 +39,14 @@ Output:
 # ───────────────────────────────────────────────────────────────
 
 import argparse
+import datetime
 import json
 import os
 import re
 import sys
-from typing import Any, Dict, List, NoReturn, Set
+import urllib.error
+import urllib.request
+from typing import Any, Dict, List, NoReturn, Optional, Set, Tuple
 
 # ───────────────────────────────────────────────────────────────
 # 2. CONFIGURATION
@@ -88,6 +102,20 @@ AUTHORITY = {
 
 # Access values a live check may record. Their meaning is in the guide.
 ACCESS_VALUES = ("ok", "webfetch-only", "pdf-needs-reader", "archive-not-fetchable", "dead", "endpoint", "unchecked")
+
+# A browser-like agent is what public hosts answer without a challenge.
+USER_AGENT = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+              "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
+
+FETCH_TIMEOUT = 30
+FETCH_ATTEMPTS = 2
+READ_LIMIT = 512
+
+# Rows a plain fetch cannot reach, so the link check reports them as skipped.
+SKIP_FETCH_ACCESS = ("endpoint", "webfetch-only")
+
+# Access values that fail the trace, beside a URL the index does not hold.
+TRACE_FAIL_ACCESS = ("dead", "unchecked")
 
 # ───────────────────────────────────────────────────────────────
 # 3. HELPERS
@@ -334,26 +362,206 @@ def write_index(expected: str, count: int) -> int:
     return 0
 
 # ───────────────────────────────────────────────────────────────
-# 6. ENTRY POINT
+# 6. LINK CHECK AND TRACE
+# ───────────────────────────────────────────────────────────────
+
+def fetch_status(url: str) -> Tuple[Optional[int], Optional[str]]:
+    """Fetch one URL and report its final HTTP status after redirects.
+
+    Args:
+        url: URL to fetch.
+
+    Returns:
+        (status, error): the answer status when the server answered, or
+        (None, error text) when every attempt raised. A 3xx status means
+        urllib could not follow the redirect.
+    """
+    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    last_error = None
+    for _ in range(FETCH_ATTEMPTS):
+        try:
+            # WHY: the default opener follows redirects, so a moved page reports its final status.
+            with urllib.request.urlopen(request, timeout=FETCH_TIMEOUT) as response:
+                response.read(READ_LIMIT)
+                return response.status, None
+        except urllib.error.HTTPError as exc:
+            # WHY: a 3xx here is a redirect urllib could not follow and a 4xx is
+            # an answer, so only a 5xx is worth one retry.
+            if exc.code < 500:
+                return exc.code, None
+            last_error = "HTTP %d" % exc.code
+        except (urllib.error.URLError, OSError, ValueError) as exc:
+            last_error = str(exc)
+    return None, last_error
+
+
+def check_links(stored: Dict[str, Dict[str, Any]]) -> int:
+    """Fetch every reachable row and print one JSON report.
+
+    Args:
+        stored: Result of load_index().
+
+    Returns:
+        Zero when no reachable row failed, one otherwise.
+    """
+    summary = {
+        "rows": len(stored),
+        "checked": 0,
+        "ok": 0,
+        "dead": 0,
+        "redirects": 0,
+        "errors": 0,
+        "skipped": 0,
+        "endpoints_skipped": 0,
+        "recovered": 0,
+        "failures": 0,
+    }
+    rows = []
+    for url in sorted(stored):
+        access = stored[url].get("access", "unchecked")
+        entry = {
+            "url": url,
+            "host": stored[url].get("host", ""),
+            "recorded_access": access,
+            "cited_by": stored[url].get("cited_by", []),
+        }
+        if access in SKIP_FETCH_ACCESS:
+            entry.update(result="skipped", reason=access)
+            summary["skipped"] += 1
+            if access == "endpoint":
+                summary["endpoints_skipped"] += 1
+            rows.append(entry)
+            continue
+        summary["checked"] += 1
+        status, error = fetch_status(url)
+        if error is not None:
+            entry.update(result="error", http_status=None, reason=error)
+            summary["errors"] += 1
+        elif status is not None and 200 <= status < 300:
+            entry.update(result="ok", http_status=status)
+            summary["ok"] += 1
+            if access == "dead":
+                summary["recovered"] += 1
+        elif status is not None and 300 <= status < 400:
+            # WHY: only a final 2xx after followed redirects is a live page, and
+            # an unfollowed redirect is neither dead nor a transport error.
+            entry.update(result="redirect", http_status=status, reason="redirect not followed")
+            summary["redirects"] += 1
+        else:
+            entry.update(result="dead", http_status=status)
+            summary["dead"] += 1
+        # WHY: a row already recorded as dead is a known finding, not a new one.
+        if entry["result"] in ("dead", "error", "redirect") and access != "dead":
+            summary["failures"] += 1
+        rows.append(entry)
+    report = {
+        "generator": GENERATOR,
+        "mode": "check-links",
+        "checked_on": datetime.date.today().isoformat(),
+        "user_agent": USER_AGENT,
+        "summary": summary,
+        "rows": rows,
+    }
+    print(json.dumps(report, ensure_ascii=False, indent=2))
+    return 1 if summary["failures"] else 0
+
+
+def trace_line(target: str, stored: Dict[str, Dict[str, Any]]) -> int:
+    """Print the index result for every URL on one line of one file.
+
+    Args:
+        target: File path and line number, as <file>:<line>.
+        stored: Result of load_index().
+
+    Returns:
+        Zero when every cited URL is usable, one when one is dead, unchecked
+        or missing from the index.
+
+    Raises:
+        SystemExit: With code 2 on a usage error.
+    """
+    path, separator, number_text = target.rpartition(":")
+    if not separator or not number_text.isdigit() or int(number_text) < 1:
+        fail("usage: --trace <file>:<line>")
+    line_number = int(number_text)
+    resolved = os.path.normpath(os.path.join(REPO_ROOT, path))
+    if not resolved.startswith(REPO_ROOT + os.sep) or not os.path.isfile(resolved):
+        fail("no such file in this repository: %s" % path)
+    with open(resolved, "r", encoding="utf-8", errors="replace") as handle:
+        lines = handle.readlines()
+    if line_number > len(lines):
+        fail("%s has no line %d" % (path, line_number))
+    # WHY: badges and donation links never enter the index, so the trace ignores them too.
+    urls = []
+    for raw in URL_RE.findall(lines[line_number - 1]):
+        url = clean_url(raw)
+        if not is_skipped(url) and url not in urls:
+            urls.append(url)
+    print("%s:%d" % (os.path.relpath(resolved, REPO_ROOT), line_number))
+    if not urls:
+        print("no URLs on that line")
+        return 0
+    problems = []
+    for url in urls:
+        row = stored.get(url)
+        if row is None:
+            print("%s access=missing http_status=- checked_on=-" % url)
+            problems.append("missing")
+            continue
+        access = row.get("access", "unchecked")
+        status = row.get("http_status")
+        print("%s access=%s http_status=%s checked_on=%s" % (
+            url,
+            access,
+            status if status is not None else "-",
+            row.get("checked_on") or "-",
+        ))
+        if access in TRACE_FAIL_ACCESS:
+            problems.append(access)
+    if problems:
+        print("failed: %d of %d URLs (%s)" % (len(problems), len(urls), ", ".join(sorted(set(problems)))))
+        return 1
+    print("%d URLs, all usable" % len(urls))
+    return 0
+
+# ───────────────────────────────────────────────────────────────
+# 7. ENTRY POINT
 # ───────────────────────────────────────────────────────────────
 
 def main(argv: List[str]) -> int:
-    """Parse arguments and run the check or write mode.
+    """Parse arguments and run the requested mode.
 
     Args:
         argv: Command line arguments without the program name.
 
     Returns:
-        Exit code reported by the check or write step.
+        Exit code reported by the selected mode.
     """
     parser = argparse.ArgumentParser(
         prog=GENERATOR,
         description="Build or check the external source index for the skill family.",
     )
-    parser.add_argument("--check", action="store_true", help="verify the index without writing it")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--check", action="store_true", help="verify the index without writing it")
+    mode.add_argument(
+        "--check-links",
+        action="store_true",
+        help="fetch the indexed pages and print a JSON report",
+    )
+    mode.add_argument(
+        "--trace",
+        metavar="<file>:<line>",
+        help="print the index result for the URLs on one line of one file",
+    )
     args = parser.parse_args(argv)
-    found = scan()
     stored = load_index()
+    if args.check_links:
+        if not stored:
+            fail("no index to check: %s" % os.path.relpath(INDEX_PATH, REPO_ROOT))
+        return check_links(stored)
+    if args.trace:
+        return trace_line(args.trace, stored)
+    found = scan()
     expected = build_text(found, stored)
     if args.check:
         return check_index(found, stored, expected)

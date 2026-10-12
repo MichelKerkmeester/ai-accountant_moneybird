@@ -143,11 +143,11 @@ Use `cli-jortt` for Jortt source records, source documents and Jortt API diagnos
 
 ## 7. VERIFICATION
 
-The offline checks use a local copy of the API description and never call Jortt. A live connection needs a separate `jortt-cli whoami` result with HTTP 200.
+The offline checks use a local copy of the API description and never call Jortt. The suite defaults to the trimmed fixture under `cli-jortt/cli/jortt-cli/tests/fixtures/` and reads another file only when `JORTT_OPENAPI_FILE` names one. A live connection needs a separate `jortt-cli whoami` result with HTTP 200.
 
 | Check | Result |
 |---|---|
-| CLI contract | `JORTT_OPENAPI_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/jortt-cli/openapi.json" bash cli-jortt/cli/jortt-cli/tests/run-tests.sh` ends with `Result: 11 passed, 0 failed` |
+| CLI contract | `bash cli-jortt/cli/jortt-cli/tests/run-tests.sh` ends with `Result: 26 passed, 0 failed`, including one fault case per Jortt exit code 1 to 6 |
 | Offline doctor | `bash cli-jortt/scripts/doctor.sh` ends with `Mode: offline. No network calls were made.` |
 | Operator scenarios | The scenarios in the [manual testing playbook](manual-testing-playbook/manual-testing-playbook.md) report `PASS` |
 

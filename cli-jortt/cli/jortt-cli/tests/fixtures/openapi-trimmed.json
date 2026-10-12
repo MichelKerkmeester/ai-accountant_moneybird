@@ -1,0 +1,89 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Jortt API trimmed test fixture",
+    "description": "Trimmed to the operations the offline test suite exercises. Synthetic values only.",
+    "version": "1.0.0"
+  },
+  "host": "api.jortt.nl",
+  "basePath": "/",
+  "schemes": ["https"],
+  "produces": ["application/json"],
+  "securityDefinitions": {
+    "OAuth2": {
+      "type": "oauth2",
+      "flow": "clientCredentials",
+      "tokenUrl": "https://app.jortt.nl/oauth-provider/oauth/token",
+      "scopes": {
+        "customers:read": "Read customer records.",
+        "expenses:read": "Read expenses.",
+        "expenses:write": "Create or change expenses."
+      }
+    }
+  },
+  "paths": {
+    "/customers": {
+      "get": {
+        "operationId": "list-customers",
+        "tags": ["customers"],
+        "summary": "List customers",
+        "security": [{"OAuth2": ["customers:read"]}],
+        "parameters": [
+          {"name": "page", "in": "query", "required": false, "type": "integer"},
+          {"name": "per_page", "in": "query", "required": false, "type": "integer"}
+        ],
+        "responses": {"200": {"description": "A paginated customer list."}}
+      }
+    },
+    "/v1/customers": {
+      "get": {
+        "operationId": "list-customers",
+        "tags": ["customers"],
+        "summary": "List customers",
+        "security": [{"OAuth2": ["customers:read"]}],
+        "parameters": [
+          {"name": "page", "in": "query", "required": false, "type": "integer"},
+          {"name": "per_page", "in": "query", "required": false, "type": "integer"}
+        ],
+        "responses": {"200": {"description": "A paginated customer list."}}
+      }
+    },
+    "/v3/expenses": {
+      "get": {
+        "operationId": "list-expenses",
+        "tags": ["expenses"],
+        "summary": "List expenses",
+        "security": [{"OAuth2": ["expenses:read"]}],
+        "parameters": [
+          {"name": "vat_date_from", "in": "query", "required": false, "type": "string"},
+          {"name": "vat_date_till", "in": "query", "required": false, "type": "string"},
+          {"name": "delivery_date_from", "in": "query", "required": false, "type": "string"},
+          {"name": "delivery_date_till", "in": "query", "required": false, "type": "string"},
+          {"name": "expense_type", "in": "query", "required": false, "type": "string"},
+          {"name": "page", "in": "query", "required": false, "type": "integer"},
+          {"name": "per_page", "in": "query", "required": false, "type": "integer"}
+        ],
+        "responses": {"200": {"description": "A paginated expense list."}}
+      },
+      "post": {
+        "operationId": "create-an-expense",
+        "tags": ["expenses"],
+        "summary": "Create an expense",
+        "security": [{"OAuth2": ["expenses:write"]}],
+        "parameters": [
+          {"name": "body", "in": "body", "required": false, "schema": {"$ref": "#/definitions/CreateExpense"}}
+        ],
+        "responses": {"200": {"description": "The created expense."}}
+      }
+    }
+  },
+  "definitions": {
+    "CreateExpense": {
+      "type": "object",
+      "properties": {
+        "vat_date": {"type": "string"},
+        "description": {"type": "string"}
+      }
+    }
+  }
+}

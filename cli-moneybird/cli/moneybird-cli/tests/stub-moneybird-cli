@@ -79,7 +79,20 @@ else
   URL="https://moneybird.com/api/v2/$ADMIN_ID/$RESOURCE/$RECORD_ID.json"
 fi
 
+# WHY: MONEYBIRD_TEST_FAULT injects a named upstream failure so the guard's
+# error paths are rehearsed offline. upstream-fail stops the call before any
+# output with exit 1, and bad-dry-line prints a dry-run line the guard cannot
+# parse as METHOD URL.
+if [[ "${MONEYBIRD_TEST_FAULT:-}" == "upstream-fail" ]]; then
+  printf 'stub fault: the upstream CLI failed\n' >&2
+  exit 1
+fi
+
 if [[ $DRY_RUN -eq 1 ]]; then
+  if [[ "${MONEYBIRD_TEST_FAULT:-}" == "bad-dry-line" ]]; then
+    printf 'stub fault: this line is not a METHOD URL pair\n'
+    exit 0
+  fi
   if [[ -n "${MONEYBIRD_TEST_DRY_STATUS:-}" ]]; then
     printf 'stub dry-run failure\n' >&2
     exit "$MONEYBIRD_TEST_DRY_STATUS"

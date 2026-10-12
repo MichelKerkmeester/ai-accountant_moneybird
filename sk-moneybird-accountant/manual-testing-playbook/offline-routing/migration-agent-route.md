@@ -25,6 +25,7 @@ A local-only check verifies route and journal behavior while keeping accounting 
 - Objective: Route one migration work unit through M12 and recover safely from an AGENT_DRAFTED state.
 - Real user request: I am in migration Phase 7 and the last agent journal state is AGENT_DRAFTED. What should happen next? Do not read records or call an API.
 - Prompt: I am in migration Phase 7 and the last agent journal state is AGENT_DRAFTED. What should happen next? Do not read records or call an API.
+- Fixture rows: MIG-005 (en) and MIG-005-nl (nl twin).
 - Expected execution process: Read the project bootstrap and skill, then read only the migration index, Phase 7 contract, and shared mechanisms. Do not use network access, accounting APIs, private finance data, or a live agent dispatch.
 - Expected signals: Names the Agent runner, Implementer, Verifier, Final reviewer, and separate Migration Writer seats. States that agent payloads contain summaries only, record-level checks run locally, AGENT_DRAFTED is not verified, and the draft returns to verification before any gate. Preserves Operator approval before a write and reports no API call.
 - Desired user-visible outcome: A concise route and resume decision with the controlling reference paths and no service call.

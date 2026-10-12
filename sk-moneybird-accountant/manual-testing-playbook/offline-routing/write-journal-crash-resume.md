@@ -27,6 +27,7 @@ A local-only check verifies gate routing while keeping accounting tools, network
 - Objective: Resume an interrupted write batch from its journal and read back uncertain outcomes without blind retry.
 - Real user request: A Moneybird write batch crashed after WRITE_INTENT and the response was lost. Show how to resume from the journal. Do not call an API or blindly retry.
 - Prompt: A Moneybird write batch crashed after WRITE_INTENT and the response was lost. Show how to resume from the journal. Do not call an API or blindly retry.
+- Fixture rows: MIG-002 (en) and MIG-002-nl (nl twin).
 - Expected execution process: Read only the listed local public references. Do not use a network connection or accounting API.
 - Expected signals: Routes through the append-only run journal and stable local write key. Resumes from the last verified state, checks source reference and every planned payload field using a synchronized read or documented cache wait, stops on ambiguity, and does not blindly retry. No API is called.
 - Desired user-visible outcome: A concise route report with the required gate, owner action, stop or recovery rule, and no API activity.

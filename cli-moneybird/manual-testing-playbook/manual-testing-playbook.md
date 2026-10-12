@@ -450,8 +450,8 @@ Desired user-visible outcome: The operator sees that the read-only session can r
 
 | Test Module | Coverage | Playbook Overlap |
 |---|---|---|
-| [`cli/moneybird-cli/tests/run-tests.sh`](../cli/moneybird-cli/tests/run-tests.sh) | Offline guard suite for the period warning, the confirmation lock, the pilot gate, the writer configuration gate, the approval gate, the payload digest binding, the single-use check, the attachment digest, the write log, the DELETE caution, the output guard, the summary output, the `--print-body` refusal under an agent marker, the `--out` refusal on a passthrough, the ignored environment overrides without the test flag, the `administration use` gate and both logins | MBD-002, MBD-003, MBD-004, MBD-005, MBD-009, MBD-010, MBD-011, MBD-014 |
-| [`cli/moneybird-cli/tests/stub-moneybird-cli`](../cli/moneybird-cli/tests/stub-moneybird-cli) | Deterministic CLI stand-in that prints dry-run lines and logs real calls | Every offline guard scenario |
+| [`cli/moneybird-cli/tests/run-tests.sh`](../cli/moneybird-cli/tests/run-tests.sh) | Offline guard suite for the period warning, the confirmation lock, the pilot gate, the writer configuration gate, the approval gate, the payload digest binding, the single-use check, the attachment digest, the write log, the DELETE caution, the output guard, the summary output, the `--print-body` refusal under an agent marker, the `--out` refusal on a passthrough, the ignored environment overrides without the test flag, the `administration use` gate, both logins and one fault case per guard exit code 1 to 9 | MBD-002, MBD-003, MBD-004, MBD-005, MBD-009, MBD-010, MBD-011, MBD-013, MBD-014 |
+| [`cli/moneybird-cli/tests/stub-moneybird-cli`](../cli/moneybird-cli/tests/stub-moneybird-cli) | Deterministic CLI stand-in that prints dry-run lines and logs real calls, with `MONEYBIRD_TEST_FAULT` for the upstream failure and the malformed dry-run line | Every offline guard scenario |
 
 ---
 

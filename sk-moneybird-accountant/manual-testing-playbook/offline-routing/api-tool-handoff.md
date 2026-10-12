@@ -27,6 +27,7 @@ A local-only check can confirm that the skill chooses its mode and references wh
 - Objective: Route Jortt reads and Moneybird reads or writes through their owning sibling skills.
 - Real user request: I need a read from Jortt and a gated write in Moneybird. Which CLI and sibling skills own those actions? Do not execute either action.
 - Prompt: I need a read from Jortt and a gated write in Moneybird. Which CLI and sibling skills own those actions? Do not execute either action.
+- Fixture rows: API-001 (en) and API-001-nl (nl twin).
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references. Do not use network access or accounting CLIs.
 - Expected signals: Names jortt-cli for read-only Jortt work and moneybird-guard for Moneybird work, sets MONEYBIRD_GUARD_READ_ONLY=1 for read-only sessions, preserves the gate and approval rule, and executes nothing.
 - Desired user-visible outcome: A concise route report with selected mode, reference paths, boundary result, and no CLI activity.

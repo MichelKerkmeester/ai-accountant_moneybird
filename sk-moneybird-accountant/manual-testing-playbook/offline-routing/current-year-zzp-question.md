@@ -27,6 +27,7 @@ A local-only check can confirm that the skill chooses its mode and references wh
 - Objective: Route a changing ZZP figure to the tax reference with its year and source.
 - Real user request: What is the business mileage rate for the current tax year? Give the year and source, and treat this as general information.
 - Prompt: What is the business mileage rate for the current tax year? Give the year and source, and treat this as general information.
+- Fixture rows: TAX-001 (en) and TAX-001-nl (nl twin).
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references. Do not use network access or accounting APIs.
 - Expected signals: Checks the current year first, loads the tax reference, includes the source URL, and labels the reply as general information.
 - Desired user-visible outcome: A concise route report with selected mode, reference paths, boundary result, and no API activity.
