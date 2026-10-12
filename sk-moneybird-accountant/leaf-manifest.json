@@ -153,7 +153,8 @@
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
         "references/routing-signals.md",
-        "references/source-library.md"
+        "references/source-library.md",
+        "references/year-and-state.md"
       ],
       "packet": ".",
       "workflowMode": "sk-moneybird-accountant"

@@ -56,7 +56,7 @@ Every request matches exactly one row, which decides files read and tool skill.
 |---|---|---|---|---|---|---|---|
 | T1 | migration phase | `migratie`, `overzetten`, `historische administratie`, `Jortt` | migration phase, gate, Jortt export, archive, cutover, year lock | `cli-jortt + cli-moneybird` | `references/migration/README.md`, `references/migration/shared-mechanisms.md`, `references/migration/control-framework.md` when a gate, risk, or year lock applies, and the one phase file the index names for the current phase | `tok:T1` | Beats T2 when a phase number or gate is named |
 | T2 | migration concept | `migratie`, `overzetten`, `historische administratie` | mapping, category, which account, trap | `none` | `references/migration/jortt-to-moneybird-mapping.md` | `tok:T2` | Yields to T1 when a phase number or gate is named |
-| T3 | live period | `deze maand`, `afgelopen kwartaal`, `administratie bijhouden` | this month, this quarter, review, reconcile, bank, unmatched, close | `cli-moneybird` | `references/moneybird-bookkeeping.md`, `references/YYYY/README.md`, `references/YYYY/btw.md` when the period is a VAT period, `references/migration/README.md` and `references/migration/phases-19-to-21.md` while post-cutover monitoring is open | `tok:T3` | Yields to T4 when an invoice is named and to T1 when a phase or gate is named |
+| T3 | live period | `deze maand`, `afgelopen kwartaal`, `administratie bijhouden` | this month, this quarter, review, reconcile, bank, unmatched, close | `cli-moneybird` | `references/moneybird-bookkeeping.md`, `references/YYYY/README.md`, `references/YYYY/btw.md` when the period is a VAT period, `references/migration/README.md` and `references/migration/phases-19-to-21.md` while the post-cutover state is monitoring_active or monitoring_lapsed_phase22_open | `tok:T3` | Yields to T4 when an invoice is named and to T1 when a phase or gate is named |
 | T4 | purchase invoice | `inkoopfactuur`, `bonnetje`, `factuur van een leverancier` | invoice, receipt, order, supplier, reverse charge, KOR | `cli-moneybird` | `references/purchase-invoices.md`, `references/YYYY/btw.md`, `references/moneybird-bookkeeping.md` | `tok:T4` | Beats T3 when an invoice is named |
 | T5 | tax figure | `btw-tarief`, `kilometervergoeding`, `zelfstandigenaftrek`, `drempel` | rate, threshold, deduction, how much, current year | `none` | `references/dutch-tax-rules.md`, `references/YYYY/README.md`, then the one topic file the README names starting with its KEY FIGURES section, and `references/source-library.md` when a figure needs its official source | `tok:T5` | Beats T6 when one year is named |
 | T6 | cross-year rule | `vorig jaar`, `sinds wanneer`, `bewaarplicht` | how does the rule work, changed since, compared with | `none` | `references/dutch-tax-rules.md` | `tok:T6` | Wins when the rule is asked across years or since a change |
@@ -80,6 +80,17 @@ Signal sources and their Belastingdienst pages: `references/routing-signals.md`.
 
 Details: `references/routing-signals.md`.
 
+### Year and State
+
+- Resolve the year as `year_key`: an explicit year, else the period under review, else the return-year mapping, else the clock year from `session-context.json`. A year with no folder is "no year file, unverified".
+- A figure or cross-year question before the corpus returns `year_before_corpus_start`.
+- One after the corpus returns `year_after_corpus_end`. MIGRATION routing is never refused by year.
+- A figure supported only by `proposed`, `unknown`, `UNVERIFIED` or `adopted-not-yet-in-force` is refused with `value_not_settled`. Keep "adopted but not yet in the Staatsblad" apart from "not adopted".
+- The post-cutover state is `pre_cutover`, `monitoring_active`, `monitoring_lapsed_phase22_open`, `migration_complete` or `gate_window_conflict`. Only `monitoring_active` and `monitoring_lapsed_phase22_open` load the recurring-cycle files.
+- When `interactive` is false, a tie or missing year returns the candidate routes with the question text.
+
+Details: `references/year-and-state.md`.
+
 ### Smart Router Pseudocode
 
 Illustrative only. The Task-Type Table is the single source of truth: read one row, load only its read set, and report mode, type, year, loaded and missing paths as the route record.
@@ -89,6 +100,7 @@ Illustrative only. The Task-Type Table is the single source of truth: read one r
     SKILL_ROOT = Path(__file__).resolve().parent
     RESOURCE_BASES = (SKILL_ROOT / "references",)
     ROUTE_TABLE = parse_route_table()  # from the route-table block
+    CONTEXT = read_session_context("session-context.json")  # generated, never a workspace path
     UNKNOWN_FALLBACK = {"load": "nothing", "tiers": {
         "Tier A": "Refuse with the out-of-scope boundary, load nothing",
         "Tier B": "Ask one question, print the candidate route per answer",
@@ -98,10 +110,13 @@ Illustrative only. The Task-Type Table is the single source of truth: read one r
     def parse_route_table():
         """Parse the route-table rows."""
 
+    def read_session_context(path):
+        """Read the generated session context file, never a workspace path."""
+
     def classify(request, table):
         """Score every row, apply the tie clauses, and return the winner
-        with its read set and resolved tax year, or abstain with the
-        candidate rows or tax years."""
+        with its read set and the year resolved through CONTEXT, or abstain
+        with the candidate rows or tax years."""
 
     def discover_markdown_resources():
         return {p.relative_to(SKILL_ROOT).as_posix()
@@ -185,20 +200,22 @@ LIVE Moneybird writes have three states. `JOURNAL_BACKED`: writes inside the LIV
 
 #### Ad hoc ZZP questions
 
-- Check the current tax year before using any rate, threshold, deduction, or vehicle rule.
+- Resolve the year through `year_key` from session-context.json before using any rate, threshold, deduction, or vehicle rule.
 - Load references/YYYY/README.md for the tax year, then the one topic file the README names. Load references/dutch-tax-rules.md when the question is how a rule works across years.
 - Explain general rules with the year and source. Label conflicting or unverified points.
 - Do not present a case-specific tax conclusion as final. Flag judgement calls for the operator or a bookkeeper.
 
 ### Output Contract
 
-Every answer ends with a route record block: `mode` (MIGRATION or LIVE), `type` (T1 to T9 or abstain), `year` (resolved tax year or none), `loaded` (repository-relative paths read) and `missing` (routed paths absent). Every reported figure adds `source` (reference path or official URL) and `checked_on` (date the reference states, or `not stated` when none).
+Every answer ends with a route record block: `mode` (MIGRATION or LIVE), `type` (T1 to T9 or abstain), `year` (resolved tax year or none), `year_key` (`transaction_date` or `return_coverage`), `clock_source` (`SOURCE_DATE_EPOCH` or `runtime`), `loaded` (repository-relative paths read) and `missing` (routed paths absent). Every reported figure adds `source` (reference path or official URL) and `checked_on` (date the reference states, or `not stated` when none).
 
 Example route record, placeholders only:
 
     mode: <MIGRATION or LIVE>
     type: <T1 to T9 or abstain>
     year: <resolved tax year or none>
+    year_key: <transaction_date or return_coverage>
+    clock_source: <SOURCE_DATE_EPOCH or runtime>
     loaded:
       - <repository-relative path>
     missing:
@@ -216,7 +233,7 @@ Keep the route record and figures safe: only phase and record-class labels, opaq
 
 ### ✅ ALWAYS
 
-1. Check the current year before relying on any tax figure.
+1. Resolve the year through `year_key` from session-context.json before relying on any tax figure.
 2. Keep a clear distinction between confirmed rules, product documentation, conflicting values, and unverified points.
 3. Route every Jortt CLI read through jortt-cli, following cli-jortt/SKILL.md.
 4. Route every Moneybird CLI read or write through moneybird-guard, following cli-moneybird/SKILL.md. Every read session sets `MONEYBIRD_GUARD_READ_ONLY=1`.

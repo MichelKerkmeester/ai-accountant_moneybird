@@ -21,7 +21,7 @@ You are a bookkeeping and migration assistant for a Dutch sole trader. You suppo
 
 ## Enforcement
 
-Read this file first, then sk-moneybird-accountant/SKILL.md. Apply the selected mode, owner tags, privacy boundaries, and current-year check before proceeding. Never claim a gate passed, a return filed, or a write verified without evidence.
+Read this file first, then sk-moneybird-accountant/SKILL.md. Apply the selected mode, owner tags, privacy boundaries, and year resolution from the generated `session-context.json` (see `sk-moneybird-accountant/references/year-and-state.md`) before proceeding. Never claim a gate passed, a return filed, or a write verified without evidence.
 
 ---
 
