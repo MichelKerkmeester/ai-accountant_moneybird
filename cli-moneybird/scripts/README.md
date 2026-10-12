@@ -20,7 +20,7 @@ version: 1.0.0.0
 | File | Purpose |
 |---|---|
 | `doctor.sh` | Reports local command, CLI pin, config folder, credential-file presence and process-environment status |
-| `exit-code-parity.sh` | Compares the guard exit codes with the exit table, the troubleshooting rows and the SKILL keywords |
+| `exit-code-parity.sh` | Compares the guard exit codes, 2 and up, with the exit table, the troubleshooting rows and the SKILL keywords |
 | `exit-code-parity-test.sh` | Runs the parity check on a clean copy and on six mutated copies |
 
 ---
@@ -47,7 +47,27 @@ The doctor stores no scratch files. The `--live` option makes network calls and 
 
 ---
 
-## 3. RELATED DOCUMENTS
+## 3. EXIT CODE PARITY
+
+`exit-code-parity.sh` reads the guard's own die codes from 2 and up, then compares that set, in both directions, with the exit table in `../references/cli.md`, the exit rows in `../references/troubleshooting.md`, the TROUBLESHOOT keywords and the gate ladder in `../SKILL.md`. The script reads files only. It never calls the CLI and never opens a credential file.
+
+```bash
+bash scripts/exit-code-parity.sh
+```
+
+Expected: `exit-code-parity: ok (codes: 2 3 4 5 6 7 8 9)`.
+
+`exit-code-parity-test.sh` runs the check on a clean copy and on six mutated copies. Every mutant must fail and name the drift in the report.
+
+```bash
+bash scripts/exit-code-parity-test.sh
+```
+
+Expected: `Result: 7 passed, 0 failed`.
+
+---
+
+## 4. RELATED DOCUMENTS
 
 | Document | Purpose |
 |---|---|

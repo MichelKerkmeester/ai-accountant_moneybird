@@ -83,11 +83,13 @@ Guard flags are recognized anywhere before a literal `--`. Every other CLI argum
 
 The guard root is always the guard's own repository root, three folders above the script. The CLI binary is always `moneybird-cli` on `PATH`. The writer configuration folder is always `$HOME/.config/moneybird-cli-writer`. The pilot administration ID comes only from the `MONEYBIRD_PILOT_ADMINISTRATION_ID=` line in the root `.env` file.
 
-`MONEYBIRD_ENV_DIR`, `MONEYBIRD_CLI`, `MONEYBIRD_WRITER_CONFIG_DIR` and the `MONEYBIRD_PILOT_ADMINISTRATION_ID` environment variable are honored only when `MONEYBIRD_GUARD_TEST=1` is set. That flag exists for the offline test suite only. Agents and Operators never set it in real use. Without the flag the guard prints a warning that the variable is ignored and carries on with the pinned value.
+`MONEYBIRD_ENV_DIR`, `MONEYBIRD_CLI`, `MONEYBIRD_WRITER_CONFIG_DIR`, `MONEYBIRD_HMAC_KEY_FILE` and the `MONEYBIRD_PILOT_ADMINISTRATION_ID` environment variable are honored only when `MONEYBIRD_GUARD_TEST=1` is set. That flag exists for the offline test suite only. Agents and Operators never set it in real use. Without the flag the guard prints a warning that the variable is ignored and carries on with the pinned value.
 
 Set `MONEYBIRD_GUARD_READ_ONLY=1` to refuse every non-GET method before its real call. The guard prints the dry-run line, exits 6 and lets the read-only lock take precedence over `--confirm-write` and `--production`. GET calls still run. Values other than `1` leave the lock off. This lock is the boundary for read-only roles because Moneybird token scopes do not separate read from write.
 
-A write passes these gates in order. First the read-only lock must be off, or the guard exits 6. Then `--confirm-write` is required, or the guard exits 3. Then the writer configuration folder must exist, or the write stops with exit 7. The guard never falls back to the reader session. Then the target must be the pilot administration, or `--production` after Operator approval, or the guard exits 4. Then `--approval <ref>` must match the `approval_reference` of a `WRITE_INTENT` event in `migration-workspace/RunJournal/run-journal.jsonl`. A missing flag, a missing journal or no matching entry stops the write with exit 8. This applies to pilot writes and production writes alike.
+A write passes these gates in order. First the read-only lock must be off, or the guard exits 6. Then `--confirm-write` is required, or the guard exits 3 after printing the preview and one `payload-digest:` line. Then the writer configuration folder must exist, or the write stops with exit 7. The guard never falls back to the reader session. Then the target must be the pilot administration, or `--production` after Operator approval, or the guard exits 4. Then `--approval <ref>` must match the `approval_reference` of a `WRITE_INTENT` event in `migration-workspace/RunJournal/run-journal.jsonl`. A missing flag, a missing journal or no matching entry stops the write with exit 8. Then the guard recomputes the payload digest of the writer-session dry run and compares it with the `payload_digest` of the matched entry. A missing digest or a mismatch exits 9 (`PAYLOAD_MISMATCH`). A write that forwards `--file` also binds the attachment bytes to the `attachment_digest` of the entry, with exit 9 on a mismatch or a missing digest. Then the reference and digest pair must not already have a write-log row, or the guard exits 8 with a consumed message. This applies to pilot writes and production writes alike.
+
+The payload digest is a keyed HMAC-SHA256 over the canonical writer-session dry run: the method, the URL path without query or fragment and every dry-run line after the first, each line closed by one LF. The key is read by the guard process from the Operator-owned key file `migration-workspace/.secrets/alias-hmac.key`. A missing or unreadable key stops a write with exit 1 before the real call, and the key never appears in the journal, the write log, the preview or an argument. The exit-3 preview prints `payload-digest: <hex>` so the Operator can copy it into the `WRITE_INTENT`. A `--file` write also prints `attachment-digest: <hex>`, computed over the file bytes.
 
 The write command shape is `moneybird-guard --confirm-write --approval "$APPROVAL_REF" <moneybird-cli args...>`, plus `--production` for a non-pilot administration.
 
@@ -105,11 +107,12 @@ The table below is the one canonical exit-code table, the target of the gate lad
 | 5 | Output path or folder rejected |
 | 6 | Read-only lock blocked a non-GET method |
 | 7 | Writer configuration missing |
-| 8 | Approval reference missing or not found |
+| 8 | Approval reference missing, not found or already consumed for this payload digest |
+| 9 | Payload digest missing or mismatched (`PAYLOAD_MISMATCH`) |
 
 Any other exit code is passed through from `moneybird-cli`.
 
-A successful write prints the method and path, notes that an immediate GET may be cached and appends a JSONL record without a request or response body. Confirmed write attempts also record their exit status.
+A successful write prints the method and path, notes that an immediate GET may be cached and appends a JSONL record with the time, method, path, administration ID, exit status, approval reference, batch key and payload digest. It holds no request or response body. Confirmed write attempts also record their exit status.
 
 Without `--out`, the guard captures the response body to a private temporary file under `migration-workspace/tmp/`. The folder uses mode 700 and the file uses mode 600. The guard prints one summary line and deletes the file. The summary line looks like `response: 2048 bytes, records: 12` for a list or `response: 512 bytes, fields: id,name` for an object. `--quiet` hides the summary. Record content does not reach the terminal by default.
 

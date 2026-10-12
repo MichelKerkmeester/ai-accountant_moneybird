@@ -47,11 +47,11 @@ Operators run the exact prompt and command sequence for `MBD-003` and confirm th
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| MBD-003 | Production write is blocked | Confirm that a confirmed write to an administration other than the pilot exits 4 without `--production` | `Try a confirmed Moneybird contact create in a non-pilot administration without production approval.` | 1. `bash: write PILOT_ADMIN to temporary .env` -> 2. `moneybird-guard --confirm-write contacts create` -> 3. `bash: grep -c "^REAL " invocations.log` | Step 1: the temporary `.env` holds the pilot label. Step 2: `Pilot administration 'PILOT_ADMIN' differs from target 'OTHER_ADMIN'` and exit 4. Step 3: `0` | Captured guard output, exit status and the stub invocation log | PASS if the guard exits 4 with the pilot mismatch message and the stub log holds no `REAL` line. FAIL if the write runs or the exit status differs. | 1. Confirm the temporary `.env` holds `MONEYBIRD_PILOT_ADMINISTRATION_ID`. 2. Confirm no `--production` flag was passed. 3. Read the pilot gate in `moneybird-guard` |
+| MBD-003 | Production write is blocked | Confirm that a confirmed write to an administration other than the pilot exits 4 without `--production` | `Try a confirmed Moneybird contact create in a non-pilot administration without production approval.` | 1. `bash: write PILOT_ADMIN to temporary .env` -> 2. `moneybird-guard --confirm-write contacts create` -> 3. `bash: count the REAL lines in invocations.log` | Step 1: the temporary `.env` holds the pilot label. Step 2: `Pilot administration 'PILOT_ADMIN' differs from target 'OTHER_ADMIN'` and exit 4. Step 3: `0` | Captured guard output, exit status and the stub invocation log | PASS if the guard exits 4 with the pilot mismatch message and the stub log holds no `REAL` line. FAIL if the write runs or the exit status differs. | 1. Confirm the temporary `.env` holds `MONEYBIRD_PILOT_ADMINISTRATION_ID`. 2. Confirm no `--production` flag was passed. 3. Read the pilot gate in `moneybird-guard` |
 
 ### Command Block
 
-Run the block from the `cli-moneybird/` package root. It uses only the packaged stub and a temporary folder that the block removes on exit. It never touches the real CLI session, `.env` or `.env.writer`. `MONEYBIRD_GUARD_TEST=1` is a test-only setting. It lets the guard honor the scratch root, the stub CLI and the temporary writer configuration folder. Never set it in a real session.
+Run the block from the `cli-moneybird/` package root. It uses only the packaged stub and a temporary folder that the block removes on exit. It never touches the real CLI session, `.env` or `.env.writer`. `MONEYBIRD_GUARD_TEST=1` is a test-only setting. It lets the guard honor the scratch root, the stub CLI and the temporary writer configuration folder. Never set it in a real session. The final count prints 0 when no real call ran and the stub log was never created.
 
 ```bash
 bash <<'SCENARIO'
@@ -69,7 +69,11 @@ printf 'MONEYBIRD_PILOT_ADMINISTRATION_ID=PILOT_ADMIN\n' > "$MONEYBIRD_ENV_DIR/.
 export MONEYBIRD_TEST_ADMINISTRATION_ID="OTHER_ADMIN"
 "$GUARD" --confirm-write contacts create
 echo "exit=$?"
-grep -c '^REAL ' "$MONEYBIRD_TEST_LOG"
+if [[ -f "$MONEYBIRD_TEST_LOG" ]]; then
+  grep -c '^REAL ' "$MONEYBIRD_TEST_LOG" || true
+else
+  echo 0
+fi
 SCENARIO
 ```
 

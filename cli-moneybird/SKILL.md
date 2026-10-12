@@ -117,7 +117,7 @@ INTENT_MODEL = {
     "MIGRATION_RECIPE": {"weight": 7, "keywords": ["opening balance", "external sales invoice", "purchase invoice", "journal entry", "pilot migration", "correct a wrong write"]},
     "UI_ONLY": {"weight": 8, "keywords": ["camt.053 import", "mt940 import", "create tax rate", "lock a period", "handmatig indienen"]},
     "INSTALL": {"weight": 6, "keywords": ["install moneybird-cli", "moneybird token", "login-from-env"]},
-    "TROUBLESHOOT": {"weight": 8, "keywords": ["401", "403 scope", "404 administration", "422", "429", "stale get", "exit 2", "exit 3", "exit 4", "exit 5", "exit 6", "exit 7", "exit 8", "--print-body", "needs authentication"]},  # canonical exit-code table: references/cli.md
+    "TROUBLESHOOT": {"weight": 8, "keywords": ["401", "403 scope", "404 administration", "422", "429", "stale get", "exit 2", "exit 3", "exit 4", "exit 5", "exit 6", "exit 7", "exit 8", "exit 9", "--print-body", "needs authentication"]},  # canonical exit-code table: references/cli.md
     "FEATURE_INVENTORY": {"weight": 6, "keywords": ["feature catalog", "moneybird capabilities", "what does the moneybird skill do"]},
     "MANUAL_TEST": {"weight": 6, "keywords": ["manual testing playbook", "test scenario", "validate the guard"]},
 }
@@ -214,7 +214,7 @@ Moneybird token scopes do not separate read from write. Read-only roles set `MON
 - **Period** Pass an explicit period on every list.
 - **Paging** Prove completeness. Page until a short page, dedupe by record id and record the count.
 - **Caps** A list caps at 100 records, so larger reads use synchronization. A report longer than twelve months splits into parts that each record period and count and reconcile to the whole. Reports are limited to 50 per five minutes.
-- **Staleness** LIVE: the write response is first proof, read-back comes from a later synchronization, and a wait-based read-back needs an Operator-recorded horizon. LIVE has no recorded horizon, so LIVE read-back is by synchronization only. MIGRATION keeps the M2 and M5 approved horizon.
+- **Staleness** LIVE: the write response is first proof. Read-back follows the canonical read-back sentence in the write contract. A wait-based read-back needs an Operator-recorded horizon, so LIVE read-back runs by synchronization only, and MIGRATION keeps the M2 and M5 approved horizon.
 - **Retry** One owner per tool, GET only. Wait for `Retry-After` first. Otherwise use capped exponential backoff with full jitter and a bounded attempt count `LIVE_GET_MAX_ATTEMPTS` of 3 and a backoff ceiling `LIVE_GET_BACKOFF_CEILING` of 60 seconds. A third failed GET stops the read for the Operator. Never retry a non-GET call.
 
 ### Write Path
@@ -234,17 +234,20 @@ STEP 3: Gates, in this order (canonical exit-code table: references/cli.md)
        ├─ No --confirm-write: print the preview and exit 3
        ├─ Writer configuration folder missing: exit 7
        ├─ Target is not the pilot and no --production: exit 4
-       └─ Missing or unmatched --approval: exit 8
+       ├─ Missing or unmatched --approval: exit 8
+       ├─ HMAC key file missing or unreadable: exit 1
+       ├─ Payload digest missing or mismatched: exit 9 (`PAYLOAD_MISMATCH`)
+       └─ Approval reference already consumed for this digest: exit 8
        ↓
 STEP 4: Real call, then one body-free JSONL record in migration-workspace/logs/
        ↓
 STEP 5: Later read-back
-       └─ Synchronization reads confirm the record in a later pass
+       └─ Read-back follows the canonical read-back sentence in the write contract
 ```
 
-Trial or package expiry is the Operator's check before STEP 2. See `sk-moneybird-accountant/SKILL.md` and `sk-moneybird-accountant/references/migration/shared-mechanisms.md`.
+Trial or package expiry is the Operator's check before STEP 2. See `sk-moneybird-accountant/SKILL.md` for the phase gates. The write contract, the evidence rule, the idempotency rule, the exit set and the canonical read-back sentence are in [shared mechanisms](../sk-moneybird-accountant/references/migration/shared-mechanisms.md#route-contract).
 
-Writes target the pilot administration unless the plan's gate allows a production batch and the operator gives an explicit go for that batch. Every write, pilot or production, carries `--approval "$APPROVAL_REF"`, which must match the `approval_reference` of a `WRITE_INTENT` event in `migration-workspace/RunJournal/run-journal.jsonl`. The write command shape is `moneybird-guard --confirm-write --approval "$APPROVAL_REF" <moneybird-cli args...>`, plus `--production` for a non-pilot administration. A missing writer configuration stops the write with exit 7 and never falls back to the reader session. The log record holds the time, method, path, administration and exit status, never a request or response body.
+Writes target the pilot administration unless the plan's gate allows a production batch and the operator gives an explicit go for that batch. Every write runs in the writer session through `moneybird-guard` with `--confirm-write` and `--approval "$APPROVAL_REF"` for a flushed `WRITE_INTENT` that carries the `payload_digest`, with `--production` only for an approved production batch. The [write contract](../sk-moneybird-accountant/references/migration/shared-mechanisms.md#route-contract) owns the command shape, the gate order, the evidence rule, the idempotency rule and the exit set.
 
 ### Output Location
 

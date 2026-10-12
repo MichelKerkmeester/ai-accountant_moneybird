@@ -302,20 +302,20 @@ fi
 
 FIXTURE_6="$TMP_ROOT/case-6"
 if ! build_fixture "$FIXTURE_6"; then
-    fail "an added table row is caught and names extra exit 9 (fixture copy failed)"
+    fail "an added table row is caught and names extra exit 10 (fixture copy failed)"
 else
     DOC_6="$FIXTURE_6/cli-moneybird/references/cli.md"
-    if add_row_after "$DOC_6" '^[|] 8 [|]' '| 9 | Placeholder row used only by the parity test fixture |'; then
+    if add_row_after "$DOC_6" '^[|] 9 [|]' '| 10 | Placeholder row used only by the parity test fixture |'; then
         run_parity "$FIXTURE_6" 6
         status_6=$?
-        if [[ "$status_6" -ne 0 ]] && grep -q 'extra exit 9 in cli-moneybird/references/cli.md exit table' "$TMP_ROOT/parity-6.txt"; then
-            pass "an added table row is caught and names extra exit 9"
+        if [[ "$status_6" -ne 0 ]] && grep -q 'extra exit 10 in cli-moneybird/references/cli.md exit table' "$TMP_ROOT/parity-6.txt"; then
+            pass "an added table row is caught and names extra exit 10"
         else
-            fail "an added table row is caught and names extra exit 9"
+            fail "an added table row is caught and names extra exit 10"
             sed -n '1,5p' "$TMP_ROOT/parity-6.txt"
         fi
     else
-        fail "an added table row is caught and names extra exit 9 (anchor row not found)"
+        fail "an added table row is caught and names extra exit 10 (anchor row not found)"
     fi
 fi
 

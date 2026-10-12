@@ -52,9 +52,9 @@ Coverage note: offline scenarios exercise `moneybird-guard`, `setup.sh` and `doc
 ## 2. GLOBAL PRECONDITIONS
 
 1. The working directory is the `cli-moneybird/` package root unless a scenario names the Moneybird Accountant folder.
-2. Offline scenarios use only the packaged stub `cli/moneybird-cli/tests/stub-moneybird-cli` and a temporary folder from `mktemp`. They set `MONEYBIRD_GUARD_TEST=1` beside `MONEYBIRD_ENV_DIR` and `MONEYBIRD_CLI`, and point `MONEYBIRD_WRITER_CONFIG_DIR` at a temporary writer configuration folder. `MONEYBIRD_GUARD_TEST=1` is a test-only setting for the offline suite and is never set in a real session. They write a run journal at `<root>/migration-workspace/RunJournal/run-journal.jsonl`. It holds a `WRITE_INTENT` line with an `approval_reference`, so stub writes pass `--approval` with that reference. They never touch the real CLI session, `.env` or `.env.writer`.
+2. Offline scenarios use only the packaged stub `cli/moneybird-cli/tests/stub-moneybird-cli` and a temporary folder from `mktemp`. They set `MONEYBIRD_GUARD_TEST=1` beside `MONEYBIRD_ENV_DIR` and `MONEYBIRD_CLI`, and point `MONEYBIRD_WRITER_CONFIG_DIR` at a temporary writer configuration folder. `MONEYBIRD_GUARD_TEST=1` is a test-only setting for the offline suite and is never set in a real session. They write a generated test key at `<root>/migration-workspace/.secrets/alias-hmac.key`. They write a run journal at `<root>/migration-workspace/RunJournal/run-journal.jsonl`. It holds a `WRITE_INTENT` line with an `approval_reference` and the `payload_digest` the preview printed, so stub writes pass `--approval` with that reference. They never touch the real CLI session, `.env` or `.env.writer`.
 3. `bash`, `jq` and `rg` are installed. `jq` is required for the write log scenarios.
-4. Live scenario MBD-012 runs only after the operator approves it. It needs a real `WRITE_INTENT` entry with an approval reference the operator recorded. Every live write targets the pilot administration named by the `MONEYBIRD_PILOT_ADMINISTRATION_ID=` line in the root `.env` file and never another administration.
+4. Live scenario MBD-012 runs only after the operator approves it. It needs a real `WRITE_INTENT` entry for each write, with an approval reference the operator recorded and the payload digest its preview printed. Every live write targets the pilot administration named by the `MONEYBIRD_PILOT_ADMINISTRATION_ID=` line in the root `.env` file and never another administration.
 5. Destructive scenario MBD-012 MUST verify recovery is possible: it deletes the record it created, confirms removal with a separate read and falls back to the correction recipe in `references/migration-recipes.md`.
 6. No scenario reads or lists `personal database/`. No evidence carries a token, a real administration ID or record content.
 
@@ -290,7 +290,7 @@ Confirm that a confirmed pilot write appends one body-free line to the write log
 
 Prompt: `Run a confirmed contact create in the pilot administration and show me the write log line it leaves.`
 
-The guard reports the write and the cache note. The log line holds the method, path, administration, exit status and time, with no body field.
+The guard reports the write and the cache note. The log line holds the method, path, administration, exit status, approval reference, batch key and payload digest, with no body field.
 
 Desired user-visible outcome: The operator sees one log line per write and no record content in it.
 
@@ -309,7 +309,7 @@ Rehearse one live create and its undo in the pilot administration through the gu
 
 Prompt: `In the pilot administration only, create one throwaway test contact through the guard, delete it again and prove with a separate read that it is gone.`
 
-The preview path contains the pilot administration. Each write carries `--approval "$APPROVAL_REF"` matching a real `WRITE_INTENT` entry the operator recorded. The create succeeds. The delete prints the 204 caution. The log ends with a POST line and a DELETE line. The later read finds no record.
+The preview path contains the pilot administration. Each write carries `--approval` with its own fresh reference matching its own `WRITE_INTENT` entry the operator recorded. The create succeeds. The delete prints the 204 caution. The log ends with a POST line and a DELETE line. The later read finds no record.
 
 Desired user-visible outcome: The operator has evidence that the pilot write path and its undo both work, with nothing left behind in the pilot administration.
 
@@ -317,6 +317,25 @@ Desired user-visible outcome: The operator has evidence that the pilot write pat
 
 > **Feature File:** [MBD-012](write-safety/pilot-write-and-undo-rehearsal.md)
 > **Catalog:** [Pilot administration gate](../feature-catalog/write-guard/pilot-administration-gate.md)
+
+### MBD-014 | Payload-bound approval
+
+#### Description
+
+Confirm that a write runs only for the approved payload digest, that a changed payload exits 9 and that a replayed reference and digest pair exits 8.
+
+#### Scenario Contract
+
+Prompt: `Approve one contact create by its payload digest, run it, then try a changed payload and the same reference again.`
+
+The preview prints one `payload-digest:` line. The matching write exits 0 with one `REAL POST` line. The changed body exits 9 with `PAYLOAD_MISMATCH`, and the replay exits 8 as consumed, both without a real call.
+
+Desired user-visible outcome: The operator sees that only the approved payload writes, exactly once.
+
+#### Test Execution
+
+> **Feature File:** [MBD-014](write-safety/payload-bound-approval.md)
+> **Catalog:** [Payload-bound approval](../feature-catalog/write-guard/payload-bound-approval.md)
 
 ---
 
@@ -431,7 +450,7 @@ Desired user-visible outcome: The operator sees that the read-only session can r
 
 | Test Module | Coverage | Playbook Overlap |
 |---|---|---|
-| [`cli/moneybird-cli/tests/run-tests.sh`](../cli/moneybird-cli/tests/run-tests.sh) | Offline guard suite for the period warning, the confirmation lock, the pilot gate, the writer configuration gate, the approval gate, the write log, the DELETE caution, the output guard, the summary output, the `--print-body` refusal under an agent marker, the `--out` refusal on a passthrough, the ignored environment overrides without the test flag, the `administration use` gate and both logins | MBD-002, MBD-003, MBD-004, MBD-005, MBD-009, MBD-010, MBD-011 |
+| [`cli/moneybird-cli/tests/run-tests.sh`](../cli/moneybird-cli/tests/run-tests.sh) | Offline guard suite for the period warning, the confirmation lock, the pilot gate, the writer configuration gate, the approval gate, the payload digest binding, the single-use check, the attachment digest, the write log, the DELETE caution, the output guard, the summary output, the `--print-body` refusal under an agent marker, the `--out` refusal on a passthrough, the ignored environment overrides without the test flag, the `administration use` gate and both logins | MBD-002, MBD-003, MBD-004, MBD-005, MBD-009, MBD-010, MBD-011, MBD-014 |
 | [`cli/moneybird-cli/tests/stub-moneybird-cli`](../cli/moneybird-cli/tests/stub-moneybird-cli) | Deterministic CLI stand-in that prints dry-run lines and logs real calls | Every offline guard scenario |
 
 ---
@@ -453,3 +472,4 @@ Desired user-visible outcome: The operator sees that the read-only session can r
 | MBD-011 | Login keeps tokens hidden | Setup and diagnostics | [MBD-011](setup/login-keeps-tokens-hidden.md) | [Reader and writer login](../feature-catalog/sessions-and-diagnostics/reader-and-writer-login.md) |
 | MBD-012 | Pilot write and undo rehearsal | Write safety | [MBD-012](write-safety/pilot-write-and-undo-rehearsal.md) | [Pilot administration gate](../feature-catalog/write-guard/pilot-administration-gate.md) and [Write log](../feature-catalog/write-guard/write-log.md) and [Delete caution](../feature-catalog/write-guard/delete-caution.md) |
 | MBD-013 | Read-only lock blocks writes | Write safety | [MBD-013](write-safety/read-only-lock.md) | [Read-only lock](../feature-catalog/write-guard/read-only-lock.md) |
+| MBD-014 | Payload-bound approval | Write safety | [MBD-014](write-safety/payload-bound-approval.md) | [Payload-bound approval](../feature-catalog/write-guard/payload-bound-approval.md) |

@@ -43,13 +43,16 @@ if [[ $GUARD_TEST -eq 1 ]]; then
   ACCOUNTANT_ROOT_INPUT="${MONEYBIRD_ENV_DIR:-$DEFAULT_ENV_DIR}"
   CLI="${MONEYBIRD_CLI:-moneybird-cli}"
   WRITER_CONFIG_DIR="${MONEYBIRD_WRITER_CONFIG_DIR:-$HOME/.config/moneybird-cli-writer}"
+  KEY_FILE_OVERRIDE="${MONEYBIRD_HMAC_KEY_FILE:-}"
 else
   [[ -z "${MONEYBIRD_ENV_DIR:-}" ]] || warn_ignored_var MONEYBIRD_ENV_DIR
   [[ -z "${MONEYBIRD_CLI:-}" ]] || warn_ignored_var MONEYBIRD_CLI
   [[ -z "${MONEYBIRD_WRITER_CONFIG_DIR:-}" ]] || warn_ignored_var MONEYBIRD_WRITER_CONFIG_DIR
+  [[ -z "${MONEYBIRD_HMAC_KEY_FILE:-}" ]] || warn_ignored_var MONEYBIRD_HMAC_KEY_FILE
   ACCOUNTANT_ROOT_INPUT="$DEFAULT_ENV_DIR"
   CLI="moneybird-cli"
   WRITER_CONFIG_DIR="$HOME/.config/moneybird-cli-writer"
+  KEY_FILE_OVERRIDE=""
 fi
 case "$ACCOUNTANT_ROOT_INPUT" in /*) ;; *) ACCOUNTANT_ROOT_INPUT="$PWD/$ACCOUNTANT_ROOT_INPUT" ;; esac
 ACCOUNTANT_ROOT="$ACCOUNTANT_ROOT_INPUT"
@@ -57,6 +60,13 @@ if [[ -d "$ACCOUNTANT_ROOT" ]]; then
   ACCOUNTANT_ROOT="$(cd -P "$ACCOUNTANT_ROOT" >/dev/null 2>&1 && pwd -P)"
 else
   die 1 "Accountant root is not a directory."
+fi
+# WHY: The approval key is Operator-owned and lives under the ignored workspace.
+# The path override exists for the test suite only, like the other overrides.
+if [[ -n "$KEY_FILE_OVERRIDE" ]]; then
+  KEY_FILE="$KEY_FILE_OVERRIDE"
+else
+  KEY_FILE="$ACCOUNTANT_ROOT/migration-workspace/.secrets/alias-hmac.key"
 fi
 CONFIRM_WRITE=0
 PRODUCTION=0
@@ -66,6 +76,12 @@ OUT_ARG=""
 OUT_SET=0
 PRINT_BODY=0
 APPROVAL_REF=""
+PAYLOAD_DIGEST=""
+ATTACHMENT_DIGEST=""
+ATTACHMENT_PATH=""
+INTENT_PAYLOAD_DIGEST=""
+INTENT_ATTACHMENT_DIGEST=""
+INTENT_BATCH_KEY=""
 CLI_BEFORE=()
 CLI_AFTER=()
 
@@ -303,9 +319,98 @@ require_writer_config() {
   fi
 }
 
+attachment_path() {
+  local -a args=()
+  local i=0
+  local arg=""
+  [[ ${#CLI_BEFORE[@]} -gt 0 ]] && args+=("${CLI_BEFORE[@]}")
+  [[ ${#CLI_AFTER[@]} -gt 0 ]] && args+=("${CLI_AFTER[@]}")
+  while [[ $i -lt ${#args[@]} ]]; do
+    arg="${args[$i]}"
+    case "$arg" in
+      --file)
+        if [[ $((i + 1)) -lt ${#args[@]} ]]; then
+          printf '%s' "${args[$((i + 1))]}"
+        fi
+        return 0
+        ;;
+      --file=*)
+        printf '%s' "${arg#--file=}"
+        return 0
+        ;;
+    esac
+    i=$((i + 1))
+  done
+  return 0
+}
+
+digest_helper() {
+  local method="$1"
+  local url_path="$2"
+  local dry_output="$3"
+  if [[ ! -f "$KEY_FILE" || ! -r "$KEY_FILE" || ! -s "$KEY_FILE" ]]; then
+    die 1 "The HMAC key file is missing, empty or unreadable at $KEY_FILE."
+  fi
+  command -v python3 >/dev/null 2>&1 || die 1 "python3 is required to compute the payload digest."
+  PAYLOAD_DIGEST="$(python3 -I - "$KEY_FILE" "$method" "$url_path" "$dry_output" <<'PY'
+import hashlib
+import hmac
+import sys
+
+key_path = sys.argv[1]
+method = sys.argv[2]
+url_path = sys.argv[3]
+dry_output = sys.argv[4]
+try:
+    with open(key_path, "rb") as handle:
+        key = handle.read()
+except OSError:
+    raise SystemExit(3)
+if not key:
+    raise SystemExit(3)
+# WHY: This canonical form pins exactly what an approval covers, so the same
+# payload always yields the same digest while a changed, reordered or
+# retargeted body never does. It is the method, the URL path without query or
+# fragment and every dry-run line after the first, each closed by one LF.
+canonical = method + "\n" + url_path + "\n"
+for line in dry_output.split("\n")[1:]:
+    if line.endswith("\r"):
+        line = line[:-1]
+    canonical += line + "\n"
+print(hmac.new(key, canonical.encode("utf-8"), hashlib.sha256).hexdigest())
+PY
+)" || die 1 "The payload digest could not be computed from the key file at $KEY_FILE."
+}
+
+attachment_digest_helper() {
+  local file_path="$1"
+  if [[ ! -f "$file_path" || ! -r "$file_path" ]]; then
+    die 1 "The attachment file cannot be read at $file_path."
+  fi
+  command -v python3 >/dev/null 2>&1 || die 1 "python3 is required to compute the attachment digest."
+  ATTACHMENT_DIGEST="$(python3 -I - "$KEY_FILE" "$file_path" <<'PY'
+import hashlib
+import hmac
+import sys
+
+key_path = sys.argv[1]
+file_path = sys.argv[2]
+try:
+    with open(key_path, "rb") as handle:
+        key = handle.read()
+    with open(file_path, "rb") as handle:
+        data = handle.read()
+except OSError:
+    raise SystemExit(3)
+if not key:
+    raise SystemExit(3)
+print(hmac.new(key, data, hashlib.sha256).hexdigest())
+PY
+)" || die 1 "The attachment digest could not be computed from the key file at $KEY_FILE."
+}
+
 approval_verified() {
   local journal="$1"
-  command -v python3 >/dev/null 2>&1 || die 1 "python3 is required to check the approval reference."
   python3 -I - "$journal" "$APPROVAL_REF" <<'PY'
 import json
 import sys
@@ -325,6 +430,8 @@ try:
             if not isinstance(record, dict):
                 continue
             if record.get("approval_reference") == reference and record.get("new_state") == "WRITE_INTENT":
+                fields = [record.get("payload_digest"), record.get("attachment_digest"), record.get("batch_key")]
+                print("\x1f".join(value if isinstance(value, str) else "" for value in fields))
                 raise SystemExit(0)
 except OSError:
     raise SystemExit(1)
@@ -334,9 +441,81 @@ PY
 
 require_approval() {
   local journal="$ACCOUNTANT_ROOT/migration-workspace/RunJournal/run-journal.jsonl"
+  local fields=""
   [[ -n "$APPROVAL_REF" ]] || die 8 "A write requires --approval <ref> for a WRITE_INTENT entry in the run journal."
   [[ -f "$journal" ]] || die 8 "The run journal is missing, so the approval reference cannot be checked."
-  approval_verified "$journal" || die 8 "The run journal has no WRITE_INTENT entry for the given approval reference."
+  command -v python3 >/dev/null 2>&1 || die 1 "python3 is required to check the approval reference."
+  fields="$(approval_verified "$journal")" || die 8 "The run journal has no WRITE_INTENT entry for the given approval reference."
+  INTENT_PAYLOAD_DIGEST=""
+  INTENT_ATTACHMENT_DIGEST=""
+  INTENT_BATCH_KEY=""
+  # WHY: The fields are joined with a unit separator so an empty field between
+  # two values keeps its place when they are read back.
+  IFS=$'\x1f' read -r INTENT_PAYLOAD_DIGEST INTENT_ATTACHMENT_DIGEST INTENT_BATCH_KEY <<< "$fields"
+}
+
+refuse_payload() {
+  printf 'payload-digest: %s\n' "$PAYLOAD_DIGEST" >&2
+  die 9 "$1"
+}
+
+approval_consumed() {
+  local log="$1"
+  local reference="$2"
+  local digest="$3"
+  [[ -f "$log" ]] || return 1
+  python3 -I - "$log" "$reference" "$digest" <<'PY'
+import json
+import sys
+
+path = sys.argv[1]
+reference = sys.argv[2]
+digest = sys.argv[3]
+try:
+    with open(path, encoding="utf-8") as handle:
+        for line in handle:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                record = json.loads(line)
+            except ValueError:
+                continue
+            if not isinstance(record, dict):
+                continue
+            if record.get("approval_reference") == reference and record.get("payload_digest") == digest:
+                raise SystemExit(0)
+except OSError:
+    raise SystemExit(3)
+raise SystemExit(1)
+PY
+}
+
+require_payload_binding() {
+  local consumed_status=0
+  digest_helper "$METHOD" "$URL_PATH" "$DRY_OUTPUT"
+  if [[ -z "$INTENT_PAYLOAD_DIGEST" ]]; then
+    refuse_payload "The approved WRITE_INTENT has no payload_digest, so the write is not bound to an approved payload (PAYLOAD_MISMATCH)."
+  fi
+  if [[ "$PAYLOAD_DIGEST" != "$INTENT_PAYLOAD_DIGEST" ]]; then
+    refuse_payload "The writer-session payload does not match the approved payload_digest (PAYLOAD_MISMATCH)."
+  fi
+  ATTACHMENT_PATH="$(attachment_path)"
+  if [[ -n "$ATTACHMENT_PATH" ]]; then
+    attachment_digest_helper "$ATTACHMENT_PATH"
+    if [[ -z "$INTENT_ATTACHMENT_DIGEST" ]]; then
+      refuse_payload "The write forwards --file but the approved WRITE_INTENT has no attachment_digest (PAYLOAD_MISMATCH)."
+    fi
+    if [[ "$ATTACHMENT_DIGEST" != "$INTENT_ATTACHMENT_DIGEST" ]]; then
+      refuse_payload "The attachment bytes do not match the approved attachment_digest (PAYLOAD_MISMATCH)."
+    fi
+  fi
+  if approval_consumed "$LOG_FILE" "$APPROVAL_REF" "$PAYLOAD_DIGEST"; then
+    die 8 "The approval reference is already consumed for this payload digest. A retry needs a new WRITE_INTENT entry."
+  else
+    consumed_status="$?"
+    [[ "$consumed_status" -eq 1 ]] || die 1 "The write log at $LOG_FILE could not be read, so the approval reference cannot be checked for reuse."
+  fi
 }
 
 gate_administration_use() {
@@ -536,6 +715,13 @@ fi
 
 if [[ $CONFIRM_WRITE -ne 1 ]]; then
   printf '%s\n' "$DRY_LINE" >&2
+  digest_helper "$METHOD" "$URL_PATH" "$DRY_OUTPUT"
+  printf 'payload-digest: %s\n' "$PAYLOAD_DIGEST" >&2
+  ATTACHMENT_PATH="$(attachment_path)"
+  if [[ -n "$ATTACHMENT_PATH" ]]; then
+    attachment_digest_helper "$ATTACHMENT_PATH"
+    printf 'attachment-digest: %s\n' "$ATTACHMENT_DIGEST" >&2
+  fi
   die 3 "Write blocked. Re-run with --confirm-write after reviewing the dry-run."
 fi
 
@@ -558,7 +744,10 @@ elif [[ "$ADMIN_ID" != "$PILOT_ADMIN_ID" && $PRODUCTION -ne 1 ]]; then
   die 4 "Pilot administration '$PILOT_ADMIN_ID' differs from target '$ADMIN_ID'. Pass --production only after operator approval."
 fi
 
+LOG_DIR="$ACCOUNTANT_ROOT/migration-workspace/logs"
+LOG_FILE="$LOG_DIR/moneybird-writes.jsonl"
 require_approval
+require_payload_binding
 
 if ! command -v jq >/dev/null 2>&1; then
   die 1 "jq is required to append the write log."
@@ -575,10 +764,8 @@ if [[ $WRITE_STATUS -eq 0 ]]; then
     printf 'A DELETE response of 204 can mean nothing was deleted. Confirm with a separate read.\n' >&2
   fi
 fi
-LOG_DIR="$ACCOUNTANT_ROOT/migration-workspace/logs"
-LOG_FILE="$LOG_DIR/moneybird-writes.jsonl"
 LOG_TIMESTAMP="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-LOG_RECORD="$(jq -cn --arg timestamp "$LOG_TIMESTAMP" --arg method "$METHOD" --arg path "$URL_PATH" --arg administration_id "$ADMIN_ID" --argjson exit_status "$WRITE_STATUS" '{timestamp:$timestamp,method:$method,path:$path,administration_id:$administration_id,exit_status:$exit_status}')"
+LOG_RECORD="$(jq -cn --arg timestamp "$LOG_TIMESTAMP" --arg method "$METHOD" --arg path "$URL_PATH" --arg administration_id "$ADMIN_ID" --argjson exit_status "$WRITE_STATUS" --arg approval_reference "$APPROVAL_REF" --arg batch_key "$INTENT_BATCH_KEY" --arg payload_digest "$PAYLOAD_DIGEST" '{timestamp:$timestamp,method:$method,path:$path,administration_id:$administration_id,exit_status:$exit_status,approval_reference:$approval_reference,batch_key:$batch_key,payload_digest:$payload_digest}')"
 if (umask 077; mkdir -p "$LOG_DIR" && printf '%s\n' "$LOG_RECORD" >> "$LOG_FILE"); then
   chmod 600 "$LOG_FILE" 2>/dev/null || true
 else

@@ -1,6 +1,6 @@
 ---
 title: "MBD-009 -- Pilot write is logged"
-description: "This scenario validates Pilot write is logged for `MBD-009`. It focuses on the need to confirm that a confirmed pilot write appends one body-free line to the write log."
+description: "This scenario validates Pilot write is logged for `MBD-009`. It focuses on the need to confirm that a confirmed pilot write appends one body-free line with the approval reference, batch key and payload digest to the write log."
 version: 1.0.0.0
 ---
 
@@ -12,11 +12,11 @@ This document captures the realistic user-testing contract, current behavior, ex
 
 ## 1. OVERVIEW
 
-This scenario validates Pilot write is logged for `MBD-009`. It focuses on the need to confirm that a confirmed pilot write appends one body-free line to the write log.
+This scenario validates Pilot write is logged for `MBD-009`. It focuses on the need to confirm that a confirmed pilot write appends one body-free line with the approval reference, batch key and payload digest to the write log.
 
 ### Why This Matters
 
-The write log is the local journal of what was attempted. It must record every write without copying financial content.
+The write log is the local journal of what was attempted. It must record every write without copying financial content, and its join keys must tie the row back to the approved payload.
 
 ---
 
@@ -24,13 +24,13 @@ The write log is the local journal of what was attempted. It must record every w
 
 Operators run the exact prompt and command sequence for `MBD-009` and confirm the expected signals without contradictory evidence.
 
-- Objective: Confirm that a confirmed pilot write appends one body-free line to the write log.
+- Objective: Confirm that a confirmed pilot write appends one body-free line with the join keys to the write log.
 - Real user request: `Make the approved pilot write and show me what was recorded locally.`
 - Prompt: `Run a confirmed contact create in the pilot administration and show me the write log line it leaves.`
-- Expected execution process: The agent sets the pilot label `PILOT_ADMIN`, runs a confirmed create with `--approval "$APPROVAL_REF"` against the stub and reads the last log line with `jq`.
-- Expected signals: The guard reports the write, the cache note and a `response:` summary line. The log line holds the method, path, administration, exit status and time, with no body field.
+- Expected execution process: The agent sets the pilot label `PILOT_ADMIN`, records the preview's `payload-digest` in the `WRITE_INTENT`, runs a confirmed create with `--approval "$APPROVAL_REF"` against the stub and reads the last log line with `jq`.
+- Expected signals: The guard reports the write, the cache note and a `response:` summary line. The log line holds the method, path, administration, exit status, approval reference, batch key and payload digest, with no body field.
 - Desired user-visible outcome: The operator sees one log line per write and no record content in it.
-- Pass/fail: PASS if the guard exits 0, the log line shows `POST`, `PILOT_ADMIN` and exit status 0 and `jq` finds no `body` key. FAIL if no line is written or the line carries a request or response body.
+- Pass/fail: PASS if the guard exits 0, the log line shows `POST`, `PILOT_ADMIN` and exit status 0, `jq` finds the three join keys and no `body` key. FAIL if no line is written or the line carries a request or response body.
 - Feature catalog: [Write log](../../feature-catalog/write-guard/write-log.md)
 
 ---
@@ -47,18 +47,18 @@ Operators run the exact prompt and command sequence for `MBD-009` and confirm th
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| MBD-009 | Pilot write is logged | Confirm that a confirmed pilot write appends one body-free line to the write log | `Run a confirmed contact create in the pilot administration and show me the write log line it leaves.` | 1. `bash: write PILOT_ADMIN to the temporary .env and a WRITE_INTENT line to the run journal` -> 2. `moneybird-guard --confirm-write --approval "$APPROVAL_REF" contacts create` -> 3. `bash: jq . moneybird-writes.jsonl` -> 4. `bash: jq -e "has(\"body\") | not"` | Step 1: the temporary `.env` holds the pilot label. Step 2: `Moneybird write succeeded: POST`, the cached GET note and a `response:` summary line. Step 3: one JSON line. Step 4: `true` | Captured guard output and the single log line | PASS if the guard exits 0, the log line shows `POST`, `PILOT_ADMIN` and exit status 0 and `jq` finds no `body` key. FAIL if no line is written or the line carries a request or response body. | 1. Confirm `jq` is installed. 2. Confirm the write passed the pilot gate. 3. Read the log block at the end of `moneybird-guard` |
+| MBD-009 | Pilot write is logged | Confirm that a confirmed pilot write appends one body-free line with the join keys to the write log | `Run a confirmed contact create in the pilot administration and show me the write log line it leaves.` | 1. `bash: write PILOT_ADMIN to the temporary .env, a generated key and a WRITE_INTENT line with the preview digest to the run journal` -> 2. `moneybird-guard --confirm-write --approval "$APPROVAL_REF" contacts create` -> 3. `bash: jq . moneybird-writes.jsonl` -> 4. `bash: jq -e "has(\"approval_reference\") and has(\"batch_key\") and has(\"payload_digest\") and (has(\"body\") | not)"` | Step 1: the temporary `.env` holds the pilot label and the journal holds the digest. Step 2: `Moneybird write succeeded: POST`, the cached GET note and a `response:` summary line. Step 3: one JSON line. Step 4: `true` | Captured guard output and the single log line | PASS if the guard exits 0, the log line shows `POST`, `PILOT_ADMIN` and exit status 0, `jq` finds the three join keys and no `body` key. FAIL if no line is written or the line carries a request or response body. | 1. Confirm `jq` is installed. 2. Confirm the write passed the pilot gate. 3. Read the digest and log block at the end of `moneybird-guard` |
 
 ### Command Block
 
-Run the block from the `cli-moneybird/` package root. It uses only the packaged stub and a temporary folder that the block removes on exit. It never touches the real CLI session, `.env` or `.env.writer`. `MONEYBIRD_GUARD_TEST=1` is a test-only setting. It lets the guard honor the scratch root, the stub CLI and the temporary writer configuration folder. Never set it in a real session. The write targets the pilot label only and goes to the stub, not to Moneybird.
+Run the block from the `cli-moneybird/` package root. It uses only the packaged stub and a temporary folder that the block removes on exit. It never touches the real CLI session, `.env` or `.env.writer`. `MONEYBIRD_GUARD_TEST=1` is a test-only setting. It lets the guard honor the scratch root, the stub CLI and the temporary writer configuration folder. Never set it in a real session. The key is generated inside the temporary folder and removed with it. The write targets the pilot label only and goes to the stub, not to Moneybird.
 
 ```bash
 bash <<'SCENARIO'
 SKILL_ROOT="$PWD"
 TEST_ROOT="$(mktemp -d "${TMPDIR:-/tmp}/cli-moneybird.XXXXXX")"
 trap 'rm -rf "$TEST_ROOT"' EXIT
-mkdir -p "$TEST_ROOT/home" "$TEST_ROOT/accountant/migration-workspace/RunJournal" "$TEST_ROOT/writer"
+mkdir -p "$TEST_ROOT/home" "$TEST_ROOT/accountant/migration-workspace/RunJournal" "$TEST_ROOT/accountant/migration-workspace/.secrets" "$TEST_ROOT/writer"
 export HOME="$TEST_ROOT/home" MONEYBIRD_GUARD_TEST=1 MONEYBIRD_ENV_DIR="$TEST_ROOT/accountant"
 export MONEYBIRD_CLI="$SKILL_ROOT/cli/moneybird-cli/tests/stub-moneybird-cli"
 export MONEYBIRD_WRITER_CONFIG_DIR="$TEST_ROOT/writer"
@@ -66,13 +66,17 @@ unset CLAUDECODE AI_SESSION_CHILD ACCOUNTANT_AGENT_SESSION CODEX_SANDBOX
 export MONEYBIRD_TEST_LOG="$TEST_ROOT/invocations.log" MONEYBIRD_TEST_ADMINISTRATION_ID="PILOT_ADMIN"
 GUARD="$SKILL_ROOT/cli/moneybird-cli/moneybird-guard"
 printf 'MONEYBIRD_PILOT_ADMINISTRATION_ID=PILOT_ADMIN\n' > "$MONEYBIRD_ENV_DIR/.env"
+KEY_FILE="$MONEYBIRD_ENV_DIR/migration-workspace/.secrets/alias-hmac.key"
+python3 -I -c 'import secrets; print(secrets.token_hex(32), end="")' > "$KEY_FILE"
 APPROVAL_REF="test-approval-ref"
-printf '{"new_state": "WRITE_INTENT", "approval_reference": "%s"}\n' "$APPROVAL_REF" > "$MONEYBIRD_ENV_DIR/migration-workspace/RunJournal/run-journal.jsonl"
+PREVIEW="$("$GUARD" contacts create 2>&1 || true)"
+PAYLOAD_DIGEST="$(printf '%s\n' "$PREVIEW" | sed -n 's/^payload-digest: //p')"
+printf '{"new_state": "WRITE_INTENT", "approval_reference": "%s", "payload_digest": "%s", "batch_key": "batch-pilot"}\n' "$APPROVAL_REF" "$PAYLOAD_DIGEST" > "$MONEYBIRD_ENV_DIR/migration-workspace/RunJournal/run-journal.jsonl"
 "$GUARD" --confirm-write --approval "$APPROVAL_REF" contacts create
 echo "exit=$?"
 LOG="$MONEYBIRD_ENV_DIR/migration-workspace/logs/moneybird-writes.jsonl"
 jq . "$LOG"
-jq -e 'has("body") | not' "$LOG"
+jq -e 'has("approval_reference") and has("batch_key") and has("payload_digest") and (has("body") | not)' "$LOG"
 SCENARIO
 ```
 
@@ -86,6 +90,7 @@ SCENARIO
 |---|---|
 | [`manual-testing-playbook.md`](../manual-testing-playbook.md) | Root directory page and scenario summary |
 | [`feature-catalog/write-guard/write-log.md`](../../feature-catalog/write-guard/write-log.md) | Feature-catalog entry for Write log |
+| [`feature-catalog/write-guard/payload-bound-approval.md`](../../feature-catalog/write-guard/payload-bound-approval.md) | Feature-catalog entry for the digest binding behind the join keys |
 
 ### Implementation And Test Anchors
 

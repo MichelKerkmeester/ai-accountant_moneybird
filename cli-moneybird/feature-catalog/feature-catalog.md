@@ -20,7 +20,7 @@ This document combines the current feature inventory for the `cli-moneybird` ski
 
 Use this catalog as the canonical inventory for the live `cli-moneybird` feature surface. The numbered sections below group the skill by capability area so readers can move from a top-level summary into per-feature reference files without losing implementation or validation context.
 
-The skill has two working layers. The official `moneybird-cli` owns REST routing. The local `moneybird-guard` wraps every API call with a dry-run preview, a read-only lock, a confirmation lock, a writer configuration check, a pilot administration gate, an approval gate, a write log and an output boundary. Bank file imports, tax rate creation, period locks and manual VAT filing stay with the operator in the Moneybird UI.
+The skill has two working layers. The official `moneybird-cli` owns REST routing. The local `moneybird-guard` wraps every API call with a dry-run preview, a read-only lock, a confirmation lock, a writer configuration check, a pilot administration gate, an approval gate, a payload digest binding, a write log and an output boundary. Bank file imports, tax rate creation, period locks and manual VAT filing stay with the operator in the Moneybird UI.
 
 Every live write in this skill targets the pilot administration until the operator approves a production batch. The offline guard suite and the manual testing playbook are the validation anchors cited in each per-feature file.
 
@@ -128,15 +128,31 @@ See [`write-guard/pilot-administration-gate.md`](write-guard/pilot-administratio
 
 #### Description
 
-Each confirmed write attempt appends one body-free JSON line with time, method, path, administration and exit status under the migration workspace.
+Each confirmed write attempt appends one body-free JSON line with time, method, path, administration, exit status, approval reference, batch key and payload digest under the migration workspace.
 
 #### Current Reality
 
-The log lives at `migration-workspace/logs/moneybird-writes.jsonl` with owner-only permissions. Failed attempts are logged with their exit status. A successful write also prints that an immediate GET may return cached data.
+The log lives at `migration-workspace/logs/moneybird-writes.jsonl` with owner-only permissions. Failed attempts are logged with their exit status. The approval reference, batch key and payload digest join the row back to its approved payload. A successful write also prints that an immediate GET may return cached data.
 
 #### Source Files
 
 See [`write-guard/write-log.md`](write-guard/write-log.md) for full implementation and test file listings.
+
+---
+
+### Payload-bound approval
+
+#### Description
+
+Each write runs only for the exact payload the Operator approved: the guard matches a keyed digest of the writer-session dry run with the `payload_digest` in the run journal and runs a reference and digest pair once.
+
+#### Current Reality
+
+The exit-3 preview prints the digest to copy into the `WRITE_INTENT`. A missing digest or a mismatch exits 9 (`PAYLOAD_MISMATCH`) before the real call, and a `--file` write also binds the file bytes to `attachment_digest`. A pair that already has a write-log row exits 8 as consumed.
+
+#### Source Files
+
+See [`write-guard/payload-bound-approval.md`](write-guard/payload-bound-approval.md) for full implementation and test file listings.
 
 ---
 

@@ -37,7 +37,7 @@ If the route fails after local checks, inspect `moneybird-cli RESOURCE ACTION --
 
 ## 2. CLI AND GUARD FAILURES
 
-The canonical exit-code table lives in [`cli.md`](cli.md) section 3. The rows below cover the guard's own exits 2 to 8.
+The canonical exit-code table lives in [`cli.md`](cli.md) section 3. The rows below cover the guard's own exits 2 to 9.
 
 | What you see | Why | Fix |
 |---|---|---|
@@ -49,7 +49,8 @@ The canonical exit-code table lives in [`cli.md`](cli.md) section 3. The rows be
 | Guard exit 5 | `--out` is outside `migration-workspace/` or crosses a symlink | Choose a path below `<Accountant root>/migration-workspace/`. |
 | Guard exit 6 | `MONEYBIRD_GUARD_READ_ONLY=1` blocks a non-GET method | Keep the lock set for read-only work. Use a write role only when the migration gate requires a write. |
 | Guard exit 7 | The writer configuration folder `$HOME/.config/moneybird-cli-writer` does not exist | Run `moneybird-guard login-from-env --writer` after the pilot gate. The guard never falls back to the reader session. |
-| Guard exit 8 | The write lacks `--approval <ref>` or the reference is not in the run journal | Check the `WRITE_INTENT` entry in `migration-workspace/RunJournal/run-journal.jsonl` and repeat with `--approval "$APPROVAL_REF"`. |
+| Guard exit 8 | The write lacks `--approval <ref>`, the reference is not in the run journal, or the reference and payload digest pair already has a write-log row | Check the `WRITE_INTENT` entry in `migration-workspace/RunJournal/run-journal.jsonl` and repeat with `--approval "$APPROVAL_REF"`. A consumed pair needs a new `WRITE_INTENT` entry. |
+| Guard exit 9 | The writer-session payload or the attachment bytes do not match the approved digest, or the approved entry carries no digest (`PAYLOAD_MISMATCH`) | Re-run the preview, copy its `payload-digest` line, and its `attachment-digest` line for a `--file` write, into a new `WRITE_INTENT` entry, then retry with the new reference. A rotated key file has the same recovery. |
 | CLI dry-run does not begin with `METHOD URL` | Route help or the local spec does not resolve the operation | Stop. Check the resource and action with pinned CLI help. Do not hand-build an unguarded request. |
 
 ---

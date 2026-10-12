@@ -92,7 +92,7 @@ The skill routes each request by operation. REST work goes through the official 
 
 - A GET call runs.
 - A non-GET call is blocked when `MONEYBIRD_GUARD_READ_ONLY=1` is set.
-- Otherwise a non-GET call needs `--confirm-write`, an existing writer configuration folder and the pilot administration as its target. It also needs `--approval <ref>` matching the `approval_reference` of a `WRITE_INTENT` entry in `migration-workspace/RunJournal/run-journal.jsonl`.
+- Otherwise a non-GET call needs `--confirm-write`, an existing writer configuration folder and the pilot administration as its target. It also needs `--approval <ref>` matching the `approval_reference` of a `WRITE_INTENT` entry in `migration-workspace/RunJournal/run-journal.jsonl` whose `payload_digest` equals the keyed digest of the writer-session dry run, and the reference and digest pair must not be consumed yet.
 - A production batch needs the same checks plus `--production`, after the Operator approves that batch.
 
 UI-only tasks stay with the Operator.
@@ -147,7 +147,8 @@ Use it for Moneybird API reads, a pilot migration write, document attachments an
 | Guard exits 5 | The `--out` path leaves `migration-workspace/` | Choose a path inside the workspace |
 | Guard exits 6 | The read-only lock blocks a non-GET call | Keep the lock for read-only work. Use a write session only when the approved migration gate requires a write |
 | Guard exits 7 | The writer configuration folder is missing | Run `moneybird-guard login-from-env --writer` after the pilot gate |
-| Guard exits 8 | The write lacks `--approval`, or the reference is not in the run journal | Check the `WRITE_INTENT` entry and repeat with `--approval "$APPROVAL_REF"` |
+| Guard exits 8 | The write lacks `--approval`, the reference is not in the run journal or the reference and digest pair is consumed | Check the `WRITE_INTENT` entry and repeat with `--approval "$APPROVAL_REF"`. A consumed pair needs a new entry |
+| Guard exits 9 | The payload or the attachment bytes do not match the approved digest | Re-run the preview, copy the `payload-digest` line into a new `WRITE_INTENT` entry and retry with the new reference |
 | A list leaves out older records | The API defaults to the current year | Add an explicit period filter, such as `--filter period:YYYY`, and read again |
 
 [`references/troubleshooting.md`](references/troubleshooting.md) has the full diagnostic sequence.

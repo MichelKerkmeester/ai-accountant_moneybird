@@ -27,6 +27,10 @@ Confirm the source register, mapping, record ID strategy and target administrati
 
 The CLI parameter names for a route can vary with the OpenAPI schema. For every field not named in the supplied facts, check `moneybird-cli RESOURCE ACTION --help` and mark it `UNVERIFIED` until confirmed. Do not infer a field from a similar endpoint.
 
+### Three Steps for Every Write
+
+Every recipe write runs in three steps. First run the command without `--confirm-write` and review the `METHOD URL` preview. The preview prints one `payload-digest: <hex>` line. Then record the printed `payload-digest` in the write's `WRITE_INTENT` entry in `migration-workspace/RunJournal/run-journal.jsonl` under a fresh approval reference. Then run the same command with `--confirm-write --approval "$APPROVAL_REF"`. Each write has its own entry, reference and digest. The guard refuses a payload that changed after approval and a reference and digest pair that was already used. The [write contract](../../sk-moneybird-accountant/references/migration/shared-mechanisms.md#route-contract) owns the gate order, the digest rule and the exit set.
+
 ### Output Rules
 
 Use `--out migration-workspace/...` for saved reads. Without `--out`, the guard prints one summary line instead of the response body. The guard rejects paths outside the workspace. Keep source files and API output out of this skill and other tracked files.

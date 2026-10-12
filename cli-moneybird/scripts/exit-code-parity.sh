@@ -87,15 +87,15 @@ fi
 # 4. GUARD EXIT CODES
 # ───────────────────────────────────────────────────────────────
 
-# Collect the die codes and keep the guard's own range, exits 2 to 8
+# Collect the die codes from 2 upward, so the payload-mismatch exit 9 counts as a guard code
 GUARD_CODES_RAW=$(grep -v '^[[:space:]]*#' "$GUARD" |
     grep -oE '(^|[^[:alnum:]_])die[[:space:]]+[0-9]+' |
     awk '{print $NF}' |
-    awk '$1 >= 2 && $1 <= 8' |
+    awk '$1 >= 2' |
     sort -n -u |
     tr '\n' ' ')
 if [[ -z "${GUARD_CODES_RAW//[[:space:]]/}" ]]; then
-    printf 'error: no guard exit codes 2 to 8 found in %s\n' "$GUARD" >&2
+    printf 'error: no guard exit codes 2 and up found in %s\n' "$GUARD" >&2
     exit 2
 fi
 read -r -a GUARD_CODES <<< "$GUARD_CODES_RAW"

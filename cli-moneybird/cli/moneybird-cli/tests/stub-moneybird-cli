@@ -7,6 +7,7 @@ ADMIN_ID="${MONEYBIRD_TEST_ADMINISTRATION_ID:-PILOT_ADMIN}"
 RESOURCE=""
 ACTION=""
 RECORD_ID="stub-record"
+FILE_PATH=""
 DRY_RUN=0
 LOGIN=0
 ARGS=()
@@ -20,6 +21,11 @@ while [[ $# -gt 0 ]]; do
     --dry-run)
       DRY_RUN=1
       shift
+      ;;
+    --file)
+      [[ $# -ge 2 ]] || exit 2
+      FILE_PATH="$2"
+      shift 2
       ;;
     --administration)
       [[ $# -ge 2 ]] || exit 2
@@ -61,6 +67,11 @@ case "$ACTION" in
   delete) METHOD="DELETE" ;;
   *) METHOD="GET" ;;
 esac
+# WHY: A forwarded file makes the request a multipart write, so the guard's
+# attachment binding can be rehearsed offline with the real route shape.
+if [[ -n "$FILE_PATH" ]]; then
+  METHOD="POST"
+fi
 
 if [[ "$ACTION" == "list" || "$ACTION" == "create" ]]; then
   URL="https://moneybird.com/api/v2/$ADMIN_ID/$RESOURCE.json"
@@ -75,7 +86,14 @@ if [[ $DRY_RUN -eq 1 ]]; then
   fi
   printf '%s %s\n' "$METHOD" "$URL"
   if [[ "$METHOD" == "POST" || "$METHOD" == "PATCH" ]]; then
-    printf '{"%s":{}}\n' "$RESOURCE"
+    if [[ -n "${MONEYBIRD_TEST_DRY_BODY:-}" ]]; then
+      printf '%s\n' "$MONEYBIRD_TEST_DRY_BODY"
+    else
+      printf '{"%s":{}}\n' "$RESOURCE"
+    fi
+  fi
+  if [[ -n "$FILE_PATH" ]]; then
+    printf 'multipart field file=%s\n' "$FILE_PATH"
   fi
   exit 0
 fi
