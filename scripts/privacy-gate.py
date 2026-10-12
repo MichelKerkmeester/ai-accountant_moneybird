@@ -130,6 +130,7 @@ SQUEEZED_IBAN_RE = re.compile(
     r"(?<![0-9A-Z])[A-Z]{2}[0-9]{2}[A-Z0-9]{10,31}", re.IGNORECASE)
 # Wide enough for a 34 character IBAN with a separator after every character.
 IBAN_TAIL_LIMIT = 4096
+UPPER_IBAN_RE = re.compile(r"[A-Z]{2}[0-9]{2}[A-Z0-9]{10,31}")
 IBAN_START_RE = re.compile(r"(?<![0-9A-Za-z])[A-Za-z]{2}[0-9]{2}")
 IBAN_SEPARATORS_RE = re.compile(r"[ \t.\-]")
 SQUEEZE_RE = re.compile(r"[\s.\-]")
@@ -575,7 +576,9 @@ def squeezed_iban_lengths(text: str) -> "List[int]":
     # only from there on.
     for start in IBAN_START_RE.finditer(text):
         tail = squeeze(text[start.start():start.start() + IBAN_TAIL_LIMIT])
-        match = SQUEEZED_IBAN_RE.match(tail)
+        # Only an uppercase run counts here. Prose words after a code such as
+        # a section label would otherwise pass the checksum by chance.
+        match = UPPER_IBAN_RE.match(tail)
         if match is not None:
             bodies.append(match.group(0))
     lengths = []
