@@ -211,6 +211,8 @@ def route_resources(request):
 4. Extract with `jortt-cli call SLUG ... --all --out FILE`. The CLI follows next links and merges list data into one array.
 5. Read the saved artifact only from `migration-workspace/`. Stdout reports the HTTP status and item count or top-level keys.
 
+`jortt-cli` is the retry owner for its own 429 responses. Let it finish, and never add a second retry layer in a wrapper, script or calling agent.
+
 ### Output Location
 
 All saved extracts and downloads belong under `AI Systems/Moneybird Accountant/migration-workspace/`. That directory is gitignored. Never write extracted records into this skill, tracked documentation or another service. This skill does not use Code Mode.
