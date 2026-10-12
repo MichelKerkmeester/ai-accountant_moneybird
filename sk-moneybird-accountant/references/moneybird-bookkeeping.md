@@ -45,7 +45,7 @@ Match a receipt to the existing sales invoice. Do not record the receipt as anot
 
 ### Purchase invoices and receipts
 
-Add the source invoice or receipt as an incoming document, then process it into the accounts. Per Moneybird help, a document in the incoming inbox is not booked and is not included in VAT until processed. Check the supplier, date, invoice number, amount, VAT, and accounting category before saving.
+Add the source invoice or receipt as an incoming document, then process it into the accounts. The [purchase invoice reference](./purchase-invoices.md) gives the full booking flow and the VAT rate for a Dutch invoice, a reverse-charged foreign invoice and an invoice with foreign VAT. Per Moneybird help, a document in the incoming inbox is not booked and is not included in VAT until processed. Check the supplier, date, invoice number, amount, VAT, and accounting category before saving.
 
 - Product references: [add a purchase invoice or receipt](https://helpcenter.moneybird.nl/nl/articles/207118-inkoopfactuur-of-bon-toevoegen) and [process incoming documents](https://helpcenter.moneybird.nl/nl/articles/207134-verwerk-inkoopfacturen-en-bonnen).
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
@@ -128,5 +128,6 @@ Moneybird does not prepare the proprietor's complete personal income-tax return.
 ## 8. RELATED RESOURCES
 
 - [Dutch tax rules](./dutch-tax-rules.md) explains the general tax rules and routes to the year folders with the yearly amounts.
+- [Purchase invoices](./purchase-invoices.md) explains booking purchase invoices, receipts and orders with Dutch or reverse-charged VAT.
 - [Jortt to Moneybird mapping](./migration/jortt-to-moneybird-mapping.md) explains source-to-target concept mapping.
 - [Migration phase index](./migration/README.md) routes historical migration work.

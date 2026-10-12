@@ -250,6 +250,22 @@ Catalog: [feature-catalog/live-bookkeeping-cadence.md](../feature-catalog/bookke
 
 ---
 
+### LIVE-003 | Purchase invoice booking
+
+#### Description
+Verify Route a reverse-charged EU purchase invoice to the purchase invoice reference and its VAT case.
+
+#### Scenario Contract
+Prompt: Book this purchase invoice from an EU software supplier. It shows 0% VAT and says reverse charge. Which steps, VAT rate and references apply? Keep this as an offline routing check.
+
+Desired user-visible outcome: Selects LIVE, names the purchase invoice reference, picks the Binnen EU rate with rubriek 4b and the deduction in 5b, and keeps the write behind the gate.
+
+#### Test Execution
+Feature file: [LIVE-003](offline-routing/purchase-invoice-booking.md)
+Catalog: [feature-catalog/purchase-invoice-booking.md](../feature-catalog/bookkeeping-and-migration/purchase-invoice-booking.md)
+
+---
+
 ### TAX-001 | Current-year ZZP question
 
 #### Description
@@ -337,6 +353,7 @@ No runtime test calls an accounting service. The scenarios remain manual routing
 | MIG-006 | Migration plan kit | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-plan-kit.md) |
 | LIVE-001 | Live bookkeeping cadence | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md) |
 | LIVE-002 | Live bookkeeping cadence | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md) |
+| LIVE-003 | Purchase invoice booking | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/purchase-invoice-booking.md) |
 | TAX-001 | Year-specific ZZP guidance | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md) |
 | API-001 | CLI tool handoff | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/api-tool-handoff.md) |
 | PRIV-001 | Migration data privacy | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-data-privacy.md) |

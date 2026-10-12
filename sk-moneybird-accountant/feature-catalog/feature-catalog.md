@@ -167,6 +167,22 @@ See [bookkeeping-and-migration/live-bookkeeping-cadence.md](bookkeeping-and-migr
 
 ---
 
+### Purchase invoice booking
+
+#### Description
+
+Routes the booking of a purchase invoice, receipt or order to the flow and VAT rate that fit the invoice.
+
+#### Current Reality
+
+The purchase invoice reference sorts each invoice into a case: Dutch VAT, reverse charge from an EU or non-EU supplier, foreign VAT, import or domestic reverse charge. Each case names its Moneybird VAT rate and VAT return rubriek. The corresponding manual scenario checks route selection and the write boundary without API access.
+
+#### Source Files
+
+See [bookkeeping-and-migration/purchase-invoice-booking.md](bookkeeping-and-migration/purchase-invoice-booking.md) for source and validation anchors.
+
+---
+
 ### Year-specific ZZP guidance
 
 #### Description

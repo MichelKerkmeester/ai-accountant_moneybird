@@ -63,7 +63,7 @@ If the request is ambiguous between the two modes, ask one concise question abou
 |---|---|---|
 | ALWAYS | Every task | This skill and the project bootstrap |
 | MIGRATION | Historical migration request | Migration index, the matching phase group, and control framework when a gate, exception, risk, or year lock applies |
-| LIVE BOOKKEEPING | Monthly, quarterly, yearly, or event-level bookkeeping | Moneybird bookkeeping reference, plus the tax index and the year file for any tax topic. During post-cutover migration monitoring, also load references/migration/README.md and references/migration/phases-19-to-21.md. |
+| LIVE BOOKKEEPING | Monthly, quarterly, yearly, or event-level bookkeeping | Moneybird bookkeeping reference, the purchase invoice reference when a purchase invoice, receipt or order is booked, plus the tax index and the year file for any tax topic. During post-cutover migration monitoring, also load references/migration/README.md and references/migration/phases-19-to-21.md. |
 | ZZP QUESTION | Tax, VAT, costs, vehicle, or administration question | Tax and VAT reference, then bookkeeping reference if a posting is also requested |
 | CLI ACTION | A Jortt or Moneybird CLI operation is needed | The matching sibling tool skill before using that CLI |
 
@@ -237,6 +237,7 @@ Return the mode or phase used, a safe decision summary, the references consulted
 - [Dutch tax rules](./references/dutch-tax-rules.md) - how each rule works across years, the year folder index, source conflicts, gaps and record and invoice duties.
 - Tax year folders `references/2020/` to `references/2027/` - one sourced file per topic per year, BV and box 2 included, each opened through its `README.md`.
 - [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) - accounting treatment for common ZZP events.
+- [Purchase invoices](./references/purchase-invoices.md) - booking a purchase invoice, receipt or order, with the VAT rate per case: Dutch VAT, reverse charge from the EU or outside it, foreign VAT, KOR.
 - [Jortt to Moneybird mapping](./references/migration/jortt-to-moneybird-mapping.md) - concept matches and migration traps.
 
 ### Tool skills
@@ -295,4 +296,5 @@ The task is complete when:
 - [Migration index](./references/migration/README.md) maps phases to the plan and gates.
 - [Dutch tax rules](./references/dutch-tax-rules.md) contains the general rules and routes to the topic files per tax year.
 - [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) covers common accounting events.
+- [Purchase invoices](./references/purchase-invoices.md) covers booking purchase invoices and reverse-charged VAT.
 - [Jortt to Moneybird mapping](./references/migration/jortt-to-moneybird-mapping.md) covers source concepts and migration traps.

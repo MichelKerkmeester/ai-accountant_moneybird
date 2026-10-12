@@ -196,6 +196,11 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/purchase-invoices.md",
+    "diskPath": "references/purchase-invoices.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "references/dutch-tax-rules.md",
     "diskPath": "references/dutch-tax-rules.md"
   }

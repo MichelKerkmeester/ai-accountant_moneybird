@@ -14,6 +14,7 @@
         "feature-catalog/bookkeeping-and-migration/migration-trial-and-package-expiry.md",
         "feature-catalog/bookkeeping-and-migration/migration-write-keys-and-run-journal.md",
         "feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md",
+        "feature-catalog/bookkeeping-and-migration/purchase-invoice-booking.md",
         "feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md",
         "manual-testing-playbook/offline-routing/api-tool-handoff.md",
         "manual-testing-playbook/offline-routing/auditfile-read-only-route.md",
@@ -25,6 +26,7 @@
         "manual-testing-playbook/offline-routing/migration-plan-kit.md",
         "manual-testing-playbook/offline-routing/operator-tax-boundary.md",
         "manual-testing-playbook/offline-routing/privacy-boundary.md",
+        "manual-testing-playbook/offline-routing/purchase-invoice-booking.md",
         "manual-testing-playbook/offline-routing/quarterly-yearly-bookkeeping.md",
         "manual-testing-playbook/offline-routing/trial-expiry-stop.md",
         "manual-testing-playbook/offline-routing/write-journal-crash-resume.md",
@@ -145,7 +147,8 @@
         "references/migration/phases-3-to-5.md",
         "references/migration/phases-6-to-9.md",
         "references/migration/shared-mechanisms.md",
-        "references/moneybird-bookkeeping.md"
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
       ],
       "packet": ".",
       "workflowMode": "sk-moneybird-accountant"

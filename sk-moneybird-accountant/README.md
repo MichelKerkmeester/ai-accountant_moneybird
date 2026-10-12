@@ -201,3 +201,4 @@ No. A connection needs separate, current evidence from the relevant CLI.
 | [Dutch tax rules](references/dutch-tax-rules.md) | How each rule works across years, source conflicts, gaps and record duties |
 | [Tax year folders](references/2024/README.md) | One folder per tax year 2020 to 2027 with a file per topic: BTW, income tax, Zvw, entrepreneur deductions, investments, costs and car, box 3, box 2, BV, pension, work relationship and procedure |
 | [Bookkeeping reference](references/moneybird-bookkeeping.md) | Common Moneybird accounting events |
+| [Purchase invoice reference](references/purchase-invoices.md) | Booking purchase invoices, receipts and orders, with the VAT rate per case |
