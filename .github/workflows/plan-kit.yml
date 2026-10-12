@@ -26,3 +26,5 @@ jobs:
         run: python3 -I sk-moneybird-accountant/scripts/generate-plan-kit.py --check
       - name: Plan kit tests
         run: bash sk-moneybird-accountant/scripts/plan-kit-test.sh
+      - name: Session context tests
+        run: bash sk-moneybird-accountant/scripts/session-context-test.sh

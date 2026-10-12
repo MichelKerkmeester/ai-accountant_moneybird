@@ -22,3 +22,6 @@ migration-workspace/
 # Python bytecode caches
 __pycache__/
 *.pyc
+
+# Generated session context with the clock and a narrow migration projection, rebuilt each session
+/session-context.json
