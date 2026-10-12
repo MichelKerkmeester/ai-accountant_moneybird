@@ -24,6 +24,7 @@ Tax year 2021 is a past year. Its law is enacted, and later changes do not alter
 
 ## 2. TOPIC FILES
 
+<!-- GENERATED:topic-files:start -->
 | File | Covers | Values | UNVERIFIED | Not enacted |
 |---|---|---|---|---|
 | [btw.md](btw.md) | This file covers Dutch VAT rates, exemptions, the KOR, returns, cross-border VAT and bookkeeping rules checked for tax year 2021. | 37 | 6 | 5 |
@@ -38,6 +39,7 @@ Tax year 2021 is a past year. Its law is enacted, and later changes do not alter
 | [pensioen-en-aov.md](pensioen-en-aov.md) | Jaarruimte and reserveringsruimte, lijfrente products, stakingswinst conversion, the oudedagsreserve link, afkoop rules and AOV premium deductibility for tax year 2021. | 24 | 0 | 0 |
 | [arbeidsrelatie.md](arbeidsrelatie.md) | Wet DBA, the handhavingsmoratorium and the aanwijzing route, modelovereenkomsten and case law on the work relationship for tax year 2021, with the later VBAR hourly rate presumption and BAZ bill named as context. | 11 | 0 | 3 |
 | [procedure.md](procedure.md) | Filing deadlines, extensions, voorlopige aanslag, belastingrente, navordering, bezwaar, bewaarplicht and registration duties for tax year 2021. | 15 | 0 | 0 |
+<!-- GENERATED:topic-files:end -->
 
 ---
 
@@ -45,6 +47,7 @@ Tax year 2021 is a past year. Its law is enacted, and later changes do not alter
 
 The first two rows of each file's figures table. The topic file carries the source URL and the conditions.
 
+<!-- GENERATED:headline-figures:start -->
 | Topic | Item | Value 2021 | Status | Check |
 |---|---|---|---|---|
 | BTW | Standard VAT rate | 21% | enacted | Verified |
@@ -71,6 +74,7 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Arbeidsrelatie en zelfstandigheid | Loondienst test | Three elements: the possibility of werkgeversgezag, the duty to perform (persoonlijke) arbeid, and pay for the work. The courts weigh among others the nature and duration of the work, how work and working hours are set, embedding in the organisation, the duty to work personally, how the agreements were made, how pay is set and paid and its level, commercial risk, and how far the opdrachtnemer acts or can act as an entrepreneur. Not being in loondienst does not make someone an ondernemer for income tax or VAT | enacted | Verified |
 | Aangifte en procedure | IB return 2021 filing deadline and uitstel | Before 1 May 2022, filing from 1 March 2022. Uitstel must be requested before the filing date, in the annual period before 1 May. A granted uitstel gives 4 months extra, to 1 September 2022. The form can be used only for the first uitstel request, the fiscal partner must request separately, and uitstel usually means belastingrente. Online in Mijn Belastingdienst until 1 May for someone who received an aangiftebrief, paper form otherwise. | enacted | Corrected |
 | Aangifte en procedure | Definitive aanslag 2021 latest | 31 December 2024. With 4 months uitstel the aanslag comes at the latest 30 April 2025. | enacted | Verified |
+<!-- GENERATED:headline-figures:end -->
 
 ---
 

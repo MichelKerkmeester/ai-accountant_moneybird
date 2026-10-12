@@ -1,6 +1,7 @@
 ---
 title: "Aangifte en procedure 2024"
 description: "Filing deadlines and uitstel for income tax and btw, the voorlopige aanslag, belastingrente, the navorderingstermijn, bezwaar, bewaarplicht and KVK and Belastingdienst registration for tax year 2024."
+nav_label: "Aangifte en procedure"
 trigger_phrases:
   - "aangifte en procedure 2024"
   - "belastingaangifte 2024 uitstel"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Aangifte en procedure 2024
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 283.
+Part 1: lines 1-282, 48853 bytes, first heading "# Aangifte en procedure 2024"
+Part 2: lines 283-313, 8387 bytes, first heading "## 6. IN THE BOOKS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2024 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

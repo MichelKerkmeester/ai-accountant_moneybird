@@ -1,6 +1,7 @@
 ---
 title: "Box 2 en aanmerkelijk belang 2024"
 description: "Box 2 income, the aanmerkelijk belang rules, excessief lenen, gebruikelijk loon and pension interactions for tax year 2024."
+nav_label: "Box 2 en aanmerkelijk belang"
 trigger_phrases:
   - "box 2 2024"
   - "aanmerkelijk belang 2024"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Box 2 en aanmerkelijk belang 2024
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 188.
+Part 1: lines 1-187, 46854 bytes, first heading "# Box 2 en aanmerkelijk belang 2024"
+Part 2: lines 188-345, 20446 bytes, first heading "## 4. WORKED EXAMPLES"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2024 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

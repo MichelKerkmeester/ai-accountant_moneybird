@@ -1,6 +1,7 @@
 ---
 title: "Box 2 en aanmerkelijk belang 2020"
 description: "Box 2 income, the aanmerkelijk belang test, loss offset and conversion, gebruikelijk loon and the pensioen in eigen beheer dates for tax year 2020."
+nav_label: "Box 2 en aanmerkelijk belang"
 trigger_phrases:
   - "box 2 2020"
   - "aanmerkelijk belang 2020"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Box 2 en aanmerkelijk belang 2020
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 256.
+Part 1: lines 1-255, 46567 bytes, first heading "# Box 2 en aanmerkelijk belang 2020"
+Part 2: lines 256-298, 9508 bytes, first heading "## 6. IN THE BOOKS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2020 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

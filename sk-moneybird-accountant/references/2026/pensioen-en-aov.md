@@ -1,6 +1,7 @@
 ---
 title: "Pensioen, lijfrente en AOV 2026"
 description: "Key figures, rules, and calculations for jaarruimte, lijfrente, and arbeidsongeschiktheidsverzekering (AOV) for tax year 2026."
+nav_label: "Pensioen, lijfrente en AOV"
 trigger_phrases:
   - "pensioen 2026"
   - "jaarruimte 2026"

@@ -1,6 +1,7 @@
 ---
 title: "Kosten en auto 2024"
 description: "Deductible business costs and car rules for tax year 2024, including the gemengde kosten drempel of € 5.600, the € 0,23 kilometre allowance and the 22% bijtelling."
+nav_label: "Kosten en auto"
 trigger_phrases:
   - "kosten en auto 2024"
   - "zakelijke kosten 2024"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Kosten en auto 2024
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 238.
+Part 1: lines 1-237, 49165 bytes, first heading "# Kosten en auto 2024"
+Part 2: lines 238-271, 7648 bytes, first heading "## 6. IN THE BOOKS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2024 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

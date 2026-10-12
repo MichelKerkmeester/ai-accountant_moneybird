@@ -1,6 +1,7 @@
 ---
 title: "Box 2 en aanmerkelijk belang 2026"
 description: "Box 2 rates, the aanmerkelijk belang tests, excessief lenen, gebruikelijk loon, loss relief and the pension rules that touch box 2 for tax year 2026."
+nav_label: "Box 2 en aanmerkelijk belang"
 trigger_phrases:
   - "box 2 2026"
   - "aanmerkelijk belang 2026"

@@ -1,6 +1,7 @@
 ---
 title: "Arbeidsrelatie en zelfstandigheid 2026"
 description: "Work relationship rules for tax year 2026, covering Wet DBA enforcement, modelovereenkomsten, the VBAR low hourly rate presumption and the BAZ bill."
+nav_label: "Arbeidsrelatie en zelfstandigheid"
 trigger_phrases:
   - "arbeidsrelatie 2026"
   - "Wet DBA 2026"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Arbeidsrelatie en zelfstandigheid 2026
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 243.
+Part 1: lines 1-242, 49142 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2026"
+Part 2: lines 243-263, 3682 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

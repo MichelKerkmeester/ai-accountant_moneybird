@@ -1,6 +1,7 @@
 ---
 title: "Inkomstenbelasting box 1 2022"
 description: "This file covers Dutch box 1 rates, heffingskortingen, tariefsaanpassing and the route from business profit to taxable income for tax year 2022."
+nav_label: "Inkomstenbelasting box 1"
 trigger_phrases:
   - "inkomstenbelasting box 1 2022"
   - "box 1 tarieven 2022"

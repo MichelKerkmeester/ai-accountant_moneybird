@@ -14,6 +14,21 @@ version: 1.0.0.0
 
 # Dutch tax rules
 
+<!-- GENERATED:nav:start -->
+Read plan: 10 parts. Next read offset: line 225.
+Part 1: lines 1-224, 47680 bytes, first heading "# Dutch tax rules"
+Part 2: lines 225-344, 29441 bytes, first heading "### 3.2 Income tax box 1 and the Zvw contribution"
+Part 3: lines 345-517, 48865 bytes, first heading "### 3.3 Ondernemersaftrek and MKB-winstvrijstelling"
+Part 4: lines 518-638, 29242 bytes, first heading "### 3.5 Costs and the car"
+Part 5: lines 639-746, 22282 bytes, first heading "### 3.6 Box 3 savings and investments"
+Part 6: lines 747-898, 32160 bytes, first heading "### 3.7 Box 2 and the substantial interest"
+Part 7: lines 899-1030, 32538 bytes, first heading "### 3.8 The BV and vennootschapsbelasting"
+Part 8: lines 1031-1124, 23022 bytes, first heading "### 3.9 Pension, lijfrente and AOV"
+Part 9: lines 1125-1305, 50608 bytes, first heading "### 3.10 Work relationship and procedure"
+Part 10: lines 1306-1547, 47161 bytes, first heading "### Ondernemersaftrek and MKB-winstvrijstelling"
+<!-- GENERATED:nav:end -->
+
+
 **Rule:** Find the tax year first, then read that year's topic file. A rule that holds across years is here, a figure for one year is in the year folder. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
 ---
@@ -83,6 +98,30 @@ The rules below hold across tax years. Each says which years it covers, carries 
 ### 3.1 BTW (VAT)
 
 Year files: `btw.md` in each year folder.
+
+<!-- GENERATED:s3-btw-vat:start -->
+Rows below are generated from the year files named above, which own the values.
+
+| Year | Item | Value | Status | Check | Owner |
+|---|---|---|---|---|---|
+| 2020 | Standard rate | 21% | enacted | Verified | [sk-moneybird-accountant/references/2020/btw.md](2020/btw.md) |
+| 2020 | Reduced rate | 9% for goods and services in Tabel I | enacted | Verified | [sk-moneybird-accountant/references/2020/btw.md](2020/btw.md) |
+| 2021 | Standard VAT rate | 21% | enacted | Verified | [sk-moneybird-accountant/references/2021/btw.md](2021/btw.md) |
+| 2021 | Reduced VAT rate | 9% for goods and services in Tabel I | enacted | Verified | [sk-moneybird-accountant/references/2021/btw.md](2021/btw.md) |
+| 2022 | Standard, reduced and zero rates (Wet OB art. 9) | 21% standard. 9% for goods and services in Tabel I. Nihil for goods and services in Tabel II when the conditions set by algemene maatregel van bestuur are met. | enacted | Verified | [sk-moneybird-accountant/references/2022/btw.md](2022/btw.md) |
+| 2022 | Tabel I goods at 9% | voedingsmiddelen, water, sierteeltproducten, geneesmiddelen en hulpmiddelen, kunst, verzamelvoorwerpen en antiek, boeken en periodieken | enacted | Verified | [sk-moneybird-accountant/references/2022/btw.md](2022/btw.md) |
+| 2023 | Standard rate | 21% | enacted | Verified | [sk-moneybird-accountant/references/2023/btw.md](2023/btw.md) |
+| 2023 | Reduced rate | 9% for goods and services in Tabel I | enacted | Verified | [sk-moneybird-accountant/references/2023/btw.md](2023/btw.md) |
+| 2024 | Standard VAT rate | 21% | enacted | Verified | [sk-moneybird-accountant/references/2024/btw.md](2024/btw.md) |
+| 2024 | Reduced VAT rate | 9% for goods and services in Tabel I | enacted | Verified | [sk-moneybird-accountant/references/2024/btw.md](2024/btw.md) |
+| 2025 | Standard rate | 21% | enacted | Verified | [sk-moneybird-accountant/references/2025/btw.md](2025/btw.md) |
+| 2025 | Reduced rate | 9% for goods and services in Tabel I | enacted | Verified | [sk-moneybird-accountant/references/2025/btw.md](2025/btw.md) |
+| 2026 | Standard rate | 21% | enacted | Verified | [sk-moneybird-accountant/references/2026/btw.md](2026/btw.md) |
+| 2026 | Reduced rate | 9% for goods and services in Tabel I | enacted | Verified | [sk-moneybird-accountant/references/2026/btw.md](2026/btw.md) |
+| 2027 | Standard VAT rate | 21% | enacted | Verified | [sk-moneybird-accountant/references/2027/btw.md](2027/btw.md) |
+| 2027 | Reduced VAT rate | 9% for goods and services in Tabel I | enacted | Verified | [sk-moneybird-accountant/references/2027/btw.md](2027/btw.md) |
+<!-- GENERATED:s3-btw-vat:end -->
+
 
 #### Rate structure 21, 9 and 0 percent (Verified)
 Art. 9 lid 1 Wet OB: "De belasting bedraagt 21 percent." Art. 9 lid 2: 9 percent for goods and services in Tabel I, nihil for those in Tabel II "mits is voldaan aan bij algemene maatregel van bestuur vast te stellen voorwaarden". The identical text was read in the 2020-01-01, 2021-07-01, 2022-01-01, 2023-01-01, 2024-01-01, 2025-01-01 and 2026-01-01 versions. Years 2020 to 2027. Sources: https://wetten.overheid.nl/BWBR0002629/2020-01-01, https://wetten.overheid.nl/BWBR0002629/2022-01-01, https://wetten.overheid.nl/BWBR0002629/2026-01-01
@@ -187,6 +226,46 @@ Debts built up "van 12 maart 2020 tot en met 31 maart 2022", repaid "van 1 oktob
 
 Year files: `inkomstenbelasting.md` and `zvw.md` in each year folder.
 
+<!-- GENERATED:s3-income-tax-box-1-and-the-zvw-contribution:start -->
+Rows below are generated from the year files named above, which own the values.
+
+| Year | Item | Value | Status | Check | Owner |
+|---|---|---|---|---|---|
+| 2020 | Box 1 rates below AOW age | 37,35% up to € 68.507, then 49,50% above | enacted | Verified | [sk-moneybird-accountant/references/2020/inkomstenbelasting.md](2020/inkomstenbelasting.md) |
+| 2020 | Statutory income-tax bands | 9,70% up to € 34.712, then € 3.367 plus 37,35% up to € 68.507, then € 15.989 plus 49,50% above | enacted | Verified | [sk-moneybird-accountant/references/2020/inkomstenbelasting.md](2020/inkomstenbelasting.md) |
+| 2021 | Box 1 below AOW age | 37,10% up to € 68.507, 49,50% above. Statute: 9,45% up to € 35.129, then € 3.319 plus 37,10% up to € 68.507, then € 15.702 plus 49,50%. | enacted | Verified | [sk-moneybird-accountant/references/2021/inkomstenbelasting.md](2021/inkomstenbelasting.md) |
+| 2021 | Box 1 whole year AOW age, born on or after 1 January 1946 | 19,20% up to € 35.129, 37,10% to € 68.507, 49,50% above. | enacted | Verified | [sk-moneybird-accountant/references/2021/inkomstenbelasting.md](2021/inkomstenbelasting.md) |
+| 2022 | Box 1 below AOW age | 37,07% up to € 69.398, then 49,50%. Statutory table: 9,42% up to € 35.472, then € 3.341 plus 37,07% up to € 69.398, then € 15.917 plus 49,50% | enacted | Verified | [sk-moneybird-accountant/references/2022/inkomstenbelasting.md](2022/inkomstenbelasting.md) |
+| 2022 | Box 1 for a full year at AOW age | Born on or after 1 January 1946: 19,17% up to € 35.472, then 37,07% up to € 69.398, then 49,50%. Born before 1 January 1946: 19,17% up to € 36.409, then 37,07% up to € 69.398, then 49,50%. Statutory fixed amounts for the pre-1946 table: € 3.429 and € 15.658 | enacted | Verified | [sk-moneybird-accountant/references/2022/inkomstenbelasting.md](2022/inkomstenbelasting.md) |
+| 2023 | Box 1 below AOW age | 36,93% up to € 73.031, then 49,50% | enacted | Verified | [sk-moneybird-accountant/references/2023/inkomstenbelasting.md](2023/inkomstenbelasting.md) |
+| 2023 | Box 1 full-year AOW age, born on or after 1 January 1946 | 19,03% up to € 37.149, 36,93% to € 73.031, then 49,50% | enacted | Verified | [sk-moneybird-accountant/references/2023/inkomstenbelasting.md](2023/inkomstenbelasting.md) |
+| 2024 | Box 1 below AOW age | 36,97% up to € 75.518, then 49,50%. Statutory table: 9,32% to € 38.098, then € 3.550 plus 36,97% up to € 75.518, then € 17.384 plus 49,50% | enacted | Verified | [sk-moneybird-accountant/references/2024/inkomstenbelasting.md](2024/inkomstenbelasting.md) |
+| 2024 | Box 1 at AOW age, born on or after 1 January 1946 | 19,07% up to € 38.098, 36,97% up to € 75.518, then 49,50% | enacted | Verified | [sk-moneybird-accountant/references/2024/inkomstenbelasting.md](2024/inkomstenbelasting.md) |
+| 2025 | Box 1 below AOW age | 35,82% up to € 38.441, 37,48% from there to € 76.817, 49,50% above € 76.817. Statutory fixed amounts: € 3.140 and € 17.523. | enacted | Verified | [sk-moneybird-accountant/references/2025/inkomstenbelasting.md](2025/inkomstenbelasting.md) |
+| 2025 | Box 1 for whole year at AOW age, born on or after 1 January 1946 | 17,92% up to € 38.441, 37,48% from there to € 76.817, 49,50% above € 76.817. | enacted | Verified | [sk-moneybird-accountant/references/2025/inkomstenbelasting.md](2025/inkomstenbelasting.md) |
+| 2026 | Box 1 below AOW age | 35,75% up to € 38.883 (8,10% plus 27,65%), 37,56% to € 78.426, 49,50% above. Statute fixed amounts € 3.149 and € 18.001 | enacted | Verified | [sk-moneybird-accountant/references/2026/inkomstenbelasting.md](2026/inkomstenbelasting.md) |
+| 2026 | Box 1 at AOW age, born on or after 1 January 1946 | 17,85% up to € 38.883, 37,56% to € 78.426, 49,50% above | enacted | Verified | [sk-moneybird-accountant/references/2026/inkomstenbelasting.md](2026/inkomstenbelasting.md) |
+| 2027 | Box 1 table, enacted text (art. 2.10) | Income-tax part 8,01% up to € 38.883, € 3.114 plus 37,59% to € 79.569, € 18.407 plus 49,50% above. Before the December indexation, the bill replaces this table | adopted-not-yet-in-force | Verified | [sk-moneybird-accountant/references/2027/inkomstenbelasting.md](2027/inkomstenbelasting.md) |
+| 2027 | Box 1 table for people born before 1 January 1946, enacted text (art. 2.10a) | Income-tax part 8,01% up to € 41.123, € 3.293 plus 37,59% to € 79.569, € 17.744 plus 49,50% above | adopted-not-yet-in-force | Verified | [sk-moneybird-accountant/references/2027/inkomstenbelasting.md](2027/inkomstenbelasting.md) |
+| 2020 | Zvw-bijdrage by aanslag | 5,45% | enacted | Verified | [sk-moneybird-accountant/references/2020/zvw.md](2020/zvw.md) |
+| 2020 | Ingehouden Zvw-bijdrage | 5,45% | enacted | Verified | [sk-moneybird-accountant/references/2020/zvw.md](2020/zvw.md) |
+| 2021 | Zvw bijdrage by (voorlopige) aanslag | 5,75% | enacted | Verified | [sk-moneybird-accountant/references/2021/zvw.md](2021/zvw.md) |
+| 2021 | Ingehouden Zvw bijdrage | 5,75% | enacted | Verified | [sk-moneybird-accountant/references/2021/zvw.md](2021/zvw.md) |
+| 2022 | Zvw bijdrage by aanslag | 5,50% | enacted | Verified | [sk-moneybird-accountant/references/2022/zvw.md](2022/zvw.md) |
+| 2022 | Maximum bijdrage-inkomen | € 59.706 | enacted | Verified | [sk-moneybird-accountant/references/2022/zvw.md](2022/zvw.md) |
+| 2023 | Maximum bijdrage-inkomen | € 66.956 | enacted | Verified | [sk-moneybird-accountant/references/2023/zvw.md](2023/zvw.md) |
+| 2023 | Bijdrage Zvw by aanslag | 5,43% | enacted | Verified | [sk-moneybird-accountant/references/2023/zvw.md](2023/zvw.md) |
+| 2024 | Bijdrage Zvw bij (voorlopige) aanslag | 5,32% | enacted | Verified | [sk-moneybird-accountant/references/2024/zvw.md](2024/zvw.md) |
+| 2024 | Maximum bijdrage-inkomen Zvw | € 71.628 | enacted | Verified | [sk-moneybird-accountant/references/2024/zvw.md](2024/zvw.md) |
+| 2025 | Zvw-bijdrage by aanslag | 5,26% | enacted | Verified | [sk-moneybird-accountant/references/2025/zvw.md](2025/zvw.md) |
+| 2025 | Maximum bijdrage-inkomen | € 75.864 | enacted | Verified | [sk-moneybird-accountant/references/2025/zvw.md](2025/zvw.md) |
+| 2026 | Inkomensafhankelijke bijdrage Zvw by (voorlopige) aanslag, rate | 4,85% | enacted | Verified | [sk-moneybird-accountant/references/2026/zvw.md](2026/zvw.md) |
+| 2026 | Maximum bijdrage-inkomen per person per year | € 79.409 | enacted | Verified | [sk-moneybird-accountant/references/2026/zvw.md](2026/zvw.md) |
+| 2027 | Zvw-bijdrage by aanslag for a zelfstandige (verlaagde IAB) | 5,02% | proposed | Verified | [sk-moneybird-accountant/references/2027/zvw.md](2027/zvw.md) |
+| 2027 | Zvw werkgeversheffing (normale IAB) | 6,27% | proposed | Verified | [sk-moneybird-accountant/references/2027/zvw.md](2027/zvw.md) |
+<!-- GENERATED:s3-income-tax-box-1-and-the-zvw-contribution:end -->
+
+
 #### Box 1 table structure and the premie volksverzekeringen
 
 Verified. Wet IB 2001 art. 2.10 lid 1 holds only the income-tax part. The first statutory band is income tax only (9,70% in 2020, 9,45% in 2021, 9,42% in 2022, 9,28% in 2023, 9,32% in 2024, 8,17% in 2025, 8,10% in 2026). The premie volksverzekeringen of 27,65% (AOW 17,90%, Anw 0,10%, Wlz 9,65%) is charged over the premie-inkomen up to a ceiling that equals the end of that first band. The published combined first-bracket rate is the income-tax part plus 27,65%. Above the premium ceiling the statutory income-tax rate equals the combined rate, which is why 2020 to 2024 show one combined rate up to the top boundary. The ceiling is € 34.712 (2020), € 35.129 (2021), € 35.472 (2022), € 37.149 (2023), € 38.098 (2024), € 38.441 (2025) and € 38.883 (2026), and for people born before 1 January 1946 it is € 35.375, € 35.941, € 36.409, € 38.703, € 40.021, € 40.502 and € 41.123. Art. 2.10a holds the table for people born before 1 January 1946 with that higher first boundary. Once the AOW age is reached no AOW premium is due, which is why the AOW-age first-bracket rate is lower. Sources: https://wetten.overheid.nl/BWBR0011353/2020-01-01 to https://wetten.overheid.nl/BWBR0011353/2026-01-01, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/premie_volksverzekeringen to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/premie_volksverzekeringen, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/sociale_verzekeringen/premies_volks_en_werknemersverzekeringen/volksverzekeringen/hoeveel_moet_u_betalen. The https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/sociale_verzekeringen/premies_volks_en_werknemersverzekeringen/volksverzekeringen/hoeveel_moet_u_betalen page states only that the AOW premium stops at AOW age. That Anw and Wlz continue is inference from the AOW-age first-bracket rates (for example 17,85% = 8,10% plus 0,10% plus 9,65% in 2026) and stays UNVERIFIED as a stated rule.
@@ -267,6 +346,30 @@ Verified. Additions of 9,44% of the profit with a yearly maximum reduced by bero
 
 Year files: `ondernemersaftrek.md` in each year folder.
 
+<!-- GENERATED:s3-ondernemersaftrek-and-mkb-winstvrijstelling:start -->
+Rows below are generated from the year files named above, which own the values.
+
+| Year | Item | Value | Status | Check | Owner |
+|---|---|---|---|---|---|
+| 2020 | Urencriterium | 1.225 hours | enacted | Verified | [sk-moneybird-accountant/references/2020/ondernemersaftrek.md](2020/ondernemersaftrek.md) |
+| 2020 | Second test waived, lookback | not an ondernemer in 1 or more of 2015 to 2019 | enacted | Verified | [sk-moneybird-accountant/references/2020/ondernemersaftrek.md](2020/ondernemersaftrek.md) |
+| 2021 | IB-ondernemer status | separate test from btw-ondernemer, judged per activity | enacted | Verified | [sk-moneybird-accountant/references/2021/ondernemersaftrek.md](2021/ondernemersaftrek.md) |
+| 2021 | Ondernemersaftrek components | five parts under art. 3.74, zelfstandigenaftrek, aftrek voor speur- en ontwikkelingswerk, meewerkaftrek, startersaftrek bij arbeidsongeschiktheid and stakingsaftrek, with the startersaftrek as a verhoging of the zelfstandigenaftrek in art. 3.76 lid 3 | enacted | Corrected | [sk-moneybird-accountant/references/2021/ondernemersaftrek.md](2021/ondernemersaftrek.md) |
+| 2022 | Parts of the ondernemersaftrek (art. 3.74) | 5 parts, namely the zelfstandigenaftrek, the aftrek voor speur- en ontwikkelingswerk, the meewerkaftrek, the startersaftrek bij arbeidsongeschiktheid and the stakingsaftrek. The startersaftrek is not a list item but a verhoging of the zelfstandigenaftrek under art. 3.76 lid 3 | enacted | Corrected | [sk-moneybird-accountant/references/2022/ondernemersaftrek.md](2022/ondernemersaftrek.md) |
+| 2022 | Urencriterium | 1.225 hours in the calendar year | enacted | Verified | [sk-moneybird-accountant/references/2022/ondernemersaftrek.md](2022/ondernemersaftrek.md) |
+| 2023 | Urencriterium | 1.225 hours | enacted | Verified | [sk-moneybird-accountant/references/2023/ondernemersaftrek.md](2023/ondernemersaftrek.md) |
+| 2023 | Tweede toets, terugkijkperiode | not an ondernemer in 1 or more of 2018 to 2022 | enacted | Verified | [sk-moneybird-accountant/references/2023/ondernemersaftrek.md](2023/ondernemersaftrek.md) |
+| 2024 | IB-ondernemer status | Judged by the Belastingdienst per activity, separately from the btw | enacted | Verified | [sk-moneybird-accountant/references/2024/ondernemersaftrek.md](2024/ondernemersaftrek.md) |
+| 2024 | Urencriterium | 1.225 hours in the calendar year, with the grotendeels test and the second test waived for anyone not an ondernemer in 1 or more of 2019 to 2023 | enacted | Verified | [sk-moneybird-accountant/references/2024/ondernemersaftrek.md](2024/ondernemersaftrek.md) |
+| 2025 | IB-ondernemer status | Separate test per activity, not the same as the btw-ondernemer test | enacted | Verified | [sk-moneybird-accountant/references/2025/ondernemersaftrek.md](2025/ondernemersaftrek.md) |
+| 2025 | Ondernemersaftrek parts | zelfstandigenaftrek, aftrek voor speur- en ontwikkelingswerk, meewerkaftrek, startersaftrek bij arbeidsongeschiktheid, stakingsaftrek | enacted | Corrected | [sk-moneybird-accountant/references/2025/ondernemersaftrek.md](2025/ondernemersaftrek.md) |
+| 2026 | Urencriterium | 1.225 hours | enacted | Verified | [sk-moneybird-accountant/references/2026/ondernemersaftrek.md](2026/ondernemersaftrek.md) |
+| 2026 | Second test waived, lookback | not an ondernemer in 1 or more of 2021 to 2025 | enacted | Verified | [sk-moneybird-accountant/references/2026/ondernemersaftrek.md](2026/ondernemersaftrek.md) |
+| 2027 | Urencriterium | 1.225 hours (art. 3.6, identical to 2026) | adopted-not-yet-in-force | Verified | [sk-moneybird-accountant/references/2027/ondernemersaftrek.md](2027/ondernemersaftrek.md) |
+| 2027 | Second test waived, lookback | not an ondernemer in 1 or more of 2022 to 2026 | adopted-not-yet-in-force | Verified | [sk-moneybird-accountant/references/2027/ondernemersaftrek.md](2027/ondernemersaftrek.md) |
+<!-- GENERATED:s3-ondernemersaftrek-and-mkb-winstvrijstelling:end -->
+
+
 #### IB-ondernemer status is its own test
 Verified. Who is an ondernemer for the inkomstenbelasting is judged by the Belastingdienst per activity, separately from the btw. Someone who is a btw-ondernemer is not automatically an IB-ondernemer, because the Belastingdienst looks at more conditions for the inkomstenbelasting. The Belastingdienst weighs whether profit is made and how much, independence, capital, time spent, number of clients, publicity, entrepreneurial risk and liability for business debts. Activities are judged one by one and only sufficiently connected activities form one source. Activities in the hobby or family sphere do not make someone an IB-ondernemer. Someone who is not an IB-ondernemer reports inkomsten uit overig werk, the profit is calculated the same way, but there is no right to schemes such as the zelfstandigenaftrek or the investeringsaftrek. The statute defines the ondernemer as the taxpayer for whose account a business is run and who is directly bound for its obligations (art. 3.4), and the zelfstandig beroep counts as an onderneming (art. 3.5). The fetched pages do not literally say that KVK registration alone does not make someone an IB-ondernemer, they say only that the Belastingdienst makes its own assessment after registration. Years 2020 to 2027.
 Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/wanneer_bent_u_ondernemer_voor_de_inkomstenbelasting/ and https://ondernemersplein.overheid.nl/bedrijf-starten/inschrijven-bij-kvk/wanneer-bent-u-ondernemer/ and https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.4 and 3.5)
@@ -343,6 +446,30 @@ Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomens
 
 Year files: `investeringen.md` in each year folder.
 
+<!-- GENERATED:s3-investment-deductions-and-depreciation:start -->
+Rows below are generated from the year files named above, which own the values.
+
+| Year | Item | Value | Status | Check | Owner |
+|---|---|---|---|---|---|
+| 2020 | KIA table, art. 3.41 lid 2 | Five bands. Nil up to € 2.400. 28% of the investment from € 2.400 to € 58.238. A fixed € 16.307 from € 58.238 to € 107.848. € 16.307 minus 7,56% of the part above € 107.848, up to € 323.544. Nil above € 323.544. | enacted | Verified | [sk-moneybird-accountant/references/2020/investeringen.md](2020/investeringen.md) |
+| 2020 | KIA in a samenwerkingsverband, art. 3.41 lid 3 | Partnership investments and the taxpayer's own investments are added, the table is applied to the sum, and the result is multiplied by the own investment amount divided by the sum. A share normally in proportion to the (over)winst, another reasonable key allowed if applied consistently. | enacted | Verified | [sk-moneybird-accountant/references/2020/investeringen.md](2020/investeringen.md) |
+| 2021 | KIA table (art. 3.41 lid 2) | nil up to € 2.400, 28% of the investment up to € 59.170, € 16.568 up to € 109.574, € 16.568 minus 7,56% of the part above € 109.574 up to € 328.721, nil above € 328.721 | enacted | Verified | [sk-moneybird-accountant/references/2021/investeringen.md](2021/investeringen.md) |
+| 2021 | KIA per-asset minimum (art. 3.45 lid 2 onderdeel b) | € 450 | enacted | Verified | [sk-moneybird-accountant/references/2021/investeringen.md](2021/investeringen.md) |
+| 2022 | KIA table | nil up to € 2.400, 28% to € 59.939, € 16.784 to € 110.998, € 16.784 minus 7,56% of the excess over € 110.998 up to € 332.994, nil above € 332.994 | enacted | Verified | [sk-moneybird-accountant/references/2022/investeringen.md](2022/investeringen.md) |
+| 2022 | KIA per-asset minimum | € 450 | enacted | Verified | [sk-moneybird-accountant/references/2022/investeringen.md](2022/investeringen.md) |
+| 2023 | KIA table (art. 3.41 lid 2) | nil up to € 2.600, 28% of the investment up to € 63.716, the fixed € 17.841 up to € 117.991, € 17.841 minus 7,56% of the excess over € 117.991 up to € 353.973, nil above € 353.973 | enacted | Verified | [sk-moneybird-accountant/references/2023/investeringen.md](2023/investeringen.md) |
+| 2023 | KIA window as printed by the Belastingdienst | "moet u een bedrag tussen € 2.601 en € 353.973 investeren" | enacted | Verified | [sk-moneybird-accountant/references/2023/investeringen.md](2023/investeringen.md) |
+| 2024 | KIA table (art. 3.41 lid 2) | nil up to € 2.800, 28% of the investment from € 2.800 up to € 69.765, a fixed € 19.535 from € 69.765 up to € 129.194, € 19.535 minus 7,56% of the excess over € 129.194 up to € 387.580, nil above € 387.580 | enacted | Verified | [sk-moneybird-accountant/references/2024/investeringen.md](2024/investeringen.md) |
+| 2024 | KIA per-asset minimum | € 450 | enacted | Verified | [sk-moneybird-accountant/references/2024/investeringen.md](2024/investeringen.md) |
+| 2025 | Kleinschaligheidsinvesteringsaftrek (KIA), table | Nil up to € 2.900. 28% of the investment above € 2.900 up to € 70.602. A fixed € 19.769 above € 70.602 up to € 130.744. € 19.769 minus 7,56% of the excess over € 130.744 up to € 392.230. Nil above € 392.230. | enacted | Verified | [sk-moneybird-accountant/references/2025/investeringen.md](2025/investeringen.md) |
+| 2025 | KIA in a samenwerkingsverband | The investments of the samenwerkingsverband and the taxpayer's own investments are added. The table is applied to the sum. The outcome is multiplied by the taxpayer's own investment amount divided by that sum. | enacted | Verified | [sk-moneybird-accountant/references/2025/investeringen.md](2025/investeringen.md) |
+| 2026 | Kleinschaligheidsinvesteringsaftrek (KIA), table | nil up to € 2.900, 28% of the investment up to € 71.683, fixed € 20.072 up to € 132.746, € 20.072 minus 7,56% of the part above € 132.746 up to € 398.236, nil above € 398.236. Belastingdienst window: "moet u een bedrag tussen € 2.901 en € 398.236 investeren" | enacted | Verified | [sk-moneybird-accountant/references/2026/investeringen.md](2026/investeringen.md) |
+| 2026 | KIA per-asset minimum | € 450 | enacted | Verified | [sk-moneybird-accountant/references/2026/investeringen.md](2026/investeringen.md) |
+| 2027 | KIA base table in the 2027 text, before indexation | Nil up to € 2.900, 28% of the investment up to € 71.683, a fixed € 20.072 up to € 132.746, € 20.072 minus 7,56% of the excess over € 132.746 up to € 398.236, nil above € 398.236 | adopted-not-yet-in-force | Verified | [sk-moneybird-accountant/references/2027/investeringen.md](2027/investeringen.md) |
+| 2027 | KIA in a samenwerkingsverband | Partnership investments and own investments added, the table applied to the sum, outcome times own investment divided by the sum | adopted-not-yet-in-force | Verified | [sk-moneybird-accountant/references/2027/investeringen.md](2027/investeringen.md) |
+<!-- GENERATED:s3-investment-deductions-and-depreciation:end -->
+
+
 #### KIA structure and table (art. 3.41)
 Verified. The KIA is a per-onderneming deduction, claimed by choice in the aangifte, on the total investment in bedrijfsmiddelen in the calendar year. Five bands: nil up to the first threshold, 28% of the investment up to the second amount, a fixed amount up to the third amount, then the fixed amount minus 7,56% of the part above the third amount up to the top amount, nil above the top amount. The yearly amounts are in each year block and match the research for every year 2020 to 2026. The Belastingdienst year pages phrase the window as "moet u een bedrag tussen € 2.601 en € 353.973 investeren" (2023) and "tussen € 2.901 en € 398.236" (2026). Years 2020 to 2027. Sources: https://wetten.overheid.nl/BWBR0011353/2020-01-01 to https://wetten.overheid.nl/BWBR0011353/2026-01-01, https://wetten.overheid.nl/BWBR0011353/2027-01-01, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/investeringsaftrek-2026/kleinschaligheidsinvesteringsaftrek-2026, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/veranderingen-vennootschapsbelasting-vorige-jaren/veranderingen-vennootschapsbelasting-2023
 
@@ -391,6 +518,30 @@ UNVERIFIED (absence). The Eindejaarsregeling 2022 toelichting says the 2023 sche
 ### 3.5 Costs and the car
 
 Year files: `kosten-en-auto.md` in each year folder.
+
+<!-- GENERATED:s3-costs-and-the-car:start -->
+Rows below are generated from the year files named above, which own the values.
+
+| Year | Item | Value | Status | Check | Owner |
+|---|---|---|---|---|---|
+| 2020 | Gemengde kosten drempel (art. 3.15 lid 1) | € 4.700 | enacted | Verified | [sk-moneybird-accountant/references/2020/kosten-en-auto.md](2020/kosten-en-auto.md) |
+| 2020 | Keuze in plaats van de drempel (art. 3.15 lid 5) | 80% aftrekbaar | enacted | Verified | [sk-moneybird-accountant/references/2020/kosten-en-auto.md](2020/kosten-en-auto.md) |
+| 2021 | Gemengde kosten drempel (art. 3.15 lid 1) | € 4.700 | enacted | Verified | [sk-moneybird-accountant/references/2021/kosten-en-auto.md](2021/kosten-en-auto.md) |
+| 2021 | Keuze in plaats van de drempel (art. 3.15 lid 5) | 80% aftrekbaar | enacted | Verified | [sk-moneybird-accountant/references/2021/kosten-en-auto.md](2021/kosten-en-auto.md) |
+| 2022 | Gemengde kosten drempel | € 4.800 | enacted | Verified | [sk-moneybird-accountant/references/2022/kosten-en-auto.md](2022/kosten-en-auto.md) |
+| 2022 | Keuze in plaats van de drempel | 80% aftrekbaar | enacted | Verified | [sk-moneybird-accountant/references/2022/kosten-en-auto.md](2022/kosten-en-auto.md) |
+| 2023 | Gemengde kosten drempel (art. 3.15 lid 1) | € 5.100 | enacted | Verified | [sk-moneybird-accountant/references/2023/kosten-en-auto.md](2023/kosten-en-auto.md) |
+| 2023 | Keuze in plaats van de drempel (art. 3.15 lid 5) | 80% aftrekbaar | enacted | Verified | [sk-moneybird-accountant/references/2023/kosten-en-auto.md](2023/kosten-en-auto.md) |
+| 2024 | Gemengde kosten drempel | € 5.600 | enacted | Verified | [sk-moneybird-accountant/references/2024/kosten-en-auto.md](2024/kosten-en-auto.md) |
+| 2024 | Keuze in plaats van de drempel | 80% aftrekbaar | enacted | Verified | [sk-moneybird-accountant/references/2024/kosten-en-auto.md](2024/kosten-en-auto.md) |
+| 2025 | Gemengde kosten drempel | € 5.700 | enacted | Verified | [sk-moneybird-accountant/references/2025/kosten-en-auto.md](2025/kosten-en-auto.md) |
+| 2025 | Keuze in plaats van drempel | 80% aftrekbaar | enacted | Verified | [sk-moneybird-accountant/references/2025/kosten-en-auto.md](2025/kosten-en-auto.md) |
+| 2026 | Gemengde kosten drempel | € 5.700 per year | enacted | Verified | [sk-moneybird-accountant/references/2026/kosten-en-auto.md](2026/kosten-en-auto.md) |
+| 2026 | Gemengde kosten keuze | 80% aftrekbaar in plaats van de drempel, also for resultaatgenieters | enacted | Verified | [sk-moneybird-accountant/references/2026/kosten-en-auto.md](2026/kosten-en-auto.md) |
+| 2027 | Gemengde kosten drempel, base in the 2027 text | € 5.700 before indexation | adopted-not-yet-in-force | Verified | [sk-moneybird-accountant/references/2027/kosten-en-auto.md](2027/kosten-en-auto.md) |
+| 2027 | Gemengde kosten drempel, effective 2027 | not published | unknown | UNVERIFIED | [sk-moneybird-accountant/references/2027/kosten-en-auto.md](2027/kosten-en-auto.md) |
+<!-- GENERATED:s3-costs-and-the-car:end -->
+
 
 #### Gemengde kosten drempel and 80% keuze (art. 3.15)
 Costs connected with voedsel, drank en genotmiddelen, representatie (including recepties, feestelijke bijeenkomsten en vermaak) and congressen, seminars, symposia, excursies, studiereizen en dergelijke are not deductible up to a yearly drempel. The related travel and stay count as part of these posts (lid 2). The restriction does not apply where the enterprise directly makes or trades these goods or services and they are part of turnover (lid 3). No onttrekking is taken into account for the taxpayer himself on these costs (lid 4). Instead of the drempel the taxpayer may elect in the return to deduct 80% of these costs (lid 5). The same 80% applies to resultaatgenieters. The drempel is indexed under art. 10.1, which lists art. 3.15 eerste lid only, so the kilometre amount in lid 6 is not indexed. Drempel by statute: € 4.700 (2020, 2021), € 4.800 (2022), € 5.100 (2023), € 5.600 (2024), € 5.700 (2025, 2026, and the 2027 base text). Verified. Sources: https://wetten.overheid.nl/BWBR0011353/2020-01-01 to https://wetten.overheid.nl/BWBR0011353/2027-01-01 (art. 3.15, art. 10.1) and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/drempel-beperkt-aftrekbare-kosten-2026
@@ -489,6 +640,30 @@ Deduct costs excluding VAT when the VAT is deductible in the btw-aangifte. When 
 
 Year files: `box-3.md` in each year folder.
 
+<!-- GENERATED:s3-box-3-savings-and-investments:start -->
+Rows below are generated from the year files named above, which own the values.
+
+| Year | Item | Value | Status | Check | Owner |
+|---|---|---|---|---|---|
+| 2020 | Peildatum (reference date) | 1 January 2020 | enacted | Verified | [sk-moneybird-accountant/references/2020/box-3.md](2020/box-3.md) |
+| 2020 | Heffingsvrij vermogen (tax-free capital) | € 30.846 per person, € 61.692 with fiscal partner | enacted | Verified | [sk-moneybird-accountant/references/2020/box-3.md](2020/box-3.md) |
+| 2021 | Heffingsvrij vermogen | € 50.000 per person, € 100.000 with fiscal partner (art. 5.5) | enacted | Verified | [sk-moneybird-accountant/references/2021/box-3.md](2021/box-3.md) |
+| 2021 | Schuldendrempel | € 3.200 per person, € 6.400 with whole-year partner (art. 5.3 lid 3) | enacted | Verified | [sk-moneybird-accountant/references/2021/box-3.md](2021/box-3.md) |
+| 2022 | Heffingsvrij vermogen | € 50.650 per person, € 101.300 with a fiscal partner | enacted | Verified | [sk-moneybird-accountant/references/2022/box-3.md](2022/box-3.md) |
+| 2022 | Schuldendrempel | € 3.200 per person, € 6.400 with a whole-year partner | enacted | Verified | [sk-moneybird-accountant/references/2022/box-3.md](2022/box-3.md) |
+| 2023 | System | category method of the Overbruggingswet box 3, in force 1 January 2023 | enacted | Verified | [sk-moneybird-accountant/references/2023/box-3.md](2023/box-3.md) |
+| 2023 | Box 3 tarief (rate) | 32% | enacted | Verified | [sk-moneybird-accountant/references/2023/box-3.md](2023/box-3.md) |
+| 2024 | System 2024 | Category method of the Overbruggingswet box 3, in force 1 January 2023. Six-step calculation. | enacted | Verified | [sk-moneybird-accountant/references/2024/box-3.md](2024/box-3.md) |
+| 2024 | Peildatum | 1 January 2024 | enacted | Verified | [sk-moneybird-accountant/references/2024/box-3.md](2024/box-3.md) |
+| 2025 | Heffingsvrij vermogen | € 57.684 per person, € 115.368 with a fiscal partner | enacted | Verified | [sk-moneybird-accountant/references/2025/box-3.md](2025/box-3.md) |
+| 2025 | Box 3 tarief | 36% | enacted | Verified | [sk-moneybird-accountant/references/2025/box-3.md](2025/box-3.md) |
+| 2026 | Heffingsvrij vermogen | € 59.357 per person, € 118.714 with fiscal partner | enacted | Verified | [sk-moneybird-accountant/references/2026/box-3.md](2026/box-3.md) |
+| 2026 | Schuldendrempel | € 3.800 per person, € 7.600 with whole-year partner | enacted | Verified | [sk-moneybird-accountant/references/2026/box-3.md](2026/box-3.md) |
+| 2027 | Rekenmethode (categorieënmethode, art. 5.2) | Six-step category method, still in the 2027 text. A negative rendement is set at nil and the forfaitaire voordeel is at least nil | enacted | Verified | [sk-moneybird-accountant/references/2027/box-3.md](2027/box-3.md) |
+| 2027 | Peildatum | 1 January. Transactions around it inside one continuous three-month period that starts before and ends after the peildatum are disregarded unless business reasons are made plausible (art. 5.24) | enacted | Verified | [sk-moneybird-accountant/references/2027/box-3.md](2027/box-3.md) |
+<!-- GENERATED:s3-box-3-savings-and-investments:end -->
+
+
 #### System per year (Verified)
 2020 to 2022 use the old band method (rendementsklassen I and II in art. 5.2 lid 1). From 1 January 2023 the Overbruggingswet box 3 (law of 21 December 2022, Stb. 2022, 534, art. II: "Deze wet treedt in werking met ingang van 1 januari 2023") applies the category method to everyone. The 2027 and 2028 texts of the act still carry the category method in art. 5.2. The Wet werkelijk rendement box 3 (bill 36 748) is not law on 2026-10-11. Belastingdienst says the fictitious system stays until new legislation takes effect, "probably 1 January 2028".
 Sources: https://zoek.officielebekendmakingen.nl/stb-2022-534.html https://wetten.overheid.nl/BWBR0011353/2027-01-01 https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/wat-is-mijn-werkelijk-rendement https://www.eerstekamer.nl/wetsvoorstel/36748_wet_werkelijk_rendement_box
@@ -572,6 +747,30 @@ Sources: https://www.tweedekamer.nl/downloads/document?id=2026D47255 https://www
 ### 3.7 Box 2 and the substantial interest
 
 Year files: `box-2.md` in each year folder.
+
+<!-- GENERATED:s3-box-2-and-the-substantial-interest:start -->
+Rows below are generated from the year files named above, which own the values.
+
+| Year | Item | Value | Status | Check | Owner |
+|---|---|---|---|---|---|
+| 2020 | Box 2 rate (art. 2.12 Wet IB 2001) | 26,25%, one flat rate, no bracket | enacted | Verified | [sk-moneybird-accountant/references/2020/box-2.md](2020/box-2.md) |
+| 2020 | Inkomen uit aanmerkelijk belang (art. 4.12) and reguliere voordelen (art. 4.13) | reguliere voordelen minus deductible costs, plus vervreemdingsvoordelen, minus persoonsgebonden aftrek. Art. 4.13 lid 1 sub a to e in the 2020 text | enacted | Verified | [sk-moneybird-accountant/references/2020/box-2.md](2020/box-2.md) |
+| 2021 | Box 2 tarief (art. 2.12) | 26,9%, one rate, no bracket | enacted | Verified | [sk-moneybird-accountant/references/2021/box-2.md](2021/box-2.md) |
+| 2021 | Inkomen uit aanmerkelijk belang, components (art. 4.12 and 4.13) | reguliere voordelen minus deductible costs plus vervreemdingsvoordelen, minus persoonsgebonden aftrek | enacted | Verified | [sk-moneybird-accountant/references/2021/box-2.md](2021/box-2.md) |
+| 2022 | Box 2 rate (art. 2.12 Wet IB 2001) | 26,9%, one rate, no bracket | enacted | Verified | [sk-moneybird-accountant/references/2022/box-2.md](2022/box-2.md) |
+| 2022 | Belastingkorting on an unoffset loss (art. 4.53 lid 2) | 26,9% | enacted | Verified | [sk-moneybird-accountant/references/2022/box-2.md](2022/box-2.md) |
+| 2023 | Box 2 rate (art. 2.12 Wet IB 2001) | 26,9%, one rate, no bracket | enacted | Verified | [sk-moneybird-accountant/references/2023/box-2.md](2023/box-2.md) |
+| 2023 | Aanmerkelijk belang definition (art. 4.6) | 5%, sub a to e | enacted | Verified | [sk-moneybird-accountant/references/2023/box-2.md](2023/box-2.md) |
+| 2024 | Box 2 bracket 1 | 24,5% up to € 67.000 | enacted | Verified | [sk-moneybird-accountant/references/2024/box-2.md](2024/box-2.md) |
+| 2024 | Tax at top of bracket 1 | € 16.415 | enacted | Verified | [sk-moneybird-accountant/references/2024/box-2.md](2024/box-2.md) |
+| 2025 | Box 2 bracket 1 (art. 2.12 Wet IB 2001) | 24,5% up to € 67.804 | enacted | Verified | [sk-moneybird-accountant/references/2025/box-2.md](2025/box-2.md) |
+| 2025 | Tax at the top of bracket 1 (art. 2.12, column III) | € 16.611 | enacted | Verified | [sk-moneybird-accountant/references/2025/box-2.md](2025/box-2.md) |
+| 2026 | Box 2 bracket 1 | 24,5% up to € 68.843 | enacted | Verified | [sk-moneybird-accountant/references/2026/box-2.md](2026/box-2.md) |
+| 2026 | Tax at the top of bracket 1 | € 16.866 | enacted | Verified | [sk-moneybird-accountant/references/2026/box-2.md](2026/box-2.md) |
+| 2027 | Box 2 bracket 1 (art. 2.12, text per 1 January 2027) | 24,5% up to € 68.843, pre-indexation text that "kan voor inwerkingtreding nog wijzigen" | adopted-not-yet-in-force | Verified | [sk-moneybird-accountant/references/2027/box-2.md](2027/box-2.md) |
+| 2027 | Tax at the top of bracket 1 (art. 2.12, column III) | € 16.866 | adopted-not-yet-in-force | Verified | [sk-moneybird-accountant/references/2027/box-2.md](2027/box-2.md) |
+<!-- GENERATED:s3-box-2-and-the-substantial-interest:end -->
+
 
 #### Box 2 rate structure (art. 2.12 Wet IB 2001)
 One flat rate in 2020 to 2023: 26,25% in 2020 and 26,9% in 2021, 2022 and 2023. From 2024 a two-bracket table: 24,5% up to the bracket boundary and a higher rate above it, 33% in 2024 and 31% from 2025. The table states the tax at the top of bracket 1 in column III. The table applies per taxpayer. Years 2020 to 2027. Verified.
@@ -701,6 +900,30 @@ Source: https://wetten.overheid.nl/BWBR0011353/2026-01-01
 
 Year files: `bv-en-vennootschapsbelasting.md` in each year folder.
 
+<!-- GENERATED:s3-the-bv-and-vennootschapsbelasting:start -->
+Rows below are generated from the year files named above, which own the values.
+
+| Year | Item | Value | Status | Check | Owner |
+|---|---|---|---|---|---|
+| 2020 | Vpb-tarief en berekening 2020 | t/m € 200.000: 16,5%. Daarboven: € 33.000 plus 25% van het bedrag boven € 200.000 | enacted | Verified | [sk-moneybird-accountant/references/2020/bv-en-vennootschapsbelasting.md](2020/bv-en-vennootschapsbelasting.md) |
+| 2020 | Art. 31 pro-rata bij een boekjaar over de jaargrens | (X/B x To) + (Y/B x Tn). Voor een boekjaar dat in 2020 begint en op of na 1 januari 2021 eindigt, zijn To de 2020-tarieven en Tn de 2021-tarieven: t/m € 245.000 15%, daarboven € 36.750 plus 25% | enacted | Verified | [sk-moneybird-accountant/references/2020/bv-en-vennootschapsbelasting.md](2020/bv-en-vennootschapsbelasting.md) |
+| 2021 | Vennootschapsbelasting tarief (art. 22 Wet Vpb 1969) | t/m € 245.000 at 15%, above that € 36.750 plus 25% of the part above € 245.000 | enacted | Verified | [sk-moneybird-accountant/references/2021/bv-en-vennootschapsbelasting.md](2021/bv-en-vennootschapsbelasting.md) |
+| 2021 | Rates for a book year that straddles 1 January 2022 (art. 31 Wet Vpb 1969) | 2022: t/m € 395.000 at 15%, above that € 59.250 plus 25,8% | enacted | Verified | [sk-moneybird-accountant/references/2021/bv-en-vennootschapsbelasting.md](2021/bv-en-vennootschapsbelasting.md) |
+| 2022 | Vpb-tarief (art. 22 Wet Vpb 1969) | t/m € 395.000 tegen 15%, daarboven € 59.250 plus 25,8% | enacted | Verified | [sk-moneybird-accountant/references/2022/bv-en-vennootschapsbelasting.md](2022/bv-en-vennootschapsbelasting.md) |
+| 2022 | Boekjaar dat 1 januari 2022 of 1 januari 2023 overschrijdt (art. 31 Wet Vpb 1969) | toerekening per dag met (X/B x To) + (Y/B x Tn) | enacted | Verified | [sk-moneybird-accountant/references/2022/bv-en-vennootschapsbelasting.md](2022/bv-en-vennootschapsbelasting.md) |
+| 2023 | Vpb rate (art. 22 Wet Vpb 1969) | First bracket t/m € 200.000 at 19%. Above that € 38.000 plus 25,8% | enacted | Verified | [sk-moneybird-accountant/references/2023/bv-en-vennootschapsbelasting.md](2023/bv-en-vennootschapsbelasting.md) |
+| 2023 | Art. 31 apportionment for a book year straddling 1 January 2023 | Tax is (X/B x To) + (Y/B x Tn). Old article 2022: t/m € 395.000 at 15%, above that € 59.250 plus 25,8%. New article 2023: t/m € 200.000 at 19%, above that € 38.000 plus 25,8% | enacted | Verified | [sk-moneybird-accountant/references/2023/bv-en-vennootschapsbelasting.md](2023/bv-en-vennootschapsbelasting.md) |
+| 2024 | Vennootschapsbelasting, eerste schijf (art. 22 Wet Vpb 1969) | t/m € 200.000 at 19% | enacted | Verified | [sk-moneybird-accountant/references/2024/bv-en-vennootschapsbelasting.md](2024/bv-en-vennootschapsbelasting.md) |
+| 2024 | Vennootschapsbelasting, boven de eerste schijf (art. 22 Wet Vpb 1969) | € 38.000 plus 25,8% | enacted | Verified | [sk-moneybird-accountant/references/2024/bv-en-vennootschapsbelasting.md](2024/bv-en-vennootschapsbelasting.md) |
+| 2025 | Vpb tarief (art. 22 Wet Vpb 1969) | t/m € 200.000 at 19%, above € 200.000 € 38.000 plus 25,8% | enacted | Verified | [sk-moneybird-accountant/references/2025/bv-en-vennootschapsbelasting.md](2025/bv-en-vennootschapsbelasting.md) |
+| 2025 | Verliesverrekening (art. 20 Wet Vpb 1969) | one year back and unlimited forward, per year up to € 1.000.000 plus 50% of the profit above € 1.000.000 | enacted | Verified | [sk-moneybird-accountant/references/2025/bv-en-vennootschapsbelasting.md](2025/bv-en-vennootschapsbelasting.md) |
+| 2026 | Vpb-tarief, eerste schijf | 19,0% over het belastbare bedrag tot en met € 200.000 | enacted | Verified | [sk-moneybird-accountant/references/2026/bv-en-vennootschapsbelasting.md](2026/bv-en-vennootschapsbelasting.md) |
+| 2026 | Vpb-tarief, boven de eerste schijf | € 38.000 plus 25,8% van het deel boven € 200.000 | enacted | Verified | [sk-moneybird-accountant/references/2026/bv-en-vennootschapsbelasting.md](2026/bv-en-vennootschapsbelasting.md) |
+| 2027 | Vpb rate table (art. 22 Wet Vpb 1969) | t/m € 200.000 19%, above that € 38.000 plus 25,8% (carried) | enacted | UNVERIFIED | [sk-moneybird-accountant/references/2027/bv-en-vennootschapsbelasting.md](2027/bv-en-vennootschapsbelasting.md) |
+| 2027 | Verliesverrekening (art. 20 Wet Vpb 1969) | one year back and unlimited forward, per year up to € 1.000.000 plus 50% of the profit above € 1.000.000, in the order the losses arose (carried) | enacted | UNVERIFIED | [sk-moneybird-accountant/references/2027/bv-en-vennootschapsbelasting.md](2027/bv-en-vennootschapsbelasting.md) |
+<!-- GENERATED:s3-the-bv-and-vennootschapsbelasting:end -->
+
+
 #### Vpb rate table and how the tax is computed (art. 22 Wet Vpb 1969)
 The tax is the column III amount plus the column IV percentage of the part of the belastbaar bedrag above the column I amount. Series read in each dated text: 2020 t/m € 200.000 16,5%, above that € 33.000 plus 25%. 2021 t/m € 245.000 15%, above that € 36.750 plus 25%. 2022 t/m € 395.000 15%, above that € 59.250 plus 25,8%. 2023 to 2026 t/m € 200.000 19%, above that € 38.000 plus 25,8%. The Belastingdienst tarieven page states 19,0% and 25,8% for 2023, 2024, 2025 and 2026. Years 2020 to 2026. Verified.
 Sources: https://wetten.overheid.nl/BWBR0002672/2020-01-01, https://wetten.overheid.nl/BWBR0002672/2021-01-01, https://wetten.overheid.nl/BWBR0002672/2022-01-01, https://wetten.overheid.nl/BWBR0002672/2023-01-01, https://wetten.overheid.nl/BWBR0002672/2024-01-01, https://wetten.overheid.nl/BWBR0002672/2025-01-01, https://wetten.overheid.nl/BWBR0002672/2026-01-01, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/tarieven_vennootschapsbelasting
@@ -809,6 +1032,30 @@ Sources: https://wetten.overheid.nl/BWBR0002320/2020-01-01, https://wetten.overh
 
 Year files: `pensioen-en-aov.md` in each year folder.
 
+<!-- GENERATED:s3-pension-lijfrente-and-aov:start -->
+Rows below are generated from the year files named above, which own the values.
+
+| Year | Item | Value | Status | Check | Owner |
+|---|---|---|---|---|---|
+| 2020 | Jaarruimte percentage | 13,3% of the premiegrondslag | enacted | Verified | [sk-moneybird-accountant/references/2020/pensioen-en-aov.md](2020/pensioen-en-aov.md) |
+| 2020 | Maximum jaarruimte | € 12.986 | enacted | Verified | [sk-moneybird-accountant/references/2020/pensioen-en-aov.md](2020/pensioen-en-aov.md) |
+| 2021 | Jaarruimte percentage | 13,3% of the premiegrondslag | enacted | Verified | [sk-moneybird-accountant/references/2021/pensioen-en-aov.md](2021/pensioen-en-aov.md) |
+| 2021 | Maximum jaarruimte | € 13.236 | enacted | Verified | [sk-moneybird-accountant/references/2021/pensioen-en-aov.md](2021/pensioen-en-aov.md) |
+| 2022 | Jaarruimte percentage | 13,3% | enacted | Verified | [sk-moneybird-accountant/references/2022/pensioen-en-aov.md](2022/pensioen-en-aov.md) |
+| 2022 | Maximum jaarruimte | € 13.570 | enacted | Verified | [sk-moneybird-accountant/references/2022/pensioen-en-aov.md](2022/pensioen-en-aov.md) |
+| 2023 | Jaarruimte percentage | 30% | enacted | Verified | [sk-moneybird-accountant/references/2023/pensioen-en-aov.md](2023/pensioen-en-aov.md) |
+| 2023 | Maximum jaarruimte | € 34.550 | enacted | Corrected | [sk-moneybird-accountant/references/2023/pensioen-en-aov.md](2023/pensioen-en-aov.md) |
+| 2024 | Jaarruimte percentage | 30% | enacted | Verified | [sk-moneybird-accountant/references/2024/pensioen-en-aov.md](2024/pensioen-en-aov.md) |
+| 2024 | Maximum jaarruimte | € 36.077 | enacted | Verified | [sk-moneybird-accountant/references/2024/pensioen-en-aov.md](2024/pensioen-en-aov.md) |
+| 2025 | Jaarruimte percentage | 30% | enacted | Verified | [sk-moneybird-accountant/references/2025/pensioen-en-aov.md](2025/pensioen-en-aov.md) |
+| 2025 | Maximum jaarruimte | € 35.798 | enacted | Verified | [sk-moneybird-accountant/references/2025/pensioen-en-aov.md](2025/pensioen-en-aov.md) |
+| 2026 | Jaarruimte percentage | 30% | enacted | Verified | [sk-moneybird-accountant/references/2026/pensioen-en-aov.md](2026/pensioen-en-aov.md) |
+| 2026 | Aftoppingsgrens premiegrondslag | € 137.800 | enacted | Verified | [sk-moneybird-accountant/references/2026/pensioen-en-aov.md](2026/pensioen-en-aov.md) |
+| 2027 | Jaarruimte percentage | 30% | enacted | Verified | [sk-moneybird-accountant/references/2027/pensioen-en-aov.md](2027/pensioen-en-aov.md) |
+| 2027 | Aftoppingsgrens premiegrondslag | € 137.800, still in the 2027 text, not yet indexed | enacted | Verified | [sk-moneybird-accountant/references/2027/pensioen-en-aov.md](2027/pensioen-en-aov.md) |
+<!-- GENERATED:s3-pension-lijfrente-and-aov:end -->
+
+
 #### Jaarruimte rate, pensioentekort condition and formula (Verified)
 Years 2020 to 2027. Art. 3.127 lid 1 lets a taxpayer with a pensioentekort in the previous calendar year deduct lijfrentepremies up to a percentage of the premiegrondslag, reduced by the lid 4 reduction for pension accrual. The percentage is 13,3% in the texts of 2020-01-01, 2021-01-01, 2022-01-01 and 2023-01-01, and 30% in the texts of 2023-07-01, 2024-01-01, 2025-01-01, 2026-01-01 and 2027-01-01. Up to 2022 the outcome is also reduced by dotaties aan de oudedagsreserve (lid 1 and lid 4 sub b). From the 2023-07-01 text lid 1 names only the pension accrual reduction. The Belastingdienst Wtp page states the 30% applies "met terugwerkende kracht vanaf 1 januari 2023". Formula for a self-employed person without pension accrual: percentage x (min(income of previous year, aftoppingsgrens) minus franchise). Sources: https://wetten.overheid.nl/BWBR0011353/2020-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 , https://wetten.overheid.nl/BWBR0011353/2023-07-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 , https://wetten.overheid.nl/BWBR0011353/2027-01-01 , https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/nieuwe-regels-voor-pensioenen-wat-betekent-dat-voor-mij
 
@@ -878,6 +1125,46 @@ Internetconsultatie until 29 October 2026, a zelfstandigentoets and a werkrelati
 ### 3.10 Work relationship and procedure
 
 Year files: `arbeidsrelatie.md` and `procedure.md` in each year folder.
+
+<!-- GENERATED:s3-work-relationship-and-procedure:start -->
+Rows below are generated from the year files named above, which own the values.
+
+| Year | Item | Value | Status | Check | Owner |
+|---|---|---|---|---|---|
+| 2020 | DBA enforcement regime | Handhavingsmoratorium in force, aanwijzing route, only kwaadwillenden directly corrected | enacted | Verified | [sk-moneybird-accountant/references/2020/arbeidsrelatie.md](2020/arbeidsrelatie.md) |
+| 2020 | Second restriction of the moratorium exception | From 1 January 2020 enforcement also when aanwijzingen are not followed within a reasonable term, for periods from 1 January 2020 | enacted | Verified | [sk-moneybird-accountant/references/2020/arbeidsrelatie.md](2020/arbeidsrelatie.md) |
+| 2021 | Wet DBA | Wet van 3 februari 2016, in force since 1 May 2016, replaced the VAR. Correction: Staatsblad 2016, 165 is not the Wet DBA itself, it is the Besluit van 8 april 2016 that lets parties exclude the fictieve dienstbetrekking for thuiswerkers, gelijkgestelden and artiesten by agreement | enacted | Verified | [sk-moneybird-accountant/references/2021/arbeidsrelatie.md](2021/arbeidsrelatie.md) |
+| 2021 | Loondienst test | Three elements: the possibility of werkgeversgezag, the duty to perform (persoonlijke) arbeid, and pay for the work. The courts weigh among others the nature and duration of the work, how work and working hours are set, embedding in the organisation, the duty to work personally, how the agreements were made, how pay is set and paid and its level, commercial risk, and how far the opdrachtnemer acts or can act as an entrepreneur. Not being in loondienst does not make someone an ondernemer for income tax or VAT | enacted | Verified | [sk-moneybird-accountant/references/2021/arbeidsrelatie.md](2021/arbeidsrelatie.md) |
+| 2022 | Wet DBA | Wet van 3 februari 2016, in force 1 May 2016, replaced the VAR | enacted | Verified | [sk-moneybird-accountant/references/2022/arbeidsrelatie.md](2022/arbeidsrelatie.md) |
+| 2022 | Loondiensttoets | Three elements: possibility of werkgeversgezag, duty to perform (persoonlijke) arbeid, pay for the work | enacted | Verified | [sk-moneybird-accountant/references/2022/arbeidsrelatie.md](2022/arbeidsrelatie.md) |
+| 2023 | Wet DBA | Wet van 3 februari 2016, in force 1 May 2016, replaced the VAR | enacted | Verified | [sk-moneybird-accountant/references/2023/arbeidsrelatie.md](2023/arbeidsrelatie.md) |
+| 2023 | Loondienst test | 3 elements, the possibility of werkgeversgezag, the duty to perform (persoonlijke) arbeid, and pay for the work | enacted | Verified | [sk-moneybird-accountant/references/2023/arbeidsrelatie.md](2023/arbeidsrelatie.md) |
+| 2024 | Wet DBA | Wet van 3 februari 2016, entered into force on 1 May 2016 and replaced the VAR | enacted | Verified | [sk-moneybird-accountant/references/2024/arbeidsrelatie.md](2024/arbeidsrelatie.md) |
+| 2024 | Staatsblad 2016, 165 | Besluit van 8 april 2016 that lets parties exclude the fictieve dienstbetrekking for thuiswerkers, gelijkgestelden and artiesten by agreement, not the Wet DBA itself | enacted | Corrected | [sk-moneybird-accountant/references/2024/arbeidsrelatie.md](2024/arbeidsrelatie.md) |
+| 2025 | Wet DBA | The Wet deregulering beoordeling arbeidsrelaties is the Wet van 3 februari 2016, in force on 1 May 2016, and it replaced the VAR | enacted | Verified | [sk-moneybird-accountant/references/2025/arbeidsrelatie.md](2025/arbeidsrelatie.md) |
+| 2025 | Loondienst test | Three elements: the possibility of werkgeversgezag, the duty to perform (persoonlijke) arbeid, and pay for the work | enacted | Verified | [sk-moneybird-accountant/references/2025/arbeidsrelatie.md](2025/arbeidsrelatie.md) |
+| 2026 | Wet DBA and the loondienst test | Wet van 3 februari 2016, in force 1 May 2016, replaced the VAR. Loondienst has three elements: the possibility of werkgeversgezag, the duty to perform (persoonlijke) arbeid, and pay for the work. Courts weigh the nature and duration of the work, how work and working hours are set, embedding in the organisation, the duty to work personally, how the agreements were made, how pay is set and paid and its level, commercial risk, and how far the opdrachtnemer acts or can act as an entrepreneur. | enacted | Verified | [sk-moneybird-accountant/references/2026/arbeidsrelatie.md](2026/arbeidsrelatie.md) |
+| 2026 | Fictieve dienstbetrekkingen and the opt-out | The loondienst page lists aannemers van werk and helpers, agenten, artiesten and beroepssporters, gelijkgestelden (usually 2 or more days a week for the same client and at least 2/5 of the minimum wage), stagiairs, thuiswerkers and opdrachtnemers working through an intermediair. Thuiswerkers, gelijkgestelden and artiesten can be excluded in writing in the contract before the first payment of pay. The opdrachtnemer then has no entitlement to ZW, WIA and WW. | enacted | Verified | [sk-moneybird-accountant/references/2026/arbeidsrelatie.md](2026/arbeidsrelatie.md) |
+| 2027 | Wet DBA | Wet van 3 februari 2016, in force 1 May 2016, replaced the VAR | enacted | Verified | [sk-moneybird-accountant/references/2027/arbeidsrelatie.md](2027/arbeidsrelatie.md) |
+| 2027 | Loondienst test | Three elements, werkgeversgezag, persoonlijke arbeid and pay, plus weighing factors such as inbedding and ondernemerschap | enacted | Verified | [sk-moneybird-accountant/references/2027/arbeidsrelatie.md](2027/arbeidsrelatie.md) |
+| 2020 | Aangifte inkomstenbelasting 2020, uiterste datum | Before 8 May 2021 | enacted | Corrected | [sk-moneybird-accountant/references/2020/procedure.md](2020/procedure.md) |
+| 2020 | Uitsteltermijn inkomstenbelasting | 4 months extra, to 1 September | enacted | Verified | [sk-moneybird-accountant/references/2020/procedure.md](2020/procedure.md) |
+| 2021 | IB return 2021 filing deadline and uitstel | Before 1 May 2022, filing from 1 March 2022. Uitstel must be requested before the filing date, in the annual period before 1 May. A granted uitstel gives 4 months extra, to 1 September 2022. The form can be used only for the first uitstel request, the fiscal partner must request separately, and uitstel usually means belastingrente. Online in Mijn Belastingdienst until 1 May for someone who received an aangiftebrief, paper form otherwise. | enacted | Corrected | [sk-moneybird-accountant/references/2021/procedure.md](2021/procedure.md) |
+| 2021 | Definitive aanslag 2021 latest | 31 December 2024. With 4 months uitstel the aanslag comes at the latest 30 April 2025. | enacted | Verified | [sk-moneybird-accountant/references/2021/procedure.md](2021/procedure.md) |
+| 2022 | IB return 2022 filing deadline | Before 1 May 2023 | enacted | Corrected | [sk-moneybird-accountant/references/2022/procedure.md](2022/procedure.md) |
+| 2022 | IB filing period 2022 opens | 1 March 2023 | enacted | Verified | [sk-moneybird-accountant/references/2022/procedure.md](2022/procedure.md) |
+| 2023 | Aangifteperiode inkomstenbelasting | Opens on 1 March | enacted | Verified | [sk-moneybird-accountant/references/2023/procedure.md](2023/procedure.md) |
+| 2023 | IB return 2023 filing deadline | Before 1 May 2024, with uitstel before 1 September 2024 | enacted | Corrected | [sk-moneybird-accountant/references/2023/procedure.md](2023/procedure.md) |
+| 2024 | Income tax return 2024, filing deadline | Before 1 May 2025, the date in the aangiftebrief decides. Uitstel could be requested until 1 May 2025 | enacted | Corrected | [sk-moneybird-accountant/references/2024/procedure.md](2024/procedure.md) |
+| 2024 | Income tax return 2024 with uitstel | Before 1 September 2025 | enacted | Corrected | [sk-moneybird-accountant/references/2024/procedure.md](2024/procedure.md) |
+| 2025 | Aangifte inkomstenbelasting 2025 filing deadline | 1 May 2026, or the date in the aangiftebrief. The filing period opens 1 March 2026 | enacted | Verified | [sk-moneybird-accountant/references/2025/procedure.md](2025/procedure.md) |
+| 2025 | Uitstel aangifte inkomstenbelasting 2025 | 4 months extra, to 1 September 2026, requested before the filing date | enacted | Verified | [sk-moneybird-accountant/references/2025/procedure.md](2025/procedure.md) |
+| 2026 | Aangifte inkomstenbelasting 2026, uiterste datum | Not published on 2026-10-11, usually 1 May 2027 | unknown | UNVERIFIED | [sk-moneybird-accountant/references/2026/procedure.md](2026/procedure.md) |
+| 2026 | Start van het aangiftetijdvak inkomstenbelasting | 1 March | enacted | Verified | [sk-moneybird-accountant/references/2026/procedure.md](2026/procedure.md) |
+| 2027 | IB return over 2026, filed in 2027: deadline | Not published on 2026-10-11. Usually 1 May 2027, set in the aangiftebrief | unknown | UNVERIFIED | [sk-moneybird-accountant/references/2027/procedure.md](2027/procedure.md) |
+| 2027 | IB filing period opens | 1 March | enacted | Verified | [sk-moneybird-accountant/references/2027/procedure.md](2027/procedure.md) |
+<!-- GENERATED:s3-work-relationship-and-procedure:end -->
+
 
 #### Wet DBA and the test for loondienst (2020 to 2027)
 Verified, one detail Corrected. The Wet deregulering beoordeling arbeidsrelaties is the Wet van 3 februari 2016 and entered into force on 1 May 2016. It replaced the VAR. Correction: Staatsblad 2016, 165 is not the Wet DBA itself. It is the Besluit van 8 april 2016 that lets parties exclude the fictieve dienstbetrekking for thuiswerkers, gelijkgestelden and artiesten by agreement. Loondienst has three elements: the possibility of werkgeversgezag, the duty to perform (persoonlijke) arbeid, and pay for the work. The courts weigh among others the nature and duration of the work, how work and working hours are set, embedding in the organisation, the duty to work personally, how the agreements were made, how pay is set and paid and its level, commercial risk, and how far the opdrachtnemer acts or can act as an entrepreneur. Not being in loondienst does not make someone an ondernemer for income tax or VAT. Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file https://zoek.officielebekendmakingen.nl/stb-2016-165.html

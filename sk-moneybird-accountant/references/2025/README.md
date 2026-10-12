@@ -24,6 +24,7 @@ Tax year 2025 is a past year. Its law is enacted, and later changes do not alter
 
 ## 2. TOPIC FILES
 
+<!-- GENERATED:topic-files:start -->
 | File | Covers | Values | UNVERIFIED | Not enacted |
 |---|---|---|---|---|
 | [btw.md](btw.md) | This file explains Dutch VAT rates, exemptions, small-business rules, returns, invoicing and cross-border VAT for tax year 2025. | 56 | 4 | 3 |
@@ -38,6 +39,7 @@ Tax year 2025 is a past year. Its law is enacted, and later changes do not alter
 | [pensioen-en-aov.md](pensioen-en-aov.md) | Jaarruimte, reserveringsruimte, lijfrente conditions, stakingswinst conversion, FOR interaction and AOV premium deductibility for tax year 2025, plus the proposed BAZ. | 25 | 0 | 3 |
 | [arbeidsrelatie.md](arbeidsrelatie.md) | Wet DBA enforcement after the end of the moratorium, modelovereenkomsten, the VBAR hourly rate presumption and the BAZ bill for tax year 2025. | 25 | 0 | 7 |
 | [procedure.md](procedure.md) | Filing deadlines and extensions for income tax and btw, the voorlopige aanslag, belastingrente, the navorderingstermijn, bezwaar, the bewaarplicht and the KVK and Belastingdienst registration duties for tax year 2025. | 21 | 0 | 0 |
+<!-- GENERATED:topic-files:end -->
 
 ---
 
@@ -45,6 +47,7 @@ Tax year 2025 is a past year. Its law is enacted, and later changes do not alter
 
 The first two rows of each file's figures table. The topic file carries the source URL and the conditions.
 
+<!-- GENERATED:headline-figures:start -->
 | Topic | Item | Value 2025 | Status | Check |
 |---|---|---|---|---|
 | BTW | Standard rate | 21% | enacted | Verified |
@@ -71,6 +74,7 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Arbeidsrelatie en zelfstandigheid | Loondienst test | Three elements: the possibility of werkgeversgezag, the duty to perform (persoonlijke) arbeid, and pay for the work | enacted | Verified |
 | Aangifte en procedure | Aangifte inkomstenbelasting 2025 filing deadline | 1 May 2026, or the date in the aangiftebrief. The filing period opens 1 March 2026 | enacted | Verified |
 | Aangifte en procedure | Uitstel aangifte inkomstenbelasting 2025 | 4 months extra, to 1 September 2026, requested before the filing date | enacted | Verified |
+<!-- GENERATED:headline-figures:end -->
 
 ---
 

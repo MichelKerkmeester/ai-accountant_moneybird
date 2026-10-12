@@ -1,6 +1,7 @@
 ---
 title: "BTW 2025"
 description: "This file explains Dutch VAT rates, exemptions, small-business rules, returns, invoicing and cross-border VAT for tax year 2025."
+nav_label: "BTW"
 trigger_phrases:
   - "BTW 2025"
   - "omzetbelasting 2025"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # BTW 2025
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 343.
+Part 1: lines 1-342, 50688 bytes, first heading "# BTW 2025"
+Part 2: lines 343-374, 8581 bytes, first heading "## 6. IN THE BOOKS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

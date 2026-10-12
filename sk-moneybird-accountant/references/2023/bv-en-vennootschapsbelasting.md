@@ -1,6 +1,7 @@
 ---
 title: "BV en vennootschapsbelasting 2023"
 description: "This file covers the 2023 Dutch corporate income tax rules for a BV, including the Vpb rate, loss set-off, interest deduction limit, participation exemption, fiscal unity, customary salary, Zvw, dividend withholding tax, conditional withholding tax, annual accounts and the switch from a sole trader to a BV."
+nav_label: "BV en vennootschapsbelasting"
 trigger_phrases:
   - "BV en vennootschapsbelasting 2023"
   - "vennootschapsbelasting 2023"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # BV en vennootschapsbelasting 2023
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 282.
+Part 1: lines 1-281, 50309 bytes, first heading "# BV en vennootschapsbelasting 2023"
+Part 2: lines 282-394, 14618 bytes, first heading "### Calculated example: geruisloze omzetting compared with ruisende inbreng"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

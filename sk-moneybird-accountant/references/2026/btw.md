@@ -1,6 +1,7 @@
 ---
 title: "BTW 2026"
 description: "This file covers Dutch VAT rates, schemes, returns, invoicing and bookkeeping for tax year 2026."
+nav_label: "BTW"
 trigger_phrases:
   - "btw 2026"
   - "omzetbelasting 2026"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # BTW 2026
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 278.
+Part 1: lines 1-277, 50636 bytes, first heading "# BTW 2026"
+Part 2: lines 278-419, 18009 bytes, first heading "### Annual VAT return conditions"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

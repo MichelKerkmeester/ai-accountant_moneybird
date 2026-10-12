@@ -1,6 +1,7 @@
 ---
 title: "BTW 2023"
 description: "This file explains Dutch VAT rates, exemptions, returns, cross-border rules, and bookkeeping for tax year 2023."
+nav_label: "BTW"
 trigger_phrases:
   - "VAT 2023"
   - "btw 2023"

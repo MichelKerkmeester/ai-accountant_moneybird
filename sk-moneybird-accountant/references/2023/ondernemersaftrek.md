@@ -1,6 +1,7 @@
 ---
 title: "Ondernemersaftrek en MKB-winstvrijstelling 2023"
 description: "All parts of the ondernemersaftrek and the MKB-winstvrijstelling for tax year 2023, with the 2023 amounts, conditions, the end of the oudedagsreserve additions and the tariefsaanpassing."
+nav_label: "Ondernemersaftrek en MKB-winstvrijstelling"
 trigger_phrases:
   - "ondernemersaftrek 2023"
   - "zelfstandigenaftrek 2023"

@@ -1,6 +1,7 @@
 ---
 title: "Arbeidsrelatie en zelfstandigheid 2024"
 description: "The Wet DBA, the last year of the handhavingsmoratorium, modelovereenkomsten, the VBAR bill and the low hourly rate presumption for the work relationship in tax year 2024."
+nav_label: "Arbeidsrelatie en zelfstandigheid"
 trigger_phrases:
   - "arbeidsrelatie 2024"
   - "zelfstandigheid 2024"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Arbeidsrelatie en zelfstandigheid 2024
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 281.
+Part 1: lines 1-280, 47004 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2024"
+Part 2: lines 281-300, 4928 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2024 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

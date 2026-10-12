@@ -1,6 +1,7 @@
 ---
 title: "Pensioen, lijfrente en AOV 2027"
 description: "Jaarruimte, reserveringsruimte, lijfrentes, stakingswinst conversion, the AOV premium and the proposed BAZ for tax year 2027."
+nav_label: "Pensioen, lijfrente en AOV"
 trigger_phrases:
   - "pensioen en AOV 2027"
   - "jaarruimte en reserveringsruimte 2027"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Pensioen, lijfrente en AOV 2027
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 296.
+Part 1: lines 1-295, 50163 bytes, first heading "# Pensioen, lijfrente en AOV 2027"
+Part 2: lines 296-334, 8107 bytes, first heading "## 6. IN THE BOOKS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

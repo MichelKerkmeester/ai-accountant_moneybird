@@ -1,6 +1,7 @@
 ---
 title: "Ondernemersaftrek en MKB-winstvrijstelling 2022"
 description: "All 2022 conditions and figures for the ondernemersaftrek and the MKB-winstvrijstelling for a Dutch sole trader, including the urencriterium, the startersaftrek, the oudedagsreserve addition and the tariefsaanpassing."
+nav_label: "Ondernemersaftrek en MKB-winstvrijstelling"
 trigger_phrases:
   - "ondernemersaftrek 2022"
   - "MKB-winstvrijstelling 2022"

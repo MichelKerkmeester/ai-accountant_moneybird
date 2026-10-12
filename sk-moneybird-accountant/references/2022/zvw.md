@@ -1,6 +1,7 @@
 ---
 title: "Zvw-bijdrage 2022"
 description: "Income-dependent Zvw contribution for an entrepreneur in tax year 2022, covering the 5,50% aanslag rate, the maximum bijdrage-inkomen of € 59.706, the 6,75% employer rate and the profit base after ondernemersaftrek and MKB-winstvrijstelling."
+nav_label: "Zvw-bijdrage"
 trigger_phrases:
   - "Zvw-bijdrage 2022"
   - "inkomensafhankelijke Zvw-bijdrage 2022"

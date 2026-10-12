@@ -1,6 +1,7 @@
 ---
 title: "Pensioen, lijfrente en AOV 2025"
 description: "Jaarruimte, reserveringsruimte, lijfrente conditions, stakingswinst conversion, FOR interaction and AOV premium deductibility for tax year 2025, plus the proposed BAZ."
+nav_label: "Pensioen, lijfrente en AOV"
 trigger_phrases:
   - "pensioen en AOV 2025"
   - "lijfrente en jaarruimte 2025"

@@ -1,6 +1,7 @@
 ---
 title: "Box 3 sparen en beleggen 2027"
 description: "Box 3 for tax year 2027: the category method, the values in the 2027 text of the act, the Belastingplan 2027 bill, the Cabinet letter proposals, the green investment facilities and the optional actual return."
+nav_label: "Box 3 sparen en beleggen"
 trigger_phrases:
   - "box 3 2027"
   - "box 3 sparen en beleggen 2027"

@@ -1,6 +1,7 @@
 ---
 title: "Box 2 en aanmerkelijk belang 2022"
 description: "Box 2 income, the aanmerkelijk belang rules, loss relief, gebruikelijk loon, and the PEB and ODV interactions for tax year 2022."
+nav_label: "Box 2 en aanmerkelijk belang"
 trigger_phrases:
   - "box 2 2022"
   - "aanmerkelijk belang 2022"

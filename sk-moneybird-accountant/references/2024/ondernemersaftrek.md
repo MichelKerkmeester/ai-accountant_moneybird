@@ -1,6 +1,7 @@
 ---
 title: "Ondernemersaftrek en MKB-winstvrijstelling 2024"
 description: "The ondernemersaftrek, the MKB-winstvrijstelling, the urencriterium and the tariefsaanpassing for a Dutch sole trader in tax year 2024."
+nav_label: "Ondernemersaftrek en MKB-winstvrijstelling"
 trigger_phrases:
   - "ondernemersaftrek 2024"
   - "zelfstandigenaftrek 2024"

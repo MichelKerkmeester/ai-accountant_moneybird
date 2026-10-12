@@ -1,6 +1,7 @@
 ---
 title: "Ondernemersaftrek en MKB-winstvrijstelling 2027"
 description: "The parts of the ondernemersaftrek and the MKB-winstvrijstelling for tax year 2027, with the adopted 2027 statute text and the pending Belastingplan 2027 and start-ups bills kept apart."
+nav_label: "Ondernemersaftrek en MKB-winstvrijstelling"
 trigger_phrases:
   - "ondernemersaftrek 2027"
   - "zelfstandigenaftrek 2027"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Ondernemersaftrek en MKB-winstvrijstelling 2027
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 357.
+Part 1: lines 1-356, 49266 bytes, first heading "# Ondernemersaftrek en MKB-winstvrijstelling 2027"
+Part 2: lines 357-410, 14484 bytes, first heading "## 5. CHANGES FROM 2026"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

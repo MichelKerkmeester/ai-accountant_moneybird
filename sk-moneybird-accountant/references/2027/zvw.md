@@ -1,6 +1,7 @@
 ---
 title: "Zvw-bijdrage 2027"
 description: "The income-dependent Zvw contribution for an entrepreneur in tax year 2027, covering the aanslag rate, the maximum bijdrage-inkomen, who pays by aanslag and how the rate differs from the werkgeversheffing."
+nav_label: "Zvw-bijdrage"
 trigger_phrases:
   - "Zvw-bijdrage 2027"
   - "Zvw inkomensafhankelijke bijdrage 2027"

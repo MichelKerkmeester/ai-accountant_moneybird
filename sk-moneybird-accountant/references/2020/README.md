@@ -24,6 +24,7 @@ Tax year 2020 is a past year. Its law is enacted, and later changes do not alter
 
 ## 2. TOPIC FILES
 
+<!-- GENERATED:topic-files:start -->
 | File | Covers | Values | UNVERIFIED | Not enacted |
 |---|---|---|---|---|
 | [btw.md](btw.md) | Covers Dutch VAT rates, deductions, the small-business scheme, returns, cross-border supplies, invoicing and private use for tax year 2020. | 56 | 6 | 3 |
@@ -38,6 +39,7 @@ Tax year 2020 is a past year. Its law is enacted, and later changes do not alter
 | [pensioen-en-aov.md](pensioen-en-aov.md) | Jaarruimte, reserveringsruimte, lijfrente conditions, stakingswinst conversion, the oudedagsreserve and AOV premium deductibility for tax year 2020. | 29 | 0 | 0 |
 | [arbeidsrelatie.md](arbeidsrelatie.md) | The work-relationship rules for tax year 2020: the Wet DBA test for loondienst, the handhavingsmoratorium and its aanwijzing route, modelovereenkomsten, case law and the first plans for a rechtsvermoeden that later became the VBAR. | 24 | 1 | 0 |
 | [procedure.md](procedure.md) | Filing deadlines and uitstel, the voorlopige aanslag, belastingrente, navordering, bezwaar, bewaarplicht and the KVK and Belastingdienst registration duties for tax year 2020. | 41 | 0 | 0 |
+<!-- GENERATED:topic-files:end -->
 
 ---
 
@@ -45,6 +47,7 @@ Tax year 2020 is a past year. Its law is enacted, and later changes do not alter
 
 The first two rows of each file's figures table. The topic file carries the source URL and the conditions.
 
+<!-- GENERATED:headline-figures:start -->
 | Topic | Item | Value 2020 | Status | Check |
 |---|---|---|---|---|
 | BTW | Standard rate | 21% | enacted | Verified |
@@ -71,6 +74,7 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Arbeidsrelatie en zelfstandigheid | Second restriction of the moratorium exception | From 1 January 2020 enforcement also when aanwijzingen are not followed within a reasonable term, for periods from 1 January 2020 | enacted | Verified |
 | Aangifte en procedure | Aangifte inkomstenbelasting 2020, uiterste datum | Before 8 May 2021 | enacted | Corrected |
 | Aangifte en procedure | Uitsteltermijn inkomstenbelasting | 4 months extra, to 1 September | enacted | Verified |
+<!-- GENERATED:headline-figures:end -->
 
 ---
 

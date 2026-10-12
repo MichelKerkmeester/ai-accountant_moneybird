@@ -1,6 +1,7 @@
 ---
 title: "Kosten en auto 2025"
 description: "Deductible business costs and the car for a Dutch sole trader in tax year 2025, from the gemengde kosten drempel and the fixed exclusions to the kilometre allowance, bijtelling and the prestatiebeurs exception."
+nav_label: "Kosten en auto"
 trigger_phrases:
   - "kosten en auto 2025"
   - "zakelijke kosten 2025"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Kosten en auto 2025
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 296.
+Part 1: lines 1-295, 47726 bytes, first heading "# Kosten en auto 2025"
+Part 2: lines 296-324, 6262 bytes, first heading "## 6. IN THE BOOKS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

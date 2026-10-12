@@ -1,6 +1,7 @@
 ---
 title: "Kosten en auto 2027"
 description: "How a Dutch sole trader and a BV deduct business costs and handle the car in tax year 2027, with the gemengde kosten drempel, the kilometre allowance, bijtelling, the youngtimer rules and the open items in Belastingplan 2027."
+nav_label: "Kosten en auto"
 trigger_phrases:
   - "kosten en auto 2027"
   - "zakelijke kosten 2027"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Kosten en auto 2027
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 365.
+Part 1: lines 1-364, 50996 bytes, first heading "# Kosten en auto 2027"
+Part 2: lines 365-425, 15476 bytes, first heading "### 4.17 Calculated example: werkruimte test"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

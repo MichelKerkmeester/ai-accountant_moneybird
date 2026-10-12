@@ -1,6 +1,7 @@
 ---
 title: "Inkomstenbelasting box 1 2027"
 description: "Box 1 brackets, rates and heffingskortingen for 2027, plus the tariefsaanpassing and the route from winst uit onderneming to taxable box 1 income, with the enacted 2027 text and the still proposed Belastingplan 2027 figures kept apart."
+nav_label: "Inkomstenbelasting box 1"
 trigger_phrases:
   - "inkomstenbelasting box 1 2027"
   - "box 1 tarief 2027"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Inkomstenbelasting box 1 2027
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 328.
+Part 1: lines 1-327, 49516 bytes, first heading "# Inkomstenbelasting box 1 2027"
+Part 2: lines 328-391, 18911 bytes, first heading "## 5. CHANGES FROM 2026"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

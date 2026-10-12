@@ -1,6 +1,7 @@
 ---
 title: "Arbeidsrelatie en zelfstandigheid 2022"
 description: "Wet DBA, the handhavingsmoratorium and modelovereenkomsten for tax year 2022, plus the later VBAR hourly rate presumption and the BAZ bill as recorded in the checked sources."
+nav_label: "Arbeidsrelatie en zelfstandigheid"
 trigger_phrases:
   - "arbeidsrelatie 2022"
   - "Wet DBA 2022"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Arbeidsrelatie en zelfstandigheid 2022
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 322.
+Part 1: lines 1-321, 48467 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2022"
+Part 2: lines 322-353, 4386 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

@@ -1,6 +1,7 @@
 ---
 title: "Box 3 sparen en beleggen 2023"
 description: "Box 3 income from savings and investments for tax year 2023 under the Overbruggingswet box 3 category method, with figures, conditions and worked examples."
+nav_label: "Box 3 sparen en beleggen"
 trigger_phrases:
   - "box 3 2023"
   - "box 3 sparen en beleggen 2023"

@@ -1,6 +1,7 @@
 ---
 title: "Box 2 en aanmerkelijk belang 2025"
 description: "Box 2 income and the aanmerkelijk belang rules for tax year 2025, including the two-bracket rate table, excessief lenen, gebruikelijk loon and loss relief."
+nav_label: "Box 2 en aanmerkelijk belang"
 trigger_phrases:
   - "box 2 2025"
   - "aanmerkelijk belang 2025"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Box 2 en aanmerkelijk belang 2025
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 315.
+Part 1: lines 1-314, 47581 bytes, first heading "# Box 2 en aanmerkelijk belang 2025"
+Part 2: lines 315-364, 12739 bytes, first heading "## 5. CHANGES FROM 2024"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

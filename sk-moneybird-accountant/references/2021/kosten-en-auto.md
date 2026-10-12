@@ -1,6 +1,7 @@
 ---
 title: "Kosten en auto 2021"
 description: "Deductible business costs and car rules for a Dutch sole trader in tax year 2021, covering the gemengde kosten drempel, kilometre allowance, bijtelling and the last year of the scholingsuitgaven."
+nav_label: "Kosten en auto"
 trigger_phrases:
   - "kosten en auto 2021"
   - "zakelijke kosten 2021"

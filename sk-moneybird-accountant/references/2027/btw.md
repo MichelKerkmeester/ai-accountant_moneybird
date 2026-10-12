@@ -1,6 +1,7 @@
 ---
 title: "BTW 2027"
 description: "This file covers Dutch VAT rates, exemptions, bookkeeping, returns, cross-border rules, and current and proposed changes for tax year 2027."
+nav_label: "BTW"
 trigger_phrases:
   - "BTW 2027"
   - "omzetbelasting 2027"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # BTW 2027
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 279.
+Part 1: lines 1-278, 51193 bytes, first heading "# BTW 2027"
+Part 2: lines 279-352, 13937 bytes, first heading "### Suppletie timing: Calculated example"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

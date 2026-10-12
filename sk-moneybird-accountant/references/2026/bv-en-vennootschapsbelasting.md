@@ -1,6 +1,7 @@
 ---
 title: "BV en vennootschapsbelasting 2026"
 description: "The BV and vennootschapsbelasting for tax year 2026: Vpb rates, loss set-off, the interest limitation, innovatiebox, fiscale eenheid, gebruikelijk loon, Zvw, box 2, dividendbelasting, conditionele bronbelasting, jaarrekening and the switch from eenmanszaak to BV."
+nav_label: "BV en vennootschapsbelasting"
 trigger_phrases:
   - "BV en vennootschapsbelasting 2026"
   - "vennootschapsbelasting 2026 tarief"
@@ -12,6 +13,13 @@ version: 1.0.0.0
 ---
 
 # BV en vennootschapsbelasting 2026
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 340.
+Part 1: lines 1-339, 44715 bytes, first heading "# BV en vennootschapsbelasting 2026"
+Part 2: lines 340-392, 13415 bytes, first heading "## 5. CHANGES FROM 2025"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

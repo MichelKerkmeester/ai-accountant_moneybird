@@ -1,6 +1,7 @@
 ---
 title: "Box 3 sparen en beleggen 2022"
 description: "Box 3 for tax year 2022: the old band method, the recalculated category method under the Wet rechtsherstel box 3, and the most favourable outcome for savings and investments."
+nav_label: "Box 3 sparen en beleggen"
 trigger_phrases:
   - "box 3 2022"
   - "box 3 sparen en beleggen 2022"

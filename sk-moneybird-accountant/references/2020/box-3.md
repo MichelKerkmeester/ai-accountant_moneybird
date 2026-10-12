@@ -1,6 +1,7 @@
 ---
 title: "Box 3 sparen en beleggen 2020"
 description: "Box 3 savings and investments for tax year 2020: the old band method, the 30% rate, heffingsvrij vermogen, schuldendrempel, green investments and the rechtsherstel recalculation."
+nav_label: "Box 3 sparen en beleggen"
 trigger_phrases:
   - "box 3 2020"
   - "box 3 sparen en beleggen 2020"

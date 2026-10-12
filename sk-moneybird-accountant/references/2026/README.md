@@ -24,6 +24,7 @@ Tax year 2026 is the current year. Its law is enacted. Returns for 2026 are file
 
 ## 2. TOPIC FILES
 
+<!-- GENERATED:topic-files:start -->
 | File | Covers | Values | UNVERIFIED | Not enacted |
 |---|---|---|---|---|
 | [btw.md](btw.md) | This file covers Dutch VAT rates, schemes, returns, invoicing and bookkeeping for tax year 2026. | 59 | 4 | 7 |
@@ -38,6 +39,7 @@ Tax year 2026 is the current year. Its law is enacted. Returns for 2026 are file
 | [pensioen-en-aov.md](pensioen-en-aov.md) | Key figures, rules, and calculations for jaarruimte, lijfrente, and arbeidsongeschiktheidsverzekering (AOV) for tax year 2026. | 22 | 0 | 6 |
 | [arbeidsrelatie.md](arbeidsrelatie.md) | Work relationship rules for tax year 2026, covering Wet DBA enforcement, modelovereenkomsten, the VBAR low hourly rate presumption and the BAZ bill. | 26 | 2 | 9 |
 | [procedure.md](procedure.md) | Filing deadlines and extensions, voorlopige aanslag, belastingrente, navordering, bezwaar, bewaarplicht and KVK and Belastingdienst registration for tax year 2026. | 32 | 1 | 1 |
+<!-- GENERATED:topic-files:end -->
 
 ---
 
@@ -45,6 +47,7 @@ Tax year 2026 is the current year. Its law is enacted. Returns for 2026 are file
 
 The first two rows of each file's figures table. The topic file carries the source URL and the conditions.
 
+<!-- GENERATED:headline-figures:start -->
 | Topic | Item | Value 2026 | Status | Check |
 |---|---|---|---|---|
 | BTW | Standard rate | 21% | enacted | Verified |
@@ -71,6 +74,7 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Arbeidsrelatie en zelfstandigheid | Fictieve dienstbetrekkingen and the opt-out | The loondienst page lists aannemers van werk and helpers, agenten, artiesten and beroepssporters, gelijkgestelden (usually 2 or more days a week for the same client and at least 2/5 of the minimum wage), stagiairs, thuiswerkers and opdrachtnemers working through an intermediair. Thuiswerkers, gelijkgestelden and artiesten can be excluded in writing in the contract before the first payment of pay. The opdrachtnemer then has no entitlement to ZW, WIA and WW. | enacted | Verified |
 | Aangifte en procedure | Aangifte inkomstenbelasting 2026, uiterste datum | Not published on 2026-10-11, usually 1 May 2027 | unknown | UNVERIFIED |
 | Aangifte en procedure | Start van het aangiftetijdvak inkomstenbelasting | 1 March | enacted | Verified |
+<!-- GENERATED:headline-figures:end -->
 
 ---
 

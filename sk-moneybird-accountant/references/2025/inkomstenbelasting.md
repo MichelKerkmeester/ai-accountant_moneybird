@@ -1,6 +1,7 @@
 ---
 title: "Inkomstenbelasting box 1 2025"
 description: "Covers the 2025 box 1 tax brackets, heffingskortingen, tariefsaanpassing, and the path from business profit to taxable income."
+nav_label: "Inkomstenbelasting box 1"
 trigger_phrases:
   - "inkomstenbelasting box 1 2025"
   - "box 1 tarieven 2025"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Inkomstenbelasting box 1 2025
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 325.
+Part 1: lines 1-324, 50880 bytes, first heading "# Inkomstenbelasting box 1 2025"
+Part 2: lines 325-342, 4475 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

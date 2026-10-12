@@ -1,6 +1,7 @@
 ---
 title: "BV en vennootschapsbelasting 2020"
 description: "Alles over de BV en de vennootschapsbelasting in 2020: Vpb-tarieven, verliesverrekening, renteaftrek, gebruikelijk loon, Zvw, dividendbelasting, box 2, fiscale eenheid, innovatiebox, geruisloze omzetting en jaarrekening."
+nav_label: "BV en vennootschapsbelasting"
 trigger_phrases:
   - "BV en vennootschapsbelasting 2020"
   - "vennootschapsbelasting 2020"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # BV en vennootschapsbelasting 2020
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 259.
+Part 1: lines 1-258, 49738 bytes, first heading "# BV en vennootschapsbelasting 2020"
+Part 2: lines 259-304, 7220 bytes, first heading "## 5. CHANGES FROM 2019"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2020 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

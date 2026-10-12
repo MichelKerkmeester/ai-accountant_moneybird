@@ -1,6 +1,7 @@
 ---
 title: "Investeringsaftrek en afschrijving 2026"
 description: "KIA, EIA, MIA, Vamil, willekeurige afschrijving, ordinary depreciation and the desinvesteringsbijtelling for tax year 2026."
+nav_label: "Investeringsaftrek en afschrijving"
 trigger_phrases:
   - "investeringsaftrek 2026"
   - "KIA 2026"

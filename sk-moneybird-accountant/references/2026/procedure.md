@@ -1,6 +1,7 @@
 ---
 title: "Aangifte en procedure 2026"
 description: "Filing deadlines and extensions, voorlopige aanslag, belastingrente, navordering, bezwaar, bewaarplicht and KVK and Belastingdienst registration for tax year 2026."
+nav_label: "Aangifte en procedure"
 trigger_phrases:
   - "Aangifte en procedure 2026"
   - "Belastingaangifte 2026"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Aangifte en procedure 2026
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 266.
+Part 1: lines 1-265, 48068 bytes, first heading "# Aangifte en procedure 2026"
+Part 2: lines 266-294, 6322 bytes, first heading "## 6. IN THE BOOKS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

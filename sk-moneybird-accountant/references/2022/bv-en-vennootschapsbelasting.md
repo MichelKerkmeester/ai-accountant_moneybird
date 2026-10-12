@@ -1,6 +1,7 @@
 ---
 title: "BV en vennootschapsbelasting 2022"
 description: "Vennootschapsbelasting for a Dutch BV in 2022, with the tarief, verliesverrekening, renteaftrek, gebruikelijk loon, Zvw, dividendbelasting, fiscale eenheid, innovatiebox and the switch from eenmanszaak to BV."
+nav_label: "BV en vennootschapsbelasting"
 trigger_phrases:
   - "BV en vennootschapsbelasting 2022"
   - "vennootschapsbelasting 2022"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # BV en vennootschapsbelasting 2022
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 275.
+Part 1: lines 1-274, 50867 bytes, first heading "# BV en vennootschapsbelasting 2022"
+Part 2: lines 275-371, 16899 bytes, first heading "### Example 12: Inkoop van eigen aandelen (Calculated example)"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

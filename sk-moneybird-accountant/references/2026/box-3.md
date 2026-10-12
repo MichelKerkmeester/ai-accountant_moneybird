@@ -1,6 +1,7 @@
 ---
 title: "Box 3 sparen en beleggen 2026"
 description: "Fictitious box 3 return on savings and investments for tax year 2026, including the 2026 percentages, the heffingsvrij vermogen, the schuldendrempel, green investments and the optional actual-return report."
+nav_label: "Box 3 sparen en beleggen"
 trigger_phrases:
   - "box 3 2026"
   - "sparen en beleggen 2026"

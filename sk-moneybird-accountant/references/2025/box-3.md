@@ -1,6 +1,7 @@
 ---
 title: "Box 3 sparen en beleggen 2025"
 description: "Box 3 savings and investments for tax year 2025: heffingsvrij vermogen, schuldendrempel, the three category percentages, the six-step calculation, groene beleggingen and the option to report the actual return."
+nav_label: "Box 3 sparen en beleggen"
 trigger_phrases:
   - "box 3 2025"
   - "box 3 sparen en beleggen 2025"

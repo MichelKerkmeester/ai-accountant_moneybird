@@ -1,6 +1,7 @@
 ---
 title: "Kosten en auto 2026"
 description: "Business costs, mixed costs, study costs, home workspace, fines and car rules for a Dutch sole trader or BV in tax year 2026."
+nav_label: "Kosten en auto"
 trigger_phrases:
   - "kosten en auto 2026"
   - "zakelijke kosten 2026"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Kosten en auto 2026
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 252.
+Part 1: lines 1-251, 50344 bytes, first heading "# Kosten en auto 2026"
+Part 2: lines 252-351, 22221 bytes, first heading "### Example 7: Zero-emission car first admitted in 2021 and 60-month end in 2026"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

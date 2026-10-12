@@ -1,6 +1,7 @@
 ---
 title: "Inkomstenbelasting box 1 2021"
 description: "This file covers 2021 box 1 rates, AOW-age variants, heffingskortingen, tariefsaanpassing and the route from business profit to taxable income."
+nav_label: "Inkomstenbelasting box 1"
 trigger_phrases:
   - "box 1 2021"
   - "inkomstenbelasting 2021"

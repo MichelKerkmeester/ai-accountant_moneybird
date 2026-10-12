@@ -1,6 +1,7 @@
 ---
 title: "Investeringsaftrek en afschrijving 2027"
 description: "The 2027 rules for the KIA, EIA, MIA, Vamil, desinvesteringsbijtelling, ordinary depreciation and the bodemwaarde, plus the willekeurige afschrijving for starters, with the 2027 law text, bill 37 022 and the unpublished indexation marked by status."
+nav_label: "Investeringsaftrek en afschrijving"
 trigger_phrases:
   - "investeringsaftrek 2027"
   - "kleinschaligheidsinvesteringsaftrek 2027"
@@ -13,6 +14,13 @@ version: 1.0.0.0
 ---
 
 # Investeringsaftrek en afschrijving 2027
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 362.
+Part 1: lines 1-361, 47396 bytes, first heading "# Investeringsaftrek en afschrijving 2027"
+Part 2: lines 362-396, 7536 bytes, first heading "## 6. IN THE BOOKS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

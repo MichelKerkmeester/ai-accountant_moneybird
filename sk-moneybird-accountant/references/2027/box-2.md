@@ -1,6 +1,7 @@
 ---
 title: "Box 2 en aanmerkelijk belang 2027"
 description: "Box 2 income, the aanmerkelijk belang rules, the excessief lenen fiction and the gebruikelijk loon link for tax year 2027, with the enacted future text and the bills and announcements that are still open."
+nav_label: "Box 2 en aanmerkelijk belang"
 trigger_phrases:
   - "box 2 2027"
   - "aanmerkelijk belang 2027"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Box 2 en aanmerkelijk belang 2027
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 276.
+Part 1: lines 1-275, 49980 bytes, first heading "# Box 2 en aanmerkelijk belang 2027"
+Part 2: lines 276-315, 11250 bytes, first heading "## 6. IN THE BOOKS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

@@ -1,6 +1,7 @@
 ---
 title: "Aangifte en procedure 2027"
 description: "Filing deadlines and extensions, the voorlopige aanslag, belastingrente, navordering, bezwaar, bewaarplicht and KVK and Belastingdienst registration for tax year 2027, with the amounts that were still unpublished on 2026-10-11 marked as unknown."
+nav_label: "Aangifte en procedure"
 trigger_phrases:
   - "aangifte en procedure 2027"
   - "belastingaangifte 2027"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Aangifte en procedure 2027
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 266.
+Part 1: lines 1-265, 46377 bytes, first heading "# Aangifte en procedure 2027"
+Part 2: lines 266-422, 26153 bytes, first heading "## 4. WORKED EXAMPLES"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

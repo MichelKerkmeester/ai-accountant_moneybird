@@ -24,6 +24,7 @@ Tax year 2027 mixes three layers. Enacted 2027 law, the Belastingplan 2027 bill,
 
 ## 2. TOPIC FILES
 
+<!-- GENERATED:topic-files:start -->
 | File | Covers | Values | UNVERIFIED | Not enacted |
 |---|---|---|---|---|
 | [btw.md](btw.md) | This file covers Dutch VAT rates, exemptions, bookkeeping, returns, cross-border rules, and current and proposed changes for tax year 2027. | 39 | 6 | 7 |
@@ -38,6 +39,7 @@ Tax year 2027 mixes three layers. Enacted 2027 law, the Belastingplan 2027 bill,
 | [pensioen-en-aov.md](pensioen-en-aov.md) | Jaarruimte, reserveringsruimte, lijfrentes, stakingswinst conversion, the AOV premium and the proposed BAZ for tax year 2027. | 25 | 8 | 7 |
 | [arbeidsrelatie.md](arbeidsrelatie.md) | Work relationship rules for tax year 2027: Wet DBA enforcement after the moratorium, modelovereenkomsten, the VBAR low hourly rate presumption and the status of the BAZ bill. | 18 | 4 | 10 |
 | [procedure.md](procedure.md) | Filing deadlines and extensions, the voorlopige aanslag, belastingrente, navordering, bezwaar, bewaarplicht and KVK and Belastingdienst registration for tax year 2027, with the amounts that were still unpublished on 2026-10-11 marked as unknown. | 44 | 8 | 13 |
+<!-- GENERATED:topic-files:end -->
 
 ---
 
@@ -45,6 +47,7 @@ Tax year 2027 mixes three layers. Enacted 2027 law, the Belastingplan 2027 bill,
 
 The first two rows of each file's figures table. The topic file carries the source URL and the conditions.
 
+<!-- GENERATED:headline-figures:start -->
 | Topic | Item | Value 2027 | Status | Check |
 |---|---|---|---|---|
 | BTW | Standard VAT rate | 21% | enacted | Verified |
@@ -71,6 +74,7 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Arbeidsrelatie en zelfstandigheid | Loondienst test | Three elements, werkgeversgezag, persoonlijke arbeid and pay, plus weighing factors such as inbedding and ondernemerschap | enacted | Verified |
 | Aangifte en procedure | IB return over 2026, filed in 2027: deadline | Not published on 2026-10-11. Usually 1 May 2027, set in the aangiftebrief | unknown | UNVERIFIED |
 | Aangifte en procedure | IB filing period opens | 1 March | enacted | Verified |
+<!-- GENERATED:headline-figures:end -->
 
 ---
 

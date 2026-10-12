@@ -1,6 +1,7 @@
 ---
 title: "Pensioen, lijfrente en AOV 2022"
 description: "Jaarruimte, reserveringsruimte, lijfrente conditions, stakingswinst conversion, oudedagsreserve and AOV deductibility for a ZZP sole trader in tax year 2022."
+nav_label: "Pensioen, lijfrente en AOV"
 trigger_phrases:
   - "pensioen en AOV 2022"
   - "jaarruimte 2022"
@@ -12,6 +13,13 @@ version: 1.0.0.0
 ---
 
 # Pensioen, lijfrente en AOV 2022
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 329.
+Part 1: lines 1-328, 50017 bytes, first heading "# Pensioen, lijfrente en AOV 2022"
+Part 2: lines 329-355, 8712 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

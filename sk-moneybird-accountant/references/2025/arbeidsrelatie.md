@@ -1,6 +1,7 @@
 ---
 title: "Arbeidsrelatie en zelfstandigheid 2025"
 description: "Wet DBA enforcement after the end of the moratorium, modelovereenkomsten, the VBAR hourly rate presumption and the BAZ bill for tax year 2025."
+nav_label: "Arbeidsrelatie en zelfstandigheid"
 trigger_phrases:
   - "arbeidsrelatie 2025"
   - "schijnzelfstandigheid 2025"

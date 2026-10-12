@@ -1,6 +1,7 @@
 ---
 title: "Pensioen, lijfrente en AOV 2020"
 description: "Jaarruimte, reserveringsruimte, lijfrente conditions, stakingswinst conversion, the oudedagsreserve and AOV premium deductibility for tax year 2020."
+nav_label: "Pensioen, lijfrente en AOV"
 trigger_phrases:
   - "pensioen en AOV 2020"
   - "jaarruimte en reserveringsruimte 2020"
@@ -12,6 +13,13 @@ version: 1.0.0.0
 ---
 
 # Pensioen, lijfrente en AOV 2020
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 308.
+Part 1: lines 1-307, 49626 bytes, first heading "# Pensioen, lijfrente en AOV 2020"
+Part 2: lines 308-325, 4822 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2020 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

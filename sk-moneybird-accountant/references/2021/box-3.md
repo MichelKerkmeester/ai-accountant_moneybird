@@ -1,6 +1,7 @@
 ---
 title: "Box 3 sparen en beleggen 2021"
 description: "Box 3 for tax year 2021: the old band method, the Wet rechtsherstel category recalculation, the most favourable method, green investments and the actual-return route."
+nav_label: "Box 3 sparen en beleggen"
 trigger_phrases:
   - "box 3 2021"
   - "box 3 sparen en beleggen 2021"

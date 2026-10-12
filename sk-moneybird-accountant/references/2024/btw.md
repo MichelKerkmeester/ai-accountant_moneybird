@@ -1,6 +1,7 @@
 ---
 title: "BTW 2024"
 description: "This file covers Dutch VAT rates, exemptions, the KOR, returns, invoicing and cross-border VAT rules for tax year 2024."
+nav_label: "BTW"
 trigger_phrases:
   - "BTW 2024"
   - "btw-aangifte 2024"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # BTW 2024
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 351.
+Part 1: lines 1-350, 50100 bytes, first heading "# BTW 2024"
+Part 2: lines 351-371, 4847 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2024 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

@@ -1,6 +1,7 @@
 ---
 title: "BV en vennootschapsbelasting 2027"
 description: "BV and vennootschapsbelasting for tax year 2027, with the carried Vpb rates, the Belastingplan 2027 proposals, DGA pay, dividendbelasting and the BV filing and jaarrekening duties."
+nav_label: "BV en vennootschapsbelasting"
 trigger_phrases:
   - "vennootschapsbelasting 2027"
   - "BV en vennootschapsbelasting 2027"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # BV en vennootschapsbelasting 2027
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 222.
+Part 1: lines 1-221, 50832 bytes, first heading "# BV en vennootschapsbelasting 2027"
+Part 2: lines 222-415, 27531 bytes, first heading "### 3.36 Jaarrekening deposit (art. 394 Boek 2 BW)"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

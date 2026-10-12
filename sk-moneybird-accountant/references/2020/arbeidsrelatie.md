@@ -1,6 +1,7 @@
 ---
 title: "Arbeidsrelatie en zelfstandigheid 2020"
 description: "The work-relationship rules for tax year 2020: the Wet DBA test for loondienst, the handhavingsmoratorium and its aanwijzing route, modelovereenkomsten, case law and the first plans for a rechtsvermoeden that later became the VBAR."
+nav_label: "Arbeidsrelatie en zelfstandigheid"
 trigger_phrases:
   - "arbeidsrelatie 2020"
   - "Wet DBA 2020"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Arbeidsrelatie en zelfstandigheid 2020
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 354.
+Part 1: lines 1-353, 47315 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2020"
+Part 2: lines 354-374, 4852 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2020 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

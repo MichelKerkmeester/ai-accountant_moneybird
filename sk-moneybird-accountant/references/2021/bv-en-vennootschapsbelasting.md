@@ -1,6 +1,7 @@
 ---
 title: "BV en vennootschapsbelasting 2021"
 description: "Vennootschapsbelasting, DGA wage, dividendbelasting, fiscale eenheid and conversion rules for a BV in tax year 2021."
+nav_label: "BV en vennootschapsbelasting"
 trigger_phrases:
   - "vennootschapsbelasting 2021"
   - "BV en vennootschapsbelasting 2021"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # BV en vennootschapsbelasting 2021
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 386.
+Part 1: lines 1-385, 50005 bytes, first heading "# BV en vennootschapsbelasting 2021"
+Part 2: lines 386-420, 6605 bytes, first heading "## 6. IN THE BOOKS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2021 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

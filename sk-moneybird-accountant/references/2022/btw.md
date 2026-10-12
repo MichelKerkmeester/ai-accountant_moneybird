@@ -1,6 +1,7 @@
 ---
 title: "BTW 2022"
 description: "This file covers Dutch VAT for tax year 2022, including the rates and exemptions, the KOR, return periods and deadlines, cross-border transactions, invoicing, private use and the corona repayment scheme."
+nav_label: "BTW"
 trigger_phrases:
   - "BTW 2022"
   - "btw-aangifte 2022"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # BTW 2022
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 292.
+Part 1: lines 1-291, 50961 bytes, first heading "# BTW 2022"
+Part 2: lines 292-339, 15081 bytes, first heading "## 5. CHANGES FROM 2021"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

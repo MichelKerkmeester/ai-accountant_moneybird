@@ -1,6 +1,7 @@
 ---
 title: "Investeringsaftrek en afschrijving 2025"
 description: "Investment deductions (KIA, EIA, MIA, Vamil), the desinvesteringsbijtelling and the depreciation rules for a Dutch sole trader or BV in tax year 2025."
+nav_label: "Investeringsaftrek en afschrijving"
 trigger_phrases:
   - "investeringsaftrek 2025"
   - "KIA EIA MIA Vamil 2025"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Investeringsaftrek en afschrijving 2025
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 376.
+Part 1: lines 1-375, 48828 bytes, first heading "# Investeringsaftrek en afschrijving 2025"
+Part 2: lines 376-394, 2875 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

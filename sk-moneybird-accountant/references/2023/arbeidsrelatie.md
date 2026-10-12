@@ -1,6 +1,7 @@
 ---
 title: "Arbeidsrelatie en zelfstandigheid 2023"
 description: "Wet DBA enforcement, modelovereenkomsten, the VBAR bill and the low hourly rate presumption for the work relationship of a Dutch sole trader in tax year 2023."
+nav_label: "Arbeidsrelatie en zelfstandigheid"
 trigger_phrases:
   - "arbeidsrelatie 2023"
   - "schijnzelfstandigheid 2023"

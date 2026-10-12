@@ -7,7 +7,7 @@ version: 1.0.0.0
 
 # Moneybird Accountant
 
-A bookkeeping and migration assistant for a Dutch sole trader. It routes work through documented gates and leaves tax judgement and return filing to the operator or a bookkeeper.
+A bookkeeping and migration assistant for a Dutch sole trader. It routes work through documented gates and leaves tax judgement and filing to the operator or a bookkeeper.
 
 ---
 
@@ -15,7 +15,7 @@ A bookkeeping and migration assistant for a Dutch sole trader. It routes work th
 
 ### Activation Triggers
 
-Use when the request concerns:
+Use for requests about:
 
 - Moving historical sole-trader records from Jortt to Moneybird.
 - Monthly, quarterly, or yearly bookkeeping in Moneybird.
@@ -25,7 +25,7 @@ Use when the request concerns:
 
 ### Use Cases
 
-- Identify the migration phase, its gate and owner instructions.
+- Identify the migration phase, gate and owner instructions.
 - Reconcile records against source documents and filed returns.
 - Review a live period and prepare an exception list.
 - Explain accounting treatment, flagging legal or factual judgement.
@@ -44,7 +44,7 @@ Select MIGRATION for historical records, Jortt exports, a migration phase, recon
 
 Select LIVE for current bookkeeping cadence, an ordinary income or cost event, a VAT period, an annual close, or an ad hoc ZZP question.
 
-If ambiguous, ask one concise question: historical migration or current bookkeeping? Do not guess a phase or a tax year.
+If ambiguous, ask one question: historical migration or current bookkeeping? Do not guess a phase or a tax year.
 
 ### Task-Type Table
 
@@ -109,7 +109,7 @@ Details: `references/year-and-state.md`.
 
 ### Smart Router Pseudocode
 
-Illustrative only. The Task-Type Table is the single source of truth: read one row, load only its read set, and report mode, type, year, loaded and missing paths as the route record.
+Illustrative only. The Task-Type Table is the source of truth: read one row, load only its read set, and report mode, type, year, loaded and missing paths as the route record.
 
     from pathlib import Path
 
@@ -188,7 +188,7 @@ Every phase uses the shared mechanisms route contract. Jortt reads run through j
 
 ### LIVE Mode
 
-Monthly, quarterly and yearly cycles are in `references/moneybird-bookkeeping.md` (LIVE Bookkeeping Cycles). Every Moneybird read follows the Read Step Contract in `cli-moneybird/SKILL.md` section 3. Writes follow LIVE write authority below. The return is never filed.
+Monthly, quarterly and yearly cycles are in `references/moneybird-bookkeeping.md` (LIVE Bookkeeping Cycles). Every Moneybird read follows the Read Step Contract in `cli-moneybird/SKILL.md` section 3. Writes follow the write authority below. The return is never filed.
 
 #### LIVE write authority
 
@@ -202,7 +202,7 @@ LIVE Moneybird writes have three states. `JOURNAL_BACKED`: writes inside the LIV
 
 ### CLI Preflight
 
-Before the first CLI call of a session, run the tool skill's own readiness check by section name: `cli-moneybird` section 6 (package check) and `cli-jortt` section 3 (CLI Extraction Path steps 1 and 2). Copy no CLI command text. A failed preflight goes to CLI_FAILURE.
+Before the first CLI call of a session, run the tool skill's readiness check by section name: `cli-moneybird` section 6 (package check) and `cli-jortt` section 3 (CLI Extraction Path steps 1 and 2). Copy no CLI command text. A failed preflight goes to CLI_FAILURE.
 
 ### Output Contract
 
@@ -217,7 +217,7 @@ Keep the route record and figures safe: only phase and record-class labels, opaq
 ### ✅ ALWAYS
 
 1. Resolve the year through `year_key` from session-context.json before relying on any tax figure.
-2. Keep a clear distinction between confirmed rules, product documentation, conflicting values, and unverified points.
+2. Distinguish confirmed rules, product documentation, conflicting values and unverified points.
 3. Route every Jortt CLI read through jortt-cli, following cli-jortt/SKILL.md.
 4. Route every Moneybird CLI read or write through moneybird-guard, following cli-moneybird/SKILL.md. Every read session sets `MONEYBIRD_GUARD_READ_ONLY=1`.
 5. Require the passed phase gate, Operator approval, current access window, stable local write key, a flushed `WRITE_INTENT` with a matching `--approval <ref>`, and read-back for every non-GET batch.
@@ -258,27 +258,30 @@ Keep the route record and figures safe: only phase and record-class labels, opaq
 
 ### Core references
 
-- [Migration index](./references/migration/README.md) - phase map and routing.
+- [Migration index](./references/migration/README.md) - phase map.
 - [Shared mechanisms](./references/migration/shared-mechanisms.md) - M1 to M12.
 - [Control framework](./references/migration/control-framework.md) - roles, risk and exceptions.
 - [Migration overview and setup](./references/migration/overview-and-setup.md) - workspace and `MIGRATION_CONFIG`.
-- [Dutch tax rules](./references/dutch-tax-rules.md) - rules across years, the year index.
+- [Dutch tax rules](./references/dutch-tax-rules.md) - rules across years.
 - Tax year folders `references/2020/` to `references/2027/` - one sourced file per topic per year.
 - [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) - ZZP accounting treatment.
 - [Purchase invoices](./references/purchase-invoices.md) - booking and VAT per case.
 - [Jortt to Moneybird mapping](./references/migration/jortt-to-moneybird-mapping.md) - concepts and traps.
 - [Source library](./references/source-library.md) - every cited source, `assets/source-library.json`.
-- [Routing signals](./references/routing-signals.md) - signal sources and tie mechanics.
+- [Routing signals](./references/routing-signals.md) - tie mechanics.
+- [Feature catalog](./feature-catalog/feature-catalog.md) - current feature inventory.
+- [Manual testing playbook](./manual-testing-playbook/manual-testing-playbook.md) - offline verification scenarios.
+- [Year and state](./references/year-and-state.md) - year and state resolution.
 
 ### Tool skills
 
-- [cli-jortt](../cli-jortt/SKILL.md) - read-only Jortt CLI operations.
+- [cli-jortt](../cli-jortt/SKILL.md) - read-only Jortt reads.
 - [cli-moneybird](../cli-moneybird/SKILL.md) - guarded reads and gated writes.
-- Migration phase references link to them. Do not duplicate their CLI mechanics.
+- Phase references link to them. Do not duplicate their CLI mechanics.
 
 ### Loading notes
 
-Every task first loads the project bootstrap and this skill. Load only the row's read set, one phase group at a time, and a sibling tool skill only when its route names it. Grep `assets/source-library.json` for a host, topic or citing file. Never read it whole.
+Load the project bootstrap and this skill first. Load only the row's read set, one phase group at a time, and a sibling tool skill only when its route names it. Grep `assets/source-library.json` for a host, topic or citing file. Never read it whole.
 
 ---
 
@@ -300,7 +303,7 @@ Complete when:
 
 ### Inputs
 
-- The project bootstrap at ../AGENTS.md.
+- Project bootstrap at ../AGENTS.md.
 - Read-only Jortt records through jortt-cli.
 - Moneybird records through moneybird-guard.
 - General tax and bookkeeping references.
@@ -321,9 +324,9 @@ Complete when:
 ## 8. RELATED RESOURCES
 
 - [Project bootstrap](../AGENTS.md) - entry route and privacy contract.
-- [Migration index](./references/migration/README.md) - phases and gates.
+- [Migration index](./references/migration/README.md) - phase map.
 - [Dutch tax rules](./references/dutch-tax-rules.md) - rules per year.
-- [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) - common ZZP events.
+- [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) - ZZP events.
 - [Purchase invoices](./references/purchase-invoices.md) - booking and reverse charge.
-- [Source library](./references/source-library.md) - official source per figure.
+- [Source library](./references/source-library.md) - source per figure.
 - [Jortt to Moneybird mapping](./references/migration/jortt-to-moneybird-mapping.md) - concepts and traps.

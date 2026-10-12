@@ -1,6 +1,7 @@
 ---
 title: "Ondernemersaftrek en MKB-winstvrijstelling 2021"
 description: "This file covers the ondernemersaftrek and MKB-winstvrijstelling for tax year 2021, including the urencriterium, zelfstandigenaftrek, startersaftrek, startersaftrek bij arbeidsongeschiktheid, S&O-aftrek, meewerkaftrek, stakingsaftrek, oudedagsreserve addition, tariefsaanpassing and Zvw interaction."
+nav_label: "Ondernemersaftrek en MKB-winstvrijstelling"
 trigger_phrases:
   - "ondernemersaftrek 2021"
   - "zelfstandigenaftrek 2021"

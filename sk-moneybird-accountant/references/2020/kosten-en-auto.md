@@ -1,6 +1,7 @@
 ---
 title: "Kosten en auto 2020"
 description: "Business cost deductions and car rules for tax year 2020, covering the gemengde kosten drempel, the 80% election, the kilometre allowance, the car bijtelling and the BV variant of the drempel."
+nav_label: "Kosten en auto"
 trigger_phrases:
   - "kosten en auto 2020"
   - "zakelijke kosten 2020"

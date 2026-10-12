@@ -24,6 +24,7 @@ Tax year 2024 is a past year. Its law is enacted, and later changes do not alter
 
 ## 2. TOPIC FILES
 
+<!-- GENERATED:topic-files:start -->
 | File | Covers | Values | UNVERIFIED | Not enacted |
 |---|---|---|---|---|
 | [btw.md](btw.md) | This file covers Dutch VAT rates, exemptions, the KOR, returns, invoicing and cross-border VAT rules for tax year 2024. | 39 | 5 | 3 |
@@ -38,6 +39,7 @@ Tax year 2024 is a past year. Its law is enacted, and later changes do not alter
 | [pensioen-en-aov.md](pensioen-en-aov.md) | Jaarruimte, reserveringsruimte, lijfrente caps, stakingswinst conversion, AOV premium deductibility and the proposed BAZ consultation for tax year 2024. | 31 | 0 | 3 |
 | [arbeidsrelatie.md](arbeidsrelatie.md) | The Wet DBA, the last year of the handhavingsmoratorium, modelovereenkomsten, the VBAR bill and the low hourly rate presumption for the work relationship in tax year 2024. | 29 | 0 | 5 |
 | [procedure.md](procedure.md) | Filing deadlines and uitstel for income tax and btw, the voorlopige aanslag, belastingrente, the navorderingstermijn, bezwaar, bewaarplicht and KVK and Belastingdienst registration for tax year 2024. | 26 | 0 | 0 |
+<!-- GENERATED:topic-files:end -->
 
 ---
 
@@ -45,6 +47,7 @@ Tax year 2024 is a past year. Its law is enacted, and later changes do not alter
 
 The first two rows of each file's figures table. The topic file carries the source URL and the conditions.
 
+<!-- GENERATED:headline-figures:start -->
 | Topic | Item | Value 2024 | Status | Check |
 |---|---|---|---|---|
 | BTW | Standard VAT rate | 21% | enacted | Verified |
@@ -71,6 +74,7 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Arbeidsrelatie en zelfstandigheid | Staatsblad 2016, 165 | Besluit van 8 april 2016 that lets parties exclude the fictieve dienstbetrekking for thuiswerkers, gelijkgestelden and artiesten by agreement, not the Wet DBA itself | enacted | Corrected |
 | Aangifte en procedure | Income tax return 2024, filing deadline | Before 1 May 2025, the date in the aangiftebrief decides. Uitstel could be requested until 1 May 2025 | enacted | Corrected |
 | Aangifte en procedure | Income tax return 2024 with uitstel | Before 1 September 2025 | enacted | Corrected |
+<!-- GENERATED:headline-figures:end -->
 
 ---
 

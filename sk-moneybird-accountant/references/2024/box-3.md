@@ -1,6 +1,7 @@
 ---
 title: "Box 3 sparen en beleggen 2024"
 description: "Box 3 income from savings and investments for tax year 2024 under the enacted category method, including rates, thresholds, green investments, actual-return reporting and the Hoge Raad ruling of 6 June 2024."
+nav_label: "Box 3 sparen en beleggen"
 trigger_phrases:
   - "box 3 2024"
   - "sparen en beleggen 2024"

@@ -1,6 +1,7 @@
 ---
 title: "Inkomstenbelasting box 1 2023"
 description: "This file covers Dutch Box 1 tax rates, heffingskortingen, tariefsaanpassing and the flow of sole-trader profit into taxable income for tax year 2023."
+nav_label: "Inkomstenbelasting box 1"
 trigger_phrases:
   - "inkomstenbelasting box 1 2023"
   - "heffingskortingen 2023"

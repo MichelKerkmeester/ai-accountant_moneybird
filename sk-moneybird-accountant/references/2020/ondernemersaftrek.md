@@ -1,6 +1,7 @@
 ---
 title: "Ondernemersaftrek en MKB-winstvrijstelling 2020"
 description: "Covers the five parts of the ondernemersaftrek, the urencriterium, the startersaftrek, the MKB-winstvrijstelling, the tariefsaanpassing and the 2020 amounts for tax year 2020."
+nav_label: "Ondernemersaftrek en MKB-winstvrijstelling"
 trigger_phrases:
   - "ondernemersaftrek 2020"
   - "zelfstandigenaftrek 2020"

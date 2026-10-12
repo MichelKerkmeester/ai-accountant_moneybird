@@ -1,6 +1,7 @@
 ---
 title: "Aangifte en procedure 2023"
 description: "Filing deadlines and uitstel for income tax and btw, the voorlopige aanslag, belastingrente, the navorderingstermijn, bezwaar, the bewaarplicht and KVK and Belastingdienst registration for tax year 2023."
+nav_label: "Aangifte en procedure"
 trigger_phrases:
   - "aangifte en procedure 2023"
   - "belastingaangifte 2023 deadline"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Aangifte en procedure 2023
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 329.
+Part 1: lines 1-328, 50085 bytes, first heading "# Aangifte en procedure 2023"
+Part 2: lines 329-422, 17000 bytes, first heading "### Calculated example, btw deadlines in 2023"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

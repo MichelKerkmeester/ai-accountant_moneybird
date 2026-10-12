@@ -1,6 +1,7 @@
 ---
 title: "Pensioen, lijfrente en AOV 2021"
 description: "Jaarruimte and reserveringsruimte, lijfrente products, stakingswinst conversion, the oudedagsreserve link, afkoop rules and AOV premium deductibility for tax year 2021."
+nav_label: "Pensioen, lijfrente en AOV"
 trigger_phrases:
   - "pensioen en AOV 2021"
   - "jaarruimte 2021"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Pensioen, lijfrente en AOV 2021
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 293.
+Part 1: lines 1-292, 48330 bytes, first heading "# Pensioen, lijfrente en AOV 2021"
+Part 2: lines 293-312, 5432 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2021 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

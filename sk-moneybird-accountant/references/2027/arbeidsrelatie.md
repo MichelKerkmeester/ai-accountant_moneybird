@@ -1,6 +1,7 @@
 ---
 title: "Arbeidsrelatie en zelfstandigheid 2027"
 description: "Work relationship rules for tax year 2027: Wet DBA enforcement after the moratorium, modelovereenkomsten, the VBAR low hourly rate presumption and the status of the BAZ bill."
+nav_label: "Arbeidsrelatie en zelfstandigheid"
 trigger_phrases:
   - "arbeidsrelatie 2027"
   - "schijnzelfstandigheid 2027"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Arbeidsrelatie en zelfstandigheid 2027
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 248.
+Part 1: lines 1-247, 46956 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2027"
+Part 2: lines 248-273, 6374 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

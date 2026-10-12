@@ -1,6 +1,7 @@
 ---
 title: "Aangifte en procedure 2021"
 description: "Filing deadlines, extensions, voorlopige aanslag, belastingrente, navordering, bezwaar, bewaarplicht and registration duties for tax year 2021."
+nav_label: "Aangifte en procedure"
 trigger_phrases:
   - "procedure 2021"
   - "aangifte en procedure 2021"

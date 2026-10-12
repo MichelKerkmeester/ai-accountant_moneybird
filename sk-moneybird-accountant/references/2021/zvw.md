@@ -1,6 +1,7 @@
 ---
 title: "Zvw-bijdrage 2021"
 description: "The income-dependent Zvw contribution for an entrepreneur in tax year 2021: the 5,75% rate, the maximum bijdrage-inkomen of € 58.311, who pays by aanslag and how the rate differs from the 7,00% werkgeversheffing."
+nav_label: "Zvw-bijdrage"
 trigger_phrases:
   - "Zvw bijdrage 2021"
   - "Zvw 2021"

@@ -1,6 +1,7 @@
 ---
 title: "Zvw-bijdrage 2026"
 description: "The income-dependent Zvw contribution for an entrepreneur in tax year 2026: the 4,85% aanslag rate, the maximum bijdrage-inkomen of € 79.409, who pays by aanslag and how the 6,10% werkgeversheffing differs."
+nav_label: "Zvw-bijdrage"
 trigger_phrases:
   - "Zvw-bijdrage 2026"
   - "inkomensafhankelijke bijdrage Zvw 2026"

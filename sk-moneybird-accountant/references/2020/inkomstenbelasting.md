@@ -1,6 +1,7 @@
 ---
 title: "Inkomstenbelasting box 1 2020"
 description: "Covers the 2020 box 1 rates, heffingskortingen, tariefsaanpassing and the route from business profit to taxable income."
+nav_label: "Inkomstenbelasting box 1"
 trigger_phrases:
   - "Inkomstenbelasting box 1 2020"
   - "heffingskortingen 2020"

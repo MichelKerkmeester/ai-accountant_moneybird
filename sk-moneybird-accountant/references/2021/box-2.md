@@ -1,6 +1,7 @@
 ---
 title: "Box 2 en aanmerkelijk belang 2021"
 description: "Box 2 and aanmerkelijk belang rules for tax year 2021, with the 26,9% rate, the 5% test, loss offset and conversion, the forfaitair voordeel and the closed pension routes."
+nav_label: "Box 2 en aanmerkelijk belang"
 trigger_phrases:
   - "box 2 2021"
   - "aanmerkelijk belang 2021"

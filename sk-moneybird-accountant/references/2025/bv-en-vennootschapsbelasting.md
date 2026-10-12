@@ -1,6 +1,7 @@
 ---
 title: "BV en vennootschapsbelasting 2025"
 description: "Dutch BV and vennootschapsbelasting for tax year 2025, from the Vpb rates and computation to verliesverrekening, the renteaftrekbeperking, gebruikelijk loon and the DGA Zvw route, dividendbelasting, conditionele bronbelasting, fiscale eenheid, innovatiebox, jaarrekening and the switch from eenmanszaak to BV."
+nav_label: "BV en vennootschapsbelasting"
 trigger_phrases:
   - "vennootschapsbelasting 2025"
   - "BV 2025"
@@ -12,6 +13,13 @@ version: 1.0.0.0
 ---
 
 # BV en vennootschapsbelasting 2025
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 310.
+Part 1: lines 1-309, 49785 bytes, first heading "# BV en vennootschapsbelasting 2025"
+Part 2: lines 310-361, 13229 bytes, first heading "## 5. CHANGES FROM 2024"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

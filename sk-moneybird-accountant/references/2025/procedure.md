@@ -1,6 +1,7 @@
 ---
 title: "Aangifte en procedure 2025"
 description: "Filing deadlines and extensions for income tax and btw, the voorlopige aanslag, belastingrente, the navorderingstermijn, bezwaar, the bewaarplicht and the KVK and Belastingdienst registration duties for tax year 2025."
+nav_label: "Aangifte en procedure"
 trigger_phrases:
   - "aangifte en procedure 2025"
   - "belastingaangifte 2025"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Aangifte en procedure 2025
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 228.
+Part 1: lines 1-227, 45835 bytes, first heading "# Aangifte en procedure 2025"
+Part 2: lines 228-275, 13261 bytes, first heading "## 5. CHANGES FROM 2024"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

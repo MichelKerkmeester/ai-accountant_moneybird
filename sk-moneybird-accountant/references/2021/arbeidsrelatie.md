@@ -1,6 +1,7 @@
 ---
 title: "Arbeidsrelatie en zelfstandigheid 2021"
 description: "Wet DBA, the handhavingsmoratorium and the aanwijzing route, modelovereenkomsten and case law on the work relationship for tax year 2021, with the later VBAR hourly rate presumption and BAZ bill named as context."
+nav_label: "Arbeidsrelatie en zelfstandigheid"
 trigger_phrases:
   - "arbeidsrelatie 2021"
   - "Wet DBA 2021"

@@ -1,6 +1,7 @@
 ---
 title: "Zvw-bijdrage 2023"
 description: "The income-dependent Zvw contribution for a Dutch entrepreneur in tax year 2023, covering the 5,43% rate, the maximum bijdrage-inkomen of € 66.956, the calculation base after the ondernemersaftrek and MKB-winstvrijstelling, and the difference from the 6,68% werkgeversheffing."
+nav_label: "Zvw-bijdrage"
 trigger_phrases:
   - "Zvw-bijdrage 2023"
   - "inkomensafhankelijke bijdrage Zvw 2023"

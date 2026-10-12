@@ -1,6 +1,7 @@
 ---
 title: "Inkomstenbelasting box 1 2024"
 description: "This file covers Dutch Box 1 rates, AOW-age variants, tax credits, rate adjustment and the route from business profit to taxable income for tax year 2024."
+nav_label: "Inkomstenbelasting box 1"
 trigger_phrases:
   - "income tax box 1 2024"
   - "inkomstenbelasting box 1 2024"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Inkomstenbelasting box 1 2024
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 337.
+Part 1: lines 1-336, 49481 bytes, first heading "# Inkomstenbelasting box 1 2024"
+Part 2: lines 337-357, 5434 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2024 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

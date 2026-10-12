@@ -1,6 +1,7 @@
 ---
 title: "Ondernemersaftrek en MKB-winstvrijstelling 2026"
 description: "Ondernemersaftrek and MKB-winstvrijstelling for a sole trader in tax year 2026, covering the urencriterium, zelfstandigenaftrek, startersaftrek, meewerkaftrek, S&O aftrek, stakingsaftrek, the profit exemption and the tariefsaanpassing."
+nav_label: "Ondernemersaftrek en MKB-winstvrijstelling"
 trigger_phrases:
   - "ondernemersaftrek 2026"
   - "MKB-winstvrijstelling 2026"

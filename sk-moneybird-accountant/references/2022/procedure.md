@@ -1,6 +1,7 @@
 ---
 title: "Aangifte en procedure 2022"
 description: "Filing deadlines, uitstel, voorlopige aanslag, belastingrente, navordering, bezwaar, bewaarplicht and KVK and Belastingdienst registration duties for tax year 2022."
+nav_label: "Aangifte en procedure"
 trigger_phrases:
   - "aangifte en procedure 2022"
   - "aangifte inkomstenbelasting 2022 deadline"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Aangifte en procedure 2022
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 284.
+Part 1: lines 1-283, 50822 bytes, first heading "# Aangifte en procedure 2022"
+Part 2: lines 284-436, 17588 bytes, first heading "### Example 5: Navorderingstermijn for tax year 2022 (Calculated example)"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

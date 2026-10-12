@@ -1,6 +1,7 @@
 ---
 title: "Pensioen, lijfrente en AOV 2023"
 description: "Jaarruimte, reserveringsruimte, lijfrente conditions and deadlines, the oudedagsreserve phase-out, the stakingswinst conversion and AOV premium deductibility for tax year 2023."
+nav_label: "Pensioen, lijfrente en AOV"
 trigger_phrases:
   - "pensioen en lijfrente 2023"
   - "jaarruimte en reserveringsruimte 2023"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Pensioen, lijfrente en AOV 2023
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 293.
+Part 1: lines 1-292, 48449 bytes, first heading "# Pensioen, lijfrente en AOV 2023"
+Part 2: lines 293-322, 8088 bytes, first heading "## 6. IN THE BOOKS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

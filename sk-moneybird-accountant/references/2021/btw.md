@@ -1,6 +1,7 @@
 ---
 title: "BTW 2021"
 description: "This file covers Dutch VAT rates, exemptions, the KOR, returns, cross-border VAT and bookkeeping rules checked for tax year 2021."
+nav_label: "BTW"
 trigger_phrases:
   - "BTW 2021"
   - "btw-aangifte 2021"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # BTW 2021
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 413.
+Part 1: lines 1-412, 48844 bytes, first heading "# BTW 2021"
+Part 2: lines 413-432, 5056 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2021 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

@@ -1,6 +1,7 @@
 ---
 title: "Inkomstenbelasting box 1 2026"
 description: "Covers the 2026 box 1 brackets, heffingskortingen, tariefsaanpassing and the route from business profit to taxable income."
+nav_label: "Inkomstenbelasting box 1"
 trigger_phrases:
   - "income tax box 1 2026"
   - "inkomstenbelasting 2026"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Inkomstenbelasting box 1 2026
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 302.
+Part 1: lines 1-301, 43672 bytes, first heading "# Inkomstenbelasting box 1 2026"
+Part 2: lines 302-351, 19676 bytes, first heading "## 5. CHANGES FROM 2025"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

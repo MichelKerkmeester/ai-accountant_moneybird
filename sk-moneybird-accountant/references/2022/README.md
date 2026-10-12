@@ -24,6 +24,7 @@ Tax year 2022 is a past year. Its law is enacted, and later changes do not alter
 
 ## 2. TOPIC FILES
 
+<!-- GENERATED:topic-files:start -->
 | File | Covers | Values | UNVERIFIED | Not enacted |
 |---|---|---|---|---|
 | [btw.md](btw.md) | This file covers Dutch VAT for tax year 2022, including the rates and exemptions, the KOR, return periods and deadlines, cross-border transactions, invoicing, private use and the corona repayment scheme. | 38 | 6 | 4 |
@@ -38,6 +39,7 @@ Tax year 2022 is a past year. Its law is enacted, and later changes do not alter
 | [pensioen-en-aov.md](pensioen-en-aov.md) | Jaarruimte, reserveringsruimte, lijfrente conditions, stakingswinst conversion, oudedagsreserve and AOV deductibility for a ZZP sole trader in tax year 2022. | 30 | 0 | 0 |
 | [arbeidsrelatie.md](arbeidsrelatie.md) | Wet DBA, the handhavingsmoratorium and modelovereenkomsten for tax year 2022, plus the later VBAR hourly rate presumption and the BAZ bill as recorded in the checked sources. | 21 | 2 | 9 |
 | [procedure.md](procedure.md) | Filing deadlines, uitstel, voorlopige aanslag, belastingrente, navordering, bezwaar, bewaarplicht and KVK and Belastingdienst registration duties for tax year 2022. | 42 | 0 | 0 |
+<!-- GENERATED:topic-files:end -->
 
 ---
 
@@ -45,6 +47,7 @@ Tax year 2022 is a past year. Its law is enacted, and later changes do not alter
 
 The first two rows of each file's figures table. The topic file carries the source URL and the conditions.
 
+<!-- GENERATED:headline-figures:start -->
 | Topic | Item | Value 2022 | Status | Check |
 |---|---|---|---|---|
 | BTW | Standard, reduced and zero rates (Wet OB art. 9) | 21% standard. 9% for goods and services in Tabel I. Nihil for goods and services in Tabel II when the conditions set by algemene maatregel van bestuur are met. | enacted | Verified |
@@ -71,6 +74,7 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Arbeidsrelatie en zelfstandigheid | Loondiensttoets | Three elements: possibility of werkgeversgezag, duty to perform (persoonlijke) arbeid, pay for the work | enacted | Verified |
 | Aangifte en procedure | IB return 2022 filing deadline | Before 1 May 2023 | enacted | Corrected |
 | Aangifte en procedure | IB filing period 2022 opens | 1 March 2023 | enacted | Verified |
+<!-- GENERATED:headline-figures:end -->
 
 ---
 

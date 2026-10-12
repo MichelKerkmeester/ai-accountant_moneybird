@@ -1,6 +1,7 @@
 ---
 title: "Investeringsaftrek en afschrijving 2022"
 description: "All investment deductions and depreciation rules for tax year 2022, with the KIA table, the EIA, MIA and Vamil percentages, the per-asset minimums and the desinvesteringsbijtelling threshold."
+nav_label: "Investeringsaftrek en afschrijving"
 trigger_phrases:
   - "investeringsaftrek 2022"
   - "kleinschaligheidsinvesteringsaftrek 2022"

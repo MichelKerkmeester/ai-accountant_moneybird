@@ -1,6 +1,7 @@
 ---
 title: "Aangifte en procedure 2020"
 description: "Filing deadlines and uitstel, the voorlopige aanslag, belastingrente, navordering, bezwaar, bewaarplicht and the KVK and Belastingdienst registration duties for tax year 2020."
+nav_label: "Aangifte en procedure"
 trigger_phrases:
   - "aangifte en procedure 2020"
   - "aangifte inkomstenbelasting 2020 deadline"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Aangifte en procedure 2020
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 347.
+Part 1: lines 1-346, 50627 bytes, first heading "# Aangifte en procedure 2020"
+Part 2: lines 347-374, 6447 bytes, first heading "## 6. IN THE BOOKS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2020 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

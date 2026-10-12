@@ -1,6 +1,7 @@
 ---
 title: "BTW 2020"
 description: "Covers Dutch VAT rates, deductions, the small-business scheme, returns, cross-border supplies, invoicing and private use for tax year 2020."
+nav_label: "BTW"
 trigger_phrases:
   - "btw 2020"
   - "omzetbelasting 2020"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # BTW 2020
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 356.
+Part 1: lines 1-355, 49012 bytes, first heading "# BTW 2020"
+Part 2: lines 356-385, 4900 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2020 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

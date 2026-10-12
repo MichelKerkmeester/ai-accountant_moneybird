@@ -1,6 +1,7 @@
 ---
 title: "Box 2 en aanmerkelijk belang 2023"
 description: "Box 2 and aanmerkelijk belang for tax year 2023: the 26,9% rate, the 5% test, loss offset and the belastingkorting, the new excessief lenen rules, gebruikelijk loon and the ODV marktrente."
+nav_label: "Box 2 en aanmerkelijk belang"
 trigger_phrases:
   - "box 2 2023"
   - "aanmerkelijk belang 2023"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Box 2 en aanmerkelijk belang 2023
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 236.
+Part 1: lines 1-235, 49007 bytes, first heading "# Box 2 en aanmerkelijk belang 2023"
+Part 2: lines 236-266, 7084 bytes, first heading "## 6. IN THE BOOKS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

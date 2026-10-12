@@ -24,6 +24,7 @@ Tax year 2023 is a past year. Its law is enacted, and later changes do not alter
 
 ## 2. TOPIC FILES
 
+<!-- GENERATED:topic-files:start -->
 | File | Covers | Values | UNVERIFIED | Not enacted |
 |---|---|---|---|---|
 | [btw.md](btw.md) | This file explains Dutch VAT rates, exemptions, returns, cross-border rules, and bookkeeping for tax year 2023. | 31 | 7 | 5 |
@@ -38,6 +39,7 @@ Tax year 2023 is a past year. Its law is enacted, and later changes do not alter
 | [pensioen-en-aov.md](pensioen-en-aov.md) | Jaarruimte, reserveringsruimte, lijfrente conditions and deadlines, the oudedagsreserve phase-out, the stakingswinst conversion and AOV premium deductibility for tax year 2023. | 24 | 0 | 0 |
 | [arbeidsrelatie.md](arbeidsrelatie.md) | Wet DBA enforcement, modelovereenkomsten, the VBAR bill and the low hourly rate presumption for the work relationship of a Dutch sole trader in tax year 2023. | 20 | 0 | 5 |
 | [procedure.md](procedure.md) | Filing deadlines and uitstel for income tax and btw, the voorlopige aanslag, belastingrente, the navorderingstermijn, bezwaar, the bewaarplicht and KVK and Belastingdienst registration for tax year 2023. | 35 | 0 | 0 |
+<!-- GENERATED:topic-files:end -->
 
 ---
 
@@ -45,6 +47,7 @@ Tax year 2023 is a past year. Its law is enacted, and later changes do not alter
 
 The first two rows of each file's figures table. The topic file carries the source URL and the conditions.
 
+<!-- GENERATED:headline-figures:start -->
 | Topic | Item | Value 2023 | Status | Check |
 |---|---|---|---|---|
 | BTW | Standard rate | 21% | enacted | Verified |
@@ -71,6 +74,7 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Arbeidsrelatie en zelfstandigheid | Loondienst test | 3 elements, the possibility of werkgeversgezag, the duty to perform (persoonlijke) arbeid, and pay for the work | enacted | Verified |
 | Aangifte en procedure | Aangifteperiode inkomstenbelasting | Opens on 1 March | enacted | Verified |
 | Aangifte en procedure | IB return 2023 filing deadline | Before 1 May 2024, with uitstel before 1 September 2024 | enacted | Corrected |
+<!-- GENERATED:headline-figures:end -->
 
 ---
 

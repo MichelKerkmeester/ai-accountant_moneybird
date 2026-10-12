@@ -1,6 +1,7 @@
 ---
 title: "Zvw-bijdrage 2024"
 description: "The income-dependent Zvw contribution for a ZZP entrepreneur in 2024: the 5,32% rate over the belastbare winst uit onderneming, the maximum bijdrage-inkomen of € 71.628, who pays by aanslag, and how the entrepreneur rate differs from the 6,57% employer rate."
+nav_label: "Zvw-bijdrage"
 trigger_phrases:
   - "Zvw-bijdrage 2024"
   - "Zvw 2024"

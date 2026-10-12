@@ -1,6 +1,7 @@
 ---
 title: "Pensioen, lijfrente en AOV 2024"
 description: "Jaarruimte, reserveringsruimte, lijfrente caps, stakingswinst conversion, AOV premium deductibility and the proposed BAZ consultation for tax year 2024."
+nav_label: "Pensioen, lijfrente en AOV"
 trigger_phrases:
   - "pensioen en AOV 2024"
   - "jaarruimte 2024"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Pensioen, lijfrente en AOV 2024
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 347.
+Part 1: lines 1-346, 46395 bytes, first heading "# Pensioen, lijfrente en AOV 2024"
+Part 2: lines 347-409, 14649 bytes, first heading "## 5. CHANGES FROM 2023"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2024 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

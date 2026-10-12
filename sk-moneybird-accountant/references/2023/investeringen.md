@@ -1,6 +1,7 @@
 ---
 title: "Investeringsaftrek en afschrijving 2023"
 description: "Investment deductions and depreciation for tax year 2023: KIA, EIA, MIA, Vamil, ordinary depreciation, bodemwaarde, willekeurige afschrijving and desinvesteringsbijtelling for a sole trader or a BV."
+nav_label: "Investeringsaftrek en afschrijving"
 trigger_phrases:
   - "investeringsaftrek 2023"
   - "kleinschaligheidsinvesteringsaftrek 2023"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # Investeringsaftrek en afschrijving 2023
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 338.
+Part 1: lines 1-337, 47845 bytes, first heading "# Investeringsaftrek en afschrijving 2023"
+Part 2: lines 338-369, 8240 bytes, first heading "## 6. IN THE BOOKS"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

@@ -1,6 +1,7 @@
 ---
 title: "BV en vennootschapsbelasting 2024"
 description: "Vennootschapsbelasting, the fiscale eenheid, the gebruikelijk loonregeling for a DGA, Zvw, box 2, dividendbelasting and the jaarrekening size classes for tax year 2024."
+nav_label: "BV en vennootschapsbelasting"
 trigger_phrases:
   - "BV en vennootschapsbelasting 2024"
   - "vennootschapsbelasting 2024"
@@ -11,6 +12,13 @@ version: 1.0.0.0
 ---
 
 # BV en vennootschapsbelasting 2024
+
+<!-- GENERATED:nav:start -->
+Read plan: 2 parts. Next read offset: line 313.
+Part 1: lines 1-312, 49134 bytes, first heading "# BV en vennootschapsbelasting 2024"
+Part 2: lines 313-360, 11880 bytes, first heading "## 5. CHANGES FROM 2023"
+<!-- GENERATED:nav:end -->
+
 
 **Rule:** These values hold for tax year 2024 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

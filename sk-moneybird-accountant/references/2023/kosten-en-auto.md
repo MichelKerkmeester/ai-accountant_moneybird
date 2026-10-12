@@ -1,6 +1,7 @@
 ---
 title: "Kosten en auto 2023"
 description: "Deductible business costs and car rules for a Dutch sole trader in tax year 2023, from the gemengde kosten drempel and the kilometre allowance to bijtelling, the workspace, fines and the abolished studiekostenaftrek."
+nav_label: "Kosten en auto"
 trigger_phrases:
   - "kosten en auto 2023"
   - "zakelijke kosten 2023"

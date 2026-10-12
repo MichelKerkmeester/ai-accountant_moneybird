@@ -1,6 +1,7 @@
 ---
 title: "Ondernemersaftrek en MKB-winstvrijstelling 2025"
 description: "The ondernemersaftrek, the startersaftrek, the meewerkaftrek, the stakingsaftrek and the 12,7% MKB-winstvrijstelling for tax year 2025, with the urencriterium of 1.225 hours and the tariefsaanpassing of 12,02%."
+nav_label: "Ondernemersaftrek en MKB-winstvrijstelling"
 trigger_phrases:
   - "ondernemersaftrek 2025"
   - "MKB-winstvrijstelling 2025"
