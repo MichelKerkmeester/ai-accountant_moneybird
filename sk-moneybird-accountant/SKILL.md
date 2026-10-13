@@ -55,8 +55,8 @@ Every request matches exactly one row, which decides files read and tool skill.
 | T1 | migration phase | `migratie`, `overzetten`, `historische administratie`, `Jortt` | migration phase, gate, Jortt export, archive, cutover, year lock | `cli-jortt + cli-moneybird` | `references/migration/README.md`, `references/migration/shared-mechanisms.md`, `references/migration/control-framework.md` when a gate, risk, or year lock applies, and the one phase file the index names for the current phase | `tok:T1` | Beats T2 when a phase number or gate is named |
 | T2 | migration concept | `migratie`, `overzetten`, `historische administratie` | mapping, category, which account, trap | `none` | `references/migration/jortt-to-moneybird-mapping.md` | `tok:T2` | Yields to T1 when a phase number or gate is named |
 | T3 | live period | `deze maand`, `afgelopen kwartaal`, `administratie bijhouden` | this month, this quarter, review, reconcile, bank, unmatched, close | `cli-moneybird` | `references/moneybird-bookkeeping.md`, `references/YYYY/README.md`, `references/YYYY/btw.md` when the period is a VAT period, `references/migration/README.md` and `references/migration/phases-19-to-21.md` while the post-cutover state is monitoring_active or monitoring_lapsed_phase22_open | `tok:T3` | Yields to T4 when an invoice is named and to T1 when a phase or gate is named |
-| T4 | purchase invoice | `inkoopfactuur`, `bonnetje`, `factuur van een leverancier` | invoice, receipt, order, supplier, reverse charge, KOR | `cli-moneybird` | `references/purchase-invoices.md`, `references/YYYY/btw.md`, `references/moneybird-bookkeeping.md` | `tok:T4` | Beats T3 when an invoice is named |
-| T5 | tax figure | `btw-tarief`, `kilometervergoeding`, `zelfstandigenaftrek`, `drempel` | rate, threshold, deduction, how much, current year | `none` | `references/dutch-tax-rules.md`, `references/YYYY/README.md`, then the one topic file the README names starting with its KEY FIGURES section, and `references/source-library.md` when a figure needs its official source | `tok:T5` | Beats T6 when one year is named |
+| T4 | purchase invoice | `inkoopfactuur`, `bonnetje`, `factuur van een leverancier`, `privégebruik`, `zakelijk en privé`, `deels privé`, `gemengde kosten`, `afschrijven`, `afschrijving`, `inventaris`, `activeren`, `activeer`, `telefoonabonnement` | invoice, receipt, order, supplier, reverse charge, KOR, private use, partly private, mixed use, depreciation, depreciate, fixed asset, capitalise, capitalize, phone subscription | `cli-moneybird` | `references/purchase-invoices.md`, `references/YYYY/btw.md`, `references/moneybird-bookkeeping.md`, `references/mixed-use-costs.md` when the cost is used partly privately, `references/fixed-assets.md` when the purchase is an asset, inventaris or is depreciated | `tok:T4` | Beats T3 when an invoice is named and yields to it otherwise, yields to T6 when the rule is asked across years and to T5 when a tax figure is asked and no invoice is named |
+| T5 | tax figure | `btw-tarief`, `kilometervergoeding`, `zelfstandigenaftrek`, `drempel`, `hoeveel`, `investeringsaftrek` | rate, threshold, deduction, how much, current year | `none` | `references/dutch-tax-rules.md`, `references/YYYY/README.md`, then the one topic file the README names starting with its KEY FIGURES section, and `references/source-library.md` when a figure needs its official source | `tok:T5` | Beats T6 when one year is named |
 | T6 | cross-year rule | `vorig jaar`, `sinds wanneer`, `bewaarplicht` | how does the rule work, changed since, compared with | `none` | `references/dutch-tax-rules.md` | `tok:T6` | Wins when the rule is asked across years or since a change |
 | T7 | CLI action | `haal op`, `boek in`, `synchroniseer` | read Jortt, moneybird-guard, write, batch, approval | `additive` | `-` | `tok:T7` | Additive and never wins alone, it appends the matching sibling tool skill to the row already matched |
 | T8 | unknown or out of scope | `aangifte doen` | filing, non-Dutch tax, private database | `none` | `-` | `tok:T8` | Only when no other row scores, it refuses the out-of-scope boundary and loads nothing |
@@ -116,8 +116,8 @@ INTENT_SIGNALS = {
     "T1": [["migratie", "overzetten", "historische administratie", "Jortt"], ["migration phase", "gate", "Jortt export", "archive", "cutover", "year lock"]],
     "T2": [["migratie", "overzetten", "historische administratie"], ["mapping", "category", "which account", "trap"]],
     "T3": [["deze maand", "afgelopen kwartaal", "administratie bijhouden"], ["this month", "this quarter", "review", "reconcile", "bank", "unmatched", "close"]],
-    "T4": [["inkoopfactuur", "bonnetje", "factuur van een leverancier"], ["invoice", "receipt", "order", "supplier", "reverse charge", "KOR"]],
-    "T5": [["btw-tarief", "kilometervergoeding", "zelfstandigenaftrek", "drempel"], ["rate", "threshold", "deduction", "how much", "current year"]],
+    "T4": [["inkoopfactuur", "bonnetje", "factuur van een leverancier", "priv\u00e9gebruik", "zakelijk en priv\u00e9", "deels priv\u00e9", "gemengde kosten", "afschrijven", "afschrijving", "inventaris", "activeren", "activeer", "telefoonabonnement"], ["invoice", "receipt", "order", "supplier", "reverse charge", "KOR", "private use", "partly private", "mixed use", "depreciation", "depreciate", "fixed asset", "capitalise", "capitalize", "phone subscription"]],
+    "T5": [["btw-tarief", "kilometervergoeding", "zelfstandigenaftrek", "drempel", "hoeveel", "investeringsaftrek"], ["rate", "threshold", "deduction", "how much", "current year"]],
     "T6": [["vorig jaar", "sinds wanneer", "bewaarplicht"], ["how does the rule work", "changed since", "compared with"]],
     "T7": [["haal op", "boek in", "synchroniseer"], ["read Jortt", "moneybird-guard", "write", "batch", "approval"]],
     "T8": [["aangifte doen"], ["filing", "non-Dutch tax", "private database"]],
@@ -127,7 +127,7 @@ RESOURCE_MAP = {
     "T1": ["references/migration/README.md", "references/migration/shared-mechanisms.md", "references/migration/control-framework.md"],
     "T2": ["references/migration/jortt-to-moneybird-mapping.md"],
     "T3": ["references/moneybird-bookkeeping.md", "references/YYYY/README.md", "references/YYYY/btw.md", "references/migration/README.md", "references/migration/phases-19-to-21.md"],
-    "T4": ["references/purchase-invoices.md", "references/YYYY/btw.md", "references/moneybird-bookkeeping.md"],
+    "T4": ["references/purchase-invoices.md", "references/YYYY/btw.md", "references/moneybird-bookkeeping.md", "references/mixed-use-costs.md", "references/fixed-assets.md"],
     "T5": ["references/dutch-tax-rules.md", "references/YYYY/README.md", "references/source-library.md"],
     "T6": ["references/dutch-tax-rules.md"],
     "T7": [],
@@ -138,7 +138,7 @@ LOADING_LEVELS = {
     "tok:T1": ["references/migration/README.md", "references/migration/shared-mechanisms.md", "references/migration/control-framework.md"],
     "tok:T2": ["references/migration/jortt-to-moneybird-mapping.md"],
     "tok:T3": ["references/moneybird-bookkeeping.md", "references/YYYY/README.md", "references/YYYY/btw.md", "references/migration/README.md", "references/migration/phases-19-to-21.md"],
-    "tok:T4": ["references/purchase-invoices.md", "references/YYYY/btw.md", "references/moneybird-bookkeeping.md"],
+    "tok:T4": ["references/purchase-invoices.md", "references/YYYY/btw.md", "references/moneybird-bookkeeping.md", "references/mixed-use-costs.md", "references/fixed-assets.md"],
     "tok:T5": ["references/dutch-tax-rules.md", "references/YYYY/README.md", "references/source-library.md"],
     "tok:T6": ["references/dutch-tax-rules.md"],
     "tok:T7": [],
@@ -276,6 +276,8 @@ Answer order: avoid loading unneeded record content, then scan the draft with th
 - Tax year folders `references/2020/` to `references/2027/` - one sourced file per topic.
 - [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) - ZZP accounting treatment.
 - [Purchase invoices](./references/purchase-invoices.md) - booking and VAT per case.
+- [Mixed-use costs](./references/mixed-use-costs.md) - the business share, the VAT split and the private booking.
+- [Fixed assets](./references/fixed-assets.md) - the cost-or-asset test, depreciation, the VAT revision and disposal.
 - [Jortt to Moneybird mapping](./references/migration/jortt-to-moneybird-mapping.md) - concepts and traps.
 - [Source library](./references/source-library.md) - every cited source, `assets/source-library.json`.
 - [Routing signals](./references/routing-signals.md) - tie mechanics.
@@ -338,5 +340,7 @@ Complete when:
 - [Dutch tax rules](./references/dutch-tax-rules.md) - rules per year.
 - [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) - ZZP events.
 - [Purchase invoices](./references/purchase-invoices.md) - booking and reverse charge.
+- [Mixed-use costs](./references/mixed-use-costs.md) - business and private split.
+- [Fixed assets](./references/fixed-assets.md) - assets, depreciation and disposal.
 - [Source library](./references/source-library.md) - source per figure.
 - [Jortt to Moneybird mapping](./references/migration/jortt-to-moneybird-mapping.md) - concepts and traps.

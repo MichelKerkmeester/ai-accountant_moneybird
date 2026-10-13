@@ -70,7 +70,7 @@ Keep the business and private parts separate. Use a product split only after the
 
 ### Private withdrawals and contributions
 
-Post proprietor contributions and withdrawals against private or equity accounts. They are not sales or operating expenses. Record private use of a business product or service as the supported private-use adjustment after the underlying tax treatment has been decided.
+Post proprietor contributions and withdrawals against private or equity accounts. They are not sales or operating expenses. Record private use of a business product or service as the supported private-use adjustment after the underlying tax treatment has been decided. A cost used partly for the business and partly privately follows the [mixed-use costs reference](./mixed-use-costs.md) for the business share, the VAT split and the private booking.
 
 - Product references: [business and private](https://helpcenter.moneybird.nl/nl/articles/207322-zakelijk-en-prive) and [private use of business products or services](https://helpcenter.moneybird.nl/nl/articles/207324-privegebruik-van-zakelijke-producten-of-diensten-voor-eenmanszaken), per Moneybird help reviewed on 2026-10-10.
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
@@ -88,7 +88,7 @@ Record the supported business distance with the rate for the travel year and a t
 
 ### Fixed assets and depreciation
 
-A qualifying asset is recorded with its original cost, in-use date, useful life, residual value, and prior depreciation when it already existed. Moneybird supports straight-line depreciation and existing-asset opening data. Its product activation threshold is €450 excluding VAT, per Moneybird help reviewed on 2026-10-10. Tax classification and depreciation limits still need a year-specific check. Building depreciation needs a separate WOZ floor decision and is not fully automated by the product.
+A qualifying asset is recorded with its original cost, in-use date, useful life, residual value and prior depreciation when it already existed. Moneybird supports straight-line depreciation and existing-asset opening data. Its product activation threshold is €450 excluding VAT, per Moneybird help reviewed on 2026-10-10. Tax classification and depreciation limits still need a year-specific check. Building depreciation needs a separate WOZ floor decision and is not fully automated by the product. The [fixed assets reference](./fixed-assets.md) covers the cost-or-asset test, the depreciation base and yearly limit, VAT on an asset and its revision period and disposal.
 
 - Product references: [add an asset](https://helpcenter.moneybird.nl/nl/articles/207293-bezitting-toevoegen), [straight-line depreciation](https://helpcenter.moneybird.nl/nl/articles/207294-bezitting-lineair-afschrijven), and [move existing assets](https://helpcenter.moneybird.nl/nl/articles/223936-bestaande-vaste-activa-overzetten-naar-bezittingen).
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
@@ -157,5 +157,7 @@ Moneybird does not prepare the proprietor's complete personal income-tax return.
 
 - [Dutch tax rules](./dutch-tax-rules.md) explains the general tax rules and routes to the year folders with the yearly amounts.
 - [Purchase invoices](./purchase-invoices.md) explains booking purchase invoices, receipts and orders with Dutch or reverse-charged VAT.
+- [Mixed-use costs](./mixed-use-costs.md) explains a cost used partly privately, its business share, its VAT split and its Moneybird booking.
+- [Fixed assets](./fixed-assets.md) explains when a purchase is an asset, depreciation, the VAT revision period and disposal.
 - [Jortt to Moneybird mapping](./migration/jortt-to-moneybird-mapping.md) explains source-to-target concept mapping.
 - [Migration phase index](./migration/README.md) routes historical migration work.

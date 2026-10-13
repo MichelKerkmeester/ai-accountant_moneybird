@@ -14,7 +14,7 @@ version: 1.0.0.0
 
 # Booking purchase invoices in Moneybird
 
-**Rule:** Product behaviour below is per Moneybird help reviewed on 2026-10-12. Tax rules are per the Belastingdienst pages linked in each section. Take the VAT rate for the invoice's tax year from that year's `btw.md`. A KOR, exempt-turnover or mixed-use case goes to the Operator or a bookkeeper.
+**Rule:** Product behaviour below is per Moneybird help reviewed on 2026-10-12. Tax rules are per the Belastingdienst pages linked in each section. Take the VAT rate for the invoice's tax year from that year's `btw.md`. A mixed-use case follows the [mixed-use costs reference](./mixed-use-costs.md), which splits the business and private parts and their VAT. A KOR, exempt-turnover or other judgement case goes to the Operator or a bookkeeper.
 
 ---
 
@@ -275,5 +275,7 @@ In Moneybird, activate the purchase rates **Btw verlegd 21% (binnenland)** and *
 ## 13. RELATED RESOURCES
 
 - [Moneybird bookkeeping](./moneybird-bookkeeping.md) covers categories, mixed costs and bank matching.
+- [Mixed-use costs](./mixed-use-costs.md) splits a cost used partly privately, with the business share, the VAT split and the Moneybird booking.
+- [Fixed assets](./fixed-assets.md) covers when a purchase is an asset, depreciation, the VAT revision period and disposal.
 - [Dutch tax rules](./dutch-tax-rules.md) explains VAT across years and routes to each year's `btw.md` with the rates in force.
 - [cli-moneybird](../../cli-moneybird/SKILL.md) owns the guarded reads and writes for purchase invoices, receipts and tax rates.

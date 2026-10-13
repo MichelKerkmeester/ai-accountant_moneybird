@@ -33,8 +33,11 @@ Every signal word in the Task-Type Table has a source. Most signal words come fr
 - VAT and return terms `aangifte doen`, `btw-aangifte`, `aangifte omzetbelasting`, `voorbelasting`, `btw-tarief`, `btw-identificatienummer`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/hoe-btw-aangifte-invullen-en-versturen
 - Income tax deduction terms `zelfstandigenaftrek`, `ondernemersaftrek`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/zelfstandigenaftrek1/verrekenen_niet_gerealiseerde_zelfstandigenaftrek
 - Car terms `kilometervergoeding`, `privégebruik auto`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/btw_en_de_auto/zakelijk_gebruik_van_de_priveauto/zakelijk_gebruik_van_de_priveauto
+- Mixed-use and private-use terms `privégebruik`, `zakelijk en privé`, `deels privé`, `gemengde kosten`, `telefoonabonnement`, `private use`, `partly private`, `mixed use` and `phone subscription`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/privegebruik/gemengd_gebruik/gemengd_gebruik
+- Asset and depreciation terms `afschrijven`, `afschrijving`, `inventaris`, `activeren`, `activeer`, `depreciation`, `depreciate`, `fixed asset`, `capitalise` and `capitalize`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/
+- Investment deduction term `investeringsaftrek`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/kleinschaligheidsinvesteringsaftrek_kia
 - Threshold terms `drempel`, `kleineondernemersregeling`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/
-- Skill vocabulary, not from the Belastingdienst: the migration terms `migratie`, `overzetten` and `historische administratie`, the CLI terms `haal op`, `boek in` and `synchroniseer`, the period words `deze maand`, `afgelopen kwartaal`, `vorig jaar` and `sinds wanneer` and the onboarding term `startende ondernemer`.
+- Skill vocabulary, not from the Belastingdienst: the migration terms `migratie`, `overzetten` and `historische administratie`, the CLI terms `haal op`, `boek in` and `synchroniseer`, the period words `deze maand`, `afgelopen kwartaal`, `vorig jaar` and `sinds wanneer`, the question word `hoeveel` and the onboarding term `startende ondernemer`.
 
 ---
 
@@ -49,14 +52,19 @@ These four constants and one outcome govern what happens when two rows score clo
 
 ---
 
-## 4. THE FOUR SPECIFICITY CLAUSES
+## 4. THE SPECIFICITY CLAUSES
 
-The four specificity clauses match the On tie column of the Task-Type Table. Each one lets a more specific request beat a broader row before the margin rule is applied.
+The specificity clauses match the On tie column of the Task-Type Table. Each one decides a tie between two rows, so a more specific request beats a broader row before the margin rule is applied.
 
-1. An invoice named makes T4 beat T3.
+1. An invoice named makes T4 beat T3, and with no invoice named T3 beats T4.
 2. One year named makes T5 beat T6.
-3. A phase number or gate named makes T1 beat T2.
-4. T7 is additive and never wins alone. It appends the matching sibling tool skill to the row already matched.
+3. A request for the official text or the source library makes T5 beat T4.
+4. A rule asked across years or since a change makes T6 beat T4.
+5. A tax figure asked with no invoice named makes T5 beat T4.
+6. A phase number or gate named makes T1 beat T2 and T3.
+7. T7 is additive and never wins alone. It appends the matching sibling tool skill to the row already matched.
+
+The mixed-use and asset terms of T4 name what is booked, not the kind of request. Together they add one point to T4 at most, so a tax figure, rule or period request that names an asset reaches the tie clauses above instead of losing to T4 on signal count.
 
 ---
 
@@ -76,7 +84,7 @@ A row shows two numbers. The base is the ladder sum of the read path that answer
 | `tok:T1` | 33,000 | 48,000 | migration index 3,000, shared mechanisms 15,000 and one phase file 15,000, plus the control framework 15,000 when a gate, risk or year lock applies |
 | `tok:T2` | 15,000 | 15,000 | one full reference file |
 | `tok:T3` | 18,000 | 51,000 | bookkeeping file 15,000 and a year README 3,000, plus the year btw file 15,000 on a VAT period, plus the migration index 3,000 and the recurring-cycle file 15,000 while the post-cutover state is open |
-| `tok:T4` | 45,000 | 45,000 | purchase invoices 15,000, the year btw file 15,000 and the bookkeeping file 15,000 |
+| `tok:T4` | 45,000 | 75,000 | purchase invoices 15,000, the year btw file 15,000 and the bookkeeping file 15,000, plus the mixed-use file 15,000 and the fixed-asset file 15,000 when their condition applies |
 | `tok:T5` | 8,000 | 18,000 | a year README 3,000 plus one section 5,000, and 5,000 more for a rules subsection and 5,000 more for the source library when either is needed |
 | `tok:T6` | 80,000 | 80,000 | section 3 of the rules file, at most 80,000, only after a jump through its section list |
 | `tok:T7` | 0 | 0 | no reference file, the sibling tool skill carries its own reads |

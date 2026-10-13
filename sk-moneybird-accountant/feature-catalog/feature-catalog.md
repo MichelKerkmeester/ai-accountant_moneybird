@@ -183,6 +183,38 @@ See [bookkeeping-and-migration/purchase-invoice-booking.md](bookkeeping-and-migr
 
 ---
 
+### Mixed-use cost booking
+
+#### Description
+
+Routes a cost used partly for the business and partly privately to the business share, the VAT split and the Moneybird booking.
+
+#### Current Reality
+
+The mixed-use reference covers a phone subscription, a home internet connection, a handset and the fixed home telephone line. It states the income tax share, the VAT share, the evidence the business share needs and the Moneybird split of the private part. A good above the asset threshold follows the fixed asset route. The corresponding manual scenario checks route selection and the stated boundary without API access.
+
+#### Source Files
+
+See [bookkeeping-and-migration/mixed-use-cost-booking.md](bookkeeping-and-migration/mixed-use-cost-booking.md) for source and validation anchors.
+
+---
+
+### Fixed asset booking
+
+#### Description
+
+Routes a large purchase or an inventaris item to the cost-or-asset test, depreciation, the VAT revision period and the Moneybird asset screens.
+
+#### Current Reality
+
+The fixed asset reference states when a purchase is capitalised, the small-amount rule, the depreciation base and yearly limit, VAT on an asset and its revision period and disposal. It names the Moneybird bezitting flow and the existing-asset opening path. A building or a change of use inside the revision period goes to the Operator or a bookkeeper. The corresponding manual scenario checks route selection and the stated boundary without API access.
+
+#### Source Files
+
+See [bookkeeping-and-migration/fixed-asset-booking.md](bookkeeping-and-migration/fixed-asset-booking.md) for source and validation anchors.
+
+---
+
 ### Year-specific ZZP guidance
 
 #### Description

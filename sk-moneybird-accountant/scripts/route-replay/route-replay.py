@@ -190,6 +190,38 @@ MONITORING_TERMS = ("monitoring", "post-cutover", "post cutover", "monitoring_ac
 VAT_TERMS = ("btw", "vat", "quarter", "kwartaal")
 ACCESS_TERMS = ("trial", "access window", "proefperiode", "auditfile", "read-only", "read only", "read_only", "lock", "workspace", "setup")
 
+# WHY: the T4 read set carries two conditional references, so the resolver
+# keeps the table's mixed-use and asset signal families to decide whether a
+# winning T4 request also loads them. route-replay-test.sh fails when a term
+# here is missing from the T4 signal cells.
+MIXED_USE_TERMS = (
+    "privégebruik",
+    "zakelijk en privé",
+    "deels privé",
+    "gemengde kosten",
+    "telefoonabonnement",
+    "private use",
+    "partly private",
+    "mixed use",
+    "phone subscription",
+)
+FIXED_ASSET_TERMS = (
+    "afschrijven",
+    "afschrijving",
+    "inventaris",
+    "activeren",
+    "activeer",
+    "depreciation",
+    "depreciate",
+    "fixed asset",
+    "capitalise",
+    "capitalize",
+)
+# These terms name what is booked, not the kind of request, so together they
+# add one point to T4 at most. Otherwise a tax figure or rule question that
+# names an asset twice outscores T5 or T6 before the tie clauses can apply.
+T4_TOPIC_TERMS = MIXED_USE_TERMS + FIXED_ASSET_TERMS
+
 TOPIC_SIGNALS = (
     (("kilometer", "mileage", "auto", "car", "thuiswerk", "home office", "kosten", "costs", "study", "studie"), "kosten-en-auto.md"),
     (("zelfstandigenaftrek", "ondernemersaftrek", "urencriterium", "mkb", "startersaftrek"), "ondernemersaftrek.md"),
@@ -802,6 +834,10 @@ def resolve_paths(
         paths = ["references/purchase-invoices.md"]
         if year:
             paths.extend(["references/%s/btw.md" % year, "references/moneybird-bookkeeping.md"])
+        if any(phrase_matches(text, term) for term in MIXED_USE_TERMS):
+            paths.append("references/mixed-use-costs.md")
+        if any(phrase_matches(text, term) for term in FIXED_ASSET_TERMS):
+            paths.append("references/fixed-assets.md")
         return paths
     if route_type == "T5":
         if any(phrase_matches(text, term) for term in SOURCE_TERMS):
@@ -836,7 +872,7 @@ def topic_file(text: str) -> str:
 
 
 def specificity_winner(text: str, first: str, second: str) -> Optional[str]:
-    """Apply the four specificity clauses to one tied pair.
+    """Apply the specificity clauses to one tied pair.
 
     Args:
         text: Lower case request text.
@@ -849,9 +885,15 @@ def specificity_winner(text: str, first: str, second: str) -> Optional[str]:
     pair = {first, second}
     if pair == {"T4", "T3"} and INVOICE_RE.search(text):
         return "T4"
+    if pair == {"T4", "T3"}:
+        return "T3"
     if pair == {"T5", "T6"} and YEAR_RE.search(text):
         return "T5"
     if pair == {"T5", "T4"} and any(phrase_matches(text, term) for term in SOURCE_TERMS):
+        return "T5"
+    if pair == {"T6", "T4"}:
+        return "T6"
+    if pair == {"T5", "T4"} and not INVOICE_RE.search(text):
         return "T5"
     if pair == {"T1", "T2"} and (PHASE_RE.search(text) or GATE_RE.search(text)):
         return "T1"
@@ -899,11 +941,17 @@ def score_candidates(route_rows: List[Dict[str, str]], text: str) -> Dict[str, i
         if route_type in ("T7", "T8"):
             continue
         count = 0
+        topic_hit = False
         for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"]):
             if phrase.lower() in WEAK_SIGNALS:
                 continue
             if phrase_matches(text, phrase):
+                if route_type == "T4" and phrase.lower() in T4_TOPIC_TERMS:
+                    topic_hit = True
+                    continue
                 count += 1
+        if topic_hit:
+            count += 1
         for phrase in EXTRA_SIGNALS.get(route_type, ()):
             if phrase_matches(text, phrase):
                 count += 1

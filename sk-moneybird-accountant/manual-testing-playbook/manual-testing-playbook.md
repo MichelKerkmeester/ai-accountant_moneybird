@@ -286,6 +286,42 @@ Catalog: [feature-catalog/purchase-invoice-booking.md](../feature-catalog/bookke
 
 ---
 
+### LIVE-004 | Mixed-use cost booking
+
+#### Description
+Verify Route a partly private phone subscription to the mixed-use cost reference, its business share and its VAT split.
+
+#### Scenario Contract
+Prompt: How do I book my phone subscription that I use partly privately? Which booking steps and references apply? Keep this as an offline routing check.
+
+Fixture rows: LIVE-004 (en) and LIVE-004-nl (nl twin).
+
+Desired user-visible outcome: Selects LIVE, names the mixed-use cost reference, records the business share and its basis, splits the document with the private part on an equity category, deducts only the business share of the VAT and keeps the write behind the gate.
+
+#### Test Execution
+Feature file: [LIVE-004](offline-routing/mixed-use-cost-booking.md)
+Catalog: [feature-catalog/mixed-use-cost-booking.md](../feature-catalog/bookkeeping-and-migration/mixed-use-cost-booking.md)
+
+---
+
+### LIVE-005 | Fixed asset booking
+
+#### Description
+Verify Route a large purchase to the fixed asset reference, the cost-or-asset test and the depreciation steps.
+
+#### Scenario Contract
+Prompt: I bought a laptop for 1200 and want to depreciate it. Which steps and references apply? Keep this as an offline routing check.
+
+Fixture rows: LIVE-005 (en) and LIVE-005-nl (nl twin).
+
+Desired user-visible outcome: Selects LIVE, names the fixed asset reference, applies the cost-or-asset test, names the depreciation fields on the bezitting, keeps the yearly depreciation within the limit and keeps the write behind the gate.
+
+#### Test Execution
+Feature file: [LIVE-005](offline-routing/fixed-asset-booking.md)
+Catalog: [feature-catalog/fixed-asset-booking.md](../feature-catalog/bookkeeping-and-migration/fixed-asset-booking.md)
+
+---
+
 ### TAX-001 | Current-year ZZP question
 
 #### Description
@@ -442,6 +478,8 @@ No runtime test calls an accounting service. The scenarios remain manual routing
 | LIVE-001 | Live bookkeeping cadence | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md) |
 | LIVE-002 | Live bookkeeping cadence | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md) |
 | LIVE-003 | Purchase invoice booking | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/purchase-invoice-booking.md) |
+| LIVE-004 | Mixed-use cost booking | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/mixed-use-cost-booking.md) |
+| LIVE-005 | Fixed asset booking | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/fixed-asset-booking.md) |
 | TAX-001 | Year-specific ZZP guidance | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md) |
 | API-001 | CLI tool handoff | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/api-tool-handoff.md) |
 | PRIV-001 | Migration data privacy | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-data-privacy.md) |

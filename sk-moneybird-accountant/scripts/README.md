@@ -180,7 +180,7 @@ A nav block or a toc block over its budget fails `--check`. The budget of one fi
 | `--overlap` | Reports the headline values that section 3 restates in prose and how many no generated row owns, reads only |
 | `--reachability` | Reports every manifest leaf that no routed folder, link or index entry reaches |
 
-Measured overhead beside the gain: the nav blocks add 14,490 bytes and 365 lines across the 51 files, and `references/index.json` is about 96 KB. The gain: every large file can be read in parts that each stay within 51,200 bytes, and the restated section 3 values without an owner fell from 58 to 0.
+Measured overhead beside the gain: the nav blocks, markers included, add 15,317 bytes and 279 lines across the 54 files that carry one, and `references/index.json` is about 104 KB. The gain: every large file can be read in parts that each stay within 51,200 bytes, and the restated section 3 values without an owner fell from 58 to 0.
 
 ---
 
@@ -224,10 +224,10 @@ The library is `tiktoken` 0.11.0. The Operator chose `o200k_base` as the lead on
 
 Offline rule: the two data files come from a seeded cache. Point `TIKTOKEN_CACHE_DIR` at it, for example `../tiktoken-cache` from the repository root. The run checks that each file exists and that its sha256 matches the pin before it loads an encoder. A missing file or a changed file stops the run with exit code 2. Nothing downloads an encoding.
 
-Re-measure rule: re-measure on every reference change. Run `token-baseline.py` and commit the JSON with the change. A run with nothing to write ends with `baseline unchanged, 140 files, 962 sections`. `--check` recomputes every row in memory and names each drifted row, so a stale baseline fails the run. The final lines of a passing check:
+Re-measure rule: re-measure on every reference change. Run `token-baseline.py` and commit the JSON with the change. A run with nothing to write ends with `baseline unchanged, 142 files, 988 sections`. `--check` recomputes every row in memory and names each drifted row, so a stale baseline fails the run. The final lines of a passing check:
 
 ```text
-token-baseline: check ok, 140 files, 962 sections
+token-baseline: check ok, 142 files, 988 sections
 token-baseline: unit car route proposed: 23184 bytes, o200k_base 6734, cl100k_base 7339
 token-baseline: car route ratio: o200k_base 0.2829, cl100k_base 0.2860
 ```
@@ -281,7 +281,7 @@ write-contract: ok
 Output is `results.csv` and `report.md`. The CSV columns are `scenario_id`, `lang`, `split`, `gold_mode`, `gold_task_type`, `score`, `verdict`, `reason` and `tokens_loaded`, plus `command`, `expected_exit` and `actual_exit` in replay mode. The report holds the route accuracy per language and per split, the abstain and false-abstain counts, the facts and tokens per row and the held-out result. A passing resolve run over the full corpus prints:
 
 ```text
-route-replay: ok, 42 rows passed
+route-replay: ok, 57 rows passed
 ```
 
 A passing replay run prints:
@@ -290,7 +290,7 @@ A passing replay run prints:
 route-replay: ok, 31 replay rows passed
 ```
 
-`route-replay/route-replay-test.sh` copies the skill to a temp root and ends with `Result: 33 passed, 0 failed`. It proves the deleted routed path exits 2 and names the path, the twin mismatch and the unmet claim exit 1, a wrong expected exit fails the replay, an empty corpus and a missing cache exit 2, and two dated runs give byte-identical `results.csv` and `report.md`.
+`route-replay/route-replay-test.sh` copies the skill to a temp root and ends with `Result: 34 passed, 0 failed`. It proves the deleted routed path exits 2 and names the path, the twin mismatch and the unmet claim exit 1, a wrong expected exit fails the replay, an empty corpus and a missing cache exit 2, two dated runs give byte-identical `results.csv` and `report.md`, and every term the resolver keeps for the T4 conditional reads is a T4 signal in the table.
 
 ---
 
@@ -339,7 +339,7 @@ regression-trailer: ok (0 commits scanned)
 
 `build-source-library.py` scans `AGENTS.md`, `README.md` and the three skill folders for external links and writes `../assets/source-library.json`, one row per URL with its host, the citing files and its recorded access result. `--check` verifies the index offline and reports every cited URL missing from the index and every indexed URL no file cites. `--check-links` fetches every row a plain fetch can reach, reports `endpoint` and `webfetch-only` rows as skipped and never as failed, retries once and prints one JSON report with a summary and one row per URL. A row is ok only when the final answer after followed redirects is 2xx. `--trace <file>:<line>` prints the index row of every URL on one line with `access`, `http_status` and `checked_on`, and fails when a URL is dead, unchecked or missing from the index. Each readable row also keeps a `digest`, `retrieved_at`, an `etag` stored as a `sha256:` fingerprint, `last_modified` and, for a parliamentary document not yet published as a `kst` page, `kst_pending`, and a rebuild keeps them per URL. `--check` also fails on a cited `dead` row and on a `tweedekamer.nl/downloads/document?id=` citation whose row has no `kst_pending`. `--check-links` follows every redirect, 308 included, and counts a `blocked` answer (401, 403 or 429, a host refusing robots) and an error on a recorded `archive-not-fetchable` row apart from failures. `--apply-report <file>` writes a report's results into the index and never writes a blocked row as dead. `--watch` fetches the series in `../assets/source-watchlist.json`, compares ETag, Last-Modified and digest with the index or `../assets/source-watch-state.json`, and reports a changed series or a page that answers 200 after 404 with its citing files. `--check-calendar` reads `checked_on` from the year READMEs and `dutch-tax-rules.md` and fails when a current or future year predates the latest passed checkpoint in `../references/year-rollover.md`. Only `--check-links` and `--watch` make network calls, and they run in the monthly job, which reports a watch change or a stale year as an issue without failing.
 
-A passing offline check prints `497 sources match the index`. A trace of one live citation line prints:
+A passing offline check prints `521 sources match the index`. A trace of one live citation line prints:
 
 ```text
 sk-moneybird-accountant/references/2024/btw.md:56
@@ -424,7 +424,7 @@ python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check
 bash sk-moneybird-accountant/scripts/route-table-test.sh
 ```
 
-Expected result: `generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems, and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 2265 links, 390 fragment links, 0 problems` and `23 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 140 files, 962 sections` and `7 passed, 0 failed`. The route replay commands print `route-replay: ok, 42 rows passed` and `route-replay: ok, 31 replay rows passed`, and the suite ends with `Result: 33 passed, 0 failed`. The eval suite ends with `Result: 59 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `497 sources match the index` and its suite ends with `120 passed, 0 failed`. The route table commands print `route-table: ok` and a final pass and fail count with 0 failed.
+Expected result: `generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 2348 links, 390 fragment links, 0 problems` and `23 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 142 files, 988 sections` and `7 passed, 0 failed`. The route replay commands print `route-replay: ok, 57 rows passed` and `route-replay: ok, 31 replay rows passed`, and the suite ends with `Result: 34 passed, 0 failed`. The eval suite ends with `Result: 59 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `521 sources match the index` and its suite ends with `120 passed, 0 failed`. The route table commands print `route-table: ok` and a final pass and fail count with 0 failed.
 
 ---
 

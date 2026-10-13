@@ -13,7 +13,10 @@
   "tie_values": [
     "T4-over-T3",
     "T5-over-T6",
-    "T1-over-T3"
+    "T1-over-T3",
+    "T3-over-T4",
+    "T5-over-T4",
+    "T6-over-T4"
   ],
   "rows": [
     {
@@ -1387,6 +1390,488 @@
       "note": "English verb with Dutch period words route to T3.",
       "covers": [
         "002/REQ-001"
+      ]
+    },
+    {
+      "id": "LIVE-004",
+      "prompt": "How do I book my phone subscription that I use partly privately? Which booking steps and references apply? Keep this as an offline routing check.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/2026/btw.md",
+        "references/moneybird-bookkeeping.md",
+        "references/mixed-use-costs.md"
+      ],
+      "forbidden_paths": [
+        "references/dutch-tax-rules.md",
+        "references/source-library.md",
+        "references/migration/README.md",
+        "references/fixed-assets.md"
+      ],
+      "expected_facts": [
+        "business share",
+        "Bevat privégebruik"
+      ],
+      "token_ceiling": 60000,
+      "year": "2026",
+      "note": "Mixed-use cost routes to T4 and loads the mixed-use reference.",
+      "covers": [
+        "014/REQ-004"
+      ],
+      "expected_claims": [
+        {
+          "path": "SKILL.md",
+          "text": "references/mixed-use-costs.md"
+        }
+      ]
+    },
+    {
+      "id": "LIVE-004-nl",
+      "prompt": "Hoe boek ik mijn telefoonabonnement dat ik deels privé gebruik? Welke boekingsstappen en referenties gelden? Houd dit als offline routingcheck.",
+      "lang": "nl",
+      "parityOf": "LIVE-004",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/2026/btw.md",
+        "references/moneybird-bookkeeping.md",
+        "references/mixed-use-costs.md"
+      ],
+      "forbidden_paths": [
+        "references/dutch-tax-rules.md",
+        "references/source-library.md",
+        "references/migration/README.md",
+        "references/fixed-assets.md"
+      ],
+      "expected_facts": [
+        "business share",
+        "Bevat privégebruik"
+      ],
+      "token_ceiling": 60000,
+      "year": "2026",
+      "note": "Dutch twin of the mixed-use route.",
+      "covers": [
+        "014/REQ-004"
+      ],
+      "expected_claims": [
+        {
+          "path": "SKILL.md",
+          "text": "references/mixed-use-costs.md"
+        }
+      ]
+    },
+    {
+      "id": "MIX-03",
+      "prompt": "Ik wil mijn telefoonabonnement boeken, het is mixed use. Welke stappen gelden? Houd dit als offline routingcheck.",
+      "lang": "mixed",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "mixed",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/2026/btw.md",
+        "references/moneybird-bookkeeping.md",
+        "references/mixed-use-costs.md"
+      ],
+      "forbidden_paths": [
+        "references/dutch-tax-rules.md",
+        "references/source-library.md",
+        "references/migration/README.md",
+        "references/fixed-assets.md"
+      ],
+      "expected_facts": [
+        "business share",
+        "Bevat privégebruik"
+      ],
+      "token_ceiling": 60000,
+      "year": "2026",
+      "note": "Dutch noun with the English mixed-use phrase routes to T4 and the mixed-use reference.",
+      "covers": [
+        "014/REQ-004"
+      ]
+    },
+    {
+      "id": "LIVE-005",
+      "prompt": "I bought a laptop for 1200 and want to depreciate it. Which steps and references apply? Keep this as an offline routing check.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/2026/btw.md",
+        "references/moneybird-bookkeeping.md",
+        "references/fixed-assets.md"
+      ],
+      "forbidden_paths": [
+        "references/dutch-tax-rules.md",
+        "references/source-library.md",
+        "references/migration/README.md",
+        "references/mixed-use-costs.md"
+      ],
+      "expected_facts": [
+        "gebruiksduur",
+        "restwaarde"
+      ],
+      "token_ceiling": 60000,
+      "year": "2026",
+      "note": "Asset purchase routes to T4 and loads the fixed-asset reference.",
+      "covers": [
+        "014/REQ-004"
+      ],
+      "expected_claims": [
+        {
+          "path": "SKILL.md",
+          "text": "references/fixed-assets.md"
+        }
+      ]
+    },
+    {
+      "id": "LIVE-005-nl",
+      "prompt": "Ik heb een laptop gekocht voor 1200 en wil die afschrijven. Welke stappen en referenties gelden? Houd dit als offline routingcheck.",
+      "lang": "nl",
+      "parityOf": "LIVE-005",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/2026/btw.md",
+        "references/moneybird-bookkeeping.md",
+        "references/fixed-assets.md"
+      ],
+      "forbidden_paths": [
+        "references/dutch-tax-rules.md",
+        "references/source-library.md",
+        "references/migration/README.md",
+        "references/mixed-use-costs.md"
+      ],
+      "expected_facts": [
+        "gebruiksduur",
+        "restwaarde"
+      ],
+      "token_ceiling": 60000,
+      "year": "2026",
+      "note": "Dutch twin of the fixed-asset route.",
+      "covers": [
+        "014/REQ-004"
+      ],
+      "expected_claims": [
+        {
+          "path": "SKILL.md",
+          "text": "references/fixed-assets.md"
+        }
+      ]
+    },
+    {
+      "id": "MIX-04",
+      "prompt": "Inventaris afschrijven in Moneybird, which steps apply? Houd dit als offline routingcheck.",
+      "lang": "mixed",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "mixed",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/2026/btw.md",
+        "references/moneybird-bookkeeping.md",
+        "references/fixed-assets.md"
+      ],
+      "forbidden_paths": [
+        "references/dutch-tax-rules.md",
+        "references/source-library.md",
+        "references/migration/README.md",
+        "references/mixed-use-costs.md"
+      ],
+      "expected_facts": [
+        "activastaat",
+        "buitengebruikstellen"
+      ],
+      "token_ceiling": 60000,
+      "year": "2026",
+      "note": "Dutch asset term with an English product noun routes to T4 and the fixed-asset reference.",
+      "covers": [
+        "014/REQ-004"
+      ]
+    },
+    {
+      "id": "TIE-T4-T6-01",
+      "prompt": "Has the asset depreciation rule changed since 2024?",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T6",
+      "category": "tie",
+      "tier": "",
+      "tie": "T6-over-T4",
+      "expected_paths": [
+        "references/dutch-tax-rules.md#310-work-relationship-and-procedure"
+      ],
+      "forbidden_paths": [
+        "references/purchase-invoices.md",
+        "references/fixed-assets.md",
+        "references/moneybird-bookkeeping.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 80000,
+      "year": "2024",
+      "note": "Tied depreciation and cross-year signals, decided by the cross-year clause. Added after the routing change, so it is a calibration row.",
+      "covers": [
+        "014/REQ-004"
+      ]
+    },
+    {
+      "id": "TIE-T4-T5-01",
+      "prompt": "Is my home phone subscription a deduction in 2026?",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T5",
+      "category": "tie",
+      "tier": "",
+      "tie": "T5-over-T4",
+      "expected_paths": [
+        "references/2026/README.md",
+        "references/2026/kosten-en-auto.md#2-key-figures"
+      ],
+      "forbidden_paths": [
+        "references/purchase-invoices.md",
+        "references/mixed-use-costs.md",
+        "references/moneybird-bookkeeping.md"
+      ],
+      "expected_facts": [
+        "KEY FIGURES"
+      ],
+      "token_ceiling": 18000,
+      "year": "2026",
+      "note": "Tied mixed-use and tax-figure signals with no invoice named, decided by the tax-figure clause. Added after the routing change, so it is a calibration row.",
+      "covers": [
+        "014/REQ-004"
+      ]
+    },
+    {
+      "id": "LIVE-004-b",
+      "prompt": "Book a supplier invoice for a laptop I use partly privately. Keep this as an offline routing check.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/2026/btw.md",
+        "references/moneybird-bookkeeping.md",
+        "references/mixed-use-costs.md"
+      ],
+      "forbidden_paths": [
+        "references/dutch-tax-rules.md",
+        "references/source-library.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "business share"
+      ],
+      "token_ceiling": 60000,
+      "year": "2026",
+      "note": "Partly private use loads the mixed-use reference. Added after the routing change, so it is a calibration row.",
+      "covers": [
+        "014/REQ-004"
+      ]
+    },
+    {
+      "id": "TIE-T4-T5-02",
+      "prompt": "How much KIA can I claim for inventaris that I depreciate in 2026?",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T5",
+      "category": "tie",
+      "tier": "",
+      "tie": "T5-over-T4",
+      "expected_paths": [
+        "references/2026/README.md",
+        "references/2026/investeringen.md#2-key-figures"
+      ],
+      "forbidden_paths": [
+        "references/purchase-invoices.md",
+        "references/fixed-assets.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 30000,
+      "year": "2026",
+      "note": "Two asset terms count as one T4 point, so the tax-figure clause decides.",
+      "covers": [
+        "014/REQ-004"
+      ]
+    },
+    {
+      "id": "TIE-T4-T5-02-nl",
+      "prompt": "Hoeveel KIA krijg ik voor inventaris die ik in 2026 afschrijf?",
+      "lang": "nl",
+      "parityOf": "TIE-T4-T5-02",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T5",
+      "category": "tie",
+      "tier": "",
+      "tie": "T5-over-T4",
+      "expected_paths": [
+        "references/2026/README.md",
+        "references/2026/investeringen.md#2-key-figures"
+      ],
+      "forbidden_paths": [
+        "references/purchase-invoices.md",
+        "references/fixed-assets.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 30000,
+      "year": "2026",
+      "note": "Dutch twin of TIE-T4-T5-02.",
+      "covers": [
+        "014/REQ-004"
+      ]
+    },
+    {
+      "id": "TIE-T4-T6-02",
+      "prompt": "How has the inventaris depreciation rule changed since 2024?",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T6",
+      "category": "tie",
+      "tier": "",
+      "tie": "T6-over-T4",
+      "expected_paths": [
+        "references/dutch-tax-rules.md#310-work-relationship-and-procedure"
+      ],
+      "forbidden_paths": [
+        "references/purchase-invoices.md",
+        "references/fixed-assets.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 80000,
+      "year": "2024",
+      "note": "Two asset terms count as one T4 point, so the cross-year clause decides.",
+      "covers": [
+        "014/REQ-004"
+      ]
+    },
+    {
+      "id": "TIE-T3-T4-01",
+      "prompt": "Close my March bookkeeping, including the phone subscription.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T3",
+      "category": "tie",
+      "tier": "",
+      "tie": "T3-over-T4",
+      "expected_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/2026/README.md"
+      ],
+      "forbidden_paths": [
+        "references/purchase-invoices.md",
+        "references/mixed-use-costs.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 60000,
+      "year": "2026",
+      "note": "A period close that names a mixed-use cost but no invoice stays on T3.",
+      "covers": [
+        "014/REQ-004"
+      ]
+    },
+    {
+      "id": "LIVE-005-b",
+      "prompt": "I have a supplier invoice for a laptop bought as a fixed asset. How do I capitalise it?",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/2026/btw.md",
+        "references/moneybird-bookkeeping.md",
+        "references/fixed-assets.md"
+      ],
+      "forbidden_paths": [
+        "references/dutch-tax-rules.md",
+        "references/mixed-use-costs.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 75000,
+      "year": "2026",
+      "note": "A fixed asset named on a supplier invoice loads the asset reference.",
+      "covers": [
+        "014/REQ-004"
+      ]
+    },
+    {
+      "id": "LIVE-005-b-nl",
+      "prompt": "Ik heb een inkoopfactuur voor een laptop die ik als bedrijfsmiddel activeer. Hoe boek ik die?",
+      "lang": "nl",
+      "parityOf": "LIVE-005-b",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/2026/btw.md",
+        "references/moneybird-bookkeeping.md",
+        "references/fixed-assets.md"
+      ],
+      "forbidden_paths": [
+        "references/dutch-tax-rules.md",
+        "references/mixed-use-costs.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 75000,
+      "year": "2026",
+      "note": "Dutch twin of LIVE-005-b.",
+      "covers": [
+        "014/REQ-004"
       ]
     },
     {

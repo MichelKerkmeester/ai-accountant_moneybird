@@ -417,6 +417,33 @@ else
     fail "the wrong expected exit names the row"
 fi
 
+# WHY: the resolver keeps its own copy of the T4 conditional signal families,
+# so a term the table drops would still load a reference the table no longer
+# routes to. Every term must sit in a T4 signal cell.
+DRIFT=$(python3 -I - "$HARNESS" "$SKILL_SRC/SKILL.md" <<'PY'
+import importlib.util
+import sys
+
+spec = importlib.util.spec_from_file_location("route_replay", sys.argv[1])
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+with open(sys.argv[2], "r", encoding="utf-8") as handle:
+    rows = module.parse_route_table(handle.read())
+row = next(item for item in rows if item["type"] == "T4")
+signals = {phrase.lower() for phrase in module.signal_phrases(row["dutch"]) + module.signal_phrases(row["english"])}
+missing = [term for term in module.MIXED_USE_TERMS + module.FIXED_ASSET_TERMS if term not in signals]
+purchase = {"inkoopfactuur", "bonnetje", "factuur van een leverancier", "invoice", "receipt", "order", "supplier", "reverse charge", "kor"}
+unlisted = sorted(signals - purchase - set(module.T4_TOPIC_TERMS))
+problems = (["missing: " + ", ".join(missing)] if missing else []) + (["unlisted: " + ", ".join(unlisted)] if unlisted else [])
+print("ok" if not problems else " and ".join(problems))
+PY
+)
+if [[ "$DRIFT" == "ok" ]]; then
+    pass "the T4 conditional read terms equal the T4 topic signals in the table"
+else
+    fail "the T4 conditional read terms equal the T4 topic signals in the table ($DRIFT)"
+fi
+
 # A revision run scores the worktree of that commit and removes it again
 check_exit "a revision run scores the worktree of HEAD" 0 \
     python3 -I "$HARNESS" --mode resolve --rev HEAD --corpus "$CORPUS" --out "$TMP_ROOT/out-rev"

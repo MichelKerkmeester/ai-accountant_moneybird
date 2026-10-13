@@ -54,7 +54,15 @@
     "private database",
     "startende ondernemer",
     "where do I start",
-    "first time"
+    "first time",
+    "zakelijk en priv\u00e9",
+    "deels priv\u00e9",
+    "gemengde kosten",
+    "private use",
+    "mixed use",
+    "phone subscription",
+    "partly private",
+    "fixed asset"
   ],
   "derived": {
     "trigger_phrases": [
@@ -81,6 +89,8 @@
       "references/dutch-tax-rules.md",
       "references/moneybird-bookkeeping.md",
       "references/purchase-invoices.md",
+      "references/mixed-use-costs.md",
+      "references/fixed-assets.md",
       "references/source-library.md",
       "references/migration/jortt-to-moneybird-mapping.md"
     ],

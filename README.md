@@ -351,6 +351,8 @@ The Jortt API does not provide them. Download them yourself from the Jortt UI.
 - **[→ Dutch Tax](sk-moneybird-accountant/references/dutch-tax-rules.md)** - how the rules work across years, plus one folder per tax year from 2020 to 2027 with a detailed, sourced file per topic, BV and box 2 included
 - **[→ Moneybird Bookkeeping](sk-moneybird-accountant/references/moneybird-bookkeeping.md)** - accounting treatment for common events
 - **[→ Purchase Invoices](sk-moneybird-accountant/references/purchase-invoices.md)** - booking purchase invoices, receipts and orders, with Dutch VAT or reverse-charged VAT
+- **[→ Mixed-Use Costs](sk-moneybird-accountant/references/mixed-use-costs.md)** - a cost used partly privately, its business share, its VAT split and its Moneybird booking
+- **[→ Fixed Assets](sk-moneybird-accountant/references/fixed-assets.md)** - when a purchase is an asset, depreciation, the VAT revision period and disposal
 - **[→ Source Library](sk-moneybird-accountant/references/source-library.md)** - every external source the skills cite, by authority, with how an agent can reach it
 - **[→ Jortt to Moneybird Mapping](sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md)** - concept matches and migration traps
 
