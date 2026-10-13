@@ -97,7 +97,7 @@ For historical work, name the migration phase or the last gate that passed. The 
 | **MIGRATION** | Moving historical Jortt records into Moneybird |
 | **LIVE** | A monthly, VAT-period or yearly review, or a one-off ZZP question |
 
-Topic routes live in one place, the Task-Type Table in `SKILL.md` section 2. The router block below that table is generated from the Task-Type Table by `scripts/check-route-table.py --write`, which also feeds the table's multi-word signals to `graph-metadata.json`. This README does not repeat them.
+Topic routes live in one place, the Task-Type Table in `SKILL.md` section 2. The router block below that table is generated from the Task-Type Table by `python3 -I sk-moneybird-accountant/scripts/check-route-table.py --write`, which also feeds the table's multi-word signals to `graph-metadata.json`. This README does not repeat them.
 
 Check the current tax year before you use any rate or threshold. The [Dutch tax rules](references/dutch-tax-rules.md) explain each rule and route to the year folder, such as [2024](references/2024/README.md), where every topic has its own sourced file. The [Moneybird bookkeeping reference](references/moneybird-bookkeeping.md) covers the accounting treatment of common events. The [Jortt to Moneybird mapping](references/migration/jortt-to-moneybird-mapping.md) lists concept matches and migration traps. Exports the Jortt API does not provide come from you, through the Jortt UI.
 
@@ -121,7 +121,7 @@ Phases 19 to 21 start when Phase 18 passes. Phase 22 runs once, after the monito
 
 Every phase uses the same 11 fields: goal, nested sub-goals with measurable checks, entry criteria, inputs, owner-tagged actions, tool route, outputs and evidence, numeric exit gate, stop conditions, rollback or compensation and resume rule.
 
-Twelve shared mechanisms, M1 to M12, apply across the phases. They cover write keys, the run journal, privacy, rate limits, the Moneybird access window, exceptions, reader and writer sessions, stop recovery and the external agent route. The [shared mechanisms reference](references/migration/shared-mechanisms.md) defines each one. The [control framework](references/migration/control-framework.md) defines roles, exceptions and dashboard states.
+Twelve shared mechanisms, M1 to M12, apply across the phases. They cover register schemas, write keys, the run journal, privacy, rate limits, the Moneybird access window, exceptions, pagination, the dashboard, reader and writer sessions, stop recovery and the external agent route. The [shared mechanisms reference](references/migration/shared-mechanisms.md) defines each one. The [control framework](references/migration/control-framework.md) defines roles, exceptions and dashboard states.
 
 ---
 
@@ -146,7 +146,7 @@ The seats receive typed, allowlisted summaries with schemas, field names, phase 
 
 The ignored `migration-workspace/` holds migration inputs, manifests, registers, run journals, reports and archived evidence. Both CLIs refuse to save an extract anywhere else.
 
-The plan kit creates it. Run `bash sk-moneybird-accountant/scripts/init-workspace.sh` from the repository root once. It builds every workspace and AgentDesk folder and copies the templates from [assets/migration/](assets/migration/README.md): `MIGRATION_CONFIG.json` with each field marked `PENDING`, a phase dashboard and a run-journal event template. It also copies the spec-kit template packet `specs/000-migration-template/` to the git-ignored `specs/001-migration/`, one Level 3 packet with a nested goal per phase, with bracketed placeholders you fill with your own context. It never overwrites a file you already filled in. `scripts/generate-plan-kit.py` builds the template packet from the phase references, and its `--check` mode fails when a packet doc drifts from its reference.
+The plan kit creates it. Run `bash sk-moneybird-accountant/scripts/init-workspace.sh` from the repository root once. It builds every workspace and AgentDesk folder and copies the templates from [assets/migration/](assets/migration/README.md): `MIGRATION_CONFIG.json` with each field marked `PENDING`, a phase dashboard and a run-journal event template. It also copies the spec-kit template packet `specs/000-migration-template/` to the git-ignored `specs/001-migration/`, one Level 3 packet with a nested goal per phase, with bracketed placeholders you fill with your own context. It never overwrites a file you already filled in. `python3 -I sk-moneybird-accountant/scripts/generate-plan-kit.py` builds the template packet from the phase references. Its `--check` mode fails when a packet doc drifts from its reference.
 
 Each phase records its inputs, owner actions, tool route, outputs and exit evidence. You review the result of every phase and approve each gated Moneybird write. Read-only Moneybird sessions keep `MONEYBIRD_GUARD_READ_ONLY=1` set.
 

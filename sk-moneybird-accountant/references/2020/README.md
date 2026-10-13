@@ -13,13 +13,17 @@ checked_on: "2026-10-12"
 
 # Tax year 2020
 
+> Overview of Dutch tax year 2020 for a ZZP sole trader who may also own a BV: the twelve topic files, their headline figures and how many values are open.
+
 **Rule:** Every file in this folder holds values for tax year 2020 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
 ---
 
 ## 1. OVERVIEW
 
-Tax year 2020 is a past year. Its law is enacted, and later changes do not alter it. Each topic file below gives the figures, how the rules work in 2020, worked examples, the changes from 2019, notes for the books and the open points. Across the twelve files the figures tables hold 313 values: 274 Verified, 22 Corrected and 17 UNVERIFIED, with 8 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
+Tax year 2020 is a past year. Its law is enacted, and later changes do not alter it. Each topic file below gives the figures, how the rules work in 2020, worked examples, the changes from 2019, notes for the books and the open points.
+
+Across the twelve topic files the figures tables hold 313 values: 274 Verified, 22 Corrected and 17 UNVERIFIED, with 8 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "jortt-cli"
+title: "jortt-cli: Jortt REST API CLI"
 description: "OpenAPI-driven Bash CLI for the Jortt REST API, with read-first migration extraction and gated writes."
 trigger_phrases:
   - "jortt cli install"
@@ -9,34 +9,25 @@ trigger_phrases:
 version: 1.0.0.0
 ---
 
-# jortt-cli
-
-> OpenAPI-driven command line access to the Jortt REST API, built for repeatable migration reads.
+# jortt-cli: Jortt REST API CLI
 
 ---
 
-## 1. AT A GLANCE
+## 1. OVERVIEW
 
-| Aspect | What you get |
-|---|---|
-| **Use it for** | Find and call Jortt REST operations from a terminal or agent |
-| **Invoke with** | `jortt-cli ops`, `describe`, `call`, `get`, `fetch`, `whoami` or `spec` |
-| **Works on** | Bash 3.2 or newer with curl and jq |
-| **Produces** | Response summaries by default, the full body with `--print-body`, or files saved inside the ignored migration workspace |
+`cli/jortt-cli/` holds the OpenAPI-driven command line client for the Jortt REST API, built for repeatable migration reads. `jortt-cli` loads the Jortt OpenAPI document and exposes its operations as stable kebab-case slugs. It validates path and query parameters, enforces required scopes and follows paged list links with `--all`.
 
----
+Current state:
 
-## 2. OVERVIEW
-
-### What It Does
-
-`jortt-cli` loads the Jortt OpenAPI document and exposes its operations as stable kebab-case slugs. It validates path and query parameters, enforces required scopes and follows paged list links with `--all`.
-
-The CLI supports the complete local API catalogue. Every non-GET operation is blocked until the call includes `--allow-write` and the configured key has the required scope.
+- The CLI supports the complete local API catalogue. Every non-GET operation is blocked until the call includes `--allow-write` and the configured key has the required scope.
+- Response summaries stay on by default. The full body goes to the terminal only with `--print-body`, or to a file inside the ignored migration workspace with `--out`.
+- The CLI runs on Bash 3.2 or newer with curl and jq.
 
 ---
 
-## 3. QUICK START
+## 2. QUICK START
+
+Run from this directory:
 
 ```bash
 bash setup.sh
@@ -62,7 +53,42 @@ Expected: local spec details, an HTTP status with field names, the expense opera
 
 ---
 
-## 4. COMMANDS
+## 3. DIRECTORY TREE
+
+```text
+cli/jortt-cli/
++-- README.md
++-- jortt-cli                     # Executable entry point and command dispatch
++-- setup.sh                      # Prerequisite check and symlink command
++-- lib/                          # Sourced helpers
+|   +-- api.sh                    # Token cache, requests, retries and downloads
+|   +-- commands.sh               # Command handlers and parameter validation
+|   +-- common.sh                 # Spec parsing, config, scopes and error output
+|   `-- workspace.sh              # Output path guard for migration-workspace/
+`-- tests/                        # Offline contract suite
+    +-- run-tests.sh
+    `-- fixtures/
+        `-- openapi-trimmed.json
+```
+
+---
+
+## 4. KEY FILES
+
+| File | Responsibility |
+|---|---|
+| `jortt-cli` | Parses the command line, loads the spec and dispatches every command |
+| `lib/common.sh` | Loads configuration, parses the spec into slugs, checks scopes and prints errors |
+| `lib/commands.sh` | Implements `ops`, `describe`, `call`, `get`, `whoami` and `fetch` and validates parameters and required values |
+| `lib/api.sh` | Fetches and caches the OAuth token, sends authenticated requests, retries a 401 and a 429 and downloads signed links |
+| `lib/workspace.sh` | Resolves every `--out` path inside `migration-workspace/` and rejects escapes and symlinks |
+| `setup.sh` | Checks Bash, curl and jq, then prints the symlink command. `--link` creates the link and never replaces an existing path |
+| `tests/run-tests.sh` | Runs the offline contract suite against the trimmed OpenAPI fixture |
+| `tests/fixtures/openapi-trimmed.json` | The trimmed Swagger 2.0 fixture the suite reads by default |
+
+---
+
+## 5. ENTRYPOINTS
 
 | Command | Purpose |
 |---|---|
@@ -81,20 +107,18 @@ Expected: local spec details, an HTTP status with field names, the expense opera
 
 ---
 
-## 5. SAFETY MODEL
+## 6. BOUNDARIES AND SAFETY
 
 - Client credentials travel to curl through a private config stream, not process arguments.
 - The token cache uses owner-only permissions and never prints the token.
 - A write needs both `--allow-write` and its declared operation scope.
-- `--dry-run` does not fetch a token or make a network call.
+- `--dry-run` prints the method, URL and body without fetching a token or calling a Jortt operation.
 - `--all` follows next links and merges `data` arrays.
 - `--out` and `fetch --out` reject paths outside migration-workspace.
 - `--print-body` prints the full body but is refused with exit 2 when any agent session marker is set, and the message says to use `--out` and read the saved file.
 - Signed downloads use HTTPS and do not receive the Jortt bearer token.
 
----
-
-## 6. EXIT CODES
+### Exit Codes
 
 | Code | Meaning |
 |---:|---|
@@ -108,7 +132,19 @@ Expected: local spec details, an HTTP status with field names, the expense opera
 
 ---
 
-## 7. RELATED FILES
+## 7. VALIDATION
+
+Run from the repository root. The suite is offline and reads the trimmed fixture unless `JORTT_OPENAPI_FILE` names another file.
+
+```bash
+bash cli-jortt/cli/jortt-cli/tests/run-tests.sh
+```
+
+Expected result: `Result: 26 passed, 0 failed`, including one fault case per Jortt exit code 1 to 6.
+
+---
+
+## 8. RELATED
 
 | File | Purpose |
 |---|---|

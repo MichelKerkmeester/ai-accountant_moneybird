@@ -17,7 +17,9 @@ The commands below assume `cli-moneybird/` is your current directory.
 
 ---
 
-## 1. AT A GLANCE
+## 1. OVERVIEW
+
+### Key Statistics
 
 | Aspect | What you get |
 |---|---|
@@ -26,21 +28,21 @@ The commands below assume `cli-moneybird/` is your current directory.
 | **Works on** | The Moneybird REST API v2, plus UI-only steps the Operator performs |
 | **Produces** | Guarded API changes, migration evidence and explicit verification reads |
 
----
-
-## 2. OVERVIEW
-
-### What it does
+### What It Does
 
 This skill guides an agent through rebuilding historical bookkeeping in Moneybird. Every write stays visible and tied to an approved pilot. The `moneybird-guard` command wraps the official Moneybird CLI for REST reads, writes, files and synchronization. Read-only roles set `MONEYBIRD_GUARD_READ_ONLY=1` before they read. The sibling `cli-jortt` skill owns the Jortt source reads.
 
-### Why use it
+### Why Use It
 
 - **Every write has a checkpoint.** The guard previews each API request, and a write needs explicit confirmation.
 - **Writes stay on the pilot.** The guard blocks writes outside the pilot administration until the Operator approves a production batch.
 - **Checks cover the right years.** An explicit period and synchronization reads catch older records that a default list would miss.
 
-### What the API handles
+### When To Use It
+
+Use this skill for Moneybird API reads, a pilot migration write, document attachments and period verification. Use the Moneybird UI for bank file imports, tax rate creation, period locks and historical VAT filing. Do not use this skill for Jortt source exports.
+
+### What The API Handles
 
 The API covers repeatable reads and migration writes. The Operator keeps bank file import, tax rate setup, period locks and historical VAT filing in the Moneybird UI.
 
@@ -52,7 +54,7 @@ The API covers repeatable reads and migration writes. The Operator keeps bank fi
 
 ---
 
-## 3. QUICK START
+## 2. QUICK START
 
 **Step 1: Review the install plan.**
 
@@ -78,7 +80,7 @@ bash scripts/doctor.sh
 bash cli/moneybird-cli/tests/run-tests.sh
 ```
 
-Expected: the doctor reports your local state without a network call. The stub suite ends with `Fail: 0`.
+Expected: the doctor reports your local state without a network call. The stub suite ends with `Pass: 58  Fail: 0`.
 
 **Step 4: Read the rules before any write.**
 
@@ -86,7 +88,9 @@ Open `SKILL.md` and `references/migration-recipes.md`. Use the pilot administrat
 
 ---
 
-## 4. HOW IT WORKS
+## 3. FEATURES
+
+### 3.1 GUARD ROUTING
 
 The skill routes each request by operation. REST work goes through the official CLI behind `moneybird-guard`. The guard asks the CLI for a dry run, reads the method and URL and then decides:
 
@@ -110,35 +114,43 @@ Operation router
    +--> Moneybird UI (Operator): bank imports, tax rates, period locks, VAT filing
 ```
 
-### Cached reads
+### 3.2 CACHED READS
 
 A GET right after a write can return cached data. Check the write's own response status first, then verify in a later read. For bulk verification, use the synchronization endpoints and fetch IDs in batches within the API limit.
 
 ---
 
-## 5. INTEGRATION & NAVIGATION
+## 4. STRUCTURE
 
-### When to use this skill
+### Package Layout
 
-Use it for Moneybird API reads, a pilot migration write, document attachments and period verification. Use the Moneybird UI for bank file imports, tax rate creation, period locks and historical VAT filing. Do not use this skill for Jortt source exports.
+```text
+cli-moneybird/
++-- README.md                  # This guide
++-- SKILL.md                   # Operation routing and safety rules
++-- INSTALL-GUIDE.md           # CLI setup, credentials, verification and rollback
++-- references/                # API, CLI, recipe and troubleshooting guides
++-- feature-catalog/           # Current features with source and test anchors
++-- manual-testing-playbook/   # Operator scenarios that validate the catalog
++-- benchmark/                 # Benchmark inputs and run reports
++-- scripts/                   # Offline diagnostics for the package
+`-- cli/moneybird-cli/         # Pinned official CLI, guard and installer
+```
 
-### Related skills
-
-| Skill | Relationship |
+| Path | Purpose |
 |---|---|
-| `cli-jortt` | Reads the Jortt source data for the migration |
-
-### Navigation
-
-- `SKILL.md` has the operation routing and safety rules.
-- `INSTALL-GUIDE.md` covers CLI setup, credentials and rollback.
-- `references/` holds the API, CLI, recipe and troubleshooting guides.
-- `feature-catalog/` lists what the package does today, with source and test anchors for each feature.
-- `manual-testing-playbook/` holds the Operator scenarios that validate the catalog. One live scenario writes to the pilot administration and runs only with Operator approval.
+| `SKILL.md` | Operation routing and safety rules |
+| `INSTALL-GUIDE.md` | CLI setup, credentials, verification and rollback |
+| `references/` | The API, CLI, recipe and troubleshooting guides |
+| `feature-catalog/` | What the package does today, with source and test anchors for each feature |
+| `manual-testing-playbook/` | The Operator scenarios that validate the catalog. One live scenario writes to the pilot administration and runs only with Operator approval |
+| `benchmark/` | Benchmark inputs and run reports |
+| `scripts/` | Offline diagnostics for the package |
+| `cli/moneybird-cli/` | The pinned official CLI, the guard wrapper, the installer and the offline tests |
 
 ---
 
-## 6. TROUBLESHOOTING
+## 5. TROUBLESHOOTING
 
 | What you see | Why | Next step |
 |---|---|---|
@@ -155,19 +167,27 @@ Use it for Moneybird API reads, a pilot migration write, document attachments an
 
 ---
 
-## 7. VERIFICATION
+## 6. VERIFICATION
 
 | Check | How to run it |
 |---|---|
 | Offline diagnostics | `bash scripts/doctor.sh` reports local checks and does not call the API |
-| Guard behavior | `bash cli/moneybird-cli/tests/run-tests.sh` ends with `Fail: 0` |
+| Guard behavior | `bash cli/moneybird-cli/tests/run-tests.sh` ends with `Pass: 58  Fail: 0` |
 | Migration evidence | Rehearse a pilot write and its undo, then check later synchronization reads |
 
 The local checks do not prove live access, production access or a reconciled ledger.
 
 ---
 
-## 8. RELATED DOCUMENTS
+## 7. RELATED RESOURCES
+
+### Related Skills
+
+| Skill | Relationship | Use When |
+|---|---|---|
+| [`cli-jortt`](../cli-jortt/SKILL.md) | Sibling skill | A migration needs Jortt source records |
+
+### Related Documents
 
 | Document | Purpose |
 |---|---|

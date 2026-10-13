@@ -13,9 +13,17 @@ version: 1.0.0.0
 
 # Moneybird migration reference index
 
-Use the last verified gate and the request to select the next phase. Read this index first, then the matching phase file and the [shared mechanisms](./shared-mechanisms.md). Read the [control framework](./control-framework.md) for risk, exceptions, approvals, stop recovery, or the dashboard.
+> Execution-order route to every migration phase and its shared controls.
 
-## Phase map
+---
+
+## 1. OVERVIEW
+
+Use the last verified gate and the request to select the next phase. Read this index first, then the matching phase file and the [shared mechanisms](./shared-mechanisms.md). Read the [control framework](./control-framework.md) for risk, exceptions, approvals, stop recovery or the dashboard.
+
+---
+
+## 2. PHASE MAP
 
 | Phase | Gate | Reference file |
 |---:|---|---|
@@ -43,9 +51,11 @@ Use the last verified gate and the request to select the next phase. Read this i
 | 21 | Live yearly workflow | [phases-19-to-21.md](./phases-19-to-21.md) |
 | 22 | Migration completion and Jortt decommission | [phase-22-completion.md](./phase-22-completion.md) |
 
-Phases 19 to 21 are recurring loops. They start when Phase 18 passes and continue through the configured monitoring period. Phase 22 is a one-time gate. It requires Phase 18, the first live VAT reconciliation under Phase 20, the monitoring end date, and all recurring cycles through that date to pass. Do not cancel Jortt before Phase 22 passes and the Operator records a cancel-or-keep decision.
+Phases 19 to 21 are recurring loops. They start when Phase 18 passes and continue through the configured monitoring period. Phase 22 is a one-time gate. It requires Phase 18, the first live VAT reconciliation under Phase 20, the monitoring end date and all recurring cycles through that date to pass. Do not cancel Jortt before Phase 22 passes and the Operator records a cancel-or-keep decision.
 
-## Old-to-new phase number map
+---
+
+## 3. OLD-TO-NEW PHASE NUMBER MAP
 
 | Previous phase | New phase | Responsibility |
 |---:|---:|---|
@@ -58,18 +68,22 @@ Phases 19 to 21 are recurring loops. They start when Phase 18 passes and continu
 | New | 17 | Source freeze and archive readiness. |
 | New | 22 | Migration completion and Jortt decommission. |
 
-## Routing rules
+---
+
+## 4. ROUTING RULES
 
 - Do not advance until the prior gate passes and its evidence is linked in the run journal.
 - Keep the exact owner tags on actions and approvals. Operator decisions remain human decisions.
-- Use the phase file for its 11-field contract. Use shared mechanisms for write controls, evidence, route behavior, and recovery. Use M12 for the Agent runner, Implementer, Verifier, Final reviewer, and separate Migration Writer seats.
+- Use the phase file for its 11-field contract. Use shared mechanisms for write controls, evidence, route behavior and recovery. Use M12 for the Agent runner, Implementer, Verifier, Final reviewer and separate Migration Writer seats.
 - Route Jortt reads through [cli-jortt](../../../cli-jortt/SKILL.md). Route Moneybird reads and approved writes through `moneybird-guard`, using the sibling [cli-moneybird](../../../cli-moneybird/SKILL.md) instructions.
 - Keep the Moneybird read-only lock enabled in every reader session. An auditfile request follows the guarded report-export route in a separate approved writer session. Never clear the lock in a reader session.
-- Load [overview and setup](./overview-and-setup.md) for configuration, workspace structure, and numeric threshold approvals.
+- Load [overview and setup](./overview-and-setup.md) for configuration, workspace structure and numeric threshold approvals.
 
-## Related references
+---
 
-- [Control framework](./control-framework.md) defines roles, risk review, exception handling, dashboard status, and completion.
-- [Shared mechanisms](./shared-mechanisms.md) defines M1 to M12, the external agent route, and the tool route contract.
+## 5. RELATED REFERENCES
+
+- [Control framework](./control-framework.md) defines roles, risk review, exception handling, dashboard status and completion.
+- [Shared mechanisms](./shared-mechanisms.md) defines M1 to M12, the external agent route and the tool route contract.
 - [Moneybird bookkeeping](../moneybird-bookkeeping.md) covers accounting treatment for common events.
 - [Jortt to Moneybird mapping](./jortt-to-moneybird-mapping.md) covers concept matches and migration traps.

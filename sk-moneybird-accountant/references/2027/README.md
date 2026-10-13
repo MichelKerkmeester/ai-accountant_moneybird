@@ -13,13 +13,17 @@ checked_on: "2026-10-12"
 
 # Tax year 2027
 
+> Overview of Dutch tax year 2027 for a ZZP sole trader who may also own a BV: the twelve topic files, their headline figures and how many values are open.
+
 **Rule:** Every file in this folder holds values for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
 ---
 
 ## 1. OVERVIEW
 
-Tax year 2027 mixes three layers. Enacted 2027 law, the Belastingplan 2027 bill, which was not adopted on 2026-10-11, and amounts that wait for the December 2026 indexation. Read the Status column on every row before using a value. Each topic file below gives the figures, how the rules work in 2027, worked examples, the changes from 2026, notes for the books and the open points. Across the twelve files the figures tables hold 348 values: 272 Verified, 12 Corrected and 64 UNVERIFIED, with 200 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
+Tax year 2027 mixes three layers: enacted 2027 law, the Belastingplan 2027 bill that was not adopted on 2026-10-11 and amounts that wait for the December 2026 indexation. Read the Status column on every row before using a value. Each topic file below gives the figures, how the rules work in 2027, worked examples, the changes from 2026, notes for the books and the open points.
+
+Across the twelve topic files the figures tables hold 348 values: 272 Verified, 12 Corrected and 64 UNVERIFIED, with 200 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
 
 ---
 

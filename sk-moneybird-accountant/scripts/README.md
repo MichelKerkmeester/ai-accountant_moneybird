@@ -1,28 +1,31 @@
 ---
-title: "scripts: Migration Plan Kit"
-description: "Generates the migration plan kit from the phase references, creates the private migration workspace and tests both."
+title: "scripts: Plan Kit, Checkers and Suites"
+description: "Generates the migration plan kit, builds the session context, and owns the offline checkers and test suites that guard the skill's routes, references, tokens and writes."
 version: 1.0.0.0
 trigger_phrases:
   - "generate plan kit"
   - "init migration workspace"
   - "plan kit test"
+  - "route table checker"
+  - "token baseline"
 ---
 
-# scripts: Migration Plan Kit
+# scripts: Plan Kit, Checkers and Suites
 
 ---
 
 ## 1. OVERVIEW
 
-`scripts/` owns the migration plan kit for the skill. It turns the phase references into templates and a tracked spec packet, and it copies those templates into the git-ignored workspace where real migration data lives.
+`scripts/` owns the migration plan kit, the session context builder and the offline checkers and test suites for the skill. The plan kit turns the phase references into templates and a tracked spec packet, and it copies those templates into the git-ignored workspace where real migration data lives. The checkers keep the route table, the reference index, the fragments, the token baseline and the write contract in step with the tree.
 
 Current state:
 
-- `references/migration/` is the source. The generator writes `assets/migration/` and `specs/000-migration-template/` from it, and `--check` fails when they drift.
+- `references/migration/` is the source for the plan kit. The generator writes `assets/migration/` and `specs/000-migration-template/` from it, and `--check` fails when they drift.
 - Generated files hold placeholders only. Real finance data lives in `migration-workspace/` and in the copied spec packet, both git-ignored.
 - `init-workspace.sh` never overwrites an existing file and refuses to run unless git ignores both targets.
 - Output is byte-stable: sorted inputs, no timestamps and no randomness.
-- All three files are gate files. A change needs the Operator's approval, as `../../scripts/README.md` describes.
+- The plan-kit files `generate-plan-kit.py`, `init-workspace.sh` and `plan-kit-test.sh` are gate files. A change to one needs the Operator's approval, as `../../scripts/README.md` describes.
+- Every checker and suite is offline. Only `build-source-library.py --check-links` and `--watch` make network calls, and the monthly job runs them.
 
 ---
 
@@ -53,7 +56,45 @@ Dependency direction: references ───▶ generator ───▶ tracked tem
 
 ---
 
-## 3. KEY FILES
+## 3. DIRECTORY TREE
+
+```text
+scripts/
++-- README.md                     # This guide
++-- generate-plan-kit.py          # Renders the plan kit from the phase references
++-- init-workspace.sh             # Creates migration-workspace/ and copies the spec packet
++-- plan-kit-test.sh              # Plan kit suite
++-- build-session-context.py      # Writes session-context.json
++-- session-context-test.sh       # Session context suite
++-- check-route-table.py          # Route table and router block checker
++-- route-table-test.sh           # Route table suite
++-- build-reference-index.py      # Reference index and generated block builder
++-- reference-index-test.sh       # Reference index suite
++-- check-fragments.py            # Relative link and fragment checker
++-- fragment-check-test.sh        # Fragment suite
++-- token-baseline.py             # Token baseline writer and checker
++-- token-canary-test.sh          # Token canary suite
++-- check-hostile-invoice-set.py  # Hostile invoice case checker
++-- hostile-invoice-set-test.sh   # Hostile invoice suite
++-- write-contract-check.py       # Write contract drift checker
++-- write-contract-test.sh        # Write contract suite
++-- run-evals.py                  # Eval grader
++-- run-evals-test.sh             # Eval grader suite
++-- check-hardening-matrix.py     # Hardening matrix checker
++-- hardening-matrix-test.sh      # Hardening matrix suite
++-- check-regression-trailer.py   # Regression trailer checker
++-- regression-trailer-test.sh    # Regression trailer suite
++-- build-source-library.py       # External source index builder
++-- source-library-test.sh        # Source library suite
+`-- route-replay/
+    +-- route-replay.py           # Offline route scoring and guard replay
+    +-- routing-gold.json         # Route fixture corpus
+    `-- route-replay-test.sh      # Route replay suite
+```
+
+---
+
+## 4. KEY FILES
 
 | File | Responsibility |
 |---|---|
@@ -76,7 +117,7 @@ Dependency direction: references ───▶ generator ───▶ tracked tem
 | `write-contract-test.sh` | Runs the drift check on the real tree and on a clean copy, then seeds five divergences. Each one must fail and name its file, and a missing root is refused |
 | `route-replay/route-replay.py` | Scores the route fixture corpus offline in `resolve` mode and replays the refusal and hostile rows through the guard and the stub in `replay` mode, with a connectivity gate, a router snapshot hash, `--rev`, `--covers` and `results.csv` plus `report.md` output |
 | `route-replay/routing-gold.json` | The route fixture corpus: one row per offline routing scenario, its Dutch twin, the gap, tie, tier, out-of-scope, follow-up, mixed, refusal and hostile rows, with the calibration and held-out labels written before any tuning |
-| `route-replay/route-replay-test.sh` | Runs the harness on a temp copy of the skill and proves both modes, the deleted path, the twin mismatch, the unmet claim, a wrong expected exit and two dated runs |
+| `route-replay/route-replay-test.sh` | Runs the route replay on a temp copy of the skill and proves both modes, the deleted path, the twin mismatch, the unmet claim, a wrong expected exit and two dated runs |
 | `run-evals.py` | Grades captured with-skill and baseline answers against the assertion blocks in `../evals/evals.json` and writes `grading.json` and `benchmark.json` with the skill hash, the pass rates and the refusal false-positive rate |
 | `run-evals-test.sh` | Builds capture fixtures for a compliant run, a broken answer, a refuse-everything run, a forbidden-pattern trip, another capture year, alternative phrasings and three skill snapshots |
 | `../evals/evals.json` | The eval cases, each with a prompt, an expected route and an assertion block of required tokens and forbidden patterns |
@@ -91,7 +132,7 @@ Dependency direction: references ───▶ generator ───▶ tracked tem
 
 ---
 
-## 4. BOUNDARIES AND FLOW
+## 5. BOUNDARIES AND FLOW
 
 | Boundary | Rule |
 |---|---|
@@ -105,7 +146,7 @@ Dependency direction: references ───▶ generator ───▶ tracked tem
 
 ---
 
-## 5. ENTRYPOINTS
+## 6. ENTRYPOINTS
 
 | Entrypoint | Type | Purpose |
 |---|---|---|
@@ -135,7 +176,7 @@ Dependency direction: references ───▶ generator ───▶ tracked tem
 
 ---
 
-## 6. REFERENCE INDEX
+## 7. REFERENCE INDEX
 
 `build-reference-index.py` keeps the generated text of the reference tree in step with the files that own it. It is offline and byte-stable. One pass over `references/` owns:
 
@@ -184,7 +225,7 @@ Measured overhead beside the gain: the nav blocks, markers included, add 15,317 
 
 ---
 
-## 7. SECTION IDS AND FRAGMENTS
+## 8. SECTION IDS AND FRAGMENTS
 
 Every year topic file under `references/YYYY/` carries eight id lines, one per numbered H2. An id line holds one year-free anchor and sits on the line after its heading, with a blank line between. The visible heading keeps the year. The eight ids and their order are fixed:
 
@@ -198,7 +239,7 @@ The local shape uses no `{#id}` heading form and no anchor line on an H3. A rule
 
 ---
 
-## 8. TOKEN BASELINE
+## 9. TOKEN BASELINE
 
 `token-baseline.py` counts every markdown file under `../references/` in `o200k_base` and `cl100k_base`, whole file and per H2 section, and adds the named units, the overhead rows and the car route. `../benchmark/token-baseline.json` holds the result. The file holds paths and counts only, sorts its keys and carries no timestamp, so two runs produce the same bytes.
 
@@ -224,29 +265,29 @@ The library is `tiktoken` 0.11.0. The Operator chose `o200k_base` as the lead on
 
 Offline rule: the two data files come from a seeded cache. Point `TIKTOKEN_CACHE_DIR` at it, for example `../tiktoken-cache` from the repository root. The run checks that each file exists and that its sha256 matches the pin before it loads an encoder. A missing file or a changed file stops the run with exit code 2. Nothing downloads an encoding.
 
-Re-measure rule: re-measure on every reference change. Run `token-baseline.py` and commit the JSON with the change. A run with nothing to write ends with `baseline unchanged, 142 files, 988 sections`. `--check` recomputes every row in memory and names each drifted row, so a stale baseline fails the run. The final lines of a passing check:
+Re-measure rule: re-measure on every reference change. Run `token-baseline.py` and commit the JSON with the change. A run with nothing to write ends with `baseline unchanged, 142 files, 989 sections`. `--check` recomputes every row in memory and names each drifted row, so a stale baseline fails the run. The final lines of a passing check:
 
 ```text
-token-baseline: check ok, 142 files, 988 sections
-token-baseline: unit car route proposed: 23184 bytes, o200k_base 6734, cl100k_base 7339
-token-baseline: car route ratio: o200k_base 0.2829, cl100k_base 0.2860
+token-baseline: check ok, 142 files, 989 sections
+token-baseline: unit car route proposed: 23348 bytes, o200k_base 6772, cl100k_base 7377
+token-baseline: car route ratio: o200k_base 0.2840, cl100k_base 0.2870
 ```
 
 The canary covers the 2026 car question on the KEY FIGURES route, which reads the year README and section 2 of `kosten-en-auto.md`. It asserts the proposed route stays at or under 35 percent of the current route and at or under the 8,000 token ceiling. Three mutants prove the gate: the proposed route pointed at the whole topic file, a cache that holds the lead encoding data under the second name, and a fixture that passes a four-bytes-per-token budget and fails the token budget. The measured route:
 
 ```text
-route current: o200k_base 23804, cl100k_base 25662
-route proposed: o200k_base 6734, cl100k_base 7339
-route ratio: o200k_base 0.2829, cl100k_base 0.2860
+route current: o200k_base 23842, cl100k_base 25700
+route proposed: o200k_base 6772, cl100k_base 7377
+route ratio: o200k_base 0.2840, cl100k_base 0.2870
 ```
 
 The suite ends with `7 passed, 0 failed`.
 
 ---
 
-## 9. HOSTILE INVOICE SET
+## 10. HOSTILE INVOICE SET
 
-`check-hostile-invoice-set.py` guards the untrusted-content rule with a scored corpus. `../assets/hostile-invoice-cases.json` holds 22 synthetic invoice cases: ten attacks, ten legitimate twins and two clean controls. Every value is a braced placeholder, so no real invoice, supplier, bank account, VAT id or amount sits in the file.
+`check-hostile-invoice-set.py` guards the untrusted-content rule with a scored corpus. `../assets/hostile-invoice-cases.json` holds 22 synthetic invoice cases: ten attacks, ten legitimate twins and two clean controls. The cases are synthetic, so no real invoice, supplier, bank account, VAT id or amount sits in the file.
 
 The shape check proves the corpus: 22 unique cases, a twin for every attack, a declared placeholder in every braced token, every rule applied to every string value, no literal IBAN, VAT id, amount or e-mail, no capitalized word run outside the declared `allowed_terms` and an expected verdict that matches the case kind. An attack and its twin carry the same rule string, so a pair is never split across rules.
 
@@ -262,7 +303,7 @@ verdict PASS
 
 ---
 
-## 10. WRITE CONTRACT CHECK
+## 11. WRITE CONTRACT CHECK
 
 `write-contract-check.py` guards the one canonical write contract. `../references/migration/shared-mechanisms.md` owns the canonical gate tokens, exit codes and read-back sentence, and `AGENTS.md`, `../SKILL.md` and `../../cli-moneybird/SKILL.md` keep one safety line and a pointer. The checker parses the canonical parts and then checks every restatement: the pointer anchor resolves, every gate token appears, a flag named on a pointer line belongs to the canonical set, the two named rules (evidence and idempotency) are present and no exit outside the canonical set is named. The ladder file must name every canonical exit. No line may define read-back differently from the canonical sentence. The guard's own die codes must stay a subset of the canonical set. A passing run prints:
 
@@ -274,7 +315,7 @@ write-contract: ok
 
 ---
 
-## 11. ROUTE REPLAY
+## 12. ROUTE REPLAY
 
 `route-replay/route-replay.py` scores the route fixture corpus offline. In `resolve` mode it builds a router snapshot from the task-type table in `../SKILL.md` section 2, the constants in `../references/routing-signals.md` and the resource map, prints the snapshot sha256, runs a connectivity gate over every routed path and scores each row for mode, task type, read set, expected facts and the token ceiling. In `replay` mode it runs `moneybird-guard` in test mode against the stub CLI and asserts the recorded command line and exit code of every refusal row and every hostile invoice case. Time, environment and absolute paths never enter an output. `--rev` scores a git worktree of one revision, `--covers` filters the rows by their tag, and `--corpus`, `--out`, `--guard` and `--stub` point at other inputs. Token counts read the pinned `o200k_base` cache and a missing or changed data file exits 2 before any download.
 
@@ -294,7 +335,7 @@ route-replay: ok, 31 replay rows passed
 
 ---
 
-## 12. EVAL GRADER
+## 13. EVAL GRADER
 
 `run-evals.py` grades a captured run against `../evals/evals.json`. The captured folder holds `metadata.json` with `model_id`, `captured_on` and an optional `skill_hash`, one `with-skill/<case id>.md` answer per case and one `baseline/<case id>.md` answer per case. The grader checks the required tokens and the forbidden patterns of every case. A required entry written as a list passes when any one of its alternative phrasings appears. Refusal markers match case-sensitively, so only the uppercase route class counts as a refusal. A marker does not count when `not`, `never`, `no longer` or a `n't` form sits up to four words before it in the same sentence, or when `does not`, `is not`, `was not`, `cannot`, `no longer` or `is inapplicable` follows it. A forbidden phrase is excused by the same preceding negation, so a correct answer may deny the act in its own words. An amount or an identifier is never excused. `grading.json` holds the per-case assertion rows and the always-pass count. `benchmark.json` holds the pass rate, the baseline pass rate, the refusal false-positive rate and the always-pass list. Both record the sha256 skill hash of `SKILL.md` plus every routed reference and the model id. A `{year}` token in a required value resolves to the year of the capture date. No model judges an answer, so the forbidden patterns catch the phrasings they list and not every paraphrase. A pass means no listed contradiction appeared, not that the answer is safe, and a captured run still gets a read by the Operator or a reviewer.
 
@@ -311,7 +352,7 @@ run-evals: always-pass assertions: 82
 
 ---
 
-## 13. HARDENING MATRIX
+## 14. HARDENING MATRIX
 
 `check-hardening-matrix.py` reads `../hardening-matrix.md` and parses the table between its markers. Every row must name a failure mode, a priority, a control, a test, an owner and a status. A P0 row must name an existing test path as `path :: case name`, and the case name must occur in that file, so a deleted test or a renamed case fails the check. P1 and P2 rows with a missing test path are reported as notes. A passing run prints:
 
@@ -323,7 +364,7 @@ hardening-matrix: ok (27 rows, 21 P0 rows)
 
 ---
 
-## 14. REGRESSION TRAILER
+## 15. REGRESSION TRAILER
 
 `check-regression-trailer.py --range <base>..<head>` lists the range with `git rev-list` and then reads one commit at a time. The message comes from `git log -1` and the changed paths come from `git diff-tree` against the first parent, so a merge commit gets its paths and a message that holds a control character cannot move the boundary of the next commit. A commit that changes `AGENTS.md`, `cli-jortt/SKILL.md`, `cli-moneybird/SKILL.md`, `cli-moneybird/cli/moneybird-cli/moneybird-guard`, `sk-moneybird-accountant/SKILL.md` or `sk-moneybird-accountant/references/migration/shared-mechanisms.md` must add, modify or type-change a registered test in the same commit, or carry a `Regression-Test:` trailer naming a registered test that exists at that commit. A deleted path never counts as a test change. A rename reads as a deletion of its source and an addition of its destination, and a copy reads as an addition of its destination, so both paths of a rename or a copy reach the gate match. The registered set is read from the parent of the commit. It holds the test paths `../hardening-matrix.md` names and the test files the skill health workflow runs, read from its run lines. A named test registers only when it exists at the parent and at the commit, so a test created in the commit under check cannot cover it. A suite path that a name or a glob happens to match does not register. A passing range prints:
 
@@ -335,7 +376,7 @@ regression-trailer: ok (0 commits scanned)
 
 ---
 
-## 15. SOURCE LIBRARY
+## 16. SOURCE LIBRARY
 
 `build-source-library.py` scans `AGENTS.md`, `README.md` and the three skill folders for external links and writes `../assets/source-library.json`, one row per URL with its host, the citing files and its recorded access result. `--check` verifies the index offline and reports every cited URL missing from the index and every indexed URL no file cites. `--check-links` fetches every row a plain fetch can reach, reports `endpoint` and `webfetch-only` rows as skipped and never as failed, retries once and prints one JSON report with a summary and one row per URL. A row is ok only when the final answer after followed redirects is 2xx. `--trace <file>:<line>` prints the index row of every URL on one line with `access`, `http_status` and `checked_on`, and fails when a URL is dead, unchecked or missing from the index. Each readable row also keeps a `digest`, `retrieved_at`, an `etag` stored as a `sha256:` fingerprint, `last_modified` and, for a parliamentary document not yet published as a `kst` page, `kst_pending`, and a rebuild keeps them per URL. `--check` also fails on a cited `dead` row and on a `tweedekamer.nl/downloads/document?id=` citation whose row has no `kst_pending`. `--check-links` follows every redirect, 308 included, and counts a `blocked` answer (401, 403 or 429, a host refusing robots) and an error on a recorded `archive-not-fetchable` row apart from failures. `--apply-report <file>` writes a report's results into the index and never writes a blocked row as dead. `--watch` fetches the series in `../assets/source-watchlist.json`, compares ETag, Last-Modified and digest with the index or `../assets/source-watch-state.json`, and reports a changed series or a page that answers 200 after 404 with its citing files. `--check-calendar` reads `checked_on` from the year READMEs and `dutch-tax-rules.md` and fails when a current or future year predates the latest passed checkpoint in `../references/year-rollover.md`. Only `--check-links` and `--watch` make network calls, and they run in the monthly job, which reports a watch change or a stale year as an issue without failing.
 
@@ -353,17 +394,17 @@ A quiet watch prints `no watched URL changed` and a current calendar prints `3 f
 
 ---
 
-## 16. ROUTE CALIBRATION
+## 17. ROUTE CALIBRATION
 
 `../assets/route-calibration.json` records the frozen routing constants that `../SKILL.md` section 2 and `../references/routing-signals.md` state. It holds `ROUTE_MARGIN = 0.25`, `FALLBACK_FLOOR = 0.5`, the sweep that chose the floor in steps of 0.05 over the 32 calibration rows and the result over the 10 held-out rows. Both splits matched every row with no false abstains. `check-route-table.py` reads the frozen constants from this file by default and a passing run prints `route-table: ok`.
 
 ---
 
-## 17. ROUTER BLOCK
+## 18. ROUTER BLOCK
 
 `../SKILL.md` section 2 holds one router block between `<!-- router-block:start -->` and `<!-- router-block:end -->`, generated from the Task-Type Table by `check-route-table.py --write`. The block carries `INTENT_SIGNALS` per row from the Dutch and English signal cells, `RESOURCE_MAP` and `LOADING_LEVELS` from the read-set column, `UNKNOWN_FALLBACK_CHECKLIST` from the three fallback tiers, and the guard, existence-check and discovery helpers. Edit the table and rerun the mode, never the block by hand.
 
-The same run appends every multi-word table signal to `../graph-metadata.json` `intent_signals` and never removes a curated entry. A first run prints:
+The same run appends every multi-word table signal to `../graph-metadata.json` `intent_signals` and never removes a hand-added entry. A first run prints:
 
 ```text
 router block: written (SKILL.md)
@@ -392,7 +433,7 @@ intent signal missing from intent_signals: migration phase
 
 ---
 
-## 18. VALIDATION
+## 19. VALIDATION
 
 Run from the repository root.
 
@@ -424,11 +465,11 @@ python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check
 bash sk-moneybird-accountant/scripts/route-table-test.sh
 ```
 
-Expected result: `generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 2502 links, 390 fragment links, 0 problems` and `23 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 142 files, 988 sections` and `7 passed, 0 failed`. The route replay commands print `route-replay: ok, 57 rows passed` and `route-replay: ok, 31 replay rows passed`, and the suite ends with `Result: 34 passed, 0 failed`. The eval suite ends with `Result: 59 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `521 sources match the index` and its suite ends with `120 passed, 0 failed`. The route table commands print `route-table: ok` and a final pass and fail count with 0 failed.
+Expected result: `166 generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 2525 links, 390 fragment links, 0 problems` and `23 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 142 files, 989 sections` and `7 passed, 0 failed`. The route replay commands print `route-replay: ok, 57 rows passed` and `route-replay: ok, 31 replay rows passed`, and the suite ends with `Result: 34 passed, 0 failed`. The eval suite ends with `Result: 59 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `521 sources match the index` and its suite ends with `120 passed, 0 failed`. The route table commands print `route-table: ok` and a final pass and fail count with 0 failed.
 
 ---
 
-## 19. RELATED
+## 20. RELATED
 
 - [`../references/migration/README.md`](../references/migration/README.md) for the phase references the generator reads
 - [`../assets/migration/README.md`](../assets/migration/README.md) for the generated templates

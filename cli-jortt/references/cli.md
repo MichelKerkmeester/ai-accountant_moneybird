@@ -107,7 +107,7 @@ jortt-cli call get-customer-by-id --customer_id CUSTOMER_ID --dry-run
 
 `--PARAM VALUE` names must match path or query parameters in the spec. Unknown names fail with the valid parameter list. Required parameters and basic integer, number, boolean and enum values are checked before a request. Pass request bodies with `--data JSON` or `--data-file FILE`.
 
-`--all` follows `_links.next.href` and merges each page's `data` array into one JSON array. The API page size is at most 100 items. `--print-body` prints the full body (pretty JSON, or raw with `--raw`). `--raw` alone only changes the form of `--print-body` output. `--dry-run` prints the method, URL and JSON body without requesting a token or making a network call.
+`--all` follows `_links.next.href` and merges each page's `data` array into one JSON array. The API page size is at most 100 items. `--print-body` prints the full body (pretty JSON, or raw with `--raw`). `--raw` alone only changes the form of `--print-body` output. `--dry-run` prints the method, URL and JSON body without requesting a token or calling a Jortt operation. When no OpenAPI cache exists, the spec check that runs first downloads the public spec.
 
 ### Raw GET
 

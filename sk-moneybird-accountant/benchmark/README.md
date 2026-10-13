@@ -1,6 +1,6 @@
 ---
 title: sk-moneybird-accountant Benchmark Artifacts
-description: Offline routing benchmark structure for the sk-moneybird-accountant skill.
+description: Offline routing benchmark inputs and reports for the sk-moneybird-accountant skill.
 trigger_phrases:
   - sk-moneybird-accountant benchmark
   - offline bookkeeping routing review
@@ -11,30 +11,43 @@ version: 1.0.0.0
 
 # sk-moneybird-accountant Benchmark Artifacts
 
-This folder stores evidence from completed offline routing runs for the bookkeeping and migration skill.
+> Inputs and reports for offline routing runs that measure the bookkeeping and migration skill.
 
 ---
 
 ## 1. OVERVIEW
 
-Use the manual playbook scenarios to assess mode selection, reference routing, tool handoffs, tax boundaries, and privacy behavior. A run must not call Jortt, Moneybird, web, or tax authority APIs.
+This folder holds the benchmark inputs and the reports from offline routing runs for the bookkeeping and migration skill. A reviewer uses it to check mode selection, reference routing, tool handoffs, tax boundaries and privacy behavior without a live system.
+
+Use the manual playbook scenarios as the candidate prompts. A run stays offline, so it must not call Jortt, Moneybird, the web or tax authority APIs.
 
 ---
 
-## 2. LAYOUT
+## 2. STRUCTURE
+
+```text
+benchmark/
++-- README.md                    # This guide
++-- token-baseline.json          # Pinned token counts
+`-- reports/
+    +-- README.md                # Index of completed run folders
+    `-- route-replay/
+        `-- report.md            # Generated resolve-mode route report
+```
 
 | Path | Contents |
 |---|---|
-| [reports/](./reports/) | One folder per completed run, indexed by reports/README.md |
-| [token-baseline.json](./token-baseline.json) | Pinned token counts for the reference corpus, the named units, the overhead rows and the car route |
+| [`reports/`](./reports/) | Run index plus the generated route replay report |
+| [`reports/route-replay/report.md`](./reports/route-replay/report.md) | Resolve-mode output of the offline route replay |
+| [`token-baseline.json`](./token-baseline.json) | Pinned token counts for the reference corpus, the named units, the overhead rows and the car route |
 
-The manual scenario corpus is in manual-testing-playbook/. The corpus is an input and is not rewritten by a run.
+The manual scenario corpus is in [`manual-testing-playbook/`](../manual-testing-playbook/manual-testing-playbook.md). The corpus is an input and is not rewritten by a run.
 
 ---
 
 ## 3. TOKEN BASELINE
 
-`token-baseline.json` is the pinned token measure of the reference corpus. `../scripts/token-baseline.py` writes it, and `--check` compares it. The file holds one row per reference file with its H2 sections, the named units, the overhead rows, the encoding pin and the car route ratio. It holds paths and counts only and carries no timestamp.
+`token-baseline.json` is the pinned token measure of the reference corpus. `../scripts/token-baseline.py` writes it, and `--check` compares it. The file holds one row per reference file with its H2 sections, the named units, the overhead rows, the encoding pin and the car route ratio. It carries no timestamp.
 
 The read budget ladder, in tokens:
 
@@ -59,8 +72,38 @@ Offline rule: the data files come from a seeded cache named by `TIKTOKEN_CACHE_D
 Re-measure rule: on every reference change, run `token-baseline.py` and commit the updated JSON with the change. A passing check ends with:
 
 ```text
-token-baseline: check ok, 142 files, 988 sections
-token-baseline: car route ratio: o200k_base 0.2829, cl100k_base 0.2860
+token-baseline: check ok, 142 files, 989 sections
+token-baseline: car route ratio: o200k_base 0.2840, cl100k_base 0.2870
 ```
 
 Canary: `../scripts/token-canary-test.sh` covers the 2026 car question on the KEY FIGURES route. The proposed route must stay at or under 35 percent of the current route and at or under 8,000 `cl100k_base` tokens, which is the year README row plus the one section row. A whole-file load fails the gate, and the suite ends with `7 passed, 0 failed`.
+
+---
+
+## 4. USAGE EXAMPLES
+
+Record a completed run in a dated folder under `reports/` and add one row to the run index.
+
+```text
+benchmark/reports/<YYYY-MM-DD>--<subject>--<variant>/
+```
+
+The execution date names the folder. The index row names the folder, the runtime, the result, the verdict and the source packet.
+
+Check the token baseline after a reference change. Run from the repository root:
+
+```bash
+TIKTOKEN_CACHE_DIR=<cache> python3 -I sk-moneybird-accountant/scripts/token-baseline.py --check
+```
+
+Expected: `token-baseline: check ok, 142 files, 989 sections`.
+
+---
+
+## 5. RELATED RESOURCES
+
+| Document | Purpose |
+|---|---|
+| [`reports/README.md`](./reports/README.md) | Index of completed run folders and the storage rule |
+| [`../manual-testing-playbook/manual-testing-playbook.md`](../manual-testing-playbook/manual-testing-playbook.md) | Candidate scenarios for a benchmark run |
+| [`../scripts/README.md`](../scripts/README.md) | Token baseline, canary and the checkers that own the numbers |

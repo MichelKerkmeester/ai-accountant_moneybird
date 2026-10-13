@@ -1,12 +1,14 @@
 # Moneybird Accountant - Jortt to Moneybird Migration & Bookkeeping
 
+> A bookkeeping and Jortt to Moneybird migration assistant for a Dutch sole trader, with evidence at every step and a human on every tax decision.
+
 [![GitHub Stars](https://img.shields.io/github/stars/MichelKerkmeester/ai-accountant_moneybird?style=for-the-badge&logo=github&color=fce566&labelColor=222222)](https://github.com/MichelKerkmeester/ai-accountant_moneybird/stargazers)
 [![License](https://img.shields.io/github/license/MichelKerkmeester/ai-accountant_moneybird?style=for-the-badge&color=7bd88f&labelColor=222222)](LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/MichelKerkmeester/ai-accountant_moneybird?style=for-the-badge&color=5ad4e6&labelColor=222222)](https://github.com/MichelKerkmeester/ai-accountant_moneybird/commits/main)
 
 > Like it? https://buymeacoffee.com/michelkerkmeester
 
-&nbsp;
+---
 
 ## 1. 📝 SUMMARY
 
@@ -20,9 +22,9 @@ It organizes evidence and explains general Dutch ZZP rules. It never files a ret
 - **A Jortt reader** - `cli-jortt/` holds `jortt-cli`, a read-only command line client that pages through the Jortt API and saves extracts into a local workspace
 - **A guarded Moneybird client** - `cli-moneybird/` holds `moneybird-guard`, a wrapper around the official Moneybird CLI that previews every call and blocks writes you have not approved
 - **A 23-phase migration plan** - each phase has an owner, an evidence trail and a numeric exit gate
-- **Offline checks** - 11 Jortt contract tests and 13 Moneybird guard tests run without an accounting login
+- **Offline checks** - 26 Jortt contract tests and 58 Moneybird guard tests run without an accounting login
 
-&nbsp;
+---
 
 ## 2. 🗺️ OVERVIEW
 
@@ -50,7 +52,7 @@ The skill keeps the workflow in one place. The two CLI skills own API details, s
 
 The routes into the matching phase file, bookkeeping reference or tax-year folder are written in one place only, the Task-Type Table in section 2 of `sk-moneybird-accountant/SKILL.md`. If the mode is unclear, the assistant asks one question instead of guessing a phase or a tax year. It resolves the tax year from the runtime clock in a generated `session-context.json` before it uses any rate or threshold, and it never routes on a date written in a document. Tax decisions and return filing stay with the Operator or a bookkeeper.
 
-&nbsp;
+---
 
 ## 3. 🚀 QUICK START
 
@@ -91,9 +93,9 @@ bash cli-moneybird/cli/moneybird-cli/tests/run-tests.sh
 | Check | Last line you should see |
 |---|---|
 | Jortt doctor | `Mode: offline. No network calls were made.` |
-| Jortt CLI tests | `Result: 11 passed, 0 failed` |
+| Jortt CLI tests | `Result: 26 passed, 0 failed` |
 | Moneybird doctor | `Doctor is read-only. Credential files were checked for presence only.` |
-| Moneybird guard tests | `Pass: 13  Fail: 0` |
+| Moneybird guard tests | `Pass: 58  Fail: 0` |
 
 The Jortt tests need a local copy of the Jortt API description. If the cache file is missing, run `jortt-cli spec update` once with network access, then run the tests again. The Moneybird tests use a local stub.
 
@@ -117,7 +119,7 @@ bash sk-moneybird-accountant/scripts/init-workspace.sh
 
 This builds the git-ignored `migration-workspace/` with every folder the plan uses, a `MIGRATION_CONFIG.json` with each field marked `PENDING` and a phase dashboard. It also copies the spec-kit template packet `specs/000-migration-template/` to the git-ignored `specs/001-migration/`: a phase parent plus one Level 3 packet per phase, each with a spec, plan, tasks, acceptance criteria, decision record, implementation summary and nested goal. Fill the bracketed placeholders with your own context as you work each phase. The script never overwrites a file you already filled in, so you can run it again safely. Add `--spec-name 002-my-books` to pick another packet name and `--dry-run` to see what it would create.
 
-&nbsp;
+---
 
 ## 4. 🛤️ MIGRATION PLAN
 
@@ -178,7 +180,7 @@ Twelve controls apply across the phases. The [shared mechanisms reference](sk-mo
 
 The [control framework](sk-moneybird-accountant/references/migration/control-framework.md) defines the roles, risk levels, exception fields and dashboard states.
 
-&nbsp;
+---
 
 ## 5. 🤖 EXTERNAL AGENT ROUTE
 
@@ -195,7 +197,7 @@ M12 splits the work across seats so no single agent drafts, checks and approves 
 
 External seats receive typed, allowlisted summaries with opaque record aliases and approved aggregate counts. The exact payload is scanned before every dispatch. Names, amounts, IBANs, addresses, emails, descriptions, invoice numbers, IDs and source payloads never leave your machine.
 
-&nbsp;
+---
 
 ## 6. 🔒 SAFETY AND PRIVACY
 
@@ -207,7 +209,7 @@ External seats receive typed, allowlisted summaries with opaque record aliases a
 - **A privacy gate guards every commit and push.** `scripts/privacy-gate.py` blocks a commit or push that adds a path from the private folders, a file type outside the allowlist, a binary or a large file, or content that looks like an IBAN, a BSN, a Dutch VAT ID, an email address, a long ID number, a home-folder path, a euro amount outside the tax references, a secret, or a term from your local `.privacy-denylist`. It reports where, never the value. A commit that changes a gate file needs you to set `PRIVACY_GATE_CHANGE_APPROVED=1` for that commit and the commit message to carry the trailer `Privacy-Gate-Change: approved`. A GitHub Action reruns it over the whole history on every push.
 - **Tax decisions stay with you.** The assistant explains general rules with their year and source. It does not file returns and does not present a case-specific conclusion as final.
 
-&nbsp;
+---
 
 ## 7. 🧪 CHECKS
 
@@ -221,11 +223,11 @@ The doctors are offline by default. The Jortt tests check the CLI contract again
 | `cli-moneybird/cli/moneybird-cli/tests/run-tests.sh` | Period warning, write confirmation, the pilot gate, the approval check, the writer session, the read-only lock, delete caution, the output boundary, summary output and logins |
 | `sk-moneybird-accountant/scripts/plan-kit-test.sh` | Phase packet generation, the drift check, workspace and packet setup, no-overwrite and the refusals |
 | `scripts/privacy-gate-test.sh` | Every privacy-gate rule, that no blocked value is ever printed, the commit, merge and push modes, and the gate change trailer |
-| Manual testing playbooks | Offline routing and guard scenarios in each skill folder, with one live Moneybird scenario that needs your approval |
+| Manual testing playbooks | Offline routing and guard scenarios in each skill folder, plus operator-approved live Jortt reads and one live Moneybird pilot write |
 
 A passing local test does not prove a live connection. For Jortt, `jortt-cli whoami` returning HTTP 200 is that proof. For Moneybird, `bash cli-moneybird/scripts/doctor.sh --live` reports the administrations check with your approval.
 
-&nbsp;
+---
 
 ## 8. 🗂️ REPOSITORY STRUCTURE
 
@@ -233,7 +235,7 @@ A passing local test does not prove a live connection. For Jortt, `jortt-cli who
 .
 ├── .env.example                          local configuration template, no credentials
 ├── .githooks/                            privacy gate before commit, merge and push, forwards to your global hooks
-├── .github/workflows/                    reruns the privacy gate and the plan kit checks on every push
+├── .github/workflows/                    runs the privacy gate, plan kit and skill health checks on every push
 ├── .gitignore                            keeps secrets and private work data out of Git
 ├── .privacy-denylist.example             template for your local list of private terms
 ├── .privacy-gate.json                    privacy-gate allowlists and blocked paths
@@ -271,7 +273,7 @@ A passing local test does not prove a live connection. For Jortt, `jortt-cli who
 
 Both CLI skills and the main skill also carry a `changelog/` and a `benchmark/` folder for release notes and run reports.
 
-&nbsp;
+---
 
 ## 9. ❓ FAQ
 
@@ -299,7 +301,7 @@ Yes. LIVE mode covers monthly, quarterly and yearly review and one-off ZZP quest
 
 No. It covers the Dutch sole-trader tax system only.
 
-&nbsp;
+---
 
 ## 10. 🔧 TROUBLESHOOTING
 
@@ -327,7 +329,7 @@ Exit 3 means `--confirm-write` is missing. Exit 4 means the target is not the pi
 
 The Jortt API does not provide them. Download them yourself from the Jortt UI.
 
-&nbsp;
+---
 
 ## 11. 📚 RELATED DOCUMENTS
 
@@ -356,7 +358,7 @@ The Jortt API does not provide them. Download them yourself from the Jortt UI.
 - **[→ Source Library](sk-moneybird-accountant/references/source-library.md)** - every external source the skills cite, by authority, with how an agent can reach it
 - **[→ Jortt to Moneybird Mapping](sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md)** - concept matches and migration traps
 
-&nbsp;
+---
 
 ## 12. 📄 LICENSE
 

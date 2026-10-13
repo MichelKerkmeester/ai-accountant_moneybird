@@ -149,7 +149,7 @@ The offline checks use a local copy of the API description and never call Jortt.
 |---|---|
 | CLI contract | `bash cli-jortt/cli/jortt-cli/tests/run-tests.sh` ends with `Result: 26 passed, 0 failed`, including one fault case per Jortt exit code 1 to 6 |
 | Offline doctor | `bash cli-jortt/scripts/doctor.sh` ends with `Mode: offline. No network calls were made.` |
-| Operator scenarios | The scenarios in the [manual testing playbook](manual-testing-playbook/manual-testing-playbook.md) report `PASS` |
+| Operator scenarios | The [manual testing playbook](manual-testing-playbook/manual-testing-playbook.md) holds the scenario contract. A recorded run lands under `benchmark/reports/` |
 
 ---
 

@@ -57,7 +57,7 @@ The CLI supports `list`, `get`, `create`, `update` and `delete` where the spec e
 | `--file PATH` | Supplies a file to a multipart field when the endpoint declares it |
 | `login [token]` | Logs in with a token argument or prompts for a token when omitted |
 | `administration list` | Lists administrations available in the local CLI session |
-| `administration use ID` | Selects a local CLI administration. A switch to the pilot administration passes. Any other switch is gated like a production write |
+| `administration use ID` | Selects a local CLI administration. A switch to the pilot administration passes. Any other switch needs the same confirmation, writer configuration, `--production` and approval as a production write, without a payload digest |
 | `administration current` | Prints the selected local CLI administration |
 | `RESOURCE sync` | Reads synchronization IDs and versions when that resource supports synchronization |
 | `RESOURCE sync_fetch --ids JSON` | Fetches a batch of synchronized records |
@@ -93,7 +93,7 @@ The payload digest is a keyed HMAC-SHA256 over the canonical writer-session dry 
 
 The write command shape is `moneybird-guard --confirm-write --approval "$APPROVAL_REF" <moneybird-cli args...>`, plus `--production` for a non-pilot administration.
 
-`administration use <id>` is gated. Switching to the pilot administration passes. Switching to any other administration is blocked by the read-only lock with exit 6. Otherwise it needs `--confirm-write`, the writer configuration, `--production` and `--approval`, the same as a production write.
+`administration use <id>` is gated. Switching to the pilot administration passes. Switching to any other administration is blocked by the read-only lock with exit 6. Otherwise it needs `--confirm-write`, the writer configuration, `--production` and `--approval`. A switch sends no payload, so no payload digest is computed for it.
 
 The table below is the one canonical exit-code table, the target of the gate ladder above, the TROUBLESHOOT keywords in `cli-moneybird/SKILL.md` and the rows in `references/troubleshooting.md`, and `scripts/exit-code-parity.sh` checks those surfaces against the guard.
 

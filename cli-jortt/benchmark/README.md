@@ -23,7 +23,14 @@ No runs have been performed. Do not report a score or verdict until a dated run 
 
 ---
 
-## 2. LAYOUT
+## 2. STRUCTURE
+
+```text
+benchmark/
++-- README.md             # This overview
+`-- reports/              # Curated index of future run folders
+    `-- README.md
+```
 
 | Path | Contents |
 |---|---|

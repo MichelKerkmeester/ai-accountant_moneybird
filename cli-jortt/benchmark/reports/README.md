@@ -33,3 +33,10 @@ No run folders exist yet.
 ## 3. STORAGE RULE
 
 Name future run folders `<YYYY-MM-DD>--<subject>--<variant>`. Use the execution date. Keep a new folder when a result changes so earlier reports remain intact.
+
+---
+
+## 4. RELATED
+
+- [`../README.md`](../README.md) describes what a benchmark run covers.
+- [`../../manual-testing-playbook/manual-testing-playbook.md`](../../manual-testing-playbook/manual-testing-playbook.md) holds the scenario contracts a run executes.

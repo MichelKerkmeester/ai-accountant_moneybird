@@ -111,7 +111,7 @@ bash "cli-jortt/scripts/doctor.sh"
 JORTT_OPENAPI_FILE="/path/to/swagger.json" bash "cli-jortt/cli/jortt-cli/tests/run-tests.sh"
 ```
 
-Expected: the doctor ends with `Mode: offline. No network calls were made.` and the CLI tests end with `Result: 11 passed, 0 failed`. The tests need a local Swagger file and use fake credentials. They do not make network calls.
+Expected: the doctor ends with `Mode: offline. No network calls were made.` and the CLI tests end with `Result: 26 passed, 0 failed`. The tests need a local Swagger file and use fake credentials. They do not make network calls.
 
 For live verification, use `jortt-cli whoami` after credentials and network access are ready. It prints only HTTP status and top-level field names.
 

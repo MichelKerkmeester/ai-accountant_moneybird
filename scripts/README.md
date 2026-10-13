@@ -17,10 +17,10 @@ trigger_phrases:
 
 Current state:
 
-- `privacy-gate.py` is the only scanner. Every hook and every CI step calls it, so a rule lives in one place.
+- `privacy-gate.py` is the only scanner. The privacy hooks and the privacy-gate CI workflow call it, so a rule lives in one place.
 - Findings are masked and never print the matched value.
 - Staged mode reads its rules from `HEAD`. Push mode reads the rules and the gate code at the remote's commit and re-runs that copy. A local edit cannot widen the rules for its own commit or push.
-- Every file in this folder is a gate file. A change to one needs `PRIVACY_GATE_CHANGE_APPROVED=1`, which only the Operator sets, and the line `Privacy-Gate-Change: approved` in the commit message.
+- Every script in this folder is a gate file. A change to one needs `PRIVACY_GATE_CHANGE_APPROVED=1`, which only the Operator sets, and the line `Privacy-Gate-Change: approved` in the commit message.
 
 ---
 
@@ -55,7 +55,7 @@ Dependency direction: hooks, CI and tests ───▶ privacy-gate.py ───
 
 | File | Responsibility |
 |---|---|
-| `privacy-gate.py` | The scanner. Checks blocked paths and names, file types, sizes, IBAN, BSN, VAT numbers, amounts, emails, author identities, secrets and denylist terms in every mode |
+| `privacy-gate.py` | The scanner. Checks blocked paths and names, file types, sizes, IBAN, BSN, VAT numbers, amounts, emails, author identities, secrets and denylist terms |
 | `privacy-gate-test.sh` | Integration suite. Builds throwaway repositories and generates every sensitive value at runtime, so the suite itself scans clean |
 | `install-hooks.sh` | Points `core.hooksPath` at `.githooks/`, makes the hooks executable and creates `.privacy-denylist` from the example when it is missing |
 
