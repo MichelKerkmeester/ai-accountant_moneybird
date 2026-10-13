@@ -78,7 +78,7 @@ Dependency direction: references ───▶ generator ───▶ tracked tem
 | `route-replay/routing-gold.json` | The route fixture corpus: one row per offline routing scenario, its Dutch twin, the gap, tie, tier, out-of-scope, follow-up, mixed, refusal and hostile rows, with the calibration and held-out labels written before any tuning |
 | `route-replay/route-replay-test.sh` | Runs the harness on a temp copy of the skill and proves both modes, the deleted path, the twin mismatch, the unmet claim, a wrong expected exit and two dated runs |
 | `run-evals.py` | Grades captured with-skill and baseline answers against the assertion blocks in `../evals/evals.json` and writes `grading.json` and `benchmark.json` with the skill hash, the pass rates and the refusal false-positive rate |
-| `run-evals-test.sh` | Builds capture fixtures for a compliant run, a broken answer, a refuse-everything run, a forbidden-pattern trip, another capture year and three skill snapshots |
+| `run-evals-test.sh` | Builds capture fixtures for a compliant run, a broken answer, a refuse-everything run, a forbidden-pattern trip, another capture year, alternative phrasings and three skill snapshots |
 | `../evals/evals.json` | The eval cases, each with a prompt, an expected route and an assertion block of required tokens and forbidden patterns |
 | `check-hardening-matrix.py` | Parses `../hardening-matrix.md` and fails a P0 row with a missing test path or a case name that does not occur in that file |
 | `hardening-matrix-test.sh` | Proves the matrix check on the real matrix and on copies with a removed P0 test path, a blank P0 cell and a renamed case |
@@ -296,7 +296,7 @@ route-replay: ok, 31 replay rows passed
 
 ## 12. EVAL GRADER
 
-`run-evals.py` grades a captured run against `../evals/evals.json`. The captured folder holds `metadata.json` with `model_id`, `captured_on` and an optional `skill_hash`, one `with-skill/<case id>.md` answer per case and one `baseline/<case id>.md` answer per case. The grader checks the required tokens and the forbidden patterns of every case. `grading.json` holds the per-case assertion rows and the always-pass count. `benchmark.json` holds the pass rate, the baseline pass rate, the refusal false-positive rate and the always-pass list. Both record the sha256 skill hash of `SKILL.md` plus every routed reference and the model id. A `{year}` token in a required value resolves to the year of the capture date. No model judges an answer.
+`run-evals.py` grades a captured run against `../evals/evals.json`. The captured folder holds `metadata.json` with `model_id`, `captured_on` and an optional `skill_hash`, one `with-skill/<case id>.md` answer per case and one `baseline/<case id>.md` answer per case. The grader checks the required tokens and the forbidden patterns of every case. A required entry written as a list passes when any one of its alternative phrasings appears. Refusal markers match case-sensitively, so only the uppercase route class counts as a refusal. `grading.json` holds the per-case assertion rows and the always-pass count. `benchmark.json` holds the pass rate, the baseline pass rate, the refusal false-positive rate and the always-pass list. Both record the sha256 skill hash of `SKILL.md` plus every routed reference and the model id. A `{year}` token in a required value resolves to the year of the capture date. No model judges an answer.
 
 `../evals/evals.json` holds 23 cases, each with a prompt, an expected route and an assertion block of required tokens and forbidden patterns. The baseline is the previous skill snapshot. A grader run on the suite fixture capture, whose baseline answers carry none of the tokens, prints:
 
@@ -304,10 +304,10 @@ route-replay: ok, 31 replay rows passed
 run-evals: 23 cases, 23 with-skill passed, 0 baseline passed
 run-evals: pass rate 1.0000, baseline pass rate 0.0000
 run-evals: refusal false positives 0 of 16 benign cases
-run-evals: always-pass assertions: 47
+run-evals: always-pass assertions: 62
 ```
 
-`run-evals-test.sh` builds the capture fixtures at run time and ends with `Result: 23 passed, 0 failed`.
+`run-evals-test.sh` builds the capture fixtures at run time and ends with `Result: 35 passed, 0 failed`.
 
 ---
 
@@ -349,7 +349,7 @@ sk-moneybird-accountant/references/2024/btw.md:56
 
 A quiet watch prints `no watched URL changed` and a current calendar prints `3 files current at the Prinsjesdag checkpoint (2026-09-15)`.
 
-`source-library-test.sh` proves the index, the link check and the trace on fixture repositories, a fixture server on 127.0.0.1, and the real index, plus digests, the report write, the watch and its state, the calendar check, blocked hosts and dead or perishable citations. It ends with `115 passed, 0 failed`.
+`source-library-test.sh` proves the index, the link check and the trace on fixture repositories, a fixture server on 127.0.0.1, and the real index, plus digests, the report write, the watch and its state, the calendar check, blocked hosts and dead or perishable citations. It ends with `120 passed, 0 failed`.
 
 ---
 
@@ -424,7 +424,7 @@ python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check
 bash sk-moneybird-accountant/scripts/route-table-test.sh
 ```
 
-Expected result: `generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems, and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 2265 links, 390 fragment links, 0 problems` and `23 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 140 files, 962 sections` and `7 passed, 0 failed`. The route replay commands print `route-replay: ok, 42 rows passed` and `route-replay: ok, 31 replay rows passed`, and the suite ends with `Result: 33 passed, 0 failed`. The eval suite ends with `Result: 23 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `497 sources match the index` and its suite ends with `115 passed, 0 failed`. The route table commands print `route-table: ok` and a final pass and fail count with 0 failed.
+Expected result: `generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems, and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 2265 links, 390 fragment links, 0 problems` and `23 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 140 files, 962 sections` and `7 passed, 0 failed`. The route replay commands print `route-replay: ok, 42 rows passed` and `route-replay: ok, 31 replay rows passed`, and the suite ends with `Result: 33 passed, 0 failed`. The eval suite ends with `Result: 35 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `497 sources match the index` and its suite ends with `120 passed, 0 failed`. The route table commands print `route-table: ok` and a final pass and fail count with 0 failed.
 
 ---
 

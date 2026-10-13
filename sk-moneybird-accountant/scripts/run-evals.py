@@ -16,14 +16,17 @@ A captured run folder holds:
 
 The captured_on value is an ISO calendar date. A required token written as
 {year} resolves to the year of that date, so a case never pins the capture
-year in the suite file.
+year in the suite file. A required entry may also be a list of alternative
+phrasings, and the entry passes when any one of them appears.
 
 The skill hash is the sha256 of SKILL.md plus every reference path the cases
 route to. A run may record its own skill_hash in metadata.json, for example
 when the baseline snapshot ships one, and that value is then used as given.
 
 The refusal false-positive rate is the share of cases that should answer and
-whose with-skill answer still stops with the route class BLOCKED. An
+whose with-skill answer still stops with the route class BLOCKED. Refusal
+markers match case-sensitively, because the route class is the uppercase
+token and the lowercase word in prose names no route. An
 assertion that passes in both arms does not discriminate, so it is flagged
 always-pass in both reports.
 
@@ -160,6 +163,11 @@ def check_case(case: Any) -> None:
         if not isinstance(values, list) or not values:
             fail("case %s has no %s assertions" % (case["id"], kind))
         for value in values:
+            # WHY: only a required entry may list alternative phrasings.
+            if kind == "required" and isinstance(value, list):
+                if not value or not all(isinstance(item, str) and item for item in value):
+                    fail("case %s has an empty required alternative" % case["id"])
+                continue
             if not isinstance(value, str) or not value:
                 fail("case %s has an empty %s assertion" % (case["id"], kind))
     route = case["expected_route"]
@@ -255,12 +263,17 @@ def find_answer(run_dir: str, arm: str, case_id: str) -> str:
     fail("missing %s answer for case %s" % (arm, case_id))
 
 
-def compile_patterns(values: List[str], label: str) -> List[Tuple[str, "re.Pattern"]]:
+def compile_patterns(
+    values: List[str],
+    label: str,
+    flags: int = re.IGNORECASE,
+) -> List[Tuple[str, "re.Pattern"]]:
     """Compile forbidden patterns or refusal markers.
 
     Args:
         values: Pattern strings from the suite.
         label: Name used in the error message.
+        flags: Regular expression flags, case-insensitive by default.
 
     Returns:
         Pairs of the source text and its compiled pattern.
@@ -271,7 +284,7 @@ def compile_patterns(values: List[str], label: str) -> List[Tuple[str, "re.Patte
     compiled = []
     for value in values:
         try:
-            compiled.append((value, re.compile(value, re.IGNORECASE)))
+            compiled.append((value, re.compile(value, flags)))
         except re.error as exc:
             fail("bad pattern in %s: %s (%s)" % (label, value, exc))
     return compiled
@@ -282,14 +295,15 @@ def compile_patterns(values: List[str], label: str) -> List[Tuple[str, "re.Patte
 
 def grade_answer(
     text: str,
-    required: List[str],
+    required: List[Any],
     forbidden: List[Tuple[str, "re.Pattern"]],
 ) -> List[Dict[str, Any]]:
     """Check one answer against one case's assertion block.
 
     Args:
         text: Captured answer text.
-        required: Required tokens, matched as case-insensitive substrings.
+        required: Required tokens, matched as case-insensitive substrings. A
+            list entry passes when any of its alternatives matches.
         forbidden: Compiled forbidden patterns, searched case-insensitively.
 
     Returns:
@@ -298,7 +312,8 @@ def grade_answer(
     rows = []
     lowered = text.lower()
     for value in required:
-        status = "pass" if value.lower() in lowered else "fail"
+        options = value if isinstance(value, list) else [value]
+        status = "pass" if any(option.lower() in lowered for option in options) else "fail"
         rows.append({"kind": "required", "value": value, "status": status})
     for value, pattern in forbidden:
         status = "fail" if pattern.search(text) else "pass"
@@ -392,7 +407,7 @@ def grade_run(suite: Dict[str, Any], run_dir: str, skill_dir: str, out_dir: str)
     else:
         digest, missing = skill_hash(skill_dir, references)
         source = "computed"
-    markers = compile_patterns(suite["refusal_markers"], "refusal markers")
+    markers = compile_patterns(suite["refusal_markers"], "refusal markers", flags=0)
 
     cases_out = []
     benchmark_cases = []
@@ -403,7 +418,12 @@ def grade_run(suite: Dict[str, Any], run_dir: str, skill_dir: str, out_dir: str)
     baseline_passed = 0
 
     for case in suite["cases"]:
-        required = [value.replace(YEAR_TOKEN, year) for value in case["assertions"]["required"]]
+        required = [
+            [option.replace(YEAR_TOKEN, year) for option in value]
+            if isinstance(value, list)
+            else value.replace(YEAR_TOKEN, year)
+            for value in case["assertions"]["required"]
+        ]
         forbidden = compile_patterns(case["assertions"]["forbidden"], "case %s" % case["id"])
         with_text = find_answer(run_dir, WITH_SKILL_ARM, case["id"])
         base_text = find_answer(run_dir, BASELINE_ARM, case["id"])
