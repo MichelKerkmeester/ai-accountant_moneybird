@@ -1,0 +1,54 @@
+[
+  {
+    "series": "Handboek Ondernemen",
+    "urls": [
+      "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/handboek-ondernemen"
+    ],
+    "cadence": "yearly",
+    "why": "The yearly handbook carries the small-business rules and amounts that the year files quote."
+  },
+  {
+    "series": "Belastingplan Staatsblad and Staatscourant texts",
+    "urls": [
+      "https://zoek.officielebekendmakingen.nl"
+    ],
+    "cadence": "on-publication",
+    "why": "The enacted text is the primary evidence once a bill becomes law."
+  },
+  {
+    "series": "December indexation",
+    "urls": [
+      "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/index",
+      "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2027/index"
+    ],
+    "cadence": "yearly",
+    "why": "The December indexation sets the amounts for the coming tax year."
+  },
+  {
+    "series": "FISIN year pages",
+    "urls": [
+      "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/index",
+      "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/index",
+      "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/index"
+    ],
+    "cadence": "yearly",
+    "why": "The FISIN pages hold the per-year figures the topic files cite."
+  },
+  {
+    "series": "Moneybird help center",
+    "urls": [
+      "https://help.moneybird.nl"
+    ],
+    "cadence": "monthly",
+    "why": "The product articles change without notice and the flows quote their menu paths."
+  },
+  {
+    "series": "kst pending",
+    "urls": [
+      "https://zoek.officielebekendmakingen.nl/kst-37022-3.html",
+      "https://zoek.officielebekendmakingen.nl/kst-37020-62.html"
+    ],
+    "cadence": "monthly",
+    "why": "Belastingplan 2027 documents not yet published, so the watch reports when their kst pages go live."
+  }
+]

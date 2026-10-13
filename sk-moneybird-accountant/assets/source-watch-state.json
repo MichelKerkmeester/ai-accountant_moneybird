@@ -1,0 +1,69 @@
+{
+  "generator": "sk-moneybird-accountant/scripts/build-source-library.py",
+  "updated_at": "2026-10-13",
+  "urls": {
+    "https://help.moneybird.nl": {
+      "digest": "ee4483678f36c34f7d46f9941028f659abe000265d23a84c81bc573520dfbe06",
+      "etag": "sha256:9bc890b549acf1e3000d6f7fe05c06aad5d9627277c1dd7d171bbe1c3084b3d9",
+      "http_status": 200,
+      "last_modified": "Mon, 12 Oct 2026 09:17:29 GMT",
+      "retrieved_at": "2026-10-13"
+    },
+    "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/handboek-ondernemen": {
+      "digest": "5eaac94d2c496e746ea5f8e4e95d71dbe614441b20ad4eafbcabac516df5a774",
+      "etag": "sha256:cdeb03485b2163adcfa402dbbcd941e2244e916cac9bfea2d5c977eeddebe4a3",
+      "http_status": 200,
+      "last_modified": "Mon, 12 Oct 2026 01:00:44 GMT",
+      "retrieved_at": "2026-10-13"
+    },
+    "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/index": {
+      "digest": "8d211184cbe5f624b08ee009a84edfc03284621a1272c2bdead88f7e80472b84",
+      "etag": "sha256:25f11e476625888e72ce9a15e761a091143a4bbfe54b82149d2e7a05a22380f9",
+      "http_status": 200,
+      "last_modified": "Mon, 12 Oct 2026 01:16:53 GMT",
+      "retrieved_at": "2026-10-13"
+    },
+    "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/index": {
+      "digest": "63d791fc610bafef5f952656c19b96fb2195823473c090734c720d483698dfd9",
+      "etag": "sha256:aa38b60027e4a94e87956740790d3b72aff35c8f6d2ff2a6507ccc5f8dcf62b5",
+      "http_status": 200,
+      "last_modified": "Mon, 12 Oct 2026 01:17:00 GMT",
+      "retrieved_at": "2026-10-13"
+    },
+    "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/index": {
+      "digest": "0de614993893aa216c30bef47ec2564833d5486f9338a0b867a256220b6deb3d",
+      "etag": "sha256:f1cb0998a423259e55460b0eabbb11f6ef6ec0679609fbda5c1a5bc3ff31157a",
+      "http_status": 200,
+      "last_modified": "Mon, 12 Oct 2026 01:17:15 GMT",
+      "retrieved_at": "2026-10-13"
+    },
+    "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2027/index": {
+      "digest": null,
+      "etag": "sha256:e99f55327e990739289202eb246d7a66394020e221d99608015edefe0850bf4b",
+      "http_status": 404,
+      "last_modified": "Mon, 12 Oct 2026 01:15:10 GMT",
+      "retrieved_at": null
+    },
+    "https://zoek.officielebekendmakingen.nl": {
+      "digest": "0fcdffdfc8ce14b453e4531b8b1ae38d15d7cbbaf7d54c37d802e694493a4ceb",
+      "etag": null,
+      "http_status": 200,
+      "last_modified": null,
+      "retrieved_at": "2026-10-13"
+    },
+    "https://zoek.officielebekendmakingen.nl/kst-37020-62.html": {
+      "digest": null,
+      "etag": null,
+      "http_status": 404,
+      "last_modified": null,
+      "retrieved_at": null
+    },
+    "https://zoek.officielebekendmakingen.nl/kst-37022-3.html": {
+      "digest": null,
+      "etag": null,
+      "http_status": 404,
+      "last_modified": null,
+      "retrieved_at": null
+    }
+  }
+}

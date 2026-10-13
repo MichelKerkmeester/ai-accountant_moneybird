@@ -7,31 +7,68 @@
 Scans the bootstrap, the root README and the markdown of the three skills for
 external links and writes one row per source to the source library index. The
 scan never touches the workspace, the spec folders or any private folder, and
-only --check-links makes a network call. Access results come from a live check
-that the Operator or an agent runs, and a rewrite keeps them per URL. Output is
-byte-stable: sorted rows, no timestamps, no randomness.
+only --check-links and --watch make a network call. Access results come from a
+live check that the Operator or an agent runs, and a rewrite keeps them per URL
+together with the digest, the retrieval date, the entity tag fingerprint, the
+last modification date and the pending kst marker. Output is byte-stable:
+sorted rows, no timestamps, no randomness.
+
+A digest is the sha256 of the page text after normalisation: script and style
+blocks and every tag are removed, entities are unescaped and whitespace is
+collapsed. A PDF row hashes the raw bytes, so it needs no reader. An entity tag
+is stored as the sha256 of the header value with a `sha256:` prefix, so a raw
+tag holding a long digit run never reaches a committed file. A stored tag
+without that prefix is hashed when it is read, so an index or a state file
+written earlier still compares.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/build-source-library.py
     python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check
     python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-links
+    python3 -I sk-moneybird-accountant/scripts/build-source-library.py --apply-report <file>
+    python3 -I sk-moneybird-accountant/scripts/build-source-library.py --watch [--state <file>]
+    python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-calendar [--today YYYY-MM-DD]
     python3 -I sk-moneybird-accountant/scripts/build-source-library.py --trace <file>:<line>
 
 Options:
     --check       Verify the index without writing it. Reports every cited URL
-                  missing from the index and every indexed URL no file cites.
+                  missing from the index, every indexed URL no file cites, a
+                  cited row recorded dead and a perishable Tweede Kamer
+                  download address without a pending kst marker.
     --check-links Fetch every row a plain fetch can reach and print a JSON
-                  report. Endpoint rows and rows recorded as reachable only
-                  through WebFetch are reported as skipped, never as failed.
-                  A row is ok only when the final answer after followed
-                  redirects is 2xx. An unfollowed redirect is a failure of
-                  its own kind.
+                  report with the status, the digest, the retrieval date, the
+                  entity tag fingerprint and the last modification date per
+                  readable URL.
+                  Endpoint rows and rows recorded as reachable only through
+                  WebFetch are reported as skipped, never as failed. A row is
+                  ok only when the final answer after followed redirects is 2xx.
+                  An unfollowed redirect is a failure of its own kind.
+    --apply-report Read a --check-links report and write its access result,
+                  status, check date, digest, retrieval date, entity tag
+                  fingerprint and last modification date into the matching
+                  index rows. Offline.
+    --watch       Fetch every URL of the source watchlist and compare its
+                  entity tag fingerprint, last modification date and digest
+                  with the stored values. The index row of the URL wins, the
+                  state file covers URLs the index does not hold. Every
+                  answered status is recorded, including a 404, and a stored
+                  404 that answers 200 is reported. Without --state it reads
+                  assets/source-watch-state.json when that file exists and
+                  never writes it. Prints one line per changed URL with its
+                  series and its citing files. A fetch failure is reported per
+                  URL and does not stop the run. This mode is network only and
+                  never runs with --check.
+    --check-calendar Read checked_on from the year READMEs and the rules file,
+                  and the checkpoint dates from the rollover runbook. Exits 1
+                  when a current or future year is older than the latest passed
+                  checkpoint or carries no stamp. Offline.
     --trace       Print the index result for every URL on one line of one file,
                   and fail on a dead, unchecked or unindexed URL.
 
 Output:
     sk-moneybird-accountant/assets/source-library.json and a summary on stdout.
-    --check-links prints only its JSON report.
+    --check-links prints only its JSON report. --watch exits 0 when nothing
+    changed, 1 when a series changed and 2 on a usage error.
 """
 
 # ───────────────────────────────────────────────────────────────
@@ -40,6 +77,8 @@ Output:
 
 import argparse
 import datetime
+import hashlib
+import html
 import json
 import os
 import re
@@ -55,7 +94,12 @@ from typing import Any, Dict, List, NoReturn, Optional, Set, Tuple
 GENERATOR = "sk-moneybird-accountant/scripts/build-source-library.py"
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 INDEX_PATH = os.path.join(REPO_ROOT, "sk-moneybird-accountant", "assets", "source-library.json")
-GUIDE_PATH = os.path.join(REPO_ROOT, "sk-moneybird-accountant", "references", "source-library.md")
+GUIDE_RELATIVE = "sk-moneybird-accountant/references/source-library.md"
+GUIDE_PATH = os.path.join(REPO_ROOT, *GUIDE_RELATIVE.split("/"))
+WATCHLIST_PATH = os.path.join(REPO_ROOT, "sk-moneybird-accountant", "assets", "source-watchlist.json")
+WATCH_STATE_PATH = os.path.join(REPO_ROOT, "sk-moneybird-accountant", "assets", "source-watch-state.json")
+REFERENCES_DIR = os.path.join(REPO_ROOT, "sk-moneybird-accountant", "references")
+ROLLOVER_PATH = os.path.join(REFERENCES_DIR, "year-rollover.md")
 
 # WHY: an allowlist of scan roots keeps the private folders out by construction.
 SCAN_ROOTS = ("AGENTS.md", "README.md", "sk-moneybird-accountant", "cli-jortt", "cli-moneybird")
@@ -103,19 +147,51 @@ AUTHORITY = {
 # Access values a live check may record. Their meaning is in the guide.
 ACCESS_VALUES = ("ok", "webfetch-only", "pdf-needs-reader", "archive-not-fetchable", "dead", "endpoint", "unchecked")
 
+# Access values that describe how a page is read, so a live answer keeps them.
+KEEP_ACCESS = ("pdf-needs-reader", "archive-not-fetchable")
+
+# Cadences a watched series may carry.
+CADENCES = ("monthly", "yearly", "on-publication")
+
 # A browser-like agent is what public hosts answer without a challenge.
 USER_AGENT = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
               "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
 
 FETCH_TIMEOUT = 30
 FETCH_ATTEMPTS = 2
-READ_LIMIT = 512
+
+# WHY: the digest needs the whole body and a cap keeps one huge file out of memory.
+DIGEST_MAX_BYTES = 24 * 1024 * 1024
 
 # Rows a plain fetch cannot reach, so the link check reports them as skipped.
 SKIP_FETCH_ACCESS = ("endpoint", "webfetch-only")
 
 # Access values that fail the trace, beside a URL the index does not hold.
 TRACE_FAIL_ACCESS = ("dead", "unchecked")
+
+# WHY: the index keeps one row per line and every stored field per URL. The
+# first group is always written, the second only when it holds a value.
+BASE_FIELDS = ("url", "host", "authority", "title", "type", "access", "http_status", "checked_on")
+CARRIED_FIELDS = ("digest", "retrieved_at", "etag", "last_modified", "kst_pending")
+
+# WHY: a stored entity tag is a fingerprint, so a raw header value with a long
+# digit run never reaches the index, the report or the state file.
+ETAG_PREFIX = "sha256:"
+
+# The checkpoint table sits under this header in the rollover runbook.
+CHECKPOINT_HEADER = ("Checkpoint", "Date", "Refresh")
+DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+YEAR_RE = re.compile(r"^\d{4}$")
+
+# A Tweede Kamer download address is perishable, so a file may cite it only
+# while the index row holds the expected kst id.
+PERISHABLE_RE = re.compile(r"https?://(?:www\.)?tweedekamer\.nl/downloads/document\?id=[^\s)\]>\"'`|]+")
+
+# Page normalisation: strip the blocks that hold no readable text, then tags.
+SCRIPT_BLOCK_RE = re.compile(r"(?is)<script\b.*?</script\s*>")
+STYLE_BLOCK_RE = re.compile(r"(?is)<style\b.*?</style\s*>")
+TAG_RE = re.compile(r"(?s)<[^>]*>")
+WHITESPACE_RE = re.compile(r"\s+")
 
 # ───────────────────────────────────────────────────────────────
 # 3. HELPERS
@@ -186,6 +262,103 @@ def is_endpoint(url: str) -> bool:
     return url.split("/")[2] in ENDPOINT_HOSTS or url.startswith(ENDPOINT_PREFIXES)
 
 
+def parse_iso_date(value: Optional[str]) -> Optional[datetime.date]:
+    """Parse an ISO date without raising on anything else.
+
+    Args:
+        value: Candidate date text.
+
+    Returns:
+        The date, or None when the text is missing or not an ISO date.
+    """
+    if not value:
+        return None
+    try:
+        return datetime.datetime.strptime(value, "%Y-%m-%d").date()
+    except ValueError:
+        return None
+
+
+def frontmatter_value(path: str, key: str) -> Optional[str]:
+    """Read one scalar from the YAML frontmatter of a markdown file.
+
+    Args:
+        path: File to read.
+        key: Frontmatter key to look up.
+
+    Returns:
+        The unquoted value, or None when the file, the block or the key is
+        missing.
+    """
+    try:
+        with open(path, "r", encoding="utf-8", errors="replace") as handle:
+            lines = handle.read().splitlines()
+    except OSError:
+        return None
+    if not lines or lines[0].strip() != "---":
+        return None
+    for line in lines[1:]:
+        stripped = line.strip()
+        if stripped == "---":
+            break
+        if stripped.startswith(key + ":"):
+            value = stripped[len(key) + 1:].strip().strip('"').strip("'")
+            return value or None
+    return None
+
+
+def normalize_page(body: bytes) -> str:
+    """Reduce a page body to the text a digest can compare.
+
+    Args:
+        body: Raw response bytes.
+
+    Returns:
+        The text without script and style blocks, without tags, with entities
+        unescaped and with every whitespace run collapsed.
+    """
+    text = body.decode("utf-8", errors="replace")
+    text = SCRIPT_BLOCK_RE.sub(" ", text)
+    text = STYLE_BLOCK_RE.sub(" ", text)
+    text = TAG_RE.sub(" ", text)
+    text = html.unescape(text)
+    return WHITESPACE_RE.sub(" ", text).strip()
+
+
+def digest_page(body: bytes, kind: str) -> str:
+    """Hash one response body the way its access class asks for.
+
+    Args:
+        body: Raw response bytes.
+        kind: "pdf" to hash the bytes, anything else hashes the text.
+
+    Returns:
+        The sha256 hex digest.
+    """
+    payload = body if kind == "pdf" else normalize_page(body).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
+def etag_fingerprint(value: Any) -> Optional[str]:
+    """Reduce an entity tag to the fingerprint the index stores.
+
+    Args:
+        value: Raw entity tag, or a fingerprint read from the index or the
+            state file.
+
+    Returns:
+        None when the value is missing or not text. The value itself when it
+        already carries the prefix. Otherwise the prefix followed by the
+        sha256 hex of the value, so a raw tag from an older file still
+        compares.
+    """
+    if not isinstance(value, str) or not value:
+        return None
+    if value.startswith(ETAG_PREFIX):
+        return value
+    return ETAG_PREFIX + hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+
 def markdown_files() -> List[str]:
     """List the markdown files under the scan roots, guide excluded.
 
@@ -204,6 +377,22 @@ def markdown_files() -> List[str]:
                     found.append(os.path.join(directory, name))
     # WHY: the guide quotes sources itself, so scanning it would make the index cite itself.
     return sorted(path for path in found if os.path.abspath(path) != GUIDE_PATH)
+
+
+def reference_files() -> List[str]:
+    """List every markdown file under references, the guide included.
+
+    Returns:
+        Sorted absolute paths.
+    """
+    found = []
+    if not os.path.isdir(REFERENCES_DIR):
+        return found
+    for directory, _, names in os.walk(REFERENCES_DIR):
+        for name in names:
+            if name.endswith(".md"):
+                found.append(os.path.join(directory, name))
+    return sorted(found)
 
 # ───────────────────────────────────────────────────────────────
 # 4. BUILD
@@ -238,6 +427,27 @@ def scan() -> Dict[str, Dict[str, Any]]:
     return found
 
 
+def read_index() -> Dict[str, Any]:
+    """Read the index document.
+
+    Returns:
+        The decoded document, an empty one when no index exists.
+
+    Raises:
+        SystemExit: If the index exists but is not a valid index document.
+    """
+    if not os.path.isfile(INDEX_PATH):
+        return {"generator": GENERATOR, "guide": GUIDE_RELATIVE, "sources": []}
+    try:
+        with open(INDEX_PATH, "r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except (OSError, ValueError) as exc:
+        fail("cannot read the index: %s" % exc)
+    if not isinstance(data, dict) or not isinstance(data.get("sources"), list):
+        fail("the index does not hold a source list")
+    return data
+
+
 def load_index() -> Dict[str, Dict[str, Any]]:
     """Read the current index rows keyed by URL.
 
@@ -247,18 +457,46 @@ def load_index() -> Dict[str, Dict[str, Any]]:
     Raises:
         SystemExit: If the index exists but is not valid JSON.
     """
-    if not os.path.isfile(INDEX_PATH):
-        return {}
-    try:
-        with open(INDEX_PATH, "r", encoding="utf-8") as handle:
-            data = json.load(handle)
-    except (OSError, ValueError) as exc:
-        fail("cannot read the index: %s" % exc)
-    return {row["url"]: row for row in data.get("sources", [])}
+    return {row["url"]: row for row in read_index()["sources"] if isinstance(row, dict) and "url" in row}
+
+
+def render_row(row: Dict[str, Any]) -> Dict[str, Any]:
+    """Order one row for the index and drop the carried fields without a value.
+
+    Args:
+        row: Row with any subset of the known fields.
+
+    Returns:
+        The row in the fixed index order.
+    """
+    ordered = {key: row.get(key) for key in BASE_FIELDS}
+    for key in CARRIED_FIELDS:
+        if row.get(key) is not None:
+            ordered[key] = row[key]
+    ordered["cited_by"] = row.get("cited_by", [])
+    return ordered
+
+
+def render_index(rows: List[Dict[str, Any]]) -> str:
+    """Render index rows as the one-row-per-line JSON document.
+
+    Args:
+        rows: Rows to render, in the order to write them.
+
+    Returns:
+        The full index text with a trailing newline.
+    """
+    # WHY: one row per line, so a grep for a topic or host returns whole rows.
+    lines = [json.dumps(render_row(row), ensure_ascii=False, separators=(",", ":")) for row in rows]
+    head = '{"generator":%s,"guide":%s,"sources":[' % (
+        json.dumps(GENERATOR),
+        json.dumps(GUIDE_RELATIVE),
+    )
+    return head + "\n" + ",\n".join(lines) + "\n]}\n"
 
 
 def build_text(found: Dict[str, Dict[str, Any]], stored: Dict[str, Dict[str, Any]]) -> str:
-    """Render the index JSON, keeping recorded access fields per URL.
+    """Render the index JSON, keeping the recorded fields per URL.
 
     Args:
         found: Result of scan().
@@ -284,20 +522,66 @@ def build_text(found: Dict[str, Dict[str, Any]], stored: Dict[str, Dict[str, Any
             "access": "endpoint" if endpoint else old.get("access", "unchecked"),
             "http_status": old.get("http_status"),
             "checked_on": old.get("checked_on"),
-            "cited_by": sorted(entry["cited_by"]),
         }
+        for key in CARRIED_FIELDS:
+            stored_value = old.get(key)
+            if stored_value is not None:
+                row[key] = stored_value
+        row["cited_by"] = sorted(entry["cited_by"])
         rows.append(row)
-    # WHY: one row per line, so a grep for a topic or host returns whole rows.
-    lines = [json.dumps(row, ensure_ascii=False, separators=(",", ":")) for row in rows]
-    head = '{"generator":%s,"guide":%s,"sources":[' % (
-        json.dumps(GENERATOR),
-        json.dumps("sk-moneybird-accountant/references/source-library.md"),
-    )
-    return head + "\n" + ",\n".join(lines) + "\n]}\n"
+    return render_index(rows)
 
 # ───────────────────────────────────────────────────────────────
 # 5. CHECK AND WRITE
 # ───────────────────────────────────────────────────────────────
+
+def dead_cited_problems(found: Dict[str, Dict[str, Any]], stored: Dict[str, Dict[str, Any]]) -> List[str]:
+    """List every row recorded dead that a file still cites.
+
+    Args:
+        found: Result of scan().
+        stored: Result of load_index().
+
+    Returns:
+        One problem line per dead row the scan still finds, with its citing
+        files. A dead row no file cites any more is an uncited problem instead.
+    """
+    problems = []
+    for url in sorted(stored):
+        if stored[url].get("access") != "dead" or url not in found:
+            continue
+        citing = sorted(found[url]["cited_by"])
+        if not citing:
+            continue
+        problems.append("dead cited: %s cited by: %s" % (url, ", ".join(citing)))
+    return problems
+
+
+def perishable_problems(stored: Dict[str, Dict[str, Any]]) -> List[str]:
+    """List every perishable Tweede Kamer address without a pending kst marker.
+
+    Args:
+        stored: Result of load_index().
+
+    Returns:
+        One problem line per occurrence, with its file and line.
+    """
+    problems = []
+    for path in reference_files():
+        relative = os.path.relpath(path, REPO_ROOT)
+        try:
+            with open(path, "r", encoding="utf-8", errors="replace") as handle:
+                lines = handle.readlines()
+        except OSError as exc:
+            fail("cannot read %s: %s" % (relative, exc))
+        for number, line in enumerate(lines, start=1):
+            for raw in PERISHABLE_RE.findall(line):
+                url = clean_url(raw)
+                if stored.get(url, {}).get("kst_pending"):
+                    continue
+                problems.append("perishable: %s:%d %s" % (relative, number, url))
+    return problems
+
 
 def check_index(found: Dict[str, Dict[str, Any]], stored: Dict[str, Dict[str, Any]], expected: str) -> int:
     """Report drift between the cited sources and the index.
@@ -319,6 +603,8 @@ def check_index(found: Dict[str, Dict[str, Any]], stored: Dict[str, Dict[str, An
         for url, row in sorted(stored.items())
         if row.get("access") not in ACCESS_VALUES
     ]
+    problems += dead_cited_problems(found, stored)
+    problems += perishable_problems(stored)
     current = None
     if os.path.isfile(INDEX_PATH):
         with open(INDEX_PATH, "r", encoding="utf-8", newline="") as handle:
@@ -361,38 +647,202 @@ def write_index(expected: str, count: int) -> int:
     print("%d sources, wrote %s" % (count, os.path.relpath(INDEX_PATH, REPO_ROOT)))
     return 0
 
+
+def apply_report(path: str) -> int:
+    """Write the fields of a link report into the matching index rows.
+
+    Args:
+        path: Path to the JSON report a --check-links run printed.
+
+    Returns:
+        Zero on success.
+
+    Raises:
+        SystemExit: With code 2 when the report is missing or unreadable, or
+        when the index cannot be written.
+    """
+    if not os.path.isfile(path):
+        fail("no such report: %s" % path)
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            report = json.load(handle)
+    except (OSError, ValueError) as exc:
+        fail("cannot read the report: %s" % exc)
+    rows = report.get("rows") if isinstance(report, dict) else None
+    if not isinstance(rows, list):
+        fail("the report holds no rows")
+    checked_on = report.get("checked_on")
+    if not isinstance(checked_on, str):
+        checked_on = datetime.date.today().isoformat()
+    document = read_index()
+    by_url = {row.get("url"): row for row in document["sources"] if isinstance(row, dict)}
+    updated = 0
+    for entry in rows:
+        if not isinstance(entry, dict):
+            continue
+        url = entry.get("url")
+        row = by_url.get(url)
+        if row is None:
+            continue
+        result = entry.get("result")
+        if result not in ("ok", "dead", "redirect", "error"):
+            continue
+        recorded = entry.get("recorded_access") or row.get("access", "unchecked")
+        if result == "ok":
+            # WHY: a reading class says how the page is read, not whether it answered.
+            row["access"] = recorded if recorded in KEEP_ACCESS else "ok"
+        elif result == "dead":
+            row["access"] = "dead"
+        else:
+            row["access"] = row.get("access", recorded)
+        row["http_status"] = entry.get("http_status")
+        row["checked_on"] = checked_on
+        if result == "ok":
+            for key in ("digest", "retrieved_at", "last_modified"):
+                value = entry.get(key)
+                if value is not None:
+                    row[key] = value
+            # WHY: a report from an earlier run may hold a raw header value, so
+            # the index always stores the fingerprint of it.
+            etag = etag_fingerprint(entry.get("etag"))
+            if etag is not None:
+                row["etag"] = etag
+        updated += 1
+    expected = render_index(document["sources"])
+    current = None
+    if os.path.isfile(INDEX_PATH):
+        with open(INDEX_PATH, "r", encoding="utf-8", newline="") as handle:
+            current = handle.read()
+    if current == expected:
+        print("%d rows updated, index unchanged" % updated)
+        return 0
+    try:
+        with open(INDEX_PATH, "w", encoding="utf-8", newline="\n") as handle:
+            handle.write(expected)
+    except OSError as exc:
+        fail("cannot write the index: %s" % exc)
+    print("%d rows updated, wrote %s" % (updated, os.path.relpath(INDEX_PATH, REPO_ROOT)))
+    return 0
+
 # ───────────────────────────────────────────────────────────────
 # 6. LINK CHECK AND TRACE
 # ───────────────────────────────────────────────────────────────
 
-def fetch_status(url: str) -> Tuple[Optional[int], Optional[str]]:
-    """Fetch one URL and report its final HTTP status after redirects.
+class PermanentRedirectHandler(urllib.request.HTTPRedirectHandler):
+    """Follow a 308 Permanent Redirect on every supported Python.
+
+    Python before 3.11 has no http_error_308 and refuses code 308 in
+    redirect_request, so a 308 stops the fetch and a live page reports as a
+    redirect. The base class follows 307, the other method-preserving
+    redirect, so this subclass sends 308 down that path and keeps the base
+    class redirect cap.
+    """
+
+    def http_error_308(self, req: Any, fp: Any, code: int, msg: str, headers: Any) -> Any:
+        """Send a 308 through the 307 path.
+
+        Args:
+            req: Request that got the redirect.
+            fp: Response file object.
+            code: HTTP status code, 308.
+            msg: HTTP reason phrase.
+            headers: Response headers.
+
+        Returns:
+            The response of the followed request.
+        """
+        return self.http_error_307(req, fp, code, msg, headers)
+
+    def redirect_request(self, req: Any, fp: Any, code: int, msg: str, headers: Any, newurl: str) -> Any:
+        """Accept 308 beside the codes the base class accepts.
+
+        Args:
+            req: Request that got the redirect.
+            fp: Response file object.
+            code: HTTP status code.
+            msg: HTTP reason phrase.
+            headers: Response headers.
+            newurl: Location to fetch next.
+
+        Returns:
+            The follow-up request, or None when the base class declines.
+        """
+        if code == 308:
+            code = 307
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+# WHY: one opener per process follows 308 beside the codes the default follows.
+FETCH_OPENER = urllib.request.build_opener(PermanentRedirectHandler())
+
+
+def fetch_page(url: str, kind: str) -> Dict[str, Any]:
+    """Fetch one URL and report its final status, headers and digest.
 
     Args:
         url: URL to fetch.
+        kind: "pdf" to hash the raw bytes, anything else hashes the page text.
 
     Returns:
-        (status, error): the answer status when the server answered, or
-        (None, error text) when every attempt raised. A 3xx status means
-        urllib could not follow the redirect.
+        A dict with status, error, etag, last_modified, digest and retrieved_at.
+        The etag is already the stored fingerprint of the header value. Status
+        is None when every attempt raised a transport error. An HTTP
+        error keeps its status, and a 5xx is retried before its status is
+        returned. Digest and retrieved_at stay None when the answer was not a
+        2xx or the body passed the digest cap.
     """
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     last_error = None
+    last_status = None
+    last_headers: Dict[str, Any] = {}
     for _ in range(FETCH_ATTEMPTS):
         try:
-            # WHY: the default opener follows redirects, so a moved page reports its final status.
-            with urllib.request.urlopen(request, timeout=FETCH_TIMEOUT) as response:
-                response.read(READ_LIMIT)
-                return response.status, None
+            # WHY: the opener follows redirects, including a 308 that Python
+            # before 3.11 leaves unfollowed, so a moved page reports its final
+            # status.
+            with FETCH_OPENER.open(request, timeout=FETCH_TIMEOUT) as response:
+                body = response.read(DIGEST_MAX_BYTES + 1)
+                result = {
+                    "status": response.status,
+                    "error": None,
+                    "etag": etag_fingerprint(response.headers.get("ETag")),
+                    "last_modified": response.headers.get("Last-Modified"),
+                    "digest": None,
+                    "retrieved_at": None,
+                }
+                if 200 <= response.status < 300 and len(body) <= DIGEST_MAX_BYTES:
+                    result["digest"] = digest_page(body, kind)
+                    result["retrieved_at"] = datetime.date.today().isoformat()
+                return result
         except urllib.error.HTTPError as exc:
             # WHY: a 3xx here is a redirect urllib could not follow and a 4xx is
-            # an answer, so only a 5xx is worth one retry.
+            # an answer, so only a 5xx is worth one retry. A 5xx keeps its
+            # status after the retries, so an answered failure is recorded.
+            headers = exc.headers if exc.headers is not None else {}
             if exc.code < 500:
-                return exc.code, None
+                return {
+                    "status": exc.code,
+                    "error": None,
+                    "etag": etag_fingerprint(headers.get("ETag")),
+                    "last_modified": headers.get("Last-Modified"),
+                    "digest": None,
+                    "retrieved_at": None,
+                }
             last_error = "HTTP %d" % exc.code
+            last_status = exc.code
+            last_headers = headers
         except (urllib.error.URLError, OSError, ValueError) as exc:
             last_error = str(exc)
-    return None, last_error
+            last_status = None
+            last_headers = {}
+    return {
+        "status": last_status,
+        "error": last_error,
+        "etag": etag_fingerprint(last_headers.get("ETag")),
+        "last_modified": last_headers.get("Last-Modified"),
+        "digest": None,
+        "retrieved_at": None,
+    }
 
 
 def check_links(stored: Dict[str, Dict[str, Any]]) -> int:
@@ -414,6 +864,7 @@ def check_links(stored: Dict[str, Dict[str, Any]]) -> int:
         "skipped": 0,
         "endpoints_skipped": 0,
         "recovered": 0,
+        "known_unfetchable": 0,
         "failures": 0,
     }
     rows = []
@@ -433,9 +884,10 @@ def check_links(stored: Dict[str, Dict[str, Any]]) -> int:
             rows.append(entry)
             continue
         summary["checked"] += 1
-        status, error = fetch_status(url)
-        if error is not None:
-            entry.update(result="error", http_status=None, reason=error)
+        fetched = fetch_page(url, stored[url].get("type") or guess_type(url))
+        status = fetched["status"]
+        if fetched["error"] is not None:
+            entry.update(result="error", http_status=None, reason=fetched["error"])
             summary["errors"] += 1
         elif status is not None and 200 <= status < 300:
             entry.update(result="ok", http_status=status)
@@ -450,9 +902,20 @@ def check_links(stored: Dict[str, Dict[str, Any]]) -> int:
         else:
             entry.update(result="dead", http_status=status)
             summary["dead"] += 1
-        # WHY: a row already recorded as dead is a known finding, not a new one.
-        if entry["result"] in ("dead", "error", "redirect") and access != "dead":
-            summary["failures"] += 1
+        entry.update(
+            etag=fetched["etag"],
+            last_modified=fetched["last_modified"],
+            digest=fetched["digest"],
+            retrieved_at=fetched["retrieved_at"],
+        )
+        # WHY: a row recorded dead, or recorded as unfetchable by nature, is a
+        # known finding. Both are reported in the row and kept out of the
+        # failure count. A row recorded ok that errors must still fail.
+        if entry["result"] in ("dead", "error", "redirect"):
+            if access in ("dead", "archive-not-fetchable"):
+                summary["known_unfetchable"] += 1
+            else:
+                summary["failures"] += 1
         rows.append(entry)
     report = {
         "generator": GENERATOR,
@@ -525,7 +988,282 @@ def trace_line(target: str, stored: Dict[str, Dict[str, Any]]) -> int:
     return 0
 
 # ───────────────────────────────────────────────────────────────
-# 7. ENTRY POINT
+# 7. WATCH
+# ───────────────────────────────────────────────────────────────
+
+def load_watchlist() -> List[Dict[str, Any]]:
+    """Read the watched series from the source watchlist.
+
+    Returns:
+        The list of series, each with a name, URLs, a cadence and a reason.
+
+    Raises:
+        SystemExit: With code 2 when the file is missing or invalid.
+    """
+    if not os.path.isfile(WATCHLIST_PATH):
+        fail("no watchlist: %s" % os.path.relpath(WATCHLIST_PATH, REPO_ROOT))
+    try:
+        with open(WATCHLIST_PATH, "r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except (OSError, ValueError) as exc:
+        fail("cannot read the watchlist: %s" % exc)
+    if isinstance(data, list):
+        series = data
+    elif isinstance(data, dict):
+        series = data.get("series")
+    else:
+        series = None
+    if not isinstance(series, list) or not series:
+        fail("the watchlist holds no series")
+    for entry in series:
+        if not isinstance(entry, dict):
+            fail("a watched series is not an object")
+        name = entry.get("series")
+        if not isinstance(name, str) or not name.strip():
+            fail("a watched series has no name")
+        urls = entry.get("urls")
+        if not isinstance(urls, list) or not urls or not all(isinstance(url, str) for url in urls):
+            fail("watched series %r has no URL list" % name)
+        if entry.get("cadence") not in CADENCES:
+            fail("watched series %r has cadence %r" % (name, entry.get("cadence")))
+    return series
+
+
+def load_state(path: Optional[str]) -> Dict[str, Dict[str, Any]]:
+    """Read the stored watch values for URLs the index does not hold.
+
+    Args:
+        path: State file, or None when the run keeps no state.
+
+    Returns:
+        Mapping of URL to its stored watch values.
+
+    Raises:
+        SystemExit: With code 2 when the file exists but is invalid.
+    """
+    if not path or not os.path.isfile(path):
+        return {}
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except (OSError, ValueError) as exc:
+        fail("cannot read the state file: %s" % exc)
+    if not isinstance(data, dict):
+        fail("the state file is not an object")
+    urls = data.get("urls", data)
+    if not isinstance(urls, dict):
+        fail("the state file holds no URL map")
+    for url, values in urls.items():
+        if not isinstance(values, dict):
+            fail("the state file entry for %s is not an object" % url)
+    return urls
+
+
+def write_state(path: str, state: Dict[str, Dict[str, Any]], today: str) -> None:
+    """Write the stored watch values back to the state file.
+
+    Args:
+        path: State file to write.
+        state: Mapping of URL to its stored watch values.
+        today: Date of this run.
+
+    Raises:
+        OSError: If the file cannot be written.
+    """
+    payload = {"generator": GENERATOR, "updated_at": today, "urls": state}
+    with open(path, "w", encoding="utf-8", newline="\n") as handle:
+        json.dump(payload, handle, ensure_ascii=False, indent=2, sort_keys=True)
+        handle.write("\n")
+
+
+def watch(state_path: Optional[str], stored: Dict[str, Dict[str, Any]]) -> int:
+    """Fetch every watched URL and report each changed series.
+
+    Args:
+        state_path: State file to read and write, or None to read only the
+            default state file when it exists.
+        stored: Result of load_index().
+
+    Returns:
+        Zero when no series changed, one when at least one did.
+
+    Raises:
+        SystemExit: With code 2 on a usage error.
+    """
+    series_list = load_watchlist()
+    read_path = state_path
+    if read_path is None and os.path.isfile(WATCH_STATE_PATH):
+        read_path = WATCH_STATE_PATH
+    state = load_state(read_path)
+    today = datetime.date.today().isoformat()
+    changed = 0
+    failures = 0
+    for series in series_list:
+        name = series["series"]
+        for url in series["urls"]:
+            if url in stored:
+                recorded = stored[url]
+            else:
+                recorded = state.get(url) or {}
+            if is_endpoint(url) or recorded.get("access") in SKIP_FETCH_ACCESS:
+                print("skipped series=%s url=%s reason=%s" % (name, url, recorded.get("access") or "endpoint"))
+                continue
+            fetched = fetch_page(url, guess_type(url))
+            status = fetched["status"]
+            if fetched["error"] is not None or status is None:
+                failures += 1
+                print("failed series=%s url=%s reason=%s" % (name, url, fetched["error"]))
+            if status is None:
+                continue
+            reasons = []
+            if 200 <= status < 300:
+                if recorded.get("access") == "dead" or recorded.get("http_status") == 404:
+                    reasons.append("answers 200 after 404")
+                # WHY: the stored value may be a raw tag from an older index,
+                # so both sides are compared as fingerprints.
+                if recorded.get("etag") and fetched["etag"] \
+                        and etag_fingerprint(recorded["etag"]) != etag_fingerprint(fetched["etag"]):
+                    reasons.append("etag changed")
+                if recorded.get("last_modified") and fetched["last_modified"] \
+                        and recorded["last_modified"] != fetched["last_modified"]:
+                    reasons.append("last-modified changed")
+                if recorded.get("digest") and fetched["digest"] and recorded["digest"] != fetched["digest"]:
+                    reasons.append("digest changed")
+            if reasons:
+                changed += 1
+                citing = stored.get(url, {}).get("cited_by", [])
+                print("changed series=%s url=%s reason=%s cited by: %s" % (
+                    name,
+                    url,
+                    ", ".join(reasons),
+                    ", ".join(citing) if citing else "-",
+                ))
+            if state_path:
+                # WHY: a non-2xx answer gets no digest, so the earlier digest
+                # stays and a later 200 can still be compared.
+                state[url] = {
+                    "http_status": status,
+                    "etag": fetched["etag"] if fetched["etag"] is not None else etag_fingerprint(recorded.get("etag")),
+                    "last_modified": fetched["last_modified"] if fetched["last_modified"] is not None else recorded.get("last_modified"),
+                    "digest": fetched["digest"] if fetched["digest"] is not None else recorded.get("digest"),
+                    "retrieved_at": fetched["retrieved_at"] if fetched["retrieved_at"] is not None else recorded.get("retrieved_at"),
+                }
+    if state_path:
+        try:
+            write_state(state_path, state, today)
+        except OSError as exc:
+            fail("cannot write the state file: %s" % exc)
+    if failures:
+        print("%d watched URLs did not answer" % failures)
+    if changed:
+        print("%d watched URLs changed" % changed)
+        return 1
+    print("no watched URL changed")
+    return 0
+
+# ───────────────────────────────────────────────────────────────
+# 8. CALENDAR
+# ───────────────────────────────────────────────────────────────
+
+def load_checkpoints() -> Optional[List[Tuple[str, datetime.date]]]:
+    """Read the checkpoint table from the rollover runbook.
+
+    Returns:
+        One (name, date) pair per checkpoint, or None when the runbook, its
+        header row or every dated row is missing.
+    """
+    if not os.path.isfile(ROLLOVER_PATH):
+        return None
+    try:
+        with open(ROLLOVER_PATH, "r", encoding="utf-8", errors="replace") as handle:
+            lines = handle.readlines()
+    except OSError:
+        return None
+    checkpoints: List[Tuple[str, datetime.date]] = []
+    in_table = False
+    for line in lines:
+        stripped = line.strip()
+        if not stripped.startswith("|"):
+            if in_table:
+                break
+            continue
+        cells = [cell.strip() for cell in stripped.strip("|").split("|")]
+        if not in_table:
+            if cells[:3] == list(CHECKPOINT_HEADER):
+                in_table = True
+            continue
+        if len(cells) < 3 or not cells[0] or set(cells[0]) <= set("-: "):
+            continue
+        day = parse_iso_date(cells[1].strip('"').strip("'"))
+        if day is None:
+            continue
+        checkpoints.append((cells[0].strip('"').strip("'"), day))
+    if not in_table or not checkpoints:
+        return None
+    return checkpoints
+
+
+def check_calendar(today_text: Optional[str]) -> int:
+    """Check every current or future year file against the calendar.
+
+    Args:
+        today_text: ISO date the check runs as, or None for the real date.
+
+    Returns:
+        Zero when every current or future year is fresh, one when a file is
+        stale or carries no checked_on.
+
+    Raises:
+        SystemExit: With code 2 on a usage error or a missing checkpoint table.
+    """
+    if today_text is None:
+        today = datetime.date.today()
+    else:
+        parsed = parse_iso_date(today_text)
+        if parsed is None:
+            fail("usage: --today wants YYYY-MM-DD")
+        today = parsed
+    checkpoints = load_checkpoints()
+    if checkpoints is None:
+        fail("no checkpoint table in %s" % os.path.relpath(ROLLOVER_PATH, REPO_ROOT))
+    passed = [checkpoint for checkpoint in checkpoints if checkpoint[1] <= today]
+    if not passed:
+        print("no checkpoint has passed by %s, nothing to compare" % today.isoformat())
+        return 0
+    name, day = max(passed, key=lambda checkpoint: checkpoint[1])
+    targets = []
+    if os.path.isdir(REFERENCES_DIR):
+        for folder in sorted(os.listdir(REFERENCES_DIR)):
+            if not YEAR_RE.match(folder) or int(folder) < today.year:
+                continue
+            readme = os.path.join(REFERENCES_DIR, folder, "README.md")
+            if os.path.isfile(readme):
+                targets.append(readme)
+    # WHY: the rules file states which year applies, so it always counts as current.
+    targets.append(os.path.join(REFERENCES_DIR, "dutch-tax-rules.md"))
+    problems = 0
+    for path in targets:
+        relative = os.path.relpath(path, REPO_ROOT)
+        checked_on = frontmatter_value(path, "checked_on")
+        day_checked = parse_iso_date(checked_on)
+        if day_checked is None:
+            print("missing: %s has no checked_on" % relative)
+            problems += 1
+        elif day_checked < day:
+            print("stale: %s checked_on=%s before checkpoint %s %s" % (
+                relative,
+                day_checked.isoformat(),
+                name,
+                day.isoformat(),
+            ))
+            problems += 1
+    if problems:
+        return 1
+    print("%d files current at the %s checkpoint (%s)" % (len(targets), name, day.isoformat()))
+    return 0
+
+# ───────────────────────────────────────────────────────────────
+# 9. ENTRY POINT
 # ───────────────────────────────────────────────────────────────
 
 def main(argv: List[str]) -> int:
@@ -549,16 +1287,51 @@ def main(argv: List[str]) -> int:
         help="fetch the indexed pages and print a JSON report",
     )
     mode.add_argument(
+        "--apply-report",
+        metavar="<file>",
+        help="write a link report into the matching index rows",
+    )
+    mode.add_argument(
+        "--watch",
+        action="store_true",
+        help="fetch the watched series and report every change",
+    )
+    mode.add_argument(
+        "--check-calendar",
+        action="store_true",
+        help="check the year files against the rollover calendar",
+    )
+    mode.add_argument(
         "--trace",
         metavar="<file>:<line>",
         help="print the index result for the URLs on one line of one file",
     )
+    parser.add_argument(
+        "--state",
+        metavar="<file>",
+        help="state file to read and write for watched URLs the index does not hold",
+    )
+    parser.add_argument(
+        "--today",
+        metavar="YYYY-MM-DD",
+        help="date the calendar check runs as",
+    )
     args = parser.parse_args(argv)
+    if args.state and not args.watch:
+        fail("usage: --state needs --watch")
+    if args.today and not args.check_calendar:
+        fail("usage: --today needs --check-calendar")
+    if args.check_calendar:
+        return check_calendar(args.today)
     stored = load_index()
+    if args.watch:
+        return watch(args.state, stored)
     if args.check_links:
         if not stored:
             fail("no index to check: %s" % os.path.relpath(INDEX_PATH, REPO_ROOT))
         return check_links(stored)
+    if args.apply_report:
+        return apply_report(args.apply_report)
     if args.trace:
         return trace_line(args.trace, stored)
     found = scan()
