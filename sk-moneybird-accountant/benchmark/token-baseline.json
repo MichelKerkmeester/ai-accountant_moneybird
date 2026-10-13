@@ -11717,14 +11717,14 @@
       }
     },
     {
-      "bytes": 22405,
+      "bytes": 23340,
       "name": "sk-moneybird-accountant/SKILL.md",
       "reads": [
         "sk-moneybird-accountant/SKILL.md"
       ],
       "tokens": {
-        "cl100k_base": 5315,
-        "o200k_base": 5278
+        "cl100k_base": 5720,
+        "o200k_base": 5656
       }
     },
     {

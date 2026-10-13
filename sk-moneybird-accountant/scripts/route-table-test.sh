@@ -25,6 +25,7 @@ SKILL_DIR=$(dirname "$SCRIPT_DIR")
 CHECKER="$SCRIPT_DIR/check-route-table.py"
 SKILL_MD="$SKILL_DIR/SKILL.md"
 SIGNALS_MD="$SKILL_DIR/references/routing-signals.md"
+GRAPH_METADATA="$SKILL_DIR/graph-metadata.json"
 
 if [[ ! -f "$CHECKER" ]]; then
     printf 'error: missing scripts/check-route-table.py next to this test\n' >&2
@@ -36,6 +37,10 @@ if [[ ! -f "$SKILL_MD" ]]; then
 fi
 if [[ ! -f "$SIGNALS_MD" ]]; then
     printf 'error: missing references/routing-signals.md in the skill folder\n' >&2
+    exit 2
+fi
+if [[ ! -f "$GRAPH_METADATA" ]]; then
+    printf 'error: missing graph-metadata.json in the skill folder\n' >&2
     exit 2
 fi
 
@@ -101,6 +106,40 @@ signals_mutant() {
     local name="$1"
     local file="$2"
     python3 -I "$CHECKER" --signals "$file" >"$TMP_ROOT/out.txt" 2>&1
+    status=$?
+    if [[ "$status" -eq 1 ]]; then
+        pass "$name"
+    else
+        fail "$name"
+    fi
+}
+
+# Run the checker against a drifted markdown copy expected to exit 1 and name a text
+# Args:
+#   $1 - Check name
+#   $2 - Markdown copy to check
+#   $3 - Text the failure report must name
+drift_mutant() {
+    local name="$1"
+    local file="$2"
+    local marker="$3"
+    python3 -I "$CHECKER" --skill-md "$file" >"$TMP_ROOT/out.txt" 2>&1
+    status=$?
+    if [[ "$status" -eq 1 ]] && grep -qF "$marker" "$TMP_ROOT/out.txt"; then
+        pass "$name"
+    else
+        fail "$name"
+    fi
+}
+
+# Run the checker against a mutated graph metadata file expected to fail with exit 1
+# Args:
+#   $1 - Check name
+#   $2 - Graph metadata copy to check
+metadata_mutant() {
+    local name="$1"
+    local file="$2"
+    python3 -I "$CHECKER" --graph-metadata "$file" >"$TMP_ROOT/out.txt" 2>&1
     status=$?
     if [[ "$status" -eq 1 ]]; then
         pass "$name"
@@ -188,7 +227,7 @@ sed '/^### Ties and Abstain$/d' "$(copy)" >"$TMP_ROOT/m-tie-heading.md"
 mutant "Ties and Abstain heading removed" "$TMP_ROOT/m-tie-heading.md"
 
 # Drop the pointer line that names the signal sources file
-sed '/Signal sources and their Belastingdienst pages: `references\/routing-signals\.md`\./d' "$(copy)" >"$TMP_ROOT/m-pointer.md"
+sed '/Signal sources, the `tok:Tn` keys and their Belastingdienst pages: `references\/routing-signals\.md`\./d' "$(copy)" >"$TMP_ROOT/m-pointer.md"
 mutant "signal sources pointer removed" "$TMP_ROOT/m-pointer.md"
 
 # ───────────────────────────────────────────────────────────────
@@ -291,7 +330,76 @@ mutant "table margin differs from the record" "$TMP_ROOT/m-table-margin.md"
 mutant "table floor differs from the record" "$TMP_ROOT/m-table-floor.md"
 
 # ───────────────────────────────────────────────────────────────
-# 8. SUMMARY
+# 7. ROUTER BLOCK DRIFT
+# ───────────────────────────────────────────────────────────────
+
+# Edit one table signal cell and leave the generated block stale
+sed 's/| mapping, category, which account, trap |/| mapping, category, which account, traps |/' "$(copy)" >"$TMP_ROOT/m-signal-drift.md"
+drift_mutant "table signal changed without regeneration" "$TMP_ROOT/m-signal-drift.md" "row T2"
+
+# Hand edit one line inside the generated block
+sed 's/raise ValueError("local markdown only")/raise ValueError("markdown only")/' "$(copy)" >"$TMP_ROOT/m-hand-edit.md"
+mutant "hand edit inside the router block" "$TMP_ROOT/m-hand-edit.md"
+
+# Drop one multi-word table signal from the intent list
+python3 - "$GRAPH_METADATA" "$TMP_ROOT/m-intent.json" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    data = json.load(handle)
+data["intent_signals"] = [signal for signal in data["intent_signals"] if signal != "migration phase"]
+with open(sys.argv[2], "w", encoding="utf-8") as handle:
+    json.dump(data, handle, indent=2)
+    handle.write("\n")
+PY
+metadata_mutant "intent signal missing from the list" "$TMP_ROOT/m-intent.json"
+
+# ───────────────────────────────────────────────────────────────
+# 8. WRITE MODE STABILITY
+# ───────────────────────────────────────────────────────────────
+
+# Build a throwaway skill copy that holds the script, the markdown, the
+# metadata and the reference tree the write mode guards
+WRITE_COPY="$TMP_ROOT/write-copy"
+mkdir -p "$WRITE_COPY/scripts"
+cp "$CHECKER" "$WRITE_COPY/scripts/check-route-table.py"
+cp "$SKILL_MD" "$WRITE_COPY/SKILL.md"
+cp "$GRAPH_METADATA" "$WRITE_COPY/graph-metadata.json"
+cp -R "$SKILL_DIR/references" "$WRITE_COPY/references"
+
+# Seed one table change so the first write has work to do in both files
+sed 's/| mapping, category, which account, trap |/| mapping, category, which account, mapping trap |/' "$WRITE_COPY/SKILL.md" >"$TMP_ROOT/write-seed.md"
+cp "$TMP_ROOT/write-seed.md" "$WRITE_COPY/SKILL.md"
+
+python3 -I "$WRITE_COPY/scripts/check-route-table.py" --write >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+if [[ "$status" -eq 0 ]] && grep -qF "router block: written" "$TMP_ROOT/out.txt" && grep -qF "intent signals: added 1" "$TMP_ROOT/out.txt"; then
+    pass "a table change regenerates the block and the signal list"
+else
+    fail "a table change regenerates the block and the signal list"
+    cat "$TMP_ROOT/out.txt"
+fi
+first_skill=$(cksum "$WRITE_COPY/SKILL.md")
+first_metadata=$(cksum "$WRITE_COPY/graph-metadata.json")
+
+python3 -I "$WRITE_COPY/scripts/check-route-table.py" --write >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+if [[ "$status" -eq 0 ]]; then
+    pass "second write in a temp copy exits 0"
+else
+    fail "second write in a temp copy exits 0"
+fi
+second_skill=$(cksum "$WRITE_COPY/SKILL.md")
+second_metadata=$(cksum "$WRITE_COPY/graph-metadata.json")
+if [[ "$first_skill" == "$second_skill" && "$first_metadata" == "$second_metadata" ]]; then
+    pass "a second write leaves both files byte-identical"
+else
+    fail "a second write leaves both files byte-identical"
+fi
+
+# ───────────────────────────────────────────────────────────────
+# 9. SUMMARY
 # ───────────────────────────────────────────────────────────────
 
 printf '\n%d passed, %d failed\n' "$passed" "$failed"

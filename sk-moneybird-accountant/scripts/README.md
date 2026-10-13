@@ -60,8 +60,8 @@ Dependency direction: references ───▶ generator ───▶ tracked tem
 | `generate-plan-kit.py` | Parses the phase references and the setup reference, renders the phase dashboard, the config template, the workspace folder list and one spec packet per phase, then writes them or checks them |
 | `init-workspace.sh` | Creates `migration-workspace/` from `assets/migration/` and copies `specs/000-migration-template/` to `specs/<NNN-slug>/`, skipping every file that already exists |
 | `plan-kit-test.sh` | Builds throwaway repositories, runs the generator and the workspace script, and checks the generated files, placeholders, links, refusals and repeat runs |
-| `check-route-table.py` | Checks the task-type route table in `../SKILL.md`: markers, header, rows T1 to T9, budgets, tool routes, read-set paths, constants, margin overrides and signal source links |
-| `route-table-test.sh` | Runs the route table checker on the real SKILL.md and on mutated copies, and expects every mutant to fail |
+| `check-route-table.py` | Checks the task-type route table in `../SKILL.md`: markers, header, rows T1 to T9, budgets, tool routes, read-set paths, constants, margin overrides and signal source links. Compares the generated router block with the table row by row and the table's multi-word signals with `../graph-metadata.json`, and the `--write` mode regenerates both |
+| `route-table-test.sh` | Runs the route table checker on the real SKILL.md and on mutated copies, and expects every mutant to fail. Covers the router block drift, the hand edit inside the block, the missing intent signal and the byte-stable second write |
 | `build-session-context.py` | Writes the git-ignored `session-context.json` from the runtime clock and a narrow migration projection, with `--check` and `--route-state` |
 | `session-context-test.sh` | Runs the script against offline fixtures for the clock, the interactive flag, the allowlist, staleness and the post-cutover states |
 | `build-reference-index.py` | Scans `../references/` and writes or checks the nav blocks, `../references/index.json`, the year README tables, the section 3 value rows and the leaf reachability report |
@@ -332,7 +332,40 @@ sk-moneybird-accountant/references/2024/btw.md:56
 
 ---
 
-## 17. VALIDATION
+## 17. ROUTER BLOCK
+
+`../SKILL.md` section 2 holds one router block between `<!-- router-block:start -->` and `<!-- router-block:end -->`, generated from the Task-Type Table by `check-route-table.py --write`. The block carries `INTENT_SIGNALS` per row from the Dutch and English signal cells, `RESOURCE_MAP` and `LOADING_LEVELS` from the read-set column, `UNKNOWN_FALLBACK_CHECKLIST` from the three fallback tiers, and the guard, existence-check and discovery helpers. Edit the table and rerun the mode, never the block by hand.
+
+The same run appends every multi-word table signal to `../graph-metadata.json` `intent_signals` and never removes a curated entry. A first run prints:
+
+```text
+router block: written (SKILL.md)
+intent signals: added 28 (graph-metadata.json)
+```
+
+A second run with no table change leaves both files byte-identical and prints:
+
+```text
+router block: unchanged (SKILL.md)
+intent signals: unchanged (graph-metadata.json)
+```
+
+A malformed table exits 2 and writes neither file, and so does a malformed marker pair or an invalid `../graph-metadata.json`.
+
+`--check` adds two drift checks to the table checks. A table cell that differs from the block exits 1 and names the row, a missing marker pair exits 1, and a table signal absent from `intent_signals` exits 1. Real failure lines:
+
+```text
+row T2: block entry differs from the table
+router block differs from the table
+router block end marker missing
+intent signal missing from intent_signals: migration phase
+```
+
+`route-table-test.sh` proves the write mode and both drift checks. It ends with a pass line for a table change with no regeneration, a hand edit inside the block, a missing intent signal and a second write that leaves both files byte-identical.
+
+---
+
+## 18. VALIDATION
 
 Run from the repository root.
 
@@ -360,13 +393,15 @@ python3 -I sk-moneybird-accountant/scripts/check-regression-trailer.py --range <
 bash sk-moneybird-accountant/scripts/regression-trailer-test.sh
 python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check
 bash sk-moneybird-accountant/scripts/source-library-test.sh
+python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check
+bash sk-moneybird-accountant/scripts/route-table-test.sh
 ```
 
-Expected result: `generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems, and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 1996 links, 166 fragment links, 0 problems` and `19 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 122 files, 917 sections` and `7 passed, 0 failed`. The route replay commands print `route-replay: ok, 42 rows passed` and `route-replay: ok, 31 replay rows passed`, and the suite ends with `Result: 33 passed, 0 failed`. The eval suite ends with `Result: 23 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `496 sources match the index` and its suite ends with `38 passed, 0 failed`.
+Expected result: `generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems, and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 1996 links, 166 fragment links, 0 problems` and `19 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 122 files, 917 sections` and `7 passed, 0 failed`. The route replay commands print `route-replay: ok, 42 rows passed` and `route-replay: ok, 31 replay rows passed`, and the suite ends with `Result: 33 passed, 0 failed`. The eval suite ends with `Result: 23 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `496 sources match the index` and its suite ends with `38 passed, 0 failed`. The route table commands print `route-table: ok` and a final pass and fail count with 0 failed.
 
 ---
 
-## 18. RELATED
+## 19. RELATED
 
 - [`../references/migration/README.md`](../references/migration/README.md) for the phase references the generator reads
 - [`../assets/migration/README.md`](../assets/migration/README.md) for the generated templates

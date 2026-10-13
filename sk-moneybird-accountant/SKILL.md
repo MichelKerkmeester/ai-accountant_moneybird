@@ -40,9 +40,7 @@ Do not use this skill to file an income-tax or VAT return, make a final tax deci
 
 ### Primary Detection Signal
 
-Select MIGRATION for historical records, Jortt exports, a migration phase, reconciliation, pilot writes, year locks, or moving records into Moneybird.
-
-Select LIVE for bookkeeping cadence, an ordinary income or cost event, a VAT period, an annual close, or an ad hoc ZZP question.
+MIGRATION covers historical records, Jortt exports, a migration phase, reconciliation, pilot writes, year locks and moving records into Moneybird. LIVE covers bookkeeping cadence, an ordinary income or cost event, a VAT period, an annual close and an ad hoc ZZP question.
 
 If ambiguous, ask one question: historical migration or current bookkeeping? Do not guess a phase or a tax year.
 
@@ -66,15 +64,15 @@ Every request matches exactly one row, which decides files read and tool skill.
 
 <!-- route-table:end -->
 
-Read budget ladder in o200k_base tokens, cl100k_base counts beside it in `benchmark/token-baseline.json`: year README 3,000, one section 5,000, full topic file 15,000, `references/dutch-tax-rules.md` section 3 at most 80,000 only after a jump through its section list. `tok:Tn` keys resolve in `references/routing-signals.md`.
+Read budget ladder in o200k_base tokens: year README 3,000, one section 5,000, full topic file 15,000, `references/dutch-tax-rules.md` section 3 at most 80,000 only after a jump through its section list.
 
-Signal sources and their Belastingdienst pages: `references/routing-signals.md`.
+Signal sources, the `tok:Tn` keys and their Belastingdienst pages: `references/routing-signals.md`.
 
 ### Route Classes
 
-- `KNOWLEDGE`: reference files only, no CLI call.
+- `KNOWLEDGE`: reference files only.
 - `JORTT_READ`: jortt-cli reads only.
-- `MONEYBIRD_READ`: moneybird-guard reads under `MONEYBIRD_GUARD_READ_ONLY=1` per the Read Step Contract in `cli-moneybird/SKILL.md` section 3.
+- `MONEYBIRD_READ`: moneybird-guard reads under `MONEYBIRD_GUARD_READ_ONLY=1` per the Read Step Contract.
 - `MONEYBIRD_GATED_WRITE`: a guarded write after a passed gate and Operator approval, within LIVE write authority.
 - `OPERATOR_UI`: the Operator acts in the Moneybird UI.
 - `BLOCKED`: stops before any CLI call or dry-run, records the refusal and names the owner. Members: a Jortt write, a return filing, a Moneybird write without a passed gate and approval, `--production` without the per-batch go, a read under `personal database/`, `--print-body`, a LIVE write without recorded authority.
@@ -83,20 +81,15 @@ Signal sources and their Belastingdienst pages: `references/routing-signals.md`.
 Per-row routes:
 
 - T3: MONEYBIRD_READ through the "Bank transactions to match" row in `cli-moneybird/SKILL.md` section 2.
-- T4: KNOWLEDGE (`references/purchase-invoices.md`, year `btw.md`), then MONEYBIRD_READ `tax_rates list`, then MONEYBIRD_GATED_WRITE through the "Purchase invoice and attachment" row where LIVE write authority allows, else OPERATOR_UI.
-- T7: the matching tool skill after the CLI preflight in section 3.
-
-`btw` alone is a weak signal that never decides a row. It confirms a route chosen by a strong noun such as `aangifte`, `tarief` or `voorbelasting`.
+- T4: KNOWLEDGE, then MONEYBIRD_READ `tax_rates list`, then MONEYBIRD_GATED_WRITE through the "Purchase invoice and attachment" row, else OPERATOR_UI.
 
 ### Ties and Abstain
 
 - `ROUTE_MARGIN = 0.25`, with a 0.08 warning band.
 - `FALLBACK_FLOOR = 0.5`, frozen on the calibration split.
-- A tie with no deciding specificity clause abstains through tier B.
+- A tie with no deciding clause abstains through tier B.
 - Margin override T2: `default`
 - Margin override T6: `default`
-
-Details: `references/routing-signals.md`.
 
 ### Year and State
 
@@ -111,67 +104,80 @@ Details: `references/year-and-state.md`.
 
 ### Smart Router Pseudocode
 
-Illustrative. The Task-Type Table is the source of truth: read one row, load only its read set.
+<!-- router-block:start -->
+This block is generated from the Task-Type Table by `check-route-table.py --write`. Edit the table and rerun the mode.
 
-    from pathlib import Path
+```python
+from pathlib import Path
 
-    SKILL_ROOT = Path(__file__).resolve().parent
-    RESOURCE_BASES = (SKILL_ROOT / "references",)
-    ROUTE_TABLE = parse_route_table()
-    CONTEXT = read_session_context("session-context.json")
-    UNKNOWN_FALLBACK = {"load": "nothing", "tiers": {
-        "Tier A": "Refuse with the out-of-scope boundary, load nothing",
-        "Tier B": "Ask one question, print the candidate route per answer",
-        "Tier C": "Name the missing tax year, resolve it before loading",
-    }}
+SKILL_ROOT = Path(__file__).resolve().parent
+RESOURCE_BASES = (SKILL_ROOT / "references",)
+# Levels: ALWAYS, MIGRATION, LIVE BOOKKEEPING, ZZP QUESTION, CLI ACTION.
+INTENT_SIGNALS = {
+    "T1": [["migratie", "overzetten", "historische administratie", "Jortt"], ["migration phase", "gate", "Jortt export", "archive", "cutover", "year lock"]],
+    "T2": [["migratie", "overzetten", "historische administratie"], ["mapping", "category", "which account", "trap"]],
+    "T3": [["deze maand", "afgelopen kwartaal", "administratie bijhouden"], ["this month", "this quarter", "review", "reconcile", "bank", "unmatched", "close"]],
+    "T4": [["inkoopfactuur", "bonnetje", "factuur van een leverancier"], ["invoice", "receipt", "order", "supplier", "reverse charge", "KOR"]],
+    "T5": [["btw-tarief", "kilometervergoeding", "zelfstandigenaftrek", "drempel"], ["rate", "threshold", "deduction", "how much", "current year"]],
+    "T6": [["vorig jaar", "sinds wanneer", "bewaarplicht"], ["how does the rule work", "changed since", "compared with"]],
+    "T7": [["haal op", "boek in", "synchroniseer"], ["read Jortt", "moneybird-guard", "write", "batch", "approval"]],
+    "T8": [["aangifte doen"], ["filing", "non-Dutch tax", "private database"]],
+    "T9": [["startende ondernemer"], ["where do I start", "first time", "setup"]],
+}
+RESOURCE_MAP = {
+    "T1": ["references/migration/README.md", "references/migration/shared-mechanisms.md", "references/migration/control-framework.md"],
+    "T2": ["references/migration/jortt-to-moneybird-mapping.md"],
+    "T3": ["references/moneybird-bookkeeping.md", "references/YYYY/README.md", "references/YYYY/btw.md", "references/migration/README.md", "references/migration/phases-19-to-21.md"],
+    "T4": ["references/purchase-invoices.md", "references/YYYY/btw.md", "references/moneybird-bookkeeping.md"],
+    "T5": ["references/dutch-tax-rules.md", "references/YYYY/README.md", "references/source-library.md"],
+    "T6": ["references/dutch-tax-rules.md"],
+    "T7": [],
+    "T8": [],
+    "T9": ["references/migration/overview-and-setup.md"],
+}
+LOADING_LEVELS = {
+    "tok:T1": ["references/migration/README.md", "references/migration/shared-mechanisms.md", "references/migration/control-framework.md"],
+    "tok:T2": ["references/migration/jortt-to-moneybird-mapping.md"],
+    "tok:T3": ["references/moneybird-bookkeeping.md", "references/YYYY/README.md", "references/YYYY/btw.md", "references/migration/README.md", "references/migration/phases-19-to-21.md"],
+    "tok:T4": ["references/purchase-invoices.md", "references/YYYY/btw.md", "references/moneybird-bookkeeping.md"],
+    "tok:T5": ["references/dutch-tax-rules.md", "references/YYYY/README.md", "references/source-library.md"],
+    "tok:T6": ["references/dutch-tax-rules.md"],
+    "tok:T7": [],
+    "tok:T8": [],
+    "tok:T9": ["references/migration/overview-and-setup.md"],
+}
+UNKNOWN_FALLBACK_CHECKLIST = [
+    "Tier A: Refuse with the out-of-scope boundary, load nothing",
+    "Tier B: Ask one question, print the candidate route per answer",
+    "Tier C: Name the missing tax year, resolve it before loading",
+]
 
-    def parse_route_table():
-        """Parse the route-table rows."""
+def discover_markdown_resources():
+    return {p.relative_to(SKILL_ROOT).as_posix() for base in RESOURCE_BASES if base.exists() for p in base.rglob("*.md") if p.is_file()}
 
-    def read_session_context(path):
-        """Read the generated session context file."""
+def _guard_in_skill(relative_path):
+    resolved = (SKILL_ROOT / relative_path).resolve()
+    resolved.relative_to(SKILL_ROOT)
+    if resolved.suffix.lower() != ".md":
+        raise ValueError("local markdown only")
+    return resolved.relative_to(SKILL_ROOT).as_posix()
 
-    def classify(request, table):
-        """Score every row, apply the tie clauses, and return the winner
-        with its read set and year, or abstain with the candidate rows or tax
-        years."""
+def load_if_available(relative_path, inventory, loaded, missing):
+    guarded = _guard_in_skill(relative_path)
+    if guarded in inventory and guarded not in loaded:
+        load(guarded)
+        loaded.append(guarded)
+    elif guarded not in inventory:
+        missing.append(guarded)
 
-    def discover_markdown_resources():
-        return {p.relative_to(SKILL_ROOT).as_posix()
-                for base in RESOURCE_BASES if base.exists()
-                for p in base.rglob("*.md") if p.is_file()}
-
-    def _guard_in_skill(relative_path):
-        resolved = (SKILL_ROOT / relative_path).resolve()
-        resolved.relative_to(SKILL_ROOT)
-        if resolved.suffix.lower() != ".md":
-            raise ValueError("Local markdown only")
-        return resolved.relative_to(SKILL_ROOT).as_posix()
-
-    def load_if_available(relative_path, inventory, loaded, missing):
-        """Guard one path, load it when present, record absent paths."""
-        guarded = _guard_in_skill(relative_path)
-        if guarded in inventory and guarded not in loaded:
-            load(guarded)
-            loaded.append(guarded)
-        elif guarded not in inventory:
-            missing.append(guarded)
-
-    def route_resources(request):
-        inventory = discover_markdown_resources()
-        loaded, missing = [], []
-        row = classify(request, ROUTE_TABLE)
-        if row.get("abstain"):
-            return {**UNKNOWN_FALLBACK, "candidates": row["candidates"]}
-        for relative_path in row["read_set"]:
-            load_if_available(relative_path, inventory, loaded, missing)
-        return {"mode": row["mode"], "type": row["type"], "year": row["year"], "loaded": loaded, "missing": missing}
+```
+<!-- router-block:end -->
 
 ### Migration Phase Routing
 
-`references/migration/README.md` maps every phase. Advance only on the last verified exit gate, never on work that appears complete. Jortt stays uncancelled until Phase 22 passes and the Operator records a cancel-or-keep decision.
+`references/migration/README.md` maps every phase. Advance only on the last verified exit gate, never on work that appears complete.
 
-Every phase uses the shared mechanisms route contract. A Moneybird read runs with `MONEYBIRD_GUARD_READ_ONLY=1` and a write needs a passed gate, Operator approval, `--confirm-write` and `--approval <ref>` for a flushed `WRITE_INTENT` that carries the `payload_digest`, plus `--production` for an approved production batch. The gate tokens, the evidence rule, the idempotency rule and the exit set are in the [write contract](./references/migration/shared-mechanisms.md#route-contract).
+A Moneybird read runs with `MONEYBIRD_GUARD_READ_ONLY=1`. A write needs a passed gate, Operator approval, a flushed `WRITE_INTENT`, `payload_digest`, `--confirm-write`, `--approval` and `--production`. The gate tokens, the evidence rule, the idempotency rule and the exit set are in the [write contract](./references/migration/shared-mechanisms.md#route-contract).
 
 ---
 

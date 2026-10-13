@@ -9,27 +9,36 @@ check validates the header, the row types, the Dutch and English cells, the
 budget cells, the tool routes, the read-set paths, the routing constants,
 the warning band, the abstain wording, the margin override bullets, the
 pointer to the signal sources file, the source lines of that file and the
-frozen calibration record in assets/route-calibration.json. The script uses
-the Python standard library only and makes no network call.
+frozen calibration record in assets/route-calibration.json. It also compares
+the generated router block between the router markers with the table row by
+row and the table's multi-word signals with graph-metadata.json, and the
+write mode regenerates both surfaces. The script uses the Python standard
+library only and makes no network call.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/check-route-table.py
     python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check
+    python3 -I sk-moneybird-accountant/scripts/check-route-table.py --write
     python3 -I sk-moneybird-accountant/scripts/check-route-table.py --signals /tmp/routing-signals.md
     python3 -I sk-moneybird-accountant/scripts/check-route-table.py --calibration /tmp/route-calibration.json
 
 Options:
-    --check          Run the check. This is the default and only mode.
+    --check          Run the check. This is the default mode.
+    --write          Regenerate the router block in SKILL.md and append the
+                     table's multi-word signals to graph-metadata.json.
     --skill-md P     Read this markdown file instead of the skill's own SKILL.md.
                      Read-set paths still resolve against the skill folder.
+    --graph-metadata P  Read the intent signals from this file instead of the
+                     skill's graph-metadata.json.
     --signals P      Read the signal sources from this file instead of the
                      skill's references/routing-signals.md.
     --calibration P  Read the frozen constants from this file instead of the
                      skill's assets/route-calibration.json.
 
 Output:
-    One line per problem, or "route-table: ok" when the file passes. Exit 0
-    when the file passes, 1 when it has problems and 2 on a usage error.
+    One line per problem, or "route-table: ok" when the file passes. The
+    write mode prints one line per generated surface. Exit 0 on success, 1
+    when the file has problems and 2 when a write is refused.
 """
 
 # ───────────────────────────────────────────────────────────────
@@ -41,7 +50,7 @@ import json
 import os
 import re
 import sys
-from typing import Any, Dict, List, NoReturn, Optional
+from typing import Any, Dict, List, NoReturn, Optional, Tuple
 
 # ───────────────────────────────────────────────────────────────
 # 2. CONFIGURATION
@@ -51,9 +60,46 @@ CHECKER = "sk-moneybird-accountant/scripts/check-route-table.py"
 SKILL_FOLDER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKILL_MD = os.path.join(SKILL_FOLDER, "SKILL.md")
 
+GRAPH_METADATA = os.path.join(SKILL_FOLDER, "graph-metadata.json")
+
 START_MARKER = "<!-- route-table:start -->"
 END_MARKER = "<!-- route-table:end -->"
+ROUTER_START = "<!-- router-block:start -->"
+ROUTER_END = "<!-- router-block:end -->"
+ROUTER_HEADING = "### Smart Router Pseudocode"
 EXPECTED_HEADER = "| Type | Name | Dutch signals | English signals | Tool route | Read set | Budget | On tie |"
+
+# WHY: the label and the level vocabulary belong to the generated region, so a
+# hand edit inside the markers fails the check and the write restores it.
+ROUTER_NOTE = (
+    "This block is generated from the Task-Type Table by `check-route-table.py --write`. "
+    "Edit the table and rerun the mode."
+)
+LEVEL_VOCABULARY = "ALWAYS, MIGRATION, LIVE BOOKKEEPING, ZZP QUESTION, CLI ACTION"
+FALLBACK_TIERS = (
+    "Tier A: Refuse with the out-of-scope boundary, load nothing",
+    "Tier B: Ask one question, print the candidate route per answer",
+    "Tier C: Name the missing tax year, resolve it before loading",
+)
+HELPER_LINES = (
+    "def discover_markdown_resources():",
+    '    return {p.relative_to(SKILL_ROOT).as_posix() for base in RESOURCE_BASES if base.exists() for p in base.rglob("*.md") if p.is_file()}',
+    "",
+    "def _guard_in_skill(relative_path):",
+    "    resolved = (SKILL_ROOT / relative_path).resolve()",
+    "    resolved.relative_to(SKILL_ROOT)",
+    '    if resolved.suffix.lower() != ".md":',
+    '        raise ValueError("local markdown only")',
+    "    return resolved.relative_to(SKILL_ROOT).as_posix()",
+    "",
+    "def load_if_available(relative_path, inventory, loaded, missing):",
+    "    guarded = _guard_in_skill(relative_path)",
+    "    if guarded in inventory and guarded not in loaded:",
+    "        load(guarded)",
+    "        loaded.append(guarded)",
+    "    elif guarded not in inventory:",
+    "        missing.append(guarded)",
+)
 
 # WHY: the table must carry every row type exactly once.
 ROW_TYPES = tuple("T%d" % number for number in range(1, 10))
@@ -85,6 +131,9 @@ OVERRIDE_BULLET_RE = re.compile(r"^\s*(T\d+):\s*(.*)$")
 BACKTICK_RE = re.compile(r"`([^`]*)`")
 NUMBER_RE = re.compile(r"\d+(?:\.\d+)?")
 YEAR_RE = re.compile(r"^\d{4}$")
+SECTION_RE = re.compile(r"^(INTENT_SIGNALS|RESOURCE_MAP|LOADING_LEVELS) = \{$")
+ENTRY_RE = re.compile(r'^    "(T\d+|tok:T\d+)": .*,$')
+HEADING_RE = re.compile(r"^#{1,6} ")
 
 # ───────────────────────────────────────────────────────────────
 # 3. HELPERS
@@ -125,6 +174,109 @@ def split_cells(line: str) -> List[str]:
         The cell texts without their surrounding whitespace.
     """
     return [cell.strip() for cell in line.strip().strip("|").split("|")]
+
+
+def cell_signals(cell: str) -> List[str]:
+    """Read the signal list of one signal cell.
+
+    A cell may backtick every signal or hold a plain comma list.
+
+    Args:
+        cell: Raw Dutch or English signal cell text.
+
+    Returns:
+        The signal texts in cell order.
+    """
+    spans = [span.strip() for span in BACKTICK_RE.findall(cell)]
+    if not spans:
+        spans = [part.strip() for part in cell.split(",")]
+    return [span for span in spans if span]
+
+
+def cell_paths(cell: str) -> List[str]:
+    """Read the path list of one read-set cell.
+
+    Args:
+        cell: Raw read-set cell text.
+
+    Returns:
+        The unique backticked paths in cell order, with an empty list for
+        the `-` cell.
+    """
+    paths: List[str] = []
+    for span in BACKTICK_RE.findall(cell):
+        span = span.strip()
+        if not span or span == "-" or span in paths:
+            continue
+        paths.append(span)
+    return paths
+
+
+def json_list(items: List[str]) -> str:
+    """Format one list of strings as a Python literal.
+
+    Args:
+        items: Strings to format.
+
+    Returns:
+        One bracketed literal with a comma between the items.
+    """
+    return "[" + ", ".join(json.dumps(item) for item in items) + "]"
+
+
+def read_metadata(path: str) -> Optional[Dict[str, Any]]:
+    """Read the graph metadata file.
+
+    Args:
+        path: Path of the JSON file.
+
+    Returns:
+        The parsed object, or None when the file is missing or malformed.
+    """
+    if not os.path.isfile(path):
+        return None
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except (OSError, ValueError):
+        return None
+    return data if isinstance(data, dict) else None
+
+
+def signal_list(data: Optional[Dict[str, Any]]) -> Optional[List[str]]:
+    """Read the intent signal list of the metadata object.
+
+    Args:
+        data: Parsed metadata object, or None.
+
+    Returns:
+        The signal list, or None when the field is missing or malformed.
+    """
+    if data is None:
+        return None
+    signals = data.get("intent_signals")
+    if not isinstance(signals, list) or any(not isinstance(signal, str) for signal in signals):
+        return None
+    return signals
+
+
+def write_text(path: str, content: str) -> bool:
+    """Write one text file.
+
+    Args:
+        path: File to write.
+        content: Full new content.
+
+    Returns:
+        True when the file was written.
+    """
+    try:
+        with open(path, "w", encoding="utf-8", newline="") as handle:
+            handle.write(content)
+    except OSError as exc:
+        print("error: cannot write %s: %s" % (path, exc), file=sys.stderr)
+        return False
+    return True
 
 
 def year_folders() -> List[str]:
@@ -196,6 +348,68 @@ def check_row(line: str, row_type: str, problems: List[str]) -> None:
     check_read_set(row_type, cells[5], problems)
 
 
+def table_bounds(lines: List[str], problems: List[str]) -> Optional[Tuple[int, int]]:
+    """Find the route table body between its markers.
+
+    Args:
+        lines: All lines of the markdown file.
+        problems: Problem list to append to.
+
+    Returns:
+        The first and last index of the table body, or None on a missing
+        marker.
+    """
+    try:
+        start = lines.index(START_MARKER)
+    except ValueError:
+        problems.append("route-table start marker missing")
+        return None
+    try:
+        end = lines.index(END_MARKER, start + 1)
+    except ValueError:
+        problems.append("route-table end marker missing")
+        return None
+    return start + 1, end
+
+
+def table_rows(lines: List[str]) -> List[Dict[str, str]]:
+    """Collect one record per route table row, in table order.
+
+    Args:
+        lines: All lines of the markdown file.
+
+    Returns:
+        One dict per row with its type and its eight cells, or an empty list
+        when the table markers are missing.
+    """
+    bounds = table_bounds(lines, [])
+    if bounds is None:
+        return []
+    start, end = bounds
+    rows: List[Dict[str, str]] = []
+    for line in lines[start:end]:
+        stripped = line.strip()
+        match = ROW_RE.match(stripped)
+        if not match:
+            continue
+        cells = split_cells(stripped)
+        if len(cells) != 8:
+            continue
+        rows.append(
+            {
+                "type": cells[0],
+                "name": cells[1],
+                "dutch": cells[2],
+                "english": cells[3],
+                "tool_route": cells[4],
+                "read_set": cells[5],
+                "budget": cells[6],
+                "on_tie": cells[7],
+            }
+        )
+    return rows
+
+
 def check_table(lines: List[str], problems: List[str]) -> None:
     """Check the markers, the header and every row of the route table.
 
@@ -203,17 +417,11 @@ def check_table(lines: List[str], problems: List[str]) -> None:
         lines: All lines of the markdown file.
         problems: Problem list to append to.
     """
-    try:
-        start = lines.index(START_MARKER)
-    except ValueError:
-        problems.append("route-table start marker missing")
+    bounds = table_bounds(lines, problems)
+    if bounds is None:
         return
-    try:
-        end = lines.index(END_MARKER, start + 1)
-    except ValueError:
-        problems.append("route-table end marker missing")
-        return
-    body = lines[start + 1:end]
+    start, end = bounds
+    body = lines[start:end]
     header = ""
     for line in body:
         if line.strip():
@@ -241,7 +449,208 @@ def check_table(lines: List[str], problems: List[str]) -> None:
             problems.append("unexpected row %s" % row_type)
 
 # ───────────────────────────────────────────────────────────────
-# 5. PROSE CHECKS
+# 5. ROUTER BLOCK
+# ───────────────────────────────────────────────────────────────
+
+def router_block(rows: List[Dict[str, str]]) -> List[str]:
+    """Format the generated router block from the table rows.
+
+    Args:
+        rows: Table rows in table order.
+
+    Returns:
+        The block lines, markers included.
+    """
+    lines = [ROUTER_START, ROUTER_NOTE, "", "```python", "from pathlib import Path", ""]
+    lines.append("SKILL_ROOT = Path(__file__).resolve().parent")
+    lines.append('RESOURCE_BASES = (SKILL_ROOT / "references",)')
+    lines.append("# Levels: %s." % LEVEL_VOCABULARY)
+    lines.append("INTENT_SIGNALS = {")
+    for row in rows:
+        lines.append(
+            '    "%s": [%s, %s],'
+            % (row["type"], json_list(cell_signals(row["dutch"])), json_list(cell_signals(row["english"])))
+        )
+    lines.append("}")
+    lines.append("RESOURCE_MAP = {")
+    for row in rows:
+        lines.append('    "%s": %s,' % (row["type"], json_list(cell_paths(row["read_set"]))))
+    lines.append("}")
+    lines.append("LOADING_LEVELS = {")
+    for row in rows:
+        lines.append('    "tok:%s": %s,' % (row["type"], json_list(cell_paths(row["read_set"]))))
+    lines.append("}")
+    lines.append("UNKNOWN_FALLBACK_CHECKLIST = [")
+    for tier in FALLBACK_TIERS:
+        lines.append("    %s," % json.dumps(tier))
+    lines.append("]")
+    lines.append("")
+    lines.extend(HELPER_LINES)
+    lines.append("")
+    lines.append("```")
+    lines.append(ROUTER_END)
+    return lines
+
+
+def block_entries(lines: List[str]) -> Dict[str, str]:
+    """Map every row entry of a router block to its source line.
+
+    Args:
+        lines: The block lines.
+
+    Returns:
+        One entry per section and row key, such as INTENT_SIGNALS/T1.
+    """
+    section = ""
+    entries: Dict[str, str] = {}
+    for line in lines:
+        match = SECTION_RE.match(line)
+        if match:
+            section = match.group(1)
+            continue
+        if line in ("}", "]"):
+            section = ""
+            continue
+        entry = ENTRY_RE.match(line)
+        if entry and section:
+            entries["%s/%s" % (section, entry.group(1))] = line
+    return entries
+
+
+def check_router_block(lines: List[str], rows: List[Dict[str, str]], problems: List[str]) -> None:
+    """Compare the generated router block with the table.
+
+    A differing row entry names its row. Any other difference fails as a
+    whole block difference.
+
+    Args:
+        lines: All lines of the markdown file.
+        rows: Table rows in table order.
+        problems: Problem list to append to.
+    """
+    has_start = ROUTER_START in lines
+    has_end = ROUTER_END in lines
+    if not has_start:
+        problems.append("router block start marker missing")
+    if not has_end:
+        problems.append("router block end marker missing")
+    if not (has_start and has_end) or not rows:
+        return
+    start = lines.index(ROUTER_START)
+    end = lines.index(ROUTER_END, start + 1)
+    actual = lines[start:end + 1]
+    expected = router_block(rows)
+    if actual == expected:
+        return
+    expected_entries = block_entries(expected)
+    actual_entries = block_entries(actual)
+    named = False
+    for key, line in expected_entries.items():
+        if actual_entries.get(key) != line:
+            problems.append("row %s: block entry differs from the table" % key.split("/")[1])
+            named = True
+    if not named:
+        problems.append("router block differs from the table")
+
+
+def multi_word_signals(rows: List[Dict[str, str]]) -> List[str]:
+    """Read every multi-word signal of the table, in table order.
+
+    Args:
+        rows: Table rows in table order.
+
+    Returns:
+        One entry per unique signal that holds two or more words.
+    """
+    signals: List[str] = []
+    for row in rows:
+        for cell in (row["dutch"], row["english"]):
+            for signal in cell_signals(cell):
+                if len(signal.split()) < 2 or signal in signals:
+                    continue
+                signals.append(signal)
+    return signals
+
+
+def check_intent_signals(rows: List[Dict[str, str]], path: str, problems: List[str]) -> None:
+    """Compare the table's multi-word signals with the metadata list.
+
+    Args:
+        rows: Table rows in table order.
+        path: Path of the graph metadata file.
+        problems: Problem list to append to.
+    """
+    signals = multi_word_signals(rows)
+    if not signals:
+        return
+    known = signal_list(read_metadata(path))
+    if known is None:
+        problems.append("graph metadata file is missing or malformed: %s" % path)
+        return
+    for signal in signals:
+        if signal not in known:
+            problems.append("intent signal missing from intent_signals: %s" % signal)
+
+
+def write_router_block(
+    lines: List[str], rows: List[Dict[str, str]], problems: List[str]
+) -> Optional[List[str]]:
+    """Replace the router block, or the sketch, with the generated block.
+
+    Args:
+        lines: All lines of the markdown file.
+        rows: Table rows in table order.
+        problems: Problem list to append to.
+
+    Returns:
+        The new lines, or None when no region can be written.
+    """
+    block = router_block(rows)
+    has_start = ROUTER_START in lines
+    has_end = ROUTER_END in lines
+    if has_start != has_end:
+        problems.append("router block markers must appear as a pair")
+        return None
+    if has_start:
+        start = lines.index(ROUTER_START)
+        end = lines.index(ROUTER_END, start + 1)
+        if lines[start:end + 1] == block:
+            return lines
+        return lines[:start] + block + lines[end + 1:]
+    heading = next((index for index, line in enumerate(lines) if line.strip() == ROUTER_HEADING), -1)
+    if heading < 0:
+        problems.append("router block markers and the Smart Router Pseudocode heading are both missing")
+        return None
+    after = heading + 1
+    while after < len(lines) and not HEADING_RE.match(lines[after]):
+        after += 1
+    return lines[:heading + 1] + [""] + block + [""] + lines[after:]
+
+
+def write_intent_signals(data: Dict[str, Any], signals: List[str]) -> Tuple[List[str], bool]:
+    """Append the missing table signals to the metadata list.
+
+    Args:
+        data: Parsed metadata object.
+        signals: Multi-word table signals in table order.
+
+    Returns:
+        The added signals and whether the list changed.
+    """
+    known = signal_list(data)
+    if known is None:
+        return [], False
+    added: List[str] = []
+    for signal in signals:
+        if signal not in known:
+            known.append(signal)
+            added.append(signal)
+    data["intent_signals"] = known
+    return added, bool(added)
+
+
+# ───────────────────────────────────────────────────────────────
+# 6. PROSE CHECKS
 # ───────────────────────────────────────────────────────────────
 
 def check_required_tokens(text: str, problems: List[str]) -> None:
@@ -576,8 +985,59 @@ def check_calibration(path: str, skill_text: str, problems: List[str]) -> None:
     check_sweep(data, problems)
 
 # ───────────────────────────────────────────────────────────────
-# 6. ENTRY POINT
+# 7. ENTRY POINT
 # ───────────────────────────────────────────────────────────────
+
+def run_write(args: Any, text: str, lines: List[str], rows: List[Dict[str, str]]) -> int:
+    """Regenerate the router block and the intent signals.
+
+    A malformed table or metadata file stops the run before either file is
+    touched. The block is written before the signal list, so a refused write
+    leaves both files as they were.
+
+    Args:
+        args: Parsed arguments.
+        text: Current SKILL.md text.
+        lines: Current SKILL.md lines.
+        rows: Table rows in table order.
+
+    Returns:
+        Zero on success, 2 when the write was refused.
+    """
+    problems: List[str] = []
+    check_table(lines, problems)
+    if problems:
+        for problem in problems:
+            print(problem)
+        return 2
+    data = read_metadata(args.graph_metadata)
+    if data is None:
+        print("graph metadata file is missing or malformed: %s" % args.graph_metadata)
+        return 2
+    if signal_list(data) is None:
+        print("graph metadata intent_signals must be a list of strings: %s" % args.graph_metadata)
+        return 2
+    new_lines = write_router_block(lines, rows, problems)
+    if new_lines is None:
+        for problem in problems:
+            print(problem)
+        return 2
+    added, changed = write_intent_signals(data, multi_word_signals(rows))
+    newline = "\n" if text.endswith("\n") else ""
+    if new_lines != lines:
+        if not write_text(args.skill_md, "\n".join(new_lines) + newline):
+            return 2
+        print("router block: written (%s)" % os.path.basename(args.skill_md))
+    else:
+        print("router block: unchanged (%s)" % os.path.basename(args.skill_md))
+    if changed:
+        if not write_text(args.graph_metadata, json.dumps(data, indent=2) + "\n"):
+            return 2
+        print("intent signals: added %d (%s)" % (len(added), os.path.basename(args.graph_metadata)))
+    else:
+        print("intent signals: unchanged (%s)" % os.path.basename(args.graph_metadata))
+    return 0
+
 
 def main(argv: List[str]) -> int:
     """Parse arguments and run the route table check.
@@ -592,12 +1052,24 @@ def main(argv: List[str]) -> int:
         prog=CHECKER,
         description="Check the task-type route table in the skill markdown.",
     )
-    parser.add_argument("--check", action="store_true", help="run the check, the default and only mode")
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("--check", action="store_true", help="run the check, the default mode")
+    group.add_argument(
+        "--write",
+        action="store_true",
+        help="regenerate the router block and the intent signals",
+    )
     parser.add_argument(
         "--skill-md",
         metavar="PATH",
         default=SKILL_MD,
         help="read this markdown file instead of the skill's own SKILL.md",
+    )
+    parser.add_argument(
+        "--graph-metadata",
+        metavar="PATH",
+        default=GRAPH_METADATA,
+        help="read the intent signals from this file instead of the skill's graph-metadata.json",
     )
     parser.add_argument(
         "--signals",
@@ -620,6 +1092,9 @@ def main(argv: List[str]) -> int:
     except OSError as exc:
         fail("cannot read %s: %s" % (args.skill_md, exc))
     lines = text.splitlines()
+    rows = table_rows(lines)
+    if args.write:
+        return run_write(args, text, lines, rows)
     problems: List[str] = []
     check_table(lines, problems)
     check_required_tokens(text, problems)
@@ -627,6 +1102,8 @@ def main(argv: List[str]) -> int:
     check_signals_pointer(lines, problems)
     check_signal_sources(args.signals, problems)
     check_calibration(args.calibration, text, problems)
+    check_router_block(lines, rows, problems)
+    check_intent_signals(rows, args.graph_metadata, problems)
     if problems:
         for problem in problems:
             print(problem)

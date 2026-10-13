@@ -97,7 +97,7 @@ For historical work, name the migration phase or the last gate that passed. The 
 | **MIGRATION** | Moving historical Jortt records into Moneybird |
 | **LIVE** | A monthly, VAT-period or yearly review, or a one-off ZZP question |
 
-Topic routes live in one place, the Task-Type Table in `SKILL.md` section 2. This README does not repeat them.
+Topic routes live in one place, the Task-Type Table in `SKILL.md` section 2. The router block below that table is generated from the Task-Type Table by `scripts/check-route-table.py --write`, which also feeds the table's multi-word signals to `graph-metadata.json`. This README does not repeat them.
 
 Check the current tax year before you use any rate or threshold. The [Dutch tax rules](references/dutch-tax-rules.md) explain each rule and route to the year folder, such as [2024](references/2024/README.md), where every topic has its own sourced file. The [Moneybird bookkeeping reference](references/moneybird-bookkeeping.md) covers the accounting treatment of common events. The [Jortt to Moneybird mapping](references/migration/jortt-to-moneybird-mapping.md) lists concept matches and migration traps. Exports the Jortt API does not provide come from you, through the Jortt UI.
 
