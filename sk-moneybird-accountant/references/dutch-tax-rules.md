@@ -16,39 +16,39 @@ checked_on: "2026-10-12"
 # Dutch tax rules
 
 <!-- GENERATED:nav:start -->
-Read plan: 11 parts. Next read offset: line 251.
-Part 1: lines 1-250, 49154 bytes, first heading "# Dutch tax rules"
-Part 2: lines 251-370, 29684 bytes, first heading "### 3.2 Income tax box 1 and the Zvw contribution"
-Part 3: lines 371-543, 48865 bytes, first heading "### 3.3 Ondernemersaftrek and MKB-winstvrijstelling"
-Part 4: lines 544-664, 29242 bytes, first heading "### 3.5 Costs and the car"
-Part 5: lines 665-772, 22335 bytes, first heading "### 3.6 Box 3 savings and investments"
-Part 6: lines 773-924, 32160 bytes, first heading "### 3.7 Box 2 and the substantial interest"
-Part 7: lines 925-1056, 32538 bytes, first heading "### 3.8 The BV and vennootschapsbelasting"
-Part 8: lines 1057-1150, 23109 bytes, first heading "### 3.9 Pension, lijfrente and AOV"
-Part 9: lines 1151-1308, 43440 bytes, first heading "### 3.10 Work relationship and procedure"
-Part 10: lines 1309-1533, 49763 bytes, first heading "### Income tax box 1 and the Zvw contribution"
-Part 11: lines 1534-1573, 5462 bytes, first heading "### Pension, lijfrente and AOV"
+Read plan: 11 parts. Next read offset: line 252.
+Part 1: lines 1-251, 49407 bytes, first heading "# Dutch tax rules"
+Part 2: lines 252-371, 29684 bytes, first heading "### 3.2 Income tax box 1 and the Zvw contribution"
+Part 3: lines 372-544, 48865 bytes, first heading "### 3.3 Ondernemersaftrek and MKB-winstvrijstelling"
+Part 4: lines 545-665, 29242 bytes, first heading "### 3.5 Costs and the car"
+Part 5: lines 666-773, 22335 bytes, first heading "### 3.6 Box 3 savings and investments"
+Part 6: lines 774-925, 32160 bytes, first heading "### 3.7 Box 2 and the substantial interest"
+Part 7: lines 926-1057, 32538 bytes, first heading "### 3.8 The BV and vennootschapsbelasting"
+Part 8: lines 1058-1151, 23109 bytes, first heading "### 3.9 Pension, lijfrente and AOV"
+Part 9: lines 1152-1309, 43440 bytes, first heading "### 3.10 Work relationship and procedure"
+Part 10: lines 1310-1534, 49763 bytes, first heading "### Income tax box 1 and the Zvw contribution"
+Part 11: lines 1535-1574, 5462 bytes, first heading "### Pension, lijfrente and AOV"
 <!-- GENERATED:nav:end -->
 
 <!-- GENERATED:toc:start -->
 Sections and line ranges
 - 1. OVERVIEW: lines 60-65
-- 2. HOW TO USE IT: lines 66-119
-- 3. GENERAL RULES: lines 120-1289
-- 3.1 BTW (VAT): lines 124-250
-- 3.2 Income tax box 1 and the Zvw contribution: lines 251-370
-- 3.3 Ondernemersaftrek and MKB-winstvrijstelling: lines 371-470
-- 3.4 Investment deductions and depreciation: lines 471-543
-- 3.5 Costs and the car: lines 544-664
-- 3.6 Box 3 savings and investments: lines 665-772
-- 3.7 Box 2 and the substantial interest: lines 773-924
-- 3.8 The BV and vennootschapsbelasting: lines 925-1056
-- 3.9 Pension, lijfrente and AOV: lines 1057-1150
-- 3.10 Work relationship and procedure: lines 1151-1289
-- 4. SETTLED SOURCE CONFLICTS: lines 1290-1428
-- 5. OPEN POINTS AND GAPS: lines 1429-1557
-- 6. RECORD AND INVOICE DUTIES: lines 1558-1567
-- 7. RELATED RESOURCES: lines 1568-1573
+- 2. HOW TO USE IT: lines 66-120
+- 3. GENERAL RULES: lines 121-1290
+- 3.1 BTW (VAT): lines 125-251
+- 3.2 Income tax box 1 and the Zvw contribution: lines 252-371
+- 3.3 Ondernemersaftrek and MKB-winstvrijstelling: lines 372-471
+- 3.4 Investment deductions and depreciation: lines 472-544
+- 3.5 Costs and the car: lines 545-665
+- 3.6 Box 3 savings and investments: lines 666-773
+- 3.7 Box 2 and the substantial interest: lines 774-925
+- 3.8 The BV and vennootschapsbelasting: lines 926-1057
+- 3.9 Pension, lijfrente and AOV: lines 1058-1151
+- 3.10 Work relationship and procedure: lines 1152-1290
+- 4. SETTLED SOURCE CONFLICTS: lines 1291-1429
+- 5. OPEN POINTS AND GAPS: lines 1430-1558
+- 6. RECORD AND INVOICE DUTIES: lines 1559-1568
+- 7. RELATED RESOURCES: lines 1569-1574
 <!-- GENERATED:toc:end -->
 
 
@@ -70,6 +70,7 @@ This file is the entry point for Dutch tax questions for a ZZP freelancer with a
 3. For how a rule works across years, read only subsection 3.n, by the line range in the section list at the top of this file.
 4. Respect the tags. Do not present an UNVERIFIED, proposed or unknown value as settled. Say what would confirm it.
 5. For 2027, check the Status column on every row. On 2026-10-11 the Belastingplan 2027 was not adopted and the December 2026 indexation was not published.
+6. For what changed in one year, the difference between years or `verschil met vorig jaar`, read that year's `changes.md` first, then the one topic section 5 it links. The generated [year changes](year-changes.md) file gathers every year, newest first.
 
 ### Year folders
 

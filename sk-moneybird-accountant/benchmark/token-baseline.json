@@ -3,13 +3,13 @@
     "current": "car route current",
     "proposed": "car route proposed",
     "ratio": {
-      "cl100k_base": 0.2854,
-      "o200k_base": 0.2823
+      "cl100k_base": 0.286,
+      "o200k_base": 0.2829
     }
   },
   "files": [
     {
-      "bytes": 8345,
+      "bytes": 8420,
       "path": "sk-moneybird-accountant/references/2020/README.md",
       "sections": [
         {
@@ -47,19 +47,19 @@
         },
         {
           "anchor": "4-related-resources",
-          "bytes": 244,
+          "bytes": 319,
           "line": 82,
-          "lines": 5,
+          "lines": 6,
           "title": "4. RELATED RESOURCES",
           "tokens": {
-            "cl100k_base": 70,
-            "o200k_base": 68
+            "cl100k_base": 92,
+            "o200k_base": 89
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2588,
-        "o200k_base": 2415
+        "cl100k_base": 2610,
+        "o200k_base": 2436
       }
     },
     {
@@ -582,6 +582,38 @@
       "tokens": {
         "cl100k_base": 2345,
         "o200k_base": 2180
+      }
+    },
+    {
+      "bytes": 3690,
+      "path": "sk-moneybird-accountant/references/2020/changes.md",
+      "sections": [
+        {
+          "anchor": "1-unique-to-2020",
+          "bytes": 1296,
+          "line": 20,
+          "lines": 13,
+          "title": "1. Unique to 2020",
+          "tokens": {
+            "cl100k_base": 440,
+            "o200k_base": 410
+          }
+        },
+        {
+          "anchor": "2-all-changes-by-topic",
+          "bytes": 1654,
+          "line": 33,
+          "lines": 18,
+          "title": "2. All changes by topic",
+          "tokens": {
+            "cl100k_base": 528,
+            "o200k_base": 505
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1169,
+        "o200k_base": 1116
       }
     },
     {
@@ -1271,7 +1303,7 @@
       }
     },
     {
-      "bytes": 9381,
+      "bytes": 9456,
       "path": "sk-moneybird-accountant/references/2021/README.md",
       "sections": [
         {
@@ -1309,19 +1341,19 @@
         },
         {
           "anchor": "4-related-resources",
-          "bytes": 274,
+          "bytes": 349,
           "line": 82,
-          "lines": 5,
+          "lines": 6,
           "title": "4. RELATED RESOURCES",
           "tokens": {
-            "cl100k_base": 82,
-            "o200k_base": 80
+            "cl100k_base": 104,
+            "o200k_base": 101
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2913,
-        "o200k_base": 2722
+        "cl100k_base": 2935,
+        "o200k_base": 2743
       }
     },
     {
@@ -1844,6 +1876,38 @@
       "tokens": {
         "cl100k_base": 774,
         "o200k_base": 742
+      }
+    },
+    {
+      "bytes": 3650,
+      "path": "sk-moneybird-accountant/references/2021/changes.md",
+      "sections": [
+        {
+          "anchor": "1-unique-to-2021",
+          "bytes": 1171,
+          "line": 20,
+          "lines": 13,
+          "title": "1. Unique to 2021",
+          "tokens": {
+            "cl100k_base": 427,
+            "o200k_base": 402
+          }
+        },
+        {
+          "anchor": "2-all-changes-by-topic",
+          "bytes": 1739,
+          "line": 33,
+          "lines": 18,
+          "title": "2. All changes by topic",
+          "tokens": {
+            "cl100k_base": 659,
+            "o200k_base": 630
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1287,
+        "o200k_base": 1233
       }
     },
     {
@@ -2533,7 +2597,7 @@
       }
     },
     {
-      "bytes": 8397,
+      "bytes": 8472,
       "path": "sk-moneybird-accountant/references/2022/README.md",
       "sections": [
         {
@@ -2571,19 +2635,19 @@
         },
         {
           "anchor": "4-related-resources",
-          "bytes": 274,
+          "bytes": 349,
           "line": 82,
-          "lines": 5,
+          "lines": 6,
           "title": "4. RELATED RESOURCES",
           "tokens": {
-            "cl100k_base": 82,
-            "o200k_base": 80
+            "cl100k_base": 104,
+            "o200k_base": 101
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2650,
-        "o200k_base": 2478
+        "cl100k_base": 2672,
+        "o200k_base": 2499
       }
     },
     {
@@ -3106,6 +3170,38 @@
       "tokens": {
         "cl100k_base": 1638,
         "o200k_base": 1544
+      }
+    },
+    {
+      "bytes": 3738,
+      "path": "sk-moneybird-accountant/references/2022/changes.md",
+      "sections": [
+        {
+          "anchor": "1-unique-to-2022",
+          "bytes": 1268,
+          "line": 20,
+          "lines": 13,
+          "title": "1. Unique to 2022",
+          "tokens": {
+            "cl100k_base": 467,
+            "o200k_base": 439
+          }
+        },
+        {
+          "anchor": "2-all-changes-by-topic",
+          "bytes": 1730,
+          "line": 33,
+          "lines": 18,
+          "title": "2. All changes by topic",
+          "tokens": {
+            "cl100k_base": 641,
+            "o200k_base": 608
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1309,
+        "o200k_base": 1248
       }
     },
     {
@@ -3795,7 +3891,7 @@
       }
     },
     {
-      "bytes": 8014,
+      "bytes": 8089,
       "path": "sk-moneybird-accountant/references/2023/README.md",
       "sections": [
         {
@@ -3833,19 +3929,19 @@
         },
         {
           "anchor": "4-related-resources",
-          "bytes": 274,
+          "bytes": 349,
           "line": 82,
-          "lines": 5,
+          "lines": 6,
           "title": "4. RELATED RESOURCES",
           "tokens": {
-            "cl100k_base": 82,
-            "o200k_base": 80
+            "cl100k_base": 104,
+            "o200k_base": 101
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2496,
-        "o200k_base": 2353
+        "cl100k_base": 2518,
+        "o200k_base": 2374
       }
     },
     {
@@ -4368,6 +4464,38 @@
       "tokens": {
         "cl100k_base": 1931,
         "o200k_base": 1817
+      }
+    },
+    {
+      "bytes": 3623,
+      "path": "sk-moneybird-accountant/references/2023/changes.md",
+      "sections": [
+        {
+          "anchor": "1-unique-to-2023",
+          "bytes": 1137,
+          "line": 20,
+          "lines": 13,
+          "title": "1. Unique to 2023",
+          "tokens": {
+            "cl100k_base": 409,
+            "o200k_base": 385
+          }
+        },
+        {
+          "anchor": "2-all-changes-by-topic",
+          "bytes": 1746,
+          "line": 33,
+          "lines": 18,
+          "title": "2. All changes by topic",
+          "tokens": {
+            "cl100k_base": 672,
+            "o200k_base": 647
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1282,
+        "o200k_base": 1233
       }
     },
     {
@@ -5057,7 +5185,7 @@
       }
     },
     {
-      "bytes": 7823,
+      "bytes": 7898,
       "path": "sk-moneybird-accountant/references/2024/README.md",
       "sections": [
         {
@@ -5095,19 +5223,19 @@
         },
         {
           "anchor": "4-related-resources",
-          "bytes": 274,
+          "bytes": 349,
           "line": 82,
-          "lines": 5,
+          "lines": 6,
           "title": "4. RELATED RESOURCES",
           "tokens": {
-            "cl100k_base": 82,
-            "o200k_base": 80
+            "cl100k_base": 104,
+            "o200k_base": 101
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2445,
-        "o200k_base": 2305
+        "cl100k_base": 2467,
+        "o200k_base": 2326
       }
     },
     {
@@ -5630,6 +5758,38 @@
       "tokens": {
         "cl100k_base": 1626,
         "o200k_base": 1518
+      }
+    },
+    {
+      "bytes": 3516,
+      "path": "sk-moneybird-accountant/references/2024/changes.md",
+      "sections": [
+        {
+          "anchor": "1-unique-to-2024",
+          "bytes": 1034,
+          "line": 20,
+          "lines": 13,
+          "title": "1. Unique to 2024",
+          "tokens": {
+            "cl100k_base": 394,
+            "o200k_base": 377
+          }
+        },
+        {
+          "anchor": "2-all-changes-by-topic",
+          "bytes": 1742,
+          "line": 33,
+          "lines": 18,
+          "title": "2. All changes by topic",
+          "tokens": {
+            "cl100k_base": 662,
+            "o200k_base": 633
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1257,
+        "o200k_base": 1211
       }
     },
     {
@@ -6319,7 +6479,7 @@
       }
     },
     {
-      "bytes": 8411,
+      "bytes": 8486,
       "path": "sk-moneybird-accountant/references/2025/README.md",
       "sections": [
         {
@@ -6357,19 +6517,19 @@
         },
         {
           "anchor": "4-related-resources",
-          "bytes": 274,
+          "bytes": 349,
           "line": 82,
-          "lines": 5,
+          "lines": 6,
           "title": "4. RELATED RESOURCES",
           "tokens": {
-            "cl100k_base": 82,
-            "o200k_base": 80
+            "cl100k_base": 104,
+            "o200k_base": 101
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2606,
-        "o200k_base": 2438
+        "cl100k_base": 2628,
+        "o200k_base": 2459
       }
     },
     {
@@ -6892,6 +7052,38 @@
       "tokens": {
         "cl100k_base": 894,
         "o200k_base": 848
+      }
+    },
+    {
+      "bytes": 3806,
+      "path": "sk-moneybird-accountant/references/2025/changes.md",
+      "sections": [
+        {
+          "anchor": "1-unique-to-2025",
+          "bytes": 1326,
+          "line": 20,
+          "lines": 13,
+          "title": "1. Unique to 2025",
+          "tokens": {
+            "cl100k_base": 452,
+            "o200k_base": 423
+          }
+        },
+        {
+          "anchor": "2-all-changes-by-topic",
+          "bytes": 1740,
+          "line": 33,
+          "lines": 18,
+          "title": "2. All changes by topic",
+          "tokens": {
+            "cl100k_base": 662,
+            "o200k_base": 637
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1315,
+        "o200k_base": 1261
       }
     },
     {
@@ -7581,7 +7773,7 @@
       }
     },
     {
-      "bytes": 8530,
+      "bytes": 8605,
       "path": "sk-moneybird-accountant/references/2026/README.md",
       "sections": [
         {
@@ -7619,19 +7811,19 @@
         },
         {
           "anchor": "4-related-resources",
-          "bytes": 274,
+          "bytes": 349,
           "line": 82,
-          "lines": 5,
+          "lines": 6,
           "title": "4. RELATED RESOURCES",
           "tokens": {
-            "cl100k_base": 82,
-            "o200k_base": 80
+            "cl100k_base": 104,
+            "o200k_base": 101
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2644,
-        "o200k_base": 2459
+        "cl100k_base": 2666,
+        "o200k_base": 2480
       }
     },
     {
@@ -8154,6 +8346,38 @@
       "tokens": {
         "cl100k_base": 1021,
         "o200k_base": 975
+      }
+    },
+    {
+      "bytes": 3624,
+      "path": "sk-moneybird-accountant/references/2026/changes.md",
+      "sections": [
+        {
+          "anchor": "1-unique-to-2026",
+          "bytes": 1138,
+          "line": 20,
+          "lines": 13,
+          "title": "1. Unique to 2026",
+          "tokens": {
+            "cl100k_base": 426,
+            "o200k_base": 405
+          }
+        },
+        {
+          "anchor": "2-all-changes-by-topic",
+          "bytes": 1746,
+          "line": 33,
+          "lines": 18,
+          "title": "2. All changes by topic",
+          "tokens": {
+            "cl100k_base": 650,
+            "o200k_base": 625
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1277,
+        "o200k_base": 1231
       }
     },
     {
@@ -8843,7 +9067,7 @@
       }
     },
     {
-      "bytes": 9111,
+      "bytes": 9186,
       "path": "sk-moneybird-accountant/references/2027/README.md",
       "sections": [
         {
@@ -8881,19 +9105,19 @@
         },
         {
           "anchor": "4-related-resources",
-          "bytes": 244,
+          "bytes": 319,
           "line": 82,
-          "lines": 5,
+          "lines": 6,
           "title": "4. RELATED RESOURCES",
           "tokens": {
-            "cl100k_base": 70,
-            "o200k_base": 68
+            "cl100k_base": 92,
+            "o200k_base": 89
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2756,
-        "o200k_base": 2606
+        "cl100k_base": 2778,
+        "o200k_base": 2627
       }
     },
     {
@@ -9416,6 +9640,38 @@
       "tokens": {
         "cl100k_base": 1017,
         "o200k_base": 971
+      }
+    },
+    {
+      "bytes": 3951,
+      "path": "sk-moneybird-accountant/references/2027/changes.md",
+      "sections": [
+        {
+          "anchor": "1-unique-to-2027",
+          "bytes": 1450,
+          "line": 20,
+          "lines": 13,
+          "title": "1. Unique to 2027",
+          "tokens": {
+            "cl100k_base": 488,
+            "o200k_base": 456
+          }
+        },
+        {
+          "anchor": "2-all-changes-by-topic",
+          "bytes": 1761,
+          "line": 33,
+          "lines": 18,
+          "title": "2. All changes by topic",
+          "tokens": {
+            "cl100k_base": 681,
+            "o200k_base": 649
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1370,
+        "o200k_base": 1306
       }
     },
     {
@@ -10105,7 +10361,7 @@
       }
     },
     {
-      "bytes": 365752,
+      "bytes": 366005,
       "path": "sk-moneybird-accountant/references/dutch-tax-rules.md",
       "sections": [
         {
@@ -10121,19 +10377,19 @@
         },
         {
           "anchor": "2-how-to-use-it",
-          "bytes": 3063,
+          "bytes": 3316,
           "line": 66,
-          "lines": 54,
+          "lines": 55,
           "title": "2. HOW TO USE IT",
           "tokens": {
-            "cl100k_base": 871,
-            "o200k_base": 842
+            "cl100k_base": 933,
+            "o200k_base": 901
           }
         },
         {
           "anchor": "3-general-rules",
           "bytes": 300987,
-          "line": 120,
+          "line": 121,
           "lines": 1170,
           "title": "3. GENERAL RULES",
           "tokens": {
@@ -10144,7 +10400,7 @@
         {
           "anchor": "4-settled-source-conflicts",
           "bytes": 34152,
-          "line": 1290,
+          "line": 1291,
           "lines": 139,
           "title": "4. SETTLED SOURCE CONFLICTS",
           "tokens": {
@@ -10155,7 +10411,7 @@
         {
           "anchor": "5-open-points-and-gaps",
           "bytes": 22317,
-          "line": 1429,
+          "line": 1430,
           "lines": 129,
           "title": "5. OPEN POINTS AND GAPS",
           "tokens": {
@@ -10166,7 +10422,7 @@
         {
           "anchor": "6-record-and-invoice-duties",
           "bytes": 1413,
-          "line": 1558,
+          "line": 1559,
           "lines": 10,
           "title": "6. RECORD AND INVOICE DUTIES",
           "tokens": {
@@ -10177,7 +10433,7 @@
         {
           "anchor": "7-related-resources",
           "bytes": 538,
-          "line": 1568,
+          "line": 1569,
           "lines": 6,
           "title": "7. RELATED RESOURCES",
           "tokens": {
@@ -10187,8 +10443,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 113763,
-        "o200k_base": 106026
+        "cl100k_base": 113825,
+        "o200k_base": 106085
       }
     },
     {
@@ -11322,7 +11578,7 @@
       }
     },
     {
-      "bytes": 6801,
+      "bytes": 7313,
       "path": "sk-moneybird-accountant/references/routing-signals.md",
       "sections": [
         {
@@ -11381,11 +11637,22 @@
           }
         },
         {
-          "anchor": "6-related-resources",
-          "bytes": 198,
+          "anchor": "6-year-change-route",
+          "bytes": 493,
           "line": 88,
+          "lines": 6,
+          "title": "6. YEAR CHANGE ROUTE",
+          "tokens": {
+            "cl100k_base": 116,
+            "o200k_base": 113
+          }
+        },
+        {
+          "anchor": "7-related-resources",
+          "bytes": 198,
+          "line": 94,
           "lines": 4,
-          "title": "6. RELATED RESOURCES",
+          "title": "7. RELATED RESOURCES",
           "tokens": {
             "cl100k_base": 49,
             "o200k_base": 49
@@ -11393,8 +11660,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1930,
-        "o200k_base": 1833
+        "cl100k_base": 2050,
+        "o200k_base": 1950
       }
     },
     {
@@ -11572,6 +11839,104 @@
       }
     },
     {
+      "bytes": 10671,
+      "path": "sk-moneybird-accountant/references/year-changes.md",
+      "sections": [
+        {
+          "anchor": "2027",
+          "bytes": 1514,
+          "line": 10,
+          "lines": 13,
+          "title": "2027",
+          "tokens": {
+            "cl100k_base": 516,
+            "o200k_base": 488
+          }
+        },
+        {
+          "anchor": "2026",
+          "bytes": 1202,
+          "line": 23,
+          "lines": 13,
+          "title": "2026",
+          "tokens": {
+            "cl100k_base": 454,
+            "o200k_base": 436
+          }
+        },
+        {
+          "anchor": "2025",
+          "bytes": 1390,
+          "line": 36,
+          "lines": 13,
+          "title": "2025",
+          "tokens": {
+            "cl100k_base": 481,
+            "o200k_base": 454
+          }
+        },
+        {
+          "anchor": "2024",
+          "bytes": 1098,
+          "line": 49,
+          "lines": 13,
+          "title": "2024",
+          "tokens": {
+            "cl100k_base": 424,
+            "o200k_base": 408
+          }
+        },
+        {
+          "anchor": "2023",
+          "bytes": 1201,
+          "line": 62,
+          "lines": 13,
+          "title": "2023",
+          "tokens": {
+            "cl100k_base": 438,
+            "o200k_base": 416
+          }
+        },
+        {
+          "anchor": "2022",
+          "bytes": 1332,
+          "line": 75,
+          "lines": 13,
+          "title": "2022",
+          "tokens": {
+            "cl100k_base": 495,
+            "o200k_base": 470
+          }
+        },
+        {
+          "anchor": "2021",
+          "bytes": 1235,
+          "line": 88,
+          "lines": 13,
+          "title": "2021",
+          "tokens": {
+            "cl100k_base": 456,
+            "o200k_base": 433
+          }
+        },
+        {
+          "anchor": "2020",
+          "bytes": 1359,
+          "line": 101,
+          "lines": 12,
+          "title": "2020",
+          "tokens": {
+            "cl100k_base": 468,
+            "o200k_base": 441
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 3803,
+        "o200k_base": 3617
+      }
+    },
+    {
       "bytes": 3912,
       "path": "sk-moneybird-accountant/references/year-rollover.md",
       "sections": [
@@ -11650,12 +12015,12 @@
     },
     {
       "blocks": 1,
-      "bytes": 98556,
+      "bytes": 101472,
       "files": 1,
       "name": "references/index.json",
       "tokens": {
-        "cl100k_base": 31592,
-        "o200k_base": 31932
+        "cl100k_base": 32547,
+        "o200k_base": 32896
       }
     }
   ],
@@ -11682,16 +12047,16 @@
   },
   "units": [
     {
-      "bytes": 5751292,
-      "files": 131,
+      "bytes": 5792926,
+      "files": 140,
       "name": "corpus total",
       "reads": [
         "sk-moneybird-accountant/references"
       ],
-      "sections": 937,
+      "sections": 962,
       "tokens": {
-        "cl100k_base": 1776191,
-        "o200k_base": 1657636
+        "cl100k_base": 1790618,
+        "o200k_base": 1671436
       }
     },
     {
@@ -11706,14 +12071,14 @@
       }
     },
     {
-      "bytes": 8530,
+      "bytes": 8605,
       "name": "sk-moneybird-accountant/references/2026/README.md",
       "reads": [
         "sk-moneybird-accountant/references/2026/README.md"
       ],
       "tokens": {
-        "cl100k_base": 2644,
-        "o200k_base": 2459
+        "cl100k_base": 2666,
+        "o200k_base": 2480
       }
     },
     {
@@ -11728,27 +12093,27 @@
       }
     },
     {
-      "bytes": 81346,
+      "bytes": 81421,
       "name": "car route current",
       "reads": [
         "sk-moneybird-accountant/references/2026/README.md",
         "sk-moneybird-accountant/references/2026/kosten-en-auto.md"
       ],
       "tokens": {
-        "cl100k_base": 25640,
-        "o200k_base": 23783
+        "cl100k_base": 25662,
+        "o200k_base": 23804
       }
     },
     {
-      "bytes": 23109,
+      "bytes": 23184,
       "name": "car route proposed",
       "reads": [
         "sk-moneybird-accountant/references/2026/README.md",
         "sk-moneybird-accountant/references/2026/kosten-en-auto.md#2-key-figures"
       ],
       "tokens": {
-        "cl100k_base": 7317,
-        "o200k_base": 6713
+        "cl100k_base": 7339,
+        "o200k_base": 6734
       }
     }
   ]

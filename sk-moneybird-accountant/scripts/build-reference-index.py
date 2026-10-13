@@ -61,6 +61,17 @@ A block generator registers a builder keyed by its block id, and an optional
 anchor that tells --init where the empty pair belongs. A block without a
 registered builder is left as it is.
 
+Every year folder gets a change note at references/<year>/changes.md. Its first
+section is authored, and its second section is a generated table with one row
+per topic file: the section 5 bullet count, the first bullet cut to a snippet
+and the link to the section 5 anchor. The note sits between one fence pair with
+the id changes. references/year-changes.md is generated whole, one H2 per year,
+newest first, with the path link to the year note and the authored bullets of
+that note, so the index reads the generated form. --check also checks the
+authored bullets. A number in a bullet must occur as the same number in the
+linked section 5. The last link of a bullet must resolve to an existing file
+and its section 5 anchor. A year note must hold five to ten authored bullets.
+
 A manifest at the skill root lists the leaves that a reader must be able to
 reach. The reachability check reads it under --check and under --reachability
 alone. A leaf under the routed reference folders is reachable through the
@@ -229,12 +240,35 @@ MANIFEST_NAME = "leaf-manifest.json"
 MANIFEST_PATH = os.path.join(SKILL_ROOT, MANIFEST_NAME)
 SKILL_PAGE = "SKILL.md"
 README_NAME = "README.md"
-# WHY: a year folder holds two files beside its topic files, the year README
-# and the year changelog. Neither carries the topic fields, so no topic scan
-# reads one.
+# WHY: a year folder holds three files beside its topic files, the year README,
+# the year changelog and the year change note. None of the three carries the
+# topic fields, so no topic scan reads one.
 CHANGELOG_NAME = "changelog.md"
 ROUTED_PREFIX = "references/"
 LINK_TARGET_RE = re.compile(r"\]\(([^)\s]+)\)")
+
+# The year change note restates the changes that section 5 of the year topic
+# files records, and the overview gathers the eight notes. One generated block
+# per note lists every topic, its section 5 bullet count and its first bullet
+# cut to a snippet. The overview is generated whole, so it needs no fence.
+CHANGE_NOTE_NAME = "changes.md"
+YEAR_CHANGES_NAME = "year-changes.md"
+CHANGE_NOTE_RE = re.compile(r"^(\d{4})/" + re.escape(CHANGE_NOTE_NAME) + r"$")
+CHANGES_BLOCK_ID = "changes"
+CHANGES_UNIQUE_PREFIX = "Unique to "
+CHANGES_BY_TOPIC_HEADING = "All changes by topic"
+CHANGES_TABLE_HEADER = "| Topic | Bullets | First change |"
+CHANGES_TABLE_SEPARATOR = "|---|---|---|"
+CHANGE_SECTION_NUMBER = 5
+CHANGE_FRAGMENT = "5-changes"
+CHANGE_BULLET_PREFIX = "- "
+CHANGE_BULLET_MIN = 5
+CHANGE_BULLET_MAX = 10
+CHANGE_SNIPPET_LIMIT = 80
+NUMBER_RE = re.compile(r"\d+(?:[.,]\d+)*")
+# WHY: the topic link at the end of an authored bullet carries a file name and
+# a fragment, never a restated fact, so the number scan reads the prose alone.
+CHANGE_PROSE_LINK_RE = re.compile(r"\[[^\[\]]*\]\([^)]*\)")
 
 # ───────────────────────────────────────────────────────────────
 # 3. BLOCK REGISTRY
@@ -726,6 +760,18 @@ def read_index() -> Optional[str]:
     return read_text(INDEX_PATH)
 
 
+def read_year_changes() -> Optional[str]:
+    """Read the current year change overview text.
+
+    Returns:
+        The overview text, or None when the file does not exist yet.
+    """
+    path = os.path.join(REFERENCES_ROOT, YEAR_CHANGES_NAME)
+    if not os.path.isfile(path):
+        return None
+    return read_text(path)
+
+
 # ───────────────────────────────────────────────────────────────
 # 8. YEAR README BLOCKS
 # ───────────────────────────────────────────────────────────────
@@ -912,13 +958,13 @@ def is_year_topic(path: str) -> bool:
 
     Returns:
         True for a markdown file directly in a year folder, other than the
-        year README and the year changelog.
+        year README, the year changelog and the year change note.
     """
     name = os.path.basename(path)
     return (
         year_of(path) is not None
         and name.endswith(MARKDOWN_SUFFIX)
-        and name not in (README_NAME, CHANGELOG_NAME)
+        and name not in (README_NAME, CHANGELOG_NAME, CHANGE_NOTE_NAME)
     )
 
 
@@ -1125,7 +1171,341 @@ def headline_figures_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
 
 
 # ───────────────────────────────────────────────────────────────
-# 9. SECTION 3 BLOCKS
+# 9. CHANGE NOTES
+# ───────────────────────────────────────────────────────────────
+
+def section_lines(
+    text: str, level: int = 2, number: Optional[int] = None, keyword: str = ""
+) -> List[str]:
+    """Return the lines of the first heading section that matches.
+
+    The section starts on its heading line and ends on the line before the
+    next heading of the same level or a higher level, so the blank and
+    separator lines around it stay inside it. A heading inside frontmatter or
+    inside a code block is no heading.
+
+    Args:
+        text: File text.
+        level: Heading level to match.
+        number: Heading number to match, or None to match any number.
+        keyword: Text that the heading must hold, or an empty string.
+
+    Returns:
+        The section lines without their line endings, empty when no heading
+        matches.
+    """
+    spans = line_spans(text)
+    headings = markdown_headings(text)
+    for position, heading in enumerate(headings):
+        if heading["level"] != level:
+            continue
+        if number is not None and heading_parts(heading["text"])[0] != number:
+            continue
+        if keyword and keyword not in heading["text"]:
+            continue
+        stop = len(spans)
+        for following in headings[position + 1:]:
+            if following["level"] <= level:
+                stop = following["line"] - 1
+                break
+        return [span[1] for span in spans[heading["line"] - 1:stop]]
+    return []
+
+
+def bullet_lines(lines: List[str]) -> List[str]:
+    """Return the text of every markdown bullet line.
+
+    Args:
+        lines: Lines of one section.
+
+    Returns:
+        The bullet texts without their marker, in file order.
+    """
+    return [
+        line[len(CHANGE_BULLET_PREFIX):].strip()
+        for line in lines
+        if line.startswith(CHANGE_BULLET_PREFIX)
+    ]
+
+
+def topic_change_bullets(text: str) -> List[str]:
+    """Read the section 5 bullets of one topic file.
+
+    Args:
+        text: File text of a year topic file.
+
+    Returns:
+        The bullet texts in file order, empty when the file holds no section 5
+        heading.
+    """
+    return bullet_lines(section_lines(text, 2, number=CHANGE_SECTION_NUMBER))
+
+
+def change_snippet(bullet: str) -> str:
+    """Cut the first change bullet to a short table snippet.
+
+    The cut lands on a word boundary, so a snippet never ends in the middle of
+    a word. A pipe is escaped, because the snippet sits in a table cell.
+
+    Args:
+        bullet: First section 5 bullet of a topic file.
+
+    Returns:
+        The snippet, empty when the bullet is empty.
+    """
+    text = SPACE_RE.sub(" ", bullet).strip()
+    if len(text) > CHANGE_SNIPPET_LIMIT:
+        cut = text[:CHANGE_SNIPPET_LIMIT]
+        space = cut.rfind(" ")
+        if space > 0:
+            cut = cut[:space]
+        text = cut.rstrip(" ,.;:!?") + "..."
+    return text.replace("|", "\\|")
+
+
+def changes_row(name: str, bullets: List[str]) -> str:
+    """Render one change row of a year note.
+
+    Args:
+        name: Topic file name.
+        bullets: Section 5 bullets of the topic file.
+
+    Returns:
+        The row line, without a line ending. The first cell links to the
+        section 5 anchor of the topic file.
+    """
+    snippet = change_snippet(bullets[0]) if bullets else ""
+    return "| [%s](%s#%s) | %d | %s |" % (name, name, CHANGE_FRAGMENT, len(bullets), snippet)
+
+
+def changes_anchor(file: Dict[str, Any]) -> Optional[int]:
+    """Return where --init plants the empty change block pair.
+
+    Args:
+        file: File record from load_files().
+
+    Returns:
+        The offset just after the "All changes by topic" heading line, or None
+        for every file but a year change note that holds that heading.
+    """
+    if CHANGE_NOTE_RE.match(file["path"]) is None:
+        return None
+    spans = line_spans(file["text"])
+    index = heading_index(spans, CHANGES_BY_TOPIC_HEADING)
+    if index is None:
+        return None
+    return spans[index][3]
+
+
+@register_block(CHANGES_BLOCK_ID, anchor=changes_anchor)
+def changes_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
+    """Build the per-topic change table body of every year note.
+
+    One row per canonical topic file of the year, in the canonical order, with
+    the section 5 bullet count, the first bullet cut to a snippet and the link
+    to the section 5 anchor. The rows come from the topic files alone, so a
+    section 5 edit moves the table in one write run.
+
+    Args:
+        files: Result of load_files().
+
+    Returns:
+        The table body keyed by the note path. A year without a note keeps
+        every existing body.
+
+    Raises:
+        SystemExit: If a year note sits in a folder that misses one of the
+            canonical topic files.
+    """
+    by_path = {file["path"]: file for file in files}
+    topics = canonical_topics(by_path)
+    bodies: Dict[str, str] = {}
+    for path in sorted(by_path):
+        match = CHANGE_NOTE_RE.match(path)
+        if match is None:
+            continue
+        year = match.group(1)
+        rows: List[str] = []
+        for name in topics:
+            topic_path = "%s/%s" % (year, name)
+            if not is_year_topic(topic_path):
+                continue
+            topic = by_path.get(topic_path)
+            if topic is None:
+                fail("missing %s, every year folder holds each topic file" % topic_path)
+            rows.append(changes_row(name, topic_change_bullets(topic["text"])))
+        bodies[path] = table_text(CHANGES_TABLE_HEADER, rows, CHANGES_TABLE_SEPARATOR)
+    return bodies
+
+
+def authored_bullets(text: str) -> List[str]:
+    """Read the authored bullets of a year change note.
+
+    Args:
+        text: File text of a year change note.
+
+    Returns:
+        The bullet texts of the "Unique to <year>" section, in file order.
+    """
+    return bullet_lines(section_lines(text, 2, keyword=CHANGES_UNIQUE_PREFIX))
+
+
+def last_link_target(text: str) -> str:
+    """Return the target of the last markdown link on a line.
+
+    Args:
+        text: One bullet line.
+
+    Returns:
+        The target, empty when the line holds no link.
+    """
+    targets = LINK_TARGET_RE.findall(text)
+    return targets[-1] if targets else ""
+
+
+def overview_bullet(year: str, bullet: str) -> str:
+    """Return one authored bullet with its topic link aimed at the year folder.
+
+    A bullet in a year note links to its topic file as a sibling. The overview
+    sits at the references root, so the same link needs the year folder in
+    front. Every other part of the bullet stays as it is.
+
+    Args:
+        year: Year folder of the note.
+        bullet: Authored bullet of the note.
+
+    Returns:
+        The bullet for the overview.
+    """
+    targets = list(LINK_TARGET_RE.finditer(bullet))
+    if not targets:
+        return bullet
+    match = targets[-1]
+    path, separator, fragment = match.group(1).partition("#")
+    if not path or separator != "#" or fragment != CHANGE_FRAGMENT:
+        return bullet
+    resolved = os.path.normpath(os.path.join(year, path)).replace(os.sep, "/")
+    return bullet[:match.start()] + "](%s#%s)" % (resolved, fragment) + bullet[match.end():]
+
+
+def year_note_years(files: List[Dict[str, Any]]) -> List[str]:
+    """List the year folders that hold a change note, newest first.
+
+    Args:
+        files: Result of load_files().
+
+    Returns:
+        The four digit years in descending order.
+    """
+    years = []
+    for file in files:
+        match = CHANGE_NOTE_RE.match(file["path"])
+        if match is not None:
+            years.append(match.group(1))
+    return sorted(years, reverse=True)
+
+
+def year_changes_text(files: List[Dict[str, Any]]) -> str:
+    """Render the whole year change overview.
+
+    One H2 per year, newest first, with a path link to the year note and the
+    authored bullets of that note. The file is generated whole, so it carries
+    its own frontmatter and H1.
+
+    Args:
+        files: Result of load_files().
+
+    Returns:
+        The complete file text.
+    """
+    by_path = {file["path"]: file for file in files}
+    lines = [
+        "---",
+        'title: "Year changes"',
+        'description: "Generated overview of the changes in every tax year, newest first, with the path to each year note."',
+        "---",
+        "",
+        "# Year changes",
+        "",
+        "Generated overview of the changes in every tax year. Each section names the year note and repeats its authored bullets. The note owns the wording, so one edit moves both files.",
+        "",
+    ]
+    for year in year_note_years(files):
+        note = by_path["%s/%s" % (year, CHANGE_NOTE_NAME)]
+        bullets = authored_bullets(note["text"])
+        lines.append("## %s" % year)
+        lines.append("")
+        lines.append("Path: [%s/%s](%s/%s)" % (year, CHANGE_NOTE_NAME, year, CHANGE_NOTE_NAME))
+        lines.append("")
+        for bullet in bullets:
+            lines.append("- %s" % overview_bullet(year, bullet))
+        if bullets:
+            lines.append("")
+    return "\n".join(lines).rstrip("\n") + "\n"
+
+
+def change_note_problems(files: List[Dict[str, Any]]) -> List[str]:
+    """List the failures of the authored change bullets.
+
+    A bullet fails when it holds no link or a link that does not resolve to an
+    existing topic file and its section 5 anchor, when one of its numbers does
+    not occur as the same number in the linked section 5, or when its year
+    note holds fewer than five or more than ten authored bullets. A number
+    matches only as a whole token, so a bullet that says 26 does not match
+    2026 in the section text.
+
+    Args:
+        files: Result of load_files().
+
+    Returns:
+        One line per failure, naming the note, the bullet and the reason.
+    """
+    by_path = {file["path"]: file for file in files}
+    problems: List[str] = []
+    for path in sorted(by_path):
+        match = CHANGE_NOTE_RE.match(path)
+        if match is None:
+            continue
+        year = match.group(1)
+        bullets = authored_bullets(by_path[path]["text"])
+        if not CHANGE_BULLET_MIN <= len(bullets) <= CHANGE_BULLET_MAX:
+            problems.append(
+                "changes %s %d authored bullets, the band is %d to %d"
+                % (path, len(bullets), CHANGE_BULLET_MIN, CHANGE_BULLET_MAX)
+            )
+        for position, bullet in enumerate(bullets, 1):
+            target = last_link_target(bullet)
+            path_part, separator, fragment = target.partition("#")
+            resolved = ""
+            if path_part and separator == "#":
+                resolved = os.path.normpath(os.path.join(year, path_part)).replace(os.sep, "/")
+            topic = by_path.get(resolved) if resolved.startswith(year + "/") else None
+            if (
+                not target
+                or separator != "#"
+                or fragment != CHANGE_FRAGMENT
+                or topic is None
+                or '<a id="%s"></a>' % CHANGE_FRAGMENT not in topic["text"]
+            ):
+                problems.append(
+                    "changes %s bullet %d link %s does not resolve"
+                    % (path, position, target or "none")
+                )
+                continue
+            section = "\n".join(section_lines(topic["text"], 2, number=CHANGE_SECTION_NUMBER))
+            section_numbers = set(NUMBER_RE.findall(section))
+            for number in NUMBER_RE.findall(CHANGE_PROSE_LINK_RE.sub(" ", bullet)):
+                if number not in section_numbers:
+                    problems.append(
+                        "changes %s bullet %d number %s not in %s#%s"
+                        % (path, position, number, path_part, CHANGE_FRAGMENT)
+                    )
+                    break
+    return problems
+
+
+# ───────────────────────────────────────────────────────────────
+# 10. SECTION 3 BLOCKS
 # ───────────────────────────────────────────────────────────────
 
 def guide_file(files: List[Dict[str, Any]]) -> Dict[str, Any]:
@@ -1332,7 +1712,7 @@ def register_section_three_blocks(section: Dict[str, Any]) -> None:
 
 
 # ───────────────────────────────────────────────────────────────
-# 10. NAVIGATION BLOCKS
+# 11. NAVIGATION BLOCKS
 # ───────────────────────────────────────────────────────────────
 
 def markdown_headings(text: str) -> List[Dict[str, Any]]:
@@ -1895,7 +2275,7 @@ def toc_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
 
 
 # ───────────────────────────────────────────────────────────────
-# 11. BLOCK BODIES
+# 12. BLOCK BODIES
 # ───────────────────────────────────────────────────────────────
 
 def load_files() -> List[Dict[str, Any]]:
@@ -1991,7 +2371,9 @@ def missing_fences(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]
 def render_files(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]]) -> Dict[str, str]:
     """Return the expected text of every file after the block bodies.
 
-    Only the bytes between a matched fence pair are replaced.
+    Only the bytes between a matched fence pair are replaced. The year change
+    overview is generated whole, so its text is set here and the index and
+    every drift report read the generated form.
 
     Args:
         files: Result of load_files().
@@ -2013,6 +2395,7 @@ def render_files(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]])
         for start, end, body in sorted(replacements, reverse=True):
             text = text[:start] + body + text[end:]
         rendered[file["path"]] = text
+    rendered[YEAR_CHANGES_NAME] = year_changes_text(files)
     return rendered
 
 
@@ -2031,11 +2414,16 @@ def expected_index(files: List[Dict[str, Any]], rendered: Dict[str, str]) -> str
         for file in files
         if file["path"].endswith(MARKDOWN_SUFFIX)
     ]
+    # WHY: the overview is generated whole, so it gains its index row even when
+    # the tree does not hold the file yet.
+    if YEAR_CHANGES_NAME not in {file["path"] for file in files}:
+        entries.append(index_entry(YEAR_CHANGES_NAME, rendered[YEAR_CHANGES_NAME]))
+        entries.sort(key=lambda entry: entry["path"])
     return build_index_text(entries)
 
 
 # ───────────────────────────────────────────────────────────────
-# 12. CHECK AND WRITE
+# 13. CHECK AND WRITE
 # ───────────────────────────────────────────────────────────────
 
 def budget_problems(files: List[Dict[str, Any]]) -> List[str]:
@@ -2079,6 +2467,10 @@ def check_all(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]], re
     problems = budget_problems(files)
     problems += ["drift %s %s" % pair for pair in missing_fences(files, bodies)]
     for file in files:
+        # WHY: the overview is generated whole and reported on its own line, so
+        # the block loop leaves it out.
+        if file["path"] == YEAR_CHANGES_NAME:
+            continue
         reported = False
         for block in file["blocks"]:
             produced = bodies.get(block["id"], {}).get(file["path"])
@@ -2089,6 +2481,9 @@ def check_all(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]], re
                 reported = True
         if not reported and rendered[file["path"]] != file["text"]:
             problems.append("drift %s %s" % (file["path"], FILE_DRIFT_ID))
+    problems += change_note_problems(files)
+    if read_year_changes() != rendered[YEAR_CHANGES_NAME]:
+        problems.append("drift %s" % YEAR_CHANGES_NAME)
     if read_index() != expected_index(files, rendered):
         problems.append("drift %s" % INDEX_NAME)
     if problems:
@@ -2100,7 +2495,7 @@ def check_all(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]], re
 
 
 def write_all(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]], rendered: Dict[str, str]) -> int:
-    """Write every changed file and the index.
+    """Write every changed file, the year change overview and the index.
 
     Args:
         files: Result of load_files().
@@ -2117,10 +2512,15 @@ def write_all(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]], re
         print("reference-index: run --init before a write")
         return 1
     written = []
+    seen = set()
     for file in files:
+        seen.add(file["path"])
         if rendered[file["path"]] != file["text"]:
             write_text(file["absolute"], rendered[file["path"]])
             written.append(file["path"])
+    if YEAR_CHANGES_NAME not in seen:
+        write_text(os.path.join(REFERENCES_ROOT, YEAR_CHANGES_NAME), rendered[YEAR_CHANGES_NAME])
+        written.append(YEAR_CHANGES_NAME)
     text = expected_index(files, rendered)
     index_changed = read_index() != text
     if index_changed:
@@ -2212,7 +2612,7 @@ def init_fences(files: List[Dict[str, Any]]) -> int:
 
 
 # ───────────────────────────────────────────────────────────────
-# 13. OVERLAP REPORT
+# 14. OVERLAP REPORT
 # ───────────────────────────────────────────────────────────────
 
 def owner_rows(blocks: List[Dict[str, Any]], block_id: str) -> Set[Tuple[str, str, str]]:
@@ -2301,7 +2701,7 @@ def overlap_report(files: List[Dict[str, Any]], guide: Dict[str, Any], section: 
 
 
 # ───────────────────────────────────────────────────────────────
-# 14. REACHABILITY CHECK
+# 15. REACHABILITY CHECK
 # ───────────────────────────────────────────────────────────────
 
 def is_folder_index(path: str) -> bool:
@@ -2439,7 +2839,7 @@ def reachability_report() -> int:
 
 
 # ───────────────────────────────────────────────────────────────
-# 15. ENTRY POINT
+# 16. ENTRY POINT
 # ───────────────────────────────────────────────────────────────
 
 def main(argv: List[str]) -> int:

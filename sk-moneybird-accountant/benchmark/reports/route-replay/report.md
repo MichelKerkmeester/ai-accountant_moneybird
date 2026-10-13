@@ -1,6 +1,6 @@
 # Route replay report
 
-Router snapshot: sha256:96643aa7d05f6367eb3527c194a982410fb69381864f4dcccd4ec6806f411c1b
+Router snapshot: sha256:c2c7255e8f3f3b91473d535df0503595215d2d9b2aa5d816a7f2e9c71e1b44f6
 Mode: resolve
 Corpus: routing-gold.json with 42 rows
 Token encoding: o200k_base from the pinned cache
@@ -38,12 +38,12 @@ Route margin: 0.25. Warning band: 0.08. Fallback floor: 0.5.
 | MIG-002 | en | calibration | MIGRATION/T1 | 12843 | 2 of 2 | PASS |
 | MIG-003 | en | calibration | MIGRATION/T1 | 18575 | 2 of 2 | PASS |
 | MIG-004 | en | held-out | MIGRATION/T1 | 18575 | 2 of 2 | PASS |
-| LIVE-001 | en | calibration | LIVE/T3 | 5030 | 2 of 2 | PASS |
-| LIVE-002 | en | held-out | LIVE/T3 | 22875 | 2 of 2 | PASS |
+| LIVE-001 | en | calibration | LIVE/T3 | 5080 | 2 of 2 | PASS |
+| LIVE-002 | en | held-out | LIVE/T3 | 22925 | 2 of 2 | PASS |
 | LIVE-003 | en | calibration | LIVE/T4 | 29304 | 2 of 2 | PASS |
-| TAX-001 | en | calibration | LIVE/T5 | 6684 | 2 of 2 | PASS |
+| TAX-001 | en | calibration | LIVE/T5 | 6734 | 2 of 2 | PASS |
 | TAX-002 | en | held-out | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
-| TAX-003 | en | held-out | LIVE/T5 | 3027 | 2 of 2 | PASS |
+| TAX-003 | en | held-out | LIVE/T5 | 3136 | 2 of 2 | PASS |
 | PRIV-001 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | API-001 | en | calibration | MIGRATION/T1 | 12843 | 2 of 2 | PASS |
 | MODE-001-nl | nl | calibration | MIGRATION/T1 | 18385 | 2 of 2 | PASS |
@@ -53,23 +53,23 @@ Route margin: 0.25. Warning band: 0.08. Fallback floor: 0.5.
 | MIG-002-nl | nl | calibration | MIGRATION/T1 | 12843 | 2 of 2 | PASS |
 | MIG-003-nl | nl | calibration | MIGRATION/T1 | 18575 | 2 of 2 | PASS |
 | MIG-004-nl | nl | held-out | MIGRATION/T1 | 18575 | 2 of 2 | PASS |
-| LIVE-001-nl | nl | calibration | LIVE/T3 | 5030 | 2 of 2 | PASS |
-| LIVE-002-nl | nl | held-out | LIVE/T3 | 22875 | 2 of 2 | PASS |
+| LIVE-001-nl | nl | calibration | LIVE/T3 | 5080 | 2 of 2 | PASS |
+| LIVE-002-nl | nl | held-out | LIVE/T3 | 22925 | 2 of 2 | PASS |
 | LIVE-003-nl | nl | calibration | LIVE/T4 | 29304 | 2 of 2 | PASS |
-| TAX-001-nl | nl | calibration | LIVE/T5 | 6684 | 2 of 2 | PASS |
+| TAX-001-nl | nl | calibration | LIVE/T5 | 6734 | 2 of 2 | PASS |
 | TAX-002-nl | nl | held-out | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
-| TAX-003-nl | nl | held-out | LIVE/T5 | 3027 | 2 of 2 | PASS |
+| TAX-003-nl | nl | held-out | LIVE/T5 | 3136 | 2 of 2 | PASS |
 | PRIV-001-nl | nl | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | API-001-nl | nl | calibration | MIGRATION/T1 | 12843 | 2 of 2 | PASS |
 | GAP-T2-01 | en | calibration | MIGRATION/T2 | 1114 | 1 of 1 | PASS |
 | GAP-T6-01 | en | calibration | LIVE/T6 | 11015 | 1 of 1 | PASS |
 | TIE-T4-T3-01 | nl | calibration | LIVE/T4 | 29304 | 1 of 1 | PASS |
-| TIE-T5-T6-01 | nl | calibration | LIVE/T5 | 6689 | 2 of 2 | PASS |
+| TIE-T5-T6-01 | nl | calibration | LIVE/T5 | 6739 | 2 of 2 | PASS |
 | TIE-T1-T3-01 | en | calibration | MIGRATION/T1 | 19374 | 2 of 2 | PASS |
 | TIER-A-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | TIER-B-01 | nl | calibration | ABSTAIN/abstain | 0 | 0 of 0 | PASS |
 | TIER-C-01 | nl | calibration | LIVE/T5 | 0 | 0 of 0 | PASS |
 | OUT-OF-SCOPE-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
-| FOLLOW-01 | nl | calibration | LIVE/T3 | 5030 | 2 of 2 | PASS |
+| FOLLOW-01 | nl | calibration | LIVE/T3 | 5080 | 2 of 2 | PASS |
 | MIX-01 | mixed | calibration | LIVE/T4 | 29304 | 2 of 2 | PASS |
-| MIX-02 | mixed | calibration | LIVE/T3 | 5030 | 2 of 2 | PASS |
+| MIX-02 | mixed | calibration | LIVE/T3 | 5080 | 2 of 2 | PASS |

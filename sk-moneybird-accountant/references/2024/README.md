@@ -83,4 +83,5 @@ The first two rows of each file's figures table. The topic file carries the sour
 
 - [Dutch tax rules](../dutch-tax-rules.md) for how each rule works across years.
 - Neighbouring years: [2023](../2023/README.md) and [2025](../2025/README.md).
+- [What changed in 2024](changes.md) for the year's differences from 2023.
 - [Moneybird bookkeeping](../moneybird-bookkeeping.md) for how a rule becomes a booking.

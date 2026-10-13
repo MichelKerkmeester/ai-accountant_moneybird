@@ -60,9 +60,10 @@ SCHEME_RE = re.compile(r"^[a-zA-Z][a-zA-Z0-9+.\-]*:")
 YEAR_DIR_RE = re.compile(r"^20\d\d$")
 IMAGE_PREFIX = "!"
 
-# WHY: a year folder holds two files beside its topic files, the year README
-# and the year changelog. Neither carries the eight section ids.
-YEAR_NON_TOPIC_NAMES = frozenset(("README.md", "changelog.md"))
+# WHY: a year folder holds three files beside its topic files, the year README,
+# the year changelog and the year change note. None of the three carries the
+# eight section ids.
+YEAR_NON_TOPIC_NAMES = frozenset(("README.md", "changelog.md", "changes.md"))
 
 SECTION_IDS = (
     "1-overview",
@@ -330,7 +331,8 @@ def is_year_topic(relative_path: str) -> bool:
 
     Returns:
         True for a markdown file directly in a year folder under references,
-        other than the year README and the year changelog.
+        other than the year README, the year changelog and the year change
+        note.
     """
     parts = relative_path.split("/")
     return (

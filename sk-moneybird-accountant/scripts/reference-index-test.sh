@@ -138,6 +138,20 @@ copy_skill() {
     cp -R "$SKILL_SRC" "$destination"
 }
 
+# Copy one built fixture folder into a fresh path
+# Args:
+#   $1 - Source skill folder
+#   $2 - Destination skill folder
+# Returns:
+#   0 when the copy is ready, 1 when the copy fails
+copy_fixture() {
+    local source="$1"
+    local destination="$2"
+    rm -rf "$destination"
+    mkdir -p "$(dirname "$destination")" || return 1
+    cp -R "$source" "$destination"
+}
+
 # Run the generator of one skill copy and capture its output
 # Args:
 #   $1 - Skill folder
@@ -230,6 +244,13 @@ RATE_BOX1=$(printf '%d,%02d%%' 37 35)
 RATE_BAND2=$(printf '%d,%02d%%' 9 70)
 RATE_BOX1_UP="${RATE_BOX1} up to"
 RATE_BOX1_NEXT=$(printf '%d,%02d%% up to' 37 36)
+
+# The year change fixture numbers are built the same way, so the tracked file
+# holds no amount-shaped literal either.
+FIX_RATE_A=$(printf '%d' 21)
+FIX_RATE_B=$(printf '%d,%02d' 37 35)
+FIX_RATE_C=$(printf '%d,%02d' 9 70)
+FIX_RATE_MISSING=$(printf '%d' 99)
 
 # Build a minimal skill folder with one year folder, a large file, a guide
 # with section 3, a manifest and the page that routes the fixture leaves
@@ -324,6 +345,65 @@ EOF
     return 0
 }
 
+# Add a year change note and section 5 bullets to the fixture repository
+# Args:
+#   $1 - Skill folder to extend
+# Returns:
+#   0 when the fixture is ready, 1 when a write fails
+make_changes_fixture() {
+    local skill="$1"
+    make_fixture "$skill" || return 1
+    cat >>"$skill/references/2020/btw.md" <<EOF
+
+## 5. CHANGES FROM 2019
+
+<a id="5-changes"></a>
+
+- The standard rate stayed at ${FIX_RATE_A} percent in the fixture year.
+- The reduced rate stayed at ${FIX_RATE_C} percent in the fixture year.
+EOF
+    cat >>"$skill/references/2020/inkomstenbelasting.md" <<EOF
+
+## 5. CHANGES FROM 2019
+
+<a id="5-changes"></a>
+
+- The box 1 rate stayed at ${FIX_RATE_B} percent in the fixture year.
+- The band stayed at ${FIX_RATE_C} percent in the fixture year.
+- The fixture year 2020 kept its rules.
+EOF
+    cat >"$skill/references/2020/changelog.md" <<'EOF'
+# Corrections 2020
+
+Fixture correction log for the change note fixture.
+EOF
+    cat >"$skill/references/2020/changes.md" <<EOF
+---
+title: "Changes tax year 2020"
+description: "Fixture year change note."
+---
+
+# Changes tax year 2020
+
+**Rule:** The fixture note restates section 5 of the year topics and links the [correction log](changelog.md) and the [year overview](README.md).
+
+---
+
+## 1. Unique to 2020
+
+- Standard rate stayed at ${FIX_RATE_A} percent. [btw.md](btw.md#5-changes)
+- Reduced rate stayed at ${FIX_RATE_C} percent. [btw.md](btw.md#5-changes)
+- Box 1 rate stayed at ${FIX_RATE_B} percent. [inkomstenbelasting.md](inkomstenbelasting.md#5-changes)
+- Band stayed at ${FIX_RATE_C} percent. [inkomstenbelasting.md](inkomstenbelasting.md#5-changes)
+- Fixture year 2020 kept its rules. [inkomstenbelasting.md](inkomstenbelasting.md#5-changes)
+
+---
+
+## 2. All changes by topic
+EOF
+    return 0
+}
+
 # ───────────────────────────────────────────────────────────────
 # 6. REAL CORPUS
 # ───────────────────────────────────────────────────────────────
@@ -371,6 +451,20 @@ if copy_skill "$REAL_COPY"; then
     fi
 else
     fail "the temp copy of the skill folder builds"
+fi
+
+group "real change notes"
+real_change_rows=$(sed -n '/GENERATED:changes:start/,/GENERATED:changes:end/p' "$SKILL_SRC/references/2026/changes.md" | grep -c '#5-changes)')
+if [[ "$real_change_rows" == "12" ]]; then
+    pass "the real 2026 note lists all twelve topics with a section link"
+else
+    fail "the real 2026 note lists all twelve topics with a section link"
+fi
+real_overview_years=$(grep -c '^## 20' "$SKILL_SRC/references/year-changes.md")
+if [[ "$real_overview_years" == "8" ]]; then
+    pass "the real overview holds eight year sections"
+else
+    fail "the real overview holds eight year sections"
 fi
 
 # ───────────────────────────────────────────────────────────────
@@ -458,6 +552,154 @@ if [[ "$status" -eq 2 ]] && grep -qF 'no KEY FIGURES table in 2020/btw.md' "$TMP
     pass "a topic file is still held to the topic rules"
 else
     fail "a topic file is still held to the topic rules"
+fi
+
+group "year change notes"
+CHANGES_FIXTURE="$TMP_ROOT/change-fixture/sk-moneybird-accountant"
+CHANGES_NOTE="$CHANGES_FIXTURE/references/2020/changes.md"
+CHANGES_OVERVIEW="$CHANGES_FIXTURE/references/year-changes.md"
+CHANGE_MUTANT="$TMP_ROOT/change-mutant/sk-moneybird-accountant"
+CHANGES_FENCE_START="<!-- ${GEN_WORD}:changes:start -->"
+if make_changes_fixture "$CHANGES_FIXTURE"; then
+    pass "the year change fixture builds"
+else
+    fail "the year change fixture builds"
+fi
+if run_generator "$CHANGES_FIXTURE" --init; then
+    pass "the year change fixture --init exits 0"
+else
+    fail "the year change fixture --init exits 0"
+fi
+if awk -v heading='## 2. All changes by topic' -v marker="$CHANGES_FENCE_START" '
+    $0 == heading { found = 1; next }
+    found && $0 == "" { next }
+    found { print ($0 == marker) ? "yes" : "no"; exit }
+' "$CHANGES_NOTE" | grep -q '^yes$'; then
+    pass "--init places the change fence under its section heading"
+else
+    fail "--init places the change fence under its section heading"
+fi
+if run_generator "$CHANGES_FIXTURE" && run_generator "$CHANGES_FIXTURE" --check; then
+    pass "the year change fixture passes --check after a write"
+else
+    fail "the year change fixture passes --check after a write"
+fi
+change_before=$(tree_checksums "$CHANGES_FIXTURE")
+run_generator "$CHANGES_FIXTURE"
+status=$?
+change_after=$(tree_checksums "$CHANGES_FIXTURE")
+if [[ "$status" -eq 0 ]] && [[ "$change_before" == "$change_after" ]]; then
+    pass "a second write leaves the year change files byte-identical"
+else
+    fail "a second write leaves the year change files byte-identical"
+fi
+if grep -qF "| [btw.md](btw.md#5-changes) | 2 | The standard rate stayed at ${FIX_RATE_A} percent in the fixture year. |" "$CHANGES_NOTE"; then
+    pass "the year note lists the topic count and the first bullet snippet"
+else
+    fail "the year note lists the topic count and the first bullet snippet"
+fi
+if grep -qF '| [inkomstenbelasting.md](inkomstenbelasting.md#5-changes) | 3 |' "$CHANGES_NOTE"; then
+    pass "the year note lists every topic of the year"
+else
+    fail "the year note lists every topic of the year"
+fi
+if grep -qF '](2020/changes.md)' "$CHANGES_OVERVIEW" \
+    && grep -qF -- "- Standard rate stayed at ${FIX_RATE_A} percent. [btw.md](2020/btw.md#5-changes)" "$CHANGES_OVERVIEW"; then
+    pass "the overview holds the path link and the rebased authored bullet"
+else
+    fail "the overview holds the path link and the rebased authored bullet"
+fi
+copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
+python3 - "$CHANGE_MUTANT/references/2020/changes.md" "$CHANGES_FENCE_START" <<'PY'
+import sys
+
+path, tag = sys.argv[1], sys.argv[2]
+lines = open(path, encoding="utf-8").read().split("\n")
+out = []
+for line in lines:
+    out.append(line)
+    if line == tag:
+        out.append("| hand | edit | inside | the | fence |")
+open(path, "w", encoding="utf-8").write("\n".join(out))
+PY
+run_generator "$CHANGE_MUTANT" --check
+status=$?
+if [[ "$status" -ne 0 ]] && grep -q '^drift 2020/changes.md changes' "$TMP_ROOT/out.txt"; then
+    pass "a hand edit inside the change block fails the check"
+else
+    fail "a hand edit inside the change block fails the check"
+fi
+copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
+printf 'Hand edit in the overview.\n' >>"$CHANGE_MUTANT/references/year-changes.md"
+run_generator "$CHANGE_MUTANT" --check
+status=$?
+if [[ "$status" -ne 0 ]] && grep -q '^drift year-changes.md$' "$TMP_ROOT/out.txt"; then
+    pass "a hand edit in the overview fails the check and names the file"
+else
+    fail "a hand edit in the overview fails the check and names the file"
+fi
+copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
+sed -i.bak "s/Standard rate stayed at ${FIX_RATE_A} percent/Standard rate stayed at ${FIX_RATE_MISSING} percent/" \
+    "$CHANGE_MUTANT/references/2020/changes.md"
+run_generator "$CHANGE_MUTANT" --check
+status=$?
+if [[ "$status" -ne 0 ]] && grep -q "^changes 2020/changes.md bullet 1 number ${FIX_RATE_MISSING} not in btw.md#5-changes$" "$TMP_ROOT/out.txt"; then
+    pass "a bullet number missing from section 5 fails the check"
+else
+    fail "a bullet number missing from section 5 fails the check"
+fi
+copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
+sed -i.bak 's/btw.md#5-changes/btw.md#6-in-the-books/' "$CHANGE_MUTANT/references/2020/changes.md"
+run_generator "$CHANGE_MUTANT" --check
+status=$?
+if [[ "$status" -ne 0 ]] && grep -q '^changes 2020/changes.md bullet 1 link btw.md#6-in-the-books does not resolve$' "$TMP_ROOT/out.txt"; then
+    pass "a bullet link that does not resolve fails the check"
+else
+    fail "a bullet link that does not resolve fails the check"
+fi
+copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
+sed -i.bak '/Reduced rate stayed at/d' "$CHANGE_MUTANT/references/2020/changes.md"
+run_generator "$CHANGE_MUTANT" --check
+status=$?
+if [[ "$status" -ne 0 ]] && grep -q '^changes 2020/changes.md 4 authored bullets, the band is 5 to 10$' "$TMP_ROOT/out.txt"; then
+    pass "a year note under the bullet band fails the check"
+else
+    fail "a year note under the bullet band fails the check"
+fi
+copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
+python3 - "$CHANGE_MUTANT/references/2020/changes.md" <<'PY'
+import sys
+
+path = sys.argv[1]
+lines = open(path, encoding="utf-8").read().split("\n")
+out = []
+for line in lines:
+    if line == "## 2. All changes by topic":
+        out.extend(["- Fixture extra bullet. [btw.md](btw.md#5-changes)"] * 6)
+    out.append(line)
+open(path, "w", encoding="utf-8").write("\n".join(out))
+PY
+run_generator "$CHANGE_MUTANT" --check
+status=$?
+if [[ "$status" -ne 0 ]] && grep -q '^changes 2020/changes.md 11 authored bullets, the band is 5 to 10$' "$TMP_ROOT/out.txt"; then
+    pass "a year note over the bullet band fails the check"
+else
+    fail "a year note over the bullet band fails the check"
+fi
+python3 - "$CHANGES_FIXTURE/references/dutch-tax-rules.md" <<'PY'
+import sys
+
+path = sys.argv[1]
+row = "| `inkomstenbelasting.md` | Income tax |\n"
+added = "| `changes.md` | Changes |\n"
+text = open(path, encoding="utf-8").read()
+open(path, "w", encoding="utf-8").write(text.replace(row, row + added, 1))
+PY
+if run_generator "$CHANGES_FIXTURE" && run_generator "$CHANGES_FIXTURE" --check \
+    && ! grep -qF 'changes.md' "$CHANGES_FIXTURE/references/2020/README.md"; then
+    pass "a year change note is not held to the topic rules"
+else
+    fail "a year change note is not held to the topic rules"
 fi
 
 # ───────────────────────────────────────────────────────────────

@@ -210,6 +210,24 @@ write_changelog() {
 MARKDOWN
 }
 
+# Write the year change note with no section ids and one resolving topic link
+# Args:
+#   $1 - Repository root
+# Returns:
+#   0 when the file is written, 1 when a write fails
+write_changes() {
+    local file="$1/sk-moneybird-accountant/references/2026/changes.md"
+    cat >"$file" <<'MARKDOWN' || return 1
+# Changes 2026
+
+## 1. Unique to 2026
+
+- Fixture change. [topic.md](topic.md#5-changes)
+
+## 2. All changes by topic
+MARKDOWN
+}
+
 # Build the fixture repository with a target file, a topic file and one good link
 # Args:
 #   $1 - Repository root to create
@@ -434,6 +452,29 @@ if [[ "$status" -eq 1 ]] && grep -qF '3-how-it-works missing-id' "$TMP_ROOT/out.
     pass "a topic file beside a clean changelog is still held to the topic ids"
 else
     fail "a topic file beside a clean changelog is still held to the topic ids"
+fi
+
+write_topic "$FIX"
+write_changes "$FIX"
+write_source 'targets.md#good-heading'
+run_checker "$FIX"
+status=$?
+if [[ "$status" -eq 0 ]]; then
+    pass "a year change note is not held to the topic ids"
+else
+    fail "a year change note is not held to the topic ids"
+fi
+
+write_topic "$FIX"
+sed -i.bak '/<a id="3-how-it-works"><\/a>/d' "$TOPIC"
+write_changes "$FIX"
+run_checker "$FIX"
+status=$?
+if [[ "$status" -eq 1 ]] && grep -qF '3-how-it-works missing-id' "$TMP_ROOT/out.txt" \
+    && ! grep -qF 'changes.md' "$TMP_ROOT/out.txt"; then
+    pass "a topic file beside a clean change note is still held to the topic ids"
+else
+    fail "a topic file beside a clean change note is still held to the topic ids"
 fi
 
 # ───────────────────────────────────────────────────────────────
