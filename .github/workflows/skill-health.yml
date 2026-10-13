@@ -123,6 +123,12 @@ jobs:
           set +e
           python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-links > link-report.json
           echo "status=$?" >> "$GITHUB_OUTPUT"
+      # The full report is far over the issue body limit, so the issue carries
+      # the summary and the failing rows only.
+      - name: Summarise the failing links
+        if: steps.links.outputs.status != '0'
+        run: |
+          python3 -I -c "import json; d = json.load(open('link-report.json')); known = ('dead', 'archive-not-fetchable'); bad = [r for r in d['rows'] if r['result'] in ('dead', 'error', 'redirect') and r['recorded_access'] not in known]; print('Summary: ' + json.dumps(d['summary'])); print(); [print('- %s %s %s cited by %s' % (r['result'], r.get('http_status'), r['url'], ', '.join(r['cited_by']))) for r in bad[:200]]" > link-failures.md
       - name: Open one issue when a link fails
         if: steps.links.outputs.status != '0'
         env:
@@ -131,6 +137,43 @@ jobs:
         run: |
           title="Source link check failed on $(date -u +%Y-%m-%d)"
           if ! gh issue list --state open --search "Source link check failed in:title" --json number --jq '.[0].number' | grep -q .; then
-            gh issue create --title "$title" --body-file link-report.json
+            gh issue create --title "$title" --body-file link-failures.md
           fi
           exit 1
+      # A changed watched source or a stale year file is upkeep for the
+      # Operator, reported as an issue, not a failure of the skill.
+      - name: Watch the publication series
+        id: watch
+        run: |
+          set +e
+          python3 -I sk-moneybird-accountant/scripts/build-source-library.py --watch > watch-report.txt
+          echo "status=$?" >> "$GITHUB_OUTPUT"
+          cat watch-report.txt
+      - name: Check the year files against the release calendar
+        id: calendar
+        run: |
+          set +e
+          python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-calendar > calendar-report.txt
+          echo "status=$?" >> "$GITHUB_OUTPUT"
+          cat calendar-report.txt
+      - name: Open one issue when a watched source changed
+        if: steps.watch.outputs.status == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if ! gh issue list --state open --search "Watched source changed in:title" --json number --jq '.[0].number' | grep -q .; then
+            gh issue create --title "Watched source changed on $(date -u +%Y-%m-%d)" --body-file watch-report.txt
+          fi
+      - name: Open one issue when a year file is past its checkpoint
+        if: steps.calendar.outputs.status == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if ! gh issue list --state open --search "Year files need a refresh in:title" --json number --jq '.[0].number' | grep -q .; then
+            gh issue create --title "Year files need a refresh on $(date -u +%Y-%m-%d)" --body-file calendar-report.txt
+          fi
+      - name: Fail on a watch or calendar usage error
+        if: steps.watch.outputs.status == '2' || steps.calendar.outputs.status == '2'
+        run: exit 1
