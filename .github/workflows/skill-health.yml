@@ -131,17 +131,6 @@ jobs:
         if: steps.links.outputs.status != '0'
         run: |
           python3 -I -c "import json; d = json.load(open('link-report.json')); known = ('dead', 'archive-not-fetchable'); bad = [r for r in d['rows'] if r['result'] in ('dead', 'error', 'redirect') and r['recorded_access'] not in known]; print('Summary: ' + json.dumps(d['summary'])); print(); [print('- %s %s %s cited by %s' % (r['result'], r.get('http_status'), r['url'], ', '.join(r['cited_by']))) for r in bad[:200]]" > link-failures.md
-      - name: Open one issue when a link fails
-        if: steps.links.outputs.status != '0'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
-        run: |
-          title="Source link check failed on $(date -u +%Y-%m-%d)"
-          if ! gh issue list --state open --search "Source link check failed in:title" --json number --jq '.[0].number' | grep -q .; then
-            gh issue create --title "$title" --body-file link-failures.md
-          fi
-          exit 1
       # A changed watched source or a stale year file is upkeep for the
       # Operator, reported as an issue, not a failure of the skill.
       - name: Watch the publication series
@@ -176,6 +165,18 @@ jobs:
           if ! gh issue list --state open --search "Year files need a refresh in:title" --json number --jq '.[0].number' | grep -q .; then
             gh issue create --title "Year files need a refresh on $(date -u +%Y-%m-%d)" --body-file calendar-report.txt
           fi
+      # Runs last so a failing link never skips the watch and calendar steps.
+      - name: Open one issue when a link fails
+        if: steps.links.outputs.status != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          title="Source link check failed on $(date -u +%Y-%m-%d)"
+          if ! gh issue list --state open --search "Source link check failed in:title" --json number --jq '.[0].number' | grep -q .; then
+            gh issue create --title "$title" --body-file link-failures.md
+          fi
+          exit 1
       - name: Fail on a watch or calendar usage error
         if: steps.watch.outputs.status == '2' || steps.calendar.outputs.status == '2'
         run: exit 1

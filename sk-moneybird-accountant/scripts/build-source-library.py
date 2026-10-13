@@ -42,22 +42,30 @@ Options:
                   Endpoint rows and rows recorded as reachable only through
                   WebFetch are reported as skipped, never as failed. A row is
                   ok only when the final answer after followed redirects is 2xx.
-                  An unfollowed redirect is a failure of its own kind.
+                  An unfollowed redirect is a failure of its own kind. A 401,
+                  403 or 429 is a blocked row: the host refused this client,
+                  so the page is not dead and the row is not a failure.
     --apply-report Read a --check-links report and write its access result,
                   status, check date, digest, retrieval date, entity tag
                   fingerprint and last modification date into the matching
-                  index rows. Offline.
+                  index rows. A blocked row is left untouched: no field is
+                  written, not its access, status, check date, digest,
+                  retrieval date, entity tag or last modification date, and
+                  it stays out of the update count. The run prints how many
+                  blocked rows it skipped. Offline.
     --watch       Fetch every URL of the source watchlist and compare its
                   entity tag fingerprint, last modification date and digest
                   with the stored values. The index row of the URL wins, the
                   state file covers URLs the index does not hold. Every
                   answered status is recorded, including a 404, and a stored
-                  404 that answers 200 is reported. Without --state it reads
-                  assets/source-watch-state.json when that file exists and
-                  never writes it. Prints one line per changed URL with its
-                  series and its citing files. A fetch failure is reported per
-                  URL and does not stop the run. This mode is network only and
-                  never runs with --check.
+                  404 that answers 200 is reported. A 401, 403 or 429 answer
+                  is reported as blocked and leaves the stored values alone.
+                  Without --state it reads assets/source-watch-state.json when
+                  that file exists and never writes it. Prints one line per
+                  changed URL with its series and its citing files. A fetch
+                  failure and a refusal are reported per URL and do not stop
+                  the run. This mode is network only and never runs with
+                  --check.
     --check-calendar Read checked_on from the year READMEs and the rules file,
                   and the checkpoint dates from the rollover runbook. Exits 1
                   when a current or future year is older than the latest passed
@@ -168,6 +176,10 @@ SKIP_FETCH_ACCESS = ("endpoint", "webfetch-only")
 
 # Access values that fail the trace, beside a URL the index does not hold.
 TRACE_FAIL_ACCESS = ("dead", "unchecked")
+
+# WHY: a host that turns this client away still serves the page to others, so
+# a refusal is its own result and never a missing page.
+BLOCKED_STATUSES = (401, 403, 429)
 
 # WHY: the index keeps one row per line and every stored field per URL. The
 # first group is always written, the second only when it holds a value.
@@ -651,6 +663,10 @@ def write_index(expected: str, count: int) -> int:
 def apply_report(path: str) -> int:
     """Write the fields of a link report into the matching index rows.
 
+    A blocked row is left untouched. A host that refuses this client says
+    nothing about the page, so no field is written and the row stays out of
+    the update count. The skipped blocked rows are counted on stdout.
+
     Args:
         path: Path to the JSON report a --check-links run printed.
 
@@ -677,6 +693,7 @@ def apply_report(path: str) -> int:
     document = read_index()
     by_url = {row.get("url"): row for row in document["sources"] if isinstance(row, dict)}
     updated = 0
+    blocked = 0
     for entry in rows:
         if not isinstance(entry, dict):
             continue
@@ -685,7 +702,12 @@ def apply_report(path: str) -> int:
         if row is None:
             continue
         result = entry.get("result")
-        if result not in ("ok", "dead", "redirect", "error"):
+        if result not in ("ok", "dead", "blocked", "redirect", "error"):
+            continue
+        if result == "blocked":
+            # WHY: a host that turns this client away says nothing about the
+            # page, so every stored field stays and the row is not an update.
+            blocked += 1
             continue
         recorded = entry.get("recorded_access") or row.get("access", "unchecked")
         if result == "ok":
@@ -694,6 +716,8 @@ def apply_report(path: str) -> int:
         elif result == "dead":
             row["access"] = "dead"
         else:
+            # WHY: a transport failure says nothing about the page, so the row
+            # keeps its recorded access and its digest.
             row["access"] = row.get("access", recorded)
         row["http_status"] = entry.get("http_status")
         row["checked_on"] = checked_on
@@ -715,6 +739,8 @@ def apply_report(path: str) -> int:
             current = handle.read()
     if current == expected:
         print("%d rows updated, index unchanged" % updated)
+        if blocked:
+            print("%d blocked rows left unchanged" % blocked)
         return 0
     try:
         with open(INDEX_PATH, "w", encoding="utf-8", newline="\n") as handle:
@@ -722,6 +748,8 @@ def apply_report(path: str) -> int:
     except OSError as exc:
         fail("cannot write the index: %s" % exc)
     print("%d rows updated, wrote %s" % (updated, os.path.relpath(INDEX_PATH, REPO_ROOT)))
+    if blocked:
+        print("%d blocked rows left unchanged" % blocked)
     return 0
 
 # ───────────────────────────────────────────────────────────────
@@ -859,6 +887,7 @@ def check_links(stored: Dict[str, Dict[str, Any]]) -> int:
         "checked": 0,
         "ok": 0,
         "dead": 0,
+        "blocked": 0,
         "redirects": 0,
         "errors": 0,
         "skipped": 0,
@@ -899,6 +928,11 @@ def check_links(stored: Dict[str, Dict[str, Any]]) -> int:
             # an unfollowed redirect is neither dead nor a transport error.
             entry.update(result="redirect", http_status=status, reason="redirect not followed")
             summary["redirects"] += 1
+        elif status is not None and status in BLOCKED_STATUSES:
+            # WHY: a refused client is not a missing page, so a 401, 403 or
+            # 429 gets its own result and stays out of failures.
+            entry.update(result="blocked", http_status=status)
+            summary["blocked"] += 1
         else:
             entry.update(result="dead", http_status=status)
             summary["dead"] += 1
@@ -910,7 +944,8 @@ def check_links(stored: Dict[str, Dict[str, Any]]) -> int:
         )
         # WHY: a row recorded dead, or recorded as unfetchable by nature, is a
         # known finding. Both are reported in the row and kept out of the
-        # failure count. A row recorded ok that errors must still fail.
+        # failure count. A blocked row stays out of the count as well. A row
+        # recorded ok that errors must still fail.
         if entry["result"] in ("dead", "error", "redirect"):
             if access in ("dead", "archive-not-fetchable"):
                 summary["known_unfetchable"] += 1
@@ -1098,6 +1133,7 @@ def watch(state_path: Optional[str], stored: Dict[str, Dict[str, Any]]) -> int:
     today = datetime.date.today().isoformat()
     changed = 0
     failures = 0
+    blocked = 0
     for series in series_list:
         name = series["series"]
         for url in series["urls"]:
@@ -1114,6 +1150,12 @@ def watch(state_path: Optional[str], stored: Dict[str, Dict[str, Any]]) -> int:
                 failures += 1
                 print("failed series=%s url=%s reason=%s" % (name, url, fetched["error"]))
             if status is None:
+                continue
+            if status in BLOCKED_STATUSES:
+                # WHY: a refused client says nothing about the page, so the
+                # stored values stay and no change is reported.
+                blocked += 1
+                print("blocked series=%s url=%s status=%d" % (name, url, status))
                 continue
             reasons = []
             if 200 <= status < 300:
@@ -1155,6 +1197,8 @@ def watch(state_path: Optional[str], stored: Dict[str, Dict[str, Any]]) -> int:
             fail("cannot write the state file: %s" % exc)
     if failures:
         print("%d watched URLs did not answer" % failures)
+    if blocked:
+        print("%d watched URLs were blocked" % blocked)
     if changed:
         print("%d watched URLs changed" % changed)
         return 1

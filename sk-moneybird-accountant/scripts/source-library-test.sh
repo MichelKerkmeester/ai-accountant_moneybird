@@ -157,6 +157,26 @@ print(rows.get(sys.argv[2], {}).get(sys.argv[3], ""))
 ' "$1/sk-moneybird-accountant/assets/source-library.json" "$2" "$3" 2>/dev/null
 }
 
+# Print the exact index line that holds one URL
+# Args:
+#   $1 - Repository root
+#   $2 - Source URL
+# Returns:
+#   0, printing the entry line or an empty line
+index_row() {
+    python3 -I - "$1/sk-moneybird-accountant/assets/source-library.json" "$2" <<'PY'
+import json
+import sys
+
+needle = '"url":' + json.dumps(sys.argv[2], ensure_ascii=False)
+with open(sys.argv[1], encoding="utf-8") as handle:
+    for line in handle:
+        if needle in line:
+            sys.stdout.write(line)
+            break
+PY
+}
+
 # Print one field of one URL entry in a watch state file
 # Args:
 #   $1 - State file
@@ -413,6 +433,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Location", "/missing.html")
             self.end_headers()
             return
+        if self.path == "/refused.html":
+            self.send_error(403)
+            return
+        if self.path == "/throttled.html":
+            self.send_error(429)
+            return
         if self.path == "/error.html":
             self.send_error(500)
             return
@@ -529,13 +555,13 @@ make_watch_repo() {
     return 0
 }
 
-# Build a fixture repository whose one citation is an unreachable URL
+# Build a fixture repository whose one citation points at one URL
 # Args:
 #   $1 - Repository root to create
 #   $2 - URL to cite
 # Returns:
 #   0 when the fixture is ready, 1 when a write fails
-make_error_repo() {
+make_single_url_repo() {
     local root="$1" url="$2"
     mkdir -p "$root/sk-moneybird-accountant/scripts" "$root/sk-moneybird-accountant/assets" \
         "$root/sk-moneybird-accountant/references" || return 1
@@ -756,10 +782,100 @@ else
     fail "link check leaves the index unchanged"
 fi
 
+group "blocked"
+BLOCKED_REPO="$TMP_ROOT/blocked-repo"
+REFUSED_URL="http://127.0.0.1:$PORT/refused.html"
+THROTTLED_URL="http://127.0.0.1:$PORT/throttled.html"
+if make_single_url_repo "$BLOCKED_REPO" "$REFUSED_URL"; then
+    pass "blocked fixture repository builds"
+else
+    fail "blocked fixture repository builds"
+fi
+run_builder "$BLOCKED_REPO" >/dev/null
+run_builder "$BLOCKED_REPO" --check-links
+status=$?
+if [[ "$status" -eq 0 ]] \
+    && [[ "$(link_summary blocked)" = "1" ]] \
+    && [[ "$(link_summary failures)" = "0" ]] \
+    && [[ "$(link_field "$REFUSED_URL" result)" = "blocked" ]] \
+    && [[ "$(link_field "$REFUSED_URL" http_status)" = "403" ]]; then
+    pass "a refused page reports blocked and does not fail"
+else
+    fail "a refused page reports blocked and does not fail"
+fi
+printf '# Bootstrap\n\nThrottled page: %s\n' "$THROTTLED_URL" >"$BLOCKED_REPO/AGENTS.md"
+run_builder "$BLOCKED_REPO" >/dev/null
+run_builder "$BLOCKED_REPO" --check-links
+status=$?
+if [[ "$status" -eq 0 ]] \
+    && [[ "$(link_summary blocked)" = "1" ]] \
+    && [[ "$(link_summary failures)" = "0" ]] \
+    && [[ "$(link_field "$THROTTLED_URL" result)" = "blocked" ]] \
+    && [[ "$(link_field "$THROTTLED_URL" http_status)" = "429" ]]; then
+    pass "a throttled page reports blocked and does not fail"
+else
+    fail "a throttled page reports blocked and does not fail"
+fi
+printf '# Bootstrap\n\nMissing page: %s\n' "$DEAD_URL" >"$BLOCKED_REPO/AGENTS.md"
+run_builder "$BLOCKED_REPO" >/dev/null
+run_builder "$BLOCKED_REPO" --check-links
+status=$?
+if [[ "$status" -eq 1 ]] \
+    && [[ "$(link_summary blocked)" = "0" ]] \
+    && [[ "$(link_summary failures)" = "1" ]] \
+    && [[ "$(link_field "$DEAD_URL" result)" = "dead" ]] \
+    && [[ "$(link_field "$DEAD_URL" http_status)" = "404" ]]; then
+    pass "a 404 page still fails"
+else
+    fail "a 404 page still fails"
+fi
+printf '# Bootstrap\n\nThrottled page: %s\n' "$THROTTLED_URL" >"$BLOCKED_REPO/AGENTS.md"
+run_builder "$BLOCKED_REPO" >/dev/null
+BLOCKED_DIGEST=$(python3 -I -c 'print("b" * 64)')
+BLOCKED_ETAG=$(python3 -I -c 'print("c" * 64)')
+set_index_fields "$BLOCKED_REPO" "$THROTTLED_URL" \
+    "{\"access\":\"ok\",\"http_status\":200,\"checked_on\":\"2026-01-02\",\"digest\":\"$BLOCKED_DIGEST\",\"retrieved_at\":\"2026-01-02\",\"etag\":\"$BLOCKED_ETAG\",\"last_modified\":\"Mon, 01 Jan 2026 00:00:00 GMT\"}"
+# WHY: the builder writes one canonical line per row, so a rebuild puts the
+# fixture row in that form before the before-and-after byte comparison.
+run_builder "$BLOCKED_REPO" >/dev/null
+BLOCKED_ROW_BEFORE=$(index_row "$BLOCKED_REPO" "$THROTTLED_URL")
+run_builder "$BLOCKED_REPO" --check-links
+cp "$TMP_ROOT/out.txt" "$TMP_ROOT/blocked-report.json"
+run_builder "$BLOCKED_REPO" --apply-report "$TMP_ROOT/blocked-report.json"
+status=$?
+if [[ "$status" -eq 0 ]] \
+    && grep -q '^0 rows updated' "$TMP_ROOT/out.txt" \
+    && grep -q '^1 blocked rows left unchanged' "$TMP_ROOT/out.txt" \
+    && [[ -n "$BLOCKED_ROW_BEFORE" ]] \
+    && [[ "$(index_row "$BLOCKED_REPO" "$THROTTLED_URL")" = "$BLOCKED_ROW_BEFORE" ]]; then
+    pass "apply report leaves a blocked row byte-for-byte unchanged"
+else
+    fail "apply report leaves a blocked row byte-for-byte unchanged"
+fi
+printf '# Bootstrap\n\nLive page: %s\nThrottled page: %s\n' "$LIVE_URL" "$THROTTLED_URL" >"$BLOCKED_REPO/AGENTS.md"
+run_builder "$BLOCKED_REPO" >/dev/null
+set_index_access "$BLOCKED_REPO" "$LIVE_URL" ok 200 2026-01-02
+run_builder "$BLOCKED_REPO" >/dev/null
+BLOCKED_ROW_BEFORE=$(index_row "$BLOCKED_REPO" "$THROTTLED_URL")
+run_builder "$BLOCKED_REPO" --check-links
+cp "$TMP_ROOT/out.txt" "$TMP_ROOT/blocked-mixed-report.json"
+run_builder "$BLOCKED_REPO" --apply-report "$TMP_ROOT/blocked-mixed-report.json"
+status=$?
+if [[ "$status" -eq 0 ]] \
+    && grep -q '^1 rows updated' "$TMP_ROOT/out.txt" \
+    && grep -q '^1 blocked rows left unchanged' "$TMP_ROOT/out.txt" \
+    && [[ "$(index_field "$BLOCKED_REPO" "$LIVE_URL" checked_on)" = "$(date +%Y-%m-%d)" ]] \
+    && [[ "$(index_field "$BLOCKED_REPO" "$LIVE_URL" digest)" = "$(report_field "$TMP_ROOT/blocked-mixed-report.json" "$LIVE_URL" digest)" ]] \
+    && [[ "$(index_row "$BLOCKED_REPO" "$THROTTLED_URL")" = "$BLOCKED_ROW_BEFORE" ]]; then
+    pass "a mixed report updates the live row and leaves the blocked row unchanged"
+else
+    fail "a mixed report updates the live row and leaves the blocked row unchanged"
+fi
+
 group "known unfetchable"
 ERROR_REPO="$TMP_ROOT/error-repo"
 ERROR_URL="http://127.0.0.1:1/unreachable.html"
-if make_error_repo "$ERROR_REPO" "$ERROR_URL"; then
+if make_single_url_repo "$ERROR_REPO" "$ERROR_URL"; then
     pass "error fixture repository builds"
 else
     fail "error fixture repository builds"
@@ -1011,11 +1127,11 @@ else
     fail "watch fixture repository builds"
 fi
 python3 -I - "$WATCH_REPO/sk-moneybird-accountant/assets/source-watchlist.json" \
-    "$ALPHA_URL" "$BETA_URL" "$GAMMA_URL" "$DELTA_URL" "$EPSILON_URL" "$ZETA_URL" <<'PY'
+    "$ALPHA_URL" "$BETA_URL" "$GAMMA_URL" "$DELTA_URL" "$EPSILON_URL" "$ZETA_URL" "$REFUSED_URL" <<'PY'
 import json
 import sys
 
-path, alpha, beta, gamma, delta, epsilon, zeta = sys.argv[1:8]
+path, alpha, beta, gamma, delta, epsilon, zeta, refused = sys.argv[1:9]
 series = [
     {"series": "Alpha series", "urls": [alpha], "cadence": "monthly", "why": "fixture alpha"},
     {"series": "Beta series", "urls": [beta], "cadence": "yearly", "why": "fixture beta"},
@@ -1023,6 +1139,7 @@ series = [
     {"series": "Delta series", "urls": [delta], "cadence": "monthly", "why": "fixture delta"},
     {"series": "Epsilon series", "urls": [epsilon], "cadence": "monthly", "why": "fixture epsilon"},
     {"series": "Zeta series", "urls": [zeta], "cadence": "yearly", "why": "fixture zeta"},
+    {"series": "Refused series", "urls": [refused], "cadence": "monthly", "why": "fixture refusal"},
 ]
 open(path, "w").write(json.dumps(series, indent=2) + "\n")
 PY
@@ -1050,6 +1167,36 @@ if ! grep -q 'Gamma series' "$TMP_ROOT/out.txt"; then
     pass "a watched URL with no stored values stays silent"
 else
     fail "a watched URL with no stored values stays silent"
+fi
+if grep -q "^blocked series=Refused series url=$REFUSED_URL status=403" "$TMP_ROOT/out.txt"; then
+    pass "a refused watched URL is reported as blocked"
+else
+    fail "a refused watched URL is reported as blocked"
+fi
+python3 -I - "$TMP_ROOT/refused-state.json" "$REFUSED_URL" "$BLOCKED_DIGEST" <<'PY'
+import json
+import sys
+
+json.dump(
+    {"urls": {sys.argv[2]: {
+        "http_status": 200,
+        "etag": None,
+        "last_modified": None,
+        "digest": sys.argv[3],
+        "retrieved_at": "2026-01-02",
+    }}},
+    open(sys.argv[1], "w"),
+)
+PY
+run_builder "$WATCH_REPO" --watch --state "$TMP_ROOT/refused-state.json"
+status=$?
+if [[ "$status" -eq 0 ]] \
+    && ! grep -q '^changed ' "$TMP_ROOT/out.txt" \
+    && [[ "$(state_field "$TMP_ROOT/refused-state.json" "$REFUSED_URL" http_status)" = "200" ]] \
+    && [[ "$(state_field "$TMP_ROOT/refused-state.json" "$REFUSED_URL" digest)" = "$BLOCKED_DIGEST" ]]; then
+    pass "a refused watched URL keeps its stored state and reports no change"
+else
+    fail "a refused watched URL keeps its stored state and reports no change"
 fi
 printf '<html><body>alpha fixture page, second version</body></html>\n' >"$DOCROOT/alpha.html"
 run_builder "$WATCH_REPO" --watch
@@ -1197,7 +1344,7 @@ printf '<html><body>weak fixture page</body></html>\n' >"$DOCROOT/weak.html"
 printf '%s' "$DIGIT_TAG" >"$DOCROOT/weak.html.tag"
 printf '<html><body>spare fixture page</body></html>\n' >"$DOCROOT/spare.html"
 printf '%s' "$DIGIT_TAG" >"$DOCROOT/spare.html.tag"
-if make_error_repo "$ETAG_REPO" "$WEAK_URL"; then
+if make_single_url_repo "$ETAG_REPO" "$WEAK_URL"; then
     pass "etag fixture repository builds"
 else
     fail "etag fixture repository builds"
