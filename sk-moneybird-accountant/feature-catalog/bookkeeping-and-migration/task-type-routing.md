@@ -36,6 +36,7 @@ When the top two rows sit inside the route margin and no tie rule decides, the a
 | File | Layer | Role |
 |---|---|---|
 | AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Shared | Defines the Task-Type Table, the tie rules, the abstain margin, and the route record. |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/scripts/check-route-table.py | Shared | Generates the router block and the multi-word intent signals from the table and fails on drift. |
 
 ### Validation And Tests
 
