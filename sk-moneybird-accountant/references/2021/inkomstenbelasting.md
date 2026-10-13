@@ -90,7 +90,7 @@ The posten are the persoonsgebonden aftrek (personal deductions, being onderhoud
 
 ### Algemene heffingskorting below AOW age
 
-The algemene heffingskorting is granted to every taxpayer and is applied automatically in the return and by the employer or uitkeringsinstantie in the payroll (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/heffingskortingen). For a taxpayer below AOW age the maximum is € 2.837. The phase-out base in 2021 is the belastbaar inkomen uit werk en woning. The credit is reduced by 5,977% of that income above € 21.043 and reaches nil at € 68.507 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/heffingskortingen). The AHK and AK afbouwpunten are linked to the wettelijk minimumloon (https://www.tweedekamer.nl/downloads/document?id=2026D43301).
+The algemene heffingskorting is granted to every taxpayer and is applied automatically in the return and by the employer or uitkeringsinstantie in the payroll (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/heffingskortingen). For a taxpayer below AOW age the maximum is € 2.837. The phase-out base in 2021 is the belastbaar inkomen uit werk en woning. The credit is reduced by 5,977% of that income above € 21.043 and reaches nil at € 68.507 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/heffingskortingen). The AHK and AK afbouwpunten are linked to the wettelijk minimumloon ([Belastingplan 2027 (Kamerstuk 37022), memorie van toelichting](https://www.tweedekamer.nl/downloads/document?id=2026D43301)).
 
 ### Algemene heffingskorting for a whole year at AOW age
 

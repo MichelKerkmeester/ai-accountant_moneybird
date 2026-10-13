@@ -229,6 +229,10 @@ MANIFEST_NAME = "leaf-manifest.json"
 MANIFEST_PATH = os.path.join(SKILL_ROOT, MANIFEST_NAME)
 SKILL_PAGE = "SKILL.md"
 README_NAME = "README.md"
+# WHY: a year folder holds two files beside its topic files, the year README
+# and the year changelog. Neither carries the topic fields, so no topic scan
+# reads one.
+CHANGELOG_NAME = "changelog.md"
 ROUTED_PREFIX = "references/"
 LINK_TARGET_RE = re.compile(r"\]\(([^)\s]+)\)")
 
@@ -900,6 +904,24 @@ def year_of(path: str) -> Optional[str]:
     return match.group(1) if match else None
 
 
+def is_year_topic(path: str) -> bool:
+    """Tell whether a reference path is a year topic file.
+
+    Args:
+        path: Path relative to the references root.
+
+    Returns:
+        True for a markdown file directly in a year folder, other than the
+        year README and the year changelog.
+    """
+    name = os.path.basename(path)
+    return (
+        year_of(path) is not None
+        and name.endswith(MARKDOWN_SUFFIX)
+        and name not in (README_NAME, CHANGELOG_NAME)
+    )
+
+
 def canonical_topics(files: Dict[str, Dict[str, Any]]) -> List[str]:
     """Read the canonical topic file order from the reference guide.
 
@@ -960,6 +982,8 @@ def year_topics(files: Dict[str, Dict[str, Any]]) -> Dict[str, List[Dict[str, An
         records: List[Dict[str, Any]] = []
         for name in topics:
             path = "%s/%s" % (year, name)
+            if not is_year_topic(path):
+                continue
             file = files.get(path)
             if file is None:
                 fail("missing %s, every year folder holds each topic file" % path)
@@ -1251,7 +1275,7 @@ def section_three_bodies(by_path: Dict[str, Dict[str, Any]], spec: Dict[str, Any
         for year in years:
             path = "%s/%s" % (year, name)
             file = by_path.get(path)
-            if file is None or not path.endswith(MARKDOWN_SUFFIX):
+            if file is None or not is_year_topic(path):
                 continue
             _, figures = headline_figures({"path": path, "figures": key_figures(file)})
             for figure in figures:
@@ -2260,7 +2284,7 @@ def overlap_report(files: List[Dict[str, Any]], guide: Dict[str, Any], section: 
         for year in years:
             path = "%s/%s" % (year, name)
             file = by_path.get(path)
-            if file is None:
+            if file is None or not is_year_topic(path):
                 continue
             _, figures = headline_figures({"path": path, "figures": key_figures(file)})
             for figure in figures:

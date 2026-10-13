@@ -415,6 +415,51 @@ else
     fail "the year README gained a topic table fence"
 fi
 
+# A year folder gains a changelog beside its topic files. The topic table may
+# name it, yet the generator reads no topic field from that file.
+cat >"$FIXTURE/references/2020/changelog.md" <<'MARKDOWN'
+---
+title: "Corrections tax year 2020"
+description: "Fixture correction log."
+---
+
+# Corrections tax year 2020
+
+## 1. OVERVIEW
+
+Fixture overview.
+
+## 2. CORRECTIONS
+
+| Date | File | Row | Old status | New status | Source |
+|---|---|---|---|---|---|
+| 2026-10-12 | btw.md | Standard rate | as first researched | Corrected | https://example.invalid/source |
+MARKDOWN
+python3 - "$FIXTURE/references/dutch-tax-rules.md" <<'PY'
+import sys
+
+path = sys.argv[1]
+row = "| `inkomstenbelasting.md` | Income tax |\n"
+added = "| `changelog.md` | Corrections |\n"
+text = open(path, encoding="utf-8").read()
+open(path, "w", encoding="utf-8").write(text.replace(row, row + added, 1))
+PY
+if run_generator "$FIXTURE" && run_generator "$FIXTURE" --check \
+    && ! grep -qF 'changelog.md' "$FIXTURE/references/2020/README.md"; then
+    pass "a year changelog is not held to the topic rules"
+else
+    fail "a year changelog is not held to the topic rules"
+fi
+
+sed -i.bak '/^## 1\. KEY FIGURES$/,$d' "$FIXTURE/references/2020/btw.md"
+run_generator "$FIXTURE" --check
+status=$?
+if [[ "$status" -eq 2 ]] && grep -qF 'no KEY FIGURES table in 2020/btw.md' "$TMP_ROOT/out.txt"; then
+    pass "a topic file is still held to the topic rules"
+else
+    fail "a topic file is still held to the topic rules"
+fi
+
 # ───────────────────────────────────────────────────────────────
 # 8. MUTATIONS IN TEMP COPIES
 # ───────────────────────────────────────────────────────────────

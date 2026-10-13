@@ -48,11 +48,11 @@ This file covers the rules for deducting pension premiums, lijfrentepremies (ann
 | AOV premium with periodic uitkeringen | Fully deductible, art. 3.124 lid 1 c | enacted | Verified | [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/uitgaven_voor_inkomensvoorzieningen) |
 | AOV premium with lump-sum payout | Not deductible, payout in box 3 | enacted | Verified | [Belastingdienst: AOV voor ondernemers](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers) |
 | BAZ bill status | Ingediend 24 March 2026, "In afwachting nota nav verslag" | proposed | Verified | [Tweede Kamer docket 36912](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912) |
-| BAZ wachttijd in the bill | 104 weken | proposed | Verified | [Bill 36912, art. 16](https://www.tweedekamer.nl/downloads/document?id=2026D13313) |
-| BAZ premium estimate | About 5,4% of winst, about € 171 gross per month at the maximum | proposed | Verified | [MvT 36912](https://www.tweedekamer.nl/downloads/document?id=2026D13315) |
-| BAZ benefit maximum | 70% of the grondslag, grondslag up to 142,86% of minimumloon, so at most 100% of minimumloon | proposed | Verified | [MvT 36912](https://www.tweedekamer.nl/downloads/document?id=2026D13315) |
-| BAZ premium tax treatment | Deductible as uitgave voor inkomensvoorzieningen, not from the winst, loonheffing on UWV benefits | proposed | Verified | [MvT 36912](https://www.tweedekamer.nl/downloads/document?id=2026D13315) |
-| BAZ entry into force | By koninklijk besluit, MvT examples assume 1 January 2030 | proposed | Verified | [MvT 36912](https://www.tweedekamer.nl/downloads/document?id=2026D13315) |
+| BAZ wachttijd in the bill | 104 weken | proposed | Verified | [Bill 36912, art. 16, Kamerstuk 36912 nr. 2, voorstel van wet](https://zoek.officielebekendmakingen.nl/kst-36912-2.html) |
+| BAZ premium estimate | About 5,4% of winst, about € 171 gross per month at the maximum | proposed | Verified | [MvT 36912, Kamerstuk 36912 nr. 3, memorie van toelichting](https://zoek.officielebekendmakingen.nl/kst-36912-3.html) |
+| BAZ benefit maximum | 70% of the grondslag, grondslag up to 142,86% of minimumloon, so at most 100% of minimumloon | proposed | Verified | [MvT 36912, Kamerstuk 36912 nr. 3, memorie van toelichting](https://zoek.officielebekendmakingen.nl/kst-36912-3.html) |
+| BAZ premium tax treatment | Deductible as uitgave voor inkomensvoorzieningen, not from the winst, loonheffing on UWV benefits | proposed | Verified | [MvT 36912, Kamerstuk 36912 nr. 3, memorie van toelichting](https://zoek.officielebekendmakingen.nl/kst-36912-3.html) |
+| BAZ entry into force | By koninklijk besluit, MvT examples assume 1 January 2030 | proposed | Verified | [MvT 36912, Kamerstuk 36912 nr. 3, memorie van toelichting](https://zoek.officielebekendmakingen.nl/kst-36912-3.html) |
 
 ---
 
@@ -130,23 +130,23 @@ The BAZ (Wet basisverzekering arbeidsongeschiktheid zelfstandigen) bill 36 912 w
 
 ### 3.18 BAZ wachttijd in the bill
 
-The BAZ bill art. 16 lid 1 sets a wachttijd (waiting period) of 104 weken. The docket summary still says "ongeveer één jaar" (about one year), which conflicts with the bill text. The bill text is authoritative. Source: [Bill 36912, art. 16](https://www.tweedekamer.nl/downloads/document?id=2026D13313).
+The BAZ bill art. 16 lid 1 sets a wachttijd (waiting period) of 104 weken. The docket summary still says "ongeveer één jaar" (about one year), which conflicts with the bill text. The bill text is authoritative. Source: [Bill 36912, art. 16, Kamerstuk 36912 nr. 2, voorstel van wet](https://zoek.officielebekendmakingen.nl/kst-36912-2.html).
 
 ### 3.19 BAZ premium estimate
 
-The BAZ premium is set yearly by UWV and estimated at about 5,4% of winst uit onderneming (profit from business) up to the maximum grondslag (base). At a maximum grondslag of € 38.000 the MvT examples give about € 171 gross per month. Self-employed persons who are also employees have their SV-loon (social insurance wage) subtracted from the maximum premiegrondslag. Source: [MvT 36912](https://www.tweedekamer.nl/downloads/document?id=2026D13315).
+The BAZ premium is set yearly by UWV and estimated at about 5,4% of winst uit onderneming (profit from business) up to the maximum grondslag (base). At a maximum grondslag of € 38.000 the MvT examples give about € 171 gross per month. Self-employed persons who are also employees have their SV-loon (social insurance wage) subtracted from the maximum premiegrondslag. Source: [MvT 36912, Kamerstuk 36912 nr. 3, memorie van toelichting](https://zoek.officielebekendmakingen.nl/kst-36912-3.html).
 
 ### 3.20 BAZ benefit maximum
 
-The BAZ benefit is 70% of the grondslag. The grondslag is at most 142,86% of the minimumloon, so the benefit is at most 100% of the minimumloon. Source: [MvT 36912](https://www.tweedekamer.nl/downloads/document?id=2026D13315).
+The BAZ benefit is 70% of the grondslag. The grondslag is at most 142,86% of the minimumloon, so the benefit is at most 100% of the minimumloon. Source: [MvT 36912, Kamerstuk 36912 nr. 3, memorie van toelichting](https://zoek.officielebekendmakingen.nl/kst-36912-3.html).
 
 ### 3.21 BAZ premium tax treatment
 
-The public BAZ premium is proposed to be deductible as an uitgave voor inkomensvoorzieningen (expenditure for income provisions) and not from the winst. UWV benefits would carry loonheffing (payroll tax). Private policies keep the current tax treatment. Source: [MvT 36912](https://www.tweedekamer.nl/downloads/document?id=2026D13315).
+The public BAZ premium is proposed to be deductible as an uitgave voor inkomensvoorzieningen (expenditure for income provisions) and not from the winst. UWV benefits would carry loonheffing (payroll tax). Private policies keep the current tax treatment. Source: [MvT 36912, Kamerstuk 36912 nr. 3, memorie van toelichting](https://zoek.officielebekendmakingen.nl/kst-36912-3.html).
 
 ### 3.22 BAZ entry into force
 
-The BAZ entry into force is by koninklijk besluit (royal decree). There is no statutory date. The MvT examples assume 1 January 2030. Source: [MvT 36912](https://www.tweedekamer.nl/downloads/document?id=2026D13315).
+The BAZ entry into force is by koninklijk besluit (royal decree). There is no statutory date. The MvT examples assume 1 January 2030. Source: [MvT 36912, Kamerstuk 36912 nr. 3, memorie van toelichting](https://zoek.officielebekendmakingen.nl/kst-36912-3.html).
 
 ---
 
@@ -172,7 +172,7 @@ The Belastingdienst gives an example where the jaarruimte 2026 is € 1.600, the
 
 ### Example 5: BAZ premium (Calculated example based on proposed law)
 
-The MvT gives examples for the proposed BAZ. At a winst of € 38.000 or € 45.000 the premium is about € 171 per month. At a winst of € 25.000 the premium is about € 113 per month. Negative winst gives € 0. A winst of € 25.000 plus € 25.000 SV-loon gives a grondslag of € 13.000 and about € 59 per month. These are proposed figures and not enacted law. Source: [MvT 36912](https://www.tweedekamer.nl/downloads/document?id=2026D13315).
+The MvT gives examples for the proposed BAZ. At a winst of € 38.000 or € 45.000 the premium is about € 171 per month. At a winst of € 25.000 the premium is about € 113 per month. Negative winst gives € 0. A winst of € 25.000 plus € 25.000 SV-loon gives a grondslag of € 13.000 and about € 59 per month. These are proposed figures and not enacted law. Source: [MvT 36912, Kamerstuk 36912 nr. 3, memorie van toelichting](https://zoek.officielebekendmakingen.nl/kst-36912-3.html).
 
 ---
 
@@ -192,7 +192,7 @@ The MvT gives examples for the proposed BAZ. At a winst of € 38.000 or € 45.
 - Look-back window: 2015 to 2024 (2025) to 2016 to 2025 (2026). Source: [FISIN 2025](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen), [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/uitgaven_voor_inkomensvoorzieningen).
 - Overbruggingslijfrente cap: € 63.288 (2025) to € 63.288 (2026), unchanged. Source: [FISIN 2025](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen), [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/uitgaven_voor_inkomensvoorzieningen).
 - Aftoppingsgrens premiegrondslag: € 137.800 (2025) to € 137.800 (2026), not indexed in either year. Source: [Belastingplan 2027 memorie](https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/wetsvoorstel-belastingplan-2027/wetsvoorstel-belastingplan-2027.pdf).
-- BAZ bill: from a Raad van State version in 2025 with a 2-year wachttijd and a 5,4% premium to a submitted bill in 2026 with a 104-week wachttijd. Source: [2025 news](https://www.rijksoverheid.nl/actueel/nieuws/2025/09/12/wetsvoorstel-voor-basisverzekering-arbeidsongeschiktheid-voor-zelfstandigen-naar-de-raad-van-state), [Bill 36912](https://www.tweedekamer.nl/downloads/document?id=2026D13313).
+- BAZ bill: from a Raad van State version in 2025 with a 2-year wachttijd and a 5,4% premium to a submitted bill in 2026 with a 104-week wachttijd. Source: [2025 news](https://www.rijksoverheid.nl/actueel/nieuws/2025/09/12/wetsvoorstel-voor-basisverzekering-arbeidsongeschiktheid-voor-zelfstandigen-naar-de-raad-van-state), [Bill 36912, Kamerstuk 36912 nr. 2, voorstel van wet](https://zoek.officielebekendmakingen.nl/kst-36912-2.html).
 - Jaarruimte percentage: 30% (2025) to 30% (2026), unchanged. Source: [Art. 3.127 lid 1, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [Art. 3.127 lid 1, 2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
 
 ---
@@ -213,7 +213,7 @@ For a sole trader, record lijfrentepremies and AOV premiums as private expenditu
 - The ODB 2026 sheet lists factor A 6,27 under art. 3.127 lid 4 sub a, but the 2026 law text no longer has a factor A in lid 4. It survives only through art. 10a.25 lid 1. Treat the ODB factor A line as outdated. Source: [ODB 2026 sheet](https://odb.belastingdienst.nl/wp-content/uploads/2026/01/20251218-Overzicht-cijfers-leven-2026-FsL.pdf), [Art. 3.127](https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
 - The BAZ bill is proposed and not enacted. All BAZ figures are proposed. Source: [Tweede Kamer docket 36912](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912).
 - The FISIN 2026 rekening row for the tijdelijke oudedagslijfrente prints € 26.781, while the law, Ministry and ODB give € 27.192. Use € 27.192. Source: [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/uitgaven_voor_inkomensvoorzieningen), [Art. 3.125](https://wetten.overheid.nl/BWBR0011353/2026-01-01).
-- The docket summary for the BAZ says "ongeveer één jaar" for the wachttijd, while bill art. 16 says 104 weken. Use 104 weken. Source: [Docket 36912](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912), [Bill 36912](https://www.tweedekamer.nl/downloads/document?id=2026D13313).
+- The docket summary for the BAZ says "ongeveer één jaar" for the wachttijd, while bill art. 16 says 104 weken. Use 104 weken. Source: [Docket 36912](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912), [Bill 36912, Kamerstuk 36912 nr. 2, voorstel van wet](https://zoek.officielebekendmakingen.nl/kst-36912-2.html).
 - No other open points for 2026.
 
 ---

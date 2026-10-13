@@ -194,6 +194,22 @@ write_topic() {
 MARKDOWN
 }
 
+# Write the year changelog file with a corrections table and no section ids
+# Args:
+#   $1 - Repository root
+# Returns:
+#   0 when the file is written, 1 when a write fails
+write_changelog() {
+    local file="$1/sk-moneybird-accountant/references/2026/changelog.md"
+    cat >"$file" <<'MARKDOWN' || return 1
+# Corrections 2026
+
+| Date | File | Row | Old status | New status | Source |
+|---|---|---|---|---|---|
+| 2026-10-12 | topic.md | Overview | as first researched | Corrected | https://example.invalid/source |
+MARKDOWN
+}
+
 # Build the fixture repository with a target file, a topic file and one good link
 # Args:
 #   $1 - Repository root to create
@@ -395,6 +411,29 @@ if [[ "$status" -eq 1 ]] && grep -qF 'out-of-order' "$TMP_ROOT/out.txt"; then
     pass "a topic file whose ids are out of order is rejected"
 else
     fail "a topic file whose ids are out of order is rejected"
+fi
+
+write_topic "$FIX"
+write_changelog "$FIX"
+write_source 'targets.md#good-heading'
+run_checker "$FIX"
+status=$?
+if [[ "$status" -eq 0 ]]; then
+    pass "a year changelog file is not held to the topic ids"
+else
+    fail "a year changelog file is not held to the topic ids"
+fi
+
+write_topic "$FIX"
+sed -i.bak '/<a id="3-how-it-works"><\/a>/d' "$TOPIC"
+write_changelog "$FIX"
+run_checker "$FIX"
+status=$?
+if [[ "$status" -eq 1 ]] && grep -qF '3-how-it-works missing-id' "$TMP_ROOT/out.txt" \
+    && ! grep -qF 'changelog.md' "$TMP_ROOT/out.txt"; then
+    pass "a topic file beside a clean changelog is still held to the topic ids"
+else
+    fail "a topic file beside a clean changelog is still held to the topic ids"
 fi
 
 # ───────────────────────────────────────────────────────────────

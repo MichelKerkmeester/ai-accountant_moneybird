@@ -10,43 +10,45 @@ trigger_phrases:
 importance_tier: important
 contextType: research
 version: 1.0.0.0
+checked_on: "2026-10-12"
 ---
 
 # Dutch tax rules
 
 <!-- GENERATED:nav:start -->
-Read plan: 10 parts. Next read offset: line 247.
-Part 1: lines 1-246, 48744 bytes, first heading "# Dutch tax rules"
-Part 2: lines 247-366, 29441 bytes, first heading "### 3.2 Income tax box 1 and the Zvw contribution"
-Part 3: lines 367-539, 48865 bytes, first heading "### 3.3 Ondernemersaftrek and MKB-winstvrijstelling"
-Part 4: lines 540-660, 29242 bytes, first heading "### 3.5 Costs and the car"
-Part 5: lines 661-768, 22282 bytes, first heading "### 3.6 Box 3 savings and investments"
-Part 6: lines 769-920, 32160 bytes, first heading "### 3.7 Box 2 and the substantial interest"
-Part 7: lines 921-1052, 32538 bytes, first heading "### 3.8 The BV and vennootschapsbelasting"
-Part 8: lines 1053-1146, 23022 bytes, first heading "### 3.9 Pension, lijfrente and AOV"
-Part 9: lines 1147-1327, 50608 bytes, first heading "### 3.10 Work relationship and procedure"
-Part 10: lines 1328-1569, 47161 bytes, first heading "### Ondernemersaftrek and MKB-winstvrijstelling"
+Read plan: 11 parts. Next read offset: line 251.
+Part 1: lines 1-250, 49154 bytes, first heading "# Dutch tax rules"
+Part 2: lines 251-370, 29684 bytes, first heading "### 3.2 Income tax box 1 and the Zvw contribution"
+Part 3: lines 371-543, 48865 bytes, first heading "### 3.3 Ondernemersaftrek and MKB-winstvrijstelling"
+Part 4: lines 544-664, 29242 bytes, first heading "### 3.5 Costs and the car"
+Part 5: lines 665-772, 22335 bytes, first heading "### 3.6 Box 3 savings and investments"
+Part 6: lines 773-924, 32160 bytes, first heading "### 3.7 Box 2 and the substantial interest"
+Part 7: lines 925-1056, 32538 bytes, first heading "### 3.8 The BV and vennootschapsbelasting"
+Part 8: lines 1057-1150, 23109 bytes, first heading "### 3.9 Pension, lijfrente and AOV"
+Part 9: lines 1151-1308, 43440 bytes, first heading "### 3.10 Work relationship and procedure"
+Part 10: lines 1309-1533, 49763 bytes, first heading "### Income tax box 1 and the Zvw contribution"
+Part 11: lines 1534-1573, 5462 bytes, first heading "### Pension, lijfrente and AOV"
 <!-- GENERATED:nav:end -->
 
 <!-- GENERATED:toc:start -->
 Sections and line ranges
-- 1. OVERVIEW: lines 58-63
-- 2. HOW TO USE IT: lines 64-115
-- 3. GENERAL RULES: lines 116-1285
-- 3.1 BTW (VAT): lines 120-246
-- 3.2 Income tax box 1 and the Zvw contribution: lines 247-366
-- 3.3 Ondernemersaftrek and MKB-winstvrijstelling: lines 367-466
-- 3.4 Investment deductions and depreciation: lines 467-539
-- 3.5 Costs and the car: lines 540-660
-- 3.6 Box 3 savings and investments: lines 661-768
-- 3.7 Box 2 and the substantial interest: lines 769-920
-- 3.8 The BV and vennootschapsbelasting: lines 921-1052
-- 3.9 Pension, lijfrente and AOV: lines 1053-1146
-- 3.10 Work relationship and procedure: lines 1147-1285
-- 4. SETTLED SOURCE CONFLICTS: lines 1286-1424
-- 5. OPEN POINTS AND GAPS: lines 1425-1553
-- 6. RECORD AND INVOICE DUTIES: lines 1554-1563
-- 7. RELATED RESOURCES: lines 1564-1569
+- 1. OVERVIEW: lines 60-65
+- 2. HOW TO USE IT: lines 66-119
+- 3. GENERAL RULES: lines 120-1289
+- 3.1 BTW (VAT): lines 124-250
+- 3.2 Income tax box 1 and the Zvw contribution: lines 251-370
+- 3.3 Ondernemersaftrek and MKB-winstvrijstelling: lines 371-470
+- 3.4 Investment deductions and depreciation: lines 471-543
+- 3.5 Costs and the car: lines 544-664
+- 3.6 Box 3 savings and investments: lines 665-772
+- 3.7 Box 2 and the substantial interest: lines 773-924
+- 3.8 The BV and vennootschapsbelasting: lines 925-1056
+- 3.9 Pension, lijfrente and AOV: lines 1057-1150
+- 3.10 Work relationship and procedure: lines 1151-1289
+- 4. SETTLED SOURCE CONFLICTS: lines 1290-1428
+- 5. OPEN POINTS AND GAPS: lines 1429-1557
+- 6. RECORD AND INVOICE DUTIES: lines 1558-1567
+- 7. RELATED RESOURCES: lines 1568-1573
 <!-- GENERATED:toc:end -->
 
 
@@ -110,6 +112,8 @@ This file is the entry point for Dutch tax questions for a ZZP freelancer with a
 | adopted-not-yet-in-force | Adopted, but in force later |
 | proposed | A bill or announcement, not law |
 | unknown | Not yet published or not found |
+
+A figure taken from a bill carries status `proposed`, with the `kst` number and the stage, for example memorie van toelichting, nota van wijziging or aangenomen door de Tweede Kamer. When the next stage lands, replace the row, never edit it in place, and log the change in that year's `changelog.md`.
 
 ---
 
@@ -314,7 +318,7 @@ Verified. Verzamelinkomen is the sum of the belastbaar inkomen uit werk en wonin
 
 #### Algemene heffingskorting
 
-Verified. Granted to every taxpayer, applied automatically in the return and by the employer or uitkeringsinstantie in the payroll. The phase-out base is the belastbaar inkomen uit werk en woning in 2020 to 2024 and the verzamelinkomen from 2025. The phase-out runs from the afbouwpunt to the top bracket boundary, where the korting reaches nil. The AHK and AK afbouwpunten are linked to the wettelijk minimumloon (https://www.tweedekamer.nl/downloads/document?id=2026D43301 footnote to Tabel 1). Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/heffingskortingen to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/heffingskortingen, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/algemene_heffingskorting/tabel-algemene-heffingskorting-2024 to https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/algemene_heffingskorting/tabel-algemene-heffingskorting-2026, https://www.tweedekamer.nl/downloads/document?id=2026D43301.
+Verified. Granted to every taxpayer, applied automatically in the return and by the employer or uitkeringsinstantie in the payroll. The phase-out base is the belastbaar inkomen uit werk en woning in 2020 to 2024 and the verzamelinkomen from 2025. The phase-out runs from the afbouwpunt to the top bracket boundary, where the korting reaches nil. The AHK and AK afbouwpunten are linked to the wettelijk minimumloon ([Belastingplan 2027 (Kamerstuk 37022), memorie van toelichting](https://www.tweedekamer.nl/downloads/document?id=2026D43301) footnote to Tabel 1). Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/heffingskortingen to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/heffingskortingen, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/algemene_heffingskorting/tabel-algemene-heffingskorting-2024 to https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/algemene_heffingskorting/tabel-algemene-heffingskorting-2026, [Belastingplan 2027 (Kamerstuk 37022), memorie van toelichting](https://www.tweedekamer.nl/downloads/document?id=2026D43301).
 
 #### Arbeidskorting
 
@@ -338,7 +342,7 @@ Verified. 11,45% of the arbeidsinkomen above a threshold, up to a maximum. Appli
 
 #### IACK phase-down from 2027
 
-Verified. Belastingplan 2024 (art. IV onderdeel B and art. V onderdeel B) enacted the afbouw of the IACK for 2027 and 2028 (https://www.tweedekamer.nl/downloads/document?id=2026D43301). The IACK is phased down in nine steps from 2027 and abolished per 2035, first step € 149 then steps of € 355 at 2025 prices, with an expected IACK of € 2.663 in 2028 and € 2.333 in 2029 subject to indexation (https://www.tweedekamer.nl/downloads/document?id=2025D26369, answer 1). https://www.rijksoverheid.nl/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting-en-welke-heffingskortingen-zijn-er states the maximum is afgebouwd in 9 steps from 2027. The 2027 amount depends on the Belastingplan 2027 indexation proposal (see 2027).
+Verified. Belastingplan 2024 (art. IV onderdeel B and art. V onderdeel B) enacted the afbouw of the IACK for 2027 and 2028 ([Belastingplan 2027 (Kamerstuk 37022), memorie van toelichting](https://www.tweedekamer.nl/downloads/document?id=2026D43301)). The IACK is phased down in nine steps from 2027 and abolished per 2035, first step € 149 then steps of € 355 at 2025 prices, with an expected IACK of € 2.663 in 2028 and € 2.333 in 2029 subject to indexation ([Kamerstuk 36725 XV nr. 5, verslag](https://zoek.officielebekendmakingen.nl/kst-36725-XV-5.html), answer 1). https://www.rijksoverheid.nl/documenten/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting-en-welke-heffingskortingen-zijn-er states the maximum is afgebouwd in 9 steps from 2027. The 2027 amount depends on the Belastingplan 2027 indexation proposal (see 2027).
 
 #### Zvw inkomensafhankelijke bijdrage
 
@@ -764,7 +768,7 @@ Source: https://www.eerstekamer.nl/wetsvoorstel/36748_wet_werkelijk_rendement_bo
 
 #### Cabinet letter of 29 September 2026 (Verified, Kamerstuk number UNVERIFIED)
 A novelle to bill 36 748 extends the vermogenswinstbelasting to all financial instruments from 2028 (about 90% of assets with value development), with a full switch for the other assets in 2030. Box 3 heffingsvrij vermogen back to the 2020 level of € 30.846 from 2027. A heffingsvrij resultaat of € 1.000 from 2028. The forfait for overige bezittingen, including rent and own-use benefits, up by 1,5 percentage point in 2027. The novelle must be adopted by the Eerste Kamer before 31 December, and the Cabinet intends to ask the Raad van State for urgent advice. The Eerste Kamer dossier lists the letter under 37.020. The number "nr. 62" and a Raad van State request on 2 October 2026 were not found on a fetched page.
-Sources: https://www.tweedekamer.nl/downloads/document?id=2026D47255 https://www.eerstekamer.nl/wetsvoorstel/36748_wet_werkelijk_rendement_box
+Sources: [Kamerstuk 37020 nr. 62 (expected), brief regering](https://www.tweedekamer.nl/downloads/document?id=2026D47255) https://www.eerstekamer.nl/wetsvoorstel/36748_wet_werkelijk_rendement_box
 
 ### 3.7 Box 2 and the substantial interest
 
@@ -1136,7 +1140,7 @@ Access to a FOR toevoeging requires the urencriterium and not yet AOW age at the
 A self-employed person may join the pensioenfonds of the branch if the fund allows it, premiums are then deductible, and the proef runs until 1 July 2028. Art. 10a.26 keeps the experimenteerbepaling zelfstandigen pension schemes inside the pension definitions. Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/nieuwe-regels-voor-pensioenen-wat-betekent-dat-voor-mij , https://wetten.overheid.nl/BWBR0011353/2024-01-01 (art. 10a.26)
 
 #### BAZ, Wet basisverzekering arbeidsongeschiktheid zelfstandigen, bill 36 912 (Verified as proposed)
-Docket status on 2026-10-11: "In afwachting nota nav verslag". Ingediend 24 March 2026, no adviestraject by the Grondrechten committee (2 April), inbrengdatum set on 7 April for 20 May, technische briefing 13 May, postponement request 15 May (Neijenhuis, D66, with VVD, GroenLinks-PvdA, CDA, JA21), inbreng verslag on 27 May 2026 ("Inbreng geleverd"), Verslag document 36 912 nr. 5 published 29 May 2026. Bill art. 16: wachttijd 104 weken. MvT: benefit 70% of the grondslag, grondslag at most 142,86% of the minimumloon, so at most the minimumloon. Premium set yearly by UWV, estimated at about 5,4% of winst uit onderneming up to the maximum grondslag. The MvT examples use a maximum grondslag of € 38.000, giving about € 171 gross per month. The public premium is proposed to be deductible as an uitgave voor inkomensvoorzieningen and not from the winst, and UWV benefits would carry loonheffing. Private policies keep the current tax treatment. Entry into force by koninklijk besluit, and the MvT examples assume 1 January 2030. The docket summary still says "wachttijd van ongeveer één jaar", which conflicts with bill art. 16 (104 weken). Sources: https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912 , https://www.tweedekamer.nl/downloads/document?id=2026D13313 , https://www.tweedekamer.nl/downloads/document?id=2026D13315
+Docket status on 2026-10-11: "In afwachting nota nav verslag". Ingediend 24 March 2026, no adviestraject by the Grondrechten committee (2 April), inbrengdatum set on 7 April for 20 May, technische briefing 13 May, postponement request 15 May (Neijenhuis, D66, with VVD, GroenLinks-PvdA, CDA, JA21), inbreng verslag on 27 May 2026 ("Inbreng geleverd"), Verslag document 36 912 nr. 5 published 29 May 2026. Bill art. 16: wachttijd 104 weken. MvT: benefit 70% of the grondslag, grondslag at most 142,86% of the minimumloon, so at most the minimumloon. Premium set yearly by UWV, estimated at about 5,4% of winst uit onderneming up to the maximum grondslag. The MvT examples use a maximum grondslag of € 38.000, giving about € 171 gross per month. The public premium is proposed to be deductible as an uitgave voor inkomensvoorzieningen and not from the winst, and UWV benefits would carry loonheffing. Private policies keep the current tax treatment. Entry into force by koninklijk besluit, and the MvT examples assume 1 January 2030. The docket summary still says "wachttijd van ongeveer één jaar", which conflicts with bill art. 16 (104 weken). Sources: https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912 , [Kamerstuk 36912 nr. 2, voorstel van wet](https://zoek.officielebekendmakingen.nl/kst-36912-2.html) , [Kamerstuk 36912 nr. 3, memorie van toelichting](https://zoek.officielebekendmakingen.nl/kst-36912-3.html)
 
 #### Belastingplan 2027 items for this topic (Verified as proposed)
 Article LVII proposes no indexation of the aftoppingsgrens of art. 3.127 lid 3 (and of pensioengevend loon) at the start of 2027 to 2032, so it would stay € 137.800. The limited inflation correction (48% of the tabelcorrectiefactor 1,026, giving 1,01248) would also apply to the lijfrente maxima listed in the MvT: the maximum for lijfrentevoorzieningen (art. 3.125), for rekening and beleggingsrecht, the maximum in aanmerking te nemen premies (art. 3.127), the stakingswinst maximum (art. 3.129) and the maximum for negatieve uitgaven. Not adopted on 2026-10-11. Source: https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/wetsvoorstel-belastingplan-2027/wetsvoorstel-belastingplan-2027.pdf
@@ -1314,14 +1318,14 @@ Where two sources disagreed and a primary source settles it, the year files use 
 - MKB-winstvrijstelling 2024 (14% against 13,31%): 13,31%. Deciding: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/mkb_winstvrijstelling.
 - Belastingdeel 2024 (9,28% on https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/heffingskortingen against 9,32%): 9,32%. Deciding: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1 and https://wetten.overheid.nl/BWBR0011353/2024-01-01.
 - IACK co-ouder rule 2024 (156 days in 6 months on https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/heffingskortingen against 156 days per calendar year): 156 days per calendar year per household, prorated for at least 6 months of co-parenting. Deciding: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting.
-- IACK 2027 phase-down status (unknown against enacted): enacted in Belastingplan 2024, nine steps to abolition per 2035. Deciding: https://www.tweedekamer.nl/downloads/document?id=2026D43301 and https://www.tweedekamer.nl/downloads/document?id=2025D26369.
-- 2027 top bracket boundary (€ 78.426 in the bill against € 80.578): € 80.578 is now the bill text through https://www.tweedekamer.nl/downloads/document?id=2026D50329. Still proposed. Deciding: https://www.tweedekamer.nl/downloads/document?id=2026D50329.
-- 2027 AK maximum (€ 5.929 against € 5.889): € 5.889 after https://www.tweedekamer.nl/downloads/document?id=2026D50329 (increase € 133 instead of € 173). Still proposed. Deciding: https://www.tweedekamer.nl/downloads/document?id=2026D50329 and https://www.tweedekamer.nl/downloads/document?id=2026D50335.
-- 2027 AHK afbouwpercentage after the boundary move (not found): 6,350%. Still proposed. Deciding: https://www.tweedekamer.nl/downloads/document?id=2026D50335.
+- IACK 2027 phase-down status (unknown against enacted): enacted in Belastingplan 2024, nine steps to abolition per 2035. Deciding: [Belastingplan 2027 (Kamerstuk 37022), memorie van toelichting](https://www.tweedekamer.nl/downloads/document?id=2026D43301) and [Kamerstuk 36725 XV nr. 5, verslag](https://zoek.officielebekendmakingen.nl/kst-36725-XV-5.html).
+- 2027 top bracket boundary (€ 78.426 in the bill against € 80.578): € 80.578 is now the bill text through [Belastingplan 2027 (Kamerstuk 37022), tweede nota van wijziging](https://www.tweedekamer.nl/downloads/document?id=2026D50329). Still proposed. Deciding: [Belastingplan 2027 (Kamerstuk 37022), tweede nota van wijziging](https://www.tweedekamer.nl/downloads/document?id=2026D50329).
+- 2027 AK maximum (€ 5.929 against € 5.889): € 5.889 after [Belastingplan 2027 (Kamerstuk 37022), tweede nota van wijziging](https://www.tweedekamer.nl/downloads/document?id=2026D50329) (increase € 133 instead of € 173). Still proposed. Deciding: [Belastingplan 2027 (Kamerstuk 37022), tweede nota van wijziging](https://www.tweedekamer.nl/downloads/document?id=2026D50329) and [Belastingplan 2027 (Kamerstuk 37022), nota naar aanleiding van het verslag](https://www.tweedekamer.nl/downloads/document?id=2026D50335).
+- 2027 AHK afbouwpercentage after the boundary move (not found): 6,350%. Still proposed. Deciding: [Belastingplan 2027 (Kamerstuk 37022), nota naar aanleiding van het verslag](https://www.tweedekamer.nl/downloads/document?id=2026D50335).
 - 2026 whole-year AOW IACK rate (5,73% in the topic file): 5,72%. Deciding: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting-2026 and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/heffingskortingen.
 - Zvw base for a winst-ondernemer (not found): belastbare winst after ondernemersaftrek and MKB-winstvrijstelling. Deciding: https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01 and https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.2.
 - Werkgeversheffing 2020 to 2024 (not found): 6,70%, 7,00%, 6,75%, 6,68%, 6,57%. Deciding: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet.
-- Baseline note that Belastingplan 2027 has one technical nota van wijziging: a Tweede nota van wijziging (https://www.tweedekamer.nl/downloads/document?id=2026D50329) now carries the letter measures. Deciding: https://www.tweedekamer.nl/downloads/document?id=2026D50329.
+- Baseline note that Belastingplan 2027 has one technical nota van wijziging: a Tweede nota van wijziging ([Belastingplan 2027 (Kamerstuk 37022), tweede nota van wijziging](https://www.tweedekamer.nl/downloads/document?id=2026D50329)) now carries the letter measures. Deciding: [Belastingplan 2027 (Kamerstuk 37022), tweede nota van wijziging](https://www.tweedekamer.nl/downloads/document?id=2026D50329).
 
 Still open: the 2024 AHK AOW phase-out rate (3,421% against 3,420%), the 2024 and 2026 IACK maximum points, the 2026 IACK AOW maximum (€ 1.513 against € 1.514), the 2026 monthly AOW transition rounding, the 2020 oudedagsreserve maximum (€ 9.214 against € 9.218) and the 2027 Zvw maximum.
 
@@ -1404,7 +1408,7 @@ Still open: the 2024 AHK AOW phase-out rate (3,421% against 3,420%), the 2024 an
 - Euro maxima of the jaarruimte 2020 to 2025 (derived and UNVERIFIED in the research and baseline): € 12.986, € 13.236, € 13.570, € 34.550, € 36.077, € 35.798 from the Ministry of Finance tables. Only 2023 differs from the derived figure (research € 34.549). URLs per year above.
 - FOR maximum 2020 (law € 9.218 against FISIN 2020 € 9.214): € 9.218, law art. 3.68 and Ministry 2020 table. https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://open.overheid.nl/documenten/ronl-423637a0-c7a6-4123-a683-148a64e343fa/pdf
 - Tijdelijke oudedagslijfrente 2022 (FISIN verzekering row € 22.443 against rekening row € 22.735) and 2026 (€ 27.192 against € 26.781): € 22.735 and € 27.192 by art. 3.125 lid 1 c and the Ministry tables. https://wetten.overheid.nl/BWBR0011353/2022-01-01 and https://wetten.overheid.nl/BWBR0011353/2026-01-01
-- BAZ wachttijd (docket summary "ongeveer één jaar" against 104 weeks): 104 weken, bill art. 16 lid 1 and MvT 5.3.1. https://www.tweedekamer.nl/downloads/document?id=2026D13313
+- BAZ wachttijd (docket summary "ongeveer één jaar" against 104 weeks): 104 weken, bill art. 16 lid 1 and MvT 5.3.1. [Kamerstuk 36912 nr. 2, voorstel van wet](https://zoek.officielebekendmakingen.nl/kst-36912-2.html)
 - Location of the FOR transition and of the FOR conversion deduction: art. 10a.29 lid 10, 11 and 12 (from 2023) and art. 3.128 (2020 to 2022), not art. 3.127. https://wetten.overheid.nl/BWBR0011353/2024-01-01 and https://wetten.overheid.nl/BWBR0011353/2022-01-01
 - 2027 law text "not found": it exists at https://wetten.overheid.nl/BWBR0011353/2027-01-01 with 2026 amounts still in place.
 
@@ -1459,16 +1463,16 @@ These points were open on 2026-10-11. Each year file repeats its own open points
 - 2025: The fetch of https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/belastingberekening returned 36,97% for schijf 2 in the AOW transition-year table. https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1 and https://wetten.overheid.nl/BWBR0011353/2025-01-01 give 37,48%, which governs.
 - 2025: IACK co-ouder wording: 78 days per 6 months (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/heffingskortingen) against 156 days per calendar year prorated (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting). The two tests come close but differ in how short periods are handled.
 - 2026: Monthly AOW transition rates: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1 against https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/belastingberekening differ by 0,01 point in six months. https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1 is the dedicated current page and the baseline uses it. No statute text holds the monthly rates.
-- 2026: IACK maximum point: € 32.711 (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting-2026), € 32.719 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/heffingskortingen), € 32.720 (https://www.rijksoverheid.nl/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting-en-welke-heffingskortingen-zijn-er). Arithmetic € 3.032 / 11,45% plus € 6.239 is about € 32.719, so the table's € 32.710 band end looks like a print slip.
+- 2026: IACK maximum point: € 32.711 (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting-2026), € 32.719 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/heffingskortingen), € 32.720 (https://www.rijksoverheid.nl/documenten/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting-en-welke-heffingskortingen-zijn-er). Arithmetic € 3.032 / 11,45% plus € 6.239 is about € 32.719, so the table's € 32.710 band end looks like a print slip.
 - 2026: IACK whole-year AOW maximum: € 1.513 (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting-2026) against € 1.514 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/heffingskortingen).
-- 2027: Whether Belastingplan 2027 passes with https://www.tweedekamer.nl/downloads/document?id=2026D50329 as is. https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A37022 shows no vote on 2026-10-11. The adopted law decides box 1, AHK, AK and IACK for 2027.
+- 2027: Whether Belastingplan 2027 passes with [Belastingplan 2027 (Kamerstuk 37022), tweede nota van wijziging](https://www.tweedekamer.nl/downloads/document?id=2026D50329) as is. https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A37022 shows no vote on 2026-10-11. The adopted law decides box 1, AHK, AK and IACK for 2027.
 - 2027: Zvw maximum bijdrage-inkomen 2027: € 82.547 is secondary only. The Regeling or the Belastingdienst Zvw page in late 2026 will settle it.
 - 2027: Enacted 2027 AHK, AK and IACK amounts in chapter 8 of the 2027 text were not reachable.
 
 ### Ondernemersaftrek and MKB-winstvrijstelling
 
 - 2026: The dated starter examples for the second test (starter in 2026, since 2024, since 2022, 2018 starter who stopped in 2023 and restarted in 2026, since 2018) are not on the current urencriterium page. Fetched on 2026-10-11, the page has only the two webhosting examples. Keep them out unless a Belastingdienst page with them is found. They are consistent with the statute and the FISIN 2026 window 2021 to 2025.
-- 2027: Bill 37 022 Artikel LXIII lid 1 onderdeel a names Artikel I onderdeel G (startersaftrek € 10) among the parts that work back to 1 January 2026, while the MvT says the € 10 applies from 1 January 2027 and that 2026 is unaffected. The nota van wijziging of 2 October 2026 (2026D48289) does not change this. Settled only by a later nota van wijziging or the adopted text. https://zoek.officielebekendmakingen.nl/kst-37022-2.html and https://www.tweedekamer.nl/downloads/document?id=2026D43301
+- 2027: Bill 37 022 Artikel LXIII lid 1 onderdeel a names Artikel I onderdeel G (startersaftrek € 10) among the parts that work back to 1 January 2026, while the MvT says the € 10 applies from 1 January 2027 and that 2026 is unaffected. The nota van wijziging of 2 October 2026 (2026D48289) does not change this. Settled only by a later nota van wijziging or the adopted text. https://zoek.officielebekendmakingen.nl/kst-37022-2.html and [Belastingplan 2027 (Kamerstuk 37022), memorie van toelichting](https://www.tweedekamer.nl/downloads/document?id=2026D43301)
 - 2027: Meewerkaftrek first band under the start-ups bill: 0,32% in the bill article text against 0,313% in the bill MvT table and on Ondernemersplein. The article text is the operative proposal. Settled by the adopted text.
 - 2027: Start-ups bill timing: its text leaves the date to a koninklijk besluit, only the MvT and Ondernemersplein name 1 January 2027 and 2030.
 - 2027: KVK states the startersaftrek "vervalt" in 2027 and that 2026 is the last year. That matches neither the enacted 2027 text (€ 2.123) nor bill 37 022 (€ 10 in 2027, abolition 2028). https://www.kvk.nl/starten/de-magische-1225-uur-alles-over-het-urencriterium
@@ -1501,7 +1505,7 @@ These points were open on 2026-10-11. Each year file repeats its own open points
 - 2026: Final 2026 bank and debt percentages: due by ministerial regulation early 2027 (art. 10.6ter lid 2 and 4).
 - 2027: Indexed 2027 heffingsvrij vermogen and schuldendrempel: unknown until the December 2026 regulation and the vote on bill 37 022.
 - 2027: 2027 other-assets percentage: unknown until the start-of-year regulation, and the letter's plus 1,5 point needs a bill text.
-- 2027: Heffingsvrij vermogen € 59.357 (enacted, before indexation) against € 30.846 (Cabinet letter): settled only by an adopted amendment or nota van wijziging. https://wetten.overheid.nl/BWBR0011353/2027-01-01 https://www.tweedekamer.nl/downloads/document?id=2026D47255
+- 2027: Heffingsvrij vermogen € 59.357 (enacted, before indexation) against € 30.846 (Cabinet letter): settled only by an adopted amendment or nota van wijziging. https://wetten.overheid.nl/BWBR0011353/2027-01-01 [Kamerstuk 37020 nr. 62 (expected), brief regering](https://www.tweedekamer.nl/downloads/document?id=2026D47255)
 - 2027: Green facilities in 2027: statute € 200 / € 400 and 0,1% against the Rijksoverheid statement of full lapse. The statute prevails, but the Rijksoverheid page may reflect a later plan. Settled by the 2027 Belastingdienst green page.
 - 2027: Kamerstuk number of the Cabinet letter (nr. 62) and the 2 October 2026 Raad van State request are not on a fetched page.
 

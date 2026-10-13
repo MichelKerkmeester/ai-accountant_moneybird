@@ -8,6 +8,7 @@ trigger_phrases:
 importance_tier: important
 contextType: research
 version: 1.0.0.0
+checked_on: "2026-10-12"
 ---
 
 # Tax year 2027
@@ -18,7 +19,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-Tax year 2027 mixes three layers. Enacted 2027 law, the Belastingplan 2027 bill, which was not adopted on 2026-10-11, and amounts that wait for the December 2026 indexation. Read the Status column on every row before using a value. Each topic file below gives the figures, how the rules work in 2027, worked examples, the changes from 2026, notes for the books and the open points. Across the twelve files the figures tables hold 348 values: 272 Verified, 12 Corrected and 64 UNVERIFIED, with 200 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md).
+Tax year 2027 mixes three layers. Enacted 2027 law, the Belastingplan 2027 bill, which was not adopted on 2026-10-11, and amounts that wait for the December 2026 indexation. Read the Status column on every row before using a value. Each topic file below gives the figures, how the rules work in 2027, worked examples, the changes from 2026, notes for the books and the open points. Across the twelve files the figures tables hold 348 values: 272 Verified, 12 Corrected and 64 UNVERIFIED, with 200 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
 
 ---
 

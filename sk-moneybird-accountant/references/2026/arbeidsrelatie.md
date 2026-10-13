@@ -15,8 +15,8 @@ version: 1.0.0.0
 
 <!-- GENERATED:nav:start -->
 Read plan: 2 parts. Next read offset: line 255.
-Part 1: lines 1-254, 49309 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2026"
-Part 2: lines 255-279, 3744 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Part 1: lines 1-254, 49387 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2026"
+Part 2: lines 255-279, 3782 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -59,7 +59,7 @@ This file covers the work relationship rules for a ZZP sole trader and for a BV 
 | WML from 1 January 2026 and 1 July 2026 | € 14,71 at 1 January 2026. € 14,99 from 1 July 2026. | enacted | Verified | https://www.rijksoverheid.nl/themas/werk/minimumloon/bedragen-minimumloon/bedragen-minimumloon-2026 |
 | Zelfstandigenwet | Internet consultation open until 29 October 2026, beoogde inwerkingtreding January 2028. Zelfstandigentoets (self-invoicing, KVK registration, number of opdrachtgevers, provisions against ondernemersrisico's) and werkrelatietoets (freedom to organise the work, own account and risk). Meeting both and working that way gives a veilige haven. Those who do not qualify keep the current rules. | proposed | Verified | https://www.rijksoverheid.nl/actueel/nieuws/2026/10/01/zelfstandigenwet-biedt-meer-duidelijkheid-en-erkenning-voor-zzpers |
 | BAZ bill 36 912 | Ingediend 24 March 2026, technische briefing 13 May 2026, inbreng verslag 27 May 2026 after a postponement from 20 May, verslag published 29 May 2026 (36 912, nr. 5). On 2026-10-11 awaiting the nota naar aanleiding van het verslag, no debate and no vote. Docket summary: about 70% of income up to the minimum wage, waiting period about one year, opt-out with a qualifying private policy. | proposed | Verified | https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912 |
-| BAZ waiting period in bill text | 104 weeks | proposed | UNVERIFIED | https://www.tweedekamer.nl/downloads/document?id=2026D13313 |
+| BAZ waiting period in bill text | 104 weeks | proposed | UNVERIFIED | [Kamerstuk 36912 nr. 2, voorstel van wet](https://zoek.officielebekendmakingen.nl/kst-36912-2.html) |
 | Belastingrente IB and btw 2026 | 5% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente |
 | Payment terms 2026 | Aanslag 6 weeks after the date of the aanslagbiljet. Navorderingsaanslag 1 month after. Naheffingsaanslag 14 days after. | enacted | Verified | https://wetten.overheid.nl/BWBR0004770/2026-01-01 art. 9 |
 | Bewaarplicht | 7 years under AWR art. 52 lid 4. 10 years for onroerende zaken and One Stop Shop data. Other data 7 years or shorter by agreement with the belastingkantoor. The term starts when the gegeven is no longer actual. | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/hoelang-moet-u-gegevens-bewaren |
@@ -159,7 +159,7 @@ The bill was ingediend on 24 March 2026. A technische briefing was held on 13 Ma
 
 ### BAZ waiting period in bill text
 
-The bill text states a waiting period of 104 weeks. The docket summary says about one year. This stays open until the bill text or the nota is read. UNVERIFIED. Sources: [Tweede Kamer document](https://www.tweedekamer.nl/downloads/document?id=2026D13313), [Tweede Kamer 36 912](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912).
+The bill text states a waiting period of 104 weeks. The docket summary says about one year. This stays open until the bill text or the nota is read. UNVERIFIED. Sources: [Tweede Kamer document, Kamerstuk 36912 nr. 2, voorstel van wet](https://zoek.officielebekendmakingen.nl/kst-36912-2.html), [Tweede Kamer 36 912](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912).
 
 ### Belastingrente IB and btw 2026
 
@@ -257,7 +257,7 @@ An approved modelovereenkomst valid on 6 September 2024 can be used up to and in
 <a id="7-open-points"></a>
 
 - VBAR first-application regulation: UNVERIFIED. The ministeriële regeling under art. III lid 2 was not found on 2026-10-11. It would settle the exact figure for 31 December 2026. See the calculated example in section 4 for an illustration based on the WML of € 14,99. Source: [Stb. 2026, 158](https://zoek.officielebekendmakingen.nl/stb-2026-158.html), [Rijksoverheid minimumloon 2026](https://www.rijksoverheid.nl/themas/werk/minimumloon/bedragen-minimumloon/bedragen-minimumloon-2026).
-- BAZ waiting period: 104 weeks in the bill text against about one year in the docket summary. UNVERIFIED. Stays open until the bill text or the nota is read. Sources: [Tweede Kamer document](https://www.tweedekamer.nl/downloads/document?id=2026D13313), [Tweede Kamer 36 912](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912).
+- BAZ waiting period: 104 weeks in the bill text against about one year in the docket summary. UNVERIFIED. Stays open until the bill text or the nota is read. Sources: [Tweede Kamer document, Kamerstuk 36912 nr. 2, voorstel van wet](https://zoek.officielebekendmakingen.nl/kst-36912-2.html), [Tweede Kamer 36 912](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912).
 - Case law date: 21 February 2025 and ECLI:NL:HR:2025:319 come from a later court citation found by search, not from a fetched copy of the ruling. UNVERIFIED. Sources: [Rijksoverheid](https://www.rijksoverheid.nl/actueel/nieuws/2025/03/27/ondernemerschap-blijft-volwaardig-criterium-bij-beoordelen-schijnzelfstandigheid), [open.overheid.nl](https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file).
 - VBAR hourly amount € 36 against € 38: settled. € 36 is the statutory base text at peildatum 1 January 2025 (unrounded € 35,43). € 38 is the indexed amount at peildatum 1 January 2026. Sources: [Kst. 36 783, nr. 3](https://zoek.officielebekendmakingen.nl/kst-36783-3.html), [Eerste Kamer 36 783](https://www.eerstekamer.nl/wetsvoorstel/36783_wet_invoering).
 - Regular DBA handhaving start date: settled. 1 January 2026 in the tranche 2025 plan, moved to an ambition for 1 January 2027 in the 2026 plan. Source: [Handhavingsplan Arbeidsrelaties 2026](https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z62fd.pdf).

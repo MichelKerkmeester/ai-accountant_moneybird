@@ -8,6 +8,7 @@ trigger_phrases:
 importance_tier: important
 contextType: research
 version: 1.0.0.0
+checked_on: "2026-10-12"
 ---
 
 # Tax year 2022
@@ -18,7 +19,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-Tax year 2022 is a past year. Its law is enacted, and later changes do not alter it. Each topic file below gives the figures, how the rules work in 2022, worked examples, the changes from 2021, notes for the books and the open points. Across the twelve files the figures tables hold 297 values: 267 Verified, 19 Corrected and 11 UNVERIFIED, with 16 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md).
+Tax year 2022 is a past year. Its law is enacted, and later changes do not alter it. Each topic file below gives the figures, how the rules work in 2022, worked examples, the changes from 2021, notes for the books and the open points. Across the twelve files the figures tables hold 297 values: 267 Verified, 19 Corrected and 11 UNVERIFIED, with 16 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
 
 ---
 

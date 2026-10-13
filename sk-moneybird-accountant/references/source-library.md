@@ -139,23 +139,35 @@ Officielebekendmakingen addresses follow a fixed pattern: `kst-<dossier>-<number
 
 ## 6. DEAD LINKS
 
-These returned HTTP 404 through both curl and WebFetch on 2026-10-12. The citing files still link them and need a replacement source.
-
-| Dead link | Cited by |
-|---|---|
-| `download.belastingdienst.nl/.../handboek_ondernemen_2024_aa9701z42fd.pdf` | `references/2024/btw.md` |
-| `rijksoverheid.nl/vraag-en-antwoord/.../ik-krijg-een-auto-van-de-zaak...` | `references/2026/kosten-en-auto.md`, `references/2027/kosten-en-auto.md` |
-| `rijksoverheid.nl/vraag-en-antwoord/duurzame-economie/groen-sparen-in-een-groenfonds` | `references/2026/box-3.md`, `references/2027/box-3.md` |
-| `rijksoverheid.nl/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting...` | `references/2026/inkomstenbelasting.md`, `references/dutch-tax-rules.md` |
+None. The four links found dead on 2026-10-12 were replaced on 2026-10-13.
 
 ---
 
 ## 7. KEEPING THE LIBRARY CURRENT
 
+### Checks and writes
+
 1. After adding or removing a link anywhere in the skills, run `python3 -I sk-moneybird-accountant/scripts/build-source-library.py`. It adds new sources as `unchecked` and keeps every recorded access result.
 2. `--check` exits 1 when a cited source is missing from the index, an indexed source is no longer cited, or an access value is outside section 2.
 3. To record access, fetch each `unchecked` source once with WebFetch, then set its `access`, `http_status` and `checked_on` in the index. The builder never calls the network.
 4. `scripts/source-library-test.sh` proves the builder on a fixture repository and checks the real index.
+5. The monthly `--watch` run reads `assets/source-watchlist.json` and reports a changed series with every file that cites it.
+
+### Digest and watch fields
+
+The index keeps a `digest` and a `retrieved_at` per readable source, next to the `etag` and `last_modified` a fetch returned. A changed digest is reported with every file that cites the URL, and the Operator decides every status flip. A row whose permanent parliamentary page is not yet published carries `kst_pending` with the expected `kst` id and keeps its temporary Tweede Kamer link until the permanent page is live.
+
+### Refresh intervals
+
+| File kind | Path | Interval |
+|---|---|---|
+| Year topic files | `sk-moneybird-accountant/references/2027/` | At every checkpoint in the release calendar |
+| Year READMEs | `sk-moneybird-accountant/references/2027/README.md` | At every checkpoint and after each logged correction |
+| The reference guide | `sk-moneybird-accountant/references/dutch-tax-rules.md` | After the Tweede Kamer vote and after the February reconciliation |
+| Migration references | `sk-moneybird-accountant/references/migration/` | At every migration phase gate |
+| The CLI skills | `cli-jortt/SKILL.md` and `cli-moneybird/SKILL.md` | Monthly with the watch run |
+
+The release calendar, its check-by dates and its owner are in [year-rollover.md](./year-rollover.md).
 
 ---
 

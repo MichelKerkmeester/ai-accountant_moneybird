@@ -15,8 +15,8 @@ version: 1.0.0.0
 
 <!-- GENERATED:nav:start -->
 Read plan: 2 parts. Next read offset: line 363.
-Part 1: lines 1-362, 50267 bytes, first heading "# BTW 2024"
-Part 2: lines 363-387, 4909 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Part 1: lines 1-362, 50620 bytes, first heading "# BTW 2024"
+Part 2: lines 363-387, 5367 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -65,7 +65,7 @@ This reference covers VAT for a Dutch sole trader, including a sole trader who m
 | BUA staff meals | When charged below cost plus 25%, deduction is excluded up to 9% of the difference | enacted | Verified | https://wetten.overheid.nl/BWBR0002636/2019-02-23 |
 | Private-use car adjustment | 2,7% of catalogue price including VAT and BPM without records. 1,5% where purchase VAT could not be deducted or after the fourth year following the year of first use. The cap is VAT deducted in the year plus 1/5 of purchase VAT during the relevant period. | enacted | Verified | https://wetten.overheid.nl/BWBR0043783/2020-07-04 |
 | Suppletie correction period and timing | Past 5 calendar years. Correct as soon as possible. A 2024 period can be corrected through the end of 2029. | enacted | Verified | https://wetten.overheid.nl/BWBR0002633/2020-01-01 |
-| Suppletie small-correction boundary | A 2024 handbook indicated less than € 1.000, but the handbook URL returns 404. The 2024 boundary is UNVERIFIED. | enacted | UNVERIFIED | https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2024_aa9701z42fd.pdf |
+| Suppletie small-correction boundary | A 2024 handbook indicated less than € 1.000, but that edition is no longer published and the only archived copy is an 11-page extract without the VAT chapter. The 2024 boundary is UNVERIFIED. | enacted | UNVERIFIED | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/handboek-ondernemen and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/index |
 | New 8-week suppletie term | Begins 1 January 2025, not during 2024 | adopted-not-yet-in-force | Verified | https://zoek.officielebekendmakingen.nl/stb-2024-441.html |
 | Reverse charge for specified electronics | Mobile phones, chips before end product, game consoles, tablets and laptops: € 10.000 or more per delivery per type of good | enacted | Verified | https://wetten.overheid.nl/BWBR0002633/2020-01-01 |
 | Reverse-charge legal provisions | Articles 24b, 24ba and 24bb of the UBOB | enacted | Corrected | https://wetten.overheid.nl/BWBR0002633/2026-01-01 |
@@ -204,7 +204,7 @@ Correct VAT returns for the past five calendar years as soon as possible, using 
 
 ### Suppletie small-correction boundary
 
-The 2024 handbook URL that was checked returns 404, so the exact 2024 boundary for reporting a small correction in the next return rather than by suppletie could not be confirmed. See section 7. [Checked 2024 handbook URL](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2024_aa9701z42fd.pdf)
+The 2024 edition of the handbook is no longer published and the only archived copy is an 11-page extract without the VAT chapter, so the exact 2024 boundary for reporting a small correction in the next return rather than by suppletie could not be confirmed. See section 7. [Handbook page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/handboek-ondernemen), [FISIN 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/index)
 
 ### Reverse-charge legal provisions
 
@@ -364,8 +364,8 @@ This assumes the previous-year test and the other threshold conditions are met. 
 
 <a id="7-open-points"></a>
 
-- **Yearly VAT return amount and 2024 conditions: UNVERIFIED.** The checked 2024 handbook URL returns 404. The value below € 1.883 and the related yearly-return conditions appear in the checked 2020 and 2026 handbooks, but that does not verify the exact 2024 wording. A working copy of the 2024 handbook would settle it. Sources: [2024 handbook URL](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2024_aa9701z42fd.pdf), [2020 handbook](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf), [2026 handbook](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf).
-- **Suppletie small-correction boundary: UNVERIFIED.** The 2024 handbook URL returns 404. A working copy of that edition would settle whether the 2024 rule allowed a small correction in the next return and the exact boundary. Source: [2024 handbook URL](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2024_aa9701z42fd.pdf).
+- **Yearly VAT return amount and 2024 conditions: UNVERIFIED.** The 2024 edition of the handbook is no longer published and the only archived copy is an 11-page extract without the VAT chapter. The value below € 1.883 and the related yearly-return conditions appear in the checked 2020 and 2026 handbooks, but that does not verify the exact 2024 wording. A complete copy of the 2024 edition or the matching FISIN 2024 page would settle it. Sources: [Handbook page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/handboek-ondernemen), [FISIN 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/index), [2020 handbook](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf), [2026 handbook](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf).
+- **Suppletie small-correction boundary: UNVERIFIED.** The 2024 edition of the handbook is no longer published and the only archived copy is an 11-page extract without the VAT chapter. A complete copy of that edition or the matching FISIN 2024 page would settle whether the 2024 rule allowed a small correction in the next return and the exact boundary. Sources: [Handbook page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/handboek-ondernemen), [FISIN 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/index).
 - **Monthly filing trigger: UNVERIFIED for 2024.** The 2020 handbook says that quarterly VAT payable above € 15.000 triggers a monthly period. The current Belastingdienst page and 2026 handbook no longer state that trigger. A dated 2024 handbook or decision would settle whether it applied in 2024. Sources: [2020 handbook](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf), [current period-change page](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/wijziging-aangiftetijdvak-btw), [2026 handbook](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf).
 - **Published calendar of 2024 VAT dates: unknown.** No year-specific date table was found in the checked source. The general return and payment deadline is verified. A 2024 dated calendar would settle the missing date table. Source: [Belastingdienst VAT dates](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums).
 - **National B2B e-invoicing duty in 2024: UNVERIFIED.** The checked value says none, but the available government business page establishes duties for central-government suppliers and possible requirements by other public bodies. A 2024 primary source specifically addressing private B2B invoicing would settle the value. Source: [Government business portal](https://business.gov.nl/regulations/e-invoicing-government-organisations/).

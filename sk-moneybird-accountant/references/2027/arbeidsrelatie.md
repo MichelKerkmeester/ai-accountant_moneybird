@@ -15,7 +15,7 @@ version: 1.0.0.0
 
 <!-- GENERATED:nav:start -->
 Read plan: 2 parts. Next read offset: line 260.
-Part 1: lines 1-259, 47123 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2027"
+Part 1: lines 1-259, 47161 bytes, first heading "# Arbeidsrelatie en zelfstandigheid 2027"
 Part 2: lines 260-289, 6436 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
@@ -236,7 +236,7 @@ No example is given for BAZ (bill 36 912). It is a proposed bill, and the checke
 - VBAR first-application regulation: UNVERIFIED in 2026 and still UNVERIFIED in 2027. The ministeriële regeling under art. III lid 2 was not found on 2026-10-11. Source: [Stb. 2026, 158](https://zoek.officielebekendmakingen.nl/stb-2026-158.html).
 - Modelovereenkomsten: usable to 31 December 2029 and no new ones since 6 September 2024. No change from 2026 to 2027. Source: [werken met modelovereenkomsten](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/werken-met-modelovereenkomsten).
 - BAZ: in 2026 the status was awaiting the nota naar aanleiding van het verslag. In 2027 there is no later status than awaiting the nota, and a procedure meeting was set for 13 October 2026. Source: [Tweede Kamer docket](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912).
-- BAZ waiting period: the 2026 open point, 104 weeks in the bill text against about one year in the docket summary, is not resolved in the 2027 sources. Both are proposed and the bill text was not reopened. Sources: [Tweede Kamer docket](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912) and [bill text](https://www.tweedekamer.nl/downloads/document?id=2026D13313).
+- BAZ waiting period: the 2026 open point, 104 weeks in the bill text against about one year in the docket summary, is not resolved in the 2027 sources. Both are proposed and the bill text was not reopened. Sources: [Tweede Kamer docket](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912) and [bill text, Kamerstuk 36912 nr. 2, voorstel van wet](https://zoek.officielebekendmakingen.nl/kst-36912-2.html).
 - Zelfstandigenwet: in 2026 the internet consultation was open until 29 October 2026, with an intended entry into force in January 2028. In 2027 the act is still not in force and the intended date stays January 2028. Source: [rijksoverheid.nl](https://www.rijksoverheid.nl/actueel/nieuws/2026/10/01/zelfstandigenwet-biedt-meer-duidelijkheid-en-erkenning-voor-zzpers).
 
 ---

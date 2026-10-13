@@ -15,8 +15,8 @@ version: 1.0.0.0
 
 <!-- GENERATED:nav:start -->
 Read plan: 2 parts. Next read offset: line 373.
-Part 1: lines 1-372, 51110 bytes, first heading "# Kosten en auto 2027"
-Part 2: lines 373-441, 15591 bytes, first heading "### 4.17 Calculated example: werkruimte test"
+Part 1: lines 1-372, 51143 bytes, first heading "# Kosten en auto 2027"
+Part 2: lines 373-441, 15624 bytes, first heading "### 4.17 Calculated example: werkruimte test"
 <!-- GENERATED:nav:end -->
 
 
@@ -68,7 +68,7 @@ This file covers which business costs a sole trader with a winst uit onderneming
 | Openbaar vervoer, taxi en vliegtuig | 100% of the actual costs | adopted-not-yet-in-force | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/zakelijke_kosten/overzicht-mogelijk-aftrekbare-zakelijke-kosten |
 | BTW on a private car used for business | 1,5% of the catalogue price including btw and bpm at year end without a sluitende kilometeradministratie | adopted-not-yet-in-force | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/btw_en_de_auto/zakelijk_gebruik_van_de_priveauto/zakelijk_gebruik_van_de_priveauto |
 | KOR and the income-tax cost base | costs including btw under the KOR, excluding btw when the btw is deductible, KOR turnover limit € 20.000 per calendar year | adopted-not-yet-in-force | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/ |
-| Pseudo-eindheffing new petrol or diesel lease cars (BV) | 12% of the catalogue price per year from 1 January 2027, transition until 16 September 2030 | adopted-not-yet-in-force | UNVERIFIED | https://www.rijksoverheid.nl/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen |
+| Pseudo-eindheffing new petrol or diesel lease cars (BV) | 12% of the catalogue price per year from 1 January 2027, transition until 16 September 2030 | adopted-not-yet-in-force | UNVERIFIED | https://www.rijksoverheid.nl/documenten/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen |
 
 Status adopted-not-yet-in-force means the value applies to tax year 2027 and comes from the published 2027 statute text or from a rule that was unchanged in every statute version from 2020 to 2027.
 
@@ -134,7 +134,7 @@ With a rittenregistratie or another means of showing at most 500 private km, the
 
 ### 3.13 Youngtimer age, enacted 2027 text
 
-Art. 3.20 lid 1 onderdeel b makes 35% of the waarde van de auto the onttrekking for a car first taken into use more than the age threshold ago. The 2027 text sets that threshold at 25 years. The step to 25 years was set by Belastingplan 2026 art. II onderdeel aA, per the Kennisgroep publication. The 2026 youngtimer decree states that per 1 January 2027 the threshold rises to 25 years and the transition lapses, and Rijksoverheid still writes that from 2027 the threshold goes from 16 to 25 years. Sources: [art. 3.20, 2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01), [KG:213:2026:1](https://kennisgroepen.belastingdienst.nl/publicaties/kg21320261-heretikettering-bij-wetswijziging-privegebruik-auto/), [Stcrt. 2026, 6596](https://zoek.officielebekendmakingen.nl/stcrt-2026-6596.html) and [Rijksoverheid on the car of the zaak](https://www.rijksoverheid.nl/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen).
+Art. 3.20 lid 1 onderdeel b makes 35% of the waarde van de auto the onttrekking for a car first taken into use more than the age threshold ago. The 2027 text sets that threshold at 25 years. The step to 25 years was set by Belastingplan 2026 art. II onderdeel aA, per the Kennisgroep publication. The 2026 youngtimer decree states that per 1 January 2027 the threshold rises to 25 years and the transition lapses, and Rijksoverheid still writes that from 2027 the threshold goes from 16 to 25 years. Sources: [art. 3.20, 2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01), [KG:213:2026:1](https://kennisgroepen.belastingdienst.nl/publicaties/kg21320261-heretikettering-bij-wetswijziging-privegebruik-auto/), [Stcrt. 2026, 6596](https://zoek.officielebekendmakingen.nl/stcrt-2026-6596.html) and [Rijksoverheid on the car of the zaak](https://www.rijksoverheid.nl/documenten/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen).
 
 The WEV switch has its own age. Art. 3.20 lid 5 onderdeel b keeps the words "meer dan vijftien jaar" in the 2026 and 2027 texts, while lid 1 moved to 16 years (2026) and 25 years (2027 text). The Belastingdienst applies 16 years for the WEV switch from 2026, and Belastingplan 2027 would repair lid 5 onderdeel b to 16 retroactively to 1 January 2026 (art. I onderdeel E onder 2 with art. LXIII lid 1 a). When the threshold is crossed mid-year the year is split by month. Sources: [art. 3.20 lid 5, 2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [waarde van de auto](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/privegebruik_auto/waarde_van_de_auto) and [Belastingplan 2027](https://zoek.officielebekendmakingen.nl/kst-37022-2.html).
 
@@ -220,7 +220,7 @@ Deduct costs excluding VAT when the VAT is deductible in the btw-aangifte. When 
 
 ### 3.31 Pseudo-eindheffing new petrol or diesel lease cars (BV)
 
-Separate from the income-tax car rules, and on the same Rijksoverheid page, from 1 January 2027 employers pay a pseudo-eindheffing of 12% of the catalogue price per year for new petrol or diesel lease cars that are also used privately, with a transition until 16 September 2030 for cars provided before 2027. This is relevant for a DGA with a BV car and it was not checked further in the material. Source: [Rijksoverheid on the car of the zaak](https://www.rijksoverheid.nl/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen). See section 7.
+Separate from the income-tax car rules, and on the same Rijksoverheid page, from 1 January 2027 employers pay a pseudo-eindheffing of 12% of the catalogue price per year for new petrol or diesel lease cars that are also used privately, with a transition until 16 September 2030 for cars provided before 2027. This is relevant for a DGA with a BV car and it was not checked further in the material. Source: [Rijksoverheid on the car of the zaak](https://www.rijksoverheid.nl/documenten/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen). See section 7.
 
 ---
 
@@ -376,7 +376,7 @@ A sole trader rents a home for an invented € 1.200 per month and uses one room
 
 ### 4.18 Official example: pseudo-eindheffing
 
-Official example from Rijksoverheid: a car of € 30.000 gives 12% = € 3.600,00 per year, which is € 300,00 per month. Official example, source: [Rijksoverheid on the car of the zaak](https://www.rijksoverheid.nl/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen).
+Official example from Rijksoverheid: a car of € 30.000 gives 12% = € 3.600,00 per year, which is € 300,00 per month. Official example, source: [Rijksoverheid on the car of the zaak](https://www.rijksoverheid.nl/documenten/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen).
 
 ---
 
@@ -396,7 +396,7 @@ Official example from Rijksoverheid: a car of € 30.000 gives 12% = € 3.600,0
 - Zero-emission reduction: 2026 was 4% off capped € 1.200, so 18% up to € 30.000, and the 2027 text goes to 2% off capped € 600, so 20% up to € 30.000 ([2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01) and [Belastingdienst 2026](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/bijtelling-privegebruik-auto-2026), [2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01)).
 - Bijtelling fiets 7%, werkruimte thuis 0% with exceptions, telefoonabonnement thuis 0%, private computers en apparatuur 0%, geldboetes 0%, openbaar vervoer 100% of actual costs, KOR turnover limit € 20.000 and the btw car forfait of 1,5%: unchanged from 2026 to 2027 ([2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01), [overzicht mogelijk aftrekbare zakelijke kosten](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/zakelijke_kosten/overzicht-mogelijk-aftrekbare-zakelijke-kosten), [KOR](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/), [btw en de auto](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/btw_en_de_auto/zakelijk_gebruik_van_de_priveauto/zakelijk_gebruik_van_de_priveauto)).
 - Studiekostenaftrek: 2026 was limited to the prestatiebeurs case with an extended diplomatermijn of at most 15 years, study years 2010/2011 to 2014/2015 ([FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aftrek_studiekosten)). No FISIN 2027 is published, so the 2027 position is unknown, although art. 10a.16 stays in the 2027 text ([2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01)).
-- New from 1 January 2027: the pseudo-eindheffing of 12% of the catalogue price per year for new petrol or diesel lease cars used privately, with a transition until 16 September 2030 for cars provided before 2027 ([Rijksoverheid](https://www.rijksoverheid.nl/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen)).
+- New from 1 January 2027: the pseudo-eindheffing of 12% of the catalogue price per year for new petrol or diesel lease cars used privately, with a transition until 16 September 2030 for cars provided before 2027 ([Rijksoverheid](https://www.rijksoverheid.nl/documenten/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen)).
 
 ---
 
@@ -427,7 +427,7 @@ Official example from Rijksoverheid: a car of € 30.000 gives 12% = € 3.600,0
 - Studiekostenaftrek 2027 is unknown. No FISIN 2027 is published, and the FISIN 2026 page is the last checked one ([FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aftrek_studiekosten)). Art. 10a.16 stays in the 2027 text ([2027 text](https://wetten.overheid.nl/BWBR0011353/2027-01-01)), but whether any extended diplomatermijn case remains in 2027 is not on a fetched page. A published FISIN 2027 page settles it.
 - The content of the nota van wijziging of 2 October 2026 on Belastingplan 2027 was not fetched, because kst-37022 numbers above 2 did not resolve on zoek.officielebekendmakingen.nl. It could touch these items. The published stuk settles it.
 - CPB certification date. The certification note is dated 1 March 2026 on Rijksoverheid and is an annex to a Kamerbrief of 24 March 2026 ([certificeringsnotitie](https://www.rijksoverheid.nl/documenten/2026/03/01/certificeringsnotitie-cpb-verhogen-leeftijdsgrens-youngtimerregeling)). A CPB certification date of 27 March 2026 from cpb.nl is not confirmed by a listed primary source, and the note page itself does not state the age path.
-- Pseudo-eindheffing for new petrol or diesel lease cars from 1 January 2027 is UNVERIFIED beyond the Rijksoverheid page, which was not checked further ([Rijksoverheid](https://www.rijksoverheid.nl/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen)). It concerns a BV with a lease car and not the income-tax car rules. The underlying wet text settles it.
+- Pseudo-eindheffing for new petrol or diesel lease cars from 1 January 2027 is UNVERIFIED beyond the Rijksoverheid page, which was not checked further ([Rijksoverheid](https://www.rijksoverheid.nl/documenten/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen)). It concerns a BV with a lease car and not the income-tax car rules. The underlying wet text settles it.
 
 ---
 
