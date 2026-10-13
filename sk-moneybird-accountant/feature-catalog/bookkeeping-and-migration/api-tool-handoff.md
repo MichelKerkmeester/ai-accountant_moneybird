@@ -2,10 +2,10 @@
 title: CLI tool handoff
 description: Routes Jortt reads through jortt-cli and Moneybird reads or writes through moneybird-guard.
 trigger_phrases:
+  - CLI tool handoff
   - API tool handoff
-  - Dutch ZZP bookkeeping workflow
-  - Moneybird accounting assistant
-  - API-001
+  - jortt-cli handoff
+  - moneybird-guard handoff
 version: 1.0.0.0
 ---
 
@@ -33,15 +33,15 @@ Before any CLI action, the agent loads the sibling tool skill that owns the requ
 
 | File | Layer | Role |
 |---|---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Shared | Defines the CLI ownership and write gate. |
-| AI Systems/Moneybird Accountant/cli-jortt/SKILL.md | Shared | Documents read-only Jortt CLI operations. |
-| AI Systems/Moneybird Accountant/cli-moneybird/SKILL.md | Shared | Documents guarded Moneybird CLI reads, writes, and verification. |
+| sk-moneybird-accountant/SKILL.md | Shared | Defines the CLI ownership and write gate. |
+| cli-jortt/SKILL.md | Shared | Documents read-only Jortt CLI operations. |
+| cli-moneybird/SKILL.md | Shared | Documents guarded Moneybird CLI reads, writes and verification. |
 
 ### Validation And Tests
 
 | File | Type | Role |
 |---|---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/manual-testing-playbook/offline-routing/api-tool-handoff.md | Manual playbook | Offline routing scenario for this feature. |
+| sk-moneybird-accountant/manual-testing-playbook/offline-routing/api-tool-handoff.md | Manual playbook | Offline routing scenario for this feature. |
 
 ---
 

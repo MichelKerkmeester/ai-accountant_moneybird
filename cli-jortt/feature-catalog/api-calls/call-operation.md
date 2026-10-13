@@ -33,7 +33,7 @@ Each `--NAME VALUE` pair must match a path or query parameter of the operation. 
 
 ### Dry Run
 
-`--dry-run` prints the method, the full URL and the body, then stops. It requests no token and makes no network call. The write lock and the scope check still run first, so a dry run of a blocked write fails the same way a real call would.
+`--dry-run` prints the method, the full URL and the body, then stops. It requests no token and makes no API call. The spec load runs first, so a first run without a cache can still download the OpenAPI document. The write lock and the scope check also run before the output, so a dry run of a blocked write fails the same way a real call would.
 
 ### Output
 

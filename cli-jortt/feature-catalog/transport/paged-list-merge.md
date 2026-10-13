@@ -17,7 +17,7 @@ version: 1.0.0.0
 
 Follows _links.next.href across pages and merges each page's data array into one JSON array.
 
-Jortt pages hold at most 100 items. A source register needs every page, so the merge turns a paged list into one complete file.
+A source register needs every page, so the merge turns a paged list into one complete file. The page size and the API rate limit are owned by [`references/rest-api.md`](../../references/rest-api.md).
 
 ---
 

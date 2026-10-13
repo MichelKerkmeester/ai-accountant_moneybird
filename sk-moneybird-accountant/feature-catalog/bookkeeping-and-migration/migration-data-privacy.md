@@ -5,7 +5,7 @@ trigger_phrases:
   - Migration data privacy
   - Dutch ZZP bookkeeping workflow
   - Moneybird accounting assistant
-  - PRIV-001
+  - private database read rule
 version: 1.0.0.0
 ---
 
@@ -23,7 +23,7 @@ The project bootstrap and skill set a strict boundary around private finance rec
 
 ## 2. HOW IT WORKS
 
-A request to search private data without naming one specific file is refused without accessing the path. During a migration phase only, a specifically named file may be read without directory listing, wildcard search, or traversal. Migration output stays in the designated workspace.
+A request to search private data without naming one specific file is refused without accessing the path. During a migration phase only, a specifically named file may be read without directory listing, wildcard search or traversal. Migration output stays in the designated workspace.
 
 ---
 
@@ -33,14 +33,14 @@ A request to search private data without naming one specific file is refused wit
 
 | File | Layer | Role |
 |---|---|---|
-| AI Systems/Moneybird Accountant/AGENTS.md | Shared | Defines the project privacy and data-location rules. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Shared | Defines the migration privacy exception and output location. |
+| AGENTS.md | Shared | Defines the project privacy and data-location rules. |
+| sk-moneybird-accountant/SKILL.md | Shared | Defines the migration privacy exception and output location. |
 
 ### Validation And Tests
 
 | File | Type | Role |
 |---|---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/manual-testing-playbook/offline-routing/privacy-boundary.md | Manual playbook | Offline routing scenario for this feature. |
+| sk-moneybird-accountant/manual-testing-playbook/offline-routing/privacy-boundary.md | Manual playbook | Offline routing scenario for this feature. |
 
 ---
 

@@ -1,0 +1,972 @@
+[
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/api-tool-handoff.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/api-tool-handoff.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/external-source-library.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/external-source-library.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/fixed-asset-booking.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/fixed-asset-booking.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/jortt-to-moneybird-mapping.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/jortt-to-moneybird-mapping.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-agent-route.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-agent-route.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-archive-decommission-gate.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-archive-decommission-gate.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-auditfile-export-route.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-auditfile-export-route.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-data-privacy.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-data-privacy.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-phase-routing.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-phase-routing.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-plan-kit.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-plan-kit.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-stop-and-resume.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-stop-and-resume.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-trial-and-package-expiry.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-trial-and-package-expiry.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/migration-write-keys-and-run-journal.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/migration-write-keys-and-run-journal.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/mixed-use-cost-booking.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/mixed-use-cost-booking.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/purchase-invoice-booking.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/purchase-invoice-booking.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/task-type-routing.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/task-type-routing.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/quality-gates/eval-grader.md",
+    "diskPath": "feature-catalog/quality-gates/eval-grader.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/quality-gates/fragment-link-check.md",
+    "diskPath": "feature-catalog/quality-gates/fragment-link-check.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/quality-gates/hardening-matrix-check.md",
+    "diskPath": "feature-catalog/quality-gates/hardening-matrix-check.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/quality-gates/hostile-invoice-set.md",
+    "diskPath": "feature-catalog/quality-gates/hostile-invoice-set.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/quality-gates/privacy-gate.md",
+    "diskPath": "feature-catalog/quality-gates/privacy-gate.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/quality-gates/regression-trailer-check.md",
+    "diskPath": "feature-catalog/quality-gates/regression-trailer-check.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/quality-gates/repository-ci-gates.md",
+    "diskPath": "feature-catalog/quality-gates/repository-ci-gates.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/quality-gates/route-replay-harness.md",
+    "diskPath": "feature-catalog/quality-gates/route-replay-harness.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/quality-gates/token-budget-baseline.md",
+    "diskPath": "feature-catalog/quality-gates/token-budget-baseline.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/quality-gates/write-contract-check.md",
+    "diskPath": "feature-catalog/quality-gates/write-contract-check.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/reference-and-state/reference-index-and-year-changes.md",
+    "diskPath": "feature-catalog/reference-and-state/reference-index-and-year-changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/reference-and-state/session-context-and-year-state.md",
+    "diskPath": "feature-catalog/reference-and-state/session-context-and-year-state.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/reference-and-state/year-rollover-runbook.md",
+    "diskPath": "feature-catalog/reference-and-state/year-rollover-runbook.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/answer-privacy.md",
+    "diskPath": "manual-testing-playbook/offline-routing/answer-privacy.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/api-tool-handoff.md",
+    "diskPath": "manual-testing-playbook/offline-routing/api-tool-handoff.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/auditfile-read-only-route.md",
+    "diskPath": "manual-testing-playbook/offline-routing/auditfile-read-only-route.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/current-year-zzp-question.md",
+    "diskPath": "manual-testing-playbook/offline-routing/current-year-zzp-question.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/fixed-asset-booking.md",
+    "diskPath": "manual-testing-playbook/offline-routing/fixed-asset-booking.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/hostile-invoice-set.md",
+    "diskPath": "manual-testing-playbook/offline-routing/hostile-invoice-set.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/jortt-decommission-gate.md",
+    "diskPath": "manual-testing-playbook/offline-routing/jortt-decommission-gate.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/live-monthly-bookkeeping.md",
+    "diskPath": "manual-testing-playbook/offline-routing/live-monthly-bookkeeping.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/migration-agent-route.md",
+    "diskPath": "manual-testing-playbook/offline-routing/migration-agent-route.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/migration-phase-routing.md",
+    "diskPath": "manual-testing-playbook/offline-routing/migration-phase-routing.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/migration-plan-kit.md",
+    "diskPath": "manual-testing-playbook/offline-routing/migration-plan-kit.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/mixed-use-cost-booking.md",
+    "diskPath": "manual-testing-playbook/offline-routing/mixed-use-cost-booking.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/operator-tax-boundary.md",
+    "diskPath": "manual-testing-playbook/offline-routing/operator-tax-boundary.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/privacy-boundary.md",
+    "diskPath": "manual-testing-playbook/offline-routing/privacy-boundary.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/purchase-invoice-booking.md",
+    "diskPath": "manual-testing-playbook/offline-routing/purchase-invoice-booking.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/quarterly-yearly-bookkeeping.md",
+    "diskPath": "manual-testing-playbook/offline-routing/quarterly-yearly-bookkeeping.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/source-lookup.md",
+    "diskPath": "manual-testing-playbook/offline-routing/source-lookup.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/trial-expiry-stop.md",
+    "diskPath": "manual-testing-playbook/offline-routing/trial-expiry-stop.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/write-journal-crash-resume.md",
+    "diskPath": "manual-testing-playbook/offline-routing/write-journal-crash-resume.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2020/README.md",
+    "diskPath": "references/2020/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2020/arbeidsrelatie.md",
+    "diskPath": "references/2020/arbeidsrelatie.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2020/box-2.md",
+    "diskPath": "references/2020/box-2.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2020/box-3.md",
+    "diskPath": "references/2020/box-3.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2020/btw.md",
+    "diskPath": "references/2020/btw.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2020/bv-en-vennootschapsbelasting.md",
+    "diskPath": "references/2020/bv-en-vennootschapsbelasting.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2020/changelog.md",
+    "diskPath": "references/2020/changelog.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2020/changes.md",
+    "diskPath": "references/2020/changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2020/inkomstenbelasting.md",
+    "diskPath": "references/2020/inkomstenbelasting.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2020/investeringen.md",
+    "diskPath": "references/2020/investeringen.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2020/kosten-en-auto.md",
+    "diskPath": "references/2020/kosten-en-auto.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2020/ondernemersaftrek.md",
+    "diskPath": "references/2020/ondernemersaftrek.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2020/pensioen-en-aov.md",
+    "diskPath": "references/2020/pensioen-en-aov.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2020/procedure.md",
+    "diskPath": "references/2020/procedure.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2020/zvw.md",
+    "diskPath": "references/2020/zvw.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2021/README.md",
+    "diskPath": "references/2021/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2021/arbeidsrelatie.md",
+    "diskPath": "references/2021/arbeidsrelatie.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2021/box-2.md",
+    "diskPath": "references/2021/box-2.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2021/box-3.md",
+    "diskPath": "references/2021/box-3.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2021/btw.md",
+    "diskPath": "references/2021/btw.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2021/bv-en-vennootschapsbelasting.md",
+    "diskPath": "references/2021/bv-en-vennootschapsbelasting.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2021/changelog.md",
+    "diskPath": "references/2021/changelog.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2021/changes.md",
+    "diskPath": "references/2021/changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2021/inkomstenbelasting.md",
+    "diskPath": "references/2021/inkomstenbelasting.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2021/investeringen.md",
+    "diskPath": "references/2021/investeringen.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2021/kosten-en-auto.md",
+    "diskPath": "references/2021/kosten-en-auto.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2021/ondernemersaftrek.md",
+    "diskPath": "references/2021/ondernemersaftrek.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2021/pensioen-en-aov.md",
+    "diskPath": "references/2021/pensioen-en-aov.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2021/procedure.md",
+    "diskPath": "references/2021/procedure.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2021/zvw.md",
+    "diskPath": "references/2021/zvw.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2022/README.md",
+    "diskPath": "references/2022/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2022/arbeidsrelatie.md",
+    "diskPath": "references/2022/arbeidsrelatie.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2022/box-2.md",
+    "diskPath": "references/2022/box-2.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2022/box-3.md",
+    "diskPath": "references/2022/box-3.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2022/btw.md",
+    "diskPath": "references/2022/btw.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2022/bv-en-vennootschapsbelasting.md",
+    "diskPath": "references/2022/bv-en-vennootschapsbelasting.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2022/changelog.md",
+    "diskPath": "references/2022/changelog.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2022/changes.md",
+    "diskPath": "references/2022/changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2022/inkomstenbelasting.md",
+    "diskPath": "references/2022/inkomstenbelasting.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2022/investeringen.md",
+    "diskPath": "references/2022/investeringen.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2022/kosten-en-auto.md",
+    "diskPath": "references/2022/kosten-en-auto.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2022/ondernemersaftrek.md",
+    "diskPath": "references/2022/ondernemersaftrek.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2022/pensioen-en-aov.md",
+    "diskPath": "references/2022/pensioen-en-aov.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2022/procedure.md",
+    "diskPath": "references/2022/procedure.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2022/zvw.md",
+    "diskPath": "references/2022/zvw.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2023/README.md",
+    "diskPath": "references/2023/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2023/arbeidsrelatie.md",
+    "diskPath": "references/2023/arbeidsrelatie.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2023/box-2.md",
+    "diskPath": "references/2023/box-2.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2023/box-3.md",
+    "diskPath": "references/2023/box-3.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2023/btw.md",
+    "diskPath": "references/2023/btw.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2023/bv-en-vennootschapsbelasting.md",
+    "diskPath": "references/2023/bv-en-vennootschapsbelasting.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2023/changelog.md",
+    "diskPath": "references/2023/changelog.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2023/changes.md",
+    "diskPath": "references/2023/changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2023/inkomstenbelasting.md",
+    "diskPath": "references/2023/inkomstenbelasting.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2023/investeringen.md",
+    "diskPath": "references/2023/investeringen.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2023/kosten-en-auto.md",
+    "diskPath": "references/2023/kosten-en-auto.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2023/ondernemersaftrek.md",
+    "diskPath": "references/2023/ondernemersaftrek.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2023/pensioen-en-aov.md",
+    "diskPath": "references/2023/pensioen-en-aov.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2023/procedure.md",
+    "diskPath": "references/2023/procedure.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2023/zvw.md",
+    "diskPath": "references/2023/zvw.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2024/README.md",
+    "diskPath": "references/2024/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2024/arbeidsrelatie.md",
+    "diskPath": "references/2024/arbeidsrelatie.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2024/box-2.md",
+    "diskPath": "references/2024/box-2.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2024/box-3.md",
+    "diskPath": "references/2024/box-3.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2024/btw.md",
+    "diskPath": "references/2024/btw.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2024/bv-en-vennootschapsbelasting.md",
+    "diskPath": "references/2024/bv-en-vennootschapsbelasting.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2024/changelog.md",
+    "diskPath": "references/2024/changelog.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2024/changes.md",
+    "diskPath": "references/2024/changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2024/inkomstenbelasting.md",
+    "diskPath": "references/2024/inkomstenbelasting.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2024/investeringen.md",
+    "diskPath": "references/2024/investeringen.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2024/kosten-en-auto.md",
+    "diskPath": "references/2024/kosten-en-auto.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2024/ondernemersaftrek.md",
+    "diskPath": "references/2024/ondernemersaftrek.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2024/pensioen-en-aov.md",
+    "diskPath": "references/2024/pensioen-en-aov.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2024/procedure.md",
+    "diskPath": "references/2024/procedure.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2024/zvw.md",
+    "diskPath": "references/2024/zvw.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2025/README.md",
+    "diskPath": "references/2025/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2025/arbeidsrelatie.md",
+    "diskPath": "references/2025/arbeidsrelatie.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2025/box-2.md",
+    "diskPath": "references/2025/box-2.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2025/box-3.md",
+    "diskPath": "references/2025/box-3.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2025/btw.md",
+    "diskPath": "references/2025/btw.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2025/bv-en-vennootschapsbelasting.md",
+    "diskPath": "references/2025/bv-en-vennootschapsbelasting.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2025/changelog.md",
+    "diskPath": "references/2025/changelog.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2025/changes.md",
+    "diskPath": "references/2025/changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2025/inkomstenbelasting.md",
+    "diskPath": "references/2025/inkomstenbelasting.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2025/investeringen.md",
+    "diskPath": "references/2025/investeringen.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2025/kosten-en-auto.md",
+    "diskPath": "references/2025/kosten-en-auto.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2025/ondernemersaftrek.md",
+    "diskPath": "references/2025/ondernemersaftrek.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2025/pensioen-en-aov.md",
+    "diskPath": "references/2025/pensioen-en-aov.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2025/procedure.md",
+    "diskPath": "references/2025/procedure.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2025/zvw.md",
+    "diskPath": "references/2025/zvw.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2026/README.md",
+    "diskPath": "references/2026/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2026/arbeidsrelatie.md",
+    "diskPath": "references/2026/arbeidsrelatie.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2026/box-2.md",
+    "diskPath": "references/2026/box-2.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2026/box-3.md",
+    "diskPath": "references/2026/box-3.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2026/btw.md",
+    "diskPath": "references/2026/btw.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2026/bv-en-vennootschapsbelasting.md",
+    "diskPath": "references/2026/bv-en-vennootschapsbelasting.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2026/changelog.md",
+    "diskPath": "references/2026/changelog.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2026/changes.md",
+    "diskPath": "references/2026/changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2026/inkomstenbelasting.md",
+    "diskPath": "references/2026/inkomstenbelasting.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2026/investeringen.md",
+    "diskPath": "references/2026/investeringen.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2026/kosten-en-auto.md",
+    "diskPath": "references/2026/kosten-en-auto.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2026/ondernemersaftrek.md",
+    "diskPath": "references/2026/ondernemersaftrek.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2026/pensioen-en-aov.md",
+    "diskPath": "references/2026/pensioen-en-aov.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2026/procedure.md",
+    "diskPath": "references/2026/procedure.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2026/zvw.md",
+    "diskPath": "references/2026/zvw.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2027/README.md",
+    "diskPath": "references/2027/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2027/arbeidsrelatie.md",
+    "diskPath": "references/2027/arbeidsrelatie.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2027/box-2.md",
+    "diskPath": "references/2027/box-2.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2027/box-3.md",
+    "diskPath": "references/2027/box-3.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2027/btw.md",
+    "diskPath": "references/2027/btw.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2027/bv-en-vennootschapsbelasting.md",
+    "diskPath": "references/2027/bv-en-vennootschapsbelasting.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2027/changelog.md",
+    "diskPath": "references/2027/changelog.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2027/changes.md",
+    "diskPath": "references/2027/changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2027/inkomstenbelasting.md",
+    "diskPath": "references/2027/inkomstenbelasting.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2027/investeringen.md",
+    "diskPath": "references/2027/investeringen.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2027/kosten-en-auto.md",
+    "diskPath": "references/2027/kosten-en-auto.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2027/ondernemersaftrek.md",
+    "diskPath": "references/2027/ondernemersaftrek.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2027/pensioen-en-aov.md",
+    "diskPath": "references/2027/pensioen-en-aov.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2027/procedure.md",
+    "diskPath": "references/2027/procedure.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/2027/zvw.md",
+    "diskPath": "references/2027/zvw.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/dutch-tax-rules.md",
+    "diskPath": "references/dutch-tax-rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/fixed-assets.md",
+    "diskPath": "references/fixed-assets.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/index.json",
+    "diskPath": "references/index.json"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/README.md",
+    "diskPath": "references/migration/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/control-framework.md",
+    "diskPath": "references/migration/control-framework.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/jortt-to-moneybird-mapping.md",
+    "diskPath": "references/migration/jortt-to-moneybird-mapping.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/overview-and-setup.md",
+    "diskPath": "references/migration/overview-and-setup.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/phase-22-completion.md",
+    "diskPath": "references/migration/phase-22-completion.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/phases-0-to-2.md",
+    "diskPath": "references/migration/phases-0-to-2.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/phases-10-to-16.md",
+    "diskPath": "references/migration/phases-10-to-16.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/phases-17-to-18.md",
+    "diskPath": "references/migration/phases-17-to-18.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/phases-19-to-21.md",
+    "diskPath": "references/migration/phases-19-to-21.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/phases-3-to-5.md",
+    "diskPath": "references/migration/phases-3-to-5.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/phases-6-to-9.md",
+    "diskPath": "references/migration/phases-6-to-9.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/migration/shared-mechanisms.md",
+    "diskPath": "references/migration/shared-mechanisms.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/mixed-use-costs.md",
+    "diskPath": "references/mixed-use-costs.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/moneybird-bookkeeping.md",
+    "diskPath": "references/moneybird-bookkeeping.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/purchase-invoices.md",
+    "diskPath": "references/purchase-invoices.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/routing-signals.md",
+    "diskPath": "references/routing-signals.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/source-library.md",
+    "diskPath": "references/source-library.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/year-and-state.md",
+    "diskPath": "references/year-and-state.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/year-changes.md",
+    "diskPath": "references/year-changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/year-rollover.md",
+    "diskPath": "references/year-rollover.md"
+  }
+]

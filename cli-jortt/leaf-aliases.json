@@ -46,8 +46,33 @@
   },
   {
     "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/reference-guides/cli-command-reference.md",
+    "diskPath": "feature-catalog/reference-guides/cli-command-reference.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/reference-guides/exports-and-limits.md",
+    "diskPath": "feature-catalog/reference-guides/exports-and-limits.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/reference-guides/rest-api-catalogue.md",
+    "diskPath": "feature-catalog/reference-guides/rest-api-catalogue.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/reference-guides/troubleshooting-guide.md",
+    "diskPath": "feature-catalog/reference-guides/troubleshooting-guide.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
     "leafResourceId": "feature-catalog/safety-gates/output-workspace-guard.md",
     "diskPath": "feature-catalog/safety-gates/output-workspace-guard.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/safety-gates/print-body-guard.md",
+    "diskPath": "feature-catalog/safety-gates/print-body-guard.md"
   },
   {
     "workflowMode": "cli-jortt",
@@ -63,6 +88,21 @@
     "workflowMode": "cli-jortt",
     "leafResourceId": "feature-catalog/surfaces/surface-routing.md",
     "diskPath": "feature-catalog/surfaces/surface-routing.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/testing/offline-cli-test-suite.md",
+    "diskPath": "feature-catalog/testing/offline-cli-test-suite.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/testing/skill-health-ci.md",
+    "diskPath": "feature-catalog/testing/skill-health-ci.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "feature-catalog/transport/api-error-redaction.md",
+    "diskPath": "feature-catalog/transport/api-error-redaction.md"
   },
   {
     "workflowMode": "cli-jortt",

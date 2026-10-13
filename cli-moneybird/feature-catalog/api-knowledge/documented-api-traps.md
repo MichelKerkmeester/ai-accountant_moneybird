@@ -25,11 +25,11 @@ Each trap is paired with the route the skill uses instead, so an agent can follo
 
 ### Reads That Look Complete
 
-Lists default to `period:this_year`, so every verification list names its period. An immediate GET after a write can return cached data, so the write response status is the first proof and synchronization is the later read. `GET /financial_mutations` is capped at one hundred records, so complete pulls use `sync` and `sync_fetch` in ID batches of no more than one hundred.
+Lists default to `period:this_year`, so every verification list names its period. An immediate GET after a write can return cached data, so the write response status is the first proof and synchronization is the later read. `GET /financial_mutations` is capped, so complete pulls use `sync` and `sync_fetch`. The cap and the batch rule are in `references/rest-api.md` and the Read Step Contract.
 
 ### Unmatched Bank Transactions
 
-An unmatched bank transaction reports `state:unprocessed`, a processed one `state:processed` and one booked from a suggestion `state:auto_booked`. The bank read uses the "Bank transactions to match" row in section 2 of `cli-moneybird/SKILL.md` and names the state with an explicit period. The bank list defaults to `period:this_year` since API version `v2-20260710`, and a passed filter replaces every default. The comma filter form `--filter "period:$YEAR,state:unprocessed"` is `UNVERIFIED` until pinned CLI help confirms it. The list caps at one hundred records, so a larger read goes through `sync` and `sync_fetch` with a local state filter. The read and its fallback follow the Read Step Contract in `cli-moneybird/SKILL.md` section 3.
+An unmatched bank transaction reports `state:unprocessed`, a processed one `state:processed` and one booked from a suggestion `state:auto_booked`. The bank read uses the "Bank transactions to match" row in section 2 of `cli-moneybird/SKILL.md` and names the state with an explicit period. The bank list defaults to `period:this_year`, and a passed filter replaces every default. The comma filter form `--filter "period:$YEAR,state:unprocessed"` is `UNVERIFIED` until pinned CLI help confirms it. The bank list is capped, so a larger read goes through `sync` and `sync_fetch` with a local state filter. The cap is in `references/rest-api.md`, and the read and its fallback follow the Read Step Contract in `cli-moneybird/SKILL.md` section 3.
 
 ### Writes That Look Successful
 
@@ -37,7 +37,7 @@ Some DELETE endpoints return 204 when nothing was removed, so a separate read co
 
 ### Limits and Pacing
 
-The API allows 150 requests per five minutes and 50 per five minutes under `/reports/`. A `429` carries `Retry-After`, which the skill waits out. Reports cover at most twelve months per request.
+The API sets a general request rate and a lower rate under `/reports/`. A `429` carries `Retry-After`, which the skill waits out. A report request stays within the window `references/rest-api.md` names. The limits and the retry rule are in `references/rest-api.md` and the Read Step Contract.
 
 ### UI-Only Operations
 

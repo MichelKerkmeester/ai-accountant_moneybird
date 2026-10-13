@@ -6,6 +6,16 @@
   },
   {
     "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/api-knowledge/failure-diagnosis-and-recovery.md",
+    "diskPath": "feature-catalog/api-knowledge/failure-diagnosis-and-recovery.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/migration-recipes/guarded-migration-recipes.md",
+    "diskPath": "feature-catalog/migration-recipes/guarded-migration-recipes.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
     "leafResourceId": "feature-catalog/official-cli-and-setup/official-cli-pinned-commit.md",
     "diskPath": "feature-catalog/official-cli-and-setup/official-cli-pinned-commit.md"
   },
@@ -26,6 +36,16 @@
   },
   {
     "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/reads-and-saved-output/read-step-contract.md",
+    "diskPath": "feature-catalog/reads-and-saved-output/read-step-contract.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/routing/operation-routing.md",
+    "diskPath": "feature-catalog/routing/operation-routing.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
     "leafResourceId": "feature-catalog/sessions-and-diagnostics/local-doctor.md",
     "diskPath": "feature-catalog/sessions-and-diagnostics/local-doctor.md"
   },
@@ -36,6 +56,16 @@
   },
   {
     "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/verification/exit-code-parity-check.md",
+    "diskPath": "feature-catalog/verification/exit-code-parity-check.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/verification/offline-guard-test-suite.md",
+    "diskPath": "feature-catalog/verification/offline-guard-test-suite.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
     "leafResourceId": "feature-catalog/write-guard/delete-caution.md",
     "diskPath": "feature-catalog/write-guard/delete-caution.md"
   },
@@ -43,6 +73,11 @@
     "workflowMode": "cli-moneybird",
     "leafResourceId": "feature-catalog/write-guard/dry-run-first-pass.md",
     "diskPath": "feature-catalog/write-guard/dry-run-first-pass.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "feature-catalog/write-guard/payload-bound-approval.md",
+    "diskPath": "feature-catalog/write-guard/payload-bound-approval.md"
   },
   {
     "workflowMode": "cli-moneybird",
@@ -103,6 +138,11 @@
     "workflowMode": "cli-moneybird",
     "leafResourceId": "manual-testing-playbook/write-safety/delete-needs-separate-read.md",
     "diskPath": "manual-testing-playbook/write-safety/delete-needs-separate-read.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/write-safety/payload-bound-approval.md",
+    "diskPath": "manual-testing-playbook/write-safety/payload-bound-approval.md"
   },
   {
     "workflowMode": "cli-moneybird",

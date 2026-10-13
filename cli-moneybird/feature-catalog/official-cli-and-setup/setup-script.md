@@ -25,7 +25,7 @@ An agent can print the plan and run the check safely. Only an operator runs `--i
 
 With no option the script prints the `git clone`, detached `checkout`, `mkdir` and `ln -s` commands it would run and exits without changing anything. `--install` first confirms that `bash`, `curl`, `jq` and `git` exist, then clones the official repository into `$HOME/.moneybird-cli`, checks out the pinned commit and links `moneybird-cli` and this package's `moneybird-guard` into `$HOME/.local/bin`. `MONEYBIRD_CLI_HOME` and `MONEYBIRD_CLI_BIN` move those locations.
 
-The installer refuses to replace an existing path that is not a git checkout and refuses to replace a symlink that points somewhere else. It never pipes a remote script into a shell. `--check` prints four yes or no lines for source presence, pin match and whether each of `moneybird-cli` and `moneybird-guard` is on PATH, and exits nonzero unless all four are yes. `--uninstall` prints the three removal commands without running them.
+The installer refuses to replace an existing path that is not a git checkout and refuses to replace a symlink that points somewhere else. It never pipes a remote script into a shell. `--check` prints one yes or no line for source presence, the pin match and whether each command is on PATH, and exits nonzero unless every line is yes. `--uninstall` prints its removal commands without running them.
 
 ---
 

@@ -5,7 +5,7 @@ trigger_phrases:
   - Fixed asset booking
   - inventaris afschrijven
   - laptop afschrijven in Moneybird
-  - LIVE-005
+  - fixed asset route
 version: 1.0.0.0
 ---
 
@@ -23,7 +23,7 @@ The reference states when a purchase is capitalised, the small-amount rule, the 
 
 ## 2. HOW IT WORKS
 
-The agent checks whether the business uses the purchase for more than one year and whether the amount is at or above the activation threshold. An asset gets a bezitting with its aanschafwaarde, in-use date, useful life and residual value. Depreciation follows the yearly limit. A good used partly privately goes through the etikettering first. A building, a private item moved into the business or a change of use inside the revision period goes to the Operator or a bookkeeper. Moneybird writes still need a passed gate and Operator approval, and the Operator files the return.
+The agent checks whether the business uses the purchase for more than one year and whether the amount is at or above the activation threshold. An asset gets a bezitting with its aanschafwaarde, in-use date, useful life and residual value. Depreciation follows the yearly limit. A good used partly privately goes through the etikettering first. A building, a private item moved into the business or a change of use inside the revision period goes to the Operator or a bookkeeper. Moneybird writes still need a passed gate and Operator approval. The Operator files the return.
 
 ---
 
@@ -33,16 +33,16 @@ The agent checks whether the business uses the purchase for more than one year a
 
 | File | Layer | Role |
 |---|---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/fixed-assets.md | Shared | Defines the cost-or-asset test, depreciation, the VAT revision period and disposal. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/mixed-use-costs.md | Shared | Defines the etikettering and the booking split for a partly private asset. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/purchase-invoices.md | Shared | Defines the invoice flow that creates the asset line. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Shared | Loads the fixed-asset reference conditionally in the T4 row. |
+| sk-moneybird-accountant/references/fixed-assets.md | Shared | Defines the cost-or-asset test, depreciation, the VAT revision period and disposal. |
+| sk-moneybird-accountant/references/mixed-use-costs.md | Shared | Defines the etikettering and the booking split for a partly private asset. |
+| sk-moneybird-accountant/references/purchase-invoices.md | Shared | Defines the invoice flow that creates the asset line. |
+| sk-moneybird-accountant/SKILL.md | Shared | Loads the fixed-asset reference conditionally in the T4 row. |
 
 ### Validation And Tests
 
 | File | Type | Role |
 |---|---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/manual-testing-playbook/offline-routing/fixed-asset-booking.md | Manual playbook | Offline routing scenario for this feature. |
+| sk-moneybird-accountant/manual-testing-playbook/offline-routing/fixed-asset-booking.md | Manual playbook | Offline routing scenario for this feature. |
 
 ---
 

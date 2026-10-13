@@ -5,7 +5,7 @@ trigger_phrases:
   - Operator tax boundary
   - Dutch ZZP bookkeeping workflow
   - Moneybird accounting assistant
-  - TAX-002
+  - return filing is operator-only
 version: 1.0.0.0
 ---
 
@@ -33,15 +33,15 @@ A return-submission request is handed to the operator. A personal eligibility or
 
 | File | Layer | Role |
 |---|---|---|
-| AI Systems/Moneybird Accountant/AGENTS.md | Shared | Makes return filing operator-only and requires escalation of tax judgement. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Shared | Defines the tax and return boundaries. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/dutch-tax-rules.md | Shared | Gives the general rule that the operator or bookkeeper applies to a personal case and separates verified rules from conflicts, unverified points and proposals. |
+| AGENTS.md | Shared | Makes return filing operator-only and requires escalation of tax judgement. |
+| sk-moneybird-accountant/SKILL.md | Shared | Defines the tax and return boundaries. |
+| sk-moneybird-accountant/references/dutch-tax-rules.md | Shared | Gives the general rule that the operator or bookkeeper applies to a personal case and separates verified rules from conflicts, unverified points and proposals. |
 
 ### Validation And Tests
 
 | File | Type | Role |
 |---|---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/manual-testing-playbook/offline-routing/operator-tax-boundary.md | Manual playbook | Offline routing scenario for this feature. |
+| sk-moneybird-accountant/manual-testing-playbook/offline-routing/operator-tax-boundary.md | Manual playbook | Offline routing scenario for this feature. |
 
 ---
 

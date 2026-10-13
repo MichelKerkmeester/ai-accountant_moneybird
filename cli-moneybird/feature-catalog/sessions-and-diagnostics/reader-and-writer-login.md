@@ -23,7 +23,7 @@ Credentials stay in the operator files and never pass through chat or the proces
 
 ## 2. HOW IT WORKS
 
-`moneybird-guard login-from-env` reads `MONEYBIRD_API_TOKEN` from the Accountant folder `.env` and sends it to `moneybird-cli login` on stdin, so the token never appears in the CLI argument list. All CLI output is discarded and the guard prints only a completion line or the failing exit status. The command takes no other CLI arguments and refuses `--out`.
+`moneybird-guard login-from-env` reads `MONEYBIRD_API_TOKEN` from the Accountant folder `.env` and sends it to `moneybird-cli login` on stdin, so the token never appears in the CLI argument list. All CLI output is discarded and the guard prints only a completion line or the failing exit status. The command takes no other CLI arguments and refuses `--out` and `--print-body`.
 
 With `--writer` the guard reads `.env.writer` instead and points the CLI at `$HOME/.config/moneybird-cli-writer`, so the writer session never overwrites the reader session. The guard ignores `MONEYBIRD_WRITER_CONFIG_DIR` unless the test-only `MONEYBIRD_GUARD_TEST=1` flag is set. A missing or empty token exits 1 without calling the CLI.
 

@@ -5,7 +5,7 @@ trigger_phrases:
   - Mixed-use cost booking
   - book a phone subscription partly private
   - gemengde kosten boeken
-  - LIVE-004
+  - mixed use VAT split
 version: 1.0.0.0
 ---
 
@@ -23,7 +23,7 @@ The reference covers a mobile phone subscription, a home internet connection, a 
 
 ## 2. HOW IT WORKS
 
-The agent establishes the business share and records its basis, then books the document through the shared purchase flow. A service such as a subscription deducts only the VAT on the business share and settles private use in the last VAT return of the year. A good above the asset threshold follows the fixed asset route for the VAT choice and the revision period. A changed business share, a doubtful estimate or a home in business assets goes to the Operator or a bookkeeper. Moneybird writes still need a passed gate and Operator approval, and the Operator files the return.
+The agent establishes the business share and records its basis, then books the document through the shared purchase flow. A service such as a subscription deducts only the VAT on the business share and settles private use in the last VAT return of the year. A good above the asset threshold follows the fixed asset route for the VAT choice and the revision period. A changed business share, a doubtful estimate or a home in business assets goes to the Operator or a bookkeeper. Moneybird writes still need a passed gate and Operator approval. The Operator files the return.
 
 ---
 
@@ -33,16 +33,16 @@ The agent establishes the business share and records its basis, then books the d
 
 | File | Layer | Role |
 |---|---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/mixed-use-costs.md | Shared | Defines the income tax share, the VAT split and the Moneybird booking steps. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/purchase-invoices.md | Shared | Defines the shared document flow and the VAT choice for each invoice kind. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/fixed-assets.md | Shared | Defines the asset route for a good used for mixed purposes. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Shared | Loads the mixed-use reference conditionally in the T4 row. |
+| sk-moneybird-accountant/references/mixed-use-costs.md | Shared | Defines the income tax share, the VAT split and the Moneybird booking steps. |
+| sk-moneybird-accountant/references/purchase-invoices.md | Shared | Defines the shared document flow and the VAT choice for each invoice kind. |
+| sk-moneybird-accountant/references/fixed-assets.md | Shared | Defines the asset route for a good used for mixed purposes. |
+| sk-moneybird-accountant/SKILL.md | Shared | Loads the mixed-use reference conditionally in the T4 row. |
 
 ### Validation And Tests
 
 | File | Type | Role |
 |---|---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/manual-testing-playbook/offline-routing/mixed-use-cost-booking.md | Manual playbook | Offline routing scenario for this feature. |
+| sk-moneybird-accountant/manual-testing-playbook/offline-routing/mixed-use-cost-booking.md | Manual playbook | Offline routing scenario for this feature. |
 
 ---
 

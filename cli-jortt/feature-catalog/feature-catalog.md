@@ -6,7 +6,7 @@ trigger_phrases:
   - "jortt-cli capabilities"
   - "jortt-cli commands and safety gates"
   - "feature catalog"
-last_updated: "2026-10-10"
+last_updated: "2026-10-13"
 version: 1.0.0.0
 ---
 
@@ -25,9 +25,11 @@ Use this catalog as the current-state inventory for the Jortt extraction skill. 
 | Operation discovery | Find an operation and its contract in the local OpenAPI document before any request is made. |
 | API calls | Read records through a validated operation call, a raw path or a signed download link. |
 | Safety gates | Local checks that run before a token is requested and stop unsafe calls with a distinct exit code. |
-| Transport | Paging, token handling, retries and request pacing between the CLI and the Jortt API. |
+| Transport | Paging, token handling, retries, request pacing and error reporting between the CLI and the Jortt API. |
 | Diagnostics | Local checks that confirm the setup without printing secrets. |
 | Surfaces and routing | Where a request goes when the CLI is not the right surface. |
+| Reference guides | The references the router loads for commands, operations, exports and recovery. |
+| Testing and CI | The offline CLI suite and the workflow that runs it. |
 
 Manual validation for these features lives in the [manual testing playbook](../manual-testing-playbook/manual-testing-playbook.md).
 
@@ -205,9 +207,25 @@ See [`safety-gates/output-workspace-guard.md`](safety-gates/output-workspace-gua
 
 ---
 
+### Print body guard
+
+#### Description
+
+Refuses --print-body with exit 2 when an agent session marker is set, so a full record body never reaches a terminal transcript.
+
+#### Current Reality
+
+`call` and `get` refuse `--print-body` with exit 2 when `CLAUDECODE`, `AI_SESSION_CHILD`, `ACCOUNTANT_AGENT_SESSION` or `CODEX_SANDBOX` is set, and point at `--out` for a supported record read.
+
+#### Source Files
+
+See [`safety-gates/print-body-guard.md`](safety-gates/print-body-guard.md) for full implementation and test file listings.
+
+---
+
 ## 5. TRANSPORT
 
-Paging, token handling, retries and request pacing between the CLI and the Jortt API.
+Paging, token handling, retries, request pacing and error reporting between the CLI and the Jortt API.
 
 ### Paged list merge
 
@@ -229,15 +247,31 @@ See [`transport/paged-list-merge.md`](transport/paged-list-merge.md) for full im
 
 #### Description
 
-Caches the client-credentials token privately, refreshes it near expiry and retries once after a 401 and up to three times after a 429.
+Caches the client-credentials token privately, refreshes it near expiry and applies bounded 401 and 429 retries.
 
 #### Current Reality
 
-`token status` prints whether a cached token exists and its remaining minutes. `token clear` removes the entry. Neither prints the token.
+`token status` prints whether a cached token exists, its remaining minutes and where `JORTT_SCOPES` came from. `token clear` removes the entry. Neither prints the token.
 
 #### Source Files
 
 See [`transport/token-cache-and-retry.md`](transport/token-cache-and-retry.md) for full implementation and test file listings.
+
+---
+
+### API error redaction
+
+#### Description
+
+Prints only the HTTP status and safe field or code labels for a failed request and appends the full response to a private workspace log.
+
+#### Current Reality
+
+A non-2xx response prints the status and safe field or code labels only and appends the full body to `migration-workspace/logs/jortt-errors.log` with owner-only permissions.
+
+#### Source Files
+
+See [`transport/api-error-redaction.md`](transport/api-error-redaction.md) for full implementation and test file listings.
 
 ---
 
@@ -294,3 +328,107 @@ Record extraction and supported data questions go to `jortt-cli`. XAF auditfiles
 #### Source Files
 
 See [`surfaces/surface-routing.md`](surfaces/surface-routing.md) for full implementation and test file listings.
+
+---
+
+## 8. REFERENCE GUIDES
+
+The references the skill router loads for commands, operations, exports and recovery.
+
+### CLI command reference
+
+#### Description
+
+Documents every jortt-cli command, its configuration, its safety checks and its exit codes.
+
+#### Current Reality
+
+The guide covers every command, the Jortt settings and their precedence, the token and output rules and the exit code for each failure class.
+
+#### Source Files
+
+See [`reference-guides/cli-command-reference.md`](reference-guides/cli-command-reference.md) for full implementation and test file listings.
+
+---
+
+### REST API catalogue
+
+#### Description
+
+Records the scope map, endpoint catalogue, filters, paging rules and extraction recipes for the local Jortt OpenAPI document.
+
+#### Current Reality
+
+The guide maps each scope and operation, names the filters and paging behavior and carries the extraction recipes for the migration registers.
+
+#### Source Files
+
+See [`reference-guides/rest-api-catalogue.md`](reference-guides/rest-api-catalogue.md) for full implementation and test file listings.
+
+---
+
+### Exports and limits
+
+#### Description
+
+States which records only the Jortt UI can export and owns the API rate, page and retention limits the extraction path respects.
+
+#### Current Reality
+
+XAF auditfiles, annual accounts and filed VAT returns come from the Jortt UI, and no general ledger export exists. The guide owns the rate, page, retention and history statements.
+
+#### Source Files
+
+See [`reference-guides/exports-and-limits.md`](reference-guides/exports-and-limits.md) for full implementation and test file listings.
+
+---
+
+### Troubleshooting guide
+
+#### Description
+
+Maps jortt-cli exit codes and API responses to ordered read-only recovery checks.
+
+#### Current Reality
+
+The guide runs read-only diagnostics in order and maps the common exit codes and API statuses to a meaning and an action.
+
+#### Source Files
+
+See [`reference-guides/troubleshooting-guide.md`](reference-guides/troubleshooting-guide.md) for full implementation and test file listings.
+
+---
+
+## 9. TESTING AND CI
+
+The offline suite and the workflow that runs it with the sibling checks.
+
+### Offline CLI test suite
+
+#### Description
+
+Runs the jortt-cli contract against a local OpenAPI file with fake credentials and no network call.
+
+#### Current Reality
+
+The suite runs each case with a local Swagger file and fake credentials against a stub network, checks every gate and injects one fault for each exit code the script defines.
+
+#### Source Files
+
+See [`testing/offline-cli-test-suite.md`](testing/offline-cli-test-suite.md) for full implementation and test file listings.
+
+---
+
+### Skill health CI
+
+#### Description
+
+Runs the Jortt offline suite and the sibling repository checks on every push and pull request in the skill-health workflow.
+
+#### Current Reality
+
+The workflow runs the Jortt suite and the sibling checks on push and pull request and keeps the link job on a schedule.
+
+#### Source Files
+
+See [`testing/skill-health-ci.md`](testing/skill-health-ci.md) for full implementation and test file listings.

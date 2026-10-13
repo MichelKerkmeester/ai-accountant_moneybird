@@ -6,7 +6,7 @@ trigger_phrases:
   - "moneybird capabilities"
   - "moneybird-guard features"
   - "feature catalog"
-last_updated: "2026-10-10"
+last_updated: "2026-10-13"
 version: 1.0.0.0
 ---
 
@@ -22,7 +22,7 @@ Use this catalog as the canonical inventory for the live `cli-moneybird` feature
 
 The skill has two working layers. The official `moneybird-cli` owns REST routing. The local `moneybird-guard` wraps every API call with a dry-run preview, a read-only lock, a confirmation lock, a writer configuration check, a pilot administration gate, an approval gate, a payload digest binding, a write log and an output boundary. Bank file imports, tax rate creation, period locks and manual VAT filing stay with the operator in the Moneybird UI.
 
-Every live write in this skill targets the pilot administration until the operator approves a production batch. The offline guard suite and the manual testing playbook are the validation anchors cited in each per-feature file.
+Every live write in this skill targets the pilot administration until the operator approves a production batch. The offline guard suite, the exit code parity check and the manual testing playbook back the validation anchors in the per-feature files.
 
 ---
 
@@ -206,6 +206,22 @@ See [`reads-and-saved-output/output-guard.md`](reads-and-saved-output/output-gua
 
 ---
 
+### Read step contract
+
+#### Description
+
+The Read Step Contract in SKILL.md section 3 sets the read-only lock, an explicit period, a completeness proof, the request caps and the retry rule for every guarded read.
+
+#### Current Reality
+
+Every guarded read sets `MONEYBIRD_GUARD_READ_ONLY=1`. A list names a period, pages until a short page, dedupes by record id and records its count with the period. Bulk pulls use synchronization within the batch cap, and a report that is longer than the report window splits into parts that reconcile to the whole. Retries are GET only and wait for `Retry-After` first.
+
+#### Source Files
+
+See [`reads-and-saved-output/read-step-contract.md`](reads-and-saved-output/read-step-contract.md) for full implementation and test file listings.
+
+---
+
 ## 5. SESSIONS AND DIAGNOSTICS
 
 ### Reader and writer login
@@ -255,3 +271,89 @@ The traps cover the default list period, response caching, the capped financial 
 #### Source Files
 
 See [`api-knowledge/documented-api-traps.md`](api-knowledge/documented-api-traps.md) for full implementation and test file listings.
+
+---
+
+### Failure diagnosis and recovery
+
+#### Description
+
+references/troubleshooting.md orders the local checks and maps CLI, guard and REST failures to the safe next step.
+
+#### Current Reality
+
+The guide runs the setup check, the CLI version, the selected administration and the doctor before any credential change. It covers each guard exit with its cause and fix, and the REST rows for 401, 403, 404, 422 with a locked period, 429, a stale GET after a write, a list that misses older years and a 204 DELETE. The canonical exit-code table stays in `references/cli.md`.
+
+#### Source Files
+
+See [`api-knowledge/failure-diagnosis-and-recovery.md`](api-knowledge/failure-diagnosis-and-recovery.md) for full implementation and test file listings.
+
+---
+
+## 7. VERIFICATION
+
+### Offline guard test suite
+
+#### Description
+
+cli/moneybird-cli/tests/run-tests.sh exercises the guard against a local CLI stub in a temporary workspace and reports one pass or fail line per case.
+
+#### Current Reality
+
+The suite sets the test-only overrides, points every CLI call at the stub and removes the temporary root on exit. It covers the period warning, the write gates, the payload and attachment digests, the single-use rule, the write log, the DELETE caution, the output guard, both logins and one injected fault per guard exit code. It makes no network call.
+
+#### Source Files
+
+See [`verification/offline-guard-test-suite.md`](verification/offline-guard-test-suite.md) for full implementation and test file listings.
+
+---
+
+### Exit code parity check
+
+#### Description
+
+scripts/exit-code-parity.sh compares the guard's own exit codes with every documented surface and the fault-injection self-test proves the check reports drift.
+
+#### Current Reality
+
+The check derives the guard codes from the guard script and compares them in both directions with the exit table, the troubleshooting rows, the TROUBLESHOOT keywords and the gate ladder. The self-test runs the check on a clean copy and on mutated copies, and a mutant is only correct when it fails with a named gap. The scripts read files only.
+
+#### Source Files
+
+See [`verification/exit-code-parity-check.md`](verification/exit-code-parity-check.md) for full implementation and test file listings.
+
+---
+
+## 8. ROUTING
+
+### Operation routing
+
+#### Description
+
+SKILL.md section 2 maps each request to a guarded CLI route or a Moneybird UI step and selects the reference set to load.
+
+#### Current Reality
+
+The operation table names each task, its guarded route or UI boundary and its rule. Reads use the Read Step Contract, while writes use the confirmation, writer, pilot and approval gates. Bank file import, tax rate creation, period locking and historical VAT filing stay with the operator. Body fields and report date arguments that the supplied facts do not name stay `UNVERIFIED` until pinned CLI help and a dry run confirm them.
+
+#### Source Files
+
+See [`routing/operation-routing.md`](routing/operation-routing.md) for full implementation and test file listings.
+
+---
+
+## 9. MIGRATION RECIPES
+
+### Guarded migration recipes
+
+#### Description
+
+references/migration-recipes.md gives the guarded command sequence for every migration write and the per-year verification reads, with the pilot correction path.
+
+#### Current Reality
+
+Each recipe previews the request, records the printed `payload-digest` in a fresh `WRITE_INTENT` entry and repeats the command with confirmation and approval. The recipes cover the opening balance journal entry, the invoices and receipts with their files, journal and statement mutations, ledger accounts, payments, fixed assets, the auditfile export, the verification reads and the pilot correction path. Fields the supplied facts do not confirm stay `UNVERIFIED`.
+
+#### Source Files
+
+See [`migration-recipes/guarded-migration-recipes.md`](migration-recipes/guarded-migration-recipes.md) for full implementation and test file listings.

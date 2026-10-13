@@ -1,11 +1,11 @@
 ---
 title: Migration stop and resume
-description: Routes a stopped migration through its owner, evidence, retry rule, and closure test.
+description: Routes a stopped migration through its owner, evidence, retry rule and closure test.
 trigger_phrases:
-  - migration stop and resume
+  - Migration stop and resume
   - resume interrupted write batch
   - migration recovery table
-  - MIG-002
+  - stop-state recovery matrix
 version: 1.0.0.0
 ---
 
@@ -17,11 +17,11 @@ version: 1.0.0.0
 
 Stops the affected batch on a falsifiable failure and resumes only from the last verified journal state after its closure test passes.
 
-Every stop records owner, evidence, retry rule, and closure condition. An uncertain write requires read-back. It is never blindly retried.
+Every stop records owner, evidence, retry rule and closure condition. An uncertain write requires read-back. It is never blindly retried.
 
 ## 2. HOW IT WORKS
 
-Classify the stop as an unknown write, rate limit, validation failure, missing source or hash mismatch, stale or incomplete read, or reconciliation mismatch. Follow the owner, evidence, retry rule, and closure test in the shared stop-state recovery matrix. Keep the exception and run journal append-only.
+Classify the stop as an unknown write, rate limit, validation failure, missing source or hash mismatch, stale or incomplete read or reconciliation mismatch. Follow the owner, evidence, retry rule and closure test in the shared stop-state recovery matrix. Keep the exception and run journal append-only.
 
 ## 3. SOURCE FILES
 
@@ -29,15 +29,15 @@ Classify the stop as an unknown write, rate limit, validation failure, missing s
 
 | File | Layer | Role |
 |---|---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/shared-mechanisms.md | Shared | Defines journal states and the complete stop-state recovery matrix. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/control-framework.md | Shared | Defines stop conditions, recovery ownership, and the resume rule. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Shared | Routes a stopped batch through the last verified checkpoint. |
+| sk-moneybird-accountant/references/migration/shared-mechanisms.md | Shared | Defines journal states and the complete stop-state recovery matrix. |
+| sk-moneybird-accountant/references/migration/control-framework.md | Shared | Defines stop conditions, recovery ownership and the resume rule. |
+| sk-moneybird-accountant/SKILL.md | Shared | Routes a stopped batch through the last verified checkpoint. |
 
 ### Validation And Tests
 
 | File | Type | Role |
 |---|---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/manual-testing-playbook/offline-routing/write-journal-crash-resume.md | Manual playbook | Offline interrupted-write and resume scenario. |
+| sk-moneybird-accountant/manual-testing-playbook/offline-routing/write-journal-crash-resume.md | Manual playbook | Offline interrupted-write and resume scenario. |
 
 ## 4. SOURCE METADATA
 

@@ -2,10 +2,10 @@
 title: Migration write keys and run journal
 description: Defines stable local write keys and append-only run-journal evidence for each migration batch.
 trigger_phrases:
+  - Migration write keys and run journal
   - migration write key
   - migration run journal
-  - crash during Moneybird write
-  - MIG-002
+  - WRITE_INTENT run journal
 version: 1.0.0.0
 ---
 
@@ -21,7 +21,7 @@ The plan requires a durable `WRITE_INTENT` before every non-GET call. An uncerta
 
 ## 2. HOW IT WORKS
 
-The writer records the source and target aliases, object type, source key, schema version, input hash, planned payload hash, state, approval, evidence path, and returned target ID. The mapping schema version is stored beside the stable key and does not change that key. On restart, resume from the last verified journal state. Never blindly replay an uncertain write.
+The writer records the source and target aliases, object type, source key, schema version, input hash, planned payload hash, state, approval, evidence path and returned target ID. The mapping schema version is stored beside the stable key and does not change that key. On restart, resume from the last verified journal state. Never blindly replay an uncertain write.
 
 ## 3. SOURCE FILES
 
@@ -29,15 +29,15 @@ The writer records the source and target aliases, object type, source key, schem
 
 | File | Layer | Role |
 |---|---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/shared-mechanisms.md | Shared | Defines stable keys, durable intent, journal states, and uncertain-write recovery. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/phases-6-to-9.md | Shared | Defines pilot and historical batch write and read-back gates. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Shared | Routes writes through the gate, approval, access check, and journal. |
+| sk-moneybird-accountant/references/migration/shared-mechanisms.md | Shared | Defines stable keys, durable intent, journal states and uncertain-write recovery. |
+| sk-moneybird-accountant/references/migration/phases-6-to-9.md | Shared | Defines pilot and historical batch write and read-back gates. |
+| sk-moneybird-accountant/SKILL.md | Shared | Routes writes through the gate, approval, access check and journal. |
 
 ### Validation And Tests
 
 | File | Type | Role |
 |---|---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/manual-testing-playbook/offline-routing/write-journal-crash-resume.md | Manual playbook | Offline crash and uncertain-outcome routing scenario. |
+| sk-moneybird-accountant/manual-testing-playbook/offline-routing/write-journal-crash-resume.md | Manual playbook | Offline crash and uncertain-outcome routing scenario. |
 
 ## 4. SOURCE METADATA
 

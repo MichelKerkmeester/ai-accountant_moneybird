@@ -3,12 +3,18 @@
     {
       "leaves": [
         "feature-catalog/api-knowledge/documented-api-traps.md",
+        "feature-catalog/api-knowledge/failure-diagnosis-and-recovery.md",
+        "feature-catalog/migration-recipes/guarded-migration-recipes.md",
         "feature-catalog/official-cli-and-setup/official-cli-pinned-commit.md",
         "feature-catalog/official-cli-and-setup/setup-script.md",
         "feature-catalog/reads-and-saved-output/output-guard.md",
         "feature-catalog/reads-and-saved-output/period-filter-warning.md",
+        "feature-catalog/reads-and-saved-output/read-step-contract.md",
+        "feature-catalog/routing/operation-routing.md",
         "feature-catalog/sessions-and-diagnostics/local-doctor.md",
         "feature-catalog/sessions-and-diagnostics/reader-and-writer-login.md",
+        "feature-catalog/verification/exit-code-parity-check.md",
+        "feature-catalog/verification/offline-guard-test-suite.md",
         "feature-catalog/write-guard/delete-caution.md",
         "feature-catalog/write-guard/dry-run-first-pass.md",
         "feature-catalog/write-guard/payload-bound-approval.md",

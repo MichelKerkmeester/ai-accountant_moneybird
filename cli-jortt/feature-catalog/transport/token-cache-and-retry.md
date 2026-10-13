@@ -1,6 +1,6 @@
 ---
 title: "Token cache and request retry"
-description: "Caches the client-credentials token privately, refreshes it near expiry and retries once after a 401 and up to three times after a 429."
+description: "Caches the client-credentials token privately, refreshes it near expiry and applies bounded 401 and 429 retries."
 trigger_phrases:
   - "Token cache and request retry"
   - "jortt-cli token status"
@@ -15,7 +15,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-Caches the client-credentials token privately, refreshes it near expiry and retries once after a 401 and up to three times after a 429.
+Caches the client-credentials token privately, refreshes it near expiry and applies bounded 401 and 429 retries.
 
 The cache keeps repeated extraction calls fast and inside the rate limit. The retries absorb an expired token or a short burst limit without manual reruns.
 
@@ -25,15 +25,15 @@ The cache keeps repeated extraction calls fast and inside the rate limit. The re
 
 ### Token Cache
 
-The CLI requests a token with the client credentials grant at `https://app.jortt.nl/oauth-provider/oauth/token`. The client ID and secret travel through a private curl config stream, never through command arguments. The token is cached in `${TMPDIR:-/tmp}/jortt-cli-<uid>/` with an owner-only folder and file, under a key hashed from the client ID and the configured scopes. A cached token is reused until it is within sixty seconds of expiry. A failed token request exits 6.
+The CLI requests a token with the client credentials grant at `https://app.jortt.nl/oauth-provider/oauth/token`. The client ID and secret travel through a private curl config stream, never through command arguments. The token is cached in `${TMPDIR:-/tmp}/jortt-cli-<uid>/` with an owner-only folder and file, under a key hashed from the client ID and the configured scopes. A cached token is reused until it is near expiry. The refresh window and the cache permissions live in [`cli/jortt-cli/lib/api.sh`](../../cli/jortt-cli/lib/api.sh). A failed token request exits 6.
 
 ### Token Commands
 
-`jortt-cli token status` prints `Cached token:` with `yes` or `no` and `Remaining minutes:`. `jortt-cli token clear` deletes the entry for the current client and scopes and prints `Cached token: cleared`.
+`jortt-cli token status` prints `Cached token:` with `yes` or `no`, `Remaining minutes:` and a `scope source:` line. The source is `environment`, `env file`, `.env.example fallback` or `unset`. When the source is the fallback, a warning on stderr says the example list may not match the configured key. `jortt-cli token clear` deletes the entry for the current client and scopes and prints `Cached token: cleared`.
 
 ### Retry And Pacing
 
-A 401 clears the cached token, requests a new one and retries the request once. A 429 waits for the `Retry-After` value in seconds or as an HTTP date, or backs off for one, two and four seconds when the header is absent, for at most three retries. The CLI also pauses briefly between requests so a run stays under ten requests per second.
+A 401 clears the cached token, requests a new one and retries the request. A 429 waits for the `Retry-After` value in seconds or as an HTTP date, or falls back to the backoff schedule when the header is absent, within the retry budget in the implementation. The CLI also pauses between requests to stay under the API rate limit, which [`references/rest-api.md`](../../references/rest-api.md) owns.
 
 ---
 

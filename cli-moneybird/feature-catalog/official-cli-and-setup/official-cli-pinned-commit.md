@@ -25,7 +25,7 @@ The guard and every recipe call this CLI. Pin updates are a reviewed source chan
 
 The adopted project is the official `moneybird/moneybird-cli` Shell CLI. It reads the Moneybird OpenAPI spec at runtime and serves standard actions such as `list`, `get`, `create`, `update` and `delete` plus the custom actions the spec declares. `--dry-run` prints the `METHOD URL` line and the request body without sending it, which is the hook the guard builds on.
 
-The reviewed commit lives once in `PINNED_COMMIT` inside `setup.sh`. The project has no tagged releases, so the setup script checks out a detached commit rather than a version. The skill never calls a second REST client. Independent CLIs and community SDKs were surveyed in the CLI reference and are not used.
+The setup script reads the reviewed commit from `PINNED_COMMIT` and checks out that exact commit in detached head state. The project has no tagged releases, so the pin is a commit rather than a version. `references/cli.md` records the reviewed commit and the review date. The skill never calls a second REST client. Independent CLIs and community SDKs were surveyed in the CLI reference and are not used.
 
 ---
 
