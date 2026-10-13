@@ -116,8 +116,18 @@
   },
   {
     "workflowMode": "cli-jortt",
+    "leafResourceId": "manual-testing-playbook/auth-and-scopes/api-error-redaction.md",
+    "diskPath": "manual-testing-playbook/auth-and-scopes/api-error-redaction.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
     "leafResourceId": "manual-testing-playbook/auth-and-scopes/doctor-offline.md",
     "diskPath": "manual-testing-playbook/auth-and-scopes/doctor-offline.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "manual-testing-playbook/auth-and-scopes/print-body-guard.md",
+    "diskPath": "manual-testing-playbook/auth-and-scopes/print-body-guard.md"
   },
   {
     "workflowMode": "cli-jortt",
@@ -133,6 +143,16 @@
     "workflowMode": "cli-jortt",
     "leafResourceId": "manual-testing-playbook/auth-and-scopes/write-lock.md",
     "diskPath": "manual-testing-playbook/auth-and-scopes/write-lock.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "manual-testing-playbook/extraction/call-operation-offline.md",
+    "diskPath": "manual-testing-playbook/extraction/call-operation-offline.md"
+  },
+  {
+    "workflowMode": "cli-jortt",
+    "leafResourceId": "manual-testing-playbook/extraction/output-workspace-guard.md",
+    "diskPath": "manual-testing-playbook/extraction/output-workspace-guard.md"
   },
   {
     "workflowMode": "cli-jortt",

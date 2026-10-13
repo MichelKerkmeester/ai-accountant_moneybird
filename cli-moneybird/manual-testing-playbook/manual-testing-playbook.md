@@ -18,6 +18,7 @@ Canonical package artifacts:
 - `write-safety/`
 - `reads/`
 - `routing/`
+- `verification/`
 
 ### Result persistence
 
@@ -30,7 +31,7 @@ A scenario run is complete only after its `PASS`, `FAIL` or `SKIP` outcome, its 
 
 This playbook validates the `cli-moneybird` skill surface with deterministic scenarios grouped by capability. The operator validator derives the scenario and category counts from the walked tree, so this page does not maintain them by hand. Each scenario keeps its published ID and links to a dedicated feature file with the full execution contract.
 
-Coverage note: offline scenarios exercise `moneybird-guard`, `setup.sh` and `doctor.sh` against the packaged CLI stub in a temporary folder. Routing scenarios check the agent's answer against the skill sources. MBD-012 is the only live scenario and writes to the pilot administration. Accounting reconciliation and production batches stay outside this playbook.
+Coverage note: offline scenarios exercise `moneybird-guard`, `setup.sh` and `doctor.sh` against the packaged CLI stub in a temporary folder. Verification scenarios run the packaged guard suite and the exit-code parity check. Routing scenarios check the agent's answer against the skill sources. MBD-012 is the only live scenario and writes to the pilot administration. Accounting reconciliation and production batches stay outside this playbook.
 
 ### Realistic Test Model
 
@@ -191,7 +192,7 @@ Confirm that the setup script prints its plan without installing and that the ch
 
 Prompt: `Show me the Moneybird CLI install plan and the pin check without installing anything.`
 
-The plan names the official repository and a detached checkout of the pinned commit. The temporary location stays absent. The check prints three yes or no lines.
+The plan names the official repository and a detached checkout of the pinned commit. The temporary location stays absent. The check prints four yes or no lines.
 
 Desired user-visible outcome: The operator sees the exact install and removal commands and the current pin state, with no change on disk.
 
@@ -218,6 +219,25 @@ Desired user-visible outcome: The operator sees that login works from the files 
 
 > **Feature File:** [MBD-011](setup/login-keeps-tokens-hidden.md)
 > **Catalog:** [Reader and writer login](../feature-catalog/sessions-and-diagnostics/reader-and-writer-login.md)
+
+### MBD-016 | Failure diagnosis and recovery
+
+#### Description
+
+Confirm that a guard failure maps to the safe next step instead of a blind retry.
+
+#### Scenario Contract
+
+Prompt: `The guard stopped my write with exit 7. What is the safe next step?`
+
+The answer names the missing writer configuration folder, the writer login command and the pilot gate. The guard never falls back to the reader session.
+
+Desired user-visible outcome: The operator gets the cause and the fix for the exit code and knows not to repeat the write with different flags.
+
+#### Test Execution
+
+> **Feature File:** [MBD-016](setup/failure-diagnosis-and-recovery.md)
+> **Catalog:** [Failure diagnosis and recovery](../feature-catalog/api-knowledge/failure-diagnosis-and-recovery.md)
 
 ---
 
@@ -318,6 +338,25 @@ Desired user-visible outcome: The operator has evidence that the pilot write pat
 > **Feature File:** [MBD-012](write-safety/pilot-write-and-undo-rehearsal.md)
 > **Catalog:** [Pilot administration gate](../feature-catalog/write-guard/pilot-administration-gate.md)
 
+### MBD-013 | Read-only lock blocks writes
+
+#### Description
+
+Confirm that `MONEYBIRD_GUARD_READ_ONLY=1` blocks writes even when the write flags are present and still allows GET calls.
+
+#### Scenario Contract
+
+Prompt: `Check that a read-only Moneybird session can read contacts but cannot create one, even with the write flags.`
+
+The contact list reaches the stub. The confirmed production create exits 6, prints the POST preview and has no `REAL` log line.
+
+Desired user-visible outcome: The operator sees that the read-only session can read and that a write is blocked before the real CLI call.
+
+#### Test Execution
+
+> **Feature File:** [MBD-013](write-safety/read-only-lock.md)
+> **Catalog:** [Read-only lock](../feature-catalog/write-guard/read-only-lock.md)
+
 ### MBD-014 | Payload-bound approval
 
 #### Description
@@ -379,11 +418,30 @@ Desired user-visible outcome: The operator sees that saved data can only land in
 > **Feature File:** [MBD-010](reads/output-guard-confines-saves.md)
 > **Catalog:** [Output guard](../feature-catalog/reads-and-saved-output/output-guard.md)
 
+### MBD-015 | Read step contract
+
+#### Description
+
+Confirm that the agent names the lock, the explicit period and the completeness proof behind a guarded read.
+
+#### Scenario Contract
+
+Prompt: `Walk me through how you prove a Moneybird list read is complete before you report a count.`
+
+The answer names the read-only lock, an explicit period, paging until a short page, dedupe by record id, the count recorded with its period, synchronization for caps and the GET-only retry rule.
+
+Desired user-visible outcome: The operator sees that a reported count carries a period and a completeness proof rather than a raw success message.
+
+#### Test Execution
+
+> **Feature File:** [MBD-015](reads/read-step-contract.md)
+> **Catalog:** [Read step contract](../feature-catalog/reads-and-saved-output/read-step-contract.md)
+
 ---
 
 ## 10. ROUTING BOUNDARIES
 
-### MBD-006 | Attachment goes to the CLI
+### MBD-006 | Attachment routes through the CLI
 
 #### Description
 
@@ -423,26 +481,45 @@ Desired user-visible outcome: The operator gets the UI path and no upload comman
 
 ---
 
-## 11. READ-ONLY LOCK
+## 11. VERIFICATION
 
-### MBD-013 | Read-only lock blocks writes
+### MBD-017 | Offline guard test suite
 
 #### Description
 
-Confirm that `MONEYBIRD_GUARD_READ_ONLY=1` blocks writes even when the write flags are present and still allows GET calls.
+Confirm that the offline guard suite passes every case against the packaged stub without a token or a network call.
 
 #### Scenario Contract
 
-Prompt: `Check that a read-only Moneybird session can read contacts but cannot create one, even with the write flags.`
+Prompt: `Run the offline Moneybird guard suite and tell me whether every case passes.`
 
-The contact list reaches the stub. The confirmed production create exits 6, prints the POST preview and has no `REAL` log line.
+Every case prints a `PASS:` line, no `FAIL:` line appears, the final line reports `Fail: 0` with a nonzero pass count and the suite exits 0.
 
-Desired user-visible outcome: The operator sees that the read-only session can read and that a write is blocked before the real CLI call.
+Desired user-visible outcome: The operator sees that the guard gates pass offline and that no token or network call was needed.
 
 #### Test Execution
 
-> **Feature File:** [MBD-013](write-safety/read-only-lock.md)
-> **Catalog:** [Read-only lock](../feature-catalog/write-guard/read-only-lock.md)
+> **Feature File:** [MBD-017](verification/offline-guard-test-suite.md)
+> **Catalog:** [Offline guard test suite](../feature-catalog/verification/offline-guard-test-suite.md)
+
+### MBD-018 | Exit code parity check
+
+#### Description
+
+Confirm that every documented guard exit code still matches the guard and that the self-test catches drift.
+
+#### Scenario Contract
+
+Prompt: `Check that every documented Moneybird guard exit code still matches the guard and prove the check catches drift.`
+
+The parity check prints an `ok` line with the guard code set and exits 0. The self-test reports zero failures across the clean copy and the mutated copies and exits 0.
+
+Desired user-visible outcome: The operator sees that the documented exit codes match the guard and that a mutated surface is caught.
+
+#### Test Execution
+
+> **Feature File:** [MBD-018](verification/exit-code-parity-check.md)
+> **Catalog:** [Exit code parity check](../feature-catalog/verification/exit-code-parity-check.md)
 
 ---
 
@@ -450,8 +527,9 @@ Desired user-visible outcome: The operator sees that the read-only session can r
 
 | Test Module | Coverage | Playbook Overlap |
 |---|---|---|
-| [`cli/moneybird-cli/tests/run-tests.sh`](../cli/moneybird-cli/tests/run-tests.sh) | Offline guard suite for the period warning, the confirmation lock, the pilot gate, the writer configuration gate, the approval gate, the payload digest binding, the single-use check, the attachment digest, the write log, the DELETE caution, the output guard, the summary output, the `--print-body` refusal under an agent marker, the `--out` refusal on a passthrough, the ignored environment overrides without the test flag, the `administration use` gate, both logins and one fault case per guard exit code 1 to 9 | MBD-002, MBD-003, MBD-004, MBD-005, MBD-009, MBD-010, MBD-011, MBD-013, MBD-014 |
+| [`cli/moneybird-cli/tests/run-tests.sh`](../cli/moneybird-cli/tests/run-tests.sh) | Offline guard suite for the period warning, the confirmation lock, the pilot gate, the writer configuration gate, the approval gate, the payload digest binding, the single-use check, the attachment digest, the write log, the DELETE caution, the output guard, the summary output, the `--print-body` refusal under an agent marker, the `--out` refusal on a passthrough, the ignored environment overrides without the test flag, the `administration use` gate, both logins and one fault case per guard exit code 1 to 9 | MBD-002, MBD-003, MBD-004, MBD-005, MBD-009, MBD-010, MBD-011, MBD-013, MBD-014, MBD-017 |
 | [`cli/moneybird-cli/tests/stub-moneybird-cli`](../cli/moneybird-cli/tests/stub-moneybird-cli) | Deterministic CLI stand-in that prints dry-run lines and logs real calls, with `MONEYBIRD_TEST_FAULT` for the upstream failure and the malformed dry-run line | Every offline guard scenario |
+| [`scripts/exit-code-parity.sh`](../scripts/exit-code-parity.sh) and [`scripts/exit-code-parity-test.sh`](../scripts/exit-code-parity-test.sh) | Exit-code parity between the guard and every documented surface, with a fault-injection self-test that must fail each mutant | MBD-018 |
 
 ---
 
@@ -473,3 +551,7 @@ Desired user-visible outcome: The operator sees that the read-only session can r
 | MBD-012 | Pilot write and undo rehearsal | Write safety | [MBD-012](write-safety/pilot-write-and-undo-rehearsal.md) | [Pilot administration gate](../feature-catalog/write-guard/pilot-administration-gate.md) and [Write log](../feature-catalog/write-guard/write-log.md) and [Delete caution](../feature-catalog/write-guard/delete-caution.md) |
 | MBD-013 | Read-only lock blocks writes | Write safety | [MBD-013](write-safety/read-only-lock.md) | [Read-only lock](../feature-catalog/write-guard/read-only-lock.md) |
 | MBD-014 | Payload-bound approval | Write safety | [MBD-014](write-safety/payload-bound-approval.md) | [Payload-bound approval](../feature-catalog/write-guard/payload-bound-approval.md) |
+| MBD-015 | Read step contract | Reads and saved output | [MBD-015](reads/read-step-contract.md) | [Read step contract](../feature-catalog/reads-and-saved-output/read-step-contract.md) |
+| MBD-016 | Failure diagnosis and recovery | Setup and diagnostics | [MBD-016](setup/failure-diagnosis-and-recovery.md) | [Failure diagnosis and recovery](../feature-catalog/api-knowledge/failure-diagnosis-and-recovery.md) |
+| MBD-017 | Offline guard test suite | Verification | [MBD-017](verification/offline-guard-test-suite.md) | [Offline guard test suite](../feature-catalog/verification/offline-guard-test-suite.md) |
+| MBD-018 | Exit code parity check | Verification | [MBD-018](verification/exit-code-parity-check.md) | [Exit code parity check](../feature-catalog/verification/exit-code-parity-check.md) |

@@ -92,4 +92,4 @@ Both status lines and the saved file name. Do not copy the URL or the file conte
 - Playbook ID: JRT-004
 - Canonical root source: `manual-testing-playbook.md`
 - Feature file path: `extraction/receipt-download.md`
-- Feature catalog entry: [`api-calls/signed-download-fetch.md`](../../feature-catalog/api-calls/signed-download-fetch.md)
+- Feature catalog entry: [`feature-catalog/api-calls/signed-download-fetch.md`](../../feature-catalog/api-calls/signed-download-fetch.md)

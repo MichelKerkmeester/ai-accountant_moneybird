@@ -46,7 +46,7 @@ The phase map keeps live work, monitoring, and Jortt decommission in the correct
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| MODE-001 | Migration phase routing | Route recurring cycles and completion after Phase 18. | I have passed Phase 18. Which phases repeat during monitoring, and when can Jortt be cancelled? Do not access any accounting API. | 1. Read AI Systems/Moneybird Accountant/AGENTS.md -> 2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md -> 3. Read references/migration/README.md -> 4. Read references/migration/phases-19-to-21.md -> 5. Read references/migration/phase-22-completion.md -> 6. Report recurring cycles, one-time gate, owner tags, and API-free status | Phases 19 to 21 recur after Phase 18. Phase 22 is one-time after monitoring and all required cycles. Jortt cancellation waits until the Operator records a decision after Phase 22. Any tool route named matches the route contract in shared-mechanisms.md. | Capture the prompt, phase references, recurrence rule, Phase 22 gate, owner tags, and a record that no API call occurred. | PASS if the current phase order and cancellation boundary are correct and no API is called. FAIL if the old map is used, cancellation is permitted early, or an API is called. | Check the last passed gate, then the execution-order phase map and resource list. Repeat offline. |
+| MODE-001 | Migration phase routing | Route recurring cycles and completion after Phase 18. | I have passed Phase 18. Which phases repeat during monitoring, and when can Jortt be cancelled? Do not access any accounting API. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/README.md -> 4. Read sk-moneybird-accountant/references/migration/phases-19-to-21.md -> 5. Read sk-moneybird-accountant/references/migration/phase-22-completion.md -> 6. Report recurring cycles, one-time gate, owner tags and API-free status | Phases 19 to 21 recur after Phase 18. Phase 22 is one-time after monitoring and all required cycles. Jortt cancellation waits until the Operator records a decision after Phase 22. Any tool route named matches the route contract in shared-mechanisms.md. | Capture the prompt, phase references, recurrence rule, Phase 22 gate, owner tags and a record that no API call occurred. | PASS if the current phase order and cancellation boundary are correct and no API is called. FAIL if the old map is used, cancellation is permitted early or an API is called. | Check the last passed gate, then the execution-order phase map and resource list. Repeat offline. |
 
 ### Prompt
 
@@ -54,11 +54,11 @@ The phase map keeps live work, monitoring, and Jortt decommission in the correct
 
 ### Commands
 
-1. Read AI Systems/Moneybird Accountant/AGENTS.md
-2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md
-3. Read references/migration/README.md
-4. Read references/migration/phases-19-to-21.md
-5. Read references/migration/phase-22-completion.md
+1. Read AGENTS.md
+2. Read sk-moneybird-accountant/SKILL.md
+3. Read sk-moneybird-accountant/references/migration/README.md
+4. Read sk-moneybird-accountant/references/migration/phases-19-to-21.md
+5. Read sk-moneybird-accountant/references/migration/phase-22-completion.md
 6. Report recurring cycles, one-time gate, owner tags, and API-free status
 
 ### Expected
@@ -93,10 +93,10 @@ Check the last passed gate, then the execution-order phase map and resource list
 
 | File | Role |
 |---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Defines phase and reference routing. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/README.md | Defines execution order, recurrence, and old-to-new mapping. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/phases-19-to-21.md | Defines recurring workflows. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/phase-22-completion.md | Defines the one-time completion and decommission gate. |
+| sk-moneybird-accountant/SKILL.md | Defines phase and reference routing. |
+| sk-moneybird-accountant/references/migration/README.md | Defines execution order, recurrence and old-to-new mapping. |
+| sk-moneybird-accountant/references/migration/phases-19-to-21.md | Defines recurring workflows. |
+| sk-moneybird-accountant/references/migration/phase-22-completion.md | Defines the one-time completion and decommission gate. |
 
 ---
 
@@ -107,6 +107,6 @@ Check the last passed gate, then the execution-order phase map and resource list
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/migration-phase-routing.md
 
-**Exact command sequence:** 1. Read AI Systems/Moneybird Accountant/AGENTS.md -> 2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md -> 3. Read references/migration/README.md -> 4. Read references/migration/phases-19-to-21.md -> 5. Read references/migration/phase-22-completion.md -> 6. Report recurring cycles, one-time gate, owner tags, and API-free status
+**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/README.md -> 4. Read sk-moneybird-accountant/references/migration/phases-19-to-21.md -> 5. Read sk-moneybird-accountant/references/migration/phase-22-completion.md -> 6. Report recurring cycles, one-time gate, owner tags and API-free status
 
-**Expected resources:** references/migration/README.md, references/migration/phases-19-to-21.md, references/migration/phase-22-completion.md
+**Expected resources:** sk-moneybird-accountant/references/migration/README.md, sk-moneybird-accountant/references/migration/phases-19-to-21.md, sk-moneybird-accountant/references/migration/phase-22-completion.md

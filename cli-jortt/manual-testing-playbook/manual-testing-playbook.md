@@ -32,7 +32,7 @@ A scenario run is complete only after its `PASS`, `FAIL` or `SKIP` outcome, its 
 
 This playbook validates the operator-visible behavior of the `cli-jortt` skill: the offline gates of `jortt-cli`, its read-only extraction path and the routing of requests the API cannot serve. The operator validator derives the scenario and category counts from the tree, so this root does not hand-maintain them. Each scenario keeps its published ID.
 
-Coverage note: offline scenarios use the local OpenAPI file and never contact Jortt. Live scenarios make read-only requests and need an operator-approved read-only key. No scenario writes to Jortt.
+Coverage note: offline scenarios use the local OpenAPI file and never contact Jortt. Live scenarios make read-only requests and need an operator-approved read-only key. JRT-015 sends one read that the API is expected to reject so the error redaction path is exercised. No scenario writes to Jortt.
 
 ### Realistic Test Model
 
@@ -116,7 +116,7 @@ Scenario verdict:
 - `FAIL`: any mapped scenario is `FAIL`
 - `SKIP`: every mapped scenario is stopped by a named sandbox or runtime blocker
 
-Hard rule: a `FAIL` on JRT-002, JRT-003 or JRT-004 forces the feature verdict to `FAIL`, because those scenarios guard writes and output paths.
+Hard rule: a `FAIL` on JRT-002, JRT-003, JRT-004, JRT-014, JRT-015 or JRT-016 forces the feature verdict to `FAIL`, because those scenarios guard writes, record-body output, error redaction and output paths.
 
 ### Release Readiness Rule
 
@@ -142,8 +142,8 @@ This section records how to split the scenarios across workers. It is not a runt
 ### Operational Rules
 
 1. Reserve one coordinator.
-2. Run every offline scenario in the first wave: JRT-001, JRT-002, JRT-005, JRT-006, JRT-007, JRT-008, JRT-009, JRT-010 and JRT-013.
-3. Run the live read scenarios JRT-003, JRT-004 and JRT-012 in a second wave, one worker at a time, so requests stay under the rate limit.
+2. Run every offline scenario in the first wave: JRT-001, JRT-002, JRT-005, JRT-006, JRT-007, JRT-008, JRT-009, JRT-010, JRT-011, JRT-013, JRT-014 and JRT-016.
+3. Run the live read scenarios JRT-003, JRT-004, JRT-012 and JRT-015 in a second wave, one worker at a time, so requests stay under the rate limit.
 4. Pre-assign scenario IDs and their per-feature files to each worker before execution.
 5. After each wave, record verdicts and evidence paths before starting the next wave.
 
@@ -159,7 +159,7 @@ This section records how to split the scenarios across workers. It is not a runt
 
 ## 7. AUTH AND SCOPES
 
-Scenarios: JRT-001, JRT-002, JRT-010, JRT-012.
+Scenarios: JRT-001, JRT-002, JRT-010, JRT-012, JRT-014, JRT-015.
 
 ### JRT-001 | Offline doctor
 
@@ -237,6 +237,44 @@ Desired user-visible outcome: The operator learns the key works and sees no orga
 > **Feature File:** [JRT-012](auth-and-scopes/whoami-field-names.md)
 > **Catalog:** [api-calls/organization-check.md](../feature-catalog/api-calls/organization-check.md)
 
+### JRT-014 | Print body guard
+
+#### Description
+
+Confirm `--print-body` is refused with exit 2 for an agent session marker and that the refusal points at `--out`.
+
+#### Scenario Contract
+
+Prompt: `Show that jortt-cli refuses --print-body in an agent session and points to --out instead.`
+
+The agent sets one marker at a time and reads the one-line refusal on stderr.
+
+Desired user-visible outcome: The operator sees a clear refusal per marker and a safe alternative.
+
+#### Test Execution
+
+> **Feature File:** [JRT-014](auth-and-scopes/print-body-guard.md)
+> **Catalog:** [safety-gates/print-body-guard.md](../feature-catalog/safety-gates/print-body-guard.md)
+
+### JRT-015 | API error redaction
+
+#### Description
+
+Confirm a rejected live read prints only the HTTP status and safe labels and appends the full response to the private workspace log.
+
+#### Scenario Contract
+
+Prompt: `Trigger one safe Jortt API error and show me that only the status and field names print.`
+
+The agent confirms the approved live read, sends one probe GET and reads the log tail and mode.
+
+Desired user-visible outcome: The operator sees a safe terminal line and the full response kept in the private log.
+
+#### Test Execution
+
+> **Feature File:** [JRT-015](auth-and-scopes/api-error-redaction.md)
+> **Catalog:** [transport/api-error-redaction.md](../feature-catalog/transport/api-error-redaction.md)
+
 ---
 
 ## 8. SETUP
@@ -310,7 +348,7 @@ Desired user-visible outcome: The operator sees which spec is in use and how a m
 
 ## 10. EXTRACTION
 
-Scenarios: JRT-003, JRT-004, JRT-009.
+Scenarios: JRT-003, JRT-004, JRT-009, JRT-011, JRT-016.
 
 ### JRT-003 | Paged extract to workspace
 
@@ -368,6 +406,44 @@ Desired user-visible outcome: The operator sees three clear refusals and no requ
 
 > **Feature File:** [JRT-009](extraction/raw-get-path-guard.md)
 > **Catalog:** [api-calls/raw-get.md](../feature-catalog/api-calls/raw-get.md)
+
+### JRT-011 | Call an operation offline
+
+#### Description
+
+Confirm `call` validates parameter names, required values and types and prints the dry-run request without a token.
+
+#### Scenario Contract
+
+Prompt: `Show me how jortt-cli would call the expense list and stop invalid parameters before sending anything.`
+
+The agent runs one valid dry run and three invalid calls, then names the check that stopped each invalid call.
+
+Desired user-visible outcome: The operator sees the exact request shape and a clear local refusal for each bad input.
+
+#### Test Execution
+
+> **Feature File:** [JRT-011](extraction/call-operation-offline.md)
+> **Catalog:** [api-calls/call-operation.md](../feature-catalog/api-calls/call-operation.md)
+
+### JRT-016 | Output workspace guard
+
+#### Description
+
+Confirm `call`, `get` and `fetch` reject an output path outside the migration workspace and accept a name inside it without writing.
+
+#### Scenario Contract
+
+Prompt: `Show that jortt-cli refuses an output path outside the migration workspace.`
+
+The agent runs three outside destinations, reads each exit code, then runs one dry run with a name inside the workspace.
+
+Desired user-visible outcome: The operator sees that only a workspace-relative name passes, and that the passing dry run saves nothing.
+
+#### Test Execution
+
+> **Feature File:** [JRT-016](extraction/output-workspace-guard.md)
+> **Catalog:** [safety-gates/output-workspace-guard.md](../feature-catalog/safety-gates/output-workspace-guard.md)
 
 ---
 
@@ -435,5 +511,9 @@ Desired user-visible outcome: The agent hands off the request without calling Jo
 | JRT-008 | Spec info without network | Operation discovery | [JRT-008](operation-discovery/spec-info-offline.md) | [operation-discovery/openapi-spec-cache.md](../feature-catalog/operation-discovery/openapi-spec-cache.md) |
 | JRT-009 | Raw GET path guard | Extraction | [JRT-009](extraction/raw-get-path-guard.md) | [api-calls/raw-get.md](../feature-catalog/api-calls/raw-get.md) |
 | JRT-010 | Token cache status | Auth and scopes | [JRT-010](auth-and-scopes/token-status.md) | [transport/token-cache-and-retry.md](../feature-catalog/transport/token-cache-and-retry.md) |
+| JRT-011 | Call an operation offline | Extraction | [JRT-011](extraction/call-operation-offline.md) | [api-calls/call-operation.md](../feature-catalog/api-calls/call-operation.md) |
 | JRT-012 | Organization check prints field names only | Auth and scopes | [JRT-012](auth-and-scopes/whoami-field-names.md) | [api-calls/organization-check.md](../feature-catalog/api-calls/organization-check.md) |
 | JRT-013 | CLI setup check | Setup | [JRT-013](setup/setup-check.md) | [diagnostics/setup-check.md](../feature-catalog/diagnostics/setup-check.md) |
+| JRT-014 | Print body guard | Auth and scopes | [JRT-014](auth-and-scopes/print-body-guard.md) | [safety-gates/print-body-guard.md](../feature-catalog/safety-gates/print-body-guard.md) |
+| JRT-015 | API error redaction | Auth and scopes | [JRT-015](auth-and-scopes/api-error-redaction.md) | [transport/api-error-redaction.md](../feature-catalog/transport/api-error-redaction.md) |
+| JRT-016 | Output workspace guard | Extraction | [JRT-016](extraction/output-workspace-guard.md) | [safety-gates/output-workspace-guard.md](../feature-catalog/safety-gates/output-workspace-guard.md) |

@@ -196,6 +196,11 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/jortt-to-moneybird-mapping.md",
+    "diskPath": "manual-testing-playbook/offline-routing/jortt-to-moneybird-mapping.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "manual-testing-playbook/offline-routing/live-monthly-bookkeeping.md",
     "diskPath": "manual-testing-playbook/offline-routing/live-monthly-bookkeeping.md"
   },
@@ -241,8 +246,18 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/session-context-and-year-state.md",
+    "diskPath": "manual-testing-playbook/offline-routing/session-context-and-year-state.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "manual-testing-playbook/offline-routing/source-lookup.md",
     "diskPath": "manual-testing-playbook/offline-routing/source-lookup.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/task-type-routing.md",
+    "diskPath": "manual-testing-playbook/offline-routing/task-type-routing.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -253,6 +268,11 @@
     "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "manual-testing-playbook/offline-routing/write-journal-crash-resume.md",
     "diskPath": "manual-testing-playbook/offline-routing/write-journal-crash-resume.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "manual-testing-playbook/offline-routing/year-rollover-runbook.md",
+    "diskPath": "manual-testing-playbook/offline-routing/year-rollover-runbook.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",

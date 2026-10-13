@@ -25,7 +25,7 @@ A scenario run is complete only after its PASS, FAIL, or SKIP outcome and reason
 
 ## 1. OVERVIEW
 
-The scenarios validate phase routing, write recovery, archive and decommission gates, access-expiry stops, auditfile routing, CLI ownership boundaries, tax limits, and privacy behavior. The root index links each scenario to its execution file and matching feature catalog entry.
+The scenarios validate phase routing, concept mapping, write recovery, archive and decommission gates, access-expiry stops, auditfile routing, live cadence, invoice and asset booking, tax limits, task-type ties, CLI ownership boundaries, year and state resolution, year rollover, safety scorers and privacy behavior. The root index links each scenario to its execution file and matching feature catalog entry.
 
 Coverage note: this package checks local routing and policy. It does not call external services.
 
@@ -93,14 +93,27 @@ Keep package-level evidence rules here. Keep scenario-specific acceptance criter
 
 ---
 
-## 6. SINGLE-RUNNER EXECUTION
+## 6. SUB-AGENT ORCHESTRATION AND WAVE PLANNING
 
-These checks read local public documentation. One runner can execute them in order without delegation. Keep each scenario independent and record its evidence before starting another.
+### Purpose
 
-1. Confirm the repository root and local documents are available.
-2. Run each prompt against the skill in an offline context.
-3. Record the selected mode, source paths, and verdict.
-4. Do not use credentials, APIs, or private finance data.
+This section records how to plan the offline routing checks across runners. It is not a runtime support matrix by itself. The checks read local public documentation, so one runner can execute them in order without delegation.
+
+### Operational Rules
+
+1. Confirm the repository root and the routed local documents are available.
+2. Reserve one coordinator and prefer one runner for the offline wave.
+3. Pre-assign each scenario id and its per-feature file before the wave starts.
+4. Run each prompt against the skill in an offline context and keep each scenario independent.
+5. Record the selected mode, the source paths and the verdict before starting another scenario.
+6. Do not use credentials, APIs, CLI tools or private finance data.
+7. Record the evidence paths in the final report.
+
+### What Belongs In Per-Feature Files
+
+- The real user request and the exact prompt.
+- The expected routing between the skill, its references and the sibling tool skills.
+- The desired user-visible outcome and the feature-specific caveats.
 
 ---
 
@@ -157,6 +170,24 @@ Desired user-visible outcome: Names the setup command, the config template, the 
 #### Test Execution
 Feature file: [MIG-006](offline-routing/migration-plan-kit.md)
 Catalog: [migration plan kit](../feature-catalog/bookkeeping-and-migration/migration-plan-kit.md)
+
+---
+
+### MIG-007 | Jortt to Moneybird mapping
+
+#### Description
+Verify the T2 migration concept route, the purpose and tax treatment rule and the source-export traps.
+
+#### Scenario Contract
+Prompt: Which Jortt category should my software costs map to in Moneybird, and which export traps should I check? Do not call an API.
+
+Fixture rows: none in routing-gold.json for this prompt. The GAP-T2-01 row covers the same T2 route.
+
+Desired user-visible outcome: Selects MIGRATION, loads the mapping reference, maps by accounting purpose and tax treatment, names the attachment, asset list and category and opening balance traps, keeps the phase unchanged and makes no API call.
+
+#### Test Execution
+Feature file: [MIG-007](offline-routing/jortt-to-moneybird-mapping.md)
+Catalog: [Jortt to Moneybird mapping](../feature-catalog/bookkeeping-and-migration/jortt-to-moneybird-mapping.md)
 
 ---
 
@@ -340,6 +371,24 @@ Catalog: [feature-catalog/year-specific-zzp-guidance.md](../feature-catalog/book
 
 ---
 
+### TASK-001 | Task type routing
+
+#### Description
+Verify the Task-Type Table tie rule, the resolved read set and the route record.
+
+#### Scenario Contract
+Prompt: Is my home phone subscription a deduction in 2026? Do not call an API.
+
+Fixture rows: TIE-T4-T5-01 (the T5-over-T4 tie row).
+
+Desired user-visible outcome: The route table check passes, T5 wins over T4 on the tax figure clause, the explicit year 2026 resolves to the year README and the kosten-en-auto key figures, the invoice references stay unloaded and the route record names T5.
+
+#### Test Execution
+Feature file: [TASK-001](offline-routing/task-type-routing.md)
+Catalog: [Task type routing](../feature-catalog/bookkeeping-and-migration/task-type-routing.md)
+
+---
+
 ### API-001 | CLI tool handoff
 
 #### Description
@@ -426,7 +475,7 @@ Desired user-visible outcome: Names the case set and the checker, records one ve
 
 #### Test Execution
 Feature file: [HARD-001](offline-routing/hostile-invoice-set.md)
-Catalog: [purchase invoice booking](../feature-catalog/bookkeeping-and-migration/purchase-invoice-booking.md)
+Catalog: [hostile invoice set](../feature-catalog/quality-gates/hostile-invoice-set.md)
 
 ---
 
@@ -444,7 +493,43 @@ Desired user-visible outcome: Names the answer mode and the gate suite, records 
 
 #### Test Execution
 Feature file: [PRIV-002](offline-routing/answer-privacy.md)
-Catalog: [migration data privacy](../feature-catalog/bookkeeping-and-migration/migration-data-privacy.md)
+Catalog: [privacy gate](../feature-catalog/quality-gates/privacy-gate.md)
+
+---
+
+### STATE-001 | Session context and year resolution
+
+#### Description
+Verify the year order, the post-cutover state list and the offline session context suite.
+
+#### Scenario Contract
+Prompt: My question is about my 2024 return but the session clock says a later year. How do you decide which tax year to use, and how do you know the migration state? Keep this as an offline check.
+
+Fixture rows: none in routing-gold.json. The session context suite generates its fixtures at run time.
+
+Desired user-visible outcome: Names the git-ignored session-context.json input and the four-step year order, resolves 2024 as the explicit return year with the return_coverage key, names the five post-cutover states, keeps the recurring-cycle load rule and reports the suite result 34 passed and 0 failed.
+
+#### Test Execution
+Feature file: [STATE-001](offline-routing/session-context-and-year-state.md)
+Catalog: [Session context and year resolution](../feature-catalog/reference-and-state/session-context-and-year-state.md)
+
+---
+
+### STATE-002 | Year rollover runbook
+
+#### Description
+Verify the 1 January runbook, the release calendar and the offline calendar check.
+
+#### Scenario Contract
+Prompt: It is time for the year rollover. Walk me through the runbook for the newest year folder and tell me what the calendar check verifies. Do not fetch any page.
+
+Fixture rows: none in routing-gold.json. The calendar check reads the tracked year files.
+
+Desired user-visible outcome: Names the Operator as owner, lists the eight runbook steps and the five checkpoints, states the checked_on rule and the stale-year failure. The offline run reports the current year files current at the latest passed checkpoint.
+
+#### Test Execution
+Feature file: [STATE-002](offline-routing/year-rollover-runbook.md)
+Catalog: [Year rollover runbook](../feature-catalog/reference-and-state/year-rollover-runbook.md)
 
 ---
 
@@ -455,9 +540,11 @@ Catalog: [migration data privacy](../feature-catalog/bookkeeping-and-migration/m
 | .skilled/skills/sk-doc/sk-create-manual-testing-playbook/scripts/validate-playbook-package.cjs | Checks operator scenario structure and local package links | All offline scenarios |
 | sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh | Proves the route corpus in resolve mode and the refusal and hostile rows in replay mode on a temp copy, including a deleted routed path, a twin mismatch, an unmet claim and two dated runs | All offline scenarios |
 | sk-moneybird-accountant/scripts/run-evals-test.sh | Proves the eval grader on compliant, non-compliant, refusal, forbidden-pattern, capture-year and skill-hash fixtures | TAX-001, TAX-002, TAX-003, MIG-004, PRIV-001 |
+| sk-moneybird-accountant/scripts/route-table-test.sh | Proves the route table, the router block and the intent-signal drift on mutants | TASK-001 |
+| sk-moneybird-accountant/scripts/session-context-test.sh | Proves the session context builder on offline fixtures for the clock, the allowlist, staleness and the post-cutover states | STATE-001 |
 | sk-moneybird-accountant/scripts/hardening-matrix-test.sh | Proves the matrix coverage check on the real matrix and on copies with a removed P0 test path, a blank P0 cell and a renamed case | All offline scenarios |
 | sk-moneybird-accountant/scripts/regression-trailer-test.sh | Proves the gate file trailer check on fixture repositories, including a deleted covering test, a valid trailer and an invalid trailer | Every scenario whose source sits in a gate file |
-| sk-moneybird-accountant/scripts/source-library-test.sh | Proves the source index builder on a fixture and checks the real index, the link check against a fixture server and the trace on live, dead and unindexed URLs | TAX-003 |
+| sk-moneybird-accountant/scripts/source-library-test.sh | Proves the source index builder on a fixture and checks the real index, the link check against a fixture server and the trace on live, dead and unindexed URLs | TAX-003, STATE-002 |
 | sk-moneybird-accountant/scripts/hostile-invoice-set-test.sh | Proves the case set shape and the score thresholds on the real set and on seeded fixtures | HARD-001 |
 
 No runtime test calls an accounting service. The scenarios remain manual routing checks.
@@ -466,24 +553,28 @@ No runtime test calls an accounting service. The scenarios remain manual routing
 
 ## 9. FEATURE CATALOG CROSS-REFERENCE INDEX
 
-| Feature ID | Feature Name | Category | Feature File |
-|---|---|---|---|
-| MODE-001 | Migration phase routing | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-phase-routing.md) |
-| MIG-001 | Migration archive and decommission gate | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-archive-decommission-gate.md) |
-| MIG-002 | Migration write keys and run journal | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-write-keys-and-run-journal.md) |
-| MIG-003 | Migration auditfile export route | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-auditfile-export-route.md) |
-| MIG-004 | Migration trial and package expiry | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-trial-and-package-expiry.md) |
-| MIG-005 | Migration agent route | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-agent-route.md) |
-| MIG-006 | Migration plan kit | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-plan-kit.md) |
-| LIVE-001 | Live bookkeeping cadence | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md) |
-| LIVE-002 | Live bookkeeping cadence | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md) |
-| LIVE-003 | Purchase invoice booking | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/purchase-invoice-booking.md) |
-| LIVE-004 | Mixed-use cost booking | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/mixed-use-cost-booking.md) |
-| LIVE-005 | Fixed asset booking | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/fixed-asset-booking.md) |
-| TAX-001 | Year-specific ZZP guidance | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md) |
-| API-001 | CLI tool handoff | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/api-tool-handoff.md) |
-| PRIV-001 | Migration data privacy | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-data-privacy.md) |
-| TAX-002 | Operator tax boundary | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md) |
-| TAX-003 | External source library | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/external-source-library.md) |
-| HARD-001 | Purchase invoice booking | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/purchase-invoice-booking.md) |
-| PRIV-002 | Migration data privacy | bookkeeping-and-migration | [feature catalog](../feature-catalog/bookkeeping-and-migration/migration-data-privacy.md) |
+| Feature ID | Feature Name | Category | Feature File | Catalog Entry |
+|---|---|---|---|---|
+| MODE-001 | Migration phase routing | bookkeeping-and-migration | [MODE-001](offline-routing/migration-phase-routing.md) | [migration phase routing](../feature-catalog/bookkeeping-and-migration/migration-phase-routing.md) |
+| MIG-001 | Migration archive and decommission gate | bookkeeping-and-migration | [MIG-001](offline-routing/jortt-decommission-gate.md) | [migration archive and decommission gate](../feature-catalog/bookkeeping-and-migration/migration-archive-decommission-gate.md) |
+| MIG-002 | Migration write keys and run journal | bookkeeping-and-migration | [MIG-002](offline-routing/write-journal-crash-resume.md) | [migration write keys and run journal](../feature-catalog/bookkeeping-and-migration/migration-write-keys-and-run-journal.md) |
+| MIG-003 | Migration auditfile export route | bookkeeping-and-migration | [MIG-003](offline-routing/auditfile-read-only-route.md) | [migration auditfile export route](../feature-catalog/bookkeeping-and-migration/migration-auditfile-export-route.md) |
+| MIG-004 | Migration trial and package expiry | bookkeeping-and-migration | [MIG-004](offline-routing/trial-expiry-stop.md) | [migration trial and package expiry](../feature-catalog/bookkeeping-and-migration/migration-trial-and-package-expiry.md) |
+| MIG-005 | Migration agent route | bookkeeping-and-migration | [MIG-005](offline-routing/migration-agent-route.md) | [migration agent route](../feature-catalog/bookkeeping-and-migration/migration-agent-route.md) |
+| MIG-006 | Migration plan kit | bookkeeping-and-migration | [MIG-006](offline-routing/migration-plan-kit.md) | [migration plan kit](../feature-catalog/bookkeeping-and-migration/migration-plan-kit.md) |
+| MIG-007 | Jortt to Moneybird mapping | bookkeeping-and-migration | [MIG-007](offline-routing/jortt-to-moneybird-mapping.md) | [Jortt to Moneybird mapping](../feature-catalog/bookkeeping-and-migration/jortt-to-moneybird-mapping.md) |
+| LIVE-001 | Live bookkeeping cadence | bookkeeping-and-migration | [LIVE-001](offline-routing/live-monthly-bookkeeping.md) | [live bookkeeping cadence](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md) |
+| LIVE-002 | Live bookkeeping cadence | bookkeeping-and-migration | [LIVE-002](offline-routing/quarterly-yearly-bookkeeping.md) | [live bookkeeping cadence](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md) |
+| LIVE-003 | Purchase invoice booking | bookkeeping-and-migration | [LIVE-003](offline-routing/purchase-invoice-booking.md) | [purchase invoice booking](../feature-catalog/bookkeeping-and-migration/purchase-invoice-booking.md) |
+| LIVE-004 | Mixed-use cost booking | bookkeeping-and-migration | [LIVE-004](offline-routing/mixed-use-cost-booking.md) | [mixed-use cost booking](../feature-catalog/bookkeeping-and-migration/mixed-use-cost-booking.md) |
+| LIVE-005 | Fixed asset booking | bookkeeping-and-migration | [LIVE-005](offline-routing/fixed-asset-booking.md) | [fixed asset booking](../feature-catalog/bookkeeping-and-migration/fixed-asset-booking.md) |
+| TAX-001 | Year-specific ZZP guidance | bookkeeping-and-migration | [TAX-001](offline-routing/current-year-zzp-question.md) | [year-specific ZZP guidance](../feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md) |
+| TASK-001 | Task type routing | bookkeeping-and-migration | [TASK-001](offline-routing/task-type-routing.md) | [Task type routing](../feature-catalog/bookkeeping-and-migration/task-type-routing.md) |
+| API-001 | CLI tool handoff | bookkeeping-and-migration | [API-001](offline-routing/api-tool-handoff.md) | [CLI tool handoff](../feature-catalog/bookkeeping-and-migration/api-tool-handoff.md) |
+| PRIV-001 | Migration data privacy | bookkeeping-and-migration | [PRIV-001](offline-routing/privacy-boundary.md) | [migration data privacy](../feature-catalog/bookkeeping-and-migration/migration-data-privacy.md) |
+| TAX-002 | Operator tax boundary | bookkeeping-and-migration | [TAX-002](offline-routing/operator-tax-boundary.md) | [operator tax boundary](../feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md) |
+| TAX-003 | External source library | bookkeeping-and-migration | [TAX-003](offline-routing/source-lookup.md) | [external source library](../feature-catalog/bookkeeping-and-migration/external-source-library.md) |
+| HARD-001 | Hostile invoice set | quality-gates | [HARD-001](offline-routing/hostile-invoice-set.md) | [hostile invoice set](../feature-catalog/quality-gates/hostile-invoice-set.md) |
+| PRIV-002 | Privacy gate | quality-gates | [PRIV-002](offline-routing/answer-privacy.md) | [privacy gate](../feature-catalog/quality-gates/privacy-gate.md) |
+| STATE-001 | Session context and year resolution | reference-and-state | [STATE-001](offline-routing/session-context-and-year-state.md) | [session context and year resolution](../feature-catalog/reference-and-state/session-context-and-year-state.md) |
+| STATE-002 | Year rollover runbook | reference-and-state | [STATE-002](offline-routing/year-rollover-runbook.md) | [year rollover runbook](../feature-catalog/reference-and-state/year-rollover-runbook.md) |

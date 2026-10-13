@@ -224,7 +224,7 @@ sed 's/| `tok:T1` | Beats T2/|  | Beats T2/' "$(copy)" >"$TMP_ROOT/m-budget.md"
 mutant "budget cell blanked" "$TMP_ROOT/m-budget.md"
 
 # Empty the Dutch cell of the T2 row
-sed 's/`migratie`, `overzetten`, `historische administratie` \| mapping/ \| mapping/' "$(copy)" >"$TMP_ROOT/m-dutch.md"
+sed 's/`migratie`, `overzetten`, `historische administratie`, `categorie`, `valkuil`, `welke rekening` \| mapping/ \| mapping/' "$(copy)" >"$TMP_ROOT/m-dutch.md"
 mutant "Dutch cell emptied" "$TMP_ROOT/m-dutch.md"
 
 # Delete the T9 row

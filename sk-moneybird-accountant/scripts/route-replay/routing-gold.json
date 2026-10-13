@@ -16,7 +16,8 @@
     "T1-over-T3",
     "T3-over-T4",
     "T5-over-T4",
-    "T6-over-T4"
+    "T6-over-T4",
+    "T4-over-T2"
   ],
   "rows": [
     {
@@ -1056,6 +1057,118 @@
       "note": "Migration concept route with no phase named.",
       "covers": [
         "002/REQ-001"
+      ]
+    },
+    {
+      "id": "MIG-007",
+      "prompt": "Which Jortt category should my software costs map to in Moneybird, and which export traps should I check? Do not call an API.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T2",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/jortt-to-moneybird-mapping.md"
+      ],
+      "forbidden_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [
+        "mapping"
+      ],
+      "token_ceiling": 15000,
+      "year": "",
+      "note": "Scenario MIG-007, the mapping route by accounting purpose.",
+      "covers": [
+        "016/REQ-005"
+      ]
+    },
+    {
+      "id": "MIG-007-nl",
+      "prompt": "Welke Jortt-categorie hoort bij mijn softwarekosten in Moneybird en welke valkuilen in de export moet ik controleren? Roep geen API aan.",
+      "lang": "nl",
+      "parityOf": "MIG-007",
+      "split": "calibration",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T2",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/jortt-to-moneybird-mapping.md"
+      ],
+      "forbidden_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [
+        "mapping"
+      ],
+      "token_ceiling": 15000,
+      "year": "",
+      "note": "Dutch twin of MIG-007. The Dutch T2 concept terms route it.",
+      "covers": [
+        "016/REQ-005"
+      ]
+    },
+    {
+      "id": "TIE-T4-T2-01",
+      "prompt": "Which category for this supplier invoice?",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "tie",
+      "tier": "",
+      "tie": "T4-over-T2",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/2026/btw.md",
+        "references/moneybird-bookkeeping.md"
+      ],
+      "forbidden_paths": [
+        "references/migration/jortt-to-moneybird-mapping.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 60000,
+      "year": "2026",
+      "note": "A category question that names an invoice stays on T4.",
+      "covers": [
+        "016/REQ-005"
+      ]
+    },
+    {
+      "id": "TIE-T4-T2-01-nl",
+      "prompt": "Welke categorie kies ik voor deze inkoopfactuur van een leverancier?",
+      "lang": "nl",
+      "parityOf": "TIE-T4-T2-01",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "tie",
+      "tier": "",
+      "tie": "T4-over-T2",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/2026/btw.md",
+        "references/moneybird-bookkeeping.md"
+      ],
+      "forbidden_paths": [
+        "references/migration/jortt-to-moneybird-mapping.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 60000,
+      "year": "2026",
+      "note": "Dutch twin of TIE-T4-T2-01. The invoice clause settles the T4 and T2 tie.",
+      "covers": [
+        "016/REQ-005"
       ]
     },
     {

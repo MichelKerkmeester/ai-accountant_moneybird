@@ -47,7 +47,7 @@ Operators run the exact prompt and command sequence for `MBD-010` and confirm th
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| MBD-010 | Output guard confines saves | Confirm that `--out` saves only inside the migration workspace and prints only the shape of the data | `Save a Moneybird contact list with the guard, once outside the migration workspace, once through a symlink and once inside it.` | 1. `moneybird-guard --out "$TEST_ROOT/outside.json" contacts list` -> 2. `moneybird-guard --out migration-workspace/link/x.json contacts list` -> 3. `moneybird-guard --out migration-workspace/contacts.json contacts list --filter period:2023` -> 4. `bash: jq length contacts.json` | Step 1: exit 5 and no `REAL` line. Step 2: exit 5. Step 3: stdout is `items: 1`. Step 4: `1` | Captured output, exit statuses and the stub invocation log | PASS if both refused paths exit 5 with no `REAL` line and the inside path prints `items: 1` and writes the file. FAIL if a file is written outside the workspace or records are printed to the terminal. | 1. Confirm the inside path resolves under `migration-workspace/`. 2. Read the path validation in `moneybird-guard`. 3. Run the automated suite and compare the two `--out` cases |
+| MBD-010 | Output guard confines saves | Confirm that `--out` saves only inside the migration workspace and prints only the shape of the data | `Save a Moneybird contact list with the guard, once outside the migration workspace, once through a symlink and once inside it.` | 1. `moneybird-guard --out "$TEST_ROOT/outside.json" contacts list` -> 2. `moneybird-guard --out migration-workspace/link/x.json contacts list` -> 3. `moneybird-guard --out migration-workspace/contacts.json contacts list --filter period:2023` -> 4. `bash: jq length contacts.json` | Step 1: exit 5, `0` and no `REAL` line. Step 2: exit 5. Step 3: stdout is `items: 1`. Step 4: `1` | Captured output, exit statuses and the stub invocation log | PASS if both refused paths exit 5 with no `REAL` line and the inside path prints `items: 1` and writes the file. FAIL if a file is written outside the workspace or records are printed to the terminal. | 1. Confirm the inside path resolves under `migration-workspace/`. 2. Read the path validation in `moneybird-guard`. 3. Run the automated suite and compare the two `--out` cases |
 
 ### Command Block
 
@@ -66,7 +66,11 @@ export MONEYBIRD_TEST_LOG="$TEST_ROOT/invocations.log" MONEYBIRD_TEST_ADMINISTRA
 GUARD="$SKILL_ROOT/cli/moneybird-cli/moneybird-guard"
 "$GUARD" --out "$TEST_ROOT/outside.json" contacts list
 echo "outside exit=$?"
-grep -c '^REAL ' "$MONEYBIRD_TEST_LOG"
+if [[ -f "$MONEYBIRD_TEST_LOG" ]]; then
+  grep -c '^REAL ' "$MONEYBIRD_TEST_LOG" || true
+else
+  echo 0
+fi
 ln -s "$TEST_ROOT" "$MONEYBIRD_ENV_DIR/migration-workspace/link"
 "$GUARD" --out "migration-workspace/link/x.json" contacts list
 echo "symlink exit=$?"

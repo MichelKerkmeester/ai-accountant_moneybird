@@ -62,7 +62,8 @@
     "mixed use",
     "phone subscription",
     "partly private",
-    "fixed asset"
+    "fixed asset",
+    "welke rekening"
   ],
   "derived": {
     "trigger_phrases": [

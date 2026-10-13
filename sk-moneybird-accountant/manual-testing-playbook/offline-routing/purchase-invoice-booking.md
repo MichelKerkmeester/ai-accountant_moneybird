@@ -46,7 +46,7 @@ A wrong VAT rate on a reverse-charged invoice drops VAT that is owed or claims a
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| LIVE-003 | Purchase invoice booking | Route a reverse-charged EU purchase invoice to the purchase invoice reference and its VAT case. | Book this purchase invoice from an EU software supplier. It shows 0% VAT and says reverse charge. Which steps, VAT rate and references apply? Keep this as an offline routing check. | 1. Read AI Systems/Moneybird Accountant/AGENTS.md -> 2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md -> 3. Read references/purchase-invoices.md -> 4. Report the selected mode, the case, the VAT rate, the return rubrieken and the write boundary without calling an API | Selects LIVE, names the purchase invoice reference, classifies the invoice as EU reverse charge, picks the Binnen EU rate, reports rubriek 4b with the deduction in 5b, flags a KOR or exempt business as different, and says a write needs a passed gate and Operator approval. | Capture the prompt, selected mode, reference path, case, rate, rubrieken and no-API confirmation. | PASS if The response routes to the purchase invoice reference, picks the EU reverse-charge case and keeps the write behind the gate. FAIL if The response books the invoice with Geen btw or a Dutch rate, skips the reference, or calls a Moneybird API. | Check the T4 purchase invoice row of the Task-Type Table in the skill, the routing line in the bootstrap and the decision table in the reference. Repeat without tool access. |
+| LIVE-003 | Purchase invoice booking | Route a reverse-charged EU purchase invoice to the purchase invoice reference and its VAT case. | Book this purchase invoice from an EU software supplier. It shows 0% VAT and says reverse charge. Which steps, VAT rate and references apply? Keep this as an offline routing check. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/purchase-invoices.md -> 4. Report the selected mode, the case, the VAT rate, the return rubrieken and the write boundary without calling an API | Selects LIVE, names the purchase invoice reference, classifies the invoice as EU reverse charge, picks the Binnen EU rate, reports rubriek 4b with the deduction in 5b, flags a KOR or exempt business as different and says a write needs a passed gate and Operator approval. | Capture the prompt, selected mode, reference path, case, rate, rubrieken and no-API confirmation. | PASS if The response routes to the purchase invoice reference, picks the EU reverse-charge case and keeps the write behind the gate. FAIL if The response books the invoice with Geen btw or a Dutch rate, skips the reference or calls a Moneybird API. | Check the T4 purchase invoice row of the Task-Type Table in the skill, the routing line in the bootstrap and the decision table in the reference. Repeat without tool access. |
 
 ### Prompt
 
@@ -54,9 +54,9 @@ A wrong VAT rate on a reverse-charged invoice drops VAT that is owed or claims a
 
 ### Commands
 
-1. Read AI Systems/Moneybird Accountant/AGENTS.md
-2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md
-3. Read references/purchase-invoices.md
+1. Read AGENTS.md
+2. Read sk-moneybird-accountant/SKILL.md
+3. Read sk-moneybird-accountant/references/purchase-invoices.md
 4. Report the selected mode, the case, the VAT rate, the return rubrieken and the write boundary without calling an API
 
 ### Expected
@@ -91,9 +91,9 @@ Check the T4 purchase invoice row of the Task-Type Table in the skill, the routi
 
 | File | Role |
 |---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Defines mode and reference routing |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/purchase-invoices.md | Defines the booking flow and the VAT case table |
-| AI Systems/Moneybird Accountant/AGENTS.md | Defines project bootstrap and privacy rules |
+| sk-moneybird-accountant/SKILL.md | Defines mode and reference routing |
+| sk-moneybird-accountant/references/purchase-invoices.md | Defines the booking flow and the VAT case table |
+| AGENTS.md | Defines project bootstrap and privacy rules |
 
 ---
 
@@ -104,6 +104,6 @@ Check the T4 purchase invoice row of the Task-Type Table in the skill, the routi
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/purchase-invoice-booking.md
 
-**Exact command sequence:** 1. Read AI Systems/Moneybird Accountant/AGENTS.md -> 2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md -> 3. Read references/purchase-invoices.md -> 4. Report the selected mode, the case, the VAT rate, the return rubrieken and the write boundary without calling an API
+**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/purchase-invoices.md -> 4. Report the selected mode, the case, the VAT rate, the return rubrieken and the write boundary without calling an API
 
-**Expected resources:** references/purchase-invoices.md
+**Expected resources:** sk-moneybird-accountant/references/purchase-invoices.md

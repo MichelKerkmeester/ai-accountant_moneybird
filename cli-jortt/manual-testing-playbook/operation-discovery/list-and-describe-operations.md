@@ -92,4 +92,4 @@ Both outputs and their exit codes.
 - Playbook ID: JRT-007
 - Canonical root source: `manual-testing-playbook.md`
 - Feature file path: `operation-discovery/list-and-describe-operations.md`
-- Feature catalog entry: [`operation-discovery/list-operations.md`](../../feature-catalog/operation-discovery/list-operations.md)
+- Feature catalog entry: [`feature-catalog/operation-discovery/list-operations.md`](../../feature-catalog/operation-discovery/list-operations.md)

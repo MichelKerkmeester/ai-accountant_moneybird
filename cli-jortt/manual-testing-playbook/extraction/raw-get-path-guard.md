@@ -66,7 +66,7 @@ The three messages and exit codes.
 ### Failure Triage
 
 1. Confirm the commands were copied exactly, including the bare `vat_date_from` argument.
-2. Inspect `jortt_cmd_get` in `lib/commands.sh`.
+2. Inspect `jortt_cmd_get` in `cli/jortt-cli/lib/commands.sh`.
 
 ---
 
@@ -94,4 +94,4 @@ The three messages and exit codes.
 - Playbook ID: JRT-009
 - Canonical root source: `manual-testing-playbook.md`
 - Feature file path: `extraction/raw-get-path-guard.md`
-- Feature catalog entry: [`api-calls/raw-get.md`](../../feature-catalog/api-calls/raw-get.md)
+- Feature catalog entry: [`feature-catalog/api-calls/raw-get.md`](../../feature-catalog/api-calls/raw-get.md)

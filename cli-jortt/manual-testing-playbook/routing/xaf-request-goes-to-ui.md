@@ -92,4 +92,4 @@ The agent's final answer and a note that no tool call ran.
 - Playbook ID: JRT-005
 - Canonical root source: `manual-testing-playbook.md`
 - Feature file path: `routing/xaf-request-goes-to-ui.md`
-- Feature catalog entry: [`surfaces/surface-routing.md`](../../feature-catalog/surfaces/surface-routing.md)
+- Feature catalog entry: [`feature-catalog/surfaces/surface-routing.md`](../../feature-catalog/surfaces/surface-routing.md)

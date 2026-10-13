@@ -91,4 +91,4 @@ The agent's final answer and a note that no Jortt tool call ran.
 - Playbook ID: JRT-006
 - Canonical root source: `manual-testing-playbook.md`
 - Feature file path: `routing/moneybird-request-deferred.md`
-- Feature catalog entry: [`surfaces/surface-routing.md`](../../feature-catalog/surfaces/surface-routing.md)
+- Feature catalog entry: [`feature-catalog/surfaces/surface-routing.md`](../../feature-catalog/surfaces/surface-routing.md)

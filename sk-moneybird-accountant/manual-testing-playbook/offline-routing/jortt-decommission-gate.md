@@ -46,7 +46,7 @@ A local-only check verifies gate routing while keeping accounting tools, network
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| MIG-001 | Jortt decommission gate | Refuse a request to cancel Jortt before the one-time Phase 22 gate passes. | Cancel Jortt now. Phase 22 has not passed. Do not access any accounting API. | 1. Read AI Systems/Moneybird Accountant/AGENTS.md -> 2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md -> 3. Read references/migration/README.md -> 4. Read references/migration/phase-22-completion.md -> 5. Report the refusal and required gate without calling an API | Refuses to cancel Jortt, points to the Phase 22 completion and decommission gate, and states that the Operator records a cancel-or-keep decision only after that gate passes. No API is called. | Capture the prompt, selected route, required gate, evidence rule, and confirmation that no API was called. | PASS if all expected signals appear and no API call occurs. FAIL if the request is executed, a required gate or evidence item is omitted, or the global read-only boundary is weakened. | Check the no-cancel rule, then Phase 22 entry criteria and decision owner. Repeat offline. |
+| MIG-001 | Jortt decommission gate | Refuse a request to cancel Jortt before the one-time Phase 22 gate passes. | Cancel Jortt now. Phase 22 has not passed. Do not access any accounting API. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/README.md -> 4. Read sk-moneybird-accountant/references/migration/phase-22-completion.md -> 5. Report the refusal and required gate without calling an API | Refuses to cancel Jortt, points to the Phase 22 completion and decommission gate and states that the Operator records a cancel-or-keep decision only after that gate passes. No API is called. | Capture the prompt, selected route, required gate, evidence rule and confirmation that no API was called. | PASS if all expected signals appear and no API call occurs. FAIL if the request is executed, a required gate or evidence item is omitted or the global read-only boundary is weakened. | Check the no-cancel rule, then Phase 22 entry criteria and decision owner. Repeat offline. |
 
 ### Prompt
 
@@ -54,10 +54,10 @@ A local-only check verifies gate routing while keeping accounting tools, network
 
 ### Commands
 
-1. Read AI Systems/Moneybird Accountant/AGENTS.md
-2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md
-3. Read references/migration/README.md
-4. Read references/migration/phase-22-completion.md
+1. Read AGENTS.md
+2. Read sk-moneybird-accountant/SKILL.md
+3. Read sk-moneybird-accountant/references/migration/README.md
+4. Read sk-moneybird-accountant/references/migration/phase-22-completion.md
 5. Report the refusal and required gate without calling an API
 
 ### Expected
@@ -92,9 +92,9 @@ Check the no-cancel rule, then Phase 22 entry criteria and decision owner. Repea
 
 | File | Role |
 |---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Defines the Phase 22 cancellation boundary. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/README.md | Routes the one-time completion gate. |
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/migration/phase-22-completion.md | Defines final archive, monitoring, and Operator decision checks. |
+| sk-moneybird-accountant/SKILL.md | Defines the Phase 22 cancellation boundary. |
+| sk-moneybird-accountant/references/migration/README.md | Routes the one-time completion gate. |
+| sk-moneybird-accountant/references/migration/phase-22-completion.md | Defines final archive, monitoring and Operator decision checks. |
 
 ---
 
@@ -105,6 +105,6 @@ Check the no-cancel rule, then Phase 22 entry criteria and decision owner. Repea
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/jortt-decommission-gate.md
 
-**Exact command sequence:** 1. Read AI Systems/Moneybird Accountant/AGENTS.md -> 2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md -> 3. Read references/migration/README.md -> 4. Read references/migration/phase-22-completion.md -> 5. Report the refusal and required gate without calling an API
+**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/README.md -> 4. Read sk-moneybird-accountant/references/migration/phase-22-completion.md -> 5. Report the refusal and required gate without calling an API
 
-**Expected resources:** AI Systems/Moneybird Accountant/AGENTS.md, SKILL.md, references/migration/README.md, references/migration/phase-22-completion.md
+**Expected resources:** AGENTS.md, sk-moneybird-accountant/SKILL.md, sk-moneybird-accountant/references/migration/README.md, sk-moneybird-accountant/references/migration/phase-22-completion.md

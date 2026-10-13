@@ -37,7 +37,7 @@ Every signal word in the Task-Type Table has a source. Most signal words come fr
 - Asset and depreciation terms `afschrijven`, `afschrijving`, `inventaris`, `activeren`, `activeer`, `depreciation`, `depreciate`, `fixed asset`, `capitalise` and `capitalize`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/
 - Investment deduction term `investeringsaftrek`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/kleinschaligheidsinvesteringsaftrek_kia
 - Threshold terms `drempel`, `kleineondernemersregeling`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/
-- Skill vocabulary, not from the Belastingdienst: the migration terms `migratie`, `overzetten` and `historische administratie`, the CLI terms `haal op`, `boek in` and `synchroniseer`, the period words `deze maand`, `afgelopen kwartaal`, `vorig jaar` and `sinds wanneer`, the question word `hoeveel` and the onboarding term `startende ondernemer`.
+- Skill vocabulary, not from the Belastingdienst: the migration terms `migratie`, `overzetten` and `historische administratie`, the CLI terms `haal op`, `boek in` and `synchroniseer`, the period words `deze maand`, `afgelopen kwartaal`, `vorig jaar` and `sinds wanneer`, the question word `hoeveel`, the migration concept terms `categorie`, `valkuil` and `welke rekening` and the onboarding term `startende ondernemer`.
 
 ---
 
@@ -56,7 +56,7 @@ These four constants and one outcome govern what happens when two rows score clo
 
 The specificity clauses match the On tie column of the Task-Type Table. Each one decides a tie between two rows, so a more specific request beats a broader row before the margin rule is applied.
 
-1. An invoice named makes T4 beat T3, and with no invoice named T3 beats T4.
+1. An invoice named makes T4 beat T3, and with no invoice named T3 beats T4. An invoice named also makes T4 beat T2.
 2. One year named makes T5 beat T6.
 3. A request for the official text or the source library makes T5 beat T4.
 4. A rule asked across years or since a change makes T6 beat T4.

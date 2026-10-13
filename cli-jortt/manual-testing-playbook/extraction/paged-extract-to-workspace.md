@@ -92,4 +92,4 @@ Both stdout lines, the exit codes and a listing that shows the saved file name. 
 - Playbook ID: JRT-003
 - Canonical root source: `manual-testing-playbook.md`
 - Feature file path: `extraction/paged-extract-to-workspace.md`
-- Feature catalog entry: [`transport/paged-list-merge.md`](../../feature-catalog/transport/paged-list-merge.md)
+- Feature catalog entry: [`feature-catalog/transport/paged-list-merge.md`](../../feature-catalog/transport/paged-list-merge.md)

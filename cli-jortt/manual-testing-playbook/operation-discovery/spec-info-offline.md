@@ -64,7 +64,7 @@ Both outputs with the absolute cache path redacted.
 ### Failure Triage
 
 1. Check `XDG_CACHE_HOME` and `JORTT_OPENAPI_FILE` in the environment.
-2. Inspect `jortt_spec_info` in `lib/common.sh`.
+2. Inspect `jortt_spec_info` in `cli/jortt-cli/lib/common.sh`.
 
 ---
 
@@ -92,4 +92,4 @@ Both outputs with the absolute cache path redacted.
 - Playbook ID: JRT-008
 - Canonical root source: `manual-testing-playbook.md`
 - Feature file path: `operation-discovery/spec-info-offline.md`
-- Feature catalog entry: [`operation-discovery/openapi-spec-cache.md`](../../feature-catalog/operation-discovery/openapi-spec-cache.md)
+- Feature catalog entry: [`feature-catalog/operation-discovery/openapi-spec-cache.md`](../../feature-catalog/operation-discovery/openapi-spec-cache.md)

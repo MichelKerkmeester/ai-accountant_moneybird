@@ -11895,7 +11895,7 @@
       }
     },
     {
-      "bytes": 8931,
+      "bytes": 9044,
       "path": "sk-moneybird-accountant/references/routing-signals.md",
       "sections": [
         {
@@ -11911,13 +11911,13 @@
         },
         {
           "anchor": "2-signal-sources",
-          "bytes": 2929,
+          "bytes": 3002,
           "line": 29,
           "lines": 15,
           "title": "2. SIGNAL SOURCES",
           "tokens": {
-            "cl100k_base": 963,
-            "o200k_base": 836
+            "cl100k_base": 982,
+            "o200k_base": 854
           }
         },
         {
@@ -11933,13 +11933,13 @@
         },
         {
           "anchor": "4-the-specificity-clauses",
-          "bytes": 973,
+          "bytes": 1013,
           "line": 55,
           "lines": 16,
           "title": "4. THE SPECIFICITY CLAUSES",
           "tokens": {
-            "cl100k_base": 243,
-            "o200k_base": 242
+            "cl100k_base": 254,
+            "o200k_base": 253
           }
         },
         {
@@ -11977,8 +11977,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2525,
-        "o200k_base": 2384
+        "cl100k_base": 2555,
+        "o200k_base": 2413
       }
     },
     {
@@ -12332,12 +12332,12 @@
     },
     {
       "blocks": 1,
-      "bytes": 104322,
+      "bytes": 104323,
       "files": 1,
       "name": "references/index.json",
       "tokens": {
-        "cl100k_base": 33430,
-        "o200k_base": 33784
+        "cl100k_base": 33431,
+        "o200k_base": 33785
       }
     }
   ],
@@ -12364,7 +12364,7 @@
   },
   "units": [
     {
-      "bytes": 5859707,
+      "bytes": 5859820,
       "files": 142,
       "name": "corpus total",
       "reads": [
@@ -12372,8 +12372,8 @@
       ],
       "sections": 989,
       "tokens": {
-        "cl100k_base": 1809504,
-        "o200k_base": 1688836
+        "cl100k_base": 1809534,
+        "o200k_base": 1688865
       }
     },
     {
@@ -12399,14 +12399,14 @@
       }
     },
     {
-      "bytes": 24822,
+      "bytes": 24941,
       "name": "sk-moneybird-accountant/SKILL.md",
       "reads": [
         "sk-moneybird-accountant/SKILL.md"
       ],
       "tokens": {
-        "cl100k_base": 6122,
-        "o200k_base": 6038
+        "cl100k_base": 6159,
+        "o200k_base": 6073
       }
     },
     {

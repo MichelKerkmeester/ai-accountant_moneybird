@@ -111,6 +111,11 @@
   },
   {
     "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/reads/read-step-contract.md",
+    "diskPath": "manual-testing-playbook/reads/read-step-contract.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
     "leafResourceId": "manual-testing-playbook/routing/attachment-through-cli.md",
     "diskPath": "manual-testing-playbook/routing/attachment-through-cli.md"
   },
@@ -126,6 +131,11 @@
   },
   {
     "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/setup/failure-diagnosis-and-recovery.md",
+    "diskPath": "manual-testing-playbook/setup/failure-diagnosis-and-recovery.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
     "leafResourceId": "manual-testing-playbook/setup/login-keeps-tokens-hidden.md",
     "diskPath": "manual-testing-playbook/setup/login-keeps-tokens-hidden.md"
   },
@@ -133,6 +143,16 @@
     "workflowMode": "cli-moneybird",
     "leafResourceId": "manual-testing-playbook/setup/setup-plan-and-check.md",
     "diskPath": "manual-testing-playbook/setup/setup-plan-and-check.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/verification/exit-code-parity-check.md",
+    "diskPath": "manual-testing-playbook/verification/exit-code-parity-check.md"
+  },
+  {
+    "workflowMode": "cli-moneybird",
+    "leafResourceId": "manual-testing-playbook/verification/offline-guard-test-suite.md",
+    "diskPath": "manual-testing-playbook/verification/offline-guard-test-suite.md"
   },
   {
     "workflowMode": "cli-moneybird",

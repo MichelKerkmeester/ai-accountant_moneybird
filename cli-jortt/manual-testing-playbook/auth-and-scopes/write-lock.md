@@ -92,4 +92,4 @@ Both terminal messages and exit codes.
 - Playbook ID: JRT-002
 - Canonical root source: `manual-testing-playbook.md`
 - Feature file path: `auth-and-scopes/write-lock.md`
-- Feature catalog entry: [`safety-gates/write-lock.md`](../../feature-catalog/safety-gates/write-lock.md)
+- Feature catalog entry: [`feature-catalog/safety-gates/write-lock.md`](../../feature-catalog/safety-gates/write-lock.md)

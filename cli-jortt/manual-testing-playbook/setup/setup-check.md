@@ -44,7 +44,7 @@ Operators run the exact prompt and command sequence for `JRT-013` and confirm th
 
 ### Commands
 
-1. `bash: bash "AI Systems/Moneybird Accountant/cli-jortt/cli/jortt-cli/setup.sh"`
+1. `bash: bash cli-jortt/cli/jortt-cli/setup.sh`
 
 ### Expected
 
@@ -90,4 +90,4 @@ The transcript with the absolute path redacted and the exit code.
 - Playbook ID: JRT-013
 - Canonical root source: `manual-testing-playbook.md`
 - Feature file path: `setup/setup-check.md`
-- Feature catalog entry: [`diagnostics/setup-check.md`](../../feature-catalog/diagnostics/setup-check.md)
+- Feature catalog entry: [`feature-catalog/diagnostics/setup-check.md`](../../feature-catalog/diagnostics/setup-check.md)

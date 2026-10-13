@@ -887,6 +887,8 @@ def specificity_winner(text: str, first: str, second: str) -> Optional[str]:
         return "T4"
     if pair == {"T4", "T3"}:
         return "T3"
+    if pair == {"T4", "T2"} and INVOICE_RE.search(text):
+        return "T4"
     if pair == {"T5", "T6"} and YEAR_RE.search(text):
         return "T5"
     if pair == {"T5", "T4"} and any(phrase_matches(text, term) for term in SOURCE_TERMS):

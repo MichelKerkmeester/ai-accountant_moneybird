@@ -66,7 +66,7 @@ Below either number the verdict is FAIL.
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| PRIV-002 | Answer privacy | Run the privacy gate's answer mode on generated values in both directions on both surfaces and report the two rates against the target. | Run the answer privacy check and tell me how many leaking answers and transcripts were caught and how many clean cases were blocked. Keep this as an offline check. | 1. Read AI Systems/Moneybird Accountant/AGENTS.md -> 2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md -> 3. Read the answer mode usage in scripts/README.md -> 4. Run bash scripts/privacy-gate-test.sh -> 5. Read the `answer leak catch rate:` and `answer false positives:` lines -> 6. Confirm no generated value is printed and no network call is made | The answer mode blocks the leaking answer and the leaking transcript, passes the clean answer and the cited public figure and the run reports a catch rate of 2 of 2 and 0 false positives. | The four case verdicts, the two rate lines and the pass or fail verdict. | PASS if The run records the leaking answer and the leaking transcript as blocked, the clean answer and the cited public figure as clean and reports a catch rate of 2 of 2 with 0 false positives. FAIL if A leaking surface passes, a clean case is blocked or the response prints a generated value. | Check the answer mode usage in scripts/README.md, the answer order in the skill and the generated fixtures in the gate suite. Repeat the run with the fixtures regenerated. |
+| PRIV-002 | Answer privacy | Run the privacy gate's answer mode on generated values in both directions on both surfaces and report the two rates against the target. | Run the answer privacy check and tell me how many leaking answers and transcripts were caught and how many clean cases were blocked. Keep this as an offline check. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read the answer mode usage in scripts/README.md -> 4. Run bash scripts/privacy-gate-test.sh -> 5. Read the `answer leak catch rate:` and `answer false positives:` lines -> 6. Confirm no generated value is printed and no network call is made | The answer mode blocks the leaking answer and the leaking transcript, passes the clean answer and the cited public figure and the run reports a catch rate of 2 of 2 and 0 false positives. | The four case verdicts, the two rate lines and the pass or fail verdict. | PASS if The run records the leaking answer and the leaking transcript as blocked, the clean answer and the cited public figure as clean and reports a catch rate of 2 of 2 with 0 false positives. FAIL if A leaking surface passes, a clean case is blocked or the response prints a generated value. | Check the answer mode usage in scripts/README.md, the answer order in the skill and the generated fixtures in the gate suite. Repeat the run with the fixtures regenerated. |
 
 ### Prompt
 
@@ -74,8 +74,8 @@ Below either number the verdict is FAIL.
 
 ### Commands
 
-1. Read AI Systems/Moneybird Accountant/AGENTS.md
-2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md
+1. Read AGENTS.md
+2. Read sk-moneybird-accountant/SKILL.md
 3. Read the answer mode usage in scripts/README.md
 4. Run bash scripts/privacy-gate-test.sh
 5. Read the `answer leak catch rate:` and `answer false positives:` lines
@@ -107,15 +107,15 @@ Check the answer mode usage in scripts/README.md, the answer order in the skill 
 | File | Role |
 |---|---|
 | [manual-testing-playbook.md](../manual-testing-playbook.md) | Root playbook rules and scenario index |
-| [feature-catalog entry](../../feature-catalog/bookkeeping-and-migration/migration-data-privacy.md) | Current feature summary and source anchors |
+| [feature-catalog entry](../../feature-catalog/quality-gates/privacy-gate.md) | Current feature summary and source anchors |
 
 ### Implementation And Test Anchors
 
 | File | Role |
 |---|---|
-| AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | States the answer order the scenario checks |
-| AI Systems/Moneybird Accountant/scripts/privacy-gate.py | Runs the answer mode on the draft and the transcript |
-| AI Systems/Moneybird Accountant/scripts/privacy-gate-test.sh | Generates the values at run time and reports the two rates |
+| sk-moneybird-accountant/SKILL.md | States the answer order the scenario checks |
+| scripts/privacy-gate.py | Runs the answer mode on the draft and the transcript |
+| scripts/privacy-gate-test.sh | Generates the values at run time and reports the two rates |
 
 ---
 
@@ -126,6 +126,6 @@ Check the answer mode usage in scripts/README.md, the answer order in the skill 
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/answer-privacy.md
 
-**Exact command sequence:** 1. Read AI Systems/Moneybird Accountant/AGENTS.md -> 2. Read AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md -> 3. Read the answer mode usage in scripts/README.md -> 4. Run bash scripts/privacy-gate-test.sh -> 5. Read the `answer leak catch rate:` and `answer false positives:` lines -> 6. Confirm no generated value is printed and no network call is made
+**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read the answer mode usage in scripts/README.md -> 4. Run bash scripts/privacy-gate-test.sh -> 5. Read the `answer leak catch rate:` and `answer false positives:` lines -> 6. Confirm no generated value is printed and no network call is made
 
 **Expected resources:** scripts/privacy-gate.py and scripts/privacy-gate-test.sh

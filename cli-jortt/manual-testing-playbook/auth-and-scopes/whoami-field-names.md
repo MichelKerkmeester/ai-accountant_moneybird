@@ -90,4 +90,4 @@ The two output lines. Do not capture anything beyond them.
 - Playbook ID: JRT-012
 - Canonical root source: `manual-testing-playbook.md`
 - Feature file path: `auth-and-scopes/whoami-field-names.md`
-- Feature catalog entry: [`api-calls/organization-check.md`](../../feature-catalog/api-calls/organization-check.md)
+- Feature catalog entry: [`feature-catalog/api-calls/organization-check.md`](../../feature-catalog/api-calls/organization-check.md)

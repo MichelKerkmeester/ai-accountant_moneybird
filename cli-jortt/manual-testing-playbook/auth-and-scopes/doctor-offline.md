@@ -44,7 +44,7 @@ Operators run the exact prompt and command sequence for `JRT-001` and confirm th
 
 ### Commands
 
-1. `bash: bash "AI Systems/Moneybird Accountant/cli-jortt/scripts/doctor.sh"`
+1. `bash: bash cli-jortt/scripts/doctor.sh`
 
 ### Expected
 
@@ -90,4 +90,4 @@ The doctor transcript with the absolute CLI path redacted, plus the exit code.
 - Playbook ID: JRT-001
 - Canonical root source: `manual-testing-playbook.md`
 - Feature file path: `auth-and-scopes/doctor-offline.md`
-- Feature catalog entry: [`diagnostics/offline-doctor.md`](../../feature-catalog/diagnostics/offline-doctor.md)
+- Feature catalog entry: [`feature-catalog/diagnostics/offline-doctor.md`](../../feature-catalog/diagnostics/offline-doctor.md)
