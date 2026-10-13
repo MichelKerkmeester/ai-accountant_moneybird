@@ -1,6 +1,13 @@
 ---
 title: "Year changes"
 description: "Generated overview of the changes in every tax year, newest first, with the path to each year note."
+trigger_phrases:
+  - "year changes overview"
+  - "what changed per tax year"
+  - "changes year by year"
+importance_tier: normal
+contextType: research
+version: 1.0.0.0
 ---
 
 # Year changes

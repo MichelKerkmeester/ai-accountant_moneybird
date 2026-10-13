@@ -466,6 +466,16 @@ if [[ "$real_overview_years" == "8" ]]; then
 else
     fail "the real overview holds eight year sections"
 fi
+overview_front=$(sed -n '2,/^---$/p' "$SKILL_SRC/references/year-changes.md")
+missing_fields=0
+for field in trigger_phrases importance_tier contextType version; do
+    grep -q "^${field}:" <<<"$overview_front" || missing_fields=$((missing_fields + 1))
+done
+if [[ "$missing_fields" == "0" ]]; then
+    pass "the real overview carries the reference frontmatter fields"
+else
+    fail "the real overview carries the reference frontmatter fields"
+fi
 
 # ───────────────────────────────────────────────────────────────
 # 7. FIXTURE REPOSITORY

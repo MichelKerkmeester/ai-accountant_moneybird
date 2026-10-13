@@ -148,6 +148,24 @@ metadata_mutant() {
     fi
 }
 
+# Run the checker against a drifted graph metadata copy expected to exit 1 and name a text
+# Args:
+#   $1 - Check name
+#   $2 - Graph metadata copy to check
+#   $3 - Text the failure report must name
+metadata_drift_mutant() {
+    local name="$1"
+    local file="$2"
+    local marker="$3"
+    python3 -I "$CHECKER" --graph-metadata "$file" >"$TMP_ROOT/out.txt" 2>&1
+    status=$?
+    if [[ "$status" -eq 1 ]] && grep -qF "$marker" "$TMP_ROOT/out.txt"; then
+        pass "$name"
+    else
+        fail "$name"
+    fi
+}
+
 # Run the checker against a mutated calibration file expected to fail with exit 1
 # Args:
 #   $1 - Check name
@@ -177,6 +195,16 @@ else
     cat "$TMP_ROOT/out.txt"
 fi
 
+# The generated router block must read the session context and hold no old level name
+ROUTER_SECTION=$(sed -n '/^### Smart Router Pseudocode/,/^### Migration Phase Routing/p' "$SKILL_MD")
+if grep -qF 'session-context.json' <<<"$ROUTER_SECTION" \
+    && ! grep -qiE 'zzp question|cli action|live bookkeeping|resource loading levels' <<<"$ROUTER_SECTION" \
+    && ! grep -qF 'migration-workspace' <<<"$ROUTER_SECTION"; then
+    pass "router block reads the session context and drops the old level names"
+else
+    fail "router block reads the session context and drops the old level names"
+fi
+
 # ───────────────────────────────────────────────────────────────
 # 5. MUTANTS
 # ───────────────────────────────────────────────────────────────
@@ -201,6 +229,14 @@ mutant "T9 row deleted" "$TMP_ROOT/m-row.md"
 # Point a read path at a file that does not exist
 sed 's|references/purchase-invoices\.md|references/purchase-invoices-missing.md|' "$(copy)" >"$TMP_ROOT/m-path.md"
 mutant "read path missing" "$TMP_ROOT/m-path.md"
+
+# Point a read path outside the skill folder
+sed 's|`references/purchase-invoices\.md`|`../AGENTS.md`|' "$(copy)" >"$TMP_ROOT/m-path-escape.md"
+drift_mutant "read path escapes the skill folder" "$TMP_ROOT/m-path-escape.md" "row T4 read path escapes the skill folder"
+
+# Point a read path at a file that is not markdown
+sed 's|`references/purchase-invoices\.md`|`references/index.json`|' "$(copy)" >"$TMP_ROOT/m-path-nonmd.md"
+drift_mutant "read path is not markdown" "$TMP_ROOT/m-path-nonmd.md" "row T4 read path is not markdown"
 
 # Remove the ROUTE_MARGIN line
 sed '/ROUTE_MARGIN/d' "$(copy)" >"$TMP_ROOT/m-margin.md"
@@ -354,6 +390,23 @@ with open(sys.argv[2], "w", encoding="utf-8") as handle:
     handle.write("\n")
 PY
 metadata_mutant "intent signal missing from the list" "$TMP_ROOT/m-intent.json"
+
+# Drop one curated advisor signal from the intent list
+python3 - "$GRAPH_METADATA" "$TMP_ROOT/m-curated.json" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    data = json.load(handle)
+data["intent_signals"] = [
+    signal for signal in data["intent_signals"]
+    if signal != "help me review a dutch sole trader yearly close"
+]
+with open(sys.argv[2], "w", encoding="utf-8") as handle:
+    json.dump(data, handle, indent=2)
+    handle.write("\n")
+PY
+metadata_drift_mutant "curated advisor signal missing from the list" "$TMP_ROOT/m-curated.json" "help me review a dutch sole trader yearly close"
 
 # ───────────────────────────────────────────────────────────────
 # 8. WRITE MODE STABILITY

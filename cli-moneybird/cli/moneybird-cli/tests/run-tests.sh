@@ -210,6 +210,34 @@ else
   fail "Reordered JSON keys exit 9"
 fi
 
+# A payload with CRLF line endings digests the same as its LF form.
+reset_state
+CRLF_BODY=$'{"contacts":{}}\r\nnote=stub'
+LF_BODY=$'{"contacts":{}}\nnote=stub'
+write_intent "CRLF-1" "$(payload_digest POST "$CREATE_URL" "$LF_BODY")" "" "batch-crlf"
+if OUTPUT="$(MONEYBIRD_TEST_DRY_BODY="$CRLF_BODY" "$GUARD" --confirm-write --approval CRLF-1 contacts create 2>&1)"; then
+  STATUS=0
+else
+  STATUS="$?"
+fi
+printf '%s\n' "$OUTPUT" >> "$CAPTURED"
+if [[ $STATUS -eq 0 ]] && [[ "$(grep -c '^REAL POST ' "$MONEYBIRD_TEST_LOG" || true)" -eq 1 ]]; then
+  pass "CRLF line endings digest the same as the LF form and write once"
+else
+  fail "CRLF line endings digest the same as the LF form and write once"
+fi
+
+# An empty body still digests method and path, so another target cannot reuse the approval.
+reset_state
+EMPTY_URL="https://moneybird.com/api/v2/PILOT_ADMIN/contacts/empty-target.json"
+write_intent "EMPTY-1" "$(payload_digest DELETE "$EMPTY_URL" "")" "" "batch-empty"
+capture_guard --confirm-write --approval EMPTY-1 contacts delete other-record
+if [[ $STATUS -eq 9 && "$OUTPUT" == *"PAYLOAD_MISMATCH"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "An empty body still binds method and path, so another target exits 9"
+else
+  fail "An empty body still binds method and path, so another target exits 9"
+fi
+
 # The same body aimed at another record path is refused before the real call.
 reset_state
 UPDATE_URL="https://moneybird.com/api/v2/PILOT_ADMIN/contacts/stub-record.json"
@@ -292,6 +320,28 @@ if [[ $STATUS -eq 1 && "$OUTPUT" == *"$KEY_FILE"* && "$OUTPUT" != *"$TEST_KEY"* 
   pass "A missing key file exits 1 before the real call"
 else
   fail "A missing key file exits 1 before the real call"
+fi
+
+# A rotated key refuses a digest made with the retired key and a new intent writes once.
+reset_state
+OLD_KEY="$TEST_KEY"
+ROTATED_KEY="$(python3 -I -c 'import secrets; print(secrets.token_hex(32), end="")')"
+write_intent "ROTATED-1" "$(payload_digest POST "$CREATE_URL" "$CREATE_BODY")" "" "batch-rotated-old"
+printf '%s' "$ROTATED_KEY" > "$KEY_FILE"
+capture_guard --confirm-write --approval ROTATED-1 contacts create
+ROTATED_REFUSED=0
+if [[ $STATUS -eq 9 && "$OUTPUT" == *"PAYLOAD_MISMATCH"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  ROTATED_REFUSED=1
+fi
+reset_state
+write_intent "ROTATED-2" "$(payload_digest POST "$CREATE_URL" "$CREATE_BODY")" "" "batch-rotated-new"
+capture_guard --confirm-write --approval ROTATED-2 contacts create
+ROTATED_RECOVERY_STATUS="$STATUS"
+printf '%s' "$OLD_KEY" > "$KEY_FILE"
+if [[ $ROTATED_REFUSED -eq 1 && $ROTATED_RECOVERY_STATUS -eq 0 ]] && [[ "$(grep -c '^REAL POST ' "$MONEYBIRD_TEST_LOG" || true)" -eq 1 ]]; then
+  pass "A rotated key refuses the old digest with exit 9 and a new intent writes once"
+else
+  fail "A rotated key refuses the old digest with exit 9 and a new intent writes once"
 fi
 
 # An unset pilot treats the target as production and needs the production flag.

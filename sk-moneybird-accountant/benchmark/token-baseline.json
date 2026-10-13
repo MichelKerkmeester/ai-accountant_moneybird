@@ -11839,13 +11839,13 @@
       }
     },
     {
-      "bytes": 10671,
+      "bytes": 10838,
       "path": "sk-moneybird-accountant/references/year-changes.md",
       "sections": [
         {
           "anchor": "2027",
           "bytes": 1514,
-          "line": 10,
+          "line": 17,
           "lines": 13,
           "title": "2027",
           "tokens": {
@@ -11856,7 +11856,7 @@
         {
           "anchor": "2026",
           "bytes": 1202,
-          "line": 23,
+          "line": 30,
           "lines": 13,
           "title": "2026",
           "tokens": {
@@ -11867,7 +11867,7 @@
         {
           "anchor": "2025",
           "bytes": 1390,
-          "line": 36,
+          "line": 43,
           "lines": 13,
           "title": "2025",
           "tokens": {
@@ -11878,7 +11878,7 @@
         {
           "anchor": "2024",
           "bytes": 1098,
-          "line": 49,
+          "line": 56,
           "lines": 13,
           "title": "2024",
           "tokens": {
@@ -11889,7 +11889,7 @@
         {
           "anchor": "2023",
           "bytes": 1201,
-          "line": 62,
+          "line": 69,
           "lines": 13,
           "title": "2023",
           "tokens": {
@@ -11900,7 +11900,7 @@
         {
           "anchor": "2022",
           "bytes": 1332,
-          "line": 75,
+          "line": 82,
           "lines": 13,
           "title": "2022",
           "tokens": {
@@ -11911,7 +11911,7 @@
         {
           "anchor": "2021",
           "bytes": 1235,
-          "line": 88,
+          "line": 95,
           "lines": 13,
           "title": "2021",
           "tokens": {
@@ -11922,7 +11922,7 @@
         {
           "anchor": "2020",
           "bytes": 1359,
-          "line": 101,
+          "line": 108,
           "lines": 12,
           "title": "2020",
           "tokens": {
@@ -11932,8 +11932,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3803,
-        "o200k_base": 3617
+        "cl100k_base": 3854,
+        "o200k_base": 3668
       }
     },
     {
@@ -12047,7 +12047,7 @@
   },
   "units": [
     {
-      "bytes": 5792926,
+      "bytes": 5793093,
       "files": 140,
       "name": "corpus total",
       "reads": [
@@ -12055,8 +12055,8 @@
       ],
       "sections": 962,
       "tokens": {
-        "cl100k_base": 1790618,
-        "o200k_base": 1671436
+        "cl100k_base": 1790669,
+        "o200k_base": 1671487
       }
     },
     {
@@ -12082,14 +12082,14 @@
       }
     },
     {
-      "bytes": 23340,
+      "bytes": 23323,
       "name": "sk-moneybird-accountant/SKILL.md",
       "reads": [
         "sk-moneybird-accountant/SKILL.md"
       ],
       "tokens": {
-        "cl100k_base": 5720,
-        "o200k_base": 5656
+        "cl100k_base": 5709,
+        "o200k_base": 5647
       }
     },
     {

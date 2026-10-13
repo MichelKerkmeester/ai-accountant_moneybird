@@ -254,6 +254,18 @@ open(path, "w").write(json.dumps(data))
 PY
 }
 
+# Print the sha256 digest of one file's raw bytes
+# Args:
+#   $1 - File path
+# Returns:
+#   0, printing the hex digest
+file_digest() {
+    python3 -I -c '
+import hashlib, sys
+print(hashlib.sha256(open(sys.argv[1], "rb").read()).hexdigest())
+' "$1"
+}
+
 # Tell whether every stored field of one index row survived a rewrite
 # Args:
 #   $1 - Repository root
@@ -404,6 +416,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if self.path.startswith("/weak/"):
             self.send_weak_tagged(os.path.basename(self.path))
             return
+        if self.path.startswith("/pdf/"):
+            self.send_pdf(os.path.basename(self.path))
+            return
         if self.path == "/redirect.html":
             self.send_response(302)
             self.send_header("Location", "/live.html")
@@ -482,6 +497,20 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def send_pdf(self, name):
+        """Serve one document root file as an application/pdf response."""
+        path = os.path.join(sys.argv[1], name)
+        if not os.path.isfile(path):
+            self.send_error(404)
+            return
+        with open(path, "rb") as handle:
+            body = handle.read()
+        self.send_response(200)
+        self.send_header("Content-Type", "application/pdf")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
     def log_message(self, fmt, *args):
         """Keep the fixture server quiet."""
 
@@ -528,8 +557,8 @@ make_link_repo() {
             printf 'Endpoint %s: https://api.jortt.nl/endpoint-%s\n' "$number" "$number"
         done
     } >>"$root/sk-moneybird-accountant/references/rules.md" || return 1
-    printf 'Tag page: http://127.0.0.1:%s/tag/tagged.html\nNorm A: http://127.0.0.1:%s/norm-a.html\nNorm B: http://127.0.0.1:%s/norm-b.html\n' \
-        "$port" "$port" "$port" >>"$root/sk-moneybird-accountant/references/rules.md" || return 1
+    printf 'Tag page: http://127.0.0.1:%s/tag/tagged.html\nNorm A: http://127.0.0.1:%s/norm-a.html\nNorm B: http://127.0.0.1:%s/norm-b.html\nPdf page: http://127.0.0.1:%s/pdf/sample.pdf\n' \
+        "$port" "$port" "$port" "$port" >>"$root/sk-moneybird-accountant/references/rules.md" || return 1
     return 0
 }
 
@@ -662,6 +691,7 @@ printf '<div>\n  Fiets\n  <span>Fiets</span>\n  <script>x()</script>\n  &amp; ka
 printf '<html><body>alpha fixture page</body></html>\n' >"$DOCROOT/alpha.html"
 printf '<html><body>beta fixture page</body></html>\n' >"$DOCROOT/beta.html"
 printf '<html><body>gamma fixture page</body></html>\n' >"$DOCROOT/gamma.html"
+printf '%%PDF-1.4\nplaceholder fixture bytes\n%%%%EOF\n' >"$DOCROOT/sample.pdf"
 LINK_REPO="$TMP_ROOT/link-repo"
 LINK_INDEX="$LINK_REPO/sk-moneybird-accountant/assets/source-library.json"
 if start_fixture_server "$DOCROOT"; then
@@ -681,6 +711,7 @@ MOVED_URL="http://127.0.0.1:$PORT/moved.html"
 TAG_URL="http://127.0.0.1:$PORT/tag/tagged.html"
 NORM_A_URL="http://127.0.0.1:$PORT/norm-a.html"
 NORM_B_URL="http://127.0.0.1:$PORT/norm-b.html"
+PDF_URL="http://127.0.0.1:$PORT/pdf/sample.pdf"
 if make_link_repo "$LINK_REPO" "$PORT"; then
     pass "link fixture repository builds"
 else
@@ -986,6 +1017,56 @@ if [[ "$(report_field "$TMP_ROOT/report-2.json" "$NORM_A_URL" digest)" = "$UNCHA
     pass "unchanged page text keeps the digest"
 else
     fail "unchanged page text keeps the digest"
+fi
+
+# WHY: a PDF digest must cover the raw bytes, so the fixture holds real line
+# breaks that page normalisation would collapse. The expected value comes from
+# the same bytes the fixture server reads, not from the builder under test.
+PDF_EXPECTED=$(file_digest "$DOCROOT/sample.pdf")
+PDF_CONTENT_TYPE=$(python3 -I - "$PDF_URL" <<'PY'
+import sys
+import urllib.request
+
+with urllib.request.urlopen(sys.argv[1], timeout=10) as response:
+    print(response.headers.get("Content-Type", ""))
+PY
+)
+if [[ "$PDF_CONTENT_TYPE" = "application/pdf" ]]; then
+    pass "the fixture server serves the PDF fixture as application/pdf"
+else
+    fail "the fixture server serves the PDF fixture as application/pdf"
+fi
+if [[ "$(report_field "$TMP_ROOT/report-1.json" "$PDF_URL" digest)" = "$PDF_EXPECTED" ]]; then
+    pass "a PDF response carries the sha256 of its raw bytes"
+else
+    fail "a PDF response carries the sha256 of its raw bytes"
+fi
+if [[ -n "$(report_field "$TMP_ROOT/report-1.json" "$PDF_URL" digest)" ]] \
+    && [[ "$(report_field "$TMP_ROOT/report-1.json" "$PDF_URL" digest)" = "$(report_field "$TMP_ROOT/report-2.json" "$PDF_URL" digest)" ]]; then
+    pass "the same PDF bytes give the same digest twice"
+else
+    fail "the same PDF bytes give the same digest twice"
+fi
+PDF_DIGEST_BEFORE=$(report_field "$TMP_ROOT/report-2.json" "$PDF_URL" digest)
+# WHY: one flipped bit is the smallest byte change, so the next report must
+# carry a different digest for the same address.
+python3 -I - "$DOCROOT/sample.pdf" <<'PY'
+import sys
+
+path = sys.argv[1]
+data = bytearray(open(path, "rb").read())
+data[0] = data[0] ^ 0x01
+open(path, "wb").write(data)
+PY
+run_builder "$LINK_REPO" --check-links
+cp "$TMP_ROOT/out.txt" "$TMP_ROOT/report-3.json"
+PDF_AFTER_EXPECTED=$(file_digest "$DOCROOT/sample.pdf")
+PDF_DIGEST_AFTER=$(report_field "$TMP_ROOT/report-3.json" "$PDF_URL" digest)
+if [[ "$PDF_DIGEST_AFTER" = "$PDF_AFTER_EXPECTED" ]] \
+    && [[ "$PDF_DIGEST_AFTER" != "$PDF_DIGEST_BEFORE" ]]; then
+    pass "one changed PDF byte changes the digest"
+else
+    fail "one changed PDF byte changes the digest"
 fi
 
 group "apply report"

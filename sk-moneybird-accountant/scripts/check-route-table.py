@@ -6,13 +6,14 @@
 
 Reads SKILL.md and verifies the route-table block between its markers. The
 check validates the header, the row types, the Dutch and English cells, the
-budget cells, the tool routes, the read-set paths, the routing constants,
-the warning band, the abstain wording, the margin override bullets, the
-pointer to the signal sources file, the source lines of that file and the
-frozen calibration record in assets/route-calibration.json. It also compares
-the generated router block between the router markers with the table row by
-row and the table's multi-word signals with graph-metadata.json, and the
-write mode regenerates both surfaces. The script uses the Python standard
+budget cells, the tool routes, the read-set paths and their guard, the
+routing constants, the warning band, the abstain wording, the margin override
+bullets, the pointer to the signal sources file, the source lines of that
+file and the frozen calibration record in assets/route-calibration.json. It
+also compares the generated router block between the router markers with the
+table row by row and the table's multi-word signals and curated advisor
+signals with graph-metadata.json, and the write mode regenerates both
+surfaces. The script uses the Python standard
 library only and makes no network call.
 
 Usage:
@@ -69,19 +70,20 @@ ROUTER_END = "<!-- router-block:end -->"
 ROUTER_HEADING = "### Smart Router Pseudocode"
 EXPECTED_HEADER = "| Type | Name | Dutch signals | English signals | Tool route | Read set | Budget | On tie |"
 
-# WHY: the label and the level vocabulary belong to the generated region, so a
-# hand edit inside the markers fails the check and the write restores it.
+# WHY: the label belongs to the generated region, so a hand edit inside the
+# markers fails the check and the write restores it.
 ROUTER_NOTE = (
     "This block is generated from the Task-Type Table by `check-route-table.py --write`. "
     "Edit the table and rerun the mode."
 )
-LEVEL_VOCABULARY = "ALWAYS, MIGRATION, LIVE BOOKKEEPING, ZZP QUESTION, CLI ACTION"
 FALLBACK_TIERS = (
     "Tier A: Refuse with the out-of-scope boundary, load nothing",
     "Tier B: Ask one question, print the candidate route per answer",
     "Tier C: Name the missing tax year, resolve it before loading",
 )
 HELPER_LINES = (
+    'CONTEXT = read_session_context("session-context.json")',
+    "",
     "def discover_markdown_resources():",
     '    return {p.relative_to(SKILL_ROOT).as_posix() for base in RESOURCE_BASES if base.exists() for p in base.rglob("*.md") if p.is_file()}',
     "",
@@ -99,6 +101,19 @@ HELPER_LINES = (
     "        loaded.append(guarded)",
     "    elif guarded not in inventory:",
     "        missing.append(guarded)",
+)
+
+# WHY: these advisor signals are curated by hand and no table cell produces
+# them, so the check requires their presence and the write never drops one.
+CURATED_ADVISOR_SIGNALS = (
+    "help me migrate my jortt bookkeeping into moneybird",
+    "review my monthly moneybird bookkeeping",
+    "check the vat for this quarter",
+    "what is the current dutch zzp mileage rate",
+    "how should i book this business expense in moneybird",
+    "help me prepare a year-end bookkeeping review",
+    "explain the jortt to moneybird mapping",
+    "help me review a dutch sole trader yearly close",
 )
 
 # WHY: the table must carry every row type exactly once.
@@ -298,11 +313,34 @@ def year_folders() -> List[str]:
 # 4. TABLE CHECK
 # ───────────────────────────────────────────────────────────────
 
+def check_read_path(row_type: str, relative_path: str, problems: List[str]) -> None:
+    """Check one expanded read-set path against the skill folder.
+
+    The path must stay under the skill folder, name a markdown file and
+    exist there.
+
+    Args:
+        row_type: Row type of the cell, used in problem lines.
+        relative_path: Expanded read-set path in skill-relative form.
+        problems: Problem list to append to.
+    """
+    root = os.path.realpath(SKILL_FOLDER)
+    resolved = os.path.realpath(os.path.join(root, relative_path))
+    if resolved != root and not resolved.startswith(root + os.sep):
+        problems.append("row %s read path escapes the skill folder: %s" % (row_type, relative_path))
+        return
+    if not relative_path.lower().endswith(".md"):
+        problems.append("row %s read path is not markdown: %s" % (row_type, relative_path))
+        return
+    if not os.path.isfile(resolved):
+        problems.append("row %s read path missing: %s" % (row_type, relative_path))
+
+
 def check_read_set(row_type: str, cell: str, problems: List[str]) -> None:
     """Check every backticked path in one read-set cell.
 
     A year token expands over every year folder present, and each expanded
-    path must exist under the skill folder.
+    path must pass the guard and exist under the skill folder.
 
     Args:
         row_type: Row type of the cell, used in problem lines.
@@ -315,12 +353,9 @@ def check_read_set(row_type: str, cell: str, problems: List[str]) -> None:
             continue
         if YEAR_TOKEN in span:
             for year in years:
-                concrete = span.replace(YEAR_TOKEN, year)
-                if not os.path.isfile(os.path.join(SKILL_FOLDER, concrete)):
-                    problems.append("row %s read path missing: %s" % (row_type, concrete))
+                check_read_path(row_type, span.replace(YEAR_TOKEN, year), problems)
             continue
-        if not os.path.isfile(os.path.join(SKILL_FOLDER, span)):
-            problems.append("row %s read path missing: %s" % (row_type, span))
+        check_read_path(row_type, span, problems)
 
 
 def check_row(line: str, row_type: str, problems: List[str]) -> None:
@@ -464,7 +499,6 @@ def router_block(rows: List[Dict[str, str]]) -> List[str]:
     lines = [ROUTER_START, ROUTER_NOTE, "", "```python", "from pathlib import Path", ""]
     lines.append("SKILL_ROOT = Path(__file__).resolve().parent")
     lines.append('RESOURCE_BASES = (SKILL_ROOT / "references",)')
-    lines.append("# Levels: %s." % LEVEL_VOCABULARY)
     lines.append("INTENT_SIGNALS = {")
     for row in rows:
         lines.append(
@@ -573,7 +607,7 @@ def multi_word_signals(rows: List[Dict[str, str]]) -> List[str]:
 
 
 def check_intent_signals(rows: List[Dict[str, str]], path: str, problems: List[str]) -> None:
-    """Compare the table's multi-word signals with the metadata list.
+    """Compare the table signals and the curated signals with the metadata list.
 
     Args:
         rows: Table rows in table order.
@@ -581,8 +615,6 @@ def check_intent_signals(rows: List[Dict[str, str]], path: str, problems: List[s
         problems: Problem list to append to.
     """
     signals = multi_word_signals(rows)
-    if not signals:
-        return
     known = signal_list(read_metadata(path))
     if known is None:
         problems.append("graph metadata file is missing or malformed: %s" % path)
@@ -590,6 +622,9 @@ def check_intent_signals(rows: List[Dict[str, str]], path: str, problems: List[s
     for signal in signals:
         if signal not in known:
             problems.append("intent signal missing from intent_signals: %s" % signal)
+    for signal in CURATED_ADVISOR_SIGNALS:
+        if signal not in known:
+            problems.append("curated advisor signal missing from intent_signals: %s" % signal)
 
 
 def write_router_block(

@@ -112,7 +112,6 @@ from pathlib import Path
 
 SKILL_ROOT = Path(__file__).resolve().parent
 RESOURCE_BASES = (SKILL_ROOT / "references",)
-# Levels: ALWAYS, MIGRATION, LIVE BOOKKEEPING, ZZP QUESTION, CLI ACTION.
 INTENT_SIGNALS = {
     "T1": [["migratie", "overzetten", "historische administratie", "Jortt"], ["migration phase", "gate", "Jortt export", "archive", "cutover", "year lock"]],
     "T2": [["migratie", "overzetten", "historische administratie"], ["mapping", "category", "which account", "trap"]],
@@ -151,6 +150,8 @@ UNKNOWN_FALLBACK_CHECKLIST = [
     "Tier B: Ask one question, print the candidate route per answer",
     "Tier C: Name the missing tax year, resolve it before loading",
 ]
+
+CONTEXT = read_session_context("session-context.json")
 
 def discover_markdown_resources():
     return {p.relative_to(SKILL_ROOT).as_posix() for base in RESOURCE_BASES if base.exists() for p in base.rglob("*.md") if p.is_file()}
