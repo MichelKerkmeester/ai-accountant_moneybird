@@ -6,8 +6,6 @@ on:
   schedule:
     # Monthly link check on the first of the month.
     - cron: "0 6 1 * *"
-    # Temporary, to prove one scheduled run, removed after it passes.
-    - cron: "*/15 * * * *"
   workflow_dispatch:
 
 permissions:
