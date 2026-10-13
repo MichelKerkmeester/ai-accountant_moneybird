@@ -23,7 +23,7 @@ Part 3: lines 372-544, 48865 bytes, first heading "### 3.3 Ondernemersaftrek and
 Part 4: lines 545-665, 29242 bytes, first heading "### 3.5 Costs and the car"
 Part 5: lines 666-773, 22335 bytes, first heading "### 3.6 Box 3 savings and investments"
 Part 6: lines 774-925, 32160 bytes, first heading "### 3.7 Box 2 and the substantial interest"
-Part 7: lines 926-1057, 32538 bytes, first heading "### 3.8 The BV and vennootschapsbelasting"
+Part 7: lines 926-1057, 32761 bytes, first heading "### 3.8 The BV and vennootschapsbelasting"
 Part 8: lines 1058-1151, 23109 bytes, first heading "### 3.9 Pension, lijfrente and AOV"
 Part 9: lines 1152-1309, 43440 bytes, first heading "### 3.10 Work relationship and procedure"
 Part 10: lines 1310-1534, 49763 bytes, first heading "### Income tax box 1 and the Zvw contribution"
@@ -1052,7 +1052,7 @@ A legal person falls in a class when on two consecutive balance dates it meets t
 Sources: https://wetten.overheid.nl/BWBR0003045/2020-01-01, https://wetten.overheid.nl/BWBR0003045/2025-01-01, https://zoek.officielebekendmakingen.nl/stb-2024-52.html, https://ondernemersplein.overheid.nl/wetten-en-regels/jaarrekening-indienen/, https://www.kvk.nl/deponeren/in-welke-bedrijfsklasse-valt-je-bedrijf/
 
 #### Administratieplicht and bewaartermijn
-Art. 52 AWR: lichamen are administratieplichtig and keep the records for seven years unless a tax law says otherwise. Data may move to another carrier except the paper balance sheet and profit and loss statement. Identical in the 2020 and 2026 texts. The research could not find the basis for longer terms. Art. 34a Wet OB 1968: records on onroerende zaken are kept for nine years following the year in which use began (in effect ten). Art. 28rl and 28sj Wet OB 1968: OSS records ten years after the year of the transaction. Verified.
+Art. 52 AWR: lid 1 sets the administratieplicht and lid 2 names who carries it, lichamen (onderdeel a) and natural persons who run a business or practise an independent profession or who enjoy winst uit onderneming (onderdeel b), so a ZZP owner is administratieplichtig. The records are kept for seven years unless a tax law says otherwise. Data may move to another carrier except the paper balance sheet and profit and loss statement. Identical in the 2020 and 2026 texts. The research could not find the basis for longer terms. Art. 34a Wet OB 1968: records on onroerende zaken are kept for nine years following the year in which use began (in effect ten). Art. 28rl and 28sj Wet OB 1968: OSS records ten years after the year of the transaction. Verified.
 Sources: https://wetten.overheid.nl/BWBR0002320/2020-01-01, https://wetten.overheid.nl/BWBR0002320/2026-01-01, https://wetten.overheid.nl/BWBR0002629/2026-01-01
 
 ### 3.9 Pension, lijfrente and AOV

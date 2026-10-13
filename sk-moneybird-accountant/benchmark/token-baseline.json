@@ -10361,7 +10361,7 @@
       }
     },
     {
-      "bytes": 366005,
+      "bytes": 366228,
       "path": "sk-moneybird-accountant/references/dutch-tax-rules.md",
       "sections": [
         {
@@ -10388,13 +10388,13 @@
         },
         {
           "anchor": "3-general-rules",
-          "bytes": 300987,
+          "bytes": 301210,
           "line": 121,
           "lines": 1170,
           "title": "3. GENERAL RULES",
           "tokens": {
-            "cl100k_base": 92636,
-            "o200k_base": 86047
+            "cl100k_base": 92694,
+            "o200k_base": 86097
           }
         },
         {
@@ -10443,8 +10443,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 113825,
-        "o200k_base": 106085
+        "cl100k_base": 113883,
+        "o200k_base": 106135
       }
     },
     {
@@ -12364,7 +12364,7 @@
   },
   "units": [
     {
-      "bytes": 5859820,
+      "bytes": 5860043,
       "files": 142,
       "name": "corpus total",
       "reads": [
@@ -12372,8 +12372,8 @@
       ],
       "sections": 989,
       "tokens": {
-        "cl100k_base": 1809534,
-        "o200k_base": 1688865
+        "cl100k_base": 1809592,
+        "o200k_base": 1688915
       }
     },
     {
