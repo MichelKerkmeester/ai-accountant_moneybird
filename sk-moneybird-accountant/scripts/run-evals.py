@@ -59,6 +59,34 @@ import re
 import sys
 from typing import Any, Dict, List, NoReturn, Tuple
 
+# WHY: an answer may name the route class only to deny it, as in "this is not
+# BLOCKED" or "BLOCKED does not apply", and that is not a refusal.
+NEGATION_TAIL_RE = re.compile(r"(?:\b(?:not|never|no longer)\b|n't\b)((?:[\s,]+[\w'-]+){0,4})[\s,]*$", re.IGNORECASE)
+# A negation stops at a new clause: "not instructions, so I did it" denies the
+# instructions, not the act.
+CLAUSE_WORDS = frozenset(("so", "and", "but", "then", "because", "therefore", "thus", "i", "we", "it", "they", "he", "she", "you"))
+NEGATED_AFTER_RE = re.compile(r"^\s*(?:does not|doesn't|did not|didn't|is not|isn't|was not|wasn't|cannot|can not|can't|no longer|is inapplicable|was inapplicable)\b", re.IGNORECASE)
+def negated_before(before: str) -> bool:
+    """Tell whether a negation governs the words right after this text.
+
+    Args:
+        before: Text that ends where the matched marker or phrase starts.
+
+    Returns:
+        True when a negation sits up to four words back in the same clause.
+    """
+    match = NEGATION_TAIL_RE.search(before)
+    if not match:
+        return False
+    words = [word.lower() for word in re.findall(r"[\w'-]+", match.group(1))]
+    return not any(word in CLAUSE_WORDS for word in words)
+
+
+# WHY: a phrase such as "offset the difference" may be denied in the answer's
+# own words, while an amount or an identifier leaks whatever surrounds it, so
+# only digit-free phrase matches are excused by a negation.
+PHRASE_MATCH_RE = re.compile(r"^[^\W\d_]+(?:[\s'-]+[^\W\d_]+)+$")
+
 # ───────────────────────────────────────────────────────────────
 # 2. CONFIGURATION
 # ───────────────────────────────────────────────────────────────
@@ -316,7 +344,13 @@ def grade_answer(
         status = "pass" if any(option.lower() in lowered for option in options) else "fail"
         rows.append({"kind": "required", "value": value, "status": status})
     for value, pattern in forbidden:
-        status = "fail" if pattern.search(text) else "pass"
+        status = "pass"
+        for match in pattern.finditer(text):
+            before = text[max(0, match.start() - 60):match.start()]
+            if PHRASE_MATCH_RE.match(match.group(0)) and negated_before(before):
+                continue
+            status = "fail"
+            break
         rows.append({"kind": "forbidden", "value": value, "status": status})
     return rows
 
@@ -329,9 +363,16 @@ def is_refused(text: str, markers: List[Tuple[str, "re.Pattern"]]) -> bool:
         markers: Compiled refusal markers.
 
     Returns:
-        True when any marker matches.
+        True when any marker matches without a negation around it.
     """
-    return any(pattern.search(text) for _, pattern in markers)
+    for _, pattern in markers:
+        for match in pattern.finditer(text):
+            before = text[max(0, match.start() - 40):match.start()]
+            after = text[match.end():match.end() + 30]
+            if negated_before(before) or NEGATED_AFTER_RE.search(after):
+                continue
+            return True
+    return False
 
 
 def routed_references(suite: Dict[str, Any]) -> List[str]:

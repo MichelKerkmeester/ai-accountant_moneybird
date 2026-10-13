@@ -144,6 +144,7 @@ CONSTANT_NUMBER_RE = re.compile(r"([0-9]+(?:\.[0-9]+)?)")
 ROW_RE = re.compile(r"^\|\s*(T\d+)\s*\|")
 OVERRIDE_BULLET_RE = re.compile(r"^\s*(T\d+):\s*(.*)$")
 BACKTICK_RE = re.compile(r"`([^`]*)`")
+BARE_PATH_RE = re.compile(r"(?<![\w/.~-])((?://|/|~/|\.\./)?(?:[\w.-]+/)*[\w.-]+\.(?:md|mdx|markdown|rst|adoc|html?|json|ya?ml|py|txt|csv))\b", re.IGNORECASE)
 NUMBER_RE = re.compile(r"\d+(?:\.\d+)?")
 YEAR_RE = re.compile(r"^\d{4}$")
 SECTION_RE = re.compile(r"^(INTENT_SIGNALS|RESOURCE_MAP|LOADING_LEVELS) = \{$")
@@ -329,7 +330,8 @@ def check_read_path(row_type: str, relative_path: str, problems: List[str]) -> N
     if resolved != root and not resolved.startswith(root + os.sep):
         problems.append("row %s read path escapes the skill folder: %s" % (row_type, relative_path))
         return
-    if not relative_path.lower().endswith(".md"):
+    # WHY: a markdown-named symlink can point at a non-markdown file, so the resolved target is checked too.
+    if not relative_path.lower().endswith(".md") or not resolved.lower().endswith(".md"):
         problems.append("row %s read path is not markdown: %s" % (row_type, relative_path))
         return
     if not os.path.isfile(resolved):
@@ -348,6 +350,9 @@ def check_read_set(row_type: str, cell: str, problems: List[str]) -> None:
         problems: Problem list to append to.
     """
     years = year_folders()
+    # WHY: only backticked paths reach the generated read set, so a bare path would be dropped without a word.
+    for bare in BARE_PATH_RE.findall(BACKTICK_RE.sub(" ", cell)):
+        problems.append("row %s read path is not backticked: %s" % (row_type, bare))
     for span in BACKTICK_RE.findall(cell):
         if span == "-":
             continue

@@ -49,12 +49,17 @@ fi
 # ───────────────────────────────────────────────────────────────
 
 TMP_ROOT=$(mktemp -d "${TMPDIR:-/tmp}/route-table-test.XXXXXX") || exit 2
+# The symlink mutant needs a link inside the real skill folder, because the checker resolves read paths there
+SYMLINK_PATH="$SKILL_DIR/references/route-table-test-alias.md"
 
-# Remove the temp root on exit so no fixture survives the run
+# Remove the temp root and the mutant symlink on exit so no fixture survives the run
 # shellcheck disable=SC2329  # the EXIT trap calls it
 cleanup() {
     if [[ -n "${TMP_ROOT:-}" ]] && [[ -d "$TMP_ROOT" ]]; then
         rm -rf "$TMP_ROOT"
+    fi
+    if [[ -L "$SYMLINK_PATH" ]]; then
+        rm -f "$SYMLINK_PATH"
     fi
 }
 trap cleanup EXIT
@@ -237,6 +242,32 @@ drift_mutant "read path escapes the skill folder" "$TMP_ROOT/m-path-escape.md" "
 # Point a read path at a file that is not markdown
 sed 's|`references/purchase-invoices\.md`|`references/index.json`|' "$(copy)" >"$TMP_ROOT/m-path-nonmd.md"
 drift_mutant "read path is not markdown" "$TMP_ROOT/m-path-nonmd.md" "row T4 read path is not markdown"
+
+# Name a read path outside backticks, which the generated read set would drop
+sed 's|`references/purchase-invoices\.md`|references/purchase-invoices.md|' "$(copy)" >"$TMP_ROOT/m-path-bare.md"
+drift_mutant "read path not backticked" "$TMP_ROOT/m-path-bare.md" "row T4 read path is not backticked"
+
+# Name an absolute read path outside backticks
+sed 's|`references/purchase-invoices\.md`|/tmp/purchase-invoices.md|' "$(copy)" >"$TMP_ROOT/m-path-bare-abs.md"
+drift_mutant "absolute read path not backticked" "$TMP_ROOT/m-path-bare-abs.md" "row T4 read path is not backticked"
+
+# Name a read path with an uppercase extension outside backticks
+sed 's|`references/purchase-invoices\.md`|references/purchase-invoices.MD|' "$(copy)" >"$TMP_ROOT/m-path-bare-upper.md"
+drift_mutant "uppercase read path not backticked" "$TMP_ROOT/m-path-bare-upper.md" "row T4 read path is not backticked"
+
+# Name a UNC read path and two other document extensions outside backticks
+sed 's|`references/purchase-invoices\.md`|//server/share/README.md|' "$(copy)" >"$TMP_ROOT/m-path-bare-unc.md"
+drift_mutant "UNC read path not backticked" "$TMP_ROOT/m-path-bare-unc.md" "row T4 read path is not backticked"
+sed 's|`references/purchase-invoices\.md`|references/purchase-invoices.rst|' "$(copy)" >"$TMP_ROOT/m-path-bare-rst.md"
+drift_mutant "rst read path not backticked" "$TMP_ROOT/m-path-bare-rst.md" "row T4 read path is not backticked"
+sed 's|`references/purchase-invoices\.md`|references/purchase-invoices.mdx|' "$(copy)" >"$TMP_ROOT/m-path-bare-mdx.md"
+drift_mutant "mdx read path not backticked" "$TMP_ROOT/m-path-bare-mdx.md" "row T4 read path is not backticked"
+
+# Point a read path at a markdown-named symlink to a file that is not markdown
+ln -s index.json "$SYMLINK_PATH"
+sed 's|`references/purchase-invoices\.md`|`references/route-table-test-alias.md`|' "$(copy)" >"$TMP_ROOT/m-path-symlink.md"
+drift_mutant "read path is a markdown symlink to a non-markdown file" "$TMP_ROOT/m-path-symlink.md" "row T4 read path is not markdown"
+rm -f "$SYMLINK_PATH"
 
 # Remove the ROUTE_MARGIN line
 sed '/ROUTE_MARGIN/d' "$(copy)" >"$TMP_ROOT/m-margin.md"
