@@ -157,7 +157,16 @@
     "sk-moneybird-accountant/references/2027/bv-en-vennootschapsbelasting.md",
     "sk-moneybird-accountant/references/2027/pensioen-en-aov.md",
     "sk-moneybird-accountant/references/2027/arbeidsrelatie.md",
-    "sk-moneybird-accountant/references/2027/procedure.md"
+    "sk-moneybird-accountant/references/2027/procedure.md",
+    "sk-moneybird-accountant/references/2020/changes.md",
+    "sk-moneybird-accountant/references/2021/changes.md",
+    "sk-moneybird-accountant/references/2022/changes.md",
+    "sk-moneybird-accountant/references/2023/changes.md",
+    "sk-moneybird-accountant/references/2024/changes.md",
+    "sk-moneybird-accountant/references/2025/changes.md",
+    "sk-moneybird-accountant/references/2026/changes.md",
+    "sk-moneybird-accountant/references/2027/changes.md",
+    "sk-moneybird-accountant/references/year-changes.md"
   ],
   "secret_allowed_files": [
     "cli-moneybird/cli/moneybird-cli/tests/run-tests.sh",
