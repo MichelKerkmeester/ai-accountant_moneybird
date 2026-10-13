@@ -22,13 +22,19 @@ set -uo pipefail
 
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd -P) || exit 1
 SKILL_DIR=$(dirname "$SCRIPT_DIR")
+REPO_ROOT=$(dirname "$SKILL_DIR")
 CHECKER="$SCRIPT_DIR/check-route-table.py"
+WORD_CHECKER="$SCRIPT_DIR/check-skill-words.py"
 SKILL_MD="$SKILL_DIR/SKILL.md"
 SIGNALS_MD="$SKILL_DIR/references/routing-signals.md"
 GRAPH_METADATA="$SKILL_DIR/graph-metadata.json"
 
 if [[ ! -f "$CHECKER" ]]; then
     printf 'error: missing scripts/check-route-table.py next to this test\n' >&2
+    exit 2
+fi
+if [[ ! -f "$WORD_CHECKER" ]]; then
+    printf 'error: missing scripts/check-skill-words.py next to this test\n' >&2
     exit 2
 fi
 if [[ ! -f "$SKILL_MD" ]]; then
@@ -41,6 +47,10 @@ if [[ ! -f "$SIGNALS_MD" ]]; then
 fi
 if [[ ! -f "$GRAPH_METADATA" ]]; then
     printf 'error: missing graph-metadata.json in the skill folder\n' >&2
+    exit 2
+fi
+if [[ ! -f "$REPO_ROOT/cli-moneybird/SKILL.md" ]] || [[ ! -f "$REPO_ROOT/cli-jortt/SKILL.md" ]]; then
+    printf 'error: missing a sibling SKILL.md in the repository\n' >&2
     exit 2
 fi
 
@@ -483,7 +493,53 @@ else
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 9. SUMMARY
+# 9. WORD CHECK ENFORCEMENT
+# ───────────────────────────────────────────────────────────────
+
+# The check runs the sibling word check, so this mutant lives in a throwaway
+# repository copy and the real tree stays untouched
+WORD_COPY="$TMP_ROOT/word-copy"
+mkdir -p "$WORD_COPY/sk-moneybird-accountant/scripts" "$WORD_COPY/cli-moneybird" "$WORD_COPY/cli-jortt"
+cp "$CHECKER" "$WORD_COPY/sk-moneybird-accountant/scripts/check-route-table.py"
+cp "$WORD_CHECKER" "$WORD_COPY/sk-moneybird-accountant/scripts/check-skill-words.py"
+cp "$SKILL_MD" "$WORD_COPY/sk-moneybird-accountant/SKILL.md"
+cp "$GRAPH_METADATA" "$WORD_COPY/sk-moneybird-accountant/graph-metadata.json"
+cp -R "$SKILL_DIR/references" "$WORD_COPY/sk-moneybird-accountant/references"
+cp -R "$SKILL_DIR/assets" "$WORD_COPY/sk-moneybird-accountant/assets"
+cp "$REPO_ROOT/cli-moneybird/SKILL.md" "$WORD_COPY/cli-moneybird/SKILL.md"
+cp "$REPO_ROOT/cli-jortt/SKILL.md" "$WORD_COPY/cli-jortt/SKILL.md"
+WORD_CHECKER_COPY="$WORD_COPY/sk-moneybird-accountant/scripts/check-route-table.py"
+
+# The untouched copy proves the word check is wired and passes on its own
+python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+if [[ "$status" -eq 0 ]] && grep -qF 'check-skill-words: ' "$TMP_ROOT/out.txt"; then
+    pass "the repository copy runs the word check and passes"
+else
+    fail "the repository copy runs the word check and passes"
+    cat "$TMP_ROOT/out.txt"
+fi
+
+# Grow one sibling SKILL.md past the hard ceiling, so only the word check fails
+python3 -I - "$WORD_COPY/cli-jortt/SKILL.md" <<'PY'
+import sys
+
+with open(sys.argv[1], "a", encoding="utf-8") as handle:
+    handle.write("\n" + "\n".join(["word"] * 1700) + "\n")
+PY
+
+python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+if [[ "$status" -eq 1 ]] && grep -qF 'check-skill-words: cli-jortt/SKILL.md' "$TMP_ROOT/out.txt" \
+    && grep -qF 'fail above 4,000' "$TMP_ROOT/out.txt"; then
+    pass "a SKILL.md above the hard ceiling fails the route table check"
+else
+    fail "a SKILL.md above the hard ceiling fails the route table check"
+    cat "$TMP_ROOT/out.txt"
+fi
+
+# ───────────────────────────────────────────────────────────────
+# 10. SUMMARY
 # ───────────────────────────────────────────────────────────────
 
 printf '\n%d passed, %d failed\n' "$passed" "$failed"

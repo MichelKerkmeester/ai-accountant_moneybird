@@ -130,6 +130,24 @@ make_fake_repo() {
     return 0
 }
 
+# Build a fixture repository whose citation sits in a nested reference file
+# The walk is depth-agnostic at the base commit, so this fixture guards that
+# behavior instead of proving a fix.
+# Args:
+#   $1 - Repository root to create
+# Returns:
+#   0 when the fixture is ready, 1 when a write fails
+make_nested_repo() {
+    local root="$1"
+    mkdir -p "$root/sk-moneybird-accountant/scripts" "$root/sk-moneybird-accountant/assets" \
+        "$root/sk-moneybird-accountant/references/tax-rules/2025/btw" || return 1
+    cp "$BUILDER" "$root/sk-moneybird-accountant/scripts/" || return 1
+    printf '# Bootstrap\n\nSee https://www.belastingdienst.nl/a.\n' >"$root/AGENTS.md" || return 1
+    printf '# Figures\n\nRate: [deep page](https://wetten.overheid.nl/BWBR0000002)\n' \
+        >"$root/sk-moneybird-accountant/references/tax-rules/2025/btw/figures.md" || return 1
+    return 0
+}
+
 # Run the builder inside a fixture repository
 # Args:
 #   $1 - Repository root
@@ -654,6 +672,66 @@ else
 fi
 run_builder "$REPO" >/dev/null
 
+# WHY: the walk is depth-agnostic at the base commit, so the nested fixture
+# guards that behavior instead of proving a fix.
+group "nested walk"
+NEST_REPO="$TMP_ROOT/nested-repo"
+NEST_FILE="sk-moneybird-accountant/references/tax-rules/2025/btw/figures.md"
+NEST_URL="https://wetten.overheid.nl/BWBR0000002"
+if make_nested_repo "$NEST_REPO"; then
+    pass "nested fixture repository builds"
+else
+    fail "nested fixture repository builds"
+fi
+assert "nested citation write exits 0" run_builder "$NEST_REPO"
+nested_cited=$(python3 -I - "$NEST_REPO/sk-moneybird-accountant/assets/source-library.json" "$NEST_URL" "$NEST_FILE" <<'PY'
+import json
+import sys
+
+rows = {row["url"]: row for row in json.load(open(sys.argv[1]))["sources"]}
+print(rows.get(sys.argv[2], {}).get("cited_by") == [sys.argv[3]])
+PY
+)
+if [[ "$nested_cited" = "True" ]]; then
+    pass "nested citation names its file at depth"
+else
+    fail "nested citation names its file at depth"
+fi
+assert "check passes on the nested fixture" run_builder "$NEST_REPO" --check
+set_index_access "$NEST_REPO" "$NEST_URL" ok 200 2026-01-01
+run_builder "$NEST_REPO" --trace "$NEST_FILE:3"
+status=$?
+if [[ "$status" -eq 0 ]] && grep -q 'access=ok http_status=200 checked_on=2026-01-01' "$TMP_ROOT/out.txt"; then
+    pass "trace resolves a citation at depth"
+else
+    fail "trace resolves a citation at depth"
+fi
+set_index_access "$NEST_REPO" "$NEST_URL" dead 404 2026-01-01
+run_builder "$NEST_REPO" --check
+status=$?
+if [[ "$status" -eq 1 ]] \
+    && grep -q "^dead cited: $NEST_URL cited by: $NEST_FILE" "$TMP_ROOT/out.txt"; then
+    pass "a dead nested citation still exits 1"
+else
+    fail "a dead nested citation still exits 1"
+fi
+set_index_access "$NEST_REPO" "$NEST_URL" ok 200 2026-01-01
+run_builder "$NEST_REPO" --trace "sk-moneybird-accountant/references/tax-rules/2025/btw/missing.md:1"
+status=$?
+if [[ "$status" -eq 2 ]] && grep -q 'no such file in this repository' "$TMP_ROOT/out.txt"; then
+    pass "trace rejects a missing nested file"
+else
+    fail "trace rejects a missing nested file"
+fi
+rm "$NEST_REPO/$NEST_FILE"
+run_builder "$NEST_REPO" --check
+status=$?
+if [[ "$status" -eq 1 ]] && grep -q "^uncited: $NEST_URL" "$TMP_ROOT/out.txt"; then
+    pass "a removed nested file leaves its source uncited"
+else
+    fail "a removed nested file leaves its source uncited"
+fi
+
 group "access results"
 python3 -I -c '
 import json, sys
@@ -691,6 +769,7 @@ printf '<div>\n  Fiets\n  <span>Fiets</span>\n  <script>x()</script>\n  &amp; ka
 printf '<html><body>alpha fixture page</body></html>\n' >"$DOCROOT/alpha.html"
 printf '<html><body>beta fixture page</body></html>\n' >"$DOCROOT/beta.html"
 printf '<html><body>gamma fixture page</body></html>\n' >"$DOCROOT/gamma.html"
+printf '<html><body>nested fixture page</body></html>\n' >"$DOCROOT/nested.html"
 printf '%%PDF-1.4\nplaceholder fixture bytes\n%%%%EOF\n' >"$DOCROOT/sample.pdf"
 LINK_REPO="$TMP_ROOT/link-repo"
 LINK_INDEX="$LINK_REPO/sk-moneybird-accountant/assets/source-library.json"
@@ -702,6 +781,7 @@ fi
 PORT=$(cat "$TMP_ROOT/server.port" 2>/dev/null || true)
 LIVE_URL="http://127.0.0.1:$PORT/live.html"
 DEAD_URL="http://127.0.0.1:$PORT/missing.html"
+NESTED_URL="http://127.0.0.1:$PORT/nested.html"
 REDIRECT_URL="http://127.0.0.1:$PORT/redirect.html"
 PERMANENT_URL="http://127.0.0.1:$PORT/permanent.html"
 AGENT_URL="http://127.0.0.1:$PORT/agent.html"
@@ -718,6 +798,9 @@ else
     fail "link fixture repository builds"
 fi
 assert "link fixture write exits 0" run_builder "$LINK_REPO"
+mkdir -p "$LINK_REPO/sk-moneybird-accountant/references/tax-rules/2025/btw"
+printf '# Figures\n\nNested page: %s\n' "$NESTED_URL" >"$LINK_REPO/$NEST_FILE"
+run_builder "$LINK_REPO" >/dev/null
 cp "$LINK_INDEX" "$TMP_ROOT/index.before"
 run_builder "$LINK_REPO" --check-links
 status=$?
@@ -756,6 +839,16 @@ if [[ "$cited_check" = "True" ]]; then
     pass "link report names the citing file"
 else
     fail "link report names the citing file"
+fi
+nested_cited_check=$(python3 -I -c '
+import json, sys
+rows = {r["url"]: r for r in json.load(open(sys.argv[1]))["rows"]}
+print(rows[sys.argv[2]]["cited_by"] == [sys.argv[3]])
+' "$TMP_ROOT/out.txt" "$NESTED_URL" "$NEST_FILE" 2>/dev/null)
+if [[ "$nested_cited_check" = "True" ]]; then
+    pass "link report names a nested citing file"
+else
+    fail "link report names a nested citing file"
 fi
 if [[ "$(link_field "$LIVE_URL" result)" = "ok" ]] && [[ "$(link_field "$LIVE_URL" http_status)" = "200" ]]; then
     pass "live page reports HTTP 200"

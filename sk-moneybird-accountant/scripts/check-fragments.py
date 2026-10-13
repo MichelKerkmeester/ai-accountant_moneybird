@@ -8,7 +8,8 @@ Scans the repository AGENTS.md, README.md and the markdown of the three skill
 folders for relative links, resolves each path and each fragment, and reports
 every miss. A fragment matches an explicit anchor line or a heading slug drawn
 the GitHub way, and a slug that resolves only through a duplicate suffix is
-rejected. Every year topic file must hold the eight section ids in order.
+rejected. Every year topic file must hold its section ids in order: eight
+in a flat topic file, and the subset that a phase 003 split part carries.
 External URLs, images and links inside fenced code blocks are skipped, and the
 script makes no network call. Output is sorted and byte-stable.
 
@@ -75,6 +76,20 @@ SECTION_IDS = (
     "7-open-points",
     "8-related-resources",
 )
+
+# WHY: a phase 003 split keeps the eight topic sections in four part files, so
+# each part is held only to the sections it carries.
+SPLIT_TOPIC_SECTIONS = {
+    "figures.md": ("1-overview", "2-key-figures"),
+    "rules.md": ("3-how-it-works",),
+    "examples.md": ("4-worked-examples",),
+    "notes.md": (
+        "5-changes",
+        "6-in-the-books",
+        "7-open-points",
+        "8-related-resources",
+    ),
+}
 
 Problem = Tuple[str, int, str, str]
 
@@ -330,28 +345,58 @@ def is_year_topic(relative_path: str) -> bool:
         relative_path: Path relative to the repository root.
 
     Returns:
-        True for a markdown file directly in a year folder under references,
-        other than the year README, the year changelog and the year change
-        note.
+        True for a markdown topic file below references, at any folder depth.
+        A flat topic file sits directly in a year folder. A split topic file
+        sits in a topic folder directly under a year folder and is one of
+        figures.md, rules.md, examples.md and notes.md. The year README, the
+        year changelog and the year change note are never topic files.
     """
     parts = relative_path.split("/")
+    if len(parts) < 3 or "references" not in parts[:-2]:
+        return False
+    if parts[-1] in YEAR_NON_TOPIC_NAMES:
+        return False
+    if YEAR_DIR_RE.match(parts[-2]) is not None:
+        return True
+    # WHY: a phase 003 split keeps one topic as a folder of four part files
+    # directly under the year folder, so the part carries the section ids.
     return (
-        len(parts) >= 3
-        and parts[-3] == "references"
-        and YEAR_DIR_RE.match(parts[-2]) is not None
-        and parts[-1] not in YEAR_NON_TOPIC_NAMES
+        len(parts) >= 4
+        and YEAR_DIR_RE.match(parts[-3]) is not None
+        and parts[-1] in SPLIT_TOPIC_SECTIONS
     )
 
 
-def check_section_ids(path: str) -> List[Tuple[int, str, str]]:
-    """Check the eight section ids of one year topic file.
+def expected_section_ids(relative_path: str) -> Tuple[str, ...]:
+    """Return the section ids one year topic file must carry.
+
+    Args:
+        relative_path: Path relative to the repository root.
+
+    Returns:
+        All eight ids for a flat topic file or for a file that is not one of
+        the four split parts, and the subset of a split part otherwise:
+        figures.md holds sections 1 and 2, rules.md section 3, examples.md
+        section 4 and notes.md sections 5 to 8.
+    """
+    parts = relative_path.split("/")
+    if len(parts) >= 4 and YEAR_DIR_RE.match(parts[-3]) is not None:
+        return SPLIT_TOPIC_SECTIONS.get(parts[-1], SECTION_IDS)
+    return SECTION_IDS
+
+
+def check_section_ids(
+    path: str, expected: Tuple[str, ...]
+) -> List[Tuple[int, str, str]]:
+    """Check the section ids of one year topic file.
 
     Args:
         path: Absolute path of the topic file.
+        expected: The section ids the file must carry, in order.
 
     Returns:
         The problems found, each as a line number, the id and a reason.
-        An empty list means the eight ids are present and in order.
+        An empty list means the expected ids are present and in order.
     """
     found: List[Tuple[int, str]] = []
     headings: Dict[int, int] = {}
@@ -361,24 +406,27 @@ def check_section_ids(path: str) -> List[Tuple[int, str, str]]:
             headings[int(match.group(1))] = number
         found.extend((number, value) for value in ANCHOR_RE.findall(line))
     values = [value for _, value in found]
-    if values == list(SECTION_IDS):
+    if values == list(expected):
         return []
     counts: Dict[str, int] = {}
     for value in values:
         counts[value] = counts.get(value, 0) + 1
     problems: List[Tuple[int, str, str]] = []
-    for position, wanted in enumerate(SECTION_IDS, 1):
+    for wanted in expected:
         if counts.get(wanted, 0) == 0:
-            problems.append((headings.get(position, 1), wanted, "missing-id"))
+            # WHY: the id starts with its section number, so a missing id is
+            # reported at the heading of that section.
+            section = int(wanted.split("-", 1)[0])
+            problems.append((headings.get(section, 1), wanted, "missing-id"))
     for number, value in found:
-        if value not in SECTION_IDS:
+        if value not in expected:
             problems.append((number, value, "unexpected-id"))
         elif counts[value] > 1:
             problems.append((number, value, "duplicate-id"))
     if problems:
         return problems
     for index, value in enumerate(values):
-        if value != SECTION_IDS[index]:
+        if value != expected[index]:
             return [(found[index][0], value, "out-of-order")]
     return []
 
@@ -411,7 +459,9 @@ def check(root: str) -> Tuple[int, int, List[Problem]]:
         if is_year_topic(source):
             problems.extend(
                 (source, number, marker, reason)
-                for number, marker, reason in check_section_ids(path)
+                for number, marker, reason in check_section_ids(
+                    path, expected_section_ids(source)
+                )
             )
     return links, fragments, problems
 

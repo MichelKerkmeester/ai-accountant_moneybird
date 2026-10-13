@@ -23,7 +23,7 @@ checked_on: "2026-10-12"
 
 Tax year 2026 is the current year. Its law is enacted. Returns for 2026 are filed in 2027. Each topic file below gives the figures, how the rules work in 2026, worked examples, the changes from 2025, notes for the books and the open points.
 
-Across the twelve topic files the figures tables hold 322 values: 299 Verified, 11 Corrected and 12 UNVERIFIED, with 30 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
+Across the twelve topic files the figures tables hold 322 values: 299 Verified, 10 Corrected and 13 UNVERIFIED, with 30 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
 
 ---
 
@@ -36,7 +36,7 @@ Across the twelve topic files the figures tables hold 322 values: 299 Verified, 
 | [inkomstenbelasting.md](inkomstenbelasting.md) | Covers the 2026 box 1 brackets, heffingskortingen, tariefsaanpassing and the route from business profit to taxable income. | 29 | 1 | 0 |
 | [zvw.md](zvw.md) | The income-dependent Zvw contribution for an entrepreneur in tax year 2026: the 4,85% aanslag rate, the maximum bijdrage-inkomen of € 79.409, who pays by aanslag and how the 6,10% werkgeversheffing differs. | 9 | 2 | 2 |
 | [ondernemersaftrek.md](ondernemersaftrek.md) | Ondernemersaftrek and MKB-winstvrijstelling for a sole trader in tax year 2026, covering the urencriterium, zelfstandigenaftrek, startersaftrek, meewerkaftrek, S&O aftrek, stakingsaftrek, the profit exemption and the tariefsaanpassing. | 21 | 0 | 0 |
-| [investeringen.md](investeringen.md) | KIA, EIA, MIA, Vamil, willekeurige afschrijving, ordinary depreciation and the desinvesteringsbijtelling for tax year 2026. | 16 | 1 | 1 |
+| [investeringen.md](investeringen.md) | KIA, EIA, MIA, Vamil, willekeurige afschrijving, ordinary depreciation and the desinvesteringsbijtelling for tax year 2026. | 16 | 2 | 1 |
 | [kosten-en-auto.md](kosten-en-auto.md) | Business costs, mixed costs, study costs, home workspace, fines and car rules for a Dutch sole trader or BV in tax year 2026. | 36 | 0 | 0 |
 | [box-3.md](box-3.md) | Fictitious box 3 return on savings and investments for tax year 2026, including the 2026 percentages, the heffingsvrij vermogen, the schuldendrempel, green investments and the optional actual-return report. | 21 | 0 | 3 |
 | [box-2.md](box-2.md) | Box 2 rates, the aanmerkelijk belang tests, excessief lenen, gebruikelijk loon, loss relief and the pension rules that touch box 2 for tax year 2026. | 22 | 1 | 1 |

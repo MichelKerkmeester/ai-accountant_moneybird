@@ -15,8 +15,8 @@ version: 1.0.0.0
 
 <!-- GENERATED:nav:start -->
 Read plan: 2 parts. Next read offset: line 388.
-Part 1: lines 1-387, 50115 bytes, first heading "# Investeringsaftrek en afschrijving 2025"
-Part 2: lines 388-410, 2937 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
+Part 1: lines 1-387, 50187 bytes, first heading "# Investeringsaftrek en afschrijving 2025"
+Part 2: lines 388-410, 2949 bytes, first heading "## 7. OPEN POINTS AND CONFLICTS"
 <!-- GENERATED:nav:end -->
 
 
@@ -58,7 +58,7 @@ This file covers the 2025 rules for investment deductions and depreciation: the 
 | Desinvesteringsbijtelling, deemed disposals and undone investments | Withdrawal from the onderneming, a change of destination towards third-party use or non-resident use, waarde in het economische verkeer as transfer price, receiving a vermindering, teruggaaf or vergoeding, not having paid at least 25% of the investment amount within twelve months after the obligation unless the asset is in use, and not having taken the asset into use within three years after the start of the investment year. | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01, art. 3.47 lid 3 to 6, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/desinvesteringsbijtelling |
 | Ordinary depreciation caps | Goodwill 10% per year and other bedrijfsmiddelen 20% per year, so at least 10 and 5 years. | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01, art. 3.30 lid 2 |
 | Bodemwaarde for buildings | The WOZ-waarde of the building, except for an own-use building taken into use before 1 January 2024 and not yet depreciated for 3 years, which keeps 50% of the WOZ-waarde until 3 years after first use. | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01, art. 3.30a lid 3, transition https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/afschrijving_bedrijfspand |
-| Starters willekeurige afschrijving, yearly cap | € 392.230 of total costs. | enacted | Verified | https://wetten.overheid.nl/BWBR0012035/2025-01-01/0, art. 8, https://wetten.overheid.nl/BWBR0011353/2025-01-01, art. 3.41 lid 2 |
+| Starters willekeurige afschrijving, yearly cap | € 392.230 of total costs, read from the top of the KIA table through the URWA art. 8 reference. | enacted | UNVERIFIED | https://wetten.overheid.nl/BWBR0012035/2025-01-01/0, art. 8, https://wetten.overheid.nl/BWBR0011353/2025-01-01, art. 3.41 lid 2 |
 | Starters willekeurige afschrijving, period | Five years from the start of the year of the obligation or the costs, ten years for zeeschepen. | enacted | Verified | https://wetten.overheid.nl/BWBR0012035/2025-01-01/0, art. 9 and art. 12 |
 | Temporary willekeurige afschrijving 2023 | Once, at most 50% of the costs, for assets with obligations or voortbrengingskosten in 2023 that are taken into use before 1 January 2026. The period in which the asset must keep meeting the conditions ends 31 December 2025. | enacted | Verified | https://wetten.overheid.nl/BWBR0012035/2025-01-01/0, art. 13 to 15, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/veranderingen-vennootschapsbelasting-vorige-jaren/veranderingen-vennootschapsbelasting-2023, https://zoek.officielebekendmakingen.nl/stcrt-2022-33377.html |
 
@@ -396,7 +396,7 @@ The 2025 figures themselves are settled. The items below are the unknown values,
 - RVO test for a vehicle counting as new, used for less than 6 months and at most 6.000 km: the RVO page does not state a year, so it is marked unknown and UNVERIFIED for 2025 ([RVO voorwaarden](https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden)).
 - RVO statement that the combined MIA and Vamil benefit can run up to ruim 14% of the investment amount: the RVO page does not state a year, so it is marked unknown and UNVERIFIED for 2025 ([RVO](https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers)).
 - The research rule that a medegerechtigde or geldverstrekker cannot use the EIA or the MIA was not found on the fetched pages, so it stays UNVERIFIED ([RVO](https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers), [RVO voorwaarden](https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden), [Belastingdienst EIA page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/energie_investeringsaftrek_eia)).
-- Starters willekeurige afschrijving cap: the URWA names the maximum amount in the KIA table over which KIA can be obtained, and no primary page prints the cap as a number ([URWA art. 8](https://wetten.overheid.nl/BWBR0012035/2025-01-01/0), [2025 KIA table](https://wetten.overheid.nl/BWBR0011353/2025-01-01)). For 2025 the reading gives € 392.230. A Belastingdienst or RVO page that prints the cap as a number would settle it.
+- Starters willekeurige afschrijving cap, UNVERIFIED: the URWA names the maximum amount in the KIA table over which KIA can be obtained, and no primary page prints the cap as a number ([URWA art. 8](https://wetten.overheid.nl/BWBR0012035/2025-01-01/0), [2025 KIA table](https://wetten.overheid.nl/BWBR0011353/2025-01-01)). For 2025 the reading gives € 392.230. A Belastingdienst or RVO page that prints the cap as a number would settle it.
 
 ---
 

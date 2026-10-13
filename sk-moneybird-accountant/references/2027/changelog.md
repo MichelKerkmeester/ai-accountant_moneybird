@@ -39,3 +39,4 @@ The rows below were first researched and later corrected against a primary sourc
 | 2026-10-12 | inkomstenbelasting.md | AHK payout to a minstverdienende partner | as first researched | Corrected | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/heffingskortingen |
 | 2026-10-12 | inkomstenbelasting.md | IACK phase-down | as first researched | Corrected | https://www.tweedekamer.nl/downloads/document?id=2026D43301 |
 | 2026-10-12 | zvw.md | Bijdrage-inkomen from winst uit onderneming | as first researched | Corrected | https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01 |
+| 2026-10-13 | investeringen.md | Starters willekeurige afschrijving yearly cap | Verified | UNVERIFIED | https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 8 |

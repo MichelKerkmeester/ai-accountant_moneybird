@@ -553,7 +553,7 @@
       }
     },
     {
-      "bytes": 7092,
+      "bytes": 7273,
       "path": "sk-moneybird-accountant/references/2020/changelog.md",
       "sections": [
         {
@@ -569,19 +569,19 @@
         },
         {
           "anchor": "2-corrected-values",
-          "bytes": 6114,
+          "bytes": 6295,
           "line": 26,
-          "lines": 26,
+          "lines": 27,
           "title": "2. CORRECTED VALUES",
           "tokens": {
-            "cl100k_base": 2103,
-            "o200k_base": 1939
+            "cl100k_base": 2172,
+            "o200k_base": 2002
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2345,
-        "o200k_base": 2180
+        "cl100k_base": 2414,
+        "o200k_base": 2243
       }
     },
     {
@@ -715,7 +715,7 @@
       }
     },
     {
-      "bytes": 49760,
+      "bytes": 49770,
       "path": "sk-moneybird-accountant/references/2020/investeringen.md",
       "sections": [
         {
@@ -731,13 +731,13 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 9599,
+          "bytes": 9600,
           "line": 28,
           "lines": 33,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3044,
-            "o200k_base": 2815
+            "cl100k_base": 3045,
+            "o200k_base": 2816
           }
         },
         {
@@ -786,13 +786,13 @@
         },
         {
           "anchor": "7-open-points-and-conflicts",
-          "bytes": 2931,
+          "bytes": 2940,
           "line": 288,
           "lines": 13,
           "title": "7. OPEN POINTS AND CONFLICTS",
           "tokens": {
-            "cl100k_base": 933,
-            "o200k_base": 866
+            "cl100k_base": 937,
+            "o200k_base": 870
           }
         },
         {
@@ -808,8 +808,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 15889,
-        "o200k_base": 14670
+        "cl100k_base": 15894,
+        "o200k_base": 14675
       }
     },
     {
@@ -1847,7 +1847,7 @@
       }
     },
     {
-      "bytes": 2537,
+      "bytes": 2705,
       "path": "sk-moneybird-accountant/references/2021/changelog.md",
       "sections": [
         {
@@ -1863,19 +1863,19 @@
         },
         {
           "anchor": "2-corrected-values",
-          "bytes": 1559,
+          "bytes": 1727,
           "line": 26,
-          "lines": 11,
+          "lines": 12,
           "title": "2. CORRECTED VALUES",
           "tokens": {
-            "cl100k_base": 532,
-            "o200k_base": 501
+            "cl100k_base": 594,
+            "o200k_base": 557
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 774,
-        "o200k_base": 742
+        "cl100k_base": 836,
+        "o200k_base": 798
       }
     },
     {
@@ -2009,7 +2009,7 @@
       }
     },
     {
-      "bytes": 47119,
+      "bytes": 47358,
       "path": "sk-moneybird-accountant/references/2021/investeringen.md",
       "sections": [
         {
@@ -2025,19 +2025,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 5240,
+          "bytes": 5467,
           "line": 28,
-          "lines": 25,
+          "lines": 26,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1809,
-            "o200k_base": 1680
+            "cl100k_base": 1885,
+            "o200k_base": 1751
           }
         },
         {
           "anchor": "3-how-it-works-in-2021",
           "bytes": 21209,
-          "line": 53,
+          "line": 54,
           "lines": 82,
           "title": "3. HOW IT WORKS IN 2021",
           "tokens": {
@@ -2048,7 +2048,7 @@
         {
           "anchor": "4-worked-examples",
           "bytes": 6977,
-          "line": 135,
+          "line": 136,
           "lines": 103,
           "title": "4. WORKED EXAMPLES",
           "tokens": {
@@ -2059,7 +2059,7 @@
         {
           "anchor": "5-changes-from-2020",
           "bytes": 3773,
-          "line": 238,
+          "line": 239,
           "lines": 19,
           "title": "5. CHANGES FROM 2020",
           "tokens": {
@@ -2070,7 +2070,7 @@
         {
           "anchor": "6-in-the-books",
           "bytes": 2778,
-          "line": 257,
+          "line": 258,
           "lines": 14,
           "title": "6. IN THE BOOKS",
           "tokens": {
@@ -2080,19 +2080,19 @@
         },
         {
           "anchor": "7-open-points-and-conflicts",
-          "bytes": 4691,
-          "line": 271,
+          "bytes": 4703,
+          "line": 272,
           "lines": 15,
           "title": "7. OPEN POINTS AND CONFLICTS",
           "tokens": {
-            "cl100k_base": 1549,
-            "o200k_base": 1461
+            "cl100k_base": 1553,
+            "o200k_base": 1465
           }
         },
         {
           "anchor": "8-related-resources",
           "bytes": 413,
-          "line": 286,
+          "line": 287,
           "lines": 8,
           "title": "8. RELATED RESOURCES",
           "tokens": {
@@ -2102,8 +2102,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 15032,
-        "o200k_base": 14040
+        "cl100k_base": 15112,
+        "o200k_base": 14115
       }
     },
     {
@@ -3141,7 +3141,7 @@
       }
     },
     {
-      "bytes": 5073,
+      "bytes": 5240,
       "path": "sk-moneybird-accountant/references/2022/changelog.md",
       "sections": [
         {
@@ -3157,19 +3157,19 @@
         },
         {
           "anchor": "2-corrected-values",
-          "bytes": 4095,
+          "bytes": 4262,
           "line": 26,
-          "lines": 23,
+          "lines": 24,
           "title": "2. CORRECTED VALUES",
           "tokens": {
-            "cl100k_base": 1396,
-            "o200k_base": 1303
+            "cl100k_base": 1457,
+            "o200k_base": 1358
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1638,
-        "o200k_base": 1544
+        "cl100k_base": 1699,
+        "o200k_base": 1599
       }
     },
     {
@@ -3303,7 +3303,7 @@
       }
     },
     {
-      "bytes": 47889,
+      "bytes": 47976,
       "path": "sk-moneybird-accountant/references/2022/investeringen.md",
       "sections": [
         {
@@ -3319,13 +3319,13 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 3281,
+          "bytes": 3356,
           "line": 28,
           "lines": 22,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1187,
-            "o200k_base": 1114
+            "cl100k_base": 1209,
+            "o200k_base": 1136
           }
         },
         {
@@ -3374,13 +3374,13 @@
         },
         {
           "anchor": "7-open-points-and-conflicts",
-          "bytes": 2979,
+          "bytes": 2991,
           "line": 305,
           "lines": 13,
           "title": "7. OPEN POINTS AND CONFLICTS",
           "tokens": {
-            "cl100k_base": 1005,
-            "o200k_base": 941
+            "cl100k_base": 1009,
+            "o200k_base": 945
           }
         },
         {
@@ -3396,8 +3396,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 15428,
-        "o200k_base": 14430
+        "cl100k_base": 15454,
+        "o200k_base": 14456
       }
     },
     {
@@ -3891,12 +3891,12 @@
       }
     },
     {
-      "bytes": 8253,
+      "bytes": 8254,
       "path": "sk-moneybird-accountant/references/2023/README.md",
       "sections": [
         {
           "anchor": "1-overview",
-          "bytes": 581,
+          "bytes": 582,
           "line": 22,
           "lines": 8,
           "title": "1. OVERVIEW",
@@ -4435,7 +4435,7 @@
       }
     },
     {
-      "bytes": 5916,
+      "bytes": 6084,
       "path": "sk-moneybird-accountant/references/2023/changelog.md",
       "sections": [
         {
@@ -4451,19 +4451,19 @@
         },
         {
           "anchor": "2-corrected-values",
-          "bytes": 4938,
+          "bytes": 5106,
           "line": 26,
-          "lines": 26,
+          "lines": 27,
           "title": "2. CORRECTED VALUES",
           "tokens": {
-            "cl100k_base": 1689,
-            "o200k_base": 1576
+            "cl100k_base": 1751,
+            "o200k_base": 1632
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1931,
-        "o200k_base": 1817
+        "cl100k_base": 1993,
+        "o200k_base": 1873
       }
     },
     {
@@ -4597,7 +4597,7 @@
       }
     },
     {
-      "bytes": 56314,
+      "bytes": 56327,
       "path": "sk-moneybird-accountant/references/2023/investeringen.md",
       "sections": [
         {
@@ -4613,13 +4613,13 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 7927,
+          "bytes": 7928,
           "line": 35,
           "lines": 29,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2641,
-            "o200k_base": 2427
+            "cl100k_base": 2642,
+            "o200k_base": 2428
           }
         },
         {
@@ -4668,13 +4668,13 @@
         },
         {
           "anchor": "7-open-points-and-conflicts",
-          "bytes": 4404,
+          "bytes": 4416,
           "line": 365,
           "lines": 13,
           "title": "7. OPEN POINTS AND CONFLICTS",
           "tokens": {
-            "cl100k_base": 1484,
-            "o200k_base": 1370
+            "cl100k_base": 1488,
+            "o200k_base": 1374
           }
         },
         {
@@ -4690,8 +4690,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 18537,
-        "o200k_base": 17142
+        "cl100k_base": 18542,
+        "o200k_base": 17147
       }
     },
     {
@@ -5729,7 +5729,7 @@
       }
     },
     {
-      "bytes": 5048,
+      "bytes": 5216,
       "path": "sk-moneybird-accountant/references/2024/changelog.md",
       "sections": [
         {
@@ -5745,19 +5745,19 @@
         },
         {
           "anchor": "2-corrected-values",
-          "bytes": 4070,
+          "bytes": 4238,
           "line": 26,
-          "lines": 21,
+          "lines": 22,
           "title": "2. CORRECTED VALUES",
           "tokens": {
-            "cl100k_base": 1384,
-            "o200k_base": 1277
+            "cl100k_base": 1446,
+            "o200k_base": 1333
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1626,
-        "o200k_base": 1518
+        "cl100k_base": 1688,
+        "o200k_base": 1574
       }
     },
     {
@@ -5891,7 +5891,7 @@
       }
     },
     {
-      "bytes": 48220,
+      "bytes": 48304,
       "path": "sk-moneybird-accountant/references/2024/investeringen.md",
       "sections": [
         {
@@ -5907,24 +5907,24 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4626,
+          "bytes": 4697,
           "line": 28,
           "lines": 25,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1538,
-            "o200k_base": 1437
+            "cl100k_base": 1558,
+            "o200k_base": 1457
           }
         },
         {
           "anchor": "3-how-it-works-in-2024",
-          "bytes": 21057,
+          "bytes": 21058,
           "line": 53,
           "lines": 80,
           "title": "3. HOW IT WORKS IN 2024",
           "tokens": {
-            "cl100k_base": 6266,
-            "o200k_base": 5712
+            "cl100k_base": 6267,
+            "o200k_base": 5713
           }
         },
         {
@@ -5962,13 +5962,13 @@
         },
         {
           "anchor": "7-open-points-and-conflicts",
-          "bytes": 1758,
+          "bytes": 1770,
           "line": 227,
           "lines": 11,
           "title": "7. OPEN POINTS AND CONFLICTS",
           "tokens": {
-            "cl100k_base": 520,
-            "o200k_base": 485
+            "cl100k_base": 524,
+            "o200k_base": 489
           }
         },
         {
@@ -5984,8 +5984,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 15181,
-        "o200k_base": 14091
+        "cl100k_base": 15206,
+        "o200k_base": 14116
       }
     },
     {
@@ -7023,7 +7023,7 @@
       }
     },
     {
-      "bytes": 2835,
+      "bytes": 3003,
       "path": "sk-moneybird-accountant/references/2025/changelog.md",
       "sections": [
         {
@@ -7039,19 +7039,19 @@
         },
         {
           "anchor": "2-corrected-values",
-          "bytes": 1857,
+          "bytes": 2025,
           "line": 26,
-          "lines": 14,
+          "lines": 15,
           "title": "2. CORRECTED VALUES",
           "tokens": {
-            "cl100k_base": 652,
-            "o200k_base": 607
+            "cl100k_base": 714,
+            "o200k_base": 663
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 894,
-        "o200k_base": 848
+        "cl100k_base": 956,
+        "o200k_base": 904
       }
     },
     {
@@ -7185,7 +7185,7 @@
       }
     },
     {
-      "bytes": 53052,
+      "bytes": 53136,
       "path": "sk-moneybird-accountant/references/2025/investeringen.md",
       "sections": [
         {
@@ -7201,13 +7201,13 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 9504,
+          "bytes": 9576,
           "line": 35,
           "lines": 32,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2995,
-            "o200k_base": 2756
+            "cl100k_base": 3016,
+            "o200k_base": 2777
           }
         },
         {
@@ -7256,13 +7256,13 @@
         },
         {
           "anchor": "7-open-points-and-conflicts",
-          "bytes": 2524,
+          "bytes": 2536,
           "line": 388,
           "lines": 15,
           "title": "7. OPEN POINTS AND CONFLICTS",
           "tokens": {
-            "cl100k_base": 797,
-            "o200k_base": 739
+            "cl100k_base": 801,
+            "o200k_base": 743
           }
         },
         {
@@ -7278,8 +7278,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 16464,
-        "o200k_base": 15308
+        "cl100k_base": 16489,
+        "o200k_base": 15333
       }
     },
     {
@@ -8317,7 +8317,7 @@
       }
     },
     {
-      "bytes": 3275,
+      "bytes": 3444,
       "path": "sk-moneybird-accountant/references/2026/changelog.md",
       "sections": [
         {
@@ -8333,19 +8333,19 @@
         },
         {
           "anchor": "2-corrected-values",
-          "bytes": 2297,
+          "bytes": 2466,
           "line": 26,
-          "lines": 15,
+          "lines": 16,
           "title": "2. CORRECTED VALUES",
           "tokens": {
-            "cl100k_base": 779,
-            "o200k_base": 734
+            "cl100k_base": 842,
+            "o200k_base": 791
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1021,
-        "o200k_base": 975
+        "cl100k_base": 1084,
+        "o200k_base": 1032
       }
     },
     {
@@ -8479,7 +8479,7 @@
       }
     },
     {
-      "bytes": 51871,
+      "bytes": 51952,
       "path": "sk-moneybird-accountant/references/2026/investeringen.md",
       "sections": [
         {
@@ -8495,13 +8495,13 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 6423,
+          "bytes": 6494,
           "line": 35,
           "lines": 25,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2146,
-            "o200k_base": 1963
+            "cl100k_base": 2166,
+            "o200k_base": 1983
           }
         },
         {
@@ -8550,13 +8550,13 @@
         },
         {
           "anchor": "7-open-points-and-conflicts",
-          "bytes": 2226,
+          "bytes": 2236,
           "line": 325,
           "lines": 11,
           "title": "7. OPEN POINTS AND CONFLICTS",
           "tokens": {
-            "cl100k_base": 697,
-            "o200k_base": 632
+            "cl100k_base": 702,
+            "o200k_base": 637
           }
         },
         {
@@ -8572,8 +8572,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 16524,
-        "o200k_base": 15278
+        "cl100k_base": 16549,
+        "o200k_base": 15303
       }
     },
     {
@@ -9611,7 +9611,7 @@
       }
     },
     {
-      "bytes": 3182,
+      "bytes": 3349,
       "path": "sk-moneybird-accountant/references/2027/changelog.md",
       "sections": [
         {
@@ -9627,19 +9627,19 @@
         },
         {
           "anchor": "2-corrected-values",
-          "bytes": 2204,
+          "bytes": 2371,
           "line": 26,
-          "lines": 16,
+          "lines": 17,
           "title": "2. CORRECTED VALUES",
           "tokens": {
-            "cl100k_base": 775,
-            "o200k_base": 730
+            "cl100k_base": 836,
+            "o200k_base": 785
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1017,
-        "o200k_base": 971
+        "cl100k_base": 1078,
+        "o200k_base": 1026
       }
     },
     {
@@ -9773,7 +9773,7 @@
       }
     },
     {
-      "bytes": 55161,
+      "bytes": 55562,
       "path": "sk-moneybird-accountant/references/2027/investeringen.md",
       "sections": [
         {
@@ -9789,13 +9789,13 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 6567,
+          "bytes": 6569,
           "line": 37,
           "lines": 35,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2081,
-            "o200k_base": 1969
+            "cl100k_base": 2083,
+            "o200k_base": 1971
           }
         },
         {
@@ -9844,19 +9844,19 @@
         },
         {
           "anchor": "7-open-points-and-conflicts",
-          "bytes": 3006,
+          "bytes": 3405,
           "line": 391,
-          "lines": 14,
+          "lines": 15,
           "title": "7. OPEN POINTS AND CONFLICTS",
           "tokens": {
-            "cl100k_base": 896,
-            "o200k_base": 846
+            "cl100k_base": 1030,
+            "o200k_base": 974
           }
         },
         {
           "anchor": "8-related-resources",
           "bytes": 341,
-          "line": 405,
+          "line": 406,
           "lines": 8,
           "title": "8. RELATED RESOURCES",
           "tokens": {
@@ -9866,8 +9866,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 17181,
-        "o200k_base": 16093
+        "cl100k_base": 17317,
+        "o200k_base": 16223
       }
     },
     {
@@ -11982,24 +11982,24 @@
       }
     },
     {
-      "bytes": 11434,
+      "bytes": 13064,
       "path": "sk-moneybird-accountant/references/source-library.md",
       "sections": [
         {
           "anchor": "1-overview",
-          "bytes": 1051,
+          "bytes": 1094,
           "line": 22,
-          "lines": 24,
+          "lines": 25,
           "title": "1. OVERVIEW",
           "tokens": {
-            "cl100k_base": 261,
-            "o200k_base": 261
+            "cl100k_base": 272,
+            "o200k_base": 272
           }
         },
         {
           "anchor": "2-how-to-reach-a-source",
           "bytes": 1224,
-          "line": 46,
+          "line": 47,
           "lines": 14,
           "title": "2. HOW TO REACH A SOURCE",
           "tokens": {
@@ -12010,7 +12010,7 @@
         {
           "anchor": "3-sources-by-authority",
           "bytes": 1391,
-          "line": 60,
+          "line": 61,
           "lines": 18,
           "title": "3. SOURCES BY AUTHORITY",
           "tokens": {
@@ -12021,7 +12021,7 @@
         {
           "anchor": "4-statutes",
           "bytes": 1132,
-          "line": 78,
+          "line": 79,
           "lines": 26,
           "title": "4. STATUTES",
           "tokens": {
@@ -12032,7 +12032,7 @@
         {
           "anchor": "5-most-cited-pages",
           "bytes": 3318,
-          "line": 104,
+          "line": 105,
           "lines": 36,
           "title": "5. MOST-CITED PAGES",
           "tokens": {
@@ -12042,19 +12042,19 @@
         },
         {
           "anchor": "6-dead-links",
-          "bytes": 99,
-          "line": 140,
-          "lines": 6,
+          "bytes": 1686,
+          "line": 141,
+          "lines": 13,
           "title": "6. DEAD LINKS",
           "tokens": {
-            "cl100k_base": 35,
-            "o200k_base": 34
+            "cl100k_base": 594,
+            "o200k_base": 526
           }
         },
         {
           "anchor": "7-keeping-the-library-current",
           "bytes": 2047,
-          "line": 146,
+          "line": 154,
           "lines": 28,
           "title": "7. KEEPING THE LIBRARY CURRENT",
           "tokens": {
@@ -12065,7 +12065,7 @@
         {
           "anchor": "8-related-resources",
           "bytes": 474,
-          "line": 174,
+          "line": 182,
           "lines": 6,
           "title": "8. RELATED RESOURCES",
           "tokens": {
@@ -12075,8 +12075,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3322,
-        "o200k_base": 3136
+        "cl100k_base": 3892,
+        "o200k_base": 3639
       }
     },
     {
@@ -12332,12 +12332,12 @@
     },
     {
       "blocks": 1,
-      "bytes": 104323,
+      "bytes": 104325,
       "files": 1,
       "name": "references/index.json",
       "tokens": {
-        "cl100k_base": 33431,
-        "o200k_base": 33785
+        "cl100k_base": 33432,
+        "o200k_base": 33786
       }
     }
   ],
@@ -12364,7 +12364,7 @@
   },
   "units": [
     {
-      "bytes": 5860043,
+      "bytes": 5864029,
       "files": 142,
       "name": "corpus total",
       "reads": [
@@ -12372,8 +12372,8 @@
       ],
       "sections": 989,
       "tokens": {
-        "cl100k_base": 1809592,
-        "o200k_base": 1688915
+        "cl100k_base": 1810991,
+        "o200k_base": 1690188
       }
     },
     {
@@ -12399,14 +12399,14 @@
       }
     },
     {
-      "bytes": 24941,
+      "bytes": 25147,
       "name": "sk-moneybird-accountant/SKILL.md",
       "reads": [
         "sk-moneybird-accountant/SKILL.md"
       ],
       "tokens": {
-        "cl100k_base": 6159,
-        "o200k_base": 6073
+        "cl100k_base": 6214,
+        "o200k_base": 6128
       }
     },
     {

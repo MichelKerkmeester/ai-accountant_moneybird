@@ -1,0 +1,225 @@
+#!/usr/bin/env python3
+# ───────────────────────────────────────────────────────────────
+# COMPONENT: SKILL WORD BUDGET CHECK
+# ───────────────────────────────────────────────────────────────
+"""Check every SKILL.md against the loading word budget.
+
+Walks the repository for SKILL.md files and prints one line per file with its
+word count and its verdict. A file above 3,000 words warns, a file above
+4,000 words fails the run, and a missing or unreadable file stops the run with
+exit code 2 and the path named. The three files of the skill family are
+required: sk-moneybird-accountant/SKILL.md, cli-moneybird/SKILL.md and
+cli-jortt/SKILL.md. A word is a run of characters between two whitespace
+characters, the rule `LC_ALL=C wc -w` applies. The script uses the Python standard
+library only and makes no network call.
+
+Usage:
+    python3 -I sk-moneybird-accountant/scripts/check-skill-words.py
+    python3 -I sk-moneybird-accountant/scripts/check-skill-words.py --root DIR
+
+Options:
+    --root DIR  Read another copy of the repository. Defaults to the root
+                above this script.
+
+Output:
+    One line per SKILL.md with its relative path, its word count and its
+    verdict: "ok", "warn above 3,000" or "fail above 4,000". Exit 0 when
+    every file is at or below the hard ceiling, 1 when a file is above it and
+    2 on a missing or unreadable file or a usage error.
+"""
+
+# ───────────────────────────────────────────────────────────────
+# 1. IMPORTS
+# ───────────────────────────────────────────────────────────────
+
+import argparse
+import os
+import re
+import sys
+from typing import List, NoReturn
+
+# ───────────────────────────────────────────────────────────────
+# 2. CONFIGURATION
+# ───────────────────────────────────────────────────────────────
+
+CHECKER = "sk-moneybird-accountant/scripts/check-skill-words.py"
+TAG = "check-skill-words"
+SCRIPT_FOLDER = os.path.dirname(os.path.abspath(__file__))
+DEFAULT_ROOT = os.path.dirname(os.path.dirname(SCRIPT_FOLDER))
+
+WARN_WORDS = 3000
+FAIL_WORDS = 4000
+
+# WHY: the check covers the whole skill family, so a file the walk cannot
+# reach is a finding rather than a file that passes by absence.
+REQUIRED_FILES = (
+    "sk-moneybird-accountant/SKILL.md",
+    "cli-moneybird/SKILL.md",
+    "cli-jortt/SKILL.md",
+)
+
+# WHY: a hidden folder holds the git store or a local tool checkout rather
+# than the skill family, and these folders hold no live skill markdown. The
+# spec packets keep backup copies of retired skills, and two of these folders
+# hold private data this check must not read.
+SKIP_FOLDERS = ("migration-workspace", "node_modules", "personal database", "specs")
+
+# WHY: LC_ALL=C wc -w counts a word as a run of characters between two whitespace
+# characters, so this splitter follows that rule for every file in the tree.
+WORD_SEPARATORS = re.compile(r"[ \t\n\r\f\v]+")
+
+# ───────────────────────────────────────────────────────────────
+# 3. HELPERS
+# ───────────────────────────────────────────────────────────────
+
+def fail(message: str) -> NoReturn:
+    """Print an error and stop with exit code 2.
+
+    Args:
+        message: Error text for stderr.
+
+    Raises:
+        SystemExit: Always, with code 2.
+    """
+    print("error: %s" % message, file=sys.stderr)
+    sys.exit(2)
+
+
+def count_words(text: str) -> int:
+    """Count the words in one file the way `LC_ALL=C wc -w` does.
+
+    Args:
+        text: File text.
+
+    Returns:
+        The number of maximal runs of non-whitespace characters.
+    """
+    return len([word for word in WORD_SEPARATORS.split(text) if word])
+
+
+def verdict(count: int) -> str:
+    """Name the band one word count falls in.
+
+    Args:
+        count: Word count.
+
+    Returns:
+        "ok", "warn above 3,000" or "fail above 4,000".
+    """
+    if count > FAIL_WORDS:
+        return "fail above {:,}".format(FAIL_WORDS)
+    if count > WARN_WORDS:
+        return "warn above {:,}".format(WARN_WORDS)
+    return "ok"
+
+
+def skill_files(root: str) -> List[str]:
+    """Collect every SKILL.md under one repository root.
+
+    Args:
+        root: Repository root to walk.
+
+    Returns:
+        Repository-relative POSIX paths, sorted. The walk skips a hidden
+        folder, the private workspace, the spec packets and the dependency
+        folder, and it does
+        not follow a symlinked folder.
+    """
+    found: List[str] = []
+    for folder, subfolders, files in os.walk(root):
+        subfolders[:] = sorted(
+            name
+            for name in subfolders
+            if name not in SKIP_FOLDERS and not name.startswith(".")
+        )
+        if "SKILL.md" in files:
+            found.append(os.path.relpath(os.path.join(folder, "SKILL.md"), root).replace(os.sep, "/"))
+    return sorted(found)
+
+
+def read_text(path: str) -> str:
+    """Read one file and name its path when it cannot be read.
+
+    Args:
+        path: File to read.
+
+    Returns:
+        File text, with undecodable bytes replaced.
+
+    Raises:
+        SystemExit: With code 2 when the file cannot be read.
+    """
+    try:
+        with open(path, "r", encoding="utf-8", errors="replace") as handle:
+            return handle.read()
+    except OSError as exc:
+        fail("cannot read %s: %s" % (path, exc))
+
+
+# ───────────────────────────────────────────────────────────────
+# 4. CHECK
+# ───────────────────────────────────────────────────────────────
+
+def check_root(root: str) -> int:
+    """Check every SKILL.md under one repository root.
+
+    Args:
+        root: Repository root to check.
+
+    Returns:
+        Zero when every file is at or below the hard ceiling, 1 when a file
+        is above it and 2 when a required file is missing or unreadable.
+
+    Raises:
+        SystemExit: With code 2 when the root is not a directory.
+    """
+    if not os.path.isdir(root):
+        fail("not a directory: %s" % root)
+    found = skill_files(root)
+    for relative in REQUIRED_FILES:
+        if relative not in found or not os.path.isfile(os.path.join(root, relative)):
+            fail("missing or unreadable SKILL.md: %s" % os.path.join(root, relative))
+    over_budget = False
+    for relative in found:
+        count = count_words(read_text(os.path.join(root, relative)))
+        label = verdict(count)
+        if label.startswith("fail"):
+            over_budget = True
+        print("%s: %s %d words, %s" % (TAG, relative, count, label))
+    return 1 if over_budget else 0
+
+
+# ───────────────────────────────────────────────────────────────
+# 5. ENTRY POINT
+# ───────────────────────────────────────────────────────────────
+
+def main(argv: List[str]) -> int:
+    """Parse arguments and run the word check.
+
+    Args:
+        argv: Command line arguments without the program name.
+
+    Returns:
+        Zero when every file is within budget, one when a file is above the
+        hard ceiling.
+
+    Raises:
+        SystemExit: If the root is not a directory or a required file is
+            missing or unreadable.
+    """
+    parser = argparse.ArgumentParser(
+        prog=CHECKER,
+        description="Check every SKILL.md against the loading word budget.",
+    )
+    parser.add_argument(
+        "--root",
+        default=DEFAULT_ROOT,
+        metavar="DIR",
+        help="read another copy of the repository instead of the one above this script",
+    )
+    args = parser.parse_args(argv)
+    return check_root(os.path.abspath(args.root))
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

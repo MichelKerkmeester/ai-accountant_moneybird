@@ -382,6 +382,40 @@ def mode_fixture(module: ModuleType, encoders: Dict[str, Any]) -> int:
     return 0
 
 
+def mode_nested(module: ModuleType, encoders: Dict[str, Any]) -> int:
+    """Check that the walk reaches a nested file once and keeps its path.
+
+    The walk is depth-agnostic at the base commit, so this case guards that
+    behavior instead of proving a fix.
+
+    Args:
+        module: The imported token baseline module.
+        encoders: Mapping of encoding name to an encoder.
+
+    Returns:
+        Zero when the walk holds the nested file exactly once, its row path
+        is the nested path and its two sections are counted, one otherwise.
+    """
+    wanted = "tax-rules/2020/btw/figures.md"
+    paths = [module.relative_path(path) for path in module.markdown_files()]
+    hits = [path for path in paths if path.endswith(wanted)]
+    row = module.file_row(os.path.join(module.REFERENCES_ROOT, wanted), encoders)
+    print("nested files: %d" % len(paths))
+    print("nested hits: %d" % len(hits))
+    print("nested sections: %d" % len(row["sections"]))
+    if len(hits) != 1:
+        print("nested: the walk does not hold the file exactly once")
+        return 1
+    if row["path"] != "sk-moneybird-accountant/references/" + wanted:
+        print("nested: the row path is not the nested path")
+        return 1
+    if len(row["sections"]) != 2:
+        print("nested: the nested file does not count its two sections")
+        return 1
+    print("nested: one entry and two sections from a depth-agnostic walk")
+    return 0
+
+
 def mode_whole_file(path: str) -> int:
     """Point the proposed route of a module copy at the whole topic file.
 
@@ -455,7 +489,7 @@ def main(argv: List[str]) -> int:
     Raises:
         SystemExit: On bad usage or a setup failure.
     """
-    modes = ("pin", "route", "fixture", "whole-file", "swap-cache")
+    modes = ("pin", "route", "fixture", "whole-file", "swap-cache", "nested")
     if len(argv) < 2 or argv[0] not in modes:
         fail("usage: %s <mode> <module> [args]" % PROGRAM)
     mode = argv[0]
@@ -471,6 +505,8 @@ def main(argv: List[str]) -> int:
     encoders = open_encoders(module)
     if mode == "route":
         return mode_route(module, encoders)
+    if mode == "nested":
+        return mode_nested(module, encoders)
     return mode_fixture(module, encoders)
 
 
@@ -556,6 +592,35 @@ if [[ "$status" -eq 0 ]] && grep -q 'token gate rejects' "$TMP_ROOT/out.txt"; th
     pass "a fixture inside the byte budget fails the token budget"
 else
     fail "a fixture inside the byte budget fails the token budget"
+fi
+
+# WHY: the walk is depth-agnostic at the base commit, so this fixture guards
+# that behavior instead of proving a fix.
+group "nested reference file"
+NESTED_REPO="$TMP_ROOT/nested-repo"
+NESTED_SKILL="$NESTED_REPO/sk-moneybird-accountant"
+mkdir -p "$NESTED_SKILL/scripts" "$NESTED_SKILL/references/tax-rules/2020/btw"
+cp "$BASELINE_PY" "$NESTED_SKILL/scripts/token-baseline.py"
+cat >"$NESTED_SKILL/references/tax-rules/2020/btw/figures.md" <<'EOF'
+# Nested figures
+
+## 1. KEY FIGURES
+
+| Item | Value | Status | Check |
+|---|---|---|---|
+| Rate | Fixture value | enacted | Verified |
+
+## 2. NOTES
+
+A nested note that gives the file its second section.
+EOF
+run_driver nested "$NESTED_SKILL/scripts/token-baseline.py"
+status=$?
+show_output
+if [[ "$status" -eq 0 ]] && grep -q 'nested: one entry and two sections' "$TMP_ROOT/out.txt"; then
+    pass "a depth-agnostic walk counts a nested reference file once"
+else
+    fail "a depth-agnostic walk counts a nested reference file once"
 fi
 
 group "real tree"

@@ -23,7 +23,7 @@ checked_on: "2026-10-12"
 
 Tax year 2027 mixes three layers: enacted 2027 law, the Belastingplan 2027 bill that was not adopted on 2026-10-11 and amounts that wait for the December 2026 indexation. Read the Status column on every row before using a value. Each topic file below gives the figures, how the rules work in 2027, worked examples, the changes from 2026, notes for the books and the open points.
 
-Across the twelve topic files the figures tables hold 348 values: 272 Verified, 12 Corrected and 64 UNVERIFIED, with 200 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
+Across the twelve topic files the figures tables hold 348 values: 271 Verified, 12 Corrected and 65 UNVERIFIED, with 200 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
 
 ---
 
@@ -36,7 +36,7 @@ Across the twelve topic files the figures tables hold 348 values: 272 Verified, 
 | [inkomstenbelasting.md](inkomstenbelasting.md) | Box 1 brackets, rates and heffingskortingen for 2027, plus the tariefsaanpassing and the route from winst uit onderneming to taxable box 1 income, with the enacted 2027 text and the still proposed Belastingplan 2027 figures kept apart. | 38 | 8 | 29 |
 | [zvw.md](zvw.md) | The income-dependent Zvw contribution for an entrepreneur in tax year 2027, covering the aanslag rate, the maximum bijdrage-inkomen, who pays by aanslag and how the rate differs from the werkgeversheffing. | 19 | 4 | 9 |
 | [ondernemersaftrek.md](ondernemersaftrek.md) | The parts of the ondernemersaftrek and the MKB-winstvrijstelling for tax year 2027, with the adopted 2027 statute text and the pending Belastingplan 2027 and start-ups bills kept apart. | 32 | 2 | 32 |
-| [investeringen.md](investeringen.md) | The 2027 rules for the KIA, EIA, MIA, Vamil, desinvesteringsbijtelling, ordinary depreciation and the bodemwaarde, plus the willekeurige afschrijving for starters, with the 2027 law text, bill 37 022 and the unpublished indexation marked by status. | 26 | 3 | 21 |
+| [investeringen.md](investeringen.md) | The 2027 rules for the KIA, EIA, MIA, Vamil, desinvesteringsbijtelling, ordinary depreciation and the bodemwaarde, plus the willekeurige afschrijving for starters, with the 2027 law text, bill 37 022 and the unpublished indexation marked by status. | 26 | 4 | 21 |
 | [kosten-en-auto.md](kosten-en-auto.md) | How a Dutch sole trader and a BV deduct business costs and handle the car in tax year 2027, with the gemengde kosten drempel, the kilometre allowance, bijtelling, the youngtimer rules and the open items in Belastingplan 2027. | 31 | 4 | 31 |
 | [box-3.md](box-3.md) | Box 3 for tax year 2027: the category method, the values in the 2027 text of the act, the Belastingplan 2027 bill, the Cabinet letter proposals, the green investment facilities and the optional actual return. | 16 | 0 | 13 |
 | [box-2.md](box-2.md) | Box 2 income, the aanmerkelijk belang rules, the excessief lenen fiction and the gebruikelijk loon link for tax year 2027, with the enacted future text and the bills and announcements that are still open. | 22 | 3 | 16 |

@@ -17,8 +17,8 @@ version: 1.0.0.0
 
 <!-- GENERATED:nav:start -->
 Read plan: 2 parts. Next read offset: line 372.
-Part 1: lines 1-371, 47534 bytes, first heading "# Investeringsaftrek en afschrijving 2027"
-Part 2: lines 372-412, 7627 bytes, first heading "## 6. IN THE BOOKS"
+Part 1: lines 1-371, 47536 bytes, first heading "# Investeringsaftrek en afschrijving 2027"
+Part 2: lines 372-413, 8026 bytes, first heading "## 6. IN THE BOOKS"
 <!-- GENERATED:nav:end -->
 
 
@@ -62,7 +62,7 @@ This file covers the investment deductions for 2027, the kleinschaligheidsinvest
 | Desinvesteringsbijtelling threshold | € 2.900 base. The indexed amount is unknown until December 2026 | adopted-not-yet-in-force | Verified | https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 3.47 lid 1 |
 | Desinvesteringsbijtelling window | Disposals within five years after the start of the calendar year of the investment | adopted-not-yet-in-force | Verified | https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 3.47 lid 2 |
 | Desinvestering undo test | Less than 25% of the investment amount paid within twelve months after the obligation unless the asset is in use, and no use within three years after the start of the investment year | adopted-not-yet-in-force | Verified | https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 3.47 lid 6 |
-| Starters willekeurige afschrijving yearly cap | The top of the 2027 KIA table, € 398.236 before indexation | enacted | Verified | https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 8, https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 3.41 lid 2 |
+| Starters willekeurige afschrijving yearly cap | The top of the 2027 KIA table, € 398.236 before indexation | enacted | UNVERIFIED | https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 8, https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 3.41 lid 2 |
 | Starters willekeurige afschrijving period | Five years from the start of the year of the obligation or costs, ten years for the zeeschepen of art. 10 | enacted | Verified | https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 9 and art. 12 |
 | Starters willekeurige afschrijving abolition | Abolished per 2028, still available in 2027 | proposed | Verified | https://www.rijksoverheid.nl/actueel/nieuws/2026/09/15/belastingplan-2027-voorstellen-voor-beter-werkend-belastingstelsel-en-gezonde-overheidsfinancien |
 | Temporary willekeurige afschrijving 2023 | At most 50% of the costs, once, only for assets taken into use before 1 January 2026, so no new claim in 2027 | enacted | Verified | https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 13 to 15, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/veranderingen-vennootschapsbelasting-vorige-jaren/veranderingen-vennootschapsbelasting-2023 |
@@ -399,6 +399,7 @@ Basis: https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 8 and art. 9, ht
 - MIA and Vamil maximum of € 25 miljoen per bedrijfsmiddel and per applicant per year. The RVO page states no year, so it is unknown which years the cap covers for 2027. It is a condition of the aanwijzing, separate from the statutory € 153.000.000 of art. 3.42 lid 4. The Milieulijst regulation of each year would settle it. https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden
 - Startersaftrek in bill 37 022. The bill sets the art. 3.76 lid 3 amount to € 10 under Article I part G, and the fetched summary gave its entry date inconsistently, so the ondernemersaftrek check owns that date. URWA art. 7 only needs the verhoogde zelfstandigenaftrek to apply, so a € 10 startersaftrek keeps the starters scheme available in 2027. https://zoek.officielebekendmakingen.nl/kst-37022-2.html Article I part G, https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 7
 - The rule that a medegerechtigde (co-entitled person) or a geldverstrekker (financier) cannot use the EIA or the MIA was not found on the fetched pages. UNVERIFIED. The pages checked are https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/energie_investeringsaftrek_eia
+- Starters willekeurige afschrijving cap, UNVERIFIED: the cap for 2027 is the top of the 2027 KIA table at € 398.236 before indexation, read from the URWA art. 8 cross-reference. No primary page prints the cap as a number. The final amount follows the indexed KIA table. https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 8, https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 3.41 lid 2
 
 ---
 

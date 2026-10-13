@@ -174,9 +174,11 @@ FILE_DRIFT_ID = "generated-content"
 
 # The two year README blocks describe the topic files of one year folder. The
 # canonical topic order lives in the topic table of the reference guide, so no
-# order list is kept here.
-YEAR_README_RE = re.compile(r"^(\d{4})/README\.md$")
-YEAR_PATH_RE = re.compile(r"^(\d{4})/")
+# order list is kept here. A year folder keeps its topic files directly, at any
+# depth below the references root, so the year folder is one path part and the
+# topic file names stay the part that carries the topic.
+YEAR_README_RE = re.compile(r"^(?:.*/)?(\d{4})/README\.md$")
+YEAR_PART_RE = re.compile(r"^\d{4}$")
 TOPIC_ORDER_FILE = "dutch-tax-rules.md"
 TOPIC_ORDER_HEADING = "Topic files in every year folder"
 TOPIC_NAME_PATTERN = r"[A-Za-z0-9._-]+\.md"
@@ -388,14 +390,24 @@ def relative_path(path: str) -> str:
     return os.path.relpath(path, REFERENCES_ROOT).replace(os.sep, "/")
 
 
-def reference_files() -> List[str]:
+def reference_files(depth: Optional[int] = None) -> List[str]:
     """List the markdown and the JSON files under the references root.
 
+    Args:
+        depth: Maximum folder depth below the references root, or None for
+            every depth. A file directly in the references root sits at
+            depth 0. The generated index is never an input.
+
     Returns:
-        Sorted absolute paths. The generated index is not an input.
+        Sorted absolute paths.
     """
     found = []
-    for directory, _, names in os.walk(REFERENCES_ROOT):
+    base = os.path.abspath(REFERENCES_ROOT)
+    for directory, _, names in os.walk(base):
+        relative = os.path.relpath(directory, base)
+        level = 0 if relative == "." else relative.count(os.sep) + 1
+        if depth is not None and level > depth:
+            continue
         for name in names:
             if not name.endswith(SCAN_SUFFIXES):
                 continue
@@ -944,10 +956,13 @@ def year_of(path: str) -> Optional[str]:
         path: Path relative to the references root.
 
     Returns:
-        The four digit year, or None when the path sits outside a year folder.
+        The first four digit path part, at any depth, or None when the path
+        holds no year folder.
     """
-    match = YEAR_PATH_RE.match(path)
-    return match.group(1) if match else None
+    for part in path.split("/"):
+        if YEAR_PART_RE.match(part):
+            return part
+    return None
 
 
 def is_year_topic(path: str) -> bool:
@@ -957,8 +972,9 @@ def is_year_topic(path: str) -> bool:
         path: Path relative to the references root.
 
     Returns:
-        True for a markdown file directly in a year folder, other than the
-        year README, the year changelog and the year change note.
+        True for a markdown file that sits in a year folder at any depth,
+        other than the year README, the year changelog and the year change
+        note.
     """
     name = os.path.basename(path)
     return (
@@ -966,6 +982,42 @@ def is_year_topic(path: str) -> bool:
         and name.endswith(MARKDOWN_SUFFIX)
         and name not in (README_NAME, CHANGELOG_NAME, CHANGE_NOTE_NAME)
     )
+
+
+def year_topic_path(files: Dict[str, Dict[str, Any]], year: str, name: str) -> Optional[str]:
+    """Return the file that carries one canonical topic of one year.
+
+    The flat shape keeps the topic as a file directly in the year folder. The
+    nested shape keeps the topic as a folder that holds its four files, and
+    the figures file carries the KEY FIGURES table. Both shapes are searched
+    at any depth below the references root. The flat file wins when the tree
+    holds both.
+
+    Args:
+        files: File records keyed by relative path.
+        year: Four digit year folder.
+        name: Canonical topic file name, for example btw.md.
+
+    Returns:
+        The path of the carrier file relative to the references root, or None
+        when the year folder holds no topic with that name.
+    """
+    topic = name[: -len(MARKDOWN_SUFFIX)] if name.endswith(MARKDOWN_SUFFIX) else name
+    flat = None
+    nested = None
+    for path in sorted(files):
+        parts = path.split("/")
+        if year not in parts[:-1]:
+            continue
+        index = parts.index(year)
+        after = parts[index + 1:]
+        if after == [name] and flat is None:
+            flat = path
+        elif after == [topic, "figures.md"] and nested is None:
+            nested = path
+        if flat is not None and nested is not None:
+            break
+    return flat if flat is not None else nested
 
 
 def canonical_topics(files: Dict[str, Dict[str, Any]]) -> List[str]:
@@ -1010,29 +1062,33 @@ def year_topics(files: Dict[str, Dict[str, Any]]) -> Dict[str, List[Dict[str, An
         files: File records keyed by relative path.
 
     Returns:
-        One topic record list per year that has a README, in canonical order.
-        A record carries the file name, the path, the description, the nav
-        label and the KEY FIGURES table.
+        One topic record list per year README, keyed by the README path, in
+        canonical order. A record carries the topic name, its link, the path,
+        the description, the nav label and the KEY FIGURES table.
 
     Raises:
         SystemExit: If a topic file is missing, or a nav_label is missing,
             duplicated within its year or longer than the limit.
     """
     topics = canonical_topics(files)
-    years = sorted(
-        year for year in {year_of(path) for path in files} if year is not None and (year + "/README.md") in files
+    readmes = sorted(
+        (path for path in files if YEAR_README_RE.match(path)),
+        key=lambda path: (year_of(path) or "", path),
     )
     grouped: Dict[str, List[Dict[str, Any]]] = {}
-    for year in years:
+    for readme in readmes:
+        year = year_of(readme)
+        if year is None:
+            continue
         labels: Dict[str, str] = {}
         records: List[Dict[str, Any]] = []
         for name in topics:
-            path = "%s/%s" % (year, name)
+            path = year_topic_path(files, year, name)
+            if path is None:
+                fail("missing %s, every year folder holds each topic file" % ("%s/%s" % (year, name)))
             if not is_year_topic(path):
                 continue
-            file = files.get(path)
-            if file is None:
-                fail("missing %s, every year folder holds each topic file" % path)
+            file = files[path]
             values = frontmatter_values(file["text"])
             label = values.get(NAV_LABEL_FIELD, "")
             if not label:
@@ -1045,16 +1101,20 @@ def year_topics(files: Dict[str, Dict[str, Any]]) -> Dict[str, List[Dict[str, An
             if label in labels:
                 fail("duplicate %s %s in %s and %s" % (NAV_LABEL_FIELD, label, labels[label], path))
             labels[label] = path
+            flat = os.path.basename(path) == name
             records.append(
                 {
-                    "name": name,
+                    "name": name if flat else name[: -len(MARKDOWN_SUFFIX)],
+                    "link": name
+                    if flat
+                    else os.path.relpath(path, os.path.dirname(readme)).replace(os.sep, "/"),
                     "path": path,
                     "description": values.get("description", ""),
                     "nav_label": label,
                     "figures": key_figures(file),
                 }
             )
-        grouped[year] = records
+        grouped[readme] = records
     return grouped
 
 
@@ -1104,7 +1164,7 @@ def topic_files_row(record: Dict[str, Any]) -> str:
     )
     return "| [%s](%s) | %s | %d | %d | %d |" % (
         record["name"],
-        record["name"],
+        record["link"],
         record["description"],
         len(rows),
         unverified,
@@ -1125,9 +1185,9 @@ def topic_files_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
     """
     grouped = year_topics({file["path"]: file for file in files})
     bodies: Dict[str, str] = {}
-    for year in sorted(grouped):
-        rows = [topic_files_row(record) for record in grouped[year]]
-        bodies["%s/README.md" % year] = table_text(TOPIC_FILES_HEADER, rows)
+    for readme in sorted(grouped):
+        rows = [topic_files_row(record) for record in grouped[readme]]
+        bodies[readme] = table_text(TOPIC_FILES_HEADER, rows)
     return bodies
 
 
@@ -1146,10 +1206,10 @@ def headline_figures_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
     """
     grouped = year_topics({file["path"]: file for file in files})
     bodies: Dict[str, str] = {}
-    for year in sorted(grouped):
+    for readme in sorted(grouped):
         rows: List[str] = []
         value_header = ""
-        for record in grouped[year]:
+        for record in grouped[readme]:
             value_column, figures = headline_figures(record)
             if not value_header:
                 value_header = value_column
@@ -1164,7 +1224,7 @@ def headline_figures_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
                         figure["check"],
                     )
                 )
-        bodies["%s/README.md" % year] = table_text(
+        bodies[readme] = table_text(
             "| Topic | Item | %s | Status | Check |" % value_header, rows
         )
     return bodies
@@ -1660,9 +1720,11 @@ def section_three_bodies(by_path: Dict[str, Dict[str, Any]], spec: Dict[str, Any
     rows: List[str] = []
     for name in spec["files"]:
         for year in years:
-            path = "%s/%s" % (year, name)
+            path = year_topic_path(by_path, year, name)
+            if path is None or not is_year_topic(path):
+                continue
             file = by_path.get(path)
-            if file is None or not is_year_topic(path):
+            if file is None:
                 continue
             _, figures = headline_figures({"path": path, "figures": key_figures(file)})
             for figure in figures:
@@ -2689,9 +2751,11 @@ def overlap_report(files: List[Dict[str, Any]], guide: Dict[str, Any], section: 
     unowned = 0
     for name in canonical_topics(by_path):
         for year in years:
-            path = "%s/%s" % (year, name)
+            path = year_topic_path(by_path, year, name)
+            if path is None or not is_year_topic(path):
+                continue
             file = by_path.get(path)
-            if file is None or not is_year_topic(path):
+            if file is None:
                 continue
             _, figures = headline_figures({"path": path, "figures": key_figures(file)})
             for figure in figures:

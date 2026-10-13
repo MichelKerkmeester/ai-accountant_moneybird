@@ -23,7 +23,7 @@ checked_on: "2026-10-12"
 
 Tax year 2025 is a past year. Its law is enacted, and later changes do not alter it. Each topic file below gives the figures, how the rules work in 2025, worked examples, the changes from 2024, notes for the books and the open points.
 
-Across the twelve topic files the figures tables hold 318 values: 295 Verified, 10 Corrected and 13 UNVERIFIED, with 18 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
+Across the twelve topic files the figures tables hold 318 values: 294 Verified, 10 Corrected and 14 UNVERIFIED, with 18 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
 
 ---
 
@@ -36,7 +36,7 @@ Across the twelve topic files the figures tables hold 318 values: 295 Verified, 
 | [inkomstenbelasting.md](inkomstenbelasting.md) | Covers the 2025 box 1 tax brackets, heffingskortingen, tariefsaanpassing, and the path from business profit to taxable income. | 26 | 0 | 0 |
 | [zvw.md](zvw.md) | The income-dependent Zvw contribution for an entrepreneur in tax year 2025: the 5,26% rate, the maximum bijdrage-inkomen of € 75.864, who pays by aanslag and how that differs from the 6,51% werkgeversheffing. | 19 | 4 | 1 |
 | [ondernemersaftrek.md](ondernemersaftrek.md) | The ondernemersaftrek, the startersaftrek, the meewerkaftrek, the stakingsaftrek and the 12,7% MKB-winstvrijstelling for tax year 2025, with the urencriterium of 1.225 hours and the tariefsaanpassing of 12,02%. | 23 | 0 | 0 |
-| [investeringen.md](investeringen.md) | Investment deductions (KIA, EIA, MIA, Vamil), the desinvesteringsbijtelling and the depreciation rules for a Dutch sole trader or BV in tax year 2025. | 23 | 3 | 3 |
+| [investeringen.md](investeringen.md) | Investment deductions (KIA, EIA, MIA, Vamil), the desinvesteringsbijtelling and the depreciation rules for a Dutch sole trader or BV in tax year 2025. | 23 | 4 | 3 |
 | [kosten-en-auto.md](kosten-en-auto.md) | Deductible business costs and the car for a Dutch sole trader in tax year 2025, from the gemengde kosten drempel and the fixed exclusions to the kilometre allowance, bijtelling and the prestatiebeurs exception. | 26 | 0 | 0 |
 | [box-3.md](box-3.md) | Box 3 savings and investments for tax year 2025: heffingsvrij vermogen, schuldendrempel, the three category percentages, the six-step calculation, groene beleggingen and the option to report the actual return. | 11 | 0 | 0 |
 | [box-2.md](box-2.md) | Box 2 income and the aanmerkelijk belang rules for tax year 2025, including the two-bracket rate table, excessief lenen, gebruikelijk loon and loss relief. | 27 | 1 | 0 |

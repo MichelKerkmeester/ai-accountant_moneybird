@@ -23,7 +23,7 @@ checked_on: "2026-10-12"
 
 Tax year 2023 is a past year. Its law is enacted, and later changes do not alter it. Each topic file below gives the figures, how the rules work in 2023, worked examples, the changes from 2022, notes for the books and the open points.
 
-Across the twelve topic files the figures tables hold 295 values: 264 Verified, 22 Corrected and 9 UNVERIFIED, with 11 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
+Across the twelve topic files the figures tables hold 295 values: 264 Verified, 21 Corrected and 10 UNVERIFIED, with 11 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
 
 ---
 
@@ -36,7 +36,7 @@ Across the twelve topic files the figures tables hold 295 values: 264 Verified, 
 | [inkomstenbelasting.md](inkomstenbelasting.md) | This file covers Dutch Box 1 tax rates, heffingskortingen, tariefsaanpassing and the flow of sole-trader profit into taxable income for tax year 2023. | 28 | 1 | 1 |
 | [zvw.md](zvw.md) | The income-dependent Zvw contribution for a Dutch entrepreneur in tax year 2023, covering the 5,43% rate, the maximum bijdrage-inkomen of € 66.956, the calculation base after the ondernemersaftrek and MKB-winstvrijstelling, and the difference from the 6,68% werkgeversheffing. | 12 | 1 | 0 |
 | [ondernemersaftrek.md](ondernemersaftrek.md) | All parts of the ondernemersaftrek and the MKB-winstvrijstelling for tax year 2023, with the 2023 amounts, conditions, the end of the oudedagsreserve additions and the tariefsaanpassing. | 23 | 0 | 0 |
-| [investeringen.md](investeringen.md) | Investment deductions and depreciation for tax year 2023: KIA, EIA, MIA, Vamil, ordinary depreciation, bodemwaarde, willekeurige afschrijving and desinvesteringsbijtelling for a sole trader or a BV. | 20 | 0 | 0 |
+| [investeringen.md](investeringen.md) | Investment deductions and depreciation for tax year 2023: KIA, EIA, MIA, Vamil, ordinary depreciation, bodemwaarde, willekeurige afschrijving and desinvesteringsbijtelling for a sole trader or a BV. | 20 | 1 | 0 |
 | [kosten-en-auto.md](kosten-en-auto.md) | Deductible business costs and car rules for a Dutch sole trader in tax year 2023, from the gemengde kosten drempel and the kilometre allowance to bijtelling, the workspace, fines and the abolished studiekostenaftrek. | 32 | 0 | 0 |
 | [box-3.md](box-3.md) | Box 3 income from savings and investments for tax year 2023 under the Overbruggingswet box 3 category method, with figures, conditions and worked examples. | 15 | 0 | 0 |
 | [box-2.md](box-2.md) | Box 2 and aanmerkelijk belang for tax year 2023: the 26,9% rate, the 5% test, loss offset and the belastingkorting, the new excessief lenen rules, gebruikelijk loon and the ODV marktrente. | 22 | 0 | 0 |

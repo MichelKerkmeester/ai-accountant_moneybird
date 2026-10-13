@@ -23,7 +23,7 @@ checked_on: "2026-10-12"
 
 Tax year 2022 is a past year. Its law is enacted, and later changes do not alter it. Each topic file below gives the figures, how the rules work in 2022, worked examples, the changes from 2021, notes for the books and the open points.
 
-Across the twelve topic files the figures tables hold 297 values: 267 Verified, 19 Corrected and 11 UNVERIFIED, with 16 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
+Across the twelve topic files the figures tables hold 297 values: 266 Verified, 19 Corrected and 12 UNVERIFIED, with 16 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
 
 ---
 
@@ -36,7 +36,7 @@ Across the twelve topic files the figures tables hold 297 values: 267 Verified, 
 | [inkomstenbelasting.md](inkomstenbelasting.md) | This file covers Dutch box 1 rates, heffingskortingen, tariefsaanpassing and the route from business profit to taxable income for tax year 2022. | 18 | 1 | 1 |
 | [zvw.md](zvw.md) | Income-dependent Zvw contribution for an entrepreneur in tax year 2022, covering the 5,50% aanslag rate, the maximum bijdrage-inkomen of € 59.706, the 6,75% employer rate and the profit base after ondernemersaftrek and MKB-winstvrijstelling. | 12 | 1 | 0 |
 | [ondernemersaftrek.md](ondernemersaftrek.md) | All 2022 conditions and figures for the ondernemersaftrek and the MKB-winstvrijstelling for a Dutch sole trader, including the urencriterium, the startersaftrek, the oudedagsreserve addition and the tariefsaanpassing. | 25 | 0 | 0 |
-| [investeringen.md](investeringen.md) | All investment deductions and depreciation rules for tax year 2022, with the KIA table, the EIA, MIA and Vamil percentages, the per-asset minimums and the desinvesteringsbijtelling threshold. | 13 | 1 | 1 |
+| [investeringen.md](investeringen.md) | All investment deductions and depreciation rules for tax year 2022, with the KIA table, the EIA, MIA and Vamil percentages, the per-asset minimums and the desinvesteringsbijtelling threshold. | 13 | 2 | 1 |
 | [kosten-en-auto.md](kosten-en-auto.md) | Deductible business costs, gemengde kosten, travel, car and bicycle private-use rules, study costs and workspace rules for tax year 2022. | 29 | 0 | 0 |
 | [box-3.md](box-3.md) | Box 3 for tax year 2022: the old band method, the recalculated category method under the Wet rechtsherstel box 3, and the most favourable outcome for savings and investments. | 15 | 0 | 0 |
 | [box-2.md](box-2.md) | Box 2 income, the aanmerkelijk belang rules, loss relief, gebruikelijk loon, and the PEB and ODV interactions for tax year 2022. | 21 | 0 | 1 |

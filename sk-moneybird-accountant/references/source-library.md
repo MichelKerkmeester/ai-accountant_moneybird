@@ -25,13 +25,14 @@ This library lists the external sources cited by `AGENTS.md`, the root README an
 
 | Measure | Count |
 |---|---|
-| Sources | 493 |
-| Readable as a web page | 343 |
+| Sources | 524 |
+| Readable as a web page | 354 |
 | Readable through WebFetch only | 73 |
-| PDF, downloads but needs a PDF reader | 32 |
+| PDF, downloads but needs a PDF reader | 29 |
 | Archive copy an agent cannot fetch | 31 |
-| Dead link | 4 |
-| Tool endpoint, not a source | 10 |
+| Dead link | 0 |
+| Tool endpoint, not a source | 12 |
+| Added after the last access check | 25 |
 
 Look up a source with a grep, never a full read. The index is over 300 KB and one source sits on one line:
 
@@ -63,13 +64,13 @@ Prefer the higher row when two sources disagree. A statute beats a help page, an
 
 | Authority | Hosts | Sources | Use it for |
 |---|---|---|---|
-| `statute` | wetten.overheid.nl | 73 | The law text in force on a date. Dated links pin the version |
-| `official-publication` | zoek.officielebekendmakingen.nl, open.overheid.nl | 56 | Staatsblad texts, Kamerstukken and their explanatory memoranda |
-| `parliament` | tweedekamer.nl, eerstekamer.nl | 15 | Bills not yet in the Staatsblad, and their status |
-| `tax-authority` | belastingdienst.nl and its subdomains | 241 | Rates, thresholds, deadlines and how the Belastingdienst applies a rule. FISIN pages hold per-year figures |
+| `statute` | wetten.overheid.nl | 74 | The law text in force on a date. Dated links pin the version |
+| `official-publication` | zoek.officielebekendmakingen.nl, open.overheid.nl | 59 | Staatsblad texts, Kamerstukken and their explanatory memoranda |
+| `parliament` | tweedekamer.nl, eerstekamer.nl | 12 | Bills not yet in the Staatsblad, and their status |
+| `tax-authority` | belastingdienst.nl and its subdomains | 262 | Rates, thresholds, deadlines and how the Belastingdienst applies a rule. FISIN pages hold per-year figures |
 | `government` | rijksoverheid.nl, ondernemersplein.overheid.nl, business.gov.nl, kvk.nl, rvo.nl | 36 | Plain-language explanations, the Belastingplan documents, KVK and subsidy rules |
 | `eu` | taxation-customs.ec.europa.eu | 2 | EU VAT rules that Dutch pages refer to |
-| `product-docs` | helpcenter.moneybird.nl, moneybird.com, jortt.nl, github.com | 26 | How Moneybird and Jortt work. Never a tax rule |
+| `product-docs` | helpcenter.moneybird.nl, moneybird.com, jortt.nl, github.com | 32 | How Moneybird and Jortt work. Never a tax rule |
 | `secondary` | financialfocus.abnamro.nl, holdwise.nl, mijn.bovag.nl | 3 | Early reports of announced figures. Confirm on a primary source before use |
 | `archive` | web.archive.org | 31 | Old page versions that back a past-year figure |
 
@@ -139,7 +140,14 @@ Officielebekendmakingen addresses follow a fixed pattern: `kst-<dossier>-<number
 
 ## 6. DEAD LINKS
 
-None. The four links found dead on 2026-10-12 were replaced on 2026-10-13.
+None. The four links found dead on 2026-10-12 were rechecked and replaced on 2026-10-13 with successor pages that state the same figures. Every replacement answered HTTP 200 in the library recheck on 2026-10-13.
+
+| Dead link | Replaced by | Cited by |
+|---|---|---|
+| `download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2024_aa9701z42fd.pdf` | `belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/handboek-ondernemen` and `belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/index` | `references/2024/btw.md` |
+| `rijksoverheid.nl/vraag-en-antwoord/duurzame-economie/groen-sparen-in-een-groenfonds` | `rijksoverheid.nl/documenten/vraag-en-antwoord/duurzame-economie/groen-sparen-in-een-groenfonds` and `belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/beleggen_met_belastingvoordeel/groene_beleggingen` | `references/2026/box-3.md`, `references/2027/box-3.md` |
+| `rijksoverheid.nl/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen` | `rijksoverheid.nl/documenten/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen` | `references/2026/kosten-en-auto.md`, `references/2027/kosten-en-auto.md` |
+| `rijksoverheid.nl/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting-en-welke-heffingskortingen-zijn-er` | `rijksoverheid.nl/documenten/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting-en-welke-heffingskortingen-zijn-er` | `references/2026/inkomstenbelasting.md`, `references/dutch-tax-rules.md` |
 
 ---
 

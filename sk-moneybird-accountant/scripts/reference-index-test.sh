@@ -164,6 +164,32 @@ run_generator() {
     python3 -I "$skill/scripts/build-reference-index.py" "$@" >"$TMP_ROOT/out.txt" 2>&1
 }
 
+# Prove that the walker finds a nested file that a flat-only walk misses
+# Args:
+#   $1 - Skill folder whose builder script to import
+# Returns:
+#   0 when the deep walk holds the nested file and the flat-only walk misses it
+walk_depth_check() {
+    python3 - "$1" <<'PY'
+import importlib.util
+import sys
+
+skill = sys.argv[1]
+spec = importlib.util.spec_from_file_location("nested_builder", skill + "/scripts/build-reference-index.py")
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+nested = "tax-rules/2020/btw/figures.md"
+deep = module.reference_files()
+flat = module.reference_files(depth=1)
+deep_hits = [entry for entry in deep if entry.endswith(nested)]
+flat_hits = [entry for entry in flat if entry.endswith(nested)]
+print("deep files: %d" % len(deep))
+print("flat files: %d" % len(flat))
+if len(deep_hits) != 1 or flat_hits:
+    sys.exit(1)
+PY
+}
+
 # Print the UNVERIFIED count of one topic row of a year README
 # Args:
 #   $1 - Year README path
@@ -251,6 +277,11 @@ FIX_RATE_A=$(printf '%d' 21)
 FIX_RATE_B=$(printf '%d,%02d' 37 35)
 FIX_RATE_C=$(printf '%d,%02d' 9 70)
 FIX_RATE_MISSING=$(printf '%d' 99)
+
+# The nested fixture rates are built the same way, so the tracked file holds
+# no amount-shaped literal either.
+NEST_RATE_MAIN=$(printf '%d%%' 21)
+NEST_RATE_LOW=$(printf '%d%%' 9)
 
 # Build a minimal skill folder with one year folder, a large file, a guide
 # with section 3, a manifest and the page that routes the fixture leaves
@@ -401,6 +432,89 @@ description: "Fixture year change note."
 
 ## 2. All changes by topic
 EOF
+    return 0
+}
+
+# Build a skill folder whose year folder and topic folder sit at any depth
+# Args:
+#   $1 - Skill folder to create
+# Returns:
+#   0 when the fixture is ready, 1 when a write fails
+make_nested_fixture() {
+    local skill="$1"
+    mkdir -p "$skill/scripts" "$skill/references/tax-rules/2020/btw" "$skill/assets" || return 1
+    cp "$BUILDER" "$skill/scripts/" || return 1
+    cat >"$skill/references/dutch-tax-rules.md" <<'EOF'
+---
+title: "Dutch tax rules"
+---
+
+# Dutch tax rules
+
+## 1. Topic files in every year folder
+
+| File | Topic |
+|---|---|
+| `btw.md` | VAT |
+
+## 3. GENERAL RULES
+
+### 3.1 BTW (VAT)
+
+Year files: `btw.md` in each year folder.
+
+The hand-written rule prose stays here.
+EOF
+    cat >"$skill/references/tax-rules/2020/README.md" <<'EOF'
+---
+title: "Tax year 2020"
+description: "Fixture year overview."
+---
+
+# Tax year 2020
+
+## 1. OVERVIEW
+
+Hand prose for the nested fixture year.
+
+## 2. TOPIC FILES
+
+## 3. HEADLINE FIGURES
+EOF
+    # The delimiter stays unquoted so the runtime-built rate values expand. The
+    # body holds no dollar sign, backtick or backslash of its own.
+    cat >"$skill/references/tax-rules/2020/btw/figures.md" <<EOF
+---
+title: "BTW 2020"
+description: "Covers Dutch VAT for the nested fixture."
+nav_label: "BTW"
+---
+
+# BTW 2020
+
+## 1. KEY FIGURES
+
+| Item | Value 2020 | Status | Check |
+|---|---|---|---|
+| Standard rate | ${NEST_RATE_MAIN} | enacted | Verified |
+| Reduced rate | ${NEST_RATE_LOW} | enacted | UNVERIFIED |
+EOF
+    cat >"$skill/references/tax-rules/2020/btw/rules.md" <<'EOF'
+---
+title: "BTW rules 2020"
+description: "Rule prose for the nested fixture."
+---
+
+# BTW rules 2020
+
+## 1. RULES
+
+Rule text that a nested file holds.
+EOF
+    printf '{"modes":[{"leaves":["references/tax-rules/2020/README.md","assets/handbook.md"]}]}\n' \
+        >"$skill/leaf-manifest.json" || return 1
+    printf '# Nested fixture skill\n\nSee the [handbook](assets/handbook.md).\n' >"$skill/SKILL.md" || return 1
+    printf '# Handbook\n' >"$skill/assets/handbook.md" || return 1
     return 0
 }
 
@@ -986,7 +1100,93 @@ else
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 14. RESULT SUMMARY AND EXIT
+# 14. NESTED REFERENCE FOLDERS
+# ───────────────────────────────────────────────────────────────
+
+group "nested reference folders"
+NESTED_FIXTURE="$TMP_ROOT/nested-fixture/sk-moneybird-accountant"
+if make_nested_fixture "$NESTED_FIXTURE"; then
+    pass "the nested fixture repository builds"
+else
+    fail "the nested fixture repository builds"
+fi
+if run_generator "$NESTED_FIXTURE" --init; then
+    pass "the nested fixture --init exits 0"
+else
+    fail "the nested fixture --init exits 0"
+fi
+if run_generator "$NESTED_FIXTURE"; then
+    pass "the nested fixture write exits 0"
+else
+    fail "the nested fixture write exits 0"
+fi
+if run_generator "$NESTED_FIXTURE" --check; then
+    pass "the nested fixture --check exits 0 after the writes"
+else
+    fail "the nested fixture --check exits 0 after the writes"
+fi
+
+if python3 - "$NESTED_FIXTURE/references/index.json" <<'PY'
+import json
+import sys
+
+rows = json.load(open(sys.argv[1], encoding="utf-8"))["files"]
+paths = [row["path"] for row in rows]
+sys.exit(0 if "tax-rules/2020/btw/figures.md" in paths else 1)
+PY
+then
+    pass "the nested figures file is in the index"
+else
+    fail "the nested figures file is in the index"
+fi
+
+if grep -qF '| [btw](btw/figures.md) | Covers Dutch VAT for the nested fixture. | 2 | 1 | 0 |' \
+    "$NESTED_FIXTURE/references/tax-rules/2020/README.md"; then
+    pass "the nested topic folder is counted like a file in the year README"
+else
+    fail "the nested topic folder is counted like a file in the year README"
+fi
+
+if grep -qF 'sk-moneybird-accountant/references/tax-rules/2020/btw/figures.md' \
+    "$NESTED_FIXTURE/references/dutch-tax-rules.md"; then
+    pass "the nested figures file owns its section 3 rows"
+else
+    fail "the nested figures file owns its section 3 rows"
+fi
+
+if walk_depth_check "$NESTED_FIXTURE" >"$TMP_ROOT/out.txt" 2>&1; then
+    pass "the deep walk counts the nested file and the flat-only walk misses it"
+else
+    fail "the deep walk counts the nested file and the flat-only walk misses it"
+fi
+
+NESTED_BEFORE=$(tree_checksums "$NESTED_FIXTURE")
+run_generator "$NESTED_FIXTURE"
+status=$?
+NESTED_AFTER=$(tree_checksums "$NESTED_FIXTURE")
+if [[ "$status" -eq 0 ]] && [[ "$NESTED_BEFORE" == "$NESTED_AFTER" ]]; then
+    pass "a second nested write leaves every file byte-identical"
+else
+    fail "a second nested write leaves every file byte-identical"
+fi
+
+FLAT_STABLE="$TMP_ROOT/flat-stable/sk-moneybird-accountant"
+if make_fixture "$FLAT_STABLE" && run_generator "$FLAT_STABLE" --init && run_generator "$FLAT_STABLE"; then
+    flat_before=$(tree_checksums "$FLAT_STABLE")
+    run_generator "$FLAT_STABLE"
+    status=$?
+    flat_after=$(tree_checksums "$FLAT_STABLE")
+    if [[ "$status" -eq 0 ]] && [[ "$flat_before" == "$flat_after" ]]; then
+        pass "the flat tree stays byte-identical on a second write"
+    else
+        fail "the flat tree stays byte-identical on a second write"
+    fi
+else
+    fail "the flat tree stays byte-identical on a second write"
+fi
+
+# ───────────────────────────────────────────────────────────────
+# 15. RESULT SUMMARY AND EXIT
 # ───────────────────────────────────────────────────────────────
 
 printf '\n%d passed, %d failed\n' "$passed" "$failed"

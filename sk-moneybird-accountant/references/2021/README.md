@@ -23,7 +23,7 @@ checked_on: "2026-10-12"
 
 Tax year 2021 is a past year. Its law is enacted, and later changes do not alter it. Each topic file below gives the figures, how the rules work in 2021, worked examples, the changes from 2020, notes for the books and the open points.
 
-Across the twelve topic files the figures tables hold 244 values: 226 Verified, 7 Corrected and 11 UNVERIFIED, with 12 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
+Across the twelve topic files the figures tables hold 245 values: 226 Verified, 7 Corrected and 12 UNVERIFIED, with 12 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
 
 ---
 
@@ -36,7 +36,7 @@ Across the twelve topic files the figures tables hold 244 values: 226 Verified, 
 | [inkomstenbelasting.md](inkomstenbelasting.md) | This file covers 2021 box 1 rates, AOW-age variants, heffingskortingen, tariefsaanpassing and the route from business profit to taxable income. | 24 | 2 | 2 |
 | [zvw.md](zvw.md) | The income-dependent Zvw contribution for an entrepreneur in tax year 2021: the 5,75% rate, the maximum bijdrage-inkomen of € 58.311, who pays by aanslag and how the rate differs from the 7,00% werkgeversheffing. | 7 | 1 | 0 |
 | [ondernemersaftrek.md](ondernemersaftrek.md) | This file covers the ondernemersaftrek and MKB-winstvrijstelling for tax year 2021, including the urencriterium, zelfstandigenaftrek, startersaftrek, startersaftrek bij arbeidsongeschiktheid, S&O-aftrek, meewerkaftrek, stakingsaftrek, oudedagsreserve addition, tariefsaanpassing and Zvw interaction. | 29 | 0 | 0 |
-| [investeringen.md](investeringen.md) | All 2021 rules for the Dutch investeringsaftrek (KIA, EIA, MIA, Vamil), the per-asset minimums and exclusions, the desinvesteringsbijtelling and the depreciation of bedrijfsmiddelen for a sole trader or a BV. | 16 | 2 | 2 |
+| [investeringen.md](investeringen.md) | All 2021 rules for the Dutch investeringsaftrek (KIA, EIA, MIA, Vamil), the per-asset minimums and exclusions, the desinvesteringsbijtelling and the depreciation of bedrijfsmiddelen for a sole trader or a BV. | 17 | 3 | 2 |
 | [kosten-en-auto.md](kosten-en-auto.md) | Deductible business costs and car rules for a Dutch sole trader in tax year 2021, covering the gemengde kosten drempel, kilometre allowance, bijtelling and the last year of the scholingsuitgaven. | 16 | 0 | 0 |
 | [box-3.md](box-3.md) | Box 3 for tax year 2021: the old band method, the Wet rechtsherstel category recalculation, the most favourable method, green investments and the actual-return route. | 16 | 0 | 0 |
 | [box-2.md](box-2.md) | Box 2 and aanmerkelijk belang rules for tax year 2021, with the 26,9% rate, the 5% test, loss offset and conversion, the forfaitair voordeel and the closed pension routes. | 21 | 0 | 0 |

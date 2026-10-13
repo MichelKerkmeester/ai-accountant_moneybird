@@ -76,7 +76,7 @@ token-baseline: check ok, 142 files, 989 sections
 token-baseline: car route ratio: o200k_base 0.2840, cl100k_base 0.2870
 ```
 
-Canary: `../scripts/token-canary-test.sh` covers the 2026 car question on the KEY FIGURES route. The proposed route must stay at or under 35 percent of the current route and at or under 8,000 `cl100k_base` tokens, which is the year README row plus the one section row. A whole-file load fails the gate, and the suite ends with `7 passed, 0 failed`.
+Canary: `../scripts/token-canary-test.sh` covers the 2026 car question on the KEY FIGURES route. The proposed route must stay at or under 35 percent of the current route and at or under 8,000 `cl100k_base` tokens, which is the year README row plus the one section row. A whole-file load fails the gate, and the suite ends with `8 passed, 0 failed`.
 
 ---
 

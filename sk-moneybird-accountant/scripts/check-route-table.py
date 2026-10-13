@@ -13,8 +13,9 @@ file and the frozen calibration record in assets/route-calibration.json. It
 also compares the generated router block between the router markers with the
 table row by row and the table's multi-word signals and curated advisor
 signals with graph-metadata.json, and the write mode regenerates both
-surfaces. The script uses the Python standard
-library only and makes no network call.
+surfaces. The check also runs the sibling check-skill-words.py over the
+repository, so a SKILL.md above the word ceiling fails this check. The
+script uses the Python standard library only and makes no network call.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/check-route-table.py
@@ -37,9 +38,10 @@ Options:
                      skill's assets/route-calibration.json.
 
 Output:
-    One line per problem, or "route-table: ok" when the file passes. The
-    write mode prints one line per generated surface. Exit 0 on success, 1
-    when the file has problems and 2 when a write is refused.
+    The word check's one line per SKILL.md, one line per problem, or
+    "route-table: ok" when the file passes. The write mode prints one line per
+    generated surface. Exit 0 on success, 1 when the file has problems or the
+    word check fails and 2 when a write is refused.
 """
 
 # ───────────────────────────────────────────────────────────────
@@ -50,6 +52,7 @@ import argparse
 import json
 import os
 import re
+import subprocess
 import sys
 from typing import Any, Dict, List, NoReturn, Optional, Tuple
 
@@ -62,6 +65,11 @@ SKILL_FOLDER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKILL_MD = os.path.join(SKILL_FOLDER, "SKILL.md")
 
 GRAPH_METADATA = os.path.join(SKILL_FOLDER, "graph-metadata.json")
+
+# WHY: the word budget is enforced here, because the repository check list
+# runs this checker and the word check has no step of its own.
+REPO_ROOT = os.path.dirname(SKILL_FOLDER)
+WORD_CHECK = os.path.join(SKILL_FOLDER, "scripts", "check-skill-words.py")
 
 START_MARKER = "<!-- route-table:start -->"
 END_MARKER = "<!-- route-table:end -->"
@@ -1025,7 +1033,38 @@ def check_calibration(path: str, skill_text: str, problems: List[str]) -> None:
     check_sweep(data, problems)
 
 # ───────────────────────────────────────────────────────────────
-# 7. ENTRY POINT
+# 7. WORD CHECK
+# ───────────────────────────────────────────────────────────────
+
+def check_skill_words(problems: List[str]) -> None:
+    """Run the sibling word check over the repository.
+
+    A passing run prints the checker's own line per SKILL.md. A failing run
+    hands those lines to the problem list, which names the file and the band
+    it left.
+
+    Args:
+        problems: Problem list to append to.
+    """
+    if not os.path.isfile(WORD_CHECK):
+        problems.append("skill word check not found: %s" % WORD_CHECK)
+        return
+    completed = subprocess.run(
+        [sys.executable, "-I", WORD_CHECK, "--root", REPO_ROOT],
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+    )
+    lines = [line for line in (completed.stdout + completed.stderr).splitlines() if line.strip()]
+    if completed.returncode != 0:
+        problems.extend(lines)
+        return
+    for line in lines:
+        print(line)
+
+# ───────────────────────────────────────────────────────────────
+# 8. ENTRY POINT
 # ───────────────────────────────────────────────────────────────
 
 def run_write(args: Any, text: str, lines: List[str], rows: List[Dict[str, str]]) -> int:
@@ -1144,6 +1183,7 @@ def main(argv: List[str]) -> int:
     check_calibration(args.calibration, text, problems)
     check_router_block(lines, rows, problems)
     check_intent_signals(rows, args.graph_metadata, problems)
+    check_skill_words(problems)
     if problems:
         for problem in problems:
             print(problem)

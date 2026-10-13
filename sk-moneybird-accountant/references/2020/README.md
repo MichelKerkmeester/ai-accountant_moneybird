@@ -23,7 +23,7 @@ checked_on: "2026-10-12"
 
 Tax year 2020 is a past year. Its law is enacted, and later changes do not alter it. Each topic file below gives the figures, how the rules work in 2020, worked examples, the changes from 2019, notes for the books and the open points.
 
-Across the twelve topic files the figures tables hold 313 values: 274 Verified, 22 Corrected and 17 UNVERIFIED, with 8 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
+Across the twelve topic files the figures tables hold 313 values: 274 Verified, 21 Corrected and 18 UNVERIFIED, with 8 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
 
 ---
 
@@ -36,7 +36,7 @@ Across the twelve topic files the figures tables hold 313 values: 274 Verified, 
 | [inkomstenbelasting.md](inkomstenbelasting.md) | Covers the 2020 box 1 rates, heffingskortingen, tariefsaanpassing and the route from business profit to taxable income. | 17 | 3 | 0 |
 | [zvw.md](zvw.md) | Income-dependent Zvw contribution for a sole trader in tax year 2020: rate, maximum contribution income, aanslag, calculation and difference from the employer rate. | 10 | 3 | 2 |
 | [ondernemersaftrek.md](ondernemersaftrek.md) | Covers the five parts of the ondernemersaftrek, the urencriterium, the startersaftrek, the MKB-winstvrijstelling, the tariefsaanpassing and the 2020 amounts for tax year 2020. | 22 | 0 | 0 |
-| [investeringen.md](investeringen.md) | All 2020 rules and amounts for the KIA, EIA, MIA and Vamil investment deductions, the desinvesteringsbijtelling and the depreciation of bedrijfsmiddelen for a Dutch sole trader or BV. | 22 | 2 | 2 |
+| [investeringen.md](investeringen.md) | All 2020 rules and amounts for the KIA, EIA, MIA and Vamil investment deductions, the desinvesteringsbijtelling and the depreciation of bedrijfsmiddelen for a Dutch sole trader or BV. | 22 | 3 | 2 |
 | [kosten-en-auto.md](kosten-en-auto.md) | Business cost deductions and car rules for tax year 2020, covering the gemengde kosten drempel, the 80% election, the kilometre allowance, the car bijtelling and the BV variant of the drempel. | 24 | 0 | 0 |
 | [box-3.md](box-3.md) | Box 3 savings and investments for tax year 2020: the old band method, the 30% rate, heffingsvrij vermogen, schuldendrempel, green investments and the rechtsherstel recalculation. | 18 | 0 | 0 |
 | [box-2.md](box-2.md) | Box 2 income, the aanmerkelijk belang test, loss offset and conversion, gebruikelijk loon and the pensioen in eigen beheer dates for tax year 2020. | 27 | 1 | 1 |

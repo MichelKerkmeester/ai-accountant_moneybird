@@ -23,7 +23,7 @@ checked_on: "2026-10-12"
 
 Tax year 2024 is a past year. Its law is enacted, and later changes do not alter it. Each topic file below gives the figures, how the rules work in 2024, worked examples, the changes from 2023, notes for the books and the open points.
 
-Across the twelve topic files the figures tables hold 290 values: 265 Verified, 17 Corrected and 8 UNVERIFIED, with 13 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
+Across the twelve topic files the figures tables hold 290 values: 265 Verified, 16 Corrected and 9 UNVERIFIED, with 13 not marked enacted. The general rules, settled conflicts and record duties are in [Dutch tax rules](../dutch-tax-rules.md). Corrections to these values are recorded in the [correction log](changelog.md).
 
 ---
 
@@ -36,7 +36,7 @@ Across the twelve topic files the figures tables hold 290 values: 265 Verified, 
 | [inkomstenbelasting.md](inkomstenbelasting.md) | This file covers Dutch Box 1 rates, AOW-age variants, tax credits, rate adjustment and the route from business profit to taxable income for tax year 2024. | 29 | 0 | 0 |
 | [zvw.md](zvw.md) | The income-dependent Zvw contribution for a ZZP entrepreneur in 2024: the 5,32% rate over the belastbare winst uit onderneming, the maximum bijdrage-inkomen of € 71.628, who pays by aanslag, and how the entrepreneur rate differs from the 6,57% employer rate. | 9 | 2 | 0 |
 | [ondernemersaftrek.md](ondernemersaftrek.md) | The ondernemersaftrek, the MKB-winstvrijstelling, the urencriterium and the tariefsaanpassing for a Dutch sole trader in tax year 2024. | 20 | 0 | 0 |
-| [investeringen.md](investeringen.md) | Covers the KIA, EIA, MIA, Vamil, desinvesteringsbijtelling and depreciation rules that apply in tax year 2024 to a Dutch sole trader or a BV. | 16 | 0 | 1 |
+| [investeringen.md](investeringen.md) | Covers the KIA, EIA, MIA, Vamil, desinvesteringsbijtelling and depreciation rules that apply in tax year 2024 to a Dutch sole trader or a BV. | 16 | 1 | 1 |
 | [kosten-en-auto.md](kosten-en-auto.md) | Deductible business costs and car rules for tax year 2024, including the gemengde kosten drempel of € 5.600, the € 0,23 kilometre allowance and the 22% bijtelling. | 28 | 0 | 0 |
 | [box-3.md](box-3.md) | Box 3 income from savings and investments for tax year 2024 under the enacted category method, including rates, thresholds, green investments, actual-return reporting and the Hoge Raad ruling of 6 June 2024. | 13 | 0 | 0 |
 | [box-2.md](box-2.md) | Box 2 income, the aanmerkelijk belang rules, excessief lenen, gebruikelijk loon and pension interactions for tax year 2024. | 17 | 0 | 0 |

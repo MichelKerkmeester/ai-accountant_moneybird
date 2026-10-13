@@ -38,3 +38,4 @@ The rows below were first researched and later corrected against a primary sourc
 | 2026-10-12 | kosten-en-auto.md | Uncapped zero-emission categories 2026 | as first researched | Corrected | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | 2026-10-12 | kosten-en-auto.md | Studiekostenaftrek 2026 | as first researched | Corrected | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aftrek_studiekosten |
 | 2026-10-12 | zvw.md | Zvw base for a winst-ondernemer | as first researched | Corrected | https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01 |
+| 2026-10-13 | investeringen.md | Starters willekeurige afschrijving, yearly cap | Corrected | UNVERIFIED | https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 8 |

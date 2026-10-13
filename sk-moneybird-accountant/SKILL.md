@@ -293,7 +293,7 @@ Answer order: avoid loading unneeded record content, then scan the draft with th
 
 ### Loading notes
 
-Load the project bootstrap and this skill first. Load only the row's read set, one phase group at a time, and a sibling tool skill only when its route names it. Grep `assets/source-library.json` for a host, topic or citing file. Never read it whole.
+Load the project bootstrap and this skill first. Load only the row's read set, one phase group at a time, and a sibling tool skill only when its route names it. Grep `assets/source-library.json` for a host, topic or citing file. Never read it whole. Each `SKILL.md` aims at a 3,000-word loading budget with a hard ceiling of 4,000 words. `python3 -I sk-moneybird-accountant/scripts/check-skill-words.py` warns above the budget and fails above the ceiling.
 
 ---
 

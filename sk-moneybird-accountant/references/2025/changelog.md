@@ -37,3 +37,4 @@ The rows below were first researched and later corrected against a primary sourc
 | 2026-10-12 | bv-en-vennootschapsbelasting.md | BTW-eenheid beleidsbesluit | as first researched | Corrected | https://zoek.officielebekendmakingen.nl/stcrt-2024-38545.html |
 | 2026-10-12 | kosten-en-auto.md | Werkruimte in an owned home in the ondernemingsvermogen | as first researched | Corrected | https://wetten.overheid.nl/BWBR0011353/2025-01-01 |
 | 2026-10-12 | ondernemersaftrek.md | Ondernemersaftrek parts | as first researched | Corrected | https://wetten.overheid.nl/BWBR0011353/2020-01-01 |
+| 2026-10-13 | investeringen.md | Starters willekeurige afschrijving, yearly cap | Verified | UNVERIFIED | https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 8 |
