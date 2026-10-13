@@ -207,7 +207,7 @@ Lists every external source the skill family cites, with its authority and how a
 
 #### Current Reality
 
-The source library reference groups the cited sources by authority, names the most-cited statutes and pages, and records dead links. A generated index holds one row per source with its access result and citing files, and a builder checks it for drift without any network call. The corresponding manual scenario checks the route to the library and the access method without API access.
+The source library reference groups the cited sources by authority, names the most-cited statutes and pages, and records dead links. A generated index holds one row per source with its access result, digest and citing files, and a builder checks it for drift, for cited dead rows and for perishable parliamentary links without any network call. A monthly job watches the publication series in the watchlist and checks the year files against the release calendar in the year rollover runbook. The corresponding manual scenario checks the route to the library and the access method without API access.
 
 #### Source Files
 

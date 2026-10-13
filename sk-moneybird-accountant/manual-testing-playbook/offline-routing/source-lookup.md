@@ -95,6 +95,8 @@ Check the bootstrap's step 2 pointer to the Task-Type Table, the T5 tax figure r
 | AI Systems/Moneybird Accountant/sk-moneybird-accountant/SKILL.md | Defines mode and reference routing |
 | AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/source-library.md | Groups the sources and explains each access class |
 | AI Systems/Moneybird Accountant/sk-moneybird-accountant/assets/source-library.json | Holds one row per source with its access result |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/assets/source-watchlist.json | Lists the publication series the monthly watch checks |
+| AI Systems/Moneybird Accountant/sk-moneybird-accountant/references/year-rollover.md | Holds the rollover runbook and the release calendar |
 | AI Systems/Moneybird Accountant/AGENTS.md | Defines project bootstrap and privacy rules |
 
 ---
