@@ -359,8 +359,12 @@ fi
 sed 's|references/vat-return/README.md| |' "$TMP_ROOT/gaps.md" >"$TMP_ROOT/m-gap-owner.md"
 signals_mutant "gap row without an owner" "$TMP_ROOT/m-gap-owner.md"
 
-# Give the first ledger row a coverage value outside the allowed set
-sed 's/| gap |/| unknown |/' "$TMP_ROOT/gaps.md" >"$TMP_ROOT/m-gap-coverage.md"
+# Give every ledger row a coverage value outside the allowed set. The rows may all be
+# covered by now, so match either value and refuse a mutant that changed nothing
+sed -E 's/\| (gap|covered) \|/| unknown |/' "$TMP_ROOT/gaps.md" >"$TMP_ROOT/m-gap-coverage.md"
+if cmp -s "$TMP_ROOT/gaps.md" "$TMP_ROOT/m-gap-coverage.md"; then
+    fail "gap coverage mutant changed nothing"
+fi
 signals_mutant "gap row with an unknown coverage" "$TMP_ROOT/m-gap-coverage.md"
 
 # Repeat a topic in the ledger

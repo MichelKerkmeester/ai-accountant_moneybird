@@ -154,7 +154,7 @@ The step list for the quarterly preparation is in [`references/vat-return/README
 - The step list, the auditfile gate and the close checks are in [the yearly overview folder](./yearly-overview/README.md).
 - Compare annual totals to the evidence and filed records.
 - Lock a period only when the applicable workflow has passed and the operator directs the action.
-- Route Moneybird CLI reads through moneybird-guard under the Read Step Contract in `cli-moneybird/SKILL.md` section 3. For writes, apply LIVE write authority. Keep income-tax return preparation and filing with the operator or a bookkeeper.
+- Route Moneybird CLI reads through moneybird-guard under the Read Step Contract in `cli-moneybird/SKILL.md` section 3. For writes, apply LIVE write authority. Prepare the income tax return through [the income tax return folder](./income-tax-return/README.md), amended on 2026-10-14 when the preparation procedure landed: the agent prepares, the operator reviews and confirms it, and filing stays operator-only.
 
 ### Private withdrawals and deposits in the accounts
 

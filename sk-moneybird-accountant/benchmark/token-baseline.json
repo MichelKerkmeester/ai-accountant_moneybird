@@ -9,7 +9,7 @@
   },
   "files": [
     {
-      "bytes": 32338,
+      "bytes": 32630,
       "path": "sk-moneybird-accountant/references/fixed-assets.md",
       "sections": [
         {
@@ -58,19 +58,19 @@
         },
         {
           "anchor": "5-investment-deductions-and-disposal",
-          "bytes": 2568,
+          "bytes": 2860,
           "line": 83,
-          "lines": 11,
+          "lines": 12,
           "title": "5. INVESTMENT DEDUCTIONS AND DISPOSAL",
           "tokens": {
-            "cl100k_base": 780,
-            "o200k_base": 705
+            "cl100k_base": 844,
+            "o200k_base": 770
           }
         },
         {
           "anchor": "6-vat-on-an-asset",
           "bytes": 4162,
-          "line": 94,
+          "line": 95,
           "lines": 16,
           "title": "6. VAT ON AN ASSET",
           "tokens": {
@@ -81,7 +81,7 @@
         {
           "anchor": "7-the-asset-flow-in-moneybird",
           "bytes": 4312,
-          "line": 110,
+          "line": 111,
           "lines": 17,
           "title": "7. THE ASSET FLOW IN MONEYBIRD",
           "tokens": {
@@ -92,7 +92,7 @@
         {
           "anchor": "8-cases",
           "bytes": 2262,
-          "line": 127,
+          "line": 128,
           "lines": 12,
           "title": "8. CASES",
           "tokens": {
@@ -103,7 +103,7 @@
         {
           "anchor": "9-mixed-private-and-business-use",
           "bytes": 2491,
-          "line": 139,
+          "line": 140,
           "lines": 12,
           "title": "9. MIXED PRIVATE AND BUSINESS USE",
           "tokens": {
@@ -114,7 +114,7 @@
         {
           "anchor": "10-calculated-examples",
           "bytes": 1866,
-          "line": 151,
+          "line": 152,
           "lines": 27,
           "title": "10. CALCULATED EXAMPLES",
           "tokens": {
@@ -125,7 +125,7 @@
         {
           "anchor": "11-checks-after-booking",
           "bytes": 2081,
-          "line": 178,
+          "line": 179,
           "lines": 10,
           "title": "11. CHECKS AFTER BOOKING",
           "tokens": {
@@ -136,7 +136,7 @@
         {
           "anchor": "12-open-points",
           "bytes": 1959,
-          "line": 188,
+          "line": 189,
           "lines": 11,
           "title": "12. OPEN POINTS",
           "tokens": {
@@ -147,7 +147,7 @@
         {
           "anchor": "13-related-resources",
           "bytes": 721,
-          "line": 199,
+          "line": 200,
           "lines": 9,
           "title": "13. RELATED RESOURCES",
           "tokens": {
@@ -157,8 +157,377 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 9502,
-        "o200k_base": 8633
+        "cl100k_base": 9566,
+        "o200k_base": 8698
+      }
+    },
+    {
+      "bytes": 5576,
+      "path": "sk-moneybird-accountant/references/income-tax-return/README.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 832,
+          "line": 21,
+          "lines": 10,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 189,
+            "o200k_base": 189
+          }
+        },
+        {
+          "anchor": "2-the-five-files",
+          "bytes": 781,
+          "line": 31,
+          "lines": 12,
+          "title": "2. THE FIVE FILES",
+          "tokens": {
+            "cl100k_base": 179,
+            "o200k_base": 181
+          }
+        },
+        {
+          "anchor": "3-boundary",
+          "bytes": 542,
+          "line": 43,
+          "lines": 9,
+          "title": "3. BOUNDARY",
+          "tokens": {
+            "cl100k_base": 112,
+            "o200k_base": 111
+          }
+        },
+        {
+          "anchor": "4-figure-link-rule",
+          "bytes": 1021,
+          "line": 52,
+          "lines": 10,
+          "title": "4. FIGURE LINK RULE",
+          "tokens": {
+            "cl100k_base": 272,
+            "o200k_base": 265
+          }
+        },
+        {
+          "anchor": "5-shared-disposition-vocabulary",
+          "bytes": 812,
+          "line": 62,
+          "lines": 16,
+          "title": "5. SHARED DISPOSITION VOCABULARY",
+          "tokens": {
+            "cl100k_base": 190,
+            "o200k_base": 189
+          }
+        },
+        {
+          "anchor": "6-related-resources",
+          "bytes": 782,
+          "line": 78,
+          "lines": 9,
+          "title": "6. RELATED RESOURCES",
+          "tokens": {
+            "cl100k_base": 191,
+            "o200k_base": 188
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1318,
+        "o200k_base": 1302
+      }
+    },
+    {
+      "bytes": 4684,
+      "path": "sk-moneybird-accountant/references/income-tax-return/investment-and-claim-register.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 616,
+          "line": 20,
+          "lines": 8,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 130,
+            "o200k_base": 129
+          }
+        },
+        {
+          "anchor": "2-the-register",
+          "bytes": 612,
+          "line": 28,
+          "lines": 13,
+          "title": "2. THE REGISTER",
+          "tokens": {
+            "cl100k_base": 164,
+            "o200k_base": 164
+          }
+        },
+        {
+          "anchor": "3-the-conditions-the-register-evidences",
+          "bytes": 1176,
+          "line": 41,
+          "lines": 13,
+          "title": "3. THE CONDITIONS THE REGISTER EVIDENCES",
+          "tokens": {
+            "cl100k_base": 311,
+            "o200k_base": 302
+          }
+        },
+        {
+          "anchor": "4-the-rules-for-the-register",
+          "bytes": 644,
+          "line": 54,
+          "lines": 10,
+          "title": "4. THE RULES FOR THE REGISTER",
+          "tokens": {
+            "cl100k_base": 146,
+            "o200k_base": 147
+          }
+        },
+        {
+          "anchor": "5-related-resources",
+          "bytes": 708,
+          "line": 64,
+          "lines": 8,
+          "title": "5. RELATED RESOURCES",
+          "tokens": {
+            "cl100k_base": 181,
+            "o200k_base": 179
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1139,
+        "o200k_base": 1126
+      }
+    },
+    {
+      "bytes": 8667,
+      "path": "sk-moneybird-accountant/references/income-tax-return/operator-inputs.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 958,
+          "line": 20,
+          "lines": 10,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 198,
+            "o200k_base": 191
+          }
+        },
+        {
+          "anchor": "2-the-official-private-part-input-list",
+          "bytes": 2347,
+          "line": 30,
+          "lines": 20,
+          "title": "2. THE OFFICIAL PRIVATE-PART INPUT LIST",
+          "tokens": {
+            "cl100k_base": 569,
+            "o200k_base": 513
+          }
+        },
+        {
+          "anchor": "3-the-operator-evidence-checklist",
+          "bytes": 2944,
+          "line": 50,
+          "lines": 25,
+          "title": "3. THE OPERATOR EVIDENCE CHECKLIST",
+          "tokens": {
+            "cl100k_base": 682,
+            "o200k_base": 649
+          }
+        },
+        {
+          "anchor": "4-the-disposition-vocabulary",
+          "bytes": 826,
+          "line": 75,
+          "lines": 14,
+          "title": "4. THE DISPOSITION VOCABULARY",
+          "tokens": {
+            "cl100k_base": 197,
+            "o200k_base": 197
+          }
+        },
+        {
+          "anchor": "5-related-resources",
+          "bytes": 612,
+          "line": 89,
+          "lines": 8,
+          "title": "5. RELATED RESOURCES",
+          "tokens": {
+            "cl100k_base": 152,
+            "o200k_base": 151
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 2008,
+        "o200k_base": 1904
+      }
+    },
+    {
+      "bytes": 19427,
+      "path": "sk-moneybird-accountant/references/income-tax-return/procedure.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 886,
+          "line": 20,
+          "lines": 10,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 208,
+            "o200k_base": 210
+          }
+        },
+        {
+          "anchor": "2-the-steps",
+          "bytes": 4787,
+          "line": 30,
+          "lines": 21,
+          "title": "2. THE STEPS",
+          "tokens": {
+            "cl100k_base": 1100,
+            "o200k_base": 1080
+          }
+        },
+        {
+          "anchor": "3-the-source-map",
+          "bytes": 6935,
+          "line": 51,
+          "lines": 44,
+          "title": "3. THE SOURCE MAP",
+          "tokens": {
+            "cl100k_base": 2018,
+            "o200k_base": 1853
+          }
+        },
+        {
+          "anchor": "4-evidence-gates",
+          "bytes": 2574,
+          "line": 95,
+          "lines": 19,
+          "title": "4. EVIDENCE GATES",
+          "tokens": {
+            "cl100k_base": 620,
+            "o200k_base": 603
+          }
+        },
+        {
+          "anchor": "5-the-review-pack",
+          "bytes": 1247,
+          "line": 114,
+          "lines": 15,
+          "title": "5. THE REVIEW PACK",
+          "tokens": {
+            "cl100k_base": 300,
+            "o200k_base": 286
+          }
+        },
+        {
+          "anchor": "6-stop-rules",
+          "bytes": 699,
+          "line": 129,
+          "lines": 16,
+          "title": "6. STOP RULES",
+          "tokens": {
+            "cl100k_base": 151,
+            "o200k_base": 150
+          }
+        },
+        {
+          "anchor": "7-residual-risks",
+          "bytes": 515,
+          "line": 145,
+          "lines": 14,
+          "title": "7. RESIDUAL RISKS",
+          "tokens": {
+            "cl100k_base": 133,
+            "o200k_base": 125
+          }
+        },
+        {
+          "anchor": "8-related-resources",
+          "bytes": 943,
+          "line": 159,
+          "lines": 12,
+          "title": "8. RELATED RESOURCES",
+          "tokens": {
+            "cl100k_base": 227,
+            "o200k_base": 223
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 4953,
+        "o200k_base": 4717
+      }
+    },
+    {
+      "bytes": 5147,
+      "path": "sk-moneybird-accountant/references/income-tax-return/risks-and-open-points.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 611,
+          "line": 20,
+          "lines": 8,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 135,
+            "o200k_base": 135
+          }
+        },
+        {
+          "anchor": "2-the-five-residual-unknowns",
+          "bytes": 1783,
+          "line": 28,
+          "lines": 14,
+          "title": "2. THE FIVE RESIDUAL UNKNOWNS",
+          "tokens": {
+            "cl100k_base": 503,
+            "o200k_base": 480
+          }
+        },
+        {
+          "anchor": "3-the-2025-starters-cap-status-agreement",
+          "bytes": 615,
+          "line": 42,
+          "lines": 8,
+          "title": "3. THE 2025 STARTERS CAP STATUS AGREEMENT",
+          "tokens": {
+            "cl100k_base": 164,
+            "o200k_base": 162
+          }
+        },
+        {
+          "anchor": "4-the-rule-for-an-open-point",
+          "bytes": 600,
+          "line": 50,
+          "lines": 10,
+          "title": "4. THE RULE FOR AN OPEN POINT",
+          "tokens": {
+            "cl100k_base": 144,
+            "o200k_base": 144
+          }
+        },
+        {
+          "anchor": "5-related-resources",
+          "bytes": 665,
+          "line": 60,
+          "lines": 8,
+          "title": "5. RELATED RESOURCES",
+          "tokens": {
+            "cl100k_base": 177,
+            "o200k_base": 175
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1322,
+        "o200k_base": 1293
       }
     },
     {
@@ -1194,7 +1563,7 @@
       }
     },
     {
-      "bytes": 15103,
+      "bytes": 15274,
       "path": "sk-moneybird-accountant/references/moneybird-bookkeeping.md",
       "sections": [
         {
@@ -1276,13 +1645,13 @@
         },
         {
           "anchor": "8-live-bookkeeping-cycles",
-          "bytes": 4452,
+          "bytes": 4623,
           "line": 132,
           "lines": 52,
           "title": "8. LIVE BOOKKEEPING CYCLES",
           "tokens": {
-            "cl100k_base": 992,
-            "o200k_base": 982
+            "cl100k_base": 1030,
+            "o200k_base": 1020
           }
         },
         {
@@ -1298,8 +1667,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3440,
-        "o200k_base": 3396
+        "cl100k_base": 3478,
+        "o200k_base": 3434
       }
     },
     {
@@ -1456,7 +1825,7 @@
       }
     },
     {
-      "bytes": 12066,
+      "bytes": 12070,
       "path": "sk-moneybird-accountant/references/routing-signals.md",
       "sections": [
         {
@@ -1527,7 +1896,7 @@
         },
         {
           "anchor": "7-documented-gaps",
-          "bytes": 1048,
+          "bytes": 1052,
           "line": 110,
           "lines": 12,
           "title": "7. Documented gaps",
@@ -16015,12 +16384,12 @@
     },
     {
       "blocks": 1,
-      "bytes": 154473,
+      "bytes": 157798,
       "files": 1,
       "name": "references/index.json",
       "tokens": {
-        "cl100k_base": 49950,
-        "o200k_base": 50118
+        "cl100k_base": 50910,
+        "o200k_base": 51096
       }
     }
   ],
@@ -16047,16 +16416,16 @@
   },
   "units": [
     {
-      "bytes": 6273489,
-      "files": 453,
+      "bytes": 6317457,
+      "files": 458,
       "name": "corpus total",
       "reads": [
         "sk-moneybird-accountant/references"
       ],
-      "sections": 1042,
+      "sections": 1071,
       "tokens": {
-        "cl100k_base": 1932814,
-        "o200k_base": 1807651
+        "cl100k_base": 1943656,
+        "o200k_base": 1818096
       }
     },
     {
@@ -16082,14 +16451,14 @@
       }
     },
     {
-      "bytes": 34392,
+      "bytes": 34394,
       "name": "sk-moneybird-accountant/SKILL.md",
       "reads": [
         "sk-moneybird-accountant/SKILL.md"
       ],
       "tokens": {
-        "cl100k_base": 9081,
-        "o200k_base": 8925
+        "cl100k_base": 9082,
+        "o200k_base": 8926
       }
     },
     {

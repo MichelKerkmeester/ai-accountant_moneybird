@@ -2125,6 +2125,7 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
+        "references/income-tax-return/README.md",
         "references/tax-rules/2026/inkomstenbelasting/figures.md",
         "references/tax-rules/2026/ondernemersaftrek/figures.md"
       ],
@@ -2156,6 +2157,7 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
+        "references/income-tax-return/README.md",
         "references/tax-rules/2026/inkomstenbelasting/figures.md",
         "references/tax-rules/2026/ondernemersaftrek/figures.md"
       ],
