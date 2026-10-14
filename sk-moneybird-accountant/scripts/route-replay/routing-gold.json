@@ -41,8 +41,8 @@
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
-        "references/source-library.md"
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md"
       ],
       "expected_facts": [
         "Phase 22",
@@ -75,8 +75,8 @@
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
-        "references/source-library.md"
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md"
       ],
       "expected_facts": [
         "M12",
@@ -138,8 +138,8 @@
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
-        "references/source-library.md"
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md"
       ],
       "expected_facts": [
         "Phase 22",
@@ -171,8 +171,8 @@
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
-        "references/source-library.md"
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md"
       ],
       "expected_facts": [
         "WRITE_INTENT",
@@ -205,8 +205,8 @@
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
-        "references/source-library.md"
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md"
       ],
       "expected_facts": [
         "Operator UI",
@@ -239,8 +239,8 @@
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
-        "references/source-library.md"
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md"
       ],
       "expected_facts": [
         "trial",
@@ -266,11 +266,11 @@
       "tie": "",
       "expected_paths": [
         "references/moneybird-bookkeeping.md",
-        "references/2026/README.md"
+        "references/tax-rules/2026/README.md"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
+        "references/tax-rules/dutch-tax-rules.md",
         "references/migration/shared-mechanisms.md"
       ],
       "expected_facts": [
@@ -297,12 +297,12 @@
       "tie": "",
       "expected_paths": [
         "references/moneybird-bookkeeping.md",
-        "references/2026/README.md",
-        "references/2026/btw.md"
+        "references/tax-rules/2026/README.md",
+        "references/tax-rules/2026/btw.md"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
+        "references/tax-rules/dutch-tax-rules.md",
         "references/migration/shared-mechanisms.md"
       ],
       "expected_facts": [
@@ -329,12 +329,12 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/2026/btw.md",
+        "references/tax-rules/2026/btw.md",
         "references/moneybird-bookkeeping.md"
       ],
       "forbidden_paths": [
-        "references/dutch-tax-rules.md",
-        "references/source-library.md",
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
         "references/migration/README.md"
       ],
       "expected_facts": [
@@ -366,8 +366,8 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
-        "references/2026/README.md",
-        "references/2026/kosten-en-auto.md#2-key-figures"
+        "references/tax-rules/2026/README.md",
+        "references/tax-rules/2026/kosten-en-auto.md#2-key-figures"
       ],
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
@@ -433,7 +433,7 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
-        "references/source-library.md"
+        "references/tax-rules/source-library.md"
       ],
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
@@ -500,8 +500,8 @@
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
-        "references/source-library.md"
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md"
       ],
       "expected_facts": [
         "jortt-cli",
@@ -541,8 +541,8 @@
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
-        "references/source-library.md"
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md"
       ],
       "expected_facts": [
         "Phase 22",
@@ -576,8 +576,8 @@
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
-        "references/source-library.md"
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md"
       ],
       "expected_facts": [
         "M12",
@@ -641,8 +641,8 @@
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
-        "references/source-library.md"
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md"
       ],
       "expected_facts": [
         "Phase 22",
@@ -675,8 +675,8 @@
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
-        "references/source-library.md"
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md"
       ],
       "expected_facts": [
         "WRITE_INTENT",
@@ -710,8 +710,8 @@
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
-        "references/source-library.md"
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md"
       ],
       "expected_facts": [
         "Operator UI",
@@ -745,8 +745,8 @@
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
-        "references/source-library.md"
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md"
       ],
       "expected_facts": [
         "trial",
@@ -773,11 +773,11 @@
       "tie": "",
       "expected_paths": [
         "references/moneybird-bookkeeping.md",
-        "references/2026/README.md"
+        "references/tax-rules/2026/README.md"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
+        "references/tax-rules/dutch-tax-rules.md",
         "references/migration/shared-mechanisms.md"
       ],
       "expected_facts": [
@@ -805,12 +805,12 @@
       "tie": "",
       "expected_paths": [
         "references/moneybird-bookkeeping.md",
-        "references/2026/README.md",
-        "references/2026/btw.md"
+        "references/tax-rules/2026/README.md",
+        "references/tax-rules/2026/btw.md"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
+        "references/tax-rules/dutch-tax-rules.md",
         "references/migration/shared-mechanisms.md"
       ],
       "expected_facts": [
@@ -838,12 +838,12 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/2026/btw.md",
+        "references/tax-rules/2026/btw.md",
         "references/moneybird-bookkeeping.md"
       ],
       "forbidden_paths": [
-        "references/dutch-tax-rules.md",
-        "references/source-library.md",
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
         "references/migration/README.md"
       ],
       "expected_facts": [
@@ -875,8 +875,8 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
-        "references/2026/README.md",
-        "references/2026/kosten-en-auto.md#2-key-figures"
+        "references/tax-rules/2026/README.md",
+        "references/tax-rules/2026/kosten-en-auto.md#2-key-figures"
       ],
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
@@ -942,7 +942,7 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
-        "references/source-library.md"
+        "references/tax-rules/source-library.md"
       ],
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
@@ -1010,8 +1010,8 @@
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
-        "references/source-library.md"
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md"
       ],
       "expected_facts": [
         "jortt-cli",
@@ -1130,7 +1130,7 @@
       "tie": "T4-over-T2",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/2026/btw.md",
+        "references/tax-rules/2026/btw.md",
         "references/moneybird-bookkeeping.md"
       ],
       "forbidden_paths": [
@@ -1157,7 +1157,7 @@
       "tie": "T4-over-T2",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/2026/btw.md",
+        "references/tax-rules/2026/btw.md",
         "references/moneybird-bookkeeping.md"
       ],
       "forbidden_paths": [
@@ -1183,12 +1183,12 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
-        "references/dutch-tax-rules.md#310-work-relationship-and-procedure"
+        "references/tax-rules/dutch-tax-rules.md#310-work-relationship-and-procedure"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
         "references/moneybird-bookkeeping.md",
-        "references/source-library.md"
+        "references/tax-rules/source-library.md"
       ],
       "expected_facts": [
         "Bewaarplicht"
@@ -1213,12 +1213,12 @@
       "tie": "T4-over-T3",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/2026/btw.md",
+        "references/tax-rules/2026/btw.md",
         "references/moneybird-bookkeeping.md"
       ],
       "forbidden_paths": [
-        "references/dutch-tax-rules.md",
-        "references/source-library.md",
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
         "references/migration/README.md"
       ],
       "expected_facts": [
@@ -1249,8 +1249,8 @@
       "tier": "",
       "tie": "T5-over-T6",
       "expected_paths": [
-        "references/2026/README.md",
-        "references/2026/btw.md#2-key-figures"
+        "references/tax-rules/2026/README.md",
+        "references/tax-rules/2026/btw.md#2-key-figures"
       ],
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
@@ -1288,8 +1288,8 @@
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
-        "references/source-library.md"
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md"
       ],
       "expected_facts": [
         "M12",
@@ -1375,7 +1375,7 @@
       ],
       "expected_claims": [
         {
-          "path": "references/year-and-state.md",
+          "path": "references/tax-rules/year-and-state.md",
           "text": "year_key"
         }
       ]
@@ -1418,11 +1418,11 @@
       "tie": "",
       "expected_paths": [
         "references/moneybird-bookkeeping.md",
-        "references/2026/README.md"
+        "references/tax-rules/2026/README.md"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
+        "references/tax-rules/dutch-tax-rules.md",
         "references/migration/shared-mechanisms.md"
       ],
       "expected_facts": [
@@ -1449,12 +1449,12 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/2026/btw.md",
+        "references/tax-rules/2026/btw.md",
         "references/moneybird-bookkeeping.md"
       ],
       "forbidden_paths": [
-        "references/dutch-tax-rules.md",
-        "references/source-library.md",
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
         "references/migration/README.md"
       ],
       "expected_facts": [
@@ -1487,11 +1487,11 @@
       "tie": "",
       "expected_paths": [
         "references/moneybird-bookkeeping.md",
-        "references/2026/README.md"
+        "references/tax-rules/2026/README.md"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
-        "references/dutch-tax-rules.md",
+        "references/tax-rules/dutch-tax-rules.md",
         "references/migration/shared-mechanisms.md"
       ],
       "expected_facts": [
@@ -1518,13 +1518,13 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/2026/btw.md",
+        "references/tax-rules/2026/btw.md",
         "references/moneybird-bookkeeping.md",
         "references/mixed-use-costs.md"
       ],
       "forbidden_paths": [
-        "references/dutch-tax-rules.md",
-        "references/source-library.md",
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
         "references/migration/README.md",
         "references/fixed-assets.md"
       ],
@@ -1558,13 +1558,13 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/2026/btw.md",
+        "references/tax-rules/2026/btw.md",
         "references/moneybird-bookkeeping.md",
         "references/mixed-use-costs.md"
       ],
       "forbidden_paths": [
-        "references/dutch-tax-rules.md",
-        "references/source-library.md",
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
         "references/migration/README.md",
         "references/fixed-assets.md"
       ],
@@ -1598,13 +1598,13 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/2026/btw.md",
+        "references/tax-rules/2026/btw.md",
         "references/moneybird-bookkeeping.md",
         "references/mixed-use-costs.md"
       ],
       "forbidden_paths": [
-        "references/dutch-tax-rules.md",
-        "references/source-library.md",
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
         "references/migration/README.md",
         "references/fixed-assets.md"
       ],
@@ -1632,13 +1632,13 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/2026/btw.md",
+        "references/tax-rules/2026/btw.md",
         "references/moneybird-bookkeeping.md",
         "references/fixed-assets.md"
       ],
       "forbidden_paths": [
-        "references/dutch-tax-rules.md",
-        "references/source-library.md",
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
         "references/migration/README.md",
         "references/mixed-use-costs.md"
       ],
@@ -1672,13 +1672,13 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/2026/btw.md",
+        "references/tax-rules/2026/btw.md",
         "references/moneybird-bookkeeping.md",
         "references/fixed-assets.md"
       ],
       "forbidden_paths": [
-        "references/dutch-tax-rules.md",
-        "references/source-library.md",
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
         "references/migration/README.md",
         "references/mixed-use-costs.md"
       ],
@@ -1712,13 +1712,13 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/2026/btw.md",
+        "references/tax-rules/2026/btw.md",
         "references/moneybird-bookkeeping.md",
         "references/fixed-assets.md"
       ],
       "forbidden_paths": [
-        "references/dutch-tax-rules.md",
-        "references/source-library.md",
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
         "references/migration/README.md",
         "references/mixed-use-costs.md"
       ],
@@ -1745,7 +1745,7 @@
       "tier": "",
       "tie": "T6-over-T4",
       "expected_paths": [
-        "references/dutch-tax-rules.md#310-work-relationship-and-procedure"
+        "references/tax-rules/dutch-tax-rules.md#310-work-relationship-and-procedure"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
@@ -1772,8 +1772,8 @@
       "tier": "",
       "tie": "T5-over-T4",
       "expected_paths": [
-        "references/2026/README.md",
-        "references/2026/kosten-en-auto.md#2-key-figures"
+        "references/tax-rules/2026/README.md",
+        "references/tax-rules/2026/kosten-en-auto.md#2-key-figures"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
@@ -1803,13 +1803,13 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/2026/btw.md",
+        "references/tax-rules/2026/btw.md",
         "references/moneybird-bookkeeping.md",
         "references/mixed-use-costs.md"
       ],
       "forbidden_paths": [
-        "references/dutch-tax-rules.md",
-        "references/source-library.md",
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
         "references/migration/README.md"
       ],
       "expected_facts": [
@@ -1834,8 +1834,8 @@
       "tier": "",
       "tie": "T5-over-T4",
       "expected_paths": [
-        "references/2026/README.md",
-        "references/2026/investeringen.md#2-key-figures"
+        "references/tax-rules/2026/README.md",
+        "references/tax-rules/2026/investeringen.md#2-key-figures"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
@@ -1861,8 +1861,8 @@
       "tier": "",
       "tie": "T5-over-T4",
       "expected_paths": [
-        "references/2026/README.md",
-        "references/2026/investeringen.md#2-key-figures"
+        "references/tax-rules/2026/README.md",
+        "references/tax-rules/2026/investeringen.md#2-key-figures"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
@@ -1888,7 +1888,7 @@
       "tier": "",
       "tie": "T6-over-T4",
       "expected_paths": [
-        "references/dutch-tax-rules.md#310-work-relationship-and-procedure"
+        "references/tax-rules/dutch-tax-rules.md#310-work-relationship-and-procedure"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
@@ -1915,7 +1915,7 @@
       "tie": "T3-over-T4",
       "expected_paths": [
         "references/moneybird-bookkeeping.md",
-        "references/2026/README.md"
+        "references/tax-rules/2026/README.md"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
@@ -1942,12 +1942,12 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/2026/btw.md",
+        "references/tax-rules/2026/btw.md",
         "references/moneybird-bookkeeping.md",
         "references/fixed-assets.md"
       ],
       "forbidden_paths": [
-        "references/dutch-tax-rules.md",
+        "references/tax-rules/dutch-tax-rules.md",
         "references/mixed-use-costs.md"
       ],
       "expected_facts": [],
@@ -1971,12 +1971,12 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/2026/btw.md",
+        "references/tax-rules/2026/btw.md",
         "references/moneybird-bookkeeping.md",
         "references/fixed-assets.md"
       ],
       "forbidden_paths": [
-        "references/dutch-tax-rules.md",
+        "references/tax-rules/dutch-tax-rules.md",
         "references/mixed-use-costs.md"
       ],
       "expected_facts": [],

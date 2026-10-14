@@ -678,8 +678,8 @@ def build_snapshot(
 def routed_paths(route_rows: List[Dict[str, str]], skill_root: str) -> List[str]:
     """List every backticked read path of the route table.
 
-    A year token expands over the year folders that exist, and a dash cell
-    holds no path.
+    A year token expands over the year folders under the tax-rules folder,
+    and a dash cell holds no path.
 
     Args:
         route_rows: Parsed task-type rows.
@@ -688,10 +688,13 @@ def routed_paths(route_rows: List[Dict[str, str]], skill_root: str) -> List[str]
     Returns:
         Sorted paths relative to the skill folder.
     """
+    base = join_skill(skill_root, "references/tax-rules")
+    if not os.path.isdir(base):
+        return []
     years = sorted(
         name
-        for name in os.listdir(join_skill(skill_root, "references"))
-        if re.fullmatch(r"\d{4}", name) and os.path.isdir(join_skill(skill_root, os.path.join("references", name)))
+        for name in os.listdir(base)
+        if re.fullmatch(r"\d{4}", name) and os.path.isdir(os.path.join(base, name))
     )
     found: List[str] = []
     for row in route_rows:
@@ -823,17 +826,17 @@ def resolve_paths(
     if route_type == "T3":
         paths = ["references/moneybird-bookkeeping.md"]
         if year:
-            paths.append("references/%s/README.md" % year)
+            paths.append("references/tax-rules/%s/README.md" % year)
         if any(phrase_matches(text, term) for term in VAT_TERMS):
             if year:
-                paths.append("references/%s/btw.md" % year)
+                paths.append("references/tax-rules/%s/btw.md" % year)
         if any(phrase_matches(text, term) for term in MONITORING_TERMS):
             paths.extend(["references/migration/README.md", "references/migration/phases-19-to-21.md"])
         return paths
     if route_type == "T4":
         paths = ["references/purchase-invoices.md"]
         if year:
-            paths.extend(["references/%s/btw.md" % year, "references/moneybird-bookkeeping.md"])
+            paths.extend(["references/tax-rules/%s/btw.md" % year, "references/moneybird-bookkeeping.md"])
         if any(phrase_matches(text, term) for term in MIXED_USE_TERMS):
             paths.append("references/mixed-use-costs.md")
         if any(phrase_matches(text, term) for term in FIXED_ASSET_TERMS):
@@ -841,15 +844,15 @@ def resolve_paths(
         return paths
     if route_type == "T5":
         if any(phrase_matches(text, term) for term in SOURCE_TERMS):
-            return ["references/source-library.md"]
+            return ["references/tax-rules/source-library.md"]
         paths: List[str] = []
         if year:
-            paths.append("references/%s/README.md" % year)
+            paths.append("references/tax-rules/%s/README.md" % year)
             topic = topic_file(text)
-            paths.append("references/%s/%s#2-key-figures" % (year, topic))
+            paths.append("references/tax-rules/%s/%s#2-key-figures" % (year, topic))
         return paths
     if route_type == "T6":
-        return ["references/dutch-tax-rules.md#310-work-relationship-and-procedure"]
+        return ["references/tax-rules/dutch-tax-rules.md#310-work-relationship-and-procedure"]
     if route_type == "T9":
         return ["references/migration/overview-and-setup.md"]
     return []

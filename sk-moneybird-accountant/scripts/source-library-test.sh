@@ -119,14 +119,14 @@ assert() {
 make_fake_repo() {
     local root="$1"
     mkdir -p "$root/sk-moneybird-accountant/scripts" "$root/sk-moneybird-accountant/assets" \
-        "$root/sk-moneybird-accountant/references" "$root/cli-jortt" "$root/cli-moneybird" || return 1
+        "$root/sk-moneybird-accountant/references/tax-rules" "$root/cli-jortt" "$root/cli-moneybird" || return 1
     cp "$BUILDER" "$root/sk-moneybird-accountant/scripts/" || return 1
     printf '# Bootstrap\n\nSee https://www.belastingdienst.nl/a and ![b](https://img.shields.io/x).\n' \
         >"$root/AGENTS.md" || return 1
     printf '# Rules\n\nThe [VAT page](https://www.belastingdienst.nl/b). Token: https://app.jortt.nl/oauth.\n' \
         >"$root/sk-moneybird-accountant/references/rules.md" || return 1
     printf '# Guide\n\nhttps://example.org/only-in-guide\n' \
-        >"$root/sk-moneybird-accountant/references/source-library.md" || return 1
+        >"$root/sk-moneybird-accountant/references/tax-rules/source-library.md" || return 1
     return 0
 }
 
@@ -589,7 +589,7 @@ make_link_repo() {
 make_watch_repo() {
     local root="$1" port="$2"
     mkdir -p "$root/sk-moneybird-accountant/scripts" "$root/sk-moneybird-accountant/assets" \
-        "$root/sk-moneybird-accountant/references" || return 1
+        "$root/sk-moneybird-accountant/references/tax-rules" || return 1
     cp "$BUILDER" "$root/sk-moneybird-accountant/scripts/" || return 1
     printf '# Bootstrap\n\nLive page: http://127.0.0.1:%s/live.html\n' \
         "$port" >"$root/AGENTS.md" || return 1
@@ -598,7 +598,7 @@ make_watch_repo() {
     printf '# Beta\n\nBeta series: http://127.0.0.1:%s/tag/beta.html\n' \
         "$port" >"$root/sk-moneybird-accountant/references/beta.md" || return 1
     printf '# Guide\n\nhttp://127.0.0.1:%s/norm-a.html\n' \
-        "$port" >"$root/sk-moneybird-accountant/references/source-library.md" || return 1
+        "$port" >"$root/sk-moneybird-accountant/references/tax-rules/source-library.md" || return 1
     return 0
 }
 
@@ -1618,7 +1618,7 @@ fi
 
 group "calendar"
 CAL_REPO="$TMP_ROOT/cal-repo"
-CAL_REF="$CAL_REPO/sk-moneybird-accountant/references"
+CAL_REF="$CAL_REPO/sk-moneybird-accountant/references/tax-rules"
 if make_fake_repo "$CAL_REPO"; then
     pass "calendar fixture repository builds"
 else
@@ -1631,8 +1631,8 @@ write_runbook "$CAL_REF/year-rollover.md"
 run_builder "$CAL_REPO" --check-calendar --today 2026-10-12
 status=$?
 if [[ "$status" -eq 1 ]] \
-    && grep -q '^stale: sk-moneybird-accountant/references/2026/README.md checked_on=2026-01-01 before checkpoint Prinsjesdag 2026-09-15' "$TMP_ROOT/out.txt" \
-    && grep -q '^stale: sk-moneybird-accountant/references/dutch-tax-rules.md' "$TMP_ROOT/out.txt" \
+    && grep -q '^stale: sk-moneybird-accountant/references/tax-rules/2026/README.md checked_on=2026-01-01 before checkpoint Prinsjesdag 2026-09-15' "$TMP_ROOT/out.txt" \
+    && grep -q '^stale: sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md' "$TMP_ROOT/out.txt" \
     && ! grep -q '2020/README.md' "$TMP_ROOT/out.txt"; then
     pass "calendar fails on a stale current year and skips a past year"
 else
@@ -1650,7 +1650,7 @@ fi
 run_builder "$CAL_REPO" --check-calendar --today 2026-12-20
 status=$?
 if [[ "$status" -eq 1 ]] \
-    && grep -q '^stale: sk-moneybird-accountant/references/2026/README.md checked_on=2026-10-01 before checkpoint Eerste Kamer vote 2026-12-15' "$TMP_ROOT/out.txt"; then
+    && grep -q '^stale: sk-moneybird-accountant/references/tax-rules/2026/README.md checked_on=2026-10-01 before checkpoint Eerste Kamer vote 2026-12-15' "$TMP_ROOT/out.txt"; then
     pass "calendar uses the latest checkpoint that has passed"
 else
     fail "calendar uses the latest checkpoint that has passed"
@@ -1676,7 +1676,7 @@ write_stamped_readme "$CAL_REF/2026/README.md" -
 run_builder "$CAL_REPO" --check-calendar --today 2026-10-12
 status=$?
 if [[ "$status" -eq 1 ]] \
-    && grep -q '^missing: sk-moneybird-accountant/references/2026/README.md has no checked_on' "$TMP_ROOT/out.txt"; then
+    && grep -q '^missing: sk-moneybird-accountant/references/tax-rules/2026/README.md has no checked_on' "$TMP_ROOT/out.txt"; then
     pass "calendar fails on a file without a checked_on stamp"
 else
     fail "calendar fails on a file without a checked_on stamp"

@@ -87,12 +87,12 @@
     "key_files": [
       "SKILL.md",
       "references/migration/README.md",
-      "references/dutch-tax-rules.md",
+      "references/tax-rules/dutch-tax-rules.md",
       "references/moneybird-bookkeeping.md",
       "references/purchase-invoices.md",
       "references/mixed-use-costs.md",
       "references/fixed-assets.md",
-      "references/source-library.md",
+      "references/tax-rules/source-library.md",
       "references/migration/jortt-to-moneybird-mapping.md"
     ],
     "entities": [],

@@ -102,12 +102,12 @@ from typing import Any, Dict, List, NoReturn, Optional, Set, Tuple
 GENERATOR = "sk-moneybird-accountant/scripts/build-source-library.py"
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 INDEX_PATH = os.path.join(REPO_ROOT, "sk-moneybird-accountant", "assets", "source-library.json")
-GUIDE_RELATIVE = "sk-moneybird-accountant/references/source-library.md"
+GUIDE_RELATIVE = "sk-moneybird-accountant/references/tax-rules/source-library.md"
 GUIDE_PATH = os.path.join(REPO_ROOT, *GUIDE_RELATIVE.split("/"))
 WATCHLIST_PATH = os.path.join(REPO_ROOT, "sk-moneybird-accountant", "assets", "source-watchlist.json")
 WATCH_STATE_PATH = os.path.join(REPO_ROOT, "sk-moneybird-accountant", "assets", "source-watch-state.json")
 REFERENCES_DIR = os.path.join(REPO_ROOT, "sk-moneybird-accountant", "references")
-ROLLOVER_PATH = os.path.join(REFERENCES_DIR, "year-rollover.md")
+ROLLOVER_PATH = os.path.join(REFERENCES_DIR, "tax-rules", "year-rollover.md")
 
 # WHY: an allowlist of scan roots keeps the private folders out by construction.
 SCAN_ROOTS = ("AGENTS.md", "README.md", "sk-moneybird-accountant", "cli-jortt", "cli-moneybird")
@@ -1275,16 +1275,17 @@ def check_calendar(today_text: Optional[str]) -> int:
         print("no checkpoint has passed by %s, nothing to compare" % today.isoformat())
         return 0
     name, day = max(passed, key=lambda checkpoint: checkpoint[1])
+    base = os.path.join(REFERENCES_DIR, "tax-rules")
     targets = []
-    if os.path.isdir(REFERENCES_DIR):
-        for folder in sorted(os.listdir(REFERENCES_DIR)):
+    if os.path.isdir(base):
+        for folder in sorted(os.listdir(base)):
             if not YEAR_RE.match(folder) or int(folder) < today.year:
                 continue
-            readme = os.path.join(REFERENCES_DIR, folder, "README.md")
+            readme = os.path.join(base, folder, "README.md")
             if os.path.isfile(readme):
                 targets.append(readme)
     # WHY: the rules file states which year applies, so it always counts as current.
-    targets.append(os.path.join(REFERENCES_DIR, "dutch-tax-rules.md"))
+    targets.append(os.path.join(base, "dutch-tax-rules.md"))
     problems = 0
     for path in targets:
         relative = os.path.relpath(path, REPO_ROOT)

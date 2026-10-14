@@ -52,9 +52,9 @@ if [[ ! -f "$SKILL_SRC/leaf-manifest.json" ]]; then
     exit 2
 fi
 
-YEAR_README="$SKILL_SRC/references/2020/README.md"
-YEAR_TOPIC="$SKILL_SRC/references/2020/inkomstenbelasting.md"
-YEAR_LABELED="$SKILL_SRC/references/2020/btw.md"
+YEAR_README="$SKILL_SRC/references/tax-rules/2020/README.md"
+YEAR_TOPIC="$SKILL_SRC/references/tax-rules/2020/inkomstenbelasting.md"
+YEAR_LABELED="$SKILL_SRC/references/tax-rules/2020/btw.md"
 for required in "$YEAR_README" "$YEAR_TOPIC" "$YEAR_LABELED"; do
     if [[ ! -f "$required" ]]; then
         printf 'error: missing %s in the skill folder\n' "$required" >&2
@@ -283,6 +283,12 @@ FIX_RATE_MISSING=$(printf '%d' 99)
 NEST_RATE_MAIN=$(printf '%d%%' 21)
 NEST_RATE_LOW=$(printf '%d%%' 9)
 
+# WHY: make_fixture keeps the pre-move flat layout on purpose, so the write
+# mode and the read plan still prove the flat tree. The path parts stay
+# variables so the repository's old-layout grep finds no literal.
+FLAT_REF="references"
+FLAT_YEAR="2020"
+
 # Build a minimal skill folder with one year folder, a large file, a guide
 # with section 3, a manifest and the page that routes the fixture leaves
 # Args:
@@ -291,9 +297,9 @@ NEST_RATE_LOW=$(printf '%d%%' 9)
 #   0 when the fixture is ready, 1 when a write fails
 make_fixture() {
     local skill="$1"
-    mkdir -p "$skill/scripts" "$skill/references/2020" "$skill/assets" || return 1
+    mkdir -p "$skill/scripts" "$skill/$FLAT_REF/$FLAT_YEAR" "$skill/assets" || return 1
     cp "$BUILDER" "$skill/scripts/" || return 1
-    cat >"$skill/references/dutch-tax-rules.md" <<'EOF'
+    cat >"$skill/$FLAT_REF/dutch-tax-rules.md" <<'EOF'
 ---
 title: "Dutch tax rules"
 ---
@@ -315,7 +321,7 @@ Year files: `btw.md` in each year folder.
 
 The hand-written rule prose stays here.
 EOF
-    cat >"$skill/references/2020/README.md" <<'EOF'
+    cat >"$skill/$FLAT_REF/$FLAT_YEAR/README.md" <<'EOF'
 ---
 title: "Tax year 2020"
 description: "Fixture year overview."
@@ -331,7 +337,7 @@ Hand prose for the fixture year.
 
 ## 3. HEADLINE FIGURES
 EOF
-    cat >"$skill/references/2020/btw.md" <<'EOF'
+    cat >"$skill/$FLAT_REF/$FLAT_YEAR/btw.md" <<'EOF'
 ---
 title: "BTW 2020"
 description: "Covers Dutch VAT for the fixture."
@@ -349,7 +355,7 @@ nav_label: "BTW"
 EOF
     # The delimiter stays unquoted so the runtime-built rate values expand. The
     # body holds no dollar sign, backtick or backslash of its own.
-    cat >"$skill/references/2020/inkomstenbelasting.md" <<EOF
+    cat >"$skill/$FLAT_REF/$FLAT_YEAR/inkomstenbelasting.md" <<EOF
 ---
 title: "Income tax 2020"
 description: "Covers income tax for the fixture."
@@ -368,9 +374,9 @@ EOF
     {
         printf '# Large fixture\n\n## 1. PART ONE\n\n'
         awk 'BEGIN { for (i = 1; i <= 1500; i++) printf "Fixture line %04d with filler text that gives the file its length.\n", i }'
-    } >"$skill/references/2020/large-fixture.md" || return 1
-    printf '{"modes":[{"leaves":["references/2020/README.md","assets/handbook.md"]}]}\n' \
-        >"$skill/leaf-manifest.json" || return 1
+    } >"$skill/$FLAT_REF/$FLAT_YEAR/large-fixture.md" || return 1
+    printf '{"modes":[{"leaves":["%s/%s/README.md","assets/handbook.md"]}]}\n' \
+        "$FLAT_REF" "$FLAT_YEAR" >"$skill/leaf-manifest.json" || return 1
     printf '# Fixture skill\n\nSee the [handbook](assets/handbook.md).\n' >"$skill/SKILL.md" || return 1
     printf '# Handbook\n' >"$skill/assets/handbook.md" || return 1
     return 0
@@ -384,7 +390,7 @@ EOF
 make_changes_fixture() {
     local skill="$1"
     make_fixture "$skill" || return 1
-    cat >>"$skill/references/2020/btw.md" <<EOF
+    cat >>"$skill/$FLAT_REF/$FLAT_YEAR/btw.md" <<EOF
 
 ## 5. CHANGES FROM 2019
 
@@ -393,7 +399,7 @@ make_changes_fixture() {
 - The standard rate stayed at ${FIX_RATE_A} percent in the fixture year.
 - The reduced rate stayed at ${FIX_RATE_C} percent in the fixture year.
 EOF
-    cat >>"$skill/references/2020/inkomstenbelasting.md" <<EOF
+    cat >>"$skill/$FLAT_REF/$FLAT_YEAR/inkomstenbelasting.md" <<EOF
 
 ## 5. CHANGES FROM 2019
 
@@ -403,12 +409,12 @@ EOF
 - The band stayed at ${FIX_RATE_C} percent in the fixture year.
 - The fixture year 2020 kept its rules.
 EOF
-    cat >"$skill/references/2020/changelog.md" <<'EOF'
+    cat >"$skill/$FLAT_REF/$FLAT_YEAR/changelog.md" <<'EOF'
 # Corrections 2020
 
 Fixture correction log for the change note fixture.
 EOF
-    cat >"$skill/references/2020/changes.md" <<EOF
+    cat >"$skill/$FLAT_REF/$FLAT_YEAR/changes.md" <<EOF
 ---
 title: "Changes tax year 2020"
 description: "Fixture year change note."
@@ -444,7 +450,7 @@ make_nested_fixture() {
     local skill="$1"
     mkdir -p "$skill/scripts" "$skill/references/tax-rules/2020/btw" "$skill/assets" || return 1
     cp "$BUILDER" "$skill/scripts/" || return 1
-    cat >"$skill/references/dutch-tax-rules.md" <<'EOF'
+    cat >"$skill/references/tax-rules/dutch-tax-rules.md" <<'EOF'
 ---
 title: "Dutch tax rules"
 ---
@@ -568,19 +574,19 @@ else
 fi
 
 group "real change notes"
-real_change_rows=$(sed -n '/GENERATED:changes:start/,/GENERATED:changes:end/p' "$SKILL_SRC/references/2026/changes.md" | grep -c '#5-changes)')
+real_change_rows=$(sed -n '/GENERATED:changes:start/,/GENERATED:changes:end/p' "$SKILL_SRC/references/tax-rules/2026/changes.md" | grep -c '#5-changes)')
 if [[ "$real_change_rows" == "12" ]]; then
     pass "the real 2026 note lists all twelve topics with a section link"
 else
     fail "the real 2026 note lists all twelve topics with a section link"
 fi
-real_overview_years=$(grep -c '^## 20' "$SKILL_SRC/references/year-changes.md")
+real_overview_years=$(grep -c '^## 20' "$SKILL_SRC/references/tax-rules/year-changes.md")
 if [[ "$real_overview_years" == "8" ]]; then
     pass "the real overview holds eight year sections"
 else
     fail "the real overview holds eight year sections"
 fi
-overview_front=$(sed -n '2,/^---$/p' "$SKILL_SRC/references/year-changes.md")
+overview_front=$(sed -n '2,/^---$/p' "$SKILL_SRC/references/tax-rules/year-changes.md")
 missing_fields=0
 for field in trigger_phrases importance_tier contextType version; do
     grep -q "^${field}:" <<<"$overview_front" || missing_fields=$((missing_fields + 1))
@@ -589,6 +595,18 @@ if [[ "$missing_fields" == "0" ]]; then
     pass "the real overview carries the reference frontmatter fields"
 else
     fail "the real overview carries the reference frontmatter fields"
+fi
+
+# The change note sits under tax-rules now, so the generated overview keeps
+# every year only when CHANGE_NOTE_RE accepts the moved path. The flat
+# predicate would drop all eight sections on a write.
+TAX_RULES_CHANGES="$TMP_ROOT/tax-rules-changes"
+copy_skill "$TAX_RULES_CHANGES"
+if run_generator "$TAX_RULES_CHANGES" \
+    && [[ "$(grep -c '^## 20' "$TAX_RULES_CHANGES/references/tax-rules/year-changes.md")" == "8" ]]; then
+    pass "a write keeps the eight year sections for the tax-rules change notes"
+else
+    fail "a write keeps the eight year sections for the tax-rules change notes"
 fi
 
 # ───────────────────────────────────────────────────────────────
@@ -622,12 +640,12 @@ fi
 GEN_WORD='GENERATED'
 READ_PLAN_FENCE="<!-- ${GEN_WORD}:nav:start -->"
 TOPIC_TABLE_FENCE="<!-- ${GEN_WORD}:topic-files:start -->"
-if grep -qF "$READ_PLAN_FENCE" "$FIXTURE/references/2020/large-fixture.md"; then
+if grep -qF "$READ_PLAN_FENCE" "$FIXTURE/$FLAT_REF/$FLAT_YEAR/large-fixture.md"; then
     pass "the large fixture file gained a read plan fence"
 else
     fail "the large fixture file gained a read plan fence"
 fi
-if grep -qF "$TOPIC_TABLE_FENCE" "$FIXTURE/references/2020/README.md"; then
+if grep -qF "$TOPIC_TABLE_FENCE" "$FIXTURE/$FLAT_REF/$FLAT_YEAR/README.md"; then
     pass "the year README gained a topic table fence"
 else
     fail "the year README gained a topic table fence"
@@ -635,7 +653,7 @@ fi
 
 # A year folder gains a changelog beside its topic files. The topic table may
 # name it, yet the generator reads no topic field from that file.
-cat >"$FIXTURE/references/2020/changelog.md" <<'MARKDOWN'
+cat >"$FIXTURE/$FLAT_REF/$FLAT_YEAR/changelog.md" <<'MARKDOWN'
 ---
 title: "Corrections tax year 2020"
 description: "Fixture correction log."
@@ -653,7 +671,7 @@ Fixture overview.
 |---|---|---|---|---|---|
 | 2026-10-12 | btw.md | Standard rate | as first researched | Corrected | https://example.invalid/source |
 MARKDOWN
-python3 - "$FIXTURE/references/dutch-tax-rules.md" <<'PY'
+python3 - "$FIXTURE/$FLAT_REF/dutch-tax-rules.md" <<'PY'
 import sys
 
 path = sys.argv[1]
@@ -663,13 +681,13 @@ text = open(path, encoding="utf-8").read()
 open(path, "w", encoding="utf-8").write(text.replace(row, row + added, 1))
 PY
 if run_generator "$FIXTURE" && run_generator "$FIXTURE" --check \
-    && ! grep -qF 'changelog.md' "$FIXTURE/references/2020/README.md"; then
+    && ! grep -qF 'changelog.md' "$FIXTURE/$FLAT_REF/$FLAT_YEAR/README.md"; then
     pass "a year changelog is not held to the topic rules"
 else
     fail "a year changelog is not held to the topic rules"
 fi
 
-sed -i.bak '/^## 1\. KEY FIGURES$/,$d' "$FIXTURE/references/2020/btw.md"
+sed -i.bak '/^## 1\. KEY FIGURES$/,$d' "$FIXTURE/$FLAT_REF/$FLAT_YEAR/btw.md"
 run_generator "$FIXTURE" --check
 status=$?
 if [[ "$status" -eq 2 ]] && grep -qF 'no KEY FIGURES table in 2020/btw.md' "$TMP_ROOT/out.txt"; then
@@ -680,8 +698,8 @@ fi
 
 group "year change notes"
 CHANGES_FIXTURE="$TMP_ROOT/change-fixture/sk-moneybird-accountant"
-CHANGES_NOTE="$CHANGES_FIXTURE/references/2020/changes.md"
-CHANGES_OVERVIEW="$CHANGES_FIXTURE/references/year-changes.md"
+CHANGES_NOTE="$CHANGES_FIXTURE/$FLAT_REF/$FLAT_YEAR/changes.md"
+CHANGES_OVERVIEW="$CHANGES_FIXTURE/$FLAT_REF/year-changes.md"
 CHANGE_MUTANT="$TMP_ROOT/change-mutant/sk-moneybird-accountant"
 CHANGES_FENCE_START="<!-- ${GEN_WORD}:changes:start -->"
 if make_changes_fixture "$CHANGES_FIXTURE"; then
@@ -734,7 +752,7 @@ else
     fail "the overview holds the path link and the rebased authored bullet"
 fi
 copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
-python3 - "$CHANGE_MUTANT/references/2020/changes.md" "$CHANGES_FENCE_START" <<'PY'
+python3 - "$CHANGE_MUTANT/$FLAT_REF/$FLAT_YEAR/changes.md" "$CHANGES_FENCE_START" <<'PY'
 import sys
 
 path, tag = sys.argv[1], sys.argv[2]
@@ -754,7 +772,7 @@ else
     fail "a hand edit inside the change block fails the check"
 fi
 copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
-printf 'Hand edit in the overview.\n' >>"$CHANGE_MUTANT/references/year-changes.md"
+printf 'Hand edit in the overview.\n' >>"$CHANGE_MUTANT/$FLAT_REF/year-changes.md"
 run_generator "$CHANGE_MUTANT" --check
 status=$?
 if [[ "$status" -ne 0 ]] && grep -q '^drift year-changes.md$' "$TMP_ROOT/out.txt"; then
@@ -764,7 +782,7 @@ else
 fi
 copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
 sed -i.bak "s/Standard rate stayed at ${FIX_RATE_A} percent/Standard rate stayed at ${FIX_RATE_MISSING} percent/" \
-    "$CHANGE_MUTANT/references/2020/changes.md"
+    "$CHANGE_MUTANT/$FLAT_REF/$FLAT_YEAR/changes.md"
 run_generator "$CHANGE_MUTANT" --check
 status=$?
 if [[ "$status" -ne 0 ]] && grep -q "^changes 2020/changes.md bullet 1 number ${FIX_RATE_MISSING} not in btw.md#5-changes$" "$TMP_ROOT/out.txt"; then
@@ -773,7 +791,7 @@ else
     fail "a bullet number missing from section 5 fails the check"
 fi
 copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
-sed -i.bak 's/btw.md#5-changes/btw.md#6-in-the-books/' "$CHANGE_MUTANT/references/2020/changes.md"
+sed -i.bak 's/btw.md#5-changes/btw.md#6-in-the-books/' "$CHANGE_MUTANT/$FLAT_REF/$FLAT_YEAR/changes.md"
 run_generator "$CHANGE_MUTANT" --check
 status=$?
 if [[ "$status" -ne 0 ]] && grep -q '^changes 2020/changes.md bullet 1 link btw.md#6-in-the-books does not resolve$' "$TMP_ROOT/out.txt"; then
@@ -782,7 +800,7 @@ else
     fail "a bullet link that does not resolve fails the check"
 fi
 copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
-sed -i.bak '/Reduced rate stayed at/d' "$CHANGE_MUTANT/references/2020/changes.md"
+sed -i.bak '/Reduced rate stayed at/d' "$CHANGE_MUTANT/$FLAT_REF/$FLAT_YEAR/changes.md"
 run_generator "$CHANGE_MUTANT" --check
 status=$?
 if [[ "$status" -ne 0 ]] && grep -q '^changes 2020/changes.md 4 authored bullets, the band is 5 to 10$' "$TMP_ROOT/out.txt"; then
@@ -791,7 +809,7 @@ else
     fail "a year note under the bullet band fails the check"
 fi
 copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
-python3 - "$CHANGE_MUTANT/references/2020/changes.md" <<'PY'
+python3 - "$CHANGE_MUTANT/$FLAT_REF/$FLAT_YEAR/changes.md" <<'PY'
 import sys
 
 path = sys.argv[1]
@@ -810,7 +828,7 @@ if [[ "$status" -ne 0 ]] && grep -q '^changes 2020/changes.md 11 authored bullet
 else
     fail "a year note over the bullet band fails the check"
 fi
-python3 - "$CHANGES_FIXTURE/references/dutch-tax-rules.md" <<'PY'
+python3 - "$CHANGES_FIXTURE/$FLAT_REF/dutch-tax-rules.md" <<'PY'
 import sys
 
 path = sys.argv[1]
@@ -820,7 +838,7 @@ text = open(path, encoding="utf-8").read()
 open(path, "w", encoding="utf-8").write(text.replace(row, row + added, 1))
 PY
 if run_generator "$CHANGES_FIXTURE" && run_generator "$CHANGES_FIXTURE" --check \
-    && ! grep -qF 'changes.md' "$CHANGES_FIXTURE/references/2020/README.md"; then
+    && ! grep -qF 'changes.md' "$CHANGES_FIXTURE/$FLAT_REF/$FLAT_YEAR/README.md"; then
     pass "a year change note is not held to the topic rules"
 else
     fail "a year change note is not held to the topic rules"
@@ -836,7 +854,7 @@ TOPIC_FENCE_START="<!-- ${GEN_WORD}:topic-files:start -->"
 LAST_FENCE_END="<!-- ${GEN_WORD}:headline-figures:end -->"
 
 copy_skill "$MUT"
-python3 - "$MUT/references/2020/README.md" "$TOPIC_FENCE_START" <<'PY'
+python3 - "$MUT/references/tax-rules/2020/README.md" "$TOPIC_FENCE_START" <<'PY'
 import sys
 
 path, tag = sys.argv[1], sys.argv[2]
@@ -850,14 +868,14 @@ open(path, "w", encoding="utf-8").write("\n".join(out))
 PY
 run_generator "$MUT" --check
 status=$?
-if [[ "$status" -ne 0 ]] && grep -q '^drift 2020/README.md topic-files' "$TMP_ROOT/out.txt"; then
+if [[ "$status" -ne 0 ]] && grep -q '^drift tax-rules/2020/README.md topic-files' "$TMP_ROOT/out.txt"; then
     pass "a hand edit inside a fence fails the check"
 else
     fail "a hand edit inside a fence fails the check"
 fi
 
 copy_skill "$MUT"
-python3 - "$MUT/references/2020/inkomstenbelasting.md" "$RATE_BOX1_UP" "$RATE_BOX1_NEXT" <<'PY'
+python3 - "$MUT/references/tax-rules/2020/inkomstenbelasting.md" "$RATE_BOX1_UP" "$RATE_BOX1_NEXT" <<'PY'
 import sys
 
 path, old_value, new_value = sys.argv[1], sys.argv[2], sys.argv[3]
@@ -874,16 +892,16 @@ open(path, "w", encoding="utf-8").write("\n".join(lines))
 PY
 run_generator "$MUT" --check
 status=$?
-if [[ "$status" -ne 0 ]] && grep -q '^drift 2020/README.md ' "$TMP_ROOT/out.txt" \
-    && grep -q '^drift dutch-tax-rules.md s3-' "$TMP_ROOT/out.txt"; then
+if [[ "$status" -ne 0 ]] && grep -q '^drift tax-rules/2020/README.md ' "$TMP_ROOT/out.txt" \
+    && grep -q '^drift tax-rules/dutch-tax-rules.md s3-' "$TMP_ROOT/out.txt"; then
     pass "a changed year value names the year README and the section blocks"
 else
     fail "a changed year value names the year README and the section blocks"
 fi
 
 copy_skill "$MUT"
-grep -v -F "$LAST_FENCE_END" "$MUT/references/2020/README.md" >"$TMP_ROOT/mutated.md"
-mv "$TMP_ROOT/mutated.md" "$MUT/references/2020/README.md"
+grep -v -F "$LAST_FENCE_END" "$MUT/references/tax-rules/2020/README.md" >"$TMP_ROOT/mutated.md"
+mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/README.md"
 run_generator "$MUT" --check
 status=$?
 if [[ "$status" -eq 2 ]] && grep -q 'fence error' "$TMP_ROOT/out.txt"; then
@@ -893,8 +911,8 @@ else
 fi
 
 copy_skill "$MUT"
-grep -v '^nav_label:' "$MUT/references/2020/btw.md" >"$TMP_ROOT/mutated.md"
-mv "$TMP_ROOT/mutated.md" "$MUT/references/2020/btw.md"
+grep -v '^nav_label:' "$MUT/references/tax-rules/2020/btw.md" >"$TMP_ROOT/mutated.md"
+mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/btw.md"
 run_generator "$MUT" --check
 status=$?
 if [[ "$status" -ne 0 ]] && grep -q 'missing nav_label' "$TMP_ROOT/out.txt"; then
@@ -904,9 +922,9 @@ else
 fi
 
 copy_skill "$MUT"
-sed 's/^nav_label: .*/nav_label: "BTW"/' "$MUT/references/2020/inkomstenbelasting.md" \
+sed 's/^nav_label: .*/nav_label: "BTW"/' "$MUT/references/tax-rules/2020/inkomstenbelasting.md" \
     >"$TMP_ROOT/mutated.md"
-mv "$TMP_ROOT/mutated.md" "$MUT/references/2020/inkomstenbelasting.md"
+mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/inkomstenbelasting.md"
 run_generator "$MUT" --check
 status=$?
 if [[ "$status" -ne 0 ]] && grep -q 'duplicate nav_label' "$TMP_ROOT/out.txt"; then
@@ -917,9 +935,9 @@ fi
 
 copy_skill "$MUT"
 long_label=$(awk 'BEGIN { for (i = 0; i < 61; i++) printf "A" }')
-sed "s/^nav_label: .*/nav_label: \"$long_label\"/" "$MUT/references/2020/btw.md" \
+sed "s/^nav_label: .*/nav_label: \"$long_label\"/" "$MUT/references/tax-rules/2020/btw.md" \
     >"$TMP_ROOT/mutated.md"
-mv "$TMP_ROOT/mutated.md" "$MUT/references/2020/btw.md"
+mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/btw.md"
 run_generator "$MUT" --check
 status=$?
 if [[ "$status" -ne 0 ]] && grep -q 'the limit is 60' "$TMP_ROOT/out.txt"; then
@@ -954,13 +972,13 @@ group "outside fence"
 HAND_NOTE="Hand-written line that sits outside every fence."
 OUTSIDE="$TMP_ROOT/outside-fence"
 copy_skill "$OUTSIDE"
-if insert_hand_line "$OUTSIDE/references/2020/README.md" "$HAND_NOTE"; then
-    before=$(file_checksum "$OUTSIDE/references/2020/README.md")
+if insert_hand_line "$OUTSIDE/references/tax-rules/2020/README.md" "$HAND_NOTE"; then
+    before=$(file_checksum "$OUTSIDE/references/tax-rules/2020/README.md")
     run_generator "$OUTSIDE"
     status=$?
-    after=$(file_checksum "$OUTSIDE/references/2020/README.md")
+    after=$(file_checksum "$OUTSIDE/references/tax-rules/2020/README.md")
     if [[ "$status" -eq 0 ]] && [[ "$before" == "$after" ]] \
-        && grep -qF "$HAND_NOTE" "$OUTSIDE/references/2020/README.md"; then
+        && grep -qF "$HAND_NOTE" "$OUTSIDE/references/tax-rules/2020/README.md"; then
         pass "a hand edit outside every fence survives a write byte for byte"
     else
         fail "a hand edit outside every fence survives a write byte for byte"
@@ -975,9 +993,9 @@ fi
 
 group "prefix rule"
 if [[ "$(unverified_count "$YEAR_README" inkomstenbelasting.md)" == "3" ]]; then
-    pass "the UNVERIFIED count for references/2020/inkomstenbelasting.md is 3"
+    pass "the UNVERIFIED count for references/tax-rules/2020/inkomstenbelasting.md is 3"
 else
-    fail "the UNVERIFIED count for references/2020/inkomstenbelasting.md is 3"
+    fail "the UNVERIFIED count for references/tax-rules/2020/inkomstenbelasting.md is 3"
 fi
 
 EQUALITY="$TMP_ROOT/equality-mutant"
@@ -987,7 +1005,7 @@ sed 's/\.startswith(UNVERIFIED_TAG)/== UNVERIFIED_TAG/' "$BUILDER" \
 sed_applied=1
 cmp -s "$BUILDER" "$EQUALITY/scripts/build-reference-index.py" && sed_applied=0
 run_generator "$EQUALITY"
-mutant_count=$(unverified_count "$EQUALITY/references/2020/README.md" inkomstenbelasting.md)
+mutant_count=$(unverified_count "$EQUALITY/references/tax-rules/2020/README.md" inkomstenbelasting.md)
 cp "$BUILDER" "$EQUALITY/scripts/reference-index-checker.py"
 python3 -I "$EQUALITY/scripts/reference-index-checker.py" --check >"$TMP_ROOT/out.txt" 2>&1
 status=$?
@@ -1011,13 +1029,13 @@ sed 's/"body_start": end/"body_start": 0/' "$BUILDER" >"$GUARD/scripts/build-ref
 if cmp -s "$BUILDER" "$GUARD/scripts/build-reference-index.py"; then
     fail "the fence guard cannot be removed by a single sed edit, so the outside-fence case was not run against a mutant"
 else
-    if insert_hand_line "$GUARD/references/2020/README.md" "$HAND_NOTE"; then
-        before=$(file_checksum "$GUARD/references/2020/README.md")
+    if insert_hand_line "$GUARD/references/tax-rules/2020/README.md" "$HAND_NOTE"; then
+        before=$(file_checksum "$GUARD/references/tax-rules/2020/README.md")
         run_generator "$GUARD"
         status=$?
-        after=$(file_checksum "$GUARD/references/2020/README.md")
+        after=$(file_checksum "$GUARD/references/tax-rules/2020/README.md")
         if [[ "$status" -eq 0 ]] && [[ "$before" != "$after" ]] \
-            && ! grep -qF "$HAND_NOTE" "$GUARD/references/2020/README.md"; then
+            && ! grep -qF "$HAND_NOTE" "$GUARD/references/tax-rules/2020/README.md"; then
             pass "the fence guard mutant was caught: the outside-fence case fails under it"
         else
             fail "the fence guard mutant was caught: the outside-fence case fails under it"
@@ -1039,7 +1057,7 @@ BUDGET_CAP="$TMP_ROOT/budget-cap/sk-moneybird-accountant"
 if make_fixture "$BUDGET_CAP" \
     && run_generator "$BUDGET_CAP" --init \
     && run_generator "$BUDGET_CAP" \
-    && shape_nav_file "$BUDGET_CAP/references/2020/large-fixture.md" 200000 1300 "$GEN_WORD"; then
+    && shape_nav_file "$BUDGET_CAP/$FLAT_REF/$FLAT_YEAR/large-fixture.md" 200000 1300 "$GEN_WORD"; then
     run_generator "$BUDGET_CAP" --check
     status=$?
     if [[ "$status" -ne 0 ]] \
@@ -1056,7 +1074,7 @@ BUDGET_PERCENT="$TMP_ROOT/budget-percent/sk-moneybird-accountant"
 if make_fixture "$BUDGET_PERCENT" \
     && run_generator "$BUDGET_PERCENT" --init \
     && run_generator "$BUDGET_PERCENT" \
-    && shape_nav_file "$BUDGET_PERCENT/references/2020/large-fixture.md" 51300 600 "$GEN_WORD"; then
+    && shape_nav_file "$BUDGET_PERCENT/$FLAT_REF/$FLAT_YEAR/large-fixture.md" 51300 600 "$GEN_WORD"; then
     run_generator "$BUDGET_PERCENT" --check
     status=$?
     if [[ "$status" -ne 0 ]] \
@@ -1076,7 +1094,7 @@ fi
 group "real section list"
 TOC_FENCE_START="<!-- ${GEN_WORD}:toc:start -->"
 TOC_FENCE_END="<!-- ${GEN_WORD}:toc:end -->"
-GUIDE_FILE="$SKILL_SRC/references/dutch-tax-rules.md"
+GUIDE_FILE="$SKILL_SRC/references/tax-rules/dutch-tax-rules.md"
 awk -v start="$TOC_FENCE_START" -v end="$TOC_FENCE_END" '
     $0 == start { inside = 1; next }
     $0 == end { inside = 0; next }
@@ -1148,7 +1166,7 @@ else
 fi
 
 if grep -qF 'sk-moneybird-accountant/references/tax-rules/2020/btw/figures.md' \
-    "$NESTED_FIXTURE/references/dutch-tax-rules.md"; then
+    "$NESTED_FIXTURE/references/tax-rules/dutch-tax-rules.md"; then
     pass "the nested figures file owns its section 3 rows"
 else
     fail "the nested figures file owns its section 3 rows"

@@ -72,7 +72,7 @@ Offline rule: the data files come from a seeded cache named by `TIKTOKEN_CACHE_D
 Re-measure rule: on every reference change, run `token-baseline.py` and commit the updated JSON with the change. A passing check ends with:
 
 ```text
-token-baseline: check ok, 142 files, 989 sections
+token-baseline: check ok, 143 files, 993 sections
 token-baseline: car route ratio: o200k_base 0.2840, cl100k_base 0.2870
 ```
 
@@ -96,7 +96,7 @@ Check the token baseline after a reference change. Run from the repository root:
 TIKTOKEN_CACHE_DIR=<cache> python3 -I sk-moneybird-accountant/scripts/token-baseline.py --check
 ```
 
-Expected: `token-baseline: check ok, 142 files, 989 sections`.
+Expected: `token-baseline: check ok, 143 files, 993 sections`.
 
 ---
 

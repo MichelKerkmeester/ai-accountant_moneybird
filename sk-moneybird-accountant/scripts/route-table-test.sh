@@ -520,6 +520,22 @@ else
     cat "$TMP_ROOT/out.txt"
 fi
 
+# The year token expands over the year folders under references/tax-rules, so
+# a missing year README is a read-set problem. A root-only listing would find
+# no year folder and pass.
+YEAR_README="$WORD_COPY/sk-moneybird-accountant/references/tax-rules/2020/README.md"
+mv "$YEAR_README" "$TMP_ROOT/year-readme.bak"
+python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+mv "$TMP_ROOT/year-readme.bak" "$YEAR_README"
+if [[ "$status" -eq 1 ]] \
+    && grep -qF 'row T3 read path missing: references/tax-rules/2020/README.md' "$TMP_ROOT/out.txt"; then
+    pass "a missing year README under tax-rules fails the read-set check"
+else
+    fail "a missing year README under tax-rules fails the read-set check"
+    cat "$TMP_ROOT/out.txt"
+fi
+
 # Grow one sibling SKILL.md past the hard ceiling, so only the word check fails
 python3 -I - "$WORD_COPY/cli-jortt/SKILL.md" <<'PY'
 import sys

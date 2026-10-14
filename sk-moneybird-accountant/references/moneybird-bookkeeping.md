@@ -77,7 +77,7 @@ Post proprietor contributions and withdrawals against private or equity accounts
 
 ### Business kilometres in a private vehicle
 
-Record the supported business distance with the rate for the travel year and a trip purpose. Keep the trip log. Do not separately deduct fuel, insurance, repairs, or parking that the kilometre allowance already covers. The amount changes by year, so first check `kosten-en-auto.md` in the folder for the travel year, routed from [the Dutch tax rules](./dutch-tax-rules.md).
+Record the supported business distance with the rate for the travel year and a trip purpose. Keep the trip log. Do not separately deduct fuel, insurance, repairs, or parking that the kilometre allowance already covers. The amount changes by year, so first check `kosten-en-auto.md` in the folder for the travel year, routed from [the Dutch tax rules](./tax-rules/dutch-tax-rules.md).
 
 - Product reference: [business kilometres](https://helpcenter.moneybird.nl/nl/articles/207993-zakelijke-gereden-kilometers-verwerken), per Moneybird help reviewed on 2026-10-10.
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
@@ -155,7 +155,7 @@ Moneybird does not prepare the proprietor's complete personal income-tax return.
 
 ## 9. RELATED RESOURCES
 
-- [Dutch tax rules](./dutch-tax-rules.md) explains the general tax rules and routes to the year folders with the yearly amounts.
+- [Dutch tax rules](./tax-rules/dutch-tax-rules.md) explains the general tax rules and routes to the year folders with the yearly amounts.
 - [Purchase invoices](./purchase-invoices.md) explains booking purchase invoices, receipts and orders with Dutch or reverse-charged VAT.
 - [Mixed-use costs](./mixed-use-costs.md) explains a cost used partly privately, its business share, its VAT split and its Moneybird booking.
 - [Fixed assets](./fixed-assets.md) explains when a purchase is an asset, depreciation, the VAT revision period and disposal.

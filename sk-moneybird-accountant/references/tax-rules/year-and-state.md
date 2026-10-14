@@ -41,7 +41,7 @@ Resolution follows one order:
 
 The answer reports the resolved year, its `year_key` and the `clock_source`. `clock_source` is `SOURCE_DATE_EPOCH` when the session pinned the clock, otherwise `runtime`.
 
-A year with no folder under `references/` is answered as "no year file, unverified". The resolver never borrows the nearest year.
+A year with no folder under `references/tax-rules/` is answered as "no year file, unverified". The resolver never borrows the nearest year.
 
 The generator stops with `clock_missing` when no clock is available. A corpus date is never used as the clock.
 
@@ -53,7 +53,7 @@ These refusals apply to the figure and cross-year rows only. MIGRATION routing i
 
 A figure or cross-year question for a year before 2020 returns `year_before_corpus_start`. One for a year after 2027 returns `year_after_corpus_end` plus a pointer to the forward-looking rows in the newest year folder and their status. Neither branch loads another year's file.
 
-Publication state decides the second refusal, not the year. A figure whose only support for the year asked is tagged `proposed`, `unknown`, `UNVERIFIED` or `adopted-not-yet-in-force` is refused with `value_not_settled`. The tags are the ones in `references/dutch-tax-rules.md` section 2.
+Publication state decides the second refusal, not the year. A figure whose only support for the year asked is tagged `proposed`, `unknown`, `UNVERIFIED` or `adopted-not-yet-in-force` is refused with `value_not_settled`. The tags are the ones in `references/tax-rules/dutch-tax-rules.md` section 2.
 
 The refusal reason is `value_not_settled` in every case. The message keeps the two publication cases apart. "Adopted but not yet in the Staatsblad" is one reason and "not adopted" is another. The router never merges them.
 
@@ -88,7 +88,7 @@ No active flag is stored. The state is recomputed on each route from the current
 ## 6. RELATED RESOURCES
 
 - `SKILL.md` holds the Task-Type Table whose figure, cross-year and live rows use this resolver.
-- `references/dutch-tax-rules.md` section 2 holds the status tags the refusal set draws on.
+- `references/tax-rules/dutch-tax-rules.md` section 2 holds the status tags the refusal set draws on.
 - `references/migration/control-framework.md` holds the Master dashboard and its five statuses.
 - `references/migration/phases-19-to-21.md` holds the recurring live workflows.
 - `references/migration/phase-22-completion.md` holds the Phase 22 completion gate.

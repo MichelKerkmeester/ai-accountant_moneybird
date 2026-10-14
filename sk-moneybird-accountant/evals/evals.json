@@ -19,8 +19,8 @@
         "type": "T5",
         "year_state": "year_before_corpus_start",
         "references": [
-          "references/year-and-state.md",
-          "references/dutch-tax-rules.md"
+          "references/tax-rules/year-and-state.md",
+          "references/tax-rules/dutch-tax-rules.md"
         ]
       },
       "assertions": {
@@ -43,8 +43,8 @@
         "type": "T5",
         "year_state": "value_not_settled",
         "references": [
-          "references/year-and-state.md",
-          "references/2027/README.md"
+          "references/tax-rules/year-and-state.md",
+          "references/tax-rules/2027/README.md"
         ]
       },
       "assertions": {
@@ -68,7 +68,7 @@
         "type": "T4",
         "references": [
           "references/purchase-invoices.md",
-          "references/2026/btw.md",
+          "references/tax-rules/2026/btw.md",
           "references/moneybird-bookkeeping.md"
         ]
       },
@@ -107,7 +107,7 @@
         "type": "T3",
         "references": [
           "references/moneybird-bookkeeping.md",
-          "references/2026/README.md"
+          "references/tax-rules/2026/README.md"
         ]
       },
       "assertions": {
@@ -272,7 +272,7 @@
         "type": "T3",
         "references": [
           "references/moneybird-bookkeeping.md",
-          "references/2026/README.md"
+          "references/tax-rules/2026/README.md"
         ]
       },
       "assertions": {
@@ -297,7 +297,7 @@
         "type": "T4",
         "references": [
           "references/purchase-invoices.md",
-          "references/2026/btw.md",
+          "references/tax-rules/2026/btw.md",
           "references/moneybird-bookkeeping.md"
         ]
       },
@@ -321,10 +321,10 @@
         "mode": "LIVE",
         "type": "T5",
         "references": [
-          "references/dutch-tax-rules.md",
-          "references/2026/README.md",
-          "references/2026/kosten-en-auto.md",
-          "references/source-library.md"
+          "references/tax-rules/dutch-tax-rules.md",
+          "references/tax-rules/2026/README.md",
+          "references/tax-rules/2026/kosten-en-auto.md",
+          "references/tax-rules/source-library.md"
         ]
       },
       "assertions": {
@@ -350,7 +350,7 @@
         "mode": "LIVE",
         "type": "T6",
         "references": [
-          "references/dutch-tax-rules.md"
+          "references/tax-rules/dutch-tax-rules.md"
         ]
       },
       "assertions": {

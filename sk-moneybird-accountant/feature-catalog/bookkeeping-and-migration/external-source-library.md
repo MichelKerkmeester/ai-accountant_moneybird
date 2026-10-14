@@ -33,12 +33,12 @@ The agent reads the guide, then greps the index for a host, a topic or a citing 
 
 | File | Layer | Role |
 |---|---|---|
-| sk-moneybird-accountant/references/source-library.md | Shared | Groups the sources by authority and explains how to reach each access class. |
+| sk-moneybird-accountant/references/tax-rules/source-library.md | Shared | Groups the sources by authority and explains how to reach each access class. |
 | sk-moneybird-accountant/assets/source-library.json | Shared | Holds one row per cited source with its access result and citing files. |
 | sk-moneybird-accountant/scripts/build-source-library.py | Shared | Builds the index from the markdown and checks it for drift. |
 | sk-moneybird-accountant/assets/source-watchlist.json | Shared | Lists the publication series the monthly watch checks for changes. |
 | sk-moneybird-accountant/assets/source-watch-state.json | Shared | Records the last answer per watched URL, so a page that goes live is reported. |
-| sk-moneybird-accountant/references/year-rollover.md | Shared | Holds the 1 January runbook, the release calendar and its owner. |
+| sk-moneybird-accountant/references/tax-rules/year-rollover.md | Shared | Holds the 1 January runbook, the release calendar and its owner. |
 | sk-moneybird-accountant/SKILL.md | Shared | Loads the source library when a figure needs its source checked. |
 
 ### Validation And Tests

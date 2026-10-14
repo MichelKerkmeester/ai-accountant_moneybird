@@ -729,8 +729,8 @@ def build_baseline(encoders: Dict[str, Any]) -> Dict[str, Any]:
             for encoding in ENCODING_NAMES
         },
     }
-    readme_path = "sk-moneybird-accountant/references/2026/README.md"
-    topic_path = "sk-moneybird-accountant/references/2026/kosten-en-auto.md"
+    readme_path = "sk-moneybird-accountant/references/tax-rules/2026/README.md"
+    topic_path = "sk-moneybird-accountant/references/tax-rules/2026/kosten-en-auto.md"
     skill_path = "sk-moneybird-accountant/SKILL.md"
     readme = file_unit(readme_path, rows, encoders)
     topic = file_unit(topic_path, rows, encoders)

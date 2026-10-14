@@ -24,7 +24,7 @@ Regenerates the reference nav blocks, the index, the year README tables and the 
 
 ### Generated outputs
 
-One pass over `references/` owns the nav blocks in files over the byte limit, the section list in `dutch-tax-rules.md`, `references/index.json`, the topic and headline tables in every year README, the year-figure rows in section 3 of the rules file, the change block of every year note, the whole-file `references/year-changes.md` overview and the reachability report over the leaf manifest.
+One pass over `references/` owns the nav blocks in files over the byte limit, the section list in `dutch-tax-rules.md`, `references/index.json`, the topic and headline tables in every year README, the year-figure rows in section 3 of the rules file, the change block of every year note, the whole-file `references/tax-rules/year-changes.md` overview and the reachability report over the leaf manifest.
 
 ### Modes and fences
 
@@ -46,8 +46,8 @@ A year change note holds authored bullets in its unique-to-the-year section and 
 |---|---|---|
 | `sk-moneybird-accountant/scripts/build-reference-index.py` | Script | Writes or checks every generated reference block and the reachability report. |
 | `sk-moneybird-accountant/references/index.json` | Shared | Holds one structure-only row per reference file with its bytes, lines and H2 sections. |
-| `sk-moneybird-accountant/references/year-changes.md` | Shared | Holds the generated overview of the year change notes. |
-| `sk-moneybird-accountant/references/dutch-tax-rules.md` | Shared | Carries the generated section list and the section 3 value rows. |
+| `sk-moneybird-accountant/references/tax-rules/year-changes.md` | Shared | Holds the generated overview of the year change notes. |
+| `sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md` | Shared | Carries the generated section list and the section 3 value rows. |
 | `sk-moneybird-accountant/leaf-manifest.json` | Shared | Names the leaves the reachability report checks. |
 
 ### Validation And Tests

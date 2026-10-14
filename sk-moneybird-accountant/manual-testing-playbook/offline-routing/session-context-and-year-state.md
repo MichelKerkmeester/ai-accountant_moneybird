@@ -47,7 +47,7 @@ Every figure answer uses a tax year and every LIVE route uses a post-cutover sta
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| STATE-001 | Session context and year resolution | Route an explicit-year question through the year resolver and report the post-cutover state rules. | My question is about my 2024 return but the session clock says a later year. How do you decide which tax year to use, and how do you know the migration state? Keep this as an offline check. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/year-and-state.md -> 4. Run bash sk-moneybird-accountant/scripts/session-context-test.sh -> 5. Report the year order, the post-cutover states and the suite result | Names the four-step year order and the git-ignored session-context.json input, resolves 2024 as the explicit return year with the return_coverage key, names the five post-cutover states, states the recurring-cycle load rule and reports the suite result 34 passed and 0 failed. | Capture the prompt, the year order, the resolved year and key, the state names, the suite result and the no-call status. | PASS if the year order, the explicit-year precedence, the state names and the suite result are correct and no external service is called. FAIL if the clock year overrides the explicit year, a state name is invented, a recurring-cycle file loads outside monitoring or a service is called. | Check the year order in section 2, the refusal states in section 3 and the state list in section 4 of the year and state reference, then rerun the suite. Repeat offline. |
+| STATE-001 | Session context and year resolution | Route an explicit-year question through the year resolver and report the post-cutover state rules. | My question is about my 2024 return but the session clock says a later year. How do you decide which tax year to use, and how do you know the migration state? Keep this as an offline check. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/tax-rules/year-and-state.md -> 4. Run bash sk-moneybird-accountant/scripts/session-context-test.sh -> 5. Report the year order, the post-cutover states and the suite result | Names the four-step year order and the git-ignored session-context.json input, resolves 2024 as the explicit return year with the return_coverage key, names the five post-cutover states, states the recurring-cycle load rule and reports the suite result 34 passed and 0 failed. | Capture the prompt, the year order, the resolved year and key, the state names, the suite result and the no-call status. | PASS if the year order, the explicit-year precedence, the state names and the suite result are correct and no external service is called. FAIL if the clock year overrides the explicit year, a state name is invented, a recurring-cycle file loads outside monitoring or a service is called. | Check the year order in section 2, the refusal states in section 3 and the state list in section 4 of the year and state reference, then rerun the suite. Repeat offline. |
 
 ### Prompt
 
@@ -57,7 +57,7 @@ Every figure answer uses a tax year and every LIVE route uses a post-cutover sta
 
 1. Read AGENTS.md
 2. Read sk-moneybird-accountant/SKILL.md
-3. Read sk-moneybird-accountant/references/year-and-state.md
+3. Read sk-moneybird-accountant/references/tax-rules/year-and-state.md
 4. Run bash sk-moneybird-accountant/scripts/session-context-test.sh
 5. Report the year order, the post-cutover states and the suite result
 
@@ -94,7 +94,7 @@ Check the year order in section 2, the refusal states in section 3 and the state
 | File | Role |
 |---|---|
 | sk-moneybird-accountant/SKILL.md | Routes the resolved year and state through the Task-Type Table. |
-| sk-moneybird-accountant/references/year-and-state.md | Holds the year resolver, the refusal states and the post-cutover predicate. |
+| sk-moneybird-accountant/references/tax-rules/year-and-state.md | Holds the year resolver, the refusal states and the post-cutover predicate. |
 | sk-moneybird-accountant/references/routing-signals.md | Names the signal sources and tie mechanics the router reads. |
 | sk-moneybird-accountant/scripts/build-session-context.py | Writes and checks the session context and prints the route state. |
 | sk-moneybird-accountant/scripts/session-context-test.sh | Runs the builder against offline fixtures for the clock, the allowlist, staleness and the post-cutover states. |
@@ -108,6 +108,6 @@ Check the year order in section 2, the refusal states in section 3 and the state
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/session-context-and-year-state.md
 
-**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/year-and-state.md -> 4. Run bash sk-moneybird-accountant/scripts/session-context-test.sh -> 5. Report the year order, the post-cutover states and the suite result
+**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/tax-rules/year-and-state.md -> 4. Run bash sk-moneybird-accountant/scripts/session-context-test.sh -> 5. Report the year order, the post-cutover states and the suite result
 
-**Expected resources:** sk-moneybird-accountant/references/year-and-state.md, sk-moneybird-accountant/scripts/session-context-test.sh
+**Expected resources:** sk-moneybird-accountant/references/tax-rules/year-and-state.md, sk-moneybird-accountant/scripts/session-context-test.sh

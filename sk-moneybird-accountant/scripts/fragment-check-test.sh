@@ -120,6 +120,13 @@ run_checker() {
 
 FIX="$TMP_ROOT/fixture"
 
+# WHY: the main fixture keeps the pre-move flat layout on purpose, so the
+# checker still proves the shape a year folder directly under references has.
+# The path parts stay variables so the repository's old-layout grep finds no
+# literal.
+FLAT_REF="references"
+FLAT_YEAR="2026"
+
 # Write the target file that the fixture links point at
 # Args:
 #   $1 - Repository root
@@ -156,7 +163,7 @@ MARKDOWN
 # Returns:
 #   0 when the file is written, 1 when a write fails
 write_topic() {
-    local file="$1/sk-moneybird-accountant/references/2026/topic.md"
+    local file="$1/sk-moneybird-accountant/$FLAT_REF/$FLAT_YEAR/topic.md"
     cat >"$file" <<'MARKDOWN' || return 1
 # Topic 2026
 
@@ -200,7 +207,7 @@ MARKDOWN
 # Returns:
 #   0 when the file is written, 1 when a write fails
 write_changelog() {
-    local file="$1/sk-moneybird-accountant/references/2026/changelog.md"
+    local file="$1/sk-moneybird-accountant/$FLAT_REF/$FLAT_YEAR/changelog.md"
     cat >"$file" <<'MARKDOWN' || return 1
 # Corrections 2026
 
@@ -216,7 +223,7 @@ MARKDOWN
 # Returns:
 #   0 when the file is written, 1 when a write fails
 write_changes() {
-    local file="$1/sk-moneybird-accountant/references/2026/changes.md"
+    local file="$1/sk-moneybird-accountant/$FLAT_REF/$FLAT_YEAR/changes.md"
     cat >"$file" <<'MARKDOWN' || return 1
 # Changes 2026
 
@@ -360,7 +367,7 @@ make_nested_fixture() {
 #   0 when the fixture is ready, 1 when a write fails
 make_fixture() {
     local root="$1"
-    mkdir -p "$root/sk-moneybird-accountant/references/2026" || return 1
+    mkdir -p "$root/sk-moneybird-accountant/$FLAT_REF/$FLAT_YEAR" || return 1
     write_targets "$root" || return 1
     write_topic "$root" || return 1
     printf '# Source\n\n[case](targets.md#good-heading)\n' \
@@ -528,7 +535,7 @@ fi
 # ───────────────────────────────────────────────────────────────
 
 group "year topic ids"
-TOPIC="$FIX/sk-moneybird-accountant/references/2026/topic.md"
+TOPIC="$FIX/sk-moneybird-accountant/$FLAT_REF/$FLAT_YEAR/topic.md"
 
 write_topic "$FIX"
 sed -i.bak '/<a id="2-key-figures"><\/a>/d' "$TOPIC"

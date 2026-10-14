@@ -95,7 +95,7 @@ A row shows two numbers. The base is the ladder sum of the read path that answer
 
 ## 6. YEAR CHANGE ROUTE
 
-A question about what changed in one year, the difference between two years or `verschil met vorig jaar` loads `references/<year>/changes.md` first. That note holds the year's unique differences, and every bullet links the one topic section 5 that owns the fact. From there the route opens the linked `<topic>.md#5-changes` section. When the question names no year, `references/year-changes.md` gathers every year, newest first, with the path to each year note.
+A question about what changed in one year, the difference between two years or `verschil met vorig jaar` loads `references/tax-rules/<year>/changes.md` first. That note holds the year's unique differences, and every bullet links the one topic section 5 that owns the fact. From there the route opens the linked `<topic>.md#5-changes` section. When the question names no year, `references/tax-rules/year-changes.md` gathers every year, newest first, with the path to each year note.
 
 ---
 

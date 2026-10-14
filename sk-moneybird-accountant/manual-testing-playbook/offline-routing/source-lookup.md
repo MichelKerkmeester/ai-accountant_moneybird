@@ -46,7 +46,7 @@ A figure is only as good as the page behind it. An agent that cannot find the so
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| TAX-003 | External source library | Route a request for the official VAT law text to the source library and its index. | Where is the official text of the Dutch VAT law, and how do I read the article on reverse charge? Keep this as an offline routing check. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/source-library.md -> 4. Grep sk-moneybird-accountant/assets/source-library.json for BWBR0002629 -> 5. Report the reference, the law, the access method and the absence of network activity | Names the source library reference, finds Wet op de omzetbelasting 1968 under BWBR0002629 in the statute table, says the access value is webfetch-only, advises asking WebFetch for one article or reading on with an offset and greps the index instead of reading it whole. | Capture the prompt, reference path, law identifier, access value and no-network confirmation. | PASS if The response routes to the source library, names BWBR0002629 and the WebFetch-only access method and greps the index. FAIL if The response reads the whole index, guesses a URL, fetches a page during the offline check or calls an accounting API. | Check the bootstrap's step 2 pointer to the Task-Type Table, the T5 tax figure row of the Task-Type Table in the skill and section 2 of the reference. Repeat without tool access. |
+| TAX-003 | External source library | Route a request for the official VAT law text to the source library and its index. | Where is the official text of the Dutch VAT law, and how do I read the article on reverse charge? Keep this as an offline routing check. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/tax-rules/source-library.md -> 4. Grep sk-moneybird-accountant/assets/source-library.json for BWBR0002629 -> 5. Report the reference, the law, the access method and the absence of network activity | Names the source library reference, finds Wet op de omzetbelasting 1968 under BWBR0002629 in the statute table, says the access value is webfetch-only, advises asking WebFetch for one article or reading on with an offset and greps the index instead of reading it whole. | Capture the prompt, reference path, law identifier, access value and no-network confirmation. | PASS if The response routes to the source library, names BWBR0002629 and the WebFetch-only access method and greps the index. FAIL if The response reads the whole index, guesses a URL, fetches a page during the offline check or calls an accounting API. | Check the bootstrap's step 2 pointer to the Task-Type Table, the T5 tax figure row of the Task-Type Table in the skill and section 2 of the reference. Repeat without tool access. |
 
 ### Prompt
 
@@ -56,7 +56,7 @@ A figure is only as good as the page behind it. An agent that cannot find the so
 
 1. Read AGENTS.md
 2. Read sk-moneybird-accountant/SKILL.md
-3. Read sk-moneybird-accountant/references/source-library.md
+3. Read sk-moneybird-accountant/references/tax-rules/source-library.md
 4. Grep sk-moneybird-accountant/assets/source-library.json for BWBR0002629
 5. Report the reference, the law, the access method and the absence of network activity
 
@@ -93,10 +93,10 @@ Check the bootstrap's step 2 pointer to the Task-Type Table, the T5 tax figure r
 | File | Role |
 |---|---|
 | sk-moneybird-accountant/SKILL.md | Defines mode and reference routing |
-| sk-moneybird-accountant/references/source-library.md | Groups the sources and explains each access class |
+| sk-moneybird-accountant/references/tax-rules/source-library.md | Groups the sources and explains each access class |
 | sk-moneybird-accountant/assets/source-library.json | Holds one row per source with its access result |
 | sk-moneybird-accountant/assets/source-watchlist.json | Lists the publication series the monthly watch checks |
-| sk-moneybird-accountant/references/year-rollover.md | Holds the rollover runbook and the release calendar |
+| sk-moneybird-accountant/references/tax-rules/year-rollover.md | Holds the rollover runbook and the release calendar |
 | AGENTS.md | Defines project bootstrap and privacy rules |
 
 ---
@@ -108,6 +108,6 @@ Check the bootstrap's step 2 pointer to the Task-Type Table, the T5 tax figure r
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/source-lookup.md
 
-**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/source-library.md -> 4. Grep sk-moneybird-accountant/assets/source-library.json for BWBR0002629 -> 5. Report the reference, the law, the access method and the absence of network activity
+**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/tax-rules/source-library.md -> 4. Grep sk-moneybird-accountant/assets/source-library.json for BWBR0002629 -> 5. Report the reference, the law, the access method and the absence of network activity
 
-**Expected resources:** sk-moneybird-accountant/references/source-library.md
+**Expected resources:** sk-moneybird-accountant/references/tax-rules/source-library.md

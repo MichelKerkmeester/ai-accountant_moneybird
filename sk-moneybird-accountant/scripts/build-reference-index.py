@@ -15,7 +15,7 @@ messages are relative to the references root.
 
 The two year README blocks read the topic files of one year folder. Their row
 order and their text come from the corpus at run time: the topic order from
-the topic table in references/dutch-tax-rules.md, the covers and the topic
+the topic table in references/tax-rules/dutch-tax-rules.md, the covers and the topic
 labels from the topic-file frontmatter, and the counts and the headline rows
 from the KEY FIGURES table of every topic file.
 
@@ -61,11 +61,11 @@ A block generator registers a builder keyed by its block id, and an optional
 anchor that tells --init where the empty pair belongs. A block without a
 registered builder is left as it is.
 
-Every year folder gets a change note at references/<year>/changes.md. Its first
+Every year folder gets a change note at references/tax-rules/<year>/changes.md. Its first
 section is authored, and its second section is a generated table with one row
 per topic file: the section 5 bullet count, the first bullet cut to a snippet
 and the link to the section 5 anchor. The note sits between one fence pair with
-the id changes. references/year-changes.md is generated whole, one H2 per year,
+the id changes. references/tax-rules/year-changes.md is generated whole, one H2 per year,
 newest first, with the path link to the year note and the authored bullets of
 that note, so the index reads the generated form. --check also checks the
 authored bullets. A number in a bullet must occur as the same number in the
@@ -255,7 +255,9 @@ LINK_TARGET_RE = re.compile(r"\]\(([^)\s]+)\)")
 # cut to a snippet. The overview is generated whole, so it needs no fence.
 CHANGE_NOTE_NAME = "changes.md"
 YEAR_CHANGES_NAME = "year-changes.md"
-CHANGE_NOTE_RE = re.compile(r"^(\d{4})/" + re.escape(CHANGE_NOTE_NAME) + r"$")
+# WHY: the note sits in a year folder at the references root or under the
+# tax-rules folder, so the year part may carry the tax-rules prefix.
+CHANGE_NOTE_RE = re.compile(r"^(?:tax-rules/)?(\d{4})/" + re.escape(CHANGE_NOTE_NAME) + r"$")
 CHANGES_BLOCK_ID = "changes"
 CHANGES_UNIQUE_PREFIX = "Unique to "
 CHANGES_BY_TOPIC_HEADING = "All changes by topic"
@@ -772,13 +774,34 @@ def read_index() -> Optional[str]:
     return read_text(INDEX_PATH)
 
 
-def read_year_changes() -> Optional[str]:
+def year_changes_path(files: List[Dict[str, Any]]) -> str:
+    """Return the path of the year change overview.
+
+    The overview sits beside its year folders, at any depth. A tree without
+    the file places it beside the reference guide.
+
+    Args:
+        files: Result of load_files().
+
+    Returns:
+        The overview path relative to the references root.
+    """
+    for file in files:
+        if os.path.basename(file["path"]) == YEAR_CHANGES_NAME:
+            return file["path"]
+    return os.path.join(os.path.dirname(guide_file(files)["path"]), YEAR_CHANGES_NAME).replace(os.sep, "/")
+
+
+def read_year_changes(relative: str) -> Optional[str]:
     """Read the current year change overview text.
+
+    Args:
+        relative: Overview path relative to the references root.
 
     Returns:
         The overview text, or None when the file does not exist yet.
     """
-    path = os.path.join(REFERENCES_ROOT, YEAR_CHANGES_NAME)
+    path = os.path.join(REFERENCES_ROOT, relative)
     if not os.path.isfile(path):
         return None
     return read_text(path)
@@ -1020,6 +1043,21 @@ def year_topic_path(files: Dict[str, Dict[str, Any]], year: str, name: str) -> O
     return flat if flat is not None else nested
 
 
+def is_guide_path(path: str) -> bool:
+    """Tell whether a reference path is the reference guide.
+
+    The guide sits at the references root in the flat shape and under the
+    tax-rules folder in the moved shape, so the scan reads it by name.
+
+    Args:
+        path: Path relative to the references root.
+
+    Returns:
+        True for the file that carries the topic order and section 3.
+    """
+    return os.path.basename(path) == TOPIC_ORDER_FILE
+
+
 def canonical_topics(files: Dict[str, Dict[str, Any]]) -> List[str]:
     """Read the canonical topic file order from the reference guide.
 
@@ -1035,9 +1073,10 @@ def canonical_topics(files: Dict[str, Dict[str, Any]]) -> List[str]:
     Raises:
         SystemExit: If the guide or its topic table is missing or empty.
     """
-    guide = files.get(TOPIC_ORDER_FILE)
-    if guide is None:
+    path = next((path for path in sorted(files) if is_guide_path(path)), None)
+    if path is None:
         fail("missing %s, the topic order comes from it" % TOPIC_ORDER_FILE)
+    guide = files[path]
     spans = line_spans(guide["text"])
     start = heading_index(spans, TOPIC_ORDER_HEADING)
     if start is None:
@@ -1387,12 +1426,10 @@ def changes_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
         year = match.group(1)
         rows: List[str] = []
         for name in topics:
-            topic_path = "%s/%s" % (year, name)
-            if not is_year_topic(topic_path):
-                continue
-            topic = by_path.get(topic_path)
-            if topic is None:
-                fail("missing %s, every year folder holds each topic file" % topic_path)
+            topic_path = year_topic_path(by_path, year, name)
+            if topic_path is None:
+                fail("missing %s, every year folder holds each topic file" % ("%s/%s" % (year, name)))
+            topic = by_path[topic_path]
             rows.append(changes_row(name, topic_change_bullets(topic["text"])))
         bodies[path] = table_text(CHANGES_TABLE_HEADER, rows, CHANGES_TABLE_SEPARATOR)
     return bodies
@@ -1427,7 +1464,7 @@ def overview_bullet(year: str, bullet: str) -> str:
     """Return one authored bullet with its topic link aimed at the year folder.
 
     A bullet in a year note links to its topic file as a sibling. The overview
-    sits at the references root, so the same link needs the year folder in
+    sits beside the year folders, so the same link needs the year folder in
     front. Every other part of the bullet stays as it is.
 
     Args:
@@ -1497,8 +1534,13 @@ def year_changes_text(files: List[Dict[str, Any]]) -> str:
         "Generated overview of the changes in every tax year. Each section names the year note and repeats its authored bullets. The note owns the wording, so one edit moves both files.",
         "",
     ]
+    notes: Dict[str, str] = {}
+    for path in sorted(by_path):
+        match = CHANGE_NOTE_RE.match(path)
+        if match is not None:
+            notes[match.group(1)] = path
     for year in year_note_years(files):
-        note = by_path["%s/%s" % (year, CHANGE_NOTE_NAME)]
+        note = by_path[notes[year]]
         bullets = authored_bullets(note["text"])
         lines.append("## %s" % year)
         lines.append("")
@@ -1534,6 +1576,7 @@ def change_note_problems(files: List[Dict[str, Any]]) -> List[str]:
         if match is None:
             continue
         year = match.group(1)
+        note_dir = os.path.dirname(path)
         bullets = authored_bullets(by_path[path]["text"])
         if not CHANGE_BULLET_MIN <= len(bullets) <= CHANGE_BULLET_MAX:
             problems.append(
@@ -1545,8 +1588,8 @@ def change_note_problems(files: List[Dict[str, Any]]) -> List[str]:
             path_part, separator, fragment = target.partition("#")
             resolved = ""
             if path_part and separator == "#":
-                resolved = os.path.normpath(os.path.join(year, path_part)).replace(os.sep, "/")
-            topic = by_path.get(resolved) if resolved.startswith(year + "/") else None
+                resolved = os.path.normpath(os.path.join(note_dir, path_part)).replace(os.sep, "/")
+            topic = by_path.get(resolved) if resolved.startswith(note_dir + "/") else None
             if (
                 not target
                 or separator != "#"
@@ -1588,7 +1631,7 @@ def guide_file(files: List[Dict[str, Any]]) -> Dict[str, Any]:
         SystemExit: If the guide is not in the scan.
     """
     for file in files:
-        if file["path"] == TOPIC_ORDER_FILE:
+        if is_guide_path(file["path"]):
             return file
     fail("missing %s, section 3 lives in it" % TOPIC_ORDER_FILE)
 
@@ -1676,13 +1719,14 @@ def section_three_specs(guide: Dict[str, Any]) -> Dict[str, Any]:
     return {"start": section["start"], "end": section["end"], "subsections": specs}
 
 
-def section_three_row(year: str, path: str, figure: Dict[str, str]) -> str:
+def section_three_row(year: str, path: str, figure: Dict[str, str], link: str) -> str:
     """Render one value row of a section 3 block.
 
     Args:
         year: Year folder of the owning file.
         path: Path of the owning file relative to the references root.
         figure: Headline figure from headline_figures().
+        link: Link target of the owning file, relative to the guide.
 
     Returns:
         The row line. The owner cell names the year file by its path from the
@@ -1695,7 +1739,7 @@ def section_three_row(year: str, path: str, figure: Dict[str, str]) -> str:
         figure["status"],
         figure["check"],
         OWNER_PREFIX + path,
-        path,
+        link,
     )
 
 
@@ -1718,6 +1762,10 @@ def section_three_bodies(by_path: Dict[str, Dict[str, Any]], spec: Dict[str, Any
     """
     years = sorted({year for year in (year_of(path) for path in by_path) if year is not None})
     rows: List[str] = []
+    guide = next((path for path in sorted(by_path) if is_guide_path(path)), None)
+    if guide is None:
+        return {}
+    guide_dir = os.path.dirname(guide)
     for name in spec["files"]:
         for year in years:
             path = year_topic_path(by_path, year, name)
@@ -1726,13 +1774,14 @@ def section_three_bodies(by_path: Dict[str, Dict[str, Any]], spec: Dict[str, Any
             file = by_path.get(path)
             if file is None:
                 continue
+            link = os.path.relpath(path, guide_dir).replace(os.sep, "/") if guide_dir else path
             _, figures = headline_figures({"path": path, "figures": key_figures(file)})
             for figure in figures:
-                rows.append(section_three_row(year, path, figure))
+                rows.append(section_three_row(year, path, figure, link))
     if not rows:
         return {}
     table = table_text(SECTION_THREE_HEADER, rows, SECTION_THREE_SEPARATOR)
-    return {TOPIC_ORDER_FILE: SECTION_THREE_SENTENCE + "\n\n" + table}
+    return {guide: SECTION_THREE_SENTENCE + "\n\n" + table}
 
 
 def section_three_builder(spec: Dict[str, Any]) -> BlockBuilder:
@@ -1763,7 +1812,7 @@ def section_three_anchor(spec: Dict[str, Any]) -> BlockAnchor:
     """
 
     def anchor(file: Dict[str, Any]) -> Optional[int]:
-        if file["path"] != TOPIC_ORDER_FILE:
+        if not is_guide_path(file["path"]):
             return None
         return spec["anchor"]
 
@@ -2139,7 +2188,7 @@ def toc_anchor(file: Dict[str, Any]) -> Optional[int]:
     Returns:
         The offset, or None for every file but a large reference guide.
     """
-    if file["path"] != TOPIC_ORDER_FILE or not nav_target(file):
+    if not is_guide_path(file["path"]) or not nav_target(file):
         return None
     offset = nav_end_offset(file["text"])
     if offset is None:
@@ -2298,7 +2347,7 @@ def nav_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
     for file in files:
         if not nav_target(file):
             continue
-        if file["path"] == TOPIC_ORDER_FILE:
+        if is_guide_path(file["path"]):
             bodies[file["path"]] = navigation_pair(file, blocks)[0]
             continue
         block = block_of(file, NAV_BLOCK_ID)
@@ -2337,7 +2386,7 @@ def toc_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
     blocks = other_block_bodies(files)
     bodies: Dict[str, str] = {}
     for file in files:
-        if file["path"] != TOPIC_ORDER_FILE or not nav_target(file):
+        if not is_guide_path(file["path"]) or not nav_target(file):
             continue
         bodies[file["path"]] = navigation_pair(file, blocks)[1]
     return bodies
@@ -2464,7 +2513,7 @@ def render_files(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]])
         for start, end, body in sorted(replacements, reverse=True):
             text = text[:start] + body + text[end:]
         rendered[file["path"]] = text
-    rendered[YEAR_CHANGES_NAME] = year_changes_text(files)
+    rendered[year_changes_path(files)] = year_changes_text(files)
     return rendered
 
 
@@ -2485,8 +2534,9 @@ def expected_index(files: List[Dict[str, Any]], rendered: Dict[str, str]) -> str
     ]
     # WHY: the overview is generated whole, so it gains its index row even when
     # the tree does not hold the file yet.
-    if YEAR_CHANGES_NAME not in {file["path"] for file in files}:
-        entries.append(index_entry(YEAR_CHANGES_NAME, rendered[YEAR_CHANGES_NAME]))
+    overview = year_changes_path(files)
+    if overview not in {file["path"] for file in files}:
+        entries.append(index_entry(overview, rendered[overview]))
         entries.sort(key=lambda entry: entry["path"])
     return build_index_text(entries)
 
@@ -2533,12 +2583,13 @@ def check_all(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]], re
     Returns:
         Zero when nothing differs, one otherwise.
     """
+    overview = year_changes_path(files)
     problems = budget_problems(files)
     problems += ["drift %s %s" % pair for pair in missing_fences(files, bodies)]
     for file in files:
         # WHY: the overview is generated whole and reported on its own line, so
         # the block loop leaves it out.
-        if file["path"] == YEAR_CHANGES_NAME:
+        if file["path"] == overview:
             continue
         reported = False
         for block in file["blocks"]:
@@ -2551,7 +2602,7 @@ def check_all(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]], re
         if not reported and rendered[file["path"]] != file["text"]:
             problems.append("drift %s %s" % (file["path"], FILE_DRIFT_ID))
     problems += change_note_problems(files)
-    if read_year_changes() != rendered[YEAR_CHANGES_NAME]:
+    if read_year_changes(overview) != rendered[overview]:
         problems.append("drift %s" % YEAR_CHANGES_NAME)
     if read_index() != expected_index(files, rendered):
         problems.append("drift %s" % INDEX_NAME)
@@ -2587,9 +2638,10 @@ def write_all(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]], re
         if rendered[file["path"]] != file["text"]:
             write_text(file["absolute"], rendered[file["path"]])
             written.append(file["path"])
-    if YEAR_CHANGES_NAME not in seen:
-        write_text(os.path.join(REFERENCES_ROOT, YEAR_CHANGES_NAME), rendered[YEAR_CHANGES_NAME])
-        written.append(YEAR_CHANGES_NAME)
+    overview = year_changes_path(files)
+    if overview not in seen:
+        write_text(os.path.join(REFERENCES_ROOT, overview), rendered[overview])
+        written.append(overview)
     text = expected_index(files, rendered)
     index_changed = read_index() != text
     if index_changed:

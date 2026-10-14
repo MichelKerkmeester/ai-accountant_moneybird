@@ -253,6 +253,24 @@ fi
 mv "$TMP_ROOT/purchase-invoices.bak" "$DELETED"
 
 # ───────────────────────────────────────────────────────────────
+# 8B. DELETED YEAR README
+# ───────────────────────────────────────────────────────────────
+
+# The year token expands over the year folders under references/tax-rules, so
+# a missing year README stops the connectivity gate. A root-only listing
+# would expand to nothing and pass.
+YEAR_DELETED="$COPY/references/tax-rules/2020/README.md"
+mv "$YEAR_DELETED" "$TMP_ROOT/year-readme.bak"
+check_exit "a missing year README under tax-rules exits 2" 2 \
+    python3 -I "$COPY_HARNESS" --mode resolve --out "$TMP_ROOT/out-year-deleted"
+if grep -q 'missing routed path: references/tax-rules/2020/README.md' "$TMP_ROOT/last.log" 2>/dev/null; then
+    pass "the connectivity gate names the missing year README"
+else
+    fail "the connectivity gate names the missing year README"
+fi
+mv "$TMP_ROOT/year-readme.bak" "$YEAR_DELETED"
+
+# ───────────────────────────────────────────────────────────────
 # 9. TWIN MISMATCH
 # ───────────────────────────────────────────────────────────────
 

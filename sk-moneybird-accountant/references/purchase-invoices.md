@@ -277,5 +277,5 @@ In Moneybird, activate the purchase rates **Btw verlegd 21% (binnenland)** and *
 - [Moneybird bookkeeping](./moneybird-bookkeeping.md) covers categories, mixed costs and bank matching.
 - [Mixed-use costs](./mixed-use-costs.md) splits a cost used partly privately, with the business share, the VAT split and the Moneybird booking.
 - [Fixed assets](./fixed-assets.md) covers when a purchase is an asset, depreciation, the VAT revision period and disposal.
-- [Dutch tax rules](./dutch-tax-rules.md) explains VAT across years and routes to each year's `btw.md` with the rates in force.
+- [Dutch tax rules](./tax-rules/dutch-tax-rules.md) explains VAT across years and routes to each year's `btw.md` with the rates in force.
 - [cli-moneybird](../../cli-moneybird/SKILL.md) owns the guarded reads and writes for purchase invoices, receipts and tax rates.

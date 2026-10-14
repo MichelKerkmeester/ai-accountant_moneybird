@@ -19,7 +19,7 @@ checked_on: "2026-10-12"
 
 ## 1. OVERVIEW
 
-The rows below were first researched and later corrected against a primary source. Each row names the topic file, the row label, the old status, the new status and the source that settled it. The topic files under `sk-moneybird-accountant/references/2021/` carry the value itself.
+The rows below were first researched and later corrected against a primary source. Each row names the topic file, the row label, the old status, the new status and the source that settled it. The topic files under `sk-moneybird-accountant/references/tax-rules/2021/` carry the value itself.
 
 ---
 

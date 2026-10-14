@@ -35,7 +35,7 @@ A return-submission request is handed to the operator. A personal eligibility or
 |---|---|---|
 | AGENTS.md | Shared | Makes return filing operator-only and requires escalation of tax judgement. |
 | sk-moneybird-accountant/SKILL.md | Shared | Defines the tax and return boundaries. |
-| sk-moneybird-accountant/references/dutch-tax-rules.md | Shared | Gives the general rule that the operator or bookkeeper applies to a personal case and separates verified rules from conflicts, unverified points and proposals. |
+| sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md | Shared | Gives the general rule that the operator or bookkeeper applies to a personal case and separates verified rules from conflicts, unverified points and proposals. |
 
 ### Validation And Tests
 

@@ -304,12 +304,13 @@ def write_text(path: str, content: str) -> bool:
 
 
 def year_folders() -> List[str]:
-    """List the four-digit year folders under references.
+    """List the four-digit year folders under references/tax-rules.
 
     Returns:
-        Sorted folder names such as 2020 and 2021.
+        Sorted folder names such as 2020, for a read path written as
+        references/tax-rules/YYYY.
     """
-    base = os.path.join(SKILL_FOLDER, "references")
+    base = os.path.join(SKILL_FOLDER, "references", "tax-rules")
     if not os.path.isdir(base):
         return []
     return sorted(

@@ -99,7 +99,7 @@ For historical work, name the migration phase or the last gate that passed. The 
 
 Topic routes live in one place, the Task-Type Table in `SKILL.md` section 2. The router block below that table is generated from the Task-Type Table by `python3 -I sk-moneybird-accountant/scripts/check-route-table.py --write`, which also feeds the table's multi-word signals to `graph-metadata.json`. This README does not repeat them.
 
-Check the current tax year before you use any rate or threshold. The [Dutch tax rules](references/dutch-tax-rules.md) explain each rule and route to the year folder, such as [2024](references/2024/README.md), where every topic has its own sourced file. The [Moneybird bookkeeping reference](references/moneybird-bookkeeping.md) covers the accounting treatment of common events. The [Jortt to Moneybird mapping](references/migration/jortt-to-moneybird-mapping.md) lists concept matches and migration traps. Exports the Jortt API does not provide come from you, through the Jortt UI.
+Check the current tax year before you use any rate or threshold. The [Dutch tax rules](references/tax-rules/dutch-tax-rules.md) explain each rule and route to the year folder, such as [2024](references/tax-rules/2024/README.md), where every topic has its own sourced file. The [Moneybird bookkeeping reference](references/moneybird-bookkeeping.md) covers the accounting treatment of common events. The [Jortt to Moneybird mapping](references/migration/jortt-to-moneybird-mapping.md) lists concept matches and migration traps. Exports the Jortt API does not provide come from you, through the Jortt UI.
 
 ---
 
@@ -200,10 +200,10 @@ No. A connection needs separate, current evidence from the relevant CLI.
 | [Control framework](references/migration/control-framework.md) | Roles, exceptions and dashboard states |
 | [Jortt tool skill](../cli-jortt/SKILL.md) | Jortt reads and source extraction |
 | [Moneybird tool skill](../cli-moneybird/SKILL.md) | Guarded Moneybird operations |
-| [Dutch tax rules](references/dutch-tax-rules.md) | How each rule works across years, source conflicts, gaps and record duties |
-| [Tax year folders](references/2024/README.md) | One folder per tax year 2020 to 2027 with a file per topic: BTW, income tax, Zvw, entrepreneur deductions, investments, costs and car, box 3, box 2, BV, pension, work relationship and procedure |
+| [Dutch tax rules](references/tax-rules/dutch-tax-rules.md) | How each rule works across years, source conflicts, gaps and record duties |
+| [Tax year folders](references/tax-rules/2024/README.md) | One folder per tax year 2020 to 2027 with a file per topic: BTW, income tax, Zvw, entrepreneur deductions, investments, costs and car, box 3, box 2, BV, pension, work relationship and procedure |
 | [Bookkeeping reference](references/moneybird-bookkeeping.md) | Common Moneybird accounting events |
 | [Purchase invoice reference](references/purchase-invoices.md) | Booking purchase invoices, receipts and orders, with the VAT rate per case |
 | [Mixed-use cost reference](references/mixed-use-costs.md) | A cost used partly privately, with the business share, the VAT split and the private booking |
 | [Fixed asset reference](references/fixed-assets.md) | When a purchase is an asset, depreciation, the VAT revision period and disposal |
-| [Source library](references/source-library.md) | Every external source the skills cite, by authority, with access notes and a generated index |
+| [Source library](references/tax-rules/source-library.md) | Every external source the skills cite, by authority, with access notes and a generated index |

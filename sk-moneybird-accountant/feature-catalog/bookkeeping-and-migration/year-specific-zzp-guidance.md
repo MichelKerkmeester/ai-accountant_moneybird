@@ -34,15 +34,15 @@ Before using a changing amount or rate, the agent checks the relevant tax year a
 | File | Layer | Role |
 |---|---|---|
 | sk-moneybird-accountant/SKILL.md | Shared | Requires a current-year check and prohibits final tax advice. |
-| sk-moneybird-accountant/references/dutch-tax-rules.md | Shared | Explains how each Dutch tax rule works across years and routes to the year folders. |
-| sk-moneybird-accountant/references/2020/README.md | Shared | Routes a 2020 question to the topic file for that tax year. |
-| sk-moneybird-accountant/references/2021/README.md | Shared | Routes a 2021 question to the topic file for that tax year. |
-| sk-moneybird-accountant/references/2022/README.md | Shared | Routes a 2022 question to the topic file for that tax year. |
-| sk-moneybird-accountant/references/2023/README.md | Shared | Routes a 2023 question to the topic file for that tax year. |
-| sk-moneybird-accountant/references/2024/README.md | Shared | Routes a 2024 question to the topic file for that tax year. |
-| sk-moneybird-accountant/references/2025/README.md | Shared | Routes a 2025 question to the topic file for that tax year. |
-| sk-moneybird-accountant/references/2026/README.md | Shared | Routes a 2026 question to the topic file for that tax year. |
-| sk-moneybird-accountant/references/2027/README.md | Shared | Routes a 2027 question to the topic file for that tax year. |
+| sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md | Shared | Explains how each Dutch tax rule works across years and routes to the year folders. |
+| sk-moneybird-accountant/references/tax-rules/2020/README.md | Shared | Routes a 2020 question to the topic file for that tax year. |
+| sk-moneybird-accountant/references/tax-rules/2021/README.md | Shared | Routes a 2021 question to the topic file for that tax year. |
+| sk-moneybird-accountant/references/tax-rules/2022/README.md | Shared | Routes a 2022 question to the topic file for that tax year. |
+| sk-moneybird-accountant/references/tax-rules/2023/README.md | Shared | Routes a 2023 question to the topic file for that tax year. |
+| sk-moneybird-accountant/references/tax-rules/2024/README.md | Shared | Routes a 2024 question to the topic file for that tax year. |
+| sk-moneybird-accountant/references/tax-rules/2025/README.md | Shared | Routes a 2025 question to the topic file for that tax year. |
+| sk-moneybird-accountant/references/tax-rules/2026/README.md | Shared | Routes a 2026 question to the topic file for that tax year. |
+| sk-moneybird-accountant/references/tax-rules/2027/README.md | Shared | Routes a 2027 question to the topic file for that tax year. |
 
 ### Validation And Tests
 

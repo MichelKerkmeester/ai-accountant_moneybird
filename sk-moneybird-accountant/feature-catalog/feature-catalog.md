@@ -353,7 +353,7 @@ Regenerates the reference nav blocks, the index, the year README tables and the 
 
 #### Current Reality
 
-The generator owns the nav blocks, `references/index.json`, the year README tables, the section 3 value rows, the year change blocks, `references/year-changes.md` and the reachability report. A check run reports drift without writing and the offline suite proves the fence rules and byte stability.
+The generator owns the nav blocks, `references/index.json`, the year README tables, the section 3 value rows, the year change blocks, `references/tax-rules/year-changes.md` and the reachability report. A check run reports drift without writing and the offline suite proves the fence rules and byte stability.
 
 #### Source Files
 

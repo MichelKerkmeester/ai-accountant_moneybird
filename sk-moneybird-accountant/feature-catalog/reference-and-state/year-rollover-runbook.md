@@ -16,7 +16,7 @@ version: 1.0.0.0
 
 Runs the yearly corpus rollover and keeps the year files checked against the release calendar the runbook owns.
 
-`references/year-rollover.md` holds the runbook, the release calendar with its check-by dates and the Operator as the owner of both. The runbook adds the next year folder, sets its figures and sources, moves the checked dates forward and refreshes the generated reference blocks.
+`references/tax-rules/year-rollover.md` holds the runbook, the release calendar with its check-by dates and the Operator as the owner of both. The runbook adds the next year folder, sets its figures and sources, moves the checked dates forward and refreshes the generated reference blocks.
 
 ---
 
@@ -34,11 +34,11 @@ The monthly job watches the publication series in `assets/source-watchlist.json`
 
 | File | Layer | Role |
 |---|---|---|
-| `sk-moneybird-accountant/references/year-rollover.md` | Shared | Owns the runbook, the release calendar and the owner of both. |
+| `sk-moneybird-accountant/references/tax-rules/year-rollover.md` | Shared | Owns the runbook, the release calendar and the owner of both. |
 | `sk-moneybird-accountant/assets/source-watchlist.json` | Shared | Lists the publication series the monthly watch checks. |
 | `sk-moneybird-accountant/assets/source-watch-state.json` | Shared | Records the last answer per watched URL so a page that goes live is reported. |
 | `sk-moneybird-accountant/scripts/build-source-library.py` | Script | Implements the watch and the calendar check modes. |
-| `sk-moneybird-accountant/references/source-library.md` | Shared | Records the access result for every cited source. |
+| `sk-moneybird-accountant/references/tax-rules/source-library.md` | Shared | Records the access result for every cited source. |
 
 ### Validation And Tests
 

@@ -21,7 +21,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-This library lists the external sources cited by `AGENTS.md`, the root README and the three skills. The full list lives in [source-library.json](../assets/source-library.json), one source per line with its host, authority, title, type, access result, check date and the files that cite it. `scripts/build-source-library.py` generates that index from the markdown, so it never holds a source no file cites.
+This library lists the external sources cited by `AGENTS.md`, the root README and the three skills. The full list lives in [source-library.json](../../assets/source-library.json), one source per line with its host, authority, title, type, access result, check date and the files that cite it. `scripts/build-source-library.py` generates that index from the markdown, so it never holds a source no file cites.
 
 | Measure | Count |
 |---|---|
@@ -39,7 +39,7 @@ Look up a source with a grep, never a full read. The index is over 300 KB and on
 ```bash
 grep 'belastingrente' sk-moneybird-accountant/assets/source-library.json
 grep '"authority":"statute"' sk-moneybird-accountant/assets/source-library.json
-grep 'references/2026/btw.md' sk-moneybird-accountant/assets/source-library.json
+grep 'references/tax-rules/2026/btw.md' sk-moneybird-accountant/assets/source-library.json
 ```
 
 ---
@@ -144,10 +144,10 @@ None. The four links found dead on 2026-10-12 were rechecked and replaced on 202
 
 | Dead link | Replaced by | Cited by |
 |---|---|---|
-| `download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2024_aa9701z42fd.pdf` | `belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/handboek-ondernemen` and `belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/index` | `references/2024/btw.md` |
-| `rijksoverheid.nl/vraag-en-antwoord/duurzame-economie/groen-sparen-in-een-groenfonds` | `rijksoverheid.nl/documenten/vraag-en-antwoord/duurzame-economie/groen-sparen-in-een-groenfonds` and `belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/beleggen_met_belastingvoordeel/groene_beleggingen` | `references/2026/box-3.md`, `references/2027/box-3.md` |
-| `rijksoverheid.nl/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen` | `rijksoverheid.nl/documenten/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen` | `references/2026/kosten-en-auto.md`, `references/2027/kosten-en-auto.md` |
-| `rijksoverheid.nl/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting-en-welke-heffingskortingen-zijn-er` | `rijksoverheid.nl/documenten/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting-en-welke-heffingskortingen-zijn-er` | `references/2026/inkomstenbelasting.md`, `references/dutch-tax-rules.md` |
+| `download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2024_aa9701z42fd.pdf` | `belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/handboek-ondernemen` and `belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/index` | `references/tax-rules/2024/btw.md` |
+| `rijksoverheid.nl/vraag-en-antwoord/duurzame-economie/groen-sparen-in-een-groenfonds` | `rijksoverheid.nl/documenten/vraag-en-antwoord/duurzame-economie/groen-sparen-in-een-groenfonds` and `belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/beleggen_met_belastingvoordeel/groene_beleggingen` | `references/tax-rules/2026/box-3.md`, `references/tax-rules/2027/box-3.md` |
+| `rijksoverheid.nl/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen` | `rijksoverheid.nl/documenten/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen` | `references/tax-rules/2026/kosten-en-auto.md`, `references/tax-rules/2027/kosten-en-auto.md` |
+| `rijksoverheid.nl/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting-en-welke-heffingskortingen-zijn-er` | `rijksoverheid.nl/documenten/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting-en-welke-heffingskortingen-zijn-er` | `references/tax-rules/2026/inkomstenbelasting.md`, `references/tax-rules/dutch-tax-rules.md` |
 
 ---
 
@@ -169,9 +169,9 @@ The index keeps a `digest` and a `retrieved_at` per readable source, next to the
 
 | File kind | Path | Interval |
 |---|---|---|
-| Year topic files | `sk-moneybird-accountant/references/2027/` | At every checkpoint in the release calendar |
-| Year READMEs | `sk-moneybird-accountant/references/2027/README.md` | At every checkpoint and after each logged correction |
-| The reference guide | `sk-moneybird-accountant/references/dutch-tax-rules.md` | After the Tweede Kamer vote and after the February reconciliation |
+| Year topic files | `sk-moneybird-accountant/references/tax-rules/2027/` | At every checkpoint in the release calendar |
+| Year READMEs | `sk-moneybird-accountant/references/tax-rules/2027/README.md` | At every checkpoint and after each logged correction |
+| The reference guide | `sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md` | After the Tweede Kamer vote and after the February reconciliation |
 | Migration references | `sk-moneybird-accountant/references/migration/` | At every migration phase gate |
 | The CLI skills | `cli-jortt/SKILL.md` and `cli-moneybird/SKILL.md` | Monthly with the watch run |
 
@@ -183,5 +183,5 @@ The release calendar, its check-by dates and its owner are in [year-rollover.md]
 
 - [dutch-tax-rules.md](./dutch-tax-rules.md): how a rule works across years, the source conflicts and the Check tags.
 - [Year folders](./2026/README.md): the per-year topic files that cite these sources.
-- [purchase-invoices.md](./purchase-invoices.md): the purchase booking flow and its Moneybird help sources.
-- [cli-jortt](../../cli-jortt/SKILL.md) and [cli-moneybird](../../cli-moneybird/SKILL.md): the only route to the endpoints in section 2.
+- [purchase-invoices.md](../purchase-invoices.md): the purchase booking flow and its Moneybird help sources.
+- [cli-jortt](../../../cli-jortt/SKILL.md) and [cli-moneybird](../../../cli-moneybird/SKILL.md): the only route to the endpoints in section 2.
