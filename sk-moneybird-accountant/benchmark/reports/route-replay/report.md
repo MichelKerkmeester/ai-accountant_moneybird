@@ -2,7 +2,7 @@
 
 Router snapshot: sha256:1f68b8ec1217f4b6444b8a80ee09ead1905fd43ab9099857a343af111bf99ca3
 Mode: resolve
-Corpus: routing-gold.json with 75 rows
+Corpus: routing-gold.json with 86 rows
 Token encoding: o200k_base from the pinned cache
 Route margin: 0.25. Warning band: 0.08. Fallback floor: 0.5.
 
@@ -15,14 +15,14 @@ Route margin: 0.25. Warning band: 0.08. Fallback floor: 0.5.
 
 ## Accuracy
 
-- route accuracy en: 38/38 (1.000)
+- route accuracy en: 49/49 (1.000)
 - route accuracy nl: 33/33 (1.000)
 - route accuracy mixed: 4/4 (1.000)
-- route accuracy calibration: 53/53 (1.000)
-- route accuracy held-out: 22/22 (1.000)
-- held-out route accuracy: 22/22 (1.000)
-- rows passed: 75 of 75
-- abstain: 14 of 14 expected
+- route accuracy calibration: 57/57 (1.000)
+- route accuracy held-out: 29/29 (1.000)
+- held-out route accuracy: 29/29 (1.000)
+- rows passed: 86 of 86
+- abstain: 18 of 18 expected
 - missing tax year, tier C: 1
 - false abstain: 0
 - Dutch parity: 27 of 27 twin pairs match
@@ -52,11 +52,11 @@ Precision divides the correct routes by the rows routed to that type. Recall div
 - T5 precision 9/9 (1.000), recall 9/9 (1.000)
 - T6 precision 3/3 (1.000), recall 3/3 (1.000)
 - T7 precision 0/0 (n/a), recall 0/0 (n/a)
-- T8 precision 13/13 (1.000), recall 13/13 (1.000)
+- T8 precision 17/17 (1.000), recall 17/17 (1.000)
 - T9 precision 2/2 (1.000), recall 2/2 (1.000)
-- T10 precision 2/2 (1.000), recall 2/2 (1.000)
-- T11 precision 2/2 (1.000), recall 2/2 (1.000)
-- T12 precision 2/2 (1.000), recall 2/2 (1.000)
+- T10 precision 7/7 (1.000), recall 7/7 (1.000)
+- T11 precision 3/3 (1.000), recall 3/3 (1.000)
+- T12 precision 3/3 (1.000), recall 3/3 (1.000)
 
 ## Read counts
 
@@ -137,6 +137,17 @@ Precision divides the correct routes by the rows routed to that type. Recall div
 | FILE-T12-01-nl | ABSTAIN/T8 | 0 |
 | TWO-TURN-01 | ABSTAIN/T8 | 0 |
 | T7-ADDITIVE-01 | LIVE/T4 | 3 |
+| VAT-BRANCH-Q1-01 | LIVE/T10 | 2 |
+| VAT-BRANCH-RC-01 | LIVE/T10 | 2 |
+| VAT-BRANCH-KOR-01 | LIVE/T10 | 2 |
+| VAT-BRANCH-YE-01 | LIVE/T10 | 2 |
+| VAT-BRANCH-COR-01 | LIVE/T10 | 2 |
+| PACK-YEARLY-01 | LIVE/T11 | 3 |
+| PACK-INCOME-01 | LIVE/T12 | 3 |
+| REFUSE-ROUTE-FILE-01 | ABSTAIN/T8 | 0 |
+| REFUSE-ROUTE-SUBMIT-01 | ABSTAIN/T8 | 0 |
+| REFUSE-ROUTE-PAY-01 | ABSTAIN/T8 | 0 |
+| REFUSE-ROUTE-LOCK-01 | ABSTAIN/T8 | 0 |
 
 ## Warning band sink
 
@@ -223,3 +234,14 @@ Rows whose winning gap sits in the 0.08 warning band above the route margin. Tel
 | FILE-T12-01-nl | nl | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | TWO-TURN-01 | nl | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | T7-ADDITIVE-01 | en | calibration | LIVE/T4 | 17112 | 2 of 2 | PASS |
+| VAT-BRANCH-Q1-01 | en | held-out | LIVE/T10 | 6000 | 3 of 3 | PASS |
+| VAT-BRANCH-RC-01 | en | held-out | LIVE/T10 | 6000 | 3 of 3 | PASS |
+| VAT-BRANCH-KOR-01 | en | held-out | LIVE/T10 | 6000 | 3 of 3 | PASS |
+| VAT-BRANCH-YE-01 | en | held-out | LIVE/T10 | 6000 | 3 of 3 | PASS |
+| VAT-BRANCH-COR-01 | en | held-out | LIVE/T10 | 6000 | 3 of 3 | PASS |
+| PACK-YEARLY-01 | en | held-out | LIVE/T11 | 8710 | 5 of 5 | PASS |
+| PACK-INCOME-01 | en | held-out | LIVE/T12 | 7179 | 7 of 7 | PASS |
+| REFUSE-ROUTE-FILE-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
+| REFUSE-ROUTE-SUBMIT-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
+| REFUSE-ROUTE-PAY-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
+| REFUSE-ROUTE-LOCK-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |

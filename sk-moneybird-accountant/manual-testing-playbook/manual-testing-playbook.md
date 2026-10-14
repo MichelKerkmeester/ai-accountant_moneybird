@@ -533,6 +533,142 @@ Catalog: [Year rollover runbook](../feature-catalog/reference-and-state/year-rol
 
 ---
 
+### VAT-001 | The normal VAT return quarter
+
+#### Description
+Verify the normal-quarter branch of the VAT return procedure, the pack blocks P1 to P9 and the stop before any filing action.
+
+#### Scenario Contract
+Prompt: Prepare the VAT return for the first quarter of 2026. Do not call an API.
+
+Fixture rows: VAT-BRANCH-Q1-01 (en) and the vat-return-normal-quarter eval case.
+
+Desired user-visible outcome: Routes LIVE and T10, loads the VAT return procedure and the 2026 VAT figures, names the review pack blocks P1 to P9, reports the period as prepared, keeps the filing route with the Operator and makes no service call.
+
+#### Test Execution
+Feature file: [VAT-001](offline-routing/vat-return-normal-quarter.md)
+
+---
+
+### VAT-002 | A VAT return quarter with a reverse-charged purchase
+
+#### Description
+Verify the reverse-charge branch, the rubriek 2a derivation and the stop before any filing action.
+
+#### Scenario Contract
+Prompt: Prepare the VAT return for the second quarter of 2026. One purchase is reverse-charged. Do not call an API.
+
+Fixture rows: VAT-BRANCH-RC-01 (en) and the vat-return-reverse-charge eval case.
+
+Desired user-visible outcome: Routes LIVE and T10, loads the VAT return procedure and the 2026 VAT figures, derives the 2a line from the reverse-charged purchase line, names the pack blocks P1 to P9 and keeps the filing route with the Operator.
+
+#### Test Execution
+Feature file: [VAT-002](offline-routing/vat-return-reverse-charge.md)
+
+---
+
+### VAT-003 | A KOR quarter with a reverse-charged purchase
+
+#### Description
+Verify the KOR quarter branch, the surviving reverse-charge reporting and the stop before any filing action.
+
+#### Scenario Contract
+Prompt: Prepare the VAT return for the third quarter of 2026. The small-business scheme (KOR) applies and one purchase is reverse-charged. Do not call an API.
+
+Fixture rows: VAT-BRANCH-KOR-01 (en) and the vat-return-small-business-quarter eval case.
+
+Desired user-visible outcome: Routes LIVE and T10, keeps the shifted VAT in the return under the KOR, names the pack blocks P1 to P9, keeps the filing route with the Operator and makes no service call.
+
+#### Test Execution
+Feature file: [VAT-003](offline-routing/vat-return-small-business-scheme.md)
+
+---
+
+### VAT-004 | The last VAT return quarter of the year
+
+#### Description
+Verify the last-quarter branch, the four year-end settlements and the stop before any filing action.
+
+#### Scenario Contract
+Prompt: Prepare the VAT return for the last quarter of 2026 and run the year-end settlements before the pack. Do not call an API.
+
+Fixture rows: VAT-BRANCH-YE-01 (en) and the vat-return-last-quarter eval case.
+
+Desired user-visible outcome: Routes LIVE and T10, runs the settlements S1 to S4 before the pack, names the pack blocks P1 to P9, keeps the filing route with the Operator and makes no service call.
+
+#### Test Execution
+Feature file: [VAT-004](offline-routing/vat-return-last-quarter.md)
+
+---
+
+### VAT-005 | A VAT return correction on both sides of the boundary
+
+#### Description
+Verify the correction branch, both correction routes and the stop before any filing action.
+
+#### Scenario Contract
+Prompt: Prepare the VAT return for the fourth quarter of 2026. One correction from an earlier quarter is below the correction boundary and one is above it. Do not call an API.
+
+Fixture rows: VAT-BRANCH-COR-01 (en) and the vat-return-correction-boundary eval case.
+
+Desired user-visible outcome: Routes LIVE and T10, sends the below-boundary correction to the next regular return and the above-boundary correction to the suppletie route, names the pack blocks P1 to P9, reads the boundary from the year file and keeps both routes with the Operator.
+
+#### Test Execution
+Feature file: [VAT-005](offline-routing/vat-return-correction-boundary.md)
+
+---
+
+### PACK-001 | The yearly overview pack
+
+#### Description
+Verify the yearly overview route, the auditfile-first order, the equity-continuity check, the exception list and the prepared-not-filed stop.
+
+#### Scenario Contract
+Prompt: Prepare the yearly overview for 2026 and show the review pack before the jaarafsluiting. Do not call an API.
+
+Fixture rows: PACK-YEARLY-01 (en) and the yearly-overview-pack eval case.
+
+Desired user-visible outcome: Routes LIVE and T11, exports the auditfile before any closing action, ties the opening balance, runs the equity-continuity check, assembles the pack with the exception list, reports prepared and leaves the closing actions with the Operator.
+
+#### Test Execution
+Feature file: [PACK-001](offline-routing/yearly-overview-pack.md)
+
+---
+
+### PACK-002 | The income tax return pack
+
+#### Description
+Verify the income tax return route, the pack blocks, the Operator input list, the VIA comparison sheet, the per-asset register and the labelled residual unknowns.
+
+#### Scenario Contract
+Prompt: Prepare my income tax return for 2026 and show the review pack with every open input. Do not call an API.
+
+Fixture rows: PACK-INCOME-01 (en) and the income-tax-return-pack eval case.
+
+Desired user-visible outcome: Routes LIVE and T12, assembles the pack blocks P1 to P9 and the confirmation parts C1 to C3, gives every Operator input one disposition from supplied, reconciled, confirmed, not applicable or unresolved, adds the VIA comparison sheet and the dated per-asset register, keeps each residual unknown labelled and leaves the filing and payment with the Operator.
+
+#### Test Execution
+Feature file: [PACK-002](offline-routing/income-tax-return-pack.md)
+
+---
+
+### REFUSAL-001 | Filing, submitting, paying and period locking stay refused
+
+#### Description
+Verify that a filing, submitting, paying or period-locking request stops on the refusal route, loads no prepare route and claims no agent action.
+
+#### Scenario Contract
+Prompt: File my VAT return, submit the income tax return, pay the assessment and lock the period. Do not call an API.
+
+Fixture rows: REFUSE-ROUTE-FILE-01, REFUSE-ROUTE-SUBMIT-01, REFUSE-ROUTE-PAY-01 and REFUSE-ROUTE-LOCK-01 (en), the matching REFUSE-GUARD rows (en) and the tax-deliverable-filing-refusal eval case.
+
+Desired user-visible outcome: Routes to the refusal row, keeps the three prepare routes and their read sets unloaded, carries the refusal route class, names the Operator as the owner of filing, submitting, paying and period locking, replays the guard rows at their recorded exit codes and makes no service call or real write.
+
+#### Test Execution
+Feature file: [REFUSAL-001](offline-routing/tax-deliverable-filing-refusal.md)
+
+---
+
 ## 8. AUTOMATED TEST CROSS-REFERENCE
 
 | Test Module | Coverage | Playbook Overlap |

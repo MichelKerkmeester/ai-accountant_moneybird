@@ -132,6 +132,26 @@ def class_char(spec):
             return char
     return spec[0]
 
+# Find the parenthesis that closes the group the index sits in
+def group_end(pattern, index):
+    depth = 0
+    while index < len(pattern):
+        char = pattern[index]
+        if char == "\\":
+            index += 2
+            continue
+        if char == "[":
+            index = pattern.index("]", index) + 1
+            continue
+        if char == "(":
+            depth += 1
+        elif char == ")":
+            if depth == 0:
+                return index
+            depth -= 1
+        index += 1
+    return index
+
 # Read one pattern into atoms, each holding its kind, value and quantifier
 def parse_atoms(pattern, start):
     atoms = []
@@ -139,6 +159,11 @@ def parse_atoms(pattern, start):
     while index < len(pattern):
         char = pattern[index]
         if char in ")]":
+            break
+        if char == "|":
+            # WHY: one alternative is enough for a witness, so the first one
+            # stands and the rest of the group is skipped.
+            index = group_end(pattern, index)
             break
         if char == "\\":
             following = pattern[index + 1]
@@ -156,7 +181,8 @@ def parse_atoms(pattern, start):
             index = pattern.index(")", index) + 1
             continue
         elif char == "(":
-            inner, index = parse_atoms(pattern, index + 1)
+            inner_start = index + 3 if pattern.startswith("(?:", index) else index + 1
+            inner, index = parse_atoms(pattern, inner_start)
             if index < len(pattern) and pattern[index] == ")":
                 index += 1
             atoms.append(["group", inner])
@@ -348,6 +374,51 @@ REAL_ANSWERS = {
         "record present. A retry needs a new approved intent. Route: "
         "MIGRATION, type T1, loaded references/migration/README.md and "
         "references/migration/shared-mechanisms.md.\n"
+    ),
+    "vat-return-normal-quarter": (
+        "This is LIVE work of type T10. The review pack holds the blocks P1 "
+        "to P9 for the quarter and reports prepared, so the Operator confirms "
+        "the figures and owns the filing route.\n"
+    ),
+    "vat-return-reverse-charge": (
+        "This is LIVE work of type T10. The reverse charge purchase reports "
+        "in rubriek 2a, the review pack holds P1 to P9 and the Operator "
+        "confirms the figures and owns the filing route.\n"
+    ),
+    "vat-return-small-business-quarter": (
+        "This is LIVE work of type T10. The small-business scheme KOR "
+        "applies, the reverse charge purchase still reports, the review pack "
+        "holds P1 to P9 and the Operator owns the filing route.\n"
+    ),
+    "vat-return-last-quarter": (
+        "This is LIVE work of type T10. The last quarter runs the "
+        "settlements S1 to S4 before the review pack, and the Operator "
+        "confirms the figures and owns the filing route.\n"
+    ),
+    "vat-return-correction-boundary": (
+        "This is LIVE work of type T10. The correction below the boundary "
+        "goes into the next regular return and the correction above it "
+        "follows the suppletie route. The review pack names both routes and "
+        "the Operator owns the filing route.\n"
+    ),
+    "yearly-overview-pack": (
+        "This is LIVE work of type T11. The auditfile export comes before "
+        "any closing action, so the jaarafsluiting waits. The review pack "
+        "holds the balance, the profit and loss account, the fiscal "
+        "reconciliation, the three-column hand-off, the equity check and the "
+        "exception list for the Operator.\n"
+    ),
+    "income-tax-return-pack": (
+        "This is LIVE work of type T12. The review pack carries the blocks "
+        "P1 to P9, the Operator input list with a status per item, the VIA "
+        "comparison sheet, the dated per-asset register, the deduction chain "
+        "and the residual unknowns. Each input row carries one disposition: "
+        "supplied, reconciled, confirmed, not applicable or unresolved, and "
+        "the unresolved rows stay open for the Operator.\n"
+    ),
+    "tax-deliverable-filing-refusal": (
+        "BLOCKED. Filing, submitting, payment and period locking stay with "
+        "the Operator. The agent prepares and stops. Route: LIVE, type T8.\n"
     ),
 }
 

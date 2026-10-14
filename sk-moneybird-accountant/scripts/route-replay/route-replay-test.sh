@@ -12,7 +12,9 @@
 # WHY: the harness is only trustworthy when a clean corpus passes, a deleted
 # routed path stops the run and a broken twin or an injected date changes
 # nothing about the numbers. This suite proves each of those on a copy, so the
-# real skill tree stays untouched.
+# real skill tree stays untouched. It also scores the phase 011/008 branch,
+# pack and refusal rows and fails on a seeded filing claim, a pack row with a
+# missing block and a correction row on the wrong side of the boundary.
 # WHY: the suite inspects $? after commands that are expected to fail, so -e stays off.
 set -uo pipefail
 
@@ -145,6 +147,98 @@ check_exit_no_cache() {
     else
         fail "$description (exit $status, expected $expected)"
         sed -n '1,5p' "$TMP_ROOT/last.log"
+    fi
+}
+
+# Prove one row is present and PASS in one results file
+# Args:
+#   $1 - Results CSV path
+#   $2 - Row id
+#   $3 - Check description
+row_pass() {
+    local results="$1"
+    local row_id="$2"
+    local description="$3"
+    local report
+    report=$(python3 -I - "$results" "$row_id" <<'PY'
+import csv
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    rows = {row["scenario_id"]: row for row in csv.DictReader(handle)}
+row = rows.get(sys.argv[2])
+if row is None:
+    print("row absent")
+elif row["verdict"] != "PASS":
+    print("verdict %s: %s" % (row["verdict"], row["reason"]))
+else:
+    print("ok")
+PY
+    )
+    if [[ "$report" == "ok" ]]; then
+        pass "$description"
+    else
+        fail "$description ($report)"
+    fi
+}
+
+# Prove one row is present and FAIL in one results file
+# Args:
+#   $1 - Results CSV path
+#   $2 - Row id
+#   $3 - Check description
+row_fails() {
+    local results="$1"
+    local row_id="$2"
+    local description="$3"
+    local report
+    report=$(python3 -I - "$results" "$row_id" <<'PY'
+import csv
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    rows = {row["scenario_id"]: row for row in csv.DictReader(handle)}
+row = rows.get(sys.argv[2])
+if row is None:
+    print("row absent")
+elif row["verdict"] != "FAIL":
+    print("verdict %s" % row["verdict"])
+else:
+    print("ok")
+PY
+    )
+    if [[ "$report" == "ok" ]]; then
+        pass "$description"
+    else
+        fail "$description ($report)"
+    fi
+}
+
+# Prove one results file holds exactly N rows with the wanted verdict
+# Args:
+#   $1 - Wanted verdict
+#   $2 - Results CSV path
+#   $3 - Expected row count
+#   $4 - Check description
+count_rows() {
+    local wanted="$1"
+    local results="$2"
+    local expected="$3"
+    local description="$4"
+    local actual
+    actual=$(python3 -I - "$results" "$wanted" <<'PY'
+import csv
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    rows = list(csv.DictReader(handle))
+print(sum(1 for row in rows if row["verdict"] == sys.argv[2]))
+PY
+    )
+    if [[ "$actual" == "$expected" ]]; then
+        pass "$description"
+    else
+        fail "$description ($actual of $expected rows)"
     fi
 }
 
@@ -712,6 +806,116 @@ fi
 # A revision run scores the worktree of that commit and removes it again
 check_exit "a revision run scores the worktree of HEAD" 0 \
     python3 -I "$HARNESS" --mode resolve --rev HEAD --corpus "$CORPUS" --out "$TMP_ROOT/out-rev"
+
+# ───────────────────────────────────────────────────────────────
+# 10C. PHASE 011/008 BRANCH, PACK AND REFUSAL ROWS
+# ───────────────────────────────────────────────────────────────
+
+# Every new row must be present and passing in the clean resolve run and in
+# the replay run that section 5 and section 10 already produced.
+NEW_RESOLVE_ROWS=(
+    VAT-BRANCH-Q1-01
+    VAT-BRANCH-RC-01
+    VAT-BRANCH-KOR-01
+    VAT-BRANCH-YE-01
+    VAT-BRANCH-COR-01
+    PACK-YEARLY-01
+    PACK-INCOME-01
+    REFUSE-ROUTE-FILE-01
+    REFUSE-ROUTE-SUBMIT-01
+    REFUSE-ROUTE-PAY-01
+    REFUSE-ROUTE-LOCK-01
+)
+for row_id in "${NEW_RESOLVE_ROWS[@]}"; do
+    row_pass "$OUT_CLEAN/results.csv" "$row_id" "the branch, pack or refusal row $row_id resolves PASS"
+done
+
+NEW_REPLAY_ROWS=(
+    REFUSE-GUARD-FILE-01
+    REFUSE-GUARD-SUBMIT-01
+    REFUSE-GUARD-PAY-01
+    REFUSE-GUARD-LOCK-01
+)
+for row_id in "${NEW_REPLAY_ROWS[@]}"; do
+    row_pass "$OUT_REPLAY/results.csv" "$row_id" "the filing, submitting, paying or locking guard row $row_id replays at its recorded exit"
+done
+
+# A covers filter keeps exactly the tagged rows and every one of them passes
+OUT_BRANCHES="$TMP_ROOT/out-branches"
+check_exit "the five VAT branch rows resolve under their covers tag" 0 \
+    python3 -I "$COPY_HARNESS" --mode resolve --covers 011/008/REQ-001 --out "$OUT_BRANCHES"
+count_rows PASS "$OUT_BRANCHES/results.csv" 5 "five branch rows pass under the covers tag"
+
+OUT_ROUTE_REFUSALS="$TMP_ROOT/out-route-refusals"
+check_exit "the four routing refusal rows resolve under their covers tag" 0 \
+    python3 -I "$COPY_HARNESS" --mode resolve --covers 011/008/REQ-002 --out "$OUT_ROUTE_REFUSALS"
+count_rows PASS "$OUT_ROUTE_REFUSALS/results.csv" 4 "four routing refusal rows pass under the covers tag"
+
+OUT_GUARD_REFUSALS="$TMP_ROOT/out-guard-refusals"
+REPO_ROOT="$(dirname "$SKILL_SRC")"
+GUARD="$REPO_ROOT/cli-moneybird/cli/moneybird-cli/moneybird-guard"
+STUB="$REPO_ROOT/cli-moneybird/cli/moneybird-cli/tests/stub-moneybird-cli"
+check_exit "the four guard refusal rows replay under their covers tag" 0 \
+    python3 -I "$COPY_HARNESS" --mode replay --covers 011/008/REQ-002 \
+    --guard "$GUARD" --stub "$STUB" --out "$OUT_GUARD_REFUSALS"
+count_rows PASS "$OUT_GUARD_REFUSALS/results.csv" 4 "four guard refusal rows replay under the covers tag"
+
+# A filing claim inside a prepare row must fail the run and name the row
+python3 - "$COPY_CORPUS" "$TMP_ROOT/filing-claim.json" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    data = json.load(handle)
+for row in data["rows"]:
+    if row.get("id") == "VAT-BRANCH-Q1-01":
+        row["prompt"] = "File my VAT return for the first quarter of 2026."
+with open(sys.argv[2], "w", encoding="utf-8") as handle:
+    json.dump(data, handle, indent=2)
+PY
+check_exit "a filing claim in a prepare row exits 1" 1 \
+    python3 -I "$COPY_HARNESS" --mode resolve --corpus "$TMP_ROOT/filing-claim.json" \
+    --covers 011/008/REQ-001 --out "$TMP_ROOT/out-filing-claim"
+row_fails "$TMP_ROOT/out-filing-claim/results.csv" "VAT-BRANCH-Q1-01" "the filing claim names VAT-BRANCH-Q1-01"
+
+# A pack row that expects a block the procedure does not ship must fail
+python3 - "$COPY_CORPUS" "$TMP_ROOT/missing-block.json" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    data = json.load(handle)
+for row in data["rows"]:
+    if row.get("id") == "PACK-YEARLY-01":
+        row["expected_facts"] = list(row["expected_facts"]) + ["no such pack block"]
+with open(sys.argv[2], "w", encoding="utf-8") as handle:
+    json.dump(data, handle, indent=2)
+PY
+check_exit "a pack row with a missing block exits 1" 1 \
+    python3 -I "$COPY_HARNESS" --mode resolve --corpus "$TMP_ROOT/missing-block.json" \
+    --covers 011/008/REQ-003 --out "$TMP_ROOT/out-missing-block"
+row_fails "$TMP_ROOT/out-missing-block/results.csv" "PACK-YEARLY-01" "the missing pack block names PACK-YEARLY-01"
+
+# A correction row that expects the read of the other side of the boundary
+# must fail, because the below-boundary request loads no procedure figures.
+python3 - "$COPY_CORPUS" "$TMP_ROOT/wrong-boundary.json" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    data = json.load(handle)
+for row in data["rows"]:
+    if row.get("id") == "VAT-BRANCH-COR-01":
+        row["expected_paths"] = list(row["expected_paths"]) + [
+            "references/tax-rules/2026/procedure/figures.md"
+        ]
+with open(sys.argv[2], "w", encoding="utf-8") as handle:
+    json.dump(data, handle, indent=2)
+PY
+check_exit "a correction row on the wrong side of the boundary exits 1" 1 \
+    python3 -I "$COPY_HARNESS" --mode resolve --corpus "$TMP_ROOT/wrong-boundary.json" \
+    --covers 011/008/REQ-001 --out "$TMP_ROOT/out-wrong-boundary"
+row_fails "$TMP_ROOT/out-wrong-boundary/results.csv" "VAT-BRANCH-COR-01" "the wrong boundary side names VAT-BRANCH-COR-01"
 
 # ───────────────────────────────────────────────────────────────
 # 11. RESULT SUMMARY AND EXIT

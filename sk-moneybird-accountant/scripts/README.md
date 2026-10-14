@@ -268,20 +268,20 @@ The library is `tiktoken` 0.11.0. The Operator chose `o200k_base` as the lead on
 
 Offline rule: the two data files come from a seeded cache. Point `TIKTOKEN_CACHE_DIR` at it, for example `../tiktoken-cache` from the repository root. The run checks that each file exists and that its sha256 matches the pin before it loads an encoder. A missing file or a changed file stops the run with exit code 2. Nothing downloads an encoding.
 
-Re-measure rule: re-measure on every reference change. Run `token-baseline.py` and commit the JSON with the change. A run with nothing to write opens with the line `baseline unchanged, 444 files, 994 sections`, after the script name. `--check` recomputes every row in memory and names each drifted row, so a stale baseline fails the run. A passing check opens with the line `check ok, 444 files, 994 sections`, after the script name, prints one row per named unit and ends with:
+Re-measure rule: re-measure on every reference change. Run `token-baseline.py` and commit the JSON with the change. A run with nothing to write opens with the line `baseline unchanged, 458 files, 1071 sections`, after the script name. `--check` recomputes every row in memory and names each drifted row, so a stale baseline fails the run. A passing check opens with the line `check ok, 458 files, 1071 sections`, after the script name, prints one row per named unit and ends with:
 
 ```text
-token-baseline: unit car route current: 84263 bytes, o200k_base 24620, cl100k_base 26474
-token-baseline: unit car route proposed: 23411 bytes, o200k_base 6796, cl100k_base 7389
-token-baseline: car route ratio: o200k_base 0.2760, cl100k_base 0.2791
+token-baseline: unit car route current: 84345 bytes, o200k_base 24618, cl100k_base 26451
+token-baseline: unit car route proposed: 23495 bytes, o200k_base 6794, cl100k_base 7369
+token-baseline: car route ratio: o200k_base 0.2760, cl100k_base 0.2786
 ```
 
 The canary covers the 2026 car question on the KEY FIGURES route, which reads the year README and the `costs-and-car/figures.md` part. It asserts the proposed route stays at or under 35 percent of the current route and at or under the 8,000 token ceiling. Three mutants prove the gate: the proposed route pointed at the whole topic file, a cache that holds the lead encoding data under the second name, and a fixture that passes a four-bytes-per-token budget and fails the token budget. The measured route:
 
 ```text
-route current: o200k_base 24620, cl100k_base 26474
-route proposed: o200k_base 6796, cl100k_base 7389
-route ratio: o200k_base 0.2760, cl100k_base 0.2791
+route current: o200k_base 24618, cl100k_base 26451
+route proposed: o200k_base 6794, cl100k_base 7369
+route ratio: o200k_base 0.2760, cl100k_base 0.2786
 ```
 
 The suite ends with `8 passed, 0 failed`.
@@ -332,16 +332,18 @@ Output is `results.csv` and `report.md`. The CSV columns are `scenario_id`, `lan
 A passing resolve run over the full corpus prints:
 
 ```text
-route-replay: ok, 75 rows passed
+route-replay: ok, 86 rows passed
 ```
 
 A passing replay run prints:
 
 ```text
-route-replay: ok, 31 replay rows passed
+route-replay: ok, 35 replay rows passed
 ```
 
-`route-replay/route-replay-test.sh` copies the skill to a temp root and ends with `Result: 47 passed, 0 failed`. It proves the deleted routed path exits 2 and names the path, the twin mismatch and the unmet claim exit 1, a wrong expected exit fails the replay, an empty corpus and a missing cache exit 2, two dated runs give byte-identical `results.csv` and `report.md`, every term the resolver keeps for the T4 conditional reads is a T4 signal in the table, and a preparation turn followed by a filing turn routes T10 and then T8.
+The corpus also carries the phase 011/008 fixtures: one T10 row per VAT return branch, the yearly overview and income tax pack rows and four routing plus four guard refusal rows for filing, submitting, paying and period locking. A covered run prints `route-replay: ok, 5 rows passed` for `--covers 011/008/REQ-001`, `route-replay: ok, 4 rows passed` for the routing refusal rows and `route-replay: ok, 4 replay rows passed` for the guard refusal rows.
+
+`route-replay/route-replay-test.sh` copies the skill to a temp root and ends with `Result: 74 passed, 0 failed`. It proves the deleted routed path exits 2 and names the path, the twin mismatch and the unmet claim exit 1, a wrong expected exit fails the replay, an empty corpus and a missing cache exit 2, two dated runs give byte-identical `results.csv` and `report.md`, every term the resolver keeps for the T4 conditional reads is a T4 signal in the table, and a preparation turn followed by a filing turn routes T10 and then T8. It also proves every phase 011/008 branch, pack and refusal row passes, the covers tags keep exactly the tagged rows, and three seeded mutants fail it: a filing claim inside a prepare row, a pack row with a missing block and a correction row on the wrong side of the boundary.
 
 ---
 
@@ -349,13 +351,13 @@ route-replay: ok, 31 replay rows passed
 
 `run-evals.py` grades a captured run against `../evals/evals.json`. The captured folder holds `metadata.json` with `model_id`, `captured_on` and an optional `skill_hash`, one `with-skill/<case id>.md` answer per case and one `baseline/<case id>.md` answer per case. The grader checks the required tokens and the forbidden patterns of every case. A required entry written as a list passes when any one of its alternative phrasings appears. Refusal markers match case-sensitively, so only the uppercase route class counts as a refusal. A marker does not count when `not`, `never`, `no longer` or a `n't` form sits up to four words before it in the same sentence, or when `does not`, `is not`, `was not`, `cannot`, `no longer` or `is inapplicable` follows it. A forbidden phrase is excused by the same preceding negation, so a correct answer may deny the act in its own words. An amount or an identifier is never excused. `grading.json` holds the per-case assertion rows and the always-pass count. `benchmark.json` holds the pass rate, the baseline pass rate, the refusal false-positive rate and the always-pass list. Both record the sha256 skill hash of `SKILL.md` plus every routed reference and the model id. A `{year}` token in a required value resolves to the year of the capture date. No model judges an answer, so the forbidden patterns catch the phrasings they list and not every paraphrase. A pass means no listed contradiction appeared, not that the answer is safe, and a captured run still gets a read by the Operator or a reviewer.
 
-`../evals/evals.json` holds 23 cases, each with a prompt, an expected route and an assertion block of required tokens and forbidden patterns. The baseline is the previous skill snapshot. A grader run on the suite fixture capture, whose baseline answers carry none of the tokens, prints:
+`../evals/evals.json` holds 31 cases, each with a prompt, an expected route and an assertion block of required tokens and forbidden patterns. It adds one case per VAT return branch, one for the yearly overview pack, one for the income tax return pack and one refusal case for filing, submitting, paying and period locking to the 23 inherited routing and recovery cases. The baseline is the previous skill snapshot. A grader run on the suite fixture capture, whose baseline answers carry none of the tokens, prints:
 
 ```text
-run-evals: 23 cases, 23 with-skill passed, 0 baseline passed
+run-evals: 31 cases, 31 with-skill passed, 0 baseline passed
 run-evals: pass rate 1.0000, baseline pass rate 0.0000
-run-evals: refusal false positives 0 of 16 benign cases
-run-evals: always-pass assertions: 82
+run-evals: refusal false positives 0 of 23 benign cases
+run-evals: always-pass assertions: 137
 ```
 
 `run-evals-test.sh` builds the capture fixtures at run time and ends with `Result: 59 passed, 0 failed`.
@@ -390,7 +392,7 @@ regression-trailer: ok (0 commits scanned)
 
 `build-source-library.py` scans `AGENTS.md`, `README.md` and the three skill folders for external links and writes `../assets/source-library.json`, one row per URL with its host, the citing files and its recorded access result. `--check` verifies the index offline and reports every cited URL missing from the index and every indexed URL no file cites. `--check-links` fetches every row a plain fetch can reach, reports `endpoint` and `webfetch-only` rows as skipped and never as failed, retries once and prints one JSON report with a summary and one row per URL. A row is ok only when the final answer after followed redirects is 2xx. `--trace <file>:<line>` prints the index row of every URL on one line with `access`, `http_status` and `checked_on`, and fails when a URL is dead, unchecked or missing from the index. Each readable row also keeps a `digest`, `retrieved_at`, an `etag` stored as a `sha256:` fingerprint, `last_modified` and, for a parliamentary document not yet published as a `kst` page, `kst_pending`, and a rebuild keeps them per URL. `--check` also fails on a cited `dead` row and on a `tweedekamer.nl/downloads/document?id=` citation whose row has no `kst_pending`. `--check-links` follows every redirect, 308 included, and counts a `blocked` answer (401, 403 or 429, a host refusing robots) and an error on a recorded `archive-not-fetchable` row apart from failures. `--apply-report <file>` writes a report's results into the index and never writes a blocked row as dead. `--watch` fetches the series in `../assets/source-watchlist.json`, compares ETag, Last-Modified and digest with the index or `../assets/source-watch-state.json`, and reports a changed series or a page that answers 200 after 404 with its citing files. `--check-calendar` reads `checked_on` from the year READMEs and `dutch-tax-rules.md` and fails when a current or future year predates the latest passed checkpoint in `../references/tax-rules/year-rollover.md`. Only `--check-links` and `--watch` make network calls, and they run in the monthly job, which reports a watch change or a stale year as an issue without failing.
 
-A passing offline check prints `524 sources match the index`. A trace of one live citation line prints:
+A passing offline check prints `527 sources match the index`. A trace of one live citation line prints:
 
 ```text
 sk-moneybird-accountant/references/tax-rules/2024/vat/figures.md:56
@@ -506,7 +508,7 @@ python3 -I sk-moneybird-accountant/scripts/split-topic-files.py --check
 bash sk-moneybird-accountant/scripts/split-topic-files-test.sh
 ```
 
-Expected result: `166 generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 4406 links, 391 fragment links, 0 problems` and `32 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 444 files, 994 sections` and `8 passed, 0 failed`. The route replay commands print `route-replay: ok, 75 rows passed` and `route-replay: ok, 31 replay rows passed`, and the suite ends with `Result: 47 passed, 0 failed`. The eval suite ends with `Result: 59 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `524 sources match the index` and its suite ends with `130 passed, 0 failed`. The route table commands print `route-table: ok` after one `missing:` line per absent conditional read, and the suite ends with `58 passed, 0 failed`. The split commands print `split-check: ok` and `Result: 12 passed, 0 failed`.
+Expected result: `166 generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 4759 links, 406 fragment links, 0 problems` and `32 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 458 files, 1071 sections` and `8 passed, 0 failed`. The route replay commands print `route-replay: ok, 86 rows passed` and `route-replay: ok, 35 replay rows passed`, and the suite ends with `Result: 74 passed, 0 failed`. The eval suite ends with `Result: 59 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `527 sources match the index` and its suite ends with `130 passed, 0 failed`. The route table commands print `route-table: ok` after one `missing:` line per absent conditional read, and the suite ends with `58 passed, 0 failed`. The split commands print `split-check: ok` and `Result: 20 passed, 0 failed`.
 
 The word check prints one line per `SKILL.md` with its word count and its verdict. It warns above 3,000 words, exits 1 above 4,000 words and exits 2 with the path named when a file is missing or unreadable. `check-route-table.py` runs it, so the `skill-health` CI step enforces the budget, and `check-skill-words-test.sh` proves the 2,999-word, 3,001-word and 4,001-word bands. The walk skips hidden folders, `specs/`, `node_modules/` and the two private folders, so a backup copy of a retired skill inside a spec packet never counts.
 
@@ -540,13 +542,13 @@ The citation remap scans every tracked markdown and JSON file outside `specs/`. 
 
 `check-route-table.py` runs `--check` beside the word check, so the `skill-health` CI step fails on a drifted part, a leftover original or an unmapped citation. The suite itself is not yet a CI step, because the workflow is a gate file.
 
-`split-topic-files-test.sh` builds a fixture repository with two year folders, three topic files, a guide whose 13 headings slug to the allowlist and one citing file with a bare, a line and an anchor citation. Twelve cases each print one pass line: a clean split passes `--check`, a hand-edited part fails and names the part, a hand-edited header fails and names the part, a hand-edited entry file fails, a generated fence added after the H1 does not fail, a returned original fails, an unmappable citation exits non-zero and writes nothing, a folder with fewer than four parts fails, a part pushed over the token line fails, a rebased link does not fail, a second `--write` changes no byte and the remapped citations land on the right part and line. The token case reports a noted pass when the cached o200k encoding is unavailable. Run it with:
+`split-topic-files-test.sh` builds a fixture repository with two year folders, three topic files, a guide whose 13 headings slug to the allowlist and one citing file with a bare, a line and an anchor citation. Twenty cases each print one pass line. Thirteen cover the split: a clean split passes `--check`, a hand-edited part fails and names the part, a hand-edited header fails and names the part, a hand-edited entry file fails, a generated fence added after the H1 does not fail, a returned original fails, an unmappable citation exits non-zero and writes nothing, a folder with fewer than four parts fails, a part pushed over the token line fails, a rebased link does not fail, a second `--write` changes no byte and the remapped citations land on the right part and line. Seven cover the accept mode: a pure rename is accepted and then passes `--check`, a body edit and a header edit are refused, an unknown base revision and an unknown map key fail, and accept mode with `--check` is a usage error. The token case reports a noted pass when the cached o200k encoding is unavailable. Run it with:
 
 ```bash
 TIKTOKEN_CACHE_DIR=<cache> bash sk-moneybird-accountant/scripts/split-topic-files-test.sh
 ```
 
-It ends with `Result: 12 passed, 0 failed`.
+It ends with `Result: 20 passed, 0 failed`.
 
 ---
 
