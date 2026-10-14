@@ -36,7 +36,7 @@ In a year topic file the checker also reports a missing, unexpected, duplicate o
 |---|---|---|
 | `sk-moneybird-accountant/scripts/check-fragments.py` | Script | Resolves link paths and fragments across the bootstrap, the README and the skill markdown. |
 | `sk-moneybird-accountant/SKILL.md` | Shared | Links the routed references the check resolves. |
-| `sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md` | Shared | Holds the generated section list a cross-year question is routed through. |
+| `sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md` | Shared | Holds the pointer table to the general topic files a cross-year question is routed through. |
 
 ### Validation And Tests
 

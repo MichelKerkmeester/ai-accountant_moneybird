@@ -24,7 +24,7 @@ Regenerates the reference nav blocks, the index, the year README tables and the 
 
 ### Generated outputs
 
-One pass over `references/` owns the nav blocks in files over the byte limit, the section list in `dutch-tax-rules.md`, `references/index.json`, the topic and headline tables in every year README, the year-figure rows in section 3 of the rules file, the change block of every year note, the whole-file `references/tax-rules/year-changes.md` overview and the reachability report over the leaf manifest.
+One pass over `references/` owns the nav blocks in files over the byte limit, `references/index.json`, the topic and headline tables in every year README, the year-figure rows in the ten general topic files under `references/tax-rules/general/`, the change block of every year note, the whole-file `references/tax-rules/year-changes.md` overview and the reachability report over the leaf manifest.
 
 ### Modes and fences
 
@@ -47,7 +47,7 @@ A year change note holds authored bullets in its unique-to-the-year section and 
 | `sk-moneybird-accountant/scripts/build-reference-index.py` | Script | Writes or checks every generated reference block and the reachability report. |
 | `sk-moneybird-accountant/references/index.json` | Shared | Holds one structure-only row per reference file with its bytes, lines and H2 sections. |
 | `sk-moneybird-accountant/references/tax-rules/year-changes.md` | Shared | Holds the generated overview of the year change notes. |
-| `sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md` | Shared | Carries the generated section list and the section 3 value rows. |
+| `sk-moneybird-accountant/references/tax-rules/general/` | Shared | Carries the generated year-figure rows, one block per general topic. |
 | `sk-moneybird-accountant/leaf-manifest.json` | Shared | Names the leaves the reachability report checks. |
 
 ### Validation And Tests
@@ -68,3 +68,4 @@ A year change note holds authored bullets in its unique-to-the-year section and 
 Related references:
 - [session-context-and-year-state.md](session-context-and-year-state.md) - The route-time context that reads the reference tree.
 - [year-rollover-runbook.md](year-rollover-runbook.md) - The runbook that refreshes the year files.
+- [topic-file-split.md](topic-file-split.md) - The split whose check ignores the fences this generator writes.

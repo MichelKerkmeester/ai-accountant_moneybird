@@ -33,6 +33,7 @@
         "feature-catalog/quality-gates/write-contract-check.md",
         "feature-catalog/reference-and-state/reference-index-and-year-changes.md",
         "feature-catalog/reference-and-state/session-context-and-year-state.md",
+        "feature-catalog/reference-and-state/topic-file-split.md",
         "feature-catalog/reference-and-state/year-rollover-runbook.md",
         "manual-testing-playbook/offline-routing/answer-privacy.md",
         "manual-testing-playbook/offline-routing/api-tool-handoff.md",

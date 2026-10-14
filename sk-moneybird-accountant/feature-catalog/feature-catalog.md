@@ -5,7 +5,7 @@ trigger_phrases:
   - Dutch ZZP bookkeeping
   - Jortt to Moneybird migration
   - Moneybird accounting workflow
-last_updated: 2026-10-13
+last_updated: 2026-10-14
 version: 1.0.0.0
 ---
 
@@ -353,11 +353,27 @@ Regenerates the reference nav blocks, the index, the year README tables and the 
 
 #### Current Reality
 
-The generator owns the nav blocks, `references/index.json`, the year README tables, the section 3 value rows, the year change blocks, `references/tax-rules/year-changes.md` and the reachability report. A check run reports drift without writing and the offline suite proves the fence rules and byte stability.
+The generator owns the nav blocks, `references/index.json`, the year README tables, the year-figure rows in the general topic files, the year change blocks, `references/tax-rules/year-changes.md` and the reachability report. A check run reports drift without writing and the offline suite proves the fence rules and byte stability.
 
 #### Source Files
 
 See [`reference-and-state/reference-index-and-year-changes.md`](reference-and-state/reference-index-and-year-changes.md) for source and validation anchors.
+
+---
+
+### Topic file split
+
+#### Description
+
+Holds every year topic as four part files and the general topics as 13 files, and proves with a hashed manifest that no part drifted after the split.
+
+#### Current Reality
+
+Each year topic is a folder of `figures.md`, `rules.md`, `examples.md` and `notes.md`, and the general topics of `dutch-tax-rules.md` sit in `references/tax-rules/general/`. Every citation names the part that holds its line or heading, and a bare topic path points at `figures.md`. The manifest hashes each part body and header and the kept entry file, and `check-route-table.py` runs the check so CI fails on a drifted part.
+
+#### Source Files
+
+See [`reference-and-state/topic-file-split.md`](reference-and-state/topic-file-split.md) for source and validation anchors.
 
 ---
 
