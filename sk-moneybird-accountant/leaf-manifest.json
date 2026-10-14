@@ -508,7 +508,11 @@
         "references/vat-return/preparation.md",
         "references/vat-return/review-pack.md",
         "references/vat-return/rubrieken.md",
-        "references/vat-return/year-end-and-corrections.md"
+        "references/vat-return/year-end-and-corrections.md",
+        "references/yearly-overview/README.md",
+        "references/yearly-overview/fiscal-reconciliation.md",
+        "references/yearly-overview/preparation-checklist.md",
+        "references/yearly-overview/report-and-export-limits.md"
       ],
       "packet": ".",
       "workflowMode": "sk-moneybird-accountant"

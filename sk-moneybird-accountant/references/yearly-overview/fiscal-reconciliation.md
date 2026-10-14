@@ -1,0 +1,60 @@
+---
+title: Fiscal reconciliation for the yearly overview
+description: The fiscal reconciliation template from the commercial result to the belastbare winst, the three-column hand-off template and the explicit prepared-not-filed stop. Every amount cell is a braced placeholder.
+trigger_phrases:
+  - fiscal reconciliation
+  - aansluiting commercieel fiscaal
+  - three-column hand-off
+  - prepared not filed
+importance_tier: important
+contextType: general
+version: 1.0.0.0
+---
+
+# Fiscal reconciliation for the yearly overview
+
+**Rule:** Prepare the reconciliation and the hand-off for Operator review. Every amount cell is a braced placeholder. Every rate, threshold and eligibility rule is read from the year file that owns it. The agent prepares and never files.
+
+---
+
+## 1. THE FISCAL RECONCILIATION TEMPLATE
+
+| Line | Item | Amount | Source |
+|---|---|---|---|
+| 1 | Commercial result before the closing entry | `{commercial_result}` | The profit and loss account for the year |
+| 2 | Fiscal adjustments, added or removed | `{fiscal_adjustments}` | [Fixed assets](../fixed-assets.md) and the year files |
+| 3 | Remove the vrijgestelde winstbestanddelen | `{exempt_profit_components}` | [The year README](../tax-rules/2026/README.md) |
+| 4 | Winst uit onderneming after line 3 | `{business_profit}` | Sum of lines 1 to 3 |
+| 5 | Remove the ondernemersaftrek | `{ondernemersaftrek}` | [Ondernemersaftrek 2026 figures](../tax-rules/2026/ondernemersaftrek/figures.md) |
+| 6 | Profit after the ondernemersaftrek | `{profit_after_aftrek}` | Line 4 minus line 5 |
+| 7 | MKB-winstvrijstelling at `{mkb_rate}` on line 6 | `{mkb_exemption}` | [Ondernemersaftrek 2026 figures](../tax-rules/2026/ondernemersaftrek/figures.md) |
+| 8 | Belastbare winst uit onderneming | `{taxable_profit}` | Line 6 minus line 7 |
+
+The order matters. Remove the vrijgestelde winstbestanddelen first, subtract the ondernemersaftrek, then apply the MKB-winstvrijstelling to the profit after that aftrek. Every rate and threshold comes from the resolved year folder, for example [Inkomstenbelasting 2026 figures](../tax-rules/2026/inkomstenbelasting/figures.md).
+
+`[Operator]` or a bookkeeper decides the ondernemerschap, the urencriterium, the starter history and the aftrek eligibility. The pack records each decision with its evidence.
+
+---
+
+## 2. THE THREE-COLUMN HAND-OFF TEMPLATE
+
+Split the pack into the three columns below. The first column is what the administration supplies. The second is what extra evidence can support. The third is what the administration never holds.
+
+| Administration supplies | Administration plus evidence | Never in the administration |
+|---|---|---|
+| The balance at the closing date `{balance}` | The urencriterium log `{hours_log}` | Private deductions such as hypotheekrente `{private_deduction}` |
+| The profit and loss account `{profit_and_loss}` | The starter history `{starter_history}` | Private income `{private_income}` |
+| The ledger detail `{ledger_detail}` | The AOW status `{aow_status}` | Fiscal partnership facts `{partnership_facts}` |
+| The asset and depreciation schedule `{asset_schedule}` | The investment amounts with the RVO registrations `{investment_amount}` | The final eligibility judgement `{eligibility_judgement}` |
+| The VAT position and the filed returns `{vat_position}` | The private-use shares `{private_use_share}` |  |
+| The auditfile reference `{auditfile_reference}` | The transitoria and the suppletie corrections `{transitoria}` |  |
+
+The third column is the boundary of the pack. An item there is a note for the Operator or the bookkeeper and never a computed figure from the administration.
+
+---
+
+## 3. PREPARED, NOT FILED
+
+The agent prepared the yearly overview and did not file anything. The pack stops at the three-column hand-off. The Operator checks the balance and the result, confirms every judgement row, performs the closing and locking actions in the Moneybird UI and files the income-tax return in the Belastingdienst portal. Payment of any assessment is a separate Operator action.
+
+Nothing in this folder states that a return was filed, an assessment exists or a payment was made. The next step after the pack is always an Operator action.

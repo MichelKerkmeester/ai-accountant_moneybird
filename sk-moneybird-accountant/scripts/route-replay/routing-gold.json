@@ -2061,6 +2061,7 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
+        "references/yearly-overview/README.md",
         "references/tax-rules/2026/kosten-en-auto/figures.md",
         "references/tax-rules/2026/investeringen/figures.md"
       ],
@@ -2092,6 +2093,7 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
+        "references/yearly-overview/README.md",
         "references/tax-rules/2026/kosten-en-auto/figures.md",
         "references/tax-rules/2026/investeringen/figures.md"
       ],

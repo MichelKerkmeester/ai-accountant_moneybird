@@ -62,7 +62,7 @@ Every request matches exactly one row, which decides files read and tool skill.
 | T8 | unknown or out of scope | `aangifte doen`, `indienen`, `dien`, `insturen`, `aanslag betalen`, `periode afsluiten` | `filing`, `file my`, `file the`, `submit`, `pay the assessment`, `lock the period`, `non-Dutch tax`, `private database` | `none` | `-` | `tok:T8` | Wins over T10, T11 and T12 when an explicit file, submit, pay or lock request is present, otherwise only when no other row scores |
 | T9 | onboarding | `startende ondernemer` | where do I start, first time, setup | `none` | `!references/migration/overview-and-setup.md` | `tok:T9` | Loses to every typed row, it wins only when the request asks where to start with no concrete task |
 | T10 | prepare the VAT return | `btw-aangifte`, `aangifte omzetbelasting`, `kwartaalaangifte`, `btw-aangifte voorbereiden`, `btw-aangifte klaarzetten`, `btw-aangifte controleren` | `VAT return`, `quarterly return`, `prepare the VAT return`, `review the VAT return`, `check the VAT return` | `cli-moneybird` | `!references/vat-return/README.md`, `!references/tax-rules/{year}/btw/figures.md`, and `?references/tax-rules/{year}/procedure/figures.md` when a deadline, correction or belastingrente applies | `tok:T10` | Beats T3 when the VAT return is named and yields to T3 on a period question without it, always yields to T8 on a filing request |
-| T11 | prepare the yearly overview | `jaaroverzicht`, `jaarrekening`, `balans en winst-en-verliesrekening`, `jaaroverzicht voorbereiden`, `jaarrekening klaarzetten`, `jaarrekening controleren` | `yearly overview`, `annual accounts`, `prepare the yearly overview`, `review the annual accounts`, `check the yearly overview` | `cli-moneybird` | `?references/yearly-overview/README.md`, `!references/tax-rules/{year}/kosten-en-auto/figures.md`, and `!references/tax-rules/{year}/investeringen/figures.md` | `tok:T11` | Beats T3 when the yearly overview is named and yields to T3 on a period question without it, always yields to T8 on a filing request |
+| T11 | prepare the yearly overview | `jaaroverzicht`, `jaarrekening`, `balans en winst-en-verliesrekening`, `jaaroverzicht voorbereiden`, `jaarrekening klaarzetten`, `jaarrekening controleren` | `yearly overview`, `annual accounts`, `prepare the yearly overview`, `review the annual accounts`, `check the yearly overview` | `cli-moneybird` | `!references/yearly-overview/README.md`, `!references/tax-rules/{year}/kosten-en-auto/figures.md`, and `!references/tax-rules/{year}/investeringen/figures.md` | `tok:T11` | Beats T3 when the yearly overview is named and yields to T3 on a period question without it, always yields to T8 on a filing request |
 | T12 | prepare the income tax return | `aangifte inkomstenbelasting`, `IB-aangifte`, `aangifte inkomstenbelasting voorbereiden`, `IB-aangifte klaarzetten`, `IB-aangifte controleren` | `income tax return`, `prepare the income tax return`, `review the income tax return`, `check the income tax return` | `none` | `?references/income-tax-return/README.md`, `!references/tax-rules/{year}/inkomstenbelasting/figures.md`, and `!references/tax-rules/{year}/ondernemersaftrek/figures.md` | `tok:T12` | Beats T5 when the income tax return is named and yields to T5 on a tax figure question without it, always yields to T8 on a filing request |
 
 <!-- route-table:end -->
@@ -142,7 +142,7 @@ REQUIRED_READS = {
     "T8": [],
     "T9": ["references/migration/overview-and-setup.md"],
     "T10": ["references/vat-return/README.md", "references/tax-rules/{year}/btw/figures.md"],
-    "T11": ["references/tax-rules/{year}/kosten-en-auto/figures.md", "references/tax-rules/{year}/investeringen/figures.md"],
+    "T11": ["references/yearly-overview/README.md", "references/tax-rules/{year}/kosten-en-auto/figures.md", "references/tax-rules/{year}/investeringen/figures.md"],
     "T12": ["references/tax-rules/{year}/inkomstenbelasting/figures.md", "references/tax-rules/{year}/ondernemersaftrek/figures.md"],
 }
 CONDITIONAL_READS = {
@@ -156,7 +156,7 @@ CONDITIONAL_READS = {
     "T8": [],
     "T9": [],
     "T10": ["references/tax-rules/{year}/procedure/figures.md"],
-    "T11": ["references/yearly-overview/README.md"],
+    "T11": [],
     "T12": ["references/income-tax-return/README.md"],
 }
 SECTION_TARGETS = {

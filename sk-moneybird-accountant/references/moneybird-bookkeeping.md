@@ -151,9 +151,33 @@ The step list for the quarterly preparation is in [`references/vat-return/README
 ### Yearly bookkeeping
 
 - Reconcile profit and loss, balance sheet, assets, depreciation, private use, mileage, and year-end VAT adjustments.
+- The step list, the auditfile gate and the close checks are in [the yearly overview folder](./yearly-overview/README.md).
 - Compare annual totals to the evidence and filed records.
 - Lock a period only when the applicable workflow has passed and the operator directs the action.
 - Route Moneybird CLI reads through moneybird-guard under the Read Step Contract in `cli-moneybird/SKILL.md` section 3. For writes, apply LIVE write authority. Keep income-tax return preparation and filing with the operator or a bookkeeper.
+
+### Private withdrawals and deposits in the accounts
+
+Moneybird keeps one main category for the owner's private movement, with a sub-category for deposits and one for withdrawals. The entity principle treats the business and its owner as separate for the administration. A private movement settles through the owner-equity account and never through the profit and loss account, so a private cost is not a business cost and a private receipt is not revenue. The four owner-equity lines are:
+
+| Owner-equity line | What it records | Effect on closing equity |
+|---|---|---|
+| Opening equity | The prior closing equity carried into the year | Starting point |
+| Result for the year | The profit and loss result before the closing entry | Adds or subtracts |
+| Private deposits (stortingen) | What the owner puts into the business | Adds |
+| Private withdrawals (onttrekkingen) | What the owner takes out of the business | Subtracts |
+
+The figures that touch this schedule come from the resolved year folder. Start with the [year README](./tax-rules/2026/README.md) and read the topic figures file it names. The private movements themselves carry no rate.
+
+- Product references: [private payments](https://helpcenter.moneybird.nl/nl/articles/207323-prive-betalingen-verwerken), [which private category for withdrawals and deposits](https://helpcenter.moneybird.nl/nl/articles/207326-wanneer-welke-categorie-prive-opnames-stortingen) and [the entity principle](https://www.jortt.nl/boekhouden/accounting-principes/entiteitsbeginsel/).
+- Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
+
+### Period closing and year attribution
+
+The rule that decides the year a cost or revenue belongs to is one sourced sentence in [year and state resolution](./tax-rules/year-and-state.md), so read it there instead of restating it. The cut-off list and the closing mechanics are in [the preparation checklist](./yearly-overview/preparation-checklist.md#2-the-checks). The closing entry, the inventory count and the accrual reversal are prepared by the agent and performed by the Operator in the Moneybird UI. Read the year file for the resolved year before any figure is used, for example [the 2026 year README](./tax-rules/2026/README.md).
+
+- Product references: [year close](https://helpcenter.moneybird.nl/nl/articles/208002-jaarafsluiting) and [locking periods](https://helpcenter.moneybird.nl/nl/articles/207253-periodes-vergrendelen), per Moneybird help.
+- Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
 
 ---
 
