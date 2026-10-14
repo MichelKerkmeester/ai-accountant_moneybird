@@ -502,6 +502,7 @@ WORD_COPY="$TMP_ROOT/word-copy"
 mkdir -p "$WORD_COPY/sk-moneybird-accountant/scripts" "$WORD_COPY/cli-moneybird" "$WORD_COPY/cli-jortt"
 cp "$CHECKER" "$WORD_COPY/sk-moneybird-accountant/scripts/check-route-table.py"
 cp "$WORD_CHECKER" "$WORD_COPY/sk-moneybird-accountant/scripts/check-skill-words.py"
+cp "$SKILL_DIR/scripts/split-topic-files.py" "$WORD_COPY/sk-moneybird-accountant/scripts/split-topic-files.py"
 cp "$SKILL_MD" "$WORD_COPY/sk-moneybird-accountant/SKILL.md"
 cp "$GRAPH_METADATA" "$WORD_COPY/sk-moneybird-accountant/graph-metadata.json"
 cp -R "$SKILL_DIR/references" "$WORD_COPY/sk-moneybird-accountant/references"
@@ -517,6 +518,21 @@ if [[ "$status" -eq 0 ]] && grep -qF 'check-skill-words: ' "$TMP_ROOT/out.txt"; 
     pass "the repository copy runs the word check and passes"
 else
     fail "the repository copy runs the word check and passes"
+    cat "$TMP_ROOT/out.txt"
+fi
+
+# The same copy carries the split proof, so one changed byte in a part body
+# fails the route table check through the wired split check
+SPLIT_PART="$WORD_COPY/sk-moneybird-accountant/references/tax-rules/2025/btw/rules.md"
+cp "$SPLIT_PART" "$TMP_ROOT/split-part.keep"
+printf 'x' >>"$SPLIT_PART"
+python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+cp "$TMP_ROOT/split-part.keep" "$SPLIT_PART"
+if [[ "$status" -ne 0 ]] && grep -qF 'btw/rules.md' "$TMP_ROOT/out.txt"; then
+    pass "a drifted split part fails the route table check"
+else
+    fail "a drifted split part fails the route table check"
     cat "$TMP_ROOT/out.txt"
 fi
 

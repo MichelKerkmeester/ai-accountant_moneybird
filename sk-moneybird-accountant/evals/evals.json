@@ -68,7 +68,7 @@
         "type": "T4",
         "references": [
           "references/purchase-invoices.md",
-          "references/tax-rules/2026/btw.md",
+          "references/tax-rules/2026/btw/figures.md",
           "references/moneybird-bookkeeping.md"
         ]
       },
@@ -297,7 +297,7 @@
         "type": "T4",
         "references": [
           "references/purchase-invoices.md",
-          "references/tax-rules/2026/btw.md",
+          "references/tax-rules/2026/btw/figures.md",
           "references/moneybird-bookkeeping.md"
         ]
       },
@@ -323,7 +323,7 @@
         "references": [
           "references/tax-rules/dutch-tax-rules.md",
           "references/tax-rules/2026/README.md",
-          "references/tax-rules/2026/kosten-en-auto.md",
+          "references/tax-rules/2026/kosten-en-auto/figures.md",
           "references/tax-rules/source-library.md"
         ]
       },

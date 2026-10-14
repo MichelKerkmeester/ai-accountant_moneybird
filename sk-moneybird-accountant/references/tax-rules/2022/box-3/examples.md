@@ -1,0 +1,86 @@
+---
+title: "Box 3 sparen en beleggen 2022: Examples"
+description: "Box 3 for tax year 2022: the old band method, the recalculated category method under the Wet rechtsherstel box 3, and the most favourable outcome for savings and investments. This file holds the examples part."
+nav_label: "Box 3 sparen en beleggen examples"
+trigger_phrases:
+  - "box 3 2022"
+  - "box 3 sparen en beleggen 2022"
+  - "box 3 rechtsherstel 2022"
+  - "Box 3 sparen en beleggen 2022 examples"
+importance_tier: important
+contextType: research
+version: 1.0.0.0
+---
+
+# Box 3 sparen en beleggen 2022: Examples
+
+**Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
+
+Part 3 of 4 of the Box 3 sparen en beleggen 2022 topic.
+
+- [figures.md](figures.md): sections 1 and 2.
+- [rules.md](rules.md): section 3.
+- [notes.md](notes.md): sections 5 to 8.
+
+Year overview: [README.md](../README.md).
+
+## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
+
+All examples use invented amounts and only the 2022 figures from section 2. The asset and debt values are the values on 1 January 2022 that the Wet rechtsherstel calculation uses.
+
+**Calculated example 1. Single person, mixed portfolio, old method against category method.**
+
+Facts. Banktegoeden € 80.000. Overige bezittingen € 100.000. Schulden € 0. No fiscal partner.
+
+Old band method.
+1. Bezittingen = € 80.000 + € 100.000 = € 180.000. With no debts, the rendementsgrondslag is € 180.000.
+2. Grondslag sparen en beleggen = € 180.000 - € 50.650 = € 129.350.
+3. Band 1: € 50.650 × 1,818% = € 920,82.
+4. Band 2: € 129.350 - € 50.650 = € 78.700. € 78.700 × 4,366% = € 3.436,04.
+5. Voordeel = € 920,82 + € 3.436,04 = € 4.356,86.
+6. Belasting = € 4.356,86 × 31% = € 4.356,86 × 0,31 = € 1.350,63.
+
+Category method under the Wet rechtsherstel.
+1. Rendement = € 80.000 × 0,00% + € 100.000 × 5,53% - € 0 × 2,28% = € 0 + € 5.530,00 - € 0 = € 5.530,00.
+2. Rendementsgrondslag = € 180.000.
+3. Effective rendementspercentage = € 5.530,00 / € 180.000 = 3,072222%.
+4. Voordeel = 3,072222% × € 129.350 = € 3.973,92. Control sum: € 129.350 / € 180.000 = 71,861111%, and € 5.530,00 × 71,861111% = € 3.973,92.
+5. Belasting = € 3.973,92 × 0,31 = € 1.231,92.
+
+Most favourable method. € 3.973,92 is lower than € 4.356,86, so the category method applies and the box 3 tax is € 1.231,92 (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen).
+
+**Calculated example 2. Single person, savings only.**
+
+Facts. Banktegoeden € 200.000. No overige bezittingen, no schulden.
+
+Old band method. Grondslag sparen en beleggen = € 200.000 - € 50.650 = € 149.350. Band 1: € 50.650 × 1,818% = € 920,82. Band 2: € 149.350 - € 50.650 = € 98.700, and € 98.700 × 4,366% = € 4.309,24. Voordeel = € 920,82 + € 4.309,24 = € 5.230,06. Belasting = € 5.230,06 × 0,31 = € 1.621,32.
+
+Category method. Rendement = € 200.000 × 0,00% = € 0. Voordeel = € 0. Belasting = € 0.
+
+Most favourable method. The category method gives € 0 against € 5.230,06 under the old method, so the category method applies and the box 3 tax is € 0.
+
+**Calculated example 3. Whole-year partners, green investments and debts.**
+
+Facts. Banktegoeden € 200.000. Groene beleggingen € 70.000. Schulden € 12.000. Whole-year fiscal partners.
+
+Green exemption. € 70.000 is below € 122.430, so the full € 70.000 of green investments is not counted as bezittingen.
+Schuldendrempel. Only the debts above € 6.400 count, so € 12.000 - € 6.400 = € 5.600.
+Bezittingen = € 200.000. Rendementsgrondslag = € 200.000 - € 5.600 = € 194.400.
+Grondslag sparen en beleggen = € 194.400 - € 101.300 = € 93.100.
+
+Old band method. Band 1: € 50.650 × 1,818% = € 920,82. Band 2: € 93.100 - € 50.650 = € 42.450, and € 42.450 × 4,366% = € 1.853,37. Voordeel = € 920,82 + € 1.853,37 = € 2.774,19. Belasting = € 2.774,19 × 0,31 = € 860,00.
+
+Category method. Rendement = € 200.000 × 0,00% + € 0 × 5,53% - € 5.600 × 2,28% = € 0 + € 0 - € 127,68 = -€ 127,68. Art. 2 sets the voordeel not below nil, so the voordeel is € 0 and the box 3 tax is € 0.
+
+Korting groene beleggingen. 0,7% × € 70.000 = € 490. The credit is split between the partners in the same ratio as the green balance. If the balance is held 50/50, each partner's korting is € 245.
+
+Most favourable method. The category method gives € 0 against € 2.774,19 under the old method, so the voordeel is € 0.
+
+**Official example. Actual return of € 1.000 interest and a € 300 loss on shares.**
+
+The Belastingdienst example for 2022: € 1.000 of interest received and shares that are down € 300 give an actual return of € 700 (€ 1.000 - € 300 = € 700) (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/wat-is-mijn-werkelijk-rendement). A calculated link: if the taxpayer of Calculated example 1 reported an actual return of € 700 for 2022, the Belastingdienst uses the most favourable amount, so € 700 instead of the fictitious € 3.973,92 (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/werkelijk-rendement-belastingaangifte).
+
+---
+

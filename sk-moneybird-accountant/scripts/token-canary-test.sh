@@ -143,8 +143,9 @@ The driver imports the named token-baseline.py and calls its counting helpers,
 so the canary never counts tokens on its own. The proposed car route must stay
 at or under 35 percent of the current route and at or under 8000 cl100k_base
 tokens. The driver also builds a byte-only fixture, rewrites a module copy so
-the proposed route reads the whole topic file, and swaps two cached encoding
-files so the baseline must refuse them. No step downloads an encoding.
+the proposed route reads the whole topic through its parts, and swaps two
+cached encoding files so the baseline must refuse them. No step downloads an
+encoding.
 
 Usage:
     route-canary.py pin <module>
@@ -417,7 +418,7 @@ def mode_nested(module: ModuleType, encoders: Dict[str, Any]) -> int:
 
 
 def mode_whole_file(path: str) -> int:
-    """Point the proposed route of a module copy at the whole topic file.
+    """Point the proposed route of a module copy at the whole topic.
 
     Args:
         path: Path of a token-baseline.py copy to rewrite.
@@ -429,9 +430,9 @@ def mode_whole_file(path: str) -> int:
         SystemExit: When the route lines are missing, so no mutation applies.
     """
     old_reads = '[readme_path, "%s#%s" % (topic_path, CAR_SECTION_ANCHOR)]'
-    new_reads = "[readme_path, topic_path]"
+    new_reads = "[readme_path] + topic_paths"
     old_part = "[readme, section_part(topic_path, CAR_SECTION_ANCHOR, rows)]"
-    new_part = "[readme, topic]"
+    new_part = "[readme] + topic_parts"
     with open(path, "r", encoding="utf-8") as handle:
         text = handle.read()
     if text.count(old_reads) != 1 or text.count(old_part) != 1:
@@ -439,7 +440,7 @@ def mode_whole_file(path: str) -> int:
     text = text.replace(old_reads, new_reads).replace(old_part, new_part)
     with open(path, "w", encoding="utf-8", newline="") as handle:
         handle.write(text)
-    print("mutant: the proposed route reads the whole topic file")
+    print("mutant: the proposed route reads the whole topic through its parts")
     return 0
 
 
@@ -552,9 +553,9 @@ run_driver whole-file "$COPY_PY"
 status=$?
 show_output
 if [[ "$status" -eq 0 ]]; then
-    pass "the throwaway copy points the proposed route at the whole topic file"
+    pass "the throwaway copy points the proposed route at the whole topic"
 else
-    fail "the throwaway copy points the proposed route at the whole topic file"
+    fail "the throwaway copy points the proposed route at the whole topic"
 fi
 run_driver route "$COPY_PY"
 status=$?

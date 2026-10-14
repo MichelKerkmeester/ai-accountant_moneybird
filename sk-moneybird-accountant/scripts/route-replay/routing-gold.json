@@ -298,7 +298,7 @@
       "expected_paths": [
         "references/moneybird-bookkeeping.md",
         "references/tax-rules/2026/README.md",
-        "references/tax-rules/2026/btw.md"
+        "references/tax-rules/2026/btw/figures.md"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
@@ -329,7 +329,7 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/tax-rules/2026/btw.md",
+        "references/tax-rules/2026/btw/figures.md",
         "references/moneybird-bookkeeping.md"
       ],
       "forbidden_paths": [
@@ -367,7 +367,7 @@
       "tie": "",
       "expected_paths": [
         "references/tax-rules/2026/README.md",
-        "references/tax-rules/2026/kosten-en-auto.md#2-key-figures"
+        "references/tax-rules/2026/kosten-en-auto/figures.md#2-key-figures"
       ],
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
@@ -806,7 +806,7 @@
       "expected_paths": [
         "references/moneybird-bookkeeping.md",
         "references/tax-rules/2026/README.md",
-        "references/tax-rules/2026/btw.md"
+        "references/tax-rules/2026/btw/figures.md"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
@@ -838,7 +838,7 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/tax-rules/2026/btw.md",
+        "references/tax-rules/2026/btw/figures.md",
         "references/moneybird-bookkeeping.md"
       ],
       "forbidden_paths": [
@@ -876,7 +876,7 @@
       "tie": "",
       "expected_paths": [
         "references/tax-rules/2026/README.md",
-        "references/tax-rules/2026/kosten-en-auto.md#2-key-figures"
+        "references/tax-rules/2026/kosten-en-auto/figures.md#2-key-figures"
       ],
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
@@ -1130,7 +1130,7 @@
       "tie": "T4-over-T2",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/tax-rules/2026/btw.md",
+        "references/tax-rules/2026/btw/figures.md",
         "references/moneybird-bookkeeping.md"
       ],
       "forbidden_paths": [
@@ -1157,7 +1157,7 @@
       "tie": "T4-over-T2",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/tax-rules/2026/btw.md",
+        "references/tax-rules/2026/btw/figures.md",
         "references/moneybird-bookkeeping.md"
       ],
       "forbidden_paths": [
@@ -1183,7 +1183,7 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
-        "references/tax-rules/dutch-tax-rules.md#310-work-relationship-and-procedure"
+        "references/tax-rules/general/work-relationship-and-procedure.md#310-work-relationship-and-procedure"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
@@ -1213,7 +1213,7 @@
       "tie": "T4-over-T3",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/tax-rules/2026/btw.md",
+        "references/tax-rules/2026/btw/figures.md",
         "references/moneybird-bookkeeping.md"
       ],
       "forbidden_paths": [
@@ -1250,7 +1250,7 @@
       "tie": "T5-over-T6",
       "expected_paths": [
         "references/tax-rules/2026/README.md",
-        "references/tax-rules/2026/btw.md#2-key-figures"
+        "references/tax-rules/2026/btw/figures.md#2-key-figures"
       ],
       "forbidden_paths": [
         "references/moneybird-bookkeeping.md",
@@ -1449,7 +1449,7 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/tax-rules/2026/btw.md",
+        "references/tax-rules/2026/btw/figures.md",
         "references/moneybird-bookkeeping.md"
       ],
       "forbidden_paths": [
@@ -1518,7 +1518,7 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/tax-rules/2026/btw.md",
+        "references/tax-rules/2026/btw/figures.md",
         "references/moneybird-bookkeeping.md",
         "references/mixed-use-costs.md"
       ],
@@ -1558,7 +1558,7 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/tax-rules/2026/btw.md",
+        "references/tax-rules/2026/btw/figures.md",
         "references/moneybird-bookkeeping.md",
         "references/mixed-use-costs.md"
       ],
@@ -1598,7 +1598,7 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/tax-rules/2026/btw.md",
+        "references/tax-rules/2026/btw/figures.md",
         "references/moneybird-bookkeeping.md",
         "references/mixed-use-costs.md"
       ],
@@ -1632,7 +1632,7 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/tax-rules/2026/btw.md",
+        "references/tax-rules/2026/btw/figures.md",
         "references/moneybird-bookkeeping.md",
         "references/fixed-assets.md"
       ],
@@ -1672,7 +1672,7 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/tax-rules/2026/btw.md",
+        "references/tax-rules/2026/btw/figures.md",
         "references/moneybird-bookkeeping.md",
         "references/fixed-assets.md"
       ],
@@ -1712,7 +1712,7 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/tax-rules/2026/btw.md",
+        "references/tax-rules/2026/btw/figures.md",
         "references/moneybird-bookkeeping.md",
         "references/fixed-assets.md"
       ],
@@ -1745,7 +1745,7 @@
       "tier": "",
       "tie": "T6-over-T4",
       "expected_paths": [
-        "references/tax-rules/dutch-tax-rules.md#310-work-relationship-and-procedure"
+        "references/tax-rules/general/work-relationship-and-procedure.md#310-work-relationship-and-procedure"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
@@ -1773,7 +1773,7 @@
       "tie": "T5-over-T4",
       "expected_paths": [
         "references/tax-rules/2026/README.md",
-        "references/tax-rules/2026/kosten-en-auto.md#2-key-figures"
+        "references/tax-rules/2026/kosten-en-auto/figures.md#2-key-figures"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
@@ -1803,7 +1803,7 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/tax-rules/2026/btw.md",
+        "references/tax-rules/2026/btw/figures.md",
         "references/moneybird-bookkeeping.md",
         "references/mixed-use-costs.md"
       ],
@@ -1835,7 +1835,7 @@
       "tie": "T5-over-T4",
       "expected_paths": [
         "references/tax-rules/2026/README.md",
-        "references/tax-rules/2026/investeringen.md#2-key-figures"
+        "references/tax-rules/2026/investeringen/figures.md#2-key-figures"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
@@ -1862,7 +1862,7 @@
       "tie": "T5-over-T4",
       "expected_paths": [
         "references/tax-rules/2026/README.md",
-        "references/tax-rules/2026/investeringen.md#2-key-figures"
+        "references/tax-rules/2026/investeringen/figures.md#2-key-figures"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
@@ -1888,7 +1888,7 @@
       "tier": "",
       "tie": "T6-over-T4",
       "expected_paths": [
-        "references/tax-rules/dutch-tax-rules.md#310-work-relationship-and-procedure"
+        "references/tax-rules/general/work-relationship-and-procedure.md#310-work-relationship-and-procedure"
       ],
       "forbidden_paths": [
         "references/purchase-invoices.md",
@@ -1942,7 +1942,7 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/tax-rules/2026/btw.md",
+        "references/tax-rules/2026/btw/figures.md",
         "references/moneybird-bookkeeping.md",
         "references/fixed-assets.md"
       ],
@@ -1971,7 +1971,7 @@
       "tie": "",
       "expected_paths": [
         "references/purchase-invoices.md",
-        "references/tax-rules/2026/btw.md",
+        "references/tax-rules/2026/btw/figures.md",
         "references/moneybird-bookkeeping.md",
         "references/fixed-assets.md"
       ],

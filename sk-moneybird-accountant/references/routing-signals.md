@@ -83,8 +83,8 @@ A row shows two numbers. The base is the ladder sum of the read path that answer
 |---|---|---|---|
 | `tok:T1` | 33,000 | 48,000 | migration index 3,000, shared mechanisms 15,000 and one phase file 15,000, plus the control framework 15,000 when a gate, risk or year lock applies |
 | `tok:T2` | 15,000 | 15,000 | one full reference file |
-| `tok:T3` | 18,000 | 51,000 | bookkeeping file 15,000 and a year README 3,000, plus the year btw file 15,000 on a VAT period, plus the migration index 3,000 and the recurring-cycle file 15,000 while the post-cutover state is open |
-| `tok:T4` | 45,000 | 75,000 | purchase invoices 15,000, the year btw file 15,000 and the bookkeeping file 15,000, plus the mixed-use file 15,000 and the fixed-asset file 15,000 when their condition applies |
+| `tok:T3` | 18,000 | 51,000 | bookkeeping file 15,000 and a year README 3,000, plus the year btw figures part 15,000 on a VAT period, plus the migration index 3,000 and the recurring-cycle file 15,000 while the post-cutover state is open |
+| `tok:T4` | 45,000 | 75,000 | purchase invoices 15,000, the year btw figures part 15,000 and the bookkeeping file 15,000, plus the mixed-use file 15,000 and the fixed-asset file 15,000 when their condition applies |
 | `tok:T5` | 8,000 | 18,000 | a year README 3,000 plus one section 5,000, and 5,000 more for a rules subsection and 5,000 more for the source library when either is needed |
 | `tok:T6` | 80,000 | 80,000 | section 3 of the rules file, at most 80,000, only after a jump through its section list |
 | `tok:T7` | 0 | 0 | no reference file, the sibling tool skill carries its own reads |
@@ -95,7 +95,7 @@ A row shows two numbers. The base is the ladder sum of the read path that answer
 
 ## 6. YEAR CHANGE ROUTE
 
-A question about what changed in one year, the difference between two years or `verschil met vorig jaar` loads `references/tax-rules/<year>/changes.md` first. That note holds the year's unique differences, and every bullet links the one topic section 5 that owns the fact. From there the route opens the linked `<topic>.md#5-changes` section. When the question names no year, `references/tax-rules/year-changes.md` gathers every year, newest first, with the path to each year note.
+A question about what changed in one year, the difference between two years or `verschil met vorig jaar` loads `references/tax-rules/<year>/changes.md` first. That note holds the year's unique differences, and every bullet links the one topic section 5 that owns the fact. From there the route opens the linked `<topic>/notes.md#5-changes` section. When the question names no year, `references/tax-rules/year-changes.md` gathers every year, newest first, with the path to each year note.
 
 ---
 

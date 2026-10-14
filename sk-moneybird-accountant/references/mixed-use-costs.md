@@ -26,7 +26,7 @@ Every Moneybird read or write runs through moneybird-guard, following [cli-money
 
 ### Tool route
 
-1. **Knowledge.** Read this reference and the year of the booking. The year's `kosten-en-auto.md` holds the mixed-cost rule, the telefoonabonnement thuis rule and the art. 3.15 threshold for food, drink, representation and congresses, and its `btw.md` holds the rates, the private-use settlement and the KOR. [Kosten en auto 2026](tax-rules/2026/kosten-en-auto.md), [BTW 2026](tax-rules/2026/btw.md)
+1. **Knowledge.** Read this reference and the year of the booking. The year's `kosten-en-auto.md` holds the mixed-cost rule, the telefoonabonnement thuis rule and the art. 3.15 threshold for food, drink, representation and congresses, and its `btw.md` holds the rates, the private-use settlement and the KOR. [Kosten en auto 2026](tax-rules/2026/kosten-en-auto/figures.md), [BTW 2026](tax-rules/2026/btw/figures.md)
 2. **Guarded read.** Read the purchase VAT rates with `tax_rates list` under `MONEYBIRD_GUARD_READ_ONLY=1`, as [cli-moneybird](../../cli-moneybird/SKILL.md) section 2 states.
 3. **Gated write.** Book through the row "Purchase invoice and attachment" in that same section, only where the LIVE write authority in `SKILL.md` allows it. Otherwise the Operator books in the Moneybird UI. [cli-moneybird](../../cli-moneybird/SKILL.md)
 
@@ -40,7 +40,7 @@ Every Moneybird read or write runs through moneybird-guard, following [cli-money
 | Home internet, mixed | Business part only | As above | Same split |
 | Fixed home telephone line | Subscription 0 percent, business calls 100 percent | VAT on the estimated business share, as section 4 states | Book the business call charges only |
 | Phone or laptop handset, mixed | Etikettering: 10 percent or less business is verplicht privévermogen, 90 percent or more is verplicht ondernemingsvermogen, between is keuzevermogen. Privévermogen gives 0 percent, ondernemingsvermogen is depreciated in full | VAT choice of section 4, so private, business or partly | Section 9, `fixed-assets.md` |
-| KOR participant | Business part only, including its VAT, because private costs are not deductible and the input VAT may not be deducted ([which business costs may I deduct](https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/welke-kosten-mag-ik-aftrekken-van-mijn-bijverdiensten)), as [Kosten en auto 2026](tax-rules/2026/kosten-en-auto.md) section 32 states | No input VAT | No VAT split, private part still to the private category |
+| KOR participant | Business part only, including its VAT, because private costs are not deductible and the input VAT may not be deducted ([which business costs may I deduct](https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/welke-kosten-mag-ik-aftrekken-van-mijn-bijverdiensten)), as [Kosten en auto 2026](tax-rules/2026/kosten-en-auto/figures.md) section 32 states | No input VAT | No VAT split, private part still to the private category |
 | Only exempt turnover | Business part only | No input VAT for either part | No VAT split |
 
 Sources: [business or private](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/zakelijke_kosten/zakelijk_of_prive), [overview of deductible business costs](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/zakelijke_kosten/overzicht-mogelijk-aftrekbare-zakelijke-kosten), [which VAT may you deduct](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/welke_btw_is_aftrekbaar/welke_btw_mag_u_aftrekken), [what joining the KOR means](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/), [mixed use of investment goods](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/privegebruik/gemengd_gebruik/investeringsgoederen/investeringsgoederen).
@@ -76,7 +76,7 @@ For mixed use there are three possibilities. No VAT is deducted, none is deducte
 - When the revision follows entry into or exit from the KOR it lapses for a good taken into use in an earlier book year, when the total in the year is below the amount the page states and never in the year of first use. [revision of the VAT deduction](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/belaste_en_vrijgestelde_omzet/inschatting_van_het_gebruik2/herziening_aftrek_bij_investeringsgoederen2)
 - A business with only exempt turnover deducts no VAT for either part, and a KOR participant deducts no input VAT on business costs and investments. [mixed use of investment goods](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/privegebruik/gemengd_gebruik/investeringsgoederen/investeringsgoederen), [what joining the KOR means](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/)
 
-Private use is settled in the last VAT return of the year when a VAT return is filed. A KOR participant files no return and deducts no input VAT, so there is nothing to settle. [BTW 2026](tax-rules/2026/btw.md), [mixed use](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/privegebruik/gemengd_gebruik/gemengd_gebruik)
+Private use is settled in the last VAT return of the year when a VAT return is filed. A KOR participant files no return and deducts no input VAT, so there is nothing to settle. [BTW 2026](tax-rules/2026/btw/figures.md), [mixed use](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/privegebruik/gemengd_gebruik/gemengd_gebruik)
 
 The rate on each line is the rate the invoice prints, taken from the year's `btw.md`, as the [purchase invoice reference](./purchase-invoices.md) states.
 
@@ -97,7 +97,7 @@ The rate on each line is the rate the invoice prints, taken from the year's `btw
 
 1. Establish the business share from the records and record the basis (section 3), then process the invoice as section 5 describes.
 2. The business share of the VAT goes into rubriek 5b with the ordinary return and the private share is not deducted. [Purchase invoices](./purchase-invoices.md) section 3, [OB 141](https://download.belastingdienst.nl/belastingdienst/docs/toelichting_aangifte_omzetbelasting_ondernemers_ob1411t01fdbui.pdf)
-3. At year end, check the recorded percentages against the use and settle the private use in the last return. Under the KOR there is no return and no settlement. [BTW 2026](tax-rules/2026/btw.md)
+3. At year end, check the recorded percentages against the use and settle the private use in the last return. Under the KOR there is no return and no settlement. [BTW 2026](tax-rules/2026/btw/figures.md)
 
 See example 1 in section 10.
 
@@ -121,7 +121,7 @@ Book only the business part of the call charges and not the subscription, and ke
 
 ## 9. CASE D: A PHONE OR LAPTOP BOUGHT FOR MIXED USE
 
-A phone or laptop used for both business and private purposes falls under vermogensetikettering and is not automatically in the ondernemingsvermogen. At 10 percent business use or less it is verplicht privévermogen, at 90 percent or more it is verplicht ondernemingsvermogen, in between it is keuzevermogen, the entrepreneur's choice within reasonable bounds. [vermogensetikettering](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/vermogensetikettering-bedrijfsmiddel), [Kosten en auto 2026](tax-rules/2026/kosten-en-auto.md) section 27
+A phone or laptop used for both business and private purposes falls under vermogensetikettering and is not automatically in the ondernemingsvermogen. At 10 percent business use or less it is verplicht privévermogen, at 90 percent or more it is verplicht ondernemingsvermogen, in between it is keuzevermogen, the entrepreneur's choice within reasonable bounds. [vermogensetikettering](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/vermogensetikettering-bedrijfsmiddel), [Kosten en auto 2026](tax-rules/2026/kosten-en-auto/figures.md) section 27
 
 A device in the ondernemingsvermogen is depreciated in full and the costs of its private use are a privéonttrekking. A device in the privévermogen is not depreciated and the costs connected with it are 0 percent deductible under art. 3.16 lid 3 Wet IB 2001. [vermogensetikettering](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/vermogensetikettering-bedrijfsmiddel), [overview of deductible business costs](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/zakelijke_kosten/overzicht-mogelijk-aftrekbare-zakelijke-kosten), [Wet IB 2001, art. 3.16](https://wetten.overheid.nl/BWBR0011353/2026-01-01)
 
@@ -131,7 +131,7 @@ The booking and the 450 rule are in [fixed assets](./fixed-assets.md), which cov
 
 ## 10. CALCULATED EXAMPLES
 
-The figures are invented. Both use a Dutch invoice with 21 percent VAT, the rate in [BTW 2026](tax-rules/2026/btw.md) and a sole trader with only taxed turnover.
+The figures are invented. Both use a Dutch invoice with 21 percent VAT, the rate in [BTW 2026](tax-rules/2026/btw/figures.md) and a sole trader with only taxed turnover.
 
 ### Example 1: a mobile subscription with 60 percent business use
 
@@ -161,7 +161,7 @@ The invoice: 200 excluding VAT, VAT 42, total 242.
 4. The private share sits on an equity category, not on a cost category. [which private category](https://helpcenter.moneybird.nl/nl/articles/207326-wanneer-welke-categorie-prive-opnames-stortingen)
 5. For a subscription the business share of the VAT is in rubriek 5b. For a good the VAT follows the choice in section 4, so with business assets the VAT is in rubriek 5b in full when all turnover is taxed with VAT, and only for the taxed share when there is also exempt turnover, and the private use is settled in the last return of the year. [Purchase invoices](./purchase-invoices.md) section 3
 6. The 'Privé afgesplitst' column in the category report shows the percentages, through 'Rapporten > Resultatenrekening'. [split private costs automatically](https://helpcenter.moneybird.nl/nl/articles/639653-prive-kosten-automatisch-verdelen)
-7. In the last return of the year the private use is settled, unless the business takes part in the KOR and files no return. The Operator reviews and files the return. [BTW 2026](tax-rules/2026/btw.md)
+7. In the last return of the year the private use is settled, unless the business takes part in the KOR and files no return. The Operator reviews and files the return. [BTW 2026](tax-rules/2026/btw/figures.md)
 
 ---
 
@@ -181,6 +181,6 @@ The invoice: 200 excluding VAT, VAT 42, total 242.
 - [Purchase invoices](./purchase-invoices.md) explains the document flow and the VAT choice for each invoice kind.
 - [Moneybird bookkeeping](./moneybird-bookkeeping.md) covers categories, private withdrawals, assets and bank matching.
 - [Fixed assets](./fixed-assets.md) covers the etikettering, the 450 threshold, depreciation and the revision period.
-- [Kosten en auto 2026](tax-rules/2026/kosten-en-auto.md) holds the 2026 mixed-cost and telefoonabonnement thuis rules.
-- [BTW 2026](tax-rules/2026/btw.md) holds the 2026 rates, the private-use settlement and the KOR.
+- [Kosten en auto 2026](tax-rules/2026/kosten-en-auto/figures.md) holds the 2026 mixed-cost and telefoonabonnement thuis rules.
+- [BTW 2026](tax-rules/2026/btw/figures.md) holds the 2026 rates, the private-use settlement and the KOR.
 - [cli-moneybird](../../cli-moneybird/SKILL.md) owns the guarded reads and writes for purchase invoices, receipts and tax rates.

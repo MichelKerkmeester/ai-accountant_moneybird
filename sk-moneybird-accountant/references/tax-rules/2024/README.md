@@ -32,18 +32,18 @@ Across the twelve topic files the figures tables hold 290 values: 265 Verified, 
 <!-- GENERATED:topic-files:start -->
 | File | Covers | Values | UNVERIFIED | Not enacted |
 |---|---|---|---|---|
-| [btw.md](btw.md) | This file covers Dutch VAT rates, exemptions, the KOR, returns, invoicing and cross-border VAT rules for tax year 2024. | 39 | 5 | 3 |
-| [inkomstenbelasting.md](inkomstenbelasting.md) | This file covers Dutch Box 1 rates, AOW-age variants, tax credits, rate adjustment and the route from business profit to taxable income for tax year 2024. | 29 | 0 | 0 |
-| [zvw.md](zvw.md) | The income-dependent Zvw contribution for a ZZP entrepreneur in 2024: the 5,32% rate over the belastbare winst uit onderneming, the maximum bijdrage-inkomen of € 71.628, who pays by aanslag, and how the entrepreneur rate differs from the 6,57% employer rate. | 9 | 2 | 0 |
-| [ondernemersaftrek.md](ondernemersaftrek.md) | The ondernemersaftrek, the MKB-winstvrijstelling, the urencriterium and the tariefsaanpassing for a Dutch sole trader in tax year 2024. | 20 | 0 | 0 |
-| [investeringen.md](investeringen.md) | Covers the KIA, EIA, MIA, Vamil, desinvesteringsbijtelling and depreciation rules that apply in tax year 2024 to a Dutch sole trader or a BV. | 16 | 1 | 1 |
-| [kosten-en-auto.md](kosten-en-auto.md) | Deductible business costs and car rules for tax year 2024, including the gemengde kosten drempel of € 5.600, the € 0,23 kilometre allowance and the 22% bijtelling. | 28 | 0 | 0 |
-| [box-3.md](box-3.md) | Box 3 income from savings and investments for tax year 2024 under the enacted category method, including rates, thresholds, green investments, actual-return reporting and the Hoge Raad ruling of 6 June 2024. | 13 | 0 | 0 |
-| [box-2.md](box-2.md) | Box 2 income, the aanmerkelijk belang rules, excessief lenen, gebruikelijk loon and pension interactions for tax year 2024. | 17 | 0 | 0 |
-| [bv-en-vennootschapsbelasting.md](bv-en-vennootschapsbelasting.md) | Vennootschapsbelasting, the fiscale eenheid, the gebruikelijk loonregeling for a DGA, Zvw, box 2, dividendbelasting and the jaarrekening size classes for tax year 2024. | 33 | 1 | 1 |
-| [pensioen-en-aov.md](pensioen-en-aov.md) | Jaarruimte, reserveringsruimte, lijfrente caps, stakingswinst conversion, AOV premium deductibility and the proposed BAZ consultation for tax year 2024. | 31 | 0 | 3 |
-| [arbeidsrelatie.md](arbeidsrelatie.md) | The Wet DBA, the last year of the handhavingsmoratorium, modelovereenkomsten, the VBAR bill and the low hourly rate presumption for the work relationship in tax year 2024. | 29 | 0 | 5 |
-| [procedure.md](procedure.md) | Filing deadlines and uitstel for income tax and btw, the voorlopige aanslag, belastingrente, the navorderingstermijn, bezwaar, bewaarplicht and KVK and Belastingdienst registration for tax year 2024. | 26 | 0 | 0 |
+| [btw](btw/figures.md) | This file covers Dutch VAT rates, exemptions, the KOR, returns, invoicing and cross-border VAT rules for tax year 2024. | 39 | 5 | 3 |
+| [inkomstenbelasting](inkomstenbelasting/figures.md) | This file covers Dutch Box 1 rates, AOW-age variants, tax credits, rate adjustment and the route from business profit to taxable income for tax year 2024. | 29 | 0 | 0 |
+| [zvw](zvw/figures.md) | The income-dependent Zvw contribution for a ZZP entrepreneur in 2024: the 5,32% rate over the belastbare winst uit onderneming, the maximum bijdrage-inkomen of € 71.628, who pays by aanslag, and how the entrepreneur rate differs from the 6,57% employer rate. | 9 | 2 | 0 |
+| [ondernemersaftrek](ondernemersaftrek/figures.md) | The ondernemersaftrek, the MKB-winstvrijstelling, the urencriterium and the tariefsaanpassing for a Dutch sole trader in tax year 2024. | 20 | 0 | 0 |
+| [investeringen](investeringen/figures.md) | Covers the KIA, EIA, MIA, Vamil, desinvesteringsbijtelling and depreciation rules that apply in tax year 2024 to a Dutch sole trader or a BV. | 16 | 1 | 1 |
+| [kosten-en-auto](kosten-en-auto/figures.md) | Deductible business costs and car rules for tax year 2024, including the gemengde kosten drempel of € 5.600, the € 0,23 kilometre allowance and the 22% bijtelling. | 28 | 0 | 0 |
+| [box-3](box-3/figures.md) | Box 3 income from savings and investments for tax year 2024 under the enacted category method, including rates, thresholds, green investments, actual-return reporting and the Hoge Raad ruling of 6 June 2024. | 13 | 0 | 0 |
+| [box-2](box-2/figures.md) | Box 2 income, the aanmerkelijk belang rules, excessief lenen, gebruikelijk loon and pension interactions for tax year 2024. | 17 | 0 | 0 |
+| [bv-en-vennootschapsbelasting](bv-en-vennootschapsbelasting/figures.md) | Vennootschapsbelasting, the fiscale eenheid, the gebruikelijk loonregeling for a DGA, Zvw, box 2, dividendbelasting and the jaarrekening size classes for tax year 2024. | 33 | 1 | 1 |
+| [pensioen-en-aov](pensioen-en-aov/figures.md) | Jaarruimte, reserveringsruimte, lijfrente caps, stakingswinst conversion, AOV premium deductibility and the proposed BAZ consultation for tax year 2024. | 31 | 0 | 3 |
+| [arbeidsrelatie](arbeidsrelatie/figures.md) | The Wet DBA, the last year of the handhavingsmoratorium, modelovereenkomsten, the VBAR bill and the low hourly rate presumption for the work relationship in tax year 2024. | 29 | 0 | 5 |
+| [procedure](procedure/figures.md) | Filing deadlines and uitstel for income tax and btw, the voorlopige aanslag, belastingrente, the navorderingstermijn, bezwaar, bewaarplicht and KVK and Belastingdienst registration for tax year 2024. | 26 | 0 | 0 |
 <!-- GENERATED:topic-files:end -->
 
 ---

@@ -72,6 +72,8 @@ scripts/
 +-- reference-index-test.sh       # Reference index suite
 +-- check-fragments.py            # Relative link and fragment checker
 +-- fragment-check-test.sh        # Fragment suite
++-- split-topic-files.py          # Tax-rules topic file splitter
++-- split-topic-files-test.sh     # Topic file split suite
 +-- token-baseline.py             # Token baseline writer and checker
 +-- token-canary-test.sh          # Token canary suite
 +-- check-hostile-invoice-set.py  # Hostile invoice case checker
@@ -109,6 +111,8 @@ scripts/
 | `reference-index-test.sh` | Builds a fixture repository, runs the generator on it and on the real corpus, and checks the fence rules, drift detection, byte stability, the change note mutants and the mutation cases |
 | `check-fragments.py` | Resolves every relative link path and fragment in the skill family, matches a fragment against an `<a id>` line or a GitHub-style heading slug, rejects a duplicate-suffixed slug, and requires the section ids of every year topic file in order. A flat topic file carries all eight ids. A phase 003 split part carries its own subset: `figures.md` sections 1 and 2, `rules.md` section 3, `examples.md` section 4 and `notes.md` sections 5 to 8. The year README, the year changelog and the year change note are exempt |
 | `fragment-check-test.sh` | Builds fixtures for a resolving slug, a renamed id, a renamed heading, a missing file, a duplicate-suffix slug, a year topic at any depth, a split topic part with one id removed and the year file exemptions, then runs the checker on the real corpus and on a throwaway copy with one renamed heading |
+| `split-topic-files.py` | Splits the 96 year topic files into four part files, rewrites `../references/tax-rules/dutch-tax-rules.md` into `../references/tax-rules/general/`, remaps every citation of a split source and writes `../references/tax-rules/split-manifest.json`. The `--plan`, `--write` and `--check` modes stay offline and hash a normalized body |
+| `split-topic-files-test.sh` | Builds a fixture repository and proves each failure mode: a hand-edited part, a hand-edited header, a hand-edited entry file, a returned original, an unmappable citation, a folder with fewer than four parts, a part over the token line, a rebased link, a generated fence in a header, a byte-stable second write and the remapped citation line |
 | `token-baseline.py` | Counts every reference file and the named units in `o200k_base` and `cl100k_base`, writes or checks `../benchmark/token-baseline.json`, and refuses to run when a pinned encoding data file is missing or changed |
 | `token-canary-test.sh` | Runs the car-question route, a whole-file mutant, a swapped-encoding mutant and a byte-only fixture in a throwaway copy |
 | `check-hostile-invoice-set.py` | Checks the hostile invoice case set: 22 unique cases, a twin for every attack, declared braced placeholders, every rule applied to every string value, no literal IBAN, VAT id, amount or e-mail, no capitalized word run outside the declared `allowed_terms` and an expected verdict that matches the case kind. Scores a results file against the catch and false-positive thresholds |
@@ -383,7 +387,7 @@ regression-trailer: ok (0 commits scanned)
 A passing offline check prints `524 sources match the index`. A trace of one live citation line prints:
 
 ```text
-sk-moneybird-accountant/references/tax-rules/2024/btw.md:56
+sk-moneybird-accountant/references/tax-rules/2024/btw/figures.md:56
 <the cited Belastingdienst URL> access=ok http_status=200 checked_on=2026-10-13
 1 URLs, all usable
 ```
@@ -473,7 +477,45 @@ The word check prints one line per `SKILL.md` with its word count and its verdic
 
 ---
 
-## 20. RELATED
+## 20. TOPIC FILE SPLIT
+
+`split-topic-files.py` splits each of the 96 year topic files under `../references/tax-rules/YYYY/` into a folder of four parts: `figures.md` with sections 1 and 2, `rules.md` with section 3, `examples.md` with section 4 and `notes.md` with sections 5 to 8. The same run rewrites `../references/tax-rules/dutch-tax-rules.md`, moves its ten section 3 topics and its cross-year H2 sections 4 to 6 into `../references/tax-rules/general/{slug}.md` and writes `../references/tax-rules/split-manifest.json`. The 13 general slugs are fixed by the privacy gate allowlist, and a computed slug outside that set stops the run with exit 2.
+
+A part file is a derived header followed by the original section bytes. The header holds the frontmatter, an H1 that names the topic and the part, the year rule line copied verbatim and a pointer block to the three sibling parts and the year README. The body starts on the first H2 or H3 heading line after the frontmatter, so the manifest hash covers the knowledge bytes alone.
+
+| Mode | Purpose |
+|---|---|
+| `--plan` | Prints one `source` row per topic file, one `part` row per part with its byte size and its o200k token count when the cached encoding is available, one `general` row and one `general-part` row per general file, and writes nothing. This is the default |
+| `--write` | Plans every source, writes the four parts, removes each original with `git rm`, rewrites the entry file into the pointer table, remaps every citation of a split source and writes the manifest. A citation that cannot be mapped exits 1 and no byte is written |
+| `--check` | Recomputes every part body, every part header, the entry file hash and the rejoin from the part files alone, compares each hash with the manifest, refuses a leftover original, refuses a folder with fewer than four parts, refuses a part over the 15,000 token line and reports every citation that still points at a split source. Reads only |
+
+The manifest holds one row per split source with the source path, the normalized rejoin sha256 and one record per part with its path, its section numbers, its normalized body sha256, its header sha256 and its source line map. The header hash covers the derived header with every GENERATED fence and blank line removed, so the index generator may add or drop a nav fence while a hand edit to the header fails `--check`. The general record carries the same kind of hash for the whole entry file, so its kept sections and pointer table are guarded too. The manifest is version 3. Keys are sorted and rows are sorted by source, so a second `--write` with no source change writes no byte. The general record carries the same fields plus the heading of each part and the line map of the entry file.
+
+The rejoin proof (REQ-002, amended on 2026-10-14) compares normalized bodies and never the raw bytes. The write rebases every relative link to the part's new folder depth and points a link at a split original to the part that now holds its target. The normalization removes the contents of every GENERATED fence and resolves every link target to its canonical repository path through the split map, so a rebased link and a regenerated fence do not change a hash while a changed sentence, value, status tag or URL does. `--check` applies the same normalization to the part files and prints one `rejoin ok` line per source, or a `drift <source> part <part>` line that names the file and the part, plus the leftovers and the unmapped citation count. A hand-edited part is restored with `git checkout` of that part: the source file is gone after the split, so `--write` cannot rebuild it and prints `nothing to split` while the manifest stands. A passing run ends with:
+
+```text
+rejoin ok sk-moneybird-accountant/references/tax-rules/2020/btw/figures.md (4 parts)
+rejoin ok sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md (13 general parts)
+leftovers: 0
+unmapped citations: 0
+split-check: ok
+```
+
+The citation remap scans every tracked markdown and JSON file outside `specs/`. A bare citation points at the folder's `figures.md`, a `path:line` citation points at the part that holds that line with its new line number and a `path#anchor` citation points at the part that carries that heading. A citation whose line, heading or file cannot be resolved aborts the run with exit 1 and names the citation before any byte is written. The scan leaves its own outputs and the files their own generators rewrite alone: `.privacy-gate.json`, `../references/index.json`, `../benchmark/token-baseline.json`, `../assets/source-library.json`, `../leaf-manifest.json` and `../references/tax-rules/split-manifest.json`.
+
+`check-route-table.py` runs `--check` beside the word check, so the `skill-health` CI step fails on a drifted part, a leftover original or an unmapped citation. The suite itself is not yet a CI step, because the workflow is a gate file.
+
+`split-topic-files-test.sh` builds a fixture repository with two year folders, three topic files, a guide whose 13 headings slug to the allowlist and one citing file with a bare, a line and an anchor citation. Twelve cases each print one pass line: a clean split passes `--check`, a hand-edited part fails and names the part, a hand-edited header fails and names the part, a hand-edited entry file fails, a generated fence added after the H1 does not fail, a returned original fails, an unmappable citation exits non-zero and writes nothing, a folder with fewer than four parts fails, a part pushed over the token line fails, a rebased link does not fail, a second `--write` changes no byte and the remapped citations land on the right part and line. The token case reports a noted pass when the cached o200k encoding is unavailable. Run it with:
+
+```bash
+TIKTOKEN_CACHE_DIR=<cache> bash sk-moneybird-accountant/scripts/split-topic-files-test.sh
+```
+
+It ends with `Result: 12 passed, 0 failed`.
+
+---
+
+## 21. RELATED
 
 - [`../references/migration/README.md`](../references/migration/README.md) for the phase references the generator reads
 - [`../assets/migration/README.md`](../assets/migration/README.md) for the generated templates

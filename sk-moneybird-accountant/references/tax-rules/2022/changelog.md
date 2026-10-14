@@ -27,23 +27,23 @@ The rows below were first researched and later corrected against a primary sourc
 
 | Date | File | Row | Old status | New status | Source |
 |---|---|---|---|---|---|
-| 2026-10-12 | arbeidsrelatie.md | Opt-out fictieve dienstbetrekking | as first researched | Corrected | https://zoek.officielebekendmakingen.nl/stb-2016-165.html |
-| 2026-10-12 | arbeidsrelatie.md | Reguliere handhaving | as first researched | Corrected | https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z62fd.pdf |
-| 2026-10-12 | box-2.md | Aanmerkelijk belang threshold (art. 4.6) | as first researched | Corrected | https://wetten.overheid.nl/BWBR0011353/2022-01-01 |
-| 2026-10-12 | box-2.md | Start-up rule gebruikelijk loon (S&O-verklaring) | as first researched | Corrected | https://wetten.overheid.nl/BWBR0002471/2022-01-01 |
-| 2026-10-12 | box-3.md | Wet rechtsherstel box 3, issue and entry | as first researched | Corrected | https://zoek.officielebekendmakingen.nl/stb-2022-533.html |
-| 2026-10-12 | btw.md | KOR turnover test year | as first researched | Corrected | https://wetten.overheid.nl/BWBR0002629/2022-01-01 |
-| 2026-10-12 | bv-en-vennootschapsbelasting.md | Zvw-route voor een niet-verzekerde DGA | as first researched | Corrected | https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf |
-| 2026-10-12 | bv-en-vennootschapsbelasting.md | Dividend stripping (art. 4 lid 7 Wet DB 1965) | as first researched | Corrected | https://wetten.overheid.nl/BWBR0002515/2022-01-01 |
-| 2026-10-12 | inkomstenbelasting.md | Premie volksverzekeringen ceiling | as first researched | Corrected | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/premie_volksverzekeringen |
-| 2026-10-12 | investeringen.md | MIA percentages | as first researched | Corrected | https://wetten.overheid.nl/BWBR0011353/2022-01-01 |
-| 2026-10-12 | kosten-en-auto.md | STAP-budget maximum | as first researched | Corrected | https://wetten.overheid.nl/BWBR0045419/2023-01-01 |
-| 2026-10-12 | ondernemersaftrek.md | Parts of the ondernemersaftrek (art. 3.74) | as first researched | Corrected | https://wetten.overheid.nl/BWBR0011353/2020-01-01 |
-| 2026-10-12 | pensioen-en-aov.md | FOR-lijfrente conversion article | as first researched | Corrected | https://wetten.overheid.nl/BWBR0011353/2022-01-01 |
-| 2026-10-12 | procedure.md | IB return 2022 filing deadline | as first researched | Corrected | https://web.archive.org/web/20230305/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen |
-| 2026-10-12 | procedure.md | IB return 2022 with uitstel | as first researched | Corrected | https://web.archive.org/web/20230401/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag |
-| 2026-10-12 | procedure.md | VAT monthly dates 2022 | as first researched | Corrected | https://web.archive.org/web/20220122/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte |
-| 2026-10-12 | procedure.md | VAT quarterly dates 2022 | as first researched | Corrected | https://web.archive.org/web/20220122/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte |
-| 2026-10-12 | procedure.md | VAT yearly return 2022 | as first researched | Corrected | https://web.archive.org/web/20220122/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte |
-| 2026-10-12 | zvw.md | Zvw werkgeversheffing | as first researched | Corrected | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
-| 2026-10-13 | investeringen.md | Starters willekeurige afschrijving yearly cap | Verified | UNVERIFIED | https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 8 |
+| 2026-10-12 | arbeidsrelatie/figures.md | Opt-out fictieve dienstbetrekking | as first researched | Corrected | https://zoek.officielebekendmakingen.nl/stb-2016-165.html |
+| 2026-10-12 | arbeidsrelatie/figures.md | Reguliere handhaving | as first researched | Corrected | https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z62fd.pdf |
+| 2026-10-12 | box-2/figures.md | Aanmerkelijk belang threshold (art. 4.6) | as first researched | Corrected | https://wetten.overheid.nl/BWBR0011353/2022-01-01 |
+| 2026-10-12 | box-2/figures.md | Start-up rule gebruikelijk loon (S&O-verklaring) | as first researched | Corrected | https://wetten.overheid.nl/BWBR0002471/2022-01-01 |
+| 2026-10-12 | box-3/figures.md | Wet rechtsherstel box 3, issue and entry | as first researched | Corrected | https://zoek.officielebekendmakingen.nl/stb-2022-533.html |
+| 2026-10-12 | btw/figures.md | KOR turnover test year | as first researched | Corrected | https://wetten.overheid.nl/BWBR0002629/2022-01-01 |
+| 2026-10-12 | bv-en-vennootschapsbelasting/figures.md | Zvw-route voor een niet-verzekerde DGA | as first researched | Corrected | https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf |
+| 2026-10-12 | bv-en-vennootschapsbelasting/figures.md | Dividend stripping (art. 4 lid 7 Wet DB 1965) | as first researched | Corrected | https://wetten.overheid.nl/BWBR0002515/2022-01-01 |
+| 2026-10-12 | inkomstenbelasting/figures.md | Premie volksverzekeringen ceiling | as first researched | Corrected | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/premie_volksverzekeringen |
+| 2026-10-12 | investeringen/figures.md | MIA percentages | as first researched | Corrected | https://wetten.overheid.nl/BWBR0011353/2022-01-01 |
+| 2026-10-12 | kosten-en-auto/figures.md | STAP-budget maximum | as first researched | Corrected | https://wetten.overheid.nl/BWBR0045419/2023-01-01 |
+| 2026-10-12 | ondernemersaftrek/figures.md | Parts of the ondernemersaftrek (art. 3.74) | as first researched | Corrected | https://wetten.overheid.nl/BWBR0011353/2020-01-01 |
+| 2026-10-12 | pensioen-en-aov/figures.md | FOR-lijfrente conversion article | as first researched | Corrected | https://wetten.overheid.nl/BWBR0011353/2022-01-01 |
+| 2026-10-12 | procedure/figures.md | IB return 2022 filing deadline | as first researched | Corrected | https://web.archive.org/web/20230305/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen |
+| 2026-10-12 | procedure/figures.md | IB return 2022 with uitstel | as first researched | Corrected | https://web.archive.org/web/20230401/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag |
+| 2026-10-12 | procedure/figures.md | VAT monthly dates 2022 | as first researched | Corrected | https://web.archive.org/web/20220122/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte |
+| 2026-10-12 | procedure/figures.md | VAT quarterly dates 2022 | as first researched | Corrected | https://web.archive.org/web/20220122/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte |
+| 2026-10-12 | procedure/figures.md | VAT yearly return 2022 | as first researched | Corrected | https://web.archive.org/web/20220122/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte |
+| 2026-10-12 | zvw/figures.md | Zvw werkgeversheffing | as first researched | Corrected | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
+| 2026-10-13 | investeringen/figures.md | Starters willekeurige afschrijving yearly cap | Verified | UNVERIFIED | https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 8 |

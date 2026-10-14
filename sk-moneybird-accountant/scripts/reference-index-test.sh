@@ -53,8 +53,8 @@ if [[ ! -f "$SKILL_SRC/leaf-manifest.json" ]]; then
 fi
 
 YEAR_README="$SKILL_SRC/references/tax-rules/2020/README.md"
-YEAR_TOPIC="$SKILL_SRC/references/tax-rules/2020/inkomstenbelasting.md"
-YEAR_LABELED="$SKILL_SRC/references/tax-rules/2020/btw.md"
+YEAR_TOPIC="$SKILL_SRC/references/tax-rules/2020/inkomstenbelasting/figures.md"
+YEAR_LABELED="$SKILL_SRC/references/tax-rules/2020/btw/figures.md"
 for required in "$YEAR_README" "$YEAR_TOPIC" "$YEAR_LABELED"; do
     if [[ ! -f "$required" ]]; then
         printf 'error: missing %s in the skill folder\n' "$required" >&2
@@ -194,8 +194,10 @@ PY
 # Args:
 #   $1 - Year README path
 #   $2 - Topic file name
+#   $3 - Topic row link target, the file name when omitted
 unverified_count() {
-    grep -F "| [$2]($2) |" "$1" | awk -F'|' '{print $5}' | tr -d '[:space:]'
+    local target="${3:-$2}"
+    grep -F "| [$2]($target) |" "$1" | awk -F'|' '{print $5}' | tr -d '[:space:]'
 }
 
 # Add a hand-written line right after the first H1 of one markdown file
@@ -520,6 +522,231 @@ EOF
     printf '{"modes":[{"leaves":["references/tax-rules/2020/README.md","assets/handbook.md"]}]}\n' \
         >"$skill/leaf-manifest.json" || return 1
     printf '# Nested fixture skill\n\nSee the [handbook](assets/handbook.md).\n' >"$skill/SKILL.md" || return 1
+    printf '# Handbook\n' >"$skill/assets/handbook.md" || return 1
+    return 0
+}
+
+# Build a skill folder whose section 3 subsections sit one per file under a
+# general folder, with the entry file holding a pointer table in their place
+# Args:
+#   $1 - Skill folder to create
+# Returns:
+#   0 when the fixture is ready, 1 when a write fails
+make_general_fixture() {
+    local skill="$1"
+    mkdir -p "$skill/scripts" "$skill/references/tax-rules/general" "$skill/references/tax-rules/2020" "$skill/assets" || return 1
+    cp "$BUILDER" "$skill/scripts/" || return 1
+    cat >"$skill/references/tax-rules/dutch-tax-rules.md" <<'EOF'
+---
+title: "Dutch tax rules"
+---
+
+# Dutch tax rules
+
+## 1. Topic files in every year folder
+
+| File | Topic |
+|---|---|
+| `btw.md` | VAT |
+
+## 3. GENERAL RULES
+
+The rules below hold across tax years.
+
+### General topics
+
+Each general topic below sits in its own file under `general/`.
+
+| Section | Topic | File |
+|---|---|---|
+| 3.1 | BTW (VAT) | [btw-vat.md](general/btw-vat.md) |
+EOF
+    cat >"$skill/references/tax-rules/general/btw-vat.md" <<'EOF'
+---
+title: "BTW (VAT)"
+description: "General fixture topic for the split layout."
+---
+
+# BTW (VAT)
+
+### 3.1 BTW (VAT)
+
+Year files: `btw.md` in each year folder.
+
+The hand-written rule prose stays here.
+EOF
+    cat >"$skill/references/tax-rules/2020/README.md" <<'EOF'
+---
+title: "Tax year 2020"
+description: "Fixture year overview."
+---
+
+# Tax year 2020
+
+## 1. OVERVIEW
+
+Hand prose for the general folder fixture year.
+
+## 2. TOPIC FILES
+
+## 3. HEADLINE FIGURES
+EOF
+    # The delimiter stays unquoted so the runtime-built rate values expand. The
+    # body holds no dollar sign, backtick or backslash of its own.
+    cat >"$skill/references/tax-rules/2020/btw.md" <<EOF
+---
+title: "BTW 2020"
+description: "Covers Dutch VAT for the general folder fixture."
+nav_label: "BTW"
+---
+
+# BTW 2020
+
+## 1. KEY FIGURES
+
+| Item | Value 2020 | Status | Check |
+|---|---|---|---|
+| Standard rate | ${NEST_RATE_MAIN} | enacted | Verified |
+| Reduced rate | ${NEST_RATE_LOW} | enacted | UNVERIFIED |
+EOF
+    printf '{"modes":[{"leaves":["references/tax-rules/2020/README.md","assets/handbook.md"]}]}\n' \
+        >"$skill/leaf-manifest.json" || return 1
+    printf '# General fixture skill\n\nSee the [handbook](assets/handbook.md).\n' >"$skill/SKILL.md" || return 1
+    printf '# Handbook\n' >"$skill/assets/handbook.md" || return 1
+    return 0
+}
+
+# Build a skill folder whose year folder holds one topic as a folder of four
+# part files, so a section lookup and a generated link land on the right part
+# Args:
+#   $1 - Skill folder to create
+# Returns:
+#   0 when the fixture is ready, 1 when a write fails
+make_split_topic_fixture() {
+    local skill="$1"
+    mkdir -p "$skill/scripts" "$skill/references/tax-rules/2020/btw" "$skill/assets" || return 1
+    cp "$BUILDER" "$skill/scripts/" || return 1
+    cat >"$skill/references/tax-rules/dutch-tax-rules.md" <<'EOF'
+---
+title: "Dutch tax rules"
+---
+
+# Dutch tax rules
+
+## 1. Topic files in every year folder
+
+| File | Topic |
+|---|---|
+| `btw.md` | VAT |
+
+## 3. GENERAL RULES
+
+### 3.1 BTW (VAT)
+
+Year files: `btw.md` in each year folder.
+
+The hand-written rule prose stays here.
+EOF
+    cat >"$skill/references/tax-rules/2020/README.md" <<'EOF'
+---
+title: "Tax year 2020"
+description: "Fixture year overview."
+---
+
+# Tax year 2020
+
+## 1. OVERVIEW
+
+Hand prose for the split topic fixture year.
+
+## 2. TOPIC FILES
+
+## 3. HEADLINE FIGURES
+EOF
+    # The delimiter stays unquoted so the runtime-built rate values expand. The
+    # body holds no dollar sign, backtick or backslash of its own.
+    cat >"$skill/references/tax-rules/2020/btw/figures.md" <<EOF
+---
+title: "BTW 2020"
+description: "Covers Dutch VAT for the split topic fixture."
+nav_label: "BTW"
+---
+
+# BTW 2020
+
+## 2. KEY FIGURES
+
+| Item | Value 2020 | Status | Check |
+|---|---|---|---|
+| Standard rate | ${NEST_RATE_MAIN} | enacted | Verified |
+| Reduced rate | ${NEST_RATE_LOW} | enacted | UNVERIFIED |
+EOF
+    cat >"$skill/references/tax-rules/2020/btw/rules.md" <<'EOF'
+---
+title: "BTW rules 2020"
+description: "Rule prose for the split topic fixture."
+---
+
+# BTW rules 2020
+
+## 3. HOW IT WORKS
+
+Rule text that a split part holds.
+EOF
+    cat >"$skill/references/tax-rules/2020/btw/examples.md" <<'EOF'
+---
+title: "BTW examples 2020"
+description: "Worked examples for the split topic fixture."
+---
+
+# BTW examples 2020
+
+## 4. WORKED EXAMPLES
+
+Example text that a split part holds.
+EOF
+    cat >"$skill/references/tax-rules/2020/btw/notes.md" <<EOF
+---
+title: "BTW notes 2020"
+description: "Notes for the split topic fixture."
+---
+
+# BTW notes 2020
+
+## 5. CHANGES FROM 2019
+
+<a id="5-changes"></a>
+
+- The standard rate stayed at ${FIX_RATE_A} percent in the fixture year.
+- The reduced rate stayed at ${FIX_RATE_C} percent in the fixture year.
+EOF
+    cat >"$skill/references/tax-rules/2020/changes.md" <<EOF
+---
+title: "Changes tax year 2020"
+description: "Fixture year change note."
+---
+
+# Changes tax year 2020
+
+**Rule:** The fixture note restates section 5 of the year topics.
+
+---
+
+## 1. Unique to 2020
+
+- Standard rate stayed at ${FIX_RATE_A} percent. [btw.md](btw.md#5-changes)
+- Reduced rate stayed at ${FIX_RATE_C} percent. [btw/notes.md](btw/notes.md#5-changes)
+- The split original resolves to its notes part. [btw.md](btw.md#5-changes)
+- The part link resolves as written. [btw/notes.md](btw/notes.md#5-changes)
+- Flat and split links both resolve. [btw.md](btw.md#5-changes)
+
+---
+
+## 2. All changes by topic
+EOF
+    printf '{"modes":[{"leaves":["references/tax-rules/2020/README.md","assets/handbook.md"]}]}\n' \
+        >"$skill/leaf-manifest.json" || return 1
+    printf '# Split topic fixture skill\n\nSee the [handbook](assets/handbook.md).\n' >"$skill/SKILL.md" || return 1
     printf '# Handbook\n' >"$skill/assets/handbook.md" || return 1
     return 0
 }
@@ -875,7 +1102,7 @@ else
 fi
 
 copy_skill "$MUT"
-python3 - "$MUT/references/tax-rules/2020/inkomstenbelasting.md" "$RATE_BOX1_UP" "$RATE_BOX1_NEXT" <<'PY'
+python3 - "$MUT/references/tax-rules/2020/inkomstenbelasting/figures.md" "$RATE_BOX1_UP" "$RATE_BOX1_NEXT" <<'PY'
 import sys
 
 path, old_value, new_value = sys.argv[1], sys.argv[2], sys.argv[3]
@@ -893,7 +1120,7 @@ PY
 run_generator "$MUT" --check
 status=$?
 if [[ "$status" -ne 0 ]] && grep -q '^drift tax-rules/2020/README.md ' "$TMP_ROOT/out.txt" \
-    && grep -q '^drift tax-rules/dutch-tax-rules.md s3-' "$TMP_ROOT/out.txt"; then
+    && grep -q '^drift tax-rules/general/income-tax-box-1-and-the-zvw-contribution.md s3-' "$TMP_ROOT/out.txt"; then
     pass "a changed year value names the year README and the section blocks"
 else
     fail "a changed year value names the year README and the section blocks"
@@ -911,8 +1138,8 @@ else
 fi
 
 copy_skill "$MUT"
-grep -v '^nav_label:' "$MUT/references/tax-rules/2020/btw.md" >"$TMP_ROOT/mutated.md"
-mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/btw.md"
+grep -v '^nav_label:' "$MUT/references/tax-rules/2020/btw/figures.md" >"$TMP_ROOT/mutated.md"
+mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/btw/figures.md"
 run_generator "$MUT" --check
 status=$?
 if [[ "$status" -ne 0 ]] && grep -q 'missing nav_label' "$TMP_ROOT/out.txt"; then
@@ -922,9 +1149,9 @@ else
 fi
 
 copy_skill "$MUT"
-sed 's/^nav_label: .*/nav_label: "BTW"/' "$MUT/references/tax-rules/2020/inkomstenbelasting.md" \
+sed 's/^nav_label: .*/nav_label: "BTW"/' "$MUT/references/tax-rules/2020/inkomstenbelasting/figures.md" \
     >"$TMP_ROOT/mutated.md"
-mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/inkomstenbelasting.md"
+mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/inkomstenbelasting/figures.md"
 run_generator "$MUT" --check
 status=$?
 if [[ "$status" -ne 0 ]] && grep -q 'duplicate nav_label' "$TMP_ROOT/out.txt"; then
@@ -935,9 +1162,9 @@ fi
 
 copy_skill "$MUT"
 long_label=$(awk 'BEGIN { for (i = 0; i < 61; i++) printf "A" }')
-sed "s/^nav_label: .*/nav_label: \"$long_label\"/" "$MUT/references/tax-rules/2020/btw.md" \
+sed "s/^nav_label: .*/nav_label: \"$long_label\"/" "$MUT/references/tax-rules/2020/btw/figures.md" \
     >"$TMP_ROOT/mutated.md"
-mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/btw.md"
+mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/btw/figures.md"
 run_generator "$MUT" --check
 status=$?
 if [[ "$status" -ne 0 ]] && grep -q 'the limit is 60' "$TMP_ROOT/out.txt"; then
@@ -992,10 +1219,10 @@ fi
 # ───────────────────────────────────────────────────────────────
 
 group "prefix rule"
-if [[ "$(unverified_count "$YEAR_README" inkomstenbelasting.md)" == "3" ]]; then
-    pass "the UNVERIFIED count for references/tax-rules/2020/inkomstenbelasting.md is 3"
+if [[ "$(unverified_count "$YEAR_README" inkomstenbelasting inkomstenbelasting/figures.md)" == "3" ]]; then
+    pass "the UNVERIFIED count for references/tax-rules/2020/inkomstenbelasting/figures.md is 3"
 else
-    fail "the UNVERIFIED count for references/tax-rules/2020/inkomstenbelasting.md is 3"
+    fail "the UNVERIFIED count for references/tax-rules/2020/inkomstenbelasting/figures.md is 3"
 fi
 
 EQUALITY="$TMP_ROOT/equality-mutant"
@@ -1005,7 +1232,7 @@ sed 's/\.startswith(UNVERIFIED_TAG)/== UNVERIFIED_TAG/' "$BUILDER" \
 sed_applied=1
 cmp -s "$BUILDER" "$EQUALITY/scripts/build-reference-index.py" && sed_applied=0
 run_generator "$EQUALITY"
-mutant_count=$(unverified_count "$EQUALITY/references/tax-rules/2020/README.md" inkomstenbelasting.md)
+mutant_count=$(unverified_count "$EQUALITY/references/tax-rules/2020/README.md" inkomstenbelasting inkomstenbelasting/figures.md)
 cp "$BUILDER" "$EQUALITY/scripts/reference-index-checker.py"
 python3 -I "$EQUALITY/scripts/reference-index-checker.py" --check >"$TMP_ROOT/out.txt" 2>&1
 status=$?
@@ -1092,24 +1319,39 @@ fi
 # ───────────────────────────────────────────────────────────────
 
 group "real section list"
-TOC_FENCE_START="<!-- ${GEN_WORD}:toc:start -->"
-TOC_FENCE_END="<!-- ${GEN_WORD}:toc:end -->"
+GENERAL_DIR="$SKILL_SRC/references/tax-rules/general"
 GUIDE_FILE="$SKILL_SRC/references/tax-rules/dutch-tax-rules.md"
-awk -v start="$TOC_FENCE_START" -v end="$TOC_FENCE_END" '
-    $0 == start { inside = 1; next }
-    $0 == end { inside = 0; next }
-    inside
-' "$GUIDE_FILE" >"$TMP_ROOT/toc-body.txt"
-toc_missing=""
-for number in 1 2 3 4 5 6 7 8 9 10; do
-    if ! grep -qE -- "^- 3\.${number} .*: lines [0-9]+-[0-9]+$" "$TMP_ROOT/toc-body.txt"; then
-        toc_missing="$toc_missing 3.${number}"
-    fi
-done
-if [[ -z "$toc_missing" ]]; then
-    pass "the real section list names subsections 3.1 to 3.10 with a range each"
+if python3 -I - "$GUIDE_FILE" "$GENERAL_DIR" <<'PY'
+import os
+import re
+import sys
+
+guide, general_dir = sys.argv[1], sys.argv[2]
+text = open(guide, encoding="utf-8").read()
+missing = []
+for number in range(1, 11):
+    match = re.search(
+        r"^\| 3\.%d \|[^|]*\|[^|]*\[([^]]+)\]\(general/([^)]+)\)" % number, text, re.M
+    )
+    if not match:
+        missing.append("3.%d row" % number)
+        continue
+    path = os.path.join(general_dir, match.group(2))
+    if not os.path.isfile(path):
+        missing.append("3.%d file" % number)
+        continue
+    body = open(path, encoding="utf-8").read()
+    if not re.search(r"^### 3\.%d " % number, body, re.M):
+        missing.append("3.%d heading" % number)
+if missing:
+    print("missing " + ", ".join(missing))
+    raise SystemExit(1)
+print("ok")
+PY
+then
+    pass "the real section list maps subsections 3.1 to 3.10 onto the general files"
 else
-    fail "the real section list names subsections 3.1 to 3.10 with a range each"
+    fail "the real section list maps subsections 3.1 to 3.10 onto the general files"
 fi
 if run_generator "$SKILL_SRC" --check; then
     pass "the real corpus passes --check, which confirms every section list range"
@@ -1204,7 +1446,103 @@ else
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 15. RESULT SUMMARY AND EXIT
+# 15. SPLIT LAYOUT
+# ───────────────────────────────────────────────────────────────
+
+group "general folder"
+GENERAL_FIXTURE="$TMP_ROOT/general-fixture/sk-moneybird-accountant"
+GENERAL_TOPIC="$GENERAL_FIXTURE/references/tax-rules/general/btw-vat.md"
+GENERAL_ENTRY="$GENERAL_FIXTURE/references/tax-rules/dutch-tax-rules.md"
+GENERAL_FENCE="<!-- ${GEN_WORD}:s3-btw-vat:start -->"
+if make_general_fixture "$GENERAL_FIXTURE"; then
+    pass "the general folder fixture builds"
+else
+    fail "the general folder fixture builds"
+fi
+if run_generator "$GENERAL_FIXTURE" --init; then
+    pass "the general folder fixture --init exits 0"
+else
+    fail "the general folder fixture --init exits 0"
+fi
+if grep -qF "$GENERAL_FENCE" "$GENERAL_TOPIC"; then
+    pass "--init puts the section 3 fence in the general file"
+else
+    fail "--init puts the section 3 fence in the general file"
+fi
+if run_generator "$GENERAL_FIXTURE" && run_generator "$GENERAL_FIXTURE" --check; then
+    pass "the general folder fixture passes --check after a write"
+else
+    fail "the general folder fixture passes --check after a write"
+fi
+if grep -qF 'sk-moneybird-accountant/references/tax-rules/2020/btw.md' "$GENERAL_TOPIC" \
+    && ! grep -qF "$GENERAL_FENCE" "$GENERAL_ENTRY"; then
+    pass "the general file carries the section 3 rows and the entry carries no fence"
+else
+    fail "the general file carries the section 3 rows and the entry carries no fence"
+fi
+general_before=$(tree_checksums "$GENERAL_FIXTURE")
+run_generator "$GENERAL_FIXTURE"
+status=$?
+general_after=$(tree_checksums "$GENERAL_FIXTURE")
+if [[ "$status" -eq 0 ]] && [[ "$general_before" == "$general_after" ]]; then
+    pass "a second general folder write leaves every file byte-identical"
+else
+    fail "a second general folder write leaves every file byte-identical"
+fi
+
+group "split topic folder"
+SPLIT_FIXTURE="$TMP_ROOT/split-fixture/sk-moneybird-accountant"
+SPLIT_NOTE="$SPLIT_FIXTURE/references/tax-rules/2020/changes.md"
+SPLIT_OVERVIEW="$SPLIT_FIXTURE/references/tax-rules/year-changes.md"
+if make_split_topic_fixture "$SPLIT_FIXTURE"; then
+    pass "the split topic fixture builds"
+else
+    fail "the split topic fixture builds"
+fi
+if run_generator "$SPLIT_FIXTURE" --init; then
+    pass "the split topic fixture --init exits 0"
+else
+    fail "the split topic fixture --init exits 0"
+fi
+if run_generator "$SPLIT_FIXTURE" && run_generator "$SPLIT_FIXTURE" --check; then
+    pass "the split topic fixture passes --check after a write"
+else
+    fail "the split topic fixture passes --check after a write"
+fi
+if grep -qF "| [btw.md](btw/notes.md#5-changes) | 2 | The standard rate stayed at ${FIX_RATE_A} percent in the fixture year. |" "$SPLIT_NOTE"; then
+    pass "the split change row links the notes part"
+else
+    fail "the split change row links the notes part"
+fi
+if grep -qF '| [btw](btw/figures.md) | Covers Dutch VAT for the split topic fixture. | 2 | 1 | 0 |' \
+    "$SPLIT_FIXTURE/references/tax-rules/2020/README.md"; then
+    pass "the split year README counts the topic through its figures part"
+else
+    fail "the split year README counts the topic through its figures part"
+fi
+if grep -qF 'sk-moneybird-accountant/references/tax-rules/2020/btw/figures.md' \
+    "$SPLIT_FIXTURE/references/tax-rules/dutch-tax-rules.md"; then
+    pass "the split figures part owns its section 3 rows"
+else
+    fail "the split figures part owns its section 3 rows"
+fi
+if grep -qF '](2020/btw/notes.md#5-changes)' "$SPLIT_OVERVIEW"; then
+    pass "the overview rebases a flat section 5 link onto the notes part"
+else
+    fail "the overview rebases a flat section 5 link onto the notes part"
+fi
+split_before=$(tree_checksums "$SPLIT_FIXTURE")
+run_generator "$SPLIT_FIXTURE"
+status=$?
+split_after=$(tree_checksums "$SPLIT_FIXTURE")
+if [[ "$status" -eq 0 ]] && [[ "$split_before" == "$split_after" ]]; then
+    pass "a second split topic write leaves every file byte-identical"
+else
+    fail "a second split topic write leaves every file byte-identical"
+fi
+
+# ───────────────────────────────────────────────────────────────
+# 16. RESULT SUMMARY AND EXIT
 # ───────────────────────────────────────────────────────────────
 
 printf '\n%d passed, %d failed\n' "$passed" "$failed"

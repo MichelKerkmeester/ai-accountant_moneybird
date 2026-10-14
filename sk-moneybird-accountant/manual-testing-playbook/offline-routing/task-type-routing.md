@@ -108,4 +108,4 @@ Check the T4, T5 and T7 rows and the tie rules in SKILL.md section 2, then the T
 
 **Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check -> 4. Read sk-moneybird-accountant/references/tax-rules/2026/README.md and the kosten-en-auto topic file its KEY FIGURES section names -> 5. Report the winning row, the tie rule, the loaded paths, the budget key and the route record
 
-**Expected resources:** sk-moneybird-accountant/references/tax-rules/2026/README.md, sk-moneybird-accountant/references/tax-rules/2026/kosten-en-auto.md#2-key-figures
+**Expected resources:** sk-moneybird-accountant/references/tax-rules/2026/README.md, sk-moneybird-accountant/references/tax-rules/2026/kosten-en-auto/figures.md#2-key-figures

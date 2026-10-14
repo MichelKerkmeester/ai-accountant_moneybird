@@ -30,7 +30,7 @@ Every Moneybird read or write runs through moneybird-guard, following [cli-money
 
 ### Tool route
 
-1. **Knowledge.** Read this reference and the year's `investeringen.md` and `btw.md`. [Investeringen 2026](./tax-rules/2026/investeringen.md), [BTW 2026](./tax-rules/2026/btw.md)
+1. **Knowledge.** Read this reference and the year's `investeringen.md` and `btw.md`. [Investeringen 2026](./tax-rules/2026/investeringen/figures.md), [BTW 2026](./tax-rules/2026/btw/figures.md)
 2. **Guarded read.** Read the administration's categories and assets through [cli-moneybird](../../cli-moneybird/SKILL.md) section 2 under `MONEYBIRD_GUARD_READ_ONLY=1`.
 3. **Gated write.** The Operator enters assets in the Moneybird UI under **Bezittingen**. A gated write through [cli-moneybird](../../cli-moneybird/SKILL.md) section 2 applies only where the LIVE write authority in [SKILL.md](../SKILL.md) allows it.
 
@@ -83,7 +83,7 @@ An asset not yet in use at year end is an Operator case. The willekeurige afschr
 ## 5. INVESTMENT DEDUCTIONS AND DISPOSAL
 
 - **The investeringsaftrek does not change the depreciation base.** It is deducted from the winst, not a purchase discount, so only kortingen and subsidies lower the aanschafkosten. [Handboek 7.2.2](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf), [Investing](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeren_in_bedrijfsmiddelen)
-- **The year figures.** The KIA bands, the per-asset minimum and the desinvesteringsbijtelling threshold are in the year's [investeringen.md](./tax-rules/2026/investeringen.md).
+- **The year figures.** The KIA bands, the per-asset minimum and the desinvesteringsbijtelling threshold are in the year's [investeringen.md](./tax-rules/2026/investeringen/figures.md).
 - **Desinvesteringsbijtelling.** A sale within five years after the start of the calendar year of the investment brings back a percentage of the earlier investeringsaftrek as profit, never more than the aftrek taken, and the transfer prices count toward the year threshold. [Desinvesteringsbijtelling](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/desinvesteringsbijtelling)
 - **Boekwinst or boekverlies.** On a sale the difference between the sale price and the boekwaarde is winst or verlies. [How to calculate](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/hoe_berekent_u_het_bedrag_van_de_afschrijving)
 - **Scrapping or loss.** Taking a business asset out of use does not change the VAT deduction. [Art. 14 Uitv.besch. OB](https://wetten.overheid.nl/BWBR0002634/2026-01-01) In Moneybird, **Acties > Buitengebruikstellen** removes the asset from the balance. [Bezitting lineair](https://helpcenter.moneybird.nl/nl/articles/207294-bezitting-lineair-afschrijven)
@@ -138,7 +138,7 @@ The manual route uses the **Investering** category set: a vaste activa category,
 
 ## 9. MIXED PRIVATE AND BUSINESS USE
 
-A good used both privately and for the business falls under vermogensetikettering. At 10 percent business use or less it is verplicht privévermogen, at 90 percent or more it is verplicht ondernemingsvermogen, in between it is keuzevermogen, the entrepreneur's choice within reasonable bounds. [Vermogensetikettering](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/vermogensetikettering-bedrijfsmiddel), [Kosten en auto 2026](./tax-rules/2026/kosten-en-auto.md) section 27
+A good used both privately and for the business falls under vermogensetikettering. At 10 percent business use or less it is verplicht privévermogen, at 90 percent or more it is verplicht ondernemingsvermogen, in between it is keuzevermogen, the entrepreneur's choice within reasonable bounds. [Vermogensetikettering](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/vermogensetikettering-bedrijfsmiddel), [Kosten en auto 2026](./tax-rules/2026/kosten-en-auto/figures.md) section 27
 
 In the ondernemingsvermogen the asset is depreciated in full and the private use is a privéonttrekking. In the privévermogen it is not depreciated and the costs connected with it are 0 percent deductible under art. 3.16 lid 3 Wet IB 2001. [vermogensetikettering](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/vermogensetikettering-bedrijfsmiddel), [Wet IB 2001, art. 3.16](https://wetten.overheid.nl/BWBR0011353/2026-01-01)
 
@@ -162,16 +162,16 @@ A laptop costs 1200 excluding VAT, is taken into use on 1 April, has a restwaard
 4. Boekwaarde end of the first year: 1200 - 150 = 1050.
 5. Later years: 200 per year, reaching the restwaarde in the sixth calendar year because of the nine-month first year.
 6. Moneybird fields: aanschafwaarde 1200, datum ingebruikname 1 April, gebruiksduur 5 years, restwaarde 200. Moneybird books the monthly part and stops at the restwaarde. [Bezitting toevoegen](https://helpcenter.moneybird.nl/nl/articles/207293-bezitting-toevoegen)
-7. VAT: 21 percent of 1200 is 252, at the rate in [BTW 2026](./tax-rules/2026/btw.md). When the VAT is deductible the asset is 1200 and the 252 goes to rubriek 5b of the purchase period. [purchase-invoices](./purchase-invoices.md)
+7. VAT: 21 percent of 1200 is 252, at the rate in [BTW 2026](./tax-rules/2026/btw/figures.md). When the VAT is deductible the asset is 1200 and the 252 goes to rubriek 5b of the purchase period. [purchase-invoices](./purchase-invoices.md)
 
 ### Example 2. A desk under the limit
 
-A desk costs 400 excluding VAT, plus 84 VAT at the 21 percent rate in [BTW 2026](./tax-rules/2026/btw.md), total 484. With the VAT deductible it is under the 450 threshold, so it is a cost.
+A desk costs 400 excluding VAT, plus 84 VAT at the 21 percent rate in [BTW 2026](./tax-rules/2026/btw/figures.md), total 484. With the VAT deductible it is under the 450 threshold, so it is a cost.
 
 1. One invoice line: amount 400, rate 21%, category by purpose, no bezitting. [Bezitting toevoegen](https://helpcenter.moneybird.nl/nl/articles/207293-bezitting-toevoegen)
 2. Moneybird shows VAT 84 and total 484, equal to the invoice.
 3. Result: cost 400 and 84 voorbelasting in rubriek 5b when the desk serves taxed turnover. [purchase-invoices](./purchase-invoices.md)
-4. The desk does not count for the KIA, because it is below the per-asset minimum. [investeringen.md](./tax-rules/2026/investeringen.md)
+4. The desk does not count for the KIA, because it is below the per-asset minimum. [investeringen.md](./tax-rules/2026/investeringen/figures.md)
 
 ---
 
@@ -198,7 +198,7 @@ A desk costs 400 excluding VAT, plus 84 VAT at the 21 percent rate in [BTW 2026]
 
 ## 13. RELATED RESOURCES
 
-- [Investeringsaftrek 2026](./tax-rules/2026/investeringen.md) holds the KIA bands, the per-asset minimum and the desinvesteringsbijtelling threshold.
+- [Investeringsaftrek 2026](./tax-rules/2026/investeringen/figures.md) holds the KIA bands, the per-asset minimum and the desinvesteringsbijtelling threshold.
 - [Mixed-use costs](./mixed-use-costs.md) covers a cost or asset used partly privately.
 - [Moneybird bookkeeping](./moneybird-bookkeeping.md) covers categories, the opening balance and bank matching.
 - [Booking purchase invoices](./purchase-invoices.md) covers the invoice, the VAT rates and reverse charge.

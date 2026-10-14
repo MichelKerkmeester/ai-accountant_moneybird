@@ -223,18 +223,18 @@ FIXED_ASSET_TERMS = (
 T4_TOPIC_TERMS = MIXED_USE_TERMS + FIXED_ASSET_TERMS
 
 TOPIC_SIGNALS = (
-    (("kilometer", "mileage", "auto", "car", "thuiswerk", "home office", "kosten", "costs", "study", "studie"), "kosten-en-auto.md"),
-    (("zelfstandigenaftrek", "ondernemersaftrek", "urencriterium", "mkb", "startersaftrek"), "ondernemersaftrek.md"),
-    (("btw", "vat", "tarief", "rate", "voorbelasting", "kor"), "btw.md"),
-    (("box 3", "box3", "heffingsvrij", "vermogen", "savings"), "box-3.md"),
-    (("box 2", "aanmerkelijk belang", "gebruikelijk loon"), "box-2.md"),
-    (("vennootschapsbelasting", "vpb", "bv "), "bv-en-vennootschapsbelasting.md"),
-    (("pensioen", "lijfrente", "jaarruimte", "aov"), "pensioen-en-aov.md"),
-    (("arbeidsrelatie", "dba", "opdracht", "loondienst"), "arbeidsrelatie.md"),
-    (("investering", "kia", "eia", "mia", "afschrijving"), "investeringen.md"),
-    (("zvw",), "zvw.md"),
-    (("bewaarplicht", "deadline", "aangifte", "bezwaar", "procedure"), "procedure.md"),
-    (("box 1", "inkomstenbelasting", "heffingskorting"), "inkomstenbelasting.md"),
+    (("kilometer", "mileage", "auto", "car", "thuiswerk", "home office", "kosten", "costs", "study", "studie"), "kosten-en-auto"),
+    (("zelfstandigenaftrek", "ondernemersaftrek", "urencriterium", "mkb", "startersaftrek"), "ondernemersaftrek"),
+    (("btw", "vat", "tarief", "rate", "voorbelasting", "kor"), "btw"),
+    (("box 3", "box3", "heffingsvrij", "vermogen", "savings"), "box-3"),
+    (("box 2", "aanmerkelijk belang", "gebruikelijk loon"), "box-2"),
+    (("vennootschapsbelasting", "vpb", "bv "), "bv-en-vennootschapsbelasting"),
+    (("pensioen", "lijfrente", "jaarruimte", "aov"), "pensioen-en-aov"),
+    (("arbeidsrelatie", "dba", "opdracht", "loondienst"), "arbeidsrelatie"),
+    (("investering", "kia", "eia", "mia", "afschrijving"), "investeringen"),
+    (("zvw",), "zvw"),
+    (("bewaarplicht", "deadline", "aangifte", "bezwaar", "procedure"), "procedure"),
+    (("box 1", "inkomstenbelasting", "heffingskorting"), "inkomstenbelasting"),
 )
 
 # ───────────────────────────────────────────────────────────────
@@ -829,14 +829,14 @@ def resolve_paths(
             paths.append("references/tax-rules/%s/README.md" % year)
         if any(phrase_matches(text, term) for term in VAT_TERMS):
             if year:
-                paths.append("references/tax-rules/%s/btw.md" % year)
+                paths.append("references/tax-rules/%s/btw/figures.md" % year)
         if any(phrase_matches(text, term) for term in MONITORING_TERMS):
             paths.extend(["references/migration/README.md", "references/migration/phases-19-to-21.md"])
         return paths
     if route_type == "T4":
         paths = ["references/purchase-invoices.md"]
         if year:
-            paths.extend(["references/tax-rules/%s/btw.md" % year, "references/moneybird-bookkeeping.md"])
+            paths.extend(["references/tax-rules/%s/btw/figures.md" % year, "references/moneybird-bookkeeping.md"])
         if any(phrase_matches(text, term) for term in MIXED_USE_TERMS):
             paths.append("references/mixed-use-costs.md")
         if any(phrase_matches(text, term) for term in FIXED_ASSET_TERMS):
@@ -849,29 +849,29 @@ def resolve_paths(
         if year:
             paths.append("references/tax-rules/%s/README.md" % year)
             topic = topic_file(text)
-            paths.append("references/tax-rules/%s/%s#2-key-figures" % (year, topic))
+            paths.append("references/tax-rules/%s/%s/figures.md#2-key-figures" % (year, topic))
         return paths
     if route_type == "T6":
-        return ["references/tax-rules/dutch-tax-rules.md#310-work-relationship-and-procedure"]
+        return ["references/tax-rules/general/work-relationship-and-procedure.md#310-work-relationship-and-procedure"]
     if route_type == "T9":
         return ["references/migration/overview-and-setup.md"]
     return []
 
 
 def topic_file(text: str) -> str:
-    """Pick the year topic file named by a tax question.
+    """Pick the year topic folder named by a tax question.
 
     Args:
         text: Lower case request text.
 
     Returns:
-        One topic file name.
+        One topic folder name.
     """
     for terms, name in TOPIC_SIGNALS:
         for term in terms:
             if phrase_matches(text, term) or term in text:
                 return name
-    return "kosten-en-auto.md"
+    return "kosten-en-auto"
 
 
 def specificity_winner(text: str, first: str, second: str) -> Optional[str]:

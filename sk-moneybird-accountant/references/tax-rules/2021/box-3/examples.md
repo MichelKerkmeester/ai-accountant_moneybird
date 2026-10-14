@@ -1,0 +1,129 @@
+---
+title: "Box 3 sparen en beleggen 2021: Examples"
+description: "Box 3 for tax year 2021: the old band method, the Wet rechtsherstel category recalculation, the most favourable method, green investments and the actual-return route. This file holds the examples part."
+nav_label: "Box 3 sparen en beleggen examples"
+trigger_phrases:
+  - "box 3 2021"
+  - "box 3 sparen en beleggen 2021"
+  - "rechtsherstel box 3 2021"
+  - "Box 3 sparen en beleggen 2021 examples"
+importance_tier: important
+contextType: research
+version: 1.0.0.0
+---
+
+# Box 3 sparen en beleggen 2021: Examples
+
+**Rule:** These values hold for tax year 2021 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
+
+Part 3 of 4 of the Box 3 sparen en beleggen 2021 topic.
+
+- [figures.md](figures.md): sections 1 and 2.
+- [rules.md](rules.md): section 3.
+- [notes.md](notes.md): sections 5 to 8.
+
+Year overview: [README.md](../README.md).
+
+## 4. WORKED EXAMPLES
+
+<a id="4-worked-examples"></a>
+
+The checked material contains no official example for 2021, so every example below is a `Calculated example` built from the section 2 figures. The inputs are invented round amounts.
+
+### Calculated example 1. Single taxpayer, both methods, most favourable
+
+Inputs on 1 January 2021: banktegoeden € 200.000, overige bezittingen € 150.000, schulden € 20.000, no partner.
+
+Band method, step by step:
+
+1. Bezittingen: € 200.000 + € 150.000 = € 350.000.
+2. Deductible debts: € 20.000 - € 3.200 schuldendrempel = € 16.800.
+3. Rendementsgrondslag: € 350.000 - € 16.800 = € 333.200.
+4. Heffingsvrij vermogen € 50.000, so the grondslag sparen en beleggen is € 333.200 - € 50.000 = € 283.200.
+5. Band 1: € 50.000 x 1,898% = € 949,00.
+6. Band 2: € 283.200 - € 50.000 = € 233.200, and € 233.200 x 4,501% = € 10.496,33.
+7. Band 3: nothing, the grondslag stays below € 950.000.
+8. Voordeel: € 949,00 + € 10.496,33 = € 11.445,33.
+9. Tax: € 11.445,33 x 31% = € 3.548,05.
+
+Category method under the Wet rechtsherstel, step by step:
+
+1. Step 1 belastbaar rendement: € 200.000 x 0,01% = € 20,00, plus € 150.000 x 5,69% = € 8.535,00, together € 8.555,00, minus € 16.800 x 2,46% = € 413,28, so € 8.141,72.
+2. Step 2 rendementsgrondslag: € 350.000 - € 16.800 = € 333.200.
+3. Step 3 grondslag sparen en beleggen: € 333.200 - € 50.000 = € 283.200.
+4. Step 4 aandeel: € 283.200 / € 333.200 x 100 = 84,9939976%. The checked sources do not state the 2021 rounding for this step, so the unrounded percentage is used here.
+5. Step 5 voordeel: € 8.141,72 x 84,9939976% = € 6.919,97.
+6. Step 6 tax: € 6.919,97 x 31% = € 2.145,19.
+
+Most favourable method: € 2.145,19 from the category method is lower than € 3.548,05 from the band method, so the definitive assessment uses € 2.145,19.
+
+### Calculated example 2. Whole-year partners, band method wins
+
+Inputs on 1 January 2021: joint banktegoeden € 80.000, joint overige bezittingen € 90.000, joint schulden € 10.400, whole-year partners.
+
+Band method, step by step:
+
+1. Bezittingen: € 80.000 + € 90.000 = € 170.000.
+2. Deductible debts: € 10.400 - € 6.400 drempel for whole-year partners = € 4.000.
+3. Rendementsgrondslag: € 170.000 - € 4.000 = € 166.000.
+4. Heffingsvrij vermogen € 100.000 for partners, so the grondslag sparen en beleggen is € 166.000 - € 100.000 = € 66.000.
+5. Band 1: € 50.000 x 1,898% = € 949,00.
+6. Band 2: € 66.000 - € 50.000 = € 16.000, and € 16.000 x 4,501% = € 720,16.
+7. Voordeel: € 949,00 + € 720,16 = € 1.669,16.
+8. Tax: € 1.669,16 x 31% = € 517,44.
+9. The partners may divide the joint grondslag in any ratio that totals 100%. With a 50/50 division each partner takes € 33.000 of the grondslag, half of the voordeel (€ 834,58) and half of the tax (€ 258,72).
+
+Category method under the Wet rechtsherstel, step by step:
+
+1. Step 1 belastbaar rendement: € 80.000 x 0,01% = € 8,00, plus € 90.000 x 5,69% = € 5.121,00, together € 5.129,00, minus € 4.000 x 2,46% = € 98,40, so € 5.030,60.
+2. Step 2 rendementsgrondslag: € 166.000.
+3. Step 3 grondslag sparen en beleggen: € 66.000.
+4. Step 4 aandeel: € 66.000 / € 166.000 x 100 = 39,7590361%.
+5. Step 5 voordeel: € 5.030,60 x 39,7590361% = € 2.000,12.
+6. Step 6 tax: € 2.000,12 x 31% = € 620,04.
+
+Most favourable method: € 517,44 from the band method is lower than € 620,04 from the category method, so the definitive assessment uses € 517,44.
+
+### Calculated example 3. Green investments with the exemption and the korting
+
+Inputs on 1 January 2021: single person, green beleggingen € 70.000, banktegoeden € 150.000, no debts.
+
+1. The green exemption is € 60.429 for a single person, so € 60.429 of the € 70.000 green investments is not counted.
+2. Counted bezittingen: € 150.000 + (€ 70.000 - € 60.429) = € 150.000 + € 9.571 = € 159.571.
+3. No debts, so the rendementsgrondslag is € 159.571 and the grondslag sparen en beleggen is € 159.571 - € 50.000 = € 109.571.
+4. Band 1: € 50.000 x 1,898% = € 949,00.
+5. Band 2: € 109.571 - € 50.000 = € 59.571, and € 59.571 x 4,501% = € 2.681,29.
+6. Voordeel: € 949,00 + € 2.681,29 = € 3.630,29.
+7. Tax: € 3.630,29 x 31% = € 1.125,39.
+8. Korting groene beleggingen: 0,7% x € 60.429 = € 423,00.
+9. Tax after the credit: € 1.125,39 - € 423,00 = € 702,39.
+
+The exemption is capped at the value of the green investments on 1 January, so a green balance below € 60.429 would exempt only that lower balance.
+
+### Calculated example 4. Actual return with a loss
+
+Inputs on 1 January 2021: single person, banktegoeden € 100.000, overige bezittingen € 50.000, no debts.
+
+Fictitious calculation, band method:
+
+1. Grondslag sparen en beleggen: € 150.000 - € 50.000 = € 100.000.
+2. Band 1: € 50.000 x 1,898% = € 949,00.
+3. Band 2: € 50.000 x 4,501% = € 2.250,50.
+4. Voordeel: € 949,00 + € 2.250,50 = € 3.199,50.
+5. Tax: € 3.199,50 x 31% = € 991,85.
+
+Fictitious calculation, category method:
+
+1. Step 1 belastbaar rendement: € 100.000 x 0,01% = € 10,00, plus € 50.000 x 5,69% = € 2.845,00, so € 2.855,00.
+2. Step 2 rendementsgrondslag: € 150.000.
+3. Step 3 grondslag sparen en beleggen: € 100.000.
+4. Step 4 aandeel: € 100.000 / € 150.000 x 100 = 66,6666667%.
+5. Step 5 voordeel: € 2.855,00 x 66,6666667% = € 1.903,33.
+6. Step 6 tax: € 1.903,33 x 31% = € 590,03.
+
+Actual return reported for the year: regular benefits € 500 plus value changes of minus € 2.400, total minus € 1.900. The actual return is at least nil, so the box 3 income becomes € 0, no heffingsvrij vermogen is applied in this calculation, and the negative € 1.900 cannot be carried to another year.
+
+Outcome: the lowest fictitious amount is € 590,03 from the category method, the actual return gives € 0, and the Belastingdienst uses the most favourable amount. The box 3 income is € 0 and the tax is 31% x € 0 = € 0.
+
+---
+

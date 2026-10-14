@@ -145,6 +145,8 @@ make_nested_repo() {
     printf '# Bootstrap\n\nSee https://www.belastingdienst.nl/a.\n' >"$root/AGENTS.md" || return 1
     printf '# Figures\n\nRate: [deep page](https://wetten.overheid.nl/BWBR0000002)\n' \
         >"$root/sk-moneybird-accountant/references/tax-rules/2025/btw/figures.md" || return 1
+    printf '# Scope\n\nSee [scope page](https://wetten.overheid.nl/BWBR0000003)\n' \
+        >"$root/sk-moneybird-accountant/references/tax-rules/2025/btw/scope.md" || return 1
     return 0
 }
 
@@ -677,14 +679,17 @@ run_builder "$REPO" >/dev/null
 group "nested walk"
 NEST_REPO="$TMP_ROOT/nested-repo"
 NEST_FILE="sk-moneybird-accountant/references/tax-rules/2025/btw/figures.md"
+NEST_TOPIC="sk-moneybird-accountant/references/tax-rules/2025/btw/"
 NEST_URL="https://wetten.overheid.nl/BWBR0000002"
+NEST_NOTE="sk-moneybird-accountant/references/tax-rules/2025/btw/scope.md"
+NEST_NOTE_URL="https://wetten.overheid.nl/BWBR0000003"
 if make_nested_repo "$NEST_REPO"; then
     pass "nested fixture repository builds"
 else
     fail "nested fixture repository builds"
 fi
 assert "nested citation write exits 0" run_builder "$NEST_REPO"
-nested_cited=$(python3 -I - "$NEST_REPO/sk-moneybird-accountant/assets/source-library.json" "$NEST_URL" "$NEST_FILE" <<'PY'
+nested_cited=$(python3 -I - "$NEST_REPO/sk-moneybird-accountant/assets/source-library.json" "$NEST_URL" "$NEST_TOPIC" <<'PY'
 import json
 import sys
 
@@ -693,9 +698,22 @@ print(rows.get(sys.argv[2], {}).get("cited_by") == [sys.argv[3]])
 PY
 )
 if [[ "$nested_cited" = "True" ]]; then
-    pass "nested citation names its file at depth"
+    pass "a split part citation names its topic folder"
 else
-    fail "nested citation names its file at depth"
+    fail "a split part citation names its topic folder"
+fi
+note_cited=$(python3 -I - "$NEST_REPO/sk-moneybird-accountant/assets/source-library.json" "$NEST_NOTE_URL" "$NEST_NOTE" <<'PY'
+import json
+import sys
+
+rows = {row["url"]: row for row in json.load(open(sys.argv[1]))["sources"]}
+print(rows.get(sys.argv[2], {}).get("cited_by") == [sys.argv[3]])
+PY
+)
+if [[ "$note_cited" = "True" ]]; then
+    pass "a nested citation outside the part names names its file"
+else
+    fail "a nested citation outside the part names names its file"
 fi
 assert "check passes on the nested fixture" run_builder "$NEST_REPO" --check
 set_index_access "$NEST_REPO" "$NEST_URL" ok 200 2026-01-01
@@ -710,7 +728,7 @@ set_index_access "$NEST_REPO" "$NEST_URL" dead 404 2026-01-01
 run_builder "$NEST_REPO" --check
 status=$?
 if [[ "$status" -eq 1 ]] \
-    && grep -q "^dead cited: $NEST_URL cited by: $NEST_FILE" "$TMP_ROOT/out.txt"; then
+    && grep -q "^dead cited: $NEST_URL cited by: $NEST_TOPIC" "$TMP_ROOT/out.txt"; then
     pass "a dead nested citation still exits 1"
 else
     fail "a dead nested citation still exits 1"
@@ -844,11 +862,11 @@ nested_cited_check=$(python3 -I -c '
 import json, sys
 rows = {r["url"]: r for r in json.load(open(sys.argv[1]))["rows"]}
 print(rows[sys.argv[2]]["cited_by"] == [sys.argv[3]])
-' "$TMP_ROOT/out.txt" "$NESTED_URL" "$NEST_FILE" 2>/dev/null)
+' "$TMP_ROOT/out.txt" "$NESTED_URL" "$NEST_TOPIC" 2>/dev/null)
 if [[ "$nested_cited_check" = "True" ]]; then
-    pass "link report names a nested citing file"
+    pass "link report names a split part by its topic folder"
 else
-    fail "link report names a nested citing file"
+    fail "link report names a split part by its topic folder"
 fi
 if [[ "$(link_field "$LIVE_URL" result)" = "ok" ]] && [[ "$(link_field "$LIVE_URL" http_status)" = "200" ]]; then
     pass "live page reports HTTP 200"

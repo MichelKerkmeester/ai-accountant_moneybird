@@ -6,9 +6,10 @@
 
 Walks every markdown file under sk-moneybird-accountant/references/ and counts
 its UTF-8 bytes and its tokens in cl100k_base and o200k_base, whole file and
-per H2 section. It adds the named units, the corpus total, the 2026 car topic
-file, the 2026 year README, SKILL.md and the two car routes, and the overhead
-rows for the generated nav and toc block bodies and for references/index.json.
+per H2 section. It adds the named units, the corpus total, the 2026 car
+figures part, the 2026 year README, SKILL.md and the two car routes, and the
+overhead rows for the generated nav and toc block bodies and for
+references/index.json.
 The run writes one JSON file or checks it and is offline and byte-stable.
 
 The Operator chose o200k_base as the stand-in for the executing models on
@@ -730,16 +731,24 @@ def build_baseline(encoders: Dict[str, Any]) -> Dict[str, Any]:
         },
     }
     readme_path = "sk-moneybird-accountant/references/tax-rules/2026/README.md"
-    topic_path = "sk-moneybird-accountant/references/tax-rules/2026/kosten-en-auto.md"
+    topic_path = "sk-moneybird-accountant/references/tax-rules/2026/kosten-en-auto/figures.md"
+    # WHY: the current route reads the whole topic. After the split that is
+    # the figures part plus its three sibling parts, so the ratio keeps
+    # measuring the KEY FIGURES section against the whole topic.
+    topic_paths = [topic_path] + [
+        topic_path.replace("figures.md", "%s.md" % part)
+        for part in ("rules", "examples", "notes")
+    ]
     skill_path = "sk-moneybird-accountant/SKILL.md"
     readme = file_unit(readme_path, rows, encoders)
     topic = file_unit(topic_path, rows, encoders)
+    topic_parts = [file_unit(path, rows, encoders) for path in topic_paths]
     units = [
         corpus,
-        file_unit(topic_path, rows, encoders),
+        topic,
         readme,
         file_unit(skill_path, rows, encoders),
-        unit_row(CAR_CURRENT_NAME, [readme_path, topic_path], [readme, topic]),
+        unit_row(CAR_CURRENT_NAME, [readme_path] + topic_paths, [readme] + topic_parts),
         unit_row(
             CAR_PROPOSED_NAME,
             [readme_path, "%s#%s" % (topic_path, CAR_SECTION_ANCHOR)],

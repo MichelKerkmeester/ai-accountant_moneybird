@@ -19,14 +19,14 @@ checked_on: "2026-10-12"
 
 ## 1. Unique to 2021
 
-- From 1 July 2021 the e-commerce package introduced the € 10.000 EU distance-sales threshold for qualifying goods and digital services together. [btw](btw.md#5-changes)
-- The zelfstandigenaftrek fell from € 7.030 in 2020 to € 6.670 in 2021. [ondernemersaftrek](ondernemersaftrek.md#5-changes)
-- The tariefsaanpassing rose from 3,5% above € 68.507 in 2020 to 6,5% above € 68.507 in 2021. [ondernemersaftrek](ondernemersaftrek.md#5-changes)
-- The below-AOW combined first rate fell from 37,35% to 37,10% and the first statutory boundary moved from € 34.712 to € 35.129. [inkomstenbelasting](inkomstenbelasting.md#5-changes)
-- The Zvw bijdrage by aanslag rose from 5,45% in 2020 to 5,75% in 2021. [zvw](zvw.md#5-changes)
-- The heffingsvrij vermogen rose from € 30.846 per person in 2020 to € 50.000 in 2021. [box-3](box-3.md#5-changes)
-- The zero-emission reduction for a car first admitted in 2021 is 10% off capped at € 4.000, so 12% up to € 40.000. [kosten-en-auto](kosten-en-auto.md#5-changes)
-- The maximum jaarruimte rose from € 12.986 in 2020 to € 13.236 in 2021. [pensioen-en-aov](pensioen-en-aov.md#5-changes)
+- From 1 July 2021 the e-commerce package introduced the € 10.000 EU distance-sales threshold for qualifying goods and digital services together. [btw](btw/notes.md#5-changes)
+- The zelfstandigenaftrek fell from € 7.030 in 2020 to € 6.670 in 2021. [ondernemersaftrek](ondernemersaftrek/notes.md#5-changes)
+- The tariefsaanpassing rose from 3,5% above € 68.507 in 2020 to 6,5% above € 68.507 in 2021. [ondernemersaftrek](ondernemersaftrek/notes.md#5-changes)
+- The below-AOW combined first rate fell from 37,35% to 37,10% and the first statutory boundary moved from € 34.712 to € 35.129. [inkomstenbelasting](inkomstenbelasting/notes.md#5-changes)
+- The Zvw bijdrage by aanslag rose from 5,45% in 2020 to 5,75% in 2021. [zvw](zvw/notes.md#5-changes)
+- The heffingsvrij vermogen rose from € 30.846 per person in 2020 to € 50.000 in 2021. [box-3](box-3/notes.md#5-changes)
+- The zero-emission reduction for a car first admitted in 2021 is 10% off capped at € 4.000, so 12% up to € 40.000. [kosten-en-auto](kosten-en-auto/notes.md#5-changes)
+- The maximum jaarruimte rose from € 12.986 in 2020 to € 13.236 in 2021. [pensioen-en-aov](pensioen-en-aov/notes.md#5-changes)
 
 ---
 
@@ -35,16 +35,16 @@ checked_on: "2026-10-12"
 <!-- GENERATED:changes:start -->
 | Topic | Bullets | First change |
 |---|---|---|
-| [btw.md](btw.md#5-changes) | 6 | The 21%, 9% and zero rates continued from 2020 into 2021. The 2020 and 2021... |
-| [inkomstenbelasting.md](inkomstenbelasting.md#5-changes) | 15 | The below-AOW combined first rate changed from 37,35% to 37,10%. The first... |
-| [zvw.md](zvw.md#5-changes) | 5 | Zvw bijdrage by aanslag and ingehouden bijdrage: 5,45% in 2020... |
-| [ondernemersaftrek.md](ondernemersaftrek.md#5-changes) | 14 | Zelfstandigenaftrek: € 7.030 in 2020 to € 6.670 in 2021. Sources... |
-| [investeringen.md](investeringen.md#5-changes) | 12 | KIA table: 2020 had nil up to € 2.400, 28% to € 58.238, € 16.307 to € 107.848... |
-| [kosten-en-auto.md](kosten-en-auto.md#5-changes) | 6 | Zero-emission bijtelling, the one real change. A car first admitted in 2020 got... |
-| [box-3.md](box-3.md#5-changes) | 13 | Heffingsvrij vermogen: € 30.846 per person becomes € 50.000, and € 61.692... |
-| [box-2.md](box-2.md#5-changes) | 10 | Box 2 rate: 26,25% in 2020 to 26,9% in 2021, a rise of 0,65 point. Sources... |
-| [bv-en-vennootschapsbelasting.md](bv-en-vennootschapsbelasting.md#5-changes) | 15 | Vpb first bracket: 2020 had t/m € 200.000 at 16,5%, 2021 has t/m € 245.000 at... |
-| [pensioen-en-aov.md](pensioen-en-aov.md#5-changes) | 22 | Jaarruimte percentage stays 13,3%, unchanged from 2020... |
-| [arbeidsrelatie.md](arbeidsrelatie.md#5-changes) | 7 | **Moratorium end date.** 2020: the fourth postponement to 1 January 2021 was... |
-| [procedure.md](procedure.md#5-changes) | 15 | IB return 2020 deadline: before 8 May 2021, because the 1 May 2021 date was... |
+| [btw.md](btw/notes.md#5-changes) | 6 | The 21%, 9% and zero rates continued from 2020 into 2021. The 2020 and 2021... |
+| [inkomstenbelasting.md](inkomstenbelasting/notes.md#5-changes) | 15 | The below-AOW combined first rate changed from 37,35% to 37,10%. The first... |
+| [zvw.md](zvw/notes.md#5-changes) | 5 | Zvw bijdrage by aanslag and ingehouden bijdrage: 5,45% in 2020... |
+| [ondernemersaftrek.md](ondernemersaftrek/notes.md#5-changes) | 14 | Zelfstandigenaftrek: € 7.030 in 2020 to € 6.670 in 2021. Sources... |
+| [investeringen.md](investeringen/notes.md#5-changes) | 12 | KIA table: 2020 had nil up to € 2.400, 28% to € 58.238, € 16.307 to € 107.848... |
+| [kosten-en-auto.md](kosten-en-auto/notes.md#5-changes) | 6 | Zero-emission bijtelling, the one real change. A car first admitted in 2020 got... |
+| [box-3.md](box-3/notes.md#5-changes) | 13 | Heffingsvrij vermogen: € 30.846 per person becomes € 50.000, and € 61.692... |
+| [box-2.md](box-2/notes.md#5-changes) | 10 | Box 2 rate: 26,25% in 2020 to 26,9% in 2021, a rise of 0,65 point. Sources... |
+| [bv-en-vennootschapsbelasting.md](bv-en-vennootschapsbelasting/notes.md#5-changes) | 15 | Vpb first bracket: 2020 had t/m € 200.000 at 16,5%, 2021 has t/m € 245.000 at... |
+| [pensioen-en-aov.md](pensioen-en-aov/notes.md#5-changes) | 22 | Jaarruimte percentage stays 13,3%, unchanged from 2020... |
+| [arbeidsrelatie.md](arbeidsrelatie/notes.md#5-changes) | 7 | **Moratorium end date.** 2020: the fourth postponement to 1 January 2021 was... |
+| [procedure.md](procedure/notes.md#5-changes) | 15 | IB return 2020 deadline: before 8 May 2021, because the 1 May 2021 date was... |
 <!-- GENERATED:changes:end -->

@@ -14,8 +14,9 @@ also compares the generated router block between the router markers with the
 table row by row and the table's multi-word signals and curated advisor
 signals with graph-metadata.json, and the write mode regenerates both
 surfaces. The check also runs the sibling check-skill-words.py over the
-repository, so a SKILL.md above the word ceiling fails this check. The
-script uses the Python standard library only and makes no network call.
+repository, so a SKILL.md above the word ceiling fails this check, and the
+sibling split-topic-files.py in its check mode, so a split part that drifted
+from its manifest fails it too. The script uses the Python standard library only and makes no network call.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/check-route-table.py
@@ -70,6 +71,10 @@ GRAPH_METADATA = os.path.join(SKILL_FOLDER, "graph-metadata.json")
 # runs this checker and the word check has no step of its own.
 REPO_ROOT = os.path.dirname(SKILL_FOLDER)
 WORD_CHECK = os.path.join(SKILL_FOLDER, "scripts", "check-skill-words.py")
+
+# WHY: the split proof is enforced here for the same reason, and the split
+# suite has no step of its own until the workflow lists it.
+SPLIT_CHECK = os.path.join(SKILL_FOLDER, "scripts", "split-topic-files.py")
 
 START_MARKER = "<!-- route-table:start -->"
 END_MARKER = "<!-- route-table:end -->"
@@ -1064,6 +1069,34 @@ def check_skill_words(problems: List[str]) -> None:
     for line in lines:
         print(line)
 
+
+def check_split_topics(problems: List[str]) -> None:
+    """Run the sibling split check over the reference tree.
+
+    A passing run prints the checker's last line. A failing run hands every
+    line to the problem list, which names the file and the part that drifted.
+
+    Args:
+        problems: Problem list to append to.
+    """
+    if not os.path.isfile(SPLIT_CHECK):
+        problems.append("split check not found: %s" % SPLIT_CHECK)
+        return
+    completed = subprocess.run(
+        [sys.executable, "-I", SPLIT_CHECK, "--check"],
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        cwd=REPO_ROOT,
+    )
+    lines = [line for line in (completed.stdout + completed.stderr).splitlines() if line.strip()]
+    if completed.returncode != 0:
+        problems.extend(lines)
+        return
+    if lines:
+        print(lines[-1])
+
 # ───────────────────────────────────────────────────────────────
 # 8. ENTRY POINT
 # ───────────────────────────────────────────────────────────────
@@ -1185,6 +1218,7 @@ def main(argv: List[str]) -> int:
     check_router_block(lines, rows, problems)
     check_intent_signals(rows, args.graph_metadata, problems)
     check_skill_words(problems)
+    check_split_topics(problems)
     if problems:
         for problem in problems:
             print(problem)

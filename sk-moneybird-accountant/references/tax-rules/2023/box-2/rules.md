@@ -1,0 +1,163 @@
+---
+title: "Box 2 en aanmerkelijk belang 2023: Rules"
+description: "Box 2 and aanmerkelijk belang for tax year 2023: the 26,9% rate, the 5% test, loss offset and the belastingkorting, the new excessief lenen rules, gebruikelijk loon and the ODV marktrente. This file holds the rules part."
+nav_label: "Box 2 en aanmerkelijk belang rules"
+trigger_phrases:
+  - "box 2 2023"
+  - "aanmerkelijk belang 2023"
+  - "excessief lenen 2023"
+  - "Box 2 en aanmerkelijk belang 2023 rules"
+importance_tier: important
+contextType: research
+version: 1.0.0.0
+---
+
+# Box 2 en aanmerkelijk belang 2023: Rules
+
+**Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
+
+Part 2 of 4 of the Box 2 en aanmerkelijk belang 2023 topic.
+
+- [figures.md](figures.md): sections 1 and 2.
+- [examples.md](examples.md): section 4.
+- [notes.md](notes.md): sections 5 to 8.
+
+Year overview: [README.md](../README.md).
+
+## 3. HOW IT WORKS IN 2023
+
+<a id="3-how-it-works"></a>
+
+### 3.1 Box 2 rate (art. 2.12)
+
+For 2023 there is one flat rate: 26,9%. The text of art. 2.12 Wet IB 2001 valid on 1 January 2023 prints that rate ([wetten.overheid.nl, art. 2.12](https://wetten.overheid.nl/BWBR0011353/2023-01-01)), and FISIN 2023 states 26,90% ([FISIN 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/aanmerkelijk_belang)).
+
+One flat rate applied from 2020 to 2023: 26,25% in 2020 and 26,9% in 2021, 2022 and 2023 ([wetten.overheid.nl 2021](https://wetten.overheid.nl/BWBR0011353/2021-01-01), [wetten.overheid.nl 2022](https://wetten.overheid.nl/BWBR0011353/2022-01-01)). From 2024 a two-bracket table applies ([wetten.overheid.nl 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01)). The table applies per taxpayer. Art. 10.1 lid 1 lists art. 2.12 among the amounts replaced at the start of each calendar year by ministerial regulation, multiplied by the tabelcorrectiefactor (table correction factor) ([wetten.overheid.nl](https://wetten.overheid.nl/BWBR0011353/2026-01-01)).
+
+Who and how: the rate applies to the income from aanmerkelijk belang as a whole, including the fictief regulier voordeel from excessief lenen from 2023 and the forfaitair voordeel from a vrijgestelde beleggingsinstelling or foreign investment company. Because the rate applies per taxpayer, each fiscal partner bears the rate on his own share of any divided box 2 income ([wetten.overheid.nl](https://wetten.overheid.nl/BWBR0011353/2026-01-01)).
+
+### 3.2 Aanmerkelijk belang, the 5% test (art. 4.6), meesleep, meetrek and fictief belang
+
+The taxpayer has an aanmerkelijk belang if he, alone or together with his partner ("al dan niet tezamen met zijn partner"), directly or indirectly meets one of these tests ([wetten.overheid.nl, art. 4.6](https://wetten.overheid.nl/BWBR0011353/2023-01-01)):
+
+- sub a, he holds at least 5% of the issued capital
+- sub b, he has rights to acquire shares up to at least 5% of the issued capital
+- sub c, he holds winstbewijzen (profit-sharing certificates) for at least 5% of the annual profit or of the liquidation proceeds
+- sub d, he is entitled to at least 5% of the votes in a coöperatie as meant in art. 4.5a
+- sub e, he has a share in a body as meant in art. 2 lid 12 Wet Vpb 1969 (2022 numbering) with at least 5% of its profit
+
+The 2023 text has sub a to e, the same as 2022. Sub e was added between the 1 January 2021 and 1 January 2022 texts, and in sub d "tot" became "om" in the same period ([wetten.overheid.nl 2021](https://wetten.overheid.nl/BWBR0011353/2021-01-01), [wetten.overheid.nl 2022](https://wetten.overheid.nl/BWBR0011353/2022-01-01)). Sub f was added later, by Overige fiscale maatregelen 2026 (Stb. 2025, 445), with retroactive effect to 1 January 2025, so it does not apply to 2023 ([Stb. 2025, 445](https://zoek.officielebekendmakingen.nl/stb-2025-445.html), [wetten.overheid.nl 2026](https://wetten.overheid.nl/BWBR0011353/2026-01-01)).
+
+Meesleepregeling (pull-in rule, art. 4.9): once there is an aanmerkelijk belang in a company, the taxpayer's other shares and winstbewijzen in that company also belong to it. Meetrekregeling (pull-along rule, art. 4.10): shares in a company where the taxpayer has no aanmerkelijk belang but his partner or a blood or aanverwant in de rechte lijn (blood relative or relative by marriage in the direct line) of the taxpayer or partner does, also belong to an aanmerkelijk belang. The Belastingdienst names parents, children and grandchildren of the taxpayer and the fiscal partner, plus their fiscal partners, and says a 5% holding in one class of shares also counts ([wetten.overheid.nl](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/wanneer_hebt_u_een_aanmerkelijk_belang/wanneer_hebt_u_een_aanmerkelijk_belang)). The texts of art. 4.7 to 4.10 are identical in every year 2020 to 2027 ([wetten.overheid.nl](https://wetten.overheid.nl/BWBR0011353/2026-01-01)).
+
+Fictief aanmerkelijk belang (art. 4.11): shares or winstbewijzen that do not belong to an aanmerkelijk belang under the other articles are deemed to be one if art. 3.65, 4.17, 4.17a, 4.17b, 4.17c, 4.40 or 4.41 has been applied (rollover cases). Art. 4.40 is the route when a holding drops below 5%: on request the deemed sale of art. 4.16 lid 1 sub g is not applied to the shares the taxpayer keeps, and those shares then carry a fictief aanmerkelijk belang. Art. 4.16 lid 3 lets the taxpayer request a deemed sale of such shares. The text is identical 2020 to 2027 ([wetten.overheid.nl](https://wetten.overheid.nl/BWBR0011353/2026-01-01)). The vbi status is a fictieve vervreemding case listed by the Belastingdienst, not part of the art. 4.11 list. For an afgezonderd particulier vermogen (separate private asset fund) the loss deferral runs to a third-party sale, death or 10 years, and FISIN 2020 confirms the 10-year term ([FISIN 2020](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/aanmerkelijk_belang)). The doorschuiving (rollover) list is UNVERIFIED, see section 7.
+
+### 3.3 Income from aanmerkelijk belang (art. 4.12 and 4.13)
+
+The income is the reguliere voordelen (regular benefits) minus the deductible costs, plus the vervreemdingsvoordelen (disposal benefits), minus the persoonsgebonden aftrek (personal deductions) ([wetten.overheid.nl, art. 4.12](https://wetten.overheid.nl/BWBR0011353/2026-01-01)). Reguliere voordelen are dividends and other profit distributions. Art. 4.13 lid 1 adds as reguliere voordelen ([wetten.overheid.nl, art. 4.13](https://wetten.overheid.nl/BWBR0011353/2026-01-01)):
+
+- sub a, the forfaitair voordeel from a vrijgestelde beleggingsinstelling or a foreign investment company
+- sub b to d, certain repayments of paid-in capital above the verkrijgingsprijs or without the required decision and statutory reduction
+- sub e, bonus shares from a beleggingsinstelling
+- sub f, from 2023 the excessief-lenen fiction
+
+Not box 2: interest on a receivable on the own company is income from making assets available, and salary from the company is box 1 loon. Deductible is interest on a loan taken to buy the shares. Notary costs are added to the verkrijgingsprijs (acquisition price) and selling costs reduce the overdrachtsprijs (transfer price). Dividendbelasting is not deducted from the income but credited as voorheffing (withholding tax credit) ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang), [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang)).
+
+Vervreemdingsvoordeel: the voordeel is the overdrachtsprijs minus the verkrijgingsprijs. The verkrijgingsprijs is the price paid or the value at acquisition, notary costs included. Special cases (inheritance, gift with or without doorschuiving, reaching 5% during the year, onzakelijke prijs) are as the Belastingdienst describes. At an onzakelijke prijs (non-arm's-length price) the value in het economisch verkeer (market value) applies to both sides ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang), [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang)).
+
+Fictieve vervreemding (art. 4.16): the statute lists as a sale the inkoop of shares, afkoop and inkoop of winstbewijzen, liquidatie-uitkeringen, becoming a shareholder in another company by a transfer under general title, transfer under general title and by inheritance under special title, bringing the shares into an enterprise or a werkzaamheid, no longer having an aanmerkelijk belang, ceasing to be a resident other than by death (emigration), granting a koopoptie, shares of an afgezonderd particulier vermogen no longer attributed, and the shares starting to yield a forfaitair voordeel under art. 4.13 lid 1 sub a. A liquidation with continuation under art. 14c Wet Vpb counts as a liquidation payment. The text is identical 2020 to 2027 ([wetten.overheid.nl, art. 4.16](https://wetten.overheid.nl/BWBR0011353/2026-01-01)).
+
+### 3.4 Partner and minor children
+
+The 5% test is met "al dan niet tezamen met zijn partner", so a holding can be an aanmerkelijk belang through the partner ([wetten.overheid.nl, art. 4.6](https://wetten.overheid.nl/BWBR0011353/2023-01-01)). The taxpayer must also declare the income from aanmerkelijk belang of minor children, until the child turns 18 ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/wanneer_hebt_u_een_aanmerkelijk_belang/wanneer_hebt_u_een_aanmerkelijk_belang)).
+
+Fiscal partners may divide the inkomsten uit aanmerkelijk belang under art. 2.17 lid 2. With a fiscal partnership for the whole year the inkomsten uit aanmerkelijk belang may be divided in the proportion chosen each year in the return. FISIN 2026 says: "Elke verdeling mag, als het totaal maar 100% is." Because art. 2.12 applies per taxpayer, each partner's own rate applies to his share ([wetten.overheid.nl](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang)). No primary page states a summed two-partner amount, that part is UNVERIFIED, see section 7.
+
+### 3.5 Forfaitair voordeel (art. 4.14)
+
+Who: a taxpayer with shares in a vrijgestelde beleggingsinstelling (vbi, exempt investment institution) or a foreign investment company. The forfaitair voordeel of art. 4.13 lid 1 sub a is a yearly percentage of the value of those shares at the start of the year, reduced by other reguliere voordelen from those shares, never below nil, and time-apportioned. The percentage for 2023 is 6,17%, printed in the 2023 text of art. 4.14 lid 1 ([wetten.overheid.nl, art. 4.14](https://wetten.overheid.nl/BWBR0011353/2023-01-01)). The percentage was 5,53% in 2022 ([wetten.overheid.nl 2022](https://wetten.overheid.nl/BWBR0011353/2022-01-01)). When the shares start to yield the forfaitair voordeel, that is a fictieve vervreemding under art. 4.16 ([wetten.overheid.nl](https://wetten.overheid.nl/BWBR0011353/2026-01-01)).
+
+### 3.6 Excessief lenen, entry into force and placement
+
+Wet van 21 december 2022, Staatsblad 2022, 531 (issued 27 December 2022), is cited as "Wet excessief lenen bij eigen vennootschap" and is in force from 1 January 2023 (Artikel III of the act) ([Stb. 2022, 531](https://zoek.officielebekendmakingen.nl/stb-2022-531.html)). The fiction sits in art. 4.13 lid 1 sub f ("het bovenmatige deel van schulden ... (het fictief reguliere voordeel)", debts meaning all civil-law debt relations and obligations), the amount rule in art. 4.14a ("Fictief regulier voordeel"), the verbonden-person rule in art. 4.14b and the immigration rule in art. 4.14c ([wetten.overheid.nl, art. 4.13, 4.14a to 4.14c](https://wetten.overheid.nl/BWBR0011353/2023-01-01)).
+
+### 3.7 Excessief lenen, the maximum and the mechanism (art. 4.14a)
+
+Lid 1: the positive amount equals the total debts above the maximum. A negative amount equals the shortfall below the maximum, capped at amounts taxed earlier (or under a comparable foreign rule) and not yet reversed. Lid 2: the maximum in the 2023 text is € 700.000, plus amounts taxed earlier. Lid 5: if the taxpayer no longer has an aanmerkelijk belang at year end, other than by emigration under art. 4.16 lid 1 sub h, lid 1 is applied as if he still had one and the debts were nil, which releases a negative amount. Lid 6: an eigenwoningschuld (owner-occupied home debt) is excluded to the extent a recht van hypotheek (mortgage right) on the home was given to the company. Lid 7, inserted by Belastingplan 2025 (Stb. 2024, 434) retroactive to 1 January 2023: double counting of a samenwerkingsverband debt among several participants is removed ([wetten.overheid.nl, art. 4.14a](https://wetten.overheid.nl/BWBR0011353/2023-01-01), [Stb. 2024, 434](https://zoek.officielebekendmakingen.nl/stb-2024-434.html)).
+
+The Belastingdienst adds: receivables on the company do not reduce the debts, debts at several companies are added, and the drempel (threshold) "never drops below € 500.000 (€ 700.000 in 2023)" ([Belastingdienst, excessief lenen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/bijzondere_situaties/geld_lenen_van_uw_bv/excessief-lenen-van-bv-beperkt)).
+
+Threshold history: the bill proposed € 500.000. The derde nota van wijziging (Kamerstuk 35 496 nr. 15) replaced € 500.000 by € 700.000 in art. 4.14a lid 2, 4.14b and 4.14c lid 1, following the coalition agreement ([Kamerstuk 35 496 nr. 15](https://zoek.officielebekendmakingen.nl/kst-35496-15.html)). Amendement Grinwis c.s. (Kamerstuk 36 418 nr. 60), included in the adopted text (nr. A), replaced € 700.000 by € 500.000 in the same articles ([Kamerstuk 36 418 nr. 60](https://zoek.officielebekendmakingen.nl/kst-36418-60.html), [Kamerstuk 36 418 nr. A](https://zoek.officielebekendmakingen.nl/kst-36418-A.html)). The 2024, 2025, 2026 and 2027 texts print € 500.000 in art. 4.14a, twice in art. 4.14b and in art. 4.14c ([wetten.overheid.nl 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01)). For 2023 itself the operative figure is € 700.000, printed in the 2023 text.
+
+### 3.8 Excessief lenen, measurement (art. 4.14a lid 3 and 4)
+
+The debts of the taxpayer, the partner or both count once for the two together and the maximum applies to them jointly (lid 3). The debts are measured at the end of the calendar year at nominal value (lid 4) ([wetten.overheid.nl, art. 4.14a](https://wetten.overheid.nl/BWBR0011353/2023-01-01)).
+
+### 3.9 Excessief lenen, verbonden personen (art. 4.14b)
+
+Debts of a verbonden person (blood or aanverwant in de rechte lijn of the taxpayer or partner) to a company where the taxpayer has an aanmerkelijk belang and that person has none count with the taxpayer for the part above € 700.000 in the 2023 text, applied to that person and his partner together. Debts already counted under art. 4.13 lid 1 sub f for the taxpayer and partner, and debts on which a regular box 2 benefit was taken, are excluded. If several taxpayers count the same debts, they share them equally ([wetten.overheid.nl, art. 4.14b](https://wetten.overheid.nl/BWBR0011353/2023-01-01)).
+
+### 3.10 Excessief lenen, immigration (art. 4.14c)
+
+A taxpayer who comes to live in the Netherlands gets a maximum equal to his debts at that moment, at least € 700.000 in the 2023 text ([wetten.overheid.nl, art. 4.14c](https://wetten.overheid.nl/BWBR0011353/2023-01-01)). From 2024 the floor is € 500.000 ([wetten.overheid.nl 2026](https://wetten.overheid.nl/BWBR0011353/2026-01-01)).
+
+### 3.11 Excessief lenen, samenwerkingsverband exception
+
+Debts arising from a civil-law joint liability of the taxpayer or a verbonden person for a debt of a samenwerkingsverband (vof, cv, maatschap or a comparable foreign form) from which they derive business profit are left out. This was inserted by Belastingplan 2025 (Stb. 2024, 434) retroactive to 1 January 2023, as lid 6 and 7 in the general numbering and numbered lid 4 and 5 in the 2023 text. Overige fiscale maatregelen 2026 (Stb. 2025, 445) repaired the internal reference "zesde lid" to "vierde lid" retroactive to 1 January 2023, not for 2024 ([wetten.overheid.nl, art. 4.13 lid 4 and 5 in the 2023 text](https://wetten.overheid.nl/BWBR0011353/2023-01-01), [Stb. 2024, 434](https://zoek.officielebekendmakingen.nl/stb-2024-434.html), [Stb. 2025, 445](https://zoek.officielebekendmakingen.nl/stb-2025-445.html)).
+
+### 3.12 Eigenwoningschuld exclusion (art. 4.14a lid 6 and art. 10a.23)
+
+Art. 4.14a lid 6 excludes an eigenwoningschuld to the extent a recht van hypotheek on the home was given to the company. The transitional article 10a.23 adds that an eigenwoningschuld existing on 31 December 2022 without such a mortgage is also excluded ([wetten.overheid.nl, art. 4.14a](https://wetten.overheid.nl/BWBR0011353/2023-01-01), [Stb. 2022, 531](https://zoek.officielebekendmakingen.nl/stb-2022-531.html)).
+
+### 3.13 Consequences of excessief lenen
+
+The loan stays a loan in full, the company keeps charging interest on the whole loan and pays Vpb (vennootschapsbelasting, corporate income tax) on it, and the other terms stay. The company does not withhold dividendbelasting on the part taxed as box 2 income. Existing arrangements on company debts can lapse when the total exceeds the threshold. A negative fictief regulier voordeel is offset against box 2 income of that year, the previous year or the following six years ([Belastingdienst, excessief lenen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/bijzondere_situaties/geld_lenen_van_uw_bv/excessief-lenen-van-bv-beperkt), [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang)).
+
+### 3.14 Gebruikelijk loon, fixed amount (art. 12a Wet LB 1964)
+
+For an employee working for a body in which he or his partner has an aanmerkelijk belang, the loon is at least the highest of (a) the loon from the most comparable employment, (b) the highest loon of the employees of the body or connected bodies, and (c) a fixed amount. In 2023 the fixed amount is € 51.000 ([wetten.overheid.nl, art. 12a](https://wetten.overheid.nl/BWBR0002471/2023-01-01)). The fixed amount is indexed at the start of each year by ministerial regulation with the tabelcorrectiefactor (lid 7 from 2023, lid 9 in the 2020 text) ([wetten.overheid.nl](https://wetten.overheid.nl/BWBR0002471/2026-01-01), [Belastingdienst, loon en aanmerkelijk belang](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/loon_en_aanmerkelijk_belang/loon_en_aanmerkelijk_belang)).
+
+### 3.15 Gebruikelijk loon, comparable-loon test
+
+In the 2023 text the test in (a) is 100% of the loon of the most comparable employment. In the 2020 to 2022 texts it was 75% ([wetten.overheid.nl 2023](https://wetten.overheid.nl/BWBR0002471/2023-01-01), [wetten.overheid.nl 2020](https://wetten.overheid.nl/BWBR0002471/2020-01-01)). Kamerstuk 36 418 nr. F names "het afschaffen van de doelmatigheidsmarge in het gebruikelijk loon per 2023" (the removal of the efficiency margin per 2023) in the material for this item. The comparable employment is one in which an aanmerkelijk belang plays no role and which is known to the inhoudingsplichtige and the inspecteur. Lower loon is possible: if the inhoudingsplichtige makes plausible that the highest amount exceeds the (75% of the) comparable loon, the comparable loon applies, in 2020 to 2022 with the fixed amount as a floor unless the comparable loon itself is lower. The gebruikelijk loon is declared as income from employment (box 1), not as a box 2 voordeel. The rule also applies when the fiscal partner or a minor child is the aanmerkelijkbelanghouder and the taxpayer makes assets available to that company ([wetten.overheid.nl, art. 12a](https://wetten.overheid.nl/BWBR0002471/2023-01-01), [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang), [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang)). The checked sources do not state that the gebruikelijk loon reduces the residual profit available for a dividend.
+
+### 3.16 Gebruikelijk loon, the € 5.000 threshold
+
+The rule does not apply if the loon for the work for the body and connected bodies is not more than € 5.000 in the year. This is lid 4 in the 2023 text, lid 6 in the 2020 to 2022 texts ([wetten.overheid.nl 2023](https://wetten.overheid.nl/BWBR0002471/2023-01-01), [wetten.overheid.nl 2020](https://wetten.overheid.nl/BWBR0002471/2020-01-01)). The Belastingdienst adds that the € 5.000 applies to the total of the work for all companies, "niet per onderneming" (not per business) ([Belastingdienst, loon en aanmerkelijk belang](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/loon_en_aanmerkelijk_belang/loon_en_aanmerkelijk_belang)).
+
+### 3.17 Gebruikelijk loon, the start-up rule
+
+For a body with an S&O-verklaring (R&D declaration) to which the verhoogd starterspercentage (increased starter percentage) applied, the loon was at least 108% of twelve times the monthly minimum wage of art. 8 lid 1 sub a Wet minimumloon as at 1 January, or the comparable loon if lower, subject to the de-minimis ceiling. This rule is in the 2020 to 2022 texts and absent from the 2023 text ([wetten.overheid.nl 2022](https://wetten.overheid.nl/BWBR0002471/2022-01-01), [wetten.overheid.nl 2023](https://wetten.overheid.nl/BWBR0002471/2023-01-01)). The Belastingdienst says: "Vanaf 2023 is deze uitzondering voor nieuwe gevallen vervallen" (from 2023 this exception has lapsed for new cases). It could be used at most 3 years, so a first use in 2021 ran to 2023 and a first use in 2022 to 2024 ([Belastingdienst, loon en aanmerkelijk belang](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/loon_en_aanmerkelijk_belang/loon_en_aanmerkelijk_belang)).
+
+### 3.18 Loss offset (art. 4.49), including losses from 2018 or earlier
+
+A verlies uit aanmerkelijk belang (loss from a substantial shareholding) is offset against box 2 income of the previous year and the six following years, in the order the losses arose. The loss is set by beschikking (decision) together with the assessment, shown separately on it, and open to objection. For losses that arose in 2018 or earlier: "langer te verrekenen ... in de komende 9 jaar" (to be offset over a longer period, in the coming 9 years) ([wetten.overheid.nl, art. 4.49](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [Belastingdienst, verlies uit aanmerkelijk belang](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/verlies_uit_aanmerkelijk_belang/verlies_uit_aanmerkelijk_belang_1)). The text of art. 4.49 is identical 2020 to 2027 ([wetten.overheid.nl](https://wetten.overheid.nl/BWBR0011353/2026-01-01)).
+
+### 3.19 Conversion into a belastingkorting (art. 4.53)
+
+Lid 1: if the taxpayer and partner had no aanmerkelijk belang in the calendar year and the year before, the unoffset loss is converted on request. A taxpayer without a partner who died in the year only needs to have had no aanmerkelijk belang at death. Lid 2: the percentage is 26,25% in the 2020 text and 26,9% in the 2021 to 2023 texts, and from the 2024 text "het in de eerste regel van de vierde kolom van de tabel in artikel 2.12 opgenomen percentage". Lid 3: the inspecteur sets the korting by beschikking open to objection. Lid 4: the korting reduces box 1 tax of that year and the seven following years, at the latest the ninth year after the loss year. Lid 5: on the death of a partner part of the korting can pass to the surviving partner ([wetten.overheid.nl 2021](https://wetten.overheid.nl/BWBR0011353/2021-01-01), [wetten.overheid.nl 2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01), [wetten.overheid.nl 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [wetten.overheid.nl 2027](https://wetten.overheid.nl/BWBR0011353/2027-01-01)).
+
+The Belastingdienst adds that the request is possible only after the loss is definitively established and from the second year after the year without aanmerkelijk belang ([Belastingdienst, verlies omzetten in belastingkorting](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/verlies_uit_aanmerkelijk_belang/verlies_omzetten_in_belastingkorting)). Kennisgroep standpunt KG:003:2023:8 (published 26-09-2023, updated 22-07-2026) tests the condition for the tax year, not at the request date, so a new aanmerkelijk belang at the request does not block it, and ambtshalve vermindering (ex officio reduction) of earlier assessments is possible unless five years have passed after the year of the assessment ([Kennisgroepstandpunt KG:003:2023:8](https://kennisgroepen.belastingdienst.nl/publicaties/kg00320238-omzetting-verlies-uit-aanmerkelijk-belang-in-een-belastingkorting/)).
+
+### 3.20 Inherited aanmerkelijk belang facility (art. 4.12a)
+
+If shares were inherited and box 2 income was taken into account with the deceased on that transfer, reguliere voordelen received within 24 months after the death are on request not counted as box 2 income, up to that amount, and are written off on the verkrijgingsprijs. This is what art. 4.12a carries. It does not carry the excessief-lenen fiction. The text is identical 2020 to 2027 ([wetten.overheid.nl, art. 4.12a](https://wetten.overheid.nl/BWBR0011353/2026-01-01)). The Overige fiscale maatregelen 2027 bill proposes to exclude the fictief regulier voordeel from this facility from 1 January 2027, see section 7 ([eerstekamer.nl](https://www.eerstekamer.nl/behandeling/20260915/memorie_van_toelichting_56/document3/f=/vn15lhsbrhzz.pdf)).
+
+### 3.21 PEB, ODV and the 2023 marktrente
+
+Background. Art. 38n lid 1 Wet LB 1964 keeps the old pension rules (as at 31 December 2016) for a pensioen in eigen beheer (PEB, pension in the own company). Art. 38n lid 2 allowed prijsgeven (waiving) of the part of the claim above the fiscale balanswaarde (fiscal balance sheet value), on condition the claim was at the same moment wholly afgekocht (bought off) or geruisloos (tax-neutrally) converted into an oudedagsverplichting (ODV, old-age obligation). Lid 4 required the written consent of the partner, also a former partner who kept part of the claim. Art. 38o: on afkoop the taxable loon is the afkoopwaarde minus 34,5% of the fiscale balanswaarde (capped by reference to the 2015 balance), 25% from 1 January 2018 and 19,5% from 1 January 2019. Art. 38q blocked these routes for 2016 accrual above 125% of the 2015 accrual. Artikel VI: from 1 January 2020 art. 38n lid 2 to 5, art. 38o, art. 38p lid 5 and art. 38q lapse, and the 2020 Wet LB text shows art. 38o and 38q as "[Vervallen per 01-01-2020]" ([Stb. 2017, 115](https://zoek.officielebekendmakingen.nl/stb-2017-115.html), [wetten.overheid.nl 2020](https://wetten.overheid.nl/BWBR0002471/2020-01-01)). The Centraal Aanspreekpunt Pensioenen states that afkoop or conversion was possible "vanaf 1 april 2017 tot en met 31 december 2019" ([Centraal Aanspreekpunt Pensioenen](https://centraalaanspreekpuntpensioenen.belastingdienst.nl/publicaties/va_17-007_v170401/)). So for 2023 those routes are closed and only a remaining PEB or an ODV exists.
+
+Start date. The consolidated text on wetten.overheid.nl (BWBR0039380) reads "Geldend van 01-04-2017", with listed parts retroactive to 1 January 2017, while the published Stb. 2017, 115 Artikel XIX prints 1 January 2017 under art. 12 Wet raadgevend referendum ([wetten.overheid.nl BWBR0039380](https://wetten.overheid.nl/BWBR0039380/2017-04-01), [Stb. 2017, 115](https://zoek.officielebekendmakingen.nl/stb-2017-115.html)). The coulance decision of 22 March 2017 (Stcrt. 2017, 18118) let dga's adjust "uiterlijk tot en met 30 juni 2017" (no later than 30 June 2017) and lapsed on 1 July 2017, which explains the Belastingdienst phrase "Sinds 1 juli 2017 kunt u niet langer pensioen in eigen beheer opbouwen" ([Stcrt. 2017, 18118](https://zoek.officielebekendmakingen.nl/stcrt-2017-18118.html), [Belastingdienst, uitfaseren pensioen in eigen beheer](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/uitfaseren-pensioen-in-eigen-beheer/)).
+
+Remaining PEB. A remaining PEB keeps the old rules (art. 38n). If the scheme provided for indexation, the company must index the accrued rights every year and must value the provision every year actuarially. "Als de bv niet jaarlijks indexeert, dan kunnen wij dit zien als een vorm van prijsgeven van de rechten", with possible fiscal consequences ([Belastingdienst, uitfaseren pensioen in eigen beheer](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/uitfaseren-pensioen-in-eigen-beheer/)).
+
+ODV (art. 38p). The ODV is increased each year by a market rate set by ministerial regulation (art. 12.3a Uitvoeringsregeling loonbelasting 2011, the average of the monthly U-rendementen of the preceding year). For 2023 the rate is 0,699%, the December 2022 value ([Centraal Aanspreekpunt Pensioenen](https://centraalaanspreekpuntpensioenen.belastingdienst.nl/publicaties/overzicht-u-rendementen-en-marktrenten/)). A negative market rate must also be applied. The ODV can be used geruisloos for a lijfrente, lijfrenterekening or lijfrentebeleggingsrecht, or is paid in instalments over twenty years as loon uit vroegere dienstbetrekking, each instalment being the balance at the start of the year divided by the remaining years. The first instalment comes no earlier than five years before AOW age (state pension age) and at the latest two months after it. An earlier start lengthens the twenty years. On death before the start the instalments begin within twelve months for the natural-person heirs. Added by Stb. 2022, 532, retroactive to 1 January 2020: under ministerial conditions the ODV can also be converted into a lijfrente after the instalments have started (art. 38p lid 5) ([wetten.overheid.nl 2020](https://wetten.overheid.nl/BWBR0002471/2020-01-01), [wetten.overheid.nl 2026](https://wetten.overheid.nl/BWBR0002471/2026-01-01), [Stcrt. 2025](https://zoek.officielebekendmakingen.nl/stcrt-2025-42873.html), [Centraal Aanspreekpunt Pensioenen](https://centraalaanspreekpuntpensioenen.belastingdienst.nl/publicaties/overzicht-u-rendementen-en-marktrenten/)).
+
+PEB and box 2 (art. 10a.18 Wet IB 2001). Lid 3 says the verkrijgingsprijs of the shares is not increased by the 2017, 2018 or 2019 application of art. 38n lid 2. Lid 2 says that in the company the ODV is valued with the market rate of art. 38p. PEB payouts are loon uit vroegere dienstbetrekking (box 1) ([wetten.overheid.nl, art. 10a.18](https://wetten.overheid.nl/BWBR0011353/2020-01-01), [Stb. 2017, 115](https://zoek.officielebekendmakingen.nl/stb-2017-115.html)).
+
+### 3.22 Non-residents (art. 7.5)
+
+Art. 7.5 confirms the base for a non-resident: an aanmerkelijk belang in a Netherlands-established company, not part of an enterprise ([wetten.overheid.nl, art. 7.5](https://wetten.overheid.nl/BWBR0011353/2026-01-01)). The research statement that a 2025 beschikking partiële buitenlandse belastingplicht has the same effect was not found on the fetched Belastingdienst pages and stays UNVERIFIED, see section 7.
+
+---
+

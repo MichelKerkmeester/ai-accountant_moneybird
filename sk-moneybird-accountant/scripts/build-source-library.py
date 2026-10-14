@@ -112,6 +112,14 @@ ROLLOVER_PATH = os.path.join(REFERENCES_DIR, "tax-rules", "year-rollover.md")
 # WHY: an allowlist of scan roots keeps the private folders out by construction.
 SCAN_ROOTS = ("AGENTS.md", "README.md", "sk-moneybird-accountant", "cli-jortt", "cli-moneybird")
 
+# WHY: a year topic is split into four part files, and listing each part in
+# cited_by grew the index past the privacy gate's file size limit. The topic
+# folder keeps the granularity the index had before the split and stays a
+# greppable citing path.
+SPLIT_PART_RE = re.compile(
+    r"^(sk-moneybird-accountant/references/tax-rules/\d{4}/[a-z0-9-]+/)(?:figures|rules|examples|notes)\.md$"
+)
+
 URL_RE = re.compile(r"https?://[^\s)\]>\"'`|]+")
 LINK_RE = re.compile(r"\[([^\]]{2,160})\]\((https?://[^)\s]+)\)")
 TRAILING_RE = re.compile(r"[.,;:*]+$")
@@ -430,7 +438,8 @@ def scan() -> Dict[str, Dict[str, Any]]:
                 if is_skipped(url):
                     continue
                 entry = found.setdefault(url, {"cited_by": set(), "titles": {}})
-                entry["cited_by"].add(relative)
+                part = SPLIT_PART_RE.match(relative.replace(os.sep, "/"))
+                entry["cited_by"].add(part.group(1) if part else relative)
             for text, raw in LINK_RE.findall(line):
                 url = clean_url(raw)
                 if url in found:

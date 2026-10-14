@@ -17,7 +17,10 @@ The two year README blocks read the topic files of one year folder. Their row
 order and their text come from the corpus at run time: the topic order from
 the topic table in references/tax-rules/dutch-tax-rules.md, the covers and the topic
 labels from the topic-file frontmatter, and the counts and the headline rows
-from the KEY FIGURES table of every topic file.
+from the KEY FIGURES table of every topic file. A phase 003 split makes one
+topic a folder of four part files, so a lookup for a section reads and links
+the part that holds it: sections 1 and 2 in figures.md, section 3 in rules.md,
+section 4 in examples.md and sections 5 to 8 in notes.md.
 
 A markdown file over 51,200 bytes gets a read plan between its H1 and the
 rest of the file. The plan splits the file at its H2 and H3 lines, names the
@@ -43,7 +46,9 @@ subsection of that section, right after the line that names the year files of
 the subsection. Its table repeats the first two KEY FIGURES rows of every
 named file for every year folder that holds the file, and the owner cell
 names the year file that owns the value. The rule prose around the block
-stays hand-written.
+stays hand-written. A phase 003 split moves the subsections into the general
+folder, one file per subsection, so the scan reads and writes the block in
+the general file when the tree holds one.
 
 A generated block is fenced by two marker lines that each stand alone:
 
@@ -179,7 +184,22 @@ FILE_DRIFT_ID = "generated-content"
 # topic file names stay the part that carries the topic.
 YEAR_README_RE = re.compile(r"^(?:.*/)?(\d{4})/README\.md$")
 YEAR_PART_RE = re.compile(r"^\d{4}$")
+# WHY: a phase 003 split keeps one year topic as a folder of four part files,
+# each with a fixed section range. The flat shape keeps every section in one
+# file, so a section lookup falls back to the topic path.
+TOPIC_PART_NAMES = ("figures.md", "rules.md", "examples.md", "notes.md")
+TOPIC_PART_BY_SECTION = {
+    1: "figures.md",
+    2: "figures.md",
+    3: "rules.md",
+    4: "examples.md",
+    5: "notes.md",
+    6: "notes.md",
+    7: "notes.md",
+    8: "notes.md",
+}
 TOPIC_ORDER_FILE = "dutch-tax-rules.md"
+GENERAL_DIR_NAME = "general"
 TOPIC_ORDER_HEADING = "Topic files in every year folder"
 TOPIC_NAME_PATTERN = r"[A-Za-z0-9._-]+\.md"
 TOPIC_FILES_HEADING = "TOPIC FILES"
@@ -1043,6 +1063,63 @@ def year_topic_path(files: Dict[str, Dict[str, Any]], year: str, name: str) -> O
     return flat if flat is not None else nested
 
 
+def topic_section_path(
+    files: Dict[str, Dict[str, Any]], topic_path: str, section: int
+) -> str:
+    """Return the part of one topic that holds a section.
+
+    The flat shape keeps every section in one file. The split shape keeps the
+    topic as a folder of four part files, so a caller reads and links the part
+    that carries the section it needs.
+
+    Args:
+        files: File records keyed by relative path.
+        topic_path: Carrier path from year_topic_path().
+        section: Section number.
+
+    Returns:
+        The path of the part relative to the references root, or the topic
+        path itself when the tree holds no such part.
+    """
+    part = TOPIC_PART_BY_SECTION.get(section)
+    if part is None or os.path.basename(topic_path) not in TOPIC_PART_NAMES:
+        return topic_path
+    candidate = os.path.join(os.path.dirname(topic_path), part).replace(os.sep, "/")
+    return candidate if candidate in files else topic_path
+
+
+def section_holder(
+    files: Dict[str, Dict[str, Any]], path: str, marker: str
+) -> Optional[str]:
+    """Return the file that holds one anchor marker.
+
+    The flat shape keeps a topic in one file, so that file is the holder. The
+    split shape keeps the topic as a folder of four parts, so a link to the
+    original topic name resolves to the part that carries the marker.
+
+    Args:
+        files: File records keyed by relative path.
+        path: Link target relative to the references root.
+        marker: Anchor text to look for.
+
+    Returns:
+        The path of the holder relative to the references root, or None when
+        no file in the tree holds the marker.
+    """
+    direct = files.get(path)
+    if direct is not None and marker in direct["text"]:
+        return path
+    if not path.endswith(MARKDOWN_SUFFIX):
+        return None
+    prefix = path[: -len(MARKDOWN_SUFFIX)] + "/"
+    for candidate in sorted(files):
+        if not candidate.startswith(prefix) or "/" in candidate[len(prefix):]:
+            continue
+        if marker in files[candidate]["text"]:
+            return candidate
+    return None
+
+
 def is_guide_path(path: str) -> bool:
     """Tell whether a reference path is the reference guide.
 
@@ -1056,6 +1133,23 @@ def is_guide_path(path: str) -> bool:
         True for the file that carries the topic order and section 3.
     """
     return os.path.basename(path) == TOPIC_ORDER_FILE
+
+
+def is_general_path(path: str) -> bool:
+    """Tell whether a reference path is a general topic file.
+
+    A phase 003 split moves the subsections of section 3 of the reference
+    guide into a general folder, one file per subsection. The flat shape
+    keeps every subsection in the guide.
+
+    Args:
+        path: Path relative to the references root.
+
+    Returns:
+        True for a markdown file directly inside a general folder.
+    """
+    parts = path.split("/")
+    return len(parts) >= 2 and parts[-2] == GENERAL_DIR_NAME and path.endswith(MARKDOWN_SUFFIX)
 
 
 def canonical_topics(files: Dict[str, Dict[str, Any]]) -> List[str]:
@@ -1362,19 +1456,20 @@ def change_snippet(bullet: str) -> str:
     return text.replace("|", "\\|")
 
 
-def changes_row(name: str, bullets: List[str]) -> str:
+def changes_row(name: str, link: str, bullets: List[str]) -> str:
     """Render one change row of a year note.
 
     Args:
         name: Topic file name.
+        link: Path of the part that holds section 5, relative to the note.
         bullets: Section 5 bullets of the topic file.
 
     Returns:
         The row line, without a line ending. The first cell links to the
-        section 5 anchor of the topic file.
+        section 5 anchor of the part that holds it.
     """
     snippet = change_snippet(bullets[0]) if bullets else ""
-    return "| [%s](%s#%s) | %d | %s |" % (name, name, CHANGE_FRAGMENT, len(bullets), snippet)
+    return "| [%s](%s#%s) | %d | %s |" % (name, link, CHANGE_FRAGMENT, len(bullets), snippet)
 
 
 def changes_anchor(file: Dict[str, Any]) -> Optional[int]:
@@ -1424,13 +1519,15 @@ def changes_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
         if match is None:
             continue
         year = match.group(1)
+        note_dir = os.path.dirname(path)
         rows: List[str] = []
         for name in topics:
             topic_path = year_topic_path(by_path, year, name)
             if topic_path is None:
                 fail("missing %s, every year folder holds each topic file" % ("%s/%s" % (year, name)))
-            topic = by_path[topic_path]
-            rows.append(changes_row(name, topic_change_bullets(topic["text"])))
+            holder = topic_section_path(by_path, topic_path, CHANGE_SECTION_NUMBER)
+            link = os.path.relpath(holder, note_dir).replace(os.sep, "/") if note_dir else holder
+            rows.append(changes_row(name, link, topic_change_bullets(by_path[holder]["text"])))
         bodies[path] = table_text(CHANGES_TABLE_HEADER, rows, CHANGES_TABLE_SEPARATOR)
     return bodies
 
@@ -1460,16 +1557,22 @@ def last_link_target(text: str) -> str:
     return targets[-1] if targets else ""
 
 
-def overview_bullet(year: str, bullet: str) -> str:
+def overview_bullet(
+    year: str, bullet: str, by_path: Dict[str, Dict[str, Any]], overview_dir: str
+) -> str:
     """Return one authored bullet with its topic link aimed at the year folder.
 
     A bullet in a year note links to its topic file as a sibling. The overview
     sits beside the year folders, so the same link needs the year folder in
-    front. Every other part of the bullet stays as it is.
+    front and the target resolves against the overview folder. A link that
+    names a split original moves onto the part that holds the anchor. Every
+    other part of the bullet stays as it is.
 
     Args:
         year: Year folder of the note.
         bullet: Authored bullet of the note.
+        by_path: File records keyed by relative path.
+        overview_dir: Folder of the overview relative to the references root.
 
     Returns:
         The bullet for the overview.
@@ -1481,8 +1584,12 @@ def overview_bullet(year: str, bullet: str) -> str:
     path, separator, fragment = match.group(1).partition("#")
     if not path or separator != "#" or fragment != CHANGE_FRAGMENT:
         return bullet
-    resolved = os.path.normpath(os.path.join(year, path)).replace(os.sep, "/")
-    return bullet[:match.start()] + "](%s#%s)" % (resolved, fragment) + bullet[match.end():]
+    resolved = os.path.normpath(os.path.join(overview_dir, year, path)).replace(os.sep, "/")
+    holder = section_holder(by_path, resolved, '<a id="%s"></a>' % fragment)
+    if holder is None:
+        holder = resolved
+    link = os.path.relpath(holder, overview_dir).replace(os.sep, "/") if overview_dir else holder
+    return bullet[:match.start()] + "](%s#%s)" % (link, fragment) + bullet[match.end():]
 
 
 def year_note_years(files: List[Dict[str, Any]]) -> List[str]:
@@ -1539,6 +1646,7 @@ def year_changes_text(files: List[Dict[str, Any]]) -> str:
         match = CHANGE_NOTE_RE.match(path)
         if match is not None:
             notes[match.group(1)] = path
+    overview_dir = os.path.dirname(year_changes_path(files))
     for year in year_note_years(files):
         note = by_path[notes[year]]
         bullets = authored_bullets(note["text"])
@@ -1547,7 +1655,7 @@ def year_changes_text(files: List[Dict[str, Any]]) -> str:
         lines.append("Path: [%s/%s](%s/%s)" % (year, CHANGE_NOTE_NAME, year, CHANGE_NOTE_NAME))
         lines.append("")
         for bullet in bullets:
-            lines.append("- %s" % overview_bullet(year, bullet))
+            lines.append("- %s" % overview_bullet(year, bullet, by_path, overview_dir))
         if bullets:
             lines.append("")
     return "\n".join(lines).rstrip("\n") + "\n"
@@ -1589,13 +1697,17 @@ def change_note_problems(files: List[Dict[str, Any]]) -> List[str]:
             resolved = ""
             if path_part and separator == "#":
                 resolved = os.path.normpath(os.path.join(note_dir, path_part)).replace(os.sep, "/")
-            topic = by_path.get(resolved) if resolved.startswith(note_dir + "/") else None
+            marker = '<a id="%s"></a>' % CHANGE_FRAGMENT
+            topic_path = None
+            if resolved.startswith(note_dir + "/"):
+                topic_path = section_holder(by_path, resolved, marker)
+            topic = by_path[topic_path] if topic_path is not None else None
             if (
                 not target
                 or separator != "#"
                 or fragment != CHANGE_FRAGMENT
                 or topic is None
-                or '<a id="%s"></a>' % CHANGE_FRAGMENT not in topic["text"]
+                or marker not in topic["text"]
             ):
                 problems.append(
                     "changes %s bullet %d link %s does not resolve"
@@ -1636,27 +1748,17 @@ def guide_file(files: List[Dict[str, Any]]) -> Dict[str, Any]:
     fail("missing %s, section 3 lives in it" % TOPIC_ORDER_FILE)
 
 
-def section_three_specs(guide: Dict[str, Any]) -> Dict[str, Any]:
-    """Map the subsections of section 3 and the year files they name.
-
-    A subsection names its year files on a line that starts with the year
-    files marker. The block of a subsection sits right after that line, so the
-    end offset of the line is its anchor.
+def section_three_headings(text: str) -> List[Dict[str, Any]]:
+    """Map the H2 and H3 headings of one file outside frontmatter and code.
 
     Args:
-        guide: File record of the reference guide.
+        text: File text.
 
     Returns:
-        The offset span of section 3 and one record per subsection, with the
-        block id, the heading title, the named file names and the anchor
-        offset.
-
-    Raises:
-        SystemExit: If section 3 is missing, a subsection holds no year files
-            line, a year files line names no file, or two subsections share a
-            block id.
+        One record per H2 and H3 heading with its span index, its level, its
+        text and its start offset.
     """
-    spans = line_spans(guide["text"])
+    spans = line_spans(text)
     headings: List[Dict[str, Any]] = []
     in_code = False
     frontmatter_stop = frontmatter_end(spans)
@@ -1675,48 +1777,123 @@ def section_three_specs(guide: Dict[str, Any]) -> Dict[str, Any]:
         level = len(match.group(1))
         if level in (2, 3):
             headings.append({"index": index, "level": level, "text": match.group(2).strip(), "start": start})
-    section: Dict[str, Any] = {}
-    for position, heading in enumerate(headings):
-        if heading["level"] != 2:
-            continue
-        number, _ = heading_parts(heading["text"])
-        if number != SECTION_THREE_NUMBER:
-            continue
-        after = headings[position + 1:]
-        stop = next((index for index, item in enumerate(after) if item["level"] == 2), len(after))
-        section = {
-            "start": heading["start"],
-            "end": after[stop]["start"] if stop < len(after) else len(guide["text"]),
-            "headings": after[:stop],
-        }
-        break
-    if not section:
-        fail("no section %d heading in %s" % (SECTION_THREE_NUMBER, guide["path"]))
-    section_stop = next((index for index, span in enumerate(spans) if span[2] >= section["end"]), len(spans))
-    subsections = [item for item in section["headings"] if item["level"] == 3]
+    return headings
+
+
+def source_section_three_specs(
+    source: Dict[str, Any], only_section_three: bool, seen: Set[str]
+) -> List[Dict[str, Any]]:
+    """Map the section 3 subsections of one file.
+
+    The flat shape keeps every subsection in the reference guide, so only the
+    H3 headings inside section 3 count. The split shape keeps one subsection
+    per general file, so every numbered H3 heading counts.
+
+    Args:
+        source: File record to scan.
+        only_section_three: True for the flat shape.
+        seen: Block ids already recorded, updated in place.
+
+    Returns:
+        One record per subsection, with the block id, the heading title, the
+        named file names, the path of the file that holds it, the anchor
+        offset and the offset span of the subsection.
+
+    Raises:
+        SystemExit: If a subsection holds no year files line, a year files
+            line names no file, or two subsections share a block id.
+    """
+    text = source["text"]
+    spans = line_spans(text)
+    headings = section_three_headings(text)
+    scan_stop = len(spans)
+    if only_section_three:
+        candidates: List[Dict[str, Any]] = []
+        for position, heading in enumerate(headings):
+            if heading["level"] != 2:
+                continue
+            number, _ = heading_parts(heading["text"])
+            if number != SECTION_THREE_NUMBER:
+                continue
+            after = headings[position + 1:]
+            stop = next((index for index, item in enumerate(after) if item["level"] == 2), len(after))
+            end = after[stop]["start"] if stop < len(after) else len(text)
+            scan_stop = next((index for index, span in enumerate(spans) if span[2] >= end), len(spans))
+            candidates = [item for item in after[:stop] if item["level"] == 3]
+            break
+        else:
+            fail("no section %d heading in %s" % (SECTION_THREE_NUMBER, source["path"]))
+    else:
+        candidates = [item for item in headings if item["level"] == 3]
     specs: List[Dict[str, Any]] = []
-    seen: Set[str] = set()
-    for position, heading in enumerate(subsections):
+    for position, heading in enumerate(candidates):
         match = SECTION_THREE_HEADING_RE.match(heading["text"])
         if not match:
             continue
-        last = subsections[position + 1]["index"] if position + 1 < len(subsections) else section_stop
+        last = candidates[position + 1]["index"] if position + 1 < len(candidates) else scan_stop
         line = next(
             (span for span in spans[heading["index"] + 1:last] if span[1].startswith(YEAR_FILES_MARKER)), None
         )
         if line is None:
-            fail("no %s line in %s of %s" % (YEAR_FILES_MARKER, heading["text"], guide["path"]))
+            fail("no %s line in %s of %s" % (YEAR_FILES_MARKER, heading["text"], source["path"]))
         names = YEAR_FILES_NAME_RE.findall(line[1])
         if not names:
-            fail("no year file name on line %d of %s" % (line[0], guide["path"]))
+            fail("no year file name on line %d of %s" % (line[0], source["path"]))
         block_id = SECTION_BLOCK_PREFIX + slugify(match.group(1))
         if block_id in seen:
-            fail("duplicate block id %s in %s" % (block_id, guide["path"]))
+            fail("duplicate block id %s in %s" % (block_id, source["path"]))
         seen.add(block_id)
-        specs.append({"id": block_id, "title": match.group(1), "files": names, "anchor": line[3]})
-    if not specs:
+        stop = next(
+            (item["start"] for item in headings if item["start"] > heading["start"] and item["level"] <= 3),
+            len(text),
+        )
+        specs.append(
+            {
+                "id": block_id,
+                "title": match.group(1),
+                "files": names,
+                "path": source["path"],
+                "anchor": line[3],
+                "start": heading["start"],
+                "end": stop,
+            }
+        )
+    return specs
+
+
+def section_three_specs(files: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Map the subsections of section 3 and the year files they name.
+
+    A subsection names its year files on a line that starts with the year
+    files marker. The block of a subsection sits right after that line, so the
+    end offset of the line is its anchor. The flat shape keeps every
+    subsection in the reference guide. The split shape moves them into the
+    general folder, one subsection per file, so the scan reads those files
+    when the tree holds them.
+
+    Args:
+        files: Result of load_files().
+
+    Returns:
+        One record per subsection, with the block id, the heading title, the
+        named file names, the path of the file that holds it, the anchor
+        offset and the offset span of the subsection.
+
+    Raises:
+        SystemExit: If section 3 is missing, a subsection holds no year files
+            line, a year files line names no file, or two subsections share a
+            block id.
+    """
+    guide = guide_file(files)
+    general = sorted((file for file in files if is_general_path(file["path"])), key=lambda file: file["path"])
+    sources = general if general else [guide]
+    subsections: List[Dict[str, Any]] = []
+    seen: Set[str] = set()
+    for source in sources:
+        subsections.extend(source_section_three_specs(source, not general, seen))
+    if not subsections:
         fail("no subsection with a %s line in %s" % (YEAR_FILES_MARKER, guide["path"]))
-    return {"start": section["start"], "end": section["end"], "subsections": specs}
+    return {"subsections": subsections}
 
 
 def section_three_row(year: str, path: str, figure: Dict[str, str], link: str) -> str:
@@ -1757,15 +1934,13 @@ def section_three_bodies(by_path: Dict[str, Dict[str, Any]], spec: Dict[str, Any
         spec: Subsection record from section_three_specs().
 
     Returns:
-        The block body keyed by the guide path, empty when no named file is in
-        the tree.
+        The block body keyed by the path of the file that holds the
+        subsection, empty when no named file is in the tree.
     """
     years = sorted({year for year in (year_of(path) for path in by_path) if year is not None})
     rows: List[str] = []
-    guide = next((path for path in sorted(by_path) if is_guide_path(path)), None)
-    if guide is None:
-        return {}
-    guide_dir = os.path.dirname(guide)
+    holder = spec["path"]
+    holder_dir = os.path.dirname(holder)
     for name in spec["files"]:
         for year in years:
             path = year_topic_path(by_path, year, name)
@@ -1774,14 +1949,14 @@ def section_three_bodies(by_path: Dict[str, Dict[str, Any]], spec: Dict[str, Any
             file = by_path.get(path)
             if file is None:
                 continue
-            link = os.path.relpath(path, guide_dir).replace(os.sep, "/") if guide_dir else path
+            link = os.path.relpath(path, holder_dir).replace(os.sep, "/") if holder_dir else path
             _, figures = headline_figures({"path": path, "figures": key_figures(file)})
             for figure in figures:
                 rows.append(section_three_row(year, path, figure, link))
     if not rows:
         return {}
     table = table_text(SECTION_THREE_HEADER, rows, SECTION_THREE_SEPARATOR)
-    return {guide: SECTION_THREE_SENTENCE + "\n\n" + table}
+    return {holder: SECTION_THREE_SENTENCE + "\n\n" + table}
 
 
 def section_three_builder(spec: Dict[str, Any]) -> BlockBuilder:
@@ -1808,11 +1983,11 @@ def section_three_anchor(spec: Dict[str, Any]) -> BlockAnchor:
 
     Returns:
         An anchor that returns the offset just after the year files line of
-        the subsection, and None for every file but the guide.
+        the subsection, and None for every file but the one that holds it.
     """
 
     def anchor(file: Dict[str, Any]) -> Optional[int]:
-        if not is_guide_path(file["path"]):
+        if file["path"] != spec["path"]:
             return None
         return spec["anchor"]
 
@@ -1932,6 +2107,30 @@ def find_block_body(text: str, block_id: str) -> Optional[Tuple[int, int]]:
         match = FENCE_END_RE.match(content)
         if match and match.group(1) == block_id:
             return body_start, start
+    return None
+
+
+def find_block_lines(text: str, block_id: str) -> Optional[Tuple[int, int]]:
+    """Return the whole line span of one fence pair inside a text.
+
+    Args:
+        text: File text.
+        block_id: Fence id of the block.
+
+    Returns:
+        The start offset of the start marker line and the end offset of the
+        end marker line, or None when the text holds no pair with that id.
+    """
+    start: Optional[int] = None
+    for _, content, line_start, line_end in line_spans(text):
+        if start is None:
+            match = FENCE_START_RE.match(content)
+            if match and match.group(1) == block_id:
+                start = line_start
+            continue
+        match = FENCE_END_RE.match(content)
+        if match and match.group(1) == block_id:
+            return start, line_end
     return None
 
 
@@ -2512,9 +2711,70 @@ def render_files(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]])
         # WHY: the latest replacement goes first, so every earlier offset stays valid.
         for start, end, body in sorted(replacements, reverse=True):
             text = text[:start] + body + text[end:]
+        if file["path"].endswith(MARKDOWN_SUFFIX):
+            text = drop_stale_navigation(file, text)
         rendered[file["path"]] = text
     rendered[year_changes_path(files)] = year_changes_text(files)
     return rendered
+
+
+def remove_offset_range(text: str, start: int, end: int) -> str:
+    """Return text without the bytes of one whole line range.
+
+    The blank line run at the seam is cut to one blank line, so a removed
+    block leaves the spacing a file without the block has.
+
+    Args:
+        text: File text.
+        start: Start offset of the first line to remove.
+        end: End offset of the last line to remove.
+
+    Returns:
+        The remaining text.
+    """
+    before = text[:start]
+    after = text[end:]
+    tail = len(before) - len(before.rstrip("\n"))
+    lead = len(after) - len(after.lstrip("\n"))
+    head = before[: len(before) - tail]
+    rest = after[lead:]
+    if not head:
+        return rest
+    if not rest:
+        return head if head.endswith("\n") else head + "\n"
+    if tail >= 2 or lead >= 1:
+        return head + "\n\n" + rest
+    return head + "\n" + rest
+
+
+def drop_stale_navigation(file: Dict[str, Any], text: str) -> str:
+    """Remove the read plan and section list from a file that no longer needs them.
+
+    A file that shrinks below the byte limit keeps the fence pair a write left
+    behind, so the pair is stale. The pair and its body are removed and the
+    blank line run at the seam is cut to one blank line.
+
+    Args:
+        file: File record from load_files().
+        text: File text with every block body in place.
+
+    Returns:
+        The text without a stale navigation pair.
+    """
+    target = {"path": file["path"], "text": text}
+    removals: List[Tuple[int, int]] = []
+    for block in file["blocks"]:
+        if block["id"] == NAV_BLOCK_ID and not nav_target(target):
+            span = find_block_lines(text, block["id"])
+            if span is not None:
+                removals.append(span)
+        elif block["id"] == TOC_BLOCK_ID and not (is_guide_path(file["path"]) and nav_target(target)):
+            span = find_block_lines(text, block["id"])
+            if span is not None:
+                removals.append(span)
+    for start, end in sorted(removals, reverse=True):
+        text = remove_offset_range(text, start, end)
+    return text
 
 
 def expected_index(files: List[Dict[str, Any]], rendered: Dict[str, str]) -> str:
@@ -2565,6 +2825,12 @@ def budget_problems(files: List[Dict[str, Any]]) -> List[str]:
         budget = min(BUDGET_BYTE_LIMIT, size * BUDGET_PERCENT // 100)
         for block in file["blocks"]:
             if block["id"] not in NAVIGATION_BLOCK_IDS:
+                continue
+            # WHY: a stale pair is reported as drift, not as a budget problem,
+            # because the write removes the pair and its body.
+            if block["id"] == NAV_BLOCK_ID and not nav_target(file):
+                continue
+            if block["id"] == TOC_BLOCK_ID and not (is_guide_path(file["path"]) and nav_target(file)):
                 continue
             body = len(block["body"].encode("utf-8"))
             if body > budget:
@@ -2763,38 +3029,39 @@ def owner_rows(blocks: List[Dict[str, Any]], block_id: str) -> Set[Tuple[str, st
     return rows
 
 
-def overlap_report(files: List[Dict[str, Any]], guide: Dict[str, Any], section: Dict[str, Any]) -> int:
+def overlap_report(files: List[Dict[str, Any]], section: Dict[str, Any]) -> int:
     """Report the headline values that section 3 restates in its prose.
 
     A headline value is one of the first two KEY FIGURES rows of one topic
     file in one year folder, so it is one of the rows that the year README
     HEADLINE FIGURES table shows. It counts as restated when its value text
-    appears literally on a prose line of section 3, outside every generated
-    block. A restated value is owned when the subsection that names its topic
-    file holds a generated row for the same year and item. The report writes
-    nothing and exits 0 either way.
+    appears literally on a prose line of its subsection, outside every
+    generated block. A restated value is owned when the subsection that names
+    its topic file holds a generated row for the same year and item. The
+    report writes nothing and exits 0 either way.
 
     Args:
         files: Result of load_files().
-        guide: File record of the reference guide.
         section: Result of section_three_specs().
 
     Returns:
         Zero.
     """
     by_path = {file["path"]: file for file in files}
-    fenced: Set[int] = set()
-    for block in guide["blocks"]:
-        fenced.update(range(block["start_line"], block["end_line"] + 1))
-    prose = [
-        content
-        for number, content, start, _ in line_spans(guide["text"])
-        if section["start"] <= start < section["end"] and number not in fenced
-    ]
+    prose: Dict[str, List[str]] = {}
     owner_of: Dict[str, str] = {}
     owned: Dict[str, Set[Tuple[str, str, str]]] = {}
     for spec in section["subsections"]:
-        owned[spec["id"]] = owner_rows(guide["blocks"], spec["id"])
+        holder = by_path[spec["path"]]
+        fenced: Set[int] = set()
+        for block in holder["blocks"]:
+            fenced.update(range(block["start_line"], block["end_line"] + 1))
+        prose[spec["id"]] = [
+            content
+            for number, content, start, _ in line_spans(holder["text"])
+            if spec["start"] <= start < spec["end"] and number not in fenced
+        ]
+        owned[spec["id"]] = owner_rows(holder["blocks"], spec["id"])
         for name in spec["files"]:
             owner_of.setdefault(name, spec["id"])
     years = sorted({year for year in (year_of(path) for path in by_path) if year is not None})
@@ -2812,10 +3079,10 @@ def overlap_report(files: List[Dict[str, Any]], guide: Dict[str, Any], section: 
             _, figures = headline_figures({"path": path, "figures": key_figures(file)})
             for figure in figures:
                 total += 1
-                if not figure["value"] or not any(figure["value"] in line for line in prose):
+                block_id = owner_of.get(name, "")
+                if not figure["value"] or not any(figure["value"] in line for line in prose.get(block_id, [])):
                     continue
                 restated += 1
-                block_id = owner_of.get(name, "")
                 if (path, year, figure["item"]) not in owned.get(block_id, set()):
                     unowned += 1
                     print("overlap unowned %s %s %s" % (year, path, figure["item"]))
@@ -2993,13 +3260,12 @@ def main(argv: List[str]) -> int:
     if not os.path.isdir(REFERENCES_ROOT):
         fail("references folder not found: %s" % REFERENCES_ROOT)
     files = load_files()
-    guide = guide_file(files)
-    section = section_three_specs(guide)
+    section = section_three_specs(files)
     register_section_three_blocks(section)
     if args.init:
         return init_fences(files)
     if args.overlap:
-        return overlap_report(files, guide, section)
+        return overlap_report(files, section)
     bodies = block_bodies(files)
     rendered = render_files(files, bodies)
     if args.check:

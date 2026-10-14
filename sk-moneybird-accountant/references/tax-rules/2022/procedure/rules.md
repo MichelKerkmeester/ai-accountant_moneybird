@@ -1,0 +1,200 @@
+---
+title: "Aangifte en procedure 2022: Rules"
+description: "Filing deadlines, uitstel, voorlopige aanslag, belastingrente, navordering, bezwaar, bewaarplicht and KVK and Belastingdienst registration duties for tax year 2022. This file holds the rules part."
+nav_label: "Aangifte en procedure rules"
+trigger_phrases:
+  - "aangifte en procedure 2022"
+  - "aangifte inkomstenbelasting 2022 deadline"
+  - "btw aangifte 2022 uiterste datum"
+  - "Aangifte en procedure 2022 rules"
+importance_tier: important
+contextType: research
+version: 1.0.0.0
+---
+
+# Aangifte en procedure 2022: Rules
+
+**Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
+
+Part 2 of 4 of the Aangifte en procedure 2022 topic.
+
+- [figures.md](figures.md): sections 1 and 2.
+- [examples.md](examples.md): section 4.
+- [notes.md](notes.md): sections 5 to 8.
+
+Year overview: [README.md](../README.md).
+
+## 3. HOW IT WORKS IN 2022
+
+<a id="3-how-it-works"></a>
+
+### IB return 2022 filing deadline
+
+The 2022 income tax return had to arrive before 1 May 2023 ([archived Belastingdienst page](https://web.archive.org/web/20230305/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen)). The general rule is that the return must arrive before the date in the aangiftebrief (the letter that invites the return), often 1 May ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen)). The archived page for the 2022 return also records that filing before 1 April gave a message before 1 July ([archived page](https://web.archive.org/web/20230305/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen)). AWR art. 9 lid 1 provides that for aanslagbelastingen (taxes set by assessment) the return is filed within a term set by the inspecteur of at least one month after the invitation, and art. 9 lid 2 lets the inspecteur extend that term under conditions ([AWR](https://wetten.overheid.nl/BWBR0002320/2026-01-01)).
+
+### IB filing period 2022 opens
+
+The filing period opens on 1 March, so the 2022 return could be filed from 1 March 2023 ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen)). The deadline itself is the date in the aangiftebrief, for the 2022 return before 1 May 2023 ([archived page](https://web.archive.org/web/20230305/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen)).
+
+### IB return 2022 with uitstel
+
+With a granted uitstel the 2022 return was due before 1 September 2023 ([archived definitive aanslag page](https://web.archive.org/web/20230401/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag)). Uitstel gives 4 months extra on top of the normal filing date ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/programmas_en_formulieren/aanvraag-uitstel-aangifte-inkomstenbelasting)). The uitstel shifts the deadline, not the start of belastingrente.
+
+### Uitstel request for the IB return
+
+Uitstel must be requested before the filing date, in the annual period before 1 May ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/kan-ik-nog-uitstel-aanvragen-belastingaangifte)). A granted uitstel gives 4 months extra, to 1 September, and uitstel usually means belastingrente ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/programmas_en_formulieren/aanvraag-uitstel-aangifte-inkomstenbelasting)). The form can be used only for the first uitstel request, and the fiscal partner must request separately ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/programmas_en_formulieren/aanvraag-uitstel-aangifte-inkomstenbelasting)). So the interaction with belastingrente is direct: using the extra 4 months keeps the rente period running from 1 July after the tax year.
+
+### Uitstel channel for the IB return
+
+Uitstel can be requested online in Mijn Belastingdienst until 1 May for someone who received an aangiftebrief, giving uitstel to 1 September ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/programmas_en_formulieren/aanvraag-uitstel-aangifte-inkomstenbelasting)). The uitstel page states that online is not possible, and read in full that page addresses the period after 1 May and a filing date other than 1 May, where the paper form sent by post is the route ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/kan-ik-nog-uitstel-aanvragen-belastingaangifte)). Both are current Belastingdienst text, so the working reading is online until 1 May for the regular 1 May date, and the paper form otherwise.
+
+### Aangiftebrief and AWR art. 9 filing term
+
+The return must arrive before the date in the aangiftebrief, often 1 May ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen)). AWR art. 9 lid 1: for aanslagbelastingen the return is filed within a term set by the inspecteur of at least one month after the invitation. AWR art. 9 lid 2 lets the inspecteur extend that term under conditions. The text is the same in the 1 January 2020 and 1 January 2026 versions ([AWR 2020](https://wetten.overheid.nl/BWBR0002320/2020-01-01), [AWR 2026](https://wetten.overheid.nl/BWBR0002320/2026-01-01)).
+
+### Filing without an invitation for tax year 2022
+
+Without an aangiftebrief a return can still be filed up to 5 years back, by 31 December of the fifth year after the tax year ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aangifte_doen/hoeveel-jaar-terug-belastingaangifte-doen)). For tax year 2022 that ran until 31 December 2027. This route is separate from the definitive assessment term and from the navorderingstermijn.
+
+### Definitive aanslag 2022 latest
+
+The official example for 2022: a return filed before 1 May 2023 gives the definitive aanslag (final assessment) at the latest 31 December 2025. With 4 months uitstel the return is due before 1 September 2023 and the aanslag at the latest 30 April 2026 ([archived page](https://web.archive.org/web/20230401/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag)). The same source notes that a voorlopige aanslag does not stop this term.
+
+### Definitive assessment term
+
+AWR art. 11 lid 3: the power to set the aanslag lapses three years after the belastingschuld arose, extended by the duration of filing uitstel ([AWR 2020](https://wetten.overheid.nl/BWBR0002320/2020-01-01), [AWR 2026](https://wetten.overheid.nl/BWBR0002320/2026-01-01)). The Belastingdienst counts the 3 years from 1 January after the tax year ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag)). If within the last six months of that term a request to be invited to file under art. 6 lid 2 or 3 is made, or data under art. 9 lid 4 are supplied, the term is extended by six months ([AWR 2026](https://wetten.overheid.nl/BWBR0002320/2026-01-01)).
+
+### Aanslaggrens and teruggaafgrens 2022
+
+Tax is only due if the amount is higher than the aanslaggrens and a refund is only paid if it is higher than the teruggaafgrens ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag)). For 2022 the current table prints € 48 and € 15. Under the older wording, used on the page up to the 2023 captures, the amounts were € 49 and € 16 with gelijk aan of meer dan (equal to or more than). For whole-euro amounts the two forms describe the same threshold, which is a reading of the two captures and not a sentence on the page itself. The same page states that monthly refunds received through a voorlopige aanslag before year end count toward the grens, that a paid voorlopige aanslag does not count, and that a refund received after filing does not count.
+
+### IB boetes 2022
+
+For 2022 the verzuimboete (failure-to-file penalty) for income tax was € 385, up to a maximum of € 5.514 ([archived Belastingdienst page](https://web.archive.org/web/20220517/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete)). Not requesting a return could lead to a penalty of € 2.757, and the betaalverzuimboete (payment default penalty) was up to € 5.514 ([archived page](https://web.archive.org/web/20220517/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete)).
+
+### IB boete route and vergrijpboete
+
+After the income tax deadline the Belastingdienst sends a herinnering (reminder), then an aanmaning (formal demand) with 10 werkdagen to respond. Filing after the aanmaning term gives the verzuimboete. The Belastingdienst can stop toeslagen and the voorlopige aanslag, and no return at all gives an ambtshalve aanslag (an assessment made without a return) plus a verzuimboete ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wat-gebeurt-er-als-ik-geen-aangifte-doe-of-te-laat-of-onvolledig)). Intentional non-filing or an intentionally wrong return gives a vergrijpboete (intent penalty), also with a navorderingsaanslag. The rates are 25% for grove schuld (gross negligence), 50% for opzet (intent), 75% and 150% for box 3, and 100% and 300% for aggravated cases ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete)). No boete applies when the person died on or after the date of the aangiftebrief. For IB and Vpb the request for a return must be made within 6 months after the belastingschuld arose, with 2 weeks coulance ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete)).
+
+### Voorlopige aanslag 2022
+
+A voorlopige aanslag is an estimate based on known data such as the previous return, and changing it is not mandatory ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/in-welke-situaties-moet-ik-mijn-voorlopige-aanslag-wijzigen)). Reasons to change it include buying a home, changing mortgage interest, higher or lower income, a change in business profit and stopping the business (stakingswinst, the profit on ending the business) ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/in-welke-situaties-moet-ik-mijn-voorlopige-aanslag-wijzigen)).
+
+### Changing the expected profit
+
+Entrepreneurs change the expected profit in the Winst uit onderneming (business profit) screen ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/in-welke-situaties-moet-ik-mijn-voorlopige-aanslag-wijzigen)). Amounts paid or received are settled in the income tax return ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/in-welke-situaties-moet-ik-mijn-voorlopige-aanslag-wijzigen)). So a change does not replace the return, it only changes the pre-payments or pre-refunds.
+
+### Deadline to request or change the voorlopige aanslag
+
+A voorlopige aanslag can be requested or changed usually until 1 May of the next year ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/tot-wanneer-voorlopige-aanslag-aanvragen-wijzigen)). With an aangiftebrief the option runs until the filing date or the uitstel date, and no longer after filing ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/tot-wanneer-voorlopige-aanslag-aanvragen-wijzigen)).
+
+### Payment terms of assessments
+
+Invorderingswet 1990 art. 9 gives the payment terms, and the text is the same on 1 January 2020, 2024, 2025 and 2026 ([Invorderingswet 2020](https://wetten.overheid.nl/BWBR0004770/2020-01-01), [Invorderingswet 2026](https://wetten.overheid.nl/BWBR0004770/2026-01-01)). An aanslag is invorderbaar (collectable) 6 weeks after the date of the aanslagbiljet. A navorderingsaanslag is collectable 1 month after, and a naheffingsaanslag 14 days after. A voorlopige aanslag IB dated in the tax year is payable in as many equal monthly termijnen (instalments) as months remain after the month of the date, the first one month after the date. A voorlopige aanslag dated before the tax year is payable in 12 monthly termijnen from the end of January. A voorlopige aanslag with a refund is paid out monthly from the month of the date ([Invorderingswet 2026](https://wetten.overheid.nl/BWBR0004770/2026-01-01)).
+
+### Belastingrente IB and btw 2022
+
+The belastingrente (tax interest) for income tax and btw was 4% for the whole of 2022 ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente)). This sits inside the period from 1 October 2020 to 30 June 2023 in which the rate for all taxes except Vpb and toeslagen was 4%.
+
+### Belastingrente on tax year 2022 IB
+
+Belastingrente on the tax year 2022 income tax runs from 1 July 2023 at 6% ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_inkomstenbelasting)). For days in 2024 the rate is 7,5%, which follows from the rate table. The rente period starts on 1 July after the tax year even when uitstel was granted.
+
+### Belastingrente rate table and rate-setting method
+
+The rate table for all taxes except Vpb and toeslagen: 4% from 1 April 2014 to 31 May 2020, 0,01% from 1 June 2020 to 30 September 2020 (for the inkomstenbelasting the reduction started 1 July 2020), 4% from 1 October 2020 to 30 June 2023, 6% from 1 July 2023 to 31 December 2023, 7,5% in 2024, 6,5% in 2025 and 5% from 1 January 2026 ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente)). From 1 January 2024 the rate is set once a year for 1 January of the next year from the last ECB herfinancieringsrente published before 1 November, plus 3 points for these taxes, rounded to half percentages, minimum 4,5%. For Vpb, bronbelasting, minimumbelasting and solidariteitsbijdrage the addition is 5,5 points, minimum 5,5% ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente)). The 2022 rate of 4% was not set under this method, which only applies from 1 January 2024.
+
+### Vpb belastingrente over 2022 and the mass objection
+
+After HR 16 January 2026 (ECLI:NL:HR:2026:59) the Vpb table from 2022 was aligned with the other taxes ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente)). The mass objection on the rate was granted for Vpb and similar taxes and rejected for income tax, btw and the other taxes ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/massaal-bezwaar-voor-de-hoogte-van-het-belastingrentepercentage)). This matters for a BV with a belastingrente charge over 2022, not for the sole trader's income tax or btw.
+
+### Belastingrente on income tax
+
+Belastingrente on income tax is charged when the return arrives on or after 1 May after the tax year, or when the aanslag deviates from the return, also if the return was filed before 1 May ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_inkomstenbelasting)). The period runs from 1 July after the tax year, also with uitstel, and ends 6 weeks after the aanslag date. When the aanslag follows the return unchanged it ends no later than 19 weeks after receipt of the return. For a navorderingsaanslag the period runs from 1 July after the tax year to 1 month after its date. There is no rente when the return is filed before 1 May and taken over unchanged ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_inkomstenbelasting)).
+
+### Belastingrente day count
+
+The calculation uses 30 days per month and 360 days per year, and the result is rounded down to whole euros ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_inkomstenbelasting)).
+
+### Belastingrente on btw
+
+Belastingrente on btw is charged on a naheffingsaanslag and on late payment ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_loonbelasting_btw_en_overdrachtsbelasting)). For late payment the period runs from 1 January after the tax year to the payment date. For a naheffingsaanslag it runs from 1 January after the tax year to 14 days after its date. No rente is charged for a voluntary correction within 3 months after the tax year or a late payment within 3 months after the end of the tax year. The rentestop extension to requested naheffingsaanslagen, where the period ends at most 10 weeks after receipt, applies from 1 January 2023 but is not yet in force for btw because it is technically not executable ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_loonbelasting_btw_en_overdrachtsbelasting)).
+
+### Btw belastingrente on 2022 quarters
+
+The official example: quarterly returns 2022 with an error found later. A suppletie before 1 April 2023 gives no belastingrente. One after 1 April 2023 gives rente from 1 January 2023 to 14 days after the naheffingsaanslag date ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_loonbelasting_btw_en_overdrachtsbelasting)). This makes the 3-month rule concrete for the 2022 quarters.
+
+### Btw filing and payment term
+
+AWR art. 10 lid 2: a return for a tijdvak (period) is filed within a term set by the inspecteur of at least one month after the end of the tijdvak. AWR art. 19 lid 1: the tax is paid within one month after the end of the tijdvak ([AWR](https://wetten.overheid.nl/BWBR0002320/2026-01-01)). The Belastingdienst tables put return and payment together on one date.
+
+### VAT monthly dates 2022
+
+For a monthly return the Belastingdienst table gives the last day of the month after the period: December 2021 31 January 2022, January 2022 28 February 2022, February 2022 31 March 2022, March 2022 30 April 2022, April 2022 31 May 2022, May 2022 30 June 2022, June 2022 31 July 2022, July 2022 31 August 2022, August 2022 30 September 2022, September 2022 31 October 2022, October 2022 30 November 2022, November 2022 31 December 2022, December 2022 31 January 2023 ([archived page](https://web.archive.org/web/20220122/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte)). Uitstel is not available on request for these returns in the normal course of business.
+
+### VAT quarterly dates 2022
+
+For a quarterly return the dates are Q4 2021 31 January 2022, Q1 2022 30 April 2022, Q2 2022 31 July 2022, Q3 2022 31 October 2022 and Q4 2022 31 January 2023 ([archived page](https://web.archive.org/web/20220122/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte)).
+
+### VAT yearly return 2022
+
+A yearly return for 2022 was due by 31 March 2023 ([archived page](https://web.archive.org/web/20220122/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte)).
+
+### Software submission and receipt of the btw return
+
+Software can submit the return from the 24th of the month before the period ends ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums)). The return and the payment must both be received by the date in the table, so filing alone is not enough ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums)).
+
+### Uitstel for a btw-aangifte
+
+Uitstel for a btw-aangifte is possible only in uitzonderlijke situaties (exceptional situations, an ernstige calamiteit) and is requested in writing to the belastingkantoor before the filing date. A naheffingsaanslag and a boete remain possible ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uitstel-aanvragen-btw-aangifte)). The normal route for a late or wrong return is a suppletie within the 3-month window described above.
+
+### Btw aangifteverzuimboete 2022
+
+For 2022 there were 7 kalenderdagen coulance (a 7 calendar day grace period) after the deadline, and then a boete of € 68 ([archived page](https://web.archive.org/web/20220224/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/boetes/u_doet_geen_of_te_laat_aangifte)). The coulance is part of the enforcement practice, not of the statutory payment term.
+
+### Navordering on a new fact and the fout route
+
+AWR art. 16 lid 1 allows a navordering (additional assessment) on a new fact, but not if the fact was known or reasonably knowable to the inspecteur, unless the taxpayer acted te kwader trouw (in bad faith). Lid 2 also allows it when a voorlopige aanslag, voorheffing, voorlopige teruggaaf or voorlopige verliesverrekening was wrongly settled, and for a fout (mistake) that was redelijkerwijs kenbaar (reasonably identifiable), and always so when the shortfall is at least 30% of the correct tax ([AWR 2020](https://wetten.overheid.nl/BWBR0002320/2020-01-01), [AWR 2026](https://wetten.overheid.nl/BWBR0002320/2026-01-01)). The 30% test is a lower bound, so a smaller shortfall can still be a kenbare fout on the facts.
+
+### Navorderingstermijn
+
+The navorderingstermijn is 5 years after the belastingschuld arose, extended by uitstel. For a fout-based navordering it is only 2 years after the assessment or decision. For income or assets held or arising abroad the term is 12 years. If in the last 6 months a request for an invitation is made, or data under art. 9 lid 4 are supplied, the term is extended by 6 months ([AWR 2026](https://wetten.overheid.nl/BWBR0002320/2026-01-01), [AWR 2020](https://wetten.overheid.nl/BWBR0002320/2020-01-01)). The term runs alongside the definitive assessment term and the 5-year filing-without-invitation rule.
+
+### Navordering official example
+
+The Belastingdienst example: tax year 2016 with 5 months uitstel, navordering possible until 31 May 2022 ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/navorderingsaanslag)). The example shows that the 5 years are counted from 1 January after the tax year and then extended by the uitstel duration.
+
+### Voluntary correction
+
+A voluntary correction within 2 years generally gives no boete ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/navorderingsaanslag)). This is the practical route when a filed 2022 return turns out to be wrong.
+
+### Bezwaar term, form, motivation and acknowledgement
+
+Bezwaar (objection) must be made within 6 weeks after the date of the aanslag, for income tax online, by pdf form or by letter. The motivation can follow later if asked for in the bezwaar. The Belastingdienst acknowledges within 3 weeks. No bezwaar is possible against a voorlopige aanslag IB, only a change ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/bezwaar-en-beroep/content/eisen-bezwaar)). So the voorlopige aanslag route is the change described above, and the bezwaar route is for the definitive or other assessments.
+
+### Verzoek om (ambtshalve) vermindering
+
+After the bezwaar term a verzoek om (ambtshalve) vermindering (request for a reduction) is possible ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/bezwaar-en-beroep/content/verzoek-om-vermindering-van-aanslag-inkomstenbelasting)). It can be made online only if the return was filed online and fewer than 5 years have passed after the tax year. The material gives aanslag 2020 online until 31 December 2025 and aanslag 2023 until 31 December 2028. Otherwise the request goes by letter.
+
+### Bewaarplicht (AWR art. 52)
+
+AWR art. 52 lid 4: administratieplichtigen (persons with an administrative duty) keep the gegevensdragers (data carriers) for seven years unless the tax law says otherwise. Lid 2 covers among others natural persons with winst uit onderneming or resultaat uit overige werkzaamheden. Lid 5 allows conversion to another gegevensdrager, except for the paper balans (balance sheet) and staat van baten en lasten (statement of income and expenses). The text is the same in the 1 January 2020 and 1 January 2026 versions ([AWR 2020](https://wetten.overheid.nl/BWBR0002320/2020-01-01), [AWR 2026](https://wetten.overheid.nl/BWBR0002320/2026-01-01)).
+
+### Bewaartermijnen and basisgegevens
+
+The Belastingdienst table: basisgegevens (basic records) 7 years, onroerende zaken (immovable property) 10 years, One Stop Shop data 10 years, and other data 7 years or shorter by agreement with the belastingkantoor. The term starts when the gegeven is no longer actual, so a 4-year lease is kept for those 4 years and then 7 more. Basisgegevens are the grootboek (general ledger), debiteuren- and crediteurenadministratie (debtors and creditors records), voorraadadministratie (stock records), in- and verkoopadministratie (purchase and sales records), loonadministratie (payroll records), and data relevant for the taxation of third parties ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/hoelang-moet-u-gegevens-bewaren)). The 7-year AWR term is the floor, the longer terms apply where the table says so.
+
+### Inschrijving in het Handelsregister
+
+Handelsregisterwet 2007 art. 20 lid 1: the opgave (notification) for the first inschrijving (registration) of an onderneming is made within a period of two weeks that starts one week before and ends one week after the start of the business ([Handelsregisterwet 2007](https://wetten.overheid.nl/BWBR0021777/2025-07-16)). Other required opgaven are made within one week after the fact ([Handelsregisterwet 2007](https://wetten.overheid.nl/BWBR0021777/2025-07-16)). The window applies per onderneming, so a second business activity can trigger a new opgave.
+
+### KVK-nummer, identity check and appointments
+
+KVK issues the KVK-nummer immediately when registering within that window ([KVK](https://www.kvk.nl/hulp-en-contact/hulp-bij-inschrijven/)). An identity check is possible up to three months ahead and appointments up to eight weeks ahead ([KVK](https://www.kvk.nl/hulp-en-contact/hulp-bij-inschrijven/)). This allows the identity check to be done before the business starts.
+
+### Registration with the Belastingdienst
+
+KVK passes the data to the Belastingdienst, so no separate registration is needed ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/)). An eenmanszaak (sole trader business) is registered with the bsn, other forms get an RSIN, and the Belastingdienst derives the omzetbelastingnummer (VAT number) from it. Registration in the Belastingdienst administration takes at most 10 werkdagen. Where KVK registration is not possible, the form Opgaaf startende onderneming (niet ingeschreven in het Handelsregister) is used ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/), [KVK](https://www.kvk.nl/hulp-en-contact/hulp-bij-inschrijven/)).
+
+---
+

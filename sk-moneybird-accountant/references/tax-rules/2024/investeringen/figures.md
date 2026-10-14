@@ -1,0 +1,59 @@
+---
+title: "Investeringsaftrek en afschrijving 2024: Figures"
+description: "Covers the KIA, EIA, MIA, Vamil, desinvesteringsbijtelling and depreciation rules that apply in tax year 2024 to a Dutch sole trader or a BV."
+nav_label: "Investeringsaftrek en afschrijving"
+trigger_phrases:
+  - "investeringsaftrek 2024"
+  - "KIA 2024"
+  - "hoeveel investeringsaftrek kan ik in 2024 claimen"
+  - "Investeringsaftrek en afschrijving 2024 figures"
+importance_tier: important
+contextType: research
+version: 1.0.0.0
+---
+
+# Investeringsaftrek en afschrijving 2024: Figures
+
+**Rule:** These values hold for tax year 2024 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
+
+Part 1 of 4 of the Investeringsaftrek en afschrijving 2024 topic.
+
+- [rules.md](rules.md): section 3.
+- [examples.md](examples.md): section 4.
+- [notes.md](notes.md): sections 5 to 8.
+
+Year overview: [README.md](../README.md).
+
+## 1. OVERVIEW
+
+<a id="1-overview"></a>
+
+This file covers the investeringsaftrek (investment allowance) in its four forms, the KIA (kleinschaligheidsinvesteringsaftrek, small-scale investment allowance), the EIA (energie-investeringsaftrek, energy investment allowance), the MIA (milieu-investeringsaftrek, environment investment allowance) and the Vamil (willekeurige afschrijving milieu-investeringen, random depreciation for environmental investments), together with the ordinary and random depreciation of bedrijfsmiddelen (business assets) in tax year 2024. It is written for a sole trader and notes where the checked sources describe the same instruments for a BV. The 2024 law is enacted. The headline change for 2024 is the bodemwaarde (floor value) for buildings: the 50% rule for a building in own use is gone from 1 January 2024 and one bodemwaarde applies, the full WOZ-waarde of the building, except for an own-use building taken into use before 1 January 2024 and not yet depreciated for 3 years, which keeps 50% of the WOZ-waarde until 3 years after first use.
+
+---
+
+## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
+
+| Item | Value 2024 | Status | Check | Source |
+|---|---|---|---|---|
+| KIA table (art. 3.41 lid 2) | nil up to € 2.800, 28% of the investment from € 2.800 up to € 69.765, a fixed € 19.535 from € 69.765 up to € 129.194, € 19.535 minus 7,56% of the excess over € 129.194 up to € 387.580, nil above € 387.580 | enacted | Verified | art. 3.41 lid 2, https://wetten.overheid.nl/BWBR0011353/2024-01-01 |
+| KIA per-asset minimum | € 450 | enacted | Verified | art. 3.45 lid 2 onderdeel b, https://wetten.overheid.nl/BWBR0011353/2024-01-01, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek |
+| EIA percentage | 40% | enacted | Verified | art. 3.42 lid 3, https://wetten.overheid.nl/BWBR0011353/2024-01-01, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek |
+| EIA and MIA maximum investment amount | € 149.000.000 | enacted | Verified | art. 3.42 lid 4, https://wetten.overheid.nl/BWBR0011353/2024-01-01, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek |
+| MIA percentages | 45% (categorie I), 36% (categorie II), 27% (categorie III) | enacted | Verified | art. 3.42a lid 3, https://wetten.overheid.nl/BWBR0011353/2024-01-01, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek |
+| EIA and MIA per-asset minimum | € 2.500 | enacted | Verified | art. 3.45 lid 4 onderdeel b, https://wetten.overheid.nl/BWBR0011353/2024-01-01, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek |
+| Vamil percentage | 75% of the costs may be depreciated at will | enacted | Verified | art. 3.31 lid 1, https://wetten.overheid.nl/BWBR0011353/2024-01-01 |
+| Ordinary depreciation caps | at most 10% of the cost per year for goodwill and at most 20% per year for other bedrijfsmiddelen, so at least 10 and 5 years | enacted | Verified | art. 3.30 lid 2, https://wetten.overheid.nl/BWBR0011353/2024-01-01 |
+| Bodemwaarde for buildings | one bodemwaarde, the WOZ-waarde of the building, except for an own-use building taken into use before 1 January 2024 and not yet depreciated for 3 years, which keeps 50% of the WOZ-waarde until 3 years after first use | enacted | Verified | art. 3.30a lid 3, https://wetten.overheid.nl/BWBR0011353/2024-01-01, transition https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/afschrijving_bedrijfspand |
+| Desinvesteringsbijtelling threshold | € 2.800 | enacted | Verified | art. 3.47 lid 1, https://wetten.overheid.nl/BWBR0011353/2024-01-01, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/desinvesteringsbijtelling |
+| Desinvesteringsbijtelling term | five years after the start of the calendar year of the investment | enacted | Verified | art. 3.47 lid 2, https://wetten.overheid.nl/BWBR0011353/2024-01-01 |
+| Desinvesteringsbijtelling, investment undone | less than 25% of the investment amount paid within twelve months after the obligation, or the asset not taken into use within three years after the start of the investment year | enacted | Verified | art. 3.47 lid 6, https://wetten.overheid.nl/BWBR0011353/2024-01-01 |
+| Starters willekeurige afschrijving yearly cap | € 387.580 of total costs in the year, read from the top of the KIA table through the URWA art. 8 reference | enacted | UNVERIFIED | URWA art. 8, https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 and art. 3.41 lid 2, https://wetten.overheid.nl/BWBR0011353/2024-01-01 |
+| Starters willekeurige afschrijving, herwaardering period | five years from the start of the year of the obligation or the costs, ten years for the zeeschepen of art. 10 | enacted | Verified | URWA art. 9 and 12, https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 |
+| RVO notification deadline for EIA, MIA and Vamil | within 3 months after signing the koopovereenkomst or placing the order, and within 3 months after the quarter in which voortbrengingskosten were made | enacted | Verified | https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden |
+| MIA and Vamil maximum per bedrijfsmiddel and per applicant per year | € 25 miljoen, unless the Milieulijst sets a lower maximum. The RVO page does not state a year | unknown | Verified | https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden |
+
+---
+
