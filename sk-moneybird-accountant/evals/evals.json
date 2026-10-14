@@ -217,8 +217,8 @@
         "forbidden": [
           "\\breturn filed\\b",
           "\\bsubmission complete\\b",
-          "\\b(?:I|we)(?:\\s+will|\\s+shall|'ll|\\s+am going to|\\s+are going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
-          "\\b(?:I|we)\\s+(?:am|are)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b"
+          "\\b(?:I|we)(?:\\s+will|\\s+shall|['’]ll|\\s+am going to|\\s+are going to|['’]m going to|['’]re going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
+          "\\b(?:I|we)(?:\\s+am|\\s+are|['’]m|['’]re)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b"
         ]
       }
     },
@@ -646,8 +646,8 @@
           "\\bfiled\\b",
           "\\bsubmitted\\b",
           "\\bpaid\\b",
-          "\\b(?:I|we)(?:\\s+will|\\s+shall|'ll|\\s+am going to|\\s+are going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
-          "\\b(?:I|we)\\s+(?:am|are)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b"
+          "\\b(?:I|we)(?:\\s+will|\\s+shall|['’]ll|\\s+am going to|\\s+are going to|['’]m going to|['’]re going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
+          "\\b(?:I|we)(?:\\s+am|\\s+are|['’]m|['’]re)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b"
         ]
       }
     },
@@ -676,8 +676,8 @@
           "\\bfiled\\b",
           "\\bsubmitted\\b",
           "\\bpaid\\b",
-          "\\b(?:I|we)(?:\\s+will|\\s+shall|'ll|\\s+am going to|\\s+are going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
-          "\\b(?:I|we)\\s+(?:am|are)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b"
+          "\\b(?:I|we)(?:\\s+will|\\s+shall|['’]ll|\\s+am going to|\\s+are going to|['’]m going to|['’]re going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
+          "\\b(?:I|we)(?:\\s+am|\\s+are|['’]m|['’]re)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b"
         ]
       }
     },
@@ -706,8 +706,8 @@
           "\\bfiled\\b",
           "\\bsubmitted\\b",
           "\\bpaid\\b",
-          "\\b(?:I|we)(?:\\s+will|\\s+shall|'ll|\\s+am going to|\\s+are going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
-          "\\b(?:I|we)\\s+(?:am|are)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b"
+          "\\b(?:I|we)(?:\\s+will|\\s+shall|['’]ll|\\s+am going to|\\s+are going to|['’]m going to|['’]re going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
+          "\\b(?:I|we)(?:\\s+am|\\s+are|['’]m|['’]re)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b"
         ]
       }
     },
@@ -736,8 +736,8 @@
           "\\bfiled\\b",
           "\\bsubmitted\\b",
           "\\bpaid\\b",
-          "\\b(?:I|we)(?:\\s+will|\\s+shall|'ll|\\s+am going to|\\s+are going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
-          "\\b(?:I|we)\\s+(?:am|are)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b"
+          "\\b(?:I|we)(?:\\s+will|\\s+shall|['’]ll|\\s+am going to|\\s+are going to|['’]m going to|['’]re going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
+          "\\b(?:I|we)(?:\\s+am|\\s+are|['’]m|['’]re)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b"
         ]
       }
     },
@@ -768,8 +768,8 @@
           "\\bpaid\\b",
           "\\bsuppletie applies below the boundary\\b",
           "\\bbelow the boundary goes to the suppletie\\b",
-          "\\b(?:I|we)(?:\\s+will|\\s+shall|'ll|\\s+am going to|\\s+are going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
-          "\\b(?:I|we)\\s+(?:am|are)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b"
+          "\\b(?:I|we)(?:\\s+will|\\s+shall|['’]ll|\\s+am going to|\\s+are going to|['’]m going to|['’]re going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
+          "\\b(?:I|we)(?:\\s+am|\\s+are|['’]m|['’]re)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b"
         ]
       }
     },
@@ -806,8 +806,8 @@
           "\\bpaid\\b",
           "\\bclosed the year before the auditfile\\b",
           "\\bjaarafsluiting before the auditfile\\b",
-          "\\b(?:I|we)(?:\\s+will|\\s+shall|'ll|\\s+am going to|\\s+are going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
-          "\\b(?:I|we)\\s+(?:am|are)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b",
+          "\\b(?:I|we)(?:\\s+will|\\s+shall|['’]ll|\\s+am going to|\\s+are going to|['’]m going to|['’]re going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
+          "\\b(?:I|we)(?:\\s+am|\\s+are|['’]m|['’]re)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b",
           "\\bclos\\w*\\s+(?:the\\s+)?(?:year|books|period)\\s+before\\s+(?:the\\s+)?auditfile\\b"
         ]
       }
@@ -851,8 +851,8 @@
           "\\bfilled the unresolved field from memory\\b",
           "\\bfilled the residual unknown from memory\\b",
           "\\bthe unresolved item is settled\\b",
-          "\\b(?:I|we)(?:\\s+will|\\s+shall|'ll|\\s+am going to|\\s+are going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
-          "\\b(?:I|we)\\s+(?:am|are)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b",
+          "\\b(?:I|we)(?:\\s+will|\\s+shall|['’]ll|\\s+am going to|\\s+are going to|['’]m going to|['’]re going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
+          "\\b(?:I|we)(?:\\s+am|\\s+are|['’]m|['’]re)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b",
           "\\bfill\\w*\\s+(?:in\\s+)?(?:the\\s+)?(?:unresolved|residual|open)\\s+\\w+(?:\\s+\\w+)?\\s+from\\s+memory\\b"
         ]
       }
@@ -887,8 +887,8 @@
           "\\bthe period is locked\\b",
           "\\breturn filed\\b",
           "\\bfiling complete\\b",
-          "\\b(?:I|we)(?:\\s+will|\\s+shall|'ll|\\s+am going to|\\s+are going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
-          "\\b(?:I|we)\\s+(?:am|are)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b"
+          "\\b(?:I|we)(?:\\s+will|\\s+shall|['’]ll|\\s+am going to|\\s+are going to|['’]m going to|['’]re going to)\\s+(?:now\\s+)?(?:file|submit|pay|lock)\\b",
+          "\\b(?:I|we)(?:\\s+am|\\s+are|['’]m|['’]re)\\s+(?:now\\s+)?(?:filing|submitting|paying|locking)\\b"
         ]
       }
     }
