@@ -26,6 +26,8 @@ Regenerates the reference nav blocks, the index, the year README tables and the 
 
 One pass over `references/` owns the nav blocks in files over the byte limit, `references/index.json`, the topic and headline tables in every year README, the year-figure rows in the ten general topic files under `references/tax-rules/general/`, the change block of every year note, the whole-file `references/tax-rules/year-changes.md` overview and the reachability report over the leaf manifest.
 
+The same run writes the landing page, the key figure item index and the `answerSurface` records that [reference entry surfaces](reference-entry-surfaces.md) describes, and it asserts the `nav_label` field on every reference file.
+
 ### Modes and fences
 
 The default run writes every changed block. `--check` reports each difference and exits nonzero on drift, on a change-note bullet failure or on a nav or toc block over its byte budget. `--init` inserts a missing fence pair at its anchor, `--overlap` reports restated headline values that no generated row owns and `--reachability` reports every manifest leaf that no routed folder or reachable page reaches.
@@ -66,6 +68,7 @@ A year change note holds authored bullets in its unique-to-the-year section and 
 - Feature file path: reference-and-state/reference-index-and-year-changes.md
 
 Related references:
+- [reference-entry-surfaces.md](reference-entry-surfaces.md) - The landing page, item index and answer surface fields this generator writes.
 - [session-context-and-year-state.md](session-context-and-year-state.md) - The route-time context that reads the reference tree.
 - [year-rollover-runbook.md](year-rollover-runbook.md) - The runbook that refreshes the year files.
 - [topic-file-split.md](topic-file-split.md) - The split whose check ignores the fences this generator writes.

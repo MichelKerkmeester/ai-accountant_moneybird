@@ -197,6 +197,8 @@ Fixture key figure notes.
 
 ## 3. HOW IT WORKS
 
+<a id="3-how-it-works"></a>
+
 Fixture rule text. See the [year overview](README.md) and the [income topic](income-tax.md).
 
 The citation target line for the suite.
@@ -489,6 +491,17 @@ else
     case_failed "general parts carry English file names"
 fi
 
+# Case: a written part opens with the generated overview, renumbers its H2
+# section from 2 and keeps the topic anchor of the source
+OVERVIEW_PART="$CLEAN/sk-moneybird-accountant/references/tax-rules/2020/vat/rules.md"
+if [[ "$(grep -m1 '^## ' "$OVERVIEW_PART")" == "## 1. OVERVIEW" ]] \
+    && grep -qF '## 2. HOW IT WORKS' "$OVERVIEW_PART" \
+    && grep -qF '<a id="3-how-it-works"></a>' "$OVERVIEW_PART"; then
+    pass "written part opens with an overview and keeps its anchor"
+else
+    case_failed "written part opens with an overview and keeps its anchor"
+fi
+
 # ───────────────────────────────────────────────────────────────
 # 6. MUTANTS
 # ───────────────────────────────────────────────────────────────
@@ -669,7 +682,7 @@ CITATIONS="$CLEAN/citations.md"
 RULES_PART="$CLEAN/sk-moneybird-accountant/references/tax-rules/2020/vat/rules.md"
 if grep -qF '2020/vat/figures.md' "$CITATIONS" \
     && grep -qF '2020/vat/rules.md#3-how-it-works' "$CITATIONS" \
-    && grep -qF '## 3. HOW IT WORKS' "$RULES_PART" \
+    && grep -qF '## 2. HOW IT WORKS' "$RULES_PART" \
     && python3 - "$CITATIONS" "$RULES_PART" <<'PY'
 import re
 import sys

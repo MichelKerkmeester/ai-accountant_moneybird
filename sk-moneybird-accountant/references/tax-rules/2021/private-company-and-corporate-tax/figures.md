@@ -18,9 +18,9 @@ version: 1.0.0.0
 
 Part 1 of 4 of the BV en vennootschapsbelasting 2021 topic.
 
-- [rules.md](rules.md): section 3.
-- [examples.md](examples.md): section 4.
-- [notes.md](notes.md): sections 5 to 8.
+- [rules.md](rules.md): how it works.
+- [examples.md](examples.md): the worked examples.
+- [notes.md](notes.md): changes, records, open points and related resources.
 
 Year overview: [README.md](../README.md).
 

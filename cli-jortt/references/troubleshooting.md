@@ -37,7 +37,7 @@ Diagnose with read-only checks first. Never widen scopes or consent to make an e
 3. Run `jortt-cli spec info`. If the spec is stale or missing, update it when network use is allowed.
 4. Check `jortt-cli token status`. It prints presence and remaining minutes only.
 5. Run `jortt-cli whoami` when an API check is appropriate. It shows status and field names only.
-7. Run `bash scripts/doctor.sh` for local checks. It is offline unless `--live` is passed.
+6. Run `bash scripts/doctor.sh` for local checks. It is offline unless `--live` is passed.
 
 ---
 
@@ -74,7 +74,7 @@ If a page repeats or `--all` rejects the response, preserve the status and error
 
 ---
 
-## 7. RELATED RESOURCES
+## 6. RELATED RESOURCES
 
 - [`cli.md`](cli.md) - Exit codes and safety checks
 - [`../INSTALL-GUIDE.md`](../INSTALL-GUIDE.md) - Setup and rollback

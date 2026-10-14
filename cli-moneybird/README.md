@@ -17,9 +17,7 @@ The commands below assume `cli-moneybird/` is your current directory.
 
 ---
 
-## 1. OVERVIEW
-
-### Key Statistics
+## 1. AT A GLANCE
 
 | Aspect | What you get |
 |---|---|
@@ -28,19 +26,19 @@ The commands below assume `cli-moneybird/` is your current directory.
 | **Works on** | The Moneybird REST API v2, plus UI-only steps the Operator performs |
 | **Produces** | Guarded API changes, migration evidence and explicit verification reads |
 
+---
+
+## 2. OVERVIEW
+
 ### What It Does
 
 This skill guides an agent through rebuilding historical bookkeeping in Moneybird. Every write stays visible and tied to an approved pilot. The `moneybird-guard` command wraps the official Moneybird CLI for REST reads, writes, files and synchronization. Read-only roles set `MONEYBIRD_GUARD_READ_ONLY=1` before they read. The sibling `cli-jortt` skill owns the Jortt source reads.
 
 ### Why Use It
 
-- **Every write has a checkpoint.** The guard previews each API request, and a write needs explicit confirmation.
+- **Every write has a checkpoint.** The guard previews each API request and a write needs explicit confirmation.
 - **Writes stay on the pilot.** The guard blocks writes outside the pilot administration until the Operator approves a production batch.
 - **Checks cover the right years.** An explicit period and synchronization reads catch older records that a default list would miss.
-
-### When To Use It
-
-Use this skill for Moneybird API reads, a pilot migration write, document attachments and period verification. Use the Moneybird UI for bank file imports, tax rate creation, period locks and historical VAT filing. Do not use this skill for Jortt source exports.
 
 ### What The API Handles
 
@@ -54,7 +52,7 @@ The API covers repeatable reads and migration writes. The Operator keeps bank fi
 
 ---
 
-## 2. QUICK START
+## 3. QUICK START
 
 **Step 1: Review the install plan.**
 
@@ -84,19 +82,19 @@ Expected: the doctor reports your local state without a network call. The stub s
 
 **Step 4: Read the rules before any write.**
 
-Open `SKILL.md` and `references/migration-recipes.md`. Use the pilot administration, and review the dry-run output before you confirm a write.
+Open `SKILL.md` and `references/migration-recipes.md`. Use the pilot administration and review the dry-run output before you confirm a write.
 
 ---
 
-## 3. FEATURES
+## 4. HOW IT WORKS
 
-### 3.1 GUARD ROUTING
+### Guard Routing
 
 The skill routes each request by operation. REST work goes through the official CLI behind `moneybird-guard`. The guard asks the CLI for a dry run, reads the method and URL and then decides:
 
 - A GET call runs.
 - A non-GET call is blocked when `MONEYBIRD_GUARD_READ_ONLY=1` is set.
-- Otherwise a non-GET call needs `--confirm-write`, an existing writer configuration folder and the pilot administration as its target. It also needs `--approval <ref>` matching the `approval_reference` of a `WRITE_INTENT` entry in `migration-workspace/RunJournal/run-journal.jsonl` whose `payload_digest` equals the keyed digest of the writer-session dry run, and the reference and digest pair must not be consumed yet.
+- Otherwise a non-GET call needs `--confirm-write`, an existing writer configuration folder and the pilot administration as its target. It also needs `--approval <ref>` matching the `approval_reference` of a `WRITE_INTENT` entry in `migration-workspace/RunJournal/run-journal.jsonl` whose `payload_digest` equals the keyed digest of the writer-session dry run. The reference and digest pair must not be consumed yet.
 - A production batch needs the same checks plus `--production`, after the Operator approves that batch.
 
 UI-only tasks stay with the Operator.
@@ -114,13 +112,17 @@ Operation router
    +--> Moneybird UI (Operator): bank imports, tax rates, period locks, VAT filing
 ```
 
-### 3.2 CACHED READS
+### Cached Reads
 
 A GET right after a write can return cached data. Check the write's own response status first, then verify in a later read. For bulk verification, use the synchronization endpoints and fetch IDs in batches within the API limit.
 
 ---
 
-## 4. STRUCTURE
+## 5. INTEGRATION & NAVIGATION
+
+### When To Use This Skill
+
+Use this skill for Moneybird API reads, a pilot migration write, document attachments and period verification. Use the Moneybird UI for bank file imports, tax rate creation, period locks and historical VAT filing. Do not use this skill for Jortt source exports.
 
 ### Package Layout
 
@@ -148,46 +150,61 @@ cli-moneybird/
 | `scripts/` | Offline diagnostics for the package |
 | `cli/moneybird-cli/` | The pinned official CLI, the guard wrapper, the installer and the offline tests |
 
----
-
-## 5. TROUBLESHOOTING
-
-| What you see | Why | Next step |
-|---|---|---|
-| Guard exits 3 | The write lacks confirmation | Review the preview. Repeat with `--confirm-write` only after approval |
-| Guard exits 4 | The target is not the pilot, or no pilot is configured | Check the target and the pilot ID in the root `.env` file. Use `--production` only after the Operator approves that batch |
-| Guard exits 5 | The `--out` path leaves `migration-workspace/` | Choose a path inside the workspace |
-| Guard exits 6 | The read-only lock blocks a non-GET call | Keep the lock for read-only work. Use a write session only when the approved migration gate requires a write |
-| Guard exits 7 | The writer configuration folder is missing | Run `moneybird-guard login-from-env --writer` after the pilot gate |
-| Guard exits 8 | The write lacks `--approval`, the reference is not in the run journal or the reference and digest pair is consumed | Check the `WRITE_INTENT` entry and repeat with `--approval "$APPROVAL_REF"`. A consumed pair needs a new entry |
-| Guard exits 9 | The payload or the attachment bytes do not match the approved digest | Re-run the preview, copy the `payload-digest` line into a new `WRITE_INTENT` entry and retry with the new reference |
-| A list leaves out older records | The API defaults to the current year | Add an explicit period filter, such as `--filter period:YYYY`, and read again |
-
-[`references/troubleshooting.md`](references/troubleshooting.md) has the full diagnostic sequence.
-
----
-
-## 6. VERIFICATION
-
-| Check | How to run it |
-|---|---|
-| Offline diagnostics | `bash scripts/doctor.sh` reports local checks and does not call the API |
-| Guard behavior | `bash cli/moneybird-cli/tests/run-tests.sh` ends with `Pass: 58  Fail: 0` |
-| Migration evidence | Rehearse a pilot write and its undo, then check later synchronization reads |
-
-The local checks do not prove live access, production access or a reconciled ledger.
-
----
-
-## 7. RELATED RESOURCES
-
 ### Related Skills
 
 | Skill | Relationship | Use When |
 |---|---|---|
 | [`cli-jortt`](../cli-jortt/SKILL.md) | Sibling skill | A migration needs Jortt source records |
 
-### Related Documents
+---
+
+## 6. TROUBLESHOOTING
+
+| What you see | Why | Next step |
+|---|---|---|
+| Guard exits 3 | The write lacks confirmation | Review the preview. Repeat with `--confirm-write` only after approval |
+| Guard exits 4 | The target is not the pilot or no pilot is configured | Check the target and the pilot ID in the root `.env` file. Use `--production` only after the Operator approves that batch |
+| Guard exits 5 | The `--out` path leaves `migration-workspace/` | Choose a path inside the workspace |
+| Guard exits 6 | The read-only lock blocks a non-GET call | Keep the lock for read-only work. Use a write session only when the approved migration gate requires a write |
+| Guard exits 7 | The writer configuration folder is missing | Run `moneybird-guard login-from-env --writer` after the pilot gate |
+| Guard exits 8 | The write lacks `--approval`, the reference is not in the run journal or the reference and digest pair is consumed | Check the `WRITE_INTENT` entry and repeat with `--approval "$APPROVAL_REF"`. A consumed pair needs a new entry |
+| Guard exits 9 | The payload or the attachment bytes do not match the approved digest | Re-run the preview, copy the `payload-digest` line into a new `WRITE_INTENT` entry and retry with the new reference |
+| A list leaves out older records | The API defaults to the current year | Add an explicit period filter such as `--filter period:YYYY` and read again |
+
+[`references/troubleshooting.md`](references/troubleshooting.md) has the full diagnostic sequence.
+
+---
+
+## 7. FAQ
+
+**Q: Can the guard write to production?**
+
+Only after the Operator approves that batch. A write targets the pilot by default and needs `--production` for anything else.
+
+**Q: Does a write run without confirmation?**
+
+No. The guard exits 3 when a write lacks `--confirm-write`, and exits 8 when it lacks an approved `--approval` reference from the run journal.
+
+**Q: Do the local checks prove live access?**
+
+No. They do not prove live access, production access or a reconciled ledger.
+
+---
+
+## 8. VERIFICATION
+
+| Check | How to run it |
+|---|---|
+| Offline diagnostics | `bash scripts/doctor.sh` reports local checks and does not call the API |
+| Guard behavior | `bash cli/moneybird-cli/tests/run-tests.sh` ends with `Pass: 58  Fail: 0` |
+| Guard exit codes | `bash scripts/exit-code-parity.sh` checks the guard exit codes against the exit table, the troubleshooting rows and the skill keywords |
+| Migration evidence | Rehearse a pilot write and its undo, then check later synchronization reads |
+
+The local checks do not prove live access, production access or a reconciled ledger.
+
+---
+
+## 9. RELATED DOCUMENTS
 
 | Document | Purpose |
 |---|---|

@@ -16,7 +16,13 @@ nav_label: "References"
 
 ---
 
-## 1. TAX YEAR FOLDERS
+## 1. OVERVIEW
+
+The reference library holds the tax year folders, the tax-rule top-level files and the migration files. Every row names one file and carries the description that file already publishes.
+
+---
+
+## 2. TAX YEAR FOLDERS
 
 the twelve topic files and the headline figures of one tax year
 
@@ -31,7 +37,9 @@ the twelve topic files and the headline figures of one tax year
 | [Tax year 2026](tax-rules/2026/README.md) | Overview of Dutch tax year 2026 for a ZZP sole trader who may also own a BV: the twelve topic files, their headline figures and how many values are open. |
 | [Tax year 2027](tax-rules/2027/README.md) | Overview of Dutch tax year 2027 for a ZZP sole trader who may also own a BV: the twelve topic files, their headline figures and how many values are open. |
 
-## 2. TAX-RULE FILES
+---
+
+## 3. TAX-RULE FILES
 
 the general rules, the year index, the change overview and the source upkeep files
 
@@ -44,7 +52,9 @@ the general rules, the year index, the change overview and the source upkeep fil
 | [Year changes](tax-rules/year-changes.md) | Generated overview of the changes in every tax year, newest first, with the path to each year note. |
 | [Year rollover](tax-rules/year-rollover.md) | The 1 January runbook that carries the year corpus into the next tax year, the five-checkpoint release calendar with its check-by dates and the owner of both. |
 
-## 3. MIGRATION FILES
+---
+
+## 4. MIGRATION FILES
 
 the phase files, the mapping and the write contract
 

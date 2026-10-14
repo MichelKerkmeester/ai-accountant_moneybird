@@ -16,6 +16,12 @@ version: 1.0.0.0
 
 Use this reference with the [migration index](./README.md), the selected phase contract, and [shared mechanisms](./shared-mechanisms.md). The phase contract sets its own gate. This file defines controls that apply across phases.
 
+## 1. OVERVIEW
+
+This reference holds the cross-phase controls for the migration, from agent roles and verification rules to stop recovery and completion. Read it with the migration index and the selected phase contract, which sets its own gate.
+
+---
+
 ## Phase contract schema
 
 Every phase from 0 through 22 uses these 11 fields in this order. Each nested sub-goal has a check that names a count, percentage, date, equality, or artifact result that a verifier can reproduce. Before Phase 0 passes, the Independent Auditor records exactly one phase heading and all 11 fields plus a numeric exit gate for each phase. The check covers all 23 phases and is linked from the master dashboard.

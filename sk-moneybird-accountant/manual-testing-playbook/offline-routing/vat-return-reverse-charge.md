@@ -2,7 +2,7 @@
 title: "VAT-002 -- A VAT return quarter with a reverse-charged purchase"
 description: "This scenario validates the reverse-charge branch of the VAT return preparation procedure, the rubriek 2a step and the stop before any filing action."
 id: VAT-002
-catalog_applicable: false
+catalog_applicable: true
 version: 1.0.0.0
 ---
 
@@ -75,6 +75,7 @@ Check the T10 row, the T4 conditional read terms and the T8 filing precedence in
 | File | Role |
 |---|---|
 | [manual-testing-playbook.md](../manual-testing-playbook.md) | Root playbook rules and scenario index. |
+| [feature-catalog entry](../../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) | Current feature summary and source anchors. |
 | [the VAT return procedure](../../references/vat-return/README.md) | The procedure this scenario tests. |
 | [the rubriek table](../../references/vat-return/return-boxes.md) | The 2a line and the reverse-charge derivation. |
 | [the review pack contract](../../references/vat-return/review-pack.md) | The pack blocks P1 to P9 and the confirmation parts. |

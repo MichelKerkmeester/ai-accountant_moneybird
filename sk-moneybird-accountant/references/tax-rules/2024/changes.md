@@ -18,7 +18,13 @@ checked_on: "2026-10-12"
 
 ---
 
-## 1. Unique to 2024
+## 1. OVERVIEW
+
+This note lists what changed for tax year 2024. Section 2 holds the changes unique to 2024 and section 3 the generated table of every change by topic.
+
+---
+
+## 2. UNIQUE TO 2024
 
 - Box 2 moved from one rate of 26,9% in 2023 to two brackets in 2024, 24,5% up to € 67.000 and 33% above € 67.000. [box-2](box-2/notes.md#5-changes)
 - The zelfstandigenaftrek fell from € 5.030 to € 3.750 and the AOW-age amount from € 2.515 to € 1.875. [inkomstenbelasting](income-tax/notes.md#5-changes)
@@ -31,7 +37,7 @@ checked_on: "2026-10-12"
 
 ---
 
-## 2. All changes by topic
+## 3. ALL CHANGES BY TOPIC
 
 <!-- GENERATED:changes:start -->
 | Topic | Bullets | First change |

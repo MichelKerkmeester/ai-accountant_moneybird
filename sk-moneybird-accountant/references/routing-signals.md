@@ -108,7 +108,7 @@ A question about what changed in one year, the difference between two years or `
 
 ---
 
-## 7. Documented gaps
+## 7. DOCUMENTED GAPS
 
 A row here names a deliverable the skill routes but does not document yet. The T8 documented gap answer reads this table through the `gaps` list in `references/index.json`, so the answer names the topic, the owner path and the Operator action. The owner path is the file a later phase creates, and its coverage flips from `gap` to `covered` when that file lands.
 

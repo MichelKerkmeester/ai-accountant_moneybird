@@ -19,9 +19,13 @@ Stops the affected batch on a falsifiable failure and resumes only from the last
 
 Every stop records owner, evidence, retry rule and closure condition. An uncertain write requires read-back. It is never blindly retried.
 
+---
+
 ## 2. HOW IT WORKS
 
 Classify the stop as an unknown write, rate limit, validation failure, missing source or hash mismatch, stale or incomplete read or reconciliation mismatch. Follow the owner, evidence, retry rule and closure test in the shared stop-state recovery matrix. Keep the exception and run journal append-only.
+
+---
 
 ## 3. SOURCE FILES
 
@@ -38,6 +42,8 @@ Classify the stop as an unknown write, rate limit, validation failure, missing s
 | File | Type | Role |
 |---|---|---|
 | sk-moneybird-accountant/manual-testing-playbook/offline-routing/write-journal-crash-resume.md | Manual playbook | Offline interrupted-write and resume scenario. |
+
+---
 
 ## 4. SOURCE METADATA
 

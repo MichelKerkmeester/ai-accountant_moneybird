@@ -22,7 +22,7 @@ It organizes evidence and explains general Dutch ZZP rules. It never files a ret
 - **A Jortt reader** - `cli-jortt/` holds `jortt-cli`, a read-only command line client that pages through the Jortt API and saves extracts into a local workspace
 - **A guarded Moneybird client** - `cli-moneybird/` holds `moneybird-guard`, a wrapper around the official Moneybird CLI that previews every call and blocks writes you have not approved
 - **A 23-phase migration plan** - each phase has an owner, an evidence trail and a numeric exit gate
-- **Offline checks** - 26 Jortt contract tests and 58 Moneybird guard tests run without an accounting login
+- **Offline checks** - 26 Jortt contract tests, 58 Moneybird guard tests and the skill's own routing and reference checks run without an accounting login
 
 ---
 
@@ -50,7 +50,7 @@ The skill keeps the workflow in one place. The two CLI skills own API details, s
 | **MIGRATION** | Moving historical Jortt records into Moneybird |
 | **LIVE** | A monthly or quarterly review, a yearly close or a one-off ZZP question |
 
-The routes into the matching phase file, bookkeeping reference or tax-year folder are written in one place only, the Task-Type Table in section 2 of `sk-moneybird-accountant/SKILL.md`. If the mode is unclear, the assistant asks one question instead of guessing a phase or a tax year. It resolves the tax year from the runtime clock in a generated `session-context.json` before it uses any rate or threshold, and it never routes on a date written in a document. Tax decisions and return filing stay with the Operator or a bookkeeper.
+The routes into the matching phase file, bookkeeping reference, procedure folder or tax-year folder are written in one place only, the Task-Type Table in section 2 of `sk-moneybird-accountant/SKILL.md`. Three rows prepare a tax deliverable: T10 the VAT return, T11 the yearly overview and T12 the income tax return. A request to file, submit, pay or lock a period stays on the T8 refusal row, and the assistant never files. If the mode is unclear, the assistant asks one question instead of guessing a phase or a tax year. It resolves the tax year from the runtime clock in a generated `session-context.json` before it uses any rate or threshold, and it never routes on a date written in a document. Tax decisions and return filing stay with the Operator or a bookkeeper.
 
 ---
 
@@ -213,7 +213,7 @@ External seats receive typed, allowlisted summaries with opaque record aliases a
 
 ## 7. 🧪 CHECKS
 
-The doctors are offline by default. The Jortt tests check the CLI contract against a local API description. The Moneybird tests use a stub, so the guard is proven without calling Moneybird.
+The doctors are offline by default. The Jortt tests check the CLI contract against a local API description. The Moneybird tests use a stub, so the guard is proven without calling Moneybird. The skill side adds checks for the route table, the links and the generated references. [scripts/README.md](sk-moneybird-accountant/scripts/README.md) owns the full command list with the output each one prints.
 
 | Check | What it covers |
 |---|---|
@@ -221,6 +221,12 @@ The doctors are offline by default. The Jortt tests check the CLI contract again
 | `cli-jortt/cli/jortt-cli/tests/run-tests.sh` | Operation slugs, parameter checks, the write gate, the scope gate, the output boundary, summary output and redacted errors |
 | `cli-moneybird/scripts/doctor.sh` | Local tools, the pinned official CLI, config folders and whether credential files and settings exist |
 | `cli-moneybird/cli/moneybird-cli/tests/run-tests.sh` | Period warning, write confirmation, the pilot gate, the approval check, the writer session, the read-only lock, delete caution, the output boundary, summary output and logins |
+| `cli-moneybird/scripts/exit-code-parity.sh` | The guard exit codes against the exit table, the troubleshooting rows and the skill keywords, in both directions |
+| `sk-moneybird-accountant/scripts/check-route-table.py` | The task-type route table with its marked read sets, plus the skill word check, the split-topic manifest and the carry-forward outline check |
+| `sk-moneybird-accountant/scripts/check-fragments.py` | Every relative link and section anchor in the skill family |
+| `sk-moneybird-accountant/scripts/build-reference-index.py --check`, `token-baseline.py --check` and `build-source-library.py --check` | The generated reference index, the pinned token baseline and the source library |
+| `sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode resolve` and `--mode replay` | The routing gold rows for every task type |
+| The offline suite set under `sk-moneybird-accountant/scripts/` | The route table, route replay, reference index, regression trailer, session context, source library, token canary, write contract, hardening matrix, hostile invoice set, evals and fragment checks |
 | `sk-moneybird-accountant/scripts/plan-kit-test.sh` | Phase packet generation, the drift check, workspace and packet setup, no-overwrite and the refusals |
 | `scripts/privacy-gate-test.sh` | Every privacy-gate rule, that no blocked value is ever printed, the commit, merge and push modes, and the gate change trailer |
 | Manual testing playbooks | Offline routing and guard scenarios in each skill folder, plus operator-approved live Jortt reads and one live Moneybird pilot write |
@@ -265,10 +271,17 @@ A passing local test does not prove a live connection. For Jortt, `jortt-cli who
     ├── README.md                         skill guide
     ├── SKILL.md                          mode router and operating contract
     ├── assets/migration/                 plan kit: config, dashboard, journal and the packet doc templates
+    ├── assets/yearly-overview/           the bilingual yearly overview HTML template
+    ├── evals/                            the graded routing and preparation cases
     ├── feature-catalog/                  what the skill does today
     ├── manual-testing-playbook/          offline routing scenarios
-    ├── references/                       migration plan, tax, mapping and bookkeeping guides
-    └── scripts/                          plan kit generator, workspace setup and their tests
+    ├── references/tax-rules/             the tax knowledge base, one folder per year and topic
+    ├── references/vat-return/            the VAT return preparation procedure
+    ├── references/yearly-overview/       the yearly overview preparation procedure
+    ├── references/income-tax-return/     the income tax return preparation procedure
+    ├── references/migration/             the migration plan, its phases and the shared controls
+    ├── references/                       the bookkeeping, invoice, asset and routing guides
+    └── scripts/                          plan kit generator, workspace setup, checks and their tests
 ```
 
 Both CLI skills and the main skill also carry a `changelog/` and a `benchmark/` folder for release notes and run reports.
@@ -350,11 +363,16 @@ The Jortt API does not provide them. Download them yourself from the Jortt UI.
 
 **Bookkeeping references**
 
-- **[→ Dutch Tax](sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md)** - how the rules work across years, plus one folder per tax year from 2020 to 2027 with a detailed, sourced file per topic, BV and box 2 included
+- **[→ Dutch Tax](sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md)** - how the rules work across years, plus one folder per tax year from 2020 to 2027 and a folder per topic with figures, rules, examples and notes, BV and box 2 included
+- **[→ Reference Library](sk-moneybird-accountant/references/README.md)** - the generated landing page for the reference tree, one row per year folder and per reference file
 - **[→ Moneybird Bookkeeping](sk-moneybird-accountant/references/moneybird-bookkeeping.md)** - accounting treatment for common events
 - **[→ Purchase Invoices](sk-moneybird-accountant/references/purchase-invoices.md)** - booking purchase invoices, receipts and orders, with Dutch VAT or reverse-charged VAT
 - **[→ Mixed-Use Costs](sk-moneybird-accountant/references/mixed-use-costs.md)** - a cost used partly privately, its business share, its VAT split and its Moneybird booking
 - **[→ Fixed Assets](sk-moneybird-accountant/references/fixed-assets.md)** - when a purchase is an asset, depreciation, the VAT revision period and disposal
+- **[→ VAT Return Preparation](sk-moneybird-accountant/references/vat-return/README.md)** - the procedure that prepares one VAT period for Operator review, with the rubriek table, the derivation map and the review pack
+- **[→ Yearly Overview Preparation](sk-moneybird-accountant/references/yearly-overview/README.md)** - the procedure that prepares the yearly close for Operator review, with the auditfile gate, the fiscal reconciliation and the hand-off
+- **[→ Income Tax Return Preparation](sk-moneybird-accountant/references/income-tax-return/README.md)** - the procedure that prepares one income tax return for Operator review, with the Operator inputs, the claim register and the open points
+- **[→ Yearly Overview Template](sk-moneybird-accountant/assets/yearly-overview/yearly-overview-template.html)** - the bilingual printable layout of the prepared pack, with a braced placeholder for every value
 - **[→ Source Library](sk-moneybird-accountant/references/tax-rules/source-library.md)** - every external source the skills cite, by authority, with how an agent can reach it
 - **[→ Jortt to Moneybird Mapping](sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md)** - concept matches and migration traps
 

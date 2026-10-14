@@ -97,7 +97,7 @@ Two product points stay unverified and are never a computation basis. Whether Mo
 
 Run the gates in this order. A gate that fails leaves the pack in the open state and blocks the hand-off.
 
-1. **Auditfile first.** Export the auditfile before any closing action. The export is the evidence gate for everything below it, because a jaarafsluiting before the export can strip the profit and loss data from the auditfile. The route and the gate are in [the auditfile-first gate](../yearly-overview/preparation-checklist.md#1-auditfile-first). `[Operator + AI]`
+1. **Auditfile first.** Export the auditfile before any closing action. The export is the evidence gate for everything below it, because a jaarafsluiting before the export can strip the profit and loss data from the auditfile. The route and the gate are in [the auditfile-first gate](../yearly-overview/preparation-checklist.md#2-auditfile-first). `[Operator + AI]`
 2. **Report window and rate limit.** Every report covers the return year only and each request stays inside the guarded window and rate limit named in [cli-moneybird](../../../cli-moneybird/SKILL.md). `[AI]`
 3. **Opening and closing continuity.** Opening balances plus movements equal the closing balance and the asset register reconciles to the business balance. `[AI]`
 4. **Bridge completeness.** Walk the adjustment-domain list of the year corpus, not the adjustments someone remembers, and mark each row as reflected in the books or added in the calculation. `[Operator + AI]`

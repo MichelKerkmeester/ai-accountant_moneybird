@@ -15,6 +15,12 @@ version: 1.0.0.0
 
 Generated overview of the changes in every tax year. Each section names the year note and repeats its authored bullets. The note owns the wording, so one edit moves both files.
 
+## 1. OVERVIEW
+
+This reference gathers the changes in every tax year, newest first, with the path to each year note. Each year section repeats the authored bullets of that note, which owns the wording.
+
+---
+
 ## 2027
 
 Path: [2027/changes.md](2027/changes.md)

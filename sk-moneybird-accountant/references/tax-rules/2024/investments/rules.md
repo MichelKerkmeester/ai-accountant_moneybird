@@ -18,13 +18,19 @@ version: 1.0.0.0
 
 Part 2 of 4 of the Investeringsaftrek en afschrijving 2024 topic.
 
-- [figures.md](figures.md): sections 1 and 2.
-- [examples.md](examples.md): section 4.
-- [notes.md](notes.md): sections 5 to 8.
+- [figures.md](figures.md): the overview and key figures.
+- [examples.md](examples.md): the worked examples.
+- [notes.md](notes.md): changes, records, open points and related resources.
 
 Year overview: [README.md](../README.md).
 
-## 3. HOW IT WORKS IN 2024
+## 1. OVERVIEW
+
+This part holds the how-it-works rules for the Investeringsaftrek en afschrijving 2024 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
+
+---
+
+## 2. HOW IT WORKS IN 2024
 
 <a id="3-how-it-works"></a>
 

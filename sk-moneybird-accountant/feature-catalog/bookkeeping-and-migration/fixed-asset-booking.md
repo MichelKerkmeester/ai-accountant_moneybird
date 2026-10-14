@@ -36,6 +36,7 @@ The agent checks whether the business uses the purchase for more than one year a
 | sk-moneybird-accountant/references/fixed-assets.md | Shared | Defines the cost-or-asset test, depreciation, the VAT revision period and disposal. |
 | sk-moneybird-accountant/references/mixed-use-costs.md | Shared | Defines the etikettering and the booking split for a partly private asset. |
 | sk-moneybird-accountant/references/purchase-invoices.md | Shared | Defines the invoice flow that creates the asset line. |
+| sk-moneybird-accountant/references/income-tax-return/investment-and-claim-register.md | Shared | The dated per-asset register that evidences an investment allowance claim. |
 | sk-moneybird-accountant/SKILL.md | Shared | Loads the fixed-asset reference conditionally in the T4 row. |
 
 ### Validation And Tests

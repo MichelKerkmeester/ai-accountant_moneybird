@@ -17,9 +17,13 @@ version: 1.0.0.0
 
 The plan kit turns the phase references into working files. A user who clones the repository runs one script and gets a configuration template, a phase dashboard and a run-journal event template inside the ignored `migration-workspace/`, plus a git-ignored copy of the spec-kit template packet with one Level 3 packet and nested goal per phase.
 
+---
+
 ## 2. HOW IT WORKS
 
 `scripts/generate-plan-kit.py` reads the phase contracts and the `MIGRATION_CONFIG` table, writes the templates under `assets/migration/` and renders the template packet `specs/000-migration-template/` from the doc templates in `assets/migration/spec-template/`. Its `--check` mode fails when a generated file no longer matches its source or an unexpected doc sits in the packet, so a phase edit cannot leave a stale packet. `scripts/init-workspace.sh` copies the templates into `migration-workspace/`, creates every workspace and AgentDesk folder and copies the template packet to `specs/001-migration/` or the name given with `--spec-name`. It refuses a symlinked or tracked target and never overwrites an existing file, so a user's filled-in packets and configuration survive a rerun. The templates hold placeholders only.
+
+---
 
 ## 3. SOURCE FILES
 
@@ -39,6 +43,8 @@ The plan kit turns the phase references into working files. A user who clones th
 |---|---|---|
 | sk-moneybird-accountant/scripts/plan-kit-test.sh | Automated test | Checks generation, drift detection, folder creation, no-overwrite and refusals. |
 | sk-moneybird-accountant/manual-testing-playbook/offline-routing/migration-plan-kit.md | Manual playbook | Checks that a new user is routed to the setup script and the phase packets. |
+
+---
 
 ## 4. SOURCE METADATA
 

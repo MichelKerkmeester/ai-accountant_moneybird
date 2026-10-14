@@ -30,6 +30,10 @@ Every topic file shared the same eight H2 sections, so each splits the same way:
 
 `references/tax-rules/split-manifest.json` records a normalized body hash and a header hash for every part and one hash over the kept entry file. The normalization ignores rebased links and generated fences, so a changed sentence, value, status tag, URL or header line fails `--check` while a regenerated block does not. `check-route-table.py` runs the check, so CI fails on a drifted part. A hand-edited part is restored with `git checkout`, because the original files are gone after the split.
 
+### English names and the accept modes
+
+Tracked file and folder names in the tree use their English name, including `references/vat-return/return-boxes.md`. A reviewed rename lands through `--accept-renames MAP --base REF`, which records a path-only change and keeps the hashes of an unchanged part. A changed body or header is refused, because the accept mode compares the new side without the map.
+
 ---
 
 ## 3. SOURCE FILES
@@ -47,7 +51,7 @@ Every topic file shared the same eight H2 sections, so each splits the same way:
 
 | File | Type | Role |
 |---|---|---|
-| `sk-moneybird-accountant/scripts/split-topic-files-test.sh` | Automated test | Proves each drift mutant, the citation remap and a byte-stable second write on a fixture repository. |
+| `sk-moneybird-accountant/scripts/split-topic-files-test.sh` | Automated test | Proves each drift mutant, the citation remap, the accept-renames mode and a byte-stable second write on a fixture repository. |
 | `.github/workflows/skill-health.yml` | Test harness | Runs the route table check, and with it the split check, on push and pull request. |
 
 ---

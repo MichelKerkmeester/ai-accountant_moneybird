@@ -18,7 +18,13 @@ checked_on: "2026-10-12"
 
 ---
 
-## 1. Unique to 2026
+## 1. OVERVIEW
+
+This note lists what changed for tax year 2026. Section 2 holds the changes unique to 2026 and section 3 the generated table of every change by topic.
+
+---
+
+## 2. UNIQUE TO 2026
 
 - Logies moved from 9% to 21% from 1 January 2026. [btw](vat/notes.md#5-changes)
 - In 2026 there are no verzuimboetes, but vergrijpboetes are possible under the normal rules from 1 January 2026. [arbeidsrelatie](work-relationship/notes.md#5-changes)
@@ -31,7 +37,7 @@ checked_on: "2026-10-12"
 
 ---
 
-## 2. All changes by topic
+## 3. ALL CHANGES BY TOPIC
 
 <!-- GENERATED:changes:start -->
 | Topic | Bullets | First change |

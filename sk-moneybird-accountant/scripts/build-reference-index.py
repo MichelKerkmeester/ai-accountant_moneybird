@@ -295,6 +295,11 @@ LANDING_INTRO = (
     "description. A folder README belongs to the folder that owns it, and the task-type "
     "table in SKILL.md routes a request to its file."
 )
+LANDING_OVERVIEW = (
+    "The reference library holds the tax year folders, the tax-rule top-level files "
+    "and the migration files. Every row names one file and carries the description "
+    "that file already publishes."
+)
 
 # The guide gets a list of its sections with the line range of each on the
 # final file. It sits right after the read plan, so a plan of another length
@@ -1967,10 +1972,11 @@ def group_rows(
 def landing_text(files: List[Dict[str, Any]], rendered: Dict[str, str]) -> str:
     """Render the generated landing page of the references root.
 
-    Three per-group blocks: the year folders, the tax-rule top-level files
-    and the migration files. Every row comes from the frontmatter description
-    of the file it names. A file that is generated whole and not in the tree
-    yet is read from its rendered text, so one run lists it too.
+    One overview section and three per-group blocks: the year folders, the
+    tax-rule top-level files and the migration files. Every row comes from
+    the frontmatter description of the file it names. A file that is
+    generated whole and not in the tree yet is read from its rendered text,
+    so one run lists it too.
 
     Args:
         files: Result of load_files().
@@ -2018,13 +2024,19 @@ def landing_text(files: List[Dict[str, Any]], rendered: Dict[str, str]) -> str:
         "",
         "---",
         "",
+        "## 1. OVERVIEW",
+        "",
+        LANDING_OVERVIEW,
+        "",
     ]
     blocks = (
-        ("1. TAX YEAR FOLDERS", years, "the twelve topic files and the headline figures of one tax year"),
-        ("2. TAX-RULE FILES", tax_files, "the general rules, the year index, the change overview and the source upkeep files"),
-        ("3. MIGRATION FILES", migration, "the phase files, the mapping and the write contract"),
+        ("2. TAX YEAR FOLDERS", years, "the twelve topic files and the headline figures of one tax year"),
+        ("3. TAX-RULE FILES", tax_files, "the general rules, the year index, the change overview and the source upkeep files"),
+        ("4. MIGRATION FILES", migration, "the phase files, the mapping and the write contract"),
     )
     for heading, paths, note in blocks:
+        lines.append("---")
+        lines.append("")
         lines.append("## %s" % heading)
         lines.append("")
         lines.append(note)
@@ -2104,7 +2116,9 @@ def section_lines(
             continue
         if number is not None and heading_parts(heading["text"])[0] != number:
             continue
-        if keyword and keyword not in heading["text"]:
+        # WHY: the year notes print their H2 headings in capitals, so the match
+        # ignores case.
+        if keyword and keyword.lower() not in heading["text"].lower():
             continue
         stop = len(spans)
         for following in headings[position + 1:]:
@@ -2113,6 +2127,33 @@ def section_lines(
                 break
         return [span[1] for span in spans[heading["line"] - 1:stop]]
     return []
+
+
+def topic_section_lines(text: str, number: int) -> List[str]:
+    """Return the lines of one topic section, found by its stable anchor.
+
+    A split part renumbers its headings from 1, so the topic-wide section
+    number survives only in the explicit anchor id under the heading, such as
+    <a id="5-changes">. The anchor wins, and the heading number is the
+    fallback for a flat topic file that keeps the topic numbering.
+
+    Args:
+        text: File text of a year topic file or part.
+        number: Topic-wide section number.
+
+    Returns:
+        The section lines without their line endings, empty when neither the
+        anchor nor the heading number matches.
+    """
+    marker = '<a id="%d-' % number
+    spans = line_spans(text)
+    headings = [heading for heading in markdown_headings(text) if heading["level"] == 2]
+    for position, heading in enumerate(headings):
+        stop = headings[position + 1]["line"] - 1 if position + 1 < len(headings) else len(spans)
+        lines = [span[1] for span in spans[heading["line"] - 1:stop]]
+        if any(line.strip().startswith(marker) for line in lines):
+            return lines
+    return section_lines(text, 2, number=number)
 
 
 def bullet_lines(lines: List[str]) -> List[str]:
@@ -2141,7 +2182,7 @@ def topic_change_bullets(text: str) -> List[str]:
         The bullet texts in file order, empty when the file holds no section 5
         heading.
     """
-    return bullet_lines(section_lines(text, 2, number=CHANGE_SECTION_NUMBER))
+    return bullet_lines(topic_section_lines(text, CHANGE_SECTION_NUMBER))
 
 
 def change_snippet(bullet: str) -> str:
@@ -2325,9 +2366,9 @@ def year_note_years(files: List[Dict[str, Any]]) -> List[str]:
 def year_changes_text(files: List[Dict[str, Any]]) -> str:
     """Render the whole year change overview.
 
-    One H2 per year, newest first, with a path link to the year note and the
-    authored bullets of that note. The file is generated whole, so it carries
-    its own frontmatter and H1.
+    One overview section and one H2 per year, newest first, with a path link
+    to the year note and the authored bullets of that note. The file is
+    generated whole, so it carries its own frontmatter and H1.
 
     Args:
         files: Result of load_files().
@@ -2353,6 +2394,12 @@ def year_changes_text(files: List[Dict[str, Any]]) -> str:
         "# Year changes",
         "",
         "Generated overview of the changes in every tax year. Each section names the year note and repeats its authored bullets. The note owns the wording, so one edit moves both files.",
+        "",
+        "## 1. OVERVIEW",
+        "",
+        "This reference gathers the changes in every tax year, newest first, with the path to each year note. Each year section repeats the authored bullets of that note, which owns the wording.",
+        "",
+        "---",
         "",
     ]
     notes: Dict[str, str] = {}
@@ -2428,7 +2475,7 @@ def change_note_problems(files: List[Dict[str, Any]]) -> List[str]:
                     % (path, position, target or "none")
                 )
                 continue
-            section = "\n".join(section_lines(topic["text"], 2, number=CHANGE_SECTION_NUMBER))
+            section = "\n".join(topic_section_lines(topic["text"], CHANGE_SECTION_NUMBER))
             section_numbers = set(NUMBER_RE.findall(section))
             for number in NUMBER_RE.findall(CHANGE_PROSE_LINK_RE.sub(" ", bullet)):
                 if number not in section_numbers:

@@ -36,7 +36,13 @@ General topic 4 of 13 in the Dutch tax rules guide.
 
 Guide: [dutch-tax-rules.md](../dutch-tax-rules.md).
 
-## 4. SETTLED SOURCE CONFLICTS
+## 1. OVERVIEW
+
+This part holds the general rules for the SETTLED SOURCE CONFLICTS topic across the tax years. The other general topics sit in the sibling files under general/ and the year figures sit in the year folders.
+
+---
+
+## 2. SETTLED SOURCE CONFLICTS
 
 Where two sources disagreed and a primary source settles it, the year files use the settled value below.
 

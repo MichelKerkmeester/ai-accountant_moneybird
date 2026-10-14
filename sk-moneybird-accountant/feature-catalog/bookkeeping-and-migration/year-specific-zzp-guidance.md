@@ -25,6 +25,8 @@ The skill explains general Dutch sole-trader rules with year-specific source lin
 
 Before using a changing amount or rate, the agent checks the relevant tax year and loads the matching tax section. It reports the year and source. It leaves case-specific legal or tax judgement to the operator or a bookkeeper.
 
+The year folders sit under `references/tax-rules/`, where each topic is a folder of `figures.md`, `rules.md`, `examples.md` and `notes.md`, and the tree README indexes the eight year folders and the five cross-year files.
+
 ---
 
 ## 3. SOURCE FILES
@@ -35,6 +37,8 @@ Before using a changing amount or rate, the agent checks the relevant tax year a
 |---|---|---|
 | sk-moneybird-accountant/SKILL.md | Shared | Requires a current-year check and prohibits final tax advice. |
 | sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md | Shared | Explains how each Dutch tax rule works across years and routes to the year folders. |
+| sk-moneybird-accountant/references/tax-rules/README.md | Shared | Indexes the eight year folders and the five cross-year files. |
+| sk-moneybird-accountant/references/tax-rules/general/ | Shared | Holds the general topic files a cross-year rule question is routed through. |
 | sk-moneybird-accountant/references/tax-rules/2020/README.md | Shared | Routes a 2020 question to the topic file for that tax year. |
 | sk-moneybird-accountant/references/tax-rules/2021/README.md | Shared | Routes a 2021 question to the topic file for that tax year. |
 | sk-moneybird-accountant/references/tax-rules/2022/README.md | Shared | Routes a 2022 question to the topic file for that tax year. |

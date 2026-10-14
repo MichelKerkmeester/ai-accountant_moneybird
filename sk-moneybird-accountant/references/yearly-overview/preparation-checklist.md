@@ -16,9 +16,13 @@ version: 1.0.0.0
 
 **Rule:** Run the four sections in order. Stop at the first failed check and record it. The auditfile export comes before the jaarafsluiting. Every figure comes from the year files under `references/tax-rules/`. Every amount in this file is a braced placeholder. The Operator performs every closing action. Nothing here files a return.
 
+## 1. OVERVIEW
+
+This reference holds the ordered close checklist for the yearly overview, starting with the auditfile evidence gate. It then carries the close checks, the closing mechanics, the equity-continuity check and the exception list.
+
 ---
 
-## 1. AUDITFILE FIRST
+## 2. AUDITFILE FIRST
 
 Export the auditfile for the open year before any closing action, then record its SHA-256 together with the year and the version. The export is the evidence gate for everything below it. An auditfile downloaded after the jaarafsluiting can lack the profit and loss data, because the closing entry contra-books the result accounts.
 
@@ -30,7 +34,7 @@ Check: the export exists for the resolved year and version and its hash is recor
 
 ---
 
-## 2. THE CHECKS
+## 3. THE CHECKS
 
 Run the checks in this order. Each check names its evidence, the year file that owns its figures and its Operator point.
 
@@ -59,7 +63,7 @@ Check: after the closing, the open-year result category is gone from the balance
 
 ---
 
-## 3. EQUITY CONTINUITY
+## 4. EQUITY CONTINUITY
 
 The equity check is arithmetic. Prepare it from the year's own data. Let the Operator confirm every judgement line.
 
@@ -83,7 +87,7 @@ The result, the ondernemersaftrek and the profit exemption are year values. Read
 
 ---
 
-## 4. EXCEPTION LIST
+## 5. EXCEPTION LIST
 
 Every difference, missing document, unclear year and failed check becomes one row here. A row names the item, the placeholder `{amount}`, the evidence, the owner and the status. An exception is never closed by a balancing entry and never by a guess.
 

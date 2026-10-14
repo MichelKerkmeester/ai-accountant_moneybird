@@ -19,9 +19,13 @@ Uses a stable local write key and an append-only journal to make each migration 
 
 The plan requires a durable `WRITE_INTENT` before every non-GET call. An uncertain result is reconciled with source-reference and planned-field read-back before any retry.
 
+---
+
 ## 2. HOW IT WORKS
 
 The writer records the source and target aliases, object type, source key, schema version, input hash, planned payload hash, state, approval, evidence path and returned target ID. The mapping schema version is stored beside the stable key and does not change that key. On restart, resume from the last verified journal state. Never blindly replay an uncertain write.
+
+---
 
 ## 3. SOURCE FILES
 
@@ -38,6 +42,8 @@ The writer records the source and target aliases, object type, source key, schem
 | File | Type | Role |
 |---|---|---|
 | sk-moneybird-accountant/manual-testing-playbook/offline-routing/write-journal-crash-resume.md | Manual playbook | Offline crash and uncertain-outcome routing scenario. |
+
+---
 
 ## 4. SOURCE METADATA
 

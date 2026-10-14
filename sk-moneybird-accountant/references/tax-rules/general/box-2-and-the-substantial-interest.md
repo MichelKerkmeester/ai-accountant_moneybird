@@ -36,6 +36,12 @@ General topic 3.7 of 13 in the Dutch tax rules guide.
 
 Guide: [dutch-tax-rules.md](../dutch-tax-rules.md).
 
+## 1. OVERVIEW
+
+This part holds the general rules for the Box 2 and the substantial interest topic across the tax years. The other general topics sit in the sibling files under general/ and the year figures sit in the year folders.
+
+---
+
 ### 3.7 Box 2 and the substantial interest
 
 Year files: `box-2.md` in each year folder.

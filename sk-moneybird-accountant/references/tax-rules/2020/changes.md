@@ -18,7 +18,13 @@ checked_on: "2026-10-12"
 
 ---
 
-## 1. Unique to 2020
+## 1. OVERVIEW
+
+This note lists what changed for tax year 2020. Section 2 holds the changes unique to 2020 and section 3 the generated table of every change by topic.
+
+---
+
+## 2. UNIQUE TO 2020
 
 - The new KOR replaced the old VAT-based reduction from 1 January 2020, with a Dutch calendar-year turnover ceiling of € 20.000. [btw](vat/notes.md#5-changes)
 - The tariefsaanpassing for 2020 is 3,5% above € 68.507, which caps the value of the ondernemersaftrek and the MKB-winstvrijstelling at 46%. [ondernemersaftrek](business-deductions/notes.md#5-changes)
@@ -31,7 +37,7 @@ checked_on: "2026-10-12"
 
 ---
 
-## 2. All changes by topic
+## 3. ALL CHANGES BY TOPIC
 
 <!-- GENERATED:changes:start -->
 | Topic | Bullets | First change |

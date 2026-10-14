@@ -23,7 +23,7 @@ version: 1.0.0.0
 
 This folder is the procedure for a prepare-the-yearly-overview request. The agent assembles the balance sheet, the profit and loss account, the schedules, the fiscal reconciliation and the hand-off, names every exception and stops before the jaarafsluiting. The Operator checks the pack, confirms the judgement points, performs the closing actions in the Moneybird UI and files in the Belastingdienst portal.
 
-The mode is LIVE. Resolve the year as `year_key` with [year and state resolution](../tax-rules/year-and-state.md), load the year README and the year topic files, then read the administration's own data at run time with moneybird-guard under `MONEYBIRD_GUARD_READ_ONLY=1`, following [cli-moneybird](../../../cli-moneybird/SKILL.md). The jaarafsluiting, the period lock, the tax-rate creation and the filing stay UI and Operator actions.
+The mode is LIVE. Resolve the year as `year_key` with [year and state resolution](../tax-rules/year-and-state.md), load the year README and the year topic files, then read the administration's own data at run time with moneybird-guard under `MONEYBIRD_GUARD_READ_ONLY=1`, following [cli-moneybird](../../../cli-moneybird/SKILL.md). The jaarafsluiting, the period lock, the tax-rate creation and the filing stay UI and Operator actions. The route that reaches this folder is T11 in [SKILL.md](../../SKILL.md).
 
 ---
 
@@ -87,7 +87,7 @@ A close request that arrives through this list reads the year file `references/t
 - Every figure, rate, threshold, euro amount and deadline stays in the year files. A figure that is not read from a year file or from the administration at run time is a blocker.
 - Every judgement point carries an `[Operator]` marker. The tax treatment, the value of an onttrekking, the fiscal classification, the lock direction and the filing are Operator decisions.
 - A figure link names the file that owns the figure, for example [Kosten en auto 2026 figures](../tax-rules/2026/costs-and-car/figures.md) and [Investeringen 2026 figures](../tax-rules/2026/investments/figures.md). The folder never copies a figure.
-- The auditfile export stands before the jaarafsluiting. The order and the evidence gate are in [the preparation checklist](preparation-checklist.md#1-auditfile-first).
+- The auditfile export stands before the jaarafsluiting. The order and the evidence gate are in [the preparation checklist](preparation-checklist.md#2-auditfile-first).
 
 ---
 

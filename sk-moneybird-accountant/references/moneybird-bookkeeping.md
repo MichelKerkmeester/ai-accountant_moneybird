@@ -175,7 +175,7 @@ The figures that touch this schedule come from the resolved year folder. Start w
 
 ### Period closing and year attribution
 
-The rule that decides the year a cost or revenue belongs to is one sourced sentence in [year and state resolution](./tax-rules/year-and-state.md), so read it there instead of restating it. The cut-off list and the closing mechanics are in [the preparation checklist](./yearly-overview/preparation-checklist.md#2-the-checks). The closing entry, the inventory count and the accrual reversal are prepared by the agent and performed by the Operator in the Moneybird UI. Read the year file for the resolved year before any figure is used, for example [the 2026 year README](./tax-rules/2026/README.md).
+The rule that decides the year a cost or revenue belongs to is one sourced sentence in [year and state resolution](./tax-rules/year-and-state.md), so read it there instead of restating it. The cut-off list and the closing mechanics are in [the preparation checklist](./yearly-overview/preparation-checklist.md#3-the-checks). The closing entry, the inventory count and the accrual reversal are prepared by the agent and performed by the Operator in the Moneybird UI. Read the year file for the resolved year before any figure is used, for example [the 2026 year README](./tax-rules/2026/README.md).
 
 - Product references: [year close](https://helpcenter.moneybird.nl/nl/articles/208002-jaarafsluiting) and [locking periods](https://helpcenter.moneybird.nl/nl/articles/207253-periodes-vergrendelen), per Moneybird help.
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).

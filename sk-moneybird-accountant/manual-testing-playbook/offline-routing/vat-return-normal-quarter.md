@@ -2,7 +2,7 @@
 title: "VAT-001 -- The normal VAT return quarter"
 description: "This scenario validates the normal-quarter branch of the VAT return preparation procedure, the review pack blocks it names and the stop before any filing action."
 id: VAT-001
-catalog_applicable: false
+catalog_applicable: true
 version: 1.0.0.0
 ---
 
@@ -75,6 +75,7 @@ Check the T10 row and the T8 filing precedence in SKILL.md section 2, then the V
 | File | Role |
 |---|---|
 | [manual-testing-playbook.md](../manual-testing-playbook.md) | Root playbook rules and scenario index. |
+| [feature-catalog entry](../../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) | Current feature summary and source anchors. |
 | [the VAT return procedure](../../references/vat-return/README.md) | The procedure this scenario tests. |
 | [the review pack contract](../../references/vat-return/review-pack.md) | The pack blocks P1 to P9 and the confirmation parts. |
 

@@ -36,6 +36,12 @@ General topic 3.2 of 13 in the Dutch tax rules guide.
 
 Guide: [dutch-tax-rules.md](../dutch-tax-rules.md).
 
+## 1. OVERVIEW
+
+This part holds the general rules for the Income tax box 1 and the Zvw contribution topic across the tax years. The other general topics sit in the sibling files under general/ and the year figures sit in the year folders.
+
+---
+
 ### 3.2 Income tax box 1 and the Zvw contribution
 
 Year files: `income-tax.md` and `health-insurance-contribution.md` in each year folder.

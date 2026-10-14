@@ -26,6 +26,8 @@ The Operator follows the runbook in order against the newest year folder. Every 
 
 The monthly job watches the publication series in `assets/source-watchlist.json` and compares each answer with the state file. `build-source-library.py --check-calendar` reads the checked dates from the year READMEs and the rules file and fails when a current or future year predates the latest passed checkpoint. A watch change or a stale year is reported to the Operator as an issue and does not fail the skill.
 
+The runbook also owns the carry-forward rule, which states that every condition names its alternative or its default, so a decision step carries a branch. `outline-check.py` enforces the rule over the year and general topic files, requires a branch and never judges it, and `check-route-table.py` runs it beside the word and split checks.
+
 ---
 
 ## 3. SOURCE FILES
@@ -45,6 +47,7 @@ The monthly job watches the publication series in `assets/source-watchlist.json`
 | File | Type | Role |
 |---|---|---|
 | `sk-moneybird-accountant/scripts/source-library-test.sh` | Automated test | Proves the watch, its state and the calendar check on fixture repositories and the real corpus. |
+| `sk-moneybird-accountant/scripts/outline-check-test.sh` | Automated test | Proves the carry-forward rule accepts the real tree and rejects a seeded decision step that names no branch. |
 | `.github/workflows/skill-health.yml` | Test harness | Runs the monthly watch and calendar steps and opens an issue on a change. |
 
 ---

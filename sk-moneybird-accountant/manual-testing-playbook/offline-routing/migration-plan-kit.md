@@ -20,6 +20,8 @@ The scenario confirms that Phase 0 setup runs `scripts/init-workspace.sh`, that 
 
 A new user has the phase references but no working files. Routing them to the kit keeps every phase checklist, the configuration and the dashboard consistent with the references.
 
+---
+
 ## 2. SCENARIO CONTRACT
 
 - Objective: Route a first-time user to the plan kit and explain what it creates.

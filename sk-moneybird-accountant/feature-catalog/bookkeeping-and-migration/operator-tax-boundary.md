@@ -23,7 +23,7 @@ The skill can organize evidence and explain general rules, but it does not file 
 
 ## 2. HOW IT WORKS
 
-A return-submission request is handed to the operator. A personal eligibility or classification question is answered with general information, the year and source, plus a clear escalation for the operator or a bookkeeper.
+A file, submit, pay or lock request routes to T8 and receives the refusal, never a prepared return. T8 wins over T10, T11 and T12 when an explicit filing request is present, and the refusal names the Operator as the owner of the filing action. A personal eligibility or classification question is answered with general information, the year and source, plus a clear escalation for the operator or a bookkeeper.
 
 ---
 
@@ -42,6 +42,9 @@ A return-submission request is handed to the operator. A personal eligibility or
 | File | Type | Role |
 |---|---|---|
 | sk-moneybird-accountant/manual-testing-playbook/offline-routing/operator-tax-boundary.md | Manual playbook | Offline routing scenario for this feature. |
+| sk-moneybird-accountant/manual-testing-playbook/offline-routing/tax-deliverable-filing-refusal.md | Manual playbook | Scenario REFUSAL-001 with the four route and guard fixtures and the tax-deliverable-filing-refusal eval case. |
+| sk-moneybird-accountant/scripts/route-replay/routing-gold.json | Fixture | The REFUSE-ROUTE and REFUSE-GUARD rows for file, submit, pay and lock, replayed through the guard stub. |
+| sk-moneybird-accountant/evals/evals.json | Fixture | The tax-deliverable-filing-refusal case, whose forbidden patterns catch a claimed filing action. |
 
 ---
 

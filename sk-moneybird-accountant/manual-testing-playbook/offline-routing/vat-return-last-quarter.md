@@ -2,7 +2,7 @@
 title: "VAT-004 -- The last VAT return quarter of the year"
 description: "This scenario validates the last-quarter branch of the VAT return preparation procedure and the four year-end settlements S1 to S4 it runs before the review pack."
 id: VAT-004
-catalog_applicable: false
+catalog_applicable: true
 version: 1.0.0.0
 ---
 
@@ -75,6 +75,7 @@ Check the T10 row and the T8 filing precedence in SKILL.md section 2, then the V
 | File | Role |
 |---|---|
 | [manual-testing-playbook.md](../manual-testing-playbook.md) | Root playbook rules and scenario index. |
+| [feature-catalog entry](../../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) | Current feature summary and source anchors. |
 | [the VAT return procedure](../../references/vat-return/README.md) | The procedure this scenario tests. |
 | [the year-end and correction rules](../../references/vat-return/year-end-and-corrections.md) | The settlements S1 to S4 and the correction routing. |
 | [the review pack contract](../../references/vat-return/review-pack.md) | The pack blocks P1 to P9 and the confirmation parts. |

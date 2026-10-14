@@ -18,7 +18,13 @@ checked_on: "2026-10-12"
 
 ---
 
-## 1. Unique to 2021
+## 1. OVERVIEW
+
+This note lists what changed for tax year 2021. Section 2 holds the changes unique to 2021 and section 3 the generated table of every change by topic.
+
+---
+
+## 2. UNIQUE TO 2021
 
 - From 1 July 2021 the e-commerce package introduced the € 10.000 EU distance-sales threshold for qualifying goods and digital services together. [btw](vat/notes.md#5-changes)
 - The zelfstandigenaftrek fell from € 7.030 in 2020 to € 6.670 in 2021. [ondernemersaftrek](business-deductions/notes.md#5-changes)
@@ -31,7 +37,7 @@ checked_on: "2026-10-12"
 
 ---
 
-## 2. All changes by topic
+## 3. ALL CHANGES BY TOPIC
 
 <!-- GENERATED:changes:start -->
 | Topic | Bullets | First change |

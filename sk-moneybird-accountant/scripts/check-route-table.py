@@ -1146,7 +1146,8 @@ def check_gap_ledger(path: str, problems: List[str]) -> None:
         return
     heading = -1
     for index, line in enumerate(lines):
-        if line.lstrip().startswith("#") and GAPS_HEADING in line:
+        # WHY: reference H2 headings print in capitals, so the match ignores case.
+        if line.lstrip().startswith("#") and GAPS_HEADING.lower() in line.lower():
             heading = index
             break
     if heading < 0:

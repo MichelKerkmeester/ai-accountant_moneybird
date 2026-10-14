@@ -7,25 +7,37 @@
 The 96 year topic files at references/tax-rules/{year}/{topic}.md carry the
 same eight H2 sections. This script slices each one at its H2 headings into
 four part files under references/tax-rules/{year}/{topic}/ and removes the
-original with git rm. The slice keeps every knowledge byte. A part body is the
-original section bytes with only its relative links rebased, and the four
-normalized bodies rejoin to the normalized source body. The body starts on
-the first H2 line and runs to the end of the file.
+original with git rm. The slice keeps every knowledge byte. A part body is
+the original section bytes with a generated overview section first, its
+headings renumbered from 1 in capitals and its relative links rebased, and
+every topic-wide anchor stays in place. The manifest records the rejoin of
+the four normalized bodies. The body starts on the first H2 line and runs to
+the end of the file.
+
+Each part reads as a standalone reference file. figures.md keeps source
+sections 1 and 2, which already open with an OVERVIEW. The rules.md,
+examples.md and notes.md parts gain a generated `## 1. OVERVIEW` that names
+what the part holds and which sibling holds the rest, and every later
+numbered H2 is renumbered from 2 in file order. The original anchors stay in
+place, so a citation to an anchor such as `3-how-it-works` keeps resolving.
 
 One split also rewrites references/tax-rules/dutch-tax-rules.md. Its H3
 subsections 3.1 to 3.10 and its H2 sections 4, 5 and 6 move to
 references/tax-rules/general/{slug}.md, where the slug is mechanical: drop
 the section number, lower case, every run of non-alphanumerics becomes one
 hyphen and the hyphens are trimmed. The entry file keeps the sections around
-the moved block and gains a pointer table to the 13 general files. The 13
-names are fixed by the privacy gate allowlist, so a name outside the set stops
-the run with exit 2.
+the moved block and gains a pointer table to the 13 general files. Every
+general part gains the same generated overview, a moved H2 section is
+renumbered to 2 and a kept H2 section after the moved block is renumbered to
+continue the guide sequence. The 13 names are fixed by the privacy gate
+allowlist, so a name outside the set stops the run with exit 2.
 
-Every part file is a derived header followed by the original section bytes.
-The header holds frontmatter, an H1 that names the topic and the part, the
-rule line copied verbatim and a pointer block with relative links. The body
-starts on the first H2 or H3 heading line after the frontmatter, which is the
-line this script and a checker use to find the bytes that the manifest hashes.
+Every part file is a derived header followed by its body bytes. The header
+holds frontmatter, an H1 that names the topic and the part, the rule line
+copied verbatim and a pointer block with relative links that names each
+sibling by its content. The body starts on the first H2 or H3 heading line
+after the frontmatter, which is the line this script and a checker use to find
+the bytes that the manifest hashes.
 The header leaves the H1 line free for the GENERATED nav and toc fences that
 build-reference-index.py inserts after it, so a block write never touches a
 body byte.
@@ -43,11 +55,13 @@ the header fails --check as a body edit does. The general record carries the
 same kind of hash for the whole entry file, which keeps its sections around
 the moved block and the pointer table.
 
-A part body is not the source bytes verbatim. Every relative link in it is
-rebased for the part's deeper folder, and a link to a split original is
-pointed at the part or general file that now holds its target. A bare link to
-a split topic file points at that folder's figures.md. The guide keeps its
-entry file, so a bare link to the guide still resolves.
+A part body is not the source bytes verbatim. It opens with the generated
+overview where the part needs one, its H2 numbers follow the part sequence
+and every relative link is rebased for the part's deeper folder. A link to a
+split original is pointed at the part or general file that now holds its
+target, and a bare link to a split topic file points at that folder's
+figures.md. The guide keeps its entry file, so a bare link to the guide still
+resolves.
 
 The manifest records the sha256 of a NORMALIZED body per part and per
 rejoined source. The normalization removes the contents of every GENERATED
@@ -181,12 +195,37 @@ MANIFEST_PATH = os.path.join(TAX_RULES_ROOT, MANIFEST_NAME)
 YEAR_RE = re.compile(r"^[0-9]{4}$")
 NON_TOPIC_NAMES = frozenset(("README.md", "changelog.md", "changes.md"))
 
-# The four parts of one topic and the section numbers each one carries.
+# The four parts of one topic, the section numbers each one carries and the
+# content name its pointer block shows, so a reader can follow a sibling by
+# name instead of a topic-wide section number.
 PART_DEFS = (
-    {"file": "figures.md", "label": "Figures", "sections": (1, 2), "ranges": "sections 1 and 2"},
-    {"file": "rules.md", "label": "Rules", "sections": (3,), "ranges": "section 3"},
-    {"file": "examples.md", "label": "Examples", "sections": (4,), "ranges": "section 4"},
-    {"file": "notes.md", "label": "Notes", "sections": (5, 6, 7, 8), "ranges": "sections 5 to 8"},
+    {"file": "figures.md", "label": "Figures", "sections": (1, 2), "ranges": "the overview and key figures"},
+    {"file": "rules.md", "label": "Rules", "sections": (3,), "ranges": "how it works"},
+    {"file": "examples.md", "label": "Examples", "sections": (4,), "ranges": "the worked examples"},
+    {"file": "notes.md", "label": "Notes", "sections": (5, 6, 7, 8), "ranges": "changes, records, open points and related resources"},
+)
+
+# The generated OVERVIEW paragraph of each year part. It states what the part
+# holds and which sibling holds the rest, so a part that starts at section 2
+# still tells a reader where the other sections went. The text adds structure
+# only and makes no tax claim.
+YEAR_OVERVIEW_TEXT = {
+    "rules.md": "This part holds the how-it-works rules for the %s topic. "
+    "The overview and key figures are in figures.md, the worked examples in examples.md "
+    "and the changes, records, open points and related resources in notes.md.",
+    "examples.md": "This part holds the worked examples for the %s topic. "
+    "The overview and key figures are in figures.md, the how-it-works rules in rules.md "
+    "and the changes, records, open points and related resources in notes.md.",
+    "notes.md": "This part holds the changes, records, open points and related resources for the %s topic. "
+    "The overview and key figures are in figures.md, the how-it-works rules in rules.md "
+    "and the worked examples in examples.md.",
+}
+
+# The generated OVERVIEW paragraph of one general part. The opening avoids
+# the positional markers that check-fragments counts.
+GENERAL_OVERVIEW_TEXT = (
+    "This part holds the general rules for the %s topic across the tax years. "
+    "The other general topics sit in the sibling files under general/ and the year figures sit in the year folders."
 )
 
 # WHY: the privacy gate admits exactly these 13 general paths. A slug outside
@@ -225,6 +264,10 @@ GENERAL_ENTRY_ANCHORS = ("4", "5", "6")
 HEADING_RE = re.compile(r"^(#{1,6})[ \t]+(.*?)[ \t]*$")
 NUMBERED_H2_RE = re.compile(r"^([0-9]+)\.[ \t]+(.*)$")
 NUMBERED_H3_RE = re.compile(r"^([0-9]+\.[0-9]+)[ \t]+(.*)$")
+# One whole H2 line, so the conform pass can rewrite only its number and its
+# case without touching any other byte of the line.
+NUMBERED_H2_LINE_RE = re.compile(r"^##[ \t]+([0-9]+)\.[ \t]+(.*?)[ \t]*$")
+PLAIN_H2_LINE_RE = re.compile(r"^##[ \t]+(.*?)[ \t]*$")
 FRONTMATTER_FIELD_RE = re.compile(r"^([A-Za-z_][A-Za-z0-9_-]*):[ \t]*(.*)$")
 LIST_ITEM_RE = re.compile(r"^[ \t]+-[ \t]+(.*)$")
 RULE_PREFIX = "**Rule:**"
@@ -486,7 +529,8 @@ def body_start(text: str) -> Optional[int]:
 
     The body starts on the first H2 or H3 heading line after the frontmatter,
     because the derived header holds no heading of those levels. Every byte
-    from that line to the end of the file is the original section bytes.
+    from that line to the end of the file is the body: the overview section
+    and the original section bytes under their conformed headings.
 
     Args:
         text: Part file text.
@@ -1195,6 +1239,123 @@ def resolve_citation(
     return None, ""
 
 
+def overview_heading(paragraph: str) -> str:
+    """Render the generated OVERVIEW block that opens a part body.
+
+    Args:
+        paragraph: The one or two sentence overview text.
+
+    Returns:
+        The heading, the paragraph and the separator that the template puts
+        between two H2 sections, so the next heading keeps its separator.
+    """
+    return "## 1. OVERVIEW\n\n%s\n\n---\n\n" % paragraph
+
+
+def year_overview_paragraph(file_name: str, title: str) -> str:
+    """Return the generated overview paragraph of one year part.
+
+    Args:
+        file_name: Part file name such as rules.md.
+        title: Topic title without the part label.
+
+    Returns:
+        The paragraph text.
+    """
+    return YEAR_OVERVIEW_TEXT[file_name] % title
+
+
+def general_overview_paragraph(title: str) -> str:
+    """Return the generated overview paragraph of one general part.
+
+    Args:
+        title: General topic title.
+
+    Returns:
+        The paragraph text.
+    """
+    return GENERAL_OVERVIEW_TEXT % title
+
+
+def conform_h2_headings(text: str, start_number: int) -> str:
+    """Renumber the numbered H2 headings of one body and upper case each H2.
+
+    A numbered H2 becomes the next number in file order from start_number.
+    An unnumbered H2 keeps its text and gains upper case. A heading inside a
+    code fence is content and stays as it is. Every other byte, the anchor
+    lines included, is kept exactly.
+
+    Args:
+        text: Body text with H2 headings.
+        start_number: Number the first numbered H2 receives.
+
+    Returns:
+        The text with its H2 headings conformed.
+    """
+    out: List[str] = []
+    in_code = False
+    number = start_number
+    for line in text.splitlines(keepends=True):
+        content = line.rstrip("\n")
+        ending = line[len(content):]
+        if content.strip().startswith(CODE_FENCE_PREFIXES):
+            in_code = not in_code
+            out.append(line)
+            continue
+        if not in_code:
+            match = NUMBERED_H2_LINE_RE.match(content)
+            if match:
+                out.append("## %d. %s%s" % (number, match.group(2).strip().upper(), ending))
+                number += 1
+                continue
+            match = PLAIN_H2_LINE_RE.match(content)
+            if match and match.group(1).strip():
+                title = match.group(1).strip()
+                if title != title.upper():
+                    out.append("## %s%s" % (title.upper(), ending))
+                    continue
+        out.append(line)
+    return "".join(out)
+
+
+def conform_year_part_body(body: str, index: int, title: str) -> str:
+    """Return one year part body in its conformed form.
+
+    figures.md keeps its body, because source sections 1 and 2 already open
+    with an OVERVIEW. The other three parts gain the generated overview and
+    renumber their numbered H2 headings from 2.
+
+    Args:
+        body: Source section bytes of one part.
+        index: Zero based part index in PART_DEFS.
+        title: Topic title without the part label.
+
+    Returns:
+        The conformed body.
+    """
+    if index == 0:
+        return body
+    definition = PART_DEFS[index]
+    paragraph = year_overview_paragraph(definition["file"], title)
+    return overview_heading(paragraph) + conform_h2_headings(body, 2)
+
+
+def conform_general_part_body(body: str, title: str) -> str:
+    """Return one general part body in its conformed form.
+
+    Every general part gains the generated overview. A moved entry H2 is
+    renumbered to 2, while an H3 subsection keeps its entry number.
+
+    Args:
+        body: Entry section bytes of one general topic.
+        title: General topic title.
+
+    Returns:
+        The conformed body.
+    """
+    return overview_heading(general_overview_paragraph(title)) + conform_h2_headings(body, 2)
+
+
 # ───────────────────────────────────────────────────────────────
 # 4. YEAR TOPIC PLAN
 # ───────────────────────────────────────────────────────────────
@@ -1316,9 +1477,9 @@ def plan_year_source(path: str) -> Dict[str, Any]:
     Returns:
         A record with the source path, the title, the original body, its
         sha256 and one part record per PART_DEFS entry. A part record carries
-        its repository-relative path, its section numbers, its body, its body
-        sha256, the whole derived file content and the line map fields that
-        turn a source line number into a part line number.
+        its repository-relative path, its section numbers, its conformed
+        body, its body sha256, the whole derived file content and the line map
+        fields that turn a source line number into a part line number.
 
     Raises:
         SystemExit: If the file misses its frontmatter, its rule line or any
@@ -1345,6 +1506,8 @@ def plan_year_source(path: str) -> Dict[str, Any]:
         start_line = rows[first - 1]["line"]
         end_line = rows[last]["line"] - 1 if last < 8 else total_lines
         part_body_text = text[start:end]
+        conformed_body = conform_year_part_body(part_body_text, index, scalars["title"])
+        inserted_lines = conformed_body.count("\n") - part_body_text.count("\n")
         header = year_part_header(fields, rule_line, scalars["title"], index)
         folder = os.path.splitext(os.path.basename(path))[0]
         part_path = os.path.join(os.path.dirname(path), folder, definition["file"])
@@ -1352,13 +1515,15 @@ def plan_year_source(path: str) -> Dict[str, Any]:
             {
                 "path": repo_rel(part_path),
                 "sections": definition["sections"],
-                "body": part_body_text,
-                "body_sha256": sha256_text(part_body_text),
-                "content": header + part_body_text,
+                "body": conformed_body,
+                "body_sha256": sha256_text(conformed_body),
+                "content": header + conformed_body,
                 "header": header,
                 "start_line": start_line,
                 "end_line": end_line,
-                "line_offset": header.count("\n") + 1 - start_line,
+                # WHY: the conformed body opens with the generated overview,
+                # so a source line maps that many lines farther down.
+                "line_offset": header.count("\n") + 1 - start_line + inserted_lines,
             }
         )
     return {
@@ -1487,8 +1652,9 @@ def plan_general_source(path: str) -> Optional[Dict[str, Any]]:
 
     Raises:
         SystemExit: If the file misses its frontmatter, its rule line, its ten
-            general subsections, its three moved H2 sections or its section 7
-            anchor, or when a computed slug is outside GENERAL_SLUGS.
+            general subsections, its three moved H2 sections or the kept H2
+            heading after them, or when a computed slug is outside
+            GENERAL_SLUGS.
     """
     text = read_text(path)
     fields = frontmatter_fields(text)
@@ -1543,7 +1709,7 @@ def plan_general_source(path: str) -> Optional[Dict[str, Any]]:
     if [row["section"] for row in moved_h2] != list(GENERAL_ENTRY_ANCHORS):
         fail("general H2 sections of %s are %s" % (repo_rel(path), [row["section"] for row in moved_h2]))
     if anchor_seven is None or anchor_seven_line is None:
-        fail("missing the section 7 heading in %s" % repo_rel(path))
+        fail("missing the kept heading after the moved block in %s" % repo_rel(path))
     if moved_h2[0]["start"] < subsections[-1]["start"] or anchor_seven < moved_h2[-1]["start"]:
         fail("general sections out of order in %s" % repo_rel(path))
     moved = subsections + moved_h2
@@ -1557,6 +1723,8 @@ def plan_general_source(path: str) -> Optional[Dict[str, Any]]:
     parts: List[Dict[str, Any]] = []
     for index, row in enumerate(moved):
         part_body_text = text[row["start"]:row["end"]]
+        conformed_body = conform_general_part_body(part_body_text, row["title"])
+        inserted_lines = conformed_body.count("\n") - part_body_text.count("\n")
         header = general_part_header(fields, rule_line, moved, slugs, index)
         end_line = moved[index + 1]["line"] - 1 if index + 1 < len(moved) else anchor_seven_line - 1
         parts.append(
@@ -1564,18 +1732,23 @@ def plan_general_source(path: str) -> Optional[Dict[str, Any]]:
                 "path": repo_rel(os.path.join(GENERAL_DIR, slugs[index] + ".md")),
                 "section": row["section"],
                 "heading": row["heading"],
-                "body": part_body_text,
-                "body_sha256": sha256_text(part_body_text),
-                "content": header + part_body_text,
+                "body": conformed_body,
+                "body_sha256": sha256_text(conformed_body),
+                "content": header + conformed_body,
                 "header": header,
                 "start_line": row["line"],
                 "end_line": end_line,
-                "line_offset": header.count("\n") + 1 - row["line"],
+                # WHY: the conformed body opens with the generated overview,
+                # so an entry line maps that many lines farther down.
+                "line_offset": header.count("\n") + 1 - row["line"] + inserted_lines,
             }
         )
     region = text[moved[0]["start"]:anchor_seven]
     pointer_table = entry_pointer_table(moved, slugs)
-    entry_text = text[: moved[0]["start"]] + pointer_table + text[anchor_seven:]
+    # WHY: the moved block takes sections 4, 5 and 6, so the kept headings
+    # after it continue the guide sequence from 4.
+    kept_after = conform_h2_headings(text[anchor_seven:], int(GENERAL_ENTRY_ANCHORS[0]))
+    entry_text = text[: moved[0]["start"]] + pointer_table + kept_after
     # WHY: the moved region is one contiguous run, so the lines the entry
     # keeps before it keep their number and the lines after it shift by the
     # difference between the inserted table and the removed bytes.

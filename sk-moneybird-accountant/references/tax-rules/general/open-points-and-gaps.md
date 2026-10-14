@@ -36,7 +36,13 @@ General topic 5 of 13 in the Dutch tax rules guide.
 
 Guide: [dutch-tax-rules.md](../dutch-tax-rules.md).
 
-## 5. OPEN POINTS AND GAPS
+## 1. OVERVIEW
+
+This part holds the general rules for the OPEN POINTS AND GAPS topic across the tax years. The other general topics sit in the sibling files under general/ and the year figures sit in the year folders.
+
+---
+
+## 2. OPEN POINTS AND GAPS
 
 These points were open on 2026-10-11. Each year file repeats its own open points in its section 7.
 

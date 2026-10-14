@@ -16,9 +16,13 @@ version: 1.0.0.0
 
 **Rule:** Prepare the reconciliation and the hand-off for Operator review. Every amount cell is a braced placeholder. Every rate, threshold and eligibility rule is read from the year file that owns it. The agent prepares and never files.
 
+## 1. OVERVIEW
+
+This reference holds the fiscal reconciliation template, the three-column hand-off template and the prepared-not-filed stop. The agent prepares the pack for Operator review and never files a return.
+
 ---
 
-## 1. THE FISCAL RECONCILIATION TEMPLATE
+## 2. THE FISCAL RECONCILIATION TEMPLATE
 
 | Line | Item | Amount | Source |
 |---|---|---|---|
@@ -37,7 +41,7 @@ The order matters. Remove the vrijgestelde winstbestanddelen first, subtract the
 
 ---
 
-## 2. THE THREE-COLUMN HAND-OFF TEMPLATE
+## 3. THE THREE-COLUMN HAND-OFF TEMPLATE
 
 Split the pack into the three columns below. The first column is what the administration supplies. The second is what extra evidence can support. The third is what the administration never holds.
 
@@ -54,7 +58,7 @@ The third column is the boundary of the pack. An item there is a note for the Op
 
 ---
 
-## 3. PREPARED, NOT FILED
+## 4. PREPARED, NOT FILED
 
 The agent prepared the yearly overview and did not file anything. The pack stops at the three-column hand-off. The Operator checks the balance and the result, confirms every judgement row, performs the closing and locking actions in the Moneybird UI and files the income-tax return in the Belastingdienst portal. Payment of any assessment is a separate Operator action.
 

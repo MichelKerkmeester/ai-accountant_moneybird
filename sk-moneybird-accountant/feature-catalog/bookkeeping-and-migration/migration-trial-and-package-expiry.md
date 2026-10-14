@@ -19,9 +19,13 @@ Checks the observed trial or package state and expiry before each Moneybird non-
 
 The access window must cover the write, synchronization, read-back and verification. Before Phase 17, the active paid package must cover the next live VAT period and year close.
 
+---
+
 ## 2. HOW IT WORKS
 
 Record state, expiry date, evidence source, observation time, renewal owner and alert evidence in `MIGRATION_CONFIG`. The Operator reconfirms access before each write batch. Missing, expired or uncertain access blocks the batch. Recheck access before Phase 22 verification and resolve archive coverage before any lapse.
+
+---
 
 ## 3. SOURCE FILES
 
@@ -38,6 +42,8 @@ Record state, expiry date, evidence source, observation time, renewal owner and 
 | File | Type | Role |
 |---|---|---|
 | sk-moneybird-accountant/manual-testing-playbook/offline-routing/trial-expiry-stop.md | Manual playbook | Offline access-expiry stop scenario. |
+
+---
 
 ## 4. SOURCE METADATA
 

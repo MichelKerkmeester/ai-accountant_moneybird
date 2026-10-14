@@ -17,9 +17,13 @@ version: 1.0.0.0
 
 Migration work units follow M12 through the Agent runner, Implementer, Verifier and Final reviewer seats. The Operator keeps approvals, local sensitive-record review and the phase decision.
 
+---
+
 ## 2. HOW IT WORKS
 
 Every seat receives typed allowlisted summaries only. Local role sessions and sandboxed scripts perform record-level work. The Verifier owns independent fixtures, privacy filtering, payload scanning and the adversarial corpus. Each phase requires a work-unit verdict or Operator disposition, a passing phase-entry boundary canary, a clean payload scan and Final review PASS. The separate Claude Migration Writer session keeps the existing write gates and approvals.
+
+---
 
 ## 3. SOURCE FILES
 
@@ -37,6 +41,8 @@ Every seat receives typed allowlisted summaries only. Local role sessions and sa
 | File | Type | Role |
 |---|---|---|
 | sk-moneybird-accountant/manual-testing-playbook/offline-routing/migration-agent-route.md | Manual playbook | Checks the M12 seats, summaries-only boundary and verified-state resume rule without service calls. |
+
+---
 
 ## 4. SOURCE METADATA
 

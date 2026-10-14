@@ -16,6 +16,12 @@ version: 1.0.0.0
 
 Read this reference before Phase 0. The [migration index](./README.md) maps every phase. The [shared mechanisms](./shared-mechanisms.md) define the routes, journal, manifests, access checks, and recovery behavior.
 
+## 1. OVERVIEW
+
+This reference covers the migration goal, the tool boundaries, the workspace layout and the required configuration. Read it before Phase 0, with the migration index for the phase map and the shared mechanisms for the routes and controls.
+
+---
+
 ## Goal and evidence sources
 
 Rebuild the administration in Moneybird and verify it against four independent evidence sources:

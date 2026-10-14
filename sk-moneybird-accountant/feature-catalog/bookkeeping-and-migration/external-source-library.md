@@ -25,6 +25,8 @@ The guide groups the sources by authority and names the most-cited statutes, Bel
 
 The agent reads the guide, then greps the index for a host, a topic or a citing file instead of reading it whole. Each row's access value says how to reach the source: a web page through WebFetch, a law page through WebFetch only, a PDF that needs a PDF reader, an archive copy no agent can fetch, a dead link or a tool endpoint that only the CLI skills may call. A figure still comes from the year file that cites the source, with that file's Check tag. The builder regenerates the index from the markdown without any network call and keeps the recorded access results.
 
+The builder also checks the reference frontmatter field set and the sourced term map in `assets/term-map.json`, where every row carries the English gloss a reader sees on first use and the source the owning year file cites.
+
 ---
 
 ## 3. SOURCE FILES
@@ -35,7 +37,8 @@ The agent reads the guide, then greps the index for a host, a topic or a citing 
 |---|---|---|
 | sk-moneybird-accountant/references/tax-rules/source-library.md | Shared | Groups the sources by authority and explains how to reach each access class. |
 | sk-moneybird-accountant/assets/source-library.json | Shared | Holds one row per cited source with its access result and citing files. |
-| sk-moneybird-accountant/scripts/build-source-library.py | Shared | Builds the index from the markdown and checks it for drift. |
+| sk-moneybird-accountant/scripts/build-source-library.py | Shared | Builds the index from the markdown, checks it for drift and checks the frontmatter field set with the sourced term map. |
+| sk-moneybird-accountant/assets/term-map.json | Shared | Holds one row per Dutch term with its English gloss and the source the owning year file cites. |
 | sk-moneybird-accountant/assets/source-watchlist.json | Shared | Lists the publication series the monthly watch checks for changes. |
 | sk-moneybird-accountant/assets/source-watch-state.json | Shared | Records the last answer per watched URL, so a page that goes live is reported. |
 | sk-moneybird-accountant/references/tax-rules/year-rollover.md | Shared | Holds the 1 January runbook, the release calendar and its owner. |

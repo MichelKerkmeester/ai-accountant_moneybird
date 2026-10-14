@@ -26,6 +26,8 @@ The read budget ladder the table rows use is owned by `scripts/README.md` and `S
 
 The canary suite runs the car-question route through the year README and one topic section and asserts the proposed route stays under its ratio and its token ceiling. Three mutants prove the gate: a route pointed at the whole topic file, a swapped encoding in the cache and a fixture that passes one budget and fails the other.
 
+A sibling word check holds each `SKILL.md` at a 3,000-word loading budget with a 4,000-word ceiling. `check-skill-words.py` warns above the budget, fails above the ceiling and exits 2 when a file is missing or unreadable, and `check-route-table.py` runs it beside the baseline check. The walk skips hidden folders, `specs/`, `node_modules/` and the two private folders.
+
 ---
 
 ## 3. SOURCE FILES
@@ -44,6 +46,8 @@ The canary suite runs the car-question route through the year README and one top
 | File | Type | Role |
 |---|---|---|
 | `sk-moneybird-accountant/scripts/token-canary-test.sh` | Automated test | Runs the car-question route and three budget mutants. |
+| `sk-moneybird-accountant/scripts/check-skill-words.py` | Test harness | Holds each `SKILL.md` at the 3,000-word budget with the 4,000-word ceiling and is run by the route table step. |
+| `sk-moneybird-accountant/scripts/check-skill-words-test.sh` | Automated test | Proves the 2,999-word, 3,001-word and 4,001-word bands and the missing file exit. |
 | `.github/workflows/skill-health.yml` | Test harness | Seeds the pinned tokenizer cache and runs the baseline check. |
 
 ---

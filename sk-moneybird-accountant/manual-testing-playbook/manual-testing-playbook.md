@@ -1,6 +1,6 @@
 ---
 title: sk-moneybird-accountant: Manual Testing Playbook
-description: Offline scenarios for verifying phase routing, write recovery, archive gates, expiry stops, export routes, and operator boundaries.
+description: Offline scenarios for verifying phase routing, the VAT return branches, the yearly overview and income tax return packs, the filing refusal, write recovery, archive gates, expiry stops, export routes and operator boundaries.
 version: 1.0.0.0
 ---
 
@@ -25,7 +25,7 @@ A scenario run is complete only after its PASS, FAIL, or SKIP outcome and reason
 
 ## 1. OVERVIEW
 
-The scenarios validate phase routing, concept mapping, write recovery, archive and decommission gates, access-expiry stops, auditfile routing, live cadence, invoice and asset booking, tax limits, task-type ties, CLI ownership boundaries, year and state resolution, year rollover, safety scorers and privacy behavior. The root index links each scenario to its execution file and matching feature catalog entry.
+The scenarios validate phase routing, concept mapping, write recovery, archive and decommission gates, access-expiry stops, auditfile routing, live cadence, invoice and asset booking, the VAT return branches, the yearly overview and income tax return packs, the filing refusal, tax limits, task-type ties, CLI ownership boundaries, year and state resolution, year rollover, safety scorers and privacy behavior. The root index links each scenario to its execution file and, where a dedicated catalog entry exists, its feature catalog entry.
 
 Coverage note: this package checks local routing and policy. It does not call external services.
 
@@ -181,7 +181,7 @@ Verify the T2 migration concept route, the purpose and tax treatment rule and th
 #### Scenario Contract
 Prompt: Which Jortt category should my software costs map to in Moneybird, and which export traps should I check? Do not call an API.
 
-Fixture rows: none in routing-gold.json for this prompt. The GAP-T2-01 row covers the same T2 route.
+Fixture rows: MIG-007 (en) and MIG-007-nl (nl twin).
 
 Desired user-visible outcome: Selects MIGRATION, loads the mapping reference, maps by accounting purpose and tax treatment, names the attachment, asset list and category and opening balance traps, keeps the phase unchanged and makes no API call.
 
@@ -638,7 +638,7 @@ Feature file: [PACK-001](offline-routing/yearly-overview-pack.md)
 ### PACK-002 | The income tax return pack
 
 #### Description
-Verify the income tax return route, the pack blocks, the Operator input list, the VIA comparison sheet, the per-asset register and the labelled residual unknowns.
+Verify the income tax return route, the pack blocks, the Operator input list, the VIA comparison sheet, the per-asset register, the labelled residual unknowns and the prepared-not-filed stop.
 
 #### Scenario Contract
 Prompt: Prepare my income tax return for 2026 and show the review pack with every open input. Do not call an API.
@@ -714,3 +714,12 @@ No runtime test calls an accounting service. The scenarios remain manual routing
 | PRIV-002 | Privacy gate | quality-gates | [PRIV-002](offline-routing/answer-privacy.md) | [privacy gate](../feature-catalog/quality-gates/privacy-gate.md) |
 | STATE-001 | Session context and year resolution | reference-and-state | [STATE-001](offline-routing/session-context-and-year-state.md) | [session context and year resolution](../feature-catalog/reference-and-state/session-context-and-year-state.md) |
 | STATE-002 | Year rollover runbook | reference-and-state | [STATE-002](offline-routing/year-rollover-runbook.md) | [year rollover runbook](../feature-catalog/reference-and-state/year-rollover-runbook.md) |
+| VAT-001 | The normal VAT return quarter | bookkeeping-and-migration | [VAT-001](offline-routing/vat-return-normal-quarter.md) | [VAT return preparation](../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) |
+| VAT-002 | A VAT return quarter with a reverse-charged purchase | bookkeeping-and-migration | [VAT-002](offline-routing/vat-return-reverse-charge.md) | [VAT return preparation](../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) |
+| VAT-003 | A KOR quarter with a reverse-charged purchase | bookkeeping-and-migration | [VAT-003](offline-routing/vat-return-small-business-scheme.md) | [VAT return preparation](../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) |
+| VAT-004 | The last VAT return quarter of the year | bookkeeping-and-migration | [VAT-004](offline-routing/vat-return-last-quarter.md) | [VAT return preparation](../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) |
+| VAT-005 | A VAT return correction on both sides of the boundary | bookkeeping-and-migration | [VAT-005](offline-routing/vat-return-correction-boundary.md) | [VAT return preparation](../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) |
+| PACK-001 | The yearly overview pack | bookkeeping-and-migration | [PACK-001](offline-routing/yearly-overview-pack.md) | [yearly overview preparation](../feature-catalog/bookkeeping-and-migration/yearly-overview-preparation.md) |
+| PACK-002 | The income tax return pack | bookkeeping-and-migration | [PACK-002](offline-routing/income-tax-return-pack.md) | [income tax return preparation](../feature-catalog/bookkeeping-and-migration/income-tax-return-preparation.md) |
+| REFUSAL-001 | Filing, submitting, paying and period locking stay refused | bookkeeping-and-migration | [REFUSAL-001](offline-routing/tax-deliverable-filing-refusal.md) | [operator tax boundary](../feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md) |
+

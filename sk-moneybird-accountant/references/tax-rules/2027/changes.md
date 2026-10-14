@@ -18,7 +18,13 @@ checked_on: "2026-10-12"
 
 ---
 
-## 1. Unique to 2027
+## 1. OVERVIEW
+
+This note lists what changed for tax year 2027. Section 2 holds the changes unique to 2027 and section 3 the generated table of every change by topic.
+
+---
+
+## 2. UNIQUE TO 2027
 
 - The zelfstandigenaftrek fell from € 1.200 in 2026 to € 900 in 2027 and the AOW-age amount from € 600 to € 450. [inkomstenbelasting](income-tax/notes.md#5-changes)
 - The tariefsaanpassing fell from 11,94% above € 78.426 in 2026 to 11,91% above € 79.569 in the 2027 text. [ondernemersaftrek](business-deductions/notes.md#5-changes)
@@ -31,7 +37,7 @@ checked_on: "2026-10-12"
 
 ---
 
-## 2. All changes by topic
+## 3. ALL CHANGES BY TOPIC
 
 <!-- GENERATED:changes:start -->
 | Topic | Bullets | First change |

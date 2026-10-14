@@ -36,6 +36,12 @@ General topic 3.4 of 13 in the Dutch tax rules guide.
 
 Guide: [dutch-tax-rules.md](../dutch-tax-rules.md).
 
+## 1. OVERVIEW
+
+This part holds the general rules for the Investment deductions and depreciation topic across the tax years. The other general topics sit in the sibling files under general/ and the year figures sit in the year folders.
+
+---
+
 ### 3.4 Investment deductions and depreciation
 
 Year files: `investments.md` in each year folder.

@@ -18,7 +18,13 @@ checked_on: "2026-10-12"
 
 ---
 
-## 1. Unique to 2025
+## 1. OVERVIEW
+
+This note lists what changed for tax year 2025. Section 2 holds the changes unique to 2025 and section 3 the generated table of every change by topic.
+
+---
+
+## 2. UNIQUE TO 2025
 
 - The KOR changed from the current-calendar-year test with a minimum participation and re-entry period to the 2025 rules for a business established in the Netherlands, with turnover information for the preceding and current calendar years. [btw](vat/notes.md#5-changes)
 - From 1 January 2025 the normal rules apply to work relationships, no aanwijzingen are given and schijnzelfstandigheid can lead directly to correctieverplichtingen and naheffingsaanslagen loonheffingen. [arbeidsrelatie](work-relationship/notes.md#5-changes)
@@ -31,7 +37,7 @@ checked_on: "2026-10-12"
 
 ---
 
-## 2. All changes by topic
+## 3. ALL CHANGES BY TOPIC
 
 <!-- GENERATED:changes:start -->
 | Topic | Bullets | First change |

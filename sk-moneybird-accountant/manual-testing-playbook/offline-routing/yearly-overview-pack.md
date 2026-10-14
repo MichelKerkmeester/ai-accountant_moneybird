@@ -2,7 +2,7 @@
 title: "PACK-001 -- The yearly overview pack"
 description: "This scenario validates the yearly overview preparation route, the auditfile-first order, the equity-continuity check, the exception list and the prepared-not-filed stop."
 id: PACK-001
-catalog_applicable: false
+catalog_applicable: true
 version: 1.0.0.0
 ---
 
@@ -75,6 +75,7 @@ Check the T11 row and the T8 filing precedence in SKILL.md section 2, then the P
 | File | Role |
 |---|---|
 | [manual-testing-playbook.md](../manual-testing-playbook.md) | Root playbook rules and scenario index. |
+| [feature-catalog entry](../../feature-catalog/bookkeeping-and-migration/yearly-overview-preparation.md) | Current feature summary and source anchors. |
 | [the yearly overview procedure](../../references/yearly-overview/README.md) | The procedure this scenario tests. |
 | [the preparation checklist](../../references/yearly-overview/preparation-checklist.md) | The auditfile-first gate, the close checks, the equity check and the exception list. |
 | [the fiscal reconciliation](../../references/yearly-overview/fiscal-reconciliation.md) | The reconciliation template, the three-column hand-off and the prepared-not-filed stop. |

@@ -15,6 +15,12 @@ version: 1.0.0.0
 
 These controls are defined once and referenced by the phase contracts. They describe required behavior and do not claim that a tool already implements each control. Load the [migration index](./README.md) to route a request to its phase. M12 defines the external agent route used with those phase contracts.
 
+## 1. OVERVIEW
+
+This reference defines the shared mechanisms that every migration phase contract references. The controls describe required behavior and do not claim that a tool already implements them. Each mechanism is defined once here so the phase contracts can point to it.
+
+---
+
 ## M1. Register schemas and complete source manifests
 
 Store versioned register schemas under `migration-workspace/Schemas/`. Each schema records its name, version, and SHA-256 of canonical UTF-8 schema bytes with stable key ordering. Each export manifest records source, scope, period, timestamp, page size and count, record count, byte count, SHA-256, exclusions, and independent source control totals.

@@ -28,6 +28,8 @@ The grader checks the required tokens and the forbidden patterns of every case. 
 
 The test suite builds capture fixtures for a compliant run, a broken answer, a refuse-everything run, a forbidden-pattern trip, another capture year, alternative phrasings and three skill snapshots.
 
+The case set covers the five VAT branches, the yearly overview pack, the income tax return pack and the tax-deliverable filing refusal. The refusal case fails an answer that claims the agent files, submits, pays or locks, so a prepare answer that reaches outside its boundary is caught.
+
 ---
 
 ## 3. SOURCE FILES
@@ -44,7 +46,7 @@ The test suite builds capture fixtures for a compliant run, a broken answer, a r
 
 | File | Type | Role |
 |---|---|---|
-| `sk-moneybird-accountant/scripts/run-evals-test.sh` | Automated test | Builds capture fixtures for a compliant run, a broken answer and a refuse-everything run. |
+| `sk-moneybird-accountant/scripts/run-evals-test.sh` | Automated test | Builds capture fixtures for a compliant run, a broken answer, a refuse-everything run and the branch, pack and refusal cases. |
 | `sk-moneybird-accountant/hardening-matrix.md` | Reference | Names the eval cases that cover the routing failure modes. |
 | `.github/workflows/skill-health.yml` | Test harness | Parses the eval file and runs the grader suite. |
 

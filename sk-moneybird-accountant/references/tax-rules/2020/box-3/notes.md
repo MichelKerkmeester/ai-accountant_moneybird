@@ -18,13 +18,19 @@ version: 1.0.0.0
 
 Part 4 of 4 of the Box 3 sparen en beleggen 2020 topic.
 
-- [figures.md](figures.md): sections 1 and 2.
-- [rules.md](rules.md): section 3.
-- [examples.md](examples.md): section 4.
+- [figures.md](figures.md): the overview and key figures.
+- [rules.md](rules.md): how it works.
+- [examples.md](examples.md): the worked examples.
 
 Year overview: [README.md](../README.md).
 
-## 5. CHANGES FROM 2019
+## 1. OVERVIEW
+
+This part holds the changes, records, open points and related resources for the Box 3 sparen en beleggen 2020 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
+
+---
+
+## 2. CHANGES FROM 2019
 
 <a id="5-changes"></a>
 
@@ -42,7 +48,7 @@ The checked material contains no 2019 figures for box 3. This section therefore 
 
 ---
 
-## 6. IN THE BOOKS
+## 3. IN THE BOOKS
 
 <a id="6-in-the-books"></a>
 
@@ -56,7 +62,7 @@ The checked material contains no 2019 figures for box 3. This section therefore 
 
 ---
 
-## 7. OPEN POINTS AND CONFLICTS
+## 4. OPEN POINTS AND CONFLICTS
 
 <a id="7-open-points"></a>
 
@@ -68,7 +74,7 @@ The checked material contains no 2019 figures for box 3. This section therefore 
 
 ---
 
-## 8. RELATED RESOURCES
+## 5. RELATED RESOURCES
 
 <a id="8-related-resources"></a>
 

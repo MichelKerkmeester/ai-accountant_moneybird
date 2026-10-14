@@ -51,7 +51,12 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fi
 TAX_RULES_ROOT = os.path.join(REPO_ROOT, "sk-moneybird-accountant", "references", "tax-rules")
 OWNER_PATH = os.path.join(REPO_ROOT, "sk-moneybird-accountant", "references", "moneybird-bookkeeping.md")
 YEAR_RE = re.compile(r"^20\d\d$")
-SECTION_SIX_RE = re.compile(r"^## 6\.[^\n]*\n(.*?)(?=^## |\Z)", re.S | re.M)
+# WHY: a split part renumbers its headings from 1, so the topic-wide section
+# number survives only in the explicit anchor under the heading. A flat topic
+# file keeps the old "## 6." heading, which the second branch still reads.
+SECTION_SIX_RE = re.compile(
+    r"^## (?:\d+\.[^\n]*\n\s*<a id=\"6-in-the-books\"></a>|6\.[^\n]*\n)(.*?)(?=^## |\Z)", re.S | re.M
+)
 BULLET_PREFIX = "- "
 NUMBER_RE = re.compile(r"\d+(?:[.,]\d+)*")
 LINK_RE = re.compile(r"\[([^\]]*)\]\([^)]*\)")

@@ -18,7 +18,13 @@ checked_on: "2026-10-12"
 
 ---
 
-## 1. Unique to 2022
+## 1. OVERVIEW
+
+This note lists what changed for tax year 2022. Section 2 holds the changes unique to 2022 and section 3 the generated table of every change by topic.
+
+---
+
+## 2. UNIQUE TO 2022
 
 - The corona bijzonder uitstel build-up window closed on 31 March 2022 and repayment of the built-up debt started on 1 October 2022 with the first term due on 31 October 2022. [btw](vat/notes.md#5-changes)
 - The zelfstandigenaftrek fell from € 6.670 in 2021 to € 6.310 in 2022. [ondernemersaftrek](business-deductions/notes.md#5-changes)
@@ -31,7 +37,7 @@ checked_on: "2026-10-12"
 
 ---
 
-## 2. All changes by topic
+## 3. ALL CHANGES BY TOPIC
 
 <!-- GENERATED:changes:start -->
 | Topic | Bullets | First change |

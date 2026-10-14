@@ -18,7 +18,13 @@ checked_on: "2026-10-12"
 
 ---
 
-## 1. Unique to 2023
+## 1. OVERVIEW
+
+This note lists what changed for tax year 2023. Section 2 holds the changes unique to 2023 and section 3 the generated table of every change by topic.
+
+---
+
+## 2. UNIQUE TO 2023
 
 - The qualifying solar-panel zero rate began on 1 January 2023. [btw](vat/notes.md#5-changes)
 - The zelfstandigenaftrek fell from € 6.310 in 2022 to € 5.030 in 2023. [ondernemersaftrek](business-deductions/notes.md#5-changes)
@@ -31,7 +37,7 @@ checked_on: "2026-10-12"
 
 ---
 
-## 2. All changes by topic
+## 3. ALL CHANGES BY TOPIC
 
 <!-- GENERATED:changes:start -->
 | Topic | Bullets | First change |

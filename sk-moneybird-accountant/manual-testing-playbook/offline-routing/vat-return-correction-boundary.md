@@ -2,7 +2,7 @@
 title: "VAT-005 -- A VAT return correction on both sides of the boundary"
 description: "This scenario validates the correction branch of the VAT return preparation procedure, where a correction below the boundary joins the next return and one above it follows the suppletie route."
 id: VAT-005
-catalog_applicable: false
+catalog_applicable: true
 version: 1.0.0.0
 ---
 
@@ -75,6 +75,7 @@ Check the T10 row, the correction phrases and the T8 filing precedence in SKILL.
 | File | Role |
 |---|---|
 | [manual-testing-playbook.md](../manual-testing-playbook.md) | Root playbook rules and scenario index. |
+| [feature-catalog entry](../../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) | Current feature summary and source anchors. |
 | [the VAT return procedure](../../references/vat-return/README.md) | The procedure this scenario tests. |
 | [the year-end and correction rules](../../references/vat-return/year-end-and-corrections.md) | The two correction routes and their owners. |
 | [the review pack contract](../../references/vat-return/review-pack.md) | The pack blocks P1 to P9 and the confirmation parts. |

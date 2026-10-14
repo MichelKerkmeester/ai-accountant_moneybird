@@ -33,13 +33,13 @@ The commands below assume the repository root is your current directory.
 
 ## 2. OVERVIEW
 
-### What it does
+### What It Does
 
 `jortt-cli` reads the Jortt OpenAPI description at runtime, checks each call against its scope and follows the API's paging. Use the Jortt UI for XAF auditfiles, annual accounts and filed VAT returns.
 
-Jortt is the source system here. Moneybird is the target, and the sibling `cli-moneybird` skill owns it.
+Jortt is the source system here. Moneybird is the target and the sibling `cli-moneybird` skill owns it.
 
-### Where each record comes from
+### Where Each Record Comes From
 
 The REST API returns repeatable records and short-lived download links. Saving them to the ignored migration workspace gives you a source set to compare against later, without adding private data to tracked files.
 
@@ -72,7 +72,7 @@ jortt-cli spec info
 jortt-cli whoami
 ```
 
-Expected: `spec info` prints the path and operation counts. `whoami` prints an HTTP status and top-level field names, and it needs a working Jortt key in `.env`. If the API description is missing, run `jortt-cli spec update` first.
+Expected: `spec info` prints the path and operation counts. `whoami` prints an HTTP status and top-level field names and it needs a working Jortt key in `.env`. If the API description is missing, run `jortt-cli spec update` first.
 
 **Step 3: Save a paged extract.**
 
@@ -101,7 +101,7 @@ SKILL.md routing (the operation decides the surface)
    +--> Jortt UI (Operator)                         -->  XAF, annual accounts, filed VAT returns
 ```
 
-### Safety gates
+### Safety Gates
 
 Every `call` passes three local checks before the CLI asks for a token.
 
@@ -115,11 +115,11 @@ The [feature catalog](feature-catalog/feature-catalog.md) lists each gate with i
 
 ## 5. INTEGRATION & NAVIGATION
 
-### When to use this skill
+### When To Use This Skill
 
 Use `cli-jortt` for Jortt source records, source documents and Jortt API diagnostics. Load [`SKILL.md`](SKILL.md) for the routing and safety rules, then open the reference that fits the request.
 
-### Related skills
+### Related Skills
 
 | Skill | Relationship |
 |---|---|
@@ -133,7 +133,7 @@ Use `cli-jortt` for Jortt source records, source documents and Jortt API diagnos
 |---|---|---|
 | `jortt-cli` not found | The CLI is not on your `PATH` yet | Run `bash cli-jortt/cli/jortt-cli/setup.sh` and apply the symlink command it prints |
 | The API description is missing | No cached copy exists | Run `jortt-cli spec update` when you have network access |
-| Exit 3 | A write call lacks `--allow-write` | Stop. Jortt is read-only, and no write path exists for an agent |
+| Exit 3 | A write call lacks `--allow-write` | Stop. Jortt is read-only and no write path exists for an agent |
 | Exit 4 | The key lacks the operation's scope | Name the scope and ask the Operator before changing key scopes |
 | Exit 5 | The output path leaves `migration-workspace/` | Use a relative name inside the workspace |
 
@@ -141,7 +141,23 @@ Use `cli-jortt` for Jortt source records, source documents and Jortt API diagnos
 
 ---
 
-## 7. VERIFICATION
+## 7. FAQ
+
+**Q: Can an agent write to Jortt?**
+
+No. Jortt is read-only and no write path exists for an agent. A write call without `--allow-write` exits 3.
+
+**Q: Do the offline checks call Jortt?**
+
+No. They use a local copy of the API description and never call Jortt.
+
+**Q: Does a passing suite prove a live connection?**
+
+No. A live connection needs a separate `jortt-cli whoami` result with HTTP 200.
+
+---
+
+## 8. VERIFICATION
 
 The offline checks use a local copy of the API description and never call Jortt. The suite defaults to the trimmed fixture under `cli-jortt/cli/jortt-cli/tests/fixtures/` and reads another file only when `JORTT_OPENAPI_FILE` names one. A live connection needs a separate `jortt-cli whoami` result with HTTP 200.
 
@@ -153,7 +169,7 @@ The offline checks use a local copy of the API description and never call Jortt.
 
 ---
 
-## 8. RELATED DOCUMENTS
+## 9. RELATED DOCUMENTS
 
 | Document | Purpose |
 |---|---|

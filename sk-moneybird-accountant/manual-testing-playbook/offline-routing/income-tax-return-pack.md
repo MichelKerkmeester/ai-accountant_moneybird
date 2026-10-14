@@ -1,8 +1,8 @@
 ---
 title: "PACK-002 -- The income tax return pack"
-description: "This scenario validates the income tax return preparation route, the pack blocks, the Operator input list with a status per item, the VIA comparison sheet, the dated per-asset register and the labelled residual unknowns."
+description: "This scenario validates the income tax return preparation route, the pack blocks, the Operator input list with a status per item, the VIA comparison sheet, the dated per-asset register, the labelled residual unknowns and the prepared-not-filed stop."
 id: PACK-002
-catalog_applicable: false
+catalog_applicable: true
 version: 1.0.0.0
 ---
 
@@ -29,9 +29,9 @@ An income tax return is assembled from administration reads plus Operator facts.
 - Prompt: Prepare my income tax return for 2026 and show the review pack with every open input. Do not call an API.
 - Fixture rows: PACK-INCOME-01 (the income tax pack row) and income-tax-return-pack (the eval case).
 - Expected execution process: Read the project bootstrap and the skill, run the route table check, follow the T12 route into the income tax return procedure, resolve the return year, run the steps and evidence gates, assemble the review pack, the Operator input list, the VIA comparison sheet and the dated per-asset register, and stop before any filing action. Do not use network access, accounting APIs or private finance data.
-- Expected signals: The check prints route-table: ok. The route record names LIVE and T12. The read set loads [the income tax return procedure](../../references/income-tax-return/README.md) and the year figures the route needs. The answer names the pack blocks P1 to P9, the confirmation parts C1 to C3, the deduction chain block, the VIA comparison sheet block, the residual unknowns block and the Operator input list with one disposition per item, namely supplied, reconciled, confirmed, not applicable or unresolved. The dated per-asset register carries its order, payment and in-use dates. Every residual unknown stays labelled unresolved with what would settle it and no figure is filled from memory. The Operator owns the filing and payment. The administration reads run through moneybird-guard with MONEYBIRD_GUARD_READ_ONLY=1.
+- Expected signals: The check prints route-table: ok. The route record names LIVE and T12. The read set loads [the income tax return procedure](../../references/income-tax-return/README.md) and the year figures the route needs. The answer names the pack blocks P1 to P9, the confirmation parts C1 to C3, the deduction chain block, the VIA comparison sheet block, the residual unknowns block and the Operator input list with one disposition per item, namely supplied, reconciled, confirmed, not applicable or unresolved. The dated per-asset register carries its order, payment and in-use dates. Every residual unknown stays labelled unresolved with what would settle it and no figure is filled from memory. The pack states prepared, not filed. The Operator owns the filing and payment. The administration reads run through moneybird-guard with MONEYBIRD_GUARD_READ_ONLY=1.
 - Desired user-visible outcome: A concise route report with the winning row, the loaded paths, the pack blocks, the Operator input list, the comparison sheet, the per-asset register, the labelled residual unknowns and the API-free status.
-- Pass/fail: PASS if the request routes LIVE and T12, the pack blocks and confirmation parts are present, every Operator input carries a status, the comparison sheet and the per-asset register are present, every residual unknown stays labelled, the Operator owns the filing and payment and no API is called. FAIL if an input has no status, an unresolved field is stated as settled, a pack block is missing, the answer states a filing action or an API is called.
+- Pass/fail: PASS if the request routes LIVE and T12, the pack blocks and confirmation parts are present, every Operator input carries a status, the comparison sheet and the per-asset register are present, every residual unknown stays labelled, the pack states prepared and not filed, the Operator owns the filing and payment and no API is called. FAIL if an input has no status, an unresolved field is stated as settled, a pack block is missing, the answer states a filing action or an API is called.
 
 ---
 
@@ -51,7 +51,7 @@ An income tax return is assembled from administration reads plus Operator facts.
 
 ### Expected
 
-The check prints route-table: ok. The T12 row wins for the named income tax return. The procedure, the Operator inputs and the register load. The answer names the pack blocks P1 to P9, the confirmation parts C1 to C3, the deduction chain block, the VIA comparison sheet block, the residual unknowns block and the Operator input list with a status per item, namely supplied, reconciled, confirmed, not applicable or unresolved. The dated per-asset register carries its order, payment and in-use dates and every residual unknown stays labelled unresolved. The Operator owns the filing and payment. No accounting API is called.
+The check prints route-table: ok. The T12 row wins for the named income tax return. The procedure, the Operator inputs and the register load. The answer names the pack blocks P1 to P9, the confirmation parts C1 to C3, the deduction chain block, the VIA comparison sheet block, the residual unknowns block and the Operator input list with a status per item, namely supplied, reconciled, confirmed, not applicable or unresolved. The dated per-asset register carries its order, payment and in-use dates and every residual unknown stays labelled unresolved. The pack states prepared, not filed. The Operator owns the filing and payment. No accounting API is called.
 
 ### Evidence
 
@@ -59,7 +59,7 @@ Capture the check output, the selected row, the loaded paths, the pack block lis
 
 ### Pass / Fail
 
-- **Pass**: The request routes LIVE and T12, the pack blocks and confirmation parts are present, every input carries a status, the comparison sheet and the per-asset register are present, the residual unknowns stay labelled, the Operator owns the filing and payment and no API is called.
+- **Pass**: The request routes LIVE and T12, the pack blocks and confirmation parts are present, every input carries a status, the comparison sheet and the per-asset register are present, the residual unknowns stay labelled, the pack states prepared and not filed, the Operator owns the filing and payment and no API is called.
 - **Fail**: An input has no status, an unresolved field is stated as settled, a pack block is missing, the answer states a filing action or an API is called.
 
 ### Failure Triage
@@ -75,6 +75,7 @@ Check the T12 row and the T8 filing precedence in SKILL.md section 2, then the P
 | File | Role |
 |---|---|
 | [manual-testing-playbook.md](../manual-testing-playbook.md) | Root playbook rules and scenario index. |
+| [feature-catalog entry](../../feature-catalog/bookkeeping-and-migration/income-tax-return-preparation.md) | Current feature summary and source anchors. |
 | [the income tax return procedure](../../references/income-tax-return/README.md) | The procedure this scenario tests. |
 | [the ordered procedure](../../references/income-tax-return/procedure.md) | The steps, the evidence gates and the review pack differences. |
 | [the Operator inputs](../../references/income-tax-return/operator-inputs.md) | The input list and the disposition vocabulary. |

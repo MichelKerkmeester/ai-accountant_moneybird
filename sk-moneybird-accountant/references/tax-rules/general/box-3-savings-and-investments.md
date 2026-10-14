@@ -36,6 +36,12 @@ General topic 3.6 of 13 in the Dutch tax rules guide.
 
 Guide: [dutch-tax-rules.md](../dutch-tax-rules.md).
 
+## 1. OVERVIEW
+
+This part holds the general rules for the Box 3 savings and investments topic across the tax years. The other general topics sit in the sibling files under general/ and the year figures sit in the year folders.
+
+---
+
 ### 3.6 Box 3 savings and investments
 
 Year files: `box-3.md` in each year folder.

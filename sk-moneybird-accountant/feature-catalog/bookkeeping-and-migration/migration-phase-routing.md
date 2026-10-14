@@ -19,11 +19,15 @@ Selects the Jortt to Moneybird migration phase, reference, owner tags and exit g
 
 The index lists the phases in execution order and carries the old-to-new phase map. Phase 17 is source freeze, Phase 18 switches to live bookkeeping, Phases 19 to 21 recur after Phase 18 and Phase 22 is a one-time completion and decommission gate.
 
+---
+
 ## 2. HOW IT WORKS
 
 The last verified gate and the request determine the next phase. Load the index, the matching phase file and shared mechanisms. Load the control framework for gate, risk, exception, stop or year-lock details. Preserve exact owner tags. Keep Jortt uncancelled until Phase 22 passes and the Operator records a cancel-or-keep decision.
 
 Every phase uses the route contract in `shared-mechanisms.md`. Jortt reads run through jortt-cli only. XAF and other Jortt exports are Operator UI tasks. Moneybird reads run through moneybird-guard with `MONEYBIRD_GUARD_READ_ONLY=1`. A Moneybird write needs a passed gate, Operator approval, `--confirm-write` and `--approval <ref>` for a flushed `WRITE_INTENT`, plus `--production` for a production batch. An HTTP 429 stops the call sequence for a guarded read-back before any retry.
+
+---
 
 ## 3. SOURCE FILES
 
@@ -43,6 +47,8 @@ Every phase uses the route contract in `shared-mechanisms.md`. Jortt reads run t
 | File | Type | Role |
 |---|---|---|
 | sk-moneybird-accountant/manual-testing-playbook/offline-routing/migration-phase-routing.md | Manual playbook | Offline phase map and routing scenario. |
+
+---
 
 ## 4. SOURCE METADATA
 

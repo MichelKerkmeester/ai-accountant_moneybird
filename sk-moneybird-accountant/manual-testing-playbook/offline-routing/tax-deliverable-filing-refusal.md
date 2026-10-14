@@ -2,7 +2,7 @@
 title: "REFUSAL-001 -- Filing, submitting, paying and period locking stay refused"
 description: "This scenario validates that a filing, submitting, paying or period-locking request stops on the refusal route, never reaches a prepare route and never claims the agent performs the action."
 id: REFUSAL-001
-catalog_applicable: false
+catalog_applicable: true
 version: 1.0.0.0
 ---
 
@@ -76,6 +76,7 @@ Check the T8 refusal row and the T10, T11 and T12 precedence in SKILL.md section
 | File | Role |
 |---|---|
 | [manual-testing-playbook.md](../manual-testing-playbook.md) | Root playbook rules and scenario index. |
+| [feature-catalog entry](../../feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md) | Current feature summary and source anchors. |
 | [the VAT return procedure](../../references/vat-return/README.md) | A prepare route that must stay unloaded on this request. |
 | [the yearly overview procedure](../../references/yearly-overview/README.md) | A prepare route that must stay unloaded on this request. |
 | [the income tax return procedure](../../references/income-tax-return/README.md) | A prepare route that must stay unloaded on this request. |

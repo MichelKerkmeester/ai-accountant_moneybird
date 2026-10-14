@@ -23,9 +23,11 @@ The winning row decides the tool route, the read set and the token budget key fo
 
 ## 2. HOW IT WORKS
 
-The agent scores the Dutch and English signal columns of each row. Every row names its tool route, its read set, a token budget key such as `tok:T3` and a tie rule that settles overlaps, so a named invoice or a named phase shifts the route before a tie is called. A weak term such as `btw` alone never decides a row.
+The agent scores the Dutch and English signal columns of each row. The table holds twelve rows. T10 prepares the VAT return, T11 prepares the yearly overview and T12 prepares the income tax return, each with its signals, a marked read set, a budget key and a tie outcome that settles its overlap with T3 or T5. T8 wins over T10, T11 and T12 when an explicit file, submit, pay or lock request is present, so a filing request receives the refusal and never a prepared return. Every row names its tool route, its read set, a token budget key such as `tok:T3` and a tie rule that settles overlaps, so a named invoice or a named phase shifts the route before a tie is called. A weak term such as `btw` alone never decides a row.
 
 When the top two rows sit inside the route margin and no tie rule decides, the answer abstains, names the candidate rows and asks one question. The CLI action row is additive and never wins alone. It appends the sibling tool skill to the row already matched. Every answer ends with a route record that names the selected row, the references read and the boundary result.
+
+Every read-set cell uses the `!`, `?`, `@section-id`, `{year}`, `{phase-file}` and `{topic-figures}` grammar. `check-route-table.py` expands each item, fails a missing required path or anchor and lists a missing conditional read. The router block carries `REQUIRED_READS`, `CONDITIONAL_READS`, `SECTION_TARGETS`, `PHASE_FILES` and `TOPIC_FILES`. A request outside the skill's scope gets the out-of-scope refusal, and a request for a tax deliverable whose procedure is not written gets the documented gap from the `gaps` ledger in `references/index.json`.
 
 ---
 
@@ -46,9 +48,11 @@ When the top two rows sit inside the route margin and no tie rule decides, the a
 |---|---|---|
 | sk-moneybird-accountant/manual-testing-playbook/manual-testing-playbook.md | Manual playbook | Root index of the offline routing scenarios that exercise the task type rows. |
 | sk-moneybird-accountant/scripts/route-replay/route-replay.py | Test harness | Scores the routing corpus offline and replays each refusal through the guard and the stub. |
-| sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh | Automated test | Checks the harness with a deleted path, a twin mismatch and two dated runs. |
+| sk-moneybird-accountant/scripts/route-replay/routing-gold.json | Fixture | The corpus with the T10 to T12 rows, the VAT branch rows, the pack rows and the refusal rows. |
+| sk-moneybird-accountant/evals/evals.json | Fixture | The eval cases for the branch, pack and refusal routes. |
+| sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh | Automated test | Checks the harness with a deleted path, a twin mismatch, two dated runs and one pass case per new row. |
 | sk-moneybird-accountant/scripts/run-evals.py | Test harness | Grades captured answers against the eval cases in `evals/evals.json`. |
-| sk-moneybird-accountant/scripts/route-table-test.sh | Automated test | Checks the route table, the router block and the intent-signal drift on mutants. |
+| sk-moneybird-accountant/scripts/route-table-test.sh | Automated test | Checks the route table, the T10 to T12 rows, the read-set grammar, the gap ledger, the router block and the intent-signal drift on mutants. |
 
 ---
 

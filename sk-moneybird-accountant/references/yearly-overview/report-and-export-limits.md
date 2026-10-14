@@ -16,9 +16,13 @@ version: 1.0.0.0
 
 **Rule:** This file records what the procedure may read and export. It records what stays `UNVERIFIED` until pinned CLI help and a dry run confirm it. A row marked `UNVERIFIED` is never a computation basis. Every report read runs under the Read Step Contract in [cli-moneybird](../../../cli-moneybird/SKILL.md).
 
+## 1. OVERVIEW
+
+This reference records the report reads and the auditfile export order that the yearly overview depends on, with every unconfirmed item marked `UNVERIFIED`. A row that stays `UNVERIFIED` is never a computation basis.
+
 ---
 
-## 1. THE REPORT ROWS
+## 2. THE REPORT ROWS
 
 These rows come from the reports row and the auditfile export row in [cli-moneybird](../../../cli-moneybird/SKILL.md) section 2.
 
@@ -37,7 +41,7 @@ The guarded reads are listed in [cli-moneybird](../../../cli-moneybird/SKILL.md)
 
 ---
 
-## 2. THE AUDITFILE EXPORT ORDER
+## 3. THE AUDITFILE EXPORT ORDER
 
 The auditfile export comes first, before the closing entry and before the period lock. An auditfile downloaded after the jaarafsluiting can lack the profit and loss data, because the closing entry contra-books the result accounts. The migration rule at sub-goal SG-10.2 in `references/migration/phases-10-to-16.md` carries the same order. Read [the Phase 10 to 16 rule](../migration/phases-10-to-16.md). Once the year is closed, a later export does not repair a missing first export.
 
@@ -45,7 +49,7 @@ The export runs through the guarded writer session with the approval the migrati
 
 ---
 
-## 3. THE UNVERIFIED LIST
+## 4. THE UNVERIFIED LIST
 
 Every row below names what would settle it. No later run builds a computation on a row that stays open.
 
@@ -59,6 +63,6 @@ Every row below names what would settle it. No later run builds a computation on
 
 ---
 
-## 4. YEAR FILE STATUS
+## 5. YEAR FILE STATUS
 
 A figure that the year file marks `UNVERIFIED`, `proposed` or `unknown` is not a computation basis. The status tags and the refusal rule are in [year and state resolution](../tax-rules/year-and-state.md) section 3. A deadline or a procedure value for the resolved year comes from [Procedure 2026 figures](../tax-rules/2026/procedure/figures.md).

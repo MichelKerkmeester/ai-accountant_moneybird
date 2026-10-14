@@ -20,6 +20,8 @@ The scenario confirms that migration sub-goals use the M12 seat route and that a
 
 A local-only check verifies route and journal behavior while keeping accounting tools, network calls, and private finance data untouched.
 
+---
+
 ## 2. SCENARIO CONTRACT
 
 - Objective: Route one migration work unit through M12 and recover safely from an AGENT_DRAFTED state.

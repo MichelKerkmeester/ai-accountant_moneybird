@@ -18,13 +18,19 @@ version: 1.0.0.0
 
 Part 3 of 4 of the Kosten en auto 2023 topic.
 
-- [figures.md](figures.md): sections 1 and 2.
-- [rules.md](rules.md): section 3.
-- [notes.md](notes.md): sections 5 to 8.
+- [figures.md](figures.md): the overview and key figures.
+- [rules.md](rules.md): how it works.
+- [notes.md](notes.md): changes, records, open points and related resources.
 
 Year overview: [README.md](../README.md).
 
-## 4. WORKED EXAMPLES
+## 1. OVERVIEW
+
+This part holds the worked examples for the Kosten en auto 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+
+---
+
+## 2. WORKED EXAMPLES
 
 <a id="4-worked-examples"></a>
 

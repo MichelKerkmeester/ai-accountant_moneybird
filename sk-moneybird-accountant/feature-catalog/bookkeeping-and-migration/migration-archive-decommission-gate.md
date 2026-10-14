@@ -19,9 +19,13 @@ Keeps the source administration read-only and uncancelled until Phase 22 passes 
 
 Phase 17 freezes the source and proves archive readiness. Phase 22 rechecks the final delta, class restoration, retention, completion evidence and recurring monitoring.
 
+---
+
 ## 2. HOW IT WORKS
 
 A request to cancel Jortt before Phase 22 passes is refused and routed to the one-time completion gate. Cancellation remains an Operator action after the gate. Preserve independent archive manifests, source totals, checksums, restore reports, retention evidence and the final decision record.
+
+---
 
 ## 3. SOURCE FILES
 
@@ -39,6 +43,8 @@ A request to cancel Jortt before Phase 22 passes is refused and routed to the on
 | File | Type | Role |
 |---|---|---|
 | sk-moneybird-accountant/manual-testing-playbook/offline-routing/jortt-decommission-gate.md | Manual playbook | Offline refusal and Phase 22 routing scenario. |
+
+---
 
 ## 4. SOURCE METADATA
 
