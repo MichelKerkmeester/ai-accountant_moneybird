@@ -87,4 +87,4 @@ Year overview: [README.md](../README.md).
 - [2027 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
 - [Box 2 en aanmerkelijk belang 2026](../../2026/box-2/figures.md)
-- Related topics in 2027: [BV en vennootschapsbelasting 2027](../bv-en-vennootschapsbelasting/figures.md), [Inkomstenbelasting box 1 2027](../inkomstenbelasting/figures.md)
+- Related topics in 2027: [BV en vennootschapsbelasting 2027](../private-company-and-corporate-tax/figures.md), [Inkomstenbelasting box 1 2027](../income-tax/figures.md)

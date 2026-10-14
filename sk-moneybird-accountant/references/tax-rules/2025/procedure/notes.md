@@ -79,4 +79,4 @@ No value in this file is UNVERIFIED, proposed or unknown. All 2025 values are en
 - [2025 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
 - [Aangifte en procedure 2024](../../2024/procedure/figures.md) and [Aangifte en procedure 2026](../../2026/procedure/figures.md)
-- Related topics in 2025: [BTW 2025](../btw/figures.md), [Inkomstenbelasting box 1 2025](../inkomstenbelasting/figures.md), [Arbeidsrelatie en zelfstandigheid 2025](../arbeidsrelatie/figures.md)
+- Related topics in 2025: [BTW 2025](../vat/figures.md), [Inkomstenbelasting box 1 2025](../income-tax/figures.md), [Arbeidsrelatie en zelfstandigheid 2025](../work-relationship/figures.md)

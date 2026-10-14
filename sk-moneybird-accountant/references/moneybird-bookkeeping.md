@@ -77,7 +77,7 @@ Post proprietor contributions and withdrawals against private or equity accounts
 
 ### Business kilometres in a private vehicle
 
-Record the supported business distance with the rate for the travel year and a trip purpose. Keep the trip log. Do not separately deduct fuel, insurance, repairs, or parking that the kilometre allowance already covers. The amount changes by year, so first check `kosten-en-auto.md` in the folder for the travel year, routed from [the Dutch tax rules](./tax-rules/dutch-tax-rules.md).
+Record the supported business distance with the rate for the travel year and a trip purpose. Keep the trip log. Do not separately deduct fuel, insurance, repairs, or parking that the kilometre allowance already covers. The amount changes by year, so first check `costs-and-car.md` in the folder for the travel year, routed from [the Dutch tax rules](./tax-rules/dutch-tax-rules.md).
 
 - Product reference: [business kilometres](https://helpcenter.moneybird.nl/nl/articles/207993-zakelijke-gereden-kilometers-verwerken), per Moneybird help reviewed on 2026-10-10.
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).

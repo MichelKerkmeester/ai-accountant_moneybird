@@ -1216,7 +1216,7 @@ def year_topic_path(files: Dict[str, Dict[str, Any]], year: str, name: str) -> O
     Args:
         files: File records keyed by relative path.
         year: Four digit year folder.
-        name: Canonical topic file name, for example btw.md.
+        name: Canonical topic file name, for example vat.md.
 
     Returns:
         The path of the carrier file relative to the references root, or None

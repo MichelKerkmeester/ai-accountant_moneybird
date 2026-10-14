@@ -97,4 +97,4 @@ Year overview: [README.md](../README.md).
 - [2027 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
 - [Aangifte en procedure 2026](../../2026/procedure/figures.md)
-- Related topics in 2027: [BTW 2027](../btw/figures.md), [Inkomstenbelasting box 1 2027](../inkomstenbelasting/figures.md), [Arbeidsrelatie en zelfstandigheid 2027](../arbeidsrelatie/figures.md)
+- Related topics in 2027: [BTW 2027](../vat/figures.md), [Inkomstenbelasting box 1 2027](../income-tax/figures.md), [Arbeidsrelatie en zelfstandigheid 2027](../work-relationship/figures.md)

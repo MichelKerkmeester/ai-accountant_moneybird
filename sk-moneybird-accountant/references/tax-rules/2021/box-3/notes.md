@@ -76,4 +76,4 @@ Year overview: [README.md](../README.md).
 - [2021 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
 - [Box 3 sparen en beleggen 2020](../../2020/box-3/figures.md) and [Box 3 sparen en beleggen 2022](../../2022/box-3/figures.md)
-- Related topics in 2021: [Inkomstenbelasting box 1 2021](../inkomstenbelasting/figures.md), [Box 2 en aanmerkelijk belang 2021](../box-2/figures.md)
+- Related topics in 2021: [Inkomstenbelasting box 1 2021](../income-tax/figures.md), [Box 2 en aanmerkelijk belang 2021](../box-2/figures.md)

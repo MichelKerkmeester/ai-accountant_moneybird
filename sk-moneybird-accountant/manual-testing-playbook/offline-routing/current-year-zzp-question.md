@@ -46,7 +46,7 @@ A local-only check can confirm that the skill chooses its mode and references wh
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| TAX-001 | Current-year ZZP question | Route a changing ZZP figure to the tax reference with its year and source. | What is the business mileage rate for the current tax year? Give the year and source, and treat this as general information. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md for the current tax year and its topic file sk-moneybird-accountant/references/tax-rules/YYYY/kosten-en-auto/figures.md -> 4. Report the year check, selected row, source URL and tax-advice boundary | Checks the current year first, loads the tax reference, includes the source URL and labels the reply as general information. | Capture the prompt, selected tax year, cited table row and URL and the final boundary statement. | PASS if The response uses the current-year row with a source and does not make a personal tax conclusion. FAIL if The response uses a stale year, omits its source or presents tax advice as final. | Check the date context, the selected table year and its source link. Repeat with only local documents. |
+| TAX-001 | Current-year ZZP question | Route a changing ZZP figure to the tax reference with its year and source. | What is the business mileage rate for the current tax year? Give the year and source, and treat this as general information. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md for the current tax year and its topic file sk-moneybird-accountant/references/tax-rules/YYYY/costs-and-car/figures.md -> 4. Report the year check, selected row, source URL and tax-advice boundary | Checks the current year first, loads the tax reference, includes the source URL and labels the reply as general information. | Capture the prompt, selected tax year, cited table row and URL and the final boundary statement. | PASS if The response uses the current-year row with a source and does not make a personal tax conclusion. FAIL if The response uses a stale year, omits its source or presents tax advice as final. | Check the date context, the selected table year and its source link. Repeat with only local documents. |
 
 ### Prompt
 
@@ -56,7 +56,7 @@ A local-only check can confirm that the skill chooses its mode and references wh
 
 1. Read AGENTS.md
 2. Read sk-moneybird-accountant/SKILL.md
-3. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md for the current tax year and its topic file sk-moneybird-accountant/references/tax-rules/YYYY/kosten-en-auto/figures.md
+3. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md for the current tax year and its topic file sk-moneybird-accountant/references/tax-rules/YYYY/costs-and-car/figures.md
 4. Report the year check, selected row, source URL, and tax-advice boundary
 
 ### Expected
@@ -103,6 +103,6 @@ Check the date context, the selected table year, and its source link. Repeat wit
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/current-year-zzp-question.md
 
-**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md for the current tax year and its topic file sk-moneybird-accountant/references/tax-rules/YYYY/kosten-en-auto/figures.md -> 4. Report the year check, selected row, source URL and tax-advice boundary
+**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md for the current tax year and its topic file sk-moneybird-accountant/references/tax-rules/YYYY/costs-and-car/figures.md -> 4. Report the year check, selected row, source URL and tax-advice boundary
 
-**Expected resources:** sk-moneybird-accountant/references/tax-rules/YYYY/README.md and sk-moneybird-accountant/references/tax-rules/YYYY/kosten-en-auto/figures.md for the current tax year
+**Expected resources:** sk-moneybird-accountant/references/tax-rules/YYYY/README.md and sk-moneybird-accountant/references/tax-rules/YYYY/costs-and-car/figures.md for the current tax year

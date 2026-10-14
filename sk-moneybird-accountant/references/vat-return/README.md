@@ -32,7 +32,7 @@ The mode is LIVE. Resolve the year as `year_key`, load the year README and the y
 |---|---|
 | `README.md` | This entry index, the boundary, the figure link rule and the open points `O1` to `O5`. |
 | [preparation.md](preparation.md) | The ordered period procedure, steps 0 to 12, each with its check, its evidence and its Operator point. |
-| [rubrieken.md](rubrieken.md) | The rubriek table for 1a to 5b, the derivation map from a booking to a line, the run-time rate step and the reverse-charge, KOR, 3b to ICP and OSS rules. |
+| [return-boxes.md](return-boxes.md) | The rubriek table for 1a to 5b, the derivation map from a booking to a line, the run-time rate step and the reverse-charge, KOR, 3b to ICP and OSS rules. |
 | [year-end-and-corrections.md](year-end-and-corrections.md) | The four year-end settlements `S1` to `S4` and the correction and suppletie routing. |
 | [review-pack.md](review-pack.md) | The output contract: the pack blocks `P1` to `P9`, the confirmation parts `C1` to `C3`, the deadline and payment block and the escalation list. |
 
@@ -49,9 +49,9 @@ The mode is LIVE. Resolve the year as `year_key`, load the year README and the y
 
 ## 4. FIGURE LINK RULE
 
-Every figure path is a link to the year file that holds it, written as `../tax-rules/{year}/btw/figures.md` or as a concrete year path such as [BTW 2026 figures](../tax-rules/2026/btw/figures.md). A deadline or a correction route points at the year's procedure figures, such as [Aangifte en procedure 2026 figures](../tax-rules/2026/procedure/figures.md). The folder never copies a figure.
+Every figure path is a link to the year file that holds it, written as `../tax-rules/{year}/vat/figures.md` or as a concrete year path such as [BTW 2026 figures](../tax-rules/2026/vat/figures.md). A deadline or a correction route points at the year's procedure figures, such as [Aangifte en procedure 2026 figures](../tax-rules/2026/procedure/figures.md). The folder never copies a figure.
 
-The year's rules sit beside the figures. Read [BTW 2026 rules](../tax-rules/2026/btw/rules.md) for the mechanics and the year README for the status tag of each value. A value marked unverified is not a computation basis.
+The year's rules sit beside the figures. Read [BTW 2026 rules](../tax-rules/2026/vat/rules.md) for the mechanics and the year README for the status tag of each value. A value marked unverified is not a computation basis.
 
 ---
 
@@ -73,7 +73,7 @@ The administration's own rate list and VAT overview settle the rate-to-rubriek m
 
 ## 6. RELATED RESOURCES
 
-- [Preparation](preparation.md), [rubrieken](rubrieken.md), [year-end and corrections](year-end-and-corrections.md) and [review pack](review-pack.md).
+- [Preparation](preparation.md), [rubrieken](return-boxes.md), [year-end and corrections](year-end-and-corrections.md) and [review pack](review-pack.md).
 - [Moneybird bookkeeping](../moneybird-bookkeeping.md) for the cadence and the period control.
 - [Purchase invoices](../purchase-invoices.md) for the reverse-charge and KOR rate cases.
 - [Dutch tax rules](../tax-rules/dutch-tax-rules.md) for the cross-year routing.

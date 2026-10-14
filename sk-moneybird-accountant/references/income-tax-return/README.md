@@ -51,7 +51,7 @@ The route that reaches this folder is T12 in [SKILL.md](../../SKILL.md). The fol
 
 ## 4. FIGURE LINK RULE
 
-Every figure path is a link to the year file that holds it, written as `../tax-rules/{year}/inkomstenbelasting/figures.md` or as a concrete year path such as [Inkomstenbelasting 2026 figures](../tax-rules/2026/inkomstenbelasting/figures.md). A rate, a threshold, a deadline and a procedure value each point at the year file that owns them, for example [Ondernemersaftrek 2026 figures](../tax-rules/2026/ondernemersaftrek/figures.md), [Investeringen 2026 figures](../tax-rules/2026/investeringen/figures.md) and [Aangifte en procedure 2026 figures](../tax-rules/2026/procedure/figures.md). The folder never copies a figure.
+Every figure path is a link to the year file that holds it, written as `../tax-rules/{year}/income-tax/figures.md` or as a concrete year path such as [Inkomstenbelasting 2026 figures](../tax-rules/2026/income-tax/figures.md). A rate, a threshold, a deadline and a procedure value each point at the year file that owns them, for example [Ondernemersaftrek 2026 figures](../tax-rules/2026/business-deductions/figures.md), [Investeringen 2026 figures](../tax-rules/2026/investments/figures.md) and [Aangifte en procedure 2026 figures](../tax-rules/2026/procedure/figures.md). The folder never copies a figure.
 
 The year's rules sit beside the figures. Read the rules file beside a figure for the mechanics and the year README for the status tag of each value. A value marked `UNVERIFIED`, `proposed` or `unknown` is not a computation basis.
 

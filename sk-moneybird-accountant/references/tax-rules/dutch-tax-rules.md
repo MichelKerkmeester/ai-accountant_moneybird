@@ -51,17 +51,17 @@ This file is the entry point for Dutch tax questions for a ZZP freelancer with a
 
 | File | Covers |
 |---|---|
-| `btw.md` | VAT rates, exemptions, KOR, deadlines and corrections |
-| `inkomstenbelasting.md` | Box 1 brackets, heffingskortingen and how profit reaches taxable income |
-| `zvw.md` | The income-dependent Zvw contribution for an entrepreneur |
-| `ondernemersaftrek.md` | Urencriterium, zelfstandigenaftrek, startersaftrek, other deductions and the MKB-winstvrijstelling |
-| `investeringen.md` | KIA, EIA, MIA and Vamil, depreciation and desinvestering |
-| `kosten-en-auto.md` | Deductible and mixed costs, the car, bijtelling and the kilometre allowance |
+| `vat.md` | VAT rates, exemptions, KOR, deadlines and corrections |
+| `income-tax.md` | Box 1 brackets, heffingskortingen and how profit reaches taxable income |
+| `health-insurance-contribution.md` | The income-dependent Zvw contribution for an entrepreneur |
+| `business-deductions.md` | Urencriterium, zelfstandigenaftrek, startersaftrek, other deductions and the MKB-winstvrijstelling |
+| `investments.md` | KIA, EIA, MIA and Vamil, depreciation and desinvestering |
+| `costs-and-car.md` | Deductible and mixed costs, the car, bijtelling and the kilometre allowance |
 | `box-3.md` | Savings and investments in box 3 |
 | `box-2.md` | The substantial interest in a BV, box 2 rates and the gebruikelijk loon |
-| `bv-en-vennootschapsbelasting.md` | Running a BV and the corporate income tax |
-| `pensioen-en-aov.md` | Jaarruimte, lijfrente, the FOR and disability insurance |
-| `arbeidsrelatie.md` | Wet DBA, model agreements and the self-employment test |
+| `private-company-and-corporate-tax.md` | Running a BV and the corporate income tax |
+| `pension-and-disability-insurance.md` | Jaarruimte, lijfrente, the FOR and disability insurance |
+| `work-relationship.md` | Wet DBA, model agreements and the self-employment test |
 | `procedure.md` | Filing, assessments, interest, objections and record retention |
 
 ### Tags
@@ -90,15 +90,15 @@ Each general topic below sits in its own file under `general/`.
 
 | Section | Topic | File |
 |---|---|---|
-| 3.1 | BTW (VAT) | [btw-vat.md](general/btw-vat.md) |
-| 3.2 | Income tax box 1 and the Zvw contribution | [income-tax-box-1-and-the-zvw-contribution.md](general/income-tax-box-1-and-the-zvw-contribution.md) |
-| 3.3 | Ondernemersaftrek and MKB-winstvrijstelling | [ondernemersaftrek-and-mkb-winstvrijstelling.md](general/ondernemersaftrek-and-mkb-winstvrijstelling.md) |
+| 3.1 | BTW (VAT) | [vat.md](general/vat.md) |
+| 3.2 | Income tax box 1 and the Zvw contribution | [income-tax-box-1-and-the-health-insurance-contribution.md](general/income-tax-box-1-and-the-health-insurance-contribution.md) |
+| 3.3 | Ondernemersaftrek and MKB-winstvrijstelling | [business-deductions-and-sme-profit-exemption.md](general/business-deductions-and-sme-profit-exemption.md) |
 | 3.4 | Investment deductions and depreciation | [investment-deductions-and-depreciation.md](general/investment-deductions-and-depreciation.md) |
 | 3.5 | Costs and the car | [costs-and-the-car.md](general/costs-and-the-car.md) |
 | 3.6 | Box 3 savings and investments | [box-3-savings-and-investments.md](general/box-3-savings-and-investments.md) |
 | 3.7 | Box 2 and the substantial interest | [box-2-and-the-substantial-interest.md](general/box-2-and-the-substantial-interest.md) |
-| 3.8 | The BV and vennootschapsbelasting | [the-bv-and-vennootschapsbelasting.md](general/the-bv-and-vennootschapsbelasting.md) |
-| 3.9 | Pension, lijfrente and AOV | [pension-lijfrente-and-aov.md](general/pension-lijfrente-and-aov.md) |
+| 3.8 | The BV and vennootschapsbelasting | [the-private-company-and-corporate-tax.md](general/the-private-company-and-corporate-tax.md) |
+| 3.9 | Pension, lijfrente and AOV | [pension-annuities-and-disability-insurance.md](general/pension-annuities-and-disability-insurance.md) |
 | 3.10 | Work relationship and procedure | [work-relationship-and-procedure.md](general/work-relationship-and-procedure.md) |
 | 4 | SETTLED SOURCE CONFLICTS | [settled-source-conflicts.md](general/settled-source-conflicts.md) |
 | 5 | OPEN POINTS AND GAPS | [open-points-and-gaps.md](general/open-points-and-gaps.md) |

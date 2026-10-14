@@ -39,7 +39,7 @@ The pack is ordered like the Belastingdienst screens: Binnenland, Buitenland and
 | P8 | Post-confirmation actions | What the Operator does after confirming. The filing route and the payment route that each confirmation part enables. |
 | P9 | Evidence manifest | Every figure traced to a booked item and its invoice, receipt, customs or transport evidence, with the retrievable link and the retention rule. |
 
-The rubriek rows and the rate sets are from [rubrieken.md](rubrieken.md#2-the-rubriek-table). The year-end settlements are from [year-end-and-corrections.md](year-end-and-corrections.md).
+The rubriek rows and the rate sets are from [return-boxes.md](return-boxes.md#2-the-rubriek-table). The year-end settlements are from [year-end-and-corrections.md](year-end-and-corrections.md).
 
 ---
 
@@ -61,7 +61,7 @@ An open exception or a failed gate blocks C1. The pack states prepared, not file
 
 Every date comes from the year file. The pack links the source and never repeats a date.
 
-- The period's filing deadline and the software submission window are in [BTW 2026 figures](../tax-rules/2026/btw/figures.md).
+- The period's filing deadline and the software submission window are in [BTW 2026 figures](../tax-rules/2026/vat/figures.md).
 - The payment date, the late-payment rules and any belastingrente are in [Aangifte en procedure 2026 figures](../tax-rules/2026/procedure/figures.md).
 - The Operator's own aangiftebrief and Mijn Belastingdienst Zakelijk govern the individual case. Check them, because the year file states the general schedule only.
 - Payment counts as timely when the amount is credited, so allow bank processing time and do not treat the transfer initiation as proof.
@@ -112,6 +112,6 @@ An escalation is an Operator question with the evidence attached. The pack does 
 
 - [README](README.md) for the boundary and the open points.
 - [Preparation](preparation.md) for the step list the gate status refers to.
-- [Rubrieken](rubrieken.md) for the rubriek table and the derivation.
+- [Rubrieken](return-boxes.md) for the rubriek table and the derivation.
 - [Year-end and corrections](year-end-and-corrections.md) for the settlements and the correction routing.
 - [cli-moneybird](../../../cli-moneybird/SKILL.md) for the guarded reads.

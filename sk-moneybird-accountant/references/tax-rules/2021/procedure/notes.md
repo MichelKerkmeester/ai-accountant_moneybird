@@ -79,4 +79,4 @@ Year overview: [README.md](../README.md).
 - [2021 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
 - [Aangifte en procedure 2020](../../2020/procedure/figures.md) and [Aangifte en procedure 2022](../../2022/procedure/figures.md)
-- Related topics in 2021: [BTW 2021](../btw/figures.md), [Inkomstenbelasting box 1 2021](../inkomstenbelasting/figures.md), [Arbeidsrelatie en zelfstandigheid 2021](../arbeidsrelatie/figures.md)
+- Related topics in 2021: [BTW 2021](../vat/figures.md), [Inkomstenbelasting box 1 2021](../income-tax/figures.md), [Arbeidsrelatie en zelfstandigheid 2021](../work-relationship/figures.md)

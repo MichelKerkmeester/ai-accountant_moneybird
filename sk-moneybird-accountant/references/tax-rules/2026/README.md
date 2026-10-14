@@ -32,17 +32,17 @@ Across the twelve topic files the figures tables hold 322 values: 299 Verified, 
 <!-- GENERATED:topic-files:start -->
 | File | Covers | Values | UNVERIFIED | Not enacted |
 |---|---|---|---|---|
-| [btw](btw/figures.md) | This file covers Dutch VAT rates, schemes, returns, invoicing and bookkeeping for tax year 2026. | 59 | 4 | 7 |
-| [inkomstenbelasting](inkomstenbelasting/figures.md) | Covers the 2026 box 1 brackets, heffingskortingen, tariefsaanpassing and the route from business profit to taxable income. | 29 | 1 | 0 |
-| [zvw](zvw/figures.md) | The income-dependent Zvw contribution for an entrepreneur in tax year 2026: the 4,85% aanslag rate, the maximum bijdrage-inkomen of € 79.409, who pays by aanslag and how the 6,10% werkgeversheffing differs. | 9 | 2 | 2 |
-| [ondernemersaftrek](ondernemersaftrek/figures.md) | Ondernemersaftrek and MKB-winstvrijstelling for a sole trader in tax year 2026, covering the urencriterium, zelfstandigenaftrek, startersaftrek, meewerkaftrek, S&O aftrek, stakingsaftrek, the profit exemption and the tariefsaanpassing. | 21 | 0 | 0 |
-| [investeringen](investeringen/figures.md) | KIA, EIA, MIA, Vamil, willekeurige afschrijving, ordinary depreciation and the desinvesteringsbijtelling for tax year 2026. | 16 | 2 | 1 |
-| [kosten-en-auto](kosten-en-auto/figures.md) | Business costs, mixed costs, study costs, home workspace, fines and car rules for a Dutch sole trader or BV in tax year 2026. | 36 | 0 | 0 |
+| [vat](vat/figures.md) | This file covers Dutch VAT rates, schemes, returns, invoicing and bookkeeping for tax year 2026. | 59 | 4 | 7 |
+| [income-tax](income-tax/figures.md) | Covers the 2026 box 1 brackets, heffingskortingen, tariefsaanpassing and the route from business profit to taxable income. | 29 | 1 | 0 |
+| [health-insurance-contribution](health-insurance-contribution/figures.md) | The income-dependent Zvw contribution for an entrepreneur in tax year 2026: the 4,85% aanslag rate, the maximum bijdrage-inkomen of € 79.409, who pays by aanslag and how the 6,10% werkgeversheffing differs. | 9 | 2 | 2 |
+| [business-deductions](business-deductions/figures.md) | Ondernemersaftrek and MKB-winstvrijstelling for a sole trader in tax year 2026, covering the urencriterium, zelfstandigenaftrek, startersaftrek, meewerkaftrek, S&O aftrek, stakingsaftrek, the profit exemption and the tariefsaanpassing. | 21 | 0 | 0 |
+| [investments](investments/figures.md) | KIA, EIA, MIA, Vamil, willekeurige afschrijving, ordinary depreciation and the desinvesteringsbijtelling for tax year 2026. | 16 | 2 | 1 |
+| [costs-and-car](costs-and-car/figures.md) | Business costs, mixed costs, study costs, home workspace, fines and car rules for a Dutch sole trader or BV in tax year 2026. | 36 | 0 | 0 |
 | [box-3](box-3/figures.md) | Fictitious box 3 return on savings and investments for tax year 2026, including the 2026 percentages, the heffingsvrij vermogen, the schuldendrempel, green investments and the optional actual-return report. | 21 | 0 | 3 |
 | [box-2](box-2/figures.md) | Box 2 rates, the aanmerkelijk belang tests, excessief lenen, gebruikelijk loon, loss relief and the pension rules that touch box 2 for tax year 2026. | 22 | 1 | 1 |
-| [bv-en-vennootschapsbelasting](bv-en-vennootschapsbelasting/figures.md) | The BV and vennootschapsbelasting for tax year 2026: Vpb rates, loss set-off, the interest limitation, innovatiebox, fiscale eenheid, gebruikelijk loon, Zvw, box 2, dividendbelasting, conditionele bronbelasting, jaarrekening and the switch from eenmanszaak to BV. | 29 | 0 | 0 |
-| [pensioen-en-aov](pensioen-en-aov/figures.md) | Key figures, rules, and calculations for jaarruimte, lijfrente, and arbeidsongeschiktheidsverzekering (AOV) for tax year 2026. | 22 | 0 | 6 |
-| [arbeidsrelatie](arbeidsrelatie/figures.md) | Work relationship rules for tax year 2026, covering Wet DBA enforcement, modelovereenkomsten, the VBAR low hourly rate presumption and the BAZ bill. | 26 | 2 | 9 |
+| [private-company-and-corporate-tax](private-company-and-corporate-tax/figures.md) | The BV and vennootschapsbelasting for tax year 2026: Vpb rates, loss set-off, the interest limitation, innovatiebox, fiscale eenheid, gebruikelijk loon, Zvw, box 2, dividendbelasting, conditionele bronbelasting, jaarrekening and the switch from eenmanszaak to BV. | 29 | 0 | 0 |
+| [pension-and-disability-insurance](pension-and-disability-insurance/figures.md) | Key figures, rules, and calculations for jaarruimte, lijfrente, and arbeidsongeschiktheidsverzekering (AOV) for tax year 2026. | 22 | 0 | 6 |
+| [work-relationship](work-relationship/figures.md) | Work relationship rules for tax year 2026, covering Wet DBA enforcement, modelovereenkomsten, the VBAR low hourly rate presumption and the BAZ bill. | 26 | 2 | 9 |
 | [procedure](procedure/figures.md) | Filing deadlines and extensions, voorlopige aanslag, belastingrente, navordering, bezwaar, bewaarplicht and KVK and Belastingdienst registration for tax year 2026. | 32 | 1 | 1 |
 <!-- GENERATED:topic-files:end -->
 

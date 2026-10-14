@@ -82,4 +82,4 @@ Year overview: [README.md](../README.md).
 - [2024 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
 - [Aangifte en procedure 2023](../../2023/procedure/figures.md) and [Aangifte en procedure 2025](../../2025/procedure/figures.md)
-- Related topics in 2024: [BTW 2024](../btw/figures.md), [Inkomstenbelasting box 1 2024](../inkomstenbelasting/figures.md), [Arbeidsrelatie en zelfstandigheid 2024](../arbeidsrelatie/figures.md)
+- Related topics in 2024: [BTW 2024](../vat/figures.md), [Inkomstenbelasting box 1 2024](../income-tax/figures.md), [Arbeidsrelatie en zelfstandigheid 2024](../work-relationship/figures.md)

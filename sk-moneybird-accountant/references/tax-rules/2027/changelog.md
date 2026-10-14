@@ -32,11 +32,11 @@ The rows below were first researched and later corrected against a primary sourc
 | 2026-10-12 | box-3/figures.md | Vrijstelling groene beleggingen | as first researched | Corrected | https://zoek.officielebekendmakingen.nl/stb-2025-444.html |
 | 2026-10-12 | box-3/figures.md | Korting groene beleggingen | as first researched | Corrected | https://wetten.overheid.nl/BWBR0011353/2027-01-01 |
 | 2026-10-12 | box-3/figures.md | Einde groene regelingen | as first researched | Corrected | https://zoek.officielebekendmakingen.nl/stb-2025-444.html |
-| 2026-10-12 | btw/figures.md | Bill 36.920 scheduled dates | as first researched | Corrected | https://www.eerstekamer.nl/wetsvoorstel/36920_wet_implementatie_richtlijn |
-| 2026-10-12 | bv-en-vennootschapsbelasting/figures.md | DGA Zvw route | as first researched | Corrected | https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf |
-| 2026-10-12 | bv-en-vennootschapsbelasting/figures.md | Box 2 indexation in the bill (art. 10.1 lid 1 Wet IB 2001) | as first researched | Corrected | https://zoek.officielebekendmakingen.nl/kst-37022-2.html |
-| 2026-10-12 | bv-en-vennootschapsbelasting/figures.md | Besluit geruisloze omzetting 2025 | as first researched | Corrected | https://zoek.officielebekendmakingen.nl/stcrt-2025-37092.html |
-| 2026-10-12 | inkomstenbelasting/figures.md | AHK payout to a minstverdienende partner | as first researched | Corrected | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/heffingskortingen |
-| 2026-10-12 | inkomstenbelasting/figures.md | IACK phase-down | as first researched | Corrected | https://www.tweedekamer.nl/downloads/document?id=2026D43301 |
-| 2026-10-12 | zvw/figures.md | Bijdrage-inkomen from winst uit onderneming | as first researched | Corrected | https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01 |
-| 2026-10-13 | investeringen/figures.md | Starters willekeurige afschrijving yearly cap | Verified | UNVERIFIED | https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 8 |
+| 2026-10-12 | vat/figures.md | Bill 36.920 scheduled dates | as first researched | Corrected | https://www.eerstekamer.nl/wetsvoorstel/36920_wet_implementatie_richtlijn |
+| 2026-10-12 | private-company-and-corporate-tax/figures.md | DGA Zvw route | as first researched | Corrected | https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf |
+| 2026-10-12 | private-company-and-corporate-tax/figures.md | Box 2 indexation in the bill (art. 10.1 lid 1 Wet IB 2001) | as first researched | Corrected | https://zoek.officielebekendmakingen.nl/kst-37022-2.html |
+| 2026-10-12 | private-company-and-corporate-tax/figures.md | Besluit geruisloze omzetting 2025 | as first researched | Corrected | https://zoek.officielebekendmakingen.nl/stcrt-2025-37092.html |
+| 2026-10-12 | income-tax/figures.md | AHK payout to a minstverdienende partner | as first researched | Corrected | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/heffingskortingen |
+| 2026-10-12 | income-tax/figures.md | IACK phase-down | as first researched | Corrected | https://www.tweedekamer.nl/downloads/document?id=2026D43301 |
+| 2026-10-12 | health-insurance-contribution/figures.md | Bijdrage-inkomen from winst uit onderneming | as first researched | Corrected | https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01 |
+| 2026-10-13 | investments/figures.md | Starters willekeurige afschrijving yearly cap | Verified | UNVERIFIED | https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 art. 8 |

@@ -39,8 +39,8 @@ Run the checks in this order. Each check names its evidence, the year file that 
 | Capture the commercial reports | The balance at the closing date, the profit and loss account for the year, the kolommenbalans and the journal detail are captured with their dates. | [The year README for the resolved year](../tax-rules/2026/README.md) |
 | Resolve the bank and suspense balances | Every te rubriceren item and every unprocessed bank transaction is matched or listed as an exception. | [Bank reconciliation](../moneybird-bookkeeping.md#6-bank-reconciliation) |
 | Tie the opening balance | Each prior closing line opens immediately before the Moneybird start period, including the bank and the open receivables and payables. | [Opening balance](../moneybird-bookkeeping.md#5-assets-and-opening-balance) |
-| Tie the asset register | The register's cost, prior depreciation and the year's write-off tie to the balance and the profit and loss account. | [Fixed assets](../fixed-assets.md) and [Investeringen 2026 figures](../tax-rules/2026/investeringen/figures.md) |
-| Reconcile VAT | Each filed period matches its period report. Every correction is routed. | [VAT return preparation](../vat-return/README.md) and [BTW 2026 figures](../tax-rules/2026/btw/figures.md) |
+| Tie the asset register | The register's cost, prior depreciation and the year's write-off tie to the balance and the profit and loss account. | [Fixed assets](../fixed-assets.md) and [Investeringen 2026 figures](../tax-rules/2026/investments/figures.md) |
+| Reconcile VAT | Each filed period matches its period report. Every correction is routed. | [VAT return preparation](../vat-return/README.md) and [BTW 2026 figures](../tax-rules/2026/vat/figures.md) |
 | Build the cut-off list | Each prepaid or accrued item names the period it belongs to and the treatment, consistent with the prior policy. | [Year attribution in year and state resolution](../tax-rules/year-and-state.md#2-year-resolution) |
 | Assemble the pack | Every part is present. Every exception has an owner and a status. Every figure names the year file it came from. | [Fiscal reconciliation](fiscal-reconciliation.md) and [year and state resolution](../tax-rules/year-and-state.md) |
 
@@ -76,7 +76,7 @@ Worked example with braced placeholders:
 
 Check: `{opening_equity}` + `{result}` - `{private_withdrawals}` + `{private_deposits}` equals `{closing_equity}`. The result on that line equals the profit and loss result before the closing zeroes it. Every difference is an exception, never an unexplained balancing entry.
 
-The result, the ondernemersaftrek and the profit exemption are year values. Read them from the resolved year folder, for example [Ondernemersaftrek 2026 figures](../tax-rules/2026/ondernemersaftrek/figures.md) and [the 2026 year README](../tax-rules/2026/README.md). The rule that decides the year a cost or revenue belongs to is the sourced sentence in [year and state resolution](../tax-rules/year-and-state.md).
+The result, the ondernemersaftrek and the profit exemption are year values. Read them from the resolved year folder, for example [Ondernemersaftrek 2026 figures](../tax-rules/2026/business-deductions/figures.md) and [the 2026 year README](../tax-rules/2026/README.md). The rule that decides the year a cost or revenue belongs to is the sourced sentence in [year and state resolution](../tax-rules/year-and-state.md).
 
 `[Operator]` decides the value of an onttrekking and the private-use treatment.
 

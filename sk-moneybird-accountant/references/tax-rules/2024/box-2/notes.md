@@ -108,4 +108,4 @@ Outdated for 2024: FISIN 2023 works its excessief-lenen example into 2024 with a
 - [2024 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
 - [Box 2 en aanmerkelijk belang 2023](../../2023/box-2/figures.md) and [Box 2 en aanmerkelijk belang 2025](../../2025/box-2/figures.md)
-- Related topics in 2024: [BV en vennootschapsbelasting 2024](../bv-en-vennootschapsbelasting/figures.md), [Inkomstenbelasting box 1 2024](../inkomstenbelasting/figures.md)
+- Related topics in 2024: [BV en vennootschapsbelasting 2024](../private-company-and-corporate-tax/figures.md), [Inkomstenbelasting box 1 2024](../income-tax/figures.md)

@@ -281,8 +281,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/arbeidsrelatie/figures.md",
-    "diskPath": "references/tax-rules/2020/arbeidsrelatie/figures.md"
+    "leafResourceId": "references/tax-rules/2020/work-relationship/figures.md",
+    "diskPath": "references/tax-rules/2020/work-relationship/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -296,13 +296,13 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/btw/figures.md",
-    "diskPath": "references/tax-rules/2020/btw/figures.md"
+    "leafResourceId": "references/tax-rules/2020/vat/figures.md",
+    "diskPath": "references/tax-rules/2020/vat/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/bv-en-vennootschapsbelasting/figures.md",
-    "diskPath": "references/tax-rules/2020/bv-en-vennootschapsbelasting/figures.md"
+    "leafResourceId": "references/tax-rules/2020/private-company-and-corporate-tax/figures.md",
+    "diskPath": "references/tax-rules/2020/private-company-and-corporate-tax/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -316,28 +316,28 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/inkomstenbelasting/figures.md",
-    "diskPath": "references/tax-rules/2020/inkomstenbelasting/figures.md"
+    "leafResourceId": "references/tax-rules/2020/income-tax/figures.md",
+    "diskPath": "references/tax-rules/2020/income-tax/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/investeringen/figures.md",
-    "diskPath": "references/tax-rules/2020/investeringen/figures.md"
+    "leafResourceId": "references/tax-rules/2020/investments/figures.md",
+    "diskPath": "references/tax-rules/2020/investments/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/kosten-en-auto/figures.md",
-    "diskPath": "references/tax-rules/2020/kosten-en-auto/figures.md"
+    "leafResourceId": "references/tax-rules/2020/costs-and-car/figures.md",
+    "diskPath": "references/tax-rules/2020/costs-and-car/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/ondernemersaftrek/figures.md",
-    "diskPath": "references/tax-rules/2020/ondernemersaftrek/figures.md"
+    "leafResourceId": "references/tax-rules/2020/business-deductions/figures.md",
+    "diskPath": "references/tax-rules/2020/business-deductions/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/pensioen-en-aov/figures.md",
-    "diskPath": "references/tax-rules/2020/pensioen-en-aov/figures.md"
+    "leafResourceId": "references/tax-rules/2020/pension-and-disability-insurance/figures.md",
+    "diskPath": "references/tax-rules/2020/pension-and-disability-insurance/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -346,8 +346,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/zvw/figures.md",
-    "diskPath": "references/tax-rules/2020/zvw/figures.md"
+    "leafResourceId": "references/tax-rules/2020/health-insurance-contribution/figures.md",
+    "diskPath": "references/tax-rules/2020/health-insurance-contribution/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -356,8 +356,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/arbeidsrelatie/figures.md",
-    "diskPath": "references/tax-rules/2021/arbeidsrelatie/figures.md"
+    "leafResourceId": "references/tax-rules/2021/work-relationship/figures.md",
+    "diskPath": "references/tax-rules/2021/work-relationship/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -371,13 +371,13 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/btw/figures.md",
-    "diskPath": "references/tax-rules/2021/btw/figures.md"
+    "leafResourceId": "references/tax-rules/2021/vat/figures.md",
+    "diskPath": "references/tax-rules/2021/vat/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/bv-en-vennootschapsbelasting/figures.md",
-    "diskPath": "references/tax-rules/2021/bv-en-vennootschapsbelasting/figures.md"
+    "leafResourceId": "references/tax-rules/2021/private-company-and-corporate-tax/figures.md",
+    "diskPath": "references/tax-rules/2021/private-company-and-corporate-tax/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -391,28 +391,28 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/inkomstenbelasting/figures.md",
-    "diskPath": "references/tax-rules/2021/inkomstenbelasting/figures.md"
+    "leafResourceId": "references/tax-rules/2021/income-tax/figures.md",
+    "diskPath": "references/tax-rules/2021/income-tax/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/investeringen/figures.md",
-    "diskPath": "references/tax-rules/2021/investeringen/figures.md"
+    "leafResourceId": "references/tax-rules/2021/investments/figures.md",
+    "diskPath": "references/tax-rules/2021/investments/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/kosten-en-auto/figures.md",
-    "diskPath": "references/tax-rules/2021/kosten-en-auto/figures.md"
+    "leafResourceId": "references/tax-rules/2021/costs-and-car/figures.md",
+    "diskPath": "references/tax-rules/2021/costs-and-car/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/ondernemersaftrek/figures.md",
-    "diskPath": "references/tax-rules/2021/ondernemersaftrek/figures.md"
+    "leafResourceId": "references/tax-rules/2021/business-deductions/figures.md",
+    "diskPath": "references/tax-rules/2021/business-deductions/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/pensioen-en-aov/figures.md",
-    "diskPath": "references/tax-rules/2021/pensioen-en-aov/figures.md"
+    "leafResourceId": "references/tax-rules/2021/pension-and-disability-insurance/figures.md",
+    "diskPath": "references/tax-rules/2021/pension-and-disability-insurance/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -421,8 +421,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/zvw/figures.md",
-    "diskPath": "references/tax-rules/2021/zvw/figures.md"
+    "leafResourceId": "references/tax-rules/2021/health-insurance-contribution/figures.md",
+    "diskPath": "references/tax-rules/2021/health-insurance-contribution/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -431,8 +431,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/arbeidsrelatie/figures.md",
-    "diskPath": "references/tax-rules/2022/arbeidsrelatie/figures.md"
+    "leafResourceId": "references/tax-rules/2022/work-relationship/figures.md",
+    "diskPath": "references/tax-rules/2022/work-relationship/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -446,13 +446,13 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/btw/figures.md",
-    "diskPath": "references/tax-rules/2022/btw/figures.md"
+    "leafResourceId": "references/tax-rules/2022/vat/figures.md",
+    "diskPath": "references/tax-rules/2022/vat/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/bv-en-vennootschapsbelasting/figures.md",
-    "diskPath": "references/tax-rules/2022/bv-en-vennootschapsbelasting/figures.md"
+    "leafResourceId": "references/tax-rules/2022/private-company-and-corporate-tax/figures.md",
+    "diskPath": "references/tax-rules/2022/private-company-and-corporate-tax/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -466,28 +466,28 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/inkomstenbelasting/figures.md",
-    "diskPath": "references/tax-rules/2022/inkomstenbelasting/figures.md"
+    "leafResourceId": "references/tax-rules/2022/income-tax/figures.md",
+    "diskPath": "references/tax-rules/2022/income-tax/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/investeringen/figures.md",
-    "diskPath": "references/tax-rules/2022/investeringen/figures.md"
+    "leafResourceId": "references/tax-rules/2022/investments/figures.md",
+    "diskPath": "references/tax-rules/2022/investments/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/kosten-en-auto/figures.md",
-    "diskPath": "references/tax-rules/2022/kosten-en-auto/figures.md"
+    "leafResourceId": "references/tax-rules/2022/costs-and-car/figures.md",
+    "diskPath": "references/tax-rules/2022/costs-and-car/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/ondernemersaftrek/figures.md",
-    "diskPath": "references/tax-rules/2022/ondernemersaftrek/figures.md"
+    "leafResourceId": "references/tax-rules/2022/business-deductions/figures.md",
+    "diskPath": "references/tax-rules/2022/business-deductions/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/pensioen-en-aov/figures.md",
-    "diskPath": "references/tax-rules/2022/pensioen-en-aov/figures.md"
+    "leafResourceId": "references/tax-rules/2022/pension-and-disability-insurance/figures.md",
+    "diskPath": "references/tax-rules/2022/pension-and-disability-insurance/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -496,8 +496,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/zvw/figures.md",
-    "diskPath": "references/tax-rules/2022/zvw/figures.md"
+    "leafResourceId": "references/tax-rules/2022/health-insurance-contribution/figures.md",
+    "diskPath": "references/tax-rules/2022/health-insurance-contribution/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -506,8 +506,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/arbeidsrelatie/figures.md",
-    "diskPath": "references/tax-rules/2023/arbeidsrelatie/figures.md"
+    "leafResourceId": "references/tax-rules/2023/work-relationship/figures.md",
+    "diskPath": "references/tax-rules/2023/work-relationship/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -521,13 +521,13 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/btw/figures.md",
-    "diskPath": "references/tax-rules/2023/btw/figures.md"
+    "leafResourceId": "references/tax-rules/2023/vat/figures.md",
+    "diskPath": "references/tax-rules/2023/vat/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/bv-en-vennootschapsbelasting/figures.md",
-    "diskPath": "references/tax-rules/2023/bv-en-vennootschapsbelasting/figures.md"
+    "leafResourceId": "references/tax-rules/2023/private-company-and-corporate-tax/figures.md",
+    "diskPath": "references/tax-rules/2023/private-company-and-corporate-tax/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -541,28 +541,28 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/inkomstenbelasting/figures.md",
-    "diskPath": "references/tax-rules/2023/inkomstenbelasting/figures.md"
+    "leafResourceId": "references/tax-rules/2023/income-tax/figures.md",
+    "diskPath": "references/tax-rules/2023/income-tax/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/investeringen/figures.md",
-    "diskPath": "references/tax-rules/2023/investeringen/figures.md"
+    "leafResourceId": "references/tax-rules/2023/investments/figures.md",
+    "diskPath": "references/tax-rules/2023/investments/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/kosten-en-auto/figures.md",
-    "diskPath": "references/tax-rules/2023/kosten-en-auto/figures.md"
+    "leafResourceId": "references/tax-rules/2023/costs-and-car/figures.md",
+    "diskPath": "references/tax-rules/2023/costs-and-car/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/ondernemersaftrek/figures.md",
-    "diskPath": "references/tax-rules/2023/ondernemersaftrek/figures.md"
+    "leafResourceId": "references/tax-rules/2023/business-deductions/figures.md",
+    "diskPath": "references/tax-rules/2023/business-deductions/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/pensioen-en-aov/figures.md",
-    "diskPath": "references/tax-rules/2023/pensioen-en-aov/figures.md"
+    "leafResourceId": "references/tax-rules/2023/pension-and-disability-insurance/figures.md",
+    "diskPath": "references/tax-rules/2023/pension-and-disability-insurance/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -571,8 +571,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/zvw/figures.md",
-    "diskPath": "references/tax-rules/2023/zvw/figures.md"
+    "leafResourceId": "references/tax-rules/2023/health-insurance-contribution/figures.md",
+    "diskPath": "references/tax-rules/2023/health-insurance-contribution/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -581,8 +581,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/arbeidsrelatie/figures.md",
-    "diskPath": "references/tax-rules/2024/arbeidsrelatie/figures.md"
+    "leafResourceId": "references/tax-rules/2024/work-relationship/figures.md",
+    "diskPath": "references/tax-rules/2024/work-relationship/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -596,13 +596,13 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/btw/figures.md",
-    "diskPath": "references/tax-rules/2024/btw/figures.md"
+    "leafResourceId": "references/tax-rules/2024/vat/figures.md",
+    "diskPath": "references/tax-rules/2024/vat/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/bv-en-vennootschapsbelasting/figures.md",
-    "diskPath": "references/tax-rules/2024/bv-en-vennootschapsbelasting/figures.md"
+    "leafResourceId": "references/tax-rules/2024/private-company-and-corporate-tax/figures.md",
+    "diskPath": "references/tax-rules/2024/private-company-and-corporate-tax/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -616,28 +616,28 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/inkomstenbelasting/figures.md",
-    "diskPath": "references/tax-rules/2024/inkomstenbelasting/figures.md"
+    "leafResourceId": "references/tax-rules/2024/income-tax/figures.md",
+    "diskPath": "references/tax-rules/2024/income-tax/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/investeringen/figures.md",
-    "diskPath": "references/tax-rules/2024/investeringen/figures.md"
+    "leafResourceId": "references/tax-rules/2024/investments/figures.md",
+    "diskPath": "references/tax-rules/2024/investments/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/kosten-en-auto/figures.md",
-    "diskPath": "references/tax-rules/2024/kosten-en-auto/figures.md"
+    "leafResourceId": "references/tax-rules/2024/costs-and-car/figures.md",
+    "diskPath": "references/tax-rules/2024/costs-and-car/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/ondernemersaftrek/figures.md",
-    "diskPath": "references/tax-rules/2024/ondernemersaftrek/figures.md"
+    "leafResourceId": "references/tax-rules/2024/business-deductions/figures.md",
+    "diskPath": "references/tax-rules/2024/business-deductions/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/pensioen-en-aov/figures.md",
-    "diskPath": "references/tax-rules/2024/pensioen-en-aov/figures.md"
+    "leafResourceId": "references/tax-rules/2024/pension-and-disability-insurance/figures.md",
+    "diskPath": "references/tax-rules/2024/pension-and-disability-insurance/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -646,8 +646,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/zvw/figures.md",
-    "diskPath": "references/tax-rules/2024/zvw/figures.md"
+    "leafResourceId": "references/tax-rules/2024/health-insurance-contribution/figures.md",
+    "diskPath": "references/tax-rules/2024/health-insurance-contribution/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -656,8 +656,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/arbeidsrelatie/figures.md",
-    "diskPath": "references/tax-rules/2025/arbeidsrelatie/figures.md"
+    "leafResourceId": "references/tax-rules/2025/work-relationship/figures.md",
+    "diskPath": "references/tax-rules/2025/work-relationship/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -671,13 +671,13 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/btw/figures.md",
-    "diskPath": "references/tax-rules/2025/btw/figures.md"
+    "leafResourceId": "references/tax-rules/2025/vat/figures.md",
+    "diskPath": "references/tax-rules/2025/vat/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/bv-en-vennootschapsbelasting/figures.md",
-    "diskPath": "references/tax-rules/2025/bv-en-vennootschapsbelasting/figures.md"
+    "leafResourceId": "references/tax-rules/2025/private-company-and-corporate-tax/figures.md",
+    "diskPath": "references/tax-rules/2025/private-company-and-corporate-tax/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -691,28 +691,28 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/inkomstenbelasting/figures.md",
-    "diskPath": "references/tax-rules/2025/inkomstenbelasting/figures.md"
+    "leafResourceId": "references/tax-rules/2025/income-tax/figures.md",
+    "diskPath": "references/tax-rules/2025/income-tax/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/investeringen/figures.md",
-    "diskPath": "references/tax-rules/2025/investeringen/figures.md"
+    "leafResourceId": "references/tax-rules/2025/investments/figures.md",
+    "diskPath": "references/tax-rules/2025/investments/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/kosten-en-auto/figures.md",
-    "diskPath": "references/tax-rules/2025/kosten-en-auto/figures.md"
+    "leafResourceId": "references/tax-rules/2025/costs-and-car/figures.md",
+    "diskPath": "references/tax-rules/2025/costs-and-car/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/ondernemersaftrek/figures.md",
-    "diskPath": "references/tax-rules/2025/ondernemersaftrek/figures.md"
+    "leafResourceId": "references/tax-rules/2025/business-deductions/figures.md",
+    "diskPath": "references/tax-rules/2025/business-deductions/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/pensioen-en-aov/figures.md",
-    "diskPath": "references/tax-rules/2025/pensioen-en-aov/figures.md"
+    "leafResourceId": "references/tax-rules/2025/pension-and-disability-insurance/figures.md",
+    "diskPath": "references/tax-rules/2025/pension-and-disability-insurance/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -721,8 +721,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/zvw/figures.md",
-    "diskPath": "references/tax-rules/2025/zvw/figures.md"
+    "leafResourceId": "references/tax-rules/2025/health-insurance-contribution/figures.md",
+    "diskPath": "references/tax-rules/2025/health-insurance-contribution/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -731,8 +731,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/arbeidsrelatie/figures.md",
-    "diskPath": "references/tax-rules/2026/arbeidsrelatie/figures.md"
+    "leafResourceId": "references/tax-rules/2026/work-relationship/figures.md",
+    "diskPath": "references/tax-rules/2026/work-relationship/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -746,13 +746,13 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/btw/figures.md",
-    "diskPath": "references/tax-rules/2026/btw/figures.md"
+    "leafResourceId": "references/tax-rules/2026/vat/figures.md",
+    "diskPath": "references/tax-rules/2026/vat/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/bv-en-vennootschapsbelasting/figures.md",
-    "diskPath": "references/tax-rules/2026/bv-en-vennootschapsbelasting/figures.md"
+    "leafResourceId": "references/tax-rules/2026/private-company-and-corporate-tax/figures.md",
+    "diskPath": "references/tax-rules/2026/private-company-and-corporate-tax/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -766,28 +766,28 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/inkomstenbelasting/figures.md",
-    "diskPath": "references/tax-rules/2026/inkomstenbelasting/figures.md"
+    "leafResourceId": "references/tax-rules/2026/income-tax/figures.md",
+    "diskPath": "references/tax-rules/2026/income-tax/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/investeringen/figures.md",
-    "diskPath": "references/tax-rules/2026/investeringen/figures.md"
+    "leafResourceId": "references/tax-rules/2026/investments/figures.md",
+    "diskPath": "references/tax-rules/2026/investments/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/kosten-en-auto/figures.md",
-    "diskPath": "references/tax-rules/2026/kosten-en-auto/figures.md"
+    "leafResourceId": "references/tax-rules/2026/costs-and-car/figures.md",
+    "diskPath": "references/tax-rules/2026/costs-and-car/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/ondernemersaftrek/figures.md",
-    "diskPath": "references/tax-rules/2026/ondernemersaftrek/figures.md"
+    "leafResourceId": "references/tax-rules/2026/business-deductions/figures.md",
+    "diskPath": "references/tax-rules/2026/business-deductions/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/pensioen-en-aov/figures.md",
-    "diskPath": "references/tax-rules/2026/pensioen-en-aov/figures.md"
+    "leafResourceId": "references/tax-rules/2026/pension-and-disability-insurance/figures.md",
+    "diskPath": "references/tax-rules/2026/pension-and-disability-insurance/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -796,8 +796,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/zvw/figures.md",
-    "diskPath": "references/tax-rules/2026/zvw/figures.md"
+    "leafResourceId": "references/tax-rules/2026/health-insurance-contribution/figures.md",
+    "diskPath": "references/tax-rules/2026/health-insurance-contribution/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -806,8 +806,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/arbeidsrelatie/figures.md",
-    "diskPath": "references/tax-rules/2027/arbeidsrelatie/figures.md"
+    "leafResourceId": "references/tax-rules/2027/work-relationship/figures.md",
+    "diskPath": "references/tax-rules/2027/work-relationship/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -821,13 +821,13 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/btw/figures.md",
-    "diskPath": "references/tax-rules/2027/btw/figures.md"
+    "leafResourceId": "references/tax-rules/2027/vat/figures.md",
+    "diskPath": "references/tax-rules/2027/vat/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/bv-en-vennootschapsbelasting/figures.md",
-    "diskPath": "references/tax-rules/2027/bv-en-vennootschapsbelasting/figures.md"
+    "leafResourceId": "references/tax-rules/2027/private-company-and-corporate-tax/figures.md",
+    "diskPath": "references/tax-rules/2027/private-company-and-corporate-tax/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -841,28 +841,28 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/inkomstenbelasting/figures.md",
-    "diskPath": "references/tax-rules/2027/inkomstenbelasting/figures.md"
+    "leafResourceId": "references/tax-rules/2027/income-tax/figures.md",
+    "diskPath": "references/tax-rules/2027/income-tax/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/investeringen/figures.md",
-    "diskPath": "references/tax-rules/2027/investeringen/figures.md"
+    "leafResourceId": "references/tax-rules/2027/investments/figures.md",
+    "diskPath": "references/tax-rules/2027/investments/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/kosten-en-auto/figures.md",
-    "diskPath": "references/tax-rules/2027/kosten-en-auto/figures.md"
+    "leafResourceId": "references/tax-rules/2027/costs-and-car/figures.md",
+    "diskPath": "references/tax-rules/2027/costs-and-car/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/ondernemersaftrek/figures.md",
-    "diskPath": "references/tax-rules/2027/ondernemersaftrek/figures.md"
+    "leafResourceId": "references/tax-rules/2027/business-deductions/figures.md",
+    "diskPath": "references/tax-rules/2027/business-deductions/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/pensioen-en-aov/figures.md",
-    "diskPath": "references/tax-rules/2027/pensioen-en-aov/figures.md"
+    "leafResourceId": "references/tax-rules/2027/pension-and-disability-insurance/figures.md",
+    "diskPath": "references/tax-rules/2027/pension-and-disability-insurance/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -871,8 +871,8 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/zvw/figures.md",
-    "diskPath": "references/tax-rules/2027/zvw/figures.md"
+    "leafResourceId": "references/tax-rules/2027/health-insurance-contribution/figures.md",
+    "diskPath": "references/tax-rules/2027/health-insurance-contribution/figures.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",

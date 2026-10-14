@@ -116,6 +116,21 @@ run_splitter() {
     python3 -I "$root/sk-moneybird-accountant/scripts/split-topic-files.py" "$mode" >"$TMP_ROOT/out.txt" 2>&1
 }
 
+# Run the accept mode of one fixture repository and capture its output
+# Args:
+#   $1 - Fixture repository root
+#   $2 - Rename map path
+#   $3 - Base revision
+# Returns:
+#   The splitter exit status, with its output in $TMP_ROOT/out.txt
+run_accept() {
+    local root="$1"
+    local map="$2"
+    local base="$3"
+    python3 -I "$root/sk-moneybird-accountant/scripts/split-topic-files.py" \
+        --accept-renames "$map" --base "$base" >"$TMP_ROOT/out.txt" 2>&1
+}
+
 # ───────────────────────────────────────────────────────────────
 # 4. FIXTURE BUILDER
 # ───────────────────────────────────────────────────────────────
@@ -137,7 +152,7 @@ make_fixture() {
     mkdir -p "$skill/scripts" "$year2020" "$year2021" || return 1
     cp "$CHECKER" "$skill/scripts/split-topic-files.py" || return 1
 
-    cat >"$year2020/btw.md" <<'EOF'
+    cat >"$year2020/vat.md" <<'EOF'
 ---
 title: "BTW 2020"
 description: "Covers Dutch VAT for the split suite."
@@ -169,7 +184,7 @@ Fixture key figure notes.
 
 ## 3. HOW IT WORKS
 
-Fixture rule text. See the [year overview](README.md) and the [income topic](inkomstenbelasting.md).
+Fixture rule text. See the [year overview](README.md) and the [income topic](income-tax.md).
 
 The citation target line for the suite.
 
@@ -194,7 +209,7 @@ Fixture open points text.
 Fixture resources text.
 EOF
 
-    cat >"$year2020/inkomstenbelasting.md" <<'EOF'
+    cat >"$year2020/income-tax.md" <<'EOF'
 ---
 title: "Income tax 2020"
 description: "Covers Dutch income tax for the split suite."
@@ -254,7 +269,7 @@ description: "Fixture year overview."
 Fixture year overview.
 EOF
 
-    cat >"$year2021/btw.md" <<'EOF'
+    cat >"$year2021/vat.md" <<'EOF'
 ---
 title: "BTW 2021"
 description: "Covers Dutch VAT for the split suite."
@@ -402,13 +417,13 @@ Fixture start text.
 Fixture related text.
 EOF
 
-    cited_line=$(grep -n 'The citation target line for the suite.' "$year2020/btw.md" | cut -d: -f1) || return 1
+    cited_line=$(grep -n 'The citation target line for the suite.' "$year2020/vat.md" | cut -d: -f1) || return 1
     cat >"$repo_root/citations.md" <<EOF
 # Citation fixture
 
-- Bare path: sk-moneybird-accountant/references/tax-rules/2020/btw.md
-- Line path: sk-moneybird-accountant/references/tax-rules/2020/btw.md:${cited_line}
-- Anchor path: sk-moneybird-accountant/references/tax-rules/2020/btw.md#3-how-it-works
+- Bare path: sk-moneybird-accountant/references/tax-rules/2020/vat.md
+- Line path: sk-moneybird-accountant/references/tax-rules/2020/vat.md:${cited_line}
+- Anchor path: sk-moneybird-accountant/references/tax-rules/2020/vat.md#3-how-it-works
 EOF
     return 0
 }
@@ -424,8 +439,8 @@ if ! make_fixture "$FIXTURE"; then
     exit 2
 fi
 
-ORIGINAL_BTW="$TMP_ROOT/original-btw.md"
-cp "$FIXTURE/sk-moneybird-accountant/references/tax-rules/2020/btw.md" "$ORIGINAL_BTW" || exit 2
+ORIGINAL_VAT="$TMP_ROOT/original-vat.md"
+cp "$FIXTURE/sk-moneybird-accountant/references/tax-rules/2020/vat.md" "$ORIGINAL_VAT" || exit 2
 
 CLEAN="$TMP_ROOT/clean"
 cp -R "$FIXTURE" "$CLEAN" || exit 2
@@ -450,6 +465,17 @@ else
     case_failed "clean split passes --check"
 fi
 
+# Case: the general parts carry English file names even though their slugs
+# come from Dutch section headings
+GENERAL_OUT="$CLEAN/sk-moneybird-accountant/references/tax-rules/general"
+if [[ -f "$GENERAL_OUT/vat.md" ]] \
+    && [[ -f "$GENERAL_OUT/the-private-company-and-corporate-tax.md" ]] \
+    && [[ -z "$(find "$GENERAL_OUT" -name '*.md' | grep -E 'btw|zvw|ondernemersaftrek|vennootschapsbelasting|lijfrente')" ]]; then
+    pass "general parts carry English file names"
+else
+    case_failed "general parts carry English file names"
+fi
+
 # ───────────────────────────────────────────────────────────────
 # 6. MUTANTS
 # ───────────────────────────────────────────────────────────────
@@ -460,11 +486,11 @@ group "mutants"
 HAND_EDIT="$TMP_ROOT/hand-edit"
 cp -R "$CLEAN" "$HAND_EDIT" || exit 2
 printf 'A hand edit that the manifest does not know.\n' \
-    >>"$HAND_EDIT/sk-moneybird-accountant/references/tax-rules/2020/btw/rules.md"
+    >>"$HAND_EDIT/sk-moneybird-accountant/references/tax-rules/2020/vat/rules.md"
 run_splitter "$HAND_EDIT" --check
 status=$?
 if [[ "$status" -eq 1 ]] \
-    && grep -qF 'drift sk-moneybird-accountant/references/tax-rules/2020/btw.md part sk-moneybird-accountant/references/tax-rules/2020/btw/rules.md' "$TMP_ROOT/out.txt"; then
+    && grep -qF 'drift sk-moneybird-accountant/references/tax-rules/2020/vat.md part sk-moneybird-accountant/references/tax-rules/2020/vat/rules.md' "$TMP_ROOT/out.txt"; then
     pass "hand-edited part"
 else
     case_failed "hand-edited part"
@@ -473,7 +499,7 @@ fi
 # Case: a hand edit to the derived header fails --check as a body edit does
 HEADER_EDIT="$TMP_ROOT/header-edit"
 cp -R "$CLEAN" "$HEADER_EDIT" || exit 2
-HEADER_PART="$HEADER_EDIT/sk-moneybird-accountant/references/tax-rules/2020/btw/rules.md"
+HEADER_PART="$HEADER_EDIT/sk-moneybird-accountant/references/tax-rules/2020/vat/rules.md"
 python3 -I - "$HEADER_PART" <<'PY' || exit 2
 import sys
 
@@ -486,7 +512,7 @@ PY
 run_splitter "$HEADER_EDIT" --check
 status=$?
 if [[ "$status" -eq 1 ]] \
-    && grep -qF 'drift sk-moneybird-accountant/references/tax-rules/2020/btw.md part sk-moneybird-accountant/references/tax-rules/2020/btw/rules.md (header hash' "$TMP_ROOT/out.txt"; then
+    && grep -qF 'drift sk-moneybird-accountant/references/tax-rules/2020/vat.md part sk-moneybird-accountant/references/tax-rules/2020/vat/rules.md (header hash' "$TMP_ROOT/out.txt"; then
     pass "hand-edited header"
 else
     case_failed "hand-edited header"
@@ -509,7 +535,7 @@ fi
 # Case: a GENERATED fence the index generator adds after the H1 keeps --check green
 FENCED="$TMP_ROOT/fenced"
 cp -R "$CLEAN" "$FENCED" || exit 2
-python3 -I - "$FENCED/sk-moneybird-accountant/references/tax-rules/2020/btw/rules.md" <<'PY' || exit 2
+python3 -I - "$FENCED/sk-moneybird-accountant/references/tax-rules/2020/vat/rules.md" <<'PY' || exit 2
 import sys
 
 path = sys.argv[1]
@@ -530,11 +556,11 @@ fi
 # Case: a returned original fails --check and names the leftover
 RETURNED="$TMP_ROOT/returned"
 cp -R "$CLEAN" "$RETURNED" || exit 2
-cp "$ORIGINAL_BTW" "$RETURNED/sk-moneybird-accountant/references/tax-rules/2020/btw.md"
+cp "$ORIGINAL_VAT" "$RETURNED/sk-moneybird-accountant/references/tax-rules/2020/vat.md"
 run_splitter "$RETURNED" --check
 status=$?
 if [[ "$status" -eq 1 ]] \
-    && grep -qF 'leftover original sk-moneybird-accountant/references/tax-rules/2020/btw.md' "$TMP_ROOT/out.txt"; then
+    && grep -qF 'leftover original sk-moneybird-accountant/references/tax-rules/2020/vat.md' "$TMP_ROOT/out.txt"; then
     pass "returned original"
 else
     case_failed "returned original"
@@ -543,7 +569,7 @@ fi
 # Case: an unmappable citation exits non-zero and writes nothing
 UNMAPPABLE="$TMP_ROOT/unmappable"
 cp -R "$FIXTURE" "$UNMAPPABLE" || exit 2
-printf -- '- Broken line: sk-moneybird-accountant/references/tax-rules/2020/btw.md:9999\n' \
+printf -- '- Broken line: sk-moneybird-accountant/references/tax-rules/2020/vat.md:9999\n' \
     >>"$UNMAPPABLE/citations.md"
 before=$(tree_checksums "$UNMAPPABLE")
 run_splitter "$UNMAPPABLE" --write
@@ -560,12 +586,12 @@ fi
 # Case: a topic folder that holds fewer than four parts fails --check
 SHORT_FOLDER="$TMP_ROOT/short-folder"
 cp -R "$CLEAN" "$SHORT_FOLDER" || exit 2
-rm "$SHORT_FOLDER/sk-moneybird-accountant/references/tax-rules/2020/inkomstenbelasting/examples.md"
+rm "$SHORT_FOLDER/sk-moneybird-accountant/references/tax-rules/2020/income-tax/examples.md"
 run_splitter "$SHORT_FOLDER" --check
 status=$?
 if [[ "$status" -eq 1 ]] \
-    && grep -qF 'missing part sk-moneybird-accountant/references/tax-rules/2020/inkomstenbelasting/examples.md' "$TMP_ROOT/out.txt" \
-    && grep -qF 'short folder sk-moneybird-accountant/references/tax-rules/2020/inkomstenbelasting holds 3 of 4 parts' "$TMP_ROOT/out.txt"; then
+    && grep -qF 'missing part sk-moneybird-accountant/references/tax-rules/2020/income-tax/examples.md' "$TMP_ROOT/out.txt" \
+    && grep -qF 'short folder sk-moneybird-accountant/references/tax-rules/2020/income-tax holds 3 of 4 parts' "$TMP_ROOT/out.txt"; then
     pass "folder with fewer than four parts"
 else
     case_failed "folder with fewer than four parts"
@@ -580,14 +606,14 @@ else
     TOKEN_FIXTURE="$TMP_ROOT/token-fixture"
     cp -R "$FIXTURE" "$TOKEN_FIXTURE" || exit 2
     awk 'BEGIN { for (i = 1; i <= 2200; i++) print "Fixture filler line that gives the topic file its length." }' \
-        >>"$TOKEN_FIXTURE/sk-moneybird-accountant/references/tax-rules/2020/inkomstenbelasting.md"
+        >>"$TOKEN_FIXTURE/sk-moneybird-accountant/references/tax-rules/2020/income-tax.md"
     run_splitter "$TOKEN_FIXTURE" --write
     write_status=$?
     run_splitter "$TOKEN_FIXTURE" --check
     check_status=$?
     if [[ "$write_status" -eq 0 ]] \
         && [[ "$check_status" -eq 1 ]] \
-        && grep -qF 'over token line sk-moneybird-accountant/references/tax-rules/2020/inkomstenbelasting/notes.md' "$TMP_ROOT/out.txt"; then
+        && grep -qF 'over token line sk-moneybird-accountant/references/tax-rules/2020/income-tax/notes.md' "$TMP_ROOT/out.txt"; then
         pass "part pushed over the token line"
     else
         case_failed "part pushed over the token line"
@@ -601,8 +627,8 @@ fi
 group "rejoin, idempotence and citations"
 
 # Case: a rebased relative link does not fail --check
-if grep -qF '](../README.md)' "$CLEAN/sk-moneybird-accountant/references/tax-rules/2020/btw/rules.md" \
-    && grep -qF '](../inkomstenbelasting/figures.md)' "$CLEAN/sk-moneybird-accountant/references/tax-rules/2020/btw/rules.md"; then
+if grep -qF '](../README.md)' "$CLEAN/sk-moneybird-accountant/references/tax-rules/2020/vat/rules.md" \
+    && grep -qF '](../income-tax/figures.md)' "$CLEAN/sk-moneybird-accountant/references/tax-rules/2020/vat/rules.md"; then
     run_splitter "$CLEAN" --check
     status=$?
     if [[ "$status" -eq 0 ]]; then
@@ -627,16 +653,16 @@ fi
 
 # Case: the remapped citations land on the right part and line
 CITATIONS="$CLEAN/citations.md"
-RULES_PART="$CLEAN/sk-moneybird-accountant/references/tax-rules/2020/btw/rules.md"
-if grep -qF '2020/btw/figures.md' "$CITATIONS" \
-    && grep -qF '2020/btw/rules.md#3-how-it-works' "$CITATIONS" \
+RULES_PART="$CLEAN/sk-moneybird-accountant/references/tax-rules/2020/vat/rules.md"
+if grep -qF '2020/vat/figures.md' "$CITATIONS" \
+    && grep -qF '2020/vat/rules.md#3-how-it-works' "$CITATIONS" \
     && grep -qF '## 3. HOW IT WORKS' "$RULES_PART" \
     && python3 - "$CITATIONS" "$RULES_PART" <<'PY'
 import re
 import sys
 
 text = open(sys.argv[1], encoding="utf-8").read()
-match = re.search(r"btw/rules\.md:(?P<line>[0-9]+)", text)
+match = re.search(r"vat/rules\.md:(?P<line>[0-9]+)", text)
 if not match:
     sys.exit(1)
 lines = open(sys.argv[2], encoding="utf-8").read().split("\n")
@@ -651,7 +677,157 @@ else
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 8. RESULT SUMMARY AND EXIT
+# 8. ACCEPT RENAMES
+# ───────────────────────────────────────────────────────────────
+
+group "accept renames"
+
+# Build a git fixture from the clean split, commit it as the base revision,
+# rename the 2020 income-tax folder to income-tax-renamed and rewrite the one
+# inbound link that the rename moves. The map holds the folder pair alone.
+ACCEPT="$TMP_ROOT/accept"
+cp -R "$CLEAN" "$ACCEPT" || exit 2
+mkdir -p "$TMP_ROOT/empty-hooks" || exit 2
+GIT_FIXTURE=(
+    git -C "$ACCEPT"
+    -c core.hooksPath="$TMP_ROOT/empty-hooks"
+    -c commit.gpgsign=false
+    -c user.name="Split Fixture"
+    -c user.email="split-fixture@example.com"
+)
+"${GIT_FIXTURE[@]}" init -q || exit 2
+"${GIT_FIXTURE[@]}" add -A || exit 2
+"${GIT_FIXTURE[@]}" commit -qm "fixture base" || exit 2
+BASE=$("${GIT_FIXTURE[@]}" rev-parse HEAD) || exit 2
+"${GIT_FIXTURE[@]}" mv \
+    sk-moneybird-accountant/references/tax-rules/2020/income-tax \
+    sk-moneybird-accountant/references/tax-rules/2020/income-tax-renamed || exit 2
+python3 -I - "$ACCEPT/sk-moneybird-accountant/references/tax-rules/2020/vat/rules.md" <<'PY' || exit 2
+import sys
+
+path = sys.argv[1]
+text = open(path, encoding="utf-8").read()
+open(path, "w", encoding="utf-8").write(
+    text.replace("../income-tax/figures.md", "../income-tax-renamed/figures.md")
+)
+PY
+
+MAP="$TMP_ROOT/rename-map.json"
+cat >"$MAP" <<'EOF'
+{
+  "sk-moneybird-accountant/references/tax-rules/2020/income-tax/": "sk-moneybird-accountant/references/tax-rules/2020/income-tax-renamed/"
+}
+EOF
+MANIFEST="$ACCEPT/sk-moneybird-accountant/references/tax-rules/split-manifest.json"
+REFUSE="$TMP_ROOT/accept-refuse"
+cp -R "$ACCEPT" "$REFUSE" || exit 2
+HEADER_REFUSE="$TMP_ROOT/accept-refuse-header"
+cp -R "$ACCEPT" "$HEADER_REFUSE" || exit 2
+
+# Case: a pure folder rename with its inbound link rewritten is accepted
+run_accept "$ACCEPT" "$MAP" "$BASE"
+status=$?
+if [[ "$status" -eq 0 ]] \
+    && grep -qF 'split-accept: 4 parts renamed, 21 unchanged' "$TMP_ROOT/out.txt" \
+    && grep -qF '2020/income-tax-renamed/figures.md' "$MANIFEST" \
+    && ! grep -qF '2020/income-tax/figures.md' "$MANIFEST"; then
+    pass "pure rename accepted"
+else
+    case_failed "pure rename accepted"
+fi
+
+# Case: the accepted rename leaves --check green
+run_splitter "$ACCEPT" --check
+status=$?
+if [[ "$status" -eq 0 ]] && grep -qF 'split-check: ok' "$TMP_ROOT/out.txt"; then
+    pass "accepted rename passes --check"
+else
+    case_failed "accepted rename passes --check"
+fi
+
+# Case: the same rename plus one changed word is refused and writes nothing.
+# The refusal fixture holds the pre-accept manifest and its body edit.
+python3 -I - "$REFUSE/sk-moneybird-accountant/references/tax-rules/2020/income-tax-renamed/rules.md" <<'PY' || exit 2
+import sys
+
+path = sys.argv[1]
+text = open(path, encoding="utf-8").read()
+open(path, "w", encoding="utf-8").write(
+    text.replace("Fixture income rules.", "Fixture income rules changed.")
+)
+PY
+REFUSE_MANIFEST="$REFUSE/sk-moneybird-accountant/references/tax-rules/split-manifest.json"
+before=$(cksum "$REFUSE_MANIFEST")
+run_accept "$REFUSE" "$MAP" "$BASE"
+status=$?
+after=$(cksum "$REFUSE_MANIFEST")
+if [[ "$status" -eq 1 ]] \
+    && grep -qF 'refused sk-moneybird-accountant/references/tax-rules/2020/income-tax-renamed/rules.md body' "$TMP_ROOT/out.txt" \
+    && [[ "$before" == "$after" ]]; then
+    pass "body edit refused"
+else
+    case_failed "body edit refused"
+fi
+
+# Case: the same rename plus one changed header byte is refused too
+python3 -I - "$HEADER_REFUSE/sk-moneybird-accountant/references/tax-rules/2020/income-tax-renamed/rules.md" <<'PY' || exit 2
+import sys
+
+path = sys.argv[1]
+text = open(path, encoding="utf-8").read()
+open(path, "w", encoding="utf-8").write(
+    text.replace("# Income tax 2020: Rules", "# Income tax 2020: Rules edited")
+)
+PY
+HEADER_MANIFEST="$HEADER_REFUSE/sk-moneybird-accountant/references/tax-rules/split-manifest.json"
+before=$(cksum "$HEADER_MANIFEST")
+run_accept "$HEADER_REFUSE" "$MAP" "$BASE"
+status=$?
+after=$(cksum "$HEADER_MANIFEST")
+if [[ "$status" -eq 1 ]] \
+    && grep -qF 'refused sk-moneybird-accountant/references/tax-rules/2020/income-tax-renamed/rules.md header' "$TMP_ROOT/out.txt" \
+    && [[ "$before" == "$after" ]]; then
+    pass "header edit refused"
+else
+    case_failed "header edit refused"
+fi
+
+# Case: an unknown base revision exits 2
+run_accept "$REFUSE" "$MAP" "no-such-revision"
+status=$?
+if [[ "$status" -eq 2 ]]; then
+    pass "unknown base revision"
+else
+    case_failed "unknown base revision"
+fi
+
+# Case: a map key that names nothing in the manifest exits 2
+UNKNOWN_MAP="$TMP_ROOT/unknown-map.json"
+cat >"$UNKNOWN_MAP" <<'EOF'
+{
+  "sk-moneybird-accountant/references/tax-rules/2020/ontbrekend/": "sk-moneybird-accountant/references/tax-rules/2020/missing/"
+}
+EOF
+run_accept "$ACCEPT" "$UNKNOWN_MAP" "$BASE"
+status=$?
+if [[ "$status" -eq 2 ]] && grep -qF 'ontbrekend' "$TMP_ROOT/out.txt"; then
+    pass "unknown map key"
+else
+    case_failed "unknown map key"
+fi
+
+# Case: --accept-renames together with --check is a usage error
+python3 -I "$ACCEPT/sk-moneybird-accountant/scripts/split-topic-files.py" \
+    --accept-renames "$MAP" --base "$BASE" --check >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+if [[ "$status" -eq 2 ]]; then
+    pass "accept mode with --check is a usage error"
+else
+    case_failed "accept mode with --check is a usage error"
+fi
+
+# ───────────────────────────────────────────────────────────────
+# 9. RESULT SUMMARY AND EXIT
 # ───────────────────────────────────────────────────────────────
 
 printf '\nResult: %d passed, %d failed\n' "$passed" "$failed"

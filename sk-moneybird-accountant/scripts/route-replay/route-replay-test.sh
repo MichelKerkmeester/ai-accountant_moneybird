@@ -663,7 +663,7 @@ rows = [
         "category": "clean",
         "tier": "",
         "tie": "",
-        "expected_paths": ["references/tax-rules/2026/btw/figures.md"],
+        "expected_paths": ["references/tax-rules/2026/vat/figures.md"],
         "forbidden_paths": [],
         "expected_facts": [],
         "token_ceiling": 15000,

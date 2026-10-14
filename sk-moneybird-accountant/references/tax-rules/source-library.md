@@ -21,7 +21,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-This library lists the external sources cited by `AGENTS.md`, the root README and the three skills. The full list lives in [source-library.json](../../assets/source-library.json), one source per line with its host, authority, title, type, access result, check date and the files that cite it. A year topic split into part files is named by its topic folder, such as `references/tax-rules/2026/btw/`, so grep that folder for the parts that cite a source. `scripts/build-source-library.py` generates that index from the markdown, so it never holds a source no file cites.
+This library lists the external sources cited by `AGENTS.md`, the root README and the three skills. The full list lives in [source-library.json](../../assets/source-library.json), one source per line with its host, authority, title, type, access result, check date and the files that cite it. A year topic split into part files is named by its topic folder, such as `references/tax-rules/2026/vat/`, so grep that folder for the parts that cite a source. `scripts/build-source-library.py` generates that index from the markdown, so it never holds a source no file cites.
 
 | Measure | Count |
 |---|---|
@@ -39,7 +39,7 @@ Look up a source with a grep, never a full read. The index is over 300 KB and on
 ```bash
 grep 'belastingrente' sk-moneybird-accountant/assets/source-library.json
 grep '"authority":"statute"' sk-moneybird-accountant/assets/source-library.json
-grep 'references/tax-rules/2026/btw/' sk-moneybird-accountant/assets/source-library.json
+grep 'references/tax-rules/2026/vat/' sk-moneybird-accountant/assets/source-library.json
 ```
 
 ---
@@ -144,10 +144,10 @@ None. The four links found dead on 2026-10-12 were rechecked and replaced on 202
 
 | Dead link | Replaced by | Cited by |
 |---|---|---|
-| `download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2024_aa9701z42fd.pdf` | `belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/handboek-ondernemen` and `belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/index` | `references/tax-rules/2024/btw/figures.md` |
+| `download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2024_aa9701z42fd.pdf` | `belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/handboek-ondernemen` and `belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/index` | `references/tax-rules/2024/vat/figures.md` |
 | `rijksoverheid.nl/vraag-en-antwoord/duurzame-economie/groen-sparen-in-een-groenfonds` | `rijksoverheid.nl/documenten/vraag-en-antwoord/duurzame-economie/groen-sparen-in-een-groenfonds` and `belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/beleggen_met_belastingvoordeel/groene_beleggingen` | `references/tax-rules/2026/box-3/figures.md`, `references/tax-rules/2027/box-3/figures.md` |
-| `rijksoverheid.nl/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen` | `rijksoverheid.nl/documenten/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen` | `references/tax-rules/2026/kosten-en-auto/figures.md`, `references/tax-rules/2027/kosten-en-auto/figures.md` |
-| `rijksoverheid.nl/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting-en-welke-heffingskortingen-zijn-er` | `rijksoverheid.nl/documenten/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting-en-welke-heffingskortingen-zijn-er` | `references/tax-rules/2026/inkomstenbelasting/figures.md`, `references/tax-rules/dutch-tax-rules.md` |
+| `rijksoverheid.nl/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen` | `rijksoverheid.nl/documenten/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen` | `references/tax-rules/2026/costs-and-car/figures.md`, `references/tax-rules/2027/costs-and-car/figures.md` |
+| `rijksoverheid.nl/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting-en-welke-heffingskortingen-zijn-er` | `rijksoverheid.nl/documenten/vraag-en-antwoord/inkomstenbelasting/wat-is-een-heffingskorting-en-welke-heffingskortingen-zijn-er` | `references/tax-rules/2026/income-tax/figures.md`, `references/tax-rules/dutch-tax-rules.md` |
 
 ---
 

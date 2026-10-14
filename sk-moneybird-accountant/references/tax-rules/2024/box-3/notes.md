@@ -74,4 +74,4 @@ None for 2024. No 2024 value in the checked material is UNVERIFIED, proposed or 
 - [2024 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
 - [Box 3 sparen en beleggen 2023](../../2023/box-3/figures.md) and [Box 3 sparen en beleggen 2025](../../2025/box-3/figures.md)
-- Related topics in 2024: [Inkomstenbelasting box 1 2024](../inkomstenbelasting/figures.md), [Box 2 en aanmerkelijk belang 2024](../box-2/figures.md)
+- Related topics in 2024: [Inkomstenbelasting box 1 2024](../income-tax/figures.md), [Box 2 en aanmerkelijk belang 2024](../box-2/figures.md)

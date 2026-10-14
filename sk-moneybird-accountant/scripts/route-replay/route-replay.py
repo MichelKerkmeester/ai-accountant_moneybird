@@ -239,18 +239,18 @@ FIXED_ASSET_TERMS = (
 T4_TOPIC_TERMS = MIXED_USE_TERMS + FIXED_ASSET_TERMS
 
 TOPIC_SIGNALS = (
-    (("kilometer", "mileage", "auto", "car", "thuiswerk", "home office", "kosten", "costs", "study", "studie"), "kosten-en-auto"),
-    (("zelfstandigenaftrek", "ondernemersaftrek", "urencriterium", "mkb", "startersaftrek"), "ondernemersaftrek"),
-    (("btw", "vat", "tarief", "rate", "voorbelasting", "kor"), "btw"),
+    (("kilometer", "mileage", "auto", "car", "thuiswerk", "home office", "kosten", "costs", "study", "studie"), "costs-and-car"),
+    (("zelfstandigenaftrek", "ondernemersaftrek", "urencriterium", "mkb", "startersaftrek"), "business-deductions"),
+    (("btw", "vat", "tarief", "rate", "voorbelasting", "kor"), "vat"),
     (("box 3", "box3", "heffingsvrij", "vermogen", "savings"), "box-3"),
     (("box 2", "aanmerkelijk belang", "gebruikelijk loon"), "box-2"),
-    (("vennootschapsbelasting", "vpb", "bv "), "bv-en-vennootschapsbelasting"),
-    (("pensioen", "lijfrente", "jaarruimte", "aov"), "pensioen-en-aov"),
-    (("arbeidsrelatie", "dba", "opdracht", "loondienst"), "arbeidsrelatie"),
-    (("investering", "kia", "eia", "mia", "afschrijving"), "investeringen"),
-    (("zvw",), "zvw"),
+    (("vennootschapsbelasting", "vpb", "bv "), "private-company-and-corporate-tax"),
+    (("pensioen", "lijfrente", "jaarruimte", "aov"), "pension-and-disability-insurance"),
+    (("arbeidsrelatie", "dba", "opdracht", "loondienst"), "work-relationship"),
+    (("investering", "kia", "eia", "mia", "afschrijving"), "investments"),
+    (("zvw",), "health-insurance-contribution"),
     (("bewaarplicht", "deadline", "aangifte", "bezwaar", "procedure"), "procedure"),
-    (("box 1", "inkomstenbelasting", "heffingskorting"), "inkomstenbelasting"),
+    (("box 1", "inkomstenbelasting", "heffingskorting"), "income-tax"),
 )
 
 # ───────────────────────────────────────────────────────────────
@@ -1034,14 +1034,14 @@ def resolve_paths(
             paths.append("references/tax-rules/%s/README.md" % year)
         if any(phrase_matches(text, term) for term in VAT_TERMS):
             if year:
-                paths.append("references/tax-rules/%s/btw/figures.md" % year)
+                paths.append("references/tax-rules/%s/vat/figures.md" % year)
         if any(phrase_matches(text, term) for term in MONITORING_TERMS):
             paths.extend(["references/migration/README.md", "references/migration/phases-19-to-21.md"])
         return paths
     if route_type == "T4":
         paths = ["references/purchase-invoices.md"]
         if year:
-            paths.extend(["references/tax-rules/%s/btw/figures.md" % year, "references/moneybird-bookkeeping.md"])
+            paths.extend(["references/tax-rules/%s/vat/figures.md" % year, "references/moneybird-bookkeeping.md"])
         if any(phrase_matches(text, term) for term in MIXED_USE_TERMS):
             paths.append("references/mixed-use-costs.md")
         if any(phrase_matches(text, term) for term in FIXED_ASSET_TERMS):
@@ -1123,7 +1123,7 @@ def topic_file(text: str) -> str:
         for term in terms:
             if phrase_matches(text, term) or term in text:
                 return name
-    return "kosten-en-auto"
+    return "costs-and-car"
 
 
 def specificity_winner(text: str, first: str, second: str) -> Optional[str]:

@@ -53,8 +53,8 @@ if [[ ! -f "$SKILL_SRC/leaf-manifest.json" ]]; then
 fi
 
 YEAR_README="$SKILL_SRC/references/tax-rules/2020/README.md"
-YEAR_TOPIC="$SKILL_SRC/references/tax-rules/2020/inkomstenbelasting/figures.md"
-YEAR_LABELED="$SKILL_SRC/references/tax-rules/2020/btw/figures.md"
+YEAR_TOPIC="$SKILL_SRC/references/tax-rules/2020/income-tax/figures.md"
+YEAR_LABELED="$SKILL_SRC/references/tax-rules/2020/vat/figures.md"
 for required in "$YEAR_README" "$YEAR_TOPIC" "$YEAR_LABELED"; do
     if [[ ! -f "$required" ]]; then
         printf 'error: missing %s in the skill folder\n' "$required" >&2
@@ -178,7 +178,7 @@ skill = sys.argv[1]
 spec = importlib.util.spec_from_file_location("nested_builder", skill + "/scripts/build-reference-index.py")
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
-nested = "tax-rules/2020/btw/figures.md"
+nested = "tax-rules/2020/vat/figures.md"
 deep = module.reference_files()
 flat = module.reference_files(depth=1)
 deep_hits = [entry for entry in deep if entry.endswith(nested)]
@@ -312,14 +312,14 @@ title: "Dutch tax rules"
 
 | File | Topic |
 |---|---|
-| `btw.md` | VAT |
-| `inkomstenbelasting.md` | Income tax |
+| `vat.md` | VAT |
+| `income-tax.md` | Income tax |
 
 ## 3. GENERAL RULES
 
 ### 3.1 BTW (VAT)
 
-Year files: `btw.md` in each year folder.
+Year files: `vat.md` in each year folder.
 
 The hand-written rule prose stays here.
 EOF
@@ -339,7 +339,7 @@ Hand prose for the fixture year.
 
 ## 3. HEADLINE FIGURES
 EOF
-    cat >"$skill/$FLAT_REF/$FLAT_YEAR/btw.md" <<'EOF'
+    cat >"$skill/$FLAT_REF/$FLAT_YEAR/vat.md" <<'EOF'
 ---
 title: "BTW 2020"
 description: "Covers Dutch VAT for the fixture."
@@ -357,7 +357,7 @@ nav_label: "BTW"
 EOF
     # The delimiter stays unquoted so the runtime-built rate values expand. The
     # body holds no dollar sign, backtick or backslash of its own.
-    cat >"$skill/$FLAT_REF/$FLAT_YEAR/inkomstenbelasting.md" <<EOF
+    cat >"$skill/$FLAT_REF/$FLAT_YEAR/income-tax.md" <<EOF
 ---
 title: "Income tax 2020"
 description: "Covers income tax for the fixture."
@@ -392,7 +392,7 @@ EOF
 make_changes_fixture() {
     local skill="$1"
     make_fixture "$skill" || return 1
-    cat >>"$skill/$FLAT_REF/$FLAT_YEAR/btw.md" <<EOF
+    cat >>"$skill/$FLAT_REF/$FLAT_YEAR/vat.md" <<EOF
 
 ## 5. CHANGES FROM 2019
 
@@ -401,7 +401,7 @@ make_changes_fixture() {
 - The standard rate stayed at ${FIX_RATE_A} percent in the fixture year.
 - The reduced rate stayed at ${FIX_RATE_C} percent in the fixture year.
 EOF
-    cat >>"$skill/$FLAT_REF/$FLAT_YEAR/inkomstenbelasting.md" <<EOF
+    cat >>"$skill/$FLAT_REF/$FLAT_YEAR/income-tax.md" <<EOF
 
 ## 5. CHANGES FROM 2019
 
@@ -430,11 +430,11 @@ description: "Fixture year change note."
 
 ## 1. Unique to 2020
 
-- Standard rate stayed at ${FIX_RATE_A} percent. [btw.md](btw.md#5-changes)
-- Reduced rate stayed at ${FIX_RATE_C} percent. [btw.md](btw.md#5-changes)
-- Box 1 rate stayed at ${FIX_RATE_B} percent. [inkomstenbelasting.md](inkomstenbelasting.md#5-changes)
-- Band stayed at ${FIX_RATE_C} percent. [inkomstenbelasting.md](inkomstenbelasting.md#5-changes)
-- Fixture year 2020 kept its rules. [inkomstenbelasting.md](inkomstenbelasting.md#5-changes)
+- Standard rate stayed at ${FIX_RATE_A} percent. [vat.md](vat.md#5-changes)
+- Reduced rate stayed at ${FIX_RATE_C} percent. [vat.md](vat.md#5-changes)
+- Box 1 rate stayed at ${FIX_RATE_B} percent. [income-tax.md](income-tax.md#5-changes)
+- Band stayed at ${FIX_RATE_C} percent. [income-tax.md](income-tax.md#5-changes)
+- Fixture year 2020 kept its rules. [income-tax.md](income-tax.md#5-changes)
 
 ---
 
@@ -450,7 +450,7 @@ EOF
 #   0 when the fixture is ready, 1 when a write fails
 make_nested_fixture() {
     local skill="$1"
-    mkdir -p "$skill/scripts" "$skill/references/tax-rules/2020/btw" "$skill/assets" || return 1
+    mkdir -p "$skill/scripts" "$skill/references/tax-rules/2020/vat" "$skill/assets" || return 1
     cp "$BUILDER" "$skill/scripts/" || return 1
     cat >"$skill/references/tax-rules/dutch-tax-rules.md" <<'EOF'
 ---
@@ -463,13 +463,13 @@ title: "Dutch tax rules"
 
 | File | Topic |
 |---|---|
-| `btw.md` | VAT |
+| `vat.md` | VAT |
 
 ## 3. GENERAL RULES
 
 ### 3.1 BTW (VAT)
 
-Year files: `btw.md` in each year folder.
+Year files: `vat.md` in each year folder.
 
 The hand-written rule prose stays here.
 EOF
@@ -491,7 +491,7 @@ Hand prose for the nested fixture year.
 EOF
     # The delimiter stays unquoted so the runtime-built rate values expand. The
     # body holds no dollar sign, backtick or backslash of its own.
-    cat >"$skill/references/tax-rules/2020/btw/figures.md" <<EOF
+    cat >"$skill/references/tax-rules/2020/vat/figures.md" <<EOF
 ---
 title: "BTW 2020"
 description: "Covers Dutch VAT for the nested fixture."
@@ -507,7 +507,7 @@ nav_label: "BTW"
 | Standard rate | ${NEST_RATE_MAIN} | enacted | Verified |
 | Reduced rate | ${NEST_RATE_LOW} | enacted | UNVERIFIED |
 EOF
-    cat >"$skill/references/tax-rules/2020/btw/rules.md" <<'EOF'
+    cat >"$skill/references/tax-rules/2020/vat/rules.md" <<'EOF'
 ---
 title: "BTW rules 2020"
 description: "Rule prose for the nested fixture."
@@ -547,7 +547,7 @@ title: "Dutch tax rules"
 
 | File | Topic |
 |---|---|
-| `btw.md` | VAT |
+| `vat.md` | VAT |
 
 ## 3. GENERAL RULES
 
@@ -559,9 +559,9 @@ Each general topic below sits in its own file under `general/`.
 
 | Section | Topic | File |
 |---|---|---|
-| 3.1 | BTW (VAT) | [btw-vat.md](general/btw-vat.md) |
+| 3.1 | BTW (VAT) | [vat.md](general/vat.md) |
 EOF
-    cat >"$skill/references/tax-rules/general/btw-vat.md" <<'EOF'
+    cat >"$skill/references/tax-rules/general/vat.md" <<'EOF'
 ---
 title: "BTW (VAT)"
 description: "General fixture topic for the split layout."
@@ -571,7 +571,7 @@ description: "General fixture topic for the split layout."
 
 ### 3.1 BTW (VAT)
 
-Year files: `btw.md` in each year folder.
+Year files: `vat.md` in each year folder.
 
 The hand-written rule prose stays here.
 EOF
@@ -593,7 +593,7 @@ Hand prose for the general folder fixture year.
 EOF
     # The delimiter stays unquoted so the runtime-built rate values expand. The
     # body holds no dollar sign, backtick or backslash of its own.
-    cat >"$skill/references/tax-rules/2020/btw.md" <<EOF
+    cat >"$skill/references/tax-rules/2020/vat.md" <<EOF
 ---
 title: "BTW 2020"
 description: "Covers Dutch VAT for the general folder fixture."
@@ -624,7 +624,7 @@ EOF
 #   0 when the fixture is ready, 1 when a write fails
 make_split_topic_fixture() {
     local skill="$1"
-    mkdir -p "$skill/scripts" "$skill/references/tax-rules/2020/btw" "$skill/assets" || return 1
+    mkdir -p "$skill/scripts" "$skill/references/tax-rules/2020/vat" "$skill/assets" || return 1
     cp "$BUILDER" "$skill/scripts/" || return 1
     cat >"$skill/references/tax-rules/dutch-tax-rules.md" <<'EOF'
 ---
@@ -637,13 +637,13 @@ title: "Dutch tax rules"
 
 | File | Topic |
 |---|---|
-| `btw.md` | VAT |
+| `vat.md` | VAT |
 
 ## 3. GENERAL RULES
 
 ### 3.1 BTW (VAT)
 
-Year files: `btw.md` in each year folder.
+Year files: `vat.md` in each year folder.
 
 The hand-written rule prose stays here.
 EOF
@@ -665,7 +665,7 @@ Hand prose for the split topic fixture year.
 EOF
     # The delimiter stays unquoted so the runtime-built rate values expand. The
     # body holds no dollar sign, backtick or backslash of its own.
-    cat >"$skill/references/tax-rules/2020/btw/figures.md" <<EOF
+    cat >"$skill/references/tax-rules/2020/vat/figures.md" <<EOF
 ---
 title: "BTW 2020"
 description: "Covers Dutch VAT for the split topic fixture."
@@ -681,7 +681,7 @@ nav_label: "BTW"
 | Standard rate | ${NEST_RATE_MAIN} | enacted | Verified |
 | Reduced rate | ${NEST_RATE_LOW} | enacted | UNVERIFIED |
 EOF
-    cat >"$skill/references/tax-rules/2020/btw/rules.md" <<'EOF'
+    cat >"$skill/references/tax-rules/2020/vat/rules.md" <<'EOF'
 ---
 title: "BTW rules 2020"
 description: "Rule prose for the split topic fixture."
@@ -693,7 +693,7 @@ description: "Rule prose for the split topic fixture."
 
 Rule text that a split part holds.
 EOF
-    cat >"$skill/references/tax-rules/2020/btw/examples.md" <<'EOF'
+    cat >"$skill/references/tax-rules/2020/vat/examples.md" <<'EOF'
 ---
 title: "BTW examples 2020"
 description: "Worked examples for the split topic fixture."
@@ -705,7 +705,7 @@ description: "Worked examples for the split topic fixture."
 
 Example text that a split part holds.
 EOF
-    cat >"$skill/references/tax-rules/2020/btw/notes.md" <<EOF
+    cat >"$skill/references/tax-rules/2020/vat/notes.md" <<EOF
 ---
 title: "BTW notes 2020"
 description: "Notes for the split topic fixture."
@@ -734,11 +734,11 @@ description: "Fixture year change note."
 
 ## 1. Unique to 2020
 
-- Standard rate stayed at ${FIX_RATE_A} percent. [btw.md](btw.md#5-changes)
-- Reduced rate stayed at ${FIX_RATE_C} percent. [btw/notes.md](btw/notes.md#5-changes)
-- The split original resolves to its notes part. [btw.md](btw.md#5-changes)
-- The part link resolves as written. [btw/notes.md](btw/notes.md#5-changes)
-- Flat and split links both resolve. [btw.md](btw.md#5-changes)
+- Standard rate stayed at ${FIX_RATE_A} percent. [vat.md](vat.md#5-changes)
+- Reduced rate stayed at ${FIX_RATE_C} percent. [vat/notes.md](vat/notes.md#5-changes)
+- The split original resolves to its notes part. [vat.md](vat.md#5-changes)
+- The part link resolves as written. [vat/notes.md](vat/notes.md#5-changes)
+- Flat and split links both resolve. [vat.md](vat.md#5-changes)
 
 ---
 
@@ -927,13 +927,13 @@ Fixture overview.
 
 | Date | File | Row | Old status | New status | Source |
 |---|---|---|---|---|---|
-| 2026-10-12 | btw.md | Standard rate | as first researched | Corrected | https://example.invalid/source |
+| 2026-10-12 | vat.md | Standard rate | as first researched | Corrected | https://example.invalid/source |
 MARKDOWN
 python3 - "$FIXTURE/$FLAT_REF/dutch-tax-rules.md" <<'PY'
 import sys
 
 path = sys.argv[1]
-row = "| `inkomstenbelasting.md` | Income tax |\n"
+row = "| `income-tax.md` | Income tax |\n"
 added = "| `changelog.md` | Corrections |\n"
 text = open(path, encoding="utf-8").read()
 open(path, "w", encoding="utf-8").write(text.replace(row, row + added, 1))
@@ -945,10 +945,10 @@ else
     fail "a year changelog is not held to the topic rules"
 fi
 
-sed -i.bak '/^## 1\. KEY FIGURES$/,$d' "$FIXTURE/$FLAT_REF/$FLAT_YEAR/btw.md"
+sed -i.bak '/^## 1\. KEY FIGURES$/,$d' "$FIXTURE/$FLAT_REF/$FLAT_YEAR/vat.md"
 run_generator "$FIXTURE" --check
 status=$?
-if [[ "$status" -eq 2 ]] && grep -qF 'no KEY FIGURES table in 2020/btw.md' "$TMP_ROOT/out.txt"; then
+if [[ "$status" -eq 2 ]] && grep -qF 'no KEY FIGURES table in 2020/vat.md' "$TMP_ROOT/out.txt"; then
     pass "a topic file is still held to the topic rules"
 else
     fail "a topic file is still held to the topic rules"
@@ -993,18 +993,18 @@ if [[ "$status" -eq 0 ]] && [[ "$change_before" == "$change_after" ]]; then
 else
     fail "a second write leaves the year change files byte-identical"
 fi
-if grep -qF "| [btw.md](btw.md#5-changes) | 2 | The standard rate stayed at ${FIX_RATE_A} percent in the fixture year. |" "$CHANGES_NOTE"; then
+if grep -qF "| [vat.md](vat.md#5-changes) | 2 | The standard rate stayed at ${FIX_RATE_A} percent in the fixture year. |" "$CHANGES_NOTE"; then
     pass "the year note lists the topic count and the first bullet snippet"
 else
     fail "the year note lists the topic count and the first bullet snippet"
 fi
-if grep -qF '| [inkomstenbelasting.md](inkomstenbelasting.md#5-changes) | 3 |' "$CHANGES_NOTE"; then
+if grep -qF '| [income-tax.md](income-tax.md#5-changes) | 3 |' "$CHANGES_NOTE"; then
     pass "the year note lists every topic of the year"
 else
     fail "the year note lists every topic of the year"
 fi
 if grep -qF '](2020/changes.md)' "$CHANGES_OVERVIEW" \
-    && grep -qF -- "- Standard rate stayed at ${FIX_RATE_A} percent. [btw.md](2020/btw.md#5-changes)" "$CHANGES_OVERVIEW"; then
+    && grep -qF -- "- Standard rate stayed at ${FIX_RATE_A} percent. [vat.md](2020/vat.md#5-changes)" "$CHANGES_OVERVIEW"; then
     pass "the overview holds the path link and the rebased authored bullet"
 else
     fail "the overview holds the path link and the rebased authored bullet"
@@ -1043,16 +1043,16 @@ sed -i.bak "s/Standard rate stayed at ${FIX_RATE_A} percent/Standard rate stayed
     "$CHANGE_MUTANT/$FLAT_REF/$FLAT_YEAR/changes.md"
 run_generator "$CHANGE_MUTANT" --check
 status=$?
-if [[ "$status" -ne 0 ]] && grep -q "^changes 2020/changes.md bullet 1 number ${FIX_RATE_MISSING} not in btw.md#5-changes$" "$TMP_ROOT/out.txt"; then
+if [[ "$status" -ne 0 ]] && grep -q "^changes 2020/changes.md bullet 1 number ${FIX_RATE_MISSING} not in vat.md#5-changes$" "$TMP_ROOT/out.txt"; then
     pass "a bullet number missing from section 5 fails the check"
 else
     fail "a bullet number missing from section 5 fails the check"
 fi
 copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
-sed -i.bak 's/btw.md#5-changes/btw.md#6-in-the-books/' "$CHANGE_MUTANT/$FLAT_REF/$FLAT_YEAR/changes.md"
+sed -i.bak 's/vat.md#5-changes/vat.md#6-in-the-books/' "$CHANGE_MUTANT/$FLAT_REF/$FLAT_YEAR/changes.md"
 run_generator "$CHANGE_MUTANT" --check
 status=$?
-if [[ "$status" -ne 0 ]] && grep -q '^changes 2020/changes.md bullet 1 link btw.md#6-in-the-books does not resolve$' "$TMP_ROOT/out.txt"; then
+if [[ "$status" -ne 0 ]] && grep -q '^changes 2020/changes.md bullet 1 link vat.md#6-in-the-books does not resolve$' "$TMP_ROOT/out.txt"; then
     pass "a bullet link that does not resolve fails the check"
 else
     fail "a bullet link that does not resolve fails the check"
@@ -1075,7 +1075,7 @@ lines = open(path, encoding="utf-8").read().split("\n")
 out = []
 for line in lines:
     if line == "## 2. All changes by topic":
-        out.extend(["- Fixture extra bullet. [btw.md](btw.md#5-changes)"] * 6)
+        out.extend(["- Fixture extra bullet. [vat.md](vat.md#5-changes)"] * 6)
     out.append(line)
 open(path, "w", encoding="utf-8").write("\n".join(out))
 PY
@@ -1090,7 +1090,7 @@ python3 - "$CHANGES_FIXTURE/$FLAT_REF/dutch-tax-rules.md" <<'PY'
 import sys
 
 path = sys.argv[1]
-row = "| `inkomstenbelasting.md` | Income tax |\n"
+row = "| `income-tax.md` | Income tax |\n"
 added = "| `changes.md` | Changes |\n"
 text = open(path, encoding="utf-8").read()
 open(path, "w", encoding="utf-8").write(text.replace(row, row + added, 1))
@@ -1133,7 +1133,7 @@ else
 fi
 
 copy_skill "$MUT"
-python3 - "$MUT/references/tax-rules/2020/inkomstenbelasting/figures.md" "$RATE_BOX1_UP" "$RATE_BOX1_NEXT" <<'PY'
+python3 - "$MUT/references/tax-rules/2020/income-tax/figures.md" "$RATE_BOX1_UP" "$RATE_BOX1_NEXT" <<'PY'
 import sys
 
 path, old_value, new_value = sys.argv[1], sys.argv[2], sys.argv[3]
@@ -1151,7 +1151,7 @@ PY
 run_generator "$MUT" --check
 status=$?
 if [[ "$status" -ne 0 ]] && grep -q '^drift tax-rules/2020/README.md ' "$TMP_ROOT/out.txt" \
-    && grep -q '^drift tax-rules/general/income-tax-box-1-and-the-zvw-contribution.md s3-' "$TMP_ROOT/out.txt"; then
+    && grep -q '^drift tax-rules/general/income-tax-box-1-and-the-health-insurance-contribution.md s3-' "$TMP_ROOT/out.txt"; then
     pass "a changed year value names the year README and the section blocks"
 else
     fail "a changed year value names the year README and the section blocks"
@@ -1169,8 +1169,8 @@ else
 fi
 
 copy_skill "$MUT"
-grep -v '^nav_label:' "$MUT/references/tax-rules/2020/btw/figures.md" >"$TMP_ROOT/mutated.md"
-mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/btw/figures.md"
+grep -v '^nav_label:' "$MUT/references/tax-rules/2020/vat/figures.md" >"$TMP_ROOT/mutated.md"
+mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/vat/figures.md"
 run_generator "$MUT" --check
 status=$?
 if [[ "$status" -ne 0 ]] && grep -q 'missing nav_label' "$TMP_ROOT/out.txt"; then
@@ -1180,9 +1180,9 @@ else
 fi
 
 copy_skill "$MUT"
-sed 's/^nav_label: .*/nav_label: "BTW"/' "$MUT/references/tax-rules/2020/inkomstenbelasting/figures.md" \
+sed 's/^nav_label: .*/nav_label: "BTW"/' "$MUT/references/tax-rules/2020/income-tax/figures.md" \
     >"$TMP_ROOT/mutated.md"
-mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/inkomstenbelasting/figures.md"
+mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/income-tax/figures.md"
 run_generator "$MUT" --check
 status=$?
 if [[ "$status" -ne 0 ]] && grep -q 'duplicate nav_label' "$TMP_ROOT/out.txt"; then
@@ -1193,9 +1193,9 @@ fi
 
 copy_skill "$MUT"
 long_label=$(awk 'BEGIN { for (i = 0; i < 61; i++) printf "A" }')
-sed "s/^nav_label: .*/nav_label: \"$long_label\"/" "$MUT/references/tax-rules/2020/btw/figures.md" \
+sed "s/^nav_label: .*/nav_label: \"$long_label\"/" "$MUT/references/tax-rules/2020/vat/figures.md" \
     >"$TMP_ROOT/mutated.md"
-mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/btw/figures.md"
+mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/vat/figures.md"
 run_generator "$MUT" --check
 status=$?
 if [[ "$status" -ne 0 ]] && grep -q 'the limit is 60' "$TMP_ROOT/out.txt"; then
@@ -1250,10 +1250,10 @@ fi
 # ───────────────────────────────────────────────────────────────
 
 group "prefix rule"
-if [[ "$(unverified_count "$YEAR_README" inkomstenbelasting inkomstenbelasting/figures.md)" == "3" ]]; then
-    pass "the UNVERIFIED count for references/tax-rules/2020/inkomstenbelasting/figures.md is 3"
+if [[ "$(unverified_count "$YEAR_README" income-tax income-tax/figures.md)" == "3" ]]; then
+    pass "the UNVERIFIED count for references/tax-rules/2020/income-tax/figures.md is 3"
 else
-    fail "the UNVERIFIED count for references/tax-rules/2020/inkomstenbelasting/figures.md is 3"
+    fail "the UNVERIFIED count for references/tax-rules/2020/income-tax/figures.md is 3"
 fi
 
 EQUALITY="$TMP_ROOT/equality-mutant"
@@ -1263,7 +1263,7 @@ sed 's/\.startswith(UNVERIFIED_TAG)/== UNVERIFIED_TAG/' "$BUILDER" \
 sed_applied=1
 cmp -s "$BUILDER" "$EQUALITY/scripts/build-reference-index.py" && sed_applied=0
 run_generator "$EQUALITY"
-mutant_count=$(unverified_count "$EQUALITY/references/tax-rules/2020/README.md" inkomstenbelasting inkomstenbelasting/figures.md)
+mutant_count=$(unverified_count "$EQUALITY/references/tax-rules/2020/README.md" income-tax income-tax/figures.md)
 cp "$BUILDER" "$EQUALITY/scripts/reference-index-checker.py"
 python3 -I "$EQUALITY/scripts/reference-index-checker.py" --check >"$TMP_ROOT/out.txt" 2>&1
 status=$?
@@ -1423,7 +1423,7 @@ import sys
 
 rows = json.load(open(sys.argv[1], encoding="utf-8"))["files"]
 paths = [row["path"] for row in rows]
-sys.exit(0 if "tax-rules/2020/btw/figures.md" in paths else 1)
+sys.exit(0 if "tax-rules/2020/vat/figures.md" in paths else 1)
 PY
 then
     pass "the nested figures file is in the index"
@@ -1431,14 +1431,14 @@ else
     fail "the nested figures file is in the index"
 fi
 
-if grep -qF '| [btw](btw/figures.md) | Covers Dutch VAT for the nested fixture. | 2 | 1 | 0 |' \
+if grep -qF '| [vat](vat/figures.md) | Covers Dutch VAT for the nested fixture. | 2 | 1 | 0 |' \
     "$NESTED_FIXTURE/references/tax-rules/2020/README.md"; then
     pass "the nested topic folder is counted like a file in the year README"
 else
     fail "the nested topic folder is counted like a file in the year README"
 fi
 
-if grep -qF 'sk-moneybird-accountant/references/tax-rules/2020/btw/figures.md' \
+if grep -qF 'sk-moneybird-accountant/references/tax-rules/2020/vat/figures.md' \
     "$NESTED_FIXTURE/references/tax-rules/dutch-tax-rules.md"; then
     pass "the nested figures file owns its section 3 rows"
 else
@@ -1482,7 +1482,7 @@ fi
 
 group "general folder"
 GENERAL_FIXTURE="$TMP_ROOT/general-fixture/sk-moneybird-accountant"
-GENERAL_TOPIC="$GENERAL_FIXTURE/references/tax-rules/general/btw-vat.md"
+GENERAL_TOPIC="$GENERAL_FIXTURE/references/tax-rules/general/vat.md"
 GENERAL_ENTRY="$GENERAL_FIXTURE/references/tax-rules/dutch-tax-rules.md"
 GENERAL_FENCE="<!-- ${GEN_WORD}:s3-btw-vat:start -->"
 if make_general_fixture "$GENERAL_FIXTURE"; then
@@ -1505,7 +1505,7 @@ if run_generator "$GENERAL_FIXTURE" && run_generator "$GENERAL_FIXTURE" --check;
 else
     fail "the general folder fixture passes --check after a write"
 fi
-if grep -qF 'sk-moneybird-accountant/references/tax-rules/2020/btw.md' "$GENERAL_TOPIC" \
+if grep -qF 'sk-moneybird-accountant/references/tax-rules/2020/vat.md' "$GENERAL_TOPIC" \
     && ! grep -qF "$GENERAL_FENCE" "$GENERAL_ENTRY"; then
     pass "the general file carries the section 3 rows and the entry carries no fence"
 else
@@ -1540,24 +1540,24 @@ if run_generator "$SPLIT_FIXTURE" && run_generator "$SPLIT_FIXTURE" --check; the
 else
     fail "the split topic fixture passes --check after a write"
 fi
-if grep -qF "| [btw.md](btw/notes.md#5-changes) | 2 | The standard rate stayed at ${FIX_RATE_A} percent in the fixture year. |" "$SPLIT_NOTE"; then
+if grep -qF "| [vat.md](vat/notes.md#5-changes) | 2 | The standard rate stayed at ${FIX_RATE_A} percent in the fixture year. |" "$SPLIT_NOTE"; then
     pass "the split change row links the notes part"
 else
     fail "the split change row links the notes part"
 fi
-if grep -qF '| [btw](btw/figures.md) | Covers Dutch VAT for the split topic fixture. | 2 | 1 | 0 |' \
+if grep -qF '| [vat](vat/figures.md) | Covers Dutch VAT for the split topic fixture. | 2 | 1 | 0 |' \
     "$SPLIT_FIXTURE/references/tax-rules/2020/README.md"; then
     pass "the split year README counts the topic through its figures part"
 else
     fail "the split year README counts the topic through its figures part"
 fi
-if grep -qF 'sk-moneybird-accountant/references/tax-rules/2020/btw/figures.md' \
+if grep -qF 'sk-moneybird-accountant/references/tax-rules/2020/vat/figures.md' \
     "$SPLIT_FIXTURE/references/tax-rules/dutch-tax-rules.md"; then
     pass "the split figures part owns its section 3 rows"
 else
     fail "the split figures part owns its section 3 rows"
 fi
-if grep -qF '](2020/btw/notes.md#5-changes)' "$SPLIT_OVERVIEW"; then
+if grep -qF '](2020/vat/notes.md#5-changes)' "$SPLIT_OVERVIEW"; then
     pass "the overview rebases a flat section 5 link onto the notes part"
 else
     fail "the overview rebases a flat section 5 link onto the notes part"

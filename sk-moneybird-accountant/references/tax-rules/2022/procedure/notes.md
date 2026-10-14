@@ -82,4 +82,4 @@ The tax year 2022 material states no open points of its own for 2022 beyond the 
 - [2022 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
 - [Aangifte en procedure 2021](../../2021/procedure/figures.md) and [Aangifte en procedure 2023](../../2023/procedure/figures.md)
-- Related topics in 2022: [BTW 2022](../btw/figures.md), [Inkomstenbelasting box 1 2022](../inkomstenbelasting/figures.md), [Arbeidsrelatie en zelfstandigheid 2022](../arbeidsrelatie/figures.md)
+- Related topics in 2022: [BTW 2022](../vat/figures.md), [Inkomstenbelasting box 1 2022](../income-tax/figures.md), [Arbeidsrelatie en zelfstandigheid 2022](../work-relationship/figures.md)

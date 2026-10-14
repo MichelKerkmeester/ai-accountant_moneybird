@@ -611,13 +611,13 @@ fi
 
 # The same copy carries the split proof, so one changed byte in a part body
 # fails the route table check through the wired split check
-SPLIT_PART="$WORD_COPY/sk-moneybird-accountant/references/tax-rules/2025/btw/rules.md"
+SPLIT_PART="$WORD_COPY/sk-moneybird-accountant/references/tax-rules/2025/vat/rules.md"
 cp "$SPLIT_PART" "$TMP_ROOT/split-part.keep"
 printf 'x' >>"$SPLIT_PART"
 python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
 status=$?
 cp "$TMP_ROOT/split-part.keep" "$SPLIT_PART"
-if [[ "$status" -ne 0 ]] && grep -qF 'btw/rules.md' "$TMP_ROOT/out.txt"; then
+if [[ "$status" -ne 0 ]] && grep -qF 'vat/rules.md' "$TMP_ROOT/out.txt"; then
     pass "a drifted split part fails the route table check"
 else
     fail "a drifted split part fails the route table check"
@@ -642,13 +642,13 @@ fi
 
 # A required map expansion must exist in every year folder, so a topic
 # figures file missing from one year fails.
-YEAR_FIGURES="$WORD_COPY/sk-moneybird-accountant/references/tax-rules/2020/btw/figures.md"
+YEAR_FIGURES="$WORD_COPY/sk-moneybird-accountant/references/tax-rules/2020/vat/figures.md"
 mv "$YEAR_FIGURES" "$TMP_ROOT/year-figures.bak"
 python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
 status=$?
 mv "$TMP_ROOT/year-figures.bak" "$YEAR_FIGURES"
 if [[ "$status" -eq 1 ]] \
-    && grep -qF 'row T5 read path missing: references/tax-rules/2020/btw/figures.md' "$TMP_ROOT/out.txt"; then
+    && grep -qF 'row T5 read path missing: references/tax-rules/2020/vat/figures.md' "$TMP_ROOT/out.txt"; then
     pass "a topic figures file missing from one year folder fails"
 else
     fail "a topic figures file missing from one year folder fails"

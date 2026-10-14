@@ -85,7 +85,7 @@ A close request that arrives through this list reads the year file `references/t
 - This folder prepares. It never files, submits or pays. It never states that a return was filed or a payment made.
 - Every figure, rate, threshold, euro amount and deadline stays in the year files. A figure that is not read from a year file or from the administration at run time is a blocker.
 - Every judgement point carries an `[Operator]` marker. The tax treatment, the value of an onttrekking, the fiscal classification, the lock direction and the filing are Operator decisions.
-- A figure link names the file that owns the figure, for example [Kosten en auto 2026 figures](../tax-rules/2026/kosten-en-auto/figures.md) and [Investeringen 2026 figures](../tax-rules/2026/investeringen/figures.md). The folder never copies a figure.
+- A figure link names the file that owns the figure, for example [Kosten en auto 2026 figures](../tax-rules/2026/costs-and-car/figures.md) and [Investeringen 2026 figures](../tax-rules/2026/investments/figures.md). The folder never copies a figure.
 - The auditfile export stands before the jaarafsluiting. The order and the evidence gate are in [the preparation checklist](preparation-checklist.md#1-auditfile-first).
 
 ---

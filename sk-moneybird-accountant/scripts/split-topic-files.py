@@ -56,6 +56,16 @@ through the split map. A changed sentence, value, status tag or URL still
 changes the hash, while a rebased link and a regenerated fence do not.
 --check recomputes the same normalization from the part files.
 
+A pure rename changes link targets and nothing else. The --accept-renames mode
+takes a JSON map of old repository paths to new paths and a git revision that
+still holds the old files. For every part and for the entry file it reads the
+old text from that revision, reads the new text at the mapped path, rewrites
+the repository paths in the old normalized body and header through the map and
+accepts the part only when both sides match. A link label that resolves to its
+own target counts as a path too, because a derived header names each sibling
+file in both the label and the target. A part that differs beyond its paths is
+refused, nothing is written and the run exits 1.
+
 remap_citations() rewrites every path, path:line and path#anchor citation of
 a split file in every tracked markdown or JSON file outside specs/ and
 outside the moved parts. It points at the part that holds the line or the
@@ -74,6 +84,7 @@ Usage:
     python3 -I sk-moneybird-accountant/scripts/split-topic-files.py --plan
     python3 -I sk-moneybird-accountant/scripts/split-topic-files.py --write
     python3 -I sk-moneybird-accountant/scripts/split-topic-files.py --check
+    python3 -I sk-moneybird-accountant/scripts/split-topic-files.py --accept-renames MAP --base REF
 
 Options:
     --plan   Print every source file, its parts, the byte sizes and the o200k
@@ -88,6 +99,14 @@ Options:
              original, refuse a folder with fewer than four parts, refuse a
              part over the token line and report the citations that still
              point at a split source. Reads only.
+    --accept-renames MAP
+             Accept a pure rename and record its new hashes. MAP is a JSON
+             object that maps an old repository path to its new path, and a
+             key that ends in a slash maps every path under it. Requires
+             --base.
+    --base REF
+             Git revision that still holds the old files. Required with
+             --accept-renames.
 
 Output:
     --plan prints one "source" line per topic file, one "part" line per part,
@@ -96,9 +115,12 @@ Output:
     line per source, the citation count and the manifest path. --check prints
     one "rejoin ok" line per split source, one problem line per failure, then
     the leftovers, the unmapped citations and the largest part token count.
-    Exit 0 when the mode finished, 1 on an unmapped citation or a check
-    problem, and 2 on a usage error, a read error, a malformed source file,
-    a malformed manifest or a write error.
+    --accept-renames prints one "split-accept" line with the renamed and
+    unchanged part counts when every part is accepted, or one "refused"
+    block per part with the first differing line, and exits 1.
+    Exit 0 when the mode finished, 1 on an unmapped citation, a refused
+    rename or a check problem, and 2 on a usage error, a read error, a
+    malformed source file, a malformed manifest or a write error.
 """
 
 # ───────────────────────────────────────────────────────────────
@@ -166,6 +188,16 @@ GENERAL_SLUGS = (
     "open-points-and-gaps",
     "record-and-invoice-duties",
 )
+# A slug comes from a Dutch section heading, but every file name is English,
+# so five slugs map to the English name of the file they write
+GENERAL_FILE_NAMES = {
+    "btw-vat": "vat",
+    "income-tax-box-1-and-the-zvw-contribution": "income-tax-box-1-and-the-health-insurance-contribution",
+    "ondernemersaftrek-and-mkb-winstvrijstelling": "business-deductions-and-sme-profit-exemption",
+    "the-bv-and-vennootschapsbelasting": "the-private-company-and-corporate-tax",
+    "pension-lijfrente-and-aov": "pension-annuities-and-disability-insurance",
+}
+GENERAL_FILES = tuple(GENERAL_FILE_NAMES.get(slug, slug) for slug in GENERAL_SLUGS)
 GENERAL_SECTION_NUMBERS = ("3.1", "3.2", "3.3", "3.4", "3.5", "3.6", "3.7", "3.8", "3.9", "3.10", "4", "5", "6")
 GENERAL_ENTRY_ANCHORS = ("4", "5", "6")
 
@@ -203,13 +235,17 @@ GENERATED_END_RE = re.compile(r"^\s*<!-- GENERATED:([a-z0-9][a-z0-9._-]*):end --
 # holds a newline, and a target with a title is left alone.
 INLINE_LINK_RE = re.compile(r"\]\(([^)\n]*)\)")
 
+# One whole inline link, so the accept mode can tell whether a link label
+# names the same file as the target.
+LABEL_LINK_RE = re.compile(r"\[([^\]\n]*)\]\(([^)\n]*)\)")
+
 # One relative inline link that the rebase may rewrite. External URLs, angle
 # wrappers and titles are left as they are.
 SCHEME_RE = re.compile(r"^[a-zA-Z][a-zA-Z0-9+.\-]*:")
 
 # A citation token: a markdown path with an optional :line or #anchor
 # suffix. The path may be bare or carry any relative prefix, because a year
-# README cites btw.md and a JSON file cites references/tax-rules/<year>/btw.md.
+# README cites vat.md and a JSON file cites references/tax-rules/<year>/btw.md.
 # The lookarounds keep a longer path or a word boundary out of the match.
 CITATION_RE = re.compile(
     r"(?<![A-Za-z0-9_./-])(?<!\[)"
@@ -722,6 +758,20 @@ def strip_generated_blocks(text: str) -> str:
     )
 
 
+def header_hash_text(header: str) -> str:
+    """Return the header bytes that the header hash covers.
+
+    Args:
+        header: The bytes of a part file before its body, or a whole entry
+            file.
+
+    Returns:
+        The header with every GENERATED fence and every blank line removed.
+    """
+    lines = strip_generated_blocks(header).splitlines(keepends=True)
+    return "".join(line for line in lines if line.strip())
+
+
 def header_sha256(header: str) -> str:
     """Return the sha256 of one derived header with its fences removed.
 
@@ -733,8 +783,7 @@ def header_sha256(header: str) -> str:
         generator surrounds each fence it adds with blank lines and the
         count of those carries no content.
     """
-    lines = strip_generated_blocks(header).splitlines(keepends=True)
-    return sha256_text("".join(line for line in lines if line.strip()))
+    return sha256_text(header_hash_text(header))
 
 
 def entry_sha256(text: str) -> str:
@@ -825,6 +874,26 @@ def canonical_target(target: str, part_rel: str, source_rel: str, split_map: Dic
     return resolved + (("#" + fragment) if fragment else "")
 
 
+def canonicalize_targets(text: str, part_rel: str, source_rel: str, split_map: Dict[str, Any]) -> str:
+    """Replace every link target in one text with its canonical repository path.
+
+    Args:
+        text: Text with inline links.
+        part_rel: Repository path of the file that holds the links.
+        source_rel: Repository path of the split source the file came from.
+        split_map: Result of build_split_map().
+
+    Returns:
+        The text with every link target replaced by its canonical repository
+        path. Every other byte is kept.
+    """
+
+    def replacement(match: re.Match) -> str:
+        return "](" + canonical_target(match.group(1), part_rel, source_rel, split_map) + ")"
+
+    return INLINE_LINK_RE.sub(replacement, text)
+
+
 def normalize_body(text: str, part_rel: str, source_rel: str, split_map: Dict[str, Any]) -> str:
     """Normalize one body for the manifest hash.
 
@@ -838,12 +907,7 @@ def normalize_body(text: str, part_rel: str, source_rel: str, split_map: Dict[st
         The body with GENERATED fence contents removed and every link target
         replaced by its canonical repository path.
     """
-    stripped = strip_generated(text)
-
-    def replacement(match: re.Match) -> str:
-        return "](" + canonical_target(match.group(1), part_rel, source_rel, split_map) + ")"
-
-    return INLINE_LINK_RE.sub(replacement, stripped)
+    return canonicalize_targets(strip_generated(text), part_rel, source_rel, split_map)
 
 
 def rebase_target(target: str, source_rel: str, part_rel: str, split_map: Dict[str, Any]) -> str:
@@ -1023,7 +1087,7 @@ def citation_is_missing_candidate(written: str, citing_rel: str) -> bool:
 
     Returns:
         True when a candidate resolution lands on a tax-rules year topic
-        path or on the guide entry. A bare document name such as btw.md in
+        path or on the guide entry. A bare document name such as vat.md in
         the guide body and a YYYY placeholder are documentation, not a
         broken citation, so they stay untouched.
     """
@@ -1469,6 +1533,7 @@ def plan_general_source(path: str) -> Optional[Dict[str, Any]]:
     slugs = tuple(general_slug(row["heading"]) for row in moved)
     if slugs != GENERAL_SLUGS:
         fail("general slugs %s do not match the allowlist" % (slugs,))
+    slugs = GENERAL_FILES
     total_lines = len(line_spans(text))
     parts: List[Dict[str, Any]] = []
     for index, row in enumerate(moved):
@@ -1619,7 +1684,7 @@ def rebuild_general_row() -> Optional[Dict[str, Any]]:
     paths: List[str] = []
     bodies: List[str] = []
     headers: List[str] = []
-    for slug in GENERAL_SLUGS:
+    for slug in GENERAL_FILES:
         path = os.path.join(GENERAL_DIR, slug + ".md")
         if not os.path.isfile(path):
             return None
@@ -1649,7 +1714,7 @@ def rebuild_general_row() -> Optional[Dict[str, Any]]:
     ]
     rejoin = sha256_text("".join(normalized))
     parts: List[Dict[str, Any]] = []
-    for index, slug in enumerate(GENERAL_SLUGS):
+    for index, slug in enumerate(GENERAL_FILES):
         parts.append(
             {
                 "path": paths[index],
@@ -2561,7 +2626,569 @@ def check_mode() -> int:
     return 0
 
 # ───────────────────────────────────────────────────────────────
-# 12. MAIN
+# 12. ACCEPT RENAMES MODE
+# ───────────────────────────────────────────────────────────────
+
+def read_rename_map(path: str) -> Dict[str, str]:
+    """Read the rename map of one accept run.
+
+    Args:
+        path: Map file path.
+
+    Returns:
+        The old to new repository path map.
+
+    Raises:
+        SystemExit: If the file is missing, holds invalid JSON, is not a JSON
+            object or holds a malformed entry.
+    """
+    if not os.path.isfile(path):
+        fail("missing rename map %s" % path)
+    try:
+        data = json.loads(read_text(path))
+    except json.JSONDecodeError as exc:
+        fail("cannot parse rename map %s: %s" % (path, exc))
+    if not isinstance(data, dict):
+        fail("rename map %s must hold a JSON object" % path)
+    mapping: Dict[str, str] = {}
+    for key, value in data.items():
+        if not isinstance(key, str) or not isinstance(value, str):
+            fail("rename map %s holds a non-string path" % path)
+        if not key or not value or key.startswith("/") or value.startswith("/"):
+            fail("rename map %s holds a malformed path" % path)
+        if key.endswith("/") != value.endswith("/"):
+            fail("rename map %s pairs a path with another kind of path" % path)
+        mapping[key] = value
+    return mapping
+
+
+BARE_NAME_STOP = frozenset(" \t\n\"'`()[]<>,|")
+
+
+def map_repo_path(path: str, mapping: Dict[str, str]) -> str:
+    """Map one repository path through a rename map.
+
+    An exact key wins. A folder key that ends in a slash maps the part of
+    the path below it, and the longest matching folder key wins.
+
+    Args:
+        path: Repository path.
+        mapping: Result of read_rename_map().
+
+    Returns:
+        The mapped path, or the path as written when no key matches.
+    """
+    if path in mapping:
+        return mapping[path]
+    folder = ""
+    for key in mapping:
+        if not key.endswith("/") or not path.startswith(key):
+            continue
+        if len(key) > len(folder):
+            folder = key
+    if not folder:
+        return path
+    return mapping[folder] + path[len(folder):]
+
+
+def rewrite_repo_paths(text: str, mapping: Dict[str, str]) -> str:
+    """Rewrite every repository path in one text through a rename map.
+
+    Exact path keys run first, longest first. A folder key that ends in a
+    slash runs after them. An exact key only matches when the next character
+    is not a path character, so a longer name that starts with the key is
+    left alone.
+
+    Args:
+        text: Text that holds repository paths.
+        mapping: Result of read_rename_map().
+
+    Returns:
+        The text with every matched path replaced.
+    """
+    out = text
+    exact = sorted((key for key in mapping if not key.endswith("/")), key=len, reverse=True)
+    for key in exact:
+        pattern = re.escape(key) + r"(?![A-Za-z0-9._-])"
+        out = re.sub(pattern, lambda match, value=mapping[key]: value, out)
+    folder = sorted((key for key in mapping if key.endswith("/")), key=len, reverse=True)
+    for key in folder:
+        out = out.replace(key, mapping[key])
+    return rewrite_bare_names(out, mapping)
+
+
+def rename_name_pairs(mapping: Dict[str, str]) -> Tuple[Dict[str, str], Dict[str, str]]:
+    """Derive the folder and file name renames a rename map implies.
+
+    Each key and value are compared segment by segment. A differing folder
+    segment becomes a folder pair and a differing last segment becomes a file
+    pair, so prose that names a folder or a file without its full path can be
+    mapped the same way the rename rewrote it.
+
+    Args:
+        mapping: Result of read_rename_map().
+
+    Returns:
+        The folder name pairs and the file name pairs, old to new.
+    """
+    folders: Dict[str, str] = {}
+    files: Dict[str, str] = {}
+    for key, value in mapping.items():
+        old_parts = key.rstrip("/").split("/")
+        new_parts = value.rstrip("/").split("/")
+        if len(old_parts) != len(new_parts):
+            continue
+        last = len(old_parts) - 1
+        for index, (old, new) in enumerate(zip(old_parts, new_parts)):
+            if old == new:
+                continue
+            if index == last and not key.endswith("/"):
+                files[old] = new
+            else:
+                folders[old] = new
+    return folders, files
+
+
+def rewrite_bare_names(text: str, mapping: Dict[str, str]) -> str:
+    """Rewrite folder and file names that appear without their full path.
+
+    A folder name is rewritten as a path segment before a slash, or as the
+    stem of a pre-split file name such as the old year file. A file name is
+    rewritten where it stands alone. A token that holds a URL is never
+    touched, because source URLs keep their own words.
+
+    Args:
+        text: Text whose repository paths were already rewritten.
+        mapping: Result of read_rename_map().
+
+    Returns:
+        The text with every bare name replaced.
+    """
+    folders, files = rename_name_pairs(mapping)
+    if not folders and not files:
+        return text
+    names = sorted(folders, key=len, reverse=True)
+    alt = "|".join(re.escape(name) for name in names)
+    patterns = []
+    if alt:
+        patterns.append((re.compile(r"(?<![A-Za-z0-9_.-])(" + alt + r")(?=/|\.md\b)"), folders))
+    file_alt = "|".join(re.escape(name) for name in sorted(files, key=len, reverse=True))
+    if file_alt:
+        patterns.append((re.compile(r"(?<![A-Za-z0-9_.-])(" + file_alt + r")(?![A-Za-z0-9_.-])"), files))
+    for pattern, pairs in patterns:
+
+        def replace(match: re.Match, pairs: Dict[str, str] = pairs) -> str:
+            left = match.start()
+            while left > 0 and match.string[left - 1] not in BARE_NAME_STOP:
+                left -= 1
+            right = match.end()
+            while right < len(match.string) and match.string[right] not in BARE_NAME_STOP:
+                right += 1
+            word = match.string[left:right]
+            if "://" in word or "www." in word:
+                return match.group(0)
+            return pairs[match.group(1)]
+
+        text = pattern.sub(replace, text)
+    return text
+
+
+def canonicalize_link_labels(text: str, part_rel: str) -> str:
+    """Replace a link label with its target when the label names that target.
+
+    A derived header names each sibling file in both the label and the target
+    of one link. A rename changes both, so the label has to resolve to the
+    same repository path as the target before the two sides can compare.
+
+    Args:
+        text: Text with every link target already replaced by a repository
+            path.
+        part_rel: Repository path of the file that holds the text.
+
+    Returns:
+        The text with every label that names its own target replaced by that
+        target.
+    """
+
+    def replacement(match: re.Match) -> str:
+        label = match.group(1).strip()
+        target = match.group(2)
+        if not label or " " in label or "\t" in label or SCHEME_RE.match(label):
+            return match.group(0)
+        path_part = target.partition("#")[0]
+        if not path_part:
+            return match.group(0)
+        if label == path_part:
+            return "[" + target + "](" + target + ")"
+        for base in (posixpath.dirname(path_part), posixpath.dirname(part_rel)):
+            if posixpath.normpath(posixpath.join(base, label)) == path_part:
+                return "[" + target + "](" + target + ")"
+        return match.group(0)
+
+    return LABEL_LINK_RE.sub(replacement, text)
+
+
+def rename_body_identity(
+    text: str,
+    part_rel: str,
+    source_rel: str,
+    split_map: Dict[str, Any],
+    mapping: Dict[str, str],
+) -> str:
+    """Return the rename identity of one part body.
+
+    Args:
+        text: Body text.
+        part_rel: Repository path of the part file in the text's own tree.
+        source_rel: Repository path of the split source in the same tree.
+        split_map: Result of build_split_map() for the same tree.
+        mapping: Result of read_rename_map().
+
+    Returns:
+        The normalized body with every label that names its target replaced,
+        then with every repository path rewritten through the map.
+    """
+    normalized = normalize_body(text, part_rel, source_rel, split_map)
+    labeled = canonicalize_link_labels(normalized, part_rel)
+    return rewrite_repo_paths(labeled, mapping)
+
+
+def rename_header_identity(
+    text: str,
+    part_rel: str,
+    split_map: Dict[str, Any],
+    mapping: Dict[str, str],
+) -> str:
+    """Return the rename identity of one derived header or the entry file.
+
+    Args:
+        text: Header text, or the whole entry file text.
+        part_rel: Repository path of the file that holds the text.
+        split_map: Result of build_split_map() for the same tree.
+        mapping: Result of read_rename_map().
+
+    Returns:
+        The bytes the header hash covers, with every target and every label
+        that names its target canonicalized, then with every repository path
+        rewritten through the map.
+    """
+    normalized = canonicalize_targets(header_hash_text(text), part_rel, part_rel, split_map)
+    labeled = canonicalize_link_labels(normalized, part_rel)
+    return rewrite_repo_paths(labeled, mapping)
+
+
+def git_show_text(ref: str, path: str) -> str:
+    """Read one repository path from a git revision.
+
+    Args:
+        ref: Git revision.
+        path: Repository path.
+
+    Returns:
+        The file text.
+
+    Raises:
+        SystemExit: If git cannot read the path at the revision or the bytes
+            are not UTF-8.
+    """
+    result = subprocess.run(
+        ["git", "show", "%s:%s" % (ref, path)],
+        cwd=REPO_ROOT,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    if result.returncode != 0:
+        fail("cannot read %s at %s" % (path, ref))
+    try:
+        return result.stdout.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        fail("cannot decode %s at %s as UTF-8: %s" % (path, ref, exc))
+
+
+def first_differing_line(old: str, new: str) -> Optional[Tuple[int, str, str]]:
+    """Find the first line that differs between two texts.
+
+    Args:
+        old: Old text.
+        new: New text.
+
+    Returns:
+        A triple of the one based line number, the old line and the new
+        line, or None when the two texts are equal.
+    """
+    old_lines = old.splitlines()
+    new_lines = new.splitlines()
+    for index in range(max(len(old_lines), len(new_lines))):
+        old_line = old_lines[index] if index < len(old_lines) else ""
+        new_line = new_lines[index] if index < len(new_lines) else ""
+        if old_line != new_line:
+            return index + 1, old_line, new_line
+    return None
+
+
+def refuse_line(new_path: str, section: str, old: str, new: str) -> None:
+    """Print one refused part with its first differing line.
+
+    Args:
+        new_path: Repository path of the part in the new tree.
+        section: "body" or "header".
+        old: Old identity text.
+        new: New identity text.
+    """
+    difference = first_differing_line(old, new)
+    if difference is None:
+        print("refused %s %s" % (new_path, section))
+        return
+    number, old_line, new_line = difference
+    print("refused %s %s line %d" % (new_path, section, number))
+    print("  old %s" % old_line)
+    print("  new %s" % new_line)
+
+
+def accept_part(
+    old_text: str,
+    new_text: str,
+    old_path: str,
+    new_path: str,
+    old_source: str,
+    new_source: str,
+    old_split_map: Dict[str, Any],
+    new_split_map: Dict[str, Any],
+    mapping: Dict[str, str],
+) -> Tuple[bool, str, str]:
+    """Compare one part body and header for a pure rename.
+
+    Args:
+        old_text: File text at the old path in the base revision.
+        new_text: File text at the new path in the working tree.
+        old_path: Repository path of the part in the base revision.
+        new_path: Repository path of the part in the working tree.
+        old_source: Repository path of the split source in the base revision.
+        new_source: Repository path of the split source in the new tree.
+        old_split_map: Result of build_split_map() for the base revision.
+        new_split_map: Result of build_split_map() for the working tree.
+        mapping: Result of read_rename_map().
+
+    Returns:
+        A triple of the verdict, the new normalized body and the new header
+        digest. The verdict is False and the two hashes are empty when the
+        part differs beyond its paths or holds no body heading.
+    """
+    old_body = part_body(old_text)
+    new_body = part_body(new_text)
+    old_start = body_start(old_text)
+    new_start = body_start(new_text)
+    if old_body is None or new_body is None or old_start is None or new_start is None:
+        print("refused %s (no body heading)" % new_path)
+        return False, "", ""
+    old_identity = rename_body_identity(old_body, old_path, old_source, old_split_map, mapping)
+    new_identity = rename_body_identity(new_body, new_path, new_source, new_split_map, {})
+    verdict = True
+    if old_identity != new_identity:
+        refuse_line(new_path, "body", old_identity, new_identity)
+        verdict = False
+    old_header = rename_header_identity(old_text[:old_start], old_path, old_split_map, mapping)
+    new_header = rename_header_identity(new_text[:new_start], new_path, new_split_map, {})
+    if old_header != new_header:
+        refuse_line(new_path, "header", old_header, new_header)
+        verdict = False
+    normalized = normalize_body(new_body, new_path, new_source, new_split_map)
+    return verdict, normalized, header_sha256(new_text[:new_start])
+
+
+def map_line_map(line_map: List[Any], mapping: Dict[str, str]) -> List[Any]:
+    """Map the part path of every line map run through a rename map.
+
+    Args:
+        line_map: The line map runs of one manifest row.
+        mapping: Result of read_rename_map().
+
+    Returns:
+        A copy of the runs with each part path mapped.
+    """
+    runs: List[Any] = []
+    for run in line_map:
+        if isinstance(run, dict) and isinstance(run.get("part"), str):
+            runs.append(dict(run, part=map_repo_path(run["part"], mapping)))
+        else:
+            runs.append(run)
+    return runs
+
+
+def accept_renames_mode(map_path: str, base_ref: str) -> int:
+    """Record the new hashes of a pure rename.
+
+    Args:
+        map_path: Rename map file, a JSON object of old to new repository
+            paths.
+        base_ref: Git revision that still holds the old files.
+
+    Returns:
+        Zero when every part is accepted, 1 when a part is refused, and 2
+        through fail() on a malformed map, an unreadable old file, an
+        unknown revision or a map key that names nothing in the manifest.
+    """
+    mapping = read_rename_map(map_path)
+    old_manifest = read_manifest(required=True)
+    old_general = old_manifest.get("general")
+    manifest_paths: List[str] = []
+    for row in old_manifest["files"]:
+        manifest_paths.append(row["source"])
+        for part in row["parts"]:
+            manifest_paths.append(part["path"])
+    if isinstance(old_general, dict):
+        manifest_paths.append(old_general["source"])
+        for part in old_general["parts"]:
+            manifest_paths.append(part["path"])
+    for key in sorted(mapping):
+        covered = any(
+            path == key or (key.endswith("/") and path.startswith(key))
+            for path in manifest_paths
+        )
+        if not covered:
+            fail("rename map key %s names nothing in %s" % (key, repo_rel(MANIFEST_PATH)))
+    content_paths: List[str] = []
+    new_manifest: Dict[str, Any] = {
+        "generated_by": old_manifest.get("generated_by", GENERATOR),
+        "version": old_manifest.get("version", MANIFEST_VERSION),
+        "files": [],
+    }
+    for row in old_manifest["files"]:
+        new_row = dict(row)
+        new_row["source"] = map_repo_path(row["source"], mapping)
+        new_row["parts"] = [
+            dict(part, path=map_repo_path(part["path"], mapping)) for part in row["parts"]
+        ]
+        if isinstance(row.get("line_map"), list):
+            new_row["line_map"] = map_line_map(row["line_map"], mapping)
+        new_manifest["files"].append(new_row)
+        for part in row["parts"]:
+            content_paths.append(part["path"])
+    new_general: Optional[Dict[str, Any]] = None
+    if isinstance(old_general, dict):
+        new_general = dict(old_general)
+        new_general["source"] = map_repo_path(old_general["source"], mapping)
+        new_general["parts"] = [
+            dict(part, path=map_repo_path(part["path"], mapping)) for part in old_general["parts"]
+        ]
+        if isinstance(old_general.get("line_map"), list):
+            new_general["line_map"] = map_line_map(old_general["line_map"], mapping)
+        new_manifest["general"] = new_general
+        for part in old_general["parts"]:
+            content_paths.append(part["path"])
+        content_paths.append(old_general["source"])
+    old_texts: Dict[str, str] = {}
+    new_texts: Dict[str, str] = {}
+    for path in content_paths:
+        old_texts[path] = git_show_text(base_ref, path)
+        new_path = map_repo_path(path, mapping)
+        new_texts[new_path] = read_text(os.path.join(REPO_ROOT, new_path))
+    old_bodies: Dict[str, str] = {}
+    new_bodies: Dict[str, str] = {}
+    for path in content_paths:
+        old_body = part_body(old_texts[path])
+        if old_body is not None:
+            old_bodies[path] = old_body
+        new_path = map_repo_path(path, mapping)
+        new_body = part_body(new_texts[new_path])
+        if new_body is not None:
+            new_bodies[new_path] = new_body
+    old_overrides: Dict[str, str] = {}
+    new_overrides: Dict[str, str] = {}
+    if isinstance(old_general, dict) and isinstance(new_general, dict):
+        old_overrides[old_general["source"]] = old_texts[old_general["source"]]
+        new_overrides[new_general["source"]] = new_texts[new_general["source"]]
+    old_entries = split_map_entries_from_manifest(
+        old_manifest, REPO_ROOT, part_bodies=old_bodies, overrides=old_overrides
+    )
+    old_split_map = build_split_map(old_entries)
+    new_entries = split_map_entries_from_manifest(
+        new_manifest, REPO_ROOT, part_bodies=new_bodies, overrides=new_overrides
+    )
+    new_split_map = build_split_map(new_entries)
+    refused = False
+    renamed = 0
+    unchanged = 0
+    for old_row, new_row in zip(old_manifest["files"], new_manifest["files"]):
+        rejoin_parts: List[str] = []
+        for old_part, new_part in zip(old_row["parts"], new_row["parts"]):
+            old_path = old_part["path"]
+            new_path = new_part["path"]
+            verdict, normalized, header = accept_part(
+                old_texts[old_path],
+                new_texts[new_path],
+                old_path,
+                new_path,
+                old_row["source"],
+                new_row["source"],
+                old_split_map,
+                new_split_map,
+                mapping,
+            )
+            if not verdict:
+                refused = True
+                continue
+            new_part["body_sha256"] = sha256_text(normalized)
+            new_part["header_sha256"] = header
+            rejoin_parts.append(normalized)
+            if new_path == old_path:
+                unchanged += 1
+            else:
+                renamed += 1
+        if len(rejoin_parts) == len(new_row["parts"]):
+            rejoin = sha256_text("".join(rejoin_parts))
+            new_row["body_sha256"] = rejoin
+            new_row["rejoin_sha256"] = rejoin
+    if isinstance(old_general, dict) and isinstance(new_general, dict):
+        general_parts: List[str] = []
+        for old_part, new_part in zip(old_general["parts"], new_general["parts"]):
+            old_path = old_part["path"]
+            new_path = new_part["path"]
+            verdict, normalized, header = accept_part(
+                old_texts[old_path],
+                new_texts[new_path],
+                old_path,
+                new_path,
+                old_general["source"],
+                new_general["source"],
+                old_split_map,
+                new_split_map,
+                mapping,
+            )
+            if not verdict:
+                refused = True
+                continue
+            new_part["body_sha256"] = sha256_text(normalized)
+            new_part["header_sha256"] = header
+            general_parts.append(normalized)
+            if new_path == old_path:
+                unchanged += 1
+            else:
+                renamed += 1
+        if len(general_parts) == len(new_general["parts"]):
+            rejoin = sha256_text("".join(general_parts))
+            new_general["body_sha256"] = rejoin
+            new_general["rejoin_sha256"] = rejoin
+        entry_old = old_general["source"]
+        entry_new = new_general["source"]
+        old_identity = rename_header_identity(
+            old_texts[entry_old], entry_old, old_split_map, mapping
+        )
+        new_identity = rename_header_identity(
+            new_texts[entry_new], entry_new, new_split_map, {}
+        )
+        if old_identity != new_identity:
+            refuse_line(entry_new, "entry", old_identity, new_identity)
+            refused = True
+        new_general["entry_sha256"] = entry_sha256(new_texts[entry_new])
+    if refused:
+        return 1
+    write_text(MANIFEST_PATH, render_manifest(new_manifest))
+    print("split-accept: %d parts renamed, %d unchanged" % (renamed, unchanged))
+    return 0
+
+# ───────────────────────────────────────────────────────────────
+# 13. MAIN
 # ───────────────────────────────────────────────────────────────
 
 def main(argv: List[str]) -> int:
@@ -2575,15 +3202,31 @@ def main(argv: List[str]) -> int:
     """
     parser = argparse.ArgumentParser(
         prog=GENERATOR,
-        description="Split the tax-rules topic files into four part files, or check the rejoin.",
+        description="Split the tax-rules topic files into four part files, check the rejoin or accept a pure rename.",
     )
     modes = parser.add_mutually_exclusive_group()
     modes.add_argument("--plan", action="store_true", help="print the split plan and write nothing")
     modes.add_argument("--write", action="store_true", help="split the sources, remove the originals and write the manifest")
     modes.add_argument("--check", action="store_true", help="recompute the rejoin and report every drift")
+    modes.add_argument(
+        "--accept-renames",
+        metavar="MAP",
+        help="accept a pure rename from the map in MAP and record its new hashes",
+    )
+    parser.add_argument(
+        "--base",
+        metavar="REF",
+        help="git revision that still holds the old files, required with --accept-renames",
+    )
     args = parser.parse_args(argv)
     if not os.path.isdir(TAX_RULES_ROOT):
         fail("missing folder %s" % repo_rel(TAX_RULES_ROOT))
+    if args.accept_renames is not None:
+        if not args.base:
+            parser.error("--accept-renames requires --base REF")
+        return accept_renames_mode(args.accept_renames, args.base)
+    if args.base:
+        parser.error("--base requires --accept-renames MAP")
     if args.write:
         return write_mode()
     if args.check:

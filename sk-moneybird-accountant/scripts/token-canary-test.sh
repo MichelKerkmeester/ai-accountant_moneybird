@@ -397,7 +397,7 @@ def mode_nested(module: ModuleType, encoders: Dict[str, Any]) -> int:
         Zero when the walk holds the nested file exactly once, its row path
         is the nested path and its two sections are counted, one otherwise.
     """
-    wanted = "tax-rules/2020/btw/figures.md"
+    wanted = "tax-rules/2020/vat/figures.md"
     paths = [module.relative_path(path) for path in module.markdown_files()]
     hits = [path for path in paths if path.endswith(wanted)]
     row = module.file_row(os.path.join(module.REFERENCES_ROOT, wanted), encoders)
@@ -600,9 +600,9 @@ fi
 group "nested reference file"
 NESTED_REPO="$TMP_ROOT/nested-repo"
 NESTED_SKILL="$NESTED_REPO/sk-moneybird-accountant"
-mkdir -p "$NESTED_SKILL/scripts" "$NESTED_SKILL/references/tax-rules/2020/btw"
+mkdir -p "$NESTED_SKILL/scripts" "$NESTED_SKILL/references/tax-rules/2020/vat"
 cp "$BASELINE_PY" "$NESTED_SKILL/scripts/token-baseline.py"
-cat >"$NESTED_SKILL/references/tax-rules/2020/btw/figures.md" <<'EOF'
+cat >"$NESTED_SKILL/references/tax-rules/2020/vat/figures.md" <<'EOF'
 # Nested figures
 
 ## 1. KEY FIGURES

@@ -75,4 +75,4 @@ The checked material contains no 2019 figures for box 3. This section therefore 
 - [2020 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
 - [Box 3 sparen en beleggen 2021](../../2021/box-3/figures.md)
-- Related topics in 2020: [Inkomstenbelasting box 1 2020](../inkomstenbelasting/figures.md), [Box 2 en aanmerkelijk belang 2020](../box-2/figures.md)
+- Related topics in 2020: [Inkomstenbelasting box 1 2020](../income-tax/figures.md), [Box 2 en aanmerkelijk belang 2020](../box-2/figures.md)

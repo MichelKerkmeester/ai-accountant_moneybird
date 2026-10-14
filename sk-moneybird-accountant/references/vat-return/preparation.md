@@ -21,7 +21,7 @@ version: 1.0.0.0
 
 Steps 0 to 12 follow the order the research fixes. Each step names its check, the evidence it leaves and its owner. A step with a human decision or action carries `[Operator]`.
 
-Before step 0, resolve the year as `year_key`, load the year README and the year BTW files and read the administration's rate list and VAT overview at run time. The rate-to-rubriek step is in [rubrieken.md](rubrieken.md#4-the-run-time-rate-step).
+Before step 0, resolve the year as `year_key`, load the year README and the year BTW files and read the administration's rate list and VAT overview at run time. The rate-to-rubriek step is in [return-boxes.md](return-boxes.md#4-the-run-time-rate-step).
 
 Reads use moneybird-guard with `MONEYBIRD_GUARD_READ_ONLY=1`, following [cli-moneybird](../../../cli-moneybird/SKILL.md). Period unlocking, rate creation and filing stay UI and `[Operator]` actions.
 
@@ -45,7 +45,7 @@ Reads use moneybird-guard with `MONEYBIRD_GUARD_READ_ONLY=1`, following [cli-mon
 | 11 | Run the arithmetic gate. | 5a equals the sum of rubrieken 1 to 4. 5b equals the deductible input VAT including the VAT declared under 2a, 4a and 4b. A deviation is an arithmetic error. 5c to 5g stay unverified and are not fabricated. | The arithmetic result and the rubriek table it was run over. | Agent. `[Operator]` decides an unresolvable outcome. |
 | 12 | Branch for the final VAT period of the calendar year. | The period is checked against the final-period condition before the pack is built. | The branch note that names the settlements run. | Agent prepares. `[Operator]` decides the private-use and revision outcomes. |
 
-The year rules behind steps 4 to 10 are in the year files, for example [BTW 2026 rules](../tax-rules/2026/btw/rules.md). Every rate and threshold is in [BTW 2026 figures](../tax-rules/2026/btw/figures.md). The rates change by year, so read the file for the resolved `year_key`.
+The year rules behind steps 4 to 10 are in the year files, for example [BTW 2026 rules](../tax-rules/2026/vat/rules.md). Every rate and threshold is in [BTW 2026 figures](../tax-rules/2026/vat/figures.md). The rates change by year, so read the file for the resolved `year_key`.
 
 ---
 
@@ -77,7 +77,7 @@ A stop condition leaves the pack in the open state. The Operator decides the nex
 ## 5. RELATED RESOURCES
 
 - [README](README.md) for the boundary and the open points.
-- [Rubrieken](rubrieken.md) for the rubriek table and the run-time rate step.
+- [Rubrieken](return-boxes.md) for the rubriek table and the run-time rate step.
 - [Year-end and corrections](year-end-and-corrections.md) for the final-quarter settlements.
 - [Review pack](review-pack.md) for the output contract.
 - [Purchase invoices](../purchase-invoices.md) for the rate and booking cases.

@@ -84,4 +84,4 @@ Year overview: [README.md](../README.md).
 - [2026 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
 - [Box 3 sparen en beleggen 2025](../../2025/box-3/figures.md) and [Box 3 sparen en beleggen 2027](../../2027/box-3/figures.md)
-- Related topics in 2026: [Inkomstenbelasting box 1 2026](../inkomstenbelasting/figures.md), [Box 2 en aanmerkelijk belang 2026](../box-2/figures.md)
+- Related topics in 2026: [Inkomstenbelasting box 1 2026](../income-tax/figures.md), [Box 2 en aanmerkelijk belang 2026](../box-2/figures.md)

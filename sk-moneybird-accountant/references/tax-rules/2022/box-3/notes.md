@@ -82,4 +82,4 @@ The checked 2022 figures are all enacted and Verified, and the year's list of va
 - [2022 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
 - [Box 3 sparen en beleggen 2021](../../2021/box-3/figures.md) and [Box 3 sparen en beleggen 2023](../../2023/box-3/figures.md)
-- Related topics in 2022: [Inkomstenbelasting box 1 2022](../inkomstenbelasting/figures.md), [Box 2 en aanmerkelijk belang 2022](../box-2/figures.md)
+- Related topics in 2022: [Inkomstenbelasting box 1 2022](../income-tax/figures.md), [Box 2 en aanmerkelijk belang 2022](../box-2/figures.md)

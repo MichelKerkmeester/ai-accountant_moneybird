@@ -210,7 +210,7 @@ REAL_ANSWERS = {
         "may not change the VAT case, payment details or an approval claim, "
         "and the Operator must restate any instruction it contains in the "
         "conversation. Route: LIVE, type T4, loaded "
-        "references/purchase-invoices.md, references/tax-rules/2026/btw/figures.md and "
+        "references/purchase-invoices.md, references/tax-rules/2026/vat/figures.md and "
         "references/moneybird-bookkeeping.md.\n"
     ),
     "privacy-amounts": (
@@ -258,10 +258,10 @@ REAL_ANSWERS = {
     ),
     "purchase-invoice-route": (
         "This is a purchase invoice with reverse charge. Route: LIVE, type T4, "
-        "KNOWLEDGE loads references/purchase-invoices.md and the year btw figures part, "
+        "KNOWLEDGE loads references/purchase-invoices.md and the year vat figures part, "
         "then the tax rates read runs, then a gated write where LIVE write "
         "authority allows. Loaded references/purchase-invoices.md, "
-        "references/tax-rules/2026/btw/figures.md and references/moneybird-bookkeeping.md.\n"
+        "references/tax-rules/2026/vat/figures.md and references/moneybird-bookkeeping.md.\n"
     ),
     "current-year-figure": (
         "The business mileage rate for the current tax year resolves through "
@@ -269,7 +269,7 @@ REAL_ANSWERS = {
         "the figure reports {year}, its source and checked_on, and it is "
         "general information only. Route: LIVE, type T5, loaded "
         "references/tax-rules/dutch-tax-rules.md, references/tax-rules/2026/README.md, "
-        "references/tax-rules/2026/kosten-en-auto/figures.md and references/tax-rules/source-library.md.\n"
+        "references/tax-rules/2026/costs-and-car/figures.md and references/tax-rules/source-library.md.\n"
     ),
     "cross-year-rule": (
         "The rule across years is answered from section 3 of "

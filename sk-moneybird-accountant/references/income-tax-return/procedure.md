@@ -44,7 +44,7 @@ The steps prepare a pack. Filing, payment and the period lock stay Operator-only
 | 11 | Hand over the review pack, the Operator input list and the VIA comparison sheet. | The pack holds every part the procedure requires and every prefilled field is listed against its source. | The pack in the private workspace and the comparison sheet. | `[AI]` |
 | 12 | Record the confirmation and stop. | The confirmation record holds identity, role, decision, timestamp, pack version and path, return year, accepted exceptions and evidence references. | The confirmation record. | `[Operator]` The Operator reviews the pack, confirms it, files and pays in the product UI. |
 
-The year rules behind steps 6 to 9 are in the year files, for example [Inkomstenbelasting 2026 figures](../tax-rules/2026/inkomstenbelasting/figures.md), [Ondernemersaftrek 2026 figures](../tax-rules/2026/ondernemersaftrek/figures.md), [Investeringen 2026 figures](../tax-rules/2026/investeringen/figures.md) and [Zvw 2026 figures](../tax-rules/2026/zvw/figures.md). Every rate and threshold changes by year, so read the file for the resolved `year_key`.
+The year rules behind steps 6 to 9 are in the year files, for example [Inkomstenbelasting 2026 figures](../tax-rules/2026/income-tax/figures.md), [Ondernemersaftrek 2026 figures](../tax-rules/2026/business-deductions/figures.md), [Investeringen 2026 figures](../tax-rules/2026/investments/figures.md) and [Zvw 2026 figures](../tax-rules/2026/health-insurance-contribution/figures.md). Every rate and threshold changes by year, so read the file for the resolved `year_key`.
 
 ---
 
@@ -56,34 +56,34 @@ One row per input on the official return checklist plus the business cijfers lis
 |---|---|---|---|
 | Commercial result and profit and loss categories | Moneybird resultatenrekening with its category reports | Moneybird | [The year README](../tax-rules/2026/README.md) |
 | Balance-sheet lines | Moneybird balans computed from all bookings, period-end figures | Moneybird | [The year README](../tax-rules/2026/README.md) |
-| Asset book values and depreciation | Moneybird bezittingen and activastaat plus [fixed assets](../fixed-assets.md) | Moneybird | [Investeringen 2026 figures](../tax-rules/2026/investeringen/figures.md) |
-| VAT position for the year | Moneybird btw-overzicht plus the filed returns | Moneybird | [BTW 2026 figures](../tax-rules/2026/btw/figures.md) |
+| Asset book values and depreciation | Moneybird bezittingen and activastaat plus [fixed assets](../fixed-assets.md) | Moneybird | [Investeringen 2026 figures](../tax-rules/2026/investments/figures.md) |
+| VAT position for the year | Moneybird btw-overzicht plus the filed returns | Moneybird | [BTW 2026 figures](../tax-rules/2026/vat/figures.md) |
 | Audit trail | The auditfile before the jaarafsluiting, the grootboekkaarten and the RGS Brugstaat | Moneybird | [Aangifte en procedure 2026 figures](../tax-rules/2026/procedure/figures.md) |
 | Commercial-to-fiscal adjustments | The books, the Operator facts and the year corpus | Books outside Moneybird, year corpus | [Dutch tax rules](../tax-rules/dutch-tax-rules.md) |
-| Depreciation caps and building floor | [Fixed assets](../fixed-assets.md) plus the Operator WOZ beschikking | Year corpus, Operator | [Investeringen 2026 figures](../tax-rules/2026/investeringen/figures.md) and [Kosten en auto 2026 figures](../tax-rules/2026/kosten-en-auto/figures.md) |
-| KIA, EIA, MIA and Vamil figures | The year file plus the per-asset register and the RVO proof | Year corpus, Operator | [Investeringen 2026 figures](../tax-rules/2026/investeringen/figures.md) |
-| Desinvesteringsbijtelling | The prior claims plus this year's disposals | Books outside Moneybird, Operator | [Investeringen 2026 figures](../tax-rules/2026/investeringen/figures.md) |
-| Urencriterium and hours | Moneybird uren registration plus the Operator hours log | Moneybird, Operator | [Ondernemersaftrek 2026 figures](../tax-rules/2026/ondernemersaftrek/figures.md) |
-| Zelfstandigenaftrek and startersaftrek | The year file plus the prior returns and beschikkingen | Year corpus, Operator | [Ondernemersaftrek 2026 figures](../tax-rules/2026/ondernemersaftrek/figures.md) |
-| Aftrek speur- en ontwikkelingswerk | The Operator S&O statement plus the year file | Operator | [Ondernemersaftrek 2026 figures](../tax-rules/2026/ondernemersaftrek/figures.md) |
-| Meewerkaftrek | The Operator partner hours and pay plus the year file | Operator | [Ondernemersaftrek 2026 figures](../tax-rules/2026/ondernemersaftrek/figures.md) |
-| Startersaftrek bij arbeidsongeschiktheid | The Operator beschikking plus the year file | Operator | [Ondernemersaftrek 2026 figures](../tax-rules/2026/ondernemersaftrek/figures.md) |
-| Stakingsaftrek | The Operator staking facts plus the year file | Operator | [Ondernemersaftrek 2026 figures](../tax-rules/2026/ondernemersaftrek/figures.md) |
-| MKB-winstvrijstelling | Computed after the ondernemersaftrek | Year corpus | [Ondernemersaftrek 2026 figures](../tax-rules/2026/ondernemersaftrek/figures.md) |
-| Oudedagsreserve opening and movements | The Operator prior return plus the annuity evidence | Operator | [Pensioen en AOV 2026 figures](../tax-rules/2026/pensioen-en-aov/figures.md) |
-| Private-use car, phone and home | The Operator facts and evidence plus the year file | Operator | [Kosten en auto 2026 figures](../tax-rules/2026/kosten-en-auto/figures.md) |
-| Box 1 income, loon and other income | The Operator, the jaaropgaven and the vooraf ingevulde aangifte | Operator, vooraf ingevulde aangifte | [Inkomstenbelasting 2026 figures](../tax-rules/2026/inkomstenbelasting/figures.md) |
+| Depreciation caps and building floor | [Fixed assets](../fixed-assets.md) plus the Operator WOZ beschikking | Year corpus, Operator | [Investeringen 2026 figures](../tax-rules/2026/investments/figures.md) and [Kosten en auto 2026 figures](../tax-rules/2026/costs-and-car/figures.md) |
+| KIA, EIA, MIA and Vamil figures | The year file plus the per-asset register and the RVO proof | Year corpus, Operator | [Investeringen 2026 figures](../tax-rules/2026/investments/figures.md) |
+| Desinvesteringsbijtelling | The prior claims plus this year's disposals | Books outside Moneybird, Operator | [Investeringen 2026 figures](../tax-rules/2026/investments/figures.md) |
+| Urencriterium and hours | Moneybird uren registration plus the Operator hours log | Moneybird, Operator | [Ondernemersaftrek 2026 figures](../tax-rules/2026/business-deductions/figures.md) |
+| Zelfstandigenaftrek and startersaftrek | The year file plus the prior returns and beschikkingen | Year corpus, Operator | [Ondernemersaftrek 2026 figures](../tax-rules/2026/business-deductions/figures.md) |
+| Aftrek speur- en ontwikkelingswerk | The Operator S&O statement plus the year file | Operator | [Ondernemersaftrek 2026 figures](../tax-rules/2026/business-deductions/figures.md) |
+| Meewerkaftrek | The Operator partner hours and pay plus the year file | Operator | [Ondernemersaftrek 2026 figures](../tax-rules/2026/business-deductions/figures.md) |
+| Startersaftrek bij arbeidsongeschiktheid | The Operator beschikking plus the year file | Operator | [Ondernemersaftrek 2026 figures](../tax-rules/2026/business-deductions/figures.md) |
+| Stakingsaftrek | The Operator staking facts plus the year file | Operator | [Ondernemersaftrek 2026 figures](../tax-rules/2026/business-deductions/figures.md) |
+| MKB-winstvrijstelling | Computed after the ondernemersaftrek | Year corpus | [Ondernemersaftrek 2026 figures](../tax-rules/2026/business-deductions/figures.md) |
+| Oudedagsreserve opening and movements | The Operator prior return plus the annuity evidence | Operator | [Pensioen en AOV 2026 figures](../tax-rules/2026/pension-and-disability-insurance/figures.md) |
+| Private-use car, phone and home | The Operator facts and evidence plus the year file | Operator | [Kosten en auto 2026 figures](../tax-rules/2026/costs-and-car/figures.md) |
+| Box 1 income, loon and other income | The Operator, the jaaropgaven and the vooraf ingevulde aangifte | Operator, vooraf ingevulde aangifte | [Inkomstenbelasting 2026 figures](../tax-rules/2026/income-tax/figures.md) |
 | Box 3 inventory and peildatum | The Operator and the vooraf ingevulde aangifte | Operator, vooraf ingevulde aangifte | [Box 3 2026 figures](../tax-rules/2026/box-3/figures.md) |
 | Partner data and allocation | The Operator and the vooraf ingevulde aangifte | Operator, vooraf ingevulde aangifte | [Box 3 2026 figures](../tax-rules/2026/box-3/figures.md) |
 | Personal, partner and children details | The Operator, DigiD and the vooraf ingevulde aangifte | Operator, vooraf ingevulde aangifte | [The year README](../tax-rules/2026/README.md) |
 | Children's bank data | The Operator and the vooraf ingevulde aangifte | Operator, vooraf ingevulde aangifte | [Box 3 2026 figures](../tax-rules/2026/box-3/figures.md) |
-| Received and paid partneralimentatie | The Operator and the vooraf ingevulde aangifte | Operator, vooraf ingevulde aangifte | [Inkomstenbelasting 2026 figures](../tax-rules/2026/inkomstenbelasting/figures.md) |
+| Received and paid partneralimentatie | The Operator and the vooraf ingevulde aangifte | Operator, vooraf ingevulde aangifte | [Inkomstenbelasting 2026 figures](../tax-rules/2026/income-tax/figures.md) |
 | Crypto holdings | The Operator and the vooraf ingevulde aangifte | Operator, vooraf ingevulde aangifte | [Box 3 2026 figures](../tax-rules/2026/box-3/figures.md) |
-| Home and mortgage interest | The Operator with the WOZ beschikking, the hypotheek jaaropgaaf and the notary statement | Operator | [Inkomstenbelasting 2026 figures](../tax-rules/2026/inkomstenbelasting/figures.md) |
-| Gifts and care costs | The Operator betalingsbewijzen | Operator | [Inkomstenbelasting 2026 figures](../tax-rules/2026/inkomstenbelasting/figures.md) |
-| Annuity premiums and AOV | The Operator jaaropgaaf and premium statements | Operator | [Pensioen en AOV 2026 figures](../tax-rules/2026/pensioen-en-aov/figures.md) |
+| Home and mortgage interest | The Operator with the WOZ beschikking, the hypotheek jaaropgaaf and the notary statement | Operator | [Inkomstenbelasting 2026 figures](../tax-rules/2026/income-tax/figures.md) |
+| Gifts and care costs | The Operator betalingsbewijzen | Operator | [Inkomstenbelasting 2026 figures](../tax-rules/2026/income-tax/figures.md) |
+| Annuity premiums and AOV | The Operator jaaropgaaf and premium statements | Operator | [Pensioen en AOV 2026 figures](../tax-rules/2026/pension-and-disability-insurance/figures.md) |
 | Dividend | The Operator dividend statements | Operator | [Box 3 2026 figures](../tax-rules/2026/box-3/figures.md) |
-| Voorlopige aanslagen IB and Zvw | The Operator and the Belastingdienst decisions | Operator | [Aangifte en procedure 2026 figures](../tax-rules/2026/procedure/figures.md) and [Zvw 2026 figures](../tax-rules/2026/zvw/figures.md) |
+| Voorlopige aanslagen IB and Zvw | The Operator and the Belastingdienst decisions | Operator | [Aangifte en procedure 2026 figures](../tax-rules/2026/procedure/figures.md) and [Zvw 2026 figures](../tax-rules/2026/health-insurance-contribution/figures.md) |
 | Rates, thresholds and rules | The year corpus, the year README first and then the topic KEY FIGURES section | Year corpus | [The year README](../tax-rules/2026/README.md) |
 | Deadlines, uitstel and aftercare | The year procedure file | Year corpus | [Aangifte en procedure 2026 figures](../tax-rules/2026/procedure/figures.md) |
 | Filing, payment and period lock | Operator only, behind DigiD and the product UI | Operator | [Aangifte en procedure 2026 figures](../tax-rules/2026/procedure/figures.md) |
@@ -107,7 +107,7 @@ Run the gates in this order. A gate that fails leaves the pack in the open state
 9. **VIA comparison and value status.** Compare every prefilled field with its source, present only settled values as settled and label every other value with its settling source. `[Operator + AI]`
 10. **Privacy.** No amounts, identifiers, names or private records appear in chat, a summary or a skill file. `[AI]`
 
-The figures each gate reads are in the year files, for example [Aangifte en procedure 2026 figures](../tax-rules/2026/procedure/figures.md) for the report window and [Ondernemersaftrek 2026 figures](../tax-rules/2026/ondernemersaftrek/figures.md) for the deduction chain.
+The figures each gate reads are in the year files, for example [Aangifte en procedure 2026 figures](../tax-rules/2026/procedure/figures.md) for the report window and [Ondernemersaftrek 2026 figures](../tax-rules/2026/business-deductions/figures.md) for the deduction chain.
 
 ---
 

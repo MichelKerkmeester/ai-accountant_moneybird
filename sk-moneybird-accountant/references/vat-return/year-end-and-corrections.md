@@ -34,7 +34,7 @@ The settlements are decisions, not arithmetic alone. The private-use split, the 
 | S3 | The taxed versus exempt turnover pro-rata | The re-estimate of the in-year estimate. Every other quarter marks the running estimate open. Investment-goods revision is separate from the 1d charge. | `[Operator]` or a bookkeeper decides the allocation and the revision. |
 | S4 | The BUA correction for provisions and gifts | The correction where the staff-provision and gift exclusion applies above the threshold the year file states. | `[Operator]` or a bookkeeper decides each case. |
 
-The revision window, the car calculations, the BUA threshold and the pro-rata rules are in the year file, for example [BTW 2026 figures](../tax-rules/2026/btw/figures.md) and [BTW 2026 rules](../tax-rules/2026/btw/rules.md). Investment-goods revision and its window are in [Fixed assets](../fixed-assets.md). The lease scope of the car forfait is an open point. See [README](README.md#5-open-points), open point `O4`.
+The revision window, the car calculations, the BUA threshold and the pro-rata rules are in the year file, for example [BTW 2026 figures](../tax-rules/2026/vat/figures.md) and [BTW 2026 rules](../tax-rules/2026/vat/rules.md). Investment-goods revision and its window are in [Fixed assets](../fixed-assets.md). The lease scope of the car forfait is an open point. See [README](README.md#5-open-points), open point `O4`.
 
 A final period with nothing to settle still records why each settlement is not applicable. A settlement that cannot be decided is a blocker for the pack.
 
@@ -51,7 +51,7 @@ A corrected period is not always the period under review. Split every correction
 
 Rules that apply to both routes:
 
-- The boundary, the reporting deadline and the correction window are in the year file, for example [BTW 2026 figures](../tax-rules/2026/btw/figures.md) and [BTW 2026 rules](../tax-rules/2026/btw/rules.md). Never state the boundary from memory.
+- The boundary, the reporting deadline and the correction window are in the year file, for example [BTW 2026 figures](../tax-rules/2026/vat/figures.md) and [BTW 2026 rules](../tax-rules/2026/vat/rules.md). Never state the boundary from memory.
 - The phrases a correction request uses are `suppletie`, `naheffing` and `correctie vorige periode`.
 - Moneybird can file a suppletie only on top of its own filing history. A period filed wholly outside Moneybird goes through the Belastingdienst route.
 - Mark a correction that the Belastingdienst already knows so it is not counted twice.
@@ -64,6 +64,6 @@ Rules that apply to both routes:
 
 - [README](README.md) for the boundary and the open points.
 - [Preparation](preparation.md) for the step 12 that sends a final period here.
-- [Rubrieken](rubrieken.md) for the correction phrases and the rubriek table.
+- [Rubrieken](return-boxes.md) for the correction phrases and the rubriek table.
 - [Review pack](review-pack.md) for the output contract.
 - [Fixed assets](../fixed-assets.md) for the revision rules.

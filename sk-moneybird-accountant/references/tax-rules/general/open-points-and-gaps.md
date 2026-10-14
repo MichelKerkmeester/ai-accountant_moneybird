@@ -20,15 +20,15 @@ version: 1.0.0.0
 
 General topic 5 of 13 in the Dutch tax rules guide.
 
-- [btw-vat.md](btw-vat.md): 3.1 BTW (VAT).
-- [income-tax-box-1-and-the-zvw-contribution.md](income-tax-box-1-and-the-zvw-contribution.md): 3.2 Income tax box 1 and the Zvw contribution.
-- [ondernemersaftrek-and-mkb-winstvrijstelling.md](ondernemersaftrek-and-mkb-winstvrijstelling.md): 3.3 Ondernemersaftrek and MKB-winstvrijstelling.
+- [vat.md](vat.md): 3.1 BTW (VAT).
+- [income-tax-box-1-and-the-health-insurance-contribution.md](income-tax-box-1-and-the-health-insurance-contribution.md): 3.2 Income tax box 1 and the Zvw contribution.
+- [business-deductions-and-sme-profit-exemption.md](business-deductions-and-sme-profit-exemption.md): 3.3 Ondernemersaftrek and MKB-winstvrijstelling.
 - [investment-deductions-and-depreciation.md](investment-deductions-and-depreciation.md): 3.4 Investment deductions and depreciation.
 - [costs-and-the-car.md](costs-and-the-car.md): 3.5 Costs and the car.
 - [box-3-savings-and-investments.md](box-3-savings-and-investments.md): 3.6 Box 3 savings and investments.
 - [box-2-and-the-substantial-interest.md](box-2-and-the-substantial-interest.md): 3.7 Box 2 and the substantial interest.
-- [the-bv-and-vennootschapsbelasting.md](the-bv-and-vennootschapsbelasting.md): 3.8 The BV and vennootschapsbelasting.
-- [pension-lijfrente-and-aov.md](pension-lijfrente-and-aov.md): 3.9 Pension, lijfrente and AOV.
+- [the-private-company-and-corporate-tax.md](the-private-company-and-corporate-tax.md): 3.8 The BV and vennootschapsbelasting.
+- [pension-annuities-and-disability-insurance.md](pension-annuities-and-disability-insurance.md): 3.9 Pension, lijfrente and AOV.
 - [work-relationship-and-procedure.md](work-relationship-and-procedure.md): 3.10 Work relationship and procedure.
 - [settled-source-conflicts.md](settled-source-conflicts.md): 4 SETTLED SOURCE CONFLICTS.
 - [open-points-and-gaps.md](open-points-and-gaps.md): 5 OPEN POINTS AND GAPS.

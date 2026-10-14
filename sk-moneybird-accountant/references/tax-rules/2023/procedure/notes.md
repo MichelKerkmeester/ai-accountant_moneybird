@@ -86,4 +86,4 @@ No other 2023 value in this file is marked UNVERIFIED, proposed or unknown in th
 - [2023 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
 - [Aangifte en procedure 2022](../../2022/procedure/figures.md) and [Aangifte en procedure 2024](../../2024/procedure/figures.md)
-- Related topics in 2023: [BTW 2023](../btw/figures.md), [Inkomstenbelasting box 1 2023](../inkomstenbelasting/figures.md), [Arbeidsrelatie en zelfstandigheid 2023](../arbeidsrelatie/figures.md)
+- Related topics in 2023: [BTW 2023](../vat/figures.md), [Inkomstenbelasting box 1 2023](../income-tax/figures.md), [Arbeidsrelatie en zelfstandigheid 2023](../work-relationship/figures.md)

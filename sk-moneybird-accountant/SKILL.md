@@ -54,16 +54,16 @@ Every request matches exactly one row, which decides files read and tool skill.
 |---|---|---|---|---|---|---|---|
 | T1 | migration phase | `migratie`, `overzetten`, `historische administratie`, `Jortt` | migration phase, gate, Jortt export, archive, cutover, year lock | `cli-jortt + cli-moneybird` | `!references/migration/shared-mechanisms.md`, `!{phase-file}` for the phase the request names, `?references/migration/README.md` when no phase is named, and `?references/migration/control-framework.md` when a gate, risk, or year lock applies | `tok:T1` | Beats T2 when a phase number or gate is named |
 | T2 | migration concept | `migratie`, `overzetten`, `historische administratie`, `categorie`, `valkuil`, `welke rekening` | mapping, category, which account, trap | `none` | `!references/migration/jortt-to-moneybird-mapping.md` | `tok:T2` | Yields to T1 when a phase number or gate is named |
-| T3 | live period | `deze maand`, `afgelopen kwartaal`, `administratie bijhouden` | this month, this quarter, review, reconcile, bank, unmatched, close | `cli-moneybird` | `!references/moneybird-bookkeeping.md`, `!references/tax-rules/{year}/README.md`, `?references/tax-rules/{year}/btw/figures.md` when the period is a VAT period, `?references/migration/README.md` and `?references/migration/phases-19-to-21.md` while the post-cutover state is monitoring_active or monitoring_lapsed_phase22_open | `tok:T3` | Yields to T4 when an invoice is named and to T1 when a phase or gate is named |
-| T4 | purchase invoice | `inkoopfactuur`, `bonnetje`, `factuur van een leverancier`, `privégebruik`, `zakelijk en privé`, `deels privé`, `gemengde kosten`, `afschrijven`, `afschrijving`, `inventaris`, `activeren`, `activeer`, `telefoonabonnement` | invoice, receipt, order, supplier, reverse charge, KOR, private use, partly private, mixed use, depreciation, depreciate, fixed asset, capitalise, capitalize, phone subscription | `cli-moneybird` | `!references/purchase-invoices.md`, `!references/tax-rules/{year}/btw/figures.md`, `!references/moneybird-bookkeeping.md`, `?references/mixed-use-costs.md` when the cost is used partly privately, `?references/fixed-assets.md` when the purchase is an asset, inventaris or is depreciated | `tok:T4` | Beats T3 when an invoice is named and yields to it otherwise, beats T2 when an invoice is named, yields to T6 when the rule is asked across years and to T5 when a tax figure is asked and no invoice is named |
+| T3 | live period | `deze maand`, `afgelopen kwartaal`, `administratie bijhouden` | this month, this quarter, review, reconcile, bank, unmatched, close | `cli-moneybird` | `!references/moneybird-bookkeeping.md`, `!references/tax-rules/{year}/README.md`, `?references/tax-rules/{year}/vat/figures.md` when the period is a VAT period, `?references/migration/README.md` and `?references/migration/phases-19-to-21.md` while the post-cutover state is monitoring_active or monitoring_lapsed_phase22_open | `tok:T3` | Yields to T4 when an invoice is named and to T1 when a phase or gate is named |
+| T4 | purchase invoice | `inkoopfactuur`, `bonnetje`, `factuur van een leverancier`, `privégebruik`, `zakelijk en privé`, `deels privé`, `gemengde kosten`, `afschrijven`, `afschrijving`, `inventaris`, `activeren`, `activeer`, `telefoonabonnement` | invoice, receipt, order, supplier, reverse charge, KOR, private use, partly private, mixed use, depreciation, depreciate, fixed asset, capitalise, capitalize, phone subscription | `cli-moneybird` | `!references/purchase-invoices.md`, `!references/tax-rules/{year}/vat/figures.md`, `!references/moneybird-bookkeeping.md`, `?references/mixed-use-costs.md` when the cost is used partly privately, `?references/fixed-assets.md` when the purchase is an asset, inventaris or is depreciated | `tok:T4` | Beats T3 when an invoice is named and yields to it otherwise, beats T2 when an invoice is named, yields to T6 when the rule is asked across years and to T5 when a tax figure is asked and no invoice is named |
 | T5 | tax figure | `btw-tarief`, `kilometervergoeding`, `zelfstandigenaftrek`, `drempel`, `hoeveel`, `investeringsaftrek` | rate, threshold, deduction, how much, current year | `none` | `!references/tax-rules/dutch-tax-rules.md`, `?references/tax-rules/{year}/README.md`, `!{topic-figures}`, and `?references/tax-rules/source-library.md` when a figure needs its official source | `tok:T5` | Beats T6 when one year is named |
 | T6 | cross-year rule | `vorig jaar`, `sinds wanneer`, `bewaarplicht` | how does the rule work, changed since, compared with | `none` | `!references/tax-rules/dutch-tax-rules.md@3-general-rules`, then the one general topic file its table names | `tok:T6` | Wins when the rule is asked across years or since a change |
 | T7 | CLI action | `haal op`, `boek in`, `synchroniseer` | read Jortt, moneybird-guard, write, batch, approval | `additive` | `-` | `tok:T7` | Additive and never wins alone, it appends the matching sibling tool skill to the row already matched |
 | T8 | unknown or out of scope | `aangifte doen`, `indienen`, `dien`, `insturen`, `aanslag betalen`, `periode afsluiten` | `filing`, `file my`, `file the`, `submit`, `pay the assessment`, `lock the period`, `non-Dutch tax`, `private database` | `none` | `-` | `tok:T8` | Wins over T10, T11 and T12 when an explicit file, submit, pay or lock request is present, otherwise only when no other row scores |
 | T9 | onboarding | `startende ondernemer` | where do I start, first time, setup | `none` | `!references/migration/overview-and-setup.md` | `tok:T9` | Loses to every typed row, it wins only when the request asks where to start with no concrete task |
-| T10 | prepare the VAT return | `btw-aangifte`, `aangifte omzetbelasting`, `kwartaalaangifte`, `btw-aangifte voorbereiden`, `btw-aangifte klaarzetten`, `btw-aangifte controleren` | `VAT return`, `quarterly return`, `prepare the VAT return`, `review the VAT return`, `check the VAT return` | `cli-moneybird` | `!references/vat-return/README.md`, `!references/tax-rules/{year}/btw/figures.md`, and `?references/tax-rules/{year}/procedure/figures.md` when a deadline, correction or belastingrente applies | `tok:T10` | Beats T3 when the VAT return is named and yields to T3 on a period question without it, always yields to T8 on a filing request |
-| T11 | prepare the yearly overview | `jaaroverzicht`, `jaarrekening`, `balans en winst-en-verliesrekening`, `jaaroverzicht voorbereiden`, `jaarrekening klaarzetten`, `jaarrekening controleren` | `yearly overview`, `annual accounts`, `prepare the yearly overview`, `review the annual accounts`, `check the yearly overview` | `cli-moneybird` | `!references/yearly-overview/README.md`, `!references/tax-rules/{year}/kosten-en-auto/figures.md`, and `!references/tax-rules/{year}/investeringen/figures.md` | `tok:T11` | Beats T3 when the yearly overview is named and yields to T3 on a period question without it, always yields to T8 on a filing request |
-| T12 | prepare the income tax return | `aangifte inkomstenbelasting`, `IB-aangifte`, `aangifte inkomstenbelasting voorbereiden`, `IB-aangifte klaarzetten`, `IB-aangifte controleren` | `income tax return`, `prepare the income tax return`, `review the income tax return`, `check the income tax return` | `none` | `!references/income-tax-return/README.md`, `!references/tax-rules/{year}/inkomstenbelasting/figures.md`, and `!references/tax-rules/{year}/ondernemersaftrek/figures.md` | `tok:T12` | Beats T5 when the income tax return is named and yields to T5 on a tax figure question without it, always yields to T8 on a filing request |
+| T10 | prepare the VAT return | `btw-aangifte`, `aangifte omzetbelasting`, `kwartaalaangifte`, `btw-aangifte voorbereiden`, `btw-aangifte klaarzetten`, `btw-aangifte controleren` | `VAT return`, `quarterly return`, `prepare the VAT return`, `review the VAT return`, `check the VAT return` | `cli-moneybird` | `!references/vat-return/README.md`, `!references/tax-rules/{year}/vat/figures.md`, and `?references/tax-rules/{year}/procedure/figures.md` when a deadline, correction or belastingrente applies | `tok:T10` | Beats T3 when the VAT return is named and yields to T3 on a period question without it, always yields to T8 on a filing request |
+| T11 | prepare the yearly overview | `jaaroverzicht`, `jaarrekening`, `balans en winst-en-verliesrekening`, `jaaroverzicht voorbereiden`, `jaarrekening klaarzetten`, `jaarrekening controleren` | `yearly overview`, `annual accounts`, `prepare the yearly overview`, `review the annual accounts`, `check the yearly overview` | `cli-moneybird` | `!references/yearly-overview/README.md`, `!references/tax-rules/{year}/costs-and-car/figures.md`, and `!references/tax-rules/{year}/investments/figures.md` | `tok:T11` | Beats T3 when the yearly overview is named and yields to T3 on a period question without it, always yields to T8 on a filing request |
+| T12 | prepare the income tax return | `aangifte inkomstenbelasting`, `IB-aangifte`, `aangifte inkomstenbelasting voorbereiden`, `IB-aangifte klaarzetten`, `IB-aangifte controleren` | `income tax return`, `prepare the income tax return`, `review the income tax return`, `check the income tax return` | `none` | `!references/income-tax-return/README.md`, `!references/tax-rules/{year}/income-tax/figures.md`, and `!references/tax-rules/{year}/business-deductions/figures.md` | `tok:T12` | Beats T5 when the income tax return is named and yields to T5 on a tax figure question without it, always yields to T8 on a filing request |
 
 <!-- route-table:end -->
 
@@ -135,20 +135,20 @@ REQUIRED_READS = {
     "T1": ["references/migration/shared-mechanisms.md", "{phase-file}"],
     "T2": ["references/migration/jortt-to-moneybird-mapping.md"],
     "T3": ["references/moneybird-bookkeeping.md", "references/tax-rules/{year}/README.md"],
-    "T4": ["references/purchase-invoices.md", "references/tax-rules/{year}/btw/figures.md", "references/moneybird-bookkeeping.md"],
+    "T4": ["references/purchase-invoices.md", "references/tax-rules/{year}/vat/figures.md", "references/moneybird-bookkeeping.md"],
     "T5": ["references/tax-rules/dutch-tax-rules.md", "{topic-figures}"],
     "T6": ["references/tax-rules/dutch-tax-rules.md@3-general-rules"],
     "T7": [],
     "T8": [],
     "T9": ["references/migration/overview-and-setup.md"],
-    "T10": ["references/vat-return/README.md", "references/tax-rules/{year}/btw/figures.md"],
-    "T11": ["references/yearly-overview/README.md", "references/tax-rules/{year}/kosten-en-auto/figures.md", "references/tax-rules/{year}/investeringen/figures.md"],
-    "T12": ["references/income-tax-return/README.md", "references/tax-rules/{year}/inkomstenbelasting/figures.md", "references/tax-rules/{year}/ondernemersaftrek/figures.md"],
+    "T10": ["references/vat-return/README.md", "references/tax-rules/{year}/vat/figures.md"],
+    "T11": ["references/yearly-overview/README.md", "references/tax-rules/{year}/costs-and-car/figures.md", "references/tax-rules/{year}/investments/figures.md"],
+    "T12": ["references/income-tax-return/README.md", "references/tax-rules/{year}/income-tax/figures.md", "references/tax-rules/{year}/business-deductions/figures.md"],
 }
 CONDITIONAL_READS = {
     "T1": ["references/migration/README.md", "references/migration/control-framework.md"],
     "T2": [],
-    "T3": ["references/tax-rules/{year}/btw/figures.md", "references/migration/README.md", "references/migration/phases-19-to-21.md"],
+    "T3": ["references/tax-rules/{year}/vat/figures.md", "references/migration/README.md", "references/migration/phases-19-to-21.md"],
     "T4": ["references/mixed-use-costs.md", "references/fixed-assets.md"],
     "T5": ["references/tax-rules/{year}/README.md", "references/tax-rules/source-library.md"],
     "T6": [],
@@ -199,46 +199,46 @@ PHASE_FILES = {
     "22": "references/migration/phase-22-completion.md",
 }
 TOPIC_FILES = {
-    "arbeidsrelatie": "references/tax-rules/{year}/arbeidsrelatie/figures.md@2-key-figures",
     "box-2": "references/tax-rules/{year}/box-2/figures.md@2-key-figures",
     "box-3": "references/tax-rules/{year}/box-3/figures.md@2-key-figures",
-    "btw": "references/tax-rules/{year}/btw/figures.md@2-key-figures",
-    "bv-en-vennootschapsbelasting": "references/tax-rules/{year}/bv-en-vennootschapsbelasting/figures.md@2-key-figures",
-    "inkomstenbelasting": "references/tax-rules/{year}/inkomstenbelasting/figures.md@2-key-figures",
-    "investeringen": "references/tax-rules/{year}/investeringen/figures.md@2-key-figures",
-    "kosten-en-auto": "references/tax-rules/{year}/kosten-en-auto/figures.md@2-key-figures",
-    "ondernemersaftrek": "references/tax-rules/{year}/ondernemersaftrek/figures.md@2-key-figures",
-    "pensioen-en-aov": "references/tax-rules/{year}/pensioen-en-aov/figures.md@2-key-figures",
+    "business-deductions": "references/tax-rules/{year}/business-deductions/figures.md@2-key-figures",
+    "costs-and-car": "references/tax-rules/{year}/costs-and-car/figures.md@2-key-figures",
+    "health-insurance-contribution": "references/tax-rules/{year}/health-insurance-contribution/figures.md@2-key-figures",
+    "income-tax": "references/tax-rules/{year}/income-tax/figures.md@2-key-figures",
+    "investments": "references/tax-rules/{year}/investments/figures.md@2-key-figures",
+    "pension-and-disability-insurance": "references/tax-rules/{year}/pension-and-disability-insurance/figures.md@2-key-figures",
+    "private-company-and-corporate-tax": "references/tax-rules/{year}/private-company-and-corporate-tax/figures.md@2-key-figures",
     "procedure": "references/tax-rules/{year}/procedure/figures.md@2-key-figures",
-    "zvw": "references/tax-rules/{year}/zvw/figures.md@2-key-figures",
+    "vat": "references/tax-rules/{year}/vat/figures.md@2-key-figures",
+    "work-relationship": "references/tax-rules/{year}/work-relationship/figures.md@2-key-figures",
 }
 RESOURCE_MAP = {
     "T1": ["references/migration/shared-mechanisms.md", "{phase-file}", "references/migration/README.md", "references/migration/control-framework.md"],
     "T2": ["references/migration/jortt-to-moneybird-mapping.md"],
-    "T3": ["references/moneybird-bookkeeping.md", "references/tax-rules/{year}/README.md", "references/tax-rules/{year}/btw/figures.md", "references/migration/README.md", "references/migration/phases-19-to-21.md"],
-    "T4": ["references/purchase-invoices.md", "references/tax-rules/{year}/btw/figures.md", "references/moneybird-bookkeeping.md", "references/mixed-use-costs.md", "references/fixed-assets.md"],
+    "T3": ["references/moneybird-bookkeeping.md", "references/tax-rules/{year}/README.md", "references/tax-rules/{year}/vat/figures.md", "references/migration/README.md", "references/migration/phases-19-to-21.md"],
+    "T4": ["references/purchase-invoices.md", "references/tax-rules/{year}/vat/figures.md", "references/moneybird-bookkeeping.md", "references/mixed-use-costs.md", "references/fixed-assets.md"],
     "T5": ["references/tax-rules/dutch-tax-rules.md", "references/tax-rules/{year}/README.md", "{topic-figures}", "references/tax-rules/source-library.md"],
     "T6": ["references/tax-rules/dutch-tax-rules.md"],
     "T7": [],
     "T8": [],
     "T9": ["references/migration/overview-and-setup.md"],
-    "T10": ["references/vat-return/README.md", "references/tax-rules/{year}/btw/figures.md", "references/tax-rules/{year}/procedure/figures.md"],
-    "T11": ["references/yearly-overview/README.md", "references/tax-rules/{year}/kosten-en-auto/figures.md", "references/tax-rules/{year}/investeringen/figures.md"],
-    "T12": ["references/income-tax-return/README.md", "references/tax-rules/{year}/inkomstenbelasting/figures.md", "references/tax-rules/{year}/ondernemersaftrek/figures.md"],
+    "T10": ["references/vat-return/README.md", "references/tax-rules/{year}/vat/figures.md", "references/tax-rules/{year}/procedure/figures.md"],
+    "T11": ["references/yearly-overview/README.md", "references/tax-rules/{year}/costs-and-car/figures.md", "references/tax-rules/{year}/investments/figures.md"],
+    "T12": ["references/income-tax-return/README.md", "references/tax-rules/{year}/income-tax/figures.md", "references/tax-rules/{year}/business-deductions/figures.md"],
 }
 LOADING_LEVELS = {
     "tok:T1": ["references/migration/shared-mechanisms.md", "{phase-file}", "references/migration/README.md", "references/migration/control-framework.md"],
     "tok:T2": ["references/migration/jortt-to-moneybird-mapping.md"],
-    "tok:T3": ["references/moneybird-bookkeeping.md", "references/tax-rules/{year}/README.md", "references/tax-rules/{year}/btw/figures.md", "references/migration/README.md", "references/migration/phases-19-to-21.md"],
-    "tok:T4": ["references/purchase-invoices.md", "references/tax-rules/{year}/btw/figures.md", "references/moneybird-bookkeeping.md", "references/mixed-use-costs.md", "references/fixed-assets.md"],
+    "tok:T3": ["references/moneybird-bookkeeping.md", "references/tax-rules/{year}/README.md", "references/tax-rules/{year}/vat/figures.md", "references/migration/README.md", "references/migration/phases-19-to-21.md"],
+    "tok:T4": ["references/purchase-invoices.md", "references/tax-rules/{year}/vat/figures.md", "references/moneybird-bookkeeping.md", "references/mixed-use-costs.md", "references/fixed-assets.md"],
     "tok:T5": ["references/tax-rules/dutch-tax-rules.md", "references/tax-rules/{year}/README.md", "{topic-figures}", "references/tax-rules/source-library.md"],
     "tok:T6": ["references/tax-rules/dutch-tax-rules.md"],
     "tok:T7": [],
     "tok:T8": [],
     "tok:T9": ["references/migration/overview-and-setup.md"],
-    "tok:T10": ["references/vat-return/README.md", "references/tax-rules/{year}/btw/figures.md", "references/tax-rules/{year}/procedure/figures.md"],
-    "tok:T11": ["references/yearly-overview/README.md", "references/tax-rules/{year}/kosten-en-auto/figures.md", "references/tax-rules/{year}/investeringen/figures.md"],
-    "tok:T12": ["references/income-tax-return/README.md", "references/tax-rules/{year}/inkomstenbelasting/figures.md", "references/tax-rules/{year}/ondernemersaftrek/figures.md"],
+    "tok:T10": ["references/vat-return/README.md", "references/tax-rules/{year}/vat/figures.md", "references/tax-rules/{year}/procedure/figures.md"],
+    "tok:T11": ["references/yearly-overview/README.md", "references/tax-rules/{year}/costs-and-car/figures.md", "references/tax-rules/{year}/investments/figures.md"],
+    "tok:T12": ["references/income-tax-return/README.md", "references/tax-rules/{year}/income-tax/figures.md", "references/tax-rules/{year}/business-deductions/figures.md"],
 }
 UNKNOWN_FALLBACK_CHECKLIST = [
     "Tier A: Refuse with the out-of-scope boundary, load nothing",

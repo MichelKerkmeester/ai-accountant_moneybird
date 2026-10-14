@@ -40,12 +40,12 @@ A row with a missing order date, a missing payment date, a missing in-use date o
 
 ## 3. THE CONDITIONS THE REGISTER EVIDENCES
 
-- **The per-asset floor.** The asset must meet the floor in [Investeringen 2026 figures](../tax-rules/2026/investeringen/figures.md).
-- **The RVO notification window.** The notification must fall inside the window in [Investeringen 2026 notes](../tax-rules/2026/investeringen/notes.md).
-- **The payment condition.** The payments made before use are tied to the register's payment dates under the rule in [Investeringen 2026 rules](../tax-rules/2026/investeringen/rules.md).
-- **The in-use condition.** The in-use date is checked against the rule in [Investeringen 2026 rules](../tax-rules/2026/investeringen/rules.md).
-- **The desinvesteringsbijtelling.** Disposals inside the recapture window are checked against the prior aftrek and the threshold in [Investeringen 2026 figures](../tax-rules/2026/investeringen/figures.md).
-- **The claim combination.** EIA and MIA do not combine on one asset and either can combine with the KIA per [Investeringen 2026 rules](../tax-rules/2026/investeringen/rules.md).
+- **The per-asset floor.** The asset must meet the floor in [Investeringen 2026 figures](../tax-rules/2026/investments/figures.md).
+- **The RVO notification window.** The notification must fall inside the window in [Investeringen 2026 notes](../tax-rules/2026/investments/notes.md).
+- **The payment condition.** The payments made before use are tied to the register's payment dates under the rule in [Investeringen 2026 rules](../tax-rules/2026/investments/rules.md).
+- **The in-use condition.** The in-use date is checked against the rule in [Investeringen 2026 rules](../tax-rules/2026/investments/rules.md).
+- **The desinvesteringsbijtelling.** Disposals inside the recapture window are checked against the prior aftrek and the threshold in [Investeringen 2026 figures](../tax-rules/2026/investments/figures.md).
+- **The claim combination.** EIA and MIA do not combine on one asset and either can combine with the KIA per [Investeringen 2026 rules](../tax-rules/2026/investments/rules.md).
 
 The year file for the resolved `year_key` owns every value these conditions read. The register carries the facts only.
 
@@ -68,4 +68,4 @@ The year file for the resolved `year_key` owns every value these conditions read
 - [Operator inputs](operator-inputs.md) for the per-asset register row and its disposition.
 - [Fixed assets](../fixed-assets.md) for the asset flow, the depreciation schedule and the desinvestering.
 - [Risks and open points](risks-and-open-points.md) for the unresolved items that touch an investment claim.
-- [Investeringen 2026 figures](../tax-rules/2026/investeringen/figures.md), [rules](../tax-rules/2026/investeringen/rules.md) and [notes](../tax-rules/2026/investeringen/notes.md) for the resolved year's values and mechanics.
+- [Investeringen 2026 figures](../tax-rules/2026/investments/figures.md), [rules](../tax-rules/2026/investments/rules.md) and [notes](../tax-rules/2026/investments/notes.md) for the resolved year's values and mechanics.

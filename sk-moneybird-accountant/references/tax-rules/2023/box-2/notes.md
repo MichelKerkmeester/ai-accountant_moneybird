@@ -79,4 +79,4 @@ Year overview: [README.md](../README.md).
 - [2023 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
 - [Box 2 en aanmerkelijk belang 2022](../../2022/box-2/figures.md) and [Box 2 en aanmerkelijk belang 2024](../../2024/box-2/figures.md)
-- Related topics in 2023: [BV en vennootschapsbelasting 2023](../bv-en-vennootschapsbelasting/figures.md), [Inkomstenbelasting box 1 2023](../inkomstenbelasting/figures.md)
+- Related topics in 2023: [BV en vennootschapsbelasting 2023](../private-company-and-corporate-tax/figures.md), [Inkomstenbelasting box 1 2023](../income-tax/figures.md)

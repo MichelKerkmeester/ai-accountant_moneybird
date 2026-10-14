@@ -32,17 +32,17 @@ Across the twelve topic files the figures tables hold 313 values: 274 Verified, 
 <!-- GENERATED:topic-files:start -->
 | File | Covers | Values | UNVERIFIED | Not enacted |
 |---|---|---|---|---|
-| [btw](btw/figures.md) | Covers Dutch VAT rates, deductions, the small-business scheme, returns, cross-border supplies, invoicing and private use for tax year 2020. | 56 | 6 | 3 |
-| [inkomstenbelasting](inkomstenbelasting/figures.md) | Covers the 2020 box 1 rates, heffingskortingen, tariefsaanpassing and the route from business profit to taxable income. | 17 | 3 | 0 |
-| [zvw](zvw/figures.md) | Income-dependent Zvw contribution for a sole trader in tax year 2020: rate, maximum contribution income, aanslag, calculation and difference from the employer rate. | 10 | 3 | 2 |
-| [ondernemersaftrek](ondernemersaftrek/figures.md) | Covers the five parts of the ondernemersaftrek, the urencriterium, the startersaftrek, the MKB-winstvrijstelling, the tariefsaanpassing and the 2020 amounts for tax year 2020. | 22 | 0 | 0 |
-| [investeringen](investeringen/figures.md) | All 2020 rules and amounts for the KIA, EIA, MIA and Vamil investment deductions, the desinvesteringsbijtelling and the depreciation of bedrijfsmiddelen for a Dutch sole trader or BV. | 22 | 3 | 2 |
-| [kosten-en-auto](kosten-en-auto/figures.md) | Business cost deductions and car rules for tax year 2020, covering the gemengde kosten drempel, the 80% election, the kilometre allowance, the car bijtelling and the BV variant of the drempel. | 24 | 0 | 0 |
+| [vat](vat/figures.md) | Covers Dutch VAT rates, deductions, the small-business scheme, returns, cross-border supplies, invoicing and private use for tax year 2020. | 56 | 6 | 3 |
+| [income-tax](income-tax/figures.md) | Covers the 2020 box 1 rates, heffingskortingen, tariefsaanpassing and the route from business profit to taxable income. | 17 | 3 | 0 |
+| [health-insurance-contribution](health-insurance-contribution/figures.md) | Income-dependent Zvw contribution for a sole trader in tax year 2020: rate, maximum contribution income, aanslag, calculation and difference from the employer rate. | 10 | 3 | 2 |
+| [business-deductions](business-deductions/figures.md) | Covers the five parts of the ondernemersaftrek, the urencriterium, the startersaftrek, the MKB-winstvrijstelling, the tariefsaanpassing and the 2020 amounts for tax year 2020. | 22 | 0 | 0 |
+| [investments](investments/figures.md) | All 2020 rules and amounts for the KIA, EIA, MIA and Vamil investment deductions, the desinvesteringsbijtelling and the depreciation of bedrijfsmiddelen for a Dutch sole trader or BV. | 22 | 3 | 2 |
+| [costs-and-car](costs-and-car/figures.md) | Business cost deductions and car rules for tax year 2020, covering the gemengde kosten drempel, the 80% election, the kilometre allowance, the car bijtelling and the BV variant of the drempel. | 24 | 0 | 0 |
 | [box-3](box-3/figures.md) | Box 3 savings and investments for tax year 2020: the old band method, the 30% rate, heffingsvrij vermogen, schuldendrempel, green investments and the rechtsherstel recalculation. | 18 | 0 | 0 |
 | [box-2](box-2/figures.md) | Box 2 income, the aanmerkelijk belang test, loss offset and conversion, gebruikelijk loon and the pensioen in eigen beheer dates for tax year 2020. | 27 | 1 | 1 |
-| [bv-en-vennootschapsbelasting](bv-en-vennootschapsbelasting/figures.md) | Alles over de BV en de vennootschapsbelasting in 2020: Vpb-tarieven, verliesverrekening, renteaftrek, gebruikelijk loon, Zvw, dividendbelasting, box 2, fiscale eenheid, innovatiebox, geruisloze omzetting en jaarrekening. | 23 | 1 | 0 |
-| [pensioen-en-aov](pensioen-en-aov/figures.md) | Jaarruimte, reserveringsruimte, lijfrente conditions, stakingswinst conversion, the oudedagsreserve and AOV premium deductibility for tax year 2020. | 29 | 0 | 0 |
-| [arbeidsrelatie](arbeidsrelatie/figures.md) | The work-relationship rules for tax year 2020: the Wet DBA test for loondienst, the handhavingsmoratorium and its aanwijzing route, modelovereenkomsten, case law and the first plans for a rechtsvermoeden that later became the VBAR. | 24 | 1 | 0 |
+| [private-company-and-corporate-tax](private-company-and-corporate-tax/figures.md) | Alles over de BV en de vennootschapsbelasting in 2020: Vpb-tarieven, verliesverrekening, renteaftrek, gebruikelijk loon, Zvw, dividendbelasting, box 2, fiscale eenheid, innovatiebox, geruisloze omzetting en jaarrekening. | 23 | 1 | 0 |
+| [pension-and-disability-insurance](pension-and-disability-insurance/figures.md) | Jaarruimte, reserveringsruimte, lijfrente conditions, stakingswinst conversion, the oudedagsreserve and AOV premium deductibility for tax year 2020. | 29 | 0 | 0 |
+| [work-relationship](work-relationship/figures.md) | The work-relationship rules for tax year 2020: the Wet DBA test for loondienst, the handhavingsmoratorium and its aanwijzing route, modelovereenkomsten, case law and the first plans for a rechtsvermoeden that later became the VBAR. | 24 | 1 | 0 |
 | [procedure](procedure/figures.md) | Filing deadlines and uitstel, the voorlopige aanslag, belastingrente, navordering, bezwaar, bewaarplicht and the KVK and Belastingdienst registration duties for tax year 2020. | 41 | 0 | 0 |
 <!-- GENERATED:topic-files:end -->
 

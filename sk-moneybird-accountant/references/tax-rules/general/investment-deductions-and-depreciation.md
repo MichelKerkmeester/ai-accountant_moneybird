@@ -20,15 +20,15 @@ version: 1.0.0.0
 
 General topic 3.4 of 13 in the Dutch tax rules guide.
 
-- [btw-vat.md](btw-vat.md): 3.1 BTW (VAT).
-- [income-tax-box-1-and-the-zvw-contribution.md](income-tax-box-1-and-the-zvw-contribution.md): 3.2 Income tax box 1 and the Zvw contribution.
-- [ondernemersaftrek-and-mkb-winstvrijstelling.md](ondernemersaftrek-and-mkb-winstvrijstelling.md): 3.3 Ondernemersaftrek and MKB-winstvrijstelling.
+- [vat.md](vat.md): 3.1 BTW (VAT).
+- [income-tax-box-1-and-the-health-insurance-contribution.md](income-tax-box-1-and-the-health-insurance-contribution.md): 3.2 Income tax box 1 and the Zvw contribution.
+- [business-deductions-and-sme-profit-exemption.md](business-deductions-and-sme-profit-exemption.md): 3.3 Ondernemersaftrek and MKB-winstvrijstelling.
 - [investment-deductions-and-depreciation.md](investment-deductions-and-depreciation.md): 3.4 Investment deductions and depreciation.
 - [costs-and-the-car.md](costs-and-the-car.md): 3.5 Costs and the car.
 - [box-3-savings-and-investments.md](box-3-savings-and-investments.md): 3.6 Box 3 savings and investments.
 - [box-2-and-the-substantial-interest.md](box-2-and-the-substantial-interest.md): 3.7 Box 2 and the substantial interest.
-- [the-bv-and-vennootschapsbelasting.md](the-bv-and-vennootschapsbelasting.md): 3.8 The BV and vennootschapsbelasting.
-- [pension-lijfrente-and-aov.md](pension-lijfrente-and-aov.md): 3.9 Pension, lijfrente and AOV.
+- [the-private-company-and-corporate-tax.md](the-private-company-and-corporate-tax.md): 3.8 The BV and vennootschapsbelasting.
+- [pension-annuities-and-disability-insurance.md](pension-annuities-and-disability-insurance.md): 3.9 Pension, lijfrente and AOV.
 - [work-relationship-and-procedure.md](work-relationship-and-procedure.md): 3.10 Work relationship and procedure.
 - [settled-source-conflicts.md](settled-source-conflicts.md): 4 SETTLED SOURCE CONFLICTS.
 - [open-points-and-gaps.md](open-points-and-gaps.md): 5 OPEN POINTS AND GAPS.
@@ -38,29 +38,29 @@ Guide: [dutch-tax-rules.md](../dutch-tax-rules.md).
 
 ### 3.4 Investment deductions and depreciation
 
-Year files: `investeringen.md` in each year folder.
+Year files: `investments.md` in each year folder.
 
 <!-- GENERATED:s3-investment-deductions-and-depreciation:start -->
 Rows below are generated from the year files named above, which own the values.
 
 | Year | Item | Value | Status | Check | Owner |
 |---|---|---|---|---|---|
-| 2020 | KIA table, art. 3.41 lid 2 | Five bands. Nil up to € 2.400. 28% of the investment from € 2.400 to € 58.238. A fixed € 16.307 from € 58.238 to € 107.848. € 16.307 minus 7,56% of the part above € 107.848, up to € 323.544. Nil above € 323.544. | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2020/investeringen/figures.md](../2020/investeringen/figures.md) |
-| 2020 | KIA in a samenwerkingsverband, art. 3.41 lid 3 | Partnership investments and the taxpayer's own investments are added, the table is applied to the sum, and the result is multiplied by the own investment amount divided by the sum. A share normally in proportion to the (over)winst, another reasonable key allowed if applied consistently. | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2020/investeringen/figures.md](../2020/investeringen/figures.md) |
-| 2021 | KIA table (art. 3.41 lid 2) | nil up to € 2.400, 28% of the investment up to € 59.170, € 16.568 up to € 109.574, € 16.568 minus 7,56% of the part above € 109.574 up to € 328.721, nil above € 328.721 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2021/investeringen/figures.md](../2021/investeringen/figures.md) |
-| 2021 | KIA per-asset minimum (art. 3.45 lid 2 onderdeel b) | € 450 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2021/investeringen/figures.md](../2021/investeringen/figures.md) |
-| 2022 | KIA table | nil up to € 2.400, 28% to € 59.939, € 16.784 to € 110.998, € 16.784 minus 7,56% of the excess over € 110.998 up to € 332.994, nil above € 332.994 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2022/investeringen/figures.md](../2022/investeringen/figures.md) |
-| 2022 | KIA per-asset minimum | € 450 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2022/investeringen/figures.md](../2022/investeringen/figures.md) |
-| 2023 | KIA table (art. 3.41 lid 2) | nil up to € 2.600, 28% of the investment up to € 63.716, the fixed € 17.841 up to € 117.991, € 17.841 minus 7,56% of the excess over € 117.991 up to € 353.973, nil above € 353.973 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2023/investeringen/figures.md](../2023/investeringen/figures.md) |
-| 2023 | KIA window as printed by the Belastingdienst | "moet u een bedrag tussen € 2.601 en € 353.973 investeren" | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2023/investeringen/figures.md](../2023/investeringen/figures.md) |
-| 2024 | KIA table (art. 3.41 lid 2) | nil up to € 2.800, 28% of the investment from € 2.800 up to € 69.765, a fixed € 19.535 from € 69.765 up to € 129.194, € 19.535 minus 7,56% of the excess over € 129.194 up to € 387.580, nil above € 387.580 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2024/investeringen/figures.md](../2024/investeringen/figures.md) |
-| 2024 | KIA per-asset minimum | € 450 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2024/investeringen/figures.md](../2024/investeringen/figures.md) |
-| 2025 | Kleinschaligheidsinvesteringsaftrek (KIA), table | Nil up to € 2.900. 28% of the investment above € 2.900 up to € 70.602. A fixed € 19.769 above € 70.602 up to € 130.744. € 19.769 minus 7,56% of the excess over € 130.744 up to € 392.230. Nil above € 392.230. | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2025/investeringen/figures.md](../2025/investeringen/figures.md) |
-| 2025 | KIA in a samenwerkingsverband | The investments of the samenwerkingsverband and the taxpayer's own investments are added. The table is applied to the sum. The outcome is multiplied by the taxpayer's own investment amount divided by that sum. | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2025/investeringen/figures.md](../2025/investeringen/figures.md) |
-| 2026 | Kleinschaligheidsinvesteringsaftrek (KIA), table | nil up to € 2.900, 28% of the investment up to € 71.683, fixed € 20.072 up to € 132.746, € 20.072 minus 7,56% of the part above € 132.746 up to € 398.236, nil above € 398.236. Belastingdienst window: "moet u een bedrag tussen € 2.901 en € 398.236 investeren" | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2026/investeringen/figures.md](../2026/investeringen/figures.md) |
-| 2026 | KIA per-asset minimum | € 450 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2026/investeringen/figures.md](../2026/investeringen/figures.md) |
-| 2027 | KIA base table in the 2027 text, before indexation | Nil up to € 2.900, 28% of the investment up to € 71.683, a fixed € 20.072 up to € 132.746, € 20.072 minus 7,56% of the excess over € 132.746 up to € 398.236, nil above € 398.236 | adopted-not-yet-in-force | Verified | [sk-moneybird-accountant/references/tax-rules/2027/investeringen/figures.md](../2027/investeringen/figures.md) |
-| 2027 | KIA in a samenwerkingsverband | Partnership investments and own investments added, the table applied to the sum, outcome times own investment divided by the sum | adopted-not-yet-in-force | Verified | [sk-moneybird-accountant/references/tax-rules/2027/investeringen/figures.md](../2027/investeringen/figures.md) |
+| 2020 | KIA table, art. 3.41 lid 2 | Five bands. Nil up to € 2.400. 28% of the investment from € 2.400 to € 58.238. A fixed € 16.307 from € 58.238 to € 107.848. € 16.307 minus 7,56% of the part above € 107.848, up to € 323.544. Nil above € 323.544. | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2020/investments/figures.md](../2020/investments/figures.md) |
+| 2020 | KIA in a samenwerkingsverband, art. 3.41 lid 3 | Partnership investments and the taxpayer's own investments are added, the table is applied to the sum, and the result is multiplied by the own investment amount divided by the sum. A share normally in proportion to the (over)winst, another reasonable key allowed if applied consistently. | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2020/investments/figures.md](../2020/investments/figures.md) |
+| 2021 | KIA table (art. 3.41 lid 2) | nil up to € 2.400, 28% of the investment up to € 59.170, € 16.568 up to € 109.574, € 16.568 minus 7,56% of the part above € 109.574 up to € 328.721, nil above € 328.721 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2021/investments/figures.md](../2021/investments/figures.md) |
+| 2021 | KIA per-asset minimum (art. 3.45 lid 2 onderdeel b) | € 450 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2021/investments/figures.md](../2021/investments/figures.md) |
+| 2022 | KIA table | nil up to € 2.400, 28% to € 59.939, € 16.784 to € 110.998, € 16.784 minus 7,56% of the excess over € 110.998 up to € 332.994, nil above € 332.994 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2022/investments/figures.md](../2022/investments/figures.md) |
+| 2022 | KIA per-asset minimum | € 450 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2022/investments/figures.md](../2022/investments/figures.md) |
+| 2023 | KIA table (art. 3.41 lid 2) | nil up to € 2.600, 28% of the investment up to € 63.716, the fixed € 17.841 up to € 117.991, € 17.841 minus 7,56% of the excess over € 117.991 up to € 353.973, nil above € 353.973 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2023/investments/figures.md](../2023/investments/figures.md) |
+| 2023 | KIA window as printed by the Belastingdienst | "moet u een bedrag tussen € 2.601 en € 353.973 investeren" | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2023/investments/figures.md](../2023/investments/figures.md) |
+| 2024 | KIA table (art. 3.41 lid 2) | nil up to € 2.800, 28% of the investment from € 2.800 up to € 69.765, a fixed € 19.535 from € 69.765 up to € 129.194, € 19.535 minus 7,56% of the excess over € 129.194 up to € 387.580, nil above € 387.580 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2024/investments/figures.md](../2024/investments/figures.md) |
+| 2024 | KIA per-asset minimum | € 450 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2024/investments/figures.md](../2024/investments/figures.md) |
+| 2025 | Kleinschaligheidsinvesteringsaftrek (KIA), table | Nil up to € 2.900. 28% of the investment above € 2.900 up to € 70.602. A fixed € 19.769 above € 70.602 up to € 130.744. € 19.769 minus 7,56% of the excess over € 130.744 up to € 392.230. Nil above € 392.230. | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2025/investments/figures.md](../2025/investments/figures.md) |
+| 2025 | KIA in a samenwerkingsverband | The investments of the samenwerkingsverband and the taxpayer's own investments are added. The table is applied to the sum. The outcome is multiplied by the taxpayer's own investment amount divided by that sum. | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2025/investments/figures.md](../2025/investments/figures.md) |
+| 2026 | Kleinschaligheidsinvesteringsaftrek (KIA), table | nil up to € 2.900, 28% of the investment up to € 71.683, fixed € 20.072 up to € 132.746, € 20.072 minus 7,56% of the part above € 132.746 up to € 398.236, nil above € 398.236. Belastingdienst window: "moet u een bedrag tussen € 2.901 en € 398.236 investeren" | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2026/investments/figures.md](../2026/investments/figures.md) |
+| 2026 | KIA per-asset minimum | € 450 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2026/investments/figures.md](../2026/investments/figures.md) |
+| 2027 | KIA base table in the 2027 text, before indexation | Nil up to € 2.900, 28% of the investment up to € 71.683, a fixed € 20.072 up to € 132.746, € 20.072 minus 7,56% of the excess over € 132.746 up to € 398.236, nil above € 398.236 | adopted-not-yet-in-force | Verified | [sk-moneybird-accountant/references/tax-rules/2027/investments/figures.md](../2027/investments/figures.md) |
+| 2027 | KIA in a samenwerkingsverband | Partnership investments and own investments added, the table applied to the sum, outcome times own investment divided by the sum | adopted-not-yet-in-force | Verified | [sk-moneybird-accountant/references/tax-rules/2027/investments/figures.md](../2027/investments/figures.md) |
 <!-- GENERATED:s3-investment-deductions-and-depreciation:end -->
 
 

@@ -91,4 +91,4 @@ Resolved conflicts, listed for context and not open for 2020:
 - [2020 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
 - [Box 2 en aanmerkelijk belang 2021](../../2021/box-2/figures.md)
-- Related topics in 2020: [BV en vennootschapsbelasting 2020](../bv-en-vennootschapsbelasting/figures.md), [Inkomstenbelasting box 1 2020](../inkomstenbelasting/figures.md)
+- Related topics in 2020: [BV en vennootschapsbelasting 2020](../private-company-and-corporate-tax/figures.md), [Inkomstenbelasting box 1 2020](../income-tax/figures.md)

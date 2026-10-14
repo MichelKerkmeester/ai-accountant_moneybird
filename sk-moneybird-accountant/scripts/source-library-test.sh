@@ -140,13 +140,13 @@ make_fake_repo() {
 make_nested_repo() {
     local root="$1"
     mkdir -p "$root/sk-moneybird-accountant/scripts" "$root/sk-moneybird-accountant/assets" \
-        "$root/sk-moneybird-accountant/references/tax-rules/2025/btw" || return 1
+        "$root/sk-moneybird-accountant/references/tax-rules/2025/vat" || return 1
     cp "$BUILDER" "$root/sk-moneybird-accountant/scripts/" || return 1
     printf '# Bootstrap\n\nSee https://www.belastingdienst.nl/a.\n' >"$root/AGENTS.md" || return 1
     printf '# Figures\n\nRate: [deep page](https://wetten.overheid.nl/BWBR0000002)\n' \
-        >"$root/sk-moneybird-accountant/references/tax-rules/2025/btw/figures.md" || return 1
+        >"$root/sk-moneybird-accountant/references/tax-rules/2025/vat/figures.md" || return 1
     printf '# Scope\n\nSee [scope page](https://wetten.overheid.nl/BWBR0000003)\n' \
-        >"$root/sk-moneybird-accountant/references/tax-rules/2025/btw/scope.md" || return 1
+        >"$root/sk-moneybird-accountant/references/tax-rules/2025/vat/scope.md" || return 1
     return 0
 }
 
@@ -678,10 +678,10 @@ run_builder "$REPO" >/dev/null
 # guards that behavior instead of proving a fix.
 group "nested walk"
 NEST_REPO="$TMP_ROOT/nested-repo"
-NEST_FILE="sk-moneybird-accountant/references/tax-rules/2025/btw/figures.md"
-NEST_TOPIC="sk-moneybird-accountant/references/tax-rules/2025/btw/"
+NEST_FILE="sk-moneybird-accountant/references/tax-rules/2025/vat/figures.md"
+NEST_TOPIC="sk-moneybird-accountant/references/tax-rules/2025/vat/"
 NEST_URL="https://wetten.overheid.nl/BWBR0000002"
-NEST_NOTE="sk-moneybird-accountant/references/tax-rules/2025/btw/scope.md"
+NEST_NOTE="sk-moneybird-accountant/references/tax-rules/2025/vat/scope.md"
 NEST_NOTE_URL="https://wetten.overheid.nl/BWBR0000003"
 if make_nested_repo "$NEST_REPO"; then
     pass "nested fixture repository builds"
@@ -734,7 +734,7 @@ else
     fail "a dead nested citation still exits 1"
 fi
 set_index_access "$NEST_REPO" "$NEST_URL" ok 200 2026-01-01
-run_builder "$NEST_REPO" --trace "sk-moneybird-accountant/references/tax-rules/2025/btw/missing.md:1"
+run_builder "$NEST_REPO" --trace "sk-moneybird-accountant/references/tax-rules/2025/vat/missing.md:1"
 status=$?
 if [[ "$status" -eq 2 ]] && grep -q 'no such file in this repository' "$TMP_ROOT/out.txt"; then
     pass "trace rejects a missing nested file"
@@ -816,7 +816,7 @@ else
     fail "link fixture repository builds"
 fi
 assert "link fixture write exits 0" run_builder "$LINK_REPO"
-mkdir -p "$LINK_REPO/sk-moneybird-accountant/references/tax-rules/2025/btw"
+mkdir -p "$LINK_REPO/sk-moneybird-accountant/references/tax-rules/2025/vat"
 printf '# Figures\n\nNested page: %s\n' "$NESTED_URL" >"$LINK_REPO/$NEST_FILE"
 run_builder "$LINK_REPO" >/dev/null
 cp "$LINK_INDEX" "$TMP_ROOT/index.before"

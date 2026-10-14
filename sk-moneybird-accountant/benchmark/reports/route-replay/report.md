@@ -1,6 +1,6 @@
 # Route replay report
 
-Router snapshot: sha256:179f2516713fe682104b44563cc387ddeb304a80d74caa6b8416d62957bd2c16
+Router snapshot: sha256:1f68b8ec1217f4b6444b8a80ee09ead1905fd43ab9099857a343af111bf99ca3
 Mode: resolve
 Corpus: routing-gold.json with 75 rows
 Token encoding: o200k_base from the pinned cache
@@ -155,10 +155,10 @@ Rows whose winning gap sits in the 0.08 warning band above the route margin. Tel
 | MIG-002 | en | calibration | MIGRATION/T1 | 12879 | 2 of 2 | PASS |
 | MIG-003 | en | calibration | MIGRATION/T1 | 18611 | 2 of 2 | PASS |
 | MIG-004 | en | held-out | MIGRATION/T1 | 18611 | 2 of 2 | PASS |
-| LIVE-001 | en | calibration | LIVE/T3 | 5976 | 2 of 2 | PASS |
-| LIVE-002 | en | held-out | LIVE/T3 | 10683 | 2 of 2 | PASS |
-| LIVE-003 | en | calibration | LIVE/T4 | 17118 | 2 of 2 | PASS |
-| TAX-001 | en | calibration | LIVE/T5 | 6796 | 2 of 2 | PASS |
+| LIVE-001 | en | calibration | LIVE/T3 | 5975 | 2 of 2 | PASS |
+| LIVE-002 | en | held-out | LIVE/T3 | 10682 | 2 of 2 | PASS |
+| LIVE-003 | en | calibration | LIVE/T4 | 17112 | 2 of 2 | PASS |
+| TAX-001 | en | calibration | LIVE/T5 | 6794 | 2 of 2 | PASS |
 | TAX-002 | en | held-out | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | TAX-003 | en | held-out | LIVE/T5 | 3741 | 2 of 2 | PASS |
 | PRIV-001 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
@@ -170,10 +170,10 @@ Rows whose winning gap sits in the 0.08 warning band above the route margin. Tel
 | MIG-002-nl | nl | calibration | MIGRATION/T1 | 12879 | 2 of 2 | PASS |
 | MIG-003-nl | nl | calibration | MIGRATION/T1 | 18611 | 2 of 2 | PASS |
 | MIG-004-nl | nl | held-out | MIGRATION/T1 | 18611 | 2 of 2 | PASS |
-| LIVE-001-nl | nl | calibration | LIVE/T3 | 5976 | 2 of 2 | PASS |
-| LIVE-002-nl | nl | held-out | LIVE/T3 | 10683 | 2 of 2 | PASS |
-| LIVE-003-nl | nl | calibration | LIVE/T4 | 17118 | 2 of 2 | PASS |
-| TAX-001-nl | nl | calibration | LIVE/T5 | 6796 | 2 of 2 | PASS |
+| LIVE-001-nl | nl | calibration | LIVE/T3 | 5975 | 2 of 2 | PASS |
+| LIVE-002-nl | nl | held-out | LIVE/T3 | 10682 | 2 of 2 | PASS |
+| LIVE-003-nl | nl | calibration | LIVE/T4 | 17112 | 2 of 2 | PASS |
+| TAX-001-nl | nl | calibration | LIVE/T5 | 6794 | 2 of 2 | PASS |
 | TAX-002-nl | nl | held-out | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | TAX-003-nl | nl | held-out | LIVE/T5 | 3741 | 2 of 2 | PASS |
 | PRIV-001-nl | nl | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
@@ -181,40 +181,40 @@ Rows whose winning gap sits in the 0.08 warning band above the route margin. Tel
 | GAP-T2-01 | en | calibration | MIGRATION/T2 | 1117 | 1 of 1 | PASS |
 | MIG-007 | en | calibration | MIGRATION/T2 | 1117 | 1 of 1 | PASS |
 | MIG-007-nl | nl | calibration | MIGRATION/T2 | 1117 | 1 of 1 | PASS |
-| TIE-T4-T2-01 | en | calibration | LIVE/T4 | 17118 | 0 of 0 | PASS |
-| TIE-T4-T2-01-nl | nl | calibration | LIVE/T4 | 17118 | 0 of 0 | PASS |
-| GAP-T6-01 | en | calibration | LIVE/T6 | 12044 | 1 of 1 | PASS |
-| TIE-T4-T3-01 | nl | calibration | LIVE/T4 | 17118 | 1 of 1 | PASS |
-| TIE-T5-T6-01 | nl | calibration | LIVE/T5 | 6801 | 2 of 2 | PASS |
+| TIE-T4-T2-01 | en | calibration | LIVE/T4 | 17112 | 0 of 0 | PASS |
+| TIE-T4-T2-01-nl | nl | calibration | LIVE/T4 | 17112 | 0 of 0 | PASS |
+| GAP-T6-01 | en | calibration | LIVE/T6 | 11967 | 1 of 1 | PASS |
+| TIE-T4-T3-01 | nl | calibration | LIVE/T4 | 17112 | 1 of 1 | PASS |
+| TIE-T5-T6-01 | nl | calibration | LIVE/T5 | 6799 | 2 of 2 | PASS |
 | TIE-T1-T3-01 | en | calibration | MIGRATION/T1 | 17960 | 2 of 2 | PASS |
 | TIER-A-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | TIER-B-01 | nl | calibration | ABSTAIN/abstain | 0 | 0 of 0 | PASS |
 | TIER-C-01 | nl | calibration | LIVE/T5 | 0 | 0 of 0 | PASS |
 | OUT-OF-SCOPE-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
-| FOLLOW-01 | nl | calibration | LIVE/T3 | 5976 | 2 of 2 | PASS |
-| MIX-01 | mixed | calibration | LIVE/T4 | 17118 | 2 of 2 | PASS |
-| MIX-02 | mixed | calibration | LIVE/T3 | 5976 | 2 of 2 | PASS |
-| LIVE-004 | en | held-out | LIVE/T4 | 23947 | 2 of 2 | PASS |
-| LIVE-004-nl | nl | held-out | LIVE/T4 | 23947 | 2 of 2 | PASS |
-| MIX-03 | mixed | held-out | LIVE/T4 | 23947 | 2 of 2 | PASS |
-| LIVE-005 | en | held-out | LIVE/T4 | 25816 | 2 of 2 | PASS |
-| LIVE-005-nl | nl | held-out | LIVE/T4 | 25816 | 2 of 2 | PASS |
-| MIX-04 | mixed | held-out | LIVE/T4 | 25816 | 2 of 2 | PASS |
-| TIE-T4-T6-01 | en | calibration | LIVE/T6 | 12044 | 0 of 0 | PASS |
-| TIE-T4-T5-01 | en | calibration | LIVE/T5 | 6796 | 1 of 1 | PASS |
-| LIVE-004-b | en | calibration | LIVE/T4 | 23947 | 1 of 1 | PASS |
-| TIE-T4-T5-02 | en | calibration | LIVE/T5 | 4525 | 0 of 0 | PASS |
-| TIE-T4-T5-02-nl | nl | calibration | LIVE/T5 | 4525 | 0 of 0 | PASS |
-| TIE-T4-T6-02 | en | calibration | LIVE/T6 | 12044 | 0 of 0 | PASS |
-| TIE-T3-T4-01 | en | calibration | LIVE/T3 | 5976 | 0 of 0 | PASS |
-| LIVE-005-b | en | calibration | LIVE/T4 | 25816 | 0 of 0 | PASS |
-| LIVE-005-b-nl | nl | calibration | LIVE/T4 | 25816 | 0 of 0 | PASS |
-| PREP-T10-01 | en | held-out | LIVE/T10 | 6001 | 2 of 2 | PASS |
-| PREP-T10-01-nl | nl | held-out | LIVE/T10 | 6001 | 2 of 2 | PASS |
-| PREP-T11-01 | en | held-out | LIVE/T11 | 8668 | 2 of 2 | PASS |
-| PREP-T11-01-nl | nl | held-out | LIVE/T11 | 8668 | 2 of 2 | PASS |
-| PREP-T12-01 | en | held-out | LIVE/T12 | 7185 | 2 of 2 | PASS |
-| PREP-T12-01-nl | nl | held-out | LIVE/T12 | 7185 | 2 of 2 | PASS |
+| FOLLOW-01 | nl | calibration | LIVE/T3 | 5975 | 2 of 2 | PASS |
+| MIX-01 | mixed | calibration | LIVE/T4 | 17112 | 2 of 2 | PASS |
+| MIX-02 | mixed | calibration | LIVE/T3 | 5975 | 2 of 2 | PASS |
+| LIVE-004 | en | held-out | LIVE/T4 | 23943 | 2 of 2 | PASS |
+| LIVE-004-nl | nl | held-out | LIVE/T4 | 23943 | 2 of 2 | PASS |
+| MIX-03 | mixed | held-out | LIVE/T4 | 23943 | 2 of 2 | PASS |
+| LIVE-005 | en | held-out | LIVE/T4 | 25809 | 2 of 2 | PASS |
+| LIVE-005-nl | nl | held-out | LIVE/T4 | 25809 | 2 of 2 | PASS |
+| MIX-04 | mixed | held-out | LIVE/T4 | 25809 | 2 of 2 | PASS |
+| TIE-T4-T6-01 | en | calibration | LIVE/T6 | 11967 | 0 of 0 | PASS |
+| TIE-T4-T5-01 | en | calibration | LIVE/T5 | 6794 | 1 of 1 | PASS |
+| LIVE-004-b | en | calibration | LIVE/T4 | 23943 | 1 of 1 | PASS |
+| TIE-T4-T5-02 | en | calibration | LIVE/T5 | 4523 | 0 of 0 | PASS |
+| TIE-T4-T5-02-nl | nl | calibration | LIVE/T5 | 4523 | 0 of 0 | PASS |
+| TIE-T4-T6-02 | en | calibration | LIVE/T6 | 11967 | 0 of 0 | PASS |
+| TIE-T3-T4-01 | en | calibration | LIVE/T3 | 5975 | 0 of 0 | PASS |
+| LIVE-005-b | en | calibration | LIVE/T4 | 25809 | 0 of 0 | PASS |
+| LIVE-005-b-nl | nl | calibration | LIVE/T4 | 25809 | 0 of 0 | PASS |
+| PREP-T10-01 | en | held-out | LIVE/T10 | 6000 | 2 of 2 | PASS |
+| PREP-T10-01-nl | nl | held-out | LIVE/T10 | 6000 | 2 of 2 | PASS |
+| PREP-T11-01 | en | held-out | LIVE/T11 | 8669 | 2 of 2 | PASS |
+| PREP-T11-01-nl | nl | held-out | LIVE/T11 | 8669 | 2 of 2 | PASS |
+| PREP-T12-01 | en | held-out | LIVE/T12 | 7179 | 2 of 2 | PASS |
+| PREP-T12-01-nl | nl | held-out | LIVE/T12 | 7179 | 2 of 2 | PASS |
 | FILE-T10-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | FILE-T10-01-nl | nl | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | FILE-T11-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
@@ -222,4 +222,4 @@ Rows whose winning gap sits in the 0.08 warning band above the route margin. Tel
 | FILE-T12-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | FILE-T12-01-nl | nl | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | TWO-TURN-01 | nl | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
-| T7-ADDITIVE-01 | en | calibration | LIVE/T4 | 17118 | 2 of 2 | PASS |
+| T7-ADDITIVE-01 | en | calibration | LIVE/T4 | 17112 | 2 of 2 | PASS |

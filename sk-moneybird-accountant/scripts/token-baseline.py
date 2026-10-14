@@ -731,7 +731,7 @@ def build_baseline(encoders: Dict[str, Any]) -> Dict[str, Any]:
         },
     }
     readme_path = "sk-moneybird-accountant/references/tax-rules/2026/README.md"
-    topic_path = "sk-moneybird-accountant/references/tax-rules/2026/kosten-en-auto/figures.md"
+    topic_path = "sk-moneybird-accountant/references/tax-rules/2026/costs-and-car/figures.md"
     # WHY: the current route reads the whole topic. After the split that is
     # the figures part plus its three sibling parts, so the ratio keeps
     # measuring the KEY FIGURES section against the whole topic.

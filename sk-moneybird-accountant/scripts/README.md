@@ -200,8 +200,8 @@ A year change note holds authored bullets in its "Unique to <year>" section and 
 `--check` applies three rules to the authored bullets of every note. A number in a bullet must occur as the same number in the linked section 5. The last link of a bullet must resolve to an existing file in the year folder and its `<a id="5-changes"></a>` line. A year note must hold five to ten authored bullets. Real failure lines:
 
 ```text
-changes tax-rules/2026/changes.md bullet 3 number 99 not in inkomstenbelasting/notes.md#5-changes
-changes tax-rules/2026/changes.md bullet 1 link btw/notes.md#6-in-the-books does not resolve
+changes tax-rules/2026/changes.md bullet 3 number 99 not in income-tax/notes.md#5-changes
+changes tax-rules/2026/changes.md bullet 1 link vat/notes.md#6-in-the-books does not resolve
 changes tax-rules/2026/changes.md 4 authored bullets, the band is 5 to 10
 drift tax-rules/2026/changes.md changes
 drift year-changes.md
@@ -276,7 +276,7 @@ token-baseline: unit car route proposed: 23411 bytes, o200k_base 6796, cl100k_ba
 token-baseline: car route ratio: o200k_base 0.2760, cl100k_base 0.2791
 ```
 
-The canary covers the 2026 car question on the KEY FIGURES route, which reads the year README and the `kosten-en-auto/figures.md` part. It asserts the proposed route stays at or under 35 percent of the current route and at or under the 8,000 token ceiling. Three mutants prove the gate: the proposed route pointed at the whole topic file, a cache that holds the lead encoding data under the second name, and a fixture that passes a four-bytes-per-token budget and fails the token budget. The measured route:
+The canary covers the 2026 car question on the KEY FIGURES route, which reads the year README and the `costs-and-car/figures.md` part. It asserts the proposed route stays at or under 35 percent of the current route and at or under the 8,000 token ceiling. Three mutants prove the gate: the proposed route pointed at the whole topic file, a cache that holds the lead encoding data under the second name, and a fixture that passes a four-bytes-per-token budget and fails the token budget. The measured route:
 
 ```text
 route current: o200k_base 24620, cl100k_base 26474
@@ -393,7 +393,7 @@ regression-trailer: ok (0 commits scanned)
 A passing offline check prints `524 sources match the index`. A trace of one live citation line prints:
 
 ```text
-sk-moneybird-accountant/references/tax-rules/2024/btw/figures.md:56
+sk-moneybird-accountant/references/tax-rules/2024/vat/figures.md:56
 <the cited Belastingdienst URL> access=ok http_status=200 checked_on=2026-10-13
 1 URLs, all usable
 ```
@@ -529,7 +529,7 @@ The manifest holds one row per split source with the source path, the normalized
 The rejoin proof (REQ-002, amended on 2026-10-14) compares normalized bodies and never the raw bytes. The write rebases every relative link to the part's new folder depth and points a link at a split original to the part that now holds its target. The normalization removes the contents of every GENERATED fence and resolves every link target to its canonical repository path through the split map, so a rebased link and a regenerated fence do not change a hash while a changed sentence, value, status tag or URL does. `--check` applies the same normalization to the part files and prints one `rejoin ok` line per source, or a `drift <source> part <part>` line that names the file and the part, plus the leftovers and the unmapped citation count. A hand-edited part is restored with `git checkout` of that part: the source file is gone after the split, so `--write` cannot rebuild it and prints `nothing to split` while the manifest stands. A passing run ends with:
 
 ```text
-rejoin ok sk-moneybird-accountant/references/tax-rules/2020/btw/figures.md (4 parts)
+rejoin ok sk-moneybird-accountant/references/tax-rules/2020/vat/figures.md (4 parts)
 rejoin ok sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md (13 general parts)
 leftovers: 0
 unmapped citations: 0

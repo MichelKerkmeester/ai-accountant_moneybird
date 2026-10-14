@@ -25,12 +25,12 @@ version: 1.0.0.0
 | 2 | Fiscal adjustments, added or removed | `{fiscal_adjustments}` | [Fixed assets](../fixed-assets.md) and the year files |
 | 3 | Remove the vrijgestelde winstbestanddelen | `{exempt_profit_components}` | [The year README](../tax-rules/2026/README.md) |
 | 4 | Winst uit onderneming after line 3 | `{business_profit}` | Sum of lines 1 to 3 |
-| 5 | Remove the ondernemersaftrek | `{ondernemersaftrek}` | [Ondernemersaftrek 2026 figures](../tax-rules/2026/ondernemersaftrek/figures.md) |
+| 5 | Remove the ondernemersaftrek | `{ondernemersaftrek}` | [Ondernemersaftrek 2026 figures](../tax-rules/2026/business-deductions/figures.md) |
 | 6 | Profit after the ondernemersaftrek | `{profit_after_aftrek}` | Line 4 minus line 5 |
-| 7 | MKB-winstvrijstelling at `{mkb_rate}` on line 6 | `{mkb_exemption}` | [Ondernemersaftrek 2026 figures](../tax-rules/2026/ondernemersaftrek/figures.md) |
+| 7 | MKB-winstvrijstelling at `{mkb_rate}` on line 6 | `{mkb_exemption}` | [Ondernemersaftrek 2026 figures](../tax-rules/2026/business-deductions/figures.md) |
 | 8 | Belastbare winst uit onderneming | `{taxable_profit}` | Line 6 minus line 7 |
 
-The order matters. Remove the vrijgestelde winstbestanddelen first, subtract the ondernemersaftrek, then apply the MKB-winstvrijstelling to the profit after that aftrek. Every rate and threshold comes from the resolved year folder, for example [Inkomstenbelasting 2026 figures](../tax-rules/2026/inkomstenbelasting/figures.md).
+The order matters. Remove the vrijgestelde winstbestanddelen first, subtract the ondernemersaftrek, then apply the MKB-winstvrijstelling to the profit after that aftrek. Every rate and threshold comes from the resolved year folder, for example [Inkomstenbelasting 2026 figures](../tax-rules/2026/income-tax/figures.md).
 
 `[Operator]` or a bookkeeper decides the ondernemerschap, the urencriterium, the starter history and the aftrek eligibility. The pack records each decision with its evidence.
 
