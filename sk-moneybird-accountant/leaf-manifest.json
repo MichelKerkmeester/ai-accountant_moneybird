@@ -503,7 +503,12 @@
         "references/tax-rules/split-manifest.json",
         "references/tax-rules/year-and-state.md",
         "references/tax-rules/year-changes.md",
-        "references/tax-rules/year-rollover.md"
+        "references/tax-rules/year-rollover.md",
+        "references/vat-return/README.md",
+        "references/vat-return/preparation.md",
+        "references/vat-return/review-pack.md",
+        "references/vat-return/rubrieken.md",
+        "references/vat-return/year-end-and-corrections.md"
       ],
       "packet": ".",
       "workflowMode": "sk-moneybird-accountant"

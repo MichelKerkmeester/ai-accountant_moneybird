@@ -93,6 +93,8 @@ For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_D
 
 Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-source-manifests), [M2](./shared-mechanisms.md#m2-stable-local-write-keys-and-uncertain-outcomes), [M3](./shared-mechanisms.md#m3-append-only-run-journal-approvals-and-crash-resume), [M5](./shared-mechanisms.md#m5-moneybird-rate-limits-and-recovery), [M7](./shared-mechanisms.md#m7-exception-and-threshold-control), [M9](./shared-mechanisms.md#m9-master-phase-dashboard), [M12](./shared-mechanisms.md#m12-external-agent-route). Use the [route contract](./shared-mechanisms.md#route-contract) for every Jortt or Moneybird operation.
 
+Per-step content for a LIVE VAT period: [`references/vat-return/README.md`](../vat-return/README.md).
+
 ### 1. Goal
 
 Prepare each VAT return for the assigned cadence and period from complete evidence, with filing owned by the Operator. The Implementer drafts VAT-period check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 20.

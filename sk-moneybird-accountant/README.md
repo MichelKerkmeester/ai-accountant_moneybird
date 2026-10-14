@@ -206,4 +206,5 @@ No. A connection needs separate, current evidence from the relevant CLI.
 | [Purchase invoice reference](references/purchase-invoices.md) | Booking purchase invoices, receipts and orders, with the VAT rate per case |
 | [Mixed-use cost reference](references/mixed-use-costs.md) | A cost used partly privately, with the business share, the VAT split and the private booking |
 | [Fixed asset reference](references/fixed-assets.md) | When a purchase is an asset, depreciation, the VAT revision period and disposal |
+| [VAT return reference](references/vat-return/README.md) | Preparing a VAT period for Operator review, with the rubriek and derivation rules and the review pack |
 | [Source library](references/tax-rules/source-library.md) | Every external source the skills cite, by authority, with access notes and a generated index |

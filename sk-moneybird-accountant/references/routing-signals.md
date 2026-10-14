@@ -113,7 +113,7 @@ A row here names a deliverable the skill routes but does not document yet. The T
 
 | Topic | Owner | Coverage | Operator action |
 |---|---|---|---|
-| vat-return | references/vat-return/README.md | gap | The Operator prepares and files the VAT return in the Belastingdienst portal and keeps the filed copy with the records |
+| vat-return | references/vat-return/README.md | covered | The Operator prepares and files the VAT return in the Belastingdienst portal and keeps the filed copy with the records |
 | yearly-overview | references/yearly-overview/README.md | gap | The Operator assembles the yearly overview in the Moneybird UI and keeps the balance sheet and the profit and loss statement with the records |
 | income-tax-return | references/income-tax-return/README.md | gap | The Operator prepares and files the income tax return in the Belastingdienst portal and keeps the assessment with the records |
 

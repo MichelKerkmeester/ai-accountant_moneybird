@@ -715,7 +715,7 @@
       }
     },
     {
-      "bytes": 17274,
+      "bytes": 17377,
       "path": "sk-moneybird-accountant/references/migration/phases-19-to-21.md",
       "sections": [
         {
@@ -742,19 +742,19 @@
         },
         {
           "anchor": "phase-20-live-vat-period-workflow",
-          "bytes": 5772,
+          "bytes": 5875,
           "line": 92,
-          "lines": 74,
+          "lines": 76,
           "title": "Phase 20: Live VAT-period workflow",
           "tokens": {
-            "cl100k_base": 1296,
-            "o200k_base": 1270
+            "cl100k_base": 1321,
+            "o200k_base": 1295
           }
         },
         {
           "anchor": "phase-21-live-yearly-workflow",
           "bytes": 5500,
-          "line": 166,
+          "line": 168,
           "lines": 75,
           "title": "Phase 21: Live yearly workflow",
           "tokens": {
@@ -764,8 +764,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3913,
-        "o200k_base": 3856
+        "cl100k_base": 3938,
+        "o200k_base": 3881
       }
     },
     {
@@ -1194,7 +1194,7 @@
       }
     },
     {
-      "bytes": 12232,
+      "bytes": 12453,
       "path": "sk-moneybird-accountant/references/moneybird-bookkeeping.md",
       "sections": [
         {
@@ -1265,30 +1265,30 @@
         },
         {
           "anchor": "7-vat-and-period-control",
-          "bytes": 1441,
+          "bytes": 1550,
           "line": 116,
-          "lines": 14,
+          "lines": 16,
           "title": "7. VAT AND PERIOD CONTROL",
           "tokens": {
-            "cl100k_base": 336,
-            "o200k_base": 330
+            "cl100k_base": 362,
+            "o200k_base": 356
           }
         },
         {
           "anchor": "8-live-bookkeeping-cycles",
-          "bytes": 1690,
-          "line": 130,
-          "lines": 26,
+          "bytes": 1802,
+          "line": 132,
+          "lines": 28,
           "title": "8. LIVE BOOKKEEPING CYCLES",
           "tokens": {
-            "cl100k_base": 353,
-            "o200k_base": 352
+            "cl100k_base": 378,
+            "o200k_base": 377
           }
         },
         {
           "anchor": "9-related-resources",
           "bytes": 769,
-          "line": 156,
+          "line": 160,
           "lines": 8,
           "title": "9. RELATED RESOURCES",
           "tokens": {
@@ -1298,12 +1298,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2775,
-        "o200k_base": 2740
+        "cl100k_base": 2826,
+        "o200k_base": 2791
       }
     },
     {
-      "bytes": 34841,
+      "bytes": 34953,
       "path": "sk-moneybird-accountant/references/purchase-invoices.md",
       "sections": [
         {
@@ -1418,19 +1418,19 @@
         },
         {
           "anchor": "11-checks-after-booking",
-          "bytes": 573,
+          "bytes": 685,
           "line": 255,
-          "lines": 10,
+          "lines": 12,
           "title": "11. CHECKS AFTER BOOKING",
           "tokens": {
-            "cl100k_base": 151,
-            "o200k_base": 147
+            "cl100k_base": 175,
+            "o200k_base": 171
           }
         },
         {
           "anchor": "12-open-points",
           "bytes": 1078,
-          "line": 265,
+          "line": 267,
           "lines": 10,
           "title": "12. OPEN POINTS",
           "tokens": {
@@ -1441,7 +1441,7 @@
         {
           "anchor": "13-related-resources",
           "bytes": 666,
-          "line": 275,
+          "line": 277,
           "lines": 7,
           "title": "13. RELATED RESOURCES",
           "tokens": {
@@ -1451,12 +1451,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 9394,
-        "o200k_base": 8953
+        "cl100k_base": 9418,
+        "o200k_base": 8977
       }
     },
     {
-      "bytes": 12058,
+      "bytes": 12062,
       "path": "sk-moneybird-accountant/references/routing-signals.md",
       "sections": [
         {
@@ -1527,7 +1527,7 @@
         },
         {
           "anchor": "7-documented-gaps",
-          "bytes": 1040,
+          "bytes": 1044,
           "line": 110,
           "lines": 12,
           "title": "7. Documented gaps",
@@ -15371,6 +15371,397 @@
         "cl100k_base": 1088,
         "o200k_base": 1075
       }
+    },
+    {
+      "bytes": 5229,
+      "path": "sk-moneybird-accountant/references/vat-return/README.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 612,
+          "line": 21,
+          "lines": 8,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 140,
+            "o200k_base": 141
+          }
+        },
+        {
+          "anchor": "2-the-five-files",
+          "bytes": 832,
+          "line": 29,
+          "lines": 12,
+          "title": "2. THE FIVE FILES",
+          "tokens": {
+            "cl100k_base": 242,
+            "o200k_base": 243
+          }
+        },
+        {
+          "anchor": "3-boundary",
+          "bytes": 720,
+          "line": 41,
+          "lines": 9,
+          "title": "3. BOUNDARY",
+          "tokens": {
+            "cl100k_base": 170,
+            "o200k_base": 169
+          }
+        },
+        {
+          "anchor": "4-figure-link-rule",
+          "bytes": 642,
+          "line": 50,
+          "lines": 8,
+          "title": "4. FIGURE LINK RULE",
+          "tokens": {
+            "cl100k_base": 173,
+            "o200k_base": 172
+          }
+        },
+        {
+          "anchor": "5-open-points",
+          "bytes": 1153,
+          "line": 58,
+          "lines": 16,
+          "title": "5. OPEN POINTS",
+          "tokens": {
+            "cl100k_base": 261,
+            "o200k_base": 257
+          }
+        },
+        {
+          "anchor": "6-related-resources",
+          "bytes": 516,
+          "line": 74,
+          "lines": 7,
+          "title": "6. RELATED RESOURCES",
+          "tokens": {
+            "cl100k_base": 138,
+            "o200k_base": 134
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1308,
+        "o200k_base": 1294
+      }
+    },
+    {
+      "bytes": 7975,
+      "path": "sk-moneybird-accountant/references/vat-return/preparation.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 647,
+          "line": 20,
+          "lines": 10,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 163,
+            "o200k_base": 162
+          }
+        },
+        {
+          "anchor": "2-the-steps",
+          "bytes": 5018,
+          "line": 30,
+          "lines": 22,
+          "title": "2. THE STEPS",
+          "tokens": {
+            "cl100k_base": 1220,
+            "o200k_base": 1204
+          }
+        },
+        {
+          "anchor": "3-final-quarter-variant",
+          "bytes": 459,
+          "line": 52,
+          "lines": 8,
+          "title": "3. FINAL-QUARTER VARIANT",
+          "tokens": {
+            "cl100k_base": 106,
+            "o200k_base": 109
+          }
+        },
+        {
+          "anchor": "4-stop-conditions",
+          "bytes": 653,
+          "line": 60,
+          "lines": 17,
+          "title": "4. STOP CONDITIONS",
+          "tokens": {
+            "cl100k_base": 146,
+            "o200k_base": 144
+          }
+        },
+        {
+          "anchor": "5-related-resources",
+          "bytes": 492,
+          "line": 77,
+          "lines": 8,
+          "title": "5. RELATED RESOURCES",
+          "tokens": {
+            "cl100k_base": 122,
+            "o200k_base": 121
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1926,
+        "o200k_base": 1904
+      }
+    },
+    {
+      "bytes": 7077,
+      "path": "sk-moneybird-accountant/references/vat-return/review-pack.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 413,
+          "line": 20,
+          "lines": 8,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 100,
+            "o200k_base": 91
+          }
+        },
+        {
+          "anchor": "2-the-nine-pack-blocks",
+          "bytes": 1644,
+          "line": 28,
+          "lines": 18,
+          "title": "2. THE NINE PACK BLOCKS",
+          "tokens": {
+            "cl100k_base": 401,
+            "o200k_base": 399
+          }
+        },
+        {
+          "anchor": "3-the-three-confirmation-parts",
+          "bytes": 612,
+          "line": 46,
+          "lines": 14,
+          "title": "3. THE THREE CONFIRMATION PARTS",
+          "tokens": {
+            "cl100k_base": 152,
+            "o200k_base": 151
+          }
+        },
+        {
+          "anchor": "4-deadline-and-payment-block",
+          "bytes": 915,
+          "line": 60,
+          "lines": 14,
+          "title": "4. DEADLINE AND PAYMENT BLOCK",
+          "tokens": {
+            "cl100k_base": 215,
+            "o200k_base": 207
+          }
+        },
+        {
+          "anchor": "5-product-checks-at-filing-time",
+          "bytes": 1480,
+          "line": 74,
+          "lines": 16,
+          "title": "5. PRODUCT CHECKS AT FILING TIME",
+          "tokens": {
+            "cl100k_base": 335,
+            "o200k_base": 330
+          }
+        },
+        {
+          "anchor": "6-escalation-list",
+          "bytes": 861,
+          "line": 90,
+          "lines": 21,
+          "title": "6. ESCALATION LIST",
+          "tokens": {
+            "cl100k_base": 206,
+            "o200k_base": 199
+          }
+        },
+        {
+          "anchor": "7-related-resources",
+          "bytes": 412,
+          "line": 111,
+          "lines": 7,
+          "title": "7. RELATED RESOURCES",
+          "tokens": {
+            "cl100k_base": 105,
+            "o200k_base": 106
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1693,
+        "o200k_base": 1660
+      }
+    },
+    {
+      "bytes": 9658,
+      "path": "sk-moneybird-accountant/references/vat-return/rubrieken.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 367,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 93,
+            "o200k_base": 93
+          }
+        },
+        {
+          "anchor": "2-the-rubriek-table",
+          "bytes": 2555,
+          "line": 26,
+          "lines": 23,
+          "title": "2. THE RUBRIEK TABLE",
+          "tokens": {
+            "cl100k_base": 659,
+            "o200k_base": 651
+          }
+        },
+        {
+          "anchor": "3-the-derivation-map",
+          "bytes": 1199,
+          "line": 49,
+          "lines": 15,
+          "title": "3. THE DERIVATION MAP",
+          "tokens": {
+            "cl100k_base": 294,
+            "o200k_base": 294
+          }
+        },
+        {
+          "anchor": "4-the-run-time-rate-step",
+          "bytes": 779,
+          "line": 64,
+          "lines": 11,
+          "title": "4. THE RUN-TIME RATE STEP",
+          "tokens": {
+            "cl100k_base": 188,
+            "o200k_base": 188
+          }
+        },
+        {
+          "anchor": "5-the-reverse-charge-branch",
+          "bytes": 956,
+          "line": 75,
+          "lines": 15,
+          "title": "5. THE REVERSE-CHARGE BRANCH",
+          "tokens": {
+            "cl100k_base": 262,
+            "o200k_base": 262
+          }
+        },
+        {
+          "anchor": "6-the-kor-branch",
+          "bytes": 907,
+          "line": 90,
+          "lines": 14,
+          "title": "6. THE KOR BRANCH",
+          "tokens": {
+            "cl100k_base": 230,
+            "o200k_base": 233
+          }
+        },
+        {
+          "anchor": "7-the-sales-rule-3b-to-icp-and-oss",
+          "bytes": 987,
+          "line": 104,
+          "lines": 14,
+          "title": "7. THE SALES RULE: 3B TO ICP AND OSS",
+          "tokens": {
+            "cl100k_base": 259,
+            "o200k_base": 251
+          }
+        },
+        {
+          "anchor": "8-correction-phrases",
+          "bytes": 629,
+          "line": 118,
+          "lines": 12,
+          "title": "8. CORRECTION PHRASES",
+          "tokens": {
+            "cl100k_base": 167,
+            "o200k_base": 164
+          }
+        },
+        {
+          "anchor": "9-related-resources",
+          "bytes": 470,
+          "line": 130,
+          "lines": 8,
+          "title": "9. RELATED RESOURCES",
+          "tokens": {
+            "cl100k_base": 117,
+            "o200k_base": 116
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 2490,
+        "o200k_base": 2472
+      }
+    },
+    {
+      "bytes": 4982,
+      "path": "sk-moneybird-accountant/references/vat-return/year-end-and-corrections.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 481,
+          "line": 20,
+          "lines": 8,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 108,
+            "o200k_base": 108
+          }
+        },
+        {
+          "anchor": "2-the-four-settlements",
+          "bytes": 1792,
+          "line": 28,
+          "lines": 15,
+          "title": "2. THE FOUR SETTLEMENTS",
+          "tokens": {
+            "cl100k_base": 419,
+            "o200k_base": 416
+          }
+        },
+        {
+          "anchor": "3-correction-routing",
+          "bytes": 1476,
+          "line": 43,
+          "lines": 20,
+          "title": "3. CORRECTION ROUTING",
+          "tokens": {
+            "cl100k_base": 365,
+            "o200k_base": 356
+          }
+        },
+        {
+          "anchor": "4-related-resources",
+          "bytes": 361,
+          "line": 63,
+          "lines": 7,
+          "title": "4. RELATED RESOURCES",
+          "tokens": {
+            "cl100k_base": 95,
+            "o200k_base": 94
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1192,
+        "o200k_base": 1174
+      }
     }
   ],
   "generator": "sk-moneybird-accountant/scripts/token-baseline.py",
@@ -15397,12 +15788,12 @@
     },
     {
       "blocks": 1,
-      "bytes": 148893,
+      "bytes": 152269,
       "files": 1,
       "name": "references/index.json",
       "tokens": {
-        "cl100k_base": 48295,
-        "o200k_base": 48446
+        "cl100k_base": 49311,
+        "o200k_base": 49475
       }
     }
   ],
@@ -15429,16 +15820,16 @@
   },
   "units": [
     {
-      "bytes": 6213034,
-      "files": 444,
+      "bytes": 6248395,
+      "files": 449,
       "name": "corpus total",
       "reads": [
         "sk-moneybird-accountant/references"
       ],
-      "sections": 994,
+      "sections": 1025,
       "tokens": {
-        "cl100k_base": 1918116,
-        "o200k_base": 1793193
+        "cl100k_base": 1926825,
+        "o200k_base": 1801797
       }
     },
     {

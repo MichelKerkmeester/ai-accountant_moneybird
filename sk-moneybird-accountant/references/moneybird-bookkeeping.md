@@ -125,6 +125,8 @@ Moneybird does not prepare the proprietor's complete personal income-tax return.
 - Product references: [VAT filing](https://helpcenter.moneybird.nl/nl/articles/223650-de-btw-aangifte-indienen), [VAT corrections](https://helpcenter.moneybird.nl/nl/articles/223663-btw-correcties-suppletie), and [period unlocking](https://helpcenter.moneybird.nl/nl/articles/207254-periode-ontgrendelen), per Moneybird help reviewed on 2026-10-10.
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
 
+The step list for preparing a VAT period is in [`references/vat-return/README.md`](./vat-return/README.md).
+
 ---
 
 ## 8. LIVE BOOKKEEPING CYCLES
@@ -143,6 +145,8 @@ Moneybird does not prepare the proprietor's complete personal income-tax return.
 - Prepare a review summary for the operator. Never submit or file the return.
 - Treat cross-border VAT, reverse charge, mixed-use VAT, and corrections as judgement points for the operator or a bookkeeper.
 - Route Moneybird CLI reads through moneybird-guard with MONEYBIRD_GUARD_READ_ONLY=1 for read-only sessions, under the Read Step Contract in `cli-moneybird/SKILL.md` section 3. For writes, apply LIVE write authority.
+
+The step list for the quarterly preparation is in [`references/vat-return/README.md`](./vat-return/README.md).
 
 ### Yearly bookkeeping
 

@@ -260,6 +260,8 @@ In Moneybird, activate the purchase rates **Btw verlegd 21% (binnenland)** and *
 4. The bank payment is matched to the invoice and not booked again as a cost, as the [bookkeeping reference](./moneybird-bookkeeping.md) explains.
 5. In the VAT-period review, every amount in rubriek 4a or 4b has the matching input VAT in rubriek 5b, except for a KOR or exempt business. Invoices booked with Geen btw do not appear. The Operator reviews and files the return.
 
+The period review runs the step list in [`references/vat-return/preparation.md`](./vat-return/preparation.md).
+
 ---
 
 ## 12. OPEN POINTS

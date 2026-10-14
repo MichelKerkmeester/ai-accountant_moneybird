@@ -1999,6 +1999,7 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
+        "references/vat-return/README.md",
         "references/tax-rules/2026/btw/figures.md"
       ],
       "forbidden_paths": [
@@ -2029,6 +2030,7 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
+        "references/vat-return/README.md",
         "references/tax-rules/2026/btw/figures.md"
       ],
       "forbidden_paths": [
