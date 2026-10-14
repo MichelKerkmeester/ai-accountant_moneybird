@@ -55,8 +55,7 @@ The read budget ladder, in tokens:
 |---|---|
 | One year README | 3,000 tokens |
 | One section | 5,000 tokens |
-| One full topic file | 15,000 tokens |
-| `dutch-tax-rules.md` section 3 | 80,000 tokens, only behind a TOC jump |
+| One full topic file or part | 15,000 tokens |
 
 The pin names `o200k_base` as the lead encoding, `cl100k_base` as the second column, `tiktoken` 0.11.0 and the sha256 of each encoding data file.
 

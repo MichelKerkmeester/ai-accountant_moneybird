@@ -1456,7 +1456,7 @@
       }
     },
     {
-      "bytes": 9086,
+      "bytes": 12058,
       "path": "sk-moneybird-accountant/references/routing-signals.md",
       "sections": [
         {
@@ -1472,19 +1472,19 @@
         },
         {
           "anchor": "2-signal-sources",
-          "bytes": 3002,
+          "bytes": 3876,
           "line": 29,
-          "lines": 15,
+          "lines": 17,
           "title": "2. SIGNAL SOURCES",
           "tokens": {
-            "cl100k_base": 982,
-            "o200k_base": 854
+            "cl100k_base": 1254,
+            "o200k_base": 1091
           }
         },
         {
           "anchor": "3-tie-margin-floor-warning-band-and-abstain",
           "bytes": 980,
-          "line": 44,
+          "line": 46,
           "lines": 11,
           "title": "3. TIE MARGIN, FLOOR, WARNING BAND AND ABSTAIN",
           "tokens": {
@@ -1494,30 +1494,30 @@
         },
         {
           "anchor": "4-the-specificity-clauses",
-          "bytes": 1013,
-          "line": 55,
-          "lines": 16,
+          "bytes": 1524,
+          "line": 57,
+          "lines": 20,
           "title": "4. THE SPECIFICITY CLAUSES",
           "tokens": {
-            "cl100k_base": 254,
-            "o200k_base": 253
+            "cl100k_base": 392,
+            "o200k_base": 391
           }
         },
         {
           "anchor": "5-token-budgets-for-the-route-keys",
-          "bytes": 2087,
-          "line": 71,
-          "lines": 25,
+          "bytes": 2634,
+          "line": 77,
+          "lines": 27,
           "title": "5. TOKEN BUDGETS FOR THE ROUTE KEYS",
           "tokens": {
-            "cl100k_base": 623,
-            "o200k_base": 620
+            "cl100k_base": 773,
+            "o200k_base": 765
           }
         },
         {
           "anchor": "6-year-change-route",
           "bytes": 519,
-          "line": 96,
+          "line": 104,
           "lines": 6,
           "title": "6. YEAR CHANGE ROUTE",
           "tokens": {
@@ -1526,11 +1526,22 @@
           }
         },
         {
-          "anchor": "7-related-resources",
+          "anchor": "7-documented-gaps",
+          "bytes": 1040,
+          "line": 110,
+          "lines": 12,
+          "title": "7. Documented gaps",
+          "tokens": {
+            "cl100k_base": 232,
+            "o200k_base": 228
+          }
+        },
+        {
+          "anchor": "8-related-resources",
           "bytes": 198,
-          "line": 102,
+          "line": 122,
           "lines": 4,
-          "title": "7. RELATED RESOURCES",
+          "title": "8. RELATED RESOURCES",
           "tokens": {
             "cl100k_base": 49,
             "o200k_base": 49
@@ -1538,8 +1549,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2566,
-        "o200k_base": 2424
+        "cl100k_base": 3358,
+        "o200k_base": 3172
       }
     },
     {
@@ -14775,7 +14786,7 @@
       }
     },
     {
-      "bytes": 3426,
+      "bytes": 3443,
       "path": "sk-moneybird-accountant/references/tax-rules/README.md",
       "sections": [
         {
@@ -14813,28 +14824,28 @@
         },
         {
           "anchor": "4-how-to-read",
-          "bytes": 482,
+          "bytes": 499,
           "line": 59,
           "lines": 6,
           "title": "4. HOW TO READ",
           "tokens": {
-            "cl100k_base": 122,
-            "o200k_base": 122
+            "cl100k_base": 130,
+            "o200k_base": 130
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 955,
-        "o200k_base": 952
+        "cl100k_base": 963,
+        "o200k_base": 960
       }
     },
     {
-      "bytes": 6939,
+      "bytes": 7014,
       "path": "sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md",
       "sections": [
         {
           "anchor": "1-overview",
-          "bytes": 516,
+          "bytes": 518,
           "line": 22,
           "lines": 6,
           "title": "1. OVERVIEW",
@@ -14845,13 +14856,13 @@
         },
         {
           "anchor": "2-how-to-use-it",
-          "bytes": 3316,
+          "bytes": 3389,
           "line": 28,
           "lines": 55,
           "title": "2. HOW TO USE IT",
           "tokens": {
-            "cl100k_base": 933,
-            "o200k_base": 901
+            "cl100k_base": 958,
+            "o200k_base": 927
           }
         },
         {
@@ -14878,8 +14889,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2003,
-        "o200k_base": 1937
+        "cl100k_base": 2028,
+        "o200k_base": 1963
       }
     },
     {
@@ -15386,12 +15397,12 @@
     },
     {
       "blocks": 1,
-      "bytes": 148074,
+      "bytes": 148893,
       "files": 1,
       "name": "references/index.json",
       "tokens": {
-        "cl100k_base": 48112,
-        "o200k_base": 48267
+        "cl100k_base": 48295,
+        "o200k_base": 48446
       }
     }
   ],
@@ -15418,16 +15429,16 @@
   },
   "units": [
     {
-      "bytes": 6209970,
+      "bytes": 6213034,
       "files": 444,
       "name": "corpus total",
       "reads": [
         "sk-moneybird-accountant/references"
       ],
-      "sections": 993,
+      "sections": 994,
       "tokens": {
-        "cl100k_base": 1917291,
-        "o200k_base": 1792411
+        "cl100k_base": 1918116,
+        "o200k_base": 1793193
       }
     },
     {
@@ -15453,14 +15464,14 @@
       }
     },
     {
-      "bytes": 25593,
+      "bytes": 34390,
       "name": "sk-moneybird-accountant/SKILL.md",
       "reads": [
         "sk-moneybird-accountant/SKILL.md"
       ],
       "tokens": {
-        "cl100k_base": 6370,
-        "o200k_base": 6290
+        "cl100k_base": 9080,
+        "o200k_base": 8924
       }
     },
     {

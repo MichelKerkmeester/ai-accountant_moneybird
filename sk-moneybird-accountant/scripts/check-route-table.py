@@ -6,15 +6,20 @@
 
 Reads SKILL.md and verifies the route-table block between its markers. The
 check validates the header, the row types, the Dutch and English cells, the
-budget cells, the tool routes, the read-set paths and their guard, the
-routing constants, the warning band, the abstain wording, the margin override
-bullets, the pointer to the signal sources file, the source lines of that
-file and the frozen calibration record in assets/route-calibration.json. It
-also compares the generated router block between the router markers with the
-table row by row and the table's multi-word signals and curated advisor
-signals with graph-metadata.json, and the write mode regenerates both
-surfaces. The check also runs the sibling check-skill-words.py over the
-repository, so a SKILL.md above the word ceiling fails this check, and the
+budget cells, the tool routes, the read-set grammar, the read-set paths and
+their guard, the routing constants, the warning band, the abstain wording,
+the margin override bullets, the pointer to the signal sources file, the
+source lines of that file, the documented-gap ledger of that file and the
+frozen calibration record in assets/route-calibration.json. Each read item
+carries a `!` or `?` mark, an optional `@section-id` anchor and the `{year}`
+token, and the map tokens `{phase-file}` and `{topic-figures}` expand over
+the phase table of the migration index and the topic figures files. It also
+compares the generated router block between the router markers with the
+table row by row, including the required and conditional reads, the section
+targets, the phase map, the topic map and the table's multi-word signals and
+curated advisor signals with graph-metadata.json, and the write mode
+regenerates both surfaces. The check also runs the sibling check-skill-words.py
+over the repository, so a SKILL.md above the word ceiling fails this check, and the
 sibling split-topic-files.py in its check mode, so a split part that drifted
 from its manifest fails it too. The script uses the Python standard library only and makes no network call.
 
@@ -129,8 +134,8 @@ CURATED_ADVISOR_SIGNALS = (
     "help me review a dutch sole trader yearly close",
 )
 
-# WHY: the table must carry every row type exactly once.
-ROW_TYPES = tuple("T%d" % number for number in range(1, 10))
+ROW_TYPES = tuple("T%d" % number for number in range(1, 13))
+REQUIRED_ROW_TYPES = ROW_TYPES
 ROUTE_CELLS = ("`none`", "`cli-jortt`", "`cli-moneybird`", "`cli-jortt + cli-moneybird`", "`additive`")
 
 # WHY: the routing prose must keep naming both calibration constants, the
@@ -149,7 +154,15 @@ CALIBRATION_PATH = os.path.join(SKILL_FOLDER, "assets", "route-calibration.json"
 SOURCES_HEAD = "SIGNAL SOURCES"
 VOCABULARY_PREFIX = "- Skill vocabulary"
 TIE_HEADING = "Ties and Abstain"
-YEAR_TOKEN = "YYYY"
+YEAR_TOKEN = "{year}"
+PHASE_PLACEHOLDER = "{phase-file}"
+TOPIC_PLACEHOLDER = "{topic-figures}"
+TOPIC_ANCHOR = "2-key-figures"
+MIGRATION_INDEX = os.path.join(SKILL_FOLDER, "references", "migration", "README.md")
+TAX_RULES_BASE = os.path.join(SKILL_FOLDER, "references", "tax-rules")
+GAPS_HEADING = "Documented gaps"
+GAPS_COLUMNS = ("Topic", "Owner", "Coverage", "Operator action")
+COVERAGE_VALUES = ("covered", "partial", "gap")
 FALSE_ABSTAIN_MAX = 0.05
 PENDING_MARKER = "calibration: pending"
 CONSTANT_NUMBER_RE = re.compile(r"([0-9]+(?:\.[0-9]+)?)")
@@ -160,9 +173,17 @@ BACKTICK_RE = re.compile(r"`([^`]*)`")
 BARE_PATH_RE = re.compile(r"(?<![\w/.~-])((?://|/|~/|\.\./)?(?:[\w.-]+/)*[\w.-]+\.(?:md|mdx|markdown|rst|adoc|html?|json|ya?ml|py|txt|csv))\b", re.IGNORECASE)
 NUMBER_RE = re.compile(r"\d+(?:\.\d+)?")
 YEAR_RE = re.compile(r"^\d{4}$")
-SECTION_RE = re.compile(r"^(INTENT_SIGNALS|RESOURCE_MAP|LOADING_LEVELS) = \{$")
+SECTION_RE = re.compile(
+    r"^(INTENT_SIGNALS|REQUIRED_READS|CONDITIONAL_READS|SECTION_TARGETS|PHASE_FILES|TOPIC_FILES|RESOURCE_MAP|LOADING_LEVELS) = \{$"
+)
 ENTRY_RE = re.compile(r'^    "(T\d+|tok:T\d+)": .*,$')
 HEADING_RE = re.compile(r"^#{1,6} ")
+HEADING_TEXT_RE = re.compile(r"^#{1,6}\s+(.*)$")
+ANCHOR_ID_RE = re.compile(r'<a\s+id="([^"]+)"')
+SLUG_STRIP_RE = re.compile(r"[^\w\s-]", re.UNICODE)
+SLUG_SPACE_RE = re.compile(r"\s")
+PHASE_ROW_RE = re.compile(r"^\|\s*(\d+)\s*\|[^|]*\|\s*\[[^\]]+\]\(\./([^)]+)\)\s*\|")
+SEPARATOR_RE = re.compile(r"^:?-{3,}:?$")
 
 # ───────────────────────────────────────────────────────────────
 # 3. HELPERS
@@ -222,6 +243,56 @@ def cell_signals(cell: str) -> List[str]:
     return [span for span in spans if span]
 
 
+def split_anchor(item: str) -> Tuple[str, str]:
+    """Split one read item into its path and its optional anchor.
+
+    Args:
+        item: Read item text after its mark, such as a path with an
+            `@section-id` suffix.
+
+    Returns:
+        The path and the anchor, with an empty anchor when the item names
+        none.
+    """
+    path, sep, anchor = item.partition("@")
+    return path, anchor if sep else ""
+
+
+def read_set_items(cell: str) -> List[Tuple[str, str]]:
+    """Read the marked items of one read-set cell.
+
+    Args:
+        cell: Raw read-set cell text.
+
+    Returns:
+        One (mark, item) pair per backticked item, with the mark `!` or `?`
+        and the item text after the mark. A `-` cell and unmarked spans
+        produce no pair.
+    """
+    items: List[Tuple[str, str]] = []
+    for span in BACKTICK_RE.findall(cell):
+        span = span.strip()
+        if not span or span == "-" or span[0] not in "!?":
+            continue
+        item = span[1:].strip()
+        if item:
+            items.append((span[0], item))
+    return items
+
+
+def marked_items(cell: str, mark: str) -> List[str]:
+    """Read the items of one read-set cell that carry one mark.
+
+    Args:
+        cell: Raw read-set cell text.
+        mark: The mark to select, `!` or `?`.
+
+    Returns:
+        The item texts in cell order, without their mark.
+    """
+    return [item for item_mark, item in read_set_items(cell) if item_mark == mark]
+
+
 def cell_paths(cell: str) -> List[str]:
     """Read the path list of one read-set cell.
 
@@ -229,16 +300,50 @@ def cell_paths(cell: str) -> List[str]:
         cell: Raw read-set cell text.
 
     Returns:
-        The unique backticked paths in cell order, with an empty list for
-        the `-` cell.
+        The unique item paths in cell order, with the marks and the anchors
+        stripped and the year and map tokens kept. An empty list covers the
+        `-` cell.
     """
     paths: List[str] = []
-    for span in BACKTICK_RE.findall(cell):
-        span = span.strip()
-        if not span or span == "-" or span in paths:
-            continue
-        paths.append(span)
+    for _, item in read_set_items(cell):
+        path = split_anchor(item)[0]
+        if path and path not in paths:
+            paths.append(path)
     return paths
+
+
+def cell_section_targets(cell: str) -> List[Tuple[str, str]]:
+    """Read the anchored items of one read-set cell.
+
+    Args:
+        cell: Raw read-set cell text.
+
+    Returns:
+        One (path, anchor) pair per unique anchor, in cell order. A
+        `{topic-figures}` item carries the anchor every topic map value
+        names, keyed by the token, so a reader sees the section without the
+        map being expanded here.
+    """
+    targets: List[Tuple[str, str]] = []
+    for _, item in read_set_items(cell):
+        path, anchor = split_anchor(item)
+        if not anchor and path == TOPIC_PLACEHOLDER:
+            anchor = TOPIC_ANCHOR
+        if anchor and (path, anchor) not in targets:
+            targets.append((path, anchor))
+    return targets
+
+
+def json_dict(items: List[Tuple[str, str]]) -> str:
+    """Format one list of string pairs as a Python dictionary literal.
+
+    Args:
+        items: Key and value pairs to format.
+
+    Returns:
+        One braced literal with a comma between the entries.
+    """
+    return "{" + ", ".join("%s: %s" % (json.dumps(key), json.dumps(value)) for key, value in items) + "}"
 
 
 def json_list(items: List[str]) -> str:
@@ -313,31 +418,151 @@ def year_folders() -> List[str]:
 
     Returns:
         Sorted folder names such as 2020, for a read path written as
-        references/tax-rules/YYYY.
+        references/tax-rules/{year}.
     """
-    base = os.path.join(SKILL_FOLDER, "references", "tax-rules")
-    if not os.path.isdir(base):
+    if not os.path.isdir(TAX_RULES_BASE):
         return []
     return sorted(
         name
-        for name in os.listdir(base)
-        if YEAR_RE.fullmatch(name) and os.path.isdir(os.path.join(base, name))
+        for name in os.listdir(TAX_RULES_BASE)
+        if YEAR_RE.fullmatch(name) and os.path.isdir(os.path.join(TAX_RULES_BASE, name))
     )
+
+
+def phase_files() -> Dict[str, str]:
+    """Read the migration phase number to phase file map.
+
+    Returns:
+        The phase numbers in numeric order, mapped to their
+        `references/migration/<file>` path, parsed from the phase table rows
+        of the migration index.
+    """
+    files: Dict[str, str] = {}
+    if not os.path.isfile(MIGRATION_INDEX):
+        return files
+    try:
+        with open(MIGRATION_INDEX, "r", encoding="utf-8", errors="replace") as handle:
+            lines = handle.read().splitlines()
+    except OSError:
+        return files
+    for line in lines:
+        match = PHASE_ROW_RE.match(line.strip())
+        if not match:
+            continue
+        files[match.group(1)] = "references/migration/%s" % match.group(2)
+    return dict(sorted(files.items(), key=lambda pair: int(pair[0])))
+
+
+def topic_files() -> Dict[str, str]:
+    """Read the topic slug to figures file map.
+
+    Returns:
+        The topic slugs in name order, mapped to
+        `references/tax-rules/{year}/<topic>/figures.md@2-key-figures`, one
+        entry per topic folder holding a figures file under any year folder.
+    """
+    topics: Dict[str, str] = {}
+    for year in year_folders():
+        year_path = os.path.join(TAX_RULES_BASE, year)
+        if not os.path.isdir(year_path):
+            continue
+        for name in sorted(os.listdir(year_path)):
+            if name in topics or not os.path.isfile(os.path.join(year_path, name, "figures.md")):
+                continue
+            topics[name] = "references/tax-rules/%s/%s/figures.md@%s" % (YEAR_TOKEN, name, TOPIC_ANCHOR)
+    return topics
+
+
+def expand_read_item(item: str) -> List[str]:
+    """Expand the map tokens and the year token of one read item.
+
+    Args:
+        item: Read item text after its mark, with the anchor still attached.
+
+    Returns:
+        The expansion in map and year order, or the item itself when it
+        carries no token.
+    """
+    items = [item]
+    if PHASE_PLACEHOLDER in item:
+        items = [part.replace(PHASE_PLACEHOLDER, value) for part in items for value in phase_files().values()]
+    if TOPIC_PLACEHOLDER in item:
+        items = [part.replace(TOPIC_PLACEHOLDER, value) for part in items for value in topic_files().values()]
+    expanded: List[str] = []
+    for part in items:
+        if YEAR_TOKEN in part:
+            expanded.extend(part.replace(YEAR_TOKEN, year) for year in year_folders())
+        else:
+            expanded.append(part)
+    return expanded
+
+
+def github_slug(heading: str) -> str:
+    """Turn a heading into the GitHub anchor slug.
+
+    Args:
+        heading: Heading text without the leading hashes.
+
+    Returns:
+        Lowercase text with punctuation dropped and each space turned into
+        its own hyphen.
+    """
+    lowered = heading.strip().lower()
+    stripped = SLUG_STRIP_RE.sub("", lowered)
+    return SLUG_SPACE_RE.sub("-", stripped)
+
+
+def file_has_anchor(path: str, anchor: str) -> bool:
+    """Tell whether one markdown file offers an anchor.
+
+    Args:
+        path: Absolute path of the markdown file.
+        anchor: Anchor slug to find.
+
+    Returns:
+        True when an explicit anchor id or a heading slug matches.
+    """
+    try:
+        with open(path, "r", encoding="utf-8", errors="replace") as handle:
+            lines = handle.read().splitlines()
+    except OSError:
+        return False
+    for line in lines:
+        if anchor in ANCHOR_ID_RE.findall(line):
+            return True
+        match = HEADING_TEXT_RE.match(line)
+        if match and github_slug(match.group(1)) == anchor:
+            return True
+    return False
 
 # ───────────────────────────────────────────────────────────────
 # 4. TABLE CHECK
 # ───────────────────────────────────────────────────────────────
 
-def check_read_path(row_type: str, relative_path: str, problems: List[str]) -> None:
+def check_read_path(
+    row_type: str,
+    mark: str,
+    item: str,
+    relative_path: str,
+    anchor: str,
+    problems: List[str],
+    missing: List[str],
+) -> None:
     """Check one expanded read-set path against the skill folder.
 
     The path must stay under the skill folder, name a markdown file and
-    exist there.
+    exist there. A missing path fails for a required item and is recorded
+    for a conditional item. An anchor an existing file does not offer
+    fails.
 
     Args:
         row_type: Row type of the cell, used in problem lines.
+        mark: The item mark, `!` or `?`.
+        item: The item text as written, used in problem lines.
         relative_path: Expanded read-set path in skill-relative form.
+        anchor: Anchor slug named by the item, or an empty string.
         problems: Problem list to append to.
+        missing: Missing conditional read list to append to.
     """
     root = os.path.realpath(SKILL_FOLDER)
     resolved = os.path.realpath(os.path.join(root, relative_path))
@@ -349,41 +574,63 @@ def check_read_path(row_type: str, relative_path: str, problems: List[str]) -> N
         problems.append("row %s read path is not markdown: %s" % (row_type, relative_path))
         return
     if not os.path.isfile(resolved):
-        problems.append("row %s read path missing: %s" % (row_type, relative_path))
+        if mark == "?":
+            missing.append("missing: %s %s" % (row_type, relative_path))
+        else:
+            problems.append(
+                "row %s read path missing: %s (item %s%s)" % (row_type, relative_path, mark, item)
+            )
+        return
+    if anchor and not file_has_anchor(resolved, anchor):
+        problems.append("row %s read anchor not found: %s@%s" % (row_type, relative_path, anchor))
 
 
-def check_read_set(row_type: str, cell: str, problems: List[str]) -> None:
-    """Check every backticked path in one read-set cell.
+def check_read_set(
+    row_type: str, cell: str, problems: List[str], missing: List[str]
+) -> None:
+    """Check every marked item of one read-set cell.
 
-    A year token expands over every year folder present, and each expanded
-    path must pass the guard and exist under the skill folder.
+    Each item is checked against the grammar, expanded over the map and year
+    tokens, guarded and resolved under the skill folder. A `?` item whose
+    expansion is absent lands in the missing list instead of the problems.
 
     Args:
         row_type: Row type of the cell, used in problem lines.
         cell: Raw read-set cell text.
         problems: Problem list to append to.
+        missing: Missing conditional read list to append to.
     """
-    years = year_folders()
     # WHY: only backticked paths reach the generated read set, so a bare path would be dropped without a word.
     for bare in BARE_PATH_RE.findall(BACKTICK_RE.sub(" ", cell)):
         problems.append("row %s read path is not backticked: %s" % (row_type, bare))
     for span in BACKTICK_RE.findall(cell):
-        if span == "-":
+        span = span.strip()
+        if not span or span == "-":
             continue
-        if YEAR_TOKEN in span:
-            for year in years:
-                check_read_path(row_type, span.replace(YEAR_TOKEN, year), problems)
+        if span[0] not in "!?":
+            problems.append("row %s read item is not marked with ! or ?: %s" % (row_type, span))
             continue
-        check_read_path(row_type, span, problems)
+        mark = span[0]
+        item = span[1:].strip()
+        if not item:
+            problems.append("row %s read item is marked but names no path" % row_type)
+            continue
+        if "@" in item and not split_anchor(item)[1]:
+            problems.append("row %s read item has an empty anchor: %s" % (row_type, item))
+            continue
+        for expanded in expand_read_item(item):
+            path, anchor = split_anchor(expanded)
+            check_read_path(row_type, mark, item, path, anchor, problems, missing)
 
 
-def check_row(line: str, row_type: str, problems: List[str]) -> None:
+def check_row(line: str, row_type: str, problems: List[str], missing: List[str]) -> None:
     """Check the cells of one route table row.
 
     Args:
         line: The stripped table row line.
         row_type: Row type named by the first cell.
         problems: Problem list to append to.
+        missing: Missing conditional read list to append to.
     """
     cells = split_cells(line)
     if len(cells) != 8:
@@ -399,7 +646,7 @@ def check_row(line: str, row_type: str, problems: List[str]) -> None:
         )
     if cells[6] != "`tok:%s`" % row_type:
         problems.append("row %s budget cell is %r, expected `tok:%s`" % (row_type, cells[6], row_type))
-    check_read_set(row_type, cells[5], problems)
+    check_read_set(row_type, cells[5], problems, missing)
 
 
 def table_bounds(lines: List[str], problems: List[str]) -> Optional[Tuple[int, int]]:
@@ -464,12 +711,13 @@ def table_rows(lines: List[str]) -> List[Dict[str, str]]:
     return rows
 
 
-def check_table(lines: List[str], problems: List[str]) -> None:
+def check_table(lines: List[str], problems: List[str], missing: List[str]) -> None:
     """Check the markers, the header and every row of the route table.
 
     Args:
         lines: All lines of the markdown file.
         problems: Problem list to append to.
+        missing: Missing conditional read list to append to.
     """
     bounds = table_bounds(lines, problems)
     if bounds is None:
@@ -494,8 +742,8 @@ def check_table(lines: List[str], problems: List[str]) -> None:
             problems.append("duplicate row %s" % row_type)
             continue
         seen.append(row_type)
-        check_row(stripped, row_type, problems)
-    for row_type in ROW_TYPES:
+        check_row(stripped, row_type, problems, missing)
+    for row_type in REQUIRED_ROW_TYPES:
         if row_type not in seen:
             problems.append("missing row %s" % row_type)
     for row_type in seen:
@@ -505,6 +753,18 @@ def check_table(lines: List[str], problems: List[str]) -> None:
 # ───────────────────────────────────────────────────────────────
 # 5. ROUTER BLOCK
 # ───────────────────────────────────────────────────────────────
+
+def check_maps(problems: List[str]) -> None:
+    """Check that the two generated maps have source rows.
+
+    Args:
+        problems: Problem list to append to.
+    """
+    if not phase_files():
+        problems.append("migration index holds no phase table rows: %s" % MIGRATION_INDEX)
+    if not topic_files():
+        problems.append("no topic figures file found under %s" % TAX_RULES_BASE)
+
 
 def router_block(rows: List[Dict[str, str]]) -> List[str]:
     """Format the generated router block from the table rows.
@@ -524,6 +784,26 @@ def router_block(rows: List[Dict[str, str]]) -> List[str]:
             '    "%s": [%s, %s],'
             % (row["type"], json_list(cell_signals(row["dutch"])), json_list(cell_signals(row["english"])))
         )
+    lines.append("}")
+    lines.append("REQUIRED_READS = {")
+    for row in rows:
+        lines.append('    "%s": %s,' % (row["type"], json_list(marked_items(row["read_set"], "!"))))
+    lines.append("}")
+    lines.append("CONDITIONAL_READS = {")
+    for row in rows:
+        lines.append('    "%s": %s,' % (row["type"], json_list(marked_items(row["read_set"], "?"))))
+    lines.append("}")
+    lines.append("SECTION_TARGETS = {")
+    for row in rows:
+        lines.append('    "%s": %s,' % (row["type"], json_dict(cell_section_targets(row["read_set"]))))
+    lines.append("}")
+    lines.append("PHASE_FILES = {")
+    for number, path in phase_files().items():
+        lines.append("    %s: %s," % (json.dumps(number), json.dumps(path)))
+    lines.append("}")
+    lines.append("TOPIC_FILES = {")
+    for topic, path in topic_files().items():
+        lines.append("    %s: %s," % (json.dumps(topic), json.dumps(path)))
     lines.append("}")
     lines.append("RESOURCE_MAP = {")
     for row in rows:
@@ -819,6 +1099,90 @@ def check_signal_sources(path: str, problems: List[str]) -> None:
             problems.append("%s line %d: signal source without a belastingdienst.nl link" % (path, index))
     if bullets == 0:
         problems.append("%s holds no signal source lines" % path)
+
+
+def gap_cells(line: str) -> List[str]:
+    """Split one gap-ledger table line into its stripped cells.
+
+    Args:
+        line: One table line with leading and trailing pipes.
+
+    Returns:
+        The cell texts without their surrounding whitespace.
+    """
+    return [cell.strip() for cell in line.strip().strip("|").split("|")]
+
+
+def check_gap_ledger(path: str, problems: List[str]) -> None:
+    """Check the documented-gap table of the signal sources file.
+
+    The table lives under the Documented gaps heading. Every row must carry
+    a topic, an owner, a coverage value from the allowed set and an operator
+    action, and no topic may repeat. A file without the heading declares no
+    gap and passes.
+
+    Args:
+        path: Path of the signal sources file.
+        problems: Problem list to append to.
+    """
+    if not os.path.isfile(path):
+        return
+    try:
+        with open(path, "r", encoding="utf-8", errors="replace") as handle:
+            lines = handle.read().splitlines()
+    except OSError:
+        return
+    heading = -1
+    for index, line in enumerate(lines):
+        if line.lstrip().startswith("#") and GAPS_HEADING in line:
+            heading = index
+            break
+    if heading < 0:
+        print("gaps: none declared")
+        return
+    header = -1
+    for index in range(heading + 1, len(lines)):
+        if gap_cells(lines[index]) == list(GAPS_COLUMNS):
+            header = index
+            break
+    if header < 0:
+        problems.append("%s has a %s heading without its table header" % (path, GAPS_HEADING))
+        return
+    seen: List[str] = []
+    rows = 0
+    for index in range(header + 1, len(lines)):
+        stripped = lines[index].strip()
+        if not stripped.startswith("|"):
+            break
+        cells = gap_cells(stripped)
+        if all(SEPARATOR_RE.match(cell) for cell in cells):
+            continue
+        rows += 1
+        if len(cells) != len(GAPS_COLUMNS):
+            problems.append(
+                "%s line %d: gap row has %d cells, expected %d"
+                % (path, index + 1, len(cells), len(GAPS_COLUMNS))
+            )
+            continue
+        topic = cells[0].strip("`").strip()
+        owner = cells[1].strip("`").strip()
+        coverage = cells[2].strip("`").strip()
+        action = cells[3].strip("`").strip()
+        if not topic:
+            problems.append("%s line %d: gap row has an empty topic" % (path, index + 1))
+        if not owner:
+            problems.append("%s line %d: gap row %s has an empty owner" % (path, index + 1, topic or "?"))
+        if coverage not in COVERAGE_VALUES:
+            problems.append(
+                "%s line %d: gap row %s coverage is %r, expected one of %s"
+                % (path, index + 1, topic or "?", coverage, ", ".join(COVERAGE_VALUES))
+            )
+        if not action:
+            problems.append("%s line %d: gap row %s has an empty operator action" % (path, index + 1, topic or "?"))
+        if topic in seen:
+            problems.append("%s line %d: gap row %s repeats its topic" % (path, index + 1, topic))
+        seen.append(topic)
+    print("gaps: %d rows" % rows)
 
 
 def constant_number(text: str, name: str) -> Optional[float]:
@@ -1118,11 +1482,15 @@ def run_write(args: Any, text: str, lines: List[str], rows: List[Dict[str, str]]
         Zero on success, 2 when the write was refused.
     """
     problems: List[str] = []
-    check_table(lines, problems)
+    missing: List[str] = []
+    check_table(lines, problems, missing)
+    check_maps(problems)
     if problems:
         for problem in problems:
             print(problem)
         return 2
+    for line in missing:
+        print(line)
     data = read_metadata(args.graph_metadata)
     if data is None:
         print("graph metadata file is missing or malformed: %s" % args.graph_metadata)
@@ -1209,16 +1577,21 @@ def main(argv: List[str]) -> int:
     if args.write:
         return run_write(args, text, lines, rows)
     problems: List[str] = []
-    check_table(lines, problems)
+    missing: List[str] = []
+    check_table(lines, problems, missing)
+    check_maps(problems)
     check_required_tokens(text, problems)
     check_overrides(lines, problems)
     check_signals_pointer(lines, problems)
     check_signal_sources(args.signals, problems)
+    check_gap_ledger(args.signals, problems)
     check_calibration(args.calibration, text, problems)
     check_router_block(lines, rows, problems)
     check_intent_signals(rows, args.graph_metadata, problems)
     check_skill_words(problems)
     check_split_topics(problems)
+    for line in missing:
+        print(line)
     if problems:
         for problem in problems:
             print(problem)

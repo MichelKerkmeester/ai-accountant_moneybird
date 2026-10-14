@@ -1,5 +1,5 @@
 {
-  "split_id": "routing-gold-v1-calibration-held-out",
+  "split_id": "routing-gold-v2-calibration-held-out",
   "route_margin": 0.25,
   "fallback_floor": 0.5,
   "sweep": {
@@ -8,88 +8,88 @@
     "note": "Every candidate below the smallest winning score on the calibration rows is equivalent on this split, so the tie break picks the highest swept floor.",
     "candidates": [
       {
-        "rows": 32,
-        "route_matches": 32,
+        "rows": 53,
+        "route_matches": 53,
         "route_accuracy": 1.0,
         "false_abstains": 0,
         "false_abstain_rate": 0.0,
         "floor": 0.0
       },
       {
-        "rows": 32,
-        "route_matches": 32,
+        "rows": 53,
+        "route_matches": 53,
         "route_accuracy": 1.0,
         "false_abstains": 0,
         "false_abstain_rate": 0.0,
         "floor": 0.05
       },
       {
-        "rows": 32,
-        "route_matches": 32,
+        "rows": 53,
+        "route_matches": 53,
         "route_accuracy": 1.0,
         "false_abstains": 0,
         "false_abstain_rate": 0.0,
         "floor": 0.1
       },
       {
-        "rows": 32,
-        "route_matches": 32,
+        "rows": 53,
+        "route_matches": 53,
         "route_accuracy": 1.0,
         "false_abstains": 0,
         "false_abstain_rate": 0.0,
         "floor": 0.15
       },
       {
-        "rows": 32,
-        "route_matches": 32,
+        "rows": 53,
+        "route_matches": 53,
         "route_accuracy": 1.0,
         "false_abstains": 0,
         "false_abstain_rate": 0.0,
         "floor": 0.2
       },
       {
-        "rows": 32,
-        "route_matches": 32,
+        "rows": 53,
+        "route_matches": 53,
         "route_accuracy": 1.0,
         "false_abstains": 0,
         "false_abstain_rate": 0.0,
         "floor": 0.25
       },
       {
-        "rows": 32,
-        "route_matches": 32,
+        "rows": 53,
+        "route_matches": 53,
         "route_accuracy": 1.0,
         "false_abstains": 0,
         "false_abstain_rate": 0.0,
         "floor": 0.3
       },
       {
-        "rows": 32,
-        "route_matches": 32,
+        "rows": 53,
+        "route_matches": 53,
         "route_accuracy": 1.0,
         "false_abstains": 0,
         "false_abstain_rate": 0.0,
         "floor": 0.35
       },
       {
-        "rows": 32,
-        "route_matches": 32,
+        "rows": 53,
+        "route_matches": 53,
         "route_accuracy": 1.0,
         "false_abstains": 0,
         "false_abstain_rate": 0.0,
         "floor": 0.4
       },
       {
-        "rows": 32,
-        "route_matches": 32,
+        "rows": 53,
+        "route_matches": 53,
         "route_accuracy": 1.0,
         "false_abstains": 0,
         "false_abstain_rate": 0.0,
         "floor": 0.45
       },
       {
-        "rows": 32,
-        "route_matches": 32,
+        "rows": 53,
+        "route_matches": 53,
         "route_accuracy": 1.0,
         "false_abstains": 0,
         "false_abstain_rate": 0.0,
@@ -98,15 +98,15 @@
     ]
   },
   "calibration": {
-    "rows": 32,
-    "route_matches": 32,
+    "rows": 53,
+    "route_matches": 53,
     "route_accuracy": 1.0,
     "false_abstains": 0,
     "false_abstain_rate": 0.0
   },
   "held_out": {
-    "rows": 10,
-    "route_matches": 10,
+    "rows": 22,
+    "route_matches": 22,
     "route_accuracy": 1.0,
     "false_abstains": 0,
     "false_abstain_rate": 0.0

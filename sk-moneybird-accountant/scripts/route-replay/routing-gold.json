@@ -1,6 +1,6 @@
 {
   "corpus": "routing-gold",
-  "version": 1,
+  "version": 2,
   "token_encoding": "o200k_base",
   "scenario_basis": "One row per routing scenario under sk-moneybird-accountant/manual-testing-playbook/offline-routing. The two check-runner scenarios run their own suites instead of a route.",
   "parity_rule": "Route equality only. A Dutch twin and its English pair share one gold route, one read set and one fallback tier. Answer text is never compared.",
@@ -32,7 +32,6 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
-        "references/migration/README.md",
         "references/migration/shared-mechanisms.md",
         "references/migration/control-framework.md",
         "references/migration/phases-19-to-21.md",
@@ -42,7 +41,8 @@
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
         "references/tax-rules/dutch-tax-rules.md",
-        "references/tax-rules/source-library.md"
+        "references/tax-rules/source-library.md",
+        "references/migration/README.md"
       ],
       "expected_facts": [
         "Phase 22",
@@ -67,7 +67,6 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
-        "references/migration/README.md",
         "references/migration/shared-mechanisms.md",
         "references/migration/control-framework.md",
         "references/migration/phases-6-to-9.md"
@@ -76,7 +75,8 @@
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
         "references/tax-rules/dutch-tax-rules.md",
-        "references/tax-rules/source-library.md"
+        "references/tax-rules/source-library.md",
+        "references/migration/README.md"
       ],
       "expected_facts": [
         "M12",
@@ -130,7 +130,6 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
-        "references/migration/README.md",
         "references/migration/shared-mechanisms.md",
         "references/migration/control-framework.md",
         "references/migration/phase-22-completion.md"
@@ -139,7 +138,8 @@
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
         "references/tax-rules/dutch-tax-rules.md",
-        "references/tax-rules/source-library.md"
+        "references/tax-rules/source-library.md",
+        "references/migration/README.md"
       ],
       "expected_facts": [
         "Phase 22",
@@ -532,7 +532,6 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
-        "references/migration/README.md",
         "references/migration/shared-mechanisms.md",
         "references/migration/control-framework.md",
         "references/migration/phases-19-to-21.md",
@@ -542,7 +541,8 @@
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
         "references/tax-rules/dutch-tax-rules.md",
-        "references/tax-rules/source-library.md"
+        "references/tax-rules/source-library.md",
+        "references/migration/README.md"
       ],
       "expected_facts": [
         "Phase 22",
@@ -568,7 +568,6 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
-        "references/migration/README.md",
         "references/migration/shared-mechanisms.md",
         "references/migration/control-framework.md",
         "references/migration/phases-6-to-9.md"
@@ -577,7 +576,8 @@
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
         "references/tax-rules/dutch-tax-rules.md",
-        "references/tax-rules/source-library.md"
+        "references/tax-rules/source-library.md",
+        "references/migration/README.md"
       ],
       "expected_facts": [
         "M12",
@@ -633,7 +633,6 @@
       "tier": "",
       "tie": "",
       "expected_paths": [
-        "references/migration/README.md",
         "references/migration/shared-mechanisms.md",
         "references/migration/control-framework.md",
         "references/migration/phase-22-completion.md"
@@ -642,7 +641,8 @@
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
         "references/tax-rules/dutch-tax-rules.md",
-        "references/tax-rules/source-library.md"
+        "references/tax-rules/source-library.md",
+        "references/migration/README.md"
       ],
       "expected_facts": [
         "Phase 22",
@@ -1193,7 +1193,7 @@
       "expected_facts": [
         "Bewaarplicht"
       ],
-      "token_ceiling": 80000,
+      "token_ceiling": 18000,
       "year": "2020",
       "note": "Cross-year rule route to the record duty subsection.",
       "covers": [
@@ -1280,7 +1280,6 @@
       "tier": "",
       "tie": "T1-over-T3",
       "expected_paths": [
-        "references/migration/README.md",
         "references/migration/shared-mechanisms.md",
         "references/migration/control-framework.md",
         "references/migration/phases-6-to-9.md"
@@ -1289,7 +1288,8 @@
         "references/moneybird-bookkeeping.md",
         "references/purchase-invoices.md",
         "references/tax-rules/dutch-tax-rules.md",
-        "references/tax-rules/source-library.md"
+        "references/tax-rules/source-library.md",
+        "references/migration/README.md"
       ],
       "expected_facts": [
         "M12",
@@ -1753,7 +1753,7 @@
         "references/moneybird-bookkeeping.md"
       ],
       "expected_facts": [],
-      "token_ceiling": 80000,
+      "token_ceiling": 18000,
       "year": "2024",
       "note": "Tied depreciation and cross-year signals, decided by the cross-year clause. Added after the routing change, so it is a calibration row.",
       "covers": [
@@ -1895,7 +1895,7 @@
         "references/fixed-assets.md"
       ],
       "expected_facts": [],
-      "token_ceiling": 80000,
+      "token_ceiling": 18000,
       "year": "2024",
       "note": "Two asset terms count as one T4 point, so the cross-year clause decides.",
       "covers": [
@@ -1986,6 +1986,401 @@
       "covers": [
         "014/REQ-004"
       ]
+    },
+    {
+      "id": "PREP-T10-01",
+      "prompt": "Prepare the VAT return for 2026.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T10",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/tax-rules/2026/btw/figures.md"
+      ],
+      "forbidden_paths": [
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "BTW",
+        "KEY FIGURES"
+      ],
+      "token_ceiling": 33000,
+      "year": "2026",
+      "note": "Preparation route to the VAT return figures.",
+      "covers": [
+        "004/REQ-007"
+      ]
+    },
+    {
+      "id": "PREP-T10-01-nl",
+      "prompt": "Kun je mijn btw-aangifte voorbereiden voor 2026?",
+      "lang": "nl",
+      "parityOf": "PREP-T10-01",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T10",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/tax-rules/2026/btw/figures.md"
+      ],
+      "forbidden_paths": [
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "BTW",
+        "KEY FIGURES"
+      ],
+      "token_ceiling": 33000,
+      "year": "2026",
+      "note": "Dutch twin of PREP-T10-01.",
+      "covers": [
+        "004/REQ-007"
+      ]
+    },
+    {
+      "id": "PREP-T11-01",
+      "prompt": "Prepare the yearly overview for 2026.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T11",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/tax-rules/2026/kosten-en-auto/figures.md",
+        "references/tax-rules/2026/investeringen/figures.md"
+      ],
+      "forbidden_paths": [
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "Kosten en auto",
+        "Investeringsaftrek"
+      ],
+      "token_ceiling": 33000,
+      "year": "2026",
+      "note": "Preparation route to the yearly overview figures.",
+      "covers": [
+        "004/REQ-007"
+      ]
+    },
+    {
+      "id": "PREP-T11-01-nl",
+      "prompt": "Kun je mijn jaaroverzicht voorbereiden voor 2026?",
+      "lang": "nl",
+      "parityOf": "PREP-T11-01",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T11",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/tax-rules/2026/kosten-en-auto/figures.md",
+        "references/tax-rules/2026/investeringen/figures.md"
+      ],
+      "forbidden_paths": [
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "Kosten en auto",
+        "Investeringsaftrek"
+      ],
+      "token_ceiling": 33000,
+      "year": "2026",
+      "note": "Dutch twin of PREP-T11-01.",
+      "covers": [
+        "004/REQ-007"
+      ]
+    },
+    {
+      "id": "PREP-T12-01",
+      "prompt": "Prepare my income tax return for 2026.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T12",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/tax-rules/2026/inkomstenbelasting/figures.md",
+        "references/tax-rules/2026/ondernemersaftrek/figures.md"
+      ],
+      "forbidden_paths": [
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "Inkomstenbelasting",
+        "Ondernemersaftrek"
+      ],
+      "token_ceiling": 33000,
+      "year": "2026",
+      "note": "Preparation route to the income tax return figures.",
+      "covers": [
+        "004/REQ-007"
+      ]
+    },
+    {
+      "id": "PREP-T12-01-nl",
+      "prompt": "Kun je mijn aangifte inkomstenbelasting voorbereiden voor 2026?",
+      "lang": "nl",
+      "parityOf": "PREP-T12-01",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T12",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/tax-rules/2026/inkomstenbelasting/figures.md",
+        "references/tax-rules/2026/ondernemersaftrek/figures.md"
+      ],
+      "forbidden_paths": [
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "Inkomstenbelasting",
+        "Ondernemersaftrek"
+      ],
+      "token_ceiling": 33000,
+      "year": "2026",
+      "note": "Dutch twin of PREP-T12-01.",
+      "covers": [
+        "004/REQ-007"
+      ]
+    },
+    {
+      "id": "FILE-T10-01",
+      "prompt": "Prepare my VAT return and then submit it.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "T8",
+      "category": "out-of-scope",
+      "tier": "A",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "Filing request stops on the refusal row with the VAT return named.",
+      "covers": [
+        "004/REQ-002",
+        "004/REQ-007"
+      ]
+    },
+    {
+      "id": "FILE-T10-01-nl",
+      "prompt": "Bereid mijn btw-aangifte voor en dien die in.",
+      "lang": "nl",
+      "parityOf": "FILE-T10-01",
+      "split": "calibration",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "T8",
+      "category": "twin",
+      "tier": "A",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "Dutch twin of FILE-T10-01.",
+      "covers": [
+        "004/REQ-002",
+        "004/REQ-007"
+      ]
+    },
+    {
+      "id": "FILE-T11-01",
+      "prompt": "Prepare the yearly overview and then submit it.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "T8",
+      "category": "out-of-scope",
+      "tier": "A",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "Filing request stops on the refusal row with the yearly overview named.",
+      "covers": [
+        "004/REQ-002",
+        "004/REQ-007"
+      ]
+    },
+    {
+      "id": "FILE-T11-01-nl",
+      "prompt": "Zet mijn jaarrekening klaar en dien die in.",
+      "lang": "nl",
+      "parityOf": "FILE-T11-01",
+      "split": "calibration",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "T8",
+      "category": "twin",
+      "tier": "A",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "Dutch twin of FILE-T11-01.",
+      "covers": [
+        "004/REQ-002",
+        "004/REQ-007"
+      ]
+    },
+    {
+      "id": "FILE-T12-01",
+      "prompt": "Prepare my income tax return and then submit it.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "T8",
+      "category": "out-of-scope",
+      "tier": "A",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "Filing request stops on the refusal row with the income tax return named.",
+      "covers": [
+        "004/REQ-002",
+        "004/REQ-007"
+      ]
+    },
+    {
+      "id": "FILE-T12-01-nl",
+      "prompt": "Bereid mijn aangifte inkomstenbelasting voor en dien die in.",
+      "lang": "nl",
+      "parityOf": "FILE-T12-01",
+      "split": "calibration",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "T8",
+      "category": "twin",
+      "tier": "A",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "Dutch twin of FILE-T12-01.",
+      "covers": [
+        "004/REQ-002",
+        "004/REQ-007"
+      ]
+    },
+    {
+      "id": "TWO-TURN-01",
+      "prompt": "Dien hem daarna in bij de Belastingdienst.",
+      "lang": "nl",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "T8",
+      "category": "follow-up",
+      "tier": "A",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "2026",
+      "note": "First turn prepares the VAT return and the second turn asks to file it.",
+      "covers": [
+        "004/REQ-002",
+        "004/REQ-007"
+      ],
+      "previous_prompt": "Kun je mijn btw-aangifte voorbereiden voor 2026?",
+      "previous_gold_task_type": "T10",
+      "previous_gold_mode": "LIVE"
+    },
+    {
+      "id": "T7-ADDITIVE-01",
+      "prompt": "Book the supplier invoice through moneybird-guard.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/tax-rules/2026/btw/figures.md",
+        "references/moneybird-bookkeeping.md"
+      ],
+      "forbidden_paths": [
+        "references/tax-rules/dutch-tax-rules.md",
+        "references/tax-rules/source-library.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [
+        "supplier",
+        "invoice"
+      ],
+      "token_ceiling": 75000,
+      "year": "2026",
+      "note": "Additive CLI hit keeps the purchase invoice route and appends the sibling tool skill.",
+      "covers": [
+        "004/REQ-007"
+      ],
+      "t7": true
     },
     {
       "id": "REFUSE-3-01",

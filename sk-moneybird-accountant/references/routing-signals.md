@@ -30,14 +30,16 @@ Every signal word in the Task-Type Table has a source. Most signal words come fr
 
 - Administration terms `administratie`, `boekhouding`, `bewaarplicht`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/
 - Record-keeping, document and cost terms `administratie bijhouden`, `factuur`, `verkoopfactuur`, `inkoopfactuur`, `bonnetje`, `kassabon`, `omzet`, `kosten`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/
-- VAT and return terms `aangifte doen`, `btw-aangifte`, `aangifte omzetbelasting`, `voorbelasting`, `btw-tarief`, `btw-identificatienummer`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/hoe-btw-aangifte-invullen-en-versturen
+- VAT and return terms `aangifte doen`, `indienen`, `dien`, `insturen`, `aanslag betalen`, `btw-aangifte`, `aangifte omzetbelasting`, `kwartaalaangifte`, `voorbelasting`, `btw-tarief`, `btw-identificatienummer`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/hoe-btw-aangifte-invullen-en-versturen
+- Administration and yearly overview terms `jaaroverzicht`, `jaarrekening`, `balans en winst-en-verliesrekening`, `yearly overview` and `annual accounts`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/een_administratie_opzetten
+- Income tax return terms `aangifte inkomstenbelasting`, `IB-aangifte` and `income tax return`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aangifte_doen/hoeveel-jaar-terug-belastingaangifte-doen
 - Income tax deduction terms `zelfstandigenaftrek`, `ondernemersaftrek`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/zelfstandigenaftrek1/verrekenen_niet_gerealiseerde_zelfstandigenaftrek
 - Car terms `kilometervergoeding`, `privégebruik auto`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/btw_en_de_auto/zakelijk_gebruik_van_de_priveauto/zakelijk_gebruik_van_de_priveauto
 - Mixed-use and private-use terms `privégebruik`, `zakelijk en privé`, `deels privé`, `gemengde kosten`, `telefoonabonnement`, `private use`, `partly private`, `mixed use` and `phone subscription`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/privegebruik/gemengd_gebruik/gemengd_gebruik
 - Asset and depreciation terms `afschrijven`, `afschrijving`, `inventaris`, `activeren`, `activeer`, `depreciation`, `depreciate`, `fixed asset`, `capitalise` and `capitalize`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/
 - Investment deduction term `investeringsaftrek`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/kleinschaligheidsinvesteringsaftrek_kia
 - Threshold terms `drempel`, `kleineondernemersregeling`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/
-- Skill vocabulary, not from the Belastingdienst: the migration terms `migratie`, `overzetten` and `historische administratie`, the CLI terms `haal op`, `boek in` and `synchroniseer`, the period words `deze maand`, `afgelopen kwartaal`, `vorig jaar` and `sinds wanneer`, the question word `hoeveel`, the migration concept terms `categorie`, `valkuil` and `welke rekening` and the onboarding term `startende ondernemer`.
+- Skill vocabulary, not from the Belastingdienst: the migration terms `migratie`, `overzetten` and `historische administratie`, the CLI terms `haal op`, `boek in` and `synchroniseer`, the period words `deze maand`, `afgelopen kwartaal`, `vorig jaar` and `sinds wanneer`, the question word `hoeveel`, the migration concept terms `categorie`, `valkuil` and `welke rekening` and the onboarding term `startende ondernemer`, the filing terms `periode afsluiten`, `file`, `submit`, `pay` and `lock the period`, and the preparation verbs `voorbereiden`, `klaarzetten`, `controleren`, `prepare`, `review` and `check`, which route only inside a type phrase.
 
 ---
 
@@ -63,6 +65,10 @@ The specificity clauses match the On tie column of the Task-Type Table. Each one
 5. A tax figure asked with no invoice named makes T5 beat T4.
 6. A phase number or gate named makes T1 beat T2 and T3.
 7. T7 is additive and never wins alone. It appends the matching sibling tool skill to the row already matched.
+8. A VAT return named makes T10 beat T3, and with no return named T3 beats T10.
+9. A yearly overview named makes T11 beat T3, and with no overview named T3 beats T11.
+10. An income tax return named makes T12 beat T5, and with no return named T5 beats T12.
+11. An explicit request to file, submit, pay or lock a period makes T8 beat T10, T11 and T12. A request to prepare, assemble, check or review one of the three yearly deliverables routes to T10, T11 or T12, and only the explicit filing request is refused.
 
 The mixed-use and asset terms of T4 name what is booked, not the kind of request. Together they add one point to T4 at most, so a tax figure, rule or period request that names an asset reaches the tie clauses above instead of losing to T4 on signal count.
 
@@ -70,26 +76,28 @@ The mixed-use and asset terms of T4 name what is booked, not the kind of request
 
 ## 5. TOKEN BUDGETS FOR THE ROUTE KEYS
 
-The Budget column of the Task-Type Table holds one key per row, `tok:T1` to `tok:T9`. Each key resolves to the token cost of that row's read set, built from the read budget ladder in `SKILL.md`. The ladder units are token counts in o200k_base, the lead encoding, with the cl100k_base column beside them in `../benchmark/token-baseline.json`:
+The Budget column of the Task-Type Table holds one key per row. Each key resolves to the token cost of that row's read set, built from the read budget ladder in `SKILL.md`. The ladder units are token counts in o200k_base, the lead encoding, with the cl100k_base column beside them in `../benchmark/token-baseline.json`:
 
-- A README or index file: 3,000 tokens, which covers a year README and the migration index.
+- A README or index file: 3,000 tokens, which covers a year README, the migration index and the rules entry file `dutch-tax-rules.md`.
 - One section: 5,000 tokens.
 - One full reference file: 15,000 tokens.
-- Section 3 of `dutch-tax-rules.md`: at most 80,000 tokens, and only after a jump through its section list.
 
 A row shows two numbers. The base is the ladder sum of the read path that answers the question. The ceiling adds every further read its read set allows, so no route may load more than its ceiling.
 
 | Key | Base | Ceiling | Built from |
 |---|---|---|---|
-| `tok:T1` | 33,000 | 48,000 | migration index 3,000, shared mechanisms 15,000 and one phase file 15,000, plus the control framework 15,000 when a gate, risk or year lock applies |
+| `tok:T1` | 30,000 | 45,000 | shared mechanisms 15,000 and the phase file the request names 15,000, read through the phase map, plus the control framework 15,000 when a gate, risk or year lock applies. The migration index 3,000 replaces the phase file when no phase is named |
 | `tok:T2` | 15,000 | 15,000 | one full reference file |
 | `tok:T3` | 18,000 | 51,000 | bookkeeping file 15,000 and a year README 3,000, plus the year btw figures part 15,000 on a VAT period, plus the migration index 3,000 and the recurring-cycle file 15,000 while the post-cutover state is open |
 | `tok:T4` | 45,000 | 75,000 | purchase invoices 15,000, the year btw figures part 15,000 and the bookkeeping file 15,000, plus the mixed-use file 15,000 and the fixed-asset file 15,000 when their condition applies |
 | `tok:T5` | 8,000 | 18,000 | a year README 3,000 plus one section 5,000, and 5,000 more for a rules subsection and 5,000 more for the source library when either is needed |
-| `tok:T6` | 80,000 | 80,000 | section 3 of the rules file, at most 80,000, only after a jump through its section list |
+| `tok:T6` | 18,000 | 18,000 | the rules entry file 3,000 and the one general topic file its table names 15,000 |
 | `tok:T7` | 0 | 0 | no reference file, the sibling tool skill carries its own reads |
 | `tok:T8` | 0 | 0 | loads nothing |
 | `tok:T9` | 15,000 | 15,000 | one full reference file |
+| `tok:T10` | 18,000 | 33,000 | the VAT return procedure README 3,000 and the year btw figures part 15,000, plus the year procedure figures part 15,000 when a deadline, correction or belastingrente applies |
+| `tok:T11` | 33,000 | 33,000 | the yearly overview procedure README 3,000, the year cost and car figures part 15,000 and the year investments figures part 15,000 |
+| `tok:T12` | 33,000 | 33,000 | the income tax return procedure README 3,000, the year income tax figures part 15,000 and the year ondernemersaftrek figures part 15,000 |
 
 ---
 
@@ -99,7 +107,19 @@ A question about what changed in one year, the difference between two years or `
 
 ---
 
-## 7. RELATED RESOURCES
+## 7. Documented gaps
+
+A row here names a deliverable the skill routes but does not document yet. The T8 documented gap answer reads this table through the `gaps` list in `references/index.json`, so the answer names the topic, the owner path and the Operator action. The owner path is the file a later phase creates, and its coverage flips from `gap` to `covered` when that file lands.
+
+| Topic | Owner | Coverage | Operator action |
+|---|---|---|---|
+| vat-return | references/vat-return/README.md | gap | The Operator prepares and files the VAT return in the Belastingdienst portal and keeps the filed copy with the records |
+| yearly-overview | references/yearly-overview/README.md | gap | The Operator assembles the yearly overview in the Moneybird UI and keeps the balance sheet and the profit and loss statement with the records |
+| income-tax-return | references/income-tax-return/README.md | gap | The Operator prepares and files the income tax return in the Belastingdienst portal and keeps the assessment with the records |
+
+---
+
+## 8. RELATED RESOURCES
 
 - `SKILL.md` holds the Task-Type Table, the weak-signal note and the compact tie block.
 - `references/migration/README.md` maps every migration phase to its reference file.

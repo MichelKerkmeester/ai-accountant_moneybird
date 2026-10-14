@@ -751,6 +751,37 @@ EOF
     return 0
 }
 
+# Build a fixture whose routing signals file holds a valid gap ledger
+# Args:
+#   $1 - Skill folder to create
+# Returns:
+#   0 when the fixture is ready, 1 when a write fails
+make_gaps_fixture() {
+    local skill="$1"
+    make_fixture "$skill" || return 1
+    cat >"$skill/$FLAT_REF/routing-signals.md" <<'EOF'
+---
+title: "Routing signals"
+description: "Fixture routing signals with a gap ledger."
+---
+
+# Routing signals
+
+## 1. OVERVIEW
+
+Hand prose for the fixture signals.
+
+## 2. DOCUMENTED GAPS
+
+| Topic | Owner | Coverage | Operator action |
+|---|---|---|---|
+| `vat-return` | `references/vat-return/README.md` | gap | Prepare the return before filing. |
+| yearly-overview | references/yearly-overview/README.md | partial | Review the overview with the operator. |
+| income-tax-return | `references/income-tax-return/README.md` | covered | No operator action remains. |
+EOF
+    return 0
+}
+
 # ───────────────────────────────────────────────────────────────
 # 6. REAL CORPUS
 # ───────────────────────────────────────────────────────────────
@@ -1542,7 +1573,146 @@ else
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 16. RESULT SUMMARY AND EXIT
+# 16. GAP LEDGER
+# ───────────────────────────────────────────────────────────────
+
+# WHY: the ledger is authored in one reference file and copied into the index,
+# so the suite proves the copy and every row rule on a fixture tree.
+group "gap ledger"
+PLAIN_FIXTURE="$TMP_ROOT/gaps-plain/sk-moneybird-accountant"
+GAPS_FIXTURE="$TMP_ROOT/gaps-fixture/sk-moneybird-accountant"
+GAPS_MUTANT="$TMP_ROOT/gaps-mutant/sk-moneybird-accountant"
+if make_fixture "$PLAIN_FIXTURE" && run_generator "$PLAIN_FIXTURE" --init && run_generator "$PLAIN_FIXTURE" \
+    && python3 - "$PLAIN_FIXTURE/$FLAT_REF/index.json" <<'PY'
+import json
+import sys
+
+data = json.load(open(sys.argv[1], encoding="utf-8"))
+sys.exit(0 if data.get("gaps") == [] else 1)
+PY
+then
+    pass "an absent Documented gaps heading stores an empty ledger"
+else
+    fail "an absent Documented gaps heading stores an empty ledger"
+fi
+
+if make_gaps_fixture "$GAPS_FIXTURE"; then
+    pass "the gap ledger fixture builds"
+else
+    fail "the gap ledger fixture builds"
+fi
+if run_generator "$GAPS_FIXTURE" --init && run_generator "$GAPS_FIXTURE" && run_generator "$GAPS_FIXTURE" --check; then
+    pass "a valid gap ledger writes and passes --check"
+else
+    fail "a valid gap ledger writes and passes --check"
+fi
+if python3 - "$GAPS_FIXTURE/$FLAT_REF/index.json" <<'PY'
+import json
+import sys
+
+claimed = [
+    (row["topic"], row["owner"], row["coverage"], row["operator_action"])
+    for row in json.load(open(sys.argv[1], encoding="utf-8")).get("gaps", [])
+]
+expected = [
+    ("vat-return", "references/vat-return/README.md", "gap", "Prepare the return before filing."),
+    ("yearly-overview", "references/yearly-overview/README.md", "partial", "Review the overview with the operator."),
+    ("income-tax-return", "references/income-tax-return/README.md", "covered", "No operator action remains."),
+]
+sys.exit(0 if claimed == expected else 1)
+PY
+then
+    pass "the index copies the ledger rows in table order"
+else
+    fail "the index copies the ledger rows in table order"
+fi
+gaps_before=$(tree_checksums "$GAPS_FIXTURE")
+run_generator "$GAPS_FIXTURE"
+status=$?
+gaps_after=$(tree_checksums "$GAPS_FIXTURE")
+if [[ "$status" -eq 0 ]] && [[ "$gaps_before" == "$gaps_after" ]]; then
+    pass "a second gap ledger write leaves every file byte-identical"
+else
+    fail "a second gap ledger write leaves every file byte-identical"
+fi
+
+copy_fixture "$GAPS_FIXTURE" "$GAPS_MUTANT"
+python3 - "$GAPS_MUTANT/$FLAT_REF/routing-signals.md" <<'PY'
+import sys
+
+path = sys.argv[1]
+text = open(path, encoding="utf-8").read()
+old = "| `vat-return` | `references/vat-return/README.md` | gap |"
+new = "| `vat-return` |  | gap |"
+open(path, "w", encoding="utf-8").write(text.replace(old, new, 1))
+PY
+run_generator "$GAPS_MUTANT" --check
+status=$?
+if [[ "$status" -ne 0 ]] && grep -Eq '^gaps routing-signals\.md row [0-9]+ topic vat-return has no owner$' "$TMP_ROOT/out.txt"; then
+    pass "a gap row without an owner fails the check and names the row"
+else
+    fail "a gap row without an owner fails the check and names the row"
+fi
+
+copy_fixture "$GAPS_FIXTURE" "$GAPS_MUTANT"
+sed -i.bak 's#| partial |#| unresolved |#' "$GAPS_MUTANT/$FLAT_REF/routing-signals.md"
+run_generator "$GAPS_MUTANT" --check
+status=$?
+if [[ "$status" -ne 0 ]] \
+    && grep -Eq '^gaps routing-signals\.md row [0-9]+ topic yearly-overview coverage unresolved is not covered, partial or gap$' "$TMP_ROOT/out.txt"; then
+    pass "an unknown coverage fails the check and names the row"
+else
+    fail "an unknown coverage fails the check and names the row"
+fi
+
+copy_fixture "$GAPS_FIXTURE" "$GAPS_MUTANT"
+sed -i.bak 's#| yearly-overview |#| vat-return |#' "$GAPS_MUTANT/$FLAT_REF/routing-signals.md"
+run_generator "$GAPS_MUTANT" --check
+status=$?
+if [[ "$status" -ne 0 ]] && grep -Eq '^gaps routing-signals\.md row [0-9]+ duplicate topic vat-return$' "$TMP_ROOT/out.txt"; then
+    pass "a duplicate topic fails the check and names the row"
+else
+    fail "a duplicate topic fails the check and names the row"
+fi
+
+copy_fixture "$GAPS_FIXTURE" "$GAPS_MUTANT"
+python3 - "$GAPS_MUTANT/$FLAT_REF/routing-signals.md" <<'PY'
+import sys
+
+path = sys.argv[1]
+text = open(path, encoding="utf-8").read()
+text = text.replace("`references/vat-return/README.md`", "/tmp/outside-the-skill.md", 1)
+text = text.replace("`references/income-tax-return/README.md`", "references/../../outside.md", 1)
+open(path, "w", encoding="utf-8").write(text)
+PY
+run_generator "$GAPS_MUTANT" --check
+status=$?
+if [[ "$status" -ne 0 ]] \
+    && grep -Eq '^gaps routing-signals\.md row [0-9]+ topic vat-return owner /tmp/outside-the-skill\.md escapes the skill folder$' "$TMP_ROOT/out.txt" \
+    && grep -Eq '^gaps routing-signals\.md row [0-9]+ topic income-tax-return owner references/\.\./\.\./outside\.md escapes the skill folder$' "$TMP_ROOT/out.txt"; then
+    pass "an absolute or climbing owner fails the check and names the row"
+else
+    fail "an absolute or climbing owner fails the check and names the row"
+fi
+
+copy_fixture "$GAPS_FIXTURE" "$GAPS_MUTANT"
+python3 - "$GAPS_MUTANT/$FLAT_REF/index.json" <<'PY'
+import sys
+
+path = sys.argv[1]
+text = open(path, encoding="utf-8").read()
+open(path, "w", encoding="utf-8").write(text.replace('"coverage":"gap"', '"coverage":"covered"', 1))
+PY
+run_generator "$GAPS_MUTANT" --check
+status=$?
+if [[ "$status" -ne 0 ]] && grep -q '^drift index\.json gaps topic vat-return$' "$TMP_ROOT/out.txt"; then
+    pass "a hand edit to the stored gap list fails the check"
+else
+    fail "a hand edit to the stored gap list fails the check"
+fi
+
+# ───────────────────────────────────────────────────────────────
+# 17. RESULT SUMMARY AND EXIT
 # ───────────────────────────────────────────────────────────────
 
 printf '\n%d passed, %d failed\n' "$passed" "$failed"

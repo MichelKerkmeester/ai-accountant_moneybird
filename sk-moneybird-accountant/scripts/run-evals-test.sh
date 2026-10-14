@@ -272,9 +272,9 @@ REAL_ANSWERS = {
         "references/tax-rules/2026/kosten-en-auto/figures.md and references/tax-rules/source-library.md.\n"
     ),
     "cross-year-rule": (
-        "The rule across years is answered from subsection 3.n of "
-        "references/tax-rules/dutch-tax-rules.md by the line range its generated "
-        "section list gives. Route: LIVE, type T6, loaded "
+        "The rule across years is answered from section 3 of "
+        "references/tax-rules/dutch-tax-rules.md and the one general topic "
+        "file its table names. Route: LIVE, type T6, loaded "
         "references/tax-rules/dutch-tax-rules.md.\n"
     ),
     "out-of-scope-tax-system": (

@@ -103,12 +103,12 @@ scripts/
 | `generate-plan-kit.py` | Parses the phase references and the setup reference, renders the phase dashboard, the config template, the workspace folder list and one spec packet per phase, then writes them or checks them |
 | `init-workspace.sh` | Creates `migration-workspace/` from `assets/migration/` and copies `specs/000-migration-template/` to `specs/<NNN-slug>/`, skipping every file that already exists |
 | `plan-kit-test.sh` | Builds throwaway repositories, runs the generator and the workspace script, and checks the generated files, placeholders, links, refusals and repeat runs |
-| `check-route-table.py` | Checks the task-type route table in `../SKILL.md`: markers, header, rows T1 to T9, budgets, tool routes, read-set paths, constants, margin overrides and signal source links. Compares the generated router block with the table row by row and the table's multi-word signals with `../graph-metadata.json`, and the `--write` mode regenerates both |
-| `route-table-test.sh` | Runs the route table checker on the real SKILL.md and on mutated copies, and expects every mutant to fail. Covers the router block drift, the hand edit inside the block, the missing intent signal and the byte-stable second write |
+| `check-route-table.py` | Checks the task-type route table in `../SKILL.md`: markers, header, rows T1 to T12, budgets, tool routes, the read-set grammar, constants, margin overrides, signal source links and the documented gap ledger. Expands every read item over its year and map tokens, fails a missing required path or anchor and lists a missing conditional read. Compares the generated router block with the table row by row and the table's multi-word signals with `../graph-metadata.json`, and the `--write` mode regenerates both |
+| `route-table-test.sh` | Runs the route table checker on the real SKILL.md and on mutated copies, and expects every mutant to fail. Covers the router block drift, the hand edit inside the block, the missing intent signal, the byte-stable second write, the read-set grammar, the two maps and the gap ledger rows |
 | `build-session-context.py` | Writes the git-ignored `session-context.json` from the runtime clock and a narrow migration projection, with `--check` and `--route-state` |
 | `session-context-test.sh` | Runs the script against offline fixtures for the clock, the interactive flag, the allowlist, staleness and the post-cutover states |
-| `build-reference-index.py` | Scans `../references/` and writes or checks the nav blocks, `../references/index.json`, the year README tables, the section 3 value rows, the change note tables, `../references/tax-rules/year-changes.md` and the leaf reachability report |
-| `reference-index-test.sh` | Builds a fixture repository, runs the generator on it and on the real corpus, and checks the fence rules, drift detection, byte stability, the change note mutants and the mutation cases |
+| `build-reference-index.py` | Scans `../references/` and writes or checks the nav blocks, `../references/index.json` with its gap ledger, the year README tables, the year-figure rows of the general topic files, the change note tables, `../references/tax-rules/year-changes.md` and the leaf reachability report |
+| `reference-index-test.sh` | Builds a fixture repository, runs the generator on it and on the real corpus, and checks the fence rules, drift detection, byte stability, the change note mutants, the gap ledger mutants and the mutation cases |
 | `check-fragments.py` | Resolves every relative link path and fragment in the skill family, matches a fragment against an `<a id>` line or a GitHub-style heading slug, rejects a duplicate-suffixed slug, and requires the section ids of every year topic file in order. A flat topic file carries all eight ids. A phase 003 split part carries its own subset: `figures.md` sections 1 and 2, `rules.md` section 3, `examples.md` section 4 and `notes.md` sections 5 to 8. The year README, the year changelog and the year change note are exempt |
 | `fragment-check-test.sh` | Builds fixtures for a resolving slug, a renamed id, a renamed heading, a missing file, a duplicate-suffix slug, a year topic at any depth, a split topic part with one id removed and the year file exemptions, then runs the checker on the real corpus and on a throwaway copy with one renamed heading |
 | `split-topic-files.py` | Splits the 96 year topic files into four part files, rewrites `../references/tax-rules/dutch-tax-rules.md` into `../references/tax-rules/general/`, remaps every citation of a split source and writes `../references/tax-rules/split-manifest.json`. The `--plan`, `--write` and `--check` modes stay offline and hash a normalized body |
@@ -119,9 +119,9 @@ scripts/
 | `hostile-invoice-set-test.sh` | Runs the checker on the real set and on seven seeded mutations. Scores results fixtures in both directions and refuses an incomplete results file |
 | `write-contract-check.py` | Checks the write contract restatements in `AGENTS.md` and the two skill files against the canonical contract in `../references/migration/shared-mechanisms.md`: the pointer anchor, the gate tokens, the two named rules, the exit codes and the read-back sentence. The guard's own die codes must stay a subset of the canonical set |
 | `write-contract-test.sh` | Runs the drift check on the real tree and on a clean copy, then seeds five divergences. Each one must fail and name its file, and a missing root is refused |
-| `route-replay/route-replay.py` | Scores the route fixture corpus offline in `resolve` mode and replays the refusal and hostile rows through the guard and the stub in `replay` mode, with a connectivity gate, a router snapshot hash, `--rev`, `--covers` and `results.csv` plus `report.md` output |
-| `route-replay/routing-gold.json` | The route fixture corpus: one row per offline routing scenario, its Dutch twin, the gap, tie, tier, out-of-scope, follow-up, mixed, refusal and hostile rows, with the calibration and held-out labels written before any tuning |
-| `route-replay/route-replay-test.sh` | Runs the route replay on a temp copy of the skill and proves both modes, the deleted path, the twin mismatch, the unmet claim, a wrong expected exit and two dated runs |
+| `route-replay/route-replay.py` | Reads the phase map, the topic map and the weak signals from the skill, applies the filing precedence, scores the route fixture corpus offline in `resolve` mode and replays the refusal and hostile rows through the guard and the stub in `replay` mode, with a connectivity gate, a router snapshot hash, `--rev`, `--covers` and `results.csv` plus `report.md` output |
+| `route-replay/routing-gold.json` | The route fixture corpus, version 2: one row per offline routing scenario, its Dutch twin, the gap, tie, tier, out-of-scope, follow-up, mixed, refusal and hostile rows, a preparation row and a filing row for each of T10 to T12, a two-turn row and an additive T7 row, with the calibration and held-out labels written before any tuning |
+| `route-replay/route-replay-test.sh` | Runs the route replay on a temp copy of the skill and proves both modes, the deleted path, the twin mismatch, the unmet claim, a wrong expected exit, two dated runs, the filing precedence and the new report sections |
 | `run-evals.py` | Grades captured with-skill and baseline answers against the assertion blocks in `../evals/evals.json` and writes `grading.json` and `benchmark.json` with the skill hash, the pass rates and the refusal false-positive rate |
 | `run-evals-test.sh` | Builds capture fixtures for a compliant run, a broken answer, a refuse-everything run, a forbidden-pattern trip, another capture year, alternative phrasings and three skill snapshots |
 | `../evals/evals.json` | The eval cases, each with a prompt, an expected route and an assertion block of required tokens and forbidden patterns |
@@ -184,12 +184,12 @@ scripts/
 
 `build-reference-index.py` keeps the generated text of the reference tree in step with the files that own it. It is offline and byte-stable. One pass over `references/` owns:
 
-- The nav block after the H1 of every reference file over 51,200 bytes. The block lists the read parts, and every part ends at a heading line and stays at or under 51,200 bytes.
-- The toc block in `dutch-tax-rules.md`, a generated section list right after its read plan. It lists each H2 and subsections 3.1 to 3.10 with the line range of each on the final file, so a rule question can name one range instead of the whole file.
-- `references/index.json`, one row per file with its byte count, line count and H2 sections. Structure only, no figures.
+- The nav block after the H1 of every reference file over 51,200 bytes. The block lists the read parts, and every part ends at a heading line and stays at or under 51,200 bytes. After the topic split no reference file is over that line, so no nav block is present today.
+- The toc block, a generated section list after the read plan of a guide. The topic split moved the sections of `dutch-tax-rules.md` into `general/`, and the generator removes a read plan and section list a file no longer needs, so no toc block is present today.
+- `references/index.json`, one row per file with its byte count, line count and H2 sections, plus a top-level `gaps` list copied from the Documented gaps table of `routing-signals.md` in table order. Structure only, no figures.
 - The TOPIC FILES and HEADLINE FIGURES tables in the eight `references/tax-rules/YYYY/README.md` files.
-- The generated year-figure rows in section 3 of `dutch-tax-rules.md`, each naming its owning file, year, Status and Check.
-- One `changes` block in each `references/tax-rules/YYYY/changes.md`, one row per topic file with the section 5 bullet count, the first bullet cut to a snippet and the link to the section 5 anchor.
+- The generated year-figure rows in the ten general topic files under `references/tax-rules/general/`, each naming its owning file, year, Status and Check.
+- One `changes` block in each `references/tax-rules/YYYY/changes.md`, one row per topic file with the section 5 bullet count, the first bullet cut to a snippet and the link to the section 5 anchor in that topic's `notes.md`.
 - `references/tax-rules/year-changes.md` as a whole-file output, one H2 per year, newest first, with the path link to the year note and that note's authored bullets.
 - The reachability check over the leaves in `leaf-manifest.json`.
 
@@ -200,8 +200,8 @@ A year change note holds authored bullets in its "Unique to <year>" section and 
 `--check` applies three rules to the authored bullets of every note. A number in a bullet must occur as the same number in the linked section 5. The last link of a bullet must resolve to an existing file in the year folder and its `<a id="5-changes"></a>` line. A year note must hold five to ten authored bullets. Real failure lines:
 
 ```text
-changes tax-rules/2026/changes.md bullet 3 number 99 not in btw.md#5-changes
-changes tax-rules/2026/changes.md bullet 1 link btw.md#6-in-the-books does not resolve
+changes tax-rules/2026/changes.md bullet 3 number 99 not in inkomstenbelasting/notes.md#5-changes
+changes tax-rules/2026/changes.md bullet 1 link btw/notes.md#6-in-the-books does not resolve
 changes tax-rules/2026/changes.md 4 authored bullets, the band is 5 to 10
 drift tax-rules/2026/changes.md changes
 drift year-changes.md
@@ -215,17 +215,17 @@ reference-index: wrote tax-rules/year-changes.md
 reference-index: wrote index.json
 ```
 
-A nav block or a toc block over its budget fails `--check`. The budget of one file is the smaller of 1,200 bytes and 1 percent of that file's size. The fixed cap binds a large file such as `dutch-tax-rules.md`, and the percentage cap binds a file just over the 51,200-byte limit.
+A nav block or a toc block over its budget fails `--check`. The budget of one file is the smaller of 1,200 bytes and 1 percent of that file's size. The fixed cap binds a large file, and the percentage cap binds a file just over the 51,200-byte limit.
 
 | Mode | Purpose |
 |---|---|
 | (no flag) | Writes every changed fence body, the year change overview and the index |
 | `--check` | Recomputes every output in memory and reports each difference without writing, exit 1 on drift, on a change note bullet failure or on a nav or toc block over its budget |
 | `--init` | Inserts the empty fence pair of every missing block at its anchor, idempotent and writes no index |
-| `--overlap` | Reports the headline values that section 3 restates in prose and how many no generated row owns, reads only |
+| `--overlap` | Reports the headline values that the year topic files restate in prose and how many no generated row owns, reads only |
 | `--reachability` | Reports every manifest leaf that no routed folder, link or index entry reaches |
 
-Measured overhead beside the gain: the nav blocks, markers included, add 15,317 bytes and 279 lines across the 54 files that carry one, and `references/index.json` is about 104 KB. The gain: every large file can be read in parts that each stay within 51,200 bytes, and the restated section 3 values without an owner fell from 58 to 0.
+Measured on the current tree: no file carries a nav block, `references/index.json` is about 149 KB and `--overlap` prints `overlap: restated 29 of 192, unowned 29`. Before the topic split the same report printed 58 of 192, all unowned.
 
 ---
 
@@ -235,7 +235,7 @@ Every year topic file under `references/tax-rules/YYYY/` carries eight id lines,
 
 `1-overview`, `2-key-figures`, `3-how-it-works`, `4-worked-examples`, `5-changes`, `6-in-the-books`, `7-open-points`, `8-related-resources`
 
-The local shape uses no `{#id}` heading form and no anchor line on an H3. A rule inside section 3 is reached by its line range in the section list of `dutch-tax-rules.md`, not by a fragment. H3 slugs repeat across some files, so a suffix such as `-1` is not a stable address.
+The local shape uses no `{#id}` heading form and no anchor line on an H3. A cross-year rule is reached through the General topics table in section 3 of `dutch-tax-rules.md`, which names its one file under `general/`, not by a fragment. H3 slugs repeat across some files, so a suffix such as `-1` is not a stable address.
 
 `check-fragments.py` reads `AGENTS.md`, `README.md` and the markdown of the three skill folders. It resolves every relative link path, then it matches each `path.md#fragment` against an `<a id>` line or a GitHub-style heading slug in the target. An anchor-only link resolves inside the file that holds it. A fragment that matches only a duplicate-suffixed slug fails as `duplicate-suffix`, even when the target exists. External URLs, images and links inside fenced code blocks are skipped. The script makes no network call and its output is sorted. In a year topic file it also reports a missing, unexpected, duplicate or out-of-order id by name. A year topic file below `references/` is either a flat file directly in a year folder or one part of a topic folder directly under a year folder. The flat file carries all eight ids. The split parts carry a subset: `figures.md` sections 1 and 2, `rules.md` section 3, `examples.md` section 4 and `notes.md` sections 5 to 8. A year folder holds three files beside its topic files: `README.md`, `changelog.md` and `changes.md`. The checker applies the id rule to the topic files alone, so the correction log and the change note stay out of it.
 
@@ -253,8 +253,7 @@ The read budget ladder, in tokens:
 |---|---|
 | One year README | 3,000 tokens |
 | One section | 5,000 tokens |
-| One full topic file | 15,000 tokens |
-| `dutch-tax-rules.md` section 3 | 80,000 tokens, only behind a TOC jump |
+| One full topic file or part | 15,000 tokens |
 
 The task-type table in `../SKILL.md` states every row budget from this ladder. The canary route reads the year README and one topic section, and its 8,000 `cl100k_base` ceiling is the first two ladder rows together.
 
@@ -269,20 +268,20 @@ The library is `tiktoken` 0.11.0. The Operator chose `o200k_base` as the lead on
 
 Offline rule: the two data files come from a seeded cache. Point `TIKTOKEN_CACHE_DIR` at it, for example `../tiktoken-cache` from the repository root. The run checks that each file exists and that its sha256 matches the pin before it loads an encoder. A missing file or a changed file stops the run with exit code 2. Nothing downloads an encoding.
 
-Re-measure rule: re-measure on every reference change. Run `token-baseline.py` and commit the JSON with the change. A run with nothing to write ends with `baseline unchanged, 143 files, 993 sections`. `--check` recomputes every row in memory and names each drifted row, so a stale baseline fails the run. The final lines of a passing check:
+Re-measure rule: re-measure on every reference change. Run `token-baseline.py` and commit the JSON with the change. A run with nothing to write opens with the line `baseline unchanged, 444 files, 994 sections`, after the script name. `--check` recomputes every row in memory and names each drifted row, so a stale baseline fails the run. A passing check opens with the line `check ok, 444 files, 994 sections`, after the script name, prints one row per named unit and ends with:
 
 ```text
-token-baseline: check ok, 143 files, 993 sections
-token-baseline: unit car route proposed: 23351 bytes, o200k_base 6772, cl100k_base 7377
-token-baseline: car route ratio: o200k_base 0.2840, cl100k_base 0.2870
+token-baseline: unit car route current: 84263 bytes, o200k_base 24620, cl100k_base 26474
+token-baseline: unit car route proposed: 23411 bytes, o200k_base 6796, cl100k_base 7389
+token-baseline: car route ratio: o200k_base 0.2760, cl100k_base 0.2791
 ```
 
-The canary covers the 2026 car question on the KEY FIGURES route, which reads the year README and section 2 of `kosten-en-auto.md`. It asserts the proposed route stays at or under 35 percent of the current route and at or under the 8,000 token ceiling. Three mutants prove the gate: the proposed route pointed at the whole topic file, a cache that holds the lead encoding data under the second name, and a fixture that passes a four-bytes-per-token budget and fails the token budget. The measured route:
+The canary covers the 2026 car question on the KEY FIGURES route, which reads the year README and the `kosten-en-auto/figures.md` part. It asserts the proposed route stays at or under 35 percent of the current route and at or under the 8,000 token ceiling. Three mutants prove the gate: the proposed route pointed at the whole topic file, a cache that holds the lead encoding data under the second name, and a fixture that passes a four-bytes-per-token budget and fails the token budget. The measured route:
 
 ```text
-route current: o200k_base 23842, cl100k_base 25700
-route proposed: o200k_base 6772, cl100k_base 7377
-route ratio: o200k_base 0.2840, cl100k_base 0.2870
+route current: o200k_base 24620, cl100k_base 26474
+route proposed: o200k_base 6796, cl100k_base 7389
+route ratio: o200k_base 0.2760, cl100k_base 0.2791
 ```
 
 The suite ends with `8 passed, 0 failed`.
@@ -321,12 +320,19 @@ write-contract: ok
 
 ## 12. ROUTE REPLAY
 
-`route-replay/route-replay.py` scores the route fixture corpus offline. In `resolve` mode it builds a router snapshot from the task-type table in `../SKILL.md` section 2, the constants in `../references/routing-signals.md` and the resource map, prints the snapshot sha256, runs a connectivity gate over every routed path and scores each row for mode, task type, read set, expected facts and the token ceiling. In `replay` mode it runs `moneybird-guard` in test mode against the stub CLI and asserts the recorded command line and exit code of every refusal row and every hostile invoice case. Time, environment and absolute paths never enter an output. `--rev` scores a git worktree of one revision, `--covers` filters the rows by their tag, and `--corpus`, `--out`, `--guard` and `--stub` point at other inputs. Token counts read the pinned `o200k_base` cache and a missing or changed data file exits 2 before any download.
+`route-replay/route-replay.py` scores the route fixture corpus offline. In `resolve` mode it builds a router snapshot from the task-type table in `../SKILL.md` section 2, the constants in `../references/routing-signals.md` and the resource map. It reads `PHASE_FILES` and `TOPIC_FILES` from the generated router block and the weak signals from `../references/routing-signals.md` instead of keeping its own copy, and a T1 or T5 read resolves through those maps. A T1 request that names a phase reads its phase file without the migration index, which stays the fallback when no phase is named. When a T8 filing signal from the table matches, T8 wins over T10, T11 and T12, and the scorer keeps no filing list of its own. It prints the snapshot sha256, runs a connectivity gate over every routed path and scores each row for mode, task type, read set, expected facts and the token ceiling. In `replay` mode it runs `moneybird-guard` in test mode against the stub CLI and asserts the recorded command line and exit code of every refusal row and every hostile invoice case. Time, environment and absolute paths never enter an output. `--rev` scores a git worktree of one revision, `--covers` filters the rows by their tag, and `--corpus`, `--out`, `--guard` and `--stub` point at other inputs. Token counts read the pinned `o200k_base` cache and a missing or changed data file exits 2 before any download.
 
-Output is `results.csv` and `report.md`. The CSV columns are `scenario_id`, `lang`, `split`, `gold_mode`, `gold_task_type`, `score`, `verdict`, `reason` and `tokens_loaded`, plus `command`, `expected_exit` and `actual_exit` in replay mode. The report holds the route accuracy per language and per split, the abstain and false-abstain counts, the facts and tokens per row and the held-out result. A passing resolve run over the full corpus prints:
+Output is `results.csv` and `report.md`. The CSV columns are `scenario_id`, `lang`, `split`, `gold_mode`, `gold_task_type`, `score`, `verdict`, `reason`, `tokens_loaded`, `t7` and `reads`, plus `command`, `expected_exit` and `actual_exit` in replay mode. `t7` marks a row whose prompt matches a T7 signal and `reads` counts the files the route loads. The report holds the route accuracy per language and per split, the abstain and false-abstain counts, the facts and tokens per row and the held-out result, plus four sections:
+
+- Additive T7 assertion: every row that matches a T7 signal, with the route it kept. The additive CLI row never wins alone, so a T7 win fails the run.
+- Per-type precision and recall: for T1 to T12, the correct routes over the rows routed to that type and over the rows whose gold type it is, with both denominators.
+- Read counts: the files each row loads.
+- Warning band sink: the rows whose winning gap sits in the warning band above the route margin. Telemetry only, the route never changes.
+
+A passing resolve run over the full corpus prints:
 
 ```text
-route-replay: ok, 61 rows passed
+route-replay: ok, 75 rows passed
 ```
 
 A passing replay run prints:
@@ -335,7 +341,7 @@ A passing replay run prints:
 route-replay: ok, 31 replay rows passed
 ```
 
-`route-replay/route-replay-test.sh` copies the skill to a temp root and ends with `Result: 36 passed, 0 failed`. It proves the deleted routed path exits 2 and names the path, the twin mismatch and the unmet claim exit 1, a wrong expected exit fails the replay, an empty corpus and a missing cache exit 2, two dated runs give byte-identical `results.csv` and `report.md`, and every term the resolver keeps for the T4 conditional reads is a T4 signal in the table.
+`route-replay/route-replay-test.sh` copies the skill to a temp root and ends with `Result: 47 passed, 0 failed`. It proves the deleted routed path exits 2 and names the path, the twin mismatch and the unmet claim exit 1, a wrong expected exit fails the replay, an empty corpus and a missing cache exit 2, two dated runs give byte-identical `results.csv` and `report.md`, every term the resolver keeps for the T4 conditional reads is a T4 signal in the table, and a preparation turn followed by a filing turn routes T10 and then T8.
 
 ---
 
@@ -394,19 +400,46 @@ sk-moneybird-accountant/references/tax-rules/2024/btw/figures.md:56
 
 A quiet watch prints `no watched URL changed` and a current calendar prints `3 files current at the Prinsjesdag checkpoint (2026-09-15)`.
 
-`source-library-test.sh` proves the index, the link check and the trace on fixture repositories, a fixture server on 127.0.0.1, and the real index, plus digests, the report write, the watch and its state, the calendar check, blocked hosts and dead or perishable citations. It ends with `129 passed, 0 failed`.
+`source-library-test.sh` proves the index, the link check and the trace on fixture repositories, a fixture server on 127.0.0.1, and the real index, plus digests, the report write, the watch and its state, the calendar check, blocked hosts and dead or perishable citations. It ends with `130 passed, 0 failed`.
 
 ---
 
 ## 17. ROUTE CALIBRATION
 
-`../assets/route-calibration.json` records the frozen routing constants that `../SKILL.md` section 2 and `../references/routing-signals.md` state. It holds `ROUTE_MARGIN = 0.25`, `FALLBACK_FLOOR = 0.5`, the sweep that chose the floor in steps of 0.05 over the 32 calibration rows and the result over the 10 held-out rows. Both splits matched every row with no false abstains. `check-route-table.py` reads the frozen constants from this file by default and a passing run prints `route-table: ok`.
+`../assets/route-calibration.json` records the frozen routing constants that `../SKILL.md` section 2 and `../references/routing-signals.md` state. It holds `ROUTE_MARGIN = 0.25`, `FALLBACK_FLOOR = 0.5`, the sweep that chose the floor in steps of 0.05 from 0.0 to 0.5 over the 53 calibration rows of `routing-gold-v2-calibration-held-out` and the result over the 22 held-out rows. Both splits matched every row with no false abstains. Every swept floor ties on this split, because every winning score sits above 0.5, so the sweep does not discriminate and the tie break toward the higher floor returns the table's 0.5. `check-route-table.py` reads the frozen constants from this file by default and a passing run prints `route-table: ok`.
 
 ---
 
 ## 18. ROUTER BLOCK
 
-`../SKILL.md` section 2 holds one router block between `<!-- router-block:start -->` and `<!-- router-block:end -->`, generated from the Task-Type Table by `check-route-table.py --write`. The block carries `INTENT_SIGNALS` per row from the Dutch and English signal cells, `RESOURCE_MAP` and `LOADING_LEVELS` from the read-set column, `UNKNOWN_FALLBACK_CHECKLIST` from the three fallback tiers, and the guard, existence-check and discovery helpers. Edit the table and rerun the mode, never the block by hand.
+`../SKILL.md` section 2 holds one router block between `<!-- router-block:start -->` and `<!-- router-block:end -->`, generated from the Task-Type Table by `check-route-table.py --write`. The block carries `INTENT_SIGNALS` per row from the Dutch and English signal cells, the read structures below from the read-set column, `UNKNOWN_FALLBACK_CHECKLIST` from the three fallback tiers, and the guard, existence-check and discovery helpers. Edit the table and rerun the mode, never the block by hand.
+
+### Read-set grammar
+
+A read-set cell holds read items in backticks, separated by prose that keeps the condition a reader needs. Each item is one mark, one path and an optional anchor, with no space:
+
+- `!` marks a required read and `?` a conditional read. A backticked token without a mark, or a bare path outside backticks, fails the check. A cell of `-` means no reads.
+- `@section-id` names a heading by its GitHub slug and is stripped before the path resolves.
+- `{year}` expands over every four-digit folder under `../references/tax-rules/`.
+- `{phase-file}` expands to every value of `PHASE_FILES` and `{topic-figures}` to every value of `TOPIC_FILES`.
+
+A `!` item fails when any expansion is missing, so a `{year}` item must exist in every year folder. A missing `?` item prints `missing: <type> <path>` and never fails, which is how a row names a procedure README a later phase writes. An anchor fails when an existing file has no heading with that slug. A path that is absolute, climbs out of the skill folder or does not end in `.md` fails as `escapes the skill folder`.
+
+### Generated structures
+
+One entry per row, T1 to T12 in table order:
+
+| Structure | Holds |
+|---|---|
+| `REQUIRED_READS` and `CONDITIONAL_READS` | The items of each mark as written, without the mark, with the tokens and anchors kept |
+| `SECTION_TARGETS` | Per type, each anchored item's path mapped to its anchor |
+| `PHASE_FILES` | Migration phase number to its file, parsed from the phase table in `../references/migration/README.md`: 23 phases, 0 to 22, over 7 files |
+| `TOPIC_FILES` | Topic slug to its `figures.md` part at `2-key-figures`, one entry per topic folder: 12 topics |
+| `RESOURCE_MAP` and `LOADING_LEVELS` | The union of both marks per type, anchors stripped, tokens kept |
+
+### Gap ledger
+
+The table under the heading `Documented gaps` in `../references/routing-signals.md` lists every deliverable whose procedure is not written yet, with the columns Topic, Owner, Coverage and Operator action. `build-reference-index.py` copies it into `../references/index.json` as the `gaps` list. Coverage is one of `covered`, `partial` and `gap`. The owner is a path inside the skill folder that a later phase may create, so both checks test the fields, not the file. A row with an empty owner, an unknown coverage or a repeated topic fails `check-route-table.py --check` and `build-reference-index.py --check`. The T8 documented-gap answer names the row's topic, owner and Operator action.
 
 The same run appends every multi-word table signal to `../graph-metadata.json` `intent_signals` and never removes a hand-added entry. A first run prints:
 
@@ -469,9 +502,11 @@ python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check
 bash sk-moneybird-accountant/scripts/route-table-test.sh
 python3 -I sk-moneybird-accountant/scripts/check-skill-words.py
 bash sk-moneybird-accountant/scripts/check-skill-words-test.sh
+python3 -I sk-moneybird-accountant/scripts/split-topic-files.py --check
+bash sk-moneybird-accountant/scripts/split-topic-files-test.sh
 ```
 
-Expected result: `166 generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 2671 links, 390 fragment links, 0 problems` and `32 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 143 files, 993 sections` and `8 passed, 0 failed`. The route replay commands print `route-replay: ok, 61 rows passed` and `route-replay: ok, 31 replay rows passed`, and the suite ends with `Result: 36 passed, 0 failed`. The eval suite ends with `Result: 59 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `524 sources match the index` and its suite ends with `129 passed, 0 failed`. The route table commands print `route-table: ok` and a final pass and fail count with 0 failed.
+Expected result: `166 generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 4406 links, 391 fragment links, 0 problems` and `32 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 444 files, 994 sections` and `8 passed, 0 failed`. The route replay commands print `route-replay: ok, 75 rows passed` and `route-replay: ok, 31 replay rows passed`, and the suite ends with `Result: 47 passed, 0 failed`. The eval suite ends with `Result: 59 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `524 sources match the index` and its suite ends with `130 passed, 0 failed`. The route table commands print `route-table: ok` after one `missing:` line per absent conditional read, and the suite ends with `58 passed, 0 failed`. The split commands print `split-check: ok` and `Result: 12 passed, 0 failed`.
 
 The word check prints one line per `SKILL.md` with its word count and its verdict. It warns above 3,000 words, exits 1 above 4,000 words and exits 2 with the path named when a file is missing or unreadable. `check-route-table.py` runs it, so the `skill-health` CI step enforces the budget, and `check-skill-words-test.sh` proves the 2,999-word, 3,001-word and 4,001-word bands. The walk skips hidden folders, `specs/`, `node_modules/` and the two private folders, so a backup copy of a retired skill inside a spec packet never counts.
 

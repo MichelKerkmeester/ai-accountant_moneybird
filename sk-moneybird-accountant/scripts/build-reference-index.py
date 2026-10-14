@@ -6,9 +6,11 @@
 
 Scans the markdown and the JSON under sk-moneybird-accountant/references/ and
 writes two kinds of output from the same run, references/index.json, a
-structure-only map of every markdown file and its H2 sections, and the bodies
-of the generated blocks that sit between the fence markers inside the
-reference files. The script uses the Python standard library only and makes no
+structure-only map of every markdown file and its H2 sections plus the
+authored gap ledger, and the bodies of the generated blocks that sit between
+the fence markers inside the reference files. The gap ledger is a table under
+one heading of references/routing-signals.md, and the index copies its rows in
+table order. The script uses the Python standard library only and makes no
 network call. Output is byte-stable: sorted paths, sorted keys, LF line
 endings, no timestamp and no random part. Paths in the output and in the
 messages are relative to the references root.
@@ -96,8 +98,8 @@ Usage:
 Options:
     --check         Compute every output in memory and report each block or
                     index that differs, without writing. Exits 1 on drift, on
-                    a block over its byte budget or on an unreachable
-                    manifest leaf.
+                    a gap ledger row that breaks its rules, on a block over
+                    its byte budget or on an unreachable manifest leaf.
     --init          Insert the fence pair of every registered block that a
                     file misses, at its anchor. A pair may frame bytes that
                     are already in the file, so a table that is already
@@ -147,6 +149,16 @@ INDEX_PATH = os.path.join(REFERENCES_ROOT, INDEX_NAME)
 # it is an output and not an input.
 SCAN_SUFFIXES = (".md", ".json")
 MARKDOWN_SUFFIX = ".md"
+
+# The authored gap ledger is a table under one heading of a reference file.
+# The index copies it, so one authored row drives the documented-gap answer.
+GAPS_SOURCE = "routing-signals.md"
+GAPS_HEADING = "Documented gaps"
+GAPS_TOPIC_COLUMN = "Topic"
+GAPS_OWNER_COLUMN = "Owner"
+GAPS_COVERAGE_COLUMN = "Coverage"
+GAPS_ACTION_COLUMN = "Operator action"
+GAPS_COVERAGE = ("covered", "partial", "gap")
 
 # WHY: the marker text is built from parts, so a block generator passes only
 # its id and never the marker itself. The id keeps to lower case letters,
@@ -766,21 +778,22 @@ def index_entry(path: str, text: str) -> Dict[str, Any]:
     }
 
 
-def build_index_text(entries: List[Dict[str, Any]]) -> str:
-    """Render the index JSON with one file row per line.
+def build_index_text(entries: List[Dict[str, Any]], gaps: List[Dict[str, str]]) -> str:
+    """Render the index JSON with one file row and one gap row per line.
 
     Args:
         entries: Rows from index_entry(), in path order.
+        gaps: Gap ledger rows from gap_rows(), in table order.
 
     Returns:
         Index text with sorted keys, LF line endings and a trailing newline.
     """
     rows = [json.dumps(entry, ensure_ascii=False, sort_keys=True, separators=(",", ":")) for entry in entries]
-    head = '{"files":['
-    tail = '],"generator":%s}' % json.dumps(GENERATOR)
-    if not rows:
-        return head + tail + "\n"
-    return head + "\n" + ",\n".join(rows) + "\n" + tail + "\n"
+    gap_lines = [json.dumps(gap, ensure_ascii=False, sort_keys=True, separators=(",", ":")) for gap in gaps]
+    files_text = '{"files":[' + ("" if not rows else "\n" + ",\n".join(rows) + "\n") + "]"
+    gaps_text = ',"gaps":[' + ("" if not gap_lines else "\n" + ",\n".join(gap_lines) + "\n") + "]"
+    tail = ',"generator":%s}' % json.dumps(GENERATOR)
+    return files_text + gaps_text + tail + "\n"
 
 
 def read_index() -> Optional[str]:
@@ -792,6 +805,170 @@ def read_index() -> Optional[str]:
     if not os.path.isfile(INDEX_PATH):
         return None
     return read_text(INDEX_PATH)
+
+
+def gap_source(files: List[Dict[str, Any]]) -> Optional[str]:
+    """Return the text of the authored gap ledger file.
+
+    Args:
+        files: Result of load_files().
+
+    Returns:
+        The file text, or None when the tree holds no ledger file.
+    """
+    for file in files:
+        if file["path"] == GAPS_SOURCE:
+            return file["text"]
+    return None
+
+
+def gap_cell(row: List[str], header: List[str], column: str) -> str:
+    """Return one gap ledger cell with its markdown code marks stripped.
+
+    Args:
+        row: Cell list of one table row.
+        header: Cell list of the table header.
+        column: Column name to read.
+
+    Returns:
+        The cell text without its surrounding spaces and backticks, or an
+        empty string when the header or the row stops before it.
+    """
+    if column not in header:
+        return ""
+    index = header.index(column)
+    if index >= len(row):
+        return ""
+    return row[index].strip().strip("`").strip()
+
+
+def gap_table(files: List[Dict[str, Any]]) -> Optional[List[Tuple[int, str]]]:
+    """Read the line spans of the authored gap ledger rows.
+
+    Args:
+        files: Result of load_files().
+
+    Returns:
+        The spans of the header line, the separator line and the row lines,
+        in file order, or None when the tree holds no ledger table.
+    """
+    text = gap_source(files)
+    if text is None:
+        return None
+    return table_spans(line_spans(text), GAPS_HEADING)
+
+
+def gap_rows(files: List[Dict[str, Any]]) -> List[Dict[str, str]]:
+    """Read the authored gap ledger rows.
+
+    Args:
+        files: Result of load_files().
+
+    Returns:
+        One row per table row, in table order, with the index keys. An absent
+        file, heading or table yields an empty list.
+    """
+    table = gap_table(files)
+    if table is None:
+        return []
+    header = markdown_cells(table[0][1])
+    return [
+        {
+            "topic": gap_cell(row, header, GAPS_TOPIC_COLUMN),
+            "owner": gap_cell(row, header, GAPS_OWNER_COLUMN),
+            "coverage": gap_cell(row, header, GAPS_COVERAGE_COLUMN),
+            "operator_action": gap_cell(row, header, GAPS_ACTION_COLUMN),
+        }
+        for row in (markdown_cells(span[1]) for span in table[2:])
+    ]
+
+
+def gap_problems(files: List[Dict[str, Any]]) -> List[str]:
+    """List the gap ledger rows that break the ledger rules.
+
+    Args:
+        files: Result of load_files().
+
+    Returns:
+        One line per empty topic, empty owner, unknown coverage, duplicate
+        topic or owner that leaves the skill folder, naming the source row.
+    """
+    table = gap_table(files)
+    if table is None:
+        return []
+    header = markdown_cells(table[0][1])
+    problems: List[str] = []
+    seen: Set[str] = set()
+    for span in table[2:]:
+        row = markdown_cells(span[1])
+        topic = gap_cell(row, header, GAPS_TOPIC_COLUMN)
+        owner = gap_cell(row, header, GAPS_OWNER_COLUMN)
+        coverage = gap_cell(row, header, GAPS_COVERAGE_COLUMN)
+        where = "gaps %s row %d" % (GAPS_SOURCE, span[0])
+        if not topic:
+            problems.append("%s has no topic" % where)
+        elif topic in seen:
+            problems.append("%s duplicate topic %s" % (where, topic))
+        else:
+            seen.add(topic)
+        if not owner:
+            problems.append("%s topic %s has no owner" % (where, topic))
+        else:
+            normalized = os.path.normpath(owner)
+            if os.path.isabs(owner) or normalized == ".." or normalized.startswith("../"):
+                problems.append("%s topic %s owner %s escapes the skill folder" % (where, topic, owner))
+        if coverage not in GAPS_COVERAGE:
+            problems.append("%s topic %s coverage %s is not covered, partial or gap" % (where, topic, coverage))
+    return problems
+
+
+def stored_gaps(text: Optional[str]) -> Optional[List[Any]]:
+    """Read the gap list out of a stored index text.
+
+    Args:
+        text: Index text, or None when the index does not exist yet.
+
+    Returns:
+        The stored gap list, or None when the text holds no JSON object with
+        a gap list.
+    """
+    if text is None:
+        return None
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError:
+        return None
+    if not isinstance(data, dict):
+        return None
+    gaps = data.get("gaps")
+    if not isinstance(gaps, list):
+        return None
+    return gaps
+
+
+def gap_drift(expected: List[Dict[str, str]], stored: Optional[List[Any]]) -> str:
+    """Name the first stored gap row that differs from the authored row.
+
+    Args:
+        expected: Rows from gap_rows(), in table order.
+        stored: Gap list read from the index, or None when it holds none.
+
+    Returns:
+        A drift line that names the first differing topic, or the field alone
+        when no row can be named. An empty string means the lists match.
+    """
+    if stored == expected:
+        return ""
+    if stored is not None:
+        for index, row in enumerate(expected):
+            if index >= len(stored) or stored[index] != row:
+                return "drift %s gaps topic %s" % (INDEX_NAME, row["topic"])
+        if len(stored) > len(expected):
+            extra = stored[len(expected)]
+            topic = extra.get("topic") if isinstance(extra, dict) else None
+            if isinstance(topic, str) and topic:
+                return "drift %s gaps topic %s" % (INDEX_NAME, topic)
+    return "drift %s gaps" % INDEX_NAME
 
 
 def year_changes_path(files: List[Dict[str, Any]]) -> str:
@@ -2798,7 +2975,7 @@ def expected_index(files: List[Dict[str, Any]], rendered: Dict[str, str]) -> str
     if overview not in {file["path"] for file in files}:
         entries.append(index_entry(overview, rendered[overview]))
         entries.sort(key=lambda entry: entry["path"])
-    return build_index_text(entries)
+    return build_index_text(entries, gap_rows(files))
 
 
 # ───────────────────────────────────────────────────────────────
@@ -2851,6 +3028,7 @@ def check_all(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]], re
     """
     overview = year_changes_path(files)
     problems = budget_problems(files)
+    problems += gap_problems(files)
     problems += ["drift %s %s" % pair for pair in missing_fences(files, bodies)]
     for file in files:
         # WHY: the overview is generated whole and reported on its own line, so
@@ -2870,8 +3048,12 @@ def check_all(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]], re
     problems += change_note_problems(files)
     if read_year_changes(overview) != rendered[overview]:
         problems.append("drift %s" % YEAR_CHANGES_NAME)
-    if read_index() != expected_index(files, rendered):
+    stored = read_index()
+    if stored != expected_index(files, rendered):
         problems.append("drift %s" % INDEX_NAME)
+        gap_line = gap_drift(gap_rows(files), stored_gaps(stored))
+        if gap_line:
+            problems.append(gap_line)
     if problems:
         for problem in problems:
             print(problem)

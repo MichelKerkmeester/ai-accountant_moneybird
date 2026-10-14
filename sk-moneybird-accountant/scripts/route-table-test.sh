@@ -241,43 +241,59 @@ mutant "Dutch cell emptied" "$TMP_ROOT/m-dutch.md"
 sed '/^| T9 | onboarding |/d' "$(copy)" >"$TMP_ROOT/m-row.md"
 mutant "T9 row deleted" "$TMP_ROOT/m-row.md"
 
+# Delete the T12 row, which every table must now carry
+sed '/^| T12 | prepare the income tax return |/d' "$(copy)" >"$TMP_ROOT/m-row-t12.md"
+mutant "T12 row deleted" "$TMP_ROOT/m-row-t12.md"
+
 # Point a read path at a file that does not exist
 sed 's|references/purchase-invoices\.md|references/purchase-invoices-missing.md|' "$(copy)" >"$TMP_ROOT/m-path.md"
 mutant "read path missing" "$TMP_ROOT/m-path.md"
 
 # Point a read path outside the skill folder
-sed 's|`references/purchase-invoices\.md`|`../AGENTS.md`|' "$(copy)" >"$TMP_ROOT/m-path-escape.md"
+sed 's|`!references/purchase-invoices\.md`|`!../AGENTS.md`|' "$(copy)" >"$TMP_ROOT/m-path-escape.md"
 drift_mutant "read path escapes the skill folder" "$TMP_ROOT/m-path-escape.md" "row T4 read path escapes the skill folder"
 
 # Point a read path at a file that is not markdown
-sed 's|`references/purchase-invoices\.md`|`references/index.json`|' "$(copy)" >"$TMP_ROOT/m-path-nonmd.md"
+sed 's|`!references/purchase-invoices\.md`|`!references/index.json`|' "$(copy)" >"$TMP_ROOT/m-path-nonmd.md"
 drift_mutant "read path is not markdown" "$TMP_ROOT/m-path-nonmd.md" "row T4 read path is not markdown"
 
 # Name a read path outside backticks, which the generated read set would drop
-sed 's|`references/purchase-invoices\.md`|references/purchase-invoices.md|' "$(copy)" >"$TMP_ROOT/m-path-bare.md"
+sed 's|`!references/purchase-invoices\.md`|!references/purchase-invoices.md|' "$(copy)" >"$TMP_ROOT/m-path-bare.md"
 drift_mutant "read path not backticked" "$TMP_ROOT/m-path-bare.md" "row T4 read path is not backticked"
 
 # Name an absolute read path outside backticks
-sed 's|`references/purchase-invoices\.md`|/tmp/purchase-invoices.md|' "$(copy)" >"$TMP_ROOT/m-path-bare-abs.md"
+sed 's|`!references/purchase-invoices\.md`|!/tmp/purchase-invoices.md|' "$(copy)" >"$TMP_ROOT/m-path-bare-abs.md"
 drift_mutant "absolute read path not backticked" "$TMP_ROOT/m-path-bare-abs.md" "row T4 read path is not backticked"
 
 # Name a read path with an uppercase extension outside backticks
-sed 's|`references/purchase-invoices\.md`|references/purchase-invoices.MD|' "$(copy)" >"$TMP_ROOT/m-path-bare-upper.md"
+sed 's|`!references/purchase-invoices\.md`|!references/purchase-invoices.MD|' "$(copy)" >"$TMP_ROOT/m-path-bare-upper.md"
 drift_mutant "uppercase read path not backticked" "$TMP_ROOT/m-path-bare-upper.md" "row T4 read path is not backticked"
 
 # Name a UNC read path and two other document extensions outside backticks
-sed 's|`references/purchase-invoices\.md`|//server/share/README.md|' "$(copy)" >"$TMP_ROOT/m-path-bare-unc.md"
+sed 's|`!references/purchase-invoices\.md`|!//server/share/README.md|' "$(copy)" >"$TMP_ROOT/m-path-bare-unc.md"
 drift_mutant "UNC read path not backticked" "$TMP_ROOT/m-path-bare-unc.md" "row T4 read path is not backticked"
-sed 's|`references/purchase-invoices\.md`|references/purchase-invoices.rst|' "$(copy)" >"$TMP_ROOT/m-path-bare-rst.md"
+sed 's|`!references/purchase-invoices\.md`|!references/purchase-invoices.rst|' "$(copy)" >"$TMP_ROOT/m-path-bare-rst.md"
 drift_mutant "rst read path not backticked" "$TMP_ROOT/m-path-bare-rst.md" "row T4 read path is not backticked"
-sed 's|`references/purchase-invoices\.md`|references/purchase-invoices.mdx|' "$(copy)" >"$TMP_ROOT/m-path-bare-mdx.md"
+sed 's|`!references/purchase-invoices\.md`|!references/purchase-invoices.mdx|' "$(copy)" >"$TMP_ROOT/m-path-bare-mdx.md"
 drift_mutant "mdx read path not backticked" "$TMP_ROOT/m-path-bare-mdx.md" "row T4 read path is not backticked"
 
 # Point a read path at a markdown-named symlink to a file that is not markdown
 ln -s index.json "$SYMLINK_PATH"
-sed 's|`references/purchase-invoices\.md`|`references/route-table-test-alias.md`|' "$(copy)" >"$TMP_ROOT/m-path-symlink.md"
+sed 's|`!references/purchase-invoices\.md`|`!references/route-table-test-alias.md`|' "$(copy)" >"$TMP_ROOT/m-path-symlink.md"
 drift_mutant "read path is a markdown symlink to a non-markdown file" "$TMP_ROOT/m-path-symlink.md" "row T4 read path is not markdown"
 rm -f "$SYMLINK_PATH"
+
+# Point a required read at a file that does not exist, which must fail
+sed 's|`!references/migration/shared-mechanisms\.md`|`!references/migration/shared-mechanisms-missing.md`|' "$(copy)" >"$TMP_ROOT/m-required-missing.md"
+drift_mutant "required read path missing" "$TMP_ROOT/m-required-missing.md" "row T1 read path missing: references/migration/shared-mechanisms-missing.md"
+
+# Name a section anchor the target file does not hold
+sed 's|`!references/migration/jortt-to-moneybird-mapping\.md`|`!references/migration/jortt-to-moneybird-mapping.md@no-such-heading`|' "$(copy)" >"$TMP_ROOT/m-anchor.md"
+drift_mutant "read anchor missing" "$TMP_ROOT/m-anchor.md" "row T2 read anchor not found"
+
+# Drop the mark from a backticked read path
+sed 's|`!references/purchase-invoices\.md`|`references/purchase-invoices.md`|' "$(copy)" >"$TMP_ROOT/m-unmarked.md"
+drift_mutant "read item without a mark" "$TMP_ROOT/m-unmarked.md" "row T4 read item is not marked with ! or ?"
 
 # Remove the ROUTE_MARGIN line
 sed '/ROUTE_MARGIN/d' "$(copy)" >"$TMP_ROOT/m-margin.md"
@@ -324,6 +340,32 @@ signals_mutant "belastingdienst link removed" "$TMP_ROOT/m-signals-link.md"
 
 # Delete the whole signals file by pointing the checker at an absent path
 signals_mutant "signals file deleted" "$TMP_ROOT/no-such-routing-signals.md"
+
+# Copy the real signals file, whose Documented gaps table is the ledger
+# under test, then mutate one of its rows per problem.
+cp "$SIGNALS_MD" "$TMP_ROOT/gaps.md"
+
+# A valid ledger passes and reports its row count
+python3 -I "$CHECKER" --signals "$TMP_ROOT/gaps.md" >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+if [[ "$status" -eq 0 ]] && grep -qE 'gaps: [0-9]+ rows' "$TMP_ROOT/out.txt"; then
+    pass "a valid gap ledger passes"
+else
+    fail "a valid gap ledger passes"
+    cat "$TMP_ROOT/out.txt"
+fi
+
+# Empty the owner cell of the first ledger row
+sed 's|references/vat-return/README.md| |' "$TMP_ROOT/gaps.md" >"$TMP_ROOT/m-gap-owner.md"
+signals_mutant "gap row without an owner" "$TMP_ROOT/m-gap-owner.md"
+
+# Give the first ledger row a coverage value outside the allowed set
+sed 's/| gap |/| unknown |/' "$TMP_ROOT/gaps.md" >"$TMP_ROOT/m-gap-coverage.md"
+signals_mutant "gap row with an unknown coverage" "$TMP_ROOT/m-gap-coverage.md"
+
+# Repeat a topic in the ledger
+sed 's/| yearly-overview |/| vat-return |/' "$TMP_ROOT/gaps.md" >"$TMP_ROOT/m-gap-duplicate.md"
+signals_mutant "gap ledger with a repeated topic" "$TMP_ROOT/m-gap-duplicate.md"
 
 # ───────────────────────────────────────────────────────────────
 # 7. CALIBRATION MUTANTS
@@ -417,6 +459,27 @@ drift_mutant "table signal changed without regeneration" "$TMP_ROOT/m-signal-dri
 # Hand edit one line inside the generated block
 sed 's/raise ValueError("local markdown only")/raise ValueError("markdown only")/' "$(copy)" >"$TMP_ROOT/m-hand-edit.md"
 mutant "hand edit inside the router block" "$TMP_ROOT/m-hand-edit.md"
+
+# Hand edit one row inside the generated REQUIRED_READS structure
+python3 - "$(copy)" "$TMP_ROOT/m-required-edit.md" <<'PY'
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    lines = handle.read().splitlines()
+out = []
+inside = False
+for line in lines:
+    if line == "REQUIRED_READS = {":
+        inside = True
+    elif inside and line == "}":
+        inside = False
+    elif inside and line.startswith('    "T2":'):
+        line = '    "T2": ["references/migration/jortt-to-moneybird-mapping.md", "references/routing-signals.md"],'
+    out.append(line)
+with open(sys.argv[2], "w", encoding="utf-8") as handle:
+    handle.write("\n".join(out) + "\n")
+PY
+drift_mutant "hand edit inside REQUIRED_READS" "$TMP_ROOT/m-required-edit.md" "row T2"
 
 # Drop one multi-word table signal from the intent list
 python3 - "$GRAPH_METADATA" "$TMP_ROOT/m-intent.json" <<'PY'
@@ -521,6 +584,27 @@ else
     cat "$TMP_ROOT/out.txt"
 fi
 
+# A conditional read that names an absent file is recorded and never fails.
+# The copy needs a write run first so the generated block matches the cell.
+python3 - "$WORD_COPY/sk-moneybird-accountant/SKILL.md" <<'PY'
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    text = handle.read()
+text = text.replace("`?references/mixed-use-costs.md`", "`?references/mixed-use-costs-missing.md`")
+with open(sys.argv[1], "w", encoding="utf-8") as handle:
+    handle.write(text)
+PY
+python3 -I "$WORD_CHECKER_COPY" --write >"$TMP_ROOT/out.txt" 2>&1
+python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+if [[ "$status" -eq 0 ]] && grep -qF 'missing: T4 references/mixed-use-costs-missing.md' "$TMP_ROOT/out.txt"; then
+    pass "an absent conditional read is reported and passes"
+else
+    fail "an absent conditional read is reported and passes"
+    cat "$TMP_ROOT/out.txt"
+fi
+
 # The same copy carries the split proof, so one changed byte in a part body
 # fails the route table check through the wired split check
 SPLIT_PART="$WORD_COPY/sk-moneybird-accountant/references/tax-rules/2025/btw/rules.md"
@@ -549,6 +633,21 @@ if [[ "$status" -eq 1 ]] \
     pass "a missing year README under tax-rules fails the read-set check"
 else
     fail "a missing year README under tax-rules fails the read-set check"
+    cat "$TMP_ROOT/out.txt"
+fi
+
+# A required map expansion must exist in every year folder, so a topic
+# figures file missing from one year fails.
+YEAR_FIGURES="$WORD_COPY/sk-moneybird-accountant/references/tax-rules/2020/btw/figures.md"
+mv "$YEAR_FIGURES" "$TMP_ROOT/year-figures.bak"
+python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+mv "$TMP_ROOT/year-figures.bak" "$YEAR_FIGURES"
+if [[ "$status" -eq 1 ]] \
+    && grep -qF 'row T5 read path missing: references/tax-rules/2020/btw/figures.md' "$TMP_ROOT/out.txt"; then
+    pass "a topic figures file missing from one year folder fails"
+else
+    fail "a topic figures file missing from one year folder fails"
     cat "$TMP_ROOT/out.txt"
 fi
 

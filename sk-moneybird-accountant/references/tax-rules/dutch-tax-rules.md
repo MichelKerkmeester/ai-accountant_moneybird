@@ -21,15 +21,15 @@ checked_on: "2026-10-12"
 
 ## 1. OVERVIEW
 
-This file is the entry point for Dutch tax questions for a ZZP freelancer with an eenmanszaak, and for a director who owns a BV, for tax years 2020 to 2027. Each year has its own folder with one file per topic. Every value there carries a tax year, a status, a check tag and a primary source URL, checked on 2026-10-11 against belastingdienst.nl, wetten.overheid.nl, officielebekendmakingen.nl, tweedekamer.nl, eerstekamer.nl, rijksoverheid.nl, ondernemersplein.overheid.nl, kvk.nl and rvo.nl.
+This file is the entry point for Dutch tax questions for a ZZP freelancer with an eenmanszaak, and for a director who owns a BV, for tax years 2020 to 2027. Each year has its own folder with one folder per topic. Every value there carries a tax year, a status, a check tag and a primary source URL, checked on 2026-10-11 against belastingdienst.nl, wetten.overheid.nl, officielebekendmakingen.nl, tweedekamer.nl, eerstekamer.nl, rijksoverheid.nl, ondernemersplein.overheid.nl, kvk.nl and rvo.nl.
 
 ---
 
 ## 2. HOW TO USE IT
 
 1. Find the tax year the work belongs to. A transaction belongs to the year of its date, and a return to the year it covers.
-2. Open that year's README, then the topic file. For a figure question, start at section 2 KEY FIGURES (`#2-key-figures`) and load other sections only for the mechanics. Each year folder holds the same twelve topic files.
-3. For how a rule works across years, read only subsection 3.n, by the line range in the section list at the top of this file.
+2. Open that year's README, then the topic's `figures.md` part. For a figure question, its section 2 KEY FIGURES (`#2-key-figures`) answers, and the `rules.md`, `examples.md` and `notes.md` parts hold the mechanics. Each year folder holds the same twelve topic folders.
+3. For how a rule works across years, read section 3 GENERAL RULES (`#3-general-rules`) below, then only the one file under `general/` its table names.
 4. Respect the tags. Do not present an UNVERIFIED, proposed or unknown value as settled. Say what would confirm it.
 5. For 2027, check the Status column on every row. On 2026-10-11 the Belastingplan 2027 was not adopted and the December 2026 indexation was not published.
 6. For what changed in one year, the difference between years or `verschil met vorig jaar`, read that year's `changes.md` first, then the one topic section 5 it links. The generated [year changes](year-changes.md) file gathers every year, newest first.

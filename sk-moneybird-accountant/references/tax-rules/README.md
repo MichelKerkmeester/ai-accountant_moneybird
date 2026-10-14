@@ -60,5 +60,5 @@ Each topic file carries its KEY FIGURES table, the rule text, the worked example
 
 1. Resolve the year and the value state from [year-and-state.md](year-and-state.md) before any figure is used.
 2. For one year, read its year README and then the one topic file the README names, starting at its KEY FIGURES section.
-3. For a rule across years, read subsection 3.n of [dutch-tax-rules.md](dutch-tax-rules.md) by the line range its generated section list gives.
+3. For a rule across years, read section 3 of [dutch-tax-rules.md](dutch-tax-rules.md#3-general-rules), then only the one file under `general/` its table names.
 4. For the official text behind a figure, read [source-library.md](source-library.md).

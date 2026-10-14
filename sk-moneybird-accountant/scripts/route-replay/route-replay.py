@@ -50,12 +50,13 @@ Options:
 
 Output:
     results.csv with the columns scenario_id, lang, split, gold_mode,
-    gold_task_type, score, verdict, reason and tokens_loaded, report.md with
-    the scored dimensions, the accuracy lines and the Dutch parity result,
-    and a one-line summary on stdout. A replay run adds command,
-    expected_exit and actual_exit columns. Exit 0 when every row passes, 1 on
-    a row or parity finding and 2 on a usage, corpus, encoding cache or
-    connectivity error.
+    gold_task_type, score, verdict, reason, tokens_loaded, t7 and reads,
+    report.md with the scored dimensions, the accuracy lines, the per-type
+    precision and recall with denominators, the read counts, the warning
+    band sink and the additive T7 assertion, and a one-line summary on
+    stdout. A replay run adds command, expected_exit and actual_exit
+    columns. Exit 0 when every row passes, 1 on a row or parity finding and
+    2 on a usage, corpus, encoding cache or connectivity error.
 """
 
 # ───────────────────────────────────────────────────────────────
@@ -63,6 +64,7 @@ Output:
 # ───────────────────────────────────────────────────────────────
 
 import argparse
+import ast
 import csv
 import hashlib
 import importlib.util
@@ -90,6 +92,8 @@ SKILL_MD_NAME = "SKILL.md"
 SKILL_FOLDER_NAME = "sk-moneybird-accountant"
 SIGNALS_NAME = os.path.join("references", "routing-signals.md")
 MIGRATION_INDEX = os.path.join("references", "migration", "README.md")
+ROUTER_START = "<!-- router-block:start -->"
+ROUTER_END = "<!-- router-block:end -->"
 REFERENCE_INDEX = os.path.join("references", "index.json")
 BASELINE_HELPER = os.path.join("scripts", "token-baseline.py")
 HOSTILE_CASES = os.path.join("assets", "hostile-invoice-cases.json")
@@ -102,14 +106,21 @@ END_MARKER = "<!-- route-table:end -->"
 TOC_START = "<!-- GENERATED:toc:start -->"
 TOC_END = "<!-- GENERATED:toc:end -->"
 ROW_RE = re.compile(r"^\|\s*(T\d+)\s*\|")
-PHASE_ROW_RE = re.compile(r"^\|\s*(\d+)\s*\|[^|]*\|\s*\[([^\]]+)\]")
+PHASE_ROW_RE = re.compile(r"^\|\s*(\d+)\s*\|[^|]*\|\s*\[[^\]]+\]\(\./([^)]+)\)\s*\|")
 TOC_LINE_RE = re.compile(r"^-\s+(.+?):\s+lines\s+(\d+)-(\d+)\s*$")
 BACKTICK_RE = re.compile(r"`([^`]*)`")
-YEAR_TOKEN = "YYYY"
+YEAR_TOKEN = "{year}"
+PHASE_PLACEHOLDER = "{phase-file}"
+TOPIC_PLACEHOLDER = "{topic-figures}"
+YEAR_FOLDER_RE = re.compile(r"^\d{4}$")
 YEAR_RE = re.compile(r"\b(19|20)\d{2}\b")
 PHASE_RE = re.compile(r"(?:fase|phase)\s*(\d+)", re.IGNORECASE)
 PASSED_RE = re.compile(r"(passed|gehaald|afgerond|doorlopen)\s+(?:fase|phase)?\s*$", re.IGNORECASE)
-WEAK_SIGNALS = ("btw",)
+
+# WHY: the contract fixes these three rows as the preparation rows, so the
+# filing precedence drops exactly these candidates when a T8 signal matches.
+PREPARE_TYPES = ("T10", "T11", "T12")
+REPORT_TYPES = tuple("T%d" % number for number in range(1, 13))
 
 RESULT_COLUMNS = (
     "scenario_id",
@@ -121,6 +132,8 @@ RESULT_COLUMNS = (
     "verdict",
     "reason",
     "tokens_loaded",
+    "t7",
+    "reads",
 )
 
 REPLAY_COLUMNS = RESULT_COLUMNS + (
@@ -137,6 +150,9 @@ MODE_BY_TYPE = {
     "T5": "LIVE",
     "T6": "LIVE",
     "T9": "MIGRATION",
+    "T10": "LIVE",
+    "T11": "LIVE",
+    "T12": "LIVE",
 }
 
 # WHY: the table names the signal families in prose, so a few fixtures need
@@ -296,6 +312,93 @@ def strip_anchor(path: str) -> str:
         The path without the suffix.
     """
     return path.split("#", 1)[0]
+
+
+def plain_path(address: str) -> str:
+    """Return the file part of one read-set address.
+
+    The table grammar writes an anchor as `@section`, the resolved read set
+    as `#section`, so both separators are stripped.
+
+    Args:
+        address: Path with an optional @anchor or #anchor suffix.
+
+    Returns:
+        The path without the suffix.
+    """
+    return strip_anchor(address.replace("@", "#"))
+
+
+def read_set_items(cell: str) -> List[Tuple[str, str]]:
+    """Read the marked items of one read-set cell.
+
+    Args:
+        cell: Raw read-set cell text.
+
+    Returns:
+        One (mark, item) pair per backticked item, with the mark `!` or `?`
+        and the item text after the mark, anchor included.
+    """
+    items: List[Tuple[str, str]] = []
+    for span in BACKTICK_RE.findall(cell):
+        span = span.strip()
+        if not span or span == "-" or span[0] not in "!?":
+            continue
+        item = span[1:].strip()
+        if item:
+            items.append((span[0], item))
+    return items
+
+
+def year_folders(skill_root: str) -> List[str]:
+    """List the four-digit year folders under the tax-rules folder.
+
+    Args:
+        skill_root: Absolute skill folder.
+
+    Returns:
+        Sorted folder names such as 2020.
+    """
+    base = join_skill(skill_root, "references/tax-rules")
+    if not os.path.isdir(base):
+        return []
+    return sorted(
+        name
+        for name in os.listdir(base)
+        if YEAR_FOLDER_RE.fullmatch(name) and os.path.isdir(os.path.join(base, name))
+    )
+
+
+def expand_read_item(
+    item: str,
+    years: Sequence[str],
+    phase_map: Dict[str, str],
+    topic_map: Dict[str, str],
+) -> List[str]:
+    """Expand the map tokens and the year token of one read item.
+
+    Args:
+        item: Read item text after its mark, with the anchor attached.
+        years: Year folders to expand the year token over.
+        phase_map: Phase number to phase file from the generated block.
+        topic_map: Topic slug to figures file from the generated block.
+
+    Returns:
+        The expansion in map and year order, or the item itself when it
+        carries no token.
+    """
+    items = [item]
+    if PHASE_PLACEHOLDER in item:
+        items = [part.replace(PHASE_PLACEHOLDER, value) for part in items for value in phase_map.values()]
+    if TOPIC_PLACEHOLDER in item:
+        items = [part.replace(TOPIC_PLACEHOLDER, value) for part in items for value in topic_map.values()]
+    expanded: List[str] = []
+    for part in items:
+        if YEAR_TOKEN in part:
+            expanded.extend(part.replace(YEAR_TOKEN, year) for year in years)
+        else:
+            expanded.append(part)
+    return expanded
 
 
 def split_cells(line: str) -> List[str]:
@@ -533,8 +636,11 @@ def parse_constants(skill_text: str, signals_text: str) -> Dict[str, Any]:
     }
 
 
-def parse_phase_map(text: str) -> Dict[str, str]:
+def parse_migration_index(text: str) -> Dict[str, str]:
     """Read the phase map out of the migration index.
+
+    The generated block in SKILL.md is the map the scorer uses. This parse
+    exists only to prove the block and the authored index still agree.
 
     Args:
         text: Migration index text.
@@ -547,8 +653,96 @@ def parse_phase_map(text: str) -> Dict[str, str]:
         match = PHASE_ROW_RE.match(line.strip())
         if not match:
             continue
-        mapping[match.group(1)] = "references/migration/" + match.group(2).split("/")[-1]
+        mapping[match.group(1)] = "references/migration/" + match.group(2)
     return mapping
+
+
+def parse_generated_map(text: str, name: str) -> Dict[str, str]:
+    """Read one generated map out of the router block.
+
+    Args:
+        text: SKILL.md text.
+        name: Generated map name, such as PHASE_FILES.
+
+    Returns:
+        The mapping, string to string.
+
+    Raises:
+        SystemExit: When the markers, the map or a value is malformed.
+    """
+    if ROUTER_START not in text or ROUTER_END not in text:
+        fail("router block markers missing in %s" % SKILL_MD_NAME)
+    pattern = re.compile(r"^%s = \{$" % re.escape(name), re.MULTILINE)
+    match = pattern.search(text)
+    if not match:
+        fail("generated router block is missing %s" % name)
+    stop = text.find("\n}", match.end())
+    if stop == -1:
+        fail("generated %s has no closing brace" % name)
+    literal = text[match.start():stop + 2]
+    try:
+        value = ast.literal_eval(literal[literal.index("{"):])
+    except (SyntaxError, ValueError):
+        fail("generated %s is not a literal map" % name)
+    if not isinstance(value, dict) or any(
+        not isinstance(key, str) or not isinstance(item, str) for key, item in value.items()
+    ):
+        fail("generated %s must map strings to strings" % name)
+    return dict(value)
+
+
+def parse_weak_signals(signals_text: str) -> Tuple[str, ...]:
+    """Read the weak signal terms out of the signal reference.
+
+    The reference names a term as a weak signal, so only the backticked
+    spans before the words weak signal on that line count.
+
+    Args:
+        signals_text: routing-signals.md text.
+
+    Returns:
+        The weak signal phrases in file order.
+
+    Raises:
+        SystemExit: When the file names none.
+    """
+    for line in signals_text.splitlines():
+        index = line.lower().find("weak signal")
+        if index == -1:
+            continue
+        spans = [span.strip() for span in BACKTICK_RE.findall(line[:index]) if span.strip()]
+        if spans:
+            return tuple(spans)
+    fail("no weak signal named in %s" % os.path.basename(SIGNALS_NAME))
+
+
+def check_phase_agreement(skill_root: str, phase_map: Dict[str, str]) -> None:
+    """Prove the generated phase map still matches the migration index.
+
+    Args:
+        skill_root: Absolute skill folder.
+        phase_map: Phase map read from the generated router block.
+
+    Raises:
+        SystemExit: When the two disagree.
+    """
+    index_path = join_skill(skill_root, MIGRATION_INDEX)
+    if not os.path.isfile(index_path):
+        return
+    index_map = parse_migration_index(read_text(index_path))
+    if index_map == phase_map:
+        return
+    detail = ""
+    keys = sorted(set(index_map) | set(phase_map), key=lambda value: int(value))
+    for key in keys:
+        if index_map.get(key) != phase_map.get(key):
+            detail = " (phase %s: %s in the block, %s in the index)" % (
+                key,
+                phase_map.get(key, "missing"),
+                index_map.get(key, "missing"),
+            )
+            break
+    fail("constants disagree: PHASE_FILES does not match references/migration/README.md%s" % detail)
 
 
 def parse_toc_ranges(text: str) -> Dict[str, Tuple[int, int]]:
@@ -675,61 +869,65 @@ def build_snapshot(
     return snapshot, digest
 
 
-def routed_paths(route_rows: List[Dict[str, str]], skill_root: str) -> List[str]:
-    """List every backticked read path of the route table.
+def routed_paths(
+    route_rows: List[Dict[str, str]],
+    skill_root: str,
+    phase_map: Dict[str, str],
+    topic_map: Dict[str, str],
+) -> Tuple[List[str], List[str]]:
+    """Read the marked read paths of the route table.
 
     A year token expands over the year folders under the tax-rules folder,
-    and a dash cell holds no path.
+    a map token expands over the generated map, an anchor is stripped and a
+    dash cell holds no path.
 
     Args:
         route_rows: Parsed task-type rows.
         skill_root: Absolute skill folder.
+        phase_map: Phase number to phase file from the generated block.
+        topic_map: Topic slug to figures file from the generated block.
 
     Returns:
-        Sorted paths relative to the skill folder.
+        Two sorted path lists, the required reads and the conditional
+        reads, relative to the skill folder.
     """
-    base = join_skill(skill_root, "references/tax-rules")
-    if not os.path.isdir(base):
-        return []
-    years = sorted(
-        name
-        for name in os.listdir(base)
-        if re.fullmatch(r"\d{4}", name) and os.path.isdir(os.path.join(base, name))
-    )
-    found: List[str] = []
+    years = year_folders(skill_root)
+    required: List[str] = []
+    conditional: List[str] = []
     for row in route_rows:
-        for span in BACKTICK_RE.findall(row["read_set"]):
-            if span == "-":
-                continue
-            if YEAR_TOKEN in span:
-                for year in years:
-                    found.append(span.replace(YEAR_TOKEN, year))
-            else:
-                found.append(span)
-    return sorted(set(found))
+        for mark, item in read_set_items(row["read_set"]):
+            bucket = required if mark == "!" else conditional
+            for address in expand_read_item(item, years, phase_map, topic_map):
+                path = plain_path(address)
+                if path and path not in bucket:
+                    bucket.append(path)
+    return sorted(required), sorted(conditional)
 
 # ───────────────────────────────────────────────────────────────
 # 5. CONNECTIVITY GATE
 # ───────────────────────────────────────────────────────────────
 
-def connectivity_report(skill_root: str, rows: List[Dict[str, Any]], routed: Sequence[str]) -> List[str]:
-    """List every routed path that does not exist on disk.
+def connectivity_report(skill_root: str, rows: List[Dict[str, Any]], required: Sequence[str]) -> List[str]:
+    """List every required routed path that does not exist on disk.
+
+    A conditional read is never passed here, so a `?` path that does not
+    exist is not a connectivity failure.
 
     Args:
         skill_root: Absolute skill folder.
         rows: Corpus rows.
-        routed: Paths named by the route table.
+        required: Required paths named by the route table.
 
     Returns:
         One message per missing path, relative to the skill folder.
     """
-    wanted = list(routed)
+    wanted = list(required)
     for row in rows:
         wanted.extend(str(path) for path in row.get("expected_paths", []))
     missing: List[str] = []
     seen: Dict[str, bool] = {}
     for address in wanted:
-        path = strip_anchor(address)
+        path = plain_path(address)
         if path in seen:
             continue
         seen[path] = True
@@ -781,6 +979,8 @@ def resolve_paths(
     text: str,
     year: str,
     phase_map: Dict[str, str],
+    topic_map: Dict[str, str],
+    route_rows: List[Dict[str, str]],
 ) -> List[str]:
     """Resolve the read set of one winning task type.
 
@@ -790,13 +990,14 @@ def resolve_paths(
         text: Lower case request text.
         year: Fixture year for the read set, empty when unresolved.
         phase_map: Phase number to reference path.
+        topic_map: Topic slug to figures file from the generated block.
+        route_rows: Parsed task-type rows for the table-driven fallback.
 
     Returns:
         Reference paths relative to the skill folder.
     """
     if route_type == "T1":
         paths = [
-            "references/migration/README.md",
             "references/migration/shared-mechanisms.md",
             "references/migration/control-framework.md",
         ]
@@ -816,6 +1017,10 @@ def resolve_paths(
             phase_path = phase_map.get(number)
             if phase_path and phase_path not in paths:
                 paths.append(phase_path)
+        # The phase map reaches a named phase directly, so the migration
+        # index is read only as the fallback when no phase is named.
+        if not phases:
+            paths.insert(0, "references/migration/README.md")
         if any(phrase_matches(text, term) for term in ACCESS_TERMS):
             setup = "references/migration/overview-and-setup.md"
             if setup not in paths:
@@ -849,13 +1054,60 @@ def resolve_paths(
         if year:
             paths.append("references/tax-rules/%s/README.md" % year)
             topic = topic_file(text)
-            paths.append("references/tax-rules/%s/%s/figures.md#2-key-figures" % (year, topic))
+            target = topic_map.get(topic)
+            if target:
+                paths.append(target.replace(YEAR_TOKEN, year).replace("@", "#", 1))
         return paths
     if route_type == "T6":
         return ["references/tax-rules/general/work-relationship-and-procedure.md#310-work-relationship-and-procedure"]
     if route_type == "T9":
         return ["references/migration/overview-and-setup.md"]
-    return []
+    return resolve_table_reads(route_rows, route_type, skill_root, year, phase_map, topic_map)
+
+
+def resolve_table_reads(
+    route_rows: List[Dict[str, str]],
+    route_type: str,
+    skill_root: str,
+    year: str,
+    phase_map: Dict[str, str],
+    topic_map: Dict[str, str],
+) -> List[str]:
+    """Resolve the required reads of a row the fixed rules do not cover.
+
+    The preparation rows carry their figure reads as `!` items and their
+    procedure entry point as a `?` item, so only the required items load.
+    The fixture year pins the year token, and the year folders pin it when
+    the row carries no year.
+
+    Args:
+        route_rows: Parsed task-type rows.
+        route_type: Winning task type.
+        skill_root: Absolute skill folder.
+        year: Fixture year, empty when unresolved.
+        phase_map: Phase number to reference path.
+        topic_map: Topic slug to figures file from the generated block.
+
+    Returns:
+        The expanded required addresses, anchors in # form.
+    """
+    row: Optional[Dict[str, str]] = None
+    for item in route_rows:
+        if item["type"] == route_type:
+            row = item
+            break
+    if row is None:
+        return []
+    years = [year] if year else year_folders(skill_root)
+    paths: List[str] = []
+    for mark, item in read_set_items(row["read_set"]):
+        if mark != "!":
+            continue
+        for address in expand_read_item(item, years, phase_map, topic_map):
+            converted = address.replace("@", "#", 1)
+            if converted and converted not in paths:
+                paths.append(converted)
+    return paths
 
 
 def topic_file(text: str) -> str:
@@ -929,12 +1181,40 @@ def out_of_scope_hit(text: str) -> bool:
     return False
 
 
-def score_candidates(route_rows: List[Dict[str, str]], text: str) -> Dict[str, int]:
+def t8_signal_hit(route_rows: List[Dict[str, str]], text: str) -> bool:
+    """Tell whether any signal of the refusal row matches one request.
+
+    The scorer reads the filing verbs and the boundary words from the T8
+    signal cells. It keeps no list of its own.
+
+    Args:
+        route_rows: Parsed task-type rows.
+        text: Lower case request text.
+
+    Returns:
+        True when one T8 signal matches.
+    """
+    for row in route_rows:
+        if row["type"] != "T8":
+            continue
+        return any(
+            phrase_matches(text, phrase)
+            for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"])
+        )
+    return False
+
+
+def score_candidates(
+    route_rows: List[Dict[str, str]],
+    text: str,
+    weak_signals: Sequence[str],
+) -> Dict[str, int]:
     """Score every task type against one request.
 
     Args:
         route_rows: Parsed task-type rows.
         text: Lower case request text.
+        weak_signals: Phrases that never decide a row.
 
     Returns:
         Mapping of task type to its matched signal count, zero-count types
@@ -948,7 +1228,7 @@ def score_candidates(route_rows: List[Dict[str, str]], text: str) -> Dict[str, i
         count = 0
         topic_hit = False
         for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"]):
-            if phrase.lower() in WEAK_SIGNALS:
+            if phrase.lower() in weak_signals:
                 continue
             if phrase_matches(text, phrase):
                 if route_type == "T4" and phrase.lower() in T4_TOPIC_TERMS:
@@ -973,7 +1253,9 @@ def resolve_route(
     prompt: str,
     year: str,
     phase_map: Dict[str, str],
+    topic_map: Dict[str, str],
     constants: Dict[str, Any],
+    weak_signals: Sequence[str],
 ) -> Dict[str, Any]:
     """Resolve one request to a route, a tier and a read set.
 
@@ -983,24 +1265,39 @@ def resolve_route(
         prompt: Request text.
         year: Fixture year, empty when unresolved.
         phase_map: Phase number to reference path.
+        topic_map: Topic slug to figures file from the generated block.
         constants: Routing constants.
+        weak_signals: Phrases that never decide a row.
 
     Returns:
-        A route record with mode, type, tier, paths, abstain state and the
-        candidate types.
+        A route record with mode, type, tier, paths, abstain state, the
+        additive flag, the warning band gap and the candidate types.
     """
     text = prompt.lower()
     explicit_year = YEAR_RE.search(text) is not None
-    scores = score_candidates(route_rows, text)
+    scores = score_candidates(route_rows, text, weak_signals)
     t7_hit = any(
         phrase_matches(text, phrase)
         for row in route_rows
         if row["type"] == "T7"
         for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"])
     )
+    t8_hit = t8_signal_hit(route_rows, text)
+    # WHY: a filing signal wins over the preparation rows whatever they score.
+    if t8_hit:
+        for route_type in PREPARE_TYPES:
+            scores.pop(route_type, None)
     ordered = sorted(scores.items(), key=lambda item: (-item[1], item[0]))
+    margin = float(constants.get("route_margin") or 0.25)
+    warning = float(constants.get("warning_band") or 0.08)
+    floor = float(constants.get("fallback_floor") or 0.0)
+    band_gap: Optional[float] = None
+    if len(ordered) > 1:
+        gap = ordered[0][1] - ordered[1][1]
+        if margin <= gap < margin + warning:
+            band_gap = round(gap - margin, 6)
     if not ordered:
-        if out_of_scope_hit(text):
+        if t8_hit or out_of_scope_hit(text):
             return {
                 "mode": "ABSTAIN",
                 "type": "T8",
@@ -1009,6 +1306,7 @@ def resolve_route(
                 "abstain": True,
                 "candidates": ["T8"],
                 "t7": t7_hit,
+                "band_gap": None,
             }
         return {
             "mode": "ABSTAIN",
@@ -1018,10 +1316,9 @@ def resolve_route(
             "abstain": True,
             "candidates": [],
             "t7": t7_hit,
+            "band_gap": None,
         }
     winner = ordered[0][0]
-    margin = float(constants.get("route_margin") or 0.25)
-    floor = float(constants.get("fallback_floor") or 0.0)
     if ordered[0][1] < floor:
         if out_of_scope_hit(text):
             return {
@@ -1032,6 +1329,7 @@ def resolve_route(
                 "abstain": True,
                 "candidates": ["T8"],
                 "t7": t7_hit,
+                "band_gap": None,
             }
         return {
             "mode": "ABSTAIN",
@@ -1041,6 +1339,7 @@ def resolve_route(
             "abstain": True,
             "candidates": [ordered[0][0]],
             "t7": t7_hit,
+            "band_gap": None,
         }
     if len(ordered) > 1 and ordered[0][1] - ordered[1][1] < margin:
         decided = specificity_winner(text, ordered[0][0], ordered[1][0])
@@ -1053,6 +1352,7 @@ def resolve_route(
                 "abstain": True,
                 "candidates": sorted([ordered[0][0], ordered[1][0]]),
                 "t7": t7_hit,
+                "band_gap": None,
             }
         winner = decided
     if winner in ("T5", "T6") and not explicit_year and not year:
@@ -1065,9 +1365,10 @@ def resolve_route(
                 "abstain": True,
                 "candidates": [winner],
                 "t7": t7_hit,
+                "band_gap": band_gap,
             }
     mode = MODE_BY_TYPE.get(winner, "MIGRATION" if t7_hit else "LIVE")
-    paths = resolve_paths(skill_root, winner, text, year, phase_map)
+    paths = resolve_paths(skill_root, winner, text, year, phase_map, topic_map, route_rows)
     return {
         "mode": mode,
         "type": winner,
@@ -1076,6 +1377,7 @@ def resolve_route(
         "abstain": False,
         "candidates": [winner],
         "t7": t7_hit,
+        "band_gap": band_gap,
     }
 
 # ───────────────────────────────────────────────────────────────
@@ -1314,6 +1616,10 @@ def score_row(
         problems.append("claims not met %s" % ", ".join(missing_claims))
     if tokens_loaded > ceiling:
         problems.append("tokens %d above ceiling %d" % (tokens_loaded, ceiling))
+    if route["type"] == "T7":
+        problems.append("additive row T7 won alone")
+    if "t7" in row and bool(route.get("t7")) != bool(row.get("t7")):
+        problems.append("t7 additive hit %s expected %s" % (bool(route.get("t7")), bool(row.get("t7"))))
     score = 5 - len(problems)
     if problems:
         reason = ". ".join(problems)
@@ -1329,6 +1635,9 @@ def score_row(
         "verdict": "PASS" if not problems else "FAIL",
         "reason": reason,
         "tokens_loaded": str(tokens_loaded),
+        "t7": "1" if route.get("t7") else "0",
+        "reads": str(len(route.get("paths", []))),
+        "band_gap": route.get("band_gap"),
         "facts_found": len(facts_found),
         "expected_facts": len(facts),
         "tier": route["tier"],
@@ -1451,6 +1760,22 @@ def ratio_text(matched: int, total: int) -> str:
     return "%d/%d (%.3f)" % (matched, total, value)
 
 
+def metric_text(matched: int, total: int) -> str:
+    """Render one precision or recall fraction with its denominator.
+
+    Args:
+        matched: Correct rows.
+        total: Denominator rows, zero when no row covers the type.
+
+    Returns:
+        A text such as 12/15 (0.800), or 0/0 (n/a) when no row covers the
+        type.
+    """
+    if total == 0:
+        return "0/0 (n/a)"
+    return "%d/%d (%.3f)" % (matched, total, matched / total)
+
+
 def write_results(path: str, results: List[Dict[str, Any]], columns: Sequence[str] = RESULT_COLUMNS) -> None:
     """Write results.csv with a fixed column order.
 
@@ -1482,7 +1807,7 @@ def write_report(
     constants: Dict[str, Any],
     revision: str = "",
 ) -> None:
-    """Write report.md with the scored dimensions and the accuracy lines.
+    """Write report.md with the accuracy lines and the four metric sections.
 
     Args:
         path: Output file.
@@ -1560,6 +1885,69 @@ def write_report(
     lines.append("- Dutch parity: %d of %d twin pairs match" % (pair_total - len(parity), pair_total))
     for finding in parity:
         lines.append("- %s" % finding)
+    lines.append("")
+    lines.append("## Additive T7 assertion")
+    lines.append("")
+    lines.append(
+        "The additive CLI row never wins alone. A row whose prompt matches a T7 signal keeps the row it matched and appends the sibling tool skill."
+    )
+    lines.append("")
+    t7_rows = [result for result in results if result.get("t7") == "1"]
+    t7_alone = [result for result in results if result["route"].endswith("/T7")]
+    lines.append("- rows matching a T7 signal: %d" % len(t7_rows))
+    lines.append("- additive row wins alone: %d" % len(t7_alone))
+    for result in t7_rows:
+        lines.append("- %s: T7 signal with route %s" % (result["scenario_id"], result["route"]))
+    lines.append("")
+    lines.append("## Per-type precision and recall")
+    lines.append("")
+    lines.append(
+        "Precision divides the correct routes by the rows routed to that type. Recall divides them by the rows whose gold type it is."
+    )
+    lines.append("")
+    gold_types: Dict[str, int] = {route_type: 0 for route_type in REPORT_TYPES}
+    routed_types: Dict[str, int] = {route_type: 0 for route_type in REPORT_TYPES}
+    correct_types: Dict[str, int] = {route_type: 0 for route_type in REPORT_TYPES}
+    for row, result in zip(rows, results):
+        gold_type = str(row.get("gold_task_type", ""))
+        resolved = result["route"].split("/", 1)[1] if "/" in result["route"] else ""
+        if gold_type in gold_types:
+            gold_types[gold_type] += 1
+        if resolved in routed_types:
+            routed_types[resolved] += 1
+        if resolved in correct_types and gold_type == resolved:
+            correct_types[resolved] += 1
+    for route_type in REPORT_TYPES:
+        correct = correct_types[route_type]
+        lines.append(
+            "- %s precision %s, recall %s"
+            % (
+                route_type,
+                metric_text(correct, routed_types[route_type]),
+                metric_text(correct, gold_types[route_type]),
+            )
+        )
+    lines.append("")
+    lines.append("## Read counts")
+    lines.append("")
+    lines.append("| scenario | route | reads |")
+    lines.append("|---|---|---:|")
+    for result in results:
+        lines.append("| %s | %s | %s |" % (result["scenario_id"], result["route"], result["reads"]))
+    lines.append("")
+    lines.append("## Warning band sink")
+    lines.append("")
+    lines.append(
+        "Rows whose winning gap sits in the %s warning band above the route margin. Telemetry only, the route never changes."
+        % constants.get("warning_band")
+    )
+    lines.append("")
+    band_rows = [result for result in results if result.get("band_gap") is not None]
+    if band_rows:
+        for result in band_rows:
+            lines.append("- %s: %.3f above the margin" % (result["scenario_id"], float(result["band_gap"])))
+    else:
+        lines.append("- none")
     lines.append("")
     lines.append("## Rows")
     lines.append("")
@@ -1679,18 +2067,22 @@ def run_resolve(args: argparse.Namespace) -> int:
             return write_unscorable(args, rows, "routing signals file missing", revision)
         fail("routing signals file not found in %s" % os.path.basename(skill_root))
     signals_text = read_text(signals_md)
+    weak_signals = parse_weak_signals(signals_text)
     route_rows = parse_route_table(skill_text)
     constants = parse_constants(skill_text, signals_text)
-    migration_md = join_skill(skill_root, MIGRATION_INDEX)
-    migration_text = read_text(migration_md) if os.path.isfile(migration_md) else ""
-    phase_map = parse_phase_map(migration_text)
+    if rev_mode and ("PHASE_FILES = {" not in skill_text or "TOPIC_FILES = {" not in skill_text):
+        return write_unscorable(args, rows, "generated router maps missing", revision)
+    phase_map = parse_generated_map(skill_text, "PHASE_FILES")
+    topic_map = parse_generated_map(skill_text, "TOPIC_FILES")
+    if not rev_mode:
+        check_phase_agreement(skill_root, phase_map)
     resources = load_resource_map(skill_root)
     snapshot, snapshot_hash = build_snapshot(route_rows, constants, phase_map, resources)
     del snapshot
 
-    routed = routed_paths(route_rows, skill_root)
+    required, _conditional = routed_paths(route_rows, skill_root, phase_map, topic_map)
     if not rev_mode:
-        missing = connectivity_report(skill_root, rows, routed)
+        missing = connectivity_report(skill_root, rows, required)
         if missing:
             for line in missing:
                 print(line)
@@ -1707,14 +2099,24 @@ def run_resolve(args: argparse.Namespace) -> int:
         previous = str(row.get("previous_prompt", "") or "")
         if previous:
             prompt = previous + " " + prompt
-        route = resolve_route(route_rows, skill_root, prompt, str(row.get("year", "")), phase_map, constants)
+        year = str(row.get("year", ""))
+        route = resolve_route(route_rows, skill_root, prompt, year, phase_map, topic_map, constants, weak_signals)
         result = score_row(skill_root, row, route, cache, encoder, strict=not rev_mode)
-        if previous and str(row.get("previous_prompt", "") or ""):
-            first = resolve_route(route_rows, skill_root, str(row["previous_prompt"]), str(row.get("year", "")), phase_map, constants)
-            if not first["abstain"]:
+        if previous:
+            first = resolve_route(route_rows, skill_root, previous, year, phase_map, topic_map, constants, weak_signals)
+            expected_type = str(row.get("previous_gold_task_type", "") or "")
+            expected_mode = str(row.get("previous_gold_mode", "") or "")
+            turn_problems: List[str] = []
+            if expected_type and first["type"] != expected_type:
+                turn_problems.append("first turn type %s expected %s" % (first["type"], expected_type))
+            if expected_mode and first["mode"] != expected_mode:
+                turn_problems.append("first turn mode %s expected %s" % (first["mode"], expected_mode))
+            if not expected_type and not expected_mode and not first["abstain"]:
+                turn_problems.append("first turn did not abstain")
+            if turn_problems:
                 result["verdict"] = "FAIL"
                 result["score"] = str(max(0, int(result["score"]) - 1))
-                result["reason"] = "first turn did not abstain. %s" % result["reason"]
+                result["reason"] = ". ".join(turn_problems) + ". " + result["reason"]
         resolutions[str(row.get("id", ""))] = route
         results.append(result)
 
@@ -1952,6 +2354,8 @@ def replay_row(
         "verdict": "PASS" if not problems else "FAIL",
         "reason": "; ".join(problems) if problems else "exit and command line match",
         "tokens_loaded": "0",
+        "t7": "0",
+        "reads": "0",
         "command": " ".join(command),
         "expected_exit": str(expected_exit),
         "actual_exit": str(status),

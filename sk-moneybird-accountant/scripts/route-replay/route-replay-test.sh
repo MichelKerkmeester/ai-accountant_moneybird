@@ -167,10 +167,128 @@ else
     fail "the clean run writes report.md"
 fi
 
-if grep -q '^scenario_id,lang,split,gold_mode,gold_task_type,score,verdict,reason,tokens_loaded$' "$OUT_CLEAN/results.csv" 2>/dev/null; then
+if grep -q '^scenario_id,lang,split,gold_mode,gold_task_type,score,verdict,reason,tokens_loaded,t7,reads$' "$OUT_CLEAN/results.csv" 2>/dev/null; then
     pass "results.csv carries the fixed column order"
 else
     fail "results.csv carries the fixed column order"
+fi
+if python3 -I - "$OUT_CLEAN/results.csv" <<'PY' >"$TMP_ROOT/last.log" 2>&1
+import csv
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    rows = {row["scenario_id"]: row for row in csv.DictReader(handle)}
+problems = []
+if rows.get("API-001", {}).get("t7") != "1":
+    problems.append("API-001 carries no T7 additive hit")
+if rows.get("LIVE-001", {}).get("t7") != "0":
+    problems.append("LIVE-001 carries a T7 additive hit")
+for row in rows.values():
+    if row.get("t7") == "1" and not row.get("reads"):
+        problems.append("%s matched T7 without a matched row" % row["scenario_id"])
+print("ok" if not problems else " and ".join(problems))
+PY
+then
+    T7_OK=$(cat "$TMP_ROOT/last.log")
+    if [[ "$T7_OK" == "ok" ]]; then
+        pass "the t7 column asserts the additive row"
+    else
+        fail "the t7 column asserts the additive row ($T7_OK)"
+    fi
+else
+    fail "the t7 column asserts the additive row"
+fi
+if python3 -I - "$OUT_CLEAN/report.md" <<'PY' >"$TMP_ROOT/last.log" 2>&1
+import re
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    text = handle.read()
+found = {}
+for number in range(1, 13):
+    match = re.search(r"^- T%d precision (.+?), recall (.+)$" % number, text, re.MULTILINE)
+    if match:
+        found[number] = match.group(1)
+problems = []
+if len(found) != 12:
+    problems.append("missing: %s" % ", ".join("T%d" % number for number in range(1, 13) if number not in found))
+if "- additive row wins alone: 0" not in text:
+    problems.append("the additive row alone count is not zero")
+print("ok" if not problems else " and ".join(problems))
+PY
+then
+    if [[ "$(cat "$TMP_ROOT/last.log")" == "ok" ]]; then
+        pass "the report carries per-type precision and recall rows for T1 to T12"
+    else
+        fail "the report carries per-type precision and recall rows for T1 to T12 ($(cat "$TMP_ROOT/last.log"))"
+    fi
+else
+    fail "the report carries per-type precision and recall rows for T1 to T12"
+fi
+if python3 -I - "$OUT_CLEAN/results.csv" "$OUT_CLEAN/report.md" <<'PY' >"$TMP_ROOT/last.log" 2>&1
+import csv
+import re
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    reads = {row["scenario_id"]: row["reads"] for row in csv.DictReader(handle)}
+with open(sys.argv[2], "r", encoding="utf-8") as handle:
+    text = handle.read()
+section = text.split("## Read counts", 1)[-1].split("\n## ", 1)[0]
+table = dict(re.findall(r"^\| (\S+) \| \S+ \| (\d+) \|$", section, re.MULTILINE))
+problems = []
+if not table or table != reads:
+    problems.append("the read counts table differs from the reads column")
+if reads.get("MIG-005") != "3" or reads.get("MIG-002") != "3":
+    problems.append("a named phase skips the index and an unnamed one reads it: MIG-005 %s, MIG-002 %s" % (reads.get("MIG-005"), reads.get("MIG-002")))
+print("ok" if not problems else " and ".join(problems))
+PY
+then
+    if [[ "$(cat "$TMP_ROOT/last.log")" == "ok" ]]; then
+        pass "the read counts section matches the reads column"
+    else
+        fail "the read counts section matches the reads column ($(cat "$TMP_ROOT/last.log"))"
+    fi
+else
+    fail "the read counts section matches the reads column"
+fi
+
+# Widen the warning band on a second copy so rows land in the sink, and
+# prove the sink is telemetry only: every route stays the clean run's route.
+BAND_COPY="$TMP_ROOT/band/sk-moneybird-accountant"
+mkdir -p "$TMP_ROOT/band"
+cp -R "$COPY" "$BAND_COPY" || exit 2
+sed 's/^- The 0\.08 warning band\./- The 100 warning band./' \
+    "$COPY/references/routing-signals.md" >"$BAND_COPY/references/routing-signals.md"
+OUT_BAND="$TMP_ROOT/out-band"
+check_exit "a widened warning band still resolves with exit 0" 0 \
+    python3 -I "$BAND_COPY/scripts/route-replay/route-replay.py" --mode resolve --out "$OUT_BAND"
+if python3 -I - "$OUT_CLEAN/results.csv" "$OUT_BAND/results.csv" "$OUT_BAND/report.md" <<'PY' >"$TMP_ROOT/last.log" 2>&1
+import csv
+import sys
+
+def routes(path):
+    with open(path, "r", encoding="utf-8") as handle:
+        return {row["scenario_id"]: (row["verdict"], row["reason"], row["reads"]) for row in csv.DictReader(handle)}
+
+with open(sys.argv[3], "r", encoding="utf-8") as handle:
+    text = handle.read()
+sink = text.split("## Warning band sink", 1)[-1].split("\n## ", 1)[0]
+problems = []
+if "above the margin" not in sink:
+    problems.append("the widened band put no row in the sink")
+if routes(sys.argv[1]) != routes(sys.argv[2]):
+    problems.append("a row changed its verdict when the band widened")
+print("ok" if not problems else " and ".join(problems))
+PY
+then
+    if [[ "$(cat "$TMP_ROOT/last.log")" == "ok" ]]; then
+        pass "the warning band sink lists rows and never changes a route"
+    else
+        fail "the warning band sink lists rows and never changes a route ($(cat "$TMP_ROOT/last.log"))"
+    fi
+else
+    fail "the warning band sink lists rows and never changes a route"
 fi
 if grep -q '^- held-out route accuracy:' "$OUT_CLEAN/report.md" 2>/dev/null; then
     pass "report.md carries a held-out accuracy line"
@@ -271,6 +389,64 @@ fi
 mv "$TMP_ROOT/year-readme.bak" "$YEAR_DELETED"
 
 # ───────────────────────────────────────────────────────────────
+# 8C. CONDITIONAL PATH ABSENT
+# ───────────────────────────────────────────────────────────────
+
+# A ? read that does not exist is recorded by the table check and never
+# stops the connectivity gate. Only the ! reads are gate inputs.
+cp "$COPY/SKILL.md" "$TMP_ROOT/SKILL.md.bak"
+python3 - "$COPY/SKILL.md" <<'PY'
+import sys
+
+path = sys.argv[1]
+with open(path, "r", encoding="utf-8") as handle:
+    text = handle.read()
+old = "`!references/migration/overview-and-setup.md`"
+new = old + ", `?references/route-replay-probe-missing.md`"
+if old not in text:
+    raise SystemExit("T9 read set anchor not found")
+with open(path, "w", encoding="utf-8") as handle:
+    handle.write(text.replace(old, new, 1))
+PY
+check_exit "a missing conditional routed path still resolves with exit 0" 0 \
+    python3 -I "$COPY_HARNESS" --mode resolve --out "$TMP_ROOT/out-conditional"
+if ! grep -q 'route-replay-probe-missing' "$TMP_ROOT/last.log" 2>/dev/null; then
+    pass "the missing conditional path is not a connectivity failure"
+else
+    fail "the missing conditional path is not a connectivity failure"
+fi
+cp "$TMP_ROOT/SKILL.md.bak" "$COPY/SKILL.md"
+
+# ───────────────────────────────────────────────────────────────
+# 8D. PHASE MAP DISAGREEMENT
+# ───────────────────────────────────────────────────────────────
+
+# A hand edit inside PHASE_FILES that the migration index does not carry
+# must stop the run before any row is scored.
+cp "$COPY/SKILL.md" "$TMP_ROOT/SKILL.md.bak"
+python3 - "$COPY/SKILL.md" <<'PY'
+import sys
+
+path = sys.argv[1]
+with open(path, "r", encoding="utf-8") as handle:
+    text = handle.read()
+old = '"19": "references/migration/phases-19-to-21.md",'
+new = '"19": "references/migration/phases-17-to-18.md",'
+if old not in text:
+    raise SystemExit("PHASE_FILES anchor not found")
+with open(path, "w", encoding="utf-8") as handle:
+    handle.write(text.replace(old, new, 1))
+PY
+check_exit "a phase map that disagrees with the migration index exits 2" 2 \
+    python3 -I "$COPY_HARNESS" --mode resolve --out "$TMP_ROOT/out-disagree"
+if grep -q 'constants disagree' "$TMP_ROOT/last.log" 2>/dev/null; then
+    pass "the phase map disagreement is named constants disagree"
+else
+    fail "the phase map disagreement is named constants disagree"
+fi
+cp "$TMP_ROOT/SKILL.md.bak" "$COPY/SKILL.md"
+
+# ───────────────────────────────────────────────────────────────
 # 9. TWIN MISMATCH
 # ───────────────────────────────────────────────────────────────
 
@@ -341,7 +517,7 @@ check_exit "the refusal and hostile rows replay with exit 0" 0 \
     python3 -I "$COPY_HARNESS" --mode replay --corpus "$REPLAY_CORPUS" \
     --guard "$GUARD" --stub "$STUB" --out "$OUT_REPLAY"
 
-if grep -q '^scenario_id,lang,split,gold_mode,gold_task_type,score,verdict,reason,tokens_loaded,command,expected_exit,actual_exit$' "$OUT_REPLAY/results.csv" 2>/dev/null; then
+if grep -q '^scenario_id,lang,split,gold_mode,gold_task_type,score,verdict,reason,tokens_loaded,t7,reads,command,expected_exit,actual_exit$' "$OUT_REPLAY/results.csv" 2>/dev/null; then
     pass "the replay results.csv carries the command and exit columns"
 else
     fail "the replay results.csv carries the command and exit columns"
@@ -460,6 +636,77 @@ if [[ "$DRIFT" == "ok" ]]; then
     pass "the T4 conditional read terms equal the T4 topic signals in the table"
 else
     fail "the T4 conditional read terms equal the T4 topic signals in the table ($DRIFT)"
+fi
+
+# ───────────────────────────────────────────────────────────────
+# 10B. TWO TURN PREPARATION AND FILING PRECEDENCE
+# ───────────────────────────────────────────────────────────────
+
+# The contract fixes the filing verbs on the refusal row and the prepare
+# signals on a T10 row, so the case seeds both into a copy of the table. A
+# turn that prepares the VAT return routes T10. A later turn that asks to
+# file it stops on T8, whatever T10 scores.
+PRECEDENCE_CORPUS="$TMP_ROOT/precedence-gold.json"
+python3 - "$PRECEDENCE_CORPUS" <<'PY'
+import json
+import sys
+
+rows = [
+    {
+        "id": "TURN-PREPARE",
+        "prompt": "Bereid de btw-aangifte voor.",
+        "lang": "nl",
+        "parityOf": "",
+        "split": "calibration",
+        "gold_mode": "LIVE",
+        "gold_task_type": "T10",
+        "category": "clean",
+        "tier": "",
+        "tie": "",
+        "expected_paths": ["references/tax-rules/2026/btw/figures.md"],
+        "forbidden_paths": [],
+        "expected_facts": [],
+        "token_ceiling": 15000,
+        "year": "2026",
+        "covers": ["004/REQ-002"],
+    },
+    {
+        "id": "TURN-FILE",
+        "previous_prompt": "Bereid de btw-aangifte voor.",
+        "prompt": "File the VAT return now.",
+        "lang": "en",
+        "parityOf": "",
+        "split": "calibration",
+        "gold_mode": "ABSTAIN",
+        "gold_task_type": "T8",
+        "previous_gold_task_type": "T10",
+        "previous_gold_mode": "LIVE",
+        "category": "clean",
+        "tier": "A",
+        "tie": "",
+        "expected_paths": [],
+        "forbidden_paths": ["references/tax-rules/dutch-tax-rules.md"],
+        "expected_facts": [],
+        "token_ceiling": 0,
+        "year": "2026",
+        "covers": ["004/REQ-002"],
+    },
+]
+with open(sys.argv[1], "w", encoding="utf-8") as handle:
+    json.dump({"rows": rows}, handle, indent=2)
+PY
+# WHY: the skill's own T8 and T10 rows carry the precedence, so the case
+# runs against the real table and fails when either row loses its signals.
+if ! grep -q '^| T10 | prepare the VAT return |' "$COPY/SKILL.md"; then
+    fail "the skill copy holds the T10 row"
+fi
+check_exit "a preparation turn then a filing turn resolves with exit 0" 0 \
+    python3 -I "$COPY_HARNESS" --mode resolve --corpus "$PRECEDENCE_CORPUS" --out "$TMP_ROOT/out-precedence"
+if grep -q '^TURN-FILE,en,calibration,ABSTAIN,T8,.*,PASS,' "$TMP_ROOT/out-precedence/results.csv" 2>/dev/null; then
+    pass "the two turn precedence case routes T10 then T8"
+else
+    fail "the two turn precedence case routes T10 then T8"
+    sed -n '1,5p' "$TMP_ROOT/last.log"
 fi
 
 # A revision run scores the worktree of that commit and removes it again
