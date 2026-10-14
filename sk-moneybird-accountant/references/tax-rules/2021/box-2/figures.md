@@ -36,6 +36,33 @@ This file covers box 2 and the aanmerkelijk belang (substantial interest) rules 
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Box 2 tarief (art. 2.12) | 1 |
+| Inkomen uit aanmerkelijk belang, components (art. 4.12 and 4.13) | 2 |
+| Vervreemdingsvoordeel and verkrijgingsprijs (art. 4.12 to 4.16) | 3 |
+| Fictieve vervreemding (art. 4.16) | 4 |
+| Loss offset period (art. 4.49) | 5 |
+| Losses from 2018 or earlier | 6 |
+| Belastingkorting on an unoffset loss (art. 4.53 lid 2) | 7 |
+| Aanmerkelijk belang threshold (art. 4.6) | 8 |
+| Minor children | 9 |
+| Division between fiscal partners (art. 2.17 lid 2) | 10 |
+| Inherited aanmerkelijk belang (art. 4.12a) | 11 |
+| Forfaitair voordeel vbi or foreign investment company (art. 4.14 lid 1) | 12 |
+| Excessief lenen (excessive borrowing) bij eigen vennootschap | 13 |
+| Gebruikelijk loon (customary salary) fixed amount (art. 12a lid 1 sub c) | 14 |
+| Gebruikelijk loon comparable-loon test (art. 12a lid 1 sub a) | 15 |
+| Gebruikelijk loon de-minimis (art. 12a lid 6) | 16 |
+| Start-up gebruikelijk loon (art. 12a lid 3 and 4) | 17 |
+| Start-up rule maximum duration | 18 |
+| PEB afkoop and ODV conversion | 19 |
+| ODV marktrente for the 2021 increase | 20 |
+| APV loss deferral term | 21 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 2 tarief (art. 2.12) | 26,9%, one rate, no bracket | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01 |

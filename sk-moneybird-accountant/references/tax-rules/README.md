@@ -1,6 +1,7 @@
 ---
 title: "Tax rules reference index"
 description: "Index of the Dutch tax knowledge base for a ZZP sole trader who may also own a BV: the eight tax year folders with their topic counts and the five cross-year files."
+nav_label: "Tax rules reference index"
 trigger_phrases:
   - "tax rules index"
   - "tax year folders"

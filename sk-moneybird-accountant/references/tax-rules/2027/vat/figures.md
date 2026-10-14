@@ -36,6 +36,51 @@ This file covers the Dutch VAT rates, exemptions, small-business scheme, returns
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Standard VAT rate | 1 |
+| Reduced VAT rate | 2 |
+| Zero rate | 3 |
+| Lodging | 4 |
+| Solar panels on or near homes | 5 |
+| Exemptions | 6 |
+| Dutch KOR ceiling and turnover test | 7 |
+| EU KOR Union ceiling | 8 |
+| KOR registration without prior notice | 9 |
+| KOR application and withdrawal timing | 10 |
+| Annual return VAT limit | 11 |
+| Annual return cross-border limits | 12 |
+| VAT return periods | 13 |
+| Monthly period trigger | 14 |
+| Period return and payment deadline | 15 |
+| Software return submission window | 16 |
+| Known return dates falling in 2027 | 17 |
+| Remaining 2027 deadline table | 18 |
+| Late filing and payment penalties | 19 |
+| Suppletie timing and correction horizon | 20 |
+| Suppletie amount boundary | 21 |
+| Electronics reverse charge threshold | 22 |
+| ICP goods reporting threshold | 23 |
+| 2027 ICP deadline | 24 |
+| EU distance sales threshold | 25 |
+| EU KOR registration and reports | 26 |
+| OSS and import scheme | 27 |
+| Private use and personnel gifts | 28 |
+| Business car private use standard forfait | 29 |
+| Business car reduced forfait | 30 |
+| Business car cap | 31 |
+| Other BUA limits | 32 |
+| Invoice deadline | 33 |
+| Simplified invoice | 34 |
+| Cash accounting consumer-sales condition | 35 |
+| National e-invoicing and reporting plan | 36 |
+| Bill 36.920 scheduled dates | 37 |
+| Belastingplan 2027 proposed VAT changes | 38 |
+| Corona special deferral repayment | 39 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
 | Standard VAT rate | 21% | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2026-01-01 |

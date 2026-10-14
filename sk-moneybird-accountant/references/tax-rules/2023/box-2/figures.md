@@ -36,6 +36,34 @@ Box 2 is the income from an aanmerkelijk belang (substantial shareholding, a hol
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Box 2 rate (art. 2.12 Wet IB 2001) | 1 |
+| Aanmerkelijk belang definition (art. 4.6) | 2 |
+| Income from aanmerkelijk belang (art. 4.12 and 4.13) | 3 |
+| Minor children, income declared by the parent | 4 |
+| Forfaitair voordeel (art. 4.14 lid 1) | 5 |
+| Excessief lenen (excessive borrowing), entry into force | 6 |
+| Excessief lenen maximum (art. 4.14a lid 1 and 2) | 7 |
+| Excessief lenen measurement (art. 4.14a lid 3 and 4) | 8 |
+| Excessief lenen maximum for a verbonden person (art. 4.14b) | 9 |
+| Excessief lenen immigration floor (art. 4.14c lid 1) | 10 |
+| Excessief lenen, samenwerkingsverband exception | 11 |
+| Eigenwoningschuld transitional rule (art. 10a.23) | 12 |
+| Gebruikelijk loon (customary salary) fixed amount (art. 12a Wet LB 1964) | 13 |
+| Gebruikelijk loon comparable-loon test | 14 |
+| Gebruikelijk loon minimum threshold (art. 12a lid 4) | 15 |
+| Loss offset period (art. 4.49) | 16 |
+| Older loss offset (loss arose in 2018 or earlier) | 17 |
+| Belastingkorting on an unoffset loss (art. 4.53 lid 2) | 18 |
+| Belastingkorting usage period (art. 4.53 lid 4) | 19 |
+| Inherited aanmerkelijk belang facility (art. 4.12a) | 20 |
+| ODV marktrente for 2023 | 21 |
+| Non-resident box 2 base (art. 7.5) | 22 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 2 rate (art. 2.12 Wet IB 2001) | 26,9%, one rate, no bracket | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 (art. 2.12) |

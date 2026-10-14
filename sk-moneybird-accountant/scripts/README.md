@@ -74,6 +74,8 @@ scripts/
 +-- fragment-check-test.sh        # Fragment suite
 +-- split-topic-files.py          # Tax-rules topic file splitter
 +-- split-topic-files-test.sh     # Topic file split suite
++-- outline-check.py              # Carry-forward and failing-branch checker
++-- outline-check-test.sh         # Outline check suite
 +-- token-baseline.py             # Token baseline writer and checker
 +-- token-canary-test.sh          # Token canary suite
 +-- check-hostile-invoice-set.py  # Hostile invoice case checker
@@ -103,8 +105,8 @@ scripts/
 | `generate-plan-kit.py` | Parses the phase references and the setup reference, renders the phase dashboard, the config template, the workspace folder list and one spec packet per phase, then writes them or checks them |
 | `init-workspace.sh` | Creates `migration-workspace/` from `assets/migration/` and copies `specs/000-migration-template/` to `specs/<NNN-slug>/`, skipping every file that already exists |
 | `plan-kit-test.sh` | Builds throwaway repositories, runs the generator and the workspace script, and checks the generated files, placeholders, links, refusals and repeat runs |
-| `check-route-table.py` | Checks the task-type route table in `../SKILL.md`: markers, header, rows T1 to T12, budgets, tool routes, the read-set grammar, constants, margin overrides, signal source links and the documented gap ledger. Expands every read item over its year and map tokens, fails a missing required path or anchor and lists a missing conditional read. Compares the generated router block with the table row by row and the table's multi-word signals with `../graph-metadata.json`, and the `--write` mode regenerates both |
-| `route-table-test.sh` | Runs the route table checker on the real SKILL.md and on mutated copies, and expects every mutant to fail. Covers the router block drift, the hand edit inside the block, the missing intent signal, the byte-stable second write, the read-set grammar, the two maps and the gap ledger rows |
+| `check-route-table.py` | Checks the task-type route table in `../SKILL.md`: markers, header, rows T1 to T12, budgets, tool routes, the read-set grammar, constants, margin overrides, signal source links and the documented gap ledger. Expands every read item over its year and map tokens, fails a missing required path or anchor and lists a missing conditional read. Compares the generated router block with the table row by row and the table's multi-word signals with `../graph-metadata.json`, and the `--write` mode regenerates both. It also runs the sibling word, split and outline checks, so one step enforces all four |
+| `route-table-test.sh` | Runs the route table checker on the real SKILL.md and on mutated copies, and expects every mutant to fail. Covers the router block drift, the hand edit inside the block, the missing intent signal, the byte-stable second write, the read-set grammar, the two maps, the gap ledger rows and the wired word, split and outline cases |
 | `build-session-context.py` | Writes the git-ignored `session-context.json` from the runtime clock and a narrow migration projection, with `--check` and `--route-state` |
 | `session-context-test.sh` | Runs the script against offline fixtures for the clock, the interactive flag, the allowlist, staleness and the post-cutover states |
 | `build-reference-index.py` | Scans `../references/` and writes or checks the nav blocks, `../references/index.json` with its gap ledger, the year README tables, the year-figure rows of the general topic files, the change note tables, `../references/tax-rules/year-changes.md` and the leaf reachability report |
@@ -113,6 +115,8 @@ scripts/
 | `fragment-check-test.sh` | Builds fixtures for a resolving slug, a renamed id, a renamed heading, a missing file, a duplicate-suffix slug, a year topic at any depth, a split topic part with one id removed and the year file exemptions, then runs the checker on the real corpus and on a throwaway copy with one renamed heading |
 | `split-topic-files.py` | Splits the 96 year topic files into four part files, rewrites `../references/tax-rules/dutch-tax-rules.md` into `../references/tax-rules/general/`, remaps every citation of a split source and writes `../references/tax-rules/split-manifest.json`. The `--plan`, `--write` and `--check` modes stay offline and hash a normalized body |
 | `split-topic-files-test.sh` | Builds a fixture repository and proves each failure mode: a hand-edited part, a hand-edited header, a hand-edited entry file, a returned original, an unmappable citation, a folder with fewer than four parts, a part over the token line, a rebased link, a generated fence in a header, a byte-stable second write and the remapped citation line |
+| `outline-check.py` | Checks the carry-forward rule over the year and general topic files: a decision step, a step that asks a question or opens with a decision verb, must name an alternative or default branch. It reads the split parts, a flat year topic file and the `general/` files, skips the year README, the changelog, the change note and fenced code blocks, requires a branch and never judges it. The default mode and `--check` read only, `--root` reads another copy, and `check-route-table.py` runs it beside the word and split checks |
+| `outline-check-test.sh` | Builds a fixture repository for the rejected and accepted step shapes, the numbered step, the flat year topic file, the general file, the files the checker skips, a question inside a link target and a question inside a fence, then refuses a root without the tax-rules tree and proves the real corpus clean beside a seeded decision step in a copy |
 | `token-baseline.py` | Counts every reference file and the named units in `o200k_base` and `cl100k_base`, writes or checks `../benchmark/token-baseline.json`, and refuses to run when a pinned encoding data file is missing or changed |
 | `token-canary-test.sh` | Runs the car-question route, a whole-file mutant, a swapped-encoding mutant and a byte-only fixture in a throwaway copy |
 | `check-hostile-invoice-set.py` | Checks the hostile invoice case set: 22 unique cases, a twin for every attack, declared braced placeholders, every rule applied to every string value, no literal IBAN, VAT id, amount or e-mail, no capitalized word run outside the declared `allowed_terms` and an expected verdict that matches the case kind. Scores a results file against the catch and false-positive thresholds |
@@ -130,7 +134,7 @@ scripts/
 | `../hardening-matrix.md` | One row per failure mode with a control, a test, an owner and a status, including the offline suites that now cover most rows |
 | `check-regression-trailer.py` | Fails a commit range where a gate file changed with no registered test change and no `Regression-Test:` trailer |
 | `regression-trailer-test.sh` | Builds fixture git repositories for the trailer check, including a deleted covering test, valid and invalid trailers, an unknown range and a missing root |
-| `build-source-library.py` | Scans the skill family for external links and writes `../assets/source-library.json`, with `--check`, `--check-links`, `--apply-report`, `--watch`, `--check-calendar` and `--trace` modes |
+| `build-source-library.py` | Scans the skill family for external links and writes `../assets/source-library.json`, with `--check`, `--check-links`, `--apply-report`, `--watch`, `--check-calendar`, `--trace` and `--write-term-map` modes |
 | `source-library-test.sh` | Proves the index builder, the link check and the trace on fixture repositories, a fixture server on 127.0.0.1, and the real index |
 | `../assets/route-calibration.json` | The frozen calibration record: the route margin, the fallback floor, the sweep over the calibration split and the held-out result |
 
@@ -176,6 +180,7 @@ scripts/
 | `python3 -I sk-moneybird-accountant/scripts/build-source-library.py --apply-report <file>` | CLI | Writes a link report's results into the matching index rows, offline |
 | `python3 -I sk-moneybird-accountant/scripts/build-source-library.py --watch` | CLI | Fetches the watched series and reports each change, for the scheduled job only |
 | `python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-calendar` | CLI | Checks the year files' `checked_on` against the release calendar, offline |
+| `python3 -I sk-moneybird-accountant/scripts/build-source-library.py --write-term-map` | CLI | Resolves every `source_file` in `../assets/term-map.json` and rewrites the map, offline |
 | `bash sk-moneybird-accountant/scripts/source-library-test.sh` | CLI | Runs the source library suite |
 
 ---
@@ -268,20 +273,20 @@ The library is `tiktoken` 0.11.0. The Operator chose `o200k_base` as the lead on
 
 Offline rule: the two data files come from a seeded cache. Point `TIKTOKEN_CACHE_DIR` at it, for example `../tiktoken-cache` from the repository root. The run checks that each file exists and that its sha256 matches the pin before it loads an encoder. A missing file or a changed file stops the run with exit code 2. Nothing downloads an encoding.
 
-Re-measure rule: re-measure on every reference change. Run `token-baseline.py` and commit the JSON with the change. A run with nothing to write opens with the line `baseline unchanged, 458 files, 1071 sections`, after the script name. `--check` recomputes every row in memory and names each drifted row, so a stale baseline fails the run. A passing check opens with the line `check ok, 458 files, 1071 sections`, after the script name, prints one row per named unit and ends with:
+Re-measure rule: re-measure on every reference change. Run `token-baseline.py` and commit the JSON with the change. A run with nothing to write opens with the line `baseline unchanged, 459 files, 1074 sections`, after the script name. `--check` recomputes every row in memory and names each drifted row, so a stale baseline fails the run. A passing check opens with the line `check ok, 459 files, 1074 sections`, after the script name, prints one row per named unit and ends with:
 
 ```text
-token-baseline: unit car route current: 84345 bytes, o200k_base 24618, cl100k_base 26451
-token-baseline: unit car route proposed: 23495 bytes, o200k_base 6794, cl100k_base 7369
-token-baseline: car route ratio: o200k_base 0.2760, cl100k_base 0.2786
+token-baseline: unit car route current: 86180 bytes, o200k_base 25146, cl100k_base 27024
+token-baseline: unit car route proposed: 25330 bytes, o200k_base 7322, cl100k_base 7942
+token-baseline: car route ratio: o200k_base 0.2912, cl100k_base 0.2939
 ```
 
 The canary covers the 2026 car question on the KEY FIGURES route, which reads the year README and the `costs-and-car/figures.md` part. It asserts the proposed route stays at or under 35 percent of the current route and at or under the 8,000 token ceiling. Three mutants prove the gate: the proposed route pointed at the whole topic file, a cache that holds the lead encoding data under the second name, and a fixture that passes a four-bytes-per-token budget and fails the token budget. The measured route:
 
 ```text
-route current: o200k_base 24618, cl100k_base 26451
-route proposed: o200k_base 6794, cl100k_base 7369
-route ratio: o200k_base 0.2760, cl100k_base 0.2786
+route current: o200k_base 25146, cl100k_base 27024
+route proposed: o200k_base 7322, cl100k_base 7942
+route ratio: o200k_base 0.2912, cl100k_base 0.2939
 ```
 
 The suite ends with `8 passed, 0 failed`.
@@ -390,7 +395,7 @@ regression-trailer: ok (0 commits scanned)
 
 ## 16. SOURCE LIBRARY
 
-`build-source-library.py` scans `AGENTS.md`, `README.md` and the three skill folders for external links and writes `../assets/source-library.json`, one row per URL with its host, the citing files and its recorded access result. `--check` verifies the index offline and reports every cited URL missing from the index and every indexed URL no file cites. `--check-links` fetches every row a plain fetch can reach, reports `endpoint` and `webfetch-only` rows as skipped and never as failed, retries once and prints one JSON report with a summary and one row per URL. A row is ok only when the final answer after followed redirects is 2xx. `--trace <file>:<line>` prints the index row of every URL on one line with `access`, `http_status` and `checked_on`, and fails when a URL is dead, unchecked or missing from the index. Each readable row also keeps a `digest`, `retrieved_at`, an `etag` stored as a `sha256:` fingerprint, `last_modified` and, for a parliamentary document not yet published as a `kst` page, `kst_pending`, and a rebuild keeps them per URL. `--check` also fails on a cited `dead` row and on a `tweedekamer.nl/downloads/document?id=` citation whose row has no `kst_pending`. `--check-links` follows every redirect, 308 included, and counts a `blocked` answer (401, 403 or 429, a host refusing robots) and an error on a recorded `archive-not-fetchable` row apart from failures. `--apply-report <file>` writes a report's results into the index and never writes a blocked row as dead. `--watch` fetches the series in `../assets/source-watchlist.json`, compares ETag, Last-Modified and digest with the index or `../assets/source-watch-state.json`, and reports a changed series or a page that answers 200 after 404 with its citing files. `--check-calendar` reads `checked_on` from the year READMEs and `dutch-tax-rules.md` and fails when a current or future year predates the latest passed checkpoint in `../references/tax-rules/year-rollover.md`. Only `--check-links` and `--watch` make network calls, and they run in the monthly job, which reports a watch change or a stale year as an issue without failing.
+`build-source-library.py` scans `AGENTS.md`, `README.md` and the three skill folders for external links and writes `../assets/source-library.json`, one row per URL with its host, the citing files and its recorded access result. `--check` verifies the index offline and reports every cited URL missing from the index and every indexed URL no file cites. `--check-links` fetches every row a plain fetch can reach, reports `endpoint` and `webfetch-only` rows as skipped and never as failed, retries once and prints one JSON report with a summary and one row per URL. A row is ok only when the final answer after followed redirects is 2xx. `--trace <file>:<line>` prints the index row of every URL on one line with `access`, `http_status` and `checked_on`, and fails when a URL is dead, unchecked or missing from the index. Each readable row also keeps a `digest`, `retrieved_at`, an `etag` stored as a `sha256:` fingerprint, `last_modified` and, for a parliamentary document not yet published as a `kst` page, `kst_pending`, and a rebuild keeps them per URL. `--check` also fails on a cited `dead` row and on a `tweedekamer.nl/downloads/document?id=` citation whose row has no `kst_pending`. `--check-links` follows every redirect, 308 included, and counts a `blocked` answer (401, 403 or 429, a host refusing robots) and an error on a recorded `archive-not-fetchable` row apart from failures. `--apply-report <file>` writes a report's results into the index and never writes a blocked row as dead. `--watch` fetches the series in `../assets/source-watchlist.json`, compares ETag, Last-Modified and digest with the index or `../assets/source-watch-state.json`, and reports a changed series or a page that answers 200 after 404 with its citing files. `--check-calendar` reads `checked_on` from the year READMEs and `dutch-tax-rules.md` and fails when a current or future year predates the latest passed checkpoint in `../references/tax-rules/year-rollover.md`. `--check` also asserts the frontmatter field set of the reference tree, the bootstrap document and the two CLI documents. A file that carries `checked_on` must have a checked source behind it, every term map `source_file` must name an existing file and a term glossed in a generated item index without a map row is reported by name. `--write-term-map` rewrites `../assets/term-map.json` with every `source_file` resolved under the skill root, so the map is regenerable and a repeated folder segment is repaired rather than copied. Only `--check-links` and `--watch` make network calls, and they run in the monthly job, which reports a watch change or a stale year as an issue without failing.
 
 A passing offline check prints `527 sources match the index`. A trace of one live citation line prints:
 
@@ -402,7 +407,7 @@ sk-moneybird-accountant/references/tax-rules/2024/vat/figures.md:56
 
 A quiet watch prints `no watched URL changed` and a current calendar prints `3 files current at the Prinsjesdag checkpoint (2026-09-15)`.
 
-`source-library-test.sh` proves the index, the link check and the trace on fixture repositories, a fixture server on 127.0.0.1, and the real index, plus digests, the report write, the watch and its state, the calendar check, blocked hosts and dead or perishable citations. It ends with `130 passed, 0 failed`.
+`source-library-test.sh` proves the index, the link check and the trace on fixture repositories, a fixture server on 127.0.0.1, and the real index, plus digests, the report write, the watch and its state, the calendar check, blocked hosts and dead or perishable citations. It ends with `138 passed, 0 failed`.
 
 ---
 
@@ -504,13 +509,17 @@ python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check
 bash sk-moneybird-accountant/scripts/route-table-test.sh
 python3 -I sk-moneybird-accountant/scripts/check-skill-words.py
 bash sk-moneybird-accountant/scripts/check-skill-words-test.sh
+python3 -I sk-moneybird-accountant/scripts/outline-check.py
+bash sk-moneybird-accountant/scripts/outline-check-test.sh
 python3 -I sk-moneybird-accountant/scripts/split-topic-files.py --check
 bash sk-moneybird-accountant/scripts/split-topic-files-test.sh
 ```
 
-Expected result: `166 generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 4759 links, 406 fragment links, 0 problems` and `32 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 458 files, 1071 sections` and `8 passed, 0 failed`. The route replay commands print `route-replay: ok, 86 rows passed` and `route-replay: ok, 35 replay rows passed`, and the suite ends with `Result: 74 passed, 0 failed`. The eval suite ends with `Result: 59 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `527 sources match the index` and its suite ends with `130 passed, 0 failed`. The route table commands print `route-table: ok` after one `missing:` line per absent conditional read, and the suite ends with `58 passed, 0 failed`. The split commands print `split-check: ok` and `Result: 20 passed, 0 failed`.
+Expected result: `166 generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 4798 links, 417 fragment links, 0 problems` and `32 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 459 files, 1074 sections` and `8 passed, 0 failed`. The route replay commands print `route-replay: ok, 75 rows passed` and `route-replay: ok, 35 replay rows passed`, and the suite ends with `Result: 74 passed, 0 failed`. The eval suite ends with `Result: 59 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `527 sources match the index` and its suite ends with `138 passed, 0 failed`. The route table commands print `route-table: ok` after one `missing:` line per absent conditional read, and the suite ends with `59 passed, 0 failed`. The outline check prints `outline-check: 0 decision steps, 0 without an alternative branch` and its suite ends with `24 passed, 0 failed`. The split commands print `split-check: ok` and `Result: 24 passed, 0 failed`.
 
 The word check prints one line per `SKILL.md` with its word count and its verdict. It warns above 3,000 words, exits 1 above 4,000 words and exits 2 with the path named when a file is missing or unreadable. `check-route-table.py` runs it, so the `skill-health` CI step enforces the budget, and `check-skill-words-test.sh` proves the 2,999-word, 3,001-word and 4,001-word bands. The walk skips hidden folders, `specs/`, `node_modules/` and the two private folders, so a backup copy of a retired skill inside a spec packet never counts.
+
+The carry-forward rule is stated in `../references/tax-rules/year-rollover.md`, the authoring note for the next year's files: every condition names its alternative or its default, so a decision step carries a branch. `outline-check.py` enforces the rule over the year and general topic files, requires a branch and never judges it, and `check-route-table.py` runs it, so the `skill-health` CI step fails on a decision step that names none.
 
 ---
 
@@ -540,15 +549,15 @@ split-check: ok
 
 The citation remap scans every tracked markdown and JSON file outside `specs/`. A bare citation points at the folder's `figures.md`, a `path:line` citation points at the part that holds that line with its new line number and a `path#anchor` citation points at the part that carries that heading. A citation whose line, heading or file cannot be resolved aborts the run with exit 1 and names the citation before any byte is written. The scan leaves its own outputs and the files their own generators rewrite alone: `.privacy-gate.json`, `../references/index.json`, `../benchmark/token-baseline.json`, `../assets/source-library.json`, `../leaf-manifest.json` and `../references/tax-rules/split-manifest.json`.
 
-`check-route-table.py` runs `--check` beside the word check, so the `skill-health` CI step fails on a drifted part, a leftover original or an unmapped citation. The suite itself is not yet a CI step, because the workflow is a gate file.
+`check-route-table.py` runs `--check` beside the word and outline checks, so the `skill-health` CI step fails on a drifted part, a leftover original or an unmapped citation. The suite itself is not yet a CI step, because the workflow is a gate file.
 
-`split-topic-files-test.sh` builds a fixture repository with two year folders, three topic files, a guide whose 13 headings slug to the allowlist and one citing file with a bare, a line and an anchor citation. Twenty cases each print one pass line. Thirteen cover the split: a clean split passes `--check`, a hand-edited part fails and names the part, a hand-edited header fails and names the part, a hand-edited entry file fails, a generated fence added after the H1 does not fail, a returned original fails, an unmappable citation exits non-zero and writes nothing, a folder with fewer than four parts fails, a part pushed over the token line fails, a rebased link does not fail, a second `--write` changes no byte and the remapped citations land on the right part and line. Seven cover the accept mode: a pure rename is accepted and then passes `--check`, a body edit and a header edit are refused, an unknown base revision and an unknown map key fail, and accept mode with `--check` is a usage error. The token case reports a noted pass when the cached o200k encoding is unavailable. Run it with:
+`split-topic-files-test.sh` builds a fixture repository with two year folders, three topic files, a guide whose 13 headings slug to the allowlist and one citing file with a bare, a line and an anchor citation. Twenty-four cases each print one pass line: a clean split passes `--check` and the general parts carry their English file names, a hand-edited part, header or entry file fails and names the file, a generated fence added after the H1 does not fail, a returned original fails, an unmappable citation exits non-zero and writes nothing, a folder with fewer than four parts fails, a part pushed over the token line fails, a rebased link does not fail, a second `--write` changes no byte, the remapped citations land on the right part and line, a pure rename is accepted while a body or header edit, an unknown base revision, an unknown map key, a usage error and a missing `--base` are refused, and the accept-edits mode records an edited part and keeps an unchanged part's hashes. The token case reports a noted pass when the cached o200k encoding is unavailable. Run it with:
 
 ```bash
 TIKTOKEN_CACHE_DIR=<cache> bash sk-moneybird-accountant/scripts/split-topic-files-test.sh
 ```
 
-It ends with `Result: 20 passed, 0 failed`.
+It ends with `Result: 24 passed, 0 failed`.
 
 ---
 

@@ -36,6 +36,21 @@ This file covers the income-dependent Zvw contribution (inkomensafhankelijke bij
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Inkomensafhankelijke bijdrage Zvw by (voorlopige) aanslag, rate | 1 |
+| Maximum bijdrage-inkomen per person per year | 2 |
+| Ingehouden bijdrage Zvw (withheld from pension, lijfrente and other uitkeringen with loonheffing) | 3 |
+| Zvw werkgeversheffing (loon uit loondienst, DGA loon when insured for the werknemersverzekeringen, bijstand, and WAO, WIA and WW benefits) | 4 |
+| Zvw base for a winst-ondernemer | 5 |
+| Exceptions to the contribution | 6 |
+| Oudedagsreserve (old-age reserve) in the Zvw base | 7 |
+| Zvw rate at AOW age (verlaagde inkomensafhankelijke bijdrage) | 8 |
+| Declaration of the Zvw bijdrage | 9 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
 | Inkomensafhankelijke bijdrage Zvw by (voorlopige) aanslag, rate | 4,85% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet |

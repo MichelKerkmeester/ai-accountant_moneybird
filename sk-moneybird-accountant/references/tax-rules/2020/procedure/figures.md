@@ -36,6 +36,53 @@ This file covers the procedure around tax year 2020 for a sole trader who may al
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Aangifte (return) inkomstenbelasting 2020, uiterste datum | 1 |
+| Uitsteltermijn inkomstenbelasting | 2 |
+| Aangifte inkomstenbelasting 2020 met uitstel | 3 |
+| Belastingrente (tax interest)-uitsluiting voor de week tot 8 May 2021 | 4 |
+| Start van het aangiftetijdvak inkomstenbelasting | 5 |
+| Aangifte zonder uitnodiging, belastingjaar 2020 | 6 |
+| Aangifte en definitieve aanslag 2019, gedaan in kalenderjaar 2020 | 7 |
+| Huba-verlenging voor de aangifte 2019 | 8 |
+| Definitieve aanslag 2020 uiterlijk | 9 |
+| Aanslaggrens en teruggaafgrens 2020 | 10 |
+| Navorderingstermijn inkomstenbelasting 2020 | 11 |
+| Navordering (additional assessment) bij een fout | 12 |
+| Vrijwillige correctie inkomstenbelasting | 13 |
+| Bezwaartermijn (objection period) en ontvangstbevestiging | 14 |
+| Verzoek om vermindering aanslag 2020 | 15 |
+| Voorlopige aanslag inkomstenbelasting, aanvragen of wijzigen | 16 |
+| Voorlopige aanslag inkomstenbelasting, verrekening | 17 |
+| Betalingstermijnen van aanslagen 2020 | 18 |
+| Belastingrente inkomstenbelasting 2020 | 19 |
+| Belastingrente over belastingjaar 2020 | 20 |
+| Belastingrente inkomstenbelasting, berekening | 21 |
+| Belastingrente inkomstenbelasting bij een navorderingsaanslag | 22 |
+| Belastingrente btw 2020 | 23 |
+| Belastingrente btw, berekening | 24 |
+| Btw-aangifte en betaling, wettelijke termijn | 25 |
+| Btw uiterste aangifte- en betaaldatums per maand 2020 | 26 |
+| Btw uiterste aangifte- en betaaldatums per kwartaal 2020 | 27 |
+| Btw uiterste aangifte- en betaaldatums per jaar | 28 |
+| Btw-aangifte indienen via software | 29 |
+| Uitstel (deferral) btw-aangifte | 30 |
+| Btw aangifteverzuimboete 2020 | 31 |
+| IB boetes 2020 | 32 |
+| Vergrijpboete | 33 |
+| Route na de aangiftetermijn | 34 |
+| Termijn voor het vragen van een aangifte | 35 |
+| Bewaarplicht (record-keeping duty) 2020 | 36 |
+| Bewaarplicht, afwijkende termijnen en begin van de termijn | 37 |
+| Bewaarplicht, omzetting gegevensdrager | 38 |
+| KVK eerste inschrijving en andere opgaven | 39 |
+| KVK-nummer en identiteitscontrole | 40 |
+| Inschrijving Belastingdienst | 41 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
 | Aangifte inkomstenbelasting 2020, uiterste datum | Before 8 May 2021 | enacted | Corrected | https://web.archive.org/web/20210318/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen |

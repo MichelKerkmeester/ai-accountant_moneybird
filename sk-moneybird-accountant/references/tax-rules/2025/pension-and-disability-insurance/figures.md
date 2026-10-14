@@ -36,6 +36,37 @@ This file covers the jaarruimte (annual pension contribution room), the reserver
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Jaarruimte (annual allowance) percentage | 1 |
+| Maximum jaarruimte | 2 |
+| Aftoppingsgrens premiegrondslag | 3 |
+| Franchise premiegrondslag | 4 |
+| Look-back window | 5 |
+| Reserveringsruimte (reserve room) maximum | 6 |
+| Age limit jaarruimte | 7 |
+| Tijdelijke oudedagslijfrente cap | 8 |
+| Overbruggingslijfrente cap | 9 |
+| Stakingswinst maximum, tier a | 10 |
+| Stakingswinst maximum, tier b | 11 |
+| Stakingswinst maximum, tier c | 12 |
+| Oudedagsreserve (old-age reserve) from 2023 | 13 |
+| Afkoop kleine lijfrente | 14 |
+| Afkoop cap bij langdurige arbeidsongeschiktheid | 15 |
+| AOV premium with periodic uitkeringen | 16 |
+| AOV premium with lump-sum payout | 17 |
+| BAZ premium, Raad van State version | 18 |
+| BAZ wachttijd, Raad van State version | 19 |
+| BAZ consultation responses | 20 |
+| Payment deadline for FOR or stakingswinst conversion | 21 |
+| Conversiedeadline einddatum 2024 | 22 |
+| Conversiedeadline einddatum 2025 | 23 |
+| Nabestaandenlijfrente deadline after death in 2024 | 24 |
+| Proef zelfstandigen in sectoraal pensioenfonds | 25 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
 | Jaarruimte percentage | 30% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 |

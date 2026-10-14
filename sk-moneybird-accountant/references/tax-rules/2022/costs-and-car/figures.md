@@ -37,6 +37,41 @@ This file covers the deduction of business costs and the car, bicycle and travel
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Gemengde kosten drempel | 1 |
+| Keuze in plaats van de drempel | 2 |
+| Reis en verblijf congressen en cursussen | 3 |
+| Kilometervergoeding (mileage allowance) | 4 |
+| Openbaar vervoer, taxi en vliegtuig | 5 |
+| Verhuizing en dubbele huisvesting | 6 |
+| Auto vermogensetikettering | 7 |
+| Bijtelling (private-use addition) auto, standard | 8 |
+| Bijtelling auto, first admitted on or before 31 December 2016 | 9 |
+| Youngtimer | 10 |
+| Zero-emission auto, first admission 2022 | 11 |
+| Bijtelling fiets | 12 |
+| Btw-correctie privéauto zonder sluitende kilometeradministratie | 13 |
+| Kleine aankopen en eenjarige kosten | 14 |
+| Studiekostenaftrek (persoonsgebonden) | 15 |
+| Prestatiebeurs cap, mbo | 16 |
+| Prestatiebeurs cap, hbo or wo | 17 |
+| Drempel in the prestatiebeurs case | 18 |
+| STAP-budget maximum | 19 |
+| STAP-budget application windows | 20 |
+| Werkruimte thuis (home workspace) | 21 |
+| Telefoonabonnement thuis | 22 |
+| Private computers en apparatuur | 23 |
+| Literatuur except vakliteratuur | 24 |
+| Kleding except werkkleding | 25 |
+| Persoonlijke verzorging | 26 |
+| Vergoeding partner | 27 |
+| Geldboetes en dwangsommen | 28 |
+| Gemengde kosten in de Vpb, lichaam with employees | 29 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
 | Gemengde kosten drempel | € 4.800 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 (art. 3.15 lid 1) |

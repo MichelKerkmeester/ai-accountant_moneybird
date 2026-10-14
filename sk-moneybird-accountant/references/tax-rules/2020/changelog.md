@@ -1,6 +1,7 @@
 ---
 title: "Corrections tax year 2020"
 description: "Every dated status change in the tax year 2020 topic files, one row per corrected value with the source that settled it."
+nav_label: "Corrections tax year 2020"
 trigger_phrases:
   - "2020 corrections"
   - "belastingjaar 2020 changelog"

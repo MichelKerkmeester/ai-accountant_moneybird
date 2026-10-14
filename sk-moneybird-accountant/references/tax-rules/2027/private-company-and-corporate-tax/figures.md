@@ -36,6 +36,50 @@ Year overview: [README.md](../README.md).
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Vpb rate table (art. 22 Wet Vpb 1969) | 1 |
+| Verliesverrekening (art. 20 Wet Vpb 1969) | 2 |
+| Generieke renteaftrekbeperking (art. 15b lid 1 Wet Vpb 1969) | 3 |
+| Innovatiebox fraction (art. 12b tot 12bd Wet Vpb 1969) | 4 |
+| Innovatiebox forfait (art. 12bd Wet Vpb 1969) | 5 |
+| Innovatiebox forfait ceiling in the bill (art. 12bd) | 6 |
+| Innovatiebox smaller taxpayer (art. 12ba lid 2 Wet Vpb 1969) | 7 |
+| Deelnemingsvrijstelling (art. 13 lid 1 en 2 Wet Vpb 1969) | 8 |
+| Art. 13 lid 7 Wet Vpb 1969 in the bill | 9 |
+| Transitie art. 34j in the bill | 10 |
+| Belastingplan 2027 (bill 37 022) | 11 |
+| 2027 status of the Wet Vpb 1969 text | 12 |
+| Fiscale eenheid bezitseis (art. 15 Wet Vpb 1969) | 13 |
+| Gebruikelijk loon (customary salary) normbedrag (art. 12a Wet LB 1964) | 14 |
+| Gebruikelijk loon indexed amount 2027 | 15 |
+| Gebruikelijk loon test and floor (art. 12a Wet LB 1964) | 16 |
+| Zvw bijdrage and werkgeversheffing 2027 | 17 |
+| DGA Zvw route | 18 |
+| Box 2 table in the future text (art. 2.12 Wet IB 2001) | 19 |
+| Box 2 indexation in the bill (art. 10.1 lid 1 Wet IB 2001) | 20 |
+| Box 2 first bracket end 2027 | 21 |
+| Dividendbelasting rate (art. 5 Wet DB 1965) | 22 |
+| Dividend stripping (art. 4 lid 7 Wet DB 1965) | 23 |
+| Inkoop van eigen aandelen | 24 |
+| Conditionele bronbelasting (art. 4.1 Wet bronbelasting 2021) | 25 |
+| Stakingsaftrek (business cessation deduction) (art. 3.79 Wet IB 2001) | 26 |
+| Stakingsaftrek proposal | 27 |
+| Ruisende inbreng (business transfer) | 28 |
+| Geruisloze omzetting credit (art. 3.65 Wet IB 2001, Besluit 2025 onderdeel 8) | 29 |
+| Besluit geruisloze omzetting 2025 | 30 |
+| BTW for a new BV | 31 |
+| Btw fiscale eenheid (art. 7 lid 4 Wet OB 1968) | 32 |
+| Aangifte (return) Vpb deadline | 33 |
+| Uitstel (deferral) aangifte Vpb | 34 |
+| Jaarrekening size classes (Boek 2 BW art. 395a, 396, 397) | 35 |
+| Jaarrekening deposit (art. 394 Boek 2 BW) | 36 |
+| Administratieplicht and bewaartermijn (art. 52 AWR) | 37 |
+| Btw record terms (art. 34a, 28rl, 28sj Wet OB 1968) | 38 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 Values marked carried come from the 2026-01-01 text of the Wet Vpb 1969 because the 2027-01-01 URL returns HTTP 404 on 2026-10-11. The future texts of the Wet LB 1964 and the Wet IB 2001 for 2027 do exist.
 
 | Item | Value 2027 | Status | Check | Source |

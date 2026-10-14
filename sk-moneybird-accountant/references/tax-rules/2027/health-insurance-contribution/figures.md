@@ -36,6 +36,31 @@ This file covers the income-dependent contribution under the Zorgverzekeringswet
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Zvw-bijdrage by aanslag for a zelfstandige (verlaagde IAB) | 1 |
+| Zvw werkgeversheffing (normale IAB) | 2 |
+| Maximum bijdrage-inkomen | 3 |
+| Bijdrage-inkomen (contribution income) from winst uit onderneming | 4 |
+| Oudedagsreserve (old-age reserve) and the base | 5 |
+| One maximum per person across channels | 6 |
+| Aanslag channel income | 7 |
+| Werkgeversheffing channel income | 8 |
+| Ingehouden bijdrage channel income | 9 |
+| Exceptions | 10 |
+| Rates and maximum set by ministerial regulation | 11 |
+| Verlaagde IAB for zelfstandigen and gepensioneerden | 12 |
+| Zvw at AOW age | 13 |
+| Aanslag Zvw timing | 14 |
+| Zvw declaration and deadlines | 15 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 16 |
+| MKB-winstvrijstelling (SME profit exemption) | 17 |
+| Startersaftrek (starter's deduction), enacted text | 18 |
+| Startersaftrek, bill | 19 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
 | Zvw-bijdrage by aanslag for a zelfstandige (verlaagde IAB) | 5,02% | proposed | Verified | https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/xvi-volksgezondheid-welzijn-en-sport-rijksbegroting-2027/16-volksgezondheid-welzijn-en-sport.pdf Tabel 77 |

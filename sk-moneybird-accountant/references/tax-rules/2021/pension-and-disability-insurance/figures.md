@@ -36,6 +36,36 @@ This file covers the income-provision rules for a sole trader (and the BV links 
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Jaarruimte (annual allowance) percentage | 1 |
+| Maximum jaarruimte | 2 |
+| Aftoppingsgrens premiegrondslag | 3 |
+| Franchise premiegrondslag | 4 |
+| Factor A multiplier | 5 |
+| Look-back window reserveringsruimte | 6 |
+| Reserveringsruimte (reserve room) percentage cap | 7 |
+| Reserveringsruimte maximum, younger group | 8 |
+| Reserveringsruimte maximum, older group | 9 |
+| Age limit jaarruimte | 10 |
+| Tijdelijke oudedagslijfrente cap | 11 |
+| Overbruggingslijfrente cap | 12 |
+| Stakingswinst maximum, tier a | 13 |
+| Stakingswinst maximum, tier b | 14 |
+| Stakingswinst maximum, tier c | 15 |
+| Afkoop kleine lijfrente | 16 |
+| Afkoop cap bij langdurige arbeidsongeschiktheid | 17 |
+| FOR toevoeging | 18 |
+| Mandatory beroepspensioen premium | 19 |
+| AOV premium with periodic uitkeringen | 20 |
+| AOV premium with lump-sum payout | 21 |
+| Payment deadline FOR or stakingswinst conversion | 22 |
+| Lijfrente (annuity) ingangsdatum termijn | 23 |
+| Nabestaandenlijfrente termijn | 24 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
 | Jaarruimte percentage | 13,3% of the premiegrondslag | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 |

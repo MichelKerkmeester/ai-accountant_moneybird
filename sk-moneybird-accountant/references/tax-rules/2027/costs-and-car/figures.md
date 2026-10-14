@@ -36,6 +36,43 @@ This file covers which business costs a sole trader with a winst uit onderneming
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Gemengde kosten drempel, base in the 2027 text | 1 |
+| Gemengde kosten drempel, effective 2027 | 2 |
+| Keuze in plaats van de drempel | 3 |
+| Vpb variant of the drempel (BV) | 4 |
+| Reis en verblijf congressen en cursussen | 5 |
+| Kilometervergoeding (mileage allowance), enacted 2027 text | 6 |
+| Kilometervergoeding, Belastingplan 2027 | 7 |
+| Verhuiskosten | 8 |
+| Dubbele huisvesting | 9 |
+| Bijtelling (private-use addition) auto, standard | 10 |
+| Bijtelling auto, pre-2017 car | 11 |
+| 500 km rule and part-year availability | 12 |
+| Youngtimer age, enacted 2027 text | 13 |
+| Youngtimer age, Belastingplan 2027 | 14 |
+| Youngtimer transition 2027, Belastingplan 2027 | 15 |
+| Zero-emission car, first admission 2027 | 16 |
+| Bijtelling fiets | 17 |
+| Werkruimte thuis (home workspace) | 18 |
+| Telefoonabonnement thuis | 19 |
+| Private computers en apparatuur | 20 |
+| Overige uitsluitingen: literatuur, kleding, persoonlijke verzorging | 21 |
+| Betaling aan de partner | 22 |
+| Vermogensetikettering bedrijfsmiddel en auto | 23 |
+| Kleine aanschaffingen | 24 |
+| Geldboetes en dwangsommen | 25 |
+| Studiekosten als bedrijfskosten | 26 |
+| Studiekostenaftrek (persoonsgebonden route) | 27 |
+| Openbaar vervoer, taxi en vliegtuig | 28 |
+| BTW on a private car used for business | 29 |
+| KOR and the income-tax cost base | 30 |
+| Pseudo-eindheffing new petrol or diesel lease cars (BV) | 31 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
 | Gemengde kosten drempel, base in the 2027 text | € 5.700 before indexation | adopted-not-yet-in-force | Verified | https://wetten.overheid.nl/BWBR0011353/2027-01-01 (art. 3.15 lid 1) |

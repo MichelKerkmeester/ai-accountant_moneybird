@@ -36,6 +36,41 @@ This file covers the 2026 box 1 rates, the main heffingskortingen (tax credits),
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Box 1 below AOW age | 1 |
+| Box 1 at AOW age, born on or after 1 January 1946 | 2 |
+| Box 1 at AOW age, born before 1 January 1946 | 3 |
+| First-bracket rate in the year AOW age is reached in 2026 | 4 |
+| Premie volksverzekeringen (national insurance contribution) ceiling | 5 |
+| Statutory fixed amounts in the box 1 rate table | 6 |
+| Tariefsaanpassing (rate adjustment) | 7 |
+| Algemene heffingskorting (general tax credit) below AOW age | 8 |
+| Algemene heffingskorting for a full year at AOW age | 9 |
+| Arbeidskorting (employment tax credit) below AOW age | 10 |
+| Arbeidskorting for a full year at AOW age | 11 |
+| Arbeidskorting amount taken over from the employer | 12 |
+| Inkomensafhankelijke combinatiekorting below AOW age | 13 |
+| Inkomensafhankelijke combinatiekorting for a full year at AOW age | 14 |
+| IACK maximum point, conflicting source values | 15 |
+| IACK child and co-parent test | 16 |
+| Payout of unused heffingskortingen | 17 |
+| Belastingdeel and premiedelen of heffingskortingen | 18 |
+| Verzamelinkomen | 19 |
+| Box 1 income calculation | 20 |
+| Test for entrepreneur for income tax | 21 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 22 |
+| Startersaftrek (starter's deduction) | 23 |
+| Startersaftrek bij arbeidsongeschiktheid | 24 |
+| Meewerkaftrek (meewerkende partner deduction) | 25 |
+| Stakingsaftrek (business cessation deduction) | 26 |
+| MKB-winstvrijstelling (SME profit exemption) | 27 |
+| Vrijgestelde winstbestanddelen | 28 |
+| Oudedagsreserve (old-age reserve) | 29 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 1 below AOW age | 35,75% up to € 38.883 (8,10% plus 27,65%), 37,56% to € 78.426, 49,50% above. Statute fixed amounts € 3.149 and € 18.001 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1, https://wetten.overheid.nl/jci1.3:c:BWBR0011353&hoofdstuk=2&afdeling=2.2&artikel=2.10&z=2026-01-01&g=2026-01-01 |

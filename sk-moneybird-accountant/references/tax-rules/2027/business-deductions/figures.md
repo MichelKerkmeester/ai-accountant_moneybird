@@ -36,6 +36,44 @@ This file covers the ondernemersaftrek (entrepreneur's allowance) and the MKB-wi
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Urencriterium (hours criterion) | 1 |
+| Second test waived, lookback | 2 |
+| Samenwerkingsverband, mainly supporting | 3 |
+| Pregnancy interruption | 4 |
+| Verlaagd urencriterium | 5 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 6 |
+| Zelfstandigenaftrek at AOW age | 7 |
+| Niet-gerealiseerde zelfstandigenaftrek, carry-forward | 8 |
+| Startersaftrek (starter's deduction), enacted text | 9 |
+| Startersaftrek at AOW age, enacted text | 10 |
+| Startersaftrek prior use limit | 11 |
+| Startersaftrek, bill 37 022 | 12 |
+| Startersaftrek at AOW age, bill 37 022 | 13 |
+| Startersaftrek bij arbeidsongeschiktheid | 14 |
+| Startersaftrek bij arbeidsongeschiktheid abolition | 15 |
+| Aftrek speur- en ontwikkelingswerk, enacted text | 16 |
+| S&O starter increase, enacted text | 17 |
+| S&O hours condition | 18 |
+| MKB-winstvrijstelling (SME profit exemption) | 19 |
+| Meewerkaftrek (meewerkende partner deduction), enacted text | 20 |
+| Pay to the partner, art. 3.16 lid 4 | 21 |
+| Meewerkaftrek, start-ups bill (MvT and Ondernemersplein) | 22 |
+| Meewerkaftrek, start-ups bill article text, first band | 23 |
+| Meewerkaftrek abolition | 24 |
+| Stakingsaftrek (business cessation deduction), enacted text | 25 |
+| Stakingsaftrek, start-ups bill | 26 |
+| Stakingsaftrek abolition | 27 |
+| Oudedagsreserve (old-age reserve) additions | 28 |
+| Tariefsaanpassing (rate adjustment), enacted text | 29 |
+| Maximum value of the ondernemersaftrek and MKB-winstvrijstelling, enacted text | 30 |
+| Maximum deduction value, Belastingplan 2027 | 31 |
+| Zvw maximum contribution income | 32 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
 | Urencriterium | 1.225 hours (art. 3.6, identical to 2026) | adopted-not-yet-in-force | Verified | https://wetten.overheid.nl/BWBR0011353/2027-01-01 |

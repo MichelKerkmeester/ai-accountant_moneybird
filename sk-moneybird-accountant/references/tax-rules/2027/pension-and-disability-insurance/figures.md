@@ -36,6 +36,37 @@ This file covers the jaarruimte (annual deduction room) and reserveringsruimte (
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Jaarruimte (annual allowance) percentage | 1 |
+| Aftoppingsgrens premiegrondslag | 2 |
+| Franchise premiegrondslag | 3 |
+| Maximum jaarruimte | 4 |
+| Reserveringsruimte (reserve room) maximum | 5 |
+| Reserveringsruimte look-back window | 6 |
+| Age limit jaarruimte | 7 |
+| Tijdelijke oudedagslijfrente cap | 8 |
+| Lijfrente (annuity) einddatum 2026 deadline | 9 |
+| Nabestaandenlijfrente deadline for a death in 2026 | 10 |
+| Stakingswinst to lijfrente maxima | 11 |
+| Afkoop kleine lijfrente | 12 |
+| Afkoop maximum bij langdurige arbeidsongeschiktheid | 13 |
+| Overbruggingslijfrente cap | 14 |
+| AOV premium with periodic uitkeringen | 15 |
+| AOV premium with a lump-sum payout | 16 |
+| Oudedagsreserve (old-age reserve) toevoeging | 17 |
+| Aftoppingsgrens freeze 2027 to 2032 | 18 |
+| Limited indexation of the lijfrente maxima | 19 |
+| BAZ in force in 2027 | 20 |
+| BAZ premium estimate | 21 |
+| BAZ benefit maximum | 22 |
+| BAZ wachttijd | 23 |
+| Zelfstandigenwet start | 24 |
+| Sectoraal pensioenfonds proef | 25 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
 | Jaarruimte percentage | 30% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2027-01-01 |

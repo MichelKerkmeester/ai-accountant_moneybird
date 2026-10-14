@@ -36,6 +36,25 @@ This file covers the investment deductions (KIA, EIA, MIA and Vamil), ordinary a
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| KIA table | 1 |
+| KIA per-asset minimum | 2 |
+| EIA percentage | 3 |
+| EIA and MIA maximum investment amount | 4 |
+| MIA percentages | 5 |
+| EIA and MIA per-asset minimum | 6 |
+| Vamil percentage | 7 |
+| RVO notification deadline for EIA, MIA and Vamil | 8 |
+| Ordinary depreciation caps | 9 |
+| Desinvesteringsbijtelling (disinvestment addition) threshold | 10 |
+| Starters willekeurige afschrijving yearly cap | 11 |
+| Bodemwaarde | 12 |
+| Temporary willekeurige afschrijving | 13 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
 | KIA table | nil up to € 2.400, 28% to € 59.939, € 16.784 to € 110.998, € 16.784 minus 7,56% of the excess over € 110.998 up to € 332.994, nil above € 332.994 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 3.41 lid 2, https://wetten.overheid.nl/BWBR0011353/2027-01-01 |

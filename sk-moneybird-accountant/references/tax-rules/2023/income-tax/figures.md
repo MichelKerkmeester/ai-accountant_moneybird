@@ -36,6 +36,40 @@ This file covers the 2023 Box 1 brackets, the heffingskortingen (tax credits), t
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Box 1 below AOW age | 1 |
+| Box 1 full-year AOW age, born on or after 1 January 1946 | 2 |
+| Box 1 full-year AOW age, born before 1 January 1946 | 3 |
+| Statutory income-tax table amounts | 4 |
+| Statutory table amounts for people born before 1 January 1946 | 5 |
+| First-bracket rate in the year AOW age is reached | 6 |
+| Income-tax part of first statutory band | 7 |
+| Premie volksverzekeringen (national insurance contribution) rate and components | 8 |
+| Premie volksverzekeringen ceiling | 9 |
+| Tariefsaanpassing (rate adjustment) | 10 |
+| Algemene heffingskorting (general tax credit) below AOW age | 11 |
+| Algemene heffingskorting for a full year at AOW age | 12 |
+| Arbeidskorting (employment tax credit) below AOW age | 13 |
+| Arbeidskorting for a full year at AOW age | 14 |
+| Higher arbeidskorting applied by an employer | 15 |
+| Inkomensafhankelijke combinatiekorting below AOW age | 16 |
+| Inkomensafhankelijke combinatiekorting for a full year at AOW age | 17 |
+| IACK child and co-parent test | 18 |
+| Heffingskortingen in the year AOW age is reached | 19 |
+| Belastingdeel and premiedelen of heffingskortingen | 20 |
+| Payment of unused heffingskortingen to a lower-earning partner | 21 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 22 |
+| Startersaftrek (starter's deduction) | 23 |
+| Startersaftrek bij arbeidsongeschiktheid | 24 |
+| Meewerkaftrek (meewerkende partner deduction) | 25 |
+| Stakingsaftrek (business cessation deduction) | 26 |
+| MKB-winstvrijstelling (SME profit exemption) | 27 |
+| Oudedagsreserve (old-age reserve) | 28 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 1 below AOW age | 36,93% up to € 73.031, then 49,50% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/belastingberekening and https://wetten.overheid.nl/BWBR0011353/2023-01-01 |

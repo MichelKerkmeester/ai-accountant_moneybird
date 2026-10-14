@@ -36,6 +36,27 @@ Box 3 (sparen en beleggen, savings and investments) taxes a forfaitair (fixed) r
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Heffingsvrij vermogen (tax-free allowance) | 1 |
+| Schuldendrempel (debt threshold) | 2 |
+| Box 3 tarief | 3 |
+| Peildatum | 4 |
+| Rendementsklasse percentages | 5 |
+| Band 1 | 6 |
+| Band 2 | 7 |
+| Band 3 | 8 |
+| Wet rechtsherstel box 3, issue and entry | 9 |
+| Rechtsherstel category percentages 2022 | 10 |
+| Rechtsherstel scope 2022 | 11 |
+| Most favourable method | 12 |
+| Vrijstelling groene beleggingen (green investment exemption) | 13 |
+| Korting groene beleggingen (green investment credit) | 14 |
+| Actual-return reporting 2022 | 15 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
 | Heffingsvrij vermogen | € 50.650 per person, € 101.300 with a fiscal partner | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen https://wetten.overheid.nl/BWBR0011353/2022-01-01 |

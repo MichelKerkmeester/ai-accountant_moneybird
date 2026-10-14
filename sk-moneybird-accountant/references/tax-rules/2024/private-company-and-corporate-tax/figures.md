@@ -36,6 +36,45 @@ This file covers the vennootschapsbelasting (Vpb, corporate income tax) for tax 
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Vennootschapsbelasting (corporate income tax), eerste schijf (art. 22 Wet Vpb 1969) | 1 |
+| Vennootschapsbelasting, boven de eerste schijf (art. 22 Wet Vpb 1969) | 2 |
+| Generieke renteaftrekbeperking (art. 15b lid 1 Wet Vpb 1969) | 3 |
+| Verliesverrekening (art. 20 Wet Vpb 1969) | 4 |
+| Innovatiebox, breuk (art. 12b Wet Vpb 1969) | 5 |
+| Innovatiebox, kleinere belastingplichtige (art. 12ba lid 2 Wet Vpb 1969) | 6 |
+| Innovatiebox, forfait (art. 12bd Wet Vpb 1969) | 7 |
+| Deelneming, drempel (art. 13 lid 2 Wet Vpb 1969) | 8 |
+| Fiscale eenheid, bezitseis (art. 15 Wet Vpb 1969) | 9 |
+| Verzamelbesluit fiscale eenheid | 10 |
+| Gebruikelijk loon (customary salary), normbedrag (art. 12a Wet LB 1964) | 11 |
+| Gebruikelijk loon, vergelijkbaar loon | 12 |
+| Gebruikelijk loon, ondergrens | 13 |
+| Gebruikelijk loon, escape (art. 12a lid 2 Wet LB 1964) | 14 |
+| Start-up relief gebruikelijk loon | 15 |
+| Bijdrage Zvw | 16 |
+| Maximum bijdrage-inkomen Zvw | 17 |
+| Werkgeversheffing Zvw (employer health insurance contribution) (insured DGA) | 18 |
+| Box 2, eerste schijf (art. 2.12 Wet IB 2001) | 19 |
+| Box 2, boven de eerste schijf (art. 2.12 Wet IB 2001) | 20 |
+| Dividendbelasting (art. 5 Wet DB 1965) | 21 |
+| Dividendbelasting, aangifte en dividendnota | 22 |
+| Conditionele bronbelasting (art. 4.1 Wet bronbelasting 2021) | 23 |
+| Uiteindelijk gerechtigde, dividend stripping (art. 4 lid 7 Wet DB 1965) | 24 |
+| Jaarrekening, grootteklassen (Boek 2 BW art. 395a, 396, 397) | 25 |
+| Jaarrekening, grote klasse | 26 |
+| Jaarrekening, deponering (art. 394 Boek 2 BW) | 27 |
+| Btw-eenheid, beleidsbesluit | 28 |
+| Koepelvrijstelling en BUA | 29 |
+| Geruisloze omzetting (art. 3.65 Wet IB 2001) | 30 |
+| Stakingsaftrek (business cessation deduction) (art. 3.79 Wet IB 2001) | 31 |
+| Aangifte (return) Vpb en uitstel | 32 |
+| Bewaartermijn administratie | 33 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
 | Vennootschapsbelasting, eerste schijf (art. 22 Wet Vpb 1969) | t/m € 200.000 at 19% | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 22) |

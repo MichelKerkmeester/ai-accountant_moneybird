@@ -1,6 +1,7 @@
 ---
 title: Booking purchase invoices in Moneybird
 description: How to book a purchase invoice, receipt or order in Moneybird, for a Dutch invoice with VAT and for a foreign invoice where the VAT is reverse charged.
+nav_label: "Booking purchase invoices in Moneybird"
 trigger_phrases:
   - book a purchase invoice
   - inkoopfactuur boeken

@@ -36,6 +36,33 @@ Box 2 covers the income of a taxpayer with an aanmerkelijk belang (substantial s
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Box 2 rate (art. 2.12 Wet IB 2001) | 1 |
+| Belastingkorting on an unoffset loss (art. 4.53 lid 2) | 2 |
+| Verlies uit aanmerkelijk belang, offset period (art. 4.49) | 3 |
+| Losses that arose in 2018 or earlier (art. 4.49) | 4 |
+| Belastingkorting period (art. 4.53 lid 4) | 5 |
+| Aanmerkelijk belang threshold (art. 4.6) | 6 |
+| Box 2 income of a minor child | 7 |
+| Forfaitair voordeel for a vbi or foreign investment company (art. 4.14 lid 1) | 8 |
+| Inherited aanmerkelijk belang facility (art. 4.12a) | 9 |
+| APV loss deferral | 10 |
+| Wet excessief lenen bij eigen vennootschap | 11 |
+| Excessief lenen (excessive borrowing) maximum in the bill after the derde nota van wijziging of 25 March 2022 | 12 |
+| Excessief lenen, transitional eigenwoningschuld rule (art. 10a.23 Wet IB 2001) | 13 |
+| Gebruikelijk loon (customary salary) fixed amount (art. 12a Wet LB 1964) | 14 |
+| Gebruikelijk loon comparable-loon test | 15 |
+| Gebruikelijk loon minimum threshold | 16 |
+| Start-up rule gebruikelijk loon (S&O-verklaring) | 17 |
+| ODV marktrente for 2022 | 18 |
+| ODV instalments (art. 38p Wet LB 1964) | 19 |
+| PEB afkoop and ODV conversion window | 20 |
+| Verkrijgingsprijs after PEB prijsgeven (art. 10a.18 lid 3 Wet IB 2001) | 21 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 2 rate (art. 2.12 Wet IB 2001) | 26,9%, one rate, no bracket | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 2.12 |

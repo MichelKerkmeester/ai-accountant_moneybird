@@ -1,6 +1,7 @@
 ---
 title: Rubrieken and derivation for the VAT return
 description: The rubriek table for 1a to 5b with the law and the Moneybird source per line. The derivation map from a booking to a return line, the run-time rate step and the reverse-charge, KOR, 3b to ICP and OSS rules.
+nav_label: "Rubrieken and derivation for the VAT return"
 trigger_phrases:
   - VAT rubrieken
   - btw rubrieken 1a tot 5b

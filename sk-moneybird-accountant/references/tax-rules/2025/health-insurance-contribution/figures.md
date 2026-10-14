@@ -36,6 +36,31 @@ The Zvw-bijdrage (contribution under the Zorgverzekeringswet, the Dutch Health I
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Zvw-bijdrage by aanslag | 1 |
+| Maximum bijdrage-inkomen | 2 |
+| Ingehouden Zvw-bijdrage | 3 |
+| Zvw-werkgeversheffing | 4 |
+| Income charged by aanslag | 5 |
+| Exceptions to the aanslag | 6 |
+| Maximum across channels | 7 |
+| Zvw base for a winst-ondernemer | 8 |
+| Zvw base and an oudedagsreserve decrease | 9 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 10 |
+| Startersaftrek (starter's deduction) | 11 |
+| Startersaftrek bij arbeidsongeschiktheid | 12 |
+| Meewerkaftrek (meewerkende partner deduction) | 13 |
+| Stakingsaftrek (business cessation deduction) | 14 |
+| MKB-winstvrijstelling (SME profit exemption) | 15 |
+| Oudedagsreserve (old-age reserve) | 16 |
+| Aanslag Zvw timing | 17 |
+| Filing deadline for the Zvw-bijdrage | 18 |
+| Zvw at AOW age | 19 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
 | Zvw-bijdrage by aanslag | 5,26% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet |

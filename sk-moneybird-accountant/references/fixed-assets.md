@@ -1,6 +1,7 @@
 ---
 title: Fixed assets and depreciation in Moneybird
 description: When a business purchase is an asset that is depreciated, how depreciation and the yearly limits work, VAT on an asset and the revision period, disposal and the Moneybird asset screens, for a Dutch sole trader.
+nav_label: "Fixed assets and depreciation in Moneybird"
 trigger_phrases:
   - inventaris afschrijven
   - bedrijfsmiddel boeken

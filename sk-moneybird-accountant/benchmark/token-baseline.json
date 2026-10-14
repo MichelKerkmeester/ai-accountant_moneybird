@@ -3,19 +3,63 @@
     "current": "car route current",
     "proposed": "car route proposed",
     "ratio": {
-      "cl100k_base": 0.2786,
-      "o200k_base": 0.276
+      "cl100k_base": 0.2939,
+      "o200k_base": 0.2912
     }
   },
+  "fences": [],
   "files": [
     {
-      "bytes": 32611,
+      "bytes": 5610,
+      "path": "sk-moneybird-accountant/references/README.md",
+      "sections": [
+        {
+          "anchor": "1-tax-year-folders",
+          "bytes": 1734,
+          "line": 19,
+          "lines": 15,
+          "title": "1. TAX YEAR FOLDERS",
+          "tokens": {
+            "cl100k_base": 481,
+            "o200k_base": 481
+          }
+        },
+        {
+          "anchor": "2-tax-rule-files",
+          "bytes": 1413,
+          "line": 34,
+          "lines": 13,
+          "title": "2. TAX-RULE FILES",
+          "tokens": {
+            "cl100k_base": 341,
+            "o200k_base": 338
+          }
+        },
+        {
+          "anchor": "3-migration-files",
+          "bytes": 1759,
+          "line": 47,
+          "lines": 18,
+          "title": "3. MIGRATION FILES",
+          "tokens": {
+            "cl100k_base": 428,
+            "o200k_base": 426
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1407,
+        "o200k_base": 1402
+      }
+    },
+    {
+      "bytes": 32667,
       "path": "sk-moneybird-accountant/references/fixed-assets.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 1289,
-          "line": 23,
+          "line": 24,
           "lines": 16,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -26,7 +70,7 @@
         {
           "anchor": "2-cost-or-asset",
           "bytes": 1928,
-          "line": 39,
+          "line": 40,
           "lines": 12,
           "title": "2. COST OR ASSET",
           "tokens": {
@@ -37,7 +81,7 @@
         {
           "anchor": "3-decision-table",
           "bytes": 2263,
-          "line": 51,
+          "line": 52,
           "lines": 14,
           "title": "3. DECISION TABLE",
           "tokens": {
@@ -48,7 +92,7 @@
         {
           "anchor": "4-depreciation",
           "bytes": 3453,
-          "line": 65,
+          "line": 66,
           "lines": 18,
           "title": "4. DEPRECIATION",
           "tokens": {
@@ -59,7 +103,7 @@
         {
           "anchor": "5-investment-deductions-and-disposal",
           "bytes": 2856,
-          "line": 83,
+          "line": 84,
           "lines": 12,
           "title": "5. INVESTMENT DEDUCTIONS AND DISPOSAL",
           "tokens": {
@@ -70,7 +114,7 @@
         {
           "anchor": "6-vat-on-an-asset",
           "bytes": 4162,
-          "line": 95,
+          "line": 96,
           "lines": 16,
           "title": "6. VAT ON AN ASSET",
           "tokens": {
@@ -81,7 +125,7 @@
         {
           "anchor": "7-the-asset-flow-in-moneybird",
           "bytes": 4312,
-          "line": 111,
+          "line": 112,
           "lines": 17,
           "title": "7. THE ASSET FLOW IN MONEYBIRD",
           "tokens": {
@@ -92,7 +136,7 @@
         {
           "anchor": "8-cases",
           "bytes": 2262,
-          "line": 128,
+          "line": 129,
           "lines": 12,
           "title": "8. CASES",
           "tokens": {
@@ -103,7 +147,7 @@
         {
           "anchor": "9-mixed-private-and-business-use",
           "bytes": 2490,
-          "line": 140,
+          "line": 141,
           "lines": 12,
           "title": "9. MIXED PRIVATE AND BUSINESS USE",
           "tokens": {
@@ -114,7 +158,7 @@
         {
           "anchor": "10-calculated-examples",
           "bytes": 1862,
-          "line": 152,
+          "line": 153,
           "lines": 27,
           "title": "10. CALCULATED EXAMPLES",
           "tokens": {
@@ -125,7 +169,7 @@
         {
           "anchor": "11-checks-after-booking",
           "bytes": 2081,
-          "line": 179,
+          "line": 180,
           "lines": 10,
           "title": "11. CHECKS AFTER BOOKING",
           "tokens": {
@@ -136,7 +180,7 @@
         {
           "anchor": "12-open-points",
           "bytes": 1959,
-          "line": 189,
+          "line": 190,
           "lines": 11,
           "title": "12. OPEN POINTS",
           "tokens": {
@@ -147,7 +191,7 @@
         {
           "anchor": "13-related-resources",
           "bytes": 719,
-          "line": 200,
+          "line": 201,
           "lines": 9,
           "title": "13. RELATED RESOURCES",
           "tokens": {
@@ -157,18 +201,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 9556,
-        "o200k_base": 8697
+        "cl100k_base": 9568,
+        "o200k_base": 8709
       }
     },
     {
-      "bytes": 5560,
+      "bytes": 5603,
       "path": "sk-moneybird-accountant/references/income-tax-return/README.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 832,
-          "line": 21,
+          "line": 22,
           "lines": 10,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -179,7 +223,7 @@
         {
           "anchor": "2-the-five-files",
           "bytes": 781,
-          "line": 31,
+          "line": 32,
           "lines": 12,
           "title": "2. THE FIVE FILES",
           "tokens": {
@@ -190,7 +234,7 @@
         {
           "anchor": "3-boundary",
           "bytes": 542,
-          "line": 43,
+          "line": 44,
           "lines": 9,
           "title": "3. BOUNDARY",
           "tokens": {
@@ -201,7 +245,7 @@
         {
           "anchor": "4-figure-link-rule",
           "bytes": 1005,
-          "line": 52,
+          "line": 53,
           "lines": 10,
           "title": "4. FIGURE LINK RULE",
           "tokens": {
@@ -212,7 +256,7 @@
         {
           "anchor": "5-shared-disposition-vocabulary",
           "bytes": 812,
-          "line": 62,
+          "line": 63,
           "lines": 16,
           "title": "5. SHARED DISPOSITION VOCABULARY",
           "tokens": {
@@ -223,7 +267,7 @@
         {
           "anchor": "6-related-resources",
           "bytes": 782,
-          "line": 78,
+          "line": 79,
           "lines": 9,
           "title": "6. RELATED RESOURCES",
           "tokens": {
@@ -233,18 +277,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1307,
-        "o200k_base": 1296
+        "cl100k_base": 1316,
+        "o200k_base": 1305
       }
     },
     {
-      "bytes": 4666,
+      "bytes": 4709,
       "path": "sk-moneybird-accountant/references/income-tax-return/investment-and-claim-register.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 616,
-          "line": 20,
+          "line": 21,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -255,7 +299,7 @@
         {
           "anchor": "2-the-register",
           "bytes": 612,
-          "line": 28,
+          "line": 29,
           "lines": 13,
           "title": "2. THE REGISTER",
           "tokens": {
@@ -266,7 +310,7 @@
         {
           "anchor": "3-the-conditions-the-register-evidences",
           "bytes": 1164,
-          "line": 41,
+          "line": 42,
           "lines": 13,
           "title": "3. THE CONDITIONS THE REGISTER EVIDENCES",
           "tokens": {
@@ -277,7 +321,7 @@
         {
           "anchor": "4-the-rules-for-the-register",
           "bytes": 644,
-          "line": 54,
+          "line": 55,
           "lines": 10,
           "title": "4. THE RULES FOR THE REGISTER",
           "tokens": {
@@ -288,7 +332,7 @@
         {
           "anchor": "5-related-resources",
           "bytes": 702,
-          "line": 64,
+          "line": 65,
           "lines": 8,
           "title": "5. RELATED RESOURCES",
           "tokens": {
@@ -298,18 +342,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1130,
-        "o200k_base": 1126
+        "cl100k_base": 1140,
+        "o200k_base": 1135
       }
     },
     {
-      "bytes": 8667,
+      "bytes": 8714,
       "path": "sk-moneybird-accountant/references/income-tax-return/operator-inputs.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 958,
-          "line": 20,
+          "line": 21,
           "lines": 10,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -320,7 +364,7 @@
         {
           "anchor": "2-the-official-private-part-input-list",
           "bytes": 2347,
-          "line": 30,
+          "line": 31,
           "lines": 20,
           "title": "2. THE OFFICIAL PRIVATE-PART INPUT LIST",
           "tokens": {
@@ -331,7 +375,7 @@
         {
           "anchor": "3-the-operator-evidence-checklist",
           "bytes": 2944,
-          "line": 50,
+          "line": 51,
           "lines": 25,
           "title": "3. THE OPERATOR EVIDENCE CHECKLIST",
           "tokens": {
@@ -342,7 +386,7 @@
         {
           "anchor": "4-the-disposition-vocabulary",
           "bytes": 826,
-          "line": 75,
+          "line": 76,
           "lines": 14,
           "title": "4. THE DISPOSITION VOCABULARY",
           "tokens": {
@@ -353,7 +397,7 @@
         {
           "anchor": "5-related-resources",
           "bytes": 612,
-          "line": 89,
+          "line": 90,
           "lines": 8,
           "title": "5. RELATED RESOURCES",
           "tokens": {
@@ -363,18 +407,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2008,
-        "o200k_base": 1904
+        "cl100k_base": 2018,
+        "o200k_base": 1914
       }
     },
     {
-      "bytes": 19479,
+      "bytes": 19532,
       "path": "sk-moneybird-accountant/references/income-tax-return/procedure.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 886,
-          "line": 20,
+          "line": 21,
           "lines": 10,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -385,7 +429,7 @@
         {
           "anchor": "2-the-steps",
           "bytes": 4805,
-          "line": 30,
+          "line": 31,
           "lines": 21,
           "title": "2. THE STEPS",
           "tokens": {
@@ -396,7 +440,7 @@
         {
           "anchor": "3-the-source-map",
           "bytes": 6967,
-          "line": 51,
+          "line": 52,
           "lines": 44,
           "title": "3. THE SOURCE MAP",
           "tokens": {
@@ -407,7 +451,7 @@
         {
           "anchor": "4-evidence-gates",
           "bytes": 2576,
-          "line": 95,
+          "line": 96,
           "lines": 19,
           "title": "4. EVIDENCE GATES",
           "tokens": {
@@ -418,7 +462,7 @@
         {
           "anchor": "5-the-review-pack",
           "bytes": 1247,
-          "line": 114,
+          "line": 115,
           "lines": 15,
           "title": "5. THE REVIEW PACK",
           "tokens": {
@@ -429,7 +473,7 @@
         {
           "anchor": "6-stop-rules",
           "bytes": 699,
-          "line": 129,
+          "line": 130,
           "lines": 16,
           "title": "6. STOP RULES",
           "tokens": {
@@ -440,7 +484,7 @@
         {
           "anchor": "7-residual-risks",
           "bytes": 515,
-          "line": 145,
+          "line": 146,
           "lines": 14,
           "title": "7. RESIDUAL RISKS",
           "tokens": {
@@ -451,7 +495,7 @@
         {
           "anchor": "8-related-resources",
           "bytes": 943,
-          "line": 159,
+          "line": 160,
           "lines": 12,
           "title": "8. RELATED RESOURCES",
           "tokens": {
@@ -461,18 +505,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4907,
-        "o200k_base": 4701
+        "cl100k_base": 4917,
+        "o200k_base": 4711
       }
     },
     {
-      "bytes": 5134,
+      "bytes": 5187,
       "path": "sk-moneybird-accountant/references/income-tax-return/risks-and-open-points.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 611,
-          "line": 20,
+          "line": 21,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -483,7 +527,7 @@
         {
           "anchor": "2-the-five-residual-unknowns",
           "bytes": 1774,
-          "line": 28,
+          "line": 29,
           "lines": 14,
           "title": "2. THE FIVE RESIDUAL UNKNOWNS",
           "tokens": {
@@ -494,7 +538,7 @@
         {
           "anchor": "3-the-2025-starters-cap-status-agreement",
           "bytes": 611,
-          "line": 42,
+          "line": 43,
           "lines": 8,
           "title": "3. THE 2025 STARTERS CAP STATUS AGREEMENT",
           "tokens": {
@@ -505,7 +549,7 @@
         {
           "anchor": "4-the-rule-for-an-open-point",
           "bytes": 600,
-          "line": 50,
+          "line": 51,
           "lines": 10,
           "title": "4. THE RULE FOR AN OPEN POINT",
           "tokens": {
@@ -516,7 +560,7 @@
         {
           "anchor": "5-related-resources",
           "bytes": 665,
-          "line": 60,
+          "line": 61,
           "lines": 8,
           "title": "5. RELATED RESOURCES",
           "tokens": {
@@ -526,18 +570,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1317,
-        "o200k_base": 1294
+        "cl100k_base": 1329,
+        "o200k_base": 1306
       }
     },
     {
-      "bytes": 5084,
+      "bytes": 5133,
       "path": "sk-moneybird-accountant/references/migration/README.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 314,
-          "line": 20,
+          "line": 21,
           "lines": 6,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -548,7 +592,7 @@
         {
           "anchor": "2-phase-map",
           "bytes": 2300,
-          "line": 26,
+          "line": 27,
           "lines": 32,
           "title": "2. PHASE MAP",
           "tokens": {
@@ -559,7 +603,7 @@
         {
           "anchor": "3-old-to-new-phase-number-map",
           "bytes": 527,
-          "line": 58,
+          "line": 59,
           "lines": 15,
           "title": "3. OLD-TO-NEW PHASE NUMBER MAP",
           "tokens": {
@@ -570,7 +614,7 @@
         {
           "anchor": "4-routing-rules",
           "bytes": 1006,
-          "line": 73,
+          "line": 74,
           "lines": 11,
           "title": "4. ROUTING RULES",
           "tokens": {
@@ -581,7 +625,7 @@
         {
           "anchor": "5-related-references",
           "bytes": 482,
-          "line": 84,
+          "line": 85,
           "lines": 6,
           "title": "5. RELATED REFERENCES",
           "tokens": {
@@ -591,18 +635,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1456,
-        "o200k_base": 1450
+        "cl100k_base": 1466,
+        "o200k_base": 1460
       }
     },
     {
-      "bytes": 21445,
+      "bytes": 21486,
       "path": "sk-moneybird-accountant/references/migration/control-framework.md",
       "sections": [
         {
           "anchor": "phase-contract-schema",
           "bytes": 1555,
-          "line": 18,
+          "line": 19,
           "lines": 18,
           "title": "Phase contract schema",
           "tokens": {
@@ -613,7 +657,7 @@
         {
           "anchor": "agent-structure",
           "bytes": 4217,
-          "line": 36,
+          "line": 37,
           "lines": 23,
           "title": "Agent structure",
           "tokens": {
@@ -624,7 +668,7 @@
         {
           "anchor": "verification-loop-per-record",
           "bytes": 1931,
-          "line": 59,
+          "line": 60,
           "lines": 15,
           "title": "Verification loop per record",
           "tokens": {
@@ -635,7 +679,7 @@
         {
           "anchor": "risk-model",
           "bytes": 837,
-          "line": 74,
+          "line": 75,
           "lines": 11,
           "title": "Risk model",
           "tokens": {
@@ -646,7 +690,7 @@
         {
           "anchor": "high-risk-transactions",
           "bytes": 572,
-          "line": 85,
+          "line": 86,
           "lines": 14,
           "title": "High-risk transactions",
           "tokens": {
@@ -657,7 +701,7 @@
         {
           "anchor": "exception-ledger-and-thresholds",
           "bytes": 2642,
-          "line": 99,
+          "line": 100,
           "lines": 35,
           "title": "Exception ledger and thresholds",
           "tokens": {
@@ -668,7 +712,7 @@
         {
           "anchor": "stop-conditions-and-recovery",
           "bytes": 4012,
-          "line": 134,
+          "line": 135,
           "lines": 31,
           "title": "Stop conditions and recovery",
           "tokens": {
@@ -679,7 +723,7 @@
         {
           "anchor": "master-dashboard",
           "bytes": 3071,
-          "line": 165,
+          "line": 166,
           "lines": 47,
           "title": "Master dashboard",
           "tokens": {
@@ -690,7 +734,7 @@
         {
           "anchor": "concrete-first-runs",
           "bytes": 1282,
-          "line": 212,
+          "line": 213,
           "lines": 12,
           "title": "Concrete first runs",
           "tokens": {
@@ -701,7 +745,7 @@
         {
           "anchor": "definition-of-done",
           "bytes": 678,
-          "line": 224,
+          "line": 225,
           "lines": 3,
           "title": "Definition of done",
           "tokens": {
@@ -711,18 +755,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4596,
-        "o200k_base": 4594
+        "cl100k_base": 4604,
+        "o200k_base": 4602
       }
     },
     {
-      "bytes": 5096,
+      "bytes": 5144,
       "path": "sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 391,
-          "line": 20,
+          "line": 21,
           "lines": 6,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -733,7 +777,7 @@
         {
           "anchor": "2-concept-mapping",
           "bytes": 1957,
-          "line": 26,
+          "line": 27,
           "lines": 16,
           "title": "2. CONCEPT MAPPING",
           "tokens": {
@@ -744,7 +788,7 @@
         {
           "anchor": "3-source-system-export-traps",
           "bytes": 1287,
-          "line": 42,
+          "line": 43,
           "lines": 24,
           "title": "3. SOURCE-SYSTEM EXPORT TRAPS",
           "tokens": {
@@ -755,7 +799,7 @@
         {
           "anchor": "4-migration-checks",
           "bytes": 581,
-          "line": 66,
+          "line": 67,
           "lines": 12,
           "title": "4. MIGRATION CHECKS",
           "tokens": {
@@ -766,7 +810,7 @@
         {
           "anchor": "5-related-resources",
           "bytes": 325,
-          "line": 78,
+          "line": 79,
           "lines": 5,
           "title": "5. RELATED RESOURCES",
           "tokens": {
@@ -776,18 +820,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1136,
-        "o200k_base": 1117
+        "cl100k_base": 1149,
+        "o200k_base": 1130
       }
     },
     {
-      "bytes": 25727,
+      "bytes": 25769,
       "path": "sk-moneybird-accountant/references/migration/overview-and-setup.md",
       "sections": [
         {
           "anchor": "goal-and-evidence-sources",
           "bytes": 1052,
-          "line": 18,
+          "line": 19,
           "lines": 15,
           "title": "Goal and evidence sources",
           "tokens": {
@@ -798,7 +842,7 @@
         {
           "anchor": "tool-and-access-boundaries",
           "bytes": 6605,
-          "line": 33,
+          "line": 34,
           "lines": 51,
           "title": "Tool and access boundaries",
           "tokens": {
@@ -809,7 +853,7 @@
         {
           "anchor": "workspace-layout",
           "bytes": 1783,
-          "line": 84,
+          "line": 85,
           "lines": 22,
           "title": "Workspace layout",
           "tokens": {
@@ -820,7 +864,7 @@
         {
           "anchor": "required-migration_config-fields",
           "bytes": 11955,
-          "line": 106,
+          "line": 107,
           "lines": 78,
           "title": "Required `MIGRATION_CONFIG` fields",
           "tokens": {
@@ -831,7 +875,7 @@
         {
           "anchor": "proposed-threshold-rows",
           "bytes": 1308,
-          "line": 184,
+          "line": 185,
           "lines": 17,
           "title": "Proposed threshold rows",
           "tokens": {
@@ -842,7 +886,7 @@
         {
           "anchor": "phase-0-setup-sequence",
           "bytes": 2420,
-          "line": 201,
+          "line": 202,
           "lines": 15,
           "title": "Phase 0 setup sequence",
           "tokens": {
@@ -852,18 +896,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5748,
-        "o200k_base": 5732
+        "cl100k_base": 5757,
+        "o200k_base": 5741
       }
     },
     {
-      "bytes": 7523,
+      "bytes": 7567,
       "path": "sk-moneybird-accountant/references/migration/phase-22-completion.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 178,
-          "line": 19,
+          "line": 20,
           "lines": 4,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -874,7 +918,7 @@
         {
           "anchor": "phase-22-migration-completion-and-jortt-decommission",
           "bytes": 6819,
-          "line": 23,
+          "line": 24,
           "lines": 62,
           "title": "Phase 22: Migration completion and Jortt decommission",
           "tokens": {
@@ -884,18 +928,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1695,
-        "o200k_base": 1686
+        "cl100k_base": 1706,
+        "o200k_base": 1697
       }
     },
     {
-      "bytes": 25245,
+      "bytes": 25282,
       "path": "sk-moneybird-accountant/references/migration/phases-0-to-2.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 178,
-          "line": 19,
+          "line": 20,
           "lines": 4,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -906,7 +950,7 @@
         {
           "anchor": "phase-0-safety-and-system-setup",
           "bytes": 10129,
-          "line": 23,
+          "line": 24,
           "lines": 74,
           "title": "Phase 0: Safety and system setup",
           "tokens": {
@@ -917,7 +961,7 @@
         {
           "anchor": "phase-1-full-source-inventory",
           "bytes": 6808,
-          "line": 97,
+          "line": 98,
           "lines": 76,
           "title": "Phase 1: Full source inventory",
           "tokens": {
@@ -928,7 +972,7 @@
         {
           "anchor": "phase-2-collect-missing-sources-and-seed-archive",
           "bytes": 7614,
-          "line": 173,
+          "line": 174,
           "lines": 69,
           "title": "Phase 2: Collect missing sources and seed archive",
           "tokens": {
@@ -938,18 +982,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5580,
-        "o200k_base": 5551
+        "cl100k_base": 5592,
+        "o200k_base": 5563
       }
     },
     {
-      "bytes": 37233,
+      "bytes": 37272,
       "path": "sk-moneybird-accountant/references/migration/phases-10-to-16.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 178,
-          "line": 19,
+          "line": 20,
           "lines": 4,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -960,7 +1004,7 @@
         {
           "anchor": "phase-10-year-end-check",
           "bytes": 6442,
-          "line": 23,
+          "line": 24,
           "lines": 73,
           "title": "Phase 10: Year-end check",
           "tokens": {
@@ -971,7 +1015,7 @@
         {
           "anchor": "phase-11-ib-cross-verification",
           "bytes": 4868,
-          "line": 96,
+          "line": 97,
           "lines": 70,
           "title": "Phase 11: IB cross-verification",
           "tokens": {
@@ -982,7 +1026,7 @@
         {
           "anchor": "phase-12-continuity-between-years",
           "bytes": 4735,
-          "line": 166,
+          "line": 167,
           "lines": 63,
           "title": "Phase 12: Continuity between years",
           "tokens": {
@@ -993,7 +1037,7 @@
         {
           "anchor": "phase-13-year-red-team",
           "bytes": 4253,
-          "line": 229,
+          "line": 230,
           "lines": 63,
           "title": "Phase 13: Year Red Team",
           "tokens": {
@@ -1004,7 +1048,7 @@
         {
           "anchor": "phase-14-year-lock",
           "bytes": 5929,
-          "line": 292,
+          "line": 293,
           "lines": 66,
           "title": "Phase 14: Year lock",
           "tokens": {
@@ -1015,7 +1059,7 @@
         {
           "anchor": "phase-15-repeat-from-oldest-to-newest-year",
           "bytes": 3830,
-          "line": 358,
+          "line": 359,
           "lines": 63,
           "title": "Phase 15: Repeat from oldest to newest year",
           "tokens": {
@@ -1026,7 +1070,7 @@
         {
           "anchor": "phase-16-current-year-parallel-mirror-and-cutover-preparation",
           "bytes": 6458,
-          "line": 421,
+          "line": 422,
           "lines": 64,
           "title": "Phase 16: Current-year parallel mirror and cutover preparation",
           "tokens": {
@@ -1036,18 +1080,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 8310,
-        "o200k_base": 8243
+        "cl100k_base": 8322,
+        "o200k_base": 8255
       }
     },
     {
-      "bytes": 13455,
+      "bytes": 13494,
       "path": "sk-moneybird-accountant/references/migration/phases-17-to-18.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 178,
-          "line": 19,
+          "line": 20,
           "lines": 4,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -1058,7 +1102,7 @@
         {
           "anchor": "phase-17-source-freeze-and-archive-readiness",
           "bytes": 6327,
-          "line": 23,
+          "line": 24,
           "lines": 63,
           "title": "Phase 17: Source freeze and archive readiness",
           "tokens": {
@@ -1069,7 +1113,7 @@
         {
           "anchor": "phase-18-switch-to-live-bookkeeping",
           "bytes": 6422,
-          "line": 86,
+          "line": 87,
           "lines": 71,
           "title": "Phase 18: Switch to live bookkeeping",
           "tokens": {
@@ -1079,18 +1123,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3066,
-        "o200k_base": 3028
+        "cl100k_base": 3078,
+        "o200k_base": 3040
       }
     },
     {
-      "bytes": 17377,
+      "bytes": 17422,
       "path": "sk-moneybird-accountant/references/migration/phases-19-to-21.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 178,
-          "line": 19,
+          "line": 20,
           "lines": 4,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -1101,7 +1145,7 @@
         {
           "anchor": "phase-19-live-monthly-workflow",
           "bytes": 5292,
-          "line": 23,
+          "line": 24,
           "lines": 69,
           "title": "Phase 19: Live monthly workflow",
           "tokens": {
@@ -1112,7 +1156,7 @@
         {
           "anchor": "phase-20-live-vat-period-workflow",
           "bytes": 5875,
-          "line": 92,
+          "line": 93,
           "lines": 76,
           "title": "Phase 20: Live VAT-period workflow",
           "tokens": {
@@ -1123,7 +1167,7 @@
         {
           "anchor": "phase-21-live-yearly-workflow",
           "bytes": 5500,
-          "line": 168,
+          "line": 169,
           "lines": 75,
           "title": "Phase 21: Live yearly workflow",
           "tokens": {
@@ -1133,18 +1177,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3938,
-        "o200k_base": 3881
+        "cl100k_base": 3952,
+        "o200k_base": 3895
       }
     },
     {
-      "bytes": 15022,
+      "bytes": 15059,
       "path": "sk-moneybird-accountant/references/migration/phases-3-to-5.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 178,
-          "line": 19,
+          "line": 20,
           "lines": 4,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -1155,7 +1199,7 @@
         {
           "anchor": "phase-3-reconstruct-each-source-independently",
           "bytes": 5408,
-          "line": 23,
+          "line": 24,
           "lines": 67,
           "title": "Phase 3: Reconstruct each source independently",
           "tokens": {
@@ -1166,7 +1210,7 @@
         {
           "anchor": "phase-4-cross-reconciliation",
           "bytes": 4078,
-          "line": 90,
+          "line": 91,
           "lines": 65,
           "title": "Phase 4: Cross-reconciliation",
           "tokens": {
@@ -1177,7 +1221,7 @@
         {
           "anchor": "phase-5-completeness-and-anomaly-scan",
           "bytes": 4816,
-          "line": 155,
+          "line": 156,
           "lines": 67,
           "title": "Phase 5: Completeness and anomaly scan",
           "tokens": {
@@ -1187,18 +1231,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3367,
-        "o200k_base": 3336
+        "cl100k_base": 3379,
+        "o200k_base": 3348
       }
     },
     {
-      "bytes": 30098,
+      "bytes": 30135,
       "path": "sk-moneybird-accountant/references/migration/phases-6-to-9.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 178,
-          "line": 19,
+          "line": 20,
           "lines": 4,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -1209,7 +1253,7 @@
         {
           "anchor": "phase-6-design-the-moneybird-mapping",
           "bytes": 7256,
-          "line": 23,
+          "line": 24,
           "lines": 88,
           "title": "Phase 6: Design the Moneybird mapping",
           "tokens": {
@@ -1220,7 +1264,7 @@
         {
           "anchor": "phase-7-pilot-migration",
           "bytes": 8793,
-          "line": 111,
+          "line": 112,
           "lines": 76,
           "title": "Phase 7: Pilot migration",
           "tokens": {
@@ -1231,7 +1275,7 @@
         {
           "anchor": "phase-8-historical-migration-per-period",
           "bytes": 7524,
-          "line": 187,
+          "line": 188,
           "lines": 77,
           "title": "Phase 8: Historical migration per period",
           "tokens": {
@@ -1242,7 +1286,7 @@
         {
           "anchor": "phase-9-vat-verification-loop",
           "bytes": 5817,
-          "line": 264,
+          "line": 265,
           "lines": 68,
           "title": "Phase 9: VAT verification loop",
           "tokens": {
@@ -1252,18 +1296,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 6575,
-        "o200k_base": 6531
+        "cl100k_base": 6587,
+        "o200k_base": 6543
       }
     },
     {
-      "bytes": 32606,
+      "bytes": 32666,
       "path": "sk-moneybird-accountant/references/migration/shared-mechanisms.md",
       "sections": [
         {
           "anchor": "m1-register-schemas-and-complete-source-manifests",
           "bytes": 960,
-          "line": 17,
+          "line": 18,
           "lines": 6,
           "title": "M1. Register schemas and complete source manifests",
           "tokens": {
@@ -1274,7 +1318,7 @@
         {
           "anchor": "m2-stable-local-write-keys-and-uncertain-outcomes",
           "bytes": 1990,
-          "line": 23,
+          "line": 24,
           "lines": 8,
           "title": "M2. Stable local write keys and uncertain outcomes",
           "tokens": {
@@ -1285,7 +1329,7 @@
         {
           "anchor": "m3-append-only-run-journal-approvals-and-crash-resume",
           "bytes": 1673,
-          "line": 31,
+          "line": 32,
           "lines": 10,
           "title": "M3. Append-only run journal, approvals, and crash resume",
           "tokens": {
@@ -1296,7 +1340,7 @@
         {
           "anchor": "m4-evidence-privacy-and-session-boundary",
           "bytes": 1411,
-          "line": 41,
+          "line": 42,
           "lines": 6,
           "title": "M4. Evidence, privacy, and session boundary",
           "tokens": {
@@ -1307,7 +1351,7 @@
         {
           "anchor": "m5-moneybird-rate-limits-and-recovery",
           "bytes": 852,
-          "line": 47,
+          "line": 48,
           "lines": 6,
           "title": "M5. Moneybird rate limits and recovery",
           "tokens": {
@@ -1318,7 +1362,7 @@
         {
           "anchor": "m6-access-window-through-writes-and-verification",
           "bytes": 717,
-          "line": 53,
+          "line": 54,
           "lines": 6,
           "title": "M6. Access window through writes and verification",
           "tokens": {
@@ -1329,7 +1373,7 @@
         {
           "anchor": "m7-exception-and-threshold-control",
           "bytes": 874,
-          "line": 59,
+          "line": 60,
           "lines": 6,
           "title": "M7. Exception and threshold control",
           "tokens": {
@@ -1340,7 +1384,7 @@
         {
           "anchor": "m8-jortt-pagination-and-source-request-evidence",
           "bytes": 1124,
-          "line": 65,
+          "line": 66,
           "lines": 6,
           "title": "M8. Jortt pagination and source request evidence",
           "tokens": {
@@ -1351,7 +1395,7 @@
         {
           "anchor": "m9-master-phase-dashboard",
           "bytes": 668,
-          "line": 71,
+          "line": 72,
           "lines": 4,
           "title": "M9. Master phase dashboard",
           "tokens": {
@@ -1362,7 +1406,7 @@
         {
           "anchor": "m10-write-isolation-decision",
           "bytes": 910,
-          "line": 75,
+          "line": 76,
           "lines": 6,
           "title": "M10. Write-isolation decision",
           "tokens": {
@@ -1373,7 +1417,7 @@
         {
           "anchor": "m11-stop-state-recovery-matrix",
           "bytes": 3530,
-          "line": 81,
+          "line": 82,
           "lines": 16,
           "title": "M11. Stop-state recovery matrix",
           "tokens": {
@@ -1384,7 +1428,7 @@
         {
           "anchor": "m12-external-agent-route",
           "bytes": 12730,
-          "line": 97,
+          "line": 98,
           "lines": 69,
           "title": "M12. External agent route",
           "tokens": {
@@ -1395,7 +1439,7 @@
         {
           "anchor": "route-contract",
           "bytes": 4460,
-          "line": 166,
+          "line": 167,
           "lines": 23,
           "title": "Route contract",
           "tokens": {
@@ -1405,18 +1449,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 6813,
-        "o200k_base": 6835
+        "cl100k_base": 6824,
+        "o200k_base": 6846
       }
     },
     {
-      "bytes": 26657,
+      "bytes": 26707,
       "path": "sk-moneybird-accountant/references/mixed-use-costs.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 1469,
-          "line": 21,
+          "line": 22,
           "lines": 14,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -1427,7 +1471,7 @@
         {
           "anchor": "2-decision-table",
           "bytes": 2469,
-          "line": 35,
+          "line": 36,
           "lines": 15,
           "title": "2. DECISION TABLE",
           "tokens": {
@@ -1438,7 +1482,7 @@
         {
           "anchor": "3-the-income-tax-rule",
           "bytes": 3164,
-          "line": 50,
+          "line": 51,
           "lines": 16,
           "title": "3. THE INCOME TAX RULE",
           "tokens": {
@@ -1449,7 +1493,7 @@
         {
           "anchor": "4-the-vat-rule",
           "bytes": 5445,
-          "line": 66,
+          "line": 67,
           "lines": 19,
           "title": "4. THE VAT RULE",
           "tokens": {
@@ -1460,7 +1504,7 @@
         {
           "anchor": "5-the-booking-steps-in-moneybird",
           "bytes": 3627,
-          "line": 85,
+          "line": 86,
           "lines": 11,
           "title": "5. THE BOOKING STEPS IN MONEYBIRD",
           "tokens": {
@@ -1471,7 +1515,7 @@
         {
           "anchor": "6-case-a-a-mobile-phone-subscription",
           "bytes": 722,
-          "line": 96,
+          "line": 97,
           "lines": 10,
           "title": "6. CASE A: A MOBILE PHONE SUBSCRIPTION",
           "tokens": {
@@ -1482,7 +1526,7 @@
         {
           "anchor": "7-case-b-a-home-internet-connection",
           "bytes": 516,
-          "line": 106,
+          "line": 107,
           "lines": 8,
           "title": "7. CASE B: A HOME INTERNET CONNECTION",
           "tokens": {
@@ -1493,7 +1537,7 @@
         {
           "anchor": "8-case-c-the-fixed-telephone-line-in-the-own-home",
           "bytes": 987,
-          "line": 114,
+          "line": 115,
           "lines": 8,
           "title": "8. CASE C: THE FIXED TELEPHONE LINE IN THE OWN HOME",
           "tokens": {
@@ -1504,7 +1548,7 @@
         {
           "anchor": "9-case-d-a-phone-or-laptop-bought-for-mixed-use",
           "bytes": 1644,
-          "line": 122,
+          "line": 123,
           "lines": 10,
           "title": "9. CASE D: A PHONE OR LAPTOP BOUGHT FOR MIXED USE",
           "tokens": {
@@ -1515,7 +1559,7 @@
         {
           "anchor": "10-calculated-examples",
           "bytes": 1738,
-          "line": 132,
+          "line": 133,
           "lines": 24,
           "title": "10. CALCULATED EXAMPLES",
           "tokens": {
@@ -1526,7 +1570,7 @@
         {
           "anchor": "11-checks-after-booking",
           "bytes": 1432,
-          "line": 156,
+          "line": 157,
           "lines": 12,
           "title": "11. CHECKS AFTER BOOKING",
           "tokens": {
@@ -1537,7 +1581,7 @@
         {
           "anchor": "12-open-points",
           "bytes": 1652,
-          "line": 168,
+          "line": 169,
           "lines": 11,
           "title": "12. OPEN POINTS",
           "tokens": {
@@ -1548,7 +1592,7 @@
         {
           "anchor": "13-related-resources",
           "bytes": 741,
-          "line": 179,
+          "line": 180,
           "lines": 8,
           "title": "13. RELATED RESOURCES",
           "tokens": {
@@ -1558,18 +1602,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7301,
-        "o200k_base": 6831
+        "cl100k_base": 7313,
+        "o200k_base": 6843
       }
     },
     {
-      "bytes": 15273,
+      "bytes": 15332,
       "path": "sk-moneybird-accountant/references/moneybird-bookkeeping.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 325,
-          "line": 20,
+          "line": 21,
           "lines": 6,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -1580,7 +1624,7 @@
         {
           "anchor": "2-sales-and-receipts",
           "bytes": 1082,
-          "line": 26,
+          "line": 27,
           "lines": 18,
           "title": "2. SALES AND RECEIPTS",
           "tokens": {
@@ -1591,7 +1635,7 @@
         {
           "anchor": "3-purchases-and-costs",
           "bytes": 1853,
-          "line": 44,
+          "line": 45,
           "lines": 25,
           "title": "3. PURCHASES AND COSTS",
           "tokens": {
@@ -1602,7 +1646,7 @@
         {
           "anchor": "4-private-use-and-mileage",
           "bytes": 1606,
-          "line": 69,
+          "line": 70,
           "lines": 18,
           "title": "4. PRIVATE USE AND MILEAGE",
           "tokens": {
@@ -1613,7 +1657,7 @@
         {
           "anchor": "5-assets-and-opening-balance",
           "bytes": 1812,
-          "line": 87,
+          "line": 88,
           "lines": 18,
           "title": "5. ASSETS AND OPENING BALANCE",
           "tokens": {
@@ -1624,7 +1668,7 @@
         {
           "anchor": "6-bank-reconciliation",
           "bytes": 1039,
-          "line": 105,
+          "line": 106,
           "lines": 11,
           "title": "6. BANK RECONCILIATION",
           "tokens": {
@@ -1635,7 +1679,7 @@
         {
           "anchor": "7-vat-and-period-control",
           "bytes": 1550,
-          "line": 116,
+          "line": 117,
           "lines": 16,
           "title": "7. VAT AND PERIOD CONTROL",
           "tokens": {
@@ -1646,7 +1690,7 @@
         {
           "anchor": "8-live-bookkeeping-cycles",
           "bytes": 4623,
-          "line": 132,
+          "line": 133,
           "lines": 52,
           "title": "8. LIVE BOOKKEEPING CYCLES",
           "tokens": {
@@ -1657,7 +1701,7 @@
         {
           "anchor": "9-related-resources",
           "bytes": 769,
-          "line": 184,
+          "line": 185,
           "lines": 8,
           "title": "9. RELATED RESOURCES",
           "tokens": {
@@ -1667,18 +1711,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3478,
-        "o200k_base": 3435
+        "cl100k_base": 3492,
+        "o200k_base": 3448
       }
     },
     {
-      "bytes": 34953,
+      "bytes": 35005,
       "path": "sk-moneybird-accountant/references/purchase-invoices.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 1223,
-          "line": 21,
+          "line": 22,
           "lines": 21,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -1689,7 +1733,7 @@
         {
           "anchor": "2-check-the-document-first",
           "bytes": 2138,
-          "line": 42,
+          "line": 43,
           "lines": 16,
           "title": "2. CHECK THE DOCUMENT FIRST",
           "tokens": {
@@ -1700,7 +1744,7 @@
         {
           "anchor": "3-decision-table",
           "bytes": 3164,
-          "line": 58,
+          "line": 59,
           "lines": 19,
           "title": "3. DECISION TABLE",
           "tokens": {
@@ -1711,7 +1755,7 @@
         {
           "anchor": "4-the-booking-flow-in-moneybird",
           "bytes": 2810,
-          "line": 77,
+          "line": 78,
           "lines": 18,
           "title": "4. THE BOOKING FLOW IN MONEYBIRD",
           "tokens": {
@@ -1722,7 +1766,7 @@
         {
           "anchor": "5-case-a-a-dutch-invoice-with-vat",
           "bytes": 2295,
-          "line": 95,
+          "line": 96,
           "lines": 29,
           "title": "5. CASE A: A DUTCH INVOICE WITH VAT",
           "tokens": {
@@ -1733,7 +1777,7 @@
         {
           "anchor": "6-case-b-a-foreign-invoice-with-0-vat-reverse-charge",
           "bytes": 7830,
-          "line": 124,
+          "line": 125,
           "lines": 63,
           "title": "6. CASE B: A FOREIGN INVOICE WITH 0% VAT (REVERSE CHARGE)",
           "tokens": {
@@ -1744,7 +1788,7 @@
         {
           "anchor": "7-kor-or-vat-exempt-business",
           "bytes": 4447,
-          "line": 187,
+          "line": 188,
           "lines": 15,
           "title": "7. KOR OR VAT-EXEMPT BUSINESS",
           "tokens": {
@@ -1755,7 +1799,7 @@
         {
           "anchor": "8-case-c-foreign-vat-on-the-invoice",
           "bytes": 2807,
-          "line": 202,
+          "line": 203,
           "lines": 16,
           "title": "8. CASE C: FOREIGN VAT ON THE INVOICE",
           "tokens": {
@@ -1766,7 +1810,7 @@
         {
           "anchor": "9-imports-and-domestic-reverse-charge",
           "bytes": 3580,
-          "line": 218,
+          "line": 219,
           "lines": 28,
           "title": "9. IMPORTS AND DOMESTIC REVERSE CHARGE",
           "tokens": {
@@ -1777,7 +1821,7 @@
         {
           "anchor": "10-orders-receipts-and-subscriptions",
           "bytes": 1292,
-          "line": 246,
+          "line": 247,
           "lines": 9,
           "title": "10. ORDERS, RECEIPTS AND SUBSCRIPTIONS",
           "tokens": {
@@ -1788,7 +1832,7 @@
         {
           "anchor": "11-checks-after-booking",
           "bytes": 685,
-          "line": 255,
+          "line": 256,
           "lines": 12,
           "title": "11. CHECKS AFTER BOOKING",
           "tokens": {
@@ -1799,7 +1843,7 @@
         {
           "anchor": "12-open-points",
           "bytes": 1078,
-          "line": 267,
+          "line": 268,
           "lines": 10,
           "title": "12. OPEN POINTS",
           "tokens": {
@@ -1810,7 +1854,7 @@
         {
           "anchor": "13-related-resources",
           "bytes": 666,
-          "line": 277,
+          "line": 278,
           "lines": 7,
           "title": "13. RELATED RESOURCES",
           "tokens": {
@@ -1820,18 +1864,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 9411,
-        "o200k_base": 8970
+        "cl100k_base": 9422,
+        "o200k_base": 8981
       }
     },
     {
-      "bytes": 12070,
+      "bytes": 12123,
       "path": "sk-moneybird-accountant/references/routing-signals.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 501,
-          "line": 21,
+          "line": 22,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -1842,7 +1886,7 @@
         {
           "anchor": "2-signal-sources",
           "bytes": 3876,
-          "line": 29,
+          "line": 30,
           "lines": 17,
           "title": "2. SIGNAL SOURCES",
           "tokens": {
@@ -1853,7 +1897,7 @@
         {
           "anchor": "3-tie-margin-floor-warning-band-and-abstain",
           "bytes": 980,
-          "line": 46,
+          "line": 47,
           "lines": 11,
           "title": "3. TIE MARGIN, FLOOR, WARNING BAND AND ABSTAIN",
           "tokens": {
@@ -1864,7 +1908,7 @@
         {
           "anchor": "4-the-specificity-clauses",
           "bytes": 1524,
-          "line": 57,
+          "line": 58,
           "lines": 20,
           "title": "4. THE SPECIFICITY CLAUSES",
           "tokens": {
@@ -1875,7 +1919,7 @@
         {
           "anchor": "5-token-budgets-for-the-route-keys",
           "bytes": 2634,
-          "line": 77,
+          "line": 78,
           "lines": 27,
           "title": "5. TOKEN BUDGETS FOR THE ROUTE KEYS",
           "tokens": {
@@ -1886,7 +1930,7 @@
         {
           "anchor": "6-year-change-route",
           "bytes": 519,
-          "line": 104,
+          "line": 105,
           "lines": 6,
           "title": "6. YEAR CHANGE ROUTE",
           "tokens": {
@@ -1897,7 +1941,7 @@
         {
           "anchor": "7-documented-gaps",
           "bytes": 1052,
-          "line": 110,
+          "line": 111,
           "lines": 12,
           "title": "7. Documented gaps",
           "tokens": {
@@ -1908,7 +1952,7 @@
         {
           "anchor": "8-related-resources",
           "bytes": 198,
-          "line": 122,
+          "line": 123,
           "lines": 4,
           "title": "8. RELATED RESOURCES",
           "tokens": {
@@ -1918,18 +1962,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3358,
-        "o200k_base": 3172
+        "cl100k_base": 3370,
+        "o200k_base": 3184
       }
     },
     {
-      "bytes": 8731,
+      "bytes": 8915,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/README.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 581,
-          "line": 22,
+          "line": 23,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -1939,30 +1983,30 @@
         },
         {
           "anchor": "2-topic-files",
-          "bytes": 3048,
-          "line": 30,
+          "bytes": 3090,
+          "line": 31,
           "lines": 21,
           "title": "2. TOPIC FILES",
           "tokens": {
-            "cl100k_base": 919,
-            "o200k_base": 869
+            "cl100k_base": 927,
+            "o200k_base": 877
           }
         },
         {
           "anchor": "3-headline-figures",
-          "bytes": 4031,
-          "line": 51,
+          "bytes": 4146,
+          "line": 52,
           "lines": 35,
           "title": "3. HEADLINE FIGURES",
           "tokens": {
-            "cl100k_base": 1281,
-            "o200k_base": 1192
+            "cl100k_base": 1308,
+            "o200k_base": 1219
           }
         },
         {
           "anchor": "4-related-resources",
           "bytes": 322,
-          "line": 86,
+          "line": 87,
           "lines": 6,
           "title": "4. RELATED RESOURCES",
           "tokens": {
@@ -1972,8 +2016,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2640,
-        "o200k_base": 2496
+        "cl100k_base": 2685,
+        "o200k_base": 2541
       }
     },
     {
@@ -1998,7 +2042,7 @@
       }
     },
     {
-      "bytes": 8583,
+      "bytes": 10194,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/box-2/figures.md",
       "sections": [
         {
@@ -2014,19 +2058,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 6933,
+          "bytes": 8544,
           "line": 35,
-          "lines": 36,
+          "lines": 69,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2275,
-            "o200k_base": 2131
+            "cl100k_base": 2874,
+            "o200k_base": 2701
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2761,
-        "o200k_base": 2595
+        "cl100k_base": 3360,
+        "o200k_base": 3165
       }
     },
     {
@@ -2126,7 +2170,7 @@
       }
     },
     {
-      "bytes": 6522,
+      "bytes": 7438,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/box-3/figures.md",
       "sections": [
         {
@@ -2142,19 +2186,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4874,
+          "bytes": 5790,
           "line": 35,
-          "lines": 27,
+          "lines": 51,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1653,
-            "o200k_base": 1561
+            "cl100k_base": 1946,
+            "o200k_base": 1832
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2157,
-        "o200k_base": 2025
+        "cl100k_base": 2450,
+        "o200k_base": 2296
       }
     },
     {
@@ -2254,7 +2298,7 @@
       }
     },
     {
-      "bytes": 5771,
+      "bytes": 6868,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/business-deductions/figures.md",
       "sections": [
         {
@@ -2270,19 +2314,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 3807,
+          "bytes": 4904,
           "line": 35,
-          "lines": 31,
+          "lines": 59,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1368,
-            "o200k_base": 1288
+            "cl100k_base": 1714,
+            "o200k_base": 1606
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1959,
-        "o200k_base": 1827
+        "cl100k_base": 2305,
+        "o200k_base": 2145
       }
     },
     {
@@ -2361,13 +2405,13 @@
       }
     },
     {
-      "bytes": 7482,
+      "bytes": 7521,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/changelog.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 313,
-          "line": 20,
+          "line": 21,
           "lines": 6,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -2378,7 +2422,7 @@
         {
           "anchor": "2-corrected-values",
           "bytes": 6494,
-          "line": 26,
+          "line": 27,
           "lines": 27,
           "title": "2. CORRECTED VALUES",
           "tokens": {
@@ -2388,18 +2432,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2444,
-        "o200k_base": 2311
+        "cl100k_base": 2456,
+        "o200k_base": 2323
       }
     },
     {
-      "bytes": 3939,
+      "bytes": 3974,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/changes.md",
       "sections": [
         {
           "anchor": "1-unique-to-2020",
           "bytes": 1389,
-          "line": 20,
+          "line": 21,
           "lines": 13,
           "title": "1. Unique to 2020",
           "tokens": {
@@ -2410,7 +2454,7 @@
         {
           "anchor": "2-all-changes-by-topic",
           "bytes": 1810,
-          "line": 33,
+          "line": 34,
           "lines": 18,
           "title": "2. All changes by topic",
           "tokens": {
@@ -2420,8 +2464,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1185,
-        "o200k_base": 1157
+        "cl100k_base": 1196,
+        "o200k_base": 1168
       }
     },
     {
@@ -2446,7 +2490,7 @@
       }
     },
     {
-      "bytes": 6688,
+      "bytes": 8249,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/costs-and-car/figures.md",
       "sections": [
         {
@@ -2462,19 +2506,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4897,
+          "bytes": 6458,
           "line": 36,
-          "lines": 33,
+          "lines": 63,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1846,
-            "o200k_base": 1728
+            "cl100k_base": 2472,
+            "o200k_base": 2307
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2346,
-        "o200k_base": 2215
+        "cl100k_base": 2972,
+        "o200k_base": 2794
       }
     },
     {
@@ -2574,7 +2618,7 @@
       }
     },
     {
-      "bytes": 5314,
+      "bytes": 5800,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/health-insurance-contribution/figures.md",
       "sections": [
         {
@@ -2590,19 +2634,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 3672,
+          "bytes": 4158,
           "line": 35,
-          "lines": 21,
+          "lines": 37,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1236,
-            "o200k_base": 1127
+            "cl100k_base": 1393,
+            "o200k_base": 1277
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1720,
-        "o200k_base": 1582
+        "cl100k_base": 1877,
+        "o200k_base": 1732
       }
     },
     {
@@ -2702,7 +2746,7 @@
       }
     },
     {
-      "bytes": 9600,
+      "bytes": 10696,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/income-tax/figures.md",
       "sections": [
         {
@@ -2718,19 +2762,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 8204,
+          "bytes": 9300,
           "line": 35,
-          "lines": 26,
+          "lines": 49,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2692,
-            "o200k_base": 2575
+            "cl100k_base": 3026,
+            "o200k_base": 2897
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3095,
-        "o200k_base": 2957
+        "cl100k_base": 3429,
+        "o200k_base": 3279
       }
     },
     {
@@ -2830,7 +2874,7 @@
       }
     },
     {
-      "bytes": 11906,
+      "bytes": 13314,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/investments/figures.md",
       "sections": [
         {
@@ -2846,19 +2890,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 9600,
+          "bytes": 11008,
           "line": 35,
-          "lines": 33,
+          "lines": 61,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3045,
-            "o200k_base": 2816
+            "cl100k_base": 3559,
+            "o200k_base": 3309
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3707,
-        "o200k_base": 3427
+        "cl100k_base": 4221,
+        "o200k_base": 3920
       }
     },
     {
@@ -2958,7 +3002,7 @@
       }
     },
     {
-      "bytes": 7627,
+      "bytes": 8990,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/pension-and-disability-insurance/figures.md",
       "sections": [
         {
@@ -2974,19 +3018,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 5628,
+          "bytes": 6991,
           "line": 36,
-          "lines": 38,
+          "lines": 73,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1948,
-            "o200k_base": 1815
+            "cl100k_base": 2395,
+            "o200k_base": 2219
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2560,
-        "o200k_base": 2386
+        "cl100k_base": 3007,
+        "o200k_base": 2790
       }
     },
     {
@@ -3086,7 +3130,7 @@
       }
     },
     {
-      "bytes": 12185,
+      "bytes": 13184,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/private-company-and-corporate-tax/figures.md",
       "sections": [
         {
@@ -3102,19 +3146,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 10340,
+          "bytes": 11339,
           "line": 35,
-          "lines": 32,
+          "lines": 61,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3509,
-            "o200k_base": 2997
+            "cl100k_base": 3866,
+            "o200k_base": 3317
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 4056,
-        "o200k_base": 3504
+        "cl100k_base": 4413,
+        "o200k_base": 3824
       }
     },
     {
@@ -3214,7 +3258,7 @@
       }
     },
     {
-      "bytes": 14655,
+      "bytes": 16865,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/procedure/figures.md",
       "sections": [
         {
@@ -3230,19 +3274,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 12780,
+          "bytes": 14990,
           "line": 35,
-          "lines": 50,
+          "lines": 97,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 4072,
-            "o200k_base": 3725
+            "cl100k_base": 4857,
+            "o200k_base": 4392
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 4606,
-        "o200k_base": 4228
+        "cl100k_base": 5391,
+        "o200k_base": 4895
       }
     },
     {
@@ -3342,7 +3386,7 @@
       }
     },
     {
-      "bytes": 12937,
+      "bytes": 15091,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/vat/figures.md",
       "sections": [
         {
@@ -3358,19 +3402,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 11646,
+          "bytes": 13800,
           "line": 35,
-          "lines": 65,
+          "lines": 127,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3387,
-            "o200k_base": 3204
+            "cl100k_base": 3994,
+            "o200k_base": 3805
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3749,
-        "o200k_base": 3559
+        "cl100k_base": 4356,
+        "o200k_base": 4160
       }
     },
     {
@@ -3470,7 +3514,7 @@
       }
     },
     {
-      "bytes": 8847,
+      "bytes": 9872,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/work-relationship/figures.md",
       "sections": [
         {
@@ -3486,19 +3530,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 6806,
+          "bytes": 7831,
           "line": 37,
-          "lines": 33,
+          "lines": 63,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2294,
-            "o200k_base": 2186
+            "cl100k_base": 2631,
+            "o200k_base": 2516
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2873,
-        "o200k_base": 2719
+        "cl100k_base": 3210,
+        "o200k_base": 3049
       }
     },
     {
@@ -3577,13 +3621,13 @@
       }
     },
     {
-      "bytes": 9767,
+      "bytes": 10007,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/README.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 581,
-          "line": 22,
+          "line": 23,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -3593,30 +3637,30 @@
         },
         {
           "anchor": "2-topic-files",
-          "bytes": 3140,
-          "line": 30,
+          "bytes": 3205,
+          "line": 31,
           "lines": 21,
           "title": "2. TOPIC FILES",
           "tokens": {
-            "cl100k_base": 950,
-            "o200k_base": 904
+            "cl100k_base": 965,
+            "o200k_base": 919
           }
         },
         {
           "anchor": "3-headline-figures",
-          "bytes": 4945,
-          "line": 51,
+          "bytes": 5093,
+          "line": 52,
           "lines": 35,
           "title": "3. HEADLINE FIGURES",
           "tokens": {
-            "cl100k_base": 1563,
-            "o200k_base": 1452
+            "cl100k_base": 1601,
+            "o200k_base": 1490
           }
         },
         {
           "anchor": "4-related-resources",
           "bytes": 352,
-          "line": 86,
+          "line": 87,
           "lines": 6,
           "title": "4. RELATED RESOURCES",
           "tokens": {
@@ -3626,8 +3670,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2965,
-        "o200k_base": 2803
+        "cl100k_base": 3028,
+        "o200k_base": 2866
       }
     },
     {
@@ -3652,7 +3696,7 @@
       }
     },
     {
-      "bytes": 5617,
+      "bytes": 6843,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/box-2/figures.md",
       "sections": [
         {
@@ -3668,19 +3712,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4247,
+          "bytes": 5473,
           "line": 35,
-          "lines": 30,
+          "lines": 57,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1408,
-            "o200k_base": 1312
+            "cl100k_base": 1860,
+            "o200k_base": 1741
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1825,
-        "o200k_base": 1719
+        "cl100k_base": 2277,
+        "o200k_base": 2148
       }
     },
     {
@@ -3780,7 +3824,7 @@
       }
     },
     {
-      "bytes": 5738,
+      "bytes": 6431,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/box-3/figures.md",
       "sections": [
         {
@@ -3796,19 +3840,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4050,
+          "bytes": 4743,
           "line": 35,
-          "lines": 25,
+          "lines": 47,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1412,
-            "o200k_base": 1345
+            "cl100k_base": 1637,
+            "o200k_base": 1553
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1914,
-        "o200k_base": 1812
+        "cl100k_base": 2139,
+        "o200k_base": 2020
       }
     },
     {
@@ -3908,7 +3952,7 @@
       }
     },
     {
-      "bytes": 8105,
+      "bytes": 9584,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/business-deductions/figures.md",
       "sections": [
         {
@@ -3924,19 +3968,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 6448,
+          "bytes": 7927,
           "line": 35,
-          "lines": 38,
+          "lines": 73,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2123,
-            "o200k_base": 1948
+            "cl100k_base": 2584,
+            "o200k_base": 2373
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2649,
-        "o200k_base": 2415
+        "cl100k_base": 3110,
+        "o200k_base": 2840
       }
     },
     {
@@ -4015,13 +4059,13 @@
       }
     },
     {
-      "bytes": 2789,
+      "bytes": 2828,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/changelog.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 313,
-          "line": 20,
+          "line": 21,
           "lines": 6,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -4032,7 +4076,7 @@
         {
           "anchor": "2-corrected-values",
           "bytes": 1801,
-          "line": 26,
+          "line": 27,
           "lines": 12,
           "title": "2. CORRECTED VALUES",
           "tokens": {
@@ -4042,18 +4086,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 844,
-        "o200k_base": 822
+        "cl100k_base": 856,
+        "o200k_base": 834
       }
     },
     {
-      "bytes": 3892,
+      "bytes": 4002,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/changes.md",
       "sections": [
         {
           "anchor": "1-unique-to-2021",
           "bytes": 1257,
-          "line": 20,
+          "line": 21,
           "lines": 13,
           "title": "1. Unique to 2021",
           "tokens": {
@@ -4063,19 +4107,19 @@
         },
         {
           "anchor": "2-all-changes-by-topic",
-          "bytes": 1895,
-          "line": 33,
+          "bytes": 1970,
+          "line": 34,
           "lines": 18,
           "title": "2. All changes by topic",
           "tokens": {
-            "cl100k_base": 663,
-            "o200k_base": 652
+            "cl100k_base": 677,
+            "o200k_base": 665
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1300,
-        "o200k_base": 1272
+        "cl100k_base": 1325,
+        "o200k_base": 1296
       }
     },
     {
@@ -4100,7 +4144,7 @@
       }
     },
     {
-      "bytes": 4281,
+      "bytes": 5328,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/costs-and-car/figures.md",
       "sections": [
         {
@@ -4116,19 +4160,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 2471,
+          "bytes": 3518,
           "line": 35,
-          "lines": 25,
+          "lines": 47,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 942,
-            "o200k_base": 891
+            "cl100k_base": 1369,
+            "o200k_base": 1296
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1478,
-        "o200k_base": 1412
+        "cl100k_base": 1905,
+        "o200k_base": 1817
       }
     },
     {
@@ -4228,7 +4272,7 @@
       }
     },
     {
-      "bytes": 3120,
+      "bytes": 3528,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/health-insurance-contribution/figures.md",
       "sections": [
         {
@@ -4244,19 +4288,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 1516,
+          "bytes": 1924,
           "line": 35,
-          "lines": 16,
+          "lines": 29,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 543,
-            "o200k_base": 477
+            "cl100k_base": 678,
+            "o200k_base": 595
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1030,
-        "o200k_base": 935
+        "cl100k_base": 1165,
+        "o200k_base": 1053
       }
     },
     {
@@ -4356,7 +4400,7 @@
       }
     },
     {
-      "bytes": 8013,
+      "bytes": 9377,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/income-tax/figures.md",
       "sections": [
         {
@@ -4372,19 +4416,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 6336,
+          "bytes": 7700,
           "line": 35,
-          "lines": 33,
+          "lines": 63,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2192,
-            "o200k_base": 2078
+            "cl100k_base": 2627,
+            "o200k_base": 2485
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2685,
-        "o200k_base": 2544
+        "cl100k_base": 3120,
+        "o200k_base": 2951
       }
     },
     {
@@ -4484,7 +4528,7 @@
       }
     },
     {
-      "bytes": 7800,
+      "bytes": 8899,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/investments/figures.md",
       "sections": [
         {
@@ -4500,19 +4544,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 5467,
+          "bytes": 6566,
           "line": 35,
-          "lines": 26,
+          "lines": 49,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1885,
-            "o200k_base": 1751
+            "cl100k_base": 2290,
+            "o200k_base": 2137
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2584,
-        "o200k_base": 2400
+        "cl100k_base": 2989,
+        "o200k_base": 2786
       }
     },
     {
@@ -4612,7 +4656,7 @@
       }
     },
     {
-      "bytes": 6034,
+      "bytes": 7138,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/pension-and-disability-insurance/figures.md",
       "sections": [
         {
@@ -4628,19 +4672,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4089,
+          "bytes": 5193,
           "line": 35,
-          "lines": 33,
+          "lines": 63,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1410,
-            "o200k_base": 1310
+            "cl100k_base": 1769,
+            "o200k_base": 1634
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1988,
-        "o200k_base": 1854
+        "cl100k_base": 2347,
+        "o200k_base": 2178
       }
     },
     {
@@ -4740,7 +4784,7 @@
       }
     },
     {
-      "bytes": 10005,
+      "bytes": 11788,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/private-company-and-corporate-tax/figures.md",
       "sections": [
         {
@@ -4756,19 +4800,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 8262,
+          "bytes": 10045,
           "line": 35,
-          "lines": 37,
+          "lines": 71,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2773,
-            "o200k_base": 2606
+            "cl100k_base": 3452,
+            "o200k_base": 3250
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3296,
-        "o200k_base": 3105
+        "cl100k_base": 3975,
+        "o200k_base": 3749
       }
     },
     {
@@ -4868,7 +4912,7 @@
       }
     },
     {
-      "bytes": 12176,
+      "bytes": 12916,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/procedure/figures.md",
       "sections": [
         {
@@ -4884,19 +4928,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 10716,
+          "bytes": 11456,
           "line": 35,
-          "lines": 24,
+          "lines": 45,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3239,
-            "o200k_base": 3010
+            "cl100k_base": 3472,
+            "o200k_base": 3236
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3659,
-        "o200k_base": 3414
+        "cl100k_base": 3892,
+        "o200k_base": 3640
       }
     },
     {
@@ -4996,7 +5040,7 @@
       }
     },
     {
-      "bytes": 10800,
+      "bytes": 12159,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/vat/figures.md",
       "sections": [
         {
@@ -5012,19 +5056,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 9429,
+          "bytes": 10788,
           "line": 35,
-          "lines": 46,
+          "lines": 89,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2696,
-            "o200k_base": 2572
+            "cl100k_base": 3085,
+            "o200k_base": 2958
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3071,
-        "o200k_base": 2936
+        "cl100k_base": 3460,
+        "o200k_base": 3322
       }
     },
     {
@@ -5124,7 +5168,7 @@
       }
     },
     {
-      "bytes": 9598,
+      "bytes": 10080,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/work-relationship/figures.md",
       "sections": [
         {
@@ -5140,19 +5184,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 7840,
+          "bytes": 8322,
           "line": 35,
-          "lines": 20,
+          "lines": 37,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2332,
-            "o200k_base": 2151
+            "cl100k_base": 2488,
+            "o200k_base": 2299
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2838,
-        "o200k_base": 2623
+        "cl100k_base": 2994,
+        "o200k_base": 2771
       }
     },
     {
@@ -5231,13 +5275,13 @@
       }
     },
     {
-      "bytes": 8783,
+      "bytes": 9030,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/README.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 582,
-          "line": 22,
+          "line": 23,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -5247,30 +5291,30 @@
         },
         {
           "anchor": "2-topic-files",
-          "bytes": 3117,
-          "line": 30,
+          "bytes": 3205,
+          "line": 31,
           "lines": 21,
           "title": "2. TOPIC FILES",
           "tokens": {
-            "cl100k_base": 920,
-            "o200k_base": 880
+            "cl100k_base": 940,
+            "o200k_base": 900
           }
         },
         {
           "anchor": "3-headline-figures",
-          "bytes": 3983,
-          "line": 51,
+          "bytes": 4115,
+          "line": 52,
           "lines": 35,
           "title": "3. HEADLINE FIGURES",
           "tokens": {
-            "cl100k_base": 1330,
-            "o200k_base": 1232
+            "cl100k_base": 1362,
+            "o200k_base": 1264
           }
         },
         {
           "anchor": "4-related-resources",
           "bytes": 352,
-          "line": 86,
+          "line": 87,
           "lines": 6,
           "title": "4. RELATED RESOURCES",
           "tokens": {
@@ -5280,8 +5324,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2702,
-        "o200k_base": 2559
+        "cl100k_base": 2764,
+        "o200k_base": 2621
       }
     },
     {
@@ -5306,7 +5350,7 @@
       }
     },
     {
-      "bytes": 6632,
+      "bytes": 7980,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/box-2/figures.md",
       "sections": [
         {
@@ -5322,19 +5366,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4876,
+          "bytes": 6224,
           "line": 35,
-          "lines": 30,
+          "lines": 57,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1604,
-            "o200k_base": 1524
+            "cl100k_base": 2086,
+            "o200k_base": 1978
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2119,
-        "o200k_base": 2015
+        "cl100k_base": 2601,
+        "o200k_base": 2469
       }
     },
     {
@@ -5434,7 +5478,7 @@
       }
     },
     {
-      "bytes": 5243,
+      "bytes": 5899,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/box-3/figures.md",
       "sections": [
         {
@@ -5450,19 +5494,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 3366,
+          "bytes": 4022,
           "line": 35,
-          "lines": 24,
+          "lines": 45,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1140,
-            "o200k_base": 1086
+            "cl100k_base": 1353,
+            "o200k_base": 1285
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1685,
-        "o200k_base": 1595
+        "cl100k_base": 1898,
+        "o200k_base": 1794
       }
     },
     {
@@ -5562,7 +5606,7 @@
       }
     },
     {
-      "bytes": 7212,
+      "bytes": 8479,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/business-deductions/figures.md",
       "sections": [
         {
@@ -5578,19 +5622,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 5366,
+          "bytes": 6633,
           "line": 35,
-          "lines": 34,
+          "lines": 65,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1848,
-            "o200k_base": 1711
+            "cl100k_base": 2250,
+            "o200k_base": 2075
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2421,
-        "o200k_base": 2227
+        "cl100k_base": 2823,
+        "o200k_base": 2591
       }
     },
     {
@@ -5669,13 +5713,13 @@
       }
     },
     {
-      "bytes": 5458,
+      "bytes": 5497,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/changelog.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 313,
-          "line": 20,
+          "line": 21,
           "lines": 6,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -5686,7 +5730,7 @@
         {
           "anchor": "2-corrected-values",
           "bytes": 4470,
-          "line": 26,
+          "line": 27,
           "lines": 24,
           "title": "2. CORRECTED VALUES",
           "tokens": {
@@ -5696,18 +5740,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1727,
-        "o200k_base": 1663
+        "cl100k_base": 1739,
+        "o200k_base": 1675
       }
     },
     {
-      "bytes": 3979,
+      "bytes": 4070,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/changes.md",
       "sections": [
         {
           "anchor": "1-unique-to-2022",
           "bytes": 1353,
-          "line": 20,
+          "line": 21,
           "lines": 13,
           "title": "1. Unique to 2022",
           "tokens": {
@@ -5717,19 +5761,19 @@
         },
         {
           "anchor": "2-all-changes-by-topic",
-          "bytes": 1886,
-          "line": 33,
+          "bytes": 1942,
+          "line": 34,
           "lines": 18,
           "title": "2. All changes by topic",
           "tokens": {
-            "cl100k_base": 645,
-            "o200k_base": 630
+            "cl100k_base": 655,
+            "o200k_base": 639
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1322,
-        "o200k_base": 1288
+        "cl100k_base": 1343,
+        "o200k_base": 1308
       }
     },
     {
@@ -5754,7 +5798,7 @@
       }
     },
     {
-      "bytes": 7440,
+      "bytes": 8763,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/costs-and-car/figures.md",
       "sections": [
         {
@@ -5770,19 +5814,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 5747,
+          "bytes": 7070,
           "line": 36,
-          "lines": 38,
+          "lines": 73,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1986,
-            "o200k_base": 1845
+            "cl100k_base": 2409,
+            "o200k_base": 2230
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2450,
-        "o200k_base": 2300
+        "cl100k_base": 2873,
+        "o200k_base": 2685
       }
     },
     {
@@ -5882,7 +5926,7 @@
       }
     },
     {
-      "bytes": 4235,
+      "bytes": 4870,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/health-insurance-contribution/figures.md",
       "sections": [
         {
@@ -5898,19 +5942,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 2541,
+          "bytes": 3176,
           "line": 35,
-          "lines": 21,
+          "lines": 39,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 907,
-            "o200k_base": 824
+            "cl100k_base": 1114,
+            "o200k_base": 1011
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1431,
-        "o200k_base": 1317
+        "cl100k_base": 1638,
+        "o200k_base": 1504
       }
     },
     {
@@ -6010,7 +6054,7 @@
       }
     },
     {
-      "bytes": 7910,
+      "bytes": 8928,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/income-tax/figures.md",
       "sections": [
         {
@@ -6026,19 +6070,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 6161,
+          "bytes": 7179,
           "line": 35,
-          "lines": 27,
+          "lines": 51,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2104,
-            "o200k_base": 1998
+            "cl100k_base": 2414,
+            "o200k_base": 2290
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2586,
-        "o200k_base": 2445
+        "cl100k_base": 2896,
+        "o200k_base": 2737
       }
     },
     {
@@ -6138,7 +6182,7 @@
       }
     },
     {
-      "bytes": 5089,
+      "bytes": 5685,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/investments/figures.md",
       "sections": [
         {
@@ -6154,19 +6198,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 3356,
+          "bytes": 3952,
           "line": 35,
-          "lines": 22,
+          "lines": 41,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1209,
-            "o200k_base": 1136
+            "cl100k_base": 1389,
+            "o200k_base": 1308
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1732,
-        "o200k_base": 1627
+        "cl100k_base": 1912,
+        "o200k_base": 1799
       }
     },
     {
@@ -6266,7 +6310,7 @@
       }
     },
     {
-      "bytes": 7997,
+      "bytes": 9354,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/pension-and-disability-insurance/figures.md",
       "sections": [
         {
@@ -6282,19 +6326,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 5988,
+          "bytes": 7345,
           "line": 36,
-          "lines": 39,
+          "lines": 75,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2019,
-            "o200k_base": 1863
+            "cl100k_base": 2461,
+            "o200k_base": 2260
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2624,
-        "o200k_base": 2429
+        "cl100k_base": 3066,
+        "o200k_base": 2826
       }
     },
     {
@@ -6394,7 +6438,7 @@
       }
     },
     {
-      "bytes": 10831,
+      "bytes": 12931,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/private-company-and-corporate-tax/figures.md",
       "sections": [
         {
@@ -6410,19 +6454,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 8801,
+          "bytes": 10901,
           "line": 35,
-          "lines": 42,
+          "lines": 81,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3138,
-            "o200k_base": 2798
+            "cl100k_base": 3975,
+            "o200k_base": 3564
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3742,
-        "o200k_base": 3367
+        "cl100k_base": 4579,
+        "o200k_base": 4133
       }
     },
     {
@@ -6522,7 +6566,7 @@
       }
     },
     {
-      "bytes": 19289,
+      "bytes": 21228,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/procedure/figures.md",
       "sections": [
         {
@@ -6538,19 +6582,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 17381,
+          "bytes": 19320,
           "line": 35,
-          "lines": 51,
+          "lines": 99,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 5204,
-            "o200k_base": 4840
+            "cl100k_base": 5813,
+            "o200k_base": 5426
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 5747,
-        "o200k_base": 5350
+        "cl100k_base": 6356,
+        "o200k_base": 5936
       }
     },
     {
@@ -6650,7 +6694,7 @@
       }
     },
     {
-      "bytes": 12403,
+      "bytes": 14108,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/vat/figures.md",
       "sections": [
         {
@@ -6666,19 +6710,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 10842,
+          "bytes": 12547,
           "line": 35,
-          "lines": 47,
+          "lines": 91,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3024,
-            "o200k_base": 2851
+            "cl100k_base": 3532,
+            "o200k_base": 3352
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3462,
-        "o200k_base": 3276
+        "cl100k_base": 3970,
+        "o200k_base": 3777
       }
     },
     {
@@ -6778,7 +6822,7 @@
       }
     },
     {
-      "bytes": 11305,
+      "bytes": 12017,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/work-relationship/figures.md",
       "sections": [
         {
@@ -6794,19 +6838,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 9285,
+          "bytes": 9997,
           "line": 35,
-          "lines": 30,
+          "lines": 57,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2841,
-            "o200k_base": 2632
+            "cl100k_base": 3107,
+            "o200k_base": 2877
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3396,
-        "o200k_base": 3154
+        "cl100k_base": 3662,
+        "o200k_base": 3399
       }
     },
     {
@@ -6885,13 +6929,13 @@
       }
     },
     {
-      "bytes": 8401,
+      "bytes": 8587,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/README.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 582,
-          "line": 22,
+          "line": 23,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -6901,30 +6945,30 @@
         },
         {
           "anchor": "2-topic-files",
-          "bytes": 3304,
-          "line": 30,
+          "bytes": 3369,
+          "line": 31,
           "lines": 21,
           "title": "2. TOPIC FILES",
           "tokens": {
-            "cl100k_base": 960,
-            "o200k_base": 921
+            "cl100k_base": 974,
+            "o200k_base": 935
           }
         },
         {
           "anchor": "3-headline-figures",
-          "bytes": 3414,
-          "line": 51,
+          "bytes": 3508,
+          "line": 52,
           "lines": 35,
           "title": "3. HEADLINE FIGURES",
           "tokens": {
-            "cl100k_base": 1136,
-            "o200k_base": 1066
+            "cl100k_base": 1158,
+            "o200k_base": 1088
           }
         },
         {
           "anchor": "4-related-resources",
           "bytes": 352,
-          "line": 86,
+          "line": 87,
           "lines": 6,
           "title": "4. RELATED RESOURCES",
           "tokens": {
@@ -6934,8 +6978,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2548,
-        "o200k_base": 2434
+        "cl100k_base": 2594,
+        "o200k_base": 2480
       }
     },
     {
@@ -6960,7 +7004,7 @@
       }
     },
     {
-      "bytes": 6463,
+      "bytes": 7804,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/box-2/figures.md",
       "sections": [
         {
@@ -6976,19 +7020,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4566,
+          "bytes": 5907,
           "line": 35,
-          "lines": 31,
+          "lines": 59,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1563,
-            "o200k_base": 1467
+            "cl100k_base": 2051,
+            "o200k_base": 1928
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2109,
-        "o200k_base": 1989
+        "cl100k_base": 2597,
+        "o200k_base": 2450
       }
     },
     {
@@ -7088,7 +7132,7 @@
       }
     },
     {
-      "bytes": 5107,
+      "bytes": 5928,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/box-3/figures.md",
       "sections": [
         {
@@ -7104,19 +7148,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 3500,
+          "bytes": 4321,
           "line": 36,
-          "lines": 24,
+          "lines": 45,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1118,
-            "o200k_base": 1061
+            "cl100k_base": 1366,
+            "o200k_base": 1294
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1590,
-        "o200k_base": 1503
+        "cl100k_base": 1838,
+        "o200k_base": 1736
       }
     },
     {
@@ -7216,7 +7260,7 @@
       }
     },
     {
-      "bytes": 6343,
+      "bytes": 7600,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/business-deductions/figures.md",
       "sections": [
         {
@@ -7232,19 +7276,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4322,
+          "bytes": 5579,
           "line": 35,
-          "lines": 32,
+          "lines": 61,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1460,
-            "o200k_base": 1319
+            "cl100k_base": 1890,
+            "o200k_base": 1688
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2069,
-        "o200k_base": 1873
+        "cl100k_base": 2499,
+        "o200k_base": 2242
       }
     },
     {
@@ -7323,13 +7367,13 @@
       }
     },
     {
-      "bytes": 6324,
+      "bytes": 6363,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/changelog.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 313,
-          "line": 20,
+          "line": 21,
           "lines": 6,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -7340,7 +7384,7 @@
         {
           "anchor": "2-corrected-values",
           "bytes": 5336,
-          "line": 26,
+          "line": 27,
           "lines": 27,
           "title": "2. CORRECTED VALUES",
           "tokens": {
@@ -7350,18 +7394,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2019,
-        "o200k_base": 1944
+        "cl100k_base": 2031,
+        "o200k_base": 1956
       }
     },
     {
-      "bytes": 3865,
+      "bytes": 3991,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/changes.md",
       "sections": [
         {
           "anchor": "1-unique-to-2023",
           "bytes": 1223,
-          "line": 20,
+          "line": 21,
           "lines": 13,
           "title": "1. Unique to 2023",
           "tokens": {
@@ -7371,19 +7415,19 @@
         },
         {
           "anchor": "2-all-changes-by-topic",
-          "bytes": 1902,
-          "line": 33,
+          "bytes": 1993,
+          "line": 34,
           "lines": 18,
           "title": "2. All changes by topic",
           "tokens": {
-            "cl100k_base": 676,
-            "o200k_base": 669
+            "cl100k_base": 694,
+            "o200k_base": 687
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1295,
-        "o200k_base": 1272
+        "cl100k_base": 1324,
+        "o200k_base": 1301
       }
     },
     {
@@ -7408,7 +7452,7 @@
       }
     },
     {
-      "bytes": 8275,
+      "bytes": 10124,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/costs-and-car/figures.md",
       "sections": [
         {
@@ -7424,19 +7468,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 6449,
+          "bytes": 8298,
           "line": 35,
-          "lines": 41,
+          "lines": 79,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2258,
-            "o200k_base": 2032
+            "cl100k_base": 2991,
+            "o200k_base": 2704
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2765,
-        "o200k_base": 2527
+        "cl100k_base": 3498,
+        "o200k_base": 3199
       }
     },
     {
@@ -7536,7 +7580,7 @@
       }
     },
     {
-      "bytes": 4343,
+      "bytes": 5028,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/health-insurance-contribution/figures.md",
       "sections": [
         {
@@ -7552,19 +7596,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 2533,
+          "bytes": 3218,
           "line": 35,
-          "lines": 21,
+          "lines": 39,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 884,
-            "o200k_base": 797
+            "cl100k_base": 1104,
+            "o200k_base": 1000
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1453,
-        "o200k_base": 1312
+        "cl100k_base": 1673,
+        "o200k_base": 1515
       }
     },
     {
@@ -7664,7 +7708,7 @@
       }
     },
     {
-      "bytes": 8479,
+      "bytes": 10165,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/income-tax/figures.md",
       "sections": [
         {
@@ -7680,19 +7724,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 7039,
+          "bytes": 8725,
           "line": 35,
-          "lines": 37,
+          "lines": 71,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2360,
-            "o200k_base": 2244
+            "cl100k_base": 2878,
+            "o200k_base": 2733
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2786,
-        "o200k_base": 2648
+        "cl100k_base": 3304,
+        "o200k_base": 3137
       }
     },
     {
@@ -7792,7 +7836,7 @@
       }
     },
     {
-      "bytes": 10152,
+      "bytes": 11182,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/investments/figures.md",
       "sections": [
         {
@@ -7808,19 +7852,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 7928,
+          "bytes": 8958,
           "line": 35,
-          "lines": 29,
+          "lines": 55,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2642,
-            "o200k_base": 2428
+            "cl100k_base": 2992,
+            "o200k_base": 2762
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3294,
-        "o200k_base": 3024
+        "cl100k_base": 3644,
+        "o200k_base": 3358
       }
     },
     {
@@ -7920,7 +7964,7 @@
       }
     },
     {
-      "bytes": 6183,
+      "bytes": 7261,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/pension-and-disability-insurance/figures.md",
       "sections": [
         {
@@ -7936,19 +7980,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4154,
+          "bytes": 5232,
           "line": 35,
-          "lines": 33,
+          "lines": 63,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1428,
-            "o200k_base": 1339
+            "cl100k_base": 1784,
+            "o200k_base": 1666
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2034,
-        "o200k_base": 1906
+        "cl100k_base": 2390,
+        "o200k_base": 2233
       }
     },
     {
@@ -8048,7 +8092,7 @@
       }
     },
     {
-      "bytes": 16626,
+      "bytes": 18374,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/private-company-and-corporate-tax/figures.md",
       "sections": [
         {
@@ -8064,19 +8108,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 14868,
+          "bytes": 16616,
           "line": 35,
-          "lines": 42,
+          "lines": 81,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 4536,
-            "o200k_base": 4208
+            "cl100k_base": 5174,
+            "o200k_base": 4793
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 5033,
-        "o200k_base": 4687
+        "cl100k_base": 5671,
+        "o200k_base": 5272
       }
     },
     {
@@ -8176,7 +8220,7 @@
       }
     },
     {
-      "bytes": 13130,
+      "bytes": 14508,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/procedure/figures.md",
       "sections": [
         {
@@ -8192,19 +8236,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 11171,
+          "bytes": 12549,
           "line": 35,
-          "lines": 44,
+          "lines": 85,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3465,
-            "o200k_base": 3207
+            "cl100k_base": 3930,
+            "o200k_base": 3650
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 4027,
-        "o200k_base": 3738
+        "cl100k_base": 4492,
+        "o200k_base": 4181
       }
     },
     {
@@ -8304,7 +8348,7 @@
       }
     },
     {
-      "bytes": 8942,
+      "bytes": 10203,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/vat/figures.md",
       "sections": [
         {
@@ -8320,19 +8364,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 7588,
+          "bytes": 8849,
           "line": 35,
-          "lines": 40,
+          "lines": 77,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2080,
-            "o200k_base": 2013
+            "cl100k_base": 2421,
+            "o200k_base": 2352
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2477,
-        "o200k_base": 2399
+        "cl100k_base": 2818,
+        "o200k_base": 2738
       }
     },
     {
@@ -8432,7 +8476,7 @@
       }
     },
     {
-      "bytes": 7816,
+      "bytes": 8624,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/work-relationship/figures.md",
       "sections": [
         {
@@ -8448,19 +8492,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 5277,
+          "bytes": 6085,
           "line": 35,
-          "lines": 29,
+          "lines": 55,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1681,
-            "o200k_base": 1578
+            "cl100k_base": 1944,
+            "o200k_base": 1823
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2396,
-        "o200k_base": 2237
+        "cl100k_base": 2659,
+        "o200k_base": 2482
       }
     },
     {
@@ -8539,13 +8583,13 @@
       }
     },
     {
-      "bytes": 8209,
+      "bytes": 8429,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/README.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 581,
-          "line": 22,
+          "line": 23,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -8555,30 +8599,30 @@
         },
         {
           "anchor": "2-topic-files",
-          "bytes": 2972,
-          "line": 30,
+          "bytes": 3037,
+          "line": 31,
           "lines": 21,
           "title": "2. TOPIC FILES",
           "tokens": {
-            "cl100k_base": 893,
-            "o200k_base": 859
+            "cl100k_base": 906,
+            "o200k_base": 872
           }
         },
         {
           "anchor": "3-headline-figures",
-          "bytes": 3555,
-          "line": 51,
+          "bytes": 3683,
+          "line": 52,
           "lines": 35,
           "title": "3. HEADLINE FIGURES",
           "tokens": {
-            "cl100k_base": 1152,
-            "o200k_base": 1080
+            "cl100k_base": 1183,
+            "o200k_base": 1111
           }
         },
         {
           "anchor": "4-related-resources",
           "bytes": 352,
-          "line": 86,
+          "line": 87,
           "lines": 6,
           "title": "4. RELATED RESOURCES",
           "tokens": {
@@ -8588,8 +8632,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2497,
-        "o200k_base": 2386
+        "cl100k_base": 2551,
+        "o200k_base": 2440
       }
     },
     {
@@ -8614,7 +8658,7 @@
       }
     },
     {
-      "bytes": 4534,
+      "bytes": 5330,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/box-2/figures.md",
       "sections": [
         {
@@ -8630,19 +8674,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 2892,
+          "bytes": 3688,
           "line": 35,
-          "lines": 26,
+          "lines": 49,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 938,
-            "o200k_base": 879
+            "cl100k_base": 1195,
+            "o200k_base": 1119
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1430,
-        "o200k_base": 1350
+        "cl100k_base": 1687,
+        "o200k_base": 1590
       }
     },
     {
@@ -8742,7 +8786,7 @@
       }
     },
     {
-      "bytes": 5292,
+      "bytes": 5858,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/box-3/figures.md",
       "sections": [
         {
@@ -8758,19 +8802,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 3739,
+          "bytes": 4305,
           "line": 35,
-          "lines": 22,
+          "lines": 41,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1262,
-            "o200k_base": 1190
+            "cl100k_base": 1441,
+            "o200k_base": 1358
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1726,
-        "o200k_base": 1619
+        "cl100k_base": 1905,
+        "o200k_base": 1787
       }
     },
     {
@@ -8870,7 +8914,7 @@
       }
     },
     {
-      "bytes": 7913,
+      "bytes": 9018,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/business-deductions/figures.md",
       "sections": [
         {
@@ -8886,19 +8930,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 6105,
+          "bytes": 7210,
           "line": 35,
-          "lines": 29,
+          "lines": 55,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2045,
-            "o200k_base": 1878
+            "cl100k_base": 2390,
+            "o200k_base": 2188
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2597,
-        "o200k_base": 2370
+        "cl100k_base": 2942,
+        "o200k_base": 2680
       }
     },
     {
@@ -8977,13 +9021,13 @@
       }
     },
     {
-      "bytes": 5422,
+      "bytes": 5461,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/changelog.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 313,
-          "line": 20,
+          "line": 21,
           "lines": 6,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -8994,7 +9038,7 @@
         {
           "anchor": "2-corrected-values",
           "bytes": 4434,
-          "line": 26,
+          "line": 27,
           "lines": 22,
           "title": "2. CORRECTED VALUES",
           "tokens": {
@@ -9004,18 +9048,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1711,
-        "o200k_base": 1632
+        "cl100k_base": 1723,
+        "o200k_base": 1644
       }
     },
     {
-      "bytes": 3737,
+      "bytes": 3845,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/changes.md",
       "sections": [
         {
           "anchor": "1-unique-to-2024",
           "bytes": 1099,
-          "line": 20,
+          "line": 21,
           "lines": 13,
           "title": "1. Unique to 2024",
           "tokens": {
@@ -9025,19 +9069,19 @@
         },
         {
           "anchor": "2-all-changes-by-topic",
-          "bytes": 1898,
-          "line": 33,
+          "bytes": 1971,
+          "line": 34,
           "lines": 18,
           "title": "2. All changes by topic",
           "tokens": {
-            "cl100k_base": 666,
-            "o200k_base": 655
+            "cl100k_base": 681,
+            "o200k_base": 669
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1272,
-        "o200k_base": 1249
+        "cl100k_base": 1298,
+        "o200k_base": 1274
       }
     },
     {
@@ -9062,7 +9106,7 @@
       }
     },
     {
-      "bytes": 10649,
+      "bytes": 11849,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/costs-and-car/figures.md",
       "sections": [
         {
@@ -9078,19 +9122,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 8971,
+          "bytes": 10171,
           "line": 35,
-          "lines": 37,
+          "lines": 71,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3210,
-            "o200k_base": 2789
+            "cl100k_base": 3623,
+            "o200k_base": 3159
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3691,
-        "o200k_base": 3259
+        "cl100k_base": 4104,
+        "o200k_base": 3629
       }
     },
     {
@@ -9190,7 +9234,7 @@
       }
     },
     {
-      "bytes": 5082,
+      "bytes": 5596,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/health-insurance-contribution/figures.md",
       "sections": [
         {
@@ -9206,19 +9250,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 3397,
+          "bytes": 3911,
           "line": 35,
-          "lines": 18,
+          "lines": 33,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1155,
-            "o200k_base": 1029
+            "cl100k_base": 1321,
+            "o200k_base": 1181
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1661,
-        "o200k_base": 1509
+        "cl100k_base": 1827,
+        "o200k_base": 1661
       }
     },
     {
@@ -9318,7 +9362,7 @@
       }
     },
     {
-      "bytes": 12973,
+      "bytes": 14501,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/income-tax/figures.md",
       "sections": [
         {
@@ -9334,19 +9378,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 11763,
+          "bytes": 13291,
           "line": 35,
-          "lines": 38,
+          "lines": 73,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3926,
-            "o200k_base": 3632
+            "cl100k_base": 4419,
+            "o200k_base": 4094
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 4280,
-        "o200k_base": 3968
+        "cl100k_base": 4773,
+        "o200k_base": 4430
       }
     },
     {
@@ -9446,7 +9490,7 @@
       }
     },
     {
-      "bytes": 6741,
+      "bytes": 7561,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/investments/figures.md",
       "sections": [
         {
@@ -9462,19 +9506,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4697,
+          "bytes": 5517,
           "line": 35,
-          "lines": 25,
+          "lines": 47,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1558,
-            "o200k_base": 1457
+            "cl100k_base": 1809,
+            "o200k_base": 1694
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2140,
-        "o200k_base": 1996
+        "cl100k_base": 2391,
+        "o200k_base": 2233
       }
     },
     {
@@ -9574,7 +9618,7 @@
       }
     },
     {
-      "bytes": 8971,
+      "bytes": 10343,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/pension-and-disability-insurance/figures.md",
       "sections": [
         {
@@ -9590,19 +9634,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 7314,
+          "bytes": 8686,
           "line": 35,
-          "lines": 40,
+          "lines": 77,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2381,
-            "o200k_base": 2198
+            "cl100k_base": 2825,
+            "o200k_base": 2599
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2897,
-        "o200k_base": 2681
+        "cl100k_base": 3341,
+        "o200k_base": 3082
       }
     },
     {
@@ -9702,7 +9746,7 @@
       }
     },
     {
-      "bytes": 9517,
+      "bytes": 11493,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/private-company-and-corporate-tax/figures.md",
       "sections": [
         {
@@ -9718,19 +9762,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 7293,
+          "bytes": 9269,
           "line": 35,
-          "lines": 42,
+          "lines": 81,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2540,
-            "o200k_base": 2358
+            "cl100k_base": 3314,
+            "o200k_base": 3063
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3173,
-        "o200k_base": 2948
+        "cl100k_base": 3947,
+        "o200k_base": 3653
       }
     },
     {
@@ -9830,7 +9874,7 @@
       }
     },
     {
-      "bytes": 11246,
+      "bytes": 12387,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/procedure/figures.md",
       "sections": [
         {
@@ -9846,19 +9890,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 9330,
+          "bytes": 10471,
           "line": 35,
-          "lines": 35,
+          "lines": 67,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2900,
-            "o200k_base": 2697
+            "cl100k_base": 3279,
+            "o200k_base": 3061
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3466,
-        "o200k_base": 3228
+        "cl100k_base": 3845,
+        "o200k_base": 3592
       }
     },
     {
@@ -9958,7 +10002,7 @@
       }
     },
     {
-      "bytes": 11023,
+      "bytes": 12585,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/vat/figures.md",
       "sections": [
         {
@@ -9974,19 +10018,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 9838,
+          "bytes": 11400,
           "line": 35,
-          "lines": 48,
+          "lines": 93,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2683,
-            "o200k_base": 2592
+            "cl100k_base": 3110,
+            "o200k_base": 3018
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3021,
-        "o200k_base": 2922
+        "cl100k_base": 3448,
+        "o200k_base": 3348
       }
     },
     {
@@ -10086,7 +10130,7 @@
       }
     },
     {
-      "bytes": 8903,
+      "bytes": 10077,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/work-relationship/figures.md",
       "sections": [
         {
@@ -10102,19 +10146,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 7111,
+          "bytes": 8285,
           "line": 35,
-          "lines": 38,
+          "lines": 73,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2278,
-            "o200k_base": 2171
+            "cl100k_base": 2675,
+            "o200k_base": 2549
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2784,
-        "o200k_base": 2646
+        "cl100k_base": 3181,
+        "o200k_base": 3024
       }
     },
     {
@@ -10193,13 +10237,13 @@
       }
     },
     {
-      "bytes": 8797,
+      "bytes": 8974,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/README.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 582,
-          "line": 22,
+          "line": 23,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -10209,30 +10253,30 @@
         },
         {
           "anchor": "2-topic-files",
-          "bytes": 3210,
-          "line": 30,
+          "bytes": 3252,
+          "line": 31,
           "lines": 21,
           "title": "2. TOPIC FILES",
           "tokens": {
-            "cl100k_base": 964,
-            "o200k_base": 916
+            "cl100k_base": 973,
+            "o200k_base": 925
           }
         },
         {
           "anchor": "3-headline-figures",
-          "bytes": 3904,
-          "line": 51,
+          "bytes": 4012,
+          "line": 52,
           "lines": 35,
           "title": "3. HEADLINE FIGURES",
           "tokens": {
-            "cl100k_base": 1242,
-            "o200k_base": 1156
+            "cl100k_base": 1269,
+            "o200k_base": 1183
           }
         },
         {
           "anchor": "4-related-resources",
           "bytes": 352,
-          "line": 86,
+          "line": 87,
           "lines": 6,
           "title": "4. RELATED RESOURCES",
           "tokens": {
@@ -10242,8 +10286,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2658,
-        "o200k_base": 2519
+        "cl100k_base": 2704,
+        "o200k_base": 2565
       }
     },
     {
@@ -10268,7 +10312,7 @@
       }
     },
     {
-      "bytes": 7798,
+      "bytes": 9818,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/box-2/figures.md",
       "sections": [
         {
@@ -10284,19 +10328,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 5966,
+          "bytes": 7986,
           "line": 35,
-          "lines": 36,
+          "lines": 69,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2011,
-            "o200k_base": 1894
+            "cl100k_base": 2790,
+            "o200k_base": 2626
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2570,
-        "o200k_base": 2438
+        "cl100k_base": 3349,
+        "o200k_base": 3170
       }
     },
     {
@@ -10396,7 +10440,7 @@
       }
     },
     {
-      "bytes": 4652,
+      "bytes": 5194,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/box-3/figures.md",
       "sections": [
         {
@@ -10412,19 +10456,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 2743,
+          "bytes": 3285,
           "line": 35,
-          "lines": 20,
+          "lines": 37,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 915,
-            "o200k_base": 852
+            "cl100k_base": 1078,
+            "o200k_base": 1003
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1481,
-        "o200k_base": 1377
+        "cl100k_base": 1644,
+        "o200k_base": 1528
       }
     },
     {
@@ -10524,7 +10568,7 @@
       }
     },
     {
-      "bytes": 6915,
+      "bytes": 8097,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/business-deductions/figures.md",
       "sections": [
         {
@@ -10540,19 +10584,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 5074,
+          "bytes": 6256,
           "line": 35,
-          "lines": 32,
+          "lines": 61,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1779,
-            "o200k_base": 1644
+            "cl100k_base": 2156,
+            "o200k_base": 1987
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2361,
-        "o200k_base": 2175
+        "cl100k_base": 2738,
+        "o200k_base": 2518
       }
     },
     {
@@ -10631,13 +10675,13 @@
       }
     },
     {
-      "bytes": 3126,
+      "bytes": 3165,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/changelog.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 313,
-          "line": 20,
+          "line": 21,
           "lines": 6,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -10648,7 +10692,7 @@
         {
           "anchor": "2-corrected-values",
           "bytes": 2138,
-          "line": 26,
+          "line": 27,
           "lines": 15,
           "title": "2. CORRECTED VALUES",
           "tokens": {
@@ -10658,18 +10702,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 962,
-        "o200k_base": 933
+        "cl100k_base": 974,
+        "o200k_base": 945
       }
     },
     {
-      "bytes": 4034,
+      "bytes": 4140,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/changes.md",
       "sections": [
         {
           "anchor": "1-unique-to-2025",
           "bytes": 1398,
-          "line": 20,
+          "line": 21,
           "lines": 13,
           "title": "1. Unique to 2025",
           "tokens": {
@@ -10679,19 +10723,19 @@
         },
         {
           "anchor": "2-all-changes-by-topic",
-          "bytes": 1896,
-          "line": 33,
+          "bytes": 1967,
+          "line": 34,
           "lines": 18,
           "title": "2. All changes by topic",
           "tokens": {
-            "cl100k_base": 666,
-            "o200k_base": 659
+            "cl100k_base": 680,
+            "o200k_base": 672
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1326,
-        "o200k_base": 1297
+        "cl100k_base": 1351,
+        "o200k_base": 1321
       }
     },
     {
@@ -10716,7 +10760,7 @@
       }
     },
     {
-      "bytes": 7551,
+      "bytes": 8697,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/costs-and-car/figures.md",
       "sections": [
         {
@@ -10732,19 +10776,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 5847,
+          "bytes": 6993,
           "line": 35,
-          "lines": 35,
+          "lines": 67,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2030,
-            "o200k_base": 1857
+            "cl100k_base": 2416,
+            "o200k_base": 2200
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2514,
-        "o200k_base": 2331
+        "cl100k_base": 2900,
+        "o200k_base": 2674
       }
     },
     {
@@ -10844,7 +10888,7 @@
       }
     },
     {
-      "bytes": 7717,
+      "bytes": 8607,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/health-insurance-contribution/figures.md",
       "sections": [
         {
@@ -10860,19 +10904,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 6023,
+          "bytes": 6913,
           "line": 35,
-          "lines": 28,
+          "lines": 53,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2009,
-            "o200k_base": 1816
+            "cl100k_base": 2306,
+            "o200k_base": 2095
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2508,
-        "o200k_base": 2287
+        "cl100k_base": 2805,
+        "o200k_base": 2566
       }
     },
     {
@@ -10972,7 +11016,7 @@
       }
     },
     {
-      "bytes": 11296,
+      "bytes": 12732,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/income-tax/figures.md",
       "sections": [
         {
@@ -10988,19 +11032,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 9971,
+          "bytes": 11407,
           "line": 35,
-          "lines": 35,
+          "lines": 67,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3395,
-            "o200k_base": 3182
+            "cl100k_base": 3851,
+            "o200k_base": 3618
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3778,
-        "o200k_base": 3545
+        "cl100k_base": 4234,
+        "o200k_base": 3981
       }
     },
     {
@@ -11100,7 +11144,7 @@
       }
     },
     {
-      "bytes": 11646,
+      "bytes": 12831,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/investments/figures.md",
       "sections": [
         {
@@ -11116,19 +11160,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 9576,
+          "bytes": 10761,
           "line": 35,
-          "lines": 32,
+          "lines": 61,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3016,
-            "o200k_base": 2777
+            "cl100k_base": 3374,
+            "o200k_base": 3114
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3615,
-        "o200k_base": 3343
+        "cl100k_base": 3973,
+        "o200k_base": 3680
       }
     },
     {
@@ -11228,7 +11272,7 @@
       }
     },
     {
-      "bytes": 6351,
+      "bytes": 7529,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/pension-and-disability-insurance/figures.md",
       "sections": [
         {
@@ -11244,19 +11288,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4492,
+          "bytes": 5670,
           "line": 35,
-          "lines": 34,
+          "lines": 65,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1536,
-            "o200k_base": 1440
+            "cl100k_base": 1920,
+            "o200k_base": 1796
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2092,
-        "o200k_base": 1960
+        "cl100k_base": 2476,
+        "o200k_base": 2316
       }
     },
     {
@@ -11356,7 +11400,7 @@
       }
     },
     {
-      "bytes": 10631,
+      "bytes": 12260,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/private-company-and-corporate-tax/figures.md",
       "sections": [
         {
@@ -11372,19 +11416,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 8362,
+          "bytes": 9991,
           "line": 36,
-          "lines": 45,
+          "lines": 87,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2652,
-            "o200k_base": 2482
+            "cl100k_base": 3252,
+            "o200k_base": 3037
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3295,
-        "o200k_base": 3082
+        "cl100k_base": 3895,
+        "o200k_base": 3637
       }
     },
     {
@@ -11484,7 +11528,7 @@
       }
     },
     {
-      "bytes": 8630,
+      "bytes": 9679,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/procedure/figures.md",
       "sections": [
         {
@@ -11500,19 +11544,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 6851,
+          "bytes": 7900,
           "line": 35,
-          "lines": 30,
+          "lines": 57,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2200,
-            "o200k_base": 2023
+            "cl100k_base": 2560,
+            "o200k_base": 2352
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2712,
-        "o200k_base": 2505
+        "cl100k_base": 3072,
+        "o200k_base": 2834
       }
     },
     {
@@ -11612,7 +11656,7 @@
       }
     },
     {
-      "bytes": 13412,
+      "bytes": 15760,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/vat/figures.md",
       "sections": [
         {
@@ -11628,19 +11672,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 12186,
+          "bytes": 14534,
           "line": 35,
-          "lines": 65,
+          "lines": 127,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3446,
-            "o200k_base": 3280
+            "cl100k_base": 4067,
+            "o200k_base": 3898
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3783,
-        "o200k_base": 3610
+        "cl100k_base": 4404,
+        "o200k_base": 4228
       }
     },
     {
@@ -11740,7 +11784,7 @@
       }
     },
     {
-      "bytes": 11757,
+      "bytes": 12789,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/work-relationship/figures.md",
       "sections": [
         {
@@ -11756,19 +11800,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 9333,
+          "bytes": 10365,
           "line": 37,
-          "lines": 34,
+          "lines": 65,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2757,
-            "o200k_base": 2550
+            "cl100k_base": 3117,
+            "o200k_base": 2898
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3431,
-        "o200k_base": 3178
+        "cl100k_base": 3791,
+        "o200k_base": 3526
       }
     },
     {
@@ -11847,13 +11891,13 @@
       }
     },
     {
-      "bytes": 8916,
+      "bytes": 9123,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/README.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 588,
-          "line": 22,
+          "line": 23,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -11863,30 +11907,30 @@
         },
         {
           "anchor": "2-topic-files",
-          "bytes": 2940,
-          "line": 30,
+          "bytes": 2988,
+          "line": 31,
           "lines": 21,
           "title": "2. TOPIC FILES",
           "tokens": {
-            "cl100k_base": 902,
-            "o200k_base": 857
+            "cl100k_base": 913,
+            "o200k_base": 868
           }
         },
         {
           "anchor": "3-headline-figures",
-          "bytes": 4287,
-          "line": 51,
+          "bytes": 4419,
+          "line": 52,
           "lines": 35,
           "title": "3. HEADLINE FIGURES",
           "tokens": {
-            "cl100k_base": 1338,
-            "o200k_base": 1232
+            "cl100k_base": 1370,
+            "o200k_base": 1264
           }
         },
         {
           "anchor": "4-related-resources",
           "bytes": 352,
-          "line": 86,
+          "line": 87,
           "lines": 6,
           "title": "4. RELATED RESOURCES",
           "tokens": {
@@ -11896,8 +11940,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2696,
-        "o200k_base": 2540
+        "cl100k_base": 2749,
+        "o200k_base": 2593
       }
     },
     {
@@ -11922,7 +11966,7 @@
       }
     },
     {
-      "bytes": 5835,
+      "bytes": 7024,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/box-2/figures.md",
       "sections": [
         {
@@ -11938,19 +11982,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 3995,
+          "bytes": 5184,
           "line": 35,
-          "lines": 31,
+          "lines": 59,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1346,
-            "o200k_base": 1260
+            "cl100k_base": 1794,
+            "o200k_base": 1681
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1895,
-        "o200k_base": 1795
+        "cl100k_base": 2343,
+        "o200k_base": 2216
       }
     },
     {
@@ -12050,7 +12094,7 @@
       }
     },
     {
-      "bytes": 6124,
+      "bytes": 7070,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/box-3/figures.md",
       "sections": [
         {
@@ -12066,19 +12110,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4569,
+          "bytes": 5515,
           "line": 35,
-          "lines": 30,
+          "lines": 57,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1478,
-            "o200k_base": 1396
+            "cl100k_base": 1764,
+            "o200k_base": 1665
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1949,
-        "o200k_base": 1836
+        "cl100k_base": 2235,
+        "o200k_base": 2105
       }
     },
     {
@@ -12178,7 +12222,7 @@
       }
     },
     {
-      "bytes": 6489,
+      "bytes": 7598,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/business-deductions/figures.md",
       "sections": [
         {
@@ -12194,19 +12238,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4502,
+          "bytes": 5611,
           "line": 35,
-          "lines": 30,
+          "lines": 57,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1483,
-            "o200k_base": 1352
+            "cl100k_base": 1829,
+            "o200k_base": 1665
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2114,
-        "o200k_base": 1917
+        "cl100k_base": 2460,
+        "o200k_base": 2230
       }
     },
     {
@@ -12285,13 +12329,13 @@
       }
     },
     {
-      "bytes": 3579,
+      "bytes": 3618,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/changelog.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 313,
-          "line": 20,
+          "line": 21,
           "lines": 6,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -12302,7 +12346,7 @@
         {
           "anchor": "2-corrected-values",
           "bytes": 2591,
-          "line": 26,
+          "line": 27,
           "lines": 16,
           "title": "2. CORRECTED VALUES",
           "tokens": {
@@ -12312,18 +12356,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1098,
-        "o200k_base": 1067
+        "cl100k_base": 1110,
+        "o200k_base": 1079
       }
     },
     {
-      "bytes": 3849,
+      "bytes": 3955,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/changes.md",
       "sections": [
         {
           "anchor": "1-unique-to-2026",
           "bytes": 1207,
-          "line": 20,
+          "line": 21,
           "lines": 13,
           "title": "1. Unique to 2026",
           "tokens": {
@@ -12333,19 +12377,19 @@
         },
         {
           "anchor": "2-all-changes-by-topic",
-          "bytes": 1902,
-          "line": 33,
+          "bytes": 1973,
+          "line": 34,
           "lines": 18,
           "title": "2. All changes by topic",
           "tokens": {
-            "cl100k_base": 654,
-            "o200k_base": 647
+            "cl100k_base": 668,
+            "o200k_base": 660
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1291,
-        "o200k_base": 1269
+        "cl100k_base": 1316,
+        "o200k_base": 1293
       }
     },
     {
@@ -12370,7 +12414,7 @@
       }
     },
     {
-      "bytes": 16155,
+      "bytes": 17783,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/costs-and-car/figures.md",
       "sections": [
         {
@@ -12386,19 +12430,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 14579,
+          "bytes": 16207,
           "line": 35,
-          "lines": 45,
+          "lines": 87,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 4673,
-            "o200k_base": 4254
+            "cl100k_base": 5193,
+            "o200k_base": 4729
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 5106,
-        "o200k_base": 4677
+        "cl100k_base": 5626,
+        "o200k_base": 5152
       }
     },
     {
@@ -12498,7 +12542,7 @@
       }
     },
     {
-      "bytes": 6279,
+      "bytes": 7013,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/health-insurance-contribution/figures.md",
       "sections": [
         {
@@ -12514,19 +12558,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4385,
+          "bytes": 5119,
           "line": 35,
-          "lines": 18,
+          "lines": 33,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1465,
-            "o200k_base": 1314
+            "cl100k_base": 1704,
+            "o200k_base": 1526
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2035,
-        "o200k_base": 1836
+        "cl100k_base": 2274,
+        "o200k_base": 2048
       }
     },
     {
@@ -12626,7 +12670,7 @@
       }
     },
     {
-      "bytes": 12761,
+      "bytes": 14399,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/income-tax/figures.md",
       "sections": [
         {
@@ -12642,19 +12686,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 11402,
+          "bytes": 13040,
           "line": 35,
-          "lines": 38,
+          "lines": 73,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3891,
-            "o200k_base": 3592
+            "cl100k_base": 4407,
+            "o200k_base": 4075
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 4282,
-        "o200k_base": 3966
+        "cl100k_base": 4798,
+        "o200k_base": 4449
       }
     },
     {
@@ -12754,7 +12798,7 @@
       }
     },
     {
-      "bytes": 8474,
+      "bytes": 9306,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/investments/figures.md",
       "sections": [
         {
@@ -12770,19 +12814,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 6494,
+          "bytes": 7326,
           "line": 35,
-          "lines": 25,
+          "lines": 47,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2166,
-            "o200k_base": 1983
+            "cl100k_base": 2422,
+            "o200k_base": 2228
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2729,
-        "o200k_base": 2500
+        "cl100k_base": 2985,
+        "o200k_base": 2745
       }
     },
     {
@@ -12882,7 +12926,7 @@
       }
     },
     {
-      "bytes": 6057,
+      "bytes": 6983,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/pension-and-disability-insurance/figures.md",
       "sections": [
         {
@@ -12898,19 +12942,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4608,
+          "bytes": 5534,
           "line": 35,
-          "lines": 31,
+          "lines": 59,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1678,
-            "o200k_base": 1554
+            "cl100k_base": 1984,
+            "o200k_base": 1840
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2131,
-        "o200k_base": 1982
+        "cl100k_base": 2437,
+        "o200k_base": 2268
       }
     },
     {
@@ -13010,7 +13054,7 @@
       }
     },
     {
-      "bytes": 8342,
+      "bytes": 9802,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/private-company-and-corporate-tax/figures.md",
       "sections": [
         {
@@ -13026,19 +13070,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 6299,
+          "bytes": 7759,
           "line": 36,
-          "lines": 38,
+          "lines": 73,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2266,
-            "o200k_base": 2026
+            "cl100k_base": 2805,
+            "o200k_base": 2508
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2873,
-        "o200k_base": 2597
+        "cl100k_base": 3412,
+        "o200k_base": 3079
       }
     },
     {
@@ -13138,7 +13182,7 @@
       }
     },
     {
-      "bytes": 15371,
+      "bytes": 16892,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/procedure/figures.md",
       "sections": [
         {
@@ -13154,19 +13198,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 13772,
+          "bytes": 15293,
           "line": 37,
-          "lines": 41,
+          "lines": 79,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 4110,
-            "o200k_base": 3768
+            "cl100k_base": 4653,
+            "o200k_base": 4236
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 4570,
-        "o200k_base": 4200
+        "cl100k_base": 5113,
+        "o200k_base": 4668
       }
     },
     {
@@ -13266,7 +13310,7 @@
       }
     },
     {
-      "bytes": 17515,
+      "bytes": 20052,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/vat/figures.md",
       "sections": [
         {
@@ -13282,19 +13326,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 15960,
+          "bytes": 18497,
           "line": 35,
-          "lines": 68,
+          "lines": 133,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 4452,
-            "o200k_base": 4259
+            "cl100k_base": 5116,
+            "o200k_base": 4917
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 4924,
-        "o200k_base": 4707
+        "cl100k_base": 5588,
+        "o200k_base": 5365
       }
     },
     {
@@ -13394,7 +13438,7 @@
       }
     },
     {
-      "bytes": 13462,
+      "bytes": 14565,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/work-relationship/figures.md",
       "sections": [
         {
@@ -13410,19 +13454,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 11684,
+          "bytes": 12787,
           "line": 35,
-          "lines": 35,
+          "lines": 67,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3423,
-            "o200k_base": 3176
+            "cl100k_base": 3789,
+            "o200k_base": 3526
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3922,
-        "o200k_base": 3641
+        "cl100k_base": 4288,
+        "o200k_base": 3991
       }
     },
     {
@@ -13501,13 +13545,13 @@
       }
     },
     {
-      "bytes": 9494,
+      "bytes": 9657,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/README.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 727,
-          "line": 22,
+          "line": 23,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -13517,30 +13561,30 @@
         },
         {
           "anchor": "2-topic-files",
-          "bytes": 3360,
-          "line": 30,
+          "bytes": 3402,
+          "line": 31,
           "lines": 21,
           "title": "2. TOPIC FILES",
           "tokens": {
-            "cl100k_base": 971,
-            "o200k_base": 933
+            "cl100k_base": 980,
+            "o200k_base": 942
           }
         },
         {
           "anchor": "3-headline-figures",
-          "bytes": 4336,
-          "line": 51,
+          "bytes": 4430,
+          "line": 52,
           "lines": 35,
           "title": "3. HEADLINE FIGURES",
           "tokens": {
-            "cl100k_base": 1357,
-            "o200k_base": 1279
+            "cl100k_base": 1379,
+            "o200k_base": 1301
           }
         },
         {
           "anchor": "4-related-resources",
           "bytes": 322,
-          "line": 86,
+          "line": 87,
           "lines": 6,
           "title": "4. RELATED RESOURCES",
           "tokens": {
@@ -13550,8 +13594,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2805,
-        "o200k_base": 2684
+        "cl100k_base": 2846,
+        "o200k_base": 2725
       }
     },
     {
@@ -13576,7 +13620,7 @@
       }
     },
     {
-      "bytes": 6844,
+      "bytes": 8396,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/box-2/figures.md",
       "sections": [
         {
@@ -13592,19 +13636,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4669,
+          "bytes": 6221,
           "line": 35,
-          "lines": 31,
+          "lines": 59,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1575,
-            "o200k_base": 1503
+            "cl100k_base": 2143,
+            "o200k_base": 2041
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2208,
-        "o200k_base": 2113
+        "cl100k_base": 2776,
+        "o200k_base": 2651
       }
     },
     {
@@ -13704,7 +13748,7 @@
       }
     },
     {
-      "bytes": 6935,
+      "bytes": 7764,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/box-3/figures.md",
       "sections": [
         {
@@ -13720,19 +13764,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4122,
+          "bytes": 4951,
           "line": 35,
-          "lines": 25,
+          "lines": 47,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1314,
-            "o200k_base": 1254
+            "cl100k_base": 1588,
+            "o200k_base": 1503
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2161,
-        "o200k_base": 2051
+        "cl100k_base": 2435,
+        "o200k_base": 2300
       }
     },
     {
@@ -13832,7 +13876,7 @@
       }
     },
     {
-      "bytes": 9533,
+      "bytes": 11235,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/business-deductions/figures.md",
       "sections": [
         {
@@ -13848,19 +13892,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 6462,
+          "bytes": 8164,
           "line": 35,
-          "lines": 41,
+          "lines": 79,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2120,
-            "o200k_base": 2000
+            "cl100k_base": 2665,
+            "o200k_base": 2498
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3121,
-        "o200k_base": 2922
+        "cl100k_base": 3666,
+        "o200k_base": 3420
       }
     },
     {
@@ -13939,13 +13983,13 @@
       }
     },
     {
-      "bytes": 3486,
+      "bytes": 3525,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/changelog.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 313,
-          "line": 20,
+          "line": 21,
           "lines": 6,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -13956,7 +14000,7 @@
         {
           "anchor": "2-corrected-values",
           "bytes": 2498,
-          "line": 26,
+          "line": 27,
           "lines": 17,
           "title": "2. CORRECTED VALUES",
           "tokens": {
@@ -13966,18 +14010,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1094,
-        "o200k_base": 1065
+        "cl100k_base": 1106,
+        "o200k_base": 1077
       }
     },
     {
-      "bytes": 4193,
+      "bytes": 4284,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/changes.md",
       "sections": [
         {
           "anchor": "1-unique-to-2027",
           "bytes": 1536,
-          "line": 20,
+          "line": 21,
           "lines": 13,
           "title": "1. Unique to 2027",
           "tokens": {
@@ -13987,19 +14031,19 @@
         },
         {
           "anchor": "2-all-changes-by-topic",
-          "bytes": 1917,
-          "line": 33,
+          "bytes": 1973,
+          "line": 34,
           "lines": 18,
           "title": "2. All changes by topic",
           "tokens": {
-            "cl100k_base": 685,
-            "o200k_base": 671
+            "cl100k_base": 695,
+            "o200k_base": 680
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1385,
-        "o200k_base": 1347
+        "cl100k_base": 1406,
+        "o200k_base": 1367
       }
     },
     {
@@ -14024,7 +14068,7 @@
       }
     },
     {
-      "bytes": 8823,
+      "bytes": 10333,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/costs-and-car/figures.md",
       "sections": [
         {
@@ -14040,19 +14084,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 7221,
+          "bytes": 8731,
           "line": 35,
-          "lines": 42,
+          "lines": 79,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2423,
-            "o200k_base": 2267
+            "cl100k_base": 2916,
+            "o200k_base": 2717
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2866,
-        "o200k_base": 2695
+        "cl100k_base": 3359,
+        "o200k_base": 3145
       }
     },
     {
@@ -14152,7 +14196,7 @@
       }
     },
     {
-      "bytes": 11424,
+      "bytes": 12405,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/health-insurance-contribution/figures.md",
       "sections": [
         {
@@ -14168,19 +14212,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 8917,
+          "bytes": 9898,
           "line": 35,
-          "lines": 30,
+          "lines": 55,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3001,
-            "o200k_base": 2725
+            "cl100k_base": 3310,
+            "o200k_base": 3011
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3792,
-        "o200k_base": 3457
+        "cl100k_base": 4101,
+        "o200k_base": 3743
       }
     },
     {
@@ -14280,7 +14324,7 @@
       }
     },
     {
-      "bytes": 16704,
+      "bytes": 19162,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/income-tax/figures.md",
       "sections": [
         {
@@ -14296,19 +14340,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 15031,
+          "bytes": 17489,
           "line": 35,
-          "lines": 47,
+          "lines": 91,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 4798,
-            "o200k_base": 4499
+            "cl100k_base": 5574,
+            "o200k_base": 5221
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 5289,
-        "o200k_base": 4952
+        "cl100k_base": 6065,
+        "o200k_base": 5674
       }
     },
     {
@@ -14408,7 +14452,7 @@
       }
     },
     {
-      "bytes": 8914,
+      "bytes": 10209,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/investments/figures.md",
       "sections": [
         {
@@ -14424,19 +14468,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 6569,
+          "bytes": 7864,
           "line": 37,
-          "lines": 35,
+          "lines": 67,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 2083,
-            "o200k_base": 1971
+            "cl100k_base": 2473,
+            "o200k_base": 2339
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2749,
-        "o200k_base": 2592
+        "cl100k_base": 3139,
+        "o200k_base": 2960
       }
     },
     {
@@ -14536,7 +14580,7 @@
       }
     },
     {
-      "bytes": 7071,
+      "bytes": 8204,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/pension-and-disability-insurance/figures.md",
       "sections": [
         {
@@ -14552,19 +14596,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 5282,
+          "bytes": 6415,
           "line": 35,
-          "lines": 34,
+          "lines": 65,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1734,
-            "o200k_base": 1617
+            "cl100k_base": 2118,
+            "o200k_base": 1969
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2276,
-        "o200k_base": 2129
+        "cl100k_base": 2660,
+        "o200k_base": 2481
       }
     },
     {
@@ -14664,7 +14708,7 @@
       }
     },
     {
-      "bytes": 12982,
+      "bytes": 15140,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/private-company-and-corporate-tax/figures.md",
       "sections": [
         {
@@ -14680,19 +14724,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 11102,
+          "bytes": 13260,
           "line": 35,
-          "lines": 49,
+          "lines": 93,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3578,
-            "o200k_base": 3366
+            "cl100k_base": 4437,
+            "o200k_base": 4171
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 4158,
-        "o200k_base": 3922
+        "cl100k_base": 5017,
+        "o200k_base": 4727
       }
     },
     {
@@ -14792,7 +14836,7 @@
       }
     },
     {
-      "bytes": 16606,
+      "bytes": 18386,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/procedure/figures.md",
       "sections": [
         {
@@ -14808,19 +14852,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 14524,
+          "bytes": 16304,
           "line": 35,
-          "lines": 53,
+          "lines": 103,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 4311,
-            "o200k_base": 4041
+            "cl100k_base": 4906,
+            "o200k_base": 4621
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 4896,
-        "o200k_base": 4586
+        "cl100k_base": 5491,
+        "o200k_base": 5166
       }
     },
     {
@@ -14920,7 +14964,7 @@
       }
     },
     {
-      "bytes": 12800,
+      "bytes": 14335,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/vat/figures.md",
       "sections": [
         {
@@ -14936,19 +14980,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 11292,
+          "bytes": 12827,
           "line": 35,
-          "lines": 48,
+          "lines": 93,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 3294,
-            "o200k_base": 3139
+            "cl100k_base": 3703,
+            "o200k_base": 3546
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3737,
-        "o200k_base": 3565
+        "cl100k_base": 4146,
+        "o200k_base": 3972
       }
     },
     {
@@ -15048,7 +15092,7 @@
       }
     },
     {
-      "bytes": 6822,
+      "bytes": 7523,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/work-relationship/figures.md",
       "sections": [
         {
@@ -15064,19 +15108,19 @@
         },
         {
           "anchor": "2-key-figures",
-          "bytes": 4912,
+          "bytes": 5613,
           "line": 35,
-          "lines": 27,
+          "lines": 51,
           "title": "2. KEY FIGURES",
           "tokens": {
-            "cl100k_base": 1483,
-            "o200k_base": 1395
+            "cl100k_base": 1712,
+            "o200k_base": 1616
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 2020,
-        "o200k_base": 1901
+        "cl100k_base": 2249,
+        "o200k_base": 2122
       }
     },
     {
@@ -15155,13 +15199,13 @@
       }
     },
     {
-      "bytes": 3443,
+      "bytes": 3482,
       "path": "sk-moneybird-accountant/references/tax-rules/README.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 502,
-          "line": 22,
+          "line": 23,
           "lines": 6,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -15172,7 +15216,7 @@
         {
           "anchor": "2-year-folders",
           "bytes": 879,
-          "line": 28,
+          "line": 29,
           "lines": 19,
           "title": "2. YEAR FOLDERS",
           "tokens": {
@@ -15183,7 +15227,7 @@
         {
           "anchor": "3-cross-year-files",
           "bytes": 719,
-          "line": 47,
+          "line": 48,
           "lines": 12,
           "title": "3. CROSS-YEAR FILES",
           "tokens": {
@@ -15194,7 +15238,7 @@
         {
           "anchor": "4-how-to-read",
           "bytes": 499,
-          "line": 59,
+          "line": 60,
           "lines": 6,
           "title": "4. HOW TO READ",
           "tokens": {
@@ -15204,18 +15248,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 963,
-        "o200k_base": 960
+        "cl100k_base": 972,
+        "o200k_base": 969
       }
     },
     {
-      "bytes": 7118,
+      "bytes": 7147,
       "path": "sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 518,
-          "line": 22,
+          "line": 23,
           "lines": 6,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -15226,7 +15270,7 @@
         {
           "anchor": "2-how-to-use-it",
           "bytes": 3431,
-          "line": 28,
+          "line": 29,
           "lines": 55,
           "title": "2. HOW TO USE IT",
           "tokens": {
@@ -15237,7 +15281,7 @@
         {
           "anchor": "3-general-rules",
           "bytes": 1848,
-          "line": 83,
+          "line": 84,
           "lines": 26,
           "title": "3. GENERAL RULES",
           "tokens": {
@@ -15248,7 +15292,7 @@
         {
           "anchor": "7-related-resources",
           "bytes": 547,
-          "line": 109,
+          "line": 110,
           "lines": 6,
           "title": "7. RELATED RESOURCES",
           "tokens": {
@@ -15258,8 +15302,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1998,
-        "o200k_base": 1950
+        "cl100k_base": 2007,
+        "o200k_base": 1958
       }
     },
     {
@@ -15272,21 +15316,21 @@
       }
     },
     {
-      "bytes": 25245,
+      "bytes": 25283,
       "path": "sk-moneybird-accountant/references/tax-rules/general/box-3-savings-and-investments.md",
       "sections": [],
       "tokens": {
-        "cl100k_base": 7903,
-        "o200k_base": 7531
+        "cl100k_base": 7913,
+        "o200k_base": 7541
       }
     },
     {
-      "bytes": 28517,
+      "bytes": 28560,
       "path": "sk-moneybird-accountant/references/tax-rules/general/business-deductions-and-sme-profit-exemption.md",
       "sections": [],
       "tokens": {
-        "cl100k_base": 8509,
-        "o200k_base": 7895
+        "cl100k_base": 8518,
+        "o200k_base": 7904
       }
     },
     {
@@ -15338,12 +15382,12 @@
       }
     },
     {
-      "bytes": 26565,
+      "bytes": 26584,
       "path": "sk-moneybird-accountant/references/tax-rules/general/pension-annuities-and-disability-insurance.md",
       "sections": [],
       "tokens": {
-        "cl100k_base": 8458,
-        "o200k_base": 7944
+        "cl100k_base": 8462,
+        "o200k_base": 7948
       }
     },
     {
@@ -15389,12 +15433,12 @@
       }
     },
     {
-      "bytes": 35856,
+      "bytes": 35879,
       "path": "sk-moneybird-accountant/references/tax-rules/general/the-private-company-and-corporate-tax.md",
       "sections": [],
       "tokens": {
-        "cl100k_base": 11107,
-        "o200k_base": 10492
+        "cl100k_base": 11113,
+        "o200k_base": 10498
       }
     },
     {
@@ -15407,22 +15451,22 @@
       }
     },
     {
-      "bytes": 43729,
+      "bytes": 43749,
       "path": "sk-moneybird-accountant/references/tax-rules/general/work-relationship-and-procedure.md",
       "sections": [],
       "tokens": {
-        "cl100k_base": 12839,
-        "o200k_base": 11967
+        "cl100k_base": 12846,
+        "o200k_base": 11974
       }
     },
     {
-      "bytes": 13381,
+      "bytes": 13418,
       "path": "sk-moneybird-accountant/references/tax-rules/source-library.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 1266,
-          "line": 22,
+          "line": 23,
           "lines": 25,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -15433,7 +15477,7 @@
         {
           "anchor": "2-how-to-reach-a-source",
           "bytes": 1224,
-          "line": 47,
+          "line": 48,
           "lines": 14,
           "title": "2. HOW TO REACH A SOURCE",
           "tokens": {
@@ -15444,7 +15488,7 @@
         {
           "anchor": "3-sources-by-authority",
           "bytes": 1391,
-          "line": 61,
+          "line": 62,
           "lines": 18,
           "title": "3. SOURCES BY AUTHORITY",
           "tokens": {
@@ -15455,7 +15499,7 @@
         {
           "anchor": "4-statutes",
           "bytes": 1132,
-          "line": 79,
+          "line": 80,
           "lines": 26,
           "title": "4. STATUTES",
           "tokens": {
@@ -15466,7 +15510,7 @@
         {
           "anchor": "5-most-cited-pages",
           "bytes": 3318,
-          "line": 105,
+          "line": 106,
           "lines": 36,
           "title": "5. MOST-CITED PAGES",
           "tokens": {
@@ -15477,7 +15521,7 @@
         {
           "anchor": "6-dead-links",
           "bytes": 1794,
-          "line": 141,
+          "line": 142,
           "lines": 13,
           "title": "6. DEAD LINKS",
           "tokens": {
@@ -15488,7 +15532,7 @@
         {
           "anchor": "7-keeping-the-library-current",
           "bytes": 2077,
-          "line": 154,
+          "line": 155,
           "lines": 28,
           "title": "7. KEEPING THE LIBRARY CURRENT",
           "tokens": {
@@ -15499,7 +15543,7 @@
         {
           "anchor": "8-related-resources",
           "bytes": 481,
-          "line": 182,
+          "line": 183,
           "lines": 6,
           "title": "8. RELATED RESOURCES",
           "tokens": {
@@ -15509,18 +15553,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3987,
-        "o200k_base": 3741
+        "cl100k_base": 3995,
+        "o200k_base": 3749
       }
     },
     {
-      "bytes": 5545,
+      "bytes": 5584,
       "path": "sk-moneybird-accountant/references/tax-rules/year-and-state.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 662,
-          "line": 21,
+          "line": 22,
           "lines": 10,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -15531,7 +15575,7 @@
         {
           "anchor": "2-year-resolution",
           "bytes": 1062,
-          "line": 31,
+          "line": 32,
           "lines": 21,
           "title": "2. YEAR RESOLUTION",
           "tokens": {
@@ -15542,7 +15586,7 @@
         {
           "anchor": "3-out-of-range-and-publication-state",
           "bytes": 1188,
-          "line": 52,
+          "line": 53,
           "lines": 16,
           "title": "3. OUT-OF-RANGE AND PUBLICATION STATE",
           "tokens": {
@@ -15553,7 +15597,7 @@
         {
           "anchor": "4-post-cutover-state",
           "bytes": 1092,
-          "line": 68,
+          "line": 69,
           "lines": 16,
           "title": "4. POST-CUTOVER STATE",
           "tokens": {
@@ -15564,7 +15608,7 @@
         {
           "anchor": "5-headless-sessions",
           "bytes": 263,
-          "line": 84,
+          "line": 85,
           "lines": 6,
           "title": "5. HEADLESS SESSIONS",
           "tokens": {
@@ -15575,7 +15619,7 @@
         {
           "anchor": "6-related-resources",
           "bytes": 586,
-          "line": 90,
+          "line": 91,
           "lines": 8,
           "title": "6. RELATED RESOURCES",
           "tokens": {
@@ -15585,18 +15629,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1309,
-        "o200k_base": 1302
+        "cl100k_base": 1318,
+        "o200k_base": 1311
       }
     },
     {
-      "bytes": 11480,
+      "bytes": 11506,
       "path": "sk-moneybird-accountant/references/tax-rules/year-changes.md",
       "sections": [
         {
           "anchor": "2027",
           "bytes": 1600,
-          "line": 17,
+          "line": 18,
           "lines": 13,
           "title": "2027",
           "tokens": {
@@ -15607,7 +15651,7 @@
         {
           "anchor": "2026",
           "bytes": 1271,
-          "line": 30,
+          "line": 31,
           "lines": 13,
           "title": "2026",
           "tokens": {
@@ -15618,7 +15662,7 @@
         {
           "anchor": "2025",
           "bytes": 1462,
-          "line": 43,
+          "line": 44,
           "lines": 13,
           "title": "2025",
           "tokens": {
@@ -15629,7 +15673,7 @@
         {
           "anchor": "2024",
           "bytes": 1163,
-          "line": 56,
+          "line": 57,
           "lines": 13,
           "title": "2024",
           "tokens": {
@@ -15640,7 +15684,7 @@
         {
           "anchor": "2023",
           "bytes": 1287,
-          "line": 69,
+          "line": 70,
           "lines": 13,
           "title": "2023",
           "tokens": {
@@ -15651,7 +15695,7 @@
         {
           "anchor": "2022",
           "bytes": 1417,
-          "line": 82,
+          "line": 83,
           "lines": 13,
           "title": "2022",
           "tokens": {
@@ -15662,7 +15706,7 @@
         {
           "anchor": "2021",
           "bytes": 1321,
-          "line": 95,
+          "line": 96,
           "lines": 13,
           "title": "2021",
           "tokens": {
@@ -15673,7 +15717,7 @@
         {
           "anchor": "2020",
           "bytes": 1452,
-          "line": 108,
+          "line": 109,
           "lines": 12,
           "title": "2020",
           "tokens": {
@@ -15683,18 +15727,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3946,
-        "o200k_base": 3798
+        "cl100k_base": 3953,
+        "o200k_base": 3805
       }
     },
     {
-      "bytes": 4102,
+      "bytes": 4396,
       "path": "sk-moneybird-accountant/references/tax-rules/year-rollover.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 538,
-          "line": 22,
+          "line": 23,
           "lines": 10,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -15704,19 +15748,19 @@
         },
         {
           "anchor": "2-the-1-january-runbook",
-          "bytes": 1515,
-          "line": 32,
+          "bytes": 1609,
+          "line": 33,
           "lines": 15,
           "title": "2. THE 1 JANUARY RUNBOOK",
           "tokens": {
-            "cl100k_base": 376,
-            "o200k_base": 376
+            "cl100k_base": 395,
+            "o200k_base": 395
           }
         },
         {
           "anchor": "3-the-release-calendar",
           "bytes": 1083,
-          "line": 47,
+          "line": 48,
           "lines": 14,
           "title": "3. THE RELEASE CALENDAR",
           "tokens": {
@@ -15727,7 +15771,7 @@
         {
           "anchor": "4-related-resources",
           "bytes": 327,
-          "line": 61,
+          "line": 62,
           "lines": 5,
           "title": "4. RELATED RESOURCES",
           "tokens": {
@@ -15737,18 +15781,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1088,
-        "o200k_base": 1075
+        "cl100k_base": 1151,
+        "o200k_base": 1137
       }
     },
     {
-      "bytes": 5238,
+      "bytes": 5274,
       "path": "sk-moneybird-accountant/references/vat-return/README.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 612,
-          "line": 21,
+          "line": 22,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -15759,7 +15803,7 @@
         {
           "anchor": "2-the-five-files",
           "bytes": 838,
-          "line": 29,
+          "line": 30,
           "lines": 12,
           "title": "2. THE FIVE FILES",
           "tokens": {
@@ -15770,7 +15814,7 @@
         {
           "anchor": "3-boundary",
           "bytes": 720,
-          "line": 41,
+          "line": 42,
           "lines": 9,
           "title": "3. BOUNDARY",
           "tokens": {
@@ -15781,7 +15825,7 @@
         {
           "anchor": "4-figure-link-rule",
           "bytes": 642,
-          "line": 50,
+          "line": 51,
           "lines": 8,
           "title": "4. FIGURE LINK RULE",
           "tokens": {
@@ -15792,7 +15836,7 @@
         {
           "anchor": "5-open-points",
           "bytes": 1153,
-          "line": 58,
+          "line": 59,
           "lines": 16,
           "title": "5. OPEN POINTS",
           "tokens": {
@@ -15803,7 +15847,7 @@
         {
           "anchor": "6-related-resources",
           "bytes": 519,
-          "line": 74,
+          "line": 75,
           "lines": 7,
           "title": "6. RELATED RESOURCES",
           "tokens": {
@@ -15813,18 +15857,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1307,
-        "o200k_base": 1293
+        "cl100k_base": 1316,
+        "o200k_base": 1301
       }
     },
     {
-      "bytes": 7984,
+      "bytes": 8030,
       "path": "sk-moneybird-accountant/references/vat-return/preparation.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 653,
-          "line": 20,
+          "line": 21,
           "lines": 10,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -15835,7 +15879,7 @@
         {
           "anchor": "2-the-steps",
           "bytes": 5018,
-          "line": 30,
+          "line": 31,
           "lines": 22,
           "title": "2. THE STEPS",
           "tokens": {
@@ -15846,7 +15890,7 @@
         {
           "anchor": "3-final-quarter-variant",
           "bytes": 459,
-          "line": 52,
+          "line": 53,
           "lines": 8,
           "title": "3. FINAL-QUARTER VARIANT",
           "tokens": {
@@ -15857,7 +15901,7 @@
         {
           "anchor": "4-stop-conditions",
           "bytes": 653,
-          "line": 60,
+          "line": 61,
           "lines": 17,
           "title": "4. STOP CONDITIONS",
           "tokens": {
@@ -15868,7 +15912,7 @@
         {
           "anchor": "5-related-resources",
           "bytes": 495,
-          "line": 77,
+          "line": 78,
           "lines": 8,
           "title": "5. RELATED RESOURCES",
           "tokens": {
@@ -15878,18 +15922,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1926,
-        "o200k_base": 1904
+        "cl100k_base": 1936,
+        "o200k_base": 1913
       }
     },
     {
-      "bytes": 9658,
+      "bytes": 9715,
       "path": "sk-moneybird-accountant/references/vat-return/return-boxes.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 367,
-          "line": 20,
+          "line": 21,
           "lines": 6,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -15900,7 +15944,7 @@
         {
           "anchor": "2-the-rubriek-table",
           "bytes": 2555,
-          "line": 26,
+          "line": 27,
           "lines": 23,
           "title": "2. THE RUBRIEK TABLE",
           "tokens": {
@@ -15911,7 +15955,7 @@
         {
           "anchor": "3-the-derivation-map",
           "bytes": 1199,
-          "line": 49,
+          "line": 50,
           "lines": 15,
           "title": "3. THE DERIVATION MAP",
           "tokens": {
@@ -15922,7 +15966,7 @@
         {
           "anchor": "4-the-run-time-rate-step",
           "bytes": 779,
-          "line": 64,
+          "line": 65,
           "lines": 11,
           "title": "4. THE RUN-TIME RATE STEP",
           "tokens": {
@@ -15933,7 +15977,7 @@
         {
           "anchor": "5-the-reverse-charge-branch",
           "bytes": 956,
-          "line": 75,
+          "line": 76,
           "lines": 15,
           "title": "5. THE REVERSE-CHARGE BRANCH",
           "tokens": {
@@ -15944,7 +15988,7 @@
         {
           "anchor": "6-the-kor-branch",
           "bytes": 907,
-          "line": 90,
+          "line": 91,
           "lines": 14,
           "title": "6. THE KOR BRANCH",
           "tokens": {
@@ -15955,7 +15999,7 @@
         {
           "anchor": "7-the-sales-rule-3b-to-icp-and-oss",
           "bytes": 987,
-          "line": 104,
+          "line": 105,
           "lines": 14,
           "title": "7. THE SALES RULE: 3B TO ICP AND OSS",
           "tokens": {
@@ -15966,7 +16010,7 @@
         {
           "anchor": "8-correction-phrases",
           "bytes": 629,
-          "line": 118,
+          "line": 119,
           "lines": 12,
           "title": "8. CORRECTION PHRASES",
           "tokens": {
@@ -15977,7 +16021,7 @@
         {
           "anchor": "9-related-resources",
           "bytes": 470,
-          "line": 130,
+          "line": 131,
           "lines": 8,
           "title": "9. RELATED RESOURCES",
           "tokens": {
@@ -15987,18 +16031,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2490,
-        "o200k_base": 2472
+        "cl100k_base": 2504,
+        "o200k_base": 2487
       }
     },
     {
-      "bytes": 7086,
+      "bytes": 7122,
       "path": "sk-moneybird-accountant/references/vat-return/review-pack.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 413,
-          "line": 20,
+          "line": 21,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -16009,7 +16053,7 @@
         {
           "anchor": "2-the-nine-pack-blocks",
           "bytes": 1650,
-          "line": 28,
+          "line": 29,
           "lines": 18,
           "title": "2. THE NINE PACK BLOCKS",
           "tokens": {
@@ -16020,7 +16064,7 @@
         {
           "anchor": "3-the-three-confirmation-parts",
           "bytes": 612,
-          "line": 46,
+          "line": 47,
           "lines": 14,
           "title": "3. THE THREE CONFIRMATION PARTS",
           "tokens": {
@@ -16031,7 +16075,7 @@
         {
           "anchor": "4-deadline-and-payment-block",
           "bytes": 915,
-          "line": 60,
+          "line": 61,
           "lines": 14,
           "title": "4. DEADLINE AND PAYMENT BLOCK",
           "tokens": {
@@ -16042,7 +16086,7 @@
         {
           "anchor": "5-product-checks-at-filing-time",
           "bytes": 1480,
-          "line": 74,
+          "line": 75,
           "lines": 16,
           "title": "5. PRODUCT CHECKS AT FILING TIME",
           "tokens": {
@@ -16053,7 +16097,7 @@
         {
           "anchor": "6-escalation-list",
           "bytes": 861,
-          "line": 90,
+          "line": 91,
           "lines": 21,
           "title": "6. ESCALATION LIST",
           "tokens": {
@@ -16064,7 +16108,7 @@
         {
           "anchor": "7-related-resources",
           "bytes": 415,
-          "line": 111,
+          "line": 112,
           "lines": 7,
           "title": "7. RELATED RESOURCES",
           "tokens": {
@@ -16074,18 +16118,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1693,
-        "o200k_base": 1660
+        "cl100k_base": 1703,
+        "o200k_base": 1669
       }
     },
     {
-      "bytes": 4985,
+      "bytes": 5054,
       "path": "sk-moneybird-accountant/references/vat-return/year-end-and-corrections.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 481,
-          "line": 20,
+          "line": 21,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -16096,7 +16140,7 @@
         {
           "anchor": "2-the-four-settlements",
           "bytes": 1792,
-          "line": 28,
+          "line": 29,
           "lines": 15,
           "title": "2. THE FOUR SETTLEMENTS",
           "tokens": {
@@ -16107,7 +16151,7 @@
         {
           "anchor": "3-correction-routing",
           "bytes": 1476,
-          "line": 43,
+          "line": 44,
           "lines": 20,
           "title": "3. CORRECTION ROUTING",
           "tokens": {
@@ -16118,7 +16162,7 @@
         {
           "anchor": "4-related-resources",
           "bytes": 364,
-          "line": 63,
+          "line": 64,
           "lines": 7,
           "title": "4. RELATED RESOURCES",
           "tokens": {
@@ -16128,18 +16172,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1192,
-        "o200k_base": 1174
+        "cl100k_base": 1206,
+        "o200k_base": 1188
       }
     },
     {
-      "bytes": 6499,
+      "bytes": 6540,
       "path": "sk-moneybird-accountant/references/yearly-overview/README.md",
       "sections": [
         {
           "anchor": "1-overview",
           "bytes": 868,
-          "line": 21,
+          "line": 22,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
@@ -16150,7 +16194,7 @@
         {
           "anchor": "2-the-four-files",
           "bytes": 720,
-          "line": 29,
+          "line": 30,
           "lines": 11,
           "title": "2. THE FOUR FILES",
           "tokens": {
@@ -16161,7 +16205,7 @@
         {
           "anchor": "3-the-ordered-steps",
           "bytes": 1568,
-          "line": 40,
+          "line": 41,
           "lines": 21,
           "title": "3. THE ORDERED STEPS",
           "tokens": {
@@ -16172,7 +16216,7 @@
         {
           "anchor": "4-the-eleven-close-signals-and-the-two-conditional-reads",
           "bytes": 982,
-          "line": 61,
+          "line": 62,
           "lines": 22,
           "title": "4. THE ELEVEN CLOSE SIGNALS AND THE TWO CONDITIONAL READS",
           "tokens": {
@@ -16183,7 +16227,7 @@
         {
           "anchor": "5-boundary-and-figure-links",
           "bytes": 941,
-          "line": 83,
+          "line": 84,
           "lines": 10,
           "title": "5. BOUNDARY AND FIGURE LINKS",
           "tokens": {
@@ -16194,7 +16238,7 @@
         {
           "anchor": "6-related-resources",
           "bytes": 676,
-          "line": 93,
+          "line": 94,
           "lines": 8,
           "title": "6. RELATED RESOURCES",
           "tokens": {
@@ -16204,18 +16248,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1567,
-        "o200k_base": 1533
+        "cl100k_base": 1576,
+        "o200k_base": 1542
       }
     },
     {
-      "bytes": 4196,
+      "bytes": 4255,
       "path": "sk-moneybird-accountant/references/yearly-overview/fiscal-reconciliation.md",
       "sections": [
         {
           "anchor": "1-the-fiscal-reconciliation-template",
           "bytes": 1540,
-          "line": 20,
+          "line": 21,
           "lines": 19,
           "title": "1. THE FISCAL RECONCILIATION TEMPLATE",
           "tokens": {
@@ -16226,7 +16270,7 @@
         {
           "anchor": "2-the-three-column-hand-off-template",
           "bytes": 1332,
-          "line": 39,
+          "line": 40,
           "lines": 17,
           "title": "2. THE THREE-COLUMN HAND-OFF TEMPLATE",
           "tokens": {
@@ -16237,7 +16281,7 @@
         {
           "anchor": "3-prepared-not-filed",
           "bytes": 556,
-          "line": 56,
+          "line": 57,
           "lines": 5,
           "title": "3. PREPARED, NOT FILED",
           "tokens": {
@@ -16247,18 +16291,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1033,
-        "o200k_base": 973
+        "cl100k_base": 1045,
+        "o200k_base": 984
       }
     },
     {
-      "bytes": 7079,
+      "bytes": 7130,
       "path": "sk-moneybird-accountant/references/yearly-overview/preparation-checklist.md",
       "sections": [
         {
           "anchor": "1-auditfile-first",
           "bytes": 1115,
-          "line": 20,
+          "line": 21,
           "lines": 12,
           "title": "1. AUDITFILE FIRST",
           "tokens": {
@@ -16269,7 +16313,7 @@
         {
           "anchor": "2-the-checks",
           "bytes": 3122,
-          "line": 32,
+          "line": 33,
           "lines": 29,
           "title": "2. THE CHECKS",
           "tokens": {
@@ -16280,7 +16324,7 @@
         {
           "anchor": "3-equity-continuity",
           "bytes": 1309,
-          "line": 61,
+          "line": 62,
           "lines": 24,
           "title": "3. EQUITY CONTINUITY",
           "tokens": {
@@ -16291,7 +16335,7 @@
         {
           "anchor": "4-exception-list",
           "bytes": 677,
-          "line": 85,
+          "line": 86,
           "lines": 11,
           "title": "4. EXCEPTION LIST",
           "tokens": {
@@ -16301,18 +16345,18 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1628,
-        "o200k_base": 1609
+        "cl100k_base": 1638,
+        "o200k_base": 1619
       }
     },
     {
-      "bytes": 4632,
+      "bytes": 4694,
       "path": "sk-moneybird-accountant/references/yearly-overview/report-and-export-limits.md",
       "sections": [
         {
           "anchor": "1-the-report-rows",
           "bytes": 1745,
-          "line": 20,
+          "line": 21,
           "lines": 19,
           "title": "1. THE REPORT ROWS",
           "tokens": {
@@ -16323,7 +16367,7 @@
         {
           "anchor": "2-the-auditfile-export-order",
           "bytes": 727,
-          "line": 39,
+          "line": 40,
           "lines": 8,
           "title": "2. THE AUDITFILE EXPORT ORDER",
           "tokens": {
@@ -16334,7 +16378,7 @@
         {
           "anchor": "3-the-unverified-list",
           "bytes": 944,
-          "line": 47,
+          "line": 48,
           "lines": 14,
           "title": "3. THE UNVERIFIED LIST",
           "tokens": {
@@ -16345,7 +16389,7 @@
         {
           "anchor": "4-year-file-status",
           "bytes": 370,
-          "line": 61,
+          "line": 62,
           "lines": 3,
           "title": "4. YEAR FILE STATUS",
           "tokens": {
@@ -16355,8 +16399,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1106,
-        "o200k_base": 1106
+        "cl100k_base": 1119,
+        "o200k_base": 1119
       }
     }
   ],
@@ -16383,13 +16427,23 @@
       }
     },
     {
+      "blocks": 96,
+      "bytes": 112892,
+      "files": 96,
+      "name": "key figure index block bodies",
+      "tokens": {
+        "cl100k_base": 38869,
+        "o200k_base": 36021
+      }
+    },
+    {
       "blocks": 1,
-      "bytes": 159176,
+      "bytes": 184624,
       "files": 1,
       "name": "references/index.json",
       "tokens": {
-        "cl100k_base": 50612,
-        "o200k_base": 50994
+        "cl100k_base": 57262,
+        "o200k_base": 57743
       }
     }
   ],
@@ -16416,53 +16470,53 @@
   },
   "units": [
     {
-      "bytes": 6322757,
-      "files": 458,
+      "bytes": 6454123,
+      "files": 459,
       "name": "corpus total",
       "reads": [
         "sk-moneybird-accountant/references"
       ],
-      "sections": 1071,
+      "sections": 1074,
       "tokens": {
-        "cl100k_base": 1941966,
-        "o200k_base": 1817593
+        "cl100k_base": 1984765,
+        "o200k_base": 1857718
       }
     },
     {
-      "bytes": 16155,
+      "bytes": 17783,
       "name": "sk-moneybird-accountant/references/tax-rules/2026/costs-and-car/figures.md",
       "reads": [
         "sk-moneybird-accountant/references/tax-rules/2026/costs-and-car/figures.md"
       ],
       "tokens": {
-        "cl100k_base": 5106,
-        "o200k_base": 4677
+        "cl100k_base": 5626,
+        "o200k_base": 5152
       }
     },
     {
-      "bytes": 8916,
+      "bytes": 9123,
       "name": "sk-moneybird-accountant/references/tax-rules/2026/README.md",
       "reads": [
         "sk-moneybird-accountant/references/tax-rules/2026/README.md"
       ],
       "tokens": {
-        "cl100k_base": 2696,
-        "o200k_base": 2540
+        "cl100k_base": 2749,
+        "o200k_base": 2593
       }
     },
     {
-      "bytes": 34442,
+      "bytes": 35179,
       "name": "sk-moneybird-accountant/SKILL.md",
       "reads": [
         "sk-moneybird-accountant/SKILL.md"
       ],
       "tokens": {
-        "cl100k_base": 9022,
-        "o200k_base": 8904
+        "cl100k_base": 9195,
+        "o200k_base": 9075
       }
     },
     {
-      "bytes": 84345,
+      "bytes": 86180,
       "name": "car route current",
       "reads": [
         "sk-moneybird-accountant/references/tax-rules/2026/README.md",
@@ -16472,20 +16526,20 @@
         "sk-moneybird-accountant/references/tax-rules/2026/costs-and-car/notes.md"
       ],
       "tokens": {
-        "cl100k_base": 26451,
-        "o200k_base": 24618
+        "cl100k_base": 27024,
+        "o200k_base": 25146
       }
     },
     {
-      "bytes": 23495,
+      "bytes": 25330,
       "name": "car route proposed",
       "reads": [
         "sk-moneybird-accountant/references/tax-rules/2026/README.md",
         "sk-moneybird-accountant/references/tax-rules/2026/costs-and-car/figures.md#2-key-figures"
       ],
       "tokens": {
-        "cl100k_base": 7369,
-        "o200k_base": 6794
+        "cl100k_base": 7942,
+        "o200k_base": 7322
       }
     }
   ]

@@ -36,6 +36,40 @@ This file covers the vennootschapsbelasting (corporate income tax, Vpb) for a BV
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Vennootschapsbelasting (corporate income tax) tarief (art. 22 Wet Vpb 1969) | 1 |
+| Rates for a book year that straddles 1 January 2022 (art. 31 Wet Vpb 1969) | 2 |
+| Generieke renteaftrekbeperking (art. 15b lid 1 Wet Vpb 1969) | 3 |
+| Verliesverrekening (art. 20 Wet Vpb 1969) | 4 |
+| Innovatiebox fraction (art. 12b Wet Vpb 1969) | 5 |
+| Innovatiebox forfait (art. 12bd Wet Vpb 1969) | 6 |
+| Innovatiebox smaller taxpayer (art. 12ba lid 2 Wet Vpb 1969) | 7 |
+| Nexus multiplier (art. 12bb Wet Vpb 1969) | 8 |
+| Deelnemingsvrijstelling threshold (art. 13 lid 2 Wet Vpb 1969) | 9 |
+| Fiscale eenheid bezitseis (art. 15 lid 1 Wet Vpb 1969) | 10 |
+| Gebruikelijk loon (customary salary) normbedrag (art. 12a Wet LB 1964) | 11 |
+| Gebruikelijk loon comparable wage | 12 |
+| Gebruikelijk loon floor | 13 |
+| Start-up relief for starters (art. 12a lid 3 and 4 Wet LB 1964) | 14 |
+| Zvw for a DGA | 15 |
+| Zvw route for an uninsured DGA | 16 |
+| Box 2 rate (art. 2.12 Wet IB 2001) | 17 |
+| Dividendbelasting (art. 5 Wet DB 1965) | 18 |
+| Brutering when the company bears the dividendbelasting (art. 6 lid 1 Wet DB 1965) | 19 |
+| Conditionele bronbelasting (art. 4.1 Wet bronbelasting 2021) | 20 |
+| Dividend stripping rule | 21 |
+| Jaarrekening size classes (Boek 2 BW art. 395a, 396, 397) | 22 |
+| Jaarrekening deposit (art. 394 Boek 2 BW) | 23 |
+| Stakingsaftrek (business cessation deduction) (art. 3.79 Wet IB 2001) | 24 |
+| Bewaartermijnen | 25 |
+| Aangifte (return) Vpb deadlines (current Belastingdienst pages, read for the 2025 and 2026 filing seasons) | 26 |
+| Geruisloze omzetting (art. 3.65 Wet IB 2001) | 27 |
+| Btw fiscale eenheid (art. 7 lid 4 Wet OB 1968) | 28 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
 | Vennootschapsbelasting tarief (art. 22 Wet Vpb 1969) | t/m € 245.000 at 15%, above that € 36.750 plus 25% of the part above € 245.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2021-01-01 (art. 22) |

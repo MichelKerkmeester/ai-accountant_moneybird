@@ -36,6 +36,29 @@ This file covers the 2020 box 1 rates, the AOW-age variants, the heffingskorting
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Box 1 rates below AOW age | 1 |
+| Statutory income-tax bands | 2 |
+| Box 1 rates for a full year at AOW age, born on or after 1 January 1946 | 3 |
+| Box 1 rates for a full year at AOW age, born before 1 January 1946 | 4 |
+| First-bracket rate in the year AOW age is reached | 5 |
+| Premie volksverzekeringen (national insurance contribution) ceiling and components | 6 |
+| Tariefsaanpassing (rate adjustment) | 7 |
+| Algemene heffingskorting (general tax credit) (AHK) | 8 |
+| Arbeidskorting (employment tax credit) (AK) | 9 |
+| Inkomensafhankelijke combinatiekorting (IACK) | 10 |
+| IACK child and co-parent conditions | 11 |
+| Payout of unused heffingskortingen to a lower-earning partner | 12 |
+| Tax and premium parts of heffingskortingen | 13 |
+| Business profit flow into box 1 | 14 |
+| Ondernemersaftrek (entrepreneur deduction) and MKB-winstvrijstelling (SME profit exemption) | 15 |
+| Urencriterium (hours criterion) | 16 |
+| Oudedagsreserve (old-age reserve) addition | 17 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 1 rates below AOW age | 37,35% up to € 68.507, then 49,50% above | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/belastingberekening, URL not supplied in checked material. [https://wetten.overheid.nl/BWBR0011353/2020-01-01, art. 2.10](https://wetten.overheid.nl/BWBR0011353/2020-01-01) |

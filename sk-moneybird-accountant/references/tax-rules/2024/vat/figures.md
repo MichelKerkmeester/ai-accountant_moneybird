@@ -36,6 +36,51 @@ This reference covers VAT for a Dutch sole trader, including a sole trader who m
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Standard VAT rate | 1 |
+| Reduced VAT rate | 2 |
+| Zero rate | 3 |
+| Logies | 4 |
+| Solar panels on or near homes | 5 |
+| VAT exemptions | 6 |
+| Input VAT on zero-rated and exempt supplies | 7 |
+| Conditions for 0% intra-EU goods supply | 8 |
+| KOR turnover ceiling | 9 |
+| KOR turnover test year | 10 |
+| KOR territorial eligibility | 11 |
+| KOR notice, minimum participation and re-entry | 12 |
+| KOR without prior VAT registration notice | 13 |
+| KOR investment-goods adjustment | 14 |
+| Transition to the 2025 KOR | 15 |
+| Normal VAT return period | 16 |
+| Possible monthly-period trigger | 17 |
+| Yearly VAT return conditions | 18 |
+| Periodic return and payment term | 19 |
+| Published calendar of 2024 VAT dates | 20 |
+| Invoice issue deadline | 21 |
+| Simplified invoice | 22 |
+| BUA threshold and own contribution | 23 |
+| BUA commuting bicycle exception | 24 |
+| BUA staff meals | 25 |
+| Private-use car adjustment | 26 |
+| Suppletie correction period and timing | 27 |
+| Suppletie small-correction boundary | 28 |
+| New 8-week suppletie term | 29 |
+| Reverse charge for specified electronics | 30 |
+| Reverse-charge legal provisions | 31 |
+| ICP goods threshold and frequency | 32 |
+| ICP deadlines and filing limits | 33 |
+| Call-off stock | 34 |
+| EU distance-sales threshold | 35 |
+| Voluntary foreign VAT below the EU distance-sales threshold | 36 |
+| OSS and import scheme | 37 |
+| National B2B e-invoicing duty | 38 |
+| EU KOR | 39 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
 | Standard VAT rate | 21% | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2024-01-01 |

@@ -1,6 +1,7 @@
 ---
 title: Moneybird migration reference index
 description: Execution-order route to all migration phases and shared controls.
+nav_label: "Moneybird migration reference index"
 trigger_phrases:
   - moneybird migration phase
   - Jortt to Moneybird

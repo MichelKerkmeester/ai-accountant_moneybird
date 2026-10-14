@@ -36,6 +36,33 @@ Box 3 for 2026 taxes a fictitious return on savings and investments under the Ov
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Heffingsvrij vermogen (tax-free allowance) | 1 |
+| Schuldendrempel (debt threshold) | 2 |
+| Box 3 tarief | 3 |
+| Bank percentage | 4 |
+| Other-assets percentage | 5 |
+| Debt percentage | 6 |
+| Vrijstelling groene beleggingen (green investment exemption) | 7 |
+| Korting groene beleggingen (green investment credit) | 8 |
+| Own use real estate, fixed method | 9 |
+| WOZ peildatum for the fixed method | 10 |
+| Own use real estate start date | 11 |
+| Voorlopige aanslag 2026 | 12 |
+| Aandeel rounding | 13 |
+| Wet werkelijk rendement status | 14 |
+| Indexation factor 2026 special | 15 |
+| First Belastingplan 2026 proposal | 16 |
+| Final 2026 bank and debt percentages | 17 |
+| Actual-return reporting 2026 | 18 |
+| Wet tegenbewijsregeling box 3 dates | 19 |
+| Actual-return documents deadline | 20 |
+| Peildatumarbitrage window | 21 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
 | Heffingsvrij vermogen | € 59.357 per person, € 118.714 with fiscal partner | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen https://wetten.overheid.nl/BWBR0011353/2026-01-01 |

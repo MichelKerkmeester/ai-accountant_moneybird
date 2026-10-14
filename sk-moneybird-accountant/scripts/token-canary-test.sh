@@ -624,6 +624,28 @@ else
     fail "a depth-agnostic walk counts a nested reference file once"
 fi
 
+group "unrecorded fence"
+# WHY: a fence body the measurement cannot parse produced no row, so the
+# value comparison is vacuous. The check must name the fence instead.
+FENCE_REPO="$TMP_ROOT/fence-repo"
+mkdir -p "$FENCE_REPO/sk-moneybird-accountant"
+cp -R "$SKILL_SRC/." "$FENCE_REPO/sk-moneybird-accountant/"
+printf '\n<!-- GENERATED:nav:start -->\n<!-- GENERATED:nav:end -->\n' \
+    >>"$FENCE_REPO/sk-moneybird-accountant/references/README.md"
+if TIKTOKEN_CACHE_DIR="$CACHE_DIR" python3 -I "$FENCE_REPO/sk-moneybird-accountant/scripts/token-baseline.py" >"$TMP_ROOT/out.txt" 2>&1; then
+    pass "the fence fixture writes a baseline"
+else
+    fail "the fence fixture writes a baseline"
+fi
+TIKTOKEN_CACHE_DIR="$CACHE_DIR" python3 -I "$FENCE_REPO/sk-moneybird-accountant/scripts/token-baseline.py" --check >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+show_output
+if [[ "$status" -eq 1 ]] && grep -q 'fence not recorded sk-moneybird-accountant/references/README.md nav' "$TMP_ROOT/out.txt"; then
+    pass "a fence with no recorded row fails the check by name"
+else
+    fail "a fence with no recorded row fails the check by name"
+fi
+
 group "real tree"
 python3 -I "$BASELINE_PY" --check >"$TMP_ROOT/out.txt" 2>&1
 status=$?

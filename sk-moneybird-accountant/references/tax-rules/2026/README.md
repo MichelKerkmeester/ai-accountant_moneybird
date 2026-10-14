@@ -1,6 +1,7 @@
 ---
 title: "Tax year 2026"
 description: "Overview of Dutch tax year 2026 for a ZZP sole trader who may also own a BV: the twelve topic files, their headline figures and how many values are open."
+nav_label: "Tax year 2026"
 trigger_phrases:
   - "tax year 2026"
   - "belastingjaar 2026"
@@ -35,7 +36,7 @@ Across the twelve topic files the figures tables hold 322 values: 299 Verified, 
 | [vat](vat/figures.md) | This file covers Dutch VAT rates, schemes, returns, invoicing and bookkeeping for tax year 2026. | 59 | 4 | 7 |
 | [income-tax](income-tax/figures.md) | Covers the 2026 box 1 brackets, heffingskortingen, tariefsaanpassing and the route from business profit to taxable income. | 29 | 1 | 0 |
 | [health-insurance-contribution](health-insurance-contribution/figures.md) | The income-dependent Zvw contribution for an entrepreneur in tax year 2026: the 4,85% aanslag rate, the maximum bijdrage-inkomen of € 79.409, who pays by aanslag and how the 6,10% werkgeversheffing differs. | 9 | 2 | 2 |
-| [business-deductions](business-deductions/figures.md) | Ondernemersaftrek and MKB-winstvrijstelling for a sole trader in tax year 2026, covering the urencriterium, zelfstandigenaftrek, startersaftrek, meewerkaftrek, S&O aftrek, stakingsaftrek, the profit exemption and the tariefsaanpassing. | 21 | 0 | 0 |
+| [business-deductions](business-deductions/figures.md) | Ondernemersaftrek (entrepreneur deduction) and MKB-winstvrijstelling (SME profit exemption) for a sole trader in tax year 2026, covering the urencriterium, zelfstandigenaftrek, startersaftrek, meewerkaftrek, S&O aftrek, stakingsaftrek, the profit exemption and the tariefsaanpassing. | 21 | 0 | 0 |
 | [investments](investments/figures.md) | KIA, EIA, MIA, Vamil, willekeurige afschrijving, ordinary depreciation and the desinvesteringsbijtelling for tax year 2026. | 16 | 2 | 1 |
 | [costs-and-car](costs-and-car/figures.md) | Business costs, mixed costs, study costs, home workspace, fines and car rules for a Dutch sole trader or BV in tax year 2026. | 36 | 0 | 0 |
 | [box-3](box-3/figures.md) | Fictitious box 3 return on savings and investments for tax year 2026, including the 2026 percentages, the heffingsvrij vermogen, the schuldendrempel, green investments and the optional actual-return report. | 21 | 0 | 3 |
@@ -61,23 +62,23 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Inkomstenbelasting box 1 | Box 1 at AOW age, born on or after 1 January 1946 | 17,85% up to € 38.883, 37,56% to € 78.426, 49,50% above | enacted | Verified |
 | Zvw-bijdrage | Inkomensafhankelijke bijdrage Zvw by (voorlopige) aanslag, rate | 4,85% | enacted | Verified |
 | Zvw-bijdrage | Maximum bijdrage-inkomen per person per year | € 79.409 | enacted | Verified |
-| Ondernemersaftrek en MKB-winstvrijstelling | Urencriterium | 1.225 hours | enacted | Verified |
+| Ondernemersaftrek (entrepreneur deduction) en MKB-winstvrijstelling (SME profit exemption) | Urencriterium (hours criterion) | 1.225 hours | enacted | Verified |
 | Ondernemersaftrek en MKB-winstvrijstelling | Second test waived, lookback | not an ondernemer in 1 or more of 2021 to 2025 | enacted | Verified |
 | Investeringsaftrek en afschrijving | Kleinschaligheidsinvesteringsaftrek (KIA), table | nil up to € 2.900, 28% of the investment up to € 71.683, fixed € 20.072 up to € 132.746, € 20.072 minus 7,56% of the part above € 132.746 up to € 398.236, nil above € 398.236. Belastingdienst window: "moet u een bedrag tussen € 2.901 en € 398.236 investeren" | enacted | Verified |
 | Investeringsaftrek en afschrijving | KIA per-asset minimum | € 450 | enacted | Verified |
 | Kosten en auto | Gemengde kosten drempel | € 5.700 per year | enacted | Verified |
 | Kosten en auto | Gemengde kosten keuze | 80% aftrekbaar in plaats van de drempel, also for resultaatgenieters | enacted | Verified |
-| Box 3 sparen en beleggen | Heffingsvrij vermogen | € 59.357 per person, € 118.714 with fiscal partner | enacted | Verified |
-| Box 3 sparen en beleggen | Schuldendrempel | € 3.800 per person, € 7.600 with whole-year partner | enacted | Verified |
+| Box 3 sparen en beleggen | Heffingsvrij vermogen (tax-free allowance) | € 59.357 per person, € 118.714 with fiscal partner | enacted | Verified |
+| Box 3 sparen en beleggen | Schuldendrempel (debt threshold) | € 3.800 per person, € 7.600 with whole-year partner | enacted | Verified |
 | Box 2 en aanmerkelijk belang | Box 2 bracket 1 | 24,5% up to € 68.843 | enacted | Verified |
 | Box 2 en aanmerkelijk belang | Tax at the top of bracket 1 | € 16.866 | enacted | Verified |
 | BV en vennootschapsbelasting | Vpb-tarief, eerste schijf | 19,0% over het belastbare bedrag tot en met € 200.000 | enacted | Verified |
 | BV en vennootschapsbelasting | Vpb-tarief, boven de eerste schijf | € 38.000 plus 25,8% van het deel boven € 200.000 | enacted | Verified |
-| Pensioen, lijfrente en AOV | Jaarruimte percentage | 30% | enacted | Verified |
+| Pensioen, lijfrente en AOV | Jaarruimte (annual allowance) percentage | 30% | enacted | Verified |
 | Pensioen, lijfrente en AOV | Aftoppingsgrens premiegrondslag | € 137.800 | enacted | Verified |
 | Arbeidsrelatie en zelfstandigheid | Wet DBA and the loondienst test | Wet van 3 februari 2016, in force 1 May 2016, replaced the VAR. Loondienst has three elements: the possibility of werkgeversgezag, the duty to perform (persoonlijke) arbeid, and pay for the work. Courts weigh the nature and duration of the work, how work and working hours are set, embedding in the organisation, the duty to work personally, how the agreements were made, how pay is set and paid and its level, commercial risk, and how far the opdrachtnemer acts or can act as an entrepreneur. | enacted | Verified |
 | Arbeidsrelatie en zelfstandigheid | Fictieve dienstbetrekkingen and the opt-out | The loondienst page lists aannemers van werk and helpers, agenten, artiesten and beroepssporters, gelijkgestelden (usually 2 or more days a week for the same client and at least 2/5 of the minimum wage), stagiairs, thuiswerkers and opdrachtnemers working through an intermediair. Thuiswerkers, gelijkgestelden and artiesten can be excluded in writing in the contract before the first payment of pay. The opdrachtnemer then has no entitlement to ZW, WIA and WW. | enacted | Verified |
-| Aangifte en procedure | Aangifte inkomstenbelasting 2026, uiterste datum | Not published on 2026-10-11, usually 1 May 2027 | unknown | UNVERIFIED |
+| Aangifte (return) en procedure | Aangifte inkomstenbelasting 2026, uiterste datum | Not published on 2026-10-11, usually 1 May 2027 | unknown | UNVERIFIED |
 | Aangifte en procedure | Start van het aangiftetijdvak inkomstenbelasting | 1 March | enacted | Verified |
 <!-- GENERATED:headline-figures:end -->
 

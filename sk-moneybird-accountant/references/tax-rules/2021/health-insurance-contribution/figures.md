@@ -36,6 +36,19 @@ This file covers only the income-dependent Zvw contribution (inkomensafhankelijk
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Zvw bijdrage by (voorlopige) aanslag | 1 |
+| Ingehouden Zvw bijdrage | 2 |
+| Maximum bijdrage-inkomen | 3 |
+| Zvw werkgeversheffing | 4 |
+| Zvw base for winst uit onderneming | 5 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 6 |
+| MKB-winstvrijstelling (SME profit exemption) | 7 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
 | Zvw bijdrage by (voorlopige) aanslag | 5,75% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet |

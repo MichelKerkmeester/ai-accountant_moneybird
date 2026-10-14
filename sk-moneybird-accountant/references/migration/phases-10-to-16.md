@@ -1,6 +1,7 @@
 ---
 title: Migration phases 10 to 16
 description: Annual checks, continuity, locking, and cutover preparation.
+nav_label: "Migration phases 10 to 16"
 trigger_phrases:
   - Jortt to Moneybird migration
   - migration phase gate and exit criteria

@@ -36,6 +36,30 @@ Tax year 2027 is the second calendar year in which the normal enforcement rules 
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Wet DBA | 1 |
+| Loondienst test | 2 |
+| Opt-out fictieve dienstbetrekking | 3 |
+| Enforcement from 1 January 2025 | 4 |
+| Ingroeimodel 2027 | 5 |
+| DBA boetebeleid 2027 | 6 |
+| Regular handhaving | 7 |
+| Separate 2027 handhavingsplan | 8 |
+| Modelovereenkomsten, end of assessment | 9 |
+| Modelovereenkomsten, condition | 10 |
+| VBAR entry into force | 11 |
+| VBAR statutory rule | 12 |
+| VBAR hourly amount, base and indexation | 13 |
+| VBAR hourly amount 2027 | 14 |
+| VBAR first-application regulation | 15 |
+| BAZ status | 16 |
+| BAZ content per docket | 17 |
+| Zelfstandigenwet | 18 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
 | Wet DBA | Wet van 3 februari 2016, in force 1 May 2016, replaced the VAR | enacted | Verified | https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file |

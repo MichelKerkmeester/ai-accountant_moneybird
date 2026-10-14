@@ -1,3 +1,15 @@
+---
+title: "Moneybird Accountant Bootstrap"
+description: "Project bootstrap for the Dutch sole-trader bookkeeping and Jortt to Moneybird migration system: the boundaries, the skill reading order, the core workflow, the privacy rules, the CLI and write authority and the completion style."
+nav_label: "Bootstrap"
+trigger_phrases:
+  - "moneybird accountant bootstrap"
+  - "bookkeeping and migration rules"
+importance_tier: important
+contextType: bootstrap
+version: 1.0.0.0
+---
+
 # 1. Critical context override
 
 > This folder is a Dutch sole-trader bookkeeping and migration system. Read this bootstrap before any request, then use its named skill as the executable contract.
@@ -33,11 +45,11 @@ Read sk-moneybird-accountant/SKILL.md before processing any bookkeeping or migra
 
 ## Step 2: Load routed references
 
-Classify the request with the Task-Type Table in `sk-moneybird-accountant/SKILL.md` section 2 and read only what its row names.
+Classify the request with the [Task-Type Table](sk-moneybird-accountant/SKILL.md#task-type-table) in `sk-moneybird-accountant/SKILL.md` and read only what its row names.
 
 Do not bulk-read the entire reference set.
 
-For a figure question, read the year README first, then the topic's `figures.md` part at `#2-key-figures`, its KEY FIGURES section, and load the other parts only for the mechanics. For a cross-year rule question, read section 3 of the cross-year rules file the T6 row names, then only the one general topic file its table names.
+For a figure question, read the year README first, then the topic's `figures.md` part at `#2-key-figures`, its KEY FIGURES section, and load the other parts only for the mechanics. For a cross-year rule question, read [section 3](sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md#3-general-rules) of the cross-year rules file the T6 row names, then only the one general topic file its table names.
 
 ---
 
@@ -89,7 +101,7 @@ For unclear tax, VAT, ownership, asset, or private-use treatment, prepare the ev
 - Do not reproduce CLI commands, credentials, or tool mechanics in this skill.
 - Do not submit or file any return. The operator owns filing and payment.
 - Do not write to Moneybird unless the migration plan's gate has passed and the operator approved the write. Every write runs in the writer session through `moneybird-guard` with `--confirm-write` and `--approval <ref>` for a flushed `WRITE_INTENT` that carries the `payload_digest`, and `--production` only for an approved production batch. The gate tokens, the evidence rule, the idempotency rule and the exit set are in the [write contract](sk-moneybird-accountant/references/migration/shared-mechanisms.md#route-contract).
-- LIVE write authority: outside the LIVE workflows of migration phases 19 to 21, Moneybird writes are UI-only for the Operator. See `sk-moneybird-accountant/SKILL.md` section 3.
+- LIVE write authority: outside the LIVE workflows of migration phases 19 to 21, Moneybird writes are UI-only for the Operator. See [LIVE write authority](sk-moneybird-accountant/SKILL.md#live-write-authority).
 - Never set `MONEYBIRD_GUARD_TEST=1`. It exists for the offline test suite only.
 - When a CLI action is unavailable or a tool skill does not support it, stop and report the limit. An administration fact (a record, a period total, a balance, an effective rate, a report figure) is never answered from memory or from a reference when the required CLI read is unavailable or failed, and the answer then says blocked and names the missing capability.
 

@@ -36,6 +36,45 @@ This file covers the Dutch vennootschapsbelasting (Vpb, corporate income tax) fo
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Vpb rate (art. 22 Wet Vpb 1969) | 1 |
+| Art. 31 apportionment for a book year straddling 1 January 2023 | 2 |
+| Verliesverrekening (art. 20 Wet Vpb 1969) | 3 |
+| Generieke renteaftrekbeperking percentage (art. 15b lid 1 Wet Vpb 1969) | 4 |
+| Generieke renteaftrekbeperking threshold (art. 15b lid 1 Wet Vpb 1969) | 5 |
+| Innovatiebox (art. 12b to 12bd Wet Vpb 1969) | 6 |
+| Deelneming threshold (art. 13 lid 2 Wet Vpb 1969) | 7 |
+| Fiscale eenheid bezitseis (art. 15 Wet Vpb 1969) | 8 |
+| Gebruikelijk loon (customary salary) normbedrag (art. 12a Wet LB 1964) | 9 |
+| Gebruikelijk loon comparable wage | 10 |
+| Gebruikelijk loon minimum floor | 11 |
+| Start-up relief | 12 |
+| Bijdrage Zvw | 13 |
+| Maximum bijdrage-inkomen | 14 |
+| Werkgeversheffing Zvw (employer health insurance contribution) (insured DGA) | 15 |
+| Box 2 rate (art. 2.12 Wet IB 2001) | 16 |
+| Dividendbelasting (Wet DB 1965) | 17 |
+| Deelnemingsdividend and beleggingsdividend | 18 |
+| Inkoop van eigen aandelen | 19 |
+| Conditionele bronbelasting (Wet bronbelasting 2021) | 20 |
+| Dividend stripping rule | 21 |
+| Jaarrekening size thresholds | 22 |
+| Jaarrekening deposit | 23 |
+| Stakingsaftrek (business cessation deduction) (ruisende inbreng) | 24 |
+| Willekeurige afschrijving (random depreciation) 2023 | 25 |
+| Vpb return and extension | 26 |
+| Administratieplicht and bewaartermijn | 27 |
+| Geruisloze omzetting (art. 3.65 Wet IB 2001) | 28 |
+| Besluit geruisloze omzetting 2025 | 29 |
+| Request timing for art. 3.65 | 30 |
+| BTW for a BV | 31 |
+| DGA salary, loonheffing, werknemersverzekeringen and Zvw | 32 |
+| Fiscale eenheid policy decision 2022 | 33 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
 | Vpb rate (art. 22 Wet Vpb 1969) | First bracket t/m € 200.000 at 19%. Above that € 38.000 plus 25,8% | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2023-01-01 |

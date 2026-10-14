@@ -37,6 +37,27 @@ This file covers box 3 (sparen en beleggen, savings and investments) for the 202
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| System | 1 |
+| Box 3 tarief (rate) | 2 |
+| Heffingsvrij vermogen (tax-free allowance) (tax-free allowance) | 3 |
+| Schuldendrempel (debt threshold) (debt threshold) | 4 |
+| Category percentages | 5 |
+| Aandeel rounding | 6 |
+| Vrijstelling groene beleggingen (green investment exemption) (green investment exemption) | 7 |
+| Korting groene beleggingen (green investment credit) (green investment credit) | 8 |
+| Tegenbewijsregeling start | 9 |
+| Form and six-week rule | 10 |
+| Actual-return reporting 2023 | 11 |
+| Peildatumarbitrage rule (art. 5.24) | 12 |
+| Floor on a negative return | 13 |
+| Persoonsgebonden aftrek (personal deductions) after a 2023 recalculation | 14 |
+| Wet rechtsherstel scope | 15 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
 | System | category method of the Overbruggingswet box 3, in force 1 January 2023 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2022-534.html |

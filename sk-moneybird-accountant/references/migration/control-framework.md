@@ -1,6 +1,7 @@
 ---
 title: Migration control framework
 description: Agent roles, risk and verification rules, exception controls, stop recovery, dashboard, and completion.
+nav_label: "Migration control framework"
 trigger_phrases:
   - moneybird migration control
   - migration exception and stop recovery

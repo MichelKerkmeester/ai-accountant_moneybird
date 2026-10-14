@@ -37,6 +37,41 @@ Pensioen, lijfrente en AOV 2020 covers the deduction of lijfrentepremies (annuit
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Jaarruimte (annual allowance) percentage | 1 |
+| Maximum jaarruimte | 2 |
+| Aftoppingsgrens premiegrondslag | 3 |
+| Franchise premiegrondslag | 4 |
+| Factor A multiplier | 5 |
+| Age window jaarruimte | 6 |
+| Look-back window reserveringsruimte | 7 |
+| Reserveringsruimte (reserve room) percentage cap | 8 |
+| Reserveringsruimte maximum, younger group | 9 |
+| Reserveringsruimte maximum, older group | 10 |
+| Oudedagslijfrente, uiterste start | 11 |
+| Lijfrenterekening or lijfrentebeleggingsrecht, minimum looptijd | 12 |
+| Nabestaandenlijfrente, uiterste looptijd | 13 |
+| Tijdelijke oudedagslijfrente cap | 14 |
+| Tijdelijke oudedagslijfrente above the cap | 15 |
+| Overbruggingslijfrente cap | 16 |
+| Stakingswinst maximum, tier a | 17 |
+| Stakingswinst maximum, tier b | 18 |
+| Stakingswinst maximum, tier c | 19 |
+| Afkoop kleine lijfrente | 20 |
+| Afkoop cap bij langdurige arbeidsongeschiktheid | 21 |
+| FOR toevoeging | 22 |
+| Lijfrente (annuity) ingangsdatum termijn | 23 |
+| Nabestaandenlijfrente termijn | 24 |
+| Payment deadline FOR or stakingswinst conversion | 25 |
+| AOV premium with periodic uitkeringen | 26 |
+| AOV premium with a lump-sum payout | 27 |
+| Mandatory beroepspensioen premium | 28 |
+| Refund of a deducted premium | 29 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
 | Jaarruimte percentage | 13,3% of the premiegrondslag | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 (art. 3.127 lid 1) |

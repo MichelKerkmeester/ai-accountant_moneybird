@@ -36,6 +36,21 @@ This file covers the income-dependent Zvw contribution (bijdrage Zvw, the health
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Bijdrage Zvw bij (voorlopige) aanslag | 1 |
+| Maximum bijdrage-inkomen Zvw | 2 |
+| Werkgeversheffing Zvw (employer health insurance contribution) | 3 |
+| Grondslag voor de winst uit onderneming | 4 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 5 |
+| MKB-winstvrijstelling (SME profit exemption) | 6 |
+| Inkomsten in de aanslag Zvw | 7 |
+| Maximum per person | 8 |
+| Zvw and AOW age | 9 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
 | Bijdrage Zvw bij (voorlopige) aanslag | 5,32% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet |

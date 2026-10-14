@@ -34,7 +34,7 @@ import argparse
 import os
 import re
 import sys
-from typing import Dict, Iterator, List, NoReturn, Set, Tuple
+from typing import Dict, Iterator, List, NoReturn, Optional, Set, Tuple
 
 # ───────────────────────────────────────────────────────────────
 # 2. CONFIGURATION
@@ -92,6 +92,34 @@ SPLIT_TOPIC_SECTIONS = {
 }
 
 Problem = Tuple[str, int, str, str]
+
+# WHY: a section that opens with a positional reference hands back text whose
+# referent sits elsewhere, so the count is reported beside the link findings.
+# The lint counts against a threshold and rewrites nothing, because a
+# mechanical rewrite can drop the referent the sentence needs.
+POSITIONAL_WINDOW = 220
+POSITIONAL_THRESHOLD_PERCENT = 15
+POSITIONAL_MARKERS = (
+    "below",
+    "above",
+    "following",
+    "this section",
+    "this file",
+    "this page",
+    "as follows",
+    "hieronder",
+    "hierboven",
+    "onderstaand",
+    "onderstaande",
+    "bovenstaand",
+    "bovenstaande",
+    "volgende",
+    "deze sectie",
+    "dit bestand",
+    "deze pagina",
+    "verderop",
+)
+H2_RE = re.compile(r"^##\s+\S")
 
 # ───────────────────────────────────────────────────────────────
 # 3. HELPERS
@@ -432,7 +460,94 @@ def check_section_ids(
 
 
 # ───────────────────────────────────────────────────────────────
-# 6. REPORT
+# 6. POSITIONAL OPENING LINT
+# ───────────────────────────────────────────────────────────────
+
+def positional_openings(path: str) -> Tuple[int, int]:
+    """Count the sections of one file that open with a positional reference.
+
+    A section starts on its H2 heading line. Its opening is the text up to
+    the window limit, with the heading, the anchor lines and the blank lines
+    left out. A marker matches on a word boundary, without case.
+
+    Args:
+        path: Absolute path of the markdown file.
+
+    Returns:
+        A pair of the sections that open with a positional reference and the
+        sections counted.
+    """
+    sections = 0
+    positional = 0
+    opening: Optional[str] = None
+    for _, line in visible_lines(path):
+        if H2_RE.match(line):
+            if opening is not None:
+                sections += 1
+                if opening_matches(opening):
+                    positional += 1
+            opening = ""
+            continue
+        if opening is None:
+            continue
+        stripped = line.strip()
+        if not stripped or stripped.startswith("<a ") or stripped.startswith("<!--"):
+            continue
+        if len(opening) < POSITIONAL_WINDOW:
+            opening += " " + stripped
+    if opening is not None:
+        sections += 1
+        if opening_matches(opening):
+            positional += 1
+    return positional, sections
+
+
+def opening_matches(opening: str) -> bool:
+    """Tell whether one section opening carries a positional reference.
+
+    Args:
+        opening: Text of the section opening, markers included.
+
+    Returns:
+        True when one marker occurs on a word boundary.
+    """
+    lowered = opening.lower()
+    for marker in POSITIONAL_MARKERS:
+        start = 0
+        while True:
+            index = lowered.find(marker, start)
+            if index == -1:
+                break
+            before = lowered[index - 1] if index > 0 else " "
+            after_index = index + len(marker)
+            after = lowered[after_index] if after_index < len(lowered) else " "
+            if not before.isalnum() and not after.isalnum():
+                return True
+            start = index + 1
+    return False
+
+
+def positional_report(root: str) -> Tuple[int, int]:
+    """Count the positional openings of the whole corpus.
+
+    Args:
+        root: Repository root.
+
+    Returns:
+        A pair of the sections that open with a positional reference and the
+        sections counted.
+    """
+    positional = 0
+    sections = 0
+    for path in markdown_files(root):
+        file_positional, file_sections = positional_openings(path)
+        positional += file_positional
+        sections += file_sections
+    return positional, sections
+
+
+# ───────────────────────────────────────────────────────────────
+# 7. REPORT
 # ───────────────────────────────────────────────────────────────
 
 def check(root: str) -> Tuple[int, int, List[Problem]]:
@@ -505,6 +620,12 @@ def main(argv: List[str]) -> int:
         len(problems),
     )
     print(summary)
+    positional, sections = positional_report(root)
+    percent = (100 * positional / sections) if sections else 0
+    print(
+        "check-fragments: positional openings %d of %d sections (threshold %d%%, measured %.1f%%)"
+        % (positional, sections, POSITIONAL_THRESHOLD_PERCENT, percent)
+    )
     return 1 if problems else 0
 
 

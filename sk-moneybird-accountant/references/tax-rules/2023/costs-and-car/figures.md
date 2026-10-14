@@ -36,6 +36,44 @@ This file covers the deduction of business costs (zakelijke kosten) and the car 
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Gemengde kosten drempel (art. 3.15 lid 1) | 1 |
+| Keuze in plaats van de drempel (art. 3.15 lid 5) | 2 |
+| Kosten met een gemengd karakter | 3 |
+| Reis- en verblijfkosten congressen, cursussen en studiereizen (art. 3.16 lid 2 f en lid 8) | 4 |
+| Kilometervergoeding (mileage allowance) privé of gehuurd vervoermiddel (art. 3.15 lid 6 en art. 3.17 lid 1 b) | 5 |
+| Openbaar vervoer, taxi en vliegtuig, zakelijk | 6 |
+| Verhuiskosten (art. 3.17 lid 1 a) | 7 |
+| Dubbele huisvesting buiten de woonplaats (art. 3.17 lid 1 a) | 8 |
+| Bijtelling (private-use addition) auto, standaard (art. 3.20 lid 1 a) | 9 |
+| Auto met eerste toelating tot en met 31 december 2016 (art. 10a.4) | 10 |
+| Youngtimer (art. 3.20 lid 1 b) | 11 |
+| Zero-emissieauto, eerste toelating 2023 (art. 3.20 lid 2) | 12 |
+| Vast percentage vanaf eerste toelating (art. 3.20 lid 11) | 13 |
+| 500 km regel privégebruik auto (art. 3.20 lid 1) | 14 |
+| Bijtelling fiets (art. 3.20a) | 15 |
+| Studiekostenaftrek, persoonsgebonden | 16 |
+| Prestatiebeurs cap, mbo | 17 |
+| Prestatiebeurs cap, hbo of wo | 18 |
+| Drempel in de prestatiebeurszaak | 19 |
+| STAP-budget (art. 7) | 20 |
+| STAP-aanvraagvensters | 21 |
+| Werkruimte thuis (home workspace) (art. 3.16 lid 1 en lid 13) | 22 |
+| Telefoonabonnement thuis (art. 3.16 lid 2 a) | 23 |
+| Kleding, literatuur en persoonlijke verzorging (art. 3.16 lid 2 b, c en d) | 24 |
+| Privécomputers en apparatuur (art. 3.16 lid 3) | 25 |
+| Betaling aan de partner (art. 3.16 lid 4) | 26 |
+| Geldboetes en dwangsommen (art. 3.14) | 27 |
+| Bedrijfsmiddel onder € 450 | 28 |
+| Vermogensetikettering bedrijfsmiddelen | 29 |
+| Vermogensetikettering auto | 30 |
+| BTW op de privéauto, jaarcorrectie | 31 |
+| Kostengrondslag en btw | 32 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
 | Gemengde kosten drempel (art. 3.15 lid 1) | € 5.100 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |

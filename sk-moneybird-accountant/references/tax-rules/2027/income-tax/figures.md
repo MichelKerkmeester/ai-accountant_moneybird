@@ -36,6 +36,50 @@ This file covers the box 1 brackets and rates for 2027, the algemene heffingskor
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Box 1 table, enacted text (art. 2.10) | 1 |
+| Box 1 table for people born before 1 January 1946, enacted text (art. 2.10a) | 2 |
+| Premie volksverzekeringen (national insurance contribution), cross-year structure behind the box 1 first bracket | 3 |
+| Tariefsaanpassing (rate adjustment), enacted text (art. 2.10 lid 2) | 4 |
+| Box 1 below AOW age, bill before the Tweede nota van wijziging | 5 |
+| Box 1 below AOW age, bill as amended | 6 |
+| Box 1 for people born before 1 January 1946, bill as amended | 7 |
+| Box 1 for a full year at AOW age, bill | 8 |
+| First bracket rate in the year the AOW age is reached | 9 |
+| No indexation of the box 1 tables at the start of 2027 | 10 |
+| Aftrektarief tariefmaatregel in the bill | 11 |
+| Tariefsaanpassing percentage under the bill | 12 |
+| Algemene heffingskorting (general tax credit), enacted chapter 8 amounts in the 2027 text | 13 |
+| Algemene heffingskorting below AOW age, bill before the Tweede nota van wijziging | 14 |
+| Algemene heffingskorting below AOW age, bill as amended | 15 |
+| Algemene heffingskorting at AOW age, bill before the Tweede nota van wijziging | 16 |
+| Algemene heffingskorting at AOW age, table after the Tweede nota van wijziging | 17 |
+| Algemene heffingskorting, general grant and phase-out base | 18 |
+| Verzamelinkomen | 19 |
+| AHK payout to a minstverdienende partner | 20 |
+| Arbeidskorting (employment tax credit), enacted chapter 8 amounts in the 2027 text | 21 |
+| Arbeidskorting, bill before the Tweede nota van wijziging | 22 |
+| Arbeidskorting, bill as amended | 23 |
+| Arbeidskorting, table structure and arbeidsinkomen base | 24 |
+| Arbeidskorting band income thresholds, build-up percentages and AOW-age table | 25 |
+| Belastingdeel and premiedelen of the heffingskortingen | 26 |
+| IACK phase-down | 27 |
+| IACK, bill as amended | 28 |
+| IACK eligibility, child and co-ouder conditions | 29 |
+| IACK cap income and AOW-age IACK | 30 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 31 |
+| Startersaftrek (starter's deduction), enacted text (art. 3.76) | 32 |
+| Startersaftrek, bill | 33 |
+| MKB-winstvrijstelling (SME profit exemption) | 34 |
+| Meewerkaftrek (meewerkende partner deduction) | 35 |
+| Stakingsaftrek (business cessation deduction) | 36 |
+| Oudedagsreserve (old-age reserve) | 37 |
+| Winst uit onderneming into box 1 | 38 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 1 table, enacted text (art. 2.10) | Income-tax part 8,01% up to € 38.883, € 3.114 plus 37,59% to € 79.569, € 18.407 plus 49,50% above. Before the December indexation, the bill replaces this table | adopted-not-yet-in-force | Verified | https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 2.10 |

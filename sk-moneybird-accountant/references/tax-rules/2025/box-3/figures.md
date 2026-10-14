@@ -36,6 +36,23 @@ Box 3 taxes savings and investments on a fictitious return. In 2025 the category
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Heffingsvrij vermogen (tax-free allowance) | 1 |
+| Box 3 tarief | 2 |
+| Schuldendrempel (debt threshold) | 3 |
+| Bank percentage | 4 |
+| Other-assets percentage | 5 |
+| Debt percentage | 6 |
+| Berekening box 3 inkomen | 7 |
+| Vrijstelling groene beleggingen (green investment exemption) | 8 |
+| Korting groene beleggingen (green investment credit) | 9 |
+| Wet tegenbewijsregeling dates | 10 |
+| Actual-return reporting 2025 | 11 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
 | Heffingsvrij vermogen | € 57.684 per person, € 115.368 with a fiscal partner | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen https://wetten.overheid.nl/BWBR0011353/2025-01-01 |

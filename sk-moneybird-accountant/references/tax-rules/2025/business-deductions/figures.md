@@ -36,6 +36,35 @@ This file covers the ondernemersaftrek (entrepreneur's deductions) and the MKB-w
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| IB-ondernemer status | 1 |
+| Ondernemersaftrek (entrepreneur deduction) parts | 2 |
+| Urencriterium (hours criterion) | 3 |
+| Second test waived, lookback | 4 |
+| Urencriterium, samenwerkingsverband with connected persons | 5 |
+| Urencriterium, pregnancy | 6 |
+| Verlaagd urencriterium | 7 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 8 |
+| Zelfstandigenaftrek at AOW age | 9 |
+| Niet-gerealiseerde zelfstandigenaftrek carry-forward | 10 |
+| Startersaftrek (starter's deduction) | 11 |
+| Startersaftrek at AOW age | 12 |
+| Startersaftrek prior-years condition | 13 |
+| Startersaftrek bij arbeidsongeschiktheid | 14 |
+| Aftrek speur- en ontwikkelingswerk | 15 |
+| S&O starter increase | 16 |
+| MKB-winstvrijstelling (SME profit exemption) | 17 |
+| Meewerkaftrek (meewerkende partner deduction) bands | 18 |
+| Pay to the partner | 19 |
+| Stakingsaftrek (business cessation deduction) | 20 |
+| Oudedagsreserve (old-age reserve) | 21 |
+| Tariefsaanpassing (rate adjustment) | 22 |
+| Maximum value of the ondernemersaftrek and the MKB-winstvrijstelling | 23 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
 | IB-ondernemer status | Separate test per activity, not the same as the btw-ondernemer test | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/wanneer_bent_u_ondernemer_voor_de_inkomstenbelasting/ and https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.4 and 3.5) |

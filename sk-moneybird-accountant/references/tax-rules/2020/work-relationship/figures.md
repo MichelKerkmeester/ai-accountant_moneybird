@@ -38,6 +38,36 @@ The year's law is enacted law on the DBA side plus enforcement policy. The recht
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| DBA enforcement regime | 1 |
+| Second restriction of the moratorium exception | 2 |
+| Moratorium end date set at that time | 3 |
+| Legislative pause | 4 |
+| Case law | 5 |
+| Webmodule status 2020 | 6 |
+| Modelovereenkomsten 2020 | 7 |
+| Belastingrente (tax interest) IB 2020 | 8 |
+| Belastingrente btw 2020 | 9 |
+| Belastingrente on tax year 2020 IB | 10 |
+| IB return 2020 filing deadline | 11 |
+| Belastingrente approval for the 8 May week | 12 |
+| IB return 2020 with uitstel | 13 |
+| Definitive aanslag 2020 latest | 14 |
+| Aanslaggrens and teruggaafgrens 2020 | 15 |
+| Filing without invitation, tax year 2020 | 16 |
+| Verzoek om vermindering aanslag 2020 online | 17 |
+| VAT monthly dates 2020 | 18 |
+| VAT quarterly dates 2020 | 19 |
+| VAT yearly return dates | 20 |
+| Btw aangifteverzuimboete 2020 | 21 |
+| IB boetes 2020 | 22 |
+| Bewaarplicht (record-keeping duty) 2020 | 23 |
+| Payment terms 2020 | 24 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
 | DBA enforcement regime | Handhavingsmoratorium in force, aanwijzing route, only kwaadwillenden directly corrected | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving |

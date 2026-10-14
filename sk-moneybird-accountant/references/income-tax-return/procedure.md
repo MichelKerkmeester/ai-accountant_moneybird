@@ -1,6 +1,7 @@
 ---
 title: Income tax return preparation procedure
 description: The ordered cross-year procedure to prepare one Dutch sole-trader income tax return from Moneybird for Operator review. Steps 1 to 12 with their owner tags, the source map, the evidence gates, the review pack differences, the stop rules and the residual risk list.
+nav_label: "Income tax return preparation procedure"
 trigger_phrases:
   - income tax return procedure
   - aangifte inkomstenbelasting stappen

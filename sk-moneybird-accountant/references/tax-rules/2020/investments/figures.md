@@ -36,6 +36,34 @@ This file covers the investment deductions and depreciation rules of tax year 20
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| KIA table, art. 3.41 lid 2 | 1 |
+| KIA in a samenwerkingsverband, art. 3.41 lid 3 | 2 |
+| KIA per-asset minimum and KIA-only exclusion, art. 3.45 lid 2 | 3 |
+| Excluded assets for every investeringsaftrek, art. 3.45 lid 1, lid 3 and lid 5 | 4 |
+| EIA and MIA per-asset minimum and exclusions, art. 3.45 lid 4 | 5 |
+| EIA and MIA maximum investment amount, art. 3.42 lid 4 | 6 |
+| EIA percentage, art. 3.42 lid 3 | 7 |
+| MIA percentages, art. 3.42a lid 3 | 8 |
+| New-asset condition for the EIA and the MIA | 9 |
+| Combination rules for the EIA, MIA, Vamil and KIA | 10 |
+| MIA and Vamil maximum per bedrijfsmiddel and per applicant per year, RVO | 11 |
+| Vamil, art. 3.31 lid 1 | 12 |
+| RVO notification deadline for the EIA, MIA and Vamil | 13 |
+| Payment cap for an asset not yet in use, art. 3.44 | 14 |
+| Excluded obligations, art. 3.46 | 15 |
+| Ordinary depreciation caps, art. 3.30 lid 2 | 16 |
+| Bodemwaarde, art. 3.30a lid 3 | 17 |
+| Desinvesteringsbijtelling (disinvestment addition) threshold, art. 3.47 lid 1 | 18 |
+| Desinvesteringsbijtelling term and undoing, art. 3.47 lid 2 and lid 6 | 19 |
+| Starters willekeurige afschrijving yearly cap, URWA art. 8 | 20 |
+| Starters willekeurige afschrijving conditions, URWA art. 7, 9 and 12 | 21 |
+| Temporary willekeurige afschrijving | 22 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 The 2020 values. Status and Check follow the checked material.
 
 | Item | Value 2020 | Status | Check | Source |

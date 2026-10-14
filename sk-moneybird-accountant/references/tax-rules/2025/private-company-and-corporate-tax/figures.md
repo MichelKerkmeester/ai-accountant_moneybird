@@ -37,6 +37,48 @@ This file covers the BV (besloten vennootschap, private limited company) and the
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Vpb tarief (art. 22 Wet Vpb 1969) | 1 |
+| Verliesverrekening (art. 20 Wet Vpb 1969) | 2 |
+| Generieke renteaftrekbeperking (art. 15b Wet Vpb 1969) | 3 |
+| Innovatiebox (art. 12b tot 12bd Wet Vpb 1969) | 4 |
+| Innovatiebox forfait (art. 12bd Wet Vpb 1969) | 5 |
+| Innovatiebox smaller taxpayer (art. 12ba lid 2 Wet Vpb 1969) | 6 |
+| Innovatieboxbesluit 2025 | 7 |
+| Deelneming (art. 13 Wet Vpb 1969) | 8 |
+| Fiscale eenheid (art. 15 Wet Vpb 1969) | 9 |
+| Gebruikelijk loon (customary salary) (art. 12a Wet LB 1964) | 10 |
+| Connected body (Handboek Loonheffingen 2025) | 11 |
+| Start-up transitional right | 12 |
+| Lower wage for a starting company | 13 |
+| Zvw bedragen 2025 | 14 |
+| Zvw route for an uninsured DGA | 15 |
+| Box 2 (art. 2.12 Wet IB 2001) | 16 |
+| Dividendbelasting (art. 5 Wet DB 1965) | 17 |
+| Dividendbelasting aangifte en betaling | 18 |
+| Inkoop van eigen aandelen | 19 |
+| Dividend stripping rule | 20 |
+| Conditionele bronbelasting tarief | 21 |
+| Conditionele bronbelasting scope | 22 |
+| Besluit geruisloze omzetting | 23 |
+| Rounding credit geruisloze omzetting | 24 |
+| Share sale presumption | 25 |
+| Retroactivity window | 26 |
+| Stakingsaftrek (business cessation deduction) | 27 |
+| BTW-eenheid beleidsbesluit | 28 |
+| BTW fiscale eenheid verwevenheid | 29 |
+| Koepelvrijstelling and BUA | 30 |
+| Jaarrekening size classes | 31 |
+| Jaarrekening deposit | 32 |
+| SBR deposit | 33 |
+| Bewaartermijnen | 34 |
+| Aangifte (return) Vpb deadlines | 35 |
+| Uitstel (deferral) aangifte Vpb | 36 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
 | Vpb tarief (art. 22 Wet Vpb 1969) | t/m € 200.000 at 19%, above € 200.000 € 38.000 plus 25,8% | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2025-01-01 |

@@ -36,6 +36,22 @@ This file covers the income-dependent Zvw contribution (inkomensafhankelijke bij
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Zvw-bijdrage by aanslag | 1 |
+| Ingehouden Zvw-bijdrage | 2 |
+| Zvw werkgeversheffing | 3 |
+| Maximum bijdrage-inkomen | 4 |
+| Maximum once per person across channels | 5 |
+| Zvw base for winst | 6 |
+| Oudedagsreserve (old-age reserve) conversion into a lijfrente | 7 |
+| Verlaagde IAB at AOW age | 8 |
+| Zvw aanslag timing | 9 |
+| Zvw declaration and filing deadline | 10 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
 | Zvw-bijdrage by aanslag | 5,45% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet |

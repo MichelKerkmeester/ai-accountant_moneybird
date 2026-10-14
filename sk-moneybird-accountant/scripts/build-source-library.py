@@ -29,6 +29,7 @@ Usage:
     python3 -I sk-moneybird-accountant/scripts/build-source-library.py --watch [--state <file>]
     python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-calendar [--today YYYY-MM-DD]
     python3 -I sk-moneybird-accountant/scripts/build-source-library.py --trace <file>:<line>
+    python3 -I sk-moneybird-accountant/scripts/build-source-library.py --write-term-map
 
 Options:
     --check       Verify the index without writing it. Reports every cited URL
@@ -72,6 +73,11 @@ Options:
                   checkpoint or carries no stamp. Offline.
     --trace       Print the index result for every URL on one line of one file,
                   and fail on a dead, unchecked or unindexed URL.
+    --write-term-map Rewrite assets/term-map.json with every source_file
+                  resolved to a file under the skill root. A stored path that
+                  repeats a folder is collapsed, the resolved file must hold
+                  the term and its source, and the map is left untouched on a
+                  failure.
 
 Output:
     sk-moneybird-accountant/assets/source-library.json and a summary on stdout.
@@ -106,7 +112,8 @@ GUIDE_RELATIVE = "sk-moneybird-accountant/references/tax-rules/source-library.md
 GUIDE_PATH = os.path.join(REPO_ROOT, *GUIDE_RELATIVE.split("/"))
 WATCHLIST_PATH = os.path.join(REPO_ROOT, "sk-moneybird-accountant", "assets", "source-watchlist.json")
 WATCH_STATE_PATH = os.path.join(REPO_ROOT, "sk-moneybird-accountant", "assets", "source-watch-state.json")
-REFERENCES_DIR = os.path.join(REPO_ROOT, "sk-moneybird-accountant", "references")
+SKILL_ROOT = os.path.join(REPO_ROOT, "sk-moneybird-accountant")
+REFERENCES_DIR = os.path.join(SKILL_ROOT, "references")
 ROLLOVER_PATH = os.path.join(REFERENCES_DIR, "tax-rules", "year-rollover.md")
 
 # WHY: an allowlist of scan roots keeps the private folders out by construction.
@@ -553,7 +560,601 @@ def build_text(found: Dict[str, Dict[str, Any]], stored: Dict[str, Dict[str, Any
     return render_index(rows)
 
 # ───────────────────────────────────────────────────────────────
-# 5. CHECK AND WRITE
+# 5b. FRONTMATTER FIELD SET AND GLOSS MEASURE
+# ───────────────────────────────────────────────────────────────
+
+# WHY: the reference frontmatter carries one field set. A file that has a
+# frontmatter block must name its own title, description and label, so a
+# reader can list the tree and choose a file. checked_on stays optional,
+# because it is written only where a source was checked.
+FRONTMATTER_REQUIRED = ("title", "description", "nav_label")
+FRONTMATTER_ALLOWED = frozenset(
+    (
+        "title",
+        "description",
+        "nav_label",
+        "trigger_phrases",
+        "importance_tier",
+        "contextType",
+        "version",
+        "checked_on",
+        "_memory",
+    )
+)
+FRONTMATTER_FIELD_RE = re.compile(r"^([A-Za-z_][A-Za-z0-9_-]*):")
+# WHY: the three CLI documents carry their own skill field set. The two CLI
+# skills gain the nav_label of the reference set so one completed field set
+# covers the top layer, and the tool fields the skill runtime reads stay.
+CLI_DOCUMENTS = ("cli-moneybird/SKILL.md", "cli-jortt/SKILL.md")
+BOOTSTRAP_DOCUMENT = "AGENTS.md"
+CLI_FRONTMATTER_REQUIRED = ("name", "description", "allowed-tools", "version", "nav_label")
+CLI_FRONTMATTER_ALLOWED = frozenset(
+    ("name", "description", "allowed-tools", "version", "nav_label", "license")
+)
+TERM_MAP_PATH = os.path.join(SKILL_ROOT, "assets", "term-map.json")
+GENERATED_START_RE = re.compile(r"^<!-- GENERATED:([a-z0-9][a-z0-9._-]*):start -->$")
+GENERATED_END_RE = re.compile(r"^<!-- GENERATED:([a-z0-9][a-z0-9._-]*):end -->$")
+ITEM_INDEX_BLOCK_ID = "key-figure-index"
+PAREN_RE = re.compile(r"\(([^()]*)\)")
+HEADING_RE = re.compile(r"^#{1,6}[ \t]+(.*?)[ \t]*$")
+
+
+def resolve_source_file(source_file: Any) -> Optional[str]:
+    """Resolve one stored source_file to a path under the skill root.
+
+    The stored value is relative to the skill root. A value that repeats a
+    folder, as a doubled references/tax-rules segment does, is collapsed
+    before it is resolved, so the producer can repair a stored path without
+    inventing a new attribution.
+
+    Args:
+        source_file: Stored value.
+
+    Returns:
+        The path relative to the skill root, or None when no normalized
+        candidate is a file.
+    """
+    if not isinstance(source_file, str) or not source_file:
+        return None
+    parts = [part for part in source_file.replace("\\", "/").split("/") if part not in ("", ".")]
+    if not parts or ".." in parts:
+        return None
+    collapsed: List[str] = []
+    for part in parts:
+        if not collapsed or collapsed[-1] != part:
+            collapsed.append(part)
+    candidates = [parts]
+    if collapsed != parts:
+        candidates.append(collapsed)
+    for candidate in candidates:
+        for start in range(len(candidate)):
+            text = "/".join(candidate[start:])
+            if not text:
+                continue
+            absolute = os.path.abspath(os.path.join(SKILL_ROOT, text))
+            if os.path.isfile(absolute) and absolute.startswith(SKILL_ROOT + os.sep):
+                return os.path.relpath(absolute, SKILL_ROOT).replace(os.sep, "/")
+    return None
+
+
+def checked_cited_files(stored: Dict[str, Dict[str, Any]]) -> List[str]:
+    """List the citing paths of every source that was checked.
+
+    Args:
+        stored: Index rows keyed by URL.
+
+    Returns:
+        The cited_by paths of the rows whose checked_on is a date.
+    """
+    cited: List[str] = []
+    for row in stored.values():
+        if not row.get("checked_on"):
+            continue
+        for path in row.get("cited_by", []):
+            if isinstance(path, str) and path:
+                cited.append(path.replace(os.sep, "/"))
+    return cited
+
+
+def file_has_checked_source(
+    relative: str,
+    text: str,
+    stored: Dict[str, Dict[str, Any]],
+    checked_cited: List[str],
+    kind: str,
+) -> bool:
+    """Tell whether one file may carry a checked_on date.
+
+    A file that cites a source the index records as checked may carry the
+    date. A reference file that cites no indexed source may carry it when a
+    checked source is cited under its own directory, which is how a year
+    README, a change note or the rules file carries the calendar stamp. Any
+    other file may not.
+
+    Args:
+        relative: Path of the file relative to the repository root.
+        text: File text.
+        stored: Index rows keyed by URL.
+        checked_cited: Result of checked_cited_files().
+        kind: "reference" for the reference tree and the bootstrap, "cli"
+            for the two CLI documents.
+
+    Returns:
+        True when the checked_on date has a checked source behind it.
+    """
+    urls: Set[str] = set()
+    for raw in URL_RE.findall(text):
+        url = clean_url(raw)
+        if not is_skipped(url):
+            urls.add(url)
+    cited = [stored[url] for url in urls if url in stored]
+    if any(row.get("checked_on") for row in cited):
+        return True
+    if kind != "reference" or cited:
+        return False
+    directory = os.path.dirname(relative).replace(os.sep, "/").rstrip("/") + "/"
+    return any(path.startswith(directory) for path in checked_cited)
+
+
+def one_frontmatter_problems(
+    path: str,
+    stored: Dict[str, Dict[str, Any]],
+    checked_cited: List[str],
+    kind: str,
+    require_block: bool,
+) -> List[str]:
+    """List the field-set problems of one markdown file.
+
+    Args:
+        path: Absolute path of the file.
+        stored: Index rows keyed by URL.
+        checked_cited: Result of checked_cited_files().
+        kind: "reference" or "cli".
+        require_block: True when the file must carry a frontmatter block.
+
+    Returns:
+        One problem line per missing, unknown or unsupported field.
+    """
+    relative = os.path.relpath(path, REPO_ROOT)
+    try:
+        with open(path, "r", encoding="utf-8", errors="replace") as handle:
+            text = handle.read()
+    except OSError as exc:
+        fail("cannot read %s: %s" % (relative, exc))
+    lines = text.splitlines()
+    if not lines or lines[0].strip() != "---":
+        # WHY: a reference file without a frontmatter block carries no field
+        # set, so it is left out. The three CLI documents must carry one, so
+        # a silently absent block is reported by name there.
+        if require_block:
+            return ["field-set: %s has no frontmatter block" % relative]
+        return []
+    fields: List[str] = []
+    closed = False
+    for line in lines[1:]:
+        if line.strip() == "---":
+            closed = True
+            break
+        match = FRONTMATTER_FIELD_RE.match(line)
+        if match:
+            fields.append(match.group(1))
+    if not closed:
+        return ["field-set: %s has no closed frontmatter block" % relative]
+    required = FRONTMATTER_REQUIRED if kind == "reference" else CLI_FRONTMATTER_REQUIRED
+    allowed = FRONTMATTER_ALLOWED if kind == "reference" else CLI_FRONTMATTER_ALLOWED
+    problems: List[str] = []
+    for name in required:
+        if name not in fields:
+            problems.append("field-set: %s misses %s" % (relative, name))
+    for name in fields:
+        if name not in allowed:
+            problems.append("field-set: %s carries unknown field %s" % (relative, name))
+    if "checked_on" in fields and not file_has_checked_source(
+        relative, text, stored, checked_cited, kind
+    ):
+        problems.append("field-set: %s carries checked_on with no checked source" % relative)
+    return problems
+
+
+def frontmatter_problems(stored: Dict[str, Dict[str, Any]]) -> List[str]:
+    """List the files that break the frontmatter field set.
+
+    The reference tree, the bootstrap document and the two CLI documents are
+    checked, so one field set covers the top layer and a file without it is
+    named. A file that carries checked_on must have a checked source behind
+    it, as the field is written only where a source was checked.
+
+    Args:
+        stored: Index rows keyed by URL.
+
+    Returns:
+        One problem line per file, naming the file and the field.
+    """
+    problems: List[str] = []
+    checked_cited = checked_cited_files(stored)
+    for path in reference_files():
+        problems += one_frontmatter_problems(path, stored, checked_cited, "reference", False)
+    bootstrap = os.path.join(REPO_ROOT, BOOTSTRAP_DOCUMENT)
+    if os.path.isfile(bootstrap):
+        problems += one_frontmatter_problems(bootstrap, stored, checked_cited, "reference", False)
+    for document in CLI_DOCUMENTS:
+        path = os.path.join(REPO_ROOT, document)
+        if os.path.isfile(path):
+            problems += one_frontmatter_problems(path, stored, checked_cited, "cli", True)
+    return problems
+
+
+def top_layer_documents() -> List[str]:
+    """List the top-layer documents the field-set check covers.
+
+    Returns:
+        The bootstrap document and the two CLI documents that exist.
+    """
+    found: List[str] = []
+    bootstrap = os.path.join(REPO_ROOT, BOOTSTRAP_DOCUMENT)
+    if os.path.isfile(bootstrap):
+        found.append(bootstrap)
+    for document in CLI_DOCUMENTS:
+        path = os.path.join(REPO_ROOT, document)
+        if os.path.isfile(path):
+            found.append(path)
+    return found
+
+
+def term_map_rows() -> List[Dict[str, Any]]:
+    """Read the sourced term map.
+
+    Returns:
+        The term rows, empty when the tree holds no map.
+
+    Raises:
+        SystemExit: If the file cannot be read or holds invalid JSON.
+    """
+    if not os.path.isfile(TERM_MAP_PATH):
+        return []
+    try:
+        with open(TERM_MAP_PATH, "r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except (OSError, json.JSONDecodeError) as exc:
+        fail("cannot read %s: %s" % (os.path.relpath(TERM_MAP_PATH, REPO_ROOT), exc))
+    if not isinstance(data, dict):
+        fail("%s holds no JSON object" % os.path.relpath(TERM_MAP_PATH, REPO_ROOT))
+    return [row for row in data.get("terms", []) if isinstance(row, dict)]
+
+
+def term_map_problems() -> List[str]:
+    """List the term map entries that carry no source or a broken path.
+
+    Returns:
+        One problem line per entry without a term, a gloss, a source or a
+        resolvable source_file, so a gloss that no Dutch source uses and a
+        path that names no file never land.
+    """
+    problems: List[str] = []
+    for row in term_map_rows():
+        term = row.get("term")
+        name = term if isinstance(term, str) and term else "unnamed term"
+        if not isinstance(term, str) or not term:
+            problems.append("term-map: an entry has no term")
+            continue
+        if not isinstance(row.get("gloss"), str) or not row.get("gloss"):
+            problems.append("term-map: %s has no gloss" % name)
+        if not isinstance(row.get("source"), str) or not row.get("source"):
+            problems.append("term-map: %s has no source" % name)
+        source_file = row.get("source_file")
+        if not isinstance(source_file, str) or not source_file:
+            problems.append("term-map: %s has no source_file" % name)
+        elif resolve_source_file(source_file) is None:
+            problems.append("term-map: %s source_file does not exist: %s" % (name, source_file))
+    return problems
+
+
+def write_term_map() -> int:
+    """Rewrite the term map with every source_file resolved.
+
+    The producer keeps the authored term, gloss and source of a row and
+    rewrites only its source_file, so the path a previous run wrote is the
+    only value that changes. A path that does not resolve, or a resolved file
+    that does not hold the term and its source, fails the run and writes
+    nothing.
+
+    Returns:
+        Zero on success.
+
+    Raises:
+        SystemExit: When the map is missing or a row does not resolve.
+    """
+    relative = os.path.relpath(TERM_MAP_PATH, REPO_ROOT)
+    if not os.path.isfile(TERM_MAP_PATH):
+        fail("no term map: %s" % relative)
+    try:
+        with open(TERM_MAP_PATH, "r", encoding="utf-8") as handle:
+            document = json.load(handle)
+    except (OSError, json.JSONDecodeError) as exc:
+        fail("cannot read %s: %s" % (relative, exc))
+    if not isinstance(document, dict) or not isinstance(document.get("terms"), list):
+        fail("%s holds no term list" % relative)
+    repaired = 0
+    for row in document["terms"]:
+        if not isinstance(row, dict):
+            fail("the term map holds a row that is not an object")
+        term = row.get("term")
+        name = term if isinstance(term, str) and term else "unnamed term"
+        resolved = resolve_source_file(row.get("source_file"))
+        if resolved is None:
+            fail("term-map: %s source_file does not resolve: %s" % (name, row.get("source_file")))
+        resolved_path = os.path.join(SKILL_ROOT, resolved)
+        try:
+            with open(resolved_path, "r", encoding="utf-8", errors="replace") as handle:
+                body = handle.read()
+        except OSError as exc:
+            fail("cannot read %s: %s" % (resolved, exc))
+        if isinstance(term, str) and term and term not in body:
+            fail("term-map: %s source_file does not name the term: %s" % (name, resolved))
+        source = row.get("source")
+        if isinstance(source, str) and source and source not in body:
+            fail("term-map: %s source_file does not cite its source: %s" % (name, resolved))
+        if row.get("source_file") != resolved:
+            row["source_file"] = resolved
+            repaired += 1
+    document["generated_by"] = GENERATOR
+    text = json.dumps(document, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    current = None
+    try:
+        with open(TERM_MAP_PATH, "r", encoding="utf-8", newline="") as handle:
+            current = handle.read()
+    except OSError as exc:
+        fail("cannot read %s: %s" % (relative, exc))
+    if current == text:
+        print(
+            "term-map: unchanged, %d rows, %d paths repaired"
+            % (len(document["terms"]), repaired)
+        )
+        return 0
+    try:
+        with open(TERM_MAP_PATH, "w", encoding="utf-8", newline="\n") as handle:
+            handle.write(text)
+    except OSError as exc:
+        fail("cannot write %s: %s" % (relative, exc))
+    print(
+        "term-map: wrote %s, %d rows, %d paths repaired"
+        % (relative, len(document["terms"]), repaired)
+    )
+    return 0
+
+
+def generated_block(text: str, block_id: str) -> Optional[str]:
+    """Return the body of one generated block of a markdown file.
+
+    Args:
+        text: File text.
+        block_id: Fence id to read.
+
+    Returns:
+        The body text, or None when the file holds no such block.
+    """
+    opened: Optional[int] = None
+    lines = text.split("\n")
+    for index, line in enumerate(lines):
+        if opened is None:
+            match = GENERATED_START_RE.match(line)
+            if match and match.group(1) == block_id:
+                opened = index + 1
+            continue
+        if GENERATED_END_RE.match(line):
+            return "\n".join(lines[opened:index])
+    return None
+
+
+def table_cells(line: str) -> List[str]:
+    """Split one markdown table line into its cells.
+
+    Args:
+        line: Table line.
+
+    Returns:
+        The stripped cell texts, empty when the line is not a table line.
+    """
+    text = line.strip()
+    if not text.startswith("|"):
+        return []
+    if not text.endswith("|"):
+        text += "|"
+    return [cell.strip() for cell in text.strip("|").split("|")]
+
+
+def item_index_items(text: str) -> List[str]:
+    """Read the Item cell of every row of the generated item index.
+
+    Args:
+        text: File text.
+
+    Returns:
+        The item cells, in row order.
+    """
+    body = generated_block(text, ITEM_INDEX_BLOCK_ID)
+    if body is None:
+        return []
+    items: List[str] = []
+    for line in body.split("\n"):
+        cells = table_cells(line)
+        if len(cells) >= 2 and re.fullmatch(r"\d+", cells[1]):
+            items.append(cells[0])
+    return items
+
+
+def key_figure_source_items(text: str) -> List[str]:
+    """Read the Item cell of every row of the authored KEY FIGURES table.
+
+    The scan skips the generated item index between the heading and the
+    table, so the source rows come from the table a writer authored.
+
+    Args:
+        text: File text.
+
+    Returns:
+        The item cells, in row order.
+    """
+    lines = text.split("\n")
+    start: Optional[int] = None
+    for index, line in enumerate(lines):
+        heading = HEADING_RE.match(line)
+        if heading and "KEY FIGURES" in heading.group(1).upper():
+            start = index
+            break
+    if start is None:
+        return []
+    index = start + 1
+    opened = False
+    while index < len(lines):
+        line = lines[index]
+        if GENERATED_START_RE.match(line):
+            opened = True
+            index += 1
+            continue
+        if GENERATED_END_RE.match(line):
+            opened = False
+            index += 1
+            continue
+        if not opened and line.strip().startswith("|"):
+            break
+        index += 1
+    if index >= len(lines):
+        return []
+    header = table_cells(lines[index])
+    index += 1
+    if index < len(lines) and set(lines[index].strip()) <= set("|-: "):
+        index += 1
+    column = header.index("Item") if "Item" in header else 0
+    items: List[str] = []
+    while index < len(lines) and lines[index].strip().startswith("|"):
+        cells = table_cells(lines[index])
+        if len(cells) > column:
+            items.append(cells[column])
+        index += 1
+    return items
+
+
+def unowned_gloss_problems(pairs: List[Tuple[str, str]]) -> List[str]:
+    """List the glossed terms of an item index with no term-map row.
+
+    The item index is generated from the authored KEY FIGURES table, so a
+    parenthetical the source row does not carry was inserted from the term
+    map. When the map holds no row that explains it, the insertion has no
+    source and the check names the term.
+
+    Args:
+        pairs: The (term, gloss) pairs the map holds, longest term first.
+
+    Returns:
+        One problem line per inserted gloss that no map row explains.
+    """
+    problems: List[str] = []
+    for path in reference_files():
+        if os.path.basename(path) != "figures.md":
+            continue
+        relative = os.path.relpath(path, REPO_ROOT)
+        try:
+            with open(path, "r", encoding="utf-8", errors="replace") as handle:
+                text = handle.read()
+        except OSError as exc:
+            fail("cannot read %s: %s" % (relative, exc))
+        indexed = item_index_items(text)
+        source = key_figure_source_items(text)
+        if not indexed or not source:
+            continue
+        for index_item, source_item in zip(indexed, source):
+            inserted = set(PAREN_RE.findall(index_item)) - set(PAREN_RE.findall(source_item))
+            for gloss in sorted(inserted):
+                stop = index_item.find("(%s)" % gloss)
+                if stop < 0:
+                    continue
+                prefix = index_item[:stop].rstrip()
+                if any(
+                    gloss == pair_gloss and prefix.endswith(pair_term)
+                    for pair_term, pair_gloss in pairs
+                ):
+                    continue
+                word = re.search(r"([^\s|()\[\]]+)$", prefix)
+                term = word.group(1) if word else prefix[-24:]
+                problems.append(
+                    "gloss: %s has no term-map row for %s (%s)" % (relative, term, gloss)
+                )
+    return problems
+
+
+def generated_bodies(path: str) -> List[str]:
+    """Return the body of every generated block of one markdown file.
+
+    Args:
+        path: Absolute path of the file.
+
+    Returns:
+        The body texts, in file order.
+    """
+    try:
+        with open(path, "r", encoding="utf-8", errors="replace") as handle:
+            text = handle.read()
+    except OSError as exc:
+        fail("cannot read %s: %s" % (path, exc))
+    bodies: List[str] = []
+    opened: Optional[int] = None
+    lines = text.split("\n")
+    for index, line in enumerate(lines):
+        if opened is None:
+            if GENERATED_START_RE.match(line):
+                opened = index + 1
+            continue
+        if GENERATED_END_RE.match(line):
+            bodies.append("\n".join(lines[opened:index]))
+            opened = None
+    return bodies
+
+
+def gloss_problems() -> Tuple[int, int, List[str]]:
+    """Measure the first-use glosses of every generated table.
+
+    A first use counts once per mapped term and per generated table. It is
+    glossed when the term text is followed by its map gloss in parentheses.
+
+    Returns:
+        The glossed count, the first-use count and one problem line per
+        first use without its gloss.
+    """
+    terms = term_map_rows()
+    pairs = sorted(
+        (
+            (row["term"], row["gloss"])
+            for row in terms
+            if isinstance(row.get("term"), str)
+            and isinstance(row.get("gloss"), str)
+            and row.get("source")
+        ),
+        key=lambda pair: (-len(pair[0]), pair[0]),
+    )
+    glossed = 0
+    total = 0
+    problems: List[str] = []
+    for path in reference_files():
+        relative = os.path.relpath(path, REPO_ROOT)
+        for body in generated_bodies(path):
+            if "|" not in body:
+                continue
+            for term, gloss in pairs:
+                match = re.search(r"(?<!\w)" + re.escape(term) + r"(?!\w)", body)
+                if match is None:
+                    continue
+                total += 1
+                if body[match.end():match.end() + len(gloss) + 3] == " (%s)" % gloss:
+                    glossed += 1
+                else:
+                    problems.append("gloss: %s first use of %s carries no gloss" % (relative, term))
+    problems += unowned_gloss_problems(pairs)
+    return glossed, total, problems
+
+
+# ───────────────────────────────────────────────────────────────
+# 6. CHECK AND WRITE
 # ───────────────────────────────────────────────────────────────
 
 def dead_cited_problems(found: Dict[str, Dict[str, Any]], stored: Dict[str, Dict[str, Any]]) -> List[str]:
@@ -626,6 +1227,10 @@ def check_index(found: Dict[str, Dict[str, Any]], stored: Dict[str, Dict[str, An
     ]
     problems += dead_cited_problems(found, stored)
     problems += perishable_problems(stored)
+    problems += frontmatter_problems(stored)
+    problems += term_map_problems()
+    glossed, first_uses, gloss_lines = gloss_problems()
+    problems += gloss_lines
     current = None
     if os.path.isfile(INDEX_PATH):
         with open(INDEX_PATH, "r", encoding="utf-8", newline="") as handle:
@@ -637,6 +1242,11 @@ def check_index(found: Dict[str, Dict[str, Any]], stored: Dict[str, Dict[str, An
             print(problem)
         return 1
     print("%d sources match the index" % len(cited))
+    print("gloss measure: glossed %d of %d strict first uses" % (glossed, first_uses))
+    print(
+        "field-set report: %d reference files and %d top-layer documents carry the required fields"
+        % (len(reference_files()), len(top_layer_documents()))
+    )
     return 0
 
 
@@ -1360,6 +1970,11 @@ def main(argv: List[str]) -> int:
         metavar="<file>:<line>",
         help="print the index result for the URLs on one line of one file",
     )
+    mode.add_argument(
+        "--write-term-map",
+        action="store_true",
+        help="rewrite assets/term-map.json with every source_file resolved",
+    )
     parser.add_argument(
         "--state",
         metavar="<file>",
@@ -1375,6 +1990,8 @@ def main(argv: List[str]) -> int:
         fail("usage: --state needs --watch")
     if args.today and not args.check_calendar:
         fail("usage: --today needs --check-calendar")
+    if args.write_term_map:
+        return write_term_map()
     if args.check_calendar:
         return check_calendar(args.today)
     stored = load_index()

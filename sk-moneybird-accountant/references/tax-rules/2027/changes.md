@@ -1,6 +1,7 @@
 ---
 title: "Changes tax year 2027"
 description: "What changed in tax year 2027 compared with 2026, restated from section 5 of the year topic files, with a generated index of every topic."
+nav_label: "Changes tax year 2027"
 trigger_phrases:
   - "changes tax year 2027"
   - "what changed in 2027"
@@ -38,10 +39,10 @@ checked_on: "2026-10-12"
 | [vat.md](vat/notes.md#5-changes) | 7 | The enacted VAT rates remain 21%, 9% and 0%. No 2027 rate change was found... |
 | [income-tax.md](income-tax/notes.md#5-changes) | 17 | Box 1 below AOW age. In 2026 the table was 35,75% up to € 38.883, with 8,10% as... |
 | [health-insurance-contribution.md](health-insurance-contribution/notes.md#5-changes) | 9 | Zvw bijdrage by aanslag: 4,85% in 2026 to 5,02% in 2027. Source 2026... |
-| [business-deductions.md](business-deductions/notes.md#5-changes) | 17 | Zelfstandigenaftrek: € 1.200 in 2026 to € 900 in 2027 ([art. 3.76, 2026... |
+| [business-deductions.md](business-deductions/notes.md#5-changes) | 17 | Zelfstandigenaftrek (self-employed person's deduction): € 1.200 in 2026 to € 900 in 2027 ([art. 3.76, 2026... |
 | [investments.md](investments/notes.md#5-changes) | 13 | KIA table. 2026 was enacted with nil up to € 2.900, 28% to € 71.683, € 20.072... |
 | [costs-and-car.md](costs-and-car/notes.md#5-changes) | 13 | Gemengde kosten drempel: 2026 was € 5.700, final and enacted ([2026... |
-| [box-3.md](box-3/notes.md#5-changes) | 15 | Heffingsvrij vermogen: 2026 was € 59.357 per person and € 118.714 with a fiscal... |
+| [box-3.md](box-3/notes.md#5-changes) | 15 | Heffingsvrij vermogen (tax-free allowance): 2026 was € 59.357 per person and € 118.714 with a fiscal... |
 | [box-2.md](box-2/notes.md#5-changes) | 11 | Box 2 bracket 1. 2026, enacted: 24,5% up to € 68.843... |
 | [private-company-and-corporate-tax.md](private-company-and-corporate-tax/notes.md#5-changes) | 17 | Vpb rate table: 2026 read t/m € 200.000 at 19% and above that € 38.000 plus... |
 | [pension-and-disability-insurance.md](pension-and-disability-insurance/notes.md#5-changes) | 18 | Maximum jaarruimte: € 35.589 in 2026 to not published for 2027. The open point... |

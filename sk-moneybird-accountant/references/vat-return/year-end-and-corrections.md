@@ -1,6 +1,7 @@
 ---
 title: Year-end settlements and corrections for the VAT return
 description: The four year-end settlements S1 to S4 in the final VAT period of a calendar year and the correction routing between the next return and the suppletie. The route, the suppletie filing and the payment are Operator actions.
+nav_label: "Year-end settlements and corrections for the VAT return"
 trigger_phrases:
   - last VAT return of the year
   - laatste btw-aangifte van het jaar

@@ -36,6 +36,43 @@ This file covers the jaarruimte (annual lijfrente room) and reserveringsruimte f
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Jaarruimte (annual allowance) percentage | 1 |
+| Maximum jaarruimte | 2 |
+| Aftoppingsgrens premiegrondslag | 3 |
+| Franchise premiegrondslag | 4 |
+| Premiegrondslag composition | 5 |
+| Pension accrual reduction | 6 |
+| Transitional formula art. 10a.25 lid 2 | 7 |
+| FOR transition in the jaarruimte | 8 |
+| Look-back window | 9 |
+| Reserveringsruimte (reserve room) maximum | 10 |
+| Age limit jaarruimte | 11 |
+| Lijfrente (annuity) products and uitkering conditions | 12 |
+| Tijdelijke oudedagslijfrente cap | 13 |
+| Overbruggingslijfrente cap | 14 |
+| Stakingswinst maximum, tier a | 15 |
+| Stakingswinst maximum, tier b | 16 |
+| Stakingswinst maximum, tier c | 17 |
+| Afkoop kleine lijfrente | 18 |
+| Afkoop cap bij langdurige arbeidsongeschiktheid | 19 |
+| Lijfrente einddatum termijn | 20 |
+| Nabestaandenlijfrente termijn | 21 |
+| Negatieve uitgaven reversal window | 22 |
+| Payment deadline FOR or stakingswinst conversion | 23 |
+| AOV premium with periodic uitkeringen | 24 |
+| AOV premium with lump-sum payout | 25 |
+| Mandatory beroepspensioen premium for ondernemers | 26 |
+| Sectoraal pensioenfonds for zelfstandigen | 27 |
+| FOR toevoeging | 28 |
+| BAZ internetconsultatie | 29 |
+| BAZ consultation premium | 30 |
+| BAZ consultation design | 31 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
 | Jaarruimte percentage | 30% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2024-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 |

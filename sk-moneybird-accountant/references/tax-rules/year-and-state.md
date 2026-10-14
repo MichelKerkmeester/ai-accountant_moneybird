@@ -1,6 +1,7 @@
 ---
 title: Year and state resolution
 description: How the router resolves the tax year from session-context.json, refuses an out-of-range or unsettled figure, and computes the post-cutover migration state at route time.
+nav_label: "Year and state resolution"
 trigger_phrases:
   - year resolution
   - session context clock

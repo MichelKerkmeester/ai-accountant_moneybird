@@ -1,6 +1,7 @@
 ---
 title: "Corrections tax year 2025"
 description: "Every dated status change in the tax year 2025 topic files, one row per corrected value with the source that settled it."
+nav_label: "Corrections tax year 2025"
 trigger_phrases:
   - "2025 corrections"
   - "belastingjaar 2025 changelog"

@@ -46,9 +46,9 @@ Rows below are generated from the year files named above, which own the values.
 | Year | Item | Value | Status | Check | Owner |
 |---|---|---|---|---|---|
 | 2020 | Peildatum (reference date) | 1 January 2020 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2020/box-3/figures.md](../2020/box-3/figures.md) |
-| 2020 | Heffingsvrij vermogen (tax-free capital) | € 30.846 per person, € 61.692 with fiscal partner | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2020/box-3/figures.md](../2020/box-3/figures.md) |
+| 2020 | Heffingsvrij vermogen (tax-free allowance) (tax-free capital) | € 30.846 per person, € 61.692 with fiscal partner | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2020/box-3/figures.md](../2020/box-3/figures.md) |
 | 2021 | Heffingsvrij vermogen | € 50.000 per person, € 100.000 with fiscal partner (art. 5.5) | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2021/box-3/figures.md](../2021/box-3/figures.md) |
-| 2021 | Schuldendrempel | € 3.200 per person, € 6.400 with whole-year partner (art. 5.3 lid 3) | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2021/box-3/figures.md](../2021/box-3/figures.md) |
+| 2021 | Schuldendrempel (debt threshold) | € 3.200 per person, € 6.400 with whole-year partner (art. 5.3 lid 3) | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2021/box-3/figures.md](../2021/box-3/figures.md) |
 | 2022 | Heffingsvrij vermogen | € 50.650 per person, € 101.300 with a fiscal partner | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2022/box-3/figures.md](../2022/box-3/figures.md) |
 | 2022 | Schuldendrempel | € 3.200 per person, € 6.400 with a whole-year partner | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2022/box-3/figures.md](../2022/box-3/figures.md) |
 | 2023 | System | category method of the Overbruggingswet box 3, in force 1 January 2023 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2023/box-3/figures.md](../2023/box-3/figures.md) |

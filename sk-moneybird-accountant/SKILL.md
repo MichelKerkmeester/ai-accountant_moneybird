@@ -69,6 +69,8 @@ Every request matches exactly one row, which decides files read and tool skill.
 
 Read budget ladder in o200k_base tokens: year README 3,000, one section 5,000, full reference file 15,000.
 
+The generated [reference library](./references/README.md) lists the tax year folders, the tax-rule top-level files and the migration files, each row with the description its own file carries.
+
 Signal sources, the `tok:Tn` keys and their Belastingdienst pages: `references/routing-signals.md`.
 
 T8 answers in two ways. A request outside the skill's scope gets the out-of-scope refusal. A request for one of the three yearly tax deliverables whose procedure is not written yet gets the documented gap answer: the gap's topic, its owner path and its Operator action from the `gaps` list in `references/index.json`. The gap row's Operator action names the work the Operator does outside this skill, because every action in a tax portal stays Operator-only.
@@ -85,7 +87,7 @@ T8 answers in two ways. A request outside the skill's scope gets the out-of-scop
 
 Per-row routes:
 
-- T3: MONEYBIRD_READ through the "Bank transactions to match" row in `cli-moneybird/SKILL.md` section 2.
+- T3: MONEYBIRD_READ through the [Bank transactions to match](../cli-moneybird/SKILL.md#2-smart-routing) row in `cli-moneybird/SKILL.md`.
 - T4: KNOWLEDGE, then MONEYBIRD_READ `tax_rates list`, then MONEYBIRD_GATED_WRITE through the "Purchase invoice and attachment" row, else OPERATOR_UI.
 
 ### Ties and Abstain
@@ -290,7 +292,7 @@ A Moneybird read runs with `MONEYBIRD_GUARD_READ_ONLY=1`. A write needs a passed
 
 ### LIVE Mode
 
-Monthly, quarterly and yearly cycles are in `references/moneybird-bookkeeping.md` (LIVE Bookkeeping Cycles). Every Moneybird read follows the Read Step Contract in `cli-moneybird/SKILL.md` section 3. Writes follow the write authority below. The return is never filed.
+Monthly, quarterly and yearly cycles are in `references/moneybird-bookkeeping.md` (LIVE Bookkeeping Cycles). Every Moneybird read follows the [Read Step Contract](../cli-moneybird/SKILL.md#read-step-contract) in `cli-moneybird/SKILL.md`. Writes follow the write authority below. The return is never filed.
 
 #### LIVE write authority
 
@@ -300,12 +302,12 @@ LIVE Moneybird writes have three states. `JOURNAL_BACKED`: writes inside the LIV
 
 - Resolve the year through `year_key` from session-context.json before using any rate, threshold, deduction, or vehicle rule.
 - For a figure question, load references/tax-rules/YYYY/README.md, then the topic's figures part at `#2-key-figures`, its KEY FIGURES. The other parts only for mechanics.
-- For a cross-year rule question, read section 3 of references/tax-rules/dutch-tax-rules.md, then only the one general topic file its table names.
+- For a cross-year rule question, read [section 3](./references/tax-rules/dutch-tax-rules.md#3-general-rules) of the tax-rules entry file, then only the one general topic file its table names.
 - Explain general rules with the year and source. Label conflicting or unverified points.
 
 ### CLI Preflight
 
-Before the first CLI call of a session, run the tool skill's readiness check by section name: `cli-moneybird` section 6 (package check) and `cli-jortt` section 3 (CLI Extraction Path steps 1 and 2). Copy no CLI command text. A failed preflight goes to CLI_FAILURE.
+Before the first CLI call of a session, run the tool skill's readiness check by name: the [package check](../cli-moneybird/SKILL.md#package-check-completion-checklist) in `cli-moneybird` and the [CLI Extraction Path](../cli-jortt/SKILL.md#cli-extraction-path) in `cli-jortt` (steps 1 and 2). Copy no CLI command text. A failed preflight goes to CLI_FAILURE.
 
 ### Output Contract
 
@@ -388,7 +390,7 @@ Answer order: avoid loading unneeded record content, then scan the draft with th
 
 ### Loading notes
 
-Load the project bootstrap and this skill first. Load only the row's read set, one phase group at a time, and a sibling tool skill only when its route names it. Grep `assets/source-library.json` for a host, topic or citing file. Never read it whole. Each `SKILL.md` aims at a 3,000-word loading budget with a hard ceiling of 4,000 words. `python3 -I sk-moneybird-accountant/scripts/check-skill-words.py` warns above the budget and fails above the ceiling.
+Load the project bootstrap and this skill first. Load only the row's read set, one phase group at a time, and a sibling tool skill only when its route names it. Grep `assets/source-library.json` for a host, topic or citing file. Never read it whole. For a section-level map of every reference file, read `references/index.json`, which holds one record per file with its sections, its line numbers and its answer surface, instead of globbing the tree. The token size of every reference file and section is in `benchmark/token-baseline.json`, which the same generator check keeps true. Each `SKILL.md` aims at a 3,000-word loading budget with a hard ceiling of 4,000 words. `python3 -I sk-moneybird-accountant/scripts/check-skill-words.py` warns above the budget and fails above the ceiling.
 
 ---
 

@@ -954,6 +954,89 @@ else
     fail "a topic file is still held to the topic rules"
 fi
 
+# ───────────────────────────────────────────────────────────────
+# 7b. ITEM INDEX AND ANSWER SURFACE
+# ───────────────────────────────────────────────────────────────
+
+# WHY: the item index is a second representation of the value table, so the
+# suite compares its row count with the table and checks the answer surface
+# schema on every index record.
+group "item index and answer surface"
+ITEM_FIXTURE="$TMP_ROOT/item-fixture/sk-moneybird-accountant"
+if make_fixture "$ITEM_FIXTURE" \
+    && run_generator "$ITEM_FIXTURE" --init \
+    && run_generator "$ITEM_FIXTURE" \
+    && run_generator "$ITEM_FIXTURE" --check; then
+    pass "the item index fixture writes and passes --check"
+else
+    fail "the item index fixture writes and passes --check"
+fi
+if python3 - "$ITEM_FIXTURE/$FLAT_REF/$FLAT_YEAR/vat.md" <<'PY'
+import re
+import sys
+
+text = open(sys.argv[1], encoding="utf-8").read()
+index = re.search(
+    r"<!-- GENERATED:key-figure-index:start -->(.*?)<!-- GENERATED:key-figure-index:end -->",
+    text,
+    re.S,
+)
+if not index:
+    sys.exit(1)
+rows = [
+    line
+    for line in index.group(1).splitlines()
+    if line.startswith("|") and "Item" not in line and not re.match(r"^\|[-|]+\|$", line)
+]
+table = re.search(r"\|\s*Item\s*\|.*?\n\|[-\s|]+\|\n((?:\|.*\n)+)", text)
+if not table:
+    sys.exit(1)
+values = [line for line in table.group(1).splitlines() if line.strip()]
+sys.exit(0 if len(rows) == len(values) == 2 else 1)
+PY
+then
+    pass "the item index holds one row per value row of the table"
+else
+    fail "the item index holds one row per value row of the table"
+fi
+if python3 - "$ITEM_FIXTURE/$FLAT_REF/index.json" <<'PY'
+import json
+import sys
+
+rows = json.load(open(sys.argv[1], encoding="utf-8"))["files"]
+by_path = {row["path"]: row for row in rows}
+for row in rows:
+    surface = row.get("answerSurface")
+    if not isinstance(surface, dict) or set(surface) != {"section", "rows", "tokens"}:
+        sys.exit(1)
+vat = by_path.get("2020/vat.md")
+readme = by_path.get("2020/README.md")
+if vat is None or readme is None:
+    sys.exit(1)
+if vat["answerSurface"]["section"] != "1-key-figures" or vat["answerSurface"]["rows"] != 2:
+    sys.exit(1)
+if readme["answerSurface"]["section"] != "" or readme["answerSurface"]["rows"] != 0:
+    sys.exit(1)
+sys.exit(0)
+PY
+then
+    pass "every index record carries the answerSurface schema and the value rows match"
+else
+    fail "every index record carries the answerSurface schema and the value rows match"
+fi
+
+# A hand-removed index row fails the check and names the block.
+ITEM_MUTANT="$TMP_ROOT/item-mutant/sk-moneybird-accountant"
+copy_fixture "$ITEM_FIXTURE" "$ITEM_MUTANT"
+sed -i.bak '/^| Reduced rate | 2 |$/d' "$ITEM_MUTANT/$FLAT_REF/$FLAT_YEAR/vat.md"
+run_generator "$ITEM_MUTANT" --check
+status=$?
+if [[ "$status" -ne 0 ]] && grep -q '^drift 2020/vat.md key-figure-index' "$TMP_ROOT/out.txt"; then
+    pass "a hand-removed item index row fails the check"
+else
+    fail "a hand-removed item index row fails the check"
+fi
+
 group "year change notes"
 CHANGES_FIXTURE="$TMP_ROOT/change-fixture/sk-moneybird-accountant"
 CHANGES_NOTE="$CHANGES_FIXTURE/$FLAT_REF/$FLAT_YEAR/changes.md"
@@ -1709,6 +1792,70 @@ if [[ "$status" -ne 0 ]] && grep -q '^drift index\.json gaps topic vat-return$' 
     pass "a hand edit to the stored gap list fails the check"
 else
     fail "a hand edit to the stored gap list fails the check"
+fi
+
+# ───────────────────────────────────────────────────────────────
+# 16b. LOADING NOTES LISTING PATHS
+# ───────────────────────────────────────────────────────────────
+
+# WHY: the loading notes name the generated index and the token baseline, so
+# the suite asserts that both names resolve to a file with its schema fields
+# and that the assertion fails when one name is dropped.
+group "loading notes listing paths"
+LISTING_SKILL="$TMP_ROOT/listing-skill"
+copy_skill "$LISTING_SKILL"
+if python3 - "$LISTING_SKILL" <<'PY'
+import json
+import os
+import sys
+
+root = sys.argv[1]
+text = open(os.path.join(root, "SKILL.md"), encoding="utf-8").read()
+for name in ("references/index.json", "benchmark/token-baseline.json"):
+    if name not in text:
+        sys.exit(1)
+index = json.load(open(os.path.join(root, "references/index.json"), encoding="utf-8"))
+if not index.get("files") or "answerSurface" not in index["files"][0]:
+    sys.exit(1)
+baseline = json.load(open(os.path.join(root, "benchmark/token-baseline.json"), encoding="utf-8"))
+if not baseline.get("files") or "tokens" not in baseline["files"][0]:
+    sys.exit(1)
+sys.exit(0)
+PY
+then
+    pass "the loading notes name the index and the baseline with their schema fields"
+else
+    fail "the loading notes name the index and the baseline with their schema fields"
+fi
+python3 -I - "$LISTING_SKILL/SKILL.md" <<'PY' || exit 2
+import sys
+
+path = sys.argv[1]
+text = open(path, encoding="utf-8").read()
+open(path, "w", encoding="utf-8").write(text.replace("benchmark/token-baseline.json", "the baseline"))
+PY
+if python3 - "$LISTING_SKILL" <<'PY'
+import json
+import os
+import sys
+
+root = sys.argv[1]
+text = open(os.path.join(root, "SKILL.md"), encoding="utf-8").read()
+for name in ("references/index.json", "benchmark/token-baseline.json"):
+    if name not in text:
+        sys.exit(1)
+index = json.load(open(os.path.join(root, "references/index.json"), encoding="utf-8"))
+if not index.get("files") or "answerSurface" not in index["files"][0]:
+    sys.exit(1)
+baseline = json.load(open(os.path.join(root, "benchmark/token-baseline.json"), encoding="utf-8"))
+if not baseline.get("files") or "tokens" not in baseline["files"][0]:
+    sys.exit(1)
+sys.exit(0)
+PY
+then
+    fail "the listing-path case fails when one name is removed"
+else
+    pass "the listing-path case fails when one name is removed"
 fi
 
 # ───────────────────────────────────────────────────────────────

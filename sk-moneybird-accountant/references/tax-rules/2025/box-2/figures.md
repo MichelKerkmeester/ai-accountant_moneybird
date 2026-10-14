@@ -36,6 +36,39 @@ For 2025 box 2 has two brackets: 24,5% over the first € 67.804 and 31% above t
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Box 2 bracket 1 (art. 2.12 Wet IB 2001) | 1 |
+| Tax at the top of bracket 1 (art. 2.12, column III) | 2 |
+| Box 2 bracket 2 (art. 2.12 Wet IB 2001) | 3 |
+| Aanmerkelijk belang, 5% test (art. 4.6 Wet IB 2001) | 4 |
+| Meesleepregeling and meetrekregeling (art. 4.9 and 4.10 Wet IB 2001) | 5 |
+| Fictief aanmerkelijk belang (art. 4.11 Wet IB 2001) | 6 |
+| Box 2 income of minor children | 7 |
+| Division between fiscal partners (art. 2.17 lid 2 Wet IB 2001) | 8 |
+| Inkomen uit aanmerkelijk belang (art. 4.12 Wet IB 2001) and reguliere voordelen (art. 4.13 Wet IB 2001) | 9 |
+| Forfaitair voordeel for a vbi or foreign investment company (art. 4.14 lid 1 Wet IB 2001) | 10 |
+| Vervreemdingsvoordeel, verkrijgingsprijs and onzakelijke prijs | 11 |
+| Fictieve vervreemding (art. 4.16 Wet IB 2001) | 12 |
+| Inherited aanmerkelijk belang facility (art. 4.12a Wet IB 2001) | 13 |
+| Doorschuiving on request for gift, inheritance and emigration | 14 |
+| APV loss deferral | 15 |
+| Excessief lenen (excessive borrowing) maximum (art. 4.14a lid 2 Wet IB 2001) | 16 |
+| Excessief lenen, measurement and floor | 17 |
+| Excessief lenen, verbonden personen and immigration (art. 4.14b and 4.14c Wet IB 2001) | 18 |
+| Excessief lenen, samenwerkingsverband exception (art. 4.13 lid 6 and 7, art. 4.14a lid 7 Wet IB 2001) | 19 |
+| Gebruikelijk loon (customary salary) fixed amount (art. 12a Wet LB 1964) | 20 |
+| Gebruikelijk loon minimum threshold (art. 12a Wet LB 1964) | 21 |
+| Gebruikelijk loon comparable loon (art. 12a Wet LB 1964) | 22 |
+| Belastingkorting on an unoffset box 2 loss (art. 4.53 lid 2 Wet IB 2001) | 23 |
+| Loss offset period (art. 4.49 Wet IB 2001) | 24 |
+| ODV marktrente for 2025 (art. 38p Wet LB 1964 and art. 12.3a Uitvoeringsregeling loonbelasting 2011) | 25 |
+| End of pensioen in eigen beheer afkoop and omzetting (art. 38n to 38q Wet LB 1964) | 26 |
+| Non-residents (art. 7.5 Wet IB 2001) | 27 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 2 bracket 1 (art. 2.12 Wet IB 2001) | 24,5% up to € 67.804 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 |

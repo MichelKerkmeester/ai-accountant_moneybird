@@ -1,0 +1,246 @@
+{
+  "generated_by": "sk-moneybird-accountant/scripts/build-source-library.py",
+  "note": "One row per Dutch term that appears in a generated table, with the English gloss a reader sees on first use and the source the owning year file cites for it.",
+  "terms": [
+    {
+      "gloss": "return",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/dividendbelasting/als_u_dividend_uitkeert/dividendbelasting-aangifte-betalen",
+      "source_file": "references/tax-rules/2022/private-company-and-corporate-tax/figures.md",
+      "term": "Aangifte"
+    },
+    {
+      "gloss": "general tax credit",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/heffingskortingen",
+      "source_file": "references/tax-rules/2022/income-tax/figures.md",
+      "term": "Algemene heffingskorting"
+    },
+    {
+      "gloss": "employment tax credit",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/heffingskortingen",
+      "source_file": "references/tax-rules/2022/income-tax/figures.md",
+      "term": "Arbeidskorting"
+    },
+    {
+      "gloss": "tax interest",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente",
+      "source_file": "references/tax-rules/2022/procedure/figures.md",
+      "term": "Belastingrente"
+    },
+    {
+      "gloss": "record-keeping duty",
+      "source": "https://wetten.overheid.nl/BWBR0002320/2020-01-01 and https://wetten.overheid.nl/BWBR0002320/2026-01-01",
+      "source_file": "references/tax-rules/2022/procedure/figures.md",
+      "term": "Bewaarplicht"
+    },
+    {
+      "gloss": "objection period",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/nl/bezwaar-en-beroep/content/eisen-bezwaar",
+      "source_file": "references/tax-rules/2025/procedure/figures.md",
+      "term": "Bezwaartermijn"
+    },
+    {
+      "gloss": "contribution income",
+      "source": "https://wetten.overheid.nl/BWBR0011353/2026-01-01",
+      "source_file": "references/tax-rules/2027/health-insurance-contribution/figures.md",
+      "term": "Bijdrage-inkomen"
+    },
+    {
+      "gloss": "private-use addition",
+      "source": "https://wetten.overheid.nl/BWBR0011353/2022-01-01 (art. 3.20 lid 1 onderdeel a)",
+      "source_file": "references/tax-rules/2022/costs-and-car/figures.md",
+      "term": "Bijtelling"
+    },
+    {
+      "gloss": "disinvestment addition",
+      "source": "https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 3.47 lid 1, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek",
+      "source_file": "references/tax-rules/2022/investments/figures.md",
+      "term": "Desinvesteringsbijtelling"
+    },
+    {
+      "gloss": "excessive borrowing",
+      "source": "https://zoek.officielebekendmakingen.nl/kst-35496-15.html",
+      "source_file": "references/tax-rules/2022/box-2/figures.md",
+      "term": "Excessief lenen"
+    },
+    {
+      "gloss": "flat-rate return on other assets",
+      "source": "https://wetten.overheid.nl/BWBR0011353/2027-01-01",
+      "source_file": "references/tax-rules/2027/box-3/figures.md",
+      "term": "Forfait overige bezittingen"
+    },
+    {
+      "gloss": "customary salary",
+      "source": "https://wetten.overheid.nl/BWBR0002471/2022-01-01 art. 12a",
+      "source_file": "references/tax-rules/2022/box-2/figures.md",
+      "term": "Gebruikelijk loon"
+    },
+    {
+      "gloss": "tax credit",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/heffingskortingen, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1, https://wetten.overheid.nl/BWBR0011353/2025-01-01",
+      "source_file": "references/tax-rules/2025/income-tax/figures.md",
+      "term": "Heffingskorting"
+    },
+    {
+      "gloss": "tax-free allowance",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen https://wetten.overheid.nl/BWBR0011353/2022-01-01",
+      "source_file": "references/tax-rules/2022/box-3/figures.md",
+      "term": "Heffingsvrij vermogen"
+    },
+    {
+      "gloss": "annual allowance",
+      "source": "https://wetten.overheid.nl/BWBR0011353/2022-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127",
+      "source_file": "references/tax-rules/2022/pension-and-disability-insurance/figures.md",
+      "term": "Jaarruimte"
+    },
+    {
+      "gloss": "mileage allowance",
+      "source": "https://wetten.overheid.nl/BWBR0011353/2022-01-01 (art. 3.15 lid 6 and art. 3.17 lid 1 onderdeel b)",
+      "source_file": "references/tax-rules/2022/costs-and-car/figures.md",
+      "term": "Kilometervergoeding"
+    },
+    {
+      "gloss": "green investment credit",
+      "source": "https://wetten.overheid.nl/BWBR0011353/2022-01-01",
+      "source_file": "references/tax-rules/2022/box-3/figures.md",
+      "term": "Korting groene beleggingen"
+    },
+    {
+      "gloss": "annuity",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/uitgaven_voor_inkomensvoorzieningen",
+      "source_file": "references/tax-rules/2022/pension-and-disability-insurance/figures.md",
+      "term": "Lijfrente"
+    },
+    {
+      "gloss": "SME profit exemption",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/mkb_winstvrijstelling",
+      "source_file": "references/tax-rules/2022/income-tax/figures.md",
+      "term": "MKB-winstvrijstelling"
+    },
+    {
+      "gloss": "meewerkende partner deduction",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek",
+      "source_file": "references/tax-rules/2022/health-insurance-contribution/figures.md",
+      "term": "Meewerkaftrek"
+    },
+    {
+      "gloss": "additional assessment",
+      "source": "https://wetten.overheid.nl/BWBR0002320/2026-01-01",
+      "source_file": "references/tax-rules/2022/procedure/figures.md",
+      "term": "Navordering"
+    },
+    {
+      "gloss": "entrepreneur deduction",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek",
+      "source_file": "references/tax-rules/2022/income-tax/figures.md",
+      "term": "Ondernemersaftrek"
+    },
+    {
+      "gloss": "old-age reserve",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/winst_en_verliesrekening_en_balans",
+      "source_file": "references/tax-rules/2022/income-tax/figures.md",
+      "term": "Oudedagsreserve"
+    },
+    {
+      "gloss": "personal deductions",
+      "source": "https://zoek.officielebekendmakingen.nl/stb-2025-195.html",
+      "source_file": "references/tax-rules/2023/box-3/figures.md",
+      "term": "Persoonsgebonden aftrek"
+    },
+    {
+      "gloss": "national insurance contribution",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/premie_volksverzekeringen",
+      "source_file": "references/tax-rules/2022/income-tax/figures.md",
+      "term": "Premie volksverzekeringen"
+    },
+    {
+      "gloss": "reserve room",
+      "source": "https://wetten.overheid.nl/BWBR0011353/2022-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127",
+      "source_file": "references/tax-rules/2022/pension-and-disability-insurance/figures.md",
+      "term": "Reserveringsruimte"
+    },
+    {
+      "gloss": "business transfer",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_wijzigen_of_beeindigen/uw_onderneming_wijzigt_van_rechtsvorm/uw_onderneming_wijzigt_van_rechtsvorm en https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.79)",
+      "source_file": "references/tax-rules/2020/private-company-and-corporate-tax/figures.md",
+      "term": "Ruisende inbreng"
+    },
+    {
+      "gloss": "study costs",
+      "source": "https://wetten.overheid.nl/BWBR0011353/2021-01-01",
+      "source_file": "references/tax-rules/2021/costs-and-car/figures.md",
+      "term": "Scholingsuitgaven"
+    },
+    {
+      "gloss": "debt threshold",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/bezittingen_en_schulden_box_3_ https://wetten.overheid.nl/BWBR0011353/2022-01-01",
+      "source_file": "references/tax-rules/2022/box-3/figures.md",
+      "term": "Schuldendrempel"
+    },
+    {
+      "gloss": "business cessation deduction",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek",
+      "source_file": "references/tax-rules/2022/health-insurance-contribution/figures.md",
+      "term": "Stakingsaftrek"
+    },
+    {
+      "gloss": "starter's deduction",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek",
+      "source_file": "references/tax-rules/2022/health-insurance-contribution/figures.md",
+      "term": "Startersaftrek"
+    },
+    {
+      "gloss": "rate adjustment",
+      "source": "https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 2.10 lid 2",
+      "source_file": "references/tax-rules/2022/income-tax/figures.md",
+      "term": "Tariefsaanpassing"
+    },
+    {
+      "gloss": "deferral",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/programmas_en_formulieren/aanvraag-uitstel-aangifte-inkomstenbelasting",
+      "source_file": "references/tax-rules/2022/procedure/figures.md",
+      "term": "Uitstel"
+    },
+    {
+      "gloss": "hours criterion",
+      "source": "https://wetten.overheid.nl/BWBR0011353/2022-01-01 (art. 3.6)",
+      "source_file": "references/tax-rules/2022/business-deductions/figures.md",
+      "term": "Urencriterium"
+    },
+    {
+      "gloss": "corporate income tax",
+      "source": "https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 22)",
+      "source_file": "references/tax-rules/2024/private-company-and-corporate-tax/figures.md",
+      "term": "Vennootschapsbelasting"
+    },
+    {
+      "gloss": "green investment exemption",
+      "source": "https://wetten.overheid.nl/BWBR0011353/2022-01-01 https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/bezittingen_en_schulden_box_3_",
+      "source_file": "references/tax-rules/2022/box-3/figures.md",
+      "term": "Vrijstelling groene beleggingen"
+    },
+    {
+      "gloss": "employer health insurance contribution",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/inkomensafhankelijke_bijdrage_zorgverzekeringswet",
+      "source_file": "references/tax-rules/2022/private-company-and-corporate-tax/figures.md",
+      "term": "Werkgeversheffing Zvw"
+    },
+    {
+      "gloss": "home workspace",
+      "source": "https://wetten.overheid.nl/BWBR0011353/2022-01-01 (art. 3.16 lid 1 and lid 13)",
+      "source_file": "references/tax-rules/2022/costs-and-car/figures.md",
+      "term": "Werkruimte thuis"
+    },
+    {
+      "gloss": "random depreciation",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/veranderingen-vennootschapsbelasting-vorige-jaren/veranderingen-vennootschapsbelasting-2023",
+      "source_file": "references/tax-rules/2023/private-company-and-corporate-tax/figures.md",
+      "term": "Willekeurige afschrijving"
+    },
+    {
+      "gloss": "self-employed person's deduction",
+      "source": "https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek",
+      "source_file": "references/tax-rules/2022/health-insurance-contribution/figures.md",
+      "term": "Zelfstandigenaftrek"
+    }
+  ]
+}

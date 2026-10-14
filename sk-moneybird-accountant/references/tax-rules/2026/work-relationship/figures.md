@@ -36,6 +36,38 @@ This file covers the work relationship rules for a ZZP sole trader and for a BV 
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Wet DBA and the loondienst test | 1 |
+| Fictieve dienstbetrekkingen and the opt-out | 2 |
+| End of the moratorium | 3 |
+| Ingroeimodel | 4 |
+| DBA enforcement 2026 | 5 |
+| Handhavingsplan Arbeidsrelaties 2026 | 6 |
+| Regular handhaving ambition | 7 |
+| Doorwerking to IH and OB for the opdrachtnemer | 8 |
+| Vooroverleg | 9 |
+| Modelovereenkomsten | 10 |
+| Webmodule Beoordeling Arbeidsrelatie | 11 |
+| Case law on the arbeidsovereenkomst | 12 |
+| VBAR act and scope | 13 |
+| VBAR procedure and votes | 14 |
+| VBAR statutory hourly amount | 15 |
+| VBAR indexed hourly amount | 16 |
+| VBAR first-application regulation | 17 |
+| WML at 1 January 2025 used in the VBAR base | 18 |
+| WML from 1 January 2026 and 1 July 2026 | 19 |
+| Zelfstandigenwet | 20 |
+| BAZ bill 36 912 | 21 |
+| BAZ waiting period in bill text | 22 |
+| Belastingrente (tax interest) IB and btw 2026 | 23 |
+| Payment terms 2026 | 24 |
+| Bewaarplicht (record-keeping duty) | 25 |
+| KVK and Belastingdienst registration | 26 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
 | Wet DBA and the loondienst test | Wet van 3 februari 2016, in force 1 May 2016, replaced the VAR. Loondienst has three elements: the possibility of werkgeversgezag, the duty to perform (persoonlijke) arbeid, and pay for the work. Courts weigh the nature and duration of the work, how work and working hours are set, embedding in the organisation, the duty to work personally, how the agreements were made, how pay is set and paid and its level, commercial risk, and how far the opdrachtnemer acts or can act as an entrepreneur. | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst |

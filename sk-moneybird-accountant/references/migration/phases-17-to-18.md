@@ -1,6 +1,7 @@
 ---
 title: Migration phases 17 to 18
 description: Source freeze, archive readiness, and the live switch.
+nav_label: "Migration phases 17 to 18"
 trigger_phrases:
   - Jortt to Moneybird migration
   - migration phase gate and exit criteria

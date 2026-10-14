@@ -36,6 +36,34 @@ This file covers the ondernemersaftrek (entrepreneur's deductions) and the MKB-w
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Urencriterium (hours criterion) | 1 |
+| Second test waived, lookback | 2 |
+| Verlaagd urencriterium | 3 |
+| Pregnancy | 4 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 5 |
+| Zelfstandigenaftrek at AOW age | 6 |
+| Startersaftrek (starter's deduction) | 7 |
+| Startersaftrek at AOW age | 8 |
+| Startersaftrek prior-years condition | 9 |
+| Startersaftrek bij arbeidsongeschiktheid | 10 |
+| Aftrek speur- en ontwikkelingswerk | 11 |
+| S&O starter increase | 12 |
+| MKB-winstvrijstelling (SME profit exemption) | 13 |
+| Meewerkaftrek (meewerkende partner deduction) bands | 14 |
+| Meewerkaftrek partner pay limit | 15 |
+| Stakingsaftrek (business cessation deduction) | 16 |
+| Oudedagsreserve (old-age reserve) addition percentage | 17 |
+| Oudedagsreserve addition maximum | 18 |
+| Tariefsaanpassing (rate adjustment) | 19 |
+| Maximum value of the ondernemersaftrek and the MKB-winstvrijstelling | 20 |
+| Zvw self-assessed rate | 21 |
+| Zvw maximum contribution income | 22 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
 | Urencriterium | 1.225 hours | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.6 lid 1) |

@@ -36,6 +36,24 @@ This file covers the inkomensafhankelijke bijdrage Zvw, the income-dependent con
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Maximum bijdrage-inkomen | 1 |
+| Bijdrage Zvw by aanslag | 2 |
+| Ingehouden bijdrage Zvw | 3 |
+| Werkgeversheffing Zvw (employer health insurance contribution) | 4 |
+| Zvw-grondslag for a winst-ondernemer | 5 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 6 |
+| Startersaftrek (starter's deduction) | 7 |
+| Startersaftrek bij arbeidsongeschiktheid | 8 |
+| Meewerkaftrek (meewerkende partner deduction) | 9 |
+| Stakingsaftrek (business cessation deduction) | 10 |
+| MKB-winstvrijstelling (SME profit exemption) | 11 |
+| Oudedagsreserve (old-age reserve) | 12 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
 | Maximum bijdrage-inkomen | € 66.956 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet |

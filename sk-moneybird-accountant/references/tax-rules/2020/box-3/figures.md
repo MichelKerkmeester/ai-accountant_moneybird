@@ -36,6 +36,30 @@ In 2020 box 3 tax is calculated with the old band method (oude berekening) over 
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Peildatum (reference date) | 1 |
+| Heffingsvrij vermogen (tax-free allowance) (tax-free capital) | 2 |
+| Schuldendrempel (debt threshold) (debt threshold) | 3 |
+| Box 3 tarief (rate) | 4 |
+| Rendementsklasse percentages (return classes) | 5 |
+| Band 1 | 6 |
+| Band 2 | 7 |
+| Band 3 | 8 |
+| Rechtsherstel category percentages (restoration of rights) | 9 |
+| Rechtsherstel scope 2020 | 10 |
+| Most favourable method | 11 |
+| Kerstarrest 24 December 2021 | 12 |
+| Hoge Raad 6 June 2024 | 13 |
+| Vrijstelling groene beleggingen (green investment exemption) (green investment exemption) | 14 |
+| Korting groene beleggingen (green investment credit) (green investment tax credit) | 15 |
+| Actual-return reporting 2020 | 16 |
+| Tegenbewijsregeling inside Wet rechtsherstel | 17 |
+| Hoge Raad 25 June 2026 | 18 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
 | Peildatum (reference date) | 1 January 2020 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/bezittingen_en_schulden_box_3_ |

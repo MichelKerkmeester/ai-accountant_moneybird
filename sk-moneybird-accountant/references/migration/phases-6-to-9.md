@@ -1,6 +1,7 @@
 ---
 title: Migration phases 6 to 9
 description: Mapping, pilot, historical batches, and VAT verification.
+nav_label: "Migration phases 6 to 9"
 trigger_phrases:
   - Jortt to Moneybird migration
   - migration phase gate and exit criteria

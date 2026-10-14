@@ -36,6 +36,35 @@ The ondernemersaftrek (entrepreneur's allowance) has five parts in art. 3.74: th
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Urencriterium (hours criterion) | 1 |
+| Tweede toets, terugkijkperiode | 2 |
+| Verlaagd urencriterium | 3 |
+| Zwangerschap telt als gewerkte uren | 4 |
+| Samenwerkingsverband met verbonden personen, voornamelijk ondersteunend | 5 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 6 |
+| Zelfstandigenaftrek op AOW-leeftijd | 7 |
+| Startersaftrek (starter's deduction) | 8 |
+| Startersaftrek op AOW-leeftijd | 9 |
+| Startersaftrek, voorwaarde eerdere jaren | 10 |
+| Startersaftrek bij arbeidsongeschiktheid | 11 |
+| Aftrek speur- en ontwikkelingswerk | 12 |
+| S&O startersverhoging | 13 |
+| Aftrek S&O, voorwaarden | 14 |
+| MKB-winstvrijstelling (SME profit exemption) | 15 |
+| Meewerkaftrek (meewerkende partner deduction), bands | 16 |
+| Partnerbeloning onder € 5.000 | 17 |
+| Stakingsaftrek (business cessation deduction) | 18 |
+| Oudedagsreserve (old-age reserve), toevoegingen | 19 |
+| Oudedagsreserve, toevoeging in een gebroken boekjaar eindigend in 2023 | 20 |
+| Oudedagsreserve, lijfrentepremies | 21 |
+| Tariefsaanpassing (rate adjustment) | 22 |
+| Maximum value of the ondernemersaftrek and the MKB-winstvrijstelling | 23 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
 | Urencriterium | 1.225 hours | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |

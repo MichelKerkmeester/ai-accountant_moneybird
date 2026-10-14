@@ -1,6 +1,7 @@
 ---
 title: Migration phases 0 to 2
 description: Safety, source inventory, and evidence collection.
+nav_label: "Migration phases 0 to 2"
 trigger_phrases:
   - Jortt to Moneybird migration
   - migration phase gate and exit criteria

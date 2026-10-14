@@ -3,6 +3,7 @@ name: cli-jortt
 description: Routes Jortt bookkeeping through jortt-cli over REST for read-only migration extraction.
 allowed-tools: [Bash, Read, Write, Edit, Glob, Grep]
 version: 1.0.0.0
+nav_label: "Jortt CLI"
 ---
 
 <!-- Keywords: jortt, jortt-cli, Jortt bookkeeping, Jortt extraction, Jortt REST API, Jortt invoices, Jortt expenses, Jortt receipts, Jortt bank transactions, Jortt XAF auditfile, accounting migration, Moneybird migration, source register -->
@@ -332,7 +333,7 @@ Copy the local `.env.example` to `.env` and fill the Jortt client values from `a
 
 ## 8. REFERENCES AND RELATED RESOURCES
 
-The router discovers reference, catalog and playbook docs at call time. Start with `references/cli.md` and `references/rest-api.md`, then load task-specific resources according to Section 2.
+The router discovers reference, catalog and playbook docs at call time. Start with `references/cli.md` and `references/rest-api.md`, then load task-specific resources according to [Section 2](#2-smart-routing).
 
 Scripts: `scripts/doctor.sh` for the offline doctor and `cli/jortt-cli/setup.sh` for the CLI prerequisite check.
 

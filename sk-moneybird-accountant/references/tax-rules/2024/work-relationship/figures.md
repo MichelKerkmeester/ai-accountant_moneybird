@@ -36,6 +36,41 @@ This file covers the work relationship (arbeidsrelatie) part of a ZZP sole trade
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Wet DBA | 1 |
+| Staatsblad 2016, 165 | 2 |
+| Fictieve dienstbetrekking gelijkgestelden | 3 |
+| DBA enforcement regime 2024 | 4 |
+| Aanwijzing under the moratorium | 5 |
+| End of the moratorium | 6 |
+| Lifting of the moratorium announced | 7 |
+| Moties shaping the zachte landing | 8 |
+| Handhavingsplan 2024 | 9 |
+| Handhavingsplan tranche 2025 | 10 |
+| Beslis- en afwegingskader privaatrechtelijke dienstbetrekking | 11 |
+| Modelovereenkomsten | 12 |
+| Modelovereenkomst vrije vervanging | 13 |
+| Webmodule Beoordeling Arbeidsrelatie | 14 |
+| Case law | 15 |
+| VBAR in preparation in 2024 | 16 |
+| VBAR hourly presumption | 17 |
+| VBAR amount build-up | 18 |
+| VBAR indexed amount | 19 |
+| WML at 1 January 2025 | 20 |
+| WML at 1 January 2026 | 21 |
+| VBAR later enactment | 22 |
+| IB return 2024 filing deadline | 23 |
+| IB return 2024 with uitstel | 24 |
+| Definitive aanslag 2024 latest | 25 |
+| Belastingrente (tax interest) rate 2024 | 26 |
+| Belastingrente on tax year 2024 IB | 27 |
+| Payment terms 2024 | 28 |
+| Bewaarplicht (record-keeping duty) | 29 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
 | Wet DBA | Wet van 3 februari 2016, entered into force on 1 May 2016 and replaced the VAR | enacted | Verified | https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file |

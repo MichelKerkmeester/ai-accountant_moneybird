@@ -1,6 +1,7 @@
 ---
 title: Migration phases 3 to 5
 description: Independent reconstruction, reconciliation, and anomaly review.
+nav_label: "Migration phases 3 to 5"
 trigger_phrases:
   - Jortt to Moneybird migration
   - migration phase gate and exit criteria

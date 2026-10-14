@@ -1,6 +1,7 @@
 ---
 title: Yearly overview preparation checklist
 description: The ordered close checklist for a Dutch sole-trader yearly overview. The auditfile evidence gate comes first, then the close checks, the year-end closing mechanics, the equity-continuity check and the exception list.
+nav_label: "Yearly overview preparation checklist"
 trigger_phrases:
   - yearly overview checklist
   - jaarafsluiting checklist

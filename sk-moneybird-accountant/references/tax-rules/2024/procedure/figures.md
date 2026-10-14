@@ -36,6 +36,38 @@ This file covers the procedural side of tax year 2024 for a sole trader, the fil
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Income tax return 2024, filing deadline | 1 |
+| Income tax return 2024 with uitstel | 2 |
+| Uitstel (deferral) request | 3 |
+| Filing period opens | 4 |
+| Definitive aanslag 2024 latest | 5 |
+| Aanslaggrens and teruggaafgrens 2024 | 6 |
+| Filing the 2024 return without an invitation | 7 |
+| Navorderingstermijn | 8 |
+| Payment termijn of an aanslag | 9 |
+| Payment termijnen of a voorlopige aanslag | 10 |
+| Voorlopige aanslag 2024, request and change | 11 |
+| Belastingrente (tax interest) rate 2024 | 12 |
+| Belastingrente on tax year 2024 income tax | 13 |
+| Belastingrente income tax, day count | 14 |
+| Belastingrente on btw | 15 |
+| Bezwaartermijn (objection period) | 16 |
+| Verzoek om vermindering | 17 |
+| Income tax boetes 2024 | 18 |
+| Btw verzuimboete 2024 | 19 |
+| Btw monthly dates 2024 | 20 |
+| Btw quarterly dates 2024 | 21 |
+| Btw yearly return 2024 | 22 |
+| Btw submission window | 23 |
+| Uitstel for a btw return | 24 |
+| Bewaarplicht (record-keeping duty) | 25 |
+| KVK and Belastingdienst registration | 26 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
 | Income tax return 2024, filing deadline | Before 1 May 2025, the date in the aangiftebrief decides. Uitstel could be requested until 1 May 2025 | enacted | Corrected | https://web.archive.org/web/20250522/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/kan-ik-nog-uitstel-aanvragen-belastingaangifte |

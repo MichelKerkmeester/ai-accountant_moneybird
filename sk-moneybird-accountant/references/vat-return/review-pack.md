@@ -1,6 +1,7 @@
 ---
 title: VAT return review pack
 description: The output contract for a prepared VAT period. The nine pack blocks P1 to P9, the three confirmation parts C1 to C3, the deadline and payment block, the escalation list and Moneybird's five filing-time product checks.
+nav_label: "VAT return review pack"
 trigger_phrases:
   - VAT return review pack
   - btw-aangifte controle

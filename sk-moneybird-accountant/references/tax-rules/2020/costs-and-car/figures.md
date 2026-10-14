@@ -37,6 +37,36 @@ This file covers the deduction of business costs and the car rules for a ZZP sol
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Gemengde kosten drempel (art. 3.15 lid 1) | 1 |
+| Keuze in plaats van de drempel (art. 3.15 lid 5) | 2 |
+| Vpb variant van de drempel (art. 8 lid 5 Wet Vpb 1969) | 3 |
+| Reis en verblijf voor congressen en cursussen (art. 3.16 lid 2 f en lid 8) | 4 |
+| Kilometervergoeding (mileage allowance) privévervoermiddel (art. 3.15 lid 6 en art. 3.17 lid 1 b) | 5 |
+| Openbaar vervoer, taxi en vliegtuig | 6 |
+| Verhuizing en dubbele huisvesting (art. 3.17 lid 1 a) | 7 |
+| Bijtelling (private-use addition) auto, standaard (art. 3.20 lid 1 a) | 8 |
+| Bijtelling auto, auto van voor 2017 (art. 10a.4) | 9 |
+| Youngtimer (art. 3.20 lid 1 b) | 10 |
+| Zero-emissie auto, first admission 2020 (art. 3.20 lid 2) | 11 |
+| 500 km private use (art. 3.20 lid 1) | 12 |
+| Bijtelling fiets (art. 3.20a) | 13 |
+| Werkruimte thuis (home workspace) (art. 3.16 lid 1 en lid 13) | 14 |
+| Telefoonabonnement thuis (art. 3.16 lid 2 a) | 15 |
+| Kleding en persoonlijke verzorging (art. 3.16 lid 2 c en d) | 16 |
+| Literatuur (art. 3.16 lid 2 b) | 17 |
+| Private computers en apparatuur (art. 3.16 lid 3) | 18 |
+| Loon partner (art. 3.16 lid 4) | 19 |
+| Kleine aanschaffingen (€ 450 rule) | 20 |
+| Scholingsuitgaven (study costs) drempel (art. 6.30) | 21 |
+| Scholingsuitgaven maximum buiten standaardstudieperiode (art. 6.30) | 22 |
+| Geldboetes en dwangsommen (art. 3.14 lid 1 c en i) | 23 |
+| Btw-correctie privégebruik auto zonder sluitende kilometeradministratie | 24 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
 | Gemengde kosten drempel (art. 3.15 lid 1) | € 4.700 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.15 lid 1) |

@@ -1,6 +1,7 @@
 ---
 title: "Changes tax year 2025"
 description: "What changed in tax year 2025 compared with 2024, restated from section 5 of the year topic files, with a generated index of every topic."
+nav_label: "Changes tax year 2025"
 trigger_phrases:
   - "changes tax year 2025"
   - "what changed in 2025"
@@ -38,13 +39,13 @@ checked_on: "2026-10-12"
 | [vat.md](vat/notes.md#5-changes) | 7 | The KOR changed from the previous scheme, which tested turnover in the current... |
 | [income-tax.md](income-tax/notes.md#5-changes) | 18 | The published below-AOW box 1 table changed from 36,97% up to € 75.518 and... |
 | [health-insurance-contribution.md](health-insurance-contribution/notes.md#5-changes) | 13 | Zvw-bijdrage by aanslag: 5,32% in 2024 to 5,26% in 2025... |
-| [business-deductions.md](business-deductions/notes.md#5-changes) | 9 | Zelfstandigenaftrek: € 3.750 in 2024 to € 2.470 in 2025. Source: [art. 3.76... |
+| [business-deductions.md](business-deductions/notes.md#5-changes) | 9 | Zelfstandigenaftrek (self-employed person's deduction): € 3.750 in 2024 to € 2.470 in 2025. Source: [art. 3.76... |
 | [investments.md](investments/notes.md#5-changes) | 7 | KIA table, every amount moves up. The window start goes from € 2.800 to €... |
 | [costs-and-car.md](costs-and-car/notes.md#5-changes) | 5 | Gemengde kosten drempel: € 5.600 in 2024 to € 5.700 in 2025 ([2024... |
-| [box-3.md](box-3/notes.md#5-changes) | 11 | Heffingsvrij vermogen: € 57.000 to € 57.684 per person, and € 114.000 to €... |
+| [box-3.md](box-3/notes.md#5-changes) | 11 | Heffingsvrij vermogen (tax-free allowance): € 57.000 to € 57.684 per person, and € 114.000 to €... |
 | [box-2.md](box-2/notes.md#5-changes) | 12 | Box 2 bracket 2 rate: 33% in 2024 to 31% in 2025. Belastingplan 2025... |
 | [private-company-and-corporate-tax.md](private-company-and-corporate-tax/notes.md#5-changes) | 15 | Generieke renteaftrekbeperking: the art. 15b percentage goes from 20% in 2024... |
 | [pension-and-disability-insurance.md](pension-and-disability-insurance/notes.md#5-changes) | 17 | Maximum jaarruimte: € 36.077 in 2024 to € 35.798 in 2025. Source... |
 | [work-relationship.md](work-relationship/notes.md#5-changes) | 9 | Handhavingsmoratorium: 2024 was the last year of the moratorium. From 1 January... |
-| [procedure.md](procedure/notes.md#5-changes) | 12 | Belastingrente for IB and btw: 7,5% in 2024 to 6,5% in 2025, then 5% from 1... |
+| [procedure.md](procedure/notes.md#5-changes) | 12 | Belastingrente (tax interest) for IB and btw: 7,5% in 2024 to 6,5% in 2025, then 5% from 1... |
 <!-- GENERATED:changes:end -->

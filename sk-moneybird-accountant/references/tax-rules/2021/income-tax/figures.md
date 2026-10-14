@@ -36,6 +36,36 @@ This file covers the 2021 box 1 rates, the variants for people at AOW age, the h
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Box 1 below AOW age | 1 |
+| Box 1 whole year AOW age, born on or after 1 January 1946 | 2 |
+| Box 1 whole year AOW age, born before 1 January 1946 | 3 |
+| First-bracket rate when AOW age is reached in 2021 | 4 |
+| Premie volksverzekeringen (national insurance contribution) ceiling and components | 5 |
+| Tariefsaanpassing (rate adjustment) | 6 |
+| Algemene heffingskorting (general tax credit) below AOW age | 7 |
+| Algemene heffingskorting whole year AOW age | 8 |
+| Arbeidskorting (employment tax credit) below AOW age | 9 |
+| Arbeidskorting whole year AOW age | 10 |
+| Inkomensafhankelijke combinatiekorting (IACK) | 11 |
+| IACK child and co-ouder test | 12 |
+| Payout afbouw to a minstverdienende partner | 13 |
+| Payout income limits | 14 |
+| IACK payout percentage | 15 |
+| Belastingdeel and premiedelen | 16 |
+| Heffingskortingen in the AOW transition year 2021 | 17 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 18 |
+| Startersaftrek (starter's deduction) | 19 |
+| Startersaftrek bij arbeidsongeschiktheid | 20 |
+| Meewerkaftrek (meewerkende partner deduction) | 21 |
+| Stakingsaftrek (business cessation deduction) | 22 |
+| MKB-winstvrijstelling (SME profit exemption) | 23 |
+| Oudedagsreserve (old-age reserve) addition | 24 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 1 below AOW age | 37,10% up to € 68.507, 49,50% above. Statute: 9,45% up to € 35.129, then € 3.319 plus 37,10% up to € 68.507, then € 15.702 plus 49,50%. | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/belastingberekening and https://wetten.overheid.nl/BWBR0011353/2021-01-01 |

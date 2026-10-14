@@ -182,8 +182,13 @@ CODE_FENCE_PREFIXES = ("```", "~~~")
 HEADING_RE = re.compile(r"^(#{1,6})[ \t]+(.*?)[ \t]*$")
 NUMBERED_RE = re.compile(r"^(\d+)[.)]?[ \t]+(.*)$")
 FRONTMATTER_FIELD_RE = re.compile(r"^([A-Za-z_][A-Za-z0-9_-]*):[ \t]*(.*)$")
+ANCHOR_LINE_RE = re.compile(r'^<a id="[^"]+"></a>$')
 SLUG_RE = re.compile(r"[^\w\s-]", re.UNICODE)
 SPACE_RE = re.compile(r"\s+")
+
+# The token baseline is read once per run and consulted by the item index,
+# the answer surface and the fence token values.
+BASELINE: Optional[Dict[str, Any]] = None
 
 # Fallback id for a whole-file difference that no single block explains. It
 # never fires while every write goes through the fence replacement.
@@ -250,6 +255,46 @@ NAV_HEADING_LEVELS = (2, 3)
 # WHY: every round can only move the first boundary back, at most once per
 # heading, so the round cap is a guard and never the stop of a real plan.
 NAV_MAX_ROUNDS = 4096
+
+# The item index sits inside the section that holds the KEY FIGURES table, one
+# row per value, so a reader jumps to a row without reading the whole table.
+# The row number counts the value rows alone, so the body never depends on its
+# own size and one run settles it.
+ITEM_INDEX_BLOCK_ID = "key-figure-index"
+ITEM_INDEX_HEADER = "| Item | row |"
+ITEM_INDEX_SEPARATOR = "|---|---|"
+
+# The token baseline is the generator's second input. The fence token values
+# and the answerSurface token count come from it, so a value that disagrees
+# with its baseline row fails --check. A missing baseline leaves the token
+# text out, which keeps a fixture tree without one stable.
+BASELINE_PATH = os.path.join(SKILL_ROOT, "benchmark", "token-baseline.json")
+LEAD_ENCODING_FIELD = "lead_encoding"
+
+# The term map holds one entry per Dutch term that appears in a generated
+# table, with the English gloss a reader sees on its first use and the source
+# the owning year file cites. A term without a source does not land.
+TERM_MAP_PATH = os.path.join(SKILL_ROOT, "assets", "term-map.json")
+TERMS: List[Tuple[str, str]] = []
+
+# The references root gets one generated landing page with three per-group
+# blocks, so a reader enters the tree at one page instead of a bare listing.
+# A block over its byte cap fails --check, which is what keeps the page
+# readable in part.
+LANDING_NAME = "README.md"
+LANDING_PATH = "README.md"
+LANDING_BLOCK_LIMIT = 4096
+LANDING_TITLE = "Reference library"
+LANDING_DESCRIPTION = (
+    "Generated index of the reference tree: the tax year folders, the tax-rule top-level "
+    "files and the migration files, with the description each file carries."
+)
+LANDING_INTRO = (
+    "Generated landing page for the reference tree. Every row comes from the frontmatter "
+    "description of the file it names, so one regeneration picks up a new file or a changed "
+    "description. A folder README belongs to the folder that owns it, and the task-type "
+    "table in SKILL.md routes a request to its file."
+)
 
 # The guide gets a list of its sections with the line range of each on the
 # final file. It sits right after the read plan, so a plan of another length
@@ -765,8 +810,9 @@ def index_entry(path: str, text: str) -> Dict[str, Any]:
         text: File text after every block body is applied.
 
     Returns:
-        A row with the path, the H1 title, the byte count, the line count and
-        the H2 sections. It holds structure only, never a figure.
+        A row with the path, the H1 title, the byte count, the line count,
+        the H2 sections and the answer surface. It holds structure only,
+        never a figure.
     """
     title, sections = scan_sections(text)
     return {
@@ -775,6 +821,7 @@ def index_entry(path: str, text: str) -> Dict[str, Any]:
         "bytes": len(text.encode("utf-8")),
         "lines": len(line_spans(text)),
         "sections": sections,
+        "answerSurface": key_figures_section({"path": path, "text": text}),
     }
 
 
@@ -989,6 +1036,18 @@ def year_changes_path(files: List[Dict[str, Any]]) -> str:
     return os.path.join(os.path.dirname(guide_file(files)["path"]), YEAR_CHANGES_NAME).replace(os.sep, "/")
 
 
+def read_landing() -> Optional[str]:
+    """Read the current landing page text.
+
+    Returns:
+        The landing page text, or None when the file does not exist yet.
+    """
+    path = os.path.join(REFERENCES_ROOT, LANDING_PATH)
+    if not os.path.isfile(path):
+        return None
+    return read_text(path)
+
+
 def read_year_changes(relative: str) -> Optional[str]:
     """Read the current year change overview text.
 
@@ -1038,17 +1097,20 @@ def heading_index(spans: List[Tuple[int, str, int, int]], heading: str) -> Optio
 
 
 def table_spans(
-    spans: List[Tuple[int, str, int, int]], heading: str
+    spans: List[Tuple[int, str, int, int]], heading: str, skip_blocks: Tuple[str, ...] = ()
 ) -> Optional[List[Tuple[int, str, int, int]]]:
     """Return the line spans of the first table under a heading.
 
     The table runs from its header line to its last row line. The next
     heading, a blank line or any other line ends the search, so a later table
-    in the same section is not picked up.
+    in the same section is not picked up. A line inside one of the skipped
+    generated blocks is left out, so a block that sits above a table does not
+    hide it.
 
     Args:
         spans: Result of line_spans().
         heading: Keyword that names the heading that owns the table.
+        skip_blocks: Fence ids whose body lines the scan steps over.
 
     Returns:
         The spans of the header line, the separator line and the row lines, in
@@ -1058,8 +1120,26 @@ def table_spans(
     start = heading_index(spans, heading)
     if start is None:
         return None
+    skipped: Set[int] = set()
+    opened: Optional[str] = None
+    for number, content, _, _ in spans:
+        match = FENCE_START_RE.match(content)
+        if match:
+            if match.group(1) in skip_blocks:
+                opened = match.group(1)
+                skipped.add(number)
+            continue
+        match = FENCE_END_RE.match(content)
+        if match and opened == match.group(1):
+            skipped.add(number)
+            opened = None
+            continue
+        if opened is not None:
+            skipped.add(number)
     table: List[Tuple[int, str, int, int]] = []
     for span in spans[start + 1:]:
+        if span[0] in skipped:
+            continue
         if span[1].startswith("#"):
             break
         if not span[1].startswith("|"):
@@ -1085,7 +1165,9 @@ def key_figures(file: Dict[str, Any]) -> Dict[str, Any]:
         SystemExit: If the file has no KEY FIGURES table, or the table has no
             separator line, Status column or Check column.
     """
-    table = table_spans(line_spans(file["text"]), KEY_FIGURES_HEADING)
+    table = table_spans(
+        line_spans(file["text"]), KEY_FIGURES_HEADING, skip_blocks=(ITEM_INDEX_BLOCK_ID,)
+    )
     if table is None:
         fail("no %s table in %s" % (KEY_FIGURES_HEADING, file["path"]))
     if not TABLE_SEPARATOR_RE.match(table[1][1].strip()):
@@ -1472,7 +1554,7 @@ def topic_files_row(record: Dict[str, Any]) -> str:
     not_enacted = sum(
         1 for row in rows if figure_cell(record, row, "Status") != ENACTED_STATUS
     )
-    return "| [%s](%s) | %s | %d | %d | %d |" % (
+    line = "| [%s](%s) | %s | %d | %d | %d |" % (
         record["name"],
         record["link"],
         record["description"],
@@ -1480,6 +1562,7 @@ def topic_files_row(record: Dict[str, Any]) -> str:
         unverified,
         not_enacted,
     )
+    return gloss_cell(line, record["used"])
 
 
 @register_block("topic-files", anchor=readme_table_anchor(TOPIC_FILES_HEADING))
@@ -1496,6 +1579,8 @@ def topic_files_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
     grouped = year_topics({file["path"]: file for file in files})
     bodies: Dict[str, str] = {}
     for readme in sorted(grouped):
+        for record in grouped[readme]:
+            record["used"] = set()
         rows = [topic_files_row(record) for record in grouped[readme]]
         bodies[readme] = table_text(TOPIC_FILES_HEADER, rows)
     return bodies
@@ -1519,25 +1604,473 @@ def headline_figures_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
     for readme in sorted(grouped):
         rows: List[str] = []
         value_header = ""
+        used: Set[str] = set()
         for record in grouped[readme]:
             value_column, figures = headline_figures(record)
             if not value_header:
                 value_header = value_column
             for figure in figures:
                 rows.append(
-                    "| %s | %s | %s | %s | %s |"
-                    % (
-                        record["nav_label"],
-                        figure["item"],
-                        figure["value"],
-                        figure["status"],
-                        figure["check"],
+                    gloss_cell(
+                        "| %s | %s | %s | %s | %s |"
+                        % (
+                            record["nav_label"],
+                            figure["item"],
+                            figure["value"],
+                            figure["status"],
+                            figure["check"],
+                        ),
+                        used,
                     )
                 )
         bodies[readme] = table_text(
             "| Topic | Item | %s | Status | Check |" % value_header, rows
         )
     return bodies
+
+
+# ───────────────────────────────────────────────────────────────
+# 8b. ITEM INDEX, BASELINE VALUES AND LANDING PAGE
+# ───────────────────────────────────────────────────────────────
+
+def load_baseline() -> Optional[Dict[str, Any]]:
+    """Read the token baseline, the generator's second input.
+
+    Returns:
+        The baseline record, or None when the tree holds no baseline file.
+
+    Raises:
+        SystemExit: If the file cannot be read or holds invalid JSON.
+    """
+    if not os.path.isfile(BASELINE_PATH):
+        return None
+    try:
+        data = json.loads(read_text(BASELINE_PATH))
+    except json.JSONDecodeError as exc:
+        fail("cannot parse %s: %s" % (os.path.basename(BASELINE_PATH), exc))
+    if not isinstance(data, dict):
+        fail("%s holds no JSON object" % os.path.basename(BASELINE_PATH))
+    return data
+
+
+def baseline_lead(baseline: Optional[Dict[str, Any]]) -> str:
+    """Return the lead encoding name of a baseline.
+
+    Args:
+        baseline: Result of load_baseline(), or None.
+
+    Returns:
+        The encoding name, empty when the baseline names none.
+    """
+    if not isinstance(baseline, dict):
+        return ""
+    pin = baseline.get("pin")
+    if isinstance(pin, dict):
+        lead = pin.get(LEAD_ENCODING_FIELD)
+        if isinstance(lead, str):
+            return lead
+    return ""
+
+
+def baseline_file_rows(baseline: Optional[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    """Map the file rows of a baseline by their path.
+
+    Args:
+        baseline: Result of load_baseline(), or None.
+
+    Returns:
+        File rows keyed by the path relative to the repository root.
+    """
+    rows: Dict[str, Dict[str, Any]] = {}
+    if not isinstance(baseline, dict):
+        return rows
+    for row in baseline.get("files", []):
+        if isinstance(row, dict) and isinstance(row.get("path"), str):
+            rows[row["path"]] = row
+    return rows
+
+
+def baseline_reference_path(path: str) -> str:
+    """Return the baseline key of one reference path.
+
+    Args:
+        path: Path relative to the references root.
+
+    Returns:
+        The path relative to the repository root, the key the baseline uses.
+    """
+    return "sk-moneybird-accountant/references/" + path
+
+
+def baseline_section_tokens(
+    baseline: Optional[Dict[str, Any]], path: str, anchor: str
+) -> int:
+    """Read the lead-encoding token count of one section row.
+
+    Args:
+        baseline: Result of load_baseline(), or None.
+        path: Path relative to the references root.
+        anchor: Anchor of the section.
+
+    Returns:
+        The token count of the matching section row, zero when the baseline
+        holds no such row.
+    """
+    lead = baseline_lead(baseline)
+    row = baseline_file_rows(baseline).get(baseline_reference_path(path))
+    if not lead or not isinstance(row, dict):
+        return 0
+    for section in row.get("sections", []):
+        if isinstance(section, dict) and section.get("anchor") == anchor:
+            counts = section.get("tokens")
+            if isinstance(counts, dict) and isinstance(counts.get(lead), int):
+                return counts[lead]
+    return 0
+
+
+def fence_token_rows(baseline: Optional[Dict[str, Any]], path: str, block_id: str) -> List[Dict[str, Any]]:
+    """Read the recorded fence rows of one file and block.
+
+    Args:
+        baseline: Result of load_baseline(), or None.
+        path: Path relative to the references root.
+        block_id: Fence id, "nav" or "toc".
+
+    Returns:
+        The recorded rows in order, empty when the baseline holds none.
+    """
+    if not isinstance(baseline, dict):
+        return []
+    wanted = baseline_reference_path(path)
+    for row in baseline.get("fences", []):
+        if not isinstance(row, dict):
+            continue
+        if row.get("path") == wanted and row.get("block") == block_id:
+            parts = row.get("parts")
+            if isinstance(parts, list):
+                return [part for part in parts if isinstance(part, dict)]
+    return []
+
+
+def fence_token_text(baseline: Optional[Dict[str, Any]], row: Optional[Dict[str, Any]]) -> str:
+    """Render the token part of one fence line.
+
+    Args:
+        baseline: Result of load_baseline(), or None.
+        row: One recorded fence row, or None.
+
+    Returns:
+        ", N <encoding> tokens" when the row carries the lead count, and an
+        empty string otherwise, so a tree without a baseline keeps the line
+        it had.
+    """
+    lead = baseline_lead(baseline)
+    if not lead or not isinstance(row, dict):
+        return ""
+    counts = row.get("tokens")
+    if not isinstance(counts, dict) or not isinstance(counts.get(lead), int):
+        return ""
+    return ", %d %s tokens" % (counts[lead], lead)
+
+
+def key_figures_heading_index(file: Dict[str, Any]) -> Optional[int]:
+    """Return the span index of the heading that owns the KEY FIGURES table.
+
+    Args:
+        file: File record from load_files().
+
+    Returns:
+        The index of the heading line in line_spans(), or None when the file
+        holds no such heading.
+    """
+    return heading_index(line_spans(file["text"]), KEY_FIGURES_HEADING)
+
+
+def item_index_target(file: Dict[str, Any]) -> bool:
+    """Tell whether one file needs an item index.
+
+    Args:
+        file: File record from load_files().
+
+    Returns:
+        True for a year topic file that carries a KEY FIGURES heading.
+    """
+    if not file["path"].endswith(MARKDOWN_SUFFIX) or not is_year_topic(file["path"]):
+        return False
+    return key_figures_heading_index(file) is not None
+
+
+def item_index_anchor(file: Dict[str, Any]) -> Optional[int]:
+    """Return where --init plants the empty item index pair.
+
+    The pair sits at the top of the KEY FIGURES section: right after the
+    explicit section anchor line when one follows the heading, otherwise
+    right after the heading line itself.
+
+    Args:
+        file: File record from load_files().
+
+    Returns:
+        The offset, or None for a file that needs no item index.
+    """
+    index = key_figures_heading_index(file)
+    if index is None or not item_index_target(file):
+        return None
+    spans = line_spans(file["text"])
+    offset = spans[index][3]
+    for span in spans[index + 1:]:
+        if not span[1].strip():
+            continue
+        if ANCHOR_LINE_RE.match(span[1].strip()):
+            offset = span[3]
+        break
+    return offset
+
+
+@register_block(ITEM_INDEX_BLOCK_ID, anchor=item_index_anchor)
+def item_index_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
+    """Build the item index body of every file that holds a value table.
+
+    One row per value row of the KEY FIGURES table, in table order, with the
+    item text and the 1-based row number of the value in the table. The row
+    number counts the value rows alone, so the body never depends on its own
+    size and one write settles it.
+
+    Args:
+        files: Result of load_files().
+
+    Returns:
+        The table body keyed by the file path.
+    """
+    bodies: Dict[str, str] = {}
+    for file in files:
+        if not item_index_target(file):
+            continue
+        record = {"path": file["path"], "figures": key_figures(file)}
+        used: Set[str] = set()
+        rows = [
+            gloss_cell("| %s | %d |" % (figure_cell(record, row, "Item"), position), used)
+            for position, row in enumerate(record["figures"]["rows"], 1)
+        ]
+        bodies[file["path"]] = table_text(ITEM_INDEX_HEADER, rows, ITEM_INDEX_SEPARATOR)
+    return bodies
+
+
+def load_terms() -> List[Tuple[str, str]]:
+    """Read the sourced term map.
+
+    Returns:
+        The (term, gloss) pairs, longest term first, so a compound term is
+        glossed before the shorter term inside it. An entry without a source
+        is left out.
+
+    Raises:
+        SystemExit: If the file cannot be read or holds invalid JSON.
+    """
+    if not os.path.isfile(TERM_MAP_PATH):
+        return []
+    try:
+        data = json.loads(read_text(TERM_MAP_PATH))
+    except json.JSONDecodeError as exc:
+        fail("cannot parse %s: %s" % (os.path.basename(TERM_MAP_PATH), exc))
+    if not isinstance(data, dict):
+        fail("%s holds no JSON object" % os.path.basename(TERM_MAP_PATH))
+    pairs: List[Tuple[str, str]] = []
+    for row in data.get("terms", []):
+        if not isinstance(row, dict):
+            continue
+        term = row.get("term")
+        gloss = row.get("gloss")
+        source = row.get("source")
+        if not isinstance(term, str) or not isinstance(gloss, str) or not term:
+            continue
+        if not isinstance(source, str) or not source:
+            continue
+        pairs.append((term, gloss))
+    return sorted(pairs, key=lambda pair: (-len(pair[0]), pair[0]))
+
+
+def gloss_cell(text: str, used: Set[str]) -> str:
+    """Gloss the first use of every mapped term in one cell.
+
+    Args:
+        text: Cell text.
+        used: Terms already glossed in the table this cell belongs to,
+            updated in place.
+
+    Returns:
+        The cell text with " (gloss)" after the first whole-word use of every
+        mapped term the table has not glossed yet.
+    """
+    for term, gloss in TERMS:
+        if term in used:
+            continue
+        match = re.search(r"(?<!\w)" + re.escape(term) + r"(?!\w)", text)
+        if match is None:
+            continue
+        text = text[: match.end()] + " (%s)" % gloss + text[match.end():]
+        used.add(term)
+    return text
+
+
+def key_figures_section(file: Dict[str, Any]) -> Dict[str, Any]:
+    """Build the answer surface of one rendered file.
+
+    Args:
+        file: File record whose text holds every block body.
+
+    Returns:
+        A record with the anchor of the section that holds the value table,
+        the number of value rows and the lead-encoding token count of the
+        section. A file without a value table carries an empty section, zero
+        rows and zero tokens.
+    """
+    index = key_figures_heading_index(file)
+    if index is None or not is_year_topic(file["path"]):
+        return {"section": "", "rows": 0, "tokens": 0}
+    spans = line_spans(file["text"])
+    heading = spans[index][1].lstrip("#").strip()
+    anchor = slugify(heading)
+    record = {"path": file["path"], "figures": key_figures(file)}
+    return {
+        "section": anchor,
+        "rows": len(record["figures"]["rows"]),
+        "tokens": baseline_section_tokens(BASELINE, file["path"], anchor),
+    }
+
+
+def group_rows(
+    files: Dict[str, Dict[str, Any]], paths: List[str], base: str
+) -> List[str]:
+    """Render one landing page block from a path list.
+
+    Args:
+        files: File records keyed by their relative path.
+        paths: Relative paths of the rows, in order.
+        base: Folder of the landing page relative to the references root.
+
+    Returns:
+        One row line per path, with the frontmatter description as the cell.
+    """
+    rows: List[str] = []
+    for path in paths:
+        file = files.get(path)
+        if file is None:
+            continue
+        values = frontmatter_values(file["text"])
+        label = values.get(NAV_LABEL_FIELD, "") or os.path.basename(path)
+        link = os.path.relpath(path, base).replace(os.sep, "/") if base else path
+        rows.append("| [%s](%s) | %s |" % (label, link, values.get("description", "")))
+    return rows
+
+
+def landing_text(files: List[Dict[str, Any]], rendered: Dict[str, str]) -> str:
+    """Render the generated landing page of the references root.
+
+    Three per-group blocks: the year folders, the tax-rule top-level files
+    and the migration files. Every row comes from the frontmatter description
+    of the file it names. A file that is generated whole and not in the tree
+    yet is read from its rendered text, so one run lists it too.
+
+    Args:
+        files: Result of load_files().
+        rendered: Result of render_files(), read for a generated file that
+            the tree does not hold yet.
+
+    Returns:
+        The complete file text.
+    """
+    by_path = {file["path"]: file for file in files}
+    overview = year_changes_path(files)
+    if overview not in by_path and overview in rendered:
+        by_path[overview] = {"path": overview, "text": rendered[overview]}
+    years = sorted(
+        path for path in by_path if YEAR_README_RE.match(path)
+    )
+    tax_files = sorted(
+        path
+        for path in by_path
+        if "/" in path
+        and os.path.dirname(path).split("/")[-1] == "tax-rules"
+        and path.endswith(MARKDOWN_SUFFIX)
+    )
+    migration = sorted(
+        path
+        for path in by_path
+        if os.path.dirname(path).split("/")[-1] == "migration" and path.endswith(MARKDOWN_SUFFIX)
+    )
+    lines = [
+        "---",
+        'title: "%s"' % LANDING_TITLE,
+        'description: "%s"' % LANDING_DESCRIPTION,
+        "trigger_phrases:",
+        '  - "reference library"',
+        '  - "reference tree index"',
+        "importance_tier: important",
+        "contextType: reference",
+        "version: 1.0.0.0",
+        'nav_label: "References"',
+        "---",
+        "",
+        "# %s" % LANDING_TITLE,
+        "",
+        "**Rule:** %s" % LANDING_INTRO,
+        "",
+        "---",
+        "",
+    ]
+    blocks = (
+        ("1. TAX YEAR FOLDERS", years, "the twelve topic files and the headline figures of one tax year"),
+        ("2. TAX-RULE FILES", tax_files, "the general rules, the year index, the change overview and the source upkeep files"),
+        ("3. MIGRATION FILES", migration, "the phase files, the mapping and the write contract"),
+    )
+    for heading, paths, note in blocks:
+        lines.append("## %s" % heading)
+        lines.append("")
+        lines.append(note)
+        lines.append("")
+        lines.append("| File | Covers |")
+        lines.append("|---|---|")
+        lines.extend(group_rows(by_path, paths, ""))
+        lines.append("")
+    return "\n".join(lines).rstrip("\n") + "\n"
+
+
+def landing_blocks(text: str) -> List[Tuple[str, int]]:
+    """Measure the three landing page blocks.
+
+    Args:
+        text: Landing page text.
+
+    Returns:
+        One (heading, byte count) pair per H2 block, in file order.
+    """
+    spans = line_spans(text)
+    headings = [index for index, span in enumerate(spans) if span[1].startswith("## ")]
+    blocks: List[Tuple[str, int]] = []
+    for position, index in enumerate(headings):
+        stop = headings[position + 1] if position + 1 < len(headings) else len(spans)
+        blocks.append((spans[index][1][3:], slice_bytes(text, spans[index][2], spans[stop - 1][3])))
+    return blocks
+
+
+def landing_problems(files: List[Dict[str, Any]], rendered: Dict[str, str]) -> List[str]:
+    """List the landing page blocks that exceed their byte cap.
+
+    Args:
+        files: Result of load_files().
+        rendered: Result of render_files().
+
+    Returns:
+        One line per oversized block.
+    """
+    problems: List[str] = []
+    for heading, size in landing_blocks(rendered[LANDING_PATH]):
+        if size > LANDING_BLOCK_LIMIT:
+            problems.append(
+                "landing block %s %d over %d" % (heading, size, LANDING_BLOCK_LIMIT)
+            )
+    return problems
 
 
 # ───────────────────────────────────────────────────────────────
@@ -1633,20 +2166,22 @@ def change_snippet(bullet: str) -> str:
     return text.replace("|", "\\|")
 
 
-def changes_row(name: str, link: str, bullets: List[str]) -> str:
+def changes_row(name: str, link: str, bullets: List[str], used: Set[str]) -> str:
     """Render one change row of a year note.
 
     Args:
         name: Topic file name.
         link: Path of the part that holds section 5, relative to the note.
         bullets: Section 5 bullets of the topic file.
+        used: Terms already glossed in this table, updated in place.
 
     Returns:
         The row line, without a line ending. The first cell links to the
         section 5 anchor of the part that holds it.
     """
     snippet = change_snippet(bullets[0]) if bullets else ""
-    return "| [%s](%s#%s) | %d | %s |" % (name, link, CHANGE_FRAGMENT, len(bullets), snippet)
+    line = "| [%s](%s#%s) | %d | %s |" % (name, link, CHANGE_FRAGMENT, len(bullets), snippet)
+    return gloss_cell(line, used)
 
 
 def changes_anchor(file: Dict[str, Any]) -> Optional[int]:
@@ -1698,13 +2233,14 @@ def changes_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
         year = match.group(1)
         note_dir = os.path.dirname(path)
         rows: List[str] = []
+        used: Set[str] = set()
         for name in topics:
             topic_path = year_topic_path(by_path, year, name)
             if topic_path is None:
                 fail("missing %s, every year folder holds each topic file" % ("%s/%s" % (year, name)))
             holder = topic_section_path(by_path, topic_path, CHANGE_SECTION_NUMBER)
             link = os.path.relpath(holder, note_dir).replace(os.sep, "/") if note_dir else holder
-            rows.append(changes_row(name, link, topic_change_bullets(by_path[holder]["text"])))
+            rows.append(changes_row(name, link, topic_change_bullets(by_path[holder]["text"]), used))
         bodies[path] = table_text(CHANGES_TABLE_HEADER, rows, CHANGES_TABLE_SEPARATOR)
     return bodies
 
@@ -1804,6 +2340,7 @@ def year_changes_text(files: List[Dict[str, Any]]) -> str:
         "---",
         'title: "Year changes"',
         'description: "Generated overview of the changes in every tax year, newest first, with the path to each year note."',
+        'nav_label: "Year changes"',
         "trigger_phrases:",
         '  - "year changes overview"',
         '  - "what changed per tax year"',
@@ -2073,7 +2610,9 @@ def section_three_specs(files: List[Dict[str, Any]]) -> Dict[str, Any]:
     return {"subsections": subsections}
 
 
-def section_three_row(year: str, path: str, figure: Dict[str, str], link: str) -> str:
+def section_three_row(
+    year: str, path: str, figure: Dict[str, str], link: str, used: Set[str]
+) -> str:
     """Render one value row of a section 3 block.
 
     Args:
@@ -2081,12 +2620,13 @@ def section_three_row(year: str, path: str, figure: Dict[str, str], link: str) -
         path: Path of the owning file relative to the references root.
         figure: Headline figure from headline_figures().
         link: Link target of the owning file, relative to the guide.
+        used: Terms already glossed in this table, updated in place.
 
     Returns:
         The row line. The owner cell names the year file by its path from the
         repository root and links to the file itself.
     """
-    return "| %s | %s | %s | %s | %s | [%s](%s) |" % (
+    line = "| %s | %s | %s | %s | %s | [%s](%s) |" % (
         year,
         figure["item"],
         figure["value"],
@@ -2095,6 +2635,7 @@ def section_three_row(year: str, path: str, figure: Dict[str, str], link: str) -
         OWNER_PREFIX + path,
         link,
     )
+    return gloss_cell(line, used)
 
 
 def section_three_bodies(by_path: Dict[str, Dict[str, Any]], spec: Dict[str, Any]) -> Dict[str, str]:
@@ -2116,6 +2657,7 @@ def section_three_bodies(by_path: Dict[str, Dict[str, Any]], spec: Dict[str, Any
     """
     years = sorted({year for year in (year_of(path) for path in by_path) if year is not None})
     rows: List[str] = []
+    used: Set[str] = set()
     holder = spec["path"]
     holder_dir = os.path.dirname(holder)
     for name in spec["files"]:
@@ -2129,7 +2671,7 @@ def section_three_bodies(by_path: Dict[str, Dict[str, Any]], spec: Dict[str, Any
             link = os.path.relpath(path, holder_dir).replace(os.sep, "/") if holder_dir else path
             _, figures = headline_figures({"path": path, "figures": key_figures(file)})
             for figure in figures:
-                rows.append(section_three_row(year, path, figure, link))
+                rows.append(section_three_row(year, path, figure, link, used))
     if not rows:
         return {}
     table = table_text(SECTION_THREE_HEADER, rows, SECTION_THREE_SEPARATOR)
@@ -2406,11 +2948,19 @@ def nav_parts(text: str, first_limit: int = NAV_LIMIT) -> List[Tuple[int, int, i
     return parts
 
 
-def nav_plan(text: str, first_limit: int = NAV_LIMIT) -> str:
+def nav_plan(text: str, path: str, first_limit: int = NAV_LIMIT) -> str:
     """Render the read plan of one file.
+
+    Every part line names its lines, its bytes, the recorded lead-encoding
+    token count of its content and its first heading. The token value comes
+    from the baseline rows that token-baseline.py records, covers the part
+    with the generated block bodies left out, and is left out when the
+    baseline holds no row for the part, so the line never states a number the
+    baseline does not own.
 
     Args:
         text: File text with its read plan in place.
+        path: Path of the file relative to the references root.
         first_limit: Byte limit of the first part, passed to nav_parts().
 
     Returns:
@@ -2418,6 +2968,7 @@ def nav_plan(text: str, first_limit: int = NAV_LIMIT) -> str:
     """
     parts = nav_parts(text, first_limit)
     headings = markdown_headings(text)
+    rows = fence_token_rows(BASELINE, path, NAV_BLOCK_ID)
     lines = []
     for number, (first, last, start, end, oversized) in enumerate(parts, 1):
         heading = "none"
@@ -2425,11 +2976,12 @@ def nav_plan(text: str, first_limit: int = NAV_LIMIT) -> str:
             if first <= item["line"] <= last:
                 heading = "#" * item["level"] + " " + item["text"]
                 break
-        line = 'Part %d: lines %d-%d, %d bytes, first heading "%s"' % (
+        line = 'Part %d: lines %d-%d, %d bytes%s, first heading "%s"' % (
             number,
             first,
             last,
             slice_bytes(text, start, end),
+            fence_token_text(BASELINE, rows[number - 1] if number - 1 < len(rows) else None),
             heading,
         )
         if oversized:
@@ -2534,19 +3086,30 @@ def toc_entries(text: str) -> List[Dict[str, Any]]:
     return entries
 
 
-def toc_plan(text: str) -> str:
+def toc_plan(text: str, path: str) -> str:
     """Render the section list of the reference guide.
+
+    Every entry names its lines and, when the baseline holds the matching
+    section row, the lead-encoding token count of that section, so the list
+    value equals the section row the token baseline records.
 
     Args:
         text: File text with the read plan and the list in place.
+        path: Path of the file relative to the references root.
 
     Returns:
         The list text, one header line and one line per entry.
     """
     lines = [TOC_SECTIONS_HEADING]
     for entry in toc_entries(text):
+        anchor = slugify(entry["text"])
+        counts = baseline_section_tokens(BASELINE, path, anchor)
+        suffix = ""
+        lead = baseline_lead(BASELINE)
+        if counts and lead:
+            suffix = ", %d %s tokens" % (counts, lead)
         lines.append(
-            "%s%s: lines %d-%d" % (TOC_ENTRY_PREFIX, entry["text"], entry["first"], entry["last"])
+            "%s%s: lines %d-%d%s" % (TOC_ENTRY_PREFIX, entry["text"], entry["first"], entry["last"], suffix)
         )
     return "".join(line + "\n" for line in lines)
 
@@ -2666,8 +3229,8 @@ def navigation_pair(file: Dict[str, Any], others: Dict[str, Dict[str, str]]) -> 
             # back, so the part content around the plan stays under the cap
             # once the new plan is in place. The reserve only grows, so the
             # first boundary can only move back and the plan settles.
-            plan = nav_plan(text, NAV_LIMIT - reserve + len(nav_body.encode("utf-8")))
-        listing = toc_plan(text)
+            plan = nav_plan(text, file["path"], NAV_LIMIT - reserve + len(nav_body.encode("utf-8")))
+        listing = toc_plan(text, file["path"])
         if plan == nav_body and listing == toc_body:
             return plan, listing
         nav_body = plan
@@ -2738,7 +3301,7 @@ def nav_block(files: List[Dict[str, Any]]) -> Dict[str, str]:
             # once the new plan is in place. The reserve only grows, so the
             # first boundary can only move back and the plan settles.
             first_limit = NAV_LIMIT - reserve + len(body.encode("utf-8"))
-            plan = nav_plan(text, first_limit)
+            plan = nav_plan(text, file["path"], first_limit)
             if plan == body:
                 break
             body = plan
@@ -2892,6 +3455,7 @@ def render_files(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]])
             text = drop_stale_navigation(file, text)
         rendered[file["path"]] = text
     rendered[year_changes_path(files)] = year_changes_text(files)
+    rendered[LANDING_PATH] = landing_text(files, rendered)
     return rendered
 
 
@@ -2969,12 +3533,12 @@ def expected_index(files: List[Dict[str, Any]], rendered: Dict[str, str]) -> str
         for file in files
         if file["path"].endswith(MARKDOWN_SUFFIX)
     ]
-    # WHY: the overview is generated whole, so it gains its index row even when
-    # the tree does not hold the file yet.
-    overview = year_changes_path(files)
-    if overview not in {file["path"] for file in files}:
-        entries.append(index_entry(overview, rendered[overview]))
-        entries.sort(key=lambda entry: entry["path"])
+    # WHY: the overview and the landing page are generated whole, so they gain
+    # their index rows even when the tree does not hold the files yet.
+    for generated in (year_changes_path(files), LANDING_PATH):
+        if generated not in {file["path"] for file in files}:
+            entries.append(index_entry(generated, rendered[generated]))
+    entries.sort(key=lambda entry: entry["path"])
     return build_index_text(entries, gap_rows(files))
 
 
@@ -3028,12 +3592,13 @@ def check_all(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]], re
     """
     overview = year_changes_path(files)
     problems = budget_problems(files)
+    problems += landing_problems(files, rendered)
     problems += gap_problems(files)
     problems += ["drift %s %s" % pair for pair in missing_fences(files, bodies)]
     for file in files:
-        # WHY: the overview is generated whole and reported on its own line, so
-        # the block loop leaves it out.
-        if file["path"] == overview:
+        # WHY: the overview and the landing page are generated whole and
+        # reported on their own lines, so the block loop leaves them out.
+        if file["path"] in (overview, LANDING_PATH):
             continue
         reported = False
         for block in file["blocks"]:
@@ -3048,6 +3613,8 @@ def check_all(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]], re
     problems += change_note_problems(files)
     if read_year_changes(overview) != rendered[overview]:
         problems.append("drift %s" % YEAR_CHANGES_NAME)
+    if read_landing() != rendered[LANDING_PATH]:
+        problems.append("drift %s" % LANDING_NAME)
     stored = read_index()
     if stored != expected_index(files, rendered):
         problems.append("drift %s" % INDEX_NAME)
@@ -3090,6 +3657,9 @@ def write_all(files: List[Dict[str, Any]], bodies: Dict[str, Dict[str, str]], re
     if overview not in seen:
         write_text(os.path.join(REFERENCES_ROOT, overview), rendered[overview])
         written.append(overview)
+    if read_landing() != rendered[LANDING_PATH]:
+        write_text(os.path.join(REFERENCES_ROOT, LANDING_PATH), rendered[LANDING_PATH])
+        written.append(LANDING_PATH)
     text = expected_index(files, rendered)
     index_changed = read_index() != text
     if index_changed:
@@ -3441,6 +4011,11 @@ def main(argv: List[str]) -> int:
         return reachability_report()
     if not os.path.isdir(REFERENCES_ROOT):
         fail("references folder not found: %s" % REFERENCES_ROOT)
+    # WHY: the baseline and the term map are the generator's other inputs,
+    # read once per run.
+    global BASELINE, TERMS
+    BASELINE = load_baseline()
+    TERMS = load_terms()
     files = load_files()
     section = section_three_specs(files)
     register_section_three_blocks(section)

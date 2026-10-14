@@ -36,6 +36,47 @@ This file covers the procedural side of tax year 2023 for a sole trader and for 
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Aangifteperiode inkomstenbelasting | 1 |
+| IB return 2023 filing deadline | 2 |
+| Uitstel (deferral) rules for the IB return | 3 |
+| Uitstel channel | 4 |
+| AWR art. 9 filing term | 5 |
+| Definitive aanslag 2023 | 6 |
+| Definitive assessment term | 7 |
+| Aanslaggrens and teruggaafgrens 2023 | 8 |
+| Filing without an invitation, tax year 2023 | 9 |
+| Bezwaar | 10 |
+| Verzoek om vermindering aanslag 2023 | 11 |
+| Voorlopige aanslag | 12 |
+| Belastingrente (tax interest) rates | 13 |
+| Belastingrente on tax year 2023 IB | 14 |
+| Belastingrente on IB, period and day count | 15 |
+| Belastingrente on btw | 16 |
+| Rentestop requested naheffingsaanslagen | 17 |
+| Navordering (additional assessment) AWR art. 16 | 18 |
+| Voluntary correction | 19 |
+| Payment terms | 20 |
+| Btw filing and payment rule | 21 |
+| Btw software submission | 22 |
+| Btw monthly dates 2023 | 23 |
+| Btw quarterly dates 2023 | 24 |
+| Btw yearly return 2023 | 25 |
+| Btw uitstel | 26 |
+| Btw aangifteverzuimboete 2023 | 27 |
+| IB boetes 2023 | 28 |
+| IB missed deadline route | 29 |
+| Vergrijpboete and no-boete rules | 30 |
+| Bewaarplicht (record-keeping duty) | 31 |
+| Bewaarplicht terms | 32 |
+| KVK registration opgaven | 33 |
+| KVK practical | 34 |
+| Belastingdienst registration | 35 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
 | Aangifteperiode inkomstenbelasting | Opens on 1 March | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen |

@@ -36,6 +36,38 @@ This file covers the 2025 box 1 rates, the general tax credit, employment tax cr
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Box 1 below AOW age | 1 |
+| Box 1 for whole year at AOW age, born on or after 1 January 1946 | 2 |
+| Box 1 for whole year at AOW age, born before 1 January 1946 | 3 |
+| First-bracket rate in the year AOW age is reached | 4 |
+| Premie volksverzekeringen (national insurance contribution) ceiling and rate | 5 |
+| Tariefsaanpassing (rate adjustment) | 6 |
+| Algemene heffingskorting (general tax credit) (AHK), below AOW age | 7 |
+| AHK for whole year at AOW age | 8 |
+| Arbeidskorting (employment tax credit) (AK), below AOW age | 9 |
+| AK for whole year at AOW age | 10 |
+| AK amount taken over from employer | 11 |
+| Inkomensafhankelijke combinatiekorting (IACK) | 12 |
+| IACK child and household test | 13 |
+| IACK co-parent test, conditions page | 14 |
+| IACK co-parent test, FISIN page | 15 |
+| Payout of unused heffingskorting | 16 |
+| Payout income limits | 17 |
+| Heffingskorting (tax credit) belastingdeel | 18 |
+| Heffingskorting premiedelen | 19 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 20 |
+| Startersaftrek (starter's deduction) | 21 |
+| Startersaftrek bij arbeidsongeschiktheid | 22 |
+| Meewerkaftrek (meewerkende partner deduction) | 23 |
+| Stakingsaftrek (business cessation deduction) | 24 |
+| MKB-winstvrijstelling (SME profit exemption) | 25 |
+| Oudedagsreserve (old-age reserve) | 26 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 1 below AOW age | 35,82% up to € 38.441, 37,48% from there to € 76.817, 49,50% above € 76.817. Statutory fixed amounts: € 3.140 and € 17.523. | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/belastingberekening, https://wetten.overheid.nl/BWBR0011353/2025-01-01 |

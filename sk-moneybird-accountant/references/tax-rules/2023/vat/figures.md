@@ -36,6 +36,43 @@ This file covers Dutch VAT (omzetbelasting, or BTW) for a sole trader, including
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Standard rate | 1 |
+| Reduced rate | 2 |
+| Zero rate | 3 |
+| Logies | 4 |
+| Exemptions | 5 |
+| Solar panels on or near homes | 6 |
+| Solar VAT forfait bands | 7 |
+| KOR ceiling and turnover test | 8 |
+| KOR notice, minimum participation, and re-entry | 9 |
+| KOR registration threshold without notice | 10 |
+| KOR reform published in 2023 | 11 |
+| VAT return period | 12 |
+| Annual VAT return limit | 13 |
+| Other annual-return conditions | 14 |
+| Period return and payment deadline | 15 |
+| Annual VAT return deadline | 16 |
+| Published 2023 filing-date table | 17 |
+| Suppletie timing and correction period | 18 |
+| Suppletie amount boundary | 19 |
+| Reverse charge threshold for specified electronics | 20 |
+| EU distance-sales threshold | 21 |
+| OSS and import-scheme deadlines and limits | 22 |
+| OSS inactivity claim | 23 |
+| ICP goods threshold and form limits | 24 |
+| 2023 ICP deadline | 25 |
+| BUA gift and staff-provision limit | 26 |
+| Business-car private-use calculation | 27 |
+| BUA commuting bicycle exception | 28 |
+| BUA own contribution | 29 |
+| Invoice deadline and simplified invoice | 30 |
+| General B2B e-invoicing duty | 31 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
 | Standard rate | 21% | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2023-01-01 |

@@ -36,6 +36,34 @@ Box 2 en aanmerkelijk belang (substantial shareholding) covers income from a sta
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Box 2 bracket 1 | 1 |
+| Tax at the top of bracket 1 | 2 |
+| Box 2 bracket 2 | 3 |
+| Inkomen uit aanmerkelijk belang (art. 4.12) | 4 |
+| Aanmerkelijk belang test (art. 4.6) | 5 |
+| Meesleep, meetrek and fictief aanmerkelijk belang (art. 4.9 to 4.11) | 6 |
+| Fictieve vervreemding (art. 4.16) | 7 |
+| Verkrijgingsprijs and onzakelijke prijs | 8 |
+| Forfaitair voordeel (art. 4.14) | 9 |
+| Excessief lenen (excessive borrowing) maximum (art. 4.14a) | 10 |
+| Excessief lenen, verbonden personen (art. 4.14b) | 11 |
+| Excessief lenen, immigration (art. 4.14c) | 12 |
+| Gebruikelijk loon (customary salary) fixed amount (art. 12a Wet LB 1964) | 13 |
+| Gebruikelijk loon minimum threshold | 14 |
+| ODV market rate (art. 38p Wet LB 1964) | 15 |
+| Belastingkorting on an unoffset loss (art. 4.53) | 16 |
+| Loss offset period (art. 4.49) | 17 |
+| Losses that arose in 2018 or earlier | 18 |
+| APV loss deferral term | 19 |
+| Inherited aanmerkelijk belang facility (art. 4.12a) | 20 |
+| Overige fiscale maatregelen 2026 (Stb. 2025, 445) | 21 |
+| Sum of two partners' first brackets | 22 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 2 bracket 1 | 24,5% up to € 68.843 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |

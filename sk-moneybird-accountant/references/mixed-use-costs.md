@@ -1,6 +1,7 @@
 ---
 title: Booking mixed-use costs in Moneybird
 description: How to book a cost used partly for business and partly privately in Moneybird, with the income tax share, the VAT share, the evidence and the booking split.
+nav_label: "Booking mixed-use costs in Moneybird"
 trigger_phrases:
   - book a phone subscription partly private
   - telefoonabonnement zakelijk en prive boeken

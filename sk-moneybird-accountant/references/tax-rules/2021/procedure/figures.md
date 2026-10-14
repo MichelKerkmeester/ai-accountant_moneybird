@@ -36,6 +36,27 @@ This file covers the filing and procedure rules for tax year 2021 for a Dutch so
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| IB return 2021 filing deadline and uitstel | 1 |
+| Definitive aanslag 2021 latest | 2 |
+| Aanslaggrens and teruggaafgrens 2021 | 3 |
+| Filing without invitation, tax year 2021 | 4 |
+| Navordering (additional assessment) 2021 | 5 |
+| Payment terms of assessments | 6 |
+| Bezwaar and verzoek om vermindering | 7 |
+| Voorlopige aanslag | 8 |
+| Belastingrente (tax interest) rates 2021 | 9 |
+| Belastingrente on tax year 2021 income tax | 10 |
+| Belastingrente on btw | 11 |
+| VAT filing and payment deadlines 2021 | 12 |
+| Boetes 2021 | 13 |
+| Bewaarplicht (record-keeping duty) | 14 |
+| KVK and Belastingdienst registration | 15 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
 | IB return 2021 filing deadline and uitstel | Before 1 May 2022, filing from 1 March 2022. Uitstel must be requested before the filing date, in the annual period before 1 May. A granted uitstel gives 4 months extra, to 1 September 2022. The form can be used only for the first uitstel request, the fiscal partner must request separately, and uitstel usually means belastingrente. Online in Mijn Belastingdienst until 1 May for someone who received an aangiftebrief, paper form otherwise. | enacted | Corrected | https://web.archive.org/web/20220401/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen and https://web.archive.org/web/20220309/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/programmas_en_formulieren/aanvraag-uitstel-aangifte-inkomstenbelasting |

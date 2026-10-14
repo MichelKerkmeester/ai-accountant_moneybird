@@ -75,6 +75,8 @@ token-baseline: check ok, 143 files, 993 sections
 token-baseline: car route ratio: o200k_base 0.2840, cl100k_base 0.2870
 ```
 
+Scannability: `../scripts/scannability-report.py` publishes three metrics in [`reports/scannability/report.md`](./reports/scannability/report.md), each row with its own denominator. Tokens to first answer counts the lead-encoding tokens of the KEY FIGURES section of the first tax figures file a replay row names. Answer position inside the section reports where that section sits among the sections of its file, as a fraction of the file's section count. Section hit rate reports the share of rows whose loaded set holds the section a fact came from, and it needs a section label on every replay row, which the gold rows do not carry yet, so its row records the missing denominator instead of a number. The report reads the same token baseline as the canary, so a drift in either one fails its own check.
+
 Canary: `../scripts/token-canary-test.sh` covers the 2026 car question on the KEY FIGURES route. The proposed route must stay at or under 35 percent of the current route and at or under 8,000 `cl100k_base` tokens, which is the year README row plus the one section row. A whole-file load fails the gate, and the suite ends with `8 passed, 0 failed`.
 
 ---

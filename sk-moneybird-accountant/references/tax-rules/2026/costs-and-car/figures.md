@@ -36,6 +36,48 @@ The 2026 rules for business costs and cars are largely enacted in the Wet inkoms
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Gemengde kosten drempel | 1 |
+| Gemengde kosten keuze | 2 |
+| Vpb variant gemengde kosten | 3 |
+| Reis en verblijf congressen, cursussen, seminars, symposia, excursies en studiereizen | 4 |
+| Kilometervergoeding (mileage allowance), statute | 5 |
+| Kilometervergoeding, applied | 6 |
+| MRB bestelauto and vrachtauto, 2026 decree | 7 |
+| Reiskostenvergoeding loonbelasting | 8 |
+| Other forfaitaire reiskosten in Wet IB | 9 |
+| Verhuiskosten and dubbele huisvesting | 10 |
+| Bijtelling (private-use addition) auto, standard | 11 |
+| Bijtelling auto, pre-2017 car | 12 |
+| Youngtimer | 13 |
+| Youngtimer transition 2026 | 14 |
+| Bijtelling auto 500 km rule | 15 |
+| Auto vermogensetikettering | 16 |
+| Waarde van de auto | 17 |
+| Zero-emission, first admission 2026 | 18 |
+| Uncapped zero-emission categories 2026 | 19 |
+| Zero-emission 60-month fixation | 20 |
+| Zero-emission rates by first admission year | 21 |
+| Bijtelling fiets | 22 |
+| Studiekostenaftrek 2026 | 23 |
+| Werkruimte thuis (home workspace) | 24 |
+| Telefoonabonnement thuis | 25 |
+| Apparatuur not in ondernemingsvermogen | 26 |
+| Laptop and computer etikettering | 27 |
+| € 450 rule and depreciation | 28 |
+| Other fixed exclusions in art. 3.16 | 29 |
+| Geldboetes and dwangsommen | 30 |
+| Openbaar vervoer, taxi and vliegtuig | 31 |
+| KOR omzetgrens and cost base | 32 |
+| BTW forfait private car without km administration | 33 |
+| Keuze herzien and heretikettering | 34 |
+| Mixed character costs | 35 |
+| Studiekosten as a business cost | 36 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
 | Gemengde kosten drempel | € 5.700 per year | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 3.15 lid 1) and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/drempel-beperkt-aftrekbare-kosten-2026 |

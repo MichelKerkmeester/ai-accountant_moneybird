@@ -1,6 +1,7 @@
 ---
 title: Migration completion, phase 22
 description: One-time completion and Jortt decommission gate.
+nav_label: "Migration completion, phase 22"
 trigger_phrases:
   - Jortt to Moneybird migration
   - migration phase gate and exit criteria

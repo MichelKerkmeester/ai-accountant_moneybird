@@ -36,6 +36,32 @@ This file covers the investment deductions and depreciation rules for tax year 2
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| KIA table (art. 3.41 lid 2) | 1 |
+| KIA window as printed by the Belastingdienst | 2 |
+| KIA per-asset minimum | 3 |
+| KIA in a samenwerkingsverband (art. 3.41 lid 3) | 4 |
+| Assets excluded from every investeringsaftrek (art. 3.45 lid 1) | 5 |
+| Further exclusions (art. 3.45 lid 2, lid 3, lid 4, lid 5) | 6 |
+| EIA percentage | 7 |
+| EIA and MIA maximum investment amount | 8 |
+| EIA and MIA per-asset minimum | 9 |
+| EIA and MIA conditions | 10 |
+| MIA percentages and Milieulijst codes | 11 |
+| Vamil | 12 |
+| RVO notification deadline for EIA, MIA and Vamil | 13 |
+| Excluded obligations (art. 3.46) | 14 |
+| Payment cap for an asset not yet in use (art. 3.44) | 15 |
+| Desinvesteringsbijtelling (disinvestment addition) threshold | 16 |
+| Ordinary depreciation caps | 17 |
+| Bodemwaarde for buildings | 18 |
+| Starters willekeurige afschrijving yearly cap | 19 |
+| Temporary willekeurige afschrijving 2023 | 20 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
 | KIA table (art. 3.41 lid 2) | nil up to € 2.600, 28% of the investment up to € 63.716, the fixed € 17.841 up to € 117.991, € 17.841 minus 7,56% of the excess over € 117.991 up to € 353.973, nil above € 353.973 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 art. 3.41 lid 2 and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/veranderingen-vennootschapsbelasting-vorige-jaren/veranderingen-vennootschapsbelasting-2023 |

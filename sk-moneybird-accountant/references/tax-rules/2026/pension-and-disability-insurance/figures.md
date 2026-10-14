@@ -36,6 +36,34 @@ This file covers the rules for deducting pension premiums, lijfrentepremies (ann
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Jaarruimte (annual allowance) percentage | 1 |
+| Aftoppingsgrens premiegrondslag | 2 |
+| Franchise premiegrondslag | 3 |
+| Maximum jaarruimte | 4 |
+| Reserveringsruimte (reserve room) maximum | 5 |
+| Look-back window | 6 |
+| Jaarruimte birth date limit | 7 |
+| Tijdelijke oudedagslijfrente cap | 8 |
+| Overbruggingslijfrente cap | 9 |
+| Stakingswinst maximum, tier a | 10 |
+| Stakingswinst maximum, tier b | 11 |
+| Stakingswinst maximum, tier c | 12 |
+| Afkoop kleine lijfrente | 13 |
+| Afkoop cap bij langdurige arbeidsongeschiktheid | 14 |
+| AOV premium with periodic uitkeringen | 15 |
+| AOV premium with lump-sum payout | 16 |
+| BAZ bill status | 17 |
+| BAZ wachttijd in the bill | 18 |
+| BAZ premium estimate | 19 |
+| BAZ benefit maximum | 20 |
+| BAZ premium tax treatment | 21 |
+| BAZ entry into force | 22 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
 | Jaarruimte percentage | 30% | enacted | Verified | [Art. 3.127 lid 1](https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127) |

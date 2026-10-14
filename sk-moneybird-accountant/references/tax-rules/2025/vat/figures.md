@@ -36,6 +36,68 @@ This file covers the Dutch VAT rules relevant to a sole trader, including rates,
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Standard rate | 1 |
+| Reduced rate | 2 |
+| Zero rate | 3 |
+| Exemptions | 4 |
+| Solar panels | 5 |
+| Logies | 6 |
+| KOR Dutch turnover ceiling and test | 7 |
+| KOR Union ceiling for a business established outside the Netherlands | 8 |
+| Dutch KOR establishment condition | 9 |
+| KOR start | 10 |
+| KOR minimum term | 11 |
+| KOR voluntary exit | 12 |
+| KOR re-entry after voluntary exit | 13 |
+| KOR overrun | 14 |
+| KOR registration threshold without notification | 15 |
+| KOR quarterly notification cut-offs | 16 |
+| KOR practical confirmation and notification timing | 17 |
+| EU KOR availability | 18 |
+| EU KOR Union turnover limit | 19 |
+| EU KOR EX number | 20 |
+| EU KOR quarterly turnover statement | 21 |
+| EU KOR notice after Union turnover overrun | 22 |
+| Usual VAT return period | 23 |
+| Yearly return eligibility | 24 |
+| Period return filing and payment term | 25 |
+| Software return submission window | 26 |
+| Q4 and December 2025 domestic returns | 27 |
+| Yearly VAT return for 2025 | 28 |
+| Foreign-established business, Q4 2025 | 29 |
+| Foreign-established business, November and December 2025 | 30 |
+| Suppletie correction period and discovery deadline | 31 |
+| Suppletie amount for correction in the next return | 32 |
+| Suppletie vergrijpboete | 33 |
+| ICP goods quarterly threshold | 34 |
+| ICP form line limit | 35 |
+| ICP domestic filing deadline for 2025 | 36 |
+| EU distance-sales threshold | 37 |
+| OSS Union scheme | 38 |
+| Import scheme | 39 |
+| Car private-use forfait | 40 |
+| Car private-use forfait cap | 41 |
+| BUA annual staff provision threshold | 42 |
+| BUA commuting bicycle carve-out | 43 |
+| BUA staff meal calculation | 44 |
+| Reverse-charge electronics threshold | 45 |
+| Invoice issue deadline | 46 |
+| Simplified invoice ceiling | 47 |
+| Compulsory kasstelsel consumer threshold | 48 |
+| ViDA e-invoicing and digital reporting timeline | 49 |
+| ViDA EU acts dates | 50 |
+| Late return penalty for foreign-established businesses | 51 |
+| Late payment penalty for foreign-established businesses | 52 |
+| Corona special deferral repayment period | 53 |
+| Corona special deferral instalments and extension | 54 |
+| Corona special deferral debt period | 55 |
+| UHT letter repayment schedule | 56 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
 | Standard rate | 21% | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2025-01-01 |

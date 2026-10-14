@@ -36,6 +36,34 @@ This file covers box 2 income from an aanmerkelijk belang (substantial sharehold
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Box 2 bracket 1 (art. 2.12, text per 1 January 2027) | 1 |
+| Tax at the top of bracket 1 (art. 2.12, column III) | 2 |
+| Box 2 bracket 2 (art. 2.12) | 3 |
+| Second-bracket rate 2027 to 2030 (cabinet letter of 29 September 2026) | 4 |
+| Indexation multiplier for art. 10.1 amounts in 2027 (Belastingplan 2027, Kamerstuk 37 022 nr. 2, Artikel LI lid 1) | 5 |
+| Indexed 2027 bracket 1 boundary | 6 |
+| Aanmerkelijk belang, the 5% test (art. 4.6) | 7 |
+| Forfaitair voordeel for a vbi or a foreign investment company (art. 4.14) | 8 |
+| Inherited aanmerkelijk belang facility (art. 4.12a) | 9 |
+| Loss offset period (art. 4.49) | 10 |
+| Losses that arose in 2018 or earlier | 11 |
+| Belastingkorting on an unoffset loss (art. 4.53 lid 2) | 12 |
+| Excessief lenen (excessive borrowing) maximum (art. 4.14a lid 2) | 13 |
+| Indexation of the excessief lenen maximum | 14 |
+| Excessief lenen, verbonden personen and immigration (art. 4.14b, art. 4.14c) | 15 |
+| Excessief lenen phase-down (cabinet letter of 29 September 2026) | 16 |
+| Excessief lenen maximum at 31 December 2027 under the letter | 17 |
+| Gebruikelijk loon (customary salary) fixed amount (art. 12a lid 7 Wet LB 1964, text per 1 January 2027) | 18 |
+| Gebruikelijk loon, comparable loon (art. 12a lid 1 sub a) | 19 |
+| Gebruikelijk loon minimum threshold (art. 12a) | 20 |
+| ODV marktrente for 2027 | 21 |
+| Overige fiscale maatregelen 2027 (Kamerstuk 37 023) box 2 measures | 22 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 2 bracket 1 (art. 2.12, text per 1 January 2027) | 24,5% up to € 68.843, pre-indexation text that "kan voor inwerkingtreding nog wijzigen" | adopted-not-yet-in-force | Verified | https://wetten.overheid.nl/BWBR0011353/2027-01-01 |

@@ -1,6 +1,7 @@
 ---
 title: Income tax return operator inputs
 description: The official private-part input list and the Operator evidence checklist for a Dutch sole-trader income tax return. Every item carries one disposition from supplied, reconciled, confirmed, not applicable or unresolved and the evidence that settles it.
+nav_label: "Income tax return operator inputs"
 trigger_phrases:
   - income tax return operator inputs
   - aangifte inkomstenbelasting gegevens

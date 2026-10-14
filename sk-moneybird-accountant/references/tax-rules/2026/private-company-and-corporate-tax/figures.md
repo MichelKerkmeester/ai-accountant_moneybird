@@ -37,6 +37,41 @@ This file covers the vennootschapsbelasting (Vpb, corporate income tax) position
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Vpb-tarief, eerste schijf | 1 |
+| Vpb-tarief, boven de eerste schijf | 2 |
+| Generieke renteaftrekbeperking (art. 15b) | 3 |
+| Verliesverrekening (art. 20) | 4 |
+| Innovatiebox, breuk (art. 12b) | 5 |
+| Innovatiebox, forfait (art. 12bd) | 6 |
+| Innovatiebox, kleinere belastingplichtige (art. 12ba lid 2) | 7 |
+| Deelnemingsvrijstelling (art. 13) | 8 |
+| Fiscale eenheid (art. 15) | 9 |
+| Gebruikelijk loon (customary salary), normbedrag (art. 12a Wet LB 1964) | 10 |
+| Gebruikelijk loon, vergelijkbaar loon | 11 |
+| Gebruikelijk loon, ondergrens | 12 |
+| Bijdrage Zvw, niet-verzekerde DGA | 13 |
+| Maximum bijdrage-inkomen Zvw | 14 |
+| Werkgeversheffing Zvw (employer health insurance contribution), verzekerde DGA | 15 |
+| Box 2, eerste schijf | 16 |
+| Box 2, boven de eerste schijf | 17 |
+| Dividendbelasting | 18 |
+| Dividendbelasting bij inkoop van eigen aandelen | 19 |
+| Dividend stripping (uiteindelijk gerechtigde) | 20 |
+| Conditionele bronbelasting | 21 |
+| Aangifte (return) Vpb, termijnen | 22 |
+| Uitstel (deferral) aangifte Vpb | 23 |
+| Jaarrekening, grootteklassen | 24 |
+| Jaarrekening, deponering en SBR | 25 |
+| Administratie- en bewaartermijnen | 26 |
+| Stakingsaftrek (business cessation deduction) bij ruisende inbreng | 27 |
+| Geruisloze omzetting (art. 3.65 Wet IB 2001) | 28 |
+| Btw bij een BV en btw-fiscale eenheid | 29 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
 | Vpb-tarief, eerste schijf | 19,0% over het belastbare bedrag tot en met € 200.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 22) |

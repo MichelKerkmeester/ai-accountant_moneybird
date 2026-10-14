@@ -36,6 +36,35 @@ This file covers the 2025 rules for investment deductions and depreciation: the 
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Kleinschaligheidsinvesteringsaftrek (KIA), table | 1 |
+| KIA in a samenwerkingsverband | 2 |
+| KIA per-asset minimum | 3 |
+| Payment cap for an asset not yet in use | 4 |
+| EIA percentage | 5 |
+| EIA and MIA maximum investment amount | 6 |
+| MIA percentages and Milieulijst categories | 7 |
+| EIA and MIA per-asset minimum | 8 |
+| RVO notification deadline for EIA, MIA and Vamil | 9 |
+| RVO maximum for MIA and Vamil | 10 |
+| RVO test for a vehicle counting as new | 11 |
+| Vamil | 12 |
+| RVO statement on the combined MIA plus Vamil benefit | 13 |
+| Assets excluded from every investeringsaftrek | 14 |
+| Own-BV and related-party exclusion | 15 |
+| Desinvesteringsbijtelling (disinvestment addition) threshold | 16 |
+| Desinvesteringsbijtelling period and cap | 17 |
+| Desinvesteringsbijtelling, deemed disposals and undone investments | 18 |
+| Ordinary depreciation caps | 19 |
+| Bodemwaarde for buildings | 20 |
+| Starters willekeurige afschrijving, yearly cap | 21 |
+| Starters willekeurige afschrijving, period | 22 |
+| Temporary willekeurige afschrijving 2023 | 23 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
 | Kleinschaligheidsinvesteringsaftrek (KIA), table | Nil up to € 2.900. 28% of the investment above € 2.900 up to € 70.602. A fixed € 19.769 above € 70.602 up to € 130.744. € 19.769 minus 7,56% of the excess over € 130.744 up to € 392.230. Nil above € 392.230. | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01, art. 3.41 lid 2 |

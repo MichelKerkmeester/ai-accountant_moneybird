@@ -36,6 +36,28 @@ This file covers the investeringsaftrek (investment allowance) in its four forms
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| KIA table (art. 3.41 lid 2) | 1 |
+| KIA per-asset minimum | 2 |
+| EIA percentage | 3 |
+| EIA and MIA maximum investment amount | 4 |
+| MIA percentages | 5 |
+| EIA and MIA per-asset minimum | 6 |
+| Vamil percentage | 7 |
+| Ordinary depreciation caps | 8 |
+| Bodemwaarde for buildings | 9 |
+| Desinvesteringsbijtelling (disinvestment addition) threshold | 10 |
+| Desinvesteringsbijtelling term | 11 |
+| Desinvesteringsbijtelling, investment undone | 12 |
+| Starters willekeurige afschrijving yearly cap | 13 |
+| Starters willekeurige afschrijving, herwaardering period | 14 |
+| RVO notification deadline for EIA, MIA and Vamil | 15 |
+| MIA and Vamil maximum per bedrijfsmiddel and per applicant per year | 16 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
 | KIA table (art. 3.41 lid 2) | nil up to € 2.800, 28% of the investment from € 2.800 up to € 69.765, a fixed € 19.535 from € 69.765 up to € 129.194, € 19.535 minus 7,56% of the excess over € 129.194 up to € 387.580, nil above € 387.580 | enacted | Verified | art. 3.41 lid 2, https://wetten.overheid.nl/BWBR0011353/2024-01-01 |

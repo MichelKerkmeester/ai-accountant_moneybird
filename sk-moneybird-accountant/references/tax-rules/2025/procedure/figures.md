@@ -36,6 +36,33 @@ This file covers the procedural side of Dutch tax for a ZZP sole trader. It list
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Aangifte (return) inkomstenbelasting 2025 filing deadline | 1 |
+| Uitstel (deferral) aangifte inkomstenbelasting 2025 | 2 |
+| Uitstel channel for the IB return | 3 |
+| Definitive aanslag 2025 latest date | 4 |
+| Aanslaggrens and teruggaafgrens 2025 | 5 |
+| Aangifte without an invitation, tax year 2025 | 6 |
+| Navorderingstermijn | 7 |
+| Betalingstermijnen van aanslagen | 8 |
+| Bezwaartermijn (objection period) and verzoek om vermindering | 9 |
+| Voorlopige aanslag change and carry-over | 10 |
+| Belastingrente (tax interest) percentage 2025 | 11 |
+| Belastingrente inkomstenbelasting | 12 |
+| Belastingrente btw | 13 |
+| Btw uiterste aangifte- en betaaldatums 2025 | 14 |
+| Btw yearly return 2025 | 15 |
+| Btw submission window and uitstel | 16 |
+| Btw aangifteverzuimboete 2025 | 17 |
+| Btw suppletie term 2025 | 18 |
+| IB boetes 2025 | 19 |
+| Bewaarplicht (record-keeping duty) | 20 |
+| KVK and Belastingdienst registration | 21 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
 | Aangifte inkomstenbelasting 2025 filing deadline | 1 May 2026, or the date in the aangiftebrief. The filing period opens 1 March 2026 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/kan-ik-nog-uitstel-aanvragen-belastingaangifte |

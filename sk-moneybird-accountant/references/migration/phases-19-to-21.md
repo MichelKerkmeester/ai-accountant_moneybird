@@ -1,6 +1,7 @@
 ---
 title: Live workflows, phases 19 to 21
 description: Recurring monthly, VAT-period, and yearly reviews.
+nav_label: "Live workflows, phases 19 to 21"
 trigger_phrases:
   - Jortt to Moneybird migration
   - migration phase gate and exit criteria

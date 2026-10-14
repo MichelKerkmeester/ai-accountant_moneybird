@@ -36,6 +36,37 @@ This file covers the ondernemersaftrek (entrepreneur's deduction) and the MKB-wi
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Parts of the ondernemersaftrek (art. 3.74) | 1 |
+| Urencriterium (hours criterion) | 2 |
+| Second test waived, lookback | 3 |
+| Verlaagd urencriterium | 4 |
+| Pregnancy in the urencriterium | 5 |
+| Samenwerkingsverband with connected persons | 6 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 7 |
+| Zelfstandigenaftrek at AOW age | 8 |
+| Startersaftrek (starter's deduction) | 9 |
+| Startersaftrek at AOW age | 10 |
+| Startersaftrek prior-years condition | 11 |
+| Startersaftrek number of times | 12 |
+| Startersaftrek bij arbeidsongeschiktheid | 13 |
+| Aftrek voor speur- en ontwikkelingswerk | 14 |
+| S&O starter increase | 15 |
+| S&O conditions | 16 |
+| MKB-winstvrijstelling (SME profit exemption) | 17 |
+| Meewerkaftrek (meewerkende partner deduction) bands | 18 |
+| Partner pay threshold | 19 |
+| Stakingsaftrek (business cessation deduction) | 20 |
+| Oudedagsreserve (old-age reserve) addition percentage | 21 |
+| Oudedagsreserve addition maximum | 22 |
+| Oudedagsreserve into lijfrente, payment deadline | 23 |
+| Tariefsaanpassing (rate adjustment) | 24 |
+| Maximum value of the ondernemersaftrek and the MKB-winstvrijstelling | 25 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
 | Parts of the ondernemersaftrek (art. 3.74) | 5 parts, namely the zelfstandigenaftrek, the aftrek voor speur- en ontwikkelingswerk, the meewerkaftrek, the startersaftrek bij arbeidsongeschiktheid and the stakingsaftrek. The startersaftrek is not a list item but a verhoging of the zelfstandigenaftrek under art. 3.76 lid 3 | enacted | Corrected | https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://wetten.overheid.nl/BWBR0011353/2027-01-01 (art. 3.74) |

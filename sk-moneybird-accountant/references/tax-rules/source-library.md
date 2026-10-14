@@ -1,6 +1,7 @@
 ---
 title: External source library
 description: Every external source the skill family was built from, grouped by authority, with what each answers and how an AI agent can reach it.
+nav_label: "External source library"
 trigger_phrases:
   - source library
   - where does this figure come from

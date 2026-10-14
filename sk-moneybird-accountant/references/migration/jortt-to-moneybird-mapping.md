@@ -1,6 +1,7 @@
 ---
 title: Jortt to Moneybird concept mapping
 description: Conceptual mapping for Jortt bookkeeping data to Moneybird categories, records, assets, VAT, and opening balances.
+nav_label: "Jortt to Moneybird concept mapping"
 trigger_phrases:
   - Jortt to Moneybird mapping
   - migrate a Jortt auditfile

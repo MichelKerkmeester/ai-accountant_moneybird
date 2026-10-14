@@ -36,6 +36,36 @@ This file covers the lijfrente (annuity) rules for a sole trader in 2023, the ja
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Jaarruimte (annual allowance) percentage | 1 |
+| Maximum jaarruimte | 2 |
+| Maximum jaarruimte under the pre-Wtp rules | 3 |
+| Aftoppingsgrens premiegrondslag | 4 |
+| Franchise premiegrondslag | 5 |
+| Factor A multiplier | 6 |
+| Look-back window | 7 |
+| Reserveringsruimte (reserve room) maximum | 8 |
+| Reserveringsruimte under the pre-Wtp rules | 9 |
+| Age limit jaarruimte | 10 |
+| Tijdelijke oudedagslijfrente cap | 11 |
+| Overbruggingslijfrente cap | 12 |
+| Stakingswinst maximum, tier a | 13 |
+| Stakingswinst maximum, tier b | 14 |
+| Stakingswinst maximum, tier c | 15 |
+| Afkoop kleine lijfrente | 16 |
+| Afkoop cap bij langdurige arbeidsongeschiktheid | 17 |
+| FOR toevoeging | 18 |
+| FOR transition in the jaarruimte | 19 |
+| AOV premium with periodic uitkeringen | 20 |
+| AOV premium with lump-sum payout | 21 |
+| Payment deadline FOR or stakingswinst conversion | 22 |
+| Lijfrente (annuity) einddatum termijn | 23 |
+| Nabestaandenlijfrente termijn | 24 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
 | Jaarruimte percentage | 30% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-07-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 |

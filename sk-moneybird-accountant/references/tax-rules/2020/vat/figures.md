@@ -36,6 +36,68 @@ This file covers Dutch VAT for a sole trader or a BV, including rates, exemption
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Standard rate | 1 |
+| Reduced rate | 2 |
+| Zero rate | 3 |
+| Logies | 4 |
+| Electronic publications and news websites, Tabel I post b.21 | 5 |
+| Mondkapjes | 6 |
+| Exemptions | 7 |
+| New KOR in force | 8 |
+| KOR Dutch turnover ceiling | 9 |
+| KOR turnover test year | 10 |
+| KOR establishment | 11 |
+| KOR notice | 12 |
+| KOR minimum participation | 13 |
+| KOR return after voluntary withdrawal | 14 |
+| KOR overrun | 15 |
+| KOR transition notice for a 2020 start | 16 |
+| KOR registration threshold without notice | 17 |
+| KOR investment-goods herziening de minimis | 18 |
+| Usual VAT return period | 19 |
+| Monthly return trigger | 20 |
+| Yearly return VAT limit | 21 |
+| Yearly return intra-EU limits | 22 |
+| Period return filing term | 23 |
+| Period return payment term | 24 |
+| General monthly and quarterly deadline | 25 |
+| General yearly return deadline | 26 |
+| Published exact 2020 VAT due-date table | 27 |
+| Suppletie correction that may be included in the next return | 28 |
+| Suppletie correction period | 29 |
+| Suppletie timing | 30 |
+| Suppletie penalty limitation | 31 |
+| Reverse charge for specified electronics | 32 |
+| Call-off stock reporting | 33 |
+| Quarterly ICP goods threshold for 2020 | 34 |
+| ICP deadline for 2020 | 35 |
+| Goods distance-sales thresholds | 36 |
+| B2C digital services distance-sales scheme | 37 |
+| Last return of the year | 38 |
+| Business-car private-use forfait | 39 |
+| Reduced business-car forfait | 40 |
+| Business-car private-use cap from 4 July 2020 | 41 |
+| Business-car cap before 4 July 2020 | 42 |
+| BUA personnel and gifts threshold | 43 |
+| BUA own contribution | 44 |
+| BUA staff bicycle | 45 |
+| BUA staff meals | 46 |
+| Invoice deadline | 47 |
+| Simplified invoice limit | 48 |
+| Kasstelsel request condition | 49 |
+| B2B e-invoicing duty | 50 |
+| Corona bijzonder uitstel debt period | 51 |
+| Corona repayment period and first payment | 52 |
+| Corona repayment terms | 53 |
+| Corona payment pause | 54 |
+| Corona extended repayment | 55 |
+| Special UHT repayment start | 56 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
 | Standard rate | 21% | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2020-01-01 |

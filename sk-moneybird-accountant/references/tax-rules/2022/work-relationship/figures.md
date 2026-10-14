@@ -36,6 +36,33 @@ This file covers the work relationship part of the 2022 rules: the Wet DBA (Wet 
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Wet DBA | 1 |
+| Loondiensttoets | 2 |
+| Gelijkgestelden | 3 |
+| Opt-out fictieve dienstbetrekking | 4 |
+| Handhavingsmoratorium | 5 |
+| Beleid 2022 | 6 |
+| Modelovereenkomsten | 7 |
+| Webmodule Beoordeling Arbeidsrelatie | 8 |
+| Case law arbeidsovereenkomst | 9 |
+| HR Uber | 10 |
+| VBAR wetsvoorstel 36 783 | 11 |
+| VBAR rechtsvermoeden | 12 |
+| VBAR uurtarief | 13 |
+| VBAR eerste toepassing | 14 |
+| BAZ wetsvoorstel 36 912 | 15 |
+| Zelfstandigenwet | 16 |
+| Einde moratorium | 17 |
+| Boetebeleid 2025 to 2027 | 18 |
+| Reguliere handhaving | 19 |
+| Doorwerking IH en OB | 20 |
+| Vooroverleg | 21 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
 | Wet DBA | Wet van 3 februari 2016, in force 1 May 2016, replaced the VAR | enacted | Verified | https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file |

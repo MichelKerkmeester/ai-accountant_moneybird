@@ -1,6 +1,7 @@
 ---
 title: Yearly overview preparation
 description: Entry index for preparing a Dutch sole-trader yearly overview in Moneybird. The folder holds the ordered close steps, the preparation checklist, the fiscal reconciliation and the report and export limits. It prepares and never files.
+nav_label: "Yearly overview preparation"
 trigger_phrases:
   - yearly overview
   - jaaroverzicht

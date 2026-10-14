@@ -36,6 +36,29 @@ Tax year 2024 is the first year of the two-bracket box 2 rate. A taxpayer pays 2
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Box 2 bracket 1 | 1 |
+| Tax at top of bracket 1 | 2 |
+| Box 2 bracket 2 | 3 |
+| Belastingkorting on unoffset loss | 4 |
+| Loss offset period | 5 |
+| Aanmerkelijk belang definition (art. 4.6) | 6 |
+| Forfaitair voordeel (art. 4.14) | 7 |
+| Excessief lenen (excessive borrowing) maximum and mechanism | 8 |
+| Excessief lenen measurement | 9 |
+| Gebruikelijk loon (customary salary) fixed amount | 10 |
+| Gebruikelijk loon minimum threshold | 11 |
+| Gebruikelijk loon comparable-loon test | 12 |
+| ODV marktrente for 2024 | 13 |
+| Inherited aanmerkelijk belang facility (art. 4.12a) | 14 |
+| Minor children | 15 |
+| Fiscal partner division | 16 |
+| Start-up gebruikelijk loon rule | 17 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 2 bracket 1 | 24,5% up to € 67.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2024-01-01 |

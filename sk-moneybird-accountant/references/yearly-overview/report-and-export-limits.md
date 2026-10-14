@@ -1,6 +1,7 @@
 ---
 title: Report and export limits for the yearly overview
 description: The guarded report rows, the twelve-month window and the auditfile export order this procedure depends on, with every item not confirmed against pinned CLI help marked UNVERIFIED and the check that would settle it.
+nav_label: "Report and export limits for the yearly overview"
 trigger_phrases:
   - report and export limits
   - twelve-month window

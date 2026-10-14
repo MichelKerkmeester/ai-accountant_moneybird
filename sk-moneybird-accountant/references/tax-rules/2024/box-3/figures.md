@@ -36,6 +36,25 @@ Tax year 2024 uses the enacted category method of the Overbruggingswet box 3. Th
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| System 2024 | 1 |
+| Peildatum | 2 |
+| Heffingsvrij vermogen (tax-free allowance) | 3 |
+| Box 3 tarief | 4 |
+| Schuldendrempel (debt threshold) | 5 |
+| Bank percentage | 6 |
+| Other-assets percentage | 7 |
+| Debt percentage | 8 |
+| Aandeel rounding | 9 |
+| Vrijstelling groene beleggingen (green investment exemption) | 10 |
+| Korting groene beleggingen (green investment credit) | 11 |
+| Actual-return reporting 2024 | 12 |
+| Hoge Raad 6 June 2024 | 13 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
 | System 2024 | Category method of the Overbruggingswet box 3, in force 1 January 2023. Six-step calculation. | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2022-534.html |

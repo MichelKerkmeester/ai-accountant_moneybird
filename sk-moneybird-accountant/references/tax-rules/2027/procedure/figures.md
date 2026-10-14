@@ -36,6 +36,56 @@ This file covers the procedure for tax year 2027 for a ZZP sole trader and for a
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| IB return over 2026, filed in 2027: deadline | 1 |
+| IB filing period opens | 2 |
+| IB uitstel | 3 |
+| IB uitstel channel | 4 |
+| Fiscal partner and the uitstel form | 5 |
+| AWR art. 9 lid 1 and 2 | 6 |
+| Definitive assessment term, AWR art. 11 lid 3 | 7 |
+| Aanslaggrens and teruggaafgrens 2027 | 8 |
+| Navorderingstermijn, AWR art. 16 | 9 |
+| Payment terms of assessments, Invorderingswet 1990 art. 9 | 10 |
+| Bezwaartermijn (objection period) | 11 |
+| Verzoek om vermindering | 12 |
+| Voorlopige aanslag change deadline | 13 |
+| Belastingrente (tax interest) 2027 rate | 14 |
+| Belastingrente, last set rate before 2027 | 15 |
+| Belastingrente on income tax in 2027 and the count basis | 16 |
+| Belastingrente on btw | 17 |
+| Vpb belastingrente | 18 |
+| VAT filing and payment dates 2027 | 19 |
+| VAT dates already published for 2027 | 20 |
+| VAT software submission | 21 |
+| Uitstel (deferral) btw-aangifte | 22 |
+| Btw aangifteverzuimboete 2027 | 23 |
+| IB boete amounts 2027 | 24 |
+| IB missed deadline route | 25 |
+| Vergrijpboete percentages | 26 |
+| Requesting a return | 27 |
+| Filing without an invitation, tax year 2022 | 28 |
+| Bewaarplicht (record-keeping duty) | 29 |
+| KVK registration window | 30 |
+| KVK and Belastingdienst registration | 31 |
+| KVK service terms | 32 |
+| End of the remaining zachte landing | 33 |
+| Regular handhaving | 34 |
+| Separate 2027 handhavingsplan | 35 |
+| Ingroeimodel | 36 |
+| VBAR in 2027 | 37 |
+| VBAR hourly amount 2027 | 38 |
+| VBAR scope and articles | 39 |
+| Modelovereenkomsten | 40 |
+| Zelfstandigenwet | 41 |
+| BAZ status | 42 |
+| Enacted 2027 law for procedures | 43 |
+| Belastingplan 2027 and procedure | 44 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
 | IB return over 2026, filed in 2027: deadline | Not published on 2026-10-11. Usually 1 May 2027, set in the aangiftebrief | unknown | UNVERIFIED | https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen |

@@ -37,6 +37,42 @@ This file covers the income-provision rules for tax year 2022 for a ZZP sole tra
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Jaarruimte (annual allowance) percentage | 1 |
+| Maximum jaarruimte | 2 |
+| Aftoppingsgrens premiegrondslag | 3 |
+| Franchise premiegrondslag | 4 |
+| Factor A multiplier | 5 |
+| Premiegrondslag composition | 6 |
+| Age limit jaarruimte | 7 |
+| Look-back window reserveringsruimte | 8 |
+| Reserveringsruimte (reserve room) percentage cap | 9 |
+| Age boundary for the higher reserveringsruimte | 10 |
+| Reserveringsruimte maximum, younger group | 11 |
+| Reserveringsruimte maximum, older group | 12 |
+| Lijfrentevormen en oudedagslijfrente | 13 |
+| Tijdelijke oudedagslijfrente cap | 14 |
+| Overbruggingslijfrente cap | 15 |
+| Stakingswinst maximum, tier a | 16 |
+| Stakingswinst maximum, tier b | 17 |
+| Stakingswinst maximum, tier c | 18 |
+| Afkoop kleine lijfrente | 19 |
+| Afkoop cap bij langdurige arbeidsongeschiktheid | 20 |
+| FOR toevoeging | 21 |
+| FOR afname | 22 |
+| FOR-lijfrente conversion article | 23 |
+| AOV premium with periodic uitkeringen | 24 |
+| AOV premium with lump-sum payout | 25 |
+| Mandatory beroepspensioen premium | 26 |
+| Sectoraal pensioenfonds voor zelfstandigen | 27 |
+| Payment deadline FOR or stakingswinst conversion | 28 |
+| Lijfrente (annuity) ingangsdatum termijn | 29 |
+| Nabestaandenlijfrente termijn | 30 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
 | Jaarruimte percentage | 13,3% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 |

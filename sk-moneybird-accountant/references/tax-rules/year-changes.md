@@ -1,6 +1,7 @@
 ---
 title: "Year changes"
 description: "Generated overview of the changes in every tax year, newest first, with the path to each year note."
+nav_label: "Year changes"
 trigger_phrases:
   - "year changes overview"
   - "what changed per tax year"

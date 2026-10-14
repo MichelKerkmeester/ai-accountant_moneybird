@@ -1,6 +1,7 @@
 ---
 title: Moneybird bookkeeping for a Dutch sole trader
 description: Accounting treatment for common ZZP sales, costs, private use, assets, opening balances, bank reconciliation, and VAT events in Moneybird.
+nav_label: "Moneybird bookkeeping for a Dutch sole trader"
 trigger_phrases:
   - Moneybird ZZP bookkeeping
   - book a business expense

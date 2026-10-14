@@ -1,6 +1,7 @@
 ---
 title: VAT return preparation
 description: Entry index for preparing a Dutch VAT period from Moneybird. The folder holds the ordered procedure, the rubriek and derivation rules, the year-end branch and the review pack. It prepares and never files, submits or pays.
+nav_label: "VAT return preparation"
 trigger_phrases:
   - prepare the VAT return
   - btw-aangifte voorbereiden

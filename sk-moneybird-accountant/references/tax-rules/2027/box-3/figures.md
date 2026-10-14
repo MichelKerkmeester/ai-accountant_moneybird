@@ -36,6 +36,28 @@ Box 3 (sparen en beleggen, savings and investments) taxes a fictitious return on
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Rekenmethode (categorieënmethode, art. 5.2) | 1 |
+| Peildatum | 2 |
+| Heffingsvrij vermogen (tax-free allowance), 2027 text | 3 |
+| Heffingsvrij vermogen, Cabinet letter | 4 |
+| Indexatiefactor art. 10.1, bill 37 022 | 5 |
+| Tarief box 3 | 6 |
+| Forfait overige bezittingen (flat-rate return on other assets) | 7 |
+| Forfait overige bezittingen, Cabinet letter | 8 |
+| Schuldendrempel (debt threshold) | 9 |
+| Bank- en schuldenpercentage | 10 |
+| Vrijstelling groene beleggingen (green investment exemption) | 11 |
+| Korting groene beleggingen (green investment credit) | 12 |
+| Einde groene regelingen | 13 |
+| Heffingsvrij resultaat | 14 |
+| Wet werkelijk rendement box 3 | 15 |
+| Opgaaf werkelijk rendement | 16 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
 | Rekenmethode (categorieënmethode, art. 5.2) | Six-step category method, still in the 2027 text. A negative rendement is set at nil and the forfaitaire voordeel is at least nil | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2027-01-01 https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026 |

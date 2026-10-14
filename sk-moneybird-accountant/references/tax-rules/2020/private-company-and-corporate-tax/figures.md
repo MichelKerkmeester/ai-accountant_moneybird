@@ -36,6 +36,35 @@ This file covers the BV and the vennootschapsbelasting (corporate income tax) fo
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Vpb-tarief en berekening 2020 | 1 |
+| Art. 31 pro-rata bij een boekjaar over de jaargrens | 2 |
+| Verliesverrekening 2020 | 3 |
+| Generieke renteaftrekbeperking art. 15b | 4 |
+| Aangifte (return) Vpb en uitstel | 5 |
+| Gebruikelijk loonregeling | 6 |
+| Gebruikelijk loon (customary salary) escape | 7 |
+| Start-up relief en lagere lonen | 8 |
+| Zvw voor de DGA | 9 |
+| Box 2-tarief | 10 |
+| Dividendbelasting | 11 |
+| Dividend stripping | 12 |
+| Inkoop van eigen aandelen | 13 |
+| Conditionele bronbelasting | 14 |
+| Fiscale eenheid Vpb | 15 |
+| Deelnemingsvrijstelling | 16 |
+| Innovatiebox | 17 |
+| Geruisloze omzetting art. 3.65 | 18 |
+| Onzekerheid 2020-tekst geruisloze omzetting | 19 |
+| Ruisende inbreng (business transfer) en stakingsaftrek | 20 |
+| Jaarrekening grootteklassen en deponering | 21 |
+| Administratieplicht en bewaartermijn | 22 |
+| BTW bij omzetting naar BV | 23 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
 | Vpb-tarief en berekening 2020 | t/m € 200.000: 16,5%. Daarboven: € 33.000 plus 25% van het bedrag boven € 200.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2020-01-01 (art. 22) |

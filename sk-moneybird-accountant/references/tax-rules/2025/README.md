@@ -1,6 +1,7 @@
 ---
 title: "Tax year 2025"
 description: "Overview of Dutch tax year 2025 for a ZZP sole trader who may also own a BV: the twelve topic files, their headline figures and how many values are open."
+nav_label: "Tax year 2025"
 trigger_phrases:
   - "tax year 2025"
   - "belastingjaar 2025"
@@ -35,13 +36,13 @@ Across the twelve topic files the figures tables hold 318 values: 294 Verified, 
 | [vat](vat/figures.md) | This file explains Dutch VAT rates, exemptions, small-business rules, returns, invoicing and cross-border VAT for tax year 2025. | 56 | 4 | 3 |
 | [income-tax](income-tax/figures.md) | Covers the 2025 box 1 tax brackets, heffingskortingen, tariefsaanpassing, and the path from business profit to taxable income. | 26 | 0 | 0 |
 | [health-insurance-contribution](health-insurance-contribution/figures.md) | The income-dependent Zvw contribution for an entrepreneur in tax year 2025: the 5,26% rate, the maximum bijdrage-inkomen of € 75.864, who pays by aanslag and how that differs from the 6,51% werkgeversheffing. | 19 | 4 | 1 |
-| [business-deductions](business-deductions/figures.md) | The ondernemersaftrek, the startersaftrek, the meewerkaftrek, the stakingsaftrek and the 12,7% MKB-winstvrijstelling for tax year 2025, with the urencriterium of 1.225 hours and the tariefsaanpassing of 12,02%. | 23 | 0 | 0 |
+| [business-deductions](business-deductions/figures.md) | The ondernemersaftrek, the startersaftrek, the meewerkaftrek, the stakingsaftrek and the 12,7% MKB-winstvrijstelling (SME profit exemption) for tax year 2025, with the urencriterium of 1.225 hours and the tariefsaanpassing of 12,02%. | 23 | 0 | 0 |
 | [investments](investments/figures.md) | Investment deductions (KIA, EIA, MIA, Vamil), the desinvesteringsbijtelling and the depreciation rules for a Dutch sole trader or BV in tax year 2025. | 23 | 4 | 3 |
 | [costs-and-car](costs-and-car/figures.md) | Deductible business costs and the car for a Dutch sole trader in tax year 2025, from the gemengde kosten drempel and the fixed exclusions to the kilometre allowance, bijtelling and the prestatiebeurs exception. | 26 | 0 | 0 |
 | [box-3](box-3/figures.md) | Box 3 savings and investments for tax year 2025: heffingsvrij vermogen, schuldendrempel, the three category percentages, the six-step calculation, groene beleggingen and the option to report the actual return. | 11 | 0 | 0 |
 | [box-2](box-2/figures.md) | Box 2 income and the aanmerkelijk belang rules for tax year 2025, including the two-bracket rate table, excessief lenen, gebruikelijk loon and loss relief. | 27 | 1 | 0 |
 | [private-company-and-corporate-tax](private-company-and-corporate-tax/figures.md) | Dutch BV and vennootschapsbelasting for tax year 2025, from the Vpb rates and computation to verliesverrekening, the renteaftrekbeperking, gebruikelijk loon and the DGA Zvw route, dividendbelasting, conditionele bronbelasting, fiscale eenheid, innovatiebox, jaarrekening and the switch from eenmanszaak to BV. | 36 | 1 | 1 |
-| [pension-and-disability-insurance](pension-and-disability-insurance/figures.md) | Jaarruimte, reserveringsruimte, lijfrente conditions, stakingswinst conversion, FOR interaction and AOV premium deductibility for tax year 2025, plus the proposed BAZ. | 25 | 0 | 3 |
+| [pension-and-disability-insurance](pension-and-disability-insurance/figures.md) | Jaarruimte (annual allowance), reserveringsruimte, lijfrente conditions, stakingswinst conversion, FOR interaction and AOV premium deductibility for tax year 2025, plus the proposed BAZ. | 25 | 0 | 3 |
 | [work-relationship](work-relationship/figures.md) | Wet DBA enforcement after the end of the moratorium, modelovereenkomsten, the VBAR hourly rate presumption and the BAZ bill for tax year 2025. | 25 | 0 | 7 |
 | [procedure](procedure/figures.md) | Filing deadlines and extensions for income tax and btw, the voorlopige aanslag, belastingrente, the navorderingstermijn, bezwaar, the bewaarplicht and the KVK and Belastingdienst registration duties for tax year 2025. | 21 | 0 | 0 |
 <!-- GENERATED:topic-files:end -->
@@ -61,24 +62,24 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Inkomstenbelasting box 1 | Box 1 for whole year at AOW age, born on or after 1 January 1946 | 17,92% up to € 38.441, 37,48% from there to € 76.817, 49,50% above € 76.817. | enacted | Verified |
 | Zvw-bijdrage | Zvw-bijdrage by aanslag | 5,26% | enacted | Verified |
 | Zvw-bijdrage | Maximum bijdrage-inkomen | € 75.864 | enacted | Verified |
-| Ondernemersaftrek en MKB-winstvrijstelling | IB-ondernemer status | Separate test per activity, not the same as the btw-ondernemer test | enacted | Verified |
+| Ondernemersaftrek (entrepreneur deduction) en MKB-winstvrijstelling (SME profit exemption) | IB-ondernemer status | Separate test per activity, not the same as the btw-ondernemer test | enacted | Verified |
 | Ondernemersaftrek en MKB-winstvrijstelling | Ondernemersaftrek parts | zelfstandigenaftrek, aftrek voor speur- en ontwikkelingswerk, meewerkaftrek, startersaftrek bij arbeidsongeschiktheid, stakingsaftrek | enacted | Corrected |
 | Investeringsaftrek en afschrijving | Kleinschaligheidsinvesteringsaftrek (KIA), table | Nil up to € 2.900. 28% of the investment above € 2.900 up to € 70.602. A fixed € 19.769 above € 70.602 up to € 130.744. € 19.769 minus 7,56% of the excess over € 130.744 up to € 392.230. Nil above € 392.230. | enacted | Verified |
 | Investeringsaftrek en afschrijving | KIA in a samenwerkingsverband | The investments of the samenwerkingsverband and the taxpayer's own investments are added. The table is applied to the sum. The outcome is multiplied by the taxpayer's own investment amount divided by that sum. | enacted | Verified |
 | Kosten en auto | Gemengde kosten drempel | € 5.700 | enacted | Verified |
 | Kosten en auto | Keuze in plaats van drempel | 80% aftrekbaar | enacted | Verified |
-| Box 3 sparen en beleggen | Heffingsvrij vermogen | € 57.684 per person, € 115.368 with a fiscal partner | enacted | Verified |
+| Box 3 sparen en beleggen | Heffingsvrij vermogen (tax-free allowance) | € 57.684 per person, € 115.368 with a fiscal partner | enacted | Verified |
 | Box 3 sparen en beleggen | Box 3 tarief | 36% | enacted | Verified |
 | Box 2 en aanmerkelijk belang | Box 2 bracket 1 (art. 2.12 Wet IB 2001) | 24,5% up to € 67.804 | enacted | Verified |
 | Box 2 en aanmerkelijk belang | Tax at the top of bracket 1 (art. 2.12, column III) | € 16.611 | enacted | Verified |
 | BV en vennootschapsbelasting | Vpb tarief (art. 22 Wet Vpb 1969) | t/m € 200.000 at 19%, above € 200.000 € 38.000 plus 25,8% | enacted | Verified |
 | BV en vennootschapsbelasting | Verliesverrekening (art. 20 Wet Vpb 1969) | one year back and unlimited forward, per year up to € 1.000.000 plus 50% of the profit above € 1.000.000 | enacted | Verified |
-| Pensioen, lijfrente en AOV | Jaarruimte percentage | 30% | enacted | Verified |
+| Pensioen, lijfrente en AOV | Jaarruimte (annual allowance) percentage | 30% | enacted | Verified |
 | Pensioen, lijfrente en AOV | Maximum jaarruimte | € 35.798 | enacted | Verified |
 | Arbeidsrelatie en zelfstandigheid | Wet DBA | The Wet deregulering beoordeling arbeidsrelaties is the Wet van 3 februari 2016, in force on 1 May 2016, and it replaced the VAR | enacted | Verified |
 | Arbeidsrelatie en zelfstandigheid | Loondienst test | Three elements: the possibility of werkgeversgezag, the duty to perform (persoonlijke) arbeid, and pay for the work | enacted | Verified |
-| Aangifte en procedure | Aangifte inkomstenbelasting 2025 filing deadline | 1 May 2026, or the date in the aangiftebrief. The filing period opens 1 March 2026 | enacted | Verified |
-| Aangifte en procedure | Uitstel aangifte inkomstenbelasting 2025 | 4 months extra, to 1 September 2026, requested before the filing date | enacted | Verified |
+| Aangifte (return) en procedure | Aangifte inkomstenbelasting 2025 filing deadline | 1 May 2026, or the date in the aangiftebrief. The filing period opens 1 March 2026 | enacted | Verified |
+| Aangifte en procedure | Uitstel (deferral) aangifte inkomstenbelasting 2025 | 4 months extra, to 1 September 2026, requested before the filing date | enacted | Verified |
 <!-- GENERATED:headline-figures:end -->
 
 ---

@@ -66,6 +66,16 @@ own target counts as a path too, because a derived header names each sibling
 file in both the label and the target. A part that differs beyond its paths is
 refused, nothing is written and the run exits 1.
 
+A reviewed content edit changes the bytes of a part or of the entry file. The
+--accept-edits mode takes the same base revision and compares every part with
+its text at that revision. A part whose text still matches keeps its stored
+hashes byte for byte, so an unchanged part never moves. A part whose text
+changed is re-normalized against the current tree, its body and header hashes
+are recorded, and the part is printed with the number of changed lines. A row
+with a recorded part gets its rejoin hashes recomputed, and the entry hash is
+re-recorded when the entry file changed. The manifest is written once, at the
+end, so a failed read leaves every byte as it was.
+
 remap_citations() rewrites every path, path:line and path#anchor citation of
 a split file in every tracked markdown or JSON file outside specs/ and
 outside the moved parts. It points at the part that holds the line or the
@@ -85,6 +95,7 @@ Usage:
     python3 -I sk-moneybird-accountant/scripts/split-topic-files.py --write
     python3 -I sk-moneybird-accountant/scripts/split-topic-files.py --check
     python3 -I sk-moneybird-accountant/scripts/split-topic-files.py --accept-renames MAP --base REF
+    python3 -I sk-moneybird-accountant/scripts/split-topic-files.py --accept-edits --base REF
 
 Options:
     --plan   Print every source file, its parts, the byte sizes and the o200k
@@ -104,9 +115,14 @@ Options:
              object that maps an old repository path to its new path, and a
              key that ends in a slash maps every path under it. Requires
              --base.
+    --accept-edits
+             Record the new hashes of the parts and of the entry file whose
+             text changed since the base revision, keep every unchanged
+             part's hashes byte for byte and print each recorded part with
+             its changed line count. Requires --base.
     --base REF
              Git revision that still holds the old files. Required with
-             --accept-renames.
+             --accept-renames and with --accept-edits.
 
 Output:
     --plan prints one "source" line per topic file, one "part" line per part,
@@ -118,6 +134,9 @@ Output:
     --accept-renames prints one "split-accept" line with the renamed and
     unchanged part counts when every part is accepted, or one "refused"
     block per part with the first differing line, and exits 1.
+    --accept-edits prints one "split-edit" line per recorded part or entry
+    file with its changed line count, then one "split-accept-edits" line with
+    the recorded and unchanged part counts.
     Exit 0 when the mode finished, 1 on an unmapped citation, a refused
     rename or a check problem, and 2 on a usage error, a read error, a
     malformed source file, a malformed manifest or a write error.
@@ -3015,6 +3034,156 @@ def map_line_map(line_map: List[Any], mapping: Dict[str, str]) -> List[Any]:
     return runs
 
 
+def changed_line_count(old_text: str, new_text: str) -> int:
+    """Count the lines that differ between two texts.
+
+    The count compares the two texts line by line at the same position and
+    adds the length difference, so an inserted line counts once and a moved
+    block counts its changed positions. It is a review aid, never a diff.
+
+    Args:
+        old_text: File text at the base revision.
+        new_text: File text in the working tree.
+
+    Returns:
+        The number of changed lines.
+    """
+    old_lines = old_text.split("\n")
+    new_lines = new_text.split("\n")
+    common = min(len(old_lines), len(new_lines))
+    return sum(1 for index in range(common) if old_lines[index] != new_lines[index]) + abs(
+        len(old_lines) - len(new_lines)
+    )
+
+
+def accept_edits_mode(base_ref: str) -> int:
+    """Record the new hashes of a reviewed content edit.
+
+    A part whose text still matches the base revision keeps its stored hashes
+    byte for byte. A part whose text changed is re-normalized against the
+    current tree, its new body and header hashes are recorded and the part is
+    printed with the number of changed lines. A row with a changed part gets
+    its rejoin hashes recomputed, and the general record is handled the same
+    way, including its entry hash. The manifest is written once, so a refused
+    read leaves every byte as it was.
+
+    Args:
+        base_ref: Git revision that still holds the pre-edit files.
+
+    Returns:
+        Zero when the manifest was written, and 2 through fail() on a missing
+        or malformed manifest, an unreadable base revision or a part file
+        without a body heading.
+    """
+    manifest = read_manifest(required=True)
+    old_general = manifest.get("general")
+    new_manifest: Dict[str, Any] = {
+        "generated_by": manifest.get("generated_by", GENERATOR),
+        "version": manifest.get("version", MANIFEST_VERSION),
+        "files": [],
+    }
+    part_bodies: Dict[str, str] = {}
+    for row in manifest["files"]:
+        for part in row["parts"]:
+            path = os.path.join(REPO_ROOT, part["path"])
+            if os.path.isfile(path):
+                body = part_body(read_text(path))
+                if body is not None:
+                    part_bodies[part["path"]] = body
+    if isinstance(old_general, dict):
+        for part in old_general["parts"]:
+            path = os.path.join(REPO_ROOT, part["path"])
+            if os.path.isfile(path):
+                body = part_body(read_text(path))
+                if body is not None:
+                    part_bodies[part["path"]] = body
+    split_map = build_split_map(split_map_entries_from_manifest(manifest, REPO_ROOT, part_bodies))
+    recorded = 0
+    unchanged = 0
+    for row in manifest["files"]:
+        new_row = dict(row)
+        new_parts: List[Dict[str, Any]] = []
+        rejoin_parts: List[str] = []
+        row_changed = False
+        for part in row["parts"]:
+            path = part["path"]
+            old_text = git_show_text(base_ref, path)
+            absolute = os.path.join(REPO_ROOT, path)
+            if not os.path.isfile(absolute):
+                fail("missing part %s" % path)
+            new_text = read_text(absolute)
+            body = part_body(new_text)
+            header = file_header_sha256(new_text)
+            if body is None or header is None:
+                fail("part %s holds no body heading" % path)
+            normalized = normalize_body(body, path, row["source"], split_map)
+            digest = sha256_text(normalized)
+            new_part = dict(part)
+            if old_text != new_text or digest != part["body_sha256"] or header != part["header_sha256"]:
+                print("split-edit %s %d changed lines" % (path, changed_line_count(old_text, new_text)))
+                new_part["body_sha256"] = digest
+                new_part["header_sha256"] = header
+                recorded += 1
+                row_changed = True
+            else:
+                unchanged += 1
+            new_parts.append(new_part)
+            rejoin_parts.append(normalized)
+        new_row["parts"] = new_parts
+        if row_changed:
+            rejoin = sha256_text("".join(rejoin_parts))
+            new_row["body_sha256"] = rejoin
+            new_row["rejoin_sha256"] = rejoin
+        new_manifest["files"].append(new_row)
+    if isinstance(old_general, dict):
+        new_general = dict(old_general)
+        new_parts = []
+        rejoin_parts = []
+        record_changed = False
+        for part in old_general["parts"]:
+            path = part["path"]
+            old_text = git_show_text(base_ref, path)
+            absolute = os.path.join(REPO_ROOT, path)
+            if not os.path.isfile(absolute):
+                fail("missing general part %s" % path)
+            new_text = read_text(absolute)
+            body = part_body(new_text)
+            header = file_header_sha256(new_text)
+            if body is None or header is None:
+                fail("general part %s holds no body heading" % path)
+            normalized = normalize_body(body, path, old_general["source"], split_map)
+            digest = sha256_text(normalized)
+            new_part = dict(part)
+            if old_text != new_text or digest != part["body_sha256"] or header != part["header_sha256"]:
+                print("split-edit %s %d changed lines" % (path, changed_line_count(old_text, new_text)))
+                new_part["body_sha256"] = digest
+                new_part["header_sha256"] = header
+                recorded += 1
+                record_changed = True
+            else:
+                unchanged += 1
+            new_parts.append(new_part)
+            rejoin_parts.append(normalized)
+        new_general["parts"] = new_parts
+        entry = old_general["source"]
+        entry_old = git_show_text(base_ref, entry)
+        if not os.path.isfile(os.path.join(REPO_ROOT, entry)):
+            fail("missing entry %s" % entry)
+        entry_new = read_text(os.path.join(REPO_ROOT, entry))
+        if record_changed:
+            rejoin = sha256_text("".join(rejoin_parts))
+            new_general["body_sha256"] = rejoin
+            new_general["rejoin_sha256"] = rejoin
+        if entry_old != entry_new or entry_sha256(entry_new) != old_general.get("entry_sha256"):
+            print("split-edit %s %d changed lines" % (entry, changed_line_count(entry_old, entry_new)))
+            new_general["entry_sha256"] = entry_sha256(entry_new)
+            recorded += 1
+        new_manifest["general"] = new_general
+    write_text(MANIFEST_PATH, render_manifest(new_manifest))
+    print("split-accept-edits: %d parts recorded, %d unchanged" % (recorded, unchanged))
+    return 0
+
+
 def accept_renames_mode(map_path: str, base_ref: str) -> int:
     """Record the new hashes of a pure rename.
 
@@ -3213,10 +3382,15 @@ def main(argv: List[str]) -> int:
         metavar="MAP",
         help="accept a pure rename from the map in MAP and record its new hashes",
     )
+    modes.add_argument(
+        "--accept-edits",
+        action="store_true",
+        help="record the new hashes of the parts and the entry file that changed since the base revision",
+    )
     parser.add_argument(
         "--base",
         metavar="REF",
-        help="git revision that still holds the old files, required with --accept-renames",
+        help="git revision that still holds the old files, required with --accept-renames and --accept-edits",
     )
     args = parser.parse_args(argv)
     if not os.path.isdir(TAX_RULES_ROOT):
@@ -3225,8 +3399,12 @@ def main(argv: List[str]) -> int:
         if not args.base:
             parser.error("--accept-renames requires --base REF")
         return accept_renames_mode(args.accept_renames, args.base)
+    if args.accept_edits:
+        if not args.base:
+            parser.error("--accept-edits requires --base REF")
+        return accept_edits_mode(args.base)
     if args.base:
-        parser.error("--base requires --accept-renames MAP")
+        parser.error("--base requires --accept-renames MAP or --accept-edits")
     if args.write:
         return write_mode()
     if args.check:

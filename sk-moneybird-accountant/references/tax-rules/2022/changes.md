@@ -1,6 +1,7 @@
 ---
 title: "Changes tax year 2022"
 description: "What changed in tax year 2022 compared with 2021, restated from section 5 of the year topic files, with a generated index of every topic."
+nav_label: "Changes tax year 2022"
 trigger_phrases:
   - "changes tax year 2022"
   - "what changed in 2022"
@@ -38,10 +39,10 @@ checked_on: "2026-10-12"
 | [vat.md](vat/notes.md#5-changes) | 5 | The corona bijzonder uitstel ran through 2021 as an open deferral. In 2022 the... |
 | [income-tax.md](income-tax/notes.md#5-changes) | 12 | Below AOW age, the published first rate changed from 37,10% up to € 68.507 to... |
 | [health-insurance-contribution.md](health-insurance-contribution/notes.md#5-changes) | 14 | Zvw bijdrage by aanslag: 5,75% in 2021 to 5,50% in 2022... |
-| [business-deductions.md](business-deductions/notes.md#5-changes) | 11 | Zelfstandigenaftrek: € 6.670 in 2021 to € 6.310 in 2022... |
+| [business-deductions.md](business-deductions/notes.md#5-changes) | 11 | Zelfstandigenaftrek (self-employed person's deduction): € 6.670 in 2021 to € 6.310 in 2022... |
 | [investments.md](investments/notes.md#5-changes) | 13 | KIA table: nil up to € 2.400 in both years, but the rest of the table was... |
 | [costs-and-car.md](costs-and-car/notes.md#5-changes) | 7 | Gemengde kosten drempel: € 4.700 in 2021 to € 4.800 in 2022... |
-| [box-3.md](box-3/notes.md#5-changes) | 15 | Heffingsvrij vermogen: € 50.000 per person and € 100.000 with a fiscal partner... |
+| [box-3.md](box-3/notes.md#5-changes) | 15 | Heffingsvrij vermogen (tax-free allowance): € 50.000 per person and € 100.000 with a fiscal partner... |
 | [box-2.md](box-2/notes.md#5-changes) | 8 | Aanmerkelijk belang (art. 4.6): the 2021 text has sub a to d only, the 2022... |
 | [private-company-and-corporate-tax.md](private-company-and-corporate-tax/notes.md#5-changes) | 16 | Vpb first bracket: € 245.000 at 15% in 2021 moved to € 395.000 at 15% in 2022... |
 | [pension-and-disability-insurance.md](pension-and-disability-insurance/notes.md#5-changes) | 13 | The structure of the jaarruimte stayed the same as in 2021: 13,3% of the... |

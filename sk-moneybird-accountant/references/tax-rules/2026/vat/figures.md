@@ -36,6 +36,71 @@ This file covers VAT for a sole trader, a BV and other entrepreneurs, including 
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Standard rate | 1 |
+| Reduced rate | 2 |
+| Zero rate | 3 |
+| Logies | 4 |
+| Separate breakfast, pool and attraction access | 5 |
+| Culture, media and sport posts | 6 |
+| Solar panels near homes | 7 |
+| VAT exemptions | 8 |
+| Intra-EU zero-rate conditions | 9 |
+| Usual VAT return period and requested periods | 10 |
+| Monthly-period trigger of € 15.000 VAT per quarter | 11 |
+| Annual return VAT limit | 12 |
+| Annual return intra-EU limits | 13 |
+| Standard return and payment deadline | 14 |
+| Domestic 2026 quarterly return deadlines | 15 |
+| Domestic monthly return deadline pattern | 16 |
+| Annual return for 2026 | 17 |
+| Software return submission window | 18 |
+| Foreign-established quarterly return deadlines | 19 |
+| Late filing fine for foreign-established businesses | 20 |
+| Late payment fine for foreign-established businesses | 21 |
+| Dutch KOR turnover ceiling and test | 22 |
+| Dutch KOR turnover that counts | 23 |
+| EU KOR Union turnover ceiling | 24 |
+| KOR registration threshold without notice | 25 |
+| Dutch KOR start and exit timing | 26 |
+| KOR application cut-offs and confirmation | 27 |
+| KOR overrun and re-entry | 28 |
+| EU KOR EX number | 29 |
+| EU KOR quarterly report | 30 |
+| EU KOR overrun notice | 31 |
+| Suppletie correction period and reporting deadline | 32 |
+| Suppletie amount boundary | 33 |
+| Suppletie interest and penalty rules | 34 |
+| Electronics reverse charge threshold | 35 |
+| ICP goods threshold | 36 |
+| ICP report contents and line limit | 37 |
+| ICP filing deadline | 38 |
+| EU distance-sales threshold | 39 |
+| Distance-sales election | 40 |
+| Unieregeling OSS timing and records | 41 |
+| Invoerregeling shipment limit | 42 |
+| Invoerregeling missed-report consequence | 43 |
+| Unverified OSS inactivity claim | 44 |
+| Car private-use standard calculation | 45 |
+| Car reduced calculation | 46 |
+| Car private-use cap | 47 |
+| BUA gifts and benefits threshold | 48 |
+| BUA commuting bicycle conditions | 49 |
+| BUA staff meal calculation | 50 |
+| Invoice deadline and simplified invoice threshold | 51 |
+| Kasstelsel consumer-sales condition | 52 |
+| Current B2B e-invoicing duty | 53 |
+| E-invoices to central government | 54 |
+| Dutch national B2B e-invoicing plan | 55 |
+| ViDA timeline stated in the 2025 Kamerbrief | 56 |
+| EU ViDA acts adoption and publication dates | 57 |
+| Bill 36.920 status and schedule | 58 |
+| Corona tax-debt repayment arrangement | 59 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
 | Standard rate | 21% | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2026-01-01 |

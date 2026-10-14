@@ -1,6 +1,7 @@
 ---
 title: Fiscal reconciliation for the yearly overview
 description: The fiscal reconciliation template from the commercial result to the belastbare winst, the three-column hand-off template and the explicit prepared-not-filed stop. Every amount cell is a braced placeholder.
+nav_label: "Fiscal reconciliation for the yearly overview"
 trigger_phrases:
   - fiscal reconciliation
   - aansluiting commercieel fiscaal

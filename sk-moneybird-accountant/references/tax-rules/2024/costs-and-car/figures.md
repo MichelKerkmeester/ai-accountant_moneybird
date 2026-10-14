@@ -36,6 +36,40 @@ This file covers the deductibility of business costs and the car rules for tax y
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Gemengde kosten drempel | 1 |
+| Keuze in plaats van de drempel | 2 |
+| Vpb: vervanging van de drempel en keuzeprocent | 3 |
+| Reis en verblijf congressen en cursussen | 4 |
+| Kilometervergoeding (mileage allowance) privévervoermiddel | 5 |
+| Openbaar vervoer, taxi en vliegtuig | 6 |
+| Verhuizing en dubbele huisvesting | 7 |
+| Werkruimte thuis (home workspace) | 8 |
+| Telefoonabonnement thuis | 9 |
+| Overige vaste uitsluitingen | 10 |
+| Laptop en computer, etikettering | 11 |
+| Kleine aanschaf | 12 |
+| Beloning partner | 13 |
+| Geldboetes en dwangsommen | 14 |
+| Auto, vermogensetikettering | 15 |
+| Bijtelling (private-use addition) auto, standaard | 16 |
+| Auto van voor 2017 | 17 |
+| Youngtimer | 18 |
+| Privégebruik auto tot 500 km per jaar | 19 |
+| Waarde van de auto | 20 |
+| Zero-emission, eerste toelating 2024 | 21 |
+| Zero-emission, waterstof, zonnecellen en vaste periode | 22 |
+| Bijtelling fiets | 23 |
+| Btw op de privéauto in de zaak | 24 |
+| Studiekostenaftrek | 25 |
+| Prestatiebeurs, caps en drempel | 26 |
+| STAP-budget | 27 |
+| KOR en de kostengrondslag | 28 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
 | Gemengde kosten drempel | € 5.600 | enacted | Verified | [Wet inkomstenbelasting, art. 3.15 lid 1 en art. 10.1](https://wetten.overheid.nl/BWBR0011353/2024-01-01) |

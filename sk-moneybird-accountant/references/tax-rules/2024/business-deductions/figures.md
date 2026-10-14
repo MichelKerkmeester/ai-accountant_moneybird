@@ -36,6 +36,32 @@ This file covers the ondernemersaftrek (entrepreneur's allowance), the MKB-winst
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| IB-ondernemer status | 1 |
+| Urencriterium (hours criterion) | 2 |
+| Urencriterium, samenwerkingsverband with connected persons | 3 |
+| Urencriterium, pregnancy interruption | 4 |
+| Verlaagd urencriterium | 5 |
+| Parts of the ondernemersaftrek | 6 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 7 |
+| Niet-gerealiseerde zelfstandigenaftrek | 8 |
+| Startersaftrek (starter's deduction) | 9 |
+| Startersaftrek, prior-years condition | 10 |
+| Startersaftrek bij arbeidsongeschiktheid | 11 |
+| Aftrek voor speur- en ontwikkelingswerk | 12 |
+| Meewerkaftrek (meewerkende partner deduction) bands | 13 |
+| Pay to the partner | 14 |
+| Stakingsaftrek (business cessation deduction) | 15 |
+| Stakingsaftrek, own-account period for a continued business | 16 |
+| Oudedagsreserve (old-age reserve) additions | 17 |
+| MKB-winstvrijstelling (SME profit exemption) | 18 |
+| Tariefsaanpassing (rate adjustment) | 19 |
+| Maximum value of the ondernemersaftrek and the MKB-winstvrijstelling | 20 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
 | IB-ondernemer status | Judged by the Belastingdienst per activity, separately from the btw | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/wanneer_bent_u_ondernemer_voor_de_inkomstenbelasting/ |

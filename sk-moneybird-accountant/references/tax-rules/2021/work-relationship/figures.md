@@ -36,6 +36,23 @@ In 2021 the Wet DBA (Wet deregulering beoordeling arbeidsrelaties) was in force 
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Wet DBA | 1 |
+| Loondienst test | 2 |
+| Fictieve dienstbetrekkingen and the written opt-out | 3 |
+| Handhavingsmoratorium | 4 |
+| Moratorium extension 2021 | 5 |
+| Webmodule Beoordeling Arbeidsrelatie | 6 |
+| Modelovereenkomsten | 7 |
+| Case law on the arbeidsovereenkomst | 8 |
+| VBAR bill status | 9 |
+| VBAR low hourly rate presumption | 10 |
+| BAZ bill 36 912 | 11 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
 | Wet DBA | Wet van 3 februari 2016, in force since 1 May 2016, replaced the VAR. Correction: Staatsblad 2016, 165 is not the Wet DBA itself, it is the Besluit van 8 april 2016 that lets parties exclude the fictieve dienstbetrekking for thuiswerkers, gelijkgestelden and artiesten by agreement | enacted | Verified | https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file and https://zoek.officielebekendmakingen.nl/stb-2016-165.html |

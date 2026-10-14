@@ -570,6 +570,7 @@ mkdir -p "$WORD_COPY/sk-moneybird-accountant/scripts" "$WORD_COPY/cli-moneybird"
 cp "$CHECKER" "$WORD_COPY/sk-moneybird-accountant/scripts/check-route-table.py"
 cp "$WORD_CHECKER" "$WORD_COPY/sk-moneybird-accountant/scripts/check-skill-words.py"
 cp "$SKILL_DIR/scripts/split-topic-files.py" "$WORD_COPY/sk-moneybird-accountant/scripts/split-topic-files.py"
+cp "$SKILL_DIR/scripts/outline-check.py" "$WORD_COPY/sk-moneybird-accountant/scripts/outline-check.py"
 cp "$SKILL_MD" "$WORD_COPY/sk-moneybird-accountant/SKILL.md"
 cp "$GRAPH_METADATA" "$WORD_COPY/sk-moneybird-accountant/graph-metadata.json"
 cp -R "$SKILL_DIR/references" "$WORD_COPY/sk-moneybird-accountant/references"
@@ -621,6 +622,21 @@ if [[ "$status" -ne 0 ]] && grep -qF 'vat/rules.md' "$TMP_ROOT/out.txt"; then
     pass "a drifted split part fails the route table check"
 else
     fail "a drifted split part fails the route table check"
+    cat "$TMP_ROOT/out.txt"
+fi
+
+# The same copy carries the outline proof, so a decision step with no
+# alternative branch fails the route table check through the wired check
+OUTLINE_PART="$WORD_COPY/sk-moneybird-accountant/references/tax-rules/general/vat.md"
+cp "$OUTLINE_PART" "$TMP_ROOT/outline-part.keep"
+printf '\n- Does the cost straddle the period boundary?\n' >>"$OUTLINE_PART"
+python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+cp "$TMP_ROOT/outline-part.keep" "$OUTLINE_PART"
+if [[ "$status" -ne 0 ]] && grep -qF 'no-alternative-branch' "$TMP_ROOT/out.txt"; then
+    pass "a decision step with no branch fails the route table check"
+else
+    fail "a decision step with no branch fails the route table check"
     cat "$TMP_ROOT/out.txt"
 fi
 

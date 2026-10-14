@@ -36,6 +36,29 @@ This file covers the 2021 investment allowances, the KIA (kleinschaligheidsinves
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| KIA table (art. 3.41 lid 2) | 1 |
+| KIA per-asset minimum (art. 3.45 lid 2 onderdeel b) | 2 |
+| EIA percentage (art. 3.42 lid 3) | 3 |
+| EIA and MIA maximum investment amount (art. 3.42 lid 4) | 4 |
+| MIA percentages (art. 3.42a lid 3) | 5 |
+| EIA and MIA per-asset minimum (art. 3.45 lid 4 onderdeel b) | 6 |
+| Excluded obligations, including assets bought from an own BV (art. 3.46) | 7 |
+| Vamil percentage (art. 3.31 lid 1) | 8 |
+| Ordinary depreciation caps (art. 3.30 lid 2) | 9 |
+| Bodemwaarde (art. 3.30a lid 3) | 10 |
+| Desinvesteringsbijtelling (disinvestment addition) (art. 3.47) | 11 |
+| Payment cap for an asset not yet in use (art. 3.44) | 12 |
+| Starters willekeurige afschrijving, yearly cap (URWA art. 8) | 13 |
+| Starters willekeurige afschrijving, period (URWA art. 9 and art. 12) | 14 |
+| RVO notification deadline for EIA, MIA and Vamil | 15 |
+| MIA and Vamil maximum per bedrijfsmiddel and per applicant per year | 16 |
+| Temporary willekeurige afschrijving | 17 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
 | KIA table (art. 3.41 lid 2) | nil up to € 2.400, 28% of the investment up to € 59.170, € 16.568 up to € 109.574, € 16.568 minus 7,56% of the part above € 109.574 up to € 328.721, nil above € 328.721 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01 art. 3.41 lid 2 |

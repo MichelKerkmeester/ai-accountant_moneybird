@@ -1,6 +1,7 @@
 ---
 title: "Dutch tax rules"
 description: "General Dutch tax rules for a ZZP sole trader who may also own a BV, 2020 to 2027: how to find the year file, how each topic works across years, the settled and open source conflicts, and the record and invoice duties."
+nav_label: "Dutch tax rules"
 trigger_phrases:
   - "Dutch tax rules"
   - "which tax year file"

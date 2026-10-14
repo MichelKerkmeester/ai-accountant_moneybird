@@ -1,6 +1,7 @@
 ---
 title: Migration overview and setup
 description: Migration goal, tool boundaries, workspace layout, and required configuration.
+nav_label: "Migration overview and setup"
 trigger_phrases:
   - moneybird migration setup
   - migration configuration and thresholds

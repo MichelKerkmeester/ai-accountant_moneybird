@@ -38,6 +38,37 @@ This file covers the work-relationship side of the rules for a ZZP (self-employe
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Wet DBA | 1 |
+| Loondienst test | 2 |
+| Fictieve dienstbetrekkingen and the opt-out | 3 |
+| Stb. 2016, 165 | 4 |
+| Case law: HR 6 November 2020 and HR 24 March 2023 | 5 |
+| HR Uber ruling | 6 |
+| End of the handhavingsmoratorium | 7 |
+| How far back corrections go | 8 |
+| DBA boetebeleid and zachte landing 2025 | 9 |
+| Enforcement practice 2025 | 10 |
+| Vooroverleg | 11 |
+| Regular handhaving per the 2025 plan | 12 |
+| Doorwerking naar IH en OB | 13 |
+| Modelovereenkomsten | 14 |
+| Modelovereenkomsten vrije vervanging | 15 |
+| Webmodule Beoordeling Arbeidsrelatie | 16 |
+| VBAR bill ingediend | 17 |
+| VBAR presumption in art. 7:610aa BW | 18 |
+| VBAR effect and evaluation | 19 |
+| VBAR amount at peildatum 1 January 2025 | 20 |
+| WML per hour at 1 January 2025 | 21 |
+| VBAR amount at peildatum 1 January 2026 | 22 |
+| WML per hour at 1 January 2026 | 23 |
+| VBAR entry into force | 24 |
+| BAZ bill 36 912 | 25 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
 | Wet DBA | The Wet deregulering beoordeling arbeidsrelaties is the Wet van 3 februari 2016, in force on 1 May 2016, and it replaced the VAR | enacted | Verified | https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file |

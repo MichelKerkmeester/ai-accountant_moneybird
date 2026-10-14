@@ -36,6 +36,45 @@ The vennootschapsbelasting (corporate income tax, Vpb) for 2022 has a first brac
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Vpb-tarief (art. 22 Wet Vpb 1969) | 1 |
+| Boekjaar dat 1 januari 2022 of 1 januari 2023 overschrijdt (art. 31 Wet Vpb 1969) | 2 |
+| Generieke renteaftrekbeperking (art. 15b lid 1 Wet Vpb 1969) | 3 |
+| Verliesverrekening (art. 20 Wet Vpb 1969) | 4 |
+| Innovatiebox, breuk (art. 12b Wet Vpb 1969) | 5 |
+| Innovatiebox, forfait (art. 12bd Wet Vpb 1969) | 6 |
+| Innovatiebox, voorwaarden en nexus (art. 12ba en 12bb Wet Vpb 1969) | 7 |
+| Deelnemingsvrijstelling, drempel (art. 13 lid 2 Wet Vpb 1969) | 8 |
+| Fiscale eenheid, bezitseis (art. 15 Wet Vpb 1969) | 9 |
+| Fiscale eenheid, beleidsbesluit 2022 | 10 |
+| Gebruikelijk loon (customary salary), normbedrag (art. 12a lid 1 Wet LB 1964) | 11 |
+| Gebruikelijk loon, vergelijkbaar loon | 12 |
+| Gebruikelijk loon, ondergrens | 13 |
+| Startersaftrek (starter's deduction) gebruikelijk loon (art. 12a lid 3 en 4 Wet LB 1964) | 14 |
+| Bijdrage Zvw voor een niet-verzekerde DGA | 15 |
+| Werkgeversheffing Zvw (employer health insurance contribution) voor een verzekerde DGA | 16 |
+| Zvw-route voor een niet-verzekerde DGA | 17 |
+| Box 2-tarief (art. 2.12 Wet IB 2001) | 18 |
+| Dividendbelasting, tarief en brutering (art. 5 en art. 6 lid 1 Wet DB 1965) | 19 |
+| Aangifte (return) en betaling dividendbelasting | 20 |
+| Dividend stripping (art. 4 lid 7 Wet DB 1965) | 21 |
+| Inkoop van eigen aandelen | 22 |
+| Conditionele bronbelasting, tarief (art. 4.1 Wet bronbelasting 2021) | 23 |
+| Conditionele bronbelasting, toepassingsbereik | 24 |
+| Jaarrekening, grootteklassen en indeling | 25 |
+| Jaarrekening, deponering (art. 394 Boek 2 BW) | 26 |
+| Bewaartermijnen (art. 52 AWR, art. 34a, 28rl en 28sj Wet OB 1968) | 27 |
+| Aangifte Vpb, termijnen | 28 |
+| Uitstel (deferral) aangifte Vpb | 29 |
+| Stakingsaftrek (business cessation deduction) (art. 3.79 Wet IB 2001) | 30 |
+| Geruisloze omzetting, standaardvoorwaarden (art. 3.65 Wet IB 2001) | 31 |
+| Verzoek art. 3.65, termijn (KG:212:2022:1) | 32 |
+| Btw-fiscale eenheid, beleidsbesluit | 33 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
 | Vpb-tarief (art. 22 Wet Vpb 1969) | t/m € 395.000 tegen 15%, daarboven € 59.250 plus 25,8% | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2022-01-01 |

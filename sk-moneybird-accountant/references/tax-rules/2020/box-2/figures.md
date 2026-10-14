@@ -36,6 +36,39 @@ Box 2 is the income tax box for a taxpayer with an aanmerkelijk belang (substant
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Box 2 rate (art. 2.12 Wet IB 2001) | 1 |
+| Inkomen uit aanmerkelijk belang (art. 4.12) and reguliere voordelen (art. 4.13) | 2 |
+| Forfaitair voordeel vbi or foreign investment company (art. 4.14) | 3 |
+| Vervreemdingsvoordeel and verkrijgingsprijs | 4 |
+| Aanmerkelijk belang threshold (art. 4.6) | 5 |
+| Meesleepregeling and meetrekregeling (art. 4.9 and 4.10) | 6 |
+| Fictief aanmerkelijk belang (art. 4.11) | 7 |
+| Fictieve vervreemding (art. 4.16) | 8 |
+| Partner and minor children | 9 |
+| Division between fiscal partners (art. 2.17 lid 2) | 10 |
+| Inherited aanmerkelijk belang facility (art. 4.12a) | 11 |
+| Loss offset (art. 4.49) | 12 |
+| Losses from 2018 or earlier | 13 |
+| Belastingkorting on an unoffset loss (art. 4.53 lid 2) | 14 |
+| Doorschuiving on request (gift, inheritance, emigration) | 15 |
+| APV loss deferral, term | 16 |
+| Excessief lenen (excessive borrowing) bij eigen vennootschap | 17 |
+| Gebruikelijk loon (customary salary) fixed amount (art. 12a lid 1 sub c Wet LB 1964) | 18 |
+| Gebruikelijk loon comparable-loon test (art. 12a lid 1 sub a) | 19 |
+| Gebruikelijk loon minimum threshold (art. 12a lid 6) | 20 |
+| Start-up gebruikelijk loon with S&O-verklaring (art. 12a lid 3 and 4) | 21 |
+| PEB afkoop and ODV conversion | 22 |
+| Remaining PEB after the facilities ended | 23 |
+| Oudedagsverplichting (art. 38p Wet LB 1964) | 24 |
+| ODV marktrente for 2020 | 25 |
+| PEB and box 2 (art. 10a.18 Wet IB 2001) | 26 |
+| Non-residents, base (art. 7.5 Wet IB 2001) | 27 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 2 rate (art. 2.12 Wet IB 2001) | 26,25%, one flat rate, no bracket | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 |

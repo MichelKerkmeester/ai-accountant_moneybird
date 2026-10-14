@@ -1,6 +1,7 @@
 ---
 title: Migration shared mechanisms and route contract
 description: Shared controls used by every migration phase, with tool and export routes.
+nav_label: "Migration shared mechanisms and route contract"
 trigger_phrases:
   - migration write key and run journal
   - migration access expiry and stop recovery

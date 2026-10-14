@@ -1,6 +1,7 @@
 ---
 title: "Changes tax year 2023"
 description: "What changed in tax year 2023 compared with 2022, restated from section 5 of the year topic files, with a generated index of every topic."
+nav_label: "Changes tax year 2023"
 trigger_phrases:
   - "changes tax year 2023"
   - "what changed in 2023"
@@ -38,13 +39,13 @@ checked_on: "2026-10-12"
 | [vat.md](vat/notes.md#5-changes) | 6 | The qualifying solar-panel zero rate began on 1 January 2023. The checked... |
 | [income-tax.md](income-tax/notes.md#5-changes) | 17 | The below-AOW published Box 1 rate changed from 37,07% up to € 69.398 to 36,93%... |
 | [health-insurance-contribution.md](health-insurance-contribution/notes.md#5-changes) | 8 | Bijdrage Zvw by aanslag: 5,50% in 2022 to 5,43% in 2023... |
-| [business-deductions.md](business-deductions/notes.md#5-changes) | 11 | Zelfstandigenaftrek: € 6.310 in 2022 to € 5.030 in 2023... |
+| [business-deductions.md](business-deductions/notes.md#5-changes) | 11 | Zelfstandigenaftrek (self-employed person's deduction): € 6.310 in 2022 to € 5.030 in 2023... |
 | [investments.md](investments/notes.md#5-changes) | 15 | KIA table, nil band: up to € 2.400 in 2022, up to € 2.600 in 2023 ([art. 3.41... |
 | [costs-and-car.md](costs-and-car/notes.md#5-changes) | 8 | Gemengde kosten drempel: € 4.800 in 2022 to € 5.100 in 2023 (art. 3.15 lid 1... |
 | [box-3.md](box-3/notes.md#5-changes) | 12 | System: the old band method with rendementsklassen I and II in art. 5.2 lid 1... |
-| [box-2.md](box-2/notes.md#5-changes) | 12 | Excessief lenen: not in force in 2022, in force from 1 January 2023. The new... |
+| [box-2.md](box-2/notes.md#5-changes) | 12 | Excessief lenen (excessive borrowing): not in force in 2022, in force from 1 January 2023. The new... |
 | [private-company-and-corporate-tax.md](private-company-and-corporate-tax/notes.md#5-changes) | 27 | Vpb first bracket: 2022 t/m € 395.000 at 15% to 2023 t/m € 200.000 at 19%... |
-| [pension-and-disability-insurance.md](pension-and-disability-insurance/notes.md#5-changes) | 19 | Jaarruimte percentage: 13,3% in 2022 to 30% for 2023, with the text of 1 July... |
+| [pension-and-disability-insurance.md](pension-and-disability-insurance/notes.md#5-changes) | 19 | Jaarruimte (annual allowance) percentage: 13,3% in 2022 to 30% for 2023, with the text of 1 July... |
 | [work-relationship.md](work-relationship/notes.md#5-changes) | 6 | DBA enforcement regime: unchanged. In 2022 the handhavingsmoratorium was in... |
-| [procedure.md](procedure/notes.md#5-changes) | 12 | Belastingrente rate: 2022 had 4% for the whole year. In 2023 the rate is 4% to... |
+| [procedure.md](procedure/notes.md#5-changes) | 12 | Belastingrente (tax interest) rate: 2022 had 4% for the whole year. In 2023 the rate is 4% to... |
 <!-- GENERATED:changes:end -->

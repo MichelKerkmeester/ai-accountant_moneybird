@@ -1,6 +1,7 @@
 ---
 title: "Tax year 2023"
 description: "Overview of Dutch tax year 2023 for a ZZP sole trader who may also own a BV: the twelve topic files, their headline figures and how many values are open."
+nav_label: "Tax year 2023"
 trigger_phrases:
   - "tax year 2023"
   - "belastingjaar 2023"
@@ -34,14 +35,14 @@ Across the twelve topic files the figures tables hold 295 values: 264 Verified, 
 |---|---|---|---|---|
 | [vat](vat/figures.md) | This file explains Dutch VAT rates, exemptions, returns, cross-border rules, and bookkeeping for tax year 2023. | 31 | 7 | 5 |
 | [income-tax](income-tax/figures.md) | This file covers Dutch Box 1 tax rates, heffingskortingen, tariefsaanpassing and the flow of sole-trader profit into taxable income for tax year 2023. | 28 | 1 | 1 |
-| [health-insurance-contribution](health-insurance-contribution/figures.md) | The income-dependent Zvw contribution for a Dutch entrepreneur in tax year 2023, covering the 5,43% rate, the maximum bijdrage-inkomen of € 66.956, the calculation base after the ondernemersaftrek and MKB-winstvrijstelling, and the difference from the 6,68% werkgeversheffing. | 12 | 1 | 0 |
-| [business-deductions](business-deductions/figures.md) | All parts of the ondernemersaftrek and the MKB-winstvrijstelling for tax year 2023, with the 2023 amounts, conditions, the end of the oudedagsreserve additions and the tariefsaanpassing. | 23 | 0 | 0 |
+| [health-insurance-contribution](health-insurance-contribution/figures.md) | The income-dependent Zvw contribution for a Dutch entrepreneur in tax year 2023, covering the 5,43% rate, the maximum bijdrage-inkomen of € 66.956, the calculation base after the ondernemersaftrek and MKB-winstvrijstelling (SME profit exemption), and the difference from the 6,68% werkgeversheffing. | 12 | 1 | 0 |
+| [business-deductions](business-deductions/figures.md) | All parts of the ondernemersaftrek and the MKB-winstvrijstelling (SME profit exemption) for tax year 2023, with the 2023 amounts, conditions, the end of the oudedagsreserve additions and the tariefsaanpassing. | 23 | 0 | 0 |
 | [investments](investments/figures.md) | Investment deductions and depreciation for tax year 2023: KIA, EIA, MIA, Vamil, ordinary depreciation, bodemwaarde, willekeurige afschrijving and desinvesteringsbijtelling for a sole trader or a BV. | 20 | 1 | 0 |
 | [costs-and-car](costs-and-car/figures.md) | Deductible business costs and car rules for a Dutch sole trader in tax year 2023, from the gemengde kosten drempel and the kilometre allowance to bijtelling, the workspace, fines and the abolished studiekostenaftrek. | 32 | 0 | 0 |
 | [box-3](box-3/figures.md) | Box 3 income from savings and investments for tax year 2023 under the Overbruggingswet box 3 category method, with figures, conditions and worked examples. | 15 | 0 | 0 |
 | [box-2](box-2/figures.md) | Box 2 and aanmerkelijk belang for tax year 2023: the 26,9% rate, the 5% test, loss offset and the belastingkorting, the new excessief lenen rules, gebruikelijk loon and the ODV marktrente. | 22 | 0 | 0 |
 | [private-company-and-corporate-tax](private-company-and-corporate-tax/figures.md) | This file covers the 2023 Dutch corporate income tax rules for a BV, including the Vpb rate, loss set-off, interest deduction limit, participation exemption, fiscal unity, customary salary, Zvw, dividend withholding tax, conditional withholding tax, annual accounts and the switch from a sole trader to a BV. | 33 | 0 | 0 |
-| [pension-and-disability-insurance](pension-and-disability-insurance/figures.md) | Jaarruimte, reserveringsruimte, lijfrente conditions and deadlines, the oudedagsreserve phase-out, the stakingswinst conversion and AOV premium deductibility for tax year 2023. | 24 | 0 | 0 |
+| [pension-and-disability-insurance](pension-and-disability-insurance/figures.md) | Jaarruimte (annual allowance), reserveringsruimte, lijfrente conditions and deadlines, the oudedagsreserve phase-out, the stakingswinst conversion and AOV premium deductibility for tax year 2023. | 24 | 0 | 0 |
 | [work-relationship](work-relationship/figures.md) | Wet DBA enforcement, modelovereenkomsten, the VBAR bill and the low hourly rate presumption for the work relationship of a Dutch sole trader in tax year 2023. | 20 | 0 | 5 |
 | [procedure](procedure/figures.md) | Filing deadlines and uitstel for income tax and btw, the voorlopige aanslag, belastingrente, the navorderingstermijn, bezwaar, the bewaarplicht and KVK and Belastingdienst registration for tax year 2023. | 35 | 0 | 0 |
 <!-- GENERATED:topic-files:end -->
@@ -61,7 +62,7 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Inkomstenbelasting box 1 | Box 1 full-year AOW age, born on or after 1 January 1946 | 19,03% up to € 37.149, 36,93% to € 73.031, then 49,50% | enacted | Verified |
 | Zvw-bijdrage | Maximum bijdrage-inkomen | € 66.956 | enacted | Verified |
 | Zvw-bijdrage | Bijdrage Zvw by aanslag | 5,43% | enacted | Verified |
-| Ondernemersaftrek en MKB-winstvrijstelling | Urencriterium | 1.225 hours | enacted | Verified |
+| Ondernemersaftrek (entrepreneur deduction) en MKB-winstvrijstelling (SME profit exemption) | Urencriterium (hours criterion) | 1.225 hours | enacted | Verified |
 | Ondernemersaftrek en MKB-winstvrijstelling | Tweede toets, terugkijkperiode | not an ondernemer in 1 or more of 2018 to 2022 | enacted | Verified |
 | Investeringsaftrek en afschrijving | KIA table (art. 3.41 lid 2) | nil up to € 2.600, 28% of the investment up to € 63.716, the fixed € 17.841 up to € 117.991, € 17.841 minus 7,56% of the excess over € 117.991 up to € 353.973, nil above € 353.973 | enacted | Verified |
 | Investeringsaftrek en afschrijving | KIA window as printed by the Belastingdienst | "moet u een bedrag tussen € 2.601 en € 353.973 investeren" | enacted | Verified |
@@ -73,11 +74,11 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Box 2 en aanmerkelijk belang | Aanmerkelijk belang definition (art. 4.6) | 5%, sub a to e | enacted | Verified |
 | BV en vennootschapsbelasting | Vpb rate (art. 22 Wet Vpb 1969) | First bracket t/m € 200.000 at 19%. Above that € 38.000 plus 25,8% | enacted | Verified |
 | BV en vennootschapsbelasting | Art. 31 apportionment for a book year straddling 1 January 2023 | Tax is (X/B x To) + (Y/B x Tn). Old article 2022: t/m € 395.000 at 15%, above that € 59.250 plus 25,8%. New article 2023: t/m € 200.000 at 19%, above that € 38.000 plus 25,8% | enacted | Verified |
-| Pensioen, lijfrente en AOV | Jaarruimte percentage | 30% | enacted | Verified |
+| Pensioen, lijfrente en AOV | Jaarruimte (annual allowance) percentage | 30% | enacted | Verified |
 | Pensioen, lijfrente en AOV | Maximum jaarruimte | € 34.550 | enacted | Corrected |
 | Arbeidsrelatie en zelfstandigheid | Wet DBA | Wet van 3 februari 2016, in force 1 May 2016, replaced the VAR | enacted | Verified |
 | Arbeidsrelatie en zelfstandigheid | Loondienst test | 3 elements, the possibility of werkgeversgezag, the duty to perform (persoonlijke) arbeid, and pay for the work | enacted | Verified |
-| Aangifte en procedure | Aangifteperiode inkomstenbelasting | Opens on 1 March | enacted | Verified |
+| Aangifte (return) en procedure | Aangifteperiode inkomstenbelasting | Opens on 1 March | enacted | Verified |
 | Aangifte en procedure | IB return 2023 filing deadline | Before 1 May 2024, with uitstel before 1 September 2024 | enacted | Corrected |
 <!-- GENERATED:headline-figures:end -->
 

@@ -36,6 +36,32 @@ In 2023 the Wet DBA (Wet deregulering beoordeling arbeidsrelaties, the law on as
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Wet DBA | 1 |
+| Loondienst test | 2 |
+| Fictieve dienstbetrekkingen | 3 |
+| Opt-out for fictieve dienstbetrekking | 4 |
+| DBA enforcement regime 2023 | 5 |
+| End of the moratorium | 6 |
+| Case law partijbedoeling | 7 |
+| Deliveroo ruling | 8 |
+| Modelovereenkomsten vrije vervanging | 9 |
+| Modelovereenkomsten stop | 10 |
+| Webmodule Beoordeling Arbeidsrelatie | 11 |
+| VBAR internet consultation | 12 |
+| VBAR rule | 13 |
+| VBAR hourly threshold, statutory text | 14 |
+| VBAR hourly threshold, indexed | 15 |
+| Richtlijnen doorwerking IH and OB | 16 |
+| BAZ, bill 36 912 | 17 |
+| IB return 2023 filing deadline | 18 |
+| IB return 2023 with uitstel | 19 |
+| Definitive aanslag 2023 latest | 20 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
 | Wet DBA | Wet van 3 februari 2016, in force 1 May 2016, replaced the VAR | enacted | Verified | https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file |

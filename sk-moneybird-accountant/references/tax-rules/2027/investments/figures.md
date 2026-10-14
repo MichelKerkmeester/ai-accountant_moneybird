@@ -38,6 +38,38 @@ This file covers the investment deductions for 2027, the kleinschaligheidsinvest
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| KIA base table in the 2027 text, before indexation | 1 |
+| KIA in a samenwerkingsverband | 2 |
+| KIA per-asset minimum and excluded assets | 3 |
+| Excluded obligations, including assets bought from an own BV | 4 |
+| KIA 2027 indexation factor | 5 |
+| Share of the inflation correction applied | 6 |
+| Indexed 2027 KIA amounts | 7 |
+| EIA percentage, enacted 2027 text | 8 |
+| EIA percentage, bill 37 022 | 9 |
+| EIA and MIA maximum investment amount | 10 |
+| MIA percentages | 11 |
+| EIA and MIA per-asset minimum | 12 |
+| Vamil percentage | 13 |
+| RVO newness test for a vehicle | 14 |
+| RVO notification deadline for EIA, MIA and Vamil | 15 |
+| MIA and Vamil maximum per bedrijfsmiddel and per applicant per year | 16 |
+| Payment cap for an asset not yet in use | 17 |
+| Ordinary depreciation caps | 18 |
+| Bodemwaarde | 19 |
+| Desinvesteringsbijtelling (disinvestment addition) threshold | 20 |
+| Desinvesteringsbijtelling window | 21 |
+| Desinvestering undo test | 22 |
+| Starters willekeurige afschrijving yearly cap | 23 |
+| Starters willekeurige afschrijving period | 24 |
+| Starters willekeurige afschrijving abolition | 25 |
+| Temporary willekeurige afschrijving 2023 | 26 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2027 | Status | Check | Source |
 |---|---|---|---|---|
 | KIA base table in the 2027 text, before indexation | Nil up to € 2.900, 28% of the investment up to € 71.683, a fixed € 20.072 up to € 132.746, € 20.072 minus 7,56% of the excess over € 132.746 up to € 398.236, nil above € 398.236 | adopted-not-yet-in-force | Verified | https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 3.41 lid 2 |

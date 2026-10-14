@@ -1,6 +1,7 @@
 ---
 title: Income tax return risks and open points
 description: The five residual unknowns behind an income tax return preparation, each labelled unresolved with the page or check that would settle it, and the agreement between the 2025 investment status row and its section note.
+nav_label: "Income tax return risks and open points"
 trigger_phrases:
   - income tax return open points
   - income tax return residual risks

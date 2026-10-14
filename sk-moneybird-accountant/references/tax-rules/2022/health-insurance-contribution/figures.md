@@ -36,6 +36,24 @@ The income-dependent Zvw contribution (inkomensafhankelijke bijdrage Zorgverzeke
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Zvw bijdrage by aanslag | 1 |
+| Maximum bijdrage-inkomen | 2 |
+| Ingehouden Zvw bijdrage | 3 |
+| Zvw werkgeversheffing | 4 |
+| Zvw base for winst | 5 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 6 |
+| Startersaftrek (starter's deduction) | 7 |
+| Startersaftrek bij arbeidsongeschiktheid | 8 |
+| Meewerkaftrek (meewerkende partner deduction) | 9 |
+| Stakingsaftrek (business cessation deduction) | 10 |
+| MKB-winstvrijstelling (SME profit exemption) | 11 |
+| Oudedagsreserve (old-age reserve) addition | 12 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
 | Zvw bijdrage by aanslag | 5,50% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/inkomensafhankelijke_bijdrage_zorgverzekeringswet |

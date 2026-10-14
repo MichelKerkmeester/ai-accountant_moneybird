@@ -36,6 +36,28 @@ This file covers the Dutch investment deductions for 2026, the kleinschaligheids
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Kleinschaligheidsinvesteringsaftrek (KIA), table | 1 |
+| KIA per-asset minimum | 2 |
+| EIA percentage | 3 |
+| EIA and MIA maximum investment amount | 4 |
+| EIA and MIA per-asset minimum | 5 |
+| MIA percentages | 6 |
+| MIA and Vamil code mapping from the Milieulijst | 7 |
+| MIA and Vamil budget 2026 | 8 |
+| MIA and Vamil maximum per bedrijfsmiddel and per applicant per year | 9 |
+| Vamil percentage | 10 |
+| RVO notification deadline for EIA, MIA and Vamil | 11 |
+| Ordinary depreciation caps | 12 |
+| Bodemwaarde of a building | 13 |
+| Starters willekeurige afschrijving, yearly cap | 14 |
+| Desinvesteringsbijtelling (disinvestment addition) threshold | 15 |
+| Desinvesteringsbijtelling term and undoing tests | 16 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
 | Kleinschaligheidsinvesteringsaftrek (KIA), table | nil up to € 2.900, 28% of the investment up to € 71.683, fixed € 20.072 up to € 132.746, € 20.072 minus 7,56% of the part above € 132.746 up to € 398.236, nil above € 398.236. Belastingdienst window: "moet u een bedrag tussen € 2.901 en € 398.236 investeren" | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.41 lid 2, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/veranderingen-inkomstenbelasting-2026/investeringsaftrek-2026/kleinschaligheidsinvesteringsaftrek-2026 |

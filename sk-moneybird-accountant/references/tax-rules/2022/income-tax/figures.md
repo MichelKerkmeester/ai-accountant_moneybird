@@ -36,6 +36,30 @@ This file covers the box 1 bands and rates for 2022, the AOW-age variants, the a
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Box 1 below AOW age | 1 |
+| Box 1 for a full year at AOW age | 2 |
+| First-bracket rate in the year AOW age is reached | 3 |
+| Premie volksverzekeringen (national insurance contribution) ceiling | 4 |
+| Tariefsaanpassing (rate adjustment) | 5 |
+| Algemene heffingskorting (general tax credit) | 6 |
+| Arbeidskorting (employment tax credit) below AOW age | 7 |
+| Arbeidskorting for a full year at AOW age | 8 |
+| Inkomensafhankelijke combinatiekorting | 9 |
+| IACK child and co-ouder conditions | 10 |
+| Payout of unused heffingskortingen to a partner | 11 |
+| Payout income limits | 12 |
+| IACK payout percentage | 13 |
+| Belastingdeel and premiedelen | 14 |
+| Winst uit onderneming to taxable box 1 income | 15 |
+| Ondernemersaftrek (entrepreneur deduction) values relevant to business profit | 16 |
+| MKB-winstvrijstelling (SME profit exemption) | 17 |
+| Oudedagsreserve (old-age reserve) addition | 18 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 1 below AOW age | 37,07% up to € 69.398, then 49,50%. Statutory table: 9,42% up to € 35.472, then € 3.341 plus 37,07% up to € 69.398, then € 15.917 plus 49,50% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/belastingberekening and https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 2.10 lid 1 |

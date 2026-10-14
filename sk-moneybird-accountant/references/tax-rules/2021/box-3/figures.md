@@ -36,6 +36,28 @@ Box 3 (sparen en beleggen, savings and investments) for 2021 taxes a fictitious 
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Heffingsvrij vermogen (tax-free allowance) | 1 |
+| Schuldendrempel (debt threshold) | 2 |
+| Box 3 tarief | 3 |
+| Rendementsklasse percentages | 4 |
+| Band 1 | 5 |
+| Band 2 | 6 |
+| Band 3 | 7 |
+| Rechtsherstel category percentages | 8 |
+| Rechtsherstel scope 2021 | 9 |
+| Most favourable method | 10 |
+| Vrijstelling groene beleggingen (green investment exemption) | 11 |
+| Korting groene beleggingen (green investment credit) | 12 |
+| Actual-return reporting 2021 | 13 |
+| Kerstarrest | 14 |
+| Wet rechtsherstel box 3, entry into force | 15 |
+| Wet tegenbewijsregeling box 3 | 16 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
 | Heffingsvrij vermogen | € 50.000 per person, € 100.000 with fiscal partner (art. 5.5) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen https://wetten.overheid.nl/BWBR0011353/2021-01-01 |

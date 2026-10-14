@@ -36,6 +36,41 @@ This file covers the ondernemersaftrek (self-employed deduction) and the MKB-win
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| IB-ondernemer status | 1 |
+| Ondernemersaftrek (entrepreneur deduction) components | 2 |
+| Urencriterium (hours criterion) | 3 |
+| Urencriterium second test, 2021 lookback | 4 |
+| Urencriterium, no pro-rating for a part year | 5 |
+| Urencriterium, hours that count and proof | 6 |
+| Urencriterium, samenwerkingsverband mainly supporting threshold | 7 |
+| Verlaagd urencriterium | 8 |
+| Pregnancy rule | 9 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 10 |
+| Zelfstandigenaftrek at AOW age | 11 |
+| Zelfstandigenaftrek profit cap and carry-forward | 12 |
+| Startersaftrek (starter's deduction) | 13 |
+| Startersaftrek at AOW age | 14 |
+| Startersaftrek prior-years condition | 15 |
+| Startersaftrek bij arbeidsongeschiktheid | 16 |
+| Aftrek voor speur- en ontwikkelingswerk | 17 |
+| S&O starter increase | 18 |
+| MKB-winstvrijstelling (SME profit exemption) | 19 |
+| Meewerkaftrek (meewerkende partner deduction) bands | 20 |
+| Meewerkaftrek partner pay limit | 21 |
+| Stakingsaftrek (business cessation deduction) | 22 |
+| Stakingsaftrek lifetime limit | 23 |
+| Oudedagsreserve (old-age reserve) addition percentage | 24 |
+| Oudedagsreserve addition maximum | 25 |
+| Tariefsaanpassing (rate adjustment) | 26 |
+| Maximum value of ondernemersaftrek and MKB-winstvrijstelling | 27 |
+| Zvw self-assessed rate | 28 |
+| Zvw maximum contribution income | 29 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
 | IB-ondernemer status | separate test from btw-ondernemer, judged per activity | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/wanneer_bent_u_ondernemer_voor_de_inkomstenbelasting/ |

@@ -36,6 +36,28 @@ This file covers the deduction of business costs and the car rules for a sole tr
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Gemengde kosten drempel (art. 3.15 lid 1) | 1 |
+| Keuze in plaats van de drempel (art. 3.15 lid 5) | 2 |
+| Reis en verblijf congressen en cursussen (art. 3.16 lid 2 f en lid 8) | 3 |
+| Kilometervergoeding (mileage allowance) (art. 3.15 lid 6 en art. 3.17 lid 1 b) | 4 |
+| Verhuiskosten (art. 3.17 lid 1 a) | 5 |
+| Bijtelling (private-use addition) auto, standaard (art. 3.20 lid 1 a) | 6 |
+| Bijtelling auto, pre-2017 auto (art. 10a.4) | 7 |
+| Youngtimer (art. 3.20 lid 1 b) | 8 |
+| Zero-emission, eerste toelating 2021 (art. 3.20 lid 2) | 9 |
+| Bijtelling fiets (art. 3.20a) | 10 |
+| Scholingsuitgaven (study costs) drempel (art. 6.30) | 11 |
+| Scholingsuitgaven maximum buiten de standaardstudieperiode (art. 6.30) | 12 |
+| Werkruimte thuis (home workspace) (art. 3.16 lid 1) | 13 |
+| Telefoonabonnement thuis (art. 3.16 lid 2 a) | 14 |
+| Privécomputers en apparatuur (art. 3.16 lid 3) | 15 |
+| Geldboetes (art. 3.14 lid 1 c) | 16 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
 | Gemengde kosten drempel (art. 3.15 lid 1) | € 4.700 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01 |

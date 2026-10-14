@@ -36,6 +36,49 @@ Dutch VAT (btw) in 2021 generally used the standard rate, with a reduced rate fo
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Standard VAT rate | 1 |
+| Reduced VAT rate | 2 |
+| Zero rate | 3 |
+| Zero rate for intra-EU goods | 4 |
+| Exemptions | 5 |
+| Logies | 6 |
+| Electronic publications | 7 |
+| KOR turnover ceiling | 8 |
+| KOR turnover test year | 9 |
+| KOR notice, minimum term and re-entry | 10 |
+| KOR overrun | 11 |
+| KOR registration threshold without notice | 12 |
+| KOR investment-goods adjustment | 13 |
+| Regular VAT return periods | 14 |
+| Monthly-period trigger | 15 |
+| Yearly-return eligibility | 16 |
+| VAT filing and payment term | 17 |
+| Published 2021 due-date table | 18 |
+| Suppletie timing and reach | 19 |
+| Suppletie small-correction boundary | 20 |
+| E-commerce package | 21 |
+| MOSS and one-stop shop | 22 |
+| EU distance-sales threshold | 23 |
+| One-stop shop (OSS) mechanics | 24 |
+| Invoerregeling | 25 |
+| Quarterly ICP for goods | 26 |
+| ICP deadline for 2021 | 27 |
+| Reverse charge for specified electronics | 28 |
+| Invoice issue deadline | 29 |
+| Simplified invoice | 30 |
+| Kasstelsel threshold | 31 |
+| Business car private-use adjustment | 32 |
+| BUA provisions and gifts threshold | 33 |
+| BUA staff bicycle conditions | 34 |
+| BUA staff-meal calculation | 35 |
+| Corona special deferral | 36 |
+| General B2B e-invoicing duty | 37 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
 | Standard VAT rate | 21% | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2021-07-01 |

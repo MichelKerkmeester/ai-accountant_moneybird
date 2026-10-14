@@ -38,6 +38,44 @@ Most 2026 figures are enacted and verified in the checked sources. The belasting
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Aangifte (return) inkomstenbelasting 2026, uiterste datum | 1 |
+| Start van het aangiftetijdvak inkomstenbelasting | 2 |
+| Uitstel (deferral) inkomstenbelasting | 3 |
+| Uitstel en belastingrente | 4 |
+| Uitstelkanaal inkomstenbelasting | 5 |
+| Wettelijke aangiftetermijn aanslagbelastingen | 6 |
+| Voorlopige aanslag 2025 wijzigen | 7 |
+| Betaaltermijnen aanslagen | 8 |
+| Betaaltermijnen voorlopige aanslag IB | 9 |
+| Definitieve aanslagtermijn | 10 |
+| Aanslaggrens en teruggaafgrens 2026 | 11 |
+| Navorderingstermijn | 12 |
+| Bezwaartermijn (objection period) | 13 |
+| Verzoek om vermindering | 14 |
+| Belastingrente (tax interest) 2026 en vaststelling van het percentage | 15 |
+| Massaal bezwaar tegen het belastingrentepercentage | 16 |
+| Belastingrente op de inkomstenbelasting | 17 |
+| Belastingrente op de btw | 18 |
+| Btw aangifte- en betaaldata 2026 | 19 |
+| Btw aangifte- en betaaltermijn, wettelijk en software | 20 |
+| Uitstel btw-aangifte | 21 |
+| Btw aangifteverzuimboete 2026 | 22 |
+| IB boetes 2026 | 23 |
+| Betaalverzuimboete aanslagbelasting | 24 |
+| Vergrijpboete percentages | 25 |
+| IB na het verstrijken van de aangiftetermijn en aangifte vragen | 26 |
+| Aangifte zonder uitnodiging | 27 |
+| Bewaarplicht (record-keeping duty) | 28 |
+| KVK inschrijvingsvenster | 29 |
+| KVK-nummer en afspraken | 30 |
+| Btw-id en omzetbelastingnummer termijn | 31 |
+| Belastingdienst inschrijving | 32 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
 | Aangifte inkomstenbelasting 2026, uiterste datum | Not published on 2026-10-11, usually 1 May 2027 | unknown | UNVERIFIED | https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen |

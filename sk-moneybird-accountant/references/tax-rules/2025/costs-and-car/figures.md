@@ -36,6 +36,38 @@ For tax year 2025 this file covers the business costs that a sole trader can ded
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Gemengde kosten drempel | 1 |
+| Keuze in plaats van drempel | 2 |
+| Vpb variant van de drempel voor een BV | 3 |
+| Reis en verblijf congressen en cursussen | 4 |
+| Studiekosten als bedrijfskosten | 5 |
+| Kilometervergoeding (mileage allowance) | 6 |
+| Openbaar vervoer, taxi en vliegtuig | 7 |
+| Verhuiskosten en dubbele huisvesting | 8 |
+| Vermogensetikettering bedrijfsmiddelen | 9 |
+| Werkruimte thuis (home workspace) | 10 |
+| Werkruimte in an owned home in the ondernemingsvermogen | 11 |
+| Telefoonabonnement thuis | 12 |
+| Private computers en apparatuur | 13 |
+| Kleine aankopen onder € 450 | 14 |
+| Overige uitsluitingen art. 3.16 | 15 |
+| Partnervergoeding | 16 |
+| Geldboetes | 17 |
+| Bijtelling (private-use addition) auto, standard | 18 |
+| Bijtelling auto, pre-2017 car | 19 |
+| Youngtimer | 20 |
+| Zero-emission, first admission 2025 | 21 |
+| Bijtelling fiets | 22 |
+| Btw-correctie private car | 23 |
+| Prestatiebeurs cap, mbo | 24 |
+| Prestatiebeurs cap, hbo or wo | 25 |
+| Drempel in the prestatiebeurs case | 26 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2025 | Status | Check | Source |
 |---|---|---|---|---|
 | Gemengde kosten drempel | € 5.700 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 (art. 3.15 lid 1) |

@@ -45,7 +45,7 @@ Rows below are generated from the year files named above, which own the values.
 
 | Year | Item | Value | Status | Check | Owner |
 |---|---|---|---|---|---|
-| 2020 | Jaarruimte percentage | 13,3% of the premiegrondslag | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2020/pension-and-disability-insurance/figures.md](../2020/pension-and-disability-insurance/figures.md) |
+| 2020 | Jaarruimte (annual allowance) percentage | 13,3% of the premiegrondslag | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2020/pension-and-disability-insurance/figures.md](../2020/pension-and-disability-insurance/figures.md) |
 | 2020 | Maximum jaarruimte | € 12.986 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2020/pension-and-disability-insurance/figures.md](../2020/pension-and-disability-insurance/figures.md) |
 | 2021 | Jaarruimte percentage | 13,3% of the premiegrondslag | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2021/pension-and-disability-insurance/figures.md](../2021/pension-and-disability-insurance/figures.md) |
 | 2021 | Maximum jaarruimte | € 13.236 | enacted | Verified | [sk-moneybird-accountant/references/tax-rules/2021/pension-and-disability-insurance/figures.md](../2021/pension-and-disability-insurance/figures.md) |

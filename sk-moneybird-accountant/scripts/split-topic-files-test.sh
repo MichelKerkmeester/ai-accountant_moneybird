@@ -131,6 +131,19 @@ run_accept() {
         --accept-renames "$map" --base "$base" >"$TMP_ROOT/out.txt" 2>&1
 }
 
+# Run the accept-edits mode of one fixture repository and capture its output
+# Args:
+#   $1 - Fixture repository root
+#   $2 - Base revision
+# Returns:
+#   The splitter exit status, with its output in $TMP_ROOT/out.txt
+run_accept_edits() {
+    local root="$1"
+    local base="$2"
+    python3 -I "$root/sk-moneybird-accountant/scripts/split-topic-files.py" \
+        --accept-edits --base "$base" >"$TMP_ROOT/out.txt" 2>&1
+}
+
 # ───────────────────────────────────────────────────────────────
 # 4. FIXTURE BUILDER
 # ───────────────────────────────────────────────────────────────
@@ -827,7 +840,131 @@ else
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 9. RESULT SUMMARY AND EXIT
+# 9. ACCEPT EDITS
+# ───────────────────────────────────────────────────────────────
+
+group "accept edits"
+
+# Build a git fixture from the clean split, commit it as the base revision and
+# edit one part body and one part header, so the mode must record the changed
+# part and leave every unchanged part's hashes byte for byte.
+EDITS="$TMP_ROOT/edits"
+cp -R "$CLEAN" "$EDITS" || exit 2
+mkdir -p "$TMP_ROOT/empty-hooks" || exit 2
+GIT_EDITS=(
+    git -C "$EDITS"
+    -c core.hooksPath="$TMP_ROOT/empty-hooks"
+    -c commit.gpgsign=false
+    -c user.name="Split Fixture"
+    -c user.email="split-fixture@example.com"
+)
+"${GIT_EDITS[@]}" init -q || exit 2
+"${GIT_EDITS[@]}" add -A || exit 2
+"${GIT_EDITS[@]}" commit -qm "fixture base" || exit 2
+EDITS_BASE=$("${GIT_EDITS[@]}" rev-parse HEAD) || exit 2
+EDITS_MANIFEST="$EDITS/sk-moneybird-accountant/references/tax-rules/split-manifest.json"
+EDITS_PART="sk-moneybird-accountant/references/tax-rules/2020/vat/rules.md"
+EDITS_KEPT="sk-moneybird-accountant/references/tax-rules/2020/vat/figures.md"
+EDITS_PART_HASH=$(python3 -I - "$EDITS_MANIFEST" "$EDITS_PART" <<'PY'
+import json
+import sys
+
+data = json.load(open(sys.argv[1], encoding="utf-8"))
+for row in data["files"]:
+    for part in row["parts"]:
+        if part["path"] == sys.argv[2]:
+            print(part["body_sha256"])
+            break
+PY
+)
+EDITS_KEPT_HASH=$(python3 -I - "$EDITS_MANIFEST" "$EDITS_KEPT" <<'PY'
+import json
+import sys
+
+data = json.load(open(sys.argv[1], encoding="utf-8"))
+for row in data["files"]:
+    for part in row["parts"]:
+        if part["path"] == sys.argv[2]:
+            print(part["body_sha256"])
+            break
+PY
+)
+python3 -I - "$EDITS/$EDITS_PART" <<'PY' || exit 2
+import sys
+
+path = sys.argv[1]
+text = open(path, encoding="utf-8").read()
+open(path, "w", encoding="utf-8").write(
+    text.replace("Fixture rule text.", "Fixture rule text edited.")
+)
+PY
+run_accept_edits "$EDITS" "$EDITS_BASE"
+status=$?
+if [[ "$status" -eq 0 ]] \
+    && grep -qF "split-edit $EDITS_PART " "$TMP_ROOT/out.txt" \
+    && grep -qE '^split-edit .* 1 changed lines$' "$TMP_ROOT/out.txt"; then
+    pass "an edited part is recorded with its changed line count"
+else
+    case_failed "an edited part is recorded with its changed line count"
+fi
+
+# Case: the recorded manifest passes --check and moves only the edited part
+run_splitter "$EDITS" --check
+status=$?
+EDITS_NEW_HASH=$(python3 -I - "$EDITS_MANIFEST" "$EDITS_PART" <<'PY'
+import json
+import sys
+
+data = json.load(open(sys.argv[1], encoding="utf-8"))
+for row in data["files"]:
+    for part in row["parts"]:
+        if part["path"] == sys.argv[2]:
+            print(part["body_sha256"])
+            break
+PY
+)
+EDITS_KEPT_NEW=$(python3 -I - "$EDITS_MANIFEST" "$EDITS_KEPT" <<'PY'
+import json
+import sys
+
+data = json.load(open(sys.argv[1], encoding="utf-8"))
+for row in data["files"]:
+    for part in row["parts"]:
+        if part["path"] == sys.argv[2]:
+            print(part["body_sha256"])
+            break
+PY
+)
+if [[ "$status" -eq 0 ]] && grep -qF 'split-check: ok' "$TMP_ROOT/out.txt" \
+    && [[ "$EDITS_NEW_HASH" != "$EDITS_PART_HASH" ]] \
+    && [[ "$EDITS_KEPT_NEW" == "$EDITS_KEPT_HASH" ]]; then
+    pass "the recorded edit passes --check and an unchanged part keeps its hashes"
+else
+    case_failed "the recorded edit passes --check and an unchanged part keeps its hashes"
+fi
+
+# Case: --accept-edits together with --check is a usage error
+python3 -I "$EDITS/sk-moneybird-accountant/scripts/split-topic-files.py" \
+    --accept-edits --base "$EDITS_BASE" --check >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+if [[ "$status" -eq 2 ]]; then
+    pass "accept-edits mode with --check is a usage error"
+else
+    case_failed "accept-edits mode with --check is a usage error"
+fi
+
+# Case: --accept-edits without --base is a usage error
+python3 -I "$EDITS/sk-moneybird-accountant/scripts/split-topic-files.py" \
+    --accept-edits >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+if [[ "$status" -eq 2 ]]; then
+    pass "accept-edits mode without --base is a usage error"
+else
+    case_failed "accept-edits mode without --base is a usage error"
+fi
+
+# ───────────────────────────────────────────────────────────────
+# 10. RESULT SUMMARY AND EXIT
 # ───────────────────────────────────────────────────────────────
 
 printf '\nResult: %d passed, %d failed\n' "$passed" "$failed"

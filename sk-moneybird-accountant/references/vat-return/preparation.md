@@ -1,6 +1,7 @@
 ---
 title: VAT return preparation procedure
 description: The ordered procedure to prepare one Dutch VAT period from Moneybird for Operator review. Steps 0 to 12, each with its check, its evidence and its Operator decision point.
+nav_label: "VAT return preparation procedure"
 trigger_phrases:
   - VAT return procedure
   - btw-aangifte stappen

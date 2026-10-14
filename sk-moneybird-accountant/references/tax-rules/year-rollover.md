@@ -1,6 +1,7 @@
 ---
 title: Year rollover
 description: The 1 January runbook that carries the year corpus into the next tax year, the five-checkpoint release calendar with its check-by dates and the owner of both.
+nav_label: "Year rollover"
 trigger_phrases:
   - year rollover
   - 1 january runbook
@@ -15,7 +16,7 @@ version: 1.0.0.0
 
 # Year rollover
 
-**Rule:** Follow this runbook on 1 January, or on the first working day after it. Every step names the path it touches. A figure stays in the year file that owns it, and this reference changes no value.
+**Rule:** Follow this runbook on 1 January, or on the first working day after it. Every step names the path it touches. A figure stays in the year file that owns it, and this reference changes no value. Every condition names its alternative or its default, so a decision step carries a branch, and `sk-moneybird-accountant/scripts/outline-check.py` fails one that names none.
 
 ---
 
@@ -35,7 +36,7 @@ Run these steps in order against the files of the newest year folder.
 
 1. Create the new year folder beside `sk-moneybird-accountant/references/tax-rules/2027/` and copy `sk-moneybird-accountant/references/tax-rules/2027/README.md` and the twelve topic files of `sk-moneybird-accountant/references/tax-rules/2027/` into it.
 2. Set the year preference in `sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md` by adding the new year to its tax years and to its year folders table.
-3. Set every figure in the new topic files for the new tax year and keep a source URL on every row.
+3. Set every figure in the new topic files for the new tax year, keep a source URL on every row, and name the alternative or the default of every condition, so a decision step carries a branch.
 4. Set `checked_on` in the README of every touched year folder under `sk-moneybird-accountant/references/tax-rules/` and in `sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md`.
 5. Run `python3 -I sk-moneybird-accountant/scripts/build-reference-index.py --check` and refresh the generated blocks when it reports drift.
 6. Run `python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check` and record every new source in `sk-moneybird-accountant/assets/source-library.json`.

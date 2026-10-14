@@ -1,6 +1,7 @@
 ---
 title: "Changes tax year 2026"
 description: "What changed in tax year 2026 compared with 2025, restated from section 5 of the year topic files, with a generated index of every topic."
+nav_label: "Changes tax year 2026"
 trigger_phrases:
   - "changes tax year 2026"
   - "what changed in 2026"
@@ -38,13 +39,13 @@ checked_on: "2026-10-12"
 | [vat.md](vat/notes.md#5-changes) | 7 | Logies moved from 9% to 21% from 1 January 2026. The change also applies to the... |
 | [income-tax.md](income-tax/notes.md#5-changes) | 15 | Below AOW age the combined first-bracket rate changed from 35,82% to 35,75%... |
 | [health-insurance-contribution.md](health-insurance-contribution/notes.md#5-changes) | 10 | Bijdrage by aanslag: 5,26% in 2025 to 4,85% in 2026... |
-| [business-deductions.md](business-deductions/notes.md#5-changes) | 10 | Zelfstandigenaftrek: € 2.470 in 2025 to € 1.200 in 2026... |
+| [business-deductions.md](business-deductions/notes.md#5-changes) | 10 | Zelfstandigenaftrek (self-employed person's deduction): € 2.470 in 2025 to € 1.200 in 2026... |
 | [investments.md](investments/notes.md#5-changes) | 10 | KIA, second band endpoint, € 70.602 in 2025 to € 71.683 in 2026... |
 | [costs-and-car.md](costs-and-car/notes.md#5-changes) | 19 | Gemengde kosten drempel: € 5.700 in 2025 to € 5.700 in 2026, unchanged. The... |
-| [box-3.md](box-3/notes.md#5-changes) | 13 | Heffingsvrij vermogen: € 57.684 to € 59.357 per person. With a fiscal partner €... |
+| [box-3.md](box-3/notes.md#5-changes) | 13 | Heffingsvrij vermogen (tax-free allowance): € 57.684 to € 59.357 per person. With a fiscal partner €... |
 | [box-2.md](box-2/notes.md#5-changes) | 12 | Box 2 bracket 1 boundary moves from € 67.804 in 2025 to € 68.843 in 2026... |
 | [private-company-and-corporate-tax.md](private-company-and-corporate-tax/notes.md#5-changes) | 19 | Vpb rates: unchanged. Both 2025 and 2026 tax the first € 200.000 at 19% and the... |
 | [pension-and-disability-insurance.md](pension-and-disability-insurance/notes.md#5-changes) | 14 | Maximum jaarruimte: € 35.798 (2025) to € 35.589 (2026). Source: [Ministry 2025... |
 | [work-relationship.md](work-relationship/notes.md#5-changes) | 12 | DBA boetes: in 2025 there were no verzuimboetes and no vergrijpboetes for the... |
-| [procedure.md](procedure/notes.md#5-changes) | 11 | Belastingrente for the general taxes, including income tax and btw, changes... |
+| [procedure.md](procedure/notes.md#5-changes) | 11 | Belastingrente (tax interest) for the general taxes, including income tax and btw, changes... |
 <!-- GENERATED:changes:end -->

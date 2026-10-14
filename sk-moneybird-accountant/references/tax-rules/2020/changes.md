@@ -1,6 +1,7 @@
 ---
 title: "Changes tax year 2020"
 description: "What changed in tax year 2020 compared with 2019, restated from section 5 of the year topic files, with a generated index of every topic."
+nav_label: "Changes tax year 2020"
 trigger_phrases:
   - "changes tax year 2020"
   - "what changed in 2020"

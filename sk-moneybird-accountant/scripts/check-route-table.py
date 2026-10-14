@@ -19,9 +19,11 @@ table row by row, including the required and conditional reads, the section
 targets, the phase map, the topic map and the table's multi-word signals and
 curated advisor signals with graph-metadata.json, and the write mode
 regenerates both surfaces. The check also runs the sibling check-skill-words.py
-over the repository, so a SKILL.md above the word ceiling fails this check, and the
+over the repository, so a SKILL.md above the word ceiling fails this check, the
 sibling split-topic-files.py in its check mode, so a split part that drifted
-from its manifest fails it too. The script uses the Python standard library only and makes no network call.
+from its manifest fails it too, and the sibling outline-check.py, so a decision
+step with no alternative branch fails it as well. The script uses the Python
+standard library only and makes no network call.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/check-route-table.py
@@ -80,6 +82,10 @@ WORD_CHECK = os.path.join(SKILL_FOLDER, "scripts", "check-skill-words.py")
 # WHY: the split proof is enforced here for the same reason, and the split
 # suite has no step of its own until the workflow lists it.
 SPLIT_CHECK = os.path.join(SKILL_FOLDER, "scripts", "split-topic-files.py")
+
+# WHY: the carry-forward proof is enforced here for the same reason, so a
+# decision step with no alternative branch fails the repository check list.
+OUTLINE_CHECK = os.path.join(SKILL_FOLDER, "scripts", "outline-check.py")
 
 START_MARKER = "<!-- route-table:start -->"
 END_MARKER = "<!-- route-table:end -->"
@@ -1461,6 +1467,35 @@ def check_split_topics(problems: List[str]) -> None:
     if lines:
         print(lines[-1])
 
+
+def check_outline(problems: List[str]) -> None:
+    """Run the sibling outline check over the year and general topic files.
+
+    A passing run prints the checker's count line. A failing run hands every
+    line to the problem list, which names the file, the line and the decision
+    step that misses its branch.
+
+    Args:
+        problems: Problem list to append to.
+    """
+    if not os.path.isfile(OUTLINE_CHECK):
+        problems.append("outline check not found: %s" % OUTLINE_CHECK)
+        return
+    completed = subprocess.run(
+        [sys.executable, "-I", OUTLINE_CHECK, "--check", "--root", REPO_ROOT],
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        cwd=REPO_ROOT,
+    )
+    lines = [line for line in (completed.stdout + completed.stderr).splitlines() if line.strip()]
+    if completed.returncode != 0:
+        problems.extend(lines)
+        return
+    if lines:
+        print(lines[-1])
+
 # ───────────────────────────────────────────────────────────────
 # 8. ENTRY POINT
 # ───────────────────────────────────────────────────────────────
@@ -1590,6 +1625,7 @@ def main(argv: List[str]) -> int:
     check_intent_signals(rows, args.graph_metadata, problems)
     check_skill_words(problems)
     check_split_topics(problems)
+    check_outline(problems)
     for line in missing:
         print(line)
     if problems:

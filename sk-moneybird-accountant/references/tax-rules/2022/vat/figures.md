@@ -36,6 +36,50 @@ This file covers VAT (btw) for a Dutch sole trader and the general VAT rules tha
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Standard, reduced and zero rates (Wet OB art. 9) | 1 |
+| Tabel I goods at 9% | 2 |
+| Tabel I services at 9% | 3 |
+| Electronic publications and news access | 4 |
+| Logies | 5 |
+| Zero rate conditions for an intra-EU goods supply | 6 |
+| Exemptions (Wet OB art. 11 lid 1) | 7 |
+| KOR turnover ceiling (art. 25 lid 1) | 8 |
+| KOR turnover test year | 9 |
+| KOR notice, minimum participation and re-entry | 10 |
+| KOR invoice and deduction rule (art. 25 lid 4) | 11 |
+| KOR special conditions from the 2020 handbook | 12 |
+| KOR registration threshold without notice | 13 |
+| VAT return periods | 14 |
+| Monthly return trigger | 15 |
+| Filing and payment term (AWR art. 10 lid 2 and art. 19 lid 1) | 16 |
+| Return deadlines for period returns and the yearly return | 17 |
+| Published 2022 return-date table | 18 |
+| Yearly return VAT limit | 19 |
+| Other yearly return conditions | 20 |
+| Suppletie correction window and timing (UBOB art. 15) | 21 |
+| Suppletie amount boundary | 22 |
+| EU distance-sales threshold and option | 23 |
+| OSS returns, corrections and records | 24 |
+| Invoerregeling cap | 25 |
+| EU KOR | 26 |
+| Opgaaf ICP deadline and period rules | 27 |
+| Reverse-charge electronics threshold (UBOB art. 24ba lid 1 onderdeel g) | 28 |
+| Invoice issue date | 29 |
+| Invoice content | 30 |
+| Simplified invoice threshold | 31 |
+| Compulsory cash accounting | 32 |
+| Last return of the year | 33 |
+| Business car private use | 34 |
+| BUA threshold and exceptions | 35 |
+| BUA own contribution | 36 |
+| Corona special deferral and repayment | 37 |
+| General B2B e-invoicing duty | 38 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
 | Standard, reduced and zero rates (Wet OB art. 9) | 21% standard. 9% for goods and services in Tabel I. Nihil for goods and services in Tabel II when the conditions set by algemene maatregel van bestuur are met. | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2022-01-01 |

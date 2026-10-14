@@ -36,6 +36,41 @@ This file covers Box 1 rates, AOW-age variants, heffingskortingen, tariefsaanpas
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Box 1 below AOW age | 1 |
+| Box 1 at AOW age, born on or after 1 January 1946 | 2 |
+| Box 1 at AOW age, born before 1 January 1946 | 3 |
+| First-bracket rate in the year AOW age is reached | 4 |
+| Premie volksverzekeringen (national insurance contribution) ceiling | 5 |
+| Tariefsaanpassing (rate adjustment) | 6 |
+| Algemene heffingskorting (general tax credit) below AOW age | 7 |
+| Algemene heffingskorting for a full year at AOW age | 8 |
+| Arbeidskorting (employment tax credit) below AOW age | 9 |
+| Arbeidskorting for a full year at AOW age | 10 |
+| Arbeidskorting taken over from employer | 11 |
+| Inkomensafhankelijke combinatiekorting (IACK) | 12 |
+| IACK for a full year at AOW age | 13 |
+| IACK child and residence test | 14 |
+| IACK co-ouder test | 15 |
+| Payout of unused heffingskortingen | 16 |
+| Payout income references | 17 |
+| Belastingdeel and premiedelen | 18 |
+| Winst uit onderneming and taxable Box 1 income | 19 |
+| Exempt profit components | 20 |
+| Zelfstandigenaftrek (self-employed person's deduction) | 21 |
+| Zelfstandigenaftrek at AOW age | 22 |
+| Unused zelfstandigenaftrek | 23 |
+| Startersaftrek (starter's deduction) | 24 |
+| Startersaftrek bij arbeidsongeschiktheid | 25 |
+| Meewerkaftrek (meewerkende partner deduction) | 26 |
+| Stakingsaftrek (business cessation deduction) | 27 |
+| MKB-winstvrijstelling (SME profit exemption) | 28 |
+| Oudedagsreserve (old-age reserve) | 29 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 1 below AOW age | 36,97% up to € 75.518, then 49,50%. Statutory table: 9,32% to € 38.098, then € 3.550 plus 36,97% up to € 75.518, then € 17.384 plus 49,50% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/belastingberekening, https://wetten.overheid.nl/BWBR0011353/2024-01-01 |

@@ -36,6 +36,54 @@ This file covers the procedural side of tax year 2022 for a sole trader and for 
 
 <a id="2-key-figures"></a>
 
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| IB return 2022 filing deadline | 1 |
+| IB filing period 2022 opens | 2 |
+| IB return 2022 with uitstel | 3 |
+| Uitstel (deferral) request for the IB return | 4 |
+| Uitstel channel for the IB return | 5 |
+| Aangiftebrief and AWR art. 9 filing term | 6 |
+| Filing without an invitation for tax year 2022 | 7 |
+| Definitive aanslag 2022 latest | 8 |
+| Definitive assessment term | 9 |
+| Aanslaggrens and teruggaafgrens 2022 | 10 |
+| IB boetes 2022 | 11 |
+| IB boete route and vergrijpboete | 12 |
+| Voorlopige aanslag 2022 | 13 |
+| Changing the expected profit | 14 |
+| Deadline to request or change the voorlopige aanslag | 15 |
+| Payment terms of assessments | 16 |
+| Belastingrente (tax interest) IB and btw 2022 | 17 |
+| Belastingrente on tax year 2022 IB | 18 |
+| Belastingrente rate table and rate-setting method | 19 |
+| Vpb belastingrente over 2022 and the mass objection | 20 |
+| Belastingrente on income tax | 21 |
+| Belastingrente day count | 22 |
+| Belastingrente on btw | 23 |
+| Btw belastingrente on 2022 quarters | 24 |
+| Btw filing and payment term | 25 |
+| VAT monthly dates 2022 | 26 |
+| VAT quarterly dates 2022 | 27 |
+| VAT yearly return 2022 | 28 |
+| Software submission and receipt of the btw return | 29 |
+| Uitstel for a btw-aangifte | 30 |
+| Btw aangifteverzuimboete 2022 | 31 |
+| Navordering (additional assessment) on a new fact and the fout route | 32 |
+| Navorderingstermijn | 33 |
+| Navordering official example | 34 |
+| Voluntary correction | 35 |
+| Bezwaar term, form, motivation and acknowledgement | 36 |
+| Verzoek om (ambtshalve) vermindering | 37 |
+| Bewaarplicht (record-keeping duty) (AWR art. 52) | 38 |
+| Bewaartermijnen and basisgegevens | 39 |
+| Inschrijving in het Handelsregister | 40 |
+| KVK-nummer, identity check and appointments | 41 |
+| Registration with the Belastingdienst | 42 |
+<!-- GENERATED:key-figure-index:end -->
+
+
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
 | IB return 2022 filing deadline | Before 1 May 2023 | enacted | Corrected | https://web.archive.org/web/20230305/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen |

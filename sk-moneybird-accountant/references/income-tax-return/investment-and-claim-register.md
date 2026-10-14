@@ -1,6 +1,7 @@
 ---
 title: Investment and claim register
 description: The dated per-asset register for an investment allowance claim. Order date, payment dates, in-use date, RVO reference and prior aftrek as one row per asset, with every value cell a braced placeholder.
+nav_label: "Investment and claim register"
 trigger_phrases:
   - investment and claim register
   - investeringsaftrek register

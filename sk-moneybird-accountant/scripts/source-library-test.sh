@@ -619,6 +619,86 @@ make_single_url_repo() {
     return 0
 }
 
+# Build a fixture repository with the top-layer field set, one glossed figures
+# file and one sourced term-map row
+# Args:
+#   $1 - Repository root to create
+# Returns:
+#   0 when the fixture is ready, 1 when a write fails
+make_frontmatter_repo() {
+    local root="$1"
+    mkdir -p "$root/sk-moneybird-accountant/scripts" "$root/sk-moneybird-accountant/assets" \
+        "$root/sk-moneybird-accountant/references/tax-rules/2025/vat" \
+        "$root/cli-jortt" "$root/cli-moneybird" || return 1
+    cp "$BUILDER" "$root/sk-moneybird-accountant/scripts/" || return 1
+    cat >"$root/AGENTS.md" <<'MD'
+---
+title: "Fixture bootstrap"
+description: "Fixture bootstrap for the field-set cases."
+nav_label: "Bootstrap"
+---
+
+# Fixture bootstrap
+MD
+    cat >"$root/cli-jortt/SKILL.md" <<'MD'
+---
+name: cli-jortt
+description: Fixture Jortt skill.
+allowed-tools: [Bash, Read]
+version: 1.0.0.0
+nav_label: "Jortt CLI"
+---
+
+# Jortt
+MD
+    cat >"$root/cli-moneybird/SKILL.md" <<'MD'
+---
+name: cli-moneybird
+description: Fixture Moneybird skill.
+allowed-tools: [Bash, Read]
+version: 1.0.0.0
+nav_label: "Moneybird CLI"
+---
+
+# Moneybird
+MD
+    cat >"$root/sk-moneybird-accountant/references/tax-rules/2025/vat/figures.md" <<'MD'
+---
+title: "BTW 2025: Figures"
+description: "Fixture VAT figures for the gloss cases."
+nav_label: "BTW"
+---
+
+# BTW 2025: Figures
+
+## 1. KEY FIGURES
+
+<!-- GENERATED:key-figure-index:start -->
+| Item | row |
+|---|---|
+| Aangifte (return) filing | 1 |
+<!-- GENERATED:key-figure-index:end -->
+
+| Item | Value | Status | Check | Source |
+|---|---|---|---|---|
+| Aangifte filing | 21% | enacted | Verified | https://www.belastingdienst.nl/a |
+MD
+    cat >"$root/sk-moneybird-accountant/assets/term-map.json" <<'MD'
+{
+  "generated_by": "sk-moneybird-accountant/assets/term-map.json",
+  "terms": [
+    {
+      "gloss": "return",
+      "source": "https://www.belastingdienst.nl/a",
+      "source_file": "references/tax-rules/2025/vat/figures.md",
+      "term": "Aangifte"
+    }
+  ]
+}
+MD
+    return 0
+}
+
 # ───────────────────────────────────────────────────────────────
 # 5. CHECKS
 # ───────────────────────────────────────────────────────────────
@@ -1714,6 +1794,108 @@ else
     fail "a date without the calendar check is a usage error"
 fi
 
+group "frontmatter and term-map field set"
+FM_REPO="$TMP_ROOT/frontmatter-repo"
+if make_frontmatter_repo "$FM_REPO"; then
+    pass "frontmatter fixture repository builds"
+else
+    fail "frontmatter fixture repository builds"
+fi
+assert "the frontmatter fixture writes" run_builder "$FM_REPO"
+assert "the frontmatter fixture checks clean" run_builder "$FM_REPO" --check
+
+FM_CLI="$FM_REPO/cli-jortt/SKILL.md"
+cp "$FM_CLI" "$TMP_ROOT/cli-jortt.aside"
+grep -v '^nav_label:' "$FM_CLI" >"$TMP_ROOT/cli-jortt.navlabel-less"
+mv "$TMP_ROOT/cli-jortt.navlabel-less" "$FM_CLI"
+run_builder "$FM_REPO" --check
+status=$?
+if [[ "$status" -eq 1 ]] && grep -q '^field-set: cli-jortt/SKILL.md misses nav_label$' "$TMP_ROOT/out.txt"; then
+    pass "a CLI document missing a field fails and is named"
+else
+    fail "a CLI document missing a field fails and is named"
+fi
+cp "$TMP_ROOT/cli-jortt.aside" "$FM_CLI"
+
+FM_FIGURES="$FM_REPO/sk-moneybird-accountant/references/tax-rules/2025/vat/figures.md"
+cp "$FM_FIGURES" "$TMP_ROOT/figures.aside"
+python3 -I - "$FM_FIGURES" <<'PY'
+import sys
+
+path = sys.argv[1]
+text = open(path, encoding="utf-8").read()
+open(path, "w", encoding="utf-8").write(
+    text.replace('nav_label: "BTW"\n', 'nav_label: "BTW"\nchecked_on: 2026-01-01\n', 1)
+)
+PY
+run_builder "$FM_REPO" --check
+status=$?
+if [[ "$status" -eq 1 ]] && grep -q '^field-set: sk-moneybird-accountant/references/tax-rules/2025/vat/figures.md carries checked_on with no checked source$' "$TMP_ROOT/out.txt"; then
+    pass "a checked_on date with no checked source fails and is named"
+else
+    fail "a checked_on date with no checked source fails and is named"
+fi
+cp "$TMP_ROOT/figures.aside" "$FM_FIGURES"
+
+FM_MAP="$FM_REPO/sk-moneybird-accountant/assets/term-map.json"
+cp "$FM_MAP" "$TMP_ROOT/term-map.aside"
+python3 -I - "$FM_MAP" <<'PY'
+import json
+import sys
+
+path = sys.argv[1]
+data = json.load(open(path))
+data["terms"] = [row for row in data["terms"] if row.get("term") != "Aangifte"]
+open(path, "w").write(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
+PY
+run_builder "$FM_REPO" --check
+status=$?
+if [[ "$status" -eq 1 ]] && grep -q '^gloss: sk-moneybird-accountant/references/tax-rules/2025/vat/figures.md has no term-map row for Aangifte (return)$' "$TMP_ROOT/out.txt"; then
+    pass "a glossed term missing from the term map fails and is named"
+else
+    fail "a glossed term missing from the term map fails and is named"
+fi
+cp "$TMP_ROOT/term-map.aside" "$FM_MAP"
+
+python3 -I - "$FM_MAP" <<'PY'
+import json
+import sys
+
+path = sys.argv[1]
+data = json.load(open(path))
+data["terms"][0]["source_file"] = "references/tax-rules/2025/vat/missing.md"
+open(path, "w").write(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
+PY
+run_builder "$FM_REPO" --check
+status=$?
+if [[ "$status" -eq 1 ]] && grep -q '^term-map: Aangifte source_file does not exist: references/tax-rules/2025/vat/missing.md$' "$TMP_ROOT/out.txt"; then
+    pass "a source_file that names no file fails and is named"
+else
+    fail "a source_file that names no file fails and is named"
+fi
+
+python3 -I - "$FM_MAP" <<'PY'
+import json
+import sys
+
+path = sys.argv[1]
+data = json.load(open(path))
+data["terms"][0]["source_file"] = "references/tax-rules/tax-rules/2025/vat/figures.md"
+open(path, "w").write(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
+PY
+if run_builder "$FM_REPO" --write-term-map && python3 -I - "$FM_MAP" <<'PY'
+import json
+import sys
+
+row = json.load(open(sys.argv[1]))["terms"][0]
+sys.exit(0 if row["source_file"] == "references/tax-rules/2025/vat/figures.md" else 1)
+PY
+then
+    pass "the producer repairs a doubled source_file path"
+else
+    fail "the producer repairs a doubled source_file path"
+fi
+
 group "real skill"
 # WHY: the index owner regenerates the index after the reference edits land, so
 # this case proves the real tree check runs and names only known findings.
@@ -1729,9 +1911,9 @@ else
     fail "the real tree check runs without a crash"
     sed -n '1,10p' "$TMP_ROOT/real-check.txt"
 fi
-if grep -Eqv '^(missing: |uncited: |differs: |unknown access |dead cited: |perishable: |[0-9]+ sources match the index$)' "$TMP_ROOT/real-check.txt"; then
+if grep -Eqv '^(missing: |uncited: |differs: |unknown access |dead cited: |perishable: |field-set: |term-map: |gloss: |gloss measure: |field-set report: |[0-9]+ sources match the index$)' "$TMP_ROOT/real-check.txt"; then
     fail "the real tree check prints only known finding kinds"
-    grep -Ev '^(missing: |uncited: |differs: |unknown access |dead cited: |perishable: |[0-9]+ sources match the index$)' "$TMP_ROOT/real-check.txt" | sed -n '1,10p'
+    grep -Ev '^(missing: |uncited: |differs: |unknown access |dead cited: |perishable: |field-set: |term-map: |gloss: |gloss measure: |field-set report: |[0-9]+ sources match the index$)' "$TMP_ROOT/real-check.txt" | sed -n '1,10p'
 else
     pass "the real tree check prints only known finding kinds"
 fi

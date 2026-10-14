@@ -3,6 +3,7 @@ name: cli-moneybird
 description: Works Moneybird through the official moneybird-cli behind a write guard for bookkeeping migration.
 allowed-tools: [Bash, Read, Write, Edit, Glob, Grep]
 version: 1.0.0.0
+nav_label: "Moneybird CLI"
 ---
 
 <!-- Keywords: moneybird, moneybird-cli, moneybird-guard, moneybird rest api, bookkeeping migration, accounting migration, jortt migration, pilot administration, confirm write, period filter, read-only lock -->
@@ -305,7 +306,7 @@ Saved records, attachments, reports and migration logs belong under `migration-w
 
 ### Reference Loading Notes
 
-Load only the reference the selected operation needs. Section 2 is the single authority for loading rules.
+Load only the reference the selected operation needs. [Section 2](#2-smart-routing) is the single authority for loading rules.
 
 ---
 
@@ -366,7 +367,7 @@ The official `moneybird/moneybird-cli` owns REST routing from the OpenAPI spec. 
 
 ## 9. REFERENCES AND RELATED RESOURCES
 
-The router discovers reference, catalog and playbook docs dynamically. Start with `references/cli.md`, then follow Section 2.
+The router discovers reference, catalog and playbook docs dynamically. Start with `references/cli.md`, then follow [Section 2](#2-smart-routing).
 
 Scripts: `scripts/doctor.sh` and `cli/moneybird-cli/setup.sh` plus `moneybird-guard` beside it.
 

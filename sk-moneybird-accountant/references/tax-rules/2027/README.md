@@ -1,6 +1,7 @@
 ---
 title: "Tax year 2027"
 description: "Overview of Dutch tax year 2027 for a ZZP sole trader who may also own a BV: the twelve topic files, their headline figures and how many values are open."
+nav_label: "Tax year 2027"
 trigger_phrases:
   - "tax year 2027"
   - "belastingjaar 2027"
@@ -35,13 +36,13 @@ Across the twelve topic files the figures tables hold 348 values: 271 Verified, 
 | [vat](vat/figures.md) | This file covers Dutch VAT rates, exemptions, bookkeeping, returns, cross-border rules, and current and proposed changes for tax year 2027. | 39 | 6 | 7 |
 | [income-tax](income-tax/figures.md) | Box 1 brackets, rates and heffingskortingen for 2027, plus the tariefsaanpassing and the route from winst uit onderneming to taxable box 1 income, with the enacted 2027 text and the still proposed Belastingplan 2027 figures kept apart. | 38 | 8 | 29 |
 | [health-insurance-contribution](health-insurance-contribution/figures.md) | The income-dependent Zvw contribution for an entrepreneur in tax year 2027, covering the aanslag rate, the maximum bijdrage-inkomen, who pays by aanslag and how the rate differs from the werkgeversheffing. | 19 | 4 | 9 |
-| [business-deductions](business-deductions/figures.md) | The parts of the ondernemersaftrek and the MKB-winstvrijstelling for tax year 2027, with the adopted 2027 statute text and the pending Belastingplan 2027 and start-ups bills kept apart. | 32 | 2 | 32 |
+| [business-deductions](business-deductions/figures.md) | The parts of the ondernemersaftrek and the MKB-winstvrijstelling (SME profit exemption) for tax year 2027, with the adopted 2027 statute text and the pending Belastingplan 2027 and start-ups bills kept apart. | 32 | 2 | 32 |
 | [investments](investments/figures.md) | The 2027 rules for the KIA, EIA, MIA, Vamil, desinvesteringsbijtelling, ordinary depreciation and the bodemwaarde, plus the willekeurige afschrijving for starters, with the 2027 law text, bill 37 022 and the unpublished indexation marked by status. | 26 | 4 | 21 |
 | [costs-and-car](costs-and-car/figures.md) | How a Dutch sole trader and a BV deduct business costs and handle the car in tax year 2027, with the gemengde kosten drempel, the kilometre allowance, bijtelling, the youngtimer rules and the open items in Belastingplan 2027. | 31 | 4 | 31 |
 | [box-3](box-3/figures.md) | Box 3 for tax year 2027: the category method, the values in the 2027 text of the act, the Belastingplan 2027 bill, the Cabinet letter proposals, the green investment facilities and the optional actual return. | 16 | 0 | 13 |
 | [box-2](box-2/figures.md) | Box 2 income, the aanmerkelijk belang rules, the excessief lenen fiction and the gebruikelijk loon link for tax year 2027, with the enacted future text and the bills and announcements that are still open. | 22 | 3 | 16 |
 | [private-company-and-corporate-tax](private-company-and-corporate-tax/figures.md) | BV and vennootschapsbelasting for tax year 2027, with the carried Vpb rates, the Belastingplan 2027 proposals, DGA pay, dividendbelasting and the BV filing and jaarrekening duties. | 38 | 14 | 12 |
-| [pension-and-disability-insurance](pension-and-disability-insurance/figures.md) | Jaarruimte, reserveringsruimte, lijfrentes, stakingswinst conversion, the AOV premium and the proposed BAZ for tax year 2027. | 25 | 8 | 7 |
+| [pension-and-disability-insurance](pension-and-disability-insurance/figures.md) | Jaarruimte (annual allowance), reserveringsruimte, lijfrentes, stakingswinst conversion, the AOV premium and the proposed BAZ for tax year 2027. | 25 | 8 | 7 |
 | [work-relationship](work-relationship/figures.md) | Work relationship rules for tax year 2027: Wet DBA enforcement after the moratorium, modelovereenkomsten, the VBAR low hourly rate presumption and the status of the BAZ bill. | 18 | 4 | 10 |
 | [procedure](procedure/figures.md) | Filing deadlines and extensions, the voorlopige aanslag, belastingrente, navordering, bezwaar, bewaarplicht and KVK and Belastingdienst registration for tax year 2027, with the amounts that were still unpublished on 2026-10-11 marked as unknown. | 44 | 8 | 13 |
 <!-- GENERATED:topic-files:end -->
@@ -61,7 +62,7 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Inkomstenbelasting box 1 | Box 1 table for people born before 1 January 1946, enacted text (art. 2.10a) | Income-tax part 8,01% up to € 41.123, € 3.293 plus 37,59% to € 79.569, € 17.744 plus 49,50% above | adopted-not-yet-in-force | Verified |
 | Zvw-bijdrage | Zvw-bijdrage by aanslag for a zelfstandige (verlaagde IAB) | 5,02% | proposed | Verified |
 | Zvw-bijdrage | Zvw werkgeversheffing (normale IAB) | 6,27% | proposed | Verified |
-| Ondernemersaftrek en MKB-winstvrijstelling | Urencriterium | 1.225 hours (art. 3.6, identical to 2026) | adopted-not-yet-in-force | Verified |
+| Ondernemersaftrek (entrepreneur deduction) en MKB-winstvrijstelling (SME profit exemption) | Urencriterium (hours criterion) | 1.225 hours (art. 3.6, identical to 2026) | adopted-not-yet-in-force | Verified |
 | Ondernemersaftrek en MKB-winstvrijstelling | Second test waived, lookback | not an ondernemer in 1 or more of 2022 to 2026 | adopted-not-yet-in-force | Verified |
 | Investeringsaftrek en afschrijving | KIA base table in the 2027 text, before indexation | Nil up to € 2.900, 28% of the investment up to € 71.683, a fixed € 20.072 up to € 132.746, € 20.072 minus 7,56% of the excess over € 132.746 up to € 398.236, nil above € 398.236 | adopted-not-yet-in-force | Verified |
 | Investeringsaftrek en afschrijving | KIA in a samenwerkingsverband | Partnership investments and own investments added, the table applied to the sum, outcome times own investment divided by the sum | adopted-not-yet-in-force | Verified |
@@ -73,11 +74,11 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Box 2 en aanmerkelijk belang | Tax at the top of bracket 1 (art. 2.12, column III) | € 16.866 | adopted-not-yet-in-force | Verified |
 | BV en vennootschapsbelasting | Vpb rate table (art. 22 Wet Vpb 1969) | t/m € 200.000 19%, above that € 38.000 plus 25,8% (carried) | enacted | UNVERIFIED |
 | BV en vennootschapsbelasting | Verliesverrekening (art. 20 Wet Vpb 1969) | one year back and unlimited forward, per year up to € 1.000.000 plus 50% of the profit above € 1.000.000, in the order the losses arose (carried) | enacted | UNVERIFIED |
-| Pensioen, lijfrente en AOV | Jaarruimte percentage | 30% | enacted | Verified |
+| Pensioen, lijfrente en AOV | Jaarruimte (annual allowance) percentage | 30% | enacted | Verified |
 | Pensioen, lijfrente en AOV | Aftoppingsgrens premiegrondslag | € 137.800, still in the 2027 text, not yet indexed | enacted | Verified |
 | Arbeidsrelatie en zelfstandigheid | Wet DBA | Wet van 3 februari 2016, in force 1 May 2016, replaced the VAR | enacted | Verified |
 | Arbeidsrelatie en zelfstandigheid | Loondienst test | Three elements, werkgeversgezag, persoonlijke arbeid and pay, plus weighing factors such as inbedding and ondernemerschap | enacted | Verified |
-| Aangifte en procedure | IB return over 2026, filed in 2027: deadline | Not published on 2026-10-11. Usually 1 May 2027, set in the aangiftebrief | unknown | UNVERIFIED |
+| Aangifte (return) en procedure | IB return over 2026, filed in 2027: deadline | Not published on 2026-10-11. Usually 1 May 2027, set in the aangiftebrief | unknown | UNVERIFIED |
 | Aangifte en procedure | IB filing period opens | 1 March | enacted | Verified |
 <!-- GENERATED:headline-figures:end -->
 
