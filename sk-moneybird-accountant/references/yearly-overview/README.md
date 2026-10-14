@@ -54,7 +54,7 @@ The mode is LIVE. Resolve the year as `year_key` with [year and state resolution
 | 11 | Perform the closing entry, the inventory count, the accrual reversal and the period lock. | `[Operator]` |
 | 12 | Hand the three-column pack to the Operator and stop before filing. | Agent prepares. `[Operator]` files. |
 
-The full checklist is in [the preparation checklist](preparation-checklist.md). The templates are in [the fiscal reconciliation](fiscal-reconciliation.md).
+The full checklist is in [the preparation checklist](preparation-checklist.md). The templates are in [the fiscal reconciliation](fiscal-reconciliation.md). The printable A4 layout of the prepared pack is [the yearly overview template](../../assets/yearly-overview/yearly-overview-template.html), with bilingual labels and a braced placeholder for every value.
 
 ---
 

@@ -16133,7 +16133,7 @@
       }
     },
     {
-      "bytes": 6295,
+      "bytes": 6499,
       "path": "sk-moneybird-accountant/references/yearly-overview/README.md",
       "sections": [
         {
@@ -16160,13 +16160,13 @@
         },
         {
           "anchor": "3-the-ordered-steps",
-          "bytes": 1364,
+          "bytes": 1568,
           "line": 40,
           "lines": 21,
           "title": "3. THE ORDERED STEPS",
           "tokens": {
-            "cl100k_base": 330,
-            "o200k_base": 326
+            "cl100k_base": 371,
+            "o200k_base": 367
           }
         },
         {
@@ -16204,8 +16204,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1526,
-        "o200k_base": 1492
+        "cl100k_base": 1567,
+        "o200k_base": 1533
       }
     },
     {
@@ -16416,7 +16416,7 @@
   },
   "units": [
     {
-      "bytes": 6322553,
+      "bytes": 6322757,
       "files": 458,
       "name": "corpus total",
       "reads": [
@@ -16424,8 +16424,8 @@
       ],
       "sections": 1071,
       "tokens": {
-        "cl100k_base": 1941925,
-        "o200k_base": 1817552
+        "cl100k_base": 1941966,
+        "o200k_base": 1817593
       }
     },
     {
