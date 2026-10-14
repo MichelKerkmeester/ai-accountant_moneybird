@@ -8,12 +8,12 @@ Every row carries its own denominator. A metric whose prerequisite is missing re
 
 | Metric | Split | Value | Denominator |
 |---|---|---|---|
-| Tokens to first answer | calibration | 4917 o200k_base tokens | 10 of 62 rows name a tax figures file |
-| Answer position inside the section | calibration | 1.000 of the file's sections | 10 of 62 rows name a tax figures file |
-| Section hit rate | calibration | no number, the gold rows carry no section label | 0 of 62 rows carry a section label |
-| Tokens to first answer | held-out | 4770 o200k_base tokens | 14 of 44 rows name a tax figures file |
-| Answer position inside the section | held-out | 1.000 of the file's sections | 14 of 44 rows name a tax figures file |
-| Section hit rate | held-out | no number, the gold rows carry no section label | 0 of 44 rows carry a section label |
+| Tokens to first answer | calibration | 4917 o200k_base tokens | 10 of 70 rows name a tax figures file |
+| Answer position inside the section | calibration | 1.000 of the file's sections | 10 of 70 rows name a tax figures file |
+| Section hit rate | calibration | no number, the gold rows carry no section label | 0 of 70 rows carry a section label |
+| Tokens to first answer | held-out | 4770 o200k_base tokens | 21 of 51 rows name a tax figures file |
+| Answer position inside the section | held-out | 1.000 of the file's sections | 21 of 51 rows name a tax figures file |
+| Section hit rate | held-out | no number, the gold rows carry no section label | 0 of 51 rows carry a section label |
 
 ## What each metric means
 

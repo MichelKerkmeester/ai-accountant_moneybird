@@ -571,6 +571,10 @@ cp "$CHECKER" "$WORD_COPY/sk-moneybird-accountant/scripts/check-route-table.py"
 cp "$WORD_CHECKER" "$WORD_COPY/sk-moneybird-accountant/scripts/check-skill-words.py"
 cp "$SKILL_DIR/scripts/split-topic-files.py" "$WORD_COPY/sk-moneybird-accountant/scripts/split-topic-files.py"
 cp "$SKILL_DIR/scripts/outline-check.py" "$WORD_COPY/sk-moneybird-accountant/scripts/outline-check.py"
+cp "$SKILL_DIR/scripts/scannability-report.py" "$WORD_COPY/sk-moneybird-accountant/scripts/scannability-report.py"
+mkdir -p "$WORD_COPY/sk-moneybird-accountant/scripts/route-replay" "$WORD_COPY/sk-moneybird-accountant/benchmark"
+cp "$SKILL_DIR/scripts/route-replay/routing-gold.json" "$WORD_COPY/sk-moneybird-accountant/scripts/route-replay/routing-gold.json"
+cp -R "$SKILL_DIR/benchmark/." "$WORD_COPY/sk-moneybird-accountant/benchmark/"
 cp "$SKILL_MD" "$WORD_COPY/sk-moneybird-accountant/SKILL.md"
 cp "$GRAPH_METADATA" "$WORD_COPY/sk-moneybird-accountant/graph-metadata.json"
 cp -R "$SKILL_DIR/references" "$WORD_COPY/sk-moneybird-accountant/references"
@@ -637,6 +641,21 @@ if [[ "$status" -ne 0 ]] && grep -qF 'no-alternative-branch' "$TMP_ROOT/out.txt"
     pass "a decision step with no branch fails the route table check"
 else
     fail "a decision step with no branch fails the route table check"
+    cat "$TMP_ROOT/out.txt"
+fi
+
+# The same copy carries the scannability report, so a denominator that no
+# longer matches the gold rows fails the route table check
+SCAN_REPORT="$WORD_COPY/sk-moneybird-accountant/benchmark/reports/scannability/report.md"
+cp "$SCAN_REPORT" "$TMP_ROOT/scan-report.keep"
+sed -i.bak -e 's/ of \([0-9][0-9]*\) rows name a tax figures file/ of 1\1 rows name a tax figures file/' "$SCAN_REPORT" && rm -f "$SCAN_REPORT.bak"
+python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+cp "$TMP_ROOT/scan-report.keep" "$SCAN_REPORT"
+if [[ "$status" -ne 0 ]] && grep -qiF 'scannability' "$TMP_ROOT/out.txt"; then
+    pass "a stale scannability report fails the route table check"
+else
+    fail "a stale scannability report fails the route table check"
     cat "$TMP_ROOT/out.txt"
 fi
 

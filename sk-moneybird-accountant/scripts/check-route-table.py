@@ -21,8 +21,10 @@ curated advisor signals with graph-metadata.json, and the write mode
 regenerates both surfaces. The check also runs the sibling check-skill-words.py
 over the repository, so a SKILL.md above the word ceiling fails this check, the
 sibling split-topic-files.py in its check mode, so a split part that drifted
-from its manifest fails it too, and the sibling outline-check.py, so a decision
-step with no alternative branch fails it as well. The script uses the Python
+from its manifest fails it too, the sibling outline-check.py, so a decision
+step with no alternative branch fails it as well, and the sibling
+scannability-report.py in its check mode, so a stale scannability report
+fails it. The script uses the Python
 standard library only and makes no network call.
 
 Usage:
@@ -86,6 +88,10 @@ SPLIT_CHECK = os.path.join(SKILL_FOLDER, "scripts", "split-topic-files.py")
 # WHY: the carry-forward proof is enforced here for the same reason, so a
 # decision step with no alternative branch fails the repository check list.
 OUTLINE_CHECK = os.path.join(SKILL_FOLDER, "scripts", "outline-check.py")
+
+# WHY: the scannability report reads the gold rows and the token baseline, so
+# a change to either leaves it stale unless the check list recomputes it.
+SCANNABILITY_CHECK = os.path.join(SKILL_FOLDER, "scripts", "scannability-report.py")
 
 START_MARKER = "<!-- route-table:start -->"
 END_MARKER = "<!-- route-table:end -->"
@@ -1496,6 +1502,33 @@ def check_outline(problems: List[str]) -> None:
     if lines:
         print(lines[-1])
 
+def check_scannability(problems: List[str]) -> None:
+    """Run the sibling scannability report in its check mode.
+
+    A passing run prints the report's last line. A failing run hands every
+    line to the problem list, which names the drift.
+
+    Args:
+        problems: Problem list to append to.
+    """
+    if not os.path.isfile(SCANNABILITY_CHECK):
+        problems.append("scannability report script not found: %s" % SCANNABILITY_CHECK)
+        return
+    completed = subprocess.run(
+        [sys.executable, "-I", SCANNABILITY_CHECK, "--check"],
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        cwd=REPO_ROOT,
+    )
+    lines = [line for line in (completed.stdout + completed.stderr).splitlines() if line.strip()]
+    if completed.returncode != 0:
+        problems.extend(lines or ["scannability report check failed"])
+        return
+    if lines:
+        print(lines[-1])
+
 # ───────────────────────────────────────────────────────────────
 # 8. ENTRY POINT
 # ───────────────────────────────────────────────────────────────
@@ -1626,6 +1659,7 @@ def main(argv: List[str]) -> int:
     check_skill_words(problems)
     check_split_topics(problems)
     check_outline(problems)
+    check_scannability(problems)
     for line in missing:
         print(line)
     if problems:
