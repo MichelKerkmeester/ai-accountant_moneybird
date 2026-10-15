@@ -51,7 +51,7 @@ grep 'references/tax-rules/2026/vat/' sk-moneybird-accountant/assets/source-libr
 |---|---|---|
 | `ok` | Plain HTTP fetch returns the page | Read it with WebFetch. Ask for the one paragraph you need |
 | `webfetch-only` | WebFetch returns the page. A plain `curl` from the Operator's machine gets no reply | Use WebFetch. A whole law page runs to about 350,000 characters, so ask for one article or read on with the `offset` the tool returns |
-| `pdf-needs-reader` | The file downloads, but WebFetch shows compressed PDF streams and the Read tool needs `pdftoppm` | Read the HTML page that links the PDF when one exists. Otherwise ask the Operator to install poppler, then Read the saved file by page |
+| `pdf-needs-reader` | The file downloads, but WebFetch shows compressed PDF streams and the Read tool needs `pdftoppm` | Read the HTML page that links the PDF when one exists. Otherwise run `python3 -I sk-moneybird-accountant/scripts/read-pdf-source.py --url <url>`, which needs poppler (`brew install poppler`). A saved file works with `--file <path.pdf>` |
 | `archive-not-fetchable` | WebFetch refuses web.archive.org outright | Find the live page first. If only the archive copy holds the text, ask the Operator to open it |
 | `dead` | HTTP 404 through both curl and WebFetch | Do not cite it. Report it to the Operator with the citing file |
 | `endpoint` | An API, OAuth or MCP address | Never fetch it. Reach it only through `jortt-cli` or `moneybird-guard` |

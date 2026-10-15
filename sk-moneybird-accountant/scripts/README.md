@@ -25,7 +25,7 @@ Current state:
 - `init-workspace.sh` never overwrites an existing file and refuses to run unless git ignores both targets.
 - Output is byte-stable: sorted inputs, no timestamps and no randomness.
 - The plan-kit files `generate-plan-kit.py`, `init-workspace.sh` and `plan-kit-test.sh` are gate files. A change to one needs the Operator's approval, as `../../scripts/README.md` describes.
-- Every checker and suite is offline. Only `build-source-library.py --check-links` and `--watch` make network calls, and the monthly job runs them.
+- Every checker and suite is offline. A `read-pdf-source.py --url` read fetches one indexed PDF on demand. Only `build-source-library.py --check-links` and `--watch` run in the monthly job.
 
 ---
 
@@ -91,6 +91,8 @@ scripts/
 +-- regression-trailer-test.sh    # Regression trailer suite
 +-- build-source-library.py       # External source index builder
 +-- source-library-test.sh        # Source library suite
++-- read-pdf-source.py            # Reads the PDF-only sources through pdftotext
++-- read-pdf-source-test.sh       # PDF source reader suite
 `-- route-replay/
     +-- route-replay.py           # Offline route scoring and guard replay
     +-- routing-gold.json         # Route fixture corpus
@@ -138,6 +140,8 @@ scripts/
 | `regression-trailer-test.sh` | Builds fixture git repositories for the trailer check, including a deleted covering test, valid and invalid trailers, an unknown range and a missing root |
 | `build-source-library.py` | Scans the skill family for external links and writes `../assets/source-library.json`, with `--check`, `--check-links`, `--apply-report`, `--watch`, `--check-calendar`, `--trace` and `--write-term-map` modes |
 | `source-library-test.sh` | Proves the index builder, the link check and the trace on fixture repositories, a fixture server on 127.0.0.1, and the real index |
+| `read-pdf-source.py` | Accepts only a `pdf-needs-reader` row, downloads it into a temp directory and runs `pdftotext -layout -enc UTF-8` with an optional page range. `--file` reads a saved PDF, `--list` prints the rows and a missing `pdftotext` exits 3 |
+| `read-pdf-source-test.sh` | Proves the stub argument passing and the page range, the refusals and the exit codes, a symlink into a private folder and a redirect to another host, the 29 `--list` rows and a loopback download on a fixture copy, then extracts a tiny generated PDF with the real poppler |
 | `../assets/route-calibration.json` | The frozen calibration record: the route margin, the fallback floor, the sweep over the calibration split and the held-out result |
 
 ---
@@ -151,7 +155,7 @@ scripts/
 | Private output | `migration-workspace/` and `specs/<NNN-slug>/` are git-ignored. The scripts refuse a symlinked target and a target git does not ignore |
 | Imports | The generator uses the Python standard library only and runs with `python3 -I`. The shell scripts run on Bash 3.2 |
 | Fixture data | `route-replay/routing-gold.json`, `../evals/evals.json` and `../hardening-matrix.md` hold synthetic prompts and placeholders only, with no real name, amount, IBAN or administration id |
-| Network | Only `build-source-library.py --check-links` and `--watch` make network calls, and they run in the scheduled job. Every other script and suite is offline |
+| Network | Every checker and suite is offline. `read-pdf-source.py --url` fetches one indexed PDF on demand. Only `build-source-library.py --check-links` and `--watch` run in the scheduled job |
 | Token cache | Token counts read the pinned cache beside the repository. A missing cache folder or a changed data file exits 2 |
 
 ---
@@ -184,6 +188,10 @@ scripts/
 | `python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-calendar` | CLI | Checks the year files' `checked_on` against the release calendar, offline |
 | `python3 -I sk-moneybird-accountant/scripts/build-source-library.py --write-term-map` | CLI | Resolves every `source_file` in `../assets/term-map.json` and rewrites the map, offline |
 | `bash sk-moneybird-accountant/scripts/source-library-test.sh` | CLI | Runs the source library suite |
+| `python3 -I sk-moneybird-accountant/scripts/read-pdf-source.py --list` | CLI | Prints the `pdf-needs-reader` rows of the source library, offline |
+| `python3 -I sk-moneybird-accountant/scripts/read-pdf-source.py --url <url> [--first <n> --last <m>]` | CLI | Downloads one indexed PDF and prints the text poppler extracts |
+| `python3 -I sk-moneybird-accountant/scripts/read-pdf-source.py --file <path.pdf>` | CLI | Extracts a saved PDF and makes no network call |
+| `bash sk-moneybird-accountant/scripts/read-pdf-source-test.sh` | CLI | Runs the PDF source reader suite |
 
 ---
 
@@ -410,6 +418,8 @@ sk-moneybird-accountant/references/tax-rules/2024/vat/figures.md:56
 A quiet watch prints `no watched URL changed` and a current calendar prints `3 files current at the Prinsjesdag checkpoint (2026-09-15)`.
 
 `source-library-test.sh` proves the index, the link check and the trace on fixture repositories, a fixture server on 127.0.0.1, and the real index, plus digests, the report write, the watch and its state, the calendar check, blocked hosts and dead or perishable citations. It ends with `138 passed, 0 failed`.
+
+`read-pdf-source.py` is the read door for the 29 rows whose access is `pdf-needs-reader`. `--url <url>` accepts only a URL the index holds with that access, requires https or a loopback host, downloads into a fresh temp directory with a 64 MB cap and runs `pdftotext -layout -enc UTF-8`, then prints the text and removes the directory. `--first <n>` and `--last <m>` bound the pages, `--file <path.pdf>` reads a saved PDF with no network call and `--list` prints the rows offline. A missing `pdftotext` exits 3 and names `brew install poppler`. It follows a redirect only to https on the same host and checks a `--file` path after resolving its symlinks. The reader never writes inside the repository and never touches a private folder. `read-pdf-source-test.sh` proves the argument passing and the page range with a stub pdftotext, the exit codes, the 29 `--list` rows, a loopback download, a refused off-host redirect and a refused symlink into a private folder, and extracts a tiny generated PDF when a real `pdftotext` exists. It ends with `Result: 26 passed, 0 failed`.
 
 ---
 

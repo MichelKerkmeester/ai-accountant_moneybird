@@ -35,6 +35,7 @@
         "feature-catalog/quality-gates/route-replay-harness.md",
         "feature-catalog/quality-gates/token-budget-baseline.md",
         "feature-catalog/quality-gates/write-contract-check.md",
+        "feature-catalog/reference-and-state/pdf-source-reader.md",
         "feature-catalog/reference-and-state/reference-entry-surfaces.md",
         "feature-catalog/reference-and-state/reference-index-and-year-changes.md",
         "feature-catalog/reference-and-state/session-context-and-year-state.md",

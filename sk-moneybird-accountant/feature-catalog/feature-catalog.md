@@ -441,6 +441,22 @@ See [`reference-and-state/reference-entry-surfaces.md`](reference-and-state/refe
 
 ---
 
+### PDF source reader
+
+#### Description
+
+Reads the `pdf-needs-reader` rows of the source library through poppler so a source behind a PDF download can be checked.
+
+#### Current Reality
+
+`scripts/read-pdf-source.py` accepts a URL only when `assets/source-library.json` records it with access `pdf-needs-reader`, downloads it into a fresh temp directory, extracts the text with `pdftotext -layout -enc UTF-8` and prints it, with an optional page range. `--file` reads a saved PDF with no network call, `--list` prints the 29 rows offline and a missing `pdftotext` exits 3 and names `brew install poppler`. The reader never writes inside the repository and the offline suite proves the argument passing, the refusals, the 29 rows and a loopback download.
+
+#### Source Files
+
+See [`reference-and-state/pdf-source-reader.md`](reference-and-state/pdf-source-reader.md) for source and validation anchors.
+
+---
+
 ### Topic file split
 
 #### Description
