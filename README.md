@@ -1,4 +1,4 @@
-# Moneybird Accountant - AI Bookkeeping Assistant for Moneybird
+# Moneybird Accountant
 
 [![GitHub Stars](https://img.shields.io/github/stars/MichelKerkmeester/ai-accountant_moneybird?style=for-the-badge&logo=github&color=fce566&labelColor=222222)](https://github.com/MichelKerkmeester/ai-accountant_moneybird/stargazers)
 [![License](https://img.shields.io/github/license/MichelKerkmeester/ai-accountant_moneybird?style=for-the-badge&color=7bd88f&labelColor=222222)](LICENSE)
@@ -10,49 +10,64 @@
 
 ## 1. 📝 SUMMARY
 
-Moneybird Accountant is a folder you open in a terminal agent. The agent reads `AGENTS.md` and becomes a bookkeeping assistant for a Dutch sole trader (ZZP) who keeps their books in Moneybird. It helps with the monthly and quarterly review, booking purchase invoices and assets, the VAT return, the yearly close and one-off ZZP questions. If your history still lives in Jortt, a built-in migration mode moves it into Moneybird first.
+Moneybird Accountant is an AI bookkeeping assistant for Moneybird. You open the folder in a terminal agent such as Claude Code, and the agent reads `AGENTS.md` and works as your bookkeeping assistant. It knows Dutch tax rules, uses guarded command line tools to read from and write to Moneybird, and has a migration mode for bringing your history over from another tool.
 
-It organizes evidence and explains general Dutch ZZP rules. It never files a return and never gives final tax advice. You or your bookkeeper decide, and the assistant flags every judgement call.
+It is built for a Dutch sole trader (ZZP) today. The tool and the market are separate parts, so you can adapt it to another bookkeeping tool or another country by swapping those parts. Section 7 shows which files to change.
+
+The assistant prepares and explains. It never files a return and never gives final tax advice. You or your bookkeeper decide, and it flags every judgement call.
 
 **What's inside**
 
-- **A skill** - `sk-moneybird-accountant/` picks the task, loads the right bookkeeping or tax reference and keeps the human decision boundary
-- **A guarded Moneybird client** - `cli-moneybird/` holds `moneybird-guard`, a wrapper around the official Moneybird CLI that previews every call and blocks writes you have not approved
-- **Dutch tax references** - per-year rates, thresholds and procedures for the VAT return, the yearly overview and the income tax return
-- **Migration features** - `cli-jortt/` holds `jortt-cli`, a read-only Jortt client, and a 23-phase plan moves your Jortt history into Moneybird with an owner, an evidence trail and a numeric exit gate per phase
-- **Offline checks** - 26 Jortt contract tests, 58 Moneybird guard tests and the skill's own routing and reference checks run without an accounting login
+- **A bookkeeping skill** - `sk-moneybird-accountant/` works out the task, loads only the reference it needs and keeps every tax decision with you
+- **Dutch tax knowledge** - rules, figures, examples and notes per tax year from 2020 to 2027, with a source cited for each claim
+- **A guarded Moneybird client** - `cli-moneybird/` holds `moneybird-guard`, which previews every call and blocks any write you have not approved
+- **A migration mode** - a read-only Jortt client in `cli-jortt/` and a 23-phase plan that moves your history into Moneybird, one checked step at a time
+- **A privacy gate** - stops names, amounts, account numbers and other personal data from reaching a commit or an outside model
+- **Offline checks** - the tools and the skill are tested without an accounting login
 
 ---
 
-## 2. 🗺️ OVERVIEW
+## 2. 💼 WHAT IT HELPS WITH
 
-### How a request flows
+| Task | What the assistant does |
+|---|---|
+| **Monthly or quarterly review** | Checks the bank, unmatched items and open invoices in Moneybird and lists what needs your attention |
+| **Purchase invoices and receipts** | Explains how to book them, with Dutch VAT, reverse-charged VAT or a private-use share |
+| **Fixed assets** | Decides with you whether a purchase is an asset and works out depreciation, the VAT revision period and disposal |
+| **VAT return** | Prepares one period for your review, with each return box traced back to the books |
+| **Yearly close** | Prepares the yearly overview with a fiscal reconciliation and a printable bilingual pack |
+| **Income tax return** | Prepares the figures and lists the inputs only you can give, so you or your bookkeeper can file |
+| **Tax questions** | Answers general ZZP questions with the tax year and the source |
+
+Ask in English or Dutch. A request to file, submit, pay or lock a period is refused, and the assistant explains what you need to do yourself.
+
+---
+
+## 3. 🗺️ HOW IT WORKS
 
 Each request starts at the project contract. The skill then loads only the reference that fits the task. A CLI skill joins only when a tool action is needed.
 
 ```text
 Your request
   -> AGENTS.md sets identity and boundaries
-  -> sk-moneybird-accountant/SKILL.md picks MIGRATION or LIVE
-  -> one matching phase or bookkeeping reference loads
-  -> cli-jortt or cli-moneybird owns any command
+  -> sk-moneybird-accountant/SKILL.md picks the task type
+  -> one matching bookkeeping, tax or migration reference loads
+  -> cli-moneybird or cli-jortt owns any command
   -> local evidence and your review close the work
 ```
-
-The skill keeps the workflow in one place. The two CLI skills own API details, setup and command safety. That split keeps Jortt extraction read-only and stops Moneybird writes from bypassing the guard.
 
 ### Two modes
 
 | Mode | Use it for |
 |---|---|
-| **LIVE** | Day-to-day bookkeeping in Moneybird: a monthly or quarterly review, a VAT return, a yearly close or a one-off ZZP question |
-| **MIGRATION** | Moving historical Jortt records into Moneybird |
+| **LIVE** | Day-to-day bookkeeping in Moneybird, from the monthly review to the yearly close |
+| **MIGRATION** | Moving historical records from Jortt into Moneybird |
 
-The routes into the matching phase file, bookkeeping reference, procedure folder or tax-year folder are written in one place only, the Task-Type Table in section 2 of `sk-moneybird-accountant/SKILL.md`. Three rows prepare a tax deliverable: T10 the VAT return, T11 the yearly overview and T12 the income tax return. A request to file, submit, pay or lock a period stays on the T8 refusal row, and the assistant never files. If the mode is unclear, the assistant asks one question instead of guessing a phase or a tax year. It resolves the tax year from the runtime clock in a generated `session-context.json` before it uses any rate or threshold, and it never routes on a date written in a document. Tax decisions and return filing stay with the Operator or a bookkeeper.
+The routes are written in one place, the Task-Type Table in section 2 of [`sk-moneybird-accountant/SKILL.md`](sk-moneybird-accountant/SKILL.md). If the task is unclear, the assistant asks one question instead of guessing. It takes the tax year from the system clock before it uses any rate or threshold, never from a date written in a document.
 
 ---
 
-## 3. 🚀 QUICK START
+## 4. 🚀 QUICK START
 
 ### Clone and configure
 
@@ -107,6 +122,37 @@ Help me review my current Moneybird bookkeeping.
 
 For historical work, name the migration task or the last gate that passed. If the mode or phase is unclear, the assistant asks before it picks a route.
 
+---
+
+## 5. 🇳🇱 DUTCH TAX KNOWLEDGE
+
+The tax knowledge lives in [`references/tax-rules/`](sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md). Each tax year from 2020 to 2027 has its own folder, and each topic in it has four files: figures, rules, examples and notes. Topics cover VAT, income tax, business deductions, costs and the car, investments, the health insurance contribution, pensions, box 2 and box 3, the private company and the work relationship.
+
+- **Claims cite their source.** The [source library](sk-moneybird-accountant/references/tax-rules/source-library.md) lists each external source by authority.
+- **Changes are tracked per year.** Each year folder records what changed and why.
+- **Open questions stay open.** Where the sources disagree or are missing, the reference says so rather than guessing.
+
+Three procedures turn that knowledge into a prepared deliverable: the [VAT return](sk-moneybird-accountant/references/vat-return/README.md), the [yearly overview](sk-moneybird-accountant/references/yearly-overview/README.md) and the [income tax return](sk-moneybird-accountant/references/income-tax-return/README.md). Each one ends with a pack for your review, not a filing.
+
+---
+
+## 6. 🛤️ MIGRATION MODE
+
+Migration mode moves your historical records from Jortt into Moneybird. It reads Jortt through a client that cannot write, rebuilds and checks each year locally and only then writes to Moneybird, batch by batch, after your approval.
+
+The plan has 23 gated phases. Each phase has an owner, an evidence trail and a numeric exit gate, and a failed gate blocks everything after it.
+
+| Phases | Stage |
+|---:|---|
+| 0 to 2 | Set up the safety controls and the workspace, then collect the source records and missing evidence |
+| 3 to 5 | Rebuild each source locally, link the evidence and scan for gaps and risks |
+| 6 to 8 | Map records to Moneybird, prove one pilot write, then migrate period by period |
+| 9 to 15 | Reconcile VAT, prove each year against the bank, filed returns and annual accounts, test it with an independent review and lock it |
+| 16 to 18 | Run the current year in parallel, freeze Jortt and switch to live Moneybird with your approval |
+| 19 to 22 | Run the regular reviews, then monitor and decide whether to keep or cancel Jortt |
+
+Record-level work stays on your machine. Outside models only see filtered summaries with record names replaced by aliases. The [migration index](sk-moneybird-accountant/references/migration/README.md) has every phase, and the [shared mechanisms](sk-moneybird-accountant/references/migration/shared-mechanisms.md) define the twelve controls that apply across them.
+
 ### Start a migration
 
 Create your private working folder from the plan kit once:
@@ -119,85 +165,31 @@ This builds the git-ignored `migration-workspace/` with every folder the plan us
 
 ---
 
-## 4. 🛤️ MIGRATION PLAN
+## 7. 🔁 ADAPTING TO ANOTHER TOOL OR MARKET
 
-The migration index lists 23 gated phases. Each phase starts from the last verified exit gate. A failed or unverified gate blocks everything that depends on it.
+The assistant is built from parts with one job each. The routing, the human decision boundary, the privacy gate and the evidence workflow do not depend on Moneybird or on Dutch tax. To move to another tool or country, you replace the parts that do.
 
-| Phase | Purpose |
-|---:|---|
-| 0 | Set up the safety controls, the workspace and the tool routes. |
-| 1 | Inventory the source records and record independent totals. |
-| 2 | Collect missing evidence and seed the archive. |
-| 3 | Rebuild each source in its own register. |
-| 4 | Link the evidence into one canonical record set. |
-| 5 | Scan for gaps, risks and anomalies. |
-| 6 | Map approved records to supported Moneybird objects. |
-| 7 | Prove the controlled pilot write and its read-back. |
-| 8 | Migrate approved historical records period by period. |
-| 9 | Reconcile VAT for every assigned period. |
-| 10 | Prove each year against the ledger, bank, documents, filed VAT and annual accounts. |
-| 11 | Cross-check commercial results against filed income-tax figures. |
-| 12 | Prove balance continuity between years and keep open-item tracking. |
-| 13 | Try to falsify each year with an independent Red Team review. |
-| 14 | Lock a verified year and seal its evidence. |
-| 15 | Repeat the yearly steps from the oldest year to the newest. |
-| 16 | Run the current-year parallel mirror and prepare the cutover. |
-| 17 | Freeze Jortt and prove the archive is complete and restorable. |
-| 18 | Switch to live Moneybird after reconciliation and your go-live approval. |
-| 19 | Run the monthly review. |
-| 20 | Run the VAT-period review. |
-| 21 | Run the yearly close. |
-| 22 | Finish monitoring, recheck the archive and record your decision on Jortt. |
+**Another bookkeeping tool**
 
-Phases 19 to 21 repeat after the switch in Phase 18. Phase 22 runs once. Jortt stays active until Phase 22 passes and you record whether to keep or cancel it.
+- Replace `cli-moneybird/` with a CLI skill for your tool's API. Keep the guard pattern: a preview of every call, a read-only lock and a write that needs an approval reference.
+- Rewrite the booking guidance in [`moneybird-bookkeeping.md`](sk-moneybird-accountant/references/moneybird-bookkeeping.md) and the booking steps in the purchase invoice, mixed-use cost and fixed asset references.
 
-### The phase contract
+**Another migration source**
 
-Every phase uses the same 11 fields: goal, nested sub-goals with measurable checks, entry criteria, inputs, owner-tagged actions, tool route, outputs and evidence, numeric exit gate, stop conditions, rollback or compensation and resume rule.
+- Replace `cli-jortt/` with a read-only client for the tool you are leaving.
+- Rewrite the [mapping reference](sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md). The 23 phases and their controls stay as they are.
 
-Owner tags show who acts. `[Operator]` is a step only a human performs. `[AI]` is a step the agent performs within its listed tools. `[Operator + AI]` is a step the agent prepares and the Operator approves or performs.
+**Another country**
 
-### Shared mechanisms
+- Replace `references/tax-rules/` with your country's rules, one folder per year and per topic, with a source for every claim.
+- Rewrite the three preparation procedures for your country's returns.
+- Update the routing signals in the Task-Type Table and in [`routing-signals.md`](sk-moneybird-accountant/references/routing-signals.md) for the words your users type.
 
-Twelve controls apply across the phases. The [shared mechanisms reference](sk-moneybird-accountant/references/migration/shared-mechanisms.md) defines them.
-
-| Mechanism | What it controls |
-|---|---|
-| M1 | Versioned register schemas and complete source manifests |
-| M2 | Stable local write keys and uncertain write outcomes |
-| M3 | An append-only run journal, approvals and crash resume |
-| M4 | Evidence, privacy and session boundaries |
-| M5 | Moneybird rate limits and recovery |
-| M6 | The Moneybird trial or package window through writes and verification |
-| M7 | Numeric thresholds and exception ownership |
-| M8 | Jortt paging and source request evidence |
-| M9 | One status dashboard for all 23 phases |
-| M10 | Separate reader and writer sessions |
-| M11 | Recovery from each stop state |
-| M12 | External agent seats with local record processing |
-
-The [control framework](sk-moneybird-accountant/references/migration/control-framework.md) defines the roles, risk levels, exception fields and dashboard states.
+The offline checks then show what still points at the old tool or market: broken links, route rows without a reference and gold routing cases that no longer resolve.
 
 ---
 
-## 5. 🤖 EXTERNAL AGENT ROUTE
-
-M12 splits the work across seats so no single agent drafts, checks and approves its own output. These are the Operator's defaults. The plan defines the route, and Phase 0 builds it: the Implementer drafts the Agent runner, the Verifier checks it and the sandbox and boundary canaries must pass before any agent work on real data starts. Phase 0 also records the defaults in the migration configuration.
-
-| Seat | Default and role |
-|---|---|
-| **Agent runner** | A local deterministic runner. It builds briefs, runs local sessions, filters and scans text, writes journal events and updates the dashboard. It never books a record. |
-| **Implementer** | DeepSeek V4.1 Flash through the Pi CLI. It drafts scripts, schemas and templates from approved summaries, with tools, extensions, skills, context files and sessions switched off. |
-| **Verifier** | GPT-6 Luna through the Codex CLI. It runs independent checks and sees no record-level content. Tool-enabled checks need a read-only sandbox inside a proven OS boundary. |
-| **Final reviewer** | Claude, in the session that runs the skill. It reviews each phase once every work unit has passed verification or has an Operator decision. |
-| **Migration Writer** | Claude in a separate writer session. It makes the approved Moneybird writes through `moneybird-guard`. No seat sees the token. |
-| **Operator** | You. You approve the configuration and each batch, review high-risk records locally and keep the tax, filing and cutover decisions. |
-
-External seats receive typed, allowlisted summaries with opaque record aliases and approved aggregate counts. The exact payload is scanned before every dispatch. Names, amounts, IBANs, addresses, emails, descriptions, invoice numbers, IDs and source payloads never leave your machine.
-
----
-
-## 6. 🔒 SAFETY AND PRIVACY
+## 8. 🔒 SAFETY AND PRIVACY
 
 - **Jortt is read-only.** `jortt-cli` uses read scopes only and refuses every non-GET call. There is no write path for an agent. XAF auditfiles, annual accounts and filed VAT returns come from you, through the Jortt UI.
 - **Every Moneybird call goes through `moneybird-guard`.** Read sessions set `MONEYBIRD_GUARD_READ_ONLY=1`. The guard then blocks every non-GET call before it reaches the official CLI.
@@ -207,9 +199,7 @@ External seats receive typed, allowlisted summaries with opaque record aliases a
 - **A privacy gate guards every commit and push.** `scripts/privacy-gate.py` blocks a commit or push that adds a path from the private folders, a file type outside the allowlist, a binary or a large file, or content that looks like an IBAN, a BSN, a Dutch VAT ID, an email address, a long ID number, a home-folder path, a euro amount outside the tax references, a secret, or a term from your local `.privacy-denylist`. It reports where, never the value. A commit that changes a gate file needs you to set `PRIVACY_GATE_CHANGE_APPROVED=1` for that commit and the commit message to carry the trailer `Privacy-Gate-Change: approved`. A GitHub Action reruns it over the whole history on every push.
 - **Tax decisions stay with you.** The assistant explains general rules with their year and source. It does not file returns and does not present a case-specific conclusion as final.
 
----
-
-## 7. 🧪 CHECKS
+## 9. 🧪 CHECKS
 
 The doctors are offline by default. The Jortt tests check the CLI contract against a local API description. The Moneybird tests use a stub, so the guard is proven without calling Moneybird. The skill side adds checks for the route table, the links and the generated references. [scripts/README.md](sk-moneybird-accountant/scripts/README.md) owns the full command list with the output each one prints.
 
@@ -231,9 +221,7 @@ The doctors are offline by default. The Jortt tests check the CLI contract again
 
 A passing local test does not prove a live connection. For Jortt, `jortt-cli whoami` returning HTTP 200 is that proof. For Moneybird, `bash cli-moneybird/scripts/doctor.sh --live` reports the administrations check with your approval.
 
----
-
-## 8. 🗂️ REPOSITORY STRUCTURE
+## 10. 🗂️ REPOSITORY STRUCTURE
 
 ```text
 .
@@ -284,13 +272,15 @@ A passing local test does not prove a live connection. For Jortt, `jortt-cli who
 
 Both CLI skills and the main skill also carry a `changelog/` and a `benchmark/` folder for release notes and run reports.
 
----
+## 11. ❓ FAQ
 
-## 9. ❓ FAQ
-
-**Q: Can the assistant file my VAT or income-tax return?**
+**Q: Can the assistant file my VAT or income tax return?**
 
 No. You or your bookkeeper review and file every return. The assistant prepares the evidence.
+
+**Q: Do I need to migrate to use it?**
+
+No. LIVE mode covers day-to-day bookkeeping, the VAT return, the yearly close and one-off questions without a migration.
 
 **Q: Does an outside model see my records?**
 
@@ -304,17 +294,13 @@ Yes. The Moneybird tests use a stub and the Jortt tests use a local API descript
 
 No. A connection needs separate current evidence from the relevant CLI. The default doctors and tests make no accounting API calls.
 
-**Q: Can I use it for current bookkeeping only?**
-
-Yes. LIVE mode covers monthly, quarterly and yearly review and one-off ZZP questions without a migration.
-
 **Q: Does it work outside the Netherlands?**
 
-No. It covers the Dutch sole-trader tax system only.
+Not as it ships. The tax knowledge covers the Dutch sole-trader system. Section 7 lists the parts to replace for another country.
 
 ---
 
-## 10. 🔧 TROUBLESHOOTING
+## 12. 🔧 TROUBLESHOOTING
 
 **`jortt-cli` is not found**
 
@@ -340,9 +326,7 @@ Exit 3 means `--confirm-write` is missing. Exit 4 means the target is not the pi
 
 The Jortt API does not provide them. Download them yourself from the Jortt UI.
 
----
-
-## 11. 📚 RELATED DOCUMENTS
+## 13. 📚 RELATED DOCUMENTS
 
 **System guides**
 
@@ -376,6 +360,6 @@ The Jortt API does not provide them. Download them yourself from the Jortt UI.
 
 ---
 
-## 12. 📄 LICENSE
+## 14. 📄 LICENSE
 
 This project uses the [MIT License](LICENSE).
