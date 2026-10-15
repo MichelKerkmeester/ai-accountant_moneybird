@@ -9,8 +9,11 @@ word count and its verdict. A file above 3,000 words warns, a file above
 4,000 words fails the run, and a missing or unreadable file stops the run with
 exit code 2 and the path named. The three files of the skill family are
 required: sk-moneybird-accountant/SKILL.md, cli-moneybird/SKILL.md and
-cli-jortt/SKILL.md. A word is a run of characters between two whitespace
-characters, the rule `LC_ALL=C wc -w` applies. The script uses the Python standard
+cli-jortt/SKILL.md. A word is a run of characters between two ASCII whitespace
+characters (space, tab, newline, carriage return, form feed and vertical tab).
+BSD `LC_ALL=C wc -w` counts the same way. GNU wc in the C locale skips a run
+that holds no printable ASCII byte, such as a lone euro sign, so it reports
+fewer words and is not the reference. The script uses the Python standard
 library only and makes no network call.
 
 Usage:
@@ -64,8 +67,8 @@ REQUIRED_FILES = (
 # hold private data this check must not read.
 SKIP_FOLDERS = ("migration-workspace", "node_modules", "personal database", "specs")
 
-# WHY: LC_ALL=C wc -w counts a word as a run of characters between two whitespace
-# characters, so this splitter follows that rule for every file in the tree.
+# WHY: a word is a run of characters between two ASCII whitespace characters,
+# the same rule on every platform, so a CI runner and a Mac report one count.
 WORD_SEPARATORS = re.compile(r"[ \t\n\r\f\v]+")
 
 # ───────────────────────────────────────────────────────────────
@@ -86,7 +89,7 @@ def fail(message: str) -> NoReturn:
 
 
 def count_words(text: str) -> int:
-    """Count the words in one file the way `LC_ALL=C wc -w` does.
+    """Count the words in one file as runs between ASCII whitespace.
 
     Args:
         text: File text.

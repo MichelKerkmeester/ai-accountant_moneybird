@@ -6,7 +6,7 @@
 # trees either side of the two thresholds and on a missing or unreadable
 # file. The 2,999-word fixture must pass without a warning, the 3,001-word
 # fixture must warn and exit 0 and the 4,001-word fixture must exit 1 and
-# name its path. The real-tree counts must match `wc -w`.
+# name its path. The real-tree counts must match an independent byte split.
 # Usage: check-skill-words-test.sh [repo root]
 # Exit Codes:
 #   0 - All checks pass
@@ -187,19 +187,30 @@ else
     cat "$TMP_ROOT/out-real.txt"
 fi
 
+# Count words as runs between ASCII whitespace, independent of the checker
+# Args:
+#   $1 - File to count
+# Returns:
+#   0 and prints the count
+# WHY: GNU and BSD wc disagree on runs with no printable ASCII byte, so the
+# suite counts with Python bytes.split(), which splits on ASCII whitespace only.
+byte_words() {
+    python3 -I -c 'import sys; print(len(open(sys.argv[1], "rb").read().split()))' "$1"
+}
+
 counts_match=1
 for relative in "${SKILL_FILES[@]}"; do
     reported=$(reported_count real "$relative")
-    expected=$(LC_ALL=C wc -w <"$REPO_SRC/$relative" | tr -d '[:space:]')
+    expected=$(byte_words "$REPO_SRC/$relative")
     if [[ -z "$reported" ]] || [[ "$reported" != "$expected" ]]; then
         counts_match=0
-        printf 'count mismatch: %s reports %s, wc -w says %s\n' "$relative" "$reported" "$expected"
+        printf 'count mismatch: %s reports %s, the byte split says %s\n' "$relative" "$reported" "$expected"
     fi
 done
 if [[ "$counts_match" -eq 1 ]]; then
-    pass "the real-tree counts match wc -w"
+    pass "the real-tree counts match the byte split"
 else
-    fail "the real-tree counts match wc -w"
+    fail "the real-tree counts match the byte split"
 fi
 
 if grep -qE '^check-skill-words: (sk-moneybird-accountant/SKILL\.md|cli-moneybird/SKILL\.md|cli-jortt/SKILL\.md) [0-9]+ words, (ok|warn above 3,000|fail above 4,000)$' "$TMP_ROOT/out-real.txt"; then
@@ -231,7 +242,7 @@ for band in 2999 3001 4001; do
     else
         fail "the $band-word fixture is created"
     fi
-    fixture_words=$(LC_ALL=C wc -w <"$TMP_ROOT/band-$band/$BAND_FILE" | tr -d '[:space:]')
+    fixture_words=$(byte_words "$TMP_ROOT/band-$band/$BAND_FILE")
     if [[ "$fixture_words" == "$band" ]]; then
         pass "the $band-word fixture holds $band words"
     else
