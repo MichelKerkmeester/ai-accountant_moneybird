@@ -1,4 +1,4 @@
-# Moneybird Accountant - Jortt to Moneybird Migration & Bookkeeping
+# Moneybird Accountant - AI Bookkeeping Assistant for Moneybird
 
 [![GitHub Stars](https://img.shields.io/github/stars/MichelKerkmeester/ai-accountant_moneybird?style=for-the-badge&logo=github&color=fce566&labelColor=222222)](https://github.com/MichelKerkmeester/ai-accountant_moneybird/stargazers)
 [![License](https://img.shields.io/github/license/MichelKerkmeester/ai-accountant_moneybird?style=for-the-badge&color=7bd88f&labelColor=222222)](LICENSE)
@@ -10,16 +10,16 @@
 
 ## 1. 📝 SUMMARY
 
-Moneybird Accountant is a folder you open in a terminal agent. The agent reads `AGENTS.md` and becomes a bookkeeping and migration assistant for a Dutch sole trader (ZZP). It has two jobs. It moves your historical records from Jortt to Moneybird, and it supports the books you keep in Moneybird afterwards.
+Moneybird Accountant is a folder you open in a terminal agent. The agent reads `AGENTS.md` and becomes a bookkeeping assistant for a Dutch sole trader (ZZP) who keeps their books in Moneybird. It helps with the monthly and quarterly review, booking purchase invoices and assets, the VAT return, the yearly close and one-off ZZP questions. If your history still lives in Jortt, a built-in migration mode moves it into Moneybird first.
 
 It organizes evidence and explains general Dutch ZZP rules. It never files a return and never gives final tax advice. You or your bookkeeper decide, and the assistant flags every judgement call.
 
 **What's inside**
 
-- **A skill** - `sk-moneybird-accountant/` picks the mode, loads the right phase or bookkeeping reference and keeps the human decision boundary
-- **A Jortt reader** - `cli-jortt/` holds `jortt-cli`, a read-only command line client that pages through the Jortt API and saves extracts into a local workspace
+- **A skill** - `sk-moneybird-accountant/` picks the task, loads the right bookkeeping or tax reference and keeps the human decision boundary
 - **A guarded Moneybird client** - `cli-moneybird/` holds `moneybird-guard`, a wrapper around the official Moneybird CLI that previews every call and blocks writes you have not approved
-- **A 23-phase migration plan** - each phase has an owner, an evidence trail and a numeric exit gate
+- **Dutch tax references** - per-year rates, thresholds and procedures for the VAT return, the yearly overview and the income tax return
+- **Migration features** - `cli-jortt/` holds `jortt-cli`, a read-only Jortt client, and a 23-phase plan moves your Jortt history into Moneybird with an owner, an evidence trail and a numeric exit gate per phase
 - **Offline checks** - 26 Jortt contract tests, 58 Moneybird guard tests and the skill's own routing and reference checks run without an accounting login
 
 ---
@@ -45,8 +45,8 @@ The skill keeps the workflow in one place. The two CLI skills own API details, s
 
 | Mode | Use it for |
 |---|---|
+| **LIVE** | Day-to-day bookkeeping in Moneybird: a monthly or quarterly review, a VAT return, a yearly close or a one-off ZZP question |
 | **MIGRATION** | Moving historical Jortt records into Moneybird |
-| **LIVE** | A monthly or quarterly review, a yearly close or a one-off ZZP question |
 
 The routes into the matching phase file, bookkeeping reference, procedure folder or tax-year folder are written in one place only, the Task-Type Table in section 2 of `sk-moneybird-accountant/SKILL.md`. Three rows prepare a tax deliverable: T10 the VAT return, T11 the yearly overview and T12 the income tax return. A request to file, submit, pay or lock a period stays on the T8 refusal row, and the assistant never files. If the mode is unclear, the assistant asks one question instead of guessing a phase or a tax year. It resolves the tax year from the runtime clock in a generated `session-context.json` before it uses any rate or threshold, and it never routes on a date written in a document. Tax decisions and return filing stay with the Operator or a bookkeeper.
 
