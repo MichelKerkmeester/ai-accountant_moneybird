@@ -32,6 +32,9 @@ jobs:
           python-version: "3.12"
       - name: Install the pinned tokenizer
         run: python3 -m pip install --disable-pip-version-check "tiktoken==0.11.0"
+      - name: Install poppler for the PDF reader suite
+        # The reader suite needs a real pdftotext, or its extraction cases skip.
+        run: sudo apt-get update && sudo apt-get install --yes poppler-utils
       - name: Seed the tokenizer cache and let the baseline check the pinned hashes
         # The encoding files are public. The token baseline refuses to count
         # unless each file matches its pinned sha256, so a changed file fails.
@@ -64,14 +67,20 @@ jobs:
           python3 -I sk-moneybird-accountant/scripts/check-hardening-matrix.py --check
       # Every suite is named on its own line. The regression trailer check
       # reads this file to learn which tests are registered.
+      - name: Suite check-ci-suites
+        run: bash sk-moneybird-accountant/scripts/check-ci-suites-test.sh
       - name: Suite check-skill-words
         run: bash sk-moneybird-accountant/scripts/check-skill-words-test.sh
+      - name: Suite cli-failure-handoff
+        run: bash sk-moneybird-accountant/scripts/cli-failure-handoff-test.sh
       - name: Suite fragment-check
         run: bash sk-moneybird-accountant/scripts/fragment-check-test.sh
       - name: Suite hardening-matrix
         run: bash sk-moneybird-accountant/scripts/hardening-matrix-test.sh
       - name: Suite hostile-invoice-set
         run: bash sk-moneybird-accountant/scripts/hostile-invoice-set-test.sh
+      - name: Suite outline-check
+        run: bash sk-moneybird-accountant/scripts/outline-check-test.sh
       - name: Suite plan-kit
         run: bash sk-moneybird-accountant/scripts/plan-kit-test.sh
       - name: Suite read-pdf-source
@@ -90,18 +99,24 @@ jobs:
         run: bash sk-moneybird-accountant/scripts/session-context-test.sh
       - name: Suite source-library
         run: bash sk-moneybird-accountant/scripts/source-library-test.sh
+      - name: Suite source-to-target-handoff
+        run: bash sk-moneybird-accountant/scripts/source-to-target-handoff-test.sh
       - name: Suite split-topic-files
         run: bash sk-moneybird-accountant/scripts/split-topic-files-test.sh
       - name: Suite token-canary
         run: bash sk-moneybird-accountant/scripts/token-canary-test.sh
       - name: Suite write-contract
         run: bash sk-moneybird-accountant/scripts/write-contract-test.sh
+      - name: Suite yearly-overview-template
+        run: bash sk-moneybird-accountant/scripts/yearly-overview-template-test.sh
       - name: Route replay
         run: |
           python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode resolve
           python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode replay
-      - name: Eval grader suite cases
+      - name: Eval case file parses
         run: python3 -I -c "import json; json.load(open('sk-moneybird-accountant/evals/evals.json'))"
+      - name: Every suite has a run line
+        run: python3 -I sk-moneybird-accountant/scripts/check-ci-suites.py
       - name: Regression trailer on the pushed range
         if: github.event_name == 'push' && !startsWith(github.event.before, '00000')
         env:
