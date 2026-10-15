@@ -402,6 +402,9 @@ def read_url(url: str, first: Optional[int], last: Optional[int]) -> int:
         fail("refused, access is %r and not %s: %s" % (row.get("access"), ACCESS_VALUE, url))
     if not allowed_address(url):
         fail("refused, the reader accepts https or plain HTTP on a loopback host: %s" % url)
+    # WHY: every refusal runs first, so a refused request exits 2 whether or not
+    # poppler is installed, and the tool check still runs before any download.
+    require_pdftotext()
     with tempfile.TemporaryDirectory(prefix="read-pdf-source.") as folder:
         path = download(url, folder)
         text = extract(path, first, last)
@@ -426,6 +429,7 @@ def read_file(path: str, first: Optional[int], last: Optional[int]) -> int:
     absolute = checked_local_path(path)
     if not os.path.isfile(absolute):
         fail("no such file: %s" % path)
+    require_pdftotext()
     print_text(extract(absolute, first, last))
     return 0
 
@@ -463,9 +467,6 @@ def main(argv: List[str]) -> int:
         fail("usage: --first must not be after --last")
     if args.list:
         return list_rows()
-    # WHY: the tool check runs before a download, so a missing poppler never
-    # leaves a fetched file behind for nothing.
-    require_pdftotext()
     if args.url:
         return read_url(args.url, args.first, args.last)
     return read_file(args.file, args.first, args.last)
