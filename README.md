@@ -1,7 +1,5 @@
 # Moneybird Accountant - Jortt to Moneybird Migration & Bookkeeping
 
-> A bookkeeping and Jortt to Moneybird migration assistant for a Dutch sole trader, with evidence at every step and a human on every tax decision.
-
 [![GitHub Stars](https://img.shields.io/github/stars/MichelKerkmeester/ai-accountant_moneybird?style=for-the-badge&logo=github&color=fce566&labelColor=222222)](https://github.com/MichelKerkmeester/ai-accountant_moneybird/stargazers)
 [![License](https://img.shields.io/github/license/MichelKerkmeester/ai-accountant_moneybird?style=for-the-badge&color=7bd88f&labelColor=222222)](LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/MichelKerkmeester/ai-accountant_moneybird?style=for-the-badge&color=5ad4e6&labelColor=222222)](https://github.com/MichelKerkmeester/ai-accountant_moneybird/commits/main)
