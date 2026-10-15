@@ -163,7 +163,7 @@ Preserve the month report. Correct through linked records and approved entries. 
 
 **Resume rule** (from the phase reference):
 
-Resume from the first unresolved monthly exception or journal checkpoint after confirming the source snapshot hash, assigned backup owner, corrective journal, and escalation state.
+Resume from the first unresolved monthly exception or journal checkpoint after confirming the source snapshot hash, assigned backup owner, corrective journal and escalation state.
 
 For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
 

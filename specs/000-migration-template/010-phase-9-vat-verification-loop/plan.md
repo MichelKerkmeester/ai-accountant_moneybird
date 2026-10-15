@@ -103,12 +103,12 @@ Phase 9 runs the actions in the order given, and every Moneybird write goes thro
 
 **Phase actions** (from the phase reference):
 
-[VAT Agent] calculates document VAT independently. [Tax Filing Agent] checks filed periods, KOR, ICP, OSS, and correction history. [Independent Auditor] checks boxes and manual correction links. [Operator] decides corrections and performs any filing. Gate verifier: [Independent Auditor] reproduces period, box, applicability, and correction-owner counts.
+[VAT Agent] calculates document VAT independently. [Tax Filing Agent] checks filed periods, KOR, ICP, OSS and correction history. [Independent Auditor] checks boxes and manual correction links. [Operator] decides corrections and performs any filing. Gate verifier: [Independent Auditor] reproduces period, box, applicability and correction-owner counts.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the per-period VAT reconciliation. [Verifier] independently recomputes VAT from the source registers. [Final reviewer] reviews the phase before Operator approvals.
 
 **Four-source VAT comparison retained from the original plan:**
-For each actually assigned filing period, compare A) document VAT, B) ledger VAT, C) filed VAT, and D) Moneybird VAT by return box. Classify differences as EXACT, ROUNDING, EXPLAINED, SOURCE DIFFERENCE, FILING DIFFERENCE, MONEYBIRD DIFFERENCE, or UNEXPLAINED. Record each manual correction with period, source and target links, evidence, owner, and status. Apply the configured per-box allowance and cumulative quarter and year caps without netting periods. The Operator may mark historical filing status in Moneybird through the UI in chronological order after evidence review. Agents never file or pay a return.
+For each actually assigned filing period, compare A) document VAT, B) ledger VAT, C) filed VAT, and D) Moneybird VAT by return box. Classify differences as EXACT, ROUNDING, EXPLAINED, SOURCE DIFFERENCE, FILING DIFFERENCE, MONEYBIRD DIFFERENCE or UNEXPLAINED. Record each manual correction with period, source and target links, evidence, owner, and status. Apply the configured per-box allowance and cumulative quarter and year caps without netting periods. The Operator may mark historical filing status in Moneybird through the UI in chronological order after evidence review. Agents never file or pay a return.
 
 | Return box | Documents | Ledger | Filed return | Moneybird | Difference and classification |
 |---|---|---|---|---|---|

@@ -30,7 +30,7 @@ _memory:
 
 **Objective** (from the phase reference):
 
-Close the migration only after cutover, the first live VAT reconciliation, configured monitoring, final archive verification, retention recheck, definition of done, dashboard closure, and an Operator decommission decision. The Implementer drafts the completion report and definition-of-done evidence index, and the Verifier checks definition of done, archive, and retention evidence for Phase 22.
+Close the migration only after cutover, the first live VAT reconciliation, configured monitoring, final archive verification, retention recheck, definition of done, dashboard closure and an Operator decommission decision. The Implementer drafts the completion report and definition-of-done evidence index, and the Verifier checks definition of done, archive, and retention evidence for Phase 22.
 
 **Parent binding:** this goal executes under [the parent goal](../goal.md) in `000-migration-template`. Parent decisions outrank this file, and a conflict gets named to the Operator rather than resolved silently.
 
@@ -59,11 +59,11 @@ Phase 18 pass 1, first live VAT reconciliation under Phase 20 pass 1, configured
 
 M12 gate: work units with Verifier PASS or Operator disposition 100%, definition-of-done items verified 100%, archive recheck pass 1, retention recheck pass 1, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
 
-- [ ] SG-22.1: every post-freeze source change is represented in the final delta manifest with source totals, links, bytes, and hashes 100%, unexplained delta items 0.
+- [ ] SG-22.1: every post-freeze source change is represented in the final delta manifest with source totals, links, bytes and hashes 100%, unexplained delta items 0.
 - [ ] SG-22.2: Independent Auditor restore and readability evidence covers every required class 100%, failed class restores 0.
-- [ ] SG-22.3: current Operator-approved source basis and rule cover 100% of classes, Independent Auditor recomputes each duration and start event to confirm the end date, archive location, owner, and readability evidence 100%, unsupported or unapproved rules 0.
+- [ ] SG-22.3: current Operator-approved source basis and rule cover 100% of classes, Independent Auditor recomputes each duration and start event to confirm the end date, archive location, owner and readability evidence 100%, unsupported or unapproved rules 0.
 - [ ] SG-22.4: required reconciliations and filed-return bridges 100%, unexplained differences 0, accepted exceptions complete 100%, historical years locked 100%, cutover approval 1, live ownership 100%.
-- [ ] SG-22.5: current dashboard rows 23 of 23, missing owners, evidence links, due dates, exception counts, or resume checkpoints 0.
+- [ ] SG-22.5: current dashboard rows 23 of 23, missing owners, evidence links, due dates, exception counts or resume checkpoints 0.
 - [ ] SG-22.6: decision is exactly cancel or keep and is supported by the completed evidence packet 1.
 - [ ] SG-22.7: M12 checks: work units with Verifier PASS or Operator disposition 100%, definition-of-done items verified 100%, archive recheck pass 1, retention recheck pass 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 <!-- /ANCHOR:completion -->

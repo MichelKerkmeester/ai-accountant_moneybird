@@ -108,11 +108,11 @@ Phase 5 runs the actions in the order given, and every Moneybird write goes thro
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the anomaly scan rules. [Verifier] checks planted-anomaly fixtures are detected. [Final reviewer] reviews the phase before Operator approvals.
 
 **Completeness checks retained from the original anomaly scan:**
-1. [Reconciliation Agent] Check documents without ledger entries and classify each as unbooked, duplicate, private, another period, or a supported alternate relation.
+1. [Reconciliation Agent] Check documents without ledger entries and classify each as unbooked, duplicate, private, another period or a supported alternate relation.
 2. [Reconciliation Agent] Check ledger entries without documents and bank transactions without explanations.
-3. [Reconciliation Agent] For documents without a payment, identify whether the item is open, paid privately, settled by a credit, or offset by a supported amount.
-4. [Red Team] Detect duplicates by exact file hash and by a fingerprint of supplier, invoice number, date, currency, and gross value. Keep sensitive values in the controlled workspace.
-5. [Red Team] Review international software, subscriptions, hosting, developer services, and other foreign suppliers.
+3. [Reconciliation Agent] For documents without a payment, identify whether the item is open, paid privately, settled by a credit or offset by a supported amount.
+4. [Red Team] Detect duplicates by exact file hash and by a fingerprint of supplier, invoice number, date, currency and gross value. Keep sensitive values in the controlled workspace.
+5. [Red Team] Review international software, subscriptions, hosting, developer services and other foreign suppliers.
 6. [Red Team] Challenge duplicate invoices or payments, missing credit notes, wrong currency or entity, EU versus non-EU treatment, zero rate versus reverse charge, private versus business treatment, tax payments, assets treated as costs, and duplicate depreciation.
 
 **Tool route** (from the phase reference):

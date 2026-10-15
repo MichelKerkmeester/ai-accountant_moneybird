@@ -62,7 +62,7 @@ Phase 3 registers are sealed and their checksums pass.
 
 **Phase outputs** (from the phase reference):
 
-`CANONICAL_DATASET`, source-key index, link coverage report, collision report, and journal checkpoint under `Registers/` and `Reports/`.
+`CANONICAL_DATASET`, source-key index, link coverage report, collision report and journal checkpoint under `Registers/` and `Reports/`.
 
 **Changelog**:
 - When this phase closes, refresh the matching file in ../changelog/ using the parent packet number plus this phase folder name.
@@ -105,7 +105,7 @@ The exit gate in section 5 passes, the recorded evidence sits in `migration-work
 
 **Phase inputs** (from the phase reference):
 
-The five independent registers, schema manifests, and approved source scope.
+The five independent registers, schema manifests and approved source scope.
 
 Read each input from Jortt or from the previous phase. Jortt stays read-only.
 
@@ -128,7 +128,7 @@ Read each input from Jortt or from the previous phase. Jortt stays read-only.
 |----|-------------|-------|
 | REQ-001 | SG-4.1: Link source evidence for each event. | in-scope source items linked or explicitly excepted 100%. |
 | REQ-002 | SG-4.2: Assign deterministic migration keys. | key collisions 0 and duplicate source keys 0. |
-| REQ-003 | SG-4.3: Preserve source-to-target identity fields. | canonical records with source key, period, and evidence reference 100%. |
+| REQ-003 | SG-4.3: Preserve source-to-target identity fields. | canonical records with source key, period and evidence reference 100%. |
 | REQ-004 | SG-4.4: Run the agent route. | M12 checks: work units with Verifier PASS or Operator disposition 100%, match recount differences 0, duplicate stable keys 0, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. |
 
 ### P1 - Required (complete OR user-approved deferral)
@@ -163,7 +163,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, match reco
 
 **Stop conditions** (from the phase reference):
 
-Conflicting identity, duplicate source key, unsupported cross-source match, or checksum mismatch.
+Conflicting identity, duplicate source key, unsupported cross-source match or checksum mismatch.
 
 Stop on any M12 stop event.
 

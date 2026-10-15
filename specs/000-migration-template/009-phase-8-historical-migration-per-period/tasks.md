@@ -43,9 +43,9 @@ contextType: "general"
 
 - [ ] T001 [SG-8.1] Freeze input and recompute immediately before write. (Check: approved input hashes match pre-write hashes 100%.)
 - [ ] T002 [SG-8.2] Track each source object through write and read-back. (Check: objects with terminal state 100%, flushed WRITE_INTENT events before non-GET calls 100%, source-reference and planned-field equality before ID adoption 100%, WRITE_UNKNOWN count 0 before gate.)
-- [ ] T003 [SG-8.3] Reconcile counts, pilot identity, and balances. (Check: every source key already verified in the pilot reuses its matching target ID and is excluded from the historical write set 100%, exact source reference and planned fields match 100%, duplicates across pilot and historical key manifests 0, unexplained differences 0, write-key duplicates 0.)
+- [ ] T003 [SG-8.3] Reconcile counts, pilot identity and balances. (Check: every source key already verified in the pilot reuses its matching target ID and is excluded from the historical write set 100%, exact source reference and planned fields match 100%, duplicates across pilot and historical key manifests 0, unexplained differences 0, write-key duplicates 0.)
 - [ ] T004 [SG-8.4] Verify every target attachment. (Check: source and target byte counts and SHA-256 match 100%, unavailable attachment reads 0, mismatches 0.)
-- [ ] T005 [SG-8.5] Track opening AR/AP through settlement. (Check: each cut-over item has settled-with-link, still-open-with-aging, or approved-exception status 100%, settled items link to the same source key 100%, unexplained open items 0.)
+- [ ] T005 [SG-8.5] Track opening AR/AP through settlement. (Check: each cut-over item has settled-with-link, still-open-with-aging or approved-exception status 100%, settled items link to the same source key 100%, unexplained open items 0.)
 - [ ] T006 [SG-8.6] Run the agent route. (Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, per-batch pre-write and read-back checks pass 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.)
 <!-- /ANCHOR:phase-2 -->
 

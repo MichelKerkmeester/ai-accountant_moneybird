@@ -61,7 +61,7 @@ The phase contract is [phases-19-to-21.md](../../../sk-moneybird-accountant/refe
 
 **How it works**: each Operator gate in this phase gets a numbered entry below with a decision, an approver, a date and an evidence path. A PENDING entry blocks the exit gate until the Operator signs it.
 
-### D-001: decides accounting and tax judgments, files returns, and approves lock or close.
+### D-001: decides accounting and tax judgments, files returns and approves lock or close.
 
 Status: PENDING
 Decision: [Operator decision]
@@ -141,7 +141,7 @@ Evidence: [evidence path in migration-workspace/]
 
 **How to roll back** (from the phase plan):
 
-Reopen only through the Operator exception and unlock process. Link any correction to prior evidence, read it back, and reseal the year snapshot.
+Reopen only through the Operator exception and unlock process. Link any correction to prior evidence, read it back and reseal the year snapshot.
 
 <!-- /ANCHOR:adr-001-impl -->
 <!-- /ANCHOR:adr-001 -->

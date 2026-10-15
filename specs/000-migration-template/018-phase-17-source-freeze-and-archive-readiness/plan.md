@@ -103,13 +103,13 @@ Phase 17 runs the actions in the order given, and every Moneybird write goes thr
 
 **Phase actions** (from the phase reference):
 
-[Operator] sets and applies the freeze, supplies UI exports, approves each situation-dependent retention rule from its source basis, and confirms access and renewal evidence. [Evidence Archivist] captures the final delta, completes class counts and hashes, and assembles the archive. [Independent Auditor] verifies source totals, recomputes retention end dates, and restores every class. [Orchestrator] reconciles the gate and updates the dashboard. Gate verifier: [Independent Auditor] verifies completeness and restoration. The Operator does not cancel Jortt in this phase.
+[Operator] sets and applies the freeze, supplies UI exports, approves each situation-dependent retention rule from its source basis, and confirms access and renewal evidence. [Evidence Archivist] captures the final delta, completes class counts and hashes, and assembles the archive. [Independent Auditor] verifies source totals, recomputes retention end dates and restores every class. [Orchestrator] reconciles the gate and updates the dashboard. Gate verifier: [Independent Auditor] verifies completeness and restoration. The Operator does not cancel Jortt in this phase.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts freeze delta extraction and the archive restore test. [Verifier] proves the restore and checks the freeze boundary. [Final reviewer] reviews the phase before Operator approvals.
 
 **Tool route** (from the phase reference):
 
-Jortt API reads use jortt-cli with read scopes and a complete next-link chain. XAF, annual accounts, filed returns, and freeze actions use Operator UI. Archive checks use local files under migration-workspace/Archive/. No Jortt write or cancellation is performed.
+Jortt API reads use jortt-cli with read scopes and a complete next-link chain. XAF, annual accounts, filed returns and freeze actions use Operator UI. Archive checks use local files under migration-workspace/Archive/. No Jortt write or cancellation is performed.
 
 Stop at the exit gate in spec.md section 5 and record the Operator approval in `decision-record.md`.
 <!-- /ANCHOR:phases -->
@@ -150,11 +150,11 @@ The exit gate in spec.md section 5 decides when the phase closes, and the Operat
 
 **Rollback procedure** (from the phase reference):
 
-Keep Jortt uncancelled. If the freeze is disrupted, the Operator records a new freeze date, captures every intervening source change, and repeats the affected archive and restore checks before go-live.
+Keep Jortt uncancelled. If the freeze is disrupted, the Operator records a new freeze date, captures every intervening source change and repeats the affected archive and restore checks before go-live.
 
 **Resume rule** (from the phase reference):
 
-Resume from the last complete source page and class checkpoint. Reconcile its manifest and source total, append a journal event, and rerun the affected class restore before the gate is reconsidered.
+Resume from the last complete source page and class checkpoint. Reconcile its manifest and source total, append a journal event and rerun the affected class restore before the gate is reconsidered.
 
 For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
 

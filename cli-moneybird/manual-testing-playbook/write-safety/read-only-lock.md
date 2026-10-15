@@ -48,7 +48,7 @@ Operators run the exact prompt and command sequence for MBD-013 and confirm the 
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| MBD-013 | Read-only lock blocks writes | Confirm that the lock permits GET and refuses a confirmed production write | Check that a read-only Moneybird session can read contacts but cannot create one, even with the write flags. | 1. Set MONEYBIRD_GUARD_READ_ONLY=1 and run moneybird-guard contacts list --filter period:2023 -> 2. Run moneybird-guard --confirm-write --production --approval "$APPROVAL_REF" contacts create -> 3. Check exit status 6 and inspect the invocation log | The GET exits 0 and logs REAL GET. The write exits 6 with a POST preview and lock message, with no REAL POST log line. | Record both exit statuses, guard output, and the stub invocation log. | PASS if GET succeeds and the write exits 6 without a real POST. FAIL if the GET is blocked or the stub records a real POST. | Confirm the lock is exactly 1, inspect the non-GET lock branch, then rerun the automated guard suite. |
+| MBD-013 | Read-only lock blocks writes | Confirm that the lock permits GET and refuses a confirmed production write | Check that a read-only Moneybird session can read contacts but cannot create one, even with the write flags. | 1. Set MONEYBIRD_GUARD_READ_ONLY=1 and run moneybird-guard contacts list --filter period:2023 -> 2. Run moneybird-guard --confirm-write --production --approval "$APPROVAL_REF" contacts create -> 3. Check exit status 6 and inspect the invocation log | The GET exits 0 and logs REAL GET. The write exits 6 with a POST preview and lock message, with no REAL POST log line. | Record both exit statuses, guard output and the stub invocation log. | PASS if GET succeeds and the write exits 6 without a real POST. FAIL if the GET is blocked or the stub records a real POST. | Confirm the lock is exactly 1, inspect the non-GET lock branch, then rerun the automated guard suite. |
 
 ### Prompt
 
@@ -67,7 +67,7 @@ Capture the prompt, the two exit statuses, the POST preview and lock message, an
 ### Pass / Fail
 
 - Pass: The GET runs and the confirmed production write exits 6 before a real POST.
-- Fail: The GET is blocked, the write does not exit 6, or the stub records a real POST.
+- Fail: The GET is blocked, the write does not exit 6 or the stub records a real POST.
 
 ### Failure Triage
 

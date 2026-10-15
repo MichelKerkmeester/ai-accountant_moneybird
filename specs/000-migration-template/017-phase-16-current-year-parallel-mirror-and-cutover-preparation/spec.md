@@ -53,7 +53,7 @@ This is **Phase 16** of the Jortt to Moneybird migration template specification.
 
 **Entry criteria** (from the phase reference):
 
-Historical years through the approved boundary passed. The Operator approved a positive minimum parallel cycle count or duration, rationale, numeric stop thresholds, and rollback triggers.
+Historical years through the approved boundary passed. The Operator approved a positive minimum parallel cycle count or duration, rationale, numeric stop thresholds and rollback triggers.
 
 **Dependencies**:
 - Previous phase exit gate passed, or None for Phase 0
@@ -62,7 +62,7 @@ Historical years through the approved boundary passed. The Operator approved a p
 
 **Phase outputs** (from the phase reference):
 
-Parallel comparison reports, minimum-cycle rationale, planned freeze date, delta schema, numeric rollback trigger table, rehearsal evidence, and cutover readiness packet without a live GO or NO-GO decision.
+Parallel comparison reports, minimum-cycle rationale, planned freeze date, delta schema, numeric rollback trigger table, rehearsal evidence and cutover readiness packet without a live GO or NO-GO decision.
 
 **Changelog**:
 - When this phase closes, refresh the matching file in ../changelog/ using the parent packet number plus this phase folder name.
@@ -128,7 +128,7 @@ Read each input from Jortt or from the previous phase. Jortt stays read-only.
 |----|-------------|-------|
 | REQ-001 | SG-16.1: Derive the next work year from the configured start date and last locked year. | next historical year is the first unlocked year at or after the configured start year 1, current mirror year is the actual calendar year only when it is at or after the configured start date and is not locked 1, hard-coded current-year labels 0. |
 | REQ-002 | SG-16.2: Complete configured parallel comparisons. | a positive minimum cycle count or duration and rationale are approved in `MIGRATION_CONFIG` as `parallel.cycles_required`, completed cycles meet that minimum 100%, unresolved differences 0. |
-| REQ-003 | SG-16.3: Prepare the source freeze and final delta contract. | Operator-set freeze date and time, delta schema, and source-total method recorded 100%. The actual freeze, its last source key, and delta capture occur in Phase 17. |
+| REQ-003 | SG-16.3: Prepare the source freeze and final delta contract. | Operator-set freeze date and time, delta schema and source-total method recorded 100%. The actual freeze, its last source key and delta capture occur in Phase 17. |
 | REQ-004 | SG-16.4: Prepare objective rollback controls. | numeric trigger thresholds and named decision owner 100%, rehearsal scenarios complete 100%, post-cutover write reconciliation rehearsal 100%. |
 | REQ-005 | SG-16.5: Run the agent route. | M12 checks: work units with Verifier PASS or Operator disposition 100%, parallel delta checks independently pass 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. |
 
@@ -164,7 +164,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, parallel d
 
 **Stop conditions** (from the phase reference):
 
-No positive minimum cycle count or duration, no rationale, no numeric rollback threshold, source activity after the planned freeze without a delta method, missing rollback owner, M6 failure, or unresolved post-cutover write state.
+No positive minimum cycle count or duration, no rationale, no numeric rollback threshold, source activity after the planned freeze without a delta method, missing rollback owner, M6 failure or unresolved post-cutover write state.
 
 Stop on any M12 stop event.
 

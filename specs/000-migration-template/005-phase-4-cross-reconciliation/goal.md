@@ -61,7 +61,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, match reco
 
 - [ ] SG-4.1: in-scope source items linked or explicitly excepted 100%.
 - [ ] SG-4.2: key collisions 0 and duplicate source keys 0.
-- [ ] SG-4.3: canonical records with source key, period, and evidence reference 100%.
+- [ ] SG-4.3: canonical records with source key, period and evidence reference 100%.
 - [ ] SG-4.4: M12 checks: work units with Verifier PASS or Operator disposition 100%, match recount differences 0, duplicate stable keys 0, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 <!-- /ANCHOR:completion -->
 

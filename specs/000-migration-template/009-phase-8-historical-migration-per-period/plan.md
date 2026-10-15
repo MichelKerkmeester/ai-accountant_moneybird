@@ -103,14 +103,14 @@ Phase 8 runs the actions in the order given, and every Moneybird write goes thro
 
 **Phase actions** (from the phase reference):
 
-[Migration Writer] writes only approved items and maintains stable keys. [Operator] approves each batch and imports bank files. [Independent Auditor] checks timestamped synchronization read-back. [Red Team] challenges period coverage and duplicates across pilot and historical manifests. Gate verifier: [Independent Auditor] verifies sync results, payload equality, union-key uniqueness, and reconciliations.
+[Migration Writer] writes only approved items and maintains stable keys. [Operator] approves each batch and imports bank files. [Independent Auditor] checks timestamped synchronization read-back. [Red Team] challenges period coverage and duplicates across pilot and historical manifests. Gate verifier: [Independent Auditor] verifies sync results, payload equality, union-key uniqueness and reconciliations.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts per-period batch plans and builders. [Verifier] checks each batch pre-write report and read-back. [Final reviewer] reviews the phase before Operator approvals.
 
 **Historical batch sequence retained from the original per-period workflow:**
 1. [Migration Writer] Freeze the period's source files and hashes in Snapshots/.
 2. [Reconciliation Agent] Repeat the pre-write reconciliation against the frozen source set.
-3. [Orchestrator] Report document and transaction counts, risk-class counts, expected revenue, costs, VAT, and bank movement in the controlled workspace.
+3. [Orchestrator] Report document and transaction counts, risk-class counts, expected revenue, costs, VAT and bank movement in the controlled workspace.
 4. [Operator] Approve the report and exact batch.
 5. [Migration Writer] Write only approved records within shared request budgets.
 6. [Operator] Import the period's bank files through the UI. [Migration Writer] link approved payments.
@@ -124,7 +124,7 @@ Phase 8 runs the actions in the order given, and every Moneybird write goes thro
 
 **Tool route** (from the phase reference):
 
-Before every non-GET call, flush WRITE_INTENT with the stable key, mapping schema version, source reference, planned payload hash, and approval reference. Moneybird writes use guarded CLI with --confirm-write and --approval for that reference, against the payload file the local payload assembler built. Keep within general and reports request limits. Retry decisions use a timestamped synchronization read or wait beyond the Operator-approved, Independent Auditor verified `bulk_read.cache_horizon` in `MIGRATION_CONFIG`, then a complete paginated read. Missing or unapproved horizon blocks a wait-based retry. Bank-file imports are Operator UI-only.
+Before every non-GET call, flush WRITE_INTENT with the stable key, mapping schema version, source reference, planned payload hash and approval reference. Moneybird writes use guarded CLI with --confirm-write and --approval for that reference, against the payload file the local payload assembler built. Keep within general and reports request limits. Retry decisions use a timestamped synchronization read or wait beyond the Operator-approved, Independent Auditor verified `bulk_read.cache_horizon` in `MIGRATION_CONFIG`, then a complete paginated read. Missing or unapproved horizon blocks a wait-based retry. Bank-file imports are Operator UI-only.
 
 Stop at the exit gate in spec.md section 5 and record the Operator approval in `decision-record.md`.
 <!-- /ANCHOR:phases -->
@@ -169,7 +169,7 @@ Stop the affected batch. Never delete or overwrite a committed target record as 
 
 **Resume rule** (from the phase reference):
 
-Start at the last `READBACK_CONFIRMED` or `RECONCILED` checkpoint. Reconcile every unknown item and revalidate input hashes, approval scope, and expiry before the next write.
+Start at the last `READBACK_CONFIRMED` or `RECONCILED` checkpoint. Reconcile every unknown item and revalidate input hashes, approval scope and expiry before the next write.
 
 For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
 

@@ -41,9 +41,9 @@ contextType: "general"
 <!-- ANCHOR:phase-2 -->
 ## Phase 2: Implementation
 
-- [ ] T001 [SG-1.1] Enumerate mandatory source classes and years. (Check: invoices, expenses, receipts, each attachment class, loose Inbox items, bank files, XAF files, annual accounts, filed returns, assessments, and reconstructed asset schedules have inventory rows 100%, unclassified classes 0.)
+- [ ] T001 [SG-1.1] Enumerate mandatory source classes and years. (Check: invoices, expenses, receipts, each attachment class, loose Inbox items, bank files, XAF files, annual accounts, filed returns, assessments and reconstructed asset schedules have inventory rows 100%, unclassified classes 0.)
 - [ ] T002 [SG-1.2] Map each Jortt bank account and IBAN to source bank files per year. (Check: account-year pairs with a file or explicit exception 100%, unexplained unmatched pairs 0.)
-- [ ] T003 [SG-1.3] Inventory annual tax regimes and filing periods. (Check: year-regime rows 100%, every KOR, ICP, OSS, and other relevant declaration marked applicable or not applicable with evidence, unknown statuses 0.)
+- [ ] T003 [SG-1.3] Inventory annual tax regimes and filing periods. (Check: year-regime rows 100%, every KOR, ICP, OSS and other relevant declaration marked applicable or not applicable with evidence, unknown statuses 0.)
 - [ ] T004 [SG-1.4] Resolve the Jortt general-ledger printout status. (Check: capability decision recorded 1, gates relying on an unverified printout 0.)
 - [ ] T005 [SG-1.5] Build the document registry with source identity and file evidence. (Check: required registry fields populated 100%, source hash coverage 100%.)
 - [ ] T006 [SG-1.6] Run the agent route. (Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, source counts and page-chain reproduction 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.)

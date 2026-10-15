@@ -62,7 +62,7 @@ Phases 10 through 13 passed. Exception owners and expiry dates are current. No p
 
 **Phase outputs** (from the phase reference):
 
-Sealed read-only year snapshot with configuration and source-manifest references, snapshot checksum manifest, Phase 7 per-record-class lock probe results, current lock-state read-back, exception acceptance register, post-lock assessment record, and gate event.
+Sealed read-only year snapshot with configuration and source-manifest references, snapshot checksum manifest, Phase 7 per-record-class lock probe results, current lock-state read-back, exception acceptance register, post-lock assessment record and gate event.
 
 **Changelog**:
 - When this phase closes, refresh the matching file in ../changelog/ using the parent packet number plus this phase folder name.
@@ -164,7 +164,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, snapshot h
 
 **Stop conditions** (from the phase reference):
 
-Any prerequisite not passed, hash mismatch, open unknown write, missing Phase 7 lock evidence, unsupported lock behavior for a required record class, missing Operator approval, missing assessment decision owner, or absent relock confirmation.
+Any prerequisite not passed, hash mismatch, open unknown write, missing Phase 7 lock evidence, unsupported lock behavior for a required record class, missing Operator approval, missing assessment decision owner or absent relock confirmation.
 
 Stop on any M12 stop event.
 

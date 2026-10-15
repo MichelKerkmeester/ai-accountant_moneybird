@@ -29,9 +29,9 @@ A local-only check can confirm that the skill chooses its mode and references wh
 - Prompt: What is the business mileage rate for the current tax year? Give the year and source, and treat this as general information.
 - Fixture rows: TAX-001 (en) and TAX-001-nl (nl twin).
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references. Do not use network access or accounting APIs.
-- Expected signals: Checks the current year first, loads the tax reference, includes the source URL, and labels the reply as general information.
-- Desired user-visible outcome: A concise route report with selected mode, reference paths, boundary result, and no API activity.
-- Pass/fail: PASS if The response uses the current-year row with a source and does not make a personal tax conclusion. FAIL if The response uses a stale year, omits its source, or presents tax advice as final.
+- Expected signals: Checks the current year first, loads the tax reference, includes the source URL and labels the reply as general information.
+- Desired user-visible outcome: A concise route report with selected mode, reference paths, boundary result and no API activity.
+- Pass/fail: PASS if The response uses the current-year row with a source and does not make a personal tax conclusion. FAIL if The response uses a stale year, omits its source or presents tax advice as final.
 
 ---
 
@@ -57,11 +57,11 @@ A local-only check can confirm that the skill chooses its mode and references wh
 1. Read AGENTS.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md for the current tax year and its topic file sk-moneybird-accountant/references/tax-rules/YYYY/costs-and-car/figures.md
-4. Report the year check, selected row, source URL, and tax-advice boundary
+4. Report the year check, selected row, source URL and tax-advice boundary
 
 ### Expected
 
-Checks the current year first, loads the tax reference, includes the source URL, and labels the reply as general information.
+Checks the current year first, loads the tax reference, includes the source URL and labels the reply as general information.
 
 ### Evidence
 
@@ -70,11 +70,11 @@ Capture the prompt, selected tax year, cited table row and URL, and the final bo
 ### Pass / Fail
 
 - **Pass**: The response uses the current-year row with a source and does not make a personal tax conclusion.
-- **Fail**: The response uses a stale year, omits its source, or presents tax advice as final.
+- **Fail**: The response uses a stale year, omits its source or presents tax advice as final.
 
 ### Failure Triage
 
-Check the date context, the selected table year, and its source link. Repeat with only local documents.
+Check the date context, the selected table year and its source link. Repeat with only local documents.
 
 ---
 

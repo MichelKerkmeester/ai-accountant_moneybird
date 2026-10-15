@@ -30,7 +30,7 @@ _memory:
 
 **Objective** (from the phase reference):
 
-Find unmatched, duplicate, high-risk, or unsupported items before mapping and writing. The Implementer drafts the anomaly scan rules, and the Verifier checks planted-anomaly fixtures are detected for Phase 5.
+Find unmatched, duplicate, high-risk or unsupported items before mapping and writing. The Implementer drafts the anomaly scan rules, and the Verifier checks planted-anomaly fixtures are detected for Phase 5.
 
 **Parent binding:** this goal executes under [the parent goal](../goal.md) in `000-migration-template`. Parent decisions outrank this file, and a conflict gets named to the Operator rather than resolved silently.
 

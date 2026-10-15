@@ -1,6 +1,6 @@
 ---
 title: Live workflows, phases 19 to 21
-description: Recurring monthly, VAT-period, and yearly reviews.
+description: Recurring monthly, VAT-period and yearly reviews.
 nav_label: "Live workflows, phases 19 to 21"
 trigger_phrases:
   - Jortt to Moneybird migration
@@ -13,7 +13,7 @@ version: 1.0.0.0
 
 # Live workflows, phases 19 to 21
 
-Recurring monthly, VAT-period, and yearly reviews. Load the [migration index](./README.md) first and use the shared controls in [shared mechanisms](./shared-mechanisms.md).
+Recurring monthly, VAT-period and yearly reviews. Load the [migration index](./README.md) first and use the shared controls in [shared mechanisms](./shared-mechanisms.md).
 
 ---
 
@@ -27,7 +27,7 @@ Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-so
 
 ### 1. Goal
 
-Detect and resolve monthly document, bank, and Moneybird differences before they accumulate. The Implementer drafts monthly check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 19.
+Detect and resolve monthly document, bank and Moneybird differences before they accumulate. The Implementer drafts monthly check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 19.
 
 ### 2. Nested sub-goals
 
@@ -39,11 +39,11 @@ Detect and resolve monthly document, bank, and Moneybird differences before they
 
 ### 3. Entry criteria
 
-The configured recurring monitoring window is active. Current month is identified, prior month status is recorded, and primary and backup owners are available.
+The configured recurring monitoring window is active. Current month is identified, prior month status is recorded and primary and backup owners are available.
 
 ### 4. Inputs
 
-New document inventory, Moneybird period report, bank statement, open invoice schedule, risk model, and prior exceptions.
+New document inventory, Moneybird period report, bank statement, open invoice schedule, risk model and prior exceptions.
 
 ### 5. Owner-tagged actions
 
@@ -76,7 +76,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, read-only 
 
 ### 9. Stop conditions
 
-Missing statement, incomplete month, duplicate, uncertain tax class, unexplained difference, incomplete M7 exception, absent backup owner, missed escalation deadline, or overdue unaccepted exception.
+Missing statement, incomplete month, duplicate, uncertain tax class, unexplained difference, incomplete M7 exception, absent backup owner, missed escalation deadline or overdue unaccepted exception.
 
 Stop on any M12 stop event.
 
@@ -86,7 +86,7 @@ Preserve the month report. Correct through linked records and approved entries. 
 
 ### 11. Resume rule
 
-Resume from the first unresolved monthly exception or journal checkpoint after confirming the source snapshot hash, assigned backup owner, corrective journal, and escalation state.
+Resume from the first unresolved monthly exception or journal checkpoint after confirming the source snapshot hash, assigned backup owner, corrective journal and escalation state.
 
 For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
 
@@ -110,7 +110,7 @@ Prepare each VAT return for the assigned cadence and period from complete eviden
 
 ### 3. Entry criteria
 
-The configured recurring monitoring window is active. The assigned tax calendar, annual declaration applicability matrix, and prior-period status are current.
+The configured recurring monitoring window is active. The assigned tax calendar, annual declaration applicability matrix and prior-period status are current.
 
 ### 4. Inputs
 
@@ -118,7 +118,7 @@ Source invoices, Moneybird tax report, filing calendar, KOR, ICP, OSS and other 
 
 ### 5. Owner-tagged actions
 
-[VAT Agent] recalculates VAT. [Tax Filing Agent] checks period, declaration, and correction history. [Independent Auditor] verifies boxes and correction links. [Operator] alone decides and files the return. A named backup owner covers absence. Gate verifier: [Independent Auditor] reproduces period, box, correction, and owner counts.
+[VAT Agent] recalculates VAT. [Tax Filing Agent] checks period, declaration and correction history. [Independent Auditor] verifies boxes and correction links. [Operator] alone decides and files the return. A named backup owner covers absence. Gate verifier: [Independent Auditor] reproduces period, box, correction and owner counts.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts VAT-period check scripts using the reuse fast path. [Verifier] checks the run summary and record-level result every cycle, with code review only when a hash changes. [Final reviewer] reviews the phase before Operator approvals.
 
@@ -172,12 +172,12 @@ Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-so
 
 ### 1. Goal
 
-Close each live year with complete monthly, VAT, balance, asset, tax, and human review evidence. The Implementer drafts yearly check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 21.
+Close each live year with complete monthly, VAT, balance, asset, tax and human review evidence. The Implementer drafts yearly check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 21.
 
 ### 2. Nested sub-goals
 
 - **SG-21.1**: Confirm all subordinate cycles. Check: applicable monthly and filing-period checks passed 100%.
-- **SG-21.2**: Reconcile continuity, assets, profit, and tax bridge. Check: account and bridge coverage 100%, unexplained differences 0.
+- **SG-21.2**: Reconcile continuity, assets, profit and tax bridge. Check: account and bridge coverage 100%, unexplained differences 0.
 - **SG-21.3**: Approve and preserve close evidence. Check: sealed snapshot hash 1, Operator close approval 1.
 
 - **SG-21.4**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, read-only run summary checks pass 100%, record-level check pass 100%, changed-hash code reviews complete 100%, reuse fast path valid 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
@@ -192,7 +192,7 @@ Monthly reports, VAT reconciliations, bank statements, receivable and payable sc
 
 ### 5. Owner-tagged actions
 
-[Tax Filing Agent] prepares the tax bridge and post-lock assessment routing. [Independent Auditor] challenges year close. [Operator] decides accounting and tax judgments, files returns, and approves lock or close. A named backup owner covers absence. [Orchestrator] checks gate evidence. Gate verifier: [Independent Auditor] verifies arithmetic and evidence links. [Operator] owns filings and close.
+[Tax Filing Agent] prepares the tax bridge and post-lock assessment routing. [Independent Auditor] challenges year close. [Operator] decides accounting and tax judgments, files returns and approves lock or close. A named backup owner covers absence. [Orchestrator] checks gate evidence. Gate verifier: [Independent Auditor] verifies arithmetic and evidence links. [Operator] owns filings and close.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts yearly check scripts using the reuse fast path. [Verifier] checks the run summary and record-level result every cycle, with code review only when a hash changes. [Final reviewer] reviews the phase before Operator approvals.
 
@@ -228,16 +228,16 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, read-only 
 
 ### 9. Stop conditions
 
-Missing month, tax period, filing confirmation, or required assessment without approved unavailability, unsupported adjustment, incomplete exception, absent backup owner, missed escalation deadline, unresolved exception, or failed snapshot hash.
+Missing month, tax period, filing confirmation or required assessment without approved unavailability, unsupported adjustment, incomplete exception, absent backup owner, missed escalation deadline, unresolved exception or failed snapshot hash.
 
 Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
-Reopen only through the Operator exception and unlock process. Link any correction to prior evidence, read it back, and reseal the year snapshot.
+Reopen only through the Operator exception and unlock process. Link any correction to prior evidence, read it back and reseal the year snapshot.
 
 ### 11. Resume rule
 
-Resume from the first failed annual check. Record the corrective journal, escalation, and backup owner. If new evidence changes a prior period, reopen dependent VAT, continuity, and tax checks before closing.
+Resume from the first failed annual check. Record the corrective journal, escalation and backup owner. If new evidence changes a prior period, reopen dependent VAT, continuity and tax checks before closing.
 
 For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.

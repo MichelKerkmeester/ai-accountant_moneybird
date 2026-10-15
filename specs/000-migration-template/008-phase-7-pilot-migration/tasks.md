@@ -43,7 +43,7 @@ contextType: "general"
 
 - [ ] T001 [SG-7.1] Pilot each source document type and attachment path. (Check: PDF and UBL are piloted separately where present, required field matrices match sources 100%, attachment bytes and SHA-256 match 100%, target attachment read route verified 1.)
 - [ ] T002 [SG-7.2] Prove duplicate control under an uncertain response. (Check: stable local key and mapping schema version beside it 100%, durable WRITE_INTENT flushed before every non-GET call 100%, source reference and planned payload fields match before ID adoption 100%, ambiguous results stopped 100%.)
-- [ ] T003 [SG-7.3] Rehearse crash resume at the write boundary. (Check: forced interruption after WRITE_INTENT, after response loss, and after read-back 3, each resumes from the last verified journal state 100%, blind replay count 0.)
+- [ ] T003 [SG-7.3] Rehearse crash resume at the write boundary. (Check: forced interruption after WRITE_INTENT, after response loss and after read-back 3, each resumes from the last verified journal state 100%, blind replay count 0.)
 - [ ] T004 [SG-7.4] Rehearse safe compensation. (Check: approved undo or linked correction rehearsal passes 1, independent read confirms final state 1.)
 - [ ] T005 [SG-7.5] Test the item-level AR/AP target representation. (Check: representative opening item and settlement link read-back pass 1, source item and target link coverage 100%.)
 - [ ] T006 [SG-7.6] Test lock behavior for each used record class in the safe pilot. (Check: Operator-approved probe and correction plan 1, record-class coverage 100%, expected lock result recorded for every class, successful probes reversed or corrected and read back 100%, final lock state verified 1.)

@@ -30,7 +30,7 @@ _memory:
 
 **Objective** (from the phase reference):
 
-Produce independent document, ledger, bank, tax, and VAT registers without cross-contamination. The Implementer drafts one register builder per source, each in its own session, and the Verifier independently reproduces register totals and statically checks each builder reads only its folder for Phase 3.
+Produce independent document, ledger, bank, tax and VAT registers without cross-contamination. The Implementer drafts one register builder per source, each in its own session and the Verifier independently reproduces register totals and statically checks each builder reads only its folder for Phase 3.
 
 **Parent binding:** this goal executes under [the parent goal](../goal.md) in `000-migration-template`. Parent decisions outrank this file, and a conflict gets named to the Operator rather than resolved silently.
 
@@ -55,7 +55,7 @@ Frozen choices. Changing one is an amendment.
 
 **Exit gate** (from the phase reference):
 
-Input folders sealed 100%, applicable source items processed 100%, VAT input originals 100%, booking export files in VAT input 0, private record fields in prompts, logs, and session outputs 0, unbalanced journals 0, cross-register reads before Phase 4 equal 0.
+Input folders sealed 100%, applicable source items processed 100%, VAT input originals 100%, booking export files in VAT input 0, private record fields in prompts, logs and session outputs 0, unbalanced journals 0, cross-register reads before Phase 4 equal 0.
 
 M12 gate: work units with Verifier PASS or Operator disposition 100%, register totals independently reproduced 100%, role-folder read violations 0, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
 

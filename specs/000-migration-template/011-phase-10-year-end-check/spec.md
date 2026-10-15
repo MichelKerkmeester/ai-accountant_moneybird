@@ -80,7 +80,7 @@ At the start of Phase 10: Year-end check, the migration cannot move on because t
 
 **Goal** (from the phase reference):
 
-Prove the annual mirror against ledger, bank, source documents, filed VAT, and annual accounts. The Implementer drafts the year-end comparison, and the Verifier independently recomputes year-end values for Phase 10.
+Prove the annual mirror against ledger, bank, source documents, filed VAT and annual accounts. The Implementer drafts the year-end comparison, and the Verifier independently recomputes year-end values for Phase 10.
 
 The exit gate in section 5 passes, the recorded evidence sits in `migration-workspace/`, and the Operator approves so the next phase may start.
 <!-- /ANCHOR:problem -->
@@ -105,7 +105,7 @@ The exit gate in section 5 passes, the recorded evidence sits in `migration-work
 
 **Phase inputs** (from the phase reference):
 
-Source XAF, bank statements, canonical dataset, Moneybird reports, tax reconciliations, mapping, and exception ledger.
+Source XAF, bank statements, canonical dataset, Moneybird reports, tax reconciliations, mapping and exception ledger.
 
 Read each input from Jortt or from the previous phase. Jortt stays read-only.
 

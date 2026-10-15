@@ -108,9 +108,9 @@ Phase 4 runs the actions in the order given, and every Moneybird write goes thro
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the linker and stable-key builder. [Verifier] independently recounts matches and checks duplicate keys. [Final reviewer] reviews the phase before Operator approvals.
 
 **Canonical event fields retained from the original cross-reconciliation:**
-1. [Reconciliation Agent] Link DOCUMENT, XAF ENTRY, BANK TRANSACTION, and TAX PERIOD where each source exists. Record explicit exceptions for absent links.
+1. [Reconciliation Agent] Link DOCUMENT, XAF ENTRY, BANK TRANSACTION and TAX PERIOD where each source exists. Record explicit exceptions for absent links.
 2. [Reconciliation Agent] Assign one permanent migration record key to each event. Keep it stable across mapping revisions and store the mapping schema version beside it.
-3. [Reconciliation Agent] Store source keys, period, evidence references, historical category, historical VAT code, independent VAT classification, risk class, confidence, source-to-target reference, and differences.
+3. [Reconciliation Agent] Store source keys, period, evidence references, historical category, historical VAT code, independent VAT classification, risk class, confidence, source-to-target reference and differences.
 
 **Tool route** (from the phase reference):
 

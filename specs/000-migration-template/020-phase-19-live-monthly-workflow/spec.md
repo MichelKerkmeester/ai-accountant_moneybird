@@ -53,7 +53,7 @@ This is **Phase 19** of the Jortt to Moneybird migration template specification.
 
 **Entry criteria** (from the phase reference):
 
-The configured recurring monitoring window is active. Current month is identified, prior month status is recorded, and primary and backup owners are available.
+The configured recurring monitoring window is active. Current month is identified, prior month status is recorded and primary and backup owners are available.
 
 **Dependencies**:
 - Previous phase exit gate passed, or None for Phase 0
@@ -80,7 +80,7 @@ At the start of Phase 19: Live monthly workflow, the migration cannot move on be
 
 **Goal** (from the phase reference):
 
-Detect and resolve monthly document, bank, and Moneybird differences before they accumulate. The Implementer drafts monthly check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 19.
+Detect and resolve monthly document, bank and Moneybird differences before they accumulate. The Implementer drafts monthly check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 19.
 
 The exit gate in section 5 passes, the recorded evidence sits in `migration-workspace/`, and the Operator approves so the next phase may start.
 <!-- /ANCHOR:problem -->
@@ -105,7 +105,7 @@ The exit gate in section 5 passes, the recorded evidence sits in `migration-work
 
 **Phase inputs** (from the phase reference):
 
-New document inventory, Moneybird period report, bank statement, open invoice schedule, risk model, and prior exceptions.
+New document inventory, Moneybird period report, bank statement, open invoice schedule, risk model and prior exceptions.
 
 Read each input from Jortt or from the previous phase. Jortt stays read-only.
 
@@ -163,7 +163,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, read-only 
 
 **Stop conditions** (from the phase reference):
 
-Missing statement, incomplete month, duplicate, uncertain tax class, unexplained difference, incomplete M7 exception, absent backup owner, missed escalation deadline, or overdue unaccepted exception.
+Missing statement, incomplete month, duplicate, uncertain tax class, unexplained difference, incomplete M7 exception, absent backup owner, missed escalation deadline or overdue unaccepted exception.
 
 Stop on any M12 stop event.
 

@@ -1,6 +1,6 @@
 ---
 title: Jortt to Moneybird concept mapping
-description: Conceptual mapping for Jortt bookkeeping data to Moneybird categories, records, assets, VAT, and opening balances.
+description: Conceptual mapping for Jortt bookkeeping data to Moneybird categories, records, assets, VAT and opening balances.
 nav_label: "Jortt to Moneybird concept mapping"
 trigger_phrases:
   - Jortt to Moneybird mapping
@@ -34,9 +34,9 @@ This reference describes conceptual matches and common migration traps. It does 
 | Private withdrawals and deposits | Private or equity postings | They are not operating expenses or sales. Keep proprietor cash flows separate. |
 | Categories and ledger accounts | Moneybird category mapped to a ledger account and RGS code | Do not assume the source account list imports one-to-one. Review the target category and VAT mapping. |
 | VAT returns and corrections | Moneybird VAT workflow for eligible periods, with the tax authority route for earlier returns filed elsewhere | Moneybird's comparison depends on returns it filed. Preserve evidence of historical filed returns. The operator files all returns. |
-| Assets and depreciation | Target fixed assets with original cost, date in use, useful life, residual value, and prior depreciation | Do not post accumulated depreciation twice. Confirm building WOZ floor and tax treatment separately. |
+| Assets and depreciation | Target fixed assets with original cost, date in use, useful life, residual value and prior depreciation | Do not post accumulated depreciation twice. Confirm building WOZ floor and tax treatment separately. |
 | Business mileage | Mileage expense supported by travel-year rate and trip log | The reviewed Jortt help pages did not confirm a direct mileage migration workflow. Status: unverified. Preserve evidence and verify before closing. |
-| Bank entries | Bank transaction matched to an invoice, receipt, category, or private account | A matched invoice receipt must not be treated as a second sale. |
+| Bank entries | Bank transaction matched to an invoice, receipt, category or private account | A matched invoice receipt must not be treated as a second sale. |
 
 ---
 
@@ -58,7 +58,7 @@ CLI route for source reads: [cli-jortt](../../../cli-jortt/SKILL.md).
 
 ### Categories and opening balance
 
-Jortt groups categories as income, costs, and balance items. Private withdrawals and deposits are balance items, per [Jortt category guidance](https://www.jortt.nl/boekhouden/boekhouden-uitleg/op-de-juiste-categorie-boeken/). Compare the source trial balance with the target category and ledger mappings before any approved write.
+Jortt groups categories as income, costs and balance items. Private withdrawals and deposits are balance items, per [Jortt category guidance](https://www.jortt.nl/boekhouden/boekhouden-uitleg/op-de-juiste-categorie-boeken/). Compare the source trial balance with the target category and ledger mappings before any approved write.
 
 CLI route for target review or write work: [cli-moneybird](../../../cli-moneybird/SKILL.md).
 
@@ -66,7 +66,7 @@ CLI route for target review or write work: [cli-moneybird](../../../cli-moneybir
 
 ## 4. MIGRATION CHECKS
 
-- Reconcile documents, booked records, bank transactions, assets, and filed returns as separate evidence streams.
+- Reconcile documents, booked records, bank transactions, assets and filed returns as separate evidence streams.
 - Keep the original source evidence unchanged.
 - Keep migration data and output only in migration-workspace/.
 - Record missing attachments and uncertain classifications as exceptions.

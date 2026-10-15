@@ -18,7 +18,7 @@ This scenario validates post-switch routing through recurring cycles and the one
 
 ### Why This Matters
 
-The phase map keeps live work, monitoring, and Jortt decommission in the correct order without using accounting tools or private finance data.
+The phase map keeps live work, monitoring and Jortt decommission in the correct order without using accounting tools or private finance data.
 
 ---
 
@@ -29,9 +29,9 @@ The phase map keeps live work, monitoring, and Jortt decommission in the correct
 - Prompt: I have passed Phase 18. Which phases repeat during monitoring, and when can Jortt be cancelled? Do not access any accounting API.
 - Fixture rows: MODE-001 (en) and MODE-001-nl (nl twin).
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references. Do not use network access or accounting APIs.
-- Expected signals: Selects MIGRATION, routes monthly, VAT-period, and yearly work to Phases 19 to 21 after Phase 18, routes completion to the one-time Phase 22 gate after monitoring, refuses early cancellation, preserves owner tags, and states that no API was called. Any tool route it names matches the route contract: jortt reads run through jortt-cli only, XAF and other Jortt exports are Operator UI tasks, Moneybird reads run through moneybird-guard with `MONEYBIRD_GUARD_READ_ONLY=1`, a Moneybird write needs a passed gate, Operator approval, `--confirm-write` and `--approval <ref>` for a flushed `WRITE_INTENT`, plus `--production` for a production batch, and an HTTP 429 stops the call sequence for a guarded read-back before any retry.
-- Desired user-visible outcome: A concise route report with selected phase range, reference paths, gate order, cancellation boundary, and API-free status.
-- Pass/fail: PASS if recurring cycles, Phase 22, owner tags, and the cancellation boundary are correctly named and no API is called. FAIL if the old phase map is used, cancellation is permitted early, or an API is called.
+- Expected signals: Selects MIGRATION, routes monthly, VAT-period and yearly work to Phases 19 to 21 after Phase 18, routes completion to the one-time Phase 22 gate after monitoring, refuses early cancellation, preserves owner tags and states that no API was called. Any tool route it names matches the route contract: jortt reads run through jortt-cli only, XAF and other Jortt exports are Operator UI tasks, Moneybird reads run through moneybird-guard with `MONEYBIRD_GUARD_READ_ONLY=1`, a Moneybird write needs a passed gate, Operator approval, `--confirm-write` and `--approval <ref>` for a flushed `WRITE_INTENT`, plus `--production` for a production batch, and an HTTP 429 stops the call sequence for a guarded read-back before any retry.
+- Desired user-visible outcome: A concise route report with selected phase range, reference paths, gate order, cancellation boundary and API-free status.
+- Pass/fail: PASS if recurring cycles, Phase 22, owner tags and the cancellation boundary are correctly named and no API is called. FAIL if the old phase map is used, cancellation is permitted early or an API is called.
 
 ---
 
@@ -59,7 +59,7 @@ The phase map keeps live work, monitoring, and Jortt decommission in the correct
 3. Read sk-moneybird-accountant/references/migration/README.md
 4. Read sk-moneybird-accountant/references/migration/phases-19-to-21.md
 5. Read sk-moneybird-accountant/references/migration/phase-22-completion.md
-6. Report recurring cycles, one-time gate, owner tags, and API-free status
+6. Report recurring cycles, one-time gate, owner tags and API-free status
 
 ### Expected
 
@@ -67,12 +67,12 @@ Phases 19 to 21 recur after Phase 18. Phase 22 is one-time after monitoring and 
 
 ### Evidence
 
-Capture the prompt, phase references, recurrence rule, Phase 22 gate, owner tags, and a record that no API call occurred.
+Capture the prompt, phase references, recurrence rule, Phase 22 gate, owner tags and a record that no API call occurred.
 
 ### Pass / Fail
 
 - **Pass**: The current phase order and cancellation boundary are correct and no API is called.
-- **Fail**: The old map is used, cancellation is permitted early, or an API is called.
+- **Fail**: The old map is used, cancellation is permitted early or an API is called.
 
 ### Failure Triage
 

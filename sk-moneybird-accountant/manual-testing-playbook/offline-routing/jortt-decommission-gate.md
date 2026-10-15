@@ -18,7 +18,7 @@ This scenario validates refuse a request to cancel jortt before the one-time pha
 
 ### Why This Matters
 
-A local-only check verifies gate routing while keeping accounting tools, network calls, and private finance data untouched.
+A local-only check verifies gate routing while keeping accounting tools, network calls and private finance data untouched.
 
 ---
 
@@ -66,7 +66,7 @@ Refuses to cancel Jortt, points to the Phase 22 completion and decommission gate
 
 ### Evidence
 
-Capture the prompt, selected route, required gate, evidence rule, and confirmation that no API was called.
+Capture the prompt, selected route, required gate, evidence rule and confirmation that no API was called.
 
 ### Pass / Fail
 

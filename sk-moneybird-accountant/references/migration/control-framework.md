@@ -24,30 +24,30 @@ This reference holds the cross-phase controls for the migration, from agent role
 
 ## Phase contract schema
 
-Every phase from 0 through 22 uses these 11 fields in this order. Each nested sub-goal has a check that names a count, percentage, date, equality, or artifact result that a verifier can reproduce. Before Phase 0 passes, the Independent Auditor records exactly one phase heading and all 11 fields plus a numeric exit gate for each phase. The check covers all 23 phases and is linked from the master dashboard.
+Every phase from 0 through 22 uses these 11 fields in this order. Each nested sub-goal has a check that names a count, percentage, date, equality or artifact result that a verifier can reproduce. Before Phase 0 passes, the Independent Auditor records exactly one phase heading and all 11 fields plus a numeric exit gate for each phase. The check covers all 23 phases and is linked from the master dashboard.
 
 | # | Field | Required content |
 |---:|---|---|
 | 1 | Goal | The phase outcome. |
 | 2 | Nested sub-goals | One or more measurable outcomes under the goal, each with its own check. |
 | 3 | Entry criteria | Prior gate, approvals, date or scope facts, and a zero-blocker condition. |
-| 4 | Inputs | Named source records, registers, configuration, or prior evidence. |
+| 4 | Inputs | Named source records, registers, configuration or prior evidence. |
 | 5 | Owner-tagged actions | Exact owner tags for actions and the gate verifier. Human decisions stay with the Operator. |
-| 6 | Tool route | Named CLI or UI route with read, write, approval, and privacy boundary. |
+| 6 | Tool route | Named CLI or UI route with read, write, approval and privacy boundary. |
 | 7 | Outputs and evidence artifacts | Exact artifact class and location under `migration-workspace/`. |
-| 8 | Numeric exit gate | Reproducible count, percentage, date, equality, or explicit zero. Numeric thresholds come from approved `MIGRATION_CONFIG` values. |
+| 8 | Numeric exit gate | Reproducible count, percentage, date, equality or explicit zero. Numeric thresholds come from approved `MIGRATION_CONFIG` values. |
 | 9 | Stop conditions | A falsifiable event that blocks the phase or affected batch. |
-| 10 | Rollback or compensation | Reversal, correction, preservation, or safe no-op rule. |
+| 10 | Rollback or compensation | Reversal, correction, preservation or safe no-op rule. |
 | 11 | Resume rule | Journal state and evidence required to continue after a stop or crash. |
 
 ## Agent structure
 
 | Owner | Seat | Reads | Writes | Moneybird route |
 |---|---|---|---|---|
-| [Operator] | Operator | Source system, portals, approvals, reports, and local record evidence for AMBER or high-risk items | Human decisions, UI exports and imports, filing and lock actions | Operator UI or approved guarded route |
-| [Orchestrator] | Agent runner, local and deterministic | Phase contracts, configuration, filtered summaries, and gate status | MIGRATION_CONFIG, briefs, AgentDesk artifacts, journal, and dashboard rows | None |
-| [Agent runner] | Agent runner, local and deterministic | Assigned input folders only for local role sessions, plus approved schemas and phase inputs | Local role artifacts, sandbox outputs, assembled write payloads with their HMAC hashes, filtered summaries, logs, journal, and dashboard rows | Runs local reader sessions with the required read-only lock. It does not book records. |
-| [Evidence Archivist] | Implementer drafts, Agent runner executes local role session | Assigned archive input folder through its local role session | Manifests, registry, archive, and restore evidence | None |
+| [Operator] | Operator | Source system, portals, approvals, reports and local record evidence for AMBER or high-risk items | Human decisions, UI exports and imports, filing and lock actions | Operator UI or approved guarded route |
+| [Orchestrator] | Agent runner, local and deterministic | Phase contracts, configuration, filtered summaries and gate status | MIGRATION_CONFIG, briefs, AgentDesk artifacts, journal and dashboard rows | None |
+| [Agent runner] | Agent runner, local and deterministic | Assigned input folders only for local role sessions, plus approved schemas and phase inputs | Local role artifacts, sandbox outputs, assembled write payloads with their HMAC hashes, filtered summaries, logs, journal and dashboard rows | Runs local reader sessions with the required read-only lock. It does not book records. |
+| [Evidence Archivist] | Implementer drafts, Agent runner executes local role session | Assigned archive input folder through its local role session | Manifests, registry, archive and restore evidence | None |
 | [Document Agent] | Implementer drafts, Agent runner executes local role session | Inputs/document/ through its local role session | DOCUMENT_REGISTER | None |
 | [Ledger Agent] | Implementer drafts, Agent runner executes local role session | Inputs/ledger/ through its local role session | LEDGER_REGISTER | None |
 | [Bank Agent] | Implementer drafts, Agent runner executes local role session | Inputs/bank/ through its local role session | BANK_REGISTER | None |
@@ -55,28 +55,28 @@ Every phase from 0 through 22 uses these 11 fields in this order. Each nested su
 | [VAT Agent] | Implementer drafts, Agent runner executes local role session | Inputs/vat/ with original invoices only through its local role session | VAT_CLASSIFICATION_REGISTER | None |
 | [Reconciliation Agent] | Implementer drafts, Agent runner executes local role session | Approved local registers | CANONICAL_DATASET and reconciliation reports | None |
 | [Mapping Agent] | Implementer drafts, Agent runner executes local role session | Approved local canonical data and supported target fields | Mapping tables and validation reports | Guarded reads stay in the local runner session with MONEYBIRD_GUARD_READ_ONLY=1 |
-| [Migration Writer] | Separate writer session using the configured write-executor seat | Batch and record aliases, payload hashes, counts, and the approval reference. Never payload content. | Target records and write journal | Isolated writer through moneybird-guard with `--confirm-write --approval <ref>` against the locally assembled payload file |
-| [Independent Auditor] | Verifier designs and judges, Agent runner executes locally | Schemas, independent fixtures, filtered summaries, and local check results | Independent audit verdicts and filtered findings | No direct record-level read. The Agent runner executes local checks. |
-| [Red Team] | Verifier in a separate session | Clean working copy of agent-facing inputs without verdicts, final reviews, or earlier findings | Challenge and sample verdicts | No direct record-level read. The Agent runner executes local checks. |
-| [Final reviewer] | Final reviewer seat | Alias-level phase evidence, filtered summaries, verdicts, and gate results. No record-level content. | Final review record and one decision summary for the Operator | None |
+| [Migration Writer] | Separate writer session using the configured write-executor seat | Batch and record aliases, payload hashes, counts and the approval reference. Never payload content. | Target records and write journal | Isolated writer through moneybird-guard with `--confirm-write --approval <ref>` against the locally assembled payload file |
+| [Independent Auditor] | Verifier designs and judges, Agent runner executes locally | Schemas, independent fixtures, filtered summaries and local check results | Independent audit verdicts and filtered findings | No direct record-level read. The Agent runner executes local checks. |
+| [Red Team] | Verifier in a separate session | Clean working copy of agent-facing inputs without verdicts, final reviews or earlier findings | Challenge and sample verdicts | No direct record-level read. The Agent runner executes local checks. |
+| [Final reviewer] | Final reviewer seat | Alias-level phase evidence, filtered summaries, verdicts and gate results. No record-level content. | Final review record and one decision summary for the Operator | None |
 | [Operator + AI] | Operator with the named seat | Approved task inputs | Prepared evidence and human approval record | Human action remains with Operator |
 
-The Orchestrator manages phase checkpoints and prepares a gate decision. It does not book records. The Migration Writer is the only agent role that may issue an approved Moneybird write. Keep independent analysis roles in separate sessions and folders. The Operator owns credentials, UI exports, bank-file imports, tax-rate creation, return filing, period locks, account lifecycle choices, and production go or no-go. M12 defines the external seats and their data boundary. No seat receives record-level content, and the local payload assembler builds every write payload.
+The Orchestrator manages phase checkpoints and prepares a gate decision. It does not book records. The Migration Writer is the only agent role that may issue an approved Moneybird write. Keep independent analysis roles in separate sessions and folders. The Operator owns credentials, UI exports, bank-file imports, tax-rate creation, return filing, period locks, account lifecycle choices and production go or no-go. M12 defines the external seats and their data boundary. No seat receives record-level content, and the local payload assembler builds every write payload.
 
 ## Verification loop per record
 
 Risk determines the amount of review. Every written record follows the same evidence path.
 
-1. [Implementer] drafts each role's schema, script, mapping table, or report template from allowlisted summaries. [Agent runner] executes one local role session per assigned input folder and keeps record-level work local.
+1. [Implementer] drafts each role's schema, script, mapping table or report template from allowlisted summaries. [Agent runner] executes one local role session per assigned input folder and keeps record-level work local.
 2. [Implementer] drafts the reconciliation logic. [Agent runner] runs the local Reconciliation Agent session to link approved registers and create the canonical record.
-3. [Implementer] drafts the deterministic risk rules and the batch pre-write report template. [Agent runner] applies the rules and builds the pre-write report locally. [Verifier] independently checks the rules, their application counts, and the batch pre-write report. [Operator] reviews AMBER and high-risk records locally.
+3. [Implementer] drafts the deterministic risk rules and the batch pre-write report template. [Agent runner] applies the rules and builds the pre-write report locally. [Verifier] independently checks the rules, their application counts and the batch pre-write report. [Operator] reviews AMBER and high-risk records locally.
 4. [Operator] approves the batch and all required access checks.
-5. [Migration Writer] issues a write only after a flushed WRITE_INTENT and records the response under M2, M3, and M10.
+5. [Migration Writer] issues a write only after a flushed WRITE_INTENT and records the response under M2, M3 and M10.
 6. [Verifier] designs an independent record-level check with its own fixtures. [Agent runner] executes the check locally against every target record, through a later synchronized read or a complete read after the documented cache wait, and returns only a filtered summary.
 7. [Verifier, Red Team session] challenges each historical period and year from a clean working copy. The named phase contract may require broader coverage.
 8. [Agent runner] records target read-back and reconciliation. [Final reviewer] confirms the verified phase evidence. Mark a record `VERIFIED` only after read-back and reconciliation pass.
 
-AMBER and high-risk records receive an individual Verifier record-level check and local Operator review before they count as verified. RED and BLACK records are never written. An uncertain result is handled under M2, M3, and M11. Never replay a write from a missing or ambiguous read.
+AMBER and high-risk records receive an individual Verifier record-level check and local Operator review before they count as verified. RED and BLACK records are never written. An uncertain result is handled under M2, M3 and M11. Never replay a write from a missing or ambiguous read.
 
 ## Risk model
 
@@ -95,13 +95,13 @@ Require an extra review for:
 
 - EU or non-EU reverse charge and foreign VAT.
 - A new international supplier or a change in supplier legal entity.
-- Assets, historic value changes, and depreciation.
+- Assets, historic value changes and depreciation.
 - Private versus business use.
 - General journal documents.
 - Opening balances and year-end closing balances.
-- Historical tax differences, credit notes, and unusual currencies.
+- Historical tax differences, credit notes and unusual currencies.
 - Invoice-level open receivables or payables and their settlement links.
-- Any write with an uncertain response, a changed schema, or a correction after a period lock.
+- Any write with an uncertain response, a changed schema or a correction after a period lock.
 
 ## Exception ledger and thresholds
 
@@ -122,7 +122,7 @@ Every exception remains visible under a stable key. Preserve the following M7 fi
 | Resolution | Action taken and reproducible result, or why it remains open. |
 | Acceptance authority | Human role and decision record for any accepted residual. |
 | Expiry or reopen date | Date when accepted status must be reviewed again. |
-| Corrective-entry link | Linked reversal, replacement, or correction entry when one exists. |
+| Corrective-entry link | Linked reversal, replacement or correction entry when one exists. |
 
 Use these statuses: `OPEN`, `INVESTIGATING`, `RESOLVED`, `ACCEPTED HISTORICAL DIFFERENCE`, `TAX REVIEW REQUIRED`, `SOURCE MISSING`, and `EXPIRED`. An expired accepted item returns to active review and blocks dependent gates. Do not delete exceptions or net differences across periods.
 
@@ -144,23 +144,23 @@ Stop the affected batch and block dependent phases on any of these events:
 
 - Duplicate fingerprint or conflicting source and target identity.
 - An invoice field or total differs from the approved plan.
-- Unexplained currency, bank, VAT, opening-balance, annual-account, or ledger difference.
-- Uncertain supplier, tax treatment, VAT treatment, or record risk.
+- Unexplained currency, bank, VAT, opening-balance, annual-account or ledger difference.
+- Uncertain supplier, tax treatment, VAT treatment or record risk.
 - RED or BLACK risk classification.
-- Missing original evidence, attachment hash mismatch, or incomplete source page chain.
+- Missing original evidence, attachment hash mismatch or incomplete source page chain.
 - Unexpected depreciation or unsupported opening item.
 - A 429 without the required wait and request-ledger evidence.
 - A write response that does not match the planned record.
-- Missing, expired, or uncertain access window before a write batch.
-- An incomplete M7 exception, missing approval, or expired accepted exception.
+- Missing, expired or uncertain access window before a write batch.
+- An incomplete M7 exception, missing approval or expired accepted exception.
 
 Use this stop-state recovery table. Record one recovery row for every stop event, then follow the full field definitions in [M11](./shared-mechanisms.md#m11-stop-state-recovery-matrix).
 
 | Stop state | Owner | Recovery evidence | Retry rule | Closure test |
 |---|---|---|---|---|
 | `WRITE_UNKNOWN` | Migration Writer | Flushed intent, request status, source reference, planned fields, target read-back | Wait beyond the Operator-approved and Independent Auditor verified `bulk_read.cache_horizon`, or use complete timestamped synchronization. Missing or unapproved horizon blocks wait-based retry. No retry while ambiguous. | Exact source-reference and planned-field match is adopted, or an approved safe retry has no duplicate. |
-| `HTTP_429` | Orchestrator | Shared request ledger, response status, `Retry-After`, affected batch | Wait the stated interval. The Orchestrator may authorize one paced read reissue. For a write, require guarded read-back and a new approved intent proving the target is absent. | The ledger records wait, authorization, read-back when needed, intent, and result. |
-| `VALIDATION_FAILURE` | Mapping Agent | Validation result, mapping version, planned payload | Correct, approve, rehash, and issue a new intent. Do not retry the same payload. | Corrected payload passes validation and approval evidence is linked. |
+| `HTTP_429` | Orchestrator | Shared request ledger, response status, `Retry-After`, affected batch | Wait the stated interval. The Orchestrator may authorize one paced read reissue. For a write, require guarded read-back and a new approved intent proving the target is absent. | The ledger records wait, authorization, read-back when needed, intent and result. |
+| `VALIDATION_FAILURE` | Mapping Agent | Validation result, mapping version, planned payload | Correct, approve, rehash and issue a new intent. Do not retry the same payload. | Corrected payload passes validation and approval evidence is linked. |
 | `MISSING_SOURCE_OR_HASH_MISMATCH` | Evidence Archivist | Manifest, page chain, source total, file hash | No dependent write. Re-extract or restore the affected class under a new manifest version. | Required coverage and independent totals reconcile to 100%. |
 | `STALE_OR_INCOMPLETE_READ` | Independent Auditor | Sync timestamp, page counts, cache wait, expected total | Repeat only after the documented wait or complete synchronization. | Freshness and completeness are evidenced and counts reconcile. |
 | `RECONCILIATION_MISMATCH` | Reconciliation Agent | Source and target reports, exception, correction evidence | No cross-period netting. Use the approved append-only correction path. | Difference is zero or a complete approved exception is within configured limits. |
@@ -171,7 +171,7 @@ Never invent a closing entry to make a difference disappear. Compensation uses t
 
 ## Master dashboard
 
-Keep one row per phase. Every row carries phase ID, status, phase-contract check status and evidence, named owner, evidence link, due date, exception count, and last verified resume checkpoint. Update the dashboard for every gate, stop, resume, and recurring cycle. Reconcile it with the run journal.
+Keep one row per phase. Every row carries phase ID, status, phase-contract check status and evidence, named owner, evidence link, due date, exception count, and last verified resume checkpoint. Update the dashboard for every gate, stop, resume and recurring cycle. Reconcile it with the run journal.
 
 Allowed dashboard statuses are:
 
@@ -207,7 +207,7 @@ Allowed dashboard statuses are:
 | 21 | Live yearly workflow | `NOT_STARTED`  | `NOT_RUN` |
 | 22 | Migration completion and Jortt decommission | `NOT_STARTED`  | `NOT_RUN` |
 
-Phases 19 to 21 are recurring loops that begin after Phase 18. Phase 22 is a one-time gate. It requires all 23 rows to be current and complete for their applicable status, with every phase-contract check marked PASS and no missing owners, evidence, due dates, exception counts, or resume checkpoints.
+Phases 19 to 21 are recurring loops that begin after Phase 18. Phase 22 is a one-time gate. It requires all 23 rows to be current and complete for their applicable status, with every phase-contract check marked PASS and no missing owners, evidence, due dates, exception counts or resume checkpoints.
 
 Keep the historical per-year summary as a companion to the phase dashboard. It does not replace the 23 phase rows.
 
@@ -225,8 +225,8 @@ Keep the historical per-year summary as a companion to the phase dashboard. It d
 5. After a complete year, run Phases 10 to 14. Continue oldest to newest through Phase 15 without skipping a year.
 6. Run Phase 16 for current-year parallel work and cutover preparation. Derive the next historical year from the configured start date and last locked year. Do not store a hard-coded current year.
 7. Run Phase 17 for source freeze and archive readiness, then Phase 18 for the live switch.
-8. After Phase 18 passes, run Phases 19 to 21 on their configured monthly, VAT-period, and yearly schedules.
-9. Run Phase 22 once, after the first live VAT reconciliation, the monitoring end date, and every recurring cycle through that date have passed.
+8. After Phase 18 passes, run Phases 19 to 21 on their configured monthly, VAT-period and yearly schedules.
+9. Run Phase 22 once, after the first live VAT reconciliation, the monitoring end date and every recurring cycle through that date have passed.
 
 ## Definition of done
 

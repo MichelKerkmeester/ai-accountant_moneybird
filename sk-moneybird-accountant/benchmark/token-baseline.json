@@ -10,7 +10,7 @@
   "fences": [],
   "files": [
     {
-      "bytes": 5828,
+      "bytes": 5820,
       "path": "sk-moneybird-accountant/references/README.md",
       "sections": [
         {
@@ -48,23 +48,23 @@
         },
         {
           "anchor": "4-migration-files",
-          "bytes": 1759,
+          "bytes": 1751,
           "line": 57,
           "lines": 18,
           "title": "4. MIGRATION FILES",
           "tokens": {
-            "cl100k_base": 428,
-            "o200k_base": 426
+            "cl100k_base": 420,
+            "o200k_base": 418
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1451,
-        "o200k_base": 1446
+        "cl100k_base": 1443,
+        "o200k_base": 1438
       }
     },
     {
-      "bytes": 32667,
+      "bytes": 32666,
       "path": "sk-moneybird-accountant/references/fixed-assets.md",
       "sections": [
         {
@@ -135,13 +135,13 @@
         },
         {
           "anchor": "7-the-asset-flow-in-moneybird",
-          "bytes": 4312,
+          "bytes": 4311,
           "line": 112,
           "lines": 17,
           "title": "7. THE ASSET FLOW IN MONEYBIRD",
           "tokens": {
-            "cl100k_base": 1156,
-            "o200k_base": 1049
+            "cl100k_base": 1155,
+            "o200k_base": 1048
           }
         },
         {
@@ -212,8 +212,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 9568,
-        "o200k_base": 8709
+        "cl100k_base": 9567,
+        "o200k_base": 8708
       }
     },
     {
@@ -423,7 +423,7 @@
       }
     },
     {
-      "bytes": 19768,
+      "bytes": 19767,
       "path": "sk-moneybird-accountant/references/income-tax-return/procedure.md",
       "sections": [
         {
@@ -450,13 +450,13 @@
         },
         {
           "anchor": "3-the-source-map",
-          "bytes": 7203,
+          "bytes": 7202,
           "line": 52,
           "lines": 46,
           "title": "3. THE SOURCE MAP",
           "tokens": {
-            "cl100k_base": 2036,
-            "o200k_base": 1895
+            "cl100k_base": 2035,
+            "o200k_base": 1894
           }
         },
         {
@@ -516,8 +516,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4973,
-        "o200k_base": 4767
+        "cl100k_base": 4972,
+        "o200k_base": 4766
       }
     },
     {
@@ -651,7 +651,7 @@
       }
     },
     {
-      "bytes": 21737,
+      "bytes": 21703,
       "path": "sk-moneybird-accountant/references/migration/control-framework.md",
       "sections": [
         {
@@ -667,35 +667,35 @@
         },
         {
           "anchor": "phase-contract-schema",
-          "bytes": 1555,
+          "bytes": 1550,
           "line": 25,
           "lines": 18,
           "title": "Phase contract schema",
           "tokens": {
-            "cl100k_base": 364,
-            "o200k_base": 364
+            "cl100k_base": 359,
+            "o200k_base": 359
           }
         },
         {
           "anchor": "agent-structure",
-          "bytes": 4217,
+          "bytes": 4207,
           "line": 43,
           "lines": 23,
           "title": "Agent structure",
           "tokens": {
-            "cl100k_base": 844,
-            "o200k_base": 843
+            "cl100k_base": 834,
+            "o200k_base": 833
           }
         },
         {
           "anchor": "verification-loop-per-record",
-          "bytes": 1931,
+          "bytes": 1927,
           "line": 66,
           "lines": 15,
           "title": "Verification loop per record",
           "tokens": {
-            "cl100k_base": 387,
-            "o200k_base": 387
+            "cl100k_base": 383,
+            "o200k_base": 383
           }
         },
         {
@@ -711,57 +711,57 @@
         },
         {
           "anchor": "high-risk-transactions",
-          "bytes": 572,
+          "bytes": 569,
           "line": 92,
           "lines": 14,
           "title": "High-risk transactions",
           "tokens": {
-            "cl100k_base": 113,
-            "o200k_base": 113
+            "cl100k_base": 110,
+            "o200k_base": 110
           }
         },
         {
           "anchor": "exception-ledger-and-thresholds",
-          "bytes": 2642,
+          "bytes": 2641,
           "line": 106,
           "lines": 35,
           "title": "Exception ledger and thresholds",
           "tokens": {
-            "cl100k_base": 527,
-            "o200k_base": 526
+            "cl100k_base": 526,
+            "o200k_base": 525
           }
         },
         {
           "anchor": "stop-conditions-and-recovery",
-          "bytes": 4012,
+          "bytes": 4005,
           "line": 141,
           "lines": 31,
           "title": "Stop conditions and recovery",
           "tokens": {
-            "cl100k_base": 815,
-            "o200k_base": 822
+            "cl100k_base": 808,
+            "o200k_base": 815
           }
         },
         {
           "anchor": "master-dashboard",
-          "bytes": 3071,
+          "bytes": 3069,
           "line": 172,
           "lines": 47,
           "title": "Master dashboard",
           "tokens": {
-            "cl100k_base": 824,
-            "o200k_base": 820
+            "cl100k_base": 822,
+            "o200k_base": 818
           }
         },
         {
           "anchor": "concrete-first-runs",
-          "bytes": 1282,
+          "bytes": 1280,
           "line": 219,
           "lines": 12,
           "title": "Concrete first runs",
           "tokens": {
-            "cl100k_base": 284,
-            "o200k_base": 283
+            "cl100k_base": 282,
+            "o200k_base": 281
           }
         },
         {
@@ -777,12 +777,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4653,
-        "o200k_base": 4651
+        "cl100k_base": 4619,
+        "o200k_base": 4617
       }
     },
     {
-      "bytes": 5144,
+      "bytes": 5139,
       "path": "sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md",
       "sections": [
         {
@@ -798,35 +798,35 @@
         },
         {
           "anchor": "2-concept-mapping",
-          "bytes": 1957,
+          "bytes": 1955,
           "line": 27,
           "lines": 16,
           "title": "2. CONCEPT MAPPING",
           "tokens": {
-            "cl100k_base": 378,
-            "o200k_base": 376
+            "cl100k_base": 376,
+            "o200k_base": 374
           }
         },
         {
           "anchor": "3-source-system-export-traps",
-          "bytes": 1287,
+          "bytes": 1286,
           "line": 43,
           "lines": 24,
           "title": "3. SOURCE-SYSTEM EXPORT TRAPS",
           "tokens": {
-            "cl100k_base": 331,
-            "o200k_base": 318
+            "cl100k_base": 330,
+            "o200k_base": 317
           }
         },
         {
           "anchor": "4-migration-checks",
-          "bytes": 581,
+          "bytes": 580,
           "line": 67,
           "lines": 12,
           "title": "4. MIGRATION CHECKS",
           "tokens": {
-            "cl100k_base": 111,
-            "o200k_base": 109
+            "cl100k_base": 110,
+            "o200k_base": 108
           }
         },
         {
@@ -842,12 +842,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1149,
-        "o200k_base": 1130
+        "cl100k_base": 1144,
+        "o200k_base": 1125
       }
     },
     {
-      "bytes": 26029,
+      "bytes": 25984,
       "path": "sk-moneybird-accountant/references/migration/overview-and-setup.md",
       "sections": [
         {
@@ -863,78 +863,78 @@
         },
         {
           "anchor": "goal-and-evidence-sources",
-          "bytes": 1052,
+          "bytes": 1050,
           "line": 25,
           "lines": 15,
           "title": "Goal and evidence sources",
           "tokens": {
-            "cl100k_base": 198,
-            "o200k_base": 197
+            "cl100k_base": 196,
+            "o200k_base": 195
           }
         },
         {
           "anchor": "tool-and-access-boundaries",
-          "bytes": 6605,
+          "bytes": 6590,
           "line": 40,
           "lines": 51,
           "title": "Tool and access boundaries",
           "tokens": {
-            "cl100k_base": 1369,
-            "o200k_base": 1374
+            "cl100k_base": 1354,
+            "o200k_base": 1359
           }
         },
         {
           "anchor": "workspace-layout",
-          "bytes": 1783,
+          "bytes": 1776,
           "line": 91,
           "lines": 22,
           "title": "Workspace layout",
           "tokens": {
-            "cl100k_base": 404,
-            "o200k_base": 406
+            "cl100k_base": 397,
+            "o200k_base": 399
           }
         },
         {
           "anchor": "required-migration_config-fields",
-          "bytes": 11955,
+          "bytes": 11943,
           "line": 113,
           "lines": 78,
           "title": "Required `MIGRATION_CONFIG` fields",
           "tokens": {
-            "cl100k_base": 2833,
-            "o200k_base": 2814
+            "cl100k_base": 2821,
+            "o200k_base": 2802
           }
         },
         {
           "anchor": "proposed-threshold-rows",
-          "bytes": 1308,
+          "bytes": 1306,
           "line": 191,
           "lines": 17,
           "title": "Proposed threshold rows",
           "tokens": {
-            "cl100k_base": 285,
-            "o200k_base": 285
+            "cl100k_base": 283,
+            "o200k_base": 283
           }
         },
         {
           "anchor": "phase-0-setup-sequence",
-          "bytes": 2420,
+          "bytes": 2415,
           "line": 208,
           "lines": 15,
           "title": "Phase 0 setup sequence",
           "tokens": {
-            "cl100k_base": 523,
-            "o200k_base": 521
+            "cl100k_base": 518,
+            "o200k_base": 516
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 5809,
-        "o200k_base": 5793
+        "cl100k_base": 5764,
+        "o200k_base": 5748
       }
     },
     {
-      "bytes": 7567,
+      "bytes": 7557,
       "path": "sk-moneybird-accountant/references/migration/phase-22-completion.md",
       "sections": [
         {
@@ -950,23 +950,23 @@
         },
         {
           "anchor": "phase-22-migration-completion-and-jortt-decommission",
-          "bytes": 6819,
+          "bytes": 6809,
           "line": 24,
           "lines": 62,
           "title": "Phase 22: Migration completion and Jortt decommission",
           "tokens": {
-            "cl100k_base": 1530,
-            "o200k_base": 1523
+            "cl100k_base": 1520,
+            "o200k_base": 1513
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 1706,
-        "o200k_base": 1697
+        "cl100k_base": 1696,
+        "o200k_base": 1687
       }
     },
     {
-      "bytes": 25282,
+      "bytes": 25250,
       "path": "sk-moneybird-accountant/references/migration/phases-0-to-2.md",
       "sections": [
         {
@@ -982,45 +982,45 @@
         },
         {
           "anchor": "phase-0-safety-and-system-setup",
-          "bytes": 10129,
+          "bytes": 10118,
           "line": 24,
           "lines": 74,
           "title": "Phase 0: Safety and system setup",
           "tokens": {
-            "cl100k_base": 2308,
-            "o200k_base": 2300
+            "cl100k_base": 2297,
+            "o200k_base": 2289
           }
         },
         {
           "anchor": "phase-1-full-source-inventory",
-          "bytes": 6808,
+          "bytes": 6795,
           "line": 98,
           "lines": 76,
           "title": "Phase 1: Full source inventory",
           "tokens": {
-            "cl100k_base": 1519,
-            "o200k_base": 1508
+            "cl100k_base": 1506,
+            "o200k_base": 1495
           }
         },
         {
           "anchor": "phase-2-collect-missing-sources-and-seed-archive",
-          "bytes": 7614,
+          "bytes": 7608,
           "line": 174,
           "lines": 69,
           "title": "Phase 2: Collect missing sources and seed archive",
           "tokens": {
-            "cl100k_base": 1590,
-            "o200k_base": 1582
+            "cl100k_base": 1584,
+            "o200k_base": 1576
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 5592,
-        "o200k_base": 5563
+        "cl100k_base": 5560,
+        "o200k_base": 5531
       }
     },
     {
-      "bytes": 37272,
+      "bytes": 37231,
       "path": "sk-moneybird-accountant/references/migration/phases-10-to-16.md",
       "sections": [
         {
@@ -1036,89 +1036,89 @@
         },
         {
           "anchor": "phase-10-year-end-check",
-          "bytes": 6442,
+          "bytes": 6431,
           "line": 24,
           "lines": 73,
           "title": "Phase 10: Year-end check",
           "tokens": {
-            "cl100k_base": 1437,
-            "o200k_base": 1427
+            "cl100k_base": 1426,
+            "o200k_base": 1416
           }
         },
         {
           "anchor": "phase-11-ib-cross-verification",
-          "bytes": 4868,
+          "bytes": 4866,
           "line": 97,
           "lines": 70,
           "title": "Phase 11: IB cross-verification",
           "tokens": {
-            "cl100k_base": 1050,
-            "o200k_base": 1042
+            "cl100k_base": 1048,
+            "o200k_base": 1040
           }
         },
         {
           "anchor": "phase-12-continuity-between-years",
-          "bytes": 4735,
+          "bytes": 4733,
           "line": 167,
           "lines": 63,
           "title": "Phase 12: Continuity between years",
           "tokens": {
-            "cl100k_base": 1051,
-            "o200k_base": 1044
+            "cl100k_base": 1049,
+            "o200k_base": 1042
           }
         },
         {
           "anchor": "phase-13-year-red-team",
-          "bytes": 4253,
+          "bytes": 4248,
           "line": 230,
           "lines": 63,
           "title": "Phase 13: Year Red Team",
           "tokens": {
-            "cl100k_base": 955,
-            "o200k_base": 952
+            "cl100k_base": 950,
+            "o200k_base": 947
           }
         },
         {
           "anchor": "phase-14-year-lock",
-          "bytes": 5929,
+          "bytes": 5924,
           "line": 293,
           "lines": 66,
           "title": "Phase 14: Year lock",
           "tokens": {
-            "cl100k_base": 1323,
-            "o200k_base": 1318
+            "cl100k_base": 1318,
+            "o200k_base": 1313
           }
         },
         {
           "anchor": "phase-15-repeat-from-oldest-to-newest-year",
-          "bytes": 3830,
+          "bytes": 3824,
           "line": 359,
           "lines": 63,
           "title": "Phase 15: Repeat from oldest to newest year",
           "tokens": {
-            "cl100k_base": 903,
-            "o200k_base": 894
+            "cl100k_base": 897,
+            "o200k_base": 888
           }
         },
         {
           "anchor": "phase-16-current-year-parallel-mirror-and-cutover-preparation",
-          "bytes": 6458,
+          "bytes": 6450,
           "line": 422,
           "lines": 64,
           "title": "Phase 16: Current-year parallel mirror and cutover preparation",
           "tokens": {
-            "cl100k_base": 1420,
-            "o200k_base": 1399
+            "cl100k_base": 1412,
+            "o200k_base": 1391
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 8322,
-        "o200k_base": 8255
+        "cl100k_base": 8281,
+        "o200k_base": 8214
       }
     },
     {
-      "bytes": 13494,
+      "bytes": 13475,
       "path": "sk-moneybird-accountant/references/migration/phases-17-to-18.md",
       "sections": [
         {
@@ -1134,34 +1134,34 @@
         },
         {
           "anchor": "phase-17-source-freeze-and-archive-readiness",
-          "bytes": 6327,
+          "bytes": 6318,
           "line": 24,
           "lines": 63,
           "title": "Phase 17: Source freeze and archive readiness",
           "tokens": {
-            "cl100k_base": 1410,
-            "o200k_base": 1397
+            "cl100k_base": 1401,
+            "o200k_base": 1388
           }
         },
         {
           "anchor": "phase-18-switch-to-live-bookkeeping",
-          "bytes": 6422,
+          "bytes": 6414,
           "line": 87,
           "lines": 71,
           "title": "Phase 18: Switch to live bookkeeping",
           "tokens": {
-            "cl100k_base": 1489,
-            "o200k_base": 1466
+            "cl100k_base": 1481,
+            "o200k_base": 1458
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3078,
-        "o200k_base": 3040
+        "cl100k_base": 3059,
+        "o200k_base": 3021
       }
     },
     {
-      "bytes": 17422,
+      "bytes": 17404,
       "path": "sk-moneybird-accountant/references/migration/phases-19-to-21.md",
       "sections": [
         {
@@ -1177,45 +1177,45 @@
         },
         {
           "anchor": "phase-19-live-monthly-workflow",
-          "bytes": 5292,
+          "bytes": 5287,
           "line": 24,
           "lines": 69,
           "title": "Phase 19: Live monthly workflow",
           "tokens": {
-            "cl100k_base": 1192,
-            "o200k_base": 1183
+            "cl100k_base": 1187,
+            "o200k_base": 1178
           }
         },
         {
           "anchor": "phase-20-live-vat-period-workflow",
-          "bytes": 5875,
+          "bytes": 5872,
           "line": 93,
           "lines": 76,
           "title": "Phase 20: Live VAT-period workflow",
           "tokens": {
-            "cl100k_base": 1321,
-            "o200k_base": 1295
+            "cl100k_base": 1318,
+            "o200k_base": 1292
           }
         },
         {
           "anchor": "phase-21-live-yearly-workflow",
-          "bytes": 5500,
+          "bytes": 5492,
           "line": 169,
           "lines": 75,
           "title": "Phase 21: Live yearly workflow",
           "tokens": {
-            "cl100k_base": 1254,
-            "o200k_base": 1235
+            "cl100k_base": 1246,
+            "o200k_base": 1227
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3952,
-        "o200k_base": 3895
+        "cl100k_base": 3934,
+        "o200k_base": 3877
       }
     },
     {
-      "bytes": 15059,
+      "bytes": 15039,
       "path": "sk-moneybird-accountant/references/migration/phases-3-to-5.md",
       "sections": [
         {
@@ -1231,45 +1231,45 @@
         },
         {
           "anchor": "phase-3-reconstruct-each-source-independently",
-          "bytes": 5408,
+          "bytes": 5402,
           "line": 24,
           "lines": 67,
           "title": "Phase 3: Reconstruct each source independently",
           "tokens": {
-            "cl100k_base": 1221,
-            "o200k_base": 1207
+            "cl100k_base": 1215,
+            "o200k_base": 1201
           }
         },
         {
           "anchor": "phase-4-cross-reconciliation",
-          "bytes": 4078,
+          "bytes": 4072,
           "line": 91,
           "lines": 65,
           "title": "Phase 4: Cross-reconciliation",
           "tokens": {
-            "cl100k_base": 930,
-            "o200k_base": 924
+            "cl100k_base": 924,
+            "o200k_base": 918
           }
         },
         {
           "anchor": "phase-5-completeness-and-anomaly-scan",
-          "bytes": 4816,
+          "bytes": 4810,
           "line": 156,
           "lines": 67,
           "title": "Phase 5: Completeness and anomaly scan",
           "tokens": {
-            "cl100k_base": 1053,
-            "o200k_base": 1044
+            "cl100k_base": 1047,
+            "o200k_base": 1038
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 3379,
-        "o200k_base": 3348
+        "cl100k_base": 3359,
+        "o200k_base": 3328
       }
     },
     {
-      "bytes": 30135,
+      "bytes": 30094,
       "path": "sk-moneybird-accountant/references/migration/phases-6-to-9.md",
       "sections": [
         {
@@ -1285,56 +1285,56 @@
         },
         {
           "anchor": "phase-6-design-the-moneybird-mapping",
-          "bytes": 7256,
+          "bytes": 7245,
           "line": 24,
           "lines": 88,
           "title": "Phase 6: Design the Moneybird mapping",
           "tokens": {
-            "cl100k_base": 1568,
-            "o200k_base": 1564
+            "cl100k_base": 1557,
+            "o200k_base": 1553
           }
         },
         {
           "anchor": "phase-7-pilot-migration",
-          "bytes": 8793,
+          "bytes": 8780,
           "line": 112,
           "lines": 76,
           "title": "Phase 7: Pilot migration",
           "tokens": {
-            "cl100k_base": 1923,
-            "o200k_base": 1911
+            "cl100k_base": 1910,
+            "o200k_base": 1898
           }
         },
         {
           "anchor": "phase-8-historical-migration-per-period",
-          "bytes": 7524,
+          "bytes": 7515,
           "line": 188,
           "lines": 77,
           "title": "Phase 8: Historical migration per period",
           "tokens": {
-            "cl100k_base": 1645,
-            "o200k_base": 1635
+            "cl100k_base": 1636,
+            "o200k_base": 1626
           }
         },
         {
           "anchor": "phase-9-vat-verification-loop",
-          "bytes": 5817,
+          "bytes": 5811,
           "line": 265,
           "lines": 68,
           "title": "Phase 9: VAT verification loop",
           "tokens": {
-            "cl100k_base": 1272,
-            "o200k_base": 1256
+            "cl100k_base": 1266,
+            "o200k_base": 1250
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 6587,
-        "o200k_base": 6543
+        "cl100k_base": 6546,
+        "o200k_base": 6502
       }
     },
     {
-      "bytes": 32951,
+      "bytes": 32890,
       "path": "sk-moneybird-accountant/references/migration/shared-mechanisms.md",
       "sections": [
         {
@@ -1350,151 +1350,151 @@
         },
         {
           "anchor": "m1-register-schemas-and-complete-source-manifests",
-          "bytes": 960,
+          "bytes": 959,
           "line": 24,
           "lines": 6,
           "title": "M1. Register schemas and complete source manifests",
+          "tokens": {
+            "cl100k_base": 181,
+            "o200k_base": 180
+          }
+        },
+        {
+          "anchor": "m2-stable-local-write-keys-and-uncertain-outcomes",
+          "bytes": 1986,
+          "line": 30,
+          "lines": 8,
+          "title": "M2. Stable local write keys and uncertain outcomes",
+          "tokens": {
+            "cl100k_base": 381,
+            "o200k_base": 380
+          }
+        },
+        {
+          "anchor": "m3-append-only-run-journal-approvals-and-crash-resume",
+          "bytes": 1670,
+          "line": 38,
+          "lines": 10,
+          "title": "M3. Append-only run journal, approvals and crash resume",
+          "tokens": {
+            "cl100k_base": 393,
+            "o200k_base": 401
+          }
+        },
+        {
+          "anchor": "m4-evidence-privacy-and-session-boundary",
+          "bytes": 1410,
+          "line": 48,
+          "lines": 6,
+          "title": "M4. Evidence, privacy and session boundary",
+          "tokens": {
+            "cl100k_base": 292,
+            "o200k_base": 293
+          }
+        },
+        {
+          "anchor": "m5-moneybird-rate-limits-and-recovery",
+          "bytes": 851,
+          "line": 54,
+          "lines": 6,
+          "title": "M5. Moneybird rate limits and recovery",
           "tokens": {
             "cl100k_base": 182,
             "o200k_base": 181
           }
         },
         {
-          "anchor": "m2-stable-local-write-keys-and-uncertain-outcomes",
-          "bytes": 1990,
-          "line": 30,
-          "lines": 8,
-          "title": "M2. Stable local write keys and uncertain outcomes",
-          "tokens": {
-            "cl100k_base": 385,
-            "o200k_base": 384
-          }
-        },
-        {
-          "anchor": "m3-append-only-run-journal-approvals-and-crash-resume",
-          "bytes": 1673,
-          "line": 38,
-          "lines": 10,
-          "title": "M3. Append-only run journal, approvals, and crash resume",
-          "tokens": {
-            "cl100k_base": 396,
-            "o200k_base": 404
-          }
-        },
-        {
-          "anchor": "m4-evidence-privacy-and-session-boundary",
-          "bytes": 1411,
-          "line": 48,
-          "lines": 6,
-          "title": "M4. Evidence, privacy, and session boundary",
-          "tokens": {
-            "cl100k_base": 293,
-            "o200k_base": 294
-          }
-        },
-        {
-          "anchor": "m5-moneybird-rate-limits-and-recovery",
-          "bytes": 852,
-          "line": 54,
-          "lines": 6,
-          "title": "M5. Moneybird rate limits and recovery",
-          "tokens": {
-            "cl100k_base": 183,
-            "o200k_base": 182
-          }
-        },
-        {
           "anchor": "m6-access-window-through-writes-and-verification",
-          "bytes": 717,
+          "bytes": 714,
           "line": 60,
           "lines": 6,
           "title": "M6. Access window through writes and verification",
           "tokens": {
-            "cl100k_base": 141,
-            "o200k_base": 141
-          }
-        },
-        {
-          "anchor": "m7-exception-and-threshold-control",
-          "bytes": 874,
-          "line": 66,
-          "lines": 6,
-          "title": "M7. Exception and threshold control",
-          "tokens": {
-            "cl100k_base": 161,
-            "o200k_base": 162
-          }
-        },
-        {
-          "anchor": "m8-jortt-pagination-and-source-request-evidence",
-          "bytes": 1124,
-          "line": 72,
-          "lines": 6,
-          "title": "M8. Jortt pagination and source request evidence",
-          "tokens": {
-            "cl100k_base": 229,
-            "o200k_base": 228
-          }
-        },
-        {
-          "anchor": "m9-master-phase-dashboard",
-          "bytes": 668,
-          "line": 78,
-          "lines": 4,
-          "title": "M9. Master phase dashboard",
-          "tokens": {
-            "cl100k_base": 142,
+            "cl100k_base": 138,
             "o200k_base": 138
           }
         },
         {
+          "anchor": "m7-exception-and-threshold-control",
+          "bytes": 873,
+          "line": 66,
+          "lines": 6,
+          "title": "M7. Exception and threshold control",
+          "tokens": {
+            "cl100k_base": 160,
+            "o200k_base": 161
+          }
+        },
+        {
+          "anchor": "m8-jortt-pagination-and-source-request-evidence",
+          "bytes": 1121,
+          "line": 72,
+          "lines": 6,
+          "title": "M8. Jortt pagination and source request evidence",
+          "tokens": {
+            "cl100k_base": 226,
+            "o200k_base": 225
+          }
+        },
+        {
+          "anchor": "m9-master-phase-dashboard",
+          "bytes": 667,
+          "line": 78,
+          "lines": 4,
+          "title": "M9. Master phase dashboard",
+          "tokens": {
+            "cl100k_base": 141,
+            "o200k_base": 137
+          }
+        },
+        {
           "anchor": "m10-write-isolation-decision",
-          "bytes": 910,
+          "bytes": 908,
           "line": 82,
           "lines": 6,
           "title": "M10. Write-isolation decision",
           "tokens": {
-            "cl100k_base": 185,
-            "o200k_base": 186
+            "cl100k_base": 183,
+            "o200k_base": 184
           }
         },
         {
           "anchor": "m11-stop-state-recovery-matrix",
-          "bytes": 3530,
+          "bytes": 3527,
           "line": 88,
           "lines": 16,
           "title": "M11. Stop-state recovery matrix",
           "tokens": {
-            "cl100k_base": 737,
-            "o200k_base": 746
+            "cl100k_base": 734,
+            "o200k_base": 743
           }
         },
         {
           "anchor": "m12-external-agent-route",
-          "bytes": 12730,
+          "bytes": 12697,
           "line": 104,
           "lines": 69,
           "title": "M12. External agent route",
           "tokens": {
-            "cl100k_base": 2660,
-            "o200k_base": 2663
+            "cl100k_base": 2627,
+            "o200k_base": 2630
           }
         },
         {
           "anchor": "route-contract",
-          "bytes": 4460,
+          "bytes": 4455,
           "line": 173,
           "lines": 23,
           "title": "Route contract",
           "tokens": {
-            "cl100k_base": 972,
-            "o200k_base": 979
+            "cl100k_base": 967,
+            "o200k_base": 974
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 6876,
-        "o200k_base": 6898
+        "cl100k_base": 6815,
+        "o200k_base": 6837
       }
     },
     {
@@ -1651,7 +1651,7 @@
       }
     },
     {
-      "bytes": 15332,
+      "bytes": 15321,
       "path": "sk-moneybird-accountant/references/moneybird-bookkeeping.md",
       "sections": [
         {
@@ -1667,79 +1667,79 @@
         },
         {
           "anchor": "2-sales-and-receipts",
-          "bytes": 1082,
+          "bytes": 1081,
           "line": 27,
           "lines": 18,
           "title": "2. SALES AND RECEIPTS",
           "tokens": {
-            "cl100k_base": 251,
-            "o200k_base": 242
+            "cl100k_base": 250,
+            "o200k_base": 241
           }
         },
         {
           "anchor": "3-purchases-and-costs",
-          "bytes": 1853,
+          "bytes": 1852,
           "line": 45,
           "lines": 25,
           "title": "3. PURCHASES AND COSTS",
           "tokens": {
-            "cl100k_base": 426,
-            "o200k_base": 426
+            "cl100k_base": 425,
+            "o200k_base": 425
           }
         },
         {
           "anchor": "4-private-use-and-mileage",
-          "bytes": 1606,
+          "bytes": 1605,
           "line": 70,
           "lines": 18,
           "title": "4. PRIVATE USE AND MILEAGE",
           "tokens": {
-            "cl100k_base": 370,
-            "o200k_base": 364
+            "cl100k_base": 369,
+            "o200k_base": 363
           }
         },
         {
           "anchor": "5-assets-and-opening-balance",
-          "bytes": 1812,
+          "bytes": 1811,
           "line": 88,
           "lines": 18,
           "title": "5. ASSETS AND OPENING BALANCE",
           "tokens": {
-            "cl100k_base": 405,
-            "o200k_base": 401
+            "cl100k_base": 404,
+            "o200k_base": 400
           }
         },
         {
           "anchor": "6-bank-reconciliation",
-          "bytes": 1039,
+          "bytes": 1038,
           "line": 106,
           "lines": 11,
           "title": "6. BANK RECONCILIATION",
           "tokens": {
-            "cl100k_base": 240,
-            "o200k_base": 233
+            "cl100k_base": 239,
+            "o200k_base": 232
           }
         },
         {
           "anchor": "7-vat-and-period-control",
-          "bytes": 1550,
+          "bytes": 1549,
           "line": 117,
           "lines": 16,
           "title": "7. VAT AND PERIOD CONTROL",
           "tokens": {
-            "cl100k_base": 362,
-            "o200k_base": 356
+            "cl100k_base": 361,
+            "o200k_base": 355
           }
         },
         {
           "anchor": "8-live-bookkeeping-cycles",
-          "bytes": 4623,
+          "bytes": 4619,
           "line": 133,
           "lines": 52,
           "title": "8. LIVE BOOKKEEPING CYCLES",
           "tokens": {
-            "cl100k_base": 1030,
-            "o200k_base": 1020
+            "cl100k_base": 1026,
+            "o200k_base": 1016
           }
         },
         {
@@ -1755,12 +1755,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3492,
-        "o200k_base": 3448
+        "cl100k_base": 3481,
+        "o200k_base": 3437
       }
     },
     {
-      "bytes": 35005,
+      "bytes": 35001,
       "path": "sk-moneybird-accountant/references/purchase-invoices.md",
       "sections": [
         {
@@ -1776,13 +1776,13 @@
         },
         {
           "anchor": "2-check-the-document-first",
-          "bytes": 2138,
+          "bytes": 2136,
           "line": 43,
           "lines": 16,
           "title": "2. CHECK THE DOCUMENT FIRST",
           "tokens": {
-            "cl100k_base": 561,
-            "o200k_base": 532
+            "cl100k_base": 559,
+            "o200k_base": 530
           }
         },
         {
@@ -1798,13 +1798,13 @@
         },
         {
           "anchor": "4-the-booking-flow-in-moneybird",
-          "bytes": 2810,
+          "bytes": 2809,
           "line": 78,
           "lines": 18,
           "title": "4. THE BOOKING FLOW IN MONEYBIRD",
           "tokens": {
-            "cl100k_base": 684,
-            "o200k_base": 669
+            "cl100k_base": 683,
+            "o200k_base": 668
           }
         },
         {
@@ -1853,13 +1853,13 @@
         },
         {
           "anchor": "9-imports-and-domestic-reverse-charge",
-          "bytes": 3580,
+          "bytes": 3579,
           "line": 219,
           "lines": 28,
           "title": "9. IMPORTS AND DOMESTIC REVERSE CHARGE",
           "tokens": {
-            "cl100k_base": 1021,
-            "o200k_base": 969
+            "cl100k_base": 1020,
+            "o200k_base": 968
           }
         },
         {
@@ -1908,12 +1908,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 9422,
-        "o200k_base": 8981
+        "cl100k_base": 9418,
+        "o200k_base": 8977
       }
     },
     {
-      "bytes": 13602,
+      "bytes": 13601,
       "path": "sk-moneybird-accountant/references/routing-signals.md",
       "sections": [
         {
@@ -2006,8 +2006,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3780,
-        "o200k_base": 3565
+        "cl100k_base": 3779,
+        "o200k_base": 3564
       }
     },
     {
@@ -19935,12 +19935,12 @@
     },
     {
       "blocks": 1,
-      "bytes": 207169,
+      "bytes": 207167,
       "files": 1,
       "name": "references/index.json",
       "tokens": {
-        "cl100k_base": 64590,
-        "o200k_base": 65398
+        "cl100k_base": 64588,
+        "o200k_base": 65396
       }
     }
   ],
@@ -19967,7 +19967,7 @@
   },
   "units": [
     {
-      "bytes": 6558029,
+      "bytes": 6557677,
       "files": 459,
       "name": "corpus total",
       "reads": [
@@ -19975,8 +19975,8 @@
       ],
       "sections": 1391,
       "tokens": {
-        "cl100k_base": 2006165,
-        "o200k_base": 1878601
+        "cl100k_base": 2005813,
+        "o200k_base": 1878249
       }
     },
     {
@@ -20002,14 +20002,14 @@
       }
     },
     {
-      "bytes": 37182,
+      "bytes": 37168,
       "name": "sk-moneybird-accountant/SKILL.md",
       "reads": [
         "sk-moneybird-accountant/SKILL.md"
       ],
       "tokens": {
-        "cl100k_base": 9798,
-        "o200k_base": 9650
+        "cl100k_base": 9784,
+        "o200k_base": 9636
       }
     },
     {

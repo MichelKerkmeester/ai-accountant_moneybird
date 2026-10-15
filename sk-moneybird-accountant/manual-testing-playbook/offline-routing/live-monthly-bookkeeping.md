@@ -30,8 +30,8 @@ A local-only check can confirm that the skill chooses its mode and references wh
 - Fixture rows: LIVE-001 (en) and LIVE-001-nl (nl twin).
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references. Do not use network access or accounting APIs.
 - Expected signals: Selects LIVE, lists sales, purchase records, bank matching, private movements, and exceptions, and names the bookkeeping reference.
-- Desired user-visible outcome: A concise route report with selected mode, reference paths, boundary result, and no API activity.
-- Pass/fail: PASS if The response routes to LIVE monthly work and names the required checks without external access. FAIL if The response selects MIGRATION, skips the bookkeeping reference, or calls a Moneybird API.
+- Desired user-visible outcome: A concise route report with selected mode, reference paths, boundary result and no API activity.
+- Pass/fail: PASS if The response routes to LIVE monthly work and names the required checks without external access. FAIL if The response selects MIGRATION, skips the bookkeeping reference or calls a Moneybird API.
 
 ---
 
@@ -57,7 +57,7 @@ A local-only check can confirm that the skill chooses its mode and references wh
 1. Read AGENTS.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Read sk-moneybird-accountant/references/moneybird-bookkeeping.md
-4. Report the selected mode, monthly checks, and relevant reference without calling an API
+4. Report the selected mode, monthly checks and relevant reference without calling an API
 
 ### Expected
 
@@ -65,16 +65,16 @@ Selects LIVE, lists sales, purchase records, bank matching, private movements, a
 
 ### Evidence
 
-Capture the prompt, selected mode, listed monthly checks, reference path, and no-API confirmation.
+Capture the prompt, selected mode, listed monthly checks, reference path and no-API confirmation.
 
 ### Pass / Fail
 
 - **Pass**: The response routes to LIVE monthly work and names the required checks without external access.
-- **Fail**: The response selects MIGRATION, skips the bookkeeping reference, or calls a Moneybird API.
+- **Fail**: The response selects MIGRATION, skips the bookkeeping reference or calls a Moneybird API.
 
 ### Failure Triage
 
-Check the monthly intent, the LIVE section, and the reference-loading instructions. Repeat without tool access.
+Check the monthly intent, the LIVE section and the reference-loading instructions. Repeat without tool access.
 
 ---
 

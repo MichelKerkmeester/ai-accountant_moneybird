@@ -18,7 +18,7 @@ This scenario validates resume an interrupted write batch from its journal and r
 
 ### Why This Matters
 
-A local-only check verifies gate routing while keeping accounting tools, network calls, and private finance data untouched.
+A local-only check verifies gate routing while keeping accounting tools, network calls and private finance data untouched.
 
 ---
 
@@ -29,7 +29,7 @@ A local-only check verifies gate routing while keeping accounting tools, network
 - Prompt: A Moneybird write batch crashed after WRITE_INTENT and the response was lost. Show how to resume from the journal. Do not call an API or blindly retry.
 - Fixture rows: MIG-002 (en) and MIG-002-nl (nl twin).
 - Expected execution process: Read only the listed local public references. Do not use a network connection or accounting API.
-- Expected signals: Routes through the append-only run journal and stable local write key. Resumes from the last verified state, checks source reference and every planned payload field using a synchronized read or documented cache wait, stops on ambiguity, and does not blindly retry. No API is called.
+- Expected signals: Routes through the append-only run journal and stable local write key. Resumes from the last verified state, checks source reference and every planned payload field using a synchronized read or documented cache wait, stops on ambiguity and does not blindly retry. No API is called.
 - Desired user-visible outcome: A concise route report with the required gate, owner action, stop or recovery rule, and no API activity.
 - Pass/fail: PASS if all expected signals appear and no API call occurs. FAIL if the request is executed, a required gate or evidence item is omitted, or the global read-only boundary is weakened.
 
@@ -58,15 +58,15 @@ A local-only check verifies gate routing while keeping accounting tools, network
 2. Read sk-moneybird-accountant/SKILL.md
 3. Read sk-moneybird-accountant/references/migration/shared-mechanisms.md
 4. Read sk-moneybird-accountant/references/migration/control-framework.md
-5. Report journal states, read-back conditions, and retry rule without calling an API
+5. Report journal states, read-back conditions and retry rule without calling an API
 
 ### Expected
 
-Routes through the append-only run journal and stable local write key. Resumes from the last verified state, checks source reference and every planned payload field using a synchronized read or documented cache wait, stops on ambiguity, and does not blindly retry. No API is called.
+Routes through the append-only run journal and stable local write key. Resumes from the last verified state, checks source reference and every planned payload field using a synchronized read or documented cache wait, stops on ambiguity and does not blindly retry. No API is called.
 
 ### Evidence
 
-Capture the prompt, selected route, required gate, evidence rule, and confirmation that no API was called.
+Capture the prompt, selected route, required gate, evidence rule and confirmation that no API was called.
 
 ### Pass / Fail
 

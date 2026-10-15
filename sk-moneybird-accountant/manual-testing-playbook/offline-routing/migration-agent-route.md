@@ -1,6 +1,6 @@
 ---
 title: MIG-005 -- Migration agent route
-description: Validates summaries-only agent routing, independent checks, and safe draft recovery without service calls.
+description: Validates summaries-only agent routing, independent checks and safe draft recovery without service calls.
 id: MIG-005
 catalog_applicable: true
 version: 1.0.0.0
@@ -18,7 +18,7 @@ The scenario confirms that migration sub-goals use the M12 seat route and that a
 
 ### Why This Matters
 
-A local-only check verifies route and journal behavior while keeping accounting tools, network calls, and private finance data untouched.
+A local-only check verifies route and journal behavior while keeping accounting tools, network calls and private finance data untouched.
 
 ---
 
@@ -28,8 +28,8 @@ A local-only check verifies route and journal behavior while keeping accounting 
 - Real user request: I am in migration Phase 7 and the last agent journal state is AGENT_DRAFTED. What should happen next? Do not read records or call an API.
 - Prompt: I am in migration Phase 7 and the last agent journal state is AGENT_DRAFTED. What should happen next? Do not read records or call an API.
 - Fixture rows: MIG-005 (en) and MIG-005-nl (nl twin).
-- Expected execution process: Read the project bootstrap and skill, then read only the migration index, Phase 7 contract, and shared mechanisms. Do not use network access, accounting APIs, private finance data, or a live agent dispatch.
-- Expected signals: Names the Agent runner, Implementer, Verifier, Final reviewer, and separate Migration Writer seats. States that agent payloads contain summaries only, record-level checks run locally, AGENT_DRAFTED is not verified, and the draft returns to verification before any gate. Preserves Operator approval before a write and reports no API call.
+- Expected execution process: Read the project bootstrap and skill, then read only the migration index, Phase 7 contract and shared mechanisms. Do not use network access, accounting APIs, private finance data or a live agent dispatch.
+- Expected signals: Names the Agent runner, Implementer, Verifier, Final reviewer and separate Migration Writer seats. States that agent payloads contain summaries only, record-level checks run locally, AGENT_DRAFTED is not verified and the draft returns to verification before any gate. Preserves Operator approval before a write and reports no API call.
 - Desired user-visible outcome: A concise route and resume decision with the controlling reference paths and no service call.
 - Pass/fail: PASS if AGENT_DRAFTED returns to verification, the seats and data boundary are correct, and no service call is made. FAIL if the draft is treated as verified or a service call occurs.
 
@@ -42,7 +42,7 @@ A local-only check verifies route and journal behavior while keeping accounting 
 1. Read the bootstrap and skill.
 2. Read sk-moneybird-accountant/references/migration/README.md.
 3. Read sk-moneybird-accountant/references/migration/phases-6-to-9.md and sk-moneybird-accountant/references/migration/shared-mechanisms.md.
-4. Report the M12 route, the verified-state resume rule, and the no-call status.
+4. Report the M12 route, the verified-state resume rule and the no-call status.
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
@@ -59,24 +59,24 @@ A local-only check verifies route and journal behavior while keeping accounting 
 3. Read sk-moneybird-accountant/references/migration/README.md
 4. Read sk-moneybird-accountant/references/migration/phases-6-to-9.md
 5. Read sk-moneybird-accountant/references/migration/shared-mechanisms.md
-6. Report the seats, data boundary, resume point, Operator approval, and API-free status
+6. Report the seats, data boundary, resume point, Operator approval and API-free status
 
 ### Expected
 
-The Agent runner coordinates the Implementer, Verifier, Final reviewer, and separate Migration Writer seat. Every seat receives summaries only. Local scripts perform record-level work. AGENT_DRAFTED is not verified and restarts at verification. No write proceeds without Verifier PASS and Operator approval. No service is called.
+The Agent runner coordinates the Implementer, Verifier, Final reviewer and separate Migration Writer seat. Every seat receives summaries only. Local scripts perform record-level work. AGENT_DRAFTED is not verified and restarts at verification. No write proceeds without Verifier PASS and Operator approval. No service is called.
 
 ### Evidence
 
-Capture the prompt, the three references, the seat mapping, data boundary, resume point, Operator approval rule, and a record that no service call occurred.
+Capture the prompt, the three references, the seat mapping, data boundary, resume point, Operator approval rule and a record that no service call occurred.
 
 ### Pass / Fail
 
-- **Pass**: Correctly routes through M12, restarts an AGENT_DRAFTED item at verification, and makes no service call.
-- **Fail**: Treats AGENT_DRAFTED as verified, skips the seat boundary, or calls a service.
+- **Pass**: Correctly routes through M12, restarts an AGENT_DRAFTED item at verification and makes no service call.
+- **Fail**: Treats AGENT_DRAFTED as verified, skips the seat boundary or calls a service.
 
 ### Failure Triage
 
-Check the migration index, Phase 7 contract, M3 journal states, and M12 work-unit loop. Repeat the scenario offline.
+Check the migration index, Phase 7 contract, M3 journal states and M12 work-unit loop. Repeat the scenario offline.
 
 ---
 

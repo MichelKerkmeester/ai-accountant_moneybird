@@ -43,7 +43,7 @@ contextType: "general"
 
 - [ ] T001 [SG-4.1] Link source evidence for each event. (Check: in-scope source items linked or explicitly excepted 100%.)
 - [ ] T002 [SG-4.2] Assign deterministic migration keys. (Check: key collisions 0 and duplicate source keys 0.)
-- [ ] T003 [SG-4.3] Preserve source-to-target identity fields. (Check: canonical records with source key, period, and evidence reference 100%.)
+- [ ] T003 [SG-4.3] Preserve source-to-target identity fields. (Check: canonical records with source key, period and evidence reference 100%.)
 - [ ] T004 [SG-4.4] Run the agent route. (Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, match recount differences 0, duplicate stable keys 0, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.)
 <!-- /ANCHOR:phase-2 -->
 

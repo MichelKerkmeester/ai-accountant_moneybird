@@ -1,6 +1,6 @@
 ---
 title: "scripts: Plan Kit, Checkers and Suites"
-description: "Generates the migration plan kit, builds the session context, and owns the offline checkers and test suites that guard the skill's routes, references, tokens and writes."
+description: "Generates the migration plan kit, builds the session context and owns the offline checkers and test suites that guard the skill's routes, references, tokens and writes."
 version: 1.0.0.0
 trigger_phrases:
   - "generate plan kit"
@@ -416,7 +416,7 @@ hardening-matrix: ok (27 rows, 21 P0 rows)
 regression-trailer: ok (0 commits scanned)
 ```
 
-`regression-trailer-test.sh` builds fixture git repositories with signing and hooks off and ends with `Result: 43 passed, 0 failed`. It proves a gate change with no test and no trailer exits 1, the same change with a valid trailer exits 0, a deleted covering test does not register, and an unknown range or a missing root exits 2.
+`regression-trailer-test.sh` builds fixture git repositories with signing and hooks off and ends with `Result: 43 passed, 0 failed`. It proves a gate change with no test and no trailer exits 1, the same change with a valid trailer exits 0, a deleted covering test does not register and an unknown range or a missing root exits 2.
 
 ---
 
@@ -448,7 +448,7 @@ A quiet watch prints `no watched URL changed` and a current calendar prints `3 f
 
 ## 18. ROUTER BLOCK
 
-`../SKILL.md` section 2 holds one router block between `<!-- router-block:start -->` and `<!-- router-block:end -->`, generated from the Task-Type Table by `check-route-table.py --write`. The block carries `INTENT_SIGNALS` per row from the Dutch and English signal cells, the read structures below from the read-set column, `UNKNOWN_FALLBACK_CHECKLIST` from the three fallback tiers, and the guard, existence-check and discovery helpers. Edit the table and rerun the mode, never the block by hand.
+`../SKILL.md` section 2 holds one router block between `<!-- router-block:start -->` and `<!-- router-block:end -->`, generated from the Task-Type Table by `check-route-table.py --write`. The block carries `INTENT_SIGNALS` per row from the Dutch and English signal cells, the read structures below from the read-set column, `UNKNOWN_FALLBACK_CHECKLIST` from the three fallback tiers and the guard, existence-check and discovery helpers. Edit the table and rerun the mode, never the block by hand.
 
 ### Read-set grammar
 
@@ -493,7 +493,7 @@ intent signals: unchanged (graph-metadata.json)
 
 A malformed table exits 2 and writes neither file, and so does a malformed marker pair or an invalid `../graph-metadata.json`.
 
-`--check` adds two drift checks to the table checks. A table cell that differs from the block exits 1 and names the row, a missing marker pair exits 1, and a table signal absent from `intent_signals` exits 1. Real failure lines:
+`--check` adds two drift checks to the table checks. A table cell that differs from the block exits 1 and names the row, a missing marker pair exits 1 and a table signal absent from `intent_signals` exits 1. Real failure lines:
 
 ```text
 row T2: block entry differs from the table

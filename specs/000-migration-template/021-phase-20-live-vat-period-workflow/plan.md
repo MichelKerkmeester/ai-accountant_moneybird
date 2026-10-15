@@ -103,7 +103,7 @@ Phase 20 runs the actions in the order given, and every Moneybird write goes thr
 
 **Phase actions** (from the phase reference):
 
-[VAT Agent] recalculates VAT. [Tax Filing Agent] checks period, declaration, and correction history. [Independent Auditor] verifies boxes and correction links. [Operator] alone decides and files the return. A named backup owner covers absence. Gate verifier: [Independent Auditor] reproduces period, box, correction, and owner counts.
+[VAT Agent] recalculates VAT. [Tax Filing Agent] checks period, declaration and correction history. [Independent Auditor] verifies boxes and correction links. [Operator] alone decides and files the return. A named backup owner covers absence. Gate verifier: [Independent Auditor] reproduces period, box, correction and owner counts.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts VAT-period check scripts using the reuse fast path. [Verifier] checks the run summary and record-level result every cycle, with code review only when a hash changes. [Final reviewer] reviews the phase before Operator approvals.
 

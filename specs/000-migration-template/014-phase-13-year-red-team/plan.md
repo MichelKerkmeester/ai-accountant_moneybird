@@ -105,7 +105,7 @@ Phase 13 runs the actions in the order given, and every Moneybird write goes thr
 
 `[Red Team]` challenges the year. `[Independent Auditor]` validates population and sample. `[Operator]` accepts or rejects residual differences. Gate verifier: `[Red Team]` owns challenge evidence. `[Independent Auditor]` verifies sample reproducibility. `[Operator]` owns residual acceptance.
 
-[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts fixes for Red Team findings only. [Verifier] checks the year as Red Team from a clean working copy without earlier findings, verdicts, or final reviews. [Final reviewer] reviews the phase before Operator approvals.
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts fixes for Red Team findings only. [Verifier] checks the year as Red Team from a clean working copy without earlier findings, verdicts or final reviews. [Final reviewer] reviews the phase before Operator approvals.
 
 **Year challenge checkpoints retained from the original Red Team pass:**
 Challenge missing or duplicate invoices, duplicate bank transactions, December to January cut-off, missing credit notes, unusual suppliers, reverse charge, private items, assets and depreciation, tax payments, internal transfers, unexplained journals, profit differences, and balance differences. Use a separate read-only session and the configured reproducible sample.

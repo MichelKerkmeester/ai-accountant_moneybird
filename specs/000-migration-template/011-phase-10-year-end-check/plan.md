@@ -103,20 +103,20 @@ Phase 10 runs the actions in the order given, and every Moneybird write goes thr
 
 **Phase actions** (from the phase reference):
 
-[Independent Auditor] runs account-level comparisons. [Mapping Agent] maps source accounts. [Operator] approves the exact guarded report-export request, year, and version after the Phase 9 gate. [Migration Writer] flushes an operation-scoped WRITE_INTENT containing the requested operation, payload hash, and approval reference, then uses the separate writer session for that report export with `--approval <ref>`. [Red Team] checks missing accounts and periods. Gate verifier: [Independent Auditor] verifies the receipt, artifact hash, and mapped account comparisons. The export approver cannot grant general write access to analysis sessions.
+[Independent Auditor] runs account-level comparisons. [Mapping Agent] maps source accounts. [Operator] approves the exact guarded report-export request, year and version after the Phase 9 gate. [Migration Writer] flushes an operation-scoped WRITE_INTENT containing the requested operation, payload hash and approval reference, then uses the separate writer session for that report export with `--approval <ref>`. [Red Team] checks missing accounts and periods. Gate verifier: [Independent Auditor] verifies the receipt, artifact hash and mapped account comparisons. The export approver cannot grant general write access to analysis sessions.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the year-end comparison. [Verifier] independently recomputes year-end values. [Final reviewer] reviews the phase before Operator approvals.
 
 **Annual comparison steps retained from the original year-end check:**
 1. [Independent Auditor] Request and compare one reporting year at a time.
 2. [Reconciliation Agent] Compare bank closing balances per account with the official bank evidence.
-3. [Reconciliation Agent] Compare revenue across documents, XAF, annual accounts, and Moneybird.
+3. [Reconciliation Agent] Compare revenue across documents, XAF, annual accounts and Moneybird.
 4. [Reconciliation Agent] Compare costs by approved main group.
 5. [VAT Agent] Confirm all assigned VAT periods and declarations passed.
-6. [Independent Auditor] Compare asset purchase, historic processing, depreciation, and book value.
-7. [Reconciliation Agent] Review private deposits, withdrawals, and business costs paid privately.
-8. [Tax Filing Agent] Bridge Moneybird, XAF, annual accounts, and filed income-tax evidence.
-9. [Independent Auditor] Check bank, receivables, payables, VAT, assets, depreciation, debts, and equity by account.
+6. [Independent Auditor] Compare asset purchase, historic processing, depreciation and book value.
+7. [Reconciliation Agent] Review private deposits, withdrawals and business costs paid privately.
+8. [Tax Filing Agent] Bridge Moneybird, XAF, annual accounts and filed income-tax evidence.
+9. [Independent Auditor] Check bank, receivables, payables, VAT, assets, depreciation, debts and equity by account.
 10. [Operator] Prefer the documented UI auditfile route or approve the operation-scoped route in the route contract. Compare target XAF 4.0 with the source XAF at mapped account level and explain each difference.
 11. [Orchestrator] Record whether an optional Jortt ledger printout is available and usable. No gate relies on an unverified printout.
 
@@ -167,7 +167,7 @@ No deletion of year evidence. Reopen the affected report as a new version. Accou
 
 **Resume rule** (from the phase reference):
 
-Resume from the last complete annual report hash. Re-run any report whose source, mapping, period, or export hash changed.
+Resume from the last complete annual report hash. Re-run any report whose source, mapping, period or export hash changed.
 
 For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
 

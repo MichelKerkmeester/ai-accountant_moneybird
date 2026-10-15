@@ -103,26 +103,26 @@ Phase 7 runs the actions in the order given, and every Moneybird write goes thro
 
 **Phase actions** (from the phase reference):
 
-[Operator] approves the exact batch and performs bank-file import in UI. [Migration Writer] records and flushes WRITE_INTENT before every non-GET call and journals returned IDs. [Operator] approves the temporary pilot lock and a disposable probe record for each used record class, with a correction path for any probe that succeeds. [Independent Auditor] reads back records, verifies every attachment byte hash and AR/AP settlement link, and confirms lock probe results and final lock state. [Red Team] challenges duplicates and field mapping. [Operator + AI] selects pilot items for crash and compensation rehearsals. Gate verifier: [Independent Auditor] verifies read-back, payload fields, attachment bytes, settlement linkage, lock coverage, and resume states.
+[Operator] approves the exact batch and performs bank-file import in UI. [Migration Writer] records and flushes WRITE_INTENT before every non-GET call and journals returned IDs. [Operator] approves the temporary pilot lock and a disposable probe record for each used record class, with a correction path for any probe that succeeds. [Independent Auditor] reads back records, verifies every attachment byte hash and AR/AP settlement link, and confirms lock probe results and final lock state. [Red Team] challenges duplicates and field mapping. [Operator + AI] selects pilot items for crash and compensation rehearsals. Gate verifier: [Independent Auditor] verifies read-back, payload fields, attachment bytes, settlement linkage, lock coverage and resume states.
 
-[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the pilot batch builder, pre-write report, and read-back comparer. [Verifier] checks the pre-write report and read-back comparison. [Final reviewer] reviews the phase before Operator approvals.
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the pilot batch builder, pre-write report and read-back comparer. [Verifier] checks the pre-write report and read-back comparison. [Final reviewer] reviews the phase before Operator approvals.
 
 **Pilot selection and numbered execution retained from the original plan:**
-Select a representative period from the oldest eligible year. Include a sales invoice, a domestic purchase, an EU service purchase, a non-EU service purchase, a normal bank payment, and a private payment if present.
-1. [Migration Writer] Produce PILOT PRE-WRITE REPORT with each record, target object, account, tax rate, risk class, and expected totals.
+Select a representative period from the oldest eligible year. Include a sales invoice, a domestic purchase, an EU service purchase, a non-EU service purchase, a normal bank payment and a private payment if present.
+1. [Migration Writer] Produce PILOT PRE-WRITE REPORT with each record, target object, account, tax rate, risk class and expected totals.
 2. [Mapping Agent] Resolve mapping defects and keep RED or BLACK records out of the write set.
 3. [Operator] Approve the exact pre-write report and batch scope.
 4. [Migration Writer] Write only the approved records through moneybird-guard and record each returned ID in the write journal after a flushed intent.
 5. [Operator] Import the pilot bank file through the UI. [Migration Writer] link approved payments through the documented guarded route.
 6. [Independent Auditor] Compare planned values with write responses, then run a later synchronized read-back to account for cache delay.
 7. [Independent Auditor] Recheck from original sources using the read-only lock and explicit periods.
-8. [Red Team] Challenge field mapping, duplicates, and completeness.
-9. [Operator + AI] Rehearse recovery at the intent, response-loss, and read-back boundaries with the local stub suite. Prove that an uncertain write is reconciled before resumption and that compensation is linked and verified. Do not delete issued or settled records as a routine undo.
-10. [Operator] Temporarily locks the pilot period. [Independent Auditor] tests only the record classes used by the migration with the approved disposable probes. If a probe succeeds, stop, record the unexpected write, reverse or correct it through the approved linked path, read it back, and restore the approved lock state before continuing.
+8. [Red Team] Challenge field mapping, duplicates and completeness.
+9. [Operator + AI] Rehearse recovery at the intent, response-loss and read-back boundaries with the local stub suite. Prove that an uncertain write is reconciled before resumption and that compensation is linked and verified. Do not delete issued or settled records as a routine undo.
+10. [Operator] Temporarily locks the pilot period. [Independent Auditor] tests only the record classes used by the migration with the approved disposable probes. If a probe succeeds, stop, record the unexpected write, reverse or correct it through the approved linked path, read it back and restore the approved lock state before continuing.
 
 **Tool route** (from the phase reference):
 
-All Moneybird writes use moneybird-guard after dry-run review, with --confirm-write, --approval for the flushed WRITE_INTENT, and the single pilot/mirror administration. Run separate PDF and UBL pilots where both source types exist. Verify every attachment through a documented target read route. Reads use the guard lock and synchronization with a recorded timestamp. No real write occurs during the crash-boundary stub rehearsal.
+All Moneybird writes use moneybird-guard after dry-run review, with --confirm-write, --approval for the flushed WRITE_INTENT and the single pilot/mirror administration. Run separate PDF and UBL pilots where both source types exist. Verify every attachment through a documented target read route. Reads use the guard lock and synchronization with a recorded timestamp. No real write occurs during the crash-boundary stub rehearsal.
 
 Stop at the exit gate in spec.md section 5 and record the Operator approval in `decision-record.md`.
 <!-- /ANCHOR:phases -->

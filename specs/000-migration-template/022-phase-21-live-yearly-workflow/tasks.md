@@ -42,7 +42,7 @@ contextType: "general"
 ## Phase 2: Implementation
 
 - [ ] T001 [SG-21.1] Confirm all subordinate cycles. (Check: applicable monthly and filing-period checks passed 100%.)
-- [ ] T002 [SG-21.2] Reconcile continuity, assets, profit, and tax bridge. (Check: account and bridge coverage 100%, unexplained differences 0.)
+- [ ] T002 [SG-21.2] Reconcile continuity, assets, profit and tax bridge. (Check: account and bridge coverage 100%, unexplained differences 0.)
 - [ ] T003 [SG-21.3] Approve and preserve close evidence. (Check: sealed snapshot hash 1, Operator close approval 1.)
 - [ ] T004 [SG-21.4] Run the agent route. (Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, read-only run summary checks pass 100%, record-level check pass 100%, changed-hash code reviews complete 100%, reuse fast path valid 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.)
 <!-- /ANCHOR:phase-2 -->

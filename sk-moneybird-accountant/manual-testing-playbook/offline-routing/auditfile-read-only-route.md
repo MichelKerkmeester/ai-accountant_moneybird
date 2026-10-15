@@ -18,7 +18,7 @@ This scenario validates route an auditfile request through the documented export
 
 ### Why This Matters
 
-A local-only check verifies gate routing while keeping accounting tools, network calls, and private finance data untouched.
+A local-only check verifies gate routing while keeping accounting tools, network calls and private finance data untouched.
 
 ---
 
@@ -66,7 +66,7 @@ Prefers the documented Operator UI export. Allows a guarded POST only through an
 
 ### Evidence
 
-Capture the prompt, selected route, required gate, evidence rule, and confirmation that no API was called.
+Capture the prompt, selected route, required gate, evidence rule and confirmation that no API was called.
 
 ### Pass / Fail
 

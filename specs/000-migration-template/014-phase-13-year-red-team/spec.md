@@ -62,7 +62,7 @@ Phases 10 through 12 passed. Frozen source and target manifests are available.
 
 **Phase outputs** (from the phase reference):
 
-`RED_TEAM_YEAR_REPORT`, sample selection evidence, new exceptions, and final resolution links under `Reviews/`, `Reports/`, and `Exceptions/`.
+`RED_TEAM_YEAR_REPORT`, sample selection evidence, new exceptions and final resolution links under `Reviews/`, `Reports/`, and `Exceptions/`.
 
 **Changelog**:
 - When this phase closes, refresh the matching file in ../changelog/ using the parent packet number plus this phase folder name.
@@ -80,7 +80,7 @@ At the start of Phase 13: Year Red Team, the migration cannot move on because th
 
 **Goal** (from the phase reference):
 
-Independently attempt to falsify year completeness, classification, and reconciliation results. The Implementer drafts fixes for Red Team findings only, and the Verifier runs the Red Team from a clean working copy without earlier findings, verdicts, or final reviews for Phase 13.
+Independently attempt to falsify year completeness, classification and reconciliation results. The Implementer drafts fixes for Red Team findings only, and the Verifier runs the Red Team from a clean working copy without earlier findings, verdicts or final reviews for Phase 13.
 
 The exit gate in section 5 passes, the recorded evidence sits in `migration-workspace/`, and the Operator approves so the next phase may start.
 <!-- /ANCHOR:problem -->
@@ -105,7 +105,7 @@ The exit gate in section 5 passes, the recorded evidence sits in `migration-work
 
 **Phase inputs** (from the phase reference):
 
-Original sources, year snapshot, exception ledger, filed evidence, and risk-based sample configuration.
+Original sources, year snapshot, exception ledger, filed evidence and risk-based sample configuration.
 
 Read each input from Jortt or from the previous phase. Jortt stays read-only.
 

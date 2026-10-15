@@ -53,7 +53,7 @@ This is **Phase 7** of the Jortt to Moneybird migration template specification.
 
 **Entry criteria** (from the phase reference):
 
-Phases 0 through 6 passed. PDF and UBL pilot populations where present, attachment read route, pilot key manifest, and pre-write report are frozen. Trial and subscription evidence covers write, synchronization, read-back, and audit completion.
+Phases 0 through 6 passed. PDF and UBL pilot populations where present, attachment read route, pilot key manifest and pre-write report are frozen. Trial and subscription evidence covers write, synchronization, read-back and audit completion.
 
 **Dependencies**:
 - Previous phase exit gate passed, or None for Phase 0
@@ -62,7 +62,7 @@ Phases 0 through 6 passed. PDF and UBL pilot populations where present, attachme
 
 **Phase outputs** (from the phase reference):
 
-Pilot pre-write report, PDF and UBL field matrices, pilot key manifest, opening AR/AP representation and settlement-link test, write journal with flushed intent events, run journal, timestamped synchronization read-back, attachment hash comparison, lock behavior matrix, temporary-probe correction evidence, independent audit, crash-resume rehearsal, red-team report, and compensation rehearsal.
+Pilot pre-write report, PDF and UBL field matrices, pilot key manifest, opening AR/AP representation and settlement-link test, write journal with flushed intent events, run journal, timestamped synchronization read-back, attachment hash comparison, lock behavior matrix, temporary-probe correction evidence, independent audit, crash-resume rehearsal, red-team report and compensation rehearsal.
 
 **Changelog**:
 - When this phase closes, refresh the matching file in ../changelog/ using the parent packet number plus this phase folder name.
@@ -105,7 +105,7 @@ The exit gate in section 5 passes, the recorded evidence sits in `migration-work
 
 **Phase inputs** (from the phase reference):
 
-Pilot records, mapping hash, source hashes, pre-write report, risk review, opening AR/AP sample, target representation decision, and approved write batch.
+Pilot records, mapping hash, source hashes, pre-write report, risk review, opening AR/AP sample, target representation decision and approved write batch.
 
 Read each input from Jortt or from the previous phase. Jortt stays read-only.
 
@@ -128,7 +128,7 @@ Read each input from Jortt or from the previous phase. Jortt stays read-only.
 |----|-------------|-------|
 | REQ-001 | SG-7.1: Pilot each source document type and attachment path. | PDF and UBL are piloted separately where present, required field matrices match sources 100%, attachment bytes and SHA-256 match 100%, target attachment read route verified 1. |
 | REQ-002 | SG-7.2: Prove duplicate control under an uncertain response. | stable local key and mapping schema version beside it 100%, durable WRITE_INTENT flushed before every non-GET call 100%, source reference and planned payload fields match before ID adoption 100%, ambiguous results stopped 100%. |
-| REQ-003 | SG-7.3: Rehearse crash resume at the write boundary. | forced interruption after WRITE_INTENT, after response loss, and after read-back 3, each resumes from the last verified journal state 100%, blind replay count 0. |
+| REQ-003 | SG-7.3: Rehearse crash resume at the write boundary. | forced interruption after WRITE_INTENT, after response loss and after read-back 3, each resumes from the last verified journal state 100%, blind replay count 0. |
 | REQ-004 | SG-7.4: Rehearse safe compensation. | approved undo or linked correction rehearsal passes 1, independent read confirms final state 1. |
 | REQ-005 | SG-7.5: Test the item-level AR/AP target representation. | representative opening item and settlement link read-back pass 1, source item and target link coverage 100%. |
 | REQ-006 | SG-7.6: Test lock behavior for each used record class in the safe pilot. | Operator-approved probe and correction plan 1, record-class coverage 100%, expected lock result recorded for every class, successful probes reversed or corrected and read back 100%, final lock state verified 1. |

@@ -1,6 +1,6 @@
 ---
 title: Migration phases 10 to 16
-description: Annual checks, continuity, locking, and cutover preparation.
+description: Annual checks, continuity, locking and cutover preparation.
 nav_label: "Migration phases 10 to 16"
 trigger_phrases:
   - Jortt to Moneybird migration
@@ -13,7 +13,7 @@ version: 1.0.0.0
 
 # Migration phases 10 to 16
 
-Annual checks, continuity, locking, and cutover preparation. Load the [migration index](./README.md) first and use the shared controls in [shared mechanisms](./shared-mechanisms.md).
+Annual checks, continuity, locking and cutover preparation. Load the [migration index](./README.md) first and use the shared controls in [shared mechanisms](./shared-mechanisms.md).
 
 ---
 
@@ -27,7 +27,7 @@ Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-so
 
 ### 1. Goal
 
-Prove the annual mirror against ledger, bank, source documents, filed VAT, and annual accounts. The Implementer drafts the year-end comparison, and the Verifier independently recomputes year-end values for Phase 10.
+Prove the annual mirror against ledger, bank, source documents, filed VAT and annual accounts. The Implementer drafts the year-end comparison, and the Verifier independently recomputes year-end values for Phase 10.
 
 ### 2. Nested sub-goals
 
@@ -43,24 +43,24 @@ Periods for the year have passed Phase 9. The year is open for required correcti
 
 ### 4. Inputs
 
-Source XAF, bank statements, canonical dataset, Moneybird reports, tax reconciliations, mapping, and exception ledger.
+Source XAF, bank statements, canonical dataset, Moneybird reports, tax reconciliations, mapping and exception ledger.
 
 ### 5. Owner-tagged actions
 
-[Independent Auditor] runs account-level comparisons. [Mapping Agent] maps source accounts. [Operator] approves the exact guarded report-export request, year, and version after the Phase 9 gate. [Migration Writer] flushes an operation-scoped WRITE_INTENT containing the requested operation, payload hash, and approval reference, then uses the separate writer session for that report export with `--approval <ref>`. [Red Team] checks missing accounts and periods. Gate verifier: [Independent Auditor] verifies the receipt, artifact hash, and mapped account comparisons. The export approver cannot grant general write access to analysis sessions.
+[Independent Auditor] runs account-level comparisons. [Mapping Agent] maps source accounts. [Operator] approves the exact guarded report-export request, year and version after the Phase 9 gate. [Migration Writer] flushes an operation-scoped WRITE_INTENT containing the requested operation, payload hash and approval reference, then uses the separate writer session for that report export with `--approval <ref>`. [Red Team] checks missing accounts and periods. Gate verifier: [Independent Auditor] verifies the receipt, artifact hash and mapped account comparisons. The export approver cannot grant general write access to analysis sessions.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the year-end comparison. [Verifier] independently recomputes year-end values. [Final reviewer] reviews the phase before Operator approvals.
 
 **Annual comparison steps retained from the original year-end check:**
 1. [Independent Auditor] Request and compare one reporting year at a time.
 2. [Reconciliation Agent] Compare bank closing balances per account with the official bank evidence.
-3. [Reconciliation Agent] Compare revenue across documents, XAF, annual accounts, and Moneybird.
+3. [Reconciliation Agent] Compare revenue across documents, XAF, annual accounts and Moneybird.
 4. [Reconciliation Agent] Compare costs by approved main group.
 5. [VAT Agent] Confirm all assigned VAT periods and declarations passed.
-6. [Independent Auditor] Compare asset purchase, historic processing, depreciation, and book value.
-7. [Reconciliation Agent] Review private deposits, withdrawals, and business costs paid privately.
-8. [Tax Filing Agent] Bridge Moneybird, XAF, annual accounts, and filed income-tax evidence.
-9. [Independent Auditor] Check bank, receivables, payables, VAT, assets, depreciation, debts, and equity by account.
+6. [Independent Auditor] Compare asset purchase, historic processing, depreciation and book value.
+7. [Reconciliation Agent] Review private deposits, withdrawals and business costs paid privately.
+8. [Tax Filing Agent] Bridge Moneybird, XAF, annual accounts and filed income-tax evidence.
+9. [Independent Auditor] Check bank, receivables, payables, VAT, assets, depreciation, debts and equity by account.
 10. [Operator] Prefer the documented UI auditfile route or approve the operation-scoped route in the route contract. Compare target XAF 4.0 with the source XAF at mapped account level and explain each difference.
 11. [Orchestrator] Record whether an optional Jortt ledger printout is available and usable. No gate relies on an unverified printout.
 
@@ -90,7 +90,7 @@ No deletion of year evidence. Reopen the affected report as a new version. Accou
 
 ### 11. Resume rule
 
-Resume from the last complete annual report hash. Re-run any report whose source, mapping, period, or export hash changed.
+Resume from the last complete annual report hash. Re-run any report whose source, mapping, period or export hash changed.
 
 For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
 
@@ -140,7 +140,7 @@ Moneybird reads use `moneybird-guard` with read-only lock and explicit year. Fil
 
 ### 7. Outputs and evidence artifacts
 
-Year-specific commercial-to-tax bridge, evidence index, adjustment schedule, review decision, and linked exceptions under `Reports/` and `Exceptions/`.
+Year-specific commercial-to-tax bridge, evidence index, adjustment schedule, review decision and linked exceptions under `Reports/` and `Exceptions/`.
 
 ### 8. Numeric exit gate
 
@@ -150,7 +150,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, bridge che
 
 ### 9. Stop conditions
 
-No filed evidence and no approved unavailable status, tax judgment unresolved, assessment missing when required without an approved alternative, unexplained adjustment, or request to force ledger profit to match a tax return.
+No filed evidence and no approved unavailable status, tax judgment unresolved, assessment missing when required without an approved alternative, unexplained adjustment or request to force ledger profit to match a tax return.
 
 Stop on any M12 stop event.
 
@@ -203,7 +203,7 @@ Moneybird reads use guarded CLI with explicit periods and sync as needed. Any op
 
 ### 7. Outputs and evidence artifacts
 
-Account-level continuity matrix, open AR/AP schedule, settlement links, opening-journal sync read-back, and exceptions under `Reports/`, `Registers/`, and `Snapshots/`.
+Account-level continuity matrix, open AR/AP schedule, settlement links, opening-journal sync read-back and exceptions under `Reports/`, `Registers/`, and `Snapshots/`.
 
 ### 8. Numeric exit gate
 
@@ -213,7 +213,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, account-by
 
 ### 9. Stop conditions
 
-Any account mismatch without named support, total-only AR/AP opening, missing first-year opening evidence, settlement that does not clear the same source item, or still-open item without aging status.
+Any account mismatch without named support, total-only AR/AP opening, missing first-year opening evidence, settlement that does not clear the same source item or still-open item without aging status.
 
 Stop on any M12 stop event.
 
@@ -233,7 +233,7 @@ Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-so
 
 ### 1. Goal
 
-Independently attempt to falsify year completeness, classification, and reconciliation results. The Implementer drafts fixes for Red Team findings only, and the Verifier runs the Red Team from a clean working copy without earlier findings, verdicts, or final reviews for Phase 13.
+Independently attempt to falsify year completeness, classification and reconciliation results. The Implementer drafts fixes for Red Team findings only, and the Verifier runs the Red Team from a clean working copy without earlier findings, verdicts or final reviews for Phase 13.
 
 ### 2. Nested sub-goals
 
@@ -249,13 +249,13 @@ Phases 10 through 12 passed. Frozen source and target manifests are available.
 
 ### 4. Inputs
 
-Original sources, year snapshot, exception ledger, filed evidence, and risk-based sample configuration.
+Original sources, year snapshot, exception ledger, filed evidence and risk-based sample configuration.
 
 ### 5. Owner-tagged actions
 
 `[Red Team]` challenges the year. `[Independent Auditor]` validates population and sample. `[Operator]` accepts or rejects residual differences. Gate verifier: `[Red Team]` owns challenge evidence. `[Independent Auditor]` verifies sample reproducibility. `[Operator]` owns residual acceptance.
 
-[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts fixes for Red Team findings only. [Verifier] checks the year as Red Team from a clean working copy without earlier findings, verdicts, or final reviews. [Final reviewer] reviews the phase before Operator approvals.
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts fixes for Red Team findings only. [Verifier] checks the year as Red Team from a clean working copy without earlier findings, verdicts or final reviews. [Final reviewer] reviews the phase before Operator approvals.
 
 **Year challenge checkpoints retained from the original Red Team pass:**
 Challenge missing or duplicate invoices, duplicate bank transactions, December to January cut-off, missing credit notes, unusual suppliers, reverse charge, private items, assets and depreciation, tax payments, internal transfers, unexplained journals, profit differences, and balance differences. Use a separate read-only session and the configured reproducible sample.
@@ -266,7 +266,7 @@ Moneybird reads use guarded CLI, `MONEYBIRD_GUARD_READ_ONLY=1`, and explicit per
 
 ### 7. Outputs and evidence artifacts
 
-`RED_TEAM_YEAR_REPORT`, sample selection evidence, new exceptions, and final resolution links under `Reviews/`, `Reports/`, and `Exceptions/`.
+`RED_TEAM_YEAR_REPORT`, sample selection evidence, new exceptions and final resolution links under `Reviews/`, `Reports/`, and `Exceptions/`.
 
 ### 8. Numeric exit gate
 
@@ -317,13 +317,13 @@ Annual reports, VAT and IB bridges, continuity matrix, red-team report, source m
 
 ### 5. Owner-tagged actions
 
-[Operator] locks the year in Moneybird UI and approves each later unlock. [Independent Auditor] checks snapshot hashes, confirms the Phase 7 lock matrix, reads period_locked_until, and verifies relock. [Tax Filing Agent] routes later assessments to the Operator or adviser. [Orchestrator] records gate status. Gate verifier: [Independent Auditor] verifies lock behavior and assessment lifecycle evidence.
+[Operator] locks the year in Moneybird UI and approves each later unlock. [Independent Auditor] checks snapshot hashes, confirms the Phase 7 lock matrix, reads period_locked_until and verifies relock. [Tax Filing Agent] routes later assessments to the Operator or adviser. [Orchestrator] records gate status. Gate verifier: [Independent Auditor] verifies lock behavior and assessment lifecycle evidence.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts snapshot sealing and the hash manifest. [Verifier] recomputes snapshot hashes. [Final reviewer] reviews the phase before Operator approvals.
 
 **Lock and snapshot details retained from the original year-lock procedure:**
 Before locking, confirm document completeness, processed invoices, explained material ledger entries, exact bank reconciliation, verified VAT periods, balance and profit checks, income-tax bridge, and Red Team clearance.
-[Operator] locks or unlocks through the UI. [Independent Auditor] reads the lock state through the guarded read-only route and confirms the Phase 7 probe results. Do not issue a live non-GET probe in a locked historical year. A later assessment opens a linked exception and requires an Operator or adviser decision, an authorized unlock, a linked correction, fresh read-back, and confirmed relock.
+[Operator] locks or unlocks through the UI. [Independent Auditor] reads the lock state through the guarded read-only route and confirms the Phase 7 probe results. Do not issue a live non-GET probe in a locked historical year. A later assessment opens a linked exception and requires an Operator or adviser decision, an authorized unlock, a linked correction, fresh read-back and confirmed relock.
 Include the source manifest and invoice register, canonical records, exception ledger, Moneybird XAF and annual reports, general-ledger export, VAT and income-tax reconciliations, Red Team report, final verification report, write journal, `MIGRATION_CONFIG` hash, and source-manifest references in the sealed snapshot. After lock confirmation, make the snapshot read-only. Any later change creates a new version and invalidates dependent checks.
 
 ### 6. Tool route
@@ -332,7 +332,7 @@ Period lock and unlock are UI-only. Read lock status through `moneybird-guard` w
 
 ### 7. Outputs and evidence artifacts
 
-Sealed read-only year snapshot with configuration and source-manifest references, snapshot checksum manifest, Phase 7 per-record-class lock probe results, current lock-state read-back, exception acceptance register, post-lock assessment record, and gate event.
+Sealed read-only year snapshot with configuration and source-manifest references, snapshot checksum manifest, Phase 7 per-record-class lock probe results, current lock-state read-back, exception acceptance register, post-lock assessment record and gate event.
 
 ### 8. Numeric exit gate
 
@@ -342,13 +342,13 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, snapshot h
 
 ### 9. Stop conditions
 
-Any prerequisite not passed, hash mismatch, open unknown write, missing Phase 7 lock evidence, unsupported lock behavior for a required record class, missing Operator approval, missing assessment decision owner, or absent relock confirmation.
+Any prerequisite not passed, hash mismatch, open unknown write, missing Phase 7 lock evidence, unsupported lock behavior for a required record class, missing Operator approval, missing assessment decision owner or absent relock confirmation.
 
 Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
-A locked year is never silently edited. A later assessment opens a linked exception with source evidence and Operator or adviser filing decision. The Operator authorizes any unlock. Corrections use linked reversal or adjustment, fresh read-back, and verified relock.
+A locked year is never silently edited. A later assessment opens a linked exception with source evidence and Operator or adviser filing decision. The Operator authorizes any unlock. Corrections use linked reversal or adjustment, fresh read-back and verified relock.
 
 ### 11. Resume rule
 
@@ -378,7 +378,7 @@ Start year and sequence are approved. First eligible year passed Phases 6 throug
 
 ### 4. Inputs
 
-Year matrix, phase gates, year snapshots, source manifests, run journal, and approved start-year opening decision.
+Year matrix, phase gates, year snapshots, source manifests, run journal and approved start-year opening decision.
 
 ### 5. Owner-tagged actions
 
@@ -387,15 +387,15 @@ Year matrix, phase gates, year snapshots, source manifests, run journal, and app
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the year-advance checklist. [Verifier] checks prior-year lock evidence. [Final reviewer] reviews the phase before Operator approvals.
 
 **Year sequencing retained from the original repeat rule:**
-Run reconstruction, period batches, VAT verification, annual check, income-tax bridge, Red Team, and year lock in order for each year. Finish and lock each year before advancing. Do not run multiple historical year write batches in parallel.
+Run reconstruction, period batches, VAT verification, annual check, income-tax bridge, Red Team and year lock in order for each year. Finish and lock each year before advancing. Do not run multiple historical year write batches in parallel.
 
 ### 6. Tool route
 
-Each phase uses its documented Jortt, Moneybird, bank, or tax route. Moneybird reads remain guarded read-only. Writes remain guarded, approved, and expiry-checked per batch.
+Each phase uses its documented Jortt, Moneybird, bank or tax route. Moneybird reads remain guarded read-only. Writes remain guarded, approved and expiry-checked per batch.
 
 ### 7. Outputs and evidence artifacts
 
-Chronological year ledger, year gate index, skipped-year report, continuation matrix, and per-year snapshots under `Handoff/`, `Reports/`, and `Snapshots/`.
+Chronological year ledger, year gate index, skipped-year report, continuation matrix and per-year snapshots under `Handoff/`, `Reports/`, and `Snapshots/`.
 
 ### 8. Numeric exit gate
 
@@ -405,7 +405,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, prior-year
 
 ### 9. Stop conditions
 
-Missing year, failed lock, broken continuity, unsupported start year, or any unresolved previous-year gate.
+Missing year, failed lock, broken continuity, unsupported start year or any unresolved previous-year gate.
 
 Stop on any M12 stop event.
 
@@ -431,14 +431,14 @@ Compare the existing source administration and Moneybird mirror through a config
 
 - **SG-16.1**: Derive the next work year from the configured start date and last locked year. Check: next historical year is the first unlocked year at or after the configured start year 1, current mirror year is the actual calendar year only when it is at or after the configured start date and is not locked 1, hard-coded current-year labels 0.
 - **SG-16.2**: Complete configured parallel comparisons. Check: a positive minimum cycle count or duration and rationale are approved in `MIGRATION_CONFIG` as `parallel.cycles_required`, completed cycles meet that minimum 100%, unresolved differences 0.
-- **SG-16.3**: Prepare the source freeze and final delta contract. Check: Operator-set freeze date and time, delta schema, and source-total method recorded 100%. The actual freeze, its last source key, and delta capture occur in Phase 17.
+- **SG-16.3**: Prepare the source freeze and final delta contract. Check: Operator-set freeze date and time, delta schema and source-total method recorded 100%. The actual freeze, its last source key and delta capture occur in Phase 17.
 - **SG-16.4**: Prepare objective rollback controls. Check: numeric trigger thresholds and named decision owner 100%, rehearsal scenarios complete 100%, post-cutover write reconciliation rehearsal 100%.
 
 - **SG-16.5**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, parallel delta checks independently pass 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 
 ### 3. Entry criteria
 
-Historical years through the approved boundary passed. The Operator approved a positive minimum parallel cycle count or duration, rationale, numeric stop thresholds, and rollback triggers.
+Historical years through the approved boundary passed. The Operator approved a positive minimum parallel cycle count or duration, rationale, numeric stop thresholds and rollback triggers.
 
 ### 4. Inputs
 
@@ -452,7 +452,7 @@ Current-year source records, mirror reports, bank evidence, filing calendar, min
 
 **Current-year mirror steps retained with a dynamic year rule:**
 The next historical work year is the first unlocked year at or after the configured bookkeeping start year, using the year after the last locked year when the sequence is contiguous. For current-year mirroring, use the actual calendar year only when it is at or after the configured start date and is not already locked. Never store a hard-coded calendar year. While mirroring, the source ledger remains authoritative and Moneybird remains the shadow ledger.
-For each assigned period: process new documents, compare to source ledger evidence, import and reconcile the bank through the UI, reconstruct only approved records in Moneybird, compare VAT, and file nothing again. After the current work year closes, verify all assigned periods, bank, profit, balance sheet, annual accounts, and income-tax evidence. A positive minimum parallel duration or cycle count, rationale, numeric rollback triggers, decision owner, and rehearsals must be configured before this phase.
+For each assigned period: process new documents, compare to source ledger evidence, import and reconcile the bank through the UI, reconstruct only approved records in Moneybird, compare VAT, and file nothing again. After the current work year closes, verify all assigned periods, bank, profit, balance sheet, annual accounts and income-tax evidence. A positive minimum parallel duration or cycle count, rationale, numeric rollback triggers, decision owner and rehearsals must be configured before this phase.
 
 ### 6. Tool route
 
@@ -460,7 +460,7 @@ Jortt reads through `jortt-cli`. Moneybird reads through guarded read-only acces
 
 ### 7. Outputs and evidence artifacts
 
-Parallel comparison reports, minimum-cycle rationale, planned freeze date, delta schema, numeric rollback trigger table, rehearsal evidence, and cutover readiness packet without a live GO or NO-GO decision.
+Parallel comparison reports, minimum-cycle rationale, planned freeze date, delta schema, numeric rollback trigger table, rehearsal evidence and cutover readiness packet without a live GO or NO-GO decision.
 
 ### 8. Numeric exit gate
 
@@ -470,13 +470,13 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, parallel d
 
 ### 9. Stop conditions
 
-No positive minimum cycle count or duration, no rationale, no numeric rollback threshold, source activity after the planned freeze without a delta method, missing rollback owner, M6 failure, or unresolved post-cutover write state.
+No positive minimum cycle count or duration, no rationale, no numeric rollback threshold, source activity after the planned freeze without a delta method, missing rollback owner, M6 failure or unresolved post-cutover write state.
 
 Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
-Before live activity, resume the source ledger. After target accepts live entries, use the approved fail-forward, linked compensation, or tested restoration strategy. Reconcile every post-cutover write before returning to the source system.
+Before live activity, resume the source ledger. After target accepts live entries, use the approved fail-forward, linked compensation or tested restoration strategy. Reconcile every post-cutover write before returning to the source system.
 
 ### 11. Resume rule
 

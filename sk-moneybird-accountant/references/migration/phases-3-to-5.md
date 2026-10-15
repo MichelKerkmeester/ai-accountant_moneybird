@@ -1,6 +1,6 @@
 ---
 title: Migration phases 3 to 5
-description: Independent reconstruction, reconciliation, and anomaly review.
+description: Independent reconstruction, reconciliation and anomaly review.
 nav_label: "Migration phases 3 to 5"
 trigger_phrases:
   - Jortt to Moneybird migration
@@ -13,7 +13,7 @@ version: 1.0.0.0
 
 # Migration phases 3 to 5
 
-Independent reconstruction, reconciliation, and anomaly review. Load the [migration index](./README.md) first and use the shared controls in [shared mechanisms](./shared-mechanisms.md).
+Independent reconstruction, reconciliation and anomaly review. Load the [migration index](./README.md) first and use the shared controls in [shared mechanisms](./shared-mechanisms.md).
 
 ---
 
@@ -27,7 +27,7 @@ Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-so
 
 ### 1. Goal
 
-Produce independent document, ledger, bank, tax, and VAT registers without cross-contamination. The Implementer drafts one register builder per source, each in its own session, and the Verifier independently reproduces register totals and statically checks each builder reads only its folder for Phase 3.
+Produce independent document, ledger, bank, tax and VAT registers without cross-contamination. The Implementer drafts one register builder per source, each in its own session and the Verifier independently reproduces register totals and statically checks each builder reads only its folder for Phase 3.
 
 ### 2. Nested sub-goals
 
@@ -47,16 +47,16 @@ Original document archive, XAF files, bank files, filed returns and assessments,
 
 ### 5. Owner-tagged actions
 
-[Document Agent] processes original documents. [Ledger Agent] processes XAF only. [Bank Agent] processes bank files only. [Tax Filing Agent] processes filings and accounts only. [VAT Agent] classifies original invoices without bookings. [Orchestrator] seals each folder and verifies the VAT input manifest classifies every file as an original invoice. Gate verifier: [Independent Auditor] verifies folder hashes, zero booking exports, arithmetic, and session output redaction.
+[Document Agent] processes original documents. [Ledger Agent] processes XAF only. [Bank Agent] processes bank files only. [Tax Filing Agent] processes filings and accounts only. [VAT Agent] classifies original invoices without bookings. [Orchestrator] seals each folder and verifies the VAT input manifest classifies every file as an original invoice. Gate verifier: [Independent Auditor] verifies folder hashes, zero booking exports, arithmetic and session output redaction.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts one register builder per source, each in its own session. [Verifier] independently reproduces register totals and statically checks each builder reads only its folder. [Final reviewer] reviews the phase before Operator approvals.
 
 **Independent register fields retained from the original reconstruction:**
 1. [Document Agent] From original documents only, record supplier, legal entity, country, invoice number and date, VAT identifier, currency, net, VAT, gross, reverse-charge status, and purchase or sale type.
 2. [Ledger Agent] From XAF only, record booking date, account, amount, debit or credit, VAT code, document reference, relation, invoice number, journal entries, assets, private items, opening entries, and year-end closing entries. Prove debits equal credits per journal and year.
-3. [Bank Agent] From bank files only, record account, date, amount, currency, counterparty, description, payment reference, and opening and closing balances per file.
+3. [Bank Agent] From bank files only, record account, date, amount, currency, counterparty, description, payment reference and opening and closing balances per file.
 4. [Tax Filing Agent] From actual filings, assessments, and annual accounts only, record VAT and income-tax filings, supplementary filings, final assessments, annual accounts, and Jortt VAT summaries as a separate source class.
-5. [VAT Agent] From original invoices only, classify Dutch VAT, EU reverse charge, non-EU reverse charge, zero rate, no VAT, foreign VAT, or unclear treatment.
+5. [VAT Agent] From original invoices only, classify Dutch VAT, EU reverse charge, non-EU reverse charge, zero rate, no VAT, foreign VAT or unclear treatment.
 
 ### 6. Tool route
 
@@ -68,7 +68,7 @@ DOCUMENT_REGISTER, LEDGER_REGISTER, BANK_REGISTER, TAX_REGISTER, VAT_CLASSIFICAT
 
 ### 8. Numeric exit gate
 
-Input folders sealed 100%, applicable source items processed 100%, VAT input originals 100%, booking export files in VAT input 0, private record fields in prompts, logs, and session outputs 0, unbalanced journals 0, cross-register reads before Phase 4 equal 0.
+Input folders sealed 100%, applicable source items processed 100%, VAT input originals 100%, booking export files in VAT input 0, private record fields in prompts, logs and session outputs 0, unbalanced journals 0, cross-register reads before Phase 4 equal 0.
 
 M12 gate: work units with Verifier PASS or Operator disposition 100%, register totals independently reproduced 100%, role-folder read violations 0, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
 
@@ -100,7 +100,7 @@ Link independent evidence into one canonical record set with a stable source ide
 
 - **SG-4.1**: Link source evidence for each event. Check: in-scope source items linked or explicitly excepted 100%.
 - **SG-4.2**: Assign deterministic migration keys. Check: key collisions 0 and duplicate source keys 0.
-- **SG-4.3**: Preserve source-to-target identity fields. Check: canonical records with source key, period, and evidence reference 100%.
+- **SG-4.3**: Preserve source-to-target identity fields. Check: canonical records with source key, period and evidence reference 100%.
 
 - **SG-4.4**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, match recount differences 0, duplicate stable keys 0, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 
@@ -110,7 +110,7 @@ Phase 3 registers are sealed and their checksums pass.
 
 ### 4. Inputs
 
-The five independent registers, schema manifests, and approved source scope.
+The five independent registers, schema manifests and approved source scope.
 
 ### 5. Owner-tagged actions
 
@@ -119,9 +119,9 @@ The five independent registers, schema manifests, and approved source scope.
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the linker and stable-key builder. [Verifier] independently recounts matches and checks duplicate keys. [Final reviewer] reviews the phase before Operator approvals.
 
 **Canonical event fields retained from the original cross-reconciliation:**
-1. [Reconciliation Agent] Link DOCUMENT, XAF ENTRY, BANK TRANSACTION, and TAX PERIOD where each source exists. Record explicit exceptions for absent links.
+1. [Reconciliation Agent] Link DOCUMENT, XAF ENTRY, BANK TRANSACTION and TAX PERIOD where each source exists. Record explicit exceptions for absent links.
 2. [Reconciliation Agent] Assign one permanent migration record key to each event. Keep it stable across mapping revisions and store the mapping schema version beside it.
-3. [Reconciliation Agent] Store source keys, period, evidence references, historical category, historical VAT code, independent VAT classification, risk class, confidence, source-to-target reference, and differences.
+3. [Reconciliation Agent] Store source keys, period, evidence references, historical category, historical VAT code, independent VAT classification, risk class, confidence, source-to-target reference and differences.
 
 ### 6. Tool route
 
@@ -129,7 +129,7 @@ Workspace registers only. No Moneybird writes. Read-only Moneybird route is avai
 
 ### 7. Outputs and evidence artifacts
 
-`CANONICAL_DATASET`, source-key index, link coverage report, collision report, and journal checkpoint under `Registers/` and `Reports/`.
+`CANONICAL_DATASET`, source-key index, link coverage report, collision report and journal checkpoint under `Registers/` and `Reports/`.
 
 ### 8. Numeric exit gate
 
@@ -139,7 +139,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, match reco
 
 ### 9. Stop conditions
 
-Conflicting identity, duplicate source key, unsupported cross-source match, or checksum mismatch.
+Conflicting identity, duplicate source key, unsupported cross-source match or checksum mismatch.
 
 Stop on any M12 stop event.
 
@@ -159,7 +159,7 @@ Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-so
 
 ### 1. Goal
 
-Find unmatched, duplicate, high-risk, or unsupported items before mapping and writing. The Implementer drafts the anomaly scan rules, and the Verifier checks planted-anomaly fixtures are detected for Phase 5.
+Find unmatched, duplicate, high-risk or unsupported items before mapping and writing. The Implementer drafts the anomaly scan rules, and the Verifier checks planted-anomaly fixtures are detected for Phase 5.
 
 ### 2. Nested sub-goals
 
@@ -175,7 +175,7 @@ Phase 4 canonical dataset is sealed. Risk thresholds, minimum sample size or cov
 
 ### 4. Inputs
 
-Canonical dataset, original evidence references, risk model, sample configuration, and exception schema.
+Canonical dataset, original evidence references, risk model, sample configuration and exception schema.
 
 ### 5. Owner-tagged actions
 
@@ -184,11 +184,11 @@ Canonical dataset, original evidence references, risk model, sample configuratio
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the anomaly scan rules. [Verifier] checks planted-anomaly fixtures are detected. [Final reviewer] reviews the phase before Operator approvals.
 
 **Completeness checks retained from the original anomaly scan:**
-1. [Reconciliation Agent] Check documents without ledger entries and classify each as unbooked, duplicate, private, another period, or a supported alternate relation.
+1. [Reconciliation Agent] Check documents without ledger entries and classify each as unbooked, duplicate, private, another period or a supported alternate relation.
 2. [Reconciliation Agent] Check ledger entries without documents and bank transactions without explanations.
-3. [Reconciliation Agent] For documents without a payment, identify whether the item is open, paid privately, settled by a credit, or offset by a supported amount.
-4. [Red Team] Detect duplicates by exact file hash and by a fingerprint of supplier, invoice number, date, currency, and gross value. Keep sensitive values in the controlled workspace.
-5. [Red Team] Review international software, subscriptions, hosting, developer services, and other foreign suppliers.
+3. [Reconciliation Agent] For documents without a payment, identify whether the item is open, paid privately, settled by a credit or offset by a supported amount.
+4. [Red Team] Detect duplicates by exact file hash and by a fingerprint of supplier, invoice number, date, currency and gross value. Keep sensitive values in the controlled workspace.
+5. [Red Team] Review international software, subscriptions, hosting, developer services and other foreign suppliers.
 6. [Red Team] Challenge duplicate invoices or payments, missing credit notes, wrong currency or entity, EU versus non-EU treatment, zero rate versus reverse charge, private versus business treatment, tax payments, assets treated as costs, and duplicate depreciation.
 
 ### 6. Tool route

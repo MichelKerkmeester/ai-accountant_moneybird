@@ -80,7 +80,7 @@ At the start of Phase 22: Migration completion and Jortt decommission, the migra
 
 **Goal** (from the phase reference):
 
-Close the migration only after cutover, the first live VAT reconciliation, configured monitoring, final archive verification, retention recheck, definition of done, dashboard closure, and an Operator decommission decision. The Implementer drafts the completion report and definition-of-done evidence index, and the Verifier checks definition of done, archive, and retention evidence for Phase 22.
+Close the migration only after cutover, the first live VAT reconciliation, configured monitoring, final archive verification, retention recheck, definition of done, dashboard closure and an Operator decommission decision. The Implementer drafts the completion report and definition-of-done evidence index, and the Verifier checks definition of done, archive, and retention evidence for Phase 22.
 
 The exit gate in section 5 passes, the recorded evidence sits in `migration-workspace/`, and the Operator approves so the next phase may start.
 <!-- /ANCHOR:problem -->
@@ -105,7 +105,7 @@ The exit gate in section 5 passes, the recorded evidence sits in `migration-work
 
 **Phase inputs** (from the phase reference):
 
-Phase 17 archive and freeze evidence, all post-cutover source deltas, per-class restore reports, current retention matrix, year locks, filed-return bridges, exception ledger, live cadence reports, dashboard, and Operator decision record.
+Phase 17 archive and freeze evidence, all post-cutover source deltas, per-class restore reports, current retention matrix, year locks, filed-return bridges, exception ledger, live cadence reports, dashboard and Operator decision record.
 
 Read each input from Jortt or from the previous phase. Jortt stays read-only.
 
@@ -126,11 +126,11 @@ Read each input from Jortt or from the previous phase. Jortt stays read-only.
 
 | ID | Requirement | Check |
 |----|-------------|-------|
-| REQ-001 | SG-22.1: Capture the final archive delta after cutover. | every post-freeze source change is represented in the final delta manifest with source totals, links, bytes, and hashes 100%, unexplained delta items 0. |
+| REQ-001 | SG-22.1: Capture the final archive delta after cutover. | every post-freeze source change is represented in the final delta manifest with source totals, links, bytes and hashes 100%, unexplained delta items 0. |
 | REQ-002 | SG-22.2: Reverify archive restoration by record class. | Independent Auditor restore and readability evidence covers every required class 100%, failed class restores 0. |
-| REQ-003 | SG-22.3: Recheck retention. | current Operator-approved source basis and rule cover 100% of classes, Independent Auditor recomputes each duration and start event to confirm the end date, archive location, owner, and readability evidence 100%, unsupported or unapproved rules 0. |
+| REQ-003 | SG-22.3: Recheck retention. | current Operator-approved source basis and rule cover 100% of classes, Independent Auditor recomputes each duration and start event to confirm the end date, archive location, owner and readability evidence 100%, unsupported or unapproved rules 0. |
 | REQ-004 | SG-22.4: Pass the migration definition-of-done gate. | required reconciliations and filed-return bridges 100%, unexplained differences 0, accepted exceptions complete 100%, historical years locked 100%, cutover approval 1, live ownership 100%. |
-| REQ-005 | SG-22.5: Close the master dashboard. | current dashboard rows 23 of 23, missing owners, evidence links, due dates, exception counts, or resume checkpoints 0. |
+| REQ-005 | SG-22.5: Close the master dashboard. | current dashboard rows 23 of 23, missing owners, evidence links, due dates, exception counts or resume checkpoints 0. |
 | REQ-006 | SG-22.6: Record the Operator decommission decision. | decision is exactly cancel or keep and is supported by the completed evidence packet 1. |
 | REQ-007 | SG-22.7: Run the agent route. | M12 checks: work units with Verifier PASS or Operator disposition 100%, definition-of-done items verified 100%, archive recheck pass 1, retention recheck pass 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. |
 
@@ -166,7 +166,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, definition
 
 **Stop conditions** (from the phase reference):
 
-A required condition is not met, final delta is incomplete, a class cannot be restored, retention source basis is unsupported, a recomputed end date mismatches, or required Operator approval is missing, an unexplained difference or blocking exception remains, a dashboard row is stale, or the Operator has not recorded cancel or keep.
+A required condition is not met, final delta is incomplete, a class cannot be restored, retention source basis is unsupported, a recomputed end date mismatches or required Operator approval is missing, an unexplained difference or blocking exception remains, a dashboard row is stale or the Operator has not recorded cancel or keep.
 
 Stop on any M12 stop event.
 

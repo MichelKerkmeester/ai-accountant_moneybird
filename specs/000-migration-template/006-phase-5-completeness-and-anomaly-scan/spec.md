@@ -80,7 +80,7 @@ At the start of Phase 5: Completeness and anomaly scan, the migration cannot mov
 
 **Goal** (from the phase reference):
 
-Find unmatched, duplicate, high-risk, or unsupported items before mapping and writing. The Implementer drafts the anomaly scan rules, and the Verifier checks planted-anomaly fixtures are detected for Phase 5.
+Find unmatched, duplicate, high-risk or unsupported items before mapping and writing. The Implementer drafts the anomaly scan rules, and the Verifier checks planted-anomaly fixtures are detected for Phase 5.
 
 The exit gate in section 5 passes, the recorded evidence sits in `migration-workspace/`, and the Operator approves so the next phase may start.
 <!-- /ANCHOR:problem -->
@@ -105,7 +105,7 @@ The exit gate in section 5 passes, the recorded evidence sits in `migration-work
 
 **Phase inputs** (from the phase reference):
 
-Canonical dataset, original evidence references, risk model, sample configuration, and exception schema.
+Canonical dataset, original evidence references, risk model, sample configuration and exception schema.
 
 Read each input from Jortt or from the previous phase. Jortt stays read-only.
 

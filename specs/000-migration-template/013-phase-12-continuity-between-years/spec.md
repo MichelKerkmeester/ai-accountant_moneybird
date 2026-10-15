@@ -62,7 +62,7 @@ Phase 10 and 11 passed for year N. Phase 6 opening and subledger schedules are a
 
 **Phase outputs** (from the phase reference):
 
-Account-level continuity matrix, open AR/AP schedule, settlement links, opening-journal sync read-back, and exceptions under `Reports/`, `Registers/`, and `Snapshots/`.
+Account-level continuity matrix, open AR/AP schedule, settlement links, opening-journal sync read-back and exceptions under `Reports/`, `Registers/`, and `Snapshots/`.
 
 **Changelog**:
 - When this phase closes, refresh the matching file in ../changelog/ using the parent packet number plus this phase folder name.
@@ -163,7 +163,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, account-by
 
 **Stop conditions** (from the phase reference):
 
-Any account mismatch without named support, total-only AR/AP opening, missing first-year opening evidence, settlement that does not clear the same source item, or still-open item without aging status.
+Any account mismatch without named support, total-only AR/AP opening, missing first-year opening evidence, settlement that does not clear the same source item or still-open item without aging status.
 
 Stop on any M12 stop event.
 

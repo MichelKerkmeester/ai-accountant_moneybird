@@ -80,7 +80,7 @@ At the start of Phase 21: Live yearly workflow, the migration cannot move on bec
 
 **Goal** (from the phase reference):
 
-Close each live year with complete monthly, VAT, balance, asset, tax, and human review evidence. The Implementer drafts yearly check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 21.
+Close each live year with complete monthly, VAT, balance, asset, tax and human review evidence. The Implementer drafts yearly check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 21.
 
 The exit gate in section 5 passes, the recorded evidence sits in `migration-workspace/`, and the Operator approves so the next phase may start.
 <!-- /ANCHOR:problem -->
@@ -127,7 +127,7 @@ Read each input from Jortt or from the previous phase. Jortt stays read-only.
 | ID | Requirement | Check |
 |----|-------------|-------|
 | REQ-001 | SG-21.1: Confirm all subordinate cycles. | applicable monthly and filing-period checks passed 100%. |
-| REQ-002 | SG-21.2: Reconcile continuity, assets, profit, and tax bridge. | account and bridge coverage 100%, unexplained differences 0. |
+| REQ-002 | SG-21.2: Reconcile continuity, assets, profit and tax bridge. | account and bridge coverage 100%, unexplained differences 0. |
 | REQ-003 | SG-21.3: Approve and preserve close evidence. | sealed snapshot hash 1, Operator close approval 1. |
 | REQ-004 | SG-21.4: Run the agent route. | M12 checks: work units with Verifier PASS or Operator disposition 100%, read-only run summary checks pass 100%, record-level check pass 100%, changed-hash code reviews complete 100%, reuse fast path valid 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. |
 
@@ -163,7 +163,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, read-only 
 
 **Stop conditions** (from the phase reference):
 
-Missing month, tax period, filing confirmation, or required assessment without approved unavailability, unsupported adjustment, incomplete exception, absent backup owner, missed escalation deadline, unresolved exception, or failed snapshot hash.
+Missing month, tax period, filing confirmation or required assessment without approved unavailability, unsupported adjustment, incomplete exception, absent backup owner, missed escalation deadline, unresolved exception or failed snapshot hash.
 
 Stop on any M12 stop event.
 

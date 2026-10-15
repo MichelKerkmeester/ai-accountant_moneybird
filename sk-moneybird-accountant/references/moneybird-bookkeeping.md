@@ -1,6 +1,6 @@
 ---
 title: Moneybird bookkeeping for a Dutch sole trader
-description: Accounting treatment for common ZZP sales, costs, private use, assets, opening balances, bank reconciliation, and VAT events in Moneybird.
+description: Accounting treatment for common ZZP sales, costs, private use, assets, opening balances, bank reconciliation and VAT events in Moneybird.
 nav_label: "Moneybird bookkeeping for a Dutch sole trader"
 trigger_phrases:
   - Moneybird ZZP bookkeeping
@@ -28,7 +28,7 @@ This reference explains how common sole-trader events map to accounting categori
 
 ### New sales and historical external sales
 
-Use a Moneybird sales invoice for an invoice created and sent in Moneybird. Use external sales for an invoice issued outside Moneybird or a historical invoice entered from its source document. Per Moneybird help, an external sale supports outside or historic sales records. Review the invoice date, customer, net amount, VAT treatment, and source document.
+Use a Moneybird sales invoice for an invoice created and sent in Moneybird. Use external sales for an invoice issued outside Moneybird or a historical invoice entered from its source document. Per Moneybird help, an external sale supports outside or historic sales records. Review the invoice date, customer, net amount, VAT treatment and source document.
 
 - Product reference: [external sales](https://helpcenter.moneybird.nl/nl/articles/223885-externe-omzet-verwerken-in-je-administratie).
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
@@ -46,7 +46,7 @@ Match a receipt to the existing sales invoice. Do not record the receipt as anot
 
 ### Purchase invoices and receipts
 
-Add the source invoice or receipt as an incoming document, then process it into the accounts. The [purchase invoice reference](./purchase-invoices.md) gives the full booking flow and the VAT rate for a Dutch invoice, a reverse-charged foreign invoice and an invoice with foreign VAT. Per Moneybird help, a document in the incoming inbox is not booked and is not included in VAT until processed. Check the supplier, date, invoice number, amount, VAT, and accounting category before saving.
+Add the source invoice or receipt as an incoming document, then process it into the accounts. The [purchase invoice reference](./purchase-invoices.md) gives the full booking flow and the VAT rate for a Dutch invoice, a reverse-charged foreign invoice and an invoice with foreign VAT. Per Moneybird help, a document in the incoming inbox is not booked and is not included in VAT until processed. Check the supplier, date, invoice number, amount, VAT and accounting category before saving.
 
 - Product references: [add a purchase invoice or receipt](https://helpcenter.moneybird.nl/nl/articles/207118-inkoopfactuur-of-bon-toevoegen) and [process incoming documents](https://helpcenter.moneybird.nl/nl/articles/207134-verwerk-inkoopfacturen-en-bonnen).
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
@@ -78,7 +78,7 @@ Post proprietor contributions and withdrawals against private or equity accounts
 
 ### Business kilometres in a private vehicle
 
-Record the supported business distance with the rate for the travel year and a trip purpose. Keep the trip log. Do not separately deduct fuel, insurance, repairs, or parking that the kilometre allowance already covers. The amount changes by year, so first check `costs-and-car.md` in the folder for the travel year, routed from [the Dutch tax rules](./tax-rules/dutch-tax-rules.md).
+Record the supported business distance with the rate for the travel year and a trip purpose. Keep the trip log. Do not separately deduct fuel, insurance, repairs or parking that the kilometre allowance already covers. The amount changes by year, so first check `costs-and-car.md` in the folder for the travel year, routed from [the Dutch tax rules](./tax-rules/dutch-tax-rules.md).
 
 - Product reference: [business kilometres](https://helpcenter.moneybird.nl/nl/articles/207993-zakelijke-gereden-kilometers-verwerken), per Moneybird help reviewed on 2026-10-10.
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
@@ -96,7 +96,7 @@ A qualifying asset is recorded with its original cost, in-use date, useful life,
 
 ### Opening balance
 
-Use the final closing balance sheet from the previous system. An opening journal includes assets, liabilities, VAT balances, and proprietor equity. Date it immediately before the Moneybird start period. For a 1 January start, the date is 31 December of the previous year. Reconcile the presentation of fixed assets and accumulated depreciation so historical depreciation is not posted twice.
+Use the final closing balance sheet from the previous system. An opening journal includes assets, liabilities, VAT balances and proprietor equity. Date it immediately before the Moneybird start period. For a 1 January start, the date is 31 December of the previous year. Reconcile the presentation of fixed assets and accumulated depreciation so historical depreciation is not posted twice.
 
 - Product reference: [opening balance](https://helpcenter.moneybird.nl/nl/articles/207967-beginbalans-opstellen), per Moneybird help reviewed on 2026-10-10.
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
@@ -105,7 +105,7 @@ Use the final closing balance sheet from the previous system. An opening journal
 
 ## 6. BANK RECONCILIATION
 
-Reconcile each bank transaction to the right invoice, receipt, category, or private account. Review automatic suggestions and handle unmatched transactions explicitly. A VAT-bearing cost should retain its invoice or receipt and be matched to that evidence. Do not leave unexplained balances.
+Reconcile each bank transaction to the right invoice, receipt, category or private account. Review automatic suggestions and handle unmatched transactions explicitly. A VAT-bearing cost should retain its invoice or receipt and be matched to that evidence. Do not leave unexplained balances.
 
 The guarded bank read names a Moneybird state for each bookkeeping outcome. Unmatched is `unprocessed`, processed is `processed`, and booked from a suggestion is `auto_booked`. Read unmatched transactions through the row "Bank transactions to match" in [cli-moneybird](../../cli-moneybird/SKILL.md) section 2.
 
@@ -118,7 +118,7 @@ The guarded bank read names a Moneybird state for each bookkeeping outcome. Unma
 
 An eligible Moneybird administration can submit a VAT return through the product. The operator reviews and files the return, and arranges payment separately. This assistant never submits or files any return. A VAT correction comparison depends on prior returns filed through Moneybird. If earlier returns were filed elsewhere, use the tax authority's correction process. A filed return does not automatically lock the accounting period. Set or review a lock date deliberately and only when authorized.
 
-Moneybird does not prepare the proprietor's complete personal income-tax return. Its profit and loss, balance sheet, and fixed-asset reports can support an external return preparer, per Moneybird help reviewed on 2026-10-10. This assistant never files the return.
+Moneybird does not prepare the proprietor's complete personal income-tax return. Its profit and loss, balance sheet and fixed-asset reports can support an external return preparer, per Moneybird help reviewed on 2026-10-10. This assistant never files the return.
 
 - Product reference: [income-tax reporting](https://helpcenter.moneybird.nl/nl/articles/207660-inkomstenbelasting-aangifte-met-de-hulp-van-moneybird).
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
@@ -134,8 +134,8 @@ The step list for preparing a VAT period is in [`references/vat-return/README.md
 
 ### Monthly bookkeeping
 
-- Review the period's sales, purchase documents, bank transactions, private movements, and outstanding exceptions.
-- Match each bank transaction to its invoice, receipt, category, or private account.
+- Review the period's sales, purchase documents, bank transactions, private movements and outstanding exceptions.
+- Match each bank transaction to its invoice, receipt, category or private account.
 - Check purchase documents are processed before counting them as booked or in VAT.
 - Keep source documents and explain unmatched items. Route Moneybird CLI reads through moneybird-guard under the Read Step Contract in `cli-moneybird/SKILL.md` section 3. For writes, apply LIVE write authority.
 
@@ -144,14 +144,14 @@ The step list for preparing a VAT period is in [`references/vat-return/README.md
 - Confirm the administration's VAT period and return deadline.
 - Reconcile VAT by return box against source documents and booked transactions.
 - Prepare a review summary for the operator. Never submit or file the return.
-- Treat cross-border VAT, reverse charge, mixed-use VAT, and corrections as judgement points for the operator or a bookkeeper.
+- Treat cross-border VAT, reverse charge, mixed-use VAT and corrections as judgement points for the operator or a bookkeeper.
 - Route Moneybird CLI reads through moneybird-guard with MONEYBIRD_GUARD_READ_ONLY=1 for read-only sessions, under the Read Step Contract in `cli-moneybird/SKILL.md` section 3. For writes, apply LIVE write authority.
 
 The step list for the quarterly preparation is in [`references/vat-return/README.md`](./vat-return/README.md).
 
 ### Yearly bookkeeping
 
-- Reconcile profit and loss, balance sheet, assets, depreciation, private use, mileage, and year-end VAT adjustments.
+- Reconcile profit and loss, balance sheet, assets, depreciation, private use, mileage and year-end VAT adjustments.
 - The step list, the auditfile gate and the close checks are in [the yearly overview folder](./yearly-overview/README.md).
 - Compare annual totals to the evidence and filed records.
 - Lock a period only when the applicable workflow has passed and the operator directs the action.

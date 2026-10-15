@@ -61,7 +61,7 @@ The phase contract is [phases-0-to-2.md](../../../sk-moneybird-accountant/refere
 
 **How it works**: each Operator gate in this phase gets a numbered entry below with a decision, an approver, a date and an evidence path. A PENDING entry blocks the exit gate until the Operator signs it.
 
-### D-001: exports Jortt XAF, annual accounts, filed VAT evidence, tax evidence, and bank
+### D-001: exports Jortt XAF, annual accounts, filed VAT evidence, tax evidence and bank
 
 Status: PENDING
 Decision: [Operator decision]
@@ -85,7 +85,7 @@ Approved by: [Operator name]
 Date: [YYYY-MM-DD]
 Evidence: [evidence path in migration-workspace/]
 
-### D-004: For each in-scope period, export Jortt XAF, annual accounts, and actual filed
+### D-004: For each in-scope period, export Jortt XAF, annual accounts and actual filed
 
 Status: PENDING
 Decision: [Operator decision]

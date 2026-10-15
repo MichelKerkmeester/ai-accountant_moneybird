@@ -103,16 +103,16 @@ Phase 1 runs the actions in the order given, and every Moneybird write goes thro
 
 **Phase actions** (from the phase reference):
 
-[Evidence Archivist] inventories classes, captures source-side totals, and hashes. [Document Agent] builds the invoice inventory. [Operator] supplies UI-only XAF, annual accounts, return, assessment, and bank export evidence. [Tax Filing Agent] records annual regimes and declaration applicability. [Orchestrator] records whether a Jortt ledger printout is usable, unavailable, or unverified. Gate verifier: [Independent Auditor] reproduces source totals, full page counts, account-to-file counts, and declaration coverage.
+[Evidence Archivist] inventories classes, captures source-side totals and hashes. [Document Agent] builds the invoice inventory. [Operator] supplies UI-only XAF, annual accounts, return, assessment and bank export evidence. [Tax Filing Agent] records annual regimes and declaration applicability. [Orchestrator] records whether a Jortt ledger printout is usable, unavailable or unverified. Gate verifier: [Independent Auditor] reproduces source totals, full page counts, account-to-file counts and declaration coverage.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts per-class extraction and manifest builders for M1 and M8. [Verifier] independently reproduces source counts and the page chain. [Final reviewer] reviews the phase before Operator approvals.
 
 **Detailed inventory fields retained from the original source scan:**
-1. [Evidence Archivist] Inventory sales invoices, purchase invoices, receipts, credit notes, annual accounts, XAF files, bank exports, VAT returns, income-tax returns, assessments, and asset evidence.
+1. [Evidence Archivist] Inventory sales invoices, purchase invoices, receipts, credit notes, annual accounts, XAF files, bank exports, VAT returns, income-tax returns, assessments and asset evidence.
 2. [Document Agent] Build CLOUD_INVOICE_REGISTRY with source key, controlled archive path, file name, SHA-256, document type, invoice number and date, entity and country, VAT identifier, currency, net, VAT, gross, reverse-charge flag, and confidence. Record sensitive row-level values only in the controlled workspace.
-3. [Evidence Archivist] Count Jortt customers, sales invoices, expenses, receipts, every attachment class, Inbox items, bank accounts, and bank transactions by period. Inventory Inbox items separately from booking-linked exports and reconcile attachment and Inbox counts and links by class.
-4. [Orchestrator] Derive the first business year from the earliest supported business event, including a sale, purchase, business bank transaction, VAT filing, income-tax filing with business income, or XAF.
-5. [Tax Filing Agent] Build YEAR_SOURCE_MATRIX with each source class marked COMPLETE, PARTIAL, or MISSING. Keep actual assigned filing cadence and declaration applicability in the tax calendar.
+3. [Evidence Archivist] Count Jortt customers, sales invoices, expenses, receipts, every attachment class, Inbox items, bank accounts and bank transactions by period. Inventory Inbox items separately from booking-linked exports and reconcile attachment and Inbox counts and links by class.
+4. [Orchestrator] Derive the first business year from the earliest supported business event, including a sale, purchase, business bank transaction, VAT filing, income-tax filing with business income or XAF.
+5. [Tax Filing Agent] Build YEAR_SOURCE_MATRIX with each source class marked COMPLETE, PARTIAL or MISSING. Keep actual assigned filing cadence and declaration applicability in the tax calendar.
 
 **Original year availability matrix retained as a controlled template:**
 
@@ -122,7 +122,7 @@ Phase 1 runs the actions in the order given, and every Moneybird write goes thro
 
 **Tool route** (from the phase reference):
 
-Jortt reads use jortt-cli with --all and complete next-link paging. Record page size, page count, item counts, status, and the independent source UI or portal total for every export. Jortt has no general-ledger API or UI export under the current tool contract, so no gate relies on an unverified printout. Moneybird reads use the guard read-only lock and explicit periods. No source API writes.
+Jortt reads use jortt-cli with --all and complete next-link paging. Record page size, page count, item counts, status and the independent source UI or portal total for every export. Jortt has no general-ledger API or UI export under the current tool contract, so no gate relies on an unverified printout. Moneybird reads use the guard read-only lock and explicit periods. No source API writes.
 
 Stop at the exit gate in spec.md section 5 and record the Operator approval in `decision-record.md`.
 <!-- /ANCHOR:phases -->
@@ -163,7 +163,7 @@ The exit gate in spec.md section 5 decides when the phase closes, and the Operat
 
 **Rollback procedure** (from the phase reference):
 
-Do not change source records. Quarantine an incomplete extract, preserve its hash, and replace it only with a new version after a complete re-extract.
+Do not change source records. Quarantine an incomplete extract, preserve its hash and replace it only with a new version after a complete re-extract.
 
 **Resume rule** (from the phase reference):
 

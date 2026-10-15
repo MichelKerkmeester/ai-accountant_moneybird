@@ -1,6 +1,6 @@
 ---
 title: Migration phases 0 to 2
-description: Safety, source inventory, and evidence collection.
+description: Safety, source inventory and evidence collection.
 nav_label: "Migration phases 0 to 2"
 trigger_phrases:
   - Jortt to Moneybird migration
@@ -13,7 +13,7 @@ version: 1.0.0.0
 
 # Migration phases 0 to 2
 
-Safety, source inventory, and evidence collection. Load the [migration index](./README.md) first and use the shared controls in [shared mechanisms](./shared-mechanisms.md).
+Safety, source inventory and evidence collection. Load the [migration index](./README.md) first and use the shared controls in [shared mechanisms](./shared-mechanisms.md).
 
 ---
 
@@ -34,7 +34,7 @@ Build a controlled migration workspace and establish the single empty Moneybird 
 - **SG-0.1**: Record the administration selector relationship. Check: both selector values resolve to the same administration, equality count 1, separate pilot administration count 0.
 - **SG-0.2**: Prove the guard boundary. Check: local stub suite cli-moneybird/cli/moneybird-cli/tests/run-tests.sh passes 1, an official CLI non-GET invocation under MONEYBIRD_GUARD_READ_ONLY=1 returns exit code 6 before any real call 1, real call count 0.
 - **SG-0.3**: Set threshold and expiry fields. Check: config fields due by Phase 0 in the Needed by column populated 100%, unapproved threshold rows 0, next expiry date recorded 1.
-- **SG-0.4**: Verify the Phase 0 auditfile UI export route. Check: the Operator UI completes an approved test auditfile export in Phase 0 1, product version, XAF version, and year match the approved request 1, receipt and artifact SHA-256 recorded 1.
+- **SG-0.4**: Verify the Phase 0 auditfile UI export route. Check: the Operator UI completes an approved test auditfile export in Phase 0 1, product version, XAF version and year match the approved request 1, receipt and artifact SHA-256 recorded 1.
 - **SG-0.5**: Verify a complete Moneybird bulk-read route. Check: synchronization with timestamp and completion counts or a complete paginated fallback with page counts is verified 1, Operator-approved cache-wait value and source basis recorded 1, Independent Auditor verification 1.
 - **SG-0.6**: Verify Jortt read-only access. Check: provider scope evidence shows read-only access 1, a local non-GET `jortt-cli call` without `--allow-write` exits 3 before any token request as documented in `cli-jortt/README.md` 1, API request count 0, real Jortt write calls 0.
 
@@ -46,28 +46,28 @@ The frozen gap register and approved source scope are recorded. No Phase 1 evide
 
 ### 4. Inputs
 
-Tool skills, frozen gap register, approved source scope, empty trial setup facts, threshold proposals, and source route inventory.
+Tool skills, frozen gap register, approved source scope, empty trial setup facts, threshold proposals and source route inventory.
 
 ### 5. Owner-tagged actions
 
-[Operator] confirms the single administration, expiry evidence, numeric thresholds, isolation decision, Jortt read scopes, test export approval, and cache-horizon value and source basis. [Orchestrator] records configuration, source scope, and owner assignments. [Evidence Archivist] verifies archive read-only boundaries. [Operator + AI] runs the official Moneybird CLI dry-run test under the read-only lock and captures exit code 6 before any real call. [Operator + AI] invokes a local non-GET `jortt-cli call` without `--allow-write` and records exit code 3 before token request, with zero API requests. Gate verifier: [Independent Auditor] checks both local test results, zero-call evidence, completed Operator UI auditfile artifact, and bulk-read completeness and cache-horizon approval.
+[Operator] confirms the single administration, expiry evidence, numeric thresholds, isolation decision, Jortt read scopes, test export approval and cache-horizon value and source basis. [Orchestrator] records configuration, source scope and owner assignments. [Evidence Archivist] verifies archive read-only boundaries. [Operator + AI] runs the official Moneybird CLI dry-run test under the read-only lock and captures exit code 6 before any real call. [Operator + AI] invokes a local non-GET `jortt-cli call` without `--allow-write` and records exit code 3 before token request, with zero API requests. Gate verifier: [Independent Auditor] checks both local test results, zero-call evidence, completed Operator UI auditfile artifact and bulk-read completeness and cache-horizon approval.
 
-[Agent runner] runs the M12 route proof for every sub-goal. [Implementer] drafts the runner, fixtures, canary harness, and sandbox profile. [Verifier] owns the privacy filter, payload scanner, and adversarial corpus, then checks boundary, egress, and both route canaries. [Final reviewer] reviews the phase before Operator approvals.
+[Agent runner] runs the M12 route proof for every sub-goal. [Implementer] drafts the runner, fixtures, canary harness and sandbox profile. [Verifier] owns the privacy filter, payload scanner, and adversarial corpus, then checks boundary, egress, and both route canaries. [Final reviewer] reviews the phase before Operator approvals.
 
 **Detailed operating sequence retained from the original setup steps:**
 1. [Operator] Select one empty Moneybird administration for both pilot and mirror. Set both selectors to that administration. Do not create a second pilot administration and do not write historical records during setup.
-2. [Operator + AI] Configure approved tool sessions using the sibling CLI skills. Read-only Moneybird work uses MONEYBIRD_GUARD_READ_ONLY=1 and explicit periods. Do not expose credentials in prompts, arguments, logs, reports, or tracked files.
+2. [Operator + AI] Configure approved tool sessions using the sibling CLI skills. Read-only Moneybird work uses MONEYBIRD_GUARD_READ_ONLY=1 and explicit periods. Do not expose credentials in prompts, arguments, logs, reports or tracked files.
 3. [Operator + AI] Confirm read routes and the selected administration with safe local evidence only. Report status codes and field names, not source names or amounts.
-4. [Operator + AI] Confirm the source archive boundary without opening, listing, searching, or reorganizing private source locations. Record the allowed input route and read-only rule.
+4. [Operator + AI] Confirm the source archive boundary without opening, listing, searching or reorganizing private source locations. Record the allowed input route and read-only rule.
 5. [Orchestrator] Run `scripts/init-workspace.sh` from this skill to create the folders listed in overview-and-setup.md under migration-workspace/ and copy the config template, the dashboard and the 23 phase packets, without overwriting an existing file.
 6. [Operator] Record the operating rules: no historical VAT, supplementary VAT, or income-tax filing, no historical tax payment, no invented amounts, no unexplained balancing entry, and no newly issued sales invoice. Historical sales documents use the approved external-invoice mapping.
 7. [Operator] Create required Moneybird tax rates in the UI and record the configured bookkeeping start date.
 8. [Operator] Verify the Jortt provider grant is limited to the required read scopes. Record scope evidence without credential values.
-9. [Operator] Complete the approved auditfile test export through the Moneybird UI and record the requested product version, XAF version, year, receipt, and artifact SHA-256. [Independent Auditor] verifies the artifact. Defer the guarded report-export POST until a phase gate has passed.
+9. [Operator] Complete the approved auditfile test export through the Moneybird UI and record the requested product version, XAF version, year, receipt and artifact SHA-256. [Independent Auditor] verifies the artifact. Defer the guarded report-export POST until a phase gate has passed.
 
 ### 6. Tool route
 
-Jortt uses jortt-cli with read scopes only. The local test invokes a non-GET `jortt-cli call` without `--allow-write` and requires exit code 3 before any token request, as documented in `cli-jortt/README.md`, with zero API requests. Moneybird reads use moneybird-guard with MONEYBIRD_GUARD_READ_ONLY=1 and explicit periods. The Moneybird negative test invokes the official CLI dry-run for a non-GET route under the lock and must exit 6 before a real call. Run the guard stub suite at cli-moneybird/cli/moneybird-cli/tests/run-tests.sh. Phase 0 auditfile testing uses the approved Operator UI export and a separate artifact check. A guarded report-export POST may run only after a prior phase gate passes, with exact Operator approval, a flushed operation-scoped WRITE_INTENT for the requested year, version, and payload hash, `--confirm-write` with `--approval <ref>` for that entry, a separate writer session, and a locked reader session for download verification. Verify a timestamped synchronization or complete paginated read route and an Operator-approved cache horizon independently checked by the Independent Auditor. UI setup remains Operator-only.
+Jortt uses jortt-cli with read scopes only. The local test invokes a non-GET `jortt-cli call` without `--allow-write` and requires exit code 3 before any token request, as documented in `cli-jortt/README.md`, with zero API requests. Moneybird reads use moneybird-guard with MONEYBIRD_GUARD_READ_ONLY=1 and explicit periods. The Moneybird negative test invokes the official CLI dry-run for a non-GET route under the lock and must exit 6 before a real call. Run the guard stub suite at cli-moneybird/cli/moneybird-cli/tests/run-tests.sh. Phase 0 auditfile testing uses the approved Operator UI export and a separate artifact check. A guarded report-export POST may run only after a prior phase gate passes, with exact Operator approval, a flushed operation-scoped WRITE_INTENT for the requested year, version and payload hash, `--confirm-write` with `--approval <ref>` for that entry, a separate writer session and a locked reader session for download verification. Verify a timestamped synchronization or complete paginated read route and an Operator-approved cache horizon independently checked by the Independent Auditor. UI setup remains Operator-only.
 
 ### 7. Outputs and evidence artifacts
 
@@ -105,9 +105,9 @@ Establish the source population and inventory each relevant record class before 
 
 ### 2. Nested sub-goals
 
-- **SG-1.1**: Enumerate mandatory source classes and years. Check: invoices, expenses, receipts, each attachment class, loose Inbox items, bank files, XAF files, annual accounts, filed returns, assessments, and reconstructed asset schedules have inventory rows 100%, unclassified classes 0.
+- **SG-1.1**: Enumerate mandatory source classes and years. Check: invoices, expenses, receipts, each attachment class, loose Inbox items, bank files, XAF files, annual accounts, filed returns, assessments and reconstructed asset schedules have inventory rows 100%, unclassified classes 0.
 - **SG-1.2**: Map each Jortt bank account and IBAN to source bank files per year. Check: account-year pairs with a file or explicit exception 100%, unexplained unmatched pairs 0.
-- **SG-1.3**: Inventory annual tax regimes and filing periods. Check: year-regime rows 100%, every KOR, ICP, OSS, and other relevant declaration marked applicable or not applicable with evidence, unknown statuses 0.
+- **SG-1.3**: Inventory annual tax regimes and filing periods. Check: year-regime rows 100%, every KOR, ICP, OSS and other relevant declaration marked applicable or not applicable with evidence, unknown statuses 0.
 - **SG-1.4**: Resolve the Jortt general-ledger printout status. Check: capability decision recorded 1, gates relying on an unverified printout 0.
 - **SG-1.5**: Build the document registry with source identity and file evidence. Check: required registry fields populated 100%, source hash coverage 100%.
 
@@ -123,16 +123,16 @@ Source archive inventory, Jortt account and transaction lists, bank file catalog
 
 ### 5. Owner-tagged actions
 
-[Evidence Archivist] inventories classes, captures source-side totals, and hashes. [Document Agent] builds the invoice inventory. [Operator] supplies UI-only XAF, annual accounts, return, assessment, and bank export evidence. [Tax Filing Agent] records annual regimes and declaration applicability. [Orchestrator] records whether a Jortt ledger printout is usable, unavailable, or unverified. Gate verifier: [Independent Auditor] reproduces source totals, full page counts, account-to-file counts, and declaration coverage.
+[Evidence Archivist] inventories classes, captures source-side totals and hashes. [Document Agent] builds the invoice inventory. [Operator] supplies UI-only XAF, annual accounts, return, assessment and bank export evidence. [Tax Filing Agent] records annual regimes and declaration applicability. [Orchestrator] records whether a Jortt ledger printout is usable, unavailable or unverified. Gate verifier: [Independent Auditor] reproduces source totals, full page counts, account-to-file counts and declaration coverage.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts per-class extraction and manifest builders for M1 and M8. [Verifier] independently reproduces source counts and the page chain. [Final reviewer] reviews the phase before Operator approvals.
 
 **Detailed inventory fields retained from the original source scan:**
-1. [Evidence Archivist] Inventory sales invoices, purchase invoices, receipts, credit notes, annual accounts, XAF files, bank exports, VAT returns, income-tax returns, assessments, and asset evidence.
+1. [Evidence Archivist] Inventory sales invoices, purchase invoices, receipts, credit notes, annual accounts, XAF files, bank exports, VAT returns, income-tax returns, assessments and asset evidence.
 2. [Document Agent] Build CLOUD_INVOICE_REGISTRY with source key, controlled archive path, file name, SHA-256, document type, invoice number and date, entity and country, VAT identifier, currency, net, VAT, gross, reverse-charge flag, and confidence. Record sensitive row-level values only in the controlled workspace.
-3. [Evidence Archivist] Count Jortt customers, sales invoices, expenses, receipts, every attachment class, Inbox items, bank accounts, and bank transactions by period. Inventory Inbox items separately from booking-linked exports and reconcile attachment and Inbox counts and links by class.
-4. [Orchestrator] Derive the first business year from the earliest supported business event, including a sale, purchase, business bank transaction, VAT filing, income-tax filing with business income, or XAF.
-5. [Tax Filing Agent] Build YEAR_SOURCE_MATRIX with each source class marked COMPLETE, PARTIAL, or MISSING. Keep actual assigned filing cadence and declaration applicability in the tax calendar.
+3. [Evidence Archivist] Count Jortt customers, sales invoices, expenses, receipts, every attachment class, Inbox items, bank accounts and bank transactions by period. Inventory Inbox items separately from booking-linked exports and reconcile attachment and Inbox counts and links by class.
+4. [Orchestrator] Derive the first business year from the earliest supported business event, including a sale, purchase, business bank transaction, VAT filing, income-tax filing with business income or XAF.
+5. [Tax Filing Agent] Build YEAR_SOURCE_MATRIX with each source class marked COMPLETE, PARTIAL or MISSING. Keep actual assigned filing cadence and declaration applicability in the tax calendar.
 
 **Original year availability matrix retained as a controlled template:**
 
@@ -143,7 +143,7 @@ Source archive inventory, Jortt account and transaction lists, bank file catalog
 
 ### 6. Tool route
 
-Jortt reads use jortt-cli with --all and complete next-link paging. Record page size, page count, item counts, status, and the independent source UI or portal total for every export. Jortt has no general-ledger API or UI export under the current tool contract, so no gate relies on an unverified printout. Moneybird reads use the guard read-only lock and explicit periods. No source API writes.
+Jortt reads use jortt-cli with --all and complete next-link paging. Record page size, page count, item counts, status and the independent source UI or portal total for every export. Jortt has no general-ledger API or UI export under the current tool contract, so no gate relies on an unverified printout. Moneybird reads use the guard read-only lock and explicit periods. No source API writes.
 
 ### 7. Outputs and evidence artifacts
 
@@ -157,13 +157,13 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, source cou
 
 ### 9. Stop conditions
 
-Missing page link, unexplained empty result, unavailable year scope, unclassified declaration, missing bank account file, missing attachment class, absent source-side export total, or total and manifest count mismatch.
+Missing page link, unexplained empty result, unavailable year scope, unclassified declaration, missing bank account file, missing attachment class, absent source-side export total or total and manifest count mismatch.
 
 Stop on any M12 stop event.
 
 ### 10. Rollback or compensation
 
-Do not change source records. Quarantine an incomplete extract, preserve its hash, and replace it only with a new version after a complete re-extract.
+Do not change source records. Quarantine an incomplete extract, preserve its hash and replace it only with a new version after a complete re-extract.
 
 ### 11. Resume rule
 
@@ -183,7 +183,7 @@ Complete the required evidence set and create an independently inspectable sourc
 
 - **SG-2.1**: Obtain required evidence by year and source. Check: every mandatory source class in Phase 1 is present or has an approved exception 100%, actual filed VAT return and confirmation evidence for every filed VAT period or evidence-backed not-applicable status 100%, exceptions waiving filed VAT return evidence 0, income-tax returns and assessments present or carrying the approved unavailability status that Phase 11 accepts 100%, unexplained missing classes 0.
 - **SG-2.2**: Reconcile every Jortt account to full-year bank evidence. Check: covered account-year pairs 100%, unexplained exceptions 0.
-- **SG-2.3**: Seed and test the archive. Check: manifest checksums and independent source totals match 100%, independent sample readability passes 100%, each record-class retention rule has an Operator-approved source basis, duration, start event, derived end date, owner, independent location, and readability evidence 100%, unresolved retention rules 0.
+- **SG-2.3**: Seed and test the archive. Check: manifest checksums and independent source totals match 100%, independent sample readability passes 100%, each record-class retention rule has an Operator-approved source basis, duration, start event, derived end date, owner, independent location and readability evidence 100%, unresolved retention rules 0.
 - **SG-2.4**: Establish first-business-year opening support. Check: start-year basis recorded 1, each opening account component has source evidence 100%, approver and treatment of pre-business funds recorded 100%, unsupported opening positions 0. Without prior closing evidence, the Operator or adviser approves a source-based schedule before the gate passes.
 - **SG-2.5**: Select the start boundary. Check: configured start date and start-year basis recorded 100%, unsupported opening positions 0.
 
@@ -199,16 +199,16 @@ Missing-source report, Jortt inventory, operator UI exports, bank files, filed r
 
 ### 5. Owner-tagged actions
 
-[Operator] exports Jortt XAF, annual accounts, filed VAT evidence, tax evidence, and bank files and records independent source UI or portal totals for every export. [Evidence Archivist] downloads supported records and attachments through Jortt CLI, reconciles pages and class links, and builds the archive manifest. [Tax Filing Agent] distinguishes filed returns from summaries. [Operator] approves each situation-dependent retention rule from its source basis and approves the first-business-year opening schedule. Gate verifier: [Independent Auditor] reproduces all class counts, source totals, retention date calculations, and restore samples. [Operator] owns missing UI exports and opening-balance approval.
+[Operator] exports Jortt XAF, annual accounts, filed VAT evidence, tax evidence and bank files and records independent source UI or portal totals for every export. [Evidence Archivist] downloads supported records and attachments through Jortt CLI, reconciles pages and class links, and builds the archive manifest. [Tax Filing Agent] distinguishes filed returns from summaries. [Operator] approves each situation-dependent retention rule from its source basis and approves the first-business-year opening schedule. Gate verifier: [Independent Auditor] reproduces all class counts, source totals, retention date calculations and restore samples. [Operator] owns missing UI exports and opening-balance approval.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the missing-source checklist, archive seeding and hash scripts, and retention table template. [Verifier] repeats the archive restore test and hash recompute. [Final reviewer] reviews the phase before Operator approvals.
 
 **Detailed source collection sequence retained from the original plan:**
-1. [Operator] For each in-scope period, export Jortt XAF, annual accounts, and actual filed VAT returns through the documented UI routes. A VAT summary is not a filed return.
-2. [Evidence Archivist] Retrieve supported sales invoice PDFs, purchase documents, attachments, and Inbox receipts through the documented read route. Record excluded and unavailable classes.
+1. [Operator] For each in-scope period, export Jortt XAF, annual accounts and actual filed VAT returns through the documented UI routes. A VAT summary is not a filed return.
+2. [Evidence Archivist] Retrieve supported sales invoice PDFs, purchase documents, attachments and Inbox receipts through the documented read route. Record excluded and unavailable classes.
 3. [Operator] Supply bank evidence per business account and full period. Prefer CAMT.053, then MT940, then official PDF statements. Other exports are analysis evidence only.
 4. [Operator] Supply filed income-tax returns, final and amended assessments, available VAT documents, and relevant filing correspondence through the approved portal route.
-5. [Operator] Request accountant schedules when available, including annual figures, tax-profit calculations, asset schedules, correction entries, supplementary filings, and VAT reconciliations.
+5. [Operator] Request accountant schedules when available, including annual figures, tax-profit calculations, asset schedules, correction entries, supplementary filings and VAT reconciliations.
 6. [Orchestrator] Select the Moneybird start year as the earliest year for which that year and every following in-scope year meet the evidence gate. Earlier years remain archive-only. Determine a supported opening position from prior closing evidence or an Operator-approved first-business-year schedule. The schedule records the supported start date, each account component and source, and treatment of pre-business funds. Never infer a missing balance.
 
 ### 6. Tool route

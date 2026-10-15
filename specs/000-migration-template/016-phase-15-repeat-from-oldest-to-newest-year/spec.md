@@ -62,7 +62,7 @@ Start year and sequence are approved. First eligible year passed Phases 6 throug
 
 **Phase outputs** (from the phase reference):
 
-Chronological year ledger, year gate index, skipped-year report, continuation matrix, and per-year snapshots under `Handoff/`, `Reports/`, and `Snapshots/`.
+Chronological year ledger, year gate index, skipped-year report, continuation matrix and per-year snapshots under `Handoff/`, `Reports/`, and `Snapshots/`.
 
 **Changelog**:
 - When this phase closes, refresh the matching file in ../changelog/ using the parent packet number plus this phase folder name.
@@ -105,7 +105,7 @@ The exit gate in section 5 passes, the recorded evidence sits in `migration-work
 
 **Phase inputs** (from the phase reference):
 
-Year matrix, phase gates, year snapshots, source manifests, run journal, and approved start-year opening decision.
+Year matrix, phase gates, year snapshots, source manifests, run journal and approved start-year opening decision.
 
 Read each input from Jortt or from the previous phase. Jortt stays read-only.
 
@@ -163,7 +163,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, prior-year
 
 **Stop conditions** (from the phase reference):
 
-Missing year, failed lock, broken continuity, unsupported start year, or any unresolved previous-year gate.
+Missing year, failed lock, broken continuity, unsupported start year or any unresolved previous-year gate.
 
 Stop on any M12 stop event.
 

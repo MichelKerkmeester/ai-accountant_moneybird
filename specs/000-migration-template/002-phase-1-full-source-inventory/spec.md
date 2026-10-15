@@ -126,9 +126,9 @@ Read each input from Jortt or from the previous phase. Jortt stays read-only.
 
 | ID | Requirement | Check |
 |----|-------------|-------|
-| REQ-001 | SG-1.1: Enumerate mandatory source classes and years. | invoices, expenses, receipts, each attachment class, loose Inbox items, bank files, XAF files, annual accounts, filed returns, assessments, and reconstructed asset schedules have inventory rows 100%, unclassified classes 0. |
+| REQ-001 | SG-1.1: Enumerate mandatory source classes and years. | invoices, expenses, receipts, each attachment class, loose Inbox items, bank files, XAF files, annual accounts, filed returns, assessments and reconstructed asset schedules have inventory rows 100%, unclassified classes 0. |
 | REQ-002 | SG-1.2: Map each Jortt bank account and IBAN to source bank files per year. | account-year pairs with a file or explicit exception 100%, unexplained unmatched pairs 0. |
-| REQ-003 | SG-1.3: Inventory annual tax regimes and filing periods. | year-regime rows 100%, every KOR, ICP, OSS, and other relevant declaration marked applicable or not applicable with evidence, unknown statuses 0. |
+| REQ-003 | SG-1.3: Inventory annual tax regimes and filing periods. | year-regime rows 100%, every KOR, ICP, OSS and other relevant declaration marked applicable or not applicable with evidence, unknown statuses 0. |
 | REQ-004 | SG-1.4: Resolve the Jortt general-ledger printout status. | capability decision recorded 1, gates relying on an unverified printout 0. |
 | REQ-005 | SG-1.5: Build the document registry with source identity and file evidence. | required registry fields populated 100%, source hash coverage 100%. |
 | REQ-006 | SG-1.6: Run the agent route. | M12 checks: work units with Verifier PASS or Operator disposition 100%, source counts and page-chain reproduction 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. |
@@ -165,7 +165,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, source cou
 
 **Stop conditions** (from the phase reference):
 
-Missing page link, unexplained empty result, unavailable year scope, unclassified declaration, missing bank account file, missing attachment class, absent source-side export total, or total and manifest count mismatch.
+Missing page link, unexplained empty result, unavailable year scope, unclassified declaration, missing bank account file, missing attachment class, absent source-side export total or total and manifest count mismatch.
 
 Stop on any M12 stop event.
 

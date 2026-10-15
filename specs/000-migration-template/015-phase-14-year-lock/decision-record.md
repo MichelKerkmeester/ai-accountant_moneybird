@@ -141,7 +141,7 @@ Evidence: [evidence path in migration-workspace/]
 
 **How to roll back** (from the phase plan):
 
-A locked year is never silently edited. A later assessment opens a linked exception with source evidence and Operator or adviser filing decision. The Operator authorizes any unlock. Corrections use linked reversal or adjustment, fresh read-back, and verified relock.
+A locked year is never silently edited. A later assessment opens a linked exception with source evidence and Operator or adviser filing decision. The Operator authorizes any unlock. Corrections use linked reversal or adjustment, fresh read-back and verified relock.
 
 <!-- /ANCHOR:adr-001-impl -->
 <!-- /ANCHOR:adr-001 -->

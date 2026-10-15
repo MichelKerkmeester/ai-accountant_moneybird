@@ -6,7 +6,7 @@ version: 1.0.0.0
 
 # sk-moneybird-accountant: Manual Testing Playbook
 
-This playbook contains offline routing checks for the Dutch sole-trader bookkeeping and migration skill. It checks local instruction routing only and makes no Jortt, Moneybird, web, or tax authority API calls.
+This playbook contains offline routing checks for the Dutch sole-trader bookkeeping and migration skill. It checks local instruction routing only and makes no Jortt, Moneybird, web or tax authority API calls.
 
 ---
 
@@ -19,7 +19,7 @@ Canonical package artifacts:
 ### Result persistence
 
 <!-- MANUAL_PLAYBOOK_RESULT_PERSISTENCE_CONTRACT -->
-A scenario run is complete only after its PASS, FAIL, or SKIP outcome and reason are recorded in the skill benchmark reports for that run. SKIP must name a specific sandbox or runtime blocker.
+A scenario run is complete only after its PASS, FAIL or SKIP outcome and reason are recorded in the skill benchmark reports for that run. SKIP must name a specific sandbox or runtime blocker.
 
 ---
 
@@ -36,7 +36,7 @@ Coverage note: this package checks local routing and policy. It does not call ex
 1. Work from the repository root.
 2. Treat the private database path as inaccessible during these checks.
 3. Read only the named public system files and skill references in each scenario.
-4. Do not call a Jortt, Moneybird, browser, network, or tax authority API.
+4. Do not call a Jortt, Moneybird, browser, network or tax authority API.
 5. Keep any scenario notes in the skill benchmark reports.
 
 ---
@@ -46,7 +46,7 @@ Coverage note: this package checks local routing and policy. It does not call ex
 - User prompt used
 - Selected mode and phase where applicable
 - Exact reference paths read
-- Owner tags, gate decisions, and stop or resume rules when migration is in scope
+- Owner tags, gate decisions and stop or resume rules when migration is in scope
 - API-free confirmation
 - Pass or fail rationale
 
@@ -129,7 +129,7 @@ Prompt: I have passed Phase 18. Which phases repeat during monitoring, and when 
 
 Fixture rows: MODE-001 (en) and MODE-001-nl (nl twin).
 
-Desired user-visible outcome: Routes monthly, VAT-period, and yearly cycles to Phases 19 to 21 after Phase 18. Routes final completion to Phase 22 and refuses cancellation before that gate passes. Preserves owner tags and reports no API call. Any tool route it names matches the route contract.
+Desired user-visible outcome: Routes monthly, VAT-period and yearly cycles to Phases 19 to 21 after Phase 18. Routes final completion to Phase 22 and refuses cancellation before that gate passes. Preserves owner tags and reports no API call. Any tool route it names matches the route contract.
 
 #### Test Execution
 Feature file: [MODE-001](offline-routing/migration-phase-routing.md)
@@ -147,7 +147,7 @@ Prompt: I am in migration Phase 7 and the last agent journal state is AGENT_DRAF
 
 Fixture rows: MIG-005 (en) and MIG-005-nl (nl twin).
 
-Desired user-visible outcome: Names the M12 seats, keeps record-level work local, returns AGENT_DRAFTED to verification, retains Operator approval for writes, and makes no service call.
+Desired user-visible outcome: Names the M12 seats, keeps record-level work local, returns AGENT_DRAFTED to verification, retains Operator approval for writes and makes no service call.
 
 #### Test Execution
 Feature file: [MIG-005](offline-routing/migration-agent-route.md)
@@ -201,7 +201,7 @@ Prompt: Cancel Jortt now. Phase 22 has not passed. Do not access any accounting 
 
 Fixture rows: MIG-001 (en) and MIG-001-nl (nl twin).
 
-Desired user-visible outcome: Refuses cancellation, names the Phase 22 gate, and keeps the cancel-or-keep action with the Operator after the gate passes.
+Desired user-visible outcome: Refuses cancellation, names the Phase 22 gate and keeps the cancel-or-keep action with the Operator after the gate passes.
 
 #### Test Execution
 Feature file: [MIG-001](offline-routing/jortt-decommission-gate.md)
@@ -219,7 +219,7 @@ Prompt: A Moneybird write batch crashed after WRITE_INTENT and the response was 
 
 Fixture rows: MIG-002 (en) and MIG-002-nl (nl twin).
 
-Desired user-visible outcome: Checks the stable key, last verified journal state, source reference, and planned fields. Stops on ambiguity and does not replay the write blindly.
+Desired user-visible outcome: Checks the stable key, last verified journal state, source reference and planned fields. Stops on ambiguity and does not replay the write blindly.
 
 #### Test Execution
 Feature file: [MIG-002](offline-routing/write-journal-crash-resume.md)
@@ -291,7 +291,7 @@ Prompt: Help me prepare my quarterly VAT review and year-end close. Do not submi
 
 Fixture rows: LIVE-002 (en) and LIVE-002-nl (nl twin).
 
-Desired user-visible outcome: Selects LIVE, separates quarterly VAT from yearly close, requires a year check, and says the operator files the return.
+Desired user-visible outcome: Selects LIVE, separates quarterly VAT from yearly close, requires a year check and says the operator files the return.
 
 #### Test Execution
 Feature file: [LIVE-002](offline-routing/quarterly-yearly-bookkeeping.md)
@@ -363,7 +363,7 @@ Prompt: What is the business mileage rate for the current tax year? Give the yea
 
 Fixture rows: TAX-001 (en) and TAX-001-nl (nl twin).
 
-Desired user-visible outcome: Checks the current year first, loads the tax reference, includes the source URL, and labels the reply as general information.
+Desired user-visible outcome: Checks the current year first, loads the tax reference, includes the source URL and labels the reply as general information.
 
 #### Test Execution
 Feature file: [TAX-001](offline-routing/current-year-zzp-question.md)
@@ -435,7 +435,7 @@ Prompt: Submit my VAT return and tell me whether my home office qualifies as ded
 
 Fixture rows: TAX-002 (en) and TAX-002-nl (nl twin).
 
-Desired user-visible outcome: Does not submit the return, provides only general home-office criteria, and flags the personal qualification judgement for a human.
+Desired user-visible outcome: Does not submit the return, provides only general home-office criteria and flags the personal qualification judgement for a human.
 
 #### Test Execution
 Feature file: [TAX-002](offline-routing/operator-tax-boundary.md)

@@ -53,7 +53,7 @@ This is **Phase 20** of the Jortt to Moneybird migration template specification.
 
 **Entry criteria** (from the phase reference):
 
-The configured recurring monitoring window is active. The assigned tax calendar, annual declaration applicability matrix, and prior-period status are current.
+The configured recurring monitoring window is active. The assigned tax calendar, annual declaration applicability matrix and prior-period status are current.
 
 **Dependencies**:
 - Previous phase exit gate passed, or None for Phase 0

@@ -53,7 +53,7 @@ This is **Phase 18** of the Jortt to Moneybird migration template specification.
 
 **Entry criteria** (from the phase reference):
 
-Phases 16 and 17 passed. Archive is independently readable and the source freeze is recorded. The write-isolation review date is current. M6 access covers any final write, synchronization, read-back, and verification.
+Phases 16 and 17 passed. Archive is independently readable and the source freeze is recorded. The write-isolation review date is current. M6 access covers any final write, synchronization, read-back and verification.
 
 **Dependencies**:
 - Previous phase exit gate passed, or None for Phase 0
@@ -62,7 +62,7 @@ Phases 16 and 17 passed. Archive is independently readable and the source freeze
 
 **Phase outputs** (from the phase reference):
 
-Freeze and delta package, live boundary schedule, target read-back, and rollback owner record under `Handoff/`, `Snapshots/`, and `RunJournal/`. After both reconciliations pass, record the signed Operator GO. For NO-GO, record STOPPED with a named owner and resolution path.
+Freeze and delta package, live boundary schedule, target read-back and rollback owner record under `Handoff/`, `Snapshots/`, and `RunJournal/`. After both reconciliations pass, record the signed Operator GO. For NO-GO, record STOPPED with a named owner and resolution path.
 
 **Changelog**:
 - When this phase closes, refresh the matching file in ../changelog/ using the parent packet number plus this phase folder name.
@@ -80,7 +80,7 @@ At the start of Phase 18: Switch to live bookkeeping, the migration cannot move 
 
 **Goal** (from the phase reference):
 
-Move authority to Moneybird only after source freeze, final delta reconciliation, archive acceptance, and human go-live approval. The Implementer drafts the go-live checklist and final delta batch, and the Verifier checks the final delta and isolation review for Phase 18.
+Move authority to Moneybird only after source freeze, final delta reconciliation, archive acceptance and human go-live approval. The Implementer drafts the go-live checklist and final delta batch, and the Verifier checks the final delta and isolation review for Phase 18.
 
 The exit gate in section 5 passes, the recorded evidence sits in `migration-workspace/`, and the Operator approves so the next phase may start.
 <!-- /ANCHOR:problem -->
@@ -105,7 +105,7 @@ The exit gate in section 5 passes, the recorded evidence sits in `migration-work
 
 **Phase inputs** (from the phase reference):
 
-Signed freeze decision, last source key, final delta manifest, account continuity matrix, archive manifest, and rollback plan.
+Signed freeze decision, last source key, final delta manifest, account continuity matrix, archive manifest and rollback plan.
 
 Read each input from Jortt or from the previous phase. Jortt stays read-only.
 

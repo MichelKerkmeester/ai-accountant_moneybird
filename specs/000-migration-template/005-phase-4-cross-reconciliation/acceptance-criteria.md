@@ -52,7 +52,7 @@ One row per criterion. `AC-ID` is stable once written: supersede a criterion, ne
 |----|-----------|--------|----------|
 | AC-001 | in-scope source items linked or explicitly excepted 100%. | PENDING | PENDING |
 | AC-002 | key collisions 0 and duplicate source keys 0. | PENDING | PENDING |
-| AC-003 | canonical records with source key, period, and evidence reference 100%. | PENDING | PENDING |
+| AC-003 | canonical records with source key, period and evidence reference 100%. | PENDING | PENDING |
 | AC-004 | M12 checks: work units with Verifier PASS or Operator disposition 100%, match recount differences 0, duplicate stable keys 0, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. | PENDING | PENDING |
 | AC-900 | The exit gate in spec.md section 5 passes with evidence filed under migration-workspace/ | PENDING | PENDING |
 | AC-901 | Open stop conditions in spec.md section 6: 0 | PENDING | PENDING |

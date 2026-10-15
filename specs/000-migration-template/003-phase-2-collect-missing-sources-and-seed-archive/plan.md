@@ -103,16 +103,16 @@ Phase 2 runs the actions in the order given, and every Moneybird write goes thro
 
 **Phase actions** (from the phase reference):
 
-[Operator] exports Jortt XAF, annual accounts, filed VAT evidence, tax evidence, and bank files and records independent source UI or portal totals for every export. [Evidence Archivist] downloads supported records and attachments through Jortt CLI, reconciles pages and class links, and builds the archive manifest. [Tax Filing Agent] distinguishes filed returns from summaries. [Operator] approves each situation-dependent retention rule from its source basis and approves the first-business-year opening schedule. Gate verifier: [Independent Auditor] reproduces all class counts, source totals, retention date calculations, and restore samples. [Operator] owns missing UI exports and opening-balance approval.
+[Operator] exports Jortt XAF, annual accounts, filed VAT evidence, tax evidence and bank files and records independent source UI or portal totals for every export. [Evidence Archivist] downloads supported records and attachments through Jortt CLI, reconciles pages and class links, and builds the archive manifest. [Tax Filing Agent] distinguishes filed returns from summaries. [Operator] approves each situation-dependent retention rule from its source basis and approves the first-business-year opening schedule. Gate verifier: [Independent Auditor] reproduces all class counts, source totals, retention date calculations and restore samples. [Operator] owns missing UI exports and opening-balance approval.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the missing-source checklist, archive seeding and hash scripts, and retention table template. [Verifier] repeats the archive restore test and hash recompute. [Final reviewer] reviews the phase before Operator approvals.
 
 **Detailed source collection sequence retained from the original plan:**
-1. [Operator] For each in-scope period, export Jortt XAF, annual accounts, and actual filed VAT returns through the documented UI routes. A VAT summary is not a filed return.
-2. [Evidence Archivist] Retrieve supported sales invoice PDFs, purchase documents, attachments, and Inbox receipts through the documented read route. Record excluded and unavailable classes.
+1. [Operator] For each in-scope period, export Jortt XAF, annual accounts and actual filed VAT returns through the documented UI routes. A VAT summary is not a filed return.
+2. [Evidence Archivist] Retrieve supported sales invoice PDFs, purchase documents, attachments and Inbox receipts through the documented read route. Record excluded and unavailable classes.
 3. [Operator] Supply bank evidence per business account and full period. Prefer CAMT.053, then MT940, then official PDF statements. Other exports are analysis evidence only.
 4. [Operator] Supply filed income-tax returns, final and amended assessments, available VAT documents, and relevant filing correspondence through the approved portal route.
-5. [Operator] Request accountant schedules when available, including annual figures, tax-profit calculations, asset schedules, correction entries, supplementary filings, and VAT reconciliations.
+5. [Operator] Request accountant schedules when available, including annual figures, tax-profit calculations, asset schedules, correction entries, supplementary filings and VAT reconciliations.
 6. [Orchestrator] Select the Moneybird start year as the earliest year for which that year and every following in-scope year meet the evidence gate. Earlier years remain archive-only. Determine a supported opening position from prior closing evidence or an Operator-approved first-business-year schedule. The schedule records the supported start date, each account component and source, and treatment of pre-business funds. Never infer a missing balance.
 
 **Tool route** (from the phase reference):

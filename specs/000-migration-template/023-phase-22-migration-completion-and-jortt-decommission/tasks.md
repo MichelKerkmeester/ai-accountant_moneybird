@@ -41,11 +41,11 @@ contextType: "general"
 <!-- ANCHOR:phase-2 -->
 ## Phase 2: Implementation
 
-- [ ] T001 [SG-22.1] Capture the final archive delta after cutover. (Check: every post-freeze source change is represented in the final delta manifest with source totals, links, bytes, and hashes 100%, unexplained delta items 0.)
+- [ ] T001 [SG-22.1] Capture the final archive delta after cutover. (Check: every post-freeze source change is represented in the final delta manifest with source totals, links, bytes and hashes 100%, unexplained delta items 0.)
 - [ ] T002 [SG-22.2] Reverify archive restoration by record class. (Check: Independent Auditor restore and readability evidence covers every required class 100%, failed class restores 0.)
-- [ ] T003 [SG-22.3] Recheck retention. (Check: current Operator-approved source basis and rule cover 100% of classes, Independent Auditor recomputes each duration and start event to confirm the end date, archive location, owner, and readability evidence 100%, unsupported or unapproved rules 0.)
+- [ ] T003 [SG-22.3] Recheck retention. (Check: current Operator-approved source basis and rule cover 100% of classes, Independent Auditor recomputes each duration and start event to confirm the end date, archive location, owner and readability evidence 100%, unsupported or unapproved rules 0.)
 - [ ] T004 [SG-22.4] Pass the migration definition-of-done gate. (Check: required reconciliations and filed-return bridges 100%, unexplained differences 0, accepted exceptions complete 100%, historical years locked 100%, cutover approval 1, live ownership 100%.)
-- [ ] T005 [SG-22.5] Close the master dashboard. (Check: current dashboard rows 23 of 23, missing owners, evidence links, due dates, exception counts, or resume checkpoints 0.)
+- [ ] T005 [SG-22.5] Close the master dashboard. (Check: current dashboard rows 23 of 23, missing owners, evidence links, due dates, exception counts or resume checkpoints 0.)
 - [ ] T006 [SG-22.6] Record the Operator decommission decision. (Check: decision is exactly cancel or keep and is supported by the completed evidence packet 1.)
 - [ ] T007 [SG-22.7] Run the agent route. (Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, definition-of-done items verified 100%, archive recheck pass 1, retention recheck pass 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.)
 <!-- /ANCHOR:phase-2 -->

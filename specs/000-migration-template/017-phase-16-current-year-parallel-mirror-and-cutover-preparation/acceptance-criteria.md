@@ -52,7 +52,7 @@ One row per criterion. `AC-ID` is stable once written: supersede a criterion, ne
 |----|-----------|--------|----------|
 | AC-001 | next historical year is the first unlocked year at or after the configured start year 1, current mirror year is the actual calendar year only when it is at or after the configured start date and is not locked 1, hard-coded current-year labels 0. | PENDING | PENDING |
 | AC-002 | a positive minimum cycle count or duration and rationale are approved in `MIGRATION_CONFIG` as `parallel.cycles_required`, completed cycles meet that minimum 100%, unresolved differences 0. | PENDING | PENDING |
-| AC-003 | Operator-set freeze date and time, delta schema, and source-total method recorded 100%. The actual freeze, its last source key, and delta capture occur in Phase 17. | PENDING | PENDING |
+| AC-003 | Operator-set freeze date and time, delta schema and source-total method recorded 100%. The actual freeze, its last source key and delta capture occur in Phase 17. | PENDING | PENDING |
 | AC-004 | numeric trigger thresholds and named decision owner 100%, rehearsal scenarios complete 100%, post-cutover write reconciliation rehearsal 100%. | PENDING | PENDING |
 | AC-005 | M12 checks: work units with Verifier PASS or Operator disposition 100%, parallel delta checks independently pass 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. | PENDING | PENDING |
 | AC-900 | The exit gate in spec.md section 5 passes with evidence filed under migration-workspace/ | PENDING | PENDING |

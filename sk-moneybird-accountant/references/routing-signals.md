@@ -1,6 +1,6 @@
 ---
 title: Routing signals for the task-type table
-description: Where each routing signal in the SKILL.md task-type table comes from, with the Belastingdienst page per signal group, the skill vocabulary that has no public source, and the tie margin, fallback floor, warning band, abstain outcome, specificity clauses and year change route.
+description: Where each routing signal in the SKILL.md task-type table comes from, with the Belastingdienst page per signal group, the skill vocabulary that has no public source and the tie margin, fallback floor, warning band, abstain outcome, specificity clauses and year change route.
 nav_label: "Routing signals for the task-type table"
 trigger_phrases:
   - routing signals

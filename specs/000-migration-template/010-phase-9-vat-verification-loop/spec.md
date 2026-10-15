@@ -62,7 +62,7 @@ Phase 2 has actual filed VAT return and confirmation evidence for every filed VA
 
 **Phase outputs** (from the phase reference):
 
-Period-by-period four-source reconciliation, filed-return evidence index, rounding-cap summary, year-by-year declaration applicability matrix, manual correction reconciliation register, missed-period exception list, and verification report.
+Period-by-period four-source reconciliation, filed-return evidence index, rounding-cap summary, year-by-year declaration applicability matrix, manual correction reconciliation register, missed-period exception list and verification report.
 
 **Changelog**:
 - When this phase closes, refresh the matching file in ../changelog/ using the parent packet number plus this phase folder name.
@@ -80,7 +80,7 @@ At the start of Phase 9: VAT verification loop, the migration cannot move on bec
 
 **Goal** (from the phase reference):
 
-Reconcile document, ledger, filed, and Moneybird tax values for every assigned tax period. The Implementer drafts the per-period VAT reconciliation, and the Verifier independently recomputes VAT from the source registers for Phase 9.
+Reconcile document, ledger, filed and Moneybird tax values for every assigned tax period. The Implementer drafts the per-period VAT reconciliation, and the Verifier independently recomputes VAT from the source registers for Phase 9.
 
 The exit gate in section 5 passes, the recorded evidence sits in `migration-workspace/`, and the Operator approves so the next phase may start.
 <!-- /ANCHOR:problem -->
@@ -105,7 +105,7 @@ The exit gate in section 5 passes, the recorded evidence sits in `migration-work
 
 **Phase inputs** (from the phase reference):
 
-Original invoices, XAF, actual filed VAT returns and portal confirmations, assigned tax calendar and declaration applicability matrix, Moneybird tax reports, manual correction register, and approved cap values.
+Original invoices, XAF, actual filed VAT returns and portal confirmations, assigned tax calendar and declaration applicability matrix, Moneybird tax reports, manual correction register and approved cap values.
 
 Read each input from Jortt or from the previous phase. Jortt stays read-only.
 

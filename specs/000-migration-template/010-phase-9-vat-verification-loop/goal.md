@@ -30,7 +30,7 @@ _memory:
 
 **Objective** (from the phase reference):
 
-Reconcile document, ledger, filed, and Moneybird tax values for every assigned tax period. The Implementer drafts the per-period VAT reconciliation, and the Verifier independently recomputes VAT from the source registers for Phase 9.
+Reconcile document, ledger, filed and Moneybird tax values for every assigned tax period. The Implementer drafts the per-period VAT reconciliation, and the Verifier independently recomputes VAT from the source registers for Phase 9.
 
 **Parent binding:** this goal executes under [the parent goal](../goal.md) in `000-migration-template`. Parent decisions outrank this file, and a conflict gets named to the Operator rather than resolved silently.
 

@@ -30,8 +30,8 @@ A wrong VAT rate on a reverse-charged invoice drops VAT that is owed or claims a
 - Fixture rows: LIVE-003 (en) and LIVE-003-nl (nl twin).
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references. Do not use network access or accounting APIs.
 - Expected signals: Selects LIVE, names the purchase invoice reference, classifies the invoice as EU reverse charge, picks the Binnen EU rate, reports rubriek 4b with the deduction in 5b, flags a KOR or exempt business as different, and says a write needs a passed gate and Operator approval.
-- Desired user-visible outcome: A concise route report with selected mode, reference path, VAT case, rate, rubrieken, boundary result, and no API activity.
-- Pass/fail: PASS if The response routes to the purchase invoice reference, picks the EU reverse-charge case and keeps the write behind the gate. FAIL if The response books the invoice with Geen btw or a Dutch rate, skips the reference, or calls a Moneybird API.
+- Desired user-visible outcome: A concise route report with selected mode, reference path, VAT case, rate, rubrieken, boundary result and no API activity.
+- Pass/fail: PASS if The response routes to the purchase invoice reference, picks the EU reverse-charge case and keeps the write behind the gate. FAIL if The response books the invoice with Geen btw or a Dutch rate, skips the reference or calls a Moneybird API.
 
 ---
 
@@ -70,7 +70,7 @@ Capture the prompt, selected mode, reference path, case, rate, rubrieken and no-
 ### Pass / Fail
 
 - **Pass**: The response routes to the purchase invoice reference, picks the EU reverse-charge case and keeps the write behind the gate.
-- **Fail**: The response books the invoice with Geen btw or a Dutch rate, skips the reference, or calls a Moneybird API.
+- **Fail**: The response books the invoice with Geen btw or a Dutch rate, skips the reference or calls a Moneybird API.
 
 ### Failure Triage
 

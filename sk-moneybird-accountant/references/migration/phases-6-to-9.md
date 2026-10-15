@@ -1,6 +1,6 @@
 ---
 title: Migration phases 6 to 9
-description: Mapping, pilot, historical batches, and VAT verification.
+description: Mapping, pilot, historical batches and VAT verification.
 nav_label: "Migration phases 6 to 9"
 trigger_phrases:
   - Jortt to Moneybird migration
@@ -13,7 +13,7 @@ version: 1.0.0.0
 
 # Migration phases 6 to 9
 
-Mapping, pilot, historical batches, and VAT verification. Load the [migration index](./README.md) first and use the shared controls in [shared mechanisms](./shared-mechanisms.md).
+Mapping, pilot, historical batches and VAT verification. Load the [migration index](./README.md) first and use the shared controls in [shared mechanisms](./shared-mechanisms.md).
 
 ---
 
@@ -45,20 +45,20 @@ Phase 5 has zero unresolved blockers for mapped records. Tax rates are approved 
 
 ### 4. Inputs
 
-Canonical dataset, category and vendor tax data, RGS codes, source closing balance, aged invoice-level open AR/AP schedule with source key and settlement status, target representation evidence, and approved thresholds.
+Canonical dataset, category and vendor tax data, RGS codes, source closing balance, aged invoice-level open AR/AP schedule with source key and settlement status, target representation evidence and approved thresholds.
 
 ### 5. Owner-tagged actions
 
-[Mapping Agent] prepares category, tax, and separate PDF and UBL field mappings. [Operator] creates tax rates in the UI and approves accounting judgments and any subledger. [Independent Auditor] checks mapping uniqueness and target support. [Reconciliation Agent] prepares source closing-to-opening schedules. Gate verifier: [Independent Auditor] verifies opening arithmetic, invoice-level links, and the target representation plan.
+[Mapping Agent] prepares category, tax and separate PDF and UBL field mappings. [Operator] creates tax rates in the UI and approves accounting judgments and any subledger. [Independent Auditor] checks mapping uniqueness and target support. [Reconciliation Agent] prepares source closing-to-opening schedules. Gate verifier: [Independent Auditor] verifies opening arithmetic, invoice-level links and the target representation plan.
 
-[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts mapping tables, opening schedules, and continuity schedules. [Verifier] checks every mapped field against the target schema and verifies planted unmappable cases. [Final reviewer] reviews the phase before Operator approvals.
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts mapping tables, opening schedules and continuity schedules. [Verifier] checks every mapped field against the target schema and verifies planted unmappable cases. [Final reviewer] reviews the phase before Operator approvals.
 
 **Mapping tables and object routes retained from the original mapping design:**
 
 
 | Source category | Moneybird account | RGS code | Account type | VAT treatment | Confidence |
 |---|---|---|---|---|---|
-| Approved source label | Supported target account | Required code | Asset, liability, equity, income, or expense | Approved treatment | Approved score or rationale |
+| Approved source label | Supported target account | Required code | Asset, liability, equity, income or expense | Approved treatment | Approved score or rationale |
 
 | Legal entity | Validity period | Country | VAT identifier | Vendor type | Moneybird tax rate |
 |---|---|---|---|---|---|
@@ -66,15 +66,15 @@ Canonical dataset, category and vendor tax data, RGS codes, source closing balan
 
 | Historical item | Moneybird record |
 |---|---|
-| Issued sales invoice | External sales invoice with original number, date, and original file |
+| Issued sales invoice | External sales invoice with original number, date and original file |
 | Purchase invoice | Purchase invoice document with original attachment |
 | Receipt | Receipt document with original attachment |
-| Journal, private item, or correction | General journal document |
+| Journal, private item or correction | General journal document |
 | Asset | Asset with historic value changes |
 | Bank transaction | Financial statement imported through the Operator UI |
-1. [Mapping Agent] Maintain CATEGORY_MAPPING with source category, Moneybird account, required RGS code, account type, VAT treatment, and confidence. Every new ledger account has an RGS code.
-2. [Mapping Agent] Maintain VENDOR_TAX_MATRIX with legal entity, validity period, country, VAT identifier, vendor type, and approved Moneybird tax rate. The required rate must already exist.
-3. [Mapping Agent] Map issued sales documents to external sales invoices with original number and date and the original file attached. Map purchase invoices and receipts to document records with attachments. Map journals, private items, and corrections to general journal documents. Map assets with historic value changes.
+1. [Mapping Agent] Maintain CATEGORY_MAPPING with source category, Moneybird account, required RGS code, account type, VAT treatment and confidence. Every new ledger account has an RGS code.
+2. [Mapping Agent] Maintain VENDOR_TAX_MATRIX with legal entity, validity period, country, VAT identifier, vendor type and approved Moneybird tax rate. The required rate must already exist.
+3. [Mapping Agent] Map issued sales documents to external sales invoices with original number and date and the original file attached. Map purchase invoices and receipts to document records with attachments. Map journals, private items and corrections to general journal documents. Map assets with historic value changes.
 4. [Operator] Import bank files through the UI. The writer links approved payments through the documented tool route.
 5. [Mapping Agent] When a supplier changes country or legal entity, add a new validity period instead of reusing one permanent brand rule.
 6. [Independent Auditor] Validate external document reporting behavior in the pilot before relying on a tax report.
@@ -95,7 +95,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, mapped fie
 
 ### 9. Stop conditions
 
-No RGS code, unverified CLI field, absent tax rate, unsupported PDF-derived field, missing item-level AR/AP, unsupported target representation, no prior closing XAF without an approved alternative, or non-zero unsupported opening difference.
+No RGS code, unverified CLI field, absent tax rate, unsupported PDF-derived field, missing item-level AR/AP, unsupported target representation, no prior closing XAF without an approved alternative or non-zero unsupported opening difference.
 
 Stop on any M12 stop event.
 
@@ -121,7 +121,7 @@ Prove the complete controlled write and verification path in the one empty trial
 
 - **SG-7.1**: Pilot each source document type and attachment path. Check: PDF and UBL are piloted separately where present, required field matrices match sources 100%, attachment bytes and SHA-256 match 100%, target attachment read route verified 1.
 - **SG-7.2**: Prove duplicate control under an uncertain response. Check: stable local key and mapping schema version beside it 100%, durable WRITE_INTENT flushed before every non-GET call 100%, source reference and planned payload fields match before ID adoption 100%, ambiguous results stopped 100%.
-- **SG-7.3**: Rehearse crash resume at the write boundary. Check: forced interruption after WRITE_INTENT, after response loss, and after read-back 3, each resumes from the last verified journal state 100%, blind replay count 0.
+- **SG-7.3**: Rehearse crash resume at the write boundary. Check: forced interruption after WRITE_INTENT, after response loss and after read-back 3, each resumes from the last verified journal state 100%, blind replay count 0.
 - **SG-7.4**: Rehearse safe compensation. Check: approved undo or linked correction rehearsal passes 1, independent read confirms final state 1.
 - **SG-7.5**: Test the item-level AR/AP target representation. Check: representative opening item and settlement link read-back pass 1, source item and target link coverage 100%.
 - **SG-7.6**: Test lock behavior for each used record class in the safe pilot. Check: Operator-approved probe and correction plan 1, record-class coverage 100%, expected lock result recorded for every class, successful probes reversed or corrected and read back 100%, final lock state verified 1.
@@ -130,38 +130,38 @@ Prove the complete controlled write and verification path in the one empty trial
 
 ### 3. Entry criteria
 
-Phases 0 through 6 passed. PDF and UBL pilot populations where present, attachment read route, pilot key manifest, and pre-write report are frozen. Trial and subscription evidence covers write, synchronization, read-back, and audit completion.
+Phases 0 through 6 passed. PDF and UBL pilot populations where present, attachment read route, pilot key manifest and pre-write report are frozen. Trial and subscription evidence covers write, synchronization, read-back and audit completion.
 
 ### 4. Inputs
 
-Pilot records, mapping hash, source hashes, pre-write report, risk review, opening AR/AP sample, target representation decision, and approved write batch.
+Pilot records, mapping hash, source hashes, pre-write report, risk review, opening AR/AP sample, target representation decision and approved write batch.
 
 ### 5. Owner-tagged actions
 
-[Operator] approves the exact batch and performs bank-file import in UI. [Migration Writer] records and flushes WRITE_INTENT before every non-GET call and journals returned IDs. [Operator] approves the temporary pilot lock and a disposable probe record for each used record class, with a correction path for any probe that succeeds. [Independent Auditor] reads back records, verifies every attachment byte hash and AR/AP settlement link, and confirms lock probe results and final lock state. [Red Team] challenges duplicates and field mapping. [Operator + AI] selects pilot items for crash and compensation rehearsals. Gate verifier: [Independent Auditor] verifies read-back, payload fields, attachment bytes, settlement linkage, lock coverage, and resume states.
+[Operator] approves the exact batch and performs bank-file import in UI. [Migration Writer] records and flushes WRITE_INTENT before every non-GET call and journals returned IDs. [Operator] approves the temporary pilot lock and a disposable probe record for each used record class, with a correction path for any probe that succeeds. [Independent Auditor] reads back records, verifies every attachment byte hash and AR/AP settlement link, and confirms lock probe results and final lock state. [Red Team] challenges duplicates and field mapping. [Operator + AI] selects pilot items for crash and compensation rehearsals. Gate verifier: [Independent Auditor] verifies read-back, payload fields, attachment bytes, settlement linkage, lock coverage and resume states.
 
-[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the pilot batch builder, pre-write report, and read-back comparer. [Verifier] checks the pre-write report and read-back comparison. [Final reviewer] reviews the phase before Operator approvals.
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the pilot batch builder, pre-write report and read-back comparer. [Verifier] checks the pre-write report and read-back comparison. [Final reviewer] reviews the phase before Operator approvals.
 
 **Pilot selection and numbered execution retained from the original plan:**
-Select a representative period from the oldest eligible year. Include a sales invoice, a domestic purchase, an EU service purchase, a non-EU service purchase, a normal bank payment, and a private payment if present.
-1. [Migration Writer] Produce PILOT PRE-WRITE REPORT with each record, target object, account, tax rate, risk class, and expected totals.
+Select a representative period from the oldest eligible year. Include a sales invoice, a domestic purchase, an EU service purchase, a non-EU service purchase, a normal bank payment and a private payment if present.
+1. [Migration Writer] Produce PILOT PRE-WRITE REPORT with each record, target object, account, tax rate, risk class and expected totals.
 2. [Mapping Agent] Resolve mapping defects and keep RED or BLACK records out of the write set.
 3. [Operator] Approve the exact pre-write report and batch scope.
 4. [Migration Writer] Write only the approved records through moneybird-guard and record each returned ID in the write journal after a flushed intent.
 5. [Operator] Import the pilot bank file through the UI. [Migration Writer] link approved payments through the documented guarded route.
 6. [Independent Auditor] Compare planned values with write responses, then run a later synchronized read-back to account for cache delay.
 7. [Independent Auditor] Recheck from original sources using the read-only lock and explicit periods.
-8. [Red Team] Challenge field mapping, duplicates, and completeness.
-9. [Operator + AI] Rehearse recovery at the intent, response-loss, and read-back boundaries with the local stub suite. Prove that an uncertain write is reconciled before resumption and that compensation is linked and verified. Do not delete issued or settled records as a routine undo.
-10. [Operator] Temporarily locks the pilot period. [Independent Auditor] tests only the record classes used by the migration with the approved disposable probes. If a probe succeeds, stop, record the unexpected write, reverse or correct it through the approved linked path, read it back, and restore the approved lock state before continuing.
+8. [Red Team] Challenge field mapping, duplicates and completeness.
+9. [Operator + AI] Rehearse recovery at the intent, response-loss and read-back boundaries with the local stub suite. Prove that an uncertain write is reconciled before resumption and that compensation is linked and verified. Do not delete issued or settled records as a routine undo.
+10. [Operator] Temporarily locks the pilot period. [Independent Auditor] tests only the record classes used by the migration with the approved disposable probes. If a probe succeeds, stop, record the unexpected write, reverse or correct it through the approved linked path, read it back and restore the approved lock state before continuing.
 
 ### 6. Tool route
 
-All Moneybird writes use moneybird-guard after dry-run review, with --confirm-write, --approval for the flushed WRITE_INTENT, and the single pilot/mirror administration. Run separate PDF and UBL pilots where both source types exist. Verify every attachment through a documented target read route. Reads use the guard lock and synchronization with a recorded timestamp. No real write occurs during the crash-boundary stub rehearsal.
+All Moneybird writes use moneybird-guard after dry-run review, with --confirm-write, --approval for the flushed WRITE_INTENT and the single pilot/mirror administration. Run separate PDF and UBL pilots where both source types exist. Verify every attachment through a documented target read route. Reads use the guard lock and synchronization with a recorded timestamp. No real write occurs during the crash-boundary stub rehearsal.
 
 ### 7. Outputs and evidence artifacts
 
-Pilot pre-write report, PDF and UBL field matrices, pilot key manifest, opening AR/AP representation and settlement-link test, write journal with flushed intent events, run journal, timestamped synchronization read-back, attachment hash comparison, lock behavior matrix, temporary-probe correction evidence, independent audit, crash-resume rehearsal, red-team report, and compensation rehearsal.
+Pilot pre-write report, PDF and UBL field matrices, pilot key manifest, opening AR/AP representation and settlement-link test, write journal with flushed intent events, run journal, timestamped synchronization read-back, attachment hash comparison, lock behavior matrix, temporary-probe correction evidence, independent audit, crash-resume rehearsal, red-team report and compensation rehearsal.
 
 ### 8. Numeric exit gate
 
@@ -197,30 +197,30 @@ Rebuild approved historical records in controlled batches and reconcile each bat
 
 - **SG-8.1**: Freeze input and recompute immediately before write. Check: approved input hashes match pre-write hashes 100%.
 - **SG-8.2**: Track each source object through write and read-back. Check: objects with terminal state 100%, flushed WRITE_INTENT events before non-GET calls 100%, source-reference and planned-field equality before ID adoption 100%, WRITE_UNKNOWN count 0 before gate.
-- **SG-8.3**: Reconcile counts, pilot identity, and balances. Check: every source key already verified in the pilot reuses its matching target ID and is excluded from the historical write set 100%, exact source reference and planned fields match 100%, duplicates across pilot and historical key manifests 0, unexplained differences 0, write-key duplicates 0.
+- **SG-8.3**: Reconcile counts, pilot identity and balances. Check: every source key already verified in the pilot reuses its matching target ID and is excluded from the historical write set 100%, exact source reference and planned fields match 100%, duplicates across pilot and historical key manifests 0, unexplained differences 0, write-key duplicates 0.
 - **SG-8.4**: Verify every target attachment. Check: source and target byte counts and SHA-256 match 100%, unavailable attachment reads 0, mismatches 0.
-- **SG-8.5**: Track opening AR/AP through settlement. Check: each cut-over item has settled-with-link, still-open-with-aging, or approved-exception status 100%, settled items link to the same source key 100%, unexplained open items 0.
+- **SG-8.5**: Track opening AR/AP through settlement. Check: each cut-over item has settled-with-link, still-open-with-aging or approved-exception status 100%, settled items link to the same source key 100%, unexplained open items 0.
 
 - **SG-8.6**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, per-batch pre-write and read-back checks pass 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 
 ### 3. Entry criteria
 
-Phase 7 passed. A verified pilot key manifest exists for the same administration. The period is open. The duplicate gate includes the union of pilot and historical keys. Matching verified pilot records are reused and never written again. Batch approval, current M6 evidence through read-back, mapping hash, exception state, and numeric threshold config are present.
+Phase 7 passed. A verified pilot key manifest exists for the same administration. The period is open. The duplicate gate includes the union of pilot and historical keys. Matching verified pilot records are reused and never written again. Batch approval, current M6 evidence through read-back, mapping hash, exception state and numeric threshold config are present.
 
 ### 4. Inputs
 
-Frozen canonical records, batch manifest, prior journal state, mapping, bank files, aged invoice-level AR/AP schedule, exception ledger, and approved pre-write report.
+Frozen canonical records, batch manifest, prior journal state, mapping, bank files, aged invoice-level AR/AP schedule, exception ledger and approved pre-write report.
 
 ### 5. Owner-tagged actions
 
-[Migration Writer] writes only approved items and maintains stable keys. [Operator] approves each batch and imports bank files. [Independent Auditor] checks timestamped synchronization read-back. [Red Team] challenges period coverage and duplicates across pilot and historical manifests. Gate verifier: [Independent Auditor] verifies sync results, payload equality, union-key uniqueness, and reconciliations.
+[Migration Writer] writes only approved items and maintains stable keys. [Operator] approves each batch and imports bank files. [Independent Auditor] checks timestamped synchronization read-back. [Red Team] challenges period coverage and duplicates across pilot and historical manifests. Gate verifier: [Independent Auditor] verifies sync results, payload equality, union-key uniqueness and reconciliations.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts per-period batch plans and builders. [Verifier] checks each batch pre-write report and read-back. [Final reviewer] reviews the phase before Operator approvals.
 
 **Historical batch sequence retained from the original per-period workflow:**
 1. [Migration Writer] Freeze the period's source files and hashes in Snapshots/.
 2. [Reconciliation Agent] Repeat the pre-write reconciliation against the frozen source set.
-3. [Orchestrator] Report document and transaction counts, risk-class counts, expected revenue, costs, VAT, and bank movement in the controlled workspace.
+3. [Orchestrator] Report document and transaction counts, risk-class counts, expected revenue, costs, VAT and bank movement in the controlled workspace.
 4. [Operator] Approve the report and exact batch.
 5. [Migration Writer] Write only approved records within shared request budgets.
 6. [Operator] Import the period's bank files through the UI. [Migration Writer] link approved payments.
@@ -234,11 +234,11 @@ Frozen canonical records, batch manifest, prior journal state, mapping, bank fil
 
 ### 6. Tool route
 
-Before every non-GET call, flush WRITE_INTENT with the stable key, mapping schema version, source reference, planned payload hash, and approval reference. Moneybird writes use guarded CLI with --confirm-write and --approval for that reference, against the payload file the local payload assembler built. Keep within general and reports request limits. Retry decisions use a timestamped synchronization read or wait beyond the Operator-approved, Independent Auditor verified `bulk_read.cache_horizon` in `MIGRATION_CONFIG`, then a complete paginated read. Missing or unapproved horizon blocks a wait-based retry. Bank-file imports are Operator UI-only.
+Before every non-GET call, flush WRITE_INTENT with the stable key, mapping schema version, source reference, planned payload hash and approval reference. Moneybird writes use guarded CLI with --confirm-write and --approval for that reference, against the payload file the local payload assembler built. Keep within general and reports request limits. Retry decisions use a timestamped synchronization read or wait beyond the Operator-approved, Independent Auditor verified `bulk_read.cache_horizon` in `MIGRATION_CONFIG`, then a complete paginated read. Missing or unapproved horizon blocks a wait-based retry. Bank-file imports are Operator UI-only.
 
 ### 7. Outputs and evidence artifacts
 
-Frozen batch manifest, pre-write report, pilot key manifest, union duplicate report, flushed write-ahead events, run-journal checkpoints, timestamped sync read-back, attachment comparisons, reconciliation, exception updates, and period verification report.
+Frozen batch manifest, pre-write report, pilot key manifest, union duplicate report, flushed write-ahead events, run-journal checkpoints, timestamped sync read-back, attachment comparisons, reconciliation, exception updates and period verification report.
 
 ### 8. Numeric exit gate
 
@@ -258,7 +258,7 @@ Stop the affected batch. Never delete or overwrite a committed target record as 
 
 ### 11. Resume rule
 
-Start at the last `READBACK_CONFIRMED` or `RECONCILED` checkpoint. Reconcile every unknown item and revalidate input hashes, approval scope, and expiry before the next write.
+Start at the last `READBACK_CONFIRMED` or `RECONCILED` checkpoint. Reconcile every unknown item and revalidate input hashes, approval scope and expiry before the next write.
 
 For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
 
@@ -268,7 +268,7 @@ Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-so
 
 ### 1. Goal
 
-Reconcile document, ledger, filed, and Moneybird tax values for every assigned tax period. The Implementer drafts the per-period VAT reconciliation, and the Verifier independently recomputes VAT from the source registers for Phase 9.
+Reconcile document, ledger, filed and Moneybird tax values for every assigned tax period. The Implementer drafts the per-period VAT reconciliation, and the Verifier independently recomputes VAT from the source registers for Phase 9.
 
 ### 2. Nested sub-goals
 
@@ -285,16 +285,16 @@ Phase 2 has actual filed VAT return and confirmation evidence for every filed VA
 
 ### 4. Inputs
 
-Original invoices, XAF, actual filed VAT returns and portal confirmations, assigned tax calendar and declaration applicability matrix, Moneybird tax reports, manual correction register, and approved cap values.
+Original invoices, XAF, actual filed VAT returns and portal confirmations, assigned tax calendar and declaration applicability matrix, Moneybird tax reports, manual correction register and approved cap values.
 
 ### 5. Owner-tagged actions
 
-[VAT Agent] calculates document VAT independently. [Tax Filing Agent] checks filed periods, KOR, ICP, OSS, and correction history. [Independent Auditor] checks boxes and manual correction links. [Operator] decides corrections and performs any filing. Gate verifier: [Independent Auditor] reproduces period, box, applicability, and correction-owner counts.
+[VAT Agent] calculates document VAT independently. [Tax Filing Agent] checks filed periods, KOR, ICP, OSS and correction history. [Independent Auditor] checks boxes and manual correction links. [Operator] decides corrections and performs any filing. Gate verifier: [Independent Auditor] reproduces period, box, applicability and correction-owner counts.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the per-period VAT reconciliation. [Verifier] independently recomputes VAT from the source registers. [Final reviewer] reviews the phase before Operator approvals.
 
 **Four-source VAT comparison retained from the original plan:**
-For each actually assigned filing period, compare A) document VAT, B) ledger VAT, C) filed VAT, and D) Moneybird VAT by return box. Classify differences as EXACT, ROUNDING, EXPLAINED, SOURCE DIFFERENCE, FILING DIFFERENCE, MONEYBIRD DIFFERENCE, or UNEXPLAINED. Record each manual correction with period, source and target links, evidence, owner, and status. Apply the configured per-box allowance and cumulative quarter and year caps without netting periods. The Operator may mark historical filing status in Moneybird through the UI in chronological order after evidence review. Agents never file or pay a return.
+For each actually assigned filing period, compare A) document VAT, B) ledger VAT, C) filed VAT, and D) Moneybird VAT by return box. Classify differences as EXACT, ROUNDING, EXPLAINED, SOURCE DIFFERENCE, FILING DIFFERENCE, MONEYBIRD DIFFERENCE or UNEXPLAINED. Record each manual correction with period, source and target links, evidence, owner, and status. Apply the configured per-box allowance and cumulative quarter and year caps without netting periods. The Operator may mark historical filing status in Moneybird through the UI in chronological order after evidence review. Agents never file or pay a return.
 
 | Return box | Documents | Ledger | Filed return | Moneybird | Difference and classification |
 |---|---|---|---|---|---|
@@ -307,7 +307,7 @@ Jortt return exports use operator UI. Moneybird report reads use the guard read-
 
 ### 7. Outputs and evidence artifacts
 
-Period-by-period four-source reconciliation, filed-return evidence index, rounding-cap summary, year-by-year declaration applicability matrix, manual correction reconciliation register, missed-period exception list, and verification report.
+Period-by-period four-source reconciliation, filed-return evidence index, rounding-cap summary, year-by-year declaration applicability matrix, manual correction reconciliation register, missed-period exception list and verification report.
 
 ### 8. Numeric exit gate
 

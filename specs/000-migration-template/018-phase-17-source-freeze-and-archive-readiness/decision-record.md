@@ -133,7 +133,7 @@ Evidence: [evidence path in migration-workspace/]
 
 **How to roll back** (from the phase plan):
 
-Keep Jortt uncancelled. If the freeze is disrupted, the Operator records a new freeze date, captures every intervening source change, and repeats the affected archive and restore checks before go-live.
+Keep Jortt uncancelled. If the freeze is disrupted, the Operator records a new freeze date, captures every intervening source change and repeats the affected archive and restore checks before go-live.
 
 <!-- /ANCHOR:adr-001-impl -->
 <!-- /ANCHOR:adr-001 -->

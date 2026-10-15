@@ -62,7 +62,7 @@ Phase 10 year reports are complete. Available filing evidence is linked. Evidenc
 
 **Phase outputs** (from the phase reference):
 
-Year-specific commercial-to-tax bridge, evidence index, adjustment schedule, review decision, and linked exceptions under `Reports/` and `Exceptions/`.
+Year-specific commercial-to-tax bridge, evidence index, adjustment schedule, review decision and linked exceptions under `Reports/` and `Exceptions/`.
 
 **Changelog**:
 - When this phase closes, refresh the matching file in ../changelog/ using the parent packet number plus this phase folder name.
@@ -163,7 +163,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, bridge che
 
 **Stop conditions** (from the phase reference):
 
-No filed evidence and no approved unavailable status, tax judgment unresolved, assessment missing when required without an approved alternative, unexplained adjustment, or request to force ledger profit to match a tax return.
+No filed evidence and no approved unavailable status, tax judgment unresolved, assessment missing when required without an approved alternative, unexplained adjustment or request to force ledger profit to match a tax return.
 
 Stop on any M12 stop event.
 

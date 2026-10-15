@@ -43,7 +43,7 @@ contextType: "general"
 
 - [ ] T001 [SG-16.1] Derive the next work year from the configured start date and last locked year. (Check: next historical year is the first unlocked year at or after the configured start year 1, current mirror year is the actual calendar year only when it is at or after the configured start date and is not locked 1, hard-coded current-year labels 0.)
 - [ ] T002 [SG-16.2] Complete configured parallel comparisons. (Check: a positive minimum cycle count or duration and rationale are approved in `MIGRATION_CONFIG` as `parallel.cycles_required`, completed cycles meet that minimum 100%, unresolved differences 0.)
-- [ ] T003 [SG-16.3] Prepare the source freeze and final delta contract. (Check: Operator-set freeze date and time, delta schema, and source-total method recorded 100%. The actual freeze, its last source key, and delta capture occur in Phase 17.)
+- [ ] T003 [SG-16.3] Prepare the source freeze and final delta contract. (Check: Operator-set freeze date and time, delta schema and source-total method recorded 100%. The actual freeze, its last source key and delta capture occur in Phase 17.)
 - [ ] T004 [SG-16.4] Prepare objective rollback controls. (Check: numeric trigger thresholds and named decision owner 100%, rehearsal scenarios complete 100%, post-cutover write reconciliation rehearsal 100%.)
 - [ ] T005 [SG-16.5] Run the agent route. (Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, parallel delta checks independently pass 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.)
 <!-- /ANCHOR:phase-2 -->

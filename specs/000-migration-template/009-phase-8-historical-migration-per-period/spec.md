@@ -53,7 +53,7 @@ This is **Phase 8** of the Jortt to Moneybird migration template specification.
 
 **Entry criteria** (from the phase reference):
 
-Phase 7 passed. A verified pilot key manifest exists for the same administration. The period is open. The duplicate gate includes the union of pilot and historical keys. Matching verified pilot records are reused and never written again. Batch approval, current M6 evidence through read-back, mapping hash, exception state, and numeric threshold config are present.
+Phase 7 passed. A verified pilot key manifest exists for the same administration. The period is open. The duplicate gate includes the union of pilot and historical keys. Matching verified pilot records are reused and never written again. Batch approval, current M6 evidence through read-back, mapping hash, exception state and numeric threshold config are present.
 
 **Dependencies**:
 - Previous phase exit gate passed, or None for Phase 0
@@ -62,7 +62,7 @@ Phase 7 passed. A verified pilot key manifest exists for the same administration
 
 **Phase outputs** (from the phase reference):
 
-Frozen batch manifest, pre-write report, pilot key manifest, union duplicate report, flushed write-ahead events, run-journal checkpoints, timestamped sync read-back, attachment comparisons, reconciliation, exception updates, and period verification report.
+Frozen batch manifest, pre-write report, pilot key manifest, union duplicate report, flushed write-ahead events, run-journal checkpoints, timestamped sync read-back, attachment comparisons, reconciliation, exception updates and period verification report.
 
 **Changelog**:
 - When this phase closes, refresh the matching file in ../changelog/ using the parent packet number plus this phase folder name.
@@ -105,7 +105,7 @@ The exit gate in section 5 passes, the recorded evidence sits in `migration-work
 
 **Phase inputs** (from the phase reference):
 
-Frozen canonical records, batch manifest, prior journal state, mapping, bank files, aged invoice-level AR/AP schedule, exception ledger, and approved pre-write report.
+Frozen canonical records, batch manifest, prior journal state, mapping, bank files, aged invoice-level AR/AP schedule, exception ledger and approved pre-write report.
 
 Read each input from Jortt or from the previous phase. Jortt stays read-only.
 
@@ -128,9 +128,9 @@ Read each input from Jortt or from the previous phase. Jortt stays read-only.
 |----|-------------|-------|
 | REQ-001 | SG-8.1: Freeze input and recompute immediately before write. | approved input hashes match pre-write hashes 100%. |
 | REQ-002 | SG-8.2: Track each source object through write and read-back. | objects with terminal state 100%, flushed WRITE_INTENT events before non-GET calls 100%, source-reference and planned-field equality before ID adoption 100%, WRITE_UNKNOWN count 0 before gate. |
-| REQ-003 | SG-8.3: Reconcile counts, pilot identity, and balances. | every source key already verified in the pilot reuses its matching target ID and is excluded from the historical write set 100%, exact source reference and planned fields match 100%, duplicates across pilot and historical key manifests 0, unexplained differences 0, write-key duplicates 0. |
+| REQ-003 | SG-8.3: Reconcile counts, pilot identity and balances. | every source key already verified in the pilot reuses its matching target ID and is excluded from the historical write set 100%, exact source reference and planned fields match 100%, duplicates across pilot and historical key manifests 0, unexplained differences 0, write-key duplicates 0. |
 | REQ-004 | SG-8.4: Verify every target attachment. | source and target byte counts and SHA-256 match 100%, unavailable attachment reads 0, mismatches 0. |
-| REQ-005 | SG-8.5: Track opening AR/AP through settlement. | each cut-over item has settled-with-link, still-open-with-aging, or approved-exception status 100%, settled items link to the same source key 100%, unexplained open items 0. |
+| REQ-005 | SG-8.5: Track opening AR/AP through settlement. | each cut-over item has settled-with-link, still-open-with-aging or approved-exception status 100%, settled items link to the same source key 100%, unexplained open items 0. |
 | REQ-006 | SG-8.6: Run the agent route. | M12 checks: work units with Verifier PASS or Operator disposition 100%, per-batch pre-write and read-back checks pass 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. |
 
 ### P1 - Required (complete OR user-approved deferral)

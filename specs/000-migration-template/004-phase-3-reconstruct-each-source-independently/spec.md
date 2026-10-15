@@ -80,7 +80,7 @@ At the start of Phase 3: Reconstruct each source independently, the migration ca
 
 **Goal** (from the phase reference):
 
-Produce independent document, ledger, bank, tax, and VAT registers without cross-contamination. The Implementer drafts one register builder per source, each in its own session, and the Verifier independently reproduces register totals and statically checks each builder reads only its folder for Phase 3.
+Produce independent document, ledger, bank, tax and VAT registers without cross-contamination. The Implementer drafts one register builder per source, each in its own session and the Verifier independently reproduces register totals and statically checks each builder reads only its folder for Phase 3.
 
 The exit gate in section 5 passes, the recorded evidence sits in `migration-workspace/`, and the Operator approves so the next phase may start.
 <!-- /ANCHOR:problem -->
@@ -148,7 +148,7 @@ Read each input from Jortt or from the previous phase. Jortt stays read-only.
 
 **Exit gate** (from the phase reference):
 
-Input folders sealed 100%, applicable source items processed 100%, VAT input originals 100%, booking export files in VAT input 0, private record fields in prompts, logs, and session outputs 0, unbalanced journals 0, cross-register reads before Phase 4 equal 0.
+Input folders sealed 100%, applicable source items processed 100%, VAT input originals 100%, booking export files in VAT input 0, private record fields in prompts, logs and session outputs 0, unbalanced journals 0, cross-register reads before Phase 4 equal 0.
 
 M12 gate: work units with Verifier PASS or Operator disposition 100%, register totals independently reproduced 100%, role-folder read violations 0, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
 

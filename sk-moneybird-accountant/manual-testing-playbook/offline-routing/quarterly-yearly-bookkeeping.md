@@ -29,9 +29,9 @@ A local-only check can confirm that the skill chooses its mode and references wh
 - Prompt: Help me prepare my quarterly VAT review and year-end close. Do not submit a return and do not call an API.
 - Fixture rows: LIVE-002 (en) and LIVE-002-nl (nl twin).
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references. Do not use network access or accounting APIs.
-- Expected signals: Selects LIVE, separates quarterly VAT from yearly close, requires a year check, and says the operator files the return.
-- Desired user-visible outcome: A concise route report with selected mode, reference paths, boundary result, and no API activity.
-- Pass/fail: PASS if Both cadences are covered, current-year figures are checked, and return filing remains operator-only. FAIL if The response merges the periods, gives an unsourced figure, submits a return, or calls an API.
+- Expected signals: Selects LIVE, separates quarterly VAT from yearly close, requires a year check and says the operator files the return.
+- Desired user-visible outcome: A concise route report with selected mode, reference paths, boundary result and no API activity.
+- Pass/fail: PASS if Both cadences are covered, current-year figures are checked and return filing remains operator-only. FAIL if The response merges the periods, gives an unsourced figure, submits a return or calls an API.
 
 ---
 
@@ -58,20 +58,20 @@ A local-only check can confirm that the skill chooses its mode and references wh
 2. Read sk-moneybird-accountant/SKILL.md
 3. Read sk-moneybird-accountant/references/moneybird-bookkeeping.md
 4. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md and sk-moneybird-accountant/references/tax-rules/YYYY/vat/figures.md for the period's tax year
-5. Report quarterly and yearly checks, the current-year rule, and the return-filing boundary
+5. Report quarterly and yearly checks, the current-year rule and the return-filing boundary
 
 ### Expected
 
-Selects LIVE, separates quarterly VAT from yearly close, requires a year check, and says the operator files the return.
+Selects LIVE, separates quarterly VAT from yearly close, requires a year check and says the operator files the return.
 
 ### Evidence
 
-Capture the requested period tasks, selected references, tax-year note, filing boundary, and no-API confirmation.
+Capture the requested period tasks, selected references, tax-year note, filing boundary and no-API confirmation.
 
 ### Pass / Fail
 
-- **Pass**: Both cadences are covered, current-year figures are checked, and return filing remains operator-only.
-- **Fail**: The response merges the periods, gives an unsourced figure, submits a return, or calls an API.
+- **Pass**: Both cadences are covered, current-year figures are checked and return filing remains operator-only.
+- **Fail**: The response merges the periods, gives an unsourced figure, submits a return or calls an API.
 
 ### Failure Triage
 

@@ -103,7 +103,7 @@ Phase 18 runs the actions in the order given, and every Moneybird write goes thr
 
 **Phase actions** (from the phase reference):
 
-`[Migration Writer]` handles only approved final-delta writes. `[Independent Auditor]` verifies the final delta read-back and boundary reconciliation. `[Orchestrator]` confirms both Phase 18 checks pass, archive readiness, and zero unresolved cutover blockers. After those records, `[Operator]` may record a signed GO. The Operator may record NO-GO whenever a stop condition is met. A NO-GO records a named owner and resolution path, leaves the phase STOPPED, and does not pass the gate. Gate verifier: `[Independent Auditor]` confirms both reconciliations before any signed GO, which `[Operator]` records only after that confirmation.
+`[Migration Writer]` handles only approved final-delta writes. `[Independent Auditor]` verifies the final delta read-back and boundary reconciliation. `[Orchestrator]` confirms both Phase 18 checks pass, archive readiness and zero unresolved cutover blockers. After those records, `[Operator]` may record a signed GO. The Operator may record NO-GO whenever a stop condition is met. A NO-GO records a named owner and resolution path, leaves the phase STOPPED and does not pass the gate. Gate verifier: `[Independent Auditor]` confirms both reconciliations before any signed GO, which `[Operator]` records only after that confirmation.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the go-live checklist and final delta batch. [Verifier] checks the final delta and isolation review. [Final reviewer] reviews the phase before Operator approvals.
 
@@ -166,7 +166,7 @@ If no live target entries exist, resume the source ledger under an approved plan
 
 **Resume rule** (from the phase reference):
 
-Resume from the last confirmed delta checkpoint. For a NO-GO, the named owner resolves each recorded blocker, links its evidence, and journals a resolution event that references the NO-GO. The append-only journal keeps the NO-GO, and the resolution event closes it. Recheck the affected Phase 16 or 17 controls, capture any changed source delta, and rerun Phase 18.1 through 18.3. No later live phase starts until a new signed GO follows passing delta and boundary checks. A changed freeze date or new source activity invalidates the cutover packet.
+Resume from the last confirmed delta checkpoint. For a NO-GO, the named owner resolves each recorded blocker, links its evidence and journals a resolution event that references the NO-GO. The append-only journal keeps the NO-GO, and the resolution event closes it. Recheck the affected Phase 16 or 17 controls, capture any changed source delta and rerun Phase 18.1 through 18.3. No later live phase starts until a new signed GO follows passing delta and boundary checks. A changed freeze date or new source activity invalidates the cutover packet.
 
 For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
 

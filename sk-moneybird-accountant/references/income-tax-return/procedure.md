@@ -51,7 +51,7 @@ The year rules behind steps 6 to 9 are in the year files, for example [Inkomsten
 
 ## 3. THE SOURCE MAP
 
-One row per input on the official return checklist plus the business cijfers list. The evidence class is Moneybird, the books outside Moneybird, the year corpus, or the Operator and the vooraf ingevulde aangifte. A Moneybird row names what the guarded read shows. Every figure is a link into the year corpus and never copied here.
+One row per input on the official return checklist plus the business cijfers list. The evidence class is Moneybird, the books outside Moneybird, the year corpus or the Operator and the vooraf ingevulde aangifte. A Moneybird row names what the guarded read shows. Every figure is a link into the year corpus and never copied here.
 
 | Return part or figure | Where it comes from | Evidence class | Year file that owns the rule |
 |---|---|---|---|

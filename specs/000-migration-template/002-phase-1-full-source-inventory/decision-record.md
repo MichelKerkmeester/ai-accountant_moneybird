@@ -61,7 +61,7 @@ The phase contract is [phases-0-to-2.md](../../../sk-moneybird-accountant/refere
 
 **How it works**: each Operator gate in this phase gets a numbered entry below with a decision, an approver, a date and an evidence path. A PENDING entry blocks the exit gate until the Operator signs it.
 
-### D-001: supplies UI-only XAF, annual accounts, return, assessment, and bank export
+### D-001: supplies UI-only XAF, annual accounts, return, assessment and bank export
 
 Status: PENDING
 Decision: [Operator decision]
@@ -133,7 +133,7 @@ Evidence: [evidence path in migration-workspace/]
 
 **How to roll back** (from the phase plan):
 
-Do not change source records. Quarantine an incomplete extract, preserve its hash, and replace it only with a new version after a complete re-extract.
+Do not change source records. Quarantine an incomplete extract, preserve its hash and replace it only with a new version after a complete re-extract.
 
 <!-- /ANCHOR:adr-001-impl -->
 <!-- /ANCHOR:adr-001 -->

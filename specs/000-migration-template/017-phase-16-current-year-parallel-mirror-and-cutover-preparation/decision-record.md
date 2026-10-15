@@ -133,7 +133,7 @@ Evidence: [evidence path in migration-workspace/]
 
 **How to roll back** (from the phase plan):
 
-Before live activity, resume the source ledger. After target accepts live entries, use the approved fail-forward, linked compensation, or tested restoration strategy. Reconcile every post-cutover write before returning to the source system.
+Before live activity, resume the source ledger. After target accepts live entries, use the approved fail-forward, linked compensation or tested restoration strategy. Reconcile every post-cutover write before returning to the source system.
 
 <!-- /ANCHOR:adr-001-impl -->
 <!-- /ANCHOR:adr-001 -->

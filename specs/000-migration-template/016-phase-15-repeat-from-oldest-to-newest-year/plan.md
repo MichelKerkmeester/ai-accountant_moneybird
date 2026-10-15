@@ -108,11 +108,11 @@ Phase 15 runs the actions in the order given, and every Moneybird write goes thr
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the year-advance checklist. [Verifier] checks prior-year lock evidence. [Final reviewer] reviews the phase before Operator approvals.
 
 **Year sequencing retained from the original repeat rule:**
-Run reconstruction, period batches, VAT verification, annual check, income-tax bridge, Red Team, and year lock in order for each year. Finish and lock each year before advancing. Do not run multiple historical year write batches in parallel.
+Run reconstruction, period batches, VAT verification, annual check, income-tax bridge, Red Team and year lock in order for each year. Finish and lock each year before advancing. Do not run multiple historical year write batches in parallel.
 
 **Tool route** (from the phase reference):
 
-Each phase uses its documented Jortt, Moneybird, bank, or tax route. Moneybird reads remain guarded read-only. Writes remain guarded, approved, and expiry-checked per batch.
+Each phase uses its documented Jortt, Moneybird, bank or tax route. Moneybird reads remain guarded read-only. Writes remain guarded, approved and expiry-checked per batch.
 
 Stop at the exit gate in spec.md section 5 and record the Operator approval in `decision-record.md`.
 <!-- /ANCHOR:phases -->

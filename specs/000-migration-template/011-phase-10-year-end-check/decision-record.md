@@ -61,7 +61,7 @@ The phase contract is [phases-10-to-16.md](../../../sk-moneybird-accountant/refe
 
 **How it works**: each Operator gate in this phase gets a numbered entry below with a decision, an approver, a date and an evidence path. A PENDING entry blocks the exit gate until the Operator signs it.
 
-### D-001: approves the exact guarded report-export request, year, and version after the
+### D-001: approves the exact guarded report-export request, year and version after the
 
 Status: PENDING
 Decision: [Operator decision]

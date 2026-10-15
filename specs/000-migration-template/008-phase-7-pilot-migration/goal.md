@@ -61,7 +61,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, pre-write 
 
 - [ ] SG-7.1: PDF and UBL are piloted separately where present, required field matrices match sources 100%, attachment bytes and SHA-256 match 100%, target attachment read route verified 1.
 - [ ] SG-7.2: stable local key and mapping schema version beside it 100%, durable WRITE_INTENT flushed before every non-GET call 100%, source reference and planned payload fields match before ID adoption 100%, ambiguous results stopped 100%.
-- [ ] SG-7.3: forced interruption after WRITE_INTENT, after response loss, and after read-back 3, each resumes from the last verified journal state 100%, blind replay count 0.
+- [ ] SG-7.3: forced interruption after WRITE_INTENT, after response loss and after read-back 3, each resumes from the last verified journal state 100%, blind replay count 0.
 - [ ] SG-7.4: approved undo or linked correction rehearsal passes 1, independent read confirms final state 1.
 - [ ] SG-7.5: representative opening item and settlement link read-back pass 1, source item and target link coverage 100%.
 - [ ] SG-7.6: Operator-approved probe and correction plan 1, record-class coverage 100%, expected lock result recorded for every class, successful probes reversed or corrected and read back 100%, final lock state verified 1.

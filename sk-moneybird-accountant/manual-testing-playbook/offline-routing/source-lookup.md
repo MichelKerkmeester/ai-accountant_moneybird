@@ -31,7 +31,7 @@ A figure is only as good as the page behind it. An agent that cannot find the so
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references. Do not use network access or accounting APIs.
 - Expected signals: Names the source library reference, finds Wet op de omzetbelasting 1968 under BWBR0002629 in the statute table, says the access value is webfetch-only, advises asking WebFetch for one article or reading on with an offset, and greps the index instead of reading it whole.
 - Desired user-visible outcome: A concise route report with the reference path, the law and its identifier, the access method, and no network or API activity.
-- Pass/fail: PASS if The response routes to the source library, names BWBR0002629 and the WebFetch-only access method, and greps the index. FAIL if The response reads the whole index, guesses a URL, fetches a page during the offline check, or calls an accounting API.
+- Pass/fail: PASS if The response routes to the source library, names BWBR0002629 and the WebFetch-only access method, and greps the index. FAIL if The response reads the whole index, guesses a URL, fetches a page during the offline check or calls an accounting API.
 
 ---
 
@@ -71,7 +71,7 @@ Capture the prompt, reference path, law identifier, access value and no-network 
 ### Pass / Fail
 
 - **Pass**: The response routes to the source library, names BWBR0002629 and the WebFetch-only access method, and greps the index.
-- **Fail**: The response reads the whole index, guesses a URL, fetches a page during the offline check, or calls an accounting API.
+- **Fail**: The response reads the whole index, guesses a URL, fetches a page during the offline check or calls an accounting API.
 
 ### Failure Triage
 

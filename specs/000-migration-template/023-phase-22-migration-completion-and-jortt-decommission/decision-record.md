@@ -149,7 +149,7 @@ Evidence: [evidence path in migration-workspace/]
 
 **How to roll back** (from the phase plan):
 
-Keep Jortt uncancelled while any completion condition fails. Preserve the latest valid archive and dashboard versions. Reopen only affected reconciliation, retention, restore, or live cadence checks. If the Operator chose keep, record the continuing owner and review date. If the Operator chose cancel, the Operator performs that action after this gate.
+Keep Jortt uncancelled while any completion condition fails. Preserve the latest valid archive and dashboard versions. Reopen only affected reconciliation, retention, restore or live cadence checks. If the Operator chose keep, record the continuing owner and review date. If the Operator chose cancel, the Operator performs that action after this gate.
 
 <!-- /ANCHOR:adr-001-impl -->
 <!-- /ANCHOR:adr-001 -->

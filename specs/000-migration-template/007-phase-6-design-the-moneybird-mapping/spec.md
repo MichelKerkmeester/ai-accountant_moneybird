@@ -105,7 +105,7 @@ The exit gate in section 5 passes, the recorded evidence sits in `migration-work
 
 **Phase inputs** (from the phase reference):
 
-Canonical dataset, category and vendor tax data, RGS codes, source closing balance, aged invoice-level open AR/AP schedule with source key and settlement status, target representation evidence, and approved thresholds.
+Canonical dataset, category and vendor tax data, RGS codes, source closing balance, aged invoice-level open AR/AP schedule with source key and settlement status, target representation evidence and approved thresholds.
 
 Read each input from Jortt or from the previous phase. Jortt stays read-only.
 
@@ -165,7 +165,7 @@ M12 gate: work units with Verifier PASS or Operator disposition 100%, mapped fie
 
 **Stop conditions** (from the phase reference):
 
-No RGS code, unverified CLI field, absent tax rate, unsupported PDF-derived field, missing item-level AR/AP, unsupported target representation, no prior closing XAF without an approved alternative, or non-zero unsupported opening difference.
+No RGS code, unverified CLI field, absent tax rate, unsupported PDF-derived field, missing item-level AR/AP, unsupported target representation, no prior closing XAF without an approved alternative or non-zero unsupported opening difference.
 
 Stop on any M12 stop event.
 

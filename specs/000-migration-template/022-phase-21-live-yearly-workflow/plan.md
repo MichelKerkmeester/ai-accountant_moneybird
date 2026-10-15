@@ -103,7 +103,7 @@ Phase 21 runs the actions in the order given, and every Moneybird write goes thr
 
 **Phase actions** (from the phase reference):
 
-[Tax Filing Agent] prepares the tax bridge and post-lock assessment routing. [Independent Auditor] challenges year close. [Operator] decides accounting and tax judgments, files returns, and approves lock or close. A named backup owner covers absence. [Orchestrator] checks gate evidence. Gate verifier: [Independent Auditor] verifies arithmetic and evidence links. [Operator] owns filings and close.
+[Tax Filing Agent] prepares the tax bridge and post-lock assessment routing. [Independent Auditor] challenges year close. [Operator] decides accounting and tax judgments, files returns and approves lock or close. A named backup owner covers absence. [Orchestrator] checks gate evidence. Gate verifier: [Independent Auditor] verifies arithmetic and evidence links. [Operator] owns filings and close.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts yearly check scripts using the reuse fast path. [Verifier] checks the run summary and record-level result every cycle, with code review only when a hash changes. [Final reviewer] reviews the phase before Operator approvals.
 
@@ -166,11 +166,11 @@ The exit gate in spec.md section 5 decides when the phase closes, and the Operat
 
 **Rollback procedure** (from the phase reference):
 
-Reopen only through the Operator exception and unlock process. Link any correction to prior evidence, read it back, and reseal the year snapshot.
+Reopen only through the Operator exception and unlock process. Link any correction to prior evidence, read it back and reseal the year snapshot.
 
 **Resume rule** (from the phase reference):
 
-Resume from the first failed annual check. Record the corrective journal, escalation, and backup owner. If new evidence changes a prior period, reopen dependent VAT, continuity, and tax checks before closing.
+Resume from the first failed annual check. Record the corrective journal, escalation and backup owner. If new evidence changes a prior period, reopen dependent VAT, continuity and tax checks before closing.
 
 For M12 work, resume only from AGENT_VERIFIED or a later verified state. AGENT_DRAFTED restarts at verification.
 

@@ -30,7 +30,7 @@ _memory:
 
 **Objective** (from the phase reference):
 
-Close each live year with complete monthly, VAT, balance, asset, tax, and human review evidence. The Implementer drafts yearly check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 21.
+Close each live year with complete monthly, VAT, balance, asset, tax and human review evidence. The Implementer drafts yearly check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 21.
 
 **Parent binding:** this goal executes under [the parent goal](../goal.md) in `000-migration-template`. Parent decisions outrank this file, and a conflict gets named to the Operator rather than resolved silently.
 

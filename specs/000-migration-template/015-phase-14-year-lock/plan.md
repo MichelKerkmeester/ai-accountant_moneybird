@@ -103,13 +103,13 @@ Phase 14 runs the actions in the order given, and every Moneybird write goes thr
 
 **Phase actions** (from the phase reference):
 
-[Operator] locks the year in Moneybird UI and approves each later unlock. [Independent Auditor] checks snapshot hashes, confirms the Phase 7 lock matrix, reads period_locked_until, and verifies relock. [Tax Filing Agent] routes later assessments to the Operator or adviser. [Orchestrator] records gate status. Gate verifier: [Independent Auditor] verifies lock behavior and assessment lifecycle evidence.
+[Operator] locks the year in Moneybird UI and approves each later unlock. [Independent Auditor] checks snapshot hashes, confirms the Phase 7 lock matrix, reads period_locked_until and verifies relock. [Tax Filing Agent] routes later assessments to the Operator or adviser. [Orchestrator] records gate status. Gate verifier: [Independent Auditor] verifies lock behavior and assessment lifecycle evidence.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts snapshot sealing and the hash manifest. [Verifier] recomputes snapshot hashes. [Final reviewer] reviews the phase before Operator approvals.
 
 **Lock and snapshot details retained from the original year-lock procedure:**
 Before locking, confirm document completeness, processed invoices, explained material ledger entries, exact bank reconciliation, verified VAT periods, balance and profit checks, income-tax bridge, and Red Team clearance.
-[Operator] locks or unlocks through the UI. [Independent Auditor] reads the lock state through the guarded read-only route and confirms the Phase 7 probe results. Do not issue a live non-GET probe in a locked historical year. A later assessment opens a linked exception and requires an Operator or adviser decision, an authorized unlock, a linked correction, fresh read-back, and confirmed relock.
+[Operator] locks or unlocks through the UI. [Independent Auditor] reads the lock state through the guarded read-only route and confirms the Phase 7 probe results. Do not issue a live non-GET probe in a locked historical year. A later assessment opens a linked exception and requires an Operator or adviser decision, an authorized unlock, a linked correction, fresh read-back and confirmed relock.
 Include the source manifest and invoice register, canonical records, exception ledger, Moneybird XAF and annual reports, general-ledger export, VAT and income-tax reconciliations, Red Team report, final verification report, write journal, `MIGRATION_CONFIG` hash, and source-manifest references in the sealed snapshot. After lock confirmation, make the snapshot read-only. Any later change creates a new version and invalidates dependent checks.
 
 **Tool route** (from the phase reference):
@@ -155,7 +155,7 @@ The exit gate in spec.md section 5 decides when the phase closes, and the Operat
 
 **Rollback procedure** (from the phase reference):
 
-A locked year is never silently edited. A later assessment opens a linked exception with source evidence and Operator or adviser filing decision. The Operator authorizes any unlock. Corrections use linked reversal or adjustment, fresh read-back, and verified relock.
+A locked year is never silently edited. A later assessment opens a linked exception with source evidence and Operator or adviser filing decision. The Operator authorizes any unlock. Corrections use linked reversal or adjustment, fresh read-back and verified relock.
 
 **Resume rule** (from the phase reference):
 

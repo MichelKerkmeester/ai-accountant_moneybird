@@ -103,16 +103,16 @@ Phase 6 runs the actions in the order given, and every Moneybird write goes thro
 
 **Phase actions** (from the phase reference):
 
-[Mapping Agent] prepares category, tax, and separate PDF and UBL field mappings. [Operator] creates tax rates in the UI and approves accounting judgments and any subledger. [Independent Auditor] checks mapping uniqueness and target support. [Reconciliation Agent] prepares source closing-to-opening schedules. Gate verifier: [Independent Auditor] verifies opening arithmetic, invoice-level links, and the target representation plan.
+[Mapping Agent] prepares category, tax and separate PDF and UBL field mappings. [Operator] creates tax rates in the UI and approves accounting judgments and any subledger. [Independent Auditor] checks mapping uniqueness and target support. [Reconciliation Agent] prepares source closing-to-opening schedules. Gate verifier: [Independent Auditor] verifies opening arithmetic, invoice-level links and the target representation plan.
 
-[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts mapping tables, opening schedules, and continuity schedules. [Verifier] checks every mapped field against the target schema and verifies planted unmappable cases. [Final reviewer] reviews the phase before Operator approvals.
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts mapping tables, opening schedules and continuity schedules. [Verifier] checks every mapped field against the target schema and verifies planted unmappable cases. [Final reviewer] reviews the phase before Operator approvals.
 
 **Mapping tables and object routes retained from the original mapping design:**
 
 
 | Source category | Moneybird account | RGS code | Account type | VAT treatment | Confidence |
 |---|---|---|---|---|---|
-| Approved source label | Supported target account | Required code | Asset, liability, equity, income, or expense | Approved treatment | Approved score or rationale |
+| Approved source label | Supported target account | Required code | Asset, liability, equity, income or expense | Approved treatment | Approved score or rationale |
 
 | Legal entity | Validity period | Country | VAT identifier | Vendor type | Moneybird tax rate |
 |---|---|---|---|---|---|
@@ -120,15 +120,15 @@ Phase 6 runs the actions in the order given, and every Moneybird write goes thro
 
 | Historical item | Moneybird record |
 |---|---|
-| Issued sales invoice | External sales invoice with original number, date, and original file |
+| Issued sales invoice | External sales invoice with original number, date and original file |
 | Purchase invoice | Purchase invoice document with original attachment |
 | Receipt | Receipt document with original attachment |
-| Journal, private item, or correction | General journal document |
+| Journal, private item or correction | General journal document |
 | Asset | Asset with historic value changes |
 | Bank transaction | Financial statement imported through the Operator UI |
-1. [Mapping Agent] Maintain CATEGORY_MAPPING with source category, Moneybird account, required RGS code, account type, VAT treatment, and confidence. Every new ledger account has an RGS code.
-2. [Mapping Agent] Maintain VENDOR_TAX_MATRIX with legal entity, validity period, country, VAT identifier, vendor type, and approved Moneybird tax rate. The required rate must already exist.
-3. [Mapping Agent] Map issued sales documents to external sales invoices with original number and date and the original file attached. Map purchase invoices and receipts to document records with attachments. Map journals, private items, and corrections to general journal documents. Map assets with historic value changes.
+1. [Mapping Agent] Maintain CATEGORY_MAPPING with source category, Moneybird account, required RGS code, account type, VAT treatment and confidence. Every new ledger account has an RGS code.
+2. [Mapping Agent] Maintain VENDOR_TAX_MATRIX with legal entity, validity period, country, VAT identifier, vendor type and approved Moneybird tax rate. The required rate must already exist.
+3. [Mapping Agent] Map issued sales documents to external sales invoices with original number and date and the original file attached. Map purchase invoices and receipts to document records with attachments. Map journals, private items and corrections to general journal documents. Map assets with historic value changes.
 4. [Operator] Import bank files through the UI. The writer links approved payments through the documented tool route.
 5. [Mapping Agent] When a supplier changes country or legal entity, add a new validity period instead of reusing one permanent brand rule.
 6. [Independent Auditor] Validate external document reporting behavior in the pilot before relying on a tax report.

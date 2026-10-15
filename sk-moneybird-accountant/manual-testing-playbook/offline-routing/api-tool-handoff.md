@@ -30,8 +30,8 @@ A local-only check can confirm that the skill chooses its mode and references wh
 - Fixture rows: API-001 (en) and API-001-nl (nl twin).
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references. Do not use network access or accounting CLIs.
 - Expected signals: Names jortt-cli for read-only Jortt work and moneybird-guard for Moneybird work, sets MONEYBIRD_GUARD_READ_ONLY=1 for read-only sessions, preserves the gate and approval rule, and executes nothing.
-- Desired user-visible outcome: A concise route report with selected mode, reference paths, boundary result, and no CLI activity.
-- Pass/fail: PASS if the CLI routes are correct, Moneybird write approval is retained, and no action is executed. FAIL if Jortt write access is suggested, a Moneybird write bypasses moneybird-guard or the gate, or an API call occurs.
+- Desired user-visible outcome: A concise route report with selected mode, reference paths, boundary result and no CLI activity.
+- Pass/fail: PASS if the CLI routes are correct, Moneybird write approval is retained and no action is executed. FAIL if Jortt write access is suggested, a Moneybird write bypasses moneybird-guard or the gate, or an API call occurs.
 
 ---
 
@@ -66,11 +66,11 @@ Names jortt-cli for read-only Jortt work and moneybird-guard for Moneybird work,
 
 ### Evidence
 
-Capture the prompt, each tool handoff, the write gate, and confirmation that no CLI call occurred.
+Capture the prompt, each tool handoff, the write gate and confirmation that no CLI call occurred.
 
 ### Pass / Fail
 
-- **Pass**: the CLI routes are correct, Moneybird write approval is retained, and no action is executed.
+- **Pass**: the CLI routes are correct, Moneybird write approval is retained and no action is executed.
 - **Fail**: Jortt write access is suggested, a Moneybird write bypasses moneybird-guard or the gate, or an API call occurs.
 
 ### Failure Triage

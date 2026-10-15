@@ -62,13 +62,13 @@ the phase files, the mapping and the write contract
 |---|---|
 | [Moneybird migration reference index](migration/README.md) | Execution-order route to all migration phases and shared controls. |
 | [Migration control framework](migration/control-framework.md) | Agent roles, risk and verification rules, exception controls, stop recovery, dashboard, and completion. |
-| [Jortt to Moneybird concept mapping](migration/jortt-to-moneybird-mapping.md) | Conceptual mapping for Jortt bookkeeping data to Moneybird categories, records, assets, VAT, and opening balances. |
-| [Migration overview and setup](migration/overview-and-setup.md) | Migration goal, tool boundaries, workspace layout, and required configuration. |
+| [Jortt to Moneybird concept mapping](migration/jortt-to-moneybird-mapping.md) | Conceptual mapping for Jortt bookkeeping data to Moneybird categories, records, assets, VAT and opening balances. |
+| [Migration overview and setup](migration/overview-and-setup.md) | Migration goal, tool boundaries, workspace layout and required configuration. |
 | [Migration completion, phase 22](migration/phase-22-completion.md) | One-time completion and Jortt decommission gate. |
-| [Migration phases 0 to 2](migration/phases-0-to-2.md) | Safety, source inventory, and evidence collection. |
-| [Migration phases 10 to 16](migration/phases-10-to-16.md) | Annual checks, continuity, locking, and cutover preparation. |
-| [Migration phases 17 to 18](migration/phases-17-to-18.md) | Source freeze, archive readiness, and the live switch. |
-| [Live workflows, phases 19 to 21](migration/phases-19-to-21.md) | Recurring monthly, VAT-period, and yearly reviews. |
-| [Migration phases 3 to 5](migration/phases-3-to-5.md) | Independent reconstruction, reconciliation, and anomaly review. |
-| [Migration phases 6 to 9](migration/phases-6-to-9.md) | Mapping, pilot, historical batches, and VAT verification. |
+| [Migration phases 0 to 2](migration/phases-0-to-2.md) | Safety, source inventory and evidence collection. |
+| [Migration phases 10 to 16](migration/phases-10-to-16.md) | Annual checks, continuity, locking and cutover preparation. |
+| [Migration phases 17 to 18](migration/phases-17-to-18.md) | Source freeze, archive readiness and the live switch. |
+| [Live workflows, phases 19 to 21](migration/phases-19-to-21.md) | Recurring monthly, VAT-period and yearly reviews. |
+| [Migration phases 3 to 5](migration/phases-3-to-5.md) | Independent reconstruction, reconciliation and anomaly review. |
+| [Migration phases 6 to 9](migration/phases-6-to-9.md) | Mapping, pilot, historical batches and VAT verification. |
 | [Migration shared mechanisms and route contract](migration/shared-mechanisms.md) | Shared controls used by every migration phase, with tool and export routes. |

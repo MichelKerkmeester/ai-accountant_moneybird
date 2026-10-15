@@ -30,7 +30,7 @@ _memory:
 
 **Objective** (from the phase reference):
 
-Independently attempt to falsify year completeness, classification, and reconciliation results. The Implementer drafts fixes for Red Team findings only, and the Verifier runs the Red Team from a clean working copy without earlier findings, verdicts, or final reviews for Phase 13.
+Independently attempt to falsify year completeness, classification and reconciliation results. The Implementer drafts fixes for Red Team findings only, and the Verifier runs the Red Team from a clean working copy without earlier findings, verdicts or final reviews for Phase 13.
 
 **Parent binding:** this goal executes under [the parent goal](../goal.md) in `000-migration-template`. Parent decisions outrank this file, and a conflict gets named to the Operator rather than resolved silently.
 

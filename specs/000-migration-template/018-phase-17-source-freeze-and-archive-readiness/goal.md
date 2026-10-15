@@ -30,7 +30,7 @@ _memory:
 
 **Objective** (from the phase reference):
 
-Freeze Jortt for new entries at an Operator-set date, capture the final source delta, and prove the independent archive is complete and restorable for every required record class. The Implementer drafts freeze delta extraction and the archive restore test, and the Verifier proves the restore and checks the freeze boundary for Phase 17.
+Freeze Jortt for new entries at an Operator-set date, capture the final source delta and prove the independent archive is complete and restorable for every required record class. The Implementer drafts freeze delta extraction and the archive restore test, and the Verifier proves the restore and checks the freeze boundary for Phase 17.
 
 **Parent binding:** this goal executes under [the parent goal](../goal.md) in `000-migration-template`. Parent decisions outrank this file, and a conflict gets named to the Operator rather than resolved silently.
 
@@ -55,14 +55,14 @@ Frozen choices. Changing one is an amendment.
 
 **Exit gate** (from the phase reference):
 
-Freeze decision recorded 1, final delta coverage 100%, mandatory class coverage 100%, attachment count, links, bytes, and hashes reconciled 100%, unexplained exclusions 0, retention approvals and source basis complete 100%, independently recomputed end dates match 100%, unsupported or unapproved retention rules 0, per-class restore coverage 100%, failed restores 0, package horizon coverage 1, renewal owner and alert evidence 1.
+Freeze decision recorded 1, final delta coverage 100%, mandatory class coverage 100%, attachment count, links, bytes and hashes reconciled 100%, unexplained exclusions 0, retention approvals and source basis complete 100%, independently recomputed end dates match 100%, unsupported or unapproved retention rules 0, per-class restore coverage 100%, failed restores 0, package horizon coverage 1, renewal owner and alert evidence 1.
 
 M12 gate: work units with Verifier PASS or Operator disposition 100%, archive restore proof pass 1, freeze-boundary violations 0, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
 
 - [ ] SG-17.1: Operator-approved freeze date and time recorded 1, last included source key at the freeze boundary recorded 1, new Jortt entries after that boundary 0 or captured in a dated delta 100%.
-- [ ] SG-17.2: source page, record, attachment, and control-total coverage 100%, unexplained delta items 0.
-- [ ] SG-17.3: invoices, expenses, receipts, loose Inbox items, attachments, bank files, XAF files, annual accounts, filed returns, assessments, and reconstructed asset schedules accounted for 100%, unexplained exclusions 0.
-- [ ] SG-17.4: Operator-approved source basis, class duration, start event, derived end date, independent archive location, owner, and readability evidence 100%, Independent Auditor recomputation matches 100%, unsupported or unapproved rules 0.
+- [ ] SG-17.2: source page, record, attachment and control-total coverage 100%, unexplained delta items 0.
+- [ ] SG-17.3: invoices, expenses, receipts, loose Inbox items, attachments, bank files, XAF files, annual accounts, filed returns, assessments and reconstructed asset schedules accounted for 100%, unexplained exclusions 0.
+- [ ] SG-17.4: Operator-approved source basis, class duration, start event, derived end date, independent archive location, owner and readability evidence 100%, Independent Auditor recomputation matches 100%, unsupported or unapproved rules 0.
 - [ ] SG-17.5: class restore and readability checks verified by the Independent Auditor 100%, failed class restores 0.
 - [ ] SG-17.6: active paid package covers the next live VAT period and year close 1, renewal owner and alert evidence recorded 1.
 - [ ] SG-17.7: M12 checks: work units with Verifier PASS or Operator disposition 100%, archive restore proof pass 1, freeze-boundary violations 0, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.

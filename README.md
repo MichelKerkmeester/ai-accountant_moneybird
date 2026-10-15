@@ -184,7 +184,7 @@ The [control framework](sk-moneybird-accountant/references/migration/control-fra
 
 ## 5. 🤖 EXTERNAL AGENT ROUTE
 
-M12 splits the work across seats so no single agent drafts, checks and approves its own output. These are the Operator's defaults. The plan defines the route, and Phase 0 builds it: the Implementer drafts the Agent runner, the Verifier checks it, and the sandbox and boundary canaries must pass before any agent work on real data starts. Phase 0 also records the defaults in the migration configuration.
+M12 splits the work across seats so no single agent drafts, checks and approves its own output. These are the Operator's defaults. The plan defines the route, and Phase 0 builds it: the Implementer drafts the Agent runner, the Verifier checks it and the sandbox and boundary canaries must pass before any agent work on real data starts. Phase 0 also records the defaults in the migration configuration.
 
 | Seat | Default and role |
 |---|---|

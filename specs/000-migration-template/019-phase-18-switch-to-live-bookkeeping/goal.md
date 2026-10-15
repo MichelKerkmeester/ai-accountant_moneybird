@@ -30,7 +30,7 @@ _memory:
 
 **Objective** (from the phase reference):
 
-Move authority to Moneybird only after source freeze, final delta reconciliation, archive acceptance, and human go-live approval. The Implementer drafts the go-live checklist and final delta batch, and the Verifier checks the final delta and isolation review for Phase 18.
+Move authority to Moneybird only after source freeze, final delta reconciliation, archive acceptance and human go-live approval. The Implementer drafts the go-live checklist and final delta batch, and the Verifier checks the final delta and isolation review for Phase 18.
 
 **Parent binding:** this goal executes under [the parent goal](../goal.md) in `000-migration-template`. Parent decisions outrank this file, and a conflict gets named to the Operator rather than resolved silently.
 

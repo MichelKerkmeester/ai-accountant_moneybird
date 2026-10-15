@@ -103,16 +103,16 @@ Phase 3 runs the actions in the order given, and every Moneybird write goes thro
 
 **Phase actions** (from the phase reference):
 
-[Document Agent] processes original documents. [Ledger Agent] processes XAF only. [Bank Agent] processes bank files only. [Tax Filing Agent] processes filings and accounts only. [VAT Agent] classifies original invoices without bookings. [Orchestrator] seals each folder and verifies the VAT input manifest classifies every file as an original invoice. Gate verifier: [Independent Auditor] verifies folder hashes, zero booking exports, arithmetic, and session output redaction.
+[Document Agent] processes original documents. [Ledger Agent] processes XAF only. [Bank Agent] processes bank files only. [Tax Filing Agent] processes filings and accounts only. [VAT Agent] classifies original invoices without bookings. [Orchestrator] seals each folder and verifies the VAT input manifest classifies every file as an original invoice. Gate verifier: [Independent Auditor] verifies folder hashes, zero booking exports, arithmetic and session output redaction.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts one register builder per source, each in its own session. [Verifier] independently reproduces register totals and statically checks each builder reads only its folder. [Final reviewer] reviews the phase before Operator approvals.
 
 **Independent register fields retained from the original reconstruction:**
 1. [Document Agent] From original documents only, record supplier, legal entity, country, invoice number and date, VAT identifier, currency, net, VAT, gross, reverse-charge status, and purchase or sale type.
 2. [Ledger Agent] From XAF only, record booking date, account, amount, debit or credit, VAT code, document reference, relation, invoice number, journal entries, assets, private items, opening entries, and year-end closing entries. Prove debits equal credits per journal and year.
-3. [Bank Agent] From bank files only, record account, date, amount, currency, counterparty, description, payment reference, and opening and closing balances per file.
+3. [Bank Agent] From bank files only, record account, date, amount, currency, counterparty, description, payment reference and opening and closing balances per file.
 4. [Tax Filing Agent] From actual filings, assessments, and annual accounts only, record VAT and income-tax filings, supplementary filings, final assessments, annual accounts, and Jortt VAT summaries as a separate source class.
-5. [VAT Agent] From original invoices only, classify Dutch VAT, EU reverse charge, non-EU reverse charge, zero rate, no VAT, foreign VAT, or unclear treatment.
+5. [VAT Agent] From original invoices only, classify Dutch VAT, EU reverse charge, non-EU reverse charge, zero rate, no VAT, foreign VAT or unclear treatment.
 
 **Tool route** (from the phase reference):
 

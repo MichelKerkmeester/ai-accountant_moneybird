@@ -103,9 +103,9 @@ Phase 22 runs the actions in the order given, and every Moneybird write goes thr
 
 **Phase actions** (from the phase reference):
 
-[Evidence Archivist] captures the post-cutover delta and refreshes class manifests. [Operator] confirms any situation-dependent retention rule and basis remain current. [Independent Auditor] independently recomputes retention end dates, verifies each class restore, and records mismatches. [Orchestrator] verifies the migration definition-of-done checklist and master dashboard. [Operator] approves completion and records cancel or keep. Gate verifier: [Independent Auditor] verifies archive and retention evidence. [Orchestrator] verifies completion and dashboard counts. [Operator] owns the decommission decision.
+[Evidence Archivist] captures the post-cutover delta and refreshes class manifests. [Operator] confirms any situation-dependent retention rule and basis remain current. [Independent Auditor] independently recomputes retention end dates, verifies each class restore and records mismatches. [Orchestrator] verifies the migration definition-of-done checklist and master dashboard. [Operator] approves completion and records cancel or keep. Gate verifier: [Independent Auditor] verifies archive and retention evidence. [Orchestrator] verifies completion and dashboard counts. [Operator] owns the decommission decision.
 
-[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the completion report and definition-of-done evidence index. [Verifier] checks definition of done, archive, and retention evidence. [Final reviewer] reviews the phase before Operator approvals.
+[Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the completion report and definition-of-done evidence index. [Verifier] checks definition of done, archive and retention evidence. [Final reviewer] reviews the phase before Operator approvals.
 
 **Tool route** (from the phase reference):
 
@@ -150,7 +150,7 @@ The exit gate in spec.md section 5 decides when the phase closes, and the Operat
 
 **Rollback procedure** (from the phase reference):
 
-Keep Jortt uncancelled while any completion condition fails. Preserve the latest valid archive and dashboard versions. Reopen only affected reconciliation, retention, restore, or live cadence checks. If the Operator chose keep, record the continuing owner and review date. If the Operator chose cancel, the Operator performs that action after this gate.
+Keep Jortt uncancelled while any completion condition fails. Preserve the latest valid archive and dashboard versions. Reopen only affected reconciliation, retention, restore or live cadence checks. If the Operator chose keep, record the continuing owner and review date. If the Operator chose cancel, the Operator performs that action after this gate.
 
 **Resume rule** (from the phase reference):
 
