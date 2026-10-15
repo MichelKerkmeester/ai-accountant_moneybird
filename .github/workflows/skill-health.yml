@@ -64,6 +64,8 @@ jobs:
           python3 -I sk-moneybird-accountant/scripts/check-hardening-matrix.py --check
       # Every suite is named on its own line. The regression trailer check
       # reads this file to learn which tests are registered.
+      - name: Suite check-skill-words
+        run: bash sk-moneybird-accountant/scripts/check-skill-words-test.sh
       - name: Suite fragment-check
         run: bash sk-moneybird-accountant/scripts/fragment-check-test.sh
       - name: Suite hardening-matrix
@@ -72,6 +74,8 @@ jobs:
         run: bash sk-moneybird-accountant/scripts/hostile-invoice-set-test.sh
       - name: Suite plan-kit
         run: bash sk-moneybird-accountant/scripts/plan-kit-test.sh
+      - name: Suite read-pdf-source
+        run: bash sk-moneybird-accountant/scripts/read-pdf-source-test.sh
       - name: Suite reference-index
         run: bash sk-moneybird-accountant/scripts/reference-index-test.sh
       - name: Suite regression-trailer
@@ -86,6 +90,8 @@ jobs:
         run: bash sk-moneybird-accountant/scripts/session-context-test.sh
       - name: Suite source-library
         run: bash sk-moneybird-accountant/scripts/source-library-test.sh
+      - name: Suite split-topic-files
+        run: bash sk-moneybird-accountant/scripts/split-topic-files-test.sh
       - name: Suite token-canary
         run: bash sk-moneybird-accountant/scripts/token-canary-test.sh
       - name: Suite write-contract
