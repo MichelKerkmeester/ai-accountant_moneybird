@@ -619,6 +619,12 @@ def render_dashboard(phases: list[dict[str, object]]) -> str:
     lines.append("")
     lines.append("Keep these rows current with M9 in [shared-mechanisms.md](../../references/migration/shared-mechanisms.md#m9-master-phase-dashboard).")
     lines.append("")
+    lines.append("## 1. OVERVIEW")
+    lines.append("")
+    lines.append("This asset holds the master status table for the 23 phases of the Jortt to Moneybird migration. Keep the rows current with M9 in the shared mechanisms reference, and regenerate the file from the phase contracts instead of editing rows by hand.")
+    lines.append("")
+    lines.append("---")
+    lines.append("")
     lines.append("| Phase | Title | Status | Contract check | Owner | Evidence link | Due date | Exceptions | Last resume checkpoint |")
     lines.append("|---|---|---|---|---|---|---|---|---|")
     for phase in phases:

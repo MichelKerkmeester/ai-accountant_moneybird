@@ -15,6 +15,12 @@ version: 1.0.0.0
 
 Keep these rows current with M9 in [shared-mechanisms.md](../../references/migration/shared-mechanisms.md#m9-master-phase-dashboard).
 
+## 1. OVERVIEW
+
+This asset holds the master status table for the 23 phases of the Jortt to Moneybird migration. Keep the rows current with M9 in the shared mechanisms reference, and regenerate the file from the phase contracts instead of editing rows by hand.
+
+---
+
 | Phase | Title | Status | Contract check | Owner | Evidence link | Due date | Exceptions | Last resume checkpoint |
 |---|---|---|---|---|---|---|---|---|
 | 0 | Safety and system setup | NOT STARTED | PENDING | PENDING | PENDING | PENDING | 0 | PENDING |
