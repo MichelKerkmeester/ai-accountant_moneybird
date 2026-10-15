@@ -64,7 +64,7 @@
       }
     },
     {
-      "bytes": 32666,
+      "bytes": 32667,
       "path": "sk-moneybird-accountant/references/fixed-assets.md",
       "sections": [
         {
@@ -135,13 +135,13 @@
         },
         {
           "anchor": "7-the-asset-flow-in-moneybird",
-          "bytes": 4311,
+          "bytes": 4312,
           "line": 112,
           "lines": 17,
           "title": "7. THE ASSET FLOW IN MONEYBIRD",
           "tokens": {
-            "cl100k_base": 1155,
-            "o200k_base": 1048
+            "cl100k_base": 1156,
+            "o200k_base": 1049
           }
         },
         {
@@ -212,8 +212,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 9567,
-        "o200k_base": 8708
+        "cl100k_base": 9568,
+        "o200k_base": 8709
       }
     },
     {
@@ -1215,7 +1215,7 @@
       }
     },
     {
-      "bytes": 15039,
+      "bytes": 15040,
       "path": "sk-moneybird-accountant/references/migration/phases-3-to-5.md",
       "sections": [
         {
@@ -1231,13 +1231,13 @@
         },
         {
           "anchor": "phase-3-reconstruct-each-source-independently",
-          "bytes": 5402,
+          "bytes": 5403,
           "line": 24,
           "lines": 67,
           "title": "Phase 3: Reconstruct each source independently",
           "tokens": {
-            "cl100k_base": 1215,
-            "o200k_base": 1201
+            "cl100k_base": 1216,
+            "o200k_base": 1202
           }
         },
         {
@@ -1264,8 +1264,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3359,
-        "o200k_base": 3328
+        "cl100k_base": 3360,
+        "o200k_base": 3329
       }
     },
     {
@@ -19967,7 +19967,7 @@
   },
   "units": [
     {
-      "bytes": 6557677,
+      "bytes": 6557679,
       "files": 459,
       "name": "corpus total",
       "reads": [
@@ -19975,8 +19975,8 @@
       ],
       "sections": 1391,
       "tokens": {
-        "cl100k_base": 2005813,
-        "o200k_base": 1878249
+        "cl100k_base": 2005815,
+        "o200k_base": 1878251
       }
     },
     {

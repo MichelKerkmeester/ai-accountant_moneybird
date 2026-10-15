@@ -30,7 +30,7 @@ _memory:
 
 **Objective** (from the phase reference):
 
-Produce independent document, ledger, bank, tax and VAT registers without cross-contamination. The Implementer drafts one register builder per source, each in its own session and the Verifier independently reproduces register totals and statically checks each builder reads only its folder for Phase 3.
+Produce independent document, ledger, bank, tax and VAT registers without cross-contamination. The Implementer drafts one register builder per source, each in its own session, and the Verifier independently reproduces register totals and statically checks each builder reads only its folder for Phase 3.
 
 **Parent binding:** this goal executes under [the parent goal](../goal.md) in `000-migration-template`. Parent decisions outrank this file, and a conflict gets named to the Operator rather than resolved silently.
 

@@ -27,7 +27,7 @@ Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-so
 
 ### 1. Goal
 
-Produce independent document, ledger, bank, tax and VAT registers without cross-contamination. The Implementer drafts one register builder per source, each in its own session and the Verifier independently reproduces register totals and statically checks each builder reads only its folder for Phase 3.
+Produce independent document, ledger, bank, tax and VAT registers without cross-contamination. The Implementer drafts one register builder per source, each in its own session, and the Verifier independently reproduces register totals and statically checks each builder reads only its folder for Phase 3.
 
 ### 2. Nested sub-goals
 
