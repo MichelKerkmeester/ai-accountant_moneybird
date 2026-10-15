@@ -8,7 +8,7 @@ version: 1.0.0.0
 
 # LIVE-003 -- Purchase invoice booking
 
-This document captures the offline prompt, local read sequence, expected signals, and evidence for LIVE-003.
+This document captures the offline prompt, local read sequence, expected signals and evidence for LIVE-003.
 
 ---
 

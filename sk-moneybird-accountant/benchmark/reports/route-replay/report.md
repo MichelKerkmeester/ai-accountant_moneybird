@@ -1,8 +1,8 @@
 # Route replay report
 
-Router snapshot: sha256:1515240e2b3f0589e18ebde1c0547b48a5153f3f5d8a2b7d66ef910f23f7e980
+Router snapshot: sha256:2e620a9623a86c6d5d03d2f05dbe514870ae4d8cd28edbe109524d98f9c3f63f
 Mode: resolve
-Corpus: routing-gold.json with 86 rows
+Corpus: routing-gold.json with 131 rows
 Token encoding: o200k_base from the pinned cache
 Route margin: 0.25. Warning band: 0.08. Fallback floor: 0.5.
 
@@ -15,23 +15,23 @@ Route margin: 0.25. Warning band: 0.08. Fallback floor: 0.5.
 
 ## Accuracy
 
-- route accuracy en: 49/49 (1.000)
-- route accuracy nl: 33/33 (1.000)
-- route accuracy mixed: 4/4 (1.000)
+- route accuracy en: 69/69 (1.000)
+- route accuracy nl: 57/57 (1.000)
+- route accuracy mixed: 5/5 (1.000)
 - route accuracy calibration: 57/57 (1.000)
-- route accuracy held-out: 29/29 (1.000)
-- held-out route accuracy: 29/29 (1.000)
-- rows passed: 86 of 86
-- abstain: 18 of 18 expected
+- route accuracy held-out: 74/74 (1.000)
+- held-out route accuracy: 74/74 (1.000)
+- rows passed: 131 of 131
+- abstain: 27 of 27 expected
 - missing tax year, tier C: 1
 - false abstain: 0
-- Dutch parity: 27 of 27 twin pairs match
+- Dutch parity: 50 of 50 twin pairs match
 
 ## Additive T7 assertion
 
 The additive CLI row never wins alone. A row whose prompt matches a T7 signal keeps the row it matched and appends the sibling tool skill.
 
-- rows matching a T7 signal: 7
+- rows matching a T7 signal: 13
 - additive row wins alone: 0
 - MIG-002: T7 signal with route MIGRATION/T1
 - MIG-004: T7 signal with route MIGRATION/T1
@@ -40,23 +40,29 @@ The additive CLI row never wins alone. A row whose prompt matches a T7 signal ke
 - MIG-004-nl: T7 signal with route MIGRATION/T1
 - API-001-nl: T7 signal with route MIGRATION/T1
 - T7-ADDITIVE-01: T7 signal with route LIVE/T4
+- T7-DEST-JORTT-01: T7 signal with route MIGRATION/T1
+- T7-DEST-JORTT-01-nl: T7 signal with route MIGRATION/T1
+- T7-DEST-MONEYBIRD-01: T7 signal with route LIVE/T3
+- T7-DEST-MONEYBIRD-01-nl: T7 signal with route LIVE/T3
+- T7-DEST-BLOCKED-01: T7 signal with route ABSTAIN/T8
+- T7-DEST-BLOCKED-01-nl: T7 signal with route ABSTAIN/T8
 
 ## Per-type precision and recall
 
 Precision divides the correct routes by the rows routed to that type. Recall divides them by the rows whose gold type it is.
 
-- T1 precision 15/15 (1.000), recall 15/15 (1.000)
+- T1 precision 17/17 (1.000), recall 17/17 (1.000)
 - T2 precision 3/3 (1.000), recall 3/3 (1.000)
-- T3 precision 7/7 (1.000), recall 7/7 (1.000)
-- T4 precision 16/16 (1.000), recall 16/16 (1.000)
-- T5 precision 9/9 (1.000), recall 9/9 (1.000)
+- T3 precision 9/9 (1.000), recall 9/9 (1.000)
+- T4 precision 18/18 (1.000), recall 18/18 (1.000)
+- T5 precision 13/13 (1.000), recall 13/13 (1.000)
 - T6 precision 3/3 (1.000), recall 3/3 (1.000)
 - T7 precision 0/0 (n/a), recall 0/0 (n/a)
-- T8 precision 17/17 (1.000), recall 17/17 (1.000)
+- T8 precision 26/26 (1.000), recall 26/26 (1.000)
 - T9 precision 2/2 (1.000), recall 2/2 (1.000)
-- T10 precision 7/7 (1.000), recall 7/7 (1.000)
-- T11 precision 3/3 (1.000), recall 3/3 (1.000)
-- T12 precision 3/3 (1.000), recall 3/3 (1.000)
+- T10 precision 18/18 (1.000), recall 18/18 (1.000)
+- T11 precision 11/11 (1.000), recall 11/11 (1.000)
+- T12 precision 10/10 (1.000), recall 10/10 (1.000)
 
 ## Read counts
 
@@ -123,12 +129,12 @@ Precision divides the correct routes by the rows routed to that type. Recall div
 | TIE-T3-T4-01 | LIVE/T3 | 2 |
 | LIVE-005-b | LIVE/T4 | 4 |
 | LIVE-005-b-nl | LIVE/T4 | 4 |
-| PREP-T10-01 | LIVE/T10 | 2 |
-| PREP-T10-01-nl | LIVE/T10 | 2 |
-| PREP-T11-01 | LIVE/T11 | 3 |
-| PREP-T11-01-nl | LIVE/T11 | 3 |
-| PREP-T12-01 | LIVE/T12 | 3 |
-| PREP-T12-01-nl | LIVE/T12 | 3 |
+| PREP-T10-01 | LIVE/T10 | 3 |
+| PREP-T10-01-nl | LIVE/T10 | 3 |
+| PREP-T11-01 | LIVE/T11 | 4 |
+| PREP-T11-01-nl | LIVE/T11 | 4 |
+| PREP-T12-01 | LIVE/T12 | 4 |
+| PREP-T12-01-nl | LIVE/T12 | 4 |
 | FILE-T10-01 | ABSTAIN/T8 | 0 |
 | FILE-T10-01-nl | ABSTAIN/T8 | 0 |
 | FILE-T11-01 | ABSTAIN/T8 | 0 |
@@ -137,17 +143,62 @@ Precision divides the correct routes by the rows routed to that type. Recall div
 | FILE-T12-01-nl | ABSTAIN/T8 | 0 |
 | TWO-TURN-01 | ABSTAIN/T8 | 0 |
 | T7-ADDITIVE-01 | LIVE/T4 | 3 |
-| VAT-BRANCH-Q1-01 | LIVE/T10 | 2 |
-| VAT-BRANCH-RC-01 | LIVE/T10 | 2 |
-| VAT-BRANCH-KOR-01 | LIVE/T10 | 2 |
-| VAT-BRANCH-YE-01 | LIVE/T10 | 2 |
-| VAT-BRANCH-COR-01 | LIVE/T10 | 2 |
-| PACK-YEARLY-01 | LIVE/T11 | 3 |
-| PACK-INCOME-01 | LIVE/T12 | 3 |
+| VAT-BRANCH-Q1-01 | LIVE/T10 | 3 |
+| VAT-BRANCH-RC-01 | LIVE/T10 | 3 |
+| VAT-BRANCH-KOR-01 | LIVE/T10 | 3 |
+| VAT-BRANCH-YE-01 | LIVE/T10 | 3 |
+| VAT-BRANCH-COR-01 | LIVE/T10 | 3 |
+| PACK-YEARLY-01 | LIVE/T11 | 4 |
+| PACK-INCOME-01 | LIVE/T12 | 4 |
 | REFUSE-ROUTE-FILE-01 | ABSTAIN/T8 | 0 |
 | REFUSE-ROUTE-SUBMIT-01 | ABSTAIN/T8 | 0 |
 | REFUSE-ROUTE-PAY-01 | ABSTAIN/T8 | 0 |
 | REFUSE-ROUTE-LOCK-01 | ABSTAIN/T8 | 0 |
+| AUDITFILE-LIVE-01 | LIVE/T11 | 4 |
+| AUDITFILE-LIVE-01-nl | LIVE/T11 | 4 |
+| PREP-KEEP-T10-01 | LIVE/T10 | 3 |
+| PREP-KEEP-T10-01-nl | LIVE/T10 | 3 |
+| PREP-KEEP-T11-01 | LIVE/T11 | 4 |
+| PREP-KEEP-T11-01-nl | LIVE/T11 | 4 |
+| PREP-KEEP-T12-01 | LIVE/T12 | 4 |
+| PREP-KEEP-T12-01-nl | LIVE/T12 | 4 |
+| FILE-HO-T10-01 | ABSTAIN/T8 | 0 |
+| FILE-HO-T10-01-nl | ABSTAIN/T8 | 0 |
+| FILE-HO-T11-01 | ABSTAIN/T8 | 0 |
+| FILE-HO-T11-01-nl | ABSTAIN/T8 | 0 |
+| FILE-HO-T12-01 | ABSTAIN/T8 | 0 |
+| FILE-HO-T12-01-nl | ABSTAIN/T8 | 0 |
+| PREP-WORD-SUBMIT-01 | LIVE/T10 | 3 |
+| PREP-WORD-DIEN-01-nl | LIVE/T10 | 3 |
+| PREP-TIE-10-01 | LIVE/T10 | 3 |
+| PREP-TIE-10-01-nl | LIVE/T10 | 3 |
+| PREP-TIE-11-01 | LIVE/T11 | 4 |
+| PREP-TIE-11-01-nl | LIVE/T11 | 4 |
+| PREP-TIE-12-01 | LIVE/T12 | 4 |
+| PREP-TIE-12-01-nl | LIVE/T12 | 4 |
+| SRC-PDF-01 | LIVE/T5 | 1 |
+| SRC-PDF-01-nl | LIVE/T5 | 1 |
+| TAX-FIG-SRC-01 | LIVE/T5 | 3 |
+| TAX-FIG-SRC-01-nl | LIVE/T5 | 3 |
+| SRC-INV-01 | LIVE/T4 | 3 |
+| SRC-INV-01-nl | LIVE/T4 | 3 |
+| PREP-T10-SRC-01 | LIVE/T10 | 4 |
+| PREP-T10-SRC-01-nl | LIVE/T10 | 4 |
+| PREP-T12-SRC-01 | LIVE/T12 | 5 |
+| PREP-T12-SRC-01-nl | LIVE/T12 | 5 |
+| VAT-Q4-JAN-01 | LIVE/T10 | 3 |
+| VAT-Q4-JAN-01-nl | LIVE/T10 | 3 |
+| T11-CLOSE-01 | LIVE/T11 | 4 |
+| T11-CLOSE-01-nl | LIVE/T11 | 4 |
+| PREP-SPACE-T10-01 | LIVE/T10 | 3 |
+| PREP-SPACE-T12-01 | LIVE/T12 | 4 |
+| BARE-AANGIFTE-01 | ABSTAIN/T8 | 0 |
+| T7-DEST-JORTT-01 | MIGRATION/T1 | 3 |
+| T7-DEST-JORTT-01-nl | MIGRATION/T1 | 3 |
+| T7-DEST-MONEYBIRD-01 | LIVE/T3 | 2 |
+| T7-DEST-MONEYBIRD-01-nl | LIVE/T3 | 2 |
+| T7-DEST-BLOCKED-01 | ABSTAIN/T8 | 0 |
+| T7-DEST-BLOCKED-01-nl | ABSTAIN/T8 | 0 |
 
 ## Warning band sink
 
@@ -171,7 +222,7 @@ Rows whose winning gap sits in the 0.08 warning band above the route margin. Tel
 | LIVE-003 | en | calibration | LIVE/T4 | 17797 | 2 of 2 | PASS |
 | TAX-001 | en | calibration | LIVE/T5 | 7322 | 2 of 2 | PASS |
 | TAX-002 | en | held-out | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
-| TAX-003 | en | held-out | LIVE/T5 | 3749 | 2 of 2 | PASS |
+| TAX-003 | en | held-out | LIVE/T5 | 396 | 1 of 1 | PASS |
 | PRIV-001 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | API-001 | en | calibration | MIGRATION/T1 | 13087 | 2 of 2 | PASS |
 | MODE-001-nl | nl | calibration | MIGRATION/T1 | 17141 | 2 of 2 | PASS |
@@ -186,7 +237,7 @@ Rows whose winning gap sits in the 0.08 warning band above the route margin. Tel
 | LIVE-003-nl | nl | calibration | LIVE/T4 | 17797 | 2 of 2 | PASS |
 | TAX-001-nl | nl | calibration | LIVE/T5 | 7322 | 2 of 2 | PASS |
 | TAX-002-nl | nl | held-out | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
-| TAX-003-nl | nl | held-out | LIVE/T5 | 3749 | 2 of 2 | PASS |
+| TAX-003-nl | nl | held-out | LIVE/T5 | 396 | 1 of 1 | PASS |
 | PRIV-001-nl | nl | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | API-001-nl | nl | calibration | MIGRATION/T1 | 13087 | 2 of 2 | PASS |
 | GAP-T2-01 | en | calibration | MIGRATION/T2 | 1130 | 1 of 1 | PASS |
@@ -220,12 +271,12 @@ Rows whose winning gap sits in the 0.08 warning band above the route margin. Tel
 | TIE-T3-T4-01 | en | calibration | LIVE/T3 | 6041 | 0 of 0 | PASS |
 | LIVE-005-b | en | calibration | LIVE/T4 | 26506 | 0 of 0 | PASS |
 | LIVE-005-b-nl | nl | calibration | LIVE/T4 | 26506 | 0 of 0 | PASS |
-| PREP-T10-01 | en | held-out | LIVE/T10 | 6689 | 2 of 2 | PASS |
-| PREP-T10-01-nl | nl | held-out | LIVE/T10 | 6689 | 2 of 2 | PASS |
-| PREP-T11-01 | en | held-out | LIVE/T11 | 9465 | 2 of 2 | PASS |
-| PREP-T11-01-nl | nl | held-out | LIVE/T11 | 9465 | 2 of 2 | PASS |
-| PREP-T12-01 | en | held-out | LIVE/T12 | 7990 | 2 of 2 | PASS |
-| PREP-T12-01-nl | nl | held-out | LIVE/T12 | 7990 | 2 of 2 | PASS |
+| PREP-T10-01 | en | held-out | LIVE/T10 | 9369 | 2 of 2 | PASS |
+| PREP-T10-01-nl | nl | held-out | LIVE/T10 | 9369 | 2 of 2 | PASS |
+| PREP-T11-01 | en | held-out | LIVE/T11 | 12094 | 2 of 2 | PASS |
+| PREP-T11-01-nl | nl | held-out | LIVE/T11 | 12094 | 2 of 2 | PASS |
+| PREP-T12-01 | en | held-out | LIVE/T12 | 10583 | 2 of 2 | PASS |
+| PREP-T12-01-nl | nl | held-out | LIVE/T12 | 10583 | 2 of 2 | PASS |
 | FILE-T10-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | FILE-T10-01-nl | nl | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | FILE-T11-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
@@ -234,14 +285,59 @@ Rows whose winning gap sits in the 0.08 warning band above the route margin. Tel
 | FILE-T12-01-nl | nl | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | TWO-TURN-01 | nl | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | T7-ADDITIVE-01 | en | calibration | LIVE/T4 | 17797 | 2 of 2 | PASS |
-| VAT-BRANCH-Q1-01 | en | held-out | LIVE/T10 | 6689 | 3 of 3 | PASS |
-| VAT-BRANCH-RC-01 | en | held-out | LIVE/T10 | 6689 | 3 of 3 | PASS |
-| VAT-BRANCH-KOR-01 | en | held-out | LIVE/T10 | 6689 | 3 of 3 | PASS |
-| VAT-BRANCH-YE-01 | en | held-out | LIVE/T10 | 6689 | 3 of 3 | PASS |
-| VAT-BRANCH-COR-01 | en | held-out | LIVE/T10 | 6689 | 3 of 3 | PASS |
-| PACK-YEARLY-01 | en | held-out | LIVE/T11 | 9465 | 5 of 5 | PASS |
-| PACK-INCOME-01 | en | held-out | LIVE/T12 | 7990 | 7 of 7 | PASS |
+| VAT-BRANCH-Q1-01 | en | held-out | LIVE/T10 | 9369 | 3 of 3 | PASS |
+| VAT-BRANCH-RC-01 | en | held-out | LIVE/T10 | 9369 | 3 of 3 | PASS |
+| VAT-BRANCH-KOR-01 | en | held-out | LIVE/T10 | 9369 | 3 of 3 | PASS |
+| VAT-BRANCH-YE-01 | en | held-out | LIVE/T10 | 9369 | 3 of 3 | PASS |
+| VAT-BRANCH-COR-01 | en | held-out | LIVE/T10 | 9369 | 3 of 3 | PASS |
+| PACK-YEARLY-01 | en | held-out | LIVE/T11 | 12094 | 5 of 5 | PASS |
+| PACK-INCOME-01 | en | held-out | LIVE/T12 | 10583 | 7 of 7 | PASS |
 | REFUSE-ROUTE-FILE-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | REFUSE-ROUTE-SUBMIT-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | REFUSE-ROUTE-PAY-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
 | REFUSE-ROUTE-LOCK-01 | en | calibration | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
+| AUDITFILE-LIVE-01 | en | held-out | LIVE/T11 | 12094 | 1 of 1 | PASS |
+| AUDITFILE-LIVE-01-nl | nl | held-out | LIVE/T11 | 12094 | 1 of 1 | PASS |
+| PREP-KEEP-T10-01 | en | held-out | LIVE/T10 | 9369 | 2 of 2 | PASS |
+| PREP-KEEP-T10-01-nl | nl | held-out | LIVE/T10 | 9369 | 2 of 2 | PASS |
+| PREP-KEEP-T11-01 | en | held-out | LIVE/T11 | 12094 | 2 of 2 | PASS |
+| PREP-KEEP-T11-01-nl | nl | held-out | LIVE/T11 | 12094 | 2 of 2 | PASS |
+| PREP-KEEP-T12-01 | en | held-out | LIVE/T12 | 10583 | 2 of 2 | PASS |
+| PREP-KEEP-T12-01-nl | nl | held-out | LIVE/T12 | 10583 | 2 of 2 | PASS |
+| FILE-HO-T10-01 | en | held-out | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
+| FILE-HO-T10-01-nl | nl | held-out | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
+| FILE-HO-T11-01 | en | held-out | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
+| FILE-HO-T11-01-nl | nl | held-out | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
+| FILE-HO-T12-01 | en | held-out | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
+| FILE-HO-T12-01-nl | nl | held-out | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
+| PREP-WORD-SUBMIT-01 | en | held-out | LIVE/T10 | 9369 | 2 of 2 | PASS |
+| PREP-WORD-DIEN-01-nl | nl | held-out | LIVE/T10 | 9369 | 2 of 2 | PASS |
+| PREP-TIE-10-01 | en | held-out | LIVE/T10 | 9369 | 2 of 2 | PASS |
+| PREP-TIE-10-01-nl | nl | held-out | LIVE/T10 | 9369 | 2 of 2 | PASS |
+| PREP-TIE-11-01 | en | held-out | LIVE/T11 | 12094 | 2 of 2 | PASS |
+| PREP-TIE-11-01-nl | nl | held-out | LIVE/T11 | 12094 | 2 of 2 | PASS |
+| PREP-TIE-12-01 | en | held-out | LIVE/T12 | 10583 | 2 of 2 | PASS |
+| PREP-TIE-12-01-nl | nl | held-out | LIVE/T12 | 10583 | 2 of 2 | PASS |
+| SRC-PDF-01 | en | held-out | LIVE/T5 | 396 | 2 of 2 | PASS |
+| SRC-PDF-01-nl | nl | held-out | LIVE/T5 | 396 | 2 of 2 | PASS |
+| TAX-FIG-SRC-01 | en | held-out | LIVE/T5 | 7718 | 3 of 3 | PASS |
+| TAX-FIG-SRC-01-nl | nl | held-out | LIVE/T5 | 7718 | 3 of 3 | PASS |
+| SRC-INV-01 | en | held-out | LIVE/T4 | 17797 | 1 of 1 | PASS |
+| SRC-INV-01-nl | nl | held-out | LIVE/T4 | 17797 | 1 of 1 | PASS |
+| PREP-T10-SRC-01 | en | held-out | LIVE/T10 | 9765 | 3 of 3 | PASS |
+| PREP-T10-SRC-01-nl | nl | held-out | LIVE/T10 | 9765 | 3 of 3 | PASS |
+| PREP-T12-SRC-01 | en | held-out | LIVE/T12 | 10979 | 3 of 3 | PASS |
+| PREP-T12-SRC-01-nl | nl | held-out | LIVE/T12 | 10979 | 3 of 3 | PASS |
+| VAT-Q4-JAN-01 | en | held-out | LIVE/T10 | 9369 | 2 of 2 | PASS |
+| VAT-Q4-JAN-01-nl | nl | held-out | LIVE/T10 | 9369 | 2 of 2 | PASS |
+| T11-CLOSE-01 | mixed | held-out | LIVE/T11 | 12094 | 1 of 1 | PASS |
+| T11-CLOSE-01-nl | nl | held-out | LIVE/T11 | 12094 | 1 of 1 | PASS |
+| PREP-SPACE-T10-01 | nl | held-out | LIVE/T10 | 9369 | 2 of 2 | PASS |
+| PREP-SPACE-T12-01 | nl | held-out | LIVE/T12 | 10583 | 2 of 2 | PASS |
+| BARE-AANGIFTE-01 | nl | held-out | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
+| T7-DEST-JORTT-01 | en | held-out | MIGRATION/T1 | 13087 | 1 of 1 | PASS |
+| T7-DEST-JORTT-01-nl | nl | held-out | MIGRATION/T1 | 13087 | 1 of 1 | PASS |
+| T7-DEST-MONEYBIRD-01 | en | held-out | LIVE/T3 | 6041 | 1 of 1 | PASS |
+| T7-DEST-MONEYBIRD-01-nl | nl | held-out | LIVE/T3 | 6041 | 1 of 1 | PASS |
+| T7-DEST-BLOCKED-01 | en | held-out | ABSTAIN/T8 | 0 | 0 of 0 | PASS |
+| T7-DEST-BLOCKED-01-nl | nl | held-out | ABSTAIN/T8 | 0 | 0 of 0 | PASS |

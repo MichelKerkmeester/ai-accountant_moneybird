@@ -25,7 +25,7 @@ Current state:
 - `init-workspace.sh` never overwrites an existing file and refuses to run unless git ignores both targets.
 - Output is byte-stable: sorted inputs, no timestamps and no randomness.
 - The plan-kit files `generate-plan-kit.py`, `init-workspace.sh` and `plan-kit-test.sh` are gate files. A change to one needs the Operator's approval, as `../../scripts/README.md` describes.
-- Every checker and suite is offline. A `read-pdf-source.py --url` read fetches one indexed PDF on demand. Only `build-source-library.py --check-links` and `--watch` run in the monthly job.
+- Every checker and suite is offline. A `read-pdf-source.py --url` read fetches one indexed PDF on demand. Only `build-source-library.py --check-links`, `--watch` and `--check-calendar` run in the monthly job.
 
 ---
 
@@ -89,10 +89,16 @@ scripts/
 +-- hardening-matrix-test.sh      # Hardening matrix suite
 +-- check-regression-trailer.py   # Regression trailer checker
 +-- regression-trailer-test.sh    # Regression trailer suite
++-- check-ci-suites.py            # Workflow suite registration checker
++-- check-ci-suites-test.sh       # Suite registration suite
++-- cli-failure-handoff-test.sh   # CLI failure handoff suite
++-- source-to-target-handoff-test.sh # Source to target handoff suite
 +-- build-source-library.py       # External source index builder
 +-- source-library-test.sh        # Source library suite
 +-- read-pdf-source.py            # Reads the PDF-only sources through pdftotext
 +-- read-pdf-source-test.sh       # PDF source reader suite
++-- yearly-overview-template-fill.py  # Yearly overview template fill checker
++-- yearly-overview-template-test.sh   # Yearly overview template suite
 `-- route-replay/
     +-- route-replay.py           # Offline route scoring and guard replay
     +-- routing-gold.json         # Route fixture corpus
@@ -113,9 +119,9 @@ scripts/
 | `build-session-context.py` | Writes the git-ignored `session-context.json` from the runtime clock and a narrow migration projection, with `--check` and `--route-state` |
 | `session-context-test.sh` | Runs the script against offline fixtures for the clock, the interactive flag, the allowlist, staleness and the post-cutover states |
 | `build-reference-index.py` | Scans `../references/` and writes or checks the nav blocks, `../references/index.json` with its gap ledger, the year README tables, the year-figure rows of the general topic files, the change note tables, `../references/tax-rules/year-changes.md` and the leaf reachability report |
-| `reference-index-test.sh` | Builds a fixture repository, runs the generator on it and on the real corpus, and checks the fence rules, drift detection, byte stability, the change note mutants, the gap ledger mutants and the mutation cases |
-| `check-fragments.py` | Resolves every relative link path and fragment in the skill family, matches a fragment against an `<a id>` line or a GitHub-style heading slug, rejects a duplicate-suffixed slug, and requires the section ids of every year topic file in order. A flat topic file carries all eight ids. A split part carries its own subset of the topic-wide ids under headings it numbers from 1: `figures.md` ids 1 and 2, `rules.md` id 3, `examples.md` id 4 and `notes.md` ids 5 to 8. The year README, the year changelog and the year change note are exempt |
-| `fragment-check-test.sh` | Builds fixtures for a resolving slug, a renamed id, a renamed heading, a missing file, a duplicate-suffix slug, a year topic at any depth, a split topic part with one id removed and the year file exemptions, then runs the checker on the real corpus and on a throwaway copy with one renamed heading |
+| `reference-index-test.sh` | Builds a fixture repository, runs the generator on it and on the real corpus and checks the fence rules, drift detection, byte stability, the change note mutants, the gap ledger mutants, the reachability mutants and the mutation cases |
+| `check-fragments.py` | Resolves every relative link path and fragment in the skill family, checks a path-shaped link label against the target it opens, matches a fragment against an `<a id>` line or a GitHub-style heading slug, rejects a duplicate-suffixed slug and requires the section ids of every year topic file in order. A flat topic file carries all eight ids. A split part carries its own subset of the topic-wide ids under headings it numbers from 1: `figures.md` ids 1 and 2, `rules.md` id 3, `examples.md` id 4 and `notes.md` ids 5 to 8. The year README, the year changelog and the year change note are exempt |
+| `fragment-check-test.sh` | Builds fixtures for a resolving slug, a renamed id, a renamed heading, a missing file, a duplicate-suffix slug, a path-shaped label that names no file, a relative path label, a descriptive label, a year topic at any depth, a split topic part with one id removed and the year file exemptions, then runs the checker on the real corpus and on a throwaway copy with one renamed heading |
 | `split-topic-files.py` | Splits the 96 year topic files into four part files, rewrites `../references/tax-rules/dutch-tax-rules.md` into `../references/tax-rules/general/`, remaps every citation of a split source and writes `../references/tax-rules/split-manifest.json`. The `--plan`, `--write` and `--check` modes stay offline and hash a normalized body |
 | `split-topic-files-test.sh` | Builds a fixture repository and proves each failure mode: a hand-edited part, a hand-edited header, a hand-edited entry file, a returned original, an unmappable citation, a folder with fewer than four parts, a part over the token line, a rebased link, a generated fence in a header, a byte-stable second write and the remapped citation line |
 | `outline-check.py` | Checks the carry-forward rule over the year and general topic files: a decision step, a step that asks a question or opens with a decision verb, must name an alternative or default branch. It reads the split parts, a flat year topic file and the `general/` files, skips the year README, the changelog, the change note and fenced code blocks, requires a branch and never judges it. The default mode and `--check` read only, `--root` reads another copy, and `check-route-table.py` runs it beside the word and split checks |
@@ -138,10 +144,16 @@ scripts/
 | `../hardening-matrix.md` | One row per failure mode with a control, a test, an owner and a status, including the offline suites that now cover most rows |
 | `check-regression-trailer.py` | Fails a commit range where a gate file changed with no registered test change and no `Regression-Test:` trailer |
 | `regression-trailer-test.sh` | Builds fixture git repositories for the trailer check, including a deleted covering test, valid and invalid trailers, an unknown range and a missing root |
+| `check-ci-suites.py` | Compares every `*-test.sh` under the skill scripts folder, the route replay suite and the three CLI test runners with the run lines in `.github/workflows/skill-health.yml`, and fails a suite that no run line names. It reads the run lines through the parser `check-regression-trailer.py` uses, so one suite list serves both |
+| `check-ci-suites-test.sh` | Builds fixture repositories with suite files and a workflow that runs them, then proves that a suite with no run line, a removed run line and a path in a step name alone all fail, while a block scalar and a chained command register |
+| `cli-failure-handoff-test.sh` | Drives the real Jortt request loop with a fake curl to 429 exhaustion, runs the real guard and its stub through a bounded parent GET loop and proves the LIVE three-attempt bound, the one authorized migration reissue, the refusal of a replayed non-GET intent and the documented blocked answer contract |
+| `source-to-target-handoff-test.sh` | Builds a synthetic source artifact, manifest, mapping and flushed `WRITE_INTENT`, runs a provenance precheck and a guarded write through the stub, then proves a changed artifact, manifest, mapping or payload digest fails before the stub records a call |
 | `build-source-library.py` | Scans the skill family for external links and writes `../assets/source-library.json`, with `--check`, `--check-links`, `--apply-report`, `--watch`, `--check-calendar`, `--trace` and `--write-term-map` modes |
-| `source-library-test.sh` | Proves the index builder, the link check and the trace on fixture repositories, a fixture server on 127.0.0.1, and the real index |
-| `read-pdf-source.py` | Accepts only a `pdf-needs-reader` row, downloads it into a temp directory and runs `pdftotext -layout -enc UTF-8` with an optional page range. `--file` reads a saved PDF, `--list` prints the rows and a missing `pdftotext` exits 3 |
-| `read-pdf-source-test.sh` | Proves the stub argument passing and the page range, the refusals and the exit codes, a symlink into a private folder and a redirect to another host, the 29 `--list` rows and a loopback download on a fixture copy, then extracts a tiny generated PDF with the real poppler |
+| `source-library-test.sh` | Proves the index builder, the link check and the trace on fixture repositories, a fixture server on 127.0.0.1 and the real index |
+| `read-pdf-source.py` | Accepts only a `pdf-needs-reader` row, downloads it into a temp directory and runs `pdftotext -layout -enc UTF-8` with an optional page range. It reads the text layer only, so no OCR runs. `--file` reads a saved PDF, `--list` prints the rows, a missing `pdftotext` exits 3 and an extraction that holds only whitespace exits 4 |
+| `read-pdf-source-test.sh` | Proves the stub argument passing and the page range, the refusals and the exit codes, the exit 4 path with an empty stub, a symlink into a private folder and a redirect to another host, the 29 `--list` rows and a loopback download on a fixture copy, then extracts a tiny generated PDF with the real poppler. A missing poppler prints a SKIP line and never counts as a pass |
+| `yearly-overview-template-fill.py` | Reads the template's declared token list, expands the repeat blocks, fills synthetic escaped values and checks that no token or remote asset survives and the prepared-not-filed line stays |
+| `yearly-overview-template-test.sh` | Runs the fill check on the real template and five mutants, a broken repeat marker among them |
 | `../assets/route-calibration.json` | The frozen calibration record: the route margin, the fallback floor, the sweep over the calibration split and the held-out result |
 
 ---
@@ -155,7 +167,7 @@ scripts/
 | Private output | `migration-workspace/` and `specs/<NNN-slug>/` are git-ignored. The scripts refuse a symlinked target and a target git does not ignore |
 | Imports | The generator uses the Python standard library only and runs with `python3 -I`. The shell scripts run on Bash 3.2 |
 | Fixture data | `route-replay/routing-gold.json`, `../evals/evals.json` and `../hardening-matrix.md` hold synthetic prompts and placeholders only, with no real name, amount, IBAN or administration id |
-| Network | Every checker and suite is offline. `read-pdf-source.py --url` fetches one indexed PDF on demand. Only `build-source-library.py --check-links` and `--watch` run in the scheduled job |
+| Network | Every checker and suite is offline. `read-pdf-source.py --url` fetches one indexed PDF on demand. Only `build-source-library.py --check-links`, `--watch` and `--check-calendar` run in the scheduled job |
 | Token cache | Token counts read the pinned cache beside the repository. A missing cache folder or a changed data file exits 2 |
 
 ---
@@ -180,6 +192,10 @@ scripts/
 | `bash sk-moneybird-accountant/scripts/hardening-matrix-test.sh` | CLI | Runs the hardening matrix suite |
 | `python3 -I sk-moneybird-accountant/scripts/check-regression-trailer.py --range <base>..<head>` | CLI | Checks a commit range for gate changes without a covering test |
 | `bash sk-moneybird-accountant/scripts/regression-trailer-test.sh` | CLI | Runs the regression trailer suite |
+| `python3 -I sk-moneybird-accountant/scripts/check-ci-suites.py` | CLI | Fails on a suite with no run line in the skill health workflow |
+| `bash sk-moneybird-accountant/scripts/check-ci-suites-test.sh` | CLI | Runs the suite registration suite |
+| `bash sk-moneybird-accountant/scripts/cli-failure-handoff-test.sh` | CLI | Runs the CLI failure handoff suite |
+| `bash sk-moneybird-accountant/scripts/source-to-target-handoff-test.sh` | CLI | Runs the source to target handoff suite |
 | `python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check` | CLI | Verifies the external source index offline |
 | `python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-links` | CLI | Fetches every reachable source and prints the JSON report, for the scheduled job only |
 | `python3 -I sk-moneybird-accountant/scripts/build-source-library.py --trace <file>:<line>` | CLI | Prints the index result for every URL on one citation line |
@@ -192,6 +208,7 @@ scripts/
 | `python3 -I sk-moneybird-accountant/scripts/read-pdf-source.py --url <url> [--first <n> --last <m>]` | CLI | Downloads one indexed PDF and prints the text poppler extracts |
 | `python3 -I sk-moneybird-accountant/scripts/read-pdf-source.py --file <path.pdf>` | CLI | Extracts a saved PDF and makes no network call |
 | `bash sk-moneybird-accountant/scripts/read-pdf-source-test.sh` | CLI | Runs the PDF source reader suite |
+| `bash sk-moneybird-accountant/scripts/yearly-overview-template-test.sh` | CLI | Runs the yearly overview template suite |
 
 ---
 
@@ -206,7 +223,7 @@ scripts/
 - The generated year-figure rows in the ten general topic files under `references/tax-rules/general/`, each naming its owning file, year, Status and Check.
 - One `changes` block in each `references/tax-rules/YYYY/changes.md`, one row per topic file with the section 5 bullet count, the first bullet cut to a snippet and the link to the section 5 anchor in that topic's `notes.md`.
 - `references/tax-rules/year-changes.md` as a whole-file output, one H2 per year, newest first, with the path link to the year note and that note's authored bullets.
-- The reachability check over the leaves in `leaf-manifest.json`.
+- The reachability check over the leaves in `leaf-manifest.json`. A leaf that no route reaches and a leaf that names no file on disk both fail the check, so the routed prefix never hides a deleted reference file.
 
 Fence convention: a generated block sits between two marker lines that each stand alone. Each marker is an HTML comment holding the word GENERATED, the block id and start or end, separated by colons, as written by `build-reference-index.py`. The generator replaces only the bytes between a matched pair, so hand prose outside a pair stays as it was. An unmatched, nested or malformed marker stops the run with exit code 2. `--init` adds a missing pair at the anchor its block registers, and a pair added around bytes that are already correct keeps those bytes.
 
@@ -238,7 +255,7 @@ A nav block or a toc block over its budget fails `--check`. The budget of one fi
 | `--check` | Recomputes every output in memory and reports each difference without writing, exit 1 on drift, on a change note bullet failure or on a nav or toc block over its budget |
 | `--init` | Inserts the empty fence pair of every missing block at its anchor, idempotent and writes no index |
 | `--overlap` | Reports the headline values that the year topic files restate in prose and how many no generated row owns, reads only |
-| `--reachability` | Reports every manifest leaf that no routed folder, link or index entry reaches |
+| `--reachability` | Reports every manifest leaf that no routed folder, link or index entry reaches, and every manifest leaf with no file on disk |
 
 Measured on the current tree: no file carries a nav block, `references/index.json` is about 149 KB and `--overlap` prints `overlap: restated 29 of 192, unowned 29`. Before the topic split the same report printed 58 of 192, all unowned.
 
@@ -252,9 +269,9 @@ Every year topic file under `references/tax-rules/YYYY/` carries eight id lines,
 
 The local shape uses no `{#id}` heading form and no anchor line on an H3. A cross-year rule is reached through the General topics table in section 3 of `dutch-tax-rules.md`, which names its one file under `general/`, not by a fragment. H3 slugs repeat across some files, so a suffix such as `-1` is not a stable address.
 
-`check-fragments.py` reads `AGENTS.md`, `README.md` and the markdown of the three skill folders. It resolves every relative link path, then it matches each `path.md#fragment` against an `<a id>` line or a GitHub-style heading slug in the target. An anchor-only link resolves inside the file that holds it. A fragment that matches only a duplicate-suffixed slug fails as `duplicate-suffix`, even when the target exists. External URLs, images and links inside fenced code blocks are skipped. The script makes no network call and its output is sorted. In a year topic file it also reports a missing, unexpected, duplicate or out-of-order id by name. A year topic file below `references/` is either a flat file directly in a year folder or one part of a topic folder directly under a year folder. The flat file carries all eight ids. The split parts carry a subset of the ids under headings they number from 1: `figures.md` ids 1 and 2, `rules.md` id 3, `examples.md` id 4 and `notes.md` ids 5 to 8. A year folder holds three files beside its topic files: `README.md`, `changelog.md` and `changes.md`. The checker applies the id rule to the topic files alone, so the correction log and the change note stay out of it.
+`check-fragments.py` reads `AGENTS.md`, `README.md` and the markdown of the three skill folders. It resolves every relative link path, then it matches each `path.md#fragment` against an `<a id>` line or a GitHub-style heading slug in the target. A link label that reads like a relative path is checked against the target it opens: the label must resolve beside its page or end the resolved target path, so a categoryless label cannot name a file another folder holds. A descriptive label carries no path and is skipped. An anchor-only link resolves inside the file that holds it. A fragment that matches only a duplicate-suffixed slug fails as `duplicate-suffix`, even when the target exists. External URLs, images and links inside fenced code blocks are skipped. The script makes no network call and its output is sorted. In a year topic file it also reports a missing, unexpected, duplicate or out-of-order id by name. A year topic file below `references/` is either a flat file directly in a year folder or one part of a topic folder directly under a year folder. The flat file carries all eight ids. The split parts carry a subset of the ids under headings they number from 1: `figures.md` ids 1 and 2, `rules.md` id 3, `examples.md` id 4 and `notes.md` ids 5 to 8. A year folder holds three files beside its topic files: `README.md`, `changelog.md` and `changes.md`. The checker applies the id rule to the topic files alone, so the correction log and the change note stay out of it.
 
-`fragment-check-test.sh` proves both directions on a fixture repository. The fixtures carry a resolving slug link, a resolving anchor id, a renamed id, a renamed target heading, a missing file and a duplicate-suffix slug. Two more cases remove one id from a topic file and swap two ids. Two more cases prove that a year changelog and a year change note carry no section ids while the topic file beside them still does. A nested year topic below `references/` is held to its eight ids, and a split topic part is held to its subset, so one case removes a required anchor from `figures.md` and expects a missing-id problem. The suite then runs the checker on the real corpus and on a throwaway copy of the tree with one target heading renamed, and expects the copy to name the lost fragment. Every fixture lives under a temp root and the real tree is never written.
+`fragment-check-test.sh` proves both directions on a fixture repository. The fixtures carry a resolving slug link, a resolving anchor id, a renamed id, a renamed target heading, a missing file and a duplicate-suffix slug. One case writes a path-shaped label that names no file and expects a `label-mismatch` line, one writes a relative path label that resolves beside the page and one writes a descriptive label. Two more cases remove one id from a topic file and swap two ids. Two more cases prove that a year changelog and a year change note carry no section ids while the topic file beside them still does. A nested year topic below `references/` is held to its eight ids, and a split topic part is held to its subset, so one case removes a required anchor from `figures.md` and expects a missing-id problem. The suite then runs the checker on the real corpus and on a throwaway copy of the tree with one target heading renamed, and expects the copy to name the lost fragment. Every fixture lives under a temp root and the real tree is never written.
 
 ---
 
@@ -356,9 +373,9 @@ A passing replay run prints:
 route-replay: ok, 35 replay rows passed
 ```
 
-The corpus also carries the phase 011/008 fixtures: one T10 row per VAT return branch, the yearly overview and income tax pack rows and four routing plus four guard refusal rows for filing, submitting, paying and period locking. A covered run prints `route-replay: ok, 5 rows passed` for `--covers 011/008/REQ-001`, `route-replay: ok, 4 rows passed` for the routing refusal rows and `route-replay: ok, 4 replay rows passed` for the guard refusal rows.
+The corpus also carries the tax deliverable fixtures: one T10 row per VAT return branch, the yearly overview and income tax pack rows and four routing plus four guard refusal rows for filing, submitting, paying and period locking. A covered run prints `route-replay: ok, 5 rows passed` for `--covers 011/008/REQ-001`, `route-replay: ok, 4 rows passed` for the routing refusal rows and `route-replay: ok, 4 replay rows passed` for the guard refusal rows.
 
-`route-replay/route-replay-test.sh` copies the skill to a temp root and ends with `Result: 74 passed, 0 failed`. It proves the deleted routed path exits 2 and names the path, the twin mismatch and the unmet claim exit 1, a wrong expected exit fails the replay, an empty corpus and a missing cache exit 2, two dated runs give byte-identical `results.csv` and `report.md`, every term the resolver keeps for the T4 conditional reads is a T4 signal in the table, and a preparation turn followed by a filing turn routes T10 and then T8. It also proves every phase 011/008 branch, pack and refusal row passes, the covers tags keep exactly the tagged rows, and three seeded mutants fail it: a filing claim inside a prepare row, a pack row with a missing block and a correction row on the wrong side of the boundary.
+`route-replay/route-replay-test.sh` copies the skill to a temp root and ends with `Result: 74 passed, 0 failed`. It proves the deleted routed path exits 2 and names the path, the twin mismatch and the unmet claim exit 1, a wrong expected exit fails the replay, an empty corpus and a missing cache exit 2, two dated runs give byte-identical `results.csv` and `report.md`, every term the resolver keeps for the T4 conditional reads is a T4 signal in the table and a preparation turn followed by a filing turn routes T10 and then T8. It also proves every tax deliverable branch, pack and refusal row passes, the covers tags keep exactly the tagged rows and three seeded mutants fail it: a filing claim inside a prepare row, a pack row with a missing block and a correction row on the wrong side of the boundary.
 
 ---
 
@@ -366,13 +383,13 @@ The corpus also carries the phase 011/008 fixtures: one T10 row per VAT return b
 
 `run-evals.py` grades a captured run against `../evals/evals.json`. The captured folder holds `metadata.json` with `model_id`, `captured_on` and an optional `skill_hash`, one `with-skill/<case id>.md` answer per case and one `baseline/<case id>.md` answer per case. The grader checks the required tokens and the forbidden patterns of every case. A required entry written as a list passes when any one of its alternative phrasings appears. Refusal markers match case-sensitively, so only the uppercase route class counts as a refusal. A marker does not count when `not`, `never`, `no longer` or a `n't` form sits up to four words before it in the same sentence, or when `does not`, `is not`, `was not`, `cannot`, `no longer` or `is inapplicable` follows it. A forbidden phrase is excused by the same preceding negation, so a correct answer may deny the act in its own words. An amount or an identifier is never excused. `grading.json` holds the per-case assertion rows and the always-pass count. `benchmark.json` holds the pass rate, the baseline pass rate, the refusal false-positive rate and the always-pass list. Both record the sha256 skill hash of `SKILL.md` plus every routed reference and the model id. A `{year}` token in a required value resolves to the year of the capture date. No model judges an answer, so the forbidden patterns catch the phrasings they list and not every paraphrase. A pass means no listed contradiction appeared, not that the answer is safe, and a captured run still gets a read by the Operator or a reviewer.
 
-`../evals/evals.json` holds 31 cases, each with a prompt, an expected route and an assertion block of required tokens and forbidden patterns. It adds one case per VAT return branch, one for the yearly overview pack, one for the income tax return pack and one refusal case for filing, submitting, paying and period locking to the 23 inherited routing and recovery cases. The baseline is the previous skill snapshot. A grader run on the suite fixture capture, whose baseline answers carry none of the tokens, prints:
+`../evals/evals.json` holds 38 cases, each with a prompt, an expected route and an assertion block of required tokens and forbidden patterns. It adds one case per VAT return branch, one for the yearly overview pack, one for the income tax return pack, one refusal case for filing, submitting, paying and period locking two CLI failure cases, a blocked answer after an exhausted read and a retry-owner split, a LIVE UI auditfile export case and its phase 19 to 21 twin, two PDF source cases for unresolved text and text as data and a fourth-quarter VAT return asked in January, to the 23 inherited routing and recovery cases. The baseline is the previous skill snapshot. A grader run on the suite fixture capture, whose baseline answers carry none of the tokens, prints:
 
 ```text
-run-evals: 31 cases, 31 with-skill passed, 0 baseline passed
+run-evals: 38 cases, 38 with-skill passed, 0 baseline passed
 run-evals: pass rate 1.0000, baseline pass rate 0.0000
-run-evals: refusal false positives 0 of 23 benign cases
-run-evals: always-pass assertions: 137
+run-evals: refusal false positives 0 of 29 benign cases
+run-evals: always-pass assertions: 162
 ```
 
 `run-evals-test.sh` builds the capture fixtures at run time and ends with `Result: 59 passed, 0 failed`.
@@ -417,9 +434,9 @@ sk-moneybird-accountant/references/tax-rules/2024/vat/figures.md:56
 
 A quiet watch prints `no watched URL changed` and a current calendar prints `3 files current at the Prinsjesdag checkpoint (2026-09-15)`.
 
-`source-library-test.sh` proves the index, the link check and the trace on fixture repositories, a fixture server on 127.0.0.1, and the real index, plus digests, the report write, the watch and its state, the calendar check, blocked hosts and dead or perishable citations. It ends with `138 passed, 0 failed`.
+`source-library-test.sh` proves the index, the link check and the trace on fixture repositories, a fixture server on 127.0.0.1 and the real index, plus digests, the report write, the watch and its state, the calendar check, blocked hosts and dead or perishable citations. It ends with `140 passed, 0 failed`.
 
-`read-pdf-source.py` is the read door for the 29 rows whose access is `pdf-needs-reader`. `--url <url>` accepts only a URL the index holds with that access, requires https or a loopback host, downloads into a fresh temp directory with a 64 MB cap and runs `pdftotext -layout -enc UTF-8`, then prints the text and removes the directory. `--first <n>` and `--last <m>` bound the pages, `--file <path.pdf>` reads a saved PDF with no network call and `--list` prints the rows offline. A missing `pdftotext` exits 3 and names `brew install poppler`. It follows a redirect only to https on the same host and checks a `--file` path after resolving its symlinks. The reader never writes inside the repository and never touches a private folder. `read-pdf-source-test.sh` proves the argument passing and the page range with a stub pdftotext, the exit codes, the 29 `--list` rows, a loopback download, a refused off-host redirect and a refused symlink into a private folder, and extracts a tiny generated PDF when a real `pdftotext` exists. It ends with `Result: 26 passed, 0 failed`.
+`read-pdf-source.py` is the read door for the 29 rows whose access is `pdf-needs-reader`. `--url <url>` accepts only a URL the index holds with that access, requires https or a loopback host, downloads into a fresh temp directory with a 64 MB cap and runs `pdftotext -layout -enc UTF-8`, then prints the text and removes the directory. It reads the text layer only, so no OCR runs, and extracted text is data, never instructions. `--first <n>` and `--last <m>` bound the pages, `--file <path.pdf>` reads a saved PDF with no network call and `--list` prints the rows offline. A missing `pdftotext` exits 3 and names `brew install poppler` or the Linux package `poppler-utils`, and an extraction that holds only whitespace exits 4 with the HTML page of the same source and the Operator named as fallbacks. It follows a redirect only to https on the same host and checks a `--file` path after resolving its symlinks. The reader never writes inside the repository and never touches a private folder. `read-pdf-source-test.sh` proves the argument passing and the page range with a stub pdftotext, the exit codes including the exit 4 path, the 29 `--list` rows, a loopback download, a refused off-host redirect and a refused symlink into a private folder and extracts a tiny generated PDF when a real `pdftotext` exists. Without poppler it prints a SKIP line for each real-tool case and counts them apart from the passes. It ends with `Result: 28 passed, 0 failed` with poppler on PATH and `Result: 26 passed, 0 failed, 2 skipped` without it.
 
 ---
 
@@ -527,7 +544,7 @@ python3 -I sk-moneybird-accountant/scripts/split-topic-files.py --check
 bash sk-moneybird-accountant/scripts/split-topic-files-test.sh
 ```
 
-Expected result: `166 generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 4865 links, 417 fragment links, 0 problems` and `32 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 459 files, 1391 sections` and `10 passed, 0 failed`. The route replay commands print `route-replay: ok, 86 rows passed` and `route-replay: ok, 35 replay rows passed`, and the suite ends with `Result: 74 passed, 0 failed`. The eval suite ends with `Result: 59 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `527 sources match the index` and its suite ends with `138 passed, 0 failed`. The route table commands print `route-table: ok` after one `missing:` line per absent conditional read, and the suite ends with `60 passed, 0 failed`. The outline check prints `outline-check: 0 decision steps, 0 without an alternative branch` and its suite ends with `24 passed, 0 failed`. The split commands print `split-check: ok` and `Result: 25 passed, 0 failed`.
+Expected result: `166 generated files match`, `reference-index: ok`, a `check-fragments` summary line with 0 problems and a final pass and fail count line with 0 failed for each test script. CI runs the plan kit scripts in `.github/workflows/plan-kit.yml`. The fragment checks print `check-fragments: 4868 links, 417 fragment links, 0 problems` and `35 passed, 0 failed`. The hostile set commands print `hostile-invoice-set: ok, 22 cases, 10 attacks, 10 twins, 2 controls` and a final pass and fail count with 0 failed. The write contract commands print `write-contract: ok` and a final pass and fail count with 0 failed. The token commands print `token-baseline: check ok, 459 files, 1391 sections` and `10 passed, 0 failed`. The route replay commands print `route-replay: ok, 86 rows passed` and `route-replay: ok, 35 replay rows passed`, and the suite ends with `Result: 74 passed, 0 failed`. The eval suite ends with `Result: 59 passed, 0 failed`. The hardening matrix check prints `hardening-matrix: ok (27 rows, 21 P0 rows)` and its suite ends with `Result: 9 passed, 0 failed`. The regression trailer suite ends with `Result: 43 passed, 0 failed`. The source library check prints `527 sources match the index` and its suite ends with `138 passed, 0 failed`. The route table commands print `route-table: ok` after one `missing:` line per absent conditional read, and the suite ends with `60 passed, 0 failed`. The outline check prints `outline-check: 0 decision steps, 0 without an alternative branch` and its suite ends with `24 passed, 0 failed`. The split commands print `split-check: ok` and `Result: 25 passed, 0 failed`. `check-ci-suites.py` names every suite that no `skill-health` run line covers, so it exits 1 until the Operator lands that workflow edit, and its own suite ends with `Result: 8 passed, 0 failed`. The CLI failure handoff suite ends with `Result: 11 passed, 0 failed`. The source to target handoff suite ends with `Result: 9 passed, 0 failed`.
 
 The word check prints one line per `SKILL.md` with its word count and its verdict. It warns above 3,000 words, exits 1 above 4,000 words and exits 2 with the path named when a file is missing or unreadable. `check-route-table.py` runs it, so the `skill-health` CI step enforces the budget, and `check-skill-words-test.sh` proves the 2,999-word, 3,001-word and 4,001-word bands. The walk skips hidden folders, `specs/`, `node_modules/` and the two private folders, so a backup copy of a retired skill inside a spec packet never counts.
 
@@ -561,9 +578,9 @@ split-check: ok
 
 The citation remap scans every tracked markdown and JSON file outside `specs/`. A bare citation points at the folder's `figures.md`, a `path:line` citation points at the part that holds that line with its new line number and a `path#anchor` citation points at the part that carries that heading. A citation whose line, heading or file cannot be resolved aborts the run with exit 1 and names the citation before any byte is written. The scan leaves its own outputs and the files their own generators rewrite alone: `.privacy-gate.json`, `../references/index.json`, `../benchmark/token-baseline.json`, `../assets/source-library.json`, `../leaf-manifest.json` and `../references/tax-rules/split-manifest.json`.
 
-`check-route-table.py` runs `--check` beside the word and outline checks, so the `skill-health` CI step fails on a drifted part, a leftover original or an unmapped citation. The suite itself is not yet a CI step, because the workflow is a gate file.
+`check-route-table.py` runs `--check` beside the word and outline checks, so the `skill-health` CI step fails on a drifted part, a leftover original or an unmapped citation. The `skill-health` workflow runs the suite on its own `Suite split-topic-files` step.
 
-`split-topic-files-test.sh` builds a fixture repository with two year folders, three topic files, a guide whose 13 headings slug to the allowlist and one citing file with a bare, a line and an anchor citation. Twenty-five cases each print one pass line: a clean split passes `--check` and the general parts carry their English file names, a hand-edited part, header or entry file fails and names the file, a generated fence added after the H1 does not fail, a returned original fails, an unmappable citation exits non-zero and writes nothing, a folder with fewer than four parts fails, a part pushed over the token line fails, a rebased link does not fail, a second `--write` changes no byte, the remapped citations land on the right part and line, a pure rename is accepted while a body or header edit, an unknown base revision, an unknown map key, a usage error and a missing `--base` are refused, the accept-edits mode records an edited part and keeps an unchanged part's hashes, and a written part opens its body with `## 1. OVERVIEW` and keeps its topic anchor. The token case reports a noted pass when the cached o200k encoding is unavailable. Run it with:
+`split-topic-files-test.sh` builds a fixture repository with two year folders, three topic files, a guide whose 13 headings slug to the allowlist and one citing file with a bare, a line and an anchor citation. Twenty-five cases each print one pass line: a clean split passes `--check` and the general parts carry their English file names, a hand-edited part, header or entry file fails and names the file, a generated fence added after the H1 does not fail, a returned original fails, an unmappable citation exits non-zero and writes nothing, a folder with fewer than four parts fails, a part pushed over the token line fails, a rebased link does not fail, a second `--write` changes no byte, the remapped citations land on the right part and line, a pure rename is accepted while a body or header edit, an unknown base revision, an unknown map key, a usage error and a missing `--base` are refused, the accept-edits mode records an edited part and keeps an unchanged part's hashes, and a written part opens its body with `## 1. OVERVIEW` and keeps its topic anchor. The token case prints a skip line and is counted apart from the passes when the cached o200k encoding is unavailable. Run it with:
 
 ```bash
 TIKTOKEN_CACHE_DIR=<cache> bash sk-moneybird-accountant/scripts/split-topic-files-test.sh
@@ -573,7 +590,28 @@ It ends with `Result: 25 passed, 0 failed`.
 
 ---
 
-## 21. RELATED
+## 21. CI SUITE REGISTRATION
+
+`check-ci-suites.py` compares every `*-test.sh` under `scripts/`, the `route-replay` suite and the three CLI test runners with the run lines of `.github/workflows/skill-health.yml`. The CLI runners are `cli-moneybird/cli/moneybird-cli/tests/run-tests.sh`, `cli-jortt/cli/jortt-cli/tests/run-tests.sh` and `cli-moneybird/scripts/exit-code-parity-test.sh`. It reads the run lines through the parser `check-regression-trailer.py` uses, so a plain run line, a `&&` chain and a block scalar all register a suite. A suite on disk with no run line prints `missing-run PATH` and exits 1. The workflow is a privacy gate file, so the check names the run line a missing suite needs and never edits the workflow. Run it with:
+
+```bash
+python3 -I sk-moneybird-accountant/scripts/check-ci-suites.py
+bash sk-moneybird-accountant/scripts/check-ci-suites-test.sh
+```
+
+`check-ci-suites-test.sh` builds fixture repositories with suite files and a workflow that runs them, then proves that a suite with no run line, a removed run line and a path in a step name alone all fail, while a block scalar and a chained command register. It never reads the real workflow and ends with `Result: 8 passed, 0 failed`.
+
+---
+
+## 22. CLI HANDOFF SUITES
+
+`cli-failure-handoff-test.sh` covers the retry handoff around the two accounting CLIs. A fake curl drives the real Jortt request loop to 429 exhaustion, so the suite proves one call plus three retries and a stop inside `jortt-cli`. The real guard and its stub run through a bounded parent GET loop, so the suite proves one real call per guard invocation, the three-attempt LIVE bound, the one authorized MIGRATION reissue and the blocked answer that names the missing capability. It also proves that a replayed non-GET intent is refused with no second real call, and it checks the documented retry owners, the blocked answer rule in `../SKILL.md` and the `cli-read-exhausted-blocked` eval case. It ends with `Result: 11 passed, 0 failed`.
+
+`source-to-target-handoff-test.sh` covers the provenance chain from a source export to a guarded write. It builds a synthetic artifact, a manifest with its sha256, a mapping that carries the source-manifest hash and a flushed `WRITE_INTENT` with its payload digest. Every case runs one handoff path: a precheck recomputes the three hashes and only then runs the real guard through its stub. Each drift case starts from a fresh chain and an empty write log, so the guard would write if the precheck let the change through. A changed artifact, manifest, mapping or payload digest stops in the precheck with no real call, and the guard itself refuses a stale digest with exit 9. The precheck lives in the suite. No shipped script reads the source-manifest hash yet, so the suite proves the contract the shared mechanisms state, not a production check. It ends with `Result: 9 passed, 0 failed`.
+
+---
+
+## 23. RELATED
 
 - [`../references/migration/README.md`](../references/migration/README.md) for the phase references the generator reads
 - [`../assets/migration/README.md`](../assets/migration/README.md) for the generated templates

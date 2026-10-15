@@ -385,6 +385,17 @@ write_source() {
         >"$FIX/sk-moneybird-accountant/references/source.md" || return 1
 }
 
+# Write the fixture source file with one link label and one raw link target
+# Args:
+#   $1 - Link label
+#   $2 - Raw link target
+# Returns:
+#   0 when the file is written, 1 when a write fails
+write_label_source() {
+    printf '# Source\n\n[%s](%s)\n' "$1" "$2" \
+        >"$FIX/sk-moneybird-accountant/references/source.md" || return 1
+}
+
 # Point the fixture source file at one raw link target through a reference definition
 # Args:
 #   $1 - Raw link target
@@ -528,6 +539,35 @@ if [[ "$status" -eq 0 ]]; then
     pass "a shorter inner fence does not close a longer fence"
 else
     fail "a shorter inner fence does not close a longer fence"
+fi
+
+# WHY: a categoryless label can name a folder the target never reaches, so the
+# label is compared with the path the link opens.
+write_label_source 'missing/label.md' 'targets.md#good-heading'
+run_checker "$FIX"
+status=$?
+if [[ "$status" -eq 1 ]] && grep -qF 'missing/label.md label-mismatch' "$TMP_ROOT/out.txt"; then
+    pass "a path-shaped label that names no file fails the check"
+else
+    fail "a path-shaped label that names no file fails the check"
+fi
+
+write_label_source './targets.md' 'targets.md#good-heading'
+run_checker "$FIX"
+status=$?
+if [[ "$status" -eq 0 ]]; then
+    pass "a relative path label that resolves beside the page passes"
+else
+    fail "a relative path label that resolves beside the page passes"
+fi
+
+write_label_source 'the target page' 'targets.md#good-heading'
+run_checker "$FIX"
+status=$?
+if [[ "$status" -eq 0 ]]; then
+    pass "a descriptive label passes"
+else
+    fail "a descriptive label passes"
 fi
 
 # ───────────────────────────────────────────────────────────────

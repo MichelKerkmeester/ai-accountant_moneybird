@@ -89,6 +89,8 @@ One row per input on the official return checklist plus the business cijfers lis
 | Deadlines, uitstel and aftercare | The year procedure file | Year corpus | [Aangifte en procedure 2026 figures](../tax-rules/2026/procedure/figures.md) |
 | Filing, payment and period lock | Operator only, behind DigiD and the product UI | Operator | [Aangifte en procedure 2026 figures](../tax-rules/2026/procedure/figures.md) |
 
+A year file citation whose index row is `pdf-needs-reader` is read through [section 2 of the source library guide](../tax-rules/source-library.md#2-how-to-reach-a-source), and its text backs the year file's value without replacing it.
+
 Two product points stay unverified and are never a computation basis. Whether Moneybird automates the investment deduction or holds a fiscal-basis or investment-claim field is unverified, so the activastaat stays supporting evidence until a product check settles it. A historical open-creditors list with per-invoice detail is also unverified, so the balance check does not rely on that report alone.
 
 ---

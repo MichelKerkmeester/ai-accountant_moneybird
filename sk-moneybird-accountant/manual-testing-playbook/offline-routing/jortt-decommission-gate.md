@@ -8,7 +8,7 @@ version: 1.0.0.0
 
 # MIG-001 -- Jortt decommission gate
 
-This document captures the offline prompt, local read sequence, expected signals, and evidence for MIG-001.
+This document captures the offline prompt, local read sequence, expected signals and evidence for MIG-001.
 
 ---
 

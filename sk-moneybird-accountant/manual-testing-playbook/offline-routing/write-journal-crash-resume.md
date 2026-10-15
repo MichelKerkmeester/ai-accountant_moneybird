@@ -8,7 +8,7 @@ version: 1.0.0.0
 
 # MIG-002 -- Write journal crash resume
 
-This document captures the offline prompt, local read sequence, expected signals, and evidence for MIG-002.
+This document captures the offline prompt, local read sequence, expected signals and evidence for MIG-002.
 
 ---
 

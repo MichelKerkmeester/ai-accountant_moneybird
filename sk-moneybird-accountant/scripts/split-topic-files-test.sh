@@ -17,7 +17,9 @@
 # and line. This suite proves both directions.
 # WHY: the suite inspects $? after commands that are expected to fail, so -e stays off.
 # WHY: the token case runs only when the checker can load the cached o200k
-# encoding, and it reports a noted pass when the cache is unavailable.
+# encoding, and it prints a SKIP line when the cache is unavailable. A skip is
+# counted apart from the passes, so a green run never hides a case that did
+# not run.
 set -uo pipefail
 
 # ───────────────────────────────────────────────────────────────
@@ -57,6 +59,7 @@ trap cleanup EXIT
 
 passed=0
 failed=0
+skipped=0
 
 # Record a passing check and print its report line
 # Args:
@@ -72,6 +75,14 @@ pass() {
 fail() {
     failed=$((failed + 1))
     printf 'fail: %s\n' "$1"
+}
+
+# Record a skipped check and print its report line
+# Args:
+#   $1 - Check description
+skip() {
+    skipped=$((skipped + 1))
+    printf 'skip: %s\n' "$1"
 }
 
 # Record a failing check and show the captured splitter output
@@ -627,7 +638,7 @@ fi
 # encoding is available. The clean check prints the tokens line only when the
 # checker loaded the encoder.
 if [[ -f "$TMP_ROOT/clean-check.txt" ]] && ! grep -q '^tokens: largest ' "$TMP_ROOT/clean-check.txt"; then
-    pass "part pushed over the token line (skipped, tiktoken cache unavailable)"
+    skip "part pushed over the token line (tiktoken cache unavailable)"
 else
     TOKEN_FIXTURE="$TMP_ROOT/token-fixture"
     cp -R "$FIXTURE" "$TOKEN_FIXTURE" || exit 2
@@ -980,6 +991,10 @@ fi
 # 10. RESULT SUMMARY AND EXIT
 # ───────────────────────────────────────────────────────────────
 
-printf '\nResult: %d passed, %d failed\n' "$passed" "$failed"
+if [[ "$skipped" -gt 0 ]]; then
+    printf '\nResult: %d passed, %d failed, %d skipped\n' "$passed" "$failed" "$skipped"
+else
+    printf '\nResult: %d passed, %d failed\n' "$passed" "$failed"
+fi
 
 [[ "$failed" -eq 0 ]]

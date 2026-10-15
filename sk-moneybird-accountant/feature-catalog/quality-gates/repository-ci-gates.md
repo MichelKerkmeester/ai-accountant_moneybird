@@ -26,7 +26,7 @@ The offline skill health job seeds the pinned tokenizer cache, runs each check a
 
 Every suite in the workflows is named on its own line, because the regression trailer check reads this file to learn which tests are registered. The workflows run on a clean checkout with read-only contents permission and no persisted credentials.
 
-The word check, the split check and the outline check reach CI through `check-route-table.py`, which runs all three as siblings in the route table step. `check-skill-words-test.sh`, `split-topic-files-test.sh`, `outline-check-test.sh`, `scannability-report.py` and `hoist-record-duties.py` are not workflow steps.
+The word check, the split check and the outline check reach CI through `check-route-table.py`, which runs all three as siblings in the route table step. `check-ci-suites.py` compares every suite on disk with the workflow run lines and fails a suite that no run line names, so the workflow edit that registers a new suite is the last step of adding one. `scannability-report.py` and `hoist-record-duties.py` are checkers that a suite covers, not suites of their own.
 
 ---
 
@@ -47,6 +47,8 @@ The word check, the split check and the outline check reach CI through `check-ro
 | `sk-moneybird-accountant/scripts/plan-kit-test.sh` | Automated test | The suite the plan kit job runs. |
 | `scripts/privacy-gate-test.sh` | Automated test | The suite the privacy job runs. |
 | `sk-moneybird-accountant/scripts/write-contract-test.sh` | Automated test | One of the suites the skill health job runs. |
+| `sk-moneybird-accountant/scripts/check-ci-suites.py` | Test harness | Compares every suite on disk with the skill health workflow run lines and fails a suite that no run line names. |
+| `sk-moneybird-accountant/scripts/check-ci-suites-test.sh` | Automated test | Proves the suite registration check on fixture repositories. |
 | `sk-moneybird-accountant/scripts/check-route-table.py` | Test harness | Runs the route table check with the sibling word, split and outline checks in one skill health step. |
 
 ---

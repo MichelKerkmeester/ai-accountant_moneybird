@@ -23,7 +23,7 @@ version: 1.0.0.0
 
 This folder is the procedure for a prepare-the-VAT-return request. The agent assembles the rubriek table, the checks and the review pack for one period, names every exception and stops before filing. The Operator checks, confirms, files and pays.
 
-The mode is LIVE. Resolve the year as `year_key`, load the year README and the year BTW files, then read the administration's own data at run time with moneybird-guard under `MONEYBIRD_GUARD_READ_ONLY=1`, following [cli-moneybird](../../../cli-moneybird/SKILL.md). Period unlocking, tax-rate creation and filing stay UI and Operator actions. The route that reaches this folder is T10 in [SKILL.md](../../SKILL.md).
+The mode is LIVE. Resolve the year as `year_key = return_coverage`, load the year README and the year BTW files, then read the administration's own data at run time with moneybird-guard under `MONEYBIRD_GUARD_READ_ONLY=1`, following [cli-moneybird](../../../cli-moneybird/SKILL.md). Period unlocking, tax-rate creation and filing stay UI and Operator actions. The route that reaches this folder is T10 in [SKILL.md](../../SKILL.md).
 
 ---
 
@@ -62,8 +62,8 @@ The five unresolved items. Each one is a missing capability, not a work item for
 
 | ID | Open point | Missing capability | Rule |
 |---|---|---|---|
-| O1 | The current labels and semantics of rubrieken 5c to 5g | A current form explanation or the live return screen | Never filled from memory or computed from transaction data. |
-| O2 | The statutory ICP filing deadline | A primary source or the Operator's own ICP notice | Never filled from memory or computed from transaction data. |
+| O1 | The current labels and semantics of rubrieken 5c to 5g | A current form explanation or the live return screen | Never filled from memory or computed from transaction data. The indexed OB 141 explanation is read through [section 2 of the source library guide](../tax-rules/source-library.md#2-how-to-reach-a-source), with the Operator confirming the edition. |
+| O2 | The statutory ICP filing deadline | A primary source or the Operator's own ICP notice | Never filled from memory or computed from transaction data. The indexed digital ICP guide is read through [section 2 of the source library guide](../tax-rules/source-library.md#2-how-to-reach-a-source), with the Operator confirming the edition. |
 | O3 | The monthly-filing trigger | A current rule source or an updated Handbook | Never filled from memory or computed from transaction data. |
 | O4 | The lease scope of the business-car forfait | An Operator or bookkeeper decision with the contract and the use facts | Never filled from memory or computed from transaction data. |
 | O5 | The guarded CLI report date-argument names | Pinned CLI help and a dry run before a live use | Never filled from memory or computed from transaction data. |

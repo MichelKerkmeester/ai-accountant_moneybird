@@ -95,7 +95,15 @@
     "aanslag betalen",
     "pay the assessment",
     "file my",
-    "file the"
+    "file the",
+    "offici\u00eble tekst",
+    "officiele tekst",
+    "official text",
+    "source library",
+    "law text",
+    "balans opmaken",
+    "overlopende posten",
+    "vooruitbetaalde kosten"
   ],
   "derived": {
     "trigger_phrases": [

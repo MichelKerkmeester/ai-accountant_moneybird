@@ -24,11 +24,11 @@ The T11 task-type row routes a prepare-the-yearly-overview request into `referen
 
 ### The ordered close and the auditfile gate
 
-The README holds the ordered steps and the eleven Dutch close signals. The auditfile export stands before the jaarafsluiting as an evidence gate, followed by the close checks, the equity-continuity check and the exception list. The T11 row reads the procedure README, the costs-and-car figures and the investments figures of the tax year as its required set and declares no conditional read.
+The README holds the ordered steps and the eleven Dutch close signals. The auditfile export stands before the jaarafsluiting as an evidence gate, followed by the close checks, the equity-continuity check and the exception list. The T11 row reads the procedure README, the costs-and-car figures and the investments figures of the tax year as its required set and declares no conditional read. For an ordinary LIVE year the Operator runs the export in the Moneybird UI and the AI only checks the artifact and records its year, version and SHA-256. A migrated year inside phases 10 to 16 keeps its SG-10.2 route and a year inside phases 19 to 21 keeps its journal-backed route.
 
 ### The pack, the template and the boundary
 
-The fiscal reconciliation file holds the reconciliation template, the three-column hand-off template and the prepared-not-filed stop. The printable A4 layout is `assets/yearly-overview/yearly-overview-template.html`, a self-contained bilingual template with a braced placeholder for every value and a closing statement that the overview is prepared and not filed. Every amount in a template is a braced placeholder. The folder prepares and never files, submits or pays, and an explicit file, submit, pay or lock request leaves T11 for the T8 refusal.
+The fiscal reconciliation file holds the reconciliation template, the three-column hand-off template and the prepared-not-filed stop. The printable A4 layout is `assets/yearly-overview/yearly-overview-template.html`, a self-contained bilingual template with a braced placeholder for every value and a closing statement that the overview is prepared and not filed. Every amount in a template is a braced placeholder. The yearly-overview-template suite fills the template with synthetic values and proves the closed token list, the repeat expansion, the escaping, the no-remote-asset rule and the prepared-not-filed line. The folder prepares and never files, submits or pays, and an explicit file, submit, pay or lock request leaves T11 for the T8 refusal.
 
 ---
 
@@ -39,9 +39,9 @@ The fiscal reconciliation file holds the reconciliation template, the three-colu
 | File | Layer | Role |
 |---|---|---|
 | `sk-moneybird-accountant/references/yearly-overview/README.md` | Shared | Entry index, the ordered steps, the close signals, the boundary and the figure link rule. |
-| `sk-moneybird-accountant/references/yearly-overview/preparation-checklist.md` | Shared | The auditfile-first evidence gate, the close checks, the equity continuity and the exception list. |
+| `sk-moneybird-accountant/references/yearly-overview/preparation-checklist.md` | Shared | The auditfile-first evidence gate with the Operator UI export, the close checks, the equity continuity and the exception list. |
 | `sk-moneybird-accountant/references/yearly-overview/fiscal-reconciliation.md` | Shared | The fiscal reconciliation template, the three-column hand-off template and the prepared-not-filed stop. |
-| `sk-moneybird-accountant/references/yearly-overview/report-and-export-limits.md` | Shared | The report rows, the twelve-month window, the auditfile export order and the unverified items. |
+| `sk-moneybird-accountant/references/yearly-overview/report-and-export-limits.md` | Shared | The report rows, the twelve-month window, the mode-scoped auditfile export order and the unverified items. |
 | `sk-moneybird-accountant/assets/yearly-overview/yearly-overview-template.html` | Asset | The printable A4 layout with bilingual labels, braced placeholders and no script or remote asset. |
 | `sk-moneybird-accountant/SKILL.md` | Shared | Holds the T11 row that routes a prepare-the-yearly-overview request into this folder. |
 | `sk-moneybird-accountant/references/tax-rules/{year}/README.md` | Shared | The required year read before any year figure is used. |
@@ -50,9 +50,11 @@ The fiscal reconciliation file holds the reconciliation template, the three-colu
 
 | File | Type | Role |
 |---|---|---|
-| `sk-moneybird-accountant/manual-testing-playbook/offline-routing/yearly-overview-pack.md` | Manual playbook | Scenario PACK-001 with gold row PACK-YEARLY-01 and eval case yearly-overview-pack, including the auditfile-before-jaarafsluiting order. |
+| `sk-moneybird-accountant/manual-testing-playbook/offline-routing/yearly-overview-pack.md` | Manual playbook | Scenario PACK-001 with gold row PACK-YEARLY-01 and eval case yearly-overview-pack, including the auditfile-before-jaarafsluiting order, the Operator UI export and the phase 19 to 21 twin. |
 | `sk-moneybird-accountant/scripts/route-replay/routing-gold.json` | Fixture | The PACK-YEARLY-01 row with its covers tag and token ceiling. |
-| `sk-moneybird-accountant/evals/evals.json` | Fixture | The yearly-overview-pack eval case with its required-token and forbidden-pattern lists. |
+| `sk-moneybird-accountant/evals/evals.json` | Fixture | The yearly-overview-pack case, the LIVE UI export case with its forbidden writer patterns and the phase 19 to 21 twin case. |
+| `sk-moneybird-accountant/scripts/yearly-overview-template-fill.py` | Script | Fills the template from its declared token list, expands the repeat blocks and checks the closed list, the escaping, the remote assets and the prepared-not-filed line. |
+| `sk-moneybird-accountant/scripts/yearly-overview-template-test.sh` | Automated test | Runs the fill on the real template and on five mutants: a broken repeat marker, a remote asset, a missing prepared-not-filed line, an undeclared token and a declared token the body never uses. |
 | `sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh` | Automated test | The pass case for the pack row. |
 
 ---

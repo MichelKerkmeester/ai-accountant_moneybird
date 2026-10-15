@@ -1288,6 +1288,7 @@ else
 fi
 
 copy_skill "$MUT"
+printf '# Unlinked fixture\n' >"$MUT/assets/unlinked-fixture.md"
 python3 - "$MUT/leaf-manifest.json" <<'PY'
 import json
 import sys
@@ -1303,6 +1304,19 @@ if [[ "$status" -ne 0 ]] && grep -q '^unreachable assets/unlinked-fixture.md' "$
     pass "a manifest leaf that nothing links fails the check"
 else
     fail "a manifest leaf that nothing links fails the check"
+fi
+
+# WHY: a deleted reference file still sits under the routed prefix, so the
+# check has to read the disk instead of trusting that prefix.
+copy_skill "$MUT"
+DELETED_LEAF="references/migration/README.md"
+rm -f "$MUT/$DELETED_LEAF"
+run_generator "$MUT" --check
+status=$?
+if [[ "$status" -ne 0 ]] && grep -qF "missing $DELETED_LEAF" "$TMP_ROOT/out.txt"; then
+    pass "a manifest leaf with no file on disk fails the check"
+else
+    fail "a manifest leaf with no file on disk fails the check"
 fi
 
 # ───────────────────────────────────────────────────────────────

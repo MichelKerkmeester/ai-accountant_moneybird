@@ -735,6 +735,32 @@ fi
 
 group "check"
 assert "check passes after a write" run_builder "$REPO" --check
+
+# Case: the guide's count table agrees with the index, and a stale cell fails
+GUIDE_REPO="$TMP_ROOT/guide-repo"
+cp -R "$REPO" "$GUIDE_REPO" || exit 2
+GUIDE_FILE="$GUIDE_REPO/sk-moneybird-accountant/references/tax-rules/source-library.md"
+cat >"$GUIDE_FILE" <<'MD'
+| Measure | Count |
+|---|---|
+| Sources | 3 |
+| Readable as a web page | 0 |
+| Readable through WebFetch only | 0 |
+| PDF, downloads but needs a PDF reader | 0 |
+| Archive copy an agent cannot fetch | 0 |
+| Dead link | 0 |
+| Tool endpoint, not a source | 1 |
+| Added after the last access check | 2 |
+MD
+assert "check passes when the guide count table matches the index" run_builder "$GUIDE_REPO" --check
+sed -i.bak 's/| Sources | 3 |/| Sources | 4 |/' "$GUIDE_FILE"
+run_builder "$GUIDE_REPO" --check
+status=$?
+if [[ "$status" -eq 1 ]] && grep -q '^guide count: Sources states 4 but the index holds 3' "$TMP_ROOT/out.txt"; then
+    pass "check reports a guide count that disagrees with the index"
+else
+    fail "check reports a guide count that disagrees with the index"
+fi
 printf '\nNew: https://wetten.overheid.nl/BWBR0000001\n' >>"$REPO/sk-moneybird-accountant/references/rules.md"
 run_builder "$REPO" --check
 status=$?

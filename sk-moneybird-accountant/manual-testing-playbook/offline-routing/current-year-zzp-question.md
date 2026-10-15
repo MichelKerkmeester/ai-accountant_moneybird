@@ -8,7 +8,7 @@ version: 1.0.0.0
 
 # TAX-001 -- Current-year ZZP question
 
-This document captures the offline prompt, local read sequence, expected signals, and evidence for TAX-001.
+This document captures the offline prompt, local read sequence, expected signals and evidence for TAX-001.
 
 ---
 

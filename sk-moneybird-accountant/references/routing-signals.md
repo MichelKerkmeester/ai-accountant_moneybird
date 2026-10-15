@@ -25,6 +25,10 @@ Every signal word in the Task-Type Table has a source. Most signal words come fr
 
 `btw` alone is a weak signal that never decides a row. It only confirms a route already chosen by a strong noun such as `aangifte`, `tarief` or `voorbelasting`.
 
+Signal matching folds a hyphen and a space to one space, so `btw aangifte` equals `btw-aangifte` and `IB aangifte` equals `IB-aangifte`. A preparation request with no tax named still reaches no preparation row, so `aangifte voorbereiden` alone abstains or asks.
+
+The T8 filing gate matches whole words on both sides, so `dien` misses `diensten` and `submit` misses `submitted`. It also ignores a filing verb that a short negation governs, so `do not submit the return` keeps the preparation route.
+
 ---
 
 ## 2. SIGNAL SOURCES
@@ -32,7 +36,7 @@ Every signal word in the Task-Type Table has a source. Most signal words come fr
 - Administration terms `administratie`, `boekhouding`, `bewaarplicht`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/
 - Record-keeping, document and cost terms `administratie bijhouden`, `factuur`, `verkoopfactuur`, `inkoopfactuur`, `bonnetje`, `kassabon`, `omzet`, `kosten`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/
 - VAT and return terms `aangifte doen`, `indienen`, `dien`, `insturen`, `aanslag betalen`, `btw-aangifte`, `aangifte omzetbelasting`, `kwartaalaangifte`, `voorbelasting`, `btw-tarief`, `btw-identificatienummer`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/hoe-btw-aangifte-invullen-en-versturen
-- Administration and yearly overview terms `jaaroverzicht`, `jaarrekening`, `balans en winst-en-verliesrekening`, `yearly overview` and `annual accounts`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/een_administratie_opzetten
+- Administration and yearly overview terms `jaaroverzicht`, `jaarrekening`, `jaarafsluiting`, `eindejaar`, `balans opmaken`, `winst-en-verliesrekening`, `overlopende posten`, `vooruitbetaalde kosten`, `toerekenen`, `privé-opnamen`, `suppletie`, `balans en winst-en-verliesrekening`, `yearly overview` and `annual accounts`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/een_administratie_opzetten
 - Income tax return terms `aangifte inkomstenbelasting`, `IB-aangifte` and `income tax return`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aangifte_doen/hoeveel-jaar-terug-belastingaangifte-doen
 - Income tax deduction terms `zelfstandigenaftrek`, `ondernemersaftrek`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/zelfstandigenaftrek1/verrekenen_niet_gerealiseerde_zelfstandigenaftrek
 - Car terms `kilometervergoeding`, `privégebruik auto`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/btw_en_de_auto/zakelijk_gebruik_van_de_priveauto/zakelijk_gebruik_van_de_priveauto
@@ -40,7 +44,7 @@ Every signal word in the Task-Type Table has a source. Most signal words come fr
 - Asset and depreciation terms `afschrijven`, `afschrijving`, `inventaris`, `activeren`, `activeer`, `depreciation`, `depreciate`, `fixed asset`, `capitalise` and `capitalize`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/
 - Investment deduction term `investeringsaftrek`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/kleinschaligheidsinvesteringsaftrek_kia
 - Threshold terms `drempel`, `kleineondernemersregeling`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/
-- Skill vocabulary, not from the Belastingdienst: the migration terms `migratie`, `overzetten` and `historische administratie`, the CLI terms `haal op`, `boek in` and `synchroniseer`, the period words `deze maand`, `afgelopen kwartaal`, `vorig jaar` and `sinds wanneer`, the question word `hoeveel`, the migration concept terms `categorie`, `valkuil` and `welke rekening` and the onboarding term `startende ondernemer`, the filing terms `periode afsluiten`, `file`, `submit`, `pay` and `lock the period`, and the preparation verbs `voorbereiden`, `klaarzetten`, `controleren`, `prepare`, `review` and `check`, which route only inside a type phrase.
+- Skill vocabulary, not from the Belastingdienst: the migration terms `migratie`, `overzetten` and `historische administratie`, the CLI terms `haal op`, `boek in` and `synchroniseer`, the period words `deze maand`, `afgelopen kwartaal`, `vorig jaar` and `sinds wanneer`, the question word `hoeveel`, the migration concept terms `categorie`, `valkuil` and `welke rekening` and the onboarding term `startende ondernemer`, the filing terms `periode afsluiten`, `file`, `submit`, `pay` and `lock the period`. The source terms are `officiële tekst`, `officiele tekst`, `wetstekst`, `official text`, `source library` and `law text`. The preparation verbs `voorbereiden`, `klaarzetten`, `controleren`, `prepare`, `review` and `check` route only inside a type phrase.
 
 ---
 
@@ -61,15 +65,15 @@ The specificity clauses match the On tie column of the Task-Type Table. Each one
 
 1. An invoice named makes T4 beat T3, and with no invoice named T3 beats T4. An invoice named also makes T4 beat T2.
 2. One year named makes T5 beat T6.
-3. A request for the official text or the source library makes T5 beat T4.
+3. A request for the official text or the source library with no invoice named makes T5 beat T4, and with an invoice named T4 keeps the invoice route.
 4. A rule asked across years or since a change makes T6 beat T4.
 5. A tax figure asked with no invoice named makes T5 beat T4.
 6. A phase number or gate named makes T1 beat T2 and T3.
-7. T7 is additive and never wins alone. It appends the matching sibling tool skill to the row already matched.
+7. T7 is additive and never wins alone. It appends the matching sibling tool skill to the row already matched. The destination is `cli-jortt` for a Jortt read, `cli-moneybird` for a Moneybird read and blocked for a refused write.
 8. A VAT return named makes T10 beat T3, and with no return named T3 beats T10.
 9. A yearly overview named makes T11 beat T3, and with no overview named T3 beats T11.
 10. An income tax return named makes T12 beat T5, and with no return named T5 beats T12.
-11. An explicit request to file, submit, pay or lock a period makes T8 beat T10, T11 and T12. A request to prepare, assemble, check or review one of the three yearly deliverables routes to T10, T11 or T12, and only the explicit filing request is refused.
+11. An explicit request to file, submit, pay or lock a period makes T8 beat T10, T11 and T12. The filing verb matches whole words, so `dien` misses `diensten` and `submit` misses `submitted`, and a short negation before the verb, such as `do not submit`, keeps the preparation route. A request to prepare, assemble, check or review one of the three yearly deliverables routes to T10, T11 or T12, and only the explicit filing request is refused.
 
 The mixed-use and asset terms of T4 name what is booked, not the kind of request. Together they add one point to T4 at most, so a tax figure, rule or period request that names an asset reaches the tie clauses above instead of losing to T4 on signal count.
 
@@ -96,9 +100,9 @@ A row shows two numbers. The base is the ladder sum of the read path that answer
 | `tok:T7` | 0 | 0 | no reference file, the sibling tool skill carries its own reads |
 | `tok:T8` | 0 | 0 | loads nothing |
 | `tok:T9` | 15,000 | 15,000 | one full reference file |
-| `tok:T10` | 18,000 | 33,000 | the VAT return procedure README 3,000 and the year btw figures part 15,000, plus the year procedure figures part 15,000 when a deadline, correction or belastingrente applies |
-| `tok:T11` | 33,000 | 33,000 | the yearly overview procedure README 3,000, the year cost and car figures part 15,000 and the year investments figures part 15,000 |
-| `tok:T12` | 33,000 | 33,000 | the income tax return procedure README 3,000, the year income tax figures part 15,000 and the year ondernemersaftrek figures part 15,000 |
+| `tok:T10` | 21,000 | 41,000 | the VAT return procedure README 3,000, a year README 3,000 and the year btw figures part 15,000, plus the year procedure figures part 15,000 when a deadline, correction or belastingrente applies and one source section 5,000 when the official source is asked |
+| `tok:T11` | 33,000 | 51,000 | the yearly overview procedure README 3,000, the year cost and car figures part 15,000 and the year investments figures part 15,000, plus a year README 3,000 when a close signal applies and the fixed-asset file 15,000 when an asset, an investment or depreciation is in scope |
+| `tok:T12` | 36,000 | 41,000 | the income tax return procedure README 3,000, a year README 3,000, the year income tax figures part 15,000 and the year ondernemersaftrek figures part 15,000, plus one source section 5,000 when the official source is asked |
 
 ---
 

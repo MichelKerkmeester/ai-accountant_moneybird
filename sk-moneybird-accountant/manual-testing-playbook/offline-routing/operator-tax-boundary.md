@@ -8,7 +8,7 @@ version: 1.0.0.0
 
 # TAX-002 -- Operator tax boundary
 
-This document captures the offline prompt, local read sequence, expected signals, and evidence for TAX-002.
+This document captures the offline prompt, local read sequence, expected signals and evidence for TAX-002.
 
 ---
 

@@ -19,7 +19,7 @@ The two year README blocks read the topic files of one year folder. Their row
 order and their text come from the corpus at run time: the topic order from
 the topic table in references/tax-rules/dutch-tax-rules.md, the covers and the topic
 labels from the topic-file frontmatter, and the counts and the headline rows
-from the KEY FIGURES table of every topic file. A phase 003 split makes one
+from the KEY FIGURES table of every topic file. A topic split makes one
 topic a folder of four part files, so a lookup for a section reads and links
 the part that holds it: sections 1 and 2 in figures.md, section 3 in rules.md,
 section 4 in examples.md and sections 5 to 8 in notes.md.
@@ -48,7 +48,7 @@ subsection of that section, right after the line that names the year files of
 the subsection. Its table repeats the first two KEY FIGURES rows of every
 named file for every year folder that holds the file, and the owner cell
 names the year file that owns the value. The rule prose around the block
-stays hand-written. A phase 003 split moves the subsections into the general
+stays hand-written. A topic split moves the subsections into the general
 folder, one file per subsection, so the scan reads and writes the block in
 the general file when the tree holds one.
 
@@ -86,7 +86,9 @@ task-type table in SKILL.md. Every other leaf is reachable when its path or a
 relative link to it appears in SKILL.md, in the reference index or in a
 README.md or a folder index page. A folder index page counts only once
 SKILL.md links it, so the feature catalog and the playbook route no leaf
-while SKILL.md leaves their roots out.
+while SKILL.md leaves their roots out. A manifest leaf that names no file on
+disk fails the check on its own, because the routed prefix must not turn a
+deleted reference file into a pass.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/build-reference-index.py
@@ -99,7 +101,8 @@ Options:
     --check         Compute every output in memory and report each block or
                     index that differs, without writing. Exits 1 on drift, on
                     a gap ledger row that breaks its rules, on a block over
-                    its byte budget or on an unreachable manifest leaf.
+                    its byte budget, on an unreachable manifest leaf or on a
+                    manifest leaf with no file on disk.
     --init          Insert the fence pair of every registered block that a
                     file misses, at its anchor. A pair may frame bytes that
                     are already in the file, so a table that is already
@@ -109,15 +112,16 @@ Options:
                     restates in its prose, and how many of them no generated
                     row owns. Reads only and exits 0.
     --reachability  Report every manifest leaf that no routed folder and no
-                    reachable page reaches. Reads only and exits 1 on a gap.
+                    reachable page reaches, and every leaf with no file on
+                    disk. Reads only and exits 1 on either finding.
 
 Output:
     references/index.json and the fence bodies, one "drift" line per stale
     block and one "budget" line per block over its cap in check mode, the
     overlap summary line in overlap mode, or the reachability summary and one
-    line per unreachable leaf. Exit 0 when everything matches, 1 on drift, a
-    block over its cap or an unreachable leaf, and 2 on a usage error, a read
-    error, a fence error or a write error.
+    line per missing or unreachable leaf. Exit 0 when everything matches, 1
+    on drift, a block over its cap, a missing leaf or an unreachable leaf, and
+    2 on a usage error, a read error, a fence error or a write error.
 """
 
 # ───────────────────────────────────────────────────────────────
@@ -201,7 +205,7 @@ FILE_DRIFT_ID = "generated-content"
 # topic file names stay the part that carries the topic.
 YEAR_README_RE = re.compile(r"^(?:.*/)?(\d{4})/README\.md$")
 YEAR_PART_RE = re.compile(r"^\d{4}$")
-# WHY: a phase 003 split keeps one year topic as a folder of four part files,
+# WHY: a topic split keeps one year topic as a folder of four part files,
 # each with a fixed section range. The flat shape keeps every section in one
 # file, so a section lookup falls back to the topic path.
 TOPIC_PART_NAMES = ("figures.md", "rules.md", "examples.md", "notes.md")
@@ -1402,7 +1406,7 @@ def is_guide_path(path: str) -> bool:
 def is_general_path(path: str) -> bool:
     """Tell whether a reference path is a general topic file.
 
-    A phase 003 split moves the subsections of section 3 of the reference
+    A topic split moves the subsections of section 3 of the reference
     guide into a general folder, one file per subsection. The flat shape
     keeps every subsection in the guide.
 
@@ -3985,6 +3989,22 @@ def source_mentions(source: str, text: str, target: str) -> bool:
     return False
 
 
+def missing_leaves(leaves: List[str]) -> List[str]:
+    """Return the manifest leaves that no file on disk backs.
+
+    The routed prefix exempts a reachable leaf from the walk, so a deleted
+    reference file has to fail here instead. A manifest leaf that names no
+    file is a stale manifest, not a routing gap.
+
+    Args:
+        leaves: Leaf paths from the manifest.
+
+    Returns:
+        The sorted paths of the leaves that are absent from the skill folder.
+    """
+    return sorted(leaf for leaf in leaves if not os.path.isfile(os.path.join(SKILL_ROOT, leaf)))
+
+
 def unreachable_leaves(leaves: List[str], sources: Dict[str, str]) -> List[str]:
     """Return the leaves that no routed folder and no reachable page reaches.
 
@@ -3992,7 +4012,8 @@ def unreachable_leaves(leaves: List[str], sources: Dict[str, str]) -> List[str]:
     task-type table. Any other leaf is reachable when a reachable page names
     it or links to it. A folder index page counts as a page only once
     SKILL.md links it, so the catalog and the playbook route nothing while
-    SKILL.md leaves their roots out.
+    SKILL.md leaves their roots out. A leaf with no file on disk is left to
+    missing_leaves(), so the two reports never name the same path.
 
     Args:
         leaves: Leaf paths from the manifest.
@@ -4006,7 +4027,11 @@ def unreachable_leaves(leaves: List[str], sources: Dict[str, str]) -> List[str]:
     for path in sorted(sources):
         if is_folder_index(path) and source_mentions(SKILL_PAGE, skill_text, path):
             active[path] = sources[path]
-    pending = {leaf for leaf in leaves if not leaf.startswith(ROUTED_PREFIX)}
+    pending = {
+        leaf
+        for leaf in leaves
+        if not leaf.startswith(ROUTED_PREFIX) and os.path.isfile(os.path.join(SKILL_ROOT, leaf))
+    }
     for leaf in sorted(pending):
         if any(source_mentions(path, text, leaf) for path, text in active.items()):
             pending.discard(leaf)
@@ -4014,17 +4039,20 @@ def unreachable_leaves(leaves: List[str], sources: Dict[str, str]) -> List[str]:
 
 
 def reachability_report() -> int:
-    """Report the manifest leaves that no route and no link reaches.
+    """Report the manifest leaves that no route reaches or that no file backs.
 
     Returns:
-        Zero when every leaf is reachable, one otherwise.
+        Zero when every leaf exists and is reachable, one otherwise.
     """
     leaves = manifest_leaves()
+    missing = missing_leaves(leaves)
     gaps = unreachable_leaves(leaves, reachability_sources())
-    print("reachability: %d of %d leaves reachable" % (len(leaves) - len(gaps), len(leaves)))
+    print("reachability: %d of %d leaves reachable" % (len(leaves) - len(gaps) - len(missing), len(leaves)))
+    for leaf in missing:
+        print("missing %s" % leaf)
     for leaf in gaps:
         print("unreachable %s" % leaf)
-    return 1 if gaps else 0
+    return 1 if gaps or missing else 0
 
 
 # ───────────────────────────────────────────────────────────────
@@ -4051,7 +4079,7 @@ def main(argv: List[str]) -> int:
     modes.add_argument(
         "--reachability",
         action="store_true",
-        help="report the manifest leaves that no route and no link reaches",
+        help="report the manifest leaves that no route reaches and the leaves with no file on disk",
     )
     args = parser.parse_args(argv)
     if args.reachability:

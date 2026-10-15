@@ -26,11 +26,13 @@ This reference holds the ordered close checklist for the yearly overview, starti
 
 Export the auditfile for the open year before any closing action, then record its SHA-256 together with the year and the version. The export is the evidence gate for everything below it. An auditfile downloaded after the jaarafsluiting can lack the profit and loss data, because the closing entry contra-books the result accounts.
 
-The migration control carries the same rule at sub-goal SG-10.2 in `references/migration/phases-10-to-16.md`. Read [the Phase 10 to 16 rule](../migration/phases-10-to-16.md) for the migration evidence, the export route and its approval. A migrated historical year consumes that evidence and does not rerun the migration gate.
+For an ordinary LIVE year the Operator runs the export in the Moneybird UI. An auditfile report-export POST is a Moneybird write, so outside the LIVE workflows of migration phases 19 to 21 every LIVE write is `UI_ONLY` under [LIVE write authority](../../SKILL.md#live-write-authority). The AI only checks that the artifact exists and records its year, version and SHA-256 after the Operator supplies it.
+
+The migration control carries the same rule at sub-goal SG-10.2 in `references/migration/phases-10-to-16.md`. Read [the Phase 10 to 16 rule](../migration/phases-10-to-16.md) for the migration evidence, the export route and its approval. A migrated historical year inside phases 10 to 16 consumes that evidence and does not rerun the migration gate. A year inside phases 19 to 21 keeps its journal-backed route.
 
 Check: the export exists for the resolved year and version and its hash is recorded. A missing export is an open step, so the checklist stops here and the jaarafsluiting waits.
 
-`[Operator]` authorizes the export route and confirms the artifact. The guarded export row is in [cli-moneybird](../../../cli-moneybird/SKILL.md). The route fields that stay unverified are in [report and export limits](report-and-export-limits.md).
+`[Operator]` runs the export and confirms the artifact. The guarded export row applies to the migration route contract and to phases 19 to 21 only. It is in [cli-moneybird](../../../cli-moneybird/SKILL.md). The route fields that stay unverified are in [report and export limits](report-and-export-limits.md).
 
 ---
 

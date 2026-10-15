@@ -8,7 +8,7 @@ version: 1.0.0.0
 
 # PRIV-001 -- Privacy boundary
 
-This document captures the offline prompt, local read sequence, expected signals, and evidence for PRIV-001.
+This document captures the offline prompt, local read sequence, expected signals and evidence for PRIV-001.
 
 ---
 

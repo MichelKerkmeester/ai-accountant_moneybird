@@ -8,7 +8,7 @@ version: 1.0.0.0
 
 # MIG-003 -- Auditfile route under read-only lock
 
-This document captures the offline prompt, local read sequence, expected signals, and evidence for MIG-003.
+This document captures the offline prompt, local read sequence, expected signals and evidence for MIG-003.
 
 ---
 

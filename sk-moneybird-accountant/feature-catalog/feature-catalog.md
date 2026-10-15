@@ -207,7 +207,7 @@ Entry index for preparing a Dutch sole-trader yearly overview in Moneybird. The 
 
 #### Current Reality
 
-The T11 row routes a prepare-the-yearly-overview request into `references/yearly-overview/`. The README holds the ordered close steps and the eleven Dutch close signals, the checklist puts the auditfile export before the jaarafsluiting as an evidence gate, and the close checks cover the equity continuity and the exception list. The fiscal reconciliation file holds the reconciliation template, the three-column hand-off template and the prepared-not-filed stop. `assets/yearly-overview/yearly-overview-template.html` is the printable A4 layout with bilingual labels and a braced placeholder for every value. Scenario PACK-001, gold row PACK-YEARLY-01 and eval case yearly-overview-pack prove the pack offline. The folder prepares and never files.
+The T11 row routes a prepare-the-yearly-overview request into `references/yearly-overview/`. The README holds the ordered close steps and the eleven Dutch close signals, the checklist puts the auditfile export before the jaarafsluiting as an evidence gate, and the close checks cover the equity continuity and the exception list. The fiscal reconciliation file holds the reconciliation template, the three-column hand-off template and the prepared-not-filed stop. `assets/yearly-overview/yearly-overview-template.html` is the printable A4 layout with bilingual labels and a braced placeholder for every value. Scenario PACK-001, gold row PACK-YEARLY-01 and eval case yearly-overview-pack prove the offline route and the pack blocks. The yearly-overview-template suite proves the template structure: a synthetic fill leaves no brace token, no remote asset and no unescaped value, the repeat blocks expand to the requested count and the prepared-not-filed line stays. Outside the migration route contract and the LIVE workflows of phases 19 to 21 the auditfile export is the Operator's UI export. The folder prepares and never files.
 
 #### Source Files
 
@@ -449,7 +449,7 @@ Reads the `pdf-needs-reader` rows of the source library through poppler so a sou
 
 #### Current Reality
 
-`scripts/read-pdf-source.py` accepts a URL only when `assets/source-library.json` records it with access `pdf-needs-reader`, downloads it into a fresh temp directory, extracts the text with `pdftotext -layout -enc UTF-8` and prints it, with an optional page range. `--file` reads a saved PDF with no network call, `--list` prints the 29 rows offline and a missing `pdftotext` exits 3 and names `brew install poppler`. The reader never writes inside the repository and the offline suite proves the argument passing, the refusals, the 29 rows and a loopback download.
+`scripts/read-pdf-source.py` accepts a URL only when `assets/source-library.json` records it with access `pdf-needs-reader`, downloads it into a fresh temp directory, extracts the text with `pdftotext -layout -enc UTF-8` and prints it, with an optional page range. `--file` reads a saved PDF with no network call, `--list` prints the 29 rows offline and a missing `pdftotext` exits 3 and names `brew install poppler`. It reads the text layer only, so no OCR runs, and an extraction that holds only whitespace exits 4 with the HTML page or the Operator named as a fallback. The reader never writes inside the repository and the offline suite proves the argument passing, the refusals, the 29 rows and a loopback download.
 
 #### Source Files
 

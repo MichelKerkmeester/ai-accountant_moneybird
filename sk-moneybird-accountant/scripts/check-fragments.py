@@ -6,12 +6,15 @@
 
 Scans the repository AGENTS.md, README.md and the markdown of the three skill
 folders for relative links, resolves each path and each fragment, and reports
-every miss. A fragment matches an explicit anchor line or a heading slug drawn
-the GitHub way, and a slug that resolves only through a duplicate suffix is
-rejected. Every year topic file must hold its section ids in order: eight
-in a flat topic file, and the subset that a phase 003 split part carries.
-External URLs, images and links inside fenced code blocks are skipped, and the
-script makes no network call. Output is sorted and byte-stable.
+every miss. A link label that reads like a path is checked too: it must
+resolve beside its page or end the target path, so a categoryless label
+cannot silently name a file another folder holds. A fragment matches an
+explicit anchor line or a heading slug drawn the GitHub way, and a slug that
+resolves only through a duplicate suffix is rejected. Every year topic file
+must hold its section ids in order: eight in a flat topic file, and the
+subset that a topic split part carries. External URLs, images and links
+inside fenced code blocks are skipped, and the script makes no network call.
+Output is sorted and byte-stable.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/check-fragments.py
@@ -77,7 +80,7 @@ SECTION_IDS = (
     "8-related-resources",
 )
 
-# WHY: a phase 003 split keeps the eight topic sections in four part files, so
+# WHY: a topic split keeps the eight topic sections in four part files, so
 # each part is held only to the sections it carries.
 SPLIT_TOPIC_SECTIONS = {
     "figures.md": ("1-overview", "2-key-figures"),
@@ -297,16 +300,17 @@ def is_relative(target: str) -> bool:
     return bool(target) and not SCHEME_RE.match(target) and not target.startswith("//")
 
 
-def find_links(path: str) -> Iterator[Tuple[int, str]]:
+def find_links(path: str) -> Iterator[Tuple[int, str, str]]:
     """Yield the relative links one source file holds.
 
     Args:
         path: Absolute path of the markdown file.
 
     Yields:
-        Pairs of line number and raw link target. Inline links and reference
-        definitions are both included. External URLs and images are left
-        out.
+        Triples of line number, link label and raw link target. Inline links
+        and reference definitions are both included. External URLs and images
+        are left out. A reference definition names its target without a
+        label, so its empty label checks nothing.
     """
     for number, line in visible_lines(path):
         for match in LINK_RE.finditer(line):
@@ -315,12 +319,45 @@ def find_links(path: str) -> Iterator[Tuple[int, str]]:
                 continue
             target = match.group(2).strip()
             if is_relative(target):
-                yield number, target
+                yield number, match.group(1).strip(), target
         definition = REFERENCE_RE.match(line)
         if definition:
             target = (definition.group(1) or definition.group(2)).strip()
             if is_relative(target):
-                yield number, target
+                yield number, "", target
+
+
+def label_problem(path: str, label: str, target: str) -> Optional[str]:
+    """Return the reason a path-shaped link label does not name its link target.
+
+    A label that reads like a relative path can drift from the target while
+    the target still resolves, so the two are compared. A descriptive label
+    carries no path and is skipped. A path label passes when it resolves
+    beside the page, as a relative label may, or when it ends the target path,
+    which binds a categoryless label to the file the link opens.
+
+    Args:
+        path: Absolute path of the source file.
+        label: Link text.
+        target: Raw link target.
+
+    Returns:
+        The reason string, or None when the label passes or is descriptive.
+    """
+    if "/" not in label or not label.endswith(".md"):
+        return None
+    if any(char.isspace() for char in label) or SCHEME_RE.match(label):
+        return None
+    if os.path.exists(os.path.normpath(os.path.join(os.path.dirname(path), label))):
+        return None
+    target_path, _, _ = target.partition("#")
+    if target_path:
+        resolved = os.path.normpath(os.path.join(os.path.dirname(path), target_path))
+    else:
+        resolved = path
+    if resolved.endswith("/" + label):
+        return None
+    return "label-mismatch"
 
 
 def check_links(path: str) -> Tuple[int, int, List[Tuple[int, str, str]]]:
@@ -331,12 +368,13 @@ def check_links(path: str) -> Tuple[int, int, List[Tuple[int, str, str]]]:
 
     Returns:
         Link count, fragment-link count and the problems found, each as a
-        line number, the raw target and a reason.
+        line number, a link marker and a reason. The marker is the link label
+        for a label problem and the raw target otherwise.
     """
     links = 0
     fragments = 0
     problems: List[Tuple[int, str, str]] = []
-    for number, target in find_links(path):
+    for number, label, target in find_links(path):
         links += 1
         target_path, _, fragment = target.partition("#")
         if fragment:
@@ -349,6 +387,9 @@ def check_links(path: str) -> Tuple[int, int, List[Tuple[int, str, str]]]:
         if not os.path.exists(resolved):
             problems.append((number, target, "missing-path"))
             continue
+        label_reason = label_problem(path, label, target)
+        if label_reason is not None:
+            problems.append((number, label, label_reason))
         if not fragment:
             continue
         if not os.path.isfile(resolved):
@@ -386,7 +427,7 @@ def is_year_topic(relative_path: str) -> bool:
         return False
     if YEAR_DIR_RE.match(parts[-2]) is not None:
         return True
-    # WHY: a phase 003 split keeps one topic as a folder of four part files
+    # WHY: a topic split keeps one topic as a folder of four part files
     # directly under the year folder, so the part carries the section ids.
     return (
         len(parts) >= 4

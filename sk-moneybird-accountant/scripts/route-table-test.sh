@@ -220,6 +220,21 @@ else
     fail "router block reads the session context and drops the old level names"
 fi
 
+# WHY: a selector that never reads the bootstrap sees only the description and
+# the activation triggers, so both must name the three yearly deliverables.
+SKILL_HEAD=$(sed -n '1,/^### Activation Triggers/{/^description:/p;}' "$SKILL_MD")
+TRIGGERS=$(sed -n '/^### Activation Triggers/,/^### /p' "$SKILL_MD")
+selector_ok=1
+for phrase in 'VAT return' 'yearly overview' 'income tax return'; do
+    grep -qiF "$phrase" <<<"$SKILL_HEAD" || selector_ok=0
+    grep -qiF "$phrase" <<<"$TRIGGERS" || selector_ok=0
+done
+if [[ "$selector_ok" -eq 1 ]]; then
+    pass "the description and the activation triggers name the VAT return, the yearly overview and the income tax return"
+else
+    fail "the description and the activation triggers name the VAT return, the yearly overview and the income tax return"
+fi
+
 # ───────────────────────────────────────────────────────────────
 # 5. MUTANTS
 # ───────────────────────────────────────────────────────────────

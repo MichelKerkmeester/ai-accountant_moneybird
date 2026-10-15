@@ -39,7 +39,7 @@ Run these steps in order against the files of the newest year folder.
 3. Set every figure in the new topic files for the new tax year, keep a source URL on every row, and name the alternative or the default of every condition, so a decision step carries a branch.
 4. Set `checked_on` in the README of every touched year folder under `sk-moneybird-accountant/references/tax-rules/` and in `sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md`.
 5. Run `python3 -I sk-moneybird-accountant/scripts/build-reference-index.py --check` and refresh the generated blocks when it reports drift.
-6. Run `python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check` and record every new source in `sk-moneybird-accountant/assets/source-library.json`.
+6. Run `python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check` and record every new source in `sk-moneybird-accountant/assets/source-library.json`. Classify each new source's access, and check every new `pdf-needs-reader` row against `python3 -I sk-moneybird-accountant/scripts/read-pdf-source.py --list` before you rely on it.
 7. Run `python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-calendar` and move every year README date that lags a checkpoint already passed.
 8. Give the new year folder a changelog with the shape of `sk-moneybird-accountant/references/tax-rules/2027/changelog.md`, log every correction there as one row per changed value, and link the log from the new year README.
 

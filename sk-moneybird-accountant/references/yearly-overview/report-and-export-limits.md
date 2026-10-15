@@ -33,7 +33,7 @@ These rows come from the reports row and the auditfile export row in [cli-moneyb
 | `general_ledger` | The ledger detail per account and period. | The same window. | The action is named in the CLI skill. The date argument names are `UNVERIFIED`. |
 | `journal_entries` | The journal detail for the year. | The same window. | The action name is `UNVERIFIED` until pinned CLI help names it. |
 | `tax` | The tax report the close reconciles. | The same window. | The action name is `UNVERIFIED` until pinned CLI help names it. |
-| `reports export auditfile` | The auditfile for the open year and version. | Export before the jaarafsluiting. | The flags and the downloads route are `UNVERIFIED`. |
+| `reports export auditfile` | The auditfile for the open year and version. | Export before the jaarafsluiting. | The flags and the downloads route are `UNVERIFIED`. The row applies to the migration route contract and to the LIVE workflows of phases 19 to 21 only. For an ordinary LIVE year the Operator runs the export in the Moneybird UI. |
 
 The twelve-month window is the read boundary. A request covers at most twelve months. A longer period splits into parts that each record their period and count and reconcile to the whole. The year of a close is one twelve-month window, so the close reads it in one part unless the administration's own book year differs.
 
@@ -45,7 +45,7 @@ The guarded reads are listed in [cli-moneybird](../../../cli-moneybird/SKILL.md)
 
 The auditfile export comes first, before the closing entry and before the period lock. An auditfile downloaded after the jaarafsluiting can lack the profit and loss data, because the closing entry contra-books the result accounts. The migration rule at sub-goal SG-10.2 in `references/migration/phases-10-to-16.md` carries the same order. Read [the Phase 10 to 16 rule](../migration/phases-10-to-16.md). Once the year is closed, a later export does not repair a missing first export.
 
-The export runs through the guarded writer session with the approval the migration plan names. The route flags and the downloads step stay `UNVERIFIED` until pinned CLI help and a dry run confirm them.
+An auditfile report-export POST is a Moneybird write. Outside the LIVE workflows of migration phases 19 to 21 it is `UI_ONLY` under [LIVE write authority](../../SKILL.md#live-write-authority), so an ordinary LIVE year never runs it through the guarded writer session. The Operator runs the export in the Moneybird UI and supplies the artifact. The AI only checks that the artifact exists and records its year, version and SHA-256. A migrated historical year inside phases 10 to 16 keeps its SG-10.2 route. A year inside phases 19 to 21 keeps the journal-backed route with the approval the migration plan names. The route flags and the downloads step stay `UNVERIFIED` until pinned CLI help and a dry run confirm them.
 
 ---
 

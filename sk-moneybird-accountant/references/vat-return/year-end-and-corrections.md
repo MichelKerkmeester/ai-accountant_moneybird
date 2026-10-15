@@ -52,6 +52,7 @@ A corrected period is not always the period under review. Split every correction
 
 Rules that apply to both routes:
 
+- The January 2025 suppletie guide is an indexed `pdf-needs-reader` row. Read it through [section 2 of the source library guide](../tax-rules/source-library.md#2-how-to-reach-a-source), with the Operator confirming the edition that applies to the period.
 - The boundary, the reporting deadline and the correction window are in the year file, for example [BTW 2026 figures](../tax-rules/2026/vat/figures.md) and [BTW 2026 rules](../tax-rules/2026/vat/rules.md). Never state the boundary from memory.
 - The phrases a correction request uses are `suppletie`, `naheffing` and `correctie vorige periode`.
 - Moneybird can file a suppletie only on top of its own filing history. A period filed wholly outside Moneybird goes through the Belastingdienst route.

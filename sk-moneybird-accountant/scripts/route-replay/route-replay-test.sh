@@ -12,7 +12,7 @@
 # WHY: the harness is only trustworthy when a clean corpus passes, a deleted
 # routed path stops the run and a broken twin or an injected date changes
 # nothing about the numbers. This suite proves each of those on a copy, so the
-# real skill tree stays untouched. It also scores the phase 011/008 branch,
+# real skill tree stays untouched. It also scores the tax deliverable branch,
 # pack and refusal rows and fails on a seeded filing claim, a pack row with a
 # missing block and a correction row on the wrong side of the boundary.
 # WHY: the suite inspects $? after commands that are expected to fail, so -e stays off.
@@ -261,7 +261,7 @@ else
     fail "the clean run writes report.md"
 fi
 
-if grep -q '^scenario_id,lang,split,gold_mode,gold_task_type,score,verdict,reason,tokens_loaded,t7,reads$' "$OUT_CLEAN/results.csv" 2>/dev/null; then
+if grep -q '^scenario_id,lang,split,gold_mode,gold_task_type,score,verdict,reason,tokens_loaded,t7,destination,reads$' "$OUT_CLEAN/results.csv" 2>/dev/null; then
     pass "results.csv carries the fixed column order"
 else
     fail "results.csv carries the fixed column order"
@@ -280,6 +280,19 @@ if rows.get("LIVE-001", {}).get("t7") != "0":
 for row in rows.values():
     if row.get("t7") == "1" and not row.get("reads"):
         problems.append("%s matched T7 without a matched row" % row["scenario_id"])
+    if row.get("t7") == "1" and not row.get("destination"):
+        problems.append("%s matched T7 without a destination" % row["scenario_id"])
+    if row.get("t7") == "0" and row.get("destination"):
+        problems.append("%s carries a destination without a T7 hit" % row["scenario_id"])
+destinations = {
+    "T7-DEST-JORTT-01": "cli-jortt",
+    "T7-DEST-MONEYBIRD-01": "cli-moneybird",
+    "T7-DEST-BLOCKED-01": "blocked",
+}
+for row_id, wanted in destinations.items():
+    actual = rows.get(row_id, {}).get("destination")
+    if actual != wanted:
+        problems.append("%s destination %s expected %s" % (row_id, actual, wanted))
 print("ok" if not problems else " and ".join(problems))
 PY
 then
@@ -611,7 +624,7 @@ check_exit "the refusal and hostile rows replay with exit 0" 0 \
     python3 -I "$COPY_HARNESS" --mode replay --corpus "$REPLAY_CORPUS" \
     --guard "$GUARD" --stub "$STUB" --out "$OUT_REPLAY"
 
-if grep -q '^scenario_id,lang,split,gold_mode,gold_task_type,score,verdict,reason,tokens_loaded,t7,reads,command,expected_exit,actual_exit$' "$OUT_REPLAY/results.csv" 2>/dev/null; then
+if grep -q '^scenario_id,lang,split,gold_mode,gold_task_type,score,verdict,reason,tokens_loaded,t7,destination,reads,command,expected_exit,actual_exit$' "$OUT_REPLAY/results.csv" 2>/dev/null; then
     pass "the replay results.csv carries the command and exit columns"
 else
     fail "the replay results.csv carries the command and exit columns"
@@ -732,6 +745,139 @@ else
     fail "the T4 conditional read terms equal the T4 topic signals in the table ($DRIFT)"
 fi
 
+# WHY: the table is the single source of the T5 source terms and the T11
+# close signals, so a resolver constant the table drops would route a read
+# the authored table no longer names.
+SIGNAL_DRIFT=$(python3 -I - "$HARNESS" "$SKILL_SRC/SKILL.md" <<'PY'
+import importlib.util
+import sys
+
+spec = importlib.util.spec_from_file_location("route_replay", sys.argv[1])
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+with open(sys.argv[2], "r", encoding="utf-8") as handle:
+    rows = module.parse_route_table(handle.read())
+
+def signals(route_type):
+    row = next(item for item in rows if item["type"] == route_type)
+    return {module.fold_text(phrase) for phrase in module.signal_phrases(row["dutch"]) + module.signal_phrases(row["english"])}
+
+problems = []
+t5 = signals("T5")
+for term in module.SOURCE_TERMS:
+    if module.fold_text(term) not in t5:
+        problems.append("T5 signal missing from the table: %s" % term)
+t11 = signals("T11")
+for term in module.CLOSE_SIGNALS:
+    if module.fold_text(term) not in t11:
+        problems.append("T11 close signal missing from the table: %s" % term)
+print("ok" if not problems else " and ".join(problems))
+PY
+)
+if [[ "$SIGNAL_DRIFT" == "ok" ]]; then
+    pass "the resolver source and close signals equal the table signals"
+else
+    fail "the resolver source and close signals equal the table signals ($SIGNAL_DRIFT)"
+fi
+
+# WHY: a documented specificity clause without a resolver pair would fall
+# through to abstain, so every clause pair the prose names must be decided by
+# the resolver and every resolver pair needs its own deciding sample.
+CLAUSE_DRIFT=$(python3 -I - "$HARNESS" "$SKILL_SRC/references/routing-signals.md" "$SKILL_SRC/SKILL.md" <<'PY'
+import importlib.util
+import re
+import sys
+
+spec = importlib.util.spec_from_file_location("route_replay", sys.argv[1])
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+with open(sys.argv[2], "r", encoding="utf-8") as handle:
+    signals_text = handle.read()
+with open(sys.argv[3], "r", encoding="utf-8") as handle:
+    rows = module.parse_route_table(handle.read())
+section = signals_text.split("## 4. THE SPECIFICITY CLAUSES", 1)[-1].split("\n## ", 1)[0]
+clauses = re.findall(r"^\d+\.\s+(.*)$", section, re.MULTILINE)
+
+def normalize(pair):
+    return tuple(sorted(pair, key=lambda value: int(value[1:])))
+
+documented = []
+for clause in clauses:
+    for match in re.finditer(r"(T\d+)\s+beats?\s+((?:T\d+(?:\s*(?:,|and)\s*)?)+)", clause):
+        first = match.group(1)
+        for second in re.findall(r"T\d+", match.group(2)):
+            documented.append(normalize((first, second)))
+known = {normalize(pair) for pair in module.SPECIFICITY_PAIRS}
+problems = []
+for pair in documented:
+    if "T8" in pair:
+        continue
+    if pair not in known:
+        problems.append("no resolver pair for %s" % (pair,))
+samples = {
+    ("T4", "T3"): "an invoice",
+    ("T4", "T2"): "an invoice",
+    ("T5", "T6"): "the rate in 2026",
+    ("T5", "T4"): "the official text",
+    ("T6", "T4"): "since when did the rule change",
+    ("T1", "T2"): "phase 3",
+    ("T1", "T3"): "the gate",
+    ("T10", "T3"): "the VAT return",
+    ("T11", "T3"): "the yearly overview",
+    ("T12", "T5"): "the income tax return",
+}
+samples = {normalize(pair): sample for pair, sample in samples.items()}
+for pair in known:
+    sample = samples.get(pair)
+    if sample is None:
+        problems.append("no resolver sample for %s" % (pair,))
+        continue
+    if module.specificity_winner(sample, pair[0], pair[1], rows) is None:
+        problems.append("pair %s is not decided" % (pair,))
+print("ok" if not problems else " and ".join(problems))
+PY
+)
+if [[ "$CLAUSE_DRIFT" == "ok" ]]; then
+    pass "every documented specificity clause has a resolver pair"
+else
+    fail "every documented specificity clause has a resolver pair ($CLAUSE_DRIFT)"
+fi
+
+# WHY: the fold and the whole-word filing gate carry the spelling rules, so
+# a direct probe guards them before the fixture rows are scored.
+GATE_PROBE=$(python3 -I - "$HARNESS" "$SKILL_SRC/SKILL.md" <<'PY'
+import importlib.util
+import sys
+
+spec = importlib.util.spec_from_file_location("route_replay", sys.argv[1])
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+with open(sys.argv[2], "r", encoding="utf-8") as handle:
+    rows = module.parse_route_table(handle.read())
+problems = []
+if not module.phrase_matches("kun je mijn btw aangifte voorbereiden", "btw-aangifte"):
+    problems.append("spaced btw aangifte does not match")
+if not module.phrase_matches("mijn ib aangifte klaarzetten", "IB-aangifte"):
+    problems.append("spaced IB aangifte does not match")
+if module.t8_signal_hit(rows, "de belastingdienst levert diensten"):
+    problems.append("dien matched diensten")
+if module.t8_signal_hit(rows, "the form was submitted"):
+    problems.append("submit matched submitted")
+if not module.t8_signal_hit(rows, "prepare the vat return and then submit it"):
+    problems.append("submit did not match")
+if module.t8_signal_hit(rows, "prepare the vat return, do not submit it"):
+    problems.append("a negated submit matched")
+if module.t8_signal_hit(rows, "bereid de btw-aangifte voor, maar dien die niet in"):
+    problems.append("a negated Dutch filing verb matched")
+print("ok" if not problems else " and ".join(problems))
+PY
+)
+if [[ "$GATE_PROBE" == "ok" ]]; then
+    pass "the spelling fold and the whole-word filing gate hold"
+else
+    fail "the spelling fold and the whole-word filing gate hold ($GATE_PROBE)"
+fi
+
 # ───────────────────────────────────────────────────────────────
 # 10B. TWO TURN PREPARATION AND FILING PRECEDENCE
 # ───────────────────────────────────────────────────────────────
@@ -803,12 +949,15 @@ else
     sed -n '1,5p' "$TMP_ROOT/last.log"
 fi
 
-# A revision run scores the worktree of that commit and removes it again
+# A revision run scores the worktree of that commit and removes it again.
+# WHY: the live corpus asserts the routing fixes, which an older revision does
+# not carry, so the run keeps the one covers tag whose rows are stable across
+# the change. The worktree add and remove still run in full.
 check_exit "a revision run scores the worktree of HEAD" 0 \
-    python3 -I "$HARNESS" --mode resolve --rev HEAD --corpus "$CORPUS" --out "$TMP_ROOT/out-rev"
+    python3 -I "$HARNESS" --mode resolve --rev HEAD --corpus "$CORPUS" --covers 005/REQ-001 --out "$TMP_ROOT/out-rev"
 
 # ───────────────────────────────────────────────────────────────
-# 10C. PHASE 011/008 BRANCH, PACK AND REFUSAL ROWS
+# 10C. TAX DELIVERABLE BRANCH, PACK AND REFUSAL ROWS
 # ───────────────────────────────────────────────────────────────
 
 # Every new row must be present and passing in the clean resolve run and in
@@ -828,6 +977,31 @@ NEW_RESOLVE_ROWS=(
 )
 for row_id in "${NEW_RESOLVE_ROWS[@]}"; do
     row_pass "$OUT_CLEAN/results.csv" "$row_id" "the branch, pack or refusal row $row_id resolves PASS"
+done
+
+ROUTING_FIX_ROWS=(
+    AUDITFILE-LIVE-01
+    PREP-KEEP-T10-01
+    PREP-KEEP-T11-01
+    PREP-KEEP-T12-01
+    PREP-TIE-10-01
+    PREP-TIE-11-01
+    PREP-TIE-12-01
+    SRC-PDF-01
+    TAX-FIG-SRC-01
+    SRC-INV-01
+    PREP-T10-SRC-01
+    PREP-T12-SRC-01
+    VAT-Q4-JAN-01
+    T11-CLOSE-01
+    PREP-SPACE-T10-01
+    PREP-SPACE-T12-01
+    T7-DEST-JORTT-01
+    T7-DEST-MONEYBIRD-01
+    T7-DEST-BLOCKED-01
+)
+for row_id in "${ROUTING_FIX_ROWS[@]}"; do
+    row_pass "$OUT_CLEAN/results.csv" "$row_id" "the routing fix row $row_id resolves PASS"
 done
 
 NEW_REPLAY_ROWS=(

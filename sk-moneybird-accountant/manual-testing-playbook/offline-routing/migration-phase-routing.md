@@ -8,7 +8,7 @@ version: 1.0.0.0
 
 # MODE-001 -- Migration phase routing
 
-This document captures the offline prompt, local read sequence, expected signals, and evidence for MODE-001.
+This document captures the offline prompt, local read sequence, expected signals and evidence for MODE-001.
 
 ---
 

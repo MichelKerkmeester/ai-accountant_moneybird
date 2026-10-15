@@ -8,7 +8,7 @@ version: 1.0.0.0
 
 # LIVE-001 -- Live monthly bookkeeping
 
-This document captures the offline prompt, local read sequence, expected signals, and evidence for LIVE-001.
+This document captures the offline prompt, local read sequence, expected signals and evidence for LIVE-001.
 
 ---
 

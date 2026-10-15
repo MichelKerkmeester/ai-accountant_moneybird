@@ -34,8 +34,9 @@ Usage:
 Options:
     --check       Verify the index without writing it. Reports every cited URL
                   missing from the index, every indexed URL no file cites, a
-                  cited row recorded dead and a perishable Tweede Kamer
-                  download address without a pending kst marker.
+                  cited row recorded dead, a perishable Tweede Kamer download
+                  address without a pending kst marker and a count in the
+                  guide's section 1 table that disagrees with the index.
     --check-links Fetch every row a plain fetch can reach and print a JSON
                   report with the status, the digest, the retrieval date, the
                   entity tag fingerprint and the last modification date per
@@ -172,6 +173,20 @@ ACCESS_VALUES = ("ok", "webfetch-only", "pdf-needs-reader", "archive-not-fetchab
 
 # Access values that describe how a page is read, so a live answer keeps them.
 KEEP_ACCESS = ("pdf-needs-reader", "archive-not-fetchable")
+
+# WHY: the guide's section 1 measure table is refreshed by hand at a
+# checkpoint, so --check compares each stated count with the index. A None
+# entry counts every row.
+GUIDE_COUNT_MEASURES = (
+    ("Sources", None),
+    ("Readable as a web page", "ok"),
+    ("Readable through WebFetch only", "webfetch-only"),
+    ("PDF, downloads but needs a PDF reader", "pdf-needs-reader"),
+    ("Archive copy an agent cannot fetch", "archive-not-fetchable"),
+    ("Dead link", "dead"),
+    ("Tool endpoint, not a source", "endpoint"),
+    ("Added after the last access check", "unchecked"),
+)
 
 # Cadences a watched series may carry.
 CADENCES = ("monthly", "yearly", "on-publication")
@@ -1205,6 +1220,64 @@ def perishable_problems(stored: Dict[str, Dict[str, Any]]) -> List[str]:
     return problems
 
 
+def guide_count_problems(stored: Dict[str, Dict[str, Any]]) -> List[str]:
+    """Compare the guide's section 1 count table with the index.
+
+    Args:
+        stored: Result of load_index().
+
+    Returns:
+        One problem line per measure that disagrees. A guide without the table
+        is left alone, and a guide that states one measure must state them all,
+        because a half-refreshed table is drift as well.
+    """
+    if not os.path.isfile(GUIDE_PATH):
+        return []
+    try:
+        with open(GUIDE_PATH, "r", encoding="utf-8", errors="replace") as handle:
+            text = handle.read()
+    except OSError as exc:
+        fail("cannot read the source guide: %s" % exc)
+    known = dict(GUIDE_COUNT_MEASURES)
+    stated: Dict[str, Optional[int]] = {}
+    collecting = False
+    for line in text.splitlines():
+        cells = table_cells(line)
+        if not collecting:
+            # WHY: the section 1 table is the one with the Measure and Count
+            # header, so a later table that reuses a measure word is ignored.
+            if len(cells) == 2 and cells == ["Measure", "Count"]:
+                collecting = True
+            continue
+        if cells and all(cell and set(cell) <= set("-:") for cell in cells):
+            continue
+        if len(cells) != 2 or cells[0] not in known:
+            break
+        value = cells[1].replace(",", "").strip()
+        stated[cells[0]] = int(value) if value.isdigit() else None
+    # WHY: a fixture guide without the table is not this check's business, but
+    # one stated measure means the table is in play and must agree in full.
+    if not stated:
+        return []
+    problems = []
+    for label, access in GUIDE_COUNT_MEASURES:
+        if label not in stated:
+            problems.append("guide count: %s row is missing" % label)
+            continue
+        if stated[label] is None:
+            problems.append("guide count: %s is not a number" % label)
+            continue
+        if access is None:
+            expected = len(stored)
+        else:
+            expected = sum(1 for row in stored.values() if row.get("access") == access)
+        if stated[label] != expected:
+            problems.append(
+                "guide count: %s states %d but the index holds %d" % (label, stated[label], expected)
+            )
+    return problems
+
+
 def check_index(found: Dict[str, Dict[str, Any]], stored: Dict[str, Dict[str, Any]], expected: str) -> int:
     """Report drift between the cited sources and the index.
 
@@ -1227,6 +1300,7 @@ def check_index(found: Dict[str, Dict[str, Any]], stored: Dict[str, Dict[str, An
     ]
     problems += dead_cited_problems(found, stored)
     problems += perishable_problems(stored)
+    problems += guide_count_problems(stored)
     problems += frontmatter_problems(stored)
     problems += term_map_problems()
     glossed, first_uses, gloss_lines = gloss_problems()

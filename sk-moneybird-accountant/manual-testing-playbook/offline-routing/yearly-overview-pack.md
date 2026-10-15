@@ -28,10 +28,10 @@ A jaarafsluiting before the auditfile export can strip the profit and loss data 
 - Real user request: Prepare the yearly overview for 2026 and show the review pack before the jaarafsluiting. Do not call an API.
 - Prompt: Prepare the yearly overview for 2026 and show the review pack before the jaarafsluiting. Do not call an API.
 - Fixture rows: PACK-YEARLY-01 (the yearly overview pack row) and yearly-overview-pack (the eval case).
-- Expected execution process: Read the project bootstrap and the skill, run the route table check, follow the T11 route into the yearly overview procedure, export the auditfile before any closing action, run the close checks, tie the opening balance, run the equity-continuity check, assemble the pack with the exception list and stop before the jaarafsluiting. Do not use network access, accounting APIs or private finance data.
-- Expected signals: The check prints route-table: ok. The route record names LIVE and T11. The read set loads [the yearly overview procedure](../../references/yearly-overview/README.md) and the year figures the route needs. The answer names the auditfile export before any closing action, the balance, the profit and loss account, the fiscal reconciliation, the three-column hand-off, the equity-continuity check, the exception list and the Operator as the owner of the closing actions. The pack reports prepared and does not state that anything was filed. The administration reads run through moneybird-guard with MONEYBIRD_GUARD_READ_ONLY=1.
+- Expected execution process: Read the project bootstrap and the skill, run the route table check, follow the T11 route into the yearly overview procedure, have the Operator export the auditfile in the Moneybird UI before any closing action, run the close checks, tie the opening balance, run the equity-continuity check, assemble the pack with the exception list and stop before the jaarafsluiting. Do not use network access, accounting APIs or private finance data.
+- Expected signals: The check prints route-table: ok. The route record names LIVE and T11. The read set loads [the yearly overview procedure](../../references/yearly-overview/README.md), [the 2026 year README](../../references/tax-rules/2026/README.md) and the year figures the route needs. The answer names the auditfile export before any closing action, the balance, the profit and loss account, the fiscal reconciliation, the three-column hand-off, the equity-continuity check, the exception list and the Operator as the owner of the closing actions. The auditfile step is the Operator's UI export in Moneybird, so the answer offers no `--confirm-write` call and no guarded POST for this LIVE year. The pack reports prepared and does not state that anything was filed. The administration reads run through moneybird-guard with MONEYBIRD_GUARD_READ_ONLY=1.
 - Desired user-visible outcome: A concise route report with the winning row, the loaded paths, the pack blocks, the auditfile order, the equity check, the exception list and the API-free status.
-- Pass/fail: PASS if the request routes LIVE and T11, the auditfile export stands before the jaarafsluiting, the equity-continuity check and the exception list are present, the pack reports prepared with the Operator as the owner of the closing actions and no API is called. FAIL if the order is reversed, the equity check or the exception list is missing, the answer states a filing action or an API is called.
+- Pass/fail: PASS if the request routes LIVE and T11, the auditfile export stands before the jaarafsluiting and is the Operator's UI export in Moneybird, the equity-continuity check and the exception list are present, the pack reports prepared with the Operator as the owner of the closing actions and no API is called. FAIL if the order is reversed, the answer offers a guarded POST or a `--confirm-write` call for this LIVE year, the equity check or the exception list is missing, the answer states a filing action or an API is called.
 
 ---
 
@@ -47,11 +47,11 @@ A jaarafsluiting before the auditfile export can strip the profit and loss data 
 2. Read sk-moneybird-accountant/SKILL.md
 3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check
 4. Read sk-moneybird-accountant/references/yearly-overview/README.md, sk-moneybird-accountant/references/yearly-overview/preparation-checklist.md and sk-moneybird-accountant/references/yearly-overview/fiscal-reconciliation.md
-5. Export the auditfile first, run the close checks and the equity-continuity check, assemble the pack with the exception list and stop before the jaarafsluiting
+5. Have the Operator export the auditfile in the Moneybird UI first, run the close checks and the equity-continuity check, assemble the pack with the exception list and stop before the jaarafsluiting
 
 ### Expected
 
-The check prints route-table: ok. The T11 row wins for the named yearly overview. The procedure, the preparation checklist and the fiscal reconciliation load. The answer names the auditfile export before any closing action, the balance, the profit and loss account, the fiscal reconciliation, the three-column hand-off, the equity-continuity check, the exception list and the Operator. The pack reports prepared. No accounting API is called.
+The check prints route-table: ok. The T11 row wins for the named yearly overview. The procedure, the preparation checklist and the fiscal reconciliation load. The answer names the auditfile export before any closing action, the balance, the profit and loss account, the fiscal reconciliation, the three-column hand-off, the equity-continuity check, the exception list and the Operator. The auditfile step is the Operator's UI export in Moneybird and the answer offers no `--confirm-write` call and no guarded POST for this LIVE year. The pack reports prepared. No accounting API is called.
 
 ### Evidence
 
@@ -59,8 +59,12 @@ Capture the check output, the selected row, the loaded paths, the auditfile orde
 
 ### Pass / Fail
 
-- **Pass**: The request routes LIVE and T11, the auditfile-first order holds, the equity-continuity check and the exception list are present, the pack reports prepared, the Operator owns the closing actions and no API is called.
-- **Fail**: The order is reversed, the equity check or the exception list is missing, the answer states a filing action, the pack claims a completed close or an API is called.
+- **Pass**: The request routes LIVE and T11, the auditfile-first order holds, the auditfile export is the Operator's UI export in Moneybird, the equity-continuity check and the exception list are present, the pack reports prepared, the Operator owns the closing actions and no API is called.
+- **Fail**: The order is reversed, the answer offers a guarded POST or a `--confirm-write` call for this LIVE year, the equity check or the exception list is missing, the answer states a filing action, the pack claims a completed close or an API is called.
+
+### The phase 19 to 21 twin
+
+A year inside the LIVE workflows of migration phases 19 to 21 keeps the journal-backed route. The same scenario for such a year passes when the answer names the run-journal `WRITE_INTENT`, the guarded writer session and the plan approval, and fails when it treats the auditfile export as an ordinary UI-only step. The twin eval cases are `yearly-overview-live-ui-export` and `yearly-overview-phase-21-journal-route` in [the eval suite](../../evals/evals.json). The authority clause is [LIVE write authority](../../SKILL.md#live-write-authority).
 
 ### Failure Triage
 
@@ -86,7 +90,7 @@ Check the T11 row and the T8 filing precedence in SKILL.md section 2, then the P
 |---|---|
 | [SKILL.md](../../SKILL.md) | The T11 row, its read set and the filing precedence. |
 | [routing-gold.json](../../scripts/route-replay/routing-gold.json) | The PACK-YEARLY-01 row this scenario mirrors. |
-| [evals.json](../../evals/evals.json) | The yearly-overview-pack case. |
+| [evals.json](../../evals/evals.json) | The yearly-overview-pack case, the LIVE UI export case and the phase 19 to 21 twin. |
 
 ---
 

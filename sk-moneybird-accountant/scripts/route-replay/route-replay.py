@@ -50,7 +50,8 @@ Options:
 
 Output:
     results.csv with the columns scenario_id, lang, split, gold_mode,
-    gold_task_type, score, verdict, reason, tokens_loaded, t7 and reads,
+    gold_task_type, score, verdict, reason, tokens_loaded, t7, destination
+    and reads,
     report.md with the scored dimensions, the accuracy lines, the per-type
     precision and recall with denominators, the read counts, the warning
     band sink and the additive T7 assertion, and a one-line summary on
@@ -133,6 +134,7 @@ RESULT_COLUMNS = (
     "reason",
     "tokens_loaded",
     "t7",
+    "destination",
     "reads",
 )
 
@@ -174,14 +176,6 @@ EXTRA_SIGNALS = {
         "schrijfbatch",
         "leescontrole",
     ),
-    "T5": (
-        "official text",
-        "officiële tekst",
-        "officiele tekst",
-        "source library",
-        "law text",
-        "wetstekst",
-    ),
 }
 
 OUT_OF_SCOPE_PATTERNS = (
@@ -202,6 +196,46 @@ CANCEL_RE = re.compile(r"(?<!\w)(?:cancel|opzeg|opgezeg)", re.IGNORECASE)
 JORTT_OP_RE = re.compile(r"\bjortt\b[^.]*\bop\b", re.IGNORECASE)
 
 SOURCE_TERMS = ("official text", "officiële tekst", "officiele tekst", "source library", "law text", "wetstekst")
+
+# WHY: the yearly-overview README authors these eleven close signals, so the
+# T11 row carries them and the resolver loads the year README on a close
+# request. route-replay-test.sh fails when one is missing from the T11 cells.
+CLOSE_SIGNALS = (
+    "jaaroverzicht",
+    "jaarrekening",
+    "jaarafsluiting",
+    "eindejaar",
+    "balans opmaken",
+    "winst-en-verliesrekening",
+    "overlopende posten",
+    "vooruitbetaalde kosten",
+    "toerekenen",
+    "privé-opnamen",
+    "suppletie",
+)
+
+# WHY: the additive row names the sibling skill it appends, so an answer
+# says which tool owns the read and a refused request stays blocked.
+JORTT_DESTINATION_TERMS = ("jortt", "jortt-cli", "read jortt", "haal op")
+MONEYBIRD_DESTINATION_TERMS = ("moneybird", "moneybird-guard", "boek in", "synchroniseer")
+
+# WHY: routing-signals.md section 4 documents one clause per tie pair, so
+# the resolver, the corpus tie list and the prose must name the same pairs.
+SPECIFICITY_PAIRS = (
+    ("T4", "T3"),
+    ("T4", "T2"),
+    ("T5", "T6"),
+    ("T5", "T4"),
+    ("T6", "T4"),
+    ("T1", "T2"),
+    ("T1", "T3"),
+    ("T10", "T3"),
+    ("T11", "T3"),
+    ("T12", "T5"),
+)
+
+FOLD_RE = re.compile(r"[-\s]+")
+SIGNAL_SEPARATOR_RE = re.compile(r"[-\s]+")
 MONITORING_TERMS = ("monitoring", "post-cutover", "post cutover", "monitoring_active", "monitoring_lapsed_phase22_open")
 VAT_TERMS = ("btw", "vat", "quarter", "kwartaal")
 ACCESS_TERMS = ("trial", "access window", "proefperiode", "auditfile", "read-only", "read only", "read_only", "lock", "workspace", "setup")
@@ -431,12 +465,48 @@ def signal_phrases(cell: str) -> List[str]:
     return [part.strip() for part in cell.split(",") if part.strip()]
 
 
+def fold_text(text: str) -> str:
+    """Fold hyphens and whitespace runs to one space for signal matching.
+
+    Args:
+        text: Request text or signal phrase.
+
+    Returns:
+        Lower case text with each hyphen and whitespace run as one space.
+    """
+    return FOLD_RE.sub(" ", text.lower())
+
+
+def signal_pattern(phrase: str) -> str:
+    """Build the match pattern of one signal phrase.
+
+    A hyphen or a space in the phrase matches a space in the text, so
+    `btw-aangifte` matches `btw aangifte`. A space in the phrase stays a
+    space, so `reverse charge` does not match `reverse-charged`.
+
+    Args:
+        phrase: Signal phrase.
+
+    Returns:
+        The regular expression body of the phrase.
+    """
+    parts: List[str] = []
+    last = 0
+    for match in SIGNAL_SEPARATOR_RE.finditer(phrase):
+        parts.append(re.escape(phrase[last:match.start()].lower()))
+        parts.append(r"[-\s]+" if "-" in match.group(0) else r"\s+")
+        last = match.end()
+    parts.append(re.escape(phrase[last:].lower()))
+    return "".join(parts)
+
+
 def phrase_matches(text: str, phrase: str) -> bool:
     """Tell whether a signal phrase starts a word in one text.
 
-    The phrase needs a non-word character before it and may run on into a
-    Dutch compound, so `inkoopfactuur` stays one match and `btw-tarief`
-    counts as `btw-tarief`.
+    Matching folds a hyphen and a space, so `btw aangifte` equals
+    `btw-aangifte`. The phrase needs a non-word character before it and may
+    run on into a compound or an inflection, so `inkoopfactuur` stays one
+    match and `partly private` stays a match inside `partly privately`.
 
     Args:
         text: Lower case request text.
@@ -445,8 +515,8 @@ def phrase_matches(text: str, phrase: str) -> bool:
     Returns:
         True when the phrase starts a word in the text.
     """
-    pattern = r"(?<!\w)" + re.escape(phrase.lower())
-    return re.search(pattern, text) is not None
+    pattern = r"(?<!\w)" + signal_pattern(phrase)
+    return re.search(pattern, text.lower()) is not None
 
 
 def is_replay_row(row: Dict[str, Any]) -> bool:
@@ -712,7 +782,7 @@ def parse_weak_signals(signals_text: str) -> Tuple[str, ...]:
             continue
         spans = [span.strip() for span in BACKTICK_RE.findall(line[:index]) if span.strip()]
         if spans:
-            return tuple(spans)
+            return tuple(fold_text(span) for span in spans)
     fail("no weak signal named in %s" % os.path.basename(SIGNALS_NAME))
 
 
@@ -857,6 +927,9 @@ def build_snapshot(
             "a phase number or gate named makes T1 beat T3",
             "a request for the official source text makes T5 beat T4",
             "T7 is additive and never wins alone",
+            "a named VAT return makes T10 beat T3",
+            "a named yearly overview makes T11 beat T3",
+            "a named income tax return makes T12 beat T5",
         ],
         "fallback_tiers": {
             "A": "refuse with the out-of-scope boundary, load nothing",
@@ -1048,21 +1121,25 @@ def resolve_paths(
             paths.append("references/fixed-assets.md")
         return paths
     if route_type == "T5":
-        if any(phrase_matches(text, term) for term in SOURCE_TERMS):
-            return ["references/tax-rules/source-library.md"]
-        paths: List[str] = []
-        if year:
-            paths.append("references/tax-rules/%s/README.md" % year)
+        source_hit = any(phrase_matches(text, term) for term in SOURCE_TERMS)
+        figure_hit = t5_figure_hit(text, route_rows)
+        if figure_hit and year:
+            paths = ["references/tax-rules/%s/README.md" % year]
             topic = topic_file(text)
             target = topic_map.get(topic)
             if target:
                 paths.append(target.replace(YEAR_TOKEN, year).replace("@", "#", 1))
-        return paths
+            if source_hit:
+                paths.append("references/tax-rules/source-library.md#2-how-to-reach-a-source")
+            return paths
+        if source_hit:
+            return ["references/tax-rules/source-library.md#2-how-to-reach-a-source"]
+        return []
     if route_type == "T6":
         return ["references/tax-rules/general/work-relationship-and-procedure.md#310-work-relationship-and-procedure"]
     if route_type == "T9":
         return ["references/migration/overview-and-setup.md"]
-    return resolve_table_reads(route_rows, route_type, skill_root, year, phase_map, topic_map)
+    return resolve_table_reads(route_rows, route_type, skill_root, year, phase_map, topic_map, text)
 
 
 def resolve_table_reads(
@@ -1072,13 +1149,14 @@ def resolve_table_reads(
     year: str,
     phase_map: Dict[str, str],
     topic_map: Dict[str, str],
+    text: str,
 ) -> List[str]:
-    """Resolve the required reads of a row the fixed rules do not cover.
+    """Resolve the reads of a row the fixed rules do not cover.
 
-    The preparation rows carry their figure reads as `!` items and their
-    procedure entry point as a `?` item, so only the required items load.
-    The fixture year pins the year token, and the year folders pin it when
-    the row carries no year.
+    The preparation rows carry their procedure README and figure reads as
+    `!` items, so a required item always loads. A `?` item loads only when
+    its condition terms match. The fixture year pins the year token, and
+    the year folders pin it when the row carries no year.
 
     Args:
         route_rows: Parsed task-type rows.
@@ -1087,9 +1165,10 @@ def resolve_table_reads(
         year: Fixture year, empty when unresolved.
         phase_map: Phase number to reference path.
         topic_map: Topic slug to figures file from the generated block.
+        text: Lower case request text for the conditional reads.
 
     Returns:
-        The expanded required addresses, anchors in # form.
+        The expanded read addresses, anchors in # form.
     """
     row: Optional[Dict[str, str]] = None
     for item in route_rows:
@@ -1106,6 +1185,33 @@ def resolve_table_reads(
         for address in expand_read_item(item, years, phase_map, topic_map):
             converted = address.replace("@", "#", 1)
             if converted and converted not in paths:
+                paths.append(converted)
+    # WHY: the preparation rows keep the source guide, the close year README
+    # and the fixed-asset read conditional. A T11 route is a close route, so
+    # it always reads the year file before a year figure.
+    for mark, item in read_set_items(row["read_set"]):
+        if mark != "?":
+            continue
+        for address in expand_read_item(item, years, phase_map, topic_map):
+            converted = address.replace("@", "#", 1)
+            if not converted or converted in paths:
+                continue
+            path = plain_path(converted)
+            if path == "references/tax-rules/source-library.md" and any(
+                phrase_matches(text, term) for term in SOURCE_TERMS
+            ):
+                paths.append(converted)
+            elif path == "references/fixed-assets.md" and any(
+                phrase_matches(text, term) for term in FIXED_ASSET_TERMS
+            ):
+                paths.append(converted)
+            elif (
+                route_type == "T11"
+                and year
+                and path == "references/tax-rules/%s/README.md" % year
+            ):
+                # WHY: the yearly-overview README makes the year file read
+                # conditional on a close route, and every T11 route is one.
                 paths.append(converted)
     return paths
 
@@ -1126,13 +1232,65 @@ def topic_file(text: str) -> str:
     return "costs-and-car"
 
 
-def specificity_winner(text: str, first: str, second: str) -> Optional[str]:
+def row_signal_hit(route_rows: List[Dict[str, str]], route_type: str, text: str) -> bool:
+    """Tell whether one request names a row through its own signal cells.
+
+    Args:
+        route_rows: Parsed task-type rows.
+        route_type: Task type whose signals to match.
+        text: Lower case request text.
+
+    Returns:
+        True when one signal of that row matches the text.
+    """
+    for row in route_rows:
+        if row["type"] != route_type:
+            continue
+        return any(
+            phrase_matches(text, phrase)
+            for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"])
+        )
+    return False
+
+
+def t5_figure_hit(text: str, route_rows: List[Dict[str, str]]) -> bool:
+    """Tell whether one request names a tax figure or topic.
+
+    The source terms stay out of this test, so a source-only request reaches
+    the source guide without the year README or a figures part.
+
+    Args:
+        text: Lower case request text.
+        route_rows: Parsed task-type rows.
+
+    Returns:
+        True when one non-source T5 signal matches.
+    """
+    source = {fold_text(term) for term in SOURCE_TERMS}
+    for row in route_rows:
+        if row["type"] != "T5":
+            continue
+        for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"]):
+            if fold_text(phrase) in source:
+                continue
+            if phrase_matches(text, phrase):
+                return True
+    return False
+
+
+def specificity_winner(
+    text: str,
+    first: str,
+    second: str,
+    route_rows: List[Dict[str, str]],
+) -> Optional[str]:
     """Apply the specificity clauses to one tied pair.
 
     Args:
         text: Lower case request text.
         first: One tied task type.
         second: The other tied task type.
+        route_rows: Parsed task-type rows for the preparation clauses.
 
     Returns:
         The decided task type, or None when no clause covers the pair.
@@ -1146,16 +1304,24 @@ def specificity_winner(text: str, first: str, second: str) -> Optional[str]:
         return "T4"
     if pair == {"T5", "T6"} and YEAR_RE.search(text):
         return "T5"
-    if pair == {"T5", "T4"} and any(phrase_matches(text, term) for term in SOURCE_TERMS):
-        return "T5"
     if pair == {"T6", "T4"}:
         return "T6"
-    if pair == {"T5", "T4"} and not INVOICE_RE.search(text):
+    if pair == {"T5", "T4"}:
+        # WHY: an invoice named keeps the invoice route, even when the
+        # request also asks for the official source text.
+        if INVOICE_RE.search(text):
+            return "T4"
         return "T5"
     if pair == {"T1", "T2"} and (PHASE_RE.search(text) or GATE_RE.search(text)):
         return "T1"
     if pair == {"T1", "T3"} and (PHASE_RE.search(text) or GATE_RE.search(text)):
         return "T1"
+    if pair == {"T10", "T3"}:
+        return "T10" if row_signal_hit(route_rows, "T10", text) else "T3"
+    if pair == {"T11", "T3"}:
+        return "T11" if row_signal_hit(route_rows, "T11", text) else "T3"
+    if pair == {"T12", "T5"}:
+        return "T12" if row_signal_hit(route_rows, "T12", text) else "T5"
     return None
 
 
@@ -1185,7 +1351,10 @@ def t8_signal_hit(route_rows: List[Dict[str, str]], text: str) -> bool:
     """Tell whether any signal of the refusal row matches one request.
 
     The scorer reads the filing verbs and the boundary words from the T8
-    signal cells. It keeps no list of its own.
+    signal cells. It keeps no list of its own. A signal matches whole words
+    on both sides, so `dien` misses `diensten` and `submit` misses
+    `submitted`. A short negation before the signal, or just after a Dutch
+    separable verb such as `dien die niet in`, keeps the request.
 
     Args:
         route_rows: Parsed task-type rows.
@@ -1194,14 +1363,38 @@ def t8_signal_hit(route_rows: List[Dict[str, str]], text: str) -> bool:
     Returns:
         True when one T8 signal matches.
     """
+    folded = fold_text(text)
     for row in route_rows:
         if row["type"] != "T8":
             continue
-        return any(
-            phrase_matches(text, phrase)
-            for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"])
-        )
+        for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"]):
+            pattern = r"(?<!\w)" + re.escape(fold_text(phrase)) + r"(?!\w)"
+            for match in re.finditer(pattern, folded):
+                before = folded[max(0, match.start() - 24):match.start()]
+                after = folded[match.end():match.end() + 24]
+                if NEGATION_RE.search(before) or re.search(r"\b(?:niet|geen)\b", after):
+                    continue
+                return True
     return False
+
+
+def t7_destination(text: str, blocked: bool) -> str:
+    """Name the sibling skill one additive T7 hit appends.
+
+    Args:
+        text: Lower case request text.
+        blocked: True when the filing gate or the boundary refuses the request.
+
+    Returns:
+        `cli-jortt`, `cli-moneybird` or `blocked`.
+    """
+    if blocked or out_of_scope_hit(text):
+        return "blocked"
+    if any(phrase_matches(text, term) for term in JORTT_DESTINATION_TERMS):
+        return "cli-jortt"
+    if any(phrase_matches(text, term) for term in MONEYBIRD_DESTINATION_TERMS):
+        return "cli-moneybird"
+    return "blocked"
 
 
 def score_candidates(
@@ -1227,9 +1420,12 @@ def score_candidates(
             continue
         count = 0
         topic_hit = False
+        seen: Dict[str, bool] = {}
         for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"]):
-            if phrase.lower() in weak_signals:
+            folded = fold_text(phrase)
+            if folded in weak_signals or folded in seen:
                 continue
+            seen[folded] = True
             if phrase_matches(text, phrase):
                 if route_type == "T4" and phrase.lower() in T4_TOPIC_TERMS:
                     topic_hit = True
@@ -1238,6 +1434,10 @@ def score_candidates(
         if topic_hit:
             count += 1
         for phrase in EXTRA_SIGNALS.get(route_type, ()):
+            folded = fold_text(phrase)
+            if folded in seen:
+                continue
+            seen[folded] = True
             if phrase_matches(text, phrase):
                 count += 1
         if count:
@@ -1271,7 +1471,8 @@ def resolve_route(
 
     Returns:
         A route record with mode, type, tier, paths, abstain state, the
-        additive flag, the warning band gap and the candidate types.
+        additive flag, the destination, the warning band gap and the
+        candidate types.
     """
     text = prompt.lower()
     explicit_year = YEAR_RE.search(text) is not None
@@ -1283,6 +1484,7 @@ def resolve_route(
         for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"])
     )
     t8_hit = t8_signal_hit(route_rows, text)
+    destination = t7_destination(text, t8_hit) if t7_hit else ""
     # WHY: a filing signal wins over the preparation rows whatever they score.
     if t8_hit:
         for route_type in PREPARE_TYPES:
@@ -1306,6 +1508,7 @@ def resolve_route(
                 "abstain": True,
                 "candidates": ["T8"],
                 "t7": t7_hit,
+                "destination": destination,
                 "band_gap": None,
             }
         return {
@@ -1316,6 +1519,7 @@ def resolve_route(
             "abstain": True,
             "candidates": [],
             "t7": t7_hit,
+            "destination": destination,
             "band_gap": None,
         }
     winner = ordered[0][0]
@@ -1329,6 +1533,7 @@ def resolve_route(
                 "abstain": True,
                 "candidates": ["T8"],
                 "t7": t7_hit,
+                "destination": destination,
                 "band_gap": None,
             }
         return {
@@ -1339,10 +1544,11 @@ def resolve_route(
             "abstain": True,
             "candidates": [ordered[0][0]],
             "t7": t7_hit,
+            "destination": destination,
             "band_gap": None,
         }
     if len(ordered) > 1 and ordered[0][1] - ordered[1][1] < margin:
-        decided = specificity_winner(text, ordered[0][0], ordered[1][0])
+        decided = specificity_winner(text, ordered[0][0], ordered[1][0], route_rows)
         if decided is None:
             return {
                 "mode": "ABSTAIN",
@@ -1352,6 +1558,7 @@ def resolve_route(
                 "abstain": True,
                 "candidates": sorted([ordered[0][0], ordered[1][0]]),
                 "t7": t7_hit,
+                "destination": destination,
                 "band_gap": None,
             }
         winner = decided
@@ -1365,6 +1572,7 @@ def resolve_route(
                 "abstain": True,
                 "candidates": [winner],
                 "t7": t7_hit,
+                "destination": destination,
                 "band_gap": band_gap,
             }
     mode = MODE_BY_TYPE.get(winner, "MIGRATION" if t7_hit else "LIVE")
@@ -1377,6 +1585,7 @@ def resolve_route(
         "abstain": False,
         "candidates": [winner],
         "t7": t7_hit,
+        "destination": destination,
         "band_gap": band_gap,
     }
 
@@ -1620,6 +1829,8 @@ def score_row(
         problems.append("additive row T7 won alone")
     if "t7" in row and bool(route.get("t7")) != bool(row.get("t7")):
         problems.append("t7 additive hit %s expected %s" % (bool(route.get("t7")), bool(row.get("t7"))))
+    if "destination" in row and str(route.get("destination", "")) != str(row.get("destination", "")):
+        problems.append("destination %s expected %s" % (route.get("destination", ""), row.get("destination", "")))
     score = 5 - len(problems)
     if problems:
         reason = ". ".join(problems)
@@ -1636,6 +1847,7 @@ def score_row(
         "reason": reason,
         "tokens_loaded": str(tokens_loaded),
         "t7": "1" if route.get("t7") else "0",
+        "destination": route.get("destination", ""),
         "reads": str(len(route.get("paths", []))),
         "band_gap": route.get("band_gap"),
         "facts_found": len(facts_found),

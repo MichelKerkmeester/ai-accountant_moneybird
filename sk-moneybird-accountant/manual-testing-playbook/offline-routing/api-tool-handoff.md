@@ -8,7 +8,7 @@ version: 1.0.0.0
 
 # API-001 -- CLI tool handoff
 
-This document captures the offline prompt, local read sequence, expected signals, and evidence for API-001.
+This document captures the offline prompt, local read sequence, expected signals and evidence for API-001.
 
 ---
 
@@ -94,6 +94,8 @@ Check the system boundaries, then the relevant sibling skill links. Repeat with 
 |---|---|
 | sk-moneybird-accountant/SKILL.md | Defines mode and reference routing |
 | AGENTS.md | Defines project bootstrap and privacy rules |
+| sk-moneybird-accountant/scripts/source-to-target-handoff-test.sh | Proves the source manifest, mapping and WRITE_INTENT chain and its hash drift stops before a guarded call |
+| sk-moneybird-accountant/scripts/cli-failure-handoff-test.sh | Proves the retry owners and the blocked answer contract offline |
 
 ---
 

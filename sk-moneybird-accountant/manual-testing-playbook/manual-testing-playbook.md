@@ -277,7 +277,7 @@ Desired user-visible outcome: Selects LIVE, lists sales, purchase records, bank 
 
 #### Test Execution
 Feature file: [LIVE-001](offline-routing/live-monthly-bookkeeping.md)
-Catalog: [feature-catalog/live-bookkeeping-cadence.md](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md)
+Catalog: [feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md)
 
 ---
 
@@ -295,7 +295,7 @@ Desired user-visible outcome: Selects LIVE, separates quarterly VAT from yearly 
 
 #### Test Execution
 Feature file: [LIVE-002](offline-routing/quarterly-yearly-bookkeeping.md)
-Catalog: [feature-catalog/live-bookkeeping-cadence.md](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md)
+Catalog: [feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md](../feature-catalog/bookkeeping-and-migration/live-bookkeeping-cadence.md)
 
 ---
 
@@ -313,7 +313,7 @@ Desired user-visible outcome: Selects LIVE, names the purchase invoice reference
 
 #### Test Execution
 Feature file: [LIVE-003](offline-routing/purchase-invoice-booking.md)
-Catalog: [feature-catalog/purchase-invoice-booking.md](../feature-catalog/bookkeeping-and-migration/purchase-invoice-booking.md)
+Catalog: [feature-catalog/bookkeeping-and-migration/purchase-invoice-booking.md](../feature-catalog/bookkeeping-and-migration/purchase-invoice-booking.md)
 
 ---
 
@@ -331,7 +331,7 @@ Desired user-visible outcome: Selects LIVE, names the mixed-use cost reference, 
 
 #### Test Execution
 Feature file: [LIVE-004](offline-routing/mixed-use-cost-booking.md)
-Catalog: [feature-catalog/mixed-use-cost-booking.md](../feature-catalog/bookkeeping-and-migration/mixed-use-cost-booking.md)
+Catalog: [feature-catalog/bookkeeping-and-migration/mixed-use-cost-booking.md](../feature-catalog/bookkeeping-and-migration/mixed-use-cost-booking.md)
 
 ---
 
@@ -349,7 +349,7 @@ Desired user-visible outcome: Selects LIVE, names the fixed asset reference, app
 
 #### Test Execution
 Feature file: [LIVE-005](offline-routing/fixed-asset-booking.md)
-Catalog: [feature-catalog/fixed-asset-booking.md](../feature-catalog/bookkeeping-and-migration/fixed-asset-booking.md)
+Catalog: [feature-catalog/bookkeeping-and-migration/fixed-asset-booking.md](../feature-catalog/bookkeeping-and-migration/fixed-asset-booking.md)
 
 ---
 
@@ -367,7 +367,7 @@ Desired user-visible outcome: Checks the current year first, loads the tax refer
 
 #### Test Execution
 Feature file: [TAX-001](offline-routing/current-year-zzp-question.md)
-Catalog: [feature-catalog/year-specific-zzp-guidance.md](../feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md)
+Catalog: [feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md](../feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md)
 
 ---
 
@@ -403,7 +403,7 @@ Desired user-visible outcome: Names jortt-cli for read-only Jortt work and money
 
 #### Test Execution
 Feature file: [API-001](offline-routing/api-tool-handoff.md)
-Catalog: [feature-catalog/api-tool-handoff.md](../feature-catalog/bookkeeping-and-migration/api-tool-handoff.md)
+Catalog: [feature-catalog/bookkeeping-and-migration/api-tool-handoff.md](../feature-catalog/bookkeeping-and-migration/api-tool-handoff.md)
 
 ---
 
@@ -421,7 +421,7 @@ Desired user-visible outcome: Refuses the broad search without accessing the pri
 
 #### Test Execution
 Feature file: [PRIV-001](offline-routing/privacy-boundary.md)
-Catalog: [feature-catalog/migration-data-privacy.md](../feature-catalog/bookkeeping-and-migration/migration-data-privacy.md)
+Catalog: [feature-catalog/bookkeeping-and-migration/migration-data-privacy.md](../feature-catalog/bookkeeping-and-migration/migration-data-privacy.md)
 
 ---
 
@@ -439,7 +439,7 @@ Desired user-visible outcome: Does not submit the return, provides only general 
 
 #### Test Execution
 Feature file: [TAX-002](offline-routing/operator-tax-boundary.md)
-Catalog: [feature-catalog/operator-tax-boundary.md](../feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md)
+Catalog: [feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md](../feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md)
 
 ---
 
@@ -457,7 +457,25 @@ Desired user-visible outcome: Names the source library, finds BWBR0002629 in its
 
 #### Test Execution
 Feature file: [TAX-003](offline-routing/source-lookup.md)
-Catalog: [feature-catalog/external-source-library.md](../feature-catalog/bookkeeping-and-migration/external-source-library.md)
+Catalog: [feature-catalog/bookkeeping-and-migration/external-source-library.md](../feature-catalog/bookkeeping-and-migration/external-source-library.md)
+
+---
+
+### SRC-PDF-01 | PDF source list
+
+#### Description
+Verify Route a request about the PDF-only sources to the source library and list the readable rows offline.
+
+#### Scenario Contract
+Prompt: Which PDF-only sources can you read, and how do you read one? Keep this as an offline routing check.
+
+Fixture rows: SRC-PDF-01 (en) and SRC-PDF-01-nl (nl twin).
+
+Desired user-visible outcome: Names the source library, runs the offline list, reports the pdf-needs-reader access and the text-layer limit and makes no download.
+
+#### Test Execution
+Feature file: [SRC-PDF-01](offline-routing/pdf-source-list.md)
+Catalog: [PDF source reader](../feature-catalog/reference-and-state/pdf-source-reader.md)
 
 ---
 
@@ -669,6 +687,24 @@ Feature file: [REFUSAL-001](offline-routing/tax-deliverable-filing-refusal.md)
 
 ---
 
+### FAIL-001 | Blocked answer after a failed CLI read
+
+#### Description
+Verify that an exhausted CLI read stops on the blocked answer, names the missing capability and keeps each retry with its documented owner.
+
+#### Scenario Contract
+Prompt: A required Moneybird contacts read is rate limited and stops after three attempts. What does the answer say and what may be retried? Keep this as an offline routing check.
+
+Fixture rows: cli-read-exhausted-blocked (en).
+
+Desired user-visible outcome: Answers blocked, names the missing contacts read, keeps the Jortt 429 retries with jortt-cli, keeps the bounded Moneybird GET loop and the one authorized reissue, repeats no non-GET call and takes no value from memory.
+
+#### Test Execution
+Feature file: [FAIL-001](offline-routing/cli-failure-blocked.md)
+Catalog: [feature-catalog/bookkeeping-and-migration/api-tool-handoff.md](../feature-catalog/bookkeeping-and-migration/api-tool-handoff.md)
+
+---
+
 ## 8. AUTOMATED TEST CROSS-REFERENCE
 
 | Test Module | Coverage | Playbook Overlap |
@@ -682,6 +718,9 @@ Feature file: [REFUSAL-001](offline-routing/tax-deliverable-filing-refusal.md)
 | sk-moneybird-accountant/scripts/regression-trailer-test.sh | Proves the gate file trailer check on fixture repositories, including a deleted covering test, a valid trailer and an invalid trailer | Every scenario whose source sits in a gate file |
 | sk-moneybird-accountant/scripts/source-library-test.sh | Proves the source index builder on a fixture and checks the real index, the link check against a fixture server and the trace on live, dead and unindexed URLs | TAX-003, STATE-002 |
 | sk-moneybird-accountant/scripts/hostile-invoice-set-test.sh | Proves the case set shape and the score thresholds on the real set and on seeded fixtures | HARD-001 |
+| sk-moneybird-accountant/scripts/cli-failure-handoff-test.sh | Proves the Jortt 429 exhaustion, the three-attempt Moneybird GET bound, the one authorized MIGRATION reissue, the no-non-GET-repeat rule and the blocked answer contract offline with a fake curl and the guard stub | API-001, FAIL-001 |
+| sk-moneybird-accountant/scripts/source-to-target-handoff-test.sh | Builds a synthetic source manifest, mapping and WRITE_INTENT chain and proves a changed manifest hash, mapping or payload digest fails before a fake call marker | API-001, MIG-007 |
+| sk-moneybird-accountant/scripts/check-ci-suites-test.sh | Proves the workflow run-line checker on fixture repositories, including a suite with no run line, a removed run line and a path in a step name only | All offline scenarios |
 
 No runtime test calls an accounting service. The scenarios remain manual routing checks.
 
@@ -722,4 +761,6 @@ No runtime test calls an accounting service. The scenarios remain manual routing
 | PACK-001 | The yearly overview pack | bookkeeping-and-migration | [PACK-001](offline-routing/yearly-overview-pack.md) | [yearly overview preparation](../feature-catalog/bookkeeping-and-migration/yearly-overview-preparation.md) |
 | PACK-002 | The income tax return pack | bookkeeping-and-migration | [PACK-002](offline-routing/income-tax-return-pack.md) | [income tax return preparation](../feature-catalog/bookkeeping-and-migration/income-tax-return-preparation.md) |
 | REFUSAL-001 | Filing, submitting, paying and period locking stay refused | bookkeeping-and-migration | [REFUSAL-001](offline-routing/tax-deliverable-filing-refusal.md) | [operator tax boundary](../feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md) |
+| SRC-PDF-01 | The PDF source list | reference-and-state | [SRC-PDF-01](offline-routing/pdf-source-list.md) | [PDF source reader](../feature-catalog/reference-and-state/pdf-source-reader.md) |
+| FAIL-001 | CLI tool handoff | bookkeeping-and-migration | [FAIL-001](offline-routing/cli-failure-blocked.md) | [CLI tool handoff](../feature-catalog/bookkeeping-and-migration/api-tool-handoff.md) |
 

@@ -14,7 +14,8 @@
 # a download, so this suite proves the refusals beside the read paths.
 # WHY: a stub pdftotext on a temp PATH proves the argument order and the page
 # range without poppler, and a loopback server proves the download reaches the
-# stub. The real-tool case runs only when poppler is installed.
+# stub. The real-tool cases run only when poppler is installed, and without it
+# they print SKIP and are counted apart from the passes, never as passes.
 # WHY: the tiny PDF fixture is generated at run time, because a committed xref
 # table holds a ten-digit offset run that the privacy gate refuses.
 # WHY: the suite inspects $? after commands that are expected to fail, so -e stays off.
@@ -61,6 +62,7 @@ SERVER_PID=""
 STUB_BIN="$TMP_ROOT/stub-bin"
 STUB_LOG="$TMP_ROOT/stub.log"
 EMPTY_BIN="$TMP_ROOT/empty-bin"
+QUIET_BIN="$TMP_ROOT/quiet-bin"
 
 # Stop the fixture server and remove the temp root on exit
 # shellcheck disable=SC2329  # the EXIT trap calls it
@@ -81,6 +83,7 @@ trap cleanup EXIT
 
 passed=0
 failed=0
+skipped=0
 
 # Record a passing check and print its report line
 # Args:
@@ -96,6 +99,16 @@ pass() {
 fail() {
     failed=$((failed + 1))
     printf 'FAIL %s\n' "$1"
+}
+
+# Record a skipped check and print its report line
+# WHY: a check that never ran is not a pass, so it gets its own line and its
+# own count and a suite with skips still exits 0.
+# Args:
+#   $1 - Check description
+skip() {
+    skipped=$((skipped + 1))
+    printf 'SKIP %s\n' "$1"
 }
 
 # Print a section heading before the next block of checks
@@ -142,6 +155,18 @@ run_empty_reader() {
     env PATH="$EMPTY_BIN" "$PYTHON" -I "$reader" "$@" >"$TMP_ROOT/out.txt" 2>"$TMP_ROOT/err.txt"
 }
 
+# Run the reader with a pdftotext that succeeds with no output
+# Args:
+#   $1 - Reader path
+#   $2... - Reader arguments
+# Returns:
+#   The reader exit status, with stderr in $TMP_ROOT/err.txt
+run_quiet_reader() {
+    local reader="$1"
+    shift
+    PATH="$QUIET_BIN:$PATH" "$PYTHON" -I "$reader" "$@" >"$TMP_ROOT/out.txt" 2>"$TMP_ROOT/err.txt"
+}
+
 # Write the stub pdftotext that logs its arguments and reads the PDF argument
 # Args:
 #   $1 - Directory to write the stub into
@@ -164,6 +189,22 @@ if [[ -n "$input" ]] && [[ -f "$input" ]]; then
     printf 'stub read %s bytes\n' "$(wc -c <"$input" | tr -d ' ')"
 fi
 printf 'stub pdftotext page text\n'
+SH
+    chmod +x "$bindir/pdftotext"
+}
+
+# Write a stub pdftotext that succeeds with no output, as a scanned page does
+# Args:
+#   $1 - Directory to write the stub into
+# Returns:
+#   0 when the stub is executable, 1 when a write fails
+write_empty_pdftotext() {
+    local bindir="$1"
+    mkdir -p "$bindir" || return 1
+    cat >"$bindir/pdftotext" <<'SH'
+#!/usr/bin/env bash
+# Succeed with no text, as a scanned page does.
+exit 0
 SH
     chmod +x "$bindir/pdftotext"
 }
@@ -458,6 +499,22 @@ else
     fail "the page range reaches pdftotext as -f 2 -l 3 (exit $status)"
 fi
 
+group "empty extraction"
+if write_empty_pdftotext "$QUIET_BIN"; then
+    pass "the empty pdftotext stub builds"
+else
+    fail "the empty pdftotext stub builds"
+fi
+run_quiet_reader "$READER" --file "$TMP_ROOT/local.pdf"
+status=$?
+if [[ "$status" -eq 4 ]] && [[ ! -s "$TMP_ROOT/out.txt" ]] \
+    && grep -q 'HTML page' "$TMP_ROOT/err.txt" \
+    && grep -q 'Operator' "$TMP_ROOT/err.txt"; then
+    pass "an extraction with no text exits 4 and names the fallbacks"
+else
+    fail "an extraction with no text exits 4 and names the fallbacks (exit $status)"
+fi
+
 group "fixture index and loopback"
 DOCROOT="$TMP_ROOT/docroot"
 mkdir -p "$DOCROOT"
@@ -537,12 +594,18 @@ if command -v pdftotext >/dev/null 2>&1; then
         fail "a real pdftotext honours the one-page range (exit $status)"
     fi
 else
-    pass "a real pdftotext extracts the tiny fixed PDF (noted pass, pdftotext is not on PATH)"
+    skip "a real pdftotext extracts the tiny fixed PDF (pdftotext is not on PATH)"
+    skip "a real pdftotext honours the one-page range (pdftotext is not on PATH)"
 fi
 
 # ───────────────────────────────────────────────────────────────
 # 6. SUMMARY
 # ───────────────────────────────────────────────────────────────
 
-printf '\nResult: %d passed, %d failed\n' "$passed" "$failed"
+if [[ "$skipped" -gt 0 ]]; then
+    printf '\nResult: %d passed, %d failed, %d skipped\n' "$passed" "$failed" "$skipped"
+else
+    printf '\nResult: %d passed, %d failed\n' "$passed" "$failed"
+fi
+
 [[ "$failed" -eq 0 ]]
