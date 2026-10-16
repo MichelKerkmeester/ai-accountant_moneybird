@@ -34,7 +34,7 @@ This part holds the worked examples for the employment relationship (arbeidsrela
 
 <a id="4-worked-examples"></a>
 
-**Official example: VBAR indexation from the MvT.**
+**Official example: Act on Clarification of the Assessment of Employment Relationships and Legal Presumption (Wet verduidelijking beoordeling arbeidsrelaties en rechtsvermoeden, VBAR) indexation from the MvT.**
 The MvT gives a fictitious example. Start from the unrounded base of € 35,43. A 3,75% rise in the statutory minimum wage (wettelijk minimumloon, WML) gives € 35,43 x 1,0375 = € 36,758625. Rounded to two decimals this is € 36,76. Rounded up to a whole euro this is € 37,00. A further 1,2% rise gives € 36,76 x 1,012 = € 37,20112. Rounded to two decimals this is € 37,20. Rounded up to a whole euro this is € 38,00. Source: [Kst. 36 783, nr. 3](https://zoek.officielebekendmakingen.nl/kst-36783-3.html).
 
 **Calculated example: VBAR indexation to 1 January 2026.**

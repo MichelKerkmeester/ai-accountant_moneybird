@@ -30,10 +30,10 @@ This note lists what changed for tax year 2025. Section 2 holds the changes uniq
 - From 1 January 2025 the normal rules apply to employment relationships (arbeidsrelaties), no instructions (aanwijzingen) are given and false self-employment (schijnzelfstandigheid) can lead directly to correction obligations (correctieverplichtingen) and supplementary assessments for payroll taxes (naheffingsaanslagen loonheffingen). [employment relationship](work-relationship/notes.md#5-changes)
 - The self-employed person's deduction (zelfstandigenaftrek) fell from € 3.750 in 2024 to € 2.470 in 2025. [entrepreneur's allowance](business-deductions/notes.md#5-changes)
 - The SME profit exemption (mkb-winstvrijstelling) fell from 13,31% in 2024 to 12,7% in 2025. [entrepreneur's allowance](business-deductions/notes.md#5-changes)
-- The box 1 table below state pension age (AOW) became three brackets, 35,82% up to € 38.441, 37,48% to € 76.817 and 49,50% above. [income tax](income-tax/notes.md#5-changes)
+- The box 1 table below state pension age (AOW-leeftijd) became three brackets, 35,82% up to € 38.441, 37,48% to € 76.817 and 49,50% above. [income tax](income-tax/notes.md#5-changes)
 - The tax-free allowance (heffingsvrij vermogen) rose from € 57.000 per person in 2024 to € 57.684 in 2025. [box 3](box-3/notes.md#5-changes)
 - A zero-emission car (zero-emissie auto) first admitted in 2025 gets 5% off capped at € 1.500, so 17% up to € 30.000. [costs and car](costs-and-car/notes.md#5-changes)
-- The Zvw contribution (Zvw-bijdrage) by assessment (aanslag) fell from 5,32% in 2024 to 5,26% in 2025. [Zvw](health-insurance-contribution/notes.md#5-changes)
+- The Health Insurance Act (Zorgverzekeringswet, Zvw) contribution (Zvw-bijdrage) by assessment (aanslag) fell from 5,32% in 2024 to 5,26% in 2025. [Zvw](health-insurance-contribution/notes.md#5-changes)
 
 ---
 
@@ -43,7 +43,7 @@ This note lists what changed for tax year 2025. Section 2 holds the changes uniq
 | Topic | Bullets | First change |
 |---|---|---|
 | [vat.md](vat/notes.md#5-changes) | 7 | The KOR changed from the previous scheme, which tested turnover in the current... |
-| [income-tax.md](income-tax/notes.md#5-changes) | 18 | The published box 1 table for taxpayers below state pension (AOW) age changed... |
+| [income-tax.md](income-tax/notes.md#5-changes) | 18 | The published box 1 table for taxpayers below state pension age (AOW-leeftijd)... |
 | [health-insurance-contribution.md](health-insurance-contribution/notes.md#5-changes) | 13 | Zvw contribution (Zvw-bijdrage) by assessment (aanslag): 5,32% in 2024 to 5,26%... |
 | [business-deductions.md](business-deductions/notes.md#5-changes) | 9 | Self-employed person's deduction (zelfstandigenaftrek): € 3.750 in 2024 to €... |
 | [investments.md](investments/notes.md#5-changes) | 7 | KIA table, every amount moves up. The window start goes from € 2.800 to €... |

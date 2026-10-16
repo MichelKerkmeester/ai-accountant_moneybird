@@ -134,7 +134,7 @@ The VAT deduction exclusion decree (Besluit uitsluiting aftrek omzetbelasting), 
 
 ### BUA commuting bicycle exception
 
-The BUA does not exclude deduction for a commuting bicycle costing at most € 749 including VAT when the stated conditions are met. The person must not have received a bicycle in the year or two years before, and other commuting transport must not have covered at least half of their travel days. The BUA also has carve-outs for food and drink for staff, closed-group bus transport (besloten busvervoer) for commuting, and outplacement. [BUA, version applying from 23 February 2019](https://wetten.overheid.nl/BWBR0002636/2019-02-23)
+The BUA does not exclude deduction for a commuting bicycle costing at most € 749 including VAT when the stated conditions are met. The person must not have received a bicycle in the year or two years before, and other commuting transport must not have covered at least half of their travel days. The BUA also has carve-outs for food and drink for staff, licensed closed-group bus transport (besloten busvervoer) for commuting, and outplacement. [BUA, version applying from 23 February 2019](https://wetten.overheid.nl/BWBR0002636/2019-02-23)
 
 ### BUA staff meals
 

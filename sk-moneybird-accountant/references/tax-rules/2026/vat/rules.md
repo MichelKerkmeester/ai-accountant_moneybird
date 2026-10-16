@@ -142,7 +142,7 @@ The BUA excludes deduction for certain staff and gift expenses, including repres
 
 ### BUA exceptions and staff meals
 
-Carve-outs include food and drink for staff, closed-group bus transport (besloten busvervoer) for commuting, qualifying commuting bicycles and outplacement. The bicycle carve-out is limited to € 749 including VAT and has conditions on prior bicycles and other travel arrangements. For meals supplied below cost plus 25%, deduction is excluded up to 9% of the difference. [BUA, version in force from 23 February 2019](https://wetten.overheid.nl/BWBR0002636/2019-02-23)
+Carve-outs include food and drink for staff, licensed closed-group bus transport (besloten busvervoer) for commuting, qualifying commuting bicycles and outplacement. The bicycle carve-out is limited to € 749 including VAT and has conditions on prior bicycles and other travel arrangements. For meals supplied below cost plus 25%, deduction is excluded up to 9% of the difference. [BUA, version in force from 23 February 2019](https://wetten.overheid.nl/BWBR0002636/2019-02-23)
 
 ### Invoicing
 

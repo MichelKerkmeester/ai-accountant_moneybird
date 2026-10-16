@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the 2025 box 1 rates, the general tax credit (algemene heffingskorting), employment tax credit (arbeidskorting), income-related combination tax credit (inkomensafhankelijke combinatiekorting) and the rate adjustment (tariefsaanpassing) for certain deductions. The 2025 rates and credit tables in the checked material are enacted. Below state pension (AOW) age, box 1 has three published brackets, and the first-bracket rate differs for people who have reached state pension age.
+This file covers the 2025 box 1 rates, the general tax credit (algemene heffingskorting), employment tax credit (arbeidskorting), income-related combination tax credit (inkomensafhankelijke combinatiekorting) and the rate adjustment (tariefsaanpassing) for certain deductions. The 2025 rates and credit tables in the checked material are enacted. Below state pension age (AOW-leeftijd), box 1 has three published brackets, and the first-bracket rate differs for people who have reached state pension age.
 
 ---
 

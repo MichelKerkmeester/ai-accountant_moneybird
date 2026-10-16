@@ -60,7 +60,7 @@ The first two rows of each file's figures table. The topic file carries the sour
 | VAT | Reduced rate | 9% for goods and services in Table I (tabel I) | enacted | Verified |
 | Income tax box 1 | Box 1 below state pension (AOW) age | 35,75% up to € 38.883 (8,10% plus 27,65%), 37,56% to € 78.426, 49,50% above. Statute fixed amounts € 3.149 and € 18.001 | enacted | Verified |
 | Income tax box 1 | Box 1 at state pension age, born on or after 1 January 1946 | 17,85% up to € 38.883, 37,56% to € 78.426, 49,50% above | enacted | Verified |
-| Zvw contribution | Income-dependent Zvw contribution (Zvw-bijdrage) by (provisional) assessment (voorlopige aanslag), rate | 4,85% | enacted | Verified |
+| Zvw contribution | Income-dependent Zvw contribution (Zvw-bijdrage) by assessment or provisional assessment (aanslag of voorlopige aanslag), rate | 4,85% | enacted | Verified |
 | Zvw contribution | Maximum contribution income (bijdrage-inkomen) per person per year | € 79.409 | enacted | Verified |
 | Entrepreneur's allowance and SME profit exemption | Hours criterion (urencriterium) | 1.225 hours | enacted | Verified |
 | Entrepreneur's allowance and SME profit exemption | Second test (tweede toets) waived, lookback | not an entrepreneur (ondernemer) in 1 or more of 2021 to 2025 | enacted | Verified |

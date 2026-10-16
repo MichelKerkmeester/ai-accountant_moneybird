@@ -52,7 +52,7 @@ The Zvw contribution (bijdrage zorgverzekeringswet) exists and is handled in the
 
 <a id="7-open-points"></a>
 
-- **Tax credits (heffingskortingen) in the year AOW age is reached:** The 2020 page states no rule or amount. The 2020 transition-year treatment is unknown and UNVERIFIED. The 2020 FISIN page or another official 2020 source stating the rule would settle it. [https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/heffingskortingen, URL not supplied in checked material]
+- **Tax credits (heffingskortingen) in the year state pension age (AOW-leeftijd) is reached:** The 2020 page states no rule or amount. The 2020 transition-year treatment is unknown and UNVERIFIED. The 2020 FISIN page or another official 2020 source stating the rule would settle it. [https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/heffingskortingen, URL not supplied in checked material]
 
 - **Old-age reserve (oudedagsreserve) maximum:** https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/winst_en_verliesrekening_en_balans gives € 9.214. The statutory baseline gives € 9.218, but art. 3.68 was not reachable in the fetched 2020 statute text. Reading the article in the 2020 version would settle the conflict. [https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/winst_en_verliesrekening_en_balans, URL not supplied in checked material], [statutory baseline](https://wetten.overheid.nl/BWBR0011353/2020-01-01)
 

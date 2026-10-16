@@ -46,7 +46,7 @@ Only the part of the total box 3 debts above € 3.200 is deductible. With a who
 
 The box 3 rate (tarief) for 2021 is 31% ([art. 2.13, law text as at 1 January 2021](https://wetten.overheid.nl/BWBR0011353/2021-01-01), [Belastingdienst, oude berekening box 3-inkomen](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen)). The rate is applied to the benefit from savings and investments (voordeel uit sparen en beleggen), whichever method produces that benefit. In 2020 the rate was 30%, so 2021 is the first year of the 31% rate ([Belastingdienst, oude berekening box 3-inkomen](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen), [art. 2.13 as at 1 January 2020](https://wetten.overheid.nl/BWBR0011353/2020-01-01)).
 
-### 3.4 Return class percentages (rendementsklasse percentages)
+### 3.4 Return class percentages (rendementsklassen)
 
 Art. 5.2 lid 1 splits the fictitious return into two return classes (rendementsklassen), class I (klasse I) for savings at 0,03% and class II (klasse II) for investments at 5,69% ([art. 5.2 lid 1 as at 1 January 2021](https://wetten.overheid.nl/BWBR0011353/2021-01-01), [Belastingdienst, oude berekening box 3-inkomen](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen)). The two percentages are not applied per asset in this method. They are mixed per band, as sections 3.5 to 3.7 show.
 

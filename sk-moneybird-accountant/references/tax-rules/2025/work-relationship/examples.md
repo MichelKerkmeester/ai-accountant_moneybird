@@ -71,7 +71,7 @@ Source: [Handhavingsplan arbeidsrelaties, tranche 2025](https://download.belasti
 Invented case: the Dutch Tax and Customs Administration corrects a client over 2025 and the correction is € 10.000 in payroll taxes (loonheffingen) for the qualification of an employment relationship (arbeidsrelatie, dienstbetrekking).
 
 1. Default fine (verzuimboete) for the qualification: € 0.
-2. Penalty (vergrijpboete) for gross negligence (grove schuld) or intent for the qualification over 2025: € 0.
+2. Penalty (vergrijpboete) for gross negligence (grove schuld) or intent (opzet) for the qualification over 2025: € 0.
 3. The correction itself stands: € 10.000 in the supplementary assessment for payroll taxes (naheffingsaanslag loonheffingen).
 
 So the amount payable for this invented correction is € 10.000, without a qualification fine. From 1 January 2026 penalties for gross negligence or intent are possible under the normal rules, also for corrections over 2026. Sources: [Handhavingsplan arbeidsrelaties, tranche 2025](https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z52fd.pdf) and [Belastingdienst, handhaving](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving).

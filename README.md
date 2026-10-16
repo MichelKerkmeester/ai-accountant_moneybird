@@ -212,6 +212,7 @@ The doctors are offline by default. The Jortt tests check the CLI contract again
 | `cli-moneybird/scripts/exit-code-parity.sh` | The guard exit codes against the exit table, the troubleshooting rows and the skill keywords, in both directions |
 | `sk-moneybird-accountant/scripts/check-route-table.py` | The task-type route table with its marked read sets, plus the skill word check, the split-topic manifest and the carry-forward outline check |
 | `sk-moneybird-accountant/scripts/check-fragments.py` | Every relative link and section anchor in the skill family |
+| `sk-moneybird-accountant/scripts/check-english-first.py` | English first wording: every Dutch term has an English lead, every first use in a section carries its Dutch label and every label is a glossary row |
 | `sk-moneybird-accountant/scripts/build-reference-index.py --check`, `token-baseline.py --check` and `build-source-library.py --check` | The generated reference index, the pinned token baseline and the source library |
 | `sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode resolve` and `--mode replay` | The routing gold rows for every task type |
 | The offline suite set under `sk-moneybird-accountant/scripts/` | The route table, route replay, reference index, regression trailer, session context, source library, token canary, write contract, hardening matrix, hostile invoice set, evals and fragment checks |

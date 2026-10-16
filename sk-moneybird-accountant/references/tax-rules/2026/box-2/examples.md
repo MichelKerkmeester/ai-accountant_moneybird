@@ -64,7 +64,7 @@ This part holds the worked examples for the Box 2 and substantial interest (aanm
 
 **Calculated example 11, partner division.** Two fiscal partners have total box 2 income of € 120.000 on invented facts and choose a 50/50 division. Each share is € 60.000. Each is taxed in his own first bracket: € 60.000 × 24,5% = € 14.700,00 for each, in total € 29.400,00. FISIN 2026 allows any division as long as the total is 100%.
 
-**Calculated example 12, customary salary (gebruikelijk loon).** The comparable wage (vergelijkbaar loon) is € 50.000, the highest wage of the employees of the body or connected bodies is € 62.000, and the fixed amount is € 58.000, all invented facts. The highest of the three is € 62.000, so that is the minimum wage (minimumloon).
+**Calculated example 12, customary salary (gebruikelijk loon).** The comparable wage (vergelijkbaar loon) is € 50.000, the highest wage of the employees of the body or connected bodies is € 62.000, and the fixed amount is € 58.000, all invented facts. The highest of the three is € 62.000, so that is the minimum salary under the customary-salary test.
 
 **Calculated example 13, customary salary threshold.** The wage for the work for the body and connected bodies is € 4.500 on invented facts. That is not more than € 5.000, so the customary salary rule does not apply. If two companies pay € 3.000 and € 2.500, the total is € 5.500, which is more than € 5.000, so the rule does apply, because the threshold is tested on the total and "niet per onderneming".
 

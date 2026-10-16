@@ -35,7 +35,7 @@ This part holds the changes, records, open points and related resources for the 
 <a id="5-changes"></a>
 
 - Self-employed person's deduction (zelfstandigenaftrek): € 6.310 in 2022 to € 5.030 in 2023 ([2022](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01)).
-- Self-employed person's deduction at state pension age (AOW age): € 3.155 in 2022 to € 2.515 in 2023 ([FISIN 2022](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek), [FISIN 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek)).
+- Self-employed person's deduction at state pension age (AOW-leeftijd): € 3.155 in 2022 to € 2.515 in 2023 ([FISIN 2022](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek), [FISIN 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek)).
 - Research and development work deduction (aftrek speur- en ontwikkelingswerk): € 13.360 in 2022 to € 14.202 in 2023 ([2022](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01)).
 - S&O starter increase: € 6.684 in 2022 to € 7.106 in 2023 ([FISIN 2022](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek), [FISIN 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek)).
 - Rate adjustment (tariefsaanpassing): 9,5% above € 69.398 in 2022 to 12,57% above € 73.031 in 2023 ([2022](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01)).

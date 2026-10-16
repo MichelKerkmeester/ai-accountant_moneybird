@@ -51,7 +51,7 @@ This part holds the worked examples for the Entrepreneur's allowance (ondernemer
 
 ### Starter with a profit of € 60.000
 
-**Calculated example.** Inputs: a sole trader below the AOW age at the start of 2024, who meets the hours criterion, was not an entrepreneur in 1 or more of 2019 to 2023, had the self-employed person's deduction applied at most twice in that period, and has no other income. Profit € 60.000.
+**Calculated example.** Inputs: a sole trader below the state pension age (AOW-leeftijd) at the start of 2024, who meets the hours criterion, was not an entrepreneur in 1 or more of 2019 to 2023, had the self-employed person's deduction applied at most twice in that period, and has no other income. Profit € 60.000.
 
 - Self-employed person's deduction: € 3.750.
 - Starter's deduction: € 2.123.

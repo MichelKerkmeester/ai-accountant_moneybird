@@ -29,7 +29,7 @@ This note lists what changed for tax year 2021. Section 2 holds the changes uniq
 - From 1 July 2021 the e-commerce package introduced the € 10.000 EU distance-sales threshold for qualifying goods and digital services together. [VAT](vat/notes.md#5-changes)
 - The self-employed person's deduction (zelfstandigenaftrek) fell from € 7.030 in 2020 to € 6.670 in 2021. [entrepreneur's allowance](business-deductions/notes.md#5-changes)
 - The rate adjustment (tariefsaanpassing) rose from 3,5% above € 68.507 in 2020 to 6,5% above € 68.507 in 2021. [entrepreneur's allowance](business-deductions/notes.md#5-changes)
-- The combined first rate for those below state pension age (AOW) fell from 37,35% to 37,10% and the first statutory boundary moved from € 34.712 to € 35.129. [income tax](income-tax/notes.md#5-changes)
+- The combined first rate for those below state pension age (AOW-leeftijd) fell from 37,35% to 37,10% and the first statutory boundary moved from € 34.712 to € 35.129. [income tax](income-tax/notes.md#5-changes)
 - The Zvw contribution (bijdrage zorgverzekeringswet) by assessment (aanslag) rose from 5,45% in 2020 to 5,75% in 2021. [zvw](health-insurance-contribution/notes.md#5-changes)
 - The tax-free allowance (heffingsvrij vermogen) rose from € 30.846 per person in 2020 to € 50.000 in 2021. [box-3](box-3/notes.md#5-changes)
 - The zero-emission reduction for a car first admitted in 2021 is 10% off capped at € 4.000, so 12% up to € 40.000. [costs and car](costs-and-car/notes.md#5-changes)

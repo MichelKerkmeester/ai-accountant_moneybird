@@ -35,7 +35,7 @@ This part holds the changes, records, open points and related resources for the 
 <a id="5-changes"></a>
 
 - Self-employed person's deduction (zelfstandigenaftrek): € 5.030 in 2023 to € 3.750 in 2024 (https://wetten.overheid.nl/BWBR0011353/2023-01-01 and https://wetten.overheid.nl/BWBR0011353/2024-01-01).
-- Self-employed person's deduction at AOW age: € 2.515 in 2023 to € 1.875 in 2024 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek and https://wetten.overheid.nl/BWBR0011353/2024-01-01).
+- Self-employed person's deduction at state pension age (AOW-leeftijd): € 2.515 in 2023 to € 1.875 in 2024 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek and https://wetten.overheid.nl/BWBR0011353/2024-01-01).
 - Deduction for research and development work (aftrek voor speur- en ontwikkelingswerk): € 14.202 in 2023 to € 15.551 in 2024 (https://wetten.overheid.nl/BWBR0011353/2023-01-01 and https://wetten.overheid.nl/BWBR0011353/2024-01-01).
 - R&D (S&O) starter increase: € 7.106 in 2023 to € 7.781 in 2024 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek).
 - SME profit exemption (MKB-winstvrijstelling): 14% in 2023 to 13,31% in 2024 (https://wetten.overheid.nl/BWBR0011353/2023-01-01 and https://wetten.overheid.nl/BWBR0011353/2024-01-01).

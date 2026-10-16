@@ -40,7 +40,7 @@ This part holds the worked examples for the Income tax (inkomstenbelasting) box 
 
 ### Box 1 rates for a full year at AOW age
 
-**Calculated example.** Assume taxable box 1 income of € 40.000 for someone born on or after 1 January 1946 who is at AOW age for the full year. The first band is € 34.712 × 19,45%, which is € 6.751,484. The remaining € 5.288 is taxed at 37,35%, which is € 1.975,068. The total before credits is € 6.751,484 plus € 1.975,068, or € 8.726,552, approximately € 8.726,55. [https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/belastingberekening, URL not supplied in checked material]
+**Calculated example.** Assume taxable box 1 income of € 40.000 for someone born on or after 1 January 1946 who is at state pension age (AOW-leeftijd) for the full year. The first band is € 34.712 × 19,45%, which is € 6.751,484. The remaining € 5.288 is taxed at 37,35%, which is € 1.975,068. The total before credits is € 6.751,484 plus € 1.975,068, or € 8.726,552, approximately € 8.726,55. [https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/belastingberekening, URL not supplied in checked material]
 
 ### First-bracket rate in the year AOW age is reached
 

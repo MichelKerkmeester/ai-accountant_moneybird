@@ -58,7 +58,7 @@ Band 2 covers the part of the tax base of savings and investments from € 72.79
 ### Band 3
 Band 3 covers the part of the tax base of savings and investments above € 1.005.572. The page writes above € 1.005.573. In this band 0% is return class I and 100% is return class II. The return is 5,28%. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen.
 
-### Restoration of rights category percentages (rechtsherstel category percentages)
+### Restoration of rights category percentages
 For the Restoration of Rights Act (Wet rechtsherstel) recalculation the category percentages for 2020 are bank 0,04%, other assets 5,28%, and debts 2,74%. These are the same figures in the law table. Art. 3 of the Restoration of Rights Act: the benefit (voordeel) is the effective rate of return (effectieve tarief, rendementspercentage) times the tax base of savings and investments. The effective percentage is the return (rendement) divided by the return base (rendementsgrondslag). The return is column I times bank balances (banktegoeden) plus column II times other assets (overige bezittingen) minus column III times debts at 1 January. Art. 3 lid 4: whole-year partners use the joint figures. For 2020 the percentages are as stated. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/met-welke-percentages-is-het-fictief-rendement-berekend and https://zoek.officielebekendmakingen.nl/stb-2022-533.html.
 
 ### Restoration of rights scope 2020

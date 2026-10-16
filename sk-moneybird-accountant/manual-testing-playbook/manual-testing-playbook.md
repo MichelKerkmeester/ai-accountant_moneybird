@@ -721,6 +721,7 @@ Catalog: [feature-catalog/bookkeeping-and-migration/api-tool-handoff.md](../feat
 | sk-moneybird-accountant/scripts/cli-failure-handoff-test.sh | Proves the Jortt 429 exhaustion, the three-attempt Moneybird GET bound, the one authorized MIGRATION reissue, the no-non-GET-repeat rule and the blocked answer contract offline with a fake curl and the guard stub | API-001, FAIL-001 |
 | sk-moneybird-accountant/scripts/source-to-target-handoff-test.sh | Builds a synthetic source manifest, mapping and WRITE_INTENT chain and proves a changed manifest hash, mapping or payload digest fails before a fake call marker | API-001, MIG-007 |
 | sk-moneybird-accountant/scripts/check-ci-suites-test.sh | Proves the workflow run-line checker on fixture repositories, including a suite with no run line, a removed run line and a path in a step name only | All offline scenarios |
+| sk-moneybird-accountant/scripts/check-english-first-test.sh | Proves the English first checker on fixtures for every rule, every data mask including the Prompt lines and Exact Prompt cells, the exceptions file and byte stability, then runs it on the real corpus | All offline scenarios, whose prompts stay byte-identical as test data |
 
 No runtime test calls an accounting service. The scenarios remain manual routing checks.
 

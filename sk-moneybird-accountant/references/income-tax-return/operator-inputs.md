@@ -43,7 +43,7 @@ The disposition names what closes the row. `supplied` closes on an Operator hand
 | Gifts and care costs | The Operator proofs of payment (betalingsbewijzen) | `unresolved` | The Operator supplies the payments and the eligibility facts. |
 | Annuity premiums (lijfrentepremies) and disability insurance (arbeidsongeschiktheidsverzekering) (AOV) | The Operator annual statement (jaaropgaaf) and the premium statements | `unresolved` | The Operator supplies the statements. |
 | Dividend | The Operator dividend statements | `unresolved` | The Operator supplies the statements. |
-| Provisional assessments (voorlopige aanslagen) for income tax (inkomstenbelasting) and Zvw | The Operator and the Dutch Tax and Customs Administration (Belastingdienst) decisions | `unresolved` | The Operator supplies the decisions so the paid or received amounts settle in the return. |
+| Provisional assessments (voorlopige aanslagen) for income tax (inkomstenbelasting) and Health Insurance Act (Zorgverzekeringswet, Zvw) | The Operator and the Dutch Tax and Customs Administration (Belastingdienst) decisions | `unresolved` | The Operator supplies the decisions so the paid or received amounts settle in the return. |
 | DigiD of a child | The official checklist | `not applicable` | The official checklist asks for no DigiD of a child, so this row cannot apply. |
 
 ---

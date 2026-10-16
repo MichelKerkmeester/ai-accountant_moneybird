@@ -244,6 +244,7 @@ A note of `plain` marks an everyday word or phrase whose Dutch adds nothing. A n
 | in-use date | datum ingebruikname |  |
 | includes private use | bevat privégebruik |  |
 | including or excluding VAT | inclusief of exclusief btw | plain |
+| income tax assessment or provisional income tax assessment | aanslag of voorlopige aanslag inkomstenbelasting |  |
 | income | inkomen |  |
 | income | inkomsten |  |
 | income cap on the contribution base | aftoppingsgrens premiegrondslag |  |
@@ -430,11 +431,9 @@ A note of `plain` marks an everyday word or phrase whose Dutch adds nothing. A n
 | requesting an invitation to file a return | verzoek om uitnodiging tot het doen van aangifte | plain |
 | restoration | herstel |  |
 | Restoration of Rights Act | wet rechtsherstel | official name |
-| restoration of rights category percentages | rechtsherstel category percentages |  |
 | result | resultaat |  |
 | return class I | rendementsklasse i |  |
 | return class II | klasse ii |  |
-| return class percentages | rendementsklasse percentages |  |
 | return classes I and II | rendementsklassen i and ii |  |
 | reverse-charged VAT | verlegde btw |  |
 | royal decree | koninklijk besluit |  |

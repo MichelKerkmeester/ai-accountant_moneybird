@@ -36,7 +36,7 @@ This part holds the worked examples for the Pension, annuity and disability insu
 
 ### Calculated example. Annual allowance (jaarruimte) 2024 with profits from business activities (winst uit onderneming) of € 60.000
 
-Inputs. A sole trader has a profit from business activities of € 60.000 in 2023, no pension accrual and no FOR. The taxpayer has not yet reached AOW age plus five years at the start of 2024.
+Inputs. A sole trader has a profit from business activities of € 60.000 in 2023, no pension accrual and no FOR. The taxpayer has not yet reached state pension age (AOW-leeftijd) plus five years at the start of 2024.
 
 Step 1. The income part is min(€ 60.000, € 137.800) = € 60.000. https://wetten.overheid.nl/BWBR0011353/2024-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127
 

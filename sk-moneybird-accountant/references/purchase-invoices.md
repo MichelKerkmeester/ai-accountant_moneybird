@@ -64,10 +64,10 @@ Answer these questions before opening the booking form. They decide the case in 
 | EU supplier, goods | 0% VAT | Within the EU (Binnen EU) | Amount and self-calculated Dutch VAT in rubriek 4b | Rubriek 5b, same return |
 | EU supplier, service | "btw verlegd" | Within the EU (Binnen EU) | Amount and self-calculated Dutch VAT in rubriek 4b | Rubriek 5b, same return |
 | Non-EU supplier, service | No VAT | Outside the EU (Buiten EU) | Amount and self-calculated Dutch VAT in rubriek 4a | Same return |
-| Non-EU company with an EU VAT number (omzetbelastingnummer) | No VAT | Within the EU (Binnen EU) | As an EU supplier | As an EU supplier |
+| Non-EU company with an EU VAT identification number (btw-identificatienummer) | No VAT | Within the EU (Binnen EU) | As an EU supplier | As an EU supplier |
 | Foreign VAT charged | The supplier's own VAT | No VAT (Geen btw) | Not in the Dutch return | Only by a refund request abroad, section 8 |
 | Small businesses scheme (kleineondernemersregeling) or exempt business, reverse charge | 0% or "btw verlegd" | A small businesses scheme or exempt reverse-charge rate | Rubriek 4a or 4b only | None |
-| Domestic reverse charge | "btw verlegd", Dutch supplier | Reverse charge 21% domestic (Btw verlegd 21%, binnenland) or Reverse charge 9% domestic (Btw verlegd 9%, binnenland) | Rubriek 2a | Rubriek 5b, same return |
+| Domestic reverse charge | "btw verlegd", Dutch supplier | Reverse charge 21% domestic (`Btw verlegd 21% (binnenland)`) or Reverse charge 9% domestic (`Btw verlegd 9% (binnenland)`) | Rubriek 2a | Rubriek 5b, same return |
 | Import VAT billed by Customs or a carrier | Only a VAT amount | Two lines: the base at the Dutch rate, minus the base at No VAT (Geen btw) | Input VAT in rubriek 5b | Yes, when used for taxed turnover |
 | Import under an Article 23 permit (Vergunning artikel 23) | No VAT, VAT reported in the return | Check the rate list's VAT report (Btw-rapport) column for a rubriek 4a rate | Rubriek 4a | Rubriek 5b, same return |
 
@@ -82,7 +82,7 @@ Every case uses the same flow. Only the VAT rate (btw-tarief) per line differs.
 1. **Add the document.** Drop the file on the **Incoming (Inkomend)** tab, forward it to the administration's Moneybird email address, add it with the mobile app or receive it through Peppol. Accepted files are pdf, jpg, jpeg, png, gif, xml, heif and heic. A new document has status **New (Nieuw)** and does not count in the books or the VAT return (btw-aangifte) yet. [Moneybird: add a purchase invoice or receipt](https://helpcenter.moneybird.nl/nl/articles/207118-inkoopfactuur-of-bon-toevoegen)
 2. **Open it and check the reading.** Moneybird reads the attachment and fills the type, contact, date, amounts and invoice lines. A lightning icon marks a field read from the attachment. A yellow triangle is a warning. Without an attachment, choose "Or continue without a document (Of doorgaan zonder document)". [Moneybird: process purchase invoices and receipts](https://helpcenter.moneybird.nl/nl/articles/207134-verwerk-inkoopfacturen-en-bonnen)
 3. **Choose the type (Soort).** Pick **Purchase invoice (Inkoopfactuur)** for an invoice, with its invoice number and due date. Pick **Receipt (Bon)** for a receipt, with a reference (kenmerk) and no due date. The type can change while the status is New and no payment is linked.
-4. **Check the contact.** Moneybird matches the supplier by Chamber of Commerce (kamer van koophandel) number (kvk-nummer), VAT number (omzetbelastingnummer), IBAN or email address. Select the right contact when it is wrong or missing. For a foreign supplier, check the country and the VAT number, because they decide the case in section 3. The grey **Complete (Aanvullen)** label fills only empty contact fields.
+4. **Check the contact.** Moneybird matches the supplier by Chamber of Commerce (kamer van koophandel) number (kvk-nummer), VAT identification number (btw-identificatienummer), IBAN or email address. Select the right contact when it is wrong or missing. For a foreign supplier, check the country and the VAT identification number, because they decide the case in section 3. The grey **Complete (Aanvullen)** label fills only empty contact fields.
 5. **Check the details.** Check the invoice number or reference (kenmerk), invoice date, due date and currency. Set **Amounts are (Bedragen zijn)** to including or excluding VAT (inclusief of exclusief btw) to match how the invoice prints its amounts. Moneybird converts a foreign currency to euro for the books.
 6. **Check each line.** Open each line and check the quantity, description, period, amount, VAT rate (btw-tarief), category and project. A period over several months spreads the cost over those months.
 7. **Check the payment block.** Moneybird shows a matching bank transaction or offers to schedule a payment. Untick a wrong automatic match before saving. A document in a foreign currency has no payment block.
@@ -136,7 +136,7 @@ The supplier charges no VAT. The business calculates the Dutch VAT itself, repor
 
 1. Activate the **Within the EU (Binnen EU)** rate once under **Settings > Bookkeeping > VAT rates (Instellingen > Boekhouding > Btw-tarieven)**. Purchase rates and sales rates are separate lists. The purchase list offers Within the EU and Outside the EU at 21% and at 9%, each marked "(btw verlegd)".
 2. Follow the flow in section 4 and pick Within the EU on each line. Pick the version that matches the Dutch rate for the goods or service.
-3. Use Within the EU also for a company based outside the EU that invoices with an EU VAT number (omzetbelastingnummer).
+3. Use Within the EU also for a company based outside the EU that invoices with an EU VAT identification number (btw-identificatienummer).
 4. Set the currency when the invoice is not in euro. Moneybird converts it.
 5. The invoice shows two VAT lines that cancel out. One is the VAT owed and the other is the same amount deducted, so the net VAT on the invoice is usually zero.
 
@@ -161,7 +161,7 @@ When an intra-EU service was delivered in an earlier period than its invoice dat
 
 **The tax rule.** VAT on a service from a supplier established outside the EU is usually shifted to the Dutch business buyer, provided the buyer is established in the Netherlands or has a fixed establishment (vaste inrichting) there. Report the service in rubriek 4a. A business entitled to deduct reports the same VAT as input VAT (voorbelasting) and pays nothing on balance. [Belastingdienst: services from non-EU suppliers](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/zakendoen_buiten_de_eu/aangifte_doen_als_u_zakendoet_buiten_de_eu/aangifte_doen_als_u_diensten_afneemt_van_leveranciers_uit_niet_eu_landen)
 
-**In Moneybird.** Activate the **Outside the EU (Buiten EU)** rate under **Settings > Bookkeeping > VAT rates (Instellingen > Boekhouding > Btw-tarieven)** and pick it on each line. When the supplier has an EU VAT number, use Within the EU instead. [Moneybird: purchase invoices from abroad](https://helpcenter.moneybird.nl/nl/articles/207144-inkoopfacturen-uit-het-buitenland)
+**In Moneybird.** Activate the **Outside the EU (Buiten EU)** rate under **Settings > Bookkeeping > VAT rates (Instellingen > Boekhouding > Btw-tarieven)** and pick it on each line. When the supplier has an EU VAT identification number (btw-identificatienummer), use Within the EU instead. [Moneybird: purchase invoices from abroad](https://helpcenter.moneybird.nl/nl/articles/207144-inkoopfacturen-uit-het-buitenland)
 
 **Which return period.** The law makes the VAT on a service reverse charged under article 12, second paragraph, due when the service is performed. [Wet op de omzetbelasting 1968, art. 13](https://wetten.overheid.nl/BWBR0002629/2026-01-01)
 
@@ -176,7 +176,7 @@ Invented figures. Both assume the purchase serves taxed turnover and that the Du
 3. Rubriek 5b: input VAT 21.
 4. Net VAT effect: 21 minus 21 is 0. Cost in the profit and loss account (winst- en verliesrekening): 100.
 
-**Non-EU service.** A supplier outside the EU, with no EU VAT number, invoices an advertising service of 300 with no VAT.
+**Non-EU service.** A supplier outside the EU, with no EU VAT identification number (btw-identificatienummer), invoices an advertising service of 300 with no VAT.
 
 1. Amounts are (Bedragen zijn): excluding VAT. One line: amount 300, rate Outside the EU at 21%.
 2. Rubriek 4a: amount 300 and VAT 63.
@@ -240,7 +240,7 @@ In Moneybird's example, a VAT amount of 42 at 21% gives a base of 200. Line 1 is
 
 For some Dutch transactions, such as subcontracting in construction, the Dutch supplier invoices with "btw verlegd". The buyer reports the amount and the VAT in rubriek 2a and deducts it in rubriek 5b of the same return when used for taxed activities. VAT used for exempt activities is still reported but not deductible (niet aftrekbaar). The year's `vat.md` lists the cases under its reverse-charge rules. [Belastingdienst: deducting reverse-charged VAT](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/welke_btw_is_aftrekbaar/verlegde_btw_aftrekken)
 
-In Moneybird, activate the purchase rates **Reverse charge 21% domestic (Btw verlegd 21%, binnenland)** and **Reverse charge 9% domestic (Btw verlegd 9%, binnenland)** and pick the one for the goods or service. The invoice shows a positive and a negative VAT line, so the net VAT is usually zero. A small businesses scheme (kleineondernemersregeling) business uses the rates with KOR in the name, which show one line. [Moneybird: positive and negative VAT on reverse charge](https://helpcenter.moneybird.nl/nl/articles/207131-positief-en-negatief-btw-bedrag-bij-inkoopfactuur-met-verlegde-btw)
+In Moneybird, activate the purchase rates **Reverse charge 21% domestic (`Btw verlegd 21% (binnenland)`)** and **Reverse charge 9% domestic (`Btw verlegd 9% (binnenland)`)** and pick the one for the goods or service. The invoice shows a positive and a negative VAT line, so the net VAT is usually zero. A small businesses scheme (kleineondernemersregeling) business uses the rates with KOR in the name, which show one line. [Moneybird: positive and negative VAT on reverse charge](https://helpcenter.moneybird.nl/nl/articles/207131-positief-en-negatief-btw-bedrag-bij-inkoopfactuur-met-verlegde-btw)
 
 ---
 

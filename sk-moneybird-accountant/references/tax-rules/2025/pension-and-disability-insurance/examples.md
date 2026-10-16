@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and disability insurance (arbeidsongeschiktheidsverzekering) 2025: Examples
+# Pension (pensioen), annuity (lijfrente) and disability insurance (arbeidsongeschiktheidsverzekering) 2025: Examples
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -73,7 +73,7 @@ Source: https://wetten.overheid.nl/BWBR0011353/2025-01-01/0/Hoofdstuk3/Afdeling3
 
 ### Calculated example: temporary old-age annuity (tijdelijke oudedagslijfrente) above the cap
 
-Invented input: a temporary old-age annuity with a yearly benefit (uitkering) of € 30.000. The product runs at least five years and starts not earlier than the year of state pension (AOW) age and not later than the year of state pension age plus five.
+Invented input: a temporary old-age annuity with a yearly benefit (uitkering) of € 30.000. The product runs at least five years and starts not earlier than the year of state pension age (AOW-leeftijd) and not later than the year of state pension age plus five.
 
 Step 1: 30.000 - 26.781 = 3.219.
 

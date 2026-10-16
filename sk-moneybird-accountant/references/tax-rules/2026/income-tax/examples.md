@@ -80,7 +80,7 @@ Sources for rates and rule: https://www.belastingdienst.nl/wps/wcm/connect/bldco
 
 ### Calculated example: general tax credit (algemene heffingskorting)
 
-Assume the taxpayer is below state pension (AOW) age and the aggregate income (verzamelinkomen) is € 40.000.
+Assume the taxpayer is below state pension age (AOW-leeftijd) and the aggregate income (verzamelinkomen) is € 40.000.
 
 1. Amount above the € 29.736 phase-out point (afbouwpunt): € 40.000 minus € 29.736 = € 10.264.
 2. Phase-out: € 10.264 × 0,06398 = € 656,69072, rounded to € 656,69.

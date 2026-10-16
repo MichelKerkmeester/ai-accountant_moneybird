@@ -40,7 +40,7 @@ The published combined rate is 36,97% up to € 75.518, then 49,50%. In the stat
 
 ### Box 1 at AOW age, born on or after 1 January 1946
 
-For a taxpayer at AOW age who was born on or after 1 January 1946, the first-bracket rate is 19,07% up to € 38.098. The next rate is 36,97% up to € 75.518, followed by 49,50%. The lower first-bracket rate reflects that the AOW premium is no longer due once AOW age is reached. (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/belastingberekening, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/sociale_verzekeringen/premies_volks_en_werknemersverzekeringen/volksverzekeringen/hoeveel_moet_u_betalen)
+For a taxpayer at state pension age (AOW-leeftijd) who was born on or after 1 January 1946, the first-bracket rate is 19,07% up to € 38.098. The next rate is 36,97% up to € 75.518, followed by 49,50%. The lower first-bracket rate reflects that the AOW premium is no longer due once AOW age is reached. (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/belastingberekening, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/sociale_verzekeringen/premies_volks_en_werknemersverzekeringen/volksverzekeringen/hoeveel_moet_u_betalen)
 
 ### Box 1 at AOW age, born before 1 January 1946
 

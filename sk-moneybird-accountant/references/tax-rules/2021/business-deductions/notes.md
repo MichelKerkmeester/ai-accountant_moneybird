@@ -35,7 +35,7 @@ This part holds the changes, records, open points and related resources for the 
 <a id="5-changes"></a>
 
 - Self-employed person's deduction (zelfstandigenaftrek): € 7.030 in 2020 to € 6.670 in 2021. Sources: https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://wetten.overheid.nl/BWBR0011353/2021-01-01.
-- Self-employed person's deduction at AOW age: € 3.515 in 2020 to € 3.335 in 2021. Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/ondernemersaftrek_en_investeringsaftrek.
+- Self-employed person's deduction at state pension age (AOW-leeftijd): € 3.515 in 2020 to € 3.335 in 2021. Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/ondernemersaftrek_en_investeringsaftrek.
 - Deduction for research and development work (aftrek voor speur- en ontwikkelingswerk): € 12.980 in 2020 to € 13.188 in 2021. Sources: https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://wetten.overheid.nl/BWBR0011353/2021-01-01.
 - S&O starter increase: € 6.494 in 2020 to € 6.598 in 2021. Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/ondernemersaftrek_en_investeringsaftrek.
 - Old-age reserve (oudedagsreserve) addition maximum: € 9.218 in 2020 to € 9.395 in 2021. Sources: https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://wetten.overheid.nl/BWBR0011353/2021-01-01. FISIN 2020 printed € 9.214 twice, the statute amount € 9.218 prevails for 2020.

@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and AOV 2023: Figures
+# Pension (pensioen), annuity (lijfrente) and disability insurance (arbeidsongeschiktheidsverzekering, AOV) 2023: Figures
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the annuity (lijfrente) rules for a sole trader in 2023, the annual allowance (jaarruimte) and catch-up allowance (reserveringsruimte), the annuity product conditions and their deadlines, the end of the old-age reserve (oudedagsreserve, FOR) addition (toevoeging), the profit from business discontinuation (stakingswinst) conversion and the deductibility of disability insurance (AOV, arbeidsongeschiktheidsverzekering) premiums. 2023 is the year the Future Pensions Act (Wet toekomst pensioenen, Wtp) widened the annuity rules. The text of art. 3.127 as valid from 1 July 2023 gives a 30% annual allowance percentage, a ten-year look-back, an age window of the state pension (AOW) age plus five years and a flat catch-up allowance maximum of € 38.000, and the Dutch Tax and Customs Administration (Belastingdienst) states that this widening applies retroactively from 1 January 2023, so these values hold for the whole year even though the text valid on 1 January 2023 still reads 13,3%. Every value in section 2 is enacted law, so no bill or announcement affects the 2023 return.
+This file covers the annuity (lijfrente) rules for a sole trader in 2023, the annual allowance (jaarruimte) and catch-up allowance (reserveringsruimte), the annuity product conditions and their deadlines, the end of the old-age reserve (oudedagsreserve, FOR) addition (toevoeging), the profit from business discontinuation (stakingswinst) conversion and the deductibility of disability insurance (AOV, arbeidsongeschiktheidsverzekering) premiums. 2023 is the year the Future Pensions Act (Wet toekomst pensioenen, Wtp) widened the annuity rules. The text of art. 3.127 as valid from 1 July 2023 gives a 30% annual allowance percentage, a ten-year look-back, an age window of the state pension age (AOW-leeftijd) plus five years and a flat catch-up allowance maximum of € 38.000, and the Dutch Tax and Customs Administration (Belastingdienst) states that this widening applies retroactively from 1 January 2023, so these values hold for the whole year even though the text valid on 1 January 2023 still reads 13,3%. Every value in section 2 is enacted law, so no bill or announcement affects the 2023 return.
 
 ---
 

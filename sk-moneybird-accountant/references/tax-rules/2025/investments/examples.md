@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Investment deduction (investeringsaftrek) and depreciation 2025: Examples
+# Investment deduction (investeringsaftrek) and depreciation (afschrijving) 2025: Examples
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

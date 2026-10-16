@@ -152,7 +152,7 @@ The entrepreneur had to correct as soon as possible, before knowing or reasonabl
 
 ### Supplementary return penalty limitation
 
-The power to impose a penalty (vergrijpboete) for gross negligence (grove schuld) or intent lapsed 5 years after the end of the year. [UBOB, article 15](https://wetten.overheid.nl/BWBR0002633/2020-01-01).
+The power to impose a penalty (vergrijpboete) for gross negligence (grove schuld) or intent (opzet) lapsed 5 years after the end of the year. [UBOB, article 15](https://wetten.overheid.nl/BWBR0002633/2020-01-01).
 
 ### Reverse charge for specified electronics
 

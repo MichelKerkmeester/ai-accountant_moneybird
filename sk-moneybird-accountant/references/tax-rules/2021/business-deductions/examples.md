@@ -77,7 +77,7 @@ Calculated example from the section 2 figures.
 ### Calculated example 6: Starter's deduction for disabled entrepreneurs (startersaftrek bij arbeidsongeschiktheid)
 Calculated example from the section 2 figures.
 
-- Profit: € 5.000. Reduced hours criterion (verlaagd urencriterium) is met, so the regular hours criterion is not met. First use. Right to a disability benefit (arbeidsongeschiktheidsuitkering). Not AOW age at the start of the year. Not an entrepreneur in one or more of the five preceding years.
+- Profit: € 5.000. Reduced hours criterion (verlaagd urencriterium) is met, so the regular hours criterion is not met. First use. Right to a disability benefit (arbeidsongeschiktheidsuitkering). Not state pension age (AOW-leeftijd) at the start of the year. Not an entrepreneur in one or more of the five preceding years.
 - Starter's deduction for disabled entrepreneurs: € 12.000, capped at the profit of € 5.000, so € 5.000.
 - Profit after entrepreneur's allowance: € 5.000 - € 5.000 = € 0.
 - SME profit exemption: 14% of € 0 = € 0,00.

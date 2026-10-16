@@ -35,7 +35,7 @@ This part holds the worked examples for the pension (pensioen), annuity (lijfren
 
 <a id="4-worked-examples"></a>
 
-All inputs in the calculated examples are invented and use round amounts. Every statutory amount used comes from section 2 or from the 2021 figures in section 5. The annual allowance (jaarruimte) examples assume a pension shortfall (pensioentekort), no net pension (nettopensioen) premiums (nettopensioenpremies) and a taxpayer who has not yet reached the state pension age (AOW age) at the start of 2022. Products are shown before rounding, and each rounding step says rounded or rounded down.
+All inputs in the calculated examples are invented and use round amounts. Every statutory amount used comes from section 2 or from the 2021 figures in section 5. The annual allowance (jaarruimte) examples assume a pension shortfall (pensioentekort), no net pension (nettopensioen) premiums (nettopensioenpremies) and a taxpayer who has not yet reached the state pension age (AOW-leeftijd) at the start of 2022. Products are shown before rounding, and each rounding step says rounded or rounded down.
 
 **Calculated example: annual allowance with a profit of € 60.000,00 (no pension accrual, no FOR addition).**
 

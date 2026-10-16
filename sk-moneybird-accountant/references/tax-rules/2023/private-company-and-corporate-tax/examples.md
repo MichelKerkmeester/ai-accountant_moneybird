@@ -105,7 +105,7 @@ Answer: at least € 70.000,00 in case A, € 40.000,00 in case B, no rule in ca
 ### Calculated example: Zvw for a director and substantial shareholder (directeur-grootaandeelhouder, DGA)
 An uninsured director and substantial shareholder with a salary of € 80.000,00.
 Step 1: maximum contribution income (bijdrage-inkomen) = € 66.956,00.
-Step 2: Zvw contribution (bijdrage Zvw) = 5,43% x € 66.956,00 = € 3.635,71 rounded.
+Step 2: Health Insurance Act (Zorgverzekeringswet, Zvw) contribution (bijdrage Zvw) = 5,43% x € 66.956,00 = € 3.635,71 rounded.
 Step 3: insured director and substantial shareholder (verzekerde dga) employer levy (werkgeversheffing) Zvw = 6,68% x € 66.956,00 = € 4.472,66 rounded.
 Answer: € 3.635,71 for the uninsured director and substantial shareholder, or € 4.472,66 for the insured director and substantial shareholder.
 

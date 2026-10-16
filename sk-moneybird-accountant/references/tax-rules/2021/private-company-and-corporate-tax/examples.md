@@ -116,7 +116,7 @@ Check: without the fiscal unity the subsidiary would pay € 200.000 × 0,15 = �
 
 ### Calculated example: customary salary (gebruikelijk loon)
 
-Input: a DGA works for his BV. The wage from the most comparable employment relationship (loon uit de meest vergelijkbare dienstbetrekking) is € 80.000. The highest wage of the employees of the body and connected bodies is € 55.000. The standard amount (normbedrag) is € 47.000.
+Input: a director and substantial shareholder (directeur-grootaandeelhouder, DGA) works for his BV. The wage from the most comparable employment relationship (loon uit de meest vergelijkbare dienstbetrekking) is € 80.000. The highest wage of the employees of the body and connected bodies is € 55.000. The standard amount (normbedrag) is € 47.000.
 
 Step 1: 75% of € 80.000 = € 60.000.
 

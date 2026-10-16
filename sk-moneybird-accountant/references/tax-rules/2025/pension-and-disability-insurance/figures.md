@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and disability insurance (arbeidsongeschiktheidsverzekering) 2025: Figures
+# Pension (pensioen), annuity (lijfrente) and disability insurance (arbeidsongeschiktheidsverzekering) 2025: Figures
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the annual allowance (jaarruimte), the catch-up allowance (catch-up room for unused annual allowance, reserveringsruimte), annuity (lijfrente) products and their conditions, converting profit on discontinuation (stakingswinst) into an annuity, the interaction with the old-age reserve (oudedagsreserve, FOR), the deductibility of disability insurance (arbeidsongeschiktheidsverzekering, AOV) premiums, and the proposed Basic Disability Insurance for Self-Employed Persons Act (Zelfstandigenwet) (Wet basisverzekering arbeidsongeschiktheid zelfstandigen, BAZ). The main 2025 values are a 30% annual allowance percentage, an income cap (aftoppingsgrens) of € 137.800, a franchise (offset) of € 18.475, a maximum annual allowance of € 35.798 and a catch-up allowance maximum of € 42.108. The 2025 rules for these items are enacted. The BAZ is proposed only and has no enacted law in the checked material.
+This file covers the annual allowance (jaarruimte), the catch-up allowance (catch-up room for unused annual allowance, reserveringsruimte), annuity (lijfrente) products and their conditions, converting profit on discontinuation (stakingswinst) into an annuity, the interaction with the old-age reserve (oudedagsreserve, FOR), the deductibility of disability insurance (arbeidsongeschiktheidsverzekering, AOV) premiums, and the proposed Basic Disability Insurance for Self-Employed Persons Act (Wet basisverzekering arbeidsongeschiktheid zelfstandigen, BAZ). The main 2025 values are a 30% annual allowance percentage, an income cap (aftoppingsgrens) of € 137.800, a franchise (offset) of € 18.475, a maximum annual allowance of € 35.798 and a catch-up allowance maximum of € 42.108. The 2025 rules for these items are enacted. The BAZ is proposed only and has no enacted law in the checked material.
 
 ---
 
@@ -75,7 +75,7 @@ This file covers the annual allowance (jaarruimte), the catch-up allowance (catc
 | Franchise on the contribution base (franchise premiegrondslag) | € 18.475 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 |
 | Look-back window | 10 years, annual allowance 2015 to 2024 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen |
 | Catch-up allowance (reserveringsruimte) maximum | € 42.108 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 |
-| Age limit for the annual allowance | not yet state pension (AOW) age plus 5 years at start of year | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen |
+| Age limit for the annual allowance | not yet state pension age (AOW-leeftijd) plus 5 years at start of year | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen |
 | Temporary old-age annuity (tijdelijke oudedagslijfrente) cap | € 26.781 per year | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 (art. 3.125) |
 | Bridge annuity (overbruggingslijfrente) cap | € 63.288 per year | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen |
 | Profit from business discontinuation (stakingswinst) maximum, tier a | € 566.197 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 (art. 3.129) |

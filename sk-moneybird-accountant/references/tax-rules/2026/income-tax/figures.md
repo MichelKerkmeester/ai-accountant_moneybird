@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the 2026 box 1 rates, the main tax credits (heffingskortingen), the rate adjustment (tariefsaanpassing) for high incomes with deductions and the calculation of taxable income from business profit. The enacted 2026 box 1 table has three brackets below state pension (AOW) age, with separate first-bracket rates and limits for people at state pension age. The 2026 values below are enacted and carry their Check tags.
+This file covers the 2026 box 1 rates, the main tax credits (heffingskortingen), the rate adjustment (tariefsaanpassing) for high incomes with deductions and the calculation of taxable income from business profit. The enacted 2026 box 1 table has three brackets below state pension age (AOW-leeftijd), with separate first-bracket rates and limits for people at state pension age. The 2026 values below are enacted and carry their Check tags.
 
 ---
 

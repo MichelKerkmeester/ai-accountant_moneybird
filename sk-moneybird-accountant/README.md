@@ -62,7 +62,7 @@ bash cli-moneybird/cli/moneybird-cli/tests/run-tests.sh
 
 The Jortt tests need the local API description. The Moneybird tests use a stub. A passing run does not prove live credentials, service access or a reconciled ledger.
 
-The skill side adds its own offline checks. From the repository root, `python3 -I sk-moneybird-accountant/scripts/check-route-table.py` checks the route table, the read sets, the word budget and the carry-forward outline. `python3 -I sk-moneybird-accountant/scripts/check-fragments.py` checks every link and section anchor. [scripts/README.md](scripts/README.md) owns the full command list.
+The skill side adds its own offline checks. From the repository root, `python3 -I sk-moneybird-accountant/scripts/check-route-table.py` checks the route table, the read sets, the word budget and the carry-forward outline. `python3 -I sk-moneybird-accountant/scripts/check-fragments.py` checks every link and section anchor. `python3 -I sk-moneybird-accountant/scripts/check-english-first.py` checks that every Dutch term reads English first with its Dutch label. [scripts/README.md](scripts/README.md) owns the full command list.
 
 ### Ask For Something
 
@@ -197,6 +197,7 @@ No. A connection needs separate, current evidence from the relevant CLI.
 |---|---|
 | Route table, read sets, word budget and carry-forward outline | `python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check` ends with `route-table: ok` |
 | Links and section anchors | `python3 -I sk-moneybird-accountant/scripts/check-fragments.py` reports `0 problems` |
+| English first wording | `python3 -I sk-moneybird-accountant/scripts/check-english-first.py` reports `0 problems` |
 | Plan kit drift | `python3 -I sk-moneybird-accountant/scripts/generate-plan-kit.py --check` reports a match line such as `166 generated files match` |
 | Jortt offline checks | `bash cli-jortt/scripts/doctor.sh` ends with `Mode: offline. No network calls were made.` and `bash cli-jortt/cli/jortt-cli/tests/run-tests.sh` ends with `Result: 26 passed, 0 failed` |
 | Moneybird offline checks | `bash cli-moneybird/scripts/doctor.sh` checks the local state and `bash cli-moneybird/cli/moneybird-cli/tests/run-tests.sh` ends with `Pass: 58  Fail: 0` |

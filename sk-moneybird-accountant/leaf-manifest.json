@@ -24,6 +24,7 @@
         "feature-catalog/bookkeeping-and-migration/vat-return-preparation.md",
         "feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md",
         "feature-catalog/bookkeeping-and-migration/yearly-overview-preparation.md",
+        "feature-catalog/quality-gates/english-first-check.md",
         "feature-catalog/quality-gates/eval-grader.md",
         "feature-catalog/quality-gates/fragment-link-check.md",
         "feature-catalog/quality-gates/hardening-matrix-check.md",

@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and disability insurance (arbeidsongeschiktheidsverzekering) 2026: Examples
+# Pension (pensioen), annuity (lijfrente) and disability insurance (arbeidsongeschiktheidsverzekering) 2026: Examples
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -52,7 +52,7 @@ The Dutch Tax and Customs Administration gives an example where the annual allow
 
 ### Example 5: BAZ premium (Calculated example based on proposed law)
 
-The MvT gives examples for the proposed BAZ. At a profit (winst) of € 38.000 or € 45.000 the premium is about € 171 per month. At a profit of € 25.000 the premium is about € 113 per month. Negative profit gives € 0. A profit of € 25.000 plus € 25.000 social insurance wage (SV-loon) gives a tax base (grondslag) of € 13.000 and about € 59 per month. These are proposed figures and not enacted law. Source: [MvT 36912, Kamerstuk 36912 nr. 3, memorie van toelichting](https://zoek.officielebekendmakingen.nl/kst-36912-3.html).
+The MvT gives examples for the proposed Basic Disability Insurance for Self-Employed Persons Act (Wet basisverzekering arbeidsongeschiktheid zelfstandigen, BAZ). At a profit (winst) of € 38.000 or € 45.000 the premium is about € 171 per month. At a profit of € 25.000 the premium is about € 113 per month. Negative profit gives € 0. A profit of € 25.000 plus € 25.000 social insurance wage (SV-loon) gives a tax base (grondslag) of € 13.000 and about € 59 per month. These are proposed figures and not enacted law. Source: [MvT 36912, Kamerstuk 36912 nr. 3, memorie van toelichting](https://zoek.officielebekendmakingen.nl/kst-36912-3.html).
 
 ---
 

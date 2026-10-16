@@ -63,7 +63,7 @@ Inputs: the taxpayer became an entrepreneur on 1 January 2020 and worked 1.300 h
 
 ### Example 4, Calculated example: self-employed person's deduction capped at the profit, non-starter
 
-Inputs: profit € 4.000, entrepreneur below state pension age (AOW age), not a starter, meets the hours criterion.
+Inputs: profit € 4.000, entrepreneur below state pension age (AOW-leeftijd), not a starter, meets the hours criterion.
 
 - Self-employed person's deduction on paper: € 6.310.
 - Cap under art. 3.76 lid 5: not more than the profit, so € 4.000.

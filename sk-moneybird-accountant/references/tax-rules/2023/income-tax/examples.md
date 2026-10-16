@@ -47,7 +47,7 @@ The rates and deduction values used are from https://www.belastingdienst.nl/wps/
 
 ### Box 1 below state pension age (AOW age)
 
-**Calculated example.** Assume taxable Box 1 income of € 80.000 and a taxpayer below state pension age (AOW age).
+**Calculated example.** Assume taxable Box 1 income of € 80.000 and a taxpayer below state pension age (AOW-leeftijd).
 
 1. Income through the first published boundary: € 73.031 × 36,93% = € 26.970,3483.
 2. Income above that boundary: € 80.000 - € 73.031 = € 6.969.

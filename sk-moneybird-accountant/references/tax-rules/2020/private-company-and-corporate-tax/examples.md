@@ -60,7 +60,7 @@ This part holds the worked examples for the BV and corporate income tax (vennoot
 
 ### Example 7: Customary salary (gebruikelijk loon)
 
-**Calculated example.** A DGA works for his BV. The wage (loon) from the most comparable employment relationship (meest vergelijkbare dienstbetrekking) is € 80.000. 75% of that is € 80.000 x 75% = € 60.000,00. The highest wage of the employees of the BV is € 40.000. The standard amount (normbedrag) is € 46.000. The highest of € 60.000,00, € 40.000,00 and € 46.000,00 is € 60.000,00. The wage is therefore at least € 60.000,00. Source: https://wetten.overheid.nl/BWBR0002471/2020-01-01.
+**Calculated example.** A director and substantial shareholder (directeur-grootaandeelhouder, DGA) works for his BV. The wage (loon) from the most comparable employment relationship (meest vergelijkbare dienstbetrekking) is € 80.000. 75% of that is € 80.000 x 75% = € 60.000,00. The highest wage of the employees of the BV is € 40.000. The standard amount (normbedrag) is € 46.000. The highest of € 60.000,00, € 40.000,00 and € 46.000,00 is € 60.000,00. The wage is therefore at least € 60.000,00. Source: https://wetten.overheid.nl/BWBR0002471/2020-01-01.
 
 ### Example 8: Customary salary escape
 

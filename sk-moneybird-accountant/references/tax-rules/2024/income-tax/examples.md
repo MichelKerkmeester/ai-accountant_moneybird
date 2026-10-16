@@ -47,7 +47,7 @@ Assume a taxable income from work and home (belastbaar inkomen uit werk en wonin
 
 ### Calculated example: Box 1 at AOW age
 
-Assume a full year at AOW age, born on or after 1 January 1946, and a taxable income from work and home of € 40.000,00.
+Assume a full year at state pension age (AOW-leeftijd), born on or after 1 January 1946, and a taxable income from work and home of € 40.000,00.
 
 1. Tax on the first € 38.098,00 at 19,07%: € 38.098,00 × 0,1907 = € 7.265,29 (rounded).
 2. Remaining income: € 40.000,00 minus € 38.098,00 = € 1.902,00.

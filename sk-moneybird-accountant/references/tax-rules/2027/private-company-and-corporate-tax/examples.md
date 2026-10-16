@@ -92,7 +92,7 @@ No official examples were found in the checked material for 2027. Every example 
 ### Example 8. Zvw for an insured and an uninsured DGA (Calculated example)
 
 - Both figures are the proposed 2027 figures.
-- Insured DGA, wage € 60.000: employer levy (werkgeversheffing) 6,27% x € 60.000 = € 3.762, paid by the BV.
+- Insured director and substantial shareholder (verzekerde DGA, directeur-grootaandeelhouder), wage € 60.000: employer levy (werkgeversheffing) 6,27% x € 60.000 = € 3.762, paid by the BV.
 - Uninsured DGA, wage € 100.000: the contribution (bijdrage) is withheld on net wage (nettoloon) up to the maximum contribution income (bijdrage-inkomen) of € 82.547, so 5,02% x € 82.547 = € 4.143,86.
 - Result: € 3.762 and € 4.143,86.
 

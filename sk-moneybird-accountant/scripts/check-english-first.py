@@ -111,11 +111,16 @@ ONDERDEEL_RE = re.compile(r"\bonderde(?:el|len)\s+[a-z0-9]{1,3}\b", re.IGNORECAS
 # WHY: a source table number and a dated act or decree identify a source, so they are citation data.
 TABEL_RE = re.compile(r"\bTabel\s+[IVX\d]+\b")
 DATED_ACT_RE = re.compile(
-    r"\b(?:Besluit|Wet|Regeling) van \d{1,2} (?:januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december) \d{4}\b"
+    r"\b(?:Besluit|Wet|Regeling) van \d{1,2} "
+    r"(?:januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)"
+    r" \d{4}\b"
 )
 # WHY: a bracket holding a common English word is an English aside, not a Dutch label.
 ENGLISH_FUNCTION_WORDS = frozenset(
-    ("a", "an", "and", "or", "the", "of", "for", "on", "by", "to", "under", "against", "same", "page", "url", "category")
+    (
+        "a", "an", "and", "or", "the", "of", "for", "on", "by", "to",
+        "under", "against", "same", "page", "url", "category",
+    )
 )
 ECLI_RE = re.compile(r"\bECLI:[A-Za-z0-9:.\-]+")
 # WHY: a return box keeps its Dutch name with its code, so it is data.

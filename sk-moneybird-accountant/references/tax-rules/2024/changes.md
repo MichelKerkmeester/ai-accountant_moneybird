@@ -33,7 +33,7 @@ This note lists what changed for tax year 2024. Section 2 holds the changes uniq
 - The kilometre allowance rose from € 0,21 in 2023 to € 0,23 in 2024. [costs and car (kosten en auto)](costs-and-car/notes.md#5-changes)
 - The EIA percentage fell from 45,5% in 2023 to 40% in 2024. [investments (investeringen)](investments/notes.md#5-changes)
 - The box 3 rate rose from 32% in 2023 to 36% in 2024. [box-3](box-3/notes.md#5-changes)
-- The Zvw contribution (Zvw-bijdrage) by assessment (bijdrage bij aanslag) fell from 5,43% in 2023 to 5,32% in 2024. [Zvw contribution (Zvw-bijdrage)](health-insurance-contribution/notes.md#5-changes)
+- The Health Insurance Act (Zorgverzekeringswet, Zvw) contribution (Zvw-bijdrage) by assessment (bijdrage bij aanslag) fell from 5,43% in 2023 to 5,32% in 2024. [Zvw contribution (Zvw-bijdrage)](health-insurance-contribution/notes.md#5-changes)
 
 ---
 

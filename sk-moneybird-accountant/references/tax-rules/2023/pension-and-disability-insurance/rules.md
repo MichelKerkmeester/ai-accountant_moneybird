@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and AOV 2023: Rules
+# Pension (pensioen), annuity (lijfrente) and disability insurance (arbeidsongeschiktheidsverzekering, AOV) 2023: Rules
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -68,7 +68,7 @@ The maximum for 2023 is € 38.000 flat. The text of art. 3.127 lid 2 valid from
 
 ### Catch-up allowance under the pre-Wtp rules
 
-The amounts of € 8.065 and € 15.922 come from the text of art. 3.127 lid 2 valid on 1 January 2023 and from the Ministry table of 9 January 2023 ([art. 3.127, text 1 January 2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127)). That text capped the catch-up allowance at 17% of the contribution base and at a euro amount, raised to the higher amount of € 15.922 for a taxpayer whose age at the start of the year was at most ten years below the state pension (AOW) age of that year. The Wtp replaced both amounts with the flat € 38.000, retroactively for 2023, so a 2023 return uses € 38.000.
+The amounts of € 8.065 and € 15.922 come from the text of art. 3.127 lid 2 valid on 1 January 2023 and from the Ministry table of 9 January 2023 ([art. 3.127, text 1 January 2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127)). That text capped the catch-up allowance at 17% of the contribution base and at a euro amount, raised to the higher amount of € 15.922 for a taxpayer whose age at the start of the year was at most ten years below the state pension age (AOW-leeftijd) of that year. The Wtp replaced both amounts with the flat € 38.000, retroactively for 2023, so a 2023 return uses € 38.000.
 
 ### Age limit annual allowance
 

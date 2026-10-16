@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and disability insurance (arbeidsongeschiktheidsverzekering) 2027: Examples
+# Pension (pensioen), annuity (lijfrente) and disability insurance (arbeidsongeschiktheidsverzekering) 2027: Examples
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -78,7 +78,7 @@ Outcome: with 5 instalments the premiums up to the cap are deductible and the ab
 
 ### Calculated example: profit from business discontinuation (stakingswinst) to annuity (lijfrente) in tier b
 
-A taxpayer ceases the business (onderneming) in 2027 at an age 10 years below the AOW age and does not start the annuity immediately. That puts the case in tier b. The 2027 amounts are not published, so the calculation uses the € 287.445 still in the 2027 text. The profit from business discontinuation is € 200.000 and € 25.000 of annuity premiums was deducted under art. 3.127 lid 1 and 2 in earlier years.
+A taxpayer ceases the business (onderneming) in 2027 at an age 10 years below the state pension age (AOW-leeftijd) and does not start the annuity immediately. That puts the case in tier b. The 2027 amounts are not published, so the calculation uses the € 287.445 still in the 2027 text. The profit from business discontinuation is € 200.000 and € 25.000 of annuity premiums was deducted under art. 3.127 lid 1 and 2 in earlier years.
 
 1. Cap after subtracting the earlier deductions: € 287.445 - € 25.000 = € 262.445.
 2. Deduction limit: min(€ 200.000, € 262.445) = € 200.000.
@@ -108,7 +108,7 @@ Outcome: the form of the benefit decides the treatment, not the size of the prem
 
 ### Calculated example: proposed BAZ premium and benefit
 
-The BAZ is not in force (in werking) in 2027, so this example only shows the proposed percentages from the explanatory memorandum (memorie van toelichting, MvT).
+The Basic Disability Insurance for Self-Employed Persons Act (Wet basisverzekering arbeidsongeschiktheid zelfstandigen, BAZ) is not in force (in werking) in 2027, so this example only shows the proposed percentages from the explanatory memorandum (memorie van toelichting, MvT).
 
 1. Profit (winst) € 38.000: € 38.000 x 5,4% = € 2.052 per year. € 2.052 / 12 = € 171 per month.
 2. Profit € 25.000: € 25.000 x 5,4% = € 1.350 per year. € 1.350 / 12 = € 112,50, about € 113 per month.

@@ -142,7 +142,7 @@ If records do not establish actual private use, the flat rate is based on the ca
 
 ### BUA and own contributions
 
-The BUA restricts deduction for certain staff facilities, business gifts, and other gifts. It also concerns staff housing, wages in kind (in natura), sport, leisure, and private transport, subject to exceptions. The decision provides carve-outs for specified staff food, closed-group commuting bus transport, qualifying commuting bicycles, and outplacement. It also provides that costs for a person within the per-person limit are outside the exclusion. The 2023 decision ended the Dutch Tax and Customs Administration website explanation that let an own contribution (eigen bijdrage) reduce the tested amount from the following year. [BUA](https://wetten.overheid.nl/BWBR0002636/2019-02-23) · [2023 decision on own contributions](https://zoek.officielebekendmakingen.nl/stcrt-2023-28124.html)
+The BUA restricts deduction for certain staff facilities, business gifts, and other gifts. It also concerns staff housing, wages in kind (in natura), sport, leisure, and private transport, subject to exceptions. The decision provides carve-outs for specified staff food, licensed closed-group commuting bus transport, qualifying commuting bicycles, and outplacement. It also provides that costs for a person within the per-person limit are outside the exclusion. The 2023 decision ended the Dutch Tax and Customs Administration website explanation that let an own contribution (eigen bijdrage) reduce the tested amount from the following year. [BUA](https://wetten.overheid.nl/BWBR0002636/2019-02-23) · [2023 decision on own contributions](https://zoek.officielebekendmakingen.nl/stcrt-2023-28124.html)
 
 ### Invoicing
 

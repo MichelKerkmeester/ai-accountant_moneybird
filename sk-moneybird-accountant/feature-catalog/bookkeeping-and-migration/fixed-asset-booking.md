@@ -23,7 +23,7 @@ The reference states when a purchase is capitalised, the small-amount rule, the 
 
 ## 2. HOW IT WORKS
 
-The agent checks whether the business uses the purchase for more than one year and whether the amount is at or above the activation threshold. A capitalised purchase gets an asset record (bezitting) with its acquisition cost (aanschafwaarde), in-use date (datum ingebruikname), useful life (gebruiksduur) and residual value (restwaarde). Depreciation follows the yearly limit. A good used partly privately goes through the labelling (etikettering) first. A building, a private item moved into the business or a change of use inside the revision period goes to the Operator or a bookkeeper. Moneybird writes still need a passed gate and Operator approval. The Operator files the return.
+The agent checks whether the business uses the purchase for more than one year and whether the amount is at or above the activation threshold. A capitalised purchase gets an asset record (bezitting) with its acquisition cost (aanschafwaarde), in-use date (datum ingebruikname), useful life (gebruiksduur) and residual value (restwaarde). Depreciation follows the yearly limit. A good used partly privately goes through the asset classification (etikettering) first. A building, a private item moved into the business or a change of use inside the revision period goes to the Operator or a bookkeeper. Moneybird writes still need a passed gate and Operator approval. The Operator files the return.
 
 ---
 
@@ -34,7 +34,7 @@ The agent checks whether the business uses the purchase for more than one year a
 | File | Layer | Role |
 |---|---|---|
 | sk-moneybird-accountant/references/fixed-assets.md | Shared | Defines the cost-or-asset test, depreciation, the VAT revision period and disposal. |
-| sk-moneybird-accountant/references/mixed-use-costs.md | Shared | Defines the labelling (etikettering) and the booking split for a partly private asset. |
+| sk-moneybird-accountant/references/mixed-use-costs.md | Shared | Defines the asset classification (etikettering) and the booking split for a partly private asset. |
 | sk-moneybird-accountant/references/purchase-invoices.md | Shared | Defines the invoice flow that creates the asset line. |
 | sk-moneybird-accountant/references/income-tax-return/investment-and-claim-register.md | Shared | The dated per-asset register that evidences an investment allowance claim. |
 | sk-moneybird-accountant/SKILL.md | Shared | Loads the fixed-asset reference conditionally in the T4 row. |

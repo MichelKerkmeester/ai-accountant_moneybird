@@ -49,7 +49,7 @@ Inputs: profit as entrepreneur (ondernemer) € 60.000, the hours criterion (ure
 
 ### Calculated example B. Starter with the enacted starter's deduction against the proposed bill amount
 
-Inputs: profit as entrepreneur € 40.000, the hours criterion is met, the starter conditions of art. 3.76 lid 3 are met, below the state pension (AOW) age.
+Inputs: profit as entrepreneur € 40.000, the hours criterion is met, the starter conditions of art. 3.76 lid 3 are met, below the state pension age (AOW-leeftijd).
 
 Enacted 2027 text:
 

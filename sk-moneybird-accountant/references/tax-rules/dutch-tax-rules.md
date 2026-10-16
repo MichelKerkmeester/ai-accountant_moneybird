@@ -54,7 +54,7 @@ This file is the entry point for Dutch tax questions for a sole trader (ZZP) wit
 |---|---|
 | `vat.md` | VAT rates, exemptions, KOR, deadlines and corrections |
 | `income-tax.md` | Box 1 brackets, income tax (inkomstenbelasting) credits (heffingskortingen) and how profit reaches taxable income |
-| `health-insurance-contribution.md` | The income-dependent Zvw contribution (bijdrage Zvw) for an entrepreneur |
+| `health-insurance-contribution.md` | The income-dependent Health Insurance Act (Zorgverzekeringswet, Zvw) contribution (bijdrage Zvw) for an entrepreneur |
 | `business-deductions.md` | Hours criterion (urencriterium), self-employed person's deduction (zelfstandigenaftrek), starter's deduction (startersaftrek), other deductions and the SME profit exemption (MKB-winstvrijstelling) |
 | `investments.md` | KIA, EIA, MIA and Vamil, depreciation and disinvestment (desinvestering) |
 | `costs-and-car.md` | Deductible and mixed costs (gemengde kosten), the car, private-use addition (bijtelling) and the kilometre allowance |

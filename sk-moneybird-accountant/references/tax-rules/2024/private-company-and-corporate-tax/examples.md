@@ -88,7 +88,7 @@ Figures from section 2. Sources: https://wetten.overheid.nl/BWBR0002471/2024-01-
 
 ### Zvw for an uninsured and an insured DGA (Calculated example)
 
-- Uninsured DGA, wage € 71.628, which is exactly the maximum contribution income (bijdrage-inkomen). Contribution = 5,32% of € 71.628 = € 3.810,61. A wage of € 90.000 gives the same amount, because the maximum contribution income is € 71.628.
+- Uninsured director and substantial shareholder (directeur-grootaandeelhouder, DGA), wage € 71.628, which is exactly the maximum contribution income (bijdrage-inkomen). Contribution = 5,32% of € 71.628 = € 3.810,61. A wage of € 90.000 gives the same amount, because the maximum contribution income is € 71.628.
 - Insured DGA, wage € 71.628. Employer levy (werkgeversheffing) = 6,57% of € 71.628 = € 4.705,96, paid by the BV.
 
 Figures from section 2. Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/bijdrage_zorgverzekeringswet/tabel_werkgeversheffing_zvw_of_bijdrage_zvw/.

@@ -27,13 +27,13 @@ This note lists what changed for tax year 2026. Section 2 holds the changes uniq
 ## 2. UNIQUE TO 2026
 
 - Accommodation (logies) moved from 9% to 21% from 1 January 2026. [VAT](vat/notes.md#5-changes)
-- In 2026 there are no default penalties (verzuimboetes), but penalties (vergrijpboetes) for gross negligence (grove schuld) or intent are possible under the normal rules from 1 January 2026. [employment relationship](work-relationship/notes.md#5-changes)
-- The self-employed person's deduction (zelfstandigenaftrek) fell from € 2.470 in 2025 to € 1.200 in 2026 and the state pension age (AOW age) amount from € 1.235 to € 600. [income tax](income-tax/notes.md#5-changes)
+- In 2026 there are no default penalties (verzuimboetes), but penalties (vergrijpboetes) for gross negligence (grove schuld) or intent (opzet) are possible under the normal rules from 1 January 2026. [employment relationship](work-relationship/notes.md#5-changes)
+- The self-employed person's deduction (zelfstandigenaftrek) fell from € 2.470 in 2025 to € 1.200 in 2026 and the state pension age (AOW-leeftijd) amount from € 1.235 to € 600. [income tax](income-tax/notes.md#5-changes)
 - The rate adjustment (tariefsaanpassing) fell from 12,02% above € 76.817 in 2025 to 11,94% above € 78.426 in 2026. [business deductions](business-deductions/notes.md#5-changes)
 - The tax-free allowance (heffingsvrij vermogen) rose from € 57.684 per person in 2025 to € 59.357 in 2026. [box-3](box-3/notes.md#5-changes)
 - The 2026 statute still prints € 0,23 per km, but the applied amount for 2026 is € 0,25 per km, retroactive to 1 January 2026. [costs and car](costs-and-car/notes.md#5-changes)
 - A zero-emission car (zero-emissie auto) first admitted in 2026 gets 4% off capped at € 1.200, so 18% up to € 30.000. [costs and car](costs-and-car/notes.md#5-changes)
-- The Zvw contribution assessed (Zvw-bijdrage, bijdrage bij aanslag) fell from 5,26% in 2025 to 4,85% in 2026. [health insurance contribution](health-insurance-contribution/notes.md#5-changes)
+- The Health Insurance Act (Zorgverzekeringswet, Zvw) contribution assessed (Zvw-bijdrage, bijdrage bij aanslag) fell from 5,26% in 2025 to 4,85% in 2026. [health insurance contribution](health-insurance-contribution/notes.md#5-changes)
 
 ---
 
@@ -43,7 +43,7 @@ This note lists what changed for tax year 2026. Section 2 holds the changes uniq
 | Topic | Bullets | First change |
 |---|---|---|
 | [vat.md](vat/notes.md#5-changes) | 7 | Accommodation (logies) moved from 9% to 21% from 1 January 2026. The change... |
-| [income-tax.md](income-tax/notes.md#5-changes) | 15 | Below state pension (AOW) age the combined first-bracket rate changed from... |
+| [income-tax.md](income-tax/notes.md#5-changes) | 15 | Below state pension age (AOW-leeftijd) the combined first-bracket rate changed... |
 | [health-insurance-contribution.md](health-insurance-contribution/notes.md#5-changes) | 10 | Contribution by assessment (bijdrage bij aanslag): 5,26% in 2025 to 4,85% in... |
 | [business-deductions.md](business-deductions/notes.md#5-changes) | 10 | Self-employed person's deduction (zelfstandigenaftrek): € 2.470 in 2025 to €... |
 | [investments.md](investments/notes.md#5-changes) | 10 | KIA, second band endpoint, € 70.602 in 2025 to € 71.683 in 2026... |

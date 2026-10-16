@@ -43,12 +43,12 @@ Box 3 (savings and investments, sparen en beleggen) taxes a flat-rate return (fo
 | Debt threshold (schuldendrempel) | 2 |
 | Box 3 rate (tarief) | 3 |
 | Reference date (peildatum) | 4 |
-| Return class percentages (rendementsklasse percentages) | 5 |
+| Return class percentages (rendementsklassen) | 5 |
 | Band 1 | 6 |
 | Band 2 | 7 |
 | Band 3 | 8 |
 | Box 3 Restoration of Rights Act (Wet rechtsherstel box 3), issue and entry | 9 |
-| Restoration of rights category percentages (rechtsherstel category percentages) 2022 | 10 |
+| Restoration of rights category percentages 2022 | 10 |
 | Restoration of rights scope 2022 | 11 |
 | Most favourable method (meest gunstige methode) | 12 |
 | Green investment exemption (vrijstelling groene beleggingen) | 13 |
@@ -63,12 +63,12 @@ Box 3 (savings and investments, sparen en beleggen) taxes a flat-rate return (fo
 | Debt threshold (schuldendrempel) | € 3.200 per person, € 6.400 with a whole-year partner | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/bezittingen_en_schulden_box_3_ https://wetten.overheid.nl/BWBR0011353/2022-01-01 |
 | Box 3 rate (tarief) | 31% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen |
 | Reference date (peildatum) | 1 January, the date of the bank balances (banktegoeden), other assets (overige bezittingen) and debts (schulden) in the Box 3 Restoration of Rights (rechtsherstel) Act calculation | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2022-533.html |
-| Return class percentages (rendementsklasse percentages) | return class I (klasse i) -0,01%, return class II (klasse ii) 5,53% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen |
+| Return class percentages (rendementsklassen) | return class I (klasse i) -0,01%, return class II (klasse ii) 5,53% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen |
 | Band 1 | up to € 50.650 (page: up to € 50.651), 67% return class I and 33% return class II, average 1,818% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen https://wetten.overheid.nl/BWBR0011353/2022-01-01 |
 | Band 2 | € 50.650 to € 962.350 (page: € 50.651 to € 962.351), 21% return class I and 79% return class II, average 4,366% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen |
 | Band 3 | above € 962.350, 0% return class I and 100% return class II, 5,53% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen |
 | Box 3 Restoration of Rights Act (Wet rechtsherstel box 3), issue and entry | Stb. 2022, 533, issued 27 December 2022, in force (in werking) 28 December 2022, retroactive to 1 January 2017 | enacted | Corrected | https://zoek.officielebekendmakingen.nl/stb-2022-533.html |
-| Restoration of rights category percentages (rechtsherstel category percentages) 2022 | bank balances 0,00%, other assets 5,53%, debts 2,28% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/met-welke-percentages-is-het-fictief-rendement-berekend |
+| Restoration of rights category percentages 2022 | bank balances 0,00%, other assets 5,53%, debts 2,28% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/met-welke-percentages-is-het-fictief-rendement-berekend |
 | Restoration of rights scope 2022 | all IB/PVV assessments for 2022 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2022-533.html |
 | Most favourable method (meest gunstige methode) | both methods computed, the more favourable one applied | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen |
 | Green investment exemption (vrijstelling groene beleggingen) | € 61.215, € 122.430 with a whole-year partner | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/bezittingen_en_schulden_box_3_ |

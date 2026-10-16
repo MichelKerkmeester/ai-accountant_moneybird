@@ -46,6 +46,6 @@ Inputs: wage of € 50.000 from an employer who pays the 6,10% employer health i
 **Example 4: profit above the maximum (Calculated example).**
 Inputs: a taxable profit of € 100.000 and no other income. Step 1: the maximum is € 79.409, so the contribution income is € 79.409 and not € 100.000. Step 2: 4,85% of € 79.409 is € 3.851,34, calculated as € 79.409 times 4,85 / 100. This is the maximum contribution for this income at this rate. Step 3: the remaining amount is € 100.000 minus € 79.409 = € 20.591, which bears no Zvw contribution.
 
-No example can be built for the state pension (AOW) age rate, because the checked sources give no 2026 percentage for the reduced income-dependent contribution (verlaagde inkomensafhankelijke bijdrage) (see section 7).
+No example can be built for the state pension age (AOW-leeftijd) rate, because the checked sources give no 2026 percentage for the reduced income-dependent contribution (verlaagde inkomensafhankelijke bijdrage) (see section 7).
 
 ---

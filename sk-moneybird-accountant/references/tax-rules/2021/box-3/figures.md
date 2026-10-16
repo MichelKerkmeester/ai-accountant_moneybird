@@ -42,11 +42,11 @@ For 2021, Box 3 savings and investments (sparen en beleggen) taxes a fictitious 
 | Tax-free allowance (heffingsvrij vermogen) | 1 |
 | Debt threshold (schuldendrempel) | 2 |
 | Box 3 rate (tarief) | 3 |
-| Return class percentages (rendementsklasse percentages) | 4 |
+| Return class percentages (rendementsklassen) | 4 |
 | Band 1 | 5 |
 | Band 2 | 6 |
 | Band 3 | 7 |
-| Restoration of rights category percentages (rechtsherstel category percentages) | 8 |
+| Restoration of rights (rechtsherstel) category percentages | 8 |
 | Restoration of rights scope 2021 | 9 |
 | Most favourable method (meest gunstige methode) | 10 |
 | Green investment exemption (vrijstelling groene beleggingen) | 11 |
@@ -63,11 +63,11 @@ For 2021, Box 3 savings and investments (sparen en beleggen) taxes a fictitious 
 | Tax-free allowance (heffingsvrij vermogen) | € 50.000 per person, € 100.000 with fiscal partner (fiscaal partner) (art. 5.5) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen https://wetten.overheid.nl/BWBR0011353/2021-01-01 |
 | Debt threshold (schuldendrempel) | € 3.200 per person, € 6.400 with whole-year partner (art. 5.3 lid 3) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/bezittingen_en_schulden_box_3_ https://wetten.overheid.nl/BWBR0011353/2021-01-01 |
 | Box 3 rate (tarief) | 31% (art. 2.13) | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01 https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen |
-| Return class percentages (rendementsklasse percentages) | return class I (klasse i) 0,03%, return class II (klasse ii) 5,69% (art. 5.2 lid 1) | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01 https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen |
+| Return class percentages (rendementsklassen) | return class I (klasse i) 0,03%, return class II (klasse ii) 5,69% (art. 5.2 lid 1) | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01 https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen |
 | Band 1 | up to € 50.000 (page: tot € 50.001), 67/33, average 1,898% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen https://wetten.overheid.nl/BWBR0011353/2021-01-01 |
 | Band 2 | € 50.000 to € 950.000 (page: € 50.001 to € 950.001), 21/79, average 4,501% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen |
 | Band 3 | above € 950.000, 0/100, 5,69% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen |
-| Restoration of rights category percentages (rechtsherstel category percentages) | bank 0,01%, other 5,69%, debts 2,46% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/met-welke-percentages-is-het-fictief-rendement-berekend https://zoek.officielebekendmakingen.nl/stb-2022-533.html |
+| Restoration of rights (rechtsherstel) category percentages | bank 0,01%, other 5,69%, debts 2,46% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/met-welke-percentages-is-het-fictief-rendement-berekend https://zoek.officielebekendmakingen.nl/stb-2022-533.html |
 | Restoration of rights scope 2021 | all IB/PVV assessments for 2021 (art. 1 lid 2) | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2022-533.html |
 | Most favourable method (meest gunstige methode) | old method and category method (categorieënmethode) both computed, best one applied | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen |
 | Green investment exemption (vrijstelling groene beleggingen) | € 60.429, € 120.858 with whole-year partner (art. 5.13) | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01 https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/bezittingen_en_schulden_box_3_ |

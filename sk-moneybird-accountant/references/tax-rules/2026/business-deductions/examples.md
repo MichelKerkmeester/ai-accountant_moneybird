@@ -42,7 +42,7 @@ Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdi
 
 ### Example 2, self-employed person's deduction (zelfstandigenaftrek) and SME profit exemption (MKB-winstvrijstelling) at a profit of € 60.000 (Calculated example)
 
-Inputs: profit as an entrepreneur (winst als ondernemer) € 60.000,00, the taxpayer has not reached state pension (AOW) age at the start of 2026, the hours criterion is met, no starter's deduction (startersaftrek), no other entrepreneur's allowance (ondernemersaftrek).
+Inputs: profit as an entrepreneur (winst als ondernemer) € 60.000,00, the taxpayer has not reached state pension age (AOW-leeftijd) at the start of 2026, the hours criterion is met, no starter's deduction (startersaftrek), no other entrepreneur's allowance (ondernemersaftrek).
 
 - Step 1, self-employed person's deduction: € 1.200,00.
 - Step 2, profit after the entrepreneur's allowance: € 60.000,00 minus € 1.200,00 = € 58.800,00.

@@ -118,7 +118,7 @@ Source: https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d
 
 ### Example 7: VBAR build-up of € 36 and indexation to € 38 (Calculated example, not applicable to tax year 2021)
 
-This example shows the later VBAR method only. It does not apply to tax year 2021.
+This example shows the later Act on Clarification of the Assessment of Employment Relationships and Legal Presumption (Wet verduidelijking beoordeling arbeidsrelaties en rechtsvermoeden, VBAR) method only. It does not apply to tax year 2021.
 
 Step 1: 120% of the WML of € 14,06 = € 16,872.
 
@@ -142,7 +142,7 @@ Sources: https://zoek.officielebekendmakingen.nl/kst-36783-3.html and https://ww
 
 ### Example 8: BAZ docket summary on invented facts (Calculated example, not applicable to tax year 2021)
 
-This example shows the later BAZ bill only. It does not apply to tax year 2021.
+This example shows the later Basic Disability Insurance for Self-Employed Persons Act (Wet basisverzekering arbeidsongeschiktheid zelfstandigen, BAZ) bill only. It does not apply to tax year 2021.
 
 Facts (invented): a self-employed person with an invented profit of € 30.000 becomes unable to work.
 

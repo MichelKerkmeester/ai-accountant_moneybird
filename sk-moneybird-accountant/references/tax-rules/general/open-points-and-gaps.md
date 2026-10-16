@@ -21,7 +21,7 @@ version: 1.0.0.0
 General topic 5 of 13 in the Dutch tax rules guide.
 
 - [vat.md](vat.md): 3.1 VAT (BTW).
-- [income-tax-box-1-and-the-health-insurance-contribution.md](income-tax-box-1-and-the-health-insurance-contribution.md): 3.2 Income tax (inkomstenbelasting) box 1 and the Zvw contribution (bijdrage Zvw).
+- [income-tax-box-1-and-the-health-insurance-contribution.md](income-tax-box-1-and-the-health-insurance-contribution.md): 3.2 Income tax (inkomstenbelasting) box 1 and the Health Insurance Act (Zorgverzekeringswet, Zvw) contribution (bijdrage Zvw).
 - [business-deductions-and-sme-profit-exemption.md](business-deductions-and-sme-profit-exemption.md): 3.3 Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling).
 - [investment-deductions-and-depreciation.md](investment-deductions-and-depreciation.md): 3.4 Investment deductions and depreciation.
 - [costs-and-the-car.md](costs-and-the-car.md): 3.5 Costs and the car.
@@ -67,7 +67,7 @@ These points were open on 2026-10-11. Each year file repeats its own open points
 ### Income tax (inkomstenbelasting) box 1 and the Zvw contribution (bijdrage Zvw)
 
 - 2020: Old-age reserve (oudedagsreserve) maximum: € 9.214 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/winst_en_verliesrekening_en_balans) against € 9.218 (baseline citing https://wetten.overheid.nl/BWBR0011353/2020-01-01 art. 3.68). Reading art. 3.68 of the 2020 statute would settle it.
-- 2020: Tax credits (heffingskortingen) in the year of reaching the AOW age: no 2020 rule found.
+- 2020: Tax credits (heffingskortingen) in the year of reaching the state pension age (AOW-leeftijd): no 2020 rule found.
 - 2020: Hours criterion (urencriterium) lookback window: 2014 to 2018 on the fetched page against 2015 to 2019 in the topic file.
 - 2021: IACK payout percentage for 2021 is not stated separately. The general 86⅔% phase-down (afbouw) likely applies, which stays unconfirmed.
 - 2021: Tax credits in the AOW transition year 2021: no rule found on https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/heffingskortingen.
@@ -96,7 +96,7 @@ These points were open on 2026-10-11. Each year file repeats its own open points
 
 ### Investment deductions and depreciation
 
-- 2026: The Netherlands Enterprise Agency (Rijksdienst voor Ondernemend Nederland, RVO) cap of € 25 million (miljoen) per business asset (bedrijfsmiddel) and per applicant per year for MIA/Vamil is on the current RVO page without a year. It is a condition of the instruction (aanwijzing), separate from the statutory € 153.000.000. Which years it covers would be settled by the Environmental List (Milieulijst) regulation of each year. https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden
+- 2026: The Netherlands Enterprise Agency (Rijksdienst voor Ondernemend Nederland, RVO) cap of € 25 million (miljoen) per business asset (bedrijfsmiddel) and per applicant per year for MIA/Vamil is on the current RVO page without a year. It is a condition of the designation (aanwijzing), separate from the statutory € 153.000.000. Which years it covers would be settled by the Environmental List (Milieulijst) regulation of each year. https://www.rvo.nl/subsidies-financiering/mia-vamil/ondernemers/voorwaarden
 - 2027: EIA 2027: bill text 45,5% (https://zoek.officielebekendmakingen.nl/kst-37022-2.html) against the Government of the Netherlands (Rijksoverheid) news "van 40% naar 45%" (https://www.rijksoverheid.nl/actueel/nieuws/2026/09/15/belastingplan-2027-voorstellen-voor-beter-werkend-belastingstelsel-en-gezonde-overheidsfinancien). The bill text is the legal proposal. Settled only by the adopted law.
 - 2027: The research says an earlier plan to slim the KIA was replaced by another measure. A search snippet of the factsheet suggested a lower KIA maximum. Neither was confirmed. The fetched bill text has no change to art. 3.41. The factsheet PDF exceeded the fetch limit and the CW 3.1 PDF was unreadable.
 - 2027: The 48% share of the inflation correction rests on secondary sources only.
@@ -162,9 +162,9 @@ These points were open on 2026-10-11. Each year file repeats its own open points
 
 - 2020: The 2021 final assessment (definitieve aanslag) page still uses before 1 May 2021 in its example while the deadline page and the Staatscourant decree give 8 May 2021. Both are Dutch Tax and Customs Administration text. The 8 May date is the operative one for 2021 per the decree. https://zoek.officielebekendmakingen.nl/stcrt-2021-24144.html
 - 2020: Whether the deferral (uitstel) request deadline for the 2020 return also moved to 8 May 2021 is not stated on a primary page that was opened.
-- 2025: VBAR submitted (ingediend) date: Senate (Eerste Kamer) 4 July 2025, House of Representatives 7 July 2025, bill documents dated 9 July 2025. Settling it needs the Royal Message (Koninklijke Boodschap) date in the Parliamentary paper. https://www.eerstekamer.nl/wetsvoorstel/36783_wet_invoering https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36783
+- 2025: Act on Clarification of the Assessment of Employment Relationships and Legal Presumption (Wet verduidelijking beoordeling arbeidsrelaties en rechtsvermoeden, VBAR) submitted (ingediend) date: Senate (Eerste Kamer) 4 July 2025, House of Representatives 7 July 2025, bill documents dated 9 July 2025. Settling it needs the Royal Message (Koninklijke Boodschap) date in the Parliamentary paper. https://www.eerstekamer.nl/wetsvoorstel/36783_wet_invoering https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36783
 - 2026: The ministerial regulation (ministeriële regeling) with the first applicable VBAR amount was not found. It would settle the exact figure for 31 December 2026. Using the MvT method with the WML of € 14,99 from 1 July 2026, the unrounded amount is about € 37,77, which also rounds up to € 38. That is my arithmetic, not a published figure. https://www.rijksoverheid.nl/themas/werk/minimumloon/bedragen-minimumloon/bedragen-minimumloon-2026
-- 2026: BAZ waiting period (wachttijd) 104 weeks in the bill text against about one year in the docket summary stays open until the bill text or the note is read.
+- 2026: Basic Disability Insurance for Self-Employed Persons Act (Wet basisverzekering arbeidsongeschiktheid zelfstandigen, BAZ) waiting period (wachttijd) 104 weeks in the bill text against about one year in the docket summary stays open until the bill text or the note is read.
 - 2027: 2027 tax interest (belastingrente) rate: settled by the Dutch Tax and Customs Administration rate table after the ECB publication before 1 November 2026.
 - 2027: 2027 VBAR amount: settled by the ministerial regulation under art. III lid 2 and the WML regulation for 1 January 2027.
 - 2027: 2027 DBA enforcement wording beyond the 2026 plan: settled by a new plan or by the enforcement (handhaving) page.

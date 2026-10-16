@@ -42,7 +42,7 @@ Source: [KVK, de magische 1.225 uur](https://www.kvk.nl/starten/de-magische-1225
 
 ### Example 2: Self-employed person's deduction (zelfstandigenaftrek) and SME profit exemption (mkb-winstvrijstelling) (Calculated example)
 
-**Calculated example.** A sole trader below the state pension (AOW) age meets the hours criterion, has no starter's deduction (startersaftrek) and no other deductions. Profit is € 60.000.
+**Calculated example.** A sole trader below the state pension age (AOW-leeftijd) meets the hours criterion, has no starter's deduction (startersaftrek) and no other deductions. Profit is € 60.000.
 
 - Step 1: profit € 60.000.
 - Step 2: Self-employed person's deduction € 2.470.

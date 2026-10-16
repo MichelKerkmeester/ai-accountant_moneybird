@@ -36,7 +36,7 @@ This part holds the worked examples for the income tax box 1 (Inkomstenbelasting
 
 ### Calculated example: box 1 below AOW age
 
-Assume a taxable amount (belastbaar bedrag) in box 1 of € 40.000 for a taxpayer below AOW age.
+Assume a taxable amount (belastbaar bedrag) in box 1 of € 40.000 for a taxpayer below state pension age (AOW-leeftijd).
 
 1. The first statutory amount is € 3.319.
 2. The income above € 35.129 is € 40.000 minus € 35.129 = € 4.871.

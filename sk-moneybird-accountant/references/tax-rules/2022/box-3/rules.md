@@ -58,7 +58,7 @@ The box 3 rate for 2022 is 31% (art. 2.13, https://wetten.overheid.nl/BWBR001135
 
 The values in the Box 3 Restoration of Rights Act (wet rechtsherstel) calculation are those at 1 January, the reference date (peildatum). Art. 3 defines the return (rendement) with the bank balances (banktegoeden), the other assets (overige bezittingen) and the debts (schulden) at 1 January (https://zoek.officielebekendmakingen.nl/stb-2022-533.html). The exemption for green investments (groene beleggingen) also never exceeds the value of the green investments on 1 January (https://wetten.overheid.nl/BWBR0011353/2027-01-01).
 
-### Return class percentages (rendementsklasse percentages)
+### Return class percentages (rendementsklassen)
 
 For 2022 the return classes (rendementsklassen) in art. 5.2 lid 1 are return class I (klasse I) at -0,01% and return class II (klasse II) at 5,53% (https://wetten.overheid.nl/BWBR0011353/2022-01-01 and https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen). Return class I (klasse I) is the savings class and return class II is the investments class. The old method mixes the two classes per band, and the Dutch Tax and Customs Administration prints the band outcomes as averages of 1,818%, 4,366% and 5,53% (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen).
 

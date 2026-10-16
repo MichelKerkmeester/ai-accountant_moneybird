@@ -56,7 +56,7 @@ Costs of a vehicle that belongs to the private assets (privévermogen) or is ren
 
 ### 3.6 Public transport (openbaar vervoer), taxi and aircraft (vliegtuig)
 
-Business travel by public transport, taxi or aircraft is deductible at 100% of the actual costs (werkelijke kosten) (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/zakelijke_kosten/overzicht-mogelijk-aftrekbare-zakelijke-kosten). The costs must be shown, for example with the train ticket or a public transport smart card (OV-chipkaart) trip overview. This route sits next to the € 0,21 mileage allowance in 3.5, which applies to a private or privately rented vehicle (gehuurd vervoermiddel).
+Business travel by public transport, taxi or aircraft is deductible at 100% of the actual costs (werkelijke kosten) (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/zakelijke_kosten/overzicht-mogelijk-aftrekbare-zakelijke-kosten). The costs must be shown, for example with the train ticket or a public transport smart card (OV-chipkaart) trip overview. This route sits next to the € 0,21 mileage allowance in 3.5, which applies to a private vehicle (privévervoermiddel) or a privately rented vehicle (gehuurd vervoermiddel).
 
 ### 3.7 Relocation costs (verhuiskosten)
 

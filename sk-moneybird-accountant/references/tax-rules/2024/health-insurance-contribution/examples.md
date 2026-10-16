@@ -38,7 +38,7 @@ The checked material contains no usable official 2024 example. The [Zvw page 202
 
 ### Example 1: profit of € 60.000 (Calculated example)
 
-Assumptions. Profits from business activities (winst uit onderneming) of € 60.000, the self-employed person's deduction (zelfstandigenaftrek) applies, no other income, no AOW age.
+Assumptions. Profits from business activities (winst uit onderneming) of € 60.000, the self-employed person's deduction (zelfstandigenaftrek) applies, no other income, below state pension age (AOW-leeftijd).
 
 Step 1. Profits from business activities: € 60.000.
 Step 2. Entrepreneur's allowance (ondernemersaftrek): € 60.000 minus € 3.750 = € 56.250.

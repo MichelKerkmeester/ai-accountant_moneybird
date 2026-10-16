@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and disability insurance (arbeidsongeschiktheidsverzekering) 2026: Rules
+# Pension (pensioen), annuity (lijfrente) and disability insurance (arbeidsongeschiktheidsverzekering) 2026: Rules
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -64,7 +64,7 @@ A taxpayer born before 1 September 1953 cannot use the annual allowance 2026 but
 
 ### 3.8 Temporary old-age annuity (tijdelijke oudedagslijfrente) cap
 
-The temporary old-age annuity (tijdelijke oudedagslijfrente) has a yearly cap of € 27.192 for 2026. Art. 3.125 lid 1 c requires at least five years of instalments (termijnen), starting not before the year of state pension (AOW) age and at the latest in the year of state pension age plus five, with a yearly amount up to the statutory cap judged at the time of premium payment. FISIN 2026 shows € 27.192 for the insurance (verzekering) row, but its account (rekening) row still prints € 26.781 (stale). The Ministry and ODB give € 27.192. Source: [Art. 3.125 lid 1 c](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/uitgaven_voor_inkomensvoorzieningen).
+The temporary old-age annuity (tijdelijke oudedagslijfrente) has a yearly cap of € 27.192 for 2026. Art. 3.125 lid 1 c requires at least five years of instalments (termijnen), starting not before the year of state pension age (AOW-leeftijd) and at the latest in the year of state pension age plus five, with a yearly amount up to the statutory cap judged at the time of premium payment. FISIN 2026 shows € 27.192 for the insurance (verzekering) row, but its account (rekening) row still prints € 26.781 (stale). The Ministry and ODB give € 27.192. Source: [Art. 3.125 lid 1 c](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/uitgaven_voor_inkomensvoorzieningen).
 
 ### 3.9 Bridge annuity (overbruggingslijfrente) cap
 

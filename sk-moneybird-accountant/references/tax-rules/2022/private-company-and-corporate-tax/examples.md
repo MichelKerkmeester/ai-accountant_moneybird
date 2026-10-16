@@ -114,7 +114,7 @@ Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdi
 
 ### Example 10: Zvw for the DGA (Calculated example)
 Invented wage of € 50.000.
-Case A, an insured DGA: the BV pays the employer health insurance (zorgverzekering) contribution (werkgeversheffing Zvw) of 6,75%. 6,75% x € 50.000 = € 3.375,00.
+Case A, an insured director and substantial shareholder (verzekerde DGA, directeur-grootaandeelhouder): the BV pays the employer health insurance (zorgverzekering) contribution (werkgeversheffing Zvw) of 6,75%. 6,75% x € 50.000 = € 3.375,00.
 Case B, an uninsured DGA: the BV withholds the Zvw contribution (bijdrage Zvw) of 5,50% from the net wage (nettoloon) and pays it through the payroll tax return (aangifte loonheffingen). 5,50% x € 50.000 = € 2.750,00.
 At an invented wage of € 70.000 the maximum contribution income (bijdrage-inkomen) of € 59.706 applies.
 Case A: 6,75% x € 59.706 = € 4.030,16 (rounded).

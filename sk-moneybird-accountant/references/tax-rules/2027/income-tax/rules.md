@@ -40,7 +40,7 @@ The statute version valid from 1 January 2027 prints the income-tax part (belast
 
 ### Box 1 table for people born before 1 January 1946, enacted text (art. 2.10a)
 
-Art. 2.10a gives a separate table for people born before 1 January 1946. It has a higher first boundary, because the AOW premium position of this group differs. The income-tax part is 8,01% up to € 41.123, then € 3.293 plus 37,59% up to € 79.569, then € 17.744 plus 49,50% above (https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 2.10a). This is the enacted text for 2027, not yet in force. The bill changes the first boundary to € 41.637 and, through the second memorandum of amendment (Tweede nota van wijziging), the top boundary and the fixed amount of the top band.
+Art. 2.10a gives a separate table for people born before 1 January 1946. It has a higher first boundary, because the state pension (AOW) premium position of this group differs. The income-tax part is 8,01% up to € 41.123, then € 3.293 plus 37,59% up to € 79.569, then € 17.744 plus 49,50% above (https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 2.10a). This is the enacted text for 2027, not yet in force. The bill changes the first boundary to € 41.637 and, through the second memorandum of amendment (Tweede nota van wijziging), the top boundary and the fixed amount of the top band.
 
 ### National insurance contribution (premie volksverzekeringen), cross-year structure behind the box 1 first bracket (eerste schijf)
 

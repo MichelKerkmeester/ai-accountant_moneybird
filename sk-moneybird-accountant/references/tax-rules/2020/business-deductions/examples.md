@@ -36,7 +36,7 @@ This part holds the worked examples for the Entrepreneur's allowance (ondernemer
 
 ### Example 1 (Calculated example): self-employed person's deduction (zelfstandigenaftrek) and SME profit exemption (MKB-winstvrijstelling) at a profit of € 60.000
 
-Facts: profit as an entrepreneur (winst als ondernemer) € 60.000, the entrepreneur meets the hours criterion (urencriterium), is below the AOW age at the start of the year and does not qualify for the starter's deduction (startersaftrek).
+Facts: profit as an entrepreneur (winst als ondernemer) € 60.000, the entrepreneur meets the hours criterion (urencriterium), is below the state pension age (AOW-leeftijd) at the start of the year and does not qualify for the starter's deduction (startersaftrek).
 
 - Step 1: self-employed person's deduction € 7.030. The cap of art. 3.76 lid 5 does not bite because € 7.030 is less than the profit of € 60.000.
 - Step 2: profit after the entrepreneur's allowance (ondernemersaftrek): € 60.000 - € 7.030 = € 52.970.

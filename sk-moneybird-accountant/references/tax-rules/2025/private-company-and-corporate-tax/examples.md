@@ -83,7 +83,7 @@ Uses the section 2 figures 25%, € 25.000, 9/H and 25,8%.
 3. If the wage for all work in the body and connected bodies is € 5.000,00, the rule does not apply, because that is not more than € 5.000,00.
 Uses the section 2 figures € 56.000 and € 5.000.
 
-**Zvw for a non-insured DGA (niet-verzekerde dga) (Calculated example).**
+**Health Insurance Act (Zorgverzekeringswet, Zvw) for a non-insured director and substantial shareholder (directeur-grootaandeelhouder, DGA) (niet-verzekerde dga) (Calculated example).**
 1. Maximum contribution income (bijdrage-inkomen) € 75.864,00.
 2. 5,26% × € 75.864,00 = € 3.990,45, rounded from € 3.990,4464, withheld on net wage (nettoloon).
 3. With a gross wage of € 60.000,00 the withholding is 5,26% × € 60.000,00 = € 3.156,00. Exact, no rounding needed.

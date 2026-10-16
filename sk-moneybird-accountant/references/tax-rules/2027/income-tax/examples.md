@@ -34,7 +34,7 @@ This part holds the worked examples for the Income tax (inkomstenbelasting) box 
 
 <a id="4-worked-examples"></a>
 
-The memorandum in response to the report (nota naar aanleiding van het verslag) holds 2027 purchasing power calculation examples (koopkracht rekenvoorbeelden) for households with two children and with mortgage interest (hypotheekrente) deduction (renteaftrek) (hypotheekrenteaftrek), and a starter's deduction (startersaftrek) effect table including the Zvw ([Belastingplan 2027 (Kamerstuk 37022), nota naar aanleiding van het verslag](https://www.tweedekamer.nl/downloads/document?id=2026D50335)). Those are policy illustrations, not year-table examples, and they are not reproduced here. All examples below are calculated examples that use only the section 2 figures of this file.
+The memorandum in response to the report (nota naar aanleiding van het verslag) holds 2027 purchasing power calculation examples (koopkracht rekenvoorbeelden) for households with two children and with mortgage interest (hypotheekrente) deduction (renteaftrek) (hypotheekrenteaftrek), and a starter's deduction (startersaftrek) effect table including the Health Insurance Act (Zorgverzekeringswet, Zvw) ([Belastingplan 2027 (Kamerstuk 37022), nota naar aanleiding van het verslag](https://www.tweedekamer.nl/downloads/document?id=2026D50335)). Those are policy illustrations, not year-table examples, and they are not reproduced here. All examples below are calculated examples that use only the section 2 figures of this file.
 
 ### Calculated example: bill box 1 table below AOW age
 
@@ -49,7 +49,7 @@ Assume a taxable income from work and home (belastbaar inkomen uit werk en wonin
 
 The bill prints 36,23% as the combined first rate and 8,58% as the income-tax part.
 
-1. Premium part below AOW age: 36,23% less 8,58% is 27,65%, which matches the checked cross-year national insurance contribution (premie volksverzekeringen) rate.
+1. Premium part below state pension age (AOW-leeftijd): 36,23% less 8,58% is 27,65%, which matches the checked cross-year national insurance contribution (premie volksverzekeringen) rate.
 2. The same split is visible in the checked cross-year material for 2026, where 17,85% equals 8,10% plus 0,10% plus 9,65%. The checked material treats the continuation of the Anw and Wlz parts at AOW age as inference, not as a stated rule.
 
 ### Calculated example: full year at AOW age, bill

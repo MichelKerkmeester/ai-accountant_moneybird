@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and disability insurance (arbeidsongeschiktheidsverzekering) 2027: Figures
+# Pension (pensioen), annuity (lijfrente) and disability insurance (arbeidsongeschiktheidsverzekering) 2027: Figures
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the annual allowance (jaarruimte) and catch-up allowance (reserveringsruimte) for annuity premiums (lijfrentepremies), the annuity (lijfrente) products and their benefit (uitkering) conditions, the profit from business discontinuation (stakingswinst) conversion, the disability insurance (AOV, arbeidsongeschiktheidsverzekering) premium deduction and the state of the disability (arbeidsongeschiktheid) rules for a ZZP sole trader in 2027. The annual allowance percentage of 30% is enacted in the 2027-01-01 text of the law, but almost every indexed 2027 amount is still missing and waits for the December 2026 indexation regulation. The year is a mix of three layers: the enacted 2027-01-01 text of the law with 2026 amounts still in place, the Tax Plan 2027 (Belastingplan 2027) bill that proposes a freeze of the income cap (aftoppingsgrens) and a limited indexation of the annuity maxima, and the BAZ bill that is not in force (in werking). There is no mandatory disability insurance (AOV) for self-employed persons (zelfstandigen) in 2027.
+This file covers the annual allowance (jaarruimte) and catch-up allowance (reserveringsruimte) for annuity premiums (lijfrentepremies), the annuity (lijfrente) products and their benefit (uitkering) conditions, the profit from business discontinuation (stakingswinst) conversion, the disability insurance (AOV, arbeidsongeschiktheidsverzekering) premium deduction and the state of the disability (arbeidsongeschiktheid) rules for a ZZP sole trader in 2027. The annual allowance percentage of 30% is enacted in the 2027-01-01 text of the law, but almost every indexed 2027 amount is still missing and waits for the December 2026 indexation regulation. The year is a mix of three layers: the enacted 2027-01-01 text of the law with 2026 amounts still in place, the Tax Plan 2027 (Belastingplan 2027) bill that proposes a freeze of the income cap (aftoppingsgrens) and a limited indexation of the annuity maxima, and the Basic Disability Insurance for Self-Employed Persons Act (Wet basisverzekering arbeidsongeschiktheid zelfstandigen, BAZ) bill that is not in force (in werking). There is no mandatory disability insurance (AOV) for self-employed persons (zelfstandigen) in 2027.
 
 ---
 

@@ -48,7 +48,7 @@ Step 1: the salary of € 60.000 is above the maximum of € 58.311, so the head
 Step 2: no Zvw contribution (Zvw-bijdrage) by assessment (aanslag) is charged over the freelance income. The page states this gives no contribution.
 
 **Example 3. Calculated example.**
-Profit (winst) € 60.000, entrepreneur below AOW age.
+Profit (winst) € 60.000, entrepreneur below state pension age (AOW-leeftijd).
 Step 1: profit is € 60.000.
 Step 2: self-employed person's deduction (zelfstandigenaftrek) € 6.670, so profit after entrepreneur's allowance (ondernemersaftrek) is € 60.000 minus € 6.670 = € 53.330.
 Step 3: SME profit exemption (mkb-winstvrijstelling) is 14% of € 53.330 = € 7.466,20.

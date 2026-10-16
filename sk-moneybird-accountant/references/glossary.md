@@ -120,6 +120,7 @@ A note of `plain` marks an everyday word or phrase whose Dutch adds nothing, so 
 | assessment taxes | aanslagbelastingen |  |
 | assessment threshold | aanslaggrens |  |
 | asset | bezitting |  |
+| asset classification | etikettering |  |
 | asset classification | vermogensetikettering |  |
 | assets | activa |  |
 | assets | bezittingen |  |
@@ -571,7 +572,6 @@ A note of `plain` marks an everyday word or phrase whose Dutch adds nothing, so 
 | kilowatt peak | kilowattpiek |  |
 | knowledge group | kennisgroep |  |
 | knowledge group position | kennisgroepstandpunt |  |
-| labelling | etikettering |  |
 | labour costs | loonkosten |  |
 | labour law | arbeidsrecht |  |
 | land | gronden | plain |
@@ -898,6 +898,7 @@ A note of `plain` marks an everyday word or phrase whose Dutch adds nothing, so 
 | return base | rendementsgrondslag |  |
 | return class | rendementsklasse |  |
 | return class I | klasse i |  |
+| return class percentages | rendementsklassen |  |
 | return classes | rendementsklassen |  |
 | return form | biljet |  |
 | return period | aangiftetijdvak |  |

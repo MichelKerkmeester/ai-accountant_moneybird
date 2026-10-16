@@ -35,7 +35,7 @@ This part holds the changes, records, open points and related resources for the 
 <a id="5-changes"></a>
 
 - Self-employed person (zelfstandige)'s deduction (zelfstandigenaftrek): € 6.670 in 2021 to € 6.310 in 2022 (https://wetten.overheid.nl/BWBR0011353/2021-01-01 and https://wetten.overheid.nl/BWBR0011353/2022-01-01).
-- Self-employed person's deduction at state pension age (AOW age): € 3.335 in 2021 to € 3.155 in 2022 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/ondernemersaftrek_en_investeringsaftrek and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek).
+- Self-employed person's deduction at state pension age (AOW-leeftijd): € 3.335 in 2021 to € 3.155 in 2022 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/ondernemersaftrek_en_investeringsaftrek and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek).
 - Research and development deduction (aftrek voor speur- en ontwikkelingswerk): € 13.188 in 2021 to € 13.360 in 2022 (https://wetten.overheid.nl/BWBR0011353/2021-01-01 and https://wetten.overheid.nl/BWBR0011353/2022-01-01).
 - S&O starter increase: € 6.598 in 2021 to € 6.684 in 2022 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/ondernemersaftrek_en_investeringsaftrek and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek).
 - Old-age reserve (oudedagsreserve) addition maximum: € 9.395 in 2021 to € 9.632 in 2022 (https://wetten.overheid.nl/BWBR0011353/2021-01-01 and https://wetten.overheid.nl/BWBR0011353/2022-01-01).

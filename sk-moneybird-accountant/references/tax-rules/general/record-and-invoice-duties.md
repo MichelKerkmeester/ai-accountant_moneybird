@@ -21,7 +21,7 @@ version: 1.0.0.0
 General topic 6 of 13 in the Dutch tax rules guide.
 
 - [vat.md](vat.md): 3.1 VAT (BTW).
-- [income-tax-box-1-and-the-health-insurance-contribution.md](income-tax-box-1-and-the-health-insurance-contribution.md): 3.2 Income tax (inkomstenbelasting) box 1 and the Zvw contribution (bijdrage Zvw).
+- [income-tax-box-1-and-the-health-insurance-contribution.md](income-tax-box-1-and-the-health-insurance-contribution.md): 3.2 Income tax (inkomstenbelasting) box 1 and the Health Insurance Act (Zorgverzekeringswet, Zvw) contribution (bijdrage Zvw).
 - [business-deductions-and-sme-profit-exemption.md](business-deductions-and-sme-profit-exemption.md): 3.3 Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling).
 - [investment-deductions-and-depreciation.md](investment-deductions-and-depreciation.md): 3.4 Investment deductions and depreciation.
 - [costs-and-the-car.md](costs-and-the-car.md): 3.5 Costs and the car.

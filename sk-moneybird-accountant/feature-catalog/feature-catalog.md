@@ -523,6 +523,22 @@ See [`quality-gates/outline-check.md`](quality-gates/outline-check.md) for sourc
 
 ---
 
+### English first check
+
+#### Description
+
+Checks that the skill family writes English first and reports every Dutch term without an English lead, every first use without its Dutch label and every label no glossary row names.
+
+#### Current Reality
+
+`check-english-first.py` reads both glossary files and `assets/english-first-exceptions.json`, blanks the places where Dutch is data, such as code, links, quotes, legal citations, Source columns and the playbook prompts, and then reports residual, first-use, doubled, reversed and unglossed problems plus any exception that suppresses nothing. The run prints sorted lines and a count line and makes no network call. The skill health workflow runs `check-english-first-test.sh`, which proves every rule and mask on fixtures and ends with the real corpus.
+
+#### Source Files
+
+See [`quality-gates/english-first-check.md`](quality-gates/english-first-check.md) for source and validation anchors.
+
+---
+
 ### Write contract check
 
 #### Description

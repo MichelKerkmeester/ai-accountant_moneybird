@@ -190,7 +190,7 @@ The explanatory memorandum (memorie van toelichting) explains the € 36: 120% o
 
 ### 3.39 VBAR scope and articles
 
-Lid 2 says the Minister of Social Affairs and Employment (SZW) changes the amount in the manner of art. 14 lid 1 and 2 of the Minimum Wage and Minimum Holiday Allowance Act (Wet minimumloon en minimumvakantiebijslag), rounded up to whole euros, always starting from the unrounded amount. Lid 3 makes the article inapplicable when the other party is a natural person not acting in a profession or business. Article II provides an evaluation within 5 years. Article III lid 2 says that for the first application (eerste toepassing) after entry into force (inwerkingtreding) the applicable amount follows from a ministerial regulation. Source: https://zoek.officielebekendmakingen.nl/stb-2026-158.html
+Lid 2 says the Minister of Social Affairs and Employment (Sociale Zaken en Werkgelegenheid, SZW) changes the amount in the manner of art. 14 lid 1 and 2 of the Minimum Wage and Minimum Holiday Allowance Act (Wet minimumloon en minimumvakantiebijslag), rounded up to whole euros, always starting from the unrounded amount. Lid 3 makes the article inapplicable when the other party is a natural person not acting in a profession or business. Article II provides an evaluation within 5 years. Article III lid 2 says that for the first application (eerste toepassing) after entry into force (inwerkingtreding) the applicable amount follows from a ministerial regulation. Source: https://zoek.officielebekendmakingen.nl/stb-2026-158.html
 
 ### 3.40 Model agreements (modelovereenkomsten)
 
@@ -206,7 +206,7 @@ Bill 36 912 was submitted (ingediend) on 24 March 2026. A technical briefing (te
 
 ### 3.43 Enacted 2027 law for procedures
 
-The AWR terms (art. 11, 16 and 52), the Collection of State Taxes Act terms and the VBAR hold in their current texts in 2027. No 2027 change to them was found. Sources: https://wetten.overheid.nl/BWBR0002320/2026-01-01 and https://wetten.overheid.nl/BWBR0004770/2026-01-01
+The AWR terms (art. 11, 16 and 52), the Collection of State Taxes Act terms and the Act on Clarification of the Assessment of Employment Relationships and Legal Presumption (Wet verduidelijking beoordeling arbeidsrelaties en rechtsvermoeden, VBAR) hold in their current texts in 2027. No 2027 change to them was found. Sources: https://wetten.overheid.nl/BWBR0002320/2026-01-01 and https://wetten.overheid.nl/BWBR0004770/2026-01-01
 
 ### 3.44 Tax Plan 2027 (Belastingplan 2027) and procedure
 

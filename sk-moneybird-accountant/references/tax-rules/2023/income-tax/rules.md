@@ -36,7 +36,7 @@ This part holds the how-it-works rules for the Income tax (inkomstenbelasting) b
 
 ### Box 1 below state pension age (AOW age)
 
-For a taxpayer below AOW age, the published table applies 36,93% up to € 73.031 and 49,50% above that boundary (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/belastingberekening). The statutory income-tax schedule separately shows 9,28% up to € 37.149, then € 3.447 plus 36,93% through € 73.031, then € 16.698 plus 49,50% above it (https://wetten.overheid.nl/BWBR0011353/2023-01-01). The 36,93% published rate includes the applicable national insurance premiums within the premium ceiling described below (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/belastingberekening, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/premie_volksverzekeringen).
+For a taxpayer below state pension age (AOW-leeftijd), the published table applies 36,93% up to € 73.031 and 49,50% above that boundary (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/belastingberekening). The statutory income-tax schedule separately shows 9,28% up to € 37.149, then € 3.447 plus 36,93% through € 73.031, then € 16.698 plus 49,50% above it (https://wetten.overheid.nl/BWBR0011353/2023-01-01). The 36,93% published rate includes the applicable national insurance premiums within the premium ceiling described below (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/belastingberekening, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/premie_volksverzekeringen).
 
 ### Box 1 full-year AOW age, born on or after 1 January 1946
 

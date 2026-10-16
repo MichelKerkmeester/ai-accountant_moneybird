@@ -25,27 +25,27 @@ This reference gathers the changes in every tax year, newest first, with the pat
 
 Path: [2027/changes.md](2027/changes.md)
 
-- The self-employed person (zelfstandige)'s deduction (zelfstandigenaftrek) fell from € 1.200 in 2026 to € 900 in 2027 and the amount for those at state pension age (AOW) from € 600 to € 450. [Income tax (inkomstenbelasting)](2027/income-tax/notes.md#5-changes)
+- The self-employed person (zelfstandige)'s deduction (zelfstandigenaftrek) fell from € 1.200 in 2026 to € 900 in 2027 and the amount for those at state pension age (AOW-leeftijd) from € 600 to € 450. [Income tax (inkomstenbelasting)](2027/income-tax/notes.md#5-changes)
 - The rate adjustment (tariefsaanpassing) fell from 11,94% above € 78.426 in 2026 to 11,91% above € 79.569 in the 2027 text. [entrepreneur's allowance (ondernemersaftrek)](2027/business-deductions/notes.md#5-changes)
 - A zero-emission car (zero-emissie auto) first admitted in 2027 gets 2% off capped at € 600, so 20% up to € 30.000, against 4% off capped at € 1.200 in 2026. [Costs and the car (kosten en auto)](2027/costs-and-car/notes.md#5-changes)
 - New from 1 January 2027 is a pseudo-final levy (pseudo-eindheffing) of 12% of the catalogue price (catalogusprijs) per year for new petrol or diesel lease cars used privately. [Costs and the car](2027/costs-and-car/notes.md#5-changes)
 - The Zvw contribution (bijdrage zorgverzekeringswet) by assessment (aanslag) goes from 4,85% in 2026 to 5,02% in 2027 (proposed, a budget estimate until the ministerial regulation (ministeriële regeling) sets the rate). [Zvw contribution](2027/health-insurance-contribution/notes.md#5-changes)
 - The income cap (aftoppingsgrens) on the contribution base (premiegrondslag) stays € 137.800 in 2026 and € 137.800 in the 2027 text, with a proposed freeze at € 137.800 for 2027 to 2032. [Pension and disability insurance (pensioen en AOV)](2027/pension-and-disability-insurance/notes.md#5-changes)
 - From 1 January 2027 the remaining parts of the soft landing (zachte landing) lapse, so default penalties (verzuimboetes) are possible again and a business visit (bedrijfsbezoek) is no longer the default starting point for a control. [Procedure](2027/procedure/notes.md#5-changes)
-- The VBAR entered into force (in werking trad) on 31 December 2026, so the legal presumption (rechtsvermoeden) applies throughout 2027. [employment relationship (arbeidsrelatie)](2027/work-relationship/notes.md#5-changes)
+- The Act on Clarification of the Assessment of Employment Relationships and Legal Presumption (Wet verduidelijking beoordeling arbeidsrelaties en rechtsvermoeden, VBAR) entered into force (in werking trad) on 31 December 2026, so the legal presumption (rechtsvermoeden) applies throughout 2027. [employment relationship (arbeidsrelatie)](2027/work-relationship/notes.md#5-changes)
 
 ## 2026
 
 Path: [2026/changes.md](2026/changes.md)
 
 - Accommodation (logies) moved from 9% to 21% from 1 January 2026. [VAT](2026/vat/notes.md#5-changes)
-- In 2026 there are no default penalties (verzuimboetes), but penalties (vergrijpboetes) for gross negligence (grove schuld) or intent are possible under the normal rules from 1 January 2026. [employment relationship](2026/work-relationship/notes.md#5-changes)
-- The self-employed person's deduction (zelfstandigenaftrek) fell from € 2.470 in 2025 to € 1.200 in 2026 and the state pension age (AOW age) amount from € 1.235 to € 600. [income tax](2026/income-tax/notes.md#5-changes)
+- In 2026 there are no default penalties (verzuimboetes), but penalties (vergrijpboetes) for gross negligence (grove schuld) or intent (opzet) are possible under the normal rules from 1 January 2026. [employment relationship](2026/work-relationship/notes.md#5-changes)
+- The self-employed person's deduction (zelfstandigenaftrek) fell from € 2.470 in 2025 to € 1.200 in 2026 and the state pension age (AOW-leeftijd) amount from € 1.235 to € 600. [income tax](2026/income-tax/notes.md#5-changes)
 - The rate adjustment (tariefsaanpassing) fell from 12,02% above € 76.817 in 2025 to 11,94% above € 78.426 in 2026. [business deductions](2026/business-deductions/notes.md#5-changes)
 - The tax-free allowance (heffingsvrij vermogen) rose from € 57.684 per person in 2025 to € 59.357 in 2026. [box-3](2026/box-3/notes.md#5-changes)
 - The 2026 statute still prints € 0,23 per km, but the applied amount for 2026 is € 0,25 per km, retroactive to 1 January 2026. [costs and car](2026/costs-and-car/notes.md#5-changes)
 - A zero-emission car (zero-emissie auto) first admitted in 2026 gets 4% off capped at € 1.200, so 18% up to € 30.000. [costs and car](2026/costs-and-car/notes.md#5-changes)
-- The Zvw contribution assessed (Zvw-bijdrage, bijdrage bij aanslag) fell from 5,26% in 2025 to 4,85% in 2026. [health insurance contribution](2026/health-insurance-contribution/notes.md#5-changes)
+- The Health Insurance Act (Zorgverzekeringswet, Zvw) contribution assessed (Zvw-bijdrage, bijdrage bij aanslag) fell from 5,26% in 2025 to 4,85% in 2026. [health insurance contribution](2026/health-insurance-contribution/notes.md#5-changes)
 
 ## 2025
 
@@ -55,10 +55,10 @@ Path: [2025/changes.md](2025/changes.md)
 - From 1 January 2025 the normal rules apply to employment relationships (arbeidsrelaties), no instructions (aanwijzingen) are given and false self-employment (schijnzelfstandigheid) can lead directly to correction obligations (correctieverplichtingen) and supplementary assessments for payroll taxes (naheffingsaanslagen loonheffingen). [employment relationship](2025/work-relationship/notes.md#5-changes)
 - The self-employed person's deduction (zelfstandigenaftrek) fell from € 3.750 in 2024 to € 2.470 in 2025. [entrepreneur's allowance](2025/business-deductions/notes.md#5-changes)
 - The SME profit exemption (mkb-winstvrijstelling) fell from 13,31% in 2024 to 12,7% in 2025. [entrepreneur's allowance](2025/business-deductions/notes.md#5-changes)
-- The box 1 table below state pension age (AOW) became three brackets, 35,82% up to € 38.441, 37,48% to € 76.817 and 49,50% above. [income tax](2025/income-tax/notes.md#5-changes)
+- The box 1 table below state pension age (AOW-leeftijd) became three brackets, 35,82% up to € 38.441, 37,48% to € 76.817 and 49,50% above. [income tax](2025/income-tax/notes.md#5-changes)
 - The tax-free allowance (heffingsvrij vermogen) rose from € 57.000 per person in 2024 to € 57.684 in 2025. [box 3](2025/box-3/notes.md#5-changes)
 - A zero-emission car (zero-emissie auto) first admitted in 2025 gets 5% off capped at € 1.500, so 17% up to € 30.000. [costs and car](2025/costs-and-car/notes.md#5-changes)
-- The Zvw contribution (Zvw-bijdrage) by assessment (aanslag) fell from 5,32% in 2024 to 5,26% in 2025. [Zvw](2025/health-insurance-contribution/notes.md#5-changes)
+- The Health Insurance Act (Zorgverzekeringswet, Zvw) contribution (Zvw-bijdrage) by assessment (aanslag) fell from 5,32% in 2024 to 5,26% in 2025. [Zvw](2025/health-insurance-contribution/notes.md#5-changes)
 
 ## 2024
 
@@ -71,7 +71,7 @@ Path: [2024/changes.md](2024/changes.md)
 - The kilometre allowance rose from € 0,21 in 2023 to € 0,23 in 2024. [costs and car (kosten en auto)](2024/costs-and-car/notes.md#5-changes)
 - The EIA percentage fell from 45,5% in 2023 to 40% in 2024. [investments (investeringen)](2024/investments/notes.md#5-changes)
 - The box 3 rate rose from 32% in 2023 to 36% in 2024. [box-3](2024/box-3/notes.md#5-changes)
-- The Zvw contribution (Zvw-bijdrage) by assessment (bijdrage bij aanslag) fell from 5,43% in 2023 to 5,32% in 2024. [Zvw contribution (Zvw-bijdrage)](2024/health-insurance-contribution/notes.md#5-changes)
+- The Health Insurance Act (Zorgverzekeringswet, Zvw) contribution (Zvw-bijdrage) by assessment (bijdrage bij aanslag) fell from 5,43% in 2023 to 5,32% in 2024. [Zvw contribution (Zvw-bijdrage)](2024/health-insurance-contribution/notes.md#5-changes)
 
 ## 2023
 
@@ -93,7 +93,7 @@ Path: [2022/changes.md](2022/changes.md)
 - The corona special deferral (bijzonder uitstel) build-up window closed on 31 March 2022 and repayment of the built-up debt started on 1 October 2022 with the first instalment due on 31 October 2022. [VAT](2022/vat/notes.md#5-changes)
 - The self-employed person's deduction (zelfstandigenaftrek) fell from € 6.670 in 2021 to € 6.310 in 2022. [entrepreneur's allowance](2022/business-deductions/notes.md#5-changes)
 - The rate adjustment (tariefsaanpassing) rose from 6,5% above € 68.507 in 2021 to 9,5% above € 69.398 in 2022. [entrepreneur's allowance](2022/business-deductions/notes.md#5-changes)
-- The first rate below state pension age (AOW) fell from 37,10% to 37,07% and the top boundary moved from € 68.507 to € 69.398. [income tax](2022/income-tax/notes.md#5-changes)
+- The first rate below state pension age (AOW-leeftijd) fell from 37,10% to 37,07% and the top boundary moved from € 68.507 to € 69.398. [income tax](2022/income-tax/notes.md#5-changes)
 - The Zvw contribution (bijdrage zorgverzekeringswet) by assessment (aanslag) fell from 5,75% in 2021 to 5,50% in 2022. [Zvw](2022/health-insurance-contribution/notes.md#5-changes)
 - The threshold for mixed costs (gemengde kosten drempel) rose from € 4.700 in 2021 to € 4.800 in 2022. [costs and car](2022/costs-and-car/notes.md#5-changes)
 - A zero-emission car (zero-emissie auto) first admitted in 2022 gets 6% off capped at € 2.100, so 16% up to € 35.000, against 10% off capped at € 4.000 for a 2021 admission. [costs and car](2022/costs-and-car/notes.md#5-changes)
@@ -106,7 +106,7 @@ Path: [2021/changes.md](2021/changes.md)
 - From 1 July 2021 the e-commerce package introduced the € 10.000 EU distance-sales threshold for qualifying goods and digital services together. [VAT](2021/vat/notes.md#5-changes)
 - The self-employed person's deduction (zelfstandigenaftrek) fell from € 7.030 in 2020 to € 6.670 in 2021. [entrepreneur's allowance](2021/business-deductions/notes.md#5-changes)
 - The rate adjustment (tariefsaanpassing) rose from 3,5% above € 68.507 in 2020 to 6,5% above € 68.507 in 2021. [entrepreneur's allowance](2021/business-deductions/notes.md#5-changes)
-- The combined first rate for those below state pension age (AOW) fell from 37,35% to 37,10% and the first statutory boundary moved from € 34.712 to € 35.129. [income tax](2021/income-tax/notes.md#5-changes)
+- The combined first rate for those below state pension age (AOW-leeftijd) fell from 37,35% to 37,10% and the first statutory boundary moved from € 34.712 to € 35.129. [income tax](2021/income-tax/notes.md#5-changes)
 - The Zvw contribution (bijdrage zorgverzekeringswet) by assessment (aanslag) rose from 5,45% in 2020 to 5,75% in 2021. [zvw](2021/health-insurance-contribution/notes.md#5-changes)
 - The tax-free allowance (heffingsvrij vermogen) rose from € 30.846 per person in 2020 to € 50.000 in 2021. [box-3](2021/box-3/notes.md#5-changes)
 - The zero-emission reduction for a car first admitted in 2021 is 10% off capped at € 4.000, so 12% up to € 40.000. [costs and car](2021/costs-and-car/notes.md#5-changes)

@@ -36,7 +36,7 @@ This part holds the worked examples for the Work relationship and self-employmen
 
 No official example for this topic was found in the checked 2027 material, so every example below is marked `Calculated example`.
 
-**Example 1, `Calculated example`: the VBAR amounts and the unsettled 2027 rate test.**
+**Example 1, `Calculated example`: the Act on Clarification of the Assessment of Employment Relationships and Legal Presumption (Wet verduidelijking beoordeling arbeidsrelaties en rechtsvermoeden, VBAR) amounts and the unsettled 2027 rate test.**
 Rule: art. 7:610aa BW, in force (in werking) from 31 December 2026 by the Decree of 13 July 2026 (Besluit van 13 juli 2026), Stb. 2026, 207, so it applies throughout 2027. The working person (werkende) is presumed to work under an employment contract (arbeidsovereenkomst) when the pay is at most the applicable hourly amount. Lid 2 indexes the amount with the statutory minimum wage (wettelijk minimumloon, WML), rounded up from the unrounded amount. The first applicable amount is given by ministerial regulation (ministeriële regeling) under art. III lid 2. When the presumption applies, the working person can invoke it and the client (opdrachtgever) must prove there is no employment contract.
 Amounts in the checked material: € 36 (the statutory base text, reference date (peildatum) 1 January 2025) and € 38 (the indexed amount, reference date 1 January 2026).
 Input: invented rates. A self-employed sole trader (ZZP) works for a private limited company (BV).
@@ -69,7 +69,7 @@ Sources: [Handhavingsplan 2026](https://download.belastingdienst.nl/belastingdie
 
 **Example 4, `Calculated example`: the penalty policy (boetebeleid) by year for the same relationship.**
 Input: the same relationship, no bad faith.
-- Corrections (correcties) over 2025: no default penalties (verzuimboetes) and no penalties (vergrijpboetes) for gross negligence (grove schuld) or intent for the qualification of employment relationships (arbeidsrelaties). This stays so.
+- Corrections (correcties) over 2025: no default penalties (verzuimboetes) and no penalties (vergrijpboetes) for gross negligence (grove schuld) or intent (opzet) for the qualification of employment relationships (arbeidsrelaties). This stays so.
 - Corrections over 2026: no default penalties. A penalty (vergrijpboete) for gross negligence or intent is possible under the normal rules from 1 January 2026, also for corrections over 2026.
 - Corrections over 2027: the remaining parts of the soft landing (zachte landing) lapse on 1 January 2027. Default penalties are possible again and a business visit (bedrijfsbezoek) is no longer the default starting point for a control.
 The period from 1 January 2025 to 1 January 2027 is 24 months, or 2 years. This is enforcement policy, not statute.
@@ -90,7 +90,7 @@ Step 2: the period from 1 January 2027 to 1 January 2028 is 12 months.
 Step 3: a relationship in 2027 cannot rely on the safe harbour (veilige haven).
 Source: [rijksoverheid.nl](https://www.rijksoverheid.nl/actueel/nieuws/2026/10/01/zelfstandigenwet-biedt-meer-duidelijkheid-en-erkenning-voor-zzpers).
 
-No example is given for BAZ (bill 36 912). It is a proposed bill, and the checked material does not resolve its wording (about 70% of income up to the minimum wage) or state the 2027 minimum wage, so no percentage calculation is given.
+No example is given for Basic Disability Insurance for Self-Employed Persons Act (Wet basisverzekering arbeidsongeschiktheid zelfstandigen, BAZ) (bill 36 912). It is a proposed bill, and the checked material does not resolve its wording (about 70% of income up to the minimum wage) or state the 2027 minimum wage, so no percentage calculation is given.
 
 ---
 

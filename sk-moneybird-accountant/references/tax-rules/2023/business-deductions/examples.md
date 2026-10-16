@@ -60,7 +60,7 @@ This part holds the worked examples for the Entrepreneur's allowance (ondernemer
 
 ### Calculated example: profit € 60.000 with the hours criterion, no starter
 
-**Calculated example.** Built from the section 2 figures. A sole trader meets the hours criterion, is below state pension age (AOW age), is not a starter, and has no other box 1 income.
+**Calculated example.** Built from the section 2 figures. A sole trader meets the hours criterion, is below state pension age (AOW-leeftijd), is not a starter, and has no other box 1 income.
 
 1. Profit: € 60.000,00.
 2. Self-employed person's deduction: € 5.030,00. Profit after the entrepreneur's allowance (ondernemersaftrek): € 60.000,00 minus € 5.030,00 = € 54.970,00.

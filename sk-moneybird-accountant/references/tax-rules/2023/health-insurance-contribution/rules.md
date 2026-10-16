@@ -56,7 +56,7 @@ Zvw art. 43 lid 2 onderdeel b includes the taxable profit from business (belastb
 
 ### 3.6 Self-employed person's deduction (zelfstandigenaftrek)
 
-The self-employed person's deduction for 2023 is € 5.030. At state pension age (AOW age) it is € 2.515 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek). An entrepreneur who qualifies deducts it from the profit. The entrepreneur's allowance comes off the profit before the SME profit exemption under art. 3.2 Wet IB 2001, so the self-employed person's deduction lowers the Zvw base (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01, https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.2). The checked 2023 sources give the amounts only. The qualifying conditions belong to the entrepreneur's allowance topic.
+The self-employed person's deduction for 2023 is € 5.030. At state pension age (AOW-leeftijd) it is € 2.515 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek). An entrepreneur who qualifies deducts it from the profit. The entrepreneur's allowance comes off the profit before the SME profit exemption under art. 3.2 Wet IB 2001, so the self-employed person's deduction lowers the Zvw base (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01, https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.2). The checked 2023 sources give the amounts only. The qualifying conditions belong to the entrepreneur's allowance topic.
 
 ### 3.7 Starter's deduction (startersaftrek)
 

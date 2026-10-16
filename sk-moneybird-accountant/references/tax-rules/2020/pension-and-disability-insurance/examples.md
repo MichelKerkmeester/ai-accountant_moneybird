@@ -64,7 +64,7 @@ Step 3: the annual allowance is € 6.321,22 - € 6.270,00 = € 51,22. This is
 
 ### Calculated example 4: a FOR addition (dotatie) reduces the annual allowance to nil
 
-Fact pattern: a self-employed person meets the conditions for a FOR addition (art. 3.67: the hours criterion (urencriterium) and not yet AOW age at the start of 2019). The profits from business activities are € 30.000 in 2019, with no pension accrual and no other income components. In 2019 the addition to the old-age reserve (toevoeging aan de oudedagsreserve) is € 2.832 and the reduction is € 0.
+Fact pattern: a self-employed person meets the conditions for a FOR addition (art. 3.67: the hours criterion (urencriterium) and not yet state pension age (AOW-leeftijd) at the start of 2019). The profits from business activities are € 30.000 in 2019, with no pension accrual and no other income components. In 2019 the addition to the old-age reserve (toevoeging aan de oudedagsreserve) is € 2.832 and the reduction is € 0.
 
 Step 1: the contribution base uses the profit before addition to and withdrawal from the old-age reserve and before the entrepreneur's allowance and subtracts the franchise: min(€ 30.000, € 110.111) - € 12.472 = € 30.000 - € 12.472 = € 17.528.
 Step 2: the percentage is applied: 13,3% x € 17.528 = € 2.331,22 (€ 2.331,224 rounded down).

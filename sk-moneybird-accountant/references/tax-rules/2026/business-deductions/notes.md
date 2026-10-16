@@ -35,7 +35,7 @@ This part holds the changes, records, open points and related resources for the 
 <a id="5-changes"></a>
 
 - Self-employed person's deduction (zelfstandigenaftrek): € 2.470 in 2025 to € 1.200 in 2026 (https://wetten.overheid.nl/BWBR0011353/2025-01-01 and https://wetten.overheid.nl/BWBR0011353/2026-01-01).
-- Self-employed person's deduction at state pension (AOW) age: € 1.235 in 2025 to € 600 in 2026 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/ondernemersaftrek_en_investeringsaftrek).
+- Self-employed person's deduction at state pension age (AOW-leeftijd): € 1.235 in 2025 to € 600 in 2026 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/ondernemersaftrek_en_investeringsaftrek).
 - Deduction for research and development work (aftrek voor speur- en ontwikkelingswerk): € 15.738 in 2025 to € 15.979 in 2026 (https://wetten.overheid.nl/BWBR0011353/2025-01-01 and https://wetten.overheid.nl/BWBR0011353/2026-01-01).
 - R&D (S&O) starter increase: € 7.875 in 2025 to € 7.996 in 2026 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/ondernemersaftrek_en_investeringsaftrek).
 - Rate adjustment (tariefsaanpassing): 12,02% above € 76.817 in 2025 to 11,94% above € 78.426 in 2026 (https://wetten.overheid.nl/BWBR0011353/2025-01-01 and https://wetten.overheid.nl/BWBR0011353/2026-01-01).

@@ -68,7 +68,7 @@ The same decree of 17 May 2026 temporarily lowers motor vehicle tax (motorrijtui
 
 The same decree allows € 0,25 per kilometre instead of € 0,23 under art. 31a lid 2 onderdeel a 3° Wet LB. Correction notices (correctieberichten) are allowed. Source: https://zoek.officielebekendmakingen.nl/stcrt-2026-18302.html (section 2.1).
 
-### 9. Other flat-rate travel expenses (forfaitaire reiskosten) in the Income Tax Act (Wet inkomstenbelasting)
+### 9. Other flat-rate travel expenses (forfaitaire reiskosten) in the Income Tax Act 2001 (Wet IB 2001)
 
 The same decree sets € 0,25 instead of € 0,23 for the other flat-rate travel expenses (forfaitaire reiskosten) in the Income Tax Act under art. 6.17 lid 6 onderdeel a, art. 6.26 with art. 40 lid 1 onderdeel b URIB and art. 6.36 lid 2. Source: https://zoek.officielebekendmakingen.nl/stcrt-2026-18302.html (section 2.2).
 
