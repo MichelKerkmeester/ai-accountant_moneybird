@@ -1,6 +1,6 @@
 ---
 title: VAT return preparation
-description: Entry index for preparing a Dutch VAT period from Moneybird. The folder holds the ordered procedure, the rubriek and derivation rules, the year-end branch and the review pack. It prepares and never files, submits or pays.
+description: Entry index for preparing a Dutch VAT period from Moneybird. The folder holds the ordered procedure, the section and derivation rules, the year-end branch and the review pack. It prepares and never files, submits or pays.
 trigger_phrases:
   - VAT return preparation
   - prepare the VAT return
@@ -14,9 +14,9 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-Entry index for preparing a Dutch VAT period from Moneybird. The folder holds the ordered procedure, the rubriek and derivation rules, the year-end branch and the review pack. It prepares and never files, submits or pays.
+Entry index for preparing a Dutch VAT period from Moneybird. The folder holds the ordered procedure, the section and derivation rules, the year-end branch and the review pack. It prepares and never files, submits or pays.
 
-The T10 task-type row routes a prepare-the-VAT-return request into `references/vat-return/`. The agent assembles the rubriek table, the checks and the review pack for one period, names every exception and stops before filing. The Operator checks, confirms, files and pays.
+The T10 task-type row routes a prepare-the-VAT-return request into `references/vat-return/`. The agent assembles the section (rubriek) table, the checks and the review pack for one period, names every exception and stops before filing. The Operator checks, confirms, files and pays.
 
 ---
 
@@ -24,7 +24,7 @@ The T10 task-type row routes a prepare-the-VAT-return request into `references/v
 
 ### The period route
 
-A request that names the VAT return, a quarterly return or a preparation of either wins T10 and reads the folder README, the resolved year VAT figures and, when a deadline, a correction or belastingrente applies, the year procedure figures. The mode is LIVE. The administration data is read at run time with moneybird-guard under `MONEYBIRD_GUARD_READ_ONLY=1`, following `cli-moneybird/SKILL.md`. Period unlocking, tax-rate creation and filing stay UI and Operator actions.
+A request that names the VAT return, a quarterly return or a preparation of either wins T10 and reads the folder README, the resolved year VAT figures and, when a deadline, a correction or tax interest (belastingrente) applies, the year procedure figures. The mode is LIVE. The administration data is read at run time with moneybird-guard under `MONEYBIRD_GUARD_READ_ONLY=1`, following `cli-moneybird/SKILL.md`. Period unlocking, tax-rate creation and filing stay UI and Operator actions.
 
 ### The review pack and the boundary
 
@@ -40,7 +40,7 @@ Every figure, rate, threshold and deadline is a link into `references/tax-rules/
 |---|---|---|
 | `sk-moneybird-accountant/references/vat-return/README.md` | Shared | Entry index, the boundary, the figure link rule and the open points O1 to O5. |
 | `sk-moneybird-accountant/references/vat-return/preparation.md` | Shared | The ordered period procedure, steps 0 to 12, each with its check, its evidence and its Operator point. |
-| `sk-moneybird-accountant/references/vat-return/return-boxes.md` | Shared | The rubriek table for 1a to 5b, the derivation map, the run-time rate step and the reverse-charge, KOR, ICP and OSS rules. |
+| `sk-moneybird-accountant/references/vat-return/return-boxes.md` | Shared | The section (rubriek) table for 1a to 5b, the derivation map, the run-time rate step and the reverse-charge, small businesses scheme (KOR), ICP and OSS rules. |
 | `sk-moneybird-accountant/references/vat-return/year-end-and-corrections.md` | Shared | The year-end settlements S1 to S4 and the correction and suppletie routing. |
 | `sk-moneybird-accountant/references/vat-return/review-pack.md` | Shared | The pack blocks P1 to P9, the confirmation parts C1 to C3 and the deadline and payment block. |
 | `sk-moneybird-accountant/SKILL.md` | Shared | Holds the T10 row that routes a prepare-the-VAT-return request into this folder. |
@@ -52,7 +52,7 @@ Every figure, rate, threshold and deadline is a link into `references/tax-rules/
 |---|---|---|
 | `sk-moneybird-accountant/manual-testing-playbook/offline-routing/vat-return-normal-quarter.md` | Manual playbook | Scenario VAT-001, the normal quarter with gold row VAT-BRANCH-Q1-01 and eval case vat-return-normal-quarter. |
 | `sk-moneybird-accountant/manual-testing-playbook/offline-routing/vat-return-reverse-charge.md` | Manual playbook | Scenario VAT-002, the reverse-charge quarter with gold row VAT-BRANCH-RC-01. |
-| `sk-moneybird-accountant/manual-testing-playbook/offline-routing/vat-return-small-business-scheme.md` | Manual playbook | Scenario VAT-003, the KOR quarter with a reverse-charged purchase and gold row VAT-BRANCH-KOR-01. |
+| `sk-moneybird-accountant/manual-testing-playbook/offline-routing/vat-return-small-business-scheme.md` | Manual playbook | Scenario VAT-003, the small businesses scheme (KOR) quarter with a reverse-charged purchase and gold row VAT-BRANCH-KOR-01. |
 | `sk-moneybird-accountant/manual-testing-playbook/offline-routing/vat-return-last-quarter.md` | Manual playbook | Scenario VAT-004, the final quarter of the year with gold row VAT-BRANCH-YE-01. |
 | `sk-moneybird-accountant/manual-testing-playbook/offline-routing/vat-return-correction-boundary.md` | Manual playbook | Scenario VAT-005, the correction above and below the boundary with gold row VAT-BRANCH-COR-01. |
 | `sk-moneybird-accountant/scripts/route-replay/routing-gold.json` | Fixture | The five VAT-BRANCH rows with their covers tags and token ceilings. |

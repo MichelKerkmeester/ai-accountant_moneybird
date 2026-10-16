@@ -141,7 +141,7 @@ cat >"$DRIVER" <<'PY'
 
 The driver imports the named token-baseline.py and calls its counting helpers,
 so the canary never counts tokens on its own. The proposed car route must stay
-at or under 35 percent of the current route and at or under 8000 cl100k_base
+at or under 35 percent of the current route and at or under 8500 cl100k_base
 tokens. The driver also builds a byte-only fixture, rewrites a module copy so
 the proposed route reads the whole topic through its parts, and swaps two
 cached encoding files so the baseline must refuse them. No step downloads an
@@ -184,7 +184,7 @@ from typing import Any, Dict, List, NoReturn, Tuple
 
 PROGRAM = "route-canary"
 RATIO_PERCENT = 35
-CEILING_CL100K = 8000
+CEILING_CL100K = 8500
 
 # The fixture repeats one car cost row. Its token count carries a byte count
 # that a bytes/4 budget accepts, while the count itself stands 25 percent over

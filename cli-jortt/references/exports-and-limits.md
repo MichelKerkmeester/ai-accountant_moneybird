@@ -35,7 +35,7 @@ Say plainly when a record needs the Jortt UI. Never present another report as th
 
 ### XAF auditfile
 
-The API has no XAF or auditfile endpoint. In the Jortt UI, a Beheerder can open `Boekhoudbot`, choose `Maak voor mij een auditfile`, select a year and generate one XAF 4.0.3 file for that year. Uploaded receipts and invoices are not part of that XAF file. Ask the operator to perform this step.
+The API has no XAF or auditfile endpoint. In the Jortt UI, an administrator (Beheerder) can open `Boekhoudbot`, choose `Maak voor mij een auditfile`, select a year and generate one XAF 4.0.3 file for that year. Uploaded receipts and invoices are not part of that XAF file. Ask the operator to perform this step.
 
 ### Annual accounts and filed VAT returns
 

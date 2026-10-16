@@ -1,6 +1,6 @@
 ---
 title: Routing signals for the task-type table
-description: Where each routing signal in the SKILL.md task-type table comes from, with the Belastingdienst page per signal group, the skill vocabulary that has no public source and the tie margin, fallback floor, warning band, abstain outcome, specificity clauses and year change route.
+description: Where each routing signal in the SKILL.md task-type table comes from, with the Dutch Tax and Customs Administration (Belastingdienst) page per signal group, the skill vocabulary that has no public source and the tie margin, fallback floor, warning band, abstain outcome, specificity clauses and year change route.
 nav_label: "Routing signals for the task-type table"
 trigger_phrases:
   - routing signals
@@ -21,7 +21,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-Every signal word in the Task-Type Table has a source. Most signal words come from a Belastingdienst page that uses the same words for the same concept. The migration terms, the CLI terms, the period words and the onboarding term are skill vocabulary. They name this skill's own work, so no public page defines them.
+Every signal word in the Task-Type Table has a source. Most signal words come from a Dutch Tax and Customs Administration page that uses the same words for the same concept. The migration terms, the CLI terms, the period words and the onboarding term are skill vocabulary. They name this skill's own work, so no public page defines them.
 
 `btw` alone is a weak signal that never decides a row. It only confirms a route already chosen by a strong noun such as `aangifte`, `tarief` or `voorbelasting`.
 
@@ -44,7 +44,7 @@ The T8 filing gate matches whole words on both sides, so `dien` misses `diensten
 - Asset and depreciation terms `afschrijven`, `afschrijving`, `inventaris`, `activeren`, `activeer`, `depreciation`, `depreciate`, `fixed asset`, `capitalise` and `capitalize`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/
 - Investment deduction term `investeringsaftrek`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/kleinschaligheidsinvesteringsaftrek_kia
 - Threshold terms `drempel`, `kleineondernemersregeling`: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/hoe_werkt_de_btw/kleineondernemersregeling/wat-betekent-meedoen-met-de-kleineondernemersregeling/
-- Skill vocabulary, not from the Belastingdienst: the migration terms `migratie`, `overzetten` and `historische administratie`, the CLI terms `haal op`, `boek in` and `synchroniseer`, the period words `deze maand`, `afgelopen kwartaal`, `vorig jaar` and `sinds wanneer`, the question word `hoeveel`, the migration concept terms `categorie`, `valkuil` and `welke rekening` and the onboarding term `startende ondernemer`, the filing terms `periode afsluiten`, `file`, `submit`, `pay` and `lock the period`. The source terms are `officiële tekst`, `officiele tekst`, `wetstekst`, `official text`, `source library` and `law text`. The preparation verbs `voorbereiden`, `klaarzetten`, `controleren`, `prepare`, `review` and `check` route only inside a type phrase.
+- Skill vocabulary, not from the Dutch Tax and Customs Administration (Belastingdienst): the migration terms `migratie`, `overzetten` and `historische administratie`, the CLI terms `haal op`, `boek in` and `synchroniseer`, the period words `deze maand`, `afgelopen kwartaal`, `vorig jaar` and `sinds wanneer`, the question word `hoeveel`, the migration concept terms `categorie`, `valkuil` and `welke rekening` and the onboarding term `startende ondernemer`, the filing terms `periode afsluiten`, `file`, `submit`, `pay` and `lock the period`. The source terms are `officiële tekst`, `officiele tekst`, `wetstekst`, `official text`, `source library` and `law text`. The preparation verbs `voorbereiden`, `klaarzetten`, `controleren`, `prepare`, `review` and `check` route only inside a type phrase.
 
 ---
 
@@ -93,16 +93,16 @@ A row shows two numbers. The base is the ladder sum of the read path that answer
 |---|---|---|---|
 | `tok:T1` | 30,000 | 45,000 | shared mechanisms 15,000 and the phase file the request names 15,000, read through the phase map, plus the control framework 15,000 when a gate, risk or year lock applies. The migration index 3,000 replaces the phase file when no phase is named |
 | `tok:T2` | 15,000 | 15,000 | one full reference file |
-| `tok:T3` | 18,000 | 51,000 | bookkeeping file 15,000 and a year README 3,000, plus the year btw figures part 15,000 on a VAT period, plus the migration index 3,000 and the recurring-cycle file 15,000 while the post-cutover state is open |
-| `tok:T4` | 45,000 | 75,000 | purchase invoices 15,000, the year btw figures part 15,000 and the bookkeeping file 15,000, plus the mixed-use file 15,000 and the fixed-asset file 15,000 when their condition applies |
+| `tok:T3` | 18,000 | 51,000 | bookkeeping file 15,000 and a year README 3,000, plus the year VAT figures part 15,000 on a VAT period, plus the migration index 3,000 and the recurring-cycle file 15,000 while the post-cutover state is open |
+| `tok:T4` | 45,000 | 75,000 | purchase invoices 15,000, the year VAT figures part 15,000 and the bookkeeping file 15,000, plus the mixed-use file 15,000 and the fixed-asset file 15,000 when their condition applies |
 | `tok:T5` | 8,000 | 18,000 | a year README 3,000 plus one section 5,000, and 5,000 more for a rules subsection and 5,000 more for the source library when either is needed |
 | `tok:T6` | 18,000 | 18,000 | the rules entry file 3,000 and the one general topic file its table names 15,000 |
 | `tok:T7` | 0 | 0 | no reference file, the sibling tool skill carries its own reads |
 | `tok:T8` | 0 | 0 | loads nothing |
 | `tok:T9` | 15,000 | 15,000 | one full reference file |
-| `tok:T10` | 21,000 | 41,000 | the VAT return procedure README 3,000, a year README 3,000 and the year btw figures part 15,000, plus the year procedure figures part 15,000 when a deadline, correction or belastingrente applies and one source section 5,000 when the official source is asked |
+| `tok:T10` | 21,000 | 41,000 | the VAT return procedure README 3,000, a year README 3,000 and the year VAT figures part 15,000, plus the year procedure figures part 15,000 when a deadline, correction or tax interest applies and one source section 5,000 when the official source is asked |
 | `tok:T11` | 33,000 | 51,000 | the yearly overview procedure README 3,000, the year cost and car figures part 15,000 and the year investments figures part 15,000, plus a year README 3,000 when a close signal applies and the fixed-asset file 15,000 when an asset, an investment or depreciation is in scope |
-| `tok:T12` | 36,000 | 41,000 | the income tax return procedure README 3,000, a year README 3,000, the year income tax figures part 15,000 and the year ondernemersaftrek figures part 15,000, plus one source section 5,000 when the official source is asked |
+| `tok:T12` | 36,000 | 41,000 | the income tax return procedure README 3,000, a year README 3,000, the year income tax figures part 15,000 and the year entrepreneur's allowance figures part 15,000, plus one source section 5,000 when the official source is asked |
 
 ---
 
@@ -118,9 +118,9 @@ A row here names a deliverable the skill routes but does not document yet. The T
 
 | Topic | Owner | Coverage | Operator action |
 |---|---|---|---|
-| vat-return | references/vat-return/README.md | covered | The Operator prepares and files the VAT return in the Belastingdienst portal and keeps the filed copy with the records |
+| vat-return | references/vat-return/README.md | covered | The Operator prepares and files the VAT return in the Dutch Tax and Customs Administration portal and keeps the filed copy with the records |
 | yearly-overview | references/yearly-overview/README.md | covered | The Operator assembles the yearly overview in the Moneybird UI and keeps the balance sheet and the profit and loss statement with the records |
-| income-tax-return | references/income-tax-return/README.md | covered | The Operator prepares and files the income tax return in the Belastingdienst portal and keeps the assessment with the records |
+| income-tax-return | references/income-tax-return/README.md | covered | The Operator prepares and files the income tax return in the Dutch Tax and Customs Administration (Belastingdienst) portal and keeps the assessment with the records |
 
 ---
 

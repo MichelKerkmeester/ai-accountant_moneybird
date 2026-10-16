@@ -14,7 +14,7 @@ version: 1.0.0.0
 
 # Yearly overview preparation checklist
 
-**Rule:** Run the four sections in order. Stop at the first failed check and record it. The auditfile export comes before the jaarafsluiting. Every figure comes from the year files under `references/tax-rules/`. Every amount in this file is a braced placeholder. The Operator performs every closing action. Nothing here files a return.
+**Rule:** Run the four sections in order. Stop at the first failed check and record it. The auditfile export comes before the year-end closing (jaarafsluiting). Every figure comes from the year files under `references/tax-rules/`. Every amount in this file is a braced placeholder. The Operator performs every closing action. Nothing here files a return.
 
 ## 1. OVERVIEW
 
@@ -24,13 +24,13 @@ This reference holds the ordered close checklist for the yearly overview, starti
 
 ## 2. AUDITFILE FIRST
 
-Export the auditfile for the open year before any closing action, then record its SHA-256 together with the year and the version. The export is the evidence gate for everything below it. An auditfile downloaded after the jaarafsluiting can lack the profit and loss data, because the closing entry contra-books the result accounts.
+Export the auditfile for the open year before any closing action, then record its SHA-256 together with the year and the version. The export is the evidence gate for everything below it. An auditfile downloaded after the year-end closing can lack the profit and loss data, because the closing entry contra-books the result accounts.
 
 For an ordinary LIVE year the Operator runs the export in the Moneybird UI. An auditfile report-export POST is a Moneybird write, so outside the LIVE workflows of migration phases 19 to 21 every LIVE write is `UI_ONLY` under [LIVE write authority](../../SKILL.md#live-write-authority). The AI only checks that the artifact exists and records its year, version and SHA-256 after the Operator supplies it.
 
 The migration control carries the same rule at sub-goal SG-10.2 in `references/migration/phases-10-to-16.md`. Read [the Phase 10 to 16 rule](../migration/phases-10-to-16.md) for the migration evidence, the export route and its approval. A migrated historical year inside phases 10 to 16 consumes that evidence and does not rerun the migration gate. A year inside phases 19 to 21 keeps its journal-backed route.
 
-Check: the export exists for the resolved year and version and its hash is recorded. A missing export is an open step, so the checklist stops here and the jaarafsluiting waits.
+Check: the export exists for the resolved year and version and its hash is recorded. A missing export is an open step, so the checklist stops here and the year-end closing waits.
 
 `[Operator]` runs the export and confirms the artifact. The guarded export row applies to the migration route contract and to phases 19 to 21 only. It is in [cli-moneybird](../../../cli-moneybird/SKILL.md). The route fields that stay unverified are in [report and export limits](report-and-export-limits.md).
 
@@ -43,11 +43,11 @@ Run the checks in this order. Each check names its evidence, the year file that 
 | Check | What it proves | Year file |
 |---|---|---|
 | Resolve the year and the mode | `year_key`, the administration and the migrated or LIVE state are unambiguous. | [Year and state resolution](../tax-rules/year-and-state.md) |
-| Capture the commercial reports | The balance at the closing date, the profit and loss account for the year, the kolommenbalans and the journal detail are captured with their dates. | [The year README for the resolved year](../tax-rules/2026/README.md) |
-| Resolve the bank and suspense balances | Every te rubriceren item and every unprocessed bank transaction is matched or listed as an exception. | [Bank reconciliation](../moneybird-bookkeeping.md#6-bank-reconciliation) |
+| Capture the commercial reports | The balance at the closing date, the profit and loss account for the year, the trial balance (kolommenbalans) and the journal detail are captured with their dates. | [The year README for the resolved year](../tax-rules/2026/README.md) |
+| Resolve the bank and suspense balances | Every item still to classify (te rubriceren) and every unprocessed bank transaction is matched or listed as an exception. | [Bank reconciliation](../moneybird-bookkeeping.md#6-bank-reconciliation) |
 | Tie the opening balance | Each prior closing line opens immediately before the Moneybird start period, including the bank and the open receivables and payables. | [Opening balance](../moneybird-bookkeeping.md#5-assets-and-opening-balance) |
-| Tie the asset register | The register's cost, prior depreciation and the year's write-off tie to the balance and the profit and loss account. | [Fixed assets](../fixed-assets.md) and [Investeringen 2026 figures](../tax-rules/2026/investments/figures.md) |
-| Reconcile VAT | Each filed period matches its period report. Every correction is routed. | [VAT return preparation](../vat-return/README.md) and [BTW 2026 figures](../tax-rules/2026/vat/figures.md) |
+| Tie the asset register | The register's cost, prior depreciation and the year's write-off tie to the balance and the profit and loss account. | [Fixed assets](../fixed-assets.md) and [Investments 2026 figures](../tax-rules/2026/investments/figures.md) |
+| Reconcile VAT | Each filed period matches its period report. Every correction is routed. | [VAT return preparation](../vat-return/README.md) and [VAT 2026 figures](../tax-rules/2026/vat/figures.md) |
 | Build the cut-off list | Each prepaid or accrued item names the period it belongs to and the treatment, consistent with the prior policy. | [Year attribution in year and state resolution](../tax-rules/year-and-state.md#2-year-resolution) |
 | Assemble the pack | Every part is present. Every exception has an owner and a status. Every figure names the year file it came from. | [Fiscal reconciliation](fiscal-reconciliation.md) and [year and state resolution](../tax-rules/year-and-state.md) |
 
@@ -83,9 +83,9 @@ Worked example with braced placeholders:
 
 Check: `{opening_equity}` + `{result}` - `{private_withdrawals}` + `{private_deposits}` equals `{closing_equity}`. The result on that line equals the profit and loss result before the closing zeroes it. Every difference is an exception, never an unexplained balancing entry.
 
-The result, the ondernemersaftrek and the profit exemption are year values. Read them from the resolved year folder, for example [Ondernemersaftrek 2026 figures](../tax-rules/2026/business-deductions/figures.md) and [the 2026 year README](../tax-rules/2026/README.md). The rule that decides the year a cost or revenue belongs to is the sourced sentence in [year and state resolution](../tax-rules/year-and-state.md).
+The result, the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption (MKB-winstvrijstelling) are year values. Read them from the resolved year folder, for example [Ondernemersaftrek 2026 figures](../tax-rules/2026/business-deductions/figures.md) and [the 2026 year README](../tax-rules/2026/README.md). The rule that decides the year a cost or revenue belongs to is the sourced sentence in [year and state resolution](../tax-rules/year-and-state.md).
 
-`[Operator]` decides the value of an onttrekking and the private-use treatment.
+`[Operator]` decides the value of a withdrawal (onttrekking) and the private-use treatment.
 
 ---
 

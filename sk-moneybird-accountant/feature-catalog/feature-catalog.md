@@ -187,11 +187,11 @@ See [`bookkeeping-and-migration/live-bookkeeping-cadence.md`](bookkeeping-and-mi
 
 #### Description
 
-Entry index for preparing a Dutch VAT period from Moneybird. The folder holds the ordered procedure, the rubriek and derivation rules, the year-end branch and the review pack. It prepares and never files, submits or pays.
+Entry index for preparing a Dutch VAT period from Moneybird. The folder holds the ordered procedure, the section and derivation rules, the year-end branch and the review pack. It prepares and never files, submits or pays.
 
 #### Current Reality
 
-The T10 row routes a prepare-the-VAT-return request into `references/vat-return/`. The folder offers the ordered period procedure steps 0 to 12, the rubriek table 1a to 5b with its derivation map and its reverse-charge, KOR, ICP and OSS rules, the four year-end settlements, the correction routing and the review pack P1 to P9. Every figure is a link into the year files and every human decision carries an `[Operator]` marker. The five branch scenarios VAT-001 to VAT-005, the gold rows VAT-BRANCH-Q1-01 to VAT-BRANCH-COR-01 and the matching eval cases prove the branches offline. The folder prepares and never files, submits or pays.
+The T10 row routes a prepare-the-VAT-return request into `references/vat-return/`. The folder offers the ordered period procedure steps 0 to 12, the section (rubriek) table 1a to 5b with its derivation map and its reverse-charge, small businesses scheme (KOR), ICP and OSS rules, the four year-end settlements, the correction routing and the review pack P1 to P9. Every figure is a link into the year files and every human decision carries an `[Operator]` marker. The five branch scenarios VAT-001 to VAT-005, the gold rows VAT-BRANCH-Q1-01 to VAT-BRANCH-COR-01 and the matching eval cases prove the branches offline. The folder prepares and never files, submits or pays.
 
 #### Source Files
 
@@ -207,7 +207,7 @@ Entry index for preparing a Dutch sole-trader yearly overview in Moneybird. The 
 
 #### Current Reality
 
-The T11 row routes a prepare-the-yearly-overview request into `references/yearly-overview/`. The README holds the ordered close steps and the eleven Dutch close signals, the checklist puts the auditfile export before the jaarafsluiting as an evidence gate, and the close checks cover the equity continuity and the exception list. The fiscal reconciliation file holds the reconciliation template, the three-column hand-off template and the prepared-not-filed stop. `assets/yearly-overview/yearly-overview-template.html` is the printable A4 layout with bilingual labels and a braced placeholder for every value. Scenario PACK-001, gold row PACK-YEARLY-01 and eval case yearly-overview-pack prove the offline route and the pack blocks. The yearly-overview-template suite proves the template structure: a synthetic fill leaves no brace token, no remote asset and no unescaped value, the repeat blocks expand to the requested count and the prepared-not-filed line stays. Outside the migration route contract and the LIVE workflows of phases 19 to 21 the auditfile export is the Operator's UI export. The folder prepares and never files.
+The T11 row routes a prepare-the-yearly-overview request into `references/yearly-overview/`. The README holds the ordered close steps and the eleven Dutch close signals, the checklist puts the auditfile export before the year-end closing (jaarafsluiting) as an evidence gate, and the close checks cover the equity continuity and the exception list. The fiscal reconciliation file holds the reconciliation template, the three-column hand-off template and the prepared-not-filed stop. `assets/yearly-overview/yearly-overview-template.html` is the printable A4 layout with bilingual labels and a braced placeholder for every value. Scenario PACK-001, gold row PACK-YEARLY-01 and eval case yearly-overview-pack prove the offline route and the pack blocks. The yearly-overview-template suite proves the template structure: a synthetic fill leaves no brace token, no remote asset and no unescaped value, the repeat blocks expand to the requested count and the prepared-not-filed line stays. Outside the migration route contract and the LIVE workflows of phases 19 to 21 the auditfile export is the Operator's UI export. The folder prepares and never files.
 
 #### Source Files
 
@@ -239,7 +239,7 @@ Routes the booking of a purchase invoice, receipt or order to the flow and VAT r
 
 #### Current Reality
 
-The purchase invoice reference sorts each invoice into a case: Dutch VAT, reverse charge from an EU or non-EU supplier, foreign VAT, import or domestic reverse charge. Each case names its Moneybird VAT rate and VAT return rubriek. The corresponding manual scenario checks route selection and the write boundary without API access.
+The purchase invoice reference sorts each invoice into a case: Dutch VAT, reverse charge from an EU or non-EU supplier, foreign VAT, import or domestic reverse charge. Each case names its Moneybird VAT rate and VAT return section (rubriek). The corresponding manual scenario checks route selection and the write boundary without API access.
 
 #### Source Files
 
@@ -267,11 +267,11 @@ See [`bookkeeping-and-migration/mixed-use-cost-booking.md`](bookkeeping-and-migr
 
 #### Description
 
-Routes a large purchase or an inventaris item to the cost-or-asset test, depreciation, the VAT revision period and the Moneybird asset screens.
+Routes a large purchase or an equipment item to the cost-or-asset test, depreciation, the VAT revision period and the Moneybird asset screens.
 
 #### Current Reality
 
-The fixed asset reference states when a purchase is capitalised, the small-amount rule, the depreciation base and yearly limit, VAT on an asset and its revision period and disposal. It names the Moneybird bezitting flow and the existing-asset opening path. A building or a change of use inside the revision period goes to the Operator or a bookkeeper. The corresponding manual scenario checks route selection and the stated boundary without API access.
+The fixed asset reference states when a purchase is capitalised, the small-amount rule, the depreciation base and yearly limit, VAT on an asset and its revision period and disposal. It names the Moneybird asset (bezitting) flow and the existing-asset opening path. A building or a change of use inside the revision period goes to the Operator or a bookkeeper. The corresponding manual scenario checks route selection and the stated boundary without API access.
 
 #### Source Files
 

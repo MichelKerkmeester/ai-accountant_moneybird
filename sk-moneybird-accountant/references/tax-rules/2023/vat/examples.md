@@ -1,7 +1,7 @@
 ---
-title: "BTW 2023: Examples"
+title: "VAT 2023: Examples"
 description: "This file explains Dutch VAT rates, exemptions, returns, cross-border rules, and bookkeeping for tax year 2023. This file holds the examples part."
-nav_label: "BTW examples"
+nav_label: "VAT examples"
 trigger_phrases:
   - "VAT 2023"
   - "btw 2023"
@@ -12,11 +12,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# BTW 2023: Examples
+# VAT (BTW) 2023: Examples
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 3 of 4 of the BTW 2023 topic.
+Part 3 of 4 of the VAT 2023 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [rules.md](rules.md): how it works.
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the BTW 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the VAT (BTW) 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -47,11 +47,11 @@ The example uses the rates in Article 9. Whether a supply qualifies for a rate o
 
 ### Solar-panel official examples
 
-**Official example.** The 2023 decision gives an example for loose panels rated 2.800 Wp. VAT on the invoice is € 800,00. Subtract the € 60,00 forfait: € 800,00 - € 60,00 = € 740,00 refund. [Decision of 16 June 2023](https://zoek.officielebekendmakingen.nl/stcrt-2023-17463.html)
+**Official example.** The 2023 decision gives an example for loose panels rated 2.800 Wp. VAT on the invoice is € 800,00. Subtract the € 60,00 flat rate (forfait): € 800,00 - € 60,00 = € 740,00 refund. [Decision of 16 June 2023](https://zoek.officielebekendmakingen.nl/stcrt-2023-17463.html)
 
-**Official example.** The decision also gives an example for integrated panels rated 2.800 Wp. VAT on the invoice is € 1.500,00. One third is deductible: € 1.500,00 ÷ 3 = € 500,00. Subtract the € 20,00 forfait: € 500,00 - € 20,00 = € 480,00 refund. The decision does not specify the year for these examples. [Decision of 16 June 2023](https://zoek.officielebekendmakingen.nl/stcrt-2023-17463.html)
+**Official example.** The decision also gives an example for integrated panels rated 2.800 Wp. VAT on the invoice is € 1.500,00. One third is deductible: € 1.500,00 ÷ 3 = € 500,00. Subtract the € 20,00 flat rate: € 500,00 - € 20,00 = € 480,00 refund. The decision does not specify the year for these examples. [Decision of 16 June 2023](https://zoek.officielebekendmakingen.nl/stcrt-2023-17463.html)
 
-### KOR ceiling
+### small businesses scheme (KOR) ceiling
 
 **Calculated example.** Assume invented Dutch turnover of € 18.000,00 before an additional supply.
 
@@ -59,7 +59,7 @@ The example uses the rates in Article 9. Whether a supply qualifies for a rate o
 2. Instead add a supply of € 2.001,00: € 18.000,00 + € 2.001,00 = € 20.001,00. The ceiling is exceeded by € 1,00: € 20.001,00 - € 20.000,00 = € 1,00.
 3. Under the 2023 rule, the supply that crosses the ceiling is taxable, and the exemption no longer applies from that supply onward.
 
-The example assumes all amounts count toward KOR turnover under the relevant rules. [2023 VAT Act](https://wetten.overheid.nl/BWBR0002629/2023-01-01), [KOR turnover conditions](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/kor-voorwaarden)
+The example assumes all amounts count toward small businesses scheme turnover under the relevant rules. [2023 VAT Act](https://wetten.overheid.nl/BWBR0002629/2023-01-01), [KOR turnover conditions](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/kor-voorwaarden)
 
 ### Return deadline
 
@@ -103,12 +103,12 @@ The example applies the published sequence and consequence. [OSS guidance](https
 
 ### Business-car private use
 
-**Calculated example.** Assume an invented catalogue price of € 20.000,00 and no records establishing actual private use. Assume the example year is within the first four years after the year the car was first used, so the 2,7% forfait applies.
+**Calculated example.** Assume an invented catalogue price of € 20.000,00 and no records establishing actual private use. Assume the example year is within the first four years after the year the car was first used, so the 2,7% flat rate applies.
 
-1. Multiply the catalogue price by the 2,7% forfait: € 20.000,00 × 2,7% = € 540,00.
+1. Multiply the catalogue price by the 2,7% flat rate: € 20.000,00 × 2,7% = € 540,00.
 2. Calculate the cap for that period. Use invented deductible VAT of € 600,00 for the year and purchase VAT of € 1.000,00. One fifth of purchase VAT is € 1.000,00 ÷ 5 = € 200,00. The cap is € 600,00 + € 200,00 = € 800,00.
-3. The forfait amount of € 540,00 is below the cap of € 800,00. The amount before any proportional adjustment is therefore € 540,00.
-4. After the first four years, the 1/5 addition no longer applies. The cap is then the VAT deducted in the year, here € 600,00. The 1,5% forfait applies after that period.
+3. The flat rate amount of € 540,00 is below the cap of € 800,00. The amount before any proportional adjustment is therefore € 540,00.
+4. After the first four years, the 1/5 addition no longer applies. The cap is then the VAT deducted in the year, here € 600,00. The 1,5% flat rate applies after that period.
 
 The actual return amount can change for exempt use or a part-year period. [Private-use car decision](https://wetten.overheid.nl/BWBR0043783/2020-07-04)
 

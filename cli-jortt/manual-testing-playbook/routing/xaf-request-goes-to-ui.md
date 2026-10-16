@@ -30,7 +30,7 @@ Operators run the exact prompt and command sequence for `JRT-005` and confirm th
 - Real user request: `Export the Jortt XAF auditfile for a year.`
 - Prompt: `Export the Jortt XAF auditfile for a year.`
 - Expected execution process: The agent loads the export reference, makes no API call and gives the operator the UI steps.
-- Expected signals: Step 1: no `jortt-cli` call is made. Step 2: the answer says the API has no XAF endpoint, names `Boekhoudbot`, `Maak voor mij een auditfile` and the Beheerder requirement.
+- Expected signals: Step 1: no `jortt-cli` call is made. Step 2: the answer says the API has no XAF endpoint, names `Boekhoudbot`, `Maak voor mij een auditfile` and the administrator requirement.
 - Desired user-visible outcome: The agent explains the UI route and asks the operator to generate one file per year.
 - Pass/fail: PASS if no API call is made and the operator is given the UI route, FAIL if the agent invents an API operation or claims it downloaded XAF.
 
@@ -50,7 +50,7 @@ Operators run the exact prompt and command sequence for `JRT-005` and confirm th
 ### Expected
 
 - Step 1: no `jortt-cli` call is made.
-- Step 2: the answer says the API has no XAF endpoint, names `Boekhoudbot`, `Maak voor mij een auditfile` and the Beheerder requirement.
+- Step 2: the answer says the API has no XAF endpoint, names `Boekhoudbot`, `Maak voor mij een auditfile` and the administrator requirement.
 
 ### Evidence
 

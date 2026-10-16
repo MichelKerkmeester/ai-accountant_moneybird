@@ -41,7 +41,7 @@ The API sets a general request rate and a lower rate under `/reports/`. A `429` 
 
 ### UI-Only Operations
 
-CAMT.053 and MT940 bank files, tax rate creation, period locks and historical VAT filing with **Handmatig indienen** stay in the Moneybird UI. `financial_statements` is a JSON mutation route, not a file upload route.
+CAMT.053 and MT940 bank files, tax rate creation, period locks and historical VAT filing with **Submit manually (Handmatig indienen)** stay in the Moneybird UI. `financial_statements` is a JSON mutation route, not a file upload route.
 
 ---
 

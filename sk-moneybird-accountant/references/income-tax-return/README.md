@@ -21,7 +21,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-The agent assembles the return pack for one year, names every Operator input, every evidence item and every open point, and stops before filing. The Operator reviews and confirms the pack and files the return in the Belastingdienst portal.
+The agent assembles the return pack for one year, names every Operator input, every evidence item and every open point, and stops before filing. The Operator reviews and confirms the pack and files the return in the Dutch Tax and Customs Administration (Belastingdienst) portal.
 
 The mode is LIVE. Resolve the year as `year_key = return_coverage` with [year and state resolution](../tax-rules/year-and-state.md), then load the year README and the topic figures and rules files the procedure names. Read the administration's own data at run time with moneybird-guard under `MONEYBIRD_GUARD_READ_ONLY=1`, following [cli-moneybird](../../../cli-moneybird/SKILL.md). Filing, payment and the period lock stay Operator-only.
 

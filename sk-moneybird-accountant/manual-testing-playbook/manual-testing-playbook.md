@@ -309,7 +309,7 @@ Prompt: Book this purchase invoice from an EU software supplier. It shows 0% VAT
 
 Fixture rows: LIVE-003 (en) and LIVE-003-nl (nl twin).
 
-Desired user-visible outcome: Selects LIVE, names the purchase invoice reference, picks the Binnen EU rate with rubriek 4b and the deduction in 5b, and keeps the write behind the gate.
+Desired user-visible outcome: Selects LIVE, names the purchase invoice reference, picks the Within the EU (Binnen EU) rate with rubriek 4b and the deduction in 5b, and keeps the write behind the gate.
 
 #### Test Execution
 Feature file: [LIVE-003](offline-routing/purchase-invoice-booking.md)
@@ -345,7 +345,7 @@ Prompt: I bought a laptop for 1200 and want to depreciate it. Which steps and re
 
 Fixture rows: LIVE-005 (en) and LIVE-005-nl (nl twin).
 
-Desired user-visible outcome: Selects LIVE, names the fixed asset reference, applies the cost-or-asset test, names the depreciation fields on the bezitting, keeps the yearly depreciation within the limit and keeps the write behind the gate.
+Desired user-visible outcome: Selects LIVE, names the fixed asset reference, applies the cost-or-asset test, names the depreciation fields on the asset (bezitting), keeps the yearly depreciation within the limit and keeps the write behind the gate.
 
 #### Test Execution
 Feature file: [LIVE-005](offline-routing/fixed-asset-booking.md)
@@ -381,7 +381,7 @@ Prompt: Is my home phone subscription a deduction in 2026? Do not call an API.
 
 Fixture rows: TIE-T4-T5-01 (the T5-over-T4 tie row).
 
-Desired user-visible outcome: The route table check passes, T5 wins over T4 on the tax figure clause, the explicit year 2026 resolves to the year README and the kosten-en-auto key figures, the invoice references stay unloaded and the route record names T5.
+Desired user-visible outcome: The route table check passes, T5 wins over T4 on the tax figure clause, the explicit year 2026 resolves to the year README and the costs-and-car key figures, the invoice references stay unloaded and the route record names T5.
 
 #### Test Execution
 Feature file: [TASK-001](offline-routing/task-type-routing.md)
@@ -585,17 +585,17 @@ Feature file: [VAT-002](offline-routing/vat-return-reverse-charge.md)
 
 ---
 
-### VAT-003 | A KOR quarter with a reverse-charged purchase
+### VAT-003 | A small businesses scheme (KOR) quarter with a reverse-charged purchase
 
 #### Description
-Verify the KOR quarter branch, the surviving reverse-charge reporting and the stop before any filing action.
+Verify the small businesses scheme (KOR) quarter branch, the surviving reverse-charge reporting and the stop before any filing action.
 
 #### Scenario Contract
 Prompt: Prepare the VAT return for the third quarter of 2026. The small-business scheme (KOR) applies and one purchase is reverse-charged. Do not call an API.
 
 Fixture rows: VAT-BRANCH-KOR-01 (en) and the vat-return-small-business-quarter eval case.
 
-Desired user-visible outcome: Routes LIVE and T10, keeps the shifted VAT in the return under the KOR, names the pack blocks P1 to P9, keeps the filing route with the Operator and makes no service call.
+Desired user-visible outcome: Routes LIVE and T10, keeps the shifted VAT in the return under the small businesses scheme, names the pack blocks P1 to P9, keeps the filing route with the Operator and makes no service call.
 
 #### Test Execution
 Feature file: [VAT-003](offline-routing/vat-return-small-business-scheme.md)
@@ -755,7 +755,7 @@ No runtime test calls an accounting service. The scenarios remain manual routing
 | STATE-002 | Year rollover runbook | reference-and-state | [STATE-002](offline-routing/year-rollover-runbook.md) | [year rollover runbook](../feature-catalog/reference-and-state/year-rollover-runbook.md) |
 | VAT-001 | The normal VAT return quarter | bookkeeping-and-migration | [VAT-001](offline-routing/vat-return-normal-quarter.md) | [VAT return preparation](../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) |
 | VAT-002 | A VAT return quarter with a reverse-charged purchase | bookkeeping-and-migration | [VAT-002](offline-routing/vat-return-reverse-charge.md) | [VAT return preparation](../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) |
-| VAT-003 | A KOR quarter with a reverse-charged purchase | bookkeeping-and-migration | [VAT-003](offline-routing/vat-return-small-business-scheme.md) | [VAT return preparation](../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) |
+| VAT-003 | A small businesses scheme (KOR) quarter with a reverse-charged purchase | bookkeeping-and-migration | [VAT-003](offline-routing/vat-return-small-business-scheme.md) | [VAT return preparation](../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) |
 | VAT-004 | The last VAT return quarter of the year | bookkeeping-and-migration | [VAT-004](offline-routing/vat-return-last-quarter.md) | [VAT return preparation](../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) |
 | VAT-005 | A VAT return correction on both sides of the boundary | bookkeeping-and-migration | [VAT-005](offline-routing/vat-return-correction-boundary.md) | [VAT return preparation](../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) |
 | PACK-001 | The yearly overview pack | bookkeeping-and-migration | [PACK-001](offline-routing/yearly-overview-pack.md) | [yearly overview preparation](../feature-catalog/bookkeeping-and-migration/yearly-overview-preparation.md) |

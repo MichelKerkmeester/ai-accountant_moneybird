@@ -17,7 +17,7 @@ version: 1.0.0.0
 
 Lists every external source the skill family cites, with its authority and how an agent can reach it, so a figure can be traced to the page that states it.
 
-The guide groups the sources by authority and names the most-cited statutes, Belastingdienst pages, parliamentary documents and Moneybird help pages. The generated index holds one row per cited source with its access result, digest and citing files. The guide itself owns those lists and any dead-link record.
+The guide groups the sources by authority and names the most-cited statutes, Dutch Tax and Customs Administration (Belastingdienst) pages, parliamentary documents and Moneybird help pages. The generated index holds one row per cited source with its access result, digest and citing files. The guide itself owns those lists and any dead-link record.
 
 ---
 

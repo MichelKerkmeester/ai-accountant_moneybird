@@ -46,7 +46,7 @@ A year with no folder under `references/tax-rules/` is answered as "no year file
 
 The generator stops with `clock_missing` when no clock is available. A corpus date is never used as the clock.
 
-The rule that decides the year a cost or revenue belongs to is Wet IB 2001 art. 3.25, which requires the annual profit to follow goed koopmansgebruik and a consistent policy, per https://wetten.overheid.nl/BWBR0011353/2026-01-01.
+The rule that decides the year a cost or revenue belongs to is Income Tax Act 2001 (Wet IB 2001) art. 3.25, which requires the annual profit to follow sound business practice (goed koopmansgebruik) and a consistent policy, per https://wetten.overheid.nl/BWBR0011353/2026-01-01.
 
 ---
 

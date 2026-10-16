@@ -66,7 +66,7 @@ The operation decides the route. Use `jortt-cli` for supported reads. UI-only ta
 | Labels | `jortt-cli call list-labels --out labels.json` | `organizations:read` |
 | Projects | `jortt-cli call list-projects --all --out projects.json` | `invoices:read` |
 | Data question | Use the smallest `jortt-cli` read that answers the question. State the API limit when no route exists. | Select and describe the matching operation, then request only the needed records. |
-| XAF auditfile | Jortt UI: `Boekhoudbot` then `Maak voor mij een auditfile`. A Beheerder generates one XAF 4.0.3 file per year. | Ask the operator. The API has no XAF route. |
+| XAF auditfile | Jortt UI: `Boekhoudbot` then `Maak voor mij een auditfile`. An administrator (Beheerder) generates one XAF 4.0.3 file per year. | Ask the operator. The API has no XAF route. |
 | Annual accounts | Jortt UI: `Rapporten > Jaarrekening`, one year at a time. | Ask the operator. |
 | Filed VAT returns | Download through the Jortt UI. | Ask the operator. There is no filed-return API endpoint. |
 | General ledger export | No API or UI export exists. | Unavailable. Do not label another report as a general ledger. |
@@ -202,7 +202,7 @@ def route_resources(request):
 | Surface | Best use | Output and limits |
 |---|---|---|
 | `jortt-cli` | Repeatable API reads, paging, downloads and full OpenAPI operation coverage | Primary. Read-only. Non-GET calls are refused. |
-| Jortt UI | XAF, annual accounts and filed VAT returns | Operator-only exports. XAF requires a Beheerder and is generated per year. |
+| Jortt UI | XAF, annual accounts and filed VAT returns | Operator-only exports. XAF requires an administrator and is generated per year. |
 
 ### CLI Extraction Path
 

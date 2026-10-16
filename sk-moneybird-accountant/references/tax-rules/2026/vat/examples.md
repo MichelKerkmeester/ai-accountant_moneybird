@@ -1,7 +1,7 @@
 ---
-title: "BTW 2026: Examples"
+title: "VAT (BTW) 2026: Examples"
 description: "This file covers Dutch VAT rates, schemes, returns, invoicing and bookkeeping for tax year 2026. This file holds the examples part."
-nav_label: "BTW examples"
+nav_label: "VAT examples"
 trigger_phrases:
   - "btw 2026"
   - "omzetbelasting 2026"
@@ -12,11 +12,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# BTW 2026: Examples
+# VAT 2026: Examples
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 3 of 4 of the BTW 2026 topic.
+Part 3 of 4 of the VAT 2026 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [rules.md](rules.md): how it works.
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the BTW 2026 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the VAT (BTW) 2026 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -48,15 +48,15 @@ At the reduced rate:
 
 For a zero-rated sale of € 1.000,00, output VAT is € 1.000,00 × 0% = € 0,00. Input VAT deduction remains possible if the other conditions are met. [Rates in Wet op de omzetbelasting 1968](https://wetten.overheid.nl/BWBR0002629/2026-01-01)
 
-### Logies and a separately offered breakfast
+### Accommodation (logies) and a separately offered breakfast
 
-**Official example, with the VAT arithmetic shown here.** The Belastingdienst gives market values of € 280,00 for logies and € 70,00 for breakfast. The total market value is € 280,00 + € 70,00 = € 350,00. The logies share is € 280,00 ÷ € 350,00 = 0,80, so 80%. The breakfast share is € 70,00 ÷ € 350,00 = 0,20, so 20%.
+**Official example, with the VAT arithmetic shown here.** The Dutch Tax and Customs Administration (Belastingdienst) gives market values of € 280,00 for accommodation (logies) and € 70,00 for breakfast. The total market value is € 280,00 + € 70,00 = € 350,00. The accommodation share is € 280,00 ÷ € 350,00 = 0,80, so 80%. The breakfast share is € 70,00 ÷ € 350,00 = 0,20, so 20%.
 
 For an all-in price of € 150,00 excluding VAT:
 
-1. Logies: € 150,00 × 80% = € 120,00.
+1. Accommodation: € 150,00 × 80% = € 120,00.
 2. Breakfast: € 150,00 × 20% = € 30,00.
-3. VAT on logies at 21%: € 120,00 × 21% = € 25,20.
+3. VAT on accommodation at 21%: € 120,00 × 21% = € 25,20.
 4. VAT on breakfast at 9%: € 30,00 × 9% = € 2,70.
 5. Total VAT: € 25,20 + € 2,70 = € 27,90.
 
@@ -75,7 +75,7 @@ For an all-in price of € 150,00 excluding VAT:
 
 ### Annual VAT return conditions
 
-**Calculated example.** A natural-person business has VAT of € 1.500,00 a year and no artikel 23 permit. Each of the four intra-EU categories is € 9.000,00.
+**Calculated example.** A natural-person business has VAT of € 1.500,00 a year and no Article 23 permit (vergunning artikel 23). Each of the four intra-EU categories is € 9.000,00.
 
 1. VAT a year: € 1.500,00 is less than € 1.883.
 2. Each intra-EU category, tested separately: € 9.000,00 is less than € 10.000.
@@ -96,9 +96,9 @@ For an all-in price of € 150,00 excluding VAT:
 
 [UBOB art. 24ba](https://wetten.overheid.nl/BWBR0002633/2020-01-01), [Belastingdienst reverse-charge guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_berekenen_aan_uw_klanten/waarover_btw_berekenen/verleggingsregeling/hoe_werkt_btw_verleggen)
 
-### Suppletie boundary
+### Supplementary return (suppletie) boundary
 
-**Calculated example.** A correction of € 700,00 is € 1.000 or less, so it may be included in the next VAT return. A correction of € 1.200,00 is more than € 1.000, so the suppletie form is required. The form is due within 8 weeks after the error is discovered.
+**Calculated example.** A correction of € 700,00 is € 1.000 or less, so it may be included in the next VAT return. A correction of € 1.200,00 is more than € 1.000, so a supplementary return (suppletie) is required. The form is due within 8 weeks after the error is discovered.
 
 [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf), [Belastingdienst correction guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/aangifte_corrigeren/aangifte_corrigeren)
 
@@ -137,13 +137,13 @@ The cap is the VAT deducted in the year plus one-fifth of the purchase VAT. Assu
 
 ### BUA threshold
 
-**Official example.** The Belastingdienst example gives a € 75,00 Christmas package for all staff, a € 400,00 staff outing for half the staff and a € 150,00 watch for one employee. Without the outing, the employee who received the watch stays at € 75,00 + € 150,00 = € 225,00, which is within the € 227 threshold, so the VAT on those provisions is deductible. The VAT on the outing is not deductible in the example.
+**Official example.** The Dutch Tax and Customs Administration example gives a € 75,00 Christmas package for all staff, a € 400,00 staff outing for half the staff and a € 150,00 watch for one employee. Without the outing, the employee who received the watch stays at € 75,00 + € 150,00 = € 225,00, which is within the € 227 threshold, so the VAT on those provisions is deductible. The VAT on the outing is not deductible in the example.
 
 [Belastingdienst BUA example](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/personeelsvoorzieningen_en_relatiegeschenken/drempelbedrag_personeelsvoorzieningen_giften_en_relatiegeschenken)
 
 ### Invoice timing
 
-**Official example.** The Handboek example says that a supply delivered on 10 April must be invoiced by 15 May.
+**Official example.** The Handbook (Handboek) example says that a supply delivered on 10 April must be invoiced by 15 May.
 
 [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf), [Belastingdienst invoice guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/)
 

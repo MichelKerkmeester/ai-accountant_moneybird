@@ -18,7 +18,7 @@ This scenario validates Purchase invoice booking. It focuses on routing a revers
 
 ### Why This Matters
 
-A wrong VAT rate on a reverse-charged invoice drops VAT that is owed or claims a deduction a KOR business may not take. A local-only check confirms the route without touching accounting tools or private finance data.
+A wrong VAT rate on a reverse-charged invoice drops VAT that is owed or claims a deduction a small businesses scheme (KOR) business may not take. A local-only check confirms the route without touching accounting tools or private finance data.
 
 ---
 
@@ -29,9 +29,9 @@ A wrong VAT rate on a reverse-charged invoice drops VAT that is owed or claims a
 - Prompt: Book this purchase invoice from an EU software supplier. It shows 0% VAT and says reverse charge. Which steps, VAT rate and references apply? Keep this as an offline routing check.
 - Fixture rows: LIVE-003 (en) and LIVE-003-nl (nl twin).
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references. Do not use network access or accounting APIs.
-- Expected signals: Selects LIVE, names the purchase invoice reference, classifies the invoice as EU reverse charge, picks the Binnen EU rate, reports rubriek 4b with the deduction in 5b, flags a KOR or exempt business as different, and says a write needs a passed gate and Operator approval.
-- Desired user-visible outcome: A concise route report with selected mode, reference path, VAT case, rate, rubrieken, boundary result and no API activity.
-- Pass/fail: PASS if The response routes to the purchase invoice reference, picks the EU reverse-charge case and keeps the write behind the gate. FAIL if The response books the invoice with Geen btw or a Dutch rate, skips the reference or calls a Moneybird API.
+- Expected signals: Selects LIVE, names the purchase invoice reference, classifies the invoice as EU reverse charge, picks the Within the EU (Binnen EU) rate, reports rubriek 4b with the deduction in 5b, flags a small businesses scheme or exempt business as different and says a write needs a passed gate and Operator approval.
+- Desired user-visible outcome: A concise route report with selected mode, reference path, VAT case, rate, VAT sections (rubrieken), boundary result and no API activity.
+- Pass/fail: PASS if The response routes to the purchase invoice reference, picks the EU reverse-charge case and keeps the write behind the gate. FAIL if The response books the invoice with the No VAT (Geen btw) rate or a Dutch rate, skips the reference or calls a Moneybird API.
 
 ---
 
@@ -46,7 +46,7 @@ A wrong VAT rate on a reverse-charged invoice drops VAT that is owed or claims a
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| LIVE-003 | Purchase invoice booking | Route a reverse-charged EU purchase invoice to the purchase invoice reference and its VAT case. | Book this purchase invoice from an EU software supplier. It shows 0% VAT and says reverse charge. Which steps, VAT rate and references apply? Keep this as an offline routing check. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/purchase-invoices.md -> 4. Report the selected mode, the case, the VAT rate, the return rubrieken and the write boundary without calling an API | Selects LIVE, names the purchase invoice reference, classifies the invoice as EU reverse charge, picks the Binnen EU rate, reports rubriek 4b with the deduction in 5b, flags a KOR or exempt business as different and says a write needs a passed gate and Operator approval. | Capture the prompt, selected mode, reference path, case, rate, rubrieken and no-API confirmation. | PASS if The response routes to the purchase invoice reference, picks the EU reverse-charge case and keeps the write behind the gate. FAIL if The response books the invoice with Geen btw or a Dutch rate, skips the reference or calls a Moneybird API. | Check the T4 purchase invoice row of the Task-Type Table in the skill, the routing line in the bootstrap and the decision table in the reference. Repeat without tool access. |
+| LIVE-003 | Purchase invoice booking | Route a reverse-charged EU purchase invoice to the purchase invoice reference and its VAT case. | Book this purchase invoice from an EU software supplier. It shows 0% VAT and says reverse charge. Which steps, VAT rate and references apply? Keep this as an offline routing check. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/purchase-invoices.md -> 4. Report the selected mode, the case, the VAT rate, the return sections (rubrieken) and the write boundary without calling an API | Selects LIVE, names the purchase invoice reference, classifies the invoice as EU reverse charge, picks the Within the EU (Binnen EU) rate, reports rubriek 4b with the deduction in 5b, flags a small businesses scheme or exempt business as different and says a write needs a passed gate and Operator approval. | Capture the prompt, selected mode, reference path, case, rate, sections (rubrieken) and no-API confirmation. | PASS if The response routes to the purchase invoice reference, picks the EU reverse-charge case and keeps the write behind the gate. FAIL if The response books the invoice with the No VAT (Geen btw) rate or a Dutch rate, skips the reference or calls a Moneybird API. | Check the T4 purchase invoice row of the Task-Type Table in the skill, the routing line in the bootstrap and the decision table in the reference. Repeat without tool access. |
 
 ### Prompt
 
@@ -57,20 +57,20 @@ A wrong VAT rate on a reverse-charged invoice drops VAT that is owed or claims a
 1. Read AGENTS.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Read sk-moneybird-accountant/references/purchase-invoices.md
-4. Report the selected mode, the case, the VAT rate, the return rubrieken and the write boundary without calling an API
+4. Report the selected mode, the case, the VAT rate, the return sections (rubrieken) and the write boundary without calling an API
 
 ### Expected
 
-Selects LIVE, names the purchase invoice reference, classifies the invoice as EU reverse charge, picks the Binnen EU rate, reports rubriek 4b with the deduction in 5b, flags a KOR or exempt business as different, and says a write needs a passed gate and Operator approval.
+Selects LIVE, names the purchase invoice reference, classifies the invoice as EU reverse charge, picks the Within the EU (Binnen EU) rate, reports rubriek 4b with the deduction in 5b, flags a small businesses scheme or exempt business as different and says a write needs a passed gate and Operator approval.
 
 ### Evidence
 
-Capture the prompt, selected mode, reference path, case, rate, rubrieken and no-API confirmation.
+Capture the prompt, selected mode, reference path, case, rate, sections (rubrieken) and no-API confirmation.
 
 ### Pass / Fail
 
 - **Pass**: The response routes to the purchase invoice reference, picks the EU reverse-charge case and keeps the write behind the gate.
-- **Fail**: The response books the invoice with Geen btw or a Dutch rate, skips the reference or calls a Moneybird API.
+- **Fail**: The response books the invoice with the No VAT (Geen btw) rate or a Dutch rate, skips the reference or calls a Moneybird API.
 
 ### Failure Triage
 
@@ -104,6 +104,6 @@ Check the T4 purchase invoice row of the Task-Type Table in the skill, the routi
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/purchase-invoice-booking.md
 
-**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/purchase-invoices.md -> 4. Report the selected mode, the case, the VAT rate, the return rubrieken and the write boundary without calling an API
+**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/purchase-invoices.md -> 4. Report the selected mode, the case, the VAT rate, the return sections (rubrieken) and the write boundary without calling an API
 
 **Expected resources:** sk-moneybird-accountant/references/purchase-invoices.md

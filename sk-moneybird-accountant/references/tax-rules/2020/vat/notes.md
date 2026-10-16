@@ -1,5 +1,5 @@
 ---
-title: "BTW 2020: Notes"
+title: "VAT (BTW) 2020: Notes"
 description: "Covers Dutch VAT rates, deductions, the small-business scheme, returns, cross-border supplies, invoicing and private use for tax year 2020. This file holds the notes part."
 nav_label: "BTW notes"
 trigger_phrases:
@@ -12,11 +12,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# BTW 2020: Notes
+# VAT (BTW) 2020: Notes
 
 **Rule:** These values hold for tax year 2020 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 4 of 4 of the BTW 2020 topic.
+Part 4 of 4 of the VAT (BTW) 2020 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [rules.md](rules.md): how it works.
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the changes, records, open points and related resources for the BTW 2020 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
+This part holds the changes, records, open points and related resources for the VAT 2020 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
 
 ---
 
@@ -38,9 +38,9 @@ The checked material does not include a complete 2019 comparison. It identifies 
 
 - The new KOR replaced the old VAT-based reduction from 1 January 2020. The new exemption used a Dutch calendar-year turnover ceiling of € 20.000. The old scheme reduced VAT due by 2,5 times the difference between € 1.883 and VAT due, down to nil. The full-relief point of € 1.345 is not printed in the old statute and is treated as UNVERIFIED in section 7. [Wet OB, 2019 version](https://wetten.overheid.nl/BWBR0002629/2019-01-01), [Wet OB, 2020 version](https://wetten.overheid.nl/BWBR0002629/2020-01-01) and [Wet modernisering kleineondernemersregeling](https://wetten.overheid.nl/BWBR0041782).
 
-- Tabel I post b.21 applied the 9% rate to electronic publications and access to news websites from 1 January 2020. [Toelichting Tabel I besluit](https://zoek.officielebekendmakingen.nl/stcrt-2022-9114.html).
+- Table I post b.21 applied the 9% rate to electronic publications and access to news websites from 1 January 2020. [Toelichting Tabel I besluit](https://zoek.officielebekendmakingen.nl/stcrt-2022-9114.html).
 
-- An optional approval allowed no VAT on mondkapjes from 25 May 2020 until 1 September 2020 while preserving input VAT deduction. [Besluit van 19 mei 2020, nr. 2020-10789](https://zoek.officielebekendmakingen.nl/stcrt-2020-28349.html).
+- An optional approval allowed no VAT on face masks (mondkapjes) from 25 May 2020 until 1 September 2020 while preserving input VAT deduction. [Besluit van 19 mei 2020, nr. 2020-10789](https://zoek.officielebekendmakingen.nl/stcrt-2020-28349.html).
 
 - From 1 January 2020, qualifying call-off stock transfers no longer required registration in the arrival state and were reported in the ICP. [Belastingdienst ICP guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/opgaaf_icp/opgaaf_icp).
 
@@ -62,7 +62,7 @@ Keep evidence for zero-rated intra-EU goods supplies, including the buyer's vali
 
 A KOR participant does not deduct input VAT and does not state VAT on invoices. Track Dutch turnover across the entrepreneur’s activities to monitor the current-year ceiling. A BV may participate if the conditions are met. [Wet OB, article 25](https://wetten.overheid.nl/BWBR0002629/2020-01-01) and [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
 
-Reconcile the VAT return to the sales and purchase records for the period. File and pay by the applicable deadline. Keep records for private use, business-car use and personnel provisions so that the final return can settle the private-use amount, pro rata, BUA and herzieningen. If a return already filed needs correction, use a suppletie subject to the 2020 correction rules. [AWR, articles 10 and 19](https://wetten.overheid.nl/BWBR0002320/2020-01-01), [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf) and [UBOB, article 15](https://wetten.overheid.nl/BWBR0002633/2020-01-01).
+Reconcile the VAT return to the sales and purchase records for the period. File and pay by the applicable deadline. Keep records for private use, business-car use and personnel provisions so that the final return can settle the private-use amount, pro rata, BUA and adjustments (herzieningen). If a return already filed needs correction, use a supplementary return subject to the 2020 correction rules. [AWR, articles 10 and 19](https://wetten.overheid.nl/BWBR0002320/2020-01-01), [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf) and [UBOB, article 15](https://wetten.overheid.nl/BWBR0002633/2020-01-01).
 
 ---
 
@@ -76,7 +76,7 @@ Reconcile the VAT return to the sales and purchase records for the period. File 
 
 - **2020 ICP deadline: unknown and UNVERIFIED.** The checked digital guide is for 2024. A period-specific 2020 primary source would settle the date. [ICP digital return guide](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf).
 
-- **Quarterly ICP goods threshold: UNVERIFIED for 2020.** The current page gives € 50.000, but the checked page does not establish the threshold for 2020. A dated 2020 Belastingdienst instruction or applicable legal text would settle it. [Current ICP period guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/opgaaf_icp/tijdvak_opgaaf_icp/tijdvak_opgaaf_icp).
+- **Quarterly ICP goods threshold: UNVERIFIED for 2020.** The current page gives € 50.000, but the checked page does not establish the threshold for 2020. A dated 2020 Dutch Tax and Customs Administration (Belastingdienst) instruction or applicable legal text would settle it. [Current ICP period guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/opgaaf_icp/tijdvak_opgaaf_icp/tijdvak_opgaaf_icp).
 
 - **Goods distance-sales thresholds by destination state: UNVERIFIED.** The checked EU table was not re-keyed as a verified set of primary-source amounts. A dated primary source listing each destination state’s threshold for 2020 would settle the amounts. [EU VAT in the European Community annex](https://taxation-customs.ec.europa.eu/system/files/2021-02/vat_in_ec_annexi.pdf).
 
@@ -86,9 +86,9 @@ Reconcile the VAT return to the sales and purchase records for the period. File 
 
 - **Resolved KOR turnover-test conflict.** The 2020 rule tests turnover in the current calendar year only. The corrected earlier baseline that used both the year of application and the preceding year does not apply to 2020. The later KOR law requires prior-year turnover information and changes the test from 2025. [Wet OB, 2020 version](https://wetten.overheid.nl/BWBR0002629/2020-01-01), [Wet OB, 2024 version](https://wetten.overheid.nl/BWBR0002629/2024-01-01) and [Wet OB, 2025 version](https://wetten.overheid.nl/BWBR0002629/2025-01-01).
 
-- **Suppletie threshold wording varies by year.** The 2020 Handbook says a correction of less than € 1.000 may go into the next return. The 2026 Handbook says € 1.000 or less. These are year-specific wordings. The exact treatment of a correction of exactly € 1.000 under the 2020 wording is not established by the checked 2020 Handbook. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf) and [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf).
+- **supplementary return threshold wording varies by year.** The 2020 Handbook says a correction of less than € 1.000 may go into the next return. The 2026 Handbook says € 1.000 or less. These are year-specific wordings. The exact treatment of a correction of exactly € 1.000 under the 2020 wording is not established by the checked 2020 Handbook. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf) and [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf).
 
-- **Full historic Tabel I item list for 2020: not established item by item in the checked material.** The current Belastingdienst pages list current reduced-rate goods and services but do not carry a year. The year-specific enacted source establishes the 9% rate for Tabel I. A complete dated Tabel I text for the relevant 2020 version would settle the historical list. [Wet OB, 2020 version](https://wetten.overheid.nl/BWBR0002629/2020-01-01), [current 9% goods list](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/goederen_9_btw/goederen_met_9_btw) and [current 9% services list](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/diensten_9_btw/).
+- **Full historic Table I item list for 2020: not established item by item in the checked material.** The current Dutch Tax and Customs Administration pages list current reduced-rate goods and services but do not carry a year. The year-specific enacted source establishes the 9% rate for Table I. A complete dated Table I text for the relevant 2020 version would settle the historical list. [Wet OB, 2020 version](https://wetten.overheid.nl/BWBR0002629/2020-01-01), [current 9% goods list](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/goederen_9_btw/goederen_met_9_btw) and [current 9% services list](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/diensten_9_btw/).
 
 ---
 
@@ -98,5 +98,5 @@ Reconcile the VAT return to the sales and purchase records for the period. File 
 
 - [2020 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
-- [BTW 2021](../../2021/vat/figures.md)
-- Related topics in 2020: [Kosten en auto 2020](../costs-and-car/figures.md), [Aangifte en procedure 2020](../procedure/figures.md), [BV en vennootschapsbelasting 2020](../private-company-and-corporate-tax/figures.md)
+- [VAT 2021](../../2021/vat/figures.md)
+- Related topics in 2020: [Costs and car 2020](../costs-and-car/figures.md), [Income tax return and procedure 2020](../procedure/figures.md), [BV and corporate income tax 2020](../private-company-and-corporate-tax/figures.md)

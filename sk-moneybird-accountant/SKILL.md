@@ -1,6 +1,6 @@
 ---
 name: sk-moneybird-accountant
-description: Routes Dutch ZZP boekhouding and btw, VAT returns, yearly overviews, income tax returns and Jortt to Moneybird migration. No filing, no legal advice.
+description: Routes Dutch ZZP bookkeeping and VAT returns, yearly overviews, income tax returns and Jortt to Moneybird migration. No filing, no legal advice.
 allowed-tools: [Read, Write, Edit, Bash, Glob, Grep]
 version: 1.0.0.0
 ---
@@ -47,7 +47,7 @@ If ambiguous, ask one question: historical migration or current bookkeeping? Do 
 
 ### Task-Type Table
 
-Every request matches exactly one row, which decides files read and tool skill.
+Every request matches exactly one row, which determines the files to read and the tool skill.
 
 <!-- route-table:start -->
 
@@ -62,7 +62,7 @@ Every request matches exactly one row, which decides files read and tool skill.
 | T7 | CLI action | `haal op`, `boek in`, `synchroniseer` | read Jortt, moneybird-guard, write, batch, approval | `additive` | `-` | `tok:T7` | Additive and never wins alone, it appends the matching sibling tool skill to the row already matched |
 | T8 | unknown or out of scope | `aangifte doen`, `indienen`, `dien`, `insturen`, `aanslag betalen`, `periode afsluiten` | `filing`, `file my`, `file the`, `submit`, `pay the assessment`, `lock the period`, `non-Dutch tax`, `private database` | `none` | `-` | `tok:T8` | Wins over T10, T11 and T12 when an explicit file, submit, pay or lock request is present, otherwise only when no other row scores |
 | T9 | onboarding | `startende ondernemer` | where do I start, first time, setup | `none` | `!references/migration/overview-and-setup.md` | `tok:T9` | Loses to every typed row, it wins only when the request asks where to start with no concrete task |
-| T10 | prepare the VAT return | `btw-aangifte`, `aangifte omzetbelasting`, `kwartaalaangifte`, `btw-aangifte voorbereiden`, `btw-aangifte klaarzetten`, `btw-aangifte controleren` | `VAT return`, `quarterly return`, `prepare the VAT return`, `review the VAT return`, `check the VAT return` | `cli-moneybird` | `!references/vat-return/README.md`, `!references/tax-rules/{year}/README.md`, `!references/tax-rules/{year}/vat/figures.md`, `?references/tax-rules/{year}/procedure/figures.md` when a deadline, correction or belastingrente applies, and `?references/tax-rules/source-library.md@2-how-to-reach-a-source` when the official source is asked | `tok:T10` | Beats T3 when the VAT return is named and yields to T3 on a period question without it, always yields to T8 on a filing request |
+| T10 | prepare the VAT return | `btw-aangifte`, `aangifte omzetbelasting`, `kwartaalaangifte`, `btw-aangifte voorbereiden`, `btw-aangifte klaarzetten`, `btw-aangifte controleren` | `VAT return`, `quarterly return`, `prepare the VAT return`, `review the VAT return`, `check the VAT return` | `cli-moneybird` | `!references/vat-return/README.md`, `!references/tax-rules/{year}/README.md`, `!references/tax-rules/{year}/vat/figures.md`, `?references/tax-rules/{year}/procedure/figures.md` when a deadline, correction or tax interest (belastingrente) applies, and `?references/tax-rules/source-library.md@2-how-to-reach-a-source` when the official source is asked | `tok:T10` | Beats T3 when the VAT return is named and yields to T3 on a period question without it, always yields to T8 on a filing request |
 | T11 | prepare the yearly overview | `jaaroverzicht`, `jaarrekening`, `jaarafsluiting`, `eindejaar`, `balans opmaken`, `winst-en-verliesrekening`, `overlopende posten`, `vooruitbetaalde kosten`, `toerekenen`, `privé-opnamen`, `suppletie`, `balans en winst-en-verliesrekening`, `jaaroverzicht voorbereiden`, `jaarrekening klaarzetten`, `jaarrekening controleren` | `yearly overview`, `annual accounts`, `prepare the yearly overview`, `review the annual accounts`, `check the yearly overview` | `cli-moneybird` | `!references/yearly-overview/README.md`, `!references/tax-rules/{year}/costs-and-car/figures.md`, `!references/tax-rules/{year}/investments/figures.md`, `?references/tax-rules/{year}/README.md` when a close signal applies, and `?references/fixed-assets.md` when an asset, an investment or depreciation is in scope | `tok:T11` | Beats T3 when the yearly overview is named and yields to T3 on a period question without it, always yields to T8 on a filing request |
 | T12 | prepare the income tax return | `aangifte inkomstenbelasting`, `IB-aangifte`, `aangifte inkomstenbelasting voorbereiden`, `IB-aangifte klaarzetten`, `IB-aangifte controleren` | `income tax return`, `prepare the income tax return`, `review the income tax return`, `check the income tax return` | `none` | `!references/income-tax-return/README.md`, `!references/tax-rules/{year}/README.md`, `!references/tax-rules/{year}/income-tax/figures.md`, `!references/tax-rules/{year}/business-deductions/figures.md`, and `?references/tax-rules/source-library.md@2-how-to-reach-a-source` when the official source is asked | `tok:T12` | Beats T5 when the income tax return is named and yields to T5 on a tax figure question without it, always yields to T8 on a filing request |
 
@@ -70,11 +70,11 @@ Every request matches exactly one row, which decides files read and tool skill.
 
 Read budget ladder in o200k_base tokens: year README 3,000, one section 5,000, full reference file 15,000.
 
-The generated [reference library](./references/README.md) lists the tax year folders, the tax-rule files and the migration files, each with its own description.
+The generated [reference library](./references/README.md) lists the tax year folders, the tax-rule and migration files, each with a description.
 
 Signal sources, the `tok:Tn` keys and their Belastingdienst pages: `references/routing-signals.md`.
 
-T8 answers in two ways. A request outside the skill's scope gets the out-of-scope refusal. A request for a yearly deliverable whose procedure is not written gets the documented gap answer from the `gaps` list in `references/index.json`, which names the topic, the owner path and the Operator action. Every tax-portal action stays Operator-only.
+T8 answers in two ways. A request outside scope gets the out-of-scope refusal. A request for a yearly deliverable whose procedure is not written gets the documented gap answer from the `gaps` list in `references/index.json`, which names the topic, the owner path and the Operator action. Every tax-portal action stays Operator-only.
 
 ### Route Classes
 

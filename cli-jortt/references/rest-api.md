@@ -220,7 +220,7 @@ The CLI derives slugs from `operationId` by lowercasing it and replacing non-alp
 | `the-default-ledger-account-for-invoice-line-items` | GET | `/ledger_accounts/invoices/default` | `invoices:read` | none | none | no | none |
 | `the-default-ledger-account-for-invoice-line-items-v1` | GET | `/v1/ledger_accounts/invoices/default` | `invoices:read` | none | none | no | none |
 
-### Loonjournaalposten
+### Payroll journal entries (Loonjournaalposten)
 
 | Slug | Method | Path | Scope | Path params | Filters | Page | Body schema |
 |---|---|---|---|---|---|---|---|

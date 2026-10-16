@@ -16,7 +16,7 @@ version: 1.0.0.0
 
 Entry index for preparing a Dutch sole-trader income tax return from Moneybird. The folder holds the ordered procedure, the Operator input checklist, the investment and claim register and the residual open points. It prepares and never files, submits or pays.
 
-The T12 task-type row routes a prepare-the-income-tax-return request into `references/income-tax-return/`. The agent assembles the return pack for one year, names every Operator input, every evidence item and every open point, and stops before filing. The Operator reviews and confirms the pack and files the return in the Belastingdienst portal.
+The T12 task-type row routes a prepare-the-income-tax-return request into `references/income-tax-return/`. The agent assembles the return pack for one year, names every Operator input, every evidence item and every open point, and stops before filing. The Operator reviews and confirms the pack and files the return in the Dutch Tax and Customs Administration (Belastingdienst) portal.
 
 ---
 
@@ -28,7 +28,7 @@ The procedure runs the ordered cross-year steps with one owner tag per step and 
 
 ### The register, the open points and the boundary
 
-The investment and claim register is the dated per-asset record with the order date, the payment dates, the in-use date, the RVO reference and the prior aftrek columns, and its amount cells are braced placeholders. The residual unknowns stay `unresolved`, each with what would settle it. Every figure is a link into `references/tax-rules/{year}/` and the folder never copies one. Filing, payment and the period lock stay Operator-only, and an explicit file, submit, pay or lock request leaves T12 for the T8 refusal.
+The investment and claim register is the dated per-asset record with the order date, the payment dates, the in-use date, the RVO reference and the prior deduction (aftrek) columns, and its amount cells are braced placeholders. The residual unknowns stay `unresolved`, each with what would settle it. Every figure is a link into `references/tax-rules/{year}/` and the folder never copies one. Filing, payment and the period lock stay Operator-only, and an explicit file, submit, pay or lock request leaves T12 for the T8 refusal.
 
 ---
 

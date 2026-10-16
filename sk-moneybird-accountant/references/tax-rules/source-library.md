@@ -66,10 +66,10 @@ Prefer the higher row when two sources disagree. A statute beats a help page, an
 | Authority | Hosts | Sources | Use it for |
 |---|---|---|---|
 | `statute` | wetten.overheid.nl | 74 | The law text in force on a date. Dated links pin the version |
-| `official-publication` | zoek.officielebekendmakingen.nl, open.overheid.nl | 59 | Staatsblad texts, Kamerstukken and their explanatory memoranda |
-| `parliament` | tweedekamer.nl, eerstekamer.nl | 12 | Bills not yet in the Staatsblad, and their status |
-| `tax-authority` | belastingdienst.nl and its subdomains | 262 | Rates, thresholds, deadlines and how the Belastingdienst applies a rule. FISIN pages hold per-year figures |
-| `government` | rijksoverheid.nl, ondernemersplein.overheid.nl, business.gov.nl, kvk.nl, rvo.nl | 36 | Plain-language explanations, the Belastingplan documents, KVK and subsidy rules |
+| `official-publication` | zoek.officielebekendmakingen.nl, open.overheid.nl | 59 | Bulletin of Acts and Decrees (Staatsblad) texts, Parliamentary papers (kamerstukken) and their explanatory memoranda |
+| `parliament` | tweedekamer.nl, eerstekamer.nl | 12 | Bills not yet in the Bulletin of Acts and Decrees, and their status |
+| `tax-authority` | belastingdienst.nl and its subdomains | 262 | Rates, thresholds, deadlines and how the Dutch Tax and Customs Administration (Belastingdienst) applies a rule. FISIN pages hold per-year figures |
+| `government` | rijksoverheid.nl, ondernemersplein.overheid.nl, business.gov.nl, kvk.nl, rvo.nl | 36 | Plain-language explanations, the Tax Plan documents (Belastingplan), KVK and subsidy rules |
 | `eu` | taxation-customs.ec.europa.eu | 2 | EU VAT rules that Dutch pages refer to |
 | `product-docs` | helpcenter.moneybird.nl, moneybird.com, jortt.nl, github.com | 32 | How Moneybird and Jortt work. Never a tax rule |
 | `secondary` | financialfocus.abnamro.nl, holdwise.nl, mijn.bovag.nl | 3 | Early reports of announced figures. Confirm on a primary source before use |
@@ -105,7 +105,7 @@ Citing files count the files that link any version of the law.
 
 ## 5. MOST-CITED PAGES
 
-### Belastingdienst
+### Dutch Tax and Customs Administration (Belastingdienst)
 
 | Topic | Page | Files |
 |---|---|---|
@@ -131,7 +131,7 @@ FISIN pages carry the year in the path, as in `fisin2020` to `fisin2026`. Change
 | Belastingplan 2027 bill | [rijksoverheid.nl](https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/wetsvoorstel-belastingplan-2027/wetsvoorstel-belastingplan-2027.pdf) | 11 |
 | Staatsblad 2026, 158 | [officielebekendmakingen.nl](https://zoek.officielebekendmakingen.nl/stb-2026-158.html) | 10 |
 
-Officielebekendmakingen addresses follow a fixed pattern: `kst-<dossier>-<number>.html` for a Kamerstuk and `stb-<year>-<number>.html` for a Staatsblad text.
+Official Publications (Officielebekendmakingen) addresses follow a fixed pattern: `kst-<dossier>-<number>.html` for a Parliamentary paper (kamerstuk) and `stb-<year>-<number>.html` for a Bulletin of Acts and Decrees (Staatsblad) text.
 
 ### Moneybird help center
 
@@ -164,7 +164,7 @@ None. The four links found dead on 2026-10-12 were rechecked and replaced on 202
 
 ### Digest and watch fields
 
-The index keeps a `digest` and a `retrieved_at` per readable source, next to the `etag` and `last_modified` a fetch returned. A changed digest is reported with every file that cites the URL, and the Operator decides every status flip. A row whose permanent parliamentary page is not yet published carries `kst_pending` with the expected `kst` id and keeps its temporary Tweede Kamer link until the permanent page is live.
+The index keeps a `digest` and a `retrieved_at` per readable source, next to the `etag` and `last_modified` a fetch returned. A changed digest is reported with every file that cites the URL, and the Operator decides every status flip. A row whose permanent parliamentary page is not yet published carries `kst_pending` with the expected `kst` id and keeps its temporary House of Representatives (Tweede Kamer) link until the permanent page is live.
 
 ### Refresh intervals
 
@@ -172,7 +172,7 @@ The index keeps a `digest` and a `retrieved_at` per readable source, next to the
 |---|---|---|
 | Year topic files | `sk-moneybird-accountant/references/tax-rules/2027/` | At every checkpoint in the release calendar |
 | Year READMEs | `sk-moneybird-accountant/references/tax-rules/2027/README.md` | At every checkpoint and after each logged correction |
-| The reference guide | `sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md` | After the Tweede Kamer vote and after the February reconciliation |
+| The reference guide | `sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md` | After the House of Representatives vote and after the February reconciliation |
 | Migration references | `sk-moneybird-accountant/references/migration/` | At every migration phase gate |
 | The CLI skills | `cli-jortt/SKILL.md` and `cli-moneybird/SKILL.md` | Monthly with the watch run |
 

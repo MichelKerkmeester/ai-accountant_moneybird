@@ -221,7 +221,7 @@ The checks prove the routes, links, anchors and offline tool behavior. They do n
 | [Purchase invoice reference](references/purchase-invoices.md) | Booking purchase invoices, receipts and orders, with the VAT rate per case |
 | [Mixed-use cost reference](references/mixed-use-costs.md) | A cost used partly privately, with the business share, the VAT split and the private booking |
 | [Fixed asset reference](references/fixed-assets.md) | When a purchase is an asset, depreciation, the VAT revision period and disposal |
-| [VAT return reference](references/vat-return/README.md) | Preparing a VAT period for Operator review, with the rubriek and derivation rules and the review pack |
+| [VAT return reference](references/vat-return/README.md) | Preparing a VAT period for Operator review, with the section and derivation rules and the review pack |
 | [Yearly overview reference](references/yearly-overview/README.md) | Preparing the yearly close for Operator review, with the auditfile gate, the fiscal reconciliation and the hand-off |
 | [Income tax return reference](references/income-tax-return/README.md) | Preparing one income tax return for Operator review, with the Operator inputs, the claim register and the open points |
 | [Yearly overview template](assets/yearly-overview/yearly-overview-template.html) | The bilingual printable layout of the prepared yearly pack, with a braced placeholder for every value |

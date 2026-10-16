@@ -50,8 +50,8 @@ Run these steps in order against the files of the newest year folder.
 | Checkpoint | Date | Refresh |
 |---|---|---|
 | Prinsjesdag | 2026-09-15 | Every `proposed` row under `sk-moneybird-accountant/references/tax-rules/2027/` |
-| Tweede Kamer vote | 2026-11-30 | The bill rows under `sk-moneybird-accountant/references/tax-rules/2027/` and the staged-bill rule in `sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md` |
-| Eerste Kamer vote | 2026-12-31 | The status tags under `sk-moneybird-accountant/references/tax-rules/2027/` and the year preference in `sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md` |
+| House of Representatives (Tweede Kamer) vote | 2026-11-30 | The bill rows under `sk-moneybird-accountant/references/tax-rules/2027/` and the staged-bill rule in `sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md` |
+| Senate (Eerste Kamer) vote | 2026-12-31 | The status tags under `sk-moneybird-accountant/references/tax-rules/2027/` and the year preference in `sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md` |
 | December indexation | 2027-01-05 | The indexation rows under `sk-moneybird-accountant/references/tax-rules/2027/` and the counts in `sk-moneybird-accountant/references/tax-rules/source-library.md` |
 | February reconciliation | 2027-02-15 | Every `Corrected` and `UNVERIFIED` row under `sk-moneybird-accountant/references/tax-rules/2026/` and `sk-moneybird-accountant/references/tax-rules/2027/` |
 

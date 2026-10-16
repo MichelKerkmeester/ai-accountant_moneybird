@@ -1,7 +1,7 @@
 ---
-title: "Ondernemersaftrek en MKB-winstvrijstelling 2023: Figures"
-description: "All parts of the ondernemersaftrek and the MKB-winstvrijstelling for tax year 2023, with the 2023 amounts, conditions, the end of the oudedagsreserve additions and the tariefsaanpassing."
-nav_label: "Ondernemersaftrek en MKB-winstvrijstelling"
+title: "Entrepreneur's allowance and SME profit exemption 2023: Figures"
+description: "All parts of the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption (MKB-winstvrijstelling) for tax year 2023, with the 2023 amounts, conditions, the end of the old-age reserve (oudedagsreserve) additions and the rate adjustment (tariefsaanpassing)."
+nav_label: "Entrepreneur's allowance and SME profit exemption"
 trigger_phrases:
   - "ondernemersaftrek 2023"
   - "zelfstandigenaftrek 2023"
@@ -12,11 +12,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Ondernemersaftrek en MKB-winstvrijstelling 2023: Figures
+# Entrepreneur's allowance and SME profit exemption 2023: Figures
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 1 of 4 of the Ondernemersaftrek en MKB-winstvrijstelling 2023 topic.
+Part 1 of 4 of the Entrepreneur's allowance and SME profit exemption 2023 topic.
 
 - [rules.md](rules.md): how it works.
 - [examples.md](examples.md): the worked examples.
@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-The ondernemersaftrek (entrepreneur's allowance) has five parts in art. 3.74: the zelfstandigenaftrek (self-employed person's allowance), the aftrek voor speur- en ontwikkelingswerk (research and development deduction), the meewerkaftrek (allowance for a partner who works in the business), the startersaftrek bij arbeidsongeschiktheid (starter's allowance on occupational disability) and the stakingsaftrek (cessation allowance). The startersaftrek that most starters use is not a separate part of that list, it is an increase of the zelfstandigenaftrek in art. 3.76 lid 3. For 2023 the zelfstandigenaftrek is € 5.030, the MKB-winstvrijstelling (small business profit exemption) stays at 14% and additions to the oudedagsreserve (old-age reserve) end on 1 January 2023 while an existing reserve continues under art. 10a.29. All 2023 values in this file are enacted law and Verified, with the source per item in section 2.
+The entrepreneur's allowance (ondernemersaftrek) has five parts in art. 3.74: the self-employed person's deduction (zelfstandigenaftrek), the research and development deduction (aftrek voor speur- en ontwikkelingswerk), the deduction for assisting partner (meewerkaftrek), the starter's deduction on occupational disability (startersaftrek bij arbeidsongeschiktheid) and the discontinuation deduction (stakingsaftrek). The starter's deduction (startersaftrek) that most starters use is not a separate part of that list, it is an increase of the self-employed person's deduction in art. 3.76 lid 3. For 2023 the self-employed person's deduction is € 5.030, the SME profit exemption (MKB-winstvrijstelling) stays at 14% and additions to the old-age reserve (oudedagsreserve) end on 1 January 2023 while an existing reserve continues under art. 10a.29. All 2023 values in this file are enacted law and Verified, with the source per item in section 2.
 
 ---
 
@@ -39,57 +39,57 @@ The ondernemersaftrek (entrepreneur's allowance) has five parts in art. 3.74: th
 <!-- GENERATED:key-figure-index:start -->
 | Item | row |
 |---|---|
-| Urencriterium (hours criterion) | 1 |
-| Tweede toets, terugkijkperiode | 2 |
-| Verlaagd urencriterium | 3 |
-| Zwangerschap telt als gewerkte uren | 4 |
-| Samenwerkingsverband met verbonden personen, voornamelijk ondersteunend | 5 |
-| Zelfstandigenaftrek (self-employed person's deduction) | 6 |
-| Zelfstandigenaftrek op AOW-leeftijd | 7 |
-| Startersaftrek (starter's deduction) | 8 |
-| Startersaftrek op AOW-leeftijd | 9 |
-| Startersaftrek, voorwaarde eerdere jaren | 10 |
-| Startersaftrek bij arbeidsongeschiktheid | 11 |
-| Aftrek speur- en ontwikkelingswerk | 12 |
-| S&O startersverhoging | 13 |
-| Aftrek S&O, voorwaarden | 14 |
-| MKB-winstvrijstelling (SME profit exemption) | 15 |
-| Meewerkaftrek (meewerkende partner deduction), bands | 16 |
-| Partnerbeloning onder € 5.000 | 17 |
-| Stakingsaftrek (business cessation deduction) | 18 |
-| Oudedagsreserve (old-age reserve), toevoegingen | 19 |
-| Oudedagsreserve, toevoeging in een gebroken boekjaar eindigend in 2023 | 20 |
-| Oudedagsreserve, lijfrentepremies | 21 |
-| Tariefsaanpassing (rate adjustment) | 22 |
-| Maximum value of the ondernemersaftrek and the MKB-winstvrijstelling | 23 |
+| Hours criterion (urencriterium) | 1 |
+| Second test (tweede toets), look-back period (terugkijkperiode) | 2 |
+| Reduced hours criterion (verlaagd urencriterium) | 3 |
+| Pregnancy (zwangerschap) counts as hours worked (gewerkte uren) | 4 |
+| Partnership (samenwerkingsverband) with related persons (verbonden personen), mainly supporting (voornamelijk ondersteunend) | 5 |
+| Self-employed person's deduction (zelfstandigenaftrek) | 6 |
+| Self-employed person's deduction at state pension age (AOW age) | 7 |
+| Starter's deduction (startersaftrek) | 8 |
+| Starter's deduction at state pension age (AOW age) | 9 |
+| Starter's deduction, earlier-years condition (voorwaarde eerdere jaren) | 10 |
+| Starter's deduction for disabled entrepreneurs (startersaftrek bij arbeidsongeschiktheid) | 11 |
+| Research and development work deduction (aftrek speur- en ontwikkelingswerk) | 12 |
+| S&O starter's increase (startersverhoging) | 13 |
+| S&O deduction, conditions (voorwaarden) | 14 |
+| SME profit exemption (MKB-winstvrijstelling (SME profit exemption)) | 15 |
+| Deduction for assisting partner (meewerkaftrek), bands | 16 |
+| Partner remuneration (partnerbeloning) under € 5.000 | 17 |
+| Discontinuation deduction (stakingsaftrek) | 18 |
+| Old-age reserve (oudedagsreserve), additions (toevoegingen) | 19 |
+| Old-age reserve, addition in a financial year not coinciding with the calendar year (gebroken boekjaar) ending in 2023 | 20 |
+| Old-age reserve, annuity premiums (lijfrentepremies) | 21 |
+| Rate adjustment (tariefsaanpassing) | 22 |
+| Maximum value of the entrepreneur's allowance and the SME profit exemption | 23 |
 <!-- GENERATED:key-figure-index:end -->
 
 
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
-| Urencriterium | 1.225 hours | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
-| Tweede toets, terugkijkperiode | not an ondernemer in 1 or more of 2018 to 2022 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
-| Verlaagd urencriterium | 800 hours, not more than 1.225 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
-| Zwangerschap telt als gewerkte uren | 16 weeks | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
-| Samenwerkingsverband met verbonden personen, voornamelijk ondersteunend | 70% or more | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium |
-| Zelfstandigenaftrek | € 5.030 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
-| Zelfstandigenaftrek op AOW-leeftijd | € 2.515 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
-| Startersaftrek | € 2.123 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
-| Startersaftrek op AOW-leeftijd | € 1.062 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
-| Startersaftrek, voorwaarde eerdere jaren | not an ondernemer in 1 or more of the 5 preceding years, zelfstandigenaftrek used at most twice | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
-| Startersaftrek bij arbeidsongeschiktheid | € 12.000, € 8.000, € 4.000, capped at profit | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
-| Aftrek speur- en ontwikkelingswerk | € 14.202 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
-| S&O startersverhoging | € 7.106 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
-| Aftrek S&O, voorwaarden | S&O-verklaring from RVO, at least 500 hours of S&O work, urencriterium | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek |
-| MKB-winstvrijstelling | 14% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
-| Meewerkaftrek, bands | 1,25% / 2% / 3% / 4% for 525 / 875 / 1.225 / 1.750 hours and up | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
-| Partnerbeloning onder € 5.000 | not deductible, counts as working without pay | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/meewerkaftrek |
-| Stakingsaftrek | € 3.630 maximum | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
-| Oudedagsreserve, toevoegingen | none from 1 January 2023, existing reserve stays, afneming rules apply via art. 10a.29 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
-| Oudedagsreserve, toevoeging in een gebroken boekjaar eindigend in 2023 | addition possible over a broken book year that started before 1 January 2023 and ends in 2023 | enacted | Verified | https://kennisgroepen.belastingdienst.nl/publicaties/kg21220232-doteren-aan-de-fiscale-oudedagsreserve-bij-een-gebroken-boekjaar-eindigend-in-belastingjaar-2023/ |
-| Oudedagsreserve, lijfrentepremies | deductible up to the afneming of the year, premiums within six months after the year end count for that year | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
-| Tariefsaanpassing | 12,57% above € 73.031 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
-| Maximum value of the ondernemersaftrek and the MKB-winstvrijstelling | 36,93% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
+| Hours criterion (urencriterium) | 1.225 hours | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
+| Second test (tweede toets), look-back period (terugkijkperiode) | not an entrepreneur (ondernemer) in 1 or more of 2018 to 2022 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
+| Reduced hours criterion (verlaagd urencriterium) | 800 hours, not more than 1.225 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
+| Pregnancy (zwangerschap) counts as hours worked (gewerkte uren) | 16 weeks | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
+| Partnership (samenwerkingsverband) with related persons (verbonden personen), mainly supporting (voornamelijk ondersteunend) | 70% or more | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium |
+| Self-employed person's deduction (zelfstandigenaftrek) | € 5.030 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
+| Self-employed person's deduction at state pension age (AOW age) | € 2.515 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
+| Starter's deduction (startersaftrek) | € 2.123 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
+| Starter's deduction at state pension age (AOW age) | € 1.062 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
+| Starter's deduction, earlier-years condition (voorwaarde eerdere jaren) | not an entrepreneur in 1 or more of the 5 preceding years, self-employed person's deduction used at most twice | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
+| Starter's deduction for disabled entrepreneurs (startersaftrek bij arbeidsongeschiktheid) | € 12.000, € 8.000, € 4.000, capped at profit | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
+| Research and development work deduction (aftrek speur- en ontwikkelingswerk) | € 14.202 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
+| S&O starter's increase (startersverhoging) | € 7.106 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
+| S&O deduction, conditions (voorwaarden) | S&O declaration (S&O-verklaring) from RVO, at least 500 hours of S&O work, hours criterion | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek |
+| SME profit exemption (MKB-winstvrijstelling) | 14% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
+| Deduction for assisting partner (meewerkaftrek), bands | 1,25% / 2% / 3% / 4% for 525 / 875 / 1.225 / 1.750 hours and up | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
+| Partner remuneration (partnerbeloning) under € 5.000 | not deductible, counts as working without pay | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/meewerkaftrek |
+| Discontinuation deduction (stakingsaftrek) | € 3.630 maximum | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
+| Old-age reserve (oudedagsreserve), additions (toevoegingen) | none from 1 January 2023, existing reserve stays, reduction rules apply via art. 10a.29 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
+| Old-age reserve, addition in a financial year not coinciding with the calendar year (gebroken boekjaar) ending in 2023 | addition possible over a broken book year that started before 1 January 2023 and ends in 2023 | enacted | Verified | https://kennisgroepen.belastingdienst.nl/publicaties/kg21220232-doteren-aan-de-fiscale-oudedagsreserve-bij-een-gebroken-boekjaar-eindigend-in-belastingjaar-2023/ |
+| Old-age reserve, annuity premiums (lijfrentepremies) | deductible up to the reduction (afneming) of the year, premiums within six months after the year end count for that year | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
+| Rate adjustment (tariefsaanpassing) | 12,57% above € 73.031 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
+| Maximum value of the entrepreneur's allowance and the SME profit exemption | 36,93% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
 
 ---
 

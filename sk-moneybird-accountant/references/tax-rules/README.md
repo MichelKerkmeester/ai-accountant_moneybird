@@ -1,6 +1,6 @@
 ---
 title: "Tax rules reference index"
-description: "Index of the Dutch tax knowledge base for a ZZP sole trader who may also own a BV: the eight tax year folders with their topic counts and the five cross-year files."
+description: "Index of the Dutch tax knowledge base for a sole trader (ZZP) who may also own a BV: the eight tax year folders with their topic counts and the five cross-year files."
 nav_label: "Tax rules reference index"
 trigger_phrases:
   - "tax rules index"
@@ -14,7 +14,7 @@ checked_on: "2026-10-14"
 
 # Tax rules reference index
 
-> Index of the Dutch tax knowledge base for a ZZP sole trader who may also own a BV: the eight tax year folders with their topic counts and the five cross-year files.
+> Index of the Dutch tax knowledge base for a sole trader (ZZP) who may also own a BV: the eight tax year folders with their topic counts and the five cross-year files.
 
 **Rule:** Every figure lives in one topic file of one year folder, and the five cross-year files hold the rules and the sources that span the years. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 

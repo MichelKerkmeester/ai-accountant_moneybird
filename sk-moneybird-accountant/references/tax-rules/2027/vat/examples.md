@@ -1,7 +1,7 @@
 ---
-title: "BTW 2027: Examples"
+title: "VAT (BTW) 2027: Examples"
 description: "This file covers Dutch VAT rates, exemptions, bookkeeping, returns, cross-border rules, and current and proposed changes for tax year 2027. This file holds the examples part."
-nav_label: "BTW examples"
+nav_label: "VAT examples"
 trigger_phrases:
   - "BTW 2027"
   - "omzetbelasting 2027"
@@ -12,11 +12,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# BTW 2027: Examples
+# VAT 2027: Examples
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 3 of 4 of the BTW 2027 topic.
+Part 3 of 4 of the VAT 2027 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [rules.md](rules.md): how it works.
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the BTW 2027 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the VAT (BTW) 2027 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -42,7 +42,7 @@ A business sells taxable goods for € 1.000,00 excluding VAT.
 - At 9%: € 1.000,00 × 9% = € 90,00 VAT. Total invoice amount: € 1.000,00 + € 90,00 = € 1.090,00.
 - At 0%: € 1.000,00 × 0% = € 0,00 VAT. The supply is still zero-rated rather than exempt if it meets the conditions for the zero rate.
 
-The rates and the difference between zero rating and exemption follow Article 9 of the Wet op de omzetbelasting 1968 and the Belastingdienst guidance. [Wet op de omzetbelasting 1968](https://wetten.overheid.nl/BWBR0002629/2026-01-01), [ICP return explanation](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf)
+The rates and the difference between zero rating and exemption follow Article 9 of the Turnover Tax Act 1968 (Wet op de omzetbelasting 1968) and the Dutch Tax and Customs Administration (Belastingdienst) guidance. [Wet op de omzetbelasting 1968](https://wetten.overheid.nl/BWBR0002629/2026-01-01), [ICP return explanation](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf)
 
 ### KOR eligibility and crossing supply: Calculated example
 
@@ -50,7 +50,7 @@ Assume a business has Dutch turnover that counts for the KOR of € 19.000,00 in
 
 ### Annual return conditions: Calculated example
 
-Assume a sole trader meets the legal-form condition, has no vergunning artikel 23, and has € 1.000,00 VAT due for the year. The amount is below € 1.883,00. Assume also that each listed intra-EU activity is € 9.000,00. Each amount is below € 10.000,00. This arithmetic meets the stated thresholds, but the 2027 status of those annual-return limits is unverified, so it does not confirm eligibility for 2027. [Belastingdienst period-change page](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/wijziging-aangiftetijdvak-btw), [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
+Assume a sole trader meets the legal-form condition, has no Article 23 permit (vergunning artikel 23), and has € 1.000,00 VAT due for the year. The amount is below € 1.883,00. Assume also that each listed intra-EU activity is € 9.000,00. Each amount is below € 10.000,00. This arithmetic meets the stated thresholds, but the 2027 status of those annual-return limits is unverified, so it does not confirm eligibility for 2027. [Belastingdienst period-change page](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/wijziging-aangiftetijdvak-btw), [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
 
 ### Reverse charge for electronics: Calculated example
 
@@ -60,7 +60,7 @@ Assume one delivery contains one type of listed electronic good for € 12.000,0
 
 Assume qualifying distance sales are € 8.000,00 in the preceding calendar year and € 3.000,00 in the current calendar year before a new sale. The preceding-year amount is tested separately and is below € 10.000,00. If the new sale is € 8.000,00, the current-year total is € 3.000,00 + € 8.000,00 = € 11.000,00. The € 10.000,00 threshold is exceeded in the current calendar year, so the destination VAT rules apply from the moment of overrun, subject to the stated scope conditions. [Wet op de omzetbelasting 1968](https://wetten.overheid.nl/BWBR0002629/2026-01-01), [EU VAT notification](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/btw_berekenen_bij_diensten/wijziging_in_digitale_diensten_vanaf_2015/eu_btw_melding_doen/)
 
-### Suppletie timing: Calculated example
+### Supplementary return (suppletie) timing: Calculated example
 
 Assume a business discovers an error on a filed return. The correction must be submitted no later than 8 weeks after discovery. The correction must concern one of the past five calendar years. The amount boundary for putting a correction in the next return is € 1.000,00 or less under the stated policy, but 2027 confirmation is not published in the checked material. [UBOB](https://wetten.overheid.nl/BWBR0002633/2026-01-01), [Belastingdienst correction guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/aangifte_corrigeren/aangifte_corrigeren)
 
@@ -70,11 +70,11 @@ Assume the car's catalogue price including VAT and BPM is € 30.000,00, with no
 
 ### BUA annual threshold: Calculated example
 
-Assume one employee receives qualifying provisions costing € 200,00 per boekjaar. That total is € 227,00 minus € 200,00 = € 27,00 below the € 227,00 threshold, so it stays outside the BUA exclusion. If the total for that person is € 250,00, it is € 250,00 minus € 227,00 = € 23,00 above the threshold and the BUA exclusion may apply if the other conditions are met. [BUA](https://wetten.overheid.nl/BWBR0002636/2019-02-23)
+Assume one employee receives qualifying benefits in kind costing € 200,00 per financial year (boekjaar). That total is € 227,00 minus € 200,00 = € 27,00 below the € 227,00 threshold, so it stays outside the BUA exclusion. If the total for that person is € 250,00, it is € 250,00 minus € 227,00 = € 23,00 above the threshold and the BUA exclusion may apply if the other conditions are met. [BUA](https://wetten.overheid.nl/BWBR0002636/2019-02-23)
 
 ### Invoice deadline: Official example
 
-The Handboek Ondernemen example says a supply made on 10 April is invoiced by 15 May. This illustrates the deadline to invoice by the 15th day of the month following the month of supply. [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
+The Handbook for Entrepreneurs (Handboek Ondernemen) example says a supply made on 10 April is invoiced by 15 May. This illustrates the deadline to invoice by the 15th day of the month following the month of supply. [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
 
 ### Foreign-established business late-payment penalty: Calculated example
 

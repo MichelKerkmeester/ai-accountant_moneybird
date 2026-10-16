@@ -29,13 +29,13 @@ the twelve topic files and the headline figures of one tax year
 | File | Covers |
 |---|---|
 | [Tax year 2020](tax-rules/2020/README.md) | Overview of Dutch tax year 2020 for a ZZP sole trader who may also own a BV: the twelve topic files, their headline figures and how many values are open. |
-| [Tax year 2021](tax-rules/2021/README.md) | Overview of Dutch tax year 2021 for a ZZP sole trader who may also own a BV: the twelve topic files, their headline figures and how many values are open. |
-| [Tax year 2022](tax-rules/2022/README.md) | Overview of Dutch tax year 2022 for a ZZP sole trader who may also own a BV: the twelve topic files, their headline figures and how many values are open. |
-| [Tax year 2023](tax-rules/2023/README.md) | Overview of Dutch tax year 2023 for a ZZP sole trader who may also own a BV: the twelve topic files, their headline figures and how many values are open. |
-| [Tax year 2024](tax-rules/2024/README.md) | Overview of Dutch tax year 2024 for a ZZP sole trader who may also own a BV: the twelve topic files, their headline figures and how many values are open. |
+| [Tax year 2021](tax-rules/2021/README.md) | Overview of Dutch tax year 2021 for a sole trader (ZZP) who may also own a private limited company (BV): the twelve topic files, their headline figures and how many values are open. |
+| [Tax year 2022](tax-rules/2022/README.md) | Overview of Dutch tax year 2022 for a self-employed sole trader (ZZP) who may also own a private limited company (BV): the twelve topic files, their headline figures and how many values are open. |
+| [Tax year 2023](tax-rules/2023/README.md) | Overview of Dutch tax year 2023 for a self-employed sole trader (ZZP) who may also own a private limited company (BV). It lists the twelve topic files, their headline figures and how many values are open. |
+| [Tax year 2024](tax-rules/2024/README.md) | Overview of Dutch tax year 2024 for a sole trader (ZZP) who may also own a BV: the twelve topic files, their headline figures and how many values are open. |
 | [Tax year 2025](tax-rules/2025/README.md) | Overview of Dutch tax year 2025 for a ZZP sole trader who may also own a BV: the twelve topic files, their headline figures and how many values are open. |
-| [Tax year 2026](tax-rules/2026/README.md) | Overview of Dutch tax year 2026 for a ZZP sole trader who may also own a BV: the twelve topic files, their headline figures and how many values are open. |
-| [Tax year 2027](tax-rules/2027/README.md) | Overview of Dutch tax year 2027 for a ZZP sole trader who may also own a BV: the twelve topic files, their headline figures and how many values are open. |
+| [Tax year 2026](tax-rules/2026/README.md) | Overview of Dutch tax year 2026 for a self-employed sole trader (ZZP) who may also own a private limited company (BV): the twelve topic files, their headline figures and how many values are open. |
+| [Tax year 2027](tax-rules/2027/README.md) | Overview of Dutch tax year 2027 for a self-employed sole trader (ZZP) who may also own a private limited company (BV): the twelve topic files, their headline figures and how many values are open. |
 
 ---
 
@@ -45,8 +45,8 @@ the general rules, the year index, the change overview and the source upkeep fil
 
 | File | Covers |
 |---|---|
-| [Tax rules reference index](tax-rules/README.md) | Index of the Dutch tax knowledge base for a ZZP sole trader who may also own a BV: the eight tax year folders with their topic counts and the five cross-year files. |
-| [Dutch tax rules](tax-rules/dutch-tax-rules.md) | General Dutch tax rules for a ZZP sole trader who may also own a BV, 2020 to 2027: how to find the year file, how each topic works across years, the settled and open source conflicts, and the record and invoice duties. |
+| [Tax rules reference index](tax-rules/README.md) | Index of the Dutch tax knowledge base for a sole trader (ZZP) who may also own a BV: the eight tax year folders with their topic counts and the five cross-year files. |
+| [Dutch tax rules](tax-rules/dutch-tax-rules.md) | General Dutch tax rules for a sole trader (ZZP) who may also own a BV, 2020 to 2027: how to find the year file, how each topic works across years, the settled and open source conflicts, and the record and invoice duties. |
 | [External source library](tax-rules/source-library.md) | Every external source the skill family was built from, grouped by authority, with what each answers and how an AI agent can reach it. |
 | [Year and state resolution](tax-rules/year-and-state.md) | How the router resolves the tax year from session-context.json, refuses an out-of-range or unsettled figure, and computes the post-cutover migration state at route time. |
 | [Year changes](tax-rules/year-changes.md) | Generated overview of the changes in every tax year, newest first, with the path to each year note. |

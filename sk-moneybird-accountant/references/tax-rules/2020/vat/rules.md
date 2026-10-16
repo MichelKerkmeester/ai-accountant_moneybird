@@ -1,5 +1,5 @@
 ---
-title: "BTW 2020: Rules"
+title: "VAT (BTW) 2020: Rules"
 description: "Covers Dutch VAT rates, deductions, the small-business scheme, returns, cross-border supplies, invoicing and private use for tax year 2020. This file holds the rules part."
 nav_label: "BTW rules"
 trigger_phrases:
@@ -12,11 +12,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# BTW 2020: Rules
+# VAT (BTW) 2020: Rules
 
 **Rule:** These values hold for tax year 2020 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 2 of 4 of the BTW 2020 topic.
+Part 2 of 4 of the VAT (BTW) 2020 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [examples.md](examples.md): the worked examples.
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the how-it-works rules for the BTW 2020 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
+This part holds the how-it-works rules for the VAT 2020 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -40,39 +40,39 @@ The standard rate is 21%. It applies when a taxable supply is not covered by a r
 
 ### Reduced rate
 
-The 9% rate applies to goods and services listed in Tabel I. The checked year-specific source establishes the rate and the table reference. The detailed current Belastingdienst list is not a complete year-specific record of every Tabel I item for 2020. [Wet OB, article 9](https://wetten.overheid.nl/BWBR0002629/2020-01-01).
+The 9% rate applies to goods and services listed in Table I (Tabel I). The checked year-specific source establishes the rate and the table reference. The detailed current Dutch Tax and Customs Administration (Belastingdienst) list is not a complete year-specific record of every Table I item for 2020. [Wet OB, article 9](https://wetten.overheid.nl/BWBR0002629/2020-01-01).
 
 ### Zero rate
 
-The zero rate applies to supplies in Tabel II when the conditions set by general administrative order are met. A zero-rated supply is not the same as an exempt supply. Input VAT can still be deducted for zero-rated supplies, while exempt supplies do not carry that deduction right. For an intra-EU supply of goods, the seller needs records showing transport to another EU country, the buyer's valid VAT ID from another member state and an ICP that is timely, correct and complete. A late or incorrect ICP can jeopardize the zero rate and lead to a fine. [Wet OB, article 9](https://wetten.overheid.nl/BWBR0002629/2020-01-01), [Belastingdienst ICP instructions](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf) and [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf).
+The zero rate applies to supplies in Table II (Tabel II) when the conditions set by general administrative order are met. A zero-rated supply is not the same as an exempt supply. Input VAT can still be deducted for zero-rated supplies, while exempt supplies do not carry that deduction right. For an intra-EU supply of goods, the seller needs records showing transport to another EU country, the buyer's valid VAT ID from another member state and an ICP that is timely, correct and complete. A late or incorrect ICP can jeopardize the zero rate and lead to a fine. [Wet OB, article 9](https://wetten.overheid.nl/BWBR0002629/2020-01-01), [Belastingdienst ICP instructions](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf) and [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf).
 
-### Logies
+### Accommodation
 
-Logies was in the 9% category in 2020. The later law states that the relevant Tabel I post lapses only from 1 January 2026, and ties the transitional rule to logies. [Wet behoud verlaagd btw-tarief op cultuur, media en sport](https://zoek.officielebekendmakingen.nl/stb-2025-339.html).
+Accommodation was in the 9% category in 2020. The later law states that the relevant Table I post lapses only from 1 January 2026, and ties the transitional rule to accommodation. [Wet behoud verlaagd btw-tarief op cultuur, media en sport](https://zoek.officielebekendmakingen.nl/stb-2025-339.html).
 
 ### Electronic publications
 
-From 1 January 2020, Tabel I post b.21 applied the 9% rate to electronic supplies or lending of publications and access to news websites. [Toelichting Tabel I besluit](https://zoek.officielebekendmakingen.nl/stcrt-2022-9114.html).
+From 1 January 2020, Table I post b.21 applied the 9% rate to electronic supplies or lending of publications and access to news websites. [Toelichting Tabel I besluit](https://zoek.officielebekendmakingen.nl/stcrt-2022-9114.html).
 
-### Mondkapjes
+### Face masks (mondkapjes)
 
-An optional approval allowed no VAT to be charged on mondkapjes from 25 May 2020 until 1 September 2020. The supplier retained the right to deduct input VAT. The approval was optional, so record whether it was applied to the relevant supplies. [Besluit van 19 mei 2020, nr. 2020-10789](https://zoek.officielebekendmakingen.nl/stcrt-2020-28349.html).
+An optional approval allowed no VAT to be charged on face masks from 25 May 2020 until 1 September 2020. The supplier retained the right to deduct input VAT. The approval was optional, so record whether it was applied to the relevant supplies. [Besluit van 19 mei 2020, nr. 2020-10789](https://zoek.officielebekendmakingen.nl/stcrt-2020-28349.html).
 
 ### Exemptions
 
-Wet OB article 11 lists exemptions covering, among other things, certain supplies and letting of immovable property, care, youth work, sport, social and cultural bodies, health care, funeral services, money and securities, credit and payments, insurance, games of chance, universal postal services, public broadcasting, education, lectures at cost, composers, writers and journalists, certain movable goods, organs and blood, member services, cost-sharing groups, fundraising and childcare. The Belastingdienst list also names beleggingsgoud and kantines. Exempt supplies carry no right to deduct input VAT. An entrepreneur with both taxed and exempt activity must account for the effect on deductible input VAT. [Wet OB, article 11](https://wetten.overheid.nl/BWBR0002629/2020-01-01) and [Belastingdienst exemptions](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/vrijstellingen/).
+Wet OB article 11 lists exemptions covering, among other things, certain supplies and letting of immovable property, care, youth work, sport, social and cultural bodies, health care, funeral services, money and securities, credit and payments, insurance, games of chance, universal postal services, public broadcasting, education, lectures at cost, composers, writers and journalists, certain movable goods, organs and blood, member services, cost-sharing groups, fundraising and childcare. The Dutch Tax and Customs Administration list also names investment gold (beleggingsgoud) and canteens (kantines). Exempt supplies carry no right to deduct input VAT. An entrepreneur with both taxed and exempt activity must account for the effect on deductible input VAT. [Wet OB, article 11](https://wetten.overheid.nl/BWBR0002629/2020-01-01) and [Belastingdienst exemptions](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/vrijstellingen/).
 
 ### New KOR in force
 
-The modernised KOR applied from 1 January 2020. It is an exemption, not a VAT discount. An entrepreneur established in the Netherlands or with a Dutch vaste inrichting may choose it if the applicable turnover condition is met. Legal persons such as a BV, NV, foundation or association may also participate. [Wet modernisering kleineondernemersregeling](https://wetten.overheid.nl/BWBR0041782), [Wet OB, article 25](https://wetten.overheid.nl/BWBR0002629/2020-01-01) and [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
+The modernised KOR applied from 1 January 2020. It is an exemption, not a VAT discount. An entrepreneur established in the Netherlands or with a Dutch fixed establishment (vaste inrichting) may choose it if the applicable turnover condition is met. Legal persons such as a BV, NV, foundation or association may also participate. [Wet modernisering kleineondernemersregeling](https://wetten.overheid.nl/BWBR0041782), [Wet OB, article 25](https://wetten.overheid.nl/BWBR0002629/2020-01-01) and [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
 
 ### KOR Dutch turnover ceiling
 
-The ceiling was € 20.000 of Dutch turnover in the calendar year. For 2020, the test concerned the current calendar year only. The checked text of article 25 does not set a preceding-year test. Count all Dutch taxed turnover whatever the rate, including supplies taxed under the reverse-charge rules, plus some exempt supplies. All business activities under the entrepreneur's sub-nummers are included. [Wet OB, article 25](https://wetten.overheid.nl/BWBR0002629/2020-01-01) and [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
+The ceiling was € 20.000 of Dutch turnover in the calendar year. For 2020, the test concerned the current calendar year only. The checked text of article 25 does not set a preceding-year test. Count all Dutch taxed turnover whatever the rate, including supplies taxed under the reverse-charge rules, plus some exempt supplies. All business activities under the entrepreneur's sub-numbers (sub-nummers) are included. [Wet OB, article 25](https://wetten.overheid.nl/BWBR0002629/2020-01-01) and [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
 
 ### KOR establishment
 
-The 2020 scheme covered an entrepreneur established in the Netherlands or with a vaste inrichting there. The 2020 Handbook says legal persons, including a BV, could participate. The materials do not establish a special turnover ceiling for a BV. [Wet OB, article 25](https://wetten.overheid.nl/BWBR0002629/2020-01-01) and [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
+The 2020 scheme covered an entrepreneur established in the Netherlands or with a fixed establishment (vaste inrichting) there. The 2020 Handbook says legal persons, including a BV, could participate. The materials do not establish a special turnover ceiling for a BV. [Wet OB, article 25](https://wetten.overheid.nl/BWBR0002629/2020-01-01) and [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
 
 ### KOR notice
 
@@ -98,9 +98,9 @@ The transition notice was due by 20 November 2019 for a start on 1 January 2020.
 
 A later decision allowed an entrepreneur not yet registered with annual turnover of at most € 1.800 to use the KOR without the usual notice, retroactive to 1 January 2020. This approval was issued after 2020, but covers the 2020 period. [Decision of 10 June 2021, nr. 2021-12740](https://zoek.officielebekendmakingen.nl/stcrt-2021-30899.html).
 
-### KOR investment-goods herziening de minimis
+### KOR investment-goods adjustment (herziening) de minimis
 
-The 2020 Handbook says no herziening is required when the total adjustment for investment goods used before the relevant year is less than € 500 per year. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
+The 2020 Handbook says no adjustment is required when the total adjustment for investment goods used before the relevant year is less than € 500 per year. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
 
 ### Usual VAT return period
 
@@ -112,47 +112,47 @@ The 2020 Handbook says the period was monthly when the entrepreneur usually paid
 
 ### Yearly return VAT limit
 
-A yearly return was available only when the entrepreneur owed less than € 1.883 VAT for the year. The entrepreneur also had to meet the legal-form and intra-EU conditions below and could not hold a vergunning under article 23. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
+A yearly return was available only when the entrepreneur owed less than € 1.883 VAT for the year. The entrepreneur also had to meet the legal-form and intra-EU conditions below and could not hold a permit under article 23. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
 
 ### Yearly return intra-EU limits
 
-The entrepreneur also had to remain below € 10.000 in each of four categories separately: intra-EU supplies of goods, intra-EU services, intra-EU acquisitions and received intra-EU services. The yearly option was for a natural person or a partnership of natural persons, such as a maatschap or vof. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
+The entrepreneur also had to remain below € 10.000 in each of four categories separately: intra-EU supplies of goods, intra-EU services, intra-EU acquisitions and received intra-EU services. The yearly option was for a natural person or a partnership of natural persons, such as a civil-law partnership (maatschap) or vof. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
 
 ### Period return filing term
 
-A period return was filed within a term set by the inspector of at least 1 month after the end of the period. The Belastingdienst states that monthly and quarterly returns are due by the last day of the following month. [AWR, article 10](https://wetten.overheid.nl/BWBR0002320/2020-01-01) and [Belastingdienst VAT return guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/).
+A period return was filed within a term set by the inspector of at least 1 month after the end of the period. The Dutch Tax and Customs Administration states that monthly and quarterly returns are due by the last day of the following month. [AWR, article 10](https://wetten.overheid.nl/BWBR0002320/2020-01-01) and [Belastingdienst VAT return guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/).
 
 ### Period return payment term
 
-Payment was due within 1 month after the end of the period. The Belastingdienst uses the same deadline for filing and payment. The filing date is the date the return is received. An extension is stated only for a calamity. [AWR, article 19](https://wetten.overheid.nl/BWBR0002320/2020-01-01), [Belastingdienst VAT return guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/) and [Belastingdienst due dates](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums).
+Payment was due within 1 month after the end of the period. The Dutch Tax and Customs Administration uses the same deadline for filing and payment. The filing date is the date the return is received. An extension is stated only for a calamity. [AWR, article 19](https://wetten.overheid.nl/BWBR0002320/2020-01-01), [Belastingdienst VAT return guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/) and [Belastingdienst due dates](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums).
 
 ### General monthly and quarterly deadline
 
-The Belastingdienst states that monthly and quarterly returns are due by the last day of the month following the period. The exact published due-date table for 2020 was not found. [Belastingdienst VAT return guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/) and [Belastingdienst due dates](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums).
+The Dutch Tax and Customs Administration states that monthly and quarterly returns are due by the last day of the month following the period. The exact published due-date table for 2020 was not found. [Belastingdienst VAT return guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/) and [Belastingdienst due dates](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums).
 
 ### General yearly return deadline
 
-The general Belastingdienst instruction says a yearly return is due before 1 April of the next year. The exact published due-date table for 2020 was not found. [Belastingdienst VAT return guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/) and [Belastingdienst due dates](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums).
+The general Dutch Tax and Customs Administration instruction says a yearly return is due before 1 April of the next year. The exact published due-date table for 2020 was not found. [Belastingdienst VAT return guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/) and [Belastingdienst due dates](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums).
 
 ### Published exact 2020 VAT due-date table
 
-The live Belastingdienst due-date page begins with later periods, and no archived table of exact 2020 dates was found in the checked sources. Use the general filing and payment rules above without treating a later year’s table as the 2020 table. [Belastingdienst due dates](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums).
+The live Dutch Tax and Customs Administration due-date page begins with later periods, and no archived table of exact 2020 dates was found in the checked sources. Use the general filing and payment rules above without treating a later year’s table as the 2020 table. [Belastingdienst due dates](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums).
 
-### Suppletie correction that may be included in the next return
+### supplementary return correction that may be included in the next return
 
 For a correction of less than € 1.000, the 2020 Handbook says the entrepreneur may include it in the next return. The 2020 wording is strict about being less than that amount. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
 
-### Suppletie correction period
+### supplementary return correction period
 
 The 2020 rule covers corrections to returns for the past 5 calendar years. [UBOB, article 15](https://wetten.overheid.nl/BWBR0002633/2020-01-01).
 
-### Suppletie timing
+### supplementary return timing
 
 The entrepreneur had to correct as soon as possible, before knowing or reasonably suspecting that the inspector knew of the error or omission. Failure was an offence. The later eight-week rule was not part of the 2020 text. [UBOB, article 15](https://wetten.overheid.nl/BWBR0002633/2020-01-01).
 
-### Suppletie penalty limitation
+### supplementary return penalty limitation
 
-The power to impose a vergrijpboete lapsed 5 years after the end of the year. [UBOB, article 15](https://wetten.overheid.nl/BWBR0002633/2020-01-01).
+The power to impose a penalty for gross negligence or intent (vergrijpboete) lapsed 5 years after the end of the year. [UBOB, article 15](https://wetten.overheid.nl/BWBR0002633/2020-01-01).
 
 ### Reverse charge for specified electronics
 
@@ -164,7 +164,7 @@ From 1 January 2020, the call-off stock simplification removed the need to regis
 
 ### Quarterly ICP goods threshold for 2020
 
-The current Belastingdienst page says goods can be reported quarterly when supplies stay at or below € 50.000 in the quarter and in each of the previous quarters. The checked sources do not verify that threshold for 2020, so do not rely on it as a confirmed 2020 rule. [Current ICP period guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/opgaaf_icp/tijdvak_opgaaf_icp/tijdvak_opgaaf_icp).
+The current Dutch Tax and Customs Administration page says goods can be reported quarterly when supplies stay at or below € 50.000 in the quarter and in each of the previous quarters. The checked sources do not verify that threshold for 2020, so do not rely on it as a confirmed 2020 rule. [Current ICP period guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/opgaaf_icp/tijdvak_opgaaf_icp/tijdvak_opgaaf_icp).
 
 ### ICP deadline for 2020
 
@@ -180,15 +180,15 @@ MOSS applied to B2C digital services in 2020. It continued until the new one-sto
 
 ### Last return of the year
 
-The last return of the year settles private use of goods and services, the business car, the pro rata for taxed and exempt turnover and personnel provisions, gifts and business gifts above € 227. It also covers gas, water and electricity, internal services and herzieningen. If the last return has already been filed, correct it with a suppletie. [Belastingdienst private use](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/privegebruik/privegebruik), [last VAT return of the year](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/laatste-btw-aangifte-van-het-jaar) and [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
+The last return of the year settles private use of goods and services, the business car, the pro rata for taxed and exempt turnover and personnel provisions, gifts and business gifts above € 227. It also covers gas, water and electricity, internal services and adjustments (herzieningen). If the last return has already been filed, correct it with a supplementary return. [Belastingdienst private use](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/privegebruik/privegebruik), [last VAT return of the year](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/laatste-btw-aangifte-van-het-jaar) and [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
 
-### Business-car private-use forfait
+### Business-car private-use flat rate (forfait)
 
-If private-use records were not kept, the forfait was 2,7% of the catalogue price including VAT and bpm for a car in the business assets or obtained in another way. Commuting counted as private use. The amount was capped by the relevant VAT amounts. [Besluit heffing privégebruik auto](https://wetten.overheid.nl/BWBR0043783/2020-07-04), [Belastingdienst business-car private use](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/btw_en_de_auto/privegebruik_auto_van_de_zaak/privegebruik_auto_van_de_zaak) and [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
+If private-use records were not kept, the flat rate was 2,7% of the catalogue price including VAT and bpm for a car in the business assets or obtained in another way. Commuting counted as private use. The amount was capped by the relevant VAT amounts. [Besluit heffing privégebruik auto](https://wetten.overheid.nl/BWBR0043783/2020-07-04), [Belastingdienst business-car private use](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/btw_en_de_auto/privegebruik_auto_van_de_zaak/privegebruik_auto_van_de_zaak) and [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
 
-### Reduced business-car forfait
+### Reduced business-car flat rate
 
-The 1,5% forfait applied when no purchase VAT could be deducted or when the car had been in use for more than 5 years. The year of purchase counted as a full year. The private-use amount was prorated for a part year and reduced proportionally where the car was used for exempt activity. [Besluit heffing privégebruik auto](https://wetten.overheid.nl/BWBR0043783/2020-07-04), [Belastingdienst business-car private use](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/btw_en_de_auto/privegebruik_auto_van_de_zaak/privegebruik_auto_van_de_zaak) and [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
+The 1,5% flat rate applied when no purchase VAT could be deducted or when the car had been in use for more than 5 years. The year of purchase counted as a full year. The private-use amount was prorated for a part year and reduced proportionally where the car was used for exempt activity. [Besluit heffing privégebruik auto](https://wetten.overheid.nl/BWBR0043783/2020-07-04), [Belastingdienst business-car private use](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/btw_en_de_auto/privegebruik_auto_van_de_zaak/privegebruik_auto_van_de_zaak) and [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
 
 ### Business-car private-use cap from 4 July 2020
 
@@ -218,21 +218,21 @@ An invoice to another entrepreneur or to a legal person that is not an entrepren
 
 A simplified invoice was allowed up to € 100 including VAT or for a correction invoice. It needed the issue date, names and addresses, description of the goods or services, VAT or the information needed to calculate it, and a reference to the original invoice for a correction. This format was not allowed for intra-EU supplies, distance sales or certain foreign reverse-charge supplies. [Belastingdienst simplified invoice requirements](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/aangepaste_regels_facturen/vereenvoudigde_factuur).
 
-### Kasstelsel request condition
+### Cash accounting scheme (kasstelsel) request condition
 
-The kasstelsel was compulsory for listed trades. The factuurstelsel applied to mainly business-to-business suppliers. The 2020 Handbook says the kasstelsel could also be requested when more than 80% of supplies went to consumers. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
+The cash accounting scheme was compulsory for listed trades. The invoice basis (factuurstelsel) applied to mainly business-to-business suppliers. The 2020 Handbook says the cash accounting scheme could also be requested when more than 80% of supplies went to consumers. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
 
 ### B2B e-invoicing duty
 
 The current government business page describes e-invoicing duties for suppliers to central government and says other public bodies may require them. The checked source does not establish the historical 2020 position for general B2B e-invoicing. See section 7. [Business.gov.nl e-invoicing government organisations](https://business.gov.nl/regulations/e-invoicing-government-organisations/).
 
-### Corona bijzonder uitstel debt period
+### Corona debt period under special deferral of payment (bijzonder uitstel van betaling)
 
-The repayment arrangement covers tax debts built up from 12 March 2020 through 31 March 2022. The repayment period ran from 1 October 2022 to 1 October 2027, with the first term due 31 October 2022. [Belastingdienst payment arrangement for debts built up under special deferral](https://www.belastingdienst.nl/wps/wcm/connect/nl/betalenenontvangen/content/betalingsregeling-voor-opgebouwde-belastingschuld-door-bijzonder-uitstel).
+The repayment arrangement covers tax debts built up from 12 March 2020 through 31 March 2022. The repayment period ran from 1 October 2022 to 1 October 2027, with the first instalment due 31 October 2022. [Belastingdienst payment arrangement for debts built up under special deferral](https://www.belastingdienst.nl/wps/wcm/connect/nl/betalenenontvangen/content/betalingsregeling-voor-opgebouwde-belastingschuld-door-bijzonder-uitstel).
 
 ### Corona repayment terms
 
-The standard arrangement uses 60 monthly terms, with quarterly payment also possible. One pause of up to 6 months or 2 quarters is possible. Extension to 84 months is limited to a scheme of at least € 10.000. For recipients of the specified UHT letter, the 60 months run from 1 July 2025. [Belastingdienst payment arrangement for debts built up under special deferral](https://www.belastingdienst.nl/wps/wcm/connect/nl/betalenenontvangen/content/betalingsregeling-voor-opgebouwde-belastingschuld-door-bijzonder-uitstel).
+The standard arrangement uses 60 monthly instalments, with quarterly payment also possible. One pause of up to 6 months or 2 quarters is possible. Extension to 84 months is limited to a scheme of at least € 10.000. For recipients of the specified UHT letter, the 60 months run from 1 July 2025. [Belastingdienst payment arrangement for debts built up under special deferral](https://www.belastingdienst.nl/wps/wcm/connect/nl/betalenenontvangen/content/betalingsregeling-voor-opgebouwde-belastingschuld-door-bijzonder-uitstel).
 
 ---
 

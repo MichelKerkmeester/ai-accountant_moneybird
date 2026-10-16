@@ -1,6 +1,6 @@
 ---
-title: "BTW 2025: Examples"
-description: "This file explains Dutch VAT rates, exemptions, small-business rules, returns, invoicing and cross-border VAT for tax year 2025. This file holds the examples part."
+title: "VAT 2025: Examples"
+description: "This file explains Dutch VAT (btw) rates, exemptions, small-business rules, returns, invoicing and cross-border VAT for tax year 2025. This file holds the examples part."
 nav_label: "BTW examples"
 trigger_phrases:
   - "BTW 2025"
@@ -12,11 +12,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# BTW 2025: Examples
+# VAT 2025: Examples
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 3 of 4 of the BTW 2025 topic.
+Part 3 of 4 of the VAT 2025 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [rules.md](rules.md): how it works.
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the BTW 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the VAT 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -41,7 +41,7 @@ This part holds the worked examples for the BTW 2025 topic. The overview and key
 1. VAT is € 1.000 × 21% = € 210.
 2. The customer pays € 1.000 + € 210 = € 1.210.
 
-For an eligible Tabel I supply at the reduced rate:
+For an eligible Table I (tabel I) supply at the reduced rate:
 
 1. VAT is € 1.000 × 9% = € 90.
 2. The customer pays € 1.000 + € 90 = € 1.090.
@@ -76,19 +76,19 @@ This example uses only the threshold and does not calculate foreign VAT. [Belast
 
 ### OSS quarterly statement
 
-**Official example.** The official example says the EU KOR quarterly turnover statement for the first quarter of 2025 is due by 30 april 2025, including when there was no turnover. [Belastingdienst quarterly-turnover statement guidance](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/opgaaf-kwartaalomzet).
+**Official example.** The official example says the EU KOR quarterly turnover statement for the first quarter of 2025 is due by 30 April 2025, including when there was no turnover. [Belastingdienst quarterly-turnover statement guidance](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/opgaaf-kwartaalomzet).
 
 ### Business car private use
 
-**Calculated example.** A car has a catalogue price of € 30.000 including VAT and bpm, and the business cannot establish the private-use amount from records.
+**Calculated example.** A car has a catalogue price of € 30.000 including VAT and private motor vehicle tax (bpm), and the business cannot establish the private-use amount from records.
 
-1. The 2,7% forfait is € 30.000 × 2,7% = € 810.
+1. The 2,7% flat rate (forfait) is € 30.000 × 2,7% = € 810.
 2. Suppose VAT deducted in the year is € 500 and VAT on purchase was € 10.000.
 3. One fifth of purchase VAT is € 10.000 ÷ 5 = € 2.000.
 4. The cap is € 500 + € 2.000 = € 2.500.
-5. The € 810 forfait is below the € 2.500 cap, so the cap does not reduce it.
+5. The € 810 flat rate is below the € 2.500 cap, so the cap does not reduce it.
 
-For a car to which the 1,5% forfait applies, the calculation on the same catalogue price is € 30.000 × 1,5% = € 450. [Decision on VAT and private use of business cars](https://wetten.overheid.nl/BWBR0043783/2020-07-04).
+For a car to which the 1,5% flat rate applies, the calculation on the same catalogue price is € 30.000 × 1,5% = € 450. [Decision on VAT and private use of business cars](https://wetten.overheid.nl/BWBR0043783/2020-07-04).
 
 ### BUA threshold
 
@@ -113,11 +113,11 @@ The example does not calculate the deductible VAT because the applicable VAT rat
 
 ### Invoice deadline
 
-**Official example.** The Handboek example says that goods delivered on 10 april must be invoiced by 15 mei. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
+**Official example.** The handbook (Handboek) example says that goods delivered on 10 April must be invoiced by 15 May. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
 
 ### ICP matching
 
-**Calculated example.** For a period, suppose the intra-EU supplies reported in rubriek 3b are € 1.000 of goods and € 2.000 of services.
+**Calculated example.** For a period, suppose the intra-EU supplies reported in rubriek 3b (rubriek 3b) are € 1.000 of goods and € 2.000 of services.
 
 1. Rubriek 3b total is € 1.000 + € 2.000 = € 3.000.
 2. The ICP total for the same period must also be € 3.000.

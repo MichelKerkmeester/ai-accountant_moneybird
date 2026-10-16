@@ -67,7 +67,7 @@ The operation the request names picks the guarded CLI route or the Moneybird UI.
 | Reports | `moneybird-guard reports profit_loss "${REPORT_DATE_ARGS[@]}"` and the matching `balance_sheet`, `general_ledger`, `journal_entries` or `tax` action (Read Step Contract) | Confirm date argument names from pinned CLI help. Each request covers at most twelve months. |
 | Bulk reads | `moneybird-guard sales_invoices sync` then `moneybird-guard sales_invoices sync_fetch --ids "$ID_BATCH_JSON"` (Read Step Contract) | Use REST synchronization for complete bulk pulls. |
 | Auditfile export | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" reports export auditfile --year "$YEAR" --version "$AUDITFILE_VERSION"` then fetch the returned download through the confirmed downloads route | Applies to the migration route contract and to the LIVE workflows of phases 19 to 21 only, per [LIVE write authority](../sk-moneybird-accountant/SKILL.md#live-write-authority). An ordinary LIVE year uses the Operator UI export. Confirm the route with pinned CLI help. |
-| CAMT.053 or MT940 import, tax rate creation, period lock or a historical VAT return | Moneybird UI only. Mark VAT returns filed with **Handmatig indienen** in chronological order. | Operator action. |
+| CAMT.053 or MT940 import, tax rate creation, period lock or a historical VAT return | Moneybird UI only. Mark VAT returns filed with **Submit manually (Handmatig indienen)** in chronological order. | Operator action. |
 
 ### Read-only Access
 

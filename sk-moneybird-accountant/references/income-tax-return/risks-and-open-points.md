@@ -30,11 +30,11 @@ The list is deliberately small. A value the year file already marks `UNVERIFIED`
 
 | ID | Unknown | Status | What would settle it |
 |---|---|---|---|
-| R1 | The year-less RVO maxima, namely the maximum amount per asset and per applicant, the RVO test for a vehicle counting as new and the statement about the combined MIA and Vamil benefit | `unresolved` | A year-specific RVO page that prints each maximum and the year it belongs to. The rows are in [Investeringen 2025 notes](../tax-rules/2025/investments/notes.md) and [Investeringen 2026 figures](../tax-rules/2026/investments/figures.md). |
-| R2 | The derived starters' willekeurige afschrijving cap | `unresolved` | A Belastingdienst or RVO page that prints the cap as a number for the resolved year. The reading and the label are in [Investeringen 2025 figures](../tax-rules/2025/investments/figures.md) and [Investeringen 2025 notes](../tax-rules/2025/investments/notes.md). |
-| R3 | The undated werkruimte publication for an owned home | `unresolved` | A dated Belastingdienst publication or case law on the owned-home workspace rule. The row is in [Kosten en auto 2025 notes](../tax-rules/2025/costs-and-car/notes.md). |
-| R4 | The massaal-bezwaar decision date on the belastingrente rate | `unresolved` | A published date for the collective decisions. The row is in [Procedure 2025 notes](../tax-rules/2025/procedure/notes.md). |
-| R5 | The 2027 bill status | `unresolved` | The Staatsblad publication of the adopted 2027 law. The status layers are in [the 2027 year README](../tax-rules/2027/README.md) and [Dutch tax rules](../tax-rules/dutch-tax-rules.md). |
+| R1 | The year-less RVO maxima, namely the maximum amount per asset and per applicant, the RVO test for a vehicle counting as new and the statement about the combined MIA and Vamil benefit | `unresolved` | A year-specific RVO page that prints each maximum and the year it belongs to. The rows are in [Investments 2025 notes](../tax-rules/2025/investments/notes.md) and [Investments 2026 figures](../tax-rules/2026/investments/figures.md). |
+| R2 | The derived starters' arbitrary depreciation (willekeurige afschrijving) cap | `unresolved` | A Dutch Tax and Customs Administration (Belastingdienst) or RVO page that prints the cap as a number for the resolved year. The reading and the label are in [Investments 2025 figures](../tax-rules/2025/investments/figures.md) and [Investments 2025 notes](../tax-rules/2025/investments/notes.md). |
+| R3 | The undated work space (werkruimte) publication for an owned home | `unresolved` | A dated Dutch Tax and Customs Administration publication or case law on the owned-home work space rule. The row is in [Costs and car 2025 notes](../tax-rules/2025/costs-and-car/notes.md). |
+| R4 | The mass objection (massaal-bezwaar) decision date on the tax interest (belastingrente) rate | `unresolved` | A published date for the collective decisions. The row is in [Procedure 2025 notes](../tax-rules/2025/procedure/notes.md). |
+| R5 | The 2027 bill status | `unresolved` | The Bulletin of Acts and Decrees (Staatsblad) publication of the adopted 2027 law. The status layers are in [the 2027 year README](../tax-rules/2027/README.md) and [Dutch tax rules](../tax-rules/dutch-tax-rules.md). |
 
 Each row keeps its `unresolved` label until the named source arrives. The year the return covers decides which year file the row links, and the 2027 row stays open until the publication lands.
 
@@ -42,7 +42,7 @@ Each row keeps its `unresolved` label until the named source arrives. The year t
 
 ## 3. THE 2025 STARTERS CAP STATUS AGREEMENT
 
-The 2025 cap row and its section note agree on one value and one status. The row in [Investeringen 2025 figures](../tax-rules/2025/investments/figures.md) marks the cap `UNVERIFIED`, and the open-points section in [Investeringen 2025 notes](../tax-rules/2025/investments/notes.md) marks the same reading `UNVERIFIED` and names the page that would settle it. Neither line claims a printed primary page, so the pair agrees.
+The 2025 cap row and its section note agree on one value and one status. The row in [Investments 2025 figures](../tax-rules/2025/investments/figures.md) marks the cap `UNVERIFIED`, and the open-points section in [Investments 2025 notes](../tax-rules/2025/investments/notes.md) marks the same reading `UNVERIFIED` and names the page that would settle it. Neither line claims a printed primary page, so the pair agrees.
 
 The agreement settles the 019 REC-11 tension. The cap stays in row R2 as an `unresolved` item and is never presented as a printed rate.
 

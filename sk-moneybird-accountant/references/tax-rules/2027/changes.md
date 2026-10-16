@@ -26,14 +26,14 @@ This note lists what changed for tax year 2027. Section 2 holds the changes uniq
 
 ## 2. UNIQUE TO 2027
 
-- The zelfstandigenaftrek fell from € 1.200 in 2026 to € 900 in 2027 and the AOW-age amount from € 600 to € 450. [inkomstenbelasting](income-tax/notes.md#5-changes)
-- The tariefsaanpassing fell from 11,94% above € 78.426 in 2026 to 11,91% above € 79.569 in the 2027 text. [ondernemersaftrek](business-deductions/notes.md#5-changes)
-- A zero-emission car first admitted in 2027 gets 2% off capped at € 600, so 20% up to € 30.000, against 4% off capped at € 1.200 in 2026. [kosten-en-auto](costs-and-car/notes.md#5-changes)
-- New from 1 January 2027 is a pseudo-eindheffing of 12% of the catalogue price per year for new petrol or diesel lease cars used privately. [kosten-en-auto](costs-and-car/notes.md#5-changes)
-- The Zvw bijdrage by aanslag goes from 4,85% in 2026 to 5,02% in 2027 (proposed, a budget estimate until the ministerial regulation sets the rate). [zvw](health-insurance-contribution/notes.md#5-changes)
-- The aftoppingsgrens premiegrondslag stays € 137.800 in 2026 and € 137.800 in the 2027 text, with a proposed freeze at € 137.800 for 2027 to 2032. [pensioen-en-aov](pension-and-disability-insurance/notes.md#5-changes)
-- From 1 January 2027 the remaining parts of the zachte landing lapse, so verzuimboetes are possible again and the default bedrijfsbezoek start ends. [procedure](procedure/notes.md#5-changes)
-- The VBAR entered into force on 31 December 2026, so the rechtsvermoeden applies throughout 2027. [arbeidsrelatie](work-relationship/notes.md#5-changes)
+- The self-employed person's deduction (zelfstandigenaftrek) fell from € 1.200 in 2026 to € 900 in 2027 and the amount for those at state pension age (AOW) from € 600 to € 450. [Income tax (inkomstenbelasting)](income-tax/notes.md#5-changes)
+- The rate adjustment (tariefsaanpassing) fell from 11,94% above € 78.426 in 2026 to 11,91% above € 79.569 in the 2027 text. [entrepreneur's allowance (ondernemersaftrek)](business-deductions/notes.md#5-changes)
+- A zero-emission car first admitted in 2027 gets 2% off capped at € 600, so 20% up to € 30.000, against 4% off capped at € 1.200 in 2026. [Costs and the car (kosten en auto)](costs-and-car/notes.md#5-changes)
+- New from 1 January 2027 is a pseudo-final levy (pseudo-eindheffing) of 12% of the catalogue price per year for new petrol or diesel lease cars used privately. [Costs and the car](costs-and-car/notes.md#5-changes)
+- The Zvw contribution (bijdrage) by assessment (aanslag) goes from 4,85% in 2026 to 5,02% in 2027 (proposed, a budget estimate until the ministerial regulation sets the rate). [Zvw contribution](health-insurance-contribution/notes.md#5-changes)
+- The income cap (aftoppingsgrens) on the contribution base (premiegrondslag) stays € 137.800 in 2026 and € 137.800 in the 2027 text, with a proposed freeze at € 137.800 for 2027 to 2032. [Pension and disability insurance (pensioen en AOV)](pension-and-disability-insurance/notes.md#5-changes)
+- From 1 January 2027 the remaining parts of the soft landing (zachte landing) lapse, so default penalties (verzuimboetes) are possible again and a business visit (bedrijfsbezoek) is no longer the default starting point for a control. [Procedure](procedure/notes.md#5-changes)
+- The VBAR entered into force on 31 December 2026, so the legal presumption (rechtsvermoeden) applies throughout 2027. [employment relationship (arbeidsrelatie)](work-relationship/notes.md#5-changes)
 
 ---
 
@@ -44,14 +44,14 @@ This note lists what changed for tax year 2027. Section 2 holds the changes uniq
 |---|---|---|
 | [vat.md](vat/notes.md#5-changes) | 7 | The enacted VAT rates remain 21%, 9% and 0%. No 2027 rate change was found... |
 | [income-tax.md](income-tax/notes.md#5-changes) | 17 | Box 1 below AOW age. In 2026 the table was 35,75% up to € 38.883, with 8,10% as... |
-| [health-insurance-contribution.md](health-insurance-contribution/notes.md#5-changes) | 9 | Zvw bijdrage by aanslag: 4,85% in 2026 to 5,02% in 2027. Source 2026... |
-| [business-deductions.md](business-deductions/notes.md#5-changes) | 17 | Zelfstandigenaftrek (self-employed person's deduction): € 1.200 in 2026 to € 900 in 2027 ([art. 3.76, 2026... |
+| [health-insurance-contribution.md](health-insurance-contribution/notes.md#5-changes) | 9 | Zvw contribution by assessment: 4,85% in 2026 to 5,02% in 2027. Source 2026... |
+| [business-deductions.md](business-deductions/notes.md#5-changes) | 17 | Self-employed person's deduction (zelfstandigenaftrek): € 1.200 in 2026 to €... |
 | [investments.md](investments/notes.md#5-changes) | 13 | KIA table. 2026 was enacted with nil up to € 2.900, 28% to € 71.683, € 20.072... |
-| [costs-and-car.md](costs-and-car/notes.md#5-changes) | 13 | Gemengde kosten drempel: 2026 was € 5.700, final and enacted ([2026... |
-| [box-3.md](box-3/notes.md#5-changes) | 15 | Heffingsvrij vermogen (tax-free allowance): 2026 was € 59.357 per person and € 118.714 with a fiscal... |
+| [costs-and-car.md](costs-and-car/notes.md#5-changes) | 13 | Threshold for mixed costs (gemengde kosten drempel): 2026 was € 5.700, final... |
+| [box-3.md](box-3/notes.md#5-changes) | 15 | Tax-free allowance (heffingsvrij vermogen): 2026 was € 59.357 per person and €... |
 | [box-2.md](box-2/notes.md#5-changes) | 11 | Box 2 bracket 1. 2026, enacted: 24,5% up to € 68.843... |
-| [private-company-and-corporate-tax.md](private-company-and-corporate-tax/notes.md#5-changes) | 17 | Vpb rate table: 2026 read t/m € 200.000 at 19% and above that € 38.000 plus... |
-| [pension-and-disability-insurance.md](pension-and-disability-insurance/notes.md#5-changes) | 18 | Maximum jaarruimte: € 35.589 in 2026 to not published for 2027. The open point... |
-| [work-relationship.md](work-relationship/notes.md#5-changes) | 13 | DBA boetebeleid: 2026 had no verzuimboetes and allowed vergrijpboetes under the... |
-| [procedure.md](procedure/notes.md#5-changes) | 17 | DBA verzuimboetes: in 2026 no verzuimboetes and vergrijpboetes possible under... |
+| [private-company-and-corporate-tax.md](private-company-and-corporate-tax/notes.md#5-changes) | 17 | Vpb rate table: 2026 read up to and including € 200.000 at 19% and above that €... |
+| [pension-and-disability-insurance.md](pension-and-disability-insurance/notes.md#5-changes) | 18 | Maximum annual allowance (jaarruimte): € 35.589 in 2026 to not published for... |
+| [work-relationship.md](work-relationship/notes.md#5-changes) | 13 | DBA penalty policy (boetebeleid): 2026 had no default penalties (verzuimboetes)... |
+| [procedure.md](procedure/notes.md#5-changes) | 17 | DBA default penalties (verzuimboetes): in 2026 no default penalties and... |
 <!-- GENERATED:changes:end -->

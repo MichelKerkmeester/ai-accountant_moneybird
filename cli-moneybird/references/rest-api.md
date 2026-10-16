@@ -123,7 +123,7 @@ Other migration limits from the supplied facts:
 
 - Financial statement creation accepts JSON mutations. Resolve the exact body field from pinned CLI help before a write.
 - Tax rates have a read endpoint and no create endpoint in the supplied facts. Create them in the UI.
-- Historical VAT returns have no API route in the supplied facts. Record an outside filing with **Handmatig indienen** in chronological order.
+- Historical VAT returns have no API route in the supplied facts. Record an outside filing with **Submit manually (Handmatig indienen)** in chronological order.
 - CAMT.053 and MT940 bank files are imported in the Moneybird UI. `financial_statements` is a JSON mutation endpoint, not a file upload route.
 - The auditfile endpoint is `POST /reports/export/auditfile` with a year and version of `3.2` or `4.0`. Fetch the resulting export through the downloads endpoint.
 

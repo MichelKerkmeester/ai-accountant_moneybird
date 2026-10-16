@@ -26,14 +26,14 @@ This note lists what changed for tax year 2025. Section 2 holds the changes uniq
 
 ## 2. UNIQUE TO 2025
 
-- The KOR changed from the current-calendar-year test with a minimum participation and re-entry period to the 2025 rules for a business established in the Netherlands, with turnover information for the preceding and current calendar years. [btw](vat/notes.md#5-changes)
-- From 1 January 2025 the normal rules apply to work relationships, no aanwijzingen are given and schijnzelfstandigheid can lead directly to correctieverplichtingen and naheffingsaanslagen loonheffingen. [arbeidsrelatie](work-relationship/notes.md#5-changes)
-- The zelfstandigenaftrek fell from € 3.750 in 2024 to € 2.470 in 2025. [ondernemersaftrek](business-deductions/notes.md#5-changes)
-- The MKB-winstvrijstelling fell from 13,31% in 2024 to 12,7% in 2025. [ondernemersaftrek](business-deductions/notes.md#5-changes)
-- The below-AOW box 1 table became three brackets, 35,82% up to € 38.441, 37,48% to € 76.817 and 49,50% above. [inkomstenbelasting](income-tax/notes.md#5-changes)
-- The heffingsvrij vermogen rose from € 57.000 per person in 2024 to € 57.684 in 2025. [box-3](box-3/notes.md#5-changes)
-- A zero-emission car first admitted in 2025 gets 5% off capped at € 1.500, so 17% up to € 30.000. [kosten-en-auto](costs-and-car/notes.md#5-changes)
-- The Zvw bijdrage by aanslag fell from 5,32% in 2024 to 5,26% in 2025. [zvw](health-insurance-contribution/notes.md#5-changes)
+- The small businesses scheme (KOR) changed from the current-calendar-year test with a minimum participation and re-entry period to the 2025 rules for a business established in the Netherlands, with turnover information for the preceding and current calendar years. [VAT (btw)](vat/notes.md#5-changes)
+- From 1 January 2025 the normal rules apply to employment relationships (arbeidsrelaties), no instructions (aanwijzingen) are given and false self-employment (schijnzelfstandigheid) can lead directly to correction obligations (correctieverplichtingen) and supplementary assessments for payroll taxes (naheffingsaanslagen loonheffingen). [employment relationship](work-relationship/notes.md#5-changes)
+- The self-employed person's deduction (zelfstandigenaftrek) fell from € 3.750 in 2024 to € 2.470 in 2025. [entrepreneur's allowance](business-deductions/notes.md#5-changes)
+- The SME profit exemption (mkb-winstvrijstelling) fell from 13,31% in 2024 to 12,7% in 2025. [entrepreneur's allowance](business-deductions/notes.md#5-changes)
+- The box 1 table below state pension age (AOW) became three brackets, 35,82% up to € 38.441, 37,48% to € 76.817 and 49,50% above. [income tax](income-tax/notes.md#5-changes)
+- The tax-free allowance (heffingsvrij vermogen) rose from € 57.000 per person in 2024 to € 57.684 in 2025. [box 3](box-3/notes.md#5-changes)
+- A zero-emission car first admitted in 2025 gets 5% off capped at € 1.500, so 17% up to € 30.000. [costs and car](costs-and-car/notes.md#5-changes)
+- The Zvw contribution (zvw-bijdrage) by assessment (aanslag) fell from 5,32% in 2024 to 5,26% in 2025. [Zvw](health-insurance-contribution/notes.md#5-changes)
 
 ---
 
@@ -43,15 +43,15 @@ This note lists what changed for tax year 2025. Section 2 holds the changes uniq
 | Topic | Bullets | First change |
 |---|---|---|
 | [vat.md](vat/notes.md#5-changes) | 7 | The KOR changed from the previous scheme, which tested turnover in the current... |
-| [income-tax.md](income-tax/notes.md#5-changes) | 18 | The published below-AOW box 1 table changed from 36,97% up to € 75.518 and... |
-| [health-insurance-contribution.md](health-insurance-contribution/notes.md#5-changes) | 13 | Zvw-bijdrage by aanslag: 5,32% in 2024 to 5,26% in 2025... |
-| [business-deductions.md](business-deductions/notes.md#5-changes) | 9 | Zelfstandigenaftrek (self-employed person's deduction): € 3.750 in 2024 to € 2.470 in 2025. Source: [art. 3.76... |
+| [income-tax.md](income-tax/notes.md#5-changes) | 18 | The published box 1 table for taxpayers below state pension age changed from... |
+| [health-insurance-contribution.md](health-insurance-contribution/notes.md#5-changes) | 13 | Zvw contribution (zvw-bijdrage) by assessment (aanslag): 5,32% in 2024 to 5,26%... |
+| [business-deductions.md](business-deductions/notes.md#5-changes) | 9 | Self-employed person's deduction (zelfstandigenaftrek): € 3.750 in 2024 to €... |
 | [investments.md](investments/notes.md#5-changes) | 7 | KIA table, every amount moves up. The window start goes from € 2.800 to €... |
-| [costs-and-car.md](costs-and-car/notes.md#5-changes) | 5 | Gemengde kosten drempel: € 5.600 in 2024 to € 5.700 in 2025 ([2024... |
-| [box-3.md](box-3/notes.md#5-changes) | 11 | Heffingsvrij vermogen (tax-free allowance): € 57.000 to € 57.684 per person, and € 114.000 to €... |
-| [box-2.md](box-2/notes.md#5-changes) | 12 | Box 2 bracket 2 rate: 33% in 2024 to 31% in 2025. Belastingplan 2025... |
-| [private-company-and-corporate-tax.md](private-company-and-corporate-tax/notes.md#5-changes) | 15 | Generieke renteaftrekbeperking: the art. 15b percentage goes from 20% in 2024... |
-| [pension-and-disability-insurance.md](pension-and-disability-insurance/notes.md#5-changes) | 17 | Maximum jaarruimte: € 36.077 in 2024 to € 35.798 in 2025. Source... |
-| [work-relationship.md](work-relationship/notes.md#5-changes) | 9 | Handhavingsmoratorium: 2024 was the last year of the moratorium. From 1 January... |
-| [procedure.md](procedure/notes.md#5-changes) | 12 | Belastingrente (tax interest) for IB and btw: 7,5% in 2024 to 6,5% in 2025, then 5% from 1... |
+| [costs-and-car.md](costs-and-car/notes.md#5-changes) | 5 | Threshold for mixed costs (gemengde kosten drempel): € 5.600 in 2024 to € 5.700... |
+| [box-3.md](box-3/notes.md#5-changes) | 11 | Tax-free allowance (heffingsvrij vermogen): € 57.000 to € 57.684 per person... |
+| [box-2.md](box-2/notes.md#5-changes) | 12 | Box 2 bracket 2 rate: 33% in 2024 to 31% in 2025. The Tax Plan 2025... |
+| [private-company-and-corporate-tax.md](private-company-and-corporate-tax/notes.md#5-changes) | 15 | Generic interest deduction limitation (generieke renteaftrekbeperking): the... |
+| [pension-and-disability-insurance.md](pension-and-disability-insurance/notes.md#5-changes) | 17 | Maximum annual allowance (jaarruimte): € 36.077 in 2024 to € 35.798 in 2025... |
+| [work-relationship.md](work-relationship/notes.md#5-changes) | 9 | Enforcement moratorium (handhavingsmoratorium): 2024 was the last year of the... |
+| [procedure.md](procedure/notes.md#5-changes) | 12 | Tax interest (belastingrente) for income tax (IB) and VAT (btw): 7,5% in 2024... |
 <!-- GENERATED:changes:end -->

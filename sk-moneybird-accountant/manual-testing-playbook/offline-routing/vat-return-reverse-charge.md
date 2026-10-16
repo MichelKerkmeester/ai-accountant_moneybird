@@ -18,7 +18,7 @@ This scenario validates the reverse-charge branch of the prepare-the-VAT-return 
 
 ### Why This Matters
 
-A reverse-charged purchase moves VAT between the purchase line and the return rubrieken without a supplier VAT charge. A missed 2a line or a deduction that is treated as automatic changes the payable amount, so this branch needs its own offline proof. A local-only check confirms the branch without calling a service.
+A reverse-charged purchase moves VAT between the purchase line and the return sections (rubrieken) without a supplier VAT charge. A missed 2a line or a deduction that is treated as automatic changes the payable amount, so this branch needs its own offline proof. A local-only check confirms the branch without calling a service.
 
 ---
 
@@ -28,7 +28,7 @@ A reverse-charged purchase moves VAT between the purchase line and the return ru
 - Real user request: Prepare the VAT return for the second quarter of 2026. One purchase is reverse-charged. Do not call an API.
 - Prompt: Prepare the VAT return for the second quarter of 2026. One purchase is reverse-charged. Do not call an API.
 - Fixture rows: VAT-BRANCH-RC-01 (the reverse-charge row) and vat-return-reverse-charge (the eval case).
-- Expected execution process: Read the project bootstrap and the skill, run the route table check, follow the T10 route into the VAT return procedure, read the rubriek rules, derive the 2a line from the purchase line and stop before any filing action. Do not use network access, accounting APIs or private finance data.
+- Expected execution process: Read the project bootstrap and the skill, run the route table check, follow the T10 route into the VAT return procedure, read the section (rubriek) rules, derive the 2a line from the purchase line and stop before any filing action. Do not use network access, accounting APIs or private finance data.
 - Expected signals: The check prints route-table: ok. The route record names LIVE and T10. The read set loads [the VAT return procedure](../../references/vat-return/README.md) and [the 2026 VAT figures](../../references/tax-rules/2026/vat/figures.md). The answer names the reverse charge purchase, the rubriek 2a line, the review pack blocks P1 to P9 and the Operator as the owner of the filing route. The administration reads run through moneybird-guard with MONEYBIRD_GUARD_READ_ONLY=1.
 - Desired user-visible outcome: A concise route report with the winning row, the loaded paths, the 2a derivation, the review pack blocks and the API-free status.
 - Pass/fail: PASS if the request routes LIVE and T10, the procedure and the year figures load, the answer names the reverse charge purchase and the 2a line, the pack blocks P1 to P9 are named, the Operator owns the filing route and no API is called. FAIL if the reverse charge is missed, a pack block is absent, the answer states a filing action or an API is called.
@@ -51,7 +51,7 @@ A reverse-charged purchase moves VAT between the purchase line and the return ru
 
 ### Expected
 
-The check prints route-table: ok. The T10 row wins for the named VAT return. The procedure, the rubriek rules and the 2026 VAT figures load. The answer names the reverse charge purchase, the rubriek 2a line, the pack blocks P1 to P9 and the Operator. No accounting API is called.
+The check prints route-table: ok. The T10 row wins for the named VAT return. The procedure, the section (rubriek) rules and the 2026 VAT figures load. The answer names the reverse charge purchase, the rubriek 2a line, the pack blocks P1 to P9 and the Operator. No accounting API is called.
 
 ### Evidence
 
@@ -77,7 +77,7 @@ Check the T10 row, the T4 conditional read terms and the T8 filing precedence in
 | [manual-testing-playbook.md](../manual-testing-playbook.md) | Root playbook rules and scenario index. |
 | [feature-catalog entry](../../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) | Current feature summary and source anchors. |
 | [the VAT return procedure](../../references/vat-return/README.md) | The procedure this scenario tests. |
-| [the rubriek table](../../references/vat-return/return-boxes.md) | The 2a line and the reverse-charge derivation. |
+| [the section (rubriek) table](../../references/vat-return/return-boxes.md) | The 2a line and the reverse-charge derivation. |
 | [the review pack contract](../../references/vat-return/review-pack.md) | The pack blocks P1 to P9 and the confirmation parts. |
 
 ### Implementation And Test Anchors

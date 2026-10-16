@@ -1,5 +1,5 @@
 ---
-title: "BTW 2021: Rules"
+title: "VAT 2021: Rules"
 description: "This file covers Dutch VAT rates, exemptions, the KOR, returns, cross-border VAT and bookkeeping rules checked for tax year 2021. This file holds the rules part."
 nav_label: "BTW rules"
 trigger_phrases:
@@ -12,11 +12,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# BTW 2021: Rules
+# VAT 2021: Rules
 
 **Rule:** These values hold for tax year 2021 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 2 of 4 of the BTW 2021 topic.
+Part 2 of 4 of the VAT 2021 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [examples.md](examples.md): the worked examples.
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the how-it-works rules for the BTW 2021 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
+This part holds the how-it-works rules for the VAT 2021 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -40,25 +40,25 @@ The standard rate is 21%. Apply it where no reduced rate, zero rate or exemption
 
 ### Reduced VAT rate
 
-The rate is 9% for goods and services listed in Tabel I. Whether a supply belongs in Tabel I depends on the relevant entry and its conditions. The 2021 statutory text confirms the reduced rate, but the checked current Belastingdienst lists do not establish the complete historical 2021 list. [Wet op de omzetbelasting, Article 9](https://wetten.overheid.nl/BWBR0002629/2021-07-01)
+The rate is 9% for goods and services listed in Table I (tabel i). Whether a supply belongs in Table I depends on the relevant entry and its conditions. The 2021 statutory text confirms the reduced rate, but the checked current Dutch Tax and Customs Administration (Belastingdienst) lists do not establish the complete historical 2021 list. [Wet op de omzetbelasting, Article 9](https://wetten.overheid.nl/BWBR0002629/2021-07-01)
 
 ### Zero rate
 
-The zero rate applies to supplies in Tabel II if the conditions set by general administrative order are met. A zero-rated supply is still taxable. Input VAT connected to it can remain deductible, unlike input VAT connected to an exempt supply. [Wet op de omzetbelasting, Article 9](https://wetten.overheid.nl/BWBR0002629/2021-07-01)
+The zero rate applies to supplies in Table II if the conditions set by general administrative order are met. A zero-rated supply is still taxable. Input VAT connected to it can remain deductible, unlike input VAT connected to an exempt supply. [Wet op de omzetbelasting, Article 9](https://wetten.overheid.nl/BWBR0002629/2021-07-01)
 
-For an intra-EU supply of goods, the records must prove that the goods went to another EU country. The buyer must have a valid VAT ID from another member state. The opgaaf ICP must be filed on time and be correct and complete. A late or incorrect ICP may put the zero rate at risk and can lead to a fine. [Belastingdienst, toelichting opgaaf ICP](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf), [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
+For an intra-EU supply of goods, the records must prove that the goods went to another EU country. The buyer must have a valid VAT ID from another member state. The ICP return must be filed on time and be correct and complete. A late or incorrect ICP may put the zero rate at risk and can lead to a fine. [Belastingdienst, toelichting opgaaf ICP](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf), [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
 
 ### Exemptions
 
-Article 11 exemptions cover the listed categories, including supplies and letting of immovable property subject to exceptions, care in institutions, youth work, sport, social and cultural bodies, health care, funeral services, money and securities, fund management, credit and payments, insurance, games of chance, the universal postal service, public broadcasting, education, lectures at cost, services by composers, writers and journalists, certain movable goods used only for exempt supplies, organs and blood, member services of interest groups, cost-sharing groups, fundraising and childcare. The Belastingdienst list also includes investment gold and canteens, and says the exemptions also apply to imports. Exempt supplies do not carry a right to deduct input VAT. [Wet op de omzetbelasting, Article 11](https://wetten.overheid.nl/BWBR0002629/2020-01-01), [Belastingdienst, exemptions](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/vrijstellingen/)
+Article 11 exemptions cover the listed categories, including supplies and letting of immovable property subject to exceptions, care in institutions, youth work, sport, social and cultural bodies, health care, funeral services, money and securities, fund management, credit and payments, insurance, games of chance, the universal postal service, public broadcasting, education, lectures at cost, services by composers, writers and journalists, certain movable goods used only for exempt supplies, organs and blood, member services of interest groups, cost-sharing groups, fundraising and childcare. The Dutch Tax and Customs Administration list also includes investment gold and canteens, and says the exemptions also apply to imports. Exempt supplies do not carry a right to deduct input VAT. [Wet op de omzetbelasting, Article 11](https://wetten.overheid.nl/BWBR0002629/2020-01-01), [Belastingdienst, exemptions](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/vrijstellingen/)
 
-### Logies
+### Accommodation
 
-Logies was in Tabel I at 9% in 2021. The later law provides that the Tabel I logies entry lapses from 1 January 2026, supporting the 9% treatment before that change. [Wet behoud verlaagd btw-tarief op cultuur, media en sport](https://zoek.officielebekendmakingen.nl/stb-2025-339.html)
+Accommodation was in Table I at 9% in 2021. The later law provides that the Table I accommodation entry lapses from 1 January 2026, supporting the 9% treatment before that change. [Wet behoud verlaagd btw-tarief op cultuur, media en sport](https://zoek.officielebekendmakingen.nl/stb-2025-339.html)
 
 ### Electronic publications
 
-The 9% rate applied from 1 January 2020 to electronic supplies or lending of publications and access to news websites under post b.21 of Tabel I. Access to news websites is included unless the website or app mainly provides advertising, video or audible music. [Besluit Toelichting Tabel I](https://zoek.officielebekendmakingen.nl/stcrt-2022-9114.html)
+The 9% rate applied from 1 January 2020 to electronic supplies or lending of publications and access to news websites under post b.21 of Table I. Access to news websites is included unless the website or app mainly provides advertising, video or audible music. [Besluit Toelichting Tabel I](https://zoek.officielebekendmakingen.nl/stcrt-2022-9114.html)
 
 ### KOR turnover ceiling
 
@@ -80,7 +80,7 @@ An approval allowed an entrepreneur who was not yet registered to apply for the 
 
 ### KOR investment-goods adjustment
 
-The 2020 handbook says no herziening, or adjustment of input VAT previously deducted, is needed when the total annual adjustment for investment goods used before that year is less than € 500. Treat this as the guidance checked for the 2021 administration. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf)
+The 2020 handbook says no adjustment (herziening) of previously deducted input VAT is needed when the total annual adjustment for investment goods used before that year is less than € 500. Treat this as the guidance checked for the 2021 administration. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf)
 
 ### Regular VAT return periods
 
@@ -94,19 +94,19 @@ The checked handbooks describe a yearly return for a natural person or a partner
 
 ### VAT filing and payment term
 
-The statutory term for filing a period return is within a deadline set by the inspector of at least 1 month after the end of the period. Payment is due within 1 month after the period ends. The Belastingdienst describes monthly and quarterly filing and payment as due by the last day of the following month. An annual-return date and the exact 2021 calendar dates are not established by the checked 2021 materials. [AWR, Article 10 and Article 19](https://wetten.overheid.nl/BWBR0002320/2020-01-01), [Belastingdienst, filing and payment](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/)
+The statutory term for filing a period return is within a deadline set by the inspector of at least 1 month after the end of the period. Payment is due within 1 month after the period ends. The Dutch Tax and Customs Administration describes monthly and quarterly filing and payment as due by the last day of the following month. An annual-return date and the exact 2021 calendar dates are not established by the checked 2021 materials. [AWR, Article 10 and Article 19](https://wetten.overheid.nl/BWBR0002320/2020-01-01), [Belastingdienst, filing and payment](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/)
 
 ### Published 2021 due-date table
 
-The current Belastingdienst due-date table does not provide the 2021 table, and no archived table was found in the checked material. Use the statutory period rules above, but verify any specific 2021 calendar deadline against an archived official publication. [Belastingdienst, VAT due dates](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums)
+The current Dutch Tax and Customs Administration due-date table does not provide the 2021 table, and no archived table was found in the checked material. Use the statutory period rules above, but verify any specific 2021 calendar deadline against an archived official publication. [Belastingdienst, VAT due dates](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums)
 
-### Suppletie timing and reach
+### Supplementary return timing and reach
 
 If a VAT return was incorrect, the entrepreneur had to correct returns for the previous 5 calendar years as soon as possible and before knowing or suspecting that the inspector already knew about the error. The 8-week correction deadline was added later and does not describe the rule for 2021. [UBOB, Article 15, 2020 version](https://wetten.overheid.nl/BWBR0002633/2020-01-01), [Eindejaarsbesluit 2024](https://zoek.officielebekendmakingen.nl/stb-2024-441.html)
 
-### Suppletie small-correction boundary
+### Supplementary return small-correction boundary
 
-The checked 2020 handbook says a correction of less than € 1.000 may be included in the next return. The 2026 handbook says € 1.000 or less, and the current Belastingdienst page says a maximum of € 1.000. The wording that applied in 2021 is unverified. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf), [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf), [Belastingdienst, correcting a return](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/aangifte_corrigeren/aangifte_corrigeren)
+The checked 2020 handbook says a correction of less than € 1.000 may be included in the next return. The 2026 handbook says € 1.000 or less, and the current Dutch Tax and Customs Administration page says a maximum of € 1.000. The wording that applied in 2021 is unverified. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf), [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf), [Belastingdienst, correcting a return](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/aangifte_corrigeren/aangifte_corrigeren)
 
 ### E-commerce package
 
@@ -126,7 +126,7 @@ Below the threshold, the supplier may choose to charge VAT in the customer’s c
 
 The Union scheme return is quarterly, due by the last day of the following month, including a nil return. It can be used from the first day of the quarter after registration. For a first supply, registration must arrive by the 10th day of the month following the month of supply. Three consecutive quarters without a return can lead to exclusion for 2 years. A return cannot be resubmitted. Corrections go in a later return within 3 years of the original due date. Keep the OSS records for 10 years. Report in euro, use the European Central Bank rate from the last day of the quarter where conversion is needed, and make one payment for all member states. [Belastingdienst, OSS VAT return](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/btw-melden-eenloketsysteem)
 
-The Invoerregeling is monthly and applies to shipments with a value no higher than € 150. Three consecutive missed monthly returns can lead to exclusion for 2 years. [Belastingdienst, OSS VAT return](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/btw-melden-eenloketsysteem)
+The Import scheme (invoerregeling) is monthly and applies to shipments with a value no higher than € 150. Three consecutive missed monthly returns can lead to exclusion for 2 years. [Belastingdienst, OSS VAT return](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/btw-melden-eenloketsysteem)
 
 ### Quarterly ICP for goods
 
@@ -144,19 +144,19 @@ For a general B2B service supplied to a customer in another EU country, VAT is g
 
 The reverse-charge rule for specified electronics applies to mobile phones, chips before they become part of a final product, game consoles, tablets and laptops when the total is € 10 000 or more per delivery per kind of good. The invoice must say “btw verlegd”, include the customer’s VAT ID and show the consideration per rate. The supplier remains responsible for correct invoicing. [UBOB, Article 24ba](https://wetten.overheid.nl/BWBR0002633/2020-01-01), [Belastingdienst, when to reverse charge VAT](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_berekenen_aan_uw_klanten/waarover_btw_berekenen/verleggingsregeling/wanneer_btw_verleggen/), [Belastingdienst, how reverse charging works](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_berekenen_aan_uw_klanten/waarover_btw_berekenen/verleggingsregeling/hoe_werkt_btw_verleggen)
 
-Other reverse-charge cases include certain foreign suppliers, subcontracting and staff lending, waste, immovable property, execution sales, gas and electricity certificates, gold, emission rights and telecom services between providers in the Netherlands. The customer reports domestic reverse-charge VAT in rubriek 2 or VAT from abroad in rubriek 4. The customer may deduct that VAT if the purchase is used for taxable activity. [Wet op de omzetbelasting, Article 12](https://wetten.overheid.nl/BWBR0002629/2021-07-01), [UBOB, Articles 24b, 24ba and 24bb](https://wetten.overheid.nl/BWBR0002633/2020-01-01), [Belastingdienst, when to reverse charge VAT](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_berekenen_aan_uw_klanten/waarover_btw_berekenen/verleggingsregeling/wanneer_btw_verleggen/)
+Other reverse-charge cases include certain foreign suppliers, subcontracting and staff lending, waste, immovable property, execution sales, gas and electricity certificates, gold, emission rights and telecom services between providers in the Netherlands. The customer reports domestic reverse-charge VAT in rubriek 2 (rubriek 2) or VAT from abroad in rubriek 4. The customer may deduct that VAT if the purchase is used for taxable activity. [Wet op de omzetbelasting, Article 12](https://wetten.overheid.nl/BWBR0002629/2021-07-01), [UBOB, Articles 24b, 24ba and 24bb](https://wetten.overheid.nl/BWBR0002633/2020-01-01), [Belastingdienst, when to reverse charge VAT](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_berekenen_aan_uw_klanten/waarover_btw_berekenen/verleggingsregeling/wanneer_btw_verleggen/)
 
 ### Invoice issue deadline
 
-Issue an invoice to another entrepreneur and to a legal person that is not an entrepreneur. There is generally no invoice requirement for private customers, subject to exceptions. Issue the invoice by the 15th day of the month after the month of supply. The invoice must include the parties’ names and addresses, VAT ID where required, KVK number if registered, invoice date, a unique consecutive number, description and quantity or scope, supply or prepayment date, amounts excluding VAT per rate, rate and VAT amount. [Belastingdienst, making invoices](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/), [Belastingdienst, invoice requirements](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/factuureisen), [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf)
+Issue an invoice to another entrepreneur and to a legal person that is not an entrepreneur. There is generally no invoice requirement for private customers, subject to exceptions. Issue the invoice by the 15th day of the month after the month of supply. The invoice must include the parties’ names and addresses, VAT ID where required, Chamber of Commerce number if registered, invoice date, a unique consecutive number, description and quantity or scope, supply or prepayment date, amounts excluding VAT per rate, rate and VAT amount. [Belastingdienst, making invoices](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/), [Belastingdienst, invoice requirements](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/factuureisen), [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf)
 
 A simplified invoice may be used at most € 100 including VAT or for a correction invoice. It must include the issue date, name and address, the goods or services, the VAT or information needed to calculate it, and a reference to the original invoice for a correction. Simplified invoices are not allowed for specified cross-border supplies, distance sales or reverse-charged supplies in a country where the supplier is not established. [Belastingdienst, simplified invoices](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/aangepaste_regels_facturen/vereenvoudigde_factuur)
 
 A digital invoice requires customer agreement and safeguards for the authenticity of origin, integrity of content and readability. There is no general digital-invoice requirement established for 2021 by the checked material. [Belastingdienst, invoice requirements](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/factuureisen)
 
-### Kasstelsel threshold
+### Cash accounting scheme (kasstelsel) threshold
 
-The cash accounting method, or kasstelsel, is compulsory for specified trades. It may also be requested where more than 80% of supplies go to consumers. Other businesses generally use the invoice method. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf), [Belastingdienst, making invoices](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/)
+The cash accounting scheme (kasstelsel), or cash accounting method, is compulsory for specified trades. It may also be requested where more than 80% of supplies go to consumers. Other businesses generally use the invoice method. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf), [Belastingdienst, making invoices](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/)
 
 ### Business car private-use adjustment
 
@@ -164,7 +164,7 @@ Private use includes commuting. If records do not establish the private-use amou
 
 ### BUA provisions and gifts threshold
 
-The Besluit uitsluiting aftrek omzetbelasting (BUA) can deny input VAT deduction for certain staff benefits, gifts and private benefits. For provisions to the same person, total cost of no more than € 227 per accounting year stays outside the exclusion. A contribution from the recipient could reduce the tested amount under the policy applied before the policy was ended. VAT charged to the recipient can also affect the exclusion under the decree. [BUA, Article 4](https://wetten.overheid.nl/BWBR0002636/2019-02-23), [Decision of 6 October 2023, nr. 2023-20692](https://zoek.officielebekendmakingen.nl/stcrt-2023-28124.html)
+The VAT deduction exclusion decree (Besluit uitsluiting aftrek omzetbelasting, BUA) can deny input VAT deduction for certain staff benefits, gifts and private benefits. For provisions to the same person, total cost of no more than € 227 per accounting year stays outside the exclusion. A contribution from the recipient could reduce the tested amount under the policy applied before the policy was ended. VAT charged to the recipient can also affect the exclusion under the decree. [BUA, Article 4](https://wetten.overheid.nl/BWBR0002636/2019-02-23), [Decision of 6 October 2023, nr. 2023-20692](https://zoek.officielebekendmakingen.nl/stcrt-2023-28124.html)
 
 ### BUA staff bicycle conditions
 

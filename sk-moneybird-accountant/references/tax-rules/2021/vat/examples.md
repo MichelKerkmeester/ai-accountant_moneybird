@@ -1,5 +1,5 @@
 ---
-title: "BTW 2021: Examples"
+title: "VAT 2021: Examples"
 description: "This file covers Dutch VAT rates, exemptions, the KOR, returns, cross-border VAT and bookkeeping rules checked for tax year 2021. This file holds the examples part."
 nav_label: "BTW examples"
 trigger_phrases:
@@ -12,11 +12,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# BTW 2021: Examples
+# VAT 2021: Examples
 
 **Rule:** These values hold for tax year 2021 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 3 of 4 of the BTW 2021 topic.
+Part 3 of 4 of the VAT 2021 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [rules.md](rules.md): how it works.
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the BTW 2021 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the VAT 2021 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -44,7 +44,7 @@ A business sells a taxable service for an invented amount of € 100 excluding V
 
 ### Reduced rate: calculated example
 
-A business sells an invented item that qualifies for Tabel I for € 100 excluding VAT.
+A business sells an invented item that qualifies for Table I (tabel i) for € 100 excluding VAT.
 
 1. Taxable amount: € 100.
 2. VAT: € 100 × 9% = € 9.
@@ -56,9 +56,9 @@ A business sends goods to a VAT-registered buyer in another EU country. It keeps
 
 A business provides an exempt service. It does not charge VAT on that service and cannot deduct input VAT connected with the exempt supply. These examples show why a zero-rated supply and an exempt supply have different deduction treatment.
 
-### Logies: calculated example
+### Accommodation: calculated example
 
-A business provides qualifying logies for an invented price of € 100 excluding VAT.
+A business provides qualifying accommodation for an invented price of € 100 excluding VAT.
 
 1. Taxable amount: € 100.
 2. VAT at 9%: € 100 × 9% = € 9.
@@ -92,7 +92,7 @@ An entrepreneur who is not yet registered has invented annual turnover of € 1.
 
 ### KOR investment-goods adjustment: calculated example
 
-For invented investment goods used before the year, the annual herziening calculation is € 400.
+For invented investment goods used before the year, the annual adjustment (herziening) calculation is € 400.
 
 1. Annual adjustment: € 400.
 2. The stated de minimis amount is less than € 500.
@@ -112,7 +112,7 @@ A supplier established in one member state has invented qualifying distance sale
 4. € 11.000 is above € 10.000, so the current year no longer stays within the threshold.
 5. The two years are tested separately. The previous year's € 8.000 is never added to the current year's sales.
 
-### Invoerregeling cap: calculated example
+### Import scheme (invoerregeling) cap: calculated example
 
 An invented shipment has a value of € 150.
 
@@ -148,7 +148,7 @@ A correction invoice has an invented total of € 100 including VAT and refers t
 2. The simplified-invoice ceiling is at most € 100 including VAT.
 3. The amount meets the ceiling, subject to the other required contents and exceptions.
 
-### Kasstelsel: calculated example
+### Cash accounting scheme (kasstelsel): calculated example
 
 An entrepreneur has invented consumer sales equal to 81% of all supplies.
 

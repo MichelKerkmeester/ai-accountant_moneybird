@@ -36,7 +36,7 @@ Verify the export route in Phase 0. For a later auditfile request, load the docu
 | sk-moneybird-accountant/references/migration/shared-mechanisms.md | Shared | Defines the auditfile route and lock boundary. |
 | sk-moneybird-accountant/references/migration/overview-and-setup.md | Shared | Defines Phase 0 route verification and config evidence. |
 | sk-moneybird-accountant/references/migration/phases-10-to-16.md | Shared | Uses the verified auditfile route for annual checking. |
-| sk-moneybird-accountant/references/yearly-overview/preparation-checklist.md | Shared | Puts the auditfile export before the jaarafsluiting as an evidence gate. |
+| sk-moneybird-accountant/references/yearly-overview/preparation-checklist.md | Shared | Puts the auditfile export before the year-end closing (jaarafsluiting) as an evidence gate. |
 
 ### Validation And Tests
 

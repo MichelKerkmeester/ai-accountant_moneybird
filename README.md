@@ -351,7 +351,7 @@ The Jortt API does not provide them. Download them yourself from the Jortt UI.
 - **[→ Purchase Invoices](sk-moneybird-accountant/references/purchase-invoices.md)** - booking purchase invoices, receipts and orders, with Dutch VAT or reverse-charged VAT
 - **[→ Mixed-Use Costs](sk-moneybird-accountant/references/mixed-use-costs.md)** - a cost used partly privately, its business share, its VAT split and its Moneybird booking
 - **[→ Fixed Assets](sk-moneybird-accountant/references/fixed-assets.md)** - when a purchase is an asset, depreciation, the VAT revision period and disposal
-- **[→ VAT Return Preparation](sk-moneybird-accountant/references/vat-return/README.md)** - the procedure that prepares one VAT period for Operator review, with the rubriek table, the derivation map and the review pack
+- **[→ VAT Return Preparation](sk-moneybird-accountant/references/vat-return/README.md)** - the procedure that prepares one VAT period for Operator review, with the section (rubriek) table, the derivation map and the review pack
 - **[→ Yearly Overview Preparation](sk-moneybird-accountant/references/yearly-overview/README.md)** - the procedure that prepares the yearly close for Operator review, with the auditfile gate, the fiscal reconciliation and the hand-off
 - **[→ Income Tax Return Preparation](sk-moneybird-accountant/references/income-tax-return/README.md)** - the procedure that prepares one income tax return for Operator review, with the Operator inputs, the claim register and the open points
 - **[→ Yearly Overview Template](sk-moneybird-accountant/assets/yearly-overview/yearly-overview-template.html)** - the bilingual printable layout of the prepared pack, with a braced placeholder for every value
