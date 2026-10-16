@@ -20,7 +20,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-The KIA, EIA, MIA, Vamil and the disinvestment addition (desinvesteringsbijtelling) cannot be reconstructed from the yearly profit and loss account. This register carries the facts per asset so the claim and any later recapture can be traced. The Operator fills the five columns from the order confirmation, the bank records, the in-use record and the RVO notification. The agent computes the claim and records the source.
+The KIA, EIA, MIA, Vamil and the disinvestment addition (desinvesteringsbijtelling) cannot be reconstructed from the yearly profit and loss account. This register carries the facts per asset so the claim and any later recapture can be traced. The Operator fills the five columns from the order confirmation, the bank records, the in-use record and the Netherlands Enterprise Agency (RVO) notification. The agent computes the claim and records the source.
 
 The register lives in the pack and in the private workspace. It is never a promise that an allowance is granted, because the conditions and the eligibility stay Operator or bookkeeper judgement.
 

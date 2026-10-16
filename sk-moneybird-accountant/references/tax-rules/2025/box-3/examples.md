@@ -1,5 +1,5 @@
 ---
-title: "Box 3 savings and investments 2025: Examples"
+title: "Box 3 savings and investments (sparen en beleggen) 2025: Examples"
 description: "Box 3 savings and investments for tax year 2025: tax-free allowance (heffingsvrij vermogen), debt threshold (schuldendrempel), the three category percentages, the six-step calculation, green investments (groene beleggingen) and the option to report the actual return. This file holds the examples part."
 nav_label: "Box 3 sparen en beleggen examples"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Box 3 savings and investments 2025: Examples
+# Box 3 savings and investments (sparen en beleggen) 2025: Examples
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Box 3 savings and investments 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Box 3 savings and investments (sparen en beleggen) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -61,7 +61,7 @@ Source: [2025 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/n
 Source: [2025 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2025). One person with € 150.000,00 of savings, € 75.000,00 of investments, a € 200.000,00 second home and a € 100.000,00 debt.
 
 - Bank return: € 150.000,00 × 1,37% = € 2.055,00.
-- Other assets (bezittingen): € 75.000,00 + € 200.000,00 = € 275.000,00. Return: € 275.000,00 × 5,88% = € 16.170,00.
+- Other assets (overige bezittingen): € 75.000,00 + € 200.000,00 = € 275.000,00. Return: € 275.000,00 × 5,88% = € 16.170,00.
 - Deductible debt: € 100.000,00 - € 3.800,00 = € 96.200,00. Debt return: € 96.200,00 × 2,70% = € 2.597,40, rounded = € 2.597,00.
 - Step 1: Taxable return = € 2.055,00 + € 16.170,00 - € 2.597,00 = € 15.628,00.
 - Step 2: Return base = € 150.000,00 + € 275.000,00 - € 96.200,00 = € 328.800,00.

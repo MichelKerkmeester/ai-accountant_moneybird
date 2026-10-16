@@ -39,9 +39,9 @@ The disposition names what closes the row. `supplied` closes on an Operator hand
 | Box 3 inventory and reference date | The Operator and the pre-filled tax return | `unresolved` | The Operator supplies the dated inventory at the reference date. |
 | Partner data and allocation | The Operator and the pre-filled tax return | `unresolved` | The Operator decides the split and confirms the joint items. |
 | Crypto holdings | The Operator and the pre-filled tax return | `unresolved` | The Operator supplies the holdings and their reference date valuation. |
-| Home and mortgage interest | The Operator with the WOZ decision (beschikking), the annual mortgage statement (hypotheek jaaropgaaf) and the notary statement | `unresolved` | The Operator supplies the documents that settle the owner-occupied home (eigen woning) figures. |
+| Home and mortgage interest (hypotheekrente) | The Operator with the WOZ decision (beschikking), the annual mortgage statement (hypotheek jaaropgaaf) and the notary statement | `unresolved` | The Operator supplies the documents that settle the owner-occupied home (eigen woning) figures. |
 | Gifts and care costs | The Operator proofs of payment (betalingsbewijzen) | `unresolved` | The Operator supplies the payments and the eligibility facts. |
-| Annuity premiums and AOV | The Operator annual statement (jaaropgaaf) and the premium statements | `unresolved` | The Operator supplies the statements. |
+| Annuity premiums and disability insurance (AOV) | The Operator annual statement (jaaropgaaf) and the premium statements | `unresolved` | The Operator supplies the statements. |
 | Dividend | The Operator dividend statements | `unresolved` | The Operator supplies the statements. |
 | Provisional assessments (voorlopige aanslagen) for income tax and Zvw | The Operator and the Dutch Tax and Customs Administration (Belastingdienst) decisions | `unresolved` | The Operator supplies the decisions so the paid or received amounts settle in the return. |
 | DigiD of a child | The official checklist | `not applicable` | The official checklist asks for no DigiD of a child, so this row cannot apply. |
@@ -66,7 +66,7 @@ The disposition names what closes the row. `supplied` closes on an Operator hand
 | Cessation (staking) facts | The Operator | `unresolved` | The cessation facts with their evidence, otherwise a recorded decision that no cessation applies. |
 | Private-use car, phone and home facts | The Operator | `confirmed` | The Operator confirms the use facts and every mixed-use share. |
 | WOZ decision (beschikking) for a building | The Operator | `supplied` | The decision that carries the minimum value (bodemwaarde). |
-| Per-asset register and RVO proof | The Operator and [the investment and claim register](investment-and-claim-register.md) | `supplied` | The order, payment and in-use dates and the RVO reference per asset. |
+| Per-asset register and Netherlands Enterprise Agency (RVO) proof | The Operator and [the investment and claim register](investment-and-claim-register.md) | `supplied` | The order, payment and in-use dates and the RVO reference per asset. |
 | Opening-balance correction | The Operator or a bookkeeper | `confirmed` | The decision that settles an incomplete opening with a correcting entry (correctieboeking). |
 | Prior-year return and assessments | The Operator | `supplied` | The prior return, the assessments and the amounts that settle. |
 | VIA comparison sheet | The Operator behind DigiD | `confirmed` | Every prefilled field checked against its source and corrected. |

@@ -48,7 +48,7 @@ Box 2 and substantial interest (aanmerkelijk belang) covers income from a stake 
 | Deemed disposal (fictieve vervreemding, art. 4.16) | 7 |
 | Acquisition price and non-arm's-length price (verkrijgingsprijs en onzakelijke prijs) | 8 |
 | Flat-rate benefit (forfaitair voordeel, art. 4.14) | 9 |
-| Excessive borrowing maximum (art. 4.14a) | 10 |
+| Excessive borrowing (excessief lenen) maximum (art. 4.14a) | 10 |
 | Excessive borrowing, related persons (art. 4.14b) | 11 |
 | Excessive borrowing, immigration (art. 4.14c) | 12 |
 | Customary salary fixed amount (gebruikelijk loon, art. 12a Wet LB 1964) | 13 |
@@ -69,13 +69,13 @@ Box 2 and substantial interest (aanmerkelijk belang) covers income from a stake 
 | Box 2 bracket 1 | 24,5% up to € 68.843 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | Tax at the top of bracket 1 | € 16.866 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | Box 2 bracket 2 | 31% above € 68.843 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
-| Income from a substantial interest (inkomen uit aanmerkelijk belang, art. 4.12) | regular benefits minus deductible costs plus disposal gains, minus personal deductions | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
+| Income from a substantial interest (inkomen uit aanmerkelijk belang, art. 4.12) | regular benefits (reguliere voordelen) minus deductible costs plus disposal gains (vervreemdingsvoordelen), minus personal deductions (persoonsgebonden aftrek) | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | Substantial interest test (art. 4.6) | 5%, sub a to f, alone or together with the partner | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | Drag-along rule (meesleepregeling), carry-along rule (meetrekregeling) and deemed substantial interest (fictief aanmerkelijk belang, art. 4.9 to 4.11) | shares follow the substantial interest, no separate 5% test | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | Deemed disposal (fictieve vervreemding, art. 4.16) | the listed deemed disposals, text unchanged in 2026 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
-| Acquisition price and non-arm's-length price (verkrijgingsprijs en onzakelijke prijs) | transfer price minus acquisition price, notary costs added, market value at a non-arm's-length price | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang |
+| Acquisition price and non-arm's-length price (verkrijgingsprijs en onzakelijke prijs) | transfer price (overdrachtsprijs) minus acquisition price, notary costs added, market value at a non-arm's-length price | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang |
 | Flat-rate benefit (forfaitair voordeel, art. 4.14) | 6% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
-| Excessive borrowing maximum (art. 4.14a) | € 500.000 plus amounts taxed earlier | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
+| Excessive borrowing (excessief lenen) maximum (art. 4.14a) | € 500.000 plus amounts taxed earlier | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | Excessive borrowing, related persons (art. 4.14b) | € 500.000, applied to that person and his partner together | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | Excessive borrowing, immigration (art. 4.14c) | maximum equal to his debts at that moment, at least € 500.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | Customary salary fixed amount (gebruikelijk loon, art. 12a Wet LB 1964) | € 58.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2026-01-01 |

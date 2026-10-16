@@ -110,7 +110,7 @@ Step 3, the wage is at least € 52.000.
 
 If the wage for the work for the body and all connected bodies together had been not more than € 5.000, art. 12a would not apply at all.
 
-### Calculated example: ODV with a negative market rate
+### Calculated example: old-age obligation (oudedagsverplichting, ODV) with a negative market rate (marktrente)
 
 Inputs: ODV at the start of 2022 € 200.000, market rate -0,410%.
 

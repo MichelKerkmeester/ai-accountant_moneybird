@@ -1,5 +1,5 @@
 ---
-title: "Income tax box 1 2025: Rules"
+title: "Income tax (inkomstenbelasting) box 1 2025: Rules"
 description: "Covers the 2025 box 1 tax brackets, tax credits (heffingskortingen), rate adjustment (tariefsaanpassing) and the path from business profit to taxable income. This file holds the rules part."
 nav_label: "Inkomstenbelasting box 1 rules"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Income tax box 1 2025: Rules
+# Income tax (inkomstenbelasting) box 1 2025: Rules
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the how-it-works rules for income tax box 1 2025 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
+This part holds the how-it-works rules for the income tax (inkomstenbelasting) box 1 2025 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -34,7 +34,7 @@ This part holds the how-it-works rules for income tax box 1 2025 topic. The over
 
 <a id="3-how-it-works"></a>
 
-### Box 1 below state pension age
+### Box 1 below state pension (AOW) age
 
 The published rate includes the income-tax part and, up to the premium ceiling, the national insurance contributions (premie volksverzekeringen). The income-tax part of the first bracket is 8,17%, and the premium rate is 27,65%, giving the published combined rate of 35,82%. The next brackets are 37,48% and 49,50%. The statutory fixed amounts are listed in the figures table. (Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/belastingberekening, https://wetten.overheid.nl/BWBR0011353/2025-01-01.)
 
@@ -66,19 +66,19 @@ The relevant deductions include personal deductions (persoonsgebonden aftrek), s
 
 The AHK is granted to every taxpayer. It is applied automatically in the income tax return and can also be applied by an employer or benefit provider in payroll. In 2025 its phase-out base is aggregate income (verzamelinkomen), rather than only taxable income from work and home. Aggregate income consists of taxable income from work and home, taxable income from a substantial interest and taxable income from savings and investments, less personal deductions that can be set off. (Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/heffingskortingen, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/algemene_heffingskorting/tabel-algemene-heffingskorting-2025, https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 2.18.)
 
-Below state pension age, the maximum AHK is reduced as aggregate income rises above the stated phase-out point. For a taxpayer at state pension age for the whole year, the separate amount and phase-out rate in the figures table apply. The ordinary table does not apply in the year state pension age is reached. For that transition year, calculate the amount using the request form (verzoek) to amend the 2025 provisional assessment (voorlopige aanslag) in Mijn Belastingdienst. A rounding difference of a few euros from the table can occur, and the assessment amount is correct. (Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/algemene_heffingskorting/tabel-algemene-heffingskorting-2025, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/heffingskortingen.)
+Below state pension age, the maximum AHK is reduced as aggregate income rises above the stated phase-out point. For a taxpayer at state pension age for the whole year, the separate amount and phase-out rate in the figures table apply. The ordinary table does not apply in the year state pension age is reached. For that transition year, calculate the amount using the form Verzoek of wijziging voorlopige aanslag 2025 in My Tax and Customs Administration (Mijn Belastingdienst). A rounding difference of a few euros from the table can occur, and the assessment amount is correct. (Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/algemene_heffingskorting/tabel-algemene-heffingskorting-2025, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/heffingskortingen.)
 
 ### Employment tax credit (arbeidskorting)
 
 The AK is based on earned income (arbeidsinkomen). For an entrepreneur for income tax purposes (IB-ondernemer), earned income includes profits from business activities (winst uit onderneming) before entrepreneur's allowance (ondernemersaftrek) and SME profit exemption. It excludes the portion earned as a person entitled to a share (medegerechtigde) or a profit-sharing creditor (winstdelende schuldeiser). (Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/heffingskortingen.)
 
-The AK builds up in the first three bands and phases out in the fourth band. The amounts for a taxpayer at state pension age for the whole year use the separate schedule in the figures table. In the year state pension age is reached, the ordinary AK table does not apply. Use the request form to amend the 2025 provisional assessment in Mijn Belastingdienst. A rounding difference of a few euros from the table can occur, and the assessment amount is correct. (Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/arbeidskorting/tabel-arbeidskorting-2025.)
+The AK builds up in the first three bands and phases out in the fourth band. The amounts for a taxpayer at state pension age for the whole year use the separate schedule in the figures table. In the year state pension age is reached, the ordinary AK table does not apply. Use the form Verzoek of wijziging voorlopige aanslag 2025 in My Tax and Customs Administration. A rounding difference of a few euros from the table can occur, and the assessment amount is correct. (Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/arbeidskorting/tabel-arbeidskorting-2025.)
 
 From 2024, where an employer applied a higher AK and earned income is not above the third-band boundary, the Dutch Tax and Customs Administration (Belastingdienst) takes over the employer's amount up to the applicable maximum. The 2025 limit and maximum are in the figures table. (Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/arbeidskorting/tabel-arbeidskorting-2025.)
 
 ### Income-related combination tax credit (inkomensafhankelijke combinatiekorting)
 
-The IACK is calculated over earned income above the threshold in the figures table, up to its maximum. The rate and maximum for taxpayers at state pension age for the whole year are lower. The IACK is claimed in the income tax return or through a provisional assessment. It is not applied in payroll. In the year state pension age is reached, use the request form to amend the 2025 provisional assessment in Mijn Belastingdienst. (Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting-2025, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/heffingskortingen.)
+The IACK is calculated over earned income above the threshold in the figures table, up to its maximum. The rate and maximum for taxpayers at state pension age for the whole year are lower. The IACK is claimed in the income tax return or through a provisional assessment. It is not applied in payroll. In the year state pension age is reached, use the form Verzoek of wijziging voorlopige aanslag 2025 in My Tax and Customs Administration. (Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting-2025, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/heffingskortingen.)
 
 The child must be under age 12 on 1 January and born after 31 December 2012. The child must belong to the taxpayer's household for at least 6 months. If the taxpayer or child dies before that period is complete, the credit can still apply. Qualifying children include a taxpayer's own, step, adopted, or foster child, a child from a spouse's earlier relationship, or a fiscal partner's child. A foster child must be raised and maintained as the taxpayer's own child and not for a foster care allowance. Residents of the EU, EEA, Switzerland, or BES can qualify. (Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/heffingskortingen.)
 

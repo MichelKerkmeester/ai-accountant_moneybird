@@ -88,7 +88,7 @@ Calculated example. Turnover is € 16.000,00 in 2026. That stays under the € 
 
 Calculated example. A course costs € 2.000,00. Study costs (studiekosten) are deductible as a business cost only when they are incurred in the interest of the enterprise and serve only to maintain existing professional knowledge (vakkennis). Costs to acquire new knowledge are not deductible as business costs. The boundary is hard to draw. Travel and stay for the course fall under the € 1.500,00 cap of art. 3.16 lid 2 onderdeel f. The cap does not apply when the nature of the work makes attendance necessary. Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/zakelijke_kosten/studiekosten-voor-ondernemers and https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 3.16 lid 2 onderdeel f and lid 8).
 
-### Example 14: Costs of a mixed nature
+### Example 14: Costs of a mixed nature (gemengd karakter)
 
 Calculated example. Rent (huur) of premises is € 12.000,00. The business part is 60% and the private part is 40%. The deductible amount is 0,60 x € 12.000,00 = € 7.200,00. Personal care costs of € 50,00 are not deductible. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/zakelijke_kosten/zakelijk_of_prive.
 

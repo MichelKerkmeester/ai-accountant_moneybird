@@ -64,7 +64,7 @@ Source: https://wetten.overheid.nl/BWBR0004770/2026-01-01
 Input: a paid provisional assessment (voorlopige aanslag) IB with the date 15 March 2027.
 Step 1: the months remaining after March 2027 are April, May, June, July, August, September, October, November and December, which is 9 months.
 Step 2: the assessment is payable in 9 equal monthly instalments (termijnen).
-Step 3: the first term (termijn) is one month after the date, 15 April 2027. The instalments then fall on 15 May, 15 June, 15 July, 15 August, 15 September, 15 October, 15 November and the last on 15 December 2027.
+Step 3: the first instalment (termijn) is one month after the date, 15 April 2027. The instalments then fall on 15 May, 15 June, 15 July, 15 August, 15 September, 15 October, 15 November and the last on 15 December 2027.
 Source: https://wetten.overheid.nl/BWBR0004770/2026-01-01
 
 **Example 5. Additional assessment (navordering) (Official example, then Calculated example).**

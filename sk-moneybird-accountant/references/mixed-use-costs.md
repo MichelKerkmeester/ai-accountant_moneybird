@@ -97,7 +97,7 @@ The rate on each line is the rate the invoice prints, taken from the year's `vat
 ## 6. CASE A: A MOBILE PHONE SUBSCRIPTION
 
 1. Establish the business share from the records and record the basis (section 3), then process the invoice as section 5 describes.
-2. The business share of the VAT goes into rubriek 5b with the ordinary return and the private share is not deducted. [Purchase invoices](./purchase-invoices.md) section 3, [OB 141](https://download.belastingdienst.nl/belastingdienst/docs/toelichting_aangifte_omzetbelasting_ondernemers_ob1411t01fdbui.pdf)
+2. The business share of the VAT goes into rubriek 5b with the ordinary return and the private share is not deducted. [Purchase invoices](./purchase-invoices.md) rubriek 3, [OB 141](https://download.belastingdienst.nl/belastingdienst/docs/toelichting_aangifte_omzetbelasting_ondernemers_ob1411t01fdbui.pdf)
 3. At year end, check the recorded percentages against the use and settle the private use in the last return. Under the small businesses scheme (KOR) there is no return and no settlement. [VAT 2026](tax-rules/2026/vat/figures.md)
 
 See example 1 in section 10.
@@ -160,7 +160,7 @@ The invoice: 200 excluding VAT, VAT 42, total 242.
 2. Every line carries the VAT rate the invoice prints, taken from the year's `vat.md`. [Purchase invoices](./purchase-invoices.md)
 3. The business share and the private share add up to the invoice total.
 4. The private share sits on an equity category, not on a cost category. [which private category](https://helpcenter.moneybird.nl/nl/articles/207326-wanneer-welke-categorie-prive-opnames-stortingen)
-5. For a subscription the business share of the VAT is in rubriek 5b. For a good the VAT follows the choice in section 4, so with business assets the VAT is in rubriek 5b in full when all turnover is taxed with VAT, and only for the taxed share when there is also exempt turnover, and the private use is settled in the last return of the year. [Purchase invoices](./purchase-invoices.md) section 3
+5. For a subscription the business share of the VAT is in rubriek 5b. For a good the VAT follows the choice in rubriek 4, so with business assets the VAT is in rubriek 5b in full when all turnover is taxed with VAT, and only for the taxed share when there is also exempt turnover, and the private use is settled in the last return of the year. [Purchase invoices](./purchase-invoices.md) rubriek 3
 6. The 'Private split off (Privé afgesplitst)' column in the category report shows the percentages, through 'Reports > Profit and loss statement (Rapporten > Resultatenrekening)'. [split private costs automatically](https://helpcenter.moneybird.nl/nl/articles/639653-prive-kosten-automatisch-verdelen)
 7. In the last return of the year the private use is settled, unless the business takes part in the small businesses scheme (KOR) and files no return. The Operator reviews and files the return. [VAT 2026](tax-rules/2026/vat/figures.md)
 

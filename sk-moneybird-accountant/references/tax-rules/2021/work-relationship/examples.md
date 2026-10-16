@@ -86,7 +86,7 @@ Step 2: here they do not, so the model agreement does not give the no-employment
 
 Step 3: the qualification then follows how the work is actually done, and on these facts the set hours, the set place of work and the instructions point to employment.
 
-Step 4: the administration should show the actual way of working, because the qualification depends on how the work is actually done.
+Step 4: the records should show the actual way of working, because the qualification depends on how the work is actually done.
 
 Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/werken-met-modelovereenkomsten and https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst.
 

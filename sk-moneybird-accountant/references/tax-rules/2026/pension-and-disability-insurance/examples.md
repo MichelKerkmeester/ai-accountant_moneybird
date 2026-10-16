@@ -46,7 +46,7 @@ A sole trader has profits from business activities of € 150.000 in 2025 and no
 
 The Dutch Tax and Customs Administration (Belastingdienst) gives an example where the annual allowance is € 1.555 and € 1.500 in premiums are paid. The € 1.500 is deductible, and the € 55 carries into the catch-up allowance (reserveringsruimte) of a later year. Source: [Belastingdienst: Aftrekken lijfrentepremies](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies).
 
-### Example 4: Official example of exceeding the annual allowance (jaarruimte)
+### Example 4: Official example of exceeding the annual allowance (jaarruimte) (Official example)
 
 The Dutch Tax and Customs Administration gives an example where the annual allowance 2026 is € 1.600, there is no catch-up allowance, and € 1.500 premium plus € 500 deposit (storting) is paid. At most € 1.600 is deductible. The € 400 is never deductible but is counted at the benefit (uitkering). Source: [Belastingdienst: Aftrekken lijfrentepremies](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies).
 

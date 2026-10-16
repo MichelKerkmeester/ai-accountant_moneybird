@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the rules for deducting pension premiums, annuity premiums (lijfrentepremies), and disability insurance (AOV, arbeidsongeschiktheidsverzekering) premiums for a Dutch sole trader (ZZP) in tax year 2026. The most important figures are the annual allowance (jaarruimte) of up to € 35.589 and the catch-up allowance (reserveringsruimte) of up to € 42.753. The law for 2026 is enacted and in force. The Basic Insurance for Self-Employed Persons (Incapacity) Act (BAZ, wet basisverzekering arbeidsongeschiktheid zelfstandigen) is a proposed law that is not yet in force.
+This file covers the rules for deducting pension premiums, annuity premiums (lijfrentepremies), and disability insurance (AOV, arbeidsongeschiktheidsverzekering) premiums for a Dutch sole trader (ZZP) in tax year 2026. The most important figures are the annual allowance (jaarruimte) of up to € 35.589 and the catch-up allowance (reserveringsruimte) of up to € 42.753. The law for 2026 is enacted and in force. The Basic Disability Insurance for Self-Employed Persons Act (BAZ, wet basisverzekering arbeidsongeschiktheid zelfstandigen) is a proposed law that is not yet in force.
 
 ---
 

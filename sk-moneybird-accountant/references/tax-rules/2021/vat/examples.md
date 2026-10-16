@@ -56,7 +56,7 @@ A business sends goods to a VAT-registered buyer in another EU country. It keeps
 
 A business provides an exempt service. It does not charge VAT on that service and cannot deduct input VAT connected with the exempt supply. These examples show why a zero-rated supply and an exempt supply have different deduction treatment.
 
-### Accommodation: calculated example
+### Accommodation (logies): calculated example
 
 A business provides qualifying accommodation for an invented price of € 100 excluding VAT.
 

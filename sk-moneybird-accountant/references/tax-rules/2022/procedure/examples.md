@@ -1,6 +1,6 @@
 ---
 title: "Tax return and procedure 2022: Examples"
-description: "Filing deadlines, deferral (uitstel), provisional assessment, tax interest, additional assessment, objection, record-keeping obligation and Chamber of Commerce and Dutch Tax and Customs Administration registration duties for tax year 2022. This file holds the examples part."
+description: "Filing deadlines, deferral (uitstel), provisional assessment, tax interest, additional assessment, objection, record-retention obligation and Chamber of Commerce and Dutch Tax and Customs Administration registration duties for tax year 2022. This file holds the examples part."
 nav_label: "Aangifte en procedure examples"
 trigger_phrases:
   - "aangifte en procedure 2022"
@@ -110,7 +110,7 @@ Step 2: following the pattern of the material, the online request for a reductio
 
 Step 3: after that date the request goes by letter.
 
-### Example 9: Record-keeping obligation (bewaarplicht) for a 4-year lease (Calculated example)
+### Example 9: Record-retention obligation (bewaarplicht) for a 4-year lease (Calculated example)
 
 Inputs from section 2: the AWR term is 7 years and the term starts when the item (gegeven) is no longer current, and the Dutch Tax and Customs Administration example is a 4-year lease that is kept for those 4 years and then 7 more.
 
@@ -122,7 +122,7 @@ Step 3: 4 + 7 = 11 years in total.
 
 ### Example 10: Chamber of Commerce (KVK) registration window (Calculated example)
 
-Inputs from section 2: the notification (opgave) period is two weeks, starting one week before and ending one week after the start of the business.
+Inputs from section 2: the statement (opgave) period is two weeks, starting one week before and ending one week after the start of the business.
 
 Step 1: the business starts on 1 March 2022.
 

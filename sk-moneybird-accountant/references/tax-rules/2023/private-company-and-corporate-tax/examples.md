@@ -165,7 +165,7 @@ Step 1: the 5% participation (deelneming) means art. 13 lid 1 leaves the advanta
 Step 2: without the exemption the corporate income tax at 19% would be € 50.000,00 x 19% = € 9.500,00.
 Answer: € 0,00 under the participation exemption, € 9.500,00 without it.
 
-### Calculated example: buy-back (inkoop) of own shares (aandelen)
+### Calculated example: buy-back of own shares (inkoop van eigen aandelen)
 Step 1: buyback price € 100.000,00 minus average paid-up capital € 20.000,00 = € 80.000,00.
 Step 2: dividend tax = 15% x € 80.000,00 = € 12.000,00.
 Step 3: if the company bears the tax, gross-up = € 80.000,00 x 100/85 = € 94.117,65 rounded.

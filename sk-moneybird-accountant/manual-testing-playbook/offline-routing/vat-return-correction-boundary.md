@@ -1,6 +1,6 @@
 ---
 title: "VAT-005 -- A VAT return correction on both sides of the boundary"
-description: "This scenario validates the correction branch of the VAT return preparation procedure, where a correction below the boundary joins the next return and one above it follows the suppletie route."
+description: "This scenario validates the correction branch of the VAT return preparation procedure, where a correction below the boundary joins the next return and one above it follows the supplementary return (suppletie) route."
 id: VAT-005
 catalog_applicable: true
 version: 1.0.0.0
@@ -18,7 +18,7 @@ This scenario validates the correction branch of the prepare-the-VAT-return rout
 
 ### Why This Matters
 
-A correction at or below the boundary belongs in the next regular return while a correction above it follows the suppletie route on top of the period history. Sending both the same way, or leaving the boundary to memory, hides a real correction. A local-only check confirms the branch without calling a service and without restating a figure the year file owns.
+A correction at or below the boundary belongs in the next regular return while a correction above it follows the supplementary return (suppletie) route on top of the period history. Sending both the same way, or leaving the boundary to memory, hides a real correction. A local-only check confirms the branch without calling a service and without restating a figure the year file owns.
 
 ---
 
@@ -29,9 +29,9 @@ A correction at or below the boundary belongs in the next regular return while a
 - Prompt: Prepare the VAT return for the fourth quarter of 2026. One correction from an earlier quarter is below the correction boundary and one is above it. Do not call an API.
 - Fixture rows: VAT-BRANCH-COR-01 (the boundary correction row) and vat-return-correction-boundary (the eval case).
 - Expected execution process: Read the project bootstrap and the skill, run the route table check, follow the T10 route into the VAT return procedure, read the correction routing, name the below-boundary and above-boundary routes, assemble the review pack and stop before any filing action. Do not use network access, accounting APIs or private finance data.
-- Expected signals: The check prints route-table: ok. The route record names LIVE and T10. The read set loads [the VAT return procedure](../../references/vat-return/README.md) and [the 2026 VAT figures](../../references/tax-rules/2026/vat/figures.md). The answer names the next regular return for the correction below the boundary, the suppletie route for the correction above it, the review pack blocks P1 to P9 and the Operator as the owner of both routes. The boundary itself comes from the year file and is never stated from memory. The administration reads run through moneybird-guard with MONEYBIRD_GUARD_READ_ONLY=1.
+- Expected signals: The check prints route-table: ok. The route record names LIVE and T10. The read set loads [the VAT return procedure](../../references/vat-return/README.md) and [the 2026 VAT figures](../../references/tax-rules/2026/vat/figures.md). The answer names the next regular return for the correction below the boundary, the supplementary return route for the correction above it, the review pack blocks P1 to P9 and the Operator as the owner of both routes. The boundary itself comes from the year file and is never stated from memory. The administration reads run through moneybird-guard with MONEYBIRD_GUARD_READ_ONLY=1.
 - Desired user-visible outcome: A concise route report with the winning row, the loaded paths, the two correction routes, the review pack blocks and the API-free status.
-- Pass/fail: PASS if the request routes LIVE and T10, the procedure and the year figures load, the answer names the next regular return below the boundary and the suppletie route above it, the pack blocks P1 to P9 are named, the Operator owns both routes and no API is called. FAIL if the correction below the boundary is sent to the suppletie route, a pack block is absent, the boundary is stated from memory, the answer states a filing action or an API is called.
+- Pass/fail: PASS if the request routes LIVE and T10, the procedure and the year figures load, the answer names the next regular return below the boundary and the supplementary return route above it, the pack blocks P1 to P9 are named, the Operator owns both routes and no API is called. FAIL if the correction below the boundary is sent to the supplementary return route, a pack block is absent, the boundary is stated from memory, the answer states a filing action or an API is called.
 
 ---
 
@@ -47,11 +47,11 @@ A correction at or below the boundary belongs in the next regular return while a
 2. Read sk-moneybird-accountant/SKILL.md
 3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check
 4. Read sk-moneybird-accountant/references/vat-return/README.md, sk-moneybird-accountant/references/vat-return/year-end-and-corrections.md and sk-moneybird-accountant/references/tax-rules/2026/vat/figures.md
-5. Name the next regular return for the correction below the boundary and the suppletie route for the correction above it, assemble the review pack and stop before any filing action
+5. Name the next regular return for the correction below the boundary and the supplementary return route for the correction above it, assemble the review pack and stop before any filing action
 
 ### Expected
 
-The check prints route-table: ok. The T10 row wins for the named VAT return. The procedure, the correction routing and the 2026 VAT figures load. The answer names the next regular return for the below-boundary correction, the suppletie route for the above-boundary correction, the pack blocks P1 to P9 and the Operator. The boundary is read from the year file. No accounting API is called.
+The check prints route-table: ok. The T10 row wins for the named VAT return. The procedure, the correction routing and the 2026 VAT figures load. The answer names the next regular return for the below-boundary correction, the supplementary return route for the above-boundary correction, the pack blocks P1 to P9 and the Operator. The boundary is read from the year file. No accounting API is called.
 
 ### Evidence
 
@@ -60,7 +60,7 @@ Capture the check output, the selected row, the loaded paths, both correction ro
 ### Pass / Fail
 
 - **Pass**: The request routes LIVE and T10, both correction routes are named correctly, the pack blocks P1 to P9 are named, the Operator owns the routes and no API is called.
-- **Fail**: The correction below the boundary is sent to the suppletie route, a pack block is absent, the boundary is stated from memory, the answer states a filing action or an API is called.
+- **Fail**: The correction below the boundary is sent to the supplementary return route, a pack block is absent, the boundary is stated from memory, the answer states a filing action or an API is called.
 
 ### Failure Triage
 

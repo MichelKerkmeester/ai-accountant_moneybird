@@ -1,5 +1,5 @@
 ---
-title: "Entrepreneur's allowance and SME profit exemption 2025: Figures"
+title: "Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling) 2025: Figures"
 description: "The entrepreneur's allowance (ondernemersaftrek), the starter's deduction (startersaftrek), the deduction for assisting partner (meewerkaftrek), the discontinuation deduction (stakingsaftrek) and the 12,7% SME profit exemption (MKB-winstvrijstelling) for tax year 2025, with the hours criterion (urencriterium) of 1.225 hours and the rate adjustment (tariefsaanpassing) of 12,02%."
 nav_label: "Ondernemersaftrek en MKB-winstvrijstelling"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Entrepreneur's allowance and SME profit exemption 2025: Figures
+# Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling) 2025: Figures
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -87,7 +87,7 @@ This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME pr
 | Deduction for assisting partner bands | 1,25% / 2% / 3% / 4% for 525 / 875 / 1.225 / 1.750 hours and up | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 (art. 3.78) |
 | Pay to the partner | below € 5.000 not deductible, partner counts as working without pay | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.16 lid 4) and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/meewerkaftrek |
 | Discontinuation deduction | € 3.630 maximum | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 (art. 3.79) |
-| Old-age reserve (oudedagsreserve) | no additions, an existing reserve stays, decrease rules via art. 10a.29 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 |
+| Old-age reserve (oudedagsreserve) | no additions, an existing reserve stays, decrease (afneming) rules via art. 10a.29 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 |
 | Rate adjustment (tariefsaanpassing) | 12,02% above € 76.817 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 (art. 2.10) |
 | Maximum value of the entrepreneur's allowance and the SME profit exemption | 37,48% (49,50% minus 12,02%) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/mkb_winstvrijstelling |
 

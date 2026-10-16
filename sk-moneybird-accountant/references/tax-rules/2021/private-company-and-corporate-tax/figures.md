@@ -52,7 +52,7 @@ This file covers corporate income tax (vennootschapsbelasting, Vpb) for a BV in 
 | Customary salary (gebruikelijk loon) standard amount (normbedrag) (art. 12a Wet LB 1964) | 11 |
 | Customary salary comparable wage | 12 |
 | Customary salary floor | 13 |
-| Start-up relief for starters (art. 12a lid 3 and 4 Wet LB 1964) | 14 |
+| Start-up relief for starters (startersfaciliteit) (art. 12a lid 3 and 4 Wet LB 1964) | 14 |
 | Zvw for a DGA | 15 |
 | Zvw route for an uninsured DGA | 16 |
 | Box 2 rate (art. 2.12 Wet IB 2001) | 17 |
@@ -85,11 +85,11 @@ This file covers corporate income tax (vennootschapsbelasting, Vpb) for a BV in 
 | Customary salary (gebruikelijk loon) standard amount (normbedrag) (art. 12a Wet LB 1964) | € 47.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2021-01-01 (art. 12a) |
 | Customary salary comparable wage | 75% of the wage from the most comparable employment relationship | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2021-01-01 (art. 12a) |
 | Customary salary floor | the rule does not apply when the wage for all work in the body and connected bodies is not more than € 5.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2021-01-01 (art. 12a lid 6) |
-| Start-up relief for starters (art. 12a lid 3 and 4 Wet LB 1964) | at least 108% of twelve times the art. 8 lid 1 sub a WML amount, within the de-minimis ceiling of Regulation (EU) nr. 1407/2013, first use in 2021 may run at most 3 years | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/loon_en_aanmerkelijk_belang/loon_en_aanmerkelijk_belang |
+| Start-up relief for starters (startersfaciliteit) (art. 12a lid 3 and 4 Wet LB 1964) | at least 108% of twelve times the art. 8 lid 1 sub a WML amount, within the de-minimis ceiling of Regulation (EU) nr. 1407/2013, first use in 2021 may run at most 3 years | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/loon_en_aanmerkelijk_belang/loon_en_aanmerkelijk_belang |
 | Zvw for a DGA | contribution 5,75%, maximum contribution income (bijdrage-inkomen) € 58.311, employer levy (werkgeversheffing) 7,00% when the DGA is insured for the employee insurance schemes (werknemersverzekeringen) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
 | Zvw route for an uninsured DGA | the BV withholds the income-related Zvw contribution from the net wage and pays it through the payroll tax return (aangifte loonheffingen), the Dutch Tax and Customs Administration (Belastingdienst) table says the DGA pays it himself, collected by withholding on net wage or by assessment (aanslag) | enacted | Corrected | https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf (paragraph 8.2.2) and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/bijdrage_zorgverzekeringswet/hoe_wordt_de_inkomensafhankelijke_bijdrage_zvw_betaald/tabel_werkgeversheffing_zvw_of_bijdrage_zvw/ik_ben_directeur_grootaandeelhouder/ |
 | Box 2 rate (art. 2.12 Wet IB 2001) | 26,9% flat | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01 (art. 2.12) |
-| Dividend tax (dividendbelasting) (art. 5 Wet DB 1965) | 15% | enacted | Verified | https://wetten.overheid.nl/BWBR0002515/2020-01-01 (art. 5, version geldend 01-01-2020 t/m 31-12-2021) |
+| Dividend tax (dividendbelasting) (art. 5 Wet DB 1965) | 15% | enacted | Verified | https://wetten.overheid.nl/BWBR0002515/2020-01-01 (art. 5, version valid 01-01-2020 to 31-12-2021) |
 | Grossing up (brutering) when the company bears the dividend tax (art. 6 lid 1 Wet DB 1965) | 100/85 | enacted | Verified | https://wetten.overheid.nl/BWBR0002515/2020-01-01 (art. 6 lid 1) |
 | Conditional withholding tax (conditionele bronbelasting) (art. 4.1 Wet bronbelasting 2021) | the highest art. 22 Wet Vpb 1969 rate, 25% in 2021, on interest and royalties to a related body in a low-tax jurisdiction | enacted | Verified | https://wetten.overheid.nl/BWBR0042952/2021-01-01 (art. 4.1) |
 | Dividend stripping rule | art. 4 lid 7 Wet DB 1965 | enacted | Corrected | https://wetten.overheid.nl/BWBR0002515/2020-01-01 (art. 4 lid 7) |

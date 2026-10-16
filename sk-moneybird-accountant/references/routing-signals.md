@@ -100,9 +100,9 @@ A row shows two numbers. The base is the ladder sum of the read path that answer
 | `tok:T7` | 0 | 0 | no reference file, the sibling tool skill carries its own reads |
 | `tok:T8` | 0 | 0 | loads nothing |
 | `tok:T9` | 15,000 | 15,000 | one full reference file |
-| `tok:T10` | 21,000 | 41,000 | the VAT return procedure README 3,000, a year README 3,000 and the year VAT figures part 15,000, plus the year procedure figures part 15,000 when a deadline, correction or tax interest applies and one source section 5,000 when the official source is asked |
+| `tok:T10` | 21,000 | 41,000 | the VAT return procedure README 3,000, a year README 3,000 and the year VAT figures part 15,000, plus the year procedure figures part 15,000 when a deadline, correction or tax interest (belastingrente) applies and one source section 5,000 when the official source is asked |
 | `tok:T11` | 33,000 | 51,000 | the yearly overview procedure README 3,000, the year cost and car figures part 15,000 and the year investments figures part 15,000, plus a year README 3,000 when a close signal applies and the fixed-asset file 15,000 when an asset, an investment or depreciation is in scope |
-| `tok:T12` | 36,000 | 41,000 | the income tax return procedure README 3,000, a year README 3,000, the year income tax figures part 15,000 and the year entrepreneur's allowance figures part 15,000, plus one source section 5,000 when the official source is asked |
+| `tok:T12` | 36,000 | 41,000 | the income tax return procedure README 3,000, a year README 3,000, the year income tax figures part 15,000 and the year entrepreneur's allowance (ondernemersaftrek) figures part 15,000, plus one source section 5,000 when the official source is asked |
 
 ---
 
@@ -119,7 +119,7 @@ A row here names a deliverable the skill routes but does not document yet. The T
 | Topic | Owner | Coverage | Operator action |
 |---|---|---|---|
 | vat-return | references/vat-return/README.md | covered | The Operator prepares and files the VAT return in the Dutch Tax and Customs Administration portal and keeps the filed copy with the records |
-| yearly-overview | references/yearly-overview/README.md | covered | The Operator assembles the yearly overview in the Moneybird UI and keeps the balance sheet and the profit and loss statement with the records |
+| yearly-overview | references/yearly-overview/README.md | covered | The Operator assembles the yearly overview in the Moneybird UI and keeps the balance sheet and the profit and loss statement (resultatenrekening) with the records |
 | income-tax-return | references/income-tax-return/README.md | covered | The Operator prepares and files the income tax return in the Dutch Tax and Customs Administration (Belastingdienst) portal and keeps the assessment with the records |
 
 ---

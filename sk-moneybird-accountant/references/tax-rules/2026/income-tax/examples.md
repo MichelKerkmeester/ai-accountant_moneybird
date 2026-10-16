@@ -113,7 +113,7 @@ Assume the taxpayer meets the child and household conditions, qualifies on the p
 
 Sources for the formula: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting-2026, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/heffingskortingen.
 
-### Official example: IACK co-parent days
+### Official example: IACK co-parent days (co-ouder)
 
 The conditions page states that 164 days with the taxpayer and 201 days with the ex-partner meets the rule. From 1 April the stated test is 117 days per household. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/inkomensafhankelijke_combikorting/inkomensafhankelijke-combinatiekorting.
 

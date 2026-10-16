@@ -42,7 +42,7 @@ A business sells taxable goods for € 1.000,00 excluding VAT.
 - At 9%: € 1.000,00 × 9% = € 90,00 VAT. Total invoice amount: € 1.000,00 + € 90,00 = € 1.090,00.
 - At 0%: € 1.000,00 × 0% = € 0,00 VAT. The supply is still zero-rated rather than exempt if it meets the conditions for the zero rate.
 
-The rates and the difference between zero rating and exemption follow Article 9 of the Turnover Tax Act 1968 (Wet op de omzetbelasting 1968) and the Dutch Tax and Customs Administration (Belastingdienst) guidance. [Wet op de omzetbelasting 1968](https://wetten.overheid.nl/BWBR0002629/2026-01-01), [ICP return explanation](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf)
+The rates and the difference between zero rating and exemption follow Article 9 of the Turnover Tax Act 1968 (Wet op de omzetbelasting 1968) and the Dutch Tax and Customs Administration (Belastingdienst) guidance. [Wet op de omzetbelasting 1968](https://wetten.overheid.nl/BWBR0002629/2026-01-01), [ICP statement explanation](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf)
 
 ### KOR eligibility and crossing supply: Calculated example
 

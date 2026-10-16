@@ -64,7 +64,7 @@ Open amount € 2.000. 5% of € 2.000 is € 100. The minimum is € 50 and the
 
 ### Calculated example: record-retention obligation (bewaarplicht)
 
-A 4-year lease starts on 1 January 2026. The item (gegeven) is no longer actual after 31 December 2029. The 7-year term starts then. 31 December 2029 plus 7 years is 31 December 2036. So the lease must be kept until 31 December 2036. Check: 2029 + 7 = 2036. Yes.
+A 4-year lease starts on 1 January 2026. The item (gegeven) is no longer current after 31 December 2029. The 7-year term starts then. 31 December 2029 plus 7 years is 31 December 2036. So the lease must be kept until 31 December 2036. Check: 2029 + 7 = 2036. Yes.
 
 ### Calculated example: KVK registration window
 

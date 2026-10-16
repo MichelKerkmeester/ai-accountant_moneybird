@@ -61,7 +61,7 @@ This file covers Box 1 rates, AOW-age variants, tax credits (heffingskortingen, 
 | Exempt profit components | 20 |
 | Self-employed person's deduction (zelfstandigenaftrek) | 21 |
 | Self-employed person's deduction at AOW age | 22 |
-| Unused self-employed person's deduction | 23 |
+| Unused self-employed person's deduction (niet-gerealiseerde zelfstandigenaftrek) | 23 |
 | Starter's deduction (startersaftrek) | 24 |
 | Starter's deduction for entrepreneurs incapacitated for work (startersaftrek bij arbeidsongeschiktheid) | 25 |
 | Deduction for assisting partner (meewerkaftrek) | 26 |
@@ -95,7 +95,7 @@ This file covers Box 1 rates, AOW-age variants, tax credits (heffingskortingen, 
 | Exempt profit components | Remove exempt components from profit first. These include forestry exemption (bosbouwvrijstelling), agricultural exemption (landbouwvrijstelling) and the stated other exemptions | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/winst_uit_onderneming |
 | Self-employed person's deduction (zelfstandigenaftrek) | € 3.750 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/verandering_inkomstenbelasting_vorige_jaren/veranderingen-inkomstenbelasting-2024/ondernemersaftrek-2024/zelfstandigenaftrek-2024, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek |
 | Self-employed person's deduction at AOW age | € 1.875, equal to 50% of € 3.750 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/verandering_inkomstenbelasting_vorige_jaren/veranderingen-inkomstenbelasting-2024/ondernemersaftrek-2024/zelfstandigenaftrek-2024 |
-| Unused self-employed person's deduction | May be carried forward for 9 years if later profit is high enough | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/verandering_inkomstenbelasting_vorige_jaren/veranderingen-inkomstenbelasting-2024/ondernemersaftrek-2024/zelfstandigenaftrek-2024 |
+| Unused self-employed person's deduction (niet-gerealiseerde zelfstandigenaftrek) | May be carried forward for 9 years if later profit is high enough | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/verandering_inkomstenbelasting_vorige_jaren/veranderingen-inkomstenbelasting-2024/ondernemersaftrek-2024/zelfstandigenaftrek-2024 |
 | Starter's deduction (startersaftrek) | € 2.123, or € 1.062 at AOW age | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/verandering_inkomstenbelasting_vorige_jaren/veranderingen-inkomstenbelasting-2024/ondernemersaftrek-2024/zelfstandigenaftrek-2024 |
 | Starter's deduction for entrepreneurs incapacitated for work (startersaftrek bij arbeidsongeschiktheid) | € 12.000, € 8.000, € 4.000, then € 0, capped at profit | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek |
 | Deduction for assisting partner (meewerkaftrek) | 1,25%, 2%, 3% or 4% over the same hour bands | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek |

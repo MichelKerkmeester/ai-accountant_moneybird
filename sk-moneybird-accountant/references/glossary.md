@@ -14,7 +14,7 @@ version: 1.0.0.0
 
 # Glossary of Dutch terms
 
-**Rule:** Every reference leads with the English term and adds the Dutch term in brackets at its first use in a section, for example "supplementary assessment (naheffingsaanslag)". This glossary fixes the one English name per Dutch term that the references use more than once.
+**Rule:** Every reference leads with the English term and adds the Dutch term in brackets at its first use in a section, for example "additional assessment (naheffingsaanslag)". This glossary fixes the one English name per Dutch term that the references use more than once.
 
 ---
 
@@ -248,7 +248,7 @@ An empty note means a plain term. A note of `official name` marks the name of an
 | contractors | aannemers |  |
 | contractors | opdrachtnemers |  |
 | contributed | ingelegd |  |
-| contribution | inbreng |  |
+| contribution | inbreng | also seen as committee input, in a parliamentary report |
 | contribution base | premiegrondslag |  |
 | contribution date | inbrengdatum |  |
 | contribution income | bijdrage-inkomen |  |
@@ -829,7 +829,7 @@ An empty note means a plain term. A note of `official name` marks the name of an
 | pseudo-final levy | pseudo-eindheffing |  |
 | public transport | openbaar vervoer |  |
 | public transport smart card | ov-chipkaart |  |
-| drag-along rule | meesleepregeling |  |
+| pull-along rule | meesleepregeling |  |
 | purchase agreement | koopovereenkomst |  |
 | purchase option | koopoptie |  |
 | purchase price | inkoopprijs |  |
@@ -927,8 +927,6 @@ An empty note means a plain term. A note of `official name` marks the name of an
 | sea-going vessels | zeeschepen |  |
 | search | zoek |  |
 | second test | tweede toets |  |
-| section | rubriek |  |
-| sections | rubrieken |  |
 | sectoral | sectoraal |  |
 | segregated private assets | afgezonderd particulier vermogen |  |
 | self-employed person | zelfstandige |  |
@@ -1100,6 +1098,8 @@ An empty note means a plain term. A note of `official name` marks the name of an
 | VAT overview | btw-overzicht |  |
 | VAT rate | btw-tarief |  |
 | VAT report | btw-rapport |  |
+| VAT return box | rubriek | also seen as rubriek with its code, for example rubriek 4b |
+| VAT return boxes | rubrieken | also seen as rubriek with its code, for example rubriek 4b |
 | version | versie |  |
 | vessels | vaartuigen |  |
 | video equipment | beeldapparatuur |  |

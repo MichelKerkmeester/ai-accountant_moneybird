@@ -36,7 +36,7 @@ This part holds the worked examples for the Pension, annuity and disability insu
 
 ### Calculated example. Annual allowance (jaarruimte) 2024 with profits from business activities (winst uit onderneming) of € 60.000
 
-Inputs. A sole trader has a profits from business activities of € 60.000 in 2023, no pension accrual and no FOR. The taxpayer has not yet reached AOW age plus five years at the start of 2024.
+Inputs. A sole trader has a profit from business activities of € 60.000 in 2023, no pension accrual and no FOR. The taxpayer has not yet reached AOW age plus five years at the start of 2024.
 
 Step 1. The income part is min(€ 60.000, € 137.800) = € 60.000. https://wetten.overheid.nl/BWBR0011353/2024-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127
 
@@ -50,7 +50,7 @@ Outcome. The annual allowance is € 12.736,50, so annuity premiums (lijfrentepr
 
 ### Calculated example. Annual allowance 2024 at the top of the income scale
 
-Inputs. A sole trader has a profits from business activities of € 200.000 in 2023, no pension accrual and no FOR.
+Inputs. A sole trader has a profit from business activities of € 200.000 in 2023, no pension accrual and no FOR.
 
 Step 1. The income part is min(€ 200.000, € 137.800) = € 137.800. https://wetten.overheid.nl/BWBR0011353/2024-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127
 
@@ -64,7 +64,7 @@ Outcome. The formula gives € 36.076,50 at this income and the Ministry table p
 
 ### Calculated example. Annual allowance reduced by pension accrual premiums
 
-Inputs. A taxpayer has a taxable wage (loon) of € 60.000 in 2023 and paid € 5.000 in contributions toward the old-age and partner pensions (premiums ingelegd voor ouderdoms- en partnerpensioen). There is no compensation premium (compensatiepremie) under art. 38s Wet LB 1964 and no net pension (nettopensioen) premium.
+Inputs. A taxpayer has a taxable wage (belastbaar loon) of € 60.000 in 2023 and paid € 5.000 in contributions toward the old-age and partner pensions (premiums ingelegd voor ouderdoms- en partnerpensioen). There is no compensation premium (compensatiepremie) under art. 38s Wet LB 1964 and no net pension (nettopensioen) premium.
 
 Step 1. The income part is min(€ 60.000, € 137.800) = € 60.000. https://wetten.overheid.nl/BWBR0011353/2024-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127
 
@@ -80,7 +80,7 @@ Outcome. The annual allowance is € 7.736,50. A net pension premium would also 
 
 Inputs. Use the sole trader from the first example, with a 2024 annual allowance of € 12.736,50. The taxpayer also has € 50.000 of unused annual allowance from 2018. Premiums paid in 2024 are € 55.000.
 
-Step 1. The look-back window for 2024 is 2014 to 2023, so the 2018 room is inside the window. https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/uitgaven_voor_inkomensvoorzieningen
+Step 1. The look-back window for 2024 is 2014 to 2023, so the 2018 allowance is inside the window. https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/uitgaven_voor_inkomensvoorzieningen
 
 Step 2. The catch-up allowance maximum is € 41.608. The unused amount is € 50.000, so the usable catch-up allowance is min(€ 50.000, € 41.608) = € 41.608. https://wetten.overheid.nl/BWBR0011353/2024-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127
 
@@ -132,9 +132,9 @@ Step 1. The small-annuity amount is € 5.364. € 5.000 is below € 5.364, so 
 
 Step 2. If the yearly payout were € 6.000, the excess is € 6.000 - € 5.364 = € 636 and the small-annuity exception is not available. https://wetten.overheid.nl/BWBR0011353/2024-01-01 (art. 3.133 lid 2 onderdeel d)
 
-Step 3. Under art. 3.133 lid 9 the cap for a taxpayer who is long-term disabled (langdurig arbeidsongeschikt) and has not yet reached AOW age is € 50.063, unless the average contribution base (premiegrondslag) plus franchise of the year and the previous year is higher. A commutation of € 40.000 is within the cap. A commutation of € 60.000 is € 60.000 - € 50.063 = € 9.937 above the cap. https://wetten.overheid.nl/BWBR0011353/2024-01-01 (art. 3.133 lid 9)
+Step 3. Under art. 3.133 lid 9 the cap for a taxpayer who is long-term incapacitated for work (langdurig arbeidsongeschikt) and has not yet reached AOW age is € 50.063, unless the average contribution base (premiegrondslag) plus franchise of the year and the previous year is higher. A commutation of € 40.000 is within the cap. A commutation of € 60.000 is € 60.000 - € 50.063 = € 9.937 above the cap. https://wetten.overheid.nl/BWBR0011353/2024-01-01 (art. 3.133 lid 9)
 
-Outcome. The small-annuity exception applies below € 5.364 per year. The long-term disability (langdurige arbeidsongeschiktheid) exception applies to a commutation of at most € 50.063 in the year, unless the average contribution base plus franchise of the year and the previous year is higher.
+Outcome. The small-annuity exception applies below € 5.364 per year. The long-term incapacity for work (langdurige arbeidsongeschiktheid) exception applies to a commutation of at most € 50.063 in the year, unless the average contribution base plus franchise of the year and the previous year is higher.
 
 ### Calculated example. AOV premium with periodic benefits and with a lump sum
 

@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Income tax box 1 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Income tax (inkomstenbelasting) box 1 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -134,7 +134,7 @@ The band values are from https://www.belastingdienst.nl/wps/wcm/connect/fisin/fi
 
 Both results are below their applicable maximums. The rates and limits are from https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/heffingskortingen.
 
-### Payment of unused AHK to a partner
+### Payment of unused general tax credit (algemene heffingskorting, AHK) to a partner
 
 **Official example.** https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/heffingskortingen gives an example in which an eligible taxpayer born before 1 January 1963 has no income, the partner owes enough tax, and € 3.070 can be paid out. The payment depends on the partner and offset conditions stated in section 3.
 

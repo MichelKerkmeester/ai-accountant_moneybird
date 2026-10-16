@@ -101,7 +101,7 @@ A tier a or tier b amount would require the age, disability or immediate-start c
 Inputs: two situations.
 
 - Case A, a yearly benefit of € 4.000. This is below € 4.898, so the small-annuity exception (kleine lijfrente) of art. 3.133 lid 2 onderdeel d applies and the commutation in one payment is allowed.
-- Case B, a yearly benefit of € 6.000 with long-term disability (langdurige arbeidsongeschiktheid) and a taxpayer below the state pension age. The small-annuity exception does not apply here. The disability cap of € 45.722 applies, so a commutation received in the year of € 45.000 stays within the cap, since € 45.722 minus € 45.000 = € 722 of room remains. The commutation then counts as an annuity term (termijn).
+- Case B, a yearly benefit of € 6.000 with long-term disability (langdurige arbeidsongeschiktheid) and a taxpayer below the state pension age. The small-annuity exception does not apply here. The disability cap of € 45.722 applies, so a commutation received in the year of € 45.000 stays within the cap, since € 45.722 minus € 45.000 = € 722 of room remains. The commutation then counts as an annuity instalment (termijn).
 
 The alternative cap of the average contribution base (premiegrondslag) plus franchise of the year and the previous year applies only when it is higher than € 45.722. Sources: [art. 3.133, text 1 July 2023](https://wetten.overheid.nl/BWBR0011353/2023-07-01) and [FISIN 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/uitgaven_voor_inkomensvoorzieningen).
 

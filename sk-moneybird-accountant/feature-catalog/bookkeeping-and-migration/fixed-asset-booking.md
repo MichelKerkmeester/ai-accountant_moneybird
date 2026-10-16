@@ -23,7 +23,7 @@ The reference states when a purchase is capitalised, the small-amount rule, the 
 
 ## 2. HOW IT WORKS
 
-The agent checks whether the business uses the purchase for more than one year and whether the amount is at or above the activation threshold. A capitalised purchase gets an asset record (bezitting) with its acquisition cost (aanschafwaarde), in-use date, useful life and residual value. Depreciation follows the yearly limit. A good used partly privately goes through the labelling (etikettering) first. A building, a private item moved into the business or a change of use inside the revision period goes to the Operator or a bookkeeper. Moneybird writes still need a passed gate and Operator approval. The Operator files the return.
+The agent checks whether the business uses the purchase for more than one year and whether the amount is at or above the activation threshold. A capitalised purchase gets an asset record (bezitting) with its acquisition cost (aanschafwaarde), in-use date (datum ingebruikname), useful life (gebruiksduur) and residual value (restwaarde). Depreciation follows the yearly limit. A good used partly privately goes through the labelling (etikettering) first. A building, a private item moved into the business or a change of use inside the revision period goes to the Operator or a bookkeeper. Moneybird writes still need a passed gate and Operator approval. The Operator files the return.
 
 ---
 

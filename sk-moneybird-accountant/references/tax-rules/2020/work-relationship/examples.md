@@ -34,7 +34,7 @@ This part holds the worked examples for the employment relationship (Arbeidsrela
 
 <a id="4-worked-examples"></a>
 
-### Example 1: instruction (aanwijzing) route for a client acting in good faith (non-kwaadwillende opdrachtgever)
+### Example 1: instruction (aanwijzing) route for a client acting in good faith (non-kwaadwillende opdrachtgever) (Calculated example)
 
 This example uses only the rules in section 3.1 and 3.2. Inputs are invented.
 
@@ -47,7 +47,7 @@ This example uses only the rules in section 3.1 and 3.2. Inputs are invented.
 
 Arithmetic: no amount is computed here because the material gives no rate or base for the correction. The step that matters is the date, the date of the instruction.
 
-### Example 2: the two thresholds in the 2020 assessment (aanslag)
+### Example 2: the two thresholds in the 2020 assessment (aanslag) (Calculated example)
 
 This example uses the section 3.15 figures. It reads the threshold (grens) in the wording that was current until the 2023 captures, equal to or more than (gelijk aan of meer dan), and prints the 2020 values € 48 and € 16 from that wording.
 
@@ -62,7 +62,7 @@ This example uses the section 3.15 figures. It reads the threshold (grens) in th
 
 Cross-check with the current wording: pay € 47 is not higher than € 47, so no assessment, and € 48 is higher than € 47, so an assessment. Refund € 15 is not higher than € 15, so no refund, and € 16 is higher than € 15, so a refund. For whole euros the two wordings give the same result.
 
-### Example 3: definitive assessment 2020 without and with deferral (uitstel)
+### Example 3: definitive assessment 2020 without and with deferral (uitstel) (Official example)
 
 Copied from the 2021 definitive-assessment page.
 
@@ -98,7 +98,7 @@ This example uses the section 3.21 figure. Inputs are invented.
 - Step 3: the default fine (verzuimboete) is € 68 for 2020.
 - Interaction: tax interest on VAT (btw) runs from 1 January after the tax year, so for a May 2020 period the tax interest start is 1 January 2021. A voluntary correction within 3 months after the tax year avoids tax interest.
 
-### Example 6: the hourly amount method behind the later legal presumption (rechtsvermoeden)
+### Example 6: the hourly amount method behind the later legal presumption (rechtsvermoeden) (Calculated example)
 
 This example uses the section 3.26 figures to show the method. It is not 2020 law and no 2020 rule uses it.
 

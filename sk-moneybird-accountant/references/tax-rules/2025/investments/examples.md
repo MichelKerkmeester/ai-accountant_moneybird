@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Investment deduction and depreciation 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Investment deduction and depreciation (investeringsaftrek en afschrijving) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -182,7 +182,7 @@ Inputs: a building taken into use before 2021 and depreciated for more than 3 ye
 2. Maximum depreciation for 2025 = € 20.000.
 3. If the book value were € 290.000, it would be below the minimum value of € 300.000, so no depreciation would be allowed.
 
-### Example 19. Arbitrary depreciation for starters (starters willekeurige afschrijving) cap (Calculated example)
+### Example 19. Cap on arbitrary depreciation for starters (starters willekeurige afschrijving) (Calculated example)
 
 Inputs: designated assets with obligations or costs in 2025 of € 400.000.
 
@@ -200,7 +200,7 @@ Inputs: a machine with an order in 2023 for € 40.000, taken into use in 2025 b
 
 ### Example 21. Arbitrary depreciation for starters, truck (Official example)
 
-The Dutch Tax and Customs Administration (Belastingdienst) example for arbitrary depreciation for starters. A truck is bought on 1 July 2024 for € 150.000, with a 7-year life and a residual value of € 10.000. The taxpayer depreciates at will € 60.000 in 2024 and € 80.000 in 2025. At the end of 2025 the book value is € 10.000, while the normal book value on 1 January 2026 is € 120.000. If the truck is rented out from 1 January 2026, that moment is within 5 years after 1 January 2024, so the asset must be revalued (herwaardering) to € 120.000. That gives € 120.000 − € 10.000 = € 110.000 book profit (boekwinst) in 2026. A normal depreciation of € 20.000 in 2026 remains. The 2025 part of this example is the € 80.000 of arbitrary depreciation ([Belastingdienst starters page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/willekeurige_afschrijving/startende_ondernemer)). The example was published with the 2024 page and runs on into 2025.
+The Dutch Tax and Customs Administration (Belastingdienst) example for arbitrary depreciation for starters. A truck is bought on 1 July 2024 for € 150.000, with a 7-year life and a residual value of € 10.000. The taxpayer depreciates € 60.000 at will in 2024 and € 80.000 in 2025. At the end of 2025 the book value is € 10.000, while the normal book value on 1 January 2026 is € 120.000. If the truck is rented out from 1 January 2026, that moment is within 5 years after 1 January 2024, so the asset must be revalued (herwaardering) to € 120.000. That gives € 120.000 − € 10.000 = € 110.000 book profit (boekwinst) in 2026. A normal depreciation of € 20.000 in 2026 remains. The 2025 part of this example is the € 80.000 of arbitrary depreciation ([Belastingdienst starters page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/willekeurige_afschrijving/startende_ondernemer)). The example was published with the 2024 page and runs on into 2025.
 
 ---
 

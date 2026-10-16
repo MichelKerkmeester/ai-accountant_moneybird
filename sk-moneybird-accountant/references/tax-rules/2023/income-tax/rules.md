@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the how-it-works rules for the Income tax box 1 2023 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
+This part holds the how-it-works rules for the Income tax (inkomstenbelasting) box 1 2023 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -114,7 +114,7 @@ Each tax credit has an income-tax part (belastingdeel) and national insurance pr
 
 Payment of unused credits to a lower-earning partner is subject to conditions. The same fiscal partnership must have lasted more than 6 months, the partner must owe enough tax, and only the part that cannot be offset against the taxpayer's own tax and premiums can be paid (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/heffingskortingen through https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/heffingskortingen).
 
-From 2023, the AK and IACK can no longer be paid out to the partner. The AHK payment ended for people born in 1963 or later. It remains possible for people born before 1 January 1963, who were not subject to the phase-out (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/heffingskortingen). The 2023 page lists an own Box 1 income reference of € 10.705 and a partner income threshold of € 28.580, or € 32.480 at AOW age (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/heffingskortingen).
+From 2023, the employment tax credit (AK) and IACK can no longer be paid out to the partner. The general tax credit (AHK) payment ended for people born in 1963 or later. It remains possible for people born before 1 January 1963, who were not subject to the phase-out (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/heffingskortingen). The 2023 page lists an own Box 1 income reference of € 10.705 and a partner income threshold of € 28.580, or € 32.480 at AOW age (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/heffingskortingen).
 
 ### Flow of profits from business activities (winst uit onderneming)
 

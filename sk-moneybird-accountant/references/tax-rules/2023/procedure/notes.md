@@ -61,7 +61,7 @@ This part holds the changes, records, open points and related resources for the 
 - Keep the assessment notices (aanslagbiljetten) and diarise 6 weeks after the assessment (aanslag) date for an objection (bezwaar) ([source](https://www.belastingdienst.nl/wps/wcm/connect/nl/bezwaar-en-beroep/content/eisen-bezwaar)).
 - Treat a 2023 correction as an additional assessment (navordering) risk for 5 years after the tax debt (belastingschuld) arose, with 12 years for income or assets abroad, while a voluntary correction within 2 years generally gives no penalty ([source](https://wetten.overheid.nl/BWBR0002320/2026-01-01), [source](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/navorderingsaanslag)).
 - Register the business (onderneming) with KVK within the two-week window and let KVK pass the data to the Dutch Tax and Customs Administration (Belastingdienst). Registration in the Dutch Tax and Customs Administration administration takes at most 10 working days (werkdagen) ([source](https://wetten.overheid.nl/BWBR0021777/2025-07-16), [source](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/)).
-- For a BV the same AWR and Collection of State Taxes Act terms apply to assessment taxes (aanslagbelastingen), and the checked material names Corporate income tax (Vpb) in the 6-month term for requesting a return ([source](https://wetten.overheid.nl/BWBR0002320/2026-01-01), [source](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete)).
+- For a BV the same AWR and Collection of State Taxes Act terms apply to taxes levied by assessment (aanslagbelastingen), and the checked material names Corporate income tax (Vpb) in the 6-month term for requesting an invitation to file a return ([source](https://wetten.overheid.nl/BWBR0002320/2026-01-01), [source](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete)).
 
 ---
 
@@ -77,7 +77,7 @@ The current Dutch Tax and Customs Administration (Belastingdienst) page says tax
 
 The KVK page carries both wordings for the term in which the VAT number arrives, two weeks and ten working days (werkdagen) ([KVK](https://www.kvk.nl/hulp-en-contact/hulp-bij-inschrijven/)). Ten working days equals two calendar weeks, and the Dutch Tax and Customs Administration states that registration in its administration takes at most 10 working days ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/)). The two do not differ in substance. A single rewording of the KVK page would settle the presentation.
 
-### Interest stop (Rentestop) not in force for VAT (btw)
+### Interest stop (rentestop) not in force for VAT (btw)
 
 The interest stop extension to requested supplementary assessments (naheffingsaanslagen) applies from 1 January 2023 but is not yet in force for VAT because it is technically not feasible ([source](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_loonbelasting_btw_en_overdrachtsbelasting)). A technical change that makes the rule feasible for VAT would settle it. Until then a requested VAT supplementary assessment (naheffingsaanslag) does not get the 10-week end point.
 
@@ -92,4 +92,4 @@ No other 2023 value in this file is marked UNVERIFIED, proposed or unknown in th
 - [2023 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
 - [Filing and procedure 2022](../../2022/procedure/figures.md) and [Filing and procedure 2024](../../2024/procedure/figures.md)
-- Related topics in 2023: [VAT (BTW) 2023](../vat/figures.md), [Income tax (Inkomstenbelasting) box 1 2023](../income-tax/figures.md), [Employment relationship (Arbeidsrelatie) en self-employment (zelfstandigheid) 2023](../work-relationship/figures.md)
+- Related topics in 2023: [VAT (BTW) 2023](../vat/figures.md), [Income tax (Inkomstenbelasting) box 1 2023](../income-tax/figures.md), [Employment relationship and self-employment 2023](../work-relationship/figures.md)

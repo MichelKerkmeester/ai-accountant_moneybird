@@ -32,7 +32,7 @@ The mode is LIVE. Resolve the year as `year_key = return_coverage` with [year an
 | File | What it holds |
 |---|---|
 | `README.md` | This entry index, the ordered steps, the close-signal list, the boundary and the figure link rule. |
-| [preparation-checklist.md](preparation-checklist.md) | The auditfile-first evidence gate, the close checks, the year-end closing mechanics, the equity-continuity check and the exception list. |
+| [preparation-checklist.md](preparation-checklist.md) | The auditfile-first evidence gate, the close checks, the year-end closing (jaarafsluiting) mechanics, the equity-continuity check and the exception list. |
 | [fiscal-reconciliation.md](fiscal-reconciliation.md) | The fiscal reconciliation template, the three-column hand-off template and the prepared-not-filed stop. |
 | [report-and-export-limits.md](report-and-export-limits.md) | The report rows this procedure reads, the twelve-month window, the auditfile export order and the unverified items. |
 
@@ -87,7 +87,7 @@ A close request that arrives through this list reads the year file `references/t
 - Every figure, rate, threshold, euro amount and deadline stays in the year files. A figure that is not read from a year file or from the administration at run time is a blocker.
 - Every judgement point carries an `[Operator]` marker. The tax treatment, the value of a withdrawal (onttrekking), the fiscal classification, the lock direction and the filing are Operator decisions.
 - A figure link names the file that owns the figure, for example [Costs and car 2026 figures](../tax-rules/2026/costs-and-car/figures.md) and [Investments 2026 figures](../tax-rules/2026/investments/figures.md). The folder never copies a figure.
-- The auditfile export stands before the year-end closing and is the Operator's UI export for an ordinary LIVE year. The order and the evidence gate are in [the preparation checklist](preparation-checklist.md#2-auditfile-first).
+- The auditfile export stands before the year-end closing (jaarafsluiting) and is the Operator's UI export for an ordinary LIVE year. The order and the evidence gate are in [the preparation checklist](preparation-checklist.md#2-auditfile-first).
 
 ---
 

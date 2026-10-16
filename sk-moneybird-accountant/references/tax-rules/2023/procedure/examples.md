@@ -127,7 +127,7 @@ Facts: a provisional assessment for 2023 is dated 15 March 2023.
 Steps, built from the section 2 figures:
 1. Months remaining after the month of the date (March) are April to December, which is 9 months ([source](https://wetten.overheid.nl/BWBR0004770/2020-01-01)).
 2. The number of equal monthly instalments (termijnen) is therefore 9.
-3. The first term (termijn) is one month after the date, so 15 April 2023.
+3. The first instalment (termijn) is one month after the date, so 15 April 2023.
 
 ### Calculated example, payment schedule of a provisional assessment dated before the tax year
 
@@ -135,11 +135,11 @@ Facts: a provisional assessment for 2023 is dated 20 December 2022.
 
 Steps, built from the section 2 figures:
 1. A provisional assessment dated before the tax year is payable in 12 monthly instalments from the end of January ([source](https://wetten.overheid.nl/BWBR0004770/2020-01-01)).
-2. The first term falls at the end of January 2023.
+2. The first instalment falls at the end of January 2023.
 
 ### Calculated example, payment term of an assessment
 
-Facts: an assessment income tax (IB) is dated 1 September 2024.
+Facts: an income tax assessment (aanslag IB) is dated 1 September 2024.
 
 Steps, built from the section 2 figures:
 1. An assessment is payable 6 weeks after the date of the assessment notice (aanslagbiljet) ([source](https://wetten.overheid.nl/BWBR0004770/2020-01-01)).

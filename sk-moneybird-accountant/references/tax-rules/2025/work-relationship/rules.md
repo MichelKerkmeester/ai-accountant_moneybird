@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the how-it-works rules for the Employment relationship and self-employment 2025 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
+This part holds the how-it-works rules for the Employment relationship and self-employment (arbeidsrelatie en zelfstandigheid) 2025 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -46,7 +46,7 @@ Employment (loondienst) has three elements: the possibility of employer authorit
 
 ### Deemed employments (fictieve dienstbetrekkingen) and the opt-out
 
-The employment page lists the deemed employments (fictieve dienstbetrekkingen), among them contractors for work (aannemers van werk) and their helpers, agents (agenten), artists and professional athletes (artiesten and beroepssporters), persons treated as employees (gelijkgestelden, usually 2 or more days a week for the same client and at least 2/5 of the minimum wage), interns (stagiairs), home workers (thuiswerkers) and contractors working through an intermediary (intermediair). Source: [Belastingdienst, wanneer is sprake van loondienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst). Home workers, persons treated as employees and artists can be excluded in writing in the contract before the first payment of pay. The contractor then has no entitlement to sickness benefit (ZW), disability benefit for work and income (WIA) and unemployment benefit (WW). Same source.
+The employment page lists the deemed employments (fictieve dienstbetrekkingen), among them contractors for work (aannemers van werk) and their helpers, agents (agenten), artists and professional athletes (artiesten en beroepssporters), persons treated as employees (gelijkgestelden, usually 2 or more days a week for the same client and at least 2/5 of the minimum wage), interns (stagiairs), home workers (thuiswerkers) and contractors working through an intermediary (intermediair). Source: [Belastingdienst, wanneer is sprake van loondienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst). Home workers, persons treated as employees and artists can be excluded in writing in the contract before the first payment of pay. The contractor then has no entitlement to sickness benefit (ZW), disability benefit for work and income (WIA) and unemployment benefit (WW). Same source.
 
 ### Stb. 2016, 165
 
@@ -96,9 +96,9 @@ Working under an approved model agreement (modelovereenkomst) means no employmen
 
 The approval of the model agreements on free substitution (modelovereenkomsten vrije vervanging) was withdrawn on 14 August 2023 after the Deliveroo ruling. Source: [Belastingdienst, werken met modelovereenkomsten](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/werken-met-modelovereenkomsten).
 
-### Web module for the assessment of an employment relationship
+### Web module for the assessment of an employment relationship (webmodule beoordeling arbeidsrelatie)
 
-The web module (webmodule) is for clients with a business in the Netherlands. It has three outcomes: an indication that the work can be done outside an employment relationship, an indication of an employment relationship, or no judgment possible. It is not a legal decision and gives no rights. It is not useful for a contract with a legal entity (rechtspersoon) such as a bv, for a broker (bemiddelaar) or intermediary (tussenpersoon), or for a foreign contractor. The pilot ran from 11 January 2021 for 6 months, ended on 10 July 2021, and the online pilot environment stayed active, with no legal force (rechtskracht) during or after the pilot. Sources: [Ondernemersplein, webmodule beoordeling arbeidsrelatie](https://ondernemersplein.overheid.nl/personeel/inhuren/webmodule-beoordeling-arbeidsrelatie/) and [open.overheid.nl](https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file). The pilot design used a points system with a client statement (opdrachtgeversverklaring) as one outcome. Same sources.
+The web module is for clients with a business in the Netherlands. It has three outcomes: an indication that the work can be done outside an employment relationship, an indication of an employment relationship, or no judgment possible. It is not a legal decision and gives no rights. It is not useful for a contract with a legal entity (rechtspersoon) such as a bv, for a broker (bemiddelaar) or intermediary (tussenpersoon), or for a foreign contractor. The pilot ran from 11 January 2021 for 6 months, ended on 10 July 2021, and the online pilot environment stayed active, with no legal force (rechtskracht) during or after the pilot. Sources: [Ondernemersplein, webmodule beoordeling arbeidsrelatie](https://ondernemersplein.overheid.nl/personeel/inhuren/webmodule-beoordeling-arbeidsrelatie/) and [open.overheid.nl](https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file). The pilot design used a points system with a client statement (opdrachtgeversverklaring) as one outcome. Same sources.
 
 ### VBAR bill submitted
 

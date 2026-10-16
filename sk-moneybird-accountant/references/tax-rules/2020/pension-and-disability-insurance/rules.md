@@ -45,7 +45,7 @@ The Ministry of Finance table "Uitgaven inkomensvoorzieningen" lists € 12.986 
 
 ### Income cap for the contribution base (premiegrondslag)
 
-Art. 3.127 lid 3 sums four components over the previous calendar year: profits from business activities (winst uit onderneming), taxable wage (belastbaar loon), taxable income from other work (resultaat uit overige werkzaamheden) and taxable periodic payments (belastbare periodieke uitkeringen) and benefits in kind (verstrekkingen), counted up to the first-mentioned (eerstvermelde) amount (bedrag) and then reduced by the last-mentioned (laatstvermelde) amount (bedrag) (https://wetten.overheid.nl/BWBR0011353/2020-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127). In the 2020 text component (a) is the profit from business activities before addition to and reduction of the old-age reserve and before the entrepreneur's allowance (winst uit onderneming vóór toevoeging aan en afneming van de oudedagsreserve en vóór de ondernemersaftrek), so the FOR movement and the entrepreneur's allowance (ondernemersaftrek) do not shrink this component (same source). Art. 10.2b lid 2 of the 2020 text indexes the income cap with the contract wage development factor (contractloonontwikkelingsfactor) (https://wetten.overheid.nl/BWBR0011353/2020-01-01, art. 10.2b).
+Art. 3.127 lid 3 sums four components over the previous calendar year: profits from business activities (winst uit onderneming), taxable wage (belastbaar loon), taxable income from other work (resultaat uit overige werkzaamheden) and taxable periodic payments (belastbare periodieke uitkeringen) and benefits in kind (verstrekkingen), counted up to the first-mentioned (eerstvermelde) amount (bedrag), the income cap (aftoppingsgrens), and then reduced by the last-mentioned (laatstvermelde) amount (bedrag), the franchise (https://wetten.overheid.nl/BWBR0011353/2020-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127). In the 2020 text component (a) is the profit from business activities before addition to and reduction of the old-age reserve and before the entrepreneur's allowance (winst uit onderneming vóór toevoeging aan en afneming van de oudedagsreserve en vóór de ondernemersaftrek), so the FOR movement and the entrepreneur's allowance (ondernemersaftrek) do not shrink this component (same source). Art. 10.2b lid 2 of the 2020 text indexes the income cap with the contract wage development factor (contractloonontwikkelingsfactor) (https://wetten.overheid.nl/BWBR0011353/2020-01-01, art. 10.2b).
 
 ### Franchise contribution base
 
@@ -69,7 +69,7 @@ In 2020 the catch-up allowance is at most 17% of the contribution base and at mo
 
 ### Catch-up allowance maximum, younger group
 
-FISIN 2020 gives € 7.371 as the euro cap for a taxpayer born after 31 August 1963 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen). The Ministry of Finance describes this group as younger than 56 year (jaar) and 4 months (maanden) on 1 January 2020 (https://open.overheid.nl/documenten/ronl-423637a0-c7a6-4123-a683-148a64e343fa/pdf). The actual catch-up allowance for this group is the lower of 17% of the contribution base and € 7.371 (https://wetten.overheid.nl/BWBR0011353/2020-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
+FISIN 2020 gives € 7.371 as the euro cap for a taxpayer born after 31 August 1963 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen). The Ministry of Finance describes this group as younger than 56 years (jaar) and 4 months (maanden) on 1 January 2020 (https://open.overheid.nl/documenten/ronl-423637a0-c7a6-4123-a683-148a64e343fa/pdf). The actual catch-up allowance for this group is the lower of 17% of the contribution base and € 7.371 (https://wetten.overheid.nl/BWBR0011353/2020-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
 
 ### Catch-up allowance maximum, older group
 
@@ -77,7 +77,7 @@ The higher euro amount of € 14.552 applies to a taxpayer whose age at the star
 
 ### Old-age annuity (oudedagslijfrente), latest start (uiterste start)
 
-For an old-age annuity the first term (termijn) is paid at the latest in the year the taxpayer reaches AOW age plus five, with payments running until death (https://wetten.overheid.nl/BWBR0011353/2020-01-01, art. 3.125 lid 1 a). FISIN 2020 gives the example of an AOW age in 2030, so the old-age annuity starts at the latest on 31 December 2035 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen). If the annuity (lijfrente) reaches its start date (ingangsdatum) without a start, the one-year conversion rule of the start date subsection applies (same source). On transfer of the business to a successor no annuity savings account (lijfrenterekening) is allowed at the successor, while an annuity insurance (lijfrenteverzekering) at the successor is allowed (same source).
+For an old-age annuity the first instalment (termijn) is paid at the latest in the year the taxpayer reaches AOW age plus five, with payments running until death (https://wetten.overheid.nl/BWBR0011353/2020-01-01, art. 3.125 lid 1 a). FISIN 2020 gives the example of an AOW age in 2030, so the old-age annuity starts at the latest on 31 December 2035 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen). If the annuity (lijfrente) reaches its start date (ingangsdatum) without a start, the one-year conversion rule of the start date subsection applies (same source). On transfer of the business to a successor no annuity savings account (lijfrenterekening) is allowed at the successor, while an annuity insurance (lijfrenteverzekering) at the successor is allowed (same source).
 
 ### Annuity savings account or annuity investment right (lijfrentebeleggingsrecht), minimum term (minimum looptijd)
 
@@ -85,7 +85,7 @@ For an annuity savings account or an annuity investment right the benefit must r
 
 ### Survivor annuity (nabestaandenlijfrente), maximum term (uiterste looptijd)
 
-A survivor annuity for blood or in-law relatives other than the partner ends at death or at the latest at age 30, and for a account (rekening) or investment right (beleggingsrecht) the term is at least 20 years or at least 5 years for children under 30 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen). FISIN 2020 gives two official examples: a child aged 21 at death has a term (looptijd) of at least 5 years and stops at the latest after 9 years, and a child aged 27 at death stops after 3 years (same source). The start deadline after a death is handled in the survivor annuity term subsection below (same source).
+A survivor annuity for blood or in-law relatives other than the partner ends at death or at the latest at age 30, and for an account (rekening) or investment right (beleggingsrecht) the term is at least 20 years or at least 5 years for children under 30 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen). FISIN 2020 gives two official examples: a child aged 21 at death has a term (looptijd) of at least 5 years and stops at the latest after 9 years, and a child aged 27 at death stops after 3 years (same source). The start deadline after a death is handled in the survivor annuity term subsection below (same source).
 
 ### Temporary old-age annuity (tijdelijke oudedagslijfrente) cap
 
@@ -117,7 +117,7 @@ Art. 3.133 lid 2 onderdeel d allows commutation of a small annuity in one paymen
 
 ### Commutation cap at long-term disability (langdurige arbeidsongeschiktheid)
 
-Art. 3.133 lid 9 makes commutation not a prohibited act when the policyholder (verzekeringnemer) or beneficiary (gerechtigde) is long-term disabled (langdurig arbeidsongeschikt) under ministerial conditions, has not yet reached AOW age, and the commutation received in the year stays within the cap or, if higher, within the average contribution base plus franchise of the year and the previous year (https://wetten.overheid.nl/BWBR0011353/2020-01-01, art. 3.133 lid 9 c). The 2020 cap is € 41.791 (same source). The commutation then counts as an annuity term (termijn). The research phase had this cap as unknown, and the 2020 law text supplies it, see section 7 (same source).
+Art. 3.133 lid 9 makes commutation not a prohibited act when the policyholder (verzekeringnemer) or beneficiary (gerechtigde) is long-term disabled (langdurig arbeidsongeschikt) under ministerial conditions, has not yet reached AOW age, and the commutation received in the year stays within the cap or, if higher, within the average contribution base plus franchise of the year and the previous year (https://wetten.overheid.nl/BWBR0011353/2020-01-01, art. 3.133 lid 9 c). The 2020 cap is € 41.791 (same source). The commutation then counts as an annuity instalment (termijn). The research phase had this cap as unknown, and the 2020 law text supplies it, see section 7 (same source).
 
 ### Old-age reserve addition (FOR toevoeging)
 
@@ -127,7 +127,7 @@ Access to a FOR addition requires the hours criterion (urencriterium) and not ye
 
 An annuity that reaches its start date must be converted or started within 1 full calendar year (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen). FISIN 2020 gives both cases: a start date in 2019 means convert or start by 31 December 2020, and a start date in 2020 means convert or start by 31 December 2021 (same source). Extension can be requested in special circumstances (bijzondere omstandigheden). If an annuity stops meeting the conditions, for example by gift, sale, pledge, loan, change of terms, commutation or unblocking (deblokkering), the value is taxed and in most cases revision interest (revisierente) is due (same source). FISIN 2020 states that the taxed value is at least the total premiums paid, a sentence dropped from FISIN 2021 (same source). A refund of a deducted premium is a negative expenditure (negatieve uitgave) without revision interest (revisierente), and for an annuity only if the refund is undone within 30 days (same source).
 
-### survivor annuity term
+### Survivor annuity term
 
 A survivor annuity must start within 2 full calendar years after the year of death (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen). FISIN 2020 states that a death in 2019 means the annuity must start by 31 December 2021 (same source). Extension can be requested in special circumstances (bijzondere omstandigheden). The term rules for these annuities (lijfrenten), including the end at the latest at age 30, are in the survivor annuity maximum term subsection above (same source).
 
@@ -149,7 +149,7 @@ A mandatory occupational (beroeps) or industry-wide pension premium is not an an
 
 ### Refund of a deducted premium
 
-A refund of a premium that was deducted is a negative expenditure (negatieve uitgave) without revision interest, and for an annuity the refund only escapes revision interest when it is undone within 30 days (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen). By contrast, when a annuity stops meeting the conditions and has not started paying, the taxed value is at least the total premiums paid, and revision interest is due in most cases (same source). Both rules sit in the same FISIN 2020 chapter on expenditure for income provisions (uitgaven voor inkomensvoorzieningen).
+A refund of a premium that was deducted is a negative expenditure (negatieve uitgave) without revision interest, and for an annuity the refund only escapes revision interest when it is undone within 30 days (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen). By contrast, when an annuity stops meeting the conditions and has not started paying, the taxed value is at least the total premiums paid, and revision interest is due in most cases (same source). Both rules sit in the same FISIN 2020 chapter on expenditure for income provisions (uitgaven voor inkomensvoorzieningen).
 
 ---
 

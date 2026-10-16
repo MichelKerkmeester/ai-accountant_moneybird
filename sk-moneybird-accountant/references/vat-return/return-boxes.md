@@ -14,13 +14,13 @@ version: 1.0.0.0
 
 # Sections (rubrieken) and derivation for the VAT return
 
-**Rule:** Derive every line from the administration's own rate list and VAT overview at run time. Never use a hard-coded rate-to-section table. A rate used in the period without a report reference is a blocker. Every rate, threshold and figure is in the year files under `references/tax-rules/`.
+**Rule:** Derive every line from the administration's own rate list and VAT overview (btw-overzicht) at run time. Never use a hard-coded rate-to-section table. A rate used in the period without a report reference is a blocker. Every rate, threshold and figure is in the year files under `references/tax-rules/`.
 
 ---
 
 ## 1. OVERVIEW
 
-The return is organised as five sections (rubrieken). A business that trades only inside the Netherlands normally needs sections 1 and 5 only. The law column states what a line reports. The Moneybird column states how a booking reaches it. The rates themselves are in the year file, for example [VAT 2026 figures](../tax-rules/2026/vat/figures.md).
+The return is organised as five sections (rubrieken). A business that trades only inside the Netherlands normally needs rubriek 1 and 5 only. The law column states what a line reports. The Moneybird column states how a booking reaches it. The rates themselves are in the year file, for example [VAT 2026 figures](../tax-rules/2026/vat/figures.md).
 
 ---
 
@@ -40,7 +40,7 @@ The return is organised as five sections (rubrieken). A business that trades onl
 | 3c | Installation or assembly in another EU country and distance sales not declared through the Union OSS. | Consumer distance-sale lines not routed through OSS. |
 | 4a | Import under the Article 23 permit and services from a non-EU supplier with reverse charge. | Purchase lines on the `Buiten EU` rates, including the KOR and exempt variants. |
 | 4b | Intra-Community acquisitions of goods and services from an EU supplier with reverse charge. | Purchase lines on the `Binnen EU` rates, including the KOR and exempt variants. |
-| 5a | Total VAT due from sections 1 to 4. | Arithmetic over the section table. |
+| 5a | Total VAT due from rubriek 1 to 4. | Arithmetic over the section table. |
 | 5b | Deductible input VAT, including the VAT declared under 2a, 4a and 4b. | The supported input VAT per line, never a blanket VAT total. |
 | 5c to 5g | Unresolved. No current primary explanation was reachable, so the labels and the semantics are not established. | Do not compute these from transaction data. See [README](README.md#5-open-points), open point `O1`. |
 
@@ -54,8 +54,8 @@ The derivation unit is the invoice line plus its tax rate, not the ledger accoun
 
 | From | To | Rule |
 |---|---|---|
-| A sales invoice line | Section (rubriek) 1 or section 3 | Read the line's tax rate and its `Btw-rapport` reference. The base and the VAT land on the section the reference names. |
-| A purchase invoice line | Section 2, rubriek 4 or 5b | Read the same pair. A supported input-VAT line also lands in 5b when the purchase serves taxed turnover. |
+| A sales invoice line | Rubriek 1 or rubriek 3 | Read the line's tax rate and its `Btw-rapport` reference. The base and the VAT land on the section the reference names. |
+| A purchase invoice line | Rubriek 2, rubriek 4 or 5b | Read the same pair. A supported input-VAT line also lands in 5b when the purchase serves taxed turnover. |
 | A bank transaction booked straight to a category | No return line by itself | A category posting with no VAT line is a product check, not a return basis. Reclassify it or record the exception. |
 | A journal entry (memoriaal) booking | The section named by its rate | Check the journal entry rate and its reference. Revenue booked through a journal entry is a documented reconciliation cause. |
 | A rate with no report reference | Nothing | Blocker. Read the rate list and fix the rate or record it as unsupported. |
@@ -91,7 +91,7 @@ Reverse-charge VAT is not automatically net zero. The deduction in 5b depends on
 
 ## 6. THE KOR BRANCH
 
-The small businesses scheme (KOR) is an exemption, not a reduction. Ordinary small businesses scheme turnover does not enter section (rubriek) 1, so the old reduction line has nothing to reduce.
+The small businesses scheme (KOR) is an exemption, not a reduction. Ordinary small businesses scheme turnover does not enter rubriek 1, so the old reduction line has nothing to reduce.
 
 - Reverse-charged purchases survive the KOR. The VAT must still be declared and cannot be reclaimed.
 - A small businesses scheme rate set reports in 4a or 4b and puts nothing in 5b.

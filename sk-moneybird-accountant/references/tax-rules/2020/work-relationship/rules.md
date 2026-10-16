@@ -68,7 +68,7 @@ HR 6 November 2020, ECLI:NL:HR:2020:1746, deals with the role of intention of th
 
 Source: https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file
 
-### 3.6 web module (webmodule) status 2020
+### 3.6 Web module (webmodule) status 2020
 
 The Work Relationship Assessment web module (webmodule Beoordeling Arbeidsrelatie) was not yet live in 2020. The Sixth Progress Letter (zesde voortgangsbrief) of 16 November 2020 records that the pilot was expected to start on 11 January 2021. The same letter puts the restart of enforcement at the earliest on 1 October 2021. A client (opdrachtgever) who wanted a judgment in 2020 had no web module for it. This item carries the Check tag Corrected because the research had not found this letter.
 
@@ -80,19 +80,19 @@ A model agreement (modelovereenkomst) is an agreement text that the Dutch Tax an
 
 Sources: https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/werken-met-modelovereenkomsten
 
-### 3.8 tax interest (belastingrente) IB 2020
+### 3.8 Tax interest (belastingrente) IB 2020
 
-tax interest (belastingrente) on income tax uses the general rate table for all taxes except Vpb and allowances (toeslagen). For 2020 the rate was 4% to 30 June 2020, 0,01% from 1 July to 30 September 2020, and 4% from 1 October 2020. For the income tax the reduction started 1 July 2020. This table says what rate applied during a period of the year. It does not by itself say over which period interest runs.
+Tax interest (belastingrente) on income tax uses the general rate table for all taxes except Vpb and allowances (toeslagen). For 2020 the rate was 4% to 30 June 2020, 0,01% from 1 July to 30 September 2020, and 4% from 1 October 2020. For the income tax the reduction started 1 July 2020. This table says what rate applied during a period of the year. It does not by itself say over which period interest runs.
 
 Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente
 
-### 3.9 tax interest on VAT (btw) 2020
+### 3.9 Tax interest on VAT (btw) 2020
 
 For VAT (btw) the same table applies. In 2020 the rate was 4% to 31 May 2020, 0,01% from 1 June to 30 September 2020, and 4% from 1 October 2020. Tax interest on VAT (btw) is charged on a supplementary assessment (naheffingsaanslag) and on late payment. Late payment runs from 1 January after the tax year to the payment date. A supplementary assessment (naheffingsaanslag) runs from 1 January after the tax year to 14 days after its date. No tax interest is charged for a voluntary correction within 3 months after the tax year or a late payment within 3 months after the end of the tax year. Days are counted as 30 days per month and 360 days per year, rounded down to whole euros.
 
 Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_loonbelasting_btw_en_overdrachtsbelasting
 
-### 3.10 tax interest on tax year 2020 IB
+### 3.10 Tax interest on tax year 2020 IB
 
 For the tax year 2020 the interest on income tax runs from 1 July 2021 at 4%, the rate from the rate table. Interest is charged when the return arrives on or after 1 May after the tax year, or when the assessment (aanslag) deviates from the return, also if the return was filed before 1 May. The period starts on 1 July after the tax year, also with deferral (uitstel). It ends 6 weeks after the assessment date, and when the assessment follows the return unchanged no later than 19 weeks after receipt of the return. For an additional assessment (navorderingsaanslag) it runs from 1 July after the tax year to 1 month after its date. No tax interest is charged when the return is filed before 1 May and taken over unchanged. For 2020 the deadline was not 1 May but 8 May 2021, and a separate decree approved the week.
 
@@ -104,7 +104,7 @@ The return must arrive before the date in the filing invitation letter (aangifte
 
 Source: https://web.archive.org/web/20210318/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen
 
-### 3.12 tax interest approval for the 8 May week
+### 3.12 Tax interest approval for the 8 May week
 
 The decree of 4 May 2021, nr. 2021-9389, made under art. 63 AWR, states that no tax interest is charged if the assessment follows a return filed after 1 May 2021 and before 8 May 2021. The decree expired on 1 January 2023. For the 2020 return this means the extra week did not create interest.
 
@@ -122,7 +122,7 @@ AWR art. 11 lid 3 (same text on 1 January 2020 and 1 January 2026) says the powe
 
 Source: https://web.archive.org/web/20210413/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag
 
-### 3.15 assessment threshold (Aanslaggrens) and refund threshold (teruggaafgrens) 2020
+### 3.15 Assessment threshold (aanslaggrens) and refund threshold (teruggaafgrens) 2020
 
 The assessment threshold and refund threshold are the thresholds below which no assessment is imposed and no refund is paid. The current page says tax is only due if the amount is higher than (hoger dan) the assessment threshold and a refund is only paid if it is higher than the refund threshold. For 2020 the current table prints € 47 and € 15. Pages up to the 2023 captures used equal to or more than (gelijk aan of meer dan) and printed € 48 and € 16. For whole-euro amounts the two forms describe the same threshold. Monthly refunds received through a provisional assessment before year end count toward the threshold (grens), a paid provisional assessment does not, and a refund received after filing does not. The 2020 page applied the threshold only if no earlier provisional assessment with a payment or refund existed.
 
@@ -136,7 +136,7 @@ Source: https://web.archive.org/web/20250619/https://www.belastingdienst.nl/wps/
 
 ### 3.17 Request for a reduction of the 2020 assessment online (verzoek om vermindering aanslag)
 
-objection (bezwaar) must be made within 6 weeks after the date of the assessment, for income tax online, by pdf form or by letter. After the objection (bezwaar) term a request to (ambtshalve) reduction is possible. Online is allowed only if the return was filed online and fewer than 5 years have passed after the tax year. For the assessment 2020 the online route ran until and including 31 December 2025. Otherwise the request goes by letter.
+Objection (bezwaar) must be made within 6 weeks after the date of the assessment, for income tax online, by pdf form or by letter. After the objection (bezwaar) term a request to (ambtshalve) reduction is possible. Online is allowed only if the return was filed online and fewer than 5 years have passed after the tax year. For the assessment 2020 the online route ran until and including 31 December 2025. Otherwise the request goes by letter.
 
 Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/bezwaar-en-beroep/content/verzoek-om-vermindering-van-aanslag-inkomstenbelasting
 
@@ -166,11 +166,11 @@ Source: https://web.archive.org/web/20201112/https://www.belastingdienst.nl/wps/
 
 ### 3.22 IB penalties 2020
 
-After the deadline an IB filer gets a reminder (herinnering), then a formal demand (aanmaning) with 10 working days (werkdagen). Filing after the formal demand term gives the default fine. The Dutch Tax and Customs Administration can stop allowances and the provisional assessment. No return at all gives an ex officio (ambtshalve) assessment plus default fine. Intentional non-filing or an intentionally wrong return gives a penalty for gross negligence or intent (vergrijpboete), also with an additional assessment. No penalty applies when the person died on or after the date of the filing invitation letter. Amounts for 2020: default fine € 385, up to € 5.514, not requesting a return € 2.757, payment default penalty (betaalverzuimboete) up to € 5.514. A voluntary correction within 2 years generally gives no penalty.
+After the deadline an IB filer gets a reminder (herinnering), then a formal demand (aanmaning) with 10 working days (werkdagen). Filing after the formal demand term gives the default fine. The Dutch Tax and Customs Administration can stop allowances and the provisional assessment. No return at all gives an ex officio (ambtshalve) assessment plus default fine. Intentional non-filing or an intentionally wrong return gives a penalty for gross negligence or intent (vergrijpboete), also with an additional assessment. No penalty applies when the person died on or after the date of the filing invitation letter. Amounts for 2020: default fine € 385, up to € 5.514, not requesting an invitation to file a return € 2.757, payment default penalty (betaalverzuimboete) up to € 5.514. A voluntary correction within 2 years generally gives no penalty.
 
 Sources: https://web.archive.org/web/20201120/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/navorderingsaanslag
 
-### 3.23 record-retention obligation (bewaarplicht) 2020
+### 3.23 Record-retention obligation (bewaarplicht) 2020
 
 AWR art. 52 lid 4 (same in 2020 and 2026) requires persons required to keep records (administratieplichtigen) to keep the data carriers (gegevensdragers) for seven years unless the tax law says otherwise. Lid 2 covers among others natural persons with profits from business activities (winst uit onderneming) or income from other work (resultaat uit overige werkzaamheden). Lid 5 allows conversion to another data carrier (gegevensdrager) except the paper balance sheet (balans) and statement of income and expenditure (staat van baten en lasten). The Dutch Tax and Customs Administration table says basic records (basisgegevens) 7 years, immovable property (onroerende zaken) 10 years, One Stop Shop data 10 years, and other data 7 years or shorter by agreement with the tax office. The term starts when the item (gegeven) is no longer current, so a 4-year lease is kept for those 4 years and then 7 more. Basic records are the general ledger (grootboek), accounts receivable and accounts payable records (debiteuren- en crediteurenadministratie), inventory records (voorraadadministratie), purchase and sales records (in- en verkoopadministratie), payroll records (loonadministratie), and data relevant for the taxation of third parties.
 
@@ -198,7 +198,7 @@ The amount was first explained as € 36: 120% of the WML of € 14,06 per hour 
 
 Sources: https://zoek.officielebekendmakingen.nl/kst-36783-3.html https://www.rijksoverheid.nl/actueel/nieuws/2026/03/06/kabinet-kiest-voor-meer-rust-en-duidelijkheid-voor-zzpers-en-opdrachtgevers https://www.eerstekamer.nl/wetsvoorstel/36783_wet_invoering https://ondernemersplein.overheid.nl/wetswijzigingen/laag-uurtarief-van-zzper-kan-leiden-tot-arbeidsovereenkomst/
 
-The BAZ (bill 36 912) is the other half of the later package. It was submitted on 24 March 2026, a technical briefing (technische briefing) followed on 13 May 2026, the contribution to the debate (inbreng) was delivered on 27 May 2026 after a postponement from 20 May, and the report (36 912, nr. 5) was published on 29 May 2026. On 2026-10-11 it was awaiting the memorandum in response to the report (nota naar aanleiding van het verslag), with no debate and no vote. The docket summary says about 70% of income up to the minimum wage, a waiting period of about one year, and an opt-out with a qualifying private policy. In 2020 this bill did not exist and had no effect on the qualification of employment relationships.
+The BAZ (bill 36 912) is the other half of the later package. It was submitted on 24 March 2026, a technical briefing (technische briefing) followed on 13 May 2026, the committee input (inbreng) was delivered on 27 May 2026 after a postponement from 20 May, and the report (36 912, nr. 5) was published on 29 May 2026. On 2026-10-11 it was awaiting the memorandum in response to the report (nota naar aanleiding van het verslag), with no debate and no vote. The docket summary says about 70% of income up to the minimum wage, a waiting period of about one year, and an opt-out with a qualifying private policy. In 2020 this bill did not exist and had no effect on the qualification of employment relationships.
 
 Source: https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912
 

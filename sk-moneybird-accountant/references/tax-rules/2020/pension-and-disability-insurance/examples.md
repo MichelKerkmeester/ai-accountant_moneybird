@@ -1,6 +1,6 @@
 ---
 title: "Pension, annuity and AOV (pensioen, lijfrente en AOV) 2020: Examples"
-description: "annual allowance (Jaarruimte), catch-up allowance (reserveringsruimte), annuity conditions, profit from business discontinuation (stakingswinst) conversion, the old-age reserve (oudedagsreserve) and AOV premium deductibility for tax year 2020. This file holds the examples part."
+description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity conditions, profit from business discontinuation (stakingswinst) conversion, the old-age reserve (oudedagsreserve) and AOV premium deductibility for tax year 2020. This file holds the examples part."
 nav_label: "Pensioen, lijfrente en AOV examples"
 trigger_phrases:
   - "pensioen en AOV 2020"
@@ -37,7 +37,7 @@ This part holds the worked examples for the pension (pensioen), annuity (lijfren
 
 ### Calculated example 1: annual allowance (jaarruimte) with income below the income cap (aftoppingsgrens)
 
-Fact pattern: a self-employed person has a profits from business activities (winst uit onderneming) of € 60.000 in 2019. That amount is the profit before addition to and withdrawal from the old-age reserve (winst vóór toevoeging aan en afneming van de oudedagsreserve) and before the entrepreneur's allowance (ondernemersaftrek), and there are no other income components in 2019. There is no pension accrual and no addition (toevoeging) or reduction (afneming) of the old-age reserve (oudedagsreserve) in 2019. The annual allowance for the 2020 tax return is based on the income of 2019.
+Fact pattern: a self-employed person has profits from business activities (winst uit onderneming) of € 60.000 in 2019. That amount is the profit before addition to and withdrawal from the old-age reserve (winst vóór toevoeging aan en afneming van de oudedagsreserve) and before the entrepreneur's allowance (ondernemersaftrek), and there are no other income components in 2019. There is no pension accrual and no addition (toevoeging) or reduction (afneming) of the old-age reserve (oudedagsreserve) in 2019. The annual allowance for the 2020 tax return is based on the income of 2019.
 
 Step 1: the income components are counted up to the income cap: min(€ 60.000, € 110.111) = € 60.000 (art. 3.127 lid 3, https://wetten.overheid.nl/BWBR0011353/2020-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
 Step 2: the franchise is subtracted: € 60.000 - € 12.472 = € 47.528. This is the contribution base (premiegrondslag).
@@ -47,7 +47,7 @@ Step 5: the maximum annual allowance of € 12.986 is not binding (https://open.
 
 ### Calculated example 2: the income cap caps the contribution base
 
-Fact pattern: the person of example 1 has a profits from business activities of € 150.000 in 2019 instead of € 60.000, with the same further facts (no pension accrual, no FOR movement, no other income components).
+Fact pattern: the person of example 1 has profits from business activities of € 150.000 in 2019 instead of € 60.000, with the same further facts (no pension accrual, no FOR movement, no other income components).
 
 Step 1: the income components are counted up to the income cap: min(€ 150.000, € 110.111) = € 110.111.
 Step 2: the franchise is subtracted after that cap, so it is still deducted in full: € 110.111 - € 12.472 = € 97.639. This is the contribution base.
@@ -64,7 +64,7 @@ Step 3: the annual allowance is € 6.321,22 - € 6.270,00 = € 51,22. This is
 
 ### Calculated example 4: a FOR addition (dotatie) reduces the annual allowance to nil
 
-Fact pattern: a self-employed person meets the conditions for a FOR addition (art. 3.67: the hours criterion (urencriterium) and not yet AOW age at the start of 2019). The profits from business activities is € 30.000 in 2019, with no pension accrual and no other income components. In 2019 the addition to the old-age reserve (toevoeging aan de oudedagsreserve) is € 2.832 and the reduction is € 0.
+Fact pattern: a self-employed person meets the conditions for a FOR addition (art. 3.67: the hours criterion (urencriterium) and not yet AOW age at the start of 2019). The profits from business activities are € 30.000 in 2019, with no pension accrual and no other income components. In 2019 the addition to the old-age reserve (toevoeging aan de oudedagsreserve) is € 2.832 and the reduction is € 0.
 
 Step 1: the contribution base uses the profit before addition to and withdrawal from the old-age reserve and before the entrepreneur's allowance and subtracts the franchise: min(€ 30.000, € 110.111) - € 12.472 = € 30.000 - € 12.472 = € 17.528.
 Step 2: the percentage is applied: 13,3% x € 17.528 = € 2.331,22 (€ 2.331,224 rounded down).
@@ -82,7 +82,7 @@ Step 4: together with the full annual allowance of example 1 the deduction allow
 
 ### Calculated example 6: FOR addition
 
-Fact pattern: a self-employed person meets the hours criterion and has not yet reached the AOW age at the start of 2020 (art. 3.67). The profits from business activities for 2020 is € 60.000. The pension premiums charged to the profit (winst) are € 2.000 and the growth of the business capital (ondernemingsvermogen) is € 6.000.
+Fact pattern: a self-employed person meets the hours criterion and has not yet reached the AOW age at the start of 2020 (art. 3.67). The profits from business activities for 2020 are € 60.000. The pension premiums charged to the profit (winst) are € 2.000 and the growth of the business capital (ondernemingsvermogen) is € 6.000.
 
 Step 1: the percentage is applied: 9,44% x € 60.000 = € 5.664,00.
 Step 2: the cap of € 9.218 is not binding.
@@ -91,7 +91,7 @@ Step 4: the addition is also limited to the growth of the business capital (art.
 
 ### Official example 7: FOR decrease (afname)
 
-FISIN 2020 works out the decrease limit for an old-age reserve that is larger than the business capital: the business capital (ondernemingsvermogen, equity plus old-age reserve) is € 3.000 and the FOR is € 4.000, so the FOR must decrease by € 4.000 - € 3.000 = € 1.000 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/winst_en_verliesrekening_en_balans).
+FISIN 2020 works out the decrease limit for an old-age reserve that is larger than the business capital: the business capital (ondernemingsvermogen, eigen vermogen plus oudedagsreserve) is € 3.000 and the FOR is € 4.000, so the FOR must decrease by € 4.000 - € 3.000 = € 1.000 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/winst_en_verliesrekening_en_balans).
 
 ### Calculated example 8: profit from business discontinuation (stakingswinst) conversion cap
 

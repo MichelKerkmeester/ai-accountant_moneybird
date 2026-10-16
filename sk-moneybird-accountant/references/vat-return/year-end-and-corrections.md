@@ -1,6 +1,6 @@
 ---
 title: Year-end settlements and corrections for the VAT return
-description: The four year-end settlements S1 to S4 in the final VAT period of a calendar year and the correction routing between the next return and the suppletie. The route, the supplementary return (suppletie) filing and the payment are Operator actions.
+description: The four year-end settlements S1 to S4 in the final VAT period of a calendar year and the correction routing between the next return and the supplementary return (suppletie). The route, the supplementary return (suppletie) filing and the payment are Operator actions.
 nav_label: "Year-end settlements and corrections for the VAT return"
 trigger_phrases:
   - last VAT return of the year
@@ -14,7 +14,7 @@ version: 1.0.0.0
 
 # Year-end settlements and corrections for the VAT return
 
-**Rule:** The final VAT period of a calendar year carries four settlements before the pack and before the arithmetic gate. Every figure, threshold and deadline is in the year files under `references/tax-rules/`. The correction route, the suppletie filing and the payment are `[Operator]` actions.
+**Rule:** The final VAT period of a calendar year carries four settlements before the pack and before the arithmetic gate. Every figure, threshold and deadline is in the year files under `references/tax-rules/`. The correction route, the supplementary return filing and the payment are `[Operator]` actions.
 
 ---
 
@@ -30,7 +30,7 @@ The settlements are decisions, not arithmetic alone. The private-use split, the 
 
 | ID | Settlement | What it covers | Owner |
 |---|---|---|---|
-| S1 | Private use of business goods and services | The private-use charge on business goods and services, settled in rubriek 1d. Private use after a full deduction needs a journal entry (memoriaal). A purchase-time split limits the input VAT at purchase instead. | Agent prepares. `[Operator]` decides the private share when the facts are unclear. |
+| S1 | Private use of business goods and services | The private-use charge on business goods and services, settled in rubriek 1d. Private use after a full deduction needs a journal entry (memoriaal). A purchase-time split limits the input VAT (voorbelasting) at purchase instead. | Agent prepares. `[Operator]` decides the private share when the facts are unclear. |
 | S2 | The business car | The car private-use adjustment for the year. Actual use needs a usage record. Without adequate records the year file states the standard calculation and its variants. | `[Operator]` or a bookkeeper decides the use records, the acquisition history and the flat rate (forfait). |
 | S3 | The taxed versus exempt turnover pro-rata | The re-estimate of the in-year estimate. Every other quarter marks the running estimate open. Investment-goods revision is separate from the 1d charge. | `[Operator]` or a bookkeeper decides the allocation and the revision. |
 | S4 | The BUA correction for benefits in kind and gifts | The correction for staff benefits in kind and gifts when their total exceeds the threshold stated in the year file. | `[Operator]` or a bookkeeper decides each case. |
@@ -48,7 +48,7 @@ A corrected period is not always the period under review. Split every correction
 | Correction | Route | Owner |
 |---|---|---|
 | At or below the boundary | Include it in the next regular return in the same section (rubriek) and name it in the pack. | `[Operator]` confirms the route and files the return. |
-| Above the boundary | File the supplementary return (suppletie) form on top of the period's own history. State the corrected figures for the period or the year, not only the difference. | `[Operator]` owns the route, the suppletie filing and the payment. |
+| Above the boundary | File the supplementary return (suppletie) form on top of the period's own history. State the corrected figures for the period or the year, not only the difference. | `[Operator]` owns the route, the supplementary return filing and the payment. |
 
 Rules that apply to both routes:
 

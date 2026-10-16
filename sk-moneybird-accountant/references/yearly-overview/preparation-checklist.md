@@ -24,7 +24,7 @@ This reference holds the ordered close checklist for the yearly overview, starti
 
 ## 2. AUDITFILE FIRST
 
-Export the auditfile for the open year before any closing action, then record its SHA-256 together with the year and the version. The export is the evidence gate for everything below it. An auditfile downloaded after the year-end closing can lack the profit and loss data, because the closing entry contra-books the result accounts.
+Export the auditfile for the open year before any closing action, then record its SHA-256 together with the year and the version. The export is the evidence gate for everything below it. An auditfile downloaded after the year-end closing (jaarafsluiting) can lack the profit and loss data, because the closing entry contra-books the result accounts.
 
 For an ordinary LIVE year the Operator runs the export in the Moneybird UI. An auditfile report-export POST is a Moneybird write, so outside the LIVE workflows of migration phases 19 to 21 every LIVE write is `UI_ONLY` under [LIVE write authority](../../SKILL.md#live-write-authority). The AI only checks that the artifact exists and records its year, version and SHA-256 after the Operator supplies it.
 

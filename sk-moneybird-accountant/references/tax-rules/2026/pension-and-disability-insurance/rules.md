@@ -100,7 +100,7 @@ A disability insurance premium for a policy that pays a lump sum (kapitaalverzek
 
 ### 3.17 BAZ bill status
 
-Bill 36 912, for the Basic Insurance for Self-Employed Persons (Incapacity) Act (Wet basisverzekering arbeidsongeschiktheid zelfstandigen, BAZ), was submitted (ingediend) on 24 March 2026. The docket status on 2026-10-11 is "In afwachting nota nav verslag" (awaiting note after report). There is no plenary date. The contribution to the debate (inbreng) took place on 27 May 2026, and the report (Verslag) document 36 912 nr. 5 was published on 29 May 2026. Source: [Tweede Kamer docket 36912](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912).
+Bill 36 912, for the Basic Disability Insurance for Self-Employed Persons Act (Wet basisverzekering arbeidsongeschiktheid zelfstandigen, BAZ), was submitted (ingediend) on 24 March 2026. The docket status on 2026-10-11 is "In afwachting nota nav verslag" (awaiting note after report). There is no plenary date. The committee input (inbreng) took place on 27 May 2026, and the report (Verslag) document 36 912 nr. 5 was published on 29 May 2026. Source: [Tweede Kamer docket 36912](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912).
 
 ### 3.18 BAZ waiting period (wachttijd) in the bill
 

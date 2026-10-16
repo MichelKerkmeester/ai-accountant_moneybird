@@ -43,11 +43,11 @@ Do not use this skill to file an income-tax or VAT return, make a final tax deci
 
 MIGRATION covers historical records, Jortt exports, a migration phase, reconciliation, pilot writes, year locks and moving records into Moneybird. LIVE covers bookkeeping cadence, an ordinary income or cost event, a VAT period, an annual close and an ad hoc ZZP question.
 
-If ambiguous, ask one question: historical migration or current bookkeeping? Do not guess a phase or a tax year.
+If ambiguous, ask one question: historical migration or current bookkeeping? Do not guess a phase or year.
 
 ### Task-Type Table
 
-Every request matches exactly one row, which determines the files to read and the tool skill.
+Every request matches one row, which determines the files read and the tool skill.
 
 <!-- route-table:start -->
 
@@ -68,7 +68,7 @@ Every request matches exactly one row, which determines the files to read and th
 
 <!-- route-table:end -->
 
-Read budget ladder in o200k_base tokens: year README 3,000, one section 5,000, full reference file 15,000.
+Read budget ladder in o200k_base tokens: year README 3,000, one section 5,000, full file 15,000.
 
 The generated [reference library](./references/README.md) lists the tax year folders, the tax-rule and migration files, each with a description.
 
@@ -349,7 +349,7 @@ Answer order: load no unneeded record content, then scan the draft with the gate
 8. Never invent a passed gate, reconciled value, source record or tax eligibility.
 9. Never duplicate a Jortt category into Moneybird by label alone. Map by accounting purpose and tax treatment.
 10. Never expose credentials, account identifiers, personal names, amounts or private source records in documentation.
-11. Never answer an administration fact (a record, a period total, a balance, an effective rate, a report figure) from memory or from a reference when the required CLI read is unavailable or failed. Say blocked, name the missing capability and stop.
+11. Never answer an administration fact (a record, a period total, a balance, an effective rate, a report figure) from memory or a reference when the required CLI read is unavailable or failed. Say blocked, name the missing capability and stop.
 
 ### ⚠️ ESCALATE IF
 

@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the changes, records, open points and related resources for the Entrepreneur's allowance and SME profit exemption 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
+This part holds the changes, records, open points and related resources for the Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling) 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
 
 ---
 
@@ -61,7 +61,7 @@ This part holds the changes, records, open points and related resources for the 
 - For an old-age reserve that existed on 31 December 2022, keep the reserve on the balance, add every decrease to profit, and keep the annuity (lijfrente) premiums that are deducted as expenditure for income provisions (uitgaven voor inkomensvoorzieningen) (art. 10a.29) ([wetten.overheid.nl 2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01), [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/fiscale_reserves/oudedagsreserve)).
 - Annuity premiums for converting the reserve may be counted for the year by choice in the return, and premiums paid within six months after the year end may also be counted for that year by choice (art. 10a.29 lid 12 and 14) ([wetten.overheid.nl 2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01)).
 - On death the reserve is settled unless the partner continues the business and takes over the reserve on a request with the return ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/fiscale_reserves/oudedagsreserve)).
-- Keep the S&O declaration (S&O-verklaring) from RVO and the hours record of the S&O work, because the deduction depends on at least 500 hours of S&O work and on the hours criterion ([Belastingdienst FISIN](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek)).
+- Keep the S&O declaration (S&O-verklaring) from the Netherlands Enterprise Agency (Rijksdienst voor Ondernemend Nederland, RVO) and the hours record of the S&O work, because the deduction depends on at least 500 hours of S&O work and on the hours criterion ([Belastingdienst FISIN](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek)).
 - Keep the evidence for the starter's deduction on occupational disability, because that deduction depends on the right to a listed benefit and on the reduced hours criterion (art. 3.78a) ([wetten.overheid.nl 2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01)).
 
 ---

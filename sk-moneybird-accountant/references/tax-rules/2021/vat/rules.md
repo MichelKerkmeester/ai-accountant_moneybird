@@ -46,13 +46,13 @@ The rate is 9% for goods and services listed in Table I (tabel i). Whether a sup
 
 The zero rate applies to supplies in Table II if the conditions set by general administrative order are met. A zero-rated supply is still taxable. Input VAT connected to it can remain deductible, unlike input VAT connected to an exempt supply. [Wet op de omzetbelasting, Article 9](https://wetten.overheid.nl/BWBR0002629/2021-07-01)
 
-For an intra-EU supply of goods, the records must prove that the goods went to another EU country. The buyer must have a valid VAT ID from another member state. The ICP return must be filed on time and be correct and complete. A late or incorrect ICP may put the zero rate at risk and can lead to a fine. [Belastingdienst, toelichting opgaaf ICP](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf), [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
+For an intra-EU supply of goods, the records must prove that the goods went to another EU country. The buyer must have a valid VAT ID from another member state. The ICP statement must be filed on time and be correct and complete. A late or incorrect ICP may put the zero rate at risk and can lead to a fine. [Belastingdienst, toelichting opgaaf ICP](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf), [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
 
 ### Exemptions
 
 Article 11 exemptions cover the listed categories, including supplies and letting of immovable property subject to exceptions, care in institutions, youth work, sport, social and cultural bodies, health care, funeral services, money and securities, fund management, credit and payments, insurance, games of chance, the universal postal service, public broadcasting, education, lectures at cost, services by composers, writers and journalists, certain movable goods used only for exempt supplies, organs and blood, member services of interest groups, cost-sharing groups, fundraising and childcare. The Dutch Tax and Customs Administration list also includes investment gold and canteens, and says the exemptions also apply to imports. Exempt supplies do not carry a right to deduct input VAT. [Wet op de omzetbelasting, Article 11](https://wetten.overheid.nl/BWBR0002629/2020-01-01), [Belastingdienst, exemptions](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/vrijstellingen/)
 
-### Accommodation
+### Accommodation (logies)
 
 Accommodation was in Table I at 9% in 2021. The later law provides that the Table I accommodation entry lapses from 1 January 2026, supporting the 9% treatment before that change. [Wet behoud verlaagd btw-tarief op cultuur, media en sport](https://zoek.officielebekendmakingen.nl/stb-2025-339.html)
 

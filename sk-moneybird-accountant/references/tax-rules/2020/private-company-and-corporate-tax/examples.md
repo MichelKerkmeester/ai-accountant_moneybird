@@ -62,25 +62,25 @@ This part holds the worked examples for the BV and corporate income tax (vennoot
 
 **Calculated example.** A DGA works for his BV. The wage (loon) from the most comparable employment relationship (meest vergelijkbare dienstbetrekking) is € 80.000. 75% of that is € 80.000 x 75% = € 60.000,00. The highest wage of the employees of the BV is € 40.000. The standard amount (normbedrag) is € 46.000. The highest of € 60.000,00, € 40.000,00 and € 46.000,00 is € 60.000,00. The wage is therefore at least € 60.000,00. Source: https://wetten.overheid.nl/BWBR0002471/2020-01-01.
 
-### Example 8: customary salary escape
+### Example 8: Customary salary escape
 
 **Calculated example.** A DGA has a comparable wage of € 80.000. 75% of that is € 80.000 x 75% = € 60.000,00. The highest wage of the employees is € 70.000. The standard amount is € 46.000. The highest amount is € 70.000,00. That is higher than 75% of the comparable wage. The escape applies. The wage is 75% of the comparable wage, so € 60.000,00. That is above the standard amount of € 46.000,00. The wage is therefore € 60.000,00. Source: https://wetten.overheid.nl/BWBR0002471/2020-01-01 (art. 12a lid 2).
 
 ### Example 9: Zvw for a DGA
 
-**Calculated example.** An uninsured DGA has a wage of € 60.000. The maximum contribution income (bijdrage-inkomen) is € 57.232. The wage is above that. contribution Zvw: 5,45% x € 57.232 = € 3.119,14 (rounded), rounded down € 3.119. If the DGA is insured, the employer levy (werkgeversheffing) Zvw is 6,70% x € 57.232 = € 3.834,54 (rounded), rounded € 3.835. If the uninsured DGA has a wage of € 50.000, the contribution is 5,45% x € 50.000 = € 2.725,00. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet.
+**Calculated example.** An uninsured DGA has a wage of € 60.000. The maximum contribution income (bijdrage-inkomen) is € 57.232. The wage is above that. Contribution Zvw: 5,45% x € 57.232 = € 3.119,14 (rounded), rounded down € 3.119. If the DGA is insured, the employer levy (werkgeversheffing) Zvw is 6,70% x € 57.232 = € 3.834,54 (rounded), rounded € 3.835. If the uninsured DGA has a wage of € 50.000, the contribution is 5,45% x € 50.000 = € 2.725,00. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet.
 
 ### Example 10: Box 2 and dividend tax (dividendbelasting)
 
-**Calculated example.** A BV pays a dividend of € 100.000 to an individual DGA. dividend tax: 15% x € 100.000 = € 15.000,00 withheld. Net received: € 100.000 - € 15.000 = € 85.000,00. Box 2 tax: 26,25% x € 100.000 = € 26.250,00. Credit for dividend tax: € 15.000,00. Remaining box 2 tax: € 26.250,00 - € 15.000,00 = € 11.250,00. Sources: https://wetten.overheid.nl/BWBR0002515/2020-01-01 (art. 5) and https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 2.12).
+**Calculated example.** A BV pays a dividend of € 100.000 to an individual DGA. Dividend tax: 15% x € 100.000 = € 15.000,00 withheld. Net received: € 100.000 - € 15.000 = € 85.000,00. Box 2 tax: 26,25% x € 100.000 = € 26.250,00. Credit for dividend tax: € 15.000,00. Remaining box 2 tax: € 26.250,00 - € 15.000,00 = € 11.250,00. Sources: https://wetten.overheid.nl/BWBR0002515/2020-01-01 (art. 5) and https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 2.12).
 
-### Example 11: dividend tax grossing up (brutering)
+### Example 11: Dividend tax grossing up (brutering)
 
-**Calculated example.** A BV pays a net dividend of € 85.000 and bears the dividend tax itself. The proceeds (opbrengst) are multiplied by 100/85: € 85.000 x 100/85 = € 100.000,00. dividend tax: 15% x € 100.000 = € 15.000,00. Source: https://wetten.overheid.nl/BWBR0002515/2020-01-01 (art. 6 lid 1).
+**Calculated example.** A BV pays a net dividend of € 85.000 and bears the dividend tax itself. The proceeds (opbrengst) are multiplied by 100/85: € 85.000 x 100/85 = € 100.000,00. Dividend tax: 15% x € 100.000 = € 15.000,00. Source: https://wetten.overheid.nl/BWBR0002515/2020-01-01 (art. 6 lid 1).
 
-### Example 12: Purchase of own shares (aandelen)
+### Example 12: Purchase of own shares (inkoop van eigen aandelen)
 
-**Calculated example.** A BV buys back its own shares for € 100.000. The average paid-up capital on those shares is € 20.000. The difference is € 100.000 - € 20.000 = € 80.000,00. dividend tax: 15% x € 80.000 = € 12.000,00. If the BV bears the tax, the proceeds are € 80.000 x 100/85 = € 94.117,65 (rounded). dividend tax: 15% x € 94.117,65 = € 14.117,65 (rounded). Source: https://zoek.officielebekendmakingen.nl/stcrt-2025-34752.html.
+**Calculated example.** A BV buys back its own shares for € 100.000. The average paid-up capital on those shares is € 20.000. The difference is € 100.000 - € 20.000 = € 80.000,00. Dividend tax: 15% x € 80.000 = € 12.000,00. If the BV bears the tax, the proceeds are € 80.000 x 100/85 = € 94.117,65 (rounded). Dividend tax: 15% x € 94.117,65 = € 14.117,65 (rounded). Source: https://zoek.officielebekendmakingen.nl/stcrt-2025-34752.html.
 
 ### Example 13: Fiscal unity (fiscale eenheid)
 

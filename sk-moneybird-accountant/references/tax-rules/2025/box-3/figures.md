@@ -1,5 +1,5 @@
 ---
-title: "Box 3 savings and investments 2025: Figures"
+title: "Box 3 savings and investments (sparen en beleggen) 2025: Figures"
 description: "Box 3 savings and investments for tax year 2025: tax-free allowance (heffingsvrij vermogen), debt threshold (schuldendrempel), the three category percentages, the six-step calculation, green investments (groene beleggingen) and the option to report the actual return."
 nav_label: "Box 3 sparen en beleggen"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Box 3 savings and investments 2025: Figures
+# Box 3 savings and investments (sparen en beleggen) 2025: Figures
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-Box 3 taxes savings and investments on a fictitious return. In 2025 the category method of the Bridge Act box 3 (Overbruggingswet box 3) applies to everyone, with three categories: bank and savings balances (banktegoeden), other assets such as investments and a second home (overige bezittingen) and debts (schulden). The percentages for 2025 are 1,37% for bank balances, 5,88% for other assets and 2,70% for debts, the tax-free allowance (heffingsvrij vermogen) is € 57.684 and the rate is 36%. The Rebuttal Scheme Act box 3 (Wet tegenbewijsregeling box 3) entered into force on 19 July 2025, so a taxpayer who makes it plausible that the actual return is lower pays over the actual return, and from 2025 the actual return is reported inside the income tax return. The fictitious system stays until new legislation takes effect, "probably 1 January 2028", and the Actual Return Act (Wet werkelijk rendement) box 3 (bill 36 748) is not law on 2026-10-11.
+Box 3 taxes savings and investments (sparen en beleggen) on a fictitious return. In 2025 the category method of the Bridge Act box 3 (Overbruggingswet box 3) applies to everyone, with three categories: bank and savings balances (banktegoeden), other assets such as investments and a second home (overige bezittingen) and debts (schulden). The percentages for 2025 are 1,37% for bank balances, 5,88% for other assets and 2,70% for debts, the tax-free allowance (heffingsvrij vermogen) is € 57.684 and the rate is 36%. The Rebuttal Scheme Act box 3 (Wet tegenbewijsregeling box 3) entered into force on 19 July 2025, so a taxpayer who makes it plausible that the actual return is lower pays over the actual return, and from 2025 the actual return is reported inside the income tax return. The fictitious system stays until new legislation takes effect, "probably 1 January 2028", and the Actual Return Act (Wet werkelijk rendement) box 3 (bill 36 748) is not law on 2026-10-11.
 
 ---
 

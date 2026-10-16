@@ -60,7 +60,7 @@ Art. 12bd gives a flat-rate benefit to a taxpayer who made a qualifying asset in
 
 ### 3.7 Innovation box smaller taxpayer
 
-A smaller taxpayer needs only an S&O-verklaring (R&D notification). Smaller means that the advantages plus acquisition costs from S&O assets in the year and the four preceding years are below € 37.500.000 and that net turnover over those five years is below € 250.000.000 (art. 12ba lid 2). https://wetten.overheid.nl/BWBR0002672/2021-01-01 Others also need an access ticket of art. 12ba lid 1 sub b. https://wetten.overheid.nl/BWBR0002672/2021-01-01
+A smaller taxpayer needs only an S&O-verklaring (R&D declaration). Smaller means that the advantages plus acquisition costs from S&O assets in the year and the four preceding years are below € 37.500.000 and that net turnover over those five years is below € 250.000.000 (art. 12ba lid 2). https://wetten.overheid.nl/BWBR0002672/2021-01-01 Others also need an access ticket of art. 12ba lid 1 sub b. https://wetten.overheid.nl/BWBR0002672/2021-01-01
 
 ### 3.8 Nexus multiplier
 
@@ -86,7 +86,7 @@ In 2021 the comparable wage counts at 75%. https://wetten.overheid.nl/BWBR000247
 
 The customary salary rule does not apply when the wage for all work in the body and connected bodies is not more than € 5.000 (lid 6 in the 2020 text, present in every year). https://wetten.overheid.nl/BWBR0002471/2021-01-01
 
-### 3.14 Start-up relief for starters
+### 3.14 Start-up relief for starters (startersfaciliteit)
 
 Statute 2020 to 2022, art. 12a lid 3 and 4: for a body with an S&O-verklaring for R&D to which the start-up percentage of art. 23 lid 7 WVA applies, the wage is at least 108% of twelve times the art. 8 lid 1 sub a WML amount, or the lower comparable wage if made plausible, within the de-minimis ceiling of Regulation (verordening) (EU) nr. 1407/2013. https://wetten.overheid.nl/BWBR0002471/2020-01-01 Dutch Tax and Customs Administration states that the de-minimis condition did not apply to a DGA, and that an S&O-verklaring for part of a year was enough for the whole year. https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/loon_en_aanmerkelijk_belang/loon_en_aanmerkelijk_belang The exception lapsed for new cases from 2023. A first use for 2021 or 2022 could run at most 3 years, with the conditions still met in 2023 for a 2021 start and in 2024 for a 2022 start. https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/loon_en_aanmerkelijk_belang/loon_en_aanmerkelijk_belang The Payroll Taxes Handbook 2025 states that the transitional right lapsed for all starters from 2025. https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf Separate policy in the Payroll Taxes Handbook 2025: a starting company may set a lower wage for at most 3 years when it cannot pay the usual wage, starting from the WML for the hours worked, and the 3 years are cut by the period the business ran as a sole proprietorship (eenmanszaak). A loss-making company may set a lower wage only when continuity is at risk. https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf
 

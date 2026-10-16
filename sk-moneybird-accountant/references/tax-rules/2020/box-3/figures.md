@@ -53,9 +53,9 @@ In 2020 box 3 tax is calculated with the old band method (oude berekening) over 
 | Christmas ruling (Kerstarrest) 24 December 2021 | 12 |
 | Supreme Court of the Netherlands 6 June 2024 | 13 |
 | Green investment exemption (vrijstelling groene beleggingen) | 14 |
-| Credit for green investments (korting groene beleggingen) | 15 |
+| Credit for green investments (korting voor groene beleggingen) | 15 |
 | Actual-return reporting 2020 | 16 |
-| Rebuttal scheme (tegenbewijsregeling) inside the Restoration of Rights Act | 17 |
+| Rebuttal scheme (tegenbewijsregeling) inside the Restoration of Rights Act (Wet rechtsherstel) | 17 |
 | Supreme Court of the Netherlands 25 June 2026 | 18 |
 <!-- GENERATED:key-figure-index:end -->
 
@@ -76,9 +76,9 @@ In 2020 box 3 tax is calculated with the old band method (oude berekening) over 
 | Christmas ruling (Kerstarrest) 24 December 2021 | Supreme Court of the Netherlands (Hoge Raad) 24 December 2021, ECLI:NL:HR:2021:1963, breach of art. 1 EP with art. 14 EVRM | enacted | Verified | https://zoek.officielebekendmakingen.nl/kst-36203-3.html https://www.rijksoverheid.nl/themas/werk/inkomstenbelasting/box-3/tijdlijn-rechtsherstel-box-3 |
 | Supreme Court of the Netherlands 6 June 2024 | flat-rate (forfaitaire) return higher than actual return still conflicts with EVRM | enacted | Verified | https://www.rijksoverheid.nl/themas/werk/inkomstenbelasting/box-3/tijdlijn-rechtsherstel-box-3 https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2024 |
 | Green investment exemption (vrijstelling groene beleggingen) | € 59.477, € 118.954 with whole-year partner | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 5.13) https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/bezittingen_en_schulden_box_3_ |
-| Credit for green investments (korting groene beleggingen) | 0,7% of the exempt amount | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 8.19 lid 2) https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/korting_voor_groene_beleggingen |
+| Credit for green investments (korting voor groene beleggingen) | 0,7% of the exempt amount | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 8.19 lid 2) https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/korting_voor_groene_beleggingen |
 | Actual-return reporting 2020 | online form in My Tax and Customs Administration (Mijn Belastingdienst), only with a letter | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/formulier-opgaaf-werkelijk-rendement https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/zonder-brief-formulier-opgaaf-werkelijk-rendement-invullen |
-| Rebuttal scheme (tegenbewijsregeling) inside the Restoration of Rights Act | works back to 1 January 2017, own form and six-week rule | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2025-195.html https://zoek.officielebekendmakingen.nl/stb-2025-196.html |
+| Rebuttal scheme (tegenbewijsregeling) inside the Restoration of Rights Act (Wet rechtsherstel) | works back to 1 January 2017, own form and six-week rule | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2025-195.html https://zoek.officielebekendmakingen.nl/stb-2025-196.html |
 | Supreme Court of the Netherlands 25 June 2026 | no restoration (herstel) for 2017 to 2020 without an objection | enacted | Verified | https://www.rijksoverheid.nl/themas/werk/inkomstenbelasting/box-3/tijdlijn-rechtsherstel-box-3 |
 
 ---

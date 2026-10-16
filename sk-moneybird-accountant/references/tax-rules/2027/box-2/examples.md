@@ -68,7 +68,7 @@ Step 2: € 68.843 + € 859,16 = € 69.702,16, rounded down to € 69.702.
 
 Secondary sources give € 69.607 and € 69.703. The outcome € 69.702 fits the second figure, not the first. The December 2026 regulation sets the final figure.
 
-### Official example: FISIN 2026 excessive borrowing step for 2027
+### Official example: FISIN 2026 excessive borrowing (excessief lenen) step for 2027
 
 FISIN 2026 gives the 2027 step as follows: 2027 threshold (drempel) € 650.000, repayment € 125.000, negative deemed regular benefit (fictief regulier voordeel) of € 125.000. This follows the € 500.000 rule and would change if the phase-down is enacted. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang.
 
@@ -96,7 +96,7 @@ Step 2: the tax credit (belastingkorting) is € 20.000 × 24,5% = € 4.900,00.
 
 The 26,9% printed in FISIN 2026 is a stale handbook figure, see section 7. The proposed 29,2% second-bracket rate would not change this outcome.
 
-### Calculated example: customary salary
+### Calculated example: customary salary (gebruikelijk loon)
 
 Input: the comparable wage is € 50.000, the highest wage of the employees is € 45.000 and the fixed amount in the 2027 future text is € 58.000.
 
@@ -106,13 +106,13 @@ Step 2: if the withholding agent (inhoudingsplichtige) makes plausible that € 
 
 The amount is declared as income from employment in box 1, not as a box 2 benefit (voordeel). The € 58.000 is the pre-indexation figure and is replaced at the start of 2027 by ministerial regulation.
 
-### Calculated example: flat-rate benefit for a vbi
+### Calculated example: flat-rate benefit (forfaitair voordeel) for an exempt investment institution (vbi)
 
-Input: shares in a vbi with a value of € 100.000 on 1 January 2027, held for the whole year, and other regular benefits (reguliere voordelen) from those shares of € 2.000.
+Input: shares in an exempt investment institution with a value of € 100.000 on 1 January 2027, held for the whole year, and other regular benefits (reguliere voordelen) from those shares of € 2.000.
 
 Step 1: the 6% amount is € 100.000 × 6% = € 6.000,00.
 
-Step 2: the actual regular benefits are € 2.000,00. The total amount taxed from the vbi is the higher of the 6% amount and the actual regular benefits, so € 6.000,00 is taxed.
+Step 2: the actual regular benefits are € 2.000,00. The total amount taxed from the exempt investment institution is the higher of the 6% amount and the actual regular benefits, so € 6.000,00 is taxed.
 
 The outcome is not below nil and needs no time apportionment because the shares were held for the whole year.
 

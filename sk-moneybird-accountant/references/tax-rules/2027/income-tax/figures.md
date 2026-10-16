@@ -49,7 +49,7 @@ This file covers the box 1 brackets and rates for 2027, the general tax credit (
 | Box 1 for a full year at AOW age, bill | 8 |
 | First bracket rate in the year the AOW age is reached | 9 |
 | No indexation of the box 1 tables at the start of 2027 | 10 |
-| Deduction rate (aftrektarief) rate measure (tariefmaatregel) in the bill | 11 |
+| Deduction rate of the rate measure (aftrektarief tariefmaatregel) in the bill | 11 |
 | Rate adjustment percentage under the bill | 12 |
 | General tax credit (algemene heffingskorting), enacted chapter 8 amounts in the 2027 text | 13 |
 | General tax credit below AOW age, bill before the second memorandum of amendment | 14 |
@@ -92,7 +92,7 @@ This file covers the box 1 brackets and rates for 2027, the general tax credit (
 | Box 1 for a full year at AOW age, bill | First bracket 18,33% up to € 39.247 for people born in 1946 or later, or up to € 41.637 for people born before 1 January 1946, then 38,16%, then 49,50% | proposed | Verified | [Belastingplan 2027 (Kamerstuk 37022), memorie van toelichting](https://www.tweedekamer.nl/downloads/document?id=2026D43301) |
 | First bracket rate in the year the AOW age is reached | Not published | unknown | UNVERIFIED | [Belastingplan 2027 (Kamerstuk 37022), nota naar aanleiding van het verslag](https://www.tweedekamer.nl/downloads/document?id=2026D50335) and [Belastingplan 2027 (Kamerstuk 37022), memorie van toelichting](https://www.tweedekamer.nl/downloads/document?id=2026D43301) |
 | No indexation of the box 1 tables at the start of 2027 | Art. 10.1 does not apply to art. 2.10 and 2.10a (art. XLVIII). Other amounts are indexed by 1,01248 instead of the table correction factor (tabelcorrectiefactor) 1,026 (art. LI). The second memorandum of amendment undoes the freeze of the top bracket boundary for 2027 | proposed | Verified | https://zoek.officielebekendmakingen.nl/kst-37022-2.html and [Belastingplan 2027 (Kamerstuk 37022), memorie van toelichting](https://www.tweedekamer.nl/downloads/document?id=2026D43301) |
-| Deduction rate (aftrektarief) rate measure (tariefmaatregel) in the bill | 38,16% | proposed | Verified | https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/fiscale-sleuteltabel-2027/fiscale-sleuteltabel-2027.pdf |
+| Deduction rate of the rate measure (aftrektarief tariefmaatregel) in the bill | 38,16% | proposed | Verified | https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/fiscale-sleuteltabel-2027/fiscale-sleuteltabel-2027.pdf |
 | Rate adjustment percentage under the bill | Not stated in the checked material, the bill excerpt shows no change to the lid 2 text | unknown | UNVERIFIED | https://zoek.officielebekendmakingen.nl/kst-37022-2.html and https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/fiscale-sleuteltabel-2027/fiscale-sleuteltabel-2027.pdf |
 | General tax credit (algemene heffingskorting), enacted chapter 8 amounts in the 2027 text | Not read | unknown | UNVERIFIED | https://wetten.overheid.nl/BWBR0011353/2027-01-01 |
 | General tax credit below AOW age, bill before the second memorandum of amendment | € 3.154, phase-out point (afbouwpunt) € 30.910, phase-out percentage (afbouwpercentage) 6,638% | proposed | Verified | [Belastingplan 2027 (Kamerstuk 37022), memorie van toelichting](https://www.tweedekamer.nl/downloads/document?id=2026D43301) and https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/fiscale-sleuteltabel-2027/fiscale-sleuteltabel-2027.pdf |

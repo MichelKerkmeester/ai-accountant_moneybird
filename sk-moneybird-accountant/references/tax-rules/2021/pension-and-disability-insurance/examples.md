@@ -35,7 +35,7 @@ This part holds the worked examples for the Pension, annuity and disability insu
 <a id="4-worked-examples"></a>
 
 **Calculated example 1: annual allowance (jaarruimte) on a profit of € 60.000.**
-Facts: 2020 profits from business activities of € 60.000, being the amount before the entrepreneur's allowance (ondernemersaftrek) and before any addition to or withdrawal from the old-age reserve, with no taxable wage, no taxable income from other work (resultaat uit overige werkzaamheden), no taxable periodic payments and benefits in kind (periodieke uitkeringen en verstrekkingen), no pension accrual, no FOR addition.
+Facts: 2020 profits from business activities of € 60.000, being the amount before the entrepreneur's allowance (ondernemersaftrek) and before any addition to or withdrawal from the old-age reserve (oudedagsreserve), with no taxable wage, no taxable income from other work (resultaat uit overige werkzaamheden), no taxable periodic payments and benefits in kind (periodieke uitkeringen en verstrekkingen), no pension accrual, no FOR addition.
 - Step 1, cap at the income cap (aftoppingsgrens): min(€ 60.000, € 112.189) = € 60.000.
 - Step 2, reduce by the franchise: € 60.000 - € 12.672 = € 47.328 contribution base (premiegrondslag).
 - Step 3, apply the percentage: 13,3% x € 47.328 = € 6.294,62, rounded down.
@@ -51,7 +51,7 @@ Outcome: the highest possible annual allowance before rounding to whole euros is
 Sources: https://wetten.overheid.nl/BWBR0011353/2021-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 and https://open.overheid.nl/documenten/ronl-04947996-d528-4eac-afb0-6aa936dc577e/pdf.
 
 **Calculated example 3: annual allowance with a FOR addition.**
-Facts: 2020 profits from business activities of € 60.000, being the amount before the entrepreneur's allowance and before any addition to or withdrawal from the old-age reserve, with a FOR addition over 2020 of 9,44% x € 60.000 = € 5.664,00 (below the € 9.395 cap), no reduction, no pension accrual, and the growth of business capital allows the full addition.
+Facts: 2020 profits from business activities of € 60.000, being the amount before the entrepreneur's allowance and before any addition to or withdrawal from the old-age reserve, with a FOR addition over 2020 of 9,44% x € 60.000 = € 5.664,00 (below the € 9.395 cap), no reduction, no pension accrual, and the growth of business capital (ondernemingsvermogen) allows the full addition.
 - Step 1, part a of the contribution base is the profit before additions to or withdrawals from the old-age reserve (winst vóór toevoeging aan en afneming van de oudedagsreserve): € 60.000.
 - Step 2, reduce by the franchise: € 60.000 - € 12.672 = € 47.328 contribution base.
 - Step 3, apply the percentage: 13,3% x € 47.328 = € 6.294,62, rounded down.
@@ -79,7 +79,7 @@ Outcome: catch-up allowance at most € 14.785. Here the euro cap binds. The unu
 Sources: https://wetten.overheid.nl/BWBR0011353/2021-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen.
 
 **Calculated example 5: temporary old-age annuity (tijdelijke oudedagslijfrente) at and above the cap.**
-Facts: a temporary old-age annuity with five yearly instalments (termijnen), starting in the year of state pension age.
+Facts: a temporary old-age annuity with five yearly instalments (termijnen), starting in the year of state pension age (AOW-leeftijd).
 - Situation a: the yearly benefit (uitkering) is € 22.443, exactly at the 2021 cap of € 22.443 per year, so the product meets the cap condition.
 - Situation b: the yearly benefit is € 25.000, above the 2021 cap of € 22.443. Above the cap the premiums are deductible only if the benefits run at least 20 years. Five instalments do not meet that condition, so the premiums are not deductible.
 Outcome: the cap is judged per year at the time of premium payment. At or below € 22.443 the five year product fits, above € 22.443 the 20 year condition decides.
@@ -114,7 +114,7 @@ The FISIN 2021 example repeats the 2020 example. The business capital (ondernemi
 A start date in 2020 means the annuity must be converted or started by 31 December 2021. A start date in 2021 means by 31 December 2022. A death in 2020 means the survivor annuity (nabestaandenlijfrente) must start by 31 December 2022. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen.
 
 **Official example 11: old-age annuity and the 24 years.**
-An old-age annuity with a state pension age in 2030 must start at the latest on 31 December 2035. A account (rekening) or investment right (beleggingsrecht) that starts at 63 with a state pension age of 67 runs at least 20 + 4 = 24 years. A child who is 21 at death runs at least 5 years and stops at the latest after 9 years, and a child who is 27 at death stops after 3 years. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen.
+An old-age annuity with a state pension age in 2030 must start at the latest on 31 December 2035. An account (rekening) or investment right (beleggingsrecht) that starts at 63 with a state pension age of 67 runs at least 20 + 4 = 24 years. A child who is 21 at death runs at least 5 years and stops at the latest after 9 years, and a child who is 27 at death stops after 3 years. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen.
 
 ---
 

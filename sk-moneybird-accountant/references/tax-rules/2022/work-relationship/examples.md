@@ -34,7 +34,7 @@ This part holds the worked examples for the employment relationship and self-emp
 
 <a id="4-worked-examples"></a>
 
-### Example 1, Calculated example: the persons-treated-as-employees test
+### Example 1, Calculated example: the persons treated as employees (gelijkgestelden) test
 
 Inputs, invented: a self-employed person without employees (ZZP, zelfstandige zonder personeel) works for one client 2 days a week and is paid a rate well above 2/5 of the minimum wage.
 
@@ -48,7 +48,7 @@ Result: the test for persons treated as employees (gelijkgestelden) can be met. 
 
 Inputs, invented: a client and a contractor work in a way that is in fact an employment relationship (dienstbetrekking). The case is not in bad faith (kwaadwillend). The Dutch Tax and Customs Administration gives an instruction on 1 March 2022.
 
-Step 1. The follow-up term is usually 3 months. 1 March 2022 plus 3 months is 1 June 2022. By that date the client can reshape the relationship so the contractor really works as a self-employed person (zelfstandige), or process it as an employment relationship in the payroll return (loonaangifte). Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving.
+Step 1. The follow-up term is usually 3 months. 1 March 2022 plus 3 months is 1 June 2022. By that date the client can reshape the relationship so the contractor really works as a self-employed person (zelfstandige), or process it as an employment relationship in the payroll tax return (loonaangifte). Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving.
 
 Step 2. If the instruction is not followed, a correction obligation (correctieverplichting) applies from the date of the instruction. That date is 1 March 2022, not 1 June 2022. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving.
 
@@ -64,7 +64,7 @@ Step 3. The stated date of 1 January 2027 therefore does not cut the use short. 
 
 Step 4. If the parties work differently, the agreement does not hold, because the qualification depends on how the work is actually done. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/geen-nieuwe-modelovereenkomsten-meer.
 
-### Example 4, Official example: the € 36 from the explanatory memorandum
+### Example 4, Official example: the € 36 from the explanatory memorandum (memorie van toelichting)
 
 This example is taken from the explanatory memorandum (memorie van toelichting) as recorded in the checked sources. Source: https://zoek.officielebekendmakingen.nl/kst-36783-3.html.
 
@@ -78,7 +78,7 @@ Step 4. Times 1,5 for non-billable hours: € 23,6208 × 1,5 = € 35,4312, so �
 
 Step 5. Rounded up to whole euros: € 36,00. That is the € 36 in art. 7:610aa lid 1 BW.
 
-### Example 5, Calculated example: the indexation to the reference date 1 January 2026
+### Example 5, Calculated example: the indexation to the reference date (peildatum) 1 January 2026
 
 Step 1. The WML moves from € 14,06 to € 14,71. The change is € 14,71 - € 14,06 = € 0,65. Sources: https://www.rijksoverheid.nl/themas/werk/minimumloon/bedragen-minimumloon/bedragen-minimumloon-2025 and https://www.rijksoverheid.nl/themas/werk/minimumloon/bedragen-minimumloon/bedragen-minimumloon-2026.
 

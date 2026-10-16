@@ -43,10 +43,10 @@ This file covers box 2 income from a substantial interest (aanmerkelijk belang) 
 | Tax at the top of bracket 1 (art. 2.12, column III) | 2 |
 | Box 2 bracket 2 (art. 2.12) | 3 |
 | Second-bracket rate 2027 to 2030 (cabinet letter of 29 September 2026) | 4 |
-| Indexation multiplier for art. 10.1 amounts in 2027 (Tax Plan 2027, Kamerstuk 37 022 nr. 2, Artikel LI lid 1) | 5 |
+| Indexation multiplier for art. 10.1 amounts in 2027 (Tax Plan 2027 (Belastingplan 2027), Kamerstuk 37 022 nr. 2, Artikel LI lid 1) | 5 |
 | Indexed 2027 bracket 1 boundary | 6 |
-| Substantial interest, the 5% test (art. 4.6) | 7 |
-| Flat-rate benefit (forfaitair voordeel) for a vbi or a foreign investment company (art. 4.14) | 8 |
+| Substantial interest (aanmerkelijk belang), the 5% test (art. 4.6) | 7 |
+| Flat-rate benefit (forfaitair voordeel) for an exempt investment institution (vbi) or a foreign investment company (art. 4.14) | 8 |
 | Inherited substantial interest facility (art. 4.12a) | 9 |
 | Loss offset period (art. 4.49) | 10 |
 | Losses that arose in 2018 or earlier | 11 |
@@ -59,7 +59,7 @@ This file covers box 2 income from a substantial interest (aanmerkelijk belang) 
 | Customary salary (gebruikelijk loon) fixed amount (art. 12a lid 7 Wet LB 1964, text per 1 January 2027) | 18 |
 | Customary salary, comparable wage (art. 12a lid 1 sub a) | 19 |
 | Customary salary minimum threshold (art. 12a) | 20 |
-| Old-age obligation (ODV) market rate for 2027 | 21 |
+| Old-age obligation (oudedagsverplichting, ODV) market rate for 2027 | 21 |
 | Other Fiscal Measures 2027 (Overige fiscale maatregelen 2027, Kamerstuk 37 023) box 2 measures | 22 |
 <!-- GENERATED:key-figure-index:end -->
 
@@ -70,10 +70,10 @@ This file covers box 2 income from a substantial interest (aanmerkelijk belang) 
 | Tax at the top of bracket 1 (art. 2.12, column III) | € 16.866 | adopted-not-yet-in-force | Verified | https://wetten.overheid.nl/BWBR0011353/2027-01-01 |
 | Box 2 bracket 2 (art. 2.12) | 31% above € 68.843 | adopted-not-yet-in-force | Verified | https://wetten.overheid.nl/BWBR0011353/2027-01-01 |
 | Second-bracket rate 2027 to 2030 (cabinet letter of 29 September 2026) | 29,2%, a cut of 1,8 percentage point for 4 years from 2027 | proposed | Verified | https://open.overheid.nl/documenten/5d1a02b8-ff11-4b87-b6a4-bb0f9828eca0/file |
-| Indexation multiplier for art. 10.1 amounts in 2027 (Tax Plan 2027, Kamerstuk 37 022 nr. 2, Artikel LI lid 1) | 1,01248 instead of the table correction factor (tabelcorrectiefactor) | proposed | Verified | https://zoek.officielebekendmakingen.nl/kst-37022-2.html |
+| Indexation multiplier for art. 10.1 amounts in 2027 (Tax Plan 2027 (Belastingplan 2027), Kamerstuk 37 022 nr. 2, Artikel LI lid 1) | 1,01248 instead of the table correction factor (tabelcorrectiefactor) | proposed | Verified | https://zoek.officielebekendmakingen.nl/kst-37022-2.html |
 | Indexed 2027 bracket 1 boundary | not published | unknown | UNVERIFIED | https://zoek.officielebekendmakingen.nl/kst-37022-2.html |
-| Substantial interest, the 5% test (art. 4.6) | 5% of the issued capital, of the rights to acquire shares, of the profit-sharing certificates (winstbewijzen) or of the votes in a cooperative (coöperatie) | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
-| Flat-rate benefit (forfaitair voordeel) for a vbi or a foreign investment company (art. 4.14) | 6% | adopted-not-yet-in-force | Verified | https://wetten.overheid.nl/BWBR0011353/2027-01-01 |
+| Substantial interest (aanmerkelijk belang), the 5% test (art. 4.6) | 5% of the issued capital, of the rights to acquire shares, of the profit-sharing certificates (winstbewijzen) or of the votes in a cooperative (coöperatie) | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
+| Flat-rate benefit (forfaitair voordeel) for an exempt investment institution (vbi) or a foreign investment company (art. 4.14) | 6% | adopted-not-yet-in-force | Verified | https://wetten.overheid.nl/BWBR0011353/2027-01-01 |
 | Inherited substantial interest facility (art. 4.12a) | 24 months after the death | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | Loss offset period (art. 4.49) | box 2 income of the previous year and of the six following years | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | Losses that arose in 2018 or earlier | a longer offset period of 9 years | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/verlies_uit_aanmerkelijk_belang/verlies_uit_aanmerkelijk_belang_1 |
@@ -86,7 +86,7 @@ This file covers box 2 income from a substantial interest (aanmerkelijk belang) 
 | Customary salary (gebruikelijk loon) fixed amount (art. 12a lid 7 Wet LB 1964, text per 1 January 2027) | € 58.000, pre-indexation text | adopted-not-yet-in-force | Corrected | https://wetten.overheid.nl/BWBR0002471/2027-01-01 |
 | Customary salary, comparable wage (art. 12a lid 1 sub a) | 100% of the wage from the most comparable employment | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2023-01-01 |
 | Customary salary minimum threshold (art. 12a) | € 5.000 for the total of the work for the body and connected bodies | adopted-not-yet-in-force | Verified | https://wetten.overheid.nl/BWBR0002471/2027-01-01 |
-| Old-age obligation (ODV) market rate for 2027 | not published | unknown | UNVERIFIED | https://centraalaanspreekpuntpensioenen.belastingdienst.nl/publicaties/overzicht-u-rendementen-en-marktrenten/ |
+| Old-age obligation (oudedagsverplichting, ODV) market rate for 2027 | not published | unknown | UNVERIFIED | https://centraalaanspreekpuntpensioenen.belastingdienst.nl/publicaties/overzicht-u-rendementen-en-marktrenten/ |
 | Other Fiscal Measures 2027 (Overige fiscale maatregelen 2027, Kamerstuk 37 023) box 2 measures | two measures from 1 January 2027 | proposed | Verified | https://www.eerstekamer.nl/behandeling/20260915/memorie_van_toelichting_56/document3/f=/vn15lhsbrhzz.pdf |
 
 ---

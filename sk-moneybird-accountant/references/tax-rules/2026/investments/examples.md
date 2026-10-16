@@ -74,7 +74,7 @@ Step 2. In the top band the deduction is nil, so KIA = € 0.
 
 The KIA is nil, even though individual assets still cost more than € 450. Figures from section 2, KIA table row.
 
-### Example 5. KIA in a partnership (samenwerkingsverband)
+### Example 5. KIA in a partnership (samenwerkingsverband) (Calculated example)
 
 A general partnership (vof) has two partners (vennoten). The vof invests € 40.000 in 2026. One partner (vennoot) also invests € 10.000 in his own business (onderneming).
 
@@ -116,7 +116,7 @@ Step 2. Goodwill, at most 10% per year, so 10% × € 30.000 = € 3.000 per yea
 
 Both assets need a depreciation schedule that stays within these yearly caps. Figures from section 2, ordinary depreciation caps row.
 
-### Example 9. Building and minimum value (bodemwaarde)
+### Example 9. Building and minimum value (bodemwaarde) (Calculated example)
 
 A sole trader owns a building that is a business asset (bedrijfsmiddel). The book value at the start of 2026 is € 400.000 and the WOZ value (WOZ-waarde) 2026 is € 300.000.
 
@@ -129,7 +129,7 @@ Step 4. After a depreciation of € 100.000 the book value equals the minimum va
 
 Figures from section 2, minimum value row.
 
-### Example 10. Disinvestment addition (desinvesteringsbijtelling)
+### Example 10. Disinvestment addition (desinvesteringsbijtelling) (Calculated example)
 
 A sole trader buys a machine for € 50.000 in 2026 and claims the KIA. The investment falls in the 28% band, so the investment deduction (investeringsaftrek) percentage taken is 28%. He sells the machine in 2028 for € 30.000.
 
@@ -140,7 +140,7 @@ Step 4. Check the cap. The investment amount over which deduction (aftrek) was t
 
 The 2028 profit includes a disinvestment addition of € 8.400. Figures from section 2, KIA table and disinvestment addition threshold rows.
 
-### Example 11. Starter's arbitrary depreciation (starters willekeurige afschrijving)
+### Example 11. Starter's arbitrary depreciation (starters willekeurige afschrijving) (Calculated example)
 
 A starter meets the starter's deduction (startersaftrek) conditions in 2026 and buys a machine for € 30.000 in 2026. The asset qualifies for investment deduction.
 

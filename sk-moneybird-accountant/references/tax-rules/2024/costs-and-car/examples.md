@@ -50,7 +50,7 @@ Moving the household contents (inboedel) cost € 2.500. The deduction is € 2.
 A car in the business assets (ondernemingsvermogen) with a value (waarde) of € 40.000 is also available privately, with more than 500 private kilometres. The withdrawal (onttrekking) is 22% of € 40.000, which is € 8.800. The withdrawal is capped at the car costs (autokosten) borne. If the total car costs including depreciation are € 7.000, the withdrawal is € 7.000.
 
 **Calculated example 6. Youngtimer.**
-An old car, first used more than 15 years ago, has a market value (waarde in het economische verkeer) of € 8.000 and is available privately. The withdrawal is 35% of € 8.000, which is € 2.800.
+An old car, first used more than 15 years ago, has a market value (waarde in het economisch verkeer) of € 8.000 and is available privately. The withdrawal is 35% of € 8.000, which is € 2.800.
 
 **Calculated example 7. Zero-emission, first admission (eerste toelating) 2024.**
 A car with 0 g CO2 per km, first admitted in 2024, has a catalogue price (catalogusprijs) of € 45.000. Step 1: 22% of € 45.000 is € 9.900. Step 2: the reduction is 6% of € 45.000, which is € 2.700, capped at € 1.800, so € 1.800. Step 3: € 9.900 minus € 1.800 is € 8.100 withdrawal. Control with the 16% up to € 30.000: 16% of € 30.000 is € 4.800 and 22% of € 15.000 is € 3.300, together € 8.100. If the car has integrated solar panels that meet the 2024 test, or runs on hydrogen (waterstof), the reduction is uncapped.

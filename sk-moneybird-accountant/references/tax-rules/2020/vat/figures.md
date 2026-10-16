@@ -42,9 +42,9 @@ This file covers Dutch VAT for a sole trader or a BV, including rates, exemption
 | Standard rate | 1 |
 | Reduced rate | 2 |
 | Zero rate | 3 |
-| Accommodation | 4 |
+| Accommodation (logies) | 4 |
 | Electronic publications and news websites, Table I post b.21 | 5 |
-| face masks (mondkapjes) | 6 |
+| Face masks (mondkapjes) | 6 |
 | Exemptions | 7 |
 | New KOR in force | 8 |
 | KOR Dutch turnover ceiling | 9 |
@@ -66,10 +66,10 @@ This file covers Dutch VAT for a sole trader or a BV, including rates, exemption
 | General monthly and quarterly deadline | 25 |
 | General yearly return deadline | 26 |
 | Published exact 2020 VAT due-date table | 27 |
-| supplementary return correction that may be included in the next return | 28 |
-| supplementary return correction period | 29 |
-| supplementary return timing | 30 |
-| supplementary return penalty limitation | 31 |
+| supplementary return (suppletie) correction that may be included in the next return | 28 |
+| Supplementary return correction period | 29 |
+| Supplementary return timing | 30 |
+| Supplementary return penalty limitation | 31 |
 | Reverse charge for specified electronics | 32 |
 | Call-off stock reporting | 33 |
 | Quarterly ICP goods threshold for 2020 | 34 |
@@ -103,9 +103,9 @@ This file covers Dutch VAT for a sole trader or a BV, including rates, exemption
 | Standard rate | 21% | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2020-01-01 |
 | Reduced rate | 9% for goods and services in Table I (Tabel I) | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2020-01-01 |
 | Zero rate | nil (Nihil) for supplies in Table II (Tabel II), subject to conditions set by general administrative order | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2020-01-01 |
-| Accommodation | 9% | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2025-339.html |
+| Accommodation (logies) | 9% | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2025-339.html |
 | Electronic publications and news websites, Table I post b.21 | 9% from 1 January 2020 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2022-9114.html |
-| face masks (mondkapjes) | No VAT under the optional approval from 25 May 2020 until 1 September 2020, with input VAT deduction retained | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2020-28349.html |
+| Face masks (mondkapjes) | No VAT under the optional approval from 25 May 2020 until 1 September 2020, with input VAT deduction retained | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2020-28349.html |
 | Exemptions | Wet OB article 11, paragraph 1, parts a through w | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2020-01-01 |
 | New KOR in force | 1 January 2020 | enacted | Verified | https://wetten.overheid.nl/BWBR0041782 |
 | KOR Dutch turnover ceiling | € 20.000 in a calendar year | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2020-01-01 |
@@ -127,10 +127,10 @@ This file covers Dutch VAT for a sole trader or a BV, including rates, exemption
 | General monthly and quarterly deadline | By the last day of the month following the period | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/ |
 | General yearly return deadline | Before 1 April of the next year | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/ |
 | Published exact 2020 VAT due-date table | Not found in the checked sources | unknown | UNVERIFIED | https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums |
-| supplementary return correction that may be included in the next return | Less than € 1.000 | enacted | Verified | https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf |
-| supplementary return correction period | The past 5 calendar years | enacted | Verified | https://wetten.overheid.nl/BWBR0002633/2020-01-01 |
-| supplementary return timing | As soon as possible, before the inspector knows or should suspect the inspector knows | enacted | Verified | https://wetten.overheid.nl/BWBR0002633/2020-01-01 |
-| supplementary return penalty limitation | 5 years after the end of the year | enacted | Verified | https://wetten.overheid.nl/BWBR0002633/2020-01-01 |
+| supplementary return (suppletie) correction that may be included in the next return | Less than € 1.000 | enacted | Verified | https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf |
+| Supplementary return correction period | The past 5 calendar years | enacted | Verified | https://wetten.overheid.nl/BWBR0002633/2020-01-01 |
+| Supplementary return timing | As soon as possible, before the inspector knows or should suspect the inspector knows | enacted | Verified | https://wetten.overheid.nl/BWBR0002633/2020-01-01 |
+| Supplementary return penalty limitation | 5 years after the end of the year | enacted | Verified | https://wetten.overheid.nl/BWBR0002633/2020-01-01 |
 | Reverse charge for specified electronics | € 10.000 or more per delivery per type of good | enacted | Verified | https://wetten.overheid.nl/BWBR0002633/2020-01-01 |
 | Call-off stock reporting | From 1 January 2020, report the transfer in the ICP without registering in the arrival state when the conditions are met | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/opgaaf_icp/opgaaf_icp |
 | Quarterly ICP goods threshold for 2020 | € 50.000 per quarter appears on the current page, but 2020 application is not verified | enacted | UNVERIFIED | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/opgaaf_icp/tijdvak_opgaaf_icp/tijdvak_opgaaf_icp |

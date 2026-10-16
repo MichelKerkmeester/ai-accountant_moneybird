@@ -1,5 +1,5 @@
 ---
-title: "Entrepreneur's allowance and SME profit exemption 2025: Rules"
+title: "Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling) 2025: Rules"
 description: "The entrepreneur's allowance (ondernemersaftrek), the starter's deduction (startersaftrek), the deduction for assisting partner (meewerkaftrek), the discontinuation deduction (stakingsaftrek) and the 12,7% SME profit exemption (MKB-winstvrijstelling) for tax year 2025, with the hours criterion (urencriterium) of 1.225 hours and the rate adjustment (tariefsaanpassing) of 12,02%. This file holds the rules part."
 nav_label: "Ondernemersaftrek en MKB-winstvrijstelling rules"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Entrepreneur's allowance and SME profit exemption 2025: Rules
+# Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling) 2025: Rules
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the how-it-works rules for the Entrepreneur's allowance and SME profit exemption 2025 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
+This part holds the how-it-works rules for the Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling) 2025 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -64,7 +64,7 @@ The reduced hours criterion (verlaagd urencriterium) in art. 3.78a lid 3 is the 
 
 ### 3.8 Self-employed person's deduction, € 2.470
 
-Art. 3.76 applies to the entrepreneur who meets the hours criterion (lid 1). Lid 2 sets the amount for an entrepreneur below the state pension age at the start of the year. For 2025 that amount is € 2.470. Only an entrepreneur for income tax purposes qualifies, so not a person entitled to a share and not someone who reports income from other work. The amount of € 2.470 is printed in art. 3.76 valid on 1 January 2025 and the FISIN 2025 table agrees. Watch out: the FISIN 2025 and FISIN 2026 carry-forward examples print € 2.740, which is an example typo. Sources: [art. 3.76, version 1 January 2025](https://wetten.overheid.nl/BWBR0011353/2025-01-01), [FISIN 2025, ondernemersaftrek en investeringsaftrek](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek).
+Art. 3.76 applies to the entrepreneur who meets the hours criterion (lid 1). Lid 2 sets the amount for an entrepreneur below the state pension (AOW) age at the start of the year. For 2025 that amount is € 2.470. Only an entrepreneur for income tax purposes qualifies, so not a person entitled to a share and not someone who reports income from other work. The amount of € 2.470 is printed in art. 3.76 valid on 1 January 2025 and the FISIN 2025 table agrees. Watch out: the FISIN 2025 and FISIN 2026 carry-forward examples print € 2.740, which is an example typo. Sources: [art. 3.76, version 1 January 2025](https://wetten.overheid.nl/BWBR0011353/2025-01-01), [FISIN 2025, ondernemersaftrek en investeringsaftrek](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek).
 
 ### 3.9 Self-employed person's deduction at state pension age, € 1.235
 
@@ -112,7 +112,7 @@ Art. 3.16 lid 4: pay to the partner below € 5.000 is not deductible from profi
 
 ### 3.20 Discontinuation deduction, € 3.630
 
-Art. 3.79 gives the discontinuation deduction on profit made with or on the cessation (staking) of one or more whole businesses. It equals that profit, at most € 3.630, and this maximum is reduced, not below nil, by discontinuation deduction enjoyed in earlier years. The Dutch Tax and Customs Administration adds that the maximum is available only once in a lifetime, an unused remainder can be used at a later cessation, and there is no deduction on profit as person entitled to a share. Special cases: for a business continued under rollover (doorschuiving) on dissolution of a marital community of property (huwelijksgemeenschap, art. 3.59 lid 2), on death (art. 3.62) or to entrepreneurs (ondernemers) (art. 3.63), the deduction applies to the benefits of that business only if it was run for the taxpayer's own account for at least three years. Until 2022 art. 3.79 lid 1 onderdeel b also covered profit from a decrease of the old-age reserve (oudedagsreserve) after a tax-neutral rollover (geruisloze doorschuiving) or tax-neutral conversion (geruisloze omzetting) under art. 3.59 lid 2, 3.62, 3.63 or 3.65. That onderdeel was removed from art. 3.79 on 1 January 2023 and the same rule now sits in the transitional art. 10a.29 lid 7 for an old-age reserve that existed on 31 December 2022. Sources: [art. 3.79, version 1 January 2025](https://wetten.overheid.nl/BWBR0011353/2025-01-01), [art. 3.79, version 1 January 2022](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [art. 3.79 and 10a.29, version 1 January 2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01), [Belastingdienst, stakingsaftrek](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/stakingsaftrek).
+Art. 3.79 gives the discontinuation deduction on profit made with or on the cessation (staking) of one or more whole businesses. It equals that profit, at most € 3.630, and this maximum is reduced, not below nil, by discontinuation deduction enjoyed in earlier years. The Dutch Tax and Customs Administration adds that the maximum is available only once in a lifetime, an unused remainder can be used at a later cessation, and there is no deduction on profit as person entitled to a share. Special cases: for a business continued under rollover (doorschuiving) on dissolution of a marital community of property (huwelijksgemeenschap, art. 3.59 lid 2), on death (art. 3.62) or to entrepreneurs (ondernemers) (art. 3.63), the deduction applies to the benefits of that business only if it was run for the taxpayer's own account for at least three years. Until 2022 art. 3.79 lid 1 onderdeel b also covered profit from a decrease (afneming) of the old-age reserve (oudedagsreserve) after a tax-neutral rollover (geruisloze doorschuiving) or tax-neutral conversion (geruisloze omzetting) under art. 3.59 lid 2, 3.62, 3.63 or 3.65. That onderdeel was removed from art. 3.79 on 1 January 2023 and the same rule now sits in the transitional art. 10a.29 lid 7 for an old-age reserve that existed on 31 December 2022. Sources: [art. 3.79, version 1 January 2025](https://wetten.overheid.nl/BWBR0011353/2025-01-01), [art. 3.79, version 1 January 2022](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [art. 3.79 and 10a.29, version 1 January 2023](https://wetten.overheid.nl/BWBR0011353/2023-01-01), [Belastingdienst, stakingsaftrek](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/stakingsaftrek).
 
 ### 3.21 Old-age reserve in 2025
 

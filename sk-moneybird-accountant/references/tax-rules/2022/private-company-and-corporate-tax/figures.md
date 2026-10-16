@@ -52,7 +52,7 @@ Corporate income tax (vennootschapsbelasting, Vpb) for 2022 has a first bracket 
 | Customary salary (gebruikelijk loon), standard amount (normbedrag, art. 12a lid 1 Wet LB 1964) | 11 |
 | Customary salary, comparable wage (vergelijkbaar loon) | 12 |
 | Customary salary, lower limit (ondergrens) | 13 |
-| Start-up exception to the customary salary rule (startersaftrek gebruikelijk loon) | 14 |
+| Start-up exception to the customary salary rule (startersaftrek gebruikelijk loon, art. 12a lid 3 en 4 Wet LB 1964) | 14 |
 | Zvw contribution (bijdrage Zvw) for a non-insured director and substantial shareholder (DGA) | 15 |
 | Employer health insurance contribution (werkgeversheffing Zvw) for an insured DGA | 16 |
 | Zvw route (Zvw-route) for a non-insured DGA | 17 |
@@ -90,7 +90,7 @@ Corporate income tax (vennootschapsbelasting, Vpb) for 2022 has a first bracket 
 | Customary salary (gebruikelijk loon), standard amount (normbedrag, art. 12a lid 1 Wet LB 1964) | € 48.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2022-01-01 |
 | Customary salary, comparable wage (vergelijkbaar loon) | 75%, the last year on this basis | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2022-01-01 |
 | Customary salary, lower limit (ondergrens) | € 5.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2022-01-01 |
-| Start-up exception to the customary salary rule (startersaftrek gebruikelijk loon) | last year of first use, a start in 2022 can continue (doorlopen) to 2024, statutory minimum 108% of twelve times the statutory minimum wage (WML) amount of art. 8 lid 1 sub a WML | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/loon_en_aanmerkelijk_belang/loon_en_aanmerkelijk_belang and https://wetten.overheid.nl/BWBR0002471/2022-01-01 |
+| Start-up exception to the customary salary rule (startersaftrek gebruikelijk loon, art. 12a lid 3 en 4 Wet LB 1964) | last year of first use, a start in 2022 can continue (doorlopen) to 2024, statutory minimum 108% of twelve times the statutory minimum wage (WML) amount of art. 8 lid 1 sub a WML | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/loon_en_aanmerkelijk_belang/loon_en_aanmerkelijk_belang and https://wetten.overheid.nl/BWBR0002471/2022-01-01 |
 | Zvw contribution (bijdrage Zvw) for a non-insured director and substantial shareholder (DGA) | 5,50% on at most € 59.706 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
 | Employer health insurance contribution (werkgeversheffing Zvw) for an insured DGA | 6,75% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
 | Zvw route (Zvw-route) for a non-insured DGA | the private limited company (BV) withholds the contribution from the net wage (nettoloon) and pays it through the payroll tax return (aangifte loonheffingen) | enacted | Corrected | https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/bijdrage_zorgverzekeringswet/hoe_wordt_de_inkomensafhankelijke_bijdrage_zvw_betaald/tabel_werkgeversheffing_zvw_of_bijdrage_zvw/ik_ben_directeur_grootaandeelhouder/ |

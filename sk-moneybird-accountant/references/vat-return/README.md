@@ -62,13 +62,13 @@ The five unresolved items. Each one is a missing capability, not a work item for
 
 | ID | Open point | Missing capability | Rule |
 |---|---|---|---|
-| O1 | The current labels and semantics of sections (rubrieken) 5c to 5g | A current form explanation or the live return screen | Never filled from memory or computed from transaction data. The indexed OB 141 explanation is read through [section 2 of the source library guide](../tax-rules/source-library.md#2-how-to-reach-a-source), with the Operator confirming the edition. |
+| O1 | The current labels and semantics of rubriek 5c to 5g | A current form explanation or the live return screen | Never filled from memory or computed from transaction data. The indexed OB 141 explanation is read through [rubriek 2 of the source library guide](../tax-rules/source-library.md#2-how-to-reach-a-source), with the Operator confirming the edition. |
 | O2 | The statutory ICP filing deadline | A primary source or the Operator's own ICP notice | Never filled from memory or computed from transaction data. The indexed digital ICP guide is read through [section 2 of the source library guide](../tax-rules/source-library.md#2-how-to-reach-a-source), with the Operator confirming the edition. |
 | O3 | The monthly-filing trigger | A current rule source or an updated Handbook | Never filled from memory or computed from transaction data. |
 | O4 | The lease scope of the business-car flat rate (forfait) | An Operator or bookkeeper decision with the contract and the use facts | Never filled from memory or computed from transaction data. |
 | O5 | The guarded CLI report date-argument names | Pinned CLI help and a dry run before a live use | Never filled from memory or computed from transaction data. |
 
-The administration's own rate list and VAT overview settle the rate-to-section map at run time, so the folder stores no fixed map.
+The administration's own rate list and VAT overview (btw-overzicht) settle the rate-to-section map at run time, so the folder stores no fixed map.
 
 ---
 

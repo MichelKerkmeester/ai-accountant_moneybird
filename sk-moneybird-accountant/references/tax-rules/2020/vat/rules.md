@@ -46,7 +46,7 @@ The 9% rate applies to goods and services listed in Table I (Tabel I). The check
 
 The zero rate applies to supplies in Table II (Tabel II) when the conditions set by general administrative order are met. A zero-rated supply is not the same as an exempt supply. Input VAT can still be deducted for zero-rated supplies, while exempt supplies do not carry that deduction right. For an intra-EU supply of goods, the seller needs records showing transport to another EU country, the buyer's valid VAT ID from another member state and an ICP that is timely, correct and complete. A late or incorrect ICP can jeopardize the zero rate and lead to a fine. [Wet OB, article 9](https://wetten.overheid.nl/BWBR0002629/2020-01-01), [Belastingdienst ICP instructions](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf) and [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf).
 
-### Accommodation
+### Accommodation (logies)
 
 Accommodation was in the 9% category in 2020. The later law states that the relevant Table I post lapses only from 1 January 2026, and ties the transitional rule to accommodation. [Wet behoud verlaagd btw-tarief op cultuur, media en sport](https://zoek.officielebekendmakingen.nl/stb-2025-339.html).
 
@@ -138,19 +138,19 @@ The general Dutch Tax and Customs Administration instruction says a yearly retur
 
 The live Dutch Tax and Customs Administration due-date page begins with later periods, and no archived table of exact 2020 dates was found in the checked sources. Use the general filing and payment rules above without treating a later year’s table as the 2020 table. [Belastingdienst due dates](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums).
 
-### supplementary return correction that may be included in the next return
+### Supplementary return (suppletie) correction that may be included in the next return
 
 For a correction of less than € 1.000, the 2020 Handbook says the entrepreneur may include it in the next return. The 2020 wording is strict about being less than that amount. [Handboek Ondernemen 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf).
 
-### supplementary return correction period
+### Supplementary return correction period
 
 The 2020 rule covers corrections to returns for the past 5 calendar years. [UBOB, article 15](https://wetten.overheid.nl/BWBR0002633/2020-01-01).
 
-### supplementary return timing
+### Supplementary return timing
 
 The entrepreneur had to correct as soon as possible, before knowing or reasonably suspecting that the inspector knew of the error or omission. Failure was an offence. The later eight-week rule was not part of the 2020 text. [UBOB, article 15](https://wetten.overheid.nl/BWBR0002633/2020-01-01).
 
-### supplementary return penalty limitation
+### Supplementary return penalty limitation
 
 The power to impose a penalty for gross negligence or intent (vergrijpboete) lapsed 5 years after the end of the year. [UBOB, article 15](https://wetten.overheid.nl/BWBR0002633/2020-01-01).
 

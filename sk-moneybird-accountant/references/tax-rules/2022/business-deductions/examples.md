@@ -52,7 +52,7 @@ The € 7.030 and € 6.670 are the self-employed person's deduction amounts of 
 
 Official examples:
 - Dutch Tax and Customs Administration (Belastingdienst): https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium
-- Chamber of Commerce (KVK): https://www.kvk.nl/starten/de-magische-1225-uur-alles-over-het-urencriterium
+- Chamber of Commerce (Kamer van Koophandel, KVK): https://www.kvk.nl/starten/de-magische-1225-uur-alles-over-het-urencriterium
 
 - Dutch Tax and Customs Administration: a webhosting business started on 1 July means 6 months as an entrepreneur and still at least 1.225 hours in that period.
 - Chamber of Commerce: a start on 1 May leaves eight months, about 117 working days (rounded), and at 8 hours a day 117 x 8 = 936,00 hours. Extra hours needed to reach the 1.225-hour test: 1.225 minus 936 = 289 hours.
@@ -93,7 +93,7 @@ Inputs: the taxpayer was not an entrepreneur in one or more of the five precedin
 
 ### Example 7, Calculated example: S&O deduction with the starter's increase
 
-Input: an entrepreneur who meets the hours criterion, has an S&O declaration (S&O-verklaring) from the Netherlands Enterprise Agency (RVO), makes at least 500 hours of S&O work and was not an entrepreneur in one or more of the five preceding years with the deduction applied at most twice.
+Input: an entrepreneur who meets the hours criterion, has an S&O declaration (S&O-verklaring) from the Netherlands Enterprise Agency (Rijksdienst voor Ondernemend Nederland, RVO), makes at least 500 hours of S&O work and was not an entrepreneur in one or more of the five preceding years with the deduction applied at most twice.
 
 - Base amount: € 13.360.
 - Starter increase: € 6.684.

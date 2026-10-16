@@ -1,5 +1,5 @@
 ---
-title: "Income tax box 1 2025: Examples"
+title: "Income tax (inkomstenbelasting) box 1 2025: Examples"
 description: "Covers the 2025 box 1 tax brackets, tax credits (heffingskortingen), rate adjustment (tariefsaanpassing) and the path from business profit to taxable income. This file holds the examples part."
 nav_label: "Inkomstenbelasting box 1 examples"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Income tax box 1 2025: Examples
+# Income tax (inkomstenbelasting) box 1 2025: Examples
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the income tax box 1 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the income tax (inkomstenbelasting) box 1 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -34,7 +34,7 @@ This part holds the worked examples for the income tax box 1 2025 topic. The ove
 
 <a id="4-worked-examples"></a>
 
-### Box 1 below state pension age
+### Box 1 below state pension (AOW) age
 
 **Calculated example.** Assume taxable income from work and home is € 60.000, before rate adjustment (tariefsaanpassing) and tax credits (heffingskortingen).
 

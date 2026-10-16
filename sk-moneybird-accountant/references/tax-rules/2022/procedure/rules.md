@@ -1,6 +1,6 @@
 ---
 title: "Tax return and procedure 2022: Rules"
-description: "Filing deadlines, deferral (uitstel), provisional assessment, tax interest, additional assessment, objection, record-keeping obligation and Chamber of Commerce and Dutch Tax and Customs Administration registration duties for tax year 2022. This file holds the rules part."
+description: "Filing deadlines, deferral (uitstel), provisional assessment, tax interest, additional assessment, objection, record-retention obligation and Chamber of Commerce and Dutch Tax and Customs Administration registration duties for tax year 2022. This file holds the rules part."
 nav_label: "Aangifte en procedure rules"
 trigger_phrases:
   - "aangifte en procedure 2022"
@@ -36,7 +36,7 @@ This part holds the how-it-works rules for the tax return and procedure (aangift
 
 ### Income tax (IB) return 2022 filing deadline
 
-The 2022 income tax return had to arrive before 1 May 2023 ([archived Belastingdienst page](https://web.archive.org/web/20230305/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen)). The general rule is that the return must arrive before the date in the filing invitation letter (aangiftebrief, the letter that invites the return), often 1 May ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen)). The archived page for the 2022 return also records that filing before 1 April gave a message before 1 July ([archived page](https://web.archive.org/web/20230305/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen)). AWR art. 9 lid 1 provides that for assessment taxes (aanslagbelastingen, taxes set by assessment) the return is filed within a term set by the inspector of at least one month after the invitation, and art. 9 lid 2 lets the inspector extend that term under conditions ([AWR](https://wetten.overheid.nl/BWBR0002320/2026-01-01)).
+The 2022 income tax return had to arrive before 1 May 2023 ([archived Belastingdienst page](https://web.archive.org/web/20230305/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen)). The general rule is that the return must arrive before the date in the filing invitation letter (aangiftebrief, the letter that invites the return), often 1 May ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen)). The archived page for the 2022 return also records that filing before 1 April gave a message before 1 July ([archived page](https://web.archive.org/web/20230305/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen)). AWR art. 9 lid 1 provides that for assessment taxes (aanslagbelastingen, taxes set by assessment) the return is filed within a term set by the tax inspector (inspecteur) of at least one month after the invitation, and art. 9 lid 2 lets the inspector extend that term under conditions ([AWR](https://wetten.overheid.nl/BWBR0002320/2026-01-01)).
 
 ### Income tax filing period 2022 opens
 
@@ -76,7 +76,7 @@ Tax is only due if the amount is higher than the assessment threshold (aanslaggr
 
 ### Income tax penalties 2022
 
-For 2022 the default fine (verzuimboete, failure-to-file penalty) for income tax was € 385, up to a maximum of € 5.514 ([archived Belastingdienst page](https://web.archive.org/web/20220517/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete)). Not requesting a return could lead to a penalty of € 2.757, and the payment default penalty (betaalverzuimboete) was up to € 5.514 ([archived page](https://web.archive.org/web/20220517/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete)).
+For 2022 the default fine (verzuimboete, failure-to-file penalty) for income tax was € 385, up to a maximum of € 5.514 ([archived Belastingdienst page](https://web.archive.org/web/20220517/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete)). Not requesting an invitation to file a return could lead to a penalty of € 2.757, and the payment default penalty (betaalverzuimboete) was up to € 5.514 ([archived page](https://web.archive.org/web/20220517/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete)).
 
 ### Income tax penalty route and penalty for gross negligence or intent
 
@@ -124,7 +124,7 @@ The calculation uses 30 days per month and 360 days per year, and the result is 
 
 ### Tax interest on VAT
 
-Tax interest on VAT is charged on a supplementary assessment (naheffingsaanslag) and on late payment ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_loonbelasting_btw_en_overdrachtsbelasting)). For late payment the period runs from 1 January after the tax year to the payment date. For a supplementary assessment it runs from 1 January after the tax year to 14 days after its date. No interest is charged for a voluntary correction within 3 months after the tax year or a late payment within 3 months after the end of the tax year. The interest stop (rentestop) extension to requested supplementary assessments, where the period ends at most 10 weeks after receipt, applies from 1 January 2023 but is not yet in force for VAT because it is technically not executable ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_loonbelasting_btw_en_overdrachtsbelasting)).
+Tax interest on VAT is charged on a supplementary assessment (naheffingsaanslag) and on late payment ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_loonbelasting_btw_en_overdrachtsbelasting)). For late payment the period runs from 1 January after the tax year to the payment date. For a supplementary assessment it runs from 1 January after the tax year to 14 days after its date. No interest is charged for a voluntary correction within 3 months after the tax year or a late payment within 3 months after the end of the tax year. The interest stop (rentestop) extension to requested supplementary assessments, where the period ends at most 10 weeks after receipt, applies from 1 January 2023 but is not yet in force for VAT because it is technically not feasible ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_loonbelasting_btw_en_overdrachtsbelasting)).
 
 ### VAT tax interest on 2022 quarters
 
@@ -182,7 +182,7 @@ An objection (bezwaar) must be made within 6 weeks after the date of the assessm
 
 After the objection period a request for an (ex officio) reduction (ambtshalve vermindering) is possible ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/bezwaar-en-beroep/content/verzoek-om-vermindering-van-aanslag-inkomstenbelasting)). It can be made online only if the return was filed online and fewer than 5 years have passed after the tax year. The material gives assessment 2020 online until 31 December 2025 and assessment 2023 until 31 December 2028. Otherwise the request goes by letter.
 
-### Record-keeping obligation (AWR art. 52)
+### Record-retention obligation (AWR art. 52)
 
 AWR art. 52 lid 4: persons required to keep records (administratieplichtigen) keep the data carriers (gegevensdragers) for seven years unless the tax law says otherwise. Lid 2 covers among others natural persons with profits from business activities or income from other work (resultaat uit overige werkzaamheden). Lid 5 allows conversion to another data carrier, except for the paper balance sheet (balans) and statement of income and expenditure (staat van baten en lasten). The text is the same in the 1 January 2020 and 1 January 2026 versions ([AWR 2020](https://wetten.overheid.nl/BWBR0002320/2020-01-01), [AWR 2026](https://wetten.overheid.nl/BWBR0002320/2026-01-01)).
 
@@ -192,7 +192,7 @@ The Dutch Tax and Customs Administration table: basic records (basisgegevens) 7 
 
 ### Registration in the Commercial Register
 
-Commercial Register Act 2007 (Handelsregisterwet 2007) art. 20 lid 1: the notification (opgave) for the first registration (inschrijving) of a business is made within a period of two weeks that starts one week before and ends one week after the start of the business ([Handelsregisterwet 2007](https://wetten.overheid.nl/BWBR0021777/2025-07-16)). Other required notifications are made within one week after the fact ([Handelsregisterwet 2007](https://wetten.overheid.nl/BWBR0021777/2025-07-16)). The window applies per business, so a second business activity can trigger a new notification.
+Commercial Register Act 2007 (Handelsregisterwet 2007) art. 20 lid 1: the statement (opgave) for the first registration (inschrijving) of a business is made within a period of two weeks that starts one week before and ends one week after the start of the business ([Handelsregisterwet 2007](https://wetten.overheid.nl/BWBR0021777/2025-07-16)). Other required statements are made within one week after the fact ([Handelsregisterwet 2007](https://wetten.overheid.nl/BWBR0021777/2025-07-16)). The window applies per business, so a second business activity can trigger a new statement.
 
 ### Chamber of Commerce number, identity check and appointments
 
@@ -200,7 +200,7 @@ The Chamber of Commerce issues the Chamber of Commerce number (KVK-nummer) immed
 
 ### Registration with the Dutch Tax and Customs Administration
 
-The Chamber of Commerce passes the data to the Dutch Tax and Customs Administration, so no separate registration is needed ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/)). A sole proprietorship (eenmanszaak) is registered with the citizen service number (bsn), other forms get a legal entity identification number (RSIN), and the Dutch Tax and Customs Administration derives the VAT number (omzetbelastingnummer) from it. Registration in the Dutch Tax and Customs Administration administration takes at most 10 working days. Where Chamber of Commerce registration is not possible, the start-up notification form (Opgaaf startende onderneming, niet ingeschreven in het Handelsregister) is used ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/), [KVK](https://www.kvk.nl/hulp-en-contact/hulp-bij-inschrijven/)).
+The Chamber of Commerce passes the data to the Dutch Tax and Customs Administration, so no separate registration is needed ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/)). A sole proprietorship (eenmanszaak) is registered with the citizen service number (bsn), other forms get a legal entity identification number (RSIN), and the Dutch Tax and Customs Administration derives the VAT number (omzetbelastingnummer) from it. Registration in the Dutch Tax and Customs Administration administration takes at most 10 working days. Where Chamber of Commerce registration is not possible, the form Opgaaf startende onderneming (niet ingeschreven in het Handelsregister) is used ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/), [KVK](https://www.kvk.nl/hulp-en-contact/hulp-bij-inschrijven/)).
 
 ---
 

@@ -101,5 +101,5 @@ The checked 2023 material records no UNVERIFIED, proposed or unknown value for 2
 
 - [2023 overview](../README.md)
 - [Dutch tax rules](../../dutch-tax-rules.md)
-- [BV en corporate income tax (vennootschapsbelasting) 2022](../../2022/private-company-and-corporate-tax/figures.md) and [BV en corporate income tax 2024](../../2024/private-company-and-corporate-tax/figures.md)
-- Related topics in 2023: [Box 2 en substantial interest (aanmerkelijk belang) 2023](../box-2/figures.md), [VAT (BTW) 2023](../vat/figures.md), [Return (Aangifte) en procedure 2023](../procedure/figures.md)
+- [BV and corporate income tax 2022](../../2022/private-company-and-corporate-tax/figures.md) and [BV and corporate income tax 2024](../../2024/private-company-and-corporate-tax/figures.md)
+- Related topics in 2023: [Box 2 and substantial interest (aanmerkelijk belang) 2023](../box-2/figures.md), [VAT (BTW) 2023](../vat/figures.md), [Tax return (aangifte) and procedure 2023](../procedure/figures.md)

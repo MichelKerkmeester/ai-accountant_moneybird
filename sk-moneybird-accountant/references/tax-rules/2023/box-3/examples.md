@@ -27,7 +27,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Box 3 savings and investments 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Box 3 savings and investments (sparen en beleggen) 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -104,7 +104,7 @@ Because the base is nil, the share is nil and the benefit is nil, and the box 3 
 
 ### Example 7: green investments and the exemption order rule (Calculated example)
 
-Inputs: a single taxpayer holds € 40.000 green bank balances and € 40.000 green other assets on 1 January 2023. The 2023 exemption for a single person is € 65.072. Art. 5.13 lid 2 applies the exemption first to the green other assets and only the remaining room to the green bank balances. So € 40.000 of the exemption goes to the green other assets, leaving € 25.072 of room for the green bank balances. The exemption never exceeds the value of the green investments on 1 January, and here € 65.072 is less than the total of € 80.000, so the full exemption room is used. The green investment credit (korting groene beleggingen) is 0,7% of the exempt amount on the reference date (peildatum), so 0,7% x € 65.072 = € 455,50, computed automatically. https://wetten.overheid.nl/BWBR0011353/2023-01-01 https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/beleggen_met_belastingvoordeel/groene_beleggingen
+Inputs: a single taxpayer holds € 40.000 green bank balances and € 40.000 green other assets on 1 January 2023. The 2023 exemption for a single person is € 65.072. Art. 5.13 lid 2 applies the exemption first to the green other assets and only the remaining room to the green bank balances. So € 40.000 of the exemption goes to the green other assets, leaving € 25.072 of room for the green bank balances. The exemption never exceeds the value of the green investments on 1 January, and here € 65.072 is less than the total of € 80.000, so the full exemption room is used. The green investment credit (korting voor groene beleggingen) is 0,7% of the exempt amount on the reference date (peildatum), so 0,7% x € 65.072 = € 455,50, computed automatically. https://wetten.overheid.nl/BWBR0011353/2023-01-01 https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/beleggen_met_belastingvoordeel/groene_beleggingen
 
 ---
 

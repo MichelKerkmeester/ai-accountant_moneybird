@@ -48,7 +48,7 @@ This file covers the investment deduction (investeringsaftrek) in its four forms
 | Vamil percentage | 7 |
 | Ordinary depreciation caps | 8 |
 | Minimum value for buildings | 9 |
-| Disinvestment addition threshold | 10 |
+| Disinvestment addition (desinvesteringsbijtelling) threshold | 10 |
 | Disinvestment addition term | 11 |
 | Disinvestment addition, investment undone | 12 |
 | Starters arbitrary depreciation yearly cap | 13 |
@@ -68,8 +68,8 @@ This file covers the investment deduction (investeringsaftrek) in its four forms
 | EIA and MIA per-asset minimum | € 2.500 | enacted | Verified | art. 3.45 lid 4 onderdeel b, https://wetten.overheid.nl/BWBR0011353/2024-01-01, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek |
 | Vamil percentage | 75% of the costs may be depreciated at will | enacted | Verified | art. 3.31 lid 1, https://wetten.overheid.nl/BWBR0011353/2024-01-01 |
 | Ordinary depreciation caps | at most 10% of the cost per year for goodwill and at most 20% per year for other business assets (bedrijfsmiddelen), so at least 10 and 5 years | enacted | Verified | art. 3.30 lid 2, https://wetten.overheid.nl/BWBR0011353/2024-01-01 |
-| Minimum value for buildings | one minimum value, the WOZ value (WOZ-waarde) of the building, except for an own-use building taken into use before 1 January 2024 and not yet depreciated for 3 years, which keeps 50% of the WOZ value until 3 years after first use | enacted | Verified | art. 3.30a lid 3, https://wetten.overheid.nl/BWBR0011353/2024-01-01, transition https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/afschrijving_bedrijfspand |
-| Disinvestment addition threshold | € 2.800 | enacted | Verified | art. 3.47 lid 1, https://wetten.overheid.nl/BWBR0011353/2024-01-01, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/desinvesteringsbijtelling |
+| Minimum value for buildings | one minimum value (bodemwaarde), the WOZ value (WOZ-waarde) of the building, except for an own-use building taken into use before 1 January 2024 and not yet depreciated for 3 years, which keeps 50% of the WOZ value until 3 years after first use | enacted | Verified | art. 3.30a lid 3, https://wetten.overheid.nl/BWBR0011353/2024-01-01, transition https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/afschrijving_bedrijfspand |
+| Disinvestment addition (desinvesteringsbijtelling) threshold | € 2.800 | enacted | Verified | art. 3.47 lid 1, https://wetten.overheid.nl/BWBR0011353/2024-01-01, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/desinvesteringsbijtelling |
 | Disinvestment addition term | five years after the start of the calendar year of the investment | enacted | Verified | art. 3.47 lid 2, https://wetten.overheid.nl/BWBR0011353/2024-01-01 |
 | Disinvestment addition, investment undone | less than 25% of the investment amount paid within twelve months after the obligation, or the asset not taken into use within three years after the start of the investment year | enacted | Verified | art. 3.47 lid 6, https://wetten.overheid.nl/BWBR0011353/2024-01-01 |
 | Starters arbitrary depreciation yearly cap | € 387.580 of total costs in the year, read from the top of the KIA table through the URWA art. 8 reference | enacted | UNVERIFIED | URWA art. 8, https://wetten.overheid.nl/BWBR0012035/2025-01-01/0 and art. 3.41 lid 2, https://wetten.overheid.nl/BWBR0011353/2024-01-01 |

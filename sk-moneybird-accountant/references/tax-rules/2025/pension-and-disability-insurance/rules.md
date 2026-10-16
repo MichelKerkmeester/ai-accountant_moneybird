@@ -1,6 +1,6 @@
 ---
 title: "Pension, annuity and disability insurance 2025: Rules"
-description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity (lijfrente) conditions, profit from business discontinuation (stakingswinst) conversion, old-age reserve (FOR) interaction and disability insurance (AOV) premium deductibility for tax year 2025, plus the proposed Basic Insurance for Self-Employed Persons (Incapacity) Act (BAZ). This file holds the rules part."
+description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity (lijfrente) conditions, profit from business discontinuation (stakingswinst) conversion, old-age reserve (FOR) interaction and disability insurance (AOV) premium deductibility for tax year 2025, plus the proposed Basic Disability Insurance for Self-Employed Persons Act (BAZ). This file holds the rules part."
 nav_label: "Pensioen, lijfrente en AOV rules"
 trigger_phrases:
   - "pensioen en AOV 2025"
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the how-it-works rules for the Pension, annuity and disability insurance 2025 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
+This part holds the how-it-works rules for the Pension, annuity and disability insurance (pensioen, lijfrente en AOV) 2025 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -158,7 +158,7 @@ The payment deadline for a profit from business discontinuation conversion is be
 
 From 2023 no addition (toevoeging) to the old-age reserve is possible. An existing FOR stays under the old rules under art. 10a.29 lid 1. Source: https://wetten.overheid.nl/BWBR0011353/2024-01-01 (art. 10a.29)
 
-Access to an old-age reserve addition required the hours criterion (urencriterium) and not yet state pension age at the start of the year under art. 3.67. Art. 3.68 gave an addition of 9,44% of the profit (winst), capped at a euro amount, reduced by pension premiums charged to the profit, and not above the growth of business assets (ondernemingsvermogen). Source: https://wetten.overheid.nl/BWBR0011353/2022-01-01 (art. 3.67, 3.68)
+Access to an old-age reserve addition required the hours criterion (urencriterium) and not yet state pension age at the start of the year under art. 3.67. Art. 3.68 gave an addition of 9,44% of the profit (winst), capped at a euro amount, reduced by pension premiums charged to the profit, and not above the growth of business capital (ondernemingsvermogen). Source: https://wetten.overheid.nl/BWBR0011353/2022-01-01 (art. 3.67, 3.68)
 
 Art. 3.70 lid 1 allows a decrease (afname) by a chosen amount up to the annuity premiums taken into account, or by the excess over business assets at cessation, state pension age at the start of the year, or failing the hours criterion this year and last year. Source: law 2022 art. 3.70.
 
@@ -202,7 +202,7 @@ Rule of thumb on the page: premium not deductible means payout not taxed, and th
 
 ### BAZ premium, Council of State (Raad van State) version
 
-The BAZ is the Basic Insurance for Self-Employed Persons (Incapacity) Act (Wet basisverzekering arbeidsongeschiktheid zelfstandigen). In the Council of State (Raad van State) version the premium is 5,4% of profit, at most € 171 gross per month. Status proposed, Verified. Source: https://www.rijksoverheid.nl/actueel/nieuws/2025/09/12/wetsvoorstel-voor-basisverzekering-arbeidsongeschiktheid-voor-zelfstandigen-naar-de-raad-van-state
+The BAZ is the Basic Disability Insurance for Self-Employed Persons Act (Wet basisverzekering arbeidsongeschiktheid zelfstandigen). In the Council of State (Raad van State) version the premium is 5,4% of profit, at most € 171 gross per month. Status proposed, Verified. Source: https://www.rijksoverheid.nl/actueel/nieuws/2025/09/12/wetsvoorstel-voor-basisverzekering-arbeidsongeschiktheid-voor-zelfstandigen-naar-de-raad-van-state
 
 The BAZ design in that version: every self-employed person (zelfstandige) up to state pension age insured, benefit at most the minimum wage (minimumloon), private policy as alternative with a yearly switch moment at the end of the calendar year, no premium for someone whose WIA rights already reach minimum wage level. Source: same URL.
 

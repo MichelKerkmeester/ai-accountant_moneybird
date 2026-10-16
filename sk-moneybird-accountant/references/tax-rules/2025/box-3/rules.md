@@ -1,5 +1,5 @@
 ---
-title: "Box 3 savings and investments 2025: Rules"
+title: "Box 3 savings and investments (sparen en beleggen) 2025: Rules"
 description: "Box 3 savings and investments for tax year 2025: tax-free allowance (heffingsvrij vermogen), debt threshold (schuldendrempel), the three category percentages, the six-step calculation, green investments (groene beleggingen) and the option to report the actual return. This file holds the rules part."
 nav_label: "Box 3 sparen en beleggen rules"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Box 3 savings and investments 2025: Rules
+# Box 3 savings and investments (sparen en beleggen) 2025: Rules
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the how-it-works rules for the Box 3 savings and investments 2025 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
+This part holds the how-it-works rules for the Box 3 savings and investments (sparen en beleggen) 2025 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -64,7 +64,7 @@ For 2025 the bank percentage is 1,37%. The figure previously printed for this ca
 
 ### Other-assets percentage
 
-Other assets (bezittingen, for example investments and a second home) are multiplied by the other-assets percentage ([2025 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2025)).
+Other assets (overige bezittingen, for example investments and a second home) are multiplied by the other-assets percentage ([2025 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2025)).
 
 The percentage is not an indexed base value. Art. 10.6ter lid 3 replaces it at the start of the year by ministerial regulation, set at 53% of the long-term return on real estate plus 33% on shares plus 14% on bonds ([statute text, art. 10.6ter](https://wetten.overheid.nl/BWBR0011353/2027-01-01)). For 2025 the value is 5,88%, printed in the statute text valid on 1 January 2025 and on the Dutch Tax and Customs Administration percentages page ([statute text, 1 January 2025](https://wetten.overheid.nl/BWBR0011353/2025-01-01), [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/met-welke-percentages-is-het-fictief-rendement-berekend)).
 
@@ -74,7 +74,7 @@ The debt percentage applies only to the deductible part of the debts, which is t
 
 Art. 10.6ter lid 4 uses the same method as the bank percentage, on the Dutch central bank average monthly interest rate on the total outstanding household home mortgages ([statute text, art. 10.6ter](https://wetten.overheid.nl/BWBR0011353/2027-01-01)). For 2025 the debt percentage is 2,70%, replacing 2,61% back to 1 January 2025 by the regulation of 12 February 2026. The regulation cites no monthly Dutch central bank figures ([regeling 12 February 2026](https://zoek.officielebekendmakingen.nl/stcrt-2026-3708.html)).
 
-### Box 3 income calculation (berekening)
+### Box 3 income calculation (berekening box 3 inkomen)
 
 The Dutch Tax and Customs Administration computes the box 3 income for 2025 in six steps ([2025 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2025)):
 
@@ -105,7 +105,7 @@ Art. 8.19 gives a green investment tax credit (korting voor groene beleggingen) 
 
 The rate was 0,7% for 2020 to 2024 and is 0,1% for 2025 to 2027 ([statute text, art. 8.19](https://wetten.overheid.nl/BWBR0011353/2027-01-01), [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/korting_voor_groene_beleggingen)).
 
-### Rebuttal scheme Act (Wet tegenbewijsregeling box 3) dates
+### Rebuttal Scheme Act (Wet tegenbewijsregeling box 3) dates
 
 The Rebuttal Scheme Act box 3 (Wet tegenbewijsregeling box 3) is the law of 14 July 2025, Stb. 2025, 195. Entry into force followed from the decree (besluit) of 14 July 2025, Stb. 2025, 196, issued 18 July 2025, in force the day after issue, so 19 July 2025. The Senate (Eerste Kamer) adopted the law on 8 July 2025 ([Stb. 2025, 195](https://zoek.officielebekendmakingen.nl/stb-2025-195.html), [Stb. 2025, 196](https://zoek.officielebekendmakingen.nl/stb-2025-196.html), [Rijksoverheid timeline](https://www.rijksoverheid.nl/themas/werk/inkomstenbelasting/box-3/tijdlijn-rechtsherstel-box-3)).
 
@@ -129,7 +129,7 @@ From 2025 the actual return is reported in the income tax return (aangifte inkom
 
 No deadline is stated on these pages ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/formulier-opgaaf-werkelijk-rendement)).
 
-Earlier routes: 2017 to 2019 used a form directly with DigiD, outside Mijn Belastingdienst. 2020 to 2024 used an online form in Mijn Belastingdienst ("Mijn werkelijk rendement box 3 opgeven"), a paper form via 0800 - 023 01 07 (one form per call) or several forms via the Tax Information Line (Belastingtelefoon) 0800 - 0543. 2021 to 2024 could always be filed without a letter. For 2017 to 2020 all letters have been sent, and without a letter you may not report ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/formulier-opgaaf-werkelijk-rendement), [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/zonder-brief-formulier-opgaaf-werkelijk-rendement-invullen)).
+Earlier routes: 2017 to 2019 used a form directly with DigiD, outside My Tax and Customs Administration (Mijn Belastingdienst). 2020 to 2024 used an online form in My Tax and Customs Administration ("Mijn werkelijk rendement box 3 opgeven"), a paper form via 0800 - 023 01 07 (one form per call) or several forms via the Tax Information Line (Belastingtelefoon) 0800 - 0543. 2021 to 2024 could always be filed without a letter. For 2017 to 2020 all letters have been sent, and without a letter you may not report ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/formulier-opgaaf-werkelijk-rendement), [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/zonder-brief-formulier-opgaaf-werkelijk-rendement-invullen)).
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Box 2 and substantial interest 2025: Examples"
+title: "Box 2 and substantial interest (aanmerkelijk belang) 2025: Examples"
 description: "Box 2 income and the substantial interest (aanmerkelijk belang) rules for tax year 2025, including the two-bracket rate table, excessive borrowing (excessief lenen), customary salary (gebruikelijk loon) and loss relief. This file holds the examples part."
 nav_label: "Box 2 en aanmerkelijk belang examples"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Box 2 and substantial interest 2025: Examples
+# Box 2 and substantial interest (aanmerkelijk belang) 2025: Examples
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Box 2 and substantial interest 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Box 2 and substantial interest (aanmerkelijk belang) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -93,7 +93,7 @@ One partner takes all € 120.000:
 
 The difference follows from the rule that art. 2.12 applies per taxpayer, so each partner's own bracket 1 applies to his share ([FISIN 2026, aanmerkelijk belang](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang), [art. 2.12 Wet IB 2001, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01)).
 
-### 4.5 Flat-rate benefit (forfaitair voordeel) for an exempt investment institution (vbi) or foreign investment company
+### 4.5 Flat-rate benefit (forfaitair voordeel) for an exempt investment institution (vbi, vrijgestelde beleggingsinstelling) or foreign investment company
 
 `Calculated example` from the section 2 figures.
 
@@ -155,7 +155,7 @@ A private limited company in which the director and substantial shareholder hold
 
 If the total salary for the work for the private limited company and all connected bodies is not more than € 5.000, the rule does not apply at all, for example a total of € 4.000 for one company. The salary is box 1 income from employment, not a box 2 benefit (voordeel). Sources: [art. 12a Wet LB 1964, 2025 text](https://wetten.overheid.nl/BWBR0002471/2025-01-01), [Belastingdienst, loon en aanmerkelijk belang](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/loon_en_aanmerkelijk_belang/loon_en_aanmerkelijk_belang).
 
-### 4.10 ODV market rate
+### 4.10 Old-age obligation (ODV) market rate (marktrente)
 
 `Calculated example` from the section 2 figures.
 

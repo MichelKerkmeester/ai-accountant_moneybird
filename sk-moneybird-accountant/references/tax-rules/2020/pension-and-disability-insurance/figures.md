@@ -29,7 +29,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-The pension, annuity and AOV (pensioen, lijfrente en AOV) 2020 topic covers the deduction of annuity premiums (lijfrentepremies) through the annual allowance (jaarruimte) and catch-up allowance (reserveringsruimte), the conditions for annuity products and their benefits (uitkeringen), the conversion of profit from business discontinuation (stakingswinst) into an annuity, the old-age reserve (oudedagsreserve) and the deductibility of AOV premiums (arbeidsongeschiktheidsverzekering, disability insurance for the self-employed). The central 2020 figures are the 13,3% annual allowance (jaarruimte) percentage with a maximum annual allowance of € 12.986, the catch-up allowance (reserveringsruimte) caps of € 7.371 and € 14.552, and the fully deductible AOV premium with periodic benefits. Every value in this file is enacted law as it reads in the Income Tax Act 2001 (Wet IB 2001) text of 1 January 2020, with the Dutch Tax and Customs Administration (Belastingdienst) FISIN 2020 chapter for the practice rules. Two 2020 source conflicts about the FOR and the later-year proposals (BAZ and Belastingplan 2027) sit in section 7.
+The pension, annuity and AOV (pensioen, lijfrente en AOV) 2020 topic covers the deduction of annuity premiums (lijfrentepremies) through the annual allowance (jaarruimte) and catch-up allowance (reserveringsruimte), the conditions for annuity products and their benefits (uitkeringen), the conversion of profit from business discontinuation (stakingswinst) into an annuity, the old-age reserve (oudedagsreserve, FOR) and the deductibility of AOV premiums (arbeidsongeschiktheidsverzekering, disability insurance for the self-employed). The central 2020 figures are the 13,3% annual allowance (jaarruimte) percentage with a maximum annual allowance of € 12.986, the catch-up allowance (reserveringsruimte) caps of € 7.371 and € 14.552, and the fully deductible AOV premium with periodic benefits. Every value in this file is enacted law as it reads in the Income Tax Act 2001 (Wet IB 2001) text of 1 January 2020, with the Dutch Tax and Customs Administration (Belastingdienst) FISIN 2020 chapter for the practice rules. Two 2020 source conflicts about the FOR and the later-year proposals, the Basic Disability Insurance for Self-Employed Persons Act (BAZ) and the Tax Plan 2027 (Belastingplan 2027), sit in section 7.
 
 ---
 
@@ -57,13 +57,13 @@ The pension, annuity and AOV (pensioen, lijfrente en AOV) 2020 topic covers the 
 | Temporary old-age annuity above the cap | 15 |
 | Bridge annuity (overbruggingslijfrente) cap | 16 |
 | Profit from business discontinuation (stakingswinst) maximum, tier a | 17 |
-| profit from business discontinuation maximum, tier b | 18 |
-| profit from business discontinuation maximum, tier c | 19 |
+| Profit from business discontinuation maximum, tier b | 18 |
+| Profit from business discontinuation maximum, tier c | 19 |
 | Commutation (afkoop) of a small annuity (lijfrente) | 20 |
 | Commutation cap at long-term disability (langdurige arbeidsongeschiktheid) | 21 |
 | FOR addition (toevoeging) | 22 |
 | Annuity start date (ingangsdatum) term | 23 |
-| survivor annuity term | 24 |
+| Survivor annuity term | 24 |
 | Payment deadline FOR or profit from business discontinuation conversion | 25 |
 | AOV premium with periodic benefits | 26 |
 | AOV premium with a lump-sum payout | 27 |
@@ -91,13 +91,13 @@ The pension, annuity and AOV (pensioen, lijfrente en AOV) 2020 topic covers the 
 | Temporary old-age annuity above the cap | deductible only if the benefits (uitkeringen) run at least 20 years | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen |
 | Bridge annuity (overbruggingslijfrente) cap | € 63.288 per year, only for annuity entitlements (lijfrentetegoeden) built up before 2006 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen |
 | Profit from business discontinuation (stakingswinst) maximum, tier a | € 467.044 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.129 lid 2 a) |
-| profit from business discontinuation maximum, tier b | € 233.530 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.129 lid 2 b) |
-| profit from business discontinuation maximum, tier c | € 116.771 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.129 lid 2 c) |
+| Profit from business discontinuation maximum, tier b | € 233.530 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.129 lid 2 b) |
+| Profit from business discontinuation maximum, tier c | € 116.771 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.129 lid 2 c) |
 | Commutation (afkoop) of a small annuity (lijfrente) | € 4.475 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.133 lid 2 d) |
 | Commutation cap at long-term disability (langdurige arbeidsongeschiktheid) | € 41.791 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.133 lid 9 c) |
 | FOR addition (toevoeging) | 9,44% of the profit (winst), at most € 9.218 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.68 lid 1) |
 | Annuity start date (ingangsdatum) term | 1 full calendar year | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen |
-| survivor annuity term | 2 full calendar years | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen |
+| Survivor annuity term | 2 full calendar years | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen |
 | Payment deadline FOR or profit from business discontinuation conversion | within six months after the year end, so before 1 July 2021 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.130 lid 2) |
 | AOV premium with periodic benefits | fully deductible, no allowance (ruimte) cap | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.124 lid 1 c) |
 | AOV premium with a lump-sum payout | not deductible | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen |

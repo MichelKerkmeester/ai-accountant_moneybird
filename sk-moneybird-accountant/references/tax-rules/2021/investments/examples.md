@@ -38,7 +38,7 @@ All inputs below are invented and round. Calculated examples are built from the 
 
 ### Official example: arbitrary depreciation for start-up entrepreneurs (starters willekeurige afschrijving) on a truck
 
-`Official example` (the second example on the Dutch Tax and Customs Administration (Belastingdienst) page, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/willekeurige_afschrijving/startende_ondernemer). A truck is bought on 1 July 2021 for € 150.000. In 2021 € 60.000 is randomly depreciated and in 2022 € 80.000. Together that is € 60.000 + € 80.000 = € 140.000 of the € 150.000 cost, below the € 328.721 yearly cap. At the end of 2025 the book value is € 10.000 against a normal book value of € 60.000. The truck is rented out from 10 January 2026. That date falls outside 5 years after 1 January 2021, so no revaluation (herwaardering) applies.
+`Official example` (the second example on the Dutch Tax and Customs Administration (Belastingdienst) page, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/willekeurige_afschrijving/startende_ondernemer). A truck is bought on 1 July 2021 for € 150.000. In 2021 € 60.000 is depreciated at will and in 2022 € 80.000. Together that is € 60.000 + € 80.000 = € 140.000 of the € 150.000 cost, below the € 328.721 yearly cap. At the end of 2025 the book value is € 10.000 against a normal book value of € 60.000. The truck is rented out from 10 January 2026. That date falls outside 5 years after 1 January 2021, so no revaluation (herwaardering) applies.
 
 ### Calculated example: KIA in the 28% band
 

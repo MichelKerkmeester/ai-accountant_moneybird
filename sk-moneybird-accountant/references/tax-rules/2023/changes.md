@@ -46,7 +46,7 @@ This note lists what changed for tax year 2023. Section 2 holds the changes uniq
 | [income-tax.md](income-tax/notes.md#5-changes) | 17 | The below-state-pension-age published Box 1 rate changed from 37,07% up to €... |
 | [health-insurance-contribution.md](health-insurance-contribution/notes.md#5-changes) | 8 | Zvw contribution by assessment (aanslag): 5,50% in 2022 to 5,43% in 2023... |
 | [business-deductions.md](business-deductions/notes.md#5-changes) | 11 | Self-employed person's deduction (zelfstandigenaftrek): € 6.310 in 2022 to €... |
-| [investments.md](investments/notes.md#5-changes) | 15 | Small-scale investment allowance (KIA) table, nil band: up to € 2.400 in 2022... |
+| [investments.md](investments/notes.md#5-changes) | 15 | Small-scale investment allowance (kleinschaligheidsinvesteringsaftrek, KIA)... |
 | [costs-and-car.md](costs-and-car/notes.md#5-changes) | 8 | Threshold for mixed costs (gemengde kosten drempel): € 4.800 in 2022 to € 5.100... |
 | [box-3.md](box-3/notes.md#5-changes) | 12 | System: the old band method with return classes (rendementsklassen) I and II in... |
 | [box-2.md](box-2/notes.md#5-changes) | 12 | Excessive borrowing (excessief lenen): not in force in 2022, in force from 1... |

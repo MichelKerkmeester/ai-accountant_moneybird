@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-Tax year 2024 is the first year of the two-bracket box 2 rate. A taxpayer pays 24,5% on box 2 income up to € 67.000 and 33% above that. The excessive borrowing (excessief lenen) maximum drops from € 700.000 in 2023 to € 500.000 in 2024. The flat-rate benefit (forfaitair voordeel) for a vbi or foreign investment company is 6,04%, the tax credit (belastingkorting) on an unoffset loss is 24,5%, and the customary salary (gebruikelijk loon) fixed amount is € 56.000. All 2024 values in this file are enacted. The file covers the substantial interest (aanmerkelijk belang) definition, box 2 income and rates, loss offset and conversion, excessive borrowing, customary salary and the pension interactions.
+Tax year 2024 is the first year of the two-bracket box 2 rate. A taxpayer pays 24,5% on box 2 income up to € 67.000 and 33% above that. The excessive borrowing (excessief lenen) maximum drops from € 700.000 in 2023 to € 500.000 in 2024. The flat-rate benefit (forfaitair voordeel) for an exempt investment institution (vbi, vrijgestelde beleggingsinstelling) or foreign investment company is 6,04%, the tax credit (belastingkorting) on an unoffset loss is 24,5%, and the customary salary (gebruikelijk loon) fixed amount is € 56.000. All 2024 values in this file are enacted. The file covers the substantial interest (aanmerkelijk belang) definition, box 2 income and rates, loss offset and conversion, excessive borrowing, customary salary and the pension interactions.
 
 ---
 

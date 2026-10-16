@@ -40,7 +40,7 @@ This file covers box 2 and the substantial interest (aanmerkelijk belang) rules 
 | Item | row |
 |---|---|
 | Box 2 rate (tarief) (art. 2.12) | 1 |
-| Income from a substantial interest (aanmerkelijk belang), components (art. 4.12 and 4.13) | 2 |
+| Income from a substantial interest (inkomen uit aanmerkelijk belang), components (art. 4.12 and 4.13) | 2 |
 | Disposal gain (vervreemdingsvoordeel) and acquisition price (verkrijgingsprijs) (art. 4.12 to 4.16) | 3 |
 | Deemed disposal (fictieve vervreemding) (art. 4.16) | 4 |
 | Loss offset period (art. 4.49) | 5 |
@@ -66,7 +66,7 @@ This file covers box 2 and the substantial interest (aanmerkelijk belang) rules 
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
 | Box 2 rate (tarief) (art. 2.12) | 26,9%, one rate, no bracket | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01 |
-| Income from a substantial interest (aanmerkelijk belang), components (art. 4.12 and 4.13) | regular benefits (reguliere voordelen) minus deductible costs plus disposal gains (vervreemdingsvoordelen), minus personal deductions (persoonsgebonden aftrek) | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
+| Income from a substantial interest (inkomen uit aanmerkelijk belang), components (art. 4.12 and 4.13) | regular benefits (reguliere voordelen) minus deductible costs plus disposal gains (vervreemdingsvoordelen), minus personal deductions (persoonsgebonden aftrek) | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | Disposal gain (vervreemdingsvoordeel) and acquisition price (verkrijgingsprijs) (art. 4.12 to 4.16) | transfer price (overdrachtsprijs) minus acquisition price, notary costs in the acquisition price | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang |
 | Deemed disposal (fictieve vervreemding) (art. 4.16) | listed cases of deemed disposal, text identical 2020 to 2027 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | Loss offset period (art. 4.49) | previous year and 6 following years | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01 |

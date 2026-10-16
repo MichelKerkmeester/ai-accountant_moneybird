@@ -56,8 +56,8 @@ This file covers Dutch VAT (omzetbelasting, or BTW) for a sole trader, including
 | Period return and payment deadline | 15 |
 | Annual VAT return deadline | 16 |
 | Published 2023 filing-date table | 17 |
-| Suppletie timing and correction period | 18 |
-| Suppletie amount boundary | 19 |
+| VAT correction return (suppletie) timing and correction period | 18 |
+| VAT correction return (suppletie) amount boundary | 19 |
 | Reverse charge threshold for specified electronics | 20 |
 | EU distance-sales threshold | 21 |
 | OSS and import-scheme deadlines and limits | 22 |
@@ -92,8 +92,8 @@ This file covers Dutch VAT (omzetbelasting, or BTW) for a sole trader, including
 | Period return and payment deadline | Within 1 month after the period. Monthly and quarterly returns are due by the last day of the following month | enacted | Verified | https://wetten.overheid.nl/BWBR0002320/2020-01-01 |
 | Annual VAT return deadline | Before 1 April of the following year, which is by 31 March | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/ |
 | Published 2023 filing-date table | Not found in the checked material | unknown | UNVERIFIED | https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums |
-| Suppletie timing and correction period | Correct returns for the past 5 calendar years, as soon as possible | enacted | Verified | https://wetten.overheid.nl/BWBR0002633/2020-01-01 |
-| Suppletie amount boundary | Not established for 2023 | unknown | UNVERIFIED | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/aangifte_corrigeren/aangifte_corrigeren |
+| VAT correction return (suppletie) timing and correction period | Correct returns for the past 5 calendar years, as soon as possible | enacted | Verified | https://wetten.overheid.nl/BWBR0002633/2020-01-01 |
+| VAT correction return (suppletie) amount boundary | Not established for 2023 | unknown | UNVERIFIED | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/aangifte_corrigeren/aangifte_corrigeren |
 | Reverse charge threshold for specified electronics | € 10.000 or more per delivery per type of good | enacted | Verified | https://wetten.overheid.nl/BWBR0002633/2020-01-01 |
 | EU distance-sales threshold | € 10.000, tested in the current and preceding calendar years. The system started 1 July 2021. An optional foreign-VAT choice lasts at least 2 years | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/btw-goederen-eu-particulieren |
 | OSS and import-scheme deadlines and limits | Union scheme: quarterly, due by the last day of the following month. First-supply registration deadline: the 10th day of the following month. Three consecutive missed quarterly returns can result in exclusion for 2 years. Corrections are due within 3 years. Records are kept for 10 years. Import scheme: monthly, for consignments up to € 150. Three consecutive missed monthly returns can result in exclusion for 2 years | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/btw-melden-eenloketsysteem |

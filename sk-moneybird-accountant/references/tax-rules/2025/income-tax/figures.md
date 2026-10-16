@@ -1,5 +1,5 @@
 ---
-title: "Income tax box 1 2025: Figures"
+title: "Income tax (inkomstenbelasting) box 1 2025: Figures"
 description: "Covers the 2025 box 1 tax brackets, tax credits (heffingskortingen), rate adjustment (tariefsaanpassing) and the path from business profit to taxable income."
 nav_label: "Inkomstenbelasting box 1"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Income tax box 1 2025: Figures
+# Income tax (inkomstenbelasting) box 1 2025: Figures
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the 2025 box 1 rates, the general tax credit, employment tax credit, income-related combination tax credit and the rate adjustment for certain deductions. The 2025 rates and credit tables in the checked material are enacted. Below state pension age, box 1 has three published brackets, and the first-bracket rate differs for people who have reached state pension age.
+This file covers the 2025 box 1 rates, the general tax credit, employment tax credit, income-related combination tax credit and the rate adjustment for certain deductions. The 2025 rates and credit tables in the checked material are enacted. Below state pension (AOW) age, box 1 has three published brackets, and the first-bracket rate differs for people who have reached state pension age.
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Zvw contribution 2025: Figures"
+title: "Zvw contribution (Zvw-bijdrage) 2025: Figures"
 description: "The income-dependent Zvw contribution for an entrepreneur in tax year 2025: the 5,26% rate, the maximum contribution income (bijdrage-inkomen) of € 75.864, who pays by assessment (aanslag) and how that differs from the 6,51% employer levy (werkgeversheffing)."
 nav_label: "Zvw-bijdrage"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Zvw contribution (zvw-bijdrage) 2025: Figures
+# Zvw contribution (Zvw-bijdrage) 2025: Figures
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-The Zvw contribution (zvw-bijdrage) (contribution under the Zorgverzekeringswet, the Dutch Health Insurance Act) is the income-dependent contribution that funds the basic health insurance. A sole trader (entrepreneur for income tax purposes (ib-ondernemer)) pays this contribution by assessment (aanslag) over the profit that counts as contribution income (bijdrage-inkomen), in 2025 at 5,26% of at most € 75.864. The same maximum applies once per person across all income channels, so salary (loon), a pension or a benefit that already carried a contribution uses up the headroom. The 2025 figures in this file are enacted law and verified, except the exact 2025 statutory basis of the profit base and the treatment at state pension age, which are UNVERIFIED and marked as such.
+The Zvw contribution (Zvw-bijdrage, the contribution under the Zorgverzekeringswet, the Dutch Health Insurance Act) is the income-dependent contribution that funds the basic health insurance. A sole trader (entrepreneur for income tax purposes (ib-ondernemer)) pays this contribution by assessment (aanslag) over the profit that counts as contribution income (bijdrage-inkomen), in 2025 at 5,26% of at most € 75.864. The same maximum applies once per person across all income channels, so salary (loon), a pension or a benefit that already carried a contribution uses up the headroom. The 2025 figures in this file are enacted law and verified, except the exact 2025 statutory basis of the profit base and the treatment at state pension (AOW) age, which are UNVERIFIED and marked as such.
 
 ---
 
@@ -67,7 +67,7 @@ The Zvw contribution (zvw-bijdrage) (contribution under the Zorgverzekeringswet,
 | Maximum contribution income (bijdrage-inkomen) | € 75.864 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
 | Withheld health insurance contribution (ingehouden zvw-bijdrage) | 5,26%, the same rate as the assessment rate | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
 | Employer health insurance contribution (zvw-werkgeversheffing) | 6,51% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw |
-| Income charged by assessment | Profit from the Netherlands (winst uit nederland, not the conversion of an old-age reserve (oudedagsreserve) into an annuity (lijfrente)), income from other work (inkomsten uit overig werk), salary (loon) from a foreign employer (listed on the 2020 to 2024 pages), pension from a foreign benefit agency (uitkeringsinstantie), periodic payments (periodieke uitkeringen) without payroll taxes (loonheffing) such as spousal maintenance (partneralimentatie) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
+| Income charged by assessment | Business profit from the Netherlands (winst uit nederland, not the conversion of an old-age reserve (oudedagsreserve) into an annuity (lijfrente)), income from other work (inkomsten uit overig werk), salary (loon) from a foreign employer (listed on the 2020 to 2024 pages), pension from a foreign benefit agency (uitkeringsinstantie), periodic payments (periodieke uitkeringen) without payroll taxes (loonheffing) such as spousal maintenance (partneralimentatie) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
 | Exceptions to the assessment | Military personnel (militairen) in active service or on special leave (buitengewoon verlof) with retention of military income, share fishermen (deelvissers) where another party pays 30% or more of the care costs of a sea trip, correction for income that already bore a foreign statutory health contribution, reduction for the part of the year insured in the Netherlands | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
 | Maximum across channels | Applies once per person, income that already bore a contribution uses up the headroom | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
 | Zvw base for a profit entrepreneur (winst-ondernemer) | Taxable profit from business (belastbare winst uit onderneming) under afdeling 3.2 Wet IB 2001, after the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption (mkb-winstvrijstelling) | enacted | UNVERIFIED | https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01 (2026 version) and https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.2 |

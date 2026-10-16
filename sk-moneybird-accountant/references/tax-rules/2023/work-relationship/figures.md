@@ -58,7 +58,7 @@ In 2023 the Deregulation of Employment Relationships Assessment Act (Wet deregul
 | BAZ, bill 36 912 | 17 |
 | Income tax return 2023 filing deadline | 18 |
 | Income tax return 2023 with deferral (uitstel) | 19 |
-| Final assessment (aanslag) 2023 latest | 20 |
+| Final assessment (definitieve aanslag) 2023 latest | 20 |
 <!-- GENERATED:key-figure-index:end -->
 
 
@@ -83,7 +83,7 @@ In 2023 the Deregulation of Employment Relationships Assessment Act (Wet deregul
 | BAZ, bill 36 912 | about 70% of income up to the minimum wage, waiting period about one year, opt-out with a qualifying private policy, submitted (ingediend) 24 March 2026 | proposed | Verified | https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912 |
 | Income tax return 2023 filing deadline | before 1 May 2024 | enacted | Corrected | https://web.archive.org/web/20240413/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag |
 | Income tax return 2023 with deferral (uitstel) | before 1 September 2024 | enacted | Corrected | https://web.archive.org/web/20240413/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag |
-| Final assessment (aanslag) 2023 latest | 31 December 2026, with 4 months deferral 30 April 2027 | enacted | Verified | https://web.archive.org/web/20240413/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag |
+| Final assessment (definitieve aanslag) 2023 latest | 31 December 2026, with 4 months deferral 30 April 2027 | enacted | Verified | https://web.archive.org/web/20240413/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag |
 
 ---
 

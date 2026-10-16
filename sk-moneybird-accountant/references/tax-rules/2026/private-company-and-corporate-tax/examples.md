@@ -102,7 +102,7 @@ Step 3, the escape of art. 12a lid 2: the highest amount of € 58.000,00 exceed
 
 Floor case, if the wage for all work in the entity and related entities is € 4.500,00, the rule does not apply because € 4.500,00 is not more than € 5.000,00.
 
-### Example 7, Zvw for the two director and substantial shareholder routes
+### Example 7, Zvw for the two DGA routes
 
 `Calculated example`. A director and substantial shareholder has a wage of € 100.000,00, above the maximum contribution income (bijdrage-inkomen) of € 79.409,00.
 
@@ -131,7 +131,7 @@ Step 4, note on the table. € 68.843,00 x 24,5% = € 16.866,535, and € 16.86
 
 Step 1, withholding: € 100.000,00 x 15% = € 15.000,00.
 Step 2, the return and the payment are due within 1 month after the day the dividend is made available.
-Step 3, a corporate shareholder offsets the € 15.000,00 in the corporate income tax return (aangifte Vpb), while an individual offsets it in the income tax return (inkomstenbelasting).
+Step 3, an entity offsets the € 15.000,00 in the corporate income tax return (aangifte Vpb), while an individual offsets it in the income tax return (inkomstenbelasting).
 
 If instead the BV bears the tax itself, art. 6 lid 1 grosses up the proceeds (opbrengst): € 100.000,00 x 100/85 = € 117.647,0588, rounded to € 117.647,06. The 15% tax on the grossed-up amount is € 117.647,0588 x 15% = € 17.647,0588, rounded to € 17.647,06.
 

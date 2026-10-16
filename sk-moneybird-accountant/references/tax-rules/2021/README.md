@@ -60,7 +60,7 @@ The first two rows of each file's figures table. The topic file carries the sour
 | BTW | Reduced VAT rate | 9% for goods and services in Table I (tabel i) | enacted | Verified |
 | Income tax box 1 | Box 1 below AOW age | 37,10% up to € 68.507, 49,50% above. Statute: 9,45% up to € 35.129, then € 3.319 plus 37,10% up to € 68.507, then € 15.702 plus 49,50%. | enacted | Verified |
 | Income tax box 1 | Box 1 whole year AOW age, born on or after 1 January 1946 | 19,20% up to € 35.129, 37,10% to € 68.507, 49,50% above. | enacted | Verified |
-| Zvw contribution | Zvw contribution by (provisional) assessment (voorlopige aanslag) | 5,75% | enacted | Verified |
+| Zvw contribution | Zvw contribution (Zvw-bijdrage) by (provisional) assessment (voorlopige aanslag) | 5,75% | enacted | Verified |
 | Zvw contribution | Withheld Zvw contribution (ingehouden bijdrage) | 5,75% | enacted | Verified |
 | Entrepreneur's allowance and SME exemption | Entrepreneur for income tax purposes (IB-ondernemer) status | separate test from VAT entrepreneur (btw-ondernemer), judged per activity | enacted | Verified |
 | Entrepreneur's allowance and SME exemption | Entrepreneur's allowance (ondernemersaftrek) components | five parts under art. 3.74, the self-employed person's deduction (zelfstandigenaftrek), the deduction for research and development work (speur- en ontwikkelingswerk), the deduction for assisting partner (meewerkaftrek), the starter's deduction for disabled entrepreneurs (startersaftrek bij arbeidsongeschiktheid) and the discontinuation deduction (stakingsaftrek), with the starter's deduction (startersaftrek) as an increase (verhoging) of the self-employed person's deduction in art. 3.76 lid 3 | enacted | Corrected |
@@ -71,7 +71,7 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Box 3 savings and investments | Tax-free allowance (heffingsvrij vermogen) | € 50.000 per person, € 100.000 with fiscal partner (art. 5.5) | enacted | Verified |
 | Box 3 savings and investments | Debt threshold (schuldendrempel) | € 3.200 per person, € 6.400 with whole-year partner (art. 5.3 lid 3) | enacted | Verified |
 | Box 2 and substantial interest | Box 2 rate (tarief) (art. 2.12) | 26,9%, one rate, no bracket | enacted | Verified |
-| Box 2 and substantial interest | Income from a substantial interest (aanmerkelijk belang), components (art. 4.12 and 4.13) | regular benefits (reguliere voordelen) minus deductible costs plus disposal gains (vervreemdingsvoordelen), minus personal deductions (persoonsgebonden aftrek) | enacted | Verified |
+| Box 2 and substantial interest | Income from a substantial interest (inkomen uit aanmerkelijk belang), components (art. 4.12 and 4.13) | regular benefits (reguliere voordelen) minus deductible costs plus disposal gains (vervreemdingsvoordelen), minus personal deductions (persoonsgebonden aftrek) | enacted | Verified |
 | BV en vennootschapsbelasting | Corporate income tax (vennootschapsbelasting) rate (art. 22 Wet Vpb 1969) | up to and including € 245.000 at 15%, above that € 36.750 plus 25% of the part above € 245.000 | enacted | Verified |
 | BV en vennootschapsbelasting | Rates for a book year that straddles 1 January 2022 (art. 31 Wet Vpb 1969) | 2022: up to and including € 395.000 at 15%, above that € 59.250 plus 25,8% | enacted | Verified |
 | Pensioen, lijfrente en AOV | Annual allowance (jaarruimte) percentage | 13,3% of the contribution base (premiegrondslag) | enacted | Verified |

@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the changes, records, open points and related resources for the Costs and car 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
+This part holds the changes, records, open points and related resources for the Costs and car (kosten en auto) 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
 
 ---
 
@@ -55,7 +55,7 @@ This part holds the changes, records, open points and related resources for the 
 - A car in the business assets (ondernemingsvermogen) lands in the profit as a withdrawal (onttrekking) of at least 22% of the value, or 35% for an old car, capped at the total car costs (autokosten) including depreciation, and nil when at most 500 private km are shown with a trip registration (rittenregistratie) (art. 3.20, https://wetten.overheid.nl/BWBR0011353/2023-01-01).
 - A bicycle (fiets) of the business that is available privately lands in the profit as 7% of the recommended retail price (consumentenadviesprijs), capped at the costs borne, and nil when the bicycle is stalled no more than incidentally at the home address (art. 3.20a, https://wetten.overheid.nl/BWBR0011353/2023-01-01 and https://wetten.overheid.nl/BWBR0011353/2026-01-01).
 - Business travel by public transport (openbaar vervoer), taxi or aircraft (vliegtuig) is booked at the actual costs, with the ticket or the public transport smart card (OV-chipkaart) trip overview as the record (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/zakelijke_kosten/overzicht-mogelijk-aftrekbare-zakelijke-kosten).
-- For a private car used for business, without conclusive mileage records (sluitende kilometeradministratie) deduct all VAT during the year and correct 1,5% of the catalogue price including VAT and bpm in rubriek 1d at year end, pro rata for a part year and never above the VAT deducted on use and maintenance (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/btw_en_de_auto/zakelijk_gebruik_van_de_priveauto/zakelijk_gebruik_van_de_priveauto).
+- For a private car used for business, without conclusive mileage records (sluitende kilometeradministratie) deduct all VAT during the year and correct 1,5% of the catalogue price including VAT and bpm in rubriek 1d (rubriek 1d) at year end, pro rata for a part year and never above the VAT deducted on use and maintenance (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/btw_en_de_auto/zakelijk_gebruik_van_de_priveauto/zakelijk_gebruik_van_de_priveauto).
 - Record relocation costs as the household contents cost plus € 7750 in the year of the move, and double accommodation for at most two years (art. 3.17 lid 1 a, https://wetten.overheid.nl/BWBR0011353/2023-01-01).
 - Fines (geldboetes), penalty payments (dwangsommen) and related costs never belong in the deductible cost lines (art. 3.14, https://wetten.overheid.nl/BWBR0011353/2023-01-01).
 - The personal study cost deduction goes into the income tax return only in the performance grant case, with the € 250 threshold per person (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/aftrek_studiekosten).

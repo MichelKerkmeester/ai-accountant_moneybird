@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-Dutch VAT (btw) in 2021 generally used the standard rate, with a reduced rate for supplies in Table I (tabel i) and a zero rate for qualifying supplies in Table II. The optional small businesses scheme (KOR) exempted qualifying businesses from charging VAT, while denying deduction of input VAT. The main change during the year was the e-commerce package from 1 July 2021, including the EU distance-sales threshold and replacement of MOSS by the one-stop shop. The laws described here were enacted, but some 2021 filing details and historical guidance remain unverified.
+Dutch VAT (btw) in 2021 generally used the standard rate, with a reduced rate for supplies in Table I (tabel i) and a zero rate for qualifying supplies in Table II (tabel ii). The optional small businesses scheme (KOR) exempted qualifying businesses from charging VAT, while denying deduction of input VAT. The main change during the year was the e-commerce package from 1 July 2021, including the EU distance-sales threshold and replacement of MOSS by the one-stop shop. The laws described here were enacted, but some 2021 filing details and historical guidance remain unverified.
 
 ---
 
@@ -44,7 +44,7 @@ Dutch VAT (btw) in 2021 generally used the standard rate, with a reduced rate fo
 | Zero rate | 3 |
 | Zero rate for intra-EU goods | 4 |
 | Exemptions | 5 |
-| Accommodation | 6 |
+| Accommodation (logies) | 6 |
 | Electronic publications | 7 |
 | KOR turnover ceiling | 8 |
 | KOR turnover test year | 9 |
@@ -83,10 +83,10 @@ Dutch VAT (btw) in 2021 generally used the standard rate, with a reduced rate fo
 |---|---|---|---|---|
 | Standard VAT rate | 21% | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2021-07-01 |
 | Reduced VAT rate | 9% for goods and services in Table I (tabel i) | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2021-07-01 |
-| Zero rate | Nil (nihil) for goods and services in Table II, subject to conditions set by general administrative order | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2021-07-01 |
-| Zero rate for intra-EU goods | 3 conditions: proof of transport to another EU country, a valid VAT ID from another member state, and a timely, correct and complete ICP return | enacted | Verified | https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf, https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf |
+| Zero rate | Nil (nihil) for goods and services in Table II (tabel ii), subject to conditions set by general administrative order | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2021-07-01 |
+| Zero rate for intra-EU goods | 3 conditions: proof of transport to another EU country, a valid VAT ID from another member state, and a timely, correct and complete ICP statement | enacted | Verified | https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf, https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf |
 | Exemptions | Article 11, paragraph 1, parts a to w | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2020-01-01, https://wetten.overheid.nl/BWBR0002629/2026-01-01 |
-| Accommodation | 9% in 2021 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2025-339.html |
+| Accommodation (logies) | 9% in 2021 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2025-339.html |
 | Electronic publications | 9% from 1 January 2020, including qualifying electronic publications and access to news websites | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2022-9114.html |
 | KOR turnover ceiling | No more than € 20.000 in a calendar year in the Netherlands | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2021-07-01 |
 | KOR turnover test year | The current calendar year only, not the preceding calendar year | enacted | Corrected | https://wetten.overheid.nl/BWBR0002629/2021-07-01 |

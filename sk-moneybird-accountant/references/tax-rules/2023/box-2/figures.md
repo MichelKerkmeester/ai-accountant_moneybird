@@ -59,7 +59,7 @@ Box 2 is the income from a substantial interest (aanmerkelijk belang), a holding
 | Tax credit (belastingkorting) on an unoffset loss (art. 4.53 lid 2) | 18 |
 | Tax credit usage period (art. 4.53 lid 4) | 19 |
 | Inherited substantial interest facility (art. 4.12a) | 20 |
-| Old-age obligation (ODV) market rate (marktrente) for 2023 | 21 |
+| Old-age obligation (oudedagsverplichting, ODV) market rate (marktrente) for 2023 | 21 |
 | Non-resident box 2 base (art. 7.5) | 22 |
 <!-- GENERATED:key-figure-index:end -->
 
@@ -86,7 +86,7 @@ Box 2 is the income from a substantial interest (aanmerkelijk belang), a holding
 | Tax credit (belastingkorting) on an unoffset loss (art. 4.53 lid 2) | 26,9% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 (art. 4.53) |
 | Tax credit usage period (art. 4.53 lid 4) | that year and the seven following years, at the latest the ninth year after the loss year | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/verlies_uit_aanmerkelijk_belang/verlies_omzetten_in_belastingkorting |
 | Inherited substantial interest facility (art. 4.12a) | regular benefits within 24 months after the death | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 4.12a) |
-| Old-age obligation (ODV) market rate (marktrente) for 2023 | 0,699% | enacted | Verified | https://centraalaanspreekpuntpensioenen.belastingdienst.nl/publicaties/overzicht-u-rendementen-en-marktrenten/ |
+| Old-age obligation (oudedagsverplichting, ODV) market rate (marktrente) for 2023 | 0,699% | enacted | Verified | https://centraalaanspreekpuntpensioenen.belastingdienst.nl/publicaties/overzicht-u-rendementen-en-marktrenten/ |
 | Non-resident box 2 base (art. 7.5) | substantial interest in a Netherlands-established company, not part of an enterprise | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 7.5) |
 
 ---

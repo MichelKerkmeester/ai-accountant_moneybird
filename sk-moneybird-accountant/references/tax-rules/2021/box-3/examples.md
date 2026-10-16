@@ -52,7 +52,7 @@ Band method, step by step:
 8. Benefit: € 949,00 + € 10.496,33 = € 11.445,33.
 9. Tax: € 11.445,33 x 31% = € 3.548,05.
 
-Category method under the Box 3 Restoration of Rights Act, step by step:
+Category method under the Box 3 Restoration of Rights Act (Wet rechtsherstel box 3), step by step:
 
 1. Step 1 taxable return (belastbaar rendement): € 200.000 x 0,01% = € 20,00, plus € 150.000 x 5,69% = € 8.535,00, together € 8.555,00, minus € 16.800 x 2,46% = € 413,28, so € 8.141,72.
 2. Step 2 return base: € 350.000 - € 16.800 = € 333.200.

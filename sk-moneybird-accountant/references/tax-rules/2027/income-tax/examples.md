@@ -114,7 +114,7 @@ Assume an earned income (arbeidsinkomen) of € 50.000, which is inside the phas
 2. Phase-out: € 2.166 × 0,0651 = € 141,0066.
 3. Credit: € 5.889 less € 141,0066 is € 5.747,9934, about € 5.747,99 before any statutory rounding.
 
-### Calculated example: proposed IACK
+### Calculated example: proposed income-related combination tax credit (inkomensafhankelijke combinatiekorting, IACK)
 
 Assume the taxpayer meets the child and partner conditions and has an earned income of € 10.000.
 

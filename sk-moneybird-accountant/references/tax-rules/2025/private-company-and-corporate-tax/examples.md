@@ -27,7 +27,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Private limited company and corporate income tax 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Private limited company and corporate income tax (BV en vennootschapsbelasting) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -100,7 +100,7 @@ Uses the section 2 figures 5,26% and € 75.864.
 Uses the section 2 figures € 67.804, € 16.611, 31% and 15%.
 
 **Official example on a share buyback (inkoop van eigen aandelen) (Official example).**
-Consolidated Dividend Tax Decree 2025, part 7: with a cash dividend shortfall of € 10 million, a taxed buyback of € 8,5 million plus the dividend tax of (100/85 × € 8,5 million × 15% =) € 1,5 million may make it up. This concerns the art. 4c buyback facility for listed companies.
+Consolidated Dividend Tax Decree 2025, onderdeel 7: with a cash dividend shortfall of € 10 million, a taxed buyback of € 8,5 million plus the dividend tax of (100/85 × € 8,5 million × 15% =) € 1,5 million may make it up. This concerns the art. 4c buyback facility for listed companies.
 1. € 8.500.000,00 × 100/85 = € 10.000.000,00. Exact, no rounding needed.
 2. 15% × € 10.000.000,00 = € 1.500.000,00. Exact, no rounding needed.
 URL: https://zoek.officielebekendmakingen.nl/stcrt-2025-34752.html

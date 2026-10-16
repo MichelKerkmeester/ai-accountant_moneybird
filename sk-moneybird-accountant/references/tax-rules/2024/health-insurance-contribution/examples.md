@@ -45,7 +45,7 @@ Step 2. Entrepreneur's allowance (ondernemersaftrek): € 60.000 minus € 3.750
 Step 3. SME profit exemption (MKB-winstvrijstelling): 13,31% × € 56.250 = € 7.486,875, rounded € 7.486,88.
 Step 4. Taxable profit (belastbare winst): € 56.250 minus € 7.486,875 = € 48.763,125, rounded € 48.763,13.
 Step 5. Cap: € 48.763,13 is below € 71.628, so the full base carries the contribution.
-Step 6. Zvw contribution (bijdrage): 5,32% × € 48.763,125 = € 2.594,198, rounded € 2.594,20.
+Step 6. Zvw contribution (Zvw-bijdrage): 5,32% × € 48.763,125 = € 2.594,198, rounded € 2.594,20.
 
 The amount of € 2.594,20 is the Zvw contribution in the assessment (aanslag) channel ([Zvw page 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet)).
 

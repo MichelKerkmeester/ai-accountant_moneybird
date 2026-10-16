@@ -42,7 +42,7 @@ The standard rate is 21% for supplies that do not qualify for the reduced rate, 
 
 The 9% rate applies to goods and services listed in Table I. The listed goods include food, water, horticultural products, medicines and aids, art, collectibles and antiques, books and periodicals. Listed services include bicycle, shoe, leather-goods, clothing and household-linen repairs, hairdressing, certain work on homes, camping, cultural and recreational access, performing artists, sport and bathing, and passenger transport. The list also covers comparable electronic publications, news websites and apps unless they mainly carry advertising, video or audible music. The Dutch Tax and Customs Administration (Belastingdienst) also identifies related services such as supplying goods, selling food in hospitality, renting or repairing medical aids, lending books and lending art by the artist. [Wet OB, 1 January 2024](https://wetten.overheid.nl/BWBR0002629/2024-01-01), [goods at 9%](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/goederen_9_btw/goederen_met_9_btw), [services at 9%](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/diensten_9_btw/)
 
-Electronic supply or lending of publications and access to news websites qualified from 1 January 2020 under post b.21 of Table I. [Toelichting Tabel I, decision of 31 March 2022](https://zoek.officielebekendmakingen.nl/stcrt-2022-9114.html)
+Electronic supply or lending of publications and access to news websites qualified from 1 January 2020 under item b.21 of Table I. [Toelichting Tabel I, decision of 31 March 2022](https://zoek.officielebekendmakingen.nl/stcrt-2022-9114.html)
 
 ### Zero rate
 
@@ -130,7 +130,7 @@ A simplified invoice may be used for an invoice of at most € 100 including VAT
 
 ### BUA threshold and own contribution
 
-The VAT deduction exclusion decree (Besluit uitsluiting aftrek omzetbelasting), or BUA, excludes deduction for certain staff provisions, gifts and business gifts. It also covers certain housing, wages in kind, sport, leisure and private transport. From 1 January 2024, test the total cost per recipient against € 227 per book year without subtracting that recipient’s own contribution. A deduction exclusion does not apply up to the VAT charged to the recipient. [BUA, version applying from 23 February 2019](https://wetten.overheid.nl/BWBR0002636/2019-02-23), [decision ending subtraction of the own contribution](https://zoek.officielebekendmakingen.nl/stcrt-2023-28124.html)
+The VAT deduction exclusion decree (Besluit uitsluiting aftrek omzetbelasting), or BUA, excludes deduction for certain staff provisions, gifts and business gifts. It also covers certain housing, wages in kind, sport, leisure and private transport. From 1 January 2024, test the total cost per recipient against € 227 per financial year without subtracting that recipient’s own contribution. A deduction exclusion does not apply up to the VAT charged to the recipient. [BUA, version applying from 23 February 2019](https://wetten.overheid.nl/BWBR0002636/2019-02-23), [decision ending subtraction of the own contribution](https://zoek.officielebekendmakingen.nl/stcrt-2023-28124.html)
 
 ### BUA commuting bicycle exception
 

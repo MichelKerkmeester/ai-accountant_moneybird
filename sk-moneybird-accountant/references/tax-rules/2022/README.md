@@ -44,7 +44,7 @@ Across the twelve topic files the figures tables hold 297 values: 266 Verified, 
 | [private-company-and-corporate-tax](private-company-and-corporate-tax/figures.md) | Corporate income tax (vennootschapsbelasting) for a Dutch private limited company (BV) in 2022, with the rate, loss offsetting, interest deduction, customary salary, Zvw, dividend tax, fiscal unity, innovation box and the switch from a sole proprietorship to a private limited company (BV). | 33 | 0 | 0 |
 | [pension-and-disability-insurance](pension-and-disability-insurance/figures.md) | Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity (lijfrente) conditions, profit from business discontinuation (stakingswinst) conversion, old-age reserve (oudedagsreserve) and disability insurance (AOV) deductibility for a self-employed sole trader (ZZP) in tax year 2022. | 30 | 0 | 0 |
 | [work-relationship](work-relationship/figures.md) | Wet DBA, the enforcement moratorium (handhavingsmoratorium) and model agreements (modelovereenkomsten) for tax year 2022, plus the later VBAR hourly rate presumption and the BAZ bill as recorded in the checked sources. | 21 | 2 | 9 |
-| [procedure](procedure/figures.md) | Filing deadlines, deferral (uitstel), provisional assessment, tax interest, additional assessment, objection, record-keeping obligation and Chamber of Commerce and Dutch Tax and Customs Administration registration duties for tax year 2022. | 42 | 0 | 0 |
+| [procedure](procedure/figures.md) | Filing deadlines, deferral (uitstel), provisional assessment, tax interest, additional assessment, objection, record-retention obligation and Chamber of Commerce and Dutch Tax and Customs Administration registration duties for tax year 2022. | 42 | 0 | 0 |
 <!-- GENERATED:topic-files:end -->
 
 ---
@@ -56,7 +56,7 @@ The first two rows of each file's figures table. The topic file carries the sour
 <!-- GENERATED:headline-figures:start -->
 | Topic | Item | Value 2022 | Status | Check |
 |---|---|---|---|---|
-| BTW | Standard, reduced and zero rates (Wet OB art. 9) | 21% standard. 9% for goods and services in Table I. Nil for goods and services in Table II when the conditions set by order in council (algemene maatregel van bestuur) are met. | enacted | Verified |
+| BTW | Standard, reduced and zero rates (Wet OB art. 9) | 21% standard. 9% for goods and services in Table I (Tabel I). Nil for goods and services in Table II (Tabel II) when the conditions set by order in council (algemene maatregel van bestuur) are met. | enacted | Verified |
 | BTW | Table I goods at 9% | foodstuffs (voedingsmiddelen), water, horticultural products (sierteeltproducten), medicines (geneesmiddelen) and medical devices (hulpmiddelen), art (kunst), collectibles (verzamelvoorwerpen) and antiques, books and periodicals (boeken en periodieken) | enacted | Verified |
 | Inkomstenbelasting box 1 | Box 1 below state pension age (AOW age) | 37,07% up to € 69.398, then 49,50%. Statutory table: 9,42% up to € 35.472, then € 3.341 plus 37,07% up to € 69.398, then € 15.917 plus 49,50% | enacted | Verified |
 | Inkomstenbelasting box 1 | Box 1 for a full year at state pension age | Born on or after 1 January 1946: 19,17% up to € 35.472, then 37,07% up to € 69.398, then 49,50%. Born before 1 January 1946: 19,17% up to € 36.409, then 37,07% up to € 69.398, then 49,50%. Statutory fixed amounts for the pre-1946 table: € 3.429 and € 15.658 | enacted | Verified |

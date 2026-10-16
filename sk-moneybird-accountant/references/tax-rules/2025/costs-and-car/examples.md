@@ -1,5 +1,5 @@
 ---
-title: "Costs and car 2025: Examples"
+title: "Costs (kosten) and car 2025: Examples"
 description: "Deductible business costs and the car for a Dutch sole trader in tax year 2025, from the threshold for mixed costs (gemengde kosten drempel) and the fixed exclusions to the kilometre allowance, private-use addition (bijtelling) and the performance grant (prestatiebeurs) exception. This file holds the examples part."
 nav_label: "Kosten en auto examples"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Costs and car 2025: Examples
+# Costs (kosten) and car 2025: Examples
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Costs and car 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Costs (kosten) and car 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -70,7 +70,7 @@ For a value of exactly € 30.000 the outcome is 17% x € 30.000 = € 5.100,00
 
 ### Example 7. Youngtimer
 
-**Calculated example.** A car first taken into use more than 15 years before 2025 has a WEV of € 10.000. The withdrawal is 35% x € 10.000 = € 3.500,00, rounded to € 3.500. If the total car costs (autokosten) including depreciation that the taxpayer bore are € 2.800, the withdrawal is capped at € 2.800.
+**Calculated example.** A car first taken into use more than 15 years before 2025 has a market value (WEV) of € 10.000. The withdrawal is 35% x € 10.000 = € 3.500,00, rounded to € 3.500. If the total car costs (autokosten) including depreciation that the taxpayer bore are € 2.800, the withdrawal is capped at € 2.800.
 
 ### Example 8. Bicycle (fiets)
 

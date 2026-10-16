@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Costs and car 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Costs and car (kosten en auto) 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -68,7 +68,7 @@ Train tickets for business trips of € 940,00 and a business taxi ride of € 6
 
 ### Example 5: congress cap (Calculated example)
 
-A taxpayer visits a conference (congres) abroad that is not necessary because of the nature of the work. Travel and stay cost € 1.850,00.
+A taxpayer visits a conference (congres) abroad that is not necessary because of the nature of the work. Travel and accommodation cost € 1.850,00.
 
 - Cap: € 1.850,00 minus € 1.500,00 = € 350,00 is not deductible.
 - The remaining € 1.500,00 is part of the mixed costs posts of art. 3.15 and is subject to the threshold or the 80% election (art. 3.16 lid 2 f and lid 8, and art. 3.15 lid 2, https://wetten.overheid.nl/BWBR0011353/2023-01-01).
@@ -136,7 +136,7 @@ A training (scholing) costs € 1.200,00 including VAT (btw) and is claimed in o
 A taxpayer works from a loose desk in the living room and spends € 1.800,00 on a desk, a chair and a cabinet (kast).
 
 - The workspace is not self-contained, so the costs are not deductible and € 0,00 of the € 1.800,00 is deducted.
-- With its own entrance (opgang), own sanitary facilities and a space that could be rented to a third party, and with the income test met, the space would be self-contained and the costs would fall under the workspace rules (art. 3.16 lid 1, https://wetten.overheid.nl/BWBR0011353/2023-01-01).
+- With its own entrance or stairway (opgang), own sanitary facilities and a space that could be rented to a third party, and with the income test met, the space would be self-contained and the costs would fall under the workspace rules (art. 3.16 lid 1, https://wetten.overheid.nl/BWBR0011353/2023-01-01).
 
 ### Example 15: telephone subscription at home (telefoonabonnement thuis) (Calculated example)
 
@@ -157,7 +157,7 @@ Assume the laptop and printer belong to the business assets. A taxpayer buys a l
 
 A private car used for business has a catalogue price including VAT and bpm of € 30.000,00. There is no conclusive mileage records (sluitende kilometeradministratie), so all VAT is deducted during the year.
 
-- Annual correction (jaarcorrectie): 1,5% x € 30.000,00 = € 450,00 in rubriek 1d.
+- Annual correction (jaarcorrectie): 1,5% x € 30.000,00 = € 450,00 in rubriek 1d (rubriek 1d).
 - If only € 400,00 of VAT was deducted on use and maintenance during the year, the correction cannot exceed € 400,00 (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/btw_en_de_auto/zakelijk_gebruik_van_de_priveauto/zakelijk_gebruik_van_de_priveauto).
 
 ### Example 18: fine (geldboete) (Calculated example)

@@ -52,7 +52,7 @@ This part holds the worked examples for the Investment deduction and depreciatio
 
 ### Calculated example: KIA in a partnership (samenwerkingsverband)
 
-**Calculated example.** A general partnership (vof) invests € 70.000,00 in 2024. One partner (vennoot) has a € 10.000,00 share in that investment, in proportion to the (over)profit (winst). He also invests € 10.000,00 privately in the same year. Step 1: add the partnership investment and the private investment, € 70.000,00 + € 10.000,00 = € 80.000,00. Step 2: the table applied to € 80.000,00 gives the fixed € 19.535,00, because € 80.000,00 is above € 69.765,00 and at most € 129.194,00. Step 3: his own investment amount is € 10.000,00 + € 10.000,00 = € 20.000,00. Step 4: the fraction is € 20.000,00 / € 80.000,00 = 1/4. Step 5: KIA = € 19.535,00 × 1/4 = € 4.883,75.
+**Calculated example.** A general partnership (vof) invests € 70.000,00 in 2024. One partner (vennoot) has a € 10.000,00 share in that investment, in proportion to the (excess) profit ((over)winst). He also invests € 10.000,00 privately in the same year. Step 1: add the partnership investment and the private investment, € 70.000,00 + € 10.000,00 = € 80.000,00. Step 2: the table applied to € 80.000,00 gives the fixed € 19.535,00, because € 80.000,00 is above € 69.765,00 and at most € 129.194,00. Step 3: his own investment amount is € 10.000,00 + € 10.000,00 = € 20.000,00. Step 4: the fraction is € 20.000,00 / € 80.000,00 = 1/4. Step 5: KIA = € 19.535,00 × 1/4 = € 4.883,75.
 
 ### Calculated example: EIA plus KIA
 

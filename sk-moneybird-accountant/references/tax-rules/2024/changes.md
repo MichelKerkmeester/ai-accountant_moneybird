@@ -44,7 +44,7 @@ This note lists what changed for tax year 2024. Section 2 holds the changes uniq
 |---|---|---|
 | [vat.md](vat/notes.md#5-changes) | 4 | From 1 January 2024, an employee’s own contribution is no longer subtracted... |
 | [income-tax.md](income-tax/notes.md#5-changes) | 12 | The Box 1 below-AOW combined rate rose from 36,93% up to € 73.031 to 36,97% up... |
-| [health-insurance-contribution.md](health-insurance-contribution/notes.md#5-changes) | 7 | Zvw contribution by assessment (aanslag): 5,43% in 2023 to 5,32% in 2024 ([Zvw... |
+| [health-insurance-contribution.md](health-insurance-contribution/notes.md#5-changes) | 7 | Zvw contribution (Zvw-bijdrage) by assessment (aanslag): 5,43% in 2023 to 5,32%... |
 | [business-deductions.md](business-deductions/notes.md#5-changes) | 11 | Self-employed person's deduction (zelfstandigenaftrek): € 5.030 in 2023 to €... |
 | [investments.md](investments/notes.md#5-changes) | 9 | KIA table, old to new: 2023 was nil up to € 2.600, 28% up to € 63.716, € 17.841... |
 | [costs-and-car.md](costs-and-car/notes.md#5-changes) | 6 | Threshold for mixed costs (gemengde kosten drempel): € 5.100 in 2023 to € 5.600... |

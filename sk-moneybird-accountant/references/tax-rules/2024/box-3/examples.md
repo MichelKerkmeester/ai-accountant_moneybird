@@ -111,13 +111,13 @@ Step 6: tax 36% x € 8.838 = € 3.181.
 
 Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2024
 
-### Example 6: Green investments credit (korting groene beleggingen)
+### Example 6: Green investments credit (korting groene beleggingen) (Calculated example)
 
 This example continues the inputs of example 5. The exempt green amount is € 142.502 because the partners hold € 150.000 of green investments and the whole-year partner exemption is € 142.502. The credit is 0,7% x € 142.502 = € 997,51. The Dutch Tax and Customs Administration (Belastingdienst) computes the credit automatically. For whole-year partners the credit is split in the same ratio as the green balance. This example uses only the 2024 figures from section 2.
 
 Sources: https://wetten.overheid.nl/BWBR0011353/2024-01-01 https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/korting_voor_groene_beleggingen
 
-### Example 7: Actual return lower than the fictitious benefit
+### Example 7: Actual return lower than the fictitious benefit (Calculated example)
 
 This example builds on example 1. The fictitious benefit is € 1.339 and the fictitious tax is € 482. Suppose the taxpayer makes plausible that the actual return is € 300. The box 3 income is then € 300 minus the personal deductions (persoonsgebonden aftrek). With no personal deductions, the tax is 36% x € 300 = € 108. The Dutch Tax and Customs Administration uses the most favourable amount, so the taxpayer pays € 108 instead of € 482. The actual return does not use the tax-free allowance (heffingsvrij vermogen).
 

@@ -1,5 +1,5 @@
 ---
-title: "Zvw contribution 2025: Examples"
+title: "Zvw contribution (Zvw-bijdrage) 2025: Examples"
 description: "The income-dependent Zvw contribution for an entrepreneur in tax year 2025: the 5,26% rate, the maximum contribution income (bijdrage-inkomen) of € 75.864, who pays by assessment (aanslag) and how that differs from the 6,51% employer levy (werkgeversheffing). This file holds the examples part."
 nav_label: "Zvw-bijdrage examples"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Zvw contribution (zvw-bijdrage) 2025: Examples
+# Zvw contribution (Zvw-bijdrage) 2025: Examples
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Zvw contribution (zvw-bijdrage) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Zvw contribution (Zvw-bijdrage) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -36,9 +36,9 @@ This part holds the worked examples for the Zvw contribution (zvw-bijdrage) 2025
 
 **Official example 1 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet).** Salary (loon) € 40.000 plus freelance income of € 50.000. The maximum contribution income (bijdrage-inkomen) is € 75.864 and the salary already carried a contribution, so the headroom is € 75.864 minus € 40.000 = € 35.864, and the 5,26% applies to that € 35.864 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The euro amount of the contribution is not printed on the page.
 
-**Official example 2 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet).** salary € 80.000 plus freelance income of € 15.000 gives no contribution (bijdrage), because the salary alone is above the maximum of € 75.864 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
+**Official example 2 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet).** Salary € 80.000 plus freelance income of € 15.000 gives no contribution (bijdrage), because the salary alone is above the maximum of € 75.864 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 
-**Calculated example 1, profit of € 60.000.** Assume the entrepreneur meets the hours criterion (urencriterium), does not qualify for the starter's deduction (startersaftrek) and has no other income. Step 1: Profits from business activities (winst uit onderneming) € 60.000. Step 2: Self-employed person's deduction (zelfstandigenaftrek) € 2.470, so the profit after the entrepreneur's allowance (ondernemersaftrek) is € 60.000 minus € 2.470 = € 57.530. Step 3: SME profit exemption (mkb-winstvrijstelling) 12,7% of € 57.530 = € 7.306,31 (57.530 times (keer) 0,127). Step 4: Taxable profit from business (belastbare winst uit onderneming) = € 57.530 minus € 7.306,31 = € 50.223,69. Step 5: the contribution income is € 50.223,69, which is below the maximum of € 75.864, so no cap applies. Step 6: Zvw contribution (zvw-bijdrage) = 5,26% of € 50.223,69 = € 2.641,77 (50.223,69 times 0,0526 = 2.641,766094, rounded to two decimals).
+**Calculated example 1, profit of € 60.000.** Assume the entrepreneur meets the hours criterion (urencriterium), does not qualify for the starter's deduction (startersaftrek) and has no other income. Step 1: Profits from business activities (winst uit onderneming) € 60.000. Step 2: Self-employed person's deduction (zelfstandigenaftrek) € 2.470, so the profit after the entrepreneur's allowance (ondernemersaftrek) is € 60.000 minus € 2.470 = € 57.530. Step 3: SME profit exemption (mkb-winstvrijstelling) 12,7% of € 57.530 = € 7.306,31 (57.530 times 0,127). Step 4: Taxable profit from business (belastbare winst uit onderneming) = € 57.530 minus € 7.306,31 = € 50.223,69. Step 5: the contribution income is € 50.223,69, which is below the maximum of € 75.864, so no cap applies. Step 6: Zvw contribution (zvw-bijdrage) = 5,26% of € 50.223,69 = € 2.641,77 (50.223,69 times 0,0526 = 2.641,766094, rounded to two decimals).
 
 **Calculated example 2, profit of € 100.000.** Same assumptions, no other income. Step 1: Profit € 100.000. Step 2: Self-employed person's deduction € 2.470, so € 100.000 minus € 2.470 = € 97.530. Step 3: SME profit exemption 12,7% of € 97.530 = € 12.386,31. Step 4: Taxable profit (belastbare winst) = € 97.530 minus € 12.386,31 = € 85.143,69. Step 5: the maximum contribution income caps this at € 75.864. Step 6: Zvw contribution = 5,26% of € 75.864 = € 3.990,45 (75.864 times 0,0526 = 3.990,4464, rounded to two decimals). This is the highest contribution on profit in 2025 on these inputs.
 

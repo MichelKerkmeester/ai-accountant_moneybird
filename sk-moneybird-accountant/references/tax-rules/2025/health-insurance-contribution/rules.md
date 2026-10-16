@@ -1,5 +1,5 @@
 ---
-title: "Zvw contribution 2025: Rules"
+title: "Zvw contribution (Zvw-bijdrage) 2025: Rules"
 description: "The income-dependent Zvw contribution for an entrepreneur in tax year 2025: the 5,26% rate, the maximum contribution income (bijdrage-inkomen) of € 75.864, who pays by assessment (aanslag) and how that differs from the 6,51% employer levy (werkgeversheffing). This file holds the rules part."
 nav_label: "Zvw-bijdrage rules"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Zvw contribution (zvw-bijdrage) 2025: Rules
+# Zvw contribution (Zvw-bijdrage) 2025: Rules
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the how-it-works rules for the Zvw contribution (zvw-bijdrage) 2025 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
+This part holds the how-it-works rules for the Zvw contribution (Zvw-bijdrage) 2025 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -36,7 +36,7 @@ This part holds the how-it-works rules for the Zvw contribution (zvw-bijdrage) 2
 
 ### Zvw contribution (zvw-bijdrage) by assessment (aanslag)
 
-An entrepreneur who is Zvw-insured and receives profit from the Netherlands (winst uit nederland) pays the income-dependent contribution by (provisional) assessment (voorlopige aanslag), not through a payroll. Zvw art. 45 lets the minister set the percentages, and the 2025 percentage for this channel is 5,26% (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet). Zvw art. 43 lid 3 sets the contribution income (bijdrage-inkomen) at no less than nil and no more than a yearly maximum set by ministerial regulation (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01). The Zvw assessment comes with the (provisional) income tax assessment (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The checked material does not state which return is used for the Zvw and does not state a separate deadline, see section 7.
+An entrepreneur who is Zvw-insured and receives business profit from the Netherlands (winst uit nederland) pays the income-dependent contribution by (provisional) assessment (voorlopige aanslag), not through a payroll. Zvw art. 45 lets the minister set the percentages, and the 2025 percentage for this channel is 5,26% (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/inkomensafhankelijke_bijdrage_zorgverzekeringswet). Zvw art. 43 lid 3 sets the contribution income (bijdrage-inkomen) at no less than nil and no more than a yearly maximum set by ministerial regulation (https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01). The Zvw assessment comes with the (provisional) income tax assessment (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The checked material does not state which return is used for the Zvw and does not state a separate deadline, see section 7.
 
 ### Maximum contribution income
 
@@ -52,7 +52,7 @@ The employer levy (werkgeversheffing) is paid by the employer or the benefit age
 
 ### Income charged by assessment
 
-By (provisional) assessment the following income is charged: Profit from the Netherlands, income from other work (inkomsten uit overig werk), salary from a foreign employer, pension from a foreign benefit agency and periodic payments (periodieke uitkeringen) without payroll taxes such as spousal maintenance (partneralimentatie) (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The conversion of an old-age reserve (oudedagsreserve) into an annuity is expressly not covered (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The checked material attributes salary from a foreign employer to the 2020 to 2024 pages of the FISIN Zvw series, and the 2025 listing is not confirmed, see section 7. The Zvw assessment comes with the (provisional) income tax assessment (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
+By (provisional) assessment the following income is charged: Business profit from the Netherlands, income from other work (inkomsten uit overig werk), salary from a foreign employer, pension from a foreign benefit agency and periodic payments (periodieke uitkeringen) without payroll taxes such as spousal maintenance (partneralimentatie) (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The conversion of an old-age reserve (oudedagsreserve) into an annuity is expressly not covered (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The checked material attributes salary from a foreign employer to the 2020 to 2024 pages of the FISIN Zvw series, and the 2025 listing is not confirmed, see section 7. The Zvw assessment comes with the (provisional) income tax assessment (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 
 ### Exceptions to the assessment
 
@@ -72,7 +72,7 @@ Art. 43 lid 2 onderdeel b carves out the amount added under art. 3.70 lid 2 for 
 
 ### Self-employed person's deduction (zelfstandigenaftrek)
 
-The self-employed person's deduction is part of the entrepreneur's allowance, which is deducted from the profit before the SME profit exemption, so it lowers the Zvw base. The 2025 amount is € 2.470, or 50% (€ 1.235) at state pension age (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/verandering_inkomstenbelasting_vorige_jaren/veranderingen-inkomstenbelasting-2025/ondernemersaftrek-2025/zelfstandigenaftrek-2025, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek). https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/verandering_inkomstenbelasting_vorige_jaren/veranderingen-inkomstenbelasting-2025/ondernemersaftrek-2025/zelfstandigenaftrek-2025 and the https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek table give € 2.470, and the https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek example that prints € 2.740 is a typo that is resolved against https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/verandering_inkomstenbelasting_vorige_jaren/veranderingen-inkomstenbelasting-2025/ondernemersaftrek-2025/zelfstandigenaftrek-2025 and the table. The conditions of the deduction (aftrek), such as the hours criterion (urencriterium), belong to the entrepreneur's allowance topic and are not repeated here (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek).
+The self-employed person's deduction is part of the entrepreneur's allowance, which is deducted from the profit before the SME profit exemption, so it lowers the Zvw base. The 2025 amount is € 2.470, or 50% (€ 1.235) at state pension (AOW) age (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/verandering_inkomstenbelasting_vorige_jaren/veranderingen-inkomstenbelasting-2025/ondernemersaftrek-2025/zelfstandigenaftrek-2025, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek). https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/verandering_inkomstenbelasting_vorige_jaren/veranderingen-inkomstenbelasting-2025/ondernemersaftrek-2025/zelfstandigenaftrek-2025 and the https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek table give € 2.470, and the https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek example that prints € 2.740 is a typo that is resolved against https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/verandering_inkomstenbelasting_vorige_jaren/veranderingen-inkomstenbelasting-2025/ondernemersaftrek-2025/zelfstandigenaftrek-2025 and the table. The conditions of the deduction (aftrek), such as the hours criterion (urencriterium), belong to the entrepreneur's allowance topic and are not repeated here (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek).
 
 ### Starter's deduction (startersaftrek)
 

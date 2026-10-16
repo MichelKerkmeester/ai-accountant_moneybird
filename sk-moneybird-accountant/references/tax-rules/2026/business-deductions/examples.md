@@ -97,7 +97,7 @@ Inputs: profit € 20.000,00, the taxpayer was not an entrepreneur in one or mor
 Inputs: profit € 60.000,00, the taxpayer has not reached state pension age at the start of 2026, the hours criterion is met, and the taxpayer holds an R&D declaration (S&O-verklaring) from the Netherlands Enterprise Agency (RVO) and made at least 500 hours of research and development work.
 
 - Step 1, self-employed person's deduction: € 1.200,00.
-- Step 2, deduction for research and development work: € 15.979,00.
+- Step 2, deduction for research and development work (aftrek speur- en ontwikkelingswerk): € 15.979,00.
 - Step 3, total entrepreneur's allowance: € 1.200,00 plus € 15.979,00 = € 17.179,00.
 - Step 4, profit after the entrepreneur's allowance: € 60.000,00 minus € 17.179,00 = € 42.821,00.
 - Step 5, SME profit exemption: € 42.821,00 × 12,7% = € 5.438,267, rounded to € 5.438,27.
@@ -118,7 +118,7 @@ Case 2. Inputs: taxable box 1 income after the deductions is € 70.000,00 and t
 
 ### Example 9, discontinuation deduction (stakingsaftrek) (Calculated example)
 
-Inputs: profit from the cessation of one whole business € 5.000,00, no discontinuation deduction was used in earlier years, and no other entrepreneur's allowance applies in this example.
+Inputs: profit from the cessation (staking) of one whole business € 5.000,00, no discontinuation deduction was used in earlier years, and no other entrepreneur's allowance applies in this example.
 
 - Step 1, discontinuation deduction: at most € 3.630,00 and at most the profit of € 5.000,00, so € 3.630,00.
 - Step 2, profit after the entrepreneur's allowance: € 5.000,00 minus € 3.630,00 = € 1.370,00.

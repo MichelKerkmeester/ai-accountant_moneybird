@@ -39,7 +39,7 @@ This file covers only the income-dependent Zvw contribution (inkomensafhankelijk
 <!-- GENERATED:key-figure-index:start -->
 | Item | row |
 |---|---|
-| Zvw contribution by (provisional) assessment (voorlopige aanslag) | 1 |
+| Zvw contribution (Zvw-bijdrage) by (provisional) assessment (voorlopige aanslag) | 1 |
 | Withheld Zvw contribution (ingehouden bijdrage) | 2 |
 | Maximum contribution income (bijdrage-inkomen) | 3 |
 | Zvw employer levy (werkgeversheffing) | 4 |
@@ -51,7 +51,7 @@ This file covers only the income-dependent Zvw contribution (inkomensafhankelijk
 
 | Item | Value 2021 | Status | Check | Source |
 |---|---|---|---|---|
-| Zvw contribution by (provisional) assessment (voorlopige aanslag) | 5,75% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
+| Zvw contribution (Zvw-bijdrage) by (provisional) assessment (voorlopige aanslag) | 5,75% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
 | Withheld Zvw contribution (ingehouden bijdrage) | 5,75% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
 | Maximum contribution income (bijdrage-inkomen) | € 58.311 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
 | Zvw employer levy (werkgeversheffing) | 7,00% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet |

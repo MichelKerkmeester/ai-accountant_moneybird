@@ -56,7 +56,7 @@ Official example. Source: https://www.kvk.nl/starten/de-magische-1225-uur-alles-
 - At 8 hours a day: 117 × 8 = 936,00 hours.
 - 936,00 hours is less than 1.225 hours, and the requirement is not pro-rated for the part of the year, so extra hours are needed to reach 1.225 hours.
 
-### Calculated example 4: Self-employed person's deduction and SME profit exemption
+### Calculated example 4: Self-employed person's deduction and SME profit exemption (mkb-winstvrijstelling)
 Calculated example from the section 2 figures.
 
 - Profit: € 60.000. Hours criterion (urencriterium) is met. No starter's deduction.

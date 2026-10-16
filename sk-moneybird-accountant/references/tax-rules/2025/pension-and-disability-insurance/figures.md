@@ -1,6 +1,6 @@
 ---
 title: "Pension, annuity and disability insurance 2025: Figures"
-description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity (lijfrente) conditions, profit from business discontinuation (stakingswinst) conversion, old-age reserve (FOR) interaction and disability insurance (AOV) premium deductibility for tax year 2025, plus the proposed Basic Insurance for Self-Employed Persons (Incapacity) Act (BAZ)."
+description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity (lijfrente) conditions, profit from business discontinuation (stakingswinst) conversion, old-age reserve (FOR) interaction and disability insurance (AOV) premium deductibility for tax year 2025, plus the proposed Basic Disability Insurance for Self-Employed Persons Act (BAZ)."
 nav_label: "Pensioen, lijfrente en AOV"
 trigger_phrases:
   - "pensioen en AOV 2025"
@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the annual allowance (jaarruimte), the catch-up allowance (catch-up room for unused annual allowance, reserveringsruimte), annuity (lijfrente) products and their conditions, converting profit from business discontinuation (stakingswinst) into an annuity, the interaction with the old-age reserve (oudedagsreserve, FOR), the deductibility of disability insurance (arbeidsongeschiktheidsverzekering, AOV) premiums, and the proposed Basic Insurance for Self-Employed Persons (Incapacity) Act (Wet basisverzekering arbeidsongeschiktheid zelfstandigen, BAZ). The main 2025 values are a 30% annual allowance percentage, an income cap (aftoppingsgrens) of € 137.800, a franchise (offset) of € 18.475, a maximum annual allowance of € 35.798 and a catch-up allowance maximum of € 42.108. The 2025 rules for these items are enacted. The BAZ is proposed only and has no enacted law in the checked material.
+This file covers the annual allowance (jaarruimte), the catch-up allowance (catch-up room for unused annual allowance, reserveringsruimte), annuity (lijfrente) products and their conditions, converting profit from business discontinuation (stakingswinst) into an annuity, the interaction with the old-age reserve (oudedagsreserve, FOR), the deductibility of disability insurance (arbeidsongeschiktheidsverzekering, AOV) premiums, and the proposed Basic Disability Insurance for Self-Employed Persons Act (Wet basisverzekering arbeidsongeschiktheid zelfstandigen, BAZ). The main 2025 values are a 30% annual allowance percentage, an income cap (aftoppingsgrens) of € 137.800, a franchise (offset) of € 18.475, a maximum annual allowance of € 35.798 and a catch-up allowance maximum of € 42.108. The 2025 rules for these items are enacted. The BAZ is proposed only and has no enacted law in the checked material.
 
 ---
 

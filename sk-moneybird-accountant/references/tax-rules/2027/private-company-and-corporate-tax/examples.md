@@ -143,7 +143,7 @@ No official examples were found in the checked material for 2027. Every example 
 
 - Input: assets € 500.000, net turnover € 1.000.000, 8 employees on two consecutive balance dates.
 - Micro test: assets above € 450.000 fails, turnover above € 900.000 fails, employees below 10 passes. One of three, so not micro.
-- Small test: assets below € 7,5 million (miljoen), turnover below € 15 million, employees below 50. All three pass, so small.
+- Small test: assets below € 7,5 million, turnover below € 15 million, employees below 50. All three pass, so small.
 - Deposit: book year ends 31 December 2027 and the accounts are adopted on 15 May 2028. Deposit within 8 days, by 23 May 2028, and at the latest on 31 December 2028.
 - Result: small class, deposit by 23 May 2028 and no later than 31 December 2028.
 

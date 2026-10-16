@@ -45,7 +45,7 @@ Step 5: the contribution is € 18.311 times 5,75% = € 1.052,88 rounded to the
 **Example 2. Official example (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/inkomensafhankelijke_bijdrage_zorgverzekeringswet).**
 Salary € 60.000 plus freelance income € 15.000.
 Step 1: the salary of € 60.000 is above the maximum of € 58.311, so the headroom is € 0.
-Step 2: no Zvw contribution by assessment (aanslag) is charged over the freelance income. The page states this gives no contribution.
+Step 2: no Zvw contribution (Zvw-bijdrage) by assessment (aanslag) is charged over the freelance income. The page states this gives no contribution.
 
 **Example 3. Calculated example.**
 Profit (winst) € 60.000, entrepreneur below AOW age.

@@ -36,12 +36,12 @@ This part holds the changes, records, open points and related resources for the 
 
 - The checked material for 2019 is not available. This file cannot give old-to-new values for the step from 2019 to 2020. The 2020 sources state the 2020 position.
 - Vpb 2020: up to and including € 200.000, 16,5%, above that € 33.000 plus 25%. Source: https://wetten.overheid.nl/BWBR0002672/2020-01-01 (art. 22).
-- loss offsetting (verliesverrekening) 2020: 1 year back and 6 years forward, after a decision. Source: https://wetten.overheid.nl/BWBR0002672/2020-01-01 (art. 20 lid 2).
+- Loss offsetting (verliesverrekening) 2020: 1 year back and 6 years forward, after a decision. Source: https://wetten.overheid.nl/BWBR0002672/2020-01-01 (art. 20 lid 2).
 - Art. 15b 2020: 30% of the adjusted profit (gecorrigeerde winst) and a € 1.000.000 threshold. Source: https://wetten.overheid.nl/BWBR0002672/2020-01-01 (art. 15b lid 1).
-- customary salary (gebruikelijk loon) 2020: standard amount (normbedrag) € 46.000 and 75% of the comparable wage. Source: https://wetten.overheid.nl/BWBR0002471/2020-01-01.
+- Customary salary (gebruikelijk loon) 2020: standard amount (normbedrag) € 46.000 and 75% of the comparable wage. Source: https://wetten.overheid.nl/BWBR0002471/2020-01-01.
 - Box 2 2020: 26,25% flat. Source: https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 2.12).
-- dividend tax (dividendbelasting) 2020: 15% and a 100/85 gross-up. Source: https://wetten.overheid.nl/BWBR0002515/2020-01-01 (art. 5 and 6 lid 1).
-- discontinuation deduction (stakingsaftrek) 2020: at most € 3.630. Source: https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.79).
+- Dividend tax (dividendbelasting) 2020: 15% and a 100/85 gross-up. Source: https://wetten.overheid.nl/BWBR0002515/2020-01-01 (art. 5 and 6 lid 1).
+- Discontinuation deduction (stakingsaftrek) 2020: at most € 3.630. Source: https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.79).
 - What began in 2020: there is no conditional withholding tax (conditionele bronbelasting) in 2020. The levy articles first appear in the 2021 version. Source: https://wetten.overheid.nl/BWBR0042952/2021-01-01.
 - The art. 31 pro-rata formula applies to a 2020 book year that straddles 1 January 2021 because art. 22 changed. Source: https://wetten.overheid.nl/BWBR0002672/2020-01-01.
 
@@ -70,7 +70,7 @@ This part holds the changes, records, open points and related resources for the 
 - Unknown: the WML amount of art. 8 lid 1 sub a WML for 2020 is not in the checked sources. The start-up relief minimum of 108% of twelve times that amount therefore cannot be worked out here. Source: https://wetten.overheid.nl/BWBR0002471/2020-01-01.
 - Source vintage: the filing and extension rules come from current Dutch Tax and Customs Administration (Belastingdienst) pages read for the 2025 and 2026 filing seasons. The checked material does not contain a 2020-dated page for these deadlines. Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/aangifte-vennootschapsbelasting-doen/aangifte-vennootschapsbelasting-doen and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/uitstel_aangifte_vennootschapsbelasting/uitstel_aangifte_vennootschapsbelasting.
 - Source vintage: the VAT (btw) rule for a BV comes from a 2024 policy decree (beleidsbesluit) in force from 1 July 2025. The 2020 text is not in the checked sources. Source: https://zoek.officielebekendmakingen.nl/stcrt-2024-38545.html.
-- Source vintage: the purchase of own shares (aandelen) rule comes from a 2025 publication. The 2020 text is not in the checked sources. Source: https://zoek.officielebekendmakingen.nl/stcrt-2025-34752.html.
+- Source vintage: the purchase of own shares (inkoop van eigen aandelen) rule comes from a 2025 publication. The 2020 text is not in the checked sources. Source: https://zoek.officielebekendmakingen.nl/stcrt-2025-34752.html.
 - Source vintage: the route for the uninsured DGA, where the BV withholds the contribution on net wage, is checked in the handbook payroll taxes 2025 and in the 2024 to 2026 Dutch Tax and Customs Administration table. The 2020 FISIN page states only that DGA loon falls under the employer levy (werkgeversheffing) if the DGA is insured. The 2020 route itself is not in the checked sources. Sources: https://download.belastingdienst.nl/belastingdienst/docs/handboek-loonheffingen-lh0221t51d.pdf and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet.
 - The 2025 Tax-neutral Conversion Decree mentions a rounding credit of at most 5% of the paid-up amount and not more than € 30.000. Whether that credit existed in 2020 is not in the checked sources. Reading Stcrt. 2010, 10512 would settle it. Source: https://zoek.officielebekendmakingen.nl/stcrt-2025-37092.html.
 

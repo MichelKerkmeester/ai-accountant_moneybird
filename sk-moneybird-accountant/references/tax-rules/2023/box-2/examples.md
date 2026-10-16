@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Box 2 and substantial interest 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Box 2 and substantial interest (aanmerkelijk belang) 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -48,7 +48,7 @@ This part holds the worked examples for the Box 2 and substantial interest 2023 
 
 **Example 7, Calculated example, loss offset in time.** Invented inputs: a loss from a substantial interest of € 30.000 arises in 2023, there is no box 2 income in 2022 and there is box 2 income of € 18.000 in 2024. Step 1: the loss offsets box 2 income of the previous year and the six following years, so 2022 and 2024 to 2029 ([wetten.overheid.nl, art. 4.49](https://wetten.overheid.nl/BWBR0011353/2023-01-01)). Step 2: the € 18.000 is offset in 2024. Step 3: € 30.000 − € 18.000 = € 12.000 remains usable in 2025 to 2029.
 
-**Example 8, Calculated example, old-age obligation (ODV) increase for 2023.** Invented inputs: the old-age obligation balance at 1 January 2023 is € 100.000. Step 1: the market rate (marktrente) for the yearly increase in 2023 is 0,699%. Step 2: the increase is € 100.000 × 0,00699 = € 699,00, rounded to whole euros € 699 ([Centraal Aanspreekpunt Pensioenen](https://centraalaanspreekpuntpensioenen.belastingdienst.nl/publicaties/overzicht-u-rendementen-en-marktrenten/)).
+**Example 8, Calculated example, old-age obligation (oudedagsverplichting, ODV) increase for 2023.** Invented inputs: the old-age obligation balance at 1 January 2023 is € 100.000. Step 1: the market rate (marktrente) for the yearly increase in 2023 is 0,699%. Step 2: the increase is € 100.000 × 0,00699 = € 699,00, rounded to whole euros € 699 ([Centraal Aanspreekpunt Pensioenen](https://centraalaanspreekpuntpensioenen.belastingdienst.nl/publicaties/overzicht-u-rendementen-en-marktrenten/)).
 
 **Example 9, Calculated example, inherited substantial interest facility.** Invented inputs: the taxpayer inherited shares, box 2 income of € 20.000 was taken into account with the deceased on that transfer, and within 24 months after the death the taxpayer receives regular benefits of € 15.000. Step 1: on request the € 15.000 is not counted as box 2 income, because it does not exceed the € 20.000 that was taken into account with the deceased. Step 2: the same € 15.000 is written off on the acquisition price (verkrijgingsprijs), so the acquisition price falls by € 15.000 ([wetten.overheid.nl, art. 4.12a](https://wetten.overheid.nl/BWBR0011353/2026-01-01)).
 

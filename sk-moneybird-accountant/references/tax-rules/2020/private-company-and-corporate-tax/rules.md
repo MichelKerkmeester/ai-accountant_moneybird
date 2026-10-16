@@ -34,9 +34,9 @@ This part holds the how-it-works rules for the BV and corporate income tax (venn
 
 <a id="3-how-it-works"></a>
 
-### 3.1 corporate income tax rate (Vpb-tarief) and calculation (berekening) 2020
+### 3.1 Corporate income tax rate (Vpb-tarief) and calculation (berekening) 2020
 
-The Vpb applies to a BV. The tax is calculated on the taxable (belastbaar) amount (bedrag). For 2020 the first € 200.000 is taxed at 16,5%. Above € 200.000 the tax is € 33.000 plus 25% of the part above € 200.000. This is the table in art. 22 Wet Vpb 1969. The € 33.000 is the tax on the first € 200.000 at 16,5%. A BV files a corporate income tax return (vennootschapsbelasting). Source: https://wetten.overheid.nl/BWBR0002672/2020-01-01 (art. 22).
+The Vpb applies to a BV. The tax is calculated on the taxable amount (belastbaar bedrag). For 2020 the first € 200.000 is taxed at 16,5%. Above € 200.000 the tax is € 33.000 plus 25% of the part above € 200.000. This is the table in art. 22 Wet Vpb 1969. The € 33.000 is the tax on the first € 200.000 at 16,5%. A BV files a corporate income tax return (vennootschapsbelasting). Source: https://wetten.overheid.nl/BWBR0002672/2020-01-01 (art. 22).
 
 ### 3.2 Art. 31 pro-rata at a financial year spanning the year boundary (boekjaar over de jaargrens)
 
@@ -82,7 +82,7 @@ Art. 5 Wet DB 1965 sets the tax at 15% of the proceeds (opbrengst). Art. 6 lid 1
 
 The rule sits in art. 4 lid 7 Wet DB 1965. It is not art. 4 lid 3. A person who made a counter-performance as part of a series of transactions is not the beneficial owner (uiteindelijk gerechtigde) when the proceeds benefit someone with a lesser right to exemption or refund who keeps a position in the shares. The 2020 text holds this rule. From the 2024 text it reads "wordt in ieder geval niet als uiteindelijk gerechtigde beschouwd". Source: https://wetten.overheid.nl/BWBR0002515/2020-01-01 and https://wetten.overheid.nl/BWBR0002515/2023-01-01 and https://wetten.overheid.nl/BWBR0002515/2024-01-01.
 
-### 3.13 Purchase of own shares (aandelen)
+### 3.13 Purchase of own shares (inkoop van eigen aandelen)
 
 Dividend tax is due on the difference between the buyback price and the average paid-up capital on those shares. This also applies to an exchange buyback. If the company bears the tax, art. 6 Wet DB 1965 grosses it up by 100/85. The art. 4c facility for listed companies can avoid that. Source: https://zoek.officielebekendmakingen.nl/stcrt-2025-34752.html.
 

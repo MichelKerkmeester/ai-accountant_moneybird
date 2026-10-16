@@ -43,7 +43,7 @@ This note lists what changed for tax year 2025. Section 2 holds the changes uniq
 | Topic | Bullets | First change |
 |---|---|---|
 | [vat.md](vat/notes.md#5-changes) | 7 | The KOR changed from the previous scheme, which tested turnover in the current... |
-| [income-tax.md](income-tax/notes.md#5-changes) | 18 | The published box 1 table for taxpayers below state pension age changed from... |
+| [income-tax.md](income-tax/notes.md#5-changes) | 18 | The published box 1 table for taxpayers below state pension (AOW) age changed... |
 | [health-insurance-contribution.md](health-insurance-contribution/notes.md#5-changes) | 13 | Zvw contribution (zvw-bijdrage) by assessment (aanslag): 5,32% in 2024 to 5,26%... |
 | [business-deductions.md](business-deductions/notes.md#5-changes) | 9 | Self-employed person's deduction (zelfstandigenaftrek): € 3.750 in 2024 to €... |
 | [investments.md](investments/notes.md#5-changes) | 7 | KIA table, every amount moves up. The window start goes from € 2.800 to €... |

@@ -36,7 +36,7 @@ This part holds the worked examples for the Investment deduction and depreciatio
 
 No official example for 2023 was found in the checked sources. Every example below is a `Calculated example` built from the figures in section 2.
 
-### Calculated example: small-scale investment allowance (KIA) in the 28% band
+### Calculated example: small-scale investment allowance (kleinschaligheidsinvesteringsaftrek, KIA) in the 28% band
 
 A sole trader invests € 60.000,00 in business assets (bedrijfsmiddelen) in 2023. Each asset clears the € 450,00 floor and the whole amount qualifies for the small-scale investment allowance.
 
@@ -136,7 +136,7 @@ Step 4: the total Environmental Investment Allowance is € 22.500,00 plus € 1
 
 Source: [Milieulijst 2022](https://zoek.officielebekendmakingen.nl/stcrt-2021-47737.html), [art. 3.42a lid 3](https://wetten.overheid.nl/BWBR0011353/2023-01-01).
 
-### Calculated example: arbitrary depreciation for environmental investments (Vamil) on a designated asset
+### Calculated example: arbitrary depreciation for environmental investments (willekeurige afschrijving milieu-investeringen, Vamil) on a designated asset
 
 A trader buys a designated environmental asset (milieu-bedrijfsmiddel) of € 100.000,00 that has not been used before and is above the € 2.500,00 floor.
 

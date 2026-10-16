@@ -1,6 +1,6 @@
 ---
 title: "Pension, annuity and disability insurance 2025: Examples"
-description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity (lijfrente) conditions, profit from business discontinuation (stakingswinst) conversion, old-age reserve (FOR) interaction and disability insurance (AOV) premium deductibility for tax year 2025, plus the proposed Basic Insurance for Self-Employed Persons (Incapacity) Act (BAZ). This file holds the examples part."
+description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity (lijfrente) conditions, profit from business discontinuation (stakingswinst) conversion, old-age reserve (FOR) interaction and disability insurance (AOV) premium deductibility for tax year 2025, plus the proposed Basic Disability Insurance for Self-Employed Persons Act (BAZ). This file holds the examples part."
 nav_label: "Pensioen, lijfrente en AOV examples"
 trigger_phrases:
   - "pensioen en AOV 2025"
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Pension, annuity and disability insurance 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Pension, annuity and disability insurance (pensioen, lijfrente en AOV) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -158,7 +158,7 @@ Step 1: 5,4% x 60.000 = 3.240,00.
 Step 2: 3.240,00 / 12 = 270,00.
 Step 3: 270,00 is above the proposed maximum of € 171 gross per month, so the proposed premium is capped at € 171 gross per month.
 
-This is the Council of State (Raad van State) version of the proposal and not an enacted premium. The Basic Insurance for Self-Employed Persons (Incapacity) Act (BAZ) is not enacted law.
+This is the Council of State (Raad van State) version of the proposal and not an enacted premium. The Basic Disability Insurance for Self-Employed Persons Act (BAZ) is not enacted law.
 
 Source: https://www.rijksoverheid.nl/actueel/nieuws/2025/09/12/wetsvoorstel-voor-basisverzekering-arbeidsongeschiktheid-voor-zelfstandigen-naar-de-raad-van-state
 

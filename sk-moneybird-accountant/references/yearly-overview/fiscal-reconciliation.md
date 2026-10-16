@@ -37,7 +37,7 @@ This reference holds the fiscal reconciliation template, the three-column hand-o
 
 The order matters. Remove the exempt profit components first, subtract the entrepreneur's allowance, then apply the SME profit exemption to the profit after that deduction. Every rate and threshold comes from the resolved year folder, for example [Income tax 2026 figures](../tax-rules/2026/income-tax/figures.md).
 
-`[Operator]` or a bookkeeper decides the entrepreneurship, the hours criterion (urencriterium), the starter history and the deduction eligibility. The pack records each decision with its evidence.
+`[Operator]` or a bookkeeper decides the entrepreneurship (ondernemerschap), the hours criterion (urencriterium), the starter history and the deduction eligibility. The pack records each decision with its evidence.
 
 ---
 
@@ -47,10 +47,10 @@ Split the pack into the three columns below. The first column is what the admini
 
 | Administration supplies | Administration plus evidence | Never in the administration |
 |---|---|---|
-| The balance at the closing date `{balance}` | The hours criterion log `{hours_log}` | Private deductions such as mortgage interest (hypotheekrente) `{private_deduction}` |
+| The balance at the closing date `{balance}` | The hours criterion (urencriterium) log `{hours_log}` | Private deductions such as mortgage interest (hypotheekrente) `{private_deduction}` |
 | The profit and loss account `{profit_and_loss}` | The starter history `{starter_history}` | Private income `{private_income}` |
 | The ledger detail `{ledger_detail}` | The state pension (AOW) status `{aow_status}` | Fiscal partnership facts `{partnership_facts}` |
-| The asset and depreciation schedule `{asset_schedule}` | The investment amounts with the RVO registrations `{investment_amount}` | The final eligibility judgement `{eligibility_judgement}` |
+| The asset and depreciation schedule `{asset_schedule}` | The investment amounts with the Netherlands Enterprise Agency (RVO) registrations `{investment_amount}` | The final eligibility judgement `{eligibility_judgement}` |
 | The VAT position and the filed returns `{vat_position}` | The private-use shares `{private_use_share}` |  |
 | The auditfile reference `{auditfile_reference}` | The accruals and deferrals (transitoria) and the supplementary return (suppletie) corrections `{transitoria}` |  |
 

@@ -53,7 +53,7 @@ This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME pr
 | S&O starter increase | 12 |
 | SME profit exemption (MKB-winstvrijstelling (SME profit exemption)) | 13 |
 | Deduction for assisting partner (meewerkaftrek) bands | 14 |
-| Deduction for assisting partner partner pay limit | 15 |
+| Partner pay limit for the deduction for assisting partner | 15 |
 | Discontinuation deduction (stakingsaftrek) | 16 |
 | Old-age reserve (oudedagsreserve) addition percentage | 17 |
 | Old-age reserve addition maximum | 18 |
@@ -80,7 +80,7 @@ This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME pr
 | S&O starter increase | € 6.494 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek |
 | SME profit exemption (MKB-winstvrijstelling) | 14% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.79a) |
 | Deduction for assisting partner (meewerkaftrek) bands | 525 to under 875 hours 1,25%, 875 to under 1.225 hours 2%, 1.225 to under 1.750 hours 3%, 1.750 hours or more 4% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.78 lid 2) |
-| Deduction for assisting partner partner pay limit | pay below € 5.000 is not deductible, the partner counts as unpaid | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek (art. 3.16 lid 4) |
+| Partner pay limit for the deduction for assisting partner | pay below € 5.000 is not deductible, the partner counts as unpaid | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek (art. 3.16 lid 4) |
 | Discontinuation deduction (stakingsaftrek) | € 3.630 maximum | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.79 lid 2) |
 | Old-age reserve (oudedagsreserve) addition percentage | 9,44% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.68 lid 1) |
 | Old-age reserve addition maximum | € 9.218 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.68 lid 1) |

@@ -80,7 +80,7 @@ The Box 3 Restoration of Rights Act is the law of 21 December 2022, Stb. 2022, 5
 
 The law reacts to the Christmas ruling (Kerstarrest), Supreme Court of the Netherlands (Hoge Raad) 24 December 2021, ECLI:NL:HR:2021:1963. The explanatory memorandum (memorie van toelichting) to the bill describes the ruling as a breach of "artikel 1 EP, in samenhang met artikel 14 EVRM", because the flat-rate system from 2017 cannot pass the proportionality test. Flat rates are allowed, but they must approach reality as closely as possible (https://zoek.officielebekendmakingen.nl/kst-36203-3.html and https://www.rijksoverheid.nl/themas/werk/inkomstenbelasting/box-3/tijdlijn-rechtsherstel-box-3). The MvT says the legislator did not choose a levy on the actual return for the restoration of rights, but a recalculation with the actual composition of the assets in three categories (https://zoek.officielebekendmakingen.nl/kst-36203-3.html).
 
-### Restoration of rights category percentages 2022
+### Restoration of rights (rechtsherstel) category percentages 2022
 
 For 2022 the operative category percentages for the recalculation are 0,00% for bank balances, 5,53% for other assets and 2,28% for debts (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/met-welke-percentages-is-het-fictief-rendement-berekend).
 
@@ -88,7 +88,7 @@ The law as published printed 0,01% in column I and 2,46% in column III. Art. 4 o
 
 The calculation under art. 3 runs through these amounts (https://zoek.officielebekendmakingen.nl/stb-2022-533.html). First the return: column I x the bank balances plus column II x the other assets minus column III x the debts at 1 January. Then the return base: the assets minus the debts above the threshold (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/wat_zijn_uw_bezittingen_en_schulden/uw_schulden/drempel). The effective rate of return (rendementspercentage) is the return divided by the return base. The benefit is that percentage times the base for savings and investments, which is the return base after the tax-free allowance (https://zoek.officielebekendmakingen.nl/stb-2022-533.html and https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen). Art. 2 sets the benefit at the outcome of art. 3, not below nil. Art. 3 lid 4 makes whole-year partners use the joint figures (https://zoek.officielebekendmakingen.nl/stb-2022-533.html). Art. 3 is given in the checked sources with column III x debts, while only the debts above the threshold count in box 3. Section 7 records this wording difference.
 
-### Restoration of rights scope 2022
+### Restoration of rights (rechtsherstel) scope 2022
 
 Art. 1 lid 2 of the Box 3 Restoration of Rights Act makes the law apply to IB/PVV assessments (income tax and national insurance contributions assessments) for 2017, 2018, 2019 or 2020 that were not yet irrevocable on 24 December 2021, and to the assessments for 2021 and 2022 (https://zoek.officielebekendmakingen.nl/stb-2022-533.html). For 2022 the law applies to all IB/PVV assessments for 2022, without the condition that the assessment was not yet irrevocable on 24 December 2021 (https://zoek.officielebekendmakingen.nl/stb-2022-533.html). Art. 1 lid 3 adds that the law applies only where it leads to a lower benefit (https://zoek.officielebekendmakingen.nl/stb-2022-533.html).
 
@@ -96,7 +96,7 @@ Art. 5 lets the extra personal deductions (persoonsgebonden aftrek) follow the p
 
 ### Most favourable method
 
-The Dutch Tax and Customs Administration computes the box 3 income under the old band method and under the category method and applies the more favourable one to the definitive assessment (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen). The rule also holds when the taxpayer already had restoration of rights for the period 2017 to 2022: "Ook als u over de periode 2017-2022 rechtsherstel hebt gehad, passen wij de meest gunstige methode toe." That means: even if you had restoration of rights for the period 2017 to 2022, we apply the most favourable method (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen). The rate on either outcome is 31% (https://wetten.overheid.nl/BWBR0011353/2022-01-01).
+The Dutch Tax and Customs Administration computes the box 3 income under the old band method and under the category method and applies the more favourable one to the definitive assessment (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen). The rule also holds when the taxpayer already had restoration of rights (rechtsherstel) for the period 2017 to 2022: "Ook als u over de periode 2017-2022 rechtsherstel hebt gehad, passen wij de meest gunstige methode toe." That means: even if you had restoration of rights for the period 2017 to 2022, we apply the most favourable method (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen). The rate on either outcome is 31% (https://wetten.overheid.nl/BWBR0011353/2022-01-01).
 
 ### Green investment exemption (vrijstelling groene beleggingen)
 

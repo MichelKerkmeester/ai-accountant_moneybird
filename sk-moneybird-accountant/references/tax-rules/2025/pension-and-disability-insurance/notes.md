@@ -1,6 +1,6 @@
 ---
 title: "Pension, annuity and disability insurance 2025: Notes"
-description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity (lijfrente) conditions, profit from business discontinuation (stakingswinst) conversion, old-age reserve (FOR) interaction and disability insurance (AOV) premium deductibility for tax year 2025, plus the proposed Basic Insurance for Self-Employed Persons (Incapacity) Act (BAZ). This file holds the notes part."
+description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity (lijfrente) conditions, profit from business discontinuation (stakingswinst) conversion, old-age reserve (FOR) interaction and disability insurance (AOV) premium deductibility for tax year 2025, plus the proposed Basic Disability Insurance for Self-Employed Persons Act (BAZ). This file holds the notes part."
 nav_label: "Pensioen, lijfrente en AOV notes"
 trigger_phrases:
   - "pensioen en AOV 2025"
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the changes, records, open points and related resources for the Pension, annuity and disability insurance 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
+This part holds the changes, records, open points and related resources for the Pension, annuity and disability insurance (pensioen, lijfrente en AOV) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
 
 ---
 
@@ -78,9 +78,9 @@ This part holds the changes, records, open points and related resources for the 
 
 - The BAZ values are proposed, not enacted. The Council of State (Raad van State) version states a premium of 5,4% of profit (winst), at most € 171 gross per month, a waiting period (wachttijd) of 2 years and 2260 consultation responses. Source: https://www.rijksoverheid.nl/actueel/nieuws/2025/09/12/wetsvoorstel-voor-basisverzekering-arbeidsongeschiktheid-voor-zelfstandigen-naar-de-raad-van-state. What would settle it: enactment of a BAZ law.
 - The 2025 proposed BAZ waiting period of 2 years differs from later material. Bill art. 16 of the 2026 bill states 104 weeks (weken), and the docket summary still says "ongeveer één jaar". Source: [Kamerstuk 36912 nr. 2, voorstel van wet](https://zoek.officielebekendmakingen.nl/kst-36912-2.html) and https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912. What would settle it: the final enacted text. For 2025 the proposed value is 2 years.
-- FISIN 2025 prints "€ 26.7813" in the temporary old-age annuity account row. The law text valid on 1 January 2025 states € 26.781. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen and https://wetten.overheid.nl/BWBR0011353/2025-01-01. What would settle it: use the law text and a corrected FISIN page.
-- FISIN 2025 describes the profit from business discontinuation tier a as "61 jaar en 10 maanden of ouder". The law keeps "ten hoogste vijf jaar lager dan de pensioengerechtigde leeftijd". The checked material says the FISIN wording matches only 2023 and the ODB 2026 sheet gives "62 jaar of ouder" for 2026. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen, https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 3.129) and https://odb.belastingdienst.nl/wp-content/uploads/2026/01/20251218-Overzicht-cijfers-leven-2026-FsL.pdf. What would settle it: apply the law's relative age test to the taxpayer's state pension (AOW) age. For 2025 the exact age equivalent is not stated in the checked material.
-- The 2025 value table has no UNVERIFIED or unknown items. The maximum annual allowance of € 35.798 is Verified by the Ministry table. Source: https://open.overheid.nl/documenten/dcbb490f-d406-4842-ac33-b5c397e19df0/file
+- FISIN 2025 prints "€ 26.7813" in the temporary old-age annuity (tijdelijke oudedagslijfrente) account row. The law text valid on 1 January 2025 states € 26.781. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen and https://wetten.overheid.nl/BWBR0011353/2025-01-01. What would settle it: use the law text and a corrected FISIN page.
+- FISIN 2025 describes the profit from business discontinuation (stakingswinst) tier a as "61 jaar en 10 maanden of ouder". The law keeps "ten hoogste vijf jaar lager dan de pensioengerechtigde leeftijd". The checked material says the FISIN wording matches only 2023 and the ODB 2026 sheet gives "62 jaar of ouder" for 2026. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen, https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 3.129) and https://odb.belastingdienst.nl/wp-content/uploads/2026/01/20251218-Overzicht-cijfers-leven-2026-FsL.pdf. What would settle it: apply the law's relative age test to the taxpayer's state pension (AOW) age. For 2025 the exact age equivalent is not stated in the checked material.
+- The 2025 value table has no UNVERIFIED or unknown items. The maximum annual allowance (jaarruimte) of € 35.798 is Verified by the Ministry table. Source: https://open.overheid.nl/documenten/dcbb490f-d406-4842-ac33-b5c397e19df0/file
 
 ---
 

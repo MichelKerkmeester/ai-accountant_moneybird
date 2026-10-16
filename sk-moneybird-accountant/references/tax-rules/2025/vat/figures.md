@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the Dutch VAT rules relevant to a sole trader, including rates, exemptions, the small-business scheme, returns, invoicing and cross-border transactions. The main changes for 2025 are the revised KOR rules and a new eight-week deadline for correcting VAT returns. The 2025 rules described here are enacted unless a row is marked otherwise or the open-points section says the value is unverified.
+This file covers the Dutch VAT (btw) rules relevant to a sole trader, including rates, exemptions, the small-business scheme, returns, invoicing and cross-border transactions. The main changes for 2025 are the revised KOR rules and a new eight-week deadline for correcting VAT returns. The 2025 rules described here are enacted unless a row is marked otherwise or the open-points section says the value is unverified.
 
 ---
 

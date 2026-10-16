@@ -113,7 +113,7 @@ Step 3: the addition is never more than the investment amount over which the ded
 
 Sources of the figures: [Wet IB 2001 art. 3.47 lid 1 and lid 2](https://wetten.overheid.nl/BWBR0011353/2020-01-01), [Belastingdienst desinvesteringsbijtelling](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/desinvesteringsbijtelling).
 
-### Example 9 (Calculated example): starter's arbitrary depreciation and the cap
+### Example 9 (Calculated example): starter's arbitrary depreciation (willekeurige afschrijving) and the cap
 
 A starter who meets the starter's deduction (startersaftrek) conditions enters into obligations for € 200.000 in 2020 for assets that qualify for the investment deduction (investeringsaftrek).
 

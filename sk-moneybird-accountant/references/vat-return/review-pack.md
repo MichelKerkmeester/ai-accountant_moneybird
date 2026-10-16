@@ -50,7 +50,7 @@ Confirmation is three separable decisions, not one click.
 
 | ID | Part | What the Operator confirms |
 |---|---|---|
-| C1 | The figures | The section table, the reconciliation and the outcome. |
+| C1 | The figures | The section (rubriek) table, the reconciliation and the outcome. |
 | C2 | The filing route | The return route, the ICP duty where it applies and any correction route. The `[Operator]` files the return. |
 | C3 | The payment | The payable or reclaimable amount, the payment route and the account. The `[Operator]` pays. |
 
@@ -64,7 +64,7 @@ Every date comes from the year file. The pack links the source and never repeats
 
 - The period's filing deadline and the software submission window are in [VAT 2026 figures](../tax-rules/2026/vat/figures.md).
 - The payment date, the late-payment rules and any tax interest (belastingrente) are in [Return and procedure 2026 figures](../tax-rules/2026/procedure/figures.md).
-- The Operator's own filing letter (aangiftebrief) and My Tax and Customs Administration Business (Mijn Belastingdienst Zakelijk) govern the individual case. Check them, because the year file states the general schedule only.
+- The Operator's own filing invitation letter (aangiftebrief) and My Tax and Customs Administration Business (Mijn Belastingdienst Zakelijk) govern the individual case. Check them, because the year file states the general schedule only.
 - Payment counts as timely when the amount is credited, so allow bank processing time and do not treat the transfer initiation as proof.
 - Neither Moneybird nor the Dutch Tax and Customs Administration sends a payment reminder.
 

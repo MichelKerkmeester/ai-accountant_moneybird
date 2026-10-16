@@ -1,5 +1,5 @@
 ---
-title: "Costs and car 2025: Rules"
+title: "Costs (kosten) and car 2025: Rules"
 description: "Deductible business costs and the car for a Dutch sole trader in tax year 2025, from the threshold for mixed costs (gemengde kosten drempel) and the fixed exclusions to the kilometre allowance, private-use addition (bijtelling) and the performance grant (prestatiebeurs) exception. This file holds the rules part."
 nav_label: "Kosten en auto rules"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Costs and car 2025: Rules
+# Costs (kosten) and car 2025: Rules
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the how-it-works rules for the Costs and car 2025 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
+This part holds the how-it-works rules for the Costs (kosten) and car 2025 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
 
 ---
 

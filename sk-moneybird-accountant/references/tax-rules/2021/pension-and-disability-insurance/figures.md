@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the income-provision rules for a sole trader (and the BV links where they exist) in 2021: the annual allowance (jaarruimte), the catch-up allowance (reserveringsruimte), the annuity (lijfrente) product conditions, the conversion of profit from business discontinuation (stakingswinst) into an annuity, the old-age reserve (oudedagsreserve) link, and the deductibility of the AOV premium (disability insurance (arbeidsongeschiktheidsverzekering)). The whole of 2021 is enacted law. The percentage, the caps, the franchise and the income cap (aftoppingsgrens) all come from the law text valid on 1 January 2021 and from the 2021 FISIN chapter of the Dutch Tax and Customs Administration (Belastingdienst). The most important 2021 point for a sole trader is that the deduction is built on the income and the pension accrual of 2020, and that a 2020 FOR addition still shrinks the 2021 annual allowance.
+This file covers the income-provision rules for a sole trader (and the BV links where they exist) in 2021: the annual allowance (jaarruimte), the catch-up allowance (reserveringsruimte), the annuity (lijfrente) product conditions, the conversion of profit from business discontinuation (stakingswinst) into an annuity, the old-age reserve (FOR, oudedagsreserve) link, and the deductibility of the AOV premium (disability insurance (arbeidsongeschiktheidsverzekering)). The whole of 2021 is enacted law. The percentage, the caps, the franchise and the income cap (aftoppingsgrens) all come from the law text valid on 1 January 2021 and from the 2021 FISIN chapter of the Dutch Tax and Customs Administration (Belastingdienst). The most important 2021 point for a sole trader is that the deduction is built on the income and the pension accrual of 2020, and that a 2020 FOR addition still shrinks the 2021 annual allowance.
 
 ---
 
@@ -77,7 +77,7 @@ This file covers the income-provision rules for a sole trader (and the BV links 
 | Catch-up allowance percentage cap | 17% of the contribution base | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 |
 | Catch-up allowance maximum, younger group | € 7.489 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 |
 | Catch-up allowance maximum, older group | € 14.785 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 |
-| Age limit annual allowance | not yet state pension age at the start of the year | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 |
+| Age limit annual allowance | not yet state pension age (AOW-leeftijd) at the start of the year | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 |
 | Temporary old-age annuity (tijdelijke oudedagslijfrente) cap | € 22.443 per year | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01 |
 | Bridge annuity (overbruggingslijfrente) cap | € 63.288 per year | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen |
 | Profit from business discontinuation (stakingswinst) maximum, tier a | € 474.517 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01 |

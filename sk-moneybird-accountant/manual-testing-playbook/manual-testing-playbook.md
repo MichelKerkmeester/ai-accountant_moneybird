@@ -629,7 +629,7 @@ Prompt: Prepare the VAT return for the fourth quarter of 2026. One correction fr
 
 Fixture rows: VAT-BRANCH-COR-01 (en) and the vat-return-correction-boundary eval case.
 
-Desired user-visible outcome: Routes LIVE and T10, sends the below-boundary correction to the next regular return and the above-boundary correction to the suppletie route, names the pack blocks P1 to P9, reads the boundary from the year file and keeps both routes with the Operator.
+Desired user-visible outcome: Routes LIVE and T10, sends the below-boundary correction to the next regular return and the above-boundary correction to the supplementary return (suppletie) route, names the pack blocks P1 to P9, reads the boundary from the year file and keeps both routes with the Operator.
 
 #### Test Execution
 Feature file: [VAT-005](offline-routing/vat-return-correction-boundary.md)

@@ -67,7 +67,7 @@ The income-dependent Zvw contribution (inkomensafhankelijke bijdrage Zorgverzeke
 | Deduction for assisting partner (meewerkaftrek) | 1,25%, 2%, 3%, 4% over the same hour bands | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek |
 | Discontinuation deduction (stakingsaftrek) | Maximum € 3.630 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek |
 | SME profit exemption (MKB-winstvrijstelling) | 14% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek |
-| Addition to the old-age reserve (oudedagsreserve) | 9,44%, maximum € 9.632 (last year of additions per the old-age reserve, FOR) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/winst_en_verliesrekening_en_balans |
+| Addition to the old-age reserve (oudedagsreserve) | 9,44%, maximum € 9.632 (last year of additions to the fiscal old-age reserve, FOR) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/winst_en_verliesrekening_en_balans |
 
 ---
 

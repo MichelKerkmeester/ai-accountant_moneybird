@@ -196,7 +196,7 @@ The memorandum says the import scheme cannot be combined with the KOR, and the d
 
 ### Tax Plan 2027 (Belastingplan 2027) proposed VAT changes
 
-The proposed Tax Plan 2027 schedules changes to Table I post a.48 and post b.9 from the date shown in the figures table. Those changes do not alter the VAT rates for 2027. The bill text contains no KOR amendment. [Belastingplan 2027](https://zoek.officielebekendmakingen.nl/kst-37022-2.html)
+The proposed Tax Plan 2027 schedules changes to Table I item a.48 and item b.9 from the date shown in the figures table. Those changes do not alter the VAT rates for 2027. The bill text contains no KOR amendment. [Belastingplan 2027](https://zoek.officielebekendmakingen.nl/kst-37022-2.html)
 
 ### Corona special deferral repayment
 

@@ -39,7 +39,7 @@ All inputs in the calculated examples are invented and use round amounts. Every 
 
 **Calculated example: annual allowance with a profit of € 60.000,00 (no pension accrual, no FOR addition).**
 
-- Input: profits from business activities (winst uit onderneming) over 2021 of € 60.000,00, no other income components, no pension accrual and no FOR addition.
+- Input: profits from business activities (winst uit onderneming) over 2021 of € 60.000,00, no other income components, no pension accrual and no FOR addition (dotatie).
 - Step 1, cap at the income cap (aftoppingsgrens, art. 3.127 lid 3): min(€ 60.000,00, € 114.866,00) = € 60.000,00.
 - Step 2, subtract the franchise: € 60.000,00 - € 12.837,00 = € 47.163,00 contribution base (premiegrondslag).
 - Step 3, apply the percentage: 13,3% x € 47.163,00 = € 6.272,68, rounded (exact € 6.272,6790).
@@ -91,7 +91,7 @@ All inputs in the calculated examples are invented and use round amounts. Every 
 - If a tier a ground applied instead, the tier a maximum of € 480.686,00 minus € 80.000,00 gives a cap of € 400.686,00, and the full profit from business discontinuation of € 200.000,00 would be deductible. The example therefore states the age range that places the taxpayer in tier b.
 - A payment made before 1 July 2023 may on choice still count in 2022 (art. 3.130 lid 2).
 
-**Calculated example: FOR addition over 2022.**
+**Calculated example: FOR addition (toevoeging) over 2022.**
 
 - Input: profit (winst) over 2022 of € 60.000,00, no pension premiums charged to the profit, enough growth of the business assets (ondernemingsvermogen), the hours criterion (urencriterium) is met and the taxpayer has not yet reached the state pension age at the start of 2022.
 - 9,44% x € 60.000,00 = € 5.664,00, exact.

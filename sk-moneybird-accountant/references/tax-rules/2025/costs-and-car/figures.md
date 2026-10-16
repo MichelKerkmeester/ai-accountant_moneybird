@@ -1,5 +1,5 @@
 ---
-title: "Costs and car 2025: Figures"
+title: "Costs (kosten) and car 2025: Figures"
 description: "Deductible business costs and the car for a Dutch sole trader in tax year 2025, from the threshold for mixed costs (gemengde kosten drempel) and the fixed exclusions to the kilometre allowance, private-use addition (bijtelling) and the performance grant (prestatiebeurs) exception."
 nav_label: "Kosten en auto"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Costs and car 2025: Figures
+# Costs (kosten) and car 2025: Figures
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -89,7 +89,7 @@ For tax year 2025 this file covers the business costs that a sole trader can ded
 | Fines (geldboetes) | 0% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 (art. 3.14) |
 | Private-use addition (bijtelling) for a car, standard | 22%, nil when private use is at most 500 km per year | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 (art. 3.20 lid 1 onderdeel a) |
 | Private-use addition for a car, pre-2017 car | at least 25% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 (art. 10a.4) |
-| Youngtimer | 35% of WEV, more than 15 years | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 (art. 3.20 lid 1 onderdeel b) |
+| Youngtimer | 35% of the market value (WEV), more than 15 years | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 (art. 3.20 lid 1 onderdeel b) |
 | Zero-emission, first admission 2025 | 5% off capped € 1.500, so 17% up to € 30.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 (art. 3.20 lid 2) |
 | Private-use addition for a bicycle (fiets) | 7% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 and https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 3.20a) |
 | VAT correction (btw-correctie) for a private car | 1,5% of the catalogue price (catalogusprijs) including VAT and bpm in rubriek 1d | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/btw_en_de_auto/zakelijk_gebruik_van_de_priveauto/zakelijk_gebruik_van_de_priveauto |

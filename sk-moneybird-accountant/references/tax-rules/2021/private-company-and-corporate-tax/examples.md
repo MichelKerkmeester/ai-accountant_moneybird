@@ -126,7 +126,7 @@ Escape check: if the highest amount were € 70.000 and the BV makes plausible t
 
 Floor check: if the wage for all work in the body and connected bodies is € 4.500, the rule does not apply.
 
-### Calculated example: start-up relief
+### Calculated example: start-up relief (startersfaciliteit)
 
 Input: a starter in 2021 with an S&O-verklaring to which the start-up percentage applies.
 

@@ -76,7 +76,7 @@ The first two rows of each file's figures table. The topic file carries the sour
 | BV en vennootschapsbelasting | Art. 31 pro-rata for a financial year spanning the year boundary (boekjaar over de jaargrens) | (X/B x To) + (Y/B x Tn). For a financial year (boekjaar) that begins in 2020 and ends on or after 1 January 2021, To is the 2020 rates (tarieven) and Tn the 2021 rates: up to € 245.000 15%, above that € 36.750 plus 25% | enacted | Verified |
 | Pensioen, lijfrente en AOV | Annual allowance (jaarruimte) percentage | 13,3% of the contribution base (premiegrondslag) | enacted | Verified |
 | Pensioen, lijfrente en AOV | Maximum annual allowance | € 12.986 | enacted | Verified |
-| Arbeidsrelatie en zelfstandigheid | DBA enforcement regime | enforcement moratorium (Handhavingsmoratorium) in force, instruction (aanwijzing) route, only parties acting in bad faith (kwaadwillenden) directly corrected | enacted | Verified |
+| Arbeidsrelatie en zelfstandigheid | DBA enforcement regime | enforcement moratorium (handhavingsmoratorium) in force, instruction (aanwijzing) route, only parties acting in bad faith (kwaadwillenden) directly corrected | enacted | Verified |
 | Arbeidsrelatie en zelfstandigheid | Second restriction of the moratorium exception | From 1 January 2020 enforcement also when instructions (aanwijzingen) are not followed within a reasonable term, for periods from 1 January 2020 | enacted | Verified |
 | Aangifte (return) en procedure | Income tax return 2020, deadline (uiterste datum) | Before 8 May 2021 | enacted | Corrected |
 | Aangifte en procedure | Income tax extension period (uitsteltermijn inkomstenbelasting) | 4 months extra, to 1 September | enacted | Verified |

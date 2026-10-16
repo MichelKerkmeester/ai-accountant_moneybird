@@ -1,5 +1,5 @@
 ---
-title: "Box 3 savings and investments 2025: Notes"
+title: "Box 3 savings and investments (sparen en beleggen) 2025: Notes"
 description: "Box 3 savings and investments for tax year 2025: tax-free allowance (heffingsvrij vermogen), debt threshold (schuldendrempel), the three category percentages, the six-step calculation, green investments (groene beleggingen) and the option to report the actual return. This file holds the notes part."
 nav_label: "Box 3 sparen en beleggen notes"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Box 3 savings and investments 2025: Notes
+# Box 3 savings and investments (sparen en beleggen) 2025: Notes
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the changes, records, open points and related resources for the Box 3 savings and investments 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
+This part holds the changes, records, open points and related resources for the Box 3 savings and investments (sparen en beleggen) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
 
 ---
 
@@ -42,7 +42,7 @@ This part holds the changes, records, open points and related resources for the 
 - Share (aandeel) rounding in step 4: 3 decimals in 2024 to 2 decimals in 2025 ([2024 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2024), [2025 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2025)).
 - Green investment exemption (vrijstelling groene beleggingen): € 71.251 to € 26.312 per person, and € 142.502 to € 52.624 with a whole-year partner ([statute text, 1 January 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [statute text, 1 January 2025](https://wetten.overheid.nl/BWBR0011353/2025-01-01), [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/beleggen_met_belastingvoordeel/groene_beleggingen)).
 - Green investment tax credit (korting groene beleggingen): 0,7% to 0,1% ("Voor 2024 was deze heffingskorting nog 0,7 %") ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/korting_voor_groene_beleggingen)).
-- Actual-return reporting: in 2024 through the online form in Mijn Belastingdienst, which could always be filed without a letter, and from 2025 inside the 2025 income tax return (aangifte inkomstenbelasting) ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/zonder-brief-formulier-opgaaf-werkelijk-rendement-invullen), [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/werkelijk-rendement-belastingaangifte)).
+- Actual-return reporting: in 2024 through the online form in My Tax and Customs Administration (Mijn Belastingdienst), which could always be filed without a letter, and from 2025 inside the 2025 income tax return (aangifte inkomstenbelasting) ([Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/zonder-brief-formulier-opgaaf-werkelijk-rendement-invullen), [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/werkelijk-rendement-belastingaangifte)).
 - Rebuttal Scheme Act box 3 (Wet tegenbewijsregeling box 3): new in 2025, in force 19 July 2025, with statutory effect from 1 January 2023 for arts. I and III and from 1 January 2017 inside the Restoration of Rights Act (Wet rechtsherstel) for art. IV ([Stb. 2025, 195](https://zoek.officielebekendmakingen.nl/stb-2025-195.html), [Stb. 2025, 196](https://zoek.officielebekendmakingen.nl/stb-2025-196.html), [Rijksoverheid timeline](https://www.rijksoverheid.nl/themas/werk/inkomstenbelasting/box-3/tijdlijn-rechtsherstel-box-3)).
 - Box 3 rate (tarief): 36% in both 2024 and 2025, unchanged ([statute text, 1 January 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01), [statute text, 1 January 2025](https://wetten.overheid.nl/BWBR0011353/2025-01-01)).
 
@@ -73,7 +73,7 @@ This part holds the changes, records, open points and related resources for the 
 - UNVERIFIED: the claim that the Supreme Court (Hoge Raad) itself ordered restoration of rights on the basis of the actual return. hogeraad.nl still returned HTTP 403 on 2026-10-11. The explanatory memorandum (memorie van toelichting) describes the Christmas ruling (Kerstarrest) of 24 December 2021 as a breach of art. 1 EP in combination with art. 14 EVRM, and stresses that the legislator chose a recalculation with the actual composition of the assets in three categories, not a levy on the actual return. https://zoek.officielebekendmakingen.nl/kst-36203-3.html and https://www.rijksoverheid.nl/themas/werk/inkomstenbelasting/box-3/tijdlijn-rechtsherstel-box-3
 - UNVERIFIED: the "or objected late" part of the finding of 25 June 2026 on non-objectors. The Rijksoverheid timeline confirms only that taxpayers who did not object for 2017 to 2020 "hebben geen recht op herstel van hun betaalde box 3-belasting over deze periode". https://www.rijksoverheid.nl/themas/werk/inkomstenbelasting/box-3/tijdlijn-rechtsherstel-box-3
 - Proposed: the Actual Return Act (Wet werkelijk rendement) box 3, bill 36 748, submitted 16 May 2025. Adopted by the House of Representatives (Tweede Kamer) on 12 February 2026. No Senate (Eerste Kamer) vote and no Staatsblad on 2026-10-11, so it is not law. Entry into force by royal decree, with a rule referring to 1 January 2028. https://www.eerstekamer.nl/wetsvoorstel/36748_wet_werkelijk_rendement_box
-- Proposed: the cabinet letter of 29 September 2026 with a novelle to bill 36 748. The parliamentary paper (kamerstuk) number is UNVERIFIED. The letter mentions a capital gains tax (vermogenswinstbelasting) for all financial instruments from 2028 (about 90% of assets with value development), a full switch for the other assets in 2030, the box 3 tax-free allowance (heffingsvrij vermogen) back to the 2020 level of € 30.846 from 2027, a tax-free result (heffingsvrij resultaat) of € 1.000 from 2028 and a rise of the flat rate (forfait) for other assets (overige bezittingen) by 1,5 percentage point in 2027. The novelle must be adopted by the Senate (Eerste Kamer) before 31 December, and the Cabinet intends to ask the Council of State (Raad van State) for urgent advice. The number "nr. 62" and a Raad van State request on 2 October 2026 were not found on a fetched page. [Kamerstuk 37020 nr. 62 (expected), brief regering](https://www.tweedekamer.nl/downloads/document?id=2026D47255) and https://www.eerstekamer.nl/wetsvoorstel/36748_wet_werkelijk_rendement_box
+- Proposed: the cabinet letter of 29 September 2026 with an amending bill (novelle) to bill 36 748. The parliamentary paper (kamerstuk) number is UNVERIFIED. The letter mentions a capital gains tax (vermogenswinstbelasting) for all financial instruments from 2028 (about 90% of assets with value development), a full switch for the other assets in 2030, the box 3 tax-free allowance (heffingsvrij vermogen) back to the 2020 level of € 30.846 from 2027, a tax-free result (heffingsvrij resultaat) of € 1.000 from 2028 and a rise of the flat rate (forfait) for other assets (overige bezittingen) by 1,5 percentage point in 2027. The amending bill must be adopted by the Senate (Eerste Kamer) before 31 December, and the Cabinet intends to ask the Council of State (Raad van State) for urgent advice. The number "nr. 62" and a Raad van State request on 2 October 2026 were not found on a fetched page. [Kamerstuk 37020 nr. 62 (expected), brief regering](https://www.tweedekamer.nl/downloads/document?id=2026D47255) and https://www.eerstekamer.nl/wetsvoorstel/36748_wet_werkelijk_rendement_box
 
 ---
 

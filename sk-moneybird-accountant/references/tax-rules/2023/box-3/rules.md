@@ -27,7 +27,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the how-it-works rules for the Box 3 savings and investments 2023 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
+This part holds the how-it-works rules for the Box 3 savings and investments (sparen en beleggen) 2023 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -92,7 +92,7 @@ Interactions. This six-step method replaced the band calculation of 2020 to 2022
 
 Art. 5.13: green investments are not counted as assets (bezittingen) up to the stated amount, doubled for whole-year partners. For 2023 that amount is € 65.072, or € 130.144 with a whole-year partner. Art. 5.13 lid 2 (from the 2023 text): the exemption applies first to green other assets and only the remaining room to green bank balances. The exemption never exceeds the value of the green investments on 1 January. A minor child must file its own return to claim it and the parents report the rest as a normal asset. https://wetten.overheid.nl/BWBR0011353/2023-01-01 https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/beleggen_met_belastingvoordeel/groene_beleggingen
 
-### Credit for green investments (korting groene beleggingen)
+### Credit for green investments (korting voor groene beleggingen)
 
 Art. 8.19 gives a green investment credit (korting voor groene beleggingen) of 0,7% (2020 to 2024) of the exempt amount on the reference date (peildatum). It is computed automatically and split between whole-year partners in the same ratio as the green balance. https://wetten.overheid.nl/BWBR0011353/2023-01-01 For 2023 the rate is 0,7%. https://wetten.overheid.nl/BWBR0011353/2023-01-01
 
@@ -116,7 +116,7 @@ New art. 5.24 (reference date arbitrage): transactions around 1 January within "
 
 ### Floor on a negative return
 
-Art. 4.14 lid 1 is amended so the flat-rate benefit is at least nil. In art. 5.2 a negative return (rendement) is set at nil. https://zoek.officielebekendmakingen.nl/stb-2022-534.html https://wetten.overheid.nl/BWBR0011353/2023-01-01
+Art. 4.14 lid 1 is amended so the flat-rate benefit (forfaitair voordeel) is at least nil. In art. 5.2 a negative return (rendement) is set at nil. https://zoek.officielebekendmakingen.nl/stb-2022-534.html https://wetten.overheid.nl/BWBR0011353/2023-01-01
 
 ### Personal deductions (persoonsgebonden aftrek) after a 2023 recalculation
 

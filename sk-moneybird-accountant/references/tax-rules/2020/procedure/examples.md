@@ -42,11 +42,11 @@ The Dutch Tax and Customs Administration (Belastingdienst) gives this example it
 
 A sole trader files the 2020 return on 6 May 2021. The 2020 deadline was moved from 1 May 2021 to before 8 May 2021. The decree (besluit) of 4 May 2021 covers a return filed after 1 May 2021 and before 8 May 2021, so 6 May 2021 falls inside the window. If the assessment follows that return, no tax interest (belastingrente) is charged for that reason. A return that arrives on 9 May 2021 falls outside the window. Source: https://zoek.officielebekendmakingen.nl/stcrt-2021-24144.html.
 
-### Example 3. provisional assessment in monthly instalments (termijnen)
+### Example 3. Provisional assessment in monthly instalments (termijnen) (Calculated example)
 
-A provisional income tax assessment for 2020 is dated 15 September 2020. Months remaining after the month of the date are October, November and December, so there are 3 instalments (termijnen). The first term (termijn) is one month after the date, so 15 October 2020, then 15 November 2020 and 15 December 2020. The instalments are equal, so an invented amount of € 3.000,00 gives 3 instalments of € 1.000,00 each. Step by step: € 3.000,00 / 3 = € 1.000,00. Source: https://wetten.overheid.nl/BWBR0004770/2020-01-01.
+A provisional income tax assessment for 2020 is dated 15 September 2020. Months remaining after the month of the date are October, November and December, so there are 3 instalments (termijnen). The first instalment (termijn) is one month after the date, so 15 October 2020, then 15 November 2020 and 15 December 2020. The instalments are equal, so an invented amount of € 3.000,00 gives 3 instalments of € 1.000,00 each. Step by step: € 3.000,00 / 3 = € 1.000,00. Source: https://wetten.overheid.nl/BWBR0004770/2020-01-01.
 
-### Example 4. tax interest on the 2020 income tax (Calculated example)
+### Example 4. Tax interest on the 2020 income tax (Calculated example)
 
 Invented inputs. The 2020 return is filed on 31 August 2021, before the deferral date of 1 September 2021. The assessment is dated 20 October 2021 and deviates from the return. Because the return arrived on or after 1 May after the tax year, and because the assessment deviates from the return, tax interest is charged. The period starts on 1 July 2021. The tax interest ends 6 weeks after the assessment date.
 
@@ -70,7 +70,7 @@ The official example on the Dutch Tax and Customs Administration page uses tax y
 
 The definitive assessment 2020 works out to a refund of € 16. Under the current wording a refund is paid only if it is higher than the refund threshold of € 15, and € 16 is higher than € 15, so the € 16 is paid. Under the older wording the threshold (grens) is € 16 with equal to or more than (gelijk aan of meer dan), and € 16 meets that, so the outcome is the same. A refund of € 15 is not paid under either reading: it is not higher than € 15 and it is not equal to or more than € 16. Sources: https://web.archive.org/web/20250328/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag and https://web.archive.org/web/20230401/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag.
 
-### Example 7. VAT (btw) Q2 2020 plus the default fine (verzuimboete)
+### Example 7. VAT (btw) Q2 2020 plus the default fine (verzuimboete) (Calculated example)
 
 A quarterly filer closes Q2 2020 on 30 June 2020. The return and the payment must both be received by 31 July 2020. Step by step: the table date for Q2 is 31 July 2020. If the return is filed more than 7 calendar days (kalenderdagen) after that date, after the leniency (coulance), the filing default penalty (aangifteverzuimboete) for 2020 is € 68. Sources: https://web.archive.org/web/20201101/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte and https://web.archive.org/web/20201112/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/boetes/u_doet_geen_of_te_laat_aangifte.
 
@@ -86,7 +86,7 @@ Step 3: € 120,00 x 540 = € 64.800,00. € 64.800,00 / 360 = € 180,00, roun
 
 Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_loonbelasting_btw_en_overdrachtsbelasting and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente.
 
-### Example 9. Objection period (bezwaartermijn) on the same assessment (aanslag)
+### Example 9. Objection period (bezwaartermijn) on the same assessment (aanslag) (Calculated example)
 
 An income tax assessment is dated 20 October 2021. Objection (bezwaar) is possible within 6 weeks after the date of the assessment.
 

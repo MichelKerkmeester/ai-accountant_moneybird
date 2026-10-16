@@ -36,7 +36,7 @@ This part holds the worked examples for the Costs and car 2027 topic. The overvi
 
 All inputs below are invented round numbers. Calculated examples use only the section 2 figures and the checked material. Every product is shown with two decimals. No step in these examples requires rounding, so no rounding step is marked.
 
-### 4.1 Calculated example: threshold for mixed costs against the 80% election
+### 4.1 Calculated example: threshold for mixed costs (gemengde kosten drempel) against the 80% election
 
 A sole trader has € 6.000 of mixed costs (gemengde kosten) in 2027, made up of business lunches (zakenlunches) and receptions (recepties).
 

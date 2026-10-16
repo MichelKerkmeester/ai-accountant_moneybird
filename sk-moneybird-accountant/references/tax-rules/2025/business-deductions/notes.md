@@ -1,5 +1,5 @@
 ---
-title: "Entrepreneur's allowance and SME profit exemption 2025: Notes"
+title: "Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling) 2025: Notes"
 description: "The entrepreneur's allowance (ondernemersaftrek), the starter's deduction (startersaftrek), the deduction for assisting partner (meewerkaftrek), the discontinuation deduction (stakingsaftrek) and the 12,7% SME profit exemption (MKB-winstvrijstelling) for tax year 2025, with the hours criterion (urencriterium) of 1.225 hours and the rate adjustment (tariefsaanpassing) of 12,02%. This file holds the notes part."
 nav_label: "Ondernemersaftrek en MKB-winstvrijstelling notes"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Entrepreneur's allowance and SME profit exemption 2025: Notes
+# Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling) 2025: Notes
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the changes, records, open points and related resources for the Entrepreneur's allowance and SME profit exemption 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
+This part holds the changes, records, open points and related resources for the Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
 
 ---
 
@@ -35,7 +35,7 @@ This part holds the changes, records, open points and related resources for the 
 <a id="5-changes"></a>
 
 - Self-employed person's deduction (zelfstandigenaftrek): € 3.750 in 2024 to € 2.470 in 2025. Source: [art. 3.76, version 1 January 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01) and [art. 3.76, version 1 January 2025](https://wetten.overheid.nl/BWBR0011353/2025-01-01). The FISIN 2025 table agrees.
-- Self-employed person's deduction at state pension age: € 1.875 in 2024 to € 1.235 in 2025. Source: [art. 3.76, version 1 January 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01) for the 2024 amount under the 50% rule of lid 4, and [FISIN 2025](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek) for the 2025 amount.
+- Self-employed person's deduction at state pension (AOW) age: € 1.875 in 2024 to € 1.235 in 2025. Source: [art. 3.76, version 1 January 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01) for the 2024 amount under the 50% rule of lid 4, and [FISIN 2025](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek) for the 2025 amount.
 - Deduction (aftrek) for research and development work (speur- en ontwikkelingswerk): € 15.551 in 2024 to € 15.738 in 2025, indexed. Source: [art. 3.77, version 1 January 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01) and [art. 3.77, version 1 January 2025](https://wetten.overheid.nl/BWBR0011353/2025-01-01).
 - S&O starter increase: € 7.781 in 2024 to € 7.875 in 2025. Source: [FISIN 2024](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek) and [FISIN 2025](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/ondernemersaftrek_en_investeringsaftrek).
 - SME profit exemption (mkb-winstvrijstelling): 13,31% in 2024 to 12,7% in 2025. Source: [art. 3.79a, version 1 January 2024](https://wetten.overheid.nl/BWBR0011353/2024-01-01) and [art. 3.79a, version 1 January 2025](https://wetten.overheid.nl/BWBR0011353/2025-01-01).

@@ -60,9 +60,9 @@ Case C, € 3.000,00 of mixed costs in 2022.
 
 **Calculated example.**
 
-A congress in 2022 costs € 1.200,00 in travel and stay, and a second congress costs € 800,00.
-- Total travel and stay: € 1.200,00 plus € 800,00 = € 2.000,00.
-- Art. 3.16 lid 2 onderdeel f makes travel and stay not deductible above € 1.500,00 per year.
+A congress in 2022 costs € 1.200,00 in travel and accommodation, and a second congress costs € 800,00.
+- Total travel and accommodation: € 1.200,00 plus € 800,00 = € 2.000,00.
+- Art. 3.16 lid 2 onderdeel f makes travel and accommodation not deductible above € 1.500,00 per year.
 - If attendance is not necessary, the excess is not deductible: € 2.000,00 minus € 1.500,00 = € 500,00 not deductible. The remaining € 1.500,00 is treated as mixed costs under art. 3.15 lid 1 and lid 2. With no other mixed costs, the threshold route gives € 0,00 because € 1.500,00 is below the threshold of € 4.800,00. The 80% election gives 80% of € 1.500,00 = € 1.200,00.
 - Art. 3.16 lid 8 lifts the € 1.500,00 cap when the nature of the work makes attendance necessary.
 - If attendance is necessary, the full € 2.000,00 is mixed costs. With no other mixed costs, the threshold route gives € 0,00 because € 2.000,00 is below the threshold of € 4.800,00. The 80% election gives 80% of € 2.000,00 = € 1.600,00.
@@ -125,7 +125,7 @@ Car B, value € 30.000,00, first admitted in 2022, 0 g CO2 per km.
 
 **Calculated example.**
 
-A car of the business was first taken into use more than 15 years ago. The market value (WEV) is € 8.000,00.
+A car of the business was first taken into use more than 15 years ago. The market value (waarde in het economisch verkeer, WEV) is € 8.000,00.
 - Withdrawal before the car costs cap: 35% of € 8.000,00 = € 2.800,00.
 - Art. 3.20 lid 4 caps the withdrawal at the total car costs including depreciation. If those costs are € 2.000,00, the withdrawal is € 2.000,00.
 
@@ -176,7 +176,7 @@ Mbo from August 2012 to July 2016, the diploma period (diplomatermijn) ends in A
 
 **Calculated example.**
 
-An hbo study year is only partly in the case, five months. Assume the actual performance grant is at least the cap.
+An hbo study year falls only partly within the case, five months. Assume the actual performance grant is at least the cap.
 - Cap: 5 months times € 203,59 = € 1.017,95.
 - Minus the threshold per person: € 1.017,95 minus € 250,00 = € 767,95 deductible.
 - If the actual performance grant is lower than € 1.017,95, that lower amount applies before the threshold.
@@ -190,7 +190,7 @@ A training (scholing) costs € 1.200,00 including VAT.
 - The lower of € 1.200,00 and € 1.000,00 is € 1.000,00.
 - There are six application windows per calendar year.
 
-### Example 15: Mixed costs in a BV
+### Example 15: Mixed costs in a private limited company (BV)
 
 **Calculated example.**
 

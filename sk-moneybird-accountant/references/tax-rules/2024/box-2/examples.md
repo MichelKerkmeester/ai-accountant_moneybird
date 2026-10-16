@@ -53,7 +53,7 @@ All figures come from section 2. [art. 2.12](https://wetten.overheid.nl/BWBR0011
 
 **Calculated example 3: Tax credit (belastingkorting) on an unoffset loss of € 20.000.**
 Step 1: the percentage is 24,5%.
-Step 2: the credit (korting) is 24,5% of € 20.000 = € 4.900,00.
+Step 2: the credit is 24,5% of € 20.000 = € 4.900,00.
 All figures come from section 2. [art. 4.53](https://wetten.overheid.nl/BWBR0011353/2024-01-01)
 
 **Official example: FISIN 2024 tax credit.**

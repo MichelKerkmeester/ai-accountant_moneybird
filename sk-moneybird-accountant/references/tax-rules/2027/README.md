@@ -68,7 +68,7 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Investment deductions and depreciation | KIA in a partnership (samenwerkingsverband) | Partnership investments and own investments added, the table applied to the sum, outcome times own investment divided by the sum | adopted-not-yet-in-force | Verified |
 | Costs and car | Threshold for mixed costs (gemengde kosten drempel), base in the 2027 text | € 5.700 before indexation | adopted-not-yet-in-force | Verified |
 | Costs and car | Threshold for mixed costs, effective 2027 | not published | unknown | UNVERIFIED |
-| Box 3 savings and investments | Category method (categorieënmethode, art. 5.2) | Six-step category method, still in the 2027 text. A negative return (rendement) is set at nil and the flat-rate benefit is at least nil | enacted | Verified |
+| Box 3 savings and investments | Category method (categorieënmethode, art. 5.2) | Six-step category method, still in the 2027 text. A negative return (rendement) is set at nil and the flat-rate benefit (forfaitaire voordeel) is at least nil | enacted | Verified |
 | Box 3 savings and investments | Reference date (peildatum) | 1 January. Transactions around it inside one continuous three-month period that starts before and ends after the reference date are disregarded unless business reasons are made plausible (art. 5.24) | enacted | Verified |
 | Box 2 and substantial interest | Box 2 bracket 1 (art. 2.12, text per 1 January 2027) | 24,5% up to € 68.843, pre-indexation text that "kan voor inwerkingtreding nog wijzigen" | adopted-not-yet-in-force | Verified |
 | Box 2 and substantial interest | Tax at the top of bracket 1 (art. 2.12, column III) | € 16.866 | adopted-not-yet-in-force | Verified |

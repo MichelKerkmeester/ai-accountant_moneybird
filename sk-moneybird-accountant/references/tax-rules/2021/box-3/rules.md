@@ -62,7 +62,7 @@ The second band covers the savings and investments base from € 50.000 to € 9
 
 The third band covers the savings and investments base above € 950.000 and is treated as 0% return class I and 100% return class II, so the full 5,69% ([Belastingdienst, oude berekening box 3-inkomen](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen)). The bands are applied to the savings and investments base, that is the return base after the tax-free allowance. The benefit from the three bands is added and taxed at 31% ([art. 2.13](https://wetten.overheid.nl/BWBR0011353/2021-01-01)).
 
-### 3.8 Restoration of rights category percentages
+### 3.8 Restoration of rights (rechtsherstel) category percentages
 
 The Box 3 Restoration of Rights Act (Wet rechtsherstel box 3) recalculates the 2021 benefit with three category percentages, bank balances (banktegoeden) 0,01%, other assets (overige bezittingen) 5,69% and debts (schulden) 2,46% ([Belastingdienst, met welke percentages is het fictief rendement berekend](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/met-welke-percentages-is-het-fictief-rendement-berekend), [Stb. 2022, 533](https://zoek.officielebekendmakingen.nl/stb-2022-533.html)). Art. 3 of that law multiplies the bank balances by the column I percentage, the other assets by column II and the deductible debts by column III, all at 1 January of the year ([Stb. 2022, 533](https://zoek.officielebekendmakingen.nl/stb-2022-533.html)). These percentages differ from the return class percentages of 2021 and are used only in the recalculation.
 

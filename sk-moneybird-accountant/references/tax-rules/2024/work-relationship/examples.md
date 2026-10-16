@@ -68,11 +68,11 @@ Suppose the Dutch Tax and Customs Administration (Belastingdienst) gives an inst
 
 Suppose an approved model agreement was valid on 6 September 2024 and its text states that it is valid until 31 December 2025. Under the policy it can still be used up to and including 31 December 2029, and only if the parties work as described. From 6 September 2024 no new model agreements (modelovereenkomsten) are assessed and none are renewed. Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/geen-nieuwe-modelovereenkomsten-meer and https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/werken-met-modelovereenkomsten.
 
-### Example 6. Official example, the 2024 return and the definitive assessment (aanslag)
+### Example 6. Official example, the 2024 return and the final assessment (aanslag)
 
 For the 2024 return the published example is:
 
-Step 1: return filed before 1 May 2025 gives a definitive assessment at 31 December 2027 at the latest.
+Step 1: return filed before 1 May 2025 gives a final assessment at 31 December 2027 at the latest.
 Step 2: with deferral (uitstel) to 1 September 2025 the latest date is 30 April 2028.
 
 Source: https://web.archive.org/web/20250328/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag.

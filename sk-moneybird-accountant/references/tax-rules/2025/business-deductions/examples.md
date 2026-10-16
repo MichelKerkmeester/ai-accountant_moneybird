@@ -1,5 +1,5 @@
 ---
-title: "Entrepreneur's allowance and SME profit exemption 2025: Examples"
+title: "Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling) 2025: Examples"
 description: "The entrepreneur's allowance (ondernemersaftrek), the starter's deduction (startersaftrek), the deduction for assisting partner (meewerkaftrek), the discontinuation deduction (stakingsaftrek) and the 12,7% SME profit exemption (MKB-winstvrijstelling) for tax year 2025, with the hours criterion (urencriterium) of 1.225 hours and the rate adjustment (tariefsaanpassing) of 12,02%. This file holds the examples part."
 nav_label: "Ondernemersaftrek en MKB-winstvrijstelling examples"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Entrepreneur's allowance and SME profit exemption 2025: Examples
+# Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling) 2025: Examples
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Entrepreneur's allowance and SME profit exemption 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -36,13 +36,13 @@ This part holds the worked examples for the Entrepreneur's allowance and SME pro
 
 ### Example 1: Hours criterion (urencriterium) in a part year (Official example)
 
-**Official example.** Chamber of Commerce gives a start on 1 May, which leaves eight months, about 117 working days, and at 8 hours a day 936 hours, so extra hours are needed to reach 1.225 hours. Arithmetic as printed: 117 working days x 8 hours = 936 hours. The Dutch Tax and Customs Administration (Belastingdienst) gives a webhosting business started on 1 July, which means 6 months as an entrepreneur and still at least 1.225 hours in that period. Hours cannot be recalculated to the part of the year.
+**Official example.** The Chamber of Commerce (KVK) gives a start on 1 May, which leaves eight months, about 117 working days, and at 8 hours a day 936 hours, so extra hours are needed to reach 1.225 hours. Arithmetic as printed: 117 working days x 8 hours = 936 hours. The Dutch Tax and Customs Administration (Belastingdienst) gives a webhosting business started on 1 July, which means 6 months as an entrepreneur and still at least 1.225 hours in that period. Hours cannot be recalculated to the part of the year.
 
 Source: [KVK, de magische 1.225 uur](https://www.kvk.nl/starten/de-magische-1225-uur-alles-over-het-urencriterium) and [Belastingdienst, voorwaarden urencriterium](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium).
 
 ### Example 2: Self-employed person's deduction (zelfstandigenaftrek) and SME profit exemption (mkb-winstvrijstelling) (Calculated example)
 
-**Calculated example.** A sole trader below the state pension age meets the hours criterion, has no starter's deduction (startersaftrek) and no other deductions. Profit is € 60.000.
+**Calculated example.** A sole trader below the state pension (AOW) age meets the hours criterion, has no starter's deduction (startersaftrek) and no other deductions. Profit is € 60.000.
 
 - Step 1: profit € 60.000.
 - Step 2: Self-employed person's deduction € 2.470.
