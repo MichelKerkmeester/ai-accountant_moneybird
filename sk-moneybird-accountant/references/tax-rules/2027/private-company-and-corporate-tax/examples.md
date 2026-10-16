@@ -39,7 +39,7 @@ No official examples were found in the checked material for 2027. Every example 
 ### Example 1. Vpb on a profit of € 60.000 (Calculated example)
 
 - Input: taxable amount (belastbaar bedrag) € 60.000.
-- Step 1: € 60.000 is below € 200.000, so all of it is in the first bracket at 19%.
+- Step 1: € 60.000 is below € 200.000, so all of it is in the first bracket (eerste schijf) at 19%.
 - Step 2: 19% x € 60.000 = € 11.400.
 - Result: € 11.400.
 
@@ -85,7 +85,7 @@ No official examples were found in the checked material for 2027. Every example 
 
 ### Example 7. Customary salary (gebruikelijk loon) test (Calculated example)
 
-- Case A: comparable wage € 40.000, highest employee wage € 35.000, standard amount (normbedrag) € 58.000. The highest is € 58.000, so the wage is at least € 58.000. The December 2026 indexation of the standard amount is still open.
+- Case A: comparable wage (vergelijkbaar loon) € 40.000, highest employee wage € 35.000, standard amount (normbedrag) € 58.000. The highest is € 58.000, so the wage is at least € 58.000. The December 2026 indexation of the standard amount is still open.
 - Case B: total wage for all work in the body and connected bodies € 4.800, not more than € 5.000, so the rule does not apply.
 - Case C: comparable wage € 50.000, highest employee wage € 70.000, standard amount € 58.000. The highest amount € 70.000 exceeds the comparable wage € 50.000, so the wage may be the comparable wage of € 50.000.
 
@@ -93,7 +93,7 @@ No official examples were found in the checked material for 2027. Every example 
 
 - Both figures are the proposed 2027 figures.
 - Insured DGA, wage € 60.000: employer levy (werkgeversheffing) 6,27% x € 60.000 = € 3.762, paid by the BV.
-- Uninsured DGA, wage € 100.000: the contribution (bijdrage) is withheld on net wage up to the maximum contribution income (bijdrage-inkomen) of € 82.547, so 5,02% x € 82.547 = € 4.143,86.
+- Uninsured DGA, wage € 100.000: the contribution (bijdrage) is withheld on net wage (nettoloon) up to the maximum contribution income (bijdrage-inkomen) of € 82.547, so 5,02% x € 82.547 = € 4.143,86.
 - Result: € 3.762 and € 4.143,86.
 
 ### Example 9. Box 2 on a € 100.000 dividend and the indexation factor (Calculated example)
@@ -110,12 +110,12 @@ No official examples were found in the checked material for 2027. Every example 
 
 - Step 1: proceeds (opbrengst) € 100.000, tax 15% x € 100.000 = € 15.000, net paid € 85.000.
 - Step 2: if the company bears the tax and the shareholder receives € 85.000 net, the proceeds is € 85.000 x 100/85 = € 100.000 and the tax is € 15.000.
-- Buyback: buyback price € 50.000 and average paid-up capital € 20.000 give a base of € 50.000 - € 20.000 = € 30.000. Tax 15% x € 30.000 = € 4.500.
+- Buyback: buyback price € 50.000 and average paid-up capital (gemiddeld gestort kapitaal) € 20.000 give a base of € 50.000 - € 20.000 = € 30.000. Tax 15% x € 30.000 = € 4.500.
 - Result: € 15.000 and € 4.500.
 
 ### Example 11. Conditional withholding tax (conditionele bronbelasting) on € 100.000 interest (Calculated example)
 
-- Input: interest € 100.000 to a related body in a low-tax jurisdiction.
+- Input: interest € 100.000 to a related body in a low-tax jurisdiction (laagbelastende jurisdictie).
 - Step 1: rate 25,8%.
 - Step 2: 25,8% x € 100.000 = € 25.800.
 - Result: € 25.800.
@@ -141,7 +141,7 @@ No official examples were found in the checked material for 2027. Every example 
 
 ### Example 15. Annual accounts (jaarrekening) class and deposit date (Calculated example)
 
-- Input: assets € 500.000, net turnover € 1.000.000, 8 employees on two consecutive balance dates.
+- Input: assets € 500.000, net turnover (netto-omzet) € 1.000.000, 8 employees on two consecutive balance dates.
 - Micro test: assets above € 450.000 fails, turnover above € 900.000 fails, employees below 10 passes. One of three, so not micro.
 - Small test: assets below € 7,5 million, turnover below € 15 million, employees below 50. All three pass, so small.
 - Deposit: book year ends 31 December 2027 and the accounts are adopted on 15 May 2028. Deposit within 8 days, by 23 May 2028, and at the latest on 31 December 2028.

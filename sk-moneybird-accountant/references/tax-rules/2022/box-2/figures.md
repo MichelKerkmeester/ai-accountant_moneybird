@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Box 2 and substantial interest 2022: Figures
+# Box 2 and substantial interest (aanmerkelijk belang) 2022: Figures
 
 **Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-Box 2 covers the income of a taxpayer with a substantial interest (aanmerkelijk belang), mainly dividends, deemed benefits and gains on shares. For 2022 the box has one flat rate of 26,9% with no bracket, the same rate as 2021, and the year's law is fully enacted. The main points for a director and substantial shareholder (directeur-grootaandeelhouder, dga) or any shareholder in a private limited company (BV) are the 5% test of art. 4.6 with its new sub e, the 5,53% flat-rate benefit (forfaitair voordeel) for a vbi (vrijgestelde beleggingsinstelling, exempt investment institution) and comparable foreign investment companies, and the customary salary (gebruikelijk loon) fixed amount of € 48.000. The Excessive Borrowing from the Own Company Act (Wet excessief lenen bij eigen vennootschap) was enacted on 21 December 2022 but applies only from 1 January 2023, so it does not touch 2022 itself.
+Box 2 covers the income of a taxpayer with a substantial interest (aanmerkelijk belang), mainly dividends, deemed benefits and gains on shares. For 2022 the box has a single rate of 26,9% with no bracket, the same rate as 2021, and the year's law is fully enacted. The main points for a director and substantial shareholder (directeur-grootaandeelhouder, dga) or any shareholder in a private limited company (BV) are the 5% test of art. 4.6 with its new sub e, the 5,53% flat-rate benefit (forfaitair voordeel) for a vbi (vrijgestelde beleggingsinstelling, exempt investment institution) and comparable foreign investment companies, and the customary salary (gebruikelijk loon) fixed amount of € 48.000. The Excessive Borrowing from the Own Company Act (Wet excessief lenen bij eigen vennootschap) was enacted on 21 December 2022 but applies only from 1 January 2023, so it does not touch 2022 itself.
 
 ---
 
@@ -48,17 +48,17 @@ Box 2 covers the income of a taxpayer with a substantial interest (aanmerkelijk 
 | Box 2 income of a minor child | 7 |
 | Flat-rate benefit (forfaitair voordeel) for a vbi or foreign investment company (art. 4.14 lid 1) | 8 |
 | Inherited substantial interest facility (art. 4.12a) | 9 |
-| Segregated private assets (APV) loss deferral | 10 |
+| Segregated private assets (afgezonderd particulier vermogen) (APV) loss deferral | 10 |
 | Excessive Borrowing from the Own Company Act (Wet excessief lenen bij eigen vennootschap) | 11 |
 | Excessive borrowing (excessief lenen) maximum in the bill after the third memorandum of amendment (derde nota van wijziging) of 25 March 2022 | 12 |
-| Excessive borrowing, transitional owner-occupied home debt (eigenwoningschuld) rule (art. 10a.23 Wet IB 2001) | 13 |
+| Excessive borrowing, transitional owner-occupied home (eigen woning) debt (eigenwoningschuld) rule (art. 10a.23 Wet IB 2001) | 13 |
 | Customary salary (gebruikelijk loon) fixed amount (art. 12a Wet LB 1964) | 14 |
 | Comparable-wage test for customary salary | 15 |
 | Customary salary minimum threshold | 16 |
 | Start-up rule for the customary salary (S&O declaration, S&O-verklaring) | 17 |
-| Old-age obligation (ODV) market rate for 2022 | 18 |
+| Old-age obligation (oudedagsverplichting) (ODV) market rate (marktrente) for 2022 | 18 |
 | Old-age obligation instalments (art. 38p Wet LB 1964) | 19 |
-| Pension in own management (PEB) commutation (afkoop) and ODV conversion window | 20 |
+| Pension in own management (pensioen in eigen beheer) (PEB) commutation (afkoop) and ODV conversion window | 20 |
 | Acquisition price (verkrijgingsprijs) after PEB waiving (art. 10a.18 lid 3 Wet IB 2001) | 21 |
 <!-- GENERATED:key-figure-index:end -->
 
@@ -74,17 +74,17 @@ Box 2 covers the income of a taxpayer with a substantial interest (aanmerkelijk 
 | Box 2 income of a minor child | declared by the parent until the child turns 18 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/wanneer_hebt_u_een_aanmerkelijk_belang/wanneer_hebt_u_een_aanmerkelijk_belang |
 | Flat-rate benefit (forfaitair voordeel) for a vbi or foreign investment company (art. 4.14 lid 1) | 5,53% of the value at the start of the year | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 4.14 lid 1 |
 | Inherited substantial interest facility (art. 4.12a) | regular benefits (reguliere voordelen) within 24 months after the death on request not counted, up to the box 2 income taken into account with the deceased | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 4.12a |
-| Segregated private assets (APV) loss deferral | offset after a third-party sale, death or 10 years | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/aanmerkelijk_belang |
-| Excessive Borrowing from the Own Company Act (Wet excessief lenen bij eigen vennootschap) | not in force in 2022, in force 1 January 2023 (Act of 21 December 2022, Staatsblad 2022, 531, issued 27 December 2022) | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2022-531.html |
+| Segregated private assets (afgezonderd particulier vermogen) (APV) loss deferral | offset after a third-party sale, death or 10 years | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/aanmerkelijk_belang |
+| Excessive Borrowing from the Own Company Act (Wet excessief lenen bij eigen vennootschap) | not in force (in werking) in 2022, in force 1 January 2023 (Act of 21 December 2022, Staatsblad 2022, 531, issued 27 December 2022) | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2022-531.html |
 | Excessive borrowing (excessief lenen) maximum in the bill after the third memorandum of amendment (derde nota van wijziging) of 25 March 2022 | € 700.000 | proposed | Verified | https://zoek.officielebekendmakingen.nl/kst-35496-15.html |
-| Excessive borrowing, transitional owner-occupied home debt (eigenwoningschuld) rule (art. 10a.23 Wet IB 2001) | an owner-occupied home debt (eigenwoningschuld) existing on 31 December 2022 without a mortgage right (recht van hypotheek) on the home given to the company is also excluded | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 art. 10a.23 |
+| Excessive borrowing, transitional owner-occupied home (eigen woning) debt (eigenwoningschuld) rule (art. 10a.23 Wet IB 2001) | an owner-occupied home debt (eigenwoningschuld) existing on 31 December 2022 without a mortgage right (recht van hypotheek) on the home given to the company is also excluded | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 art. 10a.23 |
 | Customary salary (gebruikelijk loon) fixed amount (art. 12a Wet LB 1964) | € 48.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2022-01-01 art. 12a |
 | Comparable-wage test for customary salary | 75% of the wage from the most comparable employment | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2022-01-01 art. 12a |
 | Customary salary minimum threshold | € 5.000 for the work for the body and connected bodies together | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2022-01-01 art. 12a lid 6 |
-| Start-up rule for the customary salary (S&O declaration, S&O-verklaring) | 108% of twelve times the monthly minimum wage of art. 8 lid 1 sub a Wet minimumloon as at 1 January | enacted | Corrected | https://wetten.overheid.nl/BWBR0002471/2022-01-01 art. 12a lid 3 |
-| Old-age obligation (ODV) market rate for 2022 | -0,410% | enacted | Verified | https://centraalaanspreekpuntpensioenen.belastingdienst.nl/publicaties/overzicht-u-rendementen-en-marktrenten/ |
+| Start-up rule for the customary salary (S&O declaration, S&O-verklaring) | 108% of twelve times the monthly minimum wage (minimumloon) of art. 8 lid 1 sub a Wet minimumloon as at 1 January | enacted | Corrected | https://wetten.overheid.nl/BWBR0002471/2022-01-01 art. 12a lid 3 |
+| Old-age obligation (oudedagsverplichting) (ODV) market rate (marktrente) for 2022 | -0,410% | enacted | Verified | https://centraalaanspreekpuntpensioenen.belastingdienst.nl/publicaties/overzicht-u-rendementen-en-marktrenten/ |
 | Old-age obligation instalments (art. 38p Wet LB 1964) | twenty years, first instalment no earlier than five years before state pension age (AOW-leeftijd) and at the latest two months after it, on death within twelve months for the natural-person heirs | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2020-01-01 art. 38p |
-| Pension in own management (PEB) commutation (afkoop) and ODV conversion window | possible from 1 April 2017 to 31 December 2019, so not available in 2022 | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2020-01-01 art. 38o and art. 38q "[Vervallen per 01-01-2020]" |
+| Pension in own management (pensioen in eigen beheer) (PEB) commutation (afkoop) and ODV conversion window | possible from 1 April 2017 to 31 December 2019, so not available in 2022 | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2020-01-01 art. 38o and art. 38q "[Vervallen per 01-01-2020]" |
 | Acquisition price (verkrijgingsprijs) after PEB waiving (art. 10a.18 lid 3 Wet IB 2001) | not increased by the 2017, 2018 or 2019 application of art. 38n lid 2 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 art. 10a.18 lid 3 |
 
 ---

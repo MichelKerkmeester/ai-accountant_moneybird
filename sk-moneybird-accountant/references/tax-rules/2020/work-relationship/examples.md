@@ -38,8 +38,8 @@ This part holds the worked examples for the employment relationship (Arbeidsrela
 
 This example uses only the rules in section 3.1 and 3.2. Inputs are invented.
 
-- A client has one worker who invoices through a one-person business. The relationship in fact shows employer authority (werkgeversgezag), personal work and pay, so it is an employment relationship.
-- The Dutch Tax and Customs Administration (Belastingdienst) finds this during a check. The case is not acting in bad faith (kwaadwillend).
+- A client has one worker who invoices through a one-person business. The relationship in fact shows employer authority (werkgeversgezag), personal work (persoonlijke arbeid) and pay, so it is an employment relationship (arbeidsrelatie, dienstbetrekking).
+- The Dutch Tax and Customs Administration (Belastingdienst) finds this during a check. The case is not acting in bad faith (non-kwaadwillend).
 - Step 1: the Dutch Tax and Customs Administration gives an instruction. The usual term is 3 months.
 - Step 2: the client does nothing within the term.
 - Step 3: a correction obligation (correctieverplichting) applies from the date of the instruction, not from the start of the relationship.
@@ -51,7 +51,7 @@ Arithmetic: no amount is computed here because the material gives no rate or bas
 
 This example uses the section 3.15 figures. It reads the threshold (grens) in the wording that was current until the 2023 captures, equal to or more than (gelijk aan of meer dan), and prints the 2020 values € 48 and € 16 from that wording.
 
-- Input: the final income tax calculation over 2020 comes out at a payable amount of exactly € 47.
+- Input: the final income tax (inkomstenbelasting) calculation (belastingberekening) over 2020 comes out at a payable amount of exactly € 47.
 - Under the older wording, € 47 is below equal to or more than € 48, so no assessment (aanslag) is imposed.
 - Input: the calculation comes out at exactly € 48.
 - Under the older wording, € 48 is equal to or more than € 48, so an assessment is imposed.

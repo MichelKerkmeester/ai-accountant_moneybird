@@ -12,7 +12,7 @@ contextType: general
 version: 1.0.0.0
 ---
 
-# Fiscal reconciliation for the yearly overview
+# Fiscal reconciliation for the yearly overview (jaaroverzicht)
 
 **Rule:** Prepare the reconciliation and the hand-off for Operator review. Every amount cell is a braced placeholder. Every rate, threshold and eligibility rule is read from the year file that owns it. The agent prepares and never files.
 
@@ -48,9 +48,9 @@ Split the pack into the three columns below. The first column is what the admini
 | Administration supplies | Administration plus evidence | Never in the administration |
 |---|---|---|
 | The balance at the closing date `{balance}` | The hours criterion (urencriterium) log `{hours_log}` | Private deductions such as mortgage interest (hypotheekrente) `{private_deduction}` |
-| The profit and loss account `{profit_and_loss}` | The starter history `{starter_history}` | Private income `{private_income}` |
+| The profit and loss account (winst- en verliesrekening) `{profit_and_loss}` | The starter history `{starter_history}` | Private income `{private_income}` |
 | The ledger detail `{ledger_detail}` | The state pension (AOW) status `{aow_status}` | Fiscal partnership facts `{partnership_facts}` |
-| The asset and depreciation schedule `{asset_schedule}` | The investment amounts with the Netherlands Enterprise Agency (RVO) registrations `{investment_amount}` | The final eligibility judgement `{eligibility_judgement}` |
+| The asset and depreciation schedule `{asset_schedule}` | The investment amounts with the Netherlands Enterprise Agency (Rijksdienst voor Ondernemend Nederland, RVO) registrations `{investment_amount}` | The final eligibility judgement `{eligibility_judgement}` |
 | The VAT position and the filed returns `{vat_position}` | The private-use shares `{private_use_share}` |  |
 | The auditfile reference `{auditfile_reference}` | The accruals and deferrals (transitoria) and the supplementary return (suppletie) corrections `{transitoria}` |  |
 
@@ -60,6 +60,6 @@ The third column is the boundary of the pack. An item there is a note for the Op
 
 ## 4. PREPARED, NOT FILED
 
-The agent prepared the yearly overview and did not file anything. The pack stops at the three-column hand-off. The Operator checks the balance and the result, confirms every judgement row, performs the closing and locking actions in the Moneybird UI and files the income-tax return in the Dutch Tax and Customs Administration (Belastingdienst) portal. Payment of any assessment is a separate Operator action.
+The agent prepared the yearly overview (jaaroverzicht) and did not file anything. The pack stops at the three-column hand-off. The Operator checks the balance and the result, confirms every judgement row, performs the closing and locking actions in the Moneybird UI and files the income-tax return in the Dutch Tax and Customs Administration (Belastingdienst) portal. Payment of any assessment is a separate Operator action.
 
 Nothing in this folder states that a return was filed, an assessment exists or a payment was made. The next step after the pack is always an Operator action.

@@ -12,13 +12,13 @@ contextType: general
 version: 1.0.0.0
 ---
 
-# Report and export limits for the yearly overview
+# Report and export limits for the yearly overview (jaaroverzicht)
 
 **Rule:** This file records what the procedure may read and export. It records what stays `UNVERIFIED` until pinned CLI help and a dry run confirm it. A row marked `UNVERIFIED` is never a computation basis. Every report read runs under the Read Step Contract in [cli-moneybird](../../../cli-moneybird/SKILL.md).
 
 ## 1. OVERVIEW
 
-This reference records the report reads and the auditfile export order that the yearly overview depends on, with every unconfirmed item marked `UNVERIFIED`. A row that stays `UNVERIFIED` is never a computation basis.
+This reference records the report reads and the auditfile export order that the yearly overview (jaaroverzicht) depends on, with every unconfirmed item marked `UNVERIFIED`. A row that stays `UNVERIFIED` is never a computation basis.
 
 ---
 
@@ -28,7 +28,7 @@ These rows come from the reports row and the auditfile export row in [cli-moneyb
 
 | Report row | What it returns for the close | Limit | Status |
 |---|---|---|---|
-| `profit_loss` | The profit and loss account for the year. | One request covers at most the twelve-month window. | The action is named in the CLI skill. The date argument names are `UNVERIFIED`. |
+| `profit_loss` | The profit and loss account (winst- en verliesrekening) for the year. | One request covers at most the twelve-month window. | The action is named in the CLI skill. The date argument names are `UNVERIFIED`. |
 | `balance_sheet` | The balance at the closing date. | The same twelve-month window per request. | The action is named in the CLI skill. The date argument names are `UNVERIFIED`. |
 | `general_ledger` | The ledger detail per account and period. | The same window. | The action is named in the CLI skill. The date argument names are `UNVERIFIED`. |
 | `journal_entries` | The journal detail for the year. | The same window. | The action name is `UNVERIFIED` until pinned CLI help names it. |

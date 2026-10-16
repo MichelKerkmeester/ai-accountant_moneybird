@@ -66,7 +66,7 @@ The rates are from https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin202
 
 ### Official example: wage (loon) plus freelance income
 
-https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet shows a wage (loon) of € 40.000 with employer levy plus freelance income of € 20.000. The page says the contribution by assessment is 5,45% over € 17.214 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
+https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet shows a wage (loon) of € 40.000 with employer levy plus freelance income of € 20.000. The page says the contribution by assessment (bijdrage bij aanslag) is 5,45% over € 17.214 (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 
 Recheck with the section 2 figures: The maximum is € 57.232. The wage is € 40.000. The arithmetic in the checked material gives € 17.232. 5,45% × € 17.232 = € 939,14. 5,45% × the printed € 17.214 = € 938,16. See section 7 for the difference between the printed € 17.214 and the arithmetic € 17.232.
 

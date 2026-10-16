@@ -1,5 +1,5 @@
 ---
-title: "Filing and procedure (aangifte en procedure) 2021: Notes"
+title: "Filing and procedure 2021: Notes"
 description: "Filing deadlines, extensions, provisional assessment, tax interest (belastingrente), additional assessment (navordering), objection (bezwaar), record-retention obligation (bewaarplicht) and registration duties for tax year 2021. This file holds the notes part."
 nav_label: "Tax return and procedure notes"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Filing and procedure (aangifte en procedure) 2021: Notes
+# Filing and procedure 2021: Notes
 
 **Rule:** These values hold for tax year 2021 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the changes, records, open points and related resources for the Filing and procedure (aangifte en procedure) 2021 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
+This part holds the changes, records, open points and related resources for the Filing and procedure 2021 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
 
 ---
 
@@ -48,7 +48,7 @@ This part holds the changes, records, open points and related resources for the 
 - VAT filing default penalty (aangifteverzuimboete) 2020: € 68 after 7 calendar days grace period (coulance). 2021: € 68. No change. Source: https://web.archive.org/web/20201112/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/boetes/u_doet_geen_of_te_laat_aangifte and https://web.archive.org/web/20210331/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/boetes/u_doet_geen_of_te_laat_aangifte.
 - IB penalties (boetes) 2020: default fine (verzuimboete) € 385, up to € 5.514, not requesting an invitation to file a return € 2.757, payment default penalty (betaalverzuimboete) up to € 5.514. 2021: same. Source: https://web.archive.org/web/20201120/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete and https://web.archive.org/web/20210423/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete.
 - Record-retention obligation (bewaarplicht) 2020: 7 years, AWR art. 52 lid 4. 2021: unchanged from 2020. Source: https://wetten.overheid.nl/BWBR0002320/2020-01-01 and https://wetten.overheid.nl/BWBR0002320/2026-01-01.
-- Payment terms 2020: assessment 6 weeks, additional assessment (navorderingsaanslag) 1 month, supplementary assessment (naheffingsaanslag) 14 days, provisional assessment in monthly instalments (termijnen). 2021: unchanged from 2020. Source: https://wetten.overheid.nl/BWBR0004770/2020-01-01 and https://wetten.overheid.nl/BWBR0004770/2026-01-01.
+- Payment terms 2020: assessment 6 weeks, additional assessment (navorderingsaanslag) 1 month, supplementary assessment (naheffingsaanslag) 14 days, provisional assessment (voorlopige aanslag) in monthly instalments (termijnen). 2021: unchanged from 2020. Source: https://wetten.overheid.nl/BWBR0004770/2020-01-01 and https://wetten.overheid.nl/BWBR0004770/2026-01-01.
 
 ---
 
@@ -57,10 +57,10 @@ This part holds the changes, records, open points and related resources for the 
 <a id="6-in-the-books"></a>
 
 - Keep the records so the record-retention obligation (bewaarplicht) can be met. Keep basic records (basisgegevens) 7 years, immovable property (onroerende zaken) 10 years, One Stop Shop data 10 years, other data 7 years or shorter by agreement with the tax office (belastingkantoor). The term starts when the item is no longer current. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/hoelang-moet-u-gegevens-bewaren.
-- File the IB return 2021 before 1 May 2022, or request deferral (uitstel) before the filing date to get to 1 September 2022. Source: https://web.archive.org/web/20220401/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen and https://web.archive.org/web/20220309/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag.
+- File the IB return 2021 before 1 May 2022, or request deferral (uitstel) before the filing date (aangiftedatum) to get to 1 September 2022. Source: https://web.archive.org/web/20220401/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen and https://web.archive.org/web/20220309/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag.
 - File and pay VAT by the monthly or quarterly dates in section 2. Return and payment must both be received by that date. Source: https://web.archive.org/web/20210820/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte.
-- Register the business with Chamber of Commerce within the two-week window. Chamber of Commerce passes the data to the Dutch Tax and Customs Administration (Belastingdienst). Source: https://wetten.overheid.nl/BWBR0021777/2025-07-16 and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/.
-- Record the provisional assessment payments or refunds, because they are settled in the return. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/in-welke-situaties-moet-ik-mijn-voorlopige-aanslag-wijzigen.
+- Register the business with Chamber of Commerce (kamer van koophandel) within the two-week window. Chamber of Commerce passes the data to the Dutch Tax and Customs Administration (Belastingdienst). Source: https://wetten.overheid.nl/BWBR0021777/2025-07-16 and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/.
+- Record the provisional assessment (voorlopige aanslag) payments or refunds, because they are settled in the return. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/in-welke-situaties-moet-ik-mijn-voorlopige-aanslag-wijzigen.
 - A voluntary correction within 2 years generally gives no penalty (boete). Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/navorderingsaanslag.
 - For VAT, no interest is charged for a voluntary correction within 3 months after the tax year or a late payment within 3 months after the end of the tax year. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_loonbelasting_btw_en_overdrachtsbelasting.
 - If records are converted to another data carrier (gegevensdrager), keep the paper balance sheet (balans) and statement of income and expenditure (staat van baten en lasten), because AWR art. 52 lid 5 excepts those. Source: https://wetten.overheid.nl/BWBR0002320/2020-01-01 and https://wetten.overheid.nl/BWBR0002320/2026-01-01.

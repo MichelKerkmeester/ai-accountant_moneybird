@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Box 2 and substantial interest 2023: Figures
+# Box 2 and substantial interest (aanmerkelijk belang) 2023: Figures
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-Box 2 is the income from a substantial interest (aanmerkelijk belang), a holding of at least 5% in a company. It covers dividends, gains on a sale or liquidation of shares, the flat-rate benefit (forfaitair voordeel) from certain investment companies, and the fictitious benefits the law adds to that income. For 2023 the rate is one flat 26,9%, and the main event of the year is the entry into force on 1 January 2023 of the Excessive Borrowing from the Own Company Act (Wet excessief lenen bij eigen vennootschap), which taxes debts to the own company above € 700.000 as a fictitious regular benefit (fictief regulier voordeel). The customary salary (gebruikelijk loon) rules changed too: the comparable-wage test moved from 75% to 100% and the fixed amount to € 51.000. All 2023 items in this file are enacted law, except the points marked UNVERIFIED or proposed in section 7.
+Box 2 is the income from a substantial interest (inkomsten uit aanmerkelijk belang), a holding of at least 5% in a company. It covers dividends, gains on a sale or liquidation of shares, the flat-rate benefit (forfaitair voordeel) from certain investment companies, and the fictitious benefits the law adds to that income. For 2023 the rate is one flat 26,9%, and the main event of the year is the entry into force (inwerkingtreding) on 1 January 2023 of the Excessive Borrowing from the Own Company Act (Wet excessief lenen bij eigen vennootschap), which taxes debts to the own company above € 700.000 as a fictitious regular benefit (fictief regulier voordeel). The customary salary (gebruikelijk loon) rules changed too: the comparable-wage test moved from 75% to 100% and the fixed amount to € 51.000. All 2023 items in this file are enacted law, except the points marked UNVERIFIED or proposed in section 7.
 
 ---
 
@@ -41,16 +41,16 @@ Box 2 is the income from a substantial interest (aanmerkelijk belang), a holding
 |---|---|
 | Box 2 rate (art. 2.12 Wet IB 2001) | 1 |
 | Substantial interest (aanmerkelijk belang) definition (art. 4.6) | 2 |
-| Income from a substantial interest (art. 4.12 and 4.13) | 3 |
+| Income from a substantial interest (inkomsten uit aanmerkelijk belang) (art. 4.12 and 4.13) | 3 |
 | Minor children, income declared by the parent | 4 |
 | Flat-rate benefit (forfaitair voordeel) (art. 4.14 lid 1) | 5 |
-| Excessive borrowing (excessief lenen), entry into force | 6 |
+| Excessive borrowing (excessief lenen), entry into force (inwerkingtreding) | 6 |
 | Excessive borrowing maximum (art. 4.14a lid 1 and 2) | 7 |
 | Excessive borrowing measurement (art. 4.14a lid 3 and 4) | 8 |
 | Excessive borrowing maximum for a related person (verbonden persoon) (art. 4.14b) | 9 |
 | Excessive borrowing immigration floor (art. 4.14c lid 1) | 10 |
 | Excessive borrowing, partnership (samenwerkingsverband) exception | 11 |
-| Owner-occupied home debt (eigenwoningschuld) transitional rule (art. 10a.23) | 12 |
+| Owner-occupied home (eigen woning) debt (eigenwoningschuld) transitional rule (art. 10a.23) | 12 |
 | Customary salary (gebruikelijk loon) fixed amount (art. 12a Wet LB 1964) | 13 |
 | Customary salary comparable-wage test | 14 |
 | Customary salary minimum threshold (art. 12a lid 4) | 15 |
@@ -68,18 +68,18 @@ Box 2 is the income from a substantial interest (aanmerkelijk belang), a holding
 |---|---|---|---|---|
 | Box 2 rate (art. 2.12 Wet IB 2001) | 26,9%, one rate, no bracket | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 (art. 2.12) |
 | Substantial interest (aanmerkelijk belang) definition (art. 4.6) | 5%, sub a to e | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 (art. 4.6) |
-| Income from a substantial interest (art. 4.12 and 4.13) | regular benefits (reguliere voordelen) minus costs plus disposal gains, minus personal deductions (persoonsgebonden aftrek) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang |
+| Income from a substantial interest (inkomsten uit aanmerkelijk belang) (art. 4.12 and 4.13) | regular benefits (reguliere voordelen) minus costs plus disposal gains (vervreemdingsvoordelen), minus personal deductions (persoonsgebonden aftrek) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang |
 | Minor children, income declared by the parent | until the child turns 18 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/wanneer_hebt_u_een_aanmerkelijk_belang/wanneer_hebt_u_een_aanmerkelijk_belang |
 | Flat-rate benefit (forfaitair voordeel) (art. 4.14 lid 1) | 6,17% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 (art. 4.14) |
-| Excessive borrowing (excessief lenen), entry into force | 1 January 2023 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2022-531.html |
+| Excessive borrowing (excessief lenen), entry into force (inwerkingtreding) | 1 January 2023 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2022-531.html |
 | Excessive borrowing maximum (art. 4.14a lid 1 and 2) | € 700.000 plus amounts taxed earlier | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 (art. 4.14a) |
 | Excessive borrowing measurement (art. 4.14a lid 3 and 4) | 31 December, nominal value, taxpayer and partner jointly | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 (art. 4.14a) |
 | Excessive borrowing maximum for a related person (verbonden persoon) (art. 4.14b) | € 700.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 (art. 4.14b) |
 | Excessive borrowing immigration floor (art. 4.14c lid 1) | € 700.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 (art. 4.14c) |
 | Excessive borrowing, partnership (samenwerkingsverband) exception | debts from a civil-law joint liability for a partnership debt excluded, retroactive to 1 January 2023, lid 4 and 5 in the 2023 text | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
-| Owner-occupied home debt (eigenwoningschuld) transitional rule (art. 10a.23) | excluded without a mortgage if it existed on 31 December 2022 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2022-531.html |
+| Owner-occupied home (eigen woning) debt (eigenwoningschuld) transitional rule (art. 10a.23) | excluded without a mortgage if it existed on 31 December 2022 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2022-531.html |
 | Customary salary (gebruikelijk loon) fixed amount (art. 12a Wet LB 1964) | € 51.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2023-01-01 (art. 12a) |
-| Customary salary comparable-wage test | 100% of the most comparable wage | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2023-01-01 (art. 12a) |
+| Customary salary comparable-wage test | 100% of the most comparable wage (vergelijkbaar loon) | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2023-01-01 (art. 12a) |
 | Customary salary minimum threshold (art. 12a lid 4) | € 5.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2023-01-01 (art. 12a) |
 | Loss offset period (art. 4.49) | previous year and 6 following years | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 (art. 4.49) |
 | Older loss offset (loss arose in 2018 or earlier) | 9 years | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/verlies_uit_aanmerkelijk_belang/verlies_uit_aanmerkelijk_belang_1 |

@@ -38,7 +38,7 @@ No official examples were found in the checked material for 2020. All examples b
 
 **Calculated example 1: old band method with a single person.**
 Inputs: bank balances (banktegoeden) € 200.000,00, other assets (overige bezittingen) € 0,00, debts (schulden) € 10.000,00 on 1 January 2020. Single person, so tax-free allowance (heffingsvrij vermogen) € 30.846,00 and debt threshold (schuldendrempel) € 3.100,00.
-Step 1: deductible debt = € 10.000,00 - € 3.100,00 = € 6.900,00.
+Step 1: deductible debt (aftrekbare schuld) = € 10.000,00 - € 3.100,00 = € 6.900,00.
 Step 2: return base (rendementsgrondslag) = € 200.000,00 - € 6.900,00 = € 193.100,00.
 Step 3: tax base (grondslag) of savings and investments (sparen en beleggen) = € 193.100,00 - € 30.846,00 = € 162.254,00.
 Step 4: band 1 = € 72.797,00. Band 2 = € 162.254,00 - € 72.797,00 = € 89.457,00.
@@ -68,14 +68,14 @@ Step 9: tax under restoration of rights = 30% × € 4.499,50 = € 1.349,85.
 Step 10: old band method for the same assets: band 1 = € 72.797,00. Band 2 = € 169.154,00 - € 72.797,00 = € 96.357,00. Band 1 benefit = € 72.797,00 × 1,789% = € 1.302,34, rounded. Band 2 benefit = € 96.357,00 × 4,185% = € 4.032,54, rounded down. Total old benefit = € 1.302,34 + € 4.032,54 = € 5.334,88. Old tax = 30% × € 5.334,88 = € 1.600,46, rounded down.
 Step 11: comparison. The restoration of rights benefit of € 4.499,50 is lower than the old benefit of € 5.334,88. Under art. 1 lid 3 the category recalculation applies only if it gives a lower benefit, so the restoration of rights amount would be used if the assessment is in scope and the taxpayer objected.
 
-**Calculated example 4: green investments.**
+**Calculated example 4: green investments (groene beleggingen).**
 Inputs: green investments € 50.000,00 on 1 January 2020. Single person.
 Step 1: the 2020 exemption cap is € 59.477,00.
 Step 2: the exemption never exceeds the value of the green investments on 1 January, so the exempt amount is € 50.000,00.
 Step 3: the credit (korting) is 0,7% of the exempt amount = 0,7% × € 50.000,00 = € 350,00.
 Second part: with a whole year partner and green investments of € 130.000,00, the cap is € 118.954,00. The exempt amount is € 118.954,00. The credit is 0,7% × € 118.954,00 = € 832,68, rounded.
 
-**Calculated example 5: actual return.**
+**Calculated example 5: actual return (werkelijk rendement).**
 Inputs: bank interest € 200,00, value increase of other assets € 1.000,00, interest paid on a box 3 debt € 50,00. Single person.
 Step 1: actual return = € 200,00 + € 1.000,00 - € 50,00 = € 1.150,00.
 Step 2: no tax-free allowance is subtracted.

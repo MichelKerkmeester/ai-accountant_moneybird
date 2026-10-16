@@ -27,7 +27,7 @@ A local-only check can confirm that the skill chooses its mode and references wh
 - Objective: Route a current-period reconciliation request into LIVE monthly bookkeeping.
 - Real user request: Help me review this month's Moneybird bookkeeping. Which steps and reference apply? Keep this as an offline routing check.
 - Prompt: Help me review this month's Moneybird bookkeeping. Which steps and reference apply? Keep this as an offline routing check.
-- Fixture rows: LIVE-001 (en) and LIVE-001-nl (nl twin).
+- Fixture rows: LIVE-001 (English) and LIVE-001-nl (Dutch twin).
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references. Do not use network access or accounting APIs.
 - Expected signals: Selects LIVE, lists sales, purchase records, bank matching, private movements, and exceptions, and names the bookkeeping reference.
 - Desired user-visible outcome: A concise route report with selected mode, reference paths, boundary result and no API activity.

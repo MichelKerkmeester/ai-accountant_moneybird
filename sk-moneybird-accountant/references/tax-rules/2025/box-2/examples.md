@@ -38,7 +38,7 @@ This part holds the worked examples for the Box 2 and substantial interest (aanm
 
 `Calculated example` from the section 2 figures.
 
-A director and substantial shareholder (dga) receives a dividend of € 60.000 from his private limited company (BV) in 2025 and has no other box 2 income. The whole amount falls in bracket 1.
+A director and substantial shareholder (directeur-grootaandeelhouder, dga) receives a dividend of € 60.000 from his private limited company (BV) in 2025 and has no other box 2 income. The whole amount falls in bracket 1.
 
 - Step 1: box 2 income is € 60.000.
 - Step 2: € 60.000 is below the bracket boundary of € 67.804, so only 24,5% applies.
@@ -155,7 +155,7 @@ A private limited company in which the director and substantial shareholder hold
 
 If the total salary for the work for the private limited company and all connected bodies is not more than € 5.000, the rule does not apply at all, for example a total of € 4.000 for one company. The salary is box 1 income from employment, not a box 2 benefit (voordeel). Sources: [art. 12a Wet LB 1964, 2025 text](https://wetten.overheid.nl/BWBR0002471/2025-01-01), [Belastingdienst, loon en aanmerkelijk belang](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/loon_en_aanmerkelijk_belang/loon_en_aanmerkelijk_belang).
 
-### 4.10 Old-age obligation (ODV) market rate (marktrente)
+### 4.10 Old-age obligation (oudedagsverplichting, ODV) market rate (marktrente)
 
 `Calculated example` from the section 2 figures.
 

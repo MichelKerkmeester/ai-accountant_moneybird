@@ -38,7 +38,7 @@ This part holds the worked examples for the VAT 2021 topic. The overview and key
 
 A business sells a taxable service for an invented amount of € 100 excluding VAT.
 
-1. Taxable amount: € 100.
+1. Taxable amount (belastbaar bedrag): € 100.
 2. VAT: € 100 × 21% = € 21.
 3. Total invoice amount: € 100 + € 21 = € 121.
 
@@ -52,7 +52,7 @@ A business sells an invented item that qualifies for Table I (tabel i) for € 1
 
 ### Zero rate and exemption: calculated examples
 
-A business sends goods to a VAT-registered buyer in another EU country. It keeps evidence that the goods were transported there, checks the buyer’s valid VAT ID and files a timely, correct and complete ICP. If all conditions are met, it applies the zero rate and retains the right to deduct related input VAT.
+A business sends goods to a VAT-registered buyer in another EU country. It keeps evidence that the goods were transported there, checks the buyer’s valid VAT ID (btw-id) and files a timely, correct and complete ICP. If all conditions are met, it applies the zero rate and retains the right to deduct related input VAT (voorbelasting).
 
 A business provides an exempt service. It does not charge VAT on that service and cannot deduct input VAT connected with the exempt supply. These examples show why a zero-rated supply and an exempt supply have different deduction treatment.
 
@@ -158,7 +158,7 @@ An entrepreneur has invented consumer sales equal to 81% of all supplies.
 
 ### Business car private-use adjustment: calculated example
 
-An entrepreneur has an invented business car catalogue price of € 20.000 and has no records of private use.
+An entrepreneur has an invented business car catalogue price (catalogusprijs) of € 20.000 and has no records of private use (privégebruik).
 
 1. At 2,7%: € 20.000 × 2,7% = € 540.
 2. If the lower 1,5% rate applies: € 20.000 × 1,5% = € 300.

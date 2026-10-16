@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Entrepreneur's allowance and SME profit exemption 2026: Examples
+# Entrepreneur's allowance and SME profit exemption (ondernemersaftrek en MKB-winstvrijstelling) 2026: Examples
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -36,13 +36,13 @@ This part holds the worked examples for the Entrepreneur's allowance and SME pro
 
 ### Example 1, hours criterion (urencriterium) in a part year (Official example)
 
-A webhosting business started on 1 July means 6 months as an entrepreneur (ondernemer) in the year, and the taxpayer still has to meet the full 1.225 hours, because the hours are not prorated to the period in which the taxpayer was an entrepreneur. The Chamber of Commerce (KVK) example adds a start on 1 May: eight months remain, about 117 working days, and at 8 hours a day 117 × 8 = 936,00 hours, so extra hours are needed to reach 1.225 hours.
+A webhosting business started on 1 July means 6 months as an entrepreneur (ondernemer) in the year, and the taxpayer still has to meet the full 1.225 hours, because the hours are not prorated to the period in which the taxpayer was an entrepreneur. The Chamber of Commerce (kamer van koophandel, KVK) example adds a start on 1 May: eight months remain, about 117 working days, and at 8 hours a day 117 × 8 = 936,00 hours, so extra hours are needed to reach 1.225 hours.
 
 Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium and https://www.kvk.nl/starten/de-magische-1225-uur-alles-over-het-urencriterium.
 
 ### Example 2, self-employed person's deduction (zelfstandigenaftrek) and SME profit exemption (MKB-winstvrijstelling) at a profit of € 60.000 (Calculated example)
 
-Inputs: profit as an entrepreneur € 60.000,00, the taxpayer has not reached state pension (AOW) age at the start of 2026, the hours criterion is met, no starter's deduction (startersaftrek), no other entrepreneur's allowance.
+Inputs: profit as an entrepreneur (winst als ondernemer) € 60.000,00, the taxpayer has not reached state pension (AOW) age at the start of 2026, the hours criterion is met, no starter's deduction (startersaftrek), no other entrepreneur's allowance (ondernemersaftrek).
 
 - Step 1, self-employed person's deduction: € 1.200,00.
 - Step 2, profit after the entrepreneur's allowance: € 60.000,00 minus € 1.200,00 = € 58.800,00.
@@ -92,9 +92,9 @@ Inputs: profit € 20.000,00, the taxpayer was not an entrepreneur in one or mor
 - Step 5, taxable profit from business activities: € 8.000,00 minus € 1.016,00 = € 6.984,00.
 - Variant with profit € 5.000,00 and no earlier use: the deduction is capped at the profit, so € 5.000,00.
 
-### Example 7, deduction for research and development work (Calculated example)
+### Example 7, deduction for research and development work (aftrek speur- en ontwikkelingswerk) (Calculated example)
 
-Inputs: profit € 60.000,00, the taxpayer has not reached state pension age at the start of 2026, the hours criterion is met, and the taxpayer holds an R&D declaration (S&O-verklaring) from the Netherlands Enterprise Agency (RVO) and made at least 500 hours of research and development work.
+Inputs: profit € 60.000,00, the taxpayer has not reached state pension age at the start of 2026, the hours criterion is met, and the taxpayer holds an R&D declaration (S&O-verklaring) from the Netherlands Enterprise Agency (Rijksdienst voor Ondernemend Nederland, RVO) and made at least 500 hours of research and development work.
 
 - Step 1, self-employed person's deduction: € 1.200,00.
 - Step 2, deduction for research and development work (aftrek speur- en ontwikkelingswerk): € 15.979,00.

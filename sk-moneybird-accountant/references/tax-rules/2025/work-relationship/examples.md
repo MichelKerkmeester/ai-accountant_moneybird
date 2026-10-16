@@ -14,7 +14,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Employment relationship and self-employment 2025: Examples
+# Employment relationship (arbeidsrelatie, dienstbetrekking) and self-employment (zelfstandigheid) 2025: Examples
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Employment relationship and self-employment (arbeidsrelatie en zelfstandigheid) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the employment relationship (arbeidsrelatie) and self-employment 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -40,17 +40,17 @@ The checked material contains no official example for this topic, so every examp
 
 ### Calculated example: applying the employment (loondienst) elements
 
-Invented facts: a self-employed person without employees (ZZP) works 4 days a week for one client, the client sets the planning and the working hours, the work is done as part of the client's team, the person must do the work personally, and the pay is € 45 per hour.
+Invented facts: a self-employed person (zelfstandige) without employees (ZZP) works 4 days a week for one client, the client sets the planning and the working hours, the work is done as part of the client's team, the person must do the work personally, and the pay is € 45 per hour.
 
 1. The possibility of employer authority (werkgeversgezag): the client sets planning and working hours, so this element is present.
 2. The duty to perform work in person (persoonlijke arbeid): the work must be done personally, so this element is present.
 3. Pay for the work: € 45 per hour, so this element is present.
 
-The weighed factors point the same way: a long duration, embedding in the organisation and little commercial risk. Conclusion for this invented case: the relationship has the features of employment. Each case is decided on its own facts, and not being in employment does not make someone an entrepreneur (ondernemer) for income tax or VAT. Sources: [Belastingdienst, wanneer is sprake van loondienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst) and [open.overheid.nl](https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file).
+The weighed factors point the same way: a long duration, embedding in the organisation and little commercial risk. Conclusion for this invented case: the relationship has the features of employment. Each case is decided on its own facts, and not being in employment does not make someone an entrepreneur (ondernemer) for income tax (inkomstenbelasting) or VAT. Sources: [Belastingdienst, wanneer is sprake van loondienst](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst) and [open.overheid.nl](https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file).
 
-### Calculated example: the 2/5 minimum wage threshold for persons treated as employees (gelijkgestelden)
+### Calculated example: the 2/5 minimum wage (minimumloon) threshold for persons treated as employees (gelijkgestelden)
 
-The rule for persons treated as employees uses at least 2/5 of the minimum wage. With the statutory minimum wage (WML) of € 14,06 per hour at 1 January 2025 (section 2):
+The rule for persons treated as employees uses at least 2/5 of the minimum wage. With the statutory minimum wage (WML, wettelijk minimumloon) of € 14,06 per hour at 1 January 2025 (section 2):
 
 1. One fifth: € 14,06 / 5 = € 2,812.
 2. Two fifths: € 2,812 × 2 = € 5,624, so about € 5,62 per hour.
@@ -68,15 +68,15 @@ Source: [Handhavingsplan arbeidsrelaties, tranche 2025](https://download.belasti
 
 ### Calculated example: no DBA fine over 2025
 
-Invented case: the Dutch Tax and Customs Administration corrects a client over 2025 and the correction is € 10.000 in payroll taxes (loonheffingen) for the qualification of an employment relationship.
+Invented case: the Dutch Tax and Customs Administration corrects a client over 2025 and the correction is € 10.000 in payroll taxes (loonheffingen) for the qualification of an employment relationship (arbeidsrelatie, dienstbetrekking).
 
 1. Default fine (verzuimboete) for the qualification: € 0.
-2. Penalty for gross negligence or intent (vergrijpboete) for the qualification over 2025: € 0.
+2. Penalty (vergrijpboete) for gross negligence (grove schuld) or intent for the qualification over 2025: € 0.
 3. The correction itself stands: € 10.000 in the supplementary assessment for payroll taxes (naheffingsaanslag loonheffingen).
 
 So the amount payable for this invented correction is € 10.000, without a qualification fine. From 1 January 2026 penalties for gross negligence or intent are possible under the normal rules, also for corrections over 2026. Sources: [Handhavingsplan arbeidsrelaties, tranche 2025](https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z52fd.pdf) and [Belastingdienst, handhaving](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving).
 
-### Calculated example: the advance consultation (vooroverleg) target period
+### Calculated example: the advance consultation (vooroverleg) target period (streeftermijn)
 
 A complete advance consultation request (verzoek vooroverleg) is filed on 3 February 2025. The target period (streeftermijn) is 8 weeks.
 
@@ -101,7 +101,7 @@ So the invented agreement can be used for 4 years longer than the date in its ow
 
 1. Start from the WML per hour at 1 January 2025: € 14,06 (section 2).
 2. 120% of the WML: € 14,06 × 1,20 = € 16,872.
-3. The 25% surcharge (opslag) for disability insurance (AOV) and pension and the 15% surcharge for general costs together add 40%, so multiply by 1,40: € 16,872 × 1,40 = € 23,6208.
+3. The 25% surcharge (opslag) for disability insurance (AOV, arbeidsongeschiktheidsverzekering) and pension and the 15% surcharge for general costs together add 40%, so multiply by 1,40: € 16,872 × 1,40 = € 23,6208.
 4. Times 1,5 for non-billable hours: € 23,6208 × 1,5 = € 35,4312.
 5. The unrounded amount is € 35,4312, which is the € 35,43 excluding (excl.) VAT stated in the explanatory memorandum (memorie van toelichting).
 6. Rounded up to whole euros, starting from the unrounded amount: € 36,00, the amount in the statutory text at the reference date 1 January 2025.
@@ -114,7 +114,7 @@ Source: [Kamerstuk 36 783, nr. 3](https://zoek.officielebekendmakingen.nl/kst-36
 2. Every later change starts from the unrounded € 35,43 and follows the WML percentage (section 2).
 3. WML factor: € 14,71 / € 14,06 = 1,04623, rounded to 5 decimals.
 4. Unrounded amount: € 35,43 × 1,04623 = € 37,0679, so about € 37,07.
-5. Rounded up to whole euros: € 38,00, the amount that the Senate, the Government of the Netherlands (rijksoverheid.nl) and the central government business portal (Ondernemersplein) state for the reference date 1 January 2026.
+5. Rounded up to whole euros: € 38,00, the amount that the Senate (eerste kamer), the Government of the Netherlands (rijksoverheid, rijksoverheid.nl) and the central government business portal (Ondernemersplein) state for the reference date 1 January 2026.
 
 So € 36 is the base text at the reference date 1 January 2025 and € 38 is the indexed amount at the reference date 1 January 2026. Sources: [Kamerstuk 36 783, nr. 3](https://zoek.officielebekendmakingen.nl/kst-36783-3.html), [rijksoverheid.nl, bedragen minimumloon 2026](https://www.rijksoverheid.nl/themas/werk/minimumloon/bedragen-minimumloon/bedragen-minimumloon-2026) and [Eerste Kamer, wetsvoorstel 36783](https://www.eerstekamer.nl/wetsvoorstel/36783_wet_invoering).
 
@@ -122,7 +122,7 @@ So € 36 is the base text at the reference date 1 January 2025 and € 38 is th
 
 The presumption in art. 7:610aa BW lid 1 uses a rate of at most € 36 per hour (section 2). Lid 3 excludes the case where the other party is a natural person not acting in a profession or business.
 
-1. ZZP A works for a bv for € 30 per hour. € 30 is at most € 36, so the presumption applies when the law is in force, and the client (opdrachtgever) must prove there is no employment contract (arbeidsovereenkomst).
+1. ZZP A works for a bv for € 30 per hour. € 30 is at most € 36, so the presumption applies when the law is in force (in werking), and the client (opdrachtgever) must prove there is no employment contract (arbeidsovereenkomst).
 2. ZZP B works for the same bv for € 45 per hour. € 45 is more than € 36, so the amount-based presumption does not apply. The ordinary test still decides whether there is an employment contract.
 3. ZZP C works for a private client, a natural person not acting in a profession or business, for € 25 per hour. The rate is at most € 36, but lid 3 excludes the presumption because of who the other party is.
 
@@ -130,7 +130,7 @@ For tax year 2025 the law was not in force, so these outcomes do not yet apply. 
 
 ### Calculated example: the BAZ docket percentage
 
-The docket summary gives about 70% of income up to the minimum wage. Illustration of the percentage only: 70% of an invented covered amount of € 1.000 is € 1.000 × 0,70 = € 700. The material gives no annual minimum wage in euros and the bill is proposed, so no benefit can be computed on these facts. The waiting period is about one year and there is an opt-out with a qualifying private policy. Source: [Tweede Kamer, wetsvoorstel 36912](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912).
+The docket summary gives about 70% of income up to the minimum wage. Illustration of the percentage only: 70% of an invented covered amount of € 1.000 is € 1.000 × 0,70 = € 700. The material gives no annual minimum wage in euros and the bill is proposed, so no benefit can be computed on these facts. The waiting period (wachttijd) is about one year and there is an opt-out with a qualifying private policy. Source: [Tweede Kamer, wetsvoorstel 36912](https://www.tweedekamer.nl/kamerstukken/wetsvoorstellen/detail?cfg=wetsvoorsteldetails&qry=wetsvoorstel%3A36912).
 
 ---
 

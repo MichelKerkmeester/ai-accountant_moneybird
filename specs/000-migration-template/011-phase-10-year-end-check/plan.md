@@ -114,7 +114,7 @@ Phase 10 runs the actions in the order given, and every Moneybird write goes thr
 4. [Reconciliation Agent] Compare costs by approved main group.
 5. [VAT Agent] Confirm all assigned VAT periods and declarations passed.
 6. [Independent Auditor] Compare asset purchase, historic processing, depreciation and book value.
-7. [Reconciliation Agent] Review private deposits, withdrawals and business costs paid privately.
+7. [Reconciliation Agent] Review private deposits, withdrawals and business costs (bedrijfskosten) paid privately.
 8. [Tax Filing Agent] Bridge Moneybird, XAF, annual accounts and filed income-tax evidence.
 9. [Independent Auditor] Check bank, receivables, payables, VAT, assets, depreciation, debts and equity by account.
 10. [Operator] Prefer the documented UI auditfile route or approve the operation-scoped route in the route contract. Compare target XAF 4.0 with the source XAF at mapped account level and explain each difference.

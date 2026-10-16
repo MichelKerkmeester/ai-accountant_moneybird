@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Income tax box 1 2026: Examples
+# Income tax (inkomstenbelasting) box 1 2026: Examples
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Income tax box 1 2026 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Income tax (inkomstenbelasting) box 1 2026 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -69,7 +69,7 @@ This is a bracket calculation before credits and rate adjustment. Sources for ra
 
 ### Calculated example: rate adjustment
 
-Assume taxable box 1 income after deductions of € 75.000 and deductions that lower the tax base (grondslagverminderende posten) of € 5.000. Income before deductions is € 75.000 plus € 5.000 = € 80.000, which exceeds the € 78.426 boundary.
+Assume taxable box 1 income after deductions of € 75.000 and deductions that lower the tax base (grondslag) (grondslagverminderende posten) of € 5.000. Income before deductions is € 75.000 plus € 5.000 = € 80.000, which exceeds the € 78.426 boundary.
 
 1. The amount over the boundary is € 80.000 minus € 78.426 = € 1.574.
 2. The initial rate adjustment is € 1.574 × 0,1194 = € 187,9356, rounded to € 187,94.
@@ -78,11 +78,11 @@ Assume taxable box 1 income after deductions of € 75.000 and deductions that l
 
 Sources for rates and rule: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/boxen_en_tarieven/box_1/box_1, https://wetten.overheid.nl/jci1.3:c:BWBR0011353&hoofdstuk=2&afdeling=2.2&artikel=2.10&z=2026-01-01&g=2026-01-01 art. 2.10 lid 2, https://www.belastingdienst.nl/wps/wcm/connect/nl/aftrek-en-kortingen/content/afbouw-tarief-aftrekposten-bij-hoog-inkomen.
 
-### Calculated example: general tax credit
+### Calculated example: general tax credit (algemene heffingskorting)
 
 Assume the taxpayer is below state pension (AOW) age and the aggregate income (verzamelinkomen) is € 40.000.
 
-1. Amount above the € 29.736 phase-out point: € 40.000 minus € 29.736 = € 10.264.
+1. Amount above the € 29.736 phase-out point (afbouwpunt): € 40.000 minus € 29.736 = € 10.264.
 2. Phase-out: € 10.264 × 0,06398 = € 656,69072, rounded to € 656,69.
 3. Remaining credit: € 3.115 minus € 656,69 = € 2.458,31.
 
@@ -92,7 +92,7 @@ Sources for rates and amounts: https://www.belastingdienst.nl/wps/wcm/connect/bl
 
 The 2026 FISIN page states that someone born on 20 December 1962 with no income receives the full € 3.115 paid out. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/heffingskortingen.
 
-### Calculated example: employment tax credit
+### Calculated example: employment tax credit (arbeidskorting)
 
 Assume an earned income (arbeidsinkomen) of € 40.000 and a taxpayer below state pension age.
 
@@ -103,7 +103,7 @@ Assume an earned income (arbeidsinkomen) of € 40.000 and a taxpayer below stat
 
 Sources for the formula: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/arbeidskorting/tabel-arbeidskorting-2026, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/heffingskortingen.
 
-### Calculated example: income-related combination tax credit
+### Calculated example: income-related combination tax credit (inkomensafhankelijke combinatiekorting)
 
 Assume the taxpayer meets the child and household conditions, qualifies on the partner test, is below state pension age and has an earned income of € 20.000.
 
@@ -119,7 +119,7 @@ The conditions page states that 164 days with the taxpayer and 201 days with the
 
 ### Calculated example: business profit to taxable business profit
 
-Assume an eligible entrepreneur has a profit of € 60.000, qualifies for the € 1.200 self-employed person's deduction (zelfstandigenaftrek), has no other entrepreneur's allowance (ondernemersaftrek) or exempt profit components and has no losses to carry forward.
+Assume an eligible entrepreneur has a profit of € 60.000, qualifies for the € 1.200 self-employed person's deduction (zelfstandigenaftrek), has no other entrepreneur's allowance (ondernemersaftrek) or exempt profit components (vrijgestelde winstbestanddelen) and has no losses to carry forward.
 
 1. Profit after the self-employed person's deduction: € 60.000 minus € 1.200 = € 58.800.
 2. SME profit exemption (MKB-winstvrijstelling): € 58.800 × 0,127 = € 7.467,60.

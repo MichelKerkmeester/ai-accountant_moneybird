@@ -42,7 +42,7 @@ A business sells taxable goods for € 1.000,00 excluding VAT.
 - At 9%: € 1.000,00 × 9% = € 90,00 VAT. Total invoice amount: € 1.000,00 + € 90,00 = € 1.090,00.
 - At 0%: € 1.000,00 × 0% = € 0,00 VAT. The supply is still zero-rated rather than exempt if it meets the conditions for the zero rate.
 
-The rates and the difference between zero rating and exemption follow Article 9 of the Turnover Tax Act 1968 (Wet op de omzetbelasting 1968) and the Dutch Tax and Customs Administration (Belastingdienst) guidance. [Wet op de omzetbelasting 1968](https://wetten.overheid.nl/BWBR0002629/2026-01-01), [ICP statement explanation](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf)
+The rates and the difference between zero rating and exemption follow Article 9 of the Turnover Tax Act 1968 (Wet OB, Wet op de omzetbelasting 1968) and the Dutch Tax and Customs Administration (Belastingdienst) guidance. [Wet op de omzetbelasting 1968](https://wetten.overheid.nl/BWBR0002629/2026-01-01), [ICP statement explanation](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf)
 
 ### KOR eligibility and crossing supply: Calculated example
 
@@ -64,13 +64,13 @@ Assume qualifying distance sales are € 8.000,00 in the preceding calendar year
 
 Assume a business discovers an error on a filed return. The correction must be submitted no later than 8 weeks after discovery. The correction must concern one of the past five calendar years. The amount boundary for putting a correction in the next return is € 1.000,00 or less under the stated policy, but 2027 confirmation is not published in the checked material. [UBOB](https://wetten.overheid.nl/BWBR0002633/2026-01-01), [Belastingdienst correction guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/aangifte_corrigeren/aangifte_corrigeren)
 
-### Business car private use: Calculated example
+### Business car private use (privégebruik): Calculated example
 
-Assume the car's catalogue price including VAT and BPM is € 30.000,00, with no usage records and no cap that produces a lower result. The calculation is € 30.000,00 × 2,7% = € 810,00. That amount is included in the last return of the year, subject to any proportional reduction for exempt use and any part-year adjustment. [Car VAT decision](https://wetten.overheid.nl/BWBR0043783/2020-07-04)
+Assume the car's catalogue price (catalogusprijs) including VAT and BPM is € 30.000,00, with no usage records and no cap that produces a lower result. The calculation is € 30.000,00 × 2,7% = € 810,00. That amount is included in the last return of the year, subject to any proportional reduction for exempt use and any part-year adjustment. [Car VAT decision](https://wetten.overheid.nl/BWBR0043783/2020-07-04)
 
 ### BUA annual threshold: Calculated example
 
-Assume one employee receives qualifying benefits in kind costing € 200,00 per financial year (boekjaar). That total is € 227,00 minus € 200,00 = € 27,00 below the € 227,00 threshold, so it stays outside the BUA exclusion. If the total for that person is € 250,00, it is € 250,00 minus € 227,00 = € 23,00 above the threshold and the BUA exclusion may apply if the other conditions are met. [BUA](https://wetten.overheid.nl/BWBR0002636/2019-02-23)
+Assume one employee receives qualifying benefits in kind (in natura) costing € 200,00 per financial year (boekjaar). That total is € 227,00 minus € 200,00 = € 27,00 below the € 227,00 threshold, so it stays outside the BUA exclusion. If the total for that person is € 250,00, it is € 250,00 minus € 227,00 = € 23,00 above the threshold and the BUA exclusion may apply if the other conditions are met. [BUA](https://wetten.overheid.nl/BWBR0002636/2019-02-23)
 
 ### Invoice deadline: Official example
 

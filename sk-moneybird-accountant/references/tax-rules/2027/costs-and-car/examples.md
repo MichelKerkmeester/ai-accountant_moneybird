@@ -50,13 +50,13 @@ Step 3, the election in the return gives the higher deduction here, € 4.800,00
 
 A sole trader spends € 2.000 on travel and stay for a conference (congres) in 2027.
 
-Step 1, art. 3.16 lid 8 caps the deduction at € 1.500. Deductible € 1.500,00, not deductible € 2.000 minus € 1.500 = € 500,00.
+Step 1, art. 3.16 lid 8 caps the deduction at € 1.500. Deductible € 1.500,00, not deductible (niet aftrekbaar) € 2.000 minus € 1.500 = € 500,00.
 
 Step 2, if the nature of the work makes attendance necessary, the cap does not apply and the full € 2.000,00 is deductible.
 
-### 4.3 Calculated example: mileage allowance with a private car
+### 4.3 Calculated example: mileage allowance (kilometervergoeding) with a private car (privéauto)
 
-A sole trader drives 12.000 business kilometres in 2027 in a car that belongs to the private assets. Fuel (brandstof), insurance (verzekering), toll and parking are not deductible separately.
+A sole trader drives 12.000 business kilometres in 2027 in a car that belongs to the private assets (privévermogen). Fuel (brandstof), insurance (verzekering), toll and parking are not deductible separately.
 
 Step 1, enacted 2027 text: 12.000 km times € 0,23 = € 2.760,00.
 
@@ -64,9 +64,9 @@ Step 2, if Tax Plan 2027 (Belastingplan 2027) is adopted: 12.000 km times € 0,
 
 Step 3, the difference is € 3.000,00 minus € 2.760,00 = € 240,00. Until adoption, use € 2.760,00. Check: 0,23 times 12.000 = 2.760,00 and 0,25 times 12.000 = 3.000,00.
 
-### 4.4 Calculated example: private-use addition at 22% with the car costs cap
+### 4.4 Calculated example: private-use addition (bijtelling) at 22% with the car costs (autokosten) cap
 
-A car classified as a business asset (ondernemingsvermogen) has a catalogue price of € 30.000 and is used privately for more than 500 km in 2027.
+A car classified as a business asset (bedrijfsmiddel) (ondernemingsvermogen) has a catalogue price (catalogusprijs) of € 30.000 and is used privately for more than 500 km in 2027.
 
 Step 1, 22% of € 30.000 = € 6.600,00 withdrawal (onttrekking).
 
@@ -112,7 +112,7 @@ Step 4, the difference is € 2.100,00 minus € 1.320,00 = € 780,00. Check: 0
 
 Knowledge group case (Kennisgroep casus) KG:213:2026:1 describes a youngtimer bought in 2024 as freely classifiable assets (keuzevermogen), where the move to 25 years from 2027 can justify a new labelling choice (etiketkeuze) after 1 January 2027. Official example, source: [KG:213:2026:1](https://kennisgroepen.belastingdienst.nl/publicaties/kg21320261-heretikettering-bij-wetswijziging-privegebruik-auto/).
 
-### 4.9 Calculated example: zero-emission car first admitted in 2027
+### 4.9 Calculated example: zero-emission car (zero-emissie auto) first admitted in 2027
 
 A zero-emission car with a catalogue price of € 40.000 is first admitted in 2027 and used privately for more than 500 km.
 
@@ -142,7 +142,7 @@ Step 2, per year: € 1.500,00 / 5 = € 300,00.
 
 Step 3, a laptop stand of € 40 is deducted in one go because it is under € 450. If the laptop were used 10% or less for business, it would have to be classified as compulsory private assets (verplicht privévermogen) and would be 0% deductible.
 
-### 4.12 Calculated example: relocation costs
+### 4.12 Calculated example: relocation costs (verhuiskosten)
 
 Moving the household contents (inboedel) costs € 1.200.
 
@@ -150,7 +150,7 @@ Step 1, deductible is the cost of moving the household contents plus € 7.750: 
 
 ### 4.13 Calculated example: VAT (btw) correction on a private car used for business
 
-A private car with a catalogue price including VAT and bpm of € 40.000 is used for business without conclusive mileage records (sluitende kilometeradministratie), and 4 months of the year are in the business.
+A private car with a catalogue price including VAT and bpm of € 40.000 is used for business without conclusive mileage records (zonder sluitende kilometeradministratie), and 4 months of the year are in the business.
 
 Step 1, the year-end correction is 1,5% of € 40.000 = € 600,00.
 
@@ -168,19 +168,19 @@ Step 1, a private telephone subscription of € 30 per month is not deductible. 
 
 Step 2, a Wahv traffic fine (verkeersboete) of € 180 is not deductible under art. 3.14 lid 1 and the overview page, which prints Fines 0%.
 
-### 4.16 Calculated example: small businesses scheme (KOR) and the cost base
+### 4.16 Calculated example: small businesses scheme (kleineondernemersregeling) (KOR) and the cost base (kostengrondslag)
 
 A sole trader in the KOR buys office supplies for € 1.210 including 21% VAT.
 
 Step 1, the VAT part is € 210,00 and the amount excluding VAT is € 1.000,00. Check: 1.000 times 21% = 210,00 and 1.000 plus 210 = 1.210,00.
 
-Step 2, under the KOR no VAT is deducted, so the IB deduction is the amount including VAT, € 1.210,00. If the VAT were deductible in a VAT return (btw-aangifte), the IB deduction would be € 1.000,00.
+Step 2, under the KOR no VAT is deducted, so the deduction for income tax (inkomstenbelasting) is the amount including VAT, € 1.210,00. If the VAT were deductible in a VAT return (btw-aangifte), the income tax deduction would be € 1.000,00.
 
 ### 4.17 Calculated example: home workspace (werkruimte) test
 
-A sole trader rents a home for an invented € 1.200 per month and uses one room as an office. The room has no own entrance, no own sanitary facilities and could not be rented to a third party. The room is therefore not a self-contained part of the home according to common opinion (naar verkeersopvatting zelfstandig) and the workspace costs are 0% deductible. A room with its own entrance, its own sanitary facilities and a realistic rental option, in which the taxpayer earns most of his income, can qualify under art. 3.16 lid 1.
+A sole trader rents a home for an invented € 1.200 per month and uses one room as an office. The room has no own entrance, no own sanitary facilities and could not be rented to a third party (derde). The room is therefore not a self-contained part of the home according to prevailing views (naar verkeersopvatting zelfstandig) and the workspace costs are 0% deductible. A room with its own entrance, its own sanitary facilities and a realistic rental option, in which the taxpayer earns most of his income, can qualify under art. 3.16 lid 1.
 
-### 4.18 Official example: pseudo-final levy
+### 4.18 Official example: pseudo-final levy (pseudo-eindheffing)
 
 Official example from Rijksoverheid: a car of € 30.000 gives 12% = € 3.600,00 per year, which is € 300,00 per month. Official example, source: [Rijksoverheid on the car of the zaak](https://www.rijksoverheid.nl/documenten/vraag-en-antwoord/belastingen-op-auto-en-motor/ik-krijg-een-auto-van-de-zaak.-welke-belastingen-moet-ik-betalen).
 

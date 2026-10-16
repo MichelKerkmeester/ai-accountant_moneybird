@@ -13,7 +13,7 @@ contextType: general
 version: 1.0.0.0
 ---
 
-# VAT return preparation
+# VAT return (btw-aangifte) preparation
 
 **Rule:** This folder prepares one VAT period for Operator review. It never files, submits or pays. Every figure, rate, threshold and deadline lives in the year files under `references/tax-rules/`. Nothing here is tax advice.
 
@@ -63,7 +63,7 @@ The five unresolved items. Each one is a missing capability, not a work item for
 | ID | Open point | Missing capability | Rule |
 |---|---|---|---|
 | O1 | The current labels and semantics of rubriek 5c to 5g | A current form explanation or the live return screen | Never filled from memory or computed from transaction data. The indexed OB 141 explanation is read through [rubriek 2 of the source library guide](../tax-rules/source-library.md#2-how-to-reach-a-source), with the Operator confirming the edition. |
-| O2 | The statutory ICP filing deadline | A primary source or the Operator's own ICP notice | Never filled from memory or computed from transaction data. The indexed digital ICP guide is read through [section 2 of the source library guide](../tax-rules/source-library.md#2-how-to-reach-a-source), with the Operator confirming the edition. |
+| O2 | The statutory ICP filing deadline (aangiftetermijn) | A primary source or the Operator's own ICP notice | Never filled from memory or computed from transaction data. The indexed digital ICP guide is read through [section 2 of the source library guide](../tax-rules/source-library.md#2-how-to-reach-a-source), with the Operator confirming the edition. |
 | O3 | The monthly-filing trigger | A current rule source or an updated Handbook | Never filled from memory or computed from transaction data. |
 | O4 | The lease scope of the business-car flat rate (forfait) | An Operator or bookkeeper decision with the contract and the use facts | Never filled from memory or computed from transaction data. |
 | O5 | The guarded CLI report date-argument names | Pinned CLI help and a dry run before a live use | Never filled from memory or computed from transaction data. |
@@ -76,6 +76,6 @@ The administration's own rate list and VAT overview (btw-overzicht) settle the r
 
 - [Preparation](preparation.md), [sections](return-boxes.md), [year-end and corrections](year-end-and-corrections.md) and [review pack](review-pack.md).
 - [Moneybird bookkeeping](../moneybird-bookkeeping.md) for the cadence and the period control.
-- [Purchase invoices](../purchase-invoices.md) for the reverse-charge and small businesses scheme (KOR) rate cases.
+- [Purchase invoices](../purchase-invoices.md) for the reverse-charge and small businesses scheme (kleineondernemersregeling, KOR) rate cases.
 - [Dutch tax rules](../tax-rules/dutch-tax-rules.md) for the cross-year routing.
 - [cli-moneybird](../../../cli-moneybird/SKILL.md) for the guarded reads.

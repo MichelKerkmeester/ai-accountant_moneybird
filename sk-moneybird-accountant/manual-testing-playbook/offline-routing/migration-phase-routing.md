@@ -27,7 +27,7 @@ The phase map keeps live work, monitoring and Jortt decommission in the correct 
 - Objective: Route recurring post-switch work and final completion to the current phase map.
 - Real user request: I have passed Phase 18. Which phases repeat during monitoring, and when can Jortt be cancelled? Do not access any accounting API.
 - Prompt: I have passed Phase 18. Which phases repeat during monitoring, and when can Jortt be cancelled? Do not access any accounting API.
-- Fixture rows: MODE-001 (en) and MODE-001-nl (nl twin).
+- Fixture rows: MODE-001 (English) and MODE-001-nl (Dutch twin).
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references. Do not use network access or accounting APIs.
 - Expected signals: Selects MIGRATION, routes monthly, VAT-period and yearly work to Phases 19 to 21 after Phase 18, routes completion to the one-time Phase 22 gate after monitoring, refuses early cancellation, preserves owner tags and states that no API was called. Any tool route it names matches the route contract: jortt reads run through jortt-cli only, XAF and other Jortt exports are Operator UI tasks, Moneybird reads run through moneybird-guard with `MONEYBIRD_GUARD_READ_ONLY=1`, a Moneybird write needs a passed gate, Operator approval, `--confirm-write` and `--approval <ref>` for a flushed `WRITE_INTENT`, plus `--production` for a production batch, and an HTTP 429 stops the call sequence for a guarded read-back before any retry.
 - Desired user-visible outcome: A concise route report with selected phase range, reference paths, gate order, cancellation boundary and API-free status.

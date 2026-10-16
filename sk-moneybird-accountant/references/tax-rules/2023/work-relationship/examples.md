@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Employment relationship and self-employment 2023: Examples
+# Employment relationship (arbeidsrelatie, dienstbetrekking) and self-employment (zelfstandigheid) 2023: Examples
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Employment relationship and self-employment 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Employment relationship (arbeidsrelatie, dienstbetrekking) and self-employment 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 

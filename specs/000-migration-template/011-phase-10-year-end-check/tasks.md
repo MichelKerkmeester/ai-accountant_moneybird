@@ -42,7 +42,7 @@ contextType: "general"
 ## Phase 2: Implementation
 
 - [ ] T001 [SG-10.1] Compare annual reports. (Check: required report classes and account rows compared 100%.)
-- [ ] T002 [SG-10.2] Generate or obtain a Moneybird XAF 4.0. (Check: year and version match 1, the route actually used is verified, either the Phase 0 Operator UI route or the pinned guarded POST route with its Operator approval and flushed WRITE_INTENT 1, artifact receipt and SHA-256 recorded 1. Year-end closing entries in the exported year at export time 0, or the closing entry was removed before export and restored after it 1. Per Moneybird help reviewed on 2026-10-11, an auditfile downloaded after the year-end closing may lack the profit-and-loss data.)
+- [ ] T002 [SG-10.2] Generate or obtain a Moneybird XAF 4.0. (Check: year and version match 1, the route actually used is verified, either the Phase 0 Operator UI route or the pinned guarded POST route with its Operator approval and flushed WRITE_INTENT 1, artifact receipt and SHA-256 recorded 1. Year-end closing (jaarafsluiting) entries in the exported year at export time 0, or the closing entry was removed before export and restored after it 1. Per Moneybird help reviewed on 2026-10-11, an auditfile downloaded after the year-end closing may lack the profit-and-loss data.)
 - [ ] T003 [SG-10.3] Reconcile account and period totals. (Check: unexplained differences 0 and approved exception count equals the exception ledger.)
 - [ ] T004 [SG-10.4] Run the agent route. (Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, year-end recompute differences 0, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.)
 <!-- /ANCHOR:phase-2 -->

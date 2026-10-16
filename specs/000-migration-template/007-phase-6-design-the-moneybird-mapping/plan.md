@@ -114,14 +114,14 @@ Phase 6 runs the actions in the order given, and every Moneybird write goes thro
 |---|---|---|---|---|---|
 | Approved source label | Supported target account | Required code | Asset, liability, equity, income or expense | Approved treatment | Approved score or rationale |
 
-| Legal entity | Validity period | Country | VAT identifier | Vendor type | Moneybird tax rate |
+| Legal entity (rechtspersoon) | Validity period | Country | VAT identifier | Vendor type | Moneybird tax rate |
 |---|---|---|---|---|---|
 | Approved vendor entity | Start and end dates | Source country | Controlled identifier | Supplier class | Existing approved rate |
 
 | Historical item | Moneybird record |
 |---|---|
 | Issued sales invoice | External sales invoice with original number, date and original file |
-| Purchase invoice | Purchase invoice document with original attachment |
+| Purchase invoice (inkoopfactuur) | Purchase invoice document with original attachment |
 | Receipt | Receipt document with original attachment |
 | Journal, private item or correction | General journal document |
 | Asset | Asset with historic value changes |

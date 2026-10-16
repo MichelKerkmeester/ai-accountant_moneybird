@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers Dutch VAT for a sole trader or a BV, including rates, exemptions, input VAT, the small-business scheme, returns, cross-border supplies, invoicing and private use. The main rates were 21%, 9% for supplies in Table I (Tabel I) and nil (nihil) for supplies in Table II (Tabel II) when the required conditions were met. The new KOR applied from 1 January 2020. The rules described for 2020 are enacted, with historical source gaps and one corrected KOR turnover test identified below.
+This file covers Dutch VAT for a sole trader or a BV, including rates, exemptions, input VAT (voorbelasting), the small-business scheme, returns, cross-border supplies, invoicing and private use (privégebruik). The main rates were 21%, 9% for supplies in Table I (Tabel I) and nil (nihil) for supplies in Table II (Tabel II) when the required conditions were met. The new KOR applied from 1 January 2020. The rules described for 2020 are enacted, with historical source gaps and one corrected KOR turnover test identified below.
 
 ---
 
@@ -46,7 +46,7 @@ This file covers Dutch VAT for a sole trader or a BV, including rates, exemption
 | Electronic publications and news websites, Table I post b.21 | 5 |
 | Face masks (mondkapjes) | 6 |
 | Exemptions | 7 |
-| New KOR in force | 8 |
+| New KOR in force (in werking) | 8 |
 | KOR Dutch turnover ceiling | 9 |
 | KOR turnover test year | 10 |
 | KOR establishment | 11 |
@@ -57,7 +57,7 @@ This file covers Dutch VAT for a sole trader or a BV, including rates, exemption
 | KOR transition notice for a 2020 start | 16 |
 | KOR registration threshold without notice | 17 |
 | KOR investment-goods adjustment (herziening) de minimis | 18 |
-| Usual VAT return period | 19 |
+| Usual VAT return period (aangiftetijdvak, btw-aangifte) | 19 |
 | Monthly return trigger | 20 |
 | Yearly return VAT limit | 21 |
 | Yearly return intra-EU limits | 22 |
@@ -71,7 +71,7 @@ This file covers Dutch VAT for a sole trader or a BV, including rates, exemption
 | Supplementary return timing | 30 |
 | Supplementary return penalty limitation | 31 |
 | Reverse charge for specified electronics | 32 |
-| Call-off stock reporting | 33 |
+| Call-off stock (afroepvoorraad) reporting | 33 |
 | Quarterly ICP goods threshold for 2020 | 34 |
 | ICP deadline for 2020 | 35 |
 | Goods distance-sales thresholds | 36 |
@@ -82,7 +82,7 @@ This file covers Dutch VAT for a sole trader or a BV, including rates, exemption
 | Business-car private-use cap from 4 July 2020 | 41 |
 | Business-car cap before 4 July 2020 | 42 |
 | BUA personnel and gifts threshold | 43 |
-| BUA own contribution | 44 |
+| BUA own contribution (eigen bijdrage) | 44 |
 | BUA staff bicycle | 45 |
 | BUA staff meals | 46 |
 | Invoice deadline | 47 |
@@ -105,9 +105,9 @@ This file covers Dutch VAT for a sole trader or a BV, including rates, exemption
 | Zero rate | nil (Nihil) for supplies in Table II (Tabel II), subject to conditions set by general administrative order | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2020-01-01 |
 | Accommodation (logies) | 9% | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2025-339.html |
 | Electronic publications and news websites, Table I post b.21 | 9% from 1 January 2020 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2022-9114.html |
-| Face masks (mondkapjes) | No VAT under the optional approval from 25 May 2020 until 1 September 2020, with input VAT deduction retained | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2020-28349.html |
-| Exemptions | Wet OB article 11, paragraph 1, parts a through w | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2020-01-01 |
-| New KOR in force | 1 January 2020 | enacted | Verified | https://wetten.overheid.nl/BWBR0041782 |
+| Face masks (mondkapjes) | No VAT under the optional approval from 25 May 2020 until 1 September 2020, with input VAT (voorbelasting) deduction retained | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2020-28349.html |
+| Exemptions | Turnover Tax Act 1968 (Wet OB) article 11, paragraph 1, parts a through w | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2020-01-01 |
+| New KOR in force (in werking) | 1 January 2020 | enacted | Verified | https://wetten.overheid.nl/BWBR0041782 |
 | KOR Dutch turnover ceiling | € 20.000 in a calendar year | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2020-01-01 |
 | KOR turnover test year | Current calendar year only. No preceding-year test | enacted | Corrected | https://wetten.overheid.nl/BWBR0002629/2020-01-01 |
 | KOR establishment | Established in the Netherlands or has a fixed establishment (vaste inrichting) in the Netherlands | enacted | Verified | https://wetten.overheid.nl/BWBR0002629/2020-01-01 |
@@ -118,7 +118,7 @@ This file covers Dutch VAT for a sole trader or a BV, including rates, exemption
 | KOR transition notice for a 2020 start | By 20 November 2019 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2019-4774.html |
 | KOR registration threshold without notice | Maximum annual turnover of € 1.800, applied retroactively from 1 January 2020 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2021-30899.html |
 | KOR investment-goods adjustment (herziening) de minimis | No adjustment when the total is less than € 500 per year for investment goods used before that year | enacted | Verified | https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf |
-| Usual VAT return period | Quarter | enacted | Verified | https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf |
+| Usual VAT return period (aangiftetijdvak, btw-aangifte) | Quarter | enacted | Verified | https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf |
 | Monthly return trigger | Usually more than € 15.000 VAT per quarter | enacted | Verified | https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf |
 | Yearly return VAT limit | Less than € 1.883 VAT per year | enacted | Verified | https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf |
 | Yearly return intra-EU limits | Less than € 10.000 for each category separately: intra-EU supplies of goods, intra-EU services, intra-EU acquisitions and received intra-EU services | enacted | Verified | https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf |
@@ -132,18 +132,18 @@ This file covers Dutch VAT for a sole trader or a BV, including rates, exemption
 | Supplementary return timing | As soon as possible, before the inspector knows or should suspect the inspector knows | enacted | Verified | https://wetten.overheid.nl/BWBR0002633/2020-01-01 |
 | Supplementary return penalty limitation | 5 years after the end of the year | enacted | Verified | https://wetten.overheid.nl/BWBR0002633/2020-01-01 |
 | Reverse charge for specified electronics | € 10.000 or more per delivery per type of good | enacted | Verified | https://wetten.overheid.nl/BWBR0002633/2020-01-01 |
-| Call-off stock reporting | From 1 January 2020, report the transfer in the ICP without registering in the arrival state when the conditions are met | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/opgaaf_icp/opgaaf_icp |
+| Call-off stock (afroepvoorraad) reporting | From 1 January 2020, report the transfer in the ICP without registering in the arrival state when the conditions are met | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/opgaaf_icp/opgaaf_icp |
 | Quarterly ICP goods threshold for 2020 | € 50.000 per quarter appears on the current page, but 2020 application is not verified | enacted | UNVERIFIED | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/opgaaf_icp/tijdvak_opgaaf_icp/tijdvak_opgaaf_icp |
 | ICP deadline for 2020 | Not found in the checked sources | unknown | UNVERIFIED | https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf |
 | Goods distance-sales thresholds | Thresholds differed by destination state. The 2020 amounts are not verified | enacted | UNVERIFIED | https://taxation-customs.ec.europa.eu/system/files/2021-02/vat_in_ec_annexi.pdf |
 | B2C digital services distance-sales scheme | MOSS applied in 2020. It was replaced from 1 July 2021 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/btw_berekenen_bij_diensten/wijziging_in_digitale_diensten_vanaf_2015/eu_btw_melding_doen/ |
-| Last return of the year | Q4 or December settles private use, pro rata and personnel provisions | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/laatste-btw-aangifte-van-het-jaar |
-| Business-car private-use flat rate (forfait) | 2,7% of catalogue price including VAT and bpm when records are not kept | enacted | Verified | https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf |
+| Last return of the year | Q4 or December settles private use (privégebruik), pro rata and personnel provisions | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/laatste-btw-aangifte-van-het-jaar |
+| Business-car private-use flat rate (forfait) | 2,7% of catalogue price (catalogusprijs) including VAT and bpm when records are not kept | enacted | Verified | https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf |
 | Reduced business-car flat rate | 1,5% if no purchase VAT was deductible, or after more than 5 years in use. The purchase year counts as a full year | enacted | Verified | https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf |
 | Business-car private-use cap from 4 July 2020 | VAT deducted in the year plus 1/5 of purchase VAT for the stated period. After that period, the cap is the VAT deducted in the year | enacted | Verified | https://wetten.overheid.nl/BWBR0043783/2020-07-04 |
 | Business-car cap before 4 July 2020 | Not verified in the checked material | unknown | UNVERIFIED | https://wetten.overheid.nl/BWBR0043783/2020-07-04 |
 | BUA personnel and gifts threshold | Total cost of no more than € 227 per person per book year stays outside the exclusion | enacted | Verified | https://wetten.overheid.nl/BWBR0002636/2019-02-23 |
-| BUA own contribution | May reduce the amount tested under the 2020 website policy | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2023-28124.html |
+| BUA own contribution (eigen bijdrage) | May reduce the amount tested under the 2020 website policy | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2023-28124.html |
 | BUA staff bicycle | Maximum € 749 including VAT, subject to the stated conditions | enacted | Verified | https://wetten.overheid.nl/BWBR0002636/2019-02-23 |
 | BUA staff meals | Deduction exclusion is 9% of the difference when meals are charged below cost plus 25% | enacted | Verified | https://wetten.overheid.nl/BWBR0002636/2019-02-23 |
 | Invoice deadline | By the 15th day of the month after the month of supply | enacted | Verified | https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf |

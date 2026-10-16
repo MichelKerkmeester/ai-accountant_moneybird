@@ -12,7 +12,7 @@ contextType: general
 version: 1.0.0.0
 ---
 
-# Sections (rubrieken) and derivation for the VAT return
+# Sections (rubrieken) and derivation for the VAT return (btw-aangifte)
 
 **Rule:** Derive every line from the administration's own rate list and VAT overview (btw-overzicht) at run time. Never use a hard-coded rate-to-section table. A rate used in the period without a report reference is a blocker. Every rate, threshold and figure is in the year files under `references/tax-rules/`.
 
@@ -29,17 +29,17 @@ The return is organised as five sections (rubrieken). A business that trades onl
 
 | Section (Rubriek) | What it reports (law) | Moneybird source |
 |---|---|---|
-| 1a | Domestic taxable supplies at the high rate, net base and VAT. Wet OB art. 9(1). | Sales invoice lines on a rate whose `Btw-rapport` reference names rubriek 1a. |
-| 1b | Domestic taxable supplies at the low rate, the goods and services in Tabel I. | Sales lines on the low-rate report reference. |
+| 1a | Domestic taxable supplies at the high rate, net base and VAT. Turnover Tax Act 1968 (Wet OB) art. 9(1). | Sales invoice lines on a rate whose `Btw-rapport` reference names rubriek 1a. |
+| 1b | Domestic taxable supplies at the low rate, the goods and services in Table I (Tabel I). | Sales lines on the low-rate report reference. |
 | 1c | Domestic supplies at other special non-zero rates, such as the sport-canteen flat rate (forfait). | The special-rate lines only. |
-| 1d | VAT payable on private use and a correction of earlier input VAT. | A `Privé-gebruik` journal entry (memoriaal) rate and the `Btw privégebruik` category. A purchase-time split limits the input VAT at purchase and is not the 1d correction. |
+| 1d | VAT payable on private use (privégebruik) and a correction of earlier input VAT (voorbelasting). | A `Privé-gebruik` journal entry (memoriaal) rate and the `Btw privégebruik` category. A purchase-time split limits the input VAT at purchase and is not the 1d correction. |
 | 1e | Domestic zero-rated turnover and turnover not taxed at the business, including domestic reverse-charged sales. | Zero-rate and domestic reverse-charge sales lines. |
 | 2a | VAT shifted to the business on domestic goods or services. Wet OB art. 12. | Purchase lines on the domestic reverse-charge rates. |
-| 3a | Goods exported from the Netherlands to non-EU countries, the supplies in Tabel II. | Export sales lines plus customs or transport evidence. |
-| 3b | Intra-EU supplies of goods and services under the relevant conditions. | EU sales lines plus the `ICP-overzicht` per customer VAT number. |
-| 3c | Installation or assembly in another EU country and distance sales not declared through the Union OSS. | Consumer distance-sale lines not routed through OSS. |
+| 3a | Goods exported from the Netherlands to non-EU countries, the supplies in Table II (Tabel II). | Export sales lines plus customs or transport evidence. |
+| 3b | Intra-EU supplies of goods and services under the relevant conditions. | EU sales lines plus the `ICP-overzicht` per customer VAT ID (btw-id). |
+| 3c | Installation or assembly in another EU country and distance sales not declared through the Union (de unie) OSS. | Consumer distance-sale lines not routed through OSS. |
 | 4a | Import under the Article 23 permit and services from a non-EU supplier with reverse charge. | Purchase lines on the `Buiten EU` rates, including the KOR and exempt variants. |
-| 4b | Intra-Community acquisitions of goods and services from an EU supplier with reverse charge. | Purchase lines on the `Binnen EU` rates, including the KOR and exempt variants. |
+| 4b | Intra-Community acquisitions (intracommunautaire verwervingen) of goods and services from an EU supplier with reverse charge. | Purchase lines on the `Binnen EU` rates, including the KOR and exempt variants. |
 | 5a | Total VAT due from rubriek 1 to 4. | Arithmetic over the section table. |
 | 5b | Deductible input VAT, including the VAT declared under 2a, 4a and 4b. | The supported input VAT per line, never a blanket VAT total. |
 | 5c to 5g | Unresolved. No current primary explanation was reachable, so the labels and the semantics are not established. | Do not compute these from transaction data. See [README](README.md#5-open-points), open point `O1`. |
@@ -55,11 +55,11 @@ The derivation unit is the invoice line plus its tax rate, not the ledger accoun
 | From | To | Rule |
 |---|---|---|
 | A sales invoice line | Rubriek 1 or rubriek 3 | Read the line's tax rate and its `Btw-rapport` reference. The base and the VAT land on the section the reference names. |
-| A purchase invoice line | Rubriek 2, rubriek 4 or 5b | Read the same pair. A supported input-VAT line also lands in 5b when the purchase serves taxed turnover. |
+| A purchase invoice (inkoopfactuur) line | Rubriek 2, rubriek 4 or 5b | Read the same pair. A supported input-VAT line also lands in 5b when the purchase serves taxed turnover (belaste omzet). |
 | A bank transaction booked straight to a category | No return line by itself | A category posting with no VAT line is a product check, not a return basis. Reclassify it or record the exception. |
 | A journal entry (memoriaal) booking | The section named by its rate | Check the journal entry rate and its reference. Revenue booked through a journal entry is a documented reconciliation cause. |
 | A rate with no report reference | Nothing | Blocker. Read the rate list and fix the rate or record it as unsupported. |
-| A profit-and-loss total | Not a return base | Never force the profit and loss totals to equal the return. Explain each difference by cause. |
+| A profit-and-loss total | Not a basis for the return | Never force the profit and loss totals to equal the return. Explain each difference by cause. |
 
 ---
 
@@ -79,7 +79,7 @@ No fixed rate-to-section table sits in this folder. The map comes from the admin
 | Case | The return lines |
 |---|---|
 | Domestic reverse-charged sale | Supplier 1e, buyer 2a. |
-| Domestic reverse-charged purchase | Buyer 2a and the same VAT in 5b when the purchase serves taxed turnover. |
+| Domestic reverse-charged purchase | Buyer 2a and the same VAT in 5b when the purchase serves taxed turnover (belaste omzet). |
 | Goods or a service from an EU supplier with reverse charge | Buyer 4b and the same VAT in 5b when the purchase serves taxed turnover. |
 | A service from a non-EU supplier with reverse charge | Buyer 4a and the same VAT in 5b when the purchase serves taxed turnover. |
 | Import under the Article 23 permit | 4a, with the same VAT in 5b when deductible. |
@@ -91,11 +91,11 @@ Reverse-charge VAT is not automatically net zero. The deduction in 5b depends on
 
 ## 6. THE KOR BRANCH
 
-The small businesses scheme (KOR) is an exemption, not a reduction. Ordinary small businesses scheme turnover does not enter rubriek 1, so the old reduction line has nothing to reduce.
+The small businesses scheme (kleineondernemersregeling, KOR) is an exemption, not a reduction. Ordinary small businesses scheme turnover does not enter rubriek 1, so the old reduction line has nothing to reduce.
 
 - Reverse-charged purchases survive the KOR. The VAT must still be declared and cannot be reclaimed.
 - A small businesses scheme rate set reports in 4a or 4b and puts nothing in 5b.
-- A small businesses scheme participant with an intra-Community acquisition or a reverse-charged service still has an incidental filing duty.
+- A small businesses scheme participant with an intra-Community acquisition (intracommunautaire verwerving) or a reverse-charged service still has an incidental filing duty.
 - The ceiling test runs per calendar year. The supply that crosses it is taxed in full. The exemption does not apply for the rest of that year or the next.
 - The KOR conditions, the ceiling and the exit rules are in the year file, for example [VAT 2026 figures](../tax-rules/2026/vat/figures.md) and [VAT 2026 rules](../tax-rules/2026/vat/rules.md).
 
@@ -109,7 +109,7 @@ A small businesses scheme quarter with a reverse-charged purchase is not skipped
 - A period with no intra-EU supply needs no ICP while the Dutch return is still due.
 - Moneybird's ICP article labels its intra-community line as `3a`. That is a product label and never enters the return table, where 3a is the non-EU export line and 3b is the intra-EU line.
 - Keep every OSS amount out of the Dutch return. Do not net OSS and 3c.
-- Moneybird cannot file the Union or import OSS returns. Those go through the Dutch Tax and Customs Administration (Belastingdienst).
+- Moneybird cannot file the Union (de unie) or import OSS returns. Those go through the Dutch Tax and Customs Administration (Belastingdienst).
 - The ICP period rules and the distance-sales threshold are in the year file, for example [VAT 2026 rules](../tax-rules/2026/vat/rules.md).
 - The ICP deadline is an open point. See [README](README.md#5-open-points), open point `O2`.
 

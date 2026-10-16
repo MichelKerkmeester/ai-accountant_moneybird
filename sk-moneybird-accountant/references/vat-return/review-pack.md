@@ -12,7 +12,7 @@ contextType: general
 version: 1.0.0.0
 ---
 
-# VAT return review pack
+# VAT return (btw-aangifte) review pack
 
 **Rule:** The pack is the output contract. It carries the figures for review, the exceptions and the confirmation the Operator needs. It never files, submits or pays. Every deadline and figure is a link to the year files under `references/tax-rules/`.
 
@@ -30,7 +30,7 @@ The pack is ordered like the Dutch Tax and Customs Administration (Belastingdien
 
 | ID | Block | What it holds |
 |---|---|---|
-| P1 | Identity and period | The administration, the legal form, the resolved period and `year_key`, the cadence and the VAT regime, the `betalingskenmerk` and its number-match status. |
+| P1 | Identity and period | The administration, the legal form (rechtsvorm), the resolved period and `year_key`, the cadence and the VAT regime, the `betalingskenmerk` and its number-match status. |
 | P2 | Gate status per check | Every check from [preparation.md](preparation.md), with its status and its evidence path. |
 | P3 | Section (Rubriek) table | The base and the VAT per line for 1a to 5b plus the rate set that feeds each line. Built from the rate overview, not from the ledger. |
 | P4 | Ledger-to-return reconciliation | Every difference between the period profit and loss totals and the return bases, each classified into a documented cause. An unexplained difference is a blocker. |
@@ -62,7 +62,7 @@ An open exception or a failed gate blocks C1. The pack states prepared, not file
 
 Every date comes from the year file. The pack links the source and never repeats a date.
 
-- The period's filing deadline and the software submission window are in [VAT 2026 figures](../tax-rules/2026/vat/figures.md).
+- The period's filing deadline (aangiftetermijn) and the software submission window are in [VAT 2026 figures](../tax-rules/2026/vat/figures.md).
 - The payment date, the late-payment rules and any tax interest (belastingrente) are in [Return and procedure 2026 figures](../tax-rules/2026/procedure/figures.md).
 - The Operator's own filing invitation letter (aangiftebrief) and My Tax and Customs Administration Business (Mijn Belastingdienst Zakelijk) govern the individual case. Check them, because the year file states the general schedule only.
 - Payment counts as timely when the amount is credited, so allow bank processing time and do not treat the transfer initiation as proof.
@@ -95,7 +95,7 @@ Escalate these to the Operator or a bookkeeper:
 - An unexplained profit-and-loss to return difference.
 - A rate used in the period without a report reference.
 - A correction above the boundary or outside the correction window.
-- A small businesses scheme (KOR) case, the ceiling test or the incidental filing duty.
+- A small businesses scheme (kleineondernemersregeling, KOR) case, the ceiling test or the incidental filing duty.
 - The ICP deadline, the ICP period or a 3b difference against the ICP detail.
 - An OSS or distance-sale case.
 - The business-car flat rate (forfait) and its lease scope.

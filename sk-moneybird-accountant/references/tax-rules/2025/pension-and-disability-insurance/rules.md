@@ -1,6 +1,6 @@
 ---
 title: "Pension, annuity and disability insurance 2025: Rules"
-description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity (lijfrente) conditions, profit from business discontinuation (stakingswinst) conversion, old-age reserve (FOR) interaction and disability insurance (AOV) premium deductibility for tax year 2025, plus the proposed Basic Disability Insurance for Self-Employed Persons Act (BAZ). This file holds the rules part."
+description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity (lijfrente) conditions, profit on discontinuation (stakingswinst) conversion, old-age reserve (FOR) interaction and disability insurance (AOV) premium deductibility for tax year 2025, plus the proposed Basic Disability Insurance for Self-Employed Persons Act (BAZ). This file holds the rules part."
 nav_label: "Pension, annuity and disability insurance rules"
 trigger_phrases:
   - "pensioen en AOV 2025"
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and disability insurance 2025: Rules
+# Pension, annuity and disability insurance (arbeidsongeschiktheidsverzekering) 2025: Rules
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the how-it-works rules for the Pension, annuity and disability insurance (pensioen, lijfrente en AOV) 2025 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
+This part holds the how-it-works rules for the pension (pensioen), annuity (lijfrente) and disability insurance (arbeidsongeschiktheidsverzekering, AOV) 2025 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -40,17 +40,17 @@ The annual allowance percentage is 30% for 2025. The law text valid on 1 January
 
 A taxpayer with a pension shortfall (pensioentekort) in the previous calendar year may deduct annuity premiums (lijfrentepremies) up to this percentage of the contribution base (premiegrondslag), reduced by the lid 4 reduction for pension accrual. Source: same URL.
 
-The 30% applies from the Future Pensions Act (Wet toekomst pensioenen, Wtp) with retroactive effect to 1 January 2023. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/nieuwe-regels-voor-pensioenen-wat-betekent-dat-voor-mij
+The 30% applies from the Future Pensions Act (Wet toekomst pensioenen, Wtp) with retroactive effect (terugwerkende kracht) to 1 January 2023. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/nieuwe-regels-voor-pensioenen-wat-betekent-dat-voor-mij
 
-For a self-employed person without pension accrual the formula is 30% x (min(income of the previous year, income cap (aftoppingsgrens)) minus franchise). Source: law 2025 art. 3.127.
+For a self-employed person (zelfstandige) without pension accrual the formula is 30% x (min(income of the previous year, income cap (aftoppingsgrens)) minus franchise). Source: law 2025 art. 3.127.
 
-The checked material corrects an earlier attribution. Government Gazette (Stcrt.) 2023, 34571 and Bulletin of Acts and Decrees (Stb.) 2025, 431 did not change the 30% itself. Stcrt. 2023, 34571 only deletes "onderdeel a," in lid 6 back to 1 January 2023. Stb. 2025, 431 only rewrites the partner pension (partnerpensioen) wording of lid 4 back to 1 July 2023. Source: https://wetten.overheid.nl/BWBR0011353/2023-07-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 and https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127
+The checked material corrects an earlier attribution. Government Gazette (Staatscourant, Stcrt.) 2023, 34571 and Bulletin of Acts and Decrees (Staatsblad, Stb.) 2025, 431 did not change the 30% itself. Stcrt. 2023, 34571 only deletes "onderdeel a," in lid 6 back to 1 January 2023. Stb. 2025, 431 only rewrites the partner pension (partnerpensioen) wording of lid 4 back to 1 July 2023. Source: https://wetten.overheid.nl/BWBR0011353/2023-07-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127 and https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127
 
 Art. 10.2b lid 3 sets the annual allowance percentage each year equal to the art. 18a lid 1 Wage Tax Act 1964 (Wet LB 1964) percentage in the 2024 to 2027 texts. Source: https://wetten.overheid.nl/BWBR0011353/2024-01-01 (art. 10.2b)
 
 ### Maximum annual allowance
 
-The maximum annual allowance for 2025 is € 35.798. This is enacted and Verified by the Ministry of Finance table. Source: https://open.overheid.nl/documenten/dcbb490f-d406-4842-ac33-b5c397e19df0/file
+The maximum annual allowance for 2025 is € 35.798. This is enacted and Verified by the Ministry of Finance (ministerie van financiën) table. Source: https://open.overheid.nl/documenten/dcbb490f-d406-4842-ac33-b5c397e19df0/file
 
 The maximum applies to all annuity products (lijfrenteproducten) together. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies
 
@@ -62,7 +62,7 @@ The maximum follows from the 30% rate and the contribution base rules in this ye
 
 The income cap for 2025 is € 137.800. Source: https://wetten.overheid.nl/BWBR0011353/2025-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127
 
-Art. 3.127 lid 3 counts the previous calendar year's profits from business activities (winst uit onderneming) before the entrepreneur's allowance (ondernemersaftrek), taxable wages (belastbaar loon), taxable income from other work (belastbaar resultaat uit overige werkzaamheden) and taxable periodic payments and benefits in kind (belastbare periodieke uitkeringen en verstrekkingen) up to the first-mentioned amount (eerstvermelde bedrag, the income cap) and then reduces by the last-mentioned amount (laatstvermelde bedrag, the franchise). Source: law 2025 art. 3.127 and https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 3.127)
+Art. 3.127 lid 3 counts the previous calendar year's profits from business activities (winst uit onderneming) before the entrepreneur's allowance (vóór de ondernemersaftrek), taxable wages (belastbaar loon), taxable income from other work (belastbaar resultaat uit overige werkzaamheden) and taxable periodic payments and benefits in kind (belastbare periodieke uitkeringen en verstrekkingen) up to the first-mentioned amount (eerstvermelde bedrag, the income cap) and then reduces by the last-mentioned amount (laatstvermelde bedrag, the franchise). Source: law 2025 art. 3.127 and https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 3.127)
 
 The income cap was not indexed at the start of 2025. Source: https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/wetsvoorstel-belastingplan-2027/wetsvoorstel-belastingplan-2027.pdf
 
@@ -70,13 +70,13 @@ Art. 10.2b lid 1 indexes the income cap with the contract wage development facto
 
 In the 2020 text art. 10.2b lid 2 indexes the income cap with the contract wage development factor and the franchise follows art. 10.1. Source: https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 10.2b)
 
-### Franchise on the contribution base
+### Franchise on the contribution base (franchise premiegrondslag)
 
 The franchise for 2025 is € 18.475. Source: https://wetten.overheid.nl/BWBR0011353/2025-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127
 
 The franchise is subtracted from the income capped at the income cap. Source: law 2025 art. 3.127.
 
-From 2024 art. 10.2b lid 4 sets the franchise at the state pension (AOW) benefit for married persons without supplement (toeslag) plus holiday allowance (vakantiebijslag) x 100/75. Source: https://wetten.overheid.nl/BWBR0011353/2024-01-01 (art. 10.2b)
+From 2024 art. 10.2b lid 4 sets the franchise at the state pension (AOW) benefit for married persons without supplement (toeslag) plus holiday allowance (vakantieuitkering, vakantiebijslag) x 100/75. Source: https://wetten.overheid.nl/BWBR0011353/2024-01-01 (art. 10.2b)
 
 ### Look-back window
 
@@ -116,7 +116,7 @@ Above the cap premiums are deductible only if the benefits (uitkeringen) run at 
 
 FISIN 2025 prints "€ 26.7813" in the account (rekening) row. This is a typo. The law states € 26.781. Source: FISIN 2025 and https://wetten.overheid.nl/BWBR0011353/2025-01-01
 
-The three annuity forms are annuity insurance (lijfrenteverzekering), annuity savings account (lijfrenterekening) and annuity investment right (lijfrentebeleggingsrecht). Source: https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 3.124 and 3.125)
+The three annuity forms are annuity insurance (lijfrenteverzekering), annuity savings account (lijfrenterekening) and annuity investment right (lijfrentebeleggingsrecht, beleggingsrecht). Source: https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 3.124 and 3.125)
 
 For an old-age annuity (oudedagslijfrente) the first instalment must start at the latest in the year the taxpayer reaches state pension age plus five and payments run until death. For an account or investment right the term must be at least 20 years plus the number of years the benefit starts before the state pension year. Source: law 2026 art. 3.125.
 
@@ -132,7 +132,7 @@ The amount is not in the current art. 3.125 text. Source: FISIN chapters 2020 to
 
 The tier a maximum for 2025 is € 566.197. Source: https://wetten.overheid.nl/BWBR0011353/2025-01-01
 
-Art. 3.129 allows a deduction up to the profit from business discontinuation, capped at a tier maximum minus already built provisions. The provisions include the value of pension rights charged to profit, amounts deducted under art. 3.127 lid 1 and 2 in earlier years, earlier art. 3.129 amounts, and from 2023 the old-age reserve (FOR) at the start of the year and earlier FOR conversions under art. 10a.29 lid 13. Source: https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 3.129)
+Art. 3.129 allows a deduction up to the profit on discontinuation, capped at a tier maximum minus already built provisions. The provisions include the value of pension rights charged to profit, amounts deducted under art. 3.127 lid 1 and 2 in earlier years, earlier art. 3.129 amounts, and from 2023 the old-age reserve (FOR, oudedagsreserve) at the start of the year and earlier FOR conversions under art. 10a.29 lid 13. Source: https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 3.129)
 
 Tier a applies if the age at cessation (staking) is at most five years below the state pension age, or the taxpayer is at least 45% incapacitated for work (arbeidsongeschikt) with the annuity starting within six months, or the cessation is by death. Source: law 2026 art. 3.129.
 
@@ -152,7 +152,7 @@ The tier c maximum for 2025 is € 141.564. Source: https://wetten.overheid.nl/B
 
 Tier c applies in other cases. Source: https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 3.129)
 
-The payment deadline for a profit from business discontinuation conversion is before 1 July 2026. Source: FISIN 2025.
+The payment deadline for a profit on discontinuation conversion is before 1 July 2026. Source: FISIN 2025.
 
 ### Old-age reserve (oudedagsreserve) from 2023
 
@@ -160,19 +160,19 @@ From 2023 no addition (toevoeging) to the old-age reserve is possible. An existi
 
 Access to an old-age reserve addition required the hours criterion (urencriterium) and not yet state pension age at the start of the year under art. 3.67. Art. 3.68 gave an addition of 9,44% of the profit (winst), capped at a euro amount, reduced by pension premiums charged to the profit, and not above the growth of business capital (ondernemingsvermogen). Source: https://wetten.overheid.nl/BWBR0011353/2022-01-01 (art. 3.67, 3.68)
 
-Art. 3.70 lid 1 allows a decrease (afname) by a chosen amount up to the annuity premiums taken into account, or by the excess over business assets at cessation, state pension age at the start of the year, or failing the hours criterion this year and last year. Source: law 2022 art. 3.70.
+Art. 3.70 lid 1 allows a decrease (afname) by a chosen amount up to the annuity premiums taken into account, or by the excess over business capital (ondernemingsvermogen) at cessation, state pension age at the start of the year, or failing the hours criterion this year and last year. Source: law 2022 art. 3.70.
 
 The old-age reserve to annuity conversion deduction is art. 3.128 in 2020 to 2022 and art. 10a.29 lid 12 from 2023. Source: law 2022 art. 3.128 and https://wetten.overheid.nl/BWBR0011353/2024-01-01 (art. 10a.29)
 
-Art. 10a.29 lid 10 and 11 add the transition for the annual allowance. For a taxpayer with an old-age reserve the contribution base uses the profit before withdrawal (afneming) of the old-age reserve and, for 2023 and 2024, before addition and before the entrepreneur's allowance. For 2023 and 2024 the annual allowance is also reduced by the excess of the previous year's addition over the year-end withdrawal. Source: law 2024 art. 10a.29. These provisions applied for the last time in 2024.
+Art. 10a.29 lid 10 and 11 add the transition for the annual allowance. For a taxpayer with an old-age reserve the contribution base uses the profit before withdrawal (afneming) of the old-age reserve and, for 2023 and 2024, before addition and before the entrepreneur's allowance (vóór toevoeging en vóór ondernemersaftrek). For 2023 and 2024 the annual allowance is also reduced by the excess of the previous year's addition over the year-end withdrawal. Source: law 2024 art. 10a.29. These provisions applied for the last time in 2024.
 
 On death the old-age reserve is taxed unless the partner continues and takes it over on request. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/fiscale_reserves/oudedagsreserve
 
-### Commutation (afkoop) of a small annuity
+### Commutation (afkoop) of a small annuity (kleine lijfrente)
 
 The small annuity commutation amount for 2025 is € 5.429. Source: https://wetten.overheid.nl/BWBR0011353/2025-01-01
 
-Commutation of a small annuity in one payment is allowed below a yearly amount under art. 3.133 lid 2 onderdeel d. Source: art. 3.133 per year and https://wetten.overheid.nl/BWBR0011353/2025-01-01
+Commutation of a small annuity (afkoop kleine lijfrente) in one payment is allowed below a yearly amount under art. 3.133 lid 2 onderdeel d. Source: art. 3.133 per year and https://wetten.overheid.nl/BWBR0011353/2025-01-01
 
 If an annuity stops meeting the conditions (gift, sale, pledge, loan, change of terms, commutation, unblocking (deblokkering)) the value is taxed and in most cases revision interest (revisierente) is due. Source: FISIN chapters 2020 to 2026, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen
 
@@ -186,9 +186,9 @@ Art. 3.133 lid 9: commutation is not a prohibited act when the policyholder (ver
 
 Art. 3.124 lid 1 onderdeel c treats premiums for the taxpayer's rights to periodic payments and benefits in kind in respect of disability (invaliditeit), illness or accident (ziekte of ongeval) as expenditure for income provisions (uitgaven voor inkomensvoorzieningen), with no allowance cap in the article. FISIN says "volledig aftrekken" (fully deductible). Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen and https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.124)
 
-Not deductible are premiums the employer takes into account for payroll taxes (loonheffing), mandatory Sickness Benefits Act (Ziektewet) and WIA (Work and Income according to Labour Capacity Act) premiums, policies paying a lump sum such as capital insurance policies (kapitaalverzekeringen), and Health Insurance Act (Zvw) premiums. Source: FISIN 2025. The four exclusions and section 15.4 are word for word the same in FISIN 2020 to 2026. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen
+Not deductible (niet aftrekbaar) are premiums the employer takes into account for payroll taxes (loonheffing), mandatory Sickness Benefits Act (Ziektewet) and Work and Income (Capacity for Work) Act (Wet werk en inkomen naar arbeidsvermogen, WIA) premiums, policies paying a lump sum such as capital insurance policies (kapitaalverzekeringen), and health insurance (zorgverzekering) premiums under the Health Insurance Act (Zvw, zorgverzekeringswet). Source: FISIN 2025. The four exclusions and section 15.4 are word for word the same in FISIN 2020 to 2026. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen
 
-As an entrepreneur (ondernemer) the disability insurance premium is not a business cost but an "uitgave voor andere inkomensvoorzieningen". Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers
+As an entrepreneur (ondernemer) the disability insurance (arbeidsongeschiktheidsverzekering) premium is not a business cost but an "uitgave voor andere inkomensvoorzieningen". Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers
 
 Periodic benefits are "inkomsten uit vroegere dienstbetrekking" (income from previous employment) with wage tax (loonbelasting) withheld as a prepayment (voorheffing). Source: same Dutch Tax and Customs Administration disability insurance page.
 
@@ -202,7 +202,7 @@ Rule of thumb on the page: premium not deductible means payout not taxed, and th
 
 ### BAZ premium, Council of State (Raad van State) version
 
-The BAZ is the Basic Disability Insurance for Self-Employed Persons Act (Wet basisverzekering arbeidsongeschiktheid zelfstandigen). In the Council of State (Raad van State) version the premium is 5,4% of profit, at most € 171 gross per month. Status proposed, Verified. Source: https://www.rijksoverheid.nl/actueel/nieuws/2025/09/12/wetsvoorstel-voor-basisverzekering-arbeidsongeschiktheid-voor-zelfstandigen-naar-de-raad-van-state
+The BAZ is the Basic Disability Insurance Act for Self-Employed Persons (Wet basisverzekering arbeidsongeschiktheid zelfstandigen). In the Council of State (Raad van State) version the premium is 5,4% of profit, at most € 171 gross per month. Status proposed, Verified. Source: https://www.rijksoverheid.nl/actueel/nieuws/2025/09/12/wetsvoorstel-voor-basisverzekering-arbeidsongeschiktheid-voor-zelfstandigen-naar-de-raad-van-state
 
 The BAZ design in that version: every self-employed person (zelfstandige) up to state pension age insured, benefit at most the minimum wage (minimumloon), private policy as alternative with a yearly switch moment at the end of the calendar year, no premium for someone whose WIA rights already reach minimum wage level. Source: same URL.
 
@@ -218,15 +218,15 @@ The value is proposed only. Later material for the 2026 bill states a waiting pe
 
 The Council of State version page reports 2260 consultation responses. Status proposed, Verified. Source: https://www.rijksoverheid.nl/actueel/nieuws/2025/09/12/wetsvoorstel-voor-basisverzekering-arbeidsongeschiktheid-voor-zelfstandigen-naar-de-raad-van-state
 
-UWV (Employee Insurance Agency) and the Dutch Tax and Customs Administration were critical, and later considered the bill feasible (uitvoerbaar) under conditions. Source: same URL.
+Employee Insurance Agency (Uitvoeringsinstituut Werknemersverzekeringen, UWV) and the Dutch Tax and Customs Administration were critical, and later considered the bill feasible (uitvoerbaar) under conditions. Source: same URL.
 
-### Payment deadline for an old-age reserve (FOR) or profit from business discontinuation conversion
+### Payment deadline for an old-age reserve (FOR) or profit on discontinuation conversion
 
-For 2025 the payment deadline for an old-age reserve or profit from business discontinuation conversion is before 1 July 2026. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen
+For 2025 the payment deadline for an old-age reserve or profit on discontinuation conversion is before 1 July 2026. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen
 
 Premiums count in the year they are paid or offset (verrekend) under art. 3.130 lid 1. Source: https://wetten.overheid.nl/BWBR0011353/2026-01-01 (art. 3.130)
 
-Premiums for the profit from business discontinuation conversion (art. 3.129), the cessation option of art. 3.127 lid 5 and, up to 2022, the old-age reserve conversion (art. 3.128) may on choice be counted in the year itself when paid within six months after the year end under art. 3.130 lid 2. From 2023 the old-age reserve conversion keeps this option through art. 10a.29 lid 14. Source: law 2026 art. 3.130 and art. 10a.29.
+Premiums for the profit on discontinuation conversion (art. 3.129), the cessation option of art. 3.127 lid 5 and, up to 2022, the old-age reserve conversion (art. 3.128) may on choice be counted in the year itself when paid within six months after the year end under art. 3.130 lid 2. From 2023 the old-age reserve conversion keeps this option through art. 10a.29 lid 14. Source: law 2026 art. 3.130 and art. 10a.29.
 
 The maximum applies to all annuity products together. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies
 
@@ -256,7 +256,7 @@ For blood or in-law relatives other than the partner the survivor annuity ends a
 
 An annuity for an adult disabled child or grandchild (meerderjarig invalide (klein)kind) is deductible without a pension shortfall under art. 3.124 lid 1 b. Source: law 2026 art. 3.124.
 
-### Test for self-employed persons (zelfstandigen) in a sectoral pension fund
+### Test for self-employed persons (zelfstandigen) in a sectoral pension fund (sectoraal pensioenfonds)
 
 A self-employed person may join the pension fund (pensioenfonds) of the branch if the fund allows it. Premiums are then deductible. The test (proef) runs until 1 July 2028. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/nieuwe-regels-voor-pensioenen-wat-betekent-dat-voor-mij
 

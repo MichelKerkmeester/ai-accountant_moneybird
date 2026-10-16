@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Investment deduction and depreciation 2025: Examples
+# Investment deduction (investeringsaftrek) and depreciation 2025: Examples
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Investment deduction and depreciation (investeringsaftrek en afschrijving) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the investment deduction (investeringsaftrek) and depreciation (afschrijving) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -94,14 +94,14 @@ Inputs: a new Energy List (Energielijst) asset ordered in 2025 for € 50.000, n
 
 ### Example 8. EIA plus KIA on one asset (Calculated example)
 
-Inputs: a new Energy List asset of € 100.000, in use in 2025, reported to RVO within 3 months.
+Inputs: a new Energy List asset of € 100.000, in use in 2025, reported to the Netherlands Enterprise Agency (Rijksdienst voor Ondernemend Nederland, RVO) within 3 months.
 
 1. EIA = 40% × € 100.000 = € 40.000.
 2. KIA: total investment € 100.000, third band, € 19.769.
 3. Total deductions = € 40.000 + € 19.769 = € 59.769.
 4. The MIA cannot be added to this asset, because the EIA and the MIA cannot be combined.
 
-### Example 9. EIA above the maximum investment amount (Calculated example)
+### Example 9. EIA above the maximum investment amount (investeringsbedrag) (Calculated example)
 
 Inputs: an Energy List asset of € 160.000.000.
 
@@ -114,7 +114,7 @@ Inputs: an Energy List asset of € 160.000.000.
 
 Inputs: an Environmental List (Milieulijst) asset of € 50.000, in use in 2025.
 
-1. Category I (code F or G): 45% × € 50.000 = € 22.500.
+1. Category I (categorie i) (code F or G): 45% × € 50.000 = € 22.500.
 2. Category II (code A or D): 36% × € 50.000 = € 18.000.
 3. Category III (code B or E): 27% × € 50.000 = € 13.500.
 4. KIA on the same € 50.000: 28% × € 50.000 = € 14.000.
@@ -146,7 +146,7 @@ Inputs: a Vamil asset of € 40.000, in use in 2025.
 Inputs: a machine bought in 2025 for € 30.000 with the KIA at 28% (€ 8.400). The machine is sold within five years for € 20.000, and this is the only disposal in that year.
 
 1. Disposal proceeds: € 20.000, which is more than the threshold of € 2.900.
-2. Addition = the investment deduction percentage taken × the transfer price = 28% × € 20.000 = € 5.600.
+2. Addition = the investment deduction percentage taken × the transfer price (overdrachtsprijs) = 28% × € 20.000 = € 5.600.
 3. Cap check: the addition may not go above the investment amount over which the deduction (aftrek) was taken, € 30.000. € 5.600 is below the cap.
 4. The € 5.600 is added to the profit of the year of the disposal.
 
@@ -190,7 +190,7 @@ Inputs: designated assets with obligations or costs in 2025 of € 400.000.
 2. Arbitrary depreciation is possible on up to € 392.230 of the costs.
 3. Above the cap: € 400.000 − € 392.230 = € 7.770, which follows the normal schedule.
 
-### Example 20. Temporary arbitrary depreciation (willekeurige afschrijving) 2023 (Calculated example)
+### Example 20. Temporary arbitrary depreciation (tijdelijke willekeurige afschrijving) 2023 (Calculated example)
 
 Inputs: a machine with an order in 2023 for € 40.000, taken into use in 2025 before 1 January 2026.
 
@@ -200,7 +200,7 @@ Inputs: a machine with an order in 2023 for € 40.000, taken into use in 2025 b
 
 ### Example 21. Arbitrary depreciation for starters, truck (Official example)
 
-The Dutch Tax and Customs Administration (Belastingdienst) example for arbitrary depreciation for starters. A truck is bought on 1 July 2024 for € 150.000, with a 7-year life and a residual value of € 10.000. The taxpayer depreciates € 60.000 at will in 2024 and € 80.000 in 2025. At the end of 2025 the book value is € 10.000, while the normal book value on 1 January 2026 is € 120.000. If the truck is rented out from 1 January 2026, that moment is within 5 years after 1 January 2024, so the asset must be revalued (herwaardering) to € 120.000. That gives € 120.000 − € 10.000 = € 110.000 book profit (boekwinst) in 2026. A normal depreciation of € 20.000 in 2026 remains. The 2025 part of this example is the € 80.000 of arbitrary depreciation ([Belastingdienst starters page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/willekeurige_afschrijving/startende_ondernemer)). The example was published with the 2024 page and runs on into 2025.
+The Dutch Tax and Customs Administration (Belastingdienst) example for arbitrary depreciation for starters. A truck is bought on 1 July 2024 for € 150.000, with a 7-year life and a residual value (restwaarde) of € 10.000. The taxpayer depreciates € 60.000 at will in 2024 and € 80.000 in 2025. At the end of 2025 the book value is € 10.000, while the normal book value on 1 January 2026 is € 120.000. If the truck is rented out from 1 January 2026, that moment is within 5 years after 1 January 2024, so the asset must be revalued (herwaardering) to € 120.000. That gives € 120.000 − € 10.000 = € 110.000 book profit (boekwinst) in 2026. A normal depreciation of € 20.000 in 2026 remains. The 2025 part of this example is the € 80.000 of arbitrary depreciation ([Belastingdienst starters page](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/willekeurige_afschrijving/startende_ondernemer)). The example was published with the 2024 page and runs on into 2025.
 
 ---
 

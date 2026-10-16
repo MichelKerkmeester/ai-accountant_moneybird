@@ -904,7 +904,8 @@ def write_term_map() -> int:
                 body = handle.read()
         except OSError as exc:
             fail("cannot read %s: %s" % (resolved, exc))
-        if isinstance(term, str) and term and term not in body:
+        # WHY: an English-first label writes the term in lowercase, as in "return (aangifte)".
+        if isinstance(term, str) and term and term.lower() not in body.lower():
             fail("term-map: %s source_file does not name the term: %s" % (name, resolved))
         source = row.get("source")
         if isinstance(source, str) and source and source not in body:

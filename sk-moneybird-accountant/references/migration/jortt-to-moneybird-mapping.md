@@ -30,11 +30,11 @@ This reference describes conceptual matches and common migration traps. It does 
 |---|---|---|
 | Sales and income | Sales invoices for invoices issued in Moneybird, or external sales for historic or outside invoices | A bank receipt that settles an existing invoice is not new revenue. Do not duplicate the sale. |
 | Costs | Moneybird categories and processed purchase documents | Matching category names can have different ledger or VAT treatment. Map by purpose and tax treatment. |
-| Receipts and purchase invoices | Incoming documents that become booked documents after processing | An uploaded but unprocessed document is not booked and is not included in the VAT return. |
+| Receipts and purchase invoices | Incoming documents that become booked documents after processing | An uploaded but unprocessed document is not booked and is not included in the VAT return (btw-aangifte). |
 | Private withdrawals and deposits | Private or equity postings | They are not operating expenses or sales. Keep proprietor cash flows separate. |
 | Categories and ledger accounts | Moneybird category mapped to a ledger account and RGS code | Do not assume the source account list imports one-to-one. Review the target category and VAT mapping. |
 | VAT returns and corrections | Moneybird VAT workflow for eligible periods, with the tax authority route for earlier returns filed elsewhere | Moneybird's comparison depends on returns it filed. Preserve evidence of historical filed returns. The operator files all returns. |
-| Assets and depreciation | Target fixed assets with original cost, date in use, useful life, residual value and prior depreciation | Do not post accumulated depreciation twice. Confirm building WOZ floor and tax treatment separately. |
+| Assets and depreciation | Target fixed assets (vaste activa) with original cost, date in use, useful life (gebruiksduur), residual value (restwaarde) and prior depreciation | Do not post accumulated depreciation twice. Confirm building WOZ floor and tax treatment separately. |
 | Business mileage | Mileage expense supported by travel-year rate and trip log | The reviewed Jortt help pages did not confirm a direct mileage migration workflow. Status: unverified. Preserve evidence and verify before closing. |
 | Bank entries | Bank transaction matched to an invoice, receipt, category or private account | A matched invoice receipt must not be treated as a second sale. |
 

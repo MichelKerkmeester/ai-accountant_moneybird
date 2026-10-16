@@ -12,11 +12,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Investment deduction and depreciation 2022: Examples
+# Investment deduction (investeringsaftrek) and depreciation 2022: Examples
 
 **Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 3 of 4 of the investment deduction and depreciation (investeringsaftrek en afschrijving) 2022 topic.
+Part 3 of 4 of the investment deduction and depreciation 2022 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [rules.md](rules.md): how it works.
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the investment deduction and depreciation (investeringsaftrek en afschrijving) 2022 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the investment deduction (investeringsaftrek) and depreciation 2022 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -53,7 +53,7 @@ The per-asset minimum of € 450,00 (art. 3.45 lid 2 onderdeel b) works as follo
 
 ### Example 2: KIA in a partnership (samenwerkingsverband) (Calculated example)
 
-A general partnership (vof) has two partners (vennoten) and an equal profit split (winstverdeling). The partnership invests € 100.000,00 in business assets in 2022. Neither partner invests outside the partnership. For the KIA (art. 3.41 lid 3) the investments of the partnership and the partner's own investments are added, the KIA table is applied to that sum, and the outcome is multiplied by the partner's own investment amount divided by the sum. The partner's own investment amount is his share in the partnership investment. With the equal profit split that share is € 50.000,00.
+A general partnership (vof) has two partners (vennoten) and an equal profit split (winstverdeling). The partnership invests € 100.000,00 in business assets in 2022. Neither partner invests outside the partnership. For the KIA (art. 3.41 lid 3) the investments of the partnership and the partner's own investments are added, the KIA table is applied to that sum, and the outcome is multiplied by the partner's own investment amount (investeringsbedrag) divided by the sum. The partner's own investment amount is his share in the partnership investment. With the equal profit split that share is € 50.000,00.
 
 - Step 1: sum = € 100.000,00 plus € 0,00 = € 100.000,00.
 - Step 2: € 100.000,00 is above € 59.939,00 and not above € 110.998,00, so the table outcome is the fixed band amount of € 16.784,00.
@@ -64,7 +64,7 @@ The other partner applies the same table outcome and the same 1/2 factor to his 
 
 ### Example 3: EIA with KIA (Calculated example)
 
-A sole trader buys a new machine in 2022 for € 100.000,00. The machine is on the Energy List (Energielijst), it is new (niet eerder gebruikt), it is in use before the end of 2022, it is not excluded and the investment is reported to RVO within 3 months. The machine is the only investment of 2022.
+A sole trader buys a new machine in 2022 for € 100.000,00. The machine is on the Energy List (Energielijst), it is new (niet eerder gebruikt), it is in use before the end of 2022, it is not excluded and the investment is reported to the Netherlands Enterprise Agency (Rijksdienst voor Ondernemend Nederland, RVO) within 3 months. The machine is the only investment of 2022.
 
 - Step 1: EIA = 45,5% (art. 3.42 lid 3) × € 100.000,00 = € 45.500,00.
 - Step 2: the investment is below the maximum investment amount of € 128.000.000,00 (art. 3.42 lid 4), so the full € 100.000,00 counts.
@@ -116,7 +116,7 @@ A sole trader buys a machine in 2022 for € 40.000,00 and claims the KIA on a t
 
 - Step 1: the total transfer prices in 2024 are € 15.000,00, above the art. 3.47 lid 1 threshold of € 2.400,00, so the disinvestment addition applies.
 - Step 2: the disposal must be within five years after the start of the calendar year of the investment. The five years from the start of 2022 cover 2022 to 2026, so the 2024 disposal falls within the period.
-- Step 3: disinvestment addition = the investment deduction (investeringsaftrek) percentage taken × the transfer price = 28% × € 15.000,00 = € 4.200,00.
+- Step 3: disinvestment addition = the investment deduction (investeringsaftrek) percentage taken × the transfer price (overdrachtsprijs) = 28% × € 15.000,00 = € 4.200,00.
 - Step 4: art. 3.47 lid 2 caps the amount at the investment amount over which the deduction (aftrek) was taken, € 40.000,00. The transfer price of € 15.000,00 is below that cap, so the cap does not reduce the amount.
 
 The € 4.200,00 is added to the profit of 2024, the year of the disposal.
@@ -132,7 +132,7 @@ A sole trader owns a building that he uses in his own business, so it is not an 
 
 ### Example 10: Arbitrary depreciation for start-up entrepreneurs (starters willekeurige afschrijving) (Official example)
 
-This Dutch Tax and Customs Administration example runs from 2021 into 2022. A starter meets the starter's deduction (startersaftrek) conditions and buys a truck on 1 July 2021 for € 150.000,00. The truck is a business asset that qualifies for investment deduction. In 2021 € 60.000,00 is arbitrarily depreciated and in 2022 € 80.000,00. The book value at the end of 2025 is € 10.000,00 against a normal book value of € 60.000,00. The truck is rented out from 10 January 2026, which falls outside the five years after 1 January 2021, so no revaluation (herwaardering) applies. If the rental had started within that period, the difference would have been added to profit: € 60.000,00 minus € 10.000,00 = € 50.000,00.
+This Dutch Tax and Customs Administration (Belastingdienst) example runs from 2021 into 2022. A starter meets the starter's deduction (startersaftrek) conditions and buys a truck on 1 July 2021 for € 150.000,00. The truck is a business asset that qualifies for investment deduction. In 2021 € 60.000,00 is arbitrarily depreciated and in 2022 € 80.000,00. The book value at the end of 2025 is € 10.000,00 against a normal book value of € 60.000,00. The truck is rented out from 10 January 2026, which falls outside the five years after 1 January 2021, so no revaluation (herwaardering) applies. If the rental had started within that period, the difference would have been added to profit: € 60.000,00 minus € 10.000,00 = € 50.000,00.
 
 URWA art. 8 caps the joint costs at the maximum amount over which KIA can be obtained, that is the top of the KIA table of art. 3.41 lid 2. The truck was bought in 2021, so the 2021 cap of € 328.721,00 is the cap for this truck. The investment of € 150.000,00 is within the cap. The € 80.000,00 of arbitrary depreciation in 2022 is depreciation on the 2021 investment, not a new cost in 2022, so the 2022 cap of € 332.994,00 does not apply to this truck.
 

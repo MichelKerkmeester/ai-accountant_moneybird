@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and disability insurance (pensioen, lijfrente en AOV) 2021: Figures
+# Pension, annuity and disability insurance (pensioen, lijfrente en arbeidsongeschiktheidsverzekering) 2021: Figures
 
 **Rule:** These values hold for tax year 2021 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -88,7 +88,7 @@ This file covers the income-provision rules for a sole trader (and the BV links 
 | FOR addition | 9,44% of the profit, at most € 9.395 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2021-01-01 |
 | Mandatory occupational pension (beroepspensioen) premium | not an annuity premium, deductible as a business cost with a restriction | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies |
 | AOV premium with periodic benefits | fully deductible, art. 3.124 lid 1 c | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen |
-| AOV premium with lump-sum payout | not deductible | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen |
+| AOV premium with lump-sum payout | not deductible (niet aftrekbaar) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen |
 | Payment deadline FOR or profit from business discontinuation conversion | before 1 July 2022 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen |
 | Annuity start date (ingangsdatum) term (termijn) | 1 full calendar year | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen |
 | Survivor annuity (nabestaandenlijfrente) term | 2 full calendar years after the year of death | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen |

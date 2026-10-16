@@ -51,7 +51,7 @@ The example uses the rates in Article 9. Whether a supply qualifies for a rate o
 
 **Official example.** The decision also gives an example for integrated panels rated 2.800 Wp. VAT on the invoice is € 1.500,00. One third is deductible: € 1.500,00 ÷ 3 = € 500,00. Subtract the € 20,00 flat rate: € 500,00 - € 20,00 = € 480,00 refund. The decision does not specify the year for these examples. [Decision of 16 June 2023](https://zoek.officielebekendmakingen.nl/stcrt-2023-17463.html)
 
-### small businesses scheme (KOR) ceiling
+### small businesses scheme (kleineondernemersregeling, KOR) ceiling
 
 **Calculated example.** Assume invented Dutch turnover of € 18.000,00 before an additional supply.
 
@@ -87,7 +87,7 @@ This example assumes the goods and parties meet the reverse-charge conditions. [
 
 1. Add € 1.000,00 of further relevant sales: € 9.000,00 + € 1.000,00 = € 10.000,00. This does not exceed the € 10.000,00 threshold because the rule allows a total not higher than € 10.000,00.
 2. Add € 1,00 more: € 10.000,00 + € 1,00 = € 10.001,00. The threshold is exceeded by € 1,00: € 10.001,00 - € 10.000,00 = € 1,00.
-3. Foreign VAT applies from the supply that crosses the threshold. The Union scheme can be used to report qualifying cross-border sales through a single return.
+3. Foreign VAT applies from the supply that crosses the threshold. The Union scheme (unieregeling, de unie) can be used to report qualifying cross-border sales through a single return.
 
 This example assumes the supplier and supplies are within the rule's scope. [Distance-sales guidance](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/btw-goederen-eu-particulieren), [OSS guidance](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/btw-melden-eenloketsysteem)
 
@@ -101,16 +101,16 @@ This example assumes the supplier and supplies are within the rule's scope. [Dis
 
 The example applies the published sequence and consequence. [OSS guidance](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/btw-melden-eenloketsysteem)
 
-### Business-car private use
+### Business-car private use (privégebruik)
 
-**Calculated example.** Assume an invented catalogue price of € 20.000,00 and no records establishing actual private use. Assume the example year is within the first four years after the year the car was first used, so the 2,7% flat rate applies.
+**Calculated example.** Assume an invented catalogue price (catalogusprijs) of € 20.000,00 and no records establishing actual private use. Assume the example year is within the first four years after the year the car was first used, so the 2,7% flat rate applies.
 
 1. Multiply the catalogue price by the 2,7% flat rate: € 20.000,00 × 2,7% = € 540,00.
 2. Calculate the cap for that period. Use invented deductible VAT of € 600,00 for the year and purchase VAT of € 1.000,00. One fifth of purchase VAT is € 1.000,00 ÷ 5 = € 200,00. The cap is € 600,00 + € 200,00 = € 800,00.
 3. The flat rate amount of € 540,00 is below the cap of € 800,00. The amount before any proportional adjustment is therefore € 540,00.
 4. After the first four years, the 1/5 addition no longer applies. The cap is then the VAT deducted in the year, here € 600,00. The 1,5% flat rate applies after that period.
 
-The actual return amount can change for exempt use or a part-year period. [Private-use car decision](https://wetten.overheid.nl/BWBR0043783/2020-07-04)
+The actual return (werkelijk rendement, werkelijk-rendement, werkelijke rendement) amount can change for exempt use or a part-year period. [Private-use car decision](https://wetten.overheid.nl/BWBR0043783/2020-07-04)
 
 ### BUA gifts and bicycle
 

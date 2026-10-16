@@ -23,7 +23,7 @@ The guide separates an API read from a document only the operator can download, 
 
 ### Core Behavior
 
-The guide names the UI-only exports, which are XAF auditfiles, annual accounts and filed VAT returns, and states that no general ledger export exists in the API or the UI. It owns the API rate, page, retention and history statements that other pages link to. It also records the Dropbox export coverage and the unconfirmed items that stay `UNVERIFIED`.
+The guide names the UI-only exports, which are XAF auditfiles, annual accounts (jaarrekening) and filed VAT returns, and states that no general ledger (grootboek) export exists in the API or the UI. It owns the API rate, page, retention and history statements that other pages link to. It also records the Dropbox export coverage and the unconfirmed items that stay `UNVERIFIED`.
 
 ### Routing
 

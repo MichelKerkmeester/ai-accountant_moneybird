@@ -12,7 +12,7 @@ contextType: general
 version: 1.0.0.0
 ---
 
-# Income tax return risks and open points
+# Income tax return (aangifte inkomstenbelasting) risks and open points
 
 **Rule:** Every row below is labelled `unresolved` and names the page or check that would settle it. An unresolved item is never a rule and never a computation basis. It stays labelled in the pack and the year file that owns it keeps its own status tag. Every rule path is a link into the year files under `references/tax-rules/`.
 
@@ -30,7 +30,7 @@ The list is deliberately small. A value the year file already marks `UNVERIFIED`
 
 | ID | Unknown | Status | What would settle it |
 |---|---|---|---|
-| R1 | The year-less Netherlands Enterprise Agency (RVO) maxima, namely the maximum amount per asset and per applicant, the RVO test for a vehicle counting as new and the statement about the combined MIA and Vamil benefit | `unresolved` | A year-specific RVO page that prints each maximum and the year it belongs to. The rows are in [Investments 2025 notes](../tax-rules/2025/investments/notes.md) and [Investments 2026 figures](../tax-rules/2026/investments/figures.md). |
+| R1 | The year-less Netherlands Enterprise Agency (Rijksdienst voor Ondernemend Nederland, RVO) maxima, namely the maximum amount per asset and per applicant, the RVO test for a vehicle counting as new and the statement about the combined MIA and Vamil benefit | `unresolved` | A year-specific RVO page that prints each maximum and the year it belongs to. The rows are in [Investments 2025 notes](../tax-rules/2025/investments/notes.md) and [Investments 2026 figures](../tax-rules/2026/investments/figures.md). |
 | R2 | The derived starters' arbitrary depreciation (willekeurige afschrijving) cap | `unresolved` | A Dutch Tax and Customs Administration (Belastingdienst) or RVO page that prints the cap as a number for the resolved year. The reading and the label are in [Investments 2025 figures](../tax-rules/2025/investments/figures.md) and [Investments 2025 notes](../tax-rules/2025/investments/notes.md). |
 | R3 | The undated work space (werkruimte) publication for an owned home | `unresolved` | A dated Dutch Tax and Customs Administration publication or case law on the owned-home work space rule. The row is in [Costs and car 2025 notes](../tax-rules/2025/costs-and-car/notes.md). |
 | R4 | The mass objection (massaal-bezwaar) decision date on the tax interest (belastingrente) rate | `unresolved` | A published date for the collective decisions. The row is in [Procedure 2025 notes](../tax-rules/2025/procedure/notes.md). |

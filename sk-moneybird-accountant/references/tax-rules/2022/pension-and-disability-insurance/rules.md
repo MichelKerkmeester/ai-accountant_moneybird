@@ -13,11 +13,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and disability insurance 2022: Rules
+# Pension (pensioen), annuity (lijfrente) and disability insurance (AOV, arbeidsongeschiktheidsverzekering) 2022: Rules
 
 **Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 2 of 4 of the pension, annuity and disability insurance (pensioen, lijfrente en AOV) 2022 topic.
+Part 2 of 4 of the pension, annuity and disability insurance 2022 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [examples.md](examples.md): the worked examples.
@@ -27,7 +27,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the how-it-works rules for the pension, annuity and disability insurance (pensioen, lijfrente en AOV) 2022 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
+This part holds the how-it-works rules for the pension (pensioen), annuity (lijfrente) and disability insurance (arbeidsongeschiktheidsverzekering, AOV) 2022 topic. The overview and key figures are in figures.md, the worked examples in examples.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -41,7 +41,7 @@ This item applies to a taxpayer with a pension shortfall (pensioentekort) in the
 
 ### Maximum annual allowance (jaarruimte)
 
-For 2022 the maximum annual allowance is € 13.570. The outcome of the percentage calculation is capped at this amount, which the Ministry of Finance tables print for 2022. The maximum applies to all annuity products (lijfrenteproducten) together. Premiums above the annual allowance are never deductible but are taken into account when the benefit (uitkering) is taxed. Sources: [Ministry table](https://open.overheid.nl/documenten/ronl-acc574eb-1c51-43d6-a2ac-69b39bcb6d35/pdf), [Belastingdienst, aftrekken lijfrentepremies](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies).
+For 2022 the maximum annual allowance is € 13.570. The outcome of the percentage calculation is capped at this amount, which the Ministry of Finance (ministerie van financiën) tables print for 2022. The maximum applies to all annuity products (lijfrenteproducten) together. Premiums above the annual allowance are never deductible but are taken into account when the benefit (uitkering) is taxed. Sources: [Ministry table](https://open.overheid.nl/documenten/ronl-acc574eb-1c51-43d6-a2ac-69b39bcb6d35/pdf), [Belastingdienst, aftrekken lijfrentepremies](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies).
 
 ### Income cap (aftoppingsgrens) of the contribution base (premiegrondslag)
 
@@ -57,7 +57,7 @@ The multiplier for 2022 is 6,27. The reduction for pension accrual of art. 3.127
 
 ### Contribution base (premiegrondslag) composition
 
-Art. 3.127 lid 3 sums over the previous calendar year (2021 for the 2022 deduction): (a) profits from business activities (winst uit onderneming) before the addition to and the withdrawal from the old-age reserve (vóór toevoeging aan en afneming van de oudedagsreserve) and before the entrepreneur's allowance (ondernemersaftrek), (b) taxable wage (belastbaar loon), (c) taxable income from other work (belastbaar resultaat uit overige werkzaamheden) and (d) taxable periodic payments and benefits in kind (belastbare periodieke uitkeringen en verstrekkingen). The sum is counted up to the income cap and then reduced by the franchise. Art. 3.127 lid 5 adds that on (partial) cessation (staking) the taxpayer may ask to use the data of the year itself instead of the previous year. Sources: [art. 3.127, text 2022-01-01](https://wetten.overheid.nl/BWBR0011353/2022-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [art. 3.127, text 2020-01-01](https://wetten.overheid.nl/BWBR0011353/2020-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [art. 3.127, text 2026-01-01](https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
+Art. 3.127 lid 3 sums over the previous calendar year (2021 for the 2022 deduction): (a) profits from business activities (winst uit onderneming) before the addition to and the withdrawal from the old-age reserve (vóór toevoeging aan en afneming van de oudedagsreserve) and before the entrepreneur's allowance (vóór de ondernemersaftrek), (b) taxable wage (belastbaar loon), (c) taxable income from other work (belastbaar resultaat uit overige werkzaamheden) and (d) taxable periodic payments and benefits in kind (belastbare periodieke uitkeringen en verstrekkingen). The sum is counted up to the income cap and then reduced by the franchise. Art. 3.127 lid 5 adds that on (partial) cessation (staking) the taxpayer may ask to use the data of the year itself instead of the previous year. Sources: [art. 3.127, text 2022-01-01](https://wetten.overheid.nl/BWBR0011353/2022-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [art. 3.127, text 2020-01-01](https://wetten.overheid.nl/BWBR0011353/2020-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [art. 3.127, text 2026-01-01](https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
 
 ### Age limit for the annual allowance (jaarruimte)
 
@@ -65,7 +65,7 @@ At the start of the calendar year the taxpayer must not yet have reached the sta
 
 ### Look-back window for the catch-up allowance (reserveringsruimte)
 
-Art. 3.127 lid 2 allows unused annual allowance of the preceding period to be used on request in the tax return (aangifte), oldest unused year first. The period is "zeven jaar" (seven years) in the 2020, 2021, 2022 and 2023-01-01 texts, so for 2022 the window covers the annual allowance of 2015 to and including 2021. From the 2023-07-01 text the period is "tien jaar" (ten years). The Dutch Tax and Customs Administration page advises using the catch-up allowance before the annual allowance so that older unused allowance (ruimte) does not lapse, and states that unused 2016 room lapses in 2027. Sources: [art. 3.127, text 2022-01-01](https://wetten.overheid.nl/BWBR0011353/2022-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [art. 3.127, text 2023-07-01](https://wetten.overheid.nl/BWBR0011353/2023-07-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [Belastingdienst, aftrekken lijfrentepremies](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies), [FISIN 2022](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/uitgaven_voor_inkomensvoorzieningen). FISIN 2022 prints the window as "2014 tot en met 2021", which does not match the law, see section 7.
+Art. 3.127 lid 2 allows unused annual allowance of the preceding period to be used on request in the tax return (aangifte), oldest unused year first. The period is "zeven jaar" (seven years) in the 2020, 2021, 2022 and 2023-01-01 texts, so for 2022 the window covers the annual allowance of 2015 to and including 2021. From the 2023-07-01 text the period is "tien jaar" (ten years). The Dutch Tax and Customs Administration (Belastingdienst) page advises using the catch-up allowance before the annual allowance so that older unused allowance (ruimte) does not lapse, and states that unused 2016 room lapses in 2027. Sources: [art. 3.127, text 2022-01-01](https://wetten.overheid.nl/BWBR0011353/2022-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [art. 3.127, text 2023-07-01](https://wetten.overheid.nl/BWBR0011353/2023-07-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [Belastingdienst, aftrekken lijfrentepremies](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies), [FISIN 2022](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/uitgaven_voor_inkomensvoorzieningen). FISIN 2022 prints the window as "2014 tot en met 2021", which does not match the law, see section 7.
 
 ### Catch-up allowance percentage cap
 
@@ -107,9 +107,9 @@ For 2022 the tier b maximum is € 240.352. Tier b applies when the age at cessa
 
 For 2022 the tier c maximum is € 120.183, for the remaining cases. The same cap mechanics apply: deduction up to the profit from business discontinuation, capped at € 120.183 minus the already built provisions listed in the tier a subsection. Sources: [art. 3.129, text 2022-01-01](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [art. 3.129, text 2026-01-01](https://wetten.overheid.nl/BWBR0011353/2026-01-01).
 
-### Commutation (afkoop) of a small annuity
+### Commutation (afkoop) of a small annuity (kleine lijfrente)
 
-For 2022 the amount is € 4.607. Commutation of a small annuity in one payment is allowed below a yearly amount, set in art. 3.133 lid 2 onderdeel d. Source: [art. 3.133, text 2022-01-01](https://wetten.overheid.nl/BWBR0011353/2022-01-01).
+For 2022 the amount is € 4.607. Commutation of a small annuity (afkoop kleine lijfrente) in one payment is allowed below a yearly amount, set in art. 3.133 lid 2 onderdeel d. Source: [art. 3.133, text 2022-01-01](https://wetten.overheid.nl/BWBR0011353/2022-01-01).
 
 ### Commutation cap for long-term disability (langdurige arbeidsongeschiktheid)
 
@@ -121,7 +121,7 @@ For 2022 the addition (toevoeging) is 9,44% of the profit (winst), at most € 9
 
 ### FOR decrease (afname)
 
-Art. 3.70 lid 1 provides the decrease (afname) of the FOR. The taxpayer may choose an amount up to the annuity premiums taken into account, or the decrease follows from the excess over the business assets at cessation, at state pension age on 1 January, or when the hours criterion fails in this year and the last year. FISIN 2022 repeats the example with € 3.000 against € 4.000. Sources: [art. 3.70, text 2022-01-01](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [FISIN 2022, winst en verliesrekening en balans](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/winst_en_verliesrekening_en_balans).
+Art. 3.70 lid 1 provides the decrease (afname) of the FOR. The taxpayer may choose an amount up to the annuity premiums (lijfrentepremies) taken into account, or the decrease follows from the excess over the business assets at cessation, at state pension age on 1 January, or when the hours criterion fails in this year and the last year. FISIN 2022 repeats the example with € 3.000 against € 4.000. Sources: [art. 3.70, text 2022-01-01](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [FISIN 2022, winst en verliesrekening en balans](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/winst_en_verliesrekening_en_balans).
 
 ### FOR to annuity conversion article
 
@@ -129,7 +129,7 @@ The FOR to annuity (lijfrente) conversion deduction is art. 3.128 in 2020 to 202
 
 ### AOV premium with periodic benefits (uitkeringen)
 
-Art. 3.124 lid 1 onderdeel c makes premiums for rights to periodic payments and benefits in kind for disability, illness or accident (periodieke uitkeringen en verstrekkingen ter zake van invaliditeit, ziekte of ongeval) for the taxpayer himself an expenditure for income provisions (uitgave voor inkomensvoorzieningen). The premium is fully deductible and the article holds no allowance (ruimte) cap. FISIN states "volledig aftrekken" (deduct in full). Four categories are not deductible: premiums that the employer takes into account for payroll taxes (loonheffing), mandatory Sickness Benefits Act (Ziektewet) and Work and Income (Capacity for Work) Act (WIA) premiums, policies that pay a lump sum such as capital insurance policies (kapitaalverzekeringen), and Health Insurance Act (Zvw) premiums. For an entrepreneur (ondernemer) the AOV premium is not a business cost but an expenditure for other income provisions (uitgave voor andere inkomensvoorzieningen). Periodic benefits later are income from former employment (inkomsten uit vroegere dienstbetrekking) with wage tax (loonbelasting) withheld as a prepayment (voorheffing). Art. 3.124 lid 1 b allows a deduction without a pension shortfall for an annuity for an adult disabled child or grandchild (meerderjarig invalide (klein)kind). Sources: [art. 3.124, text 2022-01-01](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [art. 3.124, text 2026-01-01](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [FISIN 2022](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/uitgaven_voor_inkomensvoorzieningen), [Belastingdienst, AOV voor ondernemers](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers).
+Art. 3.124 lid 1 onderdeel c makes premiums for rights to periodic payments and benefits in kind for disability, illness or accident (periodieke uitkeringen en verstrekkingen ter zake van invaliditeit, ziekte of ongeval) for the taxpayer himself an expenditure for income provisions (uitgave voor inkomensvoorzieningen). The premium is fully deductible and the article holds no allowance (ruimte) cap. FISIN states "volledig aftrekken" (deduct in full). Four categories are not deductible (niet aftrekbaar): premiums that the employer takes into account for payroll taxes (loonheffing), mandatory Sickness Benefits Act (Ziektewet) and Work and Income (Capacity for Work) Act (Wet werk en inkomen naar arbeidsvermogen, WIA) premiums, policies that pay a lump sum such as capital insurance policies (kapitaalverzekeringen), and Health Insurance (zorgverzekering) Act (Zvw, zorgverzekeringswet) premiums. For an entrepreneur (ondernemer) the AOV premium is not a business cost but an expenditure for other income provisions (uitgave voor andere inkomensvoorzieningen). Periodic benefits later are income from former employment (inkomsten uit vroegere dienstbetrekking) with wage tax (loonbelasting) withheld as a prepayment (voorheffing). Art. 3.124 lid 1 b allows a deduction without a pension shortfall for an annuity for an adult disabled child or grandchild (meerderjarig invalide (klein)kind). Sources: [art. 3.124, text 2022-01-01](https://wetten.overheid.nl/BWBR0011353/2022-01-01), [art. 3.124, text 2026-01-01](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [FISIN 2022](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/uitgaven_voor_inkomensvoorzieningen), [Belastingdienst, AOV voor ondernemers](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers).
 
 ### AOV premium with lump-sum payout
 
@@ -137,11 +137,11 @@ A lump-sum AOV premium is not deductible. The payout is not box 1 income and cou
 
 ### Mandatory occupational pension (beroepspensioen) premium
 
-A mandatory occupational or industry-wide pension (beroeps- or bedrijfstakpensioen) premium is not an annuity premium (lijfrentepremie). It is deductible as a business cost of the business, with a restriction. Source: [Belastingdienst, aftrekken lijfrentepremies](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies).
+A mandatory occupational or industry-wide pension (beroeps- of bedrijfstakpensioen) premium is not an annuity premium (lijfrentepremie). It is deductible as a business cost of the business, with a restriction. Source: [Belastingdienst, aftrekken lijfrentepremies](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies).
 
 ### Sectoral pension fund (sectoraal pensioenfonds) for self-employed persons (zelfstandigen)
 
-A self-employed person may join the pension fund of the branch if the fund allows it. The premiums are then deductible. The test (proef) runs until 1 July 2028. Art. 10a.26 keeps the experimental provision (experimenteerbepaling) for self-employed persons' pension schemes inside the pension definitions. Sources: [Belastingdienst, nieuwe regels voor pensioenen](https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/nieuwe-regels-voor-pensioenen-wat-betekent-dat-voor-mij), [art. 10a.26, text 2024-01-01](https://wetten.overheid.nl/BWBR0011353/2024-01-01).
+A self-employed person (zelfstandige) may join the pension fund of the branch if the fund allows it. The premiums are then deductible. The test (proef) runs until 1 July 2028. Art. 10a.26 keeps the experimental provision (experimenteerbepaling) for self-employed persons' pension schemes inside the pension definitions. Sources: [Belastingdienst, nieuwe regels voor pensioenen](https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/nieuwe-regels-voor-pensioenen-wat-betekent-dat-voor-mij), [art. 10a.26, text 2024-01-01](https://wetten.overheid.nl/BWBR0011353/2024-01-01).
 
 ### Payment deadline for the FOR or the profit from business discontinuation conversion
 

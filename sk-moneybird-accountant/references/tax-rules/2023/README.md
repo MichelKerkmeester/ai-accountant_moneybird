@@ -61,25 +61,25 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Income tax box 1 | Box 1 below AOW age | 36,93% up to € 73.031, then 49,50% | enacted | Verified |
 | Income tax box 1 | Box 1 full-year AOW age, born on or after 1 January 1946 | 19,03% up to € 37.149, 36,93% to € 73.031, then 49,50% | enacted | Verified |
 | Zvw contribution | Maximum contribution income (bijdrage-inkomen) | € 66.956 | enacted | Verified |
-| Zvw contribution | Zvw contribution by assessment (aanslag) | 5,43% | enacted | Verified |
+| Zvw contribution | Zvw contribution (bijdrage zorgverzekeringswet) by assessment (aanslag) | 5,43% | enacted | Verified |
 | Entrepreneur's allowance and SME profit exemption | Hours criterion (urencriterium) | 1.225 hours | enacted | Verified |
 | Entrepreneur's allowance and SME profit exemption | Second test (tweede toets), look-back period (terugkijkperiode) | not an entrepreneur (ondernemer) in 1 or more of 2018 to 2022 | enacted | Verified |
 | Investment deduction and depreciation | Small-scale investment allowance (kleinschaligheidsinvesteringsaftrek, KIA) table (art. 3.41 lid 2) | nil up to € 2.600, 28% of the investment up to € 63.716, the fixed € 17.841 up to € 117.991, € 17.841 minus 7,56% of the excess over € 117.991 up to € 353.973, nil above € 353.973 | enacted | Verified |
 | Investment deduction and depreciation | Small-scale investment allowance window as printed by the Dutch Tax and Customs Administration (Belastingdienst) | "moet u een bedrag tussen € 2.601 en € 353.973 investeren" | enacted | Verified |
 | Costs and car | Threshold for mixed costs (gemengde kosten drempel) (art. 3.15 lid 1) | € 5.100 | enacted | Verified |
 | Costs and car | Election instead of the threshold (keuze in plaats van de drempel) (art. 3.15 lid 5) | 80% deductible | enacted | Verified |
-| Box 3 savings and investments | System | category method of the Bridge Act box 3 (Overbruggingswet box 3), in force 1 January 2023 | enacted | Verified |
+| Box 3 savings and investments | System | category method (categorieënmethode) of the Bridge Act box 3 (Overbruggingswet box 3), in force (in werking) 1 January 2023 | enacted | Verified |
 | Box 3 savings and investments | Box 3 rate (tarief) | 32% | enacted | Verified |
 | Box 2 and substantial interest | Box 2 rate (art. 2.12 Wet IB 2001) | 26,9%, one rate, no bracket | enacted | Verified |
 | Box 2 and substantial interest | Substantial interest (aanmerkelijk belang) definition (art. 4.6) | 5%, sub a to e | enacted | Verified |
-| Private limited company and corporate income tax | Corporate income tax (Vpb) rate (art. 22 Wet Vpb 1969) | First bracket up to and including € 200.000 at 19%. Above that € 38.000 plus 25,8% | enacted | Verified |
+| Private limited company and corporate income tax | Corporate income tax (Vpb) rate (art. 22 Wet Vpb 1969) | First bracket (eerste schijf) up to and including € 200.000 at 19%. Above that € 38.000 plus 25,8% | enacted | Verified |
 | Private limited company and corporate income tax | Art. 31 apportionment for a book year straddling 1 January 2023 | Tax is (X/B x To) + (Y/B x Tn). Old article 2022: up to and including € 395.000 at 15%, above that € 59.250 plus 25,8%. New article 2023: up to and including € 200.000 at 19%, above that € 38.000 plus 25,8% | enacted | Verified |
 | Pension, annuity and disability insurance | Annual allowance (jaarruimte) percentage | 30% | enacted | Verified |
 | Pension, annuity and disability insurance | Maximum annual allowance | € 34.550 | enacted | Corrected |
-| Work relationship and self-employment | Wet DBA | Wet van 3 februari 2016, in force 1 May 2016, replaced the VAR | enacted | Verified |
-| Work relationship and self-employment | Employment test (loondienst) | 3 elements, the possibility of employer authority (werkgeversgezag), the duty to perform personal work (persoonlijke arbeid), and pay for the work | enacted | Verified |
+| Work relationship and self-employment | Wet DBA | Wet van 3 februari 2016, in force (in werking) 1 May 2016, replaced the VAR | enacted | Verified |
+| Work relationship and self-employment | Employment test (loondienst test, loondiensttoets) | 3 elements, the possibility of employer authority (werkgeversgezag), the duty to perform personal work (persoonlijke arbeid), and pay for the work | enacted | Verified |
 | Tax return and procedure | Income tax filing period (aangifteperiode inkomstenbelasting) | Opens on 1 March | enacted | Verified |
-| Tax return and procedure | Income tax return 2023 filing deadline | Before 1 May 2024, with deferral (uitstel) before 1 September 2024 | enacted | Corrected |
+| Tax return and procedure | Income tax return (aangifte inkomstenbelasting) 2023 filing deadline (aangiftetermijn) | Before 1 May 2024, with deferral (uitstel) before 1 September 2024 | enacted | Corrected |
 <!-- GENERATED:headline-figures:end -->
 
 ---

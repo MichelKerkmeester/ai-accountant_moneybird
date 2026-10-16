@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Box 3 savings and investments 2026: Examples
+# Box 3 savings and investments (sparen en beleggen) 2026: Examples
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -64,7 +64,7 @@ This is an `Official example`. The page prints these amounts.
 Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026
 
 - Bank return = € 150.000 x 1,28% = € 1.920.
-- Other assets = € 75.000 investments plus € 200.000 second home = € 275.000 x 6,00% = € 16.500.
+- Other assets (overige bezittingen) = € 75.000 investments plus € 200.000 second home = € 275.000 x 6,00% = € 16.500.
 - Deductible debt (aftrekbare schuld) = € 100.000 - € 3.800 = € 96.200.
 - Debt return = € 96.200 x 2,70% = € 2.597,40, printed as € 2.598.
 - Taxable return (belastbaar rendement) = € 1.920 + € 16.500 - € 2.598 = € 15.822.
@@ -92,7 +92,7 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekeni
 
 This is an `Official example`. The page prints the amounts.
 
-### Official example: partners with savings, green investments and a second home abroad
+### Official example: partners with savings, green investments (groene beleggingen) and a second home abroad
 
 Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026
 
@@ -112,7 +112,7 @@ This is an `Official example`. The page prints these amounts.
 
 Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/wat-is-mijn-werkelijk-rendement
 
-- WOZ value with reference date (peildatum) 1 January 2025 = € 237.000.
+- WOZ value (WOZ-waarde) with reference date (peildatum) 1 January 2025 = € 237.000.
 - 5,06% x € 237.000 = € 11.992.
 - Usable days = 243.
 - Private-use addition (bijtelling) = € 11.992 x 243/365 = € 7.983.
@@ -163,7 +163,7 @@ Inputs are invented. WOZ value with reference date 1 January 2025 = € 300.000.
 
 This is a `Calculated example`.
 
-### Calculated example: actual return lower than the fictitious return
+### Calculated example: actual return (werkelijk rendement) lower than the fictitious return
 
 Inputs are invented. Single person. Bank balances € 150.000 and other assets € 50.000 on 1 January 2026. No debts. During 2026 the bank pays € 500 interest and the investments fall by € 3.000.
 

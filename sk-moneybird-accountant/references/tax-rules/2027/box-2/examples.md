@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Box 2 and substantial interest 2027: Examples
+# Box 2 and substantial interest (aanmerkelijk belang) 2027: Examples
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Box 2 and substantial interest 2027 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Box 2 and substantial interest (aanmerkelijk belang) 2027 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -36,7 +36,7 @@ This part holds the worked examples for the Box 2 and substantial interest 2027 
 
 ### Calculated example: dividend inside bracket 1
 
-Input: a dividend from the private limited company (BV) of € 60.000, no dividend tax (dividendbelasting) withheld, no deductible costs.
+Input: a dividend from the private limited company (BV) of € 60.000, no dividend tax (dividendbelasting) withheld, no deductible costs (aftrekbare kosten).
 
 Step 1: the boundary in the 2027 future text is € 68.843, so the whole € 60.000 falls in bracket 1.
 
@@ -74,7 +74,7 @@ FISIN 2026 gives the 2027 step as follows: 2027 threshold (drempel) € 650.000,
 
 ### Calculated example: excessive borrowing with the € 500.000 maximum
 
-Input: debts to the private limited company at 31 December 2027 of € 600.000 at nominal value, no amounts taxed earlier, no excluded owner-occupied home debt (eigenwoningschuld), no debts of related persons (verbonden personen).
+Input: debts to the private limited company at 31 December 2027 of € 600.000 at nominal value, no amounts taxed earlier, no excluded owner-occupied home (eigen woning) debt (eigenwoningschuld), no debts of related persons (verbonden personen).
 
 Step 1: the maximum is € 500.000 plus nil taxed earlier = € 500.000.
 
@@ -84,9 +84,9 @@ Step 3: in 2028 the maximum becomes € 500.000 + € 100.000 = € 600.000. If 
 
 Step 4: the negative deemed regular benefit is € 100.000 and is offset against box 2 income of that year, the previous year or the following six years.
 
-The 2027 future text is not yet in force. The proposed phase-down would change the 2027 maximum.
+The 2027 future text is not yet in force (in werking). The proposed phase-down would change the 2027 maximum.
 
-### Calculated example: tax credit on an unoffset loss
+### Calculated example: tax credit (belastingkorting) on an unoffset loss
 
 Input: an unoffset loss from a substantial interest (verlies uit aanmerkelijk belang) of € 20.000, definitively established, and no substantial interest in the year and the year before.
 
@@ -98,15 +98,15 @@ The 26,9% printed in FISIN 2026 is a stale handbook figure, see section 7. The p
 
 ### Calculated example: customary salary (gebruikelijk loon)
 
-Input: the comparable wage is € 50.000, the highest wage of the employees is € 45.000 and the fixed amount in the 2027 future text is € 58.000.
+Input: the comparable wage (vergelijkbaar loon) is € 50.000, the highest wage of the employees is € 45.000 and the fixed amount in the 2027 future text is € 58.000.
 
 Step 1: the norm is the highest of the three amounts, € 58.000.
 
 Step 2: if the withholding agent (inhoudingsplichtige) makes plausible that € 58.000 exceeds the comparable wage of € 50.000, the comparable wage of € 50.000 applies.
 
-The amount is declared as income from employment in box 1, not as a box 2 benefit (voordeel). The € 58.000 is the pre-indexation figure and is replaced at the start of 2027 by ministerial regulation.
+The amount is declared as income from employment in box 1, not as a box 2 benefit (voordeel). The € 58.000 is the pre-indexation figure and is replaced at the start of 2027 by ministerial regulation (ministeriële regeling).
 
-### Calculated example: flat-rate benefit (forfaitair voordeel) for an exempt investment institution (vbi)
+### Calculated example: flat-rate benefit (forfaitair voordeel) for an exempt investment institution (vrijgestelde beleggingsinstelling) (vbi)
 
 Input: shares in an exempt investment institution with a value of € 100.000 on 1 January 2027, held for the whole year, and other regular benefits (reguliere voordelen) from those shares of € 2.000.
 
@@ -122,13 +122,13 @@ Input: a company with 100 issued shares.
 
 The taxpayer holds 5 shares alone, which is 5%, so there is a substantial interest (aanmerkelijk belang) under art. 4.6 sub a.
 
-If the taxpayer holds 3 shares and the fiscal partner 3 shares, the two together hold 6%, so the test is also met.
+If the taxpayer holds 3 shares and the fiscal partner (fiscaal partner) 3 shares, the two together hold 6%, so the test is also met.
 
 ### Calculated example: partner split of box 2 income
 
 Input: box 2 income of € 100.000 in 2027, fiscal partnership for the whole year, division 50/50.
 
-Step 1: each partner applies his own first bracket. Partner 1: € 50.000 × 24,5% = € 12.250,00. Partner 2: € 50.000 × 24,5% = € 12.250,00.
+Step 1: each partner applies his own first bracket (eerste schijf). Partner 1: € 50.000 × 24,5% = € 12.250,00. Partner 2: € 50.000 × 24,5% = € 12.250,00.
 
 Step 2: total € 12.250,00 + € 12.250,00 = € 24.500,00.
 

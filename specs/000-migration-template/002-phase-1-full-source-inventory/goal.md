@@ -59,7 +59,7 @@ Source class and attachment or Inbox link coverage 100%, independent source tota
 
 M12 gate: work units with Verifier PASS or Operator disposition 100%, source counts and page-chain reproduction 100%, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
 
-- [ ] SG-1.1: invoices, expenses, receipts, each attachment class, loose Inbox items, bank files, XAF files, annual accounts, filed returns, assessments and reconstructed asset schedules have inventory rows 100%, unclassified classes 0.
+- [ ] SG-1.1: invoices, expenses, receipts, each attachment class, loose Inbox items, bank files, XAF files, annual accounts (jaarrekening), filed returns, assessments and reconstructed asset schedules have inventory rows 100%, unclassified classes 0.
 - [ ] SG-1.2: account-year pairs with a file or explicit exception 100%, unexplained unmatched pairs 0.
 - [ ] SG-1.3: year-regime rows 100%, every KOR, ICP, OSS and other relevant declaration marked applicable or not applicable with evidence, unknown statuses 0.
 - [ ] SG-1.4: capability decision recorded 1, gates relying on an unverified printout 0.

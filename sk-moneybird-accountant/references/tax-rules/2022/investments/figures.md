@@ -12,11 +12,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Investment deduction and depreciation 2022: Figures
+# Investment deduction (investeringsaftrek) and depreciation 2022: Figures
 
 **Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 1 of 4 of the investment deduction and depreciation (investeringsaftrek en afschrijving) 2022 topic.
+Part 1 of 4 of the investment deduction and depreciation 2022 topic.
 
 - [rules.md](rules.md): how it works.
 - [examples.md](examples.md): the worked examples.
@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the investment deductions (KIA, EIA, MIA and Vamil), ordinary and arbitrary depreciation (willekeurige afschrijving), the minimum value (bodemwaarde, floor value) for buildings and the disinvestment addition (desinvesteringsbijtelling, disposal addition) for tax year 2022. The largest change in 2022 is the MIA step-up on 1 January 2022 from 36% / 27% / 13,5% to 45% / 36% / 27%, coupled with a new Environmental List (Milieulijst) code mapping for the three MIA categories and for the Vamil codes A, B, C and F. The KIA table and the EIA and MIA maximum investment amount were indexed. The 2022 rules are enacted law and are read as the 2022 text of the Income Tax Act 2001 (Wet inkomstenbelasting 2001).
+This file covers the investment deductions (KIA, EIA, MIA and Vamil), ordinary and arbitrary depreciation (willekeurige afschrijving), the minimum value (bodemwaarde, floor value) for buildings and the disinvestment addition (desinvesteringsbijtelling, disposal addition) for tax year 2022. The largest change in 2022 is the MIA step-up on 1 January 2022 from 36% / 27% / 13,5% to 45% / 36% / 27%, coupled with a new Environmental List (Milieulijst) code mapping for the three MIA categories and for the Vamil codes A, B, C and F. The KIA table and the EIA and MIA maximum investment amount (investeringsbedrag) were indexed. The 2022 rules are enacted law and are read as the 2022 text of the Income Tax Act 2001 (Wet ib, Wet inkomstenbelasting 2001).
 
 ---
 
@@ -42,7 +42,7 @@ This file covers the investment deductions (KIA, EIA, MIA and Vamil), ordinary a
 | KIA table | 1 |
 | KIA per-asset minimum | 2 |
 | EIA percentage | 3 |
-| EIA and MIA maximum investment amount | 4 |
+| EIA and MIA maximum investment amount (investeringsbedrag) | 4 |
 | MIA percentages | 5 |
 | EIA and MIA per-asset minimum | 6 |
 | Vamil percentage | 7 |
@@ -60,7 +60,7 @@ This file covers the investment deductions (KIA, EIA, MIA and Vamil), ordinary a
 | KIA table | nil up to € 2.400, 28% to € 59.939, € 16.784 to € 110.998, € 16.784 minus 7,56% of the excess over € 110.998 up to € 332.994, nil above € 332.994 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 3.41 lid 2, https://wetten.overheid.nl/BWBR0011353/2027-01-01 |
 | KIA per-asset minimum | € 450 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 3.45 lid 2 onderdeel b, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek |
 | EIA percentage | 45,5% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 3.42 lid 3, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek |
-| EIA and MIA maximum investment amount | € 128.000.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 3.42 lid 4, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek |
+| EIA and MIA maximum investment amount (investeringsbedrag) | € 128.000.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 3.42 lid 4, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek |
 | MIA percentages | 45% (category (categorie) I), 36% (category II), 27% (category III) | enacted | Corrected | https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 3.42a lid 3, https://zoek.officielebekendmakingen.nl/stcrt-2021-47737.html, https://www.rijksoverheid.nl/actueel/nieuws/2021/09/21/belastingplan-2022-beter-belastingstelsel |
 | EIA and MIA per-asset minimum | € 2.500 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 3.45 lid 4 onderdeel b, https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek |
 | Vamil percentage | 75% arbitrary depreciation (willekeurige afschrijving), codes A, B, C and F | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 3.31, https://zoek.officielebekendmakingen.nl/stcrt-2021-47737.html |

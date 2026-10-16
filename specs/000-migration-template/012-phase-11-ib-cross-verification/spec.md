@@ -105,7 +105,7 @@ The exit gate in section 5 passes, the recorded evidence sits in `migration-work
 
 **Phase inputs** (from the phase reference):
 
-Moneybird profit and balance reports, annual accounts, filed IB return and assessment where available, approved NOT_AVAILABLE or PENDING status evidence, fiscal adjustment schedule, and tax register.
+Moneybird profit and balance reports, annual accounts (jaarrekening), filed IB return and assessment where available, approved NOT_AVAILABLE or PENDING status evidence, fiscal adjustment schedule, and tax register.
 
 Read each input from Jortt or from the previous phase. Jortt stays read-only.
 

@@ -13,7 +13,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Private limited company and corporate income tax 2026: Examples
+# Private limited company (besloten vennootschap) and corporate income tax (vennootschapsbelasting) 2026: Examples
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -27,7 +27,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Private limited company and corporate income tax (BV en vennootschapsbelasting) 2026 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the private limited company (BV) and corporate income tax (Vpb) 2026 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -41,22 +41,22 @@ No official examples were found in the checked sources for 2026, so every exampl
 
 `Calculated example`. A BV has a taxable amount (belastbaar bedrag) of € 300.000,00 for 2026.
 
-Step 1, first bracket: € 200.000,00 x 19% = € 38.000,00.
-Step 2, the part above the first bracket: € 300.000,00 - € 200.000,00 = € 100.000,00.
+Step 1, first bracket (eerste schijf): € 200.000,00 x 19% = € 38.000,00.
+Step 2, the part above the first bracket (boven de eerste schijf): € 300.000,00 - € 200.000,00 = € 100.000,00.
 Step 3, tax on that part: € 100.000,00 x 25,8% = € 25.800,00.
 Step 4, total: € 38.000,00 + € 25.800,00 = € 63.800,00.
-Step 5, check against the art. 22 formula: € 38.000,00 + 25,8% x € 100.000,00 = € 38.000,00 + € 25.800,00 = € 63.800,00. The effective rate is € 63.800,00 / € 300.000,00 = 21,27% (rounded).
+Step 5, check against the art. 22 formula: € 38.000,00 + 25,8% x € 100.000,00 = € 38.000,00 + € 25.800,00 = € 63.800,00. The effective rate (effectieve tarief) is € 63.800,00 / € 300.000,00 = 21,27% (rounded).
 
 A second BV at exactly € 200.000,00 pays € 200.000,00 x 19% = € 38.000,00. A third BV at € 1.000.000,00 pays € 38.000,00 + 25,8% x € 800.000,00 = € 38.000,00 + € 206.400,00 = € 244.400,00.
 
 ### Example 2, generic interest deduction limitation (generieke renteaftrekbeperking)
 
-`Calculated example`. A BV has an adjusted profit (gecorrigeerde winst) of € 4.000.000,00 and a balance (saldo) of interest of € 2.000.000,00. The balance of interest is the interest costs on loans minus the interest income.
+`Calculated example`. A BV has an adjusted profit (gecorrigeerde winst) of € 4.000.000,00 and a balance (saldo) of interest of € 2.000.000,00. The balance of interest (saldo aan renten) is the interest costs on loans minus the interest income.
 
 Step 1, percentage leg: € 4.000.000,00 x 24,5% = € 980.000,00.
 Step 2, amount leg: € 1.000.000,00.
 Step 3, the threshold is the higher of the two: € 1.000.000,00.
-Step 4, the balance of interest is deductible up to € 1.000.000,00, so € 2.000.000,00 - € 1.000.000,00 = € 1.000.000,00 is not deductible and carries forward.
+Step 4, the balance of interest is deductible up to € 1.000.000,00, so € 2.000.000,00 - € 1.000.000,00 = € 1.000.000,00 is not deductible (niet aftrekbaar) and carries forward.
 
 Second case, adjusted profit € 10.000.000,00 and balance of interest € 3.000.000,00.
 
@@ -78,7 +78,7 @@ If the loss were € 500.000,00, all of it would be set off because € 500.000,
 
 ### Example 4, innovation box (innovatiebox) effective rate
 
-`Calculated example`. A smaller taxpayer made a qualifying asset itself and holds an R&D declaration (S&O-verklaring). The qualifying advantage is € 500.000,00 and falls in the top bracket, so without the innovation box it would be taxed at 25,8%.
+`Calculated example`. A smaller taxpayer (kleinere belastingplichtige) made a qualifying asset itself and holds an R&D declaration (S&O-verklaring). The qualifying advantage is € 500.000,00 and falls in the top bracket, so without the innovation box it would be taxed at 25,8%.
 
 Step 1, without the box: € 500.000,00 x 25,8% = € 129.000,00.
 Step 2, with the 9/H fraction the effective rate is 9%: € 500.000,00 x 9% = € 45.000,00.
@@ -94,7 +94,7 @@ In both cases the profit before art. 12b must be positive for the flat rate to a
 
 ### Example 6, customary salary (gebruikelijk loon) and the escape
 
-`Calculated example`. A director and substantial shareholder (DGA) works for his BV. The comparable wage is € 55.000,00, the highest wage of the other employees in the entity and related entities is € 50.000,00, and the 2026 standard amount (normbedrag) is € 58.000,00.
+`Calculated example`. A director and substantial shareholder (directeur-grootaandeelhouder, DGA) works for his BV. The comparable wage (vergelijkbaar loon) is € 55.000,00, the highest wage of the other employees in the entity and related entities (verbonden lichamen) is € 50.000,00, and the 2026 standard amount (normbedrag) is € 58.000,00.
 
 Step 1, the three amounts are € 55.000,00, € 50.000,00 and € 58.000,00.
 Step 2, the highest of them is € 58.000,00, so the wage must be at least € 58.000,00.
@@ -114,7 +114,7 @@ Step 3, the checked 2026 material states that this director and substantial shar
 Case B, director and substantial shareholder insured for the employee insurance schemes.
 Step 1, the BV pays the employer levy of € 79.409,00 x 6,10% = € 4.843,949, rounded to € 4.843,95.
 
-The 2026 Payroll Taxes Handbook (Handboek Loonheffingen) was not read, so the 2026 collection route rests on the 2025 Handbook (Handboek) and the 2026 table.
+The 2026 Payroll Taxes Handbook (Handboek Loonheffingen) was not read, so the 2026 collection route rests on the 2025 Payroll Taxes Handbook and the 2026 table.
 
 ### Example 8, box 2 on a dividend
 
@@ -131,7 +131,7 @@ Step 4, note on the table. € 68.843,00 x 24,5% = € 16.866,535, and € 16.86
 
 Step 1, withholding: € 100.000,00 x 15% = € 15.000,00.
 Step 2, the return and the payment are due within 1 month after the day the dividend is made available.
-Step 3, an entity offsets the € 15.000,00 in the corporate income tax return (aangifte Vpb), while an individual offsets it in the income tax return (inkomstenbelasting).
+Step 3, an entity offsets the € 15.000,00 in the corporate income tax return (aangifte Vpb), while an individual offsets it in the income tax return (aangifte inkomstenbelasting).
 
 If instead the BV bears the tax itself, art. 6 lid 1 grosses up the proceeds (opbrengst): € 100.000,00 x 100/85 = € 117.647,0588, rounded to € 117.647,06. The 15% tax on the grossed-up amount is € 117.647,0588 x 15% = € 17.647,0588, rounded to € 17.647,06.
 
@@ -139,7 +139,7 @@ If the shareholder is a Dutch entity with a holding of 5% or more, the participa
 
 ### Example 10, buyback of own shares (inkoop van eigen aandelen)
 
-`Calculated example`. A BV buys back its own shares. The buyback price is € 50.000,00 and the average paid-up capital on those shares is € 20.000,00.
+`Calculated example`. A BV buys back its own shares. The buyback price is € 50.000,00 and the average paid-up capital (gemiddeld gestort kapitaal) on those shares is € 20.000,00.
 
 Step 1, taxable base: € 50.000,00 - € 20.000,00 = € 30.000,00.
 Step 2, dividend tax: € 30.000,00 x 15% = € 4.500,00.
@@ -147,7 +147,7 @@ Step 3, if the company bears the tax itself and the art. 4c facility for listed 
 
 ### Example 11, conditional withholding tax (conditionele bronbelasting)
 
-`Calculated example`. A BV pays € 200.000,00 of royalties to a related entity in a low-tax jurisdiction.
+`Calculated example`. A BV pays € 200.000,00 of royalties to a related entity (verbonden lichaam) in a low-tax jurisdiction (laagbelastende jurisdictie).
 
 Step 1, the rate is the highest art. 22 rate, so 25,8% for 2026.
 Step 2, the tax is € 200.000,00 x 25,8% = € 51.600,00.
@@ -166,7 +166,7 @@ Step 5, without the fiscal unity the parent company alone would pay € 38.000,0
 
 ### Example 13, annual accounts (jaarrekening) size class
 
-`Calculated example`. A BV has a balance sheet total of € 500.000,00, a net turnover of € 800.000,00 and 8 employees at the balance date, with the same picture one year earlier.
+`Calculated example`. A BV has a balance sheet total of € 500.000,00, a net turnover (netto-omzet) of € 800.000,00 and 8 employees at the balance date, with the same picture one year earlier.
 
 Step 1, assets of € 500.000,00 against the micro bound of € 450.000,00, not met.
 Step 2, turnover of € 800.000,00 against the micro bound of € 900.000,00, met.

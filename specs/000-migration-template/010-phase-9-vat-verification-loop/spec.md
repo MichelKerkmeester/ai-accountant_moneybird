@@ -53,7 +53,7 @@ This is **Phase 9** of the Jortt to Moneybird migration template specification.
 
 **Entry criteria** (from the phase reference):
 
-Phase 2 has actual filed VAT return and confirmation evidence for every filed VAT period or evidence-backed not-applicable status. A missing filed return or confirmation with an exception remains blocked and cannot pass this phase. Phase 8 period records are reconciled.
+Phase 2 has actual filed VAT return (btw-aangifte) and confirmation evidence for every filed VAT period or evidence-backed not-applicable status. A missing filed return or confirmation with an exception remains blocked and cannot pass this phase. Phase 8 period records are reconciled.
 
 **Dependencies**:
 - Previous phase exit gate passed, or None for Phase 0

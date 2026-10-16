@@ -28,7 +28,7 @@ This reference explains how common sole-trader events map to accounting categori
 
 ### New sales and historical external sales
 
-Use a Moneybird sales invoice for an invoice created and sent in Moneybird. Use external sales for an invoice issued outside Moneybird or a historical invoice entered from its source document. Per Moneybird help, an external sale supports outside or historic sales records. Review the invoice date, customer, net amount, VAT treatment and source document.
+Use a Moneybird sales invoice for an invoice created and sent in Moneybird. Use external sales for an invoice issued outside Moneybird or a historical invoice entered from its source document. Per Moneybird help, an external sale supports outside or historic sales records (verkoopadministratie). Review the invoice date, customer, net amount, VAT treatment and source document.
 
 - Product reference: [external sales](https://helpcenter.moneybird.nl/nl/articles/223885-externe-omzet-verwerken-in-je-administratie).
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
@@ -46,7 +46,7 @@ Match a receipt to the existing sales invoice. Do not record the receipt as anot
 
 ### Purchase invoices and receipts
 
-Add the source invoice or receipt as an incoming document, then process it into the accounts. The [purchase invoice reference](./purchase-invoices.md) gives the full booking flow and the VAT rate for a Dutch invoice, a reverse-charged foreign invoice and an invoice with foreign VAT. Per Moneybird help, a document in the incoming inbox is not booked and is not included in VAT until processed. Check the supplier, date, invoice number, amount, VAT and accounting category before saving.
+Add the source invoice or receipt as an incoming document, then process it into the accounts. The [purchase invoice reference](./purchase-invoices.md) gives the full booking flow and the VAT rate (btw-tarief) for a Dutch invoice, a reverse-charged foreign invoice and an invoice with foreign VAT. Per Moneybird help, a document in the incoming inbox is not booked and is not included in VAT until processed. Check the supplier, date, invoice number, amount, VAT and accounting category before saving.
 
 - Product references: [add a purchase invoice or receipt](https://helpcenter.moneybird.nl/nl/articles/207118-inkoopfactuur-of-bon-toevoegen) and [process incoming documents](https://helpcenter.moneybird.nl/nl/articles/207134-verwerk-inkoopfacturen-en-bonnen).
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
@@ -58,7 +58,7 @@ Moneybird categories map to ledger accounts and RGS codes. Select the category b
 - Product reference: [add a category](https://helpcenter.moneybird.nl/nl/articles/207276-categorie-toevoegen).
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
 
-### Mixed private and business costs
+### Mixed private and business costs (bedrijfskosten)
 
 Keep the business and private parts separate. Use a product split only after the eligible business portion and VAT allocation have been checked. Private costs paid from the business account are not operating expenses.
 
@@ -67,7 +67,7 @@ Keep the business and private parts separate. Use a product split only after the
 
 ---
 
-## 4. PRIVATE USE AND MILEAGE
+## 4. PRIVATE USE (privégebruik) AND MILEAGE
 
 ### Private withdrawals and contributions
 
@@ -76,7 +76,7 @@ Post proprietor contributions and withdrawals against private or equity accounts
 - Product references: [business and private](https://helpcenter.moneybird.nl/nl/articles/207322-zakelijk-en-prive) and [private use of business products or services](https://helpcenter.moneybird.nl/nl/articles/207324-privegebruik-van-zakelijke-producten-of-diensten-voor-eenmanszaken), per Moneybird help reviewed on 2026-10-10.
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
 
-### Business kilometres in a private vehicle
+### Business kilometres in a private vehicle (privévervoermiddel)
 
 Record the supported business distance with the rate for the travel year and a trip purpose. Keep the trip log. Do not separately deduct fuel, insurance, repairs or parking that the kilometre allowance already covers. The amount changes by year, so first check `costs-and-car.md` in the folder for the travel year, routed from [the Dutch tax rules](./tax-rules/dutch-tax-rules.md).
 
@@ -87,9 +87,9 @@ Record the supported business distance with the rate for the travel year and a t
 
 ## 5. ASSETS AND OPENING BALANCE
 
-### Fixed assets and depreciation
+### Fixed assets (vaste activa) and depreciation
 
-A qualifying asset is recorded with its original cost, in-use date, useful life, residual value and prior depreciation when it already existed. Moneybird supports straight-line depreciation and existing-asset opening data. Its product activation threshold is €450 excluding VAT, per Moneybird help reviewed on 2026-10-10. Tax classification and depreciation limits still need a year-specific check. Building depreciation needs a separate WOZ floor decision and is not fully automated by the product. The [fixed assets reference](./fixed-assets.md) covers the cost-or-asset test, the depreciation base and yearly limit, VAT on an asset and its revision period and disposal.
+A qualifying asset is recorded with its original cost, in-use date (datum ingebruikname), useful life (gebruiksduur), residual value (restwaarde) and prior depreciation when it already existed. Moneybird supports straight-line depreciation and existing-asset opening data. Its product activation threshold is €450 excluding VAT, per Moneybird help reviewed on 2026-10-10. Tax classification and depreciation limits still need a year-specific check. Building depreciation needs a separate WOZ floor decision and is not fully automated by the product. The [fixed assets reference](./fixed-assets.md) covers the cost-or-asset test, the depreciation base and yearly limit, VAT on an asset and its revision period and disposal.
 
 - Product references: [add an asset](https://helpcenter.moneybird.nl/nl/articles/207293-bezitting-toevoegen), [straight-line depreciation](https://helpcenter.moneybird.nl/nl/articles/207294-bezitting-lineair-afschrijven), and [move existing assets](https://helpcenter.moneybird.nl/nl/articles/223936-bestaande-vaste-activa-overzetten-naar-bezittingen).
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).
@@ -116,7 +116,7 @@ The guarded bank read names a Moneybird state for each bookkeeping outcome. Unma
 
 ## 7. VAT AND PERIOD CONTROL
 
-An eligible Moneybird administration can submit a VAT return through the product. The operator reviews and files the return, and arranges payment separately. This assistant never submits or files any return. A VAT correction comparison depends on prior returns filed through Moneybird. If earlier returns were filed elsewhere, use the tax authority's correction process. A filed return does not automatically lock the accounting period. Set or review a lock date deliberately and only when authorized.
+An eligible Moneybird administration can submit a VAT return (btw-aangifte) through the product. The operator reviews and files the return, and arranges payment separately. This assistant never submits or files any return. A VAT correction (btw-correctie) comparison depends on prior returns filed through Moneybird. If earlier returns were filed elsewhere, use the tax authority's correction process. A filed return does not automatically lock the accounting period. Set or review a lock date deliberately and only when authorized.
 
 Moneybird does not prepare the proprietor's complete personal income-tax return. Its profit and loss, balance sheet and fixed-asset reports can support an external return preparer, per Moneybird help reviewed on 2026-10-10. This assistant never files the return.
 
@@ -151,15 +151,15 @@ The step list for the quarterly preparation is in [`references/vat-return/README
 
 ### Yearly bookkeeping
 
-- Reconcile profit and loss, balance sheet, assets, depreciation, private use, mileage and year-end VAT adjustments.
+- Reconcile profit and loss, balance sheet, assets, depreciation, private use (privégebruik), mileage and year-end VAT adjustments.
 - The step list, the auditfile gate and the close checks are in [the yearly overview folder](./yearly-overview/README.md).
 - Compare annual totals to the evidence and filed records.
 - Lock a period only when the applicable workflow has passed and the operator directs the action.
-- Route Moneybird CLI reads through moneybird-guard under the Read Step Contract in `cli-moneybird/SKILL.md` section 3. For writes, apply LIVE write authority. Prepare the income tax return through [the income tax return folder](./income-tax-return/README.md), amended on 2026-10-14 when the preparation procedure landed: the agent prepares, the operator reviews and confirms it, and filing stays operator-only.
+- Route Moneybird CLI reads through moneybird-guard under the Read Step Contract in `cli-moneybird/SKILL.md` section 3. For writes, apply LIVE write authority. Prepare the income tax return (aangifte inkomstenbelasting) through [the income tax return folder](./income-tax-return/README.md), amended on 2026-10-14 when the preparation procedure landed: the agent prepares, the operator reviews and confirms it, and filing stays operator-only.
 
 ### Private withdrawals and deposits in the accounts
 
-Moneybird keeps one main category for the owner's private movement, with a sub-category for deposits and one for withdrawals. The entity principle treats the business and its owner as separate for the administration. A private movement settles through the owner-equity account and never through the profit and loss account, so a private cost is not a business cost and a private receipt is not revenue. The four owner-equity lines are:
+Moneybird keeps one main category for the owner's private movement, with a sub-category for deposits and one for withdrawals. The entity principle treats the business and its owner as separate for the administration. A private movement settles through the owner-equity account and never through the profit and loss account (winst- en verliesrekening), so a private cost is not a business cost and a private receipt is not revenue. The four owner-equity lines are:
 
 | Owner-equity line | What it records | Effect on closing equity |
 |---|---|---|
@@ -185,7 +185,7 @@ The rule that decides the year a cost or revenue belongs to is one sourced sente
 ## 9. RELATED RESOURCES
 
 - [Dutch tax rules](./tax-rules/dutch-tax-rules.md) explains the general tax rules and routes to the year folders with the yearly amounts.
-- [Purchase invoices](./purchase-invoices.md) explains booking purchase invoices, receipts and orders with Dutch or reverse-charged VAT.
+- [Purchase invoices](./purchase-invoices.md) explains booking purchase invoices, receipts and orders with Dutch or reverse-charged VAT (verlegde btw).
 - [Mixed-use costs](./mixed-use-costs.md) explains a cost used partly privately, its business share, its VAT split and its Moneybird booking.
 - [Fixed assets](./fixed-assets.md) explains when a purchase is an asset, depreciation, the VAT revision period and disposal.
 - [Jortt to Moneybird mapping](./migration/jortt-to-moneybird-mapping.md) explains source-to-target concept mapping.

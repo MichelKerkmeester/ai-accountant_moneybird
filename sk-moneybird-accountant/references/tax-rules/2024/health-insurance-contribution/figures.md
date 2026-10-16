@@ -39,7 +39,7 @@ This file covers the income-dependent Zvw contribution (bijdrage zorgverzekering
 <!-- GENERATED:key-figure-index:start -->
 | Item | row |
 |---|---|
-| Zvw contribution (Zvw-bijdrage) by (provisional) assessment ((voorlopige) aanslag) | 1 |
+| Zvw contribution (Zvw-bijdrage) by assessment or provisional assessment (aanslag of voorlopige aanslag) | 1 |
 | Maximum contribution income (bijdrage-inkomen) Zvw | 2 |
 | Employer levy (werkgeversheffing) Zvw | 3 |
 | Tax base (grondslag) for the profits from business activities (winst uit onderneming) | 4 |
@@ -53,7 +53,7 @@ This file covers the income-dependent Zvw contribution (bijdrage zorgverzekering
 
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
-| Zvw contribution (Zvw-bijdrage) by (provisional) assessment ((voorlopige) aanslag) | 5,32% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
+| Zvw contribution (Zvw-bijdrage) by assessment or provisional assessment (aanslag of voorlopige aanslag) | 5,32% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
 | Maximum contribution income (bijdrage-inkomen) Zvw | € 71.628 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
 | Employer levy (werkgeversheffing) Zvw | 6,57% | enacted | Corrected | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
 | Tax base (grondslag) for the profits from business activities (winst uit onderneming) | Taxable profit from business (belastbare winst uit onderneming), after the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption (MKB-winstvrijstelling), excluding the amount added under art. 3.70 lid 2 for a decrease of the old-age reserve (oudedagsreserve) | enacted | UNVERIFIED | https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01 (2026 version) |

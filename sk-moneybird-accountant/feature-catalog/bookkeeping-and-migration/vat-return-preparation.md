@@ -10,7 +10,7 @@ trigger_phrases:
 version: 1.0.0.0
 ---
 
-# VAT return preparation
+# VAT return (btw-aangifte) preparation
 
 ## 1. OVERVIEW
 
@@ -24,7 +24,7 @@ The T10 task-type row routes a prepare-the-VAT-return request into `references/v
 
 ### The period route
 
-A request that names the VAT return, a quarterly return or a preparation of either wins T10 and reads the folder README, the resolved year VAT figures and, when a deadline, a correction or tax interest (belastingrente) applies, the year procedure figures. The mode is LIVE. The administration data is read at run time with moneybird-guard under `MONEYBIRD_GUARD_READ_ONLY=1`, following `cli-moneybird/SKILL.md`. Period unlocking, tax-rate creation and filing stay UI and Operator actions.
+A request that names the VAT return (btw-aangifte), a quarterly return or a preparation of either wins T10 and reads the folder README, the resolved year VAT figures and, when a deadline, a correction or tax interest (belastingrente) applies, the year procedure figures. The mode is LIVE. The administration data is read at run time with moneybird-guard under `MONEYBIRD_GUARD_READ_ONLY=1`, following `cli-moneybird/SKILL.md`. Period unlocking, tax-rate creation and filing stay UI and Operator actions.
 
 ### The review pack and the boundary
 
@@ -40,7 +40,7 @@ Every figure, rate, threshold and deadline is a link into `references/tax-rules/
 |---|---|---|
 | `sk-moneybird-accountant/references/vat-return/README.md` | Shared | Entry index, the boundary, the figure link rule and the open points O1 to O5. |
 | `sk-moneybird-accountant/references/vat-return/preparation.md` | Shared | The ordered period procedure, steps 0 to 12, each with its check, its evidence and its Operator point. |
-| `sk-moneybird-accountant/references/vat-return/return-boxes.md` | Shared | The section (rubriek) table for 1a to 5b, the derivation map, the run-time rate step and the reverse-charge, small businesses scheme (KOR), ICP and OSS rules. |
+| `sk-moneybird-accountant/references/vat-return/return-boxes.md` | Shared | The section (rubriek) table for 1a to 5b, the derivation map, the run-time rate step and the reverse-charge, small businesses scheme (kleineondernemersregeling, KOR), ICP and OSS rules. |
 | `sk-moneybird-accountant/references/vat-return/year-end-and-corrections.md` | Shared | The year-end settlements S1 to S4 and the correction and supplementary return (suppletie) routing. |
 | `sk-moneybird-accountant/references/vat-return/review-pack.md` | Shared | The pack blocks P1 to P9, the confirmation parts C1 to C3 and the deadline and payment block. |
 | `sk-moneybird-accountant/SKILL.md` | Shared | Holds the T10 row that routes a prepare-the-VAT-return request into this folder. |

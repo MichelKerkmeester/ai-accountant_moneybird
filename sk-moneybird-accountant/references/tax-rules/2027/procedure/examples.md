@@ -36,11 +36,11 @@ This part holds the worked examples for the Filing and procedure 2027 topic. The
 
 All rules, rates, thresholds and official examples below come from the figures table or the checked material. Round example inputs are used only to show the method. Every step is written out. Calculated examples are built here. Official examples are copied from a primary source with the URL.
 
-**Example 1. Deferral (uitstel) for the income tax return over 2026 (Calculated example).**
+**Example 1. Deferral (uitstel) for the income tax return (aangifte inkomstenbelasting) over 2026 (Calculated example).**
 Input: the figures table marks the deadline for the return over 2026 as not published and usually 1 May 2027. The taxpayer requests deferral before that date. A granted deferral gives 4 months extra.
 Step 1: start from 1 May 2027.
 Step 2: add 4 months. The four months are May, June, July and August.
-Step 3: the new filing date is 1 September 2027.
+Step 3: the new filing date (aangiftedatum) is 1 September 2027.
 Note: deferral usually means tax interest (belastingrente) is charged.
 Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/programmas_en_formulieren/aanvraag-uitstel-aangifte-inkomstenbelasting and https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen
 
@@ -107,9 +107,9 @@ Note: basic records (basisgegevens) are kept 7 years. Immovable property (onroer
 Sources: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/hoelang-moet-u-gegevens-bewaren and https://wetten.overheid.nl/BWBR0002320/2026-01-01
 
 **Example 9. KVK registration for a business that starts on 1 June 2027 (Calculated example).**
-Step 1: the registration window starts one week before the start. 1 June minus 7 days is 25 May 2027.
+Step 1: the registration window (inschrijvingsvenster) starts one week before the start. 1 June minus 7 days is 25 May 2027.
 Step 2: the window ends one week after the start. 1 June plus 7 days is 8 June 2027.
-Step 3: registering within the window gives the Chamber of Commerce number (KVK-nummer) immediately.
+Step 3: registering within the window gives the Chamber of Commerce (kamer van koophandel) number (KVK-nummer) immediately.
 Step 4: registration with the Dutch Tax and Customs Administration takes at most 10 working days (werkdagen), and ten working days equals two calendar weeks.
 Sources: https://wetten.overheid.nl/BWBR0021777/2025-07-16 and https://www.kvk.nl/hulp-en-contact/hulp-bij-inschrijven/ and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/
 

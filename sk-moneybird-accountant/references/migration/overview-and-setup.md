@@ -43,7 +43,7 @@ The work runs on the M12 agent route. DeepSeek drafts, Codex verifies, Claude gi
 
 Use `jortt-cli` for read-only API extraction with read scopes. List reads use `--all`, follow the complete next-link chain, and record page counts, item counts, statuses, rate-limit events, and independent source totals. The documented page size is at most 100 items and the request limit is 10 per second. Missing pages, unexplained page caps or mismatched totals stop dependent work.
 
-The tool contract does not provide a Jortt XAF export, general-ledger export, general journal or filed VAT or income-tax return. The Operator uses the UI for XAF auditfiles, annual accounts, filed returns and other UI-only exports. A Jortt VAT summary is not a filed return. Do not request Jortt write access or cancel Jortt before Phase 22 passes.
+The tool contract does not provide a Jortt XAF export, general-ledger export, general journal or filed VAT or income-tax return. The Operator uses the UI for XAF auditfiles, annual accounts (jaarrekening), filed returns and other UI-only exports. A Jortt VAT summary is not a filed return. Do not request Jortt write access or cancel Jortt before Phase 22 passes.
 
 ### Moneybird
 
@@ -66,7 +66,7 @@ CAMT.053 and MT940 imports, tax-rate creation, period locking, manual historical
 | Link payments to documents | Guarded payment-link route with a write intent and read-back. | Operator approves the batch. |
 | Ledger accounts | Create or update only with the required RGS code and approved mapping. | Operator approves accounting judgments. |
 | Tax rates | Read existing rates through the guarded route. | Operator creates rates in the UI. |
-| Fixed assets and depreciation | Asset records with historic value changes and read-back. | Operator approves asset treatment. |
+| Fixed assets (vaste activa) and depreciation | Asset records with historic value changes and read-back. | Operator approves asset treatment. |
 | Profit, balance and general-ledger reports | Guarded read with explicit periods. Reports may cover at most 12 months per request. | Operator may use UI reports as independent evidence. |
 | Moneybird auditfile | Operator UI test export in Phase 0. Guarded report-export POST followed by a download read only after a phase gate passes. | Operator approves the exact year and version. Each POST has an operation-scoped flushed `WRITE_INTENT`, `--approval <ref>`, separate writer session, receipt and artifact hash. |
 | Historical VAT filing status | No agent write route. | Operator uses the documented manual filing-status action. |
@@ -197,7 +197,7 @@ The historical plan's starting values are proposals only. The Operator confirms 
 | Bank balance per account at period end | EUR 0.00 unexplained difference | Period and year reconciliation |
 | VAT per return box | At most EUR 1.00 as a `ROUNDING` difference | VAT verification |
 | Revenue and costs per main group per year | At most EUR 5.00 unexplained | Annual check |
-| Profit compared with annual accounts and filed income-tax evidence | EUR 0.00 unexplained, every difference explained | Annual and income-tax bridge |
+| Profit compared with annual accounts (jaarrekening) and filed income-tax evidence | EUR 0.00 unexplained, every difference explained | Annual and income-tax bridge |
 | Balance-sheet line per year | EUR 0.00 unexplained | Annual check |
 | Original-document support | 100% above EUR 50.00 and at least 98% overall by count | Completeness and risk review |
 | Missing original document | Always create an exception | All phases |

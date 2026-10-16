@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Income tax box 1 2020 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Income tax (inkomstenbelasting) box 1 2020 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -44,7 +44,7 @@ This part holds the worked examples for the Income tax box 1 2020 topic. The ove
 
 ### First-bracket rate in the year AOW age is reached
 
-**Calculated example.** Assume AOW age is reached in September and taxable box 1 income is € 34.712. The September first-bracket rate is 31,38%. The tax is € 34.712 × 31,38%, or € 10.892,6256, approximately € 10.892,63 before credits. The income is within the first bracket, so the rates for later brackets do not enter this example. [https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/belastingberekening, URL not supplied in checked material]
+**Calculated example.** Assume AOW age is reached in September and taxable box 1 income is € 34.712. The September first-bracket rate is 31,38%. The tax is € 34.712 × 31,38%, or € 10.892,6256, approximately € 10.892,63 before credits. The income is within the first bracket (eerste schijf), so the rates for later brackets do not enter this example. [https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/belastingberekening, URL not supplied in checked material]
 
 ### Rate adjustment (tariefsaanpassing)
 

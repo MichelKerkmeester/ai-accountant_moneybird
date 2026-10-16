@@ -54,7 +54,7 @@ Tax year 2024 is the first year of the two-bracket box 2 rate. A taxpayer pays 2
 | ODV market rate (marktrente) for 2024 | 13 |
 | Inherited substantial interest facility (art. 4.12a) | 14 |
 | Minor children | 15 |
-| Fiscal partner division | 16 |
+| Fiscal partner (fiscaal partner) division | 16 |
 | Start-up customary salary rule | 17 |
 <!-- GENERATED:key-figure-index:end -->
 
@@ -72,11 +72,11 @@ Tax year 2024 is the first year of the two-bracket box 2 rate. A taxpayer pays 2
 | Excessive borrowing measurement | 31 December, nominal value, taxpayer and partner jointly | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2024-01-01 |
 | Customary salary (gebruikelijk loon) fixed amount | € 56.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2024-01-01 |
 | Customary salary minimum threshold | € 5.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2024-01-01 |
-| Customary salary comparable-wage test | 100% of the most comparable wage | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2024-01-01 |
+| Customary salary comparable-wage test | 100% of the most comparable wage (vergelijkbaar loon) | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2024-01-01 |
 | ODV market rate (marktrente) for 2024 | 2,657% | enacted | Verified | https://centraalaanspreekpuntpensioenen.belastingdienst.nl/publicaties/overzicht-u-rendementen-en-marktrenten/ |
 | Inherited substantial interest facility (art. 4.12a) | regular benefits (reguliere voordelen) within 24 months after death | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | Minor children | declare their box 2 income until the child turns 18 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/wanneer_hebt_u_een_aanmerkelijk_belang/wanneer_hebt_u_een_aanmerkelijk_belang |
-| Fiscal partner division | any proportion, total 100% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang |
+| Fiscal partner (fiscaal partner) division | any proportion, total 100% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang |
 | Start-up customary salary rule | at most 3 years, last possible year 2024 for a first use in 2022 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/loon_en_aanmerkelijk_belang/loon_en_aanmerkelijk_belang |
 
 ---

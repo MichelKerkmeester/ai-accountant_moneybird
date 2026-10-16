@@ -94,11 +94,11 @@ Risk assignment rules and any count or monetary threshold are numeric, recorded 
 Require an extra review for:
 
 - EU or non-EU reverse charge and foreign VAT.
-- A new international supplier or a change in supplier legal entity.
+- A new international supplier or a change in supplier legal entity (rechtspersoon).
 - Assets, historic value changes and depreciation.
 - Private versus business use.
 - General journal documents.
-- Opening balances and year-end closing balances.
+- Opening balances and year-end closing (jaarafsluiting) balances.
 - Historical tax differences, credit notes and unusual currencies.
 - Invoice-level open receivables or payables and their settlement links.
 - Any write with an uncertain response, a changed schema or a correction after a period lock.
@@ -133,7 +133,7 @@ Each threshold row in `MIGRATION_CONFIG` carries a numeric value, unit, affected
 | Bank balance per account at period end | Numeric amount, normally zero unexplained difference. |
 | VAT per return box and cumulative period caps | Numeric amount per box, plus numeric quarter and year caps. |
 | Revenue and costs by main group per year | Numeric amount for explained residuals. |
-| Profit compared with annual accounts and filed income-tax evidence | Zero unexplained difference, with every accepted difference documented. |
+| Profit compared with annual accounts (jaarrekening) and filed income-tax evidence | Zero unexplained difference, with every accepted difference documented. |
 | Balance-sheet line by year | Zero unexplained difference, with any approved threshold explicit. |
 | Original-document coverage | Numeric required coverage by risk or amount band. |
 | Missing original document | Always an exception. Never ignore it. |
@@ -211,7 +211,7 @@ Phases 19 to 21 are recurring loops that begin after Phase 18. Phase 22 is a one
 
 Keep the historical per-year summary as a companion to the phase dashboard. It does not replace the 23 phase rows.
 
-| Year | Documents | Ledger | Bank | VAT | Income tax | Balance | Exceptions | Status |
+| Year | Documents | Ledger | Bank | VAT | Income tax (inkomstenbelasting) | Balance | Exceptions | Status |
 |---|---|---|---|---|---|---|---|---|
 | Derived year from configured start and lock ledger | Evidence link or count | Evidence link or count | Evidence link or count | Evidence link or count | Evidence link or count | Evidence link or count | Exception count | One allowed dashboard status |
 

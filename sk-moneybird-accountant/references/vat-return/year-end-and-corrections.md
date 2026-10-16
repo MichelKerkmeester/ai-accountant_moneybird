@@ -12,7 +12,7 @@ contextType: general
 version: 1.0.0.0
 ---
 
-# Year-end settlements and corrections for the VAT return
+# Year-end settlements and corrections for the VAT return (btw-aangifte)
 
 **Rule:** The final VAT period of a calendar year carries four settlements before the pack and before the arithmetic gate. Every figure, threshold and deadline is in the year files under `references/tax-rules/`. The correction route, the supplementary return filing and the payment are `[Operator]` actions.
 
@@ -30,10 +30,10 @@ The settlements are decisions, not arithmetic alone. The private-use split, the 
 
 | ID | Settlement | What it covers | Owner |
 |---|---|---|---|
-| S1 | Private use of business goods and services | The private-use charge on business goods and services, settled in rubriek 1d. Private use after a full deduction needs a journal entry (memoriaal). A purchase-time split limits the input VAT (voorbelasting) at purchase instead. | Agent prepares. `[Operator]` decides the private share when the facts are unclear. |
+| S1 | Private use (privégebruik) of business goods and services | The private-use charge on business goods and services, settled in rubriek 1d. Private use after a full deduction needs a journal entry (memoriaal). A purchase-time split limits the input VAT (voorbelasting) at purchase instead. | Agent prepares. `[Operator]` decides the private share when the facts are unclear. |
 | S2 | The business car | The car private-use adjustment for the year. Actual use needs a usage record. Without adequate records the year file states the standard calculation and its variants. | `[Operator]` or a bookkeeper decides the use records, the acquisition history and the flat rate (forfait). |
-| S3 | The taxed versus exempt turnover pro-rata | The re-estimate of the in-year estimate. Every other quarter marks the running estimate open. Investment-goods revision is separate from the 1d charge. | `[Operator]` or a bookkeeper decides the allocation and the revision. |
-| S4 | The BUA correction for benefits in kind and gifts | The correction for staff benefits in kind and gifts when their total exceeds the threshold stated in the year file. | `[Operator]` or a bookkeeper decides each case. |
+| S3 | The taxed versus exempt turnover (vrijgestelde omzet) pro-rata | The re-estimate of the in-year estimate. Every other quarter marks the running estimate open. Investment-goods revision is separate from the 1d charge. | `[Operator]` or a bookkeeper decides the allocation and the revision. |
+| S4 | The BUA correction for benefits in kind (in natura) and gifts | The correction for staff benefits in kind and gifts when their total exceeds the threshold stated in the year file. | `[Operator]` or a bookkeeper decides each case. |
 
 The revision window, the car calculations, the BUA threshold and the pro-rata rules are in the year file, for example [VAT 2026 figures](../tax-rules/2026/vat/figures.md) and [VAT 2026 rules](../tax-rules/2026/vat/rules.md). Investment-goods revision and its window are in [Fixed assets](../fixed-assets.md). The lease scope of the car flat rate is an open point. See [README](README.md#5-open-points), open point `O4`.
 

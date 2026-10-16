@@ -52,7 +52,7 @@ Band method, step by step:
 8. Benefit: € 949,00 + € 10.496,33 = € 11.445,33.
 9. Tax: € 11.445,33 x 31% = € 3.548,05.
 
-Category method under the Box 3 Restoration of Rights Act (Wet rechtsherstel box 3), step by step:
+Category method (categorieënmethode) under the Box 3 Restoration of Rights Act (Wet rechtsherstel box 3), step by step:
 
 1. Step 1 taxable return (belastbaar rendement): € 200.000 x 0,01% = € 20,00, plus € 150.000 x 5,69% = € 8.535,00, together € 8.555,00, minus € 16.800 x 2,46% = € 413,28, so € 8.141,72.
 2. Step 2 return base: € 350.000 - € 16.800 = € 333.200.
@@ -61,7 +61,7 @@ Category method under the Box 3 Restoration of Rights Act (Wet rechtsherstel box
 5. Step 5 benefit: € 8.141,72 x 84,9939976% = € 6.919,97.
 6. Step 6 tax: € 6.919,97 x 31% = € 2.145,19.
 
-Most favourable method: € 2.145,19 from the category method is lower than € 3.548,05 from the band method, so the definitive assessment uses € 2.145,19.
+Most favourable method (meest gunstige methode): € 2.145,19 from the category method is lower than € 3.548,05 from the band method, so the definitive assessment uses € 2.145,19.
 
 ### Calculated example 2. Whole-year partners, band method wins
 
@@ -90,7 +90,7 @@ Category method under the Box 3 Restoration of Rights Act, step by step:
 
 Most favourable method: € 517,44 from the band method is lower than € 620,04 from the category method, so the definitive assessment uses € 517,44.
 
-### Calculated example 3. Green investments with the exemption and the credit
+### Calculated example 3. Green investments (groene beleggingen) with the exemption and the credit
 
 Inputs on 1 January 2021: single person, green investments (groene beleggingen) € 70.000, bank balances € 150.000, no debts.
 
@@ -106,7 +106,7 @@ Inputs on 1 January 2021: single person, green investments (groene beleggingen) 
 
 The exemption is capped at the value of the green investments on 1 January, so a green balance below € 60.429 would exempt only that lower balance.
 
-### Calculated example 4. Actual return with a loss
+### Calculated example 4. Actual return (werkelijk rendement) with a loss
 
 Inputs on 1 January 2021: single person, bank balances € 100.000, other assets € 50.000, no debts.
 
@@ -127,9 +127,9 @@ Fictitious calculation, category method:
 5. Step 5 benefit: € 2.855,00 x 66,6666667% = € 1.903,33.
 6. Step 6 tax: € 1.903,33 x 31% = € 590,03.
 
-Actual return reported for the year: regular benefits € 500 plus value changes of minus € 2.400, total minus € 1.900. The actual return is at least nil, so the box 3 income becomes € 0, no tax-free allowance is applied in this calculation, and the negative € 1.900 cannot be carried to another year.
+Actual return reported for the year: regular benefits (reguliere voordelen) € 500 plus value changes of minus € 2.400, total minus € 1.900. The actual return is at least nil, so the box 3 income becomes € 0, no tax-free allowance is applied in this calculation, and the negative € 1.900 cannot be carried to another year.
 
-Outcome: the lowest fictitious amount is € 590,03 from the category method, the actual return gives € 0, and the Dutch Tax and Customs Administration uses the most favourable amount. The box 3 income is € 0 and the tax is 31% x € 0 = € 0.
+Outcome: the lowest fictitious amount is € 590,03 from the category method, the actual return gives € 0, and the Dutch Tax and Customs Administration (Belastingdienst) uses the most favourable amount. The box 3 income is € 0 and the tax is 31% x € 0 = € 0.
 
 ---
 

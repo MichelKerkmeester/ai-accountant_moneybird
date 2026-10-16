@@ -13,7 +13,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Private limited company and corporate income tax 2026: Figures
+# Private limited company (besloten vennootschap) and corporate income tax (vennootschapsbelasting) 2026: Figures
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -29,7 +29,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the corporate income tax (vennootschapsbelasting) position of a BV in 2026 and the rules that touch the BV and its director and substantial shareholder (DGA, directeur-grootaandeelhouder). It runs through the two Vpb brackets, loss set-off, the generic interest deduction limit, the innovation box (innovatiebox), the fiscal unity (fiscale eenheid), the customary salary (gebruikelijk loon) test, the Zvw contribution, box 2, dividend tax (dividendbelasting), the conditional withholding tax (conditionele bronbelasting), the annual accounts (jaarrekening) rules and the switch from a sole proprietorship (eenmanszaak) to a BV. The headline 2026 figures stay familiar, with 19% up to € 200.000 and 25,8% above it, a 24,5% interest limit with a € 1.000.000 threshold and a customary salary standard amount (normbedrag) of € 58.000. The 2026 law is enacted, and the values below come from the Corporate Income Tax Act 1969 (Wet Vpb 1969) text valid on 1 January 2026 and from current Dutch Tax and Customs Administration (Belastingdienst) pages.
+This file covers the corporate income tax (vennootschapsbelasting) position of a BV in 2026 and the rules that touch the BV and its director and substantial shareholder (DGA, directeur-grootaandeelhouder). It runs through the two Vpb brackets, loss set-off, the generic interest deduction (renteaftrek) limit, the innovation box (innovatiebox), the fiscal unity (fiscale eenheid), the customary salary (gebruikelijk loon) test, the Zvw contribution (bijdrage zorgverzekeringswet), box 2, dividend tax (dividendbelasting), the conditional withholding tax (conditionele bronbelasting), the annual accounts (jaarrekening) rules and the switch from a sole proprietorship (eenmanszaak) to a BV. The headline 2026 figures stay familiar, with 19% up to € 200.000 and 25,8% above it, a 24,5% interest limit with a € 1.000.000 threshold and a customary salary standard amount (normbedrag) of € 58.000. The 2026 law is enacted, and the values below come from the Corporate Income Tax Act 1969 (Wet Vpb 1969) text valid on 1 January 2026 and from current Dutch Tax and Customs Administration (Belastingdienst) pages.
 
 ---
 
@@ -41,7 +41,7 @@ This file covers the corporate income tax (vennootschapsbelasting) position of a
 | Item | row |
 |---|---|
 | Corporate income tax rate (vpb-tarief), first bracket (eerste schijf) | 1 |
-| Corporate income tax rate, above the first bracket | 2 |
+| Corporate income tax rate, above the first bracket (boven de eerste schijf) | 2 |
 | Generic interest deduction limitation (generieke renteaftrekbeperking) (art. 15b) | 3 |
 | Loss offsetting (verliesverrekening) (art. 20) | 4 |
 | Innovation box (innovatiebox), fraction (breuk) (art. 12b) | 5 |
@@ -74,11 +74,11 @@ This file covers the corporate income tax (vennootschapsbelasting) position of a
 
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
-| Corporate income tax rate (vpb-tarief), first bracket (eerste schijf) | 19,0% on the taxable amount up to and including € 200.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 22) |
-| Corporate income tax rate, above the first bracket | € 38.000 plus 25,8% of the part above € 200.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 22), https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/tarieven_vennootschapsbelasting |
+| Corporate income tax rate (vpb-tarief), first bracket (eerste schijf) | 19,0% on the taxable amount (belastbaar bedrag) up to and including € 200.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 22) |
+| Corporate income tax rate, above the first bracket (boven de eerste schijf) | € 38.000 plus 25,8% of the part above € 200.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 22), https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/tarieven_vennootschapsbelasting |
 | Generic interest deduction limitation (generieke renteaftrekbeperking) (art. 15b) | balance (saldo) of interest not deductible (niet aftrekbaar) in so far as higher than 24,5% of the adjusted profit (gecorrigeerde winst) and € 1.000.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 15b lid 1) |
 | Loss offsetting (verliesverrekening) (art. 20) | per year € 1.000.000 plus 50% of the profit (winst) above that, one year back (één jaar terug) and carried forward indefinitely (onbeperkt vooruit) | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 20) |
-| Innovation box (innovatiebox), fraction (breuk) (art. 12b) | 9/H, with H at 25,8% and an effective rate (tarief) of 9% | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 12b) |
+| Innovation box (innovatiebox), fraction (breuk) (art. 12b) | 9/H, with H at 25,8% and an effective rate (effectieve tarief) of 9% | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 12b) |
 | Innovation box, flat rate (forfait) (art. 12bd) | 25% of the profit before art. 12b, at most € 25.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 12bd) |
 | Innovation box, smaller taxpayer (kleinere belastingplichtige) (art. 12ba lid 2) | benefits (voordelen) plus acquisition costs (aanschaffingskosten) under € 37.500.000 and net turnover (netto-omzet) under € 250.000.000, both over five years | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 12ba lid 2) |
 | Participation exemption (deelnemingsvrijstelling) (art. 13) | participation (deelneming) of 5% or more of the nominal paid-up capital (nominaal gestort kapitaal) | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 13 lid 2) |

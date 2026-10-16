@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Tax return and procedure 2026: Examples
+# Tax return (aangifte, belastingaangifte) and procedure 2026: Examples
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Tax return and procedure (aangifte en procedure) 2026 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the tax return (aangifte) and procedure 2026 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -38,9 +38,9 @@ This part holds the worked examples for the Tax return and procedure (aangifte e
 
 The Dutch Tax and Customs Administration (Belastingdienst) page gives tax year 2016 with 5 months deferral, additional assessment possible until 31 May 2022. Source: [navorderingsaanslag](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/navorderingsaanslag). This is copied from the primary source.
 
-### Calculated example: tax interest (belastingrente) on income tax
+### Calculated example: tax interest (belastingrente) on income tax (inkomstenbelasting)
 
-Invented inputs: tax year 2025, return filed 1 September 2026, final assessment (aanslag) dated 15 December 2026, extra tax € 10.000. The rate for 2026 is 5%. The period runs from 1 July 2026 to 6 weeks after the assessment date. 6 weeks after 15 December 2026 is 26 January 2027. Under 30 days per month and 360 days per year: July to December is 6 months = 180 days. 1 January 2027 to 26 January 2027 is 25 days. Total 205 days. Annual interest = € 10.000 × 5% = € 500. Daily interest = € 500 / 360 = € 1,388888. Interest = 205 × € 1,388888 = € 284,7222. Rounded down to whole euros = € 284. Check: 205 × 500 / 360 = 284,7222. Yes.
+Invented inputs: tax year 2025, return filed 1 September 2026, final assessment (definitieve aanslag) dated 15 December 2026, extra tax € 10.000. The rate for 2026 is 5%. The period runs from 1 July 2026 to 6 weeks after the assessment date. 6 weeks after 15 December 2026 is 26 January 2027. Under 30 days per month and 360 days per year: July to December is 6 months = 180 days. 1 January 2027 to 26 January 2027 is 25 days. Total 205 days. Annual interest = € 10.000 × 5% = € 500. Daily interest = € 500 / 360 = € 1,388888. Interest = 205 × € 1,388888 = € 284,7222. Rounded down to whole euros = € 284. Check: 205 × 500 / 360 = 284,7222. Yes.
 
 ### Calculated example: tax interest on VAT (btw)
 
@@ -66,7 +66,7 @@ Open amount € 2.000. 5% of € 2.000 is € 100. The minimum is € 50 and the
 
 A 4-year lease starts on 1 January 2026. The item (gegeven) is no longer current after 31 December 2029. The 7-year term starts then. 31 December 2029 plus 7 years is 31 December 2036. So the lease must be kept until 31 December 2036. Check: 2029 + 7 = 2036. Yes.
 
-### Calculated example: KVK registration window
+### Calculated example: KVK registration window (inschrijvingsvenster)
 
 A business starts on 1 June 2026. The window runs from one week before to one week after the start. One week before 1 June 2026 is 25 May 2026. One week after is 8 June 2026. So the first registration (inschrijving) can be made from 25 May 2026 to 8 June 2026. Check: 1 June minus 7 days is 25 May and 1 June plus 7 days is 8 June. Yes.
 

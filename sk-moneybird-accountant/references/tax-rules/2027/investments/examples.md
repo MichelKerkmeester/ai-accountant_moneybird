@@ -105,7 +105,7 @@ Basis: https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 3.42a lid 3, art. 
 
 Input: a machine and goodwill, each with a cost of € 30.000,00.
 
-1. The machine is another business asset, so the yearly cap is 20%: 30.000,00 × 20 / 100 = € 6.000,00 per year. The asset needs at least 30.000,00 / 6.000,00 = 5 years.
+1. The machine is another business asset (bedrijfsmiddel), so the yearly cap is 20%: 30.000,00 × 20 / 100 = € 6.000,00 per year. The asset needs at least 30.000,00 / 6.000,00 = 5 years.
 2. Goodwill, so the yearly cap is 10%: 30.000,00 × 10 / 100 = € 3.000,00 per year. The asset needs at least 30.000,00 / 3.000,00 = 10 years.
 3. Production costs (voortbrengingskosten) of an intangible asset (immaterieel activum) may be written off at once in the year of production (voortbrenging) under art. 3.30 lid 3.
 
@@ -127,14 +127,14 @@ Basis: https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 3.30a lid 1, lid 2
 Input: a machine bought in 2027 for € 50.000,00 and disposed of in the same calendar year 2027 for € 40.000,00. The machine is the only investment of 2027, and the KIA is taken at 28%.
 
 1. The investment of € 50.000,00 falls in the 28% band of the KIA table, so the KIA taken is 50.000,00 × 28 / 100 = € 14.000,00. The investment deduction (investeringsaftrek) percentage taken is 28%.
-2. The transfer price of € 40.000,00 is above the € 2.900 base threshold of art. 3.47 lid 1.
+2. The transfer price (overdrachtsprijs) of € 40.000,00 is above the € 2.900 base threshold of art. 3.47 lid 1.
 3. The disposal is within five years after the start of the calendar year of the investment, so 2027 is inside the window of art. 3.47 lid 2.
 4. The addition to profit is 40.000,00 × 28 / 100 = € 11.200,00.
 5. Art. 3.47 lid 2 caps the addition at the investment deduction actually taken on the machine, € 14.000,00. The addition of € 11.200,00 stays below that cap, so the addition is € 11.200,00.
 
 Basis: https://wetten.overheid.nl/BWBR0011353/2027-01-01 art. 3.47 lid 1 and lid 2, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/desinvesteringsbijtelling
 
-### Calculated example, arbitrary depreciation for start-up entrepreneurs
+### Calculated example, arbitrary depreciation for start-up entrepreneurs (starters willekeurige afschrijving)
 
 Input: a starter with the starter's deduction (startersaftrek) in 2027 buys qualifying assets for € 60.000,00 in total in 2027.
 

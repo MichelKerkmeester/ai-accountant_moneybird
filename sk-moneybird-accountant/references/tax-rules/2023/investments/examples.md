@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Investment deduction and depreciation 2023: Examples
+# Investment deduction (investeringsaftrek) and depreciation 2023: Examples
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Investment deduction and depreciation 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Investment deduction (investeringsaftrek) and depreciation 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -108,7 +108,7 @@ Step 4: an asset below the floor does not enter the small-scale investment allow
 
 Source: [art. 3.45 lid 2](https://wetten.overheid.nl/BWBR0011353/2023-01-01).
 
-### Calculated example: Energy Investment Allowance (EIA) together with small-scale investment allowance
+### Calculated example: Energy Investment Allowance (energie-investeringsaftrek, EIA) together with small-scale investment allowance
 
 A sole trader buys a new machine of € 100.000,00 that is on the Energy List (Energielijst) and above the € 2.500,00 floor.
 
@@ -118,7 +118,7 @@ Step 2: the same € 100.000,00 also enters the small-scale investment allowance
 
 Step 3: the total investment deductions are € 45.500,00 plus € 17.841,00 = € 63.341,00.
 
-Step 4: the Environmental Investment Allowance (MIA) cannot be added on top of the Energy Investment Allowance, because Energy Investment Allowance and Environmental Investment Allowance cannot be combined for one asset.
+Step 4: the Environmental Investment Allowance (milieu-investeringsaftrek, MIA) cannot be added on top of the Energy Investment Allowance, because Energy Investment Allowance and Environmental Investment Allowance cannot be combined for one asset.
 
 Sources: [art. 3.42 lid 3](https://wetten.overheid.nl/BWBR0011353/2023-01-01), [Belastingdienst Vpb 2023](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/vennootschapsbelasting/veranderingen-vennootschapsbelasting-vorige-jaren/veranderingen-vennootschapsbelasting-2023).
 
@@ -146,7 +146,7 @@ Step 2: the remaining € 25.000,00 follows the ordinary depreciation rules.
 
 Source: [art. 3.31 lid 1](https://wetten.overheid.nl/BWBR0011353/2023-01-01).
 
-### Calculated example: temporary arbitrary depreciation (willekeurige afschrijving) 2023
+### Calculated example: temporary arbitrary depreciation (tijdelijke willekeurige afschrijving) 2023
 
 A trader buys a new machine in 2023 for € 40.000,00. The machine has not been used before. The obligation is entered in 2023 and the trader takes the machine into use on 1 November 2023, so it is in use at 31 December 2023.
 
@@ -162,13 +162,13 @@ Source: [URWA art. 13 to 15](https://wetten.overheid.nl/BWBR0012035/2025-01-01/0
 
 ### Calculated example: disinvestment addition (desinvesteringsbijtelling)
 
-A trader buys an asset in 2023 for € 20.000,00 and takes a small-scale investment allowance of 28% = 0,28 x € 20.000,00 = € 5.600,00. This is the only investment that year. The trader sells the asset later in 2023 for a transfer price of € 15.000,00. The transfer price is above the yearly threshold of € 2.600,00, and the sale is within five years after the start of 2023.
+A trader buys an asset in 2023 for € 20.000,00 and takes a small-scale investment allowance of 28% = 0,28 x € 20.000,00 = € 5.600,00. This is the only investment that year. The trader sells the asset later in 2023 for a transfer price (overdrachtsprijs) of € 15.000,00. The transfer price is above the yearly threshold of € 2.600,00, and the sale is within five years after the start of 2023.
 
 Step 1: the disinvestment addition percentage equals the investment deduction (investeringsaftrek) percentage taken, 28%.
 
 Step 2: 28% of € 15.000,00 = 0,28 x € 15.000,00 = € 4.200,00.
 
-Step 3: the transfer price of € 15.000,00 is below the investment amount of € 20.000,00 over which deduction (aftrek) was taken, so the whole € 4.200,00 is added to profit.
+Step 3: the transfer price of € 15.000,00 is below the investment amount (investeringsbedrag) of € 20.000,00 over which deduction (aftrek) was taken, so the whole € 4.200,00 is added to profit.
 
 Source: [art. 3.47](https://wetten.overheid.nl/BWBR0011353/2023-01-01).
 

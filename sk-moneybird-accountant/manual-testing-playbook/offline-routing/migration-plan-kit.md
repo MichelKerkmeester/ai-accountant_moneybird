@@ -27,7 +27,7 @@ A new user has the phase references but no working files. Routing them to the ki
 - Objective: Route a first-time user to the plan kit and explain what it creates.
 - Real user request: I just cloned this repo and want to start the migration. Where do I start? Do not read records or call an API.
 - Prompt: I just cloned this repo and want to start the migration. Where do I start? Do not read records or call an API.
-- Fixture rows: MIG-006 (en) and MIG-006-nl (nl twin).
+- Fixture rows: MIG-006 (English) and MIG-006-nl (Dutch twin).
 - Expected execution process: Read the project bootstrap and skill, then the migration index, the overview and setup reference and the plan kit README. Do not use network access, accounting APIs, private finance data or a live agent dispatch.
 - Expected signals: Names Phase 0, the command `bash sk-moneybird-accountant/scripts/init-workspace.sh`, the config template, the phase dashboard and the 23 phase packets in the git-ignored `specs/001-migration/`. States that the script never overwrites an existing file and that the workspace stays git-ignored. Reports no API call.
 - Desired user-visible outcome: A short start route that names the setup command, what it creates and the first Phase 0 actions.

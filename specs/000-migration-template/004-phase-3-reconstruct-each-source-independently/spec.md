@@ -105,7 +105,7 @@ The exit gate in section 5 passes, the recorded evidence sits in `migration-work
 
 **Phase inputs** (from the phase reference):
 
-Original document archive, XAF files, bank files, filed returns and assessments, annual accounts, and assigned tax periods.
+Original document archive, XAF files, bank files, filed returns and assessments, annual accounts (jaarrekening), and assigned tax periods.
 
 Read each input from Jortt or from the previous phase. Jortt stays read-only.
 

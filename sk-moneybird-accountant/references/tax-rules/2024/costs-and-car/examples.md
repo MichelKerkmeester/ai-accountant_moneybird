@@ -35,7 +35,7 @@ This part holds the worked examples for the Costs (kosten) and car 2024 topic. T
 <a id="4-worked-examples"></a>
 
 **Calculated example 1. Mixed costs (gemengde kosten), threshold (drempel) against 80%.**
-A sole trader has € 7.000 of mixed costs in 2024. Route A, the threshold: the first € 5.600 is not deductible, so € 7.000 minus € 5.600 is € 1.400 deductible. Route B, the election in the return: 80% of € 7.000 is € 5.600 deductible. The election gives the higher deduction here, and the choice is made in the return.
+A sole trader has € 7.000 of mixed costs in 2024. Route A, the threshold: the first € 5.600 is not deductible (niet aftrekbaar), so € 7.000 minus € 5.600 is € 1.400 deductible. Route B, the election in the return: 80% of € 7.000 is € 5.600 deductible. The election gives the higher deduction here, and the choice is made in the return.
 
 **Calculated example 2. Travel and accommodation (reis en verblijf) for conferences (congressen) and courses (cursussen).**
 A sole trader spends € 2.300 on travel and accommodation for conferences (congressen) in 2024. The cap makes € 1.500 deductible and € 2.300 minus € 1.500 is € 800 not deductible. If the nature of the work makes attendance necessary, the cap does not apply.
@@ -47,7 +47,7 @@ A sole trader drives 24.000 business kilometres in 2024 in a privately owned car
 Moving the household contents (inboedel) cost € 2.500. The deduction is € 2.500 plus € 7.750, which is € 10.250.
 
 **Calculated example 5. Private-use addition (bijtelling) car, standard (standaard).**
-A car in the business assets (ondernemingsvermogen) with a value (waarde) of € 40.000 is also available privately, with more than 500 private kilometres. The withdrawal (onttrekking) is 22% of € 40.000, which is € 8.800. The withdrawal is capped at the car costs (autokosten) borne. If the total car costs including depreciation are € 7.000, the withdrawal is € 7.000.
+A car in the business assets (ondernemingsvermogen) with a value (waarde) of € 40.000 is also available privately, with more than 500 private kilometres (privékilometers). The withdrawal (onttrekking) is 22% of € 40.000, which is € 8.800. The withdrawal is capped at the car costs (autokosten) borne. If the total car costs including depreciation are € 7.000, the withdrawal is € 7.000.
 
 **Calculated example 6. Youngtimer.**
 An old car, first used more than 15 years ago, has a market value (waarde in het economisch verkeer) of € 8.000 and is available privately. The withdrawal is 35% of € 8.000, which is € 2.800.
@@ -68,7 +68,7 @@ A desk of € 400 is deducted in full in 2024 because it is under € 450. A mac
 Turnover for 2024 is € 21.000. This exceeds € 20.000, so the KOR ends immediately. Under the KOR costs are recorded including VAT in the IB return, and outside the KOR excluding VAT when the VAT is deductible.
 
 **Calculated example 12. Corporate income tax (Vpb): replacement of the threshold.**
-A BV has one or more employees in the Wet LB sense and a wage total of € 2.000.000. The fixed amount of € 5.600 is replaced by 0,4% of € 2.000.000, which is € 8.000, because that is higher. The election percentage is 73,5%.
+A BV has one or more employees in the Wage Tax Act 1964 (Wet LB) sense and a wage total of € 2.000.000. The fixed amount of € 5.600 is replaced by 0,4% of € 2.000.000, which is € 8.000, because that is higher. The election percentage is 73,5%.
 
 **Official example 13. Performance grant (prestatiebeurs) (FISIN 2024).**
 FISIN 2024 gives an mbo study from August 2014 to July 2018, with the diploma period (diplomatermijn) ending in August 2024, fixed amounts of € 706 and € 988 against a performance grant of € 333 and € 467, so € 800 minus € 250 gives € 550. The € 250 threshold applies per person. Source: [FISIN 2024, aftrek studiekosten](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/aftrek_studiekosten).

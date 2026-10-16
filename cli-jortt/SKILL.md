@@ -36,7 +36,7 @@ Use this skill when the user asks to:
 ### When NOT to Use
 
 - Moneybird bookkeeping, imports or API calls belong to the sibling `cli-moneybird` skill.
-- XAF auditfiles, annual accounts and filed VAT returns cannot come from the Jortt API. Ask the operator to use the Jortt UI.
+- XAF auditfiles, annual accounts (jaarrekening) and filed VAT returns cannot come from the Jortt API. Ask the operator to use the Jortt UI.
 
 ---
 
@@ -67,9 +67,9 @@ The operation decides the route. Use `jortt-cli` for supported reads. UI-only ta
 | Projects | `jortt-cli call list-projects --all --out projects.json` | `invoices:read` |
 | Data question | Use the smallest `jortt-cli` read that answers the question. State the API limit when no route exists. | Select and describe the matching operation, then request only the needed records. |
 | XAF auditfile | Jortt UI: `Boekhoudbot` then `Maak voor mij een auditfile`. An administrator (Beheerder) generates one XAF 4.0.3 file per year. | Ask the operator. The API has no XAF route. |
-| Annual accounts | Jortt UI: `Rapporten > Jaarrekening`, one year at a time. | Ask the operator. |
+| Annual accounts (jaarrekening) | Jortt UI: `Rapporten > Jaarrekening`, one year at a time. | Ask the operator. |
 | Filed VAT returns | Download through the Jortt UI. | Ask the operator. There is no filed-return API endpoint. |
-| General ledger export | No API or UI export exists. | Unavailable. Do not label another report as a general ledger. |
+| General ledger (grootboek) export | No API or UI export exists. | Unavailable. Do not label another report as a general ledger. |
 
 All relative `--out` names resolve inside `<Accountant root>/migration-workspace/`, which is gitignored. A command without `--out` prints a summary, not the record content. Use `--out` for migration extracts.
 
@@ -202,7 +202,7 @@ def route_resources(request):
 | Surface | Best use | Output and limits |
 |---|---|---|
 | `jortt-cli` | Repeatable API reads, paging, downloads and full OpenAPI operation coverage | Primary. Read-only. Non-GET calls are refused. |
-| Jortt UI | XAF, annual accounts and filed VAT returns | Operator-only exports. XAF requires an administrator and is generated per year. |
+| Jortt UI | XAF, annual accounts (jaarrekening) and filed VAT returns | Operator-only exports. XAF requires an administrator and is generated per year. |
 
 ### CLI Extraction Path
 
@@ -254,7 +254,7 @@ Use relative output names under `migration-workspace/`. Keep `--allow-write` off
 - Never write extracted data outside `migration-workspace/`.
 - Never paste personal financial data into tracked files, commits or prompts to other services.
 - Never touch `AI Systems/Moneybird Accountant/personal database`.
-- Never treat a VAT summary as a filed return or another report as a general ledger export.
+- Never treat a VAT summary as a filed return or another report as a general ledger (grootboek) export.
 
 ### ⚠️ ESCALATE IF
 
@@ -262,7 +262,7 @@ Use relative output names under `migration-workspace/`. Keep `--allow-write` off
 - The user requests a write, a broad scope change or `Read and write` consent. Refuse it and point to the Jortt UI.
 - An API response conflicts with the local spec or the migration plan.
 - A 422, unexplained empty page or incomplete next-link chain could change the source register.
-- The task needs an XAF auditfile, annual accounts or a filed VAT return.
+- The task needs an XAF auditfile, annual accounts (jaarrekening) or a filed VAT return (btw-aangifte).
 
 ### Tool-level wall
 

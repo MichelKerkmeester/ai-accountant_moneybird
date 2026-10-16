@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Income tax box 1 2023: Examples
+# Income tax (inkomstenbelasting) box 1 2023: Examples
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -36,7 +36,7 @@ This part holds the worked examples for the Income tax (inkomstenbelasting) box 
 
 ### Business profit flowing into Box 1
 
-**Calculated example.** Assume an income-tax entrepreneur qualifies for a € 5.030 self-employed person's deduction (zelfstandigenaftrek) and has € 60.000 profit before the entrepreneur's allowance (ondernemersaftrek). No other entrepreneur deductions, exempt profit components or loss offsets apply.
+**Calculated example.** Assume an income-tax entrepreneur qualifies for a € 5.030 self-employed person's deduction (zelfstandigenaftrek) and has € 60.000 profit before the entrepreneur's allowance (vóór de ondernemersaftrek). No other entrepreneur deductions, exempt profit components (vrijgestelde winstbestanddelen) or loss offsets apply.
 
 1. Profit after the self-employed person's deduction: € 60.000 - € 5.030 = € 54.970.
 2. SME profit exemption (MKB-winstvrijstelling): € 54.970 × 14% = € 7.695,80.
@@ -98,7 +98,7 @@ This uses the statutory rule in https://wetten.overheid.nl/BWBR0011353/2023-01-0
 
 **Calculated example.** Assume Box 1 taxable income of € 30.000 and a taxpayer below state pension age (AOW age).
 
-1. Income above the phase-out point: € 30.000 - € 22.660 = € 7.340.
+1. Income above the phase-out point (afbouwpunt): € 30.000 - € 22.660 = € 7.340.
 2. Reduction: € 7.340 × 6,095% = € 447,373.
 3. Credit before assessment rounding: € 3.070 - € 447,373 = € 2.622,627.
 

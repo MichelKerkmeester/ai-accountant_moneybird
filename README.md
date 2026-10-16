@@ -32,11 +32,11 @@ The assistant prepares and explains. It never files a return and never gives fin
 | Task | What the assistant does |
 |---|---|
 | **Monthly or quarterly review** | Checks the bank, unmatched items and open invoices in Moneybird and lists what needs your attention |
-| **Purchase invoices and receipts** | Explains how to book them, with Dutch VAT, reverse-charged VAT or a private-use share |
-| **Fixed assets** | Decides with you whether a purchase is an asset and works out depreciation, the VAT revision period and disposal |
-| **VAT return** | Prepares one period for your review, with each return box traced back to the books |
-| **Yearly close** | Prepares the yearly overview with a fiscal reconciliation and a printable bilingual pack |
-| **Income tax return** | Prepares the figures and lists the inputs only you can give, so you or your bookkeeper can file |
+| **Purchase invoices and receipts** | Explains how to book them, with Dutch VAT, reverse-charged VAT (verlegde btw) or a private-use share |
+| **Fixed assets (vaste activa)** | Decides with you whether a purchase is an asset and works out depreciation, the VAT revision period and disposal |
+| **VAT return (btw-aangifte)** | Prepares one period for your review, with each return box traced back to the books |
+| **Yearly close** | Prepares the yearly overview (jaaroverzicht) with a fiscal reconciliation and a printable bilingual pack |
+| **Income tax return (aangifte inkomstenbelasting)** | Prepares the figures and lists the inputs only you can give, so you or your bookkeeper can file |
 | **Tax questions** | Answers general ZZP questions with the tax year and the source |
 
 Ask in English or Dutch. A request to file, submit, pay or lock a period is refused, and the assistant explains what you need to do yourself.
@@ -126,7 +126,7 @@ For historical work, name the migration task or the last gate that passed. If th
 
 ## 5. 🇳🇱 DUTCH TAX KNOWLEDGE
 
-The tax knowledge lives in [`references/tax-rules/`](sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md). Each tax year from 2020 to 2027 has its own folder, and each topic in it has four files: figures, rules, examples and notes. Topics cover VAT, income tax, business deductions, costs and the car, investments, the health insurance contribution, pensions, box 2 and box 3, the private company and the work relationship.
+The tax knowledge lives in [`references/tax-rules/`](sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md). Each tax year from 2020 to 2027 has its own folder, and each topic in it has four files: figures, rules, examples and notes. Topics cover VAT, income tax (inkomstenbelasting), business deductions, costs and the car, investments, the health insurance (zorgverzekering) contribution, pensions, box 2 and box 3, the private company and the work relationship.
 
 - **Claims cite their source.** The [source library](sk-moneybird-accountant/references/tax-rules/source-library.md) lists each external source by authority.
 - **Changes are tracked per year.** Each year folder records what changed and why.
@@ -147,7 +147,7 @@ The plan has 23 gated phases. Each phase has an owner, an evidence trail and a n
 | 0 to 2 | Set up the safety controls and the workspace, then collect the source records and missing evidence |
 | 3 to 5 | Rebuild each source locally, link the evidence and scan for gaps and risks |
 | 6 to 8 | Map records to Moneybird, prove one pilot write, then migrate period by period |
-| 9 to 15 | Reconcile VAT, prove each year against the bank, filed returns and annual accounts, test it with an independent review and lock it |
+| 9 to 15 | Reconcile VAT, prove each year against the bank, filed returns and annual accounts (jaarrekening), test it with an independent review and lock it |
 | 16 to 18 | Run the current year in parallel, freeze Jortt and switch to live Moneybird with your approval |
 | 19 to 22 | Run the regular reviews, then monitor and decide whether to keep or cancel Jortt |
 
@@ -172,7 +172,7 @@ The assistant is built from parts with one job each. The routing, the human deci
 **Another bookkeeping tool**
 
 - Replace `cli-moneybird/` with a CLI skill for your tool's API. Keep the guard pattern: a preview of every call, a read-only lock and a write that needs an approval reference.
-- Rewrite the booking guidance in [`moneybird-bookkeeping.md`](sk-moneybird-accountant/references/moneybird-bookkeeping.md) and the booking steps in the purchase invoice, mixed-use cost and fixed asset references.
+- Rewrite the booking guidance in [`moneybird-bookkeeping.md`](sk-moneybird-accountant/references/moneybird-bookkeeping.md) and the booking steps in the purchase invoice (inkoopfactuur), mixed-use cost and fixed asset references.
 
 **Another migration source**
 
@@ -191,12 +191,12 @@ The offline checks then show what still points at the old tool or market: broken
 
 ## 8. 🔒 SAFETY AND PRIVACY
 
-- **Jortt is read-only.** `jortt-cli` uses read scopes only and refuses every non-GET call. There is no write path for an agent. XAF auditfiles, annual accounts and filed VAT returns come from you, through the Jortt UI.
+- **Jortt is read-only.** `jortt-cli` uses read scopes only and refuses every non-GET call. There is no write path for an agent. XAF auditfiles, annual accounts (jaarrekening) and filed VAT returns come from you, through the Jortt UI.
 - **Every Moneybird call goes through `moneybird-guard`.** Read sessions set `MONEYBIRD_GUARD_READ_ONLY=1`. The guard then blocks every non-GET call before it reaches the official CLI.
-- **A write needs five things.** A passed phase gate, your approval, a flushed `WRITE_INTENT` journal entry, `--confirm-write` and `--approval <ref>` naming that entry. The guard checks the reference against the run journal, needs the writer session and never falls back to the reader session. A production batch also needs your approval for that batch and `--production`.
+- **A write needs five things.** A passed phase gate, your approval, a flushed `WRITE_INTENT` journal record, `--confirm-write` and `--approval <ref>` naming that entry. The guard checks the reference against the run journal, needs the writer session and never falls back to the reader session. A production batch also needs your approval for that batch and `--production`.
 - **Migration data stays in `migration-workspace/`.** Git ignores it. Both CLIs refuse to save output anywhere else.
 - **A private finance folder stays unread.** The assistant never lists, searches or opens it. The one exception is a single file you name during a migration phase.
-- **A privacy gate guards every commit and push.** `scripts/privacy-gate.py` blocks a commit or push that adds a path from the private folders, a file type outside the allowlist, a binary or a large file, or content that looks like an IBAN, a BSN, a Dutch VAT ID, an email address, a long ID number, a home-folder path, a euro amount outside the tax references, a secret, or a term from your local `.privacy-denylist`. It reports where, never the value. A commit that changes a gate file needs you to set `PRIVACY_GATE_CHANGE_APPROVED=1` for that commit and the commit message to carry the trailer `Privacy-Gate-Change: approved`. A GitHub Action reruns it over the whole history on every push.
+- **A privacy gate guards every commit and push.** `scripts/privacy-gate.py` blocks a commit or push that adds a path from the private folders, a file type outside the allowlist, a binary or a large file, or content that looks like an IBAN, a BSN, a Dutch VAT ID (btw-id), an email address, a long ID number, a home-folder path, a euro amount outside the tax references, a secret, or a term from your local `.privacy-denylist`. It reports where, never the value. A commit that changes a gate file needs you to set `PRIVACY_GATE_CHANGE_APPROVED=1` for that commit and the commit message to carry the trailer `Privacy-Gate-Change: approved`. A GitHub Action reruns it over the whole history on every push.
 - **Tax decisions stay with you.** The assistant explains general rules with their year and source. It does not file returns and does not present a case-specific conclusion as final.
 
 ## 9. 🧪 CHECKS
@@ -274,13 +274,13 @@ Both CLI skills and the main skill also carry a `changelog/` and a `benchmark/` 
 
 ## 11. ❓ FAQ
 
-**Q: Can the assistant file my VAT or income tax return?**
+**Q: Can the assistant file my VAT or income tax return (aangifte inkomstenbelasting)?**
 
 No. You or your bookkeeper review and file every return. The assistant prepares the evidence.
 
 **Q: Do I need to migrate to use it?**
 
-No. LIVE mode covers day-to-day bookkeeping, the VAT return, the yearly close and one-off questions without a migration.
+No. LIVE mode covers day-to-day bookkeeping, the VAT return (btw-aangifte), the yearly close and one-off questions without a migration.
 
 **Q: Does an outside model see my records?**
 
@@ -348,12 +348,12 @@ The Jortt API does not provide them. Download them yourself from the Jortt UI.
 - **[→ Dutch Tax](sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md)** - how the rules work across years, plus one folder per tax year from 2020 to 2027 and a folder per topic with figures, rules, examples and notes, BV and box 2 included
 - **[→ Reference Library](sk-moneybird-accountant/references/README.md)** - the generated landing page for the reference tree, one row per year folder and per reference file
 - **[→ Moneybird Bookkeeping](sk-moneybird-accountant/references/moneybird-bookkeeping.md)** - accounting treatment for common events
-- **[→ Purchase Invoices](sk-moneybird-accountant/references/purchase-invoices.md)** - booking purchase invoices, receipts and orders, with Dutch VAT or reverse-charged VAT
+- **[→ Purchase Invoices](sk-moneybird-accountant/references/purchase-invoices.md)** - booking purchase invoices, receipts and orders, with Dutch VAT or reverse-charged VAT (verlegde btw)
 - **[→ Mixed-Use Costs](sk-moneybird-accountant/references/mixed-use-costs.md)** - a cost used partly privately, its business share, its VAT split and its Moneybird booking
 - **[→ Fixed Assets](sk-moneybird-accountant/references/fixed-assets.md)** - when a purchase is an asset, depreciation, the VAT revision period and disposal
 - **[→ VAT Return Preparation](sk-moneybird-accountant/references/vat-return/README.md)** - the procedure that prepares one VAT period for Operator review, with the section (rubriek) table, the derivation map and the review pack
 - **[→ Yearly Overview Preparation](sk-moneybird-accountant/references/yearly-overview/README.md)** - the procedure that prepares the yearly close for Operator review, with the auditfile gate, the fiscal reconciliation and the hand-off
-- **[→ Income Tax Return Preparation](sk-moneybird-accountant/references/income-tax-return/README.md)** - the procedure that prepares one income tax return for Operator review, with the Operator inputs, the claim register and the open points
+- **[→ Income Tax Return Preparation](sk-moneybird-accountant/references/income-tax-return/README.md)** - the procedure that prepares one income tax return (aangifte inkomstenbelasting) for Operator review, with the Operator inputs, the claim register and the open points
 - **[→ Yearly Overview Template](sk-moneybird-accountant/assets/yearly-overview/yearly-overview-template.html)** - the bilingual printable layout of the prepared pack, with a braced placeholder for every value
 - **[→ Source Library](sk-moneybird-accountant/references/tax-rules/source-library.md)** - every external source the skills cite, by authority, with how an agent can reach it
 - **[→ Jortt to Moneybird Mapping](sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md)** - concept matches and migration traps

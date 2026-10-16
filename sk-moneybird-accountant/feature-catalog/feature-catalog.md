@@ -183,7 +183,7 @@ See [`bookkeeping-and-migration/live-bookkeeping-cadence.md`](bookkeeping-and-mi
 
 ---
 
-### VAT return preparation
+### VAT return (btw-aangifte) preparation
 
 #### Description
 
@@ -191,7 +191,7 @@ Entry index for preparing a Dutch VAT period from Moneybird. The folder holds th
 
 #### Current Reality
 
-The T10 row routes a prepare-the-VAT-return request into `references/vat-return/`. The folder offers the ordered period procedure steps 0 to 12, the section (rubriek) table 1a to 5b with its derivation map and its reverse-charge, small businesses scheme (KOR), ICP and OSS rules, the four year-end settlements, the correction routing and the review pack P1 to P9. Every figure is a link into the year files and every human decision carries an `[Operator]` marker. The five branch scenarios VAT-001 to VAT-005, the gold rows VAT-BRANCH-Q1-01 to VAT-BRANCH-COR-01 and the matching eval cases prove the branches offline. The folder prepares and never files, submits or pays.
+The T10 row routes a prepare-the-VAT-return request into `references/vat-return/`. The folder offers the ordered period procedure steps 0 to 12, the section (rubriek) table 1a to 5b with its derivation map and its reverse-charge, small businesses scheme (kleineondernemersregeling, KOR), ICP and OSS rules, the four year-end settlements, the correction routing and the review pack P1 to P9. Every figure is a link into the year files and every human decision carries an `[Operator]` marker. The five branch scenarios VAT-001 to VAT-005, the gold rows VAT-BRANCH-Q1-01 to VAT-BRANCH-COR-01 and the matching eval cases prove the branches offline. The folder prepares and never files, submits or pays.
 
 #### Source Files
 
@@ -199,7 +199,7 @@ See [`bookkeeping-and-migration/vat-return-preparation.md`](bookkeeping-and-migr
 
 ---
 
-### Yearly overview preparation
+### Yearly overview (jaaroverzicht) preparation
 
 #### Description
 
@@ -215,7 +215,7 @@ See [`bookkeeping-and-migration/yearly-overview-preparation.md`](bookkeeping-and
 
 ---
 
-### Income tax return preparation
+### Income tax return (aangifte inkomstenbelasting) preparation
 
 #### Description
 
@@ -231,11 +231,11 @@ See [`bookkeeping-and-migration/income-tax-return-preparation.md`](bookkeeping-a
 
 ---
 
-### Purchase invoice booking
+### Purchase invoice (inkoopfactuur) booking
 
 #### Description
 
-Routes the booking of a purchase invoice, receipt or order to the flow and VAT rate that fit the invoice.
+Routes the booking of a purchase invoice, receipt or order to the flow and VAT rate (btw-tarief) that fit the invoice.
 
 #### Current Reality
 
@@ -595,7 +595,7 @@ Grades captured answers against the eval assertion blocks and writes the pass ra
 
 #### Current Reality
 
-The grader checks the required tokens and forbidden patterns of every eval case and writes the per-case rows, the pass rates and the skill hash. The case set covers the five VAT branches, the yearly overview pack, the income tax return pack and the tax-deliverable filing refusal. No model judges an answer, so a captured run still gets a human read.
+The grader checks the required tokens and forbidden patterns of every eval case and writes the per-case rows, the pass rates and the skill hash. The case set covers the five VAT branches, the yearly overview (jaaroverzicht) pack, the income tax return (aangifte inkomstenbelasting) pack and the tax-deliverable filing refusal. No model judges an answer, so a captured run still gets a human read.
 
 #### Source Files
 

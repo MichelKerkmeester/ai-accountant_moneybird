@@ -109,7 +109,7 @@ Phase 16 runs the actions in the order given, and every Moneybird write goes thr
 
 **Current-year mirror steps retained with a dynamic year rule:**
 The next historical work year is the first unlocked year at or after the configured bookkeeping start year, using the year after the last locked year when the sequence is contiguous. For current-year mirroring, use the actual calendar year only when it is at or after the configured start date and is not already locked. Never store a hard-coded calendar year. While mirroring, the source ledger remains authoritative and Moneybird remains the shadow ledger.
-For each assigned period: process new documents, compare to source ledger evidence, import and reconcile the bank through the UI, reconstruct only approved records in Moneybird, compare VAT, and file nothing again. After the current work year closes, verify all assigned periods, bank, profit, balance sheet, annual accounts and income-tax evidence. A positive minimum parallel duration or cycle count, rationale, numeric rollback triggers, decision owner and rehearsals must be configured before this phase.
+For each assigned period: process new documents, compare to source ledger evidence, import and reconcile the bank through the UI, reconstruct only approved records in Moneybird, compare VAT, and file nothing again. After the current work year closes, verify all assigned periods, bank, profit, balance sheet, annual accounts (jaarrekening) and income-tax evidence. A positive minimum parallel duration or cycle count, rationale, numeric rollback triggers, decision owner and rehearsals must be configured before this phase.
 
 **Tool route** (from the phase reference):
 

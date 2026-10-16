@@ -13,11 +13,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Costs and car (kosten en auto) 2020: Examples
+# Costs and car 2020: Examples
 
 **Rule:** These values hold for tax year 2020 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 3 of 4 of the Costs and car (kosten en auto) 2020 topic.
+Part 3 of 4 of the Costs and car 2020 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [rules.md](rules.md): how it works.
@@ -39,11 +39,11 @@ This part holds the worked examples for the Costs and car 2020 topic. The overvi
 
 Marked `Official example`. Source: [voorbeelden berekening privégebruik auto](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/privegebruik_auto/voorbeelden_berekening_privegebruik_auto). The page has no year label and uses 22%.
 
-Input: catalogue price € 30.000,00, total car costs (autokosten) € 10.000,00.
+Input: catalogue price (catalogusprijs) € 30.000,00, total car costs (autokosten) € 10.000,00.
 Step 1: 22% of € 30.000,00 = € 6.600,00 withdrawal (onttrekking).
 Step 2: € 10.000,00 - € 6.600,00 = € 3.400,00 deductible.
 
-### Official example: cap at the actual costs
+### Official example: cap at the actual costs (werkelijke kosten)
 
 Marked `Official example`. Source: [voorbeelden berekening privégebruik auto](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/privegebruik_auto/voorbeelden_berekening_privegebruik_auto). The page has no year label.
 
@@ -66,12 +66,12 @@ Break-even.
 Costs € 23.500,00. Threshold route: € 23.500,00 - € 4.700,00 = € 18.800,00. 80% route: € 23.500,00 × 80% = € 18.800,00. Equal.
 At € 24.000,00 the threshold route gives € 24.000,00 - € 4.700,00 = € 19.300,00 and the 80% route gives € 24.000,00 × 80% = € 19.200,00. So above € 23.500,00 the threshold route gives more. Below € 23.500,00 the 80% election gives more.
 
-### Calculated example: mileage allowance
+### Calculated example: mileage allowance (kilometervergoeding)
 
-Input: 12.000 business kilometres with a private car in 2020.
+Input: 12.000 business kilometres with a private car (privéauto) in 2020.
 Step 1: 12.000 × € 0,19 = € 2.280,00 deductible. Fuel, insurance, toll and parking cannot be added on top.
 
-### Calculated example: zero-emission car first admitted in 2020
+### Calculated example: zero-emission car (zero-emissieauto) first admitted in 2020
 
 Input a: catalogue price € 40.000,00.
 Step 1: € 40.000,00 × 22% = € 8.800,00.
@@ -92,7 +92,7 @@ Step 3: € 2.000,00 - € 2.000,00 = € 0,00 net deduction.
 
 ### Calculated example: 500 km rule
 
-Input: private kilometres in 2020 are 480. 480 is at most 500, so the withdrawal is nil. If the record shows 1.200 private kilometres, the car counts as available for private use and the normal withdrawal applies.
+Input: private kilometres (privékilometers) in 2020 are 480. 480 is at most 500, so the withdrawal is nil. If the record shows 1.200 private kilometres, the car counts as available for private use (privégebruik) and the normal withdrawal applies.
 
 ### Calculated example: bicycle (fiets)
 
@@ -107,14 +107,14 @@ Step 1: € 1.500,00 + € 7.750,00 = € 9.250,00 deductible. Double accommodat
 ### Calculated example: congress travel cap
 
 Input: travel and stay for a conference (congres) € 2.000,00.
-Step 1: € 2.000,00 - € 1.500,00 = € 500,00 not deductible, unless the nature of the work makes attendance necessary.
+Step 1: € 2.000,00 - € 1.500,00 = € 500,00 not deductible (niet aftrekbaar), unless the nature of the work makes attendance necessary.
 
 ### Calculated example: training expenses (scholingsuitgaven)
 
 Input: tuition fees (lesgeld) and course fees (cursusgeld) € 1.200,00, no right to student finance (studiefinanciering).
 Step 1: € 1.200,00 - € 250,00 = € 950,00 as personal deductions (persoonsgebonden aftrek).
 
-### Calculated example: corporate income tax variant for a BV (Vpb variant)
+### Calculated example: corporate income tax variant for a BV (Vpb)
 
 Input a: a BV with employees, total wage (loon) € 200.000,00.
 Step 1: € 200.000,00 × 0,4% = € 800,00.

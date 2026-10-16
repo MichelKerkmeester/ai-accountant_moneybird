@@ -16,7 +16,7 @@ version: 1.0.0.0
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 3 of 4 of the Entrepreneur's allowance and SME profit exemption 2025 topic.
+Part 3 of 4 of the Entrepreneur's allowance and SME profit exemption (ondernemersaftrek en mkb-winstvrijstelling) 2025 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [rules.md](rules.md): how it works.
@@ -36,7 +36,7 @@ This part holds the worked examples for the Entrepreneur's allowance (ondernemer
 
 ### Example 1: Hours criterion (urencriterium) in a part year (Official example)
 
-**Official example.** The Chamber of Commerce (KVK) gives a start on 1 May, which leaves eight months, about 117 working days, and at 8 hours a day 936 hours, so extra hours are needed to reach 1.225 hours. Arithmetic as printed: 117 working days x 8 hours = 936 hours. The Dutch Tax and Customs Administration (Belastingdienst) gives a webhosting business started on 1 July, which means 6 months as an entrepreneur and still at least 1.225 hours in that period. Hours cannot be recalculated to the part of the year.
+**Official example.** The Chamber of Commerce (kamer van koophandel, KVK) gives a start on 1 May, which leaves eight months, about 117 working days, and at 8 hours a day 936 hours, so extra hours are needed to reach 1.225 hours. Arithmetic as printed: 117 working days x 8 hours = 936 hours. The Dutch Tax and Customs Administration (Belastingdienst) gives a webhosting business started on 1 July, which means 6 months as an entrepreneur and still at least 1.225 hours in that period. Hours cannot be recalculated to the part of the year.
 
 Source: [KVK, de magische 1.225 uur](https://www.kvk.nl/starten/de-magische-1225-uur-alles-over-het-urencriterium) and [Belastingdienst, voorwaarden urencriterium](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium).
 
@@ -108,16 +108,16 @@ Source: [FISIN 2025, ondernemersaftrek en investeringsaftrek](https://www.belast
 
 ### Example 10: Starter's deduction for disabled entrepreneurs (startersaftrek bij arbeidsongeschiktheid) (Calculated example)
 
-**Calculated example.** The entrepreneur was not an entrepreneur in one or more of the five preceding years, has a right to a qualifying disability benefit, meets the reduced hours criterion (verlaagd urencriterium) but not the hours criterion, and is below the state pension age.
+**Calculated example.** The entrepreneur was not an entrepreneur in one or more of the five preceding years, has a right to a qualifying disability benefit (arbeidsongeschiktheidsuitkering), meets the reduced hours criterion (verlaagd urencriterium) but not the hours criterion, and is below the state pension age.
 
 - First use, profit € 3.000: the amount is € 12.000, capped at the profit, so the deduction is € 3.000.
 - Second use, profit € 50.000: the amount is € 8.000, below the profit, so the deduction is € 8.000.
 - Third use, profit € 50.000: the amount is € 4.000, below the profit, so the deduction is € 4.000.
 - Fourth use, profit € 50.000: the statute has no tier for more than two earlier uses, so the deduction is € 0.
 
-### Example 11: Deduction for research and development work (speur- en ontwikkelingswerk) (Calculated example)
+### Example 11: Deduction for research and development work (aftrek speur- en ontwikkelingswerk) (Calculated example)
 
-**Calculated example.** The entrepreneur was not an entrepreneur in one or more of the five preceding years and had the S&O deduction applied at most twice in that period, so the S&O starter increase applies. The self-employed person's deduction was applied more than twice in that period, so no starter's deduction applies. The entrepreneur has an S&O declaration (S&O-verklaring) from the Netherlands Enterprise Agency, at least 500 hours of S&O work in 2025 and meets the hours criterion. Profit is € 60.000.
+**Calculated example.** The entrepreneur was not an entrepreneur in one or more of the five preceding years and had the S&O deduction applied at most twice in that period, so the S&O starter increase applies. The self-employed person's deduction was applied more than twice in that period, so no starter's deduction applies. The entrepreneur has an S&O declaration (S&O-verklaring) from the Netherlands Enterprise Agency (Rijksdienst voor Ondernemend Nederland, RVO), at least 500 hours of S&O work in 2025 and meets the hours criterion. Profit is € 60.000.
 
 - Step 1: Self-employed person's deduction € 2.470.
 - Step 2: Deduction for research and development work: base amount € 15.738 plus starter increase € 7.875 = € 23.613.
@@ -137,7 +137,7 @@ Source: [FISIN 2025, ondernemersaftrek en investeringsaftrek](https://www.belast
 
 ### Example 13: Old-age reserve (oudedagsreserve) with a broken hours criterion (urencriterium) (Calculated example)
 
-**Calculated example.** An existing old-age reserve is € 50.000 at the start of 2025 and the business assets at the end of 2025 are € 30.000. The hours criterion was not met in 2025 and not met in 2024. There is no cessation and the state pension age was not reached.
+**Calculated example.** An existing old-age reserve is € 50.000 at the start of 2025 and the business capital (ondernemingsvermogen) at the end of 2025 are € 30.000. The hours criterion was not met in 2025 and not met in 2024. There is no cessation and the state pension age was not reached.
 
 - Step 1: no addition to the reserve is possible in 2025, so on that count the reserve stays at € 50.000.
 - Step 2: because the hours criterion was not met in the year and the previous year, the reserve decreases by the excess of the reserve over the business assets: € 50.000 - € 30.000 = € 20.000.

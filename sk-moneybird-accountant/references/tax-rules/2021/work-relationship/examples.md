@@ -1,5 +1,5 @@
 ---
-title: "Employment relationship and self-employment (arbeidsrelatie en zelfstandigheid) 2021: Examples"
+title: "Employment relationship (arbeidsrelatie) and self-employment 2021: Examples"
 description: "Wet DBA, the enforcement moratorium (handhavingsmoratorium) and the instruction (aanwijzing) route, model agreements (modelovereenkomsten) and case law on the work relationship for tax year 2021, with the later VBAR hourly rate presumption and BAZ bill named as context. This file holds the examples part."
 nav_label: "Work relationship and self-employment examples"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Employment relationship and self-employment (arbeidsrelatie en zelfstandigheid) 2021: Examples
+# Employment relationship (arbeidsrelatie) and self-employment (zelfstandigheid) 2021: Examples
 
 **Rule:** These values hold for tax year 2021 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Employment relationship and self-employment (arbeidsrelatie en zelfstandigheid) 2021 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Employment relationship (arbeidsrelatie) and self-employment 2021 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -40,23 +40,23 @@ The checked sources give no official examples for this topic for 2021. Every exa
 
 Facts (invented): from 1 February 2021 a graphic designer works 4 days a week for one client for 8 months. The client sets the working hours and the place of work. The designer uses the client's equipment and email address and works in the client's team. The contract says the work must be done personally. The fee is a fixed monthly amount. No commercial risk sits with the designer.
 
-Step 1: check the three elements from section 2. Employer authority (werkgeversgezag): the client sets work and working hours, so the possibility of authority is present. Personal work (arbeid): the contract requires the designer to do the work personally. Wage: there is a fixed monthly fee. All three elements are present.
+Step 1: check the three elements from section 2. Employer authority (werkgeversgezag): the client sets work and working hours, so the possibility of authority is present. Personal work (persoonlijke arbeid): the contract requires the designer to do the work personally. Wage: there is a fixed monthly fee. All three elements are present.
 
 Step 2: weigh the section 2 factors. Embedding in the organisation is high. The duty to work personally is present. The fee is a fixed monthly amount and is not linked to a result. Commercial risk is low. The designer has one client and no own equipment, so the designer does not act as an entrepreneur.
 
 Step 3: factors that could point the other way: the duration is 8 months and the parties chose the label contract for services (overeenkomst van opdracht). The label is part of how the agreements were made, which is one of the weighing factors in section 2. On these facts the embedding and the set hours and place of work point to employment.
 
-Step 4: a conclusion of no employment would still not make the designer an entrepreneur for income tax or VAT. That is a separate test.
+Step 4: a conclusion of no employment would still not make the designer an entrepreneur for income tax (inkomstenbelasting) or VAT. That is a separate test.
 
 Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst and https://open.overheid.nl/documenten/d2c6b4e8-537c-48a8-9e17-85f1acf4825d/file.
 
 ### Example 2: Written opt-out for a person treated as an employee (gelijkgestelde)
 
-Facts (invented): a home worker (thuiswerker) works for one client 3 days a week for 6 months. The pay is above 2/5 of the minimum wage.
+Facts (invented): a home worker (thuiswerker) works for one client 3 days a week for 6 months. The pay is above 2/5 of the minimum wage (minimumloon).
 
 Step 1: the section 2 condition for persons treated as employees (gelijkgestelden) is usually 2 or more days a week for the same client. With 3 days a week the first part of the condition is met. The 2/5 minimum wage part cannot be checked in euros here, because the checked sources give no 2021 minimum wage.
 
-Step 2: if the persons treated as employees rule applies, the parties can exclude the deemed employment relationship in writing in the contract before the first payment of pay.
+Step 2: if the persons treated as employees rule applies, the parties can exclude the deemed employment relationship (fictieve dienstbetrekking) in writing in the contract before the first payment of pay.
 
 Step 3: the effect is that the contractor (opdrachtnemer) has no entitlement to ZW, WIA and WW.
 
@@ -148,7 +148,7 @@ Facts (invented): a self-employed person with an invented profit of € 30.000 b
 
 Step 1: the section 2 docket summary gives about 70% of income up to the minimum wage. 70% of € 30.000 = € 21.000, but the basis is capped at the minimum wage and the checked sources give no minimum wage amount for the BAZ, so no benefit amount is computed here.
 
-Step 2: the waiting period is about one year.
+Step 2: the waiting period (wachttijd) is about one year.
 
 Step 3: an opt-out is possible with a qualifying private policy.
 

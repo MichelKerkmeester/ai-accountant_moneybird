@@ -15,7 +15,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-Checks the tax year and sources general Dutch ZZP income tax, VAT, cost and administration guidance.
+Checks the tax year and sources general Dutch ZZP income tax (inkomstenbelasting), VAT, cost and administration guidance.
 
 The skill explains general Dutch sole-trader rules with year-specific source links. It labels conflicting and unverified facts and escalates personal eligibility decisions.
 

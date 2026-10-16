@@ -14,7 +14,7 @@ This document captures the offline prompt, local read sequence, expected signals
 
 ## 1. OVERVIEW
 
-This scenario validates the Task-Type Table. It focuses on a near tie between the purchase invoice row and the tax figure row and on the route record every answer carries.
+This scenario validates the Task-Type Table. It focuses on a near tie between the purchase invoice (inkoopfactuur) row and the tax figure row and on the route record every answer carries.
 
 ### Why This Matters
 
@@ -29,7 +29,7 @@ The table decides the tool route, the read set and the token budget. A near tie 
 - Prompt: Is my home phone subscription a deduction in 2026? Do not call an API.
 - Fixture rows: TIE-T4-T5-01 (the T5-over-T4 tie row).
 - Expected execution process: Read the project bootstrap and skill, run the route table check, then read only the routed year files. Do not use network access, accounting APIs or private finance data.
-- Expected signals: The route table check prints route-table: ok. The tax figure row T5 wins over the purchase invoice row T4 because a tax figure is asked and no invoice is named. The resolver uses the explicit year 2026, loads the 2026 README and routes to the costs-and-car topic file its KEY FIGURES section names, does not load the purchase invoice or mixed-use references, keeps the CLI action row additive and reports the route record with type T5.
+- Expected signals: The route table check prints route-table: ok. The tax figure row T5 wins over the purchase invoice (inkoopfactuur) row T4 because a tax figure is asked and no invoice is named. The resolver uses the explicit year 2026, loads the 2026 README and routes to the costs-and-car topic file its KEY FIGURES section names, does not load the purchase invoice or mixed-use references, keeps the CLI action row additive and reports the route record with type T5.
 - Desired user-visible outcome: A concise route report with the winning row, the tie rule, the loaded paths, the token budget key and the API-free status.
 - Pass/fail: PASS if the T5 row wins, the tie rule is named, the routed year file and topic section are correct, the invoice references stay unloaded and no API is called. FAIL if the invoice row wins, an unrouted reference is loaded, the route record is missing or an API is called.
 

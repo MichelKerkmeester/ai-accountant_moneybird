@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Tax return and procedure 2025: Examples
+# Tax return (belastingaangifte, aangifte) and procedure 2025: Examples
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Tax return and procedure (aangifte en procedure) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the tax return (aangifte) and procedure 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -43,7 +43,7 @@ This part holds the worked examples for the Tax return and procedure (aangifte e
 **Official example, how the assessment threshold (aanslaggrens) works** ([definitieve aanslag](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag)).
 - A provisional refund (voorlopige teruggaaf) of € 100 received against € 80 entitled gives € 20 below the threshold (grens), so the assessment is nil.
 - A paid provisional assessment (voorlopige aanslag) of € 100 against € 120 due gives a € 20 assessment.
-- A refund of € 100 received after filing against € 80 entitled gives a € 20 assessment payable (te betalen).
+- A refund of € 100 received after filing against € 80 entitled gives a € 20 assessment payable.
 
 **Calculated example, the 2025 limits (grenzen).**
 - Step 1: tax due is calculated at € 50. The assessment threshold is € 57. € 50 is not higher than € 57, so no assessment is imposed.
@@ -64,7 +64,7 @@ This part holds the worked examples for the Tax return and procedure (aangifte e
 - Step 3: an objection must also be filed within 6 weeks after the date. The objection term ends on 13 July 2026 as well. Figures from section 2 ([Invorderingswet 1990, 2025](https://wetten.overheid.nl/BWBR0004770/2025-01-01), [eisen bezwaar](https://www.belastingdienst.nl/wps/wcm/connect/nl/bezwaar-en-beroep/content/eisen-bezwaar)).
 
 **Calculated example, provisional assessment (voorlopige aanslag) instalments (termijnen).**
-- Step 1: a provisional income tax assessment is dated 15 March 2025 for an amount of € 4.500.
+- Step 1: a provisional income tax assessment (voorlopige aanslag inkomstenbelasting) is dated 15 March 2025 for an amount of € 4.500.
 - Step 2: the months remaining after March 2025 are April, May, June, July, August, September, October, November and December, so 9 months.
 - Step 3: € 4.500 divided by 9 is € 500 per monthly instalment.
 - Step 4: the first instalment is one month after the date, so 15 April 2025, and the last one is 15 December 2025.
@@ -104,7 +104,7 @@ This part holds the worked examples for the Tax return and procedure (aangifte e
 **Official example, record-retention obligation (bewaarplicht) for a 4-year lease** ([hoelang moet u gegevens bewaren](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/hoelang-moet-u-gegevens-bewaren)).
 - A 4-year lease is kept for those 4 years and then 7 more.
 
-**Calculated example, Chamber of Commerce (KVK) registration window.**
+**Calculated example, Chamber of Commerce (KVK, kamer van koophandel) registration window (inschrijvingsvenster).**
 - Step 1: the business starts on 1 March 2025.
 - Step 2: the window starts one week before the start, so 22 February 2025, and ends one week after the start, so 8 March 2025.
 - Step 3: registering within that window gives the Chamber of Commerce number (KVK-nummer) immediately, and the Dutch Tax and Customs Administration administration takes at most 10 working days. Figures from section 2 ([Handelsregisterwet 2007, 16 juli 2025](https://wetten.overheid.nl/BWBR0021777/2025-07-16), [hulp bij inschrijven](https://www.kvk.nl/hulp-en-contact/hulp-bij-inschrijven/), [schrijf uw onderneming in](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/)).

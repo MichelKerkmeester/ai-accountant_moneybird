@@ -12,11 +12,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Employment relationship and self-employment 2022: Examples
+# Employment relationship (arbeidsrelatie) and self-employment (zelfstandigheid) 2022: Examples
 
 **Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 3 of 4 of the employment relationship and self-employment (arbeidsrelatie en zelfstandigheid) 2022 topic.
+Part 3 of 4 of the employment relationship and self-employment 2022 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [rules.md](rules.md): how it works.
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the employment relationship and self-employment (arbeidsrelatie en zelfstandigheid) 2022 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the employment relationship (arbeidsrelatie) and self-employment 2022 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -36,7 +36,7 @@ This part holds the worked examples for the employment relationship and self-emp
 
 ### Example 1, Calculated example: the persons treated as employees (gelijkgestelden) test
 
-Inputs, invented: a self-employed person without employees (ZZP, zelfstandige zonder personeel) works for one client 2 days a week and is paid a rate well above 2/5 of the minimum wage.
+Inputs, invented: a self-employed person without employees (ZZP, zelfstandige zonder personeel) works for one client 2 days a week and is paid a rate well above 2/5 of the minimum wage (minimumloon).
 
 Step 1, day test. The condition is 2 or more days a week for the same client (opdrachtgever). The self-employed person works 2 days a week, so the day test is met. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/wanneer-is-sprake-van-loondienst.
 
@@ -46,13 +46,13 @@ Result: the test for persons treated as employees (gelijkgestelden) can be met. 
 
 ### Example 2, Calculated example: the instruction (aanwijzing) timeline in 2022
 
-Inputs, invented: a client and a contractor work in a way that is in fact an employment relationship (dienstbetrekking). The case is not in bad faith (kwaadwillend). The Dutch Tax and Customs Administration gives an instruction on 1 March 2022.
+Inputs, invented: a client and a contractor work in a way that is in fact an employment relationship (dienstbetrekking). The case is not in bad faith (non-kwaadwillend). The Dutch Tax and Customs Administration (Belastingdienst) gives an instruction on 1 March 2022.
 
 Step 1. The follow-up term is usually 3 months. 1 March 2022 plus 3 months is 1 June 2022. By that date the client can reshape the relationship so the contractor really works as a self-employed person (zelfstandige), or process it as an employment relationship in the payroll tax return (loonaangifte). Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving.
 
 Step 2. If the instruction is not followed, a correction obligation (correctieverplichting) applies from the date of the instruction. That date is 1 March 2022, not 1 June 2022. Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving.
 
-### Example 3, Calculated example: model agreement validity
+### Example 3, Calculated example: model agreement (modelovereenkomst) validity
 
 Inputs, invented: the parties work under an approved model agreement (modelovereenkomst) that was approved before 6 September 2024 and that states a validity date of 1 January 2027. They work exactly as described.
 
@@ -72,7 +72,7 @@ Step 1. The WML (minimum wage) at 1 January 2025 is € 14,06 per hour.
 
 Step 2. 120% of € 14,06 = 1,2 × € 14,06 = € 16,872.
 
-Step 3. The surcharges (opslagen) are 25% for disability insurance (AOV) and pension and 15% for general costs, so 25% + 15% = 40%. € 16,872 × 1,40 = € 23,6208.
+Step 3. The surcharges (opslagen) are 25% for disability insurance (AOV, arbeidsongeschiktheidsverzekering) and pension and 15% for general costs, so 25% + 15% = 40%. € 16,872 × 1,40 = € 23,6208.
 
 Step 4. Times 1,5 for non-billable hours: € 23,6208 × 1,5 = € 35,4312, so € 35,43 unrounded excluding VAT (excl. btw).
 
@@ -92,7 +92,7 @@ Step 5. Rounded up to whole euros: € 38. Note: the intermediate arithmetic is 
 
 ### Example 6, Calculated example: the presumption applied to two hourly rates
 
-Inputs, invented: two engagements, one at € 30 per hour and one at € 40 per hour, both with a client acting in a profession or business. Assume the law is in force, which it is from 31 December 2026. Sources: https://zoek.officielebekendmakingen.nl/stb-2026-158.html and https://zoek.officielebekendmakingen.nl/stb-2026-207.html.
+Inputs, invented: two engagements, one at € 30 per hour and one at € 40 per hour, both with a client acting in a profession or business. Assume the law is in force (in werking), which it is from 31 December 2026. Sources: https://zoek.officielebekendmakingen.nl/stb-2026-158.html and https://zoek.officielebekendmakingen.nl/stb-2026-207.html.
 
 Step 1. Art. 7:610aa lid 1: pay of at most € 36 per hour gives the presumption. € 30 is at most € 36, so the presumption applies to the first engagement. Source: https://zoek.officielebekendmakingen.nl/stb-2026-158.html.
 
@@ -102,7 +102,7 @@ Step 3. € 40 is above € 36 and also above the indexed € 38, so the presump
 
 Step 4, exception. Lid 3: the presumption does not apply when the other party is a natural person not acting in a profession or business. Source: https://zoek.officielebekendmakingen.nl/stb-2026-158.html.
 
-Step 5, open point. The amount for the first application is given by ministerial regulation (ministeriële regeling) and was not found on 11 October 2026, so the exact first amount is not settled, see section 7.
+Step 5, open point. The amount for the first application (eerste toepassing) is given by ministerial regulation (ministeriële regeling) and was not found on 11 October 2026, so the exact first amount is not settled, see section 7.
 
 ### Example 7, Calculated example: BAZ at about 70%
 

@@ -38,8 +38,8 @@ This part holds the worked examples for the Zvw contribution (Zvw-bijdrage) 2023
 
 Facts: wage of € 40.000 and freelance income of € 30.000 in 2023.
 
-Step 1: the maximum contribution income is € 66.956 (section 2).
-Step 2: the wage already bore a Zvw contribution, so it uses up headroom. Headroom is € 66.956 minus € 40.000 = € 26.956.
+Step 1: the maximum contribution income (bijdrage-inkomen) is € 66.956 (section 2).
+Step 2: the wage already bore a Zvw contribution (bijdrage zorgverzekeringswet), so it uses up headroom. Headroom is € 66.956 minus € 40.000 = € 26.956.
 Step 3: the source states that the 5,43% applies to € 26.956.
 Step 4: the contribution (bijdrage) is € 26.956 x 5,43% = € 1.463,71 (the multiplication is arithmetic added here, the source prints the € 26.956 base, not the euro outcome).
 
@@ -57,8 +57,8 @@ Step 4: the source states that no contribution is due on the freelance income.
 Facts: profits from business activities (winst uit onderneming) of € 60.000, no wage, below state pension age.
 
 Step 1: profit = € 60.000.
-Step 2: self-employed person's deduction (zelfstandigenaftrek) = € 5.030. Profit after the entrepreneur's allowance = € 60.000 minus € 5.030 = € 54.970.
-Step 3: SME profit exemption = 14% x € 54.970 = € 7.695,80.
+Step 2: self-employed person's deduction (zelfstandigenaftrek) = € 5.030. Profit after the entrepreneur's allowance (ondernemersaftrek) = € 60.000 minus € 5.030 = € 54.970.
+Step 3: SME profit exemption (MKB-winstvrijstelling) = 14% x € 54.970 = € 7.695,80.
 Step 4: taxable profit (belastbare winst) = € 54.970 minus € 7.695,80 = € 47.274,20.
 Step 5: € 47.274,20 is below the maximum of € 66.956, so the contribution income is € 47.274,20.
 Step 6: contribution = € 47.274,20 x 5,43% = € 2.566,99.
@@ -86,7 +86,7 @@ Step 5: € 32.237,10 is below the maximum of € 66.956, so the contribution in
 Step 6: contribution = € 32.237,10 x 5,43% = € 1.750,47.
 Note: the checked sources state no separate AOW-age rate or AOW-age exemption for the Zvw contribution itself, see section 7.
 
-### Example 6. Calculated example, a private limited company (BV) pays the employer health insurance contribution over the wage of a director and substantial shareholder (DGA)
+### Example 6. Calculated example, a private limited company (BV) pays the employer health insurance (zorgverzekering) contribution (werkgeversheffing Zvw) over the wage of a director and substantial shareholder (DGA, directeur-grootaandeelhouder)
 
 Facts: a private limited company pays director and substantial shareholder (DGA) wage of € 50.000 in 2023 and the DGA is insured for the employee insurance schemes (werknemersverzekeringen).
 

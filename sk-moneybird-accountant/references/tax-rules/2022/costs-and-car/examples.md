@@ -37,7 +37,7 @@ This part holds the worked examples for the Costs and car 2022 topic. The overvi
 
 All input amounts below are invented round amounts. The rates and thresholds are from section 2. Every product is written with two decimals before rounding. No step below rounds.
 
-### Example 1: Mixed costs, the threshold against the 80% election
+### Example 1: Mixed costs (gemengde kosten), the threshold against the 80% election
 
 **Calculated example.**
 
@@ -63,19 +63,19 @@ Case C, € 3.000,00 of mixed costs in 2022.
 A congress in 2022 costs € 1.200,00 in travel and accommodation, and a second congress costs € 800,00.
 - Total travel and accommodation: € 1.200,00 plus € 800,00 = € 2.000,00.
 - Art. 3.16 lid 2 onderdeel f makes travel and accommodation not deductible above € 1.500,00 per year.
-- If attendance is not necessary, the excess is not deductible: € 2.000,00 minus € 1.500,00 = € 500,00 not deductible. The remaining € 1.500,00 is treated as mixed costs under art. 3.15 lid 1 and lid 2. With no other mixed costs, the threshold route gives € 0,00 because € 1.500,00 is below the threshold of € 4.800,00. The 80% election gives 80% of € 1.500,00 = € 1.200,00.
+- If attendance is not necessary, the excess is not deductible (niet aftrekbaar): € 2.000,00 minus € 1.500,00 = € 500,00 not deductible. The remaining € 1.500,00 is treated as mixed costs under art. 3.15 lid 1 and lid 2. With no other mixed costs, the threshold route gives € 0,00 because € 1.500,00 is below the threshold of € 4.800,00. The 80% election gives 80% of € 1.500,00 = € 1.200,00.
 - Art. 3.16 lid 8 lifts the € 1.500,00 cap when the nature of the work makes attendance necessary.
 - If attendance is necessary, the full € 2.000,00 is mixed costs. With no other mixed costs, the threshold route gives € 0,00 because € 2.000,00 is below the threshold of € 4.800,00. The 80% election gives 80% of € 2.000,00 = € 1.600,00.
 
-### Example 3: Mileage allowance and public transport
+### Example 3: Mileage allowance (kilometervergoeding) and public transport
 
 **Calculated example.**
 
-A private car is used for 4.500 business kilometres in 2022.
+A private car (privéauto) is used for 4.500 business kilometres in 2022.
 - 4.500 km times € 0,19 = € 855,00 deductible.
 - Fuel, insurance, tolls and parking cannot be added separately, because the € 0,19 is all-in.
 - A household member is treated as the taxpayer (art. 3.15 lid 7). If the partner drives another 1.000 business kilometres for the same enterprise in that car, the same rate applies: 5.500 km times € 0,19 = € 1.045,00.
-- A business train trip that is not travel for a congress or course costs € 240,00. Public transport (openbaar vervoer) is deductible at 100% of the actual costs, so € 240,00.
+- A business train trip that is not travel for a congress or course costs € 240,00. Public transport (openbaar vervoer) is deductible at 100% of the actual costs (werkelijke kosten), so € 240,00.
 
 ### Example 4: Relocation (verhuizing)
 
@@ -83,13 +83,13 @@ A private car is used for 4.500 business kilometres in 2022.
 
 Moving the household contents (inboedel) costs € 1.200,00.
 - Deduction for the move: € 1.200,00 plus € 7.750,00 = € 8.950,00.
-- Double accommodation outside the place of residence can be added for at most two years.
+- Double accommodation (dubbele huisvesting) outside the place of residence can be added for at most two years.
 
-### Example 5: Private-use addition (bijtelling) 22% with the car costs cap
+### Example 5: Private-use addition (bijtelling) 22% with the car costs (autokosten) cap
 
 **Calculated example.**
 
-A car in the business assets has a catalogue price including VAT and bpm of € 30.000,00 and is used privately for more than 500 km.
+A car in the business assets (bedrijfsmiddelen) has a catalogue price (catalogusprijs) including VAT and bpm of € 30.000,00 and is used privately for more than 500 km.
 - Withdrawal (onttrekking) before the car costs (autokosten) cap: 22% of € 30.000,00 = € 6.600,00.
 - Art. 3.20 lid 4 caps the withdrawal at the total car costs including depreciation. If those costs are € 5.200,00, the withdrawal is € 5.200,00.
 - With a trip registration (rittenregistratie) showing 480 private km, the withdrawal is nil.
@@ -105,7 +105,7 @@ A car first admitted in 2015 has a value of € 20.000,00.
 - If those costs are € 4.000,00, the withdrawal is € 4.000,00.
 - If those costs are € 5.500,00, the withdrawal is € 5.000,00.
 
-### Example 7: Zero-emission car first admitted in 2022
+### Example 7: Zero-emission car (zero-emissie auto) first admitted in 2022
 
 **Calculated example.**
 
@@ -129,7 +129,7 @@ A car of the business was first taken into use more than 15 years ago. The marke
 - Withdrawal before the car costs cap: 35% of € 8.000,00 = € 2.800,00.
 - Art. 3.20 lid 4 caps the withdrawal at the total car costs including depreciation. If those costs are € 2.000,00, the withdrawal is € 2.000,00.
 
-### Example 9: Private-use addition for a bicycle (fiets)
+### Example 9: Private-use addition for a bicycle (bijtelling fiets)
 
 **Calculated example.**
 
@@ -143,7 +143,7 @@ A business e-bike with a recommended retail price (consumentenadviesprijs) of �
 **Calculated example.**
 
 A private car with a catalogue price including VAT and bpm of € 30.000,00 is used for business, and there are no conclusive mileage records (sluitende kilometeradministratie).
-- Year-end correction: 1,5% of € 30.000,00 = € 450,00 in rubriek 1d (rubriek 1d).
+- Year-end correction: 1,5% of € 30.000,00 = € 450,00 in rubriek 1d.
 - Part year, six months: € 450,00 divided by 2 = € 225,00.
 - The correction is never above the VAT deducted on use and maintenance.
 
@@ -207,7 +207,7 @@ A second BV has employees and a wage total of € 1.000.000,00.
 
 **Calculated example.**
 
-- A traffic fine under the Traffic Regulations Enforcement Act (Wahv) of € 300,00: € 300,00 times 0% = € 0,00 deductible (art. 3.14 lid 1).
+- A traffic fine (verkeersboete) under the Traffic Regulations Enforcement Act (Wahv) of € 300,00: € 300,00 times 0% = € 0,00 deductible (art. 3.14 lid 1).
 - A private telephone subscription (telefoonabonnement) of € 40,00 per month: € 40,00 times 0% = € 0,00 deductible, while the business calls made through it are deductible (art. 3.16 lid 2 onderdeel a).
 - For a workspace in a private home, a bedroom furnished as an office is not separate (zelfstandig), so the workspace costs are 0% deductible under art. 3.16 lid 1 unless the workspace is a separate part and the income test is met. The same test applies under art. 3.16 lid 13 to a rented home whose tenancy right (huurrecht) is business assets. The restriction for an owned home in the business assets that serves as main residence (hoofdverblijf) was added only from 1 January 2025 by art. 3.16 lid 14.
 - Partner compensation (vergoeding partner) of € 4.000,00 is below € 5.000,00 and is not deductible (art. 3.16 lid 4).

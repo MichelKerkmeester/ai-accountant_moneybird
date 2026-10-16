@@ -36,7 +36,7 @@ This part holds the worked examples for the Box 3 savings and investments (spare
 
 ### Example 1: Single, savings only (Official example)
 
-Inputs: bank balances (banktegoeden) € 150.000, no other assets, no debts, no partner.
+Inputs: bank balances (banktegoeden) € 150.000, no other assets (overige bezittingen), no debts, no partner.
 
 Step 1: bank balances € 150.000 x 1,44% = € 2.160. Taxable return (belastbaar rendement) is € 2.160.
 Step 2: return base (rendementsgrondslag) is € 150.000.
@@ -47,7 +47,7 @@ Step 6: tax is 36% x € 1.339 = € 482.
 
 Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2024
 
-### Example 2: Same with a fiscal partner (Official example)
+### Example 2: Same with a fiscal partner (fiscaal partner) (Official example)
 
 Inputs: bank balances € 150.000, no other assets, no debts, fiscal partner for the whole year.
 
@@ -94,7 +94,7 @@ Step 6: tax 36% x € 5.372 = € 1.933 for each partner.
 
 Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2024
 
-### Example 5: Partners with green investments (Official example)
+### Example 5: Partners with green investments (groene beleggingen) (Official example)
 
 Inputs: bank balances € 5.000, green investments € 150.000, second home abroad € 250.000, no debt, fiscal partners for the whole year.
 
@@ -117,7 +117,7 @@ This example continues the inputs of example 5. The exempt green amount is € 1
 
 Sources: https://wetten.overheid.nl/BWBR0011353/2024-01-01 https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/korting_voor_groene_beleggingen
 
-### Example 7: Actual return lower than the fictitious benefit (Calculated example)
+### Example 7: Actual return (werkelijk rendement) lower than the fictitious benefit (Calculated example)
 
 This example builds on example 1. The fictitious benefit is € 1.339 and the fictitious tax is € 482. Suppose the taxpayer makes plausible that the actual return is € 300. The box 3 income is then € 300 minus the personal deductions (persoonsgebonden aftrek). With no personal deductions, the tax is 36% x € 300 = € 108. The Dutch Tax and Customs Administration uses the most favourable amount, so the taxpayer pays € 108 instead of € 482. The actual return does not use the tax-free allowance (heffingsvrij vermogen).
 

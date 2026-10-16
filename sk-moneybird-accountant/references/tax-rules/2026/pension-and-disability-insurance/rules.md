@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and disability insurance 2026: Rules
+# Pension, annuity and disability insurance (arbeidsongeschiktheidsverzekering) 2026: Rules
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -36,7 +36,7 @@ This part holds the how-it-works rules for the Pension, annuity and disability i
 
 ### 3.1 Annual allowance (jaarruimte) percentage
 
-This applies to any taxpayer who had a pension shortfall (pensioentekort) in the previous calendar year (2025). Art. 3.127 lid 1 allows a deduction for annuity premiums (lijfrentepremies) up to 30% of the contribution base (premiegrondslag), reduced by the reduction for pension accrual under lid 4. The 30% rate applies to 2026 because it was enacted in the 2023-07-01 law text and has been confirmed in the 2024-01-01, 2025-01-01, 2026-01-01, and 2027-01-01 texts. The Dutch Tax and Customs Administration (Belastingdienst) Wtp page states the 30% applies "met terugwerkende kracht vanaf 1 januari 2023" (retroactively from 1 January 2023). For a self-employed person without pension accrual the formula is: 30% x (min(income of previous year, € 137.800) minus € 19.172). Source: [Art. 3.127 lid 1](https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [Belastingdienst Wtp page](https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/nieuwe-regels-voor-pensioenen-wat-betekent-dat-voor-mij).
+This applies to any taxpayer who had a pension shortfall (pensioentekort) in the previous calendar year (2025). Art. 3.127 lid 1 allows a deduction for annuity premiums (lijfrentepremies) up to 30% of the contribution base (premiegrondslag), reduced by the reduction for pension accrual under lid 4. The 30% rate applies to 2026 because it was enacted in the 2023-07-01 law text and has been confirmed in the 2024-01-01, 2025-01-01, 2026-01-01, and 2027-01-01 texts. The Dutch Tax and Customs Administration (Belastingdienst) Wtp page states the 30% applies "met terugwerkende kracht vanaf 1 januari 2023" (retroactively from 1 January 2023). For a self-employed person (zelfstandige) without pension accrual the formula is: 30% x (min(income of previous year, € 137.800) minus € 19.172). Source: [Art. 3.127 lid 1](https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [Belastingdienst Wtp page](https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/nieuwe-regels-voor-pensioenen-wat-betekent-dat-voor-mij).
 
 ### 3.2 Income cap (aftoppingsgrens) for the contribution base (premiegrondslag)
 
@@ -52,7 +52,7 @@ The maximum annual allowance for 2026 is € 35.589. This is calculated as 30% x
 
 ### 3.5 Catch-up allowance (reserveringsruimte) maximum
 
-The catch-up allowance (reserveringsruimte) maximum for 2026 is € 42.753. This is the maximum amount of unused annual allowance from previous years that can be used in 2026. Art. 3.127 lid 2 allows a taxpayer to use unused annual allowance of the preceding period on request in the return (aangifte), oldest unused year first. The look-back period is 10 years, covering annual allowance from 2016 to 2025. The Dutch Tax and Customs Administration advises using catch-up allowance before annual allowance so older unused allowance (ruimte) does not lapse. Unused allowance from 2016 lapses in 2027. Source: [Art. 3.127 lid 2](https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [Belastingdienst: Aftrekken lijfrentepremies](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies).
+The catch-up allowance (reserveringsruimte) maximum for 2026 is € 42.753. This is the maximum amount of unused annual allowance from previous years that can be used in 2026. Art. 3.127 lid 2 allows a taxpayer to use unused annual allowance of the preceding period on request in the return (aangifte), oldest unused year first. The look-back period (terugkijkperiode) is 10 years, covering annual allowance from 2016 to 2025. The Dutch Tax and Customs Administration advises using catch-up allowance before annual allowance so older unused allowance (ruimte) does not lapse. Unused allowance from 2016 lapses in 2027. Source: [Art. 3.127 lid 2](https://wetten.overheid.nl/BWBR0011353/2026-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127), [Belastingdienst: Aftrekken lijfrentepremies](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies).
 
 ### 3.6 Look-back window
 
@@ -82,7 +82,7 @@ The profit from business discontinuation maximum for tier b is € 287.445 for 2
 
 The profit from business discontinuation maximum for tier c is € 143.732 for 2026. Tier c applies to all other cases. Source: [Art. 3.129](https://wetten.overheid.nl/BWBR0011353/2026-01-01).
 
-### 3.13 Commutation (afkoop) of a small annuity
+### 3.13 Commutation (afkoop) of a small annuity (kleine lijfrente)
 
 Commutation (afkoop) of a small annuity in one payment is allowed below a yearly amount of € 5.513 for 2026. This is in art. 3.133 lid 2 onderdeel d. Source: [Art. 3.133 lid 2 d](https://wetten.overheid.nl/BWBR0011353/2026-01-01).
 
@@ -90,13 +90,13 @@ Commutation (afkoop) of a small annuity in one payment is allowed below a yearly
 
 The commutation cap for long-term disability (langdurige arbeidsongeschiktheid) is € 51.440 for 2026. Art. 3.133 lid 9 states that commutation is not a prohibited act when the policyholder (verzekeringnemer) or beneficiary (gerechtigde) is long-term disabled (langdurig arbeidsongeschikt) under ministerial conditions, has not yet reached state pension age, and the commutation received in the year stays within the cap or, if higher, the average contribution base plus the threshold (franchise) of the year and the previous year. The commutation then counts as an annuity term (termijn). Source: [Art. 3.133 lid 9](https://wetten.overheid.nl/BWBR0011353/2026-01-01).
 
-### 3.15 Disability insurance (AOV) premium with periodic benefits (uitkeringen)
+### 3.15 Disability insurance (arbeidsongeschiktheidsverzekering, AOV) premium with periodic benefits (uitkeringen)
 
 Disability insurance (AOV, arbeidsongeschiktheidsverzekering) premiums are fully deductible under art. 3.124 lid 1 onderdeel c if the policy pays periodic benefits (uitkeringen) for incapacity for work, illness or accident. FISIN 2026 states "volledig aftrekken" (fully deductible). There is no allowance cap in the article. As an entrepreneur (ondernemer) the disability insurance premium is not a business cost but an "uitgave voor andere inkomensvoorzieningen". Periodic benefits are "inkomsten uit vroegere dienstbetrekking" with wage tax (loonbelasting) withheld as prepayment (voorheffing). Source: [Art. 3.124 lid 1 c](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/uitgaven_voor_inkomensvoorzieningen).
 
 ### 3.16 Disability insurance premium with lump-sum payout
 
-A disability insurance premium for a policy that pays a lump sum (kapitaalverzekering) is not deductible. The payout is not box 1 income and counts in box 3. The rule of thumb is: premium not deductible means payout not taxed, and the reverse. The four exclusions and section 15.4 are the same in FISIN 2020 to 2026. Source: [Belastingdienst: AOV voor ondernemers](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers).
+A disability insurance premium for a policy that pays a lump sum (kapitaalverzekering) is not deductible (niet aftrekbaar). The payout is not box 1 income and counts in box 3. The rule of thumb is: premium not deductible means payout not taxed, and the reverse. The four exclusions and section 15.4 are the same in FISIN 2020 to 2026. Source: [Belastingdienst: AOV voor ondernemers](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers).
 
 ### 3.17 BAZ bill status
 
@@ -108,7 +108,7 @@ The BAZ bill art. 16 lid 1 sets a waiting period (wachttijd) of 104 weeks (weken
 
 ### 3.19 BAZ premium estimate
 
-The BAZ premium is set yearly by UWV and estimated at about 5,4% of profits from business activities (winst uit onderneming) up to the maximum tax base (grondslag). At a maximum tax base of € 38.000 the MvT examples give about € 171 gross per month. Self-employed persons who are also employees have their social insurance wage (SV-loon) subtracted from the maximum contribution base. Source: [MvT 36912, Kamerstuk 36912 nr. 3, memorie van toelichting](https://zoek.officielebekendmakingen.nl/kst-36912-3.html).
+The BAZ premium is set yearly by the Employee Insurance Agency (Uitvoeringsinstituut Werknemersverzekeringen, UWV) and estimated at about 5,4% of profits from business activities (winst uit onderneming) up to the maximum tax base (grondslag). At a maximum tax base of € 38.000 the MvT examples give about € 171 gross per month. Self-employed persons who are also employees have their social insurance wage (SV-loon) subtracted from the maximum contribution base. Source: [MvT 36912, Kamerstuk 36912 nr. 3, memorie van toelichting](https://zoek.officielebekendmakingen.nl/kst-36912-3.html).
 
 ### 3.20 BAZ benefit maximum
 
@@ -118,7 +118,7 @@ The BAZ benefit is 70% of the tax base. The tax base is at most 142,86% of the m
 
 The public BAZ premium is proposed to be deductible as an expenditure for income provisions (uitgave voor inkomensvoorzieningen) and not from the profit (winst). UWV benefits would carry payroll taxes (loonheffing). Private policies keep the current tax treatment. Source: [MvT 36912, Kamerstuk 36912 nr. 3, memorie van toelichting](https://zoek.officielebekendmakingen.nl/kst-36912-3.html).
 
-### 3.22 BAZ entry into force
+### 3.22 BAZ entry into force (inwerkingtreding)
 
 The BAZ entry into force is by royal decree (koninklijk besluit). There is no statutory date. The MvT examples assume 1 January 2030. Source: [MvT 36912, Kamerstuk 36912 nr. 3, memorie van toelichting](https://zoek.officielebekendmakingen.nl/kst-36912-3.html).
 

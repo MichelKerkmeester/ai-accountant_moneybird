@@ -65,11 +65,11 @@ Prefer the higher row when two sources disagree. A statute beats a help page, an
 
 | Authority | Hosts | Sources | Use it for |
 |---|---|---|---|
-| `statute` | wetten.overheid.nl | 74 | The law text in force on a date. Dated links pin the version |
-| `official-publication` | zoek.officielebekendmakingen.nl, open.overheid.nl | 59 | Bulletin of Acts and Decrees (Staatsblad) texts, Parliamentary papers (kamerstukken) and their explanatory memoranda |
-| `parliament` | tweedekamer.nl, eerstekamer.nl | 12 | Bills not yet in the Bulletin of Acts and Decrees, and their status |
+| `statute` | wetten.overheid.nl | 74 | The law text in force (in werking) on a date. Dated links pin the version |
+| `official-publication` | zoek.officielebekendmakingen.nl, open.overheid.nl | 59 | Staatsblad texts, Parliamentary papers (kamerstukken) and their explanatory memoranda |
+| `parliament` | tweedekamer.nl, eerstekamer.nl | 12 | Bills not yet in the Staatsblad, and their status |
 | `tax-authority` | belastingdienst.nl and its subdomains | 262 | Rates, thresholds, deadlines and how the Dutch Tax and Customs Administration (Belastingdienst) applies a rule. FISIN pages hold per-year figures |
-| `government` | rijksoverheid.nl, ondernemersplein.overheid.nl, business.gov.nl, kvk.nl, rvo.nl | 36 | Plain-language explanations, the Tax Plan documents (Belastingplan), KVK and subsidy rules |
+| `government` | rijksoverheid.nl, ondernemersplein.overheid.nl, business.gov.nl, kvk.nl, rvo.nl | 36 | Plain-language explanations, the Tax Plan documents (Belastingplan), Chamber of Commerce (Kamer van Koophandel, KVK) and subsidy rules |
 | `eu` | taxation-customs.ec.europa.eu | 2 | EU VAT rules that Dutch pages refer to |
 | `product-docs` | helpcenter.moneybird.nl, moneybird.com, jortt.nl, github.com | 32 | How Moneybird and Jortt work. Never a tax rule |
 | `secondary` | financialfocus.abnamro.nl, holdwise.nl, mijn.bovag.nl | 3 | Early reports of announced figures. Confirm on a primary source before use |
@@ -81,7 +81,7 @@ Prefer the higher row when two sources disagree. A statute beats a help page, an
 
 Names were read from each law's own page. Add a date to pin a version, as in `https://wetten.overheid.nl/BWBR0002629/2026-01-01`.
 
-| BWBR id | Regulation | Citing files |
+| BWBR id | Title | Citing files |
 |---|---|---|
 | BWBR0011353 | Wet inkomstenbelasting 2001 | 73 |
 | BWBR0002320 | Algemene wet inzake rijksbelastingen | 31 |
@@ -107,7 +107,7 @@ Citing files count the files that link any version of the law.
 
 ### Dutch Tax and Customs Administration (Belastingdienst)
 
-| Topic | Page | Files |
+| Title | Page | Files |
 |---|---|---|
 | Oudedagsreserve | [belastingdienst.nl](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/fiscale_reserves/oudedagsreserve) | 26 |
 | MKB-winstvrijstelling | [belastingdienst.nl](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/mkb_winstvrijstelling) | 19 |
@@ -131,7 +131,7 @@ FISIN pages carry the year in the path, as in `fisin2020` to `fisin2026`. Change
 | Belastingplan 2027 bill | [rijksoverheid.nl](https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/wetsvoorstel-belastingplan-2027/wetsvoorstel-belastingplan-2027.pdf) | 11 |
 | Staatsblad 2026, 158 | [officielebekendmakingen.nl](https://zoek.officielebekendmakingen.nl/stb-2026-158.html) | 10 |
 
-Official Publications (Officielebekendmakingen) addresses follow a fixed pattern: `kst-<dossier>-<number>.html` for a Parliamentary paper (kamerstuk) and `stb-<year>-<number>.html` for a Bulletin of Acts and Decrees (Staatsblad) text.
+Official Publications (Officielebekendmakingen) addresses follow a fixed pattern: `kst-<dossier>-<number>.html` for a Parliamentary paper (kamerstuk) and `stb-<year>-<number>.html` for a Staatsblad text.
 
 ### Moneybird help center
 

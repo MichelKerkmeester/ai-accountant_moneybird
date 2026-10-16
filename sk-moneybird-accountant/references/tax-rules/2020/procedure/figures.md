@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Income tax return (aangifte) and procedure 2020: Figures
+# Income tax return (aangifte inkomstenbelasting) and procedure 2020: Figures
 
 **Rule:** These values hold for tax year 2020 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the procedure around tax year 2020 for a sole trader who may also own a BV: the income tax return deadline and deferral (uitstel), the definitive assessment (aanslag) and the assessment threshold (aanslaggrens), additional assessment (navordering), objection (bezwaar), the provisional assessment (voorlopige aanslag), tax interest (belastingrente), the VAT filing and payment dates, penalties (boetes), the record-retention obligation (bewaarplicht) and the KVK and Dutch Tax and Customs Administration (Belastingdienst) registration duties. The two most notable points for 2020 are the income tax return date of 8 May 2021 instead of 1 May 2021, and the tax interest (belastingrente) rate that fell to 0,01% in the middle of 2020 and returned to 4% on 1 October 2020. The values checked for 2020 are enacted law or policy in force. 2020 is the first year in this set, so there is no earlier year file.
+This file covers the procedure around tax year 2020 for a sole trader who may also own a BV: the income tax return (aangifte inkomstenbelasting) deadline and deferral (uitstel), the definitive assessment (aanslag) and the assessment threshold (aanslaggrens), additional assessment (navordering), objection (bezwaar), the provisional assessment (voorlopige aanslag), tax interest (belastingrente), the VAT filing and payment dates (aangifte- en betaaldata), penalties (boetes), the record-retention obligation (bewaarplicht) and the KVK and Dutch Tax and Customs Administration (Belastingdienst) registration duties. The two most notable points for 2020 are the income tax return date of 8 May 2021 instead of 1 May 2021, and the tax interest (belastingrente) rate that fell to 0,01% in the middle of 2020 and returned to 4% on 1 October 2020. The values checked for 2020 are enacted law or policy in force (in werking). 2020 is the first year in this set, so there is no earlier year file.
 
 ---
 
@@ -39,7 +39,7 @@ This file covers the procedure around tax year 2020 for a sole trader who may al
 <!-- GENERATED:key-figure-index:start -->
 | Item | row |
 |---|---|
-| Income tax return 2020, deadline (uiterste datum) | 1 |
+| Income tax return (aangifte inkomstenbelasting) 2020, deadline (uiterste datum) | 1 |
 | Income tax extension period (uitsteltermijn inkomstenbelasting) | 2 |
 | Income tax return 2020 with deferral (uitstel) | 3 |
 | Exclusion from tax interest (belastingrente-uitsluiting) for the week to 8 May 2021 | 4 |
@@ -54,7 +54,7 @@ This file covers the procedure around tax year 2020 for a sole trader who may al
 | Voluntary income tax correction (vrijwillige correctie inkomstenbelasting) | 13 |
 | Objection period (bezwaartermijn) and acknowledgement of receipt (ontvangstbevestiging) | 14 |
 | Request (verzoek) for a reduction of the 2020 assessment | 15 |
-| Provisional assessment for income tax, request or amend (aanvragen of wijzigen) | 16 |
+| Provisional assessment (voorlopige aanslag) for income tax, request or amend (aanvragen of wijzigen) | 16 |
 | Provisional assessment for income tax, set-off (verrekening) | 17 |
 | Payment terms for assessments (betalingstermijnen van aanslagen) 2020 | 18 |
 | Tax interest on income tax 2020 | 19 |
@@ -68,24 +68,24 @@ This file covers the procedure around tax year 2020 for a sole trader who may al
 | VAT latest return and payment dates (uiterste aangifte- en betaaldatums) per quarter 2020 | 27 |
 | VAT latest return and payment dates (uiterste aangifte- en betaaldatums) per year 2020 | 28 |
 | VAT return submitted via software | 29 |
-| Deferral for the VAT return | 30 |
+| Deferral for the VAT return (uitstel btw-aangifte) | 30 |
 | VAT filing default penalty (aangifteverzuimboete) 2020 | 31 |
 | IB penalties (boetes) 2020 | 32 |
-| Penalty for gross negligence or intent (vergrijpboete) | 33 |
+| Penalty (vergrijpboete) for gross negligence or intent | 33 |
 | Route after the filing deadline (aangiftetermijn) | 34 |
-| Term (termijn) for requesting an invitation to file a return (vragen van een aangifte) | 35 |
+| Term (termijn) for requesting an invitation to file a return (verzoek om uitnodiging tot het doen van aangifte) | 35 |
 | Record-retention obligation (bewaarplicht) 2020 | 36 |
 | Record-retention obligation, different periods (afwijkende termijnen) and begin of the term | 37 |
 | Record-retention obligation, conversion of a data carrier (gegevensdrager) | 38 |
 | KVK first registration (inschrijving) and other returns (opgaven) | 39 |
-| Chamber of Commerce number (KVK-nummer) and identity check (identiteitscontrole) | 40 |
+| Chamber of Commerce (kamer van koophandel) number (KVK-nummer) and identity check (identiteitscontrole) | 40 |
 | Registration with the Dutch Tax and Customs Administration (Belastingdienst) | 41 |
 <!-- GENERATED:key-figure-index:end -->
 
 
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
-| Income tax return 2020, deadline (uiterste datum) | Before 8 May 2021 | enacted | Corrected | https://web.archive.org/web/20210318/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen |
+| Income tax return (aangifte inkomstenbelasting) 2020, deadline (uiterste datum) | Before 8 May 2021 | enacted | Corrected | https://web.archive.org/web/20210318/https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wanneer-moet-ik-aangifte-doen |
 | Income tax extension period (uitsteltermijn inkomstenbelasting) | 4 months extra, to 1 September | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/programmas_en_formulieren/aanvraag-uitstel-aangifte-inkomstenbelasting |
 | Income tax return 2020 with deferral (uitstel) | Before 1 September 2021 | enacted | Corrected | https://web.archive.org/web/20210413/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag |
 | Exclusion from tax interest (belastingrente-uitsluiting) for the week to 8 May 2021 | No tax interest (belastingrente) if the assessment (aanslag) follows a return filed after 1 May 2021 and before 8 May 2021 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2021-24144.html |
@@ -98,9 +98,9 @@ This file covers the procedure around tax year 2020 for a sole trader who may al
 | Additional assessment period (navorderingstermijn) for income tax 2020 | 5 years after the tax debt (belastingschuld) arose plus deferral, 12 years for income or assets held or arising abroad, 6 months extension, 2 years for an error (fout)-based additional assessment (navordering) | enacted | Verified | https://wetten.overheid.nl/BWBR0002320/2020-01-01 |
 | Additional assessment for an error | Always an error when the shortfall is at least 30% of the correct tax | enacted | Verified | https://wetten.overheid.nl/BWBR0002320/2020-01-01 |
 | Voluntary income tax correction (vrijwillige correctie inkomstenbelasting) | Within 2 years generally no penalty (boete) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/navorderingsaanslag |
-| Objection period (bezwaartermijn) and acknowledgement of receipt (ontvangstbevestiging) | 6 weeks after the date of the assessment, acknowledgement within 3 weeks, no objection (bezwaar) against a provisional income tax assessment | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/bezwaar-en-beroep/content/eisen-bezwaar |
+| Objection period (bezwaartermijn) and acknowledgement of receipt (ontvangstbevestiging) | 6 weeks after the date of the assessment, acknowledgement within 3 weeks, no objection (bezwaar) against a provisional income tax assessment (voorlopige aanslag inkomstenbelasting) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/bezwaar-en-beroep/content/eisen-bezwaar |
 | Request (verzoek) for a reduction of the 2020 assessment | Online possible until and including 31 December 2025, online only if the return was filed online and fewer than 5 years have passed after the tax year | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/bezwaar-en-beroep/content/verzoek-om-vermindering-van-aanslag-inkomstenbelasting |
-| Provisional assessment for income tax, request or amend (aanvragen of wijzigen) | Usually until 1 May of the next year, and not after filing | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/tot-wanneer-voorlopige-aanslag-aanvragen-wijzigen |
+| Provisional assessment (voorlopige aanslag) for income tax, request or amend (aanvragen of wijzigen) | Usually until 1 May of the next year, and not after filing | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/tot-wanneer-voorlopige-aanslag-aanvragen-wijzigen |
 | Provisional assessment for income tax, set-off (verrekening) | Paid or received amounts are settled in the return | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/in-welke-situaties-moet-ik-mijn-voorlopige-aanslag-wijzigen |
 | Payment terms for assessments (betalingstermijnen van aanslagen) 2020 | Assessment 6 weeks, additional assessment (navorderingsaanslag) 1 month, supplementary assessment (naheffingsaanslag) 14 days, provisional assessment in monthly instalments (termijnen) | enacted | Verified | https://wetten.overheid.nl/BWBR0004770/2020-01-01 |
 | Tax interest on income tax 2020 | 4% to 30 June 2020, 0,01% from 1 July to 30 September 2020, 4% from 1 October 2020 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente |
@@ -114,17 +114,17 @@ This file covers the procedure around tax year 2020 for a sole trader who may al
 | VAT latest return and payment dates (uiterste aangifte- en betaaldatums) per quarter 2020 | Q4 2019 31 January 2020, Q1 30 April 2020, Q2 31 July 2020, Q3 31 October 2020, Q4 31 January 2021 | enacted | Corrected | https://web.archive.org/web/20201101/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte |
 | VAT latest return and payment dates (uiterste aangifte- en betaaldatums) per year 2020 | 2019 by 31 March 2020, 2020 by 31 March 2021 | enacted | Corrected | https://web.archive.org/web/20201101/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte |
 | VAT return submitted via software | From the 24th of the month before the period ends | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums |
-| Deferral for the VAT return | Only in exceptional situations (uitzonderlijke situaties), such as a serious calamity (een ernstige calamiteit), in writing to the tax office (belastingkantoor) before the filing date | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uitstel-aanvragen-btw-aangifte |
+| Deferral for the VAT return (uitstel btw-aangifte) | Only in exceptional situations (uitzonderlijke situaties), such as a serious calamity, in writing to the tax office (belastingkantoor) before the filing date (aangiftedatum) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uitstel-aanvragen-btw-aangifte |
 | VAT filing default penalty (aangifteverzuimboete) 2020 | € 68 after 7 calendar days (kalenderdagen) leniency (coulance) | enacted | Verified | https://web.archive.org/web/20201112/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/boetes/u_doet_geen_of_te_laat_aangifte |
 | IB penalties (boetes) 2020 | default fine (verzuimboete) € 385 and up to € 5.514, not requesting an invitation to file a return € 2.757, payment default penalty (betaalverzuimboete) up to € 5.514 | enacted | Verified | https://web.archive.org/web/20201120/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete |
-| Penalty for gross negligence or intent (vergrijpboete) | 25% gross negligence (grove schuld), 50% intent (opzet), box 3 75% and 150%, aggravated 100% and 300% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete |
+| Penalty (vergrijpboete) for gross negligence or intent | 25% gross negligence (grove schuld), 50% intent (opzet), box 3 75% and 150%, aggravated 100% and 300% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete |
 | Route after the filing deadline (aangiftetermijn) | reminder (herinnering), then formal demand (aanmaning) with 10 working days (werkdagen), ex officio (ambtshalve) assessment when no return is filed, no penalty when the person died on or after the date of the filing invitation letter (aangiftebrief) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/nl/belastingaangifte/content/wat-gebeurt-er-als-ik-geen-aangifte-doe-of-te-laat-of-onvolledig |
-| Term (termijn) for requesting an invitation to file a return (vragen van een aangifte) | Within 6 months after the tax debt arose for income tax and corporate income tax (vennootschapsbelasting), with 2 weeks leniency | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete |
+| Term (termijn) for requesting an invitation to file a return (verzoek om uitnodiging tot het doen van aangifte) | Within 6 months after the tax debt arose for income tax and corporate income tax (vennootschapsbelasting), with 2 weeks leniency | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete |
 | Record-retention obligation (bewaarplicht) 2020 | 7 years, AWR art. 52 lid 4 | enacted | Verified | https://wetten.overheid.nl/BWBR0002320/2020-01-01 |
 | Record-retention obligation, different periods (afwijkende termijnen) and begin of the term | immovable property (onroerende zaken) 10 years, One Stop Shop data 10 years, term starts when the item (gegeven) is no longer current | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/hoelang-moet-u-gegevens-bewaren |
 | Record-retention obligation, conversion of a data carrier (gegevensdrager) | Conversion to another data carrier allowed, except the paper balance sheet (balans) and statement of income and expenditure (staat van baten en lasten), AWR art. 52 lid 5 | enacted | Verified | https://wetten.overheid.nl/BWBR0002320/2020-01-01 |
 | KVK first registration (inschrijving) and other returns (opgaven) | First registration within two weeks, starting one week before and ending one week after the start of the business, other returns within one week after the fact | enacted | Verified | https://wetten.overheid.nl/BWBR0021777/2025-07-16 |
-| Chamber of Commerce number (KVK-nummer) and identity check (identiteitscontrole) | Chamber of Commerce number immediately when registering within that window, identity check up to three months ahead, appointments up to eight weeks ahead | enacted | Verified | https://www.kvk.nl/hulp-en-contact/hulp-bij-inschrijven/ |
+| Chamber of Commerce (kamer van koophandel) number (KVK-nummer) and identity check (identiteitscontrole) | Chamber of Commerce number immediately when registering within that window, identity check up to three months ahead, appointments up to eight weeks ahead | enacted | Verified | https://www.kvk.nl/hulp-en-contact/hulp-bij-inschrijven/ |
 | Registration with the Dutch Tax and Customs Administration (Belastingdienst) | KVK passes the data, no separate registration, registration takes at most 10 working days | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/ |
 
 ---

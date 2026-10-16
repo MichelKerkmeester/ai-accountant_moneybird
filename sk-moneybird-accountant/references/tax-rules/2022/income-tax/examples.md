@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Income tax box 1 2022: Examples
+# Income tax (inkomstenbelasting) box 1 2022: Examples
 
 **Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Income tax box 1 2022 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Income tax (inkomstenbelasting) box 1 2022 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -60,7 +60,7 @@ For a taxpayer born before 1 January 1946 the first band ends at € 36.409 inst
 
 ### First-bracket rate in the year state pension age is reached
 
-**Calculated example.** The 2022 monthly rates run from 19,17% in January to 35,57% in December. The difference between the highest and the lowest monthly rate is 35,57% minus 19,17% = 16,40 percentage points, applied to the first bracket of € 35.472. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/belastingberekening
+**Calculated example.** The 2022 monthly rates run from 19,17% in January to 35,57% in December. The difference between the highest and the lowest monthly rate is 35,57% minus 19,17% = 16,40 percentage points, applied to the first bracket (eerste schijf) of € 35.472. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/belastingberekening
 
 ### National insurance contributions (premie volksverzekeringen) ceiling
 
@@ -87,7 +87,7 @@ Source: https://wetten.overheid.nl/BWBR0011353/2022-01-01 art. 2.10 lid 2
 
 **Calculated example.** Assume a taxable income from work and home (belastbaar inkomen uit werk en woning) of € 40.000 for a taxpayer below state pension age.
 
-1. Income above the phase-out point of € 21.317: € 40.000 minus € 21.317 = € 18.683.
+1. Income above the phase-out point (afbouwpunt) of € 21.317: € 40.000 minus € 21.317 = € 18.683.
 2. Reduction: 6,007% × € 18.683 = € 1.122,28781.
 3. AHK before statutory rounding: € 2.888 minus € 1.122,28781 = € 1.765,71219.
 
@@ -159,7 +159,7 @@ This confirms the published combined first-bracket rate. Sources: https://www.be
 
 ### Profits from business activities (winst uit onderneming) to taxable box 1 income
 
-**Calculated example.** Assume an eligible entrepreneur has a profit of € 60.000, qualifies for the € 6.310 self-employed person's deduction (zelfstandigenaftrek), has no other entrepreneur's allowance (ondernemersaftrek) and makes no addition to the old-age reserve (oudedagsreserve).
+**Calculated example.** Assume an eligible entrepreneur has a profit of € 60.000, qualifies for the € 6.310 self-employed person's deduction (zelfstandigenaftrek), has no other entrepreneur's allowance (ondernemersaftrek) and makes no addition to the old-age reserve (dotatie aan de oudedagsreserve).
 
 1. Profit after the self-employed person's deduction: € 60.000 minus € 6.310 = € 53.690.
 2. SME profit exemption (MKB-winstvrijstelling): 14% × € 53.690 = € 7.516,60.
@@ -190,7 +190,7 @@ Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernem
 **Calculated example.** Assume a profit of € 60.000 and an entrepreneur who meets the hours criterion (urencriterium) and is below state pension age.
 
 1. Addition: 9,44% × € 60.000 = € 5.664.
-2. This is below the 2022 maximum of € 9.632, so the addition would be € 5.664 before any reduction for the occupational pension contribution (beroepspensioenpremie).
+2. This is below the 2022 maximum of € 9.632, so the addition would be € 5.664 before any reduction for the occupational pension (beroepspensioen) contribution (beroepspensioenpremie).
 
 Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/winst_en_verliesrekening_en_balans
 

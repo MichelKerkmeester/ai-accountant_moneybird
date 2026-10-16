@@ -42,7 +42,7 @@ Inputs: profits from business activities (winst uit onderneming) over 2022 of �
 - Step 2, subtract the franchise: € 60.000 minus € 13.646 = € 46.354.
 - Step 3, apply the 30% percentage: € 46.354 x 30% = € 13.906,20.
 
-The annual allowance 2023 is € 13.906,20. An annuity premium (lijfrentepremie) paid in 2023 up to that amount is deductible when the other conditions are met. A premium above that amount is not deductible, and the excess is taken into account when the benefit (uitkering) is taxed. Source of the method and the figures: [art. 3.127, text 1 July 2023](https://wetten.overheid.nl/BWBR0011353/2023-07-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
+The annual allowance 2023 is € 13.906,20. An annuity premium (lijfrentepremie) paid in 2023 up to that amount is deductible when the other conditions are met. A premium above that amount is not deductible (niet aftrekbaar), and the excess is taken into account when the benefit (uitkering) is taxed. Source of the method and the figures: [art. 3.127, text 1 July 2023](https://wetten.overheid.nl/BWBR0011353/2023-07-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
 
 ### Example 2: Annual allowance at the maximum, profit of € 200.000 (Calculated example)
 
@@ -96,7 +96,7 @@ Inputs: profit from business discontinuation of € 200.000, taxpayer aged 50 at
 
 A tier a or tier b amount would require the age, disability or immediate-start conditions of those tiers, which this taxpayer does not meet. Sources: [art. 3.129, text 1 July 2023](https://wetten.overheid.nl/BWBR0011353/2023-07-01) and [FISIN 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/uitgaven_voor_inkomensvoorzieningen).
 
-### Example 7: Commutation (afkoop) of a small annuity and the disability cap (Calculated example)
+### Example 7: Commutation (afkoop) of a small annuity (kleine lijfrente) and the disability cap (Calculated example)
 
 Inputs: two situations.
 
@@ -121,7 +121,7 @@ The annual allowance 2023 is € 7.906,20 for this FOR holder. The reduction app
 
 Inputs: two policies, each with a premium of € 3.600 in 2023, both covering disability (invaliditeit), illness or accident (ziekte of ongeval) for the taxpayer.
 
-- Policy A pays periodic benefits. The premium is fully deductible with no allowance cap, so the deduction is € 3.600 and the later benefits are taxed as income from a former employment relationship (inkomsten uit vroegere dienstbetrekking) with payroll taxes (loonheffing) withheld as prepayment (voorheffing).
+- Policy A pays periodic benefits (periodieke uitkeringen). The premium is fully deductible with no allowance cap, so the deduction is € 3.600 and the later benefits are taxed as income from a former employment relationship (inkomsten uit vroegere dienstbetrekking) with payroll taxes (loonheffing) withheld as prepayment (voorheffing).
 - Policy B pays a lump sum. The premium is not deductible, so the deduction is € 0. The later payout is not box 1 income and counts in box 3.
 
 The rule of thumb is that a premium which is not deductible means a payout which is not taxed, and the reverse. Sources: [FISIN 2023](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/uitgaven_voor_inkomensvoorzieningen) and [Belastingdienst, arbeidsongeschiktheidsverzekering voor ondernemers](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers).

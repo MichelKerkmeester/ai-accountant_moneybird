@@ -37,7 +37,7 @@ This part holds the worked examples for the pension (pensioen), annuity (lijfren
 
 ### Calculated example 1: annual allowance (jaarruimte) with income below the income cap (aftoppingsgrens)
 
-Fact pattern: a self-employed person has profits from business activities (winst uit onderneming) of € 60.000 in 2019. That amount is the profit before addition to and withdrawal from the old-age reserve (winst vóór toevoeging aan en afneming van de oudedagsreserve) and before the entrepreneur's allowance (ondernemersaftrek), and there are no other income components in 2019. There is no pension accrual and no addition (toevoeging) or reduction (afneming) of the old-age reserve (oudedagsreserve) in 2019. The annual allowance for the 2020 tax return is based on the income of 2019.
+Fact pattern: a self-employed person (zelfstandige) has profits from business activities (winst uit onderneming) of € 60.000 in 2019. That amount is the profit before addition to and withdrawal from the old-age reserve (winst vóór toevoeging aan en afneming van de oudedagsreserve) and before the entrepreneur's allowance (vóór de ondernemersaftrek), and there are no other income components in 2019. There is no pension accrual and no addition (toevoeging) or reduction (afneming) of the old-age reserve (oudedagsreserve) in 2019. The annual allowance for the 2020 tax return (aangifte) is based on the income of 2019.
 
 Step 1: the income components are counted up to the income cap: min(€ 60.000, € 110.111) = € 60.000 (art. 3.127 lid 3, https://wetten.overheid.nl/BWBR0011353/2020-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127).
 Step 2: the franchise is subtracted: € 60.000 - € 12.472 = € 47.528. This is the contribution base (premiegrondslag).
@@ -82,7 +82,7 @@ Step 4: together with the full annual allowance of example 1 the deduction allow
 
 ### Calculated example 6: FOR addition
 
-Fact pattern: a self-employed person meets the hours criterion and has not yet reached the AOW age at the start of 2020 (art. 3.67). The profits from business activities for 2020 are € 60.000. The pension premiums charged to the profit (winst) are € 2.000 and the growth of the business capital (ondernemingsvermogen) is € 6.000.
+Fact pattern: a self-employed person meets the hours criterion (urencriterium) and has not yet reached the AOW age at the start of 2020 (art. 3.67). The profits from business activities for 2020 are € 60.000. The pension premiums charged to the profit (winst) are € 2.000 and the growth of the business capital (ondernemingsvermogen) is € 6.000.
 
 Step 1: the percentage is applied: 9,44% x € 60.000 = € 5.664,00.
 Step 2: the cap of € 9.218 is not binding.
@@ -101,13 +101,13 @@ Step 1: the tier a maximum is € 467.044 (art. 3.129 lid 2 a, https://wetten.ov
 Step 2: the deduction is also limited to the profit from business discontinuation. The profit from business discontinuation of € 500.000 is higher than the tier a maximum, so the tier a maximum is the binding cap.
 Step 3: at most € 467.044 of annuity premiums can therefore be deducted against the profit from business discontinuation (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/uitgaven_voor_inkomensvoorzieningen).
 
-### Calculated example 9: commutation (afkoop) of a small annuity (lijfrente)
+### Calculated example 9: commutation (afkoop) of a small annuity (kleine lijfrente)
 
 Fact pattern: an annuity pays a yearly benefit (uitkering) of € 4.000. That is below the 2020 amount of € 4.475, so a commutation in one payment is allowed under art. 3.133 lid 2 onderdeel d (https://wetten.overheid.nl/BWBR0011353/2020-01-01, art. 3.133 lid 2 d). If the same annuity paid € 5.000 per year, the amount would be above € 4.475 and this small-annuity exception would not apply.
 
 ### Calculated example 10: AOV premium deductible or not
 
-Fact pattern: an entrepreneur pays an AOV premium of € 3.000 for a policy that pays periodic benefits (uitkeringen). The full premium is deductible as an expenditure for income provisions (uitgave voor inkomensvoorzieningen) under art. 3.124 lid 1 c, with no allowance (ruimte) cap (https://wetten.overheid.nl/BWBR0011353/2020-01-01, art. 3.124 lid 1 c, and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers). The premium is not a business cost, so it does not reduce the profits from business activities. If the same € 3.000 premium buys a policy that pays a lump sum, the premium is not deductible, a later payout is not box 1 income and it counts in box 3.
+Fact pattern: an entrepreneur pays an AOV premium of € 3.000 for a policy that pays periodic benefits (uitkeringen). The full premium is deductible as an expenditure for income provisions (uitgave voor inkomensvoorzieningen) under art. 3.124 lid 1 c, with no allowance (ruimte) cap (https://wetten.overheid.nl/BWBR0011353/2020-01-01, art. 3.124 lid 1 c, and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers). The premium is not a business cost, so it does not reduce the profits from business activities. If the same € 3.000 premium buys a policy that pays a lump sum, the premium is not deductible (niet aftrekbaar), a later payout is not box 1 income and it counts in box 3.
 
 ### Calculated example 11: temporary old-age annuity (tijdelijke oudedagslijfrente) cap
 

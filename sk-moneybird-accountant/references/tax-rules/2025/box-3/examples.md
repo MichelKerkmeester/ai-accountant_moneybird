@@ -36,7 +36,7 @@ This part holds the worked examples for the Box 3 savings and investments (spare
 
 ### Official example: single person, savings only
 
-Source: [2025 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2025). One person, € 150.000,00 of bank balances (banktegoeden) on the reference date (peildatum), no other assets and no debts.
+Source: [2025 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2025). One person, € 150.000,00 of bank balances (banktegoeden) on the reference date (peildatum), no other assets (overige bezittingen) and no debts.
 
 - Step 1: € 150.000,00 × 1,37% = € 2.055,00 taxable return (belastbaar rendement).
 - Step 2: Return base (rendementsgrondslag) = € 150.000,00.
@@ -45,7 +45,7 @@ Source: [2025 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/n
 - Step 5: Benefit (voordeel) = € 2.055,00 × 61,54% = € 1.264,65, rounded down = € 1.264,00.
 - Step 6: tax = 36% × € 1.264,00 = € 455,04, rounded down = € 455,00.
 
-### Official example: same case with a fiscal partner
+### Official example: same case with a fiscal partner (fiscaal partner)
 
 Source: [2025 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2025). Same € 150.000,00 of savings, now with a fiscal partner and a 50/50 split.
 
@@ -62,7 +62,7 @@ Source: [2025 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/n
 
 - Bank return: € 150.000,00 × 1,37% = € 2.055,00.
 - Other assets (overige bezittingen): € 75.000,00 + € 200.000,00 = € 275.000,00. Return: € 275.000,00 × 5,88% = € 16.170,00.
-- Deductible debt: € 100.000,00 - € 3.800,00 = € 96.200,00. Debt return: € 96.200,00 × 2,70% = € 2.597,40, rounded = € 2.597,00.
+- Deductible debt (aftrekbare schuld): € 100.000,00 - € 3.800,00 = € 96.200,00. Debt return: € 96.200,00 × 2,70% = € 2.597,40, rounded = € 2.597,00.
 - Step 1: Taxable return = € 2.055,00 + € 16.170,00 - € 2.597,00 = € 15.628,00.
 - Step 2: Return base = € 150.000,00 + € 275.000,00 - € 96.200,00 = € 328.800,00.
 - Step 3: Tax base for savings and investments = € 328.800,00 - € 57.684,00 = € 271.116,00.
@@ -82,7 +82,7 @@ Source: [2025 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/n
 - Step 5: Benefit = € 15.730,00 × 32,65% = € 5.135,85, rounded down = € 5.135,00 per person.
 - Step 6: tax = 36% × € 5.135,00 = € 1.848,60, rounded down = € 1.848,00 per person.
 
-### Official example: partners with green investments and a second home abroad
+### Official example: partners with green investments (groene beleggingen) and a second home abroad
 
 Source: [2025 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2025). Whole-year partners with € 5.000,00 of savings, € 150.000,00 of green investments and a € 250.000,00 second home abroad, no debts.
 
@@ -96,7 +96,7 @@ Source: [2025 calculation page](https://www.belastingdienst.nl/wps/wcm/connect/n
 - Step 5: Benefit = € 20.493,00 × 67,25% = € 13.781,54, rounded down = € 13.781,00.
 - Step 6: tax = 36% × € 13.781,00 = € 4.961,16, rounded down = € 4.961,00.
 
-### Official example: actual return against the fictitious benefit
+### Official example: actual return (werkelijk rendement) against the fictitious benefit
 
 Source: [rekenvoorbeelden page](https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/rekenvoorbeelden-berekening-werkelijk-rendement).
 

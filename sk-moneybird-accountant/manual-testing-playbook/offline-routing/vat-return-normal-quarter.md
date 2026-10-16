@@ -6,7 +6,7 @@ catalog_applicable: true
 version: 1.0.0.0
 ---
 
-# VAT-001 -- The normal VAT return quarter
+# VAT-001 -- The normal VAT return (btw-aangifte) quarter
 
 This document captures the offline prompt, local read sequence, expected signals and evidence for VAT-001.
 
@@ -24,7 +24,7 @@ A quarter without a reverse-charged purchase, a KOR case or a year-end settlemen
 
 ## 2. SCENARIO CONTRACT
 
-- Objective: Route a normal-quarter VAT return request to the procedure, assemble the review pack and stop before any filing action.
+- Objective: Route a normal-quarter VAT return (btw-aangifte) request to the procedure, assemble the review pack and stop before any filing action.
 - Real user request: Prepare the VAT return for the first quarter of 2026. Do not call an API.
 - Prompt: Prepare the VAT return for the first quarter of 2026. Do not call an API.
 - Fixture rows: VAT-BRANCH-Q1-01 (the normal quarter row) and vat-return-normal-quarter (the eval case).
@@ -51,7 +51,7 @@ A quarter without a reverse-charged purchase, a KOR case or a year-end settlemen
 
 ### Expected
 
-The check prints route-table: ok. The T10 row wins for the named VAT return. The procedure and the 2026 VAT figures load. The answer names the pack blocks P1 to P9, reports prepared and keeps the filing route with the Operator. No accounting API is called.
+The check prints route-table: ok. The T10 row wins for the named VAT return (btw-aangifte). The procedure and the 2026 VAT figures load. The answer names the pack blocks P1 to P9, reports prepared and keeps the filing route with the Operator. No accounting API is called.
 
 ### Evidence
 

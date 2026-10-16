@@ -40,7 +40,7 @@ The skill routes historical Jortt work by phase and gate. It also reviews the cu
 
 ### Operating Boundary
 
-Jortt access is read-only. Moneybird calls go through `moneybird-guard`. Reader sessions set `MONEYBIRD_GUARD_READ_ONLY=1`, which blocks every non-GET call before it reaches the official CLI. A write needs the writer configuration, the phase gate, Operator approval, `--confirm-write` and `--approval <ref>` for a flushed `WRITE_INTENT` journal entry. A write to a non-pilot administration also needs `--production`.
+Jortt access is read-only. Moneybird calls go through `moneybird-guard`. Reader sessions set `MONEYBIRD_GUARD_READ_ONLY=1`, which blocks every non-GET call before it reaches the official CLI. A write needs the writer configuration, the phase gate, Operator approval, `--confirm-write` and `--approval <ref>` for a flushed `WRITE_INTENT` journal entry (memoriaal). A write to a non-pilot administration also needs `--production`.
 
 ---
 
@@ -102,7 +102,7 @@ Read [the project contract](../AGENTS.md) first, then [SKILL.md](SKILL.md). The 
 
 Topic routes live in one place, the Task-Type Table in `SKILL.md` section 2. The router block below that table is generated from the Task-Type Table by `python3 -I sk-moneybird-accountant/scripts/check-route-table.py --write`, which also feeds the table's multi-word signals to `graph-metadata.json`. This README does not repeat them.
 
-Three rows prepare a tax deliverable: T10 the VAT return, T11 the yearly overview and T12 the income tax return. Each routes to its own folder under `references/`. A request to file, submit, pay or lock a period stays on T8, which refuses it. Filing remains an Operator action.
+Three rows prepare a tax deliverable: T10 the VAT return (btw-aangifte), T11 the yearly overview (jaaroverzicht) and T12 the income tax return (aangifte inkomstenbelasting). Each routes to its own folder under `references/`. A request to file, submit, pay or lock a period stays on T8, which refuses it. Filing remains an Operator action.
 
 Check the current tax year before you use any rate or threshold. The [Dutch tax rules](references/tax-rules/dutch-tax-rules.md) explain each rule and route to the year folder, such as [2024](references/tax-rules/2024/README.md), where every topic has its own folder with its figures, rules, examples and notes files. The [Moneybird bookkeeping reference](references/moneybird-bookkeeping.md) covers the accounting treatment of common events. The [Jortt to Moneybird mapping](references/migration/jortt-to-moneybird-mapping.md) lists concept matches and migration traps. Exports the Jortt API does not provide come from you, through the Jortt UI.
 
@@ -216,13 +216,13 @@ The checks prove the routes, links, anchors and offline tool behavior. They do n
 | [Jortt tool skill](../cli-jortt/SKILL.md) | Jortt reads and source extraction |
 | [Moneybird tool skill](../cli-moneybird/SKILL.md) | Guarded Moneybird operations |
 | [Dutch tax rules](references/tax-rules/dutch-tax-rules.md) | How each rule works across years, source conflicts, gaps and record duties |
-| [Tax year folders](references/tax-rules/2024/README.md) | One folder per tax year 2020 to 2027, each with twelve topic folders holding figures, rules, examples and notes: BTW, income tax, Zvw, entrepreneur deductions, investments, costs and car, box 3, box 2, BV, pension, work relationship and procedure |
+| [Tax year folders](references/tax-rules/2024/README.md) | One folder per tax year 2020 to 2027, each with twelve topic folders holding figures, rules, examples and notes: VAT, income tax (inkomstenbelasting), Zvw, entrepreneur deductions, investments, costs and car, box 3, box 2, BV, pension, work relationship and procedure |
 | [Bookkeeping reference](references/moneybird-bookkeeping.md) | Common Moneybird accounting events |
-| [Purchase invoice reference](references/purchase-invoices.md) | Booking purchase invoices, receipts and orders, with the VAT rate per case |
+| [Purchase invoice reference](references/purchase-invoices.md) | Booking purchase invoices, receipts and orders, with the VAT rate (btw-tarief) per case |
 | [Mixed-use cost reference](references/mixed-use-costs.md) | A cost used partly privately, with the business share, the VAT split and the private booking |
 | [Fixed asset reference](references/fixed-assets.md) | When a purchase is an asset, depreciation, the VAT revision period and disposal |
 | [VAT return reference](references/vat-return/README.md) | Preparing a VAT period for Operator review, with the section and derivation rules and the review pack |
 | [Yearly overview reference](references/yearly-overview/README.md) | Preparing the yearly close for Operator review, with the auditfile gate, the fiscal reconciliation and the hand-off |
-| [Income tax return reference](references/income-tax-return/README.md) | Preparing one income tax return for Operator review, with the Operator inputs, the claim register and the open points |
+| [Income tax return reference](references/income-tax-return/README.md) | Preparing one income tax return (aangifte inkomstenbelasting) for Operator review, with the Operator inputs, the claim register and the open points |
 | [Yearly overview template](assets/yearly-overview/yearly-overview-template.html) | The bilingual printable layout of the prepared yearly pack, with a braced placeholder for every value |
 | [Source library](references/tax-rules/source-library.md) | Every external source the skills cite, by authority, with access notes and a generated index |

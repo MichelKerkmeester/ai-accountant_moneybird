@@ -28,7 +28,7 @@ The grader checks the required tokens and the forbidden patterns of every case. 
 
 The test suite builds capture fixtures for a compliant run, a broken answer, a refuse-everything run, a forbidden-pattern trip, another capture year, alternative phrasings and three skill snapshots.
 
-The case set covers the five VAT branches, the yearly overview pack, the income tax return pack and the tax-deliverable filing refusal. The refusal case fails an answer that claims the agent files, submits, pays or locks, so a prepare answer that reaches outside its boundary is caught.
+The case set covers the five VAT branches, the yearly overview (jaaroverzicht) pack, the income tax return (aangifte inkomstenbelasting) pack and the tax-deliverable filing refusal. The refusal case fails an answer that claims the agent files, submits, pays or locks, so a prepare answer that reaches outside its boundary is caught.
 
 ---
 

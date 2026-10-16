@@ -37,13 +37,13 @@ This part holds the worked examples for the Work relationship and self-employmen
 No official example for this topic was found in the checked 2027 material, so every example below is marked `Calculated example`.
 
 **Example 1, `Calculated example`: the VBAR amounts and the unsettled 2027 rate test.**
-Rule: art. 7:610aa BW, in force from 31 December 2026 by the Decree of 13 July 2026 (Besluit van 13 juli 2026), Stb. 2026, 207, so it applies throughout 2027. The working person (werkende) is presumed to work under an employment contract (arbeidsovereenkomst) when the pay is at most the applicable hourly amount. Lid 2 indexes the amount with the statutory minimum wage (WML), rounded up from the unrounded amount. The first applicable amount is given by ministerial regulation (ministeriële regeling) under art. III lid 2. When the presumption applies, the working person can invoke it and the client (opdrachtgever) must prove there is no employment contract.
+Rule: art. 7:610aa BW, in force (in werking) from 31 December 2026 by the Decree of 13 July 2026 (Besluit van 13 juli 2026), Stb. 2026, 207, so it applies throughout 2027. The working person (werkende) is presumed to work under an employment contract (arbeidsovereenkomst) when the pay is at most the applicable hourly amount. Lid 2 indexes the amount with the statutory minimum wage (wettelijk minimumloon, WML), rounded up from the unrounded amount. The first applicable amount is given by ministerial regulation (ministeriële regeling) under art. III lid 2. When the presumption applies, the working person can invoke it and the client (opdrachtgever) must prove there is no employment contract.
 Amounts in the checked material: € 36 (the statutory base text, reference date (peildatum) 1 January 2025) and € 38 (the indexed amount, reference date 1 January 2026).
 Input: invented rates. A self-employed sole trader (ZZP) works for a private limited company (BV).
 - € 34 per hour: € 34 is at most € 36 and at most € 38.
 - € 37 per hour: € 37 is more than € 36 and at most € 38.
 - € 40 per hour: € 40 is more than € 36 and more than € 38.
-The lines are arithmetic against the two stated amounts. They are not a settled 2027 outcome, because the applicable 2027 amount is not settled. The ministerial regulation under art. III lid 2 was not found, and the 2027 amount is UNVERIFIED, about € 38 by the explanatory memorandum (MvT) method on the WML of 1 July 2026, and may change with the WML of 1 January 2027. In particular, the result at € 40 cannot be concluded, since the applicable 2027 amount is not settled. The same reservation applies at € 34 and € 37.
+The lines are arithmetic against the two stated amounts. They are not a settled 2027 outcome, because the applicable 2027 amount is not settled. The ministerial regulation under art. III lid 2 was not found, and the 2027 amount is UNVERIFIED, about € 38 by the explanatory memorandum (memorie van toelichting, MvT) method on the WML of 1 July 2026, and may change with the WML of 1 January 2027. In particular, the result at € 40 cannot be concluded, since the applicable 2027 amount is not settled. The same reservation applies at € 34 and € 37.
 Sources: [Stb. 2026, 158](https://zoek.officielebekendmakingen.nl/stb-2026-158.html), [Stb. 2026, 207](https://zoek.officielebekendmakingen.nl/stb-2026-207.html), [MvT](https://zoek.officielebekendmakingen.nl/kst-36783-3.html).
 
 **Example 2, `Calculated example`: the VBAR hourly amount by the MvT method.**
@@ -69,8 +69,8 @@ Sources: [Handhavingsplan 2026](https://download.belastingdienst.nl/belastingdie
 
 **Example 4, `Calculated example`: the penalty policy (boetebeleid) by year for the same relationship.**
 Input: the same relationship, no bad faith.
-- Corrections (correcties) over 2025: no default penalties (verzuimboetes) and no penalties for gross negligence or intent (vergrijpboetes) for the qualification of employment relationships (arbeidsrelaties). This stays so.
-- Corrections over 2026: no default penalties. A penalty for gross negligence or intent (vergrijpboete) is possible under the normal rules from 1 January 2026, also for corrections over 2026.
+- Corrections (correcties) over 2025: no default penalties (verzuimboetes) and no penalties (vergrijpboetes) for gross negligence (grove schuld) or intent for the qualification of employment relationships (arbeidsrelaties). This stays so.
+- Corrections over 2026: no default penalties. A penalty (vergrijpboete) for gross negligence or intent is possible under the normal rules from 1 January 2026, also for corrections over 2026.
 - Corrections over 2027: the remaining parts of the soft landing (zachte landing) lapse on 1 January 2027. Default penalties are possible again and a business visit (bedrijfsbezoek) is no longer the default starting point for a control.
 The period from 1 January 2025 to 1 January 2027 is 24 months, or 2 years. This is enforcement policy, not statute.
 Sources: [Handhavingsplan 2026](https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z62fd.pdf), [handhaving page](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/handhaving).
@@ -84,7 +84,7 @@ Condition: the parties must work as described. If not, the model agreement gives
 Sources: [geen nieuwe modelovereenkomsten](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/geen-nieuwe-modelovereenkomsten-meer), [werken met modelovereenkomsten](https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/werken-met-modelovereenkomsten).
 
 **Example 6, `Calculated example`: the Self-Employed Persons Act (Zelfstandigenwet) timing.**
-Input: the Self-Employed Persons Act is proposed, with an intended entry into force in January 2028.
+Input: the Self-Employed Persons Act is proposed, with an intended entry into force (beoogde inwerkingtreding) in January 2028.
 Step 1: in 2027 the self-employment test (zelfstandigentoets) and work relationship test (werkrelatietoets) are not in force.
 Step 2: the period from 1 January 2027 to 1 January 2028 is 12 months.
 Step 3: a relationship in 2027 cannot rely on the safe harbour (veilige haven).

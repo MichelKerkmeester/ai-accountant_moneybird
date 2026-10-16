@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Income tax box 1 2023: Figures
+# Income tax (inkomstenbelasting) box 1 2023: Figures
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the 2023 Box 1 brackets, tax credits (heffingskortingen), the rate adjustment (tariefsaanpassing) and how taxable sole-trader profit enters Box 1 income. The 2023 rules and figures shown here are enacted, with the stated corrections and open points identified below. A separate Zvw income-related contribution exists and is covered by the Zvw file (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
+This file covers the 2023 Box 1 brackets, tax credits (heffingskortingen), the rate adjustment (tariefsaanpassing) and how taxable sole-trader profit enters Box 1 income. The 2023 rules and figures shown here are enacted, with the stated corrections and open points identified below. A separate Zvw income-related contribution (inkomensafhankelijke bijdrage) exists and is covered by the Zvw file (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet).
 
 ---
 
@@ -45,7 +45,7 @@ This file covers the 2023 Box 1 brackets, tax credits (heffingskortingen), the r
 | Statutory income-tax table amounts | 4 |
 | Statutory table amounts for people born before 1 January 1946 | 5 |
 | First-bracket rate in the year AOW age is reached | 6 |
-| Income-tax part of first statutory band | 7 |
+| Income-tax part (belastingdeel) of first statutory band | 7 |
 | National insurance premium (premie volksverzekeringen) rate and components | 8 |
 | National insurance premium ceiling | 9 |
 | Rate adjustment (tariefsaanpassing) | 10 |
@@ -57,7 +57,7 @@ This file covers the 2023 Box 1 brackets, tax credits (heffingskortingen), the r
 | Income-related combination tax credit (inkomensafhankelijke combinatiekorting) below state pension age | 16 |
 | Income-related combination tax credit for a full year at state pension age | 17 |
 | IACK child and co-parent test | 18 |
-| Tax credits in the year state pension age is reached | 19 |
+| Tax credits (heffingskortingen) in the year state pension age is reached | 19 |
 | Income-tax part (belastingdeel) and premium parts (premiedelen) of tax credits | 20 |
 | Payment of unused tax credits to a lower-earning partner | 21 |
 | Self-employed person's deduction (zelfstandigenaftrek) | 22 |
@@ -77,8 +77,8 @@ This file covers the 2023 Box 1 brackets, tax credits (heffingskortingen), the r
 | Box 1 full-year AOW age, born before 1 January 1946 | 19,03% up to € 38.703, then 36,93% to € 73.031 and 49,50% above | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/belastingberekening and https://wetten.overheid.nl/BWBR0011353/2023-01-01 art. 2.10a |
 | Statutory income-tax table amounts | 9,28% to € 37.149, € 3.447 plus 36,93% to € 73.031, € 16.698 plus 49,50% above | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
 | Statutory table amounts for people born before 1 January 1946 | € 3.591 and € 16.268 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 art. 2.10a |
-| First-bracket rate in the year AOW age is reached | January 19,03%, February 20,52%, March 22,01%, April 23,50%, May 24,99%, June 26,48%, July 27,98%, August 29,47%, September 30,96%, October 32,45%, November 33,94%, December 35,43%. First bracket ends at € 37.149 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/belastingberekening |
-| Income-tax part of first statutory band | 9,28% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
+| First-bracket rate in the year AOW age is reached | January 19,03%, February 20,52%, March 22,01%, April 23,50%, May 24,99%, June 26,48%, July 27,98%, August 29,47%, September 30,96%, October 32,45%, November 33,94%, December 35,43%. First bracket (eerste schijf) ends at € 37.149 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/belastingberekening |
+| Income-tax part (belastingdeel) of first statutory band | 9,28% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 |
 | National insurance premium (premie volksverzekeringen) rate and components | 27,65% total: AOW 17,90%, Anw 0,10%, Wlz 9,65% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/premie_volksverzekeringen |
 | National insurance premium ceiling | € 37.149, or € 38.703 for people born before 1 January 1946 | enacted | Corrected | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/premie_volksverzekeringen |
 | Rate adjustment (tariefsaanpassing) | 12,57%. Deductions above € 73.031 are worth at most 36,93% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2023-01-01 art. 2.10 lid 2 |
@@ -90,7 +90,7 @@ This file covers the 2023 Box 1 brackets, tax credits (heffingskortingen), the r
 | Income-related combination tax credit (inkomensafhankelijke combinatiekorting) below state pension age | Above € 5.547: 11,45%, maximum € 2.694 at earned income of € 29.076 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/heffingskortingen |
 | Income-related combination tax credit for a full year at state pension age | 5,90%, maximum € 1.389 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/heffingskortingen |
 | IACK child and co-parent test | Child born after 31 December 2010 and registered at the taxpayer's address for at least 6 months. Co-parent: at least 78 days in a 6-month period in a repeating pattern with each parent | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/heffingskortingen |
-| Tax credits in the year state pension age is reached | Rule and amount not found in the checked sources | unknown | UNVERIFIED | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/heffingskortingen |
+| Tax credits (heffingskortingen) in the year state pension age is reached | Rule and amount not found in the checked sources | unknown | UNVERIFIED | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/heffingskortingen |
 | Income-tax part (belastingdeel) and premium parts (premiedelen) of tax credits | Income-tax part 9,28%. Premium parts: AOW 17,90%, Anw 0,10%, Wlz 9,65% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/heffingskortingen |
 | Payment of unused tax credits to a lower-earning partner | Employment tax credit (AK) and IACK payments ended from 2023. General tax credit (AHK) payment ended for people born in 1963 or later and may continue for people born before 1 January 1963. Listed income references: own Box 1 income € 10.705, partner € 28.580, or € 32.480 at AOW age | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/heffingskortingen |
 | Self-employed person's deduction (zelfstandigenaftrek) | € 5.030, or € 2.515 at state pension age (AOW age) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |

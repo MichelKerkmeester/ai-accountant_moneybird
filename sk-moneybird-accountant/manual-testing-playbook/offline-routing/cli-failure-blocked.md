@@ -27,7 +27,7 @@ A failed read is easy to hide behind a value from memory. This check confirms th
 - Objective: Route an exhausted CLI read to the blocked answer and keep every retry with its documented owner.
 - Real user request: A required Moneybird contacts read is rate limited and stops after three attempts. What does the answer say and what may be retried? Keep this as an offline routing check.
 - Prompt: A required Moneybird contacts read is rate limited and stops after three attempts. What does the answer say and what may be retried? Keep this as an offline routing check.
-- Fixture rows: cli-read-exhausted-blocked (en). The offline suites cover the retry owners and the bounded attempts.
+- Fixture rows: cli-read-exhausted-blocked (English). The offline suites cover the retry owners and the bounded attempts.
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references. Do not use network access or accounting CLIs.
 - Expected signals: Answers blocked, names the missing contacts read as the missing capability, says one guard invocation makes one call, keeps the three-attempt bounded GET loop with the parent, keeps the one authorized read reissue with the migration orchestrator, keeps the Jortt 429 retries with jortt-cli and repeats no non-GET call.
 - Desired user-visible outcome: A concise blocked report with the missing capability, each retry owner and no value taken from memory.

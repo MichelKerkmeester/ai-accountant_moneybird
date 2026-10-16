@@ -34,21 +34,21 @@ This part holds the how-it-works rules for the VAT (BTW) 2024 topic. The overvie
 
 <a id="3-how-it-works"></a>
 
-### Standard VAT rate
+### Standard VAT rate (btw-tarief)
 
-The standard rate is 21% for supplies that do not qualify for the reduced rate, the zero rate or an exemption. The rate structure is set out in Article 9 of the Wet OB. [Wet OB, 1 January 2024](https://wetten.overheid.nl/BWBR0002629/2024-01-01)
+The standard rate is 21% for supplies that do not qualify for the reduced rate, the zero rate or an exemption. The rate structure is set out in Article 9 of the Turnover Tax Act 1968 (Wet OB). [Wet OB, 1 January 2024](https://wetten.overheid.nl/BWBR0002629/2024-01-01)
 
 ### Reduced VAT rate
 
-The 9% rate applies to goods and services listed in Table I. The listed goods include food, water, horticultural products, medicines and aids, art, collectibles and antiques, books and periodicals. Listed services include bicycle, shoe, leather-goods, clothing and household-linen repairs, hairdressing, certain work on homes, camping, cultural and recreational access, performing artists, sport and bathing, and passenger transport. The list also covers comparable electronic publications, news websites and apps unless they mainly carry advertising, video or audible music. The Dutch Tax and Customs Administration (Belastingdienst) also identifies related services such as supplying goods, selling food in hospitality, renting or repairing medical aids, lending books and lending art by the artist. [Wet OB, 1 January 2024](https://wetten.overheid.nl/BWBR0002629/2024-01-01), [goods at 9%](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/goederen_9_btw/goederen_met_9_btw), [services at 9%](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/diensten_9_btw/)
+The 9% rate applies to goods and services listed in Table I (tabel I). The listed goods include food, water, ornamental horticultural products (sierteeltproducten), medicines and aids, art, collectibles and antiques, books and periodicals. Listed services include bicycle, shoe, leather-goods, clothing and household-linen repairs, hairdressing, certain work on homes, camping, cultural and recreational access, performing artists, sport and bathing, and passenger transport. The list also covers comparable electronic publications, news websites and apps unless they mainly carry advertising, video or audible music. The Dutch Tax and Customs Administration (Belastingdienst) also identifies related services such as supplying goods, selling food in hospitality, renting or repairing medical aids, lending books and lending art by the artist. [Wet OB, 1 January 2024](https://wetten.overheid.nl/BWBR0002629/2024-01-01), [goods at 9%](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/goederen_9_btw/goederen_met_9_btw), [services at 9%](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/diensten_9_btw/)
 
 Electronic supply or lending of publications and access to news websites qualified from 1 January 2020 under item b.21 of Table I. [Toelichting Tabel I, decision of 31 March 2022](https://zoek.officielebekendmakingen.nl/stcrt-2022-9114.html)
 
 ### Zero rate
 
-The zero rate applies to goods and services in Table II if the conditions set by general regulation are met. A zero-rated supply is still a taxable supply for input VAT purposes. This differs from an exempt supply. [Wet OB, 1 January 2024](https://wetten.overheid.nl/BWBR0002629/2024-01-01), [Belastingdienst handbook](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
+The zero rate applies to goods and services in Table II (tabel II) if the conditions set by general regulation are met. A zero-rated supply is still a taxable supply for input VAT (voorbelasting) purposes. This differs from an exempt supply. [Wet OB, 1 January 2024](https://wetten.overheid.nl/BWBR0002629/2024-01-01), [Belastingdienst handbook](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
 
-For an intra-EU supply of goods, the seller needs records showing the goods went to another EU country, the buyer’s valid VAT ID from another member state, and an ICP statement (ICP) that is timely, correct and complete. A late or incorrect ICP can cost the seller the zero rate and can lead to a fine. [Belastingdienst ICP guidance](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf)
+For an intra-EU supply of goods (levering van goederen), the seller needs records showing the goods went to another EU country, the buyer’s valid VAT ID (btw-id) from another member state, and an ICP statement (opgaaf ICP) that is timely, correct and complete. A late or incorrect ICP can cost the seller the zero rate and can lead to a fine. [Belastingdienst ICP guidance](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf)
 
 ### Accommodation (logies)
 
@@ -60,11 +60,11 @@ The zero rate applies to the supply and installation of covered solar panels on 
 
 ### VAT exemptions
 
-Article 11, paragraph 1, parts a to w lists exemptions. These include certain supplies and letting of immovable property, care, youth work, sport, social and cultural bodies, health care, funeral services, money, securities and fund management, credit and payments, insurance, games of chance, universal postal services, public broadcasting, education, lectures at cost, composers, writers and journalists, certain movable goods used only for exempt supplies, organs and blood, member services of interest groups, cost-sharing groups, fundraising and childcare. The Dutch Tax and Customs Administration also lists investment gold and canteens, and notes that the exemptions also apply to imports. The exemption depends on the particular legal conditions for the activity. [Wet OB, 1 January 2026](https://wetten.overheid.nl/BWBR0002629/2026-01-01), [Belastingdienst exemption list](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/vrijstellingen/)
+Article 11, paragraph 1, parts a to w lists exemptions. These include certain supplies and letting of immovable property (onroerende zaken), care, youth work, sport, social and cultural bodies, health care, funeral services, money, securities and fund management, credit and payments, insurance, games of chance, universal postal services, public broadcasting, education, lectures at cost, composers, writers and journalists, certain movable goods used only for exempt supplies, organs and blood, member services of interest groups, cost-sharing groups, fundraising and childcare. The Dutch Tax and Customs Administration also lists investment gold (beleggingsgoud) and canteens, and notes that the exemptions also apply to imports. The exemption depends on the particular legal conditions for the activity. [Wet OB, 1 January 2026](https://wetten.overheid.nl/BWBR0002629/2026-01-01), [Belastingdienst exemption list](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/vrijstellingen/)
 
 ### Input VAT on zero-rated and exempt supplies
 
-A business can deduct input VAT attributable to a zero-rated supply, subject to the ordinary deduction conditions. It cannot deduct input VAT attributable to exempt supplies. Where a business has both taxed and exempt turnover, it must account for the proportion attributable to each in the final return of the year. [Belastingdienst handbook](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf), [Belastingdienst exemption list](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/vrijstellingen/)
+A business can deduct input VAT attributable to a zero-rated supply, subject to the ordinary deduction conditions. It cannot deduct input VAT attributable to exempt supplies. Where a business has both taxed and exempt turnover (vrijgestelde omzet), it must account for the proportion attributable to each in the final return of the year. [Belastingdienst handbook](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf), [Belastingdienst exemption list](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/tarieven_en_vrijstellingen/vrijstellingen/)
 
 ### Conditions for 0% intra-EU goods supply
 
@@ -72,11 +72,11 @@ The seller must retain proof of transport to another EU country, check that the 
 
 ### KOR turnover ceiling
 
-The 2024 KOR applied to an entrepreneur established in the Netherlands or with a fixed establishment there whose Dutch turnover in the calendar year did not exceed € 20.000. For 2024, the law tested turnover in the current calendar year only. It did not make prior-year turnover an entry condition. [Wet OB, 1 January 2024](https://wetten.overheid.nl/BWBR0002629/2024-01-01)
+The 2024 KOR applied to an entrepreneur established in the Netherlands or with a fixed establishment (vaste inrichting) there whose Dutch turnover in the calendar year did not exceed € 20.000. For 2024, the law tested turnover in the current calendar year only. It did not make prior-year turnover an entry condition. [Wet OB, 1 January 2024](https://wetten.overheid.nl/BWBR0002629/2024-01-01)
 
 The old KOR permitted no VAT deduction and no VAT amount on the invoice. A legal person such as a BV could also choose the KOR according to the Dutch Tax and Customs Administration handbook. If the entrepreneur exceeded the ceiling, the exemption ended from the supply that crossed it. [Wet OB, 1 January 2024](https://wetten.overheid.nl/BWBR0002629/2024-01-01), [Belastingdienst handbook](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf)
 
-### KOR territorial eligibility and legal form
+### KOR territorial eligibility and legal form (rechtsvorm)
 
 The old KOR required establishment in the Netherlands or a fixed establishment there. The handbook explains that legal persons, including a BV, could use the scheme. A sole trader and a BV should therefore assess their own VAT position and turnover separately in light of the rules applicable to each entrepreneur. [Wet OB, 1 January 2024](https://wetten.overheid.nl/BWBR0002629/2024-01-01), [Belastingdienst handbook](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf)
 
@@ -98,9 +98,9 @@ Under the handbook’s explanation of the old KOR, adjustment (herziening) for i
 
 The transition provisions took effect on 1 October 2024. A participant in the old KOR was treated as having notified the Dutch Tax and Customs Administration for the new scheme unless they opted out by 3 December 2024. A new transition notice also had to be made by that date. An entrepreneur whose Dutch turnover in 2024 exceeded € 20.000 was barred from entering the new KOR in 2025. [Stb. 2023, 278](https://zoek.officielebekendmakingen.nl/stb-2023-278.html)
 
-### Normal VAT return period
+### Normal VAT return (btw-aangifte) period (aangiftetijdvak)
 
-Quarterly filing was the usual period. An entrepreneur could request monthly or yearly filing by letter to the tax office. The Dutch Tax and Customs Administration was to reply within six weeks, and a change began at the start of a new period. Late filing or payment could result in a monthly period being imposed. [Belastingdienst, change of VAT return period](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/wijziging-aangiftetijdvak-btw)
+Quarterly filing was the usual period. An entrepreneur could request monthly or yearly filing by letter to the tax office (belastingkantoor). The Dutch Tax and Customs Administration was to reply within six weeks, and a change began at the start of a new period. Late filing or payment could result in a monthly period being imposed. [Belastingdienst, change of VAT return period](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/wijziging-aangiftetijdvak-btw)
 
 A handbook for an earlier year stated that quarterly VAT payable above € 15.000 required monthly filing. The checked sources do not establish whether that trigger applied in 2024. See section 7. [Belastingdienst handbook 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf)
 
@@ -110,7 +110,7 @@ The checked handbooks for earlier and later years describe a yearly return for a
 
 ### Periodic return and payment deadline
 
-A periodic VAT return is due within a period set by the inspector of at least one month after the end of the tax period. Payment is due within one month after the period. The Dutch Tax and Customs Administration states that monthly and quarterly returns are due by the last day of the month after the month or quarter. A yearly return is due before 1 April of the following year, which puts the 2024 yearly return deadline on 31 March 2025. The filing date is the day the return is received. Filing and payment share the same due date. Extension is available only in the event of a calamity. [AWR, 1 January 2020](https://wetten.overheid.nl/BWBR0002320/2020-01-01), [Belastingdienst VAT return guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/), [Belastingdienst VAT dates](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums)
+A periodic VAT return is due within a period set by the inspector of at least one month after the end of the tax period. Payment is due within one month after the period. The Dutch Tax and Customs Administration states that monthly and quarterly returns are due by the last day of the month after the month or quarter. A yearly return is due before 1 April of the following year, which puts the 2024 yearly return deadline on 31 March 2025. The filing date (aangiftedatum) is the day the return is received. Filing and payment share the same due date. Extension is available only in the event of a calamity. [AWR, 1 January 2020](https://wetten.overheid.nl/BWBR0002320/2020-01-01), [Belastingdienst VAT return guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-waar-moet-u-aan-denken/), [Belastingdienst VAT dates](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/uiterste-aangifte-en-betaaldatums)
 
 ### Published calendar of 2024 VAT dates
 
@@ -120,7 +120,7 @@ The checked current VAT date page did not provide a separate published calendar 
 
 An entrepreneur must invoice supplies to another entrepreneur and to a legal person that is not an entrepreneur. An invoice is generally not needed for a private customer, subject to exceptions. The invoice must be issued by the 15th day of the month after the month of supply. The handbook gives an example of a supply on 10 April invoiced by 15 May. [Belastingdienst invoice rules](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/), [Belastingdienst handbook 2020](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2020_aa9701z01fd.pdf)
 
-The invoice must include the supplier’s and customer’s names and addresses, a VAT ID with NL where required, the KVK number where registered, the invoice date, a unique consecutive number, a description and quantity or scope, the date of supply or prepayment, the amounts excluding VAT per rate, the unit price, the rate and the VAT amount. For a fiscal unity, the invoice uses the VAT ID of the supplying part. [Belastingdienst invoice requirements](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/factuureisen)
+The invoice must include the supplier’s and customer’s names and addresses, a VAT ID with NL where required, the Chamber of Commerce (Kamer van Koophandel, KVK) number where registered, the invoice date, a unique consecutive number, a description and quantity or scope, the date of supply or prepayment, the amounts excluding VAT per rate, the unit price, the rate and the VAT amount. For a fiscal unity (fiscale eenheid), the invoice uses the VAT ID of the supplying part. [Belastingdienst invoice requirements](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/factuureisen)
 
 VAT is due no later than the period in which the customer pays. Digital invoicing requires the customer’s agreement and assurance of authenticity of origin, content integrity and readability. [Belastingdienst invoice rules](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/)
 
@@ -128,13 +128,13 @@ VAT is due no later than the period in which the customer pays. Digital invoicin
 
 A simplified invoice may be used for an invoice of at most € 100 including VAT, or for a correction invoice. It must contain the issue date, name and address, the goods or services, the VAT amount or information needed to calculate it, and a reference to the original invoice for a correction. The simplified form is not available for intra-EU supplies, distance sales or reverse-charged supplies in a state where the supplier is not established. [Belastingdienst simplified-invoice rules](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/aangepaste_regels_facturen/vereenvoudigde_factuur)
 
-### BUA threshold and own contribution
+### BUA threshold and own contribution (eigen bijdrage)
 
-The VAT deduction exclusion decree (Besluit uitsluiting aftrek omzetbelasting), or BUA, excludes deduction for certain staff provisions, gifts and business gifts. It also covers certain housing, wages in kind, sport, leisure and private transport. From 1 January 2024, test the total cost per recipient against € 227 per financial year without subtracting that recipient’s own contribution. A deduction exclusion does not apply up to the VAT charged to the recipient. [BUA, version applying from 23 February 2019](https://wetten.overheid.nl/BWBR0002636/2019-02-23), [decision ending subtraction of the own contribution](https://zoek.officielebekendmakingen.nl/stcrt-2023-28124.html)
+The VAT deduction exclusion decree (Besluit uitsluiting aftrek omzetbelasting), or BUA, excludes deduction for certain staff provisions, gifts and business gifts. It also covers certain housing, wages in kind (in natura), sport, leisure and private transport. From 1 January 2024, test the total cost per recipient against € 227 per financial year (boekjaar) without subtracting that recipient’s own contribution. A deduction exclusion does not apply up to the VAT charged to the recipient. [BUA, version applying from 23 February 2019](https://wetten.overheid.nl/BWBR0002636/2019-02-23), [decision ending subtraction of the own contribution](https://zoek.officielebekendmakingen.nl/stcrt-2023-28124.html)
 
 ### BUA commuting bicycle exception
 
-The BUA does not exclude deduction for a commuting bicycle costing at most € 749 including VAT when the stated conditions are met. The person must not have received a bicycle in the year or two years before, and other commuting transport must not have covered at least half of their travel days. The BUA also has carve-outs for food and drink for staff, licensed closed bus transport for commuting, and outplacement. [BUA, version applying from 23 February 2019](https://wetten.overheid.nl/BWBR0002636/2019-02-23)
+The BUA does not exclude deduction for a commuting bicycle costing at most € 749 including VAT when the stated conditions are met. The person must not have received a bicycle in the year or two years before, and other commuting transport must not have covered at least half of their travel days. The BUA also has carve-outs for food and drink for staff, closed-group bus transport (besloten busvervoer) for commuting, and outplacement. [BUA, version applying from 23 February 2019](https://wetten.overheid.nl/BWBR0002636/2019-02-23)
 
 ### BUA staff meals
 
@@ -142,7 +142,7 @@ For staff meals charged below cost plus 25%, the deduction excluded is up to 9% 
 
 ### Private-use car adjustment
 
-Private use includes commuting. Without records, the adjustment is 2,7% of the catalogue price including VAT and BPM. The 1,5% rate applies when no purchase VAT could be deducted, and after the fourth year following the year the car first came into use. The amount is capped at the VAT deducted in the year plus 1/5 of the VAT on purchase during the relevant period. The adjustment is reduced proportionally for exempt use and calculated pro rata for a part-year. Report it in the last return of the year. [Decision on VAT for private car use](https://wetten.overheid.nl/BWBR0043783/2020-07-04), [Belastingdienst private-use car guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/btw_en_de_auto/privegebruik_auto_van_de_zaak/privegebruik_auto_van_de_zaak)
+Private use (privégebruik) includes commuting. Without records, the adjustment is 2,7% of the catalogue price (catalogusprijs) including VAT and BPM. The 1,5% rate applies when no purchase VAT could be deducted, and after the fourth year following the year the car first came into use. The amount is capped at the VAT deducted in the year plus 1/5 of the VAT on purchase during the relevant period. The adjustment is reduced proportionally for exempt use and calculated pro rata for a part-year. Report it in the last return of the year. [Decision on VAT for private car use](https://wetten.overheid.nl/BWBR0043783/2020-07-04), [Belastingdienst private-use car guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/btw_en_de_auto/privegebruik_auto_van_de_zaak/privegebruik_auto_van_de_zaak)
 
 ### Last VAT return of the year
 
@@ -164,7 +164,7 @@ Cases include foreign suppliers, subcontracting and staff lending in constructio
 
 For the specified electronics, the threshold is € 10.000 or more per delivery per type of good. The supplier invoices without VAT and states “btw verlegd”, the customer’s VAT ID and the consideration per rate. [UBOB, 1 January 2020](https://wetten.overheid.nl/BWBR0002633/2020-01-01), [Belastingdienst reverse-charge invoicing](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_berekenen_aan_uw_klanten/waarover_btw_berekenen/verleggingsregeling/hoe_werkt_btw_verleggen)
 
-The customer reports domestic reverse-charged VAT in section 2 (rubriek 2), and VAT charged to the customer from abroad in section 4. The customer may deduct it if the purchase is used for taxable activity. [Belastingdienst reverse-charge guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_berekenen_aan_uw_klanten/waarover_btw_berekenen/verleggingsregeling/hoe_werkt_btw_verleggen)
+The customer reports domestic reverse-charged VAT (verlegde btw) in section 2 (rubriek 2), and VAT charged to the customer from abroad in section 4. The customer may deduct it if the purchase is used for taxable activity. [Belastingdienst reverse-charge guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_berekenen_aan_uw_klanten/waarover_btw_berekenen/verleggingsregeling/hoe_werkt_btw_verleggen)
 
 ### Intra-EU B2B services
 
@@ -172,7 +172,7 @@ For a general B2B service to a customer in another EU country, VAT is usually du
 
 ### ICP goods threshold and frequency
 
-Report intra-EU supplies of goods and services, own goods moved to another EU country and call-off stock transfers. The ICP total must agree with rubriek 3b for the same return period. Goods are reported in the period of the invoice date, and services in the period in which the service was supplied. No ICP is due for a period with nothing to report. Corrections go in the next ICP. The form permits at most 100 lines per section. [Belastingdienst ICP guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/opgaaf_icp/opgaaf_icp)
+Report intra-EU supplies of goods and services, own goods moved to another EU country and call-off stock (afroepvoorraad) transfers. The ICP total must agree with rubriek 3b for the same return period. Goods are reported in the period of the invoice date, and services in the period in which the service was supplied. No ICP is due for a period with nothing to report. Corrections go in the next ICP. The form permits at most 100 lines per section. [Belastingdienst ICP guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/opgaaf_icp/opgaaf_icp)
 
 Goods are normally reported monthly. Quarterly filing is allowed while goods supplies stay at or below € 50.000 in the quarter and in each of the previous four quarters. If the threshold is exceeded in the first month, file for each of the three months. If it is exceeded in the second month, report the first two months and then the final month. If it is exceeded in the third month, file quarterly for that period and monthly afterwards. After four consecutive quarters at or below the threshold, quarterly filing can resume from the fifth quarter if that quarter also stays below it. [Belastingdienst ICP periods](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/opgaaf_icp/tijdvak_opgaaf_icp/tijdvak_opgaaf_icp)
 
@@ -188,9 +188,9 @@ The € 10.000 threshold applies to qualifying intra-EU distance sales of goods 
 
 Below the threshold, the seller can opt for the VAT rate of the customer’s country. The choice lasts at least two years. If the threshold is exceeded, apply the foreign rate from the transaction that crosses it. Dutch VAT can apply again from 1 January after a full calendar year at or below the threshold. The threshold does not apply where the supplier has a fixed establishment in another EU country. A warehouse alone is not a fixed establishment. [Belastingdienst distance-sales guidance](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/btw-goederen-eu-particulieren)
 
-### OSS and import scheme
+### OSS and import scheme (invoerregeling)
 
-The Union scheme uses one return per quarter for covered EU distance sales and services. File by the last day of the month after the quarter, including a nil return. It can be used from the first day of the quarter after registration. For a first supply, the registration must arrive by the 10th day of the month after the month of supply. Three consecutive missed returns lead to exclusion for two years. Do not resubmit a return. Put corrections in a later return within three years of the original due date. Keep the OSS records for ten years. Returns use euros and the European Central Bank rate for the last day of the quarter. [Belastingdienst one-stop-shop guidance](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/btw-melden-eenloketsysteem)
+The Union (de unie) scheme (unieregeling) uses one return per quarter for covered EU distance sales and services. File by the last day of the month after the quarter, including a nil return. It can be used from the first day of the quarter after registration. For a first supply, the registration must arrive by the 10th day of the month after the month of supply. Three consecutive missed returns lead to exclusion for two years. Do not resubmit a return. Put corrections in a later return within three years of the original due date. Keep the OSS records for ten years. Returns use euros and the European Central Bank rate for the last day of the quarter. [Belastingdienst one-stop-shop guidance](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/btw-melden-eenloketsysteem)
 
 The import scheme is monthly and covers consignments of at most € 150. Three consecutive missed monthly returns lead to exclusion for two years. The claim that two years without supplies ends participation while returns are still being filed is UNVERIFIED and is not used here. [Belastingdienst one-stop-shop guidance](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/btw-melden-eenloketsysteem)
 
@@ -200,7 +200,7 @@ The checked value for 2024 says there was no national B2B e-invoicing duty, but 
 
 ### EU KOR
 
-The EU KOR was not in force in 2024. The published law took effect from 2025. [Stb. 2023, 278](https://zoek.officielebekendmakingen.nl/stb-2023-278.html)
+The EU KOR was not in force (in werking) in 2024. The published law took effect from 2025. [Stb. 2023, 278](https://zoek.officielebekendmakingen.nl/stb-2023-278.html)
 
 ---
 

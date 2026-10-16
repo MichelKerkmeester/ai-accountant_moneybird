@@ -30,7 +30,7 @@ This note lists what changed for tax year 2021. Section 2 holds the changes uniq
 - The self-employed person's deduction (zelfstandigenaftrek) fell from € 7.030 in 2020 to € 6.670 in 2021. [entrepreneur's allowance](business-deductions/notes.md#5-changes)
 - The rate adjustment (tariefsaanpassing) rose from 3,5% above € 68.507 in 2020 to 6,5% above € 68.507 in 2021. [entrepreneur's allowance](business-deductions/notes.md#5-changes)
 - The combined first rate for those below state pension age (AOW) fell from 37,35% to 37,10% and the first statutory boundary moved from € 34.712 to € 35.129. [income tax](income-tax/notes.md#5-changes)
-- The Zvw contribution by assessment (aanslag) rose from 5,45% in 2020 to 5,75% in 2021. [zvw](health-insurance-contribution/notes.md#5-changes)
+- The Zvw contribution (bijdrage zorgverzekeringswet) by assessment (aanslag) rose from 5,45% in 2020 to 5,75% in 2021. [zvw](health-insurance-contribution/notes.md#5-changes)
 - The tax-free allowance (heffingsvrij vermogen) rose from € 30.846 per person in 2020 to € 50.000 in 2021. [box-3](box-3/notes.md#5-changes)
 - The zero-emission reduction for a car first admitted in 2021 is 10% off capped at € 4.000, so 12% up to € 40.000. [costs and car](costs-and-car/notes.md#5-changes)
 - The maximum annual allowance (jaarruimte) rose from € 12.986 in 2020 to € 13.236 in 2021. [pension and disability insurance](pension-and-disability-insurance/notes.md#5-changes)
@@ -50,7 +50,7 @@ This note lists what changed for tax year 2021. Section 2 holds the changes uniq
 | [costs-and-car.md](costs-and-car/notes.md#5-changes) | 6 | Zero-emission private-use addition (bijtelling), the one real change. A car... |
 | [box-3.md](box-3/notes.md#5-changes) | 13 | Tax-free allowance (heffingsvrij vermogen): € 30.846 per person becomes €... |
 | [box-2.md](box-2/notes.md#5-changes) | 10 | Box 2 rate: 26,25% in 2020 to 26,9% in 2021, a rise of 0,65 point. Sources... |
-| [private-company-and-corporate-tax.md](private-company-and-corporate-tax/notes.md#5-changes) | 15 | Vpb first bracket: 2020 had up to and including € 200.000 at 16,5%, 2021 has up... |
+| [private-company-and-corporate-tax.md](private-company-and-corporate-tax/notes.md#5-changes) | 15 | Vpb first bracket (eerste schijf): 2020 had up to and including € 200.000 at... |
 | [pension-and-disability-insurance.md](pension-and-disability-insurance/notes.md#5-changes) | 22 | Annual allowance (jaarruimte) percentage stays 13,3%, unchanged from 2020... |
 | [work-relationship.md](work-relationship/notes.md#5-changes) | 7 | **Moratorium end date.** 2020: the fourth postponement to 1 January 2021 was... |
 | [procedure.md](procedure/notes.md#5-changes) | 15 | IB return 2020 deadline: before 8 May 2021, because the 1 May 2021 date was... |

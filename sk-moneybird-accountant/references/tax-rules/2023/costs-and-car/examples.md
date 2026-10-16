@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Costs and car (kosten en auto) 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Costs and car 2023 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -70,7 +70,7 @@ Train tickets for business trips of € 940,00 and a business taxi ride of € 6
 
 A taxpayer visits a conference (congres) abroad that is not necessary because of the nature of the work. Travel and accommodation cost € 1.850,00.
 
-- Cap: € 1.850,00 minus € 1.500,00 = € 350,00 is not deductible.
+- Cap: € 1.850,00 minus € 1.500,00 = € 350,00 is not deductible (niet aftrekbaar).
 - The remaining € 1.500,00 is part of the mixed costs posts of art. 3.15 and is subject to the threshold or the 80% election (art. 3.16 lid 2 f and lid 8, and art. 3.15 lid 2, https://wetten.overheid.nl/BWBR0011353/2023-01-01).
 
 ### Example 6: relocation costs (verhuiskosten) (Calculated example)
@@ -88,17 +88,17 @@ A car in the business assets (ondernemingsvermogen) has a value (waarde) of € 
 
 ### Example 8: the 500 km rule (Calculated example)
 
-A trip registration (rittenregistratie) shows 460 private kilometres and 31.000 business kilometres in 2023.
+A trip registration (rittenregistratie) shows 460 private kilometres (privékilometers) and 31.000 business kilometres in 2023.
 
-- Private use is at most 500 km a year, so the withdrawal is nil and no private-use addition is added.
+- Private use (privégebruik) is at most 500 km a year, so the withdrawal is nil and no private-use addition is added.
 - Commuting (woon-werkverkeer) does not count as private use for this test. With a certified trip registration system (keurmerk rittenregistratiesysteem) the registration is assumed conclusive (sluitend) (art. 3.20 lid 1 and lid 3, https://wetten.overheid.nl/BWBR0011353/2023-01-01).
 
 ### Example 9: zero-emission car (zero-emissieauto) first registered in 2023 (Calculated example)
 
-A car with 0 g CO2 per kilometre, first registered in 2023, catalogue price € 40.000,00.
+A car with 0 g CO2 per kilometre, first registered in 2023, catalogue price (catalogusprijs) € 40.000,00.
 
 - Standard: 22% x € 40.000,00 = € 8.800,00.
-- Reduction for first registration in 2023: 6% x € 40.000,00 = € 2.400,00, capped at € 1.800,00, so € 1.800,00.
+- Reduction for first registration (eerste toelating) in 2023: 6% x € 40.000,00 = € 2.400,00, capped at € 1.800,00, so € 1.800,00.
 - Withdrawal: € 8.800,00 minus € 1.800,00 = € 7.000,00.
 - Control through the 16% up to € 30.000,00 reading: 16% x € 30.000,00 = € 4.800,00 plus 22% x € 10.000,00 = € 2.200,00, together € 7.000,00 (art. 3.20 lid 2, https://wetten.overheid.nl/BWBR0011353/2023-01-01).
 
@@ -136,7 +136,7 @@ A training (scholing) costs € 1.200,00 including VAT (btw) and is claimed in o
 A taxpayer works from a loose desk in the living room and spends € 1.800,00 on a desk, a chair and a cabinet (kast).
 
 - The workspace is not self-contained, so the costs are not deductible and € 0,00 of the € 1.800,00 is deducted.
-- With its own entrance or stairway (opgang), own sanitary facilities and a space that could be rented to a third party, and with the income test met, the space would be self-contained and the costs would fall under the workspace rules (art. 3.16 lid 1, https://wetten.overheid.nl/BWBR0011353/2023-01-01).
+- With its own entrance or stairway (opgang), own sanitary facilities and a space that could be rented to a third party (derde), and with the income test met, the space would be self-contained and the costs would fall under the workspace rules (art. 3.16 lid 1, https://wetten.overheid.nl/BWBR0011353/2023-01-01).
 
 ### Example 15: telephone subscription at home (telefoonabonnement thuis) (Calculated example)
 
@@ -151,13 +151,13 @@ Assume the laptop and printer belong to the business assets. A taxpayer buys a l
 
 - The laptop of € 1.200,00 is depreciated, taking the residual value (restwaarde) into account.
 - The printer of € 350,00 is deducted in one go in the year of purchase.
-- If the VAT on both is deductible in the VAT return (btw-aangifte), the amounts are taken excluding VAT. Under the small businesses scheme (KOR), they are taken including VAT (https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/welke-kosten-mag-ik-aftrekken-van-mijn-bijverdiensten).
+- If the VAT on both is deductible in the VAT return (btw-aangifte), the amounts are taken excluding VAT. Under the small businesses scheme (kleineondernemersregeling, KOR), they are taken including VAT (https://www.belastingdienst.nl/wps/wcm/connect/nl/werk-en-inkomen/content/welke-kosten-mag-ik-aftrekken-van-mijn-bijverdiensten).
 
-### Example 17: VAT (btw) correction on the private car (Calculated example)
+### Example 17: VAT (btw) correction on the private car (privéauto) (Calculated example)
 
 A private car used for business has a catalogue price including VAT and bpm of € 30.000,00. There is no conclusive mileage records (sluitende kilometeradministratie), so all VAT is deducted during the year.
 
-- Annual correction (jaarcorrectie): 1,5% x € 30.000,00 = € 450,00 in rubriek 1d (rubriek 1d).
+- Annual correction (jaarcorrectie): 1,5% x € 30.000,00 = € 450,00 in rubriek 1d.
 - If only € 400,00 of VAT was deducted on use and maintenance during the year, the correction cannot exceed € 400,00 (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/btw_en_de_auto/zakelijk_gebruik_van_de_priveauto/zakelijk_gebruik_van_de_priveauto).
 
 ### Example 18: fine (geldboete) (Calculated example)

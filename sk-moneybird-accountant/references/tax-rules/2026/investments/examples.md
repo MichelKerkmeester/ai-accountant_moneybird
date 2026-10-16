@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Investment deduction and depreciation 2026: Examples
+# Investment deduction (investeringsaftrek) and depreciation 2026: Examples
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Investment deduction and depreciation (investeringsaftrek en afschrijving) 2026 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the investment deduction (investeringsaftrek) and depreciation 2026 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -87,7 +87,7 @@ The KIA is € 2.800. Rule from https://wetten.overheid.nl/BWBR0011353/2026-01-0
 
 ### Example 6. EIA combined with the KIA (Calculated example)
 
-A sole trader buys one new machine for € 100.000 in 2026. The machine is on the Energy List (Energielijst), it was not used before, and it is reported to RVO within 3 months.
+A sole trader buys one new machine for € 100.000 in 2026. The machine is on the Energy List (Energielijst), it was not used before, and it is reported to the Netherlands Enterprise Agency (Rijksdienst voor Ondernemend Nederland, RVO) within 3 months.
 
 Step 1. The machine is above the € 2.500 EIA floor and far below the € 153.000.000 maximum.
 Step 2. EIA = 40% × € 100.000 = € 40.000.
@@ -134,9 +134,9 @@ Figures from section 2, minimum value row.
 A sole trader buys a machine for € 50.000 in 2026 and claims the KIA. The investment falls in the 28% band, so the investment deduction (investeringsaftrek) percentage taken is 28%. He sells the machine in 2028 for € 30.000.
 
 Step 1. The sale is within five years after the start of the calendar year of the investment, 2026.
-Step 2. The transfer price of € 30.000 is above the € 2.900 threshold.
+Step 2. The transfer price (overdrachtsprijs) of € 30.000 is above the € 2.900 threshold.
 Step 3. Disinvestment addition = 28% × € 30.000 = € 8.400.
-Step 4. Check the cap. The investment amount over which deduction (aftrek) was taken is € 50.000, and € 8.400 is below that, so the full € 8.400 stands.
+Step 4. Check the cap. The investment amount (investeringsbedrag) over which deduction (aftrek) was taken is € 50.000, and € 8.400 is below that, so the full € 8.400 stands.
 
 The 2028 profit includes a disinvestment addition of € 8.400. Figures from section 2, KIA table and disinvestment addition threshold rows.
 

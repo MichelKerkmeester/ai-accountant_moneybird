@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Zvw contribution 2027: Examples
+# Zvw contribution (bijdrage zorgverzekeringswet) 2027: Examples
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Zvw contribution 2027 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Zvw contribution (bijdrage zorgverzekeringswet) 2027 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -34,11 +34,11 @@ This part holds the worked examples for the Zvw contribution 2027 topic. The ove
 
 <a id="4-worked-examples"></a>
 
-The checked material holds no official worked example with amounts for the Zvw in 2027. [Belastingplan 2027 (Kamerstuk 37022), nota naar aanleiding van het verslag](https://www.tweedekamer.nl/downloads/document?id=2026D50335) holds 2027 purchasing power calculation examples (koopkracht rekenvoorbeelden) and a starter's deduction effect table including the Zvw, but they are policy illustrations, not year-table examples, and the checked material prints no amounts from them ([Belastingplan 2027 (Kamerstuk 37022), nota naar aanleiding van het verslag](https://www.tweedekamer.nl/downloads/document?id=2026D50335)). All examples below are therefore calculated from the section 2 figures, with invented inputs.
+The checked material holds no official worked example with amounts for the Zvw in 2027. [Belastingplan 2027 (Kamerstuk 37022), nota naar aanleiding van het verslag](https://www.tweedekamer.nl/downloads/document?id=2026D50335) holds 2027 purchasing power calculation examples (koopkracht rekenvoorbeelden) and a starter's deduction (startersaftrek) effect table including the Zvw, but they are policy illustrations, not year-table examples, and the checked material prints no amounts from them ([Belastingplan 2027 (Kamerstuk 37022), nota naar aanleiding van het verslag](https://www.tweedekamer.nl/downloads/document?id=2026D50335)). All examples below are therefore calculated from the section 2 figures, with invented inputs.
 
 **Calculated example 1. Entrepreneur with profit from business (winst-ondernemer), profit of € 60.000, no starter's deduction.**
 
-Inputs: profit of € 60.000,00, self-employed person's deduction (zelfstandigenaftrek) € 900, SME profit exemption (MKB-winstvrijstelling) 12,70%, Zvw rate by assessment 5,02%.
+Inputs: profit of € 60.000,00, self-employed person (zelfstandige)'s deduction (zelfstandigenaftrek) € 900, SME profit exemption (MKB-winstvrijstelling) 12,70%, Zvw rate by assessment 5,02%.
 
 1. Profit from business (winst uit onderneming): € 60.000,00.
 2. Self-employed person's deduction: € 900,00.
@@ -46,8 +46,8 @@ Inputs: profit of € 60.000,00, self-employed person's deduction (zelfstandigen
 4. SME profit exemption: 12,70% of € 59.100,00 = € 7.505,70.
 5. Taxable profit from business (belastbare winst uit onderneming): € 59.100,00 minus € 7.505,70 = € 51.594,30.
 6. The maximum is € 82.547 and the base is at least nil, so the contribution income (bijdrage-inkomen) is € 51.594,30.
-7. Zvw contribution at 5,02%: 0,0502 times € 51.594,30 = € 2.590,03.
-8. For comparison, the same base at the employer health insurance contribution rate of 6,27%: 0,0627 times € 51.594,30 = € 3.234,96. The difference is € 3.234,96 minus € 2.590,03 = € 644,93.
+7. Zvw contribution (bijdrage zorgverzekeringswet) at 5,02%: 0,0502 times € 51.594,30 = € 2.590,03.
+8. For comparison, the same base at the employer health insurance (zorgverzekering) contribution (zvw-werkgeversheffing) rate of 6,27%: 0,0627 times € 51.594,30 = € 3.234,96. The difference is € 3.234,96 minus € 2.590,03 = € 644,93.
 
 Caveats: the 5,02% and 6,27% rates are proposed (https://www.rijksoverheid.nl/site/binaries/site-content/collections/documents/2026/09/15/xvi-volksgezondheid-welzijn-en-sport-rijksbegroting-2027/16-volksgezondheid-welzijn-en-sport.pdf Tabel 77), the maximum of € 82.547 is UNVERIFIED, and the SME profit exemption of 12,70% is adopted-not-yet-in-force.
 
@@ -65,7 +65,7 @@ Inputs: profit of € 100.000,00, self-employed person's deduction € 900, SME 
 
 Caveat: the cap of € 82.547,00 is UNVERIFIED, so the outcome moves with the final maximum.
 
-**Calculated example 3. Stacking with wage from employment.**
+**Calculated example 3. Stacking with wage from employment (loon uit loondienst).**
 
 The maximum applies once per person across channels, so wage that already bore a contribution uses up the headroom (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet to https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/inkomensafhankelijke_bijdrage_zorgverzekeringswet, https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/zorgverzekeringswet/veranderingen-bijdrage-zvw/percentages-zvw).
 

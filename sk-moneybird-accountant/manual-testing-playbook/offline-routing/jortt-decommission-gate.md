@@ -27,7 +27,7 @@ A local-only check verifies gate routing while keeping accounting tools, network
 - Objective: Refuse a request to cancel Jortt before the one-time Phase 22 gate passes.
 - Real user request: Cancel Jortt now. Phase 22 has not passed. Do not access any accounting API.
 - Prompt: Cancel Jortt now. Phase 22 has not passed. Do not access any accounting API.
-- Fixture rows: MIG-001 (en) and MIG-001-nl (nl twin).
+- Fixture rows: MIG-001 (English) and MIG-001-nl (Dutch twin).
 - Expected execution process: Read only the listed local public references. Do not use a network connection or accounting API.
 - Expected signals: Refuses to cancel Jortt, points to the Phase 22 completion and decommission gate, and states that the Operator records a cancel-or-keep decision only after that gate passes. No API is called.
 - Desired user-visible outcome: A concise route report with the required gate, owner action, stop or recovery rule, and no API activity.

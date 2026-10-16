@@ -12,11 +12,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Private limited company and corporate income tax (BV en vennootschapsbelasting) 2024: Figures
+# Private limited company (BV) and corporate income tax (vennootschapsbelasting) 2024: Figures
 
 **Rule:** These values hold for tax year 2024 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 1 of 4 of the Private limited company and corporate income tax (BV en vennootschapsbelasting) 2024 topic.
+Part 1 of 4 of the Private limited company (BV) and corporate income tax (vennootschapsbelasting) 2024 topic.
 
 - [rules.md](rules.md): how it works.
 - [examples.md](examples.md): the worked examples.
@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the corporate income tax (vennootschapsbelasting) for tax year 2024 and the rules that come with a BV, including the rate table, loss offsetting (verliesverrekening), the generic interest deduction limitation (generieke renteaftrekbeperking), the innovation box (innovatiebox), the participation exemption (deelnemingsvrijstelling), the fiscal unity (fiscale eenheid), the customary wage scheme (gebruikelijk loonregeling) for a director and substantial shareholder (DGA, directeur-grootaandeelhouder), Zvw, box 2, dividend tax (dividendbelasting), the conditional withholding tax (conditionele bronbelasting), the annual accounts (jaarrekening) size classes and the record-keeping obligation (administratieplicht). The law for 2024 is enacted and every value below carries its Check tag. What matters most in 2024: the Vpb rates stay at 19% up to € 200.000 and 25,8% above it, the art. 15b percentage stays at 20%, the customary salary (gebruikelijk loon) standard amount (normbedrag) rises to € 56.000, box 2 becomes a two bracket rate, the conditional withholding tax now also covers dividends, and the annual accounts size thresholds are raised for financial years from 1 January 2024. The open points for this year sit in section 7.
+This file covers the corporate income tax (vennootschapsbelasting) for tax year 2024 and the rules that come with a BV, including the rate table, loss offsetting (verliesverrekening), the generic interest deduction (renteaftrek) limitation (generieke renteaftrekbeperking), the innovation box (innovatiebox), the participation exemption (deelnemingsvrijstelling), the fiscal unity (fiscale eenheid), the customary wage (gebruikelijk loon) scheme (gebruikelijk loonregeling) for a director and substantial shareholder (DGA, directeur-grootaandeelhouder), Zvw, box 2, dividend tax (dividendbelasting), the conditional withholding tax (conditionele bronbelasting), the annual accounts (jaarrekening) size classes (grootteklassen) and the record-keeping obligation (administratieplicht). The law for 2024 is enacted and every value below carries its Check tag. What matters most in 2024: the Vpb rates stay at 19% up to € 200.000 and 25,8% above it, the art. 15b percentage stays at 20%, the customary salary (gebruikelijk loon) standard amount (normbedrag) rises to € 56.000, box 2 of the income tax (inkomstenbelasting) becomes a two bracket rate, the conditional withholding tax now also covers dividends, and the annual accounts size thresholds are raised for financial years from 1 January 2024. The open points for this year sit in section 7.
 
 ---
 
@@ -77,18 +77,18 @@ This file covers the corporate income tax (vennootschapsbelasting) for tax year 
 
 | Item | Value 2024 | Status | Check | Source |
 |---|---|---|---|---|
-| Corporate income tax (vennootschapsbelasting), first bracket (art. 22 Wet Vpb 1969) | up to and including € 200.000 at 19% | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 22) |
-| Corporate income tax, above the first bracket (art. 22 Wet Vpb 1969) | € 38.000 plus 25,8% | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 22) |
-| Generic interest deduction limitation (generieke renteaftrekbeperking) (art. 15b lid 1 Wet Vpb 1969) | the higher of 20% of the adjusted profit (gecorrigeerde winst) and € 1.000.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 15b) |
-| Loss offsetting (verliesverrekening) (art. 20 Wet Vpb 1969) | per year up to € 1.000.000 plus 50% of the profit above € 1.000.000, one year back and unlimited forward | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 20) |
+| Corporate income tax (vennootschapsbelasting), first bracket (art. 22 Wet Vpb 1969) | up to and including € 200.000 at 19%, the first bracket (eerste schijf) | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 22) |
+| Corporate income tax, above the first bracket (art. 22 Wet Vpb 1969) | € 38.000 plus 25,8%, for the part above the first bracket (boven de eerste schijf) | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 22) |
+| Generic interest deduction limitation (generieke renteaftrekbeperking) (art. 15b lid 1 Wet Vpb 1969) | the higher of 20% of the adjusted profit (gecorrigeerde winst) and € 1.000.000 for the interest deduction (renteaftrek) | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 15b) |
+| Loss offsetting (verliesverrekening) (art. 20 Wet Vpb 1969) | per year up to € 1.000.000 plus 50% of the profit above € 1.000.000, one year back (één jaar terug) and unlimited forward | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 20) |
 | Innovation box (innovatiebox), fraction (art. 12b Wet Vpb 1969) | 9/H, effective 9% | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 12b) |
-| Innovation box, smaller taxpayer (art. 12ba lid 2 Wet Vpb 1969) | advantages plus acquisition costs below € 37.500.000 over the year and the four preceding years, net turnover below € 250.000.000 over those five years | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2020-01-01, https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 12ba) |
-| Innovation box, flat rate (art. 12bd Wet Vpb 1969) | 25%, maximum € 25.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 12bd) |
-| Participation (deelneming) threshold (art. 13 lid 2 Wet Vpb 1969) | 5% of the nominal paid-up capital | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 13) |
-| Fiscal unity (fiscale eenheid), ownership requirement (art. 15 Wet Vpb 1969) | at least 95% | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 15) |
-| Consolidated Decree (verzamelbesluit) fiscal unity | Decree of 2 April 2024, nr. 2024-186206, Stcrt. 2024, 11814, published 25-04-2024, in force the day after publication | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2024-11814.html |
-| Customary salary (gebruikelijk loon), standard amount (art. 12a Wet LB 1964) | € 56.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2024-01-01 (art. 12a) |
-| Customary salary, comparable wage | 100% | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2024-01-01 (art. 12a) |
+| Innovation box, smaller taxpayer (art. 12ba lid 2 Wet Vpb 1969) | for a smaller taxpayer (kleinere belastingplichtige): advantages plus acquisition costs (aanschaffingskosten) below € 37.500.000 over the year and the four preceding years, net turnover (netto-omzet) below € 250.000.000 over those five years | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2020-01-01, https://wetten.overheid.nl/BWBR0002672/2026-01-01 (art. 12ba) |
+| Innovation box, flat rate (art. 12bd Wet Vpb 1969) | 25% (forfait), maximum € 25.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 12bd) |
+| Participation (deelneming) threshold (art. 13 lid 2 Wet Vpb 1969) | 5% of the nominal paid-up capital (nominaal gestort kapitaal) | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 13) |
+| Fiscal unity (fiscale eenheid), ownership requirement (art. 15 Wet Vpb 1969) | at least 95% (bezitseis) | enacted | Verified | https://wetten.overheid.nl/BWBR0002672/2024-01-01 (art. 15) |
+| Consolidated Decree (verzamelbesluit) fiscal unity | Decree of 2 April 2024, nr. 2024-186206, Stcrt. 2024, 11814, published 25-04-2024, in force (in werking) the day after publication | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2024-11814.html |
+| Customary salary (gebruikelijk loon), standard amount (art. 12a Wet LB 1964) | € 56.000 (normbedrag) | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2024-01-01 (art. 12a) |
+| Customary salary, comparable wage | 100% (vergelijkbaar loon) | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2024-01-01 (art. 12a) |
 | Customary salary, lower limit | € 5.000 | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2024-01-01 (art. 12a lid 6) |
 | Customary salary, escape (art. 12a lid 2 Wet LB 1964) | if the highest amount exceeds the comparable wage, the wage is the comparable wage | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2023-01-01 (art. 12a lid 2) |
 | Start-up relief customary salary | only 2022 starters continue, last year | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/loon_en_aanmerkelijk_belang/loon_en_aanmerkelijk_belang |
@@ -98,13 +98,13 @@ This file covers the corporate income tax (vennootschapsbelasting) for tax year 
 | Box 2, first bracket (art. 2.12 Wet IB 2001) | up to and including € 67.000 at 24,5% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2024-01-01 (art. 2.12) |
 | Box 2, above the first bracket (art. 2.12 Wet IB 2001) | € 16.415 plus 33% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2024-01-01 (art. 2.12) |
 | Dividend tax (dividendbelasting) (art. 5 Wet DB 1965) | 15% | enacted | Verified | https://wetten.overheid.nl/BWBR0002515/2024-01-01 (art. 5) |
-| Dividend tax, tax return and dividend statement | return and payment within 1 month after the day the dividend is made available, dividend statement due once the proceeds (opbrengst) is paid, credited, settled or handed over | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/dividendbelasting/als_u_dividend_uitkeert/dividendbelasting-aangifte-betalen |
+| Dividend tax, tax return and dividend statement | tax return (belastingaangifte) and payment within 1 month after the day the dividend is made available, dividend statement (dividendnota) due once the proceeds (opbrengst) is paid, credited, settled or handed over | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/dividendbelasting/als_u_dividend_uitkeert/dividendbelasting-aangifte-betalen |
 | Conditional withholding tax (conditionele bronbelasting) (art. 4.1 Wet bronbelasting 2021) | 25,8%, now also on dividends | enacted | Verified | https://wetten.overheid.nl/BWBR0042952/2024-01-01 |
 | Beneficial owner (uiteindelijk gerechtigde), dividend stripping (art. 4 lid 7 Wet DB 1965) | from the 2024 text "wordt in ieder geval niet als uiteindelijk gerechtigde beschouwd" | enacted | Corrected | https://wetten.overheid.nl/BWBR0002515/2024-01-01 (art. 4 lid 7) |
-| Annual accounts (jaarrekening), size classes (Boek 2 BW art. 395a, 396, 397) | micro € 450.000 and € 900.000, small € 7,5 million (miljoen) and € 15 million, medium € 25 million and € 50 million, employee counts unchanged, for financial years from 1 January 2024 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2024-52.html |
+| Annual accounts (jaarrekening), size classes (Boek 2 BW art. 395a, 396, 397) | size thresholds (grootteklassen): micro € 450.000 and € 900.000, small € 7,5 million (miljoen) and € 15 million, medium € 25 million and € 50 million, employee counts unchanged, for financial years from 1 January 2024 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2024-52.html |
 | Annual accounts, large class (grote klasse) | above € 50 million net turnover | enacted | Corrected | https://zoek.officielebekendmakingen.nl/stb-2024-52.html |
-| Annual accounts, filing (art. 394 Boek 2 BW) | within eight days after adoption (vaststelling) and at the latest twelve months after the financial year ends | enacted | Verified | https://wetten.overheid.nl/BWBR0003045/2025-01-01 |
-| VAT fiscal unity (btw-eenheid), policy decree | published 10 December 2024, Stcrt. 2024, 38545, in force 1 July 2025 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2024-38545.html |
+| Annual accounts, filing (art. 394 Boek 2 BW) | within eight days after adoption (vaststelling) and at the latest twelve months after the financial year (boekjaar) ends | enacted | Verified | https://wetten.overheid.nl/BWBR0003045/2025-01-01 |
+| VAT fiscal unity (btw-eenheid), policy decree | policy decree (beleidsbesluit) published 10 December 2024, Stcrt. 2024, 38545, in force 1 July 2025 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2024-38545.html |
 | VAT cost-sharing exemption (koepelvrijstelling) and BUA | not checked | unknown | UNVERIFIED | https://zoek.officielebekendmakingen.nl/stcrt-2024-38545.html |
 | Tax-neutral conversion (geruisloze omzetting) (art. 3.65 Wet IB 2001) | business deemed not ceased, whole business contributed, shares placed with the contributor and fully paid up | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2025-37092.html |
 | Discontinuation deduction (stakingsaftrek) (art. 3.79 Wet IB 2001) | at most € 3.630 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2024-01-01 |

@@ -12,11 +12,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Employment relationship and self-employment (arbeidsrelatie en zelfstandigheid) 2024: Examples
+# Employment relationship (arbeidsrelatie) and self-employment (zelfstandigheid) 2024: Examples
 
 **Rule:** These values hold for tax year 2024 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 3 of 4 of the Employment relationship and self-employment (arbeidsrelatie en zelfstandigheid) 2024 topic.
+Part 3 of 4 of the Employment relationship (arbeidsrelatie) and self-employment (zelfstandigheid) 2024 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [rules.md](rules.md): how it works.
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Employment relationship and self-employment (arbeidsrelatie en zelfstandigheid) 2024 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Employment relationship (arbeidsrelatie) and self-employment (zelfstandigheid) 2024 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -58,7 +58,7 @@ The checked material states the unrounded amount as about € 37,07 and the roun
 
 ### Example 3. Calculated example, the € 36 threshold applied (not applicable to tax year 2024)
 
-An contractor (opdrachtnemer) works for a business client at an invented hourly rate of € 30. € 30 is at most € 36, so under art. 7:610aa lid 1 BW the presumption of an employment contract (arbeidsovereenkomst) would apply, and the client (opdrachtgever) would have to prove that there is no employment contract. At an invented rate of € 40 per hour the rate is above € 36, so the presumption would not apply on the rate alone. If the client were a natural person not acting in a profession or business, lid 3 would exclude the presumption. The threshold and the rules are from section 2, the rates are invented inputs. Source: https://zoek.officielebekendmakingen.nl/stb-2026-158.html. This provision was not in force in 2024.
+An contractor (opdrachtnemer) works for a business client at an invented hourly rate of € 30. € 30 is at most € 36, so under art. 7:610aa lid 1 BW the presumption of an employment contract (arbeidsovereenkomst) would apply, and the client (opdrachtgever) would have to prove that there is no employment contract (arbeidsovereenkomst). At an invented rate of € 40 per hour the rate is above € 36, so the presumption would not apply on the rate alone. If the client were a natural person not acting in a profession or business, lid 3 would exclude the presumption. The threshold and the rules are from section 2, the rates are invented inputs. Source: https://zoek.officielebekendmakingen.nl/stb-2026-158.html. This provision was not in force (in werking) in 2024.
 
 ### Example 4. Calculated example, the instruction (aanwijzing) timeline in 2024
 
@@ -68,7 +68,7 @@ Suppose the Dutch Tax and Customs Administration (Belastingdienst) gives an inst
 
 Suppose an approved model agreement was valid on 6 September 2024 and its text states that it is valid until 31 December 2025. Under the policy it can still be used up to and including 31 December 2029, and only if the parties work as described. From 6 September 2024 no new model agreements (modelovereenkomsten) are assessed and none are renewed. Sources: https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/geen-nieuwe-modelovereenkomsten-meer and https://www.belastingdienst.nl/wps/wcm/connect/nl/arbeidsrelaties/content/werken-met-modelovereenkomsten.
 
-### Example 6. Official example, the 2024 return and the final assessment (aanslag)
+### Example 6. Official example, the 2024 return and the final assessment (definitieve aanslag)
 
 For the 2024 return the published example is:
 

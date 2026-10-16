@@ -50,7 +50,7 @@ One row per criterion. `AC-ID` is stable once written: supersede a criterion, ne
 
 | ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
-| AC-001 | invoices, expenses, receipts, each attachment class, loose Inbox items, bank files, XAF files, annual accounts, filed returns, assessments and reconstructed asset schedules have inventory rows 100%, unclassified classes 0. | PENDING | PENDING |
+| AC-001 | invoices, expenses, receipts, each attachment class, loose Inbox items, bank files, XAF files, annual accounts (jaarrekening), filed returns, assessments and reconstructed asset schedules have inventory rows 100%, unclassified classes 0. | PENDING | PENDING |
 | AC-002 | account-year pairs with a file or explicit exception 100%, unexplained unmatched pairs 0. | PENDING | PENDING |
 | AC-003 | year-regime rows 100%, every KOR, ICP, OSS and other relevant declaration marked applicable or not applicable with evidence, unknown statuses 0. | PENDING | PENDING |
 | AC-004 | capability decision recorded 1, gates relying on an unverified printout 0. | PENDING | PENDING |

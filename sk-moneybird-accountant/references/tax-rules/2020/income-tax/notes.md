@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the changes, records, open points and related resources for the Income tax box 1 2020 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
+This part holds the changes, records, open points and related resources for the Income tax (inkomstenbelasting) box 1 2020 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the worked examples in examples.md.
 
 ---
 
@@ -42,9 +42,9 @@ The checked material contains no 2019 figures or rules for comparison. It does n
 
 <a id="6-in-the-books"></a>
 
-Record business income and expenses, keep the records that support the profit calculation, and determine whether the business profit qualifies as profits from business activities (winst uit onderneming) for income-tax purposes. The return applies the relevant deductions and reports taxable box 1 income. The checked material does not provide a 2020 filing deadline for this topic. [FISIN page at https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/winst_uit_onderneming]
+Record business income and expenses, keep the records that support the profit calculation, and determine whether the business profit qualifies as profits from business activities (winst uit onderneming) for income-tax purposes. The return applies the relevant deductions and reports taxable box 1 income. The checked material does not provide a 2020 filing deadline (aangiftetermijn) for this topic. [FISIN page at https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/winst_uit_onderneming]
 
-The Zvw contribution exists and is handled in the separate Zvw file. [https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet, URL not supplied in checked material]
+The Zvw contribution (bijdrage zorgverzekeringswet) exists and is handled in the separate Zvw file. [https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet, URL not supplied in checked material]
 
 ---
 

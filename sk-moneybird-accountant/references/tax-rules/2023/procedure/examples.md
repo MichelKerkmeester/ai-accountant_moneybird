@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Filing and procedure 2023: Examples
+# Filing (aangifte) and procedure 2023: Examples
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -155,7 +155,7 @@ Steps, built from the section 2 figures:
 2. A monthly filer: March 2023 by 30 April 2023 and April 2023 by 31 May 2023 ([source](https://web.archive.org/web/20230127/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte)).
 3. A yearly filer: the 2023 return by 31 March 2024 ([source](https://web.archive.org/web/20230127/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aangifte_doen_en_betalen/btw-aangifte-+waar-moet-u-aan-denken/wanneer_btw_aangifte_doen/uiterste_inlever_en_betaaldatums_btw_aangifte)).
 
-### Calculated example, KVK registration window
+### Calculated example, KVK registration window (inschrijvingsvenster)
 
 Facts: a business starts on 1 June 2023.
 
@@ -163,7 +163,7 @@ Steps, built from the section 2 figures:
 1. The window is two weeks, starting one week before and ending one week after the start of the business ([source](https://wetten.overheid.nl/BWBR0021777/2025-07-16)).
 2. One week before 1 June 2023 is 25 May 2023.
 3. One week after 1 June 2023 is 8 June 2023.
-4. So the statement (opgave) must be made between 25 May 2023 and 8 June 2023. KVK issues the Chamber of Commerce number (KVK-nummer) immediately within that window ([source](https://www.kvk.nl/hulp-en-contact/hulp-bij-inschrijven/)).
+4. So the statement (opgave) must be made between 25 May 2023 and 8 June 2023. KVK issues the Chamber of Commerce (kamer van koophandel) number (KVK-nummer) immediately within that window ([source](https://www.kvk.nl/hulp-en-contact/hulp-bij-inschrijven/)).
 
 ### Calculated example, VAT tax interest on a 2023 correction
 
@@ -172,7 +172,7 @@ Facts: an error is found in a 2023 VAT period.
 Steps, built from the section 2 figures:
 1. Interest on a VAT supplementary assessment (naheffingsaanslag) runs from 1 January after the tax year, so from 1 January 2024 for a 2023 period ([source](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_loonbelasting_btw_en_overdrachtsbelasting)).
 2. It ends 14 days after the date of the supplementary assessment ([source](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_loonbelasting_btw_en_overdrachtsbelasting)).
-3. A voluntary correction within 3 months after the tax year gives no tax interest, so a VAT correction return (suppletie) filed before 1 April 2024 avoids tax interest for a 2023 period ([source](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_loonbelasting_btw_en_overdrachtsbelasting)).
+3. A voluntary correction within 3 months after the tax year gives no tax interest, so a supplementary return (suppletie) for a VAT correction (btw-correctie), filed before 1 April 2024, avoids tax interest for a 2023 period ([source](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/belastingrente_betalen_bij_loonbelasting_btw_en_overdrachtsbelasting)).
 4. A supplementary assessment dated 15 November 2024 therefore carries tax interest over 1 January 2024 to 29 November 2024, at the rate for 2024 of 7,5% ([rate](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente)). The checked VAT source does not state the 30/360 day count for VAT, so no euro amount is worked out here.
 
 ### Calculated example, income tax default fine (verzuimboete) for 2023

@@ -30,7 +30,7 @@ _memory:
 
 **Objective** (from the phase reference):
 
-Prove the annual mirror against ledger, bank, source documents, filed VAT and annual accounts. The Implementer drafts the year-end comparison, and the Verifier independently recomputes year-end values for Phase 10.
+Prove the annual mirror against ledger, bank, source documents, filed VAT and annual accounts (jaarrekening). The Implementer drafts the year-end comparison, and the Verifier independently recomputes year-end values for Phase 10.
 
 **Parent binding:** this goal executes under [the parent goal](../goal.md) in `000-migration-template`. Parent decisions outrank this file, and a conflict gets named to the Operator rather than resolved silently.
 
@@ -60,7 +60,7 @@ Annual comparisons 100%, XAF version check 1, source and target account mappings
 M12 gate: work units with Verifier PASS or Operator disposition 100%, year-end recompute differences 0, Final review PASS 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1.
 
 - [ ] SG-10.1: required report classes and account rows compared 100%.
-- [ ] SG-10.2: year and version match 1, the route actually used is verified, either the Phase 0 Operator UI route or the pinned guarded POST route with its Operator approval and flushed WRITE_INTENT 1, artifact receipt and SHA-256 recorded 1. Year-end closing entries in the exported year at export time 0, or the closing entry was removed before export and restored after it 1. Per Moneybird help reviewed on 2026-10-11, an auditfile downloaded after the year-end closing may lack the profit-and-loss data.
+- [ ] SG-10.2: year and version match 1, the route actually used is verified, either the Phase 0 Operator UI route or the pinned guarded POST route with its Operator approval and flushed WRITE_INTENT 1, artifact receipt and SHA-256 recorded 1. Year-end closing (jaarafsluiting) entries in the exported year at export time 0, or the closing entry was removed before export and restored after it 1. Per Moneybird help reviewed on 2026-10-11, an auditfile downloaded after the year-end closing may lack the profit-and-loss data.
 - [ ] SG-10.3: unexplained differences 0 and approved exception count equals the exception ledger.
 - [ ] SG-10.4: M12 checks: work units with Verifier PASS or Operator disposition 100%, year-end recompute differences 0, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
 <!-- /ANCHOR:completion -->

@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Entrepreneur's allowance and SME profit exemption 2022: Figures
+# Entrepreneur's allowance and SME profit exemption (ondernemersaftrek en mkb-winstvrijstelling) 2022: Figures
 
 **Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption (MKB-winstvrijstelling) for tax year 2022. It sets out the hours criterion (urencriterium), the five parts of the entrepreneur's allowance, the € 6.310 self-employed person's deduction (zelfstandigenaftrek), the € 2.123 starter's deduction (startersaftrek), the 14% SME profit exemption and the 9,44% addition to the old-age reserve (oudedagsreserve). All 2022 values are enacted and verified against the statute text valid on 1 January 2022 and against the Dutch Tax and Customs Administration (Belastingdienst) pages. 2022 is the last year in which an addition to the old-age reserve can be made, because art. 3.67 to 3.72 lapsed on 1 January 2023.
+This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption (MKB-winstvrijstelling) for tax year 2022. It sets out the hours criterion (urencriterium), the five parts of the entrepreneur's allowance, the € 6.310 self-employed person's deduction (zelfstandigenaftrek), the € 2.123 starter's deduction (startersaftrek), the 14% SME profit exemption and the 9,44% addition to the old-age reserve (dotatie aan de oudedagsreserve). All 2022 values are enacted and verified against the statute text valid on 1 January 2022 and against the Dutch Tax and Customs Administration (Belastingdienst) pages. 2022 is the last year in which an addition to the old-age reserve can be made, because art. 3.67 to 3.72 lapsed on 1 January 2023.
 
 ---
 
@@ -41,7 +41,7 @@ This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME pr
 |---|---|
 | Parts of the entrepreneur's allowance (ondernemersaftrek) (art. 3.74) | 1 |
 | Hours criterion (urencriterium) | 2 |
-| Second test waived, lookback | 3 |
+| Second test (tweede toets) waived, lookback | 3 |
 | Reduced hours criterion (verlaagd urencriterium) | 4 |
 | Pregnancy in the hours criterion | 5 |
 | Partnership (samenwerkingsverband) with connected persons | 6 |
@@ -69,9 +69,9 @@ This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME pr
 
 | Item | Value 2022 | Status | Check | Source |
 |---|---|---|---|---|
-| Parts of the entrepreneur's allowance (ondernemersaftrek) (art. 3.74) | 5 parts, namely the self-employed person's deduction, the research and development deduction, the deduction for assisting partner, the starter's deduction for disabled entrepreneurs and the discontinuation deduction. The starter's deduction is not a list item but an increase (verhoging) of the self-employed person's deduction under art. 3.76 lid 3 | enacted | Corrected | https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://wetten.overheid.nl/BWBR0011353/2027-01-01 (art. 3.74) |
+| Parts of the entrepreneur's allowance (ondernemersaftrek) (art. 3.74) | 5 parts, namely the self-employed person's deduction (zelfstandigenaftrek), the research and development deduction, the deduction for assisting partner (meewerkaftrek), the starter's deduction for disabled entrepreneurs (startersaftrek bij arbeidsongeschiktheid) and the discontinuation deduction (stakingsaftrek). The starter's deduction is not a list item but an increase (verhoging) of the self-employed person's deduction under art. 3.76 lid 3 | enacted | Corrected | https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://wetten.overheid.nl/BWBR0011353/2027-01-01 (art. 3.74) |
 | Hours criterion (urencriterium) | 1.225 hours in the calendar year | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 (art. 3.6) |
-| Second test waived, lookback | Not an entrepreneur in 1 or more of 2017 to 2021 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 (art. 3.6) |
+| Second test (tweede toets) waived, lookback | Not an entrepreneur in 1 or more of 2017 to 2021 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 (art. 3.6) |
 | Reduced hours criterion (verlaagd urencriterium) | 800 hours, not more than 1.225 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/ondernemersaftrek_en_investeringsaftrek |
 | Pregnancy in the hours criterion | 16 weeks, non-worked hours count as worked hours | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.6 lid 5) and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
 | Partnership (samenwerkingsverband) with connected persons | Hours do not count if the work is mainly supporting, read by the Dutch Tax and Customs Administration as 70% or more, or if the partnership relates to a business of a connected person | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.6) and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium |
@@ -87,7 +87,7 @@ This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME pr
 | S&O conditions | S&O declaration (S&O-verklaring) from the Netherlands Enterprise Agency (Rijksdienst voor Ondernemend Nederland, RVO), at least 500 hours of S&O work, hours criterion | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek |
 | SME profit exemption (MKB-winstvrijstelling) | 14% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 (art. 3.79a) |
 | Deduction for assisting partner (meewerkaftrek) bands | 1,25% / 2% / 3% / 4% for 525 / 875 / 1.225 / 1.750 hours and up | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 (art. 3.78) |
-| Partner pay threshold | Pay to the partner below € 5.000 is not deductible from profit | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://wetten.overheid.nl/BWBR0011353/2027-01-01 (art. 3.16 lid 4) |
+| Partner pay threshold | Pay to the partner below € 5.000 is not deductible (niet aftrekbaar) from profit | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 and https://wetten.overheid.nl/BWBR0011353/2027-01-01 (art. 3.16 lid 4) |
 | Discontinuation deduction (stakingsaftrek) | € 3.630 maximum | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 (art. 3.79) |
 | Old-age reserve (oudedagsreserve) addition percentage | 9,44%, changeable by order in council (algemene maatregel van bestuur, AMvB), lowered by 0,36 point per year that the pension reference age (pensioenrichtleeftijd) changes, published at least a year ahead | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 (art. 3.68) |
 | Old-age reserve addition maximum | € 9.632 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2022-01-01 (art. 3.68 lid 1) |

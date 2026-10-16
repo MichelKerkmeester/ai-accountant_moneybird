@@ -36,7 +36,7 @@ This part holds the worked examples for the Entrepreneur's allowance (ondernemer
 
 ### Example 1 (Calculated example): self-employed person's deduction (zelfstandigenaftrek) and SME profit exemption (MKB-winstvrijstelling) at a profit of € 60.000
 
-Facts: profit as an entrepreneur (ondernemer) € 60.000, the entrepreneur meets the hours criterion (urencriterium), is below the AOW age at the start of the year and does not qualify for the starter's deduction (startersaftrek).
+Facts: profit as an entrepreneur (winst als ondernemer) € 60.000, the entrepreneur meets the hours criterion (urencriterium), is below the AOW age at the start of the year and does not qualify for the starter's deduction (startersaftrek).
 
 - Step 1: self-employed person's deduction € 7.030. The cap of art. 3.76 lid 5 does not bite because € 7.030 is less than the profit of € 60.000.
 - Step 2: profit after the entrepreneur's allowance (ondernemersaftrek): € 60.000 - € 7.030 = € 52.970.
@@ -79,7 +79,7 @@ Facts: profit € 60.000, meets the hours criterion, the partner works 1.300 hou
 - Step 1: 1.300 hours is at least 1.225 and below 1.750, so the band is 3%.
 - Step 2: 3% of € 60.000 = € 1.800,00 deduction for assisting partner.
 - Variation: exactly 875 hours would fall in the 2% band, because the band runs from "gelijk aan of meer dan" 875, and 2% of € 60.000 = € 1.200,00. Exactly 1.750 hours falls in the 4% band, and 4% of € 60.000 = € 2.400,00.
-- Variation: if the partner were paid € 4.500, that pay is below € 5.000, so it is not deductible and the partner counts as unpaid, and the bands still apply.
+- Variation: if the partner were paid € 4.500, that pay is below € 5.000, so it is not deductible (niet aftrekbaar) and the partner counts as unpaid, and the bands still apply.
 
 ### Example 7 (Calculated example): discontinuation deduction (stakingsaftrek) with earlier use
 
@@ -144,18 +144,18 @@ Facts: loss as an entrepreneur € 10.000, meets the hours criterion.
 - Step 2: the SME profit exemption is 14% of the amount after the entrepreneur's allowance, so 14% of minus € 10.000 = minus € 1.400,00.
 - Step 3: the fiscal loss becomes € 10.000 + € 1.400,00 = € 11.400,00. The Dutch Tax and Customs Administration calls this enlargement of the loss disadvantageous in a loss year.
 
-### Example 13 (Calculated example): Zvw contribution
+### Example 13 (Calculated example): Zvw contribution (bijdrage zorgverzekeringswet)
 
-Facts: taxable profit from business € 40.000, no other contribution income.
+Facts: taxable profit from business € 40.000, no other contribution income (bijdrage-inkomen).
 
-- Step 1: the self-assessed rate for 2020 is 5,45%.
+- Step 1: the rate by assessment for 2020 is 5,45%.
 - Step 2: 5,45% of € 40.000 = € 2.180,00.
 - Variation: at contribution income above the maximum of € 57.232, the contribution is at most 5,45% of € 57.232 = € 3.119,14, rounded down.
 - Note: no contribution is levied on the conversion (omzetting) of an old-age reserve into an annuity (lijfrente).
 
 ### Example 14 (Official examples): part-year working and standby time
 
-The Dutch Tax and Customs Administration example: a business started on 1 July means 6 months as an entrepreneur and still at least 1.225 hours in that period. The same page: a webhosting owner reachable 24 hours a day in the weekend counts only the 4 hours spent fixing the one outage (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium). The KVK example: a start on 1 May leaves eight months, about 117 working days, and at 8 hours a day 936 hours, so 1.225 - 936 = 289 extra hours are needed to reach 1.225 hours (https://www.kvk.nl/starten/de-magische-1225-uur-alles-over-het-urencriterium).
+The Dutch Tax and Customs Administration example: a business started on 1 July means 6 months as an entrepreneur and still at least 1.225 hours in that period. The same page: a webhosting owner reachable 24 hours a day in the weekend counts only the 4 hours spent fixing the one outage (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium). The Chamber of Commerce (Kamer van Koophandel, KVK) example: a start on 1 May leaves eight months, about 117 working days, and at 8 hours a day 936 hours, so 1.225 - 936 = 289 extra hours are needed to reach 1.225 hours (https://www.kvk.nl/starten/de-magische-1225-uur-alles-over-het-urencriterium).
 
 ---
 

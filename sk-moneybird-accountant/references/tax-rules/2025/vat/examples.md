@@ -50,7 +50,7 @@ The actual rate depends on the statutory category for the supply. [Article 9, We
 
 ### Zero rate and exemption
 
-**Calculated example.** A qualifying zero-rated intra-EU goods supply has a price of € 1.000. Output VAT is € 1.000 × 0% = € 0. The seller must still meet the evidence, buyer VAT ID and ICP conditions to use the zero rate. If the same transaction were exempt instead, the exemption would not give the seller the same input VAT deduction right. [Article 9, Wet op de omzetbelasting 1968](https://wetten.overheid.nl/BWBR0002629/2025-01-01), [2024 digital ICP guide](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf).
+**Calculated example.** A qualifying zero-rated intra-EU goods supply has a price of € 1.000. Output VAT is € 1.000 × 0% = € 0. The seller must still meet the evidence, buyer VAT ID (btw-id) and ICP conditions to use the zero rate. If the same transaction were exempt instead, the exemption would not give the seller the same input VAT (voorbelasting) deduction right. [Article 9, Wet op de omzetbelasting 1968](https://wetten.overheid.nl/BWBR0002629/2025-01-01), [2024 digital ICP guide](https://download.belastingdienst.nl/belastingdienst/docs/toelichting-digitale-opgaaf-intracomm-pres-ob1291t41fd.pdf).
 
 ### KOR overrun
 
@@ -58,7 +58,7 @@ The actual rate depends on the statutory category for the supply. [Article 9, We
 
 1. Turnover becomes € 19.500 + € 1.000 = € 20.500.
 2. The new supply crosses the € 20.000 ceiling.
-3. The entire crossing supply is taxable from that point under the applicable VAT rate.
+3. The entire crossing supply is taxable from that point under the applicable VAT rate (btw-tarief).
 4. If the supply is taxable at 21%, VAT is € 1.000 × 21% = € 210.
 5. The KOR does not apply for the rest of that calendar year or the following calendar year.
 
@@ -78,9 +78,9 @@ This example uses only the threshold and does not calculate foreign VAT. [Belast
 
 **Official example.** The official example says the EU KOR quarterly turnover statement for the first quarter of 2025 is due by 30 April 2025, including when there was no turnover. [Belastingdienst quarterly-turnover statement guidance](https://www.belastingdienst.nl/wps/wcm/connect/nl/btw/content/opgaaf-kwartaalomzet).
 
-### Business car private use
+### Business car private use (privégebruik)
 
-**Calculated example.** A car has a catalogue price of € 30.000 including VAT and private motor vehicle tax (bpm), and the business cannot establish the private-use amount from records.
+**Calculated example.** A car has a catalogue price (catalogusprijs) of € 30.000 including VAT and private motor vehicle tax (bpm), and the business cannot establish the private-use amount from records.
 
 1. The 2,7% flat rate (forfait) is € 30.000 × 2,7% = € 810.
 2. Suppose VAT deducted in the year is € 500 and VAT on purchase was € 10.000.
@@ -92,11 +92,11 @@ For a car to which the 1,5% flat rate applies, the calculation on the same catal
 
 ### BUA threshold
 
-**Calculated example.** A business provides one recipient with provisions costing € 150 and a gift costing € 100 in the same financial year.
+**Calculated example.** A business provides one recipient with provisions costing € 150 and a gift costing € 100 in the same financial year (boekjaar).
 
 1. Total cost is € 150 + € 100 = € 250.
 2. € 250 is above the € 227 threshold.
-3. The business must apply the BUA rules to the relevant input VAT. The threshold test is not reduced by the recipient's own contribution.
+3. The business must apply the BUA rules to the relevant input VAT. The threshold test is not reduced by the recipient's own contribution (eigen bijdrage).
 
 The example does not calculate the deductible VAT because the applicable VAT rate and amounts charged are not specified. [BUA, Article 4](https://wetten.overheid.nl/BWBR0002636/2019-02-23), [Decision of 6 October 2023, no. 2023-20692](https://zoek.officielebekendmakingen.nl/stcrt-2023-28124.html).
 
@@ -117,7 +117,7 @@ The example does not calculate the deductible VAT because the applicable VAT rat
 
 ### ICP matching
 
-**Calculated example.** For a period, suppose the intra-EU supplies reported in rubriek 3b (rubriek 3b) are € 1.000 of goods and € 2.000 of services.
+**Calculated example.** For a period, suppose the intra-EU supplies reported in rubriek 3b are € 1.000 of goods and € 2.000 of services.
 
 1. Rubriek 3b total is € 1.000 + € 2.000 = € 3.000.
 2. The ICP total for the same period must also be € 3.000.

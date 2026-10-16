@@ -352,7 +352,7 @@ references/migration-recipes.md gives the guarded command sequence for every mig
 
 #### Current Reality
 
-Each recipe previews the request, records the printed `payload-digest` in a fresh `WRITE_INTENT` entry and repeats the command with confirmation and approval. The recipes cover the opening balance journal entry, the invoices and receipts with their files, journal and statement mutations, ledger accounts, payments, fixed assets, the auditfile export, the verification reads and the pilot correction path. Fields the supplied facts do not confirm stay `UNVERIFIED`.
+Each recipe previews the request, records the printed `payload-digest` in a fresh `WRITE_INTENT` entry and repeats the command with confirmation and approval. The recipes cover the opening balance journal entry (memoriaal), the invoices and receipts with their files, journal and statement mutations, ledger accounts, payments, fixed assets (vaste activa), the auditfile export, the verification reads and the pilot correction path. Fields the supplied facts do not confirm stay `UNVERIFIED`.
 
 #### Source Files
 

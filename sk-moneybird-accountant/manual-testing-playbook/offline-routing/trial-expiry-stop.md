@@ -27,7 +27,7 @@ A local-only check verifies gate routing while keeping accounting tools, network
 - Objective: Stop a Moneybird write batch when trial or package access may expire before verification completes.
 - Real user request: The trial expires before the next Moneybird write batch and read-back can finish. Should the batch proceed? Do not call an API.
 - Prompt: The trial expires before the next Moneybird write batch and read-back can finish. Should the batch proceed? Do not call an API.
-- Fixture rows: MIG-004 (en) and MIG-004-nl (nl twin).
+- Fixture rows: MIG-004 (English) and MIG-004-nl (Dutch twin).
 - Expected execution process: Read only the listed local public references. Do not use a network connection or accounting API.
 - Expected signals: Stops the batch because the access window does not cover the write, synchronization, read-back and verification. Requires the Operator to confirm valid access and evidence before resuming. No API is called.
 - Desired user-visible outcome: A concise route report with the required gate, owner action, stop or recovery rule, and no API activity.

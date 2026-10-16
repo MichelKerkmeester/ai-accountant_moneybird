@@ -16,7 +16,7 @@ version: 1.0.0.0
 
 **Rule:** These values hold for tax year 2024 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 3 of 4 of the Entrepreneur's allowance and SME profit exemption 2024 topic.
+Part 3 of 4 of the Entrepreneur's allowance and SME profit exemption (ondernemersaftrek en mkb-winstvrijstelling) 2024 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [rules.md](rules.md): how it works.
@@ -40,7 +40,7 @@ This part holds the worked examples for the Entrepreneur's allowance (ondernemer
 
 **Calculated example.** A start on 1 May 2024 leaves eight months. The period from 1 May to 31 December 2024 inclusive contains 245 days, which is exactly 35 weeks, so it contains 175 weekdays. At 8 hours a day, 175 x 8 = 1.400,00 hours. That is above 1.225 hours, so this illustration shows that a part-year start can still meet the hours criterion (urencriterium) when enough hours are worked. The rule remains that the 1.225 hours are not pro-rated.
 
-### Carry-forward of unused self-employed person's deduction (niet-gerealiseerde zelfstandigenaftrek)
+### Carry-forward of unused self-employed person's (zelfstandige) deduction (niet-gerealiseerde zelfstandigenaftrek)
 
 **Official example** (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/ondernemersaftrek_en_investeringsaftrek). FISIN 2024, section 8.4.3. The example has no starter's deduction (startersaftrek), so the profit cap of art. 3.76 lid 5 applies.
 
@@ -84,7 +84,7 @@ This part holds the worked examples for the Entrepreneur's allowance (ondernemer
 - 1.300 hours falls in the band from 1.225 to under 1.750 hours, which carries 3%.
 - Deduction for assisting partner: 3% x € 80.000,00 = € 2.400,00.
 - Boundary check from the statute wording: exactly 1.225 hours also falls in the 3% band, because the band runs from "gelijk aan of meer dan" 1.225 hours to "minder dan" 1.750 hours. Exactly 875 hours falls in the 2% band and exactly 1.750 hours in the 4% band.
-- Variant on pay: if the partner were paid € 4.000, that pay is below € 5.000, so it is not deductible from the profit and the partner is treated as working without pay. The deduction for assisting partner stays available and the € 4.000 is no income for the partner.
+- Variant on pay: if the partner were paid € 4.000, that pay is below € 5.000, so it is not deductible (niet aftrekbaar) from the profit and the partner is treated as working without pay. The deduction for assisting partner stays available and the € 4.000 is no income for the partner.
 
 ### Starter's deduction for entrepreneurs incapacitated for work (startersaftrek bij arbeidsongeschiktheid) at four use levels
 
@@ -115,9 +115,9 @@ This part holds the worked examples for the Entrepreneur's allowance (ondernemer
 - SME profit exemption: 13,31% x € 37.063,00 = € 4.933,09, rounded.
 - Taxable profit from business: € 37.063 - € 4.933,09 = € 32.129,91.
 
-### Deduction for research and development work (speur- en ontwikkelingswerk)
+### Deduction for research and development work (aftrek speur- en ontwikkelingswerk)
 
-**Calculated example.** Inputs: the entrepreneur has an R&D declaration (S&O-verklaring) from Netherlands Enterprise Agency (RVO), at least 500 hours of R&D (S&O) work, meets the hours criterion, was not an entrepreneur in 1 or more of 2019 to 2023, and had this deduction applied at most twice in that period.
+**Calculated example.** Inputs: the entrepreneur has an R&D declaration (S&O-verklaring) from the Netherlands Enterprise Agency (Rijksdienst voor Ondernemend Nederland, RVO), at least 500 hours of R&D (S&O) work, meets the hours criterion, was not an entrepreneur in 1 or more of 2019 to 2023, and had this deduction applied at most twice in that period.
 
 - Base amount: € 15.551.
 - Starter increase: € 7.781.

@@ -29,7 +29,7 @@ Every recipe previews the command first, records the printed `payload-digest` in
 
 ### Write Recipes
 
-The recipes cover the opening balance journal entry, the historical sales invoice and its PDF, purchase invoices and receipts with their files, financial statement mutations, ledger accounts with an RGS code, fixed assets, payment links and document payments. They also cover the auditfile export with its download fetch. Request fields that the supplied facts do not confirm stay `UNVERIFIED` until pinned CLI help is checked.
+The recipes cover the opening balance journal entry (memoriaal), the historical sales invoice and its PDF, purchase invoices and receipts with their files, financial statement mutations, ledger accounts with an RGS code, fixed assets (vaste activa), payment links and document payments. They also cover the auditfile export with its download fetch. Request fields that the supplied facts do not confirm stay `UNVERIFIED` until pinned CLI help is checked.
 
 ### Verification And Correction
 

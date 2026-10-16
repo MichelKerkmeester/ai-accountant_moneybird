@@ -88,6 +88,6 @@ Phases 19 to 21 are recurring loops. They start when Phase 18 passes and continu
 - [Shared mechanisms](./shared-mechanisms.md) defines M1 to M12, the external agent route and the tool route contract.
 - [VAT return preparation](../vat-return/README.md) holds the per-step content for a LIVE VAT period under Phase 20.
 - [Yearly overview preparation](../yearly-overview/README.md) holds the LIVE yearly close procedure for Phase 21.
-- [Income tax return preparation](../income-tax-return/README.md) holds the LIVE income tax return procedure.
+- [Income tax return preparation](../income-tax-return/README.md) holds the LIVE income tax return (aangifte inkomstenbelasting) procedure.
 - [Moneybird bookkeeping](../moneybird-bookkeeping.md) covers accounting treatment for common events.
 - [Jortt to Moneybird mapping](./jortt-to-moneybird-mapping.md) covers concept matches and migration traps.

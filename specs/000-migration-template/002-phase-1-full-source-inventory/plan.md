@@ -116,7 +116,7 @@ Phase 1 runs the actions in the order given, and every Moneybird write goes thro
 
 **Original year availability matrix retained as a controlled template:**
 
-| Year derived from source scope | Documents | XAF | Bank | VAT | Income tax | Annual accounts | Assets |
+| Year derived from source scope | Documents | XAF | Bank | VAT | Income tax (inkomstenbelasting) | Annual accounts | Assets |
 |---|---|---|---|---|---|---|---|
 | One row per in-scope year | Status and evidence link | Status and evidence link | Status and evidence link | Status and evidence link | Status and evidence link | Status and evidence link | Status and evidence link |
 

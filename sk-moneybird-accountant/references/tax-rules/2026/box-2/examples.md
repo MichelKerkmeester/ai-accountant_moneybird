@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Box 2 and substantial interest 2026: Examples
+# Box 2 and substantial interest (aanmerkelijk belang) 2026: Examples
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -40,9 +40,9 @@ This part holds the worked examples for the Box 2 and substantial interest (aanm
 
 **Official example 3, dividend with costs and dividend tax (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang).** Gross dividend € 5.000, bank costs € 250 and dividend tax € 750. Box 2 income is € 5.000 minus € 250 = € 4.750. The € 750 dividend tax is credited as a prepayment (voorheffing).
 
-**Official example 4, non-arm's-length price (onzakelijke prijs) (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang).** Shares are sold to a son-in-law for € 20.000 where a third party would pay € 35.000. The market value (waarde in het economisch verkeer) of € 35.000 applies to both sides.
+**Official example 4, non-arm's-length price (onzakelijke prijs) (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang).** Shares are sold to a son-in-law for € 20.000 where a third party (derde) would pay € 35.000. The market value (waarde in het economisch verkeer) of € 35.000 applies to both sides.
 
-**Calculated example 1, income inside the first bracket.** Box 2 income is € 60.000 on invented facts. This is below € 68.843, so the whole amount is in bracket 1: € 60.000 × 24,5% = € 14.700,00.
+**Calculated example 1, income inside the first bracket (eerste schijf).** Box 2 income is € 60.000 on invented facts. This is below € 68.843, so the whole amount is in bracket 1: € 60.000 × 24,5% = € 14.700,00.
 
 **Calculated example 2, income in both brackets.** Box 2 income is € 200.000 on invented facts. Bracket 1: € 68.843 × 24,5% = € 16.866,54, rounded down to € 16.866, which matches the tax at the top of bracket 1 in section 2. The part above the boundary: € 200.000 minus € 68.843 = € 131.157. Bracket 2: € 131.157 × 31% = € 40.658,67. Total: € 16.866 + € 40.658,67 = € 57.524,67.
 
@@ -64,11 +64,11 @@ This part holds the worked examples for the Box 2 and substantial interest (aanm
 
 **Calculated example 11, partner division.** Two fiscal partners have total box 2 income of € 120.000 on invented facts and choose a 50/50 division. Each share is € 60.000. Each is taxed in his own first bracket: € 60.000 × 24,5% = € 14.700,00 for each, in total € 29.400,00. FISIN 2026 allows any division as long as the total is 100%.
 
-**Calculated example 12, customary salary (gebruikelijk loon).** The comparable wage (loon) is € 50.000, the highest wage of the employees of the body or connected bodies is € 62.000, and the fixed amount is € 58.000, all invented facts. The highest of the three is € 62.000, so that is the minimum wage.
+**Calculated example 12, customary salary (gebruikelijk loon).** The comparable wage (vergelijkbaar loon) is € 50.000, the highest wage of the employees of the body or connected bodies is € 62.000, and the fixed amount is € 58.000, all invented facts. The highest of the three is € 62.000, so that is the minimum wage (minimumloon).
 
 **Calculated example 13, customary salary threshold.** The wage for the work for the body and connected bodies is € 4.500 on invented facts. That is not more than € 5.000, so the customary salary rule does not apply. If two companies pay € 3.000 and € 2.500, the total is € 5.500, which is more than € 5.000, so the rule does apply, because the threshold is tested on the total and "niet per onderneming".
 
-**Calculated example 14, old-age obligation (ODV) increase.** The ODV balance at the start of 2026 is € 200.000 on invented facts. The increase is 2,593% × € 200.000 = € 5.186,00.
+**Calculated example 14, old-age obligation (oudedagsverplichting) increase.** The ODV balance at the start of 2026 is € 200.000 on invented facts. The increase is 2,593% × € 200.000 = € 5.186,00.
 
 **Calculated example 15, inherited substantial interest facility.** Shares are inherited, and box 2 income of € 25.000 was taken into account with the deceased on that transfer. Regular benefits of € 30.000 are received within 24 months after the death, on invented facts. On request the exclusion is capped at € 25.000, so € 25.000 is not counted as box 2 income and € 25.000 is written off on the acquisition price. The remaining € 5.000 is box 2 income. If this is the only box 2 income, the tax on it is € 5.000 × 24,5% = € 1.225,00.
 

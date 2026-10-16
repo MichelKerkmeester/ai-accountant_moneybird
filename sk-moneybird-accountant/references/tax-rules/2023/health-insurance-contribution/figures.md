@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the income-dependent Zvw contribution (inkomensafhankelijke bijdrage Zvw), the income-dependent contribution under the Health Insurance Act (Zorgverzekeringswet), that an entrepreneur (ondernemer) pays for tax year 2023. The rate by assessment (aanslag) is 5,43%, the maximum contribution income is € 66.956, and an employer or benefit agency (uitkeringsinstantie) pays a higher employer health insurance contribution of 6,68% over wage (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The 2023 figures are enacted. The base for a profit entrepreneur (winst-ondernemer) is the taxable profit from business (belastbare winst uit onderneming) after the entrepreneur's allowance and the SME profit exemption, a rule that was read in a later version and is UNVERIFIED for 2023.
+This file covers the income-dependent Zvw contribution (inkomensafhankelijke bijdrage Zvw), the income-dependent contribution under the Health Insurance Act (Zorgverzekeringswet), that an entrepreneur (ondernemer) pays for tax year 2023. The rate by assessment (aanslag) is 5,43%, the maximum contribution income (bijdrage-inkomen) is € 66.956, and an employer or benefit agency (uitkeringsinstantie) pays a higher employer health insurance (zorgverzekering) contribution (werkgeversheffing Zvw) of 6,68% over wage (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet). The 2023 figures are enacted. The base for a profit entrepreneur (winst-ondernemer) is the taxable profit from business (belastbare winst uit onderneming) after the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption (MKB-winstvrijstelling), a rule that was read in a later version and is UNVERIFIED for 2023.
 
 ---
 
@@ -40,9 +40,9 @@ This file covers the income-dependent Zvw contribution (inkomensafhankelijke bij
 | Item | row |
 |---|---|
 | Maximum contribution income (bijdrage-inkomen) | 1 |
-| Zvw contribution by assessment (aanslag) | 2 |
-| Withheld health insurance contribution (ingehouden bijdrage Zvw) | 3 |
-| Zvw employer health insurance contribution (werkgeversheffing) | 4 |
+| Zvw contribution (bijdrage zorgverzekeringswet) by assessment (aanslag) | 2 |
+| Withheld health insurance (zorgverzekering) contribution (ingehouden bijdrage Zvw) | 3 |
+| Zvw employer health insurance contribution (werkgeversheffing Zvw) | 4 |
 | Zvw contribution base (Zvw-grondslag) for a profit entrepreneur | 5 |
 | Self-employed person's deduction (zelfstandigenaftrek) | 6 |
 | Starter's deduction (startersaftrek) | 7 |
@@ -57,10 +57,10 @@ This file covers the income-dependent Zvw contribution (inkomensafhankelijke bij
 | Item | Value 2023 | Status | Check | Source |
 |---|---|---|---|---|
 | Maximum contribution income (bijdrage-inkomen) | € 66.956 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
-| Zvw contribution by assessment (aanslag) | 5,43% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
-| Withheld health insurance contribution (ingehouden bijdrage Zvw) | 5,43% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
-| Zvw employer health insurance contribution (werkgeversheffing) | 6,68% | enacted | Corrected | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
-| Zvw contribution base (Zvw-grondslag) for a profit entrepreneur | taxable profit from business, after the entrepreneur's allowance and the SME profit exemption | enacted | UNVERIFIED | https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01 (2026 version) |
+| Zvw contribution (bijdrage zorgverzekeringswet) by assessment (aanslag) | 5,43% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
+| Withheld health insurance (zorgverzekering) contribution (ingehouden bijdrage Zvw) | 5,43% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
+| Zvw employer health insurance contribution (werkgeversheffing Zvw) | 6,68% | enacted | Corrected | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
+| Zvw contribution base (Zvw-grondslag) for a profit entrepreneur | taxable profit (belastbare winst) from business, after the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption (MKB-winstvrijstelling) | enacted | UNVERIFIED | https://wetten.overheid.nl/jci1.3:c:BWBR0018450&hoofdstuk=4&paragraaf=4.2&artikel=43&z=2026-01-01&g=2026-01-01 (2026 version) |
 | Self-employed person's deduction (zelfstandigenaftrek) | € 5.030, or € 2.515 at state pension age (AOW age) | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
 | Starter's deduction (startersaftrek) | € 2.123, or € 1.062 at state pension age | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
 | Starter's deduction for disabled entrepreneurs (startersaftrek bij arbeidsongeschiktheid) | € 12.000, € 8.000, € 4.000, then € 0, capped at the profit | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |

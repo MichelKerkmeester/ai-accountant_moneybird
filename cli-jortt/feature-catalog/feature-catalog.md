@@ -323,7 +323,7 @@ Sends each Jortt request to the CLI or the operator's UI export and hands Moneyb
 
 #### Current Reality
 
-Record extraction and supported data questions go to `jortt-cli`. XAF auditfiles, annual accounts and filed VAT returns go to the operator. Moneybird work goes to `cli-moneybird`.
+Record extraction and supported data questions go to `jortt-cli`. XAF auditfiles, annual accounts (jaarrekening) and filed VAT returns go to the operator. Moneybird work goes to `cli-moneybird`.
 
 #### Source Files
 
@@ -375,7 +375,7 @@ States which records only the Jortt UI can export and owns the API rate, page an
 
 #### Current Reality
 
-XAF auditfiles, annual accounts and filed VAT returns come from the Jortt UI, and no general ledger export exists. The guide owns the rate, page, retention and history statements.
+XAF auditfiles, annual accounts (jaarrekening) and filed VAT returns come from the Jortt UI, and no general ledger (grootboek) export exists. The guide owns the rate, page, retention and history statements.
 
 #### Source Files
 

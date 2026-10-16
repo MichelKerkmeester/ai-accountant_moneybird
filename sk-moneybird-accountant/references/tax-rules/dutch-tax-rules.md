@@ -53,16 +53,16 @@ This file is the entry point for Dutch tax questions for a sole trader (ZZP) wit
 | File | Covers |
 |---|---|
 | `vat.md` | VAT rates, exemptions, KOR, deadlines and corrections |
-| `income-tax.md` | Box 1 brackets, tax credits (heffingskortingen) and how profit reaches taxable income |
-| `health-insurance-contribution.md` | The income-dependent Zvw contribution for an entrepreneur |
+| `income-tax.md` | Box 1 brackets, income tax (inkomstenbelasting) credits (heffingskortingen) and how profit reaches taxable income |
+| `health-insurance-contribution.md` | The income-dependent Zvw contribution (bijdrage Zvw) for an entrepreneur |
 | `business-deductions.md` | Hours criterion (urencriterium), self-employed person's deduction (zelfstandigenaftrek), starter's deduction (startersaftrek), other deductions and the SME profit exemption (MKB-winstvrijstelling) |
 | `investments.md` | KIA, EIA, MIA and Vamil, depreciation and disinvestment (desinvestering) |
-| `costs-and-car.md` | Deductible and mixed costs, the car, private-use addition (bijtelling) and the kilometre allowance |
-| `box-3.md` | Savings and investments in box 3 |
-| `box-2.md` | The substantial interest in a BV, box 2 rates and the customary salary (gebruikelijk loon) |
-| `private-company-and-corporate-tax.md` | Running a BV and the corporate income tax |
-| `pension-and-disability-insurance.md` | Annual allowance (jaarruimte), annuity (lijfrente), the FOR and disability insurance |
-| `work-relationship.md` | Deregulation of Employment Relationships Assessment Act (Wet DBA), model agreements and the self-employment test |
+| `costs-and-car.md` | Deductible and mixed costs (gemengde kosten), the car, private-use addition (bijtelling) and the kilometre allowance |
+| `box-3.md` | Savings and investments (sparen en beleggen) in box 3 |
+| `box-2.md` | The substantial interest (aanmerkelijk belang) in a BV, box 2 rates and the customary salary (gebruikelijk loon) |
+| `private-company-and-corporate-tax.md` | Running a BV and the corporate income tax (vennootschapsbelasting) |
+| `pension-and-disability-insurance.md` | Annual allowance (jaarruimte), annuity (lijfrente), the FOR and disability insurance (arbeidsongeschiktheidsverzekering) |
+| `work-relationship.md` | Deregulation of Employment Relationships Assessment Act (Wet deregulering beoordeling arbeidsrelaties), model agreements (modelovereenkomsten) and the self-employment test (zelfstandigentoets) |
 | `procedure.md` | Filing, assessments, interest, objections and record retention |
 
 ### Tags
@@ -73,11 +73,11 @@ This file is the entry point for Dutch tax questions for a sole trader (ZZP) wit
 | Corrected | An earlier research value was wrong. The file gives the value from the primary page |
 | UNVERIFIED | No primary page confirmed it. The value is kept with the source that was tried |
 | enacted | In law for that year |
-| adopted-not-yet-in-force | Adopted, but in force later |
+| adopted-not-yet-in-force | Adopted, but in force later (in werking) |
 | proposed | A bill or announcement, not law |
 | unknown | Not yet published or not found |
 
-A figure taken from a bill carries status `proposed`, with the `kst` number and the stage, for example explanatory memorandum (memorie van toelichting), note of amendment (nota van wijziging) or adopted by the House of Representatives (aangenomen door de Tweede Kamer). When the next stage lands, replace the row, never edit it in place, and log the change in that year's `changelog.md`.
+A figure taken from a bill carries status `proposed`, with the `kst` number and the stage, for example explanatory memorandum (memorie van toelichting), note of amendment (nota van wijziging) or adopted by the House of Representatives (Tweede Kamer). When the next stage lands, replace the row, never edit it in place, and log the change in that year's `changelog.md`.
 
 ---
 
@@ -92,12 +92,12 @@ Each general topic below sits in its own file under `general/`.
 | Section | Topic | File |
 |---|---|---|
 | 3.1 | VAT (BTW) | [vat.md](general/vat.md) |
-| 3.2 | Income tax box 1 and the Zvw contribution | [income-tax-box-1-and-the-health-insurance-contribution.md](general/income-tax-box-1-and-the-health-insurance-contribution.md) |
+| 3.2 | Income tax (inkomstenbelasting) box 1 and the Zvw contribution (bijdrage Zvw) | [income-tax-box-1-and-the-health-insurance-contribution.md](general/income-tax-box-1-and-the-health-insurance-contribution.md) |
 | 3.3 | Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling) | [business-deductions-and-sme-profit-exemption.md](general/business-deductions-and-sme-profit-exemption.md) |
 | 3.4 | Investment deductions and depreciation | [investment-deductions-and-depreciation.md](general/investment-deductions-and-depreciation.md) |
 | 3.5 | Costs and the car | [costs-and-the-car.md](general/costs-and-the-car.md) |
-| 3.6 | Box 3 savings and investments | [box-3-savings-and-investments.md](general/box-3-savings-and-investments.md) |
-| 3.7 | Box 2 and the substantial interest | [box-2-and-the-substantial-interest.md](general/box-2-and-the-substantial-interest.md) |
+| 3.6 | Box 3 savings and investments (sparen en beleggen) | [box-3-savings-and-investments.md](general/box-3-savings-and-investments.md) |
+| 3.7 | Box 2 and the substantial interest (aanmerkelijk belang) | [box-2-and-the-substantial-interest.md](general/box-2-and-the-substantial-interest.md) |
 | 3.8 | The BV and corporate income tax (vennootschapsbelasting) | [the-private-company-and-corporate-tax.md](general/the-private-company-and-corporate-tax.md) |
 | 3.9 | Pension, annuity (lijfrente) and AOV | [pension-annuities-and-disability-insurance.md](general/pension-annuities-and-disability-insurance.md) |
 | 3.10 | Work relationship and procedure | [work-relationship-and-procedure.md](general/work-relationship-and-procedure.md) |

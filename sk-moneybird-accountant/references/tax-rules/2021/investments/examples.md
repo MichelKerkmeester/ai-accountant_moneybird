@@ -1,5 +1,5 @@
 ---
-title: "Investment deduction and depreciation (investeringsaftrek en afschrijving) 2021: Examples"
+title: "Investment deduction (investeringsaftrek) and depreciation 2021: Examples"
 description: "All 2021 rules for the Dutch investment deduction (investeringsaftrek) (KIA, EIA, MIA, Vamil), the per-asset minimums and exclusions, the disinvestment addition (desinvesteringsbijtelling) and the depreciation of business assets (bedrijfsmiddelen) for a sole trader or a BV. This file holds the examples part."
 nav_label: "Investment deduction and depreciation examples"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Investment deduction and depreciation (investeringsaftrek en afschrijving) 2021: Examples
+# Investment deduction (investeringsaftrek) and depreciation 2021: Examples
 
 **Rule:** These values hold for tax year 2021 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Investment deduction and depreciation (investeringsaftrek en afschrijving) 2021 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Investment deduction (investeringsaftrek) and depreciation 2021 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -73,7 +73,7 @@ Step 2: 0,455 × € 100.000 = € 45.500.
 ### Calculated example: MIA in each category (categorie)
 
 Input: three assets on the Environmental List (Milieulijst) of € 100.000 each, one per category.
-Step 1: category I gives 36% × € 100.000 = € 36.000.
+Step 1: category I (categorie i) gives 36% × € 100.000 = € 36.000.
 Step 2: category II gives 27% × € 100.000 = € 27.000.
 Step 3: category III gives 13,5% × € 100.000 = € 13.500.
 
@@ -100,16 +100,16 @@ Input C: low value items that are normally treated as current costs are written 
 
 ### Calculated example: minimum value (bodemwaarde)
 
-Input A: an own use building with a WOZ value (woz-waarde) for 2021 of € 500.000. The minimum value is 50% × € 500.000 = € 250.000. The book value is € 300.000, so the maximum depreciation for the year is € 300.000 minus € 250.000 = € 50.000.
+Input A: an own use building with a WOZ value (WOZ-waarde) for 2021 of € 500.000. The minimum value is 50% × € 500.000 = € 250.000. The book value is € 300.000, so the maximum depreciation for the year is € 300.000 minus € 250.000 = € 50.000.
 Input B: an investment building (gebouw ter belegging) with a WOZ value of € 500.000. The minimum value is the full WOZ value of € 500.000. The book value is € 520.000, so the maximum depreciation for the year is € 520.000 minus € 500.000 = € 20.000.
 
 ### Calculated example: disinvestment addition (desinvesteringsbijtelling)
 
 Input: a machine bought in 2021 for € 20.000, on which a KIA of 28% was taken, so € 5.600. The machine is sold in a later year within the five-year term, say 2023, for € 12.000.
 Step 1: the disposal is within five years after 1 January 2021, so the disinvestment addition (bijtelling) applies (art. 3.47 lid 2, https://wetten.overheid.nl/BWBR0011353/2026-01-01 art. 3.47).
-Step 2: the transfer price of € 12.000 is more than the € 2.400 threshold.
+Step 2: the transfer price (overdrachtsprijs) of € 12.000 is more than the € 2.400 threshold.
 Step 3: the disinvestment addition is 28% × € 12.000 = € 3.360, added to the profit of the year of disposal.
-Step 4: the cap of the investment amount over which deduction (aftrek) was taken is € 20.000, and € 3.360 stays below it.
+Step 4: the cap of the investment amount (investeringsbedrag) over which deduction (aftrek) was taken is € 20.000, and € 3.360 stays below it.
 
 ### Calculated example: payment cap for an asset not yet in use
 

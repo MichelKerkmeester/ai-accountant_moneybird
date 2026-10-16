@@ -108,7 +108,7 @@ Phase 11 runs the actions in the order given, and every Moneybird write goes thr
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the income-tax bridge template. [Verifier] checks the bridge and confirms no adjustment was invented. [Final reviewer] reviews the phase before Operator approvals.
 
 **Filed income-tax comparison retained from the original bridge:**
-Compare commercial results from Moneybird with annual accounts and actual filed income-tax values and assessments. Record each fiscal adjustment separately with its evidence and decision owner. Jortt has no income-tax report route in the current tool contract. Never add an unknown ledger item to force equality with a tax return.
+Compare commercial results from Moneybird with annual accounts and actual filed income-tax values and assessments. Record each fiscal adjustment separately with its evidence and decision owner. Jortt has no income-tax report route in the current tool contract. Never add an unknown ledger item to force equality with a tax return (belastingaangifte).
 
 | Comparison item | Moneybird | Annual accounts | Filed return or assessment |
 |---|---|---|---|

@@ -1,0 +1,53 @@
+{
+  "exceptions": [
+    {
+      "file": "sk-moneybird-accountant/SKILL.md",
+      "term": "aangifte inkomstenbelasting",
+      "check": "first-use",
+      "rule": "E1",
+      "reason": "The Name cell of the task-type table is the route name that the route table check, the replay suite and the gold rows match exactly. The Dutch term stands in the Dutch signals cell of the same row."
+    },
+    {
+      "file": "sk-moneybird-accountant/SKILL.md",
+      "term": "btw-aangifte",
+      "check": "first-use",
+      "rule": "E1",
+      "reason": "The Name cell of the task-type table is the route name that the route table check, the replay suite and the gold rows match exactly. The Dutch term stands in the Dutch signals cell of the same row."
+    },
+    {
+      "file": "sk-moneybird-accountant/SKILL.md",
+      "term": "inkoopfactuur",
+      "check": "first-use",
+      "rule": "E1",
+      "reason": "The Name cell of the task-type table is the route name that the route table check, the replay suite and the gold rows match exactly. The Dutch term stands in the Dutch signals cell of the same row."
+    },
+    {
+      "file": "sk-moneybird-accountant/SKILL.md",
+      "term": "jaaroverzicht",
+      "check": "first-use",
+      "rule": "E1",
+      "reason": "The Name cell of the task-type table is the route name that the route table check, the replay suite and the gold rows match exactly. The Dutch term stands in the Dutch signals cell of the same row."
+    },
+    {
+      "file": "sk-moneybird-accountant/SKILL.md",
+      "term": "privégebruik",
+      "check": "first-use",
+      "rule": "E1",
+      "reason": "The English signal list of the task-type table names private use as a routing signal. The Dutch signals stand in their own column."
+    },
+    {
+      "file": "sk-moneybird-accountant/references/mixed-use-costs.md",
+      "term": "privé",
+      "check": "residual",
+      "rule": "E1",
+      "reason": "Part of the Moneybird account name Privé-opnames/stortingen, quoted as the user sees it in the app."
+    },
+    {
+      "file": "sk-moneybird-accountant/references/tax-rules/general/business-deductions-and-sme-profit-exemption.md",
+      "term": "ondernemersaftrek en mkb-winstvrijstelling",
+      "check": "first-use",
+      "rule": "E1",
+      "reason": "The fenced heading \"### 3.3 Entrepreneur's allowance and SME profit exemption\" keys a generated year-figure block, so the label this row names cannot be added to it without breaking the fence. The file title labels both terms, and the section text labels each one at its first use."
+    }
+  ]
+}

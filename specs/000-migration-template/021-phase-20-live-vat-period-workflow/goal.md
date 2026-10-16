@@ -30,7 +30,7 @@ _memory:
 
 **Objective** (from the phase reference):
 
-Prepare each VAT return for the assigned cadence and period from complete evidence, with filing owned by the Operator. The Implementer drafts VAT-period check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 20.
+Prepare each VAT return (btw-aangifte) for the assigned cadence and period from complete evidence, with filing owned by the Operator. The Implementer drafts VAT-period check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 20.
 
 **Parent binding:** this goal executes under [the parent goal](../goal.md) in `000-migration-template`. Parent decisions outrank this file, and a conflict gets named to the Operator rather than resolved silently.
 

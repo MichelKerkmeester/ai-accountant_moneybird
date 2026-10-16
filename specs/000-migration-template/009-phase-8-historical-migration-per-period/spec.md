@@ -53,7 +53,7 @@ This is **Phase 8** of the Jortt to Moneybird migration template specification.
 
 **Entry criteria** (from the phase reference):
 
-Phase 7 passed. A verified pilot key manifest exists for the same administration. The period is open. The duplicate gate includes the union of pilot and historical keys. Matching verified pilot records are reused and never written again. Batch approval, current M6 evidence through read-back, mapping hash, exception state and numeric threshold config are present.
+Phase 7 passed. A verified pilot key manifest exists for the same administration. The period is open. The duplicate gate includes the union (de unie) of pilot and historical keys. Matching verified pilot records are reused and never written again. Batch approval, current M6 evidence through read-back, mapping hash, exception state and numeric threshold config are present.
 
 **Dependencies**:
 - Previous phase exit gate passed, or None for Phase 0

@@ -1,6 +1,6 @@
 ---
 title: "Pension, annuity and disability insurance 2025: Examples"
-description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity (lijfrente) conditions, profit from business discontinuation (stakingswinst) conversion, old-age reserve (FOR) interaction and disability insurance (AOV) premium deductibility for tax year 2025, plus the proposed Basic Disability Insurance for Self-Employed Persons Act (BAZ). This file holds the examples part."
+description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity (lijfrente) conditions, profit on discontinuation (stakingswinst) conversion, old-age reserve (FOR) interaction and disability insurance (AOV) premium deductibility for tax year 2025, plus the proposed Basic Disability Insurance for Self-Employed Persons Act (BAZ). This file holds the examples part."
 nav_label: "Pension, annuity and disability insurance examples"
 trigger_phrases:
   - "pensioen en AOV 2025"
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and disability insurance 2025: Examples
+# Pension, annuity and disability insurance (arbeidsongeschiktheidsverzekering) 2025: Examples
 
 **Rule:** These values hold for tax year 2025 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Pension, annuity and disability insurance (pensioen, lijfrente en AOV) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the pension (pensioen), annuity (lijfrente) and disability insurance (arbeidsongeschiktheidsverzekering, AOV) 2025 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -38,7 +38,7 @@ Unless stated otherwise, the amounts below are the 2025 amounts. Official exampl
 
 ### Calculated example: annual allowance (jaarruimte) with a profit of € 60.000
 
-Invented inputs: profits from business activities (winst uit onderneming) of € 60.000 in 2024, before the entrepreneur's allowance (ondernemersaftrek), no pension accrual, no old-age reserve (oudedagsreserve) and an age below the age limit at the start of 2025.
+Invented inputs: profits from business activities (winst uit onderneming) of € 60.000 in 2024, before the entrepreneur's allowance (vóór de ondernemersaftrek), no pension accrual, no old-age reserve (oudedagsreserve) and an age below the age limit at the start of 2025.
 
 Step 1: min(60.000, 137.800) = 60.000.
 Step 2: 60.000 - 18.475 = 41.525.
@@ -91,33 +91,33 @@ The yearly maximum of € 63.288 corresponds to € 5.274,00 per month. The cap 
 
 Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen
 
-### Calculated example: profit from business discontinuation (stakingswinst) in tier a
+### Calculated example: profit on discontinuation (stakingswinst) in tier a
 
-Invented inputs: profit from business discontinuation of € 600.000, an age at cessation (staking) at most five years below the state pension age (tier a) and no already built provisions.
+Invented inputs: profit on discontinuation of € 600.000, an age at cessation (staking) at most five years below the state pension age (tier a) and no already built provisions.
 
-The maximum is the tier a amount minus the already built provisions, limited to the profit from business discontinuation.
+The maximum is the tier a amount minus the already built provisions, limited to the profit on discontinuation.
 
 Step 1: 566.197 - 0 = 566.197.
 Step 2: min(600.000, 566.197) = 566.197.
 
-The maximum deduction for the profit from business discontinuation conversion is € 566.197, the 2025 tier a amount. A premium for this conversion paid before 1 July 2026 may, on choice, still be counted in 2025.
+The maximum deduction for the profit on discontinuation conversion is € 566.197, the 2025 tier a amount. A premium for this conversion paid before 1 July 2026 may, on choice, still be counted in 2025.
 
 Source: https://wetten.overheid.nl/BWBR0011353/2025-01-01 (art. 3.129)
 
-### Calculated example: profit from business discontinuation in tier b
+### Calculated example: profit on discontinuation in tier b
 
-Invented inputs: profit from business discontinuation of € 500.000, an age at cessation at most fifteen years below the state pension age (tier b) and no already built provisions.
+Invented inputs: profit on discontinuation of € 500.000, an age at cessation at most fifteen years below the state pension age (tier b) and no already built provisions.
 
-The maximum is the tier b amount minus the already built provisions, limited to the profit from business discontinuation.
+The maximum is the tier b amount minus the already built provisions, limited to the profit on discontinuation.
 
 Step 1: 283.110 - 0 = 283.110.
 Step 2: min(500.000, 283.110) = 283.110.
 
-The maximum deduction for the profit from business discontinuation conversion is € 283.110, the 2025 tier b amount.
+The maximum deduction for the profit on discontinuation conversion is € 283.110, the 2025 tier b amount.
 
 Source: https://wetten.overheid.nl/BWBR0011353/2025-01-01 (art. 3.129)
 
-### Calculated example: commutation (afkoop) of a small annuity
+### Calculated example: commutation (afkoop) of a small annuity (kleine lijfrente)
 
 Invented input: an annuity (lijfrente) with a yearly benefit of € 6.000.
 
@@ -140,11 +140,11 @@ The commutation counts as an annuity instalment (termijn).
 
 Source: https://wetten.overheid.nl/BWBR0011353/2025-01-01 (art. 3.133)
 
-### Calculated example: disability insurance (AOV) premium with periodic or lump-sum payout
+### Calculated example: disability insurance (AOV, arbeidsongeschiktheidsverzekering) premium with periodic or lump-sum payout
 
 Invented input: a disability insurance premium of € 2.400.
 
-The premium is not a business cost. With periodic benefits (uitkeringen) the € 2.400 premium is fully deductible as expenditure for income provisions (uitgave voor inkomensvoorzieningen), with no allowance (ruimte) cap. With a lump-sum payout the same € 2.400 premium is not deductible, and the payout is not box 1 income and counts in box 3.
+The premium is not a business cost. With periodic benefits (uitkeringen) the € 2.400 premium is fully deductible as expenditure for income provisions (uitgave voor inkomensvoorzieningen), with no allowance (ruimte) cap. With a lump-sum payout the same € 2.400 premium is not deductible (niet aftrekbaar), and the payout is not box 1 income and counts in box 3.
 
 Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers
 
@@ -158,7 +158,7 @@ Step 1: 5,4% x 60.000 = 3.240,00.
 Step 2: 3.240,00 / 12 = 270,00.
 Step 3: 270,00 is above the proposed maximum of € 171 gross per month, so the proposed premium is capped at € 171 gross per month.
 
-This is the Council of State (Raad van State) version of the proposal and not an enacted premium. The Basic Disability Insurance for Self-Employed Persons Act (BAZ) is not enacted law.
+This is the Council of State (Raad van State) version of the proposal and not an enacted premium. The Basic Disability Insurance Act for Self-Employed Persons (BAZ, wet basisverzekering arbeidsongeschiktheid zelfstandigen) is not enacted law.
 
 Source: https://www.rijksoverheid.nl/actueel/nieuws/2025/09/12/wetsvoorstel-voor-basisverzekering-arbeidsongeschiktheid-voor-zelfstandigen-naar-de-raad-van-state
 

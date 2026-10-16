@@ -80,7 +80,7 @@ At the start of Phase 10: Year-end check, the migration cannot move on because t
 
 **Goal** (from the phase reference):
 
-Prove the annual mirror against ledger, bank, source documents, filed VAT and annual accounts. The Implementer drafts the year-end comparison, and the Verifier independently recomputes year-end values for Phase 10.
+Prove the annual mirror against ledger, bank, source documents, filed VAT and annual accounts (jaarrekening). The Implementer drafts the year-end comparison, and the Verifier independently recomputes year-end values for Phase 10.
 
 The exit gate in section 5 passes, the recorded evidence sits in `migration-workspace/`, and the Operator approves so the next phase may start.
 <!-- /ANCHOR:problem -->
@@ -127,7 +127,7 @@ Read each input from Jortt or from the previous phase. Jortt stays read-only.
 | ID | Requirement | Check |
 |----|-------------|-------|
 | REQ-001 | SG-10.1: Compare annual reports. | required report classes and account rows compared 100%. |
-| REQ-002 | SG-10.2: Generate or obtain a Moneybird XAF 4.0. | year and version match 1, the route actually used is verified, either the Phase 0 Operator UI route or the pinned guarded POST route with its Operator approval and flushed WRITE_INTENT 1, artifact receipt and SHA-256 recorded 1. Year-end closing entries in the exported year at export time 0, or the closing entry was removed before export and restored after it 1. Per Moneybird help reviewed on 2026-10-11, an auditfile downloaded after the year-end closing may lack the profit-and-loss data. |
+| REQ-002 | SG-10.2: Generate or obtain a Moneybird XAF 4.0. | year and version match 1, the route actually used is verified, either the Phase 0 Operator UI route or the pinned guarded POST route with its Operator approval and flushed WRITE_INTENT 1, artifact receipt and SHA-256 recorded 1. Year-end closing (jaarafsluiting) entries in the exported year at export time 0, or the closing entry was removed before export and restored after it 1. Per Moneybird help reviewed on 2026-10-11, an auditfile downloaded after the year-end closing may lack the profit-and-loss data. |
 | REQ-003 | SG-10.3: Reconcile account and period totals. | unexplained differences 0 and approved exception count equals the exception ledger. |
 | REQ-004 | SG-10.4: Run the agent route. | M12 checks: work units with Verifier PASS or Operator disposition 100%, year-end recompute differences 0, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. |
 

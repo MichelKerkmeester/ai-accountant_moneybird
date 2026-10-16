@@ -16,7 +16,7 @@ version: 1.0.0.0
 
 **Rule:** These values hold for tax year 2021 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 3 of 4 of the entrepreneur's allowance and SME profit exemption 2021 topic.
+Part 3 of 4 of the entrepreneur's allowance and SME profit exemption (ondernemersaftrek en mkb-winstvrijstelling) 2021 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [rules.md](rules.md): how it works.
@@ -83,7 +83,7 @@ Calculated example from the section 2 figures.
 - SME profit exemption: 14% of € 0 = € 0,00.
 - Taxable profit from business: € 0.
 
-### Calculated example 7: Deduction for research and development work (speur- en ontwikkelingswerk)
+### Calculated example 7: Deduction for research and development work (aftrek voor speur- en ontwikkelingswerk)
 Calculated example from the section 2 figures.
 
 - Profit: € 50.000. Hours criterion is met. R&D declaration (S&O-verklaring) and at least 500 S&O hours. Other parts ignored.

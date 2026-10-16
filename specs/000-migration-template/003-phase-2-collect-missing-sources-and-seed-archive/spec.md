@@ -105,7 +105,7 @@ The exit gate in section 5 passes, the recorded evidence sits in `migration-work
 
 **Phase inputs** (from the phase reference):
 
-Missing-source report, Jortt inventory, operator UI exports, bank files, filed returns and confirmations, annual accounts, and any adviser schedules.
+Missing-source report, Jortt inventory, operator UI exports, bank files, filed returns and confirmations, annual accounts (jaarrekening), and any adviser schedules.
 
 Read each input from Jortt or from the previous phase. Jortt stays read-only.
 
@@ -126,7 +126,7 @@ Read each input from Jortt or from the previous phase. Jortt stays read-only.
 
 | ID | Requirement | Check |
 |----|-------------|-------|
-| REQ-001 | SG-2.1: Obtain required evidence by year and source. | every mandatory source class in Phase 1 is present or has an approved exception 100%, actual filed VAT return and confirmation evidence for every filed VAT period or evidence-backed not-applicable status 100%, exceptions waiving filed VAT return evidence 0, income-tax returns and assessments present or carrying the approved unavailability status that Phase 11 accepts 100%, unexplained missing classes 0. |
+| REQ-001 | SG-2.1: Obtain required evidence by year and source. | every mandatory source class in Phase 1 is present or has an approved exception 100%, actual filed VAT return (btw-aangifte) and confirmation evidence for every filed VAT period or evidence-backed not-applicable status 100%, exceptions waiving filed VAT return evidence 0, income-tax returns and assessments present or carrying the approved unavailability status that Phase 11 accepts 100%, unexplained missing classes 0. |
 | REQ-002 | SG-2.2: Reconcile every Jortt account to full-year bank evidence. | covered account-year pairs 100%, unexplained exceptions 0. |
 | REQ-003 | SG-2.3: Seed and test the archive. | manifest checksums and independent source totals match 100%, independent sample readability passes 100%, each record-class retention rule has an Operator-approved source basis, duration, start event, derived end date, owner, independent location and readability evidence 100%, unresolved retention rules 0. |
 | REQ-004 | SG-2.4: Establish first-business-year opening support. | start-year basis recorded 1, each opening account component has source evidence 100%, approver and treatment of pre-business funds recorded 100%, unsupported opening positions 0. Without prior closing evidence, the Operator or adviser approves a source-based schedule before the gate passes. |

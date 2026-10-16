@@ -23,7 +23,7 @@ The LIVE mode guides recurring bookkeeping for current periods. It separates mon
 
 ## 2. HOW IT WORKS
 
-The agent reviews sales, purchase records, bank transactions, private movements and exceptions at the relevant cadence. Quarterly work prepares a review for the operator and never submits a return. Yearly work checks balance, assets, depreciation, mileage, private use and closing evidence.
+The agent reviews sales, purchase records, bank transactions, private movements and exceptions at the relevant cadence. Quarterly work prepares a review for the operator and never submits a return. Yearly work checks balance, assets, depreciation, mileage, private use (privégebruik) and closing evidence.
 
 ---
 
@@ -37,7 +37,7 @@ The agent reviews sales, purchase records, bank transactions, private movements 
 | sk-moneybird-accountant/references/moneybird-bookkeeping.md | Shared | Explains common posting and reconciliation treatment. |
 | sk-moneybird-accountant/references/migration/phases-17-to-18.md | Shared | Defines the source freeze and live switch. |
 | sk-moneybird-accountant/references/migration/phases-19-to-21.md | Shared | Defines recurring monthly, VAT-period and yearly workflows. |
-| sk-moneybird-accountant/references/vat-return/README.md | Shared | The quarterly VAT return preparation procedure the VAT-period review routes into. |
+| sk-moneybird-accountant/references/vat-return/README.md | Shared | The quarterly VAT return (btw-aangifte) preparation procedure the VAT-period review routes into. |
 | sk-moneybird-accountant/references/yearly-overview/README.md | Shared | The yearly close and overview preparation procedure. |
 
 ### Validation And Tests

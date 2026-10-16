@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Income tax return (aangifte) and procedure 2020: Examples
+# Income tax return (aangifte inkomstenbelasting) and procedure 2020: Examples
 
 **Rule:** These values hold for tax year 2020 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the tax return and procedure 2020 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the tax return (aangifte) and procedure 2020 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -42,9 +42,9 @@ The Dutch Tax and Customs Administration (Belastingdienst) gives this example it
 
 A sole trader files the 2020 return on 6 May 2021. The 2020 deadline was moved from 1 May 2021 to before 8 May 2021. The decree (besluit) of 4 May 2021 covers a return filed after 1 May 2021 and before 8 May 2021, so 6 May 2021 falls inside the window. If the assessment follows that return, no tax interest (belastingrente) is charged for that reason. A return that arrives on 9 May 2021 falls outside the window. Source: https://zoek.officielebekendmakingen.nl/stcrt-2021-24144.html.
 
-### Example 3. Provisional assessment in monthly instalments (termijnen) (Calculated example)
+### Example 3. Provisional assessment (voorlopige aanslag) in monthly instalments (termijnen) (Calculated example)
 
-A provisional income tax assessment for 2020 is dated 15 September 2020. Months remaining after the month of the date are October, November and December, so there are 3 instalments (termijnen). The first instalment (termijn) is one month after the date, so 15 October 2020, then 15 November 2020 and 15 December 2020. The instalments are equal, so an invented amount of € 3.000,00 gives 3 instalments of € 1.000,00 each. Step by step: € 3.000,00 / 3 = € 1.000,00. Source: https://wetten.overheid.nl/BWBR0004770/2020-01-01.
+A provisional income tax assessment (voorlopige aanslag inkomstenbelasting) for 2020 is dated 15 September 2020. Months remaining after the month of the date are October, November and December, so there are 3 instalments (termijnen). The first instalment (termijn) is one month after the date, so 15 October 2020, then 15 November 2020 and 15 December 2020. The instalments are equal, so an invented amount of € 3.000,00 gives 3 instalments of € 1.000,00 each. Step by step: € 3.000,00 / 3 = € 1.000,00. Source: https://wetten.overheid.nl/BWBR0004770/2020-01-01.
 
 ### Example 4. Tax interest on the 2020 income tax (Calculated example)
 
@@ -98,13 +98,13 @@ An objection filed on 1 December 2021 is in time. The Dutch Tax and Customs Admi
 
 ### Example 10. Request (verzoek) for a reduction of the 2020 assessment (Official example)
 
-For the 2020 assessment an online request for a reduction was possible up to and including 31 December 2025 (https://www.belastingdienst.nl/wps/wcm/connect/nl/bezwaar-en-beroep/content/verzoek-om-vermindering-van-aanslag-inkomstenbelasting).
+For the 2020 assessment an online request for a reduction (verzoek om vermindering) was possible up to and including 31 December 2025 (https://www.belastingdienst.nl/wps/wcm/connect/nl/bezwaar-en-beroep/content/verzoek-om-vermindering-van-aanslag-inkomstenbelasting).
 
 ### Example 11. Record-retention obligation (bewaarplicht) for a 4-year lease (Official example)
 
 The Dutch Tax and Customs Administration gives the example of a 4-year lease. The term starts when the item (gegeven) is no longer current, so the lease data are kept for those 4 years and then 7 more years. Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/hoelang-moet-u-gegevens-bewaren.
 
-### Example 12. KVK registration window (Calculated example)
+### Example 12. KVK registration window (inschrijvingsvenster) (Calculated example)
 
 Invented inputs. A business starts on 15 June 2020. The statement (opgave) for the first registration (inschrijving) must be made within a period of two weeks that starts one week before and ends one week after the start of the business.
 
@@ -114,7 +114,7 @@ Step 2: one week after 15 June 2020 is 22 June 2020.
 
 Step 3: 8 June 2020 to 22 June 2020 is exactly two weeks, so the window runs from 8 June 2020 to 22 June 2020.
 
-Registering inside that window gives the Chamber of Commerce number (KVK-nummer) immediately, and the Dutch Tax and Customs Administration registration takes at most 10 working days (werkdagen). Sources: https://wetten.overheid.nl/BWBR0021777/2025-07-16 and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/.
+Registering inside that window gives the Chamber of Commerce (kamer van koophandel) number (KVK-nummer) immediately, and the Dutch Tax and Customs Administration registration takes at most 10 working days (werkdagen). Sources: https://wetten.overheid.nl/BWBR0021777/2025-07-16 and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/schrijf-uw-onderneming-in/.
 
 ---
 

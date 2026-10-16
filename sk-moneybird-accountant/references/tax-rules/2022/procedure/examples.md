@@ -12,11 +12,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Tax return and procedure 2022: Examples
+# Tax return (belastingaangifte) and procedure 2022: Examples
 
 **Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 3 of 4 of the tax return and procedure (aangifte en procedure) 2022 topic.
+Part 3 of 4 of the tax return and procedure 2022 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [rules.md](rules.md): how it works.
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the tax return and procedure (aangifte en procedure) 2022 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the tax return (belastingaangifte) and procedure 2022 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -44,9 +44,9 @@ The official example: a 2022 quarterly return turns out to be wrong and a supple
 
 ### Example 3: Additional assessment (navordering) example (Official example)
 
-The Dutch Tax and Customs Administration example: tax year 2016, with 5 months deferral, an additional assessment is possible until 31 May 2022 ([source](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/navorderingsaanslag)). The example anchors how the 5-year term and the deferral extension are counted.
+The Dutch Tax and Customs Administration (Belastingdienst) example: tax year 2016, with 5 months deferral, an additional assessment is possible until 31 May 2022 ([source](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/navorderingsaanslag)). The example anchors how the 5-year term and the deferral extension are counted.
 
-### Example 4: Tax interest on income tax for tax year 2022 (Calculated example)
+### Example 4: Tax interest on income tax (inkomstenbelasting) for tax year 2022 (Calculated example)
 
 Inputs from section 2: a final income tax due of € 10.000 for 2022, a return filed on 20 April 2023 (so before 1 May 2023), and an assessment that does not follow the return, dated 1 November 2023.
 
@@ -106,7 +106,7 @@ Inputs from section 2: the online route needs fewer than 5 years after the tax y
 
 Step 1: the fifth year after 2022 is 2027.
 
-Step 2: following the pattern of the material, the online request for a reduction for a 2022 assessment runs to 31 December 2027.
+Step 2: following the pattern of the material, the online request for a reduction (verzoek om vermindering) for a 2022 assessment runs to 31 December 2027.
 
 Step 3: after that date the request goes by letter.
 
@@ -120,7 +120,7 @@ Step 2: the 7-year retention period (bewaartermijn) starts when the lease data a
 
 Step 3: 4 + 7 = 11 years in total.
 
-### Example 10: Chamber of Commerce (KVK) registration window (Calculated example)
+### Example 10: Chamber of Commerce (Kamer van Koophandel, KVK) registration window (inschrijvingsvenster) (Calculated example)
 
 Inputs from section 2: the statement (opgave) period is two weeks, starting one week before and ending one week after the start of the business.
 

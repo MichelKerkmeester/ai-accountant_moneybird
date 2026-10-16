@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and disability insurance 2026: Notes
+# Pension, annuity and disability insurance (arbeidsongeschiktheidsverzekering) 2026: Notes
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -41,7 +41,7 @@ This part holds the changes, records, open points and related resources for the 
 - Profit from business discontinuation (stakingswinst) maximum tier a: € 566.197 (2025) to € 574.867 (2026). Source: [Art. 3.129, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01), [Art. 3.129, 2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01).
 - Profit from business discontinuation maximum tier b: € 283.110 (2025) to € 287.445 (2026). Source: [Art. 3.129, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01), [Art. 3.129, 2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01).
 - Profit from business discontinuation maximum tier c: € 141.564 (2025) to € 143.732 (2026). Source: [Art. 3.129, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01), [Art. 3.129, 2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01).
-- Commutation (afkoop) of a small annuity (lijfrente): € 5.429 (2025) to € 5.513 (2026). Source: [Art. 3.133, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01), [Art. 3.133, 2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01).
+- Commutation (afkoop) of a small annuity (kleine lijfrente): € 5.429 (2025) to € 5.513 (2026). Source: [Art. 3.133, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01), [Art. 3.133, 2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01).
 - Commutation cap for long-term disability (langdurige arbeidsongeschiktheid): € 50.664 (2025) to € 51.440 (2026). Source: [Art. 3.133, 2025 text](https://wetten.overheid.nl/BWBR0011353/2025-01-01), [Art. 3.133, 2026 text](https://wetten.overheid.nl/BWBR0011353/2026-01-01).
 - Look-back window: 2015 to 2024 (2025) to 2016 to 2025 (2026). Source: [FISIN 2025](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen), [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/uitgaven_voor_inkomensvoorzieningen).
 - Bridge annuity (overbruggingslijfrente) cap: € 63.288 (2025) to € 63.288 (2026), unchanged. Source: [FISIN 2025](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2025/uitgaven_voor_inkomensvoorzieningen), [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/uitgaven_voor_inkomensvoorzieningen).
@@ -55,7 +55,7 @@ This part holds the changes, records, open points and related resources for the 
 
 <a id="6-in-the-books"></a>
 
-For a sole trader, record annuity premiums (lijfrentepremies) and disability insurance (AOV) premiums as private expenditures that are deductible in the income tax return (inkomstenbelasting), not as business costs on the profit (winst). The disability insurance premium is an "uitgave voor andere inkomensvoorzieningen" under art. 3.124 lid 1 c. Keep the policy documents and payment records. For an old-age reserve (FOR) or profit from business discontinuation (stakingswinst) conversion, pay before 1 July of the following year (before 1 July 2027 for 2026). The deduction is claimed in the income tax return (aangifte inkomstenbelasting). Source: [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/uitgaven_voor_inkomensvoorzieningen), [Art. 3.124](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [Belastingdienst: AOV voor ondernemers](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers).
+For a sole trader, record annuity premiums (lijfrentepremies) and disability insurance (arbeidsongeschiktheidsverzekering, AOV) premiums as private expenditures that are deductible in the income tax return (inkomstenbelasting), not as business costs (bedrijfskosten, zakelijke kosten) on the profit (winst). The disability insurance premium is an "uitgave voor andere inkomensvoorzieningen" under art. 3.124 lid 1 c. Keep the policy documents and payment records. For an old-age reserve (oudedagsreserve, FOR) or profit from business discontinuation (stakingswinst) conversion, pay before 1 July of the following year (before 1 July 2027 for 2026). The deduction is claimed in the income tax return (aangifte inkomstenbelasting). Source: [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/uitgaven_voor_inkomensvoorzieningen), [Art. 3.124](https://wetten.overheid.nl/BWBR0011353/2026-01-01), [Belastingdienst: AOV voor ondernemers](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers).
 
 ---
 

@@ -12,11 +12,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Investment deduction and depreciation (investeringsaftrek en afschrijving) 2024: Examples
+# Investment deduction (investeringsaftrek) and depreciation (afschrijving) 2024: Examples
 
 **Rule:** These values hold for tax year 2024 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 3 of 4 of the Investment deduction and depreciation (investeringsaftrek en afschrijving) 2024 topic.
+Part 3 of 4 of the Investment deduction (investeringsaftrek) and depreciation (afschrijving) 2024 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [rules.md](rules.md): how it works.
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Investment deduction and depreciation (investeringsaftrek en afschrijving) 2024 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Investment deduction (investeringsaftrek) and depreciation (afschrijving) 2024 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -36,7 +36,7 @@ This part holds the worked examples for the Investment deduction and depreciatio
 
 ### Official example: starters arbitrary depreciation (willekeurige afschrijving) on a truck
 
-**Official example.** The Dutch Tax and Customs Administration (Belastingdienst) gives this example on its page for the starting entrepreneur. A truck is bought on 1 July 2024 for € 150.000,00, with a 7-year life and a residual value of € 10.000,00. The entrepreneur depreciates € 60.000,00 at will in 2024 and € 80.000,00 at will in 2025, which leaves a book value of € 10.000,00 at the end of 2025 against a normal book value of € 120.000,00 on 1 January 2026. Rental from 1 January 2026 falls within 5 years after 1 January 2024, so revaluation (herwaardering) to € 120.000,00 gives € 110.000,00 book profit (boekwinst) in 2026, and a normal depreciation of € 20.000,00 in 2026 remains. The arithmetic: € 150.000,00 - € 60.000,00 - € 80.000,00 = € 10.000,00, and € 120.000,00 - € 10.000,00 = € 110.000,00. Source: [Belastingdienst page on willekeurige afschrijving for the starting entrepreneur](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/willekeurige_afschrijving/startende_ondernemer).
+**Official example.** The Dutch Tax and Customs Administration (Belastingdienst) gives this example on its page for the starting entrepreneur. A truck is bought on 1 July 2024 for € 150.000,00, with a 7-year life and a residual value (restwaarde) of € 10.000,00. The entrepreneur depreciates € 60.000,00 at will in 2024 and € 80.000,00 at will in 2025, which leaves a book value of € 10.000,00 at the end of 2025 against a normal book value of € 120.000,00 on 1 January 2026. Rental from 1 January 2026 falls within 5 years after 1 January 2024, so revaluation (herwaardering) to € 120.000,00 gives € 110.000,00 book profit (boekwinst) in 2026, and a normal depreciation of € 20.000,00 in 2026 remains. The arithmetic: € 150.000,00 - € 60.000,00 - € 80.000,00 = € 10.000,00, and € 120.000,00 - € 10.000,00 = € 110.000,00. Source: [Belastingdienst page on willekeurige afschrijving for the starting entrepreneur](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/afschrijving/willekeurige_afschrijving/startende_ondernemer).
 
 ### Calculated example: KIA in the 28% band
 
@@ -52,11 +52,11 @@ This part holds the worked examples for the Investment deduction and depreciatio
 
 ### Calculated example: KIA in a partnership (samenwerkingsverband)
 
-**Calculated example.** A general partnership (vof) invests € 70.000,00 in 2024. One partner (vennoot) has a € 10.000,00 share in that investment, in proportion to the (excess) profit ((over)winst). He also invests € 10.000,00 privately in the same year. Step 1: add the partnership investment and the private investment, € 70.000,00 + € 10.000,00 = € 80.000,00. Step 2: the table applied to € 80.000,00 gives the fixed € 19.535,00, because € 80.000,00 is above € 69.765,00 and at most € 129.194,00. Step 3: his own investment amount is € 10.000,00 + € 10.000,00 = € 20.000,00. Step 4: the fraction is € 20.000,00 / € 80.000,00 = 1/4. Step 5: KIA = € 19.535,00 × 1/4 = € 4.883,75.
+**Calculated example.** A general partnership (vof) invests € 70.000,00 in 2024. One partner (vennoot) has a € 10.000,00 share in that investment, in proportion to the profit, including excess profit (overwinst). He also invests € 10.000,00 privately in the same year. Step 1: add the partnership investment and the private investment, € 70.000,00 + € 10.000,00 = € 80.000,00. Step 2: the table applied to € 80.000,00 gives the fixed € 19.535,00, because € 80.000,00 is above € 69.765,00 and at most € 129.194,00. Step 3: his own investment amount (investeringsbedrag) is € 10.000,00 + € 10.000,00 = € 20.000,00. Step 4: the fraction is € 20.000,00 / € 80.000,00 = 1/4. Step 5: KIA = € 19.535,00 × 1/4 = € 4.883,75.
 
 ### Calculated example: EIA plus KIA
 
-**Calculated example.** A new machine on the Energy List (Energielijst) is bought for € 100.000,00 in 2024 and taken into use in the same year. The RVO notification is sent within 3 months. Step 1: EIA = 40% × € 100.000,00 = € 40.000,00. Step 2: KIA on the same € 100.000,00 is the fixed € 19.535,00, because € 100.000,00 is above € 69.765,00 and at most € 129.194,00. Step 3: total investment deduction (investeringsaftrek) = € 40.000,00 + € 19.535,00 = € 59.535,00. The MIA is not available on this asset, because the EIA and MIA cannot be combined.
+**Calculated example.** A new machine on the Energy List (Energielijst) is bought for € 100.000,00 in 2024 and taken into use in the same year. The Netherlands Enterprise Agency (Rijksdienst voor Ondernemend Nederland, RVO) notification is sent within 3 months. Step 1: EIA = 40% × € 100.000,00 = € 40.000,00. Step 2: KIA on the same € 100.000,00 is the fixed € 19.535,00, because € 100.000,00 is above € 69.765,00 and at most € 129.194,00. Step 3: total investment deduction (investeringsaftrek) = € 40.000,00 + € 19.535,00 = € 59.535,00. The MIA is not available on this asset, because the EIA and MIA cannot be combined.
 
 ### Calculated example: MIA plus KIA in the three categories
 
@@ -76,7 +76,7 @@ This part holds the worked examples for the Investment deduction and depreciatio
 
 ### Calculated example: disinvestment addition (desinvesteringsbijtelling)
 
-**Calculated example.** A machine is bought in 2024 for € 40.000,00 and the KIA of 28% is taken, € 11.200,00. In the same year the machine is sold for € 5.000,00. Step 1: is the transfer price above the € 2.800,00 threshold? € 5.000,00 is above € 2.800,00, so yes. Step 2: disinvestment addition (bijtelling) = 28% × € 5.000,00 = € 1.400,00, using the investment deduction percentage that was taken. Step 3: net effect = € 11.200,00 - € 1.400,00 = € 9.800,00. If the transfer price had been € 2.800,00, no amount would be added. The disposal falls within five years after the start of 2024, and € 5.000,00 stays below the € 40.000,00 over which the KIA was taken.
+**Calculated example.** A machine is bought in 2024 for € 40.000,00 and the KIA of 28% is taken, € 11.200,00. In the same year the machine is sold for € 5.000,00. Step 1: is the transfer price (overdrachtsprijs) above the € 2.800,00 threshold? € 5.000,00 is above € 2.800,00, so yes. Step 2: disinvestment addition (bijtelling) = 28% × € 5.000,00 = € 1.400,00, using the investment deduction percentage that was taken. Step 3: net effect = € 11.200,00 - € 1.400,00 = € 9.800,00. If the transfer price had been € 2.800,00, no amount would be added. The disposal falls within five years after the start of 2024, and € 5.000,00 stays below the € 40.000,00 over which the KIA was taken.
 
 ### Calculated example: starters arbitrary depreciation and the cap
 

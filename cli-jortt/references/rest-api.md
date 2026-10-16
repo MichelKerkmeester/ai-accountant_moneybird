@@ -43,7 +43,7 @@ A call requires the scope named by its OpenAPI operation. The migration default 
 organizations:read customers:read invoices:read expenses:read receipts:read financing:read reconciling:read reports:read
 ```
 
-`payroll:read` is not in that default. Add it only if payroll records are in the approved extraction scope. Never add a `:write` scope for a read task.
+`payroll:read` is not in that default. Add it only if payroll records (loonadministratie) are in the approved extraction scope. Never add a `:write` scope for a read task.
 
 ---
 
@@ -333,7 +333,7 @@ Archived customers can behave as deleted records and return `deleted: true`. Pro
 
 ### Closed years and payment matching
 
-Writes to a closed financial year fail with HTTP 422. Payment-matching source operations are limited to the last 24 months and are unavailable inside a closed year. Stop after a 422 and inspect the request and year status.
+Writes to a closed financial year (boekjaar) fail with HTTP 422. Payment-matching source operations are limited to the last 24 months and are unavailable inside a closed year. Stop after a 422 and inspect the request and year status.
 
 ### Downloads
 

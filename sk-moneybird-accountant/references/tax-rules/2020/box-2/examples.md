@@ -38,7 +38,7 @@ Every example below is marked as an **Official example**, copied from the source
 
 **Calculated example, dividend and the 26,25% rate.** A taxpayer with a substantial interest (aanmerkelijk belang) receives a gross dividend of € 10.000 in 2020. The bank charges € 400. The BV withholds € 1.500 dividend tax (dividendbelasting).
 - Regular benefit (regulier voordeel): € 10.000.
-- Deductible costs: € 400.
+- Deductible costs (aftrekbare kosten): € 400.
 - Taxable income from a substantial interest (belastbaar inkomen uit aanmerkelijk belang): € 10.000 minus € 400 = € 9.600.
 - Box 2 tax at the 2020 rate of 26,25%: € 9.600 x 26,25% = € 2.520,00.
 - The dividend tax is not deducted from the income but credited as prepayment (voorheffing): € 2.520,00 minus € 1.500 = € 1.020,00 still to pay.
@@ -53,7 +53,7 @@ Every example below is marked as an **Official example**, copied from the source
 - Box 2 tax at 26,25%: € 38.000 x 26,25% = € 9.975,00.
 - Rules used: [Belastingdienst inkomen](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang/inkomsten_uit_aanmerkelijk_belang), [FISIN 2026](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/aanmerkelijk_belang).
 
-**Official example, FISIN 2020, non-arm's-length price (onzakelijke prijs).** Shares are sold to a son-in-law for € 20.000, where a third party would pay € 35.000. The market value (waarde in het economisch verkeer) of € 35.000 applies ([FISIN 2020](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/aanmerkelijk_belang)).
+**Official example, FISIN 2020, non-arm's-length price (onzakelijke prijs).** Shares are sold to a son-in-law for € 20.000, where a third party (derde) would pay € 35.000. The market value (waarde in het economisch verkeer) of € 35.000 applies ([FISIN 2020](https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/aanmerkelijk_belang)).
 
 **Calculated example, loss conversion into a tax credit (belastingkorting).** Shares were sold in 2020 with an unoffset loss of € 30.000. The sale ended the substantial interest of the taxpayer and the partner. They had no substantial interest in 2021 and 2022. The loss is definitively established and the request is made in 2022.
 - Tax credit: € 30.000 x 26,25% = € 7.875,00.
@@ -68,7 +68,7 @@ Every example below is marked as an **Official example**, copied from the source
 - The outcome can never be below nil. If the other benefits were € 6.000, the calculation would give € 5.280,00 minus € 6.000 = minus € 720,00, and the benefit would be nil.
 - Rule used: [art. 4.14, 2020 text](https://wetten.overheid.nl/BWBR0011353/2020-01-01).
 
-**Calculated example, customary salary (gebruikelijk loon).** A BV in which the taxpayer has a substantial interest pays a salary. The most comparable wage is € 60.000. The highest wage of the employees of the body or connected bodies is € 50.000. The fixed amount is € 46.000.
+**Calculated example, customary salary (gebruikelijk loon).** A BV in which the taxpayer has a substantial interest pays a salary. The most comparable wage (vergelijkbaar loon) is € 60.000. The highest wage of the employees of the body or connected bodies is € 50.000. The fixed amount is € 46.000.
 - 75% of the most comparable wage: € 60.000 x 75% = € 45.000,00.
 - Highest of € 45.000,00, € 46.000 and € 50.000: € 50.000,00.
 - The customary salary is at least € 50.000,00.

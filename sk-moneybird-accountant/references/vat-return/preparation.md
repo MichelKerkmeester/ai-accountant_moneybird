@@ -12,7 +12,7 @@ contextType: general
 version: 1.0.0.0
 ---
 
-# VAT return preparation procedure
+# VAT return (btw-aangifte) preparation procedure
 
 **Rule:** Run the steps in order. Stop at the first failed check and record it. Every figure, rate, threshold and deadline comes from the year files under `references/tax-rules/`. The agent prepares and never files, submits or pays.
 
@@ -32,13 +32,13 @@ Reads use moneybird-guard with `MONEYBIRD_GUARD_READ_ONLY=1`, following [cli-mon
 
 | Step | Action | Check | Evidence | Owner |
 |---|---|---|---|---|
-| 0 | Resolve the administration, the legal form, the tax year, the cadence and the period under review. Resolve `year_key` and load the year files. | The period, the year, the cadence and the VAT regime are unambiguous. | The resolved period and `year_key` in the workpaper, with the year file paths read. | Agent. `[Operator]` confirms the cadence when it differs from the usual pattern. |
+| 0 | Resolve the administration, the legal form (rechtsvorm), the tax year, the cadence and the period under review. Resolve `year_key` and load the year files. | The period, the year, the cadence and the VAT regime are unambiguous. | The resolved period and `year_key` in the workpaper, with the year file paths read. | Agent. `[Operator]` confirms the cadence when it differs from the usual pattern. |
 | 1 | Check the filing order and record the lock state. Verify that no later period was already filed. | No later period blocks this one. The lock state is recorded. A lock is not a legal prerequisite and not a completeness proof. | The filing-order note and the recorded lock state. | Agent records. `[Operator]` authorizes any change that a lock blocks. |
 | 2 | Reconcile the bank. Match or disposition every bank transaction in the period. | Every transaction is matched or dispositioned. An open transaction is not booked and leaves its VAT out of the return. | The guarded unprocessed-state read with an explicit period. | Agent. `[Operator]` dispositions a transaction that has no evidence. |
 | 3 | Reconcile the documents. | No incoming document stays on `Nieuw` and no attachment hangs on two documents. | The incoming-document list and the attachment link check. | Agent. `[Operator]` dispositions a missing or duplicate document. |
 | 4 | Check the rate reach. For every rate used in the period, read the rate list and its report reference. | Every rate used in the period has a report reference, so it reaches a section (rubriek). The check is reach not correctness of the percentage. | The `Btw-tarieven` read and the `Btw-rapport` reference per rate used. | Agent. `[Operator]` dispositions a rate with no reference. |
-| 5 | Walk the purchase side for input VAT (voorbelasting) that may not be deducted. | Private use, catering, exempt-turnover costs and mixed-use private shares are excluded or corrected. | The purchase-side list with each exclusion or correction named and its source. | Agent prepares. `[Operator]` or a bookkeeper decides a disputed allocation. |
-| 6 | Check the reverse-charge completeness. | Every foreign purchase sits on the right rate for its case, prints `btw verlegd` and the buyer's own VAT ID where reverse charge applies, falls in the correct period and, for a small businesses scheme (KOR) business, is checked against the incidental filing duty. | The foreign-purchase list with its rate, its invoice text and its period. | Agent. `[Operator]` or a bookkeeper decides a doubtful case. |
+| 5 | Walk the purchase side for input VAT (voorbelasting) that may not be deducted. | Private use (privégebruik), catering, exempt-turnover costs and mixed-use private shares are excluded or corrected. | The purchase-side list with each exclusion or correction named and its source. | Agent prepares. `[Operator]` or a bookkeeper decides a disputed allocation. |
+| 6 | Check the reverse-charge completeness. | Every foreign purchase sits on the right rate for its case, prints `btw verlegd` and the buyer's own VAT ID (btw-id) where reverse charge applies, falls in the correct period and, for a small businesses scheme (kleineondernemersregeling, KOR) business, is checked against the incidental filing duty. | The foreign-purchase list with its rate, its invoice text and its period. | Agent. `[Operator]` or a bookkeeper decides a doubtful case. |
 | 7 | Classify the sales. Place every sales line in 1a, 1b, 1c, 1e, 3a, 3b or 3c. Rubriek 1d is the private-use charge, not a sale. A domestic reverse-charged sale belongs in 1e. | Every sales line is placed. The 3b total ties to the per-customer ICP detail. Consumer distance sales stay separate from B2B. OSS use is tested before a line is placed. | The sales classification list and the ICP detail tie. | Agent. `[Operator]` or a bookkeeper decides a doubtful OSS or distance-sale case. |
 | 8 | Build the section (rubriek) table from the period's rate overview. | Each line carries the base and the VAT and names the rate set that feeds it. The table is built from the rate overview, not from the ledger or the profit and loss statement (resultatenrekening). | The section table with the base, the VAT and the rate set per line. | Agent. |
 | 9 | Reconcile the ledger against the return bases and classify every difference. | Every difference is classified into a documented cause. An unexplained difference is a blocker. | The reconciliation sheet with each difference and its cause. | Agent. `[Operator]` or a bookkeeper decides a disputed cause. |
@@ -68,7 +68,7 @@ Stop and record the item when any of these remain open:
 - An unexplained profit-and-loss to return difference.
 - A correction above the boundary without the supplementary return (suppletie) route.
 - A correction outside the correction window.
-- A doubtful reverse-charge, small businesses scheme (KOR), OSS, private-use or revision case.
+- A doubtful reverse-charge, small businesses scheme (kleineondernemersregeling, KOR), OSS, private-use or revision case.
 - An open point from [README.md](README.md#5-open-points) that a step needs.
 
 A stop condition leaves the pack in the open state. The Operator decides the next action.

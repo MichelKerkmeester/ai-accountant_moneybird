@@ -38,7 +38,7 @@ Each example is marked as an Official example or a Calculated example. The Offic
 
 ### Calculated example: Box 1 below AOW age
 
-Assume a taxable income from work and home of € 80.000,00, no deductions that trigger a rate adjustment (tariefsaanpassing) and no tax credits (heffingskortingen, AHK and AK).
+Assume a taxable income from work and home (belastbaar inkomen uit werk en woning) of € 80.000,00, no deductions that trigger a rate adjustment (tariefsaanpassing) and no tax credits (heffingskortingen, AHK and AK).
 
 1. Tax on the first € 75.518,00 at 36,97%: € 75.518,00 × 0,3697 = € 27.919,00 (rounded down).
 2. Income above € 75.518,00: € 80.000,00 minus € 75.518,00 = € 4.482,00.
@@ -62,7 +62,7 @@ Assume a full year at AOW age, born before 1 January 1946, and a taxable income 
 
 ### Calculated example: AOW transition month
 
-Assume a taxable income from work and home of € 20.000,00 in the year in which AOW age is reached. That income is below the € 38.098,00 first-bracket boundary, so the whole amount falls in the first bracket.
+Assume a taxable income from work and home of € 20.000,00 in the year in which AOW age is reached. That income is below the € 38.098,00 first-bracket boundary, so the whole amount falls in the first bracket (eerste schijf).
 
 1. If AOW age is reached in January, the first-bracket rate is 19,07%: € 20.000,00 × 0,1907 = € 3.814,00.
 2. If AOW age is reached in December, the first-bracket rate is 35,47%: € 20.000,00 × 0,3547 = € 7.094,00.
@@ -85,7 +85,7 @@ If the taxable income after the deduction is below € 75.518,00, the base is li
 
 ### Calculated example: Profits from business activities (winst uit onderneming)
 
-Assume an entrepreneur (ondernemer) below AOW age with a profit of € 13.750,00, an available self-employed person's deduction (zelfstandigenaftrek) of € 3.750,00, no other entrepreneur's allowance (ondernemersaftrek), no exempt profit components and no losses to offset.
+Assume an entrepreneur (ondernemer) below AOW age with a profit of € 13.750,00, an available self-employed person's deduction (zelfstandigenaftrek) of € 3.750,00, no other entrepreneur's allowance (ondernemersaftrek), no exempt profit components (vrijgestelde winstbestanddelen) and no losses to offset.
 
 1. Profit after the self-employed person's deduction: € 13.750,00 minus € 3.750,00 = € 10.000,00.
 2. SME profit exemption (MKB-winstvrijstelling): € 10.000,00 × 0,1331 = € 1.331,00.
@@ -96,7 +96,7 @@ Assume an entrepreneur (ondernemer) below AOW age with a profit of € 13.750,00
 
 Assume a taxable income from work and home of € 40.000,00.
 
-1. Income above the € 24.812,00 phase-out point: € 40.000,00 minus € 24.812,00 = € 15.188,00.
+1. Income above the € 24.812,00 phase-out point (afbouwpunt): € 40.000,00 minus € 24.812,00 = € 15.188,00.
 2. Reduction: € 15.188,00 × 0,0663 = € 1.006,96 (rounded down).
 3. General tax credit: € 3.362,00 minus € 1.006,96 = € 2.355,04.
 
@@ -112,7 +112,7 @@ This example uses the 3,421% rate from the year table. The difference from the 3
 
 ### Official example: Payout of the general tax credit
 
-A taxpayer born on 20 December 1962 with no income has the full general tax credit of € 3.362,00 paid out. The taxpayer had the same fiscal partner for more than 6 months and the partner owes enough tax. The payout is available only to people born before 1 January 1963.
+A taxpayer born on 20 December 1962 with no income has the full general tax credit of € 3.362,00 paid out. The taxpayer had the same fiscal partner (fiscaal partner) for more than 6 months and the partner owes enough tax. The payout is available only to people born before 1 January 1963.
 
 Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2024/heffingskortingen.
 

@@ -28,7 +28,7 @@ The rows below were first researched and later corrected against a primary sourc
 
 | Date | File | Row | Old status | New status | Source |
 |---|---|---|---|---|---|
-| 2026-10-12 | work-relationship/figures.md | Regular enforcement (handhaving) ambition | as first researched | Corrected | https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z62fd.pdf |
+| 2026-10-12 | work-relationship/figures.md | Regular enforcement (reguliere handhaving) ambition | as first researched | Corrected | https://download.belastingdienst.nl/belastingdienst/docs/handhavingsplan-arbeidsrelaties-lh0021z62fd.pdf |
 | 2026-10-12 | vat/figures.md | Bill 36.920 status and schedule | as first researched | Corrected | https://www.eerstekamer.nl/wetsvoorstel/36920_wet_implementatie_richtlijn |
 | 2026-10-12 | private-company-and-corporate-tax/figures.md | Dividend stripping, beneficial owner (uiteindelijk gerechtigde) | as first researched | Corrected | https://wetten.overheid.nl/BWBR0002515/2025-01-01 |
 | 2026-10-12 | private-company-and-corporate-tax/figures.md | Tax-neutral conversion (geruisloze omzetting) (art. 3.65 Wet IB 2001) | as first researched | Corrected | https://zoek.officielebekendmakingen.nl/stcrt-2025-37092.html |

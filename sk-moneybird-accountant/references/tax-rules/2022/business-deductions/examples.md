@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Entrepreneur's allowance and SME profit exemption 2022: Examples
+# Entrepreneur's allowance and SME profit exemption (ondernemersaftrek en mkb-winstvrijstelling) 2022: Examples
 
 **Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Entrepreneur's allowance and SME profit exemption 2022 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Entrepreneur's allowance and SME profit exemption (ondernemersaftrek en mkb-winstvrijstelling) 2022 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -52,12 +52,12 @@ The € 7.030 and € 6.670 are the self-employed person's deduction amounts of 
 
 Official examples:
 - Dutch Tax and Customs Administration (Belastingdienst): https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium
-- Chamber of Commerce (Kamer van Koophandel, KVK): https://www.kvk.nl/starten/de-magische-1225-uur-alles-over-het-urencriterium
+- The Chamber of Commerce (Kamer van Koophandel, KVK): https://www.kvk.nl/starten/de-magische-1225-uur-alles-over-het-urencriterium
 
 - Dutch Tax and Customs Administration: a webhosting business started on 1 July means 6 months as an entrepreneur and still at least 1.225 hours in that period.
 - Chamber of Commerce: a start on 1 May leaves eight months, about 117 working days (rounded), and at 8 hours a day 117 x 8 = 936,00 hours. Extra hours needed to reach the 1.225-hour test: 1.225 minus 936 = 289 hours.
 
-### Example 3, Calculated example: second test for a starter
+### Example 3, Calculated example: second test (tweede toets) for a starter
 
 Inputs: the taxpayer became an entrepreneur on 1 January 2020 and worked 1.300 hours on the business in 2022. The lookback window for 2022 is 2017 to 2021. The years 2017, 2018 and 2019 were non-entrepreneur years, so the taxpayer was not an entrepreneur in one or more of the five preceding calendar years. The second test of art. 3.6 lid 1 is met. The 1.300 hours are above 1.225, so the hours criterion is met. The mainly (grotendeels) test does not need to be checked.
 
@@ -91,7 +91,7 @@ Inputs: the taxpayer was not an entrepreneur in one or more of the five precedin
 - Third use, applied twice before, profit € 3.000: the amount is € 4.000, capped at the profit, so the deduction is € 3.000.
 - Fourth use: the statute has no tier above two earlier uses, so there is no deduction.
 
-### Example 7, Calculated example: S&O deduction with the starter's increase
+### Example 7, Calculated example: S&O deduction with the starter's increase (startersverhoging)
 
 Input: an entrepreneur who meets the hours criterion, has an S&O declaration (S&O-verklaring) from the Netherlands Enterprise Agency (Rijksdienst voor Ondernemend Nederland, RVO), makes at least 500 hours of S&O work and was not an entrepreneur in one or more of the five preceding years with the deduction applied at most twice.
 
@@ -106,7 +106,7 @@ Inputs: profit € 60.000, entrepreneur who meets the hours criterion, partner w
 - 1.300 hours falls in the 1.225 to under 1.750 band, so 3%.
 - Deduction for assisting partner: 3% of € 60.000 = € 1.800,00.
 - Boundary variant: exactly 1.225 hours also falls in the 3% band, because the band starts at "gelijk aan of meer dan" 1.225.
-- Pay variant: the partner is paid € 4.000, which is below € 5.000, so the pay is not deductible and the partner counts as working without pay. If that partner worked 900 hours, 900 falls in the 875 to under 1.225 band, so 2% of € 60.000 = € 1.200,00.
+- Pay variant: the partner is paid € 4.000, which is below € 5.000, so the pay is not deductible (niet aftrekbaar) and the partner counts as working without pay. If that partner worked 900 hours, 900 falls in the 875 to under 1.225 band, so 2% of € 60.000 = € 1.200,00.
 
 ### Example 9, Calculated example: discontinuation deduction (stakingsaftrek)
 
@@ -116,7 +116,7 @@ Inputs: profit on the cessation (staking) of a whole business, no earlier discon
 - Cessation profit € 10.000, an earlier discontinuation deduction of € 1.000: maximum € 3.630 minus € 1.000 = € 2.630, so the deduction is € 2.630.
 - Cessation profit € 3.000, no earlier use: the deduction equals the profit, so € 3.000.
 
-### Example 10, Calculated example: addition to the old-age reserve (oudedagsreserve)
+### Example 10, Calculated example: addition to the old-age reserve (dotatie aan de oudedagsreserve)
 
 Inputs: profit before the addition € 60.000, no pension premiums, the business capital (ondernemingsvermogen) at year end exceeds the old-age reserve at the start of the year by € 25.000, entrepreneur below state pension age who meets the hours criterion. This is the last year in which an addition is possible.
 

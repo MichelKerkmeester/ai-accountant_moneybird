@@ -10,13 +10,13 @@ trigger_phrases:
 version: 1.0.0.0
 ---
 
-# Yearly overview preparation
+# Yearly overview (jaaroverzicht) preparation
 
 ## 1. OVERVIEW
 
-Entry index for preparing a Dutch sole-trader yearly overview in Moneybird. The folder holds the ordered close steps, the preparation checklist, the fiscal reconciliation and the report and export limits. It prepares and never files.
+Entry index for preparing a Dutch sole-trader yearly overview (jaaroverzicht) in Moneybird. The folder holds the ordered close steps, the preparation checklist, the fiscal reconciliation and the report and export limits. It prepares and never files.
 
-The T11 task-type row routes a prepare-the-yearly-overview request into `references/yearly-overview/`. The agent assembles the balance sheet (balans), the profit and loss account, the schedules, the fiscal reconciliation and the hand-off, names every exception and stops before the year-end closing (jaarafsluiting). The Operator checks the pack, confirms the judgement points, performs the closing actions in the Moneybird UI and files in the Dutch Tax and Customs Administration (Belastingdienst) portal.
+The T11 task-type row routes a prepare-the-yearly-overview request into `references/yearly-overview/`. The agent assembles the balance sheet (balans), the profit and loss account (winst- en verliesrekening), the schedules, the fiscal reconciliation and the hand-off, names every exception and stops before the year-end closing (jaarafsluiting). The Operator checks the pack, confirms the judgement points, performs the closing actions in the Moneybird UI and files in the Dutch Tax and Customs Administration (Belastingdienst) portal.
 
 ---
 

@@ -21,12 +21,12 @@ version: 1.0.0.0
 General topic 6 of 13 in the Dutch tax rules guide.
 
 - [vat.md](vat.md): 3.1 VAT (BTW).
-- [income-tax-box-1-and-the-health-insurance-contribution.md](income-tax-box-1-and-the-health-insurance-contribution.md): 3.2 Income tax box 1 and the Zvw contribution.
+- [income-tax-box-1-and-the-health-insurance-contribution.md](income-tax-box-1-and-the-health-insurance-contribution.md): 3.2 Income tax (inkomstenbelasting) box 1 and the Zvw contribution (bijdrage Zvw).
 - [business-deductions-and-sme-profit-exemption.md](business-deductions-and-sme-profit-exemption.md): 3.3 Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling).
 - [investment-deductions-and-depreciation.md](investment-deductions-and-depreciation.md): 3.4 Investment deductions and depreciation.
 - [costs-and-the-car.md](costs-and-the-car.md): 3.5 Costs and the car.
-- [box-3-savings-and-investments.md](box-3-savings-and-investments.md): 3.6 Box 3 savings and investments.
-- [box-2-and-the-substantial-interest.md](box-2-and-the-substantial-interest.md): 3.7 Box 2 and the substantial interest.
+- [box-3-savings-and-investments.md](box-3-savings-and-investments.md): 3.6 Box 3 savings and investments (sparen en beleggen).
+- [box-2-and-the-substantial-interest.md](box-2-and-the-substantial-interest.md): 3.7 Box 2 and the substantial interest (aanmerkelijk belang).
 - [the-private-company-and-corporate-tax.md](the-private-company-and-corporate-tax.md): 3.8 The BV and corporate income tax (vennootschapsbelasting).
 - [pension-annuities-and-disability-insurance.md](pension-annuities-and-disability-insurance.md): 3.9 Pension, annuity (lijfrente) and AOV.
 - [work-relationship-and-procedure.md](work-relationship-and-procedure.md): 3.10 Work relationship and procedure.
@@ -46,9 +46,9 @@ This part holds the general rules for the RECORD AND INVOICE DUTIES topic across
 
 These duties hold in every year.
 
-Core business records are generally retained for at least seven years. Immovable-property records generally have a ten-year retention period. Keep sales and purchase invoices, bank and cash records, contracts, stock records where relevant, VAT records, and data supporting income, deductions, assets, and declarations. Digital source invoices should remain in their received digital form. Digital records must remain accessible, readable, complete, and authentic. See the [administration duty](https://www.belastingdienst.nl/wps/wcm/connect/nl/administratie-bijhouden/administratie-bijhouden) and [invoice retention rules](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/uw_facturen_bewaren).
+Core business records are generally retained for at least seven years. Immovable-property records generally have a ten-year retention period (bewaartermijn). Keep sales and purchase invoices, bank and cash records, contracts, stock records where relevant, VAT records, and data supporting income, deductions, assets, and declarations. Digital source invoices should remain in their received digital form. Digital records must remain accessible, readable, complete, and authentic. See the [administration duty](https://www.belastingdienst.nl/wps/wcm/connect/nl/administratie-bijhouden/administratie-bijhouden) and [invoice retention rules](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/uw_facturen_bewaren).
 
-An invoice identifies the supplier and customer by legal name and address, includes the supplier VAT ID and applicable Chamber of Commerce number, shows a date and unique consecutive invoice number, describes the supply and quantity or extent, gives a different supply or advance-payment date when applicable, lists the unit price and net amount by VAT rate, and states the VAT rate and amount. See [invoice requirements](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/).
+An invoice identifies the supplier and customer by legal name and address, includes the supplier VAT ID (btw-id) and applicable Chamber of Commerce (kamer van koophandel) number (KVK-nummer), shows a date and unique consecutive invoice number, describes the supply and quantity or extent, gives a different supply or advance-payment date when applicable, lists the unit price and net amount by VAT rate (btw-tarief), and states the VAT rate and amount. See [invoice requirements](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/factuureisen/).
 
 ---
 

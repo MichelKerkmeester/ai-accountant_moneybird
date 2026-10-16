@@ -36,9 +36,9 @@ This part holds the worked examples for the income tax (inkomstenbelasting) box 
 
 ### Box 1 below state pension (AOW) age
 
-**Calculated example.** Assume taxable income from work and home is € 60.000, before rate adjustment (tariefsaanpassing) and tax credits (heffingskortingen).
+**Calculated example.** Assume taxable income from work and home (belastbaar inkomen uit werk en woning) is € 60.000, before rate adjustment (tariefsaanpassing) and tax credits (heffingskortingen).
 
-1. First bracket: € 38.441 × 35,82% = € 13.769,57.
+1. First bracket (eerste schijf): € 38.441 × 35,82% = € 13.769,57.
 2. Income in bracket 2: € 60.000 − € 38.441 = € 21.559.
 3. Tax on bracket 2: € 21.559 × 37,48% = € 8.080,31.
 4. Total at the published bracket rates: € 13.769,57 + € 8.080,31 = € 21.849,88.
@@ -87,7 +87,7 @@ The published maximum premium at the 2025 ceiling is € 10.628. This example do
 
 **Calculated example.** Assume the taxpayer is below state pension age and has aggregate income (verzamelinkomen) of € 50.000.
 
-1. Income above the phase-out point: € 50.000 − € 28.406 = € 21.594.
+1. Income above the phase-out point (afbouwpunt): € 50.000 − € 28.406 = € 21.594.
 2. Phase-out: € 21.594 × 6,337% = € 1.368,41.
 3. AHK after phase-out: € 3.068 − € 1.368,41 = € 1.699,59.
 

@@ -27,12 +27,12 @@ Mechanisms used: [M1](./shared-mechanisms.md#m1-register-schemas-and-complete-so
 
 ### 1. Goal
 
-Prove the annual mirror against ledger, bank, source documents, filed VAT and annual accounts. The Implementer drafts the year-end comparison, and the Verifier independently recomputes year-end values for Phase 10.
+Prove the annual mirror against ledger, bank, source documents, filed VAT and annual accounts (jaarrekening). The Implementer drafts the year-end comparison, and the Verifier independently recomputes year-end values for Phase 10.
 
 ### 2. Nested sub-goals
 
 - **SG-10.1**: Compare annual reports. Check: required report classes and account rows compared 100%.
-- **SG-10.2**: Generate or obtain a Moneybird XAF 4.0. Check: year and version match 1, the route actually used is verified, either the Phase 0 Operator UI route or the pinned guarded POST route with its Operator approval and flushed WRITE_INTENT 1, artifact receipt and SHA-256 recorded 1. Year-end closing entries in the exported year at export time 0, or the closing entry was removed before export and restored after it 1. Per Moneybird help reviewed on 2026-10-11, an auditfile downloaded after the year-end closing may lack the profit-and-loss data.
+- **SG-10.2**: Generate or obtain a Moneybird XAF 4.0. Check: year and version match 1, the route actually used is verified, either the Phase 0 Operator UI route or the pinned guarded POST route with its Operator approval and flushed WRITE_INTENT 1, artifact receipt and SHA-256 recorded 1. Year-end closing (jaarafsluiting) entries in the exported year at export time 0, or the closing entry was removed before export and restored after it 1. Per Moneybird help reviewed on 2026-10-11, an auditfile downloaded after the year-end closing may lack the profit-and-loss data.
 - **SG-10.3**: Reconcile account and period totals. Check: unexplained differences 0 and approved exception count equals the exception ledger.
 
 - **SG-10.4**: Run the agent route. Check: M12 checks: work units with Verifier PASS or Operator disposition 100%, year-end recompute differences 0, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1.
@@ -58,7 +58,7 @@ Source XAF, bank statements, canonical dataset, Moneybird reports, tax reconcili
 4. [Reconciliation Agent] Compare costs by approved main group.
 5. [VAT Agent] Confirm all assigned VAT periods and declarations passed.
 6. [Independent Auditor] Compare asset purchase, historic processing, depreciation and book value.
-7. [Reconciliation Agent] Review private deposits, withdrawals and business costs paid privately.
+7. [Reconciliation Agent] Review private deposits, withdrawals and business costs (bedrijfskosten) paid privately.
 8. [Tax Filing Agent] Bridge Moneybird, XAF, annual accounts and filed income-tax evidence.
 9. [Independent Auditor] Check bank, receivables, payables, VAT, assets, depreciation, debts and equity by account.
 10. [Operator] Prefer the documented UI auditfile route or approve the operation-scoped route in the route contract. Compare target XAF 4.0 with the source XAF at mapped account level and explain each difference.
@@ -116,7 +116,7 @@ Phase 10 year reports are complete. Available filing evidence is linked. Evidenc
 
 ### 4. Inputs
 
-Moneybird profit and balance reports, annual accounts, filed IB return and assessment where available, approved NOT_AVAILABLE or PENDING status evidence, fiscal adjustment schedule, and tax register.
+Moneybird profit and balance reports, annual accounts (jaarrekening), filed IB return and assessment where available, approved NOT_AVAILABLE or PENDING status evidence, fiscal adjustment schedule, and tax register.
 
 ### 5. Owner-tagged actions
 
@@ -125,7 +125,7 @@ Moneybird profit and balance reports, annual accounts, filed IB return and asses
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the income-tax bridge template. [Verifier] checks the bridge and confirms no adjustment was invented. [Final reviewer] reviews the phase before Operator approvals.
 
 **Filed income-tax comparison retained from the original bridge:**
-Compare commercial results from Moneybird with annual accounts and actual filed income-tax values and assessments. Record each fiscal adjustment separately with its evidence and decision owner. Jortt has no income-tax report route in the current tool contract. Never add an unknown ledger item to force equality with a tax return.
+Compare commercial results from Moneybird with annual accounts and actual filed income-tax values and assessments. Record each fiscal adjustment separately with its evidence and decision owner. Jortt has no income-tax report route in the current tool contract. Never add an unknown ledger item to force equality with a tax return (belastingaangifte).
 
 | Comparison item | Moneybird | Annual accounts | Filed return or assessment |
 |---|---|---|---|
@@ -452,7 +452,7 @@ Current-year source records, mirror reports, bank evidence, filing calendar, min
 
 **Current-year mirror steps retained with a dynamic year rule:**
 The next historical work year is the first unlocked year at or after the configured bookkeeping start year, using the year after the last locked year when the sequence is contiguous. For current-year mirroring, use the actual calendar year only when it is at or after the configured start date and is not already locked. Never store a hard-coded calendar year. While mirroring, the source ledger remains authoritative and Moneybird remains the shadow ledger.
-For each assigned period: process new documents, compare to source ledger evidence, import and reconcile the bank through the UI, reconstruct only approved records in Moneybird, compare VAT, and file nothing again. After the current work year closes, verify all assigned periods, bank, profit, balance sheet, annual accounts and income-tax evidence. A positive minimum parallel duration or cycle count, rationale, numeric rollback triggers, decision owner and rehearsals must be configured before this phase.
+For each assigned period: process new documents, compare to source ledger evidence, import and reconcile the bank through the UI, reconstruct only approved records in Moneybird, compare VAT, and file nothing again. After the current work year closes, verify all assigned periods, bank, profit, balance sheet, annual accounts (jaarrekening) and income-tax evidence. A positive minimum parallel duration or cycle count, rationale, numeric rollback triggers, decision owner and rehearsals must be configured before this phase.
 
 ### 6. Tool route
 

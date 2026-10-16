@@ -52,7 +52,7 @@ One row per criterion. `AC-ID` is stable once written: supersede a criterion, ne
 |----|-----------|--------|----------|
 | AC-001 | Operator-approved freeze date and time recorded 1, last included source key at the freeze boundary recorded 1, new Jortt entries after that boundary 0 or captured in a dated delta 100%. | PENDING | PENDING |
 | AC-002 | source page, record, attachment and control-total coverage 100%, unexplained delta items 0. | PENDING | PENDING |
-| AC-003 | invoices, expenses, receipts, loose Inbox items, attachments, bank files, XAF files, annual accounts, filed returns, assessments and reconstructed asset schedules accounted for 100%, unexplained exclusions 0. | PENDING | PENDING |
+| AC-003 | invoices, expenses, receipts, loose Inbox items, attachments, bank files, XAF files, annual accounts (jaarrekening), filed returns, assessments and reconstructed asset schedules accounted for 100%, unexplained exclusions 0. | PENDING | PENDING |
 | AC-004 | Operator-approved source basis, class duration, start event, derived end date, independent archive location, owner and readability evidence 100%, Independent Auditor recomputation matches 100%, unsupported or unapproved rules 0. | PENDING | PENDING |
 | AC-005 | class restore and readability checks verified by the Independent Auditor 100%, failed class restores 0. | PENDING | PENDING |
 | AC-006 | active paid package covers the next live VAT period and year close 1, renewal owner and alert evidence recorded 1. | PENDING | PENDING |

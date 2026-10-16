@@ -105,7 +105,7 @@ Establish the source population and inventory each relevant record class before 
 
 ### 2. Nested sub-goals
 
-- **SG-1.1**: Enumerate mandatory source classes and years. Check: invoices, expenses, receipts, each attachment class, loose Inbox items, bank files, XAF files, annual accounts, filed returns, assessments and reconstructed asset schedules have inventory rows 100%, unclassified classes 0.
+- **SG-1.1**: Enumerate mandatory source classes and years. Check: invoices, expenses, receipts, each attachment class, loose Inbox items, bank files, XAF files, annual accounts (jaarrekening), filed returns, assessments and reconstructed asset schedules have inventory rows 100%, unclassified classes 0.
 - **SG-1.2**: Map each Jortt bank account and IBAN to source bank files per year. Check: account-year pairs with a file or explicit exception 100%, unexplained unmatched pairs 0.
 - **SG-1.3**: Inventory annual tax regimes and filing periods. Check: year-regime rows 100%, every KOR, ICP, OSS and other relevant declaration marked applicable or not applicable with evidence, unknown statuses 0.
 - **SG-1.4**: Resolve the Jortt general-ledger printout status. Check: capability decision recorded 1, gates relying on an unverified printout 0.
@@ -136,7 +136,7 @@ Source archive inventory, Jortt account and transaction lists, bank file catalog
 
 **Original year availability matrix retained as a controlled template:**
 
-| Year derived from source scope | Documents | XAF | Bank | VAT | Income tax | Annual accounts | Assets |
+| Year derived from source scope | Documents | XAF | Bank | VAT | Income tax (inkomstenbelasting) | Annual accounts | Assets |
 |---|---|---|---|---|---|---|---|
 | One row per in-scope year | Status and evidence link | Status and evidence link | Status and evidence link | Status and evidence link | Status and evidence link | Status and evidence link | Status and evidence link |
 
@@ -181,7 +181,7 @@ Complete the required evidence set and create an independently inspectable sourc
 
 ### 2. Nested sub-goals
 
-- **SG-2.1**: Obtain required evidence by year and source. Check: every mandatory source class in Phase 1 is present or has an approved exception 100%, actual filed VAT return and confirmation evidence for every filed VAT period or evidence-backed not-applicable status 100%, exceptions waiving filed VAT return evidence 0, income-tax returns and assessments present or carrying the approved unavailability status that Phase 11 accepts 100%, unexplained missing classes 0.
+- **SG-2.1**: Obtain required evidence by year and source. Check: every mandatory source class in Phase 1 is present or has an approved exception 100%, actual filed VAT return (btw-aangifte) and confirmation evidence for every filed VAT period or evidence-backed not-applicable status 100%, exceptions waiving filed VAT return evidence 0, income-tax returns and assessments present or carrying the approved unavailability status that Phase 11 accepts 100%, unexplained missing classes 0.
 - **SG-2.2**: Reconcile every Jortt account to full-year bank evidence. Check: covered account-year pairs 100%, unexplained exceptions 0.
 - **SG-2.3**: Seed and test the archive. Check: manifest checksums and independent source totals match 100%, independent sample readability passes 100%, each record-class retention rule has an Operator-approved source basis, duration, start event, derived end date, owner, independent location and readability evidence 100%, unresolved retention rules 0.
 - **SG-2.4**: Establish first-business-year opening support. Check: start-year basis recorded 1, each opening account component has source evidence 100%, approver and treatment of pre-business funds recorded 100%, unsupported opening positions 0. Without prior closing evidence, the Operator or adviser approves a source-based schedule before the gate passes.
@@ -195,7 +195,7 @@ Phase 1 inventory is complete. Each missing source has an Operator task and a du
 
 ### 4. Inputs
 
-Missing-source report, Jortt inventory, operator UI exports, bank files, filed returns and confirmations, annual accounts, and any adviser schedules.
+Missing-source report, Jortt inventory, operator UI exports, bank files, filed returns and confirmations, annual accounts (jaarrekening), and any adviser schedules.
 
 ### 5. Owner-tagged actions
 

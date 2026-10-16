@@ -21,7 +21,7 @@ This reference separates API extraction from records that only the operator can 
 
 ### When to Use
 
-- A request names an XAF auditfile, annual accounts or a filed VAT return
+- A request names an XAF auditfile, annual accounts (jaarrekening) or a filed VAT return (btw-aangifte)
 - A migration step depends on API rate limits, page size or history depth
 - A download link expired or a record looks archived
 
@@ -37,11 +37,11 @@ Say plainly when a record needs the Jortt UI. Never present another report as th
 
 The API has no XAF or auditfile endpoint. In the Jortt UI, an administrator (Beheerder) can open `Boekhoudbot`, choose `Maak voor mij een auditfile`, select a year and generate one XAF 4.0.3 file for that year. Uploaded receipts and invoices are not part of that XAF file. Ask the operator to perform this step.
 
-### Annual accounts and filed VAT returns
+### Annual accounts (jaarrekening) and filed VAT returns
 
-Annual accounts are under `Rapporten > Jaarrekening`, one year at a time. Filed VAT returns must also be downloaded through the Jortt UI. The API has no filed VAT return endpoint and its VAT summary is not a filed return. The supplied facts identify no IB report endpoint.
+Annual accounts are under `Rapporten > Jaarrekening`, one year at a time. Filed VAT returns must also be downloaded through the Jortt UI. The API has no filed VAT return (btw-aangifte) endpoint and its VAT summary is not a filed return. The supplied facts identify no IB report endpoint.
 
-### No general ledger export
+### No general ledger (grootboek) export
 
 There is no general ledger export in the API or in the UI. Do not promise one or label a report as a general ledger. The API also has no general journal entries apart from payroll journal entries.
 
@@ -65,7 +65,7 @@ Receipt, invoice and attachment download operations return short-lived signed li
 
 The Jortt API allows at most 10 requests per second. List pages contain at most 100 items. Report operations accept a year parameter. The real historic depth of list endpoints is UNCONFIRMED. The CLI sleeps between requests and follows `_links.next.href` when `--all` is set.
 
-Writes to a closed financial year fail with HTTP 422. Payment-matching sources are limited to the last 24 months and are unavailable inside a closed year. The migration route is read-only, so a 422 on a read needs investigation rather than a write retry.
+Writes to a closed financial year (boekjaar) fail with HTTP 422. Payment-matching sources are limited to the last 24 months and are unavailable inside a closed year. The migration route is read-only, so a 422 on a read needs investigation rather than a write retry.
 
 Archived customers can behave like deleted records and return `deleted: true`. Projects and bank accounts have an `archived` flag. The API catalogue has no `include_deleted` filter. Preserve record state when building the source register.
 

@@ -35,7 +35,7 @@ The commands below assume the repository root is your current directory.
 
 ### What It Does
 
-`jortt-cli` reads the Jortt OpenAPI description at runtime, checks each call against its scope and follows the API's paging. Use the Jortt UI for XAF auditfiles, annual accounts and filed VAT returns.
+`jortt-cli` reads the Jortt OpenAPI description at runtime, checks each call against its scope and follows the API's paging. Use the Jortt UI for XAF auditfiles, annual accounts (jaarrekening) and filed VAT returns.
 
 Jortt is the source system here. Moneybird is the target and the sibling `cli-moneybird` skill owns it.
 
@@ -48,7 +48,7 @@ The REST API returns repeatable records and short-lived download links. Saving t
 | **REST API** | Customers, invoices, expenses, receipts, banks, reports, labels and projects |
 | **Jortt UI** | XAF auditfiles, annual accounts and filed VAT returns |
 
-Jortt has no general ledger export, in the API or in the UI.
+Jortt has no general ledger (grootboek) export, in the API or in the UI.
 
 ---
 
@@ -88,7 +88,7 @@ Expected: an HTTP status and an item count. The file lands inside `migration-wor
 
 `ops` lists the operations and `describe` shows one operation's scope and parameters. `call` checks parameter names, required parameters and basic types before it makes any request. `--all` follows the next links and merges every page into one JSON array. `call` and `get` print a short summary by default, for example `HTTP 200, items: 25`. Record content stays out of the terminal by default. `--out` saves the full body inside the workspace and prints the same summary. `--print-body` prints the full body and is refused with exit 2 when an agent session marker is set. Agents never use `--print-body`.
 
-The UI stays the only source for XAF, annual accounts and filed VAT returns.
+The UI stays the only source for XAF, annual accounts (jaarrekening) and filed VAT returns.
 
 ```text
 Jortt request

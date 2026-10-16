@@ -33,7 +33,7 @@ Freeze Jortt for new entries at an Operator-set date, capture the final source d
 
 - **SG-17.1**: Set and apply the source freeze. Check: Operator-approved freeze date and time recorded 1, last included source key at the freeze boundary recorded 1, new Jortt entries after that boundary 0 or captured in a dated delta 100%.
 - **SG-17.2**: Capture the final source delta. Check: source page, record, attachment and control-total coverage 100%, unexplained delta items 0.
-- **SG-17.3**: Reconcile mandatory archive classes. Check: invoices, expenses, receipts, loose Inbox items, attachments, bank files, XAF files, annual accounts, filed returns, assessments and reconstructed asset schedules accounted for 100%, unexplained exclusions 0.
+- **SG-17.3**: Reconcile mandatory archive classes. Check: invoices, expenses, receipts, loose Inbox items, attachments, bank files, XAF files, annual accounts (jaarrekening), filed returns, assessments and reconstructed asset schedules accounted for 100%, unexplained exclusions 0.
 - **SG-17.4**: Complete and validate each retention rule. Check: Operator-approved source basis, class duration, start event, derived end date, independent archive location, owner and readability evidence 100%, Independent Auditor recomputation matches 100%, unsupported or unapproved rules 0.
 - **SG-17.5**: Restore every archive class independently. Check: class restore and readability checks verified by the Independent Auditor 100%, failed class restores 0.
 - **SG-17.6**: Preserve target access through verification. Check: active paid package covers the next live VAT period and year close 1, renewal owner and alert evidence recorded 1.

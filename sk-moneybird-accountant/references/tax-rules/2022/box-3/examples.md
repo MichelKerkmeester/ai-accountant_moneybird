@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Box 3 savings and investments 2022: Examples
+# Box 3 savings and investments (sparen en beleggen) 2022: Examples
 
 **Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Box 3 savings and investments 2022 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Box 3 savings and investments (sparen en beleggen) 2022 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -36,9 +36,9 @@ This part holds the worked examples for the Box 3 savings and investments 2022 t
 
 All examples use invented amounts and only the 2022 figures from section 2. The asset and debt values are the values on 1 January 2022 that the Box 3 Restoration of Rights Act (Wet rechtsherstel box 3) calculation uses.
 
-**Calculated example 1. Single person, mixed portfolio, old method against category method.**
+**Calculated example 1. Single person, mixed portfolio, old method against category method (categorieënmethode).**
 
-Facts. Bank balances (banktegoeden) € 80.000. Other assets (overige bezittingen) € 100.000. Debts (schulden) € 0. No fiscal partner.
+Facts. Bank balances (banktegoeden) € 80.000. Other assets (overige bezittingen) € 100.000. Debts (schulden) € 0. No fiscal partner (fiscaal partner).
 
 Old band method.
 1. Assets (bezittingen) = € 80.000 + € 100.000 = € 180.000. With no debts, the return base (rendementsgrondslag) is € 180.000.
@@ -55,7 +55,7 @@ Category method under the Box 3 Restoration of Rights Act.
 4. Benefit = 3,072222% × € 129.350 = € 3.973,92. Control sum: € 129.350 / € 180.000 = 71,861111%, and € 5.530,00 × 71,861111% = € 3.973,92.
 5. Tax = € 3.973,92 × 0,31 = € 1.231,92.
 
-Most favourable method. € 3.973,92 is lower than € 4.356,86, so the category method applies and the box 3 tax is € 1.231,92 (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen).
+Most favourable method (meest gunstige methode). € 3.973,92 is lower than € 4.356,86, so the category method applies and the box 3 tax is € 1.231,92 (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/oude-berekening-box-3-inkomen).
 
 **Calculated example 2. Single person, savings only.**
 
@@ -67,7 +67,7 @@ Category method. Return = € 200.000 × 0,00% = € 0. Benefit = € 0. Tax = �
 
 Most favourable method. The category method gives € 0 against € 5.230,06 under the old method, so the category method applies and the box 3 tax is € 0.
 
-**Calculated example 3. Whole-year partners, green investments and debts.**
+**Calculated example 3. Whole-year partners, green investments (groene beleggingen) and debts.**
 
 Facts. Bank balances € 200.000. Green investments (groene beleggingen) € 70.000. Debts € 12.000. Whole-year fiscal partners.
 
@@ -84,7 +84,7 @@ Green investment credit (korting groene beleggingen). 0,7% × € 70.000 = € 4
 
 Most favourable method. The category method gives € 0 against € 2.774,19 under the old method, so the benefit is € 0.
 
-**Official example. Actual return of € 1.000 interest and a € 300 loss on shares.**
+**Official example. Actual return (werkelijk rendement) of € 1.000 interest and a € 300 loss on shares.**
 
 The Dutch Tax and Customs Administration (Belastingdienst) example for 2022: € 1.000 of interest received and shares that are down € 300 give an actual return of € 700 (€ 1.000 - € 300 = € 700) (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/wat-is-mijn-werkelijk-rendement). A calculated link: if the taxpayer of Calculated example 1 reported an actual return of € 700 for 2022, the Dutch Tax and Customs Administration uses the most favourable amount, so € 700 instead of the fictitious € 3.973,92 (https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/werkelijk-rendement-belastingaangifte).
 

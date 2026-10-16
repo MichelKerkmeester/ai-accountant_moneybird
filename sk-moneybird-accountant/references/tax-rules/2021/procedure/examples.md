@@ -1,5 +1,5 @@
 ---
-title: "Filing and procedure (aangifte en procedure) 2021: Examples"
+title: "Filing and procedure 2021: Examples"
 description: "Filing deadlines, extensions, provisional assessment, tax interest (belastingrente), additional assessment (navordering), objection (bezwaar), record-retention obligation (bewaarplicht) and registration duties for tax year 2021. This file holds the examples part."
 nav_label: "Tax return and procedure examples"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Filing and procedure (aangifte en procedure) 2021: Examples
+# Filing and procedure 2021: Examples
 
 **Rule:** These values hold for tax year 2021 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Filing and procedure (aangifte en procedure) 2021 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Filing and procedure 2021 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -42,13 +42,13 @@ No calculation is needed. The source gives both dates.
 
 ### Example 2: Threshold example (Official example)
 This example is on the same Dutch Tax and Customs Administration page. Source: https://web.archive.org/web/20220309/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag
-- A provisional refund of € 100 is received.
+- A provisional refund (voorlopige teruggaaf) of € 100 is received.
 - The entitlement is € 80.
 - The difference is € 100,00 - € 80,00 = € 20,00.
 - € 20,00 is not higher than the assessment threshold (aanslaggrens) of € 48, so nothing has to be paid back.
 - The source gives the result as a nil assessment (nihilaanslag).
 
-### Example 3: Income tax tax interest (belastingrente) for 2021 (Calculated example)
+### Example 3: Income tax (inkomstenbelasting) tax interest (belastingrente) for 2021 (Calculated example)
 Inputs are round and invented. The rate, the period and the day count come from section 2.
 - Assume a tax due of € 10.000 for tax year 2021.
 - Assume the return is filed on 1 June 2022, so it arrives on or after 1 May 2022.
@@ -89,7 +89,7 @@ The rule is in section 2. A 4-year lease is kept for the duration of the lease a
 - Total: 4 + 7 = 11 years.
 Source: https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/hoelang-moet-u-gegevens-bewaren
 
-### Example 6: Chamber of Commerce registration window (Calculated example)
+### Example 6: Chamber of Commerce (kamer van koophandel) registration window (inschrijvingsvenster) (Calculated example)
 The rule is in section 2. Assume the business starts on 1 June 2021.
 - One week before 1 June 2021 is 25 May 2021.
 - One week after 1 June 2021 is 8 June 2021.

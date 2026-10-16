@@ -37,7 +37,7 @@ Use `--out migration-workspace/...` for saved reads. Without `--out`, the guard 
 
 ---
 
-## 2. OPENING BALANCE JOURNAL ENTRY
+## 2. OPENING BALANCE JOURNAL ENTRY (memoriaal)
 
 The migration plan places an opening balance journal entry on the day before the migration start. The journal entry uses `fiscal_year_ending` when that journal type applies. Confirm the period is open before the pilot write.
 
@@ -69,7 +69,7 @@ Expected: the first write creates the external invoice. The second uploads its P
 
 ---
 
-## 4. PURCHASE INVOICE AND RECEIPT WITH FILES
+## 4. PURCHASE INVOICE (inkoopfactuur) AND RECEIPT WITH FILES
 
 Create the document record first. Upload its source file through the document's `attachments` custom action.
 

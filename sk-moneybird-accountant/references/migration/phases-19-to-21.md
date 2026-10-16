@@ -98,7 +98,7 @@ Per-step content for a LIVE VAT period: [`references/vat-return/README.md`](../v
 
 ### 1. Goal
 
-Prepare each VAT return for the assigned cadence and period from complete evidence, with filing owned by the Operator. The Implementer drafts VAT-period check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 20.
+Prepare each VAT return (btw-aangifte) for the assigned cadence and period from complete evidence, with filing owned by the Operator. The Implementer drafts VAT-period check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 20.
 
 ### 2. Nested sub-goals
 

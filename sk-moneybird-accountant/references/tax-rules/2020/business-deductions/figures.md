@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption (MKB-winstvrijstelling) for tax year 2020, including the hours criterion (urencriterium), the starter's deduction (startersaftrek), the deduction for assisting partner (meewerkaftrek), the discontinuation deduction (stakingsaftrek), the R&D deduction (aftrek voor speur- en ontwikkelingswerk) and the interaction with the old-age reserve (oudedagsreserve) and the Zvw contribution. The law for 2020 is enacted and the amounts below come from the statute as valid on 1 January 2020, with the FISIN 2020 handbook of the Dutch Tax and Customs Administration (Belastingdienst) as a secondary source. Two FISIN 2020 misprints are flagged in section 7: the old-age reserve maximum and the lookback window of the second test of the hours criterion. No value for 2020 in the checked material is UNVERIFIED, proposed or unknown.
+This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption (MKB-winstvrijstelling) for tax year 2020, including the hours criterion (urencriterium), the starter's deduction (startersaftrek), the deduction for assisting partner (meewerkaftrek), the discontinuation deduction (stakingsaftrek), the R&D deduction (aftrek voor speur- en ontwikkelingswerk) and the interaction with the old-age reserve (oudedagsreserve) and the Zvw contribution (bijdrage zorgverzekeringswet). The law for 2020 is enacted and the amounts below come from the statute as valid on 1 January 2020, with the FISIN 2020 handbook of the Dutch Tax and Customs Administration (Belastingdienst) as a secondary source. Two FISIN 2020 misprints are flagged in section 7: the old-age reserve maximum and the lookback window of the second test (tweede toets) of the hours criterion. No value for 2020 in the checked material is UNVERIFIED, proposed or unknown.
 
 ---
 
@@ -40,7 +40,7 @@ This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME pr
 | Item | row |
 |---|---|
 | Hours criterion (urencriterium) | 1 |
-| Second test waived, lookback | 2 |
+| Second test (tweede toets) waived, lookback | 2 |
 | Reduced hours criterion (verlaagd urencriterium) | 3 |
 | Pregnancy | 4 |
 | Self-employed person's deduction (zelfstandigenaftrek) | 5 |
@@ -59,15 +59,15 @@ This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME pr
 | Old-age reserve addition maximum | 18 |
 | Rate adjustment (tariefsaanpassing) | 19 |
 | Maximum value of the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption | 20 |
-| Zvw self-assessed rate | 21 |
-| Zvw maximum contribution income | 22 |
+| Zvw rate by assessment | 21 |
+| Zvw maximum contribution income (bijdrage-inkomen) | 22 |
 <!-- GENERATED:key-figure-index:end -->
 
 
 | Item | Value 2020 | Status | Check | Source |
 |---|---|---|---|---|
 | Hours criterion (urencriterium) | 1.225 hours | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.6 lid 1) |
-| Second test waived, lookback | not an entrepreneur (ondernemer) in 1 or more of 2015 to 2019 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.6 lid 1) |
+| Second test (tweede toets) waived, lookback | not an entrepreneur (ondernemer) in 1 or more of 2015 to 2019 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.6 lid 1) |
 | Reduced hours criterion (verlaagd urencriterium) | 800 hours, not more than 1.225 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.78a lid 3) |
 | Pregnancy | non-worked hours count over 16 weeks in total | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek |
 | Self-employed person's deduction (zelfstandigenaftrek) | € 7.030 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.76 lid 2) |
@@ -80,14 +80,14 @@ This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME pr
 | S&O starter increase | € 6.494 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek |
 | SME profit exemption (MKB-winstvrijstelling) | 14% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.79a) |
 | Deduction for assisting partner (meewerkaftrek) bands | 525 to under 875 hours 1,25%, 875 to under 1.225 hours 2%, 1.225 to under 1.750 hours 3%, 1.750 hours or more 4% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.78 lid 2) |
-| Partner pay limit for the deduction for assisting partner | pay below € 5.000 is not deductible, the partner counts as unpaid | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek (art. 3.16 lid 4) |
+| Partner pay limit for the deduction for assisting partner | pay below € 5.000 is not deductible (niet aftrekbaar), the partner counts as unpaid | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/ondernemersaftrek_en_investeringsaftrek (art. 3.16 lid 4) |
 | Discontinuation deduction (stakingsaftrek) | € 3.630 maximum | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.79 lid 2) |
 | Old-age reserve (oudedagsreserve) addition percentage | 9,44% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.68 lid 1) |
 | Old-age reserve addition maximum | € 9.218 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 3.68 lid 1) |
 | Rate adjustment (tariefsaanpassing) | 3,5% above € 68.507 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (art. 2.10 lid 2) |
 | Maximum value of the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption | 46% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2020-01-01 (49,50% minus 3,5%) |
-| Zvw self-assessed rate | 5,45% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
-| Zvw maximum contribution income | € 57.232 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
+| Zvw rate by assessment | 5,45% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
+| Zvw maximum contribution income (bijdrage-inkomen) | € 57.232 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2020/inkomensafhankelijke_bijdrage_zorgverzekeringswet |
 
 ---
 

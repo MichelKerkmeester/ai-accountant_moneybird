@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Entrepreneur's allowance and SME profit exemption 2023: Examples
+# Entrepreneur's allowance and SME profit exemption (ondernemersaftrek en mkb-winstvrijstelling) 2023: Examples
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -152,7 +152,7 @@ This part holds the worked examples for the Entrepreneur's allowance (ondernemer
 
 ### Calculated example: annuity premium (lijfrentepremie) and the choice for the year
 
-**Calculated example.** Built from the section 2 figures. The taxpayer deducts € 4.000,00 of annuity premiums as expenditure for income provisions (uitgaven voor inkomensvoorzieningen) in 2023.
+**Calculated example.** Built from the section 2 figures. The taxpayer deducts € 4.000,00 of annuity premiums (lijfrentepremies) as expenditure for income provisions (uitgaven voor inkomensvoorzieningen) in 2023.
 
 1. The taxpayer chooses a decrease of the reserve of € 4.000,00, which is the maximum, because the decrease is at most the premiums deducted.
 2. The decrease of € 4.000,00 is added to the profit of 2023.

@@ -13,7 +13,7 @@ contextType: general
 version: 1.0.0.0
 ---
 
-# Yearly overview preparation
+# Yearly overview (jaaroverzicht) preparation
 
 **Rule:** This folder prepares the yearly overview for Operator review. It never files, submits or pays. Every figure, rate, threshold and deadline lives in the year files under `references/tax-rules/`. Nothing here is tax advice.
 
@@ -21,7 +21,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-This folder is the procedure for a prepare-the-yearly-overview request. The agent assembles the balance sheet, the profit and loss account, the schedules, the fiscal reconciliation and the hand-off, names every exception and stops before the year-end closing (jaarafsluiting). The Operator checks the pack, confirms the judgement points, performs the closing actions in the Moneybird UI and files in the Dutch Tax and Customs Administration (Belastingdienst) portal.
+This folder is the procedure for a prepare-the-yearly-overview request. The agent assembles the balance sheet, the profit and loss account (winst- en verliesrekening), the schedules, the fiscal reconciliation and the hand-off, names every exception and stops before the year-end closing (jaarafsluiting). The Operator checks the pack, confirms the judgement points, performs the closing actions in the Moneybird UI and files in the Dutch Tax and Customs Administration (Belastingdienst) portal.
 
 The mode is LIVE. Resolve the year as `year_key = return_coverage` with [year and state resolution](../tax-rules/year-and-state.md), load the year README and the year topic files, then read the administration's own data at run time with moneybird-guard under `MONEYBIRD_GUARD_READ_ONLY=1`, following [cli-moneybird](../../../cli-moneybird/SKILL.md). The year-end closing, the period lock, the tax-rate creation and the filing stay UI and Operator actions. The route that reaches this folder is T11 in [SKILL.md](../../SKILL.md).
 

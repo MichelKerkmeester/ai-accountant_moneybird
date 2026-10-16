@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and disability insurance (pensioen, lijfrente en AOV) 2021: Examples
+# Pension, annuity and disability insurance (pensioen, lijfrente en arbeidsongeschiktheidsverzekering) 2021: Examples
 
 **Rule:** These values hold for tax year 2021 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Pension, annuity and disability insurance (pensioen, lijfrente en AOV) 2021 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Pension, annuity and disability insurance (pensioen, lijfrente en arbeidsongeschiktheidsverzekering) 2021 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -35,7 +35,7 @@ This part holds the worked examples for the Pension, annuity and disability insu
 <a id="4-worked-examples"></a>
 
 **Calculated example 1: annual allowance (jaarruimte) on a profit of € 60.000.**
-Facts: 2020 profits from business activities of € 60.000, being the amount before the entrepreneur's allowance (ondernemersaftrek) and before any addition to or withdrawal from the old-age reserve (oudedagsreserve), with no taxable wage, no taxable income from other work (resultaat uit overige werkzaamheden), no taxable periodic payments and benefits in kind (periodieke uitkeringen en verstrekkingen), no pension accrual, no FOR addition.
+Facts: 2020 profits from business activities (winst uit onderneming) of € 60.000, being the amount before the entrepreneur's allowance (vóór de ondernemersaftrek) and before any addition to or withdrawal from the old-age reserve (oudedagsreserve), with no taxable wage (belastbaar loon), no taxable income from other work (belastbaar resultaat uit overige werkzaamheden), no taxable periodic payments and benefits in kind (belastbare periodieke uitkeringen en verstrekkingen), no pension accrual, no FOR addition.
 - Step 1, cap at the income cap (aftoppingsgrens): min(€ 60.000, € 112.189) = € 60.000.
 - Step 2, reduce by the franchise: € 60.000 - € 12.672 = € 47.328 contribution base (premiegrondslag).
 - Step 3, apply the percentage: 13,3% x € 47.328 = € 6.294,62, rounded down.
@@ -81,7 +81,7 @@ Sources: https://wetten.overheid.nl/BWBR0011353/2021-01-01/0/Hoofdstuk3/Afdeling
 **Calculated example 5: temporary old-age annuity (tijdelijke oudedagslijfrente) at and above the cap.**
 Facts: a temporary old-age annuity with five yearly instalments (termijnen), starting in the year of state pension age (AOW-leeftijd).
 - Situation a: the yearly benefit (uitkering) is € 22.443, exactly at the 2021 cap of € 22.443 per year, so the product meets the cap condition.
-- Situation b: the yearly benefit is € 25.000, above the 2021 cap of € 22.443. Above the cap the premiums are deductible only if the benefits run at least 20 years. Five instalments do not meet that condition, so the premiums are not deductible.
+- Situation b: the yearly benefit is € 25.000, above the 2021 cap of € 22.443. Above the cap the premiums are deductible only if the benefits run at least 20 years. Five instalments do not meet that condition, so the premiums are not deductible (niet aftrekbaar).
 Outcome: the cap is judged per year at the time of premium payment. At or below € 22.443 the five year product fits, above € 22.443 the 20 year condition decides.
 Sources: https://wetten.overheid.nl/BWBR0011353/2021-01-01 and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen.
 
@@ -97,7 +97,7 @@ Situation b, tier c. Facts: a taxpayer who meets neither the tier a nor the tier
 Outcome: at most € 118.640 is deductible.
 Sources: https://wetten.overheid.nl/BWBR0011353/2021-01-01 and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen.
 
-**Calculated example 7: commutation (afkoop) of a small annuity (lijfrente) and the long-term disability (langdurige arbeidsongeschiktheid) route.**
+**Calculated example 7: commutation (afkoop) of a small annuity (kleine lijfrente) and the long-term disability (langdurige arbeidsongeschiktheid) route.**
 - Small annuity: commutation in one payment is allowed for a small annuity with a yearly benefit below the 2021 amount of € 4.547. A yearly benefit of € 4.400 stays below it, so this exception applies. A yearly benefit of € 4.800 is above it, so this exception does not apply.
 - Long-term disability: a commutation of € 40.000 in 2021 by a taxpayer who is long-term disabled (langdurig arbeidsongeschikt) and has not yet reached the state pension age stays within the basic cap of € 42.460. A higher average of the contribution base plus franchise for 2021 and 2020 could raise that cap.
 Source: https://wetten.overheid.nl/BWBR0011353/2021-01-01.
@@ -108,7 +108,7 @@ Variant: if the same policy paid a lump sum, the € 1.800 would not be deductib
 Sources: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen and https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/arbeidsongeschiktheidsverzekering-voor-ondernemers.
 
 **Official example 9: FOR decrease (afname).**
-The FISIN 2021 example repeats the 2020 example. The business capital (ondernemingsvermogen, equity plus the old-age reserve (FOR)) is € 3.000 and the FOR is € 4.000, so the FOR must decrease by € 1.000. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/winst_en_verliesrekening_en_balans.
+The FISIN 2021 example repeats the 2020 example. The business capital (ondernemingsvermogen), equity plus the old-age reserve (FOR), are € 3.000 and the FOR is € 4.000, so the FOR must decrease by € 1.000. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/winst_en_verliesrekening_en_balans.
 
 **Official example 10: start date (ingangsdatum) and survivors (nabestaanden) deadlines.**
 A start date in 2020 means the annuity must be converted or started by 31 December 2021. A start date in 2021 means by 31 December 2022. A death in 2020 means the survivor annuity (nabestaandenlijfrente) must start by 31 December 2022. Source: https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/uitgaven_voor_inkomensvoorzieningen.

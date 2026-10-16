@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Income tax box 1 2027: Examples
+# Income tax (inkomstenbelasting) box 1 2027: Examples
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Income tax box 1 2027 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Income tax (inkomstenbelasting) box 1 2027 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -34,7 +34,7 @@ This part holds the worked examples for the Income tax box 1 2027 topic. The ove
 
 <a id="4-worked-examples"></a>
 
-The memorandum in response to the report (nota naar aanleiding van het verslag) holds 2027 purchasing power calculation examples (koopkracht rekenvoorbeelden) for households with two children and with mortgage interest deduction (hypotheekrenteaftrek), and a starter's deduction effect table including the Zvw ([Belastingplan 2027 (Kamerstuk 37022), nota naar aanleiding van het verslag](https://www.tweedekamer.nl/downloads/document?id=2026D50335)). Those are policy illustrations, not year-table examples, and they are not reproduced here. All examples below are calculated examples that use only the section 2 figures of this file.
+The memorandum in response to the report (nota naar aanleiding van het verslag) holds 2027 purchasing power calculation examples (koopkracht rekenvoorbeelden) for households with two children and with mortgage interest (hypotheekrente) deduction (renteaftrek) (hypotheekrenteaftrek), and a starter's deduction (startersaftrek) effect table including the Zvw ([Belastingplan 2027 (Kamerstuk 37022), nota naar aanleiding van het verslag](https://www.tweedekamer.nl/downloads/document?id=2026D50335)). Those are policy illustrations, not year-table examples, and they are not reproduced here. All examples below are calculated examples that use only the section 2 figures of this file.
 
 ### Calculated example: bill box 1 table below AOW age
 
@@ -45,7 +45,7 @@ Assume a taxable income from work and home (belastbaar inkomen uit werk en wonin
 3. Top band: € 100.000 less € 80.578 is € 19.422. That amount at 49,50% is € 19.422 × 0,495 = € 9.613,89.
 4. Total: € 14.219,1881 plus € 15.771,9096 plus € 9.613,89 is € 39.604,9877, about € 39.604,99 before any statutory rounding.
 
-### Calculated example: income-tax part and premium part of the first bracket
+### Calculated example: income-tax part (belastingdeel) and premium part of the first bracket (eerste schijf)
 
 The bill prints 36,23% as the combined first rate and 8,58% as the income-tax part.
 
@@ -90,13 +90,13 @@ Assume a taxable income from work and home of € 85.000 and qualifying deductio
 
 ### Calculated example: business profit to taxable business profit
 
-Assume an entrepreneur who meets the conditions, a profit of € 60.000 and a claim to the self-employed person's deduction (zelfstandigenaftrek). Ignore other entrepreneur's allowance items and exempt profit components (vrijgestelde winstbestanddelen).
+Assume an entrepreneur who meets the conditions, a profit of € 60.000 and a claim to the self-employed person (zelfstandige)'s deduction (zelfstandigenaftrek). Ignore other entrepreneur's allowance (ondernemersaftrek) items and exempt profit components (vrijgestelde winstbestanddelen).
 
 1. Profit after the self-employed person's deduction: € 60.000 less € 900 is € 59.100.
 2. SME profit exemption (MKB-winstvrijstelling): € 59.100 × 0,1270 = € 7.505,70.
 3. Taxable profit from business (belastbare winst uit onderneming): € 59.100 less € 7.505,70 is € 51.594,30.
 
-This is the taxable business profit before other box 1 income is added and losses available for offset (te verrekenen verliezen) are taken into account.
+This is the taxable business profit before other box 1 income is added and losses available for offset (verrekenbare verliezen) (te verrekenen verliezen) are taken into account.
 
 ### Calculated example: proposed general tax credit (algemene heffingskorting)
 

@@ -25,7 +25,7 @@ Routing is where most migration mistakes start, such as presenting a VAT summary
 
 The skill maps each operation to one surface. Customers, invoices, expenses, receipts, bank records, reports, labels and projects come from `jortt-cli`. Use the smallest supported read that answers a data question.
 
-The Jortt API has no XAF, annual accounts or filed VAT return route, so those requests become instructions for the operator in the Jortt UI. No general ledger export exists in the API or the UI, and the skill says so rather than relabelling another report. Requests about Moneybird imports or target-side checks are handed to the sibling `cli-moneybird` skill.
+The Jortt API has no XAF, annual accounts (jaarrekening) or filed VAT return (btw-aangifte) route, so those requests become instructions for the operator in the Jortt UI. No general ledger (grootboek) export exists in the API or the UI, and the skill says so rather than relabelling another report. Requests about Moneybird imports or target-side checks are handed to the sibling `cli-moneybird` skill.
 
 ---
 

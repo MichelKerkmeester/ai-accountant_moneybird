@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Entrepreneur's allowance and SME profit exemption 2026: Figures
+# Entrepreneur's allowance and SME profit exemption (ondernemersaftrek en mkb-winstvrijstelling) 2026: Figures
 
 **Rule:** These values hold for tax year 2026 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -40,7 +40,7 @@ This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME pr
 | Item | row |
 |---|---|
 | Hours criterion (urencriterium) | 1 |
-| Second test waived, lookback | 2 |
+| Second test (tweede toets) waived, lookback | 2 |
 | Reduced hours criterion (verlaagd urencriterium) | 3 |
 | Mainly supporting in a partnership (samenwerkingsverband) | 4 |
 | Pregnancy interruption | 5 |
@@ -59,14 +59,14 @@ This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME pr
 | Old-age reserve (oudedagsreserve) additions | 18 |
 | SME profit exemption (MKB-winstvrijstelling (SME profit exemption)) | 19 |
 | Rate adjustment (tariefsaanpassing) | 20 |
-| Maximum value of the entrepreneur's allowance and the SME profit exemption | 21 |
+| Maximum value of the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption | 21 |
 <!-- GENERATED:key-figure-index:end -->
 
 
 | Item | Value 2026 | Status | Check | Source |
 |---|---|---|---|---|
 | Hours criterion (urencriterium) | 1.225 hours | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
-| Second test waived, lookback | not an entrepreneur (ondernemer) in 1 or more of 2021 to 2025 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/ondernemersaftrek_en_investeringsaftrek |
+| Second test (tweede toets) waived, lookback | not an entrepreneur (ondernemer) in 1 or more of 2021 to 2025 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/ondernemersaftrek_en_investeringsaftrek |
 | Reduced hours criterion (verlaagd urencriterium) | 800 hours, not more than 1.225 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | Mainly supporting in a partnership (samenwerkingsverband) | 70% or more, Tax and Customs Administration reading | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium |
 | Pregnancy interruption | 16 weeks of non-worked hours count as worked hours | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2023/ondernemersaftrek_en_investeringsaftrek |
@@ -80,11 +80,11 @@ This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME pr
 | Deduction for research and development work (aftrek voor speur- en ontwikkelingswerk) | € 15.979, with an R&D declaration (S&O-verklaring), at least 500 R&D hours and the hours criterion | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | R&D (S&O) starter increase | € 7.996 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2026/ondernemersaftrek_en_investeringsaftrek |
 | Deduction for assisting partner (meewerkaftrek) bands | 525 to under 875 hours 1,25%, 875 to under 1.225 hours 2%, 1.225 to under 1.750 hours 3%, 1.750 hours or more 4% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
-| Pay to the partner below the threshold | € 5.000, not deductible from profit, treated as working without pay | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/meewerkaftrek |
+| Pay to the partner below the threshold | € 5.000, not deductible (niet aftrekbaar) from profit, treated as working without pay | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/ondernemersaftrek/meewerkaftrek |
 | Discontinuation deduction (stakingsaftrek) | € 3.630 maximum, once in a lifetime | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | Old-age reserve (oudedagsreserve) additions | none, an existing reserve stays, reduction (afneming) rules via art. 10a.29 | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/fiscale_reserves/oudedagsreserve |
 | SME profit exemption (MKB-winstvrijstelling) | 12,7% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
 | Rate adjustment (tariefsaanpassing) | 11,94% above € 78.426 | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2026-01-01 |
-| Maximum value of the entrepreneur's allowance and the SME profit exemption | 37,56%, being the 49,50% top rate minus 11,94% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/mkb_winstvrijstelling |
+| Maximum value of the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption | 37,56%, being the 49,50% top rate minus 11,94% | enacted | Verified | https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/mkb_winstvrijstelling |
 
 ---

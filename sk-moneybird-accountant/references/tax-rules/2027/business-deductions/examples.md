@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Entrepreneur's allowance and SME profit exemption 2027: Examples
+# Entrepreneur's allowance and SME profit exemption (ondernemersaftrek en mkb-winstvrijstelling) 2027: Examples
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Entrepreneur's allowance and SME profit exemption 2027 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Entrepreneur's allowance and SME profit exemption (ondernemersaftrek en mkb-winstvrijstelling) 2027 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -36,7 +36,7 @@ This part holds the worked examples for the Entrepreneur's allowance and SME pro
 
 No official example for the tax year 2027 was found in the checked sources, so every example below is marked `Calculated example` and is built from the section 2 figures and the checked material. The inputs are invented round numbers and no real person's data is used. The enacted 2027 figures used here are adopted-not-yet-in-force. Every product is written with two decimals, and every step that rounds says "rounded" or "rounded down". Where an example touches a proposal, the proposal is named as proposed.
 
-### Calculated example A. Self-employed person's deduction and SME profit exemption on a profit of € 60.000
+### Calculated example A. Self-employed person (zelfstandige)'s deduction (zelfstandigenaftrek) and SME profit exemption (MKB-winstvrijstelling) on a profit of € 60.000
 
 Inputs: profit as entrepreneur (ondernemer) € 60.000, the hours criterion (urencriterium) is met, no right to the starter's deduction (startersaftrek).
 
@@ -82,7 +82,7 @@ Inputs: profit as entrepreneur € 30.000, the hours criterion is met, the start
 
 This example uses the enacted text only, because the AOW-age starter's deduction under bill 37 022 is not stated in the checked material.
 
-### Calculated example D. The profit cap and unused self-employed person's deduction
+### Calculated example D. The profit cap and unused self-employed person's deduction (niet-gerealiseerde zelfstandigenaftrek)
 
 Inputs: profit as entrepreneur € 800, the hours criterion is met, no right to the starter's deduction.
 
@@ -106,7 +106,7 @@ Inputs: profit as entrepreneur € 2.000, the hours criterion is met, the starte
 
 ### Calculated example F. R&D work deduction and the R&D starter increase
 
-Inputs: profit as entrepreneur € 60.000, the hours criterion is met, at least 500 hours of R&D work, an R&D declaration (S&O-verklaring) from the Netherlands Enterprise Agency (RVO), and the starter conditions for the increase are met. The amounts are the enacted text before the December 2026 indexation, because the indexed 2027 amounts are not published.
+Inputs: profit as entrepreneur € 60.000, the hours criterion is met, at least 500 hours of R&D work, an R&D declaration (S&O-verklaring) from the Netherlands Enterprise Agency (Rijksdienst voor Ondernemend Nederland, RVO), and the starter conditions for the increase are met. The amounts are the enacted text before the December 2026 indexation, because the indexed 2027 amounts are not published.
 
 1. R&D work deduction (aftrek speur- en ontwikkelingswerk): € 15.979.
 2. R&D starter increase: € 7.996.
@@ -117,7 +117,7 @@ Inputs: profit as entrepreneur € 60.000, the hours criterion is met, at least 
 7. SME profit exemption: 12,7% of € 35.125 = € 4.460,88 (rounded).
 8. Taxable profit from business: € 35.125 minus € 4.460,88 = € 30.664,12.
 
-### Calculated example G. Assisting partner deduction for a partner with 1.000 hours
+### Calculated example G. Assisting partner (meewerkende partner) deduction for a partner with 1.000 hours
 
 Inputs: profit € 50.000 with no excluded components in the art. 3.78 base, the hours criterion is met, the partner works in the business without pay for 1.000 hours.
 
@@ -131,11 +131,11 @@ Inputs: profit € 50.000 with no excluded components in the art. 3.78 base, the
 
 Boundary check: at exactly 1.225 hours the 3% band applies, giving 3% of € 50.000 = € 1.500,00.
 
-Pay check: if the partner were paid € 4.000, that pay is below € 5.000, so it is not deductible from profit. The partner then counts as working without pay, and the pay is no income for the partner.
+Pay check: if the partner were paid € 4.000, that pay is below € 5.000, so it is not deductible (niet aftrekbaar) from profit. The partner then counts as working without pay, and the pay is no income for the partner.
 
 The percentages are the enacted 2027 text. The start-ups bill proposes lower percentages and abolition from 2030, both still proposed.
 
-### Calculated example H. Discontinuation deduction on a cessation profit of € 5.000
+### Calculated example H. Discontinuation deduction (stakingsaftrek) on a cessation profit of € 5.000
 
 Inputs: profit made with the cessation (staking) of one whole business € 5.000, no discontinuation deduction enjoyed in earlier years.
 
@@ -148,7 +148,7 @@ Variant: if € 1.000 of discontinuation deduction had been enjoyed in earlier y
 
 The maximum of € 3.630 is the enacted 2027 text. The start-ups bill proposes a maximum of € 908 and abolition from 2030, both still proposed.
 
-### Calculated example I. Starter's deduction for disabled entrepreneurs at a profit of € 20.000
+### Calculated example I. Starter's deduction for disabled entrepreneurs (startersaftrek bij arbeidsongeschiktheid) at a profit of € 20.000
 
 Inputs: profit as entrepreneur € 20.000, a WIA benefit in the year, the reduced hours criterion (verlaagd urencriterium) of 800 hours is met but the hours criterion of 1.225 hours is not, the taxpayer was not an entrepreneur in one or more of 2022 to 2026, below the AOW age. No self-employed person's deduction applies because the hours criterion is not met. The SME profit exemption applies with no hours condition.
 
@@ -172,7 +172,7 @@ Inputs: profit as entrepreneur € 20.000, a WIA benefit in the year, the reduce
 
 Bill 37 022 proposes to abolish this deduction from 1 January 2029, which leaves 2027 unchanged.
 
-### Calculated example J. Rate adjustment on € 11.000 of deductions
+### Calculated example J. Rate adjustment (tariefsaanpassing) on € 11.000 of deductions
 
 Inputs: taxable income from work and home (belastbaar inkomen uit werk en woning) after the deductions € 90.000, entrepreneur's allowance plus SME profit exemption together € 11.000.
 

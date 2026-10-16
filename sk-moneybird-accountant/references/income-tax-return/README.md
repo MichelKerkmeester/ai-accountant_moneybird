@@ -13,7 +13,7 @@ contextType: general
 version: 1.0.0.0
 ---
 
-# Income tax return preparation
+# Income tax return (aangifte inkomstenbelasting) preparation
 
 **Rule:** This folder prepares one income tax return for Operator review. It never files, submits or pays. Every figure, rate, threshold and deadline lives in the year files under `references/tax-rules/`. Nothing here is tax advice.
 
@@ -62,7 +62,7 @@ A figure that no year file owns is a blocker. The procedure stops and names the 
 
 ## 5. SHARED DISPOSITION VOCABULARY
 
-This folder, the VAT return folder and the yearly overview folder share one vocabulary. Every item in [operator-inputs.md](operator-inputs.md) carries exactly one of these dispositions.
+This folder, the VAT return (btw-aangifte) folder and the yearly overview (jaaroverzicht) folder share one vocabulary. Every item in [operator-inputs.md](operator-inputs.md) carries exactly one of these dispositions.
 
 | Disposition | Meaning |
 |---|---|

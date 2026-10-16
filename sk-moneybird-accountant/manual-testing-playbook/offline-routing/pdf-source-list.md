@@ -27,7 +27,7 @@ A PDF row is only as good as the text layer behind it. An agent that downloads a
 - Objective: Route a request about the PDF-only sources to the source library guide and list the readable rows offline.
 - Real user request: Which PDF-only sources can you read, and how do you read one? Keep this as an offline routing check.
 - Prompt: Which PDF-only sources can you read, and how do you read one? Keep this as an offline routing check.
-- Fixture rows: SRC-PDF-01 (en) and SRC-PDF-01-nl (nl twin).
+- Fixture rows: SRC-PDF-01 (English) and SRC-PDF-01-nl (Dutch twin).
 - Expected execution process: Read the project bootstrap and skill, then inspect only the listed local references and run only the offline list command. Do not use network access or accounting APIs.
 - Expected signals: Names the source library reference, runs `python3 -I sk-moneybird-accountant/scripts/read-pdf-source.py --list`, reports the `pdf-needs-reader` access value, states that the reader reads the text layer only and keeps the HTML page and the Operator as the fallbacks for an extraction with no text.
 - Desired user-visible outcome: A concise route report with the reference path, the reader, the url and title per row and no network or API activity.

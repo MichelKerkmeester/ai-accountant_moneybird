@@ -6,7 +6,7 @@ catalog_applicable: true
 version: 1.0.0.0
 ---
 
-# PACK-002 -- The income tax return pack
+# PACK-002 -- The income tax return (aangifte inkomstenbelasting) pack
 
 This document captures the offline prompt, local read sequence, expected signals and evidence for PACK-002.
 
@@ -18,13 +18,13 @@ This scenario validates the T12 prepare-the-income-tax-return route. It focuses 
 
 ### Why This Matters
 
-An income tax return is assembled from administration reads plus Operator facts. A field that no source settles must stay labelled instead of being filled from memory, and every item must carry a disposition. A local-only check confirms the route without calling a service.
+An income tax return (aangifte inkomstenbelasting) is assembled from administration reads plus Operator facts. A field that no source settles must stay labelled instead of being filled from memory, and every item must carry a disposition. A local-only check confirms the route without calling a service.
 
 ---
 
 ## 2. SCENARIO CONTRACT
 
-- Objective: Route an income tax return request to the procedure, assemble the pack blocks, list the Operator inputs with a status per item and keep every residual unknown labelled.
+- Objective: Route an income tax return (aangifte inkomstenbelasting) request to the procedure, assemble the pack blocks, list the Operator inputs with a status per item and keep every residual unknown labelled.
 - Real user request: Prepare my income tax return for 2026 and show the review pack with every open input. Do not call an API.
 - Prompt: Prepare my income tax return for 2026 and show the review pack with every open input. Do not call an API.
 - Fixture rows: PACK-INCOME-01 (the income tax pack row) and income-tax-return-pack (the eval case).
@@ -51,7 +51,7 @@ An income tax return is assembled from administration reads plus Operator facts.
 
 ### Expected
 
-The check prints route-table: ok. The T12 row wins for the named income tax return. The procedure, the Operator inputs and the register load. The answer names the pack blocks P1 to P9, the confirmation parts C1 to C3, the deduction chain block, the VIA comparison sheet block, the residual unknowns block and the Operator input list with a status per item, namely supplied, reconciled, confirmed, not applicable or unresolved. The dated per-asset register carries its order, payment and in-use dates and every residual unknown stays labelled unresolved. The pack states prepared, not filed. The Operator owns the filing and payment. No accounting API is called.
+The check prints route-table: ok. The T12 row wins for the named income tax return (aangifte inkomstenbelasting). The procedure, the Operator inputs and the register load. The answer names the pack blocks P1 to P9, the confirmation parts C1 to C3, the deduction chain block, the VIA comparison sheet block, the residual unknowns block and the Operator input list with a status per item, namely supplied, reconciled, confirmed, not applicable or unresolved. The dated per-asset register carries its order, payment and in-use dates and every residual unknown stays labelled unresolved. The pack states prepared, not filed. The Operator owns the filing and payment. No accounting API is called.
 
 ### Evidence
 

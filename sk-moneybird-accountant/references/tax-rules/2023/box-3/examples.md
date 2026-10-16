@@ -13,7 +13,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Box 3 savings and investments 2023: Examples
+# Box 3 savings and investments (sparen en beleggen) 2023: Examples
 
 **Rule:** These values hold for tax year 2023 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -65,7 +65,7 @@ Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekeni
 
 Inputs: € 100.000 savings, € 150.000 investments, € 50.000 debt.
 Step 1a, asset return: € 100.000 x 0,92% = € 920, plus € 150.000 x 6,17% = € 9.255. Total € 10.175.
-Step 1b, deductible debt: € 50.000 - € 6.800 = € 43.200. Debt return: € 43.200 x 2,46% = € 1.063 (rounded).
+Step 1b, deductible debt (aftrekbare schuld): € 50.000 - € 6.800 = € 43.200. Debt return: € 43.200 x 2,46% = € 1.063 (rounded).
 Step 1c, taxable return: € 10.175 - € 1.063 = € 9.112.
 Step 2, return base: € 100.000 + € 150.000 - € 43.200 = € 206.800.
 Step 3, base: € 206.800 - € 114.000 = € 92.800, all to one partner.
@@ -73,7 +73,7 @@ Step 4, share: € 92.800 / € 206.800 x 100 = 44,87%.
 Step 5, benefit: € 9.112 x 44,87% = € 4.088 (rounded).
 Step 6, tax: 32% x € 4.088 = € 1.308 (rounded).
 
-### Example 4: negative actual return set at nil (Official example)
+### Example 4: negative actual return (werkelijk rendement) set at nil (Official example)
 
 Source: https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/wat-is-mijn-werkelijk-rendement
 
@@ -102,7 +102,7 @@ Step 2, return base: € 70.000 - € 21.600 = € 48.400.
 Step 3, base: € 48.400 - € 57.000 = negative, so nil.
 Because the base is nil, the share is nil and the benefit is nil, and the box 3 tax is nil for this person. This is the effect of the tax-free allowance (heffingsvrij vermogen) of € 57.000. https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/heffingsvrij-vermogen
 
-### Example 7: green investments and the exemption order rule (Calculated example)
+### Example 7: green investments (groene beleggingen) and the exemption order rule (Calculated example)
 
 Inputs: a single taxpayer holds € 40.000 green bank balances and € 40.000 green other assets on 1 January 2023. The 2023 exemption for a single person is € 65.072. Art. 5.13 lid 2 applies the exemption first to the green other assets and only the remaining room to the green bank balances. So € 40.000 of the exemption goes to the green other assets, leaving € 25.072 of room for the green bank balances. The exemption never exceeds the value of the green investments on 1 January, and here € 65.072 is less than the total of € 80.000, so the full exemption room is used. The green investment credit (korting voor groene beleggingen) is 0,7% of the exempt amount on the reference date (peildatum), so 0,7% x € 65.072 = € 455,50, computed automatically. https://wetten.overheid.nl/BWBR0011353/2023-01-01 https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/vermogen_en_aanmerkelijk_belang/vermogen/beleggen_met_belastingvoordeel/groene_beleggingen
 

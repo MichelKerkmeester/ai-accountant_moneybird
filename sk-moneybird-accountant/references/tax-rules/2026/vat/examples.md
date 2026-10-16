@@ -46,11 +46,11 @@ At the reduced rate:
 1. VAT: € 1.000,00 × 9% = € 90,00.
 2. Invoice total: € 1.000,00 + € 90,00 = € 1.090,00.
 
-For a zero-rated sale of € 1.000,00, output VAT is € 1.000,00 × 0% = € 0,00. Input VAT deduction remains possible if the other conditions are met. [Rates in Wet op de omzetbelasting 1968](https://wetten.overheid.nl/BWBR0002629/2026-01-01)
+For a zero-rated sale of € 1.000,00, output VAT is € 1.000,00 × 0% = € 0,00. Input VAT (voorbelasting) deduction remains possible if the other conditions are met. [Rates in Wet op de omzetbelasting 1968](https://wetten.overheid.nl/BWBR0002629/2026-01-01)
 
 ### Accommodation (logies) and a separately offered breakfast
 
-**Official example, with the VAT arithmetic shown here.** The Dutch Tax and Customs Administration (Belastingdienst) gives market values of € 280,00 for accommodation (logies) and € 70,00 for breakfast. The total market value is € 280,00 + € 70,00 = € 350,00. The accommodation share is € 280,00 ÷ € 350,00 = 0,80, so 80%. The breakfast share is € 70,00 ÷ € 350,00 = 0,20, so 20%.
+**Official example, with the VAT arithmetic shown here.** The Dutch Tax and Customs Administration (Belastingdienst) gives market values of € 280,00 for accommodation (logies) and € 70,00 for breakfast. The total market value (waarde in het economisch verkeer, waarde in het economische verkeer) is € 280,00 + € 70,00 = € 350,00. The accommodation share is € 280,00 ÷ € 350,00 = 0,80, so 80%. The breakfast share is € 70,00 ÷ € 350,00 = 0,20, so 20%.
 
 For an all-in price of € 150,00 excluding VAT:
 
@@ -73,7 +73,7 @@ For an all-in price of € 150,00 excluding VAT:
 
 [Wet op de omzetbelasting 1968, art. 25a](https://wetten.overheid.nl/BWBR0002629/2026-01-01), [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
 
-### Annual VAT return conditions
+### Annual VAT return (btw-aangifte) conditions
 
 **Calculated example.** A natural-person business has VAT of € 1.500,00 a year and no Article 23 permit (vergunning artikel 23). Each of the four intra-EU categories is € 9.000,00.
 
@@ -91,7 +91,7 @@ For an all-in price of € 150,00 excluding VAT:
 
 1. The threshold is € 10.000 or more per delivery per type of good.
 2. The delivery total of € 10.000,00 meets that threshold.
-3. The supplier invoices with "btw verlegd" and the customer's VAT ID.
+3. The supplier invoices with "btw verlegd" and the customer's VAT ID (btw-id).
 4. The customer reports the VAT at the applicable rate and may deduct it if the purchase is used for taxable activity.
 
 [UBOB art. 24ba](https://wetten.overheid.nl/BWBR0002633/2020-01-01), [Belastingdienst reverse-charge guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_berekenen_aan_uw_klanten/waarover_btw_berekenen/verleggingsregeling/hoe_werkt_btw_verleggen)
@@ -119,9 +119,9 @@ For an all-in price of € 150,00 excluding VAT:
 
 [Belastingdienst ICP period guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/zakendoen_met_het_buitenland/goederen_en_diensten_naar_andere_eu_landen/opgaaf_icp/tijdvak_opgaaf_icp/tijdvak_opgaaf_icp)
 
-### Business car private use
+### Business car private use (privégebruik)
 
-**Calculated example.** Assume the catalogue price including VAT and bpm is € 50.000,00, the car is used for a full year, and the standard calculation applies.
+**Calculated example.** Assume the catalogue price (catalogusprijs) including VAT and bpm is € 50.000,00, the car is used for a full year, and the standard calculation applies.
 
 1. Standard private-use amount: € 50.000,00 × 2,7% = € 1.350,00.
 2. Exempt use reduces the amount proportionally. 40% of the use is exempt use, so the taxable-use share is 60%.
@@ -137,13 +137,13 @@ The cap is the VAT deducted in the year plus one-fifth of the purchase VAT. Assu
 
 ### BUA threshold
 
-**Official example.** The Dutch Tax and Customs Administration example gives a € 75,00 Christmas package for all staff, a € 400,00 staff outing for half the staff and a € 150,00 watch for one employee. Without the outing, the employee who received the watch stays at € 75,00 + € 150,00 = € 225,00, which is within the € 227 threshold, so the VAT on those provisions is deductible. The VAT on the outing is not deductible in the example.
+**Official example.** The Dutch Tax and Customs Administration example gives a € 75,00 Christmas package for all staff, a € 400,00 staff outing for half the staff and a € 150,00 watch for one employee. Without the outing, the employee who received the watch stays at € 75,00 + € 150,00 = € 225,00, which is within the € 227 threshold, so the VAT on those provisions is deductible. The VAT on the outing is not deductible (niet aftrekbaar) in the example.
 
 [Belastingdienst BUA example](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_aftrekken/personeelsvoorzieningen_en_relatiegeschenken/drempelbedrag_personeelsvoorzieningen_giften_en_relatiegeschenken)
 
 ### Invoice timing
 
-**Official example.** The Handbook (Handboek) example says that a supply delivered on 10 April must be invoiced by 15 May.
+**Official example.** The Handbook for Entrepreneurs (Handboek Ondernemen) example says that a supply delivered on 10 April must be invoiced by 15 May.
 
 [Handboek Ondernemen 2026](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf), [Belastingdienst invoice guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/administratie_bijhouden/facturen_maken/)
 

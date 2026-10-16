@@ -158,7 +158,7 @@ A provider failure on both configured routes, Verifier FAIL after the maximum ro
 | 7 | Pilot batch builder, pre-write report and read-back comparer | Pre-write report and read-back comparison | Batch approval |
 | 8 | Per-period batch plans and builders | Per-batch pre-write and read-back | Batch approvals |
 | 9 | Per-period VAT reconciliation | VAT recompute from source registers | Filed-return evidence |
-| 10 | Year-end comparison | Year-end recompute | Auditfile export and year-end closing |
+| 10 | Year-end comparison | Year-end recompute | Auditfile export and year-end closing (jaarafsluiting) |
 | 11 | Income-tax bridge template | Bridge checks and no invented adjustment | Adviser decisions |
 | 12 | Continuity checker | Account-by-account check | None new |
 | 13 | Fixes for Red Team findings only | Red Team tries to falsify the year from a clean working copy | Accepting residual exceptions |
@@ -176,7 +176,7 @@ The external agent seats and work-unit handoffs follow M12. Jortt and Moneybird 
 
 ### Jortt reads and exports
 
-Use [jortt-cli](../../../cli-jortt/SKILL.md) with read scopes only. List extraction uses `--all` and records the next-link chain, page counts, item counts, final response status and independent source-side total. The CLI owns its documented 429 wait and bounded retry behavior. A missing or failed result stops the extraction. XAF, annual accounts and filed-return exports are Operator UI work. The tool route does not provide a general-ledger API or UI export. A VAT summary is not a filed return.
+Use [jortt-cli](../../../cli-jortt/SKILL.md) with read scopes only. List extraction uses `--all` and records the next-link chain, page counts, item counts, final response status and independent source-side total. The CLI owns its documented 429 wait and bounded retry behavior. A missing or failed result stops the extraction. XAF, annual accounts (jaarrekening) and filed-return exports are Operator UI work. The tool route does not provide a general-ledger API or UI export. A VAT summary is not a filed return.
 
 ### Moneybird reads and writes
 

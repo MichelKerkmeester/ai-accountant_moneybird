@@ -28,7 +28,7 @@ Year overview: [README.md](../README.md).
 
 <a id="1-overview"></a>
 
-For 2025 box 2 has two brackets: 24,5% over the first € 67.804 and 31% above that, with € 16.611 of tax at the top of bracket 1 in the art. 2.12 Wet IB 2001 table. The second-bracket rate went down from 33% to 31% on 1 January 2025 through the Tax Plan 2025 (Belastingplan 2025) measure "Terugdraaien verhoging box 2-tarief". A substantial interest (aanmerkelijk belang) starts at 5% of the issued capital, alone or together with a fiscal partner, and art. 4.6 gained a sixth ground (sub f) with retroactive effect to 1 January 2025 by Stb. 2025, 445. For a sole trader who also owns a private limited company (BV), the same year's excessive borrowing from the own company (excessief lenen) maximum of € 500.000, the customary salary (gebruikelijk loon) fixed amount of € 56.000 and the old-age obligation (ODV) market rate of 2,602% sit next to the rate table. The 2025 rules described here are enacted law.
+For 2025 box 2 has two brackets: 24,5% over the first € 67.804 and 31% above that, with € 16.611 of tax at the top of bracket 1 in the art. 2.12 Wet IB 2001 table. The second-bracket rate went down from 33% to 31% on 1 January 2025 through the Tax Plan 2025 (Belastingplan 2025) measure "Terugdraaien verhoging box 2-tarief". A substantial interest (aanmerkelijk belang) starts at 5% of the issued capital, alone or together with a fiscal partner (fiscaal partner), and art. 4.6 gained a sixth ground (sub f) with retroactive effect (terugwerkende kracht) to 1 January 2025 by Stb. 2025, 445. For a sole trader who also owns a private limited company (BV), the same year's excessive borrowing from the own company (excessief lenen bij eigen vennootschap) maximum of € 500.000, the customary salary (gebruikelijk loon) fixed amount of € 56.000 and the old-age obligation (oudedagsverplichting, ODV) market rate (marktrente) of 2,602% sit next to the rate table. The 2025 rules described here are enacted law.
 
 ---
 
@@ -63,7 +63,7 @@ For 2025 box 2 has two brackets: 24,5% over the first € 67.804 and 31% above t
 | Customary salary comparable salary (art. 12a Wet LB 1964) | 22 |
 | Tax credit (belastingkorting) on an unoffset box 2 loss (art. 4.53 lid 2 Wet IB 2001) | 23 |
 | Loss offset period (art. 4.49 Wet IB 2001) | 24 |
-| Old-age obligation (ODV) market rate (marktrente) for 2025 (art. 38p Wet LB 1964 and art. 12.3a Uitvoeringsregeling loonbelasting 2011) | 25 |
+| Old-age obligation (oudedagsverplichting, ODV) market rate (marktrente) for 2025 (art. 38p Wet LB 1964 and art. 12.3a Uitvoeringsregeling loonbelasting 2011) | 25 |
 | End of pension in own management (pensioen in eigen beheer) commutation (afkoop) and conversion (omzetting) (art. 38n to 38q Wet LB 1964) | 26 |
 | Non-residents (art. 7.5 Wet IB 2001) | 27 |
 <!-- GENERATED:key-figure-index:end -->
@@ -95,7 +95,7 @@ For 2025 box 2 has two brackets: 24,5% over the first € 67.804 and 31% above t
 | Customary salary comparable salary (art. 12a Wet LB 1964) | 100% of the comparable salary from the 2023 text | enacted | Verified | https://wetten.overheid.nl/BWBR0002471/2023-01-01 |
 | Tax credit (belastingkorting) on an unoffset box 2 loss (art. 4.53 lid 2 Wet IB 2001) | 24,5% | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 |
 | Loss offset period (art. 4.49 Wet IB 2001) | previous year and 6 following years | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 |
-| Old-age obligation (ODV) market rate (marktrente) for 2025 (art. 38p Wet LB 1964 and art. 12.3a Uitvoeringsregeling loonbelasting 2011) | 2,602% | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2025-42873.html |
+| Old-age obligation (oudedagsverplichting, ODV) market rate (marktrente) for 2025 (art. 38p Wet LB 1964 and art. 12.3a Uitvoeringsregeling loonbelasting 2011) | 2,602% | enacted | Verified | https://zoek.officielebekendmakingen.nl/stcrt-2025-42873.html |
 | End of pension in own management (pensioen in eigen beheer) commutation (afkoop) and conversion (omzetting) (art. 38n to 38q Wet LB 1964) | possible from 1 April 2017 to 31 December 2019, art. 38o and 38q lapse from 1 January 2020 | enacted | Verified | https://zoek.officielebekendmakingen.nl/stb-2017-115.html |
 | Non-residents (art. 7.5 Wet IB 2001) | substantial interest in a Netherlands company, not part of an enterprise | enacted | Verified | https://wetten.overheid.nl/BWBR0011353/2025-01-01 |
 

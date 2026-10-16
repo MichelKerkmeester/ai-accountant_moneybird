@@ -1,5 +1,5 @@
 ---
-title: "Private limited company and corporate income tax (BV en vennootschapsbelasting) 2021: Examples"
+title: "Private limited company (BV) and corporate income tax (vennootschapsbelasting) 2021: Examples"
 description: "Corporate income tax (vennootschapsbelasting), DGA wage, dividend tax (dividendbelasting), fiscal unity (fiscale eenheid) and conversion rules for a BV in tax year 2021. This file holds the examples part."
 nav_label: "Private limited company and corporate income tax examples"
 trigger_phrases:
@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Private limited company and corporate income tax (BV en vennootschapsbelasting) 2021: Examples
+# Private limited company (BV) and corporate income tax (vennootschapsbelasting) 2021: Examples
 
 **Rule:** These values hold for tax year 2021 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Private limited company and corporate income tax (BV en vennootschapsbelasting) 2021 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Private limited company (BV) and corporate income tax (vennootschapsbelasting) 2021 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -36,9 +36,9 @@ This part holds the worked examples for the Private limited company and corporat
 
 ### Calculated example: Vpb in the two brackets
 
-Input: a BV has a taxable amount of € 500.000 in 2021.
+Input: a BV has a taxable amount (belastbaar bedrag) of € 500.000 in 2021.
 
-Step 1: the first bracket up to and including € 245.000 at 15% gives € 245.000 × 0,15 = € 36.750.
+Step 1: the first bracket (eerste schijf) up to and including € 245.000 at 15% gives € 245.000 × 0,15 = € 36.750.
 
 Step 2: the part above the bracket is € 500.000 - € 245.000 = € 255.000.
 
@@ -76,7 +76,7 @@ So € 1.500.000 is deductible in 2021 and € 500.000 is not.
 
 Input: a BV has a loss of € 80.000 in 2021 and a profit of € 60.000 in 2020.
 
-Step 1: one year back, € 60.000 of the 2021 loss is set off against the 2020 profit.
+Step 1: one year back (één jaar terug), € 60.000 of the 2021 loss is set off against the 2020 profit.
 
 Step 2: the remaining loss is € 80.000 - € 60.000 = € 20.000. It carries forward to the six following years, 2022 to 2027.
 
@@ -90,23 +90,23 @@ Input: a qualifying advantage of € 100.000 in 2021. H is the highest art. 22 r
 
 Step 1: the fraction is 9/25 = 0,36.
 
-Step 2: the amount that enters the taxable profit is 0,36 × € 100.000 = € 36.000.
+Step 2: the amount that enters the taxable profit (belastbare winst) is 0,36 × € 100.000 = € 36.000.
 
 Step 3: at the top rate of 25%, the tax is € 36.000 × 0,25 = € 9.000, which is 9% of the € 100.000 advantage.
 
 Flat rate check: a profit before art. 12b of € 80.000 gives 25% × € 80.000 = € 20.000, below the € 25.000 maximum. A profit before art. 12b of € 160.000 gives 25% × € 160.000 = € 40.000, capped at € 25.000.
 
-Nexus check: a qualifying expenditure of € 100.000 gives K = € 100.000 × 1,3 = € 130.000. The K/T part is capped at the whole advantage after the art. 12bc threshold (drempel). No amount for that threshold is stated in the sources used here.
+Nexus check: a qualifying expenditure (kwalificerende uitgaven) of € 100.000 gives K = € 100.000 × 1,3 = € 130.000. The K/T part is capped at the whole advantage after the art. 12bc threshold (drempel). No amount for that threshold is stated in the sources used here.
 
 ### Calculated example: participation exemption (deelnemingsvrijstelling)
 
-Input: a BV holds 5% of the nominal paid-up capital of another BV and receives a dividend of € 40.000.
+Input: a BV holds 5% of the nominal paid-up capital (nominaal gestort kapitaal) of another BV and receives a dividend of € 40.000.
 
 Art. 13 lid 1 leaves the advantage out of the profit, so no Vpb is due on the € 40.000. A holding below 5% is not a participation (deelneming) for art. 13 lid 2.
 
 ### Calculated example: fiscal unity (fiscale eenheid)
 
-Input: a parent company (BV) holds 95% of a subsidiary (BV). The subsidiary has a profit of € 200.000 and the parent company has a loss of € 50.000.
+Input: a parent company (moeder), a BV, holds 95% of a subsidiary (BV). The subsidiary has a profit of € 200.000 and the parent company has a loss of € 50.000.
 
 Step 1: the combined taxable amount is € 200.000 - € 50.000 = € 150.000.
 
@@ -116,19 +116,19 @@ Check: without the fiscal unity the subsidiary would pay € 200.000 × 0,15 = �
 
 ### Calculated example: customary salary (gebruikelijk loon)
 
-Input: a DGA works for his BV. The wage from the most comparable employment relationship is € 80.000. The highest wage of the employees of the body and connected bodies is € 55.000. The standard amount (normbedrag) is € 47.000.
+Input: a DGA works for his BV. The wage from the most comparable employment relationship (loon uit de meest vergelijkbare dienstbetrekking) is € 80.000. The highest wage of the employees of the body and connected bodies is € 55.000. The standard amount (normbedrag) is € 47.000.
 
 Step 1: 75% of € 80.000 = € 60.000.
 
 Step 2: the highest of € 60.000, € 55.000 and € 47.000 is € 60.000. The wage must be at least € 60.000.
 
-Escape check: if the highest amount were € 70.000 and the BV makes plausible that this exceeds 75% of the comparable wage, the wage is 75% of the comparable wage, € 60.000, but at least the standard amount of € 47.000. The outcome stays € 60.000.
+Escape check: if the highest amount were € 70.000 and the BV makes plausible that this exceeds 75% of the comparable wage (vergelijkbaar loon), the wage is 75% of the comparable wage, € 60.000, but at least the standard amount of € 47.000. The outcome stays € 60.000.
 
 Floor check: if the wage for all work in the body and connected bodies is € 4.500, the rule does not apply.
 
 ### Calculated example: start-up relief (startersfaciliteit)
 
-Input: a starter in 2021 with an S&O-verklaring to which the start-up percentage applies.
+Input: a starter in 2021 with an R&D declaration (S&O-verklaring) to which the start-up percentage (starterspercentage) applies.
 
 The statutory minimum is 108% × 12 × the art. 8 lid 1 sub a WML amount. No 2021 WML amount is stated in the sources used here, so no euro outcome is computed. The check is against the lower comparable wage if made plausible, within the de-minimis ceiling of Regulation (verordening) (EU) nr. 1407/2013. A first use in 2021 can run at most 3 years.
 
@@ -152,7 +152,7 @@ Step 1: box 2 tax at 26,9% is € 60.000 × 0,269 = € 16.140.
 
 Step 2: dividend tax withheld at 15% is € 60.000 × 0,15 = € 9.000.
 
-Step 3: the credit in the income tax return leaves € 16.140 - € 9.000 = € 7.140.
+Step 3: the credit in the income tax return (aangifte inkomstenbelasting) leaves € 16.140 - € 9.000 = € 7.140.
 
 ### Calculated example: dividend tax and the dividend statement (dividendnota)
 
@@ -176,7 +176,7 @@ Step 3: the shareholder receives € 85.000.
 
 ### Calculated example: conditional withholding tax (conditionele bronbelasting)
 
-Input: a BV pays € 200.000 of royalties to a related body in a low-tax jurisdiction in 2021.
+Input: a BV pays € 200.000 of royalties to a related body in a low-tax jurisdiction (laagbelastende jurisdictie) in 2021.
 
 Step 1: interest and royalties are in scope in the 2021 version, dividends are not.
 
@@ -184,9 +184,9 @@ Step 2: the rate is the highest art. 22 rate, 25% in 2021.
 
 Step 3: the tax is € 200.000 × 0,25 = € 50.000.
 
-### Calculated example: annual accounts (jaarrekening) size classes
+### Calculated example: annual accounts (jaarrekening) size classes (grootteklassen)
 
-Input: a BV meets these criteria on two consecutive balance dates: assets € 400.000, net turnover € 800.000, 8 employees.
+Input: a BV meets these criteria on two consecutive balance dates: assets € 400.000, net turnover (netto-omzet) € 800.000, 8 employees.
 
 Micro: assets € 400.000 is above € 350.000 (fail), turnover € 800.000 is above € 700.000 (fail), 8 employees is fewer than 10 (meet). Only one of three, so not micro.
 
@@ -210,7 +210,7 @@ Check: the discontinuation deduction is once in a lifetime, and an extra annuity
 
 ### Official example: retroactive tax-neutral conversion to 1 January 2021
 
-KG:212:2022:1 works a tax-neutral conversion with retroactive effect to 1 January 2021. The request was received on 15 December 2021 and the incorporation followed on 1 February 2022. The Knowledge group (kennisgroep) held the request timely. https://kennisgroepen.belastingdienst.nl/publicaties/kg21220221-geruisloze-omzetting-termijn-indienen-verzoek-artikel-3-65-wet-ib-2001/
+KG:212:2022:1 works a tax-neutral conversion with retroactive effect (terugwerkende kracht) to 1 January 2021. The request was received on 15 December 2021 and the incorporation followed on 1 February 2022. The Knowledge group (kennisgroep) held the request timely. https://kennisgroepen.belastingdienst.nl/publicaties/kg21220221-geruisloze-omzetting-termijn-indienen-verzoek-artikel-3-65-wet-ib-2001/
 
 ---
 

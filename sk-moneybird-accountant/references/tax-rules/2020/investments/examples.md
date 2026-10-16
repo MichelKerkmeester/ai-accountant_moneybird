@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Investment deduction and depreciation 2020 (investeringsaftrek en afschrijving): Examples
+# Investment deduction (investeringsaftrek) and depreciation 2020: Examples
 
 **Rule:** These values hold for tax year 2020 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the investment deduction and depreciation 2020 (investeringsaftrek en afschrijving) topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the investment deduction (investeringsaftrek) and depreciation 2020 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -69,7 +69,7 @@ The same asset can also enter the total investment for the KIA, because the EIA 
 
 A trader buys a new asset on the Environmental List (Milieulijst) for € 50.000. The asset is above the € 2.500 minimum. The 2020 Environmental List decides the category.
 
-Step 1: in category I the MIA is € 50.000,00 × 0,36 = € 18.000,00.
+Step 1: in category I (categorie I) the MIA is € 50.000,00 × 0,36 = € 18.000,00.
 Step 2: in category II the MIA is € 50.000,00 × 0,27 = € 13.500,00.
 Step 3: in category III the MIA is € 50.000,00 × 0,135 = € 6.750,00.
 
@@ -77,7 +77,7 @@ Sources of the figures: [Wet IB 2001 art. 3.42a lid 3](https://wetten.overheid.n
 
 ### Example 5 (Calculated example): Vamil on a designated asset
 
-A trader buys a designated environmental business asset (milieu-bedrijfsmiddel) for € 100.000.
+A trader buys a designated environmental asset (milieu-bedrijfsmiddel) for € 100.000.
 
 Step 1: 75% of the costs may be depreciated at will, so € 100.000,00 × 0,75 = € 75.000,00.
 Step 2: the remaining part follows the normal schedule, so € 100.000,00 - € 75.000,00 = € 25.000,00.
@@ -95,7 +95,7 @@ Source of the figures: [Wet IB 2001 art. 3.30 lid 2](https://wetten.overheid.nl/
 
 ### Example 7 (Calculated example): minimum value (bodemwaarde) for two buildings
 
-A trader owns an own-use building with a WOZ value (WOZ-waarde) of € 400.000 and an investment building with a WOZ value of € 400.000.
+A trader owns an own-use building with a WOZ value (WOZ-waarde) of € 400.000 and an investment building (gebouw ter belegging) with a WOZ value of € 400.000.
 
 Step 1: for the own-use building the minimum value is 50% of the WOZ value, so € 400.000,00 × 0,50 = € 200.000,00.
 Step 2: with a book value of € 260.000,00 at the start of 2020, the maximum depreciation is € 260.000,00 - € 200.000,00 = € 60.000,00, before any other limit.
@@ -105,11 +105,11 @@ Source of the figures: [Wet IB 2001 art. 3.30a lid 3](https://wetten.overheid.nl
 
 ### Example 8 (Calculated example): disinvestment addition (desinvesteringsbijtelling)
 
-A trader buys a business asset (bedrijfsmiddel) in 2020 for € 10.000 and takes the KIA over that € 10.000 at 28%. In the same year the trader disposes of the asset for a transfer price of € 10.000. The disposal is within five years after the start of the calendar year of the investment.
+A trader buys a business asset (bedrijfsmiddel) in 2020 for € 10.000 and takes the KIA over that € 10.000 at 28%. In the same year the trader disposes of the asset for a transfer price (overdrachtsprijs) of € 10.000. The disposal is within five years after the start of the calendar year of the investment.
 
 Step 1: the transfer price of € 10.000,00 is more than the threshold of € 2.400,00, so the disinvestment addition applies.
 Step 2: the addition is 28% of the transfer price, so € 10.000,00 × 0,28 = € 2.800,00 added to profit.
-Step 3: the addition is never more than the investment amount over which the deduction (aftrek) was taken. That amount is € 10.000,00, so the € 2.800,00 stands.
+Step 3: the addition is never more than the investment amount (investeringsbedrag) over which the deduction (aftrek) was taken. That amount is € 10.000,00, so the € 2.800,00 stands.
 
 Sources of the figures: [Wet IB 2001 art. 3.47 lid 1 and lid 2](https://wetten.overheid.nl/BWBR0011353/2020-01-01), [Belastingdienst desinvesteringsbijtelling](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/investeringsaftrek_en_desinvesteringsbijtelling/desinvesteringsbijtelling).
 

@@ -45,7 +45,7 @@ All figures come from section 2. [art. 2.12](https://wetten.overheid.nl/BWBR0011
 **Calculated example 2: Partner division with € 200.000 box 2 income.**
 Step 1: fiscal partners may divide box 2 income in any proportion, as long as the total is 100%.
 Step 2: in this example the two partners divide € 200.000 equally, so each has € 100.000.
-Step 3: art. 2.12 applies per taxpayer, so each partner's own first bracket applies to his own share.
+Step 3: art. 2.12 applies per taxpayer, so each partner's own first bracket (eerste schijf) applies to his own share.
 Step 4: for each partner, the part above bracket 1 is € 100.000 minus € 67.000 = € 33.000.
 Step 5: for each partner, the bracket 1 tax is 24,5% of € 67.000 = € 16.415,00 and the bracket 2 tax is 33% of € 33.000 = € 10.890,00.
 Step 6: each partner pays € 16.415,00 plus € 10.890,00 = € 27.305,00 on his own € 100.000.
@@ -81,7 +81,7 @@ In 2024 the threshold (drempel) is € 500.000 and the loan is € 600.000, so �
 In 2024 the threshold is € 600.000, the loan is € 850.000, and € 250.000 is taxed. [Belastingdienst](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/bijzondere_situaties/geld_lenen_van_uw_bv/excessief-lenen-van-bv-beperkt)
 
 **Calculated example 6: Customary salary (gebruikelijk loon).**
-Step 1: the most comparable wage (loon) is € 67.000, and the comparable-wage test is 100% of it.
+Step 1: the most comparable wage (vergelijkbaar loon) is € 67.000, and the comparable-wage test is 100% of it.
 Step 2: the highest employee wage is € 56.000.
 Step 3: the fixed amount is € 56.000.
 Step 4: the highest of the three is € 67.000, so the customary salary is € 67.000.

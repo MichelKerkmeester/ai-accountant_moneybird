@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and disability insurance (pensioen, lijfrente en AOV) 2024: Examples
+# Pension, annuity and disability insurance (pensioen, lijfrente en arbeidsongeschiktheidsverzekering) 2024: Examples
 
 **Rule:** These values hold for tax year 2024 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Pension, annuity and disability insurance (pensioen, lijfrente en AOV) 2024 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Pension, annuity and disability insurance (pensioen, lijfrente en arbeidsongeschiktheidsverzekering) 2024 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -64,7 +64,7 @@ Outcome. The formula gives € 36.076,50 at this income and the Ministry table p
 
 ### Calculated example. Annual allowance reduced by pension accrual premiums
 
-Inputs. A taxpayer has a taxable wage (belastbaar loon) of € 60.000 in 2023 and paid € 5.000 in contributions toward the old-age and partner pensions (premiums ingelegd voor ouderdoms- en partnerpensioen). There is no compensation premium (compensatiepremie) under art. 38s Wet LB 1964 and no net pension (nettopensioen) premium.
+Inputs. A taxpayer has a taxable wage (belastbaar loon) of € 60.000 in 2023 and paid € 5.000 in contributions toward the old-age and partner pensions (ouderdoms- en partnerpensioen). There is no compensation premium (compensatiepremie) under art. 38s Wet LB 1964 and no net pension (nettopensioen) premium.
 
 Step 1. The income part is min(€ 60.000, € 137.800) = € 60.000. https://wetten.overheid.nl/BWBR0011353/2024-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127
 
@@ -74,7 +74,7 @@ Step 3. 30% x € 42.455 = € 12.736,50. https://wetten.overheid.nl/BWBR0011353
 
 Step 4. Subtract the pension accrual reduction. € 12.736,50 - € 5.000 = € 7.736,50. https://wetten.overheid.nl/BWBR0011353/2024-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127
 
-Outcome. The annual allowance is € 7.736,50. A net pension premium would also reduce the allowance by the premium amount divided by the net factor (nettofactor). The net factor is not in the figures table. https://wetten.overheid.nl/BWBR0011353/2024-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127
+Outcome. The annual allowance is € 7.736,50. A net pension (nettopensioen) premium would also reduce the allowance by the premium amount divided by the net factor (nettofactor). The net factor is not in the figures table. https://wetten.overheid.nl/BWBR0011353/2024-01-01/0/Hoofdstuk3/Afdeling3.7/Artikel3.127
 
 ### Calculated example. Catch-up allowance (reserveringsruimte) plus annual allowance
 
@@ -88,7 +88,7 @@ Step 3. Add the 2024 annual allowance. € 41.608 + € 12.736,50 = € 54.344,5
 
 Step 4. Compare with the premiums paid. € 55.000 - € 54.344,50 = € 655,50 above the allowance. https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies
 
-Outcome. The deductible amount is € 54.344,50. The € 655,50 above the allowance is not deductible, but it is taken into account when the benefit (uitkering) is taxed. The Dutch Tax and Customs Administration (Belastingdienst) advises using catch-up allowance before annual allowance so older unused allowance does not lapse. https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies
+Outcome. The deductible amount is € 54.344,50. The € 655,50 above the allowance is not deductible (niet aftrekbaar), but it is taken into account when the benefit (uitkering) is taxed. The Dutch Tax and Customs Administration (Belastingdienst) advises using catch-up allowance before annual allowance so older unused allowance does not lapse. https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/lijfrente/aftrekken-lijfrentepremies/aftrekken-lijfrentepremies
 
 ### Calculated example. Temporary old-age annuity (tijdelijke oudedagslijfrente) above the cap
 
@@ -124,7 +124,7 @@ Step 3. Tier c maximum. € 139.885 - € 50.000 = € 89.885. The deduction is 
 
 Outcome. In a tier a or tier b situation the deduction is capped at € 200.000 in this case. In a tier c situation the cap is € 89.885.
 
-### Calculated example. Commutation (afkoop) of a small annuity (lijfrente)
+### Calculated example. Commutation (afkoop) of a small annuity (kleine lijfrente)
 
 Inputs. A taxpayer has an annuity with a yearly payout of € 5.000.
 
@@ -148,7 +148,7 @@ Outcome. € 2.400 is deductible with periodic benefits. € 0 is deductible wit
 
 ### Calculated example. FOR holder and the 2024 contribution base
 
-Inputs. A taxpayer has a FOR. The profit from business activities in 2023 before the entrepreneur's allowance (ondernemersaftrek) is € 80.000. This figure is after the FOR reduction of € 4.000. There is no addition because none is possible from 1 January 2023, and there is no pension accrual.
+Inputs. A taxpayer has a FOR. The profit from business activities in 2023 before the entrepreneur's allowance (vóór de ondernemersaftrek) is € 80.000. This figure is after the FOR reduction of € 4.000. There is no addition because none is possible from 1 January 2023, and there is no pension accrual.
 
 Step 1. The contribution base uses the profit (winst) before a reduction of the FOR. The reduction has been added to the profit, so the profit before the reduction is € 80.000 - € 4.000 = € 76.000. https://wetten.overheid.nl/BWBR0011353/2024-01-01 (art. 10a.29)
 

@@ -13,11 +13,11 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and disability insurance 2022: Examples
+# Pension (pensioen), annuity (lijfrente) and disability insurance (AOV, arbeidsongeschiktheidsverzekering) 2022: Examples
 
 **Rule:** These values hold for tax year 2022 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
-Part 3 of 4 of the pension, annuity and disability insurance (pensioen, lijfrente en AOV) 2022 topic.
+Part 3 of 4 of the pension, annuity and disability insurance 2022 topic.
 
 - [figures.md](figures.md): the overview and key figures.
 - [rules.md](rules.md): how it works.
@@ -27,7 +27,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the pension, annuity and disability insurance (pensioen, lijfrente en AOV) 2022 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the pension (pensioen), annuity (lijfrente) and disability insurance (arbeidsongeschiktheidsverzekering, AOV) 2022 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -35,7 +35,7 @@ This part holds the worked examples for the pension, annuity and disability insu
 
 <a id="4-worked-examples"></a>
 
-All inputs in the calculated examples are invented and use round amounts. Every statutory amount used comes from section 2 or from the 2021 figures in section 5. The annual allowance (jaarruimte) examples assume a pension shortfall (pensioentekort), no net pension premiums (nettopensioenpremies) and a taxpayer who has not yet reached the state pension age (AOW age) at the start of 2022. Products are shown before rounding, and each rounding step says rounded or rounded down.
+All inputs in the calculated examples are invented and use round amounts. Every statutory amount used comes from section 2 or from the 2021 figures in section 5. The annual allowance (jaarruimte) examples assume a pension shortfall (pensioentekort), no net pension (nettopensioen) premiums (nettopensioenpremies) and a taxpayer who has not yet reached the state pension age (AOW age) at the start of 2022. Products are shown before rounding, and each rounding step says rounded or rounded down.
 
 **Calculated example: annual allowance with a profit of € 60.000,00 (no pension accrual, no FOR addition).**
 
@@ -60,7 +60,7 @@ All inputs in the calculated examples are invented and use round amounts. Every 
 - Input: the same profit over 2021 of € 60.000,00, no pension accrual and a FOR addition over 2021.
 - Step 1, FOR addition over 2021: 9,44% x € 60.000,00 = € 5.664,00, exact.
 - Step 2, cap check: € 5.664,00 is below the 2021 cap of € 9.395,00. This is the 2021 cap, because the annual allowance 2022 uses the FOR addition of the previous calendar year (2021), not the 2022 cap.
-- Step 3, contribution base: the profit is taken before the FOR addition and before the entrepreneur's allowance (ondernemersaftrek), so the base stays € 47.163,00 and 13,3% x € 47.163,00 = € 6.272,68, rounded (exact € 6.272,6790).
+- Step 3, contribution base: the profit is taken before the FOR addition and before the entrepreneur's allowance (vóór de ondernemersaftrek), so the base stays € 47.163,00 and 13,3% x € 47.163,00 = € 6.272,68, rounded (exact € 6.272,6790).
 - Step 4, subtract the addition: € 6.272,6790 - € 5.664,00 = € 608,68, rounded (exact € 608,6790).
 - Step 5, maximum check: € 608,68 is below the maximum of € 13.570,00.
 - Annual allowance 2022: € 608,68.
@@ -84,7 +84,7 @@ All inputs in the calculated examples are invented and use round amounts. Every 
 
 **Calculated example: profit from business discontinuation (stakingswinst) conversion.**
 
-- Input: profit from business discontinuation of € 200.000,00 and already built provisions of € 80.000,00. The taxpayer is more than five years but at most fifteen years below the state pension age at the cessation date (staking date) and does not meet a tier a ground, so the tier b maximum of art. 3.129 applies.
+- Input: profit from business discontinuation of € 200.000,00 and already built provisions of € 80.000,00. The taxpayer is more than five years but at most fifteen years below the state pension age at the cessation date and does not meet a tier a ground, so the tier b maximum of art. 3.129 applies.
 - Tier b maximum: € 240.352,00.
 - Cap after the provisions: € 240.352,00 - € 80.000,00 = € 160.352,00.
 - Deductible premiums for the conversion: min(€ 200.000,00, € 160.352,00) = € 160.352,00.
@@ -93,7 +93,7 @@ All inputs in the calculated examples are invented and use round amounts. Every 
 
 **Calculated example: FOR addition (toevoeging) over 2022.**
 
-- Input: profit (winst) over 2022 of € 60.000,00, no pension premiums charged to the profit, enough growth of the business assets (ondernemingsvermogen), the hours criterion (urencriterium) is met and the taxpayer has not yet reached the state pension age at the start of 2022.
+- Input: profit (winst) over 2022 of € 60.000,00, no pension premiums charged to the profit, enough growth of the business capital (ondernemingsvermogen), the hours criterion (urencriterium) is met and the taxpayer has not yet reached the state pension age at the start of 2022.
 - 9,44% x € 60.000,00 = € 5.664,00, exact.
 - Cap check: € 5.664,00 is below the 2022 cap of € 9.632,00 (art. 3.68).
 - Addition: € 5.664,00. 2022 is the last year in which a FOR addition is possible.
@@ -102,7 +102,7 @@ All inputs in the calculated examples are invented and use round amounts. Every 
 **Calculated example: AOV premium.**
 
 - Premium of € 2.400,00 for a policy with periodic benefits (uitkeringen): fully deductible as an expenditure for income provisions (uitgave voor inkomensvoorzieningen) under art. 3.124 lid 1 c, so the deduction is € 2.400,00.
-- Premium of € 2.400,00 for a policy with a lump-sum payout: not deductible, and the later payout is not box 1 income and counts in box 3.
+- Premium of € 2.400,00 for a policy with a lump-sum payout: not deductible (niet aftrekbaar), and the later payout is not box 1 income and counts in box 3.
 
 **Calculated example: commutation (afkoop) for long-term disability (langdurige arbeidsongeschiktheid).**
 

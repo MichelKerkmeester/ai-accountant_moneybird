@@ -12,7 +12,7 @@ contextType: research
 version: 1.0.0.0
 ---
 
-# Pension, annuity and disability insurance 2027: Examples
+# Pension, annuity and disability insurance (arbeidsongeschiktheidsverzekering) 2027: Examples
 
 **Rule:** These values hold for tax year 2027 only. Respect the Status and Check tags. This is not tax advice, and the Operator or a bookkeeper decides any personal case.
 
@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Pension, annuity and disability insurance 2027 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Pension, annuity and disability insurance (arbeidsongeschiktheidsverzekering) 2027 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -38,7 +38,7 @@ No official examples for 2027 were found in the checked sources, so every exampl
 
 ### Calculated example: annual allowance (jaarruimte) 2027 with a profit of € 60.000
 
-A self-employed person without pension accrual and without an old-age reserve (FOR) had a profit of € 60.000 in 2026. The 2027 annual allowance uses the 2026 income. The 2027 franchise is UNVERIFIED, so the calculation uses the € 19.172 still in the 2027 text.
+A self-employed person (zelfstandige) without pension accrual and without an old-age reserve (oudedagsreserve, FOR) had a profit of € 60.000 in 2026. The 2027 annual allowance uses the 2026 income. The 2027 franchise is UNVERIFIED, so the calculation uses the € 19.172 still in the 2027 text.
 
 1. Cap the income at the income cap (aftoppingsgrens): min(€ 60.000, € 137.800) = € 60.000.
 2. Subtract the franchise: € 60.000 - € 19.172 = € 40.828.
@@ -72,7 +72,7 @@ A taxpayer wants a yearly benefit (uitkering) of € 30.000 with 5 yearly instal
 
 1. Amount above the cap: € 30.000 - € 27.192 = € 2.808.
 2. Instalments: 5 years, which meets the minimum of at least five years of instalments.
-3. Deductibility: the premiums above the cap are deductible only if the benefits run at least 20 years. With 5 instalments the € 2.808 above the cap is not deductible.
+3. Deductibility: the premiums above the cap are deductible only if the benefits run at least 20 years. With 5 instalments the € 2.808 above the cap is not deductible (niet aftrekbaar).
 
 Outcome: with 5 instalments the premiums up to the cap are deductible and the above-cap part is not. If the same benefit runs at least 20 years, the above-cap premiums stay deductible.
 
@@ -94,10 +94,10 @@ Tax Plan 2027 (Belastingplan 2027) art. LVII proposes to index the annuity maxim
 - Profit from business discontinuation tier a: € 574.867 x 1,01248 = € 574.867 + (€ 574.867 x 0,01248) = € 574.867 + € 7.174,34 = € 582.041,34.
 - Profit from business discontinuation tier b: € 287.445 x 1,01248 = € 287.445 + (€ 287.445 x 0,01248) = € 287.445 + € 3.587,31 = € 291.032,31.
 - Profit from business discontinuation tier c: € 143.732 x 1,01248 = € 143.732 + (€ 143.732 x 0,01248) = € 143.732 + € 1.793,78 = € 145.525,78.
-- Commutation (afkoop) of a small annuity: € 5.513 x 1,01248 = € 5.513 + (€ 5.513 x 0,01248) = € 5.513 + € 68,80 = € 5.581,80.
+- Commutation (afkoop) of a small annuity (kleine lijfrente): € 5.513 x 1,01248 = € 5.513 + (€ 5.513 x 0,01248) = € 5.513 + € 68,80 = € 5.581,80.
 - Commutation in case of long-term disability (langdurige arbeidsongeschiktheid): € 51.440 x 1,01248 = € 51.440 + (€ 51.440 x 0,01248) = € 51.440 + € 641,97 = € 52.081,97.
 
-### Calculated example: disability insurance (AOV) premium with periodic benefits (uitkeringen) against a lump-sum policy
+### Calculated example: disability insurance (AOV, arbeidsongeschiktheidsverzekering) premium with periodic benefits (uitkeringen) against a lump-sum policy
 
 A self-employed person with a profit of € 60.000 pays an invented AOV premium of € 2.400 in 2027.
 
@@ -108,7 +108,7 @@ Outcome: the form of the benefit decides the treatment, not the size of the prem
 
 ### Calculated example: proposed BAZ premium and benefit
 
-The BAZ is not in force in 2027, so this example only shows the proposed percentages from the explanatory memorandum (MvT).
+The BAZ is not in force (in werking) in 2027, so this example only shows the proposed percentages from the explanatory memorandum (memorie van toelichting, MvT).
 
 1. Profit (winst) € 38.000: € 38.000 x 5,4% = € 2.052 per year. € 2.052 / 12 = € 171 per month.
 2. Profit € 25.000: € 25.000 x 5,4% = € 1.350 per year. € 1.350 / 12 = € 112,50, about € 113 per month.

@@ -46,11 +46,11 @@ For a qualifying 9% supply with the same net amount, VAT is € 1.000 × 9% = �
 
 ### Exempt versus zero-rated purchase
 
-**Calculated example.** A business buys an input used only for a taxable zero-rated supply. The input price is € 1.000 and its invoice shows € 210 input VAT at 21%.
+**Calculated example.** A business buys an input used only for a taxable zero-rated supply. The input price is € 1.000 and its invoice shows € 210 input VAT (voorbelasting) at 21%.
 
 1. Output VAT on the zero-rated sale is calculated at 0%.
 2. Input VAT attributable to that zero-rated supply remains deductible, subject to the deduction conditions.
-3. If the same input is used only for an exempt supply, the € 210 is not deductible.
+3. If the same input is used only for an exempt supply, the € 210 is not deductible (niet aftrekbaar).
 
 This example illustrates the difference between a zero rate and an exemption. [Belastingdienst handbook](https://download.belastingdienst.nl/belastingdienst/docs/handboek_ondernemen_2026_aa9701z62fd.pdf)
 
@@ -70,7 +70,7 @@ The example assumes the supply and installation meet the covered conditions. It 
 
 ### Private-use car
 
-**Calculated example.** Assume a business car has a catalogue price of € 30.000 including VAT and BPM. No private-use records are available, and the 2,7% rate applies.
+**Calculated example.** Assume a business car has a catalogue price (catalogusprijs) of € 30.000 including VAT and BPM. No private-use records are available, and the 2,7% rate applies.
 
 1. € 30.000 × 2,7% = € 810.
 2. Compare the result with the applicable cap, which is based on VAT deducted in the year and the relevant purchase VAT.
@@ -92,7 +92,7 @@ The example does not determine the cap because the amount of VAT deducted and th
 
 1. Supplier invoices € 1.000 without VAT and marks the invoice “btw verlegd”.
 2. Customer calculates VAT: € 1.000 × 21% = € 210.
-3. Customer reports the € 210 as reverse-charged VAT.
+3. Customer reports the € 210 as reverse-charged VAT (verlegde btw).
 4. If the service is used for taxable activity and ordinary deduction conditions are met, the customer may deduct the same € 210.
 
 The supplier must still apply the reverse-charge rule correctly. [Belastingdienst reverse-charge guidance](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/btw/btw_berekenen_aan_uw_klanten/waarover_btw_berekenen/verleggingsregeling/hoe_werkt_btw_verleggen)

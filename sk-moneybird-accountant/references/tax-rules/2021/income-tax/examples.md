@@ -36,7 +36,7 @@ This part holds the worked examples for the income tax box 1 (Inkomstenbelasting
 
 ### Calculated example: box 1 below AOW age
 
-Assume a taxable amount in box 1 of € 40.000 for a taxpayer below AOW age.
+Assume a taxable amount (belastbaar bedrag) in box 1 of € 40.000 for a taxpayer below AOW age.
 
 1. The first statutory amount is € 3.319.
 2. The income above € 35.129 is € 40.000 minus € 35.129 = € 4.871.
@@ -45,7 +45,7 @@ Assume a taxable amount in box 1 of € 40.000 for a taxpayer below AOW age.
 
 This uses the 2021 statutory formula and does not subtract tax credits (heffingskortingen) (https://wetten.overheid.nl/BWBR0011353/2021-01-01 and https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2021/belastingberekening).
 
-### Calculated example: first bracket in the month AOW age is reached
+### Calculated example: first bracket (eerste schijf) in the month AOW age is reached
 
 Assume the taxpayer reaches AOW age in July and has € 10.000 of income in the first bracket.
 
@@ -71,7 +71,7 @@ This illustrates the statutory cap and the maximum deduction value (https://wett
 
 Assume a taxable income from work and home of € 30.000.
 
-1. The income above the phase-out point is € 30.000 minus € 21.043 = € 8.957.
+1. The income above the phase-out point (afbouwpunt) is € 30.000 minus € 21.043 = € 8.957.
 2. The reduction is € 8.957 times 5,977% = € 535,35989.
 3. The remaining credit is € 2.837 minus € 535,35989 = € 2.301,64011 before rounding.
 

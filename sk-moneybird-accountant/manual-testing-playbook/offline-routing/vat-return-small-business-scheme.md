@@ -6,7 +6,7 @@ catalog_applicable: true
 version: 1.0.0.0
 ---
 
-# VAT-003 -- A small businesses scheme quarter with a reverse-charged purchase
+# VAT-003 -- A small businesses scheme (kleineondernemersregeling) quarter with a reverse-charged purchase
 
 This document captures the offline prompt, local read sequence, expected signals and evidence for VAT-003.
 
@@ -14,7 +14,7 @@ This document captures the offline prompt, local read sequence, expected signals
 
 ## 1. OVERVIEW
 
-This scenario validates the small businesses scheme (KOR) quarter branch of the prepare-the-VAT-return route. It focuses on the exemption, the surviving reverse-charge reporting and the review pack.
+This scenario validates the small businesses scheme (kleineondernemersregeling, KOR) quarter branch of the prepare-the-VAT-return route. It focuses on the exemption, the surviving reverse-charge reporting and the review pack.
 
 ### Why This Matters
 
@@ -24,11 +24,11 @@ The small businesses scheme (KOR) is an exemption, not a reduction. A small busi
 
 ## 2. SCENARIO CONTRACT
 
-- Objective: Route a small businesses scheme (KOR) quarter with a reverse-charged purchase to the procedure, keep the shifted VAT in the return and stop before any filing action.
+- Objective: Route a small businesses scheme (kleineondernemersregeling, KOR) quarter with a reverse-charged purchase to the procedure, keep the shifted VAT in the return and stop before any filing action.
 - Real user request: Prepare the VAT return for the third quarter of 2026. The small-business scheme (KOR) applies and one purchase is reverse-charged. Do not call an API.
 - Prompt: Prepare the VAT return for the third quarter of 2026. The small-business scheme (KOR) applies and one purchase is reverse-charged. Do not call an API.
 - Fixture rows: VAT-BRANCH-KOR-01 (the small businesses scheme row) and vat-return-small-business-quarter (the eval case).
-- Expected execution process: Read the project bootstrap and the skill, run the route table check, follow the T10 route into the VAT return procedure, apply the small businesses scheme rules, keep the reverse-charged line in the return and stop before any filing action. Do not use network access, accounting APIs or private finance data.
+- Expected execution process: Read the project bootstrap and the skill, run the route table check, follow the T10 route into the VAT return (btw-aangifte) procedure, apply the small businesses scheme rules, keep the reverse-charged line in the return and stop before any filing action. Do not use network access, accounting APIs or private finance data.
 - Expected signals: The check prints route-table: ok. The route record names LIVE and T10. The read set loads [the VAT return procedure](../../references/vat-return/README.md) and [the 2026 VAT figures](../../references/tax-rules/2026/vat/figures.md). The answer names the small businesses scheme (KOR), the surviving reverse charge line, the review pack blocks P1 to P9 and the Operator as the owner of the filing route. The administration reads run through moneybird-guard with MONEYBIRD_GUARD_READ_ONLY=1.
 - Desired user-visible outcome: A concise route report with the winning row, the loaded paths, the small businesses scheme treatment, the reverse charge line, the review pack blocks and the API-free status.
 - Pass/fail: PASS if the request routes LIVE and T10, the procedure and the year figures load, the answer names the small businesses scheme and the surviving reverse charge line, the pack blocks P1 to P9 are named, the Operator owns the filing route and no API is called. FAIL if the small businesses scheme is treated as a stop that drops the shifted VAT, a pack block is absent, the answer states a filing action or an API is called.
@@ -47,11 +47,11 @@ The small businesses scheme (KOR) is an exemption, not a reduction. A small busi
 2. Read sk-moneybird-accountant/SKILL.md
 3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check
 4. Read sk-moneybird-accountant/references/vat-return/README.md, sk-moneybird-accountant/references/vat-return/return-boxes.md and sk-moneybird-accountant/references/tax-rules/2026/vat/figures.md
-5. Apply the small businesses scheme rules, keep the reverse-charged line in the return, assemble the review pack and stop before any filing action
+5. Apply the small businesses scheme (kleineondernemersregeling) rules, keep the reverse-charged line in the return, assemble the review pack and stop before any filing action
 
 ### Expected
 
-The check prints route-table: ok. The T10 row wins for the named VAT return. The procedure, the section (rubriek) rules and the 2026 VAT figures load. The answer names the small businesses scheme (KOR), the reverse charge purchase that still reports, the pack blocks P1 to P9 and the Operator. No accounting API is called.
+The check prints route-table: ok. The T10 row wins for the named VAT return (btw-aangifte). The procedure, the section (rubriek) rules and the 2026 VAT figures load. The answer names the small businesses scheme (KOR), the reverse charge purchase that still reports, the pack blocks P1 to P9 and the Operator. No accounting API is called.
 
 ### Evidence
 
@@ -77,7 +77,7 @@ Check the T10 row and the T8 filing precedence in SKILL.md section 2, then the V
 | [manual-testing-playbook.md](../manual-testing-playbook.md) | Root playbook rules and scenario index. |
 | [feature-catalog entry](../../feature-catalog/bookkeeping-and-migration/vat-return-preparation.md) | Current feature summary and source anchors. |
 | [the VAT return procedure](../../references/vat-return/README.md) | The procedure this scenario tests. |
-| [the section (rubriek) table](../../references/vat-return/return-boxes.md) | The small businesses scheme and reverse-charge rules. |
+| [the section (rubriek) table](../../references/vat-return/return-boxes.md) | The small businesses scheme (kleineondernemersregeling) and reverse-charge rules. |
 | [the review pack contract](../../references/vat-return/review-pack.md) | The pack blocks P1 to P9 and the confirmation parts. |
 
 ### Implementation And Test Anchors

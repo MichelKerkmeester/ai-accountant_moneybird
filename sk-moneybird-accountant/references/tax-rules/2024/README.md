@@ -56,29 +56,29 @@ The first two rows of each file's figures table. The topic file carries the sour
 <!-- GENERATED:headline-figures:start -->
 | Topic | Item | Value 2024 | Status | Check |
 |---|---|---|---|---|
-| VAT | Standard VAT rate | 21% | enacted | Verified |
-| VAT | Reduced VAT rate | 9% for goods and services in Table I | enacted | Verified |
+| VAT | Standard VAT rate | 21% (btw-tarief) | enacted | Verified |
+| VAT | Reduced VAT rate | 9% for goods and services in Table I (tabel I) | enacted | Verified |
 | Income tax box 1 | Box 1 below AOW age | 36,97% up to € 75.518, then 49,50%. Statutory table: 9,32% to € 38.098, then € 3.550 plus 36,97% up to € 75.518, then € 17.384 plus 49,50% | enacted | Verified |
 | Income tax box 1 | Box 1 at AOW age, born on or after 1 January 1946 | 19,07% up to € 38.098, 36,97% up to € 75.518, then 49,50% | enacted | Verified |
-| Zvw contribution | Zvw contribution (Zvw-bijdrage) by (provisional) assessment ((voorlopige) aanslag) | 5,32% | enacted | Verified |
+| Zvw contribution | Zvw contribution (Zvw-bijdrage) by assessment or provisional assessment (aanslag of voorlopige aanslag) | 5,32% | enacted | Verified |
 | Zvw contribution | Maximum contribution income (bijdrage-inkomen) Zvw | € 71.628 | enacted | Verified |
-| Entrepreneur's allowance and SME profit exemption | Entrepreneur for income tax purposes (IB-ondernemer) status | Judged by the Dutch Tax and Customs Administration (Belastingdienst) per activity, separately from the VAT (btw) | enacted | Verified |
-| Entrepreneur's allowance and SME profit exemption | Hours criterion (urencriterium) | 1.225 hours in the calendar year, with the mainly (grotendeels) test and the second test waived for anyone not an entrepreneur (ondernemer) in 1 or more of 2019 to 2023 | enacted | Verified |
+| Entrepreneur's allowance and SME profit exemption | Entrepreneur for income tax purposes (ondernemer voor de inkomstenbelasting, IB-ondernemer) status | Judged by the Dutch Tax and Customs Administration (Belastingdienst) per activity, separately from the VAT (btw) | enacted | Verified |
+| Entrepreneur's allowance and SME profit exemption | Hours criterion (urencriterium) | 1.225 hours in the calendar year, with the mainly (grotendeels) test and the second test (tweede toets) waived for anyone not an entrepreneur (ondernemer) in 1 or more of 2019 to 2023 | enacted | Verified |
 | Investment deduction and depreciation | KIA table (art. 3.41 lid 2) | nil up to € 2.800, 28% of the investment from € 2.800 up to € 69.765, a fixed € 19.535 from € 69.765 up to € 129.194, € 19.535 minus 7,56% of the excess over € 129.194 up to € 387.580, nil above € 387.580 | enacted | Verified |
 | Investment deduction and depreciation | KIA per-asset minimum | € 450 | enacted | Verified |
 | Costs and car | Threshold for mixed costs (gemengde kosten drempel) | € 5.600 | enacted | Verified |
 | Costs and car | Election instead of the threshold (keuze in plaats van de drempel) | 80% deductible (aftrekbaar) | enacted | Verified |
-| Box 3 savings and investments | System 2024 | Category method of the Bridge Act (Overbruggingswet) box 3, in force 1 January 2023. Six-step calculation. | enacted | Verified |
+| Box 3 savings and investments | System 2024 | Category method (categorieënmethode) of the Bridge Act (Overbruggingswet) box 3, in force (in werking) 1 January 2023. Six-step calculation. | enacted | Verified |
 | Box 3 savings and investments | Reference date (peildatum) | 1 January 2024 | enacted | Verified |
 | Box 2 and substantial interest | Box 2 bracket 1 | 24,5% up to € 67.000 | enacted | Verified |
 | Box 2 and substantial interest | Tax at top of bracket 1 | € 16.415 | enacted | Verified |
-| Private limited company and corporate income tax | Corporate income tax (vennootschapsbelasting), first bracket (art. 22 Wet Vpb 1969) | up to and including € 200.000 at 19% | enacted | Verified |
-| Private limited company and corporate income tax | Corporate income tax, above the first bracket (art. 22 Wet Vpb 1969) | € 38.000 plus 25,8% | enacted | Verified |
+| Private limited company and corporate income tax | Corporate income tax (vennootschapsbelasting), first bracket (art. 22 Wet Vpb 1969) | up to and including € 200.000 at 19%, the first bracket (eerste schijf) | enacted | Verified |
+| Private limited company and corporate income tax | Corporate income tax, above the first bracket (art. 22 Wet Vpb 1969) | € 38.000 plus 25,8%, for the part above the first bracket (boven de eerste schijf) | enacted | Verified |
 | Pension, annuity and disability insurance | Annual allowance (jaarruimte) percentage | 30% | enacted | Verified |
 | Pension, annuity and disability insurance | Maximum annual allowance | € 36.077 | enacted | Verified |
-| Work relationship and self-employment | Wet DBA | Act of 3 February 2016, entered into force on 1 May 2016 and replaced the VAR | enacted | Verified |
-| Work relationship and self-employment | Staatsblad 2016, 165 | Decree of 8 April 2016 that lets parties exclude the deemed employment relationship for home workers (thuiswerkers), persons treated as employees and artists (artiesten) by agreement, not the Wet DBA itself | enacted | Corrected |
-| Tax return and procedure | Income tax return (aangifte inkomstenbelasting) 2024, filing deadline | Before 1 May 2025, the date in the filing invitation letter (aangiftebrief) decides. Deferral could be requested until 1 May 2025 | enacted | Corrected |
+| Work relationship and self-employment | Wet DBA | Act of 3 February 2016 (Wet van 3 februari 2016), entered into force (in werking trad) on 1 May 2016 and replaced the VAR | enacted | Verified |
+| Work relationship and self-employment | Staatsblad 2016, 165 | Decree of 8 April 2016 (Besluit van 8 april 2016) that lets parties exclude the deemed employment relationship (fictieve dienstbetrekking) for home workers (thuiswerkers), persons treated as employees (gelijkgestelden) and artists (artiesten) by agreement, not the Wet DBA itself | enacted | Corrected |
+| Tax return and procedure | Income tax return (aangifte inkomstenbelasting) 2024, filing deadline | The filing deadline (aangiftetermijn) is before 1 May 2025, the date in the filing invitation letter (aangiftebrief) decides. Deferral could be requested until 1 May 2025 | enacted | Corrected |
 | Tax return and procedure | Income tax return 2024 with deferral (uitstel) | Before 1 September 2025 | enacted | Corrected |
 <!-- GENERATED:headline-figures:end -->
 

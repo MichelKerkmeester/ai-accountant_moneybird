@@ -6,7 +6,7 @@ catalog_applicable: true
 version: 1.0.0.0
 ---
 
-# VAT-004 -- The last VAT return quarter of the year
+# VAT-004 -- The last VAT return (btw-aangifte) quarter of the year
 
 This document captures the offline prompt, local read sequence, expected signals and evidence for VAT-004.
 
@@ -18,13 +18,13 @@ This scenario validates the last-quarter branch of the prepare-the-VAT-return ro
 
 ### Why This Matters
 
-The final period of a calendar year carries settlements for private use, the business car, the taxed and exempt turnover split and the BUA correction. A branch that skips them sends an incomplete final return, so each settlement needs its own offline proof. A local-only check confirms the branch without calling a service.
+The final period of a calendar year carries settlements for private use (privégebruik), the business car, the taxed and exempt turnover (vrijgestelde omzet) split and the BUA correction. A branch that skips them sends an incomplete final return, so each settlement needs its own offline proof. A local-only check confirms the branch without calling a service.
 
 ---
 
 ## 2. SCENARIO CONTRACT
 
-- Objective: Route a final-quarter VAT return request to the procedure, run the four settlements and stop before any filing action.
+- Objective: Route a final-quarter VAT return (btw-aangifte) request to the procedure, run the four settlements and stop before any filing action.
 - Real user request: Prepare the VAT return for the last quarter of 2026 and run the year-end settlements before the pack. Do not call an API.
 - Prompt: Prepare the VAT return for the last quarter of 2026 and run the year-end settlements before the pack. Do not call an API.
 - Fixture rows: VAT-BRANCH-YE-01 (the last-quarter row) and vat-return-last-quarter (the eval case).
@@ -51,7 +51,7 @@ The final period of a calendar year carries settlements for private use, the bus
 
 ### Expected
 
-The check prints route-table: ok. The T10 row wins for the named VAT return. The procedure, the year-end rules and the 2026 VAT figures load. The answer names the four settlements S1 to S4, the pack blocks P1 to P9 and the Operator. No accounting API is called.
+The check prints route-table: ok. The T10 row wins for the named VAT return (btw-aangifte). The procedure, the year-end rules and the 2026 VAT figures load. The answer names the four settlements S1 to S4, the pack blocks P1 to P9 and the Operator. No accounting API is called.
 
 ### Evidence
 

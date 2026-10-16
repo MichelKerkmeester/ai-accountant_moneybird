@@ -34,7 +34,7 @@ This part holds the worked examples for the Tax return (aangifte) and procedure 
 
 <a id="4-worked-examples"></a>
 
-### Example 1. Official example: the final assessment (aanslag) for tax year 2024
+### Example 1. Official example: the final assessment (definitieve aanslag) for tax year 2024
 
 The Dutch Tax and Customs Administration (Belastingdienst) example for the 2024 return: filing before 1 May 2025 gives a final assessment at the latest on 31 December 2027. With deferral (uitstel) to 1 September 2025 the latest date is 30 April 2028 (https://web.archive.org/web/20250328/https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag).
 
@@ -42,9 +42,9 @@ The Dutch Tax and Customs Administration (Belastingdienst) example for the 2024 
 
 The final-assessment page prints three standing examples (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/hoe_werkt_inkomstenbelasting/aanslag/definitieve_aanslag):
 
-1. A provisional (voorlopige) refund (teruggaaf) of € 100 was received and € 80 was due, so € 20 too much was received. That € 20 is below the threshold (grens) and the outcome is a nil assessment (nihilaanslag).
+1. A provisional refund (voorlopige teruggaaf) of € 100 was received and € 80 was due, so € 20 too much was received. That € 20 is below the threshold (grens) and the outcome is a nil assessment (nihilaanslag).
 2. A provisional assessment (voorlopige aanslag) of € 100 was paid and € 120 was due, so € 20 remains and the outcome is a € 20 assessment.
-3. A refund of € 100 was received after filing and € 80 was due, so the outcome is a € 20 to be paid (te betalen) assessment, because a refund received after filing does not count toward the threshold.
+3. A refund of € 100 was received after filing and € 80 was due, so the outcome is an assessment of € 20 to be paid, because a refund received after filing does not count toward the threshold.
 
 Calculated check against the 2024 threshold. Step 1: the assessment threshold for 2024 is € 56 (section 2). Step 2: the amount in the examples is € 20. Step 3: € 20 is lower than € 56, so € 20 is not higher than the assessment threshold and the higher-than test is not met. The checked material notes that the examples are unchanged since the 2023 capture and does not reconcile examples 2 and 3 with the 2024 threshold of € 56, see section 7.
 
@@ -72,7 +72,7 @@ Step 4: the 2025 part runs at 6,5%. 180 / 360 × 6,5% × € 2.500 = 0,5 × € 
 Step 5: the 2026 part runs at 5%. 22 / 360 × 5% × € 2.500 = 0,0611111 × € 125 = € 7,64, rounded down = € 7.
 Step 6: total € 81 + € 7 = € 88.
 
-### Example 5. Official example and calculated example: additional assessment period (navorderingstermijn)
+### Example 5. Official example and calculated example: additional assessment (navorderingsaanslag) period (navorderingstermijn)
 
 Official example: tax year 2016 with 5 months deferral, additional assessment (navordering) possible until 31 May 2022 (https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/navorderingsaanslag).
 
@@ -111,9 +111,9 @@ Filing without an invitation. Step 1: a return for tax year 2024 can be filed up
 
 Request for reduction. Step 1: the checked rule is online if fewer than 5 years have passed after the tax year. Step 2: the stated example is assessment 2023 until 31 December 2028. Step 3: applying the same rule to assessment 2024 gives 2024 plus 5 = 2029, so 31 December 2029. The checked sources do not print this 2024 date, see section 7.
 
-### Example 10. Calculated example: KVK registration window
+### Example 10. Calculated example: KVK registration window (inschrijvingsvenster)
 
-Inputs: the business starts on 1 May 2024. Step 1: the two-week window starts one week before the start. 1 May 2024 minus 7 days = 24 April 2024. Step 2: the window ends one week after the start. 1 May 2024 plus 7 days = 8 May 2024. So the statement (opgave) for the first registration (inschrijving) is made between 24 April 2024 and 8 May 2024. Registering inside the window means the Chamber of Commerce number (KVK-nummer) is issued immediately. Other required statements (opgaven) are made within 1 week after the fact, so a change on 1 May 2024 is reported by 8 May 2024.
+Inputs: the business starts on 1 May 2024. Step 1: the two-week window starts one week before the start. 1 May 2024 minus 7 days = 24 April 2024. Step 2: the window ends one week after the start. 1 May 2024 plus 7 days = 8 May 2024. So the statement (opgave) for the first registration (inschrijving) is made between 24 April 2024 and 8 May 2024. Registering inside the window means the Chamber of Commerce (kamer van koophandel) number (KVK-nummer) is issued immediately. Other required statements (opgaven) are made within 1 week after the fact, so a change on 1 May 2024 is reported by 8 May 2024.
 
 ### Example 11. Official example: record-retention obligation (bewaarplicht) term start
 

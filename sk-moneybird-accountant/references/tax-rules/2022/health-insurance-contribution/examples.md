@@ -26,7 +26,7 @@ Year overview: [README.md](../README.md).
 
 ## 1. OVERVIEW
 
-This part holds the worked examples for the Zvw contribution 2022 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
+This part holds the worked examples for the Zvw contribution (bijdrage zorgverzekeringswet) 2022 topic. The overview and key figures are in figures.md, the how-it-works rules in rules.md and the changes, records, open points and related resources in notes.md.
 
 ---
 
@@ -52,7 +52,7 @@ This part holds the worked examples for the Zvw contribution 2022 topic. The ove
 - Wage: € 60.000.
 - Freelance income: € 15.000.
 - The wage of € 60.000 is above the maximum of € 59.706.
-- The freelance income therefore gets no Zvw contribution by assessment.
+- The freelance income therefore gets no Zvw contribution by assessment (bijdrage zorgverzekeringswet, bijdrage bij aanslag).
 
 ### Example 3. Calculated example: profit of € 60.000 with the self-employed person's deduction (zelfstandigenaftrek)
 
@@ -96,7 +96,7 @@ This part holds the worked examples for the Zvw contribution 2022 topic. The ove
 **Calculated example** from the section 2 figures.
 
 - Gross wage: € 40.000.
-- Employer health insurance contribution (Zvw werkgeversheffing) at 6,75%: € 40.000 × 6,75% = € 2.700.
+- Employer health insurance (zorgverzekering) contribution (Zvw werkgeversheffing) at 6,75%: € 40.000 × 6,75% = € 2.700.
 - If the same € 40.000 were a profit base by assessment at 5,50%: € 40.000 × 5,50% = € 2.200.
 - Difference: € 2.700 - € 2.200 = € 500.
 - The employer rate is paid by the employer or benefit agency (uitkeringsinstantie), not by the entrepreneur by assessment (https://www.belastingdienst.nl/wps/wcm/connect/fisin/fisin2022/inkomensafhankelijke_bijdrage_zorgverzekeringswet).

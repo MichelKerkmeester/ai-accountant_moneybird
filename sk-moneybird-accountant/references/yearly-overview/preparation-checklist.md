@@ -12,13 +12,13 @@ contextType: general
 version: 1.0.0.0
 ---
 
-# Yearly overview preparation checklist
+# Yearly overview (jaaroverzicht) preparation checklist
 
 **Rule:** Run the four sections in order. Stop at the first failed check and record it. The auditfile export comes before the year-end closing (jaarafsluiting). Every figure comes from the year files under `references/tax-rules/`. Every amount in this file is a braced placeholder. The Operator performs every closing action. Nothing here files a return.
 
 ## 1. OVERVIEW
 
-This reference holds the ordered close checklist for the yearly overview, starting with the auditfile evidence gate. It then carries the close checks, the closing mechanics, the equity-continuity check and the exception list.
+This reference holds the ordered close checklist for the yearly overview (jaaroverzicht), starting with the auditfile evidence gate. It then carries the close checks, the closing mechanics, the equity-continuity check and the exception list.
 
 ---
 
@@ -43,7 +43,7 @@ Run the checks in this order. Each check names its evidence, the year file that 
 | Check | What it proves | Year file |
 |---|---|---|
 | Resolve the year and the mode | `year_key`, the administration and the migrated or LIVE state are unambiguous. | [Year and state resolution](../tax-rules/year-and-state.md) |
-| Capture the commercial reports | The balance at the closing date, the profit and loss account for the year, the trial balance (kolommenbalans) and the journal detail are captured with their dates. | [The year README for the resolved year](../tax-rules/2026/README.md) |
+| Capture the commercial reports | The balance at the closing date, the profit and loss account (winst- en verliesrekening) for the year, the trial balance (kolommenbalans) and the journal detail are captured with their dates. | [The year README for the resolved year](../tax-rules/2026/README.md) |
 | Resolve the bank and suspense balances | Every item still to classify (te rubriceren) and every unprocessed bank transaction is matched or listed as an exception. | [Bank reconciliation](../moneybird-bookkeeping.md#6-bank-reconciliation) |
 | Tie the opening balance | Each prior closing line opens immediately before the Moneybird start period, including the bank and the open receivables and payables. | [Opening balance](../moneybird-bookkeeping.md#5-assets-and-opening-balance) |
 | Tie the asset register | The register's cost, prior depreciation and the year's write-off tie to the balance and the profit and loss account. | [Fixed assets](../fixed-assets.md) and [Investments 2026 figures](../tax-rules/2026/investments/figures.md) |
@@ -51,7 +51,7 @@ Run the checks in this order. Each check names its evidence, the year file that 
 | Build the cut-off list | Each prepaid or accrued item names the period it belongs to and the treatment, consistent with the prior policy. | [Year attribution in year and state resolution](../tax-rules/year-and-state.md#2-year-resolution) |
 | Assemble the pack | Every part is present. Every exception has an owner and a status. Every figure names the year file it came from. | [Fiscal reconciliation](fiscal-reconciliation.md) and [year and state resolution](../tax-rules/year-and-state.md) |
 
-### Year-end closing mechanics
+### Year-end closing (jaarafsluiting) mechanics
 
 The closing mechanics are prepared here with their evidence and performed by the Operator in the Moneybird UI. This is the third booking cluster the yearly procedure owns.
 

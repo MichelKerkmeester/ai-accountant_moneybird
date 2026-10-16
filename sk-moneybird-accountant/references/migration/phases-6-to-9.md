@@ -60,14 +60,14 @@ Canonical dataset, category and vendor tax data, RGS codes, source closing balan
 |---|---|---|---|---|---|
 | Approved source label | Supported target account | Required code | Asset, liability, equity, income or expense | Approved treatment | Approved score or rationale |
 
-| Legal entity | Validity period | Country | VAT identifier | Vendor type | Moneybird tax rate |
+| Legal entity (rechtspersoon) | Validity period | Country | VAT identifier | Vendor type | Moneybird tax rate |
 |---|---|---|---|---|---|
 | Approved vendor entity | Start and end dates | Source country | Controlled identifier | Supplier class | Existing approved rate |
 
 | Historical item | Moneybird record |
 |---|---|
 | Issued sales invoice | External sales invoice with original number, date and original file |
-| Purchase invoice | Purchase invoice document with original attachment |
+| Purchase invoice (inkoopfactuur) | Purchase invoice document with original attachment |
 | Receipt | Receipt document with original attachment |
 | Journal, private item or correction | General journal document |
 | Asset | Asset with historic value changes |
@@ -205,7 +205,7 @@ Rebuild approved historical records in controlled batches and reconcile each bat
 
 ### 3. Entry criteria
 
-Phase 7 passed. A verified pilot key manifest exists for the same administration. The period is open. The duplicate gate includes the union of pilot and historical keys. Matching verified pilot records are reused and never written again. Batch approval, current M6 evidence through read-back, mapping hash, exception state and numeric threshold config are present.
+Phase 7 passed. A verified pilot key manifest exists for the same administration. The period is open. The duplicate gate includes the union (de unie) of pilot and historical keys. Matching verified pilot records are reused and never written again. Batch approval, current M6 evidence through read-back, mapping hash, exception state and numeric threshold config are present.
 
 ### 4. Inputs
 
@@ -281,7 +281,7 @@ Reconcile document, ledger, filed and Moneybird tax values for every assigned ta
 
 ### 3. Entry criteria
 
-Phase 2 has actual filed VAT return and confirmation evidence for every filed VAT period or evidence-backed not-applicable status. A missing filed return or confirmation with an exception remains blocked and cannot pass this phase. Phase 8 period records are reconciled.
+Phase 2 has actual filed VAT return (btw-aangifte) and confirmation evidence for every filed VAT period or evidence-backed not-applicable status. A missing filed return or confirmation with an exception remains blocked and cannot pass this phase. Phase 8 period records are reconciled.
 
 ### 4. Inputs
 

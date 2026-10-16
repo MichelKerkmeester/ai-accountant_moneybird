@@ -1922,6 +1922,24 @@ else
     fail "the producer repairs a doubled source_file path"
 fi
 
+# WHY: an English-first label writes the Dutch term in lowercase, so the
+# producer must still find the term its source file names.
+FM_FIGURES="$FM_REPO/sk-moneybird-accountant/references/tax-rules/2025/vat/figures.md"
+cp "$FM_FIGURES" "$TMP_ROOT/figures.aside"
+python3 -I - "$FM_FIGURES" <<'PY'
+import sys
+
+path = sys.argv[1]
+text = open(path, encoding="utf-8").read()
+open(path, "w", encoding="utf-8").write(text.replace("Aangifte", "aangifte"))
+PY
+if run_builder "$FM_REPO" --write-term-map; then
+    pass "the producer accepts a term its source file writes in lowercase"
+else
+    fail "the producer accepts a term its source file writes in lowercase"
+fi
+cp "$TMP_ROOT/figures.aside" "$FM_FIGURES"
+
 group "real skill"
 # WHY: the index owner regenerates the index after the reference edits land, so
 # this case proves the real tree check runs and names only known findings.

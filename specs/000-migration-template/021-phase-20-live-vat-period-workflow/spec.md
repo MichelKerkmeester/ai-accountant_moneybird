@@ -80,7 +80,7 @@ At the start of Phase 20: Live VAT-period workflow, the migration cannot move on
 
 **Goal** (from the phase reference):
 
-Prepare each VAT return for the assigned cadence and period from complete evidence, with filing owned by the Operator. The Implementer drafts VAT-period check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 20.
+Prepare each VAT return (btw-aangifte) for the assigned cadence and period from complete evidence, with filing owned by the Operator. The Implementer drafts VAT-period check scripts using the reuse fast path, and the Verifier checks the run summary and record-level result every cycle, with code review only when a hash changes for Phase 20.
 
 The exit gate in section 5 passes, the recorded evidence sits in `migration-workspace/`, and the Operator approves so the next phase may start.
 <!-- /ANCHOR:problem -->

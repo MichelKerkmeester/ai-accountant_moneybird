@@ -28,10 +28,10 @@ This note lists what changed for tax year 2020. Section 2 holds the changes uniq
 
 - The new KOR replaced the old VAT-based reduction from 1 January 2020, with a Dutch calendar-year turnover ceiling of € 20.000. [btw](vat/notes.md#5-changes)
 - The rate adjustment (tariefsaanpassing) for 2020 is 3,5% above € 68.507, which caps the value of the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption (MKB-winstvrijstelling) at 46%. [ondernemersaftrek](business-deductions/notes.md#5-changes)
-- The 2020 tax-free allowance (heffingsvrij vermogen) is € 30.846 per person and € 61.692 with a fiscal partner. [box-3](box-3/notes.md#5-changes)
+- The 2020 tax-free allowance (heffingsvrij vermogen) is € 30.846 per person and € 61.692 with a fiscal partner (fiscaal partner). [box-3](box-3/notes.md#5-changes)
 - The 2020 Zvw rate by assessment (aanslag) is 5,45% and the maximum contribution income (bijdrage-inkomen) is € 57.232. [zvw](health-insurance-contribution/notes.md#5-changes)
 - The 2020 KIA table gives 28% of the investment up to € 58.238 and a fixed € 16.307 up to € 107.848, with a € 450 per-asset minimum. [investeringen](investments/notes.md#5-changes)
-- A zero-emission car first admitted in 2020 gets a reduction of 14% off with a cap of € 6.300, so 8% up to € 45.000 and 22% above. [kosten-en-auto](costs-and-car/notes.md#5-changes)
+- A zero-emission car (zero-emissie auto) first admitted in 2020 gets a reduction of 14% off with a cap of € 6.300, so 8% up to € 45.000 and 22% above. [kosten-en-auto](costs-and-car/notes.md#5-changes)
 - The maximum annual allowance (jaarruimte) for 2020 is € 12.986. [pensioen-en-aov](pension-and-disability-insurance/notes.md#5-changes)
 - The second restriction of the moratorium exception applies from 1 January 2020, when enforcement also follows if instructions (aanwijzingen) are not followed within a reasonable term. [arbeidsrelatie](work-relationship/notes.md#5-changes)
 
