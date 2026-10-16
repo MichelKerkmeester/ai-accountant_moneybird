@@ -1,7 +1,7 @@
 ---
 title: "Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling) 2024: Examples"
 description: "The entrepreneur's allowance (ondernemersaftrek), the SME profit exemption (MKB-winstvrijstelling), the hours criterion (urencriterium) and the rate adjustment (tariefsaanpassing) for a Dutch sole trader in tax year 2024. This file holds the examples part."
-nav_label: "Ondernemersaftrek en MKB-winstvrijstelling examples"
+nav_label: "Entrepreneur's allowance and SME profit exemption examples"
 trigger_phrases:
   - "ondernemersaftrek 2024"
   - "zelfstandigenaftrek 2024"

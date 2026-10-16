@@ -1,7 +1,7 @@
 ---
 title: "Costs and car (kosten en auto) 2020: Examples"
 description: "Business cost deductions and car rules for tax year 2020, covering the threshold for mixed costs (gemengde kosten drempel), the 80% election, the mileage allowance, the private-use addition for a car (bijtelling) and the corporate income tax variant of the threshold (Vpb variant van de drempel). This file holds the examples part."
-nav_label: "Kosten en auto examples"
+nav_label: "Costs and car examples"
 trigger_phrases:
   - "kosten en auto 2020"
   - "zakelijke kosten 2020"

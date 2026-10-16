@@ -1,7 +1,7 @@
 ---
 title: "Pension, annuity and AOV (pensioen, lijfrente en AOV) 2020: Examples"
 description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity conditions, profit from business discontinuation (stakingswinst) conversion, the old-age reserve (oudedagsreserve) and AOV premium deductibility for tax year 2020. This file holds the examples part."
-nav_label: "Pensioen, lijfrente en AOV examples"
+nav_label: "Pension, annuity and disability insurance examples"
 trigger_phrases:
   - "pensioen en AOV 2020"
   - "jaarruimte en reserveringsruimte 2020"

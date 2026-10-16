@@ -1,7 +1,7 @@
 ---
 title: "Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling) 2020: Examples"
 description: "Covers the five parts of the entrepreneur's allowance (ondernemersaftrek), the hours criterion (urencriterium), the starter's deduction (startersaftrek), the SME profit exemption (MKB-winstvrijstelling), the rate adjustment (tariefsaanpassing) and the 2020 amounts for tax year 2020. This file holds the examples part."
-nav_label: "Ondernemersaftrek en MKB-winstvrijstelling examples"
+nav_label: "Entrepreneur's allowance and SME profit exemption examples"
 trigger_phrases:
   - "ondernemersaftrek 2020"
   - "zelfstandigenaftrek 2020"

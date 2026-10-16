@@ -1,7 +1,7 @@
 ---
 title: "Zvw contribution (Zvw-bijdrage) 2022: Rules"
 description: "Income-dependent Zvw contribution (Zvw-bijdrage) for an entrepreneur in tax year 2022, covering the 5,50% assessment (aanslag) rate, the maximum contribution income (bijdrage-inkomen) of € 59.706, the 6,75% employer rate and the profit base after the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption (MKB-winstvrijstelling). This file holds the rules part."
-nav_label: "Zvw-bijdrage rules"
+nav_label: "Zvw contribution rules"
 trigger_phrases:
   - "Zvw-bijdrage 2022"
   - "inkomensafhankelijke Zvw-bijdrage 2022"

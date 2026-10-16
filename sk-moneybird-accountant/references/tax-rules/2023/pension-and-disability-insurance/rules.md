@@ -1,7 +1,7 @@
 ---
 title: "Pension, annuity and AOV 2023: Rules"
 description: "Annual allowance, catch-up allowance, annuity conditions and deadlines, the old-age reserve phase-out, the profit from business discontinuation conversion and AOV premium deductibility for tax year 2023. This file holds the rules part."
-nav_label: "Pension, annuity and AOV rules"
+nav_label: "Pension, annuity and disability insurance rules"
 trigger_phrases:
   - "pensioen en lijfrente 2023"
   - "jaarruimte en reserveringsruimte 2023"

@@ -1,7 +1,7 @@
 ---
 title: "Box 3 savings and investments (sparen en beleggen) 2020: Figures"
 description: "Box 3 savings and investments for tax year 2020: the old band method, the 30% rate, tax-free allowance (heffingsvrij vermogen), debt threshold (schuldendrempel), green investments and the Restoration of Rights Act (Wet rechtsherstel) recalculation."
-nav_label: "Box 3 sparen en beleggen"
+nav_label: "Box 3 savings and investments"
 trigger_phrases:
   - "box 3 2020"
   - "box 3 sparen en beleggen 2020"

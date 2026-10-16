@@ -2043,7 +2043,7 @@
       }
     },
     {
-      "bytes": 10423,
+      "bytes": 10474,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/README.md",
       "sections": [
         {
@@ -2070,13 +2070,13 @@
         },
         {
           "anchor": "3-headline-figures",
-          "bytes": 4710,
+          "bytes": 4761,
           "line": 52,
           "lines": 35,
           "title": "3. HEADLINE FIGURES",
           "tokens": {
-            "cl100k_base": 1402,
-            "o200k_base": 1338
+            "cl100k_base": 1308,
+            "o200k_base": 1284
           }
         },
         {
@@ -2092,12 +2092,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2958,
-        "o200k_base": 2847
+        "cl100k_base": 2864,
+        "o200k_base": 2793
       }
     },
     {
-      "bytes": 8637,
+      "bytes": 8639,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/box-2/examples.md",
       "sections": [
         {
@@ -2124,12 +2124,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2671,
-        "o200k_base": 2549
+        "cl100k_base": 2668,
+        "o200k_base": 2547
       }
     },
     {
-      "bytes": 11176,
+      "bytes": 11178,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/box-2/figures.md",
       "sections": [
         {
@@ -2156,12 +2156,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3543,
-        "o200k_base": 3385
+        "cl100k_base": 3540,
+        "o200k_base": 3383
       }
     },
     {
-      "bytes": 15560,
+      "bytes": 15562,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/box-2/notes.md",
       "sections": [
         {
@@ -2221,12 +2221,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4918,
-        "o200k_base": 4639
+        "cl100k_base": 4915,
+        "o200k_base": 4637
       }
     },
     {
-      "bytes": 30425,
+      "bytes": 30427,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/box-2/rules.md",
       "sections": [
         {
@@ -2253,12 +2253,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 9091,
-        "o200k_base": 8646
+        "cl100k_base": 9088,
+        "o200k_base": 8644
       }
     },
     {
-      "bytes": 6434,
+      "bytes": 6439,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/box-3/examples.md",
       "sections": [
         {
@@ -2285,12 +2285,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2119,
+        "cl100k_base": 2116,
         "o200k_base": 2068
       }
     },
     {
-      "bytes": 8129,
+      "bytes": 8134,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/box-3/figures.md",
       "sections": [
         {
@@ -2317,12 +2317,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2556,
+        "cl100k_base": 2553,
         "o200k_base": 2427
       }
     },
     {
-      "bytes": 9566,
+      "bytes": 9571,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/box-3/notes.md",
       "sections": [
         {
@@ -2382,12 +2382,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2891,
+        "cl100k_base": 2888,
         "o200k_base": 2731
       }
     },
     {
-      "bytes": 15973,
+      "bytes": 15978,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/box-3/rules.md",
       "sections": [
         {
@@ -2414,12 +2414,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4502,
+        "cl100k_base": 4499,
         "o200k_base": 4292
       }
     },
     {
-      "bytes": 14053,
+      "bytes": 14060,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/business-deductions/examples.md",
       "sections": [
         {
@@ -2446,12 +2446,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4224,
-        "o200k_base": 4085
+        "cl100k_base": 4216,
+        "o200k_base": 4081
       }
     },
     {
-      "bytes": 7848,
+      "bytes": 7855,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/business-deductions/figures.md",
       "sections": [
         {
@@ -2478,12 +2478,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2432,
-        "o200k_base": 2301
+        "cl100k_base": 2424,
+        "o200k_base": 2297
       }
     },
     {
-      "bytes": 10003,
+      "bytes": 10010,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/business-deductions/notes.md",
       "sections": [
         {
@@ -2543,12 +2543,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2962,
-        "o200k_base": 2797
+        "cl100k_base": 2954,
+        "o200k_base": 2793
       }
     },
     {
-      "bytes": 27978,
+      "bytes": 27985,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/business-deductions/rules.md",
       "sections": [
         {
@@ -2575,8 +2575,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7670,
-        "o200k_base": 7299
+        "cl100k_base": 7662,
+        "o200k_base": 7295
       }
     },
     {
@@ -2655,7 +2655,7 @@
       }
     },
     {
-      "bytes": 7561,
+      "bytes": 7560,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/costs-and-car/examples.md",
       "sections": [
         {
@@ -2687,7 +2687,7 @@
       }
     },
     {
-      "bytes": 10048,
+      "bytes": 10047,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/costs-and-car/figures.md",
       "sections": [
         {
@@ -2719,7 +2719,7 @@
       }
     },
     {
-      "bytes": 8567,
+      "bytes": 8566,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/costs-and-car/notes.md",
       "sections": [
         {
@@ -2784,7 +2784,7 @@
       }
     },
     {
-      "bytes": 33412,
+      "bytes": 33411,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/costs-and-car/rules.md",
       "sections": [
         {
@@ -2816,7 +2816,7 @@
       }
     },
     {
-      "bytes": 6092,
+      "bytes": 6096,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/health-insurance-contribution/examples.md",
       "sections": [
         {
@@ -2843,12 +2843,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1952,
-        "o200k_base": 1875
+        "cl100k_base": 1949,
+        "o200k_base": 1872
       }
     },
     {
-      "bytes": 6461,
+      "bytes": 6465,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/health-insurance-contribution/figures.md",
       "sections": [
         {
@@ -2875,12 +2875,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1992,
-        "o200k_base": 1875
+        "cl100k_base": 1989,
+        "o200k_base": 1872
       }
     },
     {
-      "bytes": 7626,
+      "bytes": 7630,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/health-insurance-contribution/notes.md",
       "sections": [
         {
@@ -2940,12 +2940,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2353,
-        "o200k_base": 2227
+        "cl100k_base": 2350,
+        "o200k_base": 2224
       }
     },
     {
-      "bytes": 15982,
+      "bytes": 15986,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/health-insurance-contribution/rules.md",
       "sections": [
         {
@@ -2972,12 +2972,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4823,
-        "o200k_base": 4481
+        "cl100k_base": 4820,
+        "o200k_base": 4478
       }
     },
     {
-      "bytes": 6661,
+      "bytes": 6653,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/income-tax/examples.md",
       "sections": [
         {
@@ -3004,12 +3004,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2015,
-        "o200k_base": 1964
+        "cl100k_base": 2012,
+        "o200k_base": 1963
       }
     },
     {
-      "bytes": 11395,
+      "bytes": 11387,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/income-tax/figures.md",
       "sections": [
         {
@@ -3036,12 +3036,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3501,
-        "o200k_base": 3388
+        "cl100k_base": 3498,
+        "o200k_base": 3387
       }
     },
     {
-      "bytes": 6949,
+      "bytes": 6941,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/income-tax/notes.md",
       "sections": [
         {
@@ -3101,12 +3101,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1932,
-        "o200k_base": 1869
+        "cl100k_base": 1929,
+        "o200k_base": 1868
       }
     },
     {
-      "bytes": 14317,
+      "bytes": 14309,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/income-tax/rules.md",
       "sections": [
         {
@@ -3133,12 +3133,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3876,
-        "o200k_base": 3760
+        "cl100k_base": 3873,
+        "o200k_base": 3759
       }
     },
     {
-      "bytes": 9065,
+      "bytes": 9068,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/investments/examples.md",
       "sections": [
         {
@@ -3165,12 +3165,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2888,
-        "o200k_base": 2780
+        "cl100k_base": 2882,
+        "o200k_base": 2776
       }
     },
     {
-      "bytes": 14232,
+      "bytes": 14235,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/investments/figures.md",
       "sections": [
         {
@@ -3197,12 +3197,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4306,
-        "o200k_base": 4075
+        "cl100k_base": 4300,
+        "o200k_base": 4071
       }
     },
     {
-      "bytes": 10774,
+      "bytes": 10777,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/investments/notes.md",
       "sections": [
         {
@@ -3262,12 +3262,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3325,
-        "o200k_base": 3126
+        "cl100k_base": 3319,
+        "o200k_base": 3122
       }
     },
     {
-      "bytes": 24309,
+      "bytes": 24312,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/investments/rules.md",
       "sections": [
         {
@@ -3294,12 +3294,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7315,
-        "o200k_base": 6790
+        "cl100k_base": 7309,
+        "o200k_base": 6786
       }
     },
     {
-      "bytes": 12570,
+      "bytes": 12585,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/pension-and-disability-insurance/examples.md",
       "sections": [
         {
@@ -3326,12 +3326,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3821,
-        "o200k_base": 3695
+        "cl100k_base": 3818,
+        "o200k_base": 3694
       }
     },
     {
-      "bytes": 10470,
+      "bytes": 10485,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/pension-and-disability-insurance/figures.md",
       "sections": [
         {
@@ -3358,12 +3358,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3226,
-        "o200k_base": 3076
+        "cl100k_base": 3223,
+        "o200k_base": 3075
       }
     },
     {
-      "bytes": 16726,
+      "bytes": 16741,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/pension-and-disability-insurance/notes.md",
       "sections": [
         {
@@ -3423,12 +3423,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5118,
-        "o200k_base": 4872
+        "cl100k_base": 5115,
+        "o200k_base": 4871
       }
     },
     {
-      "bytes": 27294,
+      "bytes": 27309,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/pension-and-disability-insurance/rules.md",
       "sections": [
         {
@@ -3455,12 +3455,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7914,
-        "o200k_base": 7543
+        "cl100k_base": 7911,
+        "o200k_base": 7542
       }
     },
     {
-      "bytes": 15336,
+      "bytes": 15356,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/private-company-and-corporate-tax/examples.md",
       "sections": [
         {
@@ -3487,12 +3487,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5010,
-        "o200k_base": 4838
+        "cl100k_base": 5008,
+        "o200k_base": 4837
       }
     },
     {
-      "bytes": 16441,
+      "bytes": 16461,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/private-company-and-corporate-tax/figures.md",
       "sections": [
         {
@@ -3519,12 +3519,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4869,
-        "o200k_base": 4565
+        "cl100k_base": 4867,
+        "o200k_base": 4564
       }
     },
     {
-      "bytes": 9669,
+      "bytes": 9689,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/private-company-and-corporate-tax/notes.md",
       "sections": [
         {
@@ -3584,12 +3584,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2925,
-        "o200k_base": 2779
+        "cl100k_base": 2923,
+        "o200k_base": 2778
       }
     },
     {
-      "bytes": 28442,
+      "bytes": 28462,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/private-company-and-corporate-tax/rules.md",
       "sections": [
         {
@@ -3616,12 +3616,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7890,
-        "o200k_base": 7529
+        "cl100k_base": 7888,
+        "o200k_base": 7528
       }
     },
     {
-      "bytes": 10967,
+      "bytes": 10970,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/procedure/examples.md",
       "sections": [
         {
@@ -3648,12 +3648,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3232,
-        "o200k_base": 3115
+        "cl100k_base": 3230,
+        "o200k_base": 3114
       }
     },
     {
-      "bytes": 19538,
+      "bytes": 19541,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/procedure/figures.md",
       "sections": [
         {
@@ -3680,12 +3680,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5762,
-        "o200k_base": 5426
+        "cl100k_base": 5760,
+        "o200k_base": 5425
       }
     },
     {
-      "bytes": 11694,
+      "bytes": 11697,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/procedure/notes.md",
       "sections": [
         {
@@ -3745,12 +3745,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3389,
-        "o200k_base": 3242
+        "cl100k_base": 3387,
+        "o200k_base": 3241
       }
     },
     {
-      "bytes": 28775,
+      "bytes": 28778,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/procedure/rules.md",
       "sections": [
         {
@@ -3777,8 +3777,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7984,
-        "o200k_base": 7568
+        "cl100k_base": 7982,
+        "o200k_base": 7567
       }
     },
     {
@@ -3943,7 +3943,7 @@
       }
     },
     {
-      "bytes": 7529,
+      "bytes": 7533,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/work-relationship/examples.md",
       "sections": [
         {
@@ -3970,12 +3970,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2121,
-        "o200k_base": 2068
+        "cl100k_base": 2117,
+        "o200k_base": 2067
       }
     },
     {
-      "bytes": 11105,
+      "bytes": 11109,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/work-relationship/figures.md",
       "sections": [
         {
@@ -4002,12 +4002,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3431,
-        "o200k_base": 3294
+        "cl100k_base": 3427,
+        "o200k_base": 3293
       }
     },
     {
-      "bytes": 16735,
+      "bytes": 16739,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/work-relationship/notes.md",
       "sections": [
         {
@@ -4067,12 +4067,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4930,
-        "o200k_base": 4717
+        "cl100k_base": 4926,
+        "o200k_base": 4716
       }
     },
     {
-      "bytes": 28896,
+      "bytes": 28900,
       "path": "sk-moneybird-accountant/references/tax-rules/2020/work-relationship/rules.md",
       "sections": [
         {
@@ -4099,12 +4099,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7932,
-        "o200k_base": 7613
+        "cl100k_base": 7928,
+        "o200k_base": 7612
       }
     },
     {
-      "bytes": 11789,
+      "bytes": 11884,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/README.md",
       "sections": [
         {
@@ -4131,13 +4131,13 @@
         },
         {
           "anchor": "3-headline-figures",
-          "bytes": 5898,
+          "bytes": 5993,
           "line": 52,
           "lines": 35,
           "title": "3. HEADLINE FIGURES",
           "tokens": {
-            "cl100k_base": 1679,
-            "o200k_base": 1618
+            "cl100k_base": 1640,
+            "o200k_base": 1599
           }
         },
         {
@@ -4153,8 +4153,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3300,
-        "o200k_base": 3202
+        "cl100k_base": 3261,
+        "o200k_base": 3183
       }
     },
     {
@@ -4480,7 +4480,7 @@
       }
     },
     {
-      "bytes": 10799,
+      "bytes": 10806,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/business-deductions/examples.md",
       "sections": [
         {
@@ -4507,12 +4507,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3267,
-        "o200k_base": 3153
+        "cl100k_base": 3268,
+        "o200k_base": 3154
       }
     },
     {
-      "bytes": 11086,
+      "bytes": 11093,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/business-deductions/figures.md",
       "sections": [
         {
@@ -4539,12 +4539,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3207,
-        "o200k_base": 3010
+        "cl100k_base": 3208,
+        "o200k_base": 3011
       }
     },
     {
-      "bytes": 14136,
+      "bytes": 14143,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/business-deductions/notes.md",
       "sections": [
         {
@@ -4604,12 +4604,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4388,
-        "o200k_base": 4103
+        "cl100k_base": 4389,
+        "o200k_base": 4104
       }
     },
     {
-      "bytes": 26568,
+      "bytes": 26575,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/business-deductions/rules.md",
       "sections": [
         {
@@ -4636,8 +4636,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7193,
-        "o200k_base": 6836
+        "cl100k_base": 7194,
+        "o200k_base": 6837
       }
     },
     {
@@ -5199,7 +5199,7 @@
       }
     },
     {
-      "bytes": 8931,
+      "bytes": 8934,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/investments/examples.md",
       "sections": [
         {
@@ -5226,12 +5226,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2769,
-        "o200k_base": 2700
+        "cl100k_base": 2763,
+        "o200k_base": 2696
       }
     },
     {
-      "bytes": 9628,
+      "bytes": 9631,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/investments/figures.md",
       "sections": [
         {
@@ -5258,12 +5258,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3090,
-        "o200k_base": 2919
+        "cl100k_base": 3084,
+        "o200k_base": 2915
       }
     },
     {
-      "bytes": 13958,
+      "bytes": 13961,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/investments/notes.md",
       "sections": [
         {
@@ -5323,12 +5323,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4442,
-        "o200k_base": 4234
+        "cl100k_base": 4436,
+        "o200k_base": 4230
       }
     },
     {
-      "bytes": 23353,
+      "bytes": 23356,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/investments/rules.md",
       "sections": [
         {
@@ -5355,12 +5355,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 6675,
-        "o200k_base": 6308
+        "cl100k_base": 6669,
+        "o200k_base": 6304
       }
     },
     {
-      "bytes": 12019,
+      "bytes": 12034,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/pension-and-disability-insurance/examples.md",
       "sections": [
         {
@@ -5387,12 +5387,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3581,
-        "o200k_base": 3453
+        "cl100k_base": 3578,
+        "o200k_base": 3452
       }
     },
     {
-      "bytes": 8057,
+      "bytes": 8072,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/pension-and-disability-insurance/figures.md",
       "sections": [
         {
@@ -5419,12 +5419,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2426,
-        "o200k_base": 2319
+        "cl100k_base": 2423,
+        "o200k_base": 2318
       }
     },
     {
-      "bytes": 18760,
+      "bytes": 18775,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/pension-and-disability-insurance/notes.md",
       "sections": [
         {
@@ -5484,12 +5484,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5818,
-        "o200k_base": 5507
+        "cl100k_base": 5815,
+        "o200k_base": 5506
       }
     },
     {
-      "bytes": 25675,
+      "bytes": 25690,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/pension-and-disability-insurance/rules.md",
       "sections": [
         {
@@ -5516,12 +5516,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7705,
-        "o200k_base": 7330
+        "cl100k_base": 7702,
+        "o200k_base": 7329
       }
     },
     {
-      "bytes": 11050,
+      "bytes": 11070,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/private-company-and-corporate-tax/examples.md",
       "sections": [
         {
@@ -5548,12 +5548,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3368,
-        "o200k_base": 3323
+        "cl100k_base": 3366,
+        "o200k_base": 3322
       }
     },
     {
-      "bytes": 12997,
+      "bytes": 13017,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/private-company-and-corporate-tax/figures.md",
       "sections": [
         {
@@ -5580,12 +5580,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4139,
-        "o200k_base": 3972
+        "cl100k_base": 4137,
+        "o200k_base": 3971
       }
     },
     {
-      "bytes": 13460,
+      "bytes": 13480,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/private-company-and-corporate-tax/notes.md",
       "sections": [
         {
@@ -5645,12 +5645,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4079,
-        "o200k_base": 3885
+        "cl100k_base": 4077,
+        "o200k_base": 3884
       }
     },
     {
-      "bytes": 29973,
+      "bytes": 29993,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/private-company-and-corporate-tax/rules.md",
       "sections": [
         {
@@ -5677,12 +5677,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 8424,
-        "o200k_base": 8003
+        "cl100k_base": 8422,
+        "o200k_base": 8002
       }
     },
     {
-      "bytes": 6249,
+      "bytes": 6252,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/procedure/examples.md",
       "sections": [
         {
@@ -5709,12 +5709,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1825,
-        "o200k_base": 1770
+        "cl100k_base": 1823,
+        "o200k_base": 1769
       }
     },
     {
-      "bytes": 14521,
+      "bytes": 14524,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/procedure/figures.md",
       "sections": [
         {
@@ -5741,12 +5741,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4041,
-        "o200k_base": 3869
+        "cl100k_base": 4039,
+        "o200k_base": 3868
       }
     },
     {
-      "bytes": 12802,
+      "bytes": 12805,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/procedure/notes.md",
       "sections": [
         {
@@ -5806,12 +5806,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4017,
-        "o200k_base": 3841
+        "cl100k_base": 4015,
+        "o200k_base": 3840
       }
     },
     {
-      "bytes": 23988,
+      "bytes": 23991,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/procedure/rules.md",
       "sections": [
         {
@@ -5838,8 +5838,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 6568,
-        "o200k_base": 6281
+        "cl100k_base": 6566,
+        "o200k_base": 6280
       }
     },
     {
@@ -6004,7 +6004,7 @@
       }
     },
     {
-      "bytes": 10083,
+      "bytes": 10087,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/work-relationship/examples.md",
       "sections": [
         {
@@ -6031,12 +6031,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2650,
-        "o200k_base": 2570
+        "cl100k_base": 2646,
+        "o200k_base": 2569
       }
     },
     {
-      "bytes": 11618,
+      "bytes": 11622,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/work-relationship/figures.md",
       "sections": [
         {
@@ -6063,12 +6063,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3149,
-        "o200k_base": 3014
+        "cl100k_base": 3145,
+        "o200k_base": 3013
       }
     },
     {
-      "bytes": 12137,
+      "bytes": 12141,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/work-relationship/notes.md",
       "sections": [
         {
@@ -6128,12 +6128,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3497,
-        "o200k_base": 3362
+        "cl100k_base": 3493,
+        "o200k_base": 3361
       }
     },
     {
-      "bytes": 19165,
+      "bytes": 19169,
       "path": "sk-moneybird-accountant/references/tax-rules/2021/work-relationship/rules.md",
       "sections": [
         {
@@ -6160,12 +6160,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5129,
-        "o200k_base": 4918
+        "cl100k_base": 5125,
+        "o200k_base": 4917
       }
     },
     {
-      "bytes": 10295,
+      "bytes": 10346,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/README.md",
       "sections": [
         {
@@ -6192,13 +6192,13 @@
         },
         {
           "anchor": "3-headline-figures",
-          "bytes": 4695,
+          "bytes": 4746,
           "line": 52,
           "lines": 35,
           "title": "3. HEADLINE FIGURES",
           "tokens": {
-            "cl100k_base": 1435,
-            "o200k_base": 1361
+            "cl100k_base": 1341,
+            "o200k_base": 1307
           }
         },
         {
@@ -6214,12 +6214,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2936,
-        "o200k_base": 2846
+        "cl100k_base": 2842,
+        "o200k_base": 2792
       }
     },
     {
-      "bytes": 6608,
+      "bytes": 6610,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/box-2/examples.md",
       "sections": [
         {
@@ -6246,12 +6246,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2010,
-        "o200k_base": 1985
+        "cl100k_base": 2007,
+        "o200k_base": 1983
       }
     },
     {
-      "bytes": 8905,
+      "bytes": 8907,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/box-2/figures.md",
       "sections": [
         {
@@ -6278,12 +6278,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2746,
-        "o200k_base": 2646
+        "cl100k_base": 2743,
+        "o200k_base": 2644
       }
     },
     {
-      "bytes": 13257,
+      "bytes": 13259,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/box-2/notes.md",
       "sections": [
         {
@@ -6343,12 +6343,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4139,
-        "o200k_base": 3945
+        "cl100k_base": 4136,
+        "o200k_base": 3943
       }
     },
     {
-      "bytes": 27474,
+      "bytes": 27476,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/box-2/rules.md",
       "sections": [
         {
@@ -6375,12 +6375,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 8177,
-        "o200k_base": 7787
+        "cl100k_base": 8174,
+        "o200k_base": 7785
       }
     },
     {
-      "bytes": 5963,
+      "bytes": 5968,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/box-3/examples.md",
       "sections": [
         {
@@ -6407,12 +6407,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1963,
+        "cl100k_base": 1960,
         "o200k_base": 1920
       }
     },
     {
-      "bytes": 6421,
+      "bytes": 6426,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/box-3/figures.md",
       "sections": [
         {
@@ -6439,12 +6439,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1973,
+        "cl100k_base": 1970,
         "o200k_base": 1898
       }
     },
     {
-      "bytes": 13286,
+      "bytes": 13291,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/box-3/notes.md",
       "sections": [
         {
@@ -6504,12 +6504,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4086,
+        "cl100k_base": 4083,
         "o200k_base": 3925
       }
     },
     {
-      "bytes": 18372,
+      "bytes": 18377,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/box-3/rules.md",
       "sections": [
         {
@@ -6536,12 +6536,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5317,
+        "cl100k_base": 5314,
         "o200k_base": 5078
       }
     },
     {
-      "bytes": 10039,
+      "bytes": 10046,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/business-deductions/examples.md",
       "sections": [
         {
@@ -6568,12 +6568,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2933,
-        "o200k_base": 2853
+        "cl100k_base": 2925,
+        "o200k_base": 2849
       }
     },
     {
-      "bytes": 9666,
+      "bytes": 9673,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/business-deductions/figures.md",
       "sections": [
         {
@@ -6600,12 +6600,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2899,
-        "o200k_base": 2738
+        "cl100k_base": 2891,
+        "o200k_base": 2734
       }
     },
     {
-      "bytes": 11743,
+      "bytes": 11750,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/business-deductions/notes.md",
       "sections": [
         {
@@ -6665,12 +6665,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3626,
-        "o200k_base": 3427
+        "cl100k_base": 3618,
+        "o200k_base": 3423
       }
     },
     {
-      "bytes": 27917,
+      "bytes": 27924,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/business-deductions/rules.md",
       "sections": [
         {
@@ -6697,8 +6697,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7739,
-        "o200k_base": 7370
+        "cl100k_base": 7731,
+        "o200k_base": 7366
       }
     },
     {
@@ -6777,7 +6777,7 @@
       }
     },
     {
-      "bytes": 11732,
+      "bytes": 11731,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/costs-and-car/examples.md",
       "sections": [
         {
@@ -6809,7 +6809,7 @@
       }
     },
     {
-      "bytes": 9381,
+      "bytes": 9380,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/costs-and-car/figures.md",
       "sections": [
         {
@@ -6841,7 +6841,7 @@
       }
     },
     {
-      "bytes": 8673,
+      "bytes": 8672,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/costs-and-car/notes.md",
       "sections": [
         {
@@ -6906,7 +6906,7 @@
       }
     },
     {
-      "bytes": 26324,
+      "bytes": 26323,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/costs-and-car/rules.md",
       "sections": [
         {
@@ -6938,7 +6938,7 @@
       }
     },
     {
-      "bytes": 4962,
+      "bytes": 4966,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/health-insurance-contribution/examples.md",
       "sections": [
         {
@@ -6965,12 +6965,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1542,
-        "o200k_base": 1500
+        "cl100k_base": 1539,
+        "o200k_base": 1497
       }
     },
     {
-      "bytes": 5759,
+      "bytes": 5763,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/health-insurance-contribution/figures.md",
       "sections": [
         {
@@ -6997,12 +6997,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1799,
-        "o200k_base": 1692
+        "cl100k_base": 1796,
+        "o200k_base": 1689
       }
     },
     {
-      "bytes": 10821,
+      "bytes": 10825,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/health-insurance-contribution/notes.md",
       "sections": [
         {
@@ -7062,12 +7062,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3413,
-        "o200k_base": 3210
+        "cl100k_base": 3410,
+        "o200k_base": 3207
       }
     },
     {
-      "bytes": 16085,
+      "bytes": 16089,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/health-insurance-contribution/rules.md",
       "sections": [
         {
@@ -7094,12 +7094,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4945,
-        "o200k_base": 4640
+        "cl100k_base": 4942,
+        "o200k_base": 4637
       }
     },
     {
-      "bytes": 11809,
+      "bytes": 11801,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/income-tax/examples.md",
       "sections": [
         {
@@ -7126,12 +7126,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3590,
-        "o200k_base": 3454
+        "cl100k_base": 3587,
+        "o200k_base": 3453
       }
     },
     {
-      "bytes": 9995,
+      "bytes": 9987,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/income-tax/figures.md",
       "sections": [
         {
@@ -7158,12 +7158,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3016,
-        "o200k_base": 2897
+        "cl100k_base": 3013,
+        "o200k_base": 2896
       }
     },
     {
-      "bytes": 13405,
+      "bytes": 13397,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/income-tax/notes.md",
       "sections": [
         {
@@ -7223,12 +7223,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4032,
-        "o200k_base": 3894
+        "cl100k_base": 4029,
+        "o200k_base": 3893
       }
     },
     {
-      "bytes": 22645,
+      "bytes": 22637,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/income-tax/rules.md",
       "sections": [
         {
@@ -7255,12 +7255,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 6319,
-        "o200k_base": 6018
+        "cl100k_base": 6316,
+        "o200k_base": 6017
       }
     },
     {
-      "bytes": 12350,
+      "bytes": 12353,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/investments/examples.md",
       "sections": [
         {
@@ -7287,12 +7287,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3839,
-        "o200k_base": 3745
+        "cl100k_base": 3833,
+        "o200k_base": 3741
       }
     },
     {
-      "bytes": 6189,
+      "bytes": 6192,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/investments/figures.md",
       "sections": [
         {
@@ -7319,12 +7319,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1984,
-        "o200k_base": 1877
+        "cl100k_base": 1978,
+        "o200k_base": 1873
       }
     },
     {
-      "bytes": 13587,
+      "bytes": 13590,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/investments/notes.md",
       "sections": [
         {
@@ -7384,12 +7384,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4278,
-        "o200k_base": 4049
+        "cl100k_base": 4272,
+        "o200k_base": 4045
       }
     },
     {
-      "bytes": 24341,
+      "bytes": 24344,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/investments/rules.md",
       "sections": [
         {
@@ -7416,12 +7416,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7111,
-        "o200k_base": 6682
+        "cl100k_base": 7105,
+        "o200k_base": 6678
       }
     },
     {
-      "bytes": 10531,
+      "bytes": 10546,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/pension-and-disability-insurance/examples.md",
       "sections": [
         {
@@ -7448,12 +7448,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3225,
-        "o200k_base": 3147
+        "cl100k_base": 3222,
+        "o200k_base": 3146
       }
     },
     {
-      "bytes": 11950,
+      "bytes": 11965,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/pension-and-disability-insurance/figures.md",
       "sections": [
         {
@@ -7480,12 +7480,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3601,
-        "o200k_base": 3417
+        "cl100k_base": 3598,
+        "o200k_base": 3416
       }
     },
     {
-      "bytes": 20998,
+      "bytes": 21013,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/pension-and-disability-insurance/notes.md",
       "sections": [
         {
@@ -7545,12 +7545,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7070,
-        "o200k_base": 6739
+        "cl100k_base": 7067,
+        "o200k_base": 6738
       }
     },
     {
-      "bytes": 28356,
+      "bytes": 28371,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/pension-and-disability-insurance/rules.md",
       "sections": [
         {
@@ -7577,12 +7577,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 8817,
-        "o200k_base": 8438
+        "cl100k_base": 8814,
+        "o200k_base": 8437
       }
     },
     {
-      "bytes": 18896,
+      "bytes": 18916,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/private-company-and-corporate-tax/examples.md",
       "sections": [
         {
@@ -7609,12 +7609,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5906,
-        "o200k_base": 5732
+        "cl100k_base": 5904,
+        "o200k_base": 5731
       }
     },
     {
-      "bytes": 15549,
+      "bytes": 15569,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/private-company-and-corporate-tax/figures.md",
       "sections": [
         {
@@ -7641,12 +7641,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4919,
-        "o200k_base": 4653
+        "cl100k_base": 4917,
+        "o200k_base": 4652
       }
     },
     {
-      "bytes": 14559,
+      "bytes": 14579,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/private-company-and-corporate-tax/notes.md",
       "sections": [
         {
@@ -7706,12 +7706,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4432,
-        "o200k_base": 4204
+        "cl100k_base": 4430,
+        "o200k_base": 4203
       }
     },
     {
-      "bytes": 33202,
+      "bytes": 33222,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/private-company-and-corporate-tax/rules.md",
       "sections": [
         {
@@ -7738,12 +7738,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 9289,
-        "o200k_base": 8870
+        "cl100k_base": 9287,
+        "o200k_base": 8869
       }
     },
     {
-      "bytes": 9684,
+      "bytes": 9687,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/procedure/examples.md",
       "sections": [
         {
@@ -7770,12 +7770,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2654,
-        "o200k_base": 2596
+        "cl100k_base": 2652,
+        "o200k_base": 2595
       }
     },
     {
-      "bytes": 24517,
+      "bytes": 24520,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/procedure/figures.md",
       "sections": [
         {
@@ -7802,12 +7802,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 6819,
-        "o200k_base": 6490
+        "cl100k_base": 6817,
+        "o200k_base": 6489
       }
     },
     {
-      "bytes": 15176,
+      "bytes": 15179,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/procedure/notes.md",
       "sections": [
         {
@@ -7867,12 +7867,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4453,
-        "o200k_base": 4195
+        "cl100k_base": 4451,
+        "o200k_base": 4194
       }
     },
     {
-      "bytes": 32321,
+      "bytes": 32324,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/procedure/rules.md",
       "sections": [
         {
@@ -7899,8 +7899,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 8891,
-        "o200k_base": 8428
+        "cl100k_base": 8889,
+        "o200k_base": 8427
       }
     },
     {
@@ -8065,7 +8065,7 @@
       }
     },
     {
-      "bytes": 10496,
+      "bytes": 10500,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/work-relationship/examples.md",
       "sections": [
         {
@@ -8092,12 +8092,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3064,
-        "o200k_base": 2968
+        "cl100k_base": 3060,
+        "o200k_base": 2967
       }
     },
     {
-      "bytes": 14806,
+      "bytes": 14810,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/work-relationship/figures.md",
       "sections": [
         {
@@ -8124,12 +8124,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4140,
-        "o200k_base": 3950
+        "cl100k_base": 4136,
+        "o200k_base": 3949
       }
     },
     {
-      "bytes": 12427,
+      "bytes": 12431,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/work-relationship/notes.md",
       "sections": [
         {
@@ -8189,12 +8189,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3517,
-        "o200k_base": 3350
+        "cl100k_base": 3513,
+        "o200k_base": 3349
       }
     },
     {
-      "bytes": 25856,
+      "bytes": 25860,
       "path": "sk-moneybird-accountant/references/tax-rules/2022/work-relationship/rules.md",
       "sections": [
         {
@@ -8221,12 +8221,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 6987,
-        "o200k_base": 6691
+        "cl100k_base": 6983,
+        "o200k_base": 6690
       }
     },
     {
-      "bytes": 9777,
+      "bytes": 9849,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/README.md",
       "sections": [
         {
@@ -8253,13 +8253,13 @@
         },
         {
           "anchor": "3-headline-figures",
-          "bytes": 4001,
+          "bytes": 4073,
           "line": 52,
           "lines": 35,
           "title": "3. HEADLINE FIGURES",
           "tokens": {
-            "cl100k_base": 1156,
-            "o200k_base": 1131
+            "cl100k_base": 1160,
+            "o200k_base": 1137
           }
         },
         {
@@ -8275,8 +8275,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2656,
-        "o200k_base": 2622
+        "cl100k_base": 2660,
+        "o200k_base": 2628
       }
     },
     {
@@ -9482,7 +9482,7 @@
       }
     },
     {
-      "bytes": 12167,
+      "bytes": 12184,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/pension-and-disability-insurance/examples.md",
       "sections": [
         {
@@ -9514,7 +9514,7 @@
       }
     },
     {
-      "bytes": 8130,
+      "bytes": 8147,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/pension-and-disability-insurance/figures.md",
       "sections": [
         {
@@ -9546,7 +9546,7 @@
       }
     },
     {
-      "bytes": 18043,
+      "bytes": 18060,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/pension-and-disability-insurance/notes.md",
       "sections": [
         {
@@ -9611,7 +9611,7 @@
       }
     },
     {
-      "bytes": 28013,
+      "bytes": 28030,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/pension-and-disability-insurance/rules.md",
       "sections": [
         {
@@ -9643,7 +9643,7 @@
       }
     },
     {
-      "bytes": 14012,
+      "bytes": 14033,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/private-company-and-corporate-tax/examples.md",
       "sections": [
         {
@@ -9670,12 +9670,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4519,
-        "o200k_base": 4483
+        "cl100k_base": 4521,
+        "o200k_base": 4485
       }
     },
     {
-      "bytes": 20535,
+      "bytes": 20556,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/private-company-and-corporate-tax/figures.md",
       "sections": [
         {
@@ -9702,12 +9702,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5938,
-        "o200k_base": 5648
+        "cl100k_base": 5940,
+        "o200k_base": 5650
       }
     },
     {
-      "bytes": 14034,
+      "bytes": 14055,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/private-company-and-corporate-tax/notes.md",
       "sections": [
         {
@@ -9767,12 +9767,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4422,
-        "o200k_base": 4181
+        "cl100k_base": 4424,
+        "o200k_base": 4183
       }
     },
     {
-      "bytes": 30210,
+      "bytes": 30231,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/private-company-and-corporate-tax/rules.md",
       "sections": [
         {
@@ -9799,12 +9799,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 8166,
-        "o200k_base": 7783
+        "cl100k_base": 8168,
+        "o200k_base": 7785
       }
     },
     {
-      "bytes": 12916,
+      "bytes": 12920,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/procedure/examples.md",
       "sections": [
         {
@@ -9836,7 +9836,7 @@
       }
     },
     {
-      "bytes": 16525,
+      "bytes": 16529,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/procedure/figures.md",
       "sections": [
         {
@@ -9868,7 +9868,7 @@
       }
     },
     {
-      "bytes": 15464,
+      "bytes": 15468,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/procedure/notes.md",
       "sections": [
         {
@@ -9933,7 +9933,7 @@
       }
     },
     {
-      "bytes": 33739,
+      "bytes": 33743,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/procedure/rules.md",
       "sections": [
         {
@@ -10126,7 +10126,7 @@
       }
     },
     {
-      "bytes": 6318,
+      "bytes": 6312,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/work-relationship/examples.md",
       "sections": [
         {
@@ -10153,12 +10153,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1676,
+        "cl100k_base": 1675,
         "o200k_base": 1615
       }
     },
     {
-      "bytes": 9801,
+      "bytes": 9795,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/work-relationship/figures.md",
       "sections": [
         {
@@ -10185,12 +10185,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2831,
+        "cl100k_base": 2830,
         "o200k_base": 2698
       }
     },
     {
-      "bytes": 14468,
+      "bytes": 14462,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/work-relationship/notes.md",
       "sections": [
         {
@@ -10250,12 +10250,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4197,
+        "cl100k_base": 4196,
         "o200k_base": 4011
       }
     },
     {
-      "bytes": 22013,
+      "bytes": 22007,
       "path": "sk-moneybird-accountant/references/tax-rules/2023/work-relationship/rules.md",
       "sections": [
         {
@@ -10282,12 +10282,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5911,
+        "cl100k_base": 5910,
         "o200k_base": 5654
       }
     },
     {
-      "bytes": 9509,
+      "bytes": 9560,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/README.md",
       "sections": [
         {
@@ -10314,13 +10314,13 @@
         },
         {
           "anchor": "3-headline-figures",
-          "bytes": 4084,
+          "bytes": 4135,
           "line": 52,
           "lines": 35,
           "title": "3. HEADLINE FIGURES",
           "tokens": {
-            "cl100k_base": 1249,
-            "o200k_base": 1192
+            "cl100k_base": 1155,
+            "o200k_base": 1138
           }
         },
         {
@@ -10336,12 +10336,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2758,
-        "o200k_base": 2670
+        "cl100k_base": 2664,
+        "o200k_base": 2616
       }
     },
     {
-      "bytes": 8225,
+      "bytes": 8227,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/box-2/examples.md",
       "sections": [
         {
@@ -10368,12 +10368,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2687,
-        "o200k_base": 2611
+        "cl100k_base": 2684,
+        "o200k_base": 2609
       }
     },
     {
-      "bytes": 5794,
+      "bytes": 5796,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/box-2/figures.md",
       "sections": [
         {
@@ -10400,12 +10400,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1739,
-        "o200k_base": 1670
+        "cl100k_base": 1736,
+        "o200k_base": 1668
       }
     },
     {
-      "bytes": 16203,
+      "bytes": 16205,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/box-2/notes.md",
       "sections": [
         {
@@ -10465,12 +10465,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5530,
-        "o200k_base": 5261
+        "cl100k_base": 5527,
+        "o200k_base": 5259
       }
     },
     {
-      "bytes": 45558,
+      "bytes": 45560,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/box-2/rules.md",
       "sections": [
         {
@@ -10497,12 +10497,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 14860,
-        "o200k_base": 14076
+        "cl100k_base": 14857,
+        "o200k_base": 14074
       }
     },
     {
-      "bytes": 7917,
+      "bytes": 7922,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/box-3/examples.md",
       "sections": [
         {
@@ -10529,12 +10529,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2529,
+        "cl100k_base": 2526,
         "o200k_base": 2467
       }
     },
     {
-      "bytes": 6511,
+      "bytes": 6516,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/box-3/figures.md",
       "sections": [
         {
@@ -10561,12 +10561,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2031,
+        "cl100k_base": 2028,
         "o200k_base": 1929
       }
     },
     {
-      "bytes": 8317,
+      "bytes": 8322,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/box-3/notes.md",
       "sections": [
         {
@@ -10626,12 +10626,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2573,
+        "cl100k_base": 2570,
         "o200k_base": 2478
       }
     },
     {
-      "bytes": 13925,
+      "bytes": 13930,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/box-3/rules.md",
       "sections": [
         {
@@ -10658,12 +10658,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3720,
+        "cl100k_base": 3717,
         "o200k_base": 3589
       }
     },
     {
-      "bytes": 11778,
+      "bytes": 11785,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/business-deductions/examples.md",
       "sections": [
         {
@@ -10690,12 +10690,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3455,
-        "o200k_base": 3355
+        "cl100k_base": 3447,
+        "o200k_base": 3351
       }
     },
     {
-      "bytes": 10201,
+      "bytes": 10208,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/business-deductions/figures.md",
       "sections": [
         {
@@ -10722,12 +10722,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3009,
-        "o200k_base": 2828
+        "cl100k_base": 3001,
+        "o200k_base": 2824
       }
     },
     {
-      "bytes": 10743,
+      "bytes": 10750,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/business-deductions/notes.md",
       "sections": [
         {
@@ -10787,12 +10787,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3364,
-        "o200k_base": 3145
+        "cl100k_base": 3356,
+        "o200k_base": 3141
       }
     },
     {
-      "bytes": 29231,
+      "bytes": 29238,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/business-deductions/rules.md",
       "sections": [
         {
@@ -10819,8 +10819,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 8275,
-        "o200k_base": 7860
+        "cl100k_base": 8267,
+        "o200k_base": 7856
       }
     },
     {
@@ -10899,7 +10899,7 @@
       }
     },
     {
-      "bytes": 6208,
+      "bytes": 6207,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/costs-and-car/examples.md",
       "sections": [
         {
@@ -10931,7 +10931,7 @@
       }
     },
     {
-      "bytes": 14069,
+      "bytes": 14068,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/costs-and-car/figures.md",
       "sections": [
         {
@@ -10963,7 +10963,7 @@
       }
     },
     {
-      "bytes": 13374,
+      "bytes": 13373,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/costs-and-car/notes.md",
       "sections": [
         {
@@ -11028,7 +11028,7 @@
       }
     },
     {
-      "bytes": 34811,
+      "bytes": 34810,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/costs-and-car/rules.md",
       "sections": [
         {
@@ -11060,7 +11060,7 @@
       }
     },
     {
-      "bytes": 5198,
+      "bytes": 5202,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/health-insurance-contribution/examples.md",
       "sections": [
         {
@@ -11087,12 +11087,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1668,
-        "o200k_base": 1626
+        "cl100k_base": 1665,
+        "o200k_base": 1623
       }
     },
     {
-      "bytes": 6349,
+      "bytes": 6353,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/health-insurance-contribution/figures.md",
       "sections": [
         {
@@ -11119,12 +11119,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1963,
-        "o200k_base": 1826
+        "cl100k_base": 1960,
+        "o200k_base": 1823
       }
     },
     {
-      "bytes": 13207,
+      "bytes": 13211,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/health-insurance-contribution/notes.md",
       "sections": [
         {
@@ -11184,12 +11184,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4286,
-        "o200k_base": 3985
+        "cl100k_base": 4283,
+        "o200k_base": 3982
       }
     },
     {
-      "bytes": 19327,
+      "bytes": 19331,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/health-insurance-contribution/rules.md",
       "sections": [
         {
@@ -11216,12 +11216,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5863,
-        "o200k_base": 5490
+        "cl100k_base": 5860,
+        "o200k_base": 5487
       }
     },
     {
-      "bytes": 9248,
+      "bytes": 9240,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/income-tax/examples.md",
       "sections": [
         {
@@ -11248,12 +11248,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2934,
-        "o200k_base": 2894
+        "cl100k_base": 2931,
+        "o200k_base": 2893
       }
     },
     {
-      "bytes": 15698,
+      "bytes": 15690,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/income-tax/figures.md",
       "sections": [
         {
@@ -11280,12 +11280,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4962,
-        "o200k_base": 4645
+        "cl100k_base": 4959,
+        "o200k_base": 4644
       }
     },
     {
-      "bytes": 18118,
+      "bytes": 18110,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/income-tax/notes.md",
       "sections": [
         {
@@ -11345,12 +11345,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5581,
-        "o200k_base": 5280
+        "cl100k_base": 5578,
+        "o200k_base": 5279
       }
     },
     {
-      "bytes": 21419,
+      "bytes": 21411,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/income-tax/rules.md",
       "sections": [
         {
@@ -11377,12 +11377,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 6085,
-        "o200k_base": 5702
+        "cl100k_base": 6082,
+        "o200k_base": 5701
       }
     },
     {
-      "bytes": 10724,
+      "bytes": 10727,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/investments/examples.md",
       "sections": [
         {
@@ -11409,12 +11409,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3366,
-        "o200k_base": 3281
+        "cl100k_base": 3360,
+        "o200k_base": 3277
       }
     },
     {
-      "bytes": 7912,
+      "bytes": 7915,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/investments/figures.md",
       "sections": [
         {
@@ -11441,12 +11441,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2392,
-        "o200k_base": 2272
+        "cl100k_base": 2386,
+        "o200k_base": 2268
       }
     },
     {
-      "bytes": 14361,
+      "bytes": 14364,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/investments/notes.md",
       "sections": [
         {
@@ -11506,12 +11506,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4528,
-        "o200k_base": 4243
+        "cl100k_base": 4522,
+        "o200k_base": 4239
       }
     },
     {
-      "bytes": 23362,
+      "bytes": 23365,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/investments/rules.md",
       "sections": [
         {
@@ -11538,12 +11538,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 6651,
-        "o200k_base": 6218
+        "cl100k_base": 6645,
+        "o200k_base": 6214
       }
     },
     {
-      "bytes": 14321,
+      "bytes": 14336,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/pension-and-disability-insurance/examples.md",
       "sections": [
         {
@@ -11570,12 +11570,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4542,
-        "o200k_base": 4381
+        "cl100k_base": 4539,
+        "o200k_base": 4380
       }
     },
     {
-      "bytes": 12122,
+      "bytes": 12137,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/pension-and-disability-insurance/figures.md",
       "sections": [
         {
@@ -11602,12 +11602,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3599,
-        "o200k_base": 3422
+        "cl100k_base": 3596,
+        "o200k_base": 3421
       }
     },
     {
-      "bytes": 17862,
+      "bytes": 17877,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/pension-and-disability-insurance/notes.md",
       "sections": [
         {
@@ -11667,12 +11667,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5862,
-        "o200k_base": 5575
+        "cl100k_base": 5859,
+        "o200k_base": 5574
       }
     },
     {
-      "bytes": 29515,
+      "bytes": 29530,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/pension-and-disability-insurance/rules.md",
       "sections": [
         {
@@ -11699,12 +11699,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 9048,
-        "o200k_base": 8572
+        "cl100k_base": 9045,
+        "o200k_base": 8571
       }
     },
     {
-      "bytes": 11322,
+      "bytes": 11342,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/private-company-and-corporate-tax/examples.md",
       "sections": [
         {
@@ -11731,12 +11731,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3629,
-        "o200k_base": 3485
+        "cl100k_base": 3627,
+        "o200k_base": 3484
       }
     },
     {
-      "bytes": 12773,
+      "bytes": 12793,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/private-company-and-corporate-tax/figures.md",
       "sections": [
         {
@@ -11763,12 +11763,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4059,
-        "o200k_base": 3855
+        "cl100k_base": 4057,
+        "o200k_base": 3854
       }
     },
     {
-      "bytes": 15084,
+      "bytes": 15104,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/private-company-and-corporate-tax/notes.md",
       "sections": [
         {
@@ -11828,12 +11828,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4641,
-        "o200k_base": 4347
+        "cl100k_base": 4639,
+        "o200k_base": 4346
       }
     },
     {
-      "bytes": 34174,
+      "bytes": 34194,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/private-company-and-corporate-tax/rules.md",
       "sections": [
         {
@@ -11860,12 +11860,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 9682,
-        "o200k_base": 9198
+        "cl100k_base": 9680,
+        "o200k_base": 9197
       }
     },
     {
-      "bytes": 10652,
+      "bytes": 10655,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/procedure/examples.md",
       "sections": [
         {
@@ -11892,12 +11892,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3074,
-        "o200k_base": 3000
+        "cl100k_base": 3072,
+        "o200k_base": 2999
       }
     },
     {
-      "bytes": 13926,
+      "bytes": 13929,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/procedure/figures.md",
       "sections": [
         {
@@ -11924,12 +11924,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4065,
-        "o200k_base": 3864
+        "cl100k_base": 4063,
+        "o200k_base": 3863
       }
     },
     {
-      "bytes": 18403,
+      "bytes": 18406,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/procedure/notes.md",
       "sections": [
         {
@@ -11989,12 +11989,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5503,
-        "o200k_base": 5216
+        "cl100k_base": 5501,
+        "o200k_base": 5215
       }
     },
     {
-      "bytes": 25150,
+      "bytes": 25153,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/procedure/rules.md",
       "sections": [
         {
@@ -12021,8 +12021,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7025,
-        "o200k_base": 6705
+        "cl100k_base": 7023,
+        "o200k_base": 6704
       }
     },
     {
@@ -12187,7 +12187,7 @@
       }
     },
     {
-      "bytes": 7588,
+      "bytes": 7592,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/work-relationship/examples.md",
       "sections": [
         {
@@ -12214,12 +12214,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2217,
-        "o200k_base": 2149
+        "cl100k_base": 2213,
+        "o200k_base": 2148
       }
     },
     {
-      "bytes": 11556,
+      "bytes": 11560,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/work-relationship/figures.md",
       "sections": [
         {
@@ -12246,12 +12246,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3417,
-        "o200k_base": 3289
+        "cl100k_base": 3413,
+        "o200k_base": 3288
       }
     },
     {
-      "bytes": 16416,
+      "bytes": 16420,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/work-relationship/notes.md",
       "sections": [
         {
@@ -12311,12 +12311,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4807,
-        "o200k_base": 4579
+        "cl100k_base": 4803,
+        "o200k_base": 4578
       }
     },
     {
-      "bytes": 27600,
+      "bytes": 27604,
       "path": "sk-moneybird-accountant/references/tax-rules/2024/work-relationship/rules.md",
       "sections": [
         {
@@ -12343,12 +12343,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7719,
-        "o200k_base": 7340
+        "cl100k_base": 7715,
+        "o200k_base": 7339
       }
     },
     {
-      "bytes": 10767,
+      "bytes": 10818,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/README.md",
       "sections": [
         {
@@ -12375,13 +12375,13 @@
         },
         {
           "anchor": "3-headline-figures",
-          "bytes": 4730,
+          "bytes": 4781,
           "line": 52,
           "lines": 35,
           "title": "3. HEADLINE FIGURES",
           "tokens": {
-            "cl100k_base": 1388,
-            "o200k_base": 1316
+            "cl100k_base": 1294,
+            "o200k_base": 1262
           }
         },
         {
@@ -12397,12 +12397,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3036,
-        "o200k_base": 2920
+        "cl100k_base": 2942,
+        "o200k_base": 2866
       }
     },
     {
-      "bytes": 9243,
+      "bytes": 9245,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/box-2/examples.md",
       "sections": [
         {
@@ -12429,12 +12429,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3016,
-        "o200k_base": 2920
+        "cl100k_base": 3013,
+        "o200k_base": 2918
       }
     },
     {
-      "bytes": 11178,
+      "bytes": 11180,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/box-2/figures.md",
       "sections": [
         {
@@ -12461,12 +12461,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3602,
-        "o200k_base": 3461
+        "cl100k_base": 3599,
+        "o200k_base": 3459
       }
     },
     {
-      "bytes": 15376,
+      "bytes": 15378,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/box-2/notes.md",
       "sections": [
         {
@@ -12526,12 +12526,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4820,
-        "o200k_base": 4566
+        "cl100k_base": 4817,
+        "o200k_base": 4564
       }
     },
     {
-      "bytes": 35909,
+      "bytes": 35911,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/box-2/rules.md",
       "sections": [
         {
@@ -12558,12 +12558,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 10772,
-        "o200k_base": 10253
+        "cl100k_base": 10769,
+        "o200k_base": 10251
       }
     },
     {
-      "bytes": 12202,
+      "bytes": 12207,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/box-3/examples.md",
       "sections": [
         {
@@ -12590,12 +12590,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4300,
+        "cl100k_base": 4297,
         "o200k_base": 4233
       }
     },
     {
-      "bytes": 5683,
+      "bytes": 5688,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/box-3/figures.md",
       "sections": [
         {
@@ -12622,12 +12622,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1753,
+        "cl100k_base": 1750,
         "o200k_base": 1645
       }
     },
     {
-      "bytes": 13477,
+      "bytes": 13482,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/box-3/notes.md",
       "sections": [
         {
@@ -12687,12 +12687,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4149,
+        "cl100k_base": 4146,
         "o200k_base": 3912
       }
     },
     {
-      "bytes": 17818,
+      "bytes": 17823,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/box-3/rules.md",
       "sections": [
         {
@@ -12719,12 +12719,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5317,
+        "cl100k_base": 5314,
         "o200k_base": 5038
       }
     },
     {
-      "bytes": 12701,
+      "bytes": 12708,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/business-deductions/examples.md",
       "sections": [
         {
@@ -12751,12 +12751,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3871,
-        "o200k_base": 3720
+        "cl100k_base": 3863,
+        "o200k_base": 3716
       }
     },
     {
-      "bytes": 9180,
+      "bytes": 9187,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/business-deductions/figures.md",
       "sections": [
         {
@@ -12783,12 +12783,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2802,
-        "o200k_base": 2632
+        "cl100k_base": 2794,
+        "o200k_base": 2628
       }
     },
     {
-      "bytes": 10948,
+      "bytes": 10955,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/business-deductions/notes.md",
       "sections": [
         {
@@ -12848,12 +12848,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3492,
-        "o200k_base": 3263
+        "cl100k_base": 3484,
+        "o200k_base": 3259
       }
     },
     {
-      "bytes": 28839,
+      "bytes": 28846,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/business-deductions/rules.md",
       "sections": [
         {
@@ -12880,8 +12880,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 8182,
-        "o200k_base": 7710
+        "cl100k_base": 8174,
+        "o200k_base": 7706
       }
     },
     {
@@ -12960,7 +12960,7 @@
       }
     },
     {
-      "bytes": 7977,
+      "bytes": 7976,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/costs-and-car/examples.md",
       "sections": [
         {
@@ -12992,7 +12992,7 @@
       }
     },
     {
-      "bytes": 10509,
+      "bytes": 10508,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/costs-and-car/figures.md",
       "sections": [
         {
@@ -13024,7 +13024,7 @@
       }
     },
     {
-      "bytes": 11087,
+      "bytes": 11086,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/costs-and-car/notes.md",
       "sections": [
         {
@@ -13089,7 +13089,7 @@
       }
     },
     {
-      "bytes": 35743,
+      "bytes": 35742,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/costs-and-car/rules.md",
       "sections": [
         {
@@ -13121,7 +13121,7 @@
       }
     },
     {
-      "bytes": 6400,
+      "bytes": 6404,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/health-insurance-contribution/examples.md",
       "sections": [
         {
@@ -13148,12 +13148,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2046,
-        "o200k_base": 1966
+        "cl100k_base": 2043,
+        "o200k_base": 1963
       }
     },
     {
-      "bytes": 9859,
+      "bytes": 9863,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/health-insurance-contribution/figures.md",
       "sections": [
         {
@@ -13180,12 +13180,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2978,
-        "o200k_base": 2784
+        "cl100k_base": 2975,
+        "o200k_base": 2781
       }
     },
     {
-      "bytes": 11968,
+      "bytes": 11972,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/health-insurance-contribution/notes.md",
       "sections": [
         {
@@ -13245,12 +13245,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3806,
-        "o200k_base": 3553
+        "cl100k_base": 3803,
+        "o200k_base": 3550
       }
     },
     {
-      "bytes": 22358,
+      "bytes": 22362,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/health-insurance-contribution/rules.md",
       "sections": [
         {
@@ -13277,12 +13277,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 6448,
-        "o200k_base": 5985
+        "cl100k_base": 6445,
+        "o200k_base": 5982
       }
     },
     {
-      "bytes": 9921,
+      "bytes": 9913,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/income-tax/examples.md",
       "sections": [
         {
@@ -13309,12 +13309,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3107,
-        "o200k_base": 2964
+        "cl100k_base": 3104,
+        "o200k_base": 2963
       }
     },
     {
-      "bytes": 13680,
+      "bytes": 13672,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/income-tax/figures.md",
       "sections": [
         {
@@ -13341,12 +13341,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4341,
-        "o200k_base": 4095
+        "cl100k_base": 4338,
+        "o200k_base": 4094
       }
     },
     {
-      "bytes": 20457,
+      "bytes": 20449,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/income-tax/notes.md",
       "sections": [
         {
@@ -13406,12 +13406,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 6413,
-        "o200k_base": 6051
+        "cl100k_base": 6410,
+        "o200k_base": 6050
       }
     },
     {
-      "bytes": 20637,
+      "bytes": 20629,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/income-tax/rules.md",
       "sections": [
         {
@@ -13438,12 +13438,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5490,
-        "o200k_base": 5164
+        "cl100k_base": 5487,
+        "o200k_base": 5163
       }
     },
     {
-      "bytes": 10482,
+      "bytes": 10485,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/investments/examples.md",
       "sections": [
         {
@@ -13470,12 +13470,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3255,
-        "o200k_base": 3168
+        "cl100k_base": 3249,
+        "o200k_base": 3164
       }
     },
     {
-      "bytes": 13823,
+      "bytes": 13826,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/investments/figures.md",
       "sections": [
         {
@@ -13502,12 +13502,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4094,
-        "o200k_base": 3861
+        "cl100k_base": 4088,
+        "o200k_base": 3857
       }
     },
     {
-      "bytes": 11387,
+      "bytes": 11390,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/investments/notes.md",
       "sections": [
         {
@@ -13567,12 +13567,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3516,
-        "o200k_base": 3318
+        "cl100k_base": 3510,
+        "o200k_base": 3314
       }
     },
     {
-      "bytes": 25624,
+      "bytes": 25627,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/investments/rules.md",
       "sections": [
         {
@@ -13599,12 +13599,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7232,
-        "o200k_base": 6807
+        "cl100k_base": 7226,
+        "o200k_base": 6803
       }
     },
     {
-      "bytes": 10592,
+      "bytes": 10607,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/pension-and-disability-insurance/examples.md",
       "sections": [
         {
@@ -13631,12 +13631,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3015,
-        "o200k_base": 2927
+        "cl100k_base": 3012,
+        "o200k_base": 2926
       }
     },
     {
-      "bytes": 8827,
+      "bytes": 8842,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/pension-and-disability-insurance/figures.md",
       "sections": [
         {
@@ -13663,12 +13663,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2665,
-        "o200k_base": 2550
+        "cl100k_base": 2662,
+        "o200k_base": 2549
       }
     },
     {
-      "bytes": 13699,
+      "bytes": 13714,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/pension-and-disability-insurance/notes.md",
       "sections": [
         {
@@ -13728,12 +13728,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4362,
-        "o200k_base": 4144
+        "cl100k_base": 4359,
+        "o200k_base": 4143
       }
     },
     {
-      "bytes": 25882,
+      "bytes": 25897,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/pension-and-disability-insurance/rules.md",
       "sections": [
         {
@@ -13760,12 +13760,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7647,
-        "o200k_base": 7304
+        "cl100k_base": 7644,
+        "o200k_base": 7303
       }
     },
     {
-      "bytes": 10629,
+      "bytes": 10649,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/private-company-and-corporate-tax/examples.md",
       "sections": [
         {
@@ -13792,12 +13792,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3542,
-        "o200k_base": 3466
+        "cl100k_base": 3540,
+        "o200k_base": 3465
       }
     },
     {
-      "bytes": 14059,
+      "bytes": 14079,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/private-company-and-corporate-tax/figures.md",
       "sections": [
         {
@@ -13824,12 +13824,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4208,
-        "o200k_base": 4005
+        "cl100k_base": 4206,
+        "o200k_base": 4004
       }
     },
     {
-      "bytes": 16675,
+      "bytes": 16695,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/private-company-and-corporate-tax/notes.md",
       "sections": [
         {
@@ -13889,12 +13889,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5215,
-        "o200k_base": 4917
+        "cl100k_base": 5213,
+        "o200k_base": 4916
       }
     },
     {
-      "bytes": 34630,
+      "bytes": 34650,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/private-company-and-corporate-tax/rules.md",
       "sections": [
         {
@@ -13921,12 +13921,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 10005,
-        "o200k_base": 9468
+        "cl100k_base": 10003,
+        "o200k_base": 9467
       }
     },
     {
-      "bytes": 11972,
+      "bytes": 11975,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/procedure/examples.md",
       "sections": [
         {
@@ -13953,12 +13953,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3553,
-        "o200k_base": 3385
+        "cl100k_base": 3551,
+        "o200k_base": 3384
       }
     },
     {
-      "bytes": 11374,
+      "bytes": 11377,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/procedure/figures.md",
       "sections": [
         {
@@ -13985,12 +13985,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3339,
-        "o200k_base": 3158
+        "cl100k_base": 3337,
+        "o200k_base": 3157
       }
     },
     {
-      "bytes": 16035,
+      "bytes": 16038,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/procedure/notes.md",
       "sections": [
         {
@@ -14050,12 +14050,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4871,
-        "o200k_base": 4514
+        "cl100k_base": 4869,
+        "o200k_base": 4513
       }
     },
     {
-      "bytes": 31182,
+      "bytes": 31185,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/procedure/rules.md",
       "sections": [
         {
@@ -14082,8 +14082,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 9055,
-        "o200k_base": 8397
+        "cl100k_base": 9053,
+        "o200k_base": 8396
       }
     },
     {
@@ -14248,7 +14248,7 @@
       }
     },
     {
-      "bytes": 11378,
+      "bytes": 11382,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/work-relationship/examples.md",
       "sections": [
         {
@@ -14275,12 +14275,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 3189,
-        "o200k_base": 3075
+        "cl100k_base": 3185,
+        "o200k_base": 3074
       }
     },
     {
-      "bytes": 15179,
+      "bytes": 15183,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/work-relationship/figures.md",
       "sections": [
         {
@@ -14307,12 +14307,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4165,
-        "o200k_base": 3968
+        "cl100k_base": 4161,
+        "o200k_base": 3967
       }
     },
     {
-      "bytes": 15579,
+      "bytes": 15583,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/work-relationship/notes.md",
       "sections": [
         {
@@ -14372,12 +14372,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4502,
-        "o200k_base": 4179
+        "cl100k_base": 4498,
+        "o200k_base": 4178
       }
     },
     {
-      "bytes": 21674,
+      "bytes": 21678,
       "path": "sk-moneybird-accountant/references/tax-rules/2025/work-relationship/rules.md",
       "sections": [
         {
@@ -14404,12 +14404,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5922,
-        "o200k_base": 5570
+        "cl100k_base": 5918,
+        "o200k_base": 5569
       }
     },
     {
-      "bytes": 10563,
+      "bytes": 10551,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/README.md",
       "sections": [
         {
@@ -14436,7 +14436,7 @@
         },
         {
           "anchor": "3-headline-figures",
-          "bytes": 5251,
+          "bytes": 5239,
           "line": 52,
           "lines": 35,
           "title": "3. HEADLINE FIGURES",
@@ -16309,7 +16309,7 @@
       }
     },
     {
-      "bytes": 7591,
+      "bytes": 7585,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/work-relationship/examples.md",
       "sections": [
         {
@@ -16336,12 +16336,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2299,
+        "cl100k_base": 2298,
         "o200k_base": 2218
       }
     },
     {
-      "bytes": 17664,
+      "bytes": 17658,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/work-relationship/figures.md",
       "sections": [
         {
@@ -16368,12 +16368,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4789,
+        "cl100k_base": 4788,
         "o200k_base": 4571
       }
     },
     {
-      "bytes": 16147,
+      "bytes": 16141,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/work-relationship/notes.md",
       "sections": [
         {
@@ -16433,12 +16433,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 4908,
+        "cl100k_base": 4907,
         "o200k_base": 4615
       }
     },
     {
-      "bytes": 25944,
+      "bytes": 25938,
       "path": "sk-moneybird-accountant/references/tax-rules/2026/work-relationship/rules.md",
       "sections": [
         {
@@ -16465,12 +16465,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 7034,
+        "cl100k_base": 7033,
         "o200k_base": 6642
       }
     },
     {
-      "bytes": 10849,
+      "bytes": 10885,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/README.md",
       "sections": [
         {
@@ -16497,13 +16497,13 @@
         },
         {
           "anchor": "3-headline-figures",
-          "bytes": 4796,
+          "bytes": 4832,
           "line": 52,
           "lines": 35,
           "title": "3. HEADLINE FIGURES",
           "tokens": {
-            "cl100k_base": 1335,
-            "o200k_base": 1307
+            "cl100k_base": 1339,
+            "o200k_base": 1313
           }
         },
         {
@@ -16519,8 +16519,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2966,
-        "o200k_base": 2911
+        "cl100k_base": 2970,
+        "o200k_base": 2917
       }
     },
     {
@@ -17565,7 +17565,7 @@
       }
     },
     {
-      "bytes": 10762,
+      "bytes": 10761,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/investments/examples.md",
       "sections": [
         {
@@ -17597,7 +17597,7 @@
       }
     },
     {
-      "bytes": 10950,
+      "bytes": 10949,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/investments/figures.md",
       "sections": [
         {
@@ -17629,7 +17629,7 @@
       }
     },
     {
-      "bytes": 14789,
+      "bytes": 14788,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/investments/notes.md",
       "sections": [
         {
@@ -17694,7 +17694,7 @@
       }
     },
     {
-      "bytes": 28077,
+      "bytes": 28076,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/investments/rules.md",
       "sections": [
         {
@@ -17887,7 +17887,7 @@
       }
     },
     {
-      "bytes": 9062,
+      "bytes": 9077,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/private-company-and-corporate-tax/examples.md",
       "sections": [
         {
@@ -17914,12 +17914,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 2959,
-        "o200k_base": 2911
+        "cl100k_base": 2961,
+        "o200k_base": 2913
       }
     },
     {
-      "bytes": 16719,
+      "bytes": 16734,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/private-company-and-corporate-tax/figures.md",
       "sections": [
         {
@@ -17946,12 +17946,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5262,
-        "o200k_base": 5042
+        "cl100k_base": 5264,
+        "o200k_base": 5044
       }
     },
     {
-      "bytes": 21539,
+      "bytes": 21554,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/private-company-and-corporate-tax/notes.md",
       "sections": [
         {
@@ -18011,12 +18011,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 6885,
-        "o200k_base": 6458
+        "cl100k_base": 6887,
+        "o200k_base": 6460
       }
     },
     {
-      "bytes": 42884,
+      "bytes": 42899,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/private-company-and-corporate-tax/rules.md",
       "sections": [
         {
@@ -18043,12 +18043,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 13210,
-        "o200k_base": 12554
+        "cl100k_base": 13212,
+        "o200k_base": 12556
       }
     },
     {
-      "bytes": 11233,
+      "bytes": 11237,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/procedure/examples.md",
       "sections": [
         {
@@ -18080,7 +18080,7 @@
       }
     },
     {
-      "bytes": 20908,
+      "bytes": 20912,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/procedure/figures.md",
       "sections": [
         {
@@ -18112,7 +18112,7 @@
       }
     },
     {
-      "bytes": 20579,
+      "bytes": 20583,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/procedure/notes.md",
       "sections": [
         {
@@ -18177,7 +18177,7 @@
       }
     },
     {
-      "bytes": 35178,
+      "bytes": 35182,
       "path": "sk-moneybird-accountant/references/tax-rules/2027/procedure/rules.md",
       "sections": [
         {
@@ -19999,7 +19999,7 @@
   },
   "units": [
     {
-      "bytes": 7129161,
+      "bytes": 7130820,
       "files": 460,
       "name": "corpus total",
       "reads": [
@@ -20007,8 +20007,8 @@
       ],
       "sections": 1393,
       "tokens": {
-        "cl100k_base": 2073874,
-        "o200k_base": 1978171
+        "cl100k_base": 2072819,
+        "o200k_base": 1977648
       }
     },
     {
@@ -20023,7 +20023,7 @@
       }
     },
     {
-      "bytes": 10563,
+      "bytes": 10551,
       "name": "sk-moneybird-accountant/references/tax-rules/2026/README.md",
       "reads": [
         "sk-moneybird-accountant/references/tax-rules/2026/README.md"
@@ -20045,7 +20045,7 @@
       }
     },
     {
-      "bytes": 95369,
+      "bytes": 95357,
       "name": "car route current",
       "reads": [
         "sk-moneybird-accountant/references/tax-rules/2026/README.md",
@@ -20060,7 +20060,7 @@
       }
     },
     {
-      "bytes": 29199,
+      "bytes": 29187,
       "name": "car route proposed",
       "reads": [
         "sk-moneybird-accountant/references/tax-rules/2026/README.md",

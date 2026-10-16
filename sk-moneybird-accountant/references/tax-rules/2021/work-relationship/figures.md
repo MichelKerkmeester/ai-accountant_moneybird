@@ -1,7 +1,7 @@
 ---
 title: "Employment relationship and self-employment (arbeidsrelatie en zelfstandigheid) 2021: Figures"
 description: "Wet DBA, the enforcement moratorium (handhavingsmoratorium) and the instruction (aanwijzing) route, model agreements (modelovereenkomsten) and case law on the work relationship for tax year 2021, with the later VBAR hourly rate presumption and BAZ bill named as context."
-nav_label: "Arbeidsrelatie en zelfstandigheid"
+nav_label: "Work relationship and self-employment"
 trigger_phrases:
   - "arbeidsrelatie 2021"
   - "Wet DBA 2021"

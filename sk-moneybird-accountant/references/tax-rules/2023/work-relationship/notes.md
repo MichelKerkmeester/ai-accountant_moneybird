@@ -1,7 +1,7 @@
 ---
 title: "Employment relationship and self-employment 2023: Notes"
 description: "Wet DBA enforcement, model agreements, the VBAR bill and the low hourly rate presumption for the work relationship of a Dutch sole trader in tax year 2023. This file holds the notes part."
-nav_label: "Employment relationship and self-employment notes"
+nav_label: "Work relationship and self-employment notes"
 trigger_phrases:
   - "arbeidsrelatie 2023"
   - "schijnzelfstandigheid 2023"

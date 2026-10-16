@@ -1,7 +1,7 @@
 ---
 title: "Pension, annuity and disability insurance 2025: Notes"
 description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity (lijfrente) conditions, profit from business discontinuation (stakingswinst) conversion, old-age reserve (FOR) interaction and disability insurance (AOV) premium deductibility for tax year 2025, plus the proposed Basic Disability Insurance for Self-Employed Persons Act (BAZ). This file holds the notes part."
-nav_label: "Pensioen, lijfrente en AOV notes"
+nav_label: "Pension, annuity and disability insurance notes"
 trigger_phrases:
   - "pensioen en AOV 2025"
   - "lijfrente en jaarruimte 2025"

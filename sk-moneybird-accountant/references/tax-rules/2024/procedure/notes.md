@@ -1,7 +1,7 @@
 ---
 title: "Tax return (aangifte) and procedure 2024: Notes"
 description: "Filing deadlines and deferral (uitstel) for income tax and VAT (btw), the provisional assessment (voorlopige aanslag), tax interest (belastingrente), the additional assessment period (navorderingstermijn), objection (bezwaar), record-retention obligation (bewaarplicht) and KVK and Dutch Tax and Customs Administration (Belastingdienst) registration for tax year 2024. This file holds the notes part."
-nav_label: "Aangifte en procedure notes"
+nav_label: "Tax return and procedure notes"
 trigger_phrases:
   - "aangifte en procedure 2024"
   - "belastingaangifte 2024 uitstel"

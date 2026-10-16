@@ -1,7 +1,7 @@
 ---
 title: "Private limited company and corporate income tax 2022: Rules"
 description: "Corporate income tax (vennootschapsbelasting) for a Dutch private limited company (BV) in 2022, with the rate, loss offsetting, interest deduction, customary salary, Zvw, dividend tax, fiscal unity, innovation box and the switch from a sole proprietorship to a private limited company (BV). This file holds the rules part."
-nav_label: "BV en vennootschapsbelasting rules"
+nav_label: "Private limited company and corporate income tax rules"
 trigger_phrases:
   - "BV en vennootschapsbelasting 2022"
   - "vennootschapsbelasting 2022"

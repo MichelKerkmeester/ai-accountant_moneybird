@@ -1,7 +1,7 @@
 ---
 title: "Pension, annuity and disability insurance (pensioen, lijfrente en AOV) 2021: Figures"
 description: "Annual allowance (jaarruimte) and catch-up allowance (reserveringsruimte), annuity (lijfrente) products, profit from business discontinuation (stakingswinst) conversion, the old-age reserve (oudedagsreserve) link, commutation (afkoop) rules and AOV premium deductibility for tax year 2021."
-nav_label: "Pensioen, lijfrente en AOV"
+nav_label: "Pension, annuity and disability insurance"
 trigger_phrases:
   - "pensioen en AOV 2021"
   - "jaarruimte 2021"

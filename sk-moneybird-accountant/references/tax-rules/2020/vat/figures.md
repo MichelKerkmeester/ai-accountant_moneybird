@@ -1,7 +1,7 @@
 ---
 title: "VAT (BTW) 2020: Figures"
 description: "Covers Dutch VAT rates, deductions, the small-business scheme, returns, cross-border supplies, invoicing and private use for tax year 2020."
-nav_label: "BTW"
+nav_label: "VAT"
 trigger_phrases:
   - "btw 2020"
   - "omzetbelasting 2020"

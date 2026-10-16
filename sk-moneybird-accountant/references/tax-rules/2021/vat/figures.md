@@ -1,7 +1,7 @@
 ---
 title: "VAT 2021: Figures"
 description: "This file covers Dutch VAT rates, exemptions, the KOR, returns, cross-border VAT and bookkeeping rules checked for tax year 2021."
-nav_label: "BTW"
+nav_label: "VAT"
 trigger_phrases:
   - "BTW 2021"
   - "btw-aangifte 2021"

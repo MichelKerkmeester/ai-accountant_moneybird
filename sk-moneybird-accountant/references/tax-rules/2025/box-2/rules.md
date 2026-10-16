@@ -1,7 +1,7 @@
 ---
 title: "Box 2 and substantial interest (aanmerkelijk belang) 2025: Rules"
 description: "Box 2 income and the substantial interest (aanmerkelijk belang) rules for tax year 2025, including the two-bracket rate table, excessive borrowing (excessief lenen), customary salary (gebruikelijk loon) and loss relief. This file holds the rules part."
-nav_label: "Box 2 en aanmerkelijk belang rules"
+nav_label: "Box 2 and substantial interest rules"
 trigger_phrases:
   - "box 2 2025"
   - "aanmerkelijk belang 2025"

@@ -1,7 +1,7 @@
 ---
 title: "VAT (BTW) 2024: Examples"
 description: "This file covers Dutch VAT rates, exemptions, the KOR, returns, invoicing and cross-border VAT rules for tax year 2024. This file holds the examples part."
-nav_label: "BTW examples"
+nav_label: "VAT examples"
 trigger_phrases:
   - "BTW 2024"
   - "btw-aangifte 2024"

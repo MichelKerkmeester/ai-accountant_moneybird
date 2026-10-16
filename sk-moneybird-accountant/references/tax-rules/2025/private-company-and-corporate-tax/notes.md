@@ -1,7 +1,7 @@
 ---
 title: "Private limited company and corporate income tax 2025: Notes"
 description: "Dutch BV and corporate income tax (vennootschapsbelasting) for tax year 2025, from the corporate income tax rates and computation to loss offsetting (verliesverrekening), the interest deduction limitation (renteaftrekbeperking), customary salary (gebruikelijk loon) and the DGA Zvw route, dividend tax (dividendbelasting), conditional withholding tax (conditionele bronbelasting), fiscal unity (fiscale eenheid), innovation box (innovatiebox), annual accounts (jaarrekening) and the switch from a sole proprietorship (eenmanszaak) to a BV. This file holds the notes part."
-nav_label: "BV en vennootschapsbelasting notes"
+nav_label: "Private limited company and corporate income tax notes"
 trigger_phrases:
   - "vennootschapsbelasting 2025"
   - "BV 2025"

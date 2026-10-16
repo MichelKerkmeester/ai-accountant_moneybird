@@ -1,7 +1,7 @@
 ---
 title: "Filing and procedure 2027: Rules"
 description: "Filing deadlines and extensions, the provisional assessment (voorlopige aanslag), tax interest (belastingrente), additional assessment (navordering), objection (bezwaar), record-retention obligation (bewaarplicht) and KVK and Dutch Tax and Customs Administration (Belastingdienst) registration for tax year 2027, with the amounts that were still unpublished on 2026-10-11 marked as unknown. This file holds the rules part."
-nav_label: "Filing and procedure rules"
+nav_label: "Tax return and procedure rules"
 trigger_phrases:
   - "aangifte en procedure 2027"
   - "belastingaangifte 2027"

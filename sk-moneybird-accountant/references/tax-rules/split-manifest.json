@@ -5,7 +5,7 @@
       "parts": [
         {
           "body_sha256": "1ba7acf293b4db6d8b8894f1dee790408db2d269f7f2c8db3100d1594c3833ed",
-          "header_sha256": "3a26a48ca74e98dd3c9768be84086c405e77245ec358465332d96585269f5e9f",
+          "header_sha256": "113c2ae3c5e62fe3e2f90a54a95fed189d0f46aa7af2a7d43b320969dd80d1c4",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/work-relationship/figures.md",
           "sections": [
@@ -17,7 +17,7 @@
         },
         {
           "body_sha256": "17c277ab2e08f2be7001d55d26cc990e44d2dc77c5702f1c8de6cdbafb968941",
-          "header_sha256": "72eb3a62f7e3a3c21f9c998808a4df187f320817776af480b620049a39495125",
+          "header_sha256": "6c9c8dc361317ab7842a4fbdf97991240f26ae55646888f36c210f544c53e26a",
           "line_offset": -43,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/work-relationship/rules.md",
           "sections": [
@@ -28,7 +28,7 @@
         },
         {
           "body_sha256": "999e64004201b7d5bb344c154691fac970fe7877948cb8259919a81754b330e3",
-          "header_sha256": "1d2cc6cbcf09cbad9592e8ebf8c1b4965a8c9fff1f720c13b92b297ea33d95a1",
+          "header_sha256": "1615dc9aaaea494d6a453c69fec04be994dcfe95a3d79aa581bcea7dcf203385",
           "line_offset": -217,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/work-relationship/examples.md",
           "sections": [
@@ -39,7 +39,7 @@
         },
         {
           "body_sha256": "f537fe77dc2ab41176a468152fc49e83b26d04584572b3b8ec20b6bd0ee44fbe",
-          "header_sha256": "14bab8e2ac62140ca7e375a76627d17f1e29d66478a3569a18e3d955adc5f82c",
+          "header_sha256": "814e64a371fd34ccb8bb650994ef2eede429e53bea9a19166c2c3f5e0eebbdb5",
           "line_offset": -299,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/work-relationship/notes.md",
           "sections": [
@@ -60,7 +60,7 @@
       "parts": [
         {
           "body_sha256": "d7201804af0d2ed5cc0b5fc51c3dbe7f9ac915dfd8d1f6346621a877dcd99276",
-          "header_sha256": "fb2b2be45e85d83a485641c8978f9c32d5a6556878f5c4170bfa1f1e52d59629",
+          "header_sha256": "216fabb2503bbcdbbd7930ab3e226a360459b4156b0c9d8a94f3339bad173d8e",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/box-2/figures.md",
           "sections": [
@@ -72,7 +72,7 @@
         },
         {
           "body_sha256": "1c0169d01a250d5c127dc2436c9b1590fe897a242041266b73555e522de38526",
-          "header_sha256": "b8f6d834f7bb20d3976d4e7c1dd6637cc143dddf8ee030dd8e93901430b51664",
+          "header_sha256": "3818726bcb44a8d3bd49f4bfec37d5473295e55a43e311ac8f21cc89a2106a2d",
           "line_offset": -44,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/box-2/rules.md",
           "sections": [
@@ -83,7 +83,7 @@
         },
         {
           "body_sha256": "de1f63296116ae5ec15edb13330b68d43de635090d7be229b180070d1ffa426a",
-          "header_sha256": "474bea27652ef27ef946e88b2cf89231bdaee6caada5be9da0776b341132f205",
+          "header_sha256": "1e2a5f3672aa96b5a449847084aa0bb1e8b2f4ebbdb2106207b3fba7b5e3a9c3",
           "line_offset": -158,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/box-2/examples.md",
           "sections": [
@@ -94,7 +94,7 @@
         },
         {
           "body_sha256": "ab2b648dbd10ae4d1526da74807e7aaccc9efe6a63b2dffe4c383dcd736aa779",
-          "header_sha256": "8c8208a4d06b77a2f619db1262509946acc2fec0ee632bc58a8381133dc209fe",
+          "header_sha256": "7c3b9c490a2f5540bb35646e65115682860d0912a5d0da29c5be22d135834f7d",
           "line_offset": -220,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/box-2/notes.md",
           "sections": [
@@ -115,7 +115,7 @@
       "parts": [
         {
           "body_sha256": "5b877bfb724977dd55d6c4359db0147667ddbb67101dcdf48b0ffcb38b93bfd1",
-          "header_sha256": "4d5740074c9b5cefd6517af6cd7e321a64241b6fe90aa5b447088041364f4e17",
+          "header_sha256": "c577c9539d9c0245bbaeb2921f843dd1effbea632c33463469f02c0a145d8b3e",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/box-3/figures.md",
           "sections": [
@@ -127,7 +127,7 @@
         },
         {
           "body_sha256": "181b40e91aa0f48e015336981d5d803261609aa58618d87767ecb9fbfbc056a2",
-          "header_sha256": "7d34a2e79189ab645cf024e713a44efee8bd863ff3297be18387c7817a30c238",
+          "header_sha256": "25a0042cb7b6b40f9091ef9fddeda48230c7b6d916d6568b603d1d36b88f9fdb",
           "line_offset": -28,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/box-3/rules.md",
           "sections": [
@@ -138,7 +138,7 @@
         },
         {
           "body_sha256": "712bc7e2a880e62eef2b56f0675b40e9a03319e3a99cf732fc69b8a13b8d1b68",
-          "header_sha256": "244b80f2fc009db14aed40d4f27a58015ffda1e6110be6822754c7d2258803ac",
+          "header_sha256": "25467b5e84292792f097e2a93ed2abd82ee3a5bc1c05ade22598a1d38bc668f9",
           "line_offset": -88,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/box-3/examples.md",
           "sections": [
@@ -149,7 +149,7 @@
         },
         {
           "body_sha256": "5c655b12258c283e6921cff821067b597395947d364c487ec1bcab72376c13a7",
-          "header_sha256": "95f87667a287e64b98a5e46b1a2eeecfd8fca9da80ef68c9e59c0e76c1bca86d",
+          "header_sha256": "04969ac7c6203b0163ff4f4512dcd53aa5840d5bc8c96956730d0560fc65dc0b",
           "line_offset": -143,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/box-3/notes.md",
           "sections": [
@@ -170,7 +170,7 @@
       "parts": [
         {
           "body_sha256": "4447f6628c39da0f92bb22f3b938614b2d0efe637594b0cc89b2b0d587fa6d81",
-          "header_sha256": "4853bf91e4cd4ae8281ab7adeae80351ff3f61098359c98028c22ef437c8b495",
+          "header_sha256": "3e054b69fa8ee29685eef6b4c12b1e227aa2fe7daa8a3805891dd7529816245e",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/vat/figures.md",
           "sections": [
@@ -182,7 +182,7 @@
         },
         {
           "body_sha256": "476619dd6bafc3de341274a8fb64e7527716d623bcc2656fe54817d94f2648f2",
-          "header_sha256": "4e7f13d41be79365be2c0f25e5aa4ad94715f1705efc2707a5693edd6c0fbfdb",
+          "header_sha256": "db3f0c4545379dd6d192cd60d1d3f467076dc6ff423230c72c18213cbe21618c",
           "line_offset": -73,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/vat/rules.md",
           "sections": [
@@ -193,7 +193,7 @@
         },
         {
           "body_sha256": "fa7b8a7efeb737aa8d5db80669c149e95d9ec4158a6c6ee77c7a2a9393978e61",
-          "header_sha256": "5bbf98346788639c01a0a8fcfa01cedfc6b9066c9878d9ff8720506d4a1076cd",
+          "header_sha256": "fe9fa0327bee17433836ad8b655dabff15ceb06748aa20ee25ede26d6c3f333e",
           "line_offset": -279,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/vat/examples.md",
           "sections": [
@@ -204,7 +204,7 @@
         },
         {
           "body_sha256": "5e707372487bfa99cdbeba2451a0589477d571bb31c7da81ea146d40c3ae61d5",
-          "header_sha256": "757d261d618351d8e249a218074bc54d64039809a0fb8263b4911e55b6cff44e",
+          "header_sha256": "34c08e9ab8dde61f85c9ce191cb7170fbeb6e7cb4240fbb9eb1ea155f44cd8cb",
           "line_offset": -305,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/vat/notes.md",
           "sections": [
@@ -225,7 +225,7 @@
       "parts": [
         {
           "body_sha256": "71b6f64435aa2e7ae11fd3c96614f5fe60e5db33621e75b011aaac08480c45ee",
-          "header_sha256": "149c3dda85cef2472447567a5478783d66a51d419c28ffb93e621ee2005ec739",
+          "header_sha256": "d46a3a9cdb4e6594aa5b96505fe9912a2aa3e5767ab6e56ea104607b0d26104b",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/private-company-and-corporate-tax/figures.md",
           "sections": [
@@ -237,7 +237,7 @@
         },
         {
           "body_sha256": "ec68e4482577588c16d084d696a91e3cf4f969dcf9f09fcf904a230b3bf8463e",
-          "header_sha256": "027d64c626246b2ecf4a7226e08a3ac9f776eb6c132ec0dc5d2aa83c60728fd1",
+          "header_sha256": "9cc6239d71f3796e28febade52b13a064d3d9abf51ee5ecbd7587d615e9d6835",
           "line_offset": -40,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/private-company-and-corporate-tax/rules.md",
           "sections": [
@@ -248,7 +248,7 @@
         },
         {
           "body_sha256": "e30141a9b54874dce8949df22e30663599d1e72c813d814832eea4cc615e5fda",
-          "header_sha256": "011683e944f5c9e5356945300b66dd026312128ae09e769afc03ce886980b433",
+          "header_sha256": "adf29dcabc2e8773ec883833e20c293b6c3768a4a7bb8cbaf3e42ed26d47630f",
           "line_offset": -138,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/private-company-and-corporate-tax/examples.md",
           "sections": [
@@ -259,7 +259,7 @@
         },
         {
           "body_sha256": "8e6ac6224d9f2f173950e2e10bbcd62a234a6bd7f5f5e68350afdd2ac0c53da8",
-          "header_sha256": "d4ed67c58ed5fa58e835a6d63de02308811438e24a50db8ad1f196892ea109d6",
+          "header_sha256": "8749f9fecb6b25b451176031b86bae7d624dda2e96a2b47dd1d46fd7988cfbc8",
           "line_offset": -240,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/private-company-and-corporate-tax/notes.md",
           "sections": [
@@ -280,7 +280,7 @@
       "parts": [
         {
           "body_sha256": "88de7cb9418215443d6fcc792bfa07b6ff7cf51b479298d65e9b3e9e536cb7de",
-          "header_sha256": "ff13968a88170079e71cb733fffe7fd2bf481ef00a2560fd934cf7ba74beb276",
+          "header_sha256": "c54a9fa0e05ae354d1bc8dea795d475f54937beebc2e70ff4128514ae454b98a",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/income-tax/figures.md",
           "sections": [
@@ -292,7 +292,7 @@
         },
         {
           "body_sha256": "ed77e7e4a33b48286c2d049315567381054aaea7a380c1fbbf250c7f1444e4c2",
-          "header_sha256": "4f0a94b7dd9aab1c6d5b529ab768f03db3e205bce08652d3f5fc459d02daf361",
+          "header_sha256": "3a32b3420b39f5c056820b3b661dd1f45bb6c6ce8874ab9782040dc0a33cca99",
           "line_offset": -27,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/income-tax/rules.md",
           "sections": [
@@ -303,7 +303,7 @@
         },
         {
           "body_sha256": "9068e552bd00f71aabb87cbc450f5be00e0fd6dddc4e89c53ceec32933890787",
-          "header_sha256": "d0ac1fe7eeb46f574a00cded4763234401b3985e3abe834ef74f43bbbf6cba12",
+          "header_sha256": "d276b9b69cea6ce4e69a9ad53bd2a626323010f3151f62432c11a82367320fbd",
           "line_offset": -97,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/income-tax/examples.md",
           "sections": [
@@ -314,7 +314,7 @@
         },
         {
           "body_sha256": "fea1a8ae196e98d354abf760b302b5f186c378b3895408c9b355602de185a0b2",
-          "header_sha256": "b77de83bf9e79cab86084d934c848d84d2cabe40e203d5d0b181f49f448286d1",
+          "header_sha256": "eb9cf0f1ce4efc96ecf18d1c586a70b072a38d68d55c51f0a84c336f7312df28",
           "line_offset": -141,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/income-tax/notes.md",
           "sections": [
@@ -335,7 +335,7 @@
       "parts": [
         {
           "body_sha256": "692d910417d898884180aa837fad5b982b2d12c4b0f97b8f952ba894dc956087",
-          "header_sha256": "375889366c5727f5773b9fbbd7541435930ab9d74a4c099aadbf2295a1d1fc24",
+          "header_sha256": "dd19c4b9ab4b24b7a2c40b6aeb273357f6aa5c9c27c66a60e0d5fddd3a55125c",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/investments/figures.md",
           "sections": [
@@ -347,7 +347,7 @@
         },
         {
           "body_sha256": "d9e13c2334fb2c8e6531a0098e2c10309705b0c92902a0d087b3fa3da413eaa9",
-          "header_sha256": "4c0118ad28cba41a9355457a76c3eb5c12c8f30045595da32534328484c343b0",
+          "header_sha256": "a6fe497972d8a0ee081a0cdf0bf502473a5b2127254e700901b79cd6443d2ff7",
           "line_offset": -34,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/investments/rules.md",
           "sections": [
@@ -358,7 +358,7 @@
         },
         {
           "body_sha256": "e779d4ffaa0c178c39fd43b3deb6f14aba2a4cb7fb46300bcd21cf2d0d5b7240",
-          "header_sha256": "9411e4fcefa31b83caff8dc9774efde5711d0e6412ccf49355d3ce5c616fd75d",
+          "header_sha256": "75d8b39dcad48dbe0d28938ab36255a8541c139f91af45cafb2d69ba97681fb5",
           "line_offset": -128,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/investments/examples.md",
           "sections": [
@@ -369,7 +369,7 @@
         },
         {
           "body_sha256": "65e9dea7d209582440c6440e3a55d85be49d7a50e361e87c79f968aeb6cf98f0",
-          "header_sha256": "af7f67629c4c2784e00c34d8f7e7c119211853dddc403bcc32be95d701f7cee5",
+          "header_sha256": "4ad102a01702aa12e51eed8d5fc373b423a7f28fe0ea7a1d211e5da6e5053b22",
           "line_offset": -233,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/investments/notes.md",
           "sections": [
@@ -390,7 +390,7 @@
       "parts": [
         {
           "body_sha256": "efff7fc90eaf0e68331a785fb9a18c2da10f90ca8b93fc17e6be8dd539112948",
-          "header_sha256": "bd8c2bcc94d60d9c14131cad0b9b4166c872517900bda16e4a2723c6fd449a7b",
+          "header_sha256": "ccbdd737acecf9df83b5e1b4305a7cab9cce93328c24592da2ab51c0f508512b",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/costs-and-car/figures.md",
           "sections": [
@@ -402,7 +402,7 @@
         },
         {
           "body_sha256": "a1d0364cbe637dacb26a3a36ab6c6881f6d8cb5da1c420ab94450f157d7b113b",
-          "header_sha256": "a4d5f7e2a2fdc49009d780d3425e2eff7759cb308159a02b3309ece1e543e3c5",
+          "header_sha256": "d15463990ea6a5261ee8fadc20c429dc4121b75f1779b4636f380552d9e30c44",
           "line_offset": -34,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/costs-and-car/rules.md",
           "sections": [
@@ -413,7 +413,7 @@
         },
         {
           "body_sha256": "a0b0374a9678b664d3b14165d44f1e0dd813f63b17c0a6183d8cb818e6bdc566",
-          "header_sha256": "03955e3386a7453aac6d87b70fd48245e10a3ccda4242cd8385a9cec5c7a315d",
+          "header_sha256": "ce9a103a57876431dcdf61066d1f9106be5ce023105872f7622dee57a0f88dc9",
           "line_offset": -154,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/costs-and-car/examples.md",
           "sections": [
@@ -424,7 +424,7 @@
         },
         {
           "body_sha256": "f001ed831e7e78579b780bab0b1c4df9e7b617ddec0105b0d39fca4ca8cc2ff4",
-          "header_sha256": "6eba4adebf4bc6d73ff5fea7923aa2497f1da9126320ec8ce252f2a0afc7f17e",
+          "header_sha256": "0bc8a0e13f9077d6f0af58c0592bdcd58046347ae32ae72dfa910a287fd59fab",
           "line_offset": -266,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/costs-and-car/notes.md",
           "sections": [
@@ -445,7 +445,7 @@
       "parts": [
         {
           "body_sha256": "0e6e04fcd2e96974d10d6a4a15549f54c23f818dda80e7a33f3be96a80c847af",
-          "header_sha256": "bcfabc2519f687667baeca2b6d69d67ae5a7d2cebb9dc70f47eadd967e749a0f",
+          "header_sha256": "7a28765d923bb1a291c365b0278fdffc9044c50e1f3c51a45a069dd11443fd79",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/business-deductions/figures.md",
           "sections": [
@@ -457,7 +457,7 @@
         },
         {
           "body_sha256": "0a7630e299171f20ae086f5c1cf8a4253fe26d232ed29a6b2588bc23299b22c3",
-          "header_sha256": "dea85704ee5d177f7b627356f8e724ab5b95ddab7f4a598b0a1ac7c59cd64ad9",
+          "header_sha256": "135dbb11a9472646b9cdb6d06d25500e889c6ff6a494f422fe7c8bf4ab394289",
           "line_offset": -32,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/business-deductions/rules.md",
           "sections": [
@@ -468,7 +468,7 @@
         },
         {
           "body_sha256": "f1c9247f27724a03800a19f4a7cbd13bff517b48357b326a36f71bc5e4c92bb2",
-          "header_sha256": "c7cd9b99557012118b48be77b20937aafddae743e27ddc1ea981a760d6831c92",
+          "header_sha256": "17093f4a56d9cb48e9dfcc840db2719e131929bfd6ea91151f743b948c4aa394",
           "line_offset": -156,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/business-deductions/examples.md",
           "sections": [
@@ -479,7 +479,7 @@
         },
         {
           "body_sha256": "0f00fc30fdb3b2275b93689ddc7607d26d1f06d7d9f99f977009d2feb59e864d",
-          "header_sha256": "9bfe1e7e3744cf56fa01f3c3506b513f15ce32fa2036f62baf12dd9a07c31bab",
+          "header_sha256": "ba5d501cfb42bb0993b676835c795f9367897daec71b2e0a8d49be5dcc863206",
           "line_offset": -285,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/business-deductions/notes.md",
           "sections": [
@@ -500,7 +500,7 @@
       "parts": [
         {
           "body_sha256": "d7c7c46bb61e1428f01019aa683ad2bd50ade8e4a1d84f27247060f95fa762e2",
-          "header_sha256": "90f0f9bb809bb5e17b567eb0e437bdd5a68c4c2957b789b4d6a0fd732621d8de",
+          "header_sha256": "dc3257b961731748f3d232784ecdf4e053ef98404d1776d5d4ab18a6cf3c9093",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/pension-and-disability-insurance/figures.md",
           "sections": [
@@ -512,7 +512,7 @@
         },
         {
           "body_sha256": "1a556a5f412dd97eb5be7564dbf6985c9c3e5abe202eabd0c661a9cf811bb593",
-          "header_sha256": "b4c075fb4061628aeb5bbc92dd65ec90bb59e5891442a9e483bc8fe5d636799e",
+          "header_sha256": "2ffe611f01564c20c3a82f6352726054a40dd5aa3fe35285878708c8f6ac9aa1",
           "line_offset": -46,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/pension-and-disability-insurance/rules.md",
           "sections": [
@@ -523,7 +523,7 @@
         },
         {
           "body_sha256": "d7d13c200bf4494addbb6b7fa701001289de81a754e9bd43898dc6a566beebda",
-          "header_sha256": "e7eb5f259da91ad852b50cfd40d1389b1690a11491515b8683fd0548105824ec",
+          "header_sha256": "62615dccbb8daa28ef0abbddfcf6f8a1a5767b8e5cd4a265f8af5dd4f5bbbbd8",
           "line_offset": -168,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/pension-and-disability-insurance/examples.md",
           "sections": [
@@ -534,7 +534,7 @@
         },
         {
           "body_sha256": "81b074dd83e6519d4be705ae62ae10563534d59428adef9328f224bef2f38d52",
-          "header_sha256": "5d1b5ab0b7db9383eac0db8632ff4ad1471513a407e993e1cee4994ec2e8888b",
+          "header_sha256": "31b3f106c188ba70cb5a3908991739fc39c13a940502f55913d7356b2664074f",
           "line_offset": -256,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/pension-and-disability-insurance/notes.md",
           "sections": [
@@ -555,7 +555,7 @@
       "parts": [
         {
           "body_sha256": "4829134ce3e105ffafa6cb44e7c761827bdc5c9a7736c232aca6023a1d626c02",
-          "header_sha256": "237cd8e44f123fef3eff5e4dab29f2ed32cec66f31283bcbc8d98a733a069752",
+          "header_sha256": "9a302bc71428781f5ff4f881ff70bf28e9ae915650dc825cec6e3ccd921ba9bb",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/procedure/figures.md",
           "sections": [
@@ -567,7 +567,7 @@
         },
         {
           "body_sha256": "a9c6231a039587c8c3c7ca5aa579f7396fd05b0960e37d0470b0d9ef35daac91",
-          "header_sha256": "043b4a2c7d67e057978c34cc59b47fd8d98422f487a4827d8645ecac81946d8d",
+          "header_sha256": "4b59770034793ebd678e1f5934195bcd61ff29c757bccc53ba7e99495ae3b08b",
           "line_offset": -58,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/procedure/rules.md",
           "sections": [
@@ -578,7 +578,7 @@
         },
         {
           "body_sha256": "538117e094b61371a77839058c762b256682c1f9ac2619ba1ffcb989ae8e23d3",
-          "header_sha256": "33adaee890e2703621405ae652aedf2c6ea0fa9d064afb13ad7d71714ca812a8",
+          "header_sha256": "5172e4a0ed2f6c880247b4987967f4ca979e0fa80edd979985ae8f4cec7dfd81",
           "line_offset": -228,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/procedure/examples.md",
           "sections": [
@@ -589,7 +589,7 @@
         },
         {
           "body_sha256": "4f34bcb69d00335391eb45441c1dbfa4089d3a6ec949434394286ed82d50a670",
-          "header_sha256": "2d713f1bc7ab9c4ad7035da8d33ebd2c27df9d29eadf03cfae24696200fea0f9",
+          "header_sha256": "f13acf5714c5affe6c3f8cbe705c747c6158e0ee48fe9cf67c8339f7c53fe2ee",
           "line_offset": -316,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/procedure/notes.md",
           "sections": [
@@ -610,7 +610,7 @@
       "parts": [
         {
           "body_sha256": "319a3762f530d303897ca844aa809ae49409e2fc2a0995fe4362ba408e26b5f8",
-          "header_sha256": "cc6215410b98132b342da05e05b17cef92209670b3dc34e5ff28bca6964ef87b",
+          "header_sha256": "b06358d82a6d0836739c60bef5f365a13c4dc607d71bab43f80060693a874bca",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/health-insurance-contribution/figures.md",
           "sections": [
@@ -622,7 +622,7 @@
         },
         {
           "body_sha256": "f814747d3bc512593f471b4f84c0552fbbf2e05fe00aa98c3c9885dec84fbd5c",
-          "header_sha256": "49d2c1cb629e6a4d2fb35e6e87b599f7c71aca0838e550cd4eb27cae1dcb4729",
+          "header_sha256": "5f5a6152356316d02b8b441dd5baeefa46a2d2a00a39e0845cec4d4a581bf591",
           "line_offset": -22,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/health-insurance-contribution/rules.md",
           "sections": [
@@ -633,7 +633,7 @@
         },
         {
           "body_sha256": "6f9762716df56d6ea9b7165cd30137279102ff3fad4e84b2797753e74cc41f69",
-          "header_sha256": "631f5ba7aaeed6855e87fddef5e6125e25f8faf6027fd7ebde3aeb38699109d8",
+          "header_sha256": "4604cab4094bea480bbb653fe43308bd349ecbda0ecbbec3f61937dc1874ce0f",
           "line_offset": -68,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/health-insurance-contribution/examples.md",
           "sections": [
@@ -644,7 +644,7 @@
         },
         {
           "body_sha256": "891631c6fd07f96bb4512c508d06ab06dad1ed51f3790779da040023e038c569",
-          "header_sha256": "66bb482e8f827483b94cd6688c3ec83eddfbc4abdc5c4607a10a47fdf16fa2cc",
+          "header_sha256": "f47608e80b447d782e0bf26b0eff109a54b028944db6439c185d3e90f9a6e279",
           "line_offset": -124,
           "path": "sk-moneybird-accountant/references/tax-rules/2020/health-insurance-contribution/notes.md",
           "sections": [
@@ -665,7 +665,7 @@
       "parts": [
         {
           "body_sha256": "839bc8fb46cd6af581c221dc3e01d7fbc805035071f2c41c6ba63ec9177aa96a",
-          "header_sha256": "b863fce3be9df7263a14366385ebe13a8dda47d83abca6f33d09885cf1012096",
+          "header_sha256": "81de72045c87c4d74c8535c8ee9284f6637d4a6615bbbc026c408add647a8651",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/work-relationship/figures.md",
           "sections": [
@@ -677,7 +677,7 @@
         },
         {
           "body_sha256": "1c636e70610f23dc67f4b82efae1dc16b858785b771fe45c1610fbaab9e7195b",
-          "header_sha256": "2bb6c528a480beee277eef450550da6f2be92dab49552a4e6f6f128704d2ce15",
+          "header_sha256": "5e0aa0c42774005a786328d1ff74733b2093dcd418c88dab4c40808f86987380",
           "line_offset": -21,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/work-relationship/rules.md",
           "sections": [
@@ -688,7 +688,7 @@
         },
         {
           "body_sha256": "c0beae96163542529842deb2f4df197637f92eafb46dc0badd355b932bfbe7c6",
-          "header_sha256": "c65521d0bba42799d65a5226962f91a7257508ef4b2e2bf934eea81f0b1597e3",
+          "header_sha256": "febbd01b9a1c497dc8692150ad44d539e3b7cdd78d9c3db2cfa3ab9a1f0fa722",
           "line_offset": -71,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/work-relationship/examples.md",
           "sections": [
@@ -699,7 +699,7 @@
         },
         {
           "body_sha256": "0769560ebd8b1a7e01a853a4a8dabc324fbe67e2cac97f7de1042ba2f201e3ba",
-          "header_sha256": "69be3c62134f225d91f35b4271da6f958efb13505006ea562d81bd8fbd07d313",
+          "header_sha256": "0590b1b95d5a35ae000fdc166ba67c973cdc991a257a409e9190f2193c4a6db5",
           "line_offset": -199,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/work-relationship/notes.md",
           "sections": [
@@ -830,7 +830,7 @@
       "parts": [
         {
           "body_sha256": "495da80fceb77f9d492b00b84bd7571d1b3097022661bf8a3d13d25c903585d9",
-          "header_sha256": "829e27a550ad54b52c370c83cfa0ee08798229169038b86632dc8a0790783856",
+          "header_sha256": "cde228898e45be563d6a2753e3c7feaf42cea8a3ed863901537a7c9d6b794639",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/vat/figures.md",
           "sections": [
@@ -842,7 +842,7 @@
         },
         {
           "body_sha256": "67bb6108b995132eb02b404cba0c6605894894ef219c138908825fd80d9f4b98",
-          "header_sha256": "b992969c3039e1e419c9fe4336ad681642d13e4993d42a87d64ec6657f32e197",
+          "header_sha256": "7156552689fcbd66398ad3a27ef29f250b4337ed5189e42f1e7c8182618adc7d",
           "line_offset": -54,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/vat/rules.md",
           "sections": [
@@ -853,7 +853,7 @@
         },
         {
           "body_sha256": "40a69bbc56c04dbb03fb8e51a4c5ff0d72b0cd0569faf5793e11009e7f367d69",
-          "header_sha256": "8d995c01e48a3768543d09c77244e4e115abdfed2a12483dc8560453a3f790e9",
+          "header_sha256": "44e4730ea025ff9571ea19bf958171645304f6e05c9d8ef02bb2fe1d70011112",
           "line_offset": -208,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/vat/examples.md",
           "sections": [
@@ -864,7 +864,7 @@
         },
         {
           "body_sha256": "c1d2ace7db0cdb26cb5322221e1a2000434a8f237427d3e1bbec5527bc300d07",
-          "header_sha256": "3c18b4e32ecbf29765005bb7473c044c2a92136f7916a1847a965f2ad2041ec3",
+          "header_sha256": "93afbf7d4a930cfc51c2a35ed5bf9f223e0edf0fefce992d6eace116972d2ae7",
           "line_offset": -370,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/vat/notes.md",
           "sections": [
@@ -885,7 +885,7 @@
       "parts": [
         {
           "body_sha256": "892ccef6ec90c4010129bdafdb1e48402a47f001d19949cd9fb62362ed4f205e",
-          "header_sha256": "9a3471849a75ca06cd6f34a1881ae50c45290f8e3f561c18899339ae0036dec1",
+          "header_sha256": "ac6f28452ef86e78612490315eb9da10fcfbf6e7834b704ca57199d846080486",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/private-company-and-corporate-tax/figures.md",
           "sections": [
@@ -897,7 +897,7 @@
         },
         {
           "body_sha256": "141f6769bcfda31965c47d39f5d44b056bcb4c6d4d4fb25d8aa23f27c4874594",
-          "header_sha256": "7ac7d01ec714f4d6463a136846e28e346c85dc345acf6b41d3c2a5c871c9abb1",
+          "header_sha256": "10ec713b1a523066b39d8761c896c1296fd476d3417b54232bee8dec52247447",
           "line_offset": -45,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/private-company-and-corporate-tax/rules.md",
           "sections": [
@@ -908,7 +908,7 @@
         },
         {
           "body_sha256": "a1bcd87570a34ae98d9b388103edf4c02ed08d05e6080efb46b1867804ba3d5a",
-          "header_sha256": "162d666604ff1739bd303dfce551828b895c6d6842bd2b69f5c6b490d3cd211c",
+          "header_sha256": "db27b0d35f91bdb8ccc6e54c06c186c8f2d126902f9eb5cebef4611914cc9173",
           "line_offset": -163,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/private-company-and-corporate-tax/examples.md",
           "sections": [
@@ -919,7 +919,7 @@
         },
         {
           "body_sha256": "ce15d69d6766d6f6317db4c793dcee6134558b0e56fa33d15f4f2f7b6269df18",
-          "header_sha256": "9617bbdf03c9b1b38e7bb1d5f9a03465a6f4b368a8669045faf27e12ea048e2c",
+          "header_sha256": "8a775a7d5ea2b1be435e52d889f0cec1da5676acbd2c51ba784a57e0e333fd7c",
           "line_offset": -347,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/private-company-and-corporate-tax/notes.md",
           "sections": [
@@ -995,7 +995,7 @@
       "parts": [
         {
           "body_sha256": "2acc47c6af2f8327f9e0bea82fdbf3538efbb0cfac5984a534264654119227b5",
-          "header_sha256": "28e86cf748226c9c964d614b01b9fc62f3c9a82212e80a31d368ee8f7cf5a59c",
+          "header_sha256": "d35e2bb1be76b9dbedf37ad9d0e65dd4e163be60ec324e076b409b3296551615",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/investments/figures.md",
           "sections": [
@@ -1007,7 +1007,7 @@
         },
         {
           "body_sha256": "ab9cd9121c1268e185953a58e7b9024b87dab8f4a418726e412a456a538fc34c",
-          "header_sha256": "0b55f9d39d90bd7d37259d2f193f89c301c13a89947958442f226ca30c251b90",
+          "header_sha256": "d8d615f305cb66c7d7578b59139804f93fc462aa214baa71f1ef372e11bf8518",
           "line_offset": -27,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/investments/rules.md",
           "sections": [
@@ -1018,7 +1018,7 @@
         },
         {
           "body_sha256": "ba388cb1cf0f0f716638fdf23496a4f6b52710c6c261a0e467d277cedf400425",
-          "header_sha256": "e196adb8e949db647fb397f8f4af8d9f323d7ec2c185a4298ef530a049eb8c40",
+          "header_sha256": "7bda3ae80d0e79f3d04edd7649bb0f8b4004b1ed92afc1fc10dc89a670e7d1a0",
           "line_offset": -109,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/investments/examples.md",
           "sections": [
@@ -1029,7 +1029,7 @@
         },
         {
           "body_sha256": "aafcde584f46837828a2437209812a8b051811bdf120774f8de95c63c16d787b",
-          "header_sha256": "f020cda387999c368b05912a189072e2bdbab7a66f5044e1d31f5508848d7d7b",
+          "header_sha256": "7e3fa4c06c9049a0e0838af2adc1a861239c2f09a024cbd66370edd999fa7b7b",
           "line_offset": -212,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/investments/notes.md",
           "sections": [
@@ -1105,7 +1105,7 @@
       "parts": [
         {
           "body_sha256": "c0432cee8ae34d60dad1e0137868295febac18c4f72fd2045e7f2830ce241e6a",
-          "header_sha256": "ae6edb20ef5f3e0769a44ef5947102003528d251d0ea2550bc358b3c90107aaa",
+          "header_sha256": "7b2e2641b854476ca96d1a178d1d972451d4f6120817e6cebe628b3360b0fdc4",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/business-deductions/figures.md",
           "sections": [
@@ -1117,7 +1117,7 @@
         },
         {
           "body_sha256": "9370d128ca93458582c6e3875c995dcf12059f11ae6372cdd9f74cc26a7c04f0",
-          "header_sha256": "e420e75a0cf67bb963268d641a91ec0cadea6f232e3a15d4513ce6ce80ae0f28",
+          "header_sha256": "d6e769fc2c301a142a50ae51b51fddcc1147c04fe674575fdb5000be40d7304b",
           "line_offset": -39,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/business-deductions/rules.md",
           "sections": [
@@ -1128,7 +1128,7 @@
         },
         {
           "body_sha256": "c2c2775a840c90bffa262209ebcded6db4ad002cb841090f99740a3a105376b7",
-          "header_sha256": "4126e2ee4270dc147171408901957c58222390b17a9a60c13e915d2b1c8b3562",
+          "header_sha256": "f5661d279f96a951e49156ffc9a877cf52c0536347eb63060edf2c6751847e80",
           "line_offset": -132,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/business-deductions/examples.md",
           "sections": [
@@ -1139,7 +1139,7 @@
         },
         {
           "body_sha256": "85ce0ab2a39a8cd9f20cc3246a4d95947936404c5b16306b93414f013cc1fcdd",
-          "header_sha256": "c2965b7669d0ff3a46c76c3bb795494ba406a5c9bc182ee386e5f1fc6dfca4ce",
+          "header_sha256": "5cb827e8de7ca7b20dffbea6dd9bb2b4396e04c6ad52c6274e9aeacea5581626",
           "line_offset": -268,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/business-deductions/notes.md",
           "sections": [
@@ -1160,7 +1160,7 @@
       "parts": [
         {
           "body_sha256": "1d3dcae457e7aa71415175c3db2f716307c178042f95d98af336cb3ed8735bc7",
-          "header_sha256": "21287e27e2daacd59ad442462c9aee16c7044052b3153cafc4bd2189fe3553e1",
+          "header_sha256": "e11855a76d16946dfa80108f7361f04fb0c1f06e87434cd9d2bcbf9c6c3b32bb",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/pension-and-disability-insurance/figures.md",
           "sections": [
@@ -1172,7 +1172,7 @@
         },
         {
           "body_sha256": "f668f7d9ee1303b68e218de354f8996d99fcb894c145fbfe8fc40cfdf8dddabd",
-          "header_sha256": "a0ce8b25fed230e8b63f1a6127f3e4afce8e6be1abe0d87dd0d12f0e291bff0e",
+          "header_sha256": "b90a98845839b6e6a52a054f8b9632b8097cb8d1cff1225a7384be16c68d6865",
           "line_offset": -41,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/pension-and-disability-insurance/rules.md",
           "sections": [
@@ -1183,7 +1183,7 @@
         },
         {
           "body_sha256": "4968be774812c96d5ffe18056b08a5f53bfd9d593a67177088a3c889f38f4320",
-          "header_sha256": "98d563637bbfc30d3757226fc4e917bbc8ee8215417122d9c6ed8ab8399c19ac",
+          "header_sha256": "e5c963de906a7df5b451d30bd444e5b50c14e9cc2d271713cf87ae05d1aaca04",
           "line_offset": -143,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/pension-and-disability-insurance/examples.md",
           "sections": [
@@ -1194,7 +1194,7 @@
         },
         {
           "body_sha256": "bd21caa5edfb8b1a8f56d6eeb60e2bbfb87ae508c658d4a5d28db4905b78c884",
-          "header_sha256": "361f59c399dd25fabea06120ebcb3bda49d8f64d0341185c9d54148580eea63b",
+          "header_sha256": "0e5e3da57f51c12ec3d6bef95f7bdaaa8030f927fb5814368c7b6a2a84d89117",
           "line_offset": -231,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/pension-and-disability-insurance/notes.md",
           "sections": [
@@ -1215,7 +1215,7 @@
       "parts": [
         {
           "body_sha256": "2adcba8e54e5434cbdfad1c934d3cafb4505c1367b69d9973bef34db63276c8d",
-          "header_sha256": "02a2e7ce2aff87ef90b96a22d06c39107e42f4474089587e7030f1e577328430",
+          "header_sha256": "9662bfe195717283d2532a9314ee5b2630eecb4876b21c674f1c672b2557c556",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/procedure/figures.md",
           "sections": [
@@ -1227,7 +1227,7 @@
         },
         {
           "body_sha256": "c47863c7c008dd37c25fa38206f7ea06810dc2c0dd7bc2ba7c6a1051aab7e52b",
-          "header_sha256": "7a15c2cd3700c180fb219244d2e104ea4a3f52f70908ceb0478fec737a5330bd",
+          "header_sha256": "c1762e68d31fdf2af8c35ffa61ea3c7edd2b6cff14eb28902173959eb458b9db",
           "line_offset": -25,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/procedure/rules.md",
           "sections": [
@@ -1238,7 +1238,7 @@
         },
         {
           "body_sha256": "12e0c83d985d0087c29056086dbf8e32dc24abcf6249ee4ffe251cc6ad5c22cf",
-          "header_sha256": "c5d39e0baf22de2b95b83890e495251ecf39bf5d116d1621f05e08d10ad18150",
+          "header_sha256": "9b42edb98484165a277fd9551e559c2122f289e1c9b9285f38093b911bd29063",
           "line_offset": -135,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/procedure/examples.md",
           "sections": [
@@ -1249,7 +1249,7 @@
         },
         {
           "body_sha256": "42e6e189a7080133ba63581f0cfa5fe5d384253688931247e58bc2a553de6a1b",
-          "header_sha256": "005da44270b880a282c29ba51129aa7a4d8d280a277913fd7a7f0094c15c384a",
+          "header_sha256": "6d6e0232a60f735996cddc8eef4050bc6edecc164314bfefeee92ffe1c16e085",
           "line_offset": -207,
           "path": "sk-moneybird-accountant/references/tax-rules/2021/procedure/notes.md",
           "sections": [
@@ -1325,7 +1325,7 @@
       "parts": [
         {
           "body_sha256": "1722612246f50eecb2d4fc83c367c9683408b3533cc2600c2edcda50a5de7a3f",
-          "header_sha256": "5d41125631e19a6cf7e9f75ae5aa66dfa8a4bae2aaaed196b68782d9c4459b82",
+          "header_sha256": "8c7ee8c89c7af7775a62dcb24b129cddeb0699718c09eafc9a4c0581cbdf8be0",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/work-relationship/figures.md",
           "sections": [
@@ -1337,7 +1337,7 @@
         },
         {
           "body_sha256": "9e03e3a86cb58865f9a3c2ab52a21e33801bda4b5f43eadd5b2134d549573e88",
-          "header_sha256": "124752eeebfbf0641863703f0c1d63e2408e1ea5bb891395105fa6ac4139c0c4",
+          "header_sha256": "380735954467606322ea0f3176bd2042ecea200536315d448230ed88b634e056",
           "line_offset": -38,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/work-relationship/rules.md",
           "sections": [
@@ -1348,7 +1348,7 @@
         },
         {
           "body_sha256": "a073ca0556b4dec42f72def23a506bf4f312f3af7abe02adc26503ebc5d2b651",
-          "header_sha256": "260287c1db8439811293fe3b24304dc5def3bf58788e2468ff19025ba25f465d",
+          "header_sha256": "1de81540dfd7c9a4e69f59745a3b2e663f7233464226993ba694ca42309cfb3b",
           "line_offset": -186,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/work-relationship/examples.md",
           "sections": [
@@ -1359,7 +1359,7 @@
         },
         {
           "body_sha256": "f4f1bbddfeac594eb51da899aa4b8c2a461d6fa36e67badc4ab5c55186868cfa",
-          "header_sha256": "d138962460241942eef9bfd05619b74fab92b3aa2d9b8e9460371c18584d80e5",
+          "header_sha256": "d4400e7ad10ce2c3a828b87b20827dc6fbb73c676aabf65f4c737d179ea98dfe",
           "line_offset": -280,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/work-relationship/notes.md",
           "sections": [
@@ -1380,7 +1380,7 @@
       "parts": [
         {
           "body_sha256": "7fbba58f3a215bca284a52f25270a998bc804d1afca89dee447a5e1f011fbc53",
-          "header_sha256": "78a3daa796549dd9983da9cd47ccb02acf0f34aceb6ae2c99b5580b47a7f28fe",
+          "header_sha256": "68397bc38722aa8467311abf13c0d47154bfe50301517512db9a0e5b149f98cf",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/box-2/figures.md",
           "sections": [
@@ -1392,7 +1392,7 @@
         },
         {
           "body_sha256": "0dc2e9c4cfd3a677ac177ae700b259dbd6de64c0bed051dab1f22143ca2f86ef",
-          "header_sha256": "eb18192840bd2da090a873ee6882e0adad8f8a92eb73d6c3186de8de1e35ac1a",
+          "header_sha256": "7e68764b39bef1175cf043f5832663fc2cd5158dee07f4c2f43424c8ad820e4d",
           "line_offset": -31,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/box-2/rules.md",
           "sections": [
@@ -1403,7 +1403,7 @@
         },
         {
           "body_sha256": "2864e97c79a11164527bc113825cab76147f806ba8fbf419fd366f73beb76839",
-          "header_sha256": "d8c8c4ce85d69728aa6be932ad0c5dce9f8d46e01b4b13ec2e8cf64b997a752d",
+          "header_sha256": "64574adbacbb327b7240ff2c949019fa317964b7f733ac43ce3adb8dc6764061",
           "line_offset": -145,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/box-2/examples.md",
           "sections": [
@@ -1414,7 +1414,7 @@
         },
         {
           "body_sha256": "5cfeedcf4c83a5779d4dbc19f1815fd50cef66ebf62c9e1b4f064babcacb37e3",
-          "header_sha256": "509caf1a3a4f50fd7f41864bb6e2ac4aec100f2da1638f4ee9aa84f625a2d2f1",
+          "header_sha256": "3f32972708924d6f9a59fc0b9d07bc0f865d03666ff255ff274dc954947b274b",
           "line_offset": -249,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/box-2/notes.md",
           "sections": [
@@ -1435,7 +1435,7 @@
       "parts": [
         {
           "body_sha256": "e597b743770f87dfdfc21f95258d3af16ba7bdc5ef5ff96ec8d70a203988cfd1",
-          "header_sha256": "1e5fb5e8de2a4822120c1191984b75a4e0e4c8839bf6b7e5b3ae7d6cb8b0d899",
+          "header_sha256": "8223aa42ac6b05473bb92ef7bb18610c1cc67aab8defdba0cd50e8931b27df91",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/box-3/figures.md",
           "sections": [
@@ -1447,7 +1447,7 @@
         },
         {
           "body_sha256": "96ff6f9ba7cecd81d6d3fc941c744898fab47379e57ecb5d74b72c39c82254e6",
-          "header_sha256": "dc4771f0c5c8e6808803a5edf5634f6650acb6c19fa537709e4bfad827acd525",
+          "header_sha256": "6cf9509620c66345852faba8e727294fca10c08207ea7d1ff91a48b138d7a464",
           "line_offset": -25,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/box-3/rules.md",
           "sections": [
@@ -1458,7 +1458,7 @@
         },
         {
           "body_sha256": "1346d5366ff5d03e9741c2b4f693bb3d00a245d74510969e2903877cb75fb082",
-          "header_sha256": "216c64d0b1e64caf8e17df71caf6aa403e34793e953f2e03faf90798146f3ae9",
+          "header_sha256": "b9054aa264bdb0afb1e6d0ac6bb3e81c4ae788550f960e4d1e92eb6becb6ab35",
           "line_offset": -111,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/box-3/examples.md",
           "sections": [
@@ -1469,7 +1469,7 @@
         },
         {
           "body_sha256": "d44d61fb5039fe9f101baf8e054969adb915bcb0b8d0b9c595b0867284632da3",
-          "header_sha256": "98c22c579a2ea5c68e07a9d4604289cd52ed6b7478397b400bbca3c7b7a9074f",
+          "header_sha256": "86c6e3bc8f4a0e9cccc33d5ff076db8a40b7ff1a2a7fa5e75fdc5672fc47c294",
           "line_offset": -171,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/box-3/notes.md",
           "sections": [
@@ -1490,7 +1490,7 @@
       "parts": [
         {
           "body_sha256": "717b6ebe13d8d8fe5d6aef167d4074185b65b5d4e009f0e630dc8fac44a8daf0",
-          "header_sha256": "70478498bbe86bb92abcdd9c9650cc196012350d5c1e3ef1c0fbecb860ec9b6e",
+          "header_sha256": "05b0ce3f0d800a44eeb1fdc91d63ba530de116586a304036dc653279b141662a",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/vat/figures.md",
           "sections": [
@@ -1502,7 +1502,7 @@
         },
         {
           "body_sha256": "661c3170367da94705c56d5e11420540397d59dbd82f1c0ba31ae573f8348847",
-          "header_sha256": "581c079c369511cd501f881462aa8f392291f05e52efa9f3d5c7f3b69ae55763",
+          "header_sha256": "77c7dec9c480b4c9f2c628a0864e29e2909c529d1581eabe97dac169b45bdf86",
           "line_offset": -55,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/vat/rules.md",
           "sections": [
@@ -1513,7 +1513,7 @@
         },
         {
           "body_sha256": "1e24242021338c8ed67a091ce98ee943d3af5ad47fe3429a6b3fb5167c17d63b",
-          "header_sha256": "7ced683effba59588ce238fe13015d55b976a67894b28df142315f6f82645028",
+          "header_sha256": "da52933179b581d0cb39feba639a6523d15f46a989a80186900f22e9775d0178",
           "line_offset": -213,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/vat/examples.md",
           "sections": [
@@ -1524,7 +1524,7 @@
         },
         {
           "body_sha256": "c92b1370839e07faaee3c4dbc2bb90ec54ec0647e5020e9ea2f1a84eae0852c3",
-          "header_sha256": "211b359a90c0fcf6c8f1a551db87f74ba5518d00bafea55e27e4665eb75ec1e1",
+          "header_sha256": "c26c69c7867dafd084d751b96f7a4b0fdf98c1c4ce9ac850f4caeb61ffb95014",
           "line_offset": -273,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/vat/notes.md",
           "sections": [
@@ -1545,7 +1545,7 @@
       "parts": [
         {
           "body_sha256": "9a1c23ee3575baf5648005e8b897187b081d0b0f2df6fde3194f02b8093327bc",
-          "header_sha256": "22e974fe17e0cdeb88b551adc030af2e58e21e786fc53d4872ce3dd1e4771252",
+          "header_sha256": "c9d160f85d01fe0c03b9fc4fa6e7167abcc5d99e9d289eaa66cc90426ae73cdf",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/private-company-and-corporate-tax/figures.md",
           "sections": [
@@ -1557,7 +1557,7 @@
         },
         {
           "body_sha256": "bfb66ed65e73805fa97e7c2d659696fc3d28e906eff848c145f6b0c040002976",
-          "header_sha256": "a5e3252b3f1d1b602df4291d0abc557447d3fe368cf2c3cd2aab9debeb60f94a",
+          "header_sha256": "ecb9c3e5b58713c7d228895204ded2ebddb4bd75ea96e35b8b3dcf146f9f6b62",
           "line_offset": -50,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/private-company-and-corporate-tax/rules.md",
           "sections": [
@@ -1568,7 +1568,7 @@
         },
         {
           "body_sha256": "ac884c6dd848483e0e8485c9fb9d1667dcc889528f03e8c2d5ea8f4bf272e577",
-          "header_sha256": "d3fcae74970a3c1987712ec7d69bbf364f5e3f400b85acd30bf3fac9902fb7ce",
+          "header_sha256": "2e49701d976cbae2d0925fe005f08c9c3d90cd0168689e89f025bf77fa91141b",
           "line_offset": -155,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/private-company-and-corporate-tax/examples.md",
           "sections": [
@@ -1579,7 +1579,7 @@
         },
         {
           "body_sha256": "11bf8dfb7c567faa3ceaa2300dcefdb94c446daeed60df692f943858efaa00e2",
-          "header_sha256": "94b159af0b8a7b56164dbbfe9eea032a3ef0511c8dfb9d5dcd77c6df9b371e34",
+          "header_sha256": "fef78e7b40208007a47738ff568fe1b05ffbbb4bfcd17fbc881eb1ac001945ef",
           "line_offset": -301,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/private-company-and-corporate-tax/notes.md",
           "sections": [
@@ -1600,7 +1600,7 @@
       "parts": [
         {
           "body_sha256": "82cfe6dbd2c5fe5a12c8605e6a3852497078c51d05572ad90259b399719f17cc",
-          "header_sha256": "24d5930944889b8196f563423f8bd25e088cfb04e4a54c81e5fb052cd7f85aaf",
+          "header_sha256": "722a7e442815403c6185ab7b3b07e9ffbe93c73c2594e5441a2f7396a965105e",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/income-tax/figures.md",
           "sections": [
@@ -1612,7 +1612,7 @@
         },
         {
           "body_sha256": "036ecb3e60ef1a9a9550b79745dd0ab3cbc7308fd870f9ed52d1c7064e350efd",
-          "header_sha256": "9e1a8c5aaec126fdc8e4cbe3757c76520cc8e3a34932fc439dbabe07aa7473fe",
+          "header_sha256": "d3d046221cff1e9f611de2b62011dcdc365f318c928eb216dbe2ef8946d10fda",
           "line_offset": -28,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/income-tax/rules.md",
           "sections": [
@@ -1623,7 +1623,7 @@
         },
         {
           "body_sha256": "1e02001b074ba48196002d1b522040c97834b34fd3025ccfbf0f79f64fdeb93f",
-          "header_sha256": "646f1eeacd7a00269249a446c7036dd452dec653fcfda7094183cd179431401a",
+          "header_sha256": "617c177170cfca3b7d1e58886ffbf9225efc272a3481426fc4c0c8a27f2051dc",
           "line_offset": -106,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/income-tax/examples.md",
           "sections": [
@@ -1634,7 +1634,7 @@
         },
         {
           "body_sha256": "d590cb4954ba1ee2a87d9a397da2c1b848407832737ddbf0b0d520f0feb4c5dd",
-          "header_sha256": "42f92525c3dd414951b6522e83f4719dee6e5ac115d381814b957329c51014f6",
+          "header_sha256": "c133d9ff64a4f40107c81315237ca668111a4c415d50c00e6cc18d711b9e94db",
           "line_offset": -272,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/income-tax/notes.md",
           "sections": [
@@ -1655,7 +1655,7 @@
       "parts": [
         {
           "body_sha256": "7029f0f0184f624e679be2bd051cbbad727d155dcd829887fdba00090a045a00",
-          "header_sha256": "55e80c8590c1244ac037f8f9d3a0f48289ce188ba699896be22c1e5d8efeab9f",
+          "header_sha256": "6563d1092a4cb47c4879faee6c3cf82d18bb98aee8838ce5db5be3815d1ac053",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/investments/figures.md",
           "sections": [
@@ -1667,7 +1667,7 @@
         },
         {
           "body_sha256": "f3902a35e0532a20a8552f33d09108f98f19c98d290816120734e4fbdfc6dd0a",
-          "header_sha256": "a167a079c9f00a124f25af72329e17a2d0afc113e5cbc64be33ab4be0d4647d5",
+          "header_sha256": "95ff429670d4b23e837c0b73ab6a28e9b588f8865fd79285f4c6dc1f599e15ea",
           "line_offset": -23,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/investments/rules.md",
           "sections": [
@@ -1678,7 +1678,7 @@
         },
         {
           "body_sha256": "ee1650ba9bf17f82dcf1972694c3986381e66fed77a73302b6404b5fd7e02f1c",
-          "header_sha256": "0e70501bc49d6b119feb3188b11bee253b65e1f2029c3c772c8de8d7c792db2c",
+          "header_sha256": "c600a5fc108ae89da228fca78c9445b7a3cbf450cef4c764f61be1ecb11c4500",
           "line_offset": -133,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/investments/examples.md",
           "sections": [
@@ -1689,7 +1689,7 @@
         },
         {
           "body_sha256": "edf3585c2d8591dddd96446bfb13307b7a42fdb55763cb80eac827b3c380e689",
-          "header_sha256": "ff155f6169ec6a1eed5af43db36b87af728cac7c787c4c703361406d080d2330",
+          "header_sha256": "9b5abf93357480605bec2ea4326cb47e96ed0d84b1873914f35b9ff474ec8ee3",
           "line_offset": -243,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/investments/notes.md",
           "sections": [
@@ -1710,7 +1710,7 @@
       "parts": [
         {
           "body_sha256": "8a102506bf03ab89ac67462017abfdb3ec19bc412b8a6c800c2e2f9bb7516ca2",
-          "header_sha256": "baeb68903ff5693e13726df3c6047b0386bc07a71a7982288510e13c0a3ded4f",
+          "header_sha256": "f12f1ff86eb73fa55bad05d78a95586d0550485bf828d3201f99a6cb9fe87f9e",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/costs-and-car/figures.md",
           "sections": [
@@ -1722,7 +1722,7 @@
         },
         {
           "body_sha256": "4003295941cb0dd7f1fa819afc05a847dba23375c10b67fcf8e7ffde180d735d",
-          "header_sha256": "a4fa8c9ebe1db1092821ca855784e60683c92469fa364402089e4620e74d4d90",
+          "header_sha256": "0d5fcca32131c012c76c170d896aa112a46ab35529a36baa54ba913971b964b5",
           "line_offset": -39,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/costs-and-car/rules.md",
           "sections": [
@@ -1733,7 +1733,7 @@
         },
         {
           "body_sha256": "3c92ae5331e849c4272bb2fc366582f779c606154126cbf134b93a1492d6179b",
-          "header_sha256": "5e52c1159a1a358ad384f0a60b3950ab89989f0498e81ee0dfb1051e351f5f15",
+          "header_sha256": "c3a422ba0232dabfabd750536169d8cb302d90c12160477b645b790e3b27c027",
           "line_offset": -157,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/costs-and-car/examples.md",
           "sections": [
@@ -1744,7 +1744,7 @@
         },
         {
           "body_sha256": "3f1d3886e102595ac45220257609b83ff1d040d9f534126bc5659a1b6f6b2307",
-          "header_sha256": "dcdfe4bd33a20fc7b817fe99cf4a797fa3b75320314f6372aafa52b701c13de3",
+          "header_sha256": "77638f59e19624987a2e5c0b9849238ee1fd463d37ff45fac33294eaf2ecca14",
           "line_offset": -340,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/costs-and-car/notes.md",
           "sections": [
@@ -1765,7 +1765,7 @@
       "parts": [
         {
           "body_sha256": "c4224a908adad4ef152276b892dd62d35e6917423b5299b369760333036891fb",
-          "header_sha256": "99523fec4808a3602ea7979d77478596bf0be5714fcbd637e2236d1a989eb7ba",
+          "header_sha256": "25c6aab006b13f7e85923acc040b050d1e1e3f09ee3b0ad901a6eabf15116061",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/business-deductions/figures.md",
           "sections": [
@@ -1777,7 +1777,7 @@
         },
         {
           "body_sha256": "1cb3d81437159e436c61f0520be66c66919f8d22c7c5309ee3934223ad1b2a2e",
-          "header_sha256": "191d5587dcc710efc05bed6b8ea389526d8852082d97c9d7604de191cb46ef59",
+          "header_sha256": "f96cdba4210f607fca7abfb08dc42b022a8616273f5f36cb359e1db9d2964315",
           "line_offset": -35,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/business-deductions/rules.md",
           "sections": [
@@ -1788,7 +1788,7 @@
         },
         {
           "body_sha256": "3c9302193e366a47083cb9fbfa4425feff744c78b2446d40758dacdf3721e54b",
-          "header_sha256": "e18c162557d6b40fa9910fc2218be83b05f15033cc0e37c84e26e78221240cab",
+          "header_sha256": "6763a713a591d1172cea7115f45167252bfb97b11874d8ddefd12953234189d1",
           "line_offset": -143,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/business-deductions/examples.md",
           "sections": [
@@ -1799,7 +1799,7 @@
         },
         {
           "body_sha256": "26a4fb383f610f843ab1bff0682ae9fffb44a2ebc33b41513a8aacfb8b2b8569",
-          "header_sha256": "7d4f5c549fd36ff04cff76b51a3f776ab09074ece1ce72addcf48a4043850f6b",
+          "header_sha256": "e653a39f83ed8be75935bb744a84a21368168fef17e93c7da2de27f98c35f3b8",
           "line_offset": -252,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/business-deductions/notes.md",
           "sections": [
@@ -1820,7 +1820,7 @@
       "parts": [
         {
           "body_sha256": "0ce594ea00c6049bb1acdf77dcd15ada0136044e53952dff64790f4509a81849",
-          "header_sha256": "fa2c4c0a7aaf077099dfdfb1a9e1a2d33e99c24eef3e8957e9639d8055729e1f",
+          "header_sha256": "98f30c3122ea9e9e20d5cde4399cb317405be9b243c50568d80fa1446e1b8756",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/pension-and-disability-insurance/figures.md",
           "sections": [
@@ -1832,7 +1832,7 @@
         },
         {
           "body_sha256": "b2addfa31e761bd5db7942dc10c7e09113ca18feb6b8fb4539ef13caf0f5c9af",
-          "header_sha256": "758c35784ba5e8f1282874b120f17a4cd5db48428376cfd7a50534a7ff2d9670",
+          "header_sha256": "344d8757e826c220fb4d84c949b0da0426af895d877f88794eadc0c82d29f0c3",
           "line_offset": -47,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/pension-and-disability-insurance/rules.md",
           "sections": [
@@ -1843,7 +1843,7 @@
         },
         {
           "body_sha256": "f31725b2ea38223c804f21a1930e980a277641fd1aaeec0d1b7489cd38d0927e",
-          "header_sha256": "7060ec6684527f0dfdb4809eab5d6062e43e2e876a6f3254f302a72502331333",
+          "header_sha256": "48a32f6b7de7dac433265c9d4b47dbe9c1e9b1a36a52f17544161f9e93463a9d",
           "line_offset": -173,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/pension-and-disability-insurance/examples.md",
           "sections": [
@@ -1854,7 +1854,7 @@
         },
         {
           "body_sha256": "44a4977fe6aa174c5efec184d3c953a021947e3d3d744d769b835477dc88c2ab",
-          "header_sha256": "e496fbc2bf4bfb42280f830011c3ec380531d6ca134dabef72b65060cf0f9ceb",
+          "header_sha256": "efff296a1f921d56852aebf7e2bcaa2394a0bc7d3996d8d5a2922c2995dde0e6",
           "line_offset": -278,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/pension-and-disability-insurance/notes.md",
           "sections": [
@@ -1875,7 +1875,7 @@
       "parts": [
         {
           "body_sha256": "bd605d7327ccd670dcb18918e2d2a854e85d9864d3b974b11a587ecd5c49e780",
-          "header_sha256": "ff7cb4fd3eb3b3b4ce909c00aefef02b52150a39f6540b1f1d1bec9e6abd0d3e",
+          "header_sha256": "671114e5050ba79661a437d58d76f09ff2a6915b16ba57d70bb6c22851962f7f",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/procedure/figures.md",
           "sections": [
@@ -1887,7 +1887,7 @@
         },
         {
           "body_sha256": "dcbae51504f52c9d7bee9fc89e92524934279ffefcc67f97018976e1d553e231",
-          "header_sha256": "55d2bacaff3119c576cb4960676aea0b43fdce60d97f9eae853c298b7b17f268",
+          "header_sha256": "ed524d9a023d770193935e66145eb93d23de86af028c9a5e6c6de2ab95b1d365",
           "line_offset": -59,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/procedure/rules.md",
           "sections": [
@@ -1898,7 +1898,7 @@
         },
         {
           "body_sha256": "476237293be6e168dc3b9125e8ab48bbe745cae722e4e15484d5bc6dee42d81f",
-          "header_sha256": "5d61871949268a0fed8dc59dfd7be88905db30fead4d22b63bd150b9ce112ad4",
+          "header_sha256": "bcfd66f2ca7126eecf4dbee3c0c7b976dbc2f48543a6c51a5e15d41096df4773",
           "line_offset": -233,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/procedure/examples.md",
           "sections": [
@@ -1909,7 +1909,7 @@
         },
         {
           "body_sha256": "a61f566c31f9cc46890d59ceca00d24ecfd5ba6f164e9b2e2e4d72ae002341fc",
-          "header_sha256": "a526ecd5f344f189dd0419096800c63ba754c2b880072cefbdbc192fba6c36ce",
+          "header_sha256": "cb5db37d8321da9a74fb5df8f981f5ebc4a30963a1c0bc8dfcea8eb37ed3a63e",
           "line_offset": -367,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/procedure/notes.md",
           "sections": [
@@ -1930,7 +1930,7 @@
       "parts": [
         {
           "body_sha256": "f6bf288f9530f288a737c03eb62ac9ee540452a187e640cc9a1bf1e236904796",
-          "header_sha256": "09e58bd7015de467c685ddad5fe3007259d24795cbf3e64d0951d043fdd56e88",
+          "header_sha256": "bcdffc15a8d83f28b6451156f305196b27de7a6e6e3db92047baa9c8155d47bb",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/health-insurance-contribution/figures.md",
           "sections": [
@@ -1942,7 +1942,7 @@
         },
         {
           "body_sha256": "3cea1789bd685472a856ef0e28580f125e3c9da917729131ef49d6860a53f587",
-          "header_sha256": "6f94365ccf50ffd8002372ba7ac03fd9e41d1c8b73c46e0f737ea610af3f53f7",
+          "header_sha256": "dbc0bda41ebe3fb59a2aded808ae591d1d6e25473cf23e6c3fd77fa6d93e611a",
           "line_offset": -22,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/health-insurance-contribution/rules.md",
           "sections": [
@@ -1953,7 +1953,7 @@
         },
         {
           "body_sha256": "684c12527f7584a3ac1f8dd1f27ed866098bf6ad3f0a779f7eeb441f058b349b",
-          "header_sha256": "1b1171155b8a4fd922a23008e280e22888e0fd32a27811630d702ce08aa20bd1",
+          "header_sha256": "fbe5b11c25c091e7c0712f4e1d311ae23d7eda423591c2608efc825a310a035c",
           "line_offset": -76,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/health-insurance-contribution/examples.md",
           "sections": [
@@ -1964,7 +1964,7 @@
         },
         {
           "body_sha256": "f83ebae0e23cb134977b2f2e46941853e82ae02d006a23e603c1116aa03a1fbc",
-          "header_sha256": "fcf9bb9b947a90d97ac6dcb4fb3c6fb52c8469c463f6bb5e22a4dfa492290fba",
+          "header_sha256": "197c7cc843c973b686de5b469a3c17bfcdbea890404e9f114e00eefa7b7b46c7",
           "line_offset": -149,
           "path": "sk-moneybird-accountant/references/tax-rules/2022/health-insurance-contribution/notes.md",
           "sections": [
@@ -1985,7 +1985,7 @@
       "parts": [
         {
           "body_sha256": "06fa797322d885f72a993c20756ed1efa8439818598695234f5acbd6732ad12a",
-          "header_sha256": "968721994777560d61ef7023e0a03c0403aed1c0485ea1a797e883b9316f9a15",
+          "header_sha256": "3cf6a59ad5997595efec9e247eb09cf3df44157338811cb3eb0d6b78e9789e69",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2023/work-relationship/figures.md",
           "sections": [
@@ -1997,7 +1997,7 @@
         },
         {
           "body_sha256": "d35f697c70d3933e6805fe79d5403062dd65576f7265350b6abed59dc98f0cac",
-          "header_sha256": "c46af0e039fc15c3425b6d49b54e82fd28e1319e8f9335770e4f699e434517c3",
+          "header_sha256": "c701fc48bd35c0e485c6a69a9cb5b5f6488c99cb042d66717f2569b84be46af3",
           "line_offset": -30,
           "path": "sk-moneybird-accountant/references/tax-rules/2023/work-relationship/rules.md",
           "sections": [
@@ -2008,7 +2008,7 @@
         },
         {
           "body_sha256": "0bfe61986ab49a0640a4d163a7506394681eadda844036aedd7e5fe472cf1fbe",
-          "header_sha256": "5417d4dc6408ccb343913fd1569ea69cae4935c3eb9901f52b02aaa8542cea02",
+          "header_sha256": "c24d9eabce00cb1d71179ba80fde9db3c5749ddfcf16115b5d44e8f4a388e895",
           "line_offset": -116,
           "path": "sk-moneybird-accountant/references/tax-rules/2023/work-relationship/examples.md",
           "sections": [
@@ -2019,7 +2019,7 @@
         },
         {
           "body_sha256": "eae959a6e691a2c9a8e6900e11f695975dedbf43ee2baafc0b6aec6f7b1d1030",
-          "header_sha256": "a09816cb2c0ca52ffd6d6ffd42947a40126c290f6aa64bfc43821a5983f91f5a",
+          "header_sha256": "101de00778c8270634319c3b3abef99993a9092fb4384539512cfad777f75291",
           "line_offset": -137,
           "path": "sk-moneybird-accountant/references/tax-rules/2023/work-relationship/notes.md",
           "sections": [
@@ -2205,7 +2205,7 @@
       "parts": [
         {
           "body_sha256": "bd4a8231e89442aa8fcc52ac1c00f3a65f49843340a21398955b92297c3b5cc1",
-          "header_sha256": "2534367bfaa1ffe8f694cbcd5586271aebb564d7309c867c3f6d66a33362bc19",
+          "header_sha256": "e9daf7f8c5f5c35c57b0fc44180ce90259cd0c056d52f3d6e745c77a8b1754a3",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2023/private-company-and-corporate-tax/figures.md",
           "sections": [
@@ -2217,7 +2217,7 @@
         },
         {
           "body_sha256": "08d8f2e59020b5a36c382b1460833d6600142173f33bddd75c9ef058b374f773",
-          "header_sha256": "a2dd921409c66ed1848660df6e26a0340ac10bb191f63351e6b8fe4fc580c2c6",
+          "header_sha256": "2820a22ad975e0fbadd89524bfef604fb68172bcd67aeab8dae74771edbd8f2b",
           "line_offset": -50,
           "path": "sk-moneybird-accountant/references/tax-rules/2023/private-company-and-corporate-tax/rules.md",
           "sections": [
@@ -2228,7 +2228,7 @@
         },
         {
           "body_sha256": "35850894ef3a1ad536f8ca78e2b9299334194c9a7efebcbbfef97571abe661e2",
-          "header_sha256": "1e8fdf57d9b48e30fc696e15ae55ff0a00df524f885381de6e14576e5434cffa",
+          "header_sha256": "9878a7f6d310bd4cb4cf0d388f5d719dfa52f1fb78ed006e0096f5d455a42924",
           "line_offset": -155,
           "path": "sk-moneybird-accountant/references/tax-rules/2023/private-company-and-corporate-tax/examples.md",
           "sections": [
@@ -2239,7 +2239,7 @@
         },
         {
           "body_sha256": "7b15f371b9705fc87886342037b16f9e0dbccb82df1d4a502ceabe7260737d0d",
-          "header_sha256": "9249f93a2cee65c57a69d01f2ac65cc014251fb96019616c8a4827c89951d86c",
+          "header_sha256": "3cf51b0159abc75772ec226c8d10fce45f55499137d63b8dc9c54cc9284e73d6",
           "line_offset": -311,
           "path": "sk-moneybird-accountant/references/tax-rules/2023/private-company-and-corporate-tax/notes.md",
           "sections": [
@@ -2480,7 +2480,7 @@
       "parts": [
         {
           "body_sha256": "8a9eab8b2cdb429e320331f6f00fcbcffb196c04284046f704bbb85d21e44eb7",
-          "header_sha256": "38434ff086c3ef3ad5485bea822b13c79043b53d15e0f231132f408acd8ea435",
+          "header_sha256": "838985a80b996b1ff9a4d6b120d2c0e0eff4e9927323b8080112cd4f1d3dff53",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2023/pension-and-disability-insurance/figures.md",
           "sections": [
@@ -2492,7 +2492,7 @@
         },
         {
           "body_sha256": "1a6e3f57201bee05432d8c5e35191dfac11d876045d94ac5ad245c6c557a34b7",
-          "header_sha256": "d93f13090c0564fc4f8990bfebff1000096173359774e1b740a66c85cb7cfc86",
+          "header_sha256": "a69dcedab5de7d6c064fad133146d283fc899883fa97d6f33e2f2e743a8d5453",
           "line_offset": -41,
           "path": "sk-moneybird-accountant/references/tax-rules/2023/pension-and-disability-insurance/rules.md",
           "sections": [
@@ -2503,7 +2503,7 @@
         },
         {
           "body_sha256": "9765269128bd2290646525ccf9a9d7eeca99b81346f2bb587b1c1d676ae1955a",
-          "header_sha256": "ad0a217a7adfda486f242d6b20d748bff0b6d5372c2446f9de29d2e98c249ece",
+          "header_sha256": "8ad7b5c2f623478d527524250e86a6f2a33ac589ae10e67148e2f0e60539960b",
           "line_offset": -143,
           "path": "sk-moneybird-accountant/references/tax-rules/2023/pension-and-disability-insurance/examples.md",
           "sections": [
@@ -2514,7 +2514,7 @@
         },
         {
           "body_sha256": "75640b6857782b0e06897d2c20776df813f390755279264e18f93d4ce4b2f0b3",
-          "header_sha256": "77d2086191f136c5c17efac330935ca6db19f814de5f9cc96572f9c7c738307b",
+          "header_sha256": "da4d6ad4b45571c3b6aba04cdd25b2fb0193e7598424f9f27f642b1a56322d22",
           "line_offset": -250,
           "path": "sk-moneybird-accountant/references/tax-rules/2023/pension-and-disability-insurance/notes.md",
           "sections": [
@@ -2535,7 +2535,7 @@
       "parts": [
         {
           "body_sha256": "cdb1070034de7c47a85072ce0326ae0c6c8e3a68ef2f08885a17e673e7a9ff56",
-          "header_sha256": "df6c35da86e8084e667bd595fe561b64277e0d0a8e676553fb059e602b71bb3f",
+          "header_sha256": "8c49ee4f830100fe18e096906c02949df77877a59a1a877b4f84318194869c2b",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2023/procedure/figures.md",
           "sections": [
@@ -2547,7 +2547,7 @@
         },
         {
           "body_sha256": "7e3865fb8d3c135a84b1a1eb2917749727a88ae7c3cfc9516da0e83c110fb98e",
-          "header_sha256": "f2379dd8722eb498bb26607f9bb299d2ad84f3c568083c154f2cdf0385ad16ed",
+          "header_sha256": "54520b380047f733c9ba71b0cda6cb11575e479a4869a10a1f8e961c8f30fff1",
           "line_offset": -52,
           "path": "sk-moneybird-accountant/references/tax-rules/2023/procedure/rules.md",
           "sections": [
@@ -2558,7 +2558,7 @@
         },
         {
           "body_sha256": "7bbdcea7f2d9097eeef6b25576e4616b5a528689ac474ee441d7d64b9dde7982",
-          "header_sha256": "d0a2f430f9e901d423fdec21de92f7920822960caaac0b0c0797cc1f5a6c5f44",
+          "header_sha256": "6d75d9ea52463643dfe08afccf6128d815c52b689713fef371ca14b36e3e6ecd",
           "line_offset": -194,
           "path": "sk-moneybird-accountant/references/tax-rules/2023/procedure/examples.md",
           "sections": [
@@ -2569,7 +2569,7 @@
         },
         {
           "body_sha256": "786fc785fe809168001b4974ead08976940cf14d0f9899f712e2880c3724f7a0",
-          "header_sha256": "19be581f4073569b183348399f768f7b5dcb1eb5816fe98400afbdc8d5ecfe20",
+          "header_sha256": "7ca128c20dabdf26661d1f1733ee9cdb531cc2802493d754e23dcf91144d1849",
           "line_offset": -349,
           "path": "sk-moneybird-accountant/references/tax-rules/2023/procedure/notes.md",
           "sections": [
@@ -2645,7 +2645,7 @@
       "parts": [
         {
           "body_sha256": "f9630898632916f54f5369fc737f317ac918a9c69f687529fda21bd3ab3e8c05",
-          "header_sha256": "3af97caba4d210ff5b7ebee5ff8474ca16c9ec54df88a94bdb9afea122ee6f58",
+          "header_sha256": "96d2f63f2c8b6cd7df29574d480ce135ec02ea2b44f10ed4c83cd248c48fb16b",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/work-relationship/figures.md",
           "sections": [
@@ -2657,7 +2657,7 @@
         },
         {
           "body_sha256": "efd2f25ac1a1e833056ed2c89fb90a19aecb2b42ba6ce7d894372309c9369da0",
-          "header_sha256": "5f2480c3449e2eee56e7077b823b9ad5a8cef8793ed466c0697c3e9114af624c",
+          "header_sha256": "f7c7a2f7ec4e010763e50c2c4a086b6a9e6ef13ad3e0e4f6c0da7d874a49f320",
           "line_offset": -46,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/work-relationship/rules.md",
           "sections": [
@@ -2668,7 +2668,7 @@
         },
         {
           "body_sha256": "a4ca467fd41654c97f176a76e6b313e2b8a7ee15bcff6a1d3258cbd2690a0649",
-          "header_sha256": "a8e7dc35c11675ab75a0703ee7e6dbcab47fed8efcd5a1b7649a77d838e97705",
+          "header_sha256": "e550ae2b39a811435516af5c31456ed000c6fabe7f80be0cc38707b5705972a8",
           "line_offset": -168,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/work-relationship/examples.md",
           "sections": [
@@ -2679,7 +2679,7 @@
         },
         {
           "body_sha256": "99872559150fc49170269bb20ea32972b2403e83c225ce2a92835d1e5407e04f",
-          "header_sha256": "f2992fd2d2d478828ea1c5bfccdfddcd95ca8ef988d8dd538a599bd5b1c6169d",
+          "header_sha256": "c74b0103361797d9e445b1bb5221a39c37bfad69032848b6fda8e6cfd768cc57",
           "line_offset": -232,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/work-relationship/notes.md",
           "sections": [
@@ -2700,7 +2700,7 @@
       "parts": [
         {
           "body_sha256": "1819b8a4c1aba4d5f342439fe3fcf595c171f1f587c1449f2d0edf0736a9e6a7",
-          "header_sha256": "9f8f4a6d02f4a5159609b016057f5b40db42bc03af2ef0d1eaa4210bd816fe86",
+          "header_sha256": "512ca87c1a304b97a1a627379205142023ceed8ddf50f662e9d51aaf41ffbbc7",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/box-2/figures.md",
           "sections": [
@@ -2712,7 +2712,7 @@
         },
         {
           "body_sha256": "c8758e8292ed27ab1db57c322a2dc71c00d34161ba910da3db975e7fcc41e80d",
-          "header_sha256": "0cde6e2fc5cc4f75fa7c7d0890316e6fcb2419d51e77a330d1e4079eb666ad68",
+          "header_sha256": "72e9c710ad9b01d47515496e344a67388878261a436d97c1eebf785230468512",
           "line_offset": -34,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/box-2/rules.md",
           "sections": [
@@ -2723,7 +2723,7 @@
         },
         {
           "body_sha256": "a9b8917660c41f479fa43ff5dc0d6b65f710ceb079e3349bf89d4aca8269a4d8",
-          "header_sha256": "46e4987084f2f77bdfc7594e17fec55f8a92c4e9d60a908096942fa712a6167d",
+          "header_sha256": "684c2476b9682c3bef9a37f2490fc7eae7f53acfbc440bd0fed0497c885ca7da",
           "line_offset": -167,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/box-2/examples.md",
           "sections": [
@@ -2734,7 +2734,7 @@
         },
         {
           "body_sha256": "0e26679d25d4b388d2f2f7ed21e43b1c497d960ad7d2d60bf35333eec9e3a152",
-          "header_sha256": "b2ee7b0c7662165826e9d1ec782a30658c540933333b17727e399faef5ae9cbb",
+          "header_sha256": "f857e71c89cb2284bf79dd9329eea4a326c81c88b81c5070fdac7ef83ccce20e",
           "line_offset": -250,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/box-2/notes.md",
           "sections": [
@@ -2755,7 +2755,7 @@
       "parts": [
         {
           "body_sha256": "536dea875fc3b9bc0dae43d61642ddfda1ec6c892ca1b5140d96c6976a7ca918",
-          "header_sha256": "828caa3d2ab398a50f27ab72631c68c5f9111426e2305aa23448d67148621e72",
+          "header_sha256": "b9667b6744281e109b0563ef6420130c680f07312cb6c004e5aa0b2de678af78",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/box-3/figures.md",
           "sections": [
@@ -2767,7 +2767,7 @@
         },
         {
           "body_sha256": "8456872f05d88bcbf6b5d9003c461fcbbe601f2ac87fc218091471ffc16c8f3a",
-          "header_sha256": "1738b5b97791c73e2353f2f167eac7b22681aafa27eb5c63352daba3dcaca747",
+          "header_sha256": "7d13d18301181898b5bf9db6543c3421e4863f6e19b594e5e5dcdfc8d38df91a",
           "line_offset": -23,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/box-3/rules.md",
           "sections": [
@@ -2778,7 +2778,7 @@
         },
         {
           "body_sha256": "fc7c93131dd5b025686dd1b332fd374ad61f8bbf01b9f8dbbfda62f7dead3b9a",
-          "header_sha256": "d8ae6bac0b30c719673774db8e1b9aa54dd9528ba7c872122e4b4f1d1f17ae80",
+          "header_sha256": "5feb51a2c23a7523cc57c9dac46a415e8f49581ac609b544ebfaed6c3635239c",
           "line_offset": -107,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/box-3/examples.md",
           "sections": [
@@ -2789,7 +2789,7 @@
         },
         {
           "body_sha256": "4250d8bd36faae93f27b7101d735b684974755020b6c972c4ed09cb51641f3ba",
-          "header_sha256": "c60b0874a7edeebd67f92d58945dedb70eee899f4f8b7db92f9bd5dc7c34f463",
+          "header_sha256": "70afeb540e02efd745d0fc2206f1a3a6a39643b76e8d48dbdadd3d9086c312df",
           "line_offset": -208,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/box-3/notes.md",
           "sections": [
@@ -2810,7 +2810,7 @@
       "parts": [
         {
           "body_sha256": "ef54f4006f2c33ef949468aacfec22559b0a2532e097eb4be289b7b22ec9c0bd",
-          "header_sha256": "8d5ed4ef455c3ba7f965a786a5001967157edb8d04092973c241fdfcfcc1d51a",
+          "header_sha256": "65bd399c2e1784ea1cf5079c96806a487328ad110415cf90fcde7e13d8bcdc41",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/vat/figures.md",
           "sections": [
@@ -2822,7 +2822,7 @@
         },
         {
           "body_sha256": "f4f4b83a901de953b9bc902f9c1660d3f44029d70997299c024835acfe1938e9",
-          "header_sha256": "48ce0026c327b6df0576be5955607aa404ea3f1373ffa209575e33cea70c02e1",
+          "header_sha256": "2c9b6c6ed78e83a46ece7bb3c542c149852b51b72de0e738b83eef39cdb1f548",
           "line_offset": -56,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/vat/rules.md",
           "sections": [
@@ -2833,7 +2833,7 @@
         },
         {
           "body_sha256": "00f26f431caa69e75726e2b6c5b6f0b6b200d80f8670a969d424c498987e50c6",
-          "header_sha256": "a50fe7ef57c2050c5fd17e2747c6f40542b81202e8627a91ae3335e83d78c7fd",
+          "header_sha256": "f4f869225b1dfe9a6905fef56e351b1281b616477e8b356427a412fe095a1060",
           "line_offset": -230,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/vat/examples.md",
           "sections": [
@@ -2844,7 +2844,7 @@
         },
         {
           "body_sha256": "3896be2c15fc67217e05862d48b51ec5fb41b82915e6497f4b14dbf04bdfde6c",
-          "header_sha256": "9defe01770bc06040e8ac597152160e7ac73eb3316229cafaae411a28843da0a",
+          "header_sha256": "b967e2fcdae726839c62e54f0af8e16c6870cf9d56c52381c7e2db51599ff0b1",
           "line_offset": -310,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/vat/notes.md",
           "sections": [
@@ -2865,7 +2865,7 @@
       "parts": [
         {
           "body_sha256": "15a40146cf4ce359fba172c57a0c1705a483c07f0a8a790dc58d6fad4333b362",
-          "header_sha256": "79ddcd867c96effb81f767db7dd22a3a9e971889f4d6eb1a9ffa858e010860da",
+          "header_sha256": "1deac9e2b2cc540a157cbf2ed3b950ff08f5d1131c67eb939fc26354f34a6a34",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/private-company-and-corporate-tax/figures.md",
           "sections": [
@@ -2877,7 +2877,7 @@
         },
         {
           "body_sha256": "0bc5a089c6d6daa0c05804f13a1d4de2bd40dad5a565017d055b06fde3ca2a4b",
-          "header_sha256": "a730c1e1c89f617b7ac84935ccbd9ced429d23a1b700d9eb4723d97a43a70f73",
+          "header_sha256": "1d07dae9eb89ca912bda1a0c3d06c0d240ba946c8a2b4617ab780acad6a088de",
           "line_offset": -50,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/private-company-and-corporate-tax/rules.md",
           "sections": [
@@ -2888,7 +2888,7 @@
         },
         {
           "body_sha256": "b2d8ccbd9fc8db4d2ef72054cc841e202c59d99fbbacd3b5d57310d50e8b4015",
-          "header_sha256": "63f2bbb9d8f0f190d0ff475d9bd686a58eae09e6d24e48b6975bc40e4fcff6ee",
+          "header_sha256": "a5f949c7e313a62fbbeb205d5239f108439b89632a74736db519438e97f8f911",
           "line_offset": -188,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/private-company-and-corporate-tax/examples.md",
           "sections": [
@@ -2899,7 +2899,7 @@
         },
         {
           "body_sha256": "4feff38b222a04ab4cb1a9bf610771ac8b2b82c1c6a96f9f5e41a1cdae81e9af",
-          "header_sha256": "b79a3b53fd1a7f704372f2713b0aeccfe3bf5e203eefba254aa739ac4fb814cd",
+          "header_sha256": "a2f960b5be5c094ab7a23695573d6f7d047a64fff1964df9c062dd2ec9a6f27d",
           "line_offset": -294,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/private-company-and-corporate-tax/notes.md",
           "sections": [
@@ -2920,7 +2920,7 @@
       "parts": [
         {
           "body_sha256": "23c7d12cad35b08388db985d0e10a0310af724a97e74b5edac1c933da85f8680",
-          "header_sha256": "961c33acefb905b40a387b0e2e92a6dfa3a3e4821fe66d53062ee365c896d213",
+          "header_sha256": "5b356ff6307af7e2e29e09d801f8dafb546a02d97629713060bd2d3a4741a301",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/income-tax/figures.md",
           "sections": [
@@ -2932,7 +2932,7 @@
         },
         {
           "body_sha256": "ee1033eb892dbb738d5604c98842b5d608272d41af18db6f87d02b10f40a5a50",
-          "header_sha256": "56ff713ea6e0dd3f524a645e2d928fc9cbe852b1288530dcedc2150bf6a3910f",
+          "header_sha256": "cb5d468f611e59c041468d4adf6ebda88ec7e652a323d154250905d4d460b470",
           "line_offset": -46,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/income-tax/rules.md",
           "sections": [
@@ -2943,7 +2943,7 @@
         },
         {
           "body_sha256": "ffb0c3705f6cdc79fb5df0c2f52bf33a908de1c129b14ba95c621f3a1e36a1c0",
-          "header_sha256": "87740770411d662801c09f4b6ba2a08e3e8b17649b59f22966f4af062e3754b2",
+          "header_sha256": "0489fdafb5e2724470ccb6d521e6935230b9e382d5843ff58c4c67c1000fca3a",
           "line_offset": -168,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/income-tax/examples.md",
           "sections": [
@@ -2954,7 +2954,7 @@
         },
         {
           "body_sha256": "ad7e0b6288ce8b44ca9d14ae108eb3cee8ba6a4166bbf471f72e53d4a51c0704",
-          "header_sha256": "7ea43beb45d14e4d20e7fcb0bee7841f15c1cf7684423a5fcc8836687dbc0728",
+          "header_sha256": "3f20d2a71c74c429a8922fc0b83879313f19501a63c76b9ec8f049c6fb73852d",
           "line_offset": -290,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/income-tax/notes.md",
           "sections": [
@@ -2975,7 +2975,7 @@
       "parts": [
         {
           "body_sha256": "ca29ace67796a013336b543457efa599667d4f2a80b7479d5de57781d9f1495e",
-          "header_sha256": "d2450d003a7ff2591dfb565f19b6f406184eed0b2e1c46ac21d2899ae1f83324",
+          "header_sha256": "0a3ebb6ea08f2bb3b0a75177f9c04eab6519ff3b65e2c4d13e5cc17ca9180534",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/investments/figures.md",
           "sections": [
@@ -2987,7 +2987,7 @@
         },
         {
           "body_sha256": "959c9719e256080baabfdb600c16475965707bf4777b24948d85200613af8c99",
-          "header_sha256": "2dae1e8b04a96910750f7ea5a7f1d49a597bb41e14b0b4aa2132eac32982773a",
+          "header_sha256": "19443ab501844f83fe7bae6d530ad4edfdbc34c78b4be7bd5960c22cbec93db1",
           "line_offset": -26,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/investments/rules.md",
           "sections": [
@@ -2998,7 +2998,7 @@
         },
         {
           "body_sha256": "95bdd5d398bb2ea1c068775ca3f60dd6578c629c8c7f7b25936ea69015c5ecee",
-          "header_sha256": "b42cd045a1bb0615a4bee5dcfcffd8000f882c1bb74097f3a459729511c02570",
+          "header_sha256": "eddea294898010007812aa716f940269fe4fc2ff3332a40735232bd820711a16",
           "line_offset": -106,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/investments/examples.md",
           "sections": [
@@ -3009,7 +3009,7 @@
         },
         {
           "body_sha256": "adc93640380431685614a94f56b53678f5e60c34a30c7276a74539636f9e4c2d",
-          "header_sha256": "fec6d9a35bee16c56457d66c5ac83266031638dc5f84d05f7266e62dbaae757b",
+          "header_sha256": "b9d0da635ace370b3979e414a45b06dbfb13da945d45d75ba76218fbc19bf98d",
           "line_offset": -168,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/investments/notes.md",
           "sections": [
@@ -3030,7 +3030,7 @@
       "parts": [
         {
           "body_sha256": "a13d0c423cb7d9fd0ddf06cf04dd08cd63d0287c6a2ae27c45c841ada657a3e9",
-          "header_sha256": "5479c2cd91d54b7e274c70e21b6980daf77e4faf88f4063caa1cbc2f7fb024fd",
+          "header_sha256": "baad5d3628464a687058e1dfd6bb796162b5ac7dc35af7c7cf7bc3afb4f56182",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/costs-and-car/figures.md",
           "sections": [
@@ -3042,7 +3042,7 @@
         },
         {
           "body_sha256": "6b3cb71883c17e73388c5427998677aa837becbadf5ff94d760fdd256947f1d5",
-          "header_sha256": "77743adb66430b2108b2366a6d06ff04a2c6df06faef571d222ceb8eebd97d7e",
+          "header_sha256": "58c61fb80adcb5b0ef35f1143a8f430535e823aa98619506d99d7219649aced4",
           "line_offset": -45,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/costs-and-car/rules.md",
           "sections": [
@@ -3053,7 +3053,7 @@
         },
         {
           "body_sha256": "aed6e0ddccb36d9bdbd6041663e5c492ad185a9356891998510baad3c5cbfebd",
-          "header_sha256": "463bf25d5b6808bd791d2d781b1ffe5d2c44b6f4a0d8dedb3c8a349e794b14ba",
+          "header_sha256": "5a286e85d2d56865e0d8d48e71325c1a5f27784a287dd984886fe515b439bfb3",
           "line_offset": -163,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/costs-and-car/examples.md",
           "sections": [
@@ -3064,7 +3064,7 @@
         },
         {
           "body_sha256": "0fa1a873e81c2d9daf3be0a9f5b86e0faa916f2990c29111aaac369f42dece57",
-          "header_sha256": "3fc0d420e816365df8c3e3ddd749e85f892f9f202e629c13d1959def0b0159ff",
+          "header_sha256": "97a25712b1779fd2b523eb4d039326fa4338395cf2d56601a2c208c62954027c",
           "line_offset": -208,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/costs-and-car/notes.md",
           "sections": [
@@ -3085,7 +3085,7 @@
       "parts": [
         {
           "body_sha256": "3fbed9bf817071b9f37dc3a172f08b4af7d319a64522be9ed16f53082ffca7f2",
-          "header_sha256": "1e219eb958a0ed6e1e7ac8ab3cc1027ce530438e508deca857fa1d46d602a9c8",
+          "header_sha256": "61217739fd4f288b45fb49977fbf28fa45c184792b65c6f28311537a14449596",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/business-deductions/figures.md",
           "sections": [
@@ -3097,7 +3097,7 @@
         },
         {
           "body_sha256": "8b57a06df26e31ff5e2941f238af44d84d480179b7f7139ccdca07473bbe072e",
-          "header_sha256": "9376a2d045c16149fdc53fc3d24e574b9dcf19835b2896b594ca62246196c229",
+          "header_sha256": "f800b7d69f7da0448dcf7cdc8418abf0af463bf2bcba8722c69c74a47a89b94b",
           "line_offset": -30,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/business-deductions/rules.md",
           "sections": [
@@ -3108,7 +3108,7 @@
         },
         {
           "body_sha256": "92cadfb08784353a2753eccc06791b648ba17c7f402970812edfcb80f75b8ea6",
-          "header_sha256": "3f8646becc8689345d0008f2199460ff397ba6d5103bb80c08ebde03fa4073a0",
+          "header_sha256": "f584fe7d685885adea7324d6e82fb6374709e12b5fd213fd7efc0e711cf33605",
           "line_offset": -148,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/business-deductions/examples.md",
           "sections": [
@@ -3119,7 +3119,7 @@
         },
         {
           "body_sha256": "44c9f0dc1727b45e974014672b36c7ace373ec0d59456122429b946d2d05265b",
-          "header_sha256": "5e369defc4df735cd82bf6ddeaaafac3c3edaa2d42b5c0914b2c91223ae1196f",
+          "header_sha256": "b53954145f07d9f9c43b46956f615f4361acc12577eb1f51b7606b3a0bd64762",
           "line_offset": -251,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/business-deductions/notes.md",
           "sections": [
@@ -3140,7 +3140,7 @@
       "parts": [
         {
           "body_sha256": "c52ebd119617761603b49d36956d2fec0c857bfe4915f40023a975227f4a84cb",
-          "header_sha256": "4f165fc80adbf13274710e36fd64ac1430e83f4db188de773cab4c2b22c5fc01",
+          "header_sha256": "79adb66b97af5ac76c326e673d7aedf5c5849dd49b92559c7b36beb9a815a554",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/pension-and-disability-insurance/figures.md",
           "sections": [
@@ -3152,7 +3152,7 @@
         },
         {
           "body_sha256": "6aab88e05e352d14287d8b9ea825a9dba193e4dfbb455dae8f143a1dc6fdf991",
-          "header_sha256": "ed15d6a520891783ca554e95280aa5437648242415091711ed5677ad0373f57c",
+          "header_sha256": "ce595c87980a5b5cc072abbc494083bc50b28365d4754a287e4a417f06eecd3a",
           "line_offset": -48,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/pension-and-disability-insurance/rules.md",
           "sections": [
@@ -3163,7 +3163,7 @@
         },
         {
           "body_sha256": "14501f2bd1a2ddfd758e9046f58ff70514e8177c252befc1ea81c1f41247a5d9",
-          "header_sha256": "eb67c945a391f09328f0d553b96db68c21e2f2b01ddc1d068374ef194a63ca70",
+          "header_sha256": "3167b7afeeb251123d6593a71a12054c68d249d42c3162165811b889151927b5",
           "line_offset": -178,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/pension-and-disability-insurance/examples.md",
           "sections": [
@@ -3174,7 +3174,7 @@
         },
         {
           "body_sha256": "7147f61f4113d1d8a5d34db9ac30d235b1abfa15218aec957afa67f1f7eeb4fe",
-          "header_sha256": "fb24f3798a645e5444c2d8f5e1d8c184e776d64ce8093d23797662a83a8590db",
+          "header_sha256": "d8557d22ab2ada706579b08caf5425b2c8bc61b2a80534b3ca265396fc15ce6f",
           "line_offset": -328,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/pension-and-disability-insurance/notes.md",
           "sections": [
@@ -3195,7 +3195,7 @@
       "parts": [
         {
           "body_sha256": "05245b3fb1aeabd45cffb9e677cf3f6e1393972a3bb8efcc21ee6fea18cf6a23",
-          "header_sha256": "3ab542c9f4749615991b78af125dabb77ff5b04fef245ae99d3b75aeb0cdd36f",
+          "header_sha256": "60038d0800c4a56dacf0237801db060620936e494ea4f4593009ed0fa4fcebc6",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/procedure/figures.md",
           "sections": [
@@ -3207,7 +3207,7 @@
         },
         {
           "body_sha256": "88c1e278297ebdae06b16d2031e0c11af09dcc8dbf4eeade9f43e73a602a3741",
-          "header_sha256": "59a1a3cb7d940fb70e88d11bc88663565b0337013f9cfd5b8b233e02ae904298",
+          "header_sha256": "1bb6eaede45b702904eebf73aad854acd2815858a38fc4da6b920c4f943f9b34",
           "line_offset": -43,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/procedure/rules.md",
           "sections": [
@@ -3218,7 +3218,7 @@
         },
         {
           "body_sha256": "553cc56cf908089dd39e5171f4a0823c4f213e76298053cfee3b175b163fc574",
-          "header_sha256": "a9e480fa11af1a227be8ef9b28e10270d24b2d0212f821903aa9503fb4c02533",
+          "header_sha256": "9c4e31c0b9d8a98e764fd39cdb122c140f8df3f7c7c811e86db55ab106a50a2c",
           "line_offset": -153,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/procedure/examples.md",
           "sections": [
@@ -3229,7 +3229,7 @@
         },
         {
           "body_sha256": "cec850023ed54f3ef8ba76ef0aba5244da54c6d1b1fa6b385ac0759241bd3163",
-          "header_sha256": "93a4872c6799311cf98e745bef0ed36c85323e178fe206897cd40023b0d9be32",
+          "header_sha256": "ca75012f9db7aec0ac99a02d5caac224c2e8890338a1f24e06106725b34b2909",
           "line_offset": -244,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/procedure/notes.md",
           "sections": [
@@ -3250,7 +3250,7 @@
       "parts": [
         {
           "body_sha256": "e5ff89c90ac2be077f181994de4675247d943c8af231fa5a2b9fddebd4f2a271",
-          "header_sha256": "1095af8eb9c097fc373108355be634eea41c286067d4a599ad88a01544da03c5",
+          "header_sha256": "a8ca2ac50398c6f616081cb7ba634735e4d21f25f1b6e5e4784fd7a5dcb94683",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/health-insurance-contribution/figures.md",
           "sections": [
@@ -3262,7 +3262,7 @@
         },
         {
           "body_sha256": "71994d826a8bcf3d186fa8fb8c3d658c5b9a713e73e631906fc6518ea1229ead",
-          "header_sha256": "35598eb4aac0fb54e0107b0be96bc9e240af3282f58bd92be3705f9ec359c565",
+          "header_sha256": "99522bc39bf43792a704e875874fe73f39f9f03ca591af003a51d073fd7cb562",
           "line_offset": -19,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/health-insurance-contribution/rules.md",
           "sections": [
@@ -3273,7 +3273,7 @@
         },
         {
           "body_sha256": "0aa641e34b5c94bea774d3bb5a0a94710cdcfdaec4dfabd664acad850617fb7e",
-          "header_sha256": "b91c4521d0dc22b6d61c61a944728d919bfa2b258d9d72dd50706f6867b82d67",
+          "header_sha256": "0866e8efffce693c9c6c236200f5bc779b95bd3750fa022d0b150e9e9a5a3adf",
           "line_offset": -105,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/health-insurance-contribution/examples.md",
           "sections": [
@@ -3284,7 +3284,7 @@
         },
         {
           "body_sha256": "910d3371d2baf7687e0ac360e675f4e5facc137b75a85b9b51b34a474a8766d4",
-          "header_sha256": "9dabef2fd6a252adebe4f1d660a6ca97cf1fedffd34d205c7573d880239aca15",
+          "header_sha256": "faf13b15ec7612618e59703fc5e4005119f4a8a9d953ce612546cf4f8702c31c",
           "line_offset": -159,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/health-insurance-contribution/notes.md",
           "sections": [
@@ -3305,7 +3305,7 @@
       "parts": [
         {
           "body_sha256": "340bf728eca991039bb65ca8d3ee1b0f40bcaae7194d01ce03606f6235ecdf07",
-          "header_sha256": "dee87bf7fb373dff7c73158a3db5b77d6c84cdebbbe32a6a81468a9f4d870905",
+          "header_sha256": "e090932a70c02aa09b0fe7d44b61c7e3e2d45da2dfc9e563c1ad1fd329550372",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/work-relationship/figures.md",
           "sections": [
@@ -3317,7 +3317,7 @@
         },
         {
           "body_sha256": "ee561b3f3fd7495dfb88c8477d9d3888675142a1c5dc3219c5010ccbf243046d",
-          "header_sha256": "6105cead9054870f26e49a322012d1c27c1c892a48b148eda5e1cba0ae18b6f2",
+          "header_sha256": "2d6a2d0baa8cd81ade4b10d5bdbb08a508298d4ef9140ccd7b5e22c60f11906c",
           "line_offset": -35,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/work-relationship/rules.md",
           "sections": [
@@ -3328,7 +3328,7 @@
         },
         {
           "body_sha256": "3332f4263b84c0ed719800ee63e1329ea3adcdfde4deacb3de18718ce5b211d0",
-          "header_sha256": "414c0d2ddf747be40d2051dcf6a80a5625d794e80bc7d7fc54f726e11e64a9e9",
+          "header_sha256": "8e576a72d6700eb94786bdfe75b7f8097c0375d7b2cd3449b6681a056d92ec02",
           "line_offset": -141,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/work-relationship/examples.md",
           "sections": [
@@ -3339,7 +3339,7 @@
         },
         {
           "body_sha256": "8940acd8badd5706f47db51e6241fc2169e57c3dcb9e0f82c890c96745fa2912",
-          "header_sha256": "61bb5691b690913669bf83977b038c9fafc0fb67d826056d7c643cd2515d80d6",
+          "header_sha256": "61ed2621eea441e23697bc4b4c1d95090b1033e606d8977473a71c399b0056a0",
           "line_offset": -243,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/work-relationship/notes.md",
           "sections": [
@@ -3360,7 +3360,7 @@
       "parts": [
         {
           "body_sha256": "2af2fd2151c1e89ce1128c83ae8bcb40d4de8c0a04c8a336115312404cbd145f",
-          "header_sha256": "fef0914f962863dab4d918c183ebbd227257111d3983d38bfd4e907bce1401fb",
+          "header_sha256": "f078b716e2eac5170315fd221bb1324807ce98f4808b96850c7fe1c80779a7a1",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/box-2/figures.md",
           "sections": [
@@ -3372,7 +3372,7 @@
         },
         {
           "body_sha256": "acb54e05365b9ce171bcb27e36068db0dc9b98de11e1db2929e8854dec91a26a",
-          "header_sha256": "90e2552e4730aa31aed970f9b1f901a1d06d234d015357348cc6e9011e0c668a",
+          "header_sha256": "f6b25fad19ae1f35e3764da053765e0e9b899318ed98ab98ac6bd614490c100d",
           "line_offset": -44,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/box-2/rules.md",
           "sections": [
@@ -3383,7 +3383,7 @@
         },
         {
           "body_sha256": "8ac124e5fb5c8d3e440bceeb24f16134be40d82cffd79e70ec8c861cfcdc2357",
-          "header_sha256": "b73ad307d8446467a24a9db01f65fb28f84312a8299c83567b674f4089f13d13",
+          "header_sha256": "c3d8f0ebe104efeda05e9449c90b2ab857e102d91714b5db1a54e9d2d3de126a",
           "line_offset": -158,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/box-2/examples.md",
           "sections": [
@@ -3394,7 +3394,7 @@
         },
         {
           "body_sha256": "cd3888508c2590d23fe7f87bf63d6091bc1306f0f74645221134d8b38afc9f87",
-          "header_sha256": "dbdc244cd54af4ba10fc492c27045b56eb4ff9270ad719f2587aaa6633e431cd",
+          "header_sha256": "088053272b90526badf18fb588091fcb13390f7302bbf2601875b93562997823",
           "line_offset": -296,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/box-2/notes.md",
           "sections": [
@@ -3415,7 +3415,7 @@
       "parts": [
         {
           "body_sha256": "d3db4b19624f4d2781aa7cae599ec3caa0350e426dacee39806d96c6793188ea",
-          "header_sha256": "7ad93f544ef0f9238e43cd2193cb5c67b569a15fee0dce3c98572df14a9d3a3c",
+          "header_sha256": "00e18ec139142d525bffbeb02255651dc53c2561067a5b8aa3a770bc59ae0090",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/box-3/figures.md",
           "sections": [
@@ -3427,7 +3427,7 @@
         },
         {
           "body_sha256": "9f64b250611deb3e11a6a5676804e5d091996d12e8adf4c010e6e7cacc541e0c",
-          "header_sha256": "3e023da8074ad33486d2384342c76a799d2acb403e5216814ad1e745332786f0",
+          "header_sha256": "4b36acf7c72380c250c9718a1c843a0c4d4b07603331ff89b6865d37928803b2",
           "line_offset": -21,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/box-3/rules.md",
           "sections": [
@@ -3438,7 +3438,7 @@
         },
         {
           "body_sha256": "7c8e03223ef26c4909c8234574fabd020535ef015539cb9c83e2846b996fdd96",
-          "header_sha256": "96d08c051a3b03197441e4aaaedf9631bd5b5706298500dae6b06ebe0eb616a6",
+          "header_sha256": "3e1f4d4256dcd354a81dd33f0f4901aa4d5ede06ea35b3281e84087c475e3169",
           "line_offset": -124,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/box-3/examples.md",
           "sections": [
@@ -3449,7 +3449,7 @@
         },
         {
           "body_sha256": "c5f13203782276888f96aca82582a8cfafc12c4d791a21510fe8da45cd504b47",
-          "header_sha256": "3820f16839280275d1c25f9861717de47821b7f63f1199f5f599e0f241d53058",
+          "header_sha256": "12f6b5a7aca63790d7e58366926417a7c2af8af4c940c110f505a573aa8ea6ec",
           "line_offset": -245,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/box-3/notes.md",
           "sections": [
@@ -3470,7 +3470,7 @@
       "parts": [
         {
           "body_sha256": "85bdbc1e7d207cf82c226759c90ff5fcd96306a515e93046a935a6cecbfc0e0d",
-          "header_sha256": "166637a935f85d7d02be1265bbe8e129c411f1c569160c3625fac75d8ea7e72e",
+          "header_sha256": "af1d582d900d9038116f07dca7db34e13efd0d6a4f94c4ff0197ac38ad3ef604",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/vat/figures.md",
           "sections": [
@@ -3482,7 +3482,7 @@
         },
         {
           "body_sha256": "dfb58d4d4d580c9e83a589c8d03bcc304851f0eecbf08716f8112e8228ed4601",
-          "header_sha256": "10fde09f318b37d4b70cfccd2771c906ee8e58e731b0f0d6253fd1d67c502f73",
+          "header_sha256": "cf97262469e1ab73c0d41444c839383670001402e3f43c8bb050e36f898d5a38",
           "line_offset": -73,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/vat/rules.md",
           "sections": [
@@ -3493,7 +3493,7 @@
         },
         {
           "body_sha256": "627349451306feb6cd1932aed5232a2de4d94d7883878211644d13ba67bd4e8a",
-          "header_sha256": "8c42d1d8c187b2a2c0c995d1c99aeb963d475760399faefc63b9a1bbde51cd44",
+          "header_sha256": "8ba6319dc5c69e565439c8a71455040c5bda9c82c26c2b27c9d2791abdd98a9e",
           "line_offset": -215,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/vat/examples.md",
           "sections": [
@@ -3504,7 +3504,7 @@
         },
         {
           "body_sha256": "8aaf75201e8f3bb4908c432475aa83d1131652076ed895a0fcac749ed35d9120",
-          "header_sha256": "16f5926e48a7eeb6e045fb54091b367975e6d7c667a81641a2c07607ab9508e1",
+          "header_sha256": "44800ca1377efaeb77d947badd2f0d819a3b1b97340501b82f216d9c7ac332e7",
           "line_offset": -312,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/vat/notes.md",
           "sections": [
@@ -3525,7 +3525,7 @@
       "parts": [
         {
           "body_sha256": "f26b88363f32333977ef339f90bdbbc095cbdcd60a125fd2e0f0d090656668f3",
-          "header_sha256": "5b7de766050d4792e52f3a1f0b281cf878e687714803fb5be7df8671ffd5c22b",
+          "header_sha256": "b23e73d26a85f9c2753ce86d7fa4b938a5a4202ec52f28fe19efa4d9e609f743",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/private-company-and-corporate-tax/figures.md",
           "sections": [
@@ -3537,7 +3537,7 @@
         },
         {
           "body_sha256": "8957e4dab179bb7080d0ef81e2ba3d1b3c69dfd489a32bb65c42aae90b45b782",
-          "header_sha256": "e4a4feb3fbdbd20e9315e4514b8a6ead02f8fab6554c12067cab270b16aae31c",
+          "header_sha256": "f6f61aa5421eff745c47314d8734baf502165f081e6f2553d16fdba6866e9bb6",
           "line_offset": -53,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/private-company-and-corporate-tax/rules.md",
           "sections": [
@@ -3548,7 +3548,7 @@
         },
         {
           "body_sha256": "2b0f4c8981379280a3e1e53d4629064f657f6af7a4a4f20f81cee017c122d031",
-          "header_sha256": "61d4e9a62800eede11df11f468810b1170385b111238f12e609ea90414f03d36",
+          "header_sha256": "4b2305e97a3b03645ee992e1615b164431e1f2e7d249eba40ede17dc33ae9d6d",
           "line_offset": -167,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/private-company-and-corporate-tax/examples.md",
           "sections": [
@@ -3559,7 +3559,7 @@
         },
         {
           "body_sha256": "4141c347d7623a80168357add1bed6f4cc729162705346980c47010eadfad03f",
-          "header_sha256": "145bdb20ab848da766f6b2cc3b2e1663c93815727b70958942946eef10fa2d8d",
+          "header_sha256": "df65bb7f7e11e2ecbac1575af0442b29d70e2933841784d31458318a03485ac8",
           "line_offset": -290,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/private-company-and-corporate-tax/notes.md",
           "sections": [
@@ -3580,7 +3580,7 @@
       "parts": [
         {
           "body_sha256": "3b51c9325e6bd5bed8f62e446fa29ecd58010cf12669b6e7a8cd20b99834f684",
-          "header_sha256": "2381b5f3179cd2f2c9cd899df1b9280fd7ad0f305bd7d3dd1b0cf34c04f9c695",
+          "header_sha256": "6cfca6b24ef2134a1bcdd5df741c291aa6a15123f91300e34b8a0e106710564f",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/income-tax/figures.md",
           "sections": [
@@ -3592,7 +3592,7 @@
         },
         {
           "body_sha256": "7791abdf62be1e4324b2cece11a481be16c73a265f8afe6d0fe4a12231554605",
-          "header_sha256": "6d3f7a7f41651b95a8c58f32c3a5f70dff5d1202a0a560f650b283e9935ba43f",
+          "header_sha256": "17465b24dfce7afac2db6650877ce999ba761b47def69f3d9b9722e041f1c6ff",
           "line_offset": -43,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/income-tax/rules.md",
           "sections": [
@@ -3603,7 +3603,7 @@
         },
         {
           "body_sha256": "475ec78c886b1f02bdaf2d5a3548cb14a0a7bc1805192e7c13cc32c684f9af76",
-          "header_sha256": "67b89815acaa918bd0138233df560b34cef0d1891ef5a658beb267154feca655",
+          "header_sha256": "21b33caead670f7c724ef23f8eb8855f242abe9b024584a5061c32676d967480",
           "line_offset": -153,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/income-tax/examples.md",
           "sections": [
@@ -3614,7 +3614,7 @@
         },
         {
           "body_sha256": "811ee12172fc998fcce9604ef6a593a33f61024517a11f850944bb3620ab22e6",
-          "header_sha256": "e42ebd003b833d49e67db78244b22a35c9d8863dc02cc4afb5a80a721c5d58d8",
+          "header_sha256": "69815f796f37d913c5dd6aa4225a37842f0369a6a9c1371d5df55dc4b2ea3fea",
           "line_offset": -275,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/income-tax/notes.md",
           "sections": [
@@ -3635,7 +3635,7 @@
       "parts": [
         {
           "body_sha256": "489744d8be1833a8c692e360f7810cf861ea430f62f4d61b454ce6db22caafb9",
-          "header_sha256": "32c2d9be3ccd638cb0eae13421eca837552be6d29d51e275cf6e8f260d85e3b7",
+          "header_sha256": "9bd046747412252f0fc8a3ac8c55ebb544726fb7d00980b9934f8623cb76a7db",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/investments/figures.md",
           "sections": [
@@ -3647,7 +3647,7 @@
         },
         {
           "body_sha256": "c7d3868973f182924a56948e2a66524a7841b134ad72770e83c5979c23f2ecdc",
-          "header_sha256": "509a94fbe2a23b4d523ff8a83387a2e3d7faa3f18ab58a02a91ba9a4eabc6cfa",
+          "header_sha256": "9549fa0f27a53e0fe6e785c656a701206e5fbc3456eedc82c35a38fb35630fb5",
           "line_offset": -40,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/investments/rules.md",
           "sections": [
@@ -3658,7 +3658,7 @@
         },
         {
           "body_sha256": "6f5e71f13c9201f9f28765a734dadcc1acd850774da167bdd9df71f7a9e04f89",
-          "header_sha256": "4d5eca6a000c60122660c1a6b4d1a53bfd3b59dfc6e41d6499ab7df3d477653a",
+          "header_sha256": "8e73658009e3363452607cd3f799820689c9fd47dbe6b8d2f8027978a5731da3",
           "line_offset": -156,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/investments/examples.md",
           "sections": [
@@ -3669,7 +3669,7 @@
         },
         {
           "body_sha256": "2b6ee4ab93d997119b2c95e28cbdc9cd2e0bf893ce47f02ffc4405ef55187514",
-          "header_sha256": "9cf815f910aa50504f0fb80940d6c71ab9c0e5ebe22235b377473cd4d296c7bc",
+          "header_sha256": "cdd016ee0475240da2513d263b6beff36dbf45214a0cc958b3c602a2a26deb18",
           "line_offset": -330,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/investments/notes.md",
           "sections": [
@@ -3690,7 +3690,7 @@
       "parts": [
         {
           "body_sha256": "86c52818c1c9b295e4e220926fe70331b243255fca1ef6332874782b0f80d791",
-          "header_sha256": "55c179dd1fd2b6d585df49ef8685d2d71eb1274d4d8c8b288b4469e7dfc08748",
+          "header_sha256": "d1f7e3ce6c23d00073b16f13ac33472525dc3aa5724b320824bedf81b53ad0b0",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/costs-and-car/figures.md",
           "sections": [
@@ -3702,7 +3702,7 @@
         },
         {
           "body_sha256": "9ac04e16f60652c40540e31c6de31a4b572825670cece39f5305d9d5a3a3fab1",
-          "header_sha256": "fe0d24035de7a5f809e2544eb5a212149f066403f2464a2397be768e2b0c6ea7",
+          "header_sha256": "7cb337d06950c7c396651234f760cfc5093ef3bf4b607501b3d61df9ea04e5cc",
           "line_offset": -43,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/costs-and-car/rules.md",
           "sections": [
@@ -3713,7 +3713,7 @@
         },
         {
           "body_sha256": "6891301cca3c09fce85b7e4697c686d5a05a3121d09646210c0ae8d8e20fadd2",
-          "header_sha256": "395942f590fecc5aa2ee88737faee99b6a5fef630dbab17a314cc6bb775b3525",
+          "header_sha256": "6f42b123c5a8ffa46c7ec992d47cd4d2cd66423cb4364d123432cc114b612c58",
           "line_offset": -196,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/costs-and-car/examples.md",
           "sections": [
@@ -3724,7 +3724,7 @@
         },
         {
           "body_sha256": "95b192c1b7d5bda4fce02f8e3bdac499b82966a98dd7e86994a8240ec760e4b9",
-          "header_sha256": "836e1a6a418b2f70850565f9ab93a90a0de7b8858462b3ffc227f330e9277309",
+          "header_sha256": "bcb166b83f61e544214601837302d0d7c661f646df00488a6135be025961af89",
           "line_offset": -267,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/costs-and-car/notes.md",
           "sections": [
@@ -3745,7 +3745,7 @@
       "parts": [
         {
           "body_sha256": "0ce9358299217a50ced4163b86933eb73d62e17306cb0d3122d93fab5df904b8",
-          "header_sha256": "8af574ba1285f420896ba913590257a85c5f62e9bfbe484a4dc99f5a4f514a9c",
+          "header_sha256": "6886231c31372b57dbee672298f42dbc57db4fcd16276ae6146f091f6480d869",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/business-deductions/figures.md",
           "sections": [
@@ -3757,7 +3757,7 @@
         },
         {
           "body_sha256": "ea90996eb888a5e2bc559530a4c855d23895ecdb9d496e20c91462228c17d15e",
-          "header_sha256": "42ab5f62018ca8134ca645ab5c8b319dd42f299fbc107325f8ba8964cc8c4e44",
+          "header_sha256": "ca1a99c757adea50294034b55dd0f54cb7ecafba7381b60fbc7a3dd5793b86f3",
           "line_offset": -33,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/business-deductions/rules.md",
           "sections": [
@@ -3768,7 +3768,7 @@
         },
         {
           "body_sha256": "77fad2f1b5b0dd0a6711a144c893d3aa489d0d45dabc28da8d2da106b4c0af45",
-          "header_sha256": "5b08485e75ebb24f06e66c8c9fe1f855c7397339f9e88bb1463cf264dba6cc7b",
+          "header_sha256": "66ab2f18f8cbe03e1c927b43b12aea6138a8d8728854888168c6346a5ae5492f",
           "line_offset": -131,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/business-deductions/examples.md",
           "sections": [
@@ -3779,7 +3779,7 @@
         },
         {
           "body_sha256": "83f4286f07807823cf5d77791310c615106f9b1595c98e24609f997861fc7281",
-          "header_sha256": "26e248c8fd36f0e9f0e12f62d9cef091075405ff1a4c07c44e6f2b9399fc2492",
+          "header_sha256": "6fd4324c97781325c6ed69914f20ae6da9dac1bb73c8a4422ab048efca7cbcd3",
           "line_offset": -246,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/business-deductions/notes.md",
           "sections": [
@@ -3800,7 +3800,7 @@
       "parts": [
         {
           "body_sha256": "a56390b6c439e9f1e336b48e4337b8c33a97e5e0e10bab01fd2479b80a66cb5d",
-          "header_sha256": "3a0c7c4bda196ac1ed037479202a32d37eed6379dfdfe7414e4c7d0ba7a954cd",
+          "header_sha256": "e0b869b243a06c397ad068d8cebedffbb6655431b98e2eef7a747791a80d3b8f",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/pension-and-disability-insurance/figures.md",
           "sections": [
@@ -3812,7 +3812,7 @@
         },
         {
           "body_sha256": "82c325d4607e95395c3ec6c4480a65efca4a618d287bb02122a22675926ab205",
-          "header_sha256": "8cfb5ed0e3fb1ea81b20983968b4beabe01df59453cd94fb42f26d04a7af686d",
+          "header_sha256": "ce13f69adece2b0265036a8d20c544b34db8b3a5aba72224688f2efcdb091a40",
           "line_offset": -35,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/pension-and-disability-insurance/rules.md",
           "sections": [
@@ -3823,7 +3823,7 @@
         },
         {
           "body_sha256": "6af8ddfed6c38d8e53352685535d46921957673e32580027433b6b4567dde74c",
-          "header_sha256": "28f666ca6b7d520cf54969c2dbadadb942e8f26da1853c715b6ed7050db92375",
+          "header_sha256": "2e7fc3b5c831c598273a1dc3b0c30d3998c4dd81c5c4182a08a529df83d2ae4e",
           "line_offset": -269,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/pension-and-disability-insurance/examples.md",
           "sections": [
@@ -3834,7 +3834,7 @@
         },
         {
           "body_sha256": "b91d3d0d6de8da29e3f90fe1d4414ff01823fca3e8beb35b5f0b201a77481e10",
-          "header_sha256": "611e9f973a76cf1b5a06cdab6386729c2ce192c460c1ba823f0cb5998ac2ab06",
+          "header_sha256": "9168818672ccd267fc726bccf4f39d30b869dce8737f2e9662fdabad4fbb59fb",
           "line_offset": -409,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/pension-and-disability-insurance/notes.md",
           "sections": [
@@ -3855,7 +3855,7 @@
       "parts": [
         {
           "body_sha256": "26a95f2095a8a92d9d881bf87910f2f02b573cd7f4799c3a30c939ffc6a9570d",
-          "header_sha256": "27f324cbdc865dcfbe39ded8c27f958adf0a97e3a18b739313b4f9280d9ecb68",
+          "header_sha256": "5c933b896b208c00fe91296863c5adab500fad7d7f18c9e203d77050282b9d50",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/procedure/figures.md",
           "sections": [
@@ -3867,7 +3867,7 @@
         },
         {
           "body_sha256": "dc912b548f0da64f755cdebb21b1250010ca0e29dd54d4486b7d41d02c7370b3",
-          "header_sha256": "498b6232fc8d4de7714913ced3eb18f36750b0004a7a5e83dbce12cbba73d2e0",
+          "header_sha256": "1b220acf7226e2f427dbecac891e0efbbc31e2b54210e7c08c28fe06e4ecfd27",
           "line_offset": -38,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/procedure/rules.md",
           "sections": [
@@ -3878,7 +3878,7 @@
         },
         {
           "body_sha256": "e309303aca91f2843f68c672e7bb69a7f16a78da85ac6a038b882a697f8e8524",
-          "header_sha256": "ed7a43038991c062ed725122616d8b6d3c362430a9b6c75b703005c535c19d5f",
+          "header_sha256": "e2363dd96f64f48002a3027bf1cdb8a4d1ae2be80ea814d788b4ff7204de0e70",
           "line_offset": -128,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/procedure/examples.md",
           "sections": [
@@ -3889,7 +3889,7 @@
         },
         {
           "body_sha256": "a558e36fdc7dfa9a829291770684e257bb8521be52c10584b3b38fb8b8188fbe",
-          "header_sha256": "7c8f65adca926be0e0ce15d0189a69a0017f75781bd4d73e3f1e83fe0de0a350",
+          "header_sha256": "8db85c1fddcedcc284da972c2b96ba860408e959e1df2f1988254937dd568d09",
           "line_offset": -209,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/procedure/notes.md",
           "sections": [
@@ -3910,7 +3910,7 @@
       "parts": [
         {
           "body_sha256": "99b4f9814a963cf50589b8cb36c080d2cacaa44350eec571fa0ab17938ed24dc",
-          "header_sha256": "bb700fb91a3e89660dc5d540c8c8500b152a2f79269271973ea7540303ead5c2",
+          "header_sha256": "dcd751cd828bfb183e36b4235a327e33df85c0b0e8edb094a5e6e554715bd9e8",
           "line_offset": 7,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/health-insurance-contribution/figures.md",
           "sections": [
@@ -3922,7 +3922,7 @@
         },
         {
           "body_sha256": "5792105561cc0acf9b5d0390d7695108bdb8c19fb1fae4e135fd8f2f3e2656b5",
-          "header_sha256": "cbfef9451041763e7255f8f273b1a1b12494609a01a0c36012b97a9943fec3b2",
+          "header_sha256": "af55e70cf80525deefb445b0542ae6d8678c53dd8557560b8fc5072d335ec882",
           "line_offset": -29,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/health-insurance-contribution/rules.md",
           "sections": [
@@ -3933,7 +3933,7 @@
         },
         {
           "body_sha256": "2669a195a2c36e1b92e15aff0f9c5ff9e716b763ae240204f4a47b7ede6244f1",
-          "header_sha256": "0c35e3b1fa2acbc82f50f9f17650df63343f392d95f8d3787f063186e37f2338",
+          "header_sha256": "ed893be3565f53c638f075067c9b1223b524eb4435f385dada88931b1a796530",
           "line_offset": -111,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/health-insurance-contribution/examples.md",
           "sections": [
@@ -3944,7 +3944,7 @@
         },
         {
           "body_sha256": "6ad386a16f2316504ab75f887c73219e58503d93b096771db61250da387ac41c",
-          "header_sha256": "300ab74c4358912aa3b18cc32dcb1babd106892506de0d545a1a09adb56ff6cd",
+          "header_sha256": "c23c3f04e87f4d4d83e8e34b6f1f0a16a23392594355096e05d09450f08f764b",
           "line_offset": -131,
           "path": "sk-moneybird-accountant/references/tax-rules/2025/health-insurance-contribution/notes.md",
           "sections": [
@@ -3965,7 +3965,7 @@
       "parts": [
         {
           "body_sha256": "985afd49b602cc6908a899d23f1c906e2695a3249dbc5e6bf113fba6e27f2573",
-          "header_sha256": "09a20d678d718fed8b01e42f6f0c22da668d032bc7621dfd3f8ee4b326170953",
+          "header_sha256": "0f12d8c1cda70ed981d5a09ad90be88e44c881ce42257c3d6e1912ed20a0eaf7",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2026/work-relationship/figures.md",
           "sections": [
@@ -3977,7 +3977,7 @@
         },
         {
           "body_sha256": "f50bb9b8f02f654043c24d717a18b2256655bc074209ce3198ca2986e0f9afe2",
-          "header_sha256": "61bcc5bbe21a6759db62b073ef2251af3b761b79a16647445b72809cd4cc830e",
+          "header_sha256": "191df7f76e6198ed88a72315d6a654e9c66a57229133569dc2159b379cee1cd8",
           "line_offset": -43,
           "path": "sk-moneybird-accountant/references/tax-rules/2026/work-relationship/rules.md",
           "sections": [
@@ -3988,7 +3988,7 @@
         },
         {
           "body_sha256": "0dba3b1ae4eebbd72e94d84c06d77d71c1e4c593cc5d8fdab9672ade743d7a7c",
-          "header_sha256": "7d9ca3fd6e5ff3ddd28fa7a5a3c0963397e2e33df391b82ce164ebe8d7db4dd4",
+          "header_sha256": "94827fe73a238d751b591eeb21a43735b3da9bedb7fbd64056db19f3586163fa",
           "line_offset": -155,
           "path": "sk-moneybird-accountant/references/tax-rules/2026/work-relationship/examples.md",
           "sections": [
@@ -3999,7 +3999,7 @@
         },
         {
           "body_sha256": "9455375db31ba455d3aa9ced05dedae4e6f774cc371d67e049580a4e67720787",
-          "header_sha256": "e84dcb765203d4c9774b4eaf52af1f3813a814fbb95197aad1dfd12bb7562268",
+          "header_sha256": "9efdb28c9b250b3749992564ca0c5ea8fcf2bb8cfa4b9cb95b86ee84d2613da4",
           "line_offset": -191,
           "path": "sk-moneybird-accountant/references/tax-rules/2026/work-relationship/notes.md",
           "sections": [
@@ -4845,7 +4845,7 @@
       "parts": [
         {
           "body_sha256": "38f522c7b604c3ef5030200779e1c2db785ea61f9863a3306ae220df1a40f709",
-          "header_sha256": "880e26c6f48de5f70c94f8f473adb3a0da94097a65da1e32df93e044bbec96a2",
+          "header_sha256": "479cbf9677aa629444f2289c4d8ec22db598321aaa7eed4d7574a8941308b3de",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2027/private-company-and-corporate-tax/figures.md",
           "sections": [
@@ -4857,7 +4857,7 @@
         },
         {
           "body_sha256": "dcaf5ad25052d2d6474382bfbaa71e6bedcbb5aa70480dbd563830d2d5cc76e5",
-          "header_sha256": "aa9e108a1ec3b3c253b1ff4c2f8ab0f6f350ad89df86096a35ba3598f46d27cd",
+          "header_sha256": "84436de48ee18b6872136f2698e1820d8113edca9c1d6b6b9b71ac8cd91500ac",
           "line_offset": -57,
           "path": "sk-moneybird-accountant/references/tax-rules/2027/private-company-and-corporate-tax/rules.md",
           "sections": [
@@ -4868,7 +4868,7 @@
         },
         {
           "body_sha256": "c3d8434c39404d90daa07c311b786acf2f6b8b15ae3128fe766f2ebf62acede1",
-          "header_sha256": "1c7915ad4d1aaa13d09bc8596672d7ebe6ed63877b0b8707a56d9b619d118f69",
+          "header_sha256": "40a7ba7040c2583baf167fb586b3dcdf9e997e4d62641e0ae5d33130eeddd074",
           "line_offset": -215,
           "path": "sk-moneybird-accountant/references/tax-rules/2027/private-company-and-corporate-tax/examples.md",
           "sections": [
@@ -4879,7 +4879,7 @@
         },
         {
           "body_sha256": "8569342fa5970582151392fee4ddfb747e89ebe33c328ce3e5eba4ea108cfe3d",
-          "header_sha256": "d08d551b31d75fc0f03b48d813be9031fde29c950990d1b85372aea52220adfb",
+          "header_sha256": "008bca32702a23c706c387cc3f750ef70cb0c111a76df79191f2d0e228f43782",
           "line_offset": -334,
           "path": "sk-moneybird-accountant/references/tax-rules/2027/private-company-and-corporate-tax/notes.md",
           "sections": [
@@ -4955,7 +4955,7 @@
       "parts": [
         {
           "body_sha256": "94d8b7ddfcf036bb5f65093fe1388cb612e45d5ea0a7b850e13c9492a044096b",
-          "header_sha256": "4e84b873ce11388ba98771d16928a1af7578c09111c8cd4152ec285a3ccf4f2e",
+          "header_sha256": "bc76911e2d76e83e5a1de041393c48b8f15317b6f73c76a682b43d2f3bca3848",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2027/investments/figures.md",
           "sections": [
@@ -4967,7 +4967,7 @@
         },
         {
           "body_sha256": "1ead9614309de29d1bb9342e6a3364f6208f08c0aba5dfb5b19896cba39f749a",
-          "header_sha256": "90e49cd86b89a7217e0f41acafe1f7d145f57879b3bf3ed85314bc254d292506",
+          "header_sha256": "2c3381aa50fac9fd8861dd5618ce150b12296dc63b1db1b678acce1c950fd2da",
           "line_offset": -43,
           "path": "sk-moneybird-accountant/references/tax-rules/2027/investments/rules.md",
           "sections": [
@@ -4978,7 +4978,7 @@
         },
         {
           "body_sha256": "5aa01ae8dc3cea1c1899d066d6520a8ce0354dd447306215fd94eeb2be85b5f8",
-          "header_sha256": "0e1ab98ef82c2f0cce454c6dd806303955fbf1731130a02a9ad970923ebb20d4",
+          "header_sha256": "186fe814ab66e24a325e5e148d26ff47367318e555849f4c16729c7fa495baec",
           "line_offset": -205,
           "path": "sk-moneybird-accountant/references/tax-rules/2027/investments/examples.md",
           "sections": [
@@ -4989,7 +4989,7 @@
         },
         {
           "body_sha256": "693a8925a888fc357be1a10ffdc59aaa20423459d5d3753bb5cc3440860011ae",
-          "header_sha256": "55e8f474ab4ef9fc08721c56d5afb7433f635534c4d7ce1d7c513eaf31635a71",
+          "header_sha256": "0aac91967151c539e6b4bda4b5090853e80ef8ec34bc298943c4600e6d6289e6",
           "line_offset": -323,
           "path": "sk-moneybird-accountant/references/tax-rules/2027/investments/notes.md",
           "sections": [
@@ -5175,7 +5175,7 @@
       "parts": [
         {
           "body_sha256": "8de698f1bf0e2e52b9ac6485061c6f09c4d88a13046300fc4579adf51ce65c96",
-          "header_sha256": "1a712c8914e8125d4948aa413921d4bb3a82e492d4dbab221fb9777489688fe3",
+          "header_sha256": "fb2c42c29c179f5e6f816da5976d0796537239d49c39ecad6a055799b2ad8059",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2027/procedure/figures.md",
           "sections": [
@@ -5187,7 +5187,7 @@
         },
         {
           "body_sha256": "035284f069b9ca7c30958e12da8e5db9ef8a89eb44e676507b9e23f5cfd98848",
-          "header_sha256": "7d92821ba7777653fb6b8bd9e3835a044f784209fa6820e11d2e80e12db409e8",
+          "header_sha256": "1ebf041186f2c799118e116d10b0249c91c2a10df6695c349e03bd066bc5dad1",
           "line_offset": -61,
           "path": "sk-moneybird-accountant/references/tax-rules/2027/procedure/rules.md",
           "sections": [
@@ -5198,7 +5198,7 @@
         },
         {
           "body_sha256": "d9dee4aaba697141d1d04fd22ee0639691c8bb50846e5f2e3532500984ca9a81",
-          "header_sha256": "2bc97699ca7b3a96fdf69e94799a75dfc1bf6f9540d19e505da2926d336fa851",
+          "header_sha256": "5a1086825df36ffe16f1451b115e517ffd707be8639571ffcc715ebf0a0f30f3",
           "line_offset": -245,
           "path": "sk-moneybird-accountant/references/tax-rules/2027/procedure/examples.md",
           "sections": [
@@ -5209,7 +5209,7 @@
         },
         {
           "body_sha256": "3319b347e9b77fe7435d6ca1ecb7b75070981544def50229e5165f164c5901c3",
-          "header_sha256": "5749997367a4961b33546b47df4a646b8b398696adbc595be3ce2f9390e9a4c8",
+          "header_sha256": "d9e6a1b968e45fb73da9d0f105d774a89613791e71f2015810f2a0d142e7c01e",
           "line_offset": -338,
           "path": "sk-moneybird-accountant/references/tax-rules/2027/procedure/notes.md",
           "sections": [

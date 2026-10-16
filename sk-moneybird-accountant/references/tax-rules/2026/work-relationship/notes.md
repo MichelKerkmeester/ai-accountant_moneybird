@@ -1,7 +1,7 @@
 ---
 title: "Employment relationship and self-employment (arbeidsrelatie en zelfstandigheid) 2026: Notes"
 description: "Work relationship rules for tax year 2026, covering enforcement under the Deregulation of Employment Relationships Assessment Act (Wet DBA), model agreements (modelovereenkomsten), the VBAR low hourly rate presumption and the BAZ bill. This file holds the notes part."
-nav_label: "Employment relationship and self-employment notes"
+nav_label: "Work relationship and self-employment notes"
 trigger_phrases:
   - "arbeidsrelatie 2026"
   - "Wet DBA 2026"

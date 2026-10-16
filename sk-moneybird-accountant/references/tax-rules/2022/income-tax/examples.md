@@ -1,7 +1,7 @@
 ---
 title: "Income tax box 1 2022: Examples"
 description: "This file covers Dutch box 1 rates, tax credits (heffingskortingen), the rate adjustment (tariefsaanpassing) and the route from business profit to taxable income for tax year 2022. This file holds the examples part."
-nav_label: "Inkomstenbelasting box 1 examples"
+nav_label: "Income tax box 1 examples"
 trigger_phrases:
   - "inkomstenbelasting box 1 2022"
   - "box 1 tarieven 2022"

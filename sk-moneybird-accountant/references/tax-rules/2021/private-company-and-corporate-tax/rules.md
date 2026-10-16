@@ -1,7 +1,7 @@
 ---
 title: "Private limited company and corporate income tax (BV en vennootschapsbelasting) 2021: Rules"
 description: "Corporate income tax (vennootschapsbelasting), DGA wage, dividend tax (dividendbelasting), fiscal unity (fiscale eenheid) and conversion rules for a BV in tax year 2021. This file holds the rules part."
-nav_label: "BV en vennootschapsbelasting rules"
+nav_label: "Private limited company and corporate income tax rules"
 trigger_phrases:
   - "vennootschapsbelasting 2021"
   - "BV en vennootschapsbelasting 2021"

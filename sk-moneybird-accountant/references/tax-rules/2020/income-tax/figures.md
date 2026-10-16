@@ -1,7 +1,7 @@
 ---
 title: "Income tax (inkomstenbelasting) box 1 2020: Figures"
 description: "Covers the 2020 box 1 rates, tax credits (heffingskortingen), rate adjustment (tariefsaanpassing) and the route from business profit to taxable income."
-nav_label: "Inkomstenbelasting box 1"
+nav_label: "Income tax box 1"
 trigger_phrases:
   - "Inkomstenbelasting box 1 2020"
   - "heffingskortingen 2020"

@@ -1,7 +1,7 @@
 ---
 title: "VAT 2025: Examples"
 description: "This file explains Dutch VAT (btw) rates, exemptions, small-business rules, returns, invoicing and cross-border VAT for tax year 2025. This file holds the examples part."
-nav_label: "BTW examples"
+nav_label: "VAT examples"
 trigger_phrases:
   - "BTW 2025"
   - "omzetbelasting 2025"

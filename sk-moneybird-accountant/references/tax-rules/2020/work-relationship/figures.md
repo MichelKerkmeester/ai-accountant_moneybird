@@ -1,7 +1,7 @@
 ---
 title: "Employment relationship (arbeidsrelatie) and self-employment (zelfstandigheid) 2020: Figures"
 description: "The work-relationship rules for tax year 2020: the Wet DBA test for employment (loondienst), the enforcement moratorium (handhavingsmoratorium) and its instruction (aanwijzing) route, model agreements (modelovereenkomsten), case law and the first plans for a legal presumption (rechtsvermoeden) that later became the VBAR."
-nav_label: "Arbeidsrelatie en zelfstandigheid"
+nav_label: "Work relationship and self-employment"
 trigger_phrases:
   - "arbeidsrelatie 2020"
   - "Wet DBA 2020"

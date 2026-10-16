@@ -1,7 +1,7 @@
 ---
 title: "Tax return and procedure 2022: Examples"
 description: "Filing deadlines, deferral (uitstel), provisional assessment, tax interest, additional assessment, objection, record-retention obligation and Chamber of Commerce and Dutch Tax and Customs Administration registration duties for tax year 2022. This file holds the examples part."
-nav_label: "Aangifte en procedure examples"
+nav_label: "Tax return and procedure examples"
 trigger_phrases:
   - "aangifte en procedure 2022"
   - "aangifte inkomstenbelasting 2022 deadline"

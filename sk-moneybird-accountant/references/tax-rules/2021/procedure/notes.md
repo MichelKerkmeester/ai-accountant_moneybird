@@ -1,7 +1,7 @@
 ---
 title: "Filing and procedure (aangifte en procedure) 2021: Notes"
 description: "Filing deadlines, extensions, provisional assessment, tax interest (belastingrente), additional assessment (navordering), objection (bezwaar), record-retention obligation (bewaarplicht) and registration duties for tax year 2021. This file holds the notes part."
-nav_label: "Aangifte en procedure notes"
+nav_label: "Tax return and procedure notes"
 trigger_phrases:
   - "procedure 2021"
   - "aangifte en procedure 2021"

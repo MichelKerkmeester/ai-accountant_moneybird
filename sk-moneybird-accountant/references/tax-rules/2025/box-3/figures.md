@@ -1,7 +1,7 @@
 ---
 title: "Box 3 savings and investments (sparen en beleggen) 2025: Figures"
 description: "Box 3 savings and investments for tax year 2025: tax-free allowance (heffingsvrij vermogen), debt threshold (schuldendrempel), the three category percentages, the six-step calculation, green investments (groene beleggingen) and the option to report the actual return."
-nav_label: "Box 3 sparen en beleggen"
+nav_label: "Box 3 savings and investments"
 trigger_phrases:
   - "box 3 2025"
   - "box 3 sparen en beleggen 2025"

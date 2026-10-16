@@ -1,7 +1,7 @@
 ---
 title: "Zvw contribution (Zvw-bijdrage) 2025: Figures"
 description: "The income-dependent Zvw contribution for an entrepreneur in tax year 2025: the 5,26% rate, the maximum contribution income (bijdrage-inkomen) of € 75.864, who pays by assessment (aanslag) and how that differs from the 6,51% employer levy (werkgeversheffing)."
-nav_label: "Zvw-bijdrage"
+nav_label: "Zvw contribution"
 trigger_phrases:
   - "Zvw-bijdrage 2025"
   - "inkomensafhankelijke bijdrage Zorgverzekeringswet 2025"

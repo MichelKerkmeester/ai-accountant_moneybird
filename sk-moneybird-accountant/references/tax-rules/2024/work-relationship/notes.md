@@ -1,7 +1,7 @@
 ---
 title: "Employment relationship and self-employment (arbeidsrelatie en zelfstandigheid) 2024: Notes"
 description: "The Wet DBA, the last year of the enforcement moratorium (handhavingsmoratorium), model agreements (modelovereenkomsten), the VBAR bill and the low hourly rate presumption for the work relationship in tax year 2024. This file holds the notes part."
-nav_label: "Arbeidsrelatie en zelfstandigheid notes"
+nav_label: "Work relationship and self-employment notes"
 trigger_phrases:
   - "arbeidsrelatie 2024"
   - "zelfstandigheid 2024"

@@ -1,7 +1,7 @@
 ---
 title: "Costs and car 2022: Examples"
 description: "Deductible business costs, mixed costs (gemengde kosten), travel, car and bicycle private-use rules, study costs and workspace rules for tax year 2022. This file holds the examples part."
-nav_label: "Kosten en auto examples"
+nav_label: "Costs and car examples"
 trigger_phrases:
   - "kosten en auto 2022"
   - "zakelijke kosten 2022"

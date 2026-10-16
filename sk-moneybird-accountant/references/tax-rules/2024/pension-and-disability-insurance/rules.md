@@ -1,7 +1,7 @@
 ---
 title: "Pension, annuity and disability insurance (pensioen, lijfrente en AOV) 2024: Rules"
 description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity (lijfrente) caps, profit from business discontinuation (stakingswinst) conversion, AOV premium deductibility and the proposed BAZ consultation for tax year 2024. This file holds the rules part."
-nav_label: "Pensioen, lijfrente en AOV rules"
+nav_label: "Pension, annuity and disability insurance rules"
 trigger_phrases:
   - "pensioen en AOV 2024"
   - "jaarruimte 2024"

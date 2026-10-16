@@ -1,7 +1,7 @@
 ---
 title: "Investment deductions and depreciation 2027: Rules"
 description: "The 2027 rules for the KIA, EIA, MIA, Vamil, disinvestment addition (desinvesteringsbijtelling), ordinary depreciation and the minimum value (bodemwaarde), plus arbitrary depreciation (willekeurige afschrijving) for start-up entrepreneurs, with the 2027 law text, bill 37 022 and the unpublished indexation marked by status. This file holds the rules part."
-nav_label: "Investment deductions and depreciation rules"
+nav_label: "Investment deduction and depreciation rules"
 trigger_phrases:
   - "investeringsaftrek 2027"
   - "kleinschaligheidsinvesteringsaftrek 2027"

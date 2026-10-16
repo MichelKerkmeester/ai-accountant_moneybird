@@ -1,7 +1,7 @@
 ---
 title: "Tax return (aangifte) and procedure 2024: Examples"
 description: "Filing deadlines and deferral (uitstel) for income tax and VAT (btw), the provisional assessment (voorlopige aanslag), tax interest (belastingrente), the additional assessment period (navorderingstermijn), objection (bezwaar), record-retention obligation (bewaarplicht) and KVK and Dutch Tax and Customs Administration (Belastingdienst) registration for tax year 2024. This file holds the examples part."
-nav_label: "Aangifte en procedure examples"
+nav_label: "Tax return and procedure examples"
 trigger_phrases:
   - "aangifte en procedure 2024"
   - "belastingaangifte 2024 uitstel"

@@ -1,7 +1,7 @@
 ---
 title: "VAT 2022: Rules"
 description: "This file covers Dutch VAT for tax year 2022, including the rates and exemptions, the KOR, return periods and deadlines, cross-border transactions, invoicing, private use and the corona repayment scheme. This file holds the rules part."
-nav_label: "BTW rules"
+nav_label: "VAT rules"
 trigger_phrases:
   - "BTW 2022"
   - "btw-aangifte 2022"

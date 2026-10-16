@@ -1,7 +1,7 @@
 ---
 title: "Pension, annuity and disability insurance 2022: Notes"
 description: "Annual allowance (jaarruimte), catch-up allowance (reserveringsruimte), annuity (lijfrente) conditions, profit from business discontinuation (stakingswinst) conversion, old-age reserve (oudedagsreserve) and disability insurance (AOV) deductibility for a self-employed sole trader (ZZP) in tax year 2022. This file holds the notes part."
-nav_label: "Pensioen, lijfrente en AOV notes"
+nav_label: "Pension, annuity and disability insurance notes"
 trigger_phrases:
   - "pensioen en AOV 2022"
   - "jaarruimte 2022"

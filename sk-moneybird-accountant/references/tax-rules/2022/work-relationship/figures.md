@@ -1,7 +1,7 @@
 ---
 title: "Employment relationship and self-employment 2022: Figures"
 description: "Wet DBA, the enforcement moratorium (handhavingsmoratorium) and model agreements (modelovereenkomsten) for tax year 2022, plus the later VBAR hourly rate presumption and the BAZ bill as recorded in the checked sources."
-nav_label: "Arbeidsrelatie en zelfstandigheid"
+nav_label: "Work relationship and self-employment"
 trigger_phrases:
   - "arbeidsrelatie 2022"
   - "Wet DBA 2022"

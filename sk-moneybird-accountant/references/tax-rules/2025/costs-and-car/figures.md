@@ -1,7 +1,7 @@
 ---
 title: "Costs (kosten) and car 2025: Figures"
 description: "Deductible business costs and the car for a Dutch sole trader in tax year 2025, from the threshold for mixed costs (gemengde kosten drempel) and the fixed exclusions to the kilometre allowance, private-use addition (bijtelling) and the performance grant (prestatiebeurs) exception."
-nav_label: "Kosten en auto"
+nav_label: "Costs and car"
 trigger_phrases:
   - "kosten en auto 2025"
   - "zakelijke kosten 2025"

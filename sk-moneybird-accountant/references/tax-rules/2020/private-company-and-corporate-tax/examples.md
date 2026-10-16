@@ -1,7 +1,7 @@
 ---
 title: "BV and corporate income tax (vennootschapsbelasting) 2020: Examples"
 description: "Everything about the BV and corporate income tax in 2020: corporate income tax rates (Vpb-tarieven), loss offsetting (verliesverrekening), interest deduction (renteaftrek), customary salary (gebruikelijk loon), Zvw, dividend tax (dividendbelasting), box 2, fiscal unity (fiscale eenheid), innovation box (innovatiebox), tax-neutral conversion (geruisloze omzetting) and annual accounts (jaarrekening). This file holds the examples part."
-nav_label: "BV en vennootschapsbelasting examples"
+nav_label: "Private limited company and corporate income tax examples"
 trigger_phrases:
   - "BV en vennootschapsbelasting 2020"
   - "vennootschapsbelasting 2020"

@@ -1,7 +1,7 @@
 ---
 title: "Zvw contribution (Zvw-bijdrage) 2024: Rules"
 description: "For a sole trader (ZZP) in 2024, the income-dependent Zvw contribution is 5,32% of the taxable profit from business (belastbare winst uit onderneming), with contribution income (bijdrage-inkomen) capped at € 71.628. The entrepreneur pays it by assessment (aanslag), and this rate differs from the 6,57% employer rate. This file holds the rules part."
-nav_label: "Zvw-bijdrage rules"
+nav_label: "Zvw contribution rules"
 trigger_phrases:
   - "Zvw-bijdrage 2024"
   - "Zvw 2024"

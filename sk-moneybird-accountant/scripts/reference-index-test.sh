@@ -1263,7 +1263,7 @@ else
 fi
 
 copy_skill "$MUT"
-sed 's/^nav_label: .*/nav_label: "BTW"/' "$MUT/references/tax-rules/2020/income-tax/figures.md" \
+sed 's/^nav_label: .*/nav_label: "VAT"/' "$MUT/references/tax-rules/2020/income-tax/figures.md" \
     >"$TMP_ROOT/mutated.md"
 mv "$TMP_ROOT/mutated.md" "$MUT/references/tax-rules/2020/income-tax/figures.md"
 run_generator "$MUT" --check

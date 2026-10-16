@@ -1,7 +1,7 @@
 ---
 title: "Income tax (inkomstenbelasting) box 1 2025: Figures"
 description: "Covers the 2025 box 1 tax brackets, tax credits (heffingskortingen), rate adjustment (tariefsaanpassing) and the path from business profit to taxable income."
-nav_label: "Inkomstenbelasting box 1"
+nav_label: "Income tax box 1"
 trigger_phrases:
   - "inkomstenbelasting box 1 2025"
   - "box 1 tarieven 2025"

@@ -1,7 +1,7 @@
 ---
 title: "Investment deduction and depreciation 2020 (investeringsaftrek en afschrijving): Rules"
 description: "All 2020 rules and amounts for the KIA, EIA, MIA and Vamil investment deductions, the disinvestment addition (desinvesteringsbijtelling) and the depreciation of business assets (bedrijfsmiddelen) for a Dutch sole trader or BV. This file holds the rules part."
-nav_label: "Investeringsaftrek en afschrijving rules"
+nav_label: "Investment deduction and depreciation rules"
 trigger_phrases:
   - "investeringsaftrek 2020"
   - "KIA 2020"

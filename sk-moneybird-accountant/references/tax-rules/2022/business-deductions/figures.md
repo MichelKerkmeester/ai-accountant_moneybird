@@ -1,7 +1,7 @@
 ---
 title: "Entrepreneur's allowance and SME profit exemption 2022: Figures"
 description: "All 2022 conditions and figures for the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption (MKB-winstvrijstelling) for a Dutch sole trader, including the hours criterion (urencriterium), the starter's deduction (startersaftrek), the old-age reserve addition and the rate adjustment (tariefsaanpassing)."
-nav_label: "Ondernemersaftrek en MKB-winstvrijstelling"
+nav_label: "Entrepreneur's allowance and SME profit exemption"
 trigger_phrases:
   - "ondernemersaftrek 2022"
   - "MKB-winstvrijstelling 2022"

@@ -1,7 +1,7 @@
 ---
 title: "Costs and car 2022: Rules"
 description: "Deductible business costs, the threshold for mixed costs (gemengde kosten), travel, car and bicycle private-use rules, study costs and workspace rules for tax year 2022. This file holds the rules part."
-nav_label: "Kosten en auto rules"
+nav_label: "Costs and car rules"
 trigger_phrases:
   - "kosten en auto 2022"
   - "zakelijke kosten 2022"

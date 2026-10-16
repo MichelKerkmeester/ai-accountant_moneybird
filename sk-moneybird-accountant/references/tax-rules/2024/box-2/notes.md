@@ -1,7 +1,7 @@
 ---
 title: "Box 2 and substantial interest (aanmerkelijk belang) 2024: Notes"
 description: "Box 2 income, the substantial interest (aanmerkelijk belang) rules, excessive borrowing (excessief lenen), customary salary (gebruikelijk loon) and pension interactions for tax year 2024. This file holds the notes part."
-nav_label: "Box 2 en aanmerkelijk belang notes"
+nav_label: "Box 2 and substantial interest notes"
 trigger_phrases:
   - "box 2 2024"
   - "aanmerkelijk belang 2024"

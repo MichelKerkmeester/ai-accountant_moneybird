@@ -1,7 +1,7 @@
 ---
 title: "Costs (kosten) and car 2024: Rules"
 description: "Deductible business costs and car rules for tax year 2024, including the threshold for mixed costs (gemengde kosten drempel) of € 5.600, the € 0,23 kilometre allowance and the 22% private-use addition (bijtelling). This file holds the rules part."
-nav_label: "Kosten en auto rules"
+nav_label: "Costs and car rules"
 trigger_phrases:
   - "kosten en auto 2024"
   - "zakelijke kosten 2024"

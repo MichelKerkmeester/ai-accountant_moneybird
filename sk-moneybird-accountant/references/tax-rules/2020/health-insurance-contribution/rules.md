@@ -1,7 +1,7 @@
 ---
 title: "Zvw contribution (Zvw-bijdrage) 2020: Rules"
 description: "Income-dependent Zvw contribution for a sole trader in tax year 2020: rate, maximum contribution income, assessment (aanslag), calculation and difference from the employer rate. This file holds the rules part."
-nav_label: "Zvw-bijdrage rules"
+nav_label: "Zvw contribution rules"
 trigger_phrases:
   - "Zvw-bijdrage 2020"
   - "Zvw 2020"

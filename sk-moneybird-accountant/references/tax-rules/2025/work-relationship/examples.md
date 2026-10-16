@@ -1,7 +1,7 @@
 ---
 title: "Employment relationship and self-employment 2025: Examples"
 description: "Wet DBA enforcement after the end of the moratorium, model agreements (modelovereenkomsten), the VBAR hourly rate presumption and the BAZ bill for tax year 2025. This file holds the examples part."
-nav_label: "Arbeidsrelatie en zelfstandigheid examples"
+nav_label: "Work relationship and self-employment examples"
 trigger_phrases:
   - "arbeidsrelatie 2025"
   - "schijnzelfstandigheid 2025"

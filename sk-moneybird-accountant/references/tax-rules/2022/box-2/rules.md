@@ -1,7 +1,7 @@
 ---
 title: "Box 2 and substantial interest 2022: Rules"
 description: "Box 2 income, the substantial interest rules, loss relief, customary salary and the PEB and ODV interactions for tax year 2022. This file holds the rules part."
-nav_label: "Box 2 en aanmerkelijk belang rules"
+nav_label: "Box 2 and substantial interest rules"
 trigger_phrases:
   - "box 2 2022"
   - "aanmerkelijk belang 2022"

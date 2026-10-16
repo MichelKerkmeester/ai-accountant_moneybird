@@ -1,7 +1,7 @@
 ---
 title: "Tax return and procedure 2025: Rules"
 description: "Filing deadlines and extensions for income tax and VAT (btw), the provisional assessment (voorlopige aanslag), tax interest (belastingrente), the additional assessment period (navorderingstermijn), objection (bezwaar), the record-retention obligation (bewaarplicht) and the Chamber of Commerce (KVK) and Dutch Tax and Customs Administration (Belastingdienst) registration duties for tax year 2025. This file holds the rules part."
-nav_label: "Aangifte en procedure rules"
+nav_label: "Tax return and procedure rules"
 trigger_phrases:
   - "aangifte en procedure 2025"
   - "belastingaangifte 2025"

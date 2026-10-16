@@ -1,7 +1,7 @@
 ---
 title: "Box 2 and substantial interest (aanmerkelijk belang) 2020: Examples"
 description: "Box 2 income, the substantial interest (aanmerkelijk belang) test, loss offset and conversion, customary salary (gebruikelijk loon) and the pension in own management (pensioen in eigen beheer) dates for tax year 2020. This file holds the examples part."
-nav_label: "Box 2 en aanmerkelijk belang examples"
+nav_label: "Box 2 and substantial interest examples"
 trigger_phrases:
   - "box 2 2020"
   - "aanmerkelijk belang 2020"

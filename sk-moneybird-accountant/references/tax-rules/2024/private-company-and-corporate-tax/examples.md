@@ -1,7 +1,7 @@
 ---
 title: "Private limited company and corporate income tax (BV en vennootschapsbelasting) 2024: Examples"
 description: "Corporate income tax (vennootschapsbelasting), the fiscal unity (fiscale eenheid), the customary wage scheme (gebruikelijk loonregeling) for a DGA, Zvw, box 2, dividend tax (dividendbelasting) and the annual accounts (jaarrekening) size classes for tax year 2024. This file holds the examples part."
-nav_label: "BV en vennootschapsbelasting examples"
+nav_label: "Private limited company and corporate income tax examples"
 trigger_phrases:
   - "BV en vennootschapsbelasting 2024"
   - "vennootschapsbelasting 2024"

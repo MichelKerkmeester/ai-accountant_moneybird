@@ -1,7 +1,7 @@
 ---
 title: "Entrepreneur's allowance (ondernemersaftrek) and SME profit exemption (MKB-winstvrijstelling) 2025: Rules"
 description: "The entrepreneur's allowance (ondernemersaftrek), the starter's deduction (startersaftrek), the deduction for assisting partner (meewerkaftrek), the discontinuation deduction (stakingsaftrek) and the 12,7% SME profit exemption (MKB-winstvrijstelling) for tax year 2025, with the hours criterion (urencriterium) of 1.225 hours and the rate adjustment (tariefsaanpassing) of 12,02%. This file holds the rules part."
-nav_label: "Ondernemersaftrek en MKB-winstvrijstelling rules"
+nav_label: "Entrepreneur's allowance and SME profit exemption rules"
 trigger_phrases:
   - "ondernemersaftrek 2025"
   - "MKB-winstvrijstelling 2025"

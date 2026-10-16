@@ -1,7 +1,7 @@
 ---
 title: "Investment deduction and depreciation (investeringsaftrek en afschrijving) 2021: Rules"
 description: "All 2021 rules for the Dutch investment deduction (investeringsaftrek) (KIA, EIA, MIA, Vamil), the per-asset minimums and exclusions, the disinvestment addition (desinvesteringsbijtelling) and the depreciation of business assets (bedrijfsmiddelen) for a sole trader or a BV. This file holds the rules part."
-nav_label: "Investeringsaftrek en afschrijving rules"
+nav_label: "Investment deduction and depreciation rules"
 trigger_phrases:
   - "investeringsaftrek 2021"
   - "kleinschaligheidsinvesteringsaftrek 2021"

@@ -1,7 +1,7 @@
 ---
 title: "Filing and procedure (aangifte en procedure) 2021: Examples"
 description: "Filing deadlines, extensions, provisional assessment, tax interest (belastingrente), additional assessment (navordering), objection (bezwaar), record-retention obligation (bewaarplicht) and registration duties for tax year 2021. This file holds the examples part."
-nav_label: "Aangifte en procedure examples"
+nav_label: "Tax return and procedure examples"
 trigger_phrases:
   - "procedure 2021"
   - "aangifte en procedure 2021"

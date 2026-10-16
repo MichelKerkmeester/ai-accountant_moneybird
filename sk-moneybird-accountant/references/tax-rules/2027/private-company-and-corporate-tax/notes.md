@@ -1,7 +1,7 @@
 ---
 title: "Private company and corporate tax 2027: Notes"
 description: "BV and corporate income tax (vennootschapsbelasting) for tax year 2027, with the carried Vpb rates, the Tax Plan 2027 (Belastingplan 2027) proposals, DGA pay, dividend tax (dividendbelasting) and the BV filing and annual accounts (jaarrekening) duties. This file holds the notes part."
-nav_label: "Private company and corporate tax notes"
+nav_label: "Private limited company and corporate income tax notes"
 trigger_phrases:
   - "vennootschapsbelasting 2027"
   - "BV en vennootschapsbelasting 2027"

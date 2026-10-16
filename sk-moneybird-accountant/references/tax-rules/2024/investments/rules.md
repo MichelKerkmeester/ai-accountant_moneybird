@@ -1,7 +1,7 @@
 ---
 title: "Investment deduction and depreciation (investeringsaftrek en afschrijving) 2024: Rules"
 description: "Covers the KIA, EIA, MIA, Vamil, disinvestment addition (desinvesteringsbijtelling) and depreciation rules that apply in tax year 2024 to a Dutch sole trader or a BV. This file holds the rules part."
-nav_label: "Investeringsaftrek en afschrijving rules"
+nav_label: "Investment deduction and depreciation rules"
 trigger_phrases:
   - "investeringsaftrek 2024"
   - "KIA 2024"

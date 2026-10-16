@@ -1,7 +1,7 @@
 ---
 title: "Income tax return (aangifte) and procedure 2020: Examples"
 description: "Filing deadlines and deferral (uitstel), the provisional assessment (voorlopige aanslag), tax interest (belastingrente), additional assessment (navordering), objection (bezwaar), record-retention obligation (bewaarplicht) and the KVK and Dutch Tax and Customs Administration (Belastingdienst) registration duties for tax year 2020. This file holds the examples part."
-nav_label: "Aangifte en procedure examples"
+nav_label: "Tax return and procedure examples"
 trigger_phrases:
   - "aangifte en procedure 2020"
   - "aangifte inkomstenbelasting 2020 deadline"

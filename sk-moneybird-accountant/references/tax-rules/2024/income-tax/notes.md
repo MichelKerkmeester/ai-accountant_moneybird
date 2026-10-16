@@ -1,7 +1,7 @@
 ---
 title: "Income tax (inkomstenbelasting) box 1 2024: Notes"
 description: "This file covers Dutch Box 1 rates, AOW-age variants, tax credits, rate adjustment and the route from business profit to taxable income for tax year 2024. This file holds the notes part."
-nav_label: "Inkomstenbelasting box 1 notes"
+nav_label: "Income tax box 1 notes"
 trigger_phrases:
   - "income tax box 1 2024"
   - "inkomstenbelasting box 1 2024"

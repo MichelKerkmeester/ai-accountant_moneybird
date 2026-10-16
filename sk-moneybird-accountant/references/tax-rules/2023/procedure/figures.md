@@ -1,7 +1,7 @@
 ---
 title: "Filing and procedure 2023: Figures"
 description: "Filing deadlines and deferral for income tax and VAT, the provisional assessment, tax interest, the additional assessment period, objection, the record-retention obligation and KVK and Dutch Tax and Customs Administration registration for tax year 2023."
-nav_label: "Filing and procedure"
+nav_label: "Tax return and procedure"
 trigger_phrases:
   - "aangifte en procedure 2023"
   - "belastingaangifte 2023 deadline"

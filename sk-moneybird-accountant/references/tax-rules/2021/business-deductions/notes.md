@@ -1,7 +1,7 @@
 ---
 title: "Entrepreneur's allowance (Ondernemersaftrek) and SME profit exemption (mkb-winstvrijstelling) 2021: Notes"
 description: "This file covers the entrepreneur's allowance (ondernemersaftrek) and the SME profit exemption (mkb-winstvrijstelling) for tax year 2021, including the hours criterion (urencriterium), the self-employed person's deduction (zelfstandigenaftrek), the starter's deduction (startersaftrek), the starter's deduction for disabled entrepreneurs (startersaftrek bij arbeidsongeschiktheid), the deduction for research and development work (S&O-aftrek), the deduction for assisting partner (meewerkaftrek), the discontinuation deduction (stakingsaftrek), the old-age reserve (oudedagsreserve) addition, the rate adjustment (tariefsaanpassing) and the Zvw interaction. This file holds the notes part."
-nav_label: "Entrepreneur's allowance and SME exemption notes"
+nav_label: "Entrepreneur's allowance and SME profit exemption notes"
 trigger_phrases:
   - "ondernemersaftrek 2021"
   - "zelfstandigenaftrek 2021"

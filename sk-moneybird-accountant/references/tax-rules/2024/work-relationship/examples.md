@@ -1,7 +1,7 @@
 ---
 title: "Employment relationship and self-employment (arbeidsrelatie en zelfstandigheid) 2024: Examples"
 description: "The Wet DBA, the last year of the enforcement moratorium (handhavingsmoratorium), model agreements (modelovereenkomsten), the VBAR bill and the low hourly rate presumption for the work relationship in tax year 2024. This file holds the examples part."
-nav_label: "Arbeidsrelatie en zelfstandigheid examples"
+nav_label: "Work relationship and self-employment examples"
 trigger_phrases:
   - "arbeidsrelatie 2024"
   - "zelfstandigheid 2024"

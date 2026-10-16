@@ -1,7 +1,7 @@
 ---
 title: "BV and corporate income tax 2023: Notes"
 description: "This file covers the 2023 Dutch corporate income tax rules for a BV, including the corporate income tax rate, loss set-off, interest deduction limit, participation exemption, fiscal unity, customary salary, Zvw, dividend withholding tax, conditional withholding tax, annual accounts and the switch from a sole trader to a BV. This file holds the notes part."
-nav_label: "BV and corporate income tax notes"
+nav_label: "Private limited company and corporate income tax notes"
 trigger_phrases:
   - "BV en vennootschapsbelasting 2023"
   - "vennootschapsbelasting 2023"

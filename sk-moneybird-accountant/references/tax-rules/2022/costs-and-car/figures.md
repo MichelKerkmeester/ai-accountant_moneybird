@@ -1,7 +1,7 @@
 ---
 title: "Costs and car 2022: Figures"
 description: "Deductible business costs, mixed costs (gemengde kosten), travel, car and bicycle private-use rules, study costs and workspace rules for tax year 2022."
-nav_label: "Kosten en auto"
+nav_label: "Costs and car"
 trigger_phrases:
   - "kosten en auto 2022"
   - "zakelijke kosten 2022"

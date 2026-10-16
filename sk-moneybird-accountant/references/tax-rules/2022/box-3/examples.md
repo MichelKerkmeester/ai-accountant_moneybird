@@ -1,7 +1,7 @@
 ---
 title: "Box 3 savings and investments 2022: Examples"
 description: "Box 3 for tax year 2022: the old band method, the recalculated category method under the Box 3 Restoration of Rights Act (Wet rechtsherstel box 3) and the most favourable outcome for savings and investments. This file holds the examples part."
-nav_label: "Box 3 sparen en beleggen examples"
+nav_label: "Box 3 savings and investments examples"
 trigger_phrases:
   - "box 3 2022"
   - "box 3 sparen en beleggen 2022"

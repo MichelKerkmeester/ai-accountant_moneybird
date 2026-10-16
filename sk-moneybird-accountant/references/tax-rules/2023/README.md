@@ -72,14 +72,14 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Box 3 savings and investments | Box 3 rate (tarief) | 32% | enacted | Verified |
 | Box 2 and substantial interest | Box 2 rate (art. 2.12 Wet IB 2001) | 26,9%, one rate, no bracket | enacted | Verified |
 | Box 2 and substantial interest | Substantial interest (aanmerkelijk belang) definition (art. 4.6) | 5%, sub a to e | enacted | Verified |
-| BV and corporate income tax | Corporate income tax (Vpb) rate (art. 22 Wet Vpb 1969) | First bracket up to and including € 200.000 at 19%. Above that € 38.000 plus 25,8% | enacted | Verified |
-| BV and corporate income tax | Art. 31 apportionment for a book year straddling 1 January 2023 | Tax is (X/B x To) + (Y/B x Tn). Old article 2022: up to and including € 395.000 at 15%, above that € 59.250 plus 25,8%. New article 2023: up to and including € 200.000 at 19%, above that € 38.000 plus 25,8% | enacted | Verified |
-| Pension, annuity and AOV | Annual allowance (jaarruimte) percentage | 30% | enacted | Verified |
-| Pension, annuity and AOV | Maximum annual allowance | € 34.550 | enacted | Corrected |
-| Employment relationship and self-employment | Wet DBA | Wet van 3 februari 2016, in force 1 May 2016, replaced the VAR | enacted | Verified |
-| Employment relationship and self-employment | Employment test (loondienst) | 3 elements, the possibility of employer authority (werkgeversgezag), the duty to perform personal work (persoonlijke arbeid), and pay for the work | enacted | Verified |
-| Filing and procedure | Income tax filing period (aangifteperiode inkomstenbelasting) | Opens on 1 March | enacted | Verified |
-| Filing and procedure | Income tax return 2023 filing deadline | Before 1 May 2024, with deferral (uitstel) before 1 September 2024 | enacted | Corrected |
+| Private limited company and corporate income tax | Corporate income tax (Vpb) rate (art. 22 Wet Vpb 1969) | First bracket up to and including € 200.000 at 19%. Above that € 38.000 plus 25,8% | enacted | Verified |
+| Private limited company and corporate income tax | Art. 31 apportionment for a book year straddling 1 January 2023 | Tax is (X/B x To) + (Y/B x Tn). Old article 2022: up to and including € 395.000 at 15%, above that € 59.250 plus 25,8%. New article 2023: up to and including € 200.000 at 19%, above that € 38.000 plus 25,8% | enacted | Verified |
+| Pension, annuity and disability insurance | Annual allowance (jaarruimte) percentage | 30% | enacted | Verified |
+| Pension, annuity and disability insurance | Maximum annual allowance | € 34.550 | enacted | Corrected |
+| Work relationship and self-employment | Wet DBA | Wet van 3 februari 2016, in force 1 May 2016, replaced the VAR | enacted | Verified |
+| Work relationship and self-employment | Employment test (loondienst) | 3 elements, the possibility of employer authority (werkgeversgezag), the duty to perform personal work (persoonlijke arbeid), and pay for the work | enacted | Verified |
+| Tax return and procedure | Income tax filing period (aangifteperiode inkomstenbelasting) | Opens on 1 March | enacted | Verified |
+| Tax return and procedure | Income tax return 2023 filing deadline | Before 1 May 2024, with deferral (uitstel) before 1 September 2024 | enacted | Corrected |
 <!-- GENERATED:headline-figures:end -->
 
 ---

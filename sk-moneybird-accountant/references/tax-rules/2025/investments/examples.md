@@ -1,7 +1,7 @@
 ---
 title: "Investment deduction and depreciation 2025: Examples"
 description: "Investment deductions (KIA, EIA, MIA, Vamil), the disinvestment addition (desinvesteringsbijtelling) and the depreciation rules for a Dutch sole trader or BV in tax year 2025. This file holds the examples part."
-nav_label: "Investeringsaftrek en afschrijving examples"
+nav_label: "Investment deduction and depreciation examples"
 trigger_phrases:
   - "investeringsaftrek 2025"
   - "KIA EIA MIA Vamil 2025"

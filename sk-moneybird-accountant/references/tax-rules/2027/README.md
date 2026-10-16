@@ -64,22 +64,22 @@ The first two rows of each file's figures table. The topic file carries the sour
 | Zvw contribution | Zvw employer health insurance contribution (werkgeversheffing, normale IAB) | 6,27% | proposed | Verified |
 | Entrepreneur's allowance and SME profit exemption | Hours criterion (urencriterium) | 1.225 hours (art. 3.6, identical to 2026) | adopted-not-yet-in-force | Verified |
 | Entrepreneur's allowance and SME profit exemption | Second test waived, lookback | not an entrepreneur in 1 or more of 2022 to 2026 | adopted-not-yet-in-force | Verified |
-| Investment deductions and depreciation | KIA base table in the 2027 text, before indexation | Nil up to € 2.900, 28% of the investment up to € 71.683, a fixed € 20.072 up to € 132.746, € 20.072 minus 7,56% of the excess over € 132.746 up to € 398.236, nil above € 398.236 | adopted-not-yet-in-force | Verified |
-| Investment deductions and depreciation | KIA in a partnership (samenwerkingsverband) | Partnership investments and own investments added, the table applied to the sum, outcome times own investment divided by the sum | adopted-not-yet-in-force | Verified |
+| Investment deduction and depreciation | KIA base table in the 2027 text, before indexation | Nil up to € 2.900, 28% of the investment up to € 71.683, a fixed € 20.072 up to € 132.746, € 20.072 minus 7,56% of the excess over € 132.746 up to € 398.236, nil above € 398.236 | adopted-not-yet-in-force | Verified |
+| Investment deduction and depreciation | KIA in a partnership (samenwerkingsverband) | Partnership investments and own investments added, the table applied to the sum, outcome times own investment divided by the sum | adopted-not-yet-in-force | Verified |
 | Costs and car | Threshold for mixed costs (gemengde kosten drempel), base in the 2027 text | € 5.700 before indexation | adopted-not-yet-in-force | Verified |
 | Costs and car | Threshold for mixed costs, effective 2027 | not published | unknown | UNVERIFIED |
 | Box 3 savings and investments | Category method (categorieënmethode, art. 5.2) | Six-step category method, still in the 2027 text. A negative return (rendement) is set at nil and the flat-rate benefit (forfaitaire voordeel) is at least nil | enacted | Verified |
 | Box 3 savings and investments | Reference date (peildatum) | 1 January. Transactions around it inside one continuous three-month period that starts before and ends after the reference date are disregarded unless business reasons are made plausible (art. 5.24) | enacted | Verified |
 | Box 2 and substantial interest | Box 2 bracket 1 (art. 2.12, text per 1 January 2027) | 24,5% up to € 68.843, pre-indexation text that "kan voor inwerkingtreding nog wijzigen" | adopted-not-yet-in-force | Verified |
 | Box 2 and substantial interest | Tax at the top of bracket 1 (art. 2.12, column III) | € 16.866 | adopted-not-yet-in-force | Verified |
-| Private company and corporate tax | Vpb rate table (art. 22 Wet Vpb 1969) | up to and including € 200.000 19%, above that € 38.000 plus 25,8% (carried) | enacted | UNVERIFIED |
-| Private company and corporate tax | Loss offsetting (verliesverrekening) (art. 20 Wet Vpb 1969) | one year back and unlimited forward, per year up to € 1.000.000 plus 50% of the profit above € 1.000.000, in the order the losses arose (carried) | enacted | UNVERIFIED |
+| Private limited company and corporate income tax | Vpb rate table (art. 22 Wet Vpb 1969) | up to and including € 200.000 19%, above that € 38.000 plus 25,8% (carried) | enacted | UNVERIFIED |
+| Private limited company and corporate income tax | Loss offsetting (verliesverrekening) (art. 20 Wet Vpb 1969) | one year back and unlimited forward, per year up to € 1.000.000 plus 50% of the profit above € 1.000.000, in the order the losses arose (carried) | enacted | UNVERIFIED |
 | Pension, annuity and disability insurance | Annual allowance (jaarruimte) percentage | 30% | enacted | Verified |
 | Pension, annuity and disability insurance | Income cap (aftoppingsgrens) contribution base (premiegrondslag) | € 137.800, still in the 2027 text, not yet indexed | enacted | Verified |
 | Work relationship and self-employment | Wet DBA | Act of 3 February 2016, in force 1 May 2016, replaced the VAR | enacted | Verified |
 | Work relationship and self-employment | Employment (loondienst) test | Three elements, employer authority (werkgeversgezag), personal work (persoonlijke arbeid) and pay, plus weighing factors such as integration (inbedding) and entrepreneurship (ondernemerschap) | enacted | Verified |
-| Filing and procedure | IB return over 2026, filed in 2027: deadline | Not published on 2026-10-11. Usually 1 May 2027, set in the filing invitation letter (aangiftebrief) | unknown | UNVERIFIED |
-| Filing and procedure | IB filing period opens | 1 March | enacted | Verified |
+| Tax return and procedure | IB return over 2026, filed in 2027: deadline | Not published on 2026-10-11. Usually 1 May 2027, set in the filing invitation letter (aangiftebrief) | unknown | UNVERIFIED |
+| Tax return and procedure | IB filing period opens | 1 March | enacted | Verified |
 <!-- GENERATED:headline-figures:end -->
 
 ---
