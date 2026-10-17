@@ -23,7 +23,7 @@ The root `SKILL.md` is the hub and holds stage one. `mode-registry.json` names t
 
 ### Stage one
 
-A request starts in the accountant packet, the registry default. A request that names a CLI operation and nothing else starts in that CLI packet. An accountant route whose tool route names a CLI packet hands off to it, and that packet's `ROUTER.md` and `SKILL.md` load before the CLI runs.
+A request starts in the accountant packet, the registry default. A request that names a CLI operation and nothing else starts in that CLI packet: once the CLI signals and the system names Jortt and Moneybird are set aside, no accountant task is left. A CLI name matches whole words only. An accountant route whose tool route names a CLI packet hands off to it in the order the tool route names them, and then to the CLI its CLI action names. That packet's `ROUTER.md` and `SKILL.md` load before the CLI runs. A refusal and an abstain stay in the accountant packet and hand off to no CLI packet. A request that names a CLI is read as a refusal when the text left after the CLI and system names is one.
 
 ### Stage two
 
@@ -31,7 +31,7 @@ A request starts in the accountant packet, the registry default. A request that 
 
 ### The checks
 
-`check-route-table.py` reads the route table from `ROUTER.md` and fails when a hub file is missing, a root folder with a `SKILL.md` is not in the registry, a registry packet has no folder or router, a router is not `router_state: active` or lost its routing section, intent model or resource map, the hub `SKILL.md` does not link a router, stage one names a default the registry does not or leaves another mode without phrases or a packet `SKILL.md` embeds a router again. `route-replay.py` reads the table from `ROUTER.md` when it holds one and from `SKILL.md` otherwise, which is where a revision from before the hub keeps it, and names the file when a marker is missing.
+`check-route-table.py` reads the route table from `ROUTER.md` and fails when a hub file is missing, a root folder with a `SKILL.md` is not in the registry, a registry packet has no folder or router, a router is not `router_state: active` or lost its routing section, intent model or resource map, the hub `SKILL.md` does not link a router, stage one names a default the registry does not or leaves another mode without phrases or a packet `SKILL.md` embeds a router again. `route-replay.py` reads the table from `ROUTER.md` when it holds one and from `SKILL.md` otherwise, which is where a revision from before the hub keeps it, and names the file when a marker is missing. It also resolves stage one from `mode-registry.json`, `hub-router.json` and the winning tool route, writes the packet chain to the `packets` column and fails a row that names a `gold_packets` chain it does not match. The HUB gold rows cover a CLI start for each CLI, a tax figure with no handoff, a purchase invoice (inkoopfactuur) and a migration phase that hand off, a refusal that names a CLI, a request that names Jortt clients, a CLI action next to a tax figure, an abstain that names a CLI and a purchase invoice with a negated filing word that keeps its handoff. `route-replay-test.sh` also proves that a filing request naming `jortt-cli` hands off to none and that a twin pair differing only in its chain is a parity mismatch.
 
 ---
 
@@ -53,7 +53,8 @@ A request starts in the accountant packet, the registry default. A request that 
 |---|---|---|
 | `sk-moneybird-accountant/scripts/check-route-table.py` | Check | Checks the route table in `ROUTER.md` and the hub. |
 | `sk-moneybird-accountant/scripts/route-table-test.sh` | Automated test | Proves thirteen of the hub failures on a throwaway copy of the repository. |
-| `sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh` | Automated test | Scores every gold row from `ROUTER.md`. |
+| `sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh` | Automated test | Scores every gold row from `ROUTER.md`, and fails the HUB rows on a dropped hub signal or a missing mode registry. |
+| `sk-moneybird-accountant/scripts/route-replay/routing-gold.json` | Fixture | Holds the HUB rows and their gold packet chains. |
 
 ---
 

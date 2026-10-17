@@ -14,7 +14,9 @@
 # nothing about the numbers. This suite proves each of those on a copy, so the
 # real skill tree stays untouched. It also scores the tax deliverable branch,
 # pack and refusal rows and fails on a seeded filing claim, a pack row with a
-# missing block and a correction row on the wrong side of the boundary.
+# missing block and a correction row on the wrong side of the boundary. The
+# hub rows score the packet chain, and a dropped hub signal or a missing hub
+# file fails them.
 # WHY: the suite inspects $? after commands that are expected to fail, so -e stays off.
 set -uo pipefail
 
@@ -38,6 +40,7 @@ if ! SKILL_SRC=$(cd "$SKILL_SRC" 2>/dev/null && pwd -P); then
     exit 2
 fi
 REPO_SRC=$(dirname "$(dirname "$SKILL_SRC")")
+HUB_SRC=$(dirname "$SKILL_SRC")
 if [[ ! -f "$HARNESS" ]]; then
     printf 'error: missing route-replay.py next to this test\n' >&2
     exit 2
@@ -50,6 +53,13 @@ if [[ ! -f "$SKILL_SRC/ROUTER.md" ]]; then
     printf 'error: missing ROUTER.md in the skill folder\n' >&2
     exit 2
 fi
+HUB_FILES=(hub-router.json mode-registry.json)
+for hub_file in "${HUB_FILES[@]}"; do
+    if [[ ! -f "$HUB_SRC/$hub_file" ]]; then
+        printf 'error: missing %s above the skill folder\n' "$hub_file" >&2
+        exit 2
+    fi
+done
 
 # ───────────────────────────────────────────────────────────────
 # 2. ENCODING CACHE
@@ -77,6 +87,9 @@ export TIKTOKEN_CACHE_DIR="$CACHE_DIR"
 TMP_ROOT=$(mktemp -d "${TMPDIR:-/tmp}/route-replay-test.XXXXXX") || exit 2
 COPY="$TMP_ROOT/sk-moneybird-accountant"
 cp -R "$SKILL_SRC" "$COPY" || exit 2
+for hub_file in "${HUB_FILES[@]}"; do
+    cp "$HUB_SRC/$hub_file" "$TMP_ROOT/$hub_file" || exit 2
+done
 COPY_HARNESS="$COPY/scripts/route-replay/route-replay.py"
 COPY_CORPUS="$COPY/scripts/route-replay/routing-gold.json"
 
@@ -261,11 +274,102 @@ else
     fail "the clean run writes report.md"
 fi
 
-if grep -q '^scenario_id,lang,split,gold_mode,gold_task_type,score,verdict,reason,tokens_loaded,t7,destination,reads$' "$OUT_CLEAN/results.csv" 2>/dev/null; then
+if grep -q '^scenario_id,lang,split,gold_mode,gold_task_type,score,verdict,reason,tokens_loaded,t7,destination,reads,packets$' "$OUT_CLEAN/results.csv" 2>/dev/null; then
     pass "results.csv carries the fixed column order"
 else
     fail "results.csv carries the fixed column order"
 fi
+# WHY: stage one is scored only when a dropped hub signal or a missing hub file
+# turns the hub rows red, so each mutant runs on the copy and is restored.
+row_pass "$OUT_CLEAN/results.csv" "HUB-001" "a jortt-cli request with no accountant task starts in the Jortt packet"
+row_pass "$OUT_CLEAN/results.csv" "HUB-005" "a migration phase hands off to both CLI packets in tool route order"
+row_pass "$OUT_CLEAN/results.csv" "HUB-006" "a refusal that names a CLI stays in the accountant packet"
+row_pass "$OUT_CLEAN/results.csv" "HUB-007" "a stage one signal misses a longer word such as clients"
+row_pass "$OUT_CLEAN/results.csv" "HUB-008" "a T7 destination hands off when the tool route names none"
+row_pass "$OUT_CLEAN/results.csv" "HUB-009" "an abstain that names a CLI hands off to no CLI packet"
+# WHY: a filing request that names Jortt routes to the migration row, so no
+# gold route can pin it. The chain must still stay in the accountant packet.
+REFUSAL_CHAIN=$(python3 -I - "$COPY_HARNESS" "$COPY" <<'HUBPY'
+import importlib.util
+import os
+import sys
+
+spec = importlib.util.spec_from_file_location("route_replay", sys.argv[1])
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+root = sys.argv[2]
+text = module.read_text(module.routing_markdown(root))
+signals = module.read_text(module.join_skill(root, module.SIGNALS_NAME))
+rows = module.parse_route_table(text)
+constants = module.parse_constants(text, signals)
+weak = module.parse_weak_signals(signals)
+phases = module.parse_generated_map(text, "PHASE_FILES")
+topics = module.parse_generated_map(text, "TOPIC_FILES")
+hub = module.load_hub(os.path.dirname(root))
+chains = []
+for prompt in ("File my income tax return with jortt-cli.", "Dien mijn aangifte inkomstenbelasting in met jortt-cli."):
+    route = module.resolve_route(rows, root, prompt, "", phases, topics, constants, weak)
+    chain = module.resolve_packets(
+        hub,
+        prompt,
+        route,
+        rows,
+        lambda rest: module.decide_route(rows, root, rest, "", phases, topics, constants, weak),
+    )
+    chains.append("+".join(chain))
+print(" ".join(chains))
+HUBPY
+)
+if [[ "$REFUSAL_CHAIN" == "accountant accountant" ]]; then
+    pass "a filing request that names jortt-cli hands off to no CLI packet"
+else
+    fail "a filing request that names jortt-cli hands off to no CLI packet ($REFUSAL_CHAIN)"
+fi
+python3 -I - "$COPY_CORPUS" "$TMP_ROOT/packet-twin.json" <<'HUBPY'
+import json
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    data = json.load(handle)
+for row in data["rows"]:
+    if row.get("id") == "HUB-003-nl":
+        row["prompt"] = "Wat is de kilometervergoeding voor 2026? Boek hem met moneybird-guard."
+with open(sys.argv[2], "w", encoding="utf-8") as handle:
+    json.dump(data, handle, indent=2)
+HUBPY
+python3 -I "$COPY_HARNESS" --mode resolve --corpus "$TMP_ROOT/packet-twin.json" --covers 018/REQ-002 \
+    --out "$TMP_ROOT/out-packet-twin" >"$TMP_ROOT/packet-twin.log" 2>&1
+if grep -qF 'parity mismatch HUB-003-nl against HUB-003' "$TMP_ROOT/packet-twin.log"; then
+    pass "a twin pair that differs only in its packet chain is a parity mismatch"
+else
+    fail "a twin pair that differs only in its packet chain is a parity mismatch"
+    sed -n '1,3p' "$TMP_ROOT/packet-twin.log"
+fi
+cp "$TMP_ROOT/hub-router.json" "$TMP_ROOT/hub-router.json.bak"
+python3 -I - "$TMP_ROOT/hub-router.json" <<'HUBPY'
+import json
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    data = json.load(handle)
+data["signals"]["cli-jortt"] = []
+with open(sys.argv[1], "w", encoding="utf-8") as handle:
+    json.dump(data, handle, indent=2)
+HUBPY
+check_exit "a dropped Jortt hub signal exits 1" 1 \
+    python3 -I "$COPY_HARNESS" --mode resolve --covers 018/REQ-002 --out "$TMP_ROOT/out-hub-signal"
+row_fails "$TMP_ROOT/out-hub-signal/results.csv" "HUB-001" "a dropped Jortt hub signal fails HUB-001"
+row_pass "$TMP_ROOT/out-hub-signal/results.csv" "HUB-002" "a dropped Jortt hub signal leaves HUB-002 passing"
+mv "$TMP_ROOT/hub-router.json.bak" "$TMP_ROOT/hub-router.json"
+mv "$TMP_ROOT/mode-registry.json" "$TMP_ROOT/mode-registry.json.bak"
+check_exit "a missing mode registry exits 1" 1 \
+    python3 -I "$COPY_HARNESS" --mode resolve --covers 018/REQ-002 --out "$TMP_ROOT/out-hub-missing"
+if grep -qF 'hub files missing or malformed for the packet chain' "$TMP_ROOT/out-hub-missing/results.csv" 2>/dev/null; then
+    pass "a missing mode registry names the hub files"
+else
+    fail "a missing mode registry names the hub files"
+fi
+mv "$TMP_ROOT/mode-registry.json.bak" "$TMP_ROOT/mode-registry.json"
 if python3 -I - "$OUT_CLEAN/results.csv" <<'PY' >"$TMP_ROOT/last.log" 2>&1
 import csv
 import sys
@@ -365,6 +469,9 @@ fi
 BAND_COPY="$TMP_ROOT/band/sk-moneybird-accountant"
 mkdir -p "$TMP_ROOT/band"
 cp -R "$COPY" "$BAND_COPY" || exit 2
+for hub_file in "${HUB_FILES[@]}"; do
+    cp "$TMP_ROOT/$hub_file" "$TMP_ROOT/band/$hub_file" || exit 2
+done
 sed 's/^- The 0\.08 warning band\./- The 100 warning band./' \
     "$COPY/references/routing-signals.md" >"$BAND_COPY/references/routing-signals.md"
 OUT_BAND="$TMP_ROOT/out-band"

@@ -465,7 +465,7 @@ Makes the repository root a hub that picks the accountant, Moneybird CLI or Jort
 
 #### Current Reality
 
-The root `SKILL.md` picks the packet from `mode-registry.json` and `hub-router.json`, with the accountant packet as the default. Each packet holds its routing in `ROUTER.md` and its contract in `SKILL.md`, so a request reads only the routing of the packets it uses. `check-route-table.py` reads the route table from `sk-moneybird-accountant/ROUTER.md` and fails on a missing hub file, a packet without a router, a stage one default the registry does not name or a router left in a packet `SKILL.md`.
+The root `SKILL.md` picks the packet from `mode-registry.json` and `hub-router.json`, with the accountant packet as the default. Each packet holds its routing in `ROUTER.md` and its contract in `SKILL.md`, so a request reads only the routing of the packets it uses. `check-route-table.py` reads the route table from `sk-moneybird-accountant/ROUTER.md` and fails on a missing hub file, a packet without a router, a stage one default the registry does not name or a router left in a packet `SKILL.md`. `route-replay.py` scores the packet chain of the HUB gold rows.
 
 #### Source Files
 
@@ -579,7 +579,7 @@ Checks every write-contract restatement in the bootstrap and skill files against
 
 #### Current Reality
 
-The shared mechanisms file owns the canonical contract. The check parses the canonical parts and fails a restatement that drops a gate token, changes the read-back sentence or names an exit outside the canonical set.
+The shared mechanisms file owns the canonical contract. The check parses the canonical parts and reads each restatement file on its own. It fails a restatement that drops a gate token or a rule, changes the read-back sentence or names an exit outside the canonical set, even when another file still names the dropped token.
 
 #### Source Files
 
@@ -627,7 +627,7 @@ Scores the routing corpus offline and replays the refusal and hostile rows throu
 
 #### Current Reality
 
-The harness builds a router snapshot from the table, the routing constants and the resource map. Resolve mode scores the corpus and replay mode runs the guard against the stub and the suite proves both modes on a temp copy. The corpus covers the T10 to T12 prepare rows, the five VAT branch rows, the two pack rows and the four refusal forms with their guard twins.
+The harness builds a router snapshot from the table, the routing constants and the resource map. Resolve mode scores the corpus and replay mode runs the guard against the stub and the suite proves both modes on a temp copy. The corpus covers the T10 to T12 prepare rows, the five VAT branch rows, the two pack rows, the four refusal forms with their guard twins and the HUB rows, which score the hub packet chain.
 
 #### Source Files
 

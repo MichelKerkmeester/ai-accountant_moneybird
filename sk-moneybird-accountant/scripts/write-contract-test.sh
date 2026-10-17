@@ -2,10 +2,13 @@
 # ───────────────────────────────────────────────────────────────
 # COMPONENT: WRITE CONTRACT TEST
 # ───────────────────────────────────────────────────────────────
-# Tests write-contract-check.py on the real tree, on a clean copy and on six
+# Tests write-contract-check.py on the real tree, on a clean copy and on eight
 # seeded divergences: a safety line without --confirm-write, a missing pointer,
-# a forbidden flag on the accountant SKILL.md pointer line, a missing
-# idempotency rule, a missing exit 9 and a second differing read-back sentence. Every seeded divergence must fail the check and name its file.
+# a forbidden flag on the accountant SKILL.md pointer line, a gate token and an
+# evidence rule that leave the accountant ROUTER.md while its SKILL.md still
+# names them, a missing idempotency rule, a missing exit 9 and a second
+# differing read-back sentence. Every seeded divergence must fail the check and
+# name its file.
 # Usage: write-contract-test.sh [repo root]
 # Exit Codes:
 #   0 - All checks pass
@@ -223,6 +226,12 @@ seed_failure "a missing pointer fails" \
 
 seed_failure "a forbidden flag on the accountant SKILL.md pointer line fails" \
     "sk-moneybird-accountant/SKILL.md" 'for every non-GET batch. See the' 'for every non-GET batch, even with `--force-write`. See the' forceflag
+
+seed_failure "a gate token gone from ROUTER.md fails while SKILL.md still names it" \
+    "sk-moneybird-accountant/ROUTER.md" '`MONEYBIRD_GUARD_READ_ONLY=1`' '`MONEYBIRD_GUARD=1`' routertoken
+
+seed_failure "an evidence rule gone from ROUTER.md fails while SKILL.md still names evidence" \
+    "sk-moneybird-accountant/ROUTER.md" 'the evidence rule, ' '' routerevidence
 
 seed_failure "a missing idempotency rule fails" \
     "cli-moneybird/SKILL.md" 'idempotency' 'consistency' idempotency

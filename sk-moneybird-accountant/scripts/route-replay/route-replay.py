@@ -5,16 +5,19 @@
 """Resolve the routing fixture corpus and score the routes offline.
 
 The resolve mode builds a router snapshot out of the task-type table in
-section 2 of the skill's ROUTER.md and the resource map under references/.
-A revision from before the hub keeps the table in the skill's SKILL.md, so
-the scorer falls back to that file when ROUTER.md holds no route table. It hashes the
-snapshot, runs a connectivity gate over every routed path, resolves each
+section 2 of the skill's ROUTER.md and the resource map under references/. A
+revision from before the hub keeps the table in the skill's SKILL.md, so the
+scorer falls back to that file when ROUTER.md holds no route table. It hashes
+the snapshot, runs a connectivity gate over every routed path, resolves each
 corpus prompt with a deterministic signal scorer and scores the row against
 the gold mode, task type, path set, facts, file claims and token ceiling.
-Output is results.csv and report.md. A file claim names one path and one
-text that must appear in the scored revision, so a row can guard content
-its read set does not load. No model answers a question, so answer quality
-stays unscored. Time, environment and absolute paths never enter an output.
+Output is results.csv and report.md. A file claim names one path and one text
+that must appear in the scored revision, so a row can guard content its read
+set does not load. A row that names `gold_packets` is also scored for the hub
+packet chain, which stage one resolves from mode-registry.json,
+hub-router.json and the winning tool route. No model answers a question, so
+answer quality stays unscored. Time, environment and absolute paths never
+enter an output.
 
 The replay mode runs the guard in test mode against the stub CLI and asserts
 the recorded command line and exit code of every refusal row and of every
@@ -52,8 +55,8 @@ Options:
 
 Output:
     results.csv with the columns scenario_id, lang, split, gold_mode,
-    gold_task_type, score, verdict, reason, tokens_loaded, t7, destination
-    and reads,
+    gold_task_type, score, verdict, reason, tokens_loaded, t7, destination,
+    reads and packets,
     report.md with the scored dimensions, the accuracy lines, the per-type
     precision and recall with denominators, the read counts, the warning
     band sink and the additive T7 assertion, and a one-line summary on
@@ -94,6 +97,8 @@ DEFAULT_OUT = os.path.join(SKILL_ROOT, "benchmark", "reports", "route-replay")
 SKILL_MD_NAME = "SKILL.md"
 ROUTER_MD_NAME = "ROUTER.md"
 SKILL_FOLDER_NAME = "sk-moneybird-accountant"
+HUB_ROUTER_NAME = "hub-router.json"
+MODE_REGISTRY_NAME = "mode-registry.json"
 SIGNALS_NAME = os.path.join("references", "routing-signals.md")
 MIGRATION_INDEX = os.path.join("references", "migration", "README.md")
 ROUTER_START = "<!-- router-block:start -->"
@@ -126,7 +131,7 @@ PASSED_RE = re.compile(r"(passed|gehaald|afgerond|doorlopen)\s+(?:fase|phase)?\s
 PREPARE_TYPES = ("T10", "T11", "T12")
 REPORT_TYPES = tuple("T%d" % number for number in range(1, 13))
 
-RESULT_COLUMNS = (
+BASE_COLUMNS = (
     "scenario_id",
     "lang",
     "split",
@@ -141,7 +146,10 @@ RESULT_COLUMNS = (
     "reads",
 )
 
-REPLAY_COLUMNS = RESULT_COLUMNS + (
+# WHY: only resolve mode resolves a packet chain, so the replay columns omit it.
+RESULT_COLUMNS = BASE_COLUMNS + ("packets",)
+
+REPLAY_COLUMNS = BASE_COLUMNS + (
     "command",
     "expected_exit",
     "actual_exit",
@@ -320,6 +328,12 @@ FIXED_ASSET_TERMS = (
 # add one point to T4 at most. Otherwise a tax figure or rule question that
 # names an asset twice outscores T5 or T6 before the tie clauses can apply.
 T4_TOPIC_TERMS = MIXED_USE_TERMS + FIXED_ASSET_TERMS
+
+# WHY: stage one sets the CLI signals and the system names aside before it asks
+# whether a request holds an accountant task, so "my Jortt customers with
+# jortt-cli" names a CLI operation and nothing else, not a migration.
+HUB_SYSTEM_NAMES = ("jortt", "moneybird")
+TOOL_ROUTE_SPLIT_RE = re.compile(r"\s*\+\s*")
 
 TOPIC_SIGNALS = (
     (("kilometer", "mileage", "auto", "car", "thuiswerk", "home office", "kosten", "costs", "study", "studie"), "costs-and-car"),
@@ -1836,7 +1850,193 @@ def decide_route(
     }
 
 # ───────────────────────────────────────────────────────────────
-# 8. LOADED TEXT AND TOKENS
+# 8. HUB STAGE ONE
+# ───────────────────────────────────────────────────────────────
+
+def load_hub(repo_root: str) -> Optional[Dict[str, Any]]:
+    """Read the stage one files of the hub above the skill folder.
+
+    Args:
+        repo_root: Folder that holds the hub `SKILL.md`.
+
+    Returns:
+        The registry modes in order, the default mode and the signals of
+        each mode, or None when a hub file is missing or malformed.
+    """
+    try:
+        with open(os.path.join(repo_root, MODE_REGISTRY_NAME), "r", encoding="utf-8") as handle:
+            registry = json.load(handle)
+        with open(os.path.join(repo_root, HUB_ROUTER_NAME), "r", encoding="utf-8") as handle:
+            router = json.load(handle)
+    except (OSError, ValueError):
+        return None
+    if not isinstance(registry, dict) or not isinstance(router, dict):
+        return None
+    modes = [
+        str(entry.get("workflowMode", ""))
+        for entry in registry.get("modes", [])
+        if isinstance(entry, dict) and entry.get("workflowMode")
+    ]
+    policy = router.get("routerPolicy")
+    signals = router.get("signals")
+    if not isinstance(policy, dict) or not isinstance(signals, dict):
+        return None
+    default = str(policy.get("defaultMode", ""))
+    if default not in modes:
+        return None
+    phrases: Dict[str, List[str]] = {}
+    for mode in modes:
+        listed = signals.get(mode, [])
+        if not isinstance(listed, list):
+            return None
+        phrases[mode] = [str(phrase) for phrase in listed]
+    return {"modes": modes, "default": default, "signals": phrases}
+
+
+def hub_signal_pattern(phrase: str) -> str:
+    """Build the whole word pattern of one stage one signal.
+
+    A stage one signal names a tool, so unlike a task row signal it may not
+    run on into a longer word: `jortt cli` misses `jortt clients`.
+
+    Args:
+        phrase: Signal phrase.
+
+    Returns:
+        The regular expression of the phrase, bounded on both sides.
+    """
+    return r"(?<!\w)" + signal_pattern(phrase) + r"(?!\w)"
+
+
+def strip_phrase(text: str, phrase: str) -> str:
+    """Blank every match of one signal phrase in a text.
+
+    Args:
+        text: Lower case request text.
+        phrase: Signal phrase.
+
+    Returns:
+        The text with each match of the phrase replaced by a space.
+    """
+    return re.sub(hub_signal_pattern(phrase), " ", text)
+
+
+def tool_route_modes(route_rows: List[Dict[str, str]], route_type: str, modes: Sequence[str]) -> List[str]:
+    """List the hub modes the tool route of one task row names.
+
+    Args:
+        route_rows: Parsed task-type rows.
+        route_type: Winning task type.
+        modes: Registry modes.
+
+    Returns:
+        The named modes, in the order the cell names them.
+    """
+    named: List[str] = []
+    for row in route_rows:
+        if row["type"] != route_type:
+            continue
+        for cell in BACKTICK_RE.findall(row["tool_route"]) or [row["tool_route"]]:
+            for part in TOOL_ROUTE_SPLIT_RE.split(cell.strip()):
+                if part in modes and part not in named:
+                    named.append(part)
+    return named
+
+
+def resolve_packets(
+    hub: Optional[Dict[str, Any]],
+    prompt: str,
+    route: Dict[str, Any],
+    route_rows: List[Dict[str, str]],
+    resolve_rest: Any,
+) -> List[str]:
+    """Pick the packets one request reads, in the order it reads them.
+
+    A request that names a CLI signal and holds no accountant task once the
+    CLI signals and the system names are set aside starts in that CLI
+    packet. Every other request starts in the default packet, which hands
+    off to each packet its winning tool route names and to the destination
+    of an additive T7 hit. A refusal stays in the default packet with no
+    handoff, and so does a request that names a CLI and is a refusal once
+    the CLI signals and the system names are set aside. An abstain hands
+    off to none.
+
+    Args:
+        hub: Stage one data from `load_hub`, None when the hub is absent.
+        prompt: Request text.
+        route: Resolved accountant route of the full request.
+        route_rows: Parsed task-type rows.
+        resolve_rest: Resolves the request text left after the strip.
+
+    Returns:
+        The packet chain, empty when the hub is absent.
+    """
+    if hub is None:
+        return []
+    text = prompt.lower()
+    default = hub["default"]
+    if route.get("type") == "T8":
+        return [default]
+    others = [mode for mode in hub["modes"] if mode != default]
+    named = [
+        mode
+        for mode in others
+        if any(re.search(hub_signal_pattern(phrase), text) for phrase in hub["signals"][mode])
+    ]
+    if named:
+        rest = text
+        for mode in others:
+            for phrase in hub["signals"][mode]:
+                rest = strip_phrase(rest, phrase)
+        for name in HUB_SYSTEM_NAMES:
+            rest = strip_phrase(rest, name)
+        remainder = resolve_rest(rest)
+        # WHY: a filing request that names a CLI can route to a task row on the
+        # system name, so the refusal is read on the text left after the strip.
+        if remainder.get("type") == "T8":
+            return [default]
+        if remainder.get("type") == "abstain" and not remainder.get("candidates"):
+            return named
+    chain = [default]
+    if route.get("abstain"):
+        return chain
+    handoffs = tool_route_modes(route_rows, str(route.get("type", "")), others)
+    destination = str(route.get("destination", ""))
+    if destination in others and destination not in handoffs:
+        handoffs.append(destination)
+    chain.extend(handoffs)
+    return chain
+
+
+def cli_start_route(route: Dict[str, Any], packets: List[str], default: str) -> Dict[str, Any]:
+    """Replace the accountant route of a request that starts in a CLI packet.
+
+    Args:
+        route: Resolved accountant route of the full request.
+        packets: Packet chain from `resolve_packets`.
+        default: Default mode of the hub.
+
+    Returns:
+        The route unchanged when the chain starts in the default packet,
+        else a CLI route that reads no accountant reference.
+    """
+    if not packets or packets[0] == default:
+        return route
+    return {
+        "mode": "CLI",
+        "type": "cli",
+        "tier": "",
+        "paths": [],
+        "abstain": False,
+        "candidates": [],
+        "t7": route.get("t7", False),
+        "destination": route.get("destination", ""),
+        "band_gap": None,
+        "packets": packets,
+    }
+
+# ───────────────────────────────────────────────────────────────
+# 9. LOADED TEXT AND TOKENS
 # ───────────────────────────────────────────────────────────────
 
 def section_text(
@@ -1970,7 +2170,7 @@ def loaded_material(
     return tokens, texts
 
 # ───────────────────────────────────────────────────────────────
-# 9. ROW SCORING
+# 10. ROW SCORING
 # ───────────────────────────────────────────────────────────────
 
 def base_path(address: str) -> str:
@@ -2077,6 +2277,13 @@ def score_row(
         problems.append("t7 additive hit %s expected %s" % (bool(route.get("t7")), bool(row.get("t7"))))
     if "destination" in row and str(route.get("destination", "")) != str(row.get("destination", "")):
         problems.append("destination %s expected %s" % (route.get("destination", ""), row.get("destination", "")))
+    packets = [str(packet) for packet in route.get("packets", [])]
+    if "gold_packets" in row:
+        gold_packets = [str(packet) for packet in row.get("gold_packets", [])]
+        if not packets:
+            problems.append("hub files missing or malformed for the packet chain")
+        elif packets != gold_packets:
+            problems.append("packets %s expected %s" % ("+".join(packets), "+".join(gold_packets)))
     score = 5 - len(problems)
     if problems:
         reason = ". ".join(problems)
@@ -2095,6 +2302,7 @@ def score_row(
         "t7": "1" if route.get("t7") else "0",
         "destination": route.get("destination", ""),
         "reads": str(len(route.get("paths", []))),
+        "packets": "+".join(packets),
         "band_gap": route.get("band_gap"),
         "facts_found": len(facts_found),
         "expected_facts": len(facts),
@@ -2104,7 +2312,7 @@ def score_row(
     }
 
 # ───────────────────────────────────────────────────────────────
-# 10. PARITY
+# 11. PARITY
 # ───────────────────────────────────────────────────────────────
 
 def parity_findings(
@@ -2145,6 +2353,7 @@ def parity_findings(
             and resolutions[str(row.get("id", ""))]["type"] == resolutions[twin_id]["type"]
             and resolutions[str(row.get("id", ""))]["tier"] == resolutions[twin_id]["tier"]
             and sorted(resolutions[str(row.get("id", ""))]["paths"]) == sorted(resolutions[twin_id]["paths"])
+            and resolutions[str(row.get("id", ""))].get("packets", []) == resolutions[twin_id].get("packets", [])
         )
         if not matches:
             findings.append(
@@ -2153,7 +2362,7 @@ def parity_findings(
     return findings
 
 # ───────────────────────────────────────────────────────────────
-# 11. RESOLVE MODE
+# 12. RESOLVE MODE
 # ───────────────────────────────────────────────────────────────
 
 def load_corpus(path: str) -> List[Dict[str, Any]]:
@@ -2320,6 +2529,7 @@ def write_report(
     lines.append("- Route: scored, mode and task type against the gold route.")
     lines.append("- Read set: scored, expected paths loaded and forbidden paths absent.")
     lines.append("- Connectivity: scored by the gate before any row is scored.")
+    lines.append("- Hub packet: scored on the rows that name a gold packet chain.")
     lines.append("- Answer quality: unscored. No judge model grades an answer.")
     lines.append("")
     lines.append("## Accuracy")
@@ -2339,6 +2549,14 @@ def write_report(
     ))
     lines.append("- missing tax year, tier C: %d" % tier_c)
     lines.append("- false abstain: %d" % false_abstain)
+    hub_pairs = [(row, result) for row, result in zip(rows, results) if "gold_packets" in row]
+    hub_total = len(hub_pairs)
+    hub_matched = sum(
+        1
+        for row, result in hub_pairs
+        if result.get("packets", "") == "+".join(str(packet) for packet in row.get("gold_packets", []))
+    )
+    lines.append("- hub packet chain: %s" % ratio_text(hub_matched, hub_total))
     pair_total = sum(1 for row in rows if row.get("parityOf"))
     lines.append("- Dutch parity: %d of %d twin pairs match" % (pair_total - len(parity), pair_total))
     for finding in parity:
@@ -2573,6 +2791,7 @@ def run_resolve(args: argparse.Namespace) -> int:
 
     baseline_root = str(getattr(args, "baseline_root", "") or skill_root)
     encoder = open_encoder(baseline_root)
+    hub = load_hub(os.path.dirname(skill_root))
     cache: Dict[str, Dict[str, Any]] = {}
     resolutions: Dict[str, Dict[str, Any]] = {}
     results: List[Dict[str, Any]] = []
@@ -2583,6 +2802,15 @@ def run_resolve(args: argparse.Namespace) -> int:
             prompt = previous + " " + prompt
         year = str(row.get("year", ""))
         route = resolve_route(route_rows, skill_root, prompt, year, phase_map, topic_map, constants, weak_signals)
+        route["packets"] = resolve_packets(
+            hub,
+            prompt,
+            route,
+            route_rows,
+            lambda rest: decide_route(route_rows, skill_root, rest, year, phase_map, topic_map, constants, weak_signals),
+        )
+        if hub is not None:
+            route = cli_start_route(route, route["packets"], hub["default"])
         result = score_row(skill_root, row, route, cache, encoder, strict=not rev_mode)
         if previous:
             first = resolve_route(route_rows, skill_root, previous, year, phase_map, topic_map, constants, weak_signals)
@@ -2629,7 +2857,7 @@ def run_resolve(args: argparse.Namespace) -> int:
     return 0
 
 # ───────────────────────────────────────────────────────────────
-# 12. REPLAY MODE
+# 13. REPLAY MODE
 # ───────────────────────────────────────────────────────────────
 
 def guard_and_stub(args: argparse.Namespace) -> Tuple[str, str]:
@@ -2990,7 +3218,7 @@ def run_replay(args: argparse.Namespace) -> int:
     return 0
 
 # ───────────────────────────────────────────────────────────────
-# 13. REVISION WORKTREE
+# 14. REVISION WORKTREE
 # ───────────────────────────────────────────────────────────────
 
 def add_revision_worktree(revision: str) -> Dict[str, str]:
@@ -3063,7 +3291,7 @@ def remove_revision_worktree(context: Dict[str, str]) -> None:
     shutil.rmtree(context["temp"], ignore_errors=True)
 
 # ───────────────────────────────────────────────────────────────
-# 14. ENTRY POINT
+# 15. ENTRY POINT
 # ───────────────────────────────────────────────────────────────
 
 def main(argv: List[str]) -> int:

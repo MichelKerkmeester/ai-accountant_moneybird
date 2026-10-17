@@ -695,7 +695,7 @@ Verify that the hub picks one packet for a request and that the request reads on
 #### Scenario Contract
 Prompt: List my Jortt customers with jortt-cli.
 
-Fixture rows: none. Stage one is read by hand, and the accountant route of the second prompt is scored by the T5 gold rows.
+Fixture rows: HUB-001 to HUB-010 score the packet chain in `routing-gold.json`. HUB-001 is this prompt, and HUB-003 scores the chain of a tax figure request like the second.
 
 Desired user-visible outcome: The hub picks the Jortt packet, which reads `cli-jortt/ROUTER.md` and `cli-jortt/SKILL.md`, and a tax figure request reads `sk-moneybird-accountant/ROUTER.md` and no CLI router.
 

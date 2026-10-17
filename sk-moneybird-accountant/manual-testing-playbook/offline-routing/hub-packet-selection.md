@@ -27,7 +27,7 @@ A local-only check can confirm that the hub picks the right packet and that a re
 - Objective: Route each request through the hub to one packet and read only that packet's router.
 - Real user request: List my Jortt customers with jortt-cli.
 - Prompt: List my Jortt customers with jortt-cli.
-- Fixture rows: none. Stage one is read by hand, and the accountant route of the second prompt is scored by the T5 gold rows.
+- Fixture rows: HUB-001 to HUB-010 score the packet chain in `routing-gold.json`. HUB-001 is this prompt, and HUB-003 scores the chain of a tax figure request like the second.
 - Expected execution process: Read the project bootstrap and the hub, then inspect only the listed local files. Do not use network access or accounting APIs.
 - Expected signals: The hub picks the Jortt packet for the first prompt and the accountant packet for "What is the business mileage rate for the current tax year?". The first reads `cli-jortt/ROUTER.md` and `cli-jortt/SKILL.md` and no accountant router. The second reads `sk-moneybird-accountant/ROUTER.md` and no CLI router, because its tool route is `none`.
 - Desired user-visible outcome: A concise route report with the chosen packet, the router read, the reference paths and no API activity.

@@ -11,9 +11,9 @@ Every row carries its own denominator. A metric whose prerequisite is missing re
 | Tokens to first answer | calibration | 5095 o200k_base tokens | 10 of 87 rows name a tax figures file |
 | Answer position inside the section | calibration | 1.000 of the file's sections | 10 of 87 rows name a tax figures file |
 | Section hit rate | calibration | no number, the gold rows carry no section label | 0 of 87 rows carry a section label |
-| Tokens to first answer | held-out | 4973 o200k_base tokens | 49 of 96 rows name a tax figures file |
-| Answer position inside the section | held-out | 1.000 of the file's sections | 49 of 96 rows name a tax figures file |
-| Section hit rate | held-out | no number, the gold rows carry no section label | 0 of 96 rows carry a section label |
+| Tokens to first answer | held-out | 4982 o200k_base tokens | 53 of 115 rows name a tax figures file |
+| Answer position inside the section | held-out | 1.000 of the file's sections | 53 of 115 rows name a tax figures file |
+| Section hit rate | held-out | no number, the gold rows carry no section label | 0 of 115 rows carry a section label |
 
 ## What each metric means
 

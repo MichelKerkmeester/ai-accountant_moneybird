@@ -5441,6 +5441,596 @@
         "| VAT reverse-charged | btw verlegd |"
       ],
       "note": "A CLI action adds to the task row it joins, so the term request follows that row."
+    },
+    {
+      "id": "HUB-001",
+      "prompt": "List my Jortt customers with jortt-cli.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "CLI",
+      "gold_task_type": "cli",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/migration/shared-mechanisms.md",
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "A request that names jortt-cli and no accountant task starts in the Jortt packet and reads no accountant reference.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "cli-jortt"
+      ]
+    },
+    {
+      "id": "HUB-001-nl",
+      "prompt": "Haal mijn Jortt klanten op met jortt-cli.",
+      "lang": "nl",
+      "parityOf": "HUB-001",
+      "split": "held-out",
+      "gold_mode": "CLI",
+      "gold_task_type": "cli",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/migration/shared-mechanisms.md",
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "The Dutch twin of HUB-001.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "cli-jortt"
+      ]
+    },
+    {
+      "id": "HUB-002",
+      "prompt": "Run a moneybird-guard GET on my contacts.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "CLI",
+      "gold_task_type": "cli",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/migration/shared-mechanisms.md",
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "A request that names moneybird-guard and no accountant task starts in the Moneybird packet.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "cli-moneybird"
+      ],
+      "t7": true
+    },
+    {
+      "id": "HUB-002-nl",
+      "prompt": "Lees mijn contacten met moneybird-guard.",
+      "lang": "nl",
+      "parityOf": "HUB-002",
+      "split": "held-out",
+      "gold_mode": "CLI",
+      "gold_task_type": "cli",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/migration/shared-mechanisms.md",
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "The Dutch twin of HUB-002.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "cli-moneybird"
+      ],
+      "t7": true
+    },
+    {
+      "id": "HUB-003",
+      "prompt": "What is the business mileage rate for 2026?",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T5",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/tax-rules/2026/README.md",
+        "references/tax-rules/2026/costs-and-car/figures.md#2-key-figures"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 18000,
+      "year": "2026",
+      "note": "A tax figure request starts in the accountant packet, and its tool route none hands off to no CLI packet.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "accountant"
+      ]
+    },
+    {
+      "id": "HUB-003-nl",
+      "prompt": "Wat is de kilometervergoeding voor 2026?",
+      "lang": "nl",
+      "parityOf": "HUB-003",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T5",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/tax-rules/2026/README.md",
+        "references/tax-rules/2026/costs-and-car/figures.md#2-key-figures"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 18000,
+      "year": "2026",
+      "note": "The Dutch twin of HUB-003.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "accountant"
+      ]
+    },
+    {
+      "id": "HUB-004",
+      "prompt": "Book this purchase invoice with moneybird-guard.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/tax-rules/2026/vat/figures.md",
+        "references/moneybird-bookkeeping.md"
+      ],
+      "forbidden_paths": [
+        "references/migration/README.md",
+        "references/tax-rules/dutch-tax-rules.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 45000,
+      "year": "2026",
+      "note": "A CLI signal next to an accountant task starts in the accountant packet, which hands off to the Moneybird packet its tool route names.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "accountant",
+        "cli-moneybird"
+      ],
+      "t7": true
+    },
+    {
+      "id": "HUB-004-nl",
+      "prompt": "Boek deze inkoopfactuur in met moneybird-guard.",
+      "lang": "nl",
+      "parityOf": "HUB-004",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/tax-rules/2026/vat/figures.md",
+        "references/moneybird-bookkeeping.md"
+      ],
+      "forbidden_paths": [
+        "references/migration/README.md",
+        "references/tax-rules/dutch-tax-rules.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 45000,
+      "year": "2026",
+      "note": "The Dutch twin of HUB-004.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "accountant",
+        "cli-moneybird"
+      ],
+      "t7": true
+    },
+    {
+      "id": "HUB-005",
+      "prompt": "Use jortt-cli to export the invoices for migration phase 4.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md",
+        "references/migration/phases-3-to-5.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "A migration phase hands off to both CLI packets, in the order its tool route names them.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "accountant",
+        "cli-jortt",
+        "cli-moneybird"
+      ]
+    },
+    {
+      "id": "HUB-005-nl",
+      "prompt": "Exporteer met jortt-cli de facturen voor migratie fase 4.",
+      "lang": "nl",
+      "parityOf": "HUB-005",
+      "split": "held-out",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md",
+        "references/migration/phases-3-to-5.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md",
+        "references/migration/README.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "The Dutch twin of HUB-005.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "accountant",
+        "cli-jortt",
+        "cli-moneybird"
+      ]
+    },
+    {
+      "id": "HUB-006",
+      "prompt": "File my income tax return with moneybird-guard.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "T8",
+      "category": "out-of-scope",
+      "tier": "A",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/migration/shared-mechanisms.md",
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "A refusal stays in the accountant packet even when it names a CLI, so no CLI packet is read.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "accountant"
+      ],
+      "t7": true
+    },
+    {
+      "id": "HUB-006-nl",
+      "prompt": "Dien mijn aangifte inkomstenbelasting in met moneybird-guard.",
+      "lang": "nl",
+      "parityOf": "HUB-006",
+      "split": "held-out",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "T8",
+      "category": "twin",
+      "tier": "A",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/migration/shared-mechanisms.md",
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "The Dutch twin of HUB-006.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "accountant"
+      ],
+      "t7": true
+    },
+    {
+      "id": "HUB-007",
+      "prompt": "Migrate my Jortt clients to Moneybird.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "A stage one signal matches whole words only, so jortt cli misses Jortt clients and the request stays a migration in the accountant packet.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "accountant",
+        "cli-jortt",
+        "cli-moneybird"
+      ]
+    },
+    {
+      "id": "HUB-007-nl",
+      "prompt": "Zet mijn Jortt klanten over naar Moneybird.",
+      "lang": "nl",
+      "parityOf": "HUB-007",
+      "split": "held-out",
+      "gold_mode": "MIGRATION",
+      "gold_task_type": "T1",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/migration/README.md",
+        "references/migration/shared-mechanisms.md",
+        "references/migration/control-framework.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 48000,
+      "year": "",
+      "note": "The Dutch twin of HUB-007.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "accountant",
+        "cli-jortt",
+        "cli-moneybird"
+      ]
+    },
+    {
+      "id": "HUB-008",
+      "prompt": "What is the mileage rate for 2026? Use moneybird-guard to book it.",
+      "lang": "en",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T5",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/tax-rules/2026/README.md",
+        "references/tax-rules/2026/costs-and-car/figures.md#2-key-figures"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 18000,
+      "year": "2026",
+      "note": "A tax figure route has tool route none, so the Moneybird packet comes from the destination of the T7 hit.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "accountant",
+        "cli-moneybird"
+      ],
+      "t7": true
+    },
+    {
+      "id": "HUB-008-nl",
+      "prompt": "Wat is de kilometervergoeding voor 2026? Boek hem met moneybird-guard.",
+      "lang": "nl",
+      "parityOf": "HUB-008",
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T5",
+      "category": "twin",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/tax-rules/2026/README.md",
+        "references/tax-rules/2026/costs-and-car/figures.md#2-key-figures"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 18000,
+      "year": "2026",
+      "note": "The Dutch twin of HUB-008.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "accountant",
+        "cli-moneybird"
+      ],
+      "t7": true
+    },
+    {
+      "id": "HUB-009",
+      "prompt": "Mijn historische administratie wil ik overzetten met moneybird-guard.",
+      "lang": "nl",
+      "parityOf": "",
+      "split": "held-out",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "abstain",
+      "category": "tier",
+      "tier": "B",
+      "tie": "",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/purchase-invoices.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "year": "",
+      "note": "A tied accountant task with a CLI named stays in the accountant packet, and its abstain hands off to no CLI packet.",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "accountant"
+      ],
+      "t7": true
+    },
+    {
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/tax-rules/2026/vat/figures.md",
+        "references/moneybird-bookkeeping.md"
+      ],
+      "forbidden_paths": [
+        "references/migration/README.md",
+        "references/tax-rules/dutch-tax-rules.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 45000,
+      "year": "2026",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "accountant",
+        "cli-moneybird"
+      ],
+      "t7": true,
+      "id": "HUB-010",
+      "prompt": "Book this purchase invoice with moneybird-guard. Don't submit anything.",
+      "lang": "en",
+      "parityOf": "",
+      "category": "clean",
+      "note": "A negated filing word is no refusal, so the purchase invoice keeps its handoff to the Moneybird packet."
+    },
+    {
+      "split": "held-out",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "tier": "",
+      "tie": "",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/tax-rules/2026/vat/figures.md",
+        "references/moneybird-bookkeeping.md"
+      ],
+      "forbidden_paths": [
+        "references/migration/README.md",
+        "references/tax-rules/dutch-tax-rules.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 45000,
+      "year": "2026",
+      "covers": [
+        "018/REQ-002"
+      ],
+      "gold_packets": [
+        "accountant",
+        "cli-moneybird"
+      ],
+      "t7": true,
+      "id": "HUB-010-nl",
+      "prompt": "Boek deze inkoopfactuur in met moneybird-guard, maar dien de aangifte niet in.",
+      "lang": "nl",
+      "parityOf": "HUB-010",
+      "category": "twin",
+      "note": "The Dutch twin of HUB-010."
     }
   ],
   "refusal_basis": "Every refusal row replays one guard gate through the stub CLI in test mode and asserts its command line and exit code. Every hostile row replays one case from assets/hostile-invoice-cases.json through a guarded write. A refused case replays with an approved digest that does not match the case payload, an accepted case replays with a matching digest.",

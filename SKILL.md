@@ -30,11 +30,12 @@ The repository root is a parent hub over three packets. This file picks the pack
 Routing has two stages. Stage one picks the packet here, from `mode-registry.json` and `hub-router.json`. Stage two is the packet's `ROUTER.md`.
 
 1. A request starts in the accountant packet, the registry default.
-2. A request that names a CLI operation and nothing else, such as a `moneybird-guard` read or a `jortt-cli` call, starts in that CLI packet.
-3. An accountant route whose tool route names `cli-moneybird` or `cli-jortt` hands off to that packet. Read its `ROUTER.md` and its `SKILL.md` before the CLI runs.
-4. When no packet fits, ask one question before loading anything.
+2. A request that names a CLI operation and nothing else, such as a `moneybird-guard` read or a `jortt-cli` call, starts in that CLI packet. Nothing else means no accountant task is left once the CLI names and the system names Jortt and Moneybird are set aside. Any task row signal counts, so `moneybird-guard` with bank accounts starts in the accountant packet. A CLI name matches whole words only, so `jortt cli` is not `Jortt clients`.
+3. An accountant route whose tool route names `cli-moneybird` or `cli-jortt` hands off to that packet, in the order the tool route names them, and then to the CLI its CLI action names. Read its `ROUTER.md` and its `SKILL.md` before the CLI runs.
+4. A refusal stays in the accountant packet and hands off to no CLI packet, even when it names a CLI. So does a request whose accountant rows tie, until its question is answered.
+5. When no packet fits, ask one question before loading anything.
 
-The registry holds each packet's folder and router. `sk-moneybird-accountant/scripts/check-route-table.py` checks that the hub files, the registry packets and their routers agree, and that no packet `SKILL.md` embeds a router again.
+The registry holds each packet's folder and router. `sk-moneybird-accountant/scripts/check-route-table.py` checks that the hub files, the registry packets and their routers agree, and that no packet `SKILL.md` embeds a router again. `route-replay.py` scores the packet chain of the HUB gold rows against these rules.
 
 ---
 

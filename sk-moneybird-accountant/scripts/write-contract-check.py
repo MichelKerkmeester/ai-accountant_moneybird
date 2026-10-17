@@ -6,14 +6,16 @@
 
 Reads the canonical write contract in the migration shared mechanisms file and
 parses its gate token sentence, its exit code sentence and its canonical
-read-back sentence. Then it checks AGENTS.md and the two skill markdown files
-for drift: a missing pointer, a gate token missing from a restatement, a flag
-named on a pointer line that the canonical set lacks, an exit code that is
-missing from the CLI skill or unknown to the canonical set, a second differing
-read-back definition and the two named contract rules. The guard's own exit
-codes are read from the guard script and must stay a subset of the canonical
-set, so the check keeps passing while a guard change is in flight. The script
-uses the Python standard library only and makes no network call.
+read-back sentence. Then it checks AGENTS.md, the accountant ROUTER.md and the
+CLI SKILL.md each on its own, and the pointer lines of the accountant
+SKILL.md, for drift: a missing pointer, a gate token missing from a
+restatement, a flag named on a pointer line that the canonical set lacks, an
+exit code that is missing from the CLI skill or unknown to the canonical set,
+a second differing read-back definition and the two named contract rules. The
+guard's own exit codes are read from the guard script and must stay a subset
+of the canonical set, so the check keeps passing while a guard change is in
+flight. The script uses the Python standard library only and makes no network
+call.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/write-contract-check.py
@@ -48,14 +50,19 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fi
 
 CANONICAL_REL = "sk-moneybird-accountant/references/migration/shared-mechanisms.md"
 
-# WHY: the three restatements of the write contract, each with a pointer per file.
-# The accountant's spans its router and its SKILL.md, so each file is checked for
-# drift on its own and the pair together for the full set of tokens and rules.
-RESTATEMENTS: Tuple[Tuple[str, ...], ...] = (
-    ("AGENTS.md",),
-    ("sk-moneybird-accountant/ROUTER.md", "sk-moneybird-accountant/SKILL.md"),
-    ("cli-moneybird/SKILL.md",),
+# WHY: the three restatements of the write contract. Each file must carry the
+# full set of gate tokens and both rules on its own, so a token that leaves one
+# file is caught even when another file still names it.
+RESTATEMENTS = (
+    "AGENTS.md",
+    "sk-moneybird-accountant/ROUTER.md",
+    "cli-moneybird/SKILL.md",
 )
+
+# WHY: the accountant SKILL.md only points at the contract, so it is checked for
+# a resolving pointer, its pointer line flags, its exit codes and its read-back
+# line, but not for the full token set.
+POINTER_FILES = ("sk-moneybird-accountant/SKILL.md",)
 
 # WHY: this file owns the exit ladder, so it must carry the full canonical set.
 LADDER_REL = "cli-moneybird/SKILL.md"
@@ -235,7 +242,7 @@ def check_gate_flags(relative: str, text: str, gate_flags: Set[str], pointer_lin
 
     Args:
         relative: Path of the restatement, used in problem lines.
-        text: Full text of the restatement, every file of it joined.
+        text: Full text of the restatement.
         gate_flags: Canonical gate token set.
         pointer_lines: Line numbers that carry a pointer.
         problems: Problem list to append to.
@@ -398,19 +405,16 @@ def main(argv: List[str]) -> int:
         exits = set()
     anchors = heading_slugs(canonical)
 
-    for restatement in RESTATEMENTS:
-        texts = []
-        for relative in restatement:
-            text = read_text(root, relative)
-            texts.append(text)
-            pointer_lines = check_pointer(relative, text, anchors, problems)
+    for relative in RESTATEMENTS + POINTER_FILES:
+        text = read_text(root, relative)
+        pointer_lines = check_pointer(relative, text, anchors, problems)
+        if relative in RESTATEMENTS:
+            check_gate_flags(relative, text, gate_flags, pointer_lines, problems)
+            check_elements(relative, text, problems)
+        else:
             check_pointer_flags(relative, text, gate_flags, pointer_lines, problems)
-            check_exits(relative, text, exits, problems)
-            check_readback(relative, text, sentence or "", problems)
-        joined = "\n".join(texts)
-        name = " + ".join(restatement)
-        check_gate_flags(name, joined, gate_flags, [], problems)
-        check_elements(name, joined, problems)
+        check_exits(relative, text, exits, problems)
+        check_readback(relative, text, sentence or "", problems)
 
     check_canonical(canonical, sentence, problems)
     check_guard(root, exits, problems)
