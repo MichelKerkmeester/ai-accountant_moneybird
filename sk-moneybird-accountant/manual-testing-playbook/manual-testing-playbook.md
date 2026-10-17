@@ -687,6 +687,24 @@ Feature file: [REFUSAL-001](offline-routing/tax-deliverable-filing-refusal.md)
 
 ---
 
+### GLOSS-001 | Glossary term request
+
+#### Description
+Verify that a request that asks what a Dutch term means reads the glossary file of the topic its route loads, and that a request that asks no meaning reads none.
+
+#### Scenario Contract
+Prompt: What is the business mileage rate for the current tax year, and what does kilometervergoeding mean in English?
+
+Fixture rows: GLOSS-001 (English) and GLOSS-001-nl (Dutch twin), GLOSS-002 (English) and GLOSS-002-nl (Dutch twin) and GLOSS-003 (English).
+
+Desired user-visible outcome: Loads the figures part of the topic, then the glossary router, that topic's glossary file and `general.md` for the year README, and gives the English name with the Dutch in brackets.
+
+#### Test Execution
+Feature file: [GLOSS-001](offline-routing/glossary-term-request.md)
+Catalog: [feature-catalog/reference-and-state/glossary-router.md](../feature-catalog/reference-and-state/glossary-router.md)
+
+---
+
 ### FAIL-001 | Blocked answer after a failed CLI read
 
 #### Description
@@ -763,5 +781,6 @@ No runtime test calls an accounting service. The scenarios remain manual routing
 | PACK-002 | The income tax return (aangifte inkomstenbelasting) pack | bookkeeping-and-migration | [PACK-002](offline-routing/income-tax-return-pack.md) | [income tax return preparation](../feature-catalog/bookkeeping-and-migration/income-tax-return-preparation.md) |
 | REFUSAL-001 | Filing, submitting, paying and period locking stay refused | bookkeeping-and-migration | [REFUSAL-001](offline-routing/tax-deliverable-filing-refusal.md) | [operator tax boundary](../feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md) |
 | SRC-PDF-01 | The PDF source list | reference-and-state | [SRC-PDF-01](offline-routing/pdf-source-list.md) | [PDF source reader](../feature-catalog/reference-and-state/pdf-source-reader.md) |
+| GLOSS-001 | Glossary router | reference-and-state | [GLOSS-001](offline-routing/glossary-term-request.md) | [glossary router](../feature-catalog/reference-and-state/glossary-router.md) |
 | FAIL-001 | CLI tool handoff | bookkeeping-and-migration | [FAIL-001](offline-routing/cli-failure-blocked.md) | [CLI tool handoff](../feature-catalog/bookkeeping-and-migration/api-tool-handoff.md) |
 

@@ -4944,6 +4944,503 @@
       ],
       "t7": true,
       "destination": "blocked"
+    },
+    {
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "year": "2026",
+      "id": "GLOSS-001",
+      "prompt": "What is the business mileage rate for the current tax year, and what does kilometervergoeding mean in English?",
+      "gold_task_type": "T5",
+      "expected_paths": [
+        "references/tax-rules/2026/costs-and-car/figures.md#2-key-figures",
+        "references/glossary/README.md",
+        "references/glossary/costs-and-car.md",
+        "references/glossary/general.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/glossary/vat.md"
+      ],
+      "expected_facts": [
+        "| mileage allowance | kilometervergoeding |"
+      ],
+      "token_ceiling": 30000,
+      "note": "A term request on a topic route reads that topic glossary and the router.",
+      "covers": [
+        "016/REQ-005",
+        "016/REQ-006"
+      ]
+    },
+    {
+      "lang": "nl",
+      "parityOf": "GLOSS-001",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "year": "2026",
+      "id": "GLOSS-001-nl",
+      "prompt": "Wat is de kilometervergoeding voor het huidige belastingjaar, en wat betekent kilometervergoeding?",
+      "gold_task_type": "T5",
+      "expected_paths": [
+        "references/tax-rules/2026/costs-and-car/figures.md#2-key-figures",
+        "references/glossary/README.md",
+        "references/glossary/costs-and-car.md",
+        "references/glossary/general.md"
+      ],
+      "forbidden_paths": [
+        "references/moneybird-bookkeeping.md",
+        "references/glossary/vat.md"
+      ],
+      "expected_facts": [
+        "| mileage allowance | kilometervergoeding |"
+      ],
+      "token_ceiling": 30000,
+      "note": "Dutch twin of GLOSS-001.",
+      "covers": [
+        "016/REQ-005",
+        "016/REQ-006"
+      ]
+    },
+    {
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "year": "2026",
+      "id": "GLOSS-002",
+      "prompt": "I have a purchase invoice with btw verlegd from a supplier. What does btw verlegd mean in English?",
+      "gold_task_type": "T4",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/glossary/README.md",
+        "references/glossary/bookkeeping.md",
+        "references/glossary/vat.md"
+      ],
+      "forbidden_paths": [
+        "references/glossary/costs-and-car.md"
+      ],
+      "expected_facts": [
+        "| VAT reverse-charged | btw verlegd |"
+      ],
+      "token_ceiling": 40000,
+      "note": "A term request on a bookkeeping route reads the bookkeeping glossary and the glossary of each topic it loads.",
+      "covers": [
+        "016/REQ-005",
+        "016/REQ-006"
+      ]
+    },
+    {
+      "lang": "nl",
+      "parityOf": "GLOSS-002",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "year": "2026",
+      "id": "GLOSS-002-nl",
+      "prompt": "Ik heb een inkoopfactuur met btw verlegd van een leverancier. Wat betekent btw verlegd?",
+      "gold_task_type": "T4",
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/glossary/README.md",
+        "references/glossary/bookkeeping.md",
+        "references/glossary/vat.md"
+      ],
+      "forbidden_paths": [
+        "references/glossary/costs-and-car.md"
+      ],
+      "expected_facts": [
+        "| VAT reverse-charged | btw verlegd |"
+      ],
+      "token_ceiling": 40000,
+      "note": "Dutch twin of GLOSS-002.",
+      "covers": [
+        "016/REQ-005",
+        "016/REQ-006"
+      ]
+    },
+    {
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "gold_mode": "LIVE",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "year": "2026",
+      "id": "GLOSS-003",
+      "prompt": "What is the business mileage rate for the current tax year? I only need the kilometervergoeding figure.",
+      "gold_task_type": "T5",
+      "expected_paths": [
+        "references/tax-rules/2026/costs-and-car/figures.md#2-key-figures"
+      ],
+      "forbidden_paths": [
+        "references/glossary/README.md",
+        "references/glossary/costs-and-car.md",
+        "references/glossary/general.md"
+      ],
+      "expected_facts": [
+        "Kilometervergoeding"
+      ],
+      "token_ceiling": 18000,
+      "note": "A figure request that names a Dutch term without asking its meaning reads no glossary file."
+    },
+    {
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "year": "2026",
+      "id": "GLOSS-004",
+      "prompt": "Please answer in English: what is the business mileage rate for the current tax year?",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T5",
+      "expected_paths": [
+        "references/tax-rules/2026/costs-and-car/figures.md#2-key-figures"
+      ],
+      "forbidden_paths": [
+        "references/glossary/README.md",
+        "references/glossary/general.md",
+        "references/glossary/vat.md",
+        "references/glossary/costs-and-car.md"
+      ],
+      "expected_facts": [
+        "Kilometervergoeding"
+      ],
+      "token_ceiling": 18000,
+      "note": "Answering in English is not a term request, so no glossary file loads."
+    },
+    {
+      "lang": "nl",
+      "parityOf": "",
+      "split": "calibration",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "year": "2026",
+      "id": "GLOSS-005",
+      "prompt": "Wat betekent dit voor mijn btw-aangifte over 2026?",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T10",
+      "expected_paths": [
+        "references/vat-return/README.md"
+      ],
+      "forbidden_paths": [
+        "references/glossary/README.md",
+        "references/glossary/general.md",
+        "references/glossary/vat.md",
+        "references/glossary/costs-and-car.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 48000,
+      "note": "Wat betekent followed by a word that is no glossary term is not a term request."
+    },
+    {
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "category": "tier",
+      "tier": "B",
+      "tie": "",
+      "year": "",
+      "id": "GLOSS-006",
+      "prompt": "What does naheffingsaanslag mean in English?",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "abstain",
+      "expected_paths": [
+        "references/glossary/README.md",
+        "references/glossary/procedure.md"
+      ],
+      "forbidden_paths": [
+        "references/glossary/general.md",
+        "references/glossary/vat.md"
+      ],
+      "expected_facts": [
+        "| supplementary assessment | naheffingsaanslag |"
+      ],
+      "token_ceiling": 12000,
+      "note": "A bare term question abstains on the task rows and reads the router and the file that holds the term.",
+      "covers": [
+        "016/REQ-005",
+        "016/REQ-006"
+      ]
+    },
+    {
+      "lang": "nl",
+      "parityOf": "GLOSS-006",
+      "split": "calibration",
+      "category": "tier",
+      "tier": "B",
+      "tie": "",
+      "year": "",
+      "id": "GLOSS-006-nl",
+      "prompt": "Wat betekent naheffingsaanslag?",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "abstain",
+      "expected_paths": [
+        "references/glossary/README.md",
+        "references/glossary/procedure.md"
+      ],
+      "forbidden_paths": [
+        "references/glossary/general.md",
+        "references/glossary/vat.md"
+      ],
+      "expected_facts": [
+        "| supplementary assessment | naheffingsaanslag |"
+      ],
+      "token_ceiling": 12000,
+      "note": "Dutch twin of GLOSS-006.",
+      "covers": [
+        "016/REQ-005",
+        "016/REQ-006"
+      ]
+    },
+    {
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "category": "tier",
+      "tier": "B",
+      "tie": "",
+      "year": "",
+      "id": "GLOSS-007",
+      "prompt": "What does BV stand for?",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "abstain",
+      "expected_paths": [
+        "references/glossary/README.md",
+        "references/glossary/abbreviations.md"
+      ],
+      "forbidden_paths": [
+        "references/glossary/general.md"
+      ],
+      "expected_facts": [
+        "| private limited company | bv | abbreviation |"
+      ],
+      "token_ceiling": 12000,
+      "note": "An abbreviation lives in its own file, which the term lookup reaches.",
+      "covers": [
+        "016/REQ-005",
+        "016/REQ-006"
+      ]
+    },
+    {
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "year": "",
+      "id": "GLOSS-008",
+      "prompt": "How does the rule work since 2025, and what is navorderingstermijn in English?",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T6",
+      "expected_paths": [
+        "references/glossary/README.md",
+        "references/glossary/procedure.md",
+        "references/glossary/work-relationship.md"
+      ],
+      "forbidden_paths": [
+        "references/glossary/general.md"
+      ],
+      "expected_facts": [
+        "| additional assessment period | navorderingstermijn |"
+      ],
+      "token_ceiling": 40000,
+      "note": "A general topic file that covers two topics reads both topic glossaries.",
+      "covers": [
+        "016/REQ-005",
+        "016/REQ-006"
+      ]
+    },
+    {
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "category": "out-of-scope",
+      "tier": "A",
+      "tie": "",
+      "year": "",
+      "id": "GLOSS-009",
+      "prompt": "File my btw-aangifte now. What does btw verlegd mean?",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "T8",
+      "expected_paths": [],
+      "forbidden_paths": [
+        "references/glossary/README.md",
+        "references/glossary/vat.md"
+      ],
+      "expected_facts": [],
+      "token_ceiling": 0,
+      "note": "A refusal loads nothing, a term request inside it included."
+    },
+    {
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "category": "tier",
+      "tier": "C",
+      "tie": "",
+      "year": "",
+      "token_ceiling": 12000,
+      "covers": [
+        "016/REQ-005",
+        "016/REQ-006"
+      ],
+      "id": "GLOSS-010",
+      "prompt": "What does zelfstandigenaftrek mean in English?",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T5",
+      "expected_paths": [
+        "references/glossary/README.md",
+        "references/glossary/general.md"
+      ],
+      "forbidden_paths": [
+        "references/glossary/vat.md",
+        "references/glossary/costs-and-car.md"
+      ],
+      "expected_facts": [
+        "zelfstandigenaftrek"
+      ],
+      "note": "A term request that waits on the tax year still reads the router and the file that holds the term."
+    },
+    {
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "year": "2026",
+      "token_ceiling": 75000,
+      "covers": [
+        "016/REQ-005",
+        "016/REQ-006"
+      ],
+      "id": "GLOSS-011",
+      "prompt": "Summarize my inkoopfactuur in English",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "expected_paths": [
+        "references/purchase-invoices.md"
+      ],
+      "forbidden_paths": [
+        "references/glossary/README.md",
+        "references/glossary/bookkeeping.md",
+        "references/glossary/vat.md"
+      ],
+      "expected_facts": [
+        "invoice"
+      ],
+      "note": "A task asked in English that ends on a Dutch term is not a term request, so no glossary file loads."
+    },
+    {
+      "lang": "nl",
+      "parityOf": "",
+      "split": "calibration",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "year": "2026",
+      "token_ceiling": 18000,
+      "covers": [
+        "016/REQ-005",
+        "016/REQ-006"
+      ],
+      "id": "GLOSS-012",
+      "prompt": "Wat betekent kilometervergoeding, en wat is de grens?",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T5",
+      "expected_paths": [
+        "references/tax-rules/2026/costs-and-car/figures.md#2-key-figures",
+        "references/glossary/README.md",
+        "references/glossary/costs-and-car.md"
+      ],
+      "forbidden_paths": [
+        "references/glossary/vat.md"
+      ],
+      "expected_facts": [
+        "| mileage allowance | kilometervergoeding |"
+      ],
+      "note": "A comma after the asked term ends the term, so the term file still loads."
+    },
+    {
+      "lang": "en",
+      "parityOf": "",
+      "split": "calibration",
+      "category": "tier",
+      "tier": "B",
+      "tie": "",
+      "year": "",
+      "token_ceiling": 12000,
+      "covers": [
+        "016/REQ-005",
+        "016/REQ-006"
+      ],
+      "id": "GLOSS-013",
+      "prompt": "What does in natura mean?",
+      "gold_mode": "ABSTAIN",
+      "gold_task_type": "abstain",
+      "expected_paths": [
+        "references/glossary/README.md",
+        "references/glossary/general.md",
+        "references/glossary/vat.md"
+      ],
+      "forbidden_paths": [
+        "references/glossary/procedure.md"
+      ],
+      "expected_facts": [
+        "| in kind | in natura |",
+        "| benefits in kind | in natura |"
+      ],
+      "note": "A Dutch term two glossary rows hold reads both files."
+    },
+    {
+      "lang": "nl",
+      "parityOf": "",
+      "split": "calibration",
+      "category": "clean",
+      "tier": "",
+      "tie": "",
+      "year": "2026",
+      "token_ceiling": 75000,
+      "covers": [
+        "016/REQ-005",
+        "016/REQ-006"
+      ],
+      "id": "GLOSS-014",
+      "prompt": "Boek in de inkoopfactuur en wat betekent btw verlegd?",
+      "gold_mode": "LIVE",
+      "gold_task_type": "T4",
+      "t7": true,
+      "expected_paths": [
+        "references/purchase-invoices.md",
+        "references/glossary/README.md",
+        "references/glossary/vat.md",
+        "references/glossary/bookkeeping.md"
+      ],
+      "forbidden_paths": [
+        "references/glossary/general.md"
+      ],
+      "expected_facts": [
+        "| VAT reverse-charged | btw verlegd |"
+      ],
+      "note": "A CLI action adds to the task row it joins, so the term request follows that row."
     }
   ],
   "refusal_basis": "Every refusal row replays one guard gate through the stub CLI in test mode and asserts its command line and exit code. Every hostile row replays one case from assets/hostile-invoice-cases.json through a guarded write. A refused case replays with an approved digest that does not match the case payload, an accepted case replays with a matching digest.",

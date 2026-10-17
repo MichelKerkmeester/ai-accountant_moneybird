@@ -125,15 +125,22 @@ FIX="$TMP_ROOT/fixture"
 CASE="$FIX/sk-moneybird-accountant/references/case.md"
 EXCEPTIONS="$FIX/sk-moneybird-accountant/assets/english-first-exceptions.json"
 
-# Write both glossary files under one repository root
+# Write the glossary folder under one repository root
 # Args:
 #   $1 - Repository root
 # Returns:
 #   0 when the files are written, 1 when a write fails
 write_glossaries() {
-    local dir="$1/sk-moneybird-accountant/references"
+    local dir="$1/sk-moneybird-accountant/references/glossary"
     mkdir -p "$dir" || return 1
-    cat >"$dir/glossary.md" <<'MARKDOWN' || return 1
+    cat >"$dir/README.md" <<'MARKDOWN' || return 1
+# Glossary router
+
+| English | Dutch | Note |
+|---|---|---|
+| router only | alleen de router |  |
+MARKDOWN
+    cat >"$dir/general.md" <<'MARKDOWN' || return 1
 # Glossary
 
 | English | Dutch | Note |
@@ -145,7 +152,7 @@ write_glossaries() {
 | VAT return box | rubriek |  |
 | parts | onderdelen |  |
 MARKDOWN
-    cat >"$dir/glossary-additional-terms.md" <<'MARKDOWN' || return 1
+    cat >"$dir/procedure.md" <<'MARKDOWN' || return 1
 # Single use terms
 
 | English | Dutch | Note |
@@ -577,6 +584,37 @@ check_reported "a doubled rubriek label is still reported" \
     "sk-moneybird-accountant/references/case.md:${line}: doubled: rubriek 1d"
 
 # ───────────────────────────────────────────────────────────────
+# 13A. GLOSSARY FOLDER
+# ───────────────────────────────────────────────────────────────
+
+group "glossary folder"
+write_case <<'MARKDOWN'
+# Case
+
+The carry-forward (voortwenteling) applies.
+MARKDOWN
+check_clean "a term from a second category file labels a first use"
+
+write_case <<'MARKDOWN'
+# Case
+
+Ask alleen de router here.
+MARKDOWN
+check_clean "a table row in the router README is not a glossary term"
+
+GLOSSARY_DIR="$FIX/sk-moneybird-accountant/references/glossary"
+printf '| English | Dutch | Note |\n|---|---|---|\n| Additional assessment | Navorderingsaanslag |  |\n' >"$GLOSSARY_DIR/vat.md"
+write_case <<'MARKDOWN'
+# Case
+
+The additional assessment (navorderingsaanslag) arrives.
+MARKDOWN
+check_reported "a pair held in two glossary files is a duplicate" \
+    "sk-moneybird-accountant/references/glossary/vat.md:3: duplicate: Navorderingsaanslag"
+rm -f "$GLOSSARY_DIR/vat.md"
+check_clean "the duplicate clears once the second file is gone"
+
+# ───────────────────────────────────────────────────────────────
 # 14. DETERMINISM
 # ───────────────────────────────────────────────────────────────
 
@@ -608,6 +646,7 @@ first-use: 1
 doubled: 0
 reversed: 0
 unglossed: 0
+duplicate: 0
 stale-exception: 0
 outside tax-rules: 1
 tax-rules 2024: 1

@@ -457,6 +457,22 @@ See [`reference-and-state/pdf-source-reader.md`](reference-and-state/pdf-source-
 
 ---
 
+### Glossary router
+
+#### Description
+
+Holds every English and Dutch term pair in one file per topic behind a router README, and lets a route read the glossary of the topics it loads when a request asks what a Dutch term means.
+
+#### Current Reality
+
+`references/glossary/README.md` lists 16 category files, one per tax-rules topic plus `bookkeeping.md`, `general.md`, `official-names.md` and `abbreviations.md`, and each pair lives in exactly one of them. A term goes to the topic holding at least half of its uses, else to `general.md`. SKILL.md states one rule: a request that asks what a Dutch term means or its English name also reads the router, the glossary file of the term and the glossary file of each topic its route reads. The resolver applies it after the route's own reads and on a term request that abstains. A refusal reads no glossary file, a request that asks no meaning reads none and `check-route-table.py` fails on a missing rule, glossary file or router link.
+
+#### Source Files
+
+See [`reference-and-state/glossary-router.md`](reference-and-state/glossary-router.md) for source and validation anchors.
+
+---
+
 ### Topic file split
 
 #### Description
@@ -531,7 +547,7 @@ Checks that the skill family writes English first and reports every Dutch term w
 
 #### Current Reality
 
-`check-english-first.py` reads both glossary files and `assets/english-first-exceptions.json`, blanks the places where Dutch is data, such as code, links, quotes, legal citations, Source columns and the playbook prompts, and then reports residual, first-use, doubled, reversed and unglossed problems plus any exception that suppresses nothing. The run prints sorted lines and a count line and makes no network call. The skill health workflow runs `check-english-first-test.sh`, which proves every rule and mask on fixtures and ends with the real corpus.
+`check-english-first.py` reads every category file in `references/glossary/`, scans its router README as prose and reads `assets/english-first-exceptions.json`, blanks the places where Dutch is data, such as code, links, quotes, legal citations, Source columns and the playbook prompts, and then reports residual, first-use, doubled, reversed, unglossed and duplicate problems plus any exception that suppresses nothing. The run prints sorted lines and a count line and makes no network call. The skill health workflow runs `check-english-first-test.sh`, which proves every rule and mask on fixtures and ends with the real corpus.
 
 #### Source Files
 

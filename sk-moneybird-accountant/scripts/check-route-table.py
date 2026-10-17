@@ -7,8 +7,9 @@
 Reads SKILL.md and verifies the route-table block between its markers. The
 check validates the header, the row types, the Dutch and English cells, the
 budget cells, the tool routes, the read-set grammar, the read-set paths and
-their guard, the routing constants, the warning band, the abstain wording,
-the margin override bullets, the pointer to the signal sources file, the
+their guard, the glossary read rule with a glossary file for every topic,
+the routing constants, the warning band, the abstain wording, the margin
+override bullets, the pointer to the signal sources file, the
 source lines of that file, the documented-gap ledger of that file and the
 frozen calibration record in assets/route-calibration.json. Each read item
 carries a `!` or `?` mark, an optional `@section-id` anchor and the `{year}`
@@ -172,6 +173,10 @@ TOPIC_PLACEHOLDER = "{topic-figures}"
 TOPIC_ANCHOR = "2-key-figures"
 MIGRATION_INDEX = os.path.join(SKILL_FOLDER, "references", "migration", "README.md")
 TAX_RULES_BASE = os.path.join(SKILL_FOLDER, "references", "tax-rules")
+GLOSSARY_BASE = os.path.join(SKILL_FOLDER, "references", "glossary")
+GLOSSARY_ROUTER_PATH = "references/glossary/README.md"
+# WHY: the resolver maps a read outside a topic folder to one of these two files.
+GLOSSARY_SHARED_FILES = ("bookkeeping.md", "general.md")
 GAPS_HEADING = "Documented gaps"
 GAPS_COLUMNS = ("Topic", "Owner", "Coverage", "Operator action")
 COVERAGE_VALUES = ("covered", "partial", "gap")
@@ -776,6 +781,39 @@ def check_maps(problems: List[str]) -> None:
         problems.append("migration index holds no phase table rows: %s" % MIGRATION_INDEX)
     if not topic_files():
         problems.append("no topic figures file found under %s" % TAX_RULES_BASE)
+
+
+def check_glossary(text: str, problems: List[str]) -> None:
+    """Check that the glossary read rule can reach a file for every read.
+
+    Args:
+        text: Full markdown text of SKILL.md.
+        problems: Problem list to append to.
+    """
+    if GLOSSARY_ROUTER_PATH not in text:
+        problems.append("the glossary read rule is missing: %s" % GLOSSARY_ROUTER_PATH)
+    router = os.path.join(GLOSSARY_BASE, "README.md")
+    if not os.path.isfile(router):
+        problems.append("missing glossary router: %s" % GLOSSARY_ROUTER_PATH)
+        return
+    with open(router, encoding="utf-8") as handle:
+        router_text = handle.read()
+    topics = set(topic_files())
+    for year in year_folders():
+        year_path = os.path.join(TAX_RULES_BASE, year)
+        if os.path.isdir(year_path):
+            topics.update(
+                name
+                for name in os.listdir(year_path)
+                if os.path.isdir(os.path.join(year_path, name))
+            )
+    wanted = sorted({"%s.md" % topic for topic in topics} | set(GLOSSARY_SHARED_FILES))
+    for name in wanted:
+        if not os.path.isfile(os.path.join(GLOSSARY_BASE, name)):
+            problems.append("missing glossary file: references/glossary/%s" % name)
+    for name in sorted(os.listdir(GLOSSARY_BASE)):
+        if name.endswith(".md") and name != "README.md" and "(%s)" % name not in router_text:
+            problems.append("glossary router does not link: references/glossary/%s" % name)
 
 
 def router_block(rows: List[Dict[str, str]]) -> List[str]:
@@ -1649,6 +1687,7 @@ def main(argv: List[str]) -> int:
     missing: List[str] = []
     check_table(lines, problems, missing)
     check_maps(problems)
+    check_glossary(text, problems)
     check_required_tokens(text, problems)
     check_overrides(lines, problems)
     check_signals_pointer(lines, problems)

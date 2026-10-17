@@ -197,6 +197,52 @@ JORTT_OP_RE = re.compile(r"\bjortt\b[^.]*\bop\b", re.IGNORECASE)
 
 SOURCE_TERMS = ("official text", "officiële tekst", "officiele tekst", "source library", "law text", "wetstekst")
 
+# WHY: a term request names the Dutch term inside an ask frame, so a request
+# that only answers in English or asks what a figure means reads no glossary.
+# A frame's `t` group holds the words that must start with a Dutch glossary
+# term, or for the "in English" frames must be that term and nothing more.
+# WHY: a bounded span keeps one long request from scanning far past the ask words.
+GLOSSARY_SPAN_CHARS = 80
+GLOSSARY_SPAN = "[^?.!]{1,%d}" % GLOSSARY_SPAN_CHARS
+GLOSSARY_CLAUSE = "[^?.!,:;]{1,%d}" % GLOSSARY_SPAN_CHARS
+GLOSSARY_FRAMES = (
+    re.compile(r"\bwhat does (?P<t>" + GLOSSARY_SPAN + r"?) (?:mean|stand for)\b"),
+    re.compile(r"\bwhat is the meaning of (?P<t>" + GLOSSARY_SPAN + r")"),
+    re.compile(r"\benglish (?:name|term|word) (?:for|of) (?P<t>" + GLOSSARY_SPAN + r")"),
+    re.compile(r"\btranslate (?P<t>" + GLOSSARY_SPAN + r")"),
+    re.compile(r"\bwat betekent (?P<t>" + GLOSSARY_SPAN + r")"),
+    re.compile(r"\bbetekenis van (?P<t>" + GLOSSARY_SPAN + r")"),
+    re.compile(r"\bengelse (?:naam|term|woord) (?:van|voor) (?P<t>" + GLOSSARY_SPAN + r")"),
+    re.compile(r"\bhoe heet (?P<t>" + GLOSSARY_SPAN + r"?) in het engels\b"),
+)
+GLOSSARY_END_FRAMES = (
+    re.compile(r"(?:^|[,:;]\s*|\band\s+|\bis\s+)(?P<t>" + GLOSSARY_CLAUSE + r"?) in english\b"),
+    re.compile(r"(?:^|[,:;]\s*|\ben\s+|\bis\s+)(?P<t>" + GLOSSARY_CLAUSE + r"?) in het engels\b"),
+)
+GLOSSARY_LEADING_WORDS = frozenset(("the", "a", "an", "de", "het", "een", "term", "word", "woord"))
+# WHY: an "in English" clause may open on a joining or question word before the term it asks about.
+GLOSSARY_END_LEADING_WORDS = GLOSSARY_LEADING_WORDS | frozenset(("and", "en", "what", "wat", "is"))
+GLOSSARY_DIR = "references/glossary"
+GLOSSARY_ROUTER = "references/glossary/README.md"
+GLOSSARY_BOOKKEEPING = "references/glossary/bookkeeping.md"
+GLOSSARY_GENERAL = "references/glossary/general.md"
+GLOSSARY_VAT = "references/glossary/vat.md"
+GLOSSARY_YEAR_RE = re.compile(r"^references/tax-rules/\d{4}/([a-z0-9-]+)/")
+GLOSSARY_ROW_RE = re.compile(r"^\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|[^|]*\|\s*$")
+# WHY: a general topic file restates the year topics it covers, so it shares their glossaries.
+GLOSSARY_GENERAL_TOPICS = {
+    "box-2-and-the-substantial-interest.md": ("box-2",),
+    "box-3-savings-and-investments.md": ("box-3",),
+    "business-deductions-and-sme-profit-exemption.md": ("business-deductions",),
+    "costs-and-the-car.md": ("costs-and-car",),
+    "income-tax-box-1-and-the-health-insurance-contribution.md": ("income-tax", "health-insurance-contribution"),
+    "investment-deductions-and-depreciation.md": ("investments",),
+    "pension-annuities-and-disability-insurance.md": ("pension-and-disability-insurance",),
+    "the-private-company-and-corporate-tax.md": ("private-company-and-corporate-tax",),
+    "vat.md": ("vat",),
+    "work-relationship-and-procedure.md": ("work-relationship", "procedure"),
+}
+
 # WHY: the yearly-overview README authors these eleven close signals, so the
 # T11 row carries them and the resolver loads the year README on a close
 # request. route-replay-test.sh fails when one is missing from the T11 cells.
@@ -1046,7 +1092,168 @@ def open_encoder(baseline_root: str) -> Any:
 # 7. ROUTE RESOLUTION
 # ───────────────────────────────────────────────────────────────
 
+def glossary_files(path: str) -> List[str]:
+    """Name the glossary files that hold the terms of one read.
+
+    Args:
+        path: A read path relative to the skill folder, anchor removed.
+
+    Returns:
+        The glossary file paths relative to the skill folder.
+    """
+    match = GLOSSARY_YEAR_RE.match(path)
+    if match:
+        return ["%s/%s.md" % (GLOSSARY_DIR, match.group(1))]
+    if path.startswith("references/tax-rules/general/"):
+        topics = GLOSSARY_GENERAL_TOPICS.get(os.path.basename(path), ())
+        return ["%s/%s.md" % (GLOSSARY_DIR, topic) for topic in topics] or [GLOSSARY_GENERAL]
+    if path.startswith("references/tax-rules/"):
+        return [GLOSSARY_GENERAL]
+    if path.startswith("references/vat-return/"):
+        return [GLOSSARY_VAT]
+    return [GLOSSARY_BOOKKEEPING]
+
+
+_GLOSSARY_INDEX: Dict[str, Dict[str, str]] = {}
+
+
+def glossary_index(skill_root: str) -> Dict[str, str]:
+    """Map every Dutch glossary term to the category file that holds it.
+
+    Args:
+        skill_root: Absolute skill folder.
+
+    Returns:
+        Lower case Dutch term to the glossary files that hold it, read once
+        per folder.
+    """
+    if skill_root in _GLOSSARY_INDEX:
+        return _GLOSSARY_INDEX[skill_root]
+    index: Dict[str, List[str]] = {}
+    folder = join_skill(skill_root, GLOSSARY_DIR)
+    names = sorted(os.listdir(folder)) if os.path.isdir(folder) else []
+    for name in names:
+        if not name.endswith(".md") or name == "README.md":
+            continue
+        relative = "%s/%s" % (GLOSSARY_DIR, name)
+        with open(os.path.join(folder, name), encoding="utf-8") as handle:
+            for line in handle:
+                match = GLOSSARY_ROW_RE.match(line.strip())
+                if not match or match.group(1).lower() == "english" or set(match.group(1)) <= set("-: "):
+                    continue
+                files = index.setdefault(match.group(2).lower(), [])
+                if relative not in files:
+                    files.append(relative)
+    _GLOSSARY_INDEX[skill_root] = index
+    return index
+
+
+def glossary_term(words: str, index: Dict[str, List[str]], at_end: bool) -> str:
+    """Find the Dutch glossary term an ask frame names.
+
+    Args:
+        words: The words the frame captured, lower case.
+        index: Dutch term to glossary files.
+        at_end: True when the term must fill the words after an optional
+            article, False when it must start them.
+
+    Returns:
+        The longest matching Dutch term, or an empty string.
+    """
+    # WHY: a comma, semicolon or colon ends the asked term, so the words after it never join a span.
+    words = re.split(r"[,;:]", words, maxsplit=1)[0]
+    parts = [part.strip("\"'`()") for part in words.split()]
+    parts = [part for part in parts if part]
+    leading = GLOSSARY_END_LEADING_WORDS if at_end else GLOSSARY_LEADING_WORDS
+    while parts and parts[0] in leading:
+        parts = parts[1:]
+    best = ""
+    sizes = [len(parts)] if at_end else range(1, min(len(parts), 6) + 1)
+    for size in sizes:
+        span = parts[:size]
+        for joiner in (" ", "-"):
+            candidate = joiner.join(span)
+            if candidate in index and len(candidate) > len(best):
+                best = candidate
+    return best
+
+
+def asked_terms(text: str, index: Dict[str, List[str]]) -> List[str]:
+    """List the Dutch glossary terms a request asks about.
+
+    Args:
+        text: Lower case request text.
+        index: Dutch term to glossary files.
+
+    Returns:
+        The named terms in request order, without repeats.
+    """
+    found: List[str] = []
+    for frames, at_end in ((GLOSSARY_FRAMES, False), (GLOSSARY_END_FRAMES, True)):
+        for frame in frames:
+            for match in frame.finditer(text.lower()):
+                term = glossary_term(match.group("t"), index, at_end)
+                if term and term not in found:
+                    found.append(term)
+    return found
+
+
+def glossary_reads(skill_root: str, paths: List[str], text: str) -> List[str]:
+    """Add the glossary reads a term request asks for.
+
+    Args:
+        skill_root: Absolute skill folder.
+        paths: The route's resolved reads, anchors in # form.
+        text: Lower case request text.
+
+    Returns:
+        The reads, followed on a term request by the glossary router, the
+        file that holds each named term and the glossary files of each read.
+    """
+    index = glossary_index(skill_root)
+    terms = asked_terms(text, index)
+    if not terms:
+        return paths
+    extended = list(paths)
+    wanted = [GLOSSARY_ROUTER] + [path for term in terms for path in index[term]]
+    for address in paths:
+        wanted.extend(glossary_files(plain_path(address)))
+    for path in wanted:
+        if path not in extended:
+            extended.append(path)
+    return extended
+
+
 def resolve_paths(
+    skill_root: str,
+    route_type: str,
+    text: str,
+    year: str,
+    phase_map: Dict[str, str],
+    topic_map: Dict[str, str],
+    route_rows: List[Dict[str, str]],
+) -> List[str]:
+    """Resolve the read set of one winning task type with its glossary reads.
+
+    Args:
+        skill_root: Absolute skill folder.
+        route_type: Winning task type.
+        text: Lower case request text.
+        year: Fixture year for the read set, empty when unresolved.
+        phase_map: Phase number to reference path.
+        topic_map: Topic slug to figures file from the generated block.
+        route_rows: Parsed task-type rows for the table-driven fallback.
+
+    Returns:
+        Reference paths relative to the skill folder.
+    """
+    paths = resolve_route_reads(
+        skill_root, route_type, text, year, phase_map, topic_map, route_rows
+    )
+    return glossary_reads(skill_root, paths, text)
+
+
+def resolve_route_reads(
     skill_root: str,
     route_type: str,
     text: str,
@@ -1448,6 +1655,42 @@ def score_candidates(
 
 
 def resolve_route(
+    route_rows: List[Dict[str, str]],
+    skill_root: str,
+    prompt: str,
+    year: str,
+    phase_map: Dict[str, str],
+    topic_map: Dict[str, str],
+    constants: Dict[str, Any],
+    weak_signals: Sequence[str],
+) -> Dict[str, Any]:
+    """Resolve one request to a route and add the glossary reads of an abstain.
+
+    Args:
+        route_rows: Parsed task-type rows.
+        skill_root: Absolute skill folder.
+        prompt: Request text.
+        year: Fixture year, empty when unresolved.
+        phase_map: Phase number to reference path.
+        topic_map: Topic slug to figures file from the generated block.
+        constants: Routing constants.
+        weak_signals: Phrases that never decide a row.
+
+    Returns:
+        The route record of `decide_route`. An abstain that names a Dutch
+        term in an ask frame reads the glossary router and the files that
+        hold the term, because a term question needs no task row. A refusal
+        reads none.
+    """
+    route = decide_route(
+        route_rows, skill_root, prompt, year, phase_map, topic_map, constants, weak_signals
+    )
+    if route.get("abstain") and route.get("type") != "T8" and not route.get("paths"):
+        route["paths"] = glossary_reads(skill_root, [], prompt.lower())
+    return route
+
+
+def decide_route(
     route_rows: List[Dict[str, str]],
     skill_root: str,
     prompt: str,

@@ -70,6 +70,8 @@ Every request matches one row, which determines the files read and the tool skil
 
 Read budget ladder in o200k_base tokens: year README 3,000, one section 5,000, full file 15,000.
 
+Asked what a Dutch term means or its English name, a route also reads `references/glossary/README.md` and the glossary file of the term and of each topic it reads.
+
 The generated [reference library](./references/README.md) lists the tax year folders, the tax-rule and migration files, each with a description.
 
 Signal sources, the `tok:Tn` keys and their Belastingdienst pages: `references/routing-signals.md`.
@@ -294,7 +296,7 @@ A Moneybird read runs with `MONEYBIRD_GUARD_READ_ONLY=1`. A write needs a passed
 
 ### LIVE Mode
 
-Monthly, quarterly and yearly cycles are in `references/moneybird-bookkeeping.md` (LIVE Bookkeeping Cycles). Every Moneybird read follows the [Read Step Contract](../cli-moneybird/SKILL.md#read-step-contract) in `cli-moneybird/SKILL.md`. Writes follow the write authority below. The return is never filed.
+Monthly, quarterly and yearly cycles are in `references/moneybird-bookkeeping.md` (LIVE Bookkeeping Cycles). Every Moneybird read follows the [Read Step Contract](../cli-moneybird/SKILL.md#read-step-contract). Writes follow the write authority below. The return is never filed.
 
 #### LIVE write authority
 
@@ -392,7 +394,7 @@ Answer order: load no unneeded record content, then scan the draft with the gate
 
 ### Loading notes
 
-Load the project bootstrap and this skill first. Load only the row's read set one phase group at a time, plus a sibling tool skill only when its route names it. Grep `assets/source-library.json` for a host, topic or citing file. Never read it whole. `references/index.json` maps every reference file with its sections, line numbers and answer surface, so read it instead of globbing the tree. `benchmark/token-baseline.json` holds the token size of every file and section, kept true by the generator check. Each `SKILL.md` aims at 3,000 words with a hard ceiling of 4,000. `python3 -I sk-moneybird-accountant/scripts/check-skill-words.py` warns above the budget and fails above the ceiling.
+Load the project bootstrap and this skill first. Load only the row's read set one phase group at a time, plus a sibling tool skill only when its route names it. Grep `assets/source-library.json` for a host, topic or citing file. Never read it whole. `references/index.json` maps every reference file with its sections, line numbers and answer surface, so read it instead of globbing the tree. `benchmark/token-baseline.json` holds the token size of every file and section, kept true by the generator check. `python3 -I sk-moneybird-accountant/scripts/check-skill-words.py` warns when a `SKILL.md` passes 3,000 words and fails above 4,000.
 
 ---
 
@@ -435,11 +437,9 @@ Complete when:
 ## 8. RELATED RESOURCES
 
 - [Project bootstrap](../AGENTS.md) - entry route and privacy contract.
-- [Migration index](./references/migration/README.md) - phase map.
 - [Dutch tax rules](./references/tax-rules/dutch-tax-rules.md) - rules per year.
 - [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) - ZZP events.
 - [Purchase invoices](./references/purchase-invoices.md) - booking and reverse charge.
 - [Mixed-use costs](./references/mixed-use-costs.md) - business and private split.
 - [Fixed assets](./references/fixed-assets.md) - assets, depreciation and disposal.
 - [Source library](./references/tax-rules/source-library.md) - source per figure.
-- [Jortt to Moneybird mapping](./references/migration/jortt-to-moneybird-mapping.md) - concepts and traps.

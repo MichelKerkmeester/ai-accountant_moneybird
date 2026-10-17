@@ -217,67 +217,558 @@
       }
     },
     {
-      "bytes": 32601,
-      "path": "sk-moneybird-accountant/references/glossary-additional-terms.md",
+      "bytes": 4232,
+      "path": "sk-moneybird-accountant/references/glossary/README.md",
       "sections": [
         {
           "anchor": "1-overview",
-          "bytes": 389,
-          "line": 20,
-          "lines": 6,
-          "title": "1. OVERVIEW",
-          "tokens": {
-            "cl100k_base": 97,
-            "o200k_base": 98
-          }
-        },
-        {
-          "anchor": "2-terms",
-          "bytes": 31532,
-          "line": 26,
-          "lines": 546,
-          "title": "2. TERMS",
-          "tokens": {
-            "cl100k_base": 8361,
-            "o200k_base": 7191
-          }
-        }
-      ],
-      "tokens": {
-        "cl100k_base": 8623,
-        "o200k_base": 7449
-      }
-    },
-    {
-      "bytes": 49263,
-      "path": "sk-moneybird-accountant/references/glossary.md",
-      "sections": [
-        {
-          "anchor": "1-overview",
-          "bytes": 643,
+          "bytes": 900,
           "line": 21,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
-            "cl100k_base": 140,
-            "o200k_base": 139
+            "cl100k_base": 211,
+            "o200k_base": 205
           }
         },
         {
-          "anchor": "2-terms",
-          "bytes": 47795,
+          "anchor": "2-files",
+          "bytes": 1706,
           "line": 29,
-          "lines": 1116,
-          "title": "2. TERMS",
+          "lines": 23,
+          "title": "2. FILES",
           "tokens": {
-            "cl100k_base": 13410,
-            "o200k_base": 11758
+            "cl100k_base": 498,
+            "o200k_base": 503
+          }
+        },
+        {
+          "anchor": "3-where-a-term-goes",
+          "bytes": 975,
+          "line": 52,
+          "lines": 7,
+          "title": "3. WHERE A TERM GOES",
+          "tokens": {
+            "cl100k_base": 240,
+            "o200k_base": 244
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 13750,
-        "o200k_base": 12093
+        "cl100k_base": 1109,
+        "o200k_base": 1111
+      }
+    },
+    {
+      "bytes": 2006,
+      "path": "sk-moneybird-accountant/references/glossary/abbreviations.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 539,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 129,
+            "o200k_base": 129
+          }
+        },
+        {
+          "anchor": "2-terms",
+          "bytes": 850,
+          "line": 26,
+          "lines": 21,
+          "title": "2. TERMS",
+          "tokens": {
+            "cl100k_base": 183,
+            "o200k_base": 182
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 466,
+        "o200k_base": 464
+      }
+    },
+    {
+      "bytes": 3714,
+      "path": "sk-moneybird-accountant/references/glossary/bookkeeping.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 528,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 123,
+            "o200k_base": 123
+          }
+        },
+        {
+          "anchor": "2-terms",
+          "bytes": 2570,
+          "line": 26,
+          "lines": 62,
+          "title": "2. TERMS",
+          "tokens": {
+            "cl100k_base": 723,
+            "o200k_base": 645
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 998,
+        "o200k_base": 914
+      }
+    },
+    {
+      "bytes": 5294,
+      "path": "sk-moneybird-accountant/references/glossary/box-2.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 555,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 126,
+            "o200k_base": 127
+          }
+        },
+        {
+          "anchor": "2-terms",
+          "bytes": 4120,
+          "line": 26,
+          "lines": 89,
+          "title": "2. TERMS",
+          "tokens": {
+            "cl100k_base": 1137,
+            "o200k_base": 978
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1422,
+        "o200k_base": 1263
+      }
+    },
+    {
+      "bytes": 4516,
+      "path": "sk-moneybird-accountant/references/glossary/box-3.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 555,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 130,
+            "o200k_base": 131
+          }
+        },
+        {
+          "anchor": "2-terms",
+          "bytes": 3342,
+          "line": 26,
+          "lines": 80,
+          "title": "2. TERMS",
+          "tokens": {
+            "cl100k_base": 936,
+            "o200k_base": 823
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1229,
+        "o200k_base": 1116
+      }
+    },
+    {
+      "bytes": 4168,
+      "path": "sk-moneybird-accountant/references/glossary/business-deductions.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 560,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 127,
+            "o200k_base": 128
+          }
+        },
+        {
+          "anchor": "2-terms",
+          "bytes": 2928,
+          "line": 26,
+          "lines": 57,
+          "title": "2. TERMS",
+          "tokens": {
+            "cl100k_base": 807,
+            "o200k_base": 703
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1089,
+        "o200k_base": 985
+      }
+    },
+    {
+      "bytes": 12285,
+      "path": "sk-moneybird-accountant/references/glossary/costs-and-car.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 540,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 126,
+            "o200k_base": 127
+          }
+        },
+        {
+          "anchor": "2-terms",
+          "bytes": 11097,
+          "line": 26,
+          "lines": 244,
+          "title": "2. TERMS",
+          "tokens": {
+            "cl100k_base": 3013,
+            "o200k_base": 2637
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 3301,
+        "o200k_base": 2925
+      }
+    },
+    {
+      "bytes": 7345,
+      "path": "sk-moneybird-accountant/references/glossary/general.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 543,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 126,
+            "o200k_base": 127
+          }
+        },
+        {
+          "anchor": "2-terms",
+          "bytes": 6181,
+          "line": 26,
+          "lines": 157,
+          "title": "2. TERMS",
+          "tokens": {
+            "cl100k_base": 1775,
+            "o200k_base": 1548
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 2053,
+        "o200k_base": 1826
+      }
+    },
+    {
+      "bytes": 3924,
+      "path": "sk-moneybird-accountant/references/glossary/health-insurance-contribution.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 532,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 124,
+            "o200k_base": 125
+          }
+        },
+        {
+          "anchor": "2-terms",
+          "bytes": 2700,
+          "line": 26,
+          "lines": 48,
+          "title": "2. TERMS",
+          "tokens": {
+            "cl100k_base": 733,
+            "o200k_base": 622
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1014,
+        "o200k_base": 903
+      }
+    },
+    {
+      "bytes": 5309,
+      "path": "sk-moneybird-accountant/references/glossary/income-tax.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 518,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 124,
+            "o200k_base": 125
+          }
+        },
+        {
+          "anchor": "2-terms",
+          "bytes": 4189,
+          "line": 26,
+          "lines": 82,
+          "title": "2. TERMS",
+          "tokens": {
+            "cl100k_base": 1178,
+            "o200k_base": 1014
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1455,
+        "o200k_base": 1291
+      }
+    },
+    {
+      "bytes": 5099,
+      "path": "sk-moneybird-accountant/references/glossary/investments.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 556,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 125,
+            "o200k_base": 125
+          }
+        },
+        {
+          "anchor": "2-terms",
+          "bytes": 3831,
+          "line": 26,
+          "lines": 91,
+          "title": "2. TERMS",
+          "tokens": {
+            "cl100k_base": 1092,
+            "o200k_base": 921
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1374,
+        "o200k_base": 1202
+      }
+    },
+    {
+      "bytes": 8151,
+      "path": "sk-moneybird-accountant/references/glossary/official-names.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 545,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 130,
+            "o200k_base": 131
+          }
+        },
+        {
+          "anchor": "2-terms",
+          "bytes": 6979,
+          "line": 26,
+          "lines": 92,
+          "title": "2. TERMS",
+          "tokens": {
+            "cl100k_base": 1675,
+            "o200k_base": 1449
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1961,
+        "o200k_base": 1735
+      }
+    },
+    {
+      "bytes": 7285,
+      "path": "sk-moneybird-accountant/references/glossary/pension-and-disability-insurance.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 550,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 129,
+            "o200k_base": 130
+          }
+        },
+        {
+          "anchor": "2-terms",
+          "bytes": 6013,
+          "line": 26,
+          "lines": 128,
+          "title": "2. TERMS",
+          "tokens": {
+            "cl100k_base": 1738,
+            "o200k_base": 1487
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 2032,
+        "o200k_base": 1781
+      }
+    },
+    {
+      "bytes": 9589,
+      "path": "sk-moneybird-accountant/references/glossary/private-company-and-corporate-tax.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 544,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 124,
+            "o200k_base": 125
+          }
+        },
+        {
+          "anchor": "2-terms",
+          "bytes": 8313,
+          "line": 26,
+          "lines": 181,
+          "title": "2. TERMS",
+          "tokens": {
+            "cl100k_base": 2329,
+            "o200k_base": 2038
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 2621,
+        "o200k_base": 2330
+      }
+    },
+    {
+      "bytes": 7183,
+      "path": "sk-moneybird-accountant/references/glossary/procedure.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 537,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 126,
+            "o200k_base": 127
+          }
+        },
+        {
+          "anchor": "2-terms",
+          "bytes": 6029,
+          "line": 26,
+          "lines": 132,
+          "title": "2. TERMS",
+          "tokens": {
+            "cl100k_base": 1685,
+            "o200k_base": 1484
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1962,
+        "o200k_base": 1760
+      }
+    },
+    {
+      "bytes": 5502,
+      "path": "sk-moneybird-accountant/references/glossary/vat.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 550,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 132,
+            "o200k_base": 133
+          }
+        },
+        {
+          "anchor": "2-terms",
+          "bytes": 4346,
+          "line": 26,
+          "lines": 109,
+          "title": "2. TERMS",
+          "tokens": {
+            "cl100k_base": 1248,
+            "o200k_base": 1104
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1537,
+        "o200k_base": 1393
+      }
+    },
+    {
+      "bytes": 7491,
+      "path": "sk-moneybird-accountant/references/glossary/work-relationship.md",
+      "sections": [
+        {
+          "anchor": "1-overview",
+          "bytes": 535,
+          "line": 20,
+          "lines": 6,
+          "title": "1. OVERVIEW",
+          "tokens": {
+            "cl100k_base": 122,
+            "o200k_base": 123
+          }
+        },
+        {
+          "anchor": "2-terms",
+          "bytes": 6297,
+          "line": 26,
+          "lines": 140,
+          "title": "2. TERMS",
+          "tokens": {
+            "cl100k_base": 1720,
+            "o200k_base": 1520
+          }
+        }
+      ],
+      "tokens": {
+        "cl100k_base": 1996,
+        "o200k_base": 1796
       }
     },
     {
@@ -19999,12 +20490,12 @@
     },
     {
       "blocks": 1,
-      "bytes": 219991,
+      "bytes": 224717,
       "files": 1,
       "name": "references/index.json",
       "tokens": {
-        "cl100k_base": 67710,
-        "o200k_base": 68325
+        "cl100k_base": 69149,
+        "o200k_base": 69780
       }
     }
   ],
@@ -20031,16 +20522,16 @@
   },
   "units": [
     {
-      "bytes": 7301974,
-      "files": 461,
+      "bytes": 7323203,
+      "files": 476,
       "name": "corpus total",
       "reads": [
         "sk-moneybird-accountant/references"
       ],
-      "sections": 1395,
+      "sections": 1426,
       "tokens": {
-        "cl100k_base": 2128543,
-        "o200k_base": 2023015
+        "cl100k_base": 2133789,
+        "o200k_base": 2028268
       }
     },
     {
@@ -20066,14 +20557,14 @@
       }
     },
     {
-      "bytes": 37261,
+      "bytes": 37172,
       "name": "sk-moneybird-accountant/SKILL.md",
       "reads": [
         "sk-moneybird-accountant/SKILL.md"
       ],
       "tokens": {
-        "cl100k_base": 9820,
-        "o200k_base": 9664
+        "cl100k_base": 9792,
+        "o200k_base": 9635
       }
     },
     {

@@ -4,13 +4,13 @@
 # ───────────────────────────────────────────────────────────────
 """Check that the skill family writes English first and labels every term.
 
-Reads both glossary files and the exceptions file, masks the places where
+Reads every glossary file and the exceptions file, masks the places where
 Dutch is the data, then reports every Dutch glossary term that stands
 alone, every first use that drops its Dutch label, every label repeated as
 its own text, every reversed pair and every bracketed label that no
 glossary row names. An exceptions row that suppresses nothing is stale and
-is reported too. The scan stays offline and its output is sorted and
-byte-stable.
+is reported too, and so is a term pair that two glossary rows hold. The
+scan stays offline and its output is sorted and byte-stable.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/check-english-first.py
@@ -21,7 +21,7 @@ Options:
     --root DIR   Read another copy of the repository. Defaults to the root
                  above this script.
     --rule NAME  Report only this rule, repeatable. One of residual,
-                 first-use, doubled, reversed and unglossed. A stale
+                 first-use, doubled, reversed, unglossed and duplicate. A stale
                  exception is reported only when residual or first-use is
                  selected.
     --summary    Print one count per rule and per area instead of the lines.
@@ -50,8 +50,8 @@ from typing import Callable, Dict, List, NamedTuple, NoReturn, Pattern, Set, Tup
 GENERATOR = "sk-moneybird-accountant/scripts/check-english-first.py"
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-GLOSSARY_MAIN = "sk-moneybird-accountant/references/glossary.md"
-GLOSSARY_SINGLE = "sk-moneybird-accountant/references/glossary-additional-terms.md"
+GLOSSARY_DIR = "sk-moneybird-accountant/references/glossary"
+GLOSSARY_ROUTER = "README.md"
 EXCEPTIONS_FILE = "sk-moneybird-accountant/assets/english-first-exceptions.json"
 ROUTING_SIGNALS = "sk-moneybird-accountant/references/routing-signals.md"
 
@@ -75,7 +75,7 @@ SOURCE_HEADERS = frozenset(("source", "sources", "bron", "title"))
 # WHY: a playbook prompt is sent verbatim to the router, so its Dutch is test data (E1), never prose to label.
 PROMPT_HEADERS = frozenset(("exact prompt",))
 PROMPT_LINE_RE = re.compile(r"^(\s*(?:[-*]\s+)?(?:Prompt|Real user request):)(.*)$")
-RULES = ("residual", "first-use", "doubled", "reversed", "unglossed")
+RULES = ("residual", "first-use", "doubled", "reversed", "unglossed", "duplicate")
 STALE_RULE = "stale-exception"
 SUPPRESSION_CHECKS = ("residual", "first-use")
 OFFICIAL_NOTE = "official name"
@@ -624,28 +624,44 @@ def mask_parentheses(line: str) -> str:
 # 5. GLOSSARY AND EXCEPTIONS
 # ───────────────────────────────────────────────────────────────
 
-def read_glossary_rows(root: str) -> List[Row]:
-    """Read every body row of every glossary table.
+def glossary_files(root: str) -> List[str]:
+    """List the glossary category files.
 
     Args:
         root: Repository root.
 
     Returns:
-        One row of English, Dutch and note per glossary term, in file
-        order and without duplicates.
+        Sorted repository-relative paths of every Markdown file in the
+        glossary folder except its router README.
 
     Raises:
-        SystemExit: If the main glossary file is missing.
+        SystemExit: If the folder is missing or holds no category file.
     """
-    rows: List[Row] = []
-    for relative_path in (GLOSSARY_MAIN, GLOSSARY_SINGLE):
-        path = os.path.join(root, relative_path)
-        if not os.path.isfile(path):
-            if relative_path == GLOSSARY_MAIN:
-                fail("missing glossary: %s" % relative_path)
-            continue
+    folder = os.path.join(root, GLOSSARY_DIR)
+    if not os.path.isdir(folder):
+        fail("missing glossary folder: %s" % GLOSSARY_DIR)
+    names = sorted(
+        name for name in os.listdir(folder) if name.endswith(".md") and name != GLOSSARY_ROUTER
+    )
+    if not names:
+        fail("no glossary file in %s" % GLOSSARY_DIR)
+    return ["%s/%s" % (GLOSSARY_DIR, name) for name in names]
+
+
+def read_glossary_entries(root: str) -> List[Tuple[str, int, Row]]:
+    """Read every body row of every glossary table with its place.
+
+    Args:
+        root: Repository root.
+
+    Returns:
+        One entry of path, line number and row per table row, in file and
+        line order.
+    """
+    entries: List[Tuple[str, int, Row]] = []
+    for relative_path in glossary_files(root):
         in_table = False
-        for line in read_lines(path):
+        for number, line in enumerate(read_lines(os.path.join(root, relative_path)), 1):
             if GLOSSARY_HEADER_RE.match(line):
                 in_table = True
                 continue
@@ -658,11 +674,46 @@ def read_glossary_rows(root: str) -> List[Row]:
                 continue
             cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
             if len(cells) >= 3 and cells[0] and cells[1]:
-                rows.append((cells[0], cells[1], cells[2]))
+                entries.append((relative_path, number, (cells[0], cells[1], cells[2])))
+    return entries
+
+
+def read_glossary_rows(root: str) -> List[Row]:
+    """Read every glossary row once.
+
+    Args:
+        root: Repository root.
+
+    Returns:
+        One row of English, Dutch and note per glossary term, in file
+        order and without duplicates.
+    """
     unique: Dict[Row, None] = {}
-    for row in rows:
+    for _, _, row in read_glossary_entries(root):
         unique[row] = None
     return list(unique)
+
+
+def duplicate_pairs(root: str) -> List[Problem]:
+    """Report every glossary row that repeats an earlier term pair.
+
+    Args:
+        root: Repository root.
+
+    Returns:
+        One problem per repeat, at the path and line of the later row. The
+        pair is compared without case, so a casing variant is a repeat.
+    """
+    # WHY: one pair has one home, or the router cannot say where a term lives.
+    seen: Set[Tuple[str, str]] = set()
+    problems: List[Problem] = []
+    for relative_path, number, (english, dutch, _) in read_glossary_entries(root):
+        key = (english.lower(), dutch.lower())
+        if key in seen:
+            problems.append((relative_path, number, "duplicate", dutch))
+            continue
+        seen.add(key)
+    return problems
 
 
 def load_exceptions(root: str) -> List[ExceptionRow]:
@@ -732,12 +783,11 @@ def corpus_files(root: str) -> List[str]:
 
     Returns:
         Sorted absolute paths. Hidden folders, the named skip folders,
-        both glossary files and the routing signal list are left out.
+        the glossary category files and the routing signal list are left
+        out. The glossary router README is prose, so it is read.
     """
-    skipped = {
-        os.path.normpath(os.path.join(root, name))
-        for name in (GLOSSARY_MAIN, GLOSSARY_SINGLE, ROUTING_SIGNALS)
-    }
+    skipped = {os.path.normpath(os.path.join(root, ROUTING_SIGNALS))}
+    glossary_folder = os.path.normpath(os.path.join(root, GLOSSARY_DIR))
     found: List[str] = []
     for entry in SCAN_ROOTS:
         path = os.path.join(root, entry)
@@ -756,7 +806,8 @@ def corpus_files(root: str) -> List[str]:
                 if not name.endswith(".md"):
                     continue
                 full = os.path.normpath(os.path.join(directory, name))
-                if full not in skipped:
+                in_glossary = os.path.dirname(full) == glossary_folder and name != GLOSSARY_ROUTER
+                if full not in skipped and not in_glossary:
                     found.append(full)
     return sorted(found)
 
@@ -1155,7 +1206,7 @@ def check_corpus(root: str, selected: Set[str]) -> List[Problem]:
         (row.file, row.term, row.check) for row in exceptions if row.check in suppression
     }
     used: Set[Tuple[str, str, str]] = set()
-    problems: List[Problem] = []
+    problems: List[Problem] = duplicate_pairs(root) if "duplicate" in selected else []
     for relative_path, number, rule, term in findings:
         key = (relative_path, term.lower(), rule)
         if rule in suppression and key in exception_keys:

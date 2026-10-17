@@ -16,7 +16,7 @@ version: 1.0.0.0
 
 Checks that the skill family writes English first and reports every Dutch term without an English lead, every first use without its Dutch label and every label no glossary row names.
 
-A Dutch term reads as the English name with the Dutch in brackets at its first use in a section, for example "additional assessment (naheffingsaanslag)". Official names of laws, agencies and handbooks carry the Dutch name once per file. Dutch stays as it is where it is data: routing signal cells, test prompts, quoted official text, form and box names, legal citations and source titles.
+A Dutch term reads as the English name with the Dutch in brackets at its first use in a section, for example "supplementary assessment (naheffingsaanslag)". Official names of laws, agencies and handbooks carry the Dutch name once per file. Dutch stays as it is where it is data: routing signal cells, test prompts, quoted official text, form and box names, legal citations and source titles.
 
 ---
 
@@ -24,7 +24,7 @@ A Dutch term reads as the English name with the Dutch in brackets at its first u
 
 ### The rules
 
-`check-english-first.py` reads `references/glossary.md` and `references/glossary-additional-terms.md` and builds one index of English and Dutch terms. It reports five problem kinds. A `residual` is a Dutch glossary term that stands without an English lead. A `first-use` is an English term whose first use in an H2 section drops its Dutch label. A `doubled` label repeats its own text, a `reversed` pair puts the Dutch first and an `unglossed` label is a bracketed Dutch span that no glossary row names. A full stop or other punctuation mark ends a term, so "deductible. Costs" never reads as "deductible costs".
+`check-english-first.py` reads every category file in `references/glossary/`, leaving out its router README, and builds one index of English and Dutch terms. It reports six problem kinds. A `residual` is a Dutch glossary term that stands without an English lead. A `first-use` is an English term whose first use in an H2 section drops its Dutch label. A `doubled` label repeats its own text and a `reversed` pair puts the Dutch first. An `unglossed` label is a bracketed Dutch span that no glossary row names and a `duplicate` is a term pair that two glossary rows hold, compared without case. A full stop or other punctuation mark ends a term, so "deductible. Costs" never reads as "deductible costs".
 
 ### The masks and the exceptions
 
@@ -42,9 +42,8 @@ The run prints one sorted line per problem as path, line, rule and term, then th
 
 | File | Layer | Role |
 |---|---|---|
-| `sk-moneybird-accountant/scripts/check-english-first.py` | Script | Masks the data regions, applies the five rules and the exceptions and prints the sorted problem lines. |
-| `sk-moneybird-accountant/references/glossary.md` | Shared | Holds the main English and Dutch term pairs the rules read. |
-| `sk-moneybird-accountant/references/glossary-additional-terms.md` | Shared | Holds the single-use terms, the official names and the abbreviations. |
+| `sk-moneybird-accountant/scripts/check-english-first.py` | Script | Masks the data regions, applies the six rules and the exceptions and prints the sorted problem lines. |
+| `sk-moneybird-accountant/references/glossary/` | Shared | Holds the English and Dutch term pairs the rules read, one file per category behind a router README. |
 | `sk-moneybird-accountant/assets/english-first-exceptions.json` | Shared | Lists each kept Dutch term with its file, check, rule and reason. |
 
 ### Validation And Tests

@@ -705,6 +705,39 @@ else
     cat "$TMP_ROOT/out.txt"
 fi
 
+# The glossary read rule needs a glossary file for every topic folder, so a
+# missing topic file fails.
+GLOSSARY_COPY="$WORD_COPY/sk-moneybird-accountant/references/glossary"
+mv "$GLOSSARY_COPY/vat.md" "$TMP_ROOT/glossary-vat.bak"
+python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+mv "$TMP_ROOT/glossary-vat.bak" "$GLOSSARY_COPY/vat.md"
+if [[ "$status" -eq 1 ]] \
+    && grep -qF 'missing glossary file: references/glossary/vat.md' "$TMP_ROOT/out.txt"; then
+    pass "a topic glossary file missing from the folder fails"
+else
+    fail "a topic glossary file missing from the folder fails"
+    cat "$TMP_ROOT/out.txt"
+fi
+
+# Every category file must be linked from the router, so an unlinked file fails
+printf '# Extra\n' >"$GLOSSARY_COPY/extra.md"
+python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+rm -f "$GLOSSARY_COPY/extra.md"
+if [[ "$status" -eq 1 ]] \
+    && grep -qF 'glossary router does not link: references/glossary/extra.md' "$TMP_ROOT/out.txt"; then
+    pass "a glossary file the router does not link fails"
+else
+    fail "a glossary file the router does not link fails"
+    cat "$TMP_ROOT/out.txt"
+fi
+
+# A SKILL.md that drops the glossary read rule fails
+sed 's#`references/glossary/README.md`#the glossary#' "$SKILL_MD" >"$TMP_ROOT/m-glossary-rule.md"
+drift_mutant "a SKILL.md without the glossary read rule fails" "$TMP_ROOT/m-glossary-rule.md" \
+    "the glossary read rule is missing"
+
 # Grow one sibling SKILL.md past the hard ceiling, so only the word check fails
 python3 -I - "$WORD_COPY/cli-jortt/SKILL.md" <<'PY'
 import sys
