@@ -330,7 +330,7 @@ See [`verification/exit-code-parity-check.md`](verification/exit-code-parity-che
 
 #### Description
 
-SKILL.md section 2 maps each request to a guarded CLI route or a Moneybird UI step and selects the reference set to load.
+ROUTER.md section 2 maps each request to a guarded CLI route or a Moneybird UI step and selects the reference set to load.
 
 #### Current Reality
 

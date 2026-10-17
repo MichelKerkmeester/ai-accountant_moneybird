@@ -93,7 +93,7 @@ Check the last passed gate, then the execution-order phase map and resource list
 
 | File | Role |
 |---|---|
-| sk-moneybird-accountant/SKILL.md | Defines phase and reference routing. |
+| sk-moneybird-accountant/ROUTER.md | Defines phase and reference routing. |
 | sk-moneybird-accountant/references/migration/README.md | Defines execution order, recurrence and old-to-new mapping. |
 | sk-moneybird-accountant/references/migration/phases-19-to-21.md | Defines recurring workflows. |
 | sk-moneybird-accountant/references/migration/phase-22-completion.md | Defines the one-time completion and decommission gate. |

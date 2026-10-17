@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0.0",
+  "routerPolicy": {
+    "defaultMode": "accountant",
+    "handoff": "An accountant route whose tool route names a CLI packet hands off to that packet",
+    "fallback": "Ask one question before loading anything"
+  },
+  "signals": {
+    "accountant": [],
+    "cli-moneybird": ["moneybird-guard", "moneybird-cli", "moneybird cli"],
+    "cli-jortt": ["jortt-cli", "jortt cli"]
+  }
+}

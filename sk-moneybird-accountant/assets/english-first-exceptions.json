@@ -1,35 +1,35 @@
 {
   "exceptions": [
     {
-      "file": "sk-moneybird-accountant/SKILL.md",
+      "file": "sk-moneybird-accountant/ROUTER.md",
       "term": "aangifte inkomstenbelasting",
       "check": "first-use",
       "rule": "E1",
       "reason": "The Name cell of the task-type table is the route name that the route table check, the replay suite and the gold rows match exactly. The Dutch term stands in the Dutch signals cell of the same row."
     },
     {
-      "file": "sk-moneybird-accountant/SKILL.md",
+      "file": "sk-moneybird-accountant/ROUTER.md",
       "term": "btw-aangifte",
       "check": "first-use",
       "rule": "E1",
       "reason": "The Name cell of the task-type table is the route name that the route table check, the replay suite and the gold rows match exactly. The Dutch term stands in the Dutch signals cell of the same row."
     },
     {
-      "file": "sk-moneybird-accountant/SKILL.md",
+      "file": "sk-moneybird-accountant/ROUTER.md",
       "term": "inkoopfactuur",
       "check": "first-use",
       "rule": "E1",
       "reason": "The Name cell of the task-type table is the route name that the route table check, the replay suite and the gold rows match exactly. The Dutch term stands in the Dutch signals cell of the same row."
     },
     {
-      "file": "sk-moneybird-accountant/SKILL.md",
+      "file": "sk-moneybird-accountant/ROUTER.md",
       "term": "jaaroverzicht",
       "check": "first-use",
       "rule": "E1",
       "reason": "The Name cell of the task-type table is the route name that the route table check, the replay suite and the gold rows match exactly. The Dutch term stands in the Dutch signals cell of the same row."
     },
     {
-      "file": "sk-moneybird-accountant/SKILL.md",
+      "file": "sk-moneybird-accountant/ROUTER.md",
       "term": "privégebruik",
       "check": "first-use",
       "rule": "E1",

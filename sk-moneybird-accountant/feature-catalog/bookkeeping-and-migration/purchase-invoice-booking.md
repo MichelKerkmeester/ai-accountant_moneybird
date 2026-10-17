@@ -35,7 +35,7 @@ The agent checks the document first: invoice or order, invoice requirements, sup
 |---|---|---|
 | sk-moneybird-accountant/references/purchase-invoices.md | Shared | Defines the booking flow, the case table and the VAT rate (btw-tarief) per case. |
 | sk-moneybird-accountant/references/moneybird-bookkeeping.md | Shared | Explains categories, mixed costs (gemengde-kosten) and bank matching. |
-| sk-moneybird-accountant/SKILL.md | Shared | Loads the purchase invoice (inkoopfactuur) reference in LIVE bookkeeping. |
+| sk-moneybird-accountant/ROUTER.md | Shared | Loads the purchase invoice (inkoopfactuur) reference in LIVE bookkeeping. |
 
 ### Validation And Tests
 

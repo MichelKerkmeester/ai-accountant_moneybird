@@ -40,7 +40,7 @@ The case set covers the five VAT branches, the yearly overview (jaaroverzicht) p
 |---|---|---|
 | `sk-moneybird-accountant/scripts/run-evals.py` | Script | Grades a capture folder and writes the grading and benchmark files. |
 | `sk-moneybird-accountant/evals/evals.json` | Shared | Holds the eval cases, their expected routes and their assertion blocks. |
-| `sk-moneybird-accountant/SKILL.md` | Shared | The routing behavior the eval cases measure. |
+| `sk-moneybird-accountant/ROUTER.md` | Shared | The routing behavior the eval cases measure. |
 
 ### Validation And Tests
 

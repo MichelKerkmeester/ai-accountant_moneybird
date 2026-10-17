@@ -107,7 +107,7 @@ Use the final closing balance sheet from the previous system. An opening journal
 
 Reconcile each bank transaction to the right invoice, receipt, category or private account. Review automatic suggestions and handle unmatched transactions explicitly. A VAT-bearing cost should retain its invoice or receipt and be matched to that evidence. Do not leave unexplained balances.
 
-The guarded bank read names a Moneybird state for each bookkeeping outcome. Unmatched is `unprocessed`, processed is `processed`, and booked from a suggestion is `auto_booked`. Read unmatched transactions through the row "Bank transactions to match" in [cli-moneybird](../../cli-moneybird/SKILL.md) section 2.
+The guarded bank read names a Moneybird state for each bookkeeping outcome. Unmatched is `unprocessed`, processed is `processed`, and booked from a suggestion is `auto_booked`. Read unmatched transactions through the row "Bank transactions to match" in [cli-moneybird](../../cli-moneybird/ROUTER.md) section 2.
 
 - Product references: [automatic bank transaction processing](https://helpcenter.moneybird.nl/nl/articles/207581-automatisch-je-banktransacties-verwerken) and [matching an invoice or category](https://helpcenter.moneybird.nl/nl/articles/207583-factuur-of-categorie-koppelen-aan-transactie), per Moneybird help reviewed on 2026-10-10.
 - Guarded CLI route: [cli-moneybird](../../cli-moneybird/SKILL.md).

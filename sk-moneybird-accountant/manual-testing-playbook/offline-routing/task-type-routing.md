@@ -47,7 +47,7 @@ The table decides the tool route, the read set and the token budget. A near tie 
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| TASK-001 | Task type routing | Route a deduction question through the task-type tie rule and report the route record. | Is my home phone subscription a deduction in 2026? Do not call an API. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check -> 4. Read sk-moneybird-accountant/references/tax-rules/2026/README.md and the costs-and-car topic file its KEY FIGURES section names -> 5. Report the winning row, the tie rule, the loaded paths, the budget key and the route record | The check prints route-table: ok. T5 wins over T4, the explicit year 2026 resolves, the year README and the costs-and-car key figures load, the invoice references stay unloaded, T7 stays additive and the route record names T5. | Capture the check output, the selected row, the tie rule, the loaded paths, the token budget key and the no-call status. | PASS if the T5 row wins, the tie rule is named, the routed year file and topic section are correct, the invoice references stay unloaded and no API is called. FAIL if the invoice row wins, an unrouted reference is loaded, the route record is missing or an API is called. | Check the T4, T5 and T7 rows and the tie rules in SKILL.md section 2, then the TIE-T4-T5-01 row in the routing corpus. Repeat offline. |
+| TASK-001 | Task type routing | Route a deduction question through the task-type tie rule and report the route record. | Is my home phone subscription a deduction in 2026? Do not call an API. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check -> 4. Read sk-moneybird-accountant/references/tax-rules/2026/README.md and the costs-and-car topic file its KEY FIGURES section names -> 5. Report the winning row, the tie rule, the loaded paths, the budget key and the route record | The check prints route-table: ok. T5 wins over T4, the explicit year 2026 resolves, the year README and the costs-and-car key figures load, the invoice references stay unloaded, T7 stays additive and the route record names T5. | Capture the check output, the selected row, the tie rule, the loaded paths, the token budget key and the no-call status. | PASS if the T5 row wins, the tie rule is named, the routed year file and topic section are correct, the invoice references stay unloaded and no API is called. FAIL if the invoice row wins, an unrouted reference is loaded, the route record is missing or an API is called. | Check the T4, T5 and T7 rows and the tie rules in ROUTER.md section 2, then the TIE-T4-T5-01 row in the routing corpus. Repeat offline. |
 
 ### Prompt
 
@@ -76,7 +76,7 @@ Capture the check output, the selected row, the tie rule, the loaded paths, the 
 
 ### Failure Triage
 
-Check the T4, T5 and T7 rows and the tie rules in SKILL.md section 2, then the TIE-T4-T5-01 row in the routing corpus. Repeat offline.
+Check the T4, T5 and T7 rows and the tie rules in ROUTER.md section 2, then the TIE-T4-T5-01 row in the routing corpus. Repeat offline.
 
 ---
 
@@ -93,7 +93,7 @@ Check the T4, T5 and T7 rows and the tie rules in SKILL.md section 2, then the T
 
 | File | Role |
 |---|---|
-| sk-moneybird-accountant/SKILL.md | Defines the Task-Type Table, the tie rules, the abstain margin and the route record. |
+| sk-moneybird-accountant/ROUTER.md | Defines the Task-Type Table, the tie rules, the abstain margin and the route record. |
 | sk-moneybird-accountant/scripts/check-route-table.py | Checks the table, the router block and the intent-signal drift. |
 | sk-moneybird-accountant/scripts/route-replay/routing-gold.json | Holds the TIE-T4-T5-01 tie row this scenario mirrors. |
 

@@ -55,13 +55,19 @@ from typing import List, NoReturn, Set, Tuple
 CHECKER = "sk-moneybird-accountant/scripts/check-regression-trailer.py"
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# WHY: these files hold the routing table, the read-only rules, the guard and
-# the write contract, so a change to one needs a covering test or a trailer.
+# WHY: these files hold the hub, the routing tables, the read-only rules, the
+# guard and the write contract, so a change to one needs a covering test or a trailer.
 GATE_FILES = (
     "AGENTS.md",
+    "SKILL.md",
+    "cli-jortt/ROUTER.md",
     "cli-jortt/SKILL.md",
+    "cli-moneybird/ROUTER.md",
     "cli-moneybird/SKILL.md",
     "cli-moneybird/cli/moneybird-cli/moneybird-guard",
+    "hub-router.json",
+    "mode-registry.json",
+    "sk-moneybird-accountant/ROUTER.md",
     "sk-moneybird-accountant/SKILL.md",
     "sk-moneybird-accountant/references/migration/shared-mechanisms.md",
 )

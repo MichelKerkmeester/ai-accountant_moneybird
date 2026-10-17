@@ -24,7 +24,7 @@ This reference records the report reads and the auditfile export order that the 
 
 ## 2. THE REPORT ROWS
 
-These rows come from the reports row and the auditfile export row in [cli-moneybird](../../../cli-moneybird/SKILL.md) section 2.
+These rows come from the reports row and the auditfile export row in [cli-moneybird](../../../cli-moneybird/ROUTER.md) section 2.
 
 | Report row | What it returns for the close | Limit | Status |
 |---|---|---|---|
@@ -37,7 +37,7 @@ These rows come from the reports row and the auditfile export row in [cli-moneyb
 
 The twelve-month window is the read boundary. A request covers at most twelve months. A longer period splits into parts that each record their period and count and reconcile to the whole. The year of a close is one twelve-month window, so the close reads it in one part unless the administration's own book year differs.
 
-The guarded reads are listed in [cli-moneybird](../../../cli-moneybird/SKILL.md) section 2. A report row that the pinned CLI help does not confirm stays on this page and never becomes a step.
+The guarded reads are listed in [cli-moneybird](../../../cli-moneybird/ROUTER.md) section 2. A report row that the pinned CLI help does not confirm stays on this page and never becomes a step.
 
 ---
 

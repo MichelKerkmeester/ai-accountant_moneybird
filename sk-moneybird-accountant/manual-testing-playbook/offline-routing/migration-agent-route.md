@@ -94,7 +94,7 @@ Check the migration index, Phase 7 contract, M3 journal states and M12 work-unit
 | File | Role |
 |---|---|
 | AGENTS.md | Defines entry route and privacy boundaries. |
-| sk-moneybird-accountant/SKILL.md | Selects MIGRATION and loads M12. |
+| sk-moneybird-accountant/ROUTER.md | Selects MIGRATION and loads M12. |
 | sk-moneybird-accountant/references/migration/shared-mechanisms.md | Defines M3 and M12. |
 | sk-moneybird-accountant/references/migration/phases-6-to-9.md | Defines Phase 7 gates and owner tags. |
 

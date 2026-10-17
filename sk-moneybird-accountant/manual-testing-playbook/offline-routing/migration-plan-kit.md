@@ -94,7 +94,7 @@ Check step 3 of the Phase 0 setup sequence and the kit README. Repeat the scenar
 | File | Role |
 |---|---|
 | AGENTS.md | Defines entry route and privacy boundaries. |
-| sk-moneybird-accountant/SKILL.md | Routes phase work to the plans. |
+| sk-moneybird-accountant/ROUTER.md | Routes phase work to the plans. |
 | sk-moneybird-accountant/references/migration/overview-and-setup.md | Names the setup step. |
 | sk-moneybird-accountant/assets/migration/README.md | Describes the templates. |
 

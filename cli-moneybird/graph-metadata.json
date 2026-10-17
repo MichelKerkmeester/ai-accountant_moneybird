@@ -84,6 +84,7 @@
     ],
     "source_docs": [
       "SKILL.md",
+      "ROUTER.md",
       "leaf-manifest.config.json"
     ],
     "causal_summary": "Routes Moneybird bookkeeping migration work through the official CLI and a local write guard so API coverage can include reads, writes and attachments while the read-only lock, confirmation, pilot administration, safe output paths and write logging stay consistent. Jortt source reads remain with the sibling cli-jortt skill and bank imports or other UI-only tasks stay with the operator.",

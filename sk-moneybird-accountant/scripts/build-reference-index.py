@@ -82,11 +82,11 @@ and its section 5 anchor. A year note must hold five to ten authored bullets.
 A manifest at the skill root lists the leaves that a reader must be able to
 reach. The reachability check reads it under --check and under --reachability
 alone. A leaf under the routed reference folders is reachable through the
-task-type table in SKILL.md. Every other leaf is reachable when its path or a
-relative link to it appears in SKILL.md, in the reference index or in a
-README.md or a folder index page. A folder index page counts only once
-SKILL.md links it, so the feature catalog and the playbook route no leaf
-while SKILL.md leaves their roots out. A manifest leaf that names no file on
+task-type table in ROUTER.md. Every other leaf is reachable when its path or a
+relative link to it appears in SKILL.md, in ROUTER.md, in the reference index
+or in a README.md or a folder index page. A folder index page counts only once
+SKILL.md or ROUTER.md links it, so the feature catalog and the playbook route
+no leaf while both pages leave their roots out. A manifest leaf that names no file on
 disk fails the check on its own, because the routed prefix must not turn a
 deleted reference file into a pass.
 
@@ -297,7 +297,7 @@ LANDING_INTRO = (
     "Generated landing page for the reference tree. Every row comes from the frontmatter "
     "description of the file it names, so one regeneration picks up a new file or a changed "
     "description. A folder README belongs to the folder that owns it, and the task-type "
-    "table in SKILL.md routes a request to its file."
+    "table in ROUTER.md routes a request to its file."
 )
 LANDING_OVERVIEW = (
     "The reference library holds the tax year folders, the tax-rule top-level files "
@@ -323,10 +323,14 @@ BUDGET_PERCENT = 1
 # The reachability check reads the leaf manifest at the skill root and the
 # pages that route a reader to a leaf. A leaf under the routed reference
 # folders is reachable by definition, every other leaf needs its path or a
-# relative link to it in a page that SKILL.md itself reaches.
+# relative link to it in a page that SKILL.md or ROUTER.md itself reaches.
 MANIFEST_NAME = "leaf-manifest.json"
 MANIFEST_PATH = os.path.join(SKILL_ROOT, MANIFEST_NAME)
 SKILL_PAGE = "SKILL.md"
+# WHY: the router beside SKILL.md holds the task-type table and its links, so
+# it routes a reader to a leaf as SKILL.md does.
+ROUTER_PAGE = "ROUTER.md"
+ENTRY_PAGES = (SKILL_PAGE, ROUTER_PAGE)
 README_NAME = "README.md"
 # WHY: a year folder holds three files beside its topic files, the year README,
 # the year changelog and the year change note. None of the three carries the
@@ -3938,7 +3942,7 @@ def manifest_leaves() -> List[str]:
 def reachability_sources() -> Dict[str, str]:
     """Read the pages that can route a reader to a leaf.
 
-    The sources are SKILL.md, the reference index, every README.md and every
+    The sources are SKILL.md, ROUTER.md, the reference index, every README.md and every
     folder index page inside the skill. A caller decides whether a folder
     index page counts.
 
@@ -3946,7 +3950,7 @@ def reachability_sources() -> Dict[str, str]:
         File text keyed by path relative to the skill root.
     """
     sources: Dict[str, str] = {}
-    for relative in (SKILL_PAGE, "references/" + INDEX_NAME):
+    for relative in ENTRY_PAGES + ("references/" + INDEX_NAME,):
         path = os.path.join(SKILL_ROOT, relative)
         if os.path.isfile(path):
             sources[relative] = read_text(path)
@@ -4011,8 +4015,8 @@ def unreachable_leaves(leaves: List[str], sources: Dict[str, str]) -> List[str]:
     A leaf under the routed reference folders is reachable through the
     task-type table. Any other leaf is reachable when a reachable page names
     it or links to it. A folder index page counts as a page only once
-    SKILL.md links it, so the catalog and the playbook route nothing while
-    SKILL.md leaves their roots out. A leaf with no file on disk is left to
+    SKILL.md or ROUTER.md links it, so the catalog and the playbook route
+    nothing while both pages leave their roots out. A leaf with no file on disk is left to
     missing_leaves(), so the two reports never name the same path.
 
     Args:
@@ -4023,9 +4027,10 @@ def unreachable_leaves(leaves: List[str], sources: Dict[str, str]) -> List[str]:
         The sorted paths of the leaves that stay unreachable.
     """
     active = {path: text for path, text in sources.items() if not is_folder_index(path)}
-    skill_text = sources.get(SKILL_PAGE, "")
     for path in sorted(sources):
-        if is_folder_index(path) and source_mentions(SKILL_PAGE, skill_text, path):
+        if is_folder_index(path) and any(
+            source_mentions(page, sources.get(page, ""), path) for page in ENTRY_PAGES
+        ):
             active[path] = sources[path]
     pending = {
         leaf

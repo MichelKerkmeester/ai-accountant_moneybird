@@ -352,7 +352,7 @@
       ],
       "expected_claims": [
         {
-          "path": "SKILL.md",
+          "path": "ROUTER.md",
           "text": "tax_rates list"
         }
       ]
@@ -389,7 +389,7 @@
       ],
       "expected_claims": [
         {
-          "path": "SKILL.md",
+          "path": "ROUTER.md",
           "text": "Read budget ladder in o200k_base tokens"
         }
       ]
@@ -419,7 +419,7 @@
       ],
       "expected_claims": [
         {
-          "path": "SKILL.md",
+          "path": "ROUTER.md",
           "text": "`BLOCKED`: stops before any CLI call"
         }
       ]
@@ -478,7 +478,7 @@
       ],
       "expected_claims": [
         {
-          "path": "SKILL.md",
+          "path": "ROUTER.md",
           "text": "`BLOCKED`: stops before any CLI call"
         }
       ]
@@ -517,7 +517,7 @@
       ],
       "expected_claims": [
         {
-          "path": "SKILL.md",
+          "path": "ROUTER.md",
           "text": "`BLOCKED`: stops before any CLI call"
         }
       ]
@@ -860,7 +860,7 @@
       ],
       "expected_claims": [
         {
-          "path": "SKILL.md",
+          "path": "ROUTER.md",
           "text": "tax_rates list"
         }
       ]
@@ -897,7 +897,7 @@
       ],
       "expected_claims": [
         {
-          "path": "SKILL.md",
+          "path": "ROUTER.md",
           "text": "Read budget ladder in o200k_base tokens"
         }
       ]
@@ -927,7 +927,7 @@
       ],
       "expected_claims": [
         {
-          "path": "SKILL.md",
+          "path": "ROUTER.md",
           "text": "`BLOCKED`: stops before any CLI call"
         }
       ]
@@ -987,7 +987,7 @@
       ],
       "expected_claims": [
         {
-          "path": "SKILL.md",
+          "path": "ROUTER.md",
           "text": "`BLOCKED`: stops before any CLI call"
         }
       ]
@@ -1026,7 +1026,7 @@
       ],
       "expected_claims": [
         {
-          "path": "SKILL.md",
+          "path": "ROUTER.md",
           "text": "`BLOCKED`: stops before any CLI call"
         }
       ]
@@ -1233,7 +1233,7 @@
       ],
       "expected_claims": [
         {
-          "path": "SKILL.md",
+          "path": "ROUTER.md",
           "text": "tax_rates list"
         }
       ]
@@ -1470,7 +1470,7 @@
       ],
       "expected_claims": [
         {
-          "path": "SKILL.md",
+          "path": "ROUTER.md",
           "text": "tax_rates list"
         }
       ]
@@ -1541,7 +1541,7 @@
       ],
       "expected_claims": [
         {
-          "path": "SKILL.md",
+          "path": "ROUTER.md",
           "text": "references/mixed-use-costs.md"
         }
       ]
@@ -1581,7 +1581,7 @@
       ],
       "expected_claims": [
         {
-          "path": "SKILL.md",
+          "path": "ROUTER.md",
           "text": "references/mixed-use-costs.md"
         }
       ]
@@ -1655,7 +1655,7 @@
       ],
       "expected_claims": [
         {
-          "path": "SKILL.md",
+          "path": "ROUTER.md",
           "text": "references/fixed-assets.md"
         }
       ]
@@ -1695,7 +1695,7 @@
       ],
       "expected_claims": [
         {
-          "path": "SKILL.md",
+          "path": "ROUTER.md",
           "text": "references/fixed-assets.md"
         }
       ]

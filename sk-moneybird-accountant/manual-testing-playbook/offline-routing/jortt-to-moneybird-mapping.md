@@ -91,7 +91,7 @@ Check the T2 row in the Task-Type Table, then sections 2 and 3 of the mapping re
 
 | File | Role |
 |---|---|
-| sk-moneybird-accountant/SKILL.md | Routes a migration concept request through the T2 row. |
+| sk-moneybird-accountant/ROUTER.md | Routes a migration concept request through the T2 row. |
 | sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md | Defines the concept mapping, the export traps and the migration checks. |
 | sk-moneybird-accountant/references/migration/README.md | Places the mapping guide in the phase route. |
 

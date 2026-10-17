@@ -28,7 +28,7 @@ Every Moneybird read or write runs through moneybird-guard, following [cli-money
 ### Tool route
 
 1. **Knowledge.** Read this reference and the year of the booking. The year's `costs-and-car.md` holds the mixed-cost rule, the home telephone subscription (telefoonabonnement thuis) rule and the art. 3.15 threshold for food, drink, representation and conferences, and its `vat.md` holds the rates, the private-use settlement and the small businesses scheme (kleineondernemersregeling, KOR). [Costs and car 2026](tax-rules/2026/costs-and-car/figures.md), [VAT 2026](tax-rules/2026/vat/figures.md)
-2. **Guarded read.** Read the purchase VAT rates with `tax_rates list` under `MONEYBIRD_GUARD_READ_ONLY=1`, as [cli-moneybird](../../cli-moneybird/SKILL.md) section 2 states.
+2. **Guarded read.** Read the purchase VAT rates with `tax_rates list` under `MONEYBIRD_GUARD_READ_ONLY=1`, as [cli-moneybird](../../cli-moneybird/ROUTER.md) section 2 states.
 3. **Gated write.** Book through the row "Purchase invoice and attachment" in that same section, only where the LIVE write authority in `SKILL.md` allows it. Otherwise the Operator books in the Moneybird UI. [cli-moneybird](../../cli-moneybird/SKILL.md)
 
 ---

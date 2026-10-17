@@ -47,7 +47,7 @@ A PDF row is only as good as the text layer behind it. An agent that downloads a
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| SRC-PDF-01 | PDF source reader | Route a request about the PDF-only sources to the source library and list the readable rows offline. | Which PDF-only sources can you read, and how do you read one? Keep this as an offline routing check. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read section 2 of sk-moneybird-accountant/references/tax-rules/source-library.md -> 4. Run python3 -I sk-moneybird-accountant/scripts/read-pdf-source.py --list -> 5. Report the reference, the rows, the access method and the absence of network activity | Names the source library reference, runs the offline list, reports the `pdf-needs-reader` access value, states that the reader reads the text layer only and keeps the HTML page and the Operator as the fallbacks. | Capture the prompt, reference path, list command, one url and title row and no-network confirmation. | PASS if The response routes to the source library, runs the offline list, names the `pdf-needs-reader` access and the text-layer limit and makes no download. FAIL if The response downloads a PDF, reads the whole index, guesses a URL, claims a PDF confirms a figure or calls an accounting API. | Check the bootstrap's step 2 pointer to the Task-Type Table, the T5 tax figure row of the Task-Type Table in the skill and section 2 of the reference. Repeat without tool access. |
+| SRC-PDF-01 | PDF source reader | Route a request about the PDF-only sources to the source library and list the readable rows offline. | Which PDF-only sources can you read, and how do you read one? Keep this as an offline routing check. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read section 2 of sk-moneybird-accountant/references/tax-rules/source-library.md -> 4. Run python3 -I sk-moneybird-accountant/scripts/read-pdf-source.py --list -> 5. Report the reference, the rows, the access method and the absence of network activity | Names the source library reference, runs the offline list, reports the `pdf-needs-reader` access value, states that the reader reads the text layer only and keeps the HTML page and the Operator as the fallbacks. | Capture the prompt, reference path, list command, one url and title row and no-network confirmation. | PASS if The response routes to the source library, runs the offline list, names the `pdf-needs-reader` access and the text-layer limit and makes no download. FAIL if The response downloads a PDF, reads the whole index, guesses a URL, claims a PDF confirms a figure or calls an accounting API. | Check the bootstrap's step 2 pointer to the Task-Type Table, the T5 tax figure row of the Task-Type Table in the skill's `ROUTER.md` and section 2 of the reference. Repeat without tool access. |
 
 ### Prompt
 
@@ -76,7 +76,7 @@ Capture the prompt, reference path, list command, one url and title row and no-n
 
 ### Failure Triage
 
-Check the bootstrap's step 2 pointer to the Task-Type Table, the T5 tax figure row of the Task-Type Table in the skill and section 2 of the reference. Repeat without tool access.
+Check the bootstrap's step 2 pointer to the Task-Type Table, the T5 tax figure row of the Task-Type Table in the skill's `ROUTER.md` and section 2 of the reference. Repeat without tool access.
 
 ---
 
@@ -93,7 +93,7 @@ Check the bootstrap's step 2 pointer to the Task-Type Table, the T5 tax figure r
 
 | File | Role |
 |---|---|
-| sk-moneybird-accountant/SKILL.md | Defines mode and reference routing |
+| sk-moneybird-accountant/ROUTER.md | Defines mode and reference routing |
 | sk-moneybird-accountant/references/tax-rules/source-library.md | States the access table whose `pdf-needs-reader` row names the reader |
 | sk-moneybird-accountant/assets/source-library.json | Holds one row per source with its access result |
 | sk-moneybird-accountant/scripts/read-pdf-source.py | Lists the readable rows and reads one indexed PDF through pdftotext |

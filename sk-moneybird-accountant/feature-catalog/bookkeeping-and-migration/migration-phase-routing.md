@@ -35,7 +35,8 @@ Every phase uses the route contract in `shared-mechanisms.md`. Jortt reads run t
 
 | File | Layer | Role |
 |---|---|---|
-| sk-moneybird-accountant/SKILL.md | Shared | Defines phase detection, reference routing, owner tags and decommission boundary. |
+| sk-moneybird-accountant/ROUTER.md | Shared | Defines phase detection and reference routing. |
+| sk-moneybird-accountant/SKILL.md | Shared | Defines owner tags and the decommission boundary. |
 | sk-moneybird-accountant/references/migration/README.md | Shared | Lists all phases, execution order and old-to-new map. |
 | sk-moneybird-accountant/references/migration/shared-mechanisms.md | Shared | Defines cross-phase controls and the route contract. |
 | sk-moneybird-accountant/references/migration/phases-17-to-18.md | Shared | Defines source freeze and live switch. |

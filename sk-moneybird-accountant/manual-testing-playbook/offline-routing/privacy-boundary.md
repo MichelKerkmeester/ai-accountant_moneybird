@@ -91,7 +91,7 @@ Check the bootstrap privacy section and the skill privacy rule. Repeat without a
 
 | File | Role |
 |---|---|
-| sk-moneybird-accountant/SKILL.md | Defines mode and reference routing |
+| sk-moneybird-accountant/ROUTER.md | Defines mode and reference routing |
 | AGENTS.md | Defines project bootstrap and privacy rules |
 
 ---

@@ -2,9 +2,10 @@
 # ───────────────────────────────────────────────────────────────
 # COMPONENT: ROUTE TABLE CHECKER
 # ───────────────────────────────────────────────────────────────
-"""Check the task-type route table in the skill markdown.
+"""Check the task-type route table in the skill's router.
 
-Reads SKILL.md and verifies the route-table block between its markers. The
+Reads the ROUTER.md beside the skill's SKILL.md and verifies the route-table
+block between its markers. The
 check validates the header, the row types, the Dutch and English cells, the
 budget cells, the tool routes, the read-set grammar, the read-set paths and
 their guard, the glossary read rule with a glossary file for every topic,
@@ -25,7 +26,10 @@ sibling split-topic-files.py in its check mode, so a split part that drifted
 from its manifest fails it too, the sibling outline-check.py, so a decision
 step with no alternative branch fails it as well, and the sibling
 scannability-report.py in its check mode, so a stale scannability report
-fails it. The script uses the Python
+fails it. It checks the hub as well: the root SKILL.md, mode-registry.json
+and hub-router.json exist, every registry packet has a SKILL.md and an active
+ROUTER.md that points back to it, stage one names one default packet and no
+packet SKILL.md embeds a router again. The script uses the Python
 standard library only and makes no network call.
 
 Usage:
@@ -37,10 +41,11 @@ Usage:
 
 Options:
     --check          Run the check. This is the default mode.
-    --write          Regenerate the router block in SKILL.md and append the
+    --write          Regenerate the router block in ROUTER.md and append the
                      table's multi-word signals to graph-metadata.json.
-    --skill-md P     Read this markdown file instead of the skill's own SKILL.md.
-                     Read-set paths still resolve against the skill folder.
+    --router P       Read this markdown file instead of the skill's ROUTER.md.
+                     Read-set paths still resolve against the skill folder and
+                     the hub files against the repository root.
     --graph-metadata P  Read the intent signals from this file instead of the
                      skill's graph-metadata.json.
     --signals P      Read the signal sources from this file instead of the
@@ -49,7 +54,7 @@ Options:
                      skill's assets/route-calibration.json.
 
 Output:
-    The word check's one line per SKILL.md, one line per problem, or
+    The word check's one line per SKILL.md and ROUTER.md, one line per problem, or
     "route-table: ok" when the file passes. The write mode prints one line per
     generated surface. Exit 0 on success, 1 when the file has problems or the
     word check fails and 2 when a write is refused.
@@ -73,7 +78,24 @@ from typing import Any, Dict, List, NoReturn, Optional, Tuple
 
 CHECKER = "sk-moneybird-accountant/scripts/check-route-table.py"
 SKILL_FOLDER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SKILL_MD = os.path.join(SKILL_FOLDER, "SKILL.md")
+REPO_ROOT = os.path.dirname(SKILL_FOLDER)
+ROUTER_MD = os.path.join(SKILL_FOLDER, "ROUTER.md")
+# WHY: the hub owns stage one in these files and each packet owns stage two in its own ROUTER.md.
+HUB_FILES = ("SKILL.md", "mode-registry.json", "hub-router.json")
+# WHY: a packet SKILL.md that carries one of these again has a second router beside ROUTER.md.
+EMBEDDED_ROUTER_MARKS = (
+    "<!-- route-table:start -->",
+    "<!-- router-block:start -->",
+    "INTENT_MODEL",
+    "INTENT_SIGNALS",
+    "RESOURCE_MAP",
+)
+# WHY: a router emptied to its frontmatter still passes the header check, so
+# its body must keep the routing section, an intent model and a resource map.
+ROUTER_SECTION = "## 2. SMART ROUTING"
+ROUTER_INTENT_MARKS = ("INTENT_MODEL", "INTENT_SIGNALS")
+ROUTER_STATE_LINE = "router_state: active"
+SKILL_POINTER_LINE = "skill_pointer: SKILL.md"
 
 GRAPH_METADATA = os.path.join(SKILL_FOLDER, "graph-metadata.json")
 
@@ -787,7 +809,7 @@ def check_glossary(text: str, problems: List[str]) -> None:
     """Check that the glossary read rule can reach a file for every read.
 
     Args:
-        text: Full markdown text of SKILL.md.
+        text: Full markdown text of ROUTER.md.
         problems: Problem list to append to.
     """
     if GLOSSARY_ROUTER_PATH not in text:
@@ -814,6 +836,139 @@ def check_glossary(text: str, problems: List[str]) -> None:
     for name in sorted(os.listdir(GLOSSARY_BASE)):
         if name.endswith(".md") and name != "README.md" and "(%s)" % name not in router_text:
             problems.append("glossary router does not link: references/glossary/%s" % name)
+
+
+def read_json_file(path: str) -> Optional[Any]:
+    """Read one JSON file.
+
+    Args:
+        path: File path.
+
+    Returns:
+        The parsed value, or None when the file is missing or malformed.
+    """
+    try:
+        with open(path, encoding="utf-8") as handle:
+            return json.load(handle)
+    except (OSError, ValueError):
+        return None
+
+
+def read_file_text(path: str) -> str:
+    """Read one text file.
+
+    Args:
+        path: File path.
+
+    Returns:
+        The file text, or an empty string when the file cannot be read.
+    """
+    try:
+        with open(path, encoding="utf-8") as handle:
+            return handle.read()
+    except OSError:
+        return ""
+
+
+def router_header(path: str) -> List[str]:
+    """Read the frontmatter lines of one router file.
+
+    Args:
+        path: Router file path.
+
+    Returns:
+        The lines between the opening and the closing `---`, or an empty
+        list when the file is missing or has no frontmatter.
+    """
+    try:
+        with open(path, encoding="utf-8") as handle:
+            lines = handle.read().splitlines()
+    except OSError:
+        return []
+    if not lines or lines[0] != "---" or "---" not in lines[1:]:
+        return []
+    return lines[1:lines.index("---", 1)]
+
+
+def check_hub(problems: List[str]) -> None:
+    """Check the hub files, the registry, stage one and each packet router.
+
+    Every folder at the repository root that holds a SKILL.md must be a
+    registry packet, the hub SKILL.md must link each packet router, and each
+    router must keep its routing section, an intent model and a resource map.
+
+    Args:
+        problems: Problem list to append to.
+    """
+    for name in HUB_FILES:
+        if not os.path.isfile(os.path.join(REPO_ROOT, name)):
+            problems.append("missing hub file: %s" % name)
+    registry = read_json_file(os.path.join(REPO_ROOT, "mode-registry.json"))
+    modes = registry.get("modes") if isinstance(registry, dict) else None
+    if not isinstance(modes, list) or not modes:
+        problems.append("mode-registry.json has no modes list")
+        return
+    defaults = [mode.get("workflowMode") for mode in modes if isinstance(mode, dict) and mode.get("default") is True]
+    if len(defaults) != 1:
+        problems.append("mode-registry.json needs exactly one default mode, found %d" % len(defaults))
+    names = []
+    hub_text = read_file_text(os.path.join(REPO_ROOT, "SKILL.md"))
+    packets = set()
+    for mode in modes:
+        if not isinstance(mode, dict):
+            problems.append("mode-registry.json holds a mode that is not an object")
+            continue
+        name, packet = mode.get("workflowMode"), str(mode.get("packet"))
+        names.append(name)
+        packets.add(packet)
+        skill = os.path.join(REPO_ROOT, packet, "SKILL.md")
+        if not os.path.isfile(skill):
+            problems.append("registry packet has no SKILL.md: %s" % packet)
+            continue
+        if mode.get("router") != "%s/ROUTER.md" % packet:
+            problems.append("registry router is not %s/ROUTER.md: %s" % (packet, mode.get("router")))
+        header = router_header(os.path.join(REPO_ROOT, packet, "ROUTER.md"))
+        if not header:
+            problems.append("packet has no router: %s/ROUTER.md" % packet)
+        for line in (ROUTER_STATE_LINE, SKILL_POINTER_LINE):
+            if header and line not in header:
+                problems.append("%s/ROUTER.md frontmatter lacks: %s" % (packet, line))
+        router_text = read_file_text(os.path.join(REPO_ROOT, packet, "ROUTER.md"))
+        if header and (
+            ROUTER_SECTION not in router_text
+            or "RESOURCE_MAP" not in router_text
+            or not any(mark in router_text for mark in ROUTER_INTENT_MARKS)
+        ):
+            problems.append("%s/ROUTER.md lacks its routing section, intent model or resource map" % packet)
+        if "(%s/ROUTER.md)" % packet not in hub_text:
+            problems.append("hub SKILL.md does not link the packet router: %s/ROUTER.md" % packet)
+        with open(skill, encoding="utf-8") as handle:
+            packet_text = handle.read()
+        for mark in EMBEDDED_ROUTER_MARKS:
+            if mark in packet_text:
+                problems.append("packet SKILL.md embeds a router: %s/SKILL.md holds %s" % (packet, mark))
+        if "](ROUTER.md)" not in packet_text:
+            problems.append("packet SKILL.md does not point to its router: %s/SKILL.md" % packet)
+    for entry in sorted(os.listdir(REPO_ROOT)):
+        if entry.startswith(".") or entry in packets:
+            continue
+        if os.path.isfile(os.path.join(REPO_ROOT, entry, "SKILL.md")):
+            problems.append("packet folder is not in mode-registry.json: %s" % entry)
+    stage_one = read_json_file(os.path.join(REPO_ROOT, "hub-router.json"))
+    policy = stage_one.get("routerPolicy") if isinstance(stage_one, dict) else None
+    signals = stage_one.get("signals") if isinstance(stage_one, dict) else None
+    if not isinstance(policy, dict) or not isinstance(signals, dict):
+        problems.append("hub-router.json needs a routerPolicy and a signals object")
+        return
+    if defaults and policy.get("defaultMode") != defaults[0]:
+        problems.append("hub-router.json defaultMode %s is not the registry default %s" % (policy.get("defaultMode"), defaults[0]))
+    if sorted(signals) != sorted(str(name) for name in names):
+        problems.append("hub-router.json signals do not name the registry modes")
+    for name, values in sorted(signals.items()):
+        if not isinstance(values, list) or not all(isinstance(value, str) and value.strip() for value in values):
+            problems.append("hub-router.json signals for %s are not a list of phrases" % name)
+        elif not values and name not in defaults:
+            problems.append("hub-router.json signals for %s are empty and it is not the default" % name)
 
 
 def router_block(rows: List[Dict[str, str]]) -> List[str]:
@@ -1240,7 +1395,7 @@ def constant_number(text: str, name: str) -> Optional[float]:
     """Read the number stated after one routing constant.
 
     Args:
-        text: SKILL.md text.
+        text: ROUTER.md text.
         name: Constant name such as ROUTE_MARGIN.
 
     Returns:
@@ -1407,7 +1562,7 @@ def check_calibration(path: str, skill_text: str, problems: List[str]) -> None:
 
     Args:
         path: Path of the calibration record.
-        skill_text: SKILL.md text that states the constants.
+        skill_text: ROUTER.md text that states the constants.
         problems: Problem list to append to.
     """
     if not os.path.isfile(path):
@@ -1460,7 +1615,7 @@ def check_calibration(path: str, skill_text: str, problems: List[str]) -> None:
 def check_skill_words(problems: List[str]) -> None:
     """Run the sibling word check over the repository.
 
-    A passing run prints the checker's own line per SKILL.md. A failing run
+    A passing run prints the checker's own line per SKILL.md and ROUTER.md. A failing run
     hands those lines to the problem list, which names the file and the band
     it left.
 
@@ -1581,8 +1736,8 @@ def run_write(args: Any, text: str, lines: List[str], rows: List[Dict[str, str]]
 
     Args:
         args: Parsed arguments.
-        text: Current SKILL.md text.
-        lines: Current SKILL.md lines.
+        text: Current ROUTER.md text.
+        lines: Current ROUTER.md lines.
         rows: Table rows in table order.
 
     Returns:
@@ -1613,11 +1768,11 @@ def run_write(args: Any, text: str, lines: List[str], rows: List[Dict[str, str]]
     added, changed = write_intent_signals(data, multi_word_signals(rows))
     newline = "\n" if text.endswith("\n") else ""
     if new_lines != lines:
-        if not write_text(args.skill_md, "\n".join(new_lines) + newline):
+        if not write_text(args.router, "\n".join(new_lines) + newline):
             return 2
-        print("router block: written (%s)" % os.path.basename(args.skill_md))
+        print("router block: written (%s)" % os.path.basename(args.router))
     else:
-        print("router block: unchanged (%s)" % os.path.basename(args.skill_md))
+        print("router block: unchanged (%s)" % os.path.basename(args.router))
     if changed:
         if not write_text(args.graph_metadata, json.dumps(data, indent=2) + "\n"):
             return 2
@@ -1638,7 +1793,7 @@ def main(argv: List[str]) -> int:
     """
     parser = argparse.ArgumentParser(
         prog=CHECKER,
-        description="Check the task-type route table in the skill markdown.",
+        description="Check the task-type route table in the skill's router.",
     )
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--check", action="store_true", help="run the check, the default mode")
@@ -1648,10 +1803,10 @@ def main(argv: List[str]) -> int:
         help="regenerate the router block and the intent signals",
     )
     parser.add_argument(
-        "--skill-md",
+        "--router",
         metavar="PATH",
-        default=SKILL_MD,
-        help="read this markdown file instead of the skill's own SKILL.md",
+        default=ROUTER_MD,
+        help="read this markdown file instead of the skill's ROUTER.md",
     )
     parser.add_argument(
         "--graph-metadata",
@@ -1672,13 +1827,13 @@ def main(argv: List[str]) -> int:
         help="read the frozen constants from this file instead of the skill's assets/route-calibration.json",
     )
     args = parser.parse_args(argv)
-    if not os.path.isfile(args.skill_md):
-        fail("skill markdown not found: %s" % args.skill_md)
+    if not os.path.isfile(args.router):
+        fail("router markdown not found: %s" % args.router)
     try:
-        with open(args.skill_md, "r", encoding="utf-8", errors="replace") as handle:
+        with open(args.router, "r", encoding="utf-8", errors="replace") as handle:
             text = handle.read()
     except OSError as exc:
-        fail("cannot read %s: %s" % (args.skill_md, exc))
+        fail("cannot read %s: %s" % (args.router, exc))
     lines = text.splitlines()
     rows = table_rows(lines)
     if args.write:
@@ -1688,6 +1843,7 @@ def main(argv: List[str]) -> int:
     check_table(lines, problems, missing)
     check_maps(problems)
     check_glossary(text, problems)
+    check_hub(problems)
     check_required_tokens(text, problems)
     check_overrides(lines, problems)
     check_signals_pointer(lines, problems)

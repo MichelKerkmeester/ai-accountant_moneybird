@@ -151,7 +151,8 @@ The operator revokes each token in Moneybird, then removes the corresponding loc
 
 | Document | Purpose |
 |---|---|
-| [`SKILL.md`](SKILL.md) | Runtime routing and write rules |
+| [`ROUTER.md`](ROUTER.md) | Runtime routing |
+| [`SKILL.md`](SKILL.md) | Write rules |
 | [`cli/moneybird-cli/README.md`](cli/moneybird-cli/README.md) | CLI adoption, pin and guard behavior |
 | [`references/cli.md`](references/cli.md) | Guard usage and CLI command details |
 | [`references/troubleshooting.md`](references/troubleshooting.md) | Failure diagnosis and recovery |

@@ -16,7 +16,7 @@ version: 1.0.0.0
 
 Writes the git-ignored session context from the clock and a migration projection and resolves the tax year and post-cutover state at route time.
 
-`scripts/build-session-context.py` writes `session-context.json` at the repository root for the router to read. The rules that turn that file into a year and a migration state live in `references/tax-rules/year-and-state.md` and the Task-Type Table in `SKILL.md` section 2 consumes both.
+`scripts/build-session-context.py` writes `session-context.json` at the repository root for the router to read. The rules that turn that file into a year and a migration state live in `references/tax-rules/year-and-state.md` and the Task-Type Table in `ROUTER.md` section 2 consumes both.
 
 ---
 
@@ -45,7 +45,7 @@ The router resolves the year as `year_key`: an explicit year, else the period un
 | `sk-moneybird-accountant/scripts/build-session-context.py` | Script | Writes and checks the session context and prints the route state. |
 | `sk-moneybird-accountant/references/tax-rules/year-and-state.md` | Shared | Holds the year resolver, the refusal states and the post-cutover predicate. |
 | `sk-moneybird-accountant/references/routing-signals.md` | Shared | Names the signal sources and tie mechanics the router reads. |
-| `sk-moneybird-accountant/SKILL.md` | Shared | Routes the resolved year and state through the Task-Type Table. |
+| `sk-moneybird-accountant/ROUTER.md` | Shared | Routes the resolved year and state through the Task-Type Table. |
 
 ### Validation And Tests
 

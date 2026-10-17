@@ -23,7 +23,7 @@ version: 1.0.0.0
 
 This folder is the procedure for a prepare-the-VAT-return request. The agent assembles the section (rubriek) table, the checks and the review pack for one period, names every exception and stops before filing. The Operator checks, confirms, files and pays.
 
-The mode is LIVE. Resolve the year as `year_key = return_coverage`, load the year README and the year VAT files, then read the administration's own data at run time with moneybird-guard under `MONEYBIRD_GUARD_READ_ONLY=1`, following [cli-moneybird](../../../cli-moneybird/SKILL.md). Period unlocking, tax-rate creation and filing stay UI and Operator actions. The route that reaches this folder is T10 in [SKILL.md](../../SKILL.md).
+The mode is LIVE. Resolve the year as `year_key = return_coverage`, load the year README and the year VAT files, then read the administration's own data at run time with moneybird-guard under `MONEYBIRD_GUARD_READ_ONLY=1`, following [cli-moneybird](../../../cli-moneybird/SKILL.md). Period unlocking, tax-rate creation and filing stay UI and Operator actions. The route that reaches this folder is T10 in [ROUTER.md](../../ROUTER.md).
 
 ---
 

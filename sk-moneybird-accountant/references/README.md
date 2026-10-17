@@ -12,7 +12,7 @@ nav_label: "References"
 
 # Reference library
 
-**Rule:** Generated landing page for the reference tree. Every row comes from the frontmatter description of the file it names, so one regeneration picks up a new file or a changed description. A folder README belongs to the folder that owns it, and the task-type table in SKILL.md routes a request to its file.
+**Rule:** Generated landing page for the reference tree. Every row comes from the frontmatter description of the file it names, so one regeneration picks up a new file or a changed description. A folder README belongs to the folder that owns it, and the task-type table in ROUTER.md routes a request to its file.
 
 ---
 

@@ -92,7 +92,7 @@ Check the system boundaries, then the relevant sibling skill links. Repeat with 
 
 | File | Role |
 |---|---|
-| sk-moneybird-accountant/SKILL.md | Defines mode and reference routing |
+| sk-moneybird-accountant/ROUTER.md | Defines mode and reference routing |
 | AGENTS.md | Defines project bootstrap and privacy rules |
 | sk-moneybird-accountant/scripts/source-to-target-handoff-test.sh | Proves the source manifest, mapping and WRITE_INTENT chain and its hash drift stops before a guarded call |
 | sk-moneybird-accountant/scripts/cli-failure-handoff-test.sh | Proves the retry owners and the blocked answer contract offline |

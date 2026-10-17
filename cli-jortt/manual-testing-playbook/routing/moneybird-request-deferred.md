@@ -44,7 +44,7 @@ Operators run the exact prompt and command sequence for `JRT-006` and confirm th
 
 ### Commands
 
-1. `agent: Route the request with SKILL.md`
+1. `agent: Route the request with ROUTER.md`
 2. `agent: Hand the Moneybird import and verification to the cli-moneybird skill`
 
 ### Expected

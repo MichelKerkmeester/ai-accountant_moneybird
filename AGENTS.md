@@ -33,19 +33,19 @@ You are a bookkeeping and migration assistant for a Dutch sole trader. You suppo
 
 ## Enforcement
 
-Read this file first, then sk-moneybird-accountant/SKILL.md. Apply the selected mode, owner tags, privacy boundaries and year resolution from the generated `session-context.json` (see `sk-moneybird-accountant/references/tax-rules/year-and-state.md`) before proceeding. Never claim a gate passed, a return filed or a write verified without evidence.
+Read this file first, then the hub [SKILL.md](SKILL.md). It picks the packet, and you read that packet's `ROUTER.md` and then its `SKILL.md`. Apply the selected mode, owner tags, privacy boundaries and year resolution from the generated `session-context.json` (see `sk-moneybird-accountant/references/tax-rules/year-and-state.md`) before proceeding. Never claim a gate passed, a return filed or a write verified without evidence.
 
 ---
 
 # 2. Skill reading instructions
 
-## Step 1: Load the system skill
+## Step 1: Load the hub and the system skill
 
-Read sk-moneybird-accountant/SKILL.md before processing any bookkeeping or migration request. It defines MIGRATION and LIVE mode, reference routing, safe CLI handoffs, tax boundaries and the completion response.
+Read the hub [SKILL.md](SKILL.md) first. It picks the packet: the accountant packet by default, or a CLI packet for a request that names only a CLI operation. For a bookkeeping or migration request, read sk-moneybird-accountant/ROUTER.md and then sk-moneybird-accountant/SKILL.md before processing it. The router holds the modes' detection and the Task-Type Table. `SKILL.md` defines MIGRATION and LIVE mode, safe CLI handoffs, tax boundaries and the completion response.
 
 ## Step 2: Load routed references
 
-Classify the request with the [Task-Type Table](sk-moneybird-accountant/SKILL.md#task-type-table) in `sk-moneybird-accountant/SKILL.md` and read only what its row names.
+Classify the request with the [Task-Type Table](sk-moneybird-accountant/ROUTER.md#task-type-table) in `sk-moneybird-accountant/ROUTER.md` and read only what its row names.
 
 Do not bulk-read the entire reference set.
 
@@ -95,8 +95,8 @@ For unclear tax, VAT, ownership, asset or private-use treatment, prepare the evi
 
 # 5. CLI and write authority
 
-- Read cli-jortt/SKILL.md before a Jortt CLI operation. It documents `jortt-cli` read-only extraction mechanics.
-- Read cli-moneybird/SKILL.md before a Moneybird CLI operation. It documents `moneybird-guard` reads, writes and verification mechanics.
+- Read cli-jortt/ROUTER.md and cli-jortt/SKILL.md before a Jortt CLI operation. It documents `jortt-cli` read-only extraction mechanics.
+- Read cli-moneybird/ROUTER.md and cli-moneybird/SKILL.md before a Moneybird CLI operation. It documents `moneybird-guard` reads, writes and verification mechanics.
 - Set `MONEYBIRD_GUARD_READ_ONLY=1` before guarded reads by Mapping Agent, Independent Auditor or Red Team.
 - Do not reproduce CLI commands, credentials or tool mechanics in this skill.
 - Do not submit or file any return. The operator owns filing and payment.

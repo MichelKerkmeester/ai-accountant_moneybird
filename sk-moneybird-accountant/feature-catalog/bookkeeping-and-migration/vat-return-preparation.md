@@ -43,7 +43,7 @@ Every figure, rate, threshold and deadline is a link into `references/tax-rules/
 | `sk-moneybird-accountant/references/vat-return/return-boxes.md` | Shared | The section (rubriek) table for 1a to 5b, the derivation map, the run-time rate step and the reverse-charge, small businesses scheme (kleineondernemersregeling, KOR), ICP and OSS rules. |
 | `sk-moneybird-accountant/references/vat-return/year-end-and-corrections.md` | Shared | The year-end settlements S1 to S4 and the correction and supplementary return (suppletie) routing. |
 | `sk-moneybird-accountant/references/vat-return/review-pack.md` | Shared | The pack blocks P1 to P9, the confirmation parts C1 to C3 and the deadline and payment block. |
-| `sk-moneybird-accountant/SKILL.md` | Shared | Holds the T10 row that routes a prepare-the-VAT-return request into this folder. |
+| `sk-moneybird-accountant/ROUTER.md` | Shared | Holds the T10 row that routes a prepare-the-VAT-return request into this folder. |
 | `sk-moneybird-accountant/references/tax-rules/{year}/vat/figures.md` | Shared | Owns every VAT figure and rate the procedure links. |
 
 ### Validation And Tests

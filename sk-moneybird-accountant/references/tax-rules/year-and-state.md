@@ -15,7 +15,7 @@ version: 1.0.0.0
 
 # Year and state resolution
 
-**Rule:** This reference holds the year resolver and the post-cutover predicate behind the Task-Type Table in `SKILL.md`. The table stays the single source of truth for routing. Nothing here changes a row, its read set or a year folder.
+**Rule:** This reference holds the year resolver and the post-cutover predicate behind the Task-Type Table in `ROUTER.md`. The table stays the single source of truth for routing. Nothing here changes a row, its read set or a year folder.
 
 ---
 
@@ -90,7 +90,7 @@ No active flag is stored. The state is recomputed on each route from the current
 
 ## 6. RELATED RESOURCES
 
-- `SKILL.md` holds the Task-Type Table whose figure, cross-year and live rows use this resolver.
+- `ROUTER.md` holds the Task-Type Table whose figure, cross-year and live rows use this resolver.
 - `references/tax-rules/dutch-tax-rules.md` section 2 holds the status tags the refusal set draws on.
 - `references/migration/control-framework.md` holds the Master dashboard and its five statuses.
 - `references/migration/phases-19-to-21.md` holds the recurring live workflows.

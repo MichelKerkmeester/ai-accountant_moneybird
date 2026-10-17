@@ -319,7 +319,7 @@ Classifies each request to a task type that decides the tool route, read set, to
 
 #### Current Reality
 
-The skill scores the Dutch and English signal columns of the Task-Type Table in SKILL.md section 2 and routes each request to exactly one task type of that table. The table holds twelve rows. T10 prepares the VAT return, T11 prepares the yearly overview and T12 prepares the income tax return, each with a marked read set and a tie outcome. T8 wins over all three when an explicit file, submit, pay or lock request is present. Each row names its tool route, its read set, a token budget key such as `tok:T3` and a tie rule that settles overlaps before the route margin is applied. A read-set cell uses the `!`, `?`, `@section-id`, `{year}`, `{phase-file}` and `{topic-figures}` grammar and `check-route-table.py` fails a missing required path or anchor and lists a missing conditional read. A near tie abstains, names the candidate rows and asks one question. The CLI action row is additive and never wins alone. Every answer ends with a route record that names the selected row, the references read and the boundary result. The corresponding manual scenarios check route selection and the stated boundary without API access. The router block in SKILL.md section 2 and the advisor intent signals are generated from the table by `check-route-table.py --write` and its check fails on drift. The route replay harness, the eval grader and the route table suite test the same routes and refusals on every push.
+The skill scores the Dutch and English signal columns of the Task-Type Table in ROUTER.md section 2 and routes each request to exactly one task type of that table. The table holds twelve rows. T10 prepares the VAT return, T11 prepares the yearly overview and T12 prepares the income tax return, each with a marked read set and a tie outcome. T8 wins over all three when an explicit file, submit, pay or lock request is present. Each row names its tool route, its read set, a token budget key such as `tok:T3` and a tie rule that settles overlaps before the route margin is applied. A read-set cell uses the `!`, `?`, `@section-id`, `{year}`, `{phase-file}` and `{topic-figures}` grammar and `check-route-table.py` fails a missing required path or anchor and lists a missing conditional read. A near tie abstains, names the candidate rows and asks one question. The CLI action row is additive and never wins alone. Every answer ends with a route record that names the selected row, the references read and the boundary result. The corresponding manual scenarios check route selection and the stated boundary without API access. The router block in ROUTER.md section 2 and the advisor intent signals are generated from the table by `check-route-table.py --write` and its check fails on drift. The route replay harness, the eval grader and the route table suite test the same routes and refusals on every push.
 
 #### Source Files
 
@@ -457,6 +457,22 @@ See [`reference-and-state/pdf-source-reader.md`](reference-and-state/pdf-source-
 
 ---
 
+### Hub and packet routers
+
+#### Description
+
+Makes the repository root a hub that picks the accountant, Moneybird CLI or Jortt CLI packet, with each packet's routing in a ROUTER.md beside its SKILL.md.
+
+#### Current Reality
+
+The root `SKILL.md` picks the packet from `mode-registry.json` and `hub-router.json`, with the accountant packet as the default. Each packet holds its routing in `ROUTER.md` and its contract in `SKILL.md`, so a request reads only the routing of the packets it uses. `check-route-table.py` reads the route table from `sk-moneybird-accountant/ROUTER.md` and fails on a missing hub file, a packet without a router, a stage one default the registry does not name or a router left in a packet `SKILL.md`.
+
+#### Source Files
+
+See [`reference-and-state/hub-and-packet-routers.md`](reference-and-state/hub-and-packet-routers.md) for source and validation anchors.
+
+---
+
 ### Glossary router
 
 #### Description
@@ -465,7 +481,7 @@ Holds every English and Dutch term pair in one file per topic behind a router RE
 
 #### Current Reality
 
-`references/glossary/README.md` lists 16 category files, one per tax-rules topic plus `bookkeeping.md`, `general.md`, `official-names.md` and `abbreviations.md`, and each pair lives in exactly one of them. A term goes to the topic holding at least half of its uses, else to `general.md`. SKILL.md states one rule: a request that asks what a Dutch term means or its English name also reads the router, the glossary file of the term and the glossary file of each topic its route reads. The resolver applies it after the route's own reads and on a term request that abstains. A refusal reads no glossary file, a request that asks no meaning reads none and `check-route-table.py` fails on a missing rule, glossary file or router link.
+`references/glossary/README.md` lists 16 category files, one per tax-rules topic plus `bookkeeping.md`, `general.md`, `official-names.md` and `abbreviations.md`, and each pair lives in exactly one of them. A term goes to the topic holding at least half of its uses, else to `general.md`. The accountant `ROUTER.md` states one rule: a request that asks what a Dutch term means or its English name also reads the router, the glossary file of the term and the glossary file of each topic its route reads. The resolver applies it after the route's own reads and on a term request that abstains. A refusal reads no glossary file, a request that asks no meaning reads none and `check-route-table.py` fails on a missing rule, glossary file or router link.
 
 #### Source Files
 
@@ -579,7 +595,7 @@ Pins the token counts of the reference corpus and fails when a reference change 
 
 #### Current Reality
 
-The baseline counts the reference corpus and the named units in the pinned encodings and fails when a reference change moves a budgeted row. The canary covers the car-question route and its token ceiling. A sibling word check holds each `SKILL.md` at a 3,000-word loading budget with a 4,000-word ceiling and `check-route-table.py` runs it beside the baseline check.
+The baseline counts the reference corpus and the named units in the pinned encodings and fails when a reference change moves a budgeted row. The canary covers the car-question route and its token ceiling. A sibling word check holds each `SKILL.md` and `ROUTER.md` at a 3,000-word loading budget with a 4,000-word ceiling and `check-route-table.py` runs it beside the baseline check.
 
 #### Source Files
 

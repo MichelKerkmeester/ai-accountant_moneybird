@@ -548,6 +548,8 @@ group "whole-file mutant"
 COPY_REPO="$TMP_ROOT/repo"
 mkdir -p "$COPY_REPO/sk-moneybird-accountant"
 cp -R "$SKILL_SRC/." "$COPY_REPO/sk-moneybird-accountant/"
+# WHY: the baseline counts the hub SKILL.md that every route reads, so the copy carries it.
+cp "$(dirname "$SKILL_SRC")/SKILL.md" "$COPY_REPO/SKILL.md"
 COPY_PY="$COPY_REPO/sk-moneybird-accountant/scripts/token-baseline.py"
 run_driver whole-file "$COPY_PY"
 status=$?
@@ -630,6 +632,7 @@ group "unrecorded fence"
 FENCE_REPO="$TMP_ROOT/fence-repo"
 mkdir -p "$FENCE_REPO/sk-moneybird-accountant"
 cp -R "$SKILL_SRC/." "$FENCE_REPO/sk-moneybird-accountant/"
+cp "$(dirname "$SKILL_SRC")/SKILL.md" "$FENCE_REPO/SKILL.md"
 printf '\n<!-- GENERATED:nav:start -->\n<!-- GENERATED:nav:end -->\n' \
     >>"$FENCE_REPO/sk-moneybird-accountant/references/README.md"
 if TIKTOKEN_CACHE_DIR="$CACHE_DIR" python3 -I "$FENCE_REPO/sk-moneybird-accountant/scripts/token-baseline.py" >"$TMP_ROOT/out.txt" 2>&1; then

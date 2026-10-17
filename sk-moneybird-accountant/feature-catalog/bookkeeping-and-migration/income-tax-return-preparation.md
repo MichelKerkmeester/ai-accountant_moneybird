@@ -43,7 +43,7 @@ The investment and claim register is the dated per-asset record with the order d
 | `sk-moneybird-accountant/references/income-tax-return/operator-inputs.md` | Shared | The Operator evidence checklist with one disposition per item. |
 | `sk-moneybird-accountant/references/income-tax-return/investment-and-claim-register.md` | Shared | The dated per-asset register that evidences an investment allowance claim. |
 | `sk-moneybird-accountant/references/income-tax-return/risks-and-open-points.md` | Shared | The residual unknowns, each labelled unresolved with what would settle it. |
-| `sk-moneybird-accountant/SKILL.md` | Shared | Holds the T12 row that routes a prepare-the-income-tax-return request into this folder. |
+| `sk-moneybird-accountant/ROUTER.md` | Shared | Holds the T12 row that routes a prepare-the-income-tax-return request into this folder. |
 | `sk-moneybird-accountant/references/tax-rules/{year}/income-tax/figures.md` | Shared | Owns the income tax (inkomstenbelasting) figures the procedure links. |
 
 ### Validation And Tests

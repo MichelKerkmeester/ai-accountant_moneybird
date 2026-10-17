@@ -47,14 +47,14 @@ Operators run the exact prompt and command sequence for `MBD-006` and confirm th
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| MBD-006 | Attachment routes through the CLI | Confirm that invoice attachment work uses the guarded CLI and requires confirmation | `Which guarded CLI command attaches a PDF to an invoice in the pilot administration?` | 1. `agent: answer the prompt` -> 2. `bash: rg -n "attachment" SKILL.md references/migration-recipes.md` | Step 1: a guarded attachment command with `--confirm-write` and the pilot administration. Step 2: both sources describe the guarded CLI route | The answer and matching source lines | PASS if the answer routes through the guard with confirmation and names the pilot administration. FAIL if it proposes a direct CLI write or runs an upload. | 1. Re-read the operation table in `SKILL.md` Section 2. 2. Re-read the attachment recipe in `references/migration-recipes.md`. 3. Confirm no upload command ran |
+| MBD-006 | Attachment routes through the CLI | Confirm that invoice attachment work uses the guarded CLI and requires confirmation | `Which guarded CLI command attaches a PDF to an invoice in the pilot administration?` | 1. `agent: answer the prompt` -> 2. `bash: rg -n "attachment" ROUTER.md references/migration-recipes.md` | Step 1: a guarded attachment command with `--confirm-write` and the pilot administration. Step 2: both sources describe the guarded CLI route | The answer and matching source lines | PASS if the answer routes through the guard with confirmation and names the pilot administration. FAIL if it proposes a direct CLI write or runs an upload. | 1. Re-read the operation table in `ROUTER.md` section 2. 2. Re-read the attachment recipe in `references/migration-recipes.md`. 3. Confirm no upload command ran |
 
 ### Command Block
 
 Run the source check from the `cli-moneybird/` package root. Do not use a real or test file.
 
 ```bash
-rg -n "attachment" SKILL.md references/migration-recipes.md
+rg -n "attachment" ROUTER.md references/migration-recipes.md
 ```
 
 ---
@@ -72,7 +72,7 @@ rg -n "attachment" SKILL.md references/migration-recipes.md
 
 | File | Role |
 |---|---|
-| [`SKILL.md`](../../SKILL.md) | Operation routing table |
+| [`ROUTER.md`](../../ROUTER.md) | Operation routing table |
 | [`references/migration-recipes.md`](../../references/migration-recipes.md) | Guarded attachment recipe |
 
 ---

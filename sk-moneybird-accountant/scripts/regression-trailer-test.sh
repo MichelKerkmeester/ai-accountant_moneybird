@@ -227,7 +227,17 @@ printf '\nA note.\n' >> "$REPO_A/README.md"
 commit_all "$REPO_A" "change a non-gate file"
 DOC_A=$(head_of "$REPO_A")
 
-if [[ -n "$BASE_A" ]] && [[ -n "$GATE_A" ]] && [[ -n "$SAMPLE_A" ]] && [[ -n "$LATER_A" ]] && [[ -n "$SUITE_A" ]] && [[ -n "$DOC_A" ]]; then
+# WHY: a packet ROUTER.md holds the routing table, so it is a gate file too.
+printf '\nA routing change.\n' >> "$REPO_A/sk-moneybird-accountant/ROUTER.md"
+commit_all "$REPO_A" "change a packet router"
+ROUTER_A=$(head_of "$REPO_A")
+
+# WHY: the hub registry picks the packet, so it is a gate file too.
+printf '\n' >> "$REPO_A/mode-registry.json"
+commit_all "$REPO_A" "change the hub registry"
+HUB_A=$(head_of "$REPO_A")
+
+if [[ -n "$BASE_A" ]] && [[ -n "$GATE_A" ]] && [[ -n "$SAMPLE_A" ]] && [[ -n "$LATER_A" ]] && [[ -n "$SUITE_A" ]] && [[ -n "$DOC_A" ]] && [[ -n "$ROUTER_A" ]] && [[ -n "$HUB_A" ]]; then
     pass "the suite-registration fixture repository builds"
 else
     fail "the suite-registration fixture repository builds"
@@ -623,6 +633,24 @@ if [[ "$status" -eq 1 ]] && grep -qF 'AGENTS.md' "$TMP_ROOT/check-gate.txt"; the
 else
     fail "a gate change without a test or trailer exits 1 and names the file (exit $status)"
     sed -n '1,5p' "$TMP_ROOT/check-gate.txt"
+fi
+
+run_check "$DOC_A..$ROUTER_A" "$REPO_A" router
+status=$?
+if [[ "$status" -eq 1 ]] && grep -qF 'sk-moneybird-accountant/ROUTER.md' "$TMP_ROOT/check-router.txt"; then
+    pass "a packet router change without a test or trailer exits 1 and names the file"
+else
+    fail "a packet router change without a test or trailer exits 1 and names the file (exit $status)"
+    sed -n '1,5p' "$TMP_ROOT/check-router.txt"
+fi
+
+run_check "$ROUTER_A..$HUB_A" "$REPO_A" hub
+status=$?
+if [[ "$status" -eq 1 ]] && grep -qF 'mode-registry.json' "$TMP_ROOT/check-hub.txt"; then
+    pass "a hub registry change without a test or trailer exits 1 and names the file"
+else
+    fail "a hub registry change without a test or trailer exits 1 and names the file (exit $status)"
+    sed -n '1,5p' "$TMP_ROOT/check-hub.txt"
 fi
 
 run_check "$GATE_A..$SAMPLE_A" "$REPO_A" sample

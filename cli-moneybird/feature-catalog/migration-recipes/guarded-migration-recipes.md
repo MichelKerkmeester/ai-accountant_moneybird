@@ -45,7 +45,7 @@ The per-year verification reads name an explicit period and use synchronization 
 |---|---|---|
 | [`references/migration-recipes.md`](../../references/migration-recipes.md) | Shared | Owns the command sequences, the field notes and the expected results |
 | [`cli/moneybird-cli/moneybird-guard`](../../cli/moneybird-cli/moneybird-guard) | Script | Runs the preview, digest and confirmation gates every recipe passes |
-| [`SKILL.md`](../../SKILL.md) | Shared | Routes each recipe to the guarded write path or the UI boundary |
+| [`ROUTER.md`](../../ROUTER.md) | Shared | Routes each recipe to the guarded write path or the UI boundary |
 
 ### Validation And Tests
 

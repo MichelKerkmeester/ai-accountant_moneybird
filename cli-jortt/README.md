@@ -54,7 +54,7 @@ Jortt has no general ledger (grootboek) export, in the API or in the UI.
 
 ## 3. QUICK START
 
-Load [`SKILL.md`](SKILL.md) when a request mentions Jortt. The steps below are the manual path.
+Load [`ROUTER.md`](ROUTER.md) and [`SKILL.md`](SKILL.md) when a request mentions Jortt. The steps below are the manual path.
 
 **Step 1: Install the CLI and check the setup.**
 
@@ -94,7 +94,7 @@ The UI stays the only source for XAF, annual accounts (jaarrekening) and filed V
 Jortt request
    |
    v
-SKILL.md routing (the operation decides the surface)
+ROUTER.md routing (the operation decides the surface)
    |
    +--> jortt-cli: ops, describe, call --all --out  -->  JSON extract in migration-workspace/
    |
@@ -117,7 +117,7 @@ The [feature catalog](feature-catalog/feature-catalog.md) lists each gate with i
 
 ### When To Use This Skill
 
-Use `cli-jortt` for Jortt source records, source documents and Jortt API diagnostics. Load [`SKILL.md`](SKILL.md) for the routing and safety rules, then open the reference that fits the request.
+Use `cli-jortt` for Jortt source records, source documents and Jortt API diagnostics. Load [`ROUTER.md`](ROUTER.md) for the routing and [`SKILL.md`](SKILL.md) for the safety rules, then open the reference that fits the request.
 
 ### Related Skills
 
@@ -173,7 +173,8 @@ The offline checks use a local copy of the API description and never call Jortt.
 
 | Document | Purpose |
 |---|---|
-| [`SKILL.md`](SKILL.md) | Runtime routing, rules and success criteria |
+| [`ROUTER.md`](ROUTER.md) | Runtime routing |
+| [`SKILL.md`](SKILL.md) | Rules and success criteria |
 | [`INSTALL-GUIDE.md`](INSTALL-GUIDE.md) | Credentials, CLI setup and rollback |
 | [`references/rest-api.md`](references/rest-api.md) | Every operation, its scope and extraction recipes |
 | [`references/cli.md`](references/cli.md) | Command details and the safety model |

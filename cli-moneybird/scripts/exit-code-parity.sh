@@ -12,7 +12,7 @@
 # WHY: the guard is the source of truth for its own exit codes, so a surface that
 # drifts from it sends an agent down the wrong recovery path. This check compares
 # the guard with the exit table, the troubleshooting rows, the TROUBLESHOOT
-# keywords and the section 3 gate ladder in one offline pass.
+# keywords in the skill's ROUTER.md and the section 3 gate ladder in one offline pass.
 # WHY: the code comparison goes both ways and uses the numbers each surface names,
 # so a wide code such as 100 is caught just like a narrow one.
 # WHY: the script reads files only. It never calls the CLI and never opens a credential file.
@@ -71,9 +71,10 @@ fi
 CLI_DOC="$ROOT/cli-moneybird/references/cli.md"
 TROUBLESHOOTING_DOC="$ROOT/cli-moneybird/references/troubleshooting.md"
 SKILL_DOC="$ROOT/cli-moneybird/SKILL.md"
+ROUTER_DOC="$ROOT/cli-moneybird/ROUTER.md"
 
 missing_input=0
-for path in "$CLI_DOC" "$TROUBLESHOOTING_DOC" "$SKILL_DOC"; do
+for path in "$CLI_DOC" "$TROUBLESHOOTING_DOC" "$SKILL_DOC" "$ROUTER_DOC"; do
     if [[ ! -f "$path" ]]; then
         printf 'error: missing %s\n' "$path" >&2
         missing_input=1
@@ -120,10 +121,10 @@ ROW_CODES=$(grep -oE 'exit[[:space:]]+[0-9]+' "$TROUBLESHOOTING_DOC" |
     sort -n -u |
     tr '\n' ' ')
 
-# The TROUBLESHOOT line that lists the keywords
-KEYWORD_LINE=$(awk '/TROUBLESHOOT/ && /keywords/ { print; exit }' "$SKILL_DOC")
+# The TROUBLESHOOT line that lists the keywords, in the skill's router
+KEYWORD_LINE=$(awk '/TROUBLESHOOT/ && /keywords/ { print; exit }' "$ROUTER_DOC")
 if [[ -z "$KEYWORD_LINE" ]]; then
-    printf 'error: no TROUBLESHOOT keyword line found in %s\n' "$SKILL_DOC" >&2
+    printf 'error: no TROUBLESHOOT keyword line found in %s\n' "$ROUTER_DOC" >&2
     exit 2
 fi
 
@@ -255,11 +256,11 @@ failed=0
 
 check_surface "cli-moneybird/references/cli.md exit table" "$TABLE_CODES"
 check_surface "cli-moneybird/references/troubleshooting.md exit rows" "$ROW_CODES"
-check_surface "cli-moneybird/SKILL.md TROUBLESHOOT keywords" "$KEYWORD_CODES"
+check_surface "cli-moneybird/ROUTER.md TROUBLESHOOT keywords" "$KEYWORD_CODES"
 check_surface "gate ladder" "$LADDER_CODES"
 
 if [[ "$KEYWORD_LINE" != *"--print-body"* ]]; then
-    printf 'exit-code-parity: missing --print-body in cli-moneybird/SKILL.md TROUBLESHOOT keywords\n'
+    printf 'exit-code-parity: missing --print-body in cli-moneybird/ROUTER.md TROUBLESHOOT keywords\n'
     failed=1
 fi
 

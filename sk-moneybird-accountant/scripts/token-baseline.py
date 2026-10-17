@@ -7,7 +7,8 @@
 Walks every markdown file under sk-moneybird-accountant/references/ and counts
 its UTF-8 bytes and its tokens in cl100k_base and o200k_base, whole file and
 per H2 section. It adds the named units, the corpus total, the 2026 car
-figures part, the 2026 year README, SKILL.md and the two car routes, and the
+figures part, the 2026 year README, the accountant SKILL.md, the hub SKILL.md
+and the accountant ROUTER.md that every route now reads, the two car routes, and the
 overhead rows for the generated nav, toc and key figure index block bodies and
 for references/index.json.
 The run writes one JSON file or checks it and is offline and byte-stable.
@@ -1005,6 +1006,8 @@ def build_baseline(encoders: Dict[str, Any]) -> Dict[str, Any]:
         for part in ("rules", "examples", "notes")
     ]
     skill_path = "sk-moneybird-accountant/SKILL.md"
+    # WHY: every route reads the hub file and the router before the packet, so their cost is recorded too.
+    hub_paths = ("SKILL.md", "sk-moneybird-accountant/ROUTER.md")
     readme = file_unit(readme_path, rows, encoders)
     topic = file_unit(topic_path, rows, encoders)
     topic_parts = [file_unit(path, rows, encoders) for path in topic_paths]
@@ -1013,6 +1016,7 @@ def build_baseline(encoders: Dict[str, Any]) -> Dict[str, Any]:
         topic,
         readme,
         file_unit(skill_path, rows, encoders),
+    ] + [file_unit(path, rows, encoders) for path in hub_paths] + [
         unit_row(CAR_CURRENT_NAME, [readme_path] + topic_paths, [readme] + topic_parts),
         unit_row(
             CAR_PROPOSED_NAME,

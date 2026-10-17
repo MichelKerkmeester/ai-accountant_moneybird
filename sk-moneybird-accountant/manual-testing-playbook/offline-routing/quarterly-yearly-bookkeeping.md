@@ -92,7 +92,7 @@ Check the selected cadence, then the tax reference, then the filing rule. Repeat
 
 | File | Role |
 |---|---|
-| sk-moneybird-accountant/SKILL.md | Defines mode and reference routing |
+| sk-moneybird-accountant/ROUTER.md | Defines mode and reference routing |
 | AGENTS.md | Defines project bootstrap and privacy rules |
 
 ---

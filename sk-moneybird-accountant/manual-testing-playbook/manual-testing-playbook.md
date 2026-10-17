@@ -687,6 +687,24 @@ Feature file: [REFUSAL-001](offline-routing/tax-deliverable-filing-refusal.md)
 
 ---
 
+### HUB-001 | Hub packet selection
+
+#### Description
+Verify that the hub picks one packet for a request and that the request reads only that packet's router.
+
+#### Scenario Contract
+Prompt: List my Jortt customers with jortt-cli.
+
+Fixture rows: none. Stage one is read by hand, and the accountant route of the second prompt is scored by the T5 gold rows.
+
+Desired user-visible outcome: The hub picks the Jortt packet, which reads `cli-jortt/ROUTER.md` and `cli-jortt/SKILL.md`, and a tax figure request reads `sk-moneybird-accountant/ROUTER.md` and no CLI router.
+
+#### Test Execution
+Feature file: [HUB-001](offline-routing/hub-packet-selection.md)
+Catalog: [feature-catalog/reference-and-state/hub-and-packet-routers.md](../feature-catalog/reference-and-state/hub-and-packet-routers.md)
+
+---
+
 ### GLOSS-001 | Glossary term request
 
 #### Description
@@ -781,6 +799,7 @@ No runtime test calls an accounting service. The scenarios remain manual routing
 | PACK-002 | The income tax return (aangifte inkomstenbelasting) pack | bookkeeping-and-migration | [PACK-002](offline-routing/income-tax-return-pack.md) | [income tax return preparation](../feature-catalog/bookkeeping-and-migration/income-tax-return-preparation.md) |
 | REFUSAL-001 | Filing, submitting, paying and period locking stay refused | bookkeeping-and-migration | [REFUSAL-001](offline-routing/tax-deliverable-filing-refusal.md) | [operator tax boundary](../feature-catalog/bookkeeping-and-migration/operator-tax-boundary.md) |
 | SRC-PDF-01 | The PDF source list | reference-and-state | [SRC-PDF-01](offline-routing/pdf-source-list.md) | [PDF source reader](../feature-catalog/reference-and-state/pdf-source-reader.md) |
+| HUB-001 | Hub and packet routers | reference-and-state | [HUB-001](offline-routing/hub-packet-selection.md) | [hub and packet routers](../feature-catalog/reference-and-state/hub-and-packet-routers.md) |
 | GLOSS-001 | Glossary router | reference-and-state | [GLOSS-001](offline-routing/glossary-term-request.md) | [glossary router](../feature-catalog/reference-and-state/glossary-router.md) |
 | FAIL-001 | CLI tool handoff | bookkeeping-and-migration | [FAIL-001](offline-routing/cli-failure-blocked.md) | [CLI tool handoff](../feature-catalog/bookkeeping-and-migration/api-tool-handoff.md) |
 

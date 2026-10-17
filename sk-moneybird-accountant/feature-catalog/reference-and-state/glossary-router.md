@@ -27,11 +27,11 @@ A term with the note `official name` or `abbreviation` goes to its own file. Any
 
 ### The route rule
 
-SKILL.md states one rule: a request that asks what a Dutch term means or its English name also reads the router, the glossary file of the term and the glossary file of each topic its route reads. The resolver spots a term request through fixed English and Dutch question frames, such as "what does T mean", "T in English" and "wat betekent T", and takes the longest glossary term the frame holds. A comma, semicolon or colon ends the term, and in an "in English" frame the term must fill the clause, so "Summarize my inkoopfactuur in English" asks no meaning. It adds the router and every file holding that term, then the file of each topic read: a `tax-rules/<year>/<topic>/` file or a general file of that topic maps to its topic file, a VAT return (btw-aangifte) file maps to `vat.md`, any other tax-rules file maps to `general.md` and any other reference maps to `bookkeeping.md`. A general topic file that covers two topics maps to both. A term request that abstains, or waits on a missing tax year, still reads the router and the term's files. A refusal (T8) reads none, and a CLI action (T7) adds to the task row it joins, so the term request follows that row. A request that asks no meaning reads no glossary file, so every route that answers a task stays as it was.
+The accountant `ROUTER.md` states one rule: a request that asks what a Dutch term means or its English name also reads the router, the glossary file of the term and the glossary file of each topic its route reads. The resolver spots a term request through fixed English and Dutch question frames, such as "what does T mean", "T in English" and "wat betekent T", and takes the longest glossary term the frame holds. A comma, semicolon or colon ends the term, and in an "in English" frame the term must fill the clause, so "Summarize my inkoopfactuur in English" asks no meaning. It adds the router and every file holding that term, then the file of each topic read: a `tax-rules/<year>/<topic>/` file or a general file of that topic maps to its topic file, a VAT return (btw-aangifte) file maps to `vat.md`, any other tax-rules file maps to `general.md` and any other reference maps to `bookkeeping.md`. A general topic file that covers two topics maps to both. A term request that abstains, or waits on a missing tax year, still reads the router and the term's files. A refusal (T8) reads none, and a CLI action (T7) adds to the task row it joins, so the term request follows that row. A request that asks no meaning reads no glossary file, so every route that answers a task stays as it was.
 
 ### The checks
 
-`check-english-first.py` reads every category file and reports a pair that two rows hold as `duplicate`. `check-route-table.py` fails when SKILL.md drops the rule, when a topic folder has no glossary file or when the router does not link a category file.
+`check-english-first.py` reads every category file and reports a pair that two rows hold as `duplicate`. `check-route-table.py` fails when the accountant `ROUTER.md` drops the rule, when a topic folder has no glossary file or when the router does not link a category file.
 
 ---
 
@@ -44,7 +44,7 @@ SKILL.md states one rule: a request that asks what a Dutch term means or its Eng
 | `sk-moneybird-accountant/references/glossary/README.md` | Shared | Lists the category files and the placement rule. |
 | `sk-moneybird-accountant/references/glossary/` | Shared | Holds one term table per category. |
 | `sk-moneybird-accountant/scripts/route-replay/route-replay.py` | Script | Adds the glossary reads on a term request. |
-| `sk-moneybird-accountant/SKILL.md` | Shared | States the glossary read rule next to the read budget ladder. |
+| `sk-moneybird-accountant/ROUTER.md` | Shared | States the glossary read rule next to the read budget ladder. |
 
 ### Validation And Tests
 

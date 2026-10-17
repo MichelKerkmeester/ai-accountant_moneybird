@@ -85,13 +85,14 @@ For historical work, name the migration phase or the last gate that passed. The 
 ```text
 Request
   -> AGENTS.md sets identity and boundaries
-  -> SKILL.md picks MIGRATION or LIVE and routes the topic
+  -> the hub SKILL.md picks this packet
+  -> ROUTER.md picks MIGRATION or LIVE and routes the topic
   -> the matching reference defines the workflow
   -> a CLI skill owns any Jortt or Moneybird command
   -> local evidence is checked and the Operator reviews the decisions
 ```
 
-Read [the project contract](../AGENTS.md) first, then [SKILL.md](SKILL.md). The skill loads only the references that match the request. It hands Jortt operations to [cli-jortt](../cli-jortt/SKILL.md) and Moneybird operations to [cli-moneybird](../cli-moneybird/SKILL.md).
+Read [the project contract](../AGENTS.md) first, then the [hub](../SKILL.md), [ROUTER.md](ROUTER.md) and [SKILL.md](SKILL.md). The skill loads only the references that match the request. It hands Jortt operations to [cli-jortt](../cli-jortt/SKILL.md) and Moneybird operations to [cli-moneybird](../cli-moneybird/SKILL.md).
 
 ### Modes And Routing
 
@@ -100,7 +101,7 @@ Read [the project contract](../AGENTS.md) first, then [SKILL.md](SKILL.md). The 
 | **MIGRATION** | Moving historical Jortt records into Moneybird |
 | **LIVE** | A monthly, VAT-period or yearly review, plus a one-off ZZP question |
 
-Topic routes live in one place, the Task-Type Table in `SKILL.md` section 2. The router block below that table is generated from the Task-Type Table by `python3 -I sk-moneybird-accountant/scripts/check-route-table.py --write`, which also feeds the table's multi-word signals to `graph-metadata.json`. This README does not repeat them.
+Topic routes live in one place, the Task-Type Table in `ROUTER.md` section 2. The router block below that table is generated from the Task-Type Table by `python3 -I sk-moneybird-accountant/scripts/check-route-table.py --write`, which also feeds the table's multi-word signals to `graph-metadata.json`. This README does not repeat them.
 
 Three rows prepare a tax deliverable: T10 the VAT return (btw-aangifte), T11 the yearly overview (jaaroverzicht) and T12 the income tax return (aangifte inkomstenbelasting). Each routes to its own folder under `references/`. A request to file, submit, pay or lock a period stays on T8, which refuses it. Filing remains an Operator action.
 
@@ -211,7 +212,8 @@ The checks prove the routes, links, anchors and offline tool behavior. They do n
 | Document | Purpose |
 |---|---|
 | [Project contract](../AGENTS.md) | Request routing and safety boundaries |
-| [Core skill](SKILL.md) | Mode selection and the matching workflow |
+| [Core skill](SKILL.md) | The modes and the operating contract |
+| [Router](ROUTER.md) | Mode selection, the Task-Type Table and the generated router block |
 | [Migration index](references/migration/README.md) | Phases and their grouped files |
 | [Control framework](references/migration/control-framework.md) | Roles, exceptions and dashboard states |
 | [Jortt tool skill](../cli-jortt/SKILL.md) | Jortt reads and source extraction |

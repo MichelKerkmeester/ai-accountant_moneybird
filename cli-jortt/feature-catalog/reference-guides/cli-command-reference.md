@@ -27,7 +27,7 @@ The reference states each command, its flags and its output shape, then the conf
 
 ### Routing
 
-`SKILL.md` loads this reference for a REST extraction or scope question, and on demand for setup or an error. It is also the recovery companion to the troubleshooting guide, which maps a code to an action.
+`ROUTER.md` loads this reference for a REST extraction or scope question, and on demand for setup or an error. It is also the recovery companion to the troubleshooting guide, which maps a code to an action.
 
 ---
 

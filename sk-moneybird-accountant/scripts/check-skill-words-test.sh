@@ -48,9 +48,13 @@ if [[ ! -f "$CHECKER" ]]; then
 fi
 
 SKILL_FILES=(
-    "sk-moneybird-accountant/SKILL.md"
-    "cli-moneybird/SKILL.md"
+    "SKILL.md"
+    "cli-jortt/ROUTER.md"
     "cli-jortt/SKILL.md"
+    "cli-moneybird/ROUTER.md"
+    "cli-moneybird/SKILL.md"
+    "sk-moneybird-accountant/ROUTER.md"
+    "sk-moneybird-accountant/SKILL.md"
 )
 for relative in "${SKILL_FILES[@]}"; do
     if [[ ! -f "$REPO_SRC/$relative" ]]; then
@@ -180,10 +184,10 @@ else
 fi
 
 lines=$(wc -l <"$TMP_ROOT/out-real.txt" | tr -d '[:space:]')
-if [[ "$lines" == "3" ]] && [[ "$(grep -c '^check-skill-words: ' "$TMP_ROOT/out-real.txt")" == "3" ]]; then
-    pass "the real tree prints one line per SKILL.md"
+if [[ "$lines" == "7" ]] && [[ "$(grep -c '^check-skill-words: ' "$TMP_ROOT/out-real.txt")" == "7" ]]; then
+    pass "the real tree prints one line per SKILL.md and ROUTER.md"
 else
-    fail "the real tree prints one line per SKILL.md"
+    fail "the real tree prints one line per SKILL.md and ROUTER.md"
     cat "$TMP_ROOT/out-real.txt"
 fi
 
@@ -213,7 +217,7 @@ else
     fail "the real-tree counts match the byte split"
 fi
 
-if grep -qE '^check-skill-words: (sk-moneybird-accountant/SKILL\.md|cli-moneybird/SKILL\.md|cli-jortt/SKILL\.md) [0-9]+ words, (ok|warn above 3,000|fail above 4,000)$' "$TMP_ROOT/out-real.txt"; then
+if grep -qE '^check-skill-words: (sk-moneybird-accountant|cli-moneybird|cli-jortt)/(SKILL|ROUTER)\.md [0-9]+ words, (ok|warn above 3,000|fail above 4,000)$' "$TMP_ROOT/out-real.txt"; then
     pass "every real-tree line carries a count and a verdict"
 else
     fail "every real-tree line carries a count and a verdict"
@@ -281,6 +285,20 @@ else
     fail "the 4,001-word fixture exits 1 and names its path"
     cat "$TMP_ROOT/out-band-4001.txt"
     cat "$TMP_ROOT/err-band-4001.txt" >&2
+fi
+
+# A packet router loads beside its SKILL.md, so it fails above the same ceiling
+ROUTER_FILE="sk-moneybird-accountant/ROUTER.md"
+make_fixture "$TMP_ROOT/router-4001" "$ROUTER_FILE" 4001
+run_checker "$TMP_ROOT/router-4001" router-4001
+status=$?
+if [[ "$status" -eq 1 ]] \
+    && grep -qF "check-skill-words: $ROUTER_FILE 4001 words, fail above 4,000" "$TMP_ROOT/out-router-4001.txt"; then
+    pass "a 4,001-word router exits 1 and names its path"
+else
+    fail "a 4,001-word router exits 1 and names its path"
+    cat "$TMP_ROOT/out-router-4001.txt"
+    cat "$TMP_ROOT/err-router-4001.txt" >&2
 fi
 
 # A hidden folder holds a tool checkout, not the skill family, so its files

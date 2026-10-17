@@ -56,7 +56,7 @@ EXCEPTIONS_FILE = "sk-moneybird-accountant/assets/english-first-exceptions.json"
 ROUTING_SIGNALS = "sk-moneybird-accountant/references/routing-signals.md"
 
 # WHY: an allowlist of scan roots keeps private folders out by construction.
-SCAN_ROOTS = ("AGENTS.md", "README.md", "sk-moneybird-accountant", "cli-moneybird", "cli-jortt")
+SCAN_ROOTS = ("AGENTS.md", "README.md", "SKILL.md", "sk-moneybird-accountant", "cli-moneybird", "cli-jortt")
 SKIP_DIRS = frozenset(
     (
         "specs",

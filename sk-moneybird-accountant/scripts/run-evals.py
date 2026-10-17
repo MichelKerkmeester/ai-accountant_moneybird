@@ -19,8 +19,8 @@ The captured_on value is an ISO calendar date. A required token written as
 year in the suite file. A required entry may also be a list of alternative
 phrasings, and the entry passes when any one of them appears.
 
-The skill hash is the sha256 of SKILL.md plus every reference path the cases
-route to. A run may record its own skill_hash in metadata.json, for example
+The skill hash is the sha256 of SKILL.md, the ROUTER.md beside it when the
+copy has one, and every reference path the cases route to. A run may record its own skill_hash in metadata.json, for example
 when the baseline snapshot ships one, and that value is then used as given.
 
 The refusal false-positive rate is the share of cases that should answer and
@@ -96,6 +96,7 @@ SKILL_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EVALS_PATH = os.path.join(SKILL_ROOT, "evals", "evals.json")
 
 SKILL_FILE = "SKILL.md"
+ROUTER_FILE = "ROUTER.md"
 WITH_SKILL_ARM = "with-skill"
 BASELINE_ARM = "baseline"
 METADATA_NAME = "metadata.json"
@@ -392,14 +393,16 @@ def routed_references(suite: Dict[str, Any]) -> List[str]:
 
 
 def skill_hash(skill_dir: str, references: List[str]) -> Tuple[str, List[str]]:
-    """Hash SKILL.md plus every routed reference.
+    """Hash SKILL.md, its router and every routed reference.
 
     Args:
         skill_dir: Skill copy to hash.
         references: Relative reference paths.
 
     Returns:
-        The sha256 hex digest and the paths absent from the copy.
+        The sha256 hex digest and the paths absent from the copy. A copy
+        from before the routing moved holds no ROUTER.md, so it hashes as
+        it did then.
 
     Raises:
         SystemExit: If the copy holds no SKILL.md.
@@ -408,7 +411,9 @@ def skill_hash(skill_dir: str, references: List[str]) -> Tuple[str, List[str]]:
         fail("no %s under %s" % (SKILL_FILE, skill_dir))
     digest = hashlib.sha256()
     missing = []
-    for relative in [SKILL_FILE] + references:
+    # WHY: the route table lives in ROUTER.md, so a routing change must change the hash.
+    router = [ROUTER_FILE] if os.path.isfile(os.path.join(skill_dir, ROUTER_FILE)) else []
+    for relative in [SKILL_FILE] + router + references:
         digest.update(relative.encode("utf-8"))
         digest.update(b"\0")
         try:

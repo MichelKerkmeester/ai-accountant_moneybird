@@ -23,7 +23,7 @@ version: 1.0.0.0
 
 This folder is the procedure for a prepare-the-yearly-overview request. The agent assembles the balance sheet, the profit and loss account (winst- en verliesrekening), the schedules, the fiscal reconciliation and the hand-off, names every exception and stops before the year-end closing (jaarafsluiting). The Operator checks the pack, confirms the judgement points, performs the closing actions in the Moneybird UI and files in the Dutch Tax and Customs Administration (Belastingdienst) portal.
 
-The mode is LIVE. Resolve the year as `year_key = return_coverage` with [year and state resolution](../tax-rules/year-and-state.md), load the year README and the year topic files, then read the administration's own data at run time with moneybird-guard under `MONEYBIRD_GUARD_READ_ONLY=1`, following [cli-moneybird](../../../cli-moneybird/SKILL.md). The year-end closing, the period lock, the tax-rate creation and the filing stay UI and Operator actions. The route that reaches this folder is T11 in [SKILL.md](../../SKILL.md).
+The mode is LIVE. Resolve the year as `year_key = return_coverage` with [year and state resolution](../tax-rules/year-and-state.md), load the year README and the year topic files, then read the administration's own data at run time with moneybird-guard under `MONEYBIRD_GUARD_READ_ONLY=1`, following [cli-moneybird](../../../cli-moneybird/SKILL.md). The year-end closing, the period lock, the tax-rate creation and the filing stay UI and Operator actions. The route that reaches this folder is T11 in [ROUTER.md](../../ROUTER.md).
 
 ---
 
@@ -61,7 +61,7 @@ The full checklist is in [the preparation checklist](preparation-checklist.md). 
 
 ## 4. THE ELEVEN CLOSE SIGNALS AND THE TWO CONDITIONAL READS
 
-This list is authored here. The route table that consumes it belongs to the routing owner, `SKILL.md` and `references/routing-signals.md`, so this folder edits no route row.
+This list is authored here. The route table that consumes it belongs to the routing owner, `ROUTER.md` and `references/routing-signals.md`, so this folder edits no route row.
 
 The eleven Dutch close signals are:
 

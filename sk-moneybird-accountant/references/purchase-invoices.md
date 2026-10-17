@@ -35,7 +35,7 @@ It does not repeat CLI mechanics. Every Moneybird read or write runs through mon
 The route runs in this order.
 
 1. **Knowledge.** Read this reference and the year's `vat.md`.
-2. **Guarded read.** Read the rate list with `tax_rates list` under `MONEYBIRD_GUARD_READ_ONLY=1`, as [cli-moneybird](../../cli-moneybird/SKILL.md) section 2 states.
+2. **Guarded read.** Read the rate list with `tax_rates list` under `MONEYBIRD_GUARD_READ_ONLY=1`, as [cli-moneybird](../../cli-moneybird/ROUTER.md) section 2 states.
 3. **Gated write.** Book through the row "Purchase invoice and attachment" in that same section. It applies only where the LIVE write authority in `SKILL.md` allows it. Otherwise the Operator books the invoice in the Moneybird UI.
 
 ---

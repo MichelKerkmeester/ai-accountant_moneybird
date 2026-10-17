@@ -46,8 +46,8 @@ if [[ ! -f "$CORPUS" ]]; then
     printf 'error: missing routing-gold.json next to this test\n' >&2
     exit 2
 fi
-if [[ ! -f "$SKILL_SRC/SKILL.md" ]]; then
-    printf 'error: missing SKILL.md in the skill folder\n' >&2
+if [[ ! -f "$SKILL_SRC/ROUTER.md" ]]; then
+    printf 'error: missing ROUTER.md in the skill folder\n' >&2
     exit 2
 fi
 
@@ -413,7 +413,7 @@ else
     fail "report.md marks answer quality as unscored"
 fi
 
-FROZEN_FLOOR="$(sed -n 's/^- `FALLBACK_FLOOR = \([0-9.]*\)`, frozen on the calibration split\.$/\1/p' "$COPY/SKILL.md")"
+FROZEN_FLOOR="$(sed -n 's/^- `FALLBACK_FLOOR = \([0-9.]*\)`, frozen on the calibration split\.$/\1/p' "$COPY/ROUTER.md")"
 if [[ -n "$FROZEN_FLOOR" ]] && grep -q "Fallback floor: $FROZEN_FLOOR\." "$OUT_CLEAN/report.md" 2>/dev/null; then
     pass "the report states the frozen fallback floor"
 else
@@ -501,8 +501,8 @@ mv "$TMP_ROOT/year-readme.bak" "$YEAR_DELETED"
 
 # A ? read that does not exist is recorded by the table check and never
 # stops the connectivity gate. Only the ! reads are gate inputs.
-cp "$COPY/SKILL.md" "$TMP_ROOT/SKILL.md.bak"
-python3 - "$COPY/SKILL.md" <<'PY'
+cp "$COPY/ROUTER.md" "$TMP_ROOT/ROUTER.md.bak"
+python3 - "$COPY/ROUTER.md" <<'PY'
 import sys
 
 path = sys.argv[1]
@@ -522,7 +522,7 @@ if ! grep -q 'route-replay-probe-missing' "$TMP_ROOT/last.log" 2>/dev/null; then
 else
     fail "the missing conditional path is not a connectivity failure"
 fi
-cp "$TMP_ROOT/SKILL.md.bak" "$COPY/SKILL.md"
+cp "$TMP_ROOT/ROUTER.md.bak" "$COPY/ROUTER.md"
 
 # ───────────────────────────────────────────────────────────────
 # 8D. PHASE MAP DISAGREEMENT
@@ -530,8 +530,8 @@ cp "$TMP_ROOT/SKILL.md.bak" "$COPY/SKILL.md"
 
 # A hand edit inside PHASE_FILES that the migration index does not carry
 # must stop the run before any row is scored.
-cp "$COPY/SKILL.md" "$TMP_ROOT/SKILL.md.bak"
-python3 - "$COPY/SKILL.md" <<'PY'
+cp "$COPY/ROUTER.md" "$TMP_ROOT/ROUTER.md.bak"
+python3 - "$COPY/ROUTER.md" <<'PY'
 import sys
 
 path = sys.argv[1]
@@ -551,7 +551,7 @@ if grep -q 'constants disagree' "$TMP_ROOT/last.log" 2>/dev/null; then
 else
     fail "the phase map disagreement is named constants disagree"
 fi
-cp "$TMP_ROOT/SKILL.md.bak" "$COPY/SKILL.md"
+cp "$TMP_ROOT/ROUTER.md.bak" "$COPY/ROUTER.md"
 
 # ───────────────────────────────────────────────────────────────
 # 9. TWIN MISMATCH
@@ -721,7 +721,7 @@ fi
 # WHY: the resolver keeps its own copy of the T4 conditional signal families,
 # so a term the table drops would still load a reference the table no longer
 # routes to. Every term must sit in a T4 signal cell.
-DRIFT=$(python3 -I - "$HARNESS" "$SKILL_SRC/SKILL.md" <<'PY'
+DRIFT=$(python3 -I - "$HARNESS" "$SKILL_SRC/ROUTER.md" <<'PY'
 import importlib.util
 import sys
 
@@ -748,7 +748,7 @@ fi
 # WHY: the table is the single source of the T5 source terms and the T11
 # close signals, so a resolver constant the table drops would route a read
 # the authored table no longer names.
-SIGNAL_DRIFT=$(python3 -I - "$HARNESS" "$SKILL_SRC/SKILL.md" <<'PY'
+SIGNAL_DRIFT=$(python3 -I - "$HARNESS" "$SKILL_SRC/ROUTER.md" <<'PY'
 import importlib.util
 import sys
 
@@ -783,7 +783,7 @@ fi
 # WHY: a documented specificity clause without a resolver pair would fall
 # through to abstain, so every clause pair the prose names must be decided by
 # the resolver and every resolver pair needs its own deciding sample.
-CLAUSE_DRIFT=$(python3 -I - "$HARNESS" "$SKILL_SRC/references/routing-signals.md" "$SKILL_SRC/SKILL.md" <<'PY'
+CLAUSE_DRIFT=$(python3 -I - "$HARNESS" "$SKILL_SRC/references/routing-signals.md" "$SKILL_SRC/ROUTER.md" <<'PY'
 import importlib.util
 import re
 import sys
@@ -845,7 +845,7 @@ fi
 
 # WHY: the fold and the whole-word filing gate carry the spelling rules, so
 # a direct probe guards them before the fixture rows are scored.
-GATE_PROBE=$(python3 -I - "$HARNESS" "$SKILL_SRC/SKILL.md" <<'PY'
+GATE_PROBE=$(python3 -I - "$HARNESS" "$SKILL_SRC/ROUTER.md" <<'PY'
 import importlib.util
 import sys
 
@@ -937,7 +937,7 @@ with open(sys.argv[1], "w", encoding="utf-8") as handle:
 PY
 # WHY: the skill's own T8 and T10 rows carry the precedence, so the case
 # runs against the real table and fails when either row loses its signals.
-if ! grep -q '^| T10 | prepare the VAT return |' "$COPY/SKILL.md"; then
+if ! grep -q '^| T10 | prepare the VAT return |' "$COPY/ROUTER.md"; then
     fail "the skill copy holds the T10 row"
 fi
 check_exit "a preparation turn then a filing turn resolves with exit 0" 0 \
@@ -955,6 +955,24 @@ fi
 # the change. The worktree add and remove still run in full.
 check_exit "a revision run scores the worktree of HEAD" 0 \
     python3 -I "$HARNESS" --mode resolve --rev HEAD --corpus "$CORPUS" --covers 005/REQ-001 --out "$TMP_ROOT/out-rev"
+
+# WHY: a commit from before the router block keeps the route table markers but
+# not the block markers, so a revision run must still write unscorable rows
+# and exit 1 rather than stop on the marker check of a live run.
+OLD_REV=504eb846ff2a659ee27219f7aef1123e0243da8e
+if git -C "$REPO_ROOT" cat-file -e "$OLD_REV^{commit}" 2>/dev/null; then
+    python3 -I "$HARNESS" --mode resolve --rev "$OLD_REV" --corpus "$CORPUS" --covers 005/REQ-001 \
+        --out "$TMP_ROOT/out-rev-old" >"$TMP_ROOT/rev-old.log" 2>&1
+    status=$?
+    if [[ "$status" -eq 1 ]] && [[ -f "$TMP_ROOT/out-rev-old/results.csv" ]]; then
+        pass "a revision without the router block writes unscorable rows and exits 1"
+    else
+        fail "a revision without the router block writes unscorable rows and exits 1 (exit $status)"
+        sed -n '1,3p' "$TMP_ROOT/rev-old.log"
+    fi
+else
+    fail "a revision without the router block writes unscorable rows and exits 1 (commit $OLD_REV is not in the history)"
+fi
 
 # ───────────────────────────────────────────────────────────────
 # 10C. TAX DELIVERABLE BRANCH, PACK AND REFUSAL ROWS
@@ -1090,6 +1108,49 @@ check_exit "a correction row on the wrong side of the boundary exits 1" 1 \
     python3 -I "$COPY_HARNESS" --mode resolve --corpus "$TMP_ROOT/wrong-boundary.json" \
     --covers 011/008/REQ-001 --out "$TMP_ROOT/out-wrong-boundary"
 row_fails "$TMP_ROOT/out-wrong-boundary/results.csv" "VAT-BRANCH-COR-01" "the wrong boundary side names VAT-BRANCH-COR-01"
+
+# WHY: a revision from before the hub keeps the table in SKILL.md, so the
+# loader takes ROUTER.md only when it holds the route table.
+PICK=$(python3 -I - "$HARNESS" "$TMP_ROOT/pick" <<'PY'
+import importlib.util
+import os
+import sys
+
+spec = importlib.util.spec_from_file_location("route_replay", sys.argv[1])
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+root = sys.argv[2]
+os.makedirs(root)
+def write(name, text):
+    with open(os.path.join(root, name), "w", encoding="utf-8") as handle:
+        handle.write(text)
+picked = []
+write("SKILL.md", module.START_MARKER + "\n")
+picked.append(os.path.basename(module.routing_markdown(root)))
+write("ROUTER.md", "no table\n")
+picked.append(os.path.basename(module.routing_markdown(root)))
+write("ROUTER.md", module.START_MARKER + "\n")
+picked.append(os.path.basename(module.routing_markdown(root)))
+print(" ".join(picked))
+PY
+)
+if [[ "$PICK" == "SKILL.md SKILL.md ROUTER.md" ]]; then
+    pass "the loader takes ROUTER.md only when it holds the route table"
+else
+    fail "the loader takes ROUTER.md only when it holds the route table ($PICK)"
+fi
+
+cp "$COPY/ROUTER.md" "$TMP_ROOT/ROUTER.md.bak"
+grep -v -F '<!-- router-block:start -->' "$TMP_ROOT/ROUTER.md.bak" >"$COPY/ROUTER.md"
+python3 -I "$COPY_HARNESS" --mode resolve --out "$TMP_ROOT/out-no-block" >"$TMP_ROOT/no-block.log" 2>&1
+status=$?
+if [[ "$status" -ne 0 ]] && grep -qF 'router block markers missing in sk-moneybird-accountant/ROUTER.md' "$TMP_ROOT/no-block.log"; then
+    pass "a missing router block names the routing file"
+else
+    fail "a missing router block names the routing file (exit $status)"
+    sed -n '1,3p' "$TMP_ROOT/no-block.log"
+fi
+cp "$TMP_ROOT/ROUTER.md.bak" "$COPY/ROUTER.md"
 
 # ───────────────────────────────────────────────────────────────
 # 11. RESULT SUMMARY AND EXIT

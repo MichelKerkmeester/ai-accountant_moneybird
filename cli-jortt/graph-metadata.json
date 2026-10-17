@@ -127,6 +127,7 @@
     ],
     "source_docs": [
       "SKILL.md",
+      "ROUTER.md",
       "README.md",
       "leaf-manifest.config.json",
       "references/cli.md",

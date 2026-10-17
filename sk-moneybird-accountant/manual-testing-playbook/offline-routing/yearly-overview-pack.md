@@ -68,7 +68,7 @@ A year inside the LIVE workflows of migration phases 19 to 21 keeps the journal-
 
 ### Failure Triage
 
-Check the T11 row and the T8 filing precedence in SKILL.md section 2, then the PACK-YEARLY-01 row in [the routing corpus](../../scripts/route-replay/routing-gold.json). Repeat offline.
+Check the T11 row and the T8 filing precedence in ROUTER.md section 2, then the PACK-YEARLY-01 row in [the routing corpus](../../scripts/route-replay/routing-gold.json). Repeat offline.
 
 ---
 
@@ -88,7 +88,7 @@ Check the T11 row and the T8 filing precedence in SKILL.md section 2, then the P
 
 | File | Role |
 |---|---|
-| [SKILL.md](../../SKILL.md) | The T11 row, its read set and the filing precedence. |
+| [ROUTER.md](../../ROUTER.md) | The T11 row, its read set and the filing precedence. |
 | [routing-gold.json](../../scripts/route-replay/routing-gold.json) | The PACK-YEARLY-01 row this scenario mirrors. |
 | [evals.json](../../evals/evals.json) | The yearly-overview-pack case, the LIVE UI export case and the phase 19 to 21 twin. |
 

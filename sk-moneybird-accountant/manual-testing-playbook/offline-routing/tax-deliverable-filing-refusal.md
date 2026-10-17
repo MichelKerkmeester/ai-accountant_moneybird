@@ -65,7 +65,7 @@ Capture the check output, the resolved refusal row, the unloaded prepare paths, 
 
 ### Failure Triage
 
-Check the T8 refusal row and the T10, T11 and T12 precedence in SKILL.md section 2, then the four routing rows and the four guard rows in [the routing corpus](../../scripts/route-replay/routing-gold.json). Repeat offline.
+Check the T8 refusal row and the T10, T11 and T12 precedence in ROUTER.md section 2, then the four routing rows and the four guard rows in [the routing corpus](../../scripts/route-replay/routing-gold.json). Repeat offline.
 
 ---
 
@@ -85,7 +85,7 @@ Check the T8 refusal row and the T10, T11 and T12 precedence in SKILL.md section
 
 | File | Role |
 |---|---|
-| [SKILL.md](../../SKILL.md) | The T8 refusal row and the prepare-row precedence. |
+| [ROUTER.md](../../ROUTER.md) | The T8 refusal row and the prepare-row precedence. |
 | [routing-gold.json](../../scripts/route-replay/routing-gold.json) | The four routing rows and the four guard rows this scenario mirrors. |
 | [evals.json](../../evals/evals.json) | The tax-deliverable-filing-refusal case. |
 

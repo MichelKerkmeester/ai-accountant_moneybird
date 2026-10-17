@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0.0",
+  "hub": "moneybird-accountant",
+  "modes": [
+    {
+      "workflowMode": "accountant",
+      "packet": "sk-moneybird-accountant",
+      "packetSkillName": "sk-moneybird-accountant",
+      "packetKind": "workflow",
+      "router": "sk-moneybird-accountant/ROUTER.md",
+      "default": true
+    },
+    {
+      "workflowMode": "cli-moneybird",
+      "packet": "cli-moneybird",
+      "packetSkillName": "cli-moneybird",
+      "packetKind": "tool",
+      "router": "cli-moneybird/ROUTER.md",
+      "default": false
+    },
+    {
+      "workflowMode": "cli-jortt",
+      "packet": "cli-jortt",
+      "packetSkillName": "cli-jortt",
+      "packetKind": "tool",
+      "router": "cli-jortt/ROUTER.md",
+      "default": false
+    }
+  ]
+}

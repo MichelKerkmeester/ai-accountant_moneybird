@@ -92,7 +92,7 @@ Check the term request words in the resolver and the topic of each read. Repeat 
 
 | File | Role |
 |---|---|
-| sk-moneybird-accountant/SKILL.md | States the glossary read rule |
+| sk-moneybird-accountant/ROUTER.md | States the glossary read rule |
 | sk-moneybird-accountant/references/glossary/README.md | Lists the category files and the placement rule |
 | sk-moneybird-accountant/scripts/route-replay/routing-gold.json | Holds the twelve GLOSS rows |
 

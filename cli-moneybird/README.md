@@ -129,7 +129,8 @@ Use this skill for Moneybird API reads, a pilot migration write, document attach
 ```text
 cli-moneybird/
 +-- README.md                  # This guide
-+-- SKILL.md                   # Operation routing and safety rules
++-- ROUTER.md                  # Operation routing
++-- SKILL.md                   # Safety rules, gates and the exit ladder
 +-- INSTALL-GUIDE.md           # CLI setup, credentials, verification and rollback
 +-- references/                # API, CLI, recipe and troubleshooting guides
 +-- feature-catalog/           # Current features with source and test anchors
@@ -141,7 +142,8 @@ cli-moneybird/
 
 | Path | Purpose |
 |---|---|
-| `SKILL.md` | Operation routing and safety rules |
+| `ROUTER.md` | Operation routing |
+| `SKILL.md` | Safety rules, gates and the exit ladder |
 | `INSTALL-GUIDE.md` | CLI setup, credentials, verification and rollback |
 | `references/` | The API, CLI, recipe and troubleshooting guides |
 | `feature-catalog/` | What the package does today, with source and test anchors for each feature |
@@ -208,7 +210,8 @@ The local checks do not prove live access, production access or a reconciled led
 
 | Document | Purpose |
 |---|---|
-| [`SKILL.md`](SKILL.md) | Runtime routing and safety rules |
+| [`ROUTER.md`](ROUTER.md) | Runtime routing |
+| [`SKILL.md`](SKILL.md) | Safety rules |
 | [`INSTALL-GUIDE.md`](INSTALL-GUIDE.md) | Setup, credentials, verification and rollback |
 | [`references/cli.md`](references/cli.md) | The official CLI and how to use the guard |
 | [`references/rest-api.md`](references/rest-api.md) | API limits, caching and verification behavior |

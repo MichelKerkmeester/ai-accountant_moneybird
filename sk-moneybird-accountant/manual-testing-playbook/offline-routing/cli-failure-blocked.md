@@ -93,7 +93,8 @@ Check the CLI failure route class in the skill, then section M5 of the shared me
 
 | File | Role |
 |---|---|
-| sk-moneybird-accountant/SKILL.md | Defines the CLI_FAILURE route class and the blocked answer rule |
+| sk-moneybird-accountant/SKILL.md | States the blocked answer rule |
+| sk-moneybird-accountant/ROUTER.md | Defines the CLI_FAILURE route class |
 | sk-moneybird-accountant/references/migration/shared-mechanisms.md | Holds the M5 rate-limit recovery and the one authorized read reissue |
 | cli-moneybird/SKILL.md | Holds the three-attempt GET bound and the non-GET stop |
 | cli-jortt/SKILL.md | Keeps jortt-cli the 429 retry owner |

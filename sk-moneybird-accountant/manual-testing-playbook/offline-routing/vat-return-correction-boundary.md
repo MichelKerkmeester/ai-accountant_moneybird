@@ -64,7 +64,7 @@ Capture the check output, the selected row, the loaded paths, both correction ro
 
 ### Failure Triage
 
-Check the T10 row, the correction phrases and the T8 filing precedence in SKILL.md section 2, then the VAT-BRANCH-COR-01 row in [the routing corpus](../../scripts/route-replay/routing-gold.json). Repeat offline.
+Check the T10 row, the correction phrases and the T8 filing precedence in ROUTER.md section 2, then the VAT-BRANCH-COR-01 row in [the routing corpus](../../scripts/route-replay/routing-gold.json). Repeat offline.
 
 ---
 
@@ -84,7 +84,7 @@ Check the T10 row, the correction phrases and the T8 filing precedence in SKILL.
 
 | File | Role |
 |---|---|
-| [SKILL.md](../../SKILL.md) | The T10 row, its read set and the filing precedence. |
+| [ROUTER.md](../../ROUTER.md) | The T10 row, its read set and the filing precedence. |
 | [routing-gold.json](../../scripts/route-replay/routing-gold.json) | The VAT-BRANCH-COR-01 row this scenario mirrors. |
 | [evals.json](../../evals/evals.json) | The vat-return-correction-boundary case. |
 

@@ -45,12 +45,13 @@ Ask in English or Dutch. A request to file, submit, pay or lock a period is refu
 
 ## 3. 🗺️ HOW IT WORKS
 
-Each request starts at the project contract. The skill then loads only the reference that fits the task. A CLI skill joins only when a tool action is needed.
+Each request starts at the project contract. The repository root is a hub over three skill packets: the hub picks the packet, the packet's router picks the task type and only the reference that fits the task loads. A CLI packet joins only when a tool action is needed.
 
 ```text
 Your request
   -> AGENTS.md sets identity and boundaries
-  -> sk-moneybird-accountant/SKILL.md picks the task type
+  -> SKILL.md, the hub, picks the packet
+  -> sk-moneybird-accountant/ROUTER.md picks the task type
   -> one matching bookkeeping, tax or migration reference loads
   -> cli-moneybird or cli-jortt owns any command
   -> local evidence and your review close the work
@@ -63,7 +64,7 @@ Your request
 | **LIVE** | Day-to-day bookkeeping in Moneybird, from the monthly review to the yearly close |
 | **MIGRATION** | Moving historical records from Jortt into Moneybird |
 
-The routes are written in one place, the Task-Type Table in section 2 of [`sk-moneybird-accountant/SKILL.md`](sk-moneybird-accountant/SKILL.md). If the task is unclear, the assistant asks one question instead of guessing. It takes the tax year from the system clock before it uses any rate or threshold, never from a date written in a document.
+The routes are written in one place, the Task-Type Table in section 2 of [`sk-moneybird-accountant/ROUTER.md`](sk-moneybird-accountant/ROUTER.md). If the task is unclear, the assistant asks one question instead of guessing. It takes the tax year from the system clock before it uses any rate or threshold, never from a date written in a document.
 
 ---
 
@@ -209,7 +210,7 @@ The doctors are offline by default. The Jortt tests check the CLI contract again
 | `cli-jortt/cli/jortt-cli/tests/run-tests.sh` | Operation slugs, parameter checks, the write gate, the scope gate, the output boundary, summary output and redacted errors |
 | `cli-moneybird/scripts/doctor.sh` | Local tools, the pinned official CLI, config folders and whether credential files and settings exist |
 | `cli-moneybird/cli/moneybird-cli/tests/run-tests.sh` | Period warning, write confirmation, the pilot gate, the approval check, the writer session, the read-only lock, delete caution, the output boundary, summary output and logins |
-| `cli-moneybird/scripts/exit-code-parity.sh` | The guard exit codes against the exit table, the troubleshooting rows and the skill keywords, in both directions |
+| `cli-moneybird/scripts/exit-code-parity.sh` | The guard exit codes against the exit table, the troubleshooting rows and the router keywords, in both directions |
 | `sk-moneybird-accountant/scripts/check-route-table.py` | The task-type route table with its marked read sets, plus the skill word check, the split-topic manifest and the carry-forward outline check |
 | `sk-moneybird-accountant/scripts/check-fragments.py` | Every relative link and section anchor in the skill family |
 | `sk-moneybird-accountant/scripts/check-english-first.py` | English first wording: every Dutch term has an English lead, every first use in a section carries its Dutch label and every label is a glossary row |
@@ -234,10 +235,14 @@ A passing local test does not prove a live connection. For Jortt, `jortt-cli who
 ├── .privacy-gate.json                    privacy-gate allowlists and blocked paths
 ├── AGENTS.md                             entry point, boundaries and privacy rules
 ├── LICENSE                               MIT license
+├── SKILL.md                              the hub: picks the accountant, Moneybird CLI or Jortt CLI packet
+├── mode-registry.json                    the hub's packets and their routers
+├── hub-router.json                       the hub's stage one signals and default packet
 ├── cli-jortt/
 │   ├── INSTALL-GUIDE.md                  Jortt CLI setup and rollback
 │   ├── README.md                         Jortt tool overview
-│   ├── SKILL.md                          Jortt routing and read controls
+│   ├── ROUTER.md                         Jortt operation routing
+│   ├── SKILL.md                          Jortt read controls
 │   ├── cli/jortt-cli/                    the read-only client, its libraries and tests
 │   ├── references/                       CLI, REST, export and troubleshooting guides
 │   ├── scripts/doctor.sh                 offline Jortt diagnostics
@@ -246,6 +251,7 @@ A passing local test does not prove a live connection. For Jortt, `jortt-cli who
 ├── cli-moneybird/
 │   ├── INSTALL-GUIDE.md                  official CLI setup and rollback
 │   ├── README.md                         Moneybird tool overview
+│   ├── ROUTER.md                         Moneybird operation routing
 │   ├── SKILL.md                          guarded reads and gated writes
 │   ├── cli/moneybird-cli/                setup script, moneybird-guard and stub tests
 │   ├── references/                       API, command, recipe and recovery guides
@@ -256,7 +262,8 @@ A passing local test does not prove a live connection. For Jortt, `jortt-cli who
 ├── specs/000-migration-template/        spec-kit phase packets with placeholders, copied for your migration
 └── sk-moneybird-accountant/
     ├── README.md                         skill guide
-    ├── SKILL.md                          mode router and operating contract
+    ├── ROUTER.md                         the Task-Type Table and the generated router block
+    ├── SKILL.md                          modes and operating contract
     ├── assets/migration/                 plan kit: config, dashboard, journal and the packet doc templates
     ├── assets/yearly-overview/           the bilingual yearly overview HTML template
     ├── evals/                            the graded routing and preparation cases
@@ -332,6 +339,7 @@ The Jortt API does not provide them. Download them yourself from the Jortt UI.
 **System guides**
 
 - **[→ Project Contract](AGENTS.md)** - routing, privacy boundaries and tool ownership
+- **[→ Hub](SKILL.md)** - the three packets and which one a request starts in
 - **[→ Core Skill](sk-moneybird-accountant/SKILL.md)** - mode selection and the matching workflow
 - **[→ Skill README](sk-moneybird-accountant/README.md)** - the bookkeeping and migration skill in detail
 - **[→ Jortt Tool Skill](cli-jortt/SKILL.md)** - Jortt CLI operations and source extraction

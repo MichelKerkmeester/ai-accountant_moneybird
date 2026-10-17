@@ -36,7 +36,7 @@ The agent establishes the business share and records its basis, then books the d
 | sk-moneybird-accountant/references/mixed-use-costs.md | Shared | Defines the income tax (inkomstenbelasting) share, the VAT split and the Moneybird booking steps. |
 | sk-moneybird-accountant/references/purchase-invoices.md | Shared | Defines the shared document flow and the VAT choice for each invoice kind. |
 | sk-moneybird-accountant/references/fixed-assets.md | Shared | Defines the asset route for a good used for mixed purposes. |
-| sk-moneybird-accountant/SKILL.md | Shared | Loads the mixed-use reference conditionally in the T4 row. |
+| sk-moneybird-accountant/ROUTER.md | Shared | Loads the mixed-use reference conditionally in the T4 row. |
 
 ### Validation And Tests
 

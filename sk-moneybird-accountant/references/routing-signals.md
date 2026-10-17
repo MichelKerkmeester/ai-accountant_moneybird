@@ -1,6 +1,6 @@
 ---
 title: Routing signals for the task-type table
-description: Where each routing signal in the SKILL.md task-type table comes from, with the Dutch Tax and Customs Administration (Belastingdienst) page per signal group, the skill vocabulary that has no public source and the tie margin, fallback floor, warning band, abstain outcome, specificity clauses and year change route.
+description: Where each routing signal in the ROUTER.md task-type table comes from, with the Dutch Tax and Customs Administration (Belastingdienst) page per signal group, the skill vocabulary that has no public source and the tie margin, fallback floor, warning band, abstain outcome, specificity clauses and year change route.
 nav_label: "Routing signals for the task-type table"
 trigger_phrases:
   - routing signals
@@ -15,7 +15,7 @@ version: 1.0.0.0
 
 # Routing signals
 
-**Rule:** This reference holds the signal sources behind the Task-Type Table in `SKILL.md` and the tie and abstain mechanics behind it. The table itself stays the single source of truth for routing. Nothing here changes a row or its read set.
+**Rule:** This reference holds the signal sources behind the Task-Type Table in `ROUTER.md` and the tie and abstain mechanics behind it. The table itself stays the single source of truth for routing. Nothing here changes a row or its read set.
 
 ---
 
@@ -81,7 +81,7 @@ The mixed-use and asset terms of T4 name what is booked, not the kind of request
 
 ## 5. TOKEN BUDGETS FOR THE ROUTE KEYS
 
-The Budget column of the Task-Type Table holds one key per row. Each key resolves to the token cost of that row's read set, built from the read budget ladder in `SKILL.md`. The ladder units are token counts in o200k_base, the lead encoding, with the cl100k_base column beside them in `../benchmark/token-baseline.json`:
+The Budget column of the Task-Type Table holds one key per row. Each key resolves to the token cost of that row's read set, built from the read budget ladder in `ROUTER.md`. The ladder units are token counts in o200k_base, the lead encoding, with the cl100k_base column beside them in `../benchmark/token-baseline.json`:
 
 - A README or index file: 3,000 tokens, which covers a year README, the migration index and the rules entry file `dutch-tax-rules.md`.
 - One section: 5,000 tokens.
@@ -126,5 +126,5 @@ A row here names a deliverable the skill routes but does not document yet. The T
 
 ## 8. RELATED RESOURCES
 
-- `SKILL.md` holds the Task-Type Table, the weak-signal note and the compact tie block.
+- `ROUTER.md` holds the Task-Type Table, the weak-signal note and the compact tie block.
 - `references/migration/README.md` maps every migration phase to its reference file.

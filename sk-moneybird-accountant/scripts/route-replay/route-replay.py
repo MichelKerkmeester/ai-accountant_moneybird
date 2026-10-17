@@ -5,7 +5,9 @@
 """Resolve the routing fixture corpus and score the routes offline.
 
 The resolve mode builds a router snapshot out of the task-type table in
-SKILL.md section 2 and the resource map under references/. It hashes the
+section 2 of the skill's ROUTER.md and the resource map under references/.
+A revision from before the hub keeps the table in the skill's SKILL.md, so
+the scorer falls back to that file when ROUTER.md holds no route table. It hashes the
 snapshot, runs a connectivity gate over every routed path, resolves each
 corpus prompt with a deterministic signal scorer and scores the row against
 the gold mode, task type, path set, facts, file claims and token ceiling.
@@ -36,7 +38,7 @@ Options:
                  routing-gold.json next to this script.
     --out        Write results.csv and report.md into this folder. The
                  default is benchmark/reports/route-replay under the skill.
-    --skill-root Read SKILL.md and references/ from this folder. The default
+    --skill-root Read ROUTER.md and references/ from this folder. The default
                  is the skill folder that holds this script. It cannot be
                  combined with --rev.
     --rev SHA    Score a git worktree of that revision instead of the live
@@ -90,6 +92,7 @@ SKILL_ROOT = os.path.dirname(os.path.dirname(HERE))
 CORPUS_NAME = "routing-gold.json"
 DEFAULT_OUT = os.path.join(SKILL_ROOT, "benchmark", "reports", "route-replay")
 SKILL_MD_NAME = "SKILL.md"
+ROUTER_MD_NAME = "ROUTER.md"
 SKILL_FOLDER_NAME = "sk-moneybird-accountant"
 SIGNALS_NAME = os.path.join("references", "routing-signals.md")
 MIGRATION_INDEX = os.path.join("references", "migration", "README.md")
@@ -674,7 +677,7 @@ def parse_route_table(text: str) -> List[Dict[str, str]]:
     """Parse the task-type table between its markers.
 
     Args:
-        text: SKILL.md text.
+        text: Routing markdown text.
 
     Returns:
         One row per task type with its cells.
@@ -687,7 +690,7 @@ def parse_route_table(text: str) -> List[Dict[str, str]]:
         start = lines.index(START_MARKER)
         end = lines.index(END_MARKER, start + 1)
     except ValueError:
-        fail("route table markers missing in %s" % SKILL_MD_NAME)
+        fail("route table markers missing in the routing markdown")
     rows: List[Dict[str, str]] = []
     for line in lines[start + 1:end]:
         stripped = line.strip()
@@ -710,19 +713,19 @@ def parse_route_table(text: str) -> List[Dict[str, str]]:
             }
         )
     if not rows:
-        fail("route table holds no rows in %s" % SKILL_MD_NAME)
+        fail("route table holds no rows in the routing markdown")
     return rows
 
 
 def parse_constants(skill_text: str, signals_text: str) -> Dict[str, Any]:
     """Read the routing constants out of the skill prose.
 
-    The table in SKILL.md is the single source of truth for the frozen
+    The table in the routing markdown is the single source of truth for the frozen
     floor. The signal file still carries the warning band, and the pending
     marker in the table applies while the table states no number.
 
     Args:
-        skill_text: SKILL.md text.
+        skill_text: Routing markdown text.
         signals_text: routing-signals.md text.
 
     Returns:
@@ -755,7 +758,7 @@ def parse_constants(skill_text: str, signals_text: str) -> Dict[str, Any]:
 def parse_migration_index(text: str) -> Dict[str, str]:
     """Read the phase map out of the migration index.
 
-    The generated block in SKILL.md is the map the scorer uses. This parse
+    The generated block in the routing markdown is the map the scorer uses. This parse
     exists only to prove the block and the authored index still agree.
 
     Args:
@@ -777,7 +780,7 @@ def parse_generated_map(text: str, name: str) -> Dict[str, str]:
     """Read one generated map out of the router block.
 
     Args:
-        text: SKILL.md text.
+        text: Routing markdown text.
         name: Generated map name, such as PHASE_FILES.
 
     Returns:
@@ -787,7 +790,7 @@ def parse_generated_map(text: str, name: str) -> Dict[str, str]:
         SystemExit: When the markers, the map or a value is malformed.
     """
     if ROUTER_START not in text or ROUTER_END not in text:
-        fail("router block markers missing in %s" % SKILL_MD_NAME)
+        fail("router block markers missing in the routing markdown")
     pattern = re.compile(r"^%s = \{$" % re.escape(name), re.MULTILINE)
     match = pattern.search(text)
     if not match:
@@ -2495,6 +2498,22 @@ def write_unscorable(
     return 1
 
 
+def routing_markdown(skill_root: str) -> str:
+    """Name the file that holds the route table for one skill folder.
+
+    Args:
+        skill_root: Absolute skill folder.
+
+    Returns:
+        The skill's ROUTER.md when it holds the route table, else its
+        SKILL.md, where a revision from before the hub keeps it.
+    """
+    router = join_skill(skill_root, ROUTER_MD_NAME)
+    if os.path.isfile(router) and START_MARKER in read_text(router):
+        return router
+    return join_skill(skill_root, SKILL_MD_NAME)
+
+
 def run_resolve(args: argparse.Namespace) -> int:
     """Score the corpus in resolve mode and write the outputs.
 
@@ -2507,16 +2526,24 @@ def run_resolve(args: argparse.Namespace) -> int:
     skill_root = os.path.abspath(args.skill_root)
     revision = str(getattr(args, "rev_sha", "") or "")
     rev_mode = bool(revision)
-    skill_md = join_skill(skill_root, SKILL_MD_NAME)
+    skill_md = routing_markdown(skill_root)
     signals_md = join_skill(skill_root, SIGNALS_NAME)
     if not os.path.isfile(skill_md):
-        fail("skill markdown not found in %s" % os.path.basename(skill_root))
+        fail("routing markdown not found for %s" % os.path.basename(skill_root))
     rows = select_rows(load_corpus(args.corpus), args.covers, "resolve")
     if not rows:
         fail("no resolve rows match the covers filter")
     skill_text = read_text(skill_md)
     if rev_mode and (START_MARKER not in skill_text or END_MARKER not in skill_text):
         return write_unscorable(args, rows, "route table markers missing", revision)
+    # WHY: the parsers report a missing marker without a path, so the file the
+    # loader picked is named here, before the parsers run. A revision run keeps
+    # its own unscorable path for an old tree that lacks a marker.
+    if not rev_mode:
+        source_name = os.path.relpath(skill_md, os.path.dirname(skill_root))
+        for start, end, label in ((START_MARKER, END_MARKER, "route table"), (ROUTER_START, ROUTER_END, "router block")):
+            if start not in skill_text or end not in skill_text:
+                fail("%s markers missing in %s" % (label, source_name))
     if not os.path.isfile(signals_md):
         if rev_mode:
             return write_unscorable(args, rows, "routing signals file missing", revision)
@@ -3074,7 +3101,7 @@ def main(argv: List[str]) -> int:
         "--skill-root",
         metavar="DIR",
         default=None,
-        help="skill folder that holds SKILL.md and references",
+        help="skill folder that holds ROUTER.md and references",
     )
     parser.add_argument(
         "--rev",

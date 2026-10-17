@@ -47,7 +47,7 @@ GENERATOR = "sk-moneybird-accountant/scripts/check-fragments.py"
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # WHY: an allowlist of scan roots keeps the private folders out by construction.
-SCAN_ROOTS = ("AGENTS.md", "README.md", "sk-moneybird-accountant", "cli-jortt", "cli-moneybird")
+SCAN_ROOTS = ("AGENTS.md", "README.md", "SKILL.md", "sk-moneybird-accountant", "cli-jortt", "cli-moneybird")
 SKIP_DIRS = frozenset(("specs", ".git", "personal database", "migration-workspace"))
 
 # WHY: the link pattern keeps a nested image as link text, so a badge whose

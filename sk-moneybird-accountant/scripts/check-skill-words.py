@@ -2,14 +2,14 @@
 # ───────────────────────────────────────────────────────────────
 # COMPONENT: SKILL WORD BUDGET CHECK
 # ───────────────────────────────────────────────────────────────
-"""Check every SKILL.md against the loading word budget.
+"""Check every SKILL.md and ROUTER.md against the loading word budget.
 
-Walks the repository for SKILL.md files and prints one line per file with its
+Walks the repository for SKILL.md and ROUTER.md files and prints one line per file with its
 word count and its verdict. A file above 3,000 words warns, a file above
 4,000 words fails the run, and a missing or unreadable file stops the run with
-exit code 2 and the path named. The three files of the skill family are
-required: sk-moneybird-accountant/SKILL.md, cli-moneybird/SKILL.md and
-cli-jortt/SKILL.md. A word is a run of characters between two ASCII whitespace
+exit code 2 and the path named. The hub file and the three packet files are
+required: SKILL.md, sk-moneybird-accountant/SKILL.md, cli-moneybird/SKILL.md
+and cli-jortt/SKILL.md. A word is a run of characters between two ASCII whitespace
 characters (space, tab, newline, carriage return, form feed and vertical tab).
 BSD `LC_ALL=C wc -w` counts the same way. GNU wc in the C locale skips a run
 that holds no printable ASCII byte, such as a lone euro sign, so it reports
@@ -53,12 +53,20 @@ DEFAULT_ROOT = os.path.dirname(os.path.dirname(SCRIPT_FOLDER))
 WARN_WORDS = 3000
 FAIL_WORDS = 4000
 
+# WHY: a packet's router loads beside its SKILL.md, so it carries the same
+# budget, and a router left out of the walk would grow with no ceiling.
+COUNTED_NAMES = ("ROUTER.md", "SKILL.md")
+
 # WHY: the check covers the whole skill family, so a file the walk cannot
 # reach is a finding rather than a file that passes by absence.
 REQUIRED_FILES = (
-    "sk-moneybird-accountant/SKILL.md",
-    "cli-moneybird/SKILL.md",
+    "SKILL.md",
+    "cli-jortt/ROUTER.md",
     "cli-jortt/SKILL.md",
+    "cli-moneybird/ROUTER.md",
+    "cli-moneybird/SKILL.md",
+    "sk-moneybird-accountant/ROUTER.md",
+    "sk-moneybird-accountant/SKILL.md",
 )
 
 # WHY: a hidden folder holds the git store or a local tool checkout rather
@@ -117,7 +125,7 @@ def verdict(count: int) -> str:
 
 
 def skill_files(root: str) -> List[str]:
-    """Collect every SKILL.md under one repository root.
+    """Collect every SKILL.md and ROUTER.md under one repository root.
 
     Args:
         root: Repository root to walk.
@@ -135,8 +143,9 @@ def skill_files(root: str) -> List[str]:
             for name in subfolders
             if name not in SKIP_FOLDERS and not name.startswith(".")
         )
-        if "SKILL.md" in files:
-            found.append(os.path.relpath(os.path.join(folder, "SKILL.md"), root).replace(os.sep, "/"))
+        for name in COUNTED_NAMES:
+            if name in files:
+                found.append(os.path.relpath(os.path.join(folder, name), root).replace(os.sep, "/"))
     return sorted(found)
 
 
@@ -181,7 +190,7 @@ def check_root(root: str) -> int:
     found = skill_files(root)
     for relative in REQUIRED_FILES:
         if relative not in found or not os.path.isfile(os.path.join(root, relative)):
-            fail("missing or unreadable SKILL.md: %s" % os.path.join(root, relative))
+            fail("missing or unreadable skill file: %s" % os.path.join(root, relative))
     over_budget = False
     for relative in found:
         count = count_words(read_text(os.path.join(root, relative)))
@@ -212,7 +221,7 @@ def main(argv: List[str]) -> int:
     """
     parser = argparse.ArgumentParser(
         prog=CHECKER,
-        description="Check every SKILL.md against the loading word budget.",
+        description="Check every SKILL.md and ROUTER.md against the loading word budget.",
     )
     parser.add_argument(
         "--root",

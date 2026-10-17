@@ -45,7 +45,7 @@ The guide covers a list that misses older years because of the default period, a
 | File | Layer | Role |
 |---|---|---|
 | [`references/troubleshooting.md`](../../references/troubleshooting.md) | Shared | Owns the diagnostic order and the failure rows |
-| [`SKILL.md`](../../SKILL.md) | Shared | Routes a failed operation to the troubleshooting reference |
+| [`ROUTER.md`](../../ROUTER.md) | Shared | Routes a failed operation to the troubleshooting reference |
 
 ### Validation And Tests
 

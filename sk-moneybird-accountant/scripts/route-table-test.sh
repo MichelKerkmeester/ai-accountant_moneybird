@@ -2,7 +2,7 @@
 # ───────────────────────────────────────────────────────────────
 # COMPONENT: ROUTE TABLE TEST
 # ───────────────────────────────────────────────────────────────
-# Tests check-route-table.py against the real SKILL.md and mutated copies.
+# Tests check-route-table.py against the real ROUTER.md and mutated copies.
 # Usage: route-table-test.sh
 # Exit Codes:
 #   0 - All checks pass
@@ -26,6 +26,7 @@ REPO_ROOT=$(dirname "$SKILL_DIR")
 CHECKER="$SCRIPT_DIR/check-route-table.py"
 WORD_CHECKER="$SCRIPT_DIR/check-skill-words.py"
 SKILL_MD="$SKILL_DIR/SKILL.md"
+ROUTER_MD="$SKILL_DIR/ROUTER.md"
 SIGNALS_MD="$SKILL_DIR/references/routing-signals.md"
 GRAPH_METADATA="$SKILL_DIR/graph-metadata.json"
 
@@ -39,6 +40,10 @@ if [[ ! -f "$WORD_CHECKER" ]]; then
 fi
 if [[ ! -f "$SKILL_MD" ]]; then
     printf 'error: missing SKILL.md in the skill folder\n' >&2
+    exit 2
+fi
+if [[ ! -f "$ROUTER_MD" ]]; then
+    printf 'error: missing ROUTER.md in the skill folder\n' >&2
     exit 2
 fi
 if [[ ! -f "$SIGNALS_MD" ]]; then
@@ -97,14 +102,14 @@ fail() {
     printf 'FAIL %s\n' "$1"
 }
 
-# Run the checker against a mutated SKILL.md copy expected to fail with exit 1
+# Run the checker against a mutated ROUTER.md copy expected to fail with exit 1
 # Args:
 #   $1 - Check name
 #   $2 - Markdown copy to check
 mutant() {
     local name="$1"
     local file="$2"
-    python3 -I "$CHECKER" --skill-md "$file" >"$TMP_ROOT/out.txt" 2>&1
+    python3 -I "$CHECKER" --router "$file" >"$TMP_ROOT/out.txt" 2>&1
     status=$?
     if [[ "$status" -eq 1 ]]; then
         pass "$name"
@@ -138,7 +143,7 @@ drift_mutant() {
     local name="$1"
     local file="$2"
     local marker="$3"
-    python3 -I "$CHECKER" --skill-md "$file" >"$TMP_ROOT/out.txt" 2>&1
+    python3 -I "$CHECKER" --router "$file" >"$TMP_ROOT/out.txt" 2>&1
     status=$?
     if [[ "$status" -eq 1 ]] && grep -qF "$marker" "$TMP_ROOT/out.txt"; then
         pass "$name"
@@ -204,14 +209,14 @@ calibration_mutant() {
 python3 -I "$CHECKER" --check >"$TMP_ROOT/out.txt" 2>&1
 status=$?
 if [[ "$status" -eq 0 ]]; then
-    pass "real SKILL.md and routing-signals.md pass"
+    pass "real ROUTER.md and routing-signals.md pass"
 else
-    fail "real SKILL.md and routing-signals.md pass"
+    fail "real ROUTER.md and routing-signals.md pass"
     cat "$TMP_ROOT/out.txt"
 fi
 
 # The generated router block must read the session context and hold no old level name
-ROUTER_SECTION=$(sed -n '/^### Smart Router Pseudocode/,/^### Migration Phase Routing/p' "$SKILL_MD")
+ROUTER_SECTION=$(sed -n '/^### Smart Router Pseudocode/,/^### Migration Phase Routing/p' "$ROUTER_MD")
 if grep -qF 'session-context.json' <<<"$ROUTER_SECTION" \
     && ! grep -qiE 'zzp question|cli action|live bookkeeping|resource loading levels' <<<"$ROUTER_SECTION" \
     && ! grep -qF 'migration-workspace' <<<"$ROUTER_SECTION"; then
@@ -240,8 +245,8 @@ fi
 # ───────────────────────────────────────────────────────────────
 
 copy() {
-    cp "$SKILL_MD" "$TMP_ROOT/SKILL.md"
-    printf '%s\n' "$TMP_ROOT/SKILL.md"
+    cp "$ROUTER_MD" "$TMP_ROOT/ROUTER.md"
+    printf '%s\n' "$TMP_ROOT/ROUTER.md"
 }
 
 # Blank the budget cell of the T1 row
@@ -535,18 +540,18 @@ metadata_drift_mutant "curated advisor signal missing from the list" "$TMP_ROOT/
 # 8. WRITE MODE STABILITY
 # ───────────────────────────────────────────────────────────────
 
-# Build a throwaway skill copy that holds the script, the markdown, the
+# Build a throwaway skill copy that holds the script, the router, the
 # metadata and the reference tree the write mode guards
 WRITE_COPY="$TMP_ROOT/write-copy"
 mkdir -p "$WRITE_COPY/scripts"
 cp "$CHECKER" "$WRITE_COPY/scripts/check-route-table.py"
-cp "$SKILL_MD" "$WRITE_COPY/SKILL.md"
+cp "$ROUTER_MD" "$WRITE_COPY/ROUTER.md"
 cp "$GRAPH_METADATA" "$WRITE_COPY/graph-metadata.json"
 cp -R "$SKILL_DIR/references" "$WRITE_COPY/references"
 
 # Seed one table change so the first write has work to do in both files
-sed 's/| mapping, category, which account, trap |/| mapping, category, which account, mapping trap |/' "$WRITE_COPY/SKILL.md" >"$TMP_ROOT/write-seed.md"
-cp "$TMP_ROOT/write-seed.md" "$WRITE_COPY/SKILL.md"
+sed 's/| mapping, category, which account, trap |/| mapping, category, which account, mapping trap |/' "$WRITE_COPY/ROUTER.md" >"$TMP_ROOT/write-seed.md"
+cp "$TMP_ROOT/write-seed.md" "$WRITE_COPY/ROUTER.md"
 
 python3 -I "$WRITE_COPY/scripts/check-route-table.py" --write >"$TMP_ROOT/out.txt" 2>&1
 status=$?
@@ -556,7 +561,7 @@ else
     fail "a table change regenerates the block and the signal list"
     cat "$TMP_ROOT/out.txt"
 fi
-first_skill=$(cksum "$WRITE_COPY/SKILL.md")
+first_skill=$(cksum "$WRITE_COPY/ROUTER.md")
 first_metadata=$(cksum "$WRITE_COPY/graph-metadata.json")
 
 python3 -I "$WRITE_COPY/scripts/check-route-table.py" --write >"$TMP_ROOT/out.txt" 2>&1
@@ -566,7 +571,7 @@ if [[ "$status" -eq 0 ]]; then
 else
     fail "second write in a temp copy exits 0"
 fi
-second_skill=$(cksum "$WRITE_COPY/SKILL.md")
+second_skill=$(cksum "$WRITE_COPY/ROUTER.md")
 second_metadata=$(cksum "$WRITE_COPY/graph-metadata.json")
 if [[ "$first_skill" == "$second_skill" && "$first_metadata" == "$second_metadata" ]]; then
     pass "a second write leaves both files byte-identical"
@@ -591,11 +596,17 @@ mkdir -p "$WORD_COPY/sk-moneybird-accountant/scripts/route-replay" "$WORD_COPY/s
 cp "$SKILL_DIR/scripts/route-replay/routing-gold.json" "$WORD_COPY/sk-moneybird-accountant/scripts/route-replay/routing-gold.json"
 cp -R "$SKILL_DIR/benchmark/." "$WORD_COPY/sk-moneybird-accountant/benchmark/"
 cp "$SKILL_MD" "$WORD_COPY/sk-moneybird-accountant/SKILL.md"
+cp "$ROUTER_MD" "$WORD_COPY/sk-moneybird-accountant/ROUTER.md"
 cp "$GRAPH_METADATA" "$WORD_COPY/sk-moneybird-accountant/graph-metadata.json"
 cp -R "$SKILL_DIR/references" "$WORD_COPY/sk-moneybird-accountant/references"
 cp -R "$SKILL_DIR/assets" "$WORD_COPY/sk-moneybird-accountant/assets"
 cp "$REPO_ROOT/cli-moneybird/SKILL.md" "$WORD_COPY/cli-moneybird/SKILL.md"
 cp "$REPO_ROOT/cli-jortt/SKILL.md" "$WORD_COPY/cli-jortt/SKILL.md"
+cp "$REPO_ROOT/cli-moneybird/ROUTER.md" "$WORD_COPY/cli-moneybird/ROUTER.md"
+cp "$REPO_ROOT/cli-jortt/ROUTER.md" "$WORD_COPY/cli-jortt/ROUTER.md"
+for hub_file in SKILL.md mode-registry.json hub-router.json; do
+    cp "$REPO_ROOT/$hub_file" "$WORD_COPY/$hub_file"
+done
 WORD_CHECKER_COPY="$WORD_COPY/sk-moneybird-accountant/scripts/check-route-table.py"
 
 # The untouched copy proves the word check is wired and passes on its own
@@ -610,7 +621,7 @@ fi
 
 # A conditional read that names an absent file is recorded and never fails.
 # The copy needs a write run first so the generated block matches the cell.
-python3 - "$WORD_COPY/sk-moneybird-accountant/SKILL.md" <<'PY'
+python3 - "$WORD_COPY/sk-moneybird-accountant/ROUTER.md" <<'PY'
 import sys
 
 with open(sys.argv[1], "r", encoding="utf-8") as handle:
@@ -733,17 +744,115 @@ else
     cat "$TMP_ROOT/out.txt"
 fi
 
-# A SKILL.md that drops the glossary read rule fails
-sed 's#`references/glossary/README.md`#the glossary#' "$SKILL_MD" >"$TMP_ROOT/m-glossary-rule.md"
-drift_mutant "a SKILL.md without the glossary read rule fails" "$TMP_ROOT/m-glossary-rule.md" \
+# A ROUTER.md that drops the glossary read rule fails
+sed 's#`references/glossary/README.md`#the glossary#' "$ROUTER_MD" >"$TMP_ROOT/m-glossary-rule.md"
+drift_mutant "a ROUTER.md without the glossary read rule fails" "$TMP_ROOT/m-glossary-rule.md" \
     "the glossary read rule is missing"
+
+# The hub check reads the repository root, so each hub mutant edits the
+# throwaway word copy of the repository and restores it before the next case.
+
+# Run the copied checker after one hub edit and expect exit 1 naming a text
+# Args:
+#   $1 - Check name
+#   $2 - Text the failure report must name
+hub_mutant() {
+    local name="$1"
+    local marker="$2"
+    python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+    status=$?
+    if [[ "$status" -eq 1 ]] && grep -qF "$marker" "$TMP_ROOT/out.txt"; then
+        pass "$name"
+    else
+        fail "$name"
+        cat "$TMP_ROOT/out.txt"
+    fi
+}
+
+mv "$WORD_COPY/hub-router.json" "$TMP_ROOT/hub-router.bak"
+hub_mutant "a missing hub file fails" "missing hub file: hub-router.json"
+mv "$TMP_ROOT/hub-router.bak" "$WORD_COPY/hub-router.json"
+
+cp "$WORD_COPY/mode-registry.json" "$TMP_ROOT/registry.bak"
+sed 's/"packet": "cli-jortt"/"packet": "cli-absent"/' "$TMP_ROOT/registry.bak" >"$WORD_COPY/mode-registry.json"
+hub_mutant "a registry packet with no folder fails" "registry packet has no SKILL.md: cli-absent"
+sed 's/"default": false/"default": true/' "$TMP_ROOT/registry.bak" >"$WORD_COPY/mode-registry.json"
+hub_mutant "a registry with two default packets fails" "needs exactly one default mode, found 3"
+cp "$TMP_ROOT/registry.bak" "$WORD_COPY/mode-registry.json"
+
+cp "$WORD_COPY/hub-router.json" "$TMP_ROOT/hub-router.bak"
+sed 's/"defaultMode": "accountant"/"defaultMode": "cli-jortt"/' "$TMP_ROOT/hub-router.bak" >"$WORD_COPY/hub-router.json"
+hub_mutant "a stage one default that is not the registry default fails" "defaultMode cli-jortt is not the registry default accountant"
+cp "$TMP_ROOT/hub-router.bak" "$WORD_COPY/hub-router.json"
+
+cp "$WORD_COPY/cli-jortt/SKILL.md" "$TMP_ROOT/jortt-skill.bak"
+printf '\n<!-- router-block:start -->\n' >>"$WORD_COPY/cli-jortt/SKILL.md"
+hub_mutant "a router left in a packet SKILL.md fails" "packet SKILL.md embeds a router: cli-jortt/SKILL.md"
+cp "$TMP_ROOT/jortt-skill.bak" "$WORD_COPY/cli-jortt/SKILL.md"
+
+mv "$WORD_COPY/cli-jortt/ROUTER.md" "$TMP_ROOT/jortt-router.bak"
+hub_mutant "a packet without a ROUTER.md fails" "packet has no router: cli-jortt/ROUTER.md"
+sed 's/^router_state: active$/router_state: draft/' "$TMP_ROOT/jortt-router.bak" >"$WORD_COPY/cli-jortt/ROUTER.md"
+hub_mutant "a packet ROUTER.md that is not active fails" "cli-jortt/ROUTER.md frontmatter lacks: router_state: active"
+cp "$TMP_ROOT/jortt-router.bak" "$WORD_COPY/cli-jortt/ROUTER.md"
+python3 -I - "$TMP_ROOT/jortt-router.bak" "$WORD_COPY/cli-jortt/ROUTER.md" <<'PY'
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    text = handle.read()
+closing = text.index("\n---\n", 4) + len("\n---\n")
+with open(sys.argv[2], "w", encoding="utf-8") as handle:
+    handle.write(text[:closing])
+PY
+hub_mutant "a packet ROUTER.md emptied to its frontmatter fails" "cli-jortt/ROUTER.md lacks its routing section, intent model or resource map"
+cp "$TMP_ROOT/jortt-router.bak" "$WORD_COPY/cli-jortt/ROUTER.md"
+
+cp "$WORD_COPY/cli-jortt/SKILL.md" "$TMP_ROOT/jortt-skill.bak"
+printf '\nINTENT_MODEL = {}\n' >>"$WORD_COPY/cli-jortt/SKILL.md"
+hub_mutant "an intent model left in a packet SKILL.md fails" "packet SKILL.md embeds a router: cli-jortt/SKILL.md holds INTENT_MODEL"
+cp "$TMP_ROOT/jortt-skill.bak" "$WORD_COPY/cli-jortt/SKILL.md"
+
+cp "$WORD_COPY/SKILL.md" "$TMP_ROOT/hub-skill.bak"
+sed 's#(cli-jortt/ROUTER.md)#(cli-jortt/README.md)#g' "$TMP_ROOT/hub-skill.bak" >"$WORD_COPY/SKILL.md"
+hub_mutant "a hub SKILL.md that drops a packet router link fails" "hub SKILL.md does not link the packet router: cli-jortt/ROUTER.md"
+cp "$TMP_ROOT/hub-skill.bak" "$WORD_COPY/SKILL.md"
+
+mkdir -p "$WORD_COPY/cli-extra"
+printf -- '---\nname: cli-extra\n---\n' >"$WORD_COPY/cli-extra/SKILL.md"
+hub_mutant "a packet folder missing from the registry fails" "packet folder is not in mode-registry.json: cli-extra"
+rm -rf "$WORD_COPY/cli-extra"
+
+cp "$WORD_COPY/hub-router.json" "$TMP_ROOT/hub-router.bak"
+python3 -I - "$TMP_ROOT/hub-router.bak" "$WORD_COPY/hub-router.json" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    data = json.load(handle)
+data["signals"]["cli-jortt"] = []
+with open(sys.argv[2], "w", encoding="utf-8") as handle:
+    json.dump(data, handle, indent=2)
+PY
+hub_mutant "an empty stage one signal list for a non-default mode fails" "hub-router.json signals for cli-jortt are empty and it is not the default"
+python3 -I - "$TMP_ROOT/hub-router.bak" "$WORD_COPY/hub-router.json" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    data = json.load(handle)
+data["signals"]["cli-jortt"] = "jortt-cli"
+with open(sys.argv[2], "w", encoding="utf-8") as handle:
+    json.dump(data, handle, indent=2)
+PY
+hub_mutant "a stage one signal value that is not a list fails" "hub-router.json signals for cli-jortt are not a list of phrases"
+cp "$TMP_ROOT/hub-router.bak" "$WORD_COPY/hub-router.json"
 
 # Grow one sibling SKILL.md past the hard ceiling, so only the word check fails
 python3 -I - "$WORD_COPY/cli-jortt/SKILL.md" <<'PY'
 import sys
 
 with open(sys.argv[1], "a", encoding="utf-8") as handle:
-    handle.write("\n" + "\n".join(["word"] * 1700) + "\n")
+    handle.write("\n" + "\n".join(["word"] * 4100) + "\n")
 PY
 
 python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1

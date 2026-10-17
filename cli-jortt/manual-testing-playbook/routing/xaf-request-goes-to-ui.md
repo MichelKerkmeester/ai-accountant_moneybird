@@ -44,7 +44,7 @@ Operators run the exact prompt and command sequence for `JRT-005` and confirm th
 
 ### Commands
 
-1. `agent: Route the request with SKILL.md and load references/exports-and-limits.md`
+1. `agent: Route the request with ROUTER.md and load references/exports-and-limits.md`
 2. `agent: Answer with the Boekhoudbot steps for one XAF 4.0.3 file per year and the Beheerder requirement`
 
 ### Expected
@@ -64,7 +64,7 @@ The agent's final answer and a note that no tool call ran.
 ### Failure Triage
 
 1. Check that `references/exports-and-limits.md` was loaded.
-2. Check the XAF row of the routing table in `SKILL.md`.
+2. Check the XAF row of the routing table in `ROUTER.md`.
 
 ---
 
@@ -81,7 +81,7 @@ The agent's final answer and a note that no tool call ran.
 
 | File | Role |
 |---|---|
-| [`SKILL.md`](../../SKILL.md) | Operation-to-surface routing |
+| [`ROUTER.md`](../../ROUTER.md) | Operation-to-surface routing |
 | [`references/exports-and-limits.md`](../../references/exports-and-limits.md) | XAF UI export route |
 
 ---

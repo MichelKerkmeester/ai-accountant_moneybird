@@ -10,7 +10,7 @@
   "fences": [],
   "files": [
     {
-      "bytes": 6031,
+      "bytes": 6032,
       "path": "sk-moneybird-accountant/references/README.md",
       "sections": [
         {
@@ -64,18 +64,18 @@
       }
     },
     {
-      "bytes": 35973,
+      "bytes": 35975,
       "path": "sk-moneybird-accountant/references/fixed-assets.md",
       "sections": [
         {
           "anchor": "1-overview",
-          "bytes": 1369,
+          "bytes": 1371,
           "line": 24,
           "lines": 16,
           "title": "1. OVERVIEW",
           "tokens": {
             "cl100k_base": 356,
-            "o200k_base": 348
+            "o200k_base": 350
           }
         },
         {
@@ -213,7 +213,7 @@
       ],
       "tokens": {
         "cl100k_base": 10223,
-        "o200k_base": 9421
+        "o200k_base": 9423
       }
     },
     {
@@ -772,18 +772,18 @@
       }
     },
     {
-      "bytes": 5703,
+      "bytes": 5705,
       "path": "sk-moneybird-accountant/references/income-tax-return/README.md",
       "sections": [
         {
           "anchor": "1-overview",
-          "bytes": 871,
+          "bytes": 873,
           "line": 22,
           "lines": 10,
           "title": "1. OVERVIEW",
           "tokens": {
             "cl100k_base": 196,
-            "o200k_base": 196
+            "o200k_base": 198
           }
         },
         {
@@ -844,7 +844,7 @@
       ],
       "tokens": {
         "cl100k_base": 1349,
-        "o200k_base": 1331
+        "o200k_base": 1333
       }
     },
     {
@@ -2053,18 +2053,18 @@
       }
     },
     {
-      "bytes": 29184,
+      "bytes": 29185,
       "path": "sk-moneybird-accountant/references/mixed-use-costs.md",
       "sections": [
         {
           "anchor": "1-overview",
-          "bytes": 1572,
+          "bytes": 1573,
           "line": 22,
           "lines": 14,
           "title": "1. OVERVIEW",
           "tokens": {
             "cl100k_base": 391,
-            "o200k_base": 389
+            "o200k_base": 390
           }
         },
         {
@@ -2202,11 +2202,11 @@
       ],
       "tokens": {
         "cl100k_base": 7884,
-        "o200k_base": 7383
+        "o200k_base": 7384
       }
     },
     {
-      "bytes": 15597,
+      "bytes": 15598,
       "path": "sk-moneybird-accountant/references/moneybird-bookkeeping.md",
       "sections": [
         {
@@ -2266,13 +2266,13 @@
         },
         {
           "anchor": "6-bank-reconciliation",
-          "bytes": 1038,
+          "bytes": 1039,
           "line": 106,
           "lines": 11,
           "title": "6. BANK RECONCILIATION",
           "tokens": {
             "cl100k_base": 239,
-            "o200k_base": 232
+            "o200k_base": 233
           }
         },
         {
@@ -2311,22 +2311,22 @@
       ],
       "tokens": {
         "cl100k_base": 3585,
-        "o200k_base": 3520
+        "o200k_base": 3521
       }
     },
     {
-      "bytes": 37884,
+      "bytes": 37885,
       "path": "sk-moneybird-accountant/references/purchase-invoices.md",
       "sections": [
         {
           "anchor": "1-overview",
-          "bytes": 1239,
+          "bytes": 1240,
           "line": 22,
           "lines": 21,
           "title": "1. OVERVIEW",
           "tokens": {
             "cl100k_base": 296,
-            "o200k_base": 295
+            "o200k_base": 296
           }
         },
         {
@@ -2464,11 +2464,11 @@
       ],
       "tokens": {
         "cl100k_base": 10147,
-        "o200k_base": 9648
+        "o200k_base": 9649
       }
     },
     {
-      "bytes": 13823,
+      "bytes": 13827,
       "path": "sk-moneybird-accountant/references/routing-signals.md",
       "sections": [
         {
@@ -2517,13 +2517,13 @@
         },
         {
           "anchor": "5-token-budgets-for-the-route-keys",
-          "bytes": 2989,
+          "bytes": 2990,
           "line": 82,
           "lines": 27,
           "title": "5. TOKEN BUDGETS FOR THE ROUTE KEYS",
           "tokens": {
             "cl100k_base": 861,
-            "o200k_base": 856
+            "o200k_base": 857
           }
         },
         {
@@ -2550,19 +2550,19 @@
         },
         {
           "anchor": "8-related-resources",
-          "bytes": 198,
+          "bytes": 199,
           "line": 127,
           "lines": 4,
           "title": "8. RELATED RESOURCES",
           "tokens": {
             "cl100k_base": 49,
-            "o200k_base": 49
+            "o200k_base": 50
           }
         }
       ],
       "tokens": {
         "cl100k_base": 3813,
-        "o200k_base": 3604
+        "o200k_base": 3607
       }
     },
     {
@@ -19566,7 +19566,7 @@
       }
     },
     {
-      "bytes": 5656,
+      "bytes": 5658,
       "path": "sk-moneybird-accountant/references/tax-rules/year-and-state.md",
       "sections": [
         {
@@ -19626,19 +19626,19 @@
         },
         {
           "anchor": "6-related-resources",
-          "bytes": 586,
+          "bytes": 587,
           "line": 91,
           "lines": 8,
           "title": "6. RELATED RESOURCES",
           "tokens": {
             "cl100k_base": 138,
-            "o200k_base": 138
+            "o200k_base": 139
           }
         }
       ],
       "tokens": {
         "cl100k_base": 1340,
-        "o200k_base": 1328
+        "o200k_base": 1330
       }
     },
     {
@@ -19805,18 +19805,18 @@
       }
     },
     {
-      "bytes": 5900,
+      "bytes": 5902,
       "path": "sk-moneybird-accountant/references/vat-return/README.md",
       "sections": [
         {
           "anchor": "1-overview",
-          "bytes": 713,
+          "bytes": 715,
           "line": 22,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
             "cl100k_base": 165,
-            "o200k_base": 168
+            "o200k_base": 170
           }
         },
         {
@@ -19877,7 +19877,7 @@
       ],
       "tokens": {
         "cl100k_base": 1464,
-        "o200k_base": 1448
+        "o200k_base": 1450
       }
     },
     {
@@ -20196,18 +20196,18 @@
       }
     },
     {
-      "bytes": 6942,
+      "bytes": 6945,
       "path": "sk-moneybird-accountant/references/yearly-overview/README.md",
       "sections": [
         {
           "anchor": "1-overview",
-          "bytes": 1047,
+          "bytes": 1049,
           "line": 22,
           "lines": 8,
           "title": "1. OVERVIEW",
           "tokens": {
             "cl100k_base": 239,
-            "o200k_base": 236
+            "o200k_base": 238
           }
         },
         {
@@ -20234,13 +20234,13 @@
         },
         {
           "anchor": "4-the-eleven-close-signals-and-the-two-conditional-reads",
-          "bytes": 982,
+          "bytes": 983,
           "line": 62,
           "lines": 22,
           "title": "4. THE ELEVEN CLOSE SIGNALS AND THE TWO CONDITIONAL READS",
           "tokens": {
             "cl100k_base": 266,
-            "o200k_base": 250
+            "o200k_base": 251
           }
         },
         {
@@ -20268,7 +20268,7 @@
       ],
       "tokens": {
         "cl100k_base": 1672,
-        "o200k_base": 1634
+        "o200k_base": 1637
       }
     },
     {
@@ -20391,7 +20391,7 @@
       }
     },
     {
-      "bytes": 5717,
+      "bytes": 5719,
       "path": "sk-moneybird-accountant/references/yearly-overview/report-and-export-limits.md",
       "sections": [
         {
@@ -20407,13 +20407,13 @@
         },
         {
           "anchor": "2-the-report-rows",
-          "bytes": 1967,
+          "bytes": 1969,
           "line": 25,
           "lines": 19,
           "title": "2. THE REPORT ROWS",
           "tokens": {
             "cl100k_base": 473,
-            "o200k_base": 469
+            "o200k_base": 471
           }
         },
         {
@@ -20452,7 +20452,7 @@
       ],
       "tokens": {
         "cl100k_base": 1364,
-        "o200k_base": 1355
+        "o200k_base": 1357
       }
     }
   ],
@@ -20522,7 +20522,7 @@
   },
   "units": [
     {
-      "bytes": 7323203,
+      "bytes": 7323224,
       "files": 476,
       "name": "corpus total",
       "reads": [
@@ -20531,7 +20531,7 @@
       "sections": 1426,
       "tokens": {
         "cl100k_base": 2133789,
-        "o200k_base": 2028268
+        "o200k_base": 2028287
       }
     },
     {
@@ -20557,14 +20557,36 @@
       }
     },
     {
-      "bytes": 37172,
+      "bytes": 13877,
       "name": "sk-moneybird-accountant/SKILL.md",
       "reads": [
         "sk-moneybird-accountant/SKILL.md"
       ],
       "tokens": {
-        "cl100k_base": 9792,
-        "o200k_base": 9635
+        "cl100k_base": 3204,
+        "o200k_base": 3187
+      }
+    },
+    {
+      "bytes": 3938,
+      "name": "SKILL.md",
+      "reads": [
+        "SKILL.md"
+      ],
+      "tokens": {
+        "cl100k_base": 1076,
+        "o200k_base": 1080
+      }
+    },
+    {
+      "bytes": 24608,
+      "name": "sk-moneybird-accountant/ROUTER.md",
+      "reads": [
+        "sk-moneybird-accountant/ROUTER.md"
+      ],
+      "tokens": {
+        "cl100k_base": 6915,
+        "o200k_base": 6779
       }
     },
     {

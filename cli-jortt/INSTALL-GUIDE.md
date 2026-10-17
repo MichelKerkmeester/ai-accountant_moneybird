@@ -143,5 +143,5 @@ Rollback does not delete the migration workspace. Review its contents through th
 
 ## 8. RELATED RESOURCES
 
-- [`SKILL.md`](SKILL.md) for routing and safety rules
+- [`ROUTER.md`](ROUTER.md) for routing and [`SKILL.md`](SKILL.md) for safety rules
 - [`references/cli.md`](references/cli.md) for every command and exit code

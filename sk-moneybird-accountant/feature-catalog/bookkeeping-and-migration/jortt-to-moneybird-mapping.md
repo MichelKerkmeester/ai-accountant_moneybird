@@ -35,7 +35,7 @@ The route never maps a Jortt category to Moneybird by label alone. It maps by ac
 | File | Layer | Role |
 |---|---|---|
 | `sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md` | Shared | Defines the concept mapping, the export traps and the migration checks. |
-| `sk-moneybird-accountant/SKILL.md` | Shared | Routes a migration concept request to this reference in the T2 row. |
+| `sk-moneybird-accountant/ROUTER.md` | Shared | Routes a migration concept request to this reference in the T2 row. |
 | `sk-moneybird-accountant/references/migration/README.md` | Shared | Places the mapping guide in the phase route. |
 
 ### Validation And Tests

@@ -126,6 +126,7 @@
     ],
     "key_files": [
       "SKILL.md",
+      "ROUTER.md",
       "references/migration/README.md",
       "references/tax-rules/dutch-tax-rules.md",
       "references/moneybird-bookkeeping.md",
@@ -138,6 +139,7 @@
     "entities": [],
     "source_docs": [
       "SKILL.md",
+      "ROUTER.md",
       "README.md",
       "leaf-manifest.config.json"
     ],

@@ -2,10 +2,10 @@
 # ───────────────────────────────────────────────────────────────
 # COMPONENT: WRITE CONTRACT TEST
 # ───────────────────────────────────────────────────────────────
-# Tests write-contract-check.py on the real tree, on a clean copy and on five
+# Tests write-contract-check.py on the real tree, on a clean copy and on six
 # seeded divergences: a safety line without --confirm-write, a missing pointer,
-# a missing idempotency rule, a missing exit 9 and a second differing read-back
-# sentence. Every seeded divergence must fail the check and name its file.
+# a forbidden flag on the accountant SKILL.md pointer line, a missing
+# idempotency rule, a missing exit 9 and a second differing read-back sentence. Every seeded divergence must fail the check and name its file.
 # Usage: write-contract-test.sh [repo root]
 # Exit Codes:
 #   0 - All checks pass
@@ -48,6 +48,7 @@ fi
 CONTRACT_FILES=(
     "AGENTS.md"
     "sk-moneybird-accountant/SKILL.md"
+    "sk-moneybird-accountant/ROUTER.md"
     "sk-moneybird-accountant/references/migration/shared-mechanisms.md"
     "cli-moneybird/SKILL.md"
     "cli-moneybird/cli/moneybird-cli/moneybird-guard"
@@ -218,7 +219,10 @@ seed_failure "a safety line without --confirm-write fails" \
     "AGENTS.md" '--confirm-write' '' confirm
 
 seed_failure "a missing pointer fails" \
-    "sk-moneybird-accountant/SKILL.md" 'shared-mechanisms.md#route-contract' 'shared-mechanisms.md' pointer
+    "sk-moneybird-accountant/ROUTER.md" 'shared-mechanisms.md#route-contract' 'shared-mechanisms.md' pointer
+
+seed_failure "a forbidden flag on the accountant SKILL.md pointer line fails" \
+    "sk-moneybird-accountant/SKILL.md" 'for every non-GET batch. See the' 'for every non-GET batch, even with `--force-write`. See the' forceflag
 
 seed_failure "a missing idempotency rule fails" \
     "cli-moneybird/SKILL.md" 'idempotency' 'consistency' idempotency

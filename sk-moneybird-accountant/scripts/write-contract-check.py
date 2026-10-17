@@ -48,11 +48,13 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fi
 
 CANONICAL_REL = "sk-moneybird-accountant/references/migration/shared-mechanisms.md"
 
-# WHY: the three files that restate the write contract and keep one pointer each.
-RESTATEMENTS = (
-    "AGENTS.md",
-    "sk-moneybird-accountant/SKILL.md",
-    "cli-moneybird/SKILL.md",
+# WHY: the three restatements of the write contract, each with a pointer per file.
+# The accountant's spans its router and its SKILL.md, so each file is checked for
+# drift on its own and the pair together for the full set of tokens and rules.
+RESTATEMENTS: Tuple[Tuple[str, ...], ...] = (
+    ("AGENTS.md",),
+    ("sk-moneybird-accountant/ROUTER.md", "sk-moneybird-accountant/SKILL.md"),
+    ("cli-moneybird/SKILL.md",),
 )
 
 # WHY: this file owns the exit ladder, so it must carry the full canonical set.
@@ -233,7 +235,7 @@ def check_gate_flags(relative: str, text: str, gate_flags: Set[str], pointer_lin
 
     Args:
         relative: Path of the restatement, used in problem lines.
-        text: Full text of the restatement.
+        text: Full text of the restatement, every file of it joined.
         gate_flags: Canonical gate token set.
         pointer_lines: Line numbers that carry a pointer.
         problems: Problem list to append to.
@@ -241,6 +243,19 @@ def check_gate_flags(relative: str, text: str, gate_flags: Set[str], pointer_lin
     for flag in sorted(gate_flags):
         if flag not in text:
             problems.append("%s: gate token missing: %s" % (relative, flag))
+    check_pointer_flags(relative, text, gate_flags, pointer_lines, problems)
+
+
+def check_pointer_flags(relative: str, text: str, gate_flags: Set[str], pointer_lines: List[int], problems: List[str]) -> None:
+    """Check that every flag on a pointer line belongs to the canonical set.
+
+    Args:
+        relative: Path of one file, used in problem lines.
+        text: Full text of that file.
+        gate_flags: Canonical gate token set.
+        pointer_lines: Line numbers of that file that carry a pointer.
+        problems: Problem list to append to.
+    """
     flags = canonical_flags(gate_flags)
     lines = text.splitlines()
     for number in pointer_lines:
@@ -383,13 +398,19 @@ def main(argv: List[str]) -> int:
         exits = set()
     anchors = heading_slugs(canonical)
 
-    for relative in RESTATEMENTS:
-        text = read_text(root, relative)
-        pointer_lines = check_pointer(relative, text, anchors, problems)
-        check_gate_flags(relative, text, gate_flags, pointer_lines, problems)
-        check_elements(relative, text, problems)
-        check_exits(relative, text, exits, problems)
-        check_readback(relative, text, sentence or "", problems)
+    for restatement in RESTATEMENTS:
+        texts = []
+        for relative in restatement:
+            text = read_text(root, relative)
+            texts.append(text)
+            pointer_lines = check_pointer(relative, text, anchors, problems)
+            check_pointer_flags(relative, text, gate_flags, pointer_lines, problems)
+            check_exits(relative, text, exits, problems)
+            check_readback(relative, text, sentence or "", problems)
+        joined = "\n".join(texts)
+        name = " + ".join(restatement)
+        check_gate_flags(name, joined, gate_flags, [], problems)
+        check_elements(name, joined, problems)
 
     check_canonical(canonical, sentence, problems)
     check_guard(root, exits, problems)

@@ -45,6 +45,7 @@ REPO_ROOT=$(dirname "$SKILL_SRC")
 BUILDER="$SKILL_SRC/scripts/build-session-context.py"
 AGENTS_MD="$REPO_ROOT/AGENTS.md"
 SKILL_MD="$SKILL_SRC/SKILL.md"
+ROUTER_MD="$SKILL_SRC/ROUTER.md"
 
 if [[ ! -f "$BUILDER" ]]; then
     printf 'error: missing scripts/build-session-context.py in the skill folder\n' >&2
@@ -56,6 +57,10 @@ if [[ ! -f "$AGENTS_MD" ]]; then
 fi
 if [[ ! -f "$SKILL_MD" ]]; then
     printf 'error: missing SKILL.md in the skill folder\n' >&2
+    exit 2
+fi
+if [[ ! -f "$ROUTER_MD" ]]; then
+    printf 'error: missing ROUTER.md in the skill folder\n' >&2
     exit 2
 fi
 
@@ -635,11 +640,11 @@ fi
 
 group "documentation"
 
-hits=$(grep -E '\b20[0-9]{2}-[0-9]{2}-[0-9]{2}\b' "$AGENTS_MD" "$SKILL_MD")
+hits=$(grep -E '\b20[0-9]{2}-[0-9]{2}-[0-9]{2}\b' "$AGENTS_MD" "$SKILL_MD" "$ROUTER_MD")
 if [[ -z "$hits" ]]; then
-    pass "no ISO date in AGENTS.md or SKILL.md"
+    pass "no ISO date in AGENTS.md, SKILL.md or ROUTER.md"
 else
-    fail "no ISO date in AGENTS.md or SKILL.md"
+    fail "no ISO date in AGENTS.md, SKILL.md or ROUTER.md"
     printf '%s\n' "$hits" | sed 's/^/  /'
 fi
 

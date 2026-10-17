@@ -1,6 +1,6 @@
 ---
 title: "Operation routing"
-description: "SKILL.md section 2 maps each request to a guarded CLI route or a Moneybird UI step and selects the reference set to load."
+description: "ROUTER.md section 2 maps each request to a guarded CLI route or a Moneybird UI step and selects the reference set to load."
 trigger_phrases:
   - "operation routing"
   - "moneybird operation table"
@@ -9,13 +9,13 @@ trigger_phrases:
 version: 1.0.0.0
 ---
 
-# Operation routing (SKILL.md)
+# Operation routing (ROUTER.md)
 
 <!-- sk-doc-template: skill_asset_feature_catalog -->
 
 ## 1. OVERVIEW
 
-`SKILL.md` section 2 maps each request to a guarded CLI route or a Moneybird UI step and selects the reference set to load.
+`ROUTER.md` section 2 maps each request to a guarded CLI route or a Moneybird UI step and selects the reference set to load.
 
 The routing table is the boundary between what the skill may do through the API and what only the operator does in the UI. A wrong route is caught before a call rather than after it.
 
@@ -43,7 +43,7 @@ Bank file import, tax rate creation, period locking and historical VAT filing st
 
 | File | Layer | Role |
 |---|---|---|
-| [`SKILL.md`](../../SKILL.md) | Shared | Owns the operation table, the intent router and the resource map |
+| [`ROUTER.md`](../../ROUTER.md) | Shared | Owns the operation table, the intent router and the resource map |
 | [`references/migration-recipes.md`](../../references/migration-recipes.md) | Shared | Gives the guarded command sequence behind each write route |
 | [`references/rest-api.md`](../../references/rest-api.md) | Shared | Holds the read rules the routing table points to |
 

@@ -59,6 +59,7 @@ COPY_FILES=(
     "cli-moneybird/references/cli.md"
     "cli-moneybird/references/troubleshooting.md"
     "cli-moneybird/SKILL.md"
+    "cli-moneybird/ROUTER.md"
 )
 
 for rel in "${COPY_FILES[@]}"; do
@@ -247,11 +248,11 @@ FIXTURE_3="$TMP_ROOT/case-3"
 if ! build_fixture "$FIXTURE_3"; then
     fail "a removed keyword code is caught and names exit 2 (fixture copy failed)"
 else
-    DOC_3="$FIXTURE_3/cli-moneybird/SKILL.md"
+    DOC_3="$FIXTURE_3/cli-moneybird/ROUTER.md"
     if remove_keyword "$DOC_3" '"exit 2", '; then
         run_parity "$FIXTURE_3" 3
         status_3=$?
-        if [[ "$status_3" -ne 0 ]] && grep -q 'missing exit 2 in cli-moneybird/SKILL.md TROUBLESHOOT keywords' "$TMP_ROOT/parity-3.txt"; then
+        if [[ "$status_3" -ne 0 ]] && grep -q 'missing exit 2 in cli-moneybird/ROUTER.md TROUBLESHOOT keywords' "$TMP_ROOT/parity-3.txt"; then
             pass "a removed keyword code is caught and names exit 2"
         else
             fail "a removed keyword code is caught and names exit 2"
@@ -266,11 +267,11 @@ FIXTURE_4="$TMP_ROOT/case-4"
 if ! build_fixture "$FIXTURE_4"; then
     fail "a removed --print-body keyword is caught (fixture copy failed)"
 else
-    DOC_4="$FIXTURE_4/cli-moneybird/SKILL.md"
+    DOC_4="$FIXTURE_4/cli-moneybird/ROUTER.md"
     if remove_keyword "$DOC_4" '"--print-body", '; then
         run_parity "$FIXTURE_4" 4
         status_4=$?
-        if [[ "$status_4" -ne 0 ]] && grep -q 'missing --print-body in cli-moneybird/SKILL.md TROUBLESHOOT keywords' "$TMP_ROOT/parity-4.txt"; then
+        if [[ "$status_4" -ne 0 ]] && grep -q 'missing --print-body in cli-moneybird/ROUTER.md TROUBLESHOOT keywords' "$TMP_ROOT/parity-4.txt"; then
             pass "a removed --print-body keyword is caught"
         else
             fail "a removed --print-body keyword is caught"

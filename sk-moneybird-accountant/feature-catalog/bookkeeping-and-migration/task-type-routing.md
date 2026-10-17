@@ -15,7 +15,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-Classifies each request to exactly one task type of the Task-Type Table in SKILL.md section 2.
+Classifies each request to exactly one task type of the Task-Type Table in ROUTER.md section 2.
 
 The winning row decides the tool route, the read set and the token budget key for the answer. The types cover migration phase and migration concept work, live periods, purchase invoices, tax figures, cross-year rules, CLI actions, unknown or out-of-scope requests and onboarding.
 
@@ -37,7 +37,7 @@ Every read-set cell uses the `!`, `?`, `@section-id`, `{year}`, `{phase-file}` a
 
 | File | Layer | Role |
 |---|---|---|
-| sk-moneybird-accountant/SKILL.md | Shared | Defines the Task-Type Table, the tie rules, the abstain margin and the route record. |
+| sk-moneybird-accountant/ROUTER.md | Shared | Defines the Task-Type Table, the tie rules, the abstain margin and the route record. |
 | sk-moneybird-accountant/scripts/check-route-table.py | Shared | Generates the router block and the multi-word intent signals from the table and fails on drift. |
 | sk-moneybird-accountant/assets/route-calibration.json | Shared | Holds the frozen route margin, fallback floor and calibration record. |
 | sk-moneybird-accountant/graph-metadata.json | Shared | Carries the generated intent signals and the curated routing vocabulary. |

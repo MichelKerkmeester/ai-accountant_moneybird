@@ -16,7 +16,7 @@ version: 1.0.0.0
 
 Scores the routing corpus offline and replays the refusal and hostile rows through the guard and the stub.
 
-`scripts/route-replay/route-replay.py` builds a router snapshot from the Task-Type Table in `SKILL.md` section 2, the constants in `references/routing-signals.md` and the resource map. In resolve mode it runs a connectivity gate over every routed path and scores each corpus row for mode, task type, read set, expected facts and the token ceiling. In replay mode it runs the guard in test mode against the stub CLI and asserts the recorded command line and exit code of every refusal row and hostile invoice case.
+`scripts/route-replay/route-replay.py` builds a router snapshot from the Task-Type Table in `ROUTER.md` section 2, the constants in `references/routing-signals.md` and the resource map. In resolve mode it runs a connectivity gate over every routed path and scores each corpus row for mode, task type, read set, expected facts and the token ceiling. In replay mode it runs the guard in test mode against the stub CLI and asserts the recorded command line and exit code of every refusal row and hostile invoice case.
 
 ---
 

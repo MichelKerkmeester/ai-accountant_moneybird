@@ -9,7 +9,7 @@ trigger_phrases:
 version: 1.0.0.0
 ---
 
-# Surface routing (SKILL.md)
+# Surface routing (ROUTER.md)
 
 <!-- sk-doc-template: skill_asset_feature_catalog -->
 
@@ -35,7 +35,7 @@ The Jortt API has no XAF, annual accounts (jaarrekening) or filed VAT return (bt
 
 | File | Layer | Role |
 |---|---|---|
-| [`SKILL.md`](../../SKILL.md) | Shared | Holds the operation-to-surface table, the detection order and the router. |
+| [`ROUTER.md`](../../ROUTER.md) | Shared | Holds the operation-to-surface table, the detection order and the router. |
 | [`references/exports-and-limits.md`](../../references/exports-and-limits.md) | Shared | States which records need the Jortt UI. |
 
 ### Validation And Tests

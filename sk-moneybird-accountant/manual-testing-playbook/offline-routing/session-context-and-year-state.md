@@ -93,7 +93,7 @@ Check the year order in section 2, the refusal states in section 3 and the state
 
 | File | Role |
 |---|---|
-| sk-moneybird-accountant/SKILL.md | Routes the resolved year and state through the Task-Type Table. |
+| sk-moneybird-accountant/ROUTER.md | Routes the resolved year and state through the Task-Type Table. |
 | sk-moneybird-accountant/references/tax-rules/year-and-state.md | Holds the year resolver, the refusal states and the post-cutover predicate. |
 | sk-moneybird-accountant/references/routing-signals.md | Names the signal sources and tie mechanics the router reads. |
 | sk-moneybird-accountant/scripts/build-session-context.py | Writes and checks the session context and prints the route state. |

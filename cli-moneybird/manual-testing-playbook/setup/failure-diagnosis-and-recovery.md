@@ -75,7 +75,7 @@ rg -n "Guard exit 7|Quick Diagnostics|login-from-env --writer" references/troubl
 |---|---|
 | [`references/troubleshooting.md`](../../references/troubleshooting.md) | Owns the diagnostic order and the failure rows |
 | [`references/cli.md`](../../references/cli.md) | Owns the canonical exit-code table |
-| [`SKILL.md`](../../SKILL.md) | Routes a failed operation to the troubleshooting reference |
+| [`ROUTER.md`](../../ROUTER.md) | Routes a failed operation to the troubleshooting reference |
 
 ---
 

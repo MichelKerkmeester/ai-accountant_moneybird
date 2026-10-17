@@ -37,7 +37,7 @@ The twelve ordinal pointers in the top layer are fragment links the check resolv
 | File | Layer | Role |
 |---|---|---|
 | `sk-moneybird-accountant/scripts/check-fragments.py` | Script | Resolves link paths and fragments across the bootstrap, the README and the skill markdown. |
-| `sk-moneybird-accountant/SKILL.md` | Shared | Links the routed references the check resolves. |
+| `sk-moneybird-accountant/ROUTER.md` | Shared | Links the routed references the check resolves. |
 | `sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md` | Shared | Holds the pointer table to the general topic files a cross-year question is routed through. |
 
 ### Validation And Tests

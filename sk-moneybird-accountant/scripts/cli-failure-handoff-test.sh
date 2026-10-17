@@ -50,6 +50,7 @@ JORTT_SKILL="$REPO_SRC/cli-jortt/SKILL.md"
 MONEYBIRD_SKILL="$REPO_SRC/cli-moneybird/SKILL.md"
 SHARED="$REPO_SRC/sk-moneybird-accountant/references/migration/shared-mechanisms.md"
 SKILL_PAGE="$REPO_SRC/sk-moneybird-accountant/SKILL.md"
+ROUTER_PAGE="$REPO_SRC/sk-moneybird-accountant/ROUTER.md"
 EVALS="$REPO_SRC/sk-moneybird-accountant/evals/evals.json"
 SCENARIO="$REPO_SRC/sk-moneybird-accountant/manual-testing-playbook/offline-routing/cli-failure-blocked.md"
 
@@ -384,10 +385,10 @@ fi
 group "blocked answer contract"
 
 if grep -qF 'Say blocked, name the missing capability and stop.' "$SKILL_PAGE" \
-    && grep -qF 'CLI_FAILURE' "$SKILL_PAGE"; then
-    pass "the skill keeps the blocked answer rule and the CLI_FAILURE route class"
+    && grep -qF -- '- `CLI_FAILURE`: on any nonzero CLI or guard exit' "$ROUTER_PAGE"; then
+    pass "the skill keeps the blocked answer rule and its router the CLI_FAILURE route class"
 else
-    fail "the skill keeps the blocked answer rule and the CLI_FAILURE route class"
+    fail "the skill keeps the blocked answer rule and its router the CLI_FAILURE route class"
 fi
 
 if python3 -I - "$EVALS" <<'PY'

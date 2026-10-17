@@ -32,8 +32,8 @@ Every Moneybird read or write runs through moneybird-guard, following [cli-money
 ### Tool route
 
 1. **Knowledge.** Read this reference and the year's `investments.md` and `vat.md`. [Investment deduction and depreciation 2026](./tax-rules/2026/investments/figures.md), [VAT 2026](./tax-rules/2026/vat/figures.md)
-2. **Guarded read.** Read the administration's categories and assets through [cli-moneybird](../../cli-moneybird/SKILL.md) section 2 under `MONEYBIRD_GUARD_READ_ONLY=1`.
-3. **Gated write.** The Operator enters assets in the Moneybird UI under **Assets (Bezittingen)**. A gated write through [cli-moneybird](../../cli-moneybird/SKILL.md) section 2 applies only where the LIVE write authority in [SKILL.md](../SKILL.md) allows it.
+2. **Guarded read.** Read the administration's categories and assets through [cli-moneybird](../../cli-moneybird/ROUTER.md) section 2 under `MONEYBIRD_GUARD_READ_ONLY=1`.
+3. **Gated write.** The Operator enters assets in the Moneybird UI under **Assets (Bezittingen)**. A gated write through [cli-moneybird](../../cli-moneybird/ROUTER.md) section 2 applies only where the LIVE write authority in [SKILL.md](../SKILL.md) allows it.
 
 ---
 

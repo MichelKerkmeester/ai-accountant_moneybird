@@ -43,7 +43,7 @@ The fiscal reconciliation file holds the reconciliation template, the three-colu
 | `sk-moneybird-accountant/references/yearly-overview/fiscal-reconciliation.md` | Shared | The fiscal reconciliation template, the three-column hand-off template and the prepared-not-filed stop. |
 | `sk-moneybird-accountant/references/yearly-overview/report-and-export-limits.md` | Shared | The report rows, the twelve-month window, the mode-scoped auditfile export order and the unverified items. |
 | `sk-moneybird-accountant/assets/yearly-overview/yearly-overview-template.html` | Asset | The printable A4 layout with bilingual labels, braced placeholders and no script or remote asset. |
-| `sk-moneybird-accountant/SKILL.md` | Shared | Holds the T11 row that routes a prepare-the-yearly-overview request into this folder. |
+| `sk-moneybird-accountant/ROUTER.md` | Shared | Holds the T11 row that routes a prepare-the-yearly-overview request into this folder. |
 | `sk-moneybird-accountant/references/tax-rules/{year}/README.md` | Shared | The required year read before any year figure is used. |
 
 ### Validation And Tests

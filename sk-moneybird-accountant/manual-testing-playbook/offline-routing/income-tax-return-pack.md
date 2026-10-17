@@ -64,7 +64,7 @@ Capture the check output, the selected row, the loaded paths, the pack block lis
 
 ### Failure Triage
 
-Check the T12 row and the T8 filing precedence in SKILL.md section 2, then the PACK-INCOME-01 row in [the routing corpus](../../scripts/route-replay/routing-gold.json). Repeat offline.
+Check the T12 row and the T8 filing precedence in ROUTER.md section 2, then the PACK-INCOME-01 row in [the routing corpus](../../scripts/route-replay/routing-gold.json). Repeat offline.
 
 ---
 
@@ -86,7 +86,7 @@ Check the T12 row and the T8 filing precedence in SKILL.md section 2, then the P
 
 | File | Role |
 |---|---|
-| [SKILL.md](../../SKILL.md) | The T12 row, its read set and the filing precedence. |
+| [ROUTER.md](../../ROUTER.md) | The T12 row, its read set and the filing precedence. |
 | [routing-gold.json](../../scripts/route-replay/routing-gold.json) | The PACK-INCOME-01 row this scenario mirrors. |
 | [evals.json](../../evals/evals.json) | The income-tax-return-pack case. |
 

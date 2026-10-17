@@ -29,7 +29,7 @@ Lists default to `period:this_year`, so every verification list names its period
 
 ### Unmatched Bank Transactions
 
-An unmatched bank transaction reports `state:unprocessed`, a processed one `state:processed` and one booked from a suggestion `state:auto_booked`. The bank read uses the "Bank transactions to match" row in section 2 of `cli-moneybird/SKILL.md` and names the state with an explicit period. The bank list defaults to `period:this_year`, and a passed filter replaces every default. The comma filter form `--filter "period:$YEAR,state:unprocessed"` is `UNVERIFIED` until pinned CLI help confirms it. The bank list is capped, so a larger read goes through `sync` and `sync_fetch` with a local state filter. The cap is in `references/rest-api.md`, and the read and its fallback follow the Read Step Contract in `cli-moneybird/SKILL.md` section 3.
+An unmatched bank transaction reports `state:unprocessed`, a processed one `state:processed` and one booked from a suggestion `state:auto_booked`. The bank read uses the "Bank transactions to match" row in section 2 of `cli-moneybird/ROUTER.md` and names the state with an explicit period. The bank list defaults to `period:this_year`, and a passed filter replaces every default. The comma filter form `--filter "period:$YEAR,state:unprocessed"` is `UNVERIFIED` until pinned CLI help confirms it. The bank list is capped, so a larger read goes through `sync` and `sync_fetch` with a local state filter. The cap is in `references/rest-api.md`, and the read and its fallback follow the Read Step Contract in `cli-moneybird/SKILL.md` section 3.
 
 ### Writes That Look Successful
 
