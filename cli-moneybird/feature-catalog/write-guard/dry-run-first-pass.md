@@ -23,7 +23,7 @@ The preview is what lets the guard reason about a request it did not build. The 
 
 ## 2. HOW IT WORKS
 
-Before the first pass the guard separates its own flags (`--confirm-write`, `--approval`, `--production`, `--out`, `--quiet` and `--print-body`) from the CLI arguments. `--help`, `--version`, `help` and the local `administration list`, `current` and `use` commands skip the preview. `administration use <id>` is gated. Switching to the pilot administration passes. Switching to any other administration is treated as a production write and needs `--confirm-write`, the writer configuration, `--production` and `--approval`. The read-only lock blocks it with exit 6.
+Before the first pass the guard separates its own flags (`--confirm-write`, `--approval`, `--production`, `--out` and `--print-body`) from the CLI arguments. The local `administration list`, `current` and `use` commands skip the preview. `administration use <id>` is gated. Switching to the pilot administration passes. Switching to any other administration is treated as a production write and needs `--confirm-write`, the writer configuration, `--production` and `--approval`. The read-only lock blocks it with exit 6.
 
 Every other call runs the CLI once with `--dry-run`. The guard keeps the first output line, requires it to be a single `METHOD URL` pair with a path under `/api/v2/` and reads the administration from the path. A failed preview returns the CLI status. A malformed first line exits 2. A GET then runs for real and every other method continues to the write gates.
 

@@ -27,7 +27,7 @@ The agent reads the guide, then greps the index for a host, a topic or a citing 
 
 The builder also checks the reference frontmatter field set and the sourced term map in `assets/term-map.json`, where every row carries the English gloss a reader sees on first use and the source the owning year file cites. A row fails when its `source_file` does not hold the term or its source.
 
-`--trace <file>:<line>` reads only a file the scan reads. It resolves symlinks first, then refuses a private folder, a credential file such as `.env*`, the privacy denylist and any file outside the scan with exit 2. It prints each URL without its query string and fragment. `--apply-report` leaves a blocked row and a transport error row unchanged and prints `N unreachable rows left unchanged`. `--watch` exits 1 when every URL it fetched failed or was blocked and prints `the watch could not check N of M watched URLs`, so a quiet exit never hides an outage.
+`--apply-report` leaves a blocked row and a transport error row unchanged and prints `N unreachable rows left unchanged`. `--watch` exits 1 when every URL it fetched failed or was blocked and prints `the watch could not check N of M watched URLs`, so a quiet exit never hides an outage.
 
 ---
 

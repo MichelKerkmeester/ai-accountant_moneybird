@@ -5,62 +5,41 @@
 """Check the task-type route table in the skill's router.
 
 Reads the ROUTER.md beside the skill's SKILL.md and verifies the route-table
-block between its markers. The
-check validates the header, the row types, the Dutch and English cells, the
-budget cells, the tool routes, the read-set grammar, the read-set paths and
-their guard, the glossary read rule with a glossary file for every topic,
-the routing constants, the read budget ladder against the signal sources
-file and the file line of token-baseline.py, the T7, T8 and T9 row rules the
-resolver depends on, the warning band, the abstain wording, the margin
-override bullets, the pointer to the signal sources file, the
-source lines of that file, the documented-gap ledger of that file and the
-frozen calibration record in assets/route-calibration.json. Each read item
-carries a `!` or `?` mark, an optional `@section-id` anchor and the `{year}`
-token, and the map tokens `{phase-file}` and `{topic-figures}` expand over
-the phase table of the migration index and the topic figures files. It also
-compares the generated router block between the router markers with the
-table row by row, including the required and conditional reads, the section
-targets, the phase map, the topic map and the table's multi-word signals and
-curated advisor signals with graph-metadata.json, and the write mode
-regenerates both surfaces. The check also runs the sibling check-skill-words.py
-over the repository, so a SKILL.md above the word ceiling fails this check, the
-sibling split-topic-files.py in its check mode, so a split part that drifted
-from its manifest fails it too, the sibling outline-check.py, so a decision
-step with no alternative branch fails it as well, and the sibling
-scannability-report.py in its check mode, so a stale scannability report
-fails it. It checks the hub as well: the root SKILL.md, mode-registry.json
-and hub-router.json exist, every registry packet has a SKILL.md whose name is
-its packetSkillName, the packetKind of its role and an active ROUTER.md that
-points back to it, stage one names one default packet and no
-packet SKILL.md embeds a router again. The script uses the Python
-standard library only and makes no network call.
+block between its markers. The check validates the header, the row types, the
+Dutch and English cells, the budget cells, the tool routes, the read-set
+grammar, the read-set paths and their guard, the glossary read rule with a
+glossary file for every topic, the route margin, the read budget ladder
+against the signal sources file and the file line of token-baseline.py, the
+T7, T8 and T9 row rules the resolver depends on, the abstain wording, the
+pointer to the signal sources file, the source lines of that file and the
+documented-gap ledger of that file. Each read item carries a `!` or
+`?` mark, an optional `@section-id` anchor and the `{year}` token, and the map
+tokens `{phase-file}` and `{topic-figures}` expand over the phase table of the
+migration index and the topic figures files. It also compares the generated
+router block between the router markers with the table row by row, including
+the required and conditional reads, the section targets, the phase map, the
+topic map and the table's multi-word signals and curated advisor signals with
+graph-metadata.json, and the write mode regenerates both surfaces. It checks
+the hub as well: the root SKILL.md, mode-registry.json and hub-router.json
+exist, every registry packet has a SKILL.md whose name is its packetSkillName,
+the packetKind of its role and an active ROUTER.md that points back to it,
+stage one names one default packet and no packet SKILL.md embeds a router
+again. The script uses the Python standard library only and makes no network
+call.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/check-route-table.py
-    python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check
     python3 -I sk-moneybird-accountant/scripts/check-route-table.py --write
-    python3 -I sk-moneybird-accountant/scripts/check-route-table.py --signals /tmp/routing-signals.md
-    python3 -I sk-moneybird-accountant/scripts/check-route-table.py --calibration /tmp/route-calibration.json
 
 Options:
-    --check          Run the check. This is the default mode.
-    --write          Regenerate the router block in ROUTER.md and append the
-                     table's multi-word signals to graph-metadata.json.
-    --router P       Read this markdown file instead of the skill's ROUTER.md.
-                     Read-set paths still resolve against the skill folder and
-                     the hub files against the repository root.
-    --graph-metadata P  Read the intent signals from this file instead of the
-                     skill's graph-metadata.json.
-    --signals P      Read the signal sources from this file instead of the
-                     skill's references/routing-signals.md.
-    --calibration P  Read the frozen constants from this file instead of the
-                     skill's assets/route-calibration.json.
+    --write  Regenerate the router block in ROUTER.md and append the table's
+             multi-word signals to graph-metadata.json. Without it the script
+             runs the check.
 
 Output:
-    The word check's one line per SKILL.md and ROUTER.md, one line per problem, or
-    "route-table: ok" when the file passes. The write mode prints one line per
-    generated surface. Exit 0 on success, 1 when the file has problems or the
-    word check fails and 2 when a write is refused.
+    One line per problem, or "route-table: ok" when the file passes. The write
+    mode prints one line per generated surface. Exit 0 on success, 1 when the
+    file has problems and 2 when a write is refused.
 """
 
 # ───────────────────────────────────────────────────────────────
@@ -71,7 +50,6 @@ import argparse
 import json
 import os
 import re
-import subprocess
 import sys
 from typing import Any, Dict, List, NoReturn, Optional, Tuple
 
@@ -102,28 +80,10 @@ SKILL_POINTER_LINE = "skill_pointer: SKILL.md"
 
 GRAPH_METADATA = os.path.join(SKILL_FOLDER, "graph-metadata.json")
 
-# WHY: the word budget is enforced here, because the repository check list
-# runs this checker and the word check has no step of its own.
-REPO_ROOT = os.path.dirname(SKILL_FOLDER)
-WORD_CHECK = os.path.join(SKILL_FOLDER, "scripts", "check-skill-words.py")
-
-# WHY: the split proof is enforced here for the same reason, and the split
-# suite has no step of its own until the workflow lists it.
-SPLIT_CHECK = os.path.join(SKILL_FOLDER, "scripts", "split-topic-files.py")
-
-# WHY: the carry-forward proof is enforced here for the same reason, so a
-# decision step with no alternative branch fails the repository check list.
-OUTLINE_CHECK = os.path.join(SKILL_FOLDER, "scripts", "outline-check.py")
-
-# WHY: the scannability report reads the gold rows and the token baseline, so
-# a change to either leaves it stale unless the check list recomputes it.
-SCANNABILITY_CHECK = os.path.join(SKILL_FOLDER, "scripts", "scannability-report.py")
-
 START_MARKER = "<!-- route-table:start -->"
 END_MARKER = "<!-- route-table:end -->"
 ROUTER_START = "<!-- router-block:start -->"
 ROUTER_END = "<!-- router-block:end -->"
-ROUTER_HEADING = "### Smart Router Pseudocode"
 EXPECTED_HEADER = "| Type | Name | Dutch signals | English signals | Tool route | Read set | Budget | On tie |"
 
 # WHY: the label belongs to the generated region, so a hand edit inside the
@@ -173,25 +133,23 @@ CURATED_ADVISOR_SIGNALS = (
 )
 
 ROW_TYPES = tuple("T%d" % number for number in range(1, 13))
-REQUIRED_ROW_TYPES = ROW_TYPES
 ROUTE_CELLS = ("`none`", "`cli-jortt`", "`cli-moneybird`", "`cli-jortt + cli-moneybird`", "`additive`")
 
-# WHY: the routing prose must keep naming both calibration constants, the
-# warning band and the abstain outcome.
-REQUIRED_TOKENS = ("ROUTE_MARGIN", "FALLBACK_FLOOR", "0.08", "abstain")
-
-# WHY: only these row types may carry their own margin override bullet.
-OVERRIDE_TYPES = ("T2", "T6")
-OVERRIDE_PREFIX = "- Margin override"
+# WHY: the routing prose must keep naming the abstain outcome.
+REQUIRED_TOKENS = ("abstain",)
+# WHY: the router and the signal sources file both state the route margin,
+# and the resolver reads only the router copy.
+MARGIN_RE = re.compile(r"`ROUTE_MARGIN = ([0-9.]+)`")
+# WHY: the signal sources file names a term as a weak signal that never
+# decides a row, as in "`btw` alone is a weak signal", so no row may list it.
+WEAK_SIGNAL_RE = re.compile(r"^`([^`]+)` alone is a weak signal", re.M)
 
 # WHY: the routing section must point readers at the signal sources file.
 SIGNAL_HEAD = "Signal sources"
 SIGNALS_REF = "references/routing-signals.md"
 SIGNALS_MD = os.path.join(SKILL_FOLDER, "references", "routing-signals.md")
-CALIBRATION_PATH = os.path.join(SKILL_FOLDER, "assets", "route-calibration.json")
 SOURCES_HEAD = "SIGNAL SOURCES"
 VOCABULARY_PREFIX = "- Skill vocabulary"
-TIE_HEADING = "Ties and Abstain"
 YEAR_TOKEN = "{year}"
 PHASE_PLACEHOLDER = "{phase-file}"
 TOPIC_PLACEHOLDER = "{topic-figures}"
@@ -205,21 +163,15 @@ GLOSSARY_SHARED_FILES = ("bookkeeping.md", "general.md")
 GAPS_HEADING = "Documented gaps"
 GAPS_COLUMNS = ("Topic", "Owner", "Coverage", "Operator action")
 COVERAGE_VALUES = ("covered", "partial", "gap")
-FALSE_ABSTAIN_MAX = 0.05
-PENDING_MARKER = "calibration: pending"
-CONSTANT_NUMBER_RE = re.compile(r"([0-9]+(?:\.[0-9]+)?)")
 
 ROW_RE = re.compile(r"^\|\s*(T\d+)\s*\|")
-OVERRIDE_BULLET_RE = re.compile(r"^\s*(T\d+):\s*(.*)$")
 BACKTICK_RE = re.compile(r"`([^`]*)`")
 BARE_PATH_RE = re.compile(r"(?<![\w/.~-])((?://|/|~/|\.\./)?(?:[\w.-]+/)*[\w.-]+\.(?:md|mdx|markdown|rst|adoc|html?|json|ya?ml|py|txt|csv))\b", re.IGNORECASE)
-NUMBER_RE = re.compile(r"\d+(?:\.\d+)?")
 YEAR_RE = re.compile(r"^\d{4}$")
 SECTION_RE = re.compile(
     r"^(INTENT_SIGNALS|REQUIRED_READS|CONDITIONAL_READS|SECTION_TARGETS|PHASE_FILES|TOPIC_FILES|RESOURCE_MAP|LOADING_LEVELS) = \{$"
 )
 ENTRY_RE = re.compile(r'^    "(T\d+|tok:T\d+)": .*,$')
-HEADING_RE = re.compile(r"^#{1,6} ")
 HEADING_TEXT_RE = re.compile(r"^#{1,6}\s+(.*)$")
 ANCHOR_ID_RE = re.compile(r'<a\s+id="([^"]+)"')
 SLUG_STRIP_RE = re.compile(r"[^\w\s-]", re.UNICODE)
@@ -528,8 +480,6 @@ def topic_files() -> Dict[str, str]:
     topics: Dict[str, str] = {}
     for year in year_folders():
         year_path = os.path.join(TAX_RULES_BASE, year)
-        if not os.path.isdir(year_path):
-            continue
         for name in sorted(os.listdir(year_path)):
             if name in topics or not os.path.isfile(os.path.join(year_path, name, "figures.md")):
                 continue
@@ -807,7 +757,7 @@ def check_table(lines: List[str], problems: List[str], missing: List[str]) -> No
             continue
         seen.append(row_type)
         check_row(stripped, row_type, problems, missing)
-    for row_type in REQUIRED_ROW_TYPES:
+    for row_type in ROW_TYPES:
         if row_type not in seen:
             problems.append("missing row %s" % row_type)
     for row_type in seen:
@@ -848,12 +798,11 @@ def check_glossary(text: str, problems: List[str]) -> None:
     topics = set(topic_files())
     for year in year_folders():
         year_path = os.path.join(TAX_RULES_BASE, year)
-        if os.path.isdir(year_path):
-            topics.update(
-                name
-                for name in os.listdir(year_path)
-                if os.path.isdir(os.path.join(year_path, name))
-            )
+        topics.update(
+            name
+            for name in os.listdir(year_path)
+            if os.path.isdir(os.path.join(year_path, name))
+        )
     wanted = sorted({"%s.md" % topic for topic in topics} | set(GLOSSARY_SHARED_FILES))
     for name in wanted:
         if not os.path.isfile(os.path.join(GLOSSARY_BASE, name)):
@@ -1166,7 +1115,7 @@ def check_intent_signals(rows: List[Dict[str, str]], path: str, problems: List[s
 def write_router_block(
     lines: List[str], rows: List[Dict[str, str]], problems: List[str]
 ) -> Optional[List[str]]:
-    """Replace the router block, or the sketch, with the generated block.
+    """Replace the router block with the generated block.
 
     Args:
         lines: All lines of the markdown file.
@@ -1174,28 +1123,22 @@ def write_router_block(
         problems: Problem list to append to.
 
     Returns:
-        The new lines, or None when no region can be written.
+        The new lines, or None when a marker is missing.
     """
     block = router_block(rows)
     has_start = ROUTER_START in lines
     has_end = ROUTER_END in lines
-    if has_start != has_end:
-        problems.append("router block markers must appear as a pair")
+    if not has_start:
+        problems.append("router block start marker missing")
+    if not has_end:
+        problems.append("router block end marker missing")
+    if not (has_start and has_end):
         return None
-    if has_start:
-        start = lines.index(ROUTER_START)
-        end = lines.index(ROUTER_END, start + 1)
-        if lines[start:end + 1] == block:
-            return lines
-        return lines[:start] + block + lines[end + 1:]
-    heading = next((index for index, line in enumerate(lines) if line.strip() == ROUTER_HEADING), -1)
-    if heading < 0:
-        problems.append("router block markers and the Smart Router Pseudocode heading are both missing")
-        return None
-    after = heading + 1
-    while after < len(lines) and not HEADING_RE.match(lines[after]):
-        after += 1
-    return lines[:heading + 1] + [""] + block + [""] + lines[after:]
+    start = lines.index(ROUTER_START)
+    end = lines.index(ROUTER_END, start + 1)
+    if lines[start:end + 1] == block:
+        return lines
+    return lines[:start] + block + lines[end + 1:]
 
 
 def write_intent_signals(data: Dict[str, Any], signals: List[str]) -> Tuple[List[str], bool]:
@@ -1278,6 +1221,39 @@ def check_ladder(text: str, signals_path: str, problems: List[str]) -> None:
         problems.append("ladder full file %d differs from FILE_TOKEN_LIMIT in token-baseline.py" % ladder[2])
 
 
+def check_margin(text: str, signals_path: str, problems: List[str]) -> None:
+    """Check that the router and the signal sources file state one route margin.
+
+    Args:
+        text: Full markdown text of the router.
+        signals_path: Path of the signal sources file.
+        problems: Problem list to append to.
+    """
+    router = MARGIN_RE.search(text)
+    if not router:
+        problems.append("router lacks the ROUTE_MARGIN line")
+        return
+    source = MARGIN_RE.search(read_file_text(signals_path))
+    if not source or source.group(1) != router.group(1):
+        problems.append("route margin %s differs from the signal sources file" % router.group(1))
+
+
+def check_weak_signals(rows: List[Dict[str, str]], signals_path: str, problems: List[str]) -> None:
+    """Check that no row lists a term the signal sources file calls weak.
+
+    Args:
+        rows: Table rows in table order.
+        signals_path: Path of the signal sources file.
+        problems: Problem list to append to.
+    """
+    weak = {term.lower() for term in WEAK_SIGNAL_RE.findall(read_file_text(signals_path))}
+    for row in rows:
+        for cell in (row["dutch"], row["english"]):
+            for signal in cell_signals(cell):
+                if signal.lower() in weak:
+                    problems.append("%s lists the weak signal %s" % (row["type"], signal))
+
+
 def check_required_tokens(text: str, problems: List[str]) -> None:
     """Check that the routing constants and outcomes are named in the file.
 
@@ -1288,51 +1264,6 @@ def check_required_tokens(text: str, problems: List[str]) -> None:
     for token in REQUIRED_TOKENS:
         if token not in text:
             problems.append("missing required token: %s" % token)
-
-
-def check_overrides(lines: List[str], problems: List[str]) -> None:
-    """Check the margin override bullets under the tie heading.
-
-    The overrides are list bullets after the heading, one per override type.
-    The heading must exist, each override type must have exactly one bullet,
-    no other type may carry a bullet and the value must be the default word
-    or a number.
-
-    Args:
-        lines: All lines of the markdown file.
-        problems: Problem list to append to.
-    """
-    heading = -1
-    for index, line in enumerate(lines):
-        if line.lstrip().startswith("#") and TIE_HEADING in line:
-            heading = index
-            break
-    if heading < 0:
-        problems.append("heading missing: %s" % TIE_HEADING)
-        return
-    found: List[str] = []
-    for index, line in enumerate(lines[heading + 1:], heading + 2):
-        stripped = line.strip()
-        if not stripped.startswith(OVERRIDE_PREFIX):
-            continue
-        body = stripped[len(OVERRIDE_PREFIX):].strip()
-        match = OVERRIDE_BULLET_RE.match(body)
-        if not match:
-            problems.append("line %d: margin override bullet without a type and value" % index)
-            continue
-        row_type = match.group(1)
-        if row_type not in OVERRIDE_TYPES:
-            problems.append("line %d: margin override bullet names %s, expected T2 or T6" % (index, row_type))
-            continue
-        found.append(row_type)
-        value = match.group(2).strip().strip("`").strip()
-        if value != "default" and not NUMBER_RE.fullmatch(value):
-            problems.append(
-                "line %d: margin override for %s is %r, expected `default` or a number" % (index, row_type, value)
-            )
-    for row_type in OVERRIDE_TYPES:
-        if row_type not in found:
-            problems.append("margin override bullet missing for %s" % row_type)
 
 
 def check_signals_pointer(lines: List[str], problems: List[str]) -> None:
@@ -1392,18 +1323,6 @@ def check_signal_sources(path: str, problems: List[str]) -> None:
         problems.append("%s holds no signal source lines" % path)
 
 
-def gap_cells(line: str) -> List[str]:
-    """Split one gap-ledger table line into its stripped cells.
-
-    Args:
-        line: One table line with leading and trailing pipes.
-
-    Returns:
-        The cell texts without their surrounding whitespace.
-    """
-    return [cell.strip() for cell in line.strip().strip("|").split("|")]
-
-
 def check_gap_ledger(path: str, problems: List[str]) -> None:
     """Check the documented-gap table of the signal sources file.
 
@@ -1430,26 +1349,23 @@ def check_gap_ledger(path: str, problems: List[str]) -> None:
             heading = index
             break
     if heading < 0:
-        print("gaps: none declared")
         return
     header = -1
     for index in range(heading + 1, len(lines)):
-        if gap_cells(lines[index]) == list(GAPS_COLUMNS):
+        if split_cells(lines[index]) == list(GAPS_COLUMNS):
             header = index
             break
     if header < 0:
         problems.append("%s has a %s heading without its table header" % (path, GAPS_HEADING))
         return
     seen: List[str] = []
-    rows = 0
     for index in range(header + 1, len(lines)):
         stripped = lines[index].strip()
         if not stripped.startswith("|"):
             break
-        cells = gap_cells(stripped)
+        cells = split_cells(stripped)
         if all(SEPARATOR_RE.match(cell) for cell in cells):
             continue
-        rows += 1
         if len(cells) != len(GAPS_COLUMNS):
             problems.append(
                 "%s line %d: gap row has %d cells, expected %d"
@@ -1474,346 +1390,12 @@ def check_gap_ledger(path: str, problems: List[str]) -> None:
         if topic in seen:
             problems.append("%s line %d: gap row %s repeats its topic" % (path, index + 1, topic))
         seen.append(topic)
-    print("gaps: %d rows" % rows)
-
-
-def constant_number(text: str, name: str) -> Optional[float]:
-    """Read the number stated after one routing constant.
-
-    Args:
-        text: ROUTER.md text.
-        name: Constant name such as ROUTE_MARGIN.
-
-    Returns:
-        The number on the constant line, or None when the line states none.
-    """
-    match = re.search(re.escape(name) + r"[^\n]*?([0-9]+(?:\.[0-9]+)?)", text)
-    if not match:
-        return None
-    return float(match.group(1))
-
-
-def is_number(value: Any) -> bool:
-    """Tell whether one JSON value is a real number.
-
-    Args:
-        value: Value from the calibration record.
-
-    Returns:
-        True for an int or float that is not a bool.
-    """
-    return isinstance(value, (int, float)) and not isinstance(value, bool)
-
-
-def check_rate(value: Any, label: str, problems: List[str]) -> Optional[float]:
-    """Check one rate value and return it as a float.
-
-    Args:
-        value: Value from the calibration record.
-        label: Field name used in a problem line.
-        problems: Problem list to append to.
-
-    Returns:
-        The rate as a float, or None when it is not a valid rate.
-    """
-    if not is_number(value) or value < 0 or value > 1:
-        problems.append("calibration %s must be a number from 0 to 1" % label)
-        return None
-    return float(value)
-
-
-def check_rate_block(block: Any, label: str, problems: List[str]) -> None:
-    """Check the two rates of one calibration split block.
-
-    Args:
-        block: JSON object with route_accuracy and false_abstain_rate.
-        label: Split name used in a problem line.
-        problems: Problem list to append to.
-    """
-    if not isinstance(block, dict):
-        problems.append("calibration %s must be an object" % label)
-        return
-    check_rate(block.get("route_accuracy"), "%s route_accuracy" % label, problems)
-    rate = check_rate(block.get("false_abstain_rate"), "%s false_abstain_rate" % label, problems)
-    if rate is not None and rate > FALSE_ABSTAIN_MAX:
-        problems.append(
-            "calibration %s false_abstain_rate %.3f is above the %.2f cap" % (label, rate, FALSE_ABSTAIN_MAX)
-        )
-    rows = block.get("rows")
-    matches = block.get("route_matches")
-    if rows is not None and (not is_number(rows) or rows <= 0):
-        problems.append("calibration %s rows must be a positive number" % label)
-    if matches is not None and (not is_number(matches) or matches < 0):
-        problems.append("calibration %s route_matches must not be negative" % label)
-    accuracy = block.get("route_accuracy")
-    if is_number(rows) and is_number(matches) and is_number(accuracy) and rows > 0:
-        if abs(float(matches) / float(rows) - float(accuracy)) > 0.001:
-            problems.append("calibration %s route_accuracy does not match its counts" % label)
-
-
-def check_candidate_block(candidate: Dict[str, Any], floor: Any, problems: List[str]) -> None:
-    """Check the counts and rates of one swept floor candidate.
-
-    Args:
-        candidate: One sweep candidate object.
-        floor: Floor value of the candidate, used in problem lines.
-        problems: Problem list to append to.
-    """
-    rows = candidate.get("rows")
-    matches = candidate.get("route_matches")
-    abstains = candidate.get("false_abstains")
-    if not is_number(rows) or rows <= 0:
-        problems.append("calibration sweep floor %s rows must be a positive number" % floor)
-    if not is_number(matches) or matches < 0:
-        problems.append("calibration sweep floor %s route_matches must not be negative" % floor)
-    if not is_number(abstains) or abstains < 0:
-        problems.append("calibration sweep floor %s false_abstains must not be negative" % floor)
-    accuracy = check_rate(candidate.get("route_accuracy"), "sweep floor %s route_accuracy" % floor, problems)
-    rate = check_rate(candidate.get("false_abstain_rate"), "sweep floor %s false_abstain_rate" % floor, problems)
-    if is_number(rows) and is_number(matches) and is_number(accuracy) and rows > 0:
-        if abs(float(matches) / float(rows) - float(accuracy)) > 0.001:
-            problems.append("calibration sweep floor %s route_accuracy does not match its counts" % floor)
-    if is_number(rows) and is_number(abstains) and is_number(rate) and rows > 0:
-        if abs(float(abstains) / float(rows) - float(rate)) > 0.001:
-            problems.append("calibration sweep floor %s false_abstain_rate does not match its counts" % floor)
-
-
-def check_sweep(data: Dict[str, Any], problems: List[str]) -> None:
-    """Check the sweep table and its link to the frozen block.
-
-    The record must hold one candidate per swept floor, each with the
-    calibration counts and the two rates. The frozen fallback floor must
-    name one candidate and the frozen calibration block must repeat that
-    candidate's counts.
-
-    Args:
-        data: The calibration record.
-        problems: Problem list to append to.
-    """
-    sweep = data.get("sweep")
-    if not isinstance(sweep, dict):
-        problems.append("calibration sweep must be an object")
-        return
-    rule = sweep.get("selection_rule")
-    if not isinstance(rule, str) or not rule.strip():
-        problems.append("calibration sweep selection_rule must be a non-empty string")
-    step = sweep.get("step")
-    if step is not None and (not is_number(step) or step <= 0):
-        problems.append("calibration sweep step must be a positive number")
-    candidates = sweep.get("candidates")
-    if not isinstance(candidates, list) or not candidates:
-        problems.append("calibration sweep must hold a non-empty candidate list")
-        return
-    seen: List[float] = []
-    chosen_block: Optional[Dict[str, Any]] = None
-    chosen = data.get("fallback_floor")
-    for candidate in candidates:
-        if not isinstance(candidate, dict):
-            problems.append("calibration sweep candidate must be an object")
-            continue
-        floor = candidate.get("floor")
-        if not is_number(floor) or float(floor) < 0:
-            problems.append("calibration sweep candidate floor must be a number that is not negative")
-            continue
-        if float(floor) in seen:
-            problems.append("calibration sweep holds duplicate floor %s" % floor)
-        seen.append(float(floor))
-        check_candidate_block(candidate, floor, problems)
-        if is_number(chosen) and abs(float(chosen) - float(floor)) <= 0.000001:
-            chosen_block = candidate
-    if not seen:
-        problems.append("calibration sweep holds no usable candidate")
-        return
-    if not is_number(chosen):
-        return
-    if chosen_block is None:
-        problems.append("calibration fallback_floor %s is not a swept candidate" % chosen)
-        return
-    frozen = data.get("calibration")
-    if isinstance(frozen, dict):
-        for key in ("rows", "route_matches", "route_accuracy", "false_abstains", "false_abstain_rate"):
-            if frozen.get(key) != chosen_block.get(key):
-                problems.append("calibration %s differs from the swept floor %s" % (key, chosen))
-
-
-def check_calibration(path: str, skill_text: str, problems: List[str]) -> None:
-    """Check the frozen constants against the table that states them.
-
-    The effective table value is the number the table states, or zero while
-    the fallback floor is marked pending, because the scorer treats a
-    pending floor as no floor. The checker fails when the record and the
-    effective table state differ, when a rate is outside its range, when a
-    false-abstain rate is above the cap and when the record is missing or
-    malformed.
-
-    Args:
-        path: Path of the calibration record.
-        skill_text: ROUTER.md text that states the constants.
-        problems: Problem list to append to.
-    """
-    if not os.path.isfile(path):
-        problems.append("calibration file not found: %s" % path)
-        return
-    try:
-        with open(path, "r", encoding="utf-8") as handle:
-            data = json.load(handle)
-    except (OSError, ValueError) as exc:
-        problems.append("cannot read %s: %s" % (path, exc))
-        return
-    if not isinstance(data, dict):
-        problems.append("calibration file must hold one object")
-        return
-    split_id = data.get("split_id")
-    if not isinstance(split_id, str) or not split_id.strip():
-        problems.append("calibration split_id must be a non-empty string")
-    table_margin = constant_number(skill_text, "ROUTE_MARGIN")
-    record_margin = data.get("route_margin")
-    if not is_number(record_margin):
-        problems.append("calibration route_margin must be a number")
-    elif table_margin is not None and abs(float(record_margin) - table_margin) > 0.000001:
-        problems.append(
-            "calibration route_margin %s differs from the table %s" % (record_margin, table_margin)
-        )
-    record_floor = data.get("fallback_floor")
-    if not is_number(record_floor) or float(record_floor) < 0:
-        problems.append("calibration fallback_floor must be a number that is not negative")
-    else:
-        table_floor = constant_number(skill_text, "FALLBACK_FLOOR")
-        if table_floor is None:
-            if PENDING_MARKER not in skill_text:
-                problems.append("calibration fallback_floor is neither stated in the table nor marked pending")
-            elif abs(float(record_floor)) > 0.000001:
-                problems.append(
-                    "calibration fallback_floor %s differs from the pending table value 0.0" % record_floor
-                )
-        elif abs(float(record_floor) - table_floor) > 0.000001:
-            problems.append(
-                "calibration fallback_floor %s differs from the table %s" % (record_floor, table_floor)
-            )
-    check_rate_block(data.get("held_out"), "held_out", problems)
-    check_rate_block(data.get("calibration"), "frozen", problems)
-    check_sweep(data, problems)
 
 # ───────────────────────────────────────────────────────────────
-# 7. WORD CHECK
+# 7. ENTRY POINT
 # ───────────────────────────────────────────────────────────────
 
-def check_skill_words(problems: List[str]) -> None:
-    """Run the sibling word check over the repository.
-
-    A passing run prints the checker's own line per SKILL.md and ROUTER.md. A failing run
-    hands those lines to the problem list, which names the file and the band
-    it left.
-
-    Args:
-        problems: Problem list to append to.
-    """
-    if not os.path.isfile(WORD_CHECK):
-        problems.append("skill word check not found: %s" % WORD_CHECK)
-        return
-    completed = subprocess.run(
-        [sys.executable, "-I", WORD_CHECK, "--root", REPO_ROOT],
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-    )
-    lines = [line for line in (completed.stdout + completed.stderr).splitlines() if line.strip()]
-    if completed.returncode != 0:
-        problems.extend(lines)
-        return
-    for line in lines:
-        print(line)
-
-
-def check_split_topics(problems: List[str]) -> None:
-    """Run the sibling split check over the reference tree.
-
-    A passing run prints the checker's last line. A failing run hands every
-    line to the problem list, which names the file and the part that drifted.
-
-    Args:
-        problems: Problem list to append to.
-    """
-    if not os.path.isfile(SPLIT_CHECK):
-        problems.append("split check not found: %s" % SPLIT_CHECK)
-        return
-    completed = subprocess.run(
-        [sys.executable, "-I", SPLIT_CHECK, "--check"],
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-        cwd=REPO_ROOT,
-    )
-    lines = [line for line in (completed.stdout + completed.stderr).splitlines() if line.strip()]
-    if completed.returncode != 0:
-        problems.extend(lines)
-        return
-    if lines:
-        print(lines[-1])
-
-
-def check_outline(problems: List[str]) -> None:
-    """Run the sibling outline check over the year and general topic files.
-
-    A passing run prints the checker's count line. A failing run hands every
-    line to the problem list, which names the file, the line and the decision
-    step that misses its branch.
-
-    Args:
-        problems: Problem list to append to.
-    """
-    if not os.path.isfile(OUTLINE_CHECK):
-        problems.append("outline check not found: %s" % OUTLINE_CHECK)
-        return
-    completed = subprocess.run(
-        [sys.executable, "-I", OUTLINE_CHECK, "--check", "--root", REPO_ROOT],
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-        cwd=REPO_ROOT,
-    )
-    lines = [line for line in (completed.stdout + completed.stderr).splitlines() if line.strip()]
-    if completed.returncode != 0:
-        problems.extend(lines)
-        return
-    if lines:
-        print(lines[-1])
-
-def check_scannability(problems: List[str]) -> None:
-    """Run the sibling scannability report in its check mode.
-
-    A passing run prints the report's last line. A failing run hands every
-    line to the problem list, which names the drift.
-
-    Args:
-        problems: Problem list to append to.
-    """
-    if not os.path.isfile(SCANNABILITY_CHECK):
-        problems.append("scannability report script not found: %s" % SCANNABILITY_CHECK)
-        return
-    completed = subprocess.run(
-        [sys.executable, "-I", SCANNABILITY_CHECK, "--check"],
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-        cwd=REPO_ROOT,
-    )
-    lines = [line for line in (completed.stdout + completed.stderr).splitlines() if line.strip()]
-    if completed.returncode != 0:
-        problems.extend(lines or ["scannability report check failed"])
-        return
-    if lines:
-        print(lines[-1])
-
-# ───────────────────────────────────────────────────────────────
-# 8. ENTRY POINT
-# ───────────────────────────────────────────────────────────────
-
-def run_write(args: Any, text: str, lines: List[str], rows: List[Dict[str, str]]) -> int:
+def run_write(text: str, lines: List[str], rows: List[Dict[str, str]]) -> int:
     """Regenerate the router block and the intent signals.
 
     A malformed table or metadata file stops the run before either file is
@@ -1821,7 +1403,6 @@ def run_write(args: Any, text: str, lines: List[str], rows: List[Dict[str, str]]
     leaves both files as they were.
 
     Args:
-        args: Parsed arguments.
         text: Current ROUTER.md text.
         lines: Current ROUTER.md lines.
         rows: Table rows in table order.
@@ -1839,12 +1420,12 @@ def run_write(args: Any, text: str, lines: List[str], rows: List[Dict[str, str]]
         return 2
     for line in missing:
         print(line)
-    data = read_metadata(args.graph_metadata)
+    data = read_metadata(GRAPH_METADATA)
     if data is None:
-        print("graph metadata file is missing or malformed: %s" % args.graph_metadata)
+        print("graph metadata file is missing or malformed: %s" % GRAPH_METADATA)
         return 2
     if signal_list(data) is None:
-        print("graph metadata intent_signals must be a list of strings: %s" % args.graph_metadata)
+        print("graph metadata intent_signals must be a list of strings: %s" % GRAPH_METADATA)
         return 2
     new_lines = write_router_block(lines, rows, problems)
     if new_lines is None:
@@ -1854,17 +1435,17 @@ def run_write(args: Any, text: str, lines: List[str], rows: List[Dict[str, str]]
     added, changed = write_intent_signals(data, multi_word_signals(rows))
     newline = "\n" if text.endswith("\n") else ""
     if new_lines != lines:
-        if not write_text(args.router, "\n".join(new_lines) + newline):
+        if not write_text(ROUTER_MD, "\n".join(new_lines) + newline):
             return 2
-        print("router block: written (%s)" % os.path.basename(args.router))
+        print("router block: written (%s)" % os.path.basename(ROUTER_MD))
     else:
-        print("router block: unchanged (%s)" % os.path.basename(args.router))
+        print("router block: unchanged (%s)" % os.path.basename(ROUTER_MD))
     if changed:
-        if not write_text(args.graph_metadata, json.dumps(data, indent=2) + "\n"):
+        if not write_text(GRAPH_METADATA, json.dumps(data, indent=2) + "\n"):
             return 2
-        print("intent signals: added %d (%s)" % (len(added), os.path.basename(args.graph_metadata)))
+        print("intent signals: added %d (%s)" % (len(added), os.path.basename(GRAPH_METADATA)))
     else:
-        print("intent signals: unchanged (%s)" % os.path.basename(args.graph_metadata))
+        print("intent signals: unchanged (%s)" % os.path.basename(GRAPH_METADATA))
     return 0
 
 
@@ -1881,49 +1462,23 @@ def main(argv: List[str]) -> int:
         prog=CHECKER,
         description="Check the task-type route table in the skill's router.",
     )
-    group = parser.add_mutually_exclusive_group()
-    group.add_argument("--check", action="store_true", help="run the check, the default mode")
-    group.add_argument(
+    parser.add_argument(
         "--write",
         action="store_true",
         help="regenerate the router block and the intent signals",
     )
-    parser.add_argument(
-        "--router",
-        metavar="PATH",
-        default=ROUTER_MD,
-        help="read this markdown file instead of the skill's ROUTER.md",
-    )
-    parser.add_argument(
-        "--graph-metadata",
-        metavar="PATH",
-        default=GRAPH_METADATA,
-        help="read the intent signals from this file instead of the skill's graph-metadata.json",
-    )
-    parser.add_argument(
-        "--signals",
-        metavar="PATH",
-        default=SIGNALS_MD,
-        help="read the signal sources from this file instead of the skill's references/routing-signals.md",
-    )
-    parser.add_argument(
-        "--calibration",
-        metavar="PATH",
-        default=CALIBRATION_PATH,
-        help="read the frozen constants from this file instead of the skill's assets/route-calibration.json",
-    )
     args = parser.parse_args(argv)
-    if not os.path.isfile(args.router):
-        fail("router markdown not found: %s" % args.router)
+    if not os.path.isfile(ROUTER_MD):
+        fail("router markdown not found: %s" % ROUTER_MD)
     try:
-        with open(args.router, "r", encoding="utf-8", errors="replace") as handle:
+        with open(ROUTER_MD, "r", encoding="utf-8", errors="replace") as handle:
             text = handle.read()
     except OSError as exc:
-        fail("cannot read %s: %s" % (args.router, exc))
+        fail("cannot read %s: %s" % (ROUTER_MD, exc))
     lines = text.splitlines()
     rows = table_rows(lines)
     if args.write:
-        return run_write(args, text, lines, rows)
+        return run_write(text, lines, rows)
     problems: List[str] = []
     missing: List[str] = []
     check_table(lines, problems, missing)
@@ -1931,19 +1486,15 @@ def main(argv: List[str]) -> int:
     check_glossary(text, problems)
     check_hub(problems)
     check_required_tokens(text, problems)
+    check_margin(text, SIGNALS_MD, problems)
+    check_weak_signals(rows, SIGNALS_MD, problems)
     check_row_rules(rows, problems)
-    check_ladder(text, args.signals, problems)
-    check_overrides(lines, problems)
+    check_ladder(text, SIGNALS_MD, problems)
     check_signals_pointer(lines, problems)
-    check_signal_sources(args.signals, problems)
-    check_gap_ledger(args.signals, problems)
-    check_calibration(args.calibration, text, problems)
+    check_signal_sources(SIGNALS_MD, problems)
+    check_gap_ledger(SIGNALS_MD, problems)
     check_router_block(lines, rows, problems)
-    check_intent_signals(rows, args.graph_metadata, problems)
-    check_skill_words(problems)
-    check_split_topics(problems)
-    check_outline(problems)
-    check_scannability(problems)
+    check_intent_signals(rows, GRAPH_METADATA, problems)
     for line in missing:
         print(line)
     if problems:

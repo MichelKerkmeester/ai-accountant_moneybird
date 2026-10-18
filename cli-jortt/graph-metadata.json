@@ -137,7 +137,7 @@
       "manual-testing-playbook/manual-testing-playbook.md",
       "feature-catalog/feature-catalog.md"
     ],
-    "causal_summary": "The standalone cli-jortt skill turns Jortt REST operations into repeatable read-first extraction for a Moneybird migration. Its OpenAPI-driven jortt-cli finds all operations, checks scopes and write flags, merges paged responses and confines saved output to the ignored migration workspace. It sends XAF and other UI-only exports to the operator and hands target-side work to the sibling cli-moneybird skill.",
+    "causal_summary": "The standalone cli-jortt skill turns Jortt REST operations into repeatable read-first extraction for a Moneybird migration. Its OpenAPI-driven jortt-cli finds all operations, checks scopes, refuses every write, merges paged responses and confines saved output to the ignored migration workspace. It sends XAF and other UI-only exports to the operator and hands target-side work to the sibling cli-moneybird skill.",
     "created_at": "2026-10-10T14:16:02.771026+00:00",
     "last_updated_at": "2026-10-10T17:00:14Z"
   }

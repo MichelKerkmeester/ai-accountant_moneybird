@@ -4,20 +4,16 @@
 # ───────────────────────────────────────────────────────────────
 """Resolve the routing fixture corpus and score the routes offline.
 
-The resolve mode builds a router snapshot out of the task-type table in
-section 2 of the skill's ROUTER.md and the resource map under references/. A
-revision from before the hub keeps the table in the skill's SKILL.md, so the
-scorer falls back to that file when ROUTER.md holds no route table. It hashes
-the snapshot, runs a connectivity gate over every routed path, resolves each
-corpus prompt with a deterministic signal scorer and scores the row against
-the gold mode, task type, path set, facts, file claims and token ceiling.
-Output is results.csv and report.md. A file claim names one path and one text
-that must appear in the scored revision, so a row can guard content its read
-set does not load. A row that names `gold_packets` is also scored for the hub
-packet chain, which stage one resolves from mode-registry.json,
-hub-router.json and the winning tool route. No model answers a question, so
-answer quality stays unscored. Time, environment and absolute paths never
-enter an output.
+The resolve mode reads the task-type table in section 2 of the skill's
+ROUTER.md, resolves each corpus prompt with a deterministic signal scorer and
+scores the row against the gold mode, task type, path set, facts, file claims
+and token ceiling. Output is results.csv and report.md. A file claim names one
+path and one text that must appear in the skill tree, so a row can guard
+content its read set does not load. A row that names `gold_packets` is also
+scored for the hub packet chain, which stage one resolves from
+mode-registry.json, hub-router.json and the winning tool route. No model
+answers a question, so answer quality stays unscored. Time, environment and
+absolute paths never enter results.csv or report.md.
 
 The replay mode runs the guard in test mode against the stub CLI and asserts
 the recorded command line and exit code of every refusal row and of every
@@ -32,37 +28,23 @@ Usage:
     TIKTOKEN_CACHE_DIR=<cache> python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode resolve
     TIKTOKEN_CACHE_DIR=<cache> python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode resolve --out /tmp/route-replay
     python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode replay
-    python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode replay --rev HEAD~1 --covers <tag>
 
 Options:
-    --mode       resolve scores pure route resolution. replay runs the guard
-                 in test mode against the stub and scores the refusal rows.
-    --corpus     Read the fixture corpus from this path. The default is
-                 routing-gold.json next to this script.
-    --out        Write results.csv and report.md into this folder. The
-                 default is benchmark/reports/route-replay under the skill.
-    --skill-root Read ROUTER.md and references/ from this folder. The default
-                 is the skill folder that holds this script. It cannot be
-                 combined with --rev.
-    --rev SHA    Score a git worktree of that revision instead of the live
-                 tree. The worktree is added in a temp folder and removed
-                 after the run.
-    --covers P/R Only score rows tagged with this phase and requirement.
-                 Repeat the option to select more than one tag.
-    --guard PATH Replay this guard instead of the one under the repo root.
-    --stub PATH  Replay against this stub CLI instead of the one under the
-                 repo root.
+    --mode  resolve scores pure route resolution. replay runs the guard in
+            test mode against the stub and scores the refusal rows.
+    --out   Write results.csv and report.md into this folder. The default is
+            a fresh temp folder, so a run leaves the repository tree clean.
 
 Output:
     results.csv with the columns scenario_id, lang, split, gold_mode,
     gold_task_type, score, verdict, reason, tokens_loaded, t7, destination,
-    reads and packets,
+    reads, packets and tier,
     report.md with the scored dimensions, the accuracy lines, the per-type
-    precision and recall with denominators, the read counts, the warning
-    band sink and the additive T7 assertion, and a one-line summary on
-    stdout. A replay run adds command, expected_exit and actual_exit
-    columns. Exit 0 when every row passes, 1 on a row or parity finding and
-    2 on a usage, corpus, encoding cache or connectivity error.
+    precision and recall with denominators, the read counts and the additive
+    T7 hits, and a one-line summary on stdout. The last line on stdout names
+    the output folder. A replay run adds command, expected_exit and
+    actual_exit columns. Exit 0 when every row passes, 1 on a row or parity
+    finding and 2 on a usage, corpus or encoding cache error.
 """
 
 # ───────────────────────────────────────────────────────────────
@@ -72,7 +54,6 @@ Output:
 import argparse
 import ast
 import csv
-import hashlib
 import importlib.util
 import json
 import os
@@ -93,17 +74,12 @@ GENERATOR = "sk-moneybird-accountant/scripts/route-replay/route-replay.py"
 HERE = os.path.dirname(os.path.abspath(__file__))
 SKILL_ROOT = os.path.dirname(os.path.dirname(HERE))
 CORPUS_NAME = "routing-gold.json"
-DEFAULT_OUT = os.path.join(SKILL_ROOT, "benchmark", "reports", "route-replay")
-SKILL_MD_NAME = "SKILL.md"
 ROUTER_MD_NAME = "ROUTER.md"
-SKILL_FOLDER_NAME = "sk-moneybird-accountant"
 HUB_ROUTER_NAME = "hub-router.json"
 MODE_REGISTRY_NAME = "mode-registry.json"
 SIGNALS_NAME = os.path.join("references", "routing-signals.md")
-MIGRATION_INDEX = os.path.join("references", "migration", "README.md")
 ROUTER_START = "<!-- router-block:start -->"
 ROUTER_END = "<!-- router-block:end -->"
-REFERENCE_INDEX = os.path.join("references", "index.json")
 BASELINE_HELPER = os.path.join("scripts", "token-baseline.py")
 HOSTILE_CASES = os.path.join("assets", "hostile-invoice-cases.json")
 GUARD_RELATIVE = os.path.join("cli-moneybird", "cli", "moneybird-cli", "moneybird-guard")
@@ -112,11 +88,7 @@ MISSING_WRITER_MARKER = "__MISSING_WRITER__"
 
 START_MARKER = "<!-- route-table:start -->"
 END_MARKER = "<!-- route-table:end -->"
-TOC_START = "<!-- GENERATED:toc:start -->"
-TOC_END = "<!-- GENERATED:toc:end -->"
 ROW_RE = re.compile(r"^\|\s*(T\d+)\s*\|")
-PHASE_ROW_RE = re.compile(r"^\|\s*(\d+)\s*\|[^|]*\|\s*\[[^\]]+\]\(\./([^)]+)\)\s*\|")
-TOC_LINE_RE = re.compile(r"^-\s+(.+?):\s+lines\s+(\d+)-(\d+)\s*$")
 BACKTICK_RE = re.compile(r"`([^`]*)`")
 YEAR_TOKEN = "{year}"
 PHASE_PLACEHOLDER = "{phase-file}"
@@ -268,7 +240,7 @@ FILING_FRAME_RE = re.compile(
     r"|moeten|kan|kunnen|mag|mogen|hoef|hoeven|zal|zullen|ga|gaan|nu|dan|ook|zelf|altijd|meestal)){0,4}\s*$"
     r"|\b(?:hoe|wanneer|waar)\s*$"
     r"|^\s*(?:do|does|did|am|is|are|must|should|shall|need|have|moet|moeten|ben|hoef|hoeven|mag|mogen)"
-    r"\s+(?:i|ik|one|it|het)\b(?![^?]*\b(?:you|je|jij|u|jullie)\b)(?:\s+\S+){0,6}\s*$"
+    r"\s+(?:i|ik|one|it|het)\b(?!\s+(?:possible|mogelijk)\b)(?![^?]*\b(?:you|je|jij|u|jullie)\b)(?:\s+\S+){0,6}\s*$"
     r"|^\s*(?:do|does|did|are|must|need|have|moeten|hoeven)\s+(?:we|wij)\b(?:\s+\S+){0,6}\s*$"
     r"|\b(?:before|after|until|once|if|when|voor|voordat|nadat|totdat|als|zodra|wanneer)"
     r"\s+(?:i|we|ik|wij|he|she|they|hij|zij|ze|(?:my|our|the|mijn|onze|de)\s+\w+)"
@@ -306,16 +278,17 @@ FILING_FRAME_RE = re.compile(
     r"|\b(?:reminder|herinnering)\s*$"
     r"|\b(?:i|we|ik)\s+(?:remember|onthoud|onthouden)\s+(?:to|om)\s*$"
     r"|\bhelp\s+(?:me|us|mij|ons)\s+(?:prepare|get ready|voorbereiden|klaar)\b(?:\s+\S+){0,6}\s*$"
+    r"|\bwhether\s+(?:i|we)\b(?:\s+\S+){0,4}\s*$|\b(?:controleer|check|kijk|bekijk)\s+of\s+(?:ik|we|wij)\b(?:\s+\S+){0,4}\s*$"
     r"|\b(?:i want to know|i wonder|i would like to know|ik wil weten|ik vraag me af|ik wil graag weten)"
     r"\s+(?:when|how|what|where|whether|if|wanneer|hoe|wat|waar|of)\b(?:\s+\S+){0,8}\s*$",
     re.IGNORECASE,
 )
 # WHY: a user subject right before the verb, or right after it in a Dutch
-# inversion, names the user as the one who files, as does a third person.
-# An auxiliary before the subject asks the question "can we file it?".
+# inversion, names the user as the one who files, as does a third person. A
+# "we" takes the assistant in, so "now we file it" asks it to file.
 FILING_SUBJECT_BEFORE_RE = re.compile(
     r"(?:\b(?:i|ik)|(?<!\bcan\s)(?<!\bcould\s)(?<!\bshall\s)(?<!\bshould\s)(?<!\bmay\s)(?<!\bwill\s)(?<!\bdon't\s)(?<!\bdont\s)"
-    r"\b(?:we|wij|he|she|they|hij|zij|ze))(?:['\u2019\u00b4`\u02bc](?:ll|d|m|re))?"
+    r"\b(?:he|she|they|hij|zij|ze|we(?=\s+(?:always|usually|altijd|meestal)\b)|wij(?=\s+(?:altijd|meestal)\b)))(?:['\u2019\u00b4`\u02bc](?:ll|d|m|re))?"
     r"(?:\s+(?:then|daarna|zelf|myself|ourselves|always|altijd|usually|meestal|will|shall|ga|gaan|can|kan"
     r"|kunnen|zal|zullen|moet|moeten|wil|willen|am|are|is|going|to|plan|plans|want|wants|intend|have|has"
     r"|need|needs|should|must|would|like|prefer|rather|just|also|ook|ourselves|himself|herself|hem|het|die"
@@ -330,7 +303,14 @@ FILING_NOTE_RE = re.compile(r"\b(?:reminder|herinnering|note|notitie)\s*:\s*$")
 # as in "wanneer ik akkoord geef dien de aangifte in", opens the main clause.
 DUTCH_FINITE_VERBS = ("dien", "stuur", "verstuur", "verzend", "lever", "betaal", "vergrendel", "sluit", "meld", "doe")
 DUTCH_SUBCLAUSE_RE = re.compile(r"\b(?:wanneer|als|zodra|voordat|nadat|totdat|zodat)\s+\S+(?:\s+\S+)*\s*$")
-FILING_SUBJECT_AFTER_RE = re.compile(r"^\s+(?:ik|wij|we)\b", re.IGNORECASE)
+FILING_SUBJECT_AFTER_RE = re.compile(r"^\s+ik\b", re.IGNORECASE)
+# WHY: a "we" that files it itself or by habit, as in "we'll file it
+# ourselves" or "we file it every quarter", names the business, not the assistant.
+WE_SUBJECT_RE = re.compile(r"\b(?:we|wij)(?:['\u2019](?:ll|re|d))?(?:\s+\S+){0,2}\s*$")
+WE_OWN_RE = re.compile(
+    r"\b(?:ourselves|zelf|every|each|elk|elke|ieder|iedere|quarterly|monthly|annually|normally|together"
+    r"|maandelijks|jaarlijks|normaal|samen|per (?:kwartaal|maand|jaar))\b"
+)
 # WHY: a filing noun after a preposition, such as "before filing" or "voor het
 # indienen", names the act and requests none. So does a noun that the user owns
 # or that is the subject, as in "leave the filing to me" or "filing happens later".
@@ -346,8 +326,8 @@ FILING_NOUN_AFTER_RE = re.compile(
 )
 FILING_NOUN_SIGNALS = ("filing", "indienen", "het indienen")
 FILING_REQUEST_LEAD_RE = re.compile(
-    r"^\s*(?:(?:please|graag|gewoon|even|now|nu)\s+)*(?:go ahead|go on|proceed|continue|start|begin|get started|take care|carry on"
-    r"|ga door|ga verder|zorg|regel|neem|verzorg)\b",
+    r"^\s*(?:(?:please|graag|gewoon|even|now|nu|you can|you may|je kunt|je mag|u kunt|u mag)\s+)*(?:go ahead|go on|proceed|continue|start|begin|get started|take care|carry on"
+    r"|ga door|ga verder|beginnen|zorg|regel|neem|verzorg)\b",
     re.IGNORECASE,
 )
 # WHY: a real question asks about filing unless it asks the assistant to file,
@@ -357,10 +337,27 @@ QUESTION_REQUEST_RE = re.compile(
     r"|\b(?:you|jij|jullie)\b|\b(?:wilt|kunt|dient|heeft|bent|zou|zouden|willen|kunnen)\s+(?:u|je|jij|jullie)\b"
     r"|\b(?:dat|als)\s+(?:u|je)\b|\b(?:heb|durf|ga|doe|dien)\s+je\b|\blukt het\b|\bfor me\b|\bvoor (?:mij|me)\b"
     r"|\b(?:can|could|shall|should|kunnen|mogen|gaan|zullen)\s+(?:we|wij)\b"
-    r"|\b(?:u|je)\s+(?:vragen|verzoeken)\b|\bwould it be possible\b|\b(?:ok|okay|oke|ok\u00e9|yes|right|goed|ja)\s*\?"
+    r"|\b(?:u|je)\s+(?:vragen|verzoeken)\b|\b(?:would it be|is it|is het|zou het)\s+(?:possible|mogelijk)\b|\b(?:ok|okay|oke|ok\u00e9|yes|right|goed|ja)\s*\?"
     r"|\b(?:ga|gaat)\s+(?:je|jij|u)\b|\bare you going to\b|\bwhat if you\b|\bwat als je\b"
     r"|\bhow about\b|\bwhat about\b|\bwhy (?:don't|dont|not)\b|\bplease\b|\balsjeblieft\b|\bgraag\b",
     re.IGNORECASE,
+)
+# WHY: an order to act after a kept filing mention, as in "I know how to file
+# it but I want you to do it" or "ready for the filing, go", turns the mention
+# into a filing request. A bare order must end its sentence, so "please do it
+# step by step" and "ga je gang met de uitleg" ask for something else.
+DO_IT_RE = re.compile(
+    r"\bi (?:want|need) you to do (?:it|that|this)\b"
+    r"|\b(?:(?:so|just|now|please|go ahead and)\s+)*do (?:it|that|this)(?:\s+(?:now|today|for me))*\s*(?:please\s*)?(?=[.!?]|$)"
+    r"|\bdoe (?:het|dat)(?:\s+(?:maar|nu|vandaag|voor mij|voor me))*\s*(?:alsjeblieft\s*)?(?=[.!?]|$)"
+    r"|\bga je gang\s*(?=[.!?]|$)|[,:]\s*(?:go|ga)\s*[.!]*\s*$",
+    re.IGNORECASE,
+)
+# WHY: a user or a we before the order, or a negation near it, as in "can I
+# do it now?" or "you do not need to do it for me", keeps the mention.
+DO_IT_KEPT_RE = re.compile(
+    r"(?:\b(?:i|ik|we|wij)\b(?:\s+\S+){0,2}"
+    r"|(?:\bno\b|\bnot\b|\bnever\b|n['\u2019\u00b4`\u02bc]t\b|\bdont\b|\bniet\b|\bgeen\b)(?:\s+\S+){0,4})\s*$"
 )
 SENTENCE_BREAK_RE = re.compile(r"[.!?]")
 # WHY: a bounded clause keeps one long request without punctuation from
@@ -382,6 +379,10 @@ POST_NEGATION_RE = re.compile(
     r"|geen(?:\s+\S+){0,2}?(?:\s+(?:in|op|af|aan))?)(?:\s+(?:naar|bij|aan|to)\b[^,.;:!?]*)?\s*$",
     re.IGNORECASE,
 )
+# WHY: the plural "dienen" also means "must", as in "we dienen hem te
+# controleren", so it files only with its particle and no "te" before it, as
+# in "we dienen hem in".
+SEPARABLE_PARTICLES = {"dienen": "in"}
 # WHY: the direct object follows the verb with at most a separable particle and
 # a few modifiers, so a preposition or a recipient before the object, as in
 # "send me a summary of the VAT return", names another object.
@@ -537,42 +538,10 @@ GLOSSARY_GENERAL_TOPICS = {
     "work-relationship-and-procedure.md": ("work-relationship", "procedure"),
 }
 
-# WHY: the yearly-overview README authors these ten close signals, so the
-# T11 row carries them and the resolver loads the year README on a close
-# request. route-replay-test.sh fails when one is missing from the T11 cells.
-CLOSE_SIGNALS = (
-    "jaaroverzicht",
-    "jaarrekening",
-    "jaarafsluiting",
-    "eindejaar",
-    "balans opmaken",
-    "winst-en-verliesrekening",
-    "overlopende posten",
-    "vooruitbetaalde kosten",
-    "toerekenen",
-    "privé-opnamen",
-)
-
 # WHY: the additive row names the sibling skill it appends, so an answer
 # says which tool owns the read and a refused request stays blocked.
 JORTT_DESTINATION_TERMS = ("jortt", "jortt-cli", "cli-jortt", "read jortt", "haal op")
 MONEYBIRD_DESTINATION_TERMS = ("moneybird", "moneybird-guard", "cli-moneybird", "boek in", "synchroniseer")
-
-# WHY: routing-signals.md section 4 documents one clause per tie pair, so
-# the resolver, the corpus tie list and the prose must name the same pairs.
-SPECIFICITY_PAIRS = (
-    ("T4", "T3"),
-    ("T4", "T2"),
-    ("T5", "T6"),
-    ("T5", "T4"),
-    ("T6", "T4"),
-    ("T1", "T2"),
-    ("T1", "T3"),
-    ("T1", "T4"),
-    ("T10", "T3"),
-    ("T11", "T3"),
-    ("T12", "T5"),
-)
 
 FOLD_RE = re.compile(r"[-\s]+")
 SIGNAL_SEPARATOR_RE = re.compile(r"[-\s]+")
@@ -877,30 +846,17 @@ def is_replay_row(row: Dict[str, Any]) -> bool:
     return "expected_exit" in row
 
 
-def select_rows(rows: List[Dict[str, Any]], covers: Sequence[str], mode: str) -> List[Dict[str, Any]]:
-    """Select the rows one mode scores and one covers filter keeps.
+def select_rows(rows: List[Dict[str, Any]], mode: str) -> List[Dict[str, Any]]:
+    """Select the rows one mode scores.
 
     Args:
         rows: Corpus rows in file order.
-        covers: Phase and requirement tags to keep, empty means all.
         mode: resolve or replay.
 
     Returns:
         The selected rows in file order.
     """
-    selected: List[Dict[str, Any]] = []
-    for row in rows:
-        replay = is_replay_row(row)
-        if mode == "resolve" and replay:
-            continue
-        if mode == "replay" and not replay:
-            continue
-        if covers:
-            tags = [str(tag) for tag in row.get("covers", [])]
-            if not any(tag in tags for tag in covers):
-                continue
-        selected.append(row)
-    return selected
+    return [row for row in rows if is_replay_row(row) == (mode == "replay")]
 
 
 def run_process(command: Sequence[str], env: Dict[str, str]) -> Tuple[int, str]:
@@ -967,7 +923,7 @@ def flip_digest(digest: str) -> str:
     return digest[:-1] + last
 
 # ───────────────────────────────────────────────────────────────
-# 4. ROUTER SNAPSHOT
+# 4. ROUTER TABLE
 # ───────────────────────────────────────────────────────────────
 
 def parse_route_table(text: str) -> List[Dict[str, str]]:
@@ -1014,63 +970,18 @@ def parse_route_table(text: str) -> List[Dict[str, str]]:
     return rows
 
 
-def parse_constants(skill_text: str, signals_text: str) -> Dict[str, Any]:
-    """Read the routing constants out of the skill prose.
-
-    The table in the routing markdown is the single source of truth for the frozen
-    floor. The signal file still carries the warning band, and the pending
-    marker in the table applies while the table states no number.
+def parse_route_margin(skill_text: str) -> float:
+    """Read the route margin out of the routing markdown.
 
     Args:
         skill_text: Routing markdown text.
-        signals_text: routing-signals.md text.
 
     Returns:
-        The margin, the warning band and the fallback floor state.
+        The distance a winning row must keep over the runner-up, 0.25 when
+        the text states none.
     """
-    margin = 0.25
     match = re.search(r"ROUTE_MARGIN\s*=\s*([0-9.]+)", skill_text)
-    if match:
-        margin = float(match.group(1))
-    warning = 0.08
-    match = re.search(r"([0-9.]+)\s*warning band", signals_text)
-    if match:
-        warning = float(match.group(1))
-    floor: Optional[float] = None
-    pending = False
-    match = re.search(r"FALLBACK_FLOOR[^\n]*?([0-9]+(?:\.[0-9]+)?)", skill_text)
-    if match:
-        floor = float(match.group(1))
-    else:
-        pending = "calibration: pending" in skill_text
-        floor = 0.0
-    return {
-        "route_margin": margin,
-        "warning_band": warning,
-        "fallback_floor": floor,
-        "fallback_floor_pending": pending,
-    }
-
-
-def parse_migration_index(text: str) -> Dict[str, str]:
-    """Read the phase map out of the migration index.
-
-    The generated block in the routing markdown is the map the scorer uses. This parse
-    exists only to prove the block and the authored index still agree.
-
-    Args:
-        text: Migration index text.
-
-    Returns:
-        Mapping of phase number to its reference path.
-    """
-    mapping: Dict[str, str] = {}
-    for line in text.splitlines():
-        match = PHASE_ROW_RE.match(line.strip())
-        if not match:
-            continue
-        mapping[match.group(1)] = "references/migration/" + match.group(2)
-    return mapping
+    return float(match.group(1)) if match else 0.25
 
 
 def parse_generated_map(text: str, name: str) -> Dict[str, str]:
@@ -1084,10 +995,8 @@ def parse_generated_map(text: str, name: str) -> Dict[str, str]:
         The mapping, string to string.
 
     Raises:
-        SystemExit: When the markers, the map or a value is malformed.
+        SystemExit: When the map or a value is malformed.
     """
-    if ROUTER_START not in text or ROUTER_END not in text:
-        fail("router block markers missing in the routing markdown")
     pattern = re.compile(r"^%s = \{$" % re.escape(name), re.MULTILINE)
     match = pattern.search(text)
     if not match:
@@ -1106,263 +1015,15 @@ def parse_generated_map(text: str, name: str) -> Dict[str, str]:
         fail("generated %s must map strings to strings" % name)
     return dict(value)
 
-
-def parse_weak_signals(signals_text: str) -> Tuple[str, ...]:
-    """Read the weak signal terms out of the signal reference.
-
-    The reference names a term as a weak signal, so only the backticked
-    spans before the words weak signal on that line count.
-
-    Args:
-        signals_text: routing-signals.md text.
-
-    Returns:
-        The weak signal phrases in file order.
-
-    Raises:
-        SystemExit: When the file names none.
-    """
-    for line in signals_text.splitlines():
-        index = line.lower().find("weak signal")
-        if index == -1:
-            continue
-        spans = [span.strip() for span in BACKTICK_RE.findall(line[:index]) if span.strip()]
-        if spans:
-            return tuple(fold_text(span) for span in spans)
-    fail("no weak signal named in %s" % os.path.basename(SIGNALS_NAME))
-
-
-def check_phase_agreement(skill_root: str, phase_map: Dict[str, str]) -> None:
-    """Prove the generated phase map still matches the migration index.
-
-    Args:
-        skill_root: Absolute skill folder.
-        phase_map: Phase map read from the generated router block.
-
-    Raises:
-        SystemExit: When the two disagree.
-    """
-    index_path = join_skill(skill_root, MIGRATION_INDEX)
-    if not os.path.isfile(index_path):
-        return
-    index_map = parse_migration_index(read_text(index_path))
-    if index_map == phase_map:
-        return
-    detail = ""
-    keys = sorted(set(index_map) | set(phase_map), key=lambda value: int(value))
-    for key in keys:
-        if index_map.get(key) != phase_map.get(key):
-            detail = " (phase %s: %s in the block, %s in the index)" % (
-                key,
-                phase_map.get(key, "missing"),
-                index_map.get(key, "missing"),
-            )
-            break
-    fail("constants disagree: PHASE_FILES does not match references/migration/README.md%s" % detail)
-
-
-def parse_toc_ranges(text: str) -> Dict[str, Tuple[int, int]]:
-    """Read the generated section list of one reference file.
-
-    The list carries H3 subsections with their line ranges, which the
-    reference index does not hold.
-
-    Args:
-        text: Reference file text.
-
-    Returns:
-        Mapping of anchor to the first and last line of the subsection.
-    """
-    ranges: Dict[str, Tuple[int, int]] = {}
-    inside = False
-    for line in text.splitlines():
-        if line.strip() == TOC_START:
-            inside = True
-            continue
-        if line.strip() == TOC_END:
-            break
-        if not inside:
-            continue
-        match = TOC_LINE_RE.match(line.strip())
-        if not match:
-            continue
-        label = match.group(1).strip()
-        anchor = re.sub(r"[^\w\s-]", "", label.lower(), flags=re.UNICODE)
-        anchor = re.sub(r"\s+", "-", anchor.strip())
-        ranges[anchor] = (int(match.group(2)), int(match.group(3)))
-    return ranges
-
-
-def reference_files(skill_root: str) -> List[str]:
-    """List every markdown file under the references root.
-
-    Args:
-        skill_root: Absolute skill folder.
-
-    Returns:
-        Paths relative to the skill folder, sorted.
-    """
-    base = join_skill(skill_root, "references")
-    found: List[str] = []
-    for directory, _, names in os.walk(base):
-        for name in names:
-            if name.endswith(".md"):
-                absolute = os.path.join(directory, name)
-                found.append(os.path.relpath(absolute, skill_root).replace(os.sep, "/"))
-    return sorted(found)
-
-
-def load_resource_map(skill_root: str) -> List[str]:
-    """Load the resource map of the references root.
-
-    The generated index is the map. A missing or unreadable index falls back
-    to the live file walk so a fixture copy still resolves.
-
-    Args:
-        skill_root: Absolute skill folder.
-
-    Returns:
-        Reference paths relative to the skill folder, sorted.
-    """
-    index_path = join_skill(skill_root, REFERENCE_INDEX)
-    if os.path.isfile(index_path):
-        try:
-            with open(index_path, "r", encoding="utf-8") as handle:
-                data = json.load(handle)
-            paths = [
-                "references/" + item["path"]
-                for item in data.get("files", [])
-                if isinstance(item, dict) and item.get("path")
-            ]
-            if paths:
-                return sorted(paths)
-        except (OSError, ValueError):
-            pass
-    return reference_files(skill_root)
-
-
-def build_snapshot(
-    route_rows: List[Dict[str, str]],
-    constants: Dict[str, Any],
-    phase_map: Dict[str, str],
-    resources: List[str],
-) -> Tuple[Dict[str, Any], str]:
-    """Build the frozen router snapshot and its content hash.
-
-    The snapshot holds relative paths and table text only, so time,
-    environment and absolute paths cannot reach the hash.
-
-    Args:
-        route_rows: Parsed task-type rows.
-        constants: Routing constants.
-        phase_map: Phase number to reference path.
-        resources: Reference paths from the resource map.
-
-    Returns:
-        The snapshot and its sha256 hex digest.
-    """
-    snapshot = {
-        "route_rows": route_rows,
-        "constants": constants,
-        "phase_map": phase_map,
-        "resources": resources,
-        "specificity_clauses": [
-            "an invoice named makes T4 beat T3",
-            "one year named makes T5 beat T6",
-            "a phase number or gate named makes T1 beat T2",
-            "a phase number or gate named makes T1 beat T3",
-            "a request for the official source text makes T5 beat T4",
-            "T7 is additive and never wins alone",
-            "a named VAT return makes T10 beat T3",
-            "a named yearly overview makes T11 beat T3",
-            "a named income tax return makes T12 beat T5",
-        ],
-        "fallback_tiers": {
-            "A": "refuse with the out-of-scope boundary, load nothing",
-            "B": "ask one question, print the candidate route per answer",
-            "C": "name the missing tax year, resolve it before loading",
-        },
-    }
-    canonical = json.dumps(snapshot, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
-    digest = hashlib.sha256(canonical.encode("utf-8")).hexdigest()
-    return snapshot, digest
-
-
-def routed_paths(
-    route_rows: List[Dict[str, str]],
-    skill_root: str,
-    phase_map: Dict[str, str],
-    topic_map: Dict[str, str],
-) -> Tuple[List[str], List[str]]:
-    """Read the marked read paths of the route table.
-
-    A year token expands over the year folders under the tax-rules folder,
-    a map token expands over the generated map, an anchor is stripped and a
-    dash cell holds no path.
-
-    Args:
-        route_rows: Parsed task-type rows.
-        skill_root: Absolute skill folder.
-        phase_map: Phase number to phase file from the generated block.
-        topic_map: Topic slug to figures file from the generated block.
-
-    Returns:
-        Two sorted path lists, the required reads and the conditional
-        reads, relative to the skill folder.
-    """
-    years = year_folders(skill_root)
-    required: List[str] = []
-    conditional: List[str] = []
-    for row in route_rows:
-        for mark, item in read_set_items(row["read_set"]):
-            bucket = required if mark == "!" else conditional
-            for address in expand_read_item(item, years, phase_map, topic_map):
-                path = plain_path(address)
-                if path and path not in bucket:
-                    bucket.append(path)
-    return sorted(required), sorted(conditional)
-
 # ───────────────────────────────────────────────────────────────
-# 5. CONNECTIVITY GATE
+# 5. ENCODING CACHE PIN
 # ───────────────────────────────────────────────────────────────
 
-def connectivity_report(skill_root: str, rows: List[Dict[str, Any]], required: Sequence[str]) -> List[str]:
-    """List every required routed path that does not exist on disk.
-
-    A conditional read is never passed here, so a `?` path that does not
-    exist is not a connectivity failure.
-
-    Args:
-        skill_root: Absolute skill folder.
-        rows: Corpus rows.
-        required: Required paths named by the route table.
-
-    Returns:
-        One message per missing path, relative to the skill folder.
-    """
-    wanted = list(required)
-    for row in rows:
-        wanted.extend(str(path) for path in row.get("expected_paths", []))
-    missing: List[str] = []
-    seen: Dict[str, bool] = {}
-    for address in wanted:
-        path = plain_path(address)
-        if path in seen:
-            continue
-        seen[path] = True
-        if not os.path.isfile(join_skill(skill_root, path)):
-            missing.append("missing routed path: %s" % path)
-    return sorted(missing)
-
-# ───────────────────────────────────────────────────────────────
-# 6. ENCODING CACHE PIN
-# ───────────────────────────────────────────────────────────────
-
-def open_encoder(baseline_root: str) -> Any:
+def open_encoder(skill_root: str) -> Any:
     """Load the pinned lead encoding through the token baseline helpers.
 
     Args:
-        baseline_root: Skill folder that holds scripts/token-baseline.py.
+        skill_root: Skill folder that holds scripts/token-baseline.py.
 
     Returns:
         The o200k_base encoder.
@@ -1370,7 +1031,7 @@ def open_encoder(baseline_root: str) -> Any:
     Raises:
         SystemExit: When the helper, the cache folder or the pin is missing.
     """
-    helper = join_skill(baseline_root, BASELINE_HELPER)
+    helper = join_skill(skill_root, BASELINE_HELPER)
     if not os.path.isfile(helper):
         fail("missing token baseline helper: %s" % BASELINE_HELPER)
     spec = importlib.util.spec_from_file_location("route_replay_token_baseline", helper)
@@ -1378,18 +1039,14 @@ def open_encoder(baseline_root: str) -> Any:
         fail("cannot load token baseline helper: %s" % BASELINE_HELPER)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-
-    def token_fail(message: str) -> NoReturn:
-        fail(message)
-
-    module.fail = token_fail
+    module.fail = fail
     directory = module.cache_dir()
     module.check_cache(directory)
     encoders = module.load_encoders()
     return encoders[module.LEAD_ENCODING]
 
 # ───────────────────────────────────────────────────────────────
-# 7. ROUTE RESOLUTION
+# 6. ROUTE RESOLUTION
 # ───────────────────────────────────────────────────────────────
 
 def glossary_files(path: str) -> List[str]:
@@ -1677,13 +1334,7 @@ def resolve_table_reads(
     Returns:
         The expanded read addresses, anchors in # form.
     """
-    row: Optional[Dict[str, str]] = None
-    for item in route_rows:
-        if item["type"] == route_type:
-            row = item
-            break
-    if row is None:
-        return []
+    row = next(item for item in route_rows if item["type"] == route_type)
     years = [year] if year else year_folders(skill_root)
     paths: List[str] = []
     for mark, item in read_set_items(row["read_set"]):
@@ -1750,14 +1401,11 @@ def row_signal_hit(route_rows: List[Dict[str, str]], route_type: str, text: str)
     Returns:
         True when one signal of that row matches the text.
     """
-    for row in route_rows:
-        if row["type"] != route_type:
-            continue
-        return any(
-            phrase_matches(text, phrase)
-            for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"])
-        )
-    return False
+    row = next(item for item in route_rows if item["type"] == route_type)
+    return any(
+        phrase_matches(text, phrase)
+        for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"])
+    )
 
 
 def t5_figure_hit(text: str, route_rows: List[Dict[str, str]]) -> bool:
@@ -1919,13 +1567,47 @@ def scoring_text(text: str) -> str:
     return text
 
 
-def out_of_scope_hit(text: str) -> bool:
+# WHY: a bare "aangifte" with a preparation verb names no tax, so "kun je een
+# aangifte voorbereiden?" asks which return is meant instead of refusing. A
+# filing or completion verb that no guard keeps, as in "controleer de aangifte
+# en verstuur hem" or "take care of my aangifte", still refuses.
+BARE_RETURN_PATTERN = r"\baangifte\b"
+PREPARATION_VERB_RE = re.compile(
+    r"\b(?:voorbereiden|voor te bereiden|bereid|klaarzetten|klaar te zetten|controleren|controleer|nakijken"
+    r"|prepare|review|check|draft)\b|\bzet\b[^,.;:!?]*\bklaar\b"
+)
+COMPLETION_VERBS = (
+    "afronden", "rond", "afhandelen", "handel", "aanbieden", "doorgeven", "doorsturen", "opsturen", "inleveren",
+    "verwerken", "verwerk", "take care", "handle", "finish", "finalize", "finalise", "sort out", "wrap up",
+)
+
+
+def preparation_only(text: str, grammar: Dict[str, Tuple[str, ...]]) -> bool:
+    """Tell whether a bare return request only prepares.
+
+    Args:
+        text: Lower case request text.
+        grammar: Parsed filing grammar.
+
+    Returns:
+        True when a preparation verb names the work and every filing or
+        completion verb in the request is kept by a guard.
+    """
+    if not PREPARATION_VERB_RE.search(text):
+        return False
+    folded = fold_text(text)
+    acts = term_pattern(grammar["verbs"] + grammar["finals"] + COMPLETION_VERBS)
+    return all(filing_clause_kept(folded, act.start(), act.end(), False) for act in re.finditer(acts, folded))
+
+
+def out_of_scope_hit(text: str, grammar: Dict[str, Tuple[str, ...]]) -> bool:
     """Tell whether a request names the out-of-scope boundary.
 
     A negated mention, as in `do not submit a return`, is not a hit.
 
     Args:
         text: Lower case request text.
+        grammar: Parsed filing grammar.
 
     Returns:
         True when the boundary is named.
@@ -1934,6 +1616,8 @@ def out_of_scope_hit(text: str) -> bool:
     for pattern in OUT_OF_SCOPE_PATTERNS:
         match = re.search(pattern, text)
         if not match:
+            continue
+        if pattern == BARE_RETURN_PATTERN and preparation_only(text, grammar):
             continue
         boundary = BOUNDARY_SIGNAL_RE.search(fold_text(match.group(0))) is not None
         if not boundary:
@@ -1977,15 +1661,14 @@ def parse_filing_grammar(signals_text: str) -> Dict[str, Tuple[str, ...]]:
         signals_text: routing-signals.md text.
 
     Returns:
-        Mapping of each grammar part to its folded terms, empty when the
-        reference holds no filing grammar section.
+        Mapping of each grammar part to its folded terms.
 
     Raises:
-        SystemExit: When the section exists but misses a part.
+        SystemExit: When the section or one of its parts is missing.
     """
     heading = GRAMMAR_HEADING_RE.search(signals_text)
     if heading is None:
-        return {}
+        fail("filing grammar section missing in %s" % os.path.basename(SIGNALS_NAME))
     body = signals_text[heading.end():]
     stop = re.search(r"^## ", body, re.M)
     body = body[:stop.start()] if stop else body
@@ -2011,12 +1694,10 @@ def load_filing_grammar(skill_root: str) -> Dict[str, Tuple[str, ...]]:
         skill_root: Absolute skill folder.
 
     Returns:
-        The parsed grammar, empty when the reference has none.
+        The parsed grammar.
     """
     if skill_root not in _GRAMMAR_CACHE:
-        path = join_skill(skill_root, SIGNALS_NAME)
-        text = read_text(path) if os.path.isfile(path) else ""
-        _GRAMMAR_CACHE[skill_root] = parse_filing_grammar(text)
+        _GRAMMAR_CACHE[skill_root] = parse_filing_grammar(read_text(join_skill(skill_root, SIGNALS_NAME)))
     return _GRAMMAR_CACHE[skill_root]
 
 
@@ -2089,8 +1770,6 @@ def grammar_hits(folded: str, grammar: Dict[str, Tuple[str, ...]]) -> List[Tuple
         One (start, end, kind) entry per hit, anchored on its verb. The kind
         is `action` for a verb, `want` for a want or passive request.
     """
-    if not grammar:
-        return []
     period = [term for term in grammar["objects"] if term in GRAMMAR_PERIOD_OBJECTS]
     plain = [term for term in grammar["objects"] if term not in period]
     objects = r"(?:" + term_pattern(plain, plural=True) + r"(?!['\u2019]s\b)"
@@ -2105,6 +1784,11 @@ def grammar_hits(folded: str, grammar: Dict[str, Tuple[str, ...]]) -> List[Tuple
     hits: List[Tuple[int, int, str]] = []
     for match in re.finditer(term_pattern(grammar["verbs"]), folded):
         _, after = clause_part(folded, match.start(), match.end())
+        particle = SEPARABLE_PARTICLES.get(match.group(0))
+        if particle:
+            found_particle = re.search(r"\b" + particle + r"\b", after)
+            if not found_particle or re.search(r"\bte\b", after[:found_particle.start()]):
+                continue
         target = re.search(destinations, after)
         if target and not GRAMMAR_SERVICE_RE.match(after[target.end():]):
             hits.append((match.start(), match.end(), "action"))
@@ -2154,6 +1838,25 @@ def grammar_hits(folded: str, grammar: Dict[str, Tuple[str, ...]]) -> List[Tuple
     return hits
 
 
+def do_it_order(rest: str) -> bool:
+    """Tell whether the text after a kept filing mention orders the assistant to act.
+
+    Args:
+        rest: Folded text after the filing signal.
+
+    Returns:
+        True when an order such as "I want you to do it" follows with no user,
+        we or negation before it in its clause.
+    """
+    for match in DO_IT_RE.finditer(rest):
+        head = rest[:match.start()]
+        breaks = list(CLAUSE_BREAK_RE.finditer(head))
+        clause = head[breaks[-1].end():] if breaks else head
+        if not DO_IT_KEPT_RE.search(clause):
+            return True
+    return False
+
+
 def filing_clause_kept(folded: str, start: int, end: int, boundary: bool, kind: str = "action") -> bool:
     """Tell whether one refusal signal match keeps the request.
 
@@ -2180,6 +1883,8 @@ def filing_clause_kept(folded: str, start: int, end: int, boundary: bool, kind: 
         negated = FILING_NEGATION_RE.search(window) is not None
     if negated and not NEGATION_EXEMPT_RE.search(window) and not USER_CANNOT_RE.search(window):
         return True
+    if do_it_order(folded[end:]):
+        return False
     window_start = max(0, start - 4 * CLAUSE_SPAN_CHARS)
     sentence_start = max((item.end() + window_start for item in SENTENCE_BREAK_RE.finditer(folded[window_start:start])), default=window_start)
     sentence_end = SENTENCE_BREAK_RE.search(folded, end, end + 4 * CLAUSE_SPAN_CHARS)
@@ -2200,6 +1905,8 @@ def filing_clause_kept(folded: str, start: int, end: int, boundary: bool, kind: 
     stop = CLAUSE_BREAK_RE.search(rest)
     after = rest[:stop.start()] if stop else rest
     if kind == "action" and FILING_SUBJECT_AFTER_RE.search(after):
+        return True
+    if kind == "action" and WE_SUBJECT_RE.search(clause) and WE_OWN_RE.search(clause + " " + after):
         return True
     if FILING_DEADLINE_RE.search(after):
         return True
@@ -2231,7 +1938,7 @@ def table_recipient(folded: str, end: int, grammar: Dict[str, Tuple[str, ...]]) 
 def t8_signal_hit(
     route_rows: List[Dict[str, str]],
     text: str,
-    grammar: Optional[Dict[str, Tuple[str, ...]]] = None,
+    grammar: Dict[str, Tuple[str, ...]],
 ) -> bool:
     """Tell whether one request asks to file, or names the boundary.
 
@@ -2249,7 +1956,7 @@ def t8_signal_hit(
     Args:
         route_rows: Parsed task-type rows.
         text: Lower case request text.
-        grammar: Parsed filing grammar, None for the table signals only.
+        grammar: Parsed filing grammar.
 
     Returns:
         True when one signal or one grammar hit asks to file.
@@ -2261,28 +1968,29 @@ def t8_signal_hit(
         for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"]):
             boundary = BOUNDARY_SIGNAL_RE.search(fold_text(phrase)) is not None
             for match in re.finditer(t8_pattern(phrase), folded):
-                if grammar and phrase.lower().startswith("file ") and table_recipient(folded, match.end(), grammar):
+                if phrase.lower().startswith("file ") and table_recipient(folded, match.end(), grammar):
                     continue
                 if not filing_clause_kept(folded, match.start(), match.end(), boundary):
                     return True
-    for start, end, kind in grammar_hits(folded, grammar or {}):
+    for start, end, kind in grammar_hits(folded, grammar):
         if not filing_clause_kept(folded, start, end, False, kind):
             return True
     return False
 
 
-def t7_destination(text: str, blocked: bool) -> str:
+def t7_destination(text: str, blocked: bool, grammar: Dict[str, Tuple[str, ...]]) -> str:
     """Name the sibling skill one additive T7 hit appends.
 
     Args:
         text: Lower case request text.
         blocked: True when the filing gate or the boundary refuses the request.
+        grammar: Parsed filing grammar.
 
     Returns:
         `cli-jortt`, `cli-moneybird` or `blocked`, which a refusal and a
         write against Jortt alone return.
     """
-    if blocked or out_of_scope_hit(text):
+    if blocked or out_of_scope_hit(text, grammar):
         return "blocked"
     if any(phrase_matches(text, term) for term in JORTT_DESTINATION_TERMS):
         # WHY: Jortt is read only, so a write that names no Moneybird target
@@ -2295,17 +2003,12 @@ def t7_destination(text: str, blocked: bool) -> str:
     return "blocked"
 
 
-def score_candidates(
-    route_rows: List[Dict[str, str]],
-    text: str,
-    weak_signals: Sequence[str],
-) -> Dict[str, int]:
+def score_candidates(route_rows: List[Dict[str, str]], text: str) -> Dict[str, int]:
     """Score every task type against one request.
 
     Args:
         route_rows: Parsed task-type rows.
         text: Lower case request text.
-        weak_signals: Phrases that never decide a row.
 
     Returns:
         Mapping of task type to its matched signal count, zero-count types
@@ -2321,7 +2024,7 @@ def score_candidates(
         seen: Dict[str, bool] = {}
         for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"]):
             folded = fold_text(phrase)
-            if folded in weak_signals or folded in seen:
+            if folded in seen:
                 continue
             seen[folded] = True
             if phrase_matches(text, phrase):
@@ -2352,8 +2055,7 @@ def resolve_route(
     year: str,
     phase_map: Dict[str, str],
     topic_map: Dict[str, str],
-    constants: Dict[str, Any],
-    weak_signals: Sequence[str],
+    margin: float,
 ) -> Dict[str, Any]:
     """Resolve one request to a route and add the glossary reads of an abstain.
 
@@ -2364,8 +2066,7 @@ def resolve_route(
         year: Fixture year, empty when unresolved.
         phase_map: Phase number to reference path.
         topic_map: Topic slug to figures file from the generated block.
-        constants: Routing constants.
-        weak_signals: Phrases that never decide a row.
+        margin: Route margin.
 
     Returns:
         The route record of `decide_route`. An abstain that names a Dutch
@@ -2373,10 +2074,8 @@ def resolve_route(
         hold the term, because a term question needs no task row. A refusal
         reads none.
     """
-    route = decide_route(
-        route_rows, skill_root, prompt, year, phase_map, topic_map, constants, weak_signals
-    )
-    if route.get("abstain") and route.get("type") != "T8" and not route.get("paths"):
+    route = decide_route(route_rows, skill_root, prompt, year, phase_map, topic_map, margin)
+    if route["abstain"] and route["type"] != "T8":
         route["paths"] = glossary_reads(skill_root, [], prompt.lower())
     return route
 
@@ -2388,8 +2087,7 @@ def decide_route(
     year: str,
     phase_map: Dict[str, str],
     topic_map: Dict[str, str],
-    constants: Dict[str, Any],
-    weak_signals: Sequence[str],
+    margin: float,
 ) -> Dict[str, Any]:
     """Resolve one request to a route, a tier and a read set.
 
@@ -2400,25 +2098,24 @@ def decide_route(
         year: Fixture year, empty when unresolved.
         phase_map: Phase number to reference path.
         topic_map: Topic slug to figures file from the generated block.
-        constants: Routing constants.
-        weak_signals: Phrases that never decide a row.
+        margin: Route margin.
 
     Returns:
         A route record with mode, type, tier, paths, abstain state, the
-        additive flag, the destination, the warning band gap and the
-        candidate types.
+        additive flag, the destination and the candidate types.
     """
     text = mask_negated_tools(prompt.lower())
     explicit_year = YEAR_RE.search(text) is not None
-    scores = score_candidates(route_rows, scoring_text(text), weak_signals)
+    scores = score_candidates(route_rows, scoring_text(text))
     t7_hit = any(
         phrase_matches(text, phrase)
         for row in route_rows
         if row["type"] == "T7"
         for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"])
     )
-    t8_hit = t8_signal_hit(route_rows, text, load_filing_grammar(skill_root))
-    destination = t7_destination(text, t8_hit) if t7_hit else ""
+    grammar = load_filing_grammar(skill_root)
+    t8_hit = t8_signal_hit(route_rows, text, grammar)
+    destination = t7_destination(text, t8_hit, grammar) if t7_hit else ""
     # WHY: a filing signal wins over the preparation rows whatever they score,
     # and over every row once the request names the deliverable it would file.
     if t8_hit:
@@ -2427,16 +2124,8 @@ def decide_route(
         for route_type in PREPARE_TYPES:
             scores.pop(route_type, None)
     ordered = sorted(scores.items(), key=lambda item: (-item[1], item[0]))
-    margin = float(constants.get("route_margin") or 0.25)
-    warning = float(constants.get("warning_band") or 0.08)
-    floor = float(constants.get("fallback_floor") or 0.0)
-    band_gap: Optional[float] = None
-    if len(ordered) > 1:
-        gap = ordered[0][1] - ordered[1][1]
-        if margin <= gap < margin + warning:
-            band_gap = round(gap - margin, 6)
     if not ordered:
-        if t8_hit or out_of_scope_hit(text):
+        if t8_hit or out_of_scope_hit(text, grammar):
             return {
                 "mode": "ABSTAIN",
                 "type": "T8",
@@ -2446,7 +2135,6 @@ def decide_route(
                 "candidates": ["T8"],
                 "t7": t7_hit,
                 "destination": destination,
-                "band_gap": None,
             }
         return {
             "mode": "ABSTAIN",
@@ -2457,33 +2145,8 @@ def decide_route(
             "candidates": [],
             "t7": t7_hit,
             "destination": destination,
-            "band_gap": None,
         }
     winner = ordered[0][0]
-    if ordered[0][1] < floor:
-        if out_of_scope_hit(text):
-            return {
-                "mode": "ABSTAIN",
-                "type": "T8",
-                "tier": "A",
-                "paths": [],
-                "abstain": True,
-                "candidates": ["T8"],
-                "t7": t7_hit,
-                "destination": destination,
-                "band_gap": None,
-            }
-        return {
-            "mode": "ABSTAIN",
-            "type": "abstain",
-            "tier": "B",
-            "paths": [],
-            "abstain": True,
-            "candidates": [ordered[0][0]],
-            "t7": t7_hit,
-            "destination": destination,
-            "band_gap": None,
-        }
     if len(ordered) > 1 and ordered[0][1] - ordered[1][1] < margin:
         decided = specificity_winner(text, ordered[0][0], ordered[1][0], route_rows)
         if decided is None:
@@ -2496,7 +2159,6 @@ def decide_route(
                 "candidates": sorted([ordered[0][0], ordered[1][0]]),
                 "t7": t7_hit,
                 "destination": destination,
-                "band_gap": None,
             }
         winner = decided
     if winner in ("T5", "T6") and not explicit_year and not year:
@@ -2510,9 +2172,8 @@ def decide_route(
                 "candidates": [winner],
                 "t7": t7_hit,
                 "destination": destination,
-                "band_gap": band_gap,
             }
-    mode = MODE_BY_TYPE.get(winner, "MIGRATION" if t7_hit else "LIVE")
+    mode = MODE_BY_TYPE[winner]
     paths = resolve_paths(skill_root, winner, text, year, phase_map, topic_map, route_rows)
     return {
         "mode": mode,
@@ -2523,11 +2184,10 @@ def decide_route(
         "candidates": [winner],
         "t7": t7_hit,
         "destination": destination,
-        "band_gap": band_gap,
     }
 
 # ───────────────────────────────────────────────────────────────
-# 8. HUB STAGE ONE
+# 7. HUB STAGE ONE
 # ───────────────────────────────────────────────────────────────
 
 def load_hub(repo_root: str) -> Optional[Dict[str, Any]]:
@@ -2629,9 +2289,9 @@ def tool_route_modes(route_rows: List[Dict[str, str]], route_type: str, modes: S
     for row in route_rows:
         if row["type"] != route_type:
             continue
-        for cell in BACKTICK_RE.findall(row["tool_route"]) or [row["tool_route"]]:
+        for cell in BACKTICK_RE.findall(row["tool_route"]):
             for part in TOOL_ROUTE_SPLIT_RE.split(cell.strip()):
-                if part in modes and part not in named:
+                if part in modes:
                     named.append(part)
     return named
 
@@ -2730,7 +2390,7 @@ def cli_start_route(route: Dict[str, Any], packets: List[str], default: str) -> 
         The route unchanged when the chain starts in the default packet,
         else a CLI route that reads no accountant reference.
     """
-    if not packets or packets[0] == default:
+    if packets[0] == default:
         return route
     return {
         "mode": "CLI",
@@ -2741,58 +2401,35 @@ def cli_start_route(route: Dict[str, Any], packets: List[str], default: str) -> 
         "candidates": [],
         "t7": route.get("t7", False),
         "destination": route.get("destination", ""),
-        "band_gap": None,
         "packets": packets,
     }
 
 # ───────────────────────────────────────────────────────────────
-# 9. LOADED TEXT AND TOKENS
+# 8. LOADED TEXT AND TOKENS
 # ───────────────────────────────────────────────────────────────
 
-def section_text(
-    skill_root: str,
-    address: str,
-    cache: Dict[str, Dict[str, Any]],
-    encoder: Any,
-    strict: bool = True,
-) -> str:
+def section_text(skill_root: str, address: str, cache: Dict[str, Dict[str, Any]]) -> str:
     """Return the text of one file read or one section read.
 
     Args:
         skill_root: Absolute skill folder.
         address: Path with an optional #anchor suffix.
         cache: Per-run cache of file texts and section ranges.
-        encoder: Pinned encoder.
-        strict: Stop with exit 2 on an unreadable file. False returns an
-            empty text so a revision run can score the row as a finding.
 
     Returns:
-        The text of the read.
+        The text of the read, the whole file when the anchor names no
+        section.
     """
     path, _, anchor = address.partition("#")
-    absolute = join_skill(skill_root, path)
     if path not in cache:
-        if strict:
-            text = read_text(absolute)
-        else:
-            try:
-                with open(absolute, "r", encoding="utf-8") as handle:
-                    text = handle.read()
-            except OSError:
-                text = ""
+        text = read_text(join_skill(skill_root, path))
         h2 = {}
         for section in section_index(text):
             h2[section["anchor"]] = section["text"]
-        cache[path] = {"text": text, "sections": h2, "toc": parse_toc_ranges(text)}
+        cache[path] = {"text": text, "sections": h2}
     entry = cache[path]
-    if not anchor:
-        return entry["text"]
-    if anchor in entry["sections"]:
+    if anchor and anchor in entry["sections"]:
         return entry["sections"][anchor]
-    if anchor in entry["toc"]:
-        start, end = entry["toc"][anchor]
-        lines = entry["text"].splitlines(keepends=True)
-        return "".join(lines[start - 1:end])
     return entry["text"]
 
 
@@ -2857,7 +2494,6 @@ def loaded_material(
     paths: Sequence[str],
     cache: Dict[str, Dict[str, Any]],
     encoder: Any,
-    strict: bool = True,
 ) -> Tuple[int, List[str]]:
     """Count and collect the loaded material of one read set.
 
@@ -2866,7 +2502,6 @@ def loaded_material(
         paths: Read set addresses.
         cache: Per-run cache of file texts and section ranges.
         encoder: Pinned encoder.
-        strict: Stop with exit 2 on a missing read file.
 
     Returns:
         The token sum and the loaded texts in read-set order.
@@ -2874,36 +2509,24 @@ def loaded_material(
     tokens = 0
     texts: List[str] = []
     for address in paths:
-        text = section_text(skill_root, address, cache, encoder, strict)
+        text = section_text(skill_root, address, cache)
         tokens += count_tokens(encoder, text)
         texts.append(text)
     return tokens, texts
 
 # ───────────────────────────────────────────────────────────────
-# 10. ROW SCORING
+# 9. ROW SCORING
 # ───────────────────────────────────────────────────────────────
 
-def base_path(address: str) -> str:
-    """Return the file part of one read address.
-
-    Args:
-        address: Path with an optional #anchor suffix.
-
-    Returns:
-        The path without the suffix.
-    """
-    return strip_anchor(address)
-
-
 def check_claims(skill_root: str, row: Dict[str, Any]) -> List[str]:
-    """Check the file claims one corpus row asserts against the revision.
+    """Check the file claims one corpus row asserts against the skill tree.
 
     A claim names a path and a text. The text must appear in that file of
-    the scored revision, so a row can guard content its read set does not
+    the skill tree, so a row can guard content its read set does not
     load, such as a route class line or a section of the skill markdown.
 
     Args:
-        skill_root: Absolute skill folder of the scored revision.
+        skill_root: Absolute skill folder.
         row: Corpus row with an expected_claims list.
 
     Returns:
@@ -2933,7 +2556,6 @@ def score_row(
     route: Dict[str, Any],
     cache: Dict[str, Dict[str, Any]],
     encoder: Any,
-    strict: bool = True,
 ) -> Dict[str, Any]:
     """Score one corpus row against its resolved route.
 
@@ -2943,16 +2565,14 @@ def score_row(
         route: Resolved route.
         cache: Per-run cache of file texts and section ranges.
         encoder: Pinned encoder.
-        strict: Stop with exit 2 on a missing read file. False reports the
-            missing path as a row problem instead.
 
     Returns:
         The row result with score, verdict, reason, tokens and facts found.
     """
     expected_paths = [str(path) for path in row.get("expected_paths", [])]
-    forbidden = [base_path(str(path)) for path in row.get("forbidden_paths", [])]
-    loaded = [base_path(str(path)) for path in route["paths"]]
-    tokens_loaded, texts = loaded_material(skill_root, route["paths"], cache, encoder, strict)
+    forbidden = [strip_anchor(str(path)) for path in row.get("forbidden_paths", [])]
+    loaded = [strip_anchor(str(path)) for path in route["paths"]]
+    tokens_loaded, texts = loaded_material(skill_root, route["paths"], cache, encoder)
     combined = "\n".join(texts).lower()
     facts = [str(fact) for fact in row.get("expected_facts", [])]
     facts_found = [fact for fact in facts if fact.lower() in combined]
@@ -2962,17 +2582,13 @@ def score_row(
     ceiling = int(row.get("token_ceiling", 0))
 
     problems: List[str] = []
-    if not strict:
-        missing_reads = [path for path in loaded if not os.path.isfile(join_skill(skill_root, path))]
-        if missing_reads:
-            problems.append("read paths missing on disk %s" % ", ".join(missing_reads))
     if route["mode"] != row.get("gold_mode"):
         problems.append("mode %s expected %s" % (route["mode"], row.get("gold_mode")))
     if route["type"] != row.get("gold_task_type"):
         problems.append("task type %s expected %s" % (route["type"], row.get("gold_task_type")))
     # WHY: tier C has the mode and type of a normal answer, so only the tier
     # tells a missing-year question from an answer that skipped it.
-    if "tier" in row and str(route.get("tier", "")) != str(row.get("tier", "")):
+    if str(route.get("tier", "")) != str(row.get("tier", "")):
         problems.append("tier %s expected %s" % (route.get("tier", "") or "none", row.get("tier", "") or "none"))
     if missing_paths:
         problems.append("paths not loaded %s" % ", ".join(missing_paths))
@@ -2985,8 +2601,6 @@ def score_row(
         problems.append("claims not met %s" % ", ".join(missing_claims))
     if tokens_loaded > ceiling:
         problems.append("tokens %d above ceiling %d" % (tokens_loaded, ceiling))
-    if route["type"] == "T7":
-        problems.append("additive row T7 won alone")
     if "t7" in row and bool(route.get("t7")) != bool(row.get("t7")):
         problems.append("t7 additive hit %s expected %s" % (bool(route.get("t7")), bool(row.get("t7"))))
     if "destination" in row and str(route.get("destination", "")) != str(row.get("destination", "")):
@@ -3017,34 +2631,28 @@ def score_row(
         "destination": route.get("destination", ""),
         "reads": str(len(route.get("paths", []))),
         "packets": "+".join(packets),
-        "band_gap": route.get("band_gap"),
         "facts_found": len(facts_found),
         "expected_facts": len(facts),
         "tier": route["tier"],
         "route": "%s/%s" % (route["mode"], route["type"]),
-        "abstain": bool(route["abstain"]),
     }
 
 # ───────────────────────────────────────────────────────────────
-# 11. PARITY
+# 10. PARITY
 # ───────────────────────────────────────────────────────────────
 
 def parity_findings(
     rows: List[Dict[str, Any]],
     resolutions: Dict[str, Dict[str, Any]],
-    strict: bool = True,
 ) -> List[str]:
     """Compare every Dutch twin with its English pair.
 
     Route equality covers the gold route, the resolved route, the tier and
-    the resolved read set. It never compares answer text. A filtered run
-    skips a pair whose other half is not selected, because that half is out
-    of scope for the run.
+    the resolved read set. It never compares answer text.
 
     Args:
         rows: Corpus rows.
         resolutions: Resolved route per row id.
-        strict: Report a pair whose other half is missing from the selection.
 
     Returns:
         One finding line per mismatched twin pair.
@@ -3057,8 +2665,7 @@ def parity_findings(
             continue
         twin = by_id.get(twin_id)
         if twin is None:
-            if strict:
-                findings.append("parity pair %s names a missing twin %s" % (row.get("id", ""), twin_id))
+            findings.append("parity pair %s names a missing twin %s" % (row.get("id", ""), twin_id))
             continue
         matches = (
             row.get("gold_mode") == twin.get("gold_mode")
@@ -3076,7 +2683,7 @@ def parity_findings(
     return findings
 
 # ───────────────────────────────────────────────────────────────
-# 12. RESOLVE MODE
+# 11. RESOLVE MODE
 # ───────────────────────────────────────────────────────────────
 
 def load_corpus(path: str) -> List[Dict[str, Any]]:
@@ -3178,27 +2785,43 @@ def write_results(path: str, results: List[Dict[str, Any]], columns: Sequence[st
         fail("cannot write results: %s" % exc)
 
 
+def output_folder(out: str) -> str:
+    """Create the folder the outputs go to.
+
+    Args:
+        out: Folder from the command line, empty for a fresh temp folder.
+
+    Returns:
+        The absolute folder path.
+
+    Raises:
+        SystemExit: When the folder cannot be created.
+    """
+    try:
+        if out:
+            folder = os.path.abspath(out)
+            os.makedirs(folder, exist_ok=True)
+            return folder
+        return tempfile.mkdtemp(prefix="route-replay-out.", dir=os.environ.get("TMPDIR") or "/tmp")
+    except OSError as exc:
+        fail("cannot create output folder: %s" % exc.strerror)
+
+
 def write_report(
     path: str,
-    snapshot_hash: str,
-    corpus_name: str,
     rows: List[Dict[str, Any]],
     results: List[Dict[str, Any]],
     parity: List[str],
-    constants: Dict[str, Any],
-    revision: str = "",
+    margin: float,
 ) -> None:
-    """Write report.md with the accuracy lines and the four metric sections.
+    """Write report.md with the accuracy lines and the metric sections.
 
     Args:
         path: Output file.
-        snapshot_hash: Router snapshot hash.
-        corpus_name: Corpus file name.
         rows: Corpus rows.
         results: Scored rows in corpus order.
         parity: Parity findings.
-        constants: Routing constants.
-        revision: Full revision text, empty on a live run.
+        margin: Route margin.
 
     Raises:
         SystemExit: When the file cannot be written.
@@ -3212,7 +2835,6 @@ def write_report(
         for row, result in zip(rows, results)
         if result["tier"] in ("A", "B") and row.get("gold_mode") != "ABSTAIN"
     )
-    monthly = "calibration: pending" if constants.get("fallback_floor_pending") else str(constants.get("fallback_floor"))
     languages = ("en", "nl", "mixed")
     splits = ("calibration", "held-out", "regression")
     languages_accuracy = {
@@ -3226,23 +2848,15 @@ def write_report(
     lines: List[str] = []
     lines.append("# Route replay report")
     lines.append("")
-    lines.append("Router snapshot: sha256:%s" % snapshot_hash)
     lines.append("Mode: resolve")
-    if revision:
-        lines.append("Revision: %s" % revision[:12])
-    lines.append("Corpus: %s with %d rows" % (corpus_name, total))
+    lines.append("Corpus: %s with %d rows" % (CORPUS_NAME, total))
     lines.append("Token encoding: o200k_base from the pinned cache")
-    lines.append("Route margin: %s. Warning band: %s. Fallback floor: %s." % (
-        constants.get("route_margin"),
-        constants.get("warning_band"),
-        monthly,
-    ))
+    lines.append("Route margin: %s." % margin)
     lines.append("")
     lines.append("## Scored dimensions")
     lines.append("")
     lines.append("- Route: scored, mode and task type against the gold route.")
     lines.append("- Read set: scored, expected paths loaded and forbidden paths absent.")
-    lines.append("- Connectivity: scored by the gate before any row is scored.")
     lines.append("- Hub packet: scored on the rows that name a gold packet chain.")
     lines.append("- Answer quality: unscored. No judge model grades an answer.")
     lines.append("")
@@ -3276,16 +2890,14 @@ def write_report(
     for finding in parity:
         lines.append("- %s" % finding)
     lines.append("")
-    lines.append("## Additive T7 assertion")
+    lines.append("## Additive T7 hits")
     lines.append("")
     lines.append(
         "The additive CLI row never wins alone. A row whose prompt matches a T7 signal keeps the row it matched and appends the sibling tool skill."
     )
     lines.append("")
     t7_rows = [result for result in results if result.get("t7") == "1"]
-    t7_alone = [result for result in results if result["route"].endswith("/T7")]
     lines.append("- rows matching a T7 signal: %d" % len(t7_rows))
-    lines.append("- additive row wins alone: %d" % len(t7_alone))
     for result in t7_rows:
         lines.append("- %s: T7 signal with route %s" % (result["scenario_id"], result["route"]))
     lines.append("")
@@ -3325,20 +2937,6 @@ def write_report(
     for result in results:
         lines.append("| %s | %s | %s |" % (result["scenario_id"], result["route"], result["reads"]))
     lines.append("")
-    lines.append("## Warning band sink")
-    lines.append("")
-    lines.append(
-        "Rows whose winning gap sits in the %s warning band above the route margin. Telemetry only, the route never changes."
-        % constants.get("warning_band")
-    )
-    lines.append("")
-    band_rows = [result for result in results if result.get("band_gap") is not None]
-    if band_rows:
-        for result in band_rows:
-            lines.append("- %s: %.3f above the margin" % (result["scenario_id"], float(result["band_gap"])))
-    else:
-        lines.append("- none")
-    lines.append("")
     lines.append("## Rows")
     lines.append("")
     lines.append("| scenario | lang | split | route | tokens loaded | facts found | verdict |")
@@ -3362,149 +2960,34 @@ def write_report(
         fail("cannot write report: %s" % exc)
 
 
-def write_unscorable(
-    args: argparse.Namespace,
-    rows: List[Dict[str, Any]],
-    reason: str,
-    revision: str,
-) -> int:
-    """Write a failure result for every selected row.
-
-    The revision run reaches this path when the worktree of an older commit
-    holds no route table or no signal file, because that missing content is
-    the regression the row guards.
-
-    Args:
-        args: Parsed command line.
-        rows: Selected resolve rows.
-        reason: Why the rows cannot be scored.
-        revision: Full revision text, empty on a live run.
-
-    Returns:
-        1, because every selected row is a finding.
-    """
-    problems = "unscorable: %s" % reason
-    if revision:
-        problems = "%s at revision %s" % (problems, revision[:12])
-    results: List[Dict[str, Any]] = []
-    for row in rows:
-        results.append(
-            {
-                "scenario_id": row.get("id", ""),
-                "lang": row.get("lang", ""),
-                "split": row.get("split", ""),
-                "gold_mode": row.get("gold_mode", ""),
-                "gold_task_type": row.get("gold_task_type", ""),
-                "score": "0",
-                "verdict": "FAIL",
-                "reason": problems,
-                "tokens_loaded": "0",
-            }
-        )
-    out_dir = os.path.abspath(args.out)
-    try:
-        os.makedirs(out_dir, exist_ok=True)
-    except OSError as exc:
-        fail("cannot create output folder: %s" % os.path.basename(out_dir))
-    write_results(os.path.join(out_dir, "results.csv"), results)
-    lines = [
-        "# Route replay report",
-        "",
-        "Mode: resolve",
-    ]
-    if revision:
-        lines.append("Revision: %s" % revision[:12])
-    lines.append("Corpus: %s with %d rows" % (os.path.basename(args.corpus), len(results)))
-    lines.append("")
-    lines.append("## Findings")
-    lines.append("")
-    lines.append("- %s" % problems)
-    lines.append("- rows passed: 0 of %d" % len(results))
-    lines.append("")
-    try:
-        with open(os.path.join(out_dir, "report.md"), "w", encoding="utf-8", newline="") as handle:
-            handle.write("\n".join(lines))
-    except OSError as exc:
-        fail("cannot write report: %s" % exc)
-    print("%s: %s" % (PROGRAM, problems))
-    return 1
-
-
-def routing_markdown(skill_root: str) -> str:
-    """Name the file that holds the route table for one skill folder.
-
-    Args:
-        skill_root: Absolute skill folder.
-
-    Returns:
-        The skill's ROUTER.md when it holds the route table, else its
-        SKILL.md, where a revision from before the hub keeps it.
-    """
-    router = join_skill(skill_root, ROUTER_MD_NAME)
-    if os.path.isfile(router) and START_MARKER in read_text(router):
-        return router
-    return join_skill(skill_root, SKILL_MD_NAME)
-
-
-def run_resolve(args: argparse.Namespace) -> int:
+def run_resolve(out: str) -> int:
     """Score the corpus in resolve mode and write the outputs.
 
     Args:
-        args: Parsed command line.
+        out: Output folder, empty for a fresh temp folder.
 
     Returns:
         0 when every row passes, 1 on a row or parity finding.
     """
-    skill_root = os.path.abspath(args.skill_root)
-    revision = str(getattr(args, "rev_sha", "") or "")
-    rev_mode = bool(revision)
-    skill_md = routing_markdown(skill_root)
-    signals_md = join_skill(skill_root, SIGNALS_NAME)
-    if not os.path.isfile(skill_md):
+    skill_root = SKILL_ROOT
+    router_md = join_skill(skill_root, ROUTER_MD_NAME)
+    if not os.path.isfile(router_md):
         fail("routing markdown not found for %s" % os.path.basename(skill_root))
-    rows = select_rows(load_corpus(args.corpus), args.covers, "resolve")
+    rows = select_rows(load_corpus(os.path.join(HERE, CORPUS_NAME)), "resolve")
     if not rows:
-        fail("no resolve rows match the covers filter")
-    skill_text = read_text(skill_md)
-    if rev_mode and (START_MARKER not in skill_text or END_MARKER not in skill_text):
-        return write_unscorable(args, rows, "route table markers missing", revision)
-    # WHY: the parsers report a missing marker without a path, so the file the
-    # loader picked is named here, before the parsers run. A revision run keeps
-    # its own unscorable path for an old tree that lacks a marker.
-    if not rev_mode:
-        source_name = os.path.relpath(skill_md, os.path.dirname(skill_root))
-        for start, end, label in ((START_MARKER, END_MARKER, "route table"), (ROUTER_START, ROUTER_END, "router block")):
-            if start not in skill_text or end not in skill_text:
-                fail("%s markers missing in %s" % (label, source_name))
-    if not os.path.isfile(signals_md):
-        if rev_mode:
-            return write_unscorable(args, rows, "routing signals file missing", revision)
-        fail("routing signals file not found in %s" % os.path.basename(skill_root))
-    signals_text = read_text(signals_md)
-    weak_signals = parse_weak_signals(signals_text)
+        fail("no resolve rows in the corpus")
+    skill_text = read_text(router_md)
+    # WHY: the parsers report a missing marker without a path, so the file is
+    # named here, before they run.
+    source_name = os.path.relpath(router_md, os.path.dirname(skill_root))
+    for start, end, label in ((START_MARKER, END_MARKER, "route table"), (ROUTER_START, ROUTER_END, "router block")):
+        if start not in skill_text or end not in skill_text:
+            fail("%s markers missing in %s" % (label, source_name))
     route_rows = parse_route_table(skill_text)
-    constants = parse_constants(skill_text, signals_text)
-    if rev_mode and ("PHASE_FILES = {" not in skill_text or "TOPIC_FILES = {" not in skill_text):
-        return write_unscorable(args, rows, "generated router maps missing", revision)
+    margin = parse_route_margin(skill_text)
     phase_map = parse_generated_map(skill_text, "PHASE_FILES")
     topic_map = parse_generated_map(skill_text, "TOPIC_FILES")
-    if not rev_mode:
-        check_phase_agreement(skill_root, phase_map)
-    resources = load_resource_map(skill_root)
-    snapshot, snapshot_hash = build_snapshot(route_rows, constants, phase_map, resources)
-    del snapshot
-
-    required, _conditional = routed_paths(route_rows, skill_root, phase_map, topic_map)
-    if not rev_mode:
-        missing = connectivity_report(skill_root, rows, required)
-        if missing:
-            for line in missing:
-                print(line)
-            print("connectivity gate failed: %d missing path(s)" % len(missing))
-            return 2
-
-    baseline_root = str(getattr(args, "baseline_root", "") or skill_root)
-    encoder = open_encoder(baseline_root)
+    encoder = open_encoder(skill_root)
     hub = load_hub(os.path.dirname(skill_root))
     cache: Dict[str, Dict[str, Any]] = {}
     resolutions: Dict[str, Dict[str, Any]] = {}
@@ -3515,19 +2998,19 @@ def run_resolve(args: argparse.Namespace) -> int:
         if previous:
             prompt = previous + " " + prompt
         year = str(row.get("year", ""))
-        route = resolve_route(route_rows, skill_root, prompt, year, phase_map, topic_map, constants, weak_signals)
+        route = resolve_route(route_rows, skill_root, prompt, year, phase_map, topic_map, margin)
         route["packets"] = resolve_packets(
             hub,
             prompt,
             route,
             route_rows,
-            lambda rest: decide_route(route_rows, skill_root, rest, year, phase_map, topic_map, constants, weak_signals),
+            lambda rest: decide_route(route_rows, skill_root, rest, year, phase_map, topic_map, margin),
         )
         if hub is not None:
             route = cli_start_route(route, route["packets"], hub["default"])
-        result = score_row(skill_root, row, route, cache, encoder, strict=not rev_mode)
+        result = score_row(skill_root, row, route, cache, encoder)
         if previous:
-            first = resolve_route(route_rows, skill_root, previous, year, phase_map, topic_map, constants, weak_signals)
+            first = resolve_route(route_rows, skill_root, previous, year, phase_map, topic_map, margin)
             expected_type = str(row.get("previous_gold_task_type", "") or "")
             expected_mode = str(row.get("previous_gold_mode", "") or "")
             turn_problems: List[str] = []
@@ -3544,54 +3027,24 @@ def run_resolve(args: argparse.Namespace) -> int:
         resolutions[str(row.get("id", ""))] = route
         results.append(result)
 
-    parity = parity_findings(rows, resolutions, strict=not args.covers)
-    out_dir = os.path.abspath(args.out)
-    try:
-        os.makedirs(out_dir, exist_ok=True)
-    except OSError as exc:
-        fail("cannot create output folder: %s" % os.path.basename(out_dir))
+    parity = parity_findings(rows, resolutions)
+    out_dir = output_folder(out)
     write_results(os.path.join(out_dir, "results.csv"), results)
-    write_report(
-        os.path.join(out_dir, "report.md"),
-        snapshot_hash,
-        os.path.basename(args.corpus),
-        rows,
-        results,
-        parity,
-        constants,
-        revision,
-    )
+    write_report(os.path.join(out_dir, "report.md"), rows, results, parity, margin)
     failed = sum(1 for result in results if result["verdict"] == "FAIL")
     if failed or parity:
         for finding in parity:
             print(finding)
         print("%s: %d row finding(s), %d parity finding(s)" % (PROGRAM, failed, len(parity)))
+        print("%s: output in %s" % (PROGRAM, out_dir))
         return 1
     print("%s: ok, %d rows passed" % (PROGRAM, len(results)))
+    print("%s: output in %s" % (PROGRAM, out_dir))
     return 0
 
 # ───────────────────────────────────────────────────────────────
-# 13. REPLAY MODE
+# 12. REPLAY MODE
 # ───────────────────────────────────────────────────────────────
-
-def guard_and_stub(args: argparse.Namespace) -> Tuple[str, str]:
-    """Resolve the guard and the stub CLI to replay.
-
-    Args:
-        args: Parsed command line.
-
-    Returns:
-        The guard path and the stub path.
-    """
-    repo_root = os.path.abspath(str(getattr(args, "repo_root", os.path.dirname(SKILL_ROOT))))
-    guard = str(getattr(args, "guard", "") or "")
-    stub = str(getattr(args, "stub", "") or "")
-    if not guard:
-        guard = os.path.join(repo_root, GUARD_RELATIVE)
-    if not stub:
-        stub = os.path.join(repo_root, STUB_RELATIVE)
-    return guard, stub
-
 
 def hostile_body(skill_root: str, case_id: str) -> Tuple[Optional[str], str]:
     """Build the dry-run body of one hostile invoice case.
@@ -3665,9 +3118,6 @@ def write_journal(path: str, row: Dict[str, Any], digest: str) -> None:
     if intent in ("match", "mismatch"):
         entry["payload_digest"] = digest
         entry["attachment_digest"] = ""
-    directory = os.path.dirname(path)
-    if not os.path.isdir(directory):
-        os.makedirs(directory, exist_ok=True)
     with open(path, "w", encoding="utf-8") as handle:
         handle.write(json.dumps(entry) + "\n")
 
@@ -3707,14 +3157,13 @@ def replay_row(
             env[str(name)] = text
     command = [str(part) for part in row.get("command", [])]
     expected_exit = int(row.get("expected_exit", 0))
-    dry_body = row.get("dry_body")
     problems: List[str] = []
     if row.get("kind") == "hostile":
         dry_body, error = hostile_body(skill_root, str(row.get("case_id", "")))
         if error:
             problems.append(error)
-    if dry_body is not None:
-        env["MONEYBIRD_TEST_DRY_BODY"] = str(dry_body)
+        if dry_body is not None:
+            env["MONEYBIRD_TEST_DRY_BODY"] = str(dry_body)
     preview_line = ""
     preview_digest = ""
     if row.get("intent") is not None:
@@ -3732,21 +3181,14 @@ def replay_row(
     try:
         if row.get("warmup"):
             run_process([guard] + command, env)
-        try:
-            before_size = os.path.getsize(stub_log)
-        except OSError:
-            before_size = 0
+        before_size = os.path.getsize(stub_log)
         status, output = run_process([guard] + command, env)
     finally:
         if key_backup and not os.path.isfile(key_file):
             os.rename(key_backup, key_file)
-    new_log = ""
-    try:
-        with open(stub_log, "r", encoding="utf-8", errors="replace") as handle:
-            handle.seek(before_size)
-            new_log = handle.read()
-    except OSError:
-        new_log = ""
+    with open(stub_log, "r", encoding="utf-8", errors="replace") as handle:
+        handle.seek(before_size)
+        new_log = handle.read()
 
     if status != expected_exit:
         problems.append("exit %d, expected %d" % (status, expected_exit))
@@ -3786,21 +3228,12 @@ def replay_row(
     }
 
 
-def write_replay_report(
-    path: str,
-    rows: List[Dict[str, Any]],
-    results: List[Dict[str, Any]],
-    revision: str,
-    guard: str,
-    stub: str,
-) -> None:
+def write_replay_report(path: str, results: List[Dict[str, Any]], guard: str, stub: str) -> None:
     """Write the replay report with one row per refusal and its exit code.
 
     Args:
         path: Output file.
-        rows: Replay rows.
         results: Replay results in row order.
-        revision: Full revision text, empty on a live run.
         guard: Guard that was replayed, as a display path.
         stub: Stub that was replayed, as a display path.
 
@@ -3809,8 +3242,6 @@ def write_replay_report(
     """
     passed = sum(1 for result in results if result["verdict"] == "PASS")
     lines: List[str] = ["# Route replay report", "", "Mode: replay"]
-    if revision:
-        lines.append("Revision: %s" % revision[:12])
     lines.append("Corpus: %d replay rows" % len(results))
     lines.append("Guard: %s" % os.path.basename(guard))
     lines.append("Stub: %s" % os.path.basename(stub))
@@ -3819,7 +3250,7 @@ def write_replay_report(
     lines.append("")
     lines.append("| scenario | kind | command | expected exit | actual exit | verdict |")
     lines.append("|---|---|---|---:|---:|---|")
-    for row, result in zip(rows, results):
+    for result in results:
         lines.append(
             "| %s | %s | %s | %s | %s | %s |"
             % (
@@ -3850,22 +3281,23 @@ def write_replay_report(
         fail("cannot write report: %s" % exc)
 
 
-def run_replay(args: argparse.Namespace) -> int:
+def run_replay(out: str) -> int:
     """Replay refusal fixtures through the guard stub.
 
     Args:
-        args: Parsed command line.
+        out: Output folder, empty for a fresh temp folder.
 
     Returns:
         0 when every row returns its recorded exit, 1 on a row finding and
         2 when the guard or the stub is missing.
     """
-    skill_root = os.path.abspath(args.skill_root)
-    revision = str(getattr(args, "rev_sha", "") or "")
-    rows = select_rows(load_corpus(args.corpus), args.covers, "replay")
+    skill_root = SKILL_ROOT
+    rows = select_rows(load_corpus(os.path.join(HERE, CORPUS_NAME)), "replay")
     if not rows:
-        fail("no replay rows match the covers filter")
-    guard, stub = guard_and_stub(args)
+        fail("no replay rows in the corpus")
+    repo_root = os.path.dirname(skill_root)
+    guard = os.path.join(repo_root, GUARD_RELATIVE)
+    stub = os.path.join(repo_root, STUB_RELATIVE)
     if not os.path.isfile(guard):
         fail("guard not found: %s" % guard)
     if not os.path.isfile(stub):
@@ -3907,105 +3339,23 @@ def run_replay(args: argparse.Namespace) -> int:
             results.append(replay_row(row, guard, base_env, stub_log, journal, key_file, skill_root, temp_root))
     finally:
         shutil.rmtree(temp_root, ignore_errors=True)
-    out_dir = os.path.abspath(args.out)
-    try:
-        os.makedirs(out_dir, exist_ok=True)
-    except OSError as exc:
-        fail("cannot create output folder: %s" % os.path.basename(out_dir))
+    out_dir = output_folder(out)
     write_results(os.path.join(out_dir, "results.csv"), results, REPLAY_COLUMNS)
-    write_replay_report(
-        os.path.join(out_dir, "report.md"),
-        rows,
-        results,
-        revision,
-        guard,
-        stub,
-    )
+    write_replay_report(os.path.join(out_dir, "report.md"), results, guard, stub)
     failed = sum(1 for result in results if result["verdict"] == "FAIL")
     if failed:
         for result in results:
             if result["verdict"] == "FAIL":
                 print("%s: %s" % (result["scenario_id"], result["reason"]))
         print("%s: %d replay row finding(s)" % (PROGRAM, failed))
+        print("%s: output in %s" % (PROGRAM, out_dir))
         return 1
     print("%s: ok, %d replay rows passed" % (PROGRAM, len(results)))
+    print("%s: output in %s" % (PROGRAM, out_dir))
     return 0
 
 # ───────────────────────────────────────────────────────────────
-# 14. REVISION WORKTREE
-# ───────────────────────────────────────────────────────────────
-
-def add_revision_worktree(revision: str) -> Dict[str, str]:
-    """Add a temp worktree for one revision.
-
-    Args:
-        revision: Revision argument from the command line.
-
-    Returns:
-        The worktree root, the temp root, the full revision and the repo.
-
-    Raises:
-        SystemExit: When the revision is unknown or the worktree fails.
-    """
-    repo = os.path.dirname(SKILL_ROOT)
-    temp_root = tempfile.mkdtemp(prefix="route-replay-rev.", dir=os.environ.get("TMPDIR") or "/tmp")
-    try:
-        probe = subprocess.run(
-            ["git", "-C", repo, "rev-parse", "--verify", "%s^{commit}" % revision],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            timeout=60,
-        )
-    except (OSError, subprocess.SubprocessError) as exc:
-        shutil.rmtree(temp_root, ignore_errors=True)
-        fail("cannot read the revision %s: %s" % (revision, exc))
-    if probe.returncode != 0:
-        shutil.rmtree(temp_root, ignore_errors=True)
-        fail("unknown revision: %s" % revision)
-    full = probe.stdout.decode("utf-8", "replace").strip()
-    target = os.path.join(temp_root, "worktree")
-    try:
-        added = subprocess.run(
-            ["git", "-C", repo, "worktree", "add", "--detach", target, full],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            timeout=120,
-        )
-    except (OSError, subprocess.SubprocessError) as exc:
-        shutil.rmtree(temp_root, ignore_errors=True)
-        fail("cannot add a worktree for %s: %s" % (full[:12], exc))
-    if added.returncode != 0:
-        detail = added.stderr.decode("utf-8", "replace").strip()
-        shutil.rmtree(temp_root, ignore_errors=True)
-        fail("cannot add a worktree for %s: %s" % (full[:12], detail))
-    return {"root": target, "temp": temp_root, "sha": full, "repo": repo}
-
-
-def remove_revision_worktree(context: Dict[str, str]) -> None:
-    """Remove the temp worktree and its temp root.
-
-    Args:
-        context: Mapping returned by add_revision_worktree.
-    """
-    try:
-        subprocess.run(
-            ["git", "-C", context["repo"], "worktree", "remove", "--force", context["root"]],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            timeout=120,
-        )
-        subprocess.run(
-            ["git", "-C", context["repo"], "worktree", "prune"],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            timeout=60,
-        )
-    except (OSError, subprocess.SubprocessError):
-        pass
-    shutil.rmtree(context["temp"], ignore_errors=True)
-
-# ───────────────────────────────────────────────────────────────
-# 15. ENTRY POINT
+# 13. ENTRY POINT
 # ───────────────────────────────────────────────────────────────
 
 def main(argv: List[str]) -> int:
@@ -4028,70 +3378,15 @@ def main(argv: List[str]) -> int:
         help="resolve scores pure route resolution, replay runs the guard against the stub",
     )
     parser.add_argument(
-        "--corpus",
-        metavar="PATH",
-        default=os.path.join(HERE, CORPUS_NAME),
-        help="fixture corpus, default %s" % CORPUS_NAME,
-    )
-    parser.add_argument(
         "--out",
         metavar="DIR",
-        default=DEFAULT_OUT,
-        help="output folder for results.csv and report.md",
-    )
-    parser.add_argument(
-        "--skill-root",
-        metavar="DIR",
-        default=None,
-        help="skill folder that holds ROUTER.md and references",
-    )
-    parser.add_argument(
-        "--rev",
-        metavar="SHA",
         default="",
-        help="score a git worktree of this revision instead of the live tree",
-    )
-    parser.add_argument(
-        "--covers",
-        metavar="PHASE/REQ",
-        action="append",
-        default=[],
-        help="only score rows tagged with this covers value, repeatable",
-    )
-    parser.add_argument(
-        "--guard",
-        metavar="PATH",
-        default="",
-        help="guard script to replay, default from the repository root",
-    )
-    parser.add_argument(
-        "--stub",
-        metavar="PATH",
-        default="",
-        help="stub CLI to replay, default from the repository root",
+        help="output folder for results.csv and report.md, default a fresh temp folder",
     )
     args = parser.parse_args(argv)
-    if args.rev and args.skill_root is not None:
-        fail("--rev scores a worktree, so --skill-root is not allowed")
-    context: Optional[Dict[str, str]] = None
-    try:
-        if args.rev:
-            context = add_revision_worktree(args.rev)
-            args.skill_root = os.path.join(context["root"], SKILL_FOLDER_NAME)
-            args.repo_root = context["root"]
-            args.baseline_root = SKILL_ROOT
-            args.rev_sha = context["sha"]
-        else:
-            args.skill_root = os.path.abspath(args.skill_root or SKILL_ROOT)
-            args.repo_root = os.path.dirname(SKILL_ROOT)
-            args.baseline_root = args.skill_root
-            args.rev_sha = ""
-        if args.mode == "replay":
-            return run_replay(args)
-        return run_resolve(args)
-    finally:
-        if context is not None:
-            remove_revision_worktree(context)
+    if args.mode == "replay":
+        return run_replay(args.out)
+    return run_resolve(args.out)
 
 
 if __name__ == "__main__":

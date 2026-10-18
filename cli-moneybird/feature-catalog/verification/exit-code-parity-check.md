@@ -25,7 +25,7 @@ The guard is the source of truth for its exit codes. A documented surface that d
 
 ### Core Behavior
 
-The check derives the guard's exit codes from the guard script rather than a hardcoded list. It extracts the guard codes and the codes named by each surface. The check fails when a surface misses a guard code or names a code the guard never emits. Generic shell results are excluded from the extra-code test. A `--root DIR` argument points the check at another repository copy, which is what the self-test uses. The check reads files only. It never calls the CLI and never opens a credential file.
+The check derives the guard's exit codes from the guard script rather than a hardcoded list. It extracts the guard codes and the codes named by each surface. The check fails when a surface misses a guard code or names a code the guard never emits. Generic shell results are excluded from the extra-code test. The check finds its repository root from its own location. The check reads files only. It never calls the CLI and never opens a credential file.
 
 ### Coverage Surfaces
 
@@ -33,7 +33,7 @@ The compared surfaces are the canonical exit table in `references/cli.md`, the g
 
 ### Self-Test
 
-`scripts/exit-code-parity-test.sh` copies the files the check reads and mutates one surface per case. A clean copy must pass and every mutant must fail with a report line that names the drift. The self-test is the fault-injection anchor for the check.
+`scripts/exit-code-parity-test.sh` copies the check and the files it reads into a throwaway tree and mutates one surface per case. A clean copy must pass and every mutant must fail with a report line that names the drift. The self-test is the fault-injection anchor for the check.
 
 ---
 

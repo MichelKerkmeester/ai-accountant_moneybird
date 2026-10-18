@@ -51,7 +51,7 @@ The investment and claim register is the dated per-asset record with the order d
 | File | Type | Role |
 |---|---|---|
 | `sk-moneybird-accountant/manual-testing-playbook/offline-routing/income-tax-return-pack.md` | Manual playbook | Scenario PACK-002 with gold row PACK-INCOME-01 and eval case income-tax-return-pack. |
-| `sk-moneybird-accountant/scripts/route-replay/routing-gold.json` | Fixture | The PACK-INCOME-01 row with its covers tag and token ceiling. |
+| `sk-moneybird-accountant/scripts/route-replay/routing-gold.json` | Fixture | The PACK-INCOME-01 row with its token ceiling. |
 | `sk-moneybird-accountant/evals/evals.json` | Fixture | The income-tax-return-pack eval case with its required-token and forbidden-pattern lists. |
 | `sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh` | Automated test | The pass case for the pack row. |
 

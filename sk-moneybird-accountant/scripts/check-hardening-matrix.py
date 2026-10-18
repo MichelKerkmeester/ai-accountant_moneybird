@@ -2,28 +2,22 @@
 # ───────────────────────────────────────────────────────────────
 # COMPONENT: HARDENING MATRIX CHECK
 # ───────────────────────────────────────────────────────────────
-"""Check the hardening matrix for complete rows and covered P0 tests.
+"""Check the hardening matrix for complete rows and covered tests.
 
 Reads sk-moneybird-accountant/hardening-matrix.md and parses the table between
 its markers. Every row must name a failure mode, a priority, a control, a test,
 an owner and a status. A P0 row must name an existing test path in the form
-"path :: case name" and the case name must occur in that file as a quoted test
-name, so a deleted test file or a renamed case fails the check instead of
-leaving a silent gap. A test path must stay inside the repository: an absolute
-path, a path with a parent segment and a path that resolves outside the root
-fail the check on any row. P1 and P2 rows with a missing test path are
-reported as notes and do not fail the check. The script uses the Python
-standard library only and makes no network call.
+"path :: case name". A P1 or P2 row may write "-" for no test, and any row
+that names a test needs the path to exist and the case name to occur in that
+file as a quoted test name, so a deleted test file or a renamed case fails the
+check instead of leaving a silent gap. A test path must stay inside the
+repository: a path that resolves outside the root, as an absolute path, a
+parent segment or a link can, fails the check on any row. The script reads the
+repository above it, uses the Python standard library only and makes no
+network call.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/check-hardening-matrix.py
-    python3 -I sk-moneybird-accountant/scripts/check-hardening-matrix.py --check
-    python3 -I sk-moneybird-accountant/scripts/check-hardening-matrix.py --root DIR
-
-Options:
-    --check     Run the check. This is the default and only mode.
-    --root DIR  Read another copy of the repository. Defaults to the root
-                above this script.
 
 Output:
     One line per problem, or "hardening-matrix: ok" with the row counts when
@@ -54,12 +48,11 @@ MARKER_END = "<!-- hardening-matrix:end -->"
 
 EXPECTED_HEADER = ("#", "Failure mode", "Priority", "Control", "Test", "Owner", "Status")
 PRIORITIES = ("P0", "P1", "P2")
-STATUS_VALUES = ("Covered", "Partial", "Pending", "Deferred", "no test yet")
+STATUS_VALUES = ("Covered", "Partial", "Pending", "Deferred")
 
 # The test cell holds a repo-relative path, this separator, then a case name.
 TEST_SEPARATOR = " :: "
 NO_TEST = "-"
-NO_TEST_STATUS = "no test yet"
 
 # ───────────────────────────────────────────────────────────────
 # 3. HELPERS
@@ -121,74 +114,26 @@ def stays_inside(root: str, path: str) -> bool:
         path: Test path as the matrix cell wrote it.
 
     Returns:
-        False for an absolute path, a path with a parent segment and a path
-        whose resolved target lies outside the resolved root.
+        False for a path whose resolved target lies outside the resolved
+        root. An absolute path, a parent segment and a link all resolve there.
     """
-    if os.path.isabs(path) or ".." in path.replace("\\", "/").split("/"):
-        return False
     resolved = os.path.realpath(os.path.join(root, path))
     return resolved.startswith(os.path.realpath(root) + os.sep)
 
 
-COMMENT_LINE_RE = re.compile(r"^\s*(?:#|//)")
-# WHY: a shell word starts after a blank or an operator, so "(exit 0)# x" and
-# "true&&# x" end in a comment while "$#" and "${#list}" do not.
-COMMENT_START_AFTER = " \t;&|()<>"
-
-
-def strip_trailing_comment(line: str) -> str:
-    """Cut a trailing comment that stands outside a quoted string.
-
-    A `#` that starts a word opens a shell or Python comment: after the start
-    of the line, a space, a tab, a semicolon or another shell operator such as
-    a closing parenthesis, `&` or `|`. A `//` after a space or a tab opens a
-    script comment. A backslash inside a quoted string escapes the next
-    character, so `"a\\\\"` closes after the second backslash.
-
-    Args:
-        line: One line of a test file.
-
-    Returns:
-        The line up to its comment, or the whole line when it holds none.
-    """
-    quote = ""
-    escaped = False
-    for index, char in enumerate(line):
-        if quote:
-            if escaped:
-                escaped = False
-            elif char == "\\":
-                escaped = True
-            elif char == quote:
-                quote = ""
-            continue
-        if char in "\"'":
-            quote = char
-            continue
-        previous = line[index - 1] if index else " "
-        if char == "#" and previous in COMMENT_START_AFTER:
-            return line[:index]
-        if char == "/" and line[index:index + 2] == "//" and previous in " \t":
-            return line[:index]
-    return line
+COMMENT_LINE_RE = re.compile(r"^\s*#")
 
 
 def code_lines(text: str) -> str:
-    """Drop the comments from a test file.
+    """Drop the whole-line comments from a test file.
 
     Args:
         text: Test file text.
 
     Returns:
-        The text without whole comment lines and without a trailing comment
-        that stands outside a quoted string.
+        The text without the lines that start with a comment mark.
     """
-    kept: List[str] = []
-    for line in text.splitlines():
-        if COMMENT_LINE_RE.match(line):
-            continue
-        kept.append(strip_trailing_comment(line))
-    return "\n".join(kept)
+    return "\n".join(line for line in text.splitlines() if not COMMENT_LINE_RE.match(line))
 
 
 def declares_case(text: str, case: str) -> bool:
@@ -202,7 +147,8 @@ def declares_case(text: str, case: str) -> bool:
         True when the case sits right after an opening quote and is followed
         by the same closing quote or by a space inside a longer quoted name.
         The suites and the eval file name a case as a quoted string. A quoted
-        mention in a comment and a name inside another word do not count.
+        mention on a comment line and a name inside another word do not
+        count.
     """
     pattern = r"""(["'])""" + re.escape(case) + r"""(?:\1|(?=[ \t]))"""
     return re.search(pattern, code_lines(text)) is not None
@@ -263,14 +209,13 @@ def parse_rows(text: str, problems: List[str]) -> List[Dict[str, str]]:
 # 5. CHECK
 # ───────────────────────────────────────────────────────────────
 
-def check_row(row: Dict[str, str], root: str, problems: List[str], notes: List[str]) -> None:
+def check_row(row: Dict[str, str], root: str, problems: List[str]) -> None:
     """Check one matrix row and its test path.
 
     Args:
         row: One parsed row.
         root: Repository root for the test path lookup.
         problems: List that collects failing problem lines.
-        notes: List that collects non-failing notes.
     """
     label = row["#"] or "(row without an id)"
     if not row["#"]:
@@ -292,13 +237,9 @@ def check_row(row: Dict[str, str], root: str, problems: List[str], notes: List[s
         cell = cell[1:-1].strip()
     path = ""
     case = ""
-    if row["Status"] == NO_TEST_STATUS and cell != NO_TEST:
-        problems.append("row %s: status %r needs a %r test cell" % (label, NO_TEST_STATUS, NO_TEST))
     if cell == NO_TEST:
         if row["Priority"] == "P0":
             problems.append("row %s: a P0 row needs a test path, not %r" % (label, NO_TEST))
-        elif row["Status"] == NO_TEST_STATUS:
-            notes.append("note: row %s (%s): no test yet" % (label, row["Priority"]))
         return
     if TEST_SEPARATOR not in cell:
         problems.append("row %s: test cell %r is not 'path :: case name'" % (label, cell))
@@ -314,10 +255,7 @@ def check_row(row: Dict[str, str], root: str, problems: List[str], notes: List[s
         return
     file_path = os.path.join(root, path)
     if not os.path.isfile(file_path):
-        if row["Priority"] == "P0":
-            problems.append("row %s: test path missing: %s" % (label, path))
-        else:
-            notes.append("note: row %s (%s): test path missing: %s" % (label, row["Priority"], path))
+        problems.append("row %s: test path missing: %s" % (label, path))
         return
     try:
         with open(file_path, "r", encoding="utf-8") as handle:
@@ -326,10 +264,7 @@ def check_row(row: Dict[str, str], root: str, problems: List[str], notes: List[s
         problems.append("row %s: cannot read test file %s: %s" % (label, path, exc))
         return
     if not declares_case(file_text, case):
-        if row["Priority"] == "P0":
-            problems.append("row %s: test case not found in %s: %s" % (label, path, case))
-        else:
-            notes.append("note: row %s (%s): test case not found in %s: %s" % (label, row["Priority"], path, case))
+        problems.append("row %s: test case not found in %s: %s" % (label, path, case))
 
 
 def check_matrix(root: str) -> int:
@@ -343,13 +278,10 @@ def check_matrix(root: str) -> int:
     """
     text = read_text(root, MATRIX_REL)
     problems: List[str] = []
-    notes: List[str] = []
     rows = parse_rows(text, problems)
     for row in rows:
-        check_row(row, root, problems, notes)
+        check_row(row, root, problems)
 
-    for note in notes:
-        print("hardening-matrix: %s" % note)
     if problems:
         for problem in problems:
             print("hardening-matrix: %s" % problem)
@@ -370,26 +302,13 @@ def main(argv: List[str]) -> int:
 
     Returns:
         Zero when the matrix passes, one on a finding.
-
-    Raises:
-        SystemExit: If the root is not a directory.
     """
     parser = argparse.ArgumentParser(
         prog=CHECKER,
         description="Check the hardening matrix for complete rows and covered P0 tests.",
     )
-    parser.add_argument("--check", action="store_true", help="run the check, the default and only mode")
-    parser.add_argument(
-        "--root",
-        default=REPO_ROOT,
-        metavar="DIR",
-        help="read another copy of the repository instead of the one above this script",
-    )
-    args = parser.parse_args(argv)
-    root = os.path.abspath(args.root)
-    if not os.path.isdir(root):
-        fail("not a directory: %s" % args.root)
-    return check_matrix(root)
+    parser.parse_args(argv)
+    return check_matrix(REPO_ROOT)
 
 
 if __name__ == "__main__":

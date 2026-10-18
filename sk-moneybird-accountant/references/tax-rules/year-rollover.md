@@ -16,7 +16,7 @@ version: 1.0.0.0
 
 # Year rollover
 
-**Rule:** Follow this runbook on 1 January, or on the first working day after it. Every step names the path it touches. A figure stays in the year file that owns it, and this reference changes no value. Every condition names its alternative or its default, so a decision step carries a branch, and `sk-moneybird-accountant/scripts/outline-check.py` fails one that names none.
+**Rule:** Follow this runbook on 1 January, or on the first working day after it. Every step names the path it touches. A figure stays in the year file that owns it, and this reference changes no value. Every condition names its alternative or its default, so a decision step carries a branch.
 
 ---
 

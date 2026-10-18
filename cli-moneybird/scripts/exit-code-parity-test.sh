@@ -9,8 +9,8 @@
 #   1 - One or more cases fail
 #   2 - Invalid arguments or missing input files
 #
-# WHY: a parity check that cannot fail proves nothing, so each case runs it on a
-# throwaway copy of the files it reads and requires the expected verdict. The
+# WHY: a parity check that cannot fail proves nothing, so each case copies the script
+# and the files it reads into a throwaway tree and requires the expected verdict. The
 # mutants cover a deleted table row, a deleted gate ladder code, an added table
 # row, a missing keyword code, a missing flag keyword and a documentation file
 # with no exit rows.
@@ -23,15 +23,10 @@ set -uo pipefail
 
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd -P) || exit 2
 ROOT=$(cd "$SCRIPT_DIR/../.." && pwd -P) || exit 2
-PARITY="$SCRIPT_DIR/exit-code-parity.sh"
+PARITY_REL="cli-moneybird/scripts/exit-code-parity.sh"
 
 if [[ "$#" -gt 0 ]]; then
     printf 'error: usage: exit-code-parity-test.sh\n' >&2
-    exit 2
-fi
-
-if [[ ! -f "$PARITY" ]]; then
-    printf 'error: missing scripts/exit-code-parity.sh in the skill folder\n' >&2
     exit 2
 fi
 
@@ -39,23 +34,11 @@ fi
 # 2. INPUT FILES
 # ───────────────────────────────────────────────────────────────
 
-GUARD_REL=""
-for candidate in \
-    "cli-moneybird/cli/moneybird-cli/bin/moneybird-guard" \
-    "cli-moneybird/cli/moneybird-cli/moneybird-guard"; do
-    if [[ -f "$ROOT/$candidate" ]]; then
-        GUARD_REL="$candidate"
-        break
-    fi
-done
-if [[ -z "$GUARD_REL" ]]; then
-    printf 'error: missing moneybird-guard under %s\n' "$ROOT" >&2
-    exit 2
-fi
-
-# The parity check reads these files only, so a fixture copies exactly these
+# The parity check finds its root from its own location, so a fixture copies the
+# script beside exactly the files it reads
 COPY_FILES=(
-    "$GUARD_REL"
+    "$PARITY_REL"
+    "cli-moneybird/cli/moneybird-cli/moneybird-guard"
     "cli-moneybird/references/cli.md"
     "cli-moneybird/references/troubleshooting.md"
     "cli-moneybird/SKILL.md"
@@ -114,7 +97,7 @@ group() {
     printf '\n== %s\n' "$1"
 }
 
-# Copy the files the parity check reads into a throwaway root
+# Copy the parity script and the files it reads into a throwaway root
 # Args:
 #   $1 - Fixture root to create
 # Returns:
@@ -136,7 +119,7 @@ build_fixture() {
 # Returns:
 #   The parity check exit status
 run_parity() {
-    bash "$PARITY" --root "$1" >"$TMP_ROOT/parity-$2.txt" 2>&1
+    bash "$1/$PARITY_REL" >"$TMP_ROOT/parity-$2.txt" 2>&1
 }
 
 # Delete one keyword token from the TROUBLESHOOT line in a copied SKILL.md

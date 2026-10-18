@@ -1,13 +1,4 @@
 {
-  "car_route": {
-    "current": "car route current",
-    "proposed": "car route proposed",
-    "ratio": {
-      "cl100k_base": 0.2953,
-      "o200k_base": 0.2952
-    }
-  },
-  "fences": [],
   "files": [
     {
       "bytes": 6032,
@@ -1521,7 +1512,7 @@
       }
     },
     {
-      "bytes": 25316,
+      "bytes": 25244,
       "path": "sk-moneybird-accountant/references/migration/phases-0-to-2.md",
       "sections": [
         {
@@ -1537,13 +1528,13 @@
         },
         {
           "anchor": "phase-0-safety-and-system-setup",
-          "bytes": 10118,
+          "bytes": 10046,
           "line": 24,
           "lines": 74,
           "title": "Phase 0: Safety and system setup",
           "tokens": {
-            "cl100k_base": 2297,
-            "o200k_base": 2289
+            "cl100k_base": 2279,
+            "o200k_base": 2271
           }
         },
         {
@@ -1570,8 +1561,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5585,
-        "o200k_base": 5550
+        "cl100k_base": 5567,
+        "o200k_base": 5532
       }
     },
     {
@@ -2468,18 +2459,18 @@
       }
     },
     {
-      "bytes": 22680,
+      "bytes": 23122,
       "path": "sk-moneybird-accountant/references/routing-signals.md",
       "sections": [
         {
           "anchor": "1-overview",
-          "bytes": 5250,
+          "bytes": 6094,
           "line": 22,
           "lines": 23,
           "title": "1. OVERVIEW",
           "tokens": {
-            "cl100k_base": 1365,
-            "o200k_base": 1318
+            "cl100k_base": 1592,
+            "o200k_base": 1540
           }
         },
         {
@@ -2494,20 +2485,20 @@
           }
         },
         {
-          "anchor": "3-tie-margin-floor-warning-band-and-abstain",
-          "bytes": 1269,
+          "anchor": "3-tie-margin-and-abstain",
+          "bytes": 719,
           "line": 63,
-          "lines": 13,
-          "title": "3. TIE MARGIN, FLOOR, WARNING BAND AND ABSTAIN",
+          "lines": 11,
+          "title": "3. TIE MARGIN AND ABSTAIN",
           "tokens": {
-            "cl100k_base": 294,
-            "o200k_base": 294
+            "cl100k_base": 166,
+            "o200k_base": 167
           }
         },
         {
           "anchor": "4-the-specificity-clauses",
           "bytes": 2141,
-          "line": 76,
+          "line": 74,
           "lines": 20,
           "title": "4. THE SPECIFICITY CLAUSES",
           "tokens": {
@@ -2518,7 +2509,7 @@
         {
           "anchor": "5-token-budgets-for-the-route-keys",
           "bytes": 2990,
-          "line": 96,
+          "line": 94,
           "lines": 27,
           "title": "5. TOKEN BUDGETS FOR THE ROUTE KEYS",
           "tokens": {
@@ -2529,7 +2520,7 @@
         {
           "anchor": "6-year-change-route",
           "bytes": 519,
-          "line": 123,
+          "line": 121,
           "lines": 6,
           "title": "6. YEAR CHANGE ROUTE",
           "tokens": {
@@ -2540,7 +2531,7 @@
         {
           "anchor": "7-documented-gaps",
           "bytes": 1133,
-          "line": 129,
+          "line": 127,
           "lines": 12,
           "title": "7. DOCUMENTED GAPS",
           "tokens": {
@@ -2550,30 +2541,30 @@
         },
         {
           "anchor": "8-filing-grammar",
-          "bytes": 3241,
-          "line": 141,
+          "bytes": 3436,
+          "line": 139,
           "lines": 15,
           "title": "8. FILING GRAMMAR",
           "tokens": {
-            "cl100k_base": 924,
-            "o200k_base": 881
+            "cl100k_base": 981,
+            "o200k_base": 935
           }
         },
         {
           "anchor": "9-related-resources",
-          "bytes": 199,
-          "line": 156,
+          "bytes": 182,
+          "line": 154,
           "lines": 4,
           "title": "9. RELATED RESOURCES",
           "tokens": {
-            "cl100k_base": 49,
-            "o200k_base": 50
+            "cl100k_base": 45,
+            "o200k_base": 46
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 6224,
-        "o200k_base": 5923
+        "cl100k_base": 6370,
+        "o200k_base": 6062
       }
     },
     {
@@ -19762,7 +19753,7 @@
       }
     },
     {
-      "bytes": 4612,
+      "bytes": 4530,
       "path": "sk-moneybird-accountant/references/tax-rules/year-rollover.md",
       "sections": [
         {
@@ -19811,8 +19802,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 1204,
-        "o200k_base": 1192
+        "cl100k_base": 1185,
+        "o200k_base": 1173
       }
     },
     {
@@ -20468,48 +20459,6 @@
     }
   ],
   "generator": "sk-moneybird-accountant/scripts/token-baseline.py",
-  "overhead": [
-    {
-      "blocks": 0,
-      "bytes": 0,
-      "files": 0,
-      "name": "nav block bodies",
-      "tokens": {
-        "cl100k_base": 0,
-        "o200k_base": 0
-      }
-    },
-    {
-      "blocks": 0,
-      "bytes": 0,
-      "files": 0,
-      "name": "toc block bodies",
-      "tokens": {
-        "cl100k_base": 0,
-        "o200k_base": 0
-      }
-    },
-    {
-      "blocks": 96,
-      "bytes": 145982,
-      "files": 96,
-      "name": "key figure index block bodies",
-      "tokens": {
-        "cl100k_base": 44859,
-        "o200k_base": 42690
-      }
-    },
-    {
-      "blocks": 1,
-      "bytes": 224798,
-      "files": 1,
-      "name": "references/index.json",
-      "tokens": {
-        "cl100k_base": 69177,
-        "o200k_base": 69809
-      }
-    }
-  ],
   "pin": {
     "cache_dir_env": "TIKTOKEN_CACHE_DIR",
     "encodings": {
@@ -20533,7 +20482,7 @@
   },
   "units": [
     {
-      "bytes": 7332481,
+      "bytes": 7332769,
       "files": 476,
       "name": "corpus total",
       "reads": [
@@ -20541,41 +20490,8 @@
       ],
       "sections": 1427,
       "tokens": {
-        "cl100k_base": 2136303,
-        "o200k_base": 2030706
-      }
-    },
-    {
-      "bytes": 20220,
-      "name": "sk-moneybird-accountant/references/tax-rules/2026/costs-and-car/figures.md",
-      "reads": [
-        "sk-moneybird-accountant/references/tax-rules/2026/costs-and-car/figures.md"
-      ],
-      "tokens": {
-        "cl100k_base": 6091,
-        "o200k_base": 5700
-      }
-    },
-    {
-      "bytes": 10733,
-      "name": "sk-moneybird-accountant/references/tax-rules/2026/README.md",
-      "reads": [
-        "sk-moneybird-accountant/references/tax-rules/2026/README.md"
-      ],
-      "tokens": {
-        "cl100k_base": 2865,
-        "o200k_base": 2801
-      }
-    },
-    {
-      "bytes": 14011,
-      "name": "sk-moneybird-accountant/SKILL.md",
-      "reads": [
-        "sk-moneybird-accountant/SKILL.md"
-      ],
-      "tokens": {
-        "cl100k_base": 3232,
-        "o200k_base": 3215
+        "cl100k_base": 2136412,
+        "o200k_base": 2030808
       }
     },
     {
@@ -20590,41 +20506,25 @@
       }
     },
     {
-      "bytes": 26008,
+      "bytes": 25859,
       "name": "sk-moneybird-accountant/ROUTER.md",
       "reads": [
         "sk-moneybird-accountant/ROUTER.md"
       ],
       "tokens": {
-        "cl100k_base": 7357,
-        "o200k_base": 7180
+        "cl100k_base": 7311,
+        "o200k_base": 7133
       }
     },
     {
-      "bytes": 96957,
-      "name": "car route current",
+      "bytes": 14011,
+      "name": "sk-moneybird-accountant/SKILL.md",
       "reads": [
-        "sk-moneybird-accountant/references/tax-rules/2026/README.md",
-        "sk-moneybird-accountant/references/tax-rules/2026/costs-and-car/figures.md",
-        "sk-moneybird-accountant/references/tax-rules/2026/costs-and-car/rules.md",
-        "sk-moneybird-accountant/references/tax-rules/2026/costs-and-car/examples.md",
-        "sk-moneybird-accountant/references/tax-rules/2026/costs-and-car/notes.md"
+        "sk-moneybird-accountant/SKILL.md"
       ],
       "tokens": {
-        "cl100k_base": 28711,
-        "o200k_base": 27226
-      }
-    },
-    {
-      "bytes": 29237,
-      "name": "car route proposed",
-      "reads": [
-        "sk-moneybird-accountant/references/tax-rules/2026/README.md",
-        "sk-moneybird-accountant/references/tax-rules/2026/costs-and-car/figures.md#2-key-figures"
-      ],
-      "tokens": {
-        "cl100k_base": 8477,
-        "o200k_base": 8038
+        "cl100k_base": 3232,
+        "o200k_base": 3215
       }
     }
   ]

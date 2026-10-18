@@ -5,7 +5,7 @@ trigger_phrases:
   - "Offline doctor"
   - "scripts/doctor.sh"
   - "diagnose the Jortt setup"
-  - "doctor --live"
+  - "doctor offline"
 version: 1.0.0.0
 ---
 
@@ -27,10 +27,6 @@ Run it before a session or when a command fails. Its output is safe to paste bec
 
 `bash scripts/doctor.sh` reports Bash, `curl`, `jq` and the CLI location. It reports whether `.env` exists and prints `set` or `unset` for `JORTT_CLIENT_ID`, `JORTT_CLIENT_SECRET` and `JORTT_SCOPES`. It also states whether the configured scopes contain `:write`. When a spec file is present it runs `spec info`. The report ends with `Mode: offline. No network calls were made.`
 
-### Live Mode
-
-`--live` adds a `whoami` call when both client values are set. Live mode makes a network request, so run it only when the operator allows it.
-
 ---
 
 ## 3. SOURCE FILES
@@ -39,7 +35,7 @@ Run it before a session or when a command fails. Its output is safe to paste bec
 
 | File | Layer | Role |
 |---|---|---|
-| [`scripts/doctor.sh`](../../scripts/doctor.sh) | Script | Runs the offline checks and the optional live checks. |
+| [`scripts/doctor.sh`](../../scripts/doctor.sh) | Script | Runs the offline checks. |
 
 ### Validation And Tests
 

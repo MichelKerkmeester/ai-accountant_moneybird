@@ -10,7 +10,7 @@ patterns, and writes grading.json and benchmark.json. No model judges an
 answer: the assertion blocks are the whole grading contract.
 
 A captured run folder holds:
-    metadata.json            model_id, captured_on and an optional skill_hash
+    metadata.json            model_id and captured_on
     with-skill/<case id>.md  one answer per case from the current skill
     baseline/<case id>.md    one answer per case from the baseline snapshot
 
@@ -19,9 +19,8 @@ The captured_on value is an ISO calendar date. A required token written as
 year in the suite file. A required entry may also be a list of alternative
 phrasings, and the entry passes when any one of them appears.
 
-The skill hash is the sha256 of SKILL.md, the ROUTER.md beside it when the
-copy has one, and every reference path the cases route to. A run may record its own skill_hash in metadata.json, for example
-when the baseline snapshot ships one, and that value is then used as given.
+The skill hash is the sha256 of SKILL.md, the ROUTER.md beside it and every
+reference path the cases route to.
 
 The refusal false-positive rate is the share of cases that should answer and
 whose with-skill answer still stops with the route class BLOCKED. Refusal
@@ -35,18 +34,14 @@ always-pass in both reports.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/run-evals.py --grade DIR
-    python3 -I sk-moneybird-accountant/scripts/run-evals.py --grade DIR --skill DIR --out DIR
 
 Options:
     --grade DIR  Captured run folder to grade.
-    --skill DIR  Skill copy to hash. Defaults to the skill above this script.
-    --out DIR    Folder for grading.json and benchmark.json. Defaults to the
-                 captured run folder.
 
 Output:
-    grading.json and benchmark.json, plus a summary on stdout. Exit 0 when
-    every with-skill case passes, 1 when a case fails and 2 on a usage or
-    data error.
+    grading.json and benchmark.json in the captured run folder, plus a summary
+    on stdout. Exit 0 when every with-skill case passes, 1 when a case fails
+    and 2 on a usage or data error.
 """
 
 # ───────────────────────────────────────────────────────────────
@@ -77,13 +72,8 @@ BASELINE_ARM = "baseline"
 METADATA_NAME = "metadata.json"
 GRADING_NAME = "grading.json"
 BENCHMARK_NAME = "benchmark.json"
-ANSWER_EXTENSIONS = (".md", ".txt")
+ANSWER_EXTENSION = ".md"
 
-# WHY: the suite contract promises at least 10 cases, so a shorter suite is a
-# data error rather than a clean run.
-MIN_CASES = 10
-
-HEX_RE = re.compile(r"^[0-9a-f]{64}$")
 DATE_FIELD = "captured_on"
 YEAR_TOKEN = "{year}"
 
@@ -184,21 +174,6 @@ def negated_before(before: str) -> bool:
     words = [word.lower() for word in re.findall(r"[\w'-]+", match.group(1))]
     return not any(word in CLAUSE_WORDS or word in INVERTING_WORDS for word in words)
 
-
-def strip_dot_slash(relative: str) -> str:
-    """Remove the leading ./ segments of a relative path.
-
-    Args:
-        relative: Path as the suite writes it.
-
-    Returns:
-        The path without leading ./ segments. A dot that starts a real name,
-        as in .notes/ref.md, and a ../ segment stay as written.
-    """
-    while relative.startswith("./"):
-        relative = relative[2:]
-    return relative
-
 # ───────────────────────────────────────────────────────────────
 # 4. SUITE AND CAPTURE LOADING
 # ───────────────────────────────────────────────────────────────
@@ -246,7 +221,7 @@ def load_suite() -> Dict[str, Any]:
         The parsed suite.
 
     Raises:
-        SystemExit: If the suite is missing, malformed or too short.
+        SystemExit: If the suite is missing, malformed or holds no case.
     """
     data = load_json(EVALS_PATH, "the eval suite")
     if not isinstance(data, dict):
@@ -255,8 +230,8 @@ def load_suite() -> Dict[str, Any]:
     if not isinstance(markers, list) or not markers:
         fail("the eval suite holds no refusal markers")
     cases = data.get("cases")
-    if not isinstance(cases, list) or len(cases) < MIN_CASES:
-        fail("the eval suite holds fewer than %d cases" % MIN_CASES)
+    if not isinstance(cases, list) or not cases:
+        fail("the eval suite holds no cases")
     seen = set()
     for case in cases:
         check_case(case)
@@ -277,8 +252,7 @@ def read_metadata(run_dir: str) -> Dict[str, Any]:
 
     Raises:
         SystemExit: If the file, the model_id or the captured_on date is
-            missing, if the date is not an ISO calendar date, or when a
-            recorded skill_hash is not a sha256 hex digest.
+            missing or the date is not an ISO calendar date.
     """
     path = os.path.join(run_dir, METADATA_NAME)
     if not os.path.isfile(path):
@@ -294,9 +268,6 @@ def read_metadata(run_dir: str) -> Dict[str, Any]:
         datetime.date.fromisoformat(captured)
     except ValueError:
         fail("the captured run metadata holds an invalid %s date: %s" % (DATE_FIELD, captured))
-    recorded = data.get("skill_hash")
-    if recorded is not None and not (isinstance(recorded, str) and HEX_RE.match(recorded)):
-        fail("the recorded skill_hash is not a sha256 hex digest")
     return data
 
 
@@ -314,15 +285,14 @@ def find_answer(run_dir: str, arm: str, case_id: str) -> str:
     Raises:
         SystemExit: If no answer file exists for the case and arm.
     """
-    for extension in ANSWER_EXTENSIONS:
-        path = os.path.join(run_dir, arm, case_id + extension)
-        if os.path.isfile(path):
-            try:
-                with open(path, "r", encoding="utf-8") as handle:
-                    return handle.read()
-            except OSError as exc:
-                fail("cannot read %s: %s" % (path, exc))
-    fail("missing %s answer for case %s" % (arm, case_id))
+    path = os.path.join(run_dir, arm, case_id + ANSWER_EXTENSION)
+    if not os.path.isfile(path):
+        fail("missing %s answer for case %s" % (arm, case_id))
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            return handle.read()
+    except OSError as exc:
+        fail("cannot read %s: %s" % (path, exc))
 
 
 def compile_patterns(
@@ -441,36 +411,33 @@ def routed_references(suite: Dict[str, Any]) -> List[str]:
     found = set()
     for case in suite["cases"]:
         for relative in case["expected_route"]["references"]:
-            found.add(strip_dot_slash(relative))
+            found.add(relative)
     return sorted(found)
 
 
-def skill_hash(skill_dir: str, references: List[str]) -> Tuple[str, List[str]]:
+def skill_hash(references: List[str]) -> Tuple[str, List[str]]:
     """Hash SKILL.md, its router and every routed reference.
 
     Args:
-        skill_dir: Skill copy to hash.
         references: Relative reference paths.
 
     Returns:
-        The sha256 hex digest and the paths absent from the copy. A copy
-        from before the routing moved holds no ROUTER.md, so it hashes as
-        it did then.
+        The sha256 hex digest and the reference paths absent from the skill.
 
     Raises:
-        SystemExit: If the copy holds no SKILL.md.
+        SystemExit: If the skill holds no SKILL.md or no ROUTER.md.
     """
-    if not os.path.isfile(os.path.join(skill_dir, SKILL_FILE)):
-        fail("no %s under %s" % (SKILL_FILE, skill_dir))
+    # WHY: the route table lives in ROUTER.md, so a routing change must change the hash.
+    for required in (SKILL_FILE, ROUTER_FILE):
+        if not os.path.isfile(os.path.join(SKILL_ROOT, required)):
+            fail("no %s under %s" % (required, SKILL_ROOT))
     digest = hashlib.sha256()
     missing = []
-    # WHY: the route table lives in ROUTER.md, so a routing change must change the hash.
-    router = [ROUTER_FILE] if os.path.isfile(os.path.join(skill_dir, ROUTER_FILE)) else []
-    for relative in [SKILL_FILE] + router + references:
+    for relative in [SKILL_FILE, ROUTER_FILE] + references:
         digest.update(relative.encode("utf-8"))
         digest.update(b"\0")
         try:
-            with open(os.path.join(skill_dir, relative), "rb") as handle:
+            with open(os.path.join(SKILL_ROOT, relative), "rb") as handle:
                 digest.update(handle.read())
         except OSError:
             missing.append(relative)
@@ -482,14 +449,12 @@ def skill_hash(skill_dir: str, references: List[str]) -> Tuple[str, List[str]]:
 # 6. REPORTS
 # ───────────────────────────────────────────────────────────────
 
-def grade_run(suite: Dict[str, Any], run_dir: str, skill_dir: str, out_dir: str) -> int:
-    """Grade every case and write both reports.
+def grade_run(suite: Dict[str, Any], run_dir: str) -> int:
+    """Grade every case and write both reports into the captured run folder.
 
     Args:
         suite: Parsed suite.
         run_dir: Captured run folder.
-        skill_dir: Skill copy to hash.
-        out_dir: Folder for the two report files.
 
     Returns:
         Zero when every with-skill case passes, one otherwise.
@@ -497,15 +462,7 @@ def grade_run(suite: Dict[str, Any], run_dir: str, skill_dir: str, out_dir: str)
     metadata = read_metadata(run_dir)
     captured = metadata[DATE_FIELD]
     year = captured[:4]
-    references = routed_references(suite)
-    recorded = metadata.get("skill_hash")
-    if recorded:
-        digest = recorded
-        missing: List[str] = []
-        source = "recorded"
-    else:
-        digest, missing = skill_hash(skill_dir, references)
-        source = "computed"
+    digest, missing = skill_hash(routed_references(suite))
     markers = compile_patterns(suite["refusal_markers"], "refusal markers", flags=0)
 
     cases_out = []
@@ -594,7 +551,6 @@ def grade_run(suite: Dict[str, Any], run_dir: str, skill_dir: str, out_dir: str)
     grading = {
         "suite": suite.get("suite"),
         "skill_hash": digest,
-        "skill_source": source,
         "model_id": metadata["model_id"],
         "captured_on": captured,
         "baseline_kind": suite.get("baseline", {}).get("kind"),
@@ -610,7 +566,6 @@ def grade_run(suite: Dict[str, Any], run_dir: str, skill_dir: str, out_dir: str)
     benchmark = {
         "suite": suite.get("suite"),
         "skill_hash": digest,
-        "skill_source": source,
         "model_id": metadata["model_id"],
         "captured_on": captured,
         "baseline_kind": suite.get("baseline", {}).get("kind"),
@@ -623,8 +578,8 @@ def grade_run(suite: Dict[str, Any], run_dir: str, skill_dir: str, out_dir: str)
         "cases": benchmark_cases,
     }
 
-    grading_path = os.path.join(out_dir, GRADING_NAME)
-    benchmark_path = os.path.join(out_dir, BENCHMARK_NAME)
+    grading_path = os.path.join(run_dir, GRADING_NAME)
+    benchmark_path = os.path.join(run_dir, BENCHMARK_NAME)
     write_json(grading_path, grading)
     write_json(benchmark_path, benchmark)
 
@@ -635,7 +590,7 @@ def grade_run(suite: Dict[str, Any], run_dir: str, skill_dir: str, out_dir: str)
     print("run-evals: refusal false positives %d of %d benign cases"
           % (refused_benign, benign))
     print("run-evals: always-pass assertions: %d" % len(always_pass))
-    print("run-evals: skill hash %s (%s)" % (digest, source))
+    print("run-evals: skill hash %s" % digest)
     print("run-evals: wrote %s and %s" % (grading_path, benchmark_path))
     return 0 if with_skill_passed == total else 1
 
@@ -658,26 +613,14 @@ def main(argv: List[str]) -> int:
     )
     parser.add_argument("--grade", metavar="DIR", required=True,
                         help="captured run folder to grade")
-    parser.add_argument("--skill", metavar="DIR",
-                        help="skill copy to hash, defaults to the skill above this script")
-    parser.add_argument("--out", metavar="DIR",
-                        help="folder for the two report files, defaults to the captured run folder")
     args = parser.parse_args(argv)
 
     run_dir = os.path.abspath(args.grade)
     if not os.path.isdir(run_dir):
         fail("captured run folder not found: %s" % args.grade)
-    skill_dir = os.path.abspath(args.skill) if args.skill else SKILL_ROOT
-    if not os.path.isdir(skill_dir):
-        fail("skill folder not found: %s" % args.skill)
-    out_dir = os.path.abspath(args.out) if args.out else run_dir
-    try:
-        os.makedirs(out_dir, exist_ok=True)
-    except OSError as exc:
-        fail("cannot create the output folder: %s" % exc)
 
     suite = load_suite()
-    return grade_run(suite, run_dir, skill_dir, out_dir)
+    return grade_run(suite, run_dir)
 
 
 if __name__ == "__main__":

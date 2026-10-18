@@ -4,10 +4,10 @@ set -euo pipefail
 
 usage() {
   cat <<'USAGE'
-Usage: moneybird-guard [--confirm-write] [--production] [--approval REF] [--out FILE] [--print-body] [--quiet] <moneybird-cli args...>
+Usage: moneybird-guard [--confirm-write] [--production] [--approval REF] [--out FILE] [--print-body] <moneybird-cli args...>
        moneybird-guard login-from-env [--writer]
 
-Guard flags are read anywhere before a literal --. Other arguments pass to moneybird-cli.
+Guard flags are read anywhere in the arguments. Other arguments pass to moneybird-cli.
 Without --out the response body is captured and only a summary is printed. --print-body streams the body for an operator.
 USAGE
 }
@@ -70,7 +70,6 @@ else
 fi
 CONFIRM_WRITE=0
 PRODUCTION=0
-QUIET=0
 WRITER_LOGIN=0
 OUT_ARG=""
 OUT_SET=0
@@ -83,29 +82,15 @@ INTENT_PAYLOAD_DIGEST=""
 INTENT_ATTACHMENT_DIGEST=""
 INTENT_BATCH_KEY=""
 CLI_BEFORE=()
-CLI_AFTER=()
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --)
-      CLI_AFTER+=("--")
-      shift
-      while [[ $# -gt 0 ]]; do
-        CLI_AFTER+=("$1")
-        shift
-      done
-      break
-      ;;
     --confirm-write)
       CONFIRM_WRITE=1
       shift
       ;;
     --production)
       PRODUCTION=1
-      shift
-      ;;
-    --quiet)
-      QUIET=1
       shift
       ;;
     --writer)
@@ -151,8 +136,8 @@ read_env_value() {
     while [[ "$value" == [[:space:]]* ]]; do value="${value#?}"; done
     while [[ "$value" == *[[:space:]] ]]; do value="${value%?}"; done
     case "$value" in
-      "\"*\"") value="${value#\"}"; value="${value%\"}" ;;
-      "'*'") value="${value#\'}"; value="${value%\'}" ;;
+      \"*\") value="${value#\"}"; value="${value%\"}" ;;
+      \'*\') value="${value#\'}"; value="${value%\'}" ;;
     esac
     printf '%s' "$value"
     return 0
@@ -176,11 +161,6 @@ pilot_admin_id() {
 }
 
 is_passthrough() {
-  local arg=""
-  for arg in ${CLI_BEFORE[@]+"${CLI_BEFORE[@]}"}; do
-    case "$arg" in --help|--version) return 0 ;; esac
-  done
-  [[ "${CLI_BEFORE[0]:-}" == "help" ]] && return 0
   if [[ "${CLI_BEFORE[0]:-}" == "administration" ]]; then
     case "${CLI_BEFORE[1]:-}" in
       list|current) return 0 ;;
@@ -193,25 +173,19 @@ is_passthrough() {
 }
 
 run_passthrough() {
-  if "$CLI" ${CLI_BEFORE[@]+"${CLI_BEFORE[@]}"} ${CLI_AFTER[@]+"${CLI_AFTER[@]}"}; then
-    exit 0
-  else
-    local status="$?"
-    exit "$status"
-  fi
+  "$CLI" ${CLI_BEFORE[@]+"${CLI_BEFORE[@]}"} || exit "$?"
+  exit 0
 }
 
 run_dry() {
   local -a args=()
   [[ ${#CLI_BEFORE[@]} -gt 0 ]] && args+=("${CLI_BEFORE[@]}")
   args+=(--dry-run)
-  [[ ${#CLI_AFTER[@]} -gt 0 ]] && args+=("${CLI_AFTER[@]}")
-  if DRY_OUTPUT="$("$CLI" "${args[@]}")"; then
-    return 0
-  else
-    DRY_STATUS="$?"
+  local dry_status=0
+  DRY_OUTPUT="$("$CLI" "${args[@]}")" || dry_status="$?"
+  if [[ $dry_status -ne 0 ]]; then
     [[ -n "$DRY_OUTPUT" ]] && printf '%s\n' "$DRY_OUTPUT" >&2
-    return "$DRY_STATUS"
+    exit "$dry_status"
   fi
 }
 
@@ -301,7 +275,6 @@ validate_out_path() {
       rest=""
     fi
     [[ -z "$segment" || "$segment" == "." ]] && continue
-    [[ "$segment" == ".." ]] && return 1
     cursor="$cursor/$segment"
     [[ -L "$cursor" ]] && return 1
     if [[ -e "$cursor" && -n "$rest" && ! -d "$cursor" ]]; then
@@ -320,17 +293,14 @@ require_writer_config() {
 }
 
 attachment_path() {
-  local -a args=()
   local i=0
   local arg=""
-  [[ ${#CLI_BEFORE[@]} -gt 0 ]] && args+=("${CLI_BEFORE[@]}")
-  [[ ${#CLI_AFTER[@]} -gt 0 ]] && args+=("${CLI_AFTER[@]}")
-  while [[ $i -lt ${#args[@]} ]]; do
-    arg="${args[$i]}"
+  while [[ $i -lt ${#CLI_BEFORE[@]} ]]; do
+    arg="${CLI_BEFORE[$i]}"
     case "$arg" in
       --file)
-        if [[ $((i + 1)) -lt ${#args[@]} ]]; then
-          printf '%s' "${args[$((i + 1))]}"
+        if [[ $((i + 1)) -lt ${#CLI_BEFORE[@]} ]]; then
+          printf '%s' "${CLI_BEFORE[$((i + 1))]}"
         fi
         return 0
         ;;
@@ -344,6 +314,11 @@ attachment_path() {
   return 0
 }
 
+# WHY: Every digest, approval and summary step runs through python3, so one test names the gap.
+require_python3() {
+  command -v python3 >/dev/null 2>&1 || die 1 "python3 is required to compute digests, check approvals and summarise bodies."
+}
+
 digest_helper() {
   local method="$1"
   local url_path="$2"
@@ -351,7 +326,7 @@ digest_helper() {
   if [[ ! -f "$KEY_FILE" || ! -r "$KEY_FILE" || ! -s "$KEY_FILE" ]]; then
     die 1 "The HMAC key file is missing, empty or unreadable at $KEY_FILE."
   fi
-  command -v python3 >/dev/null 2>&1 || die 1 "python3 is required to compute the payload digest."
+  require_python3
   PAYLOAD_DIGEST="$(python3 -I - "$KEY_FILE" "$method" "$url_path" "$dry_output" <<'PY'
 import hashlib
 import hmac
@@ -361,13 +336,8 @@ key_path = sys.argv[1]
 method = sys.argv[2]
 url_path = sys.argv[3]
 dry_output = sys.argv[4]
-try:
-    with open(key_path, "rb") as handle:
-        key = handle.read()
-except OSError:
-    raise SystemExit(3)
-if not key:
-    raise SystemExit(3)
+with open(key_path, "rb") as handle:
+    key = handle.read()
 # WHY: This canonical form pins exactly what an approval covers, so the same
 # payload always yields the same digest while a changed, reordered or
 # retargeted body never does. It is the method, the URL path without query or
@@ -387,7 +357,6 @@ attachment_digest_helper() {
   if [[ ! -f "$file_path" || ! -r "$file_path" ]]; then
     die 1 "The attachment file cannot be read at $file_path."
   fi
-  command -v python3 >/dev/null 2>&1 || die 1 "python3 is required to compute the attachment digest."
   ATTACHMENT_DIGEST="$(python3 -I - "$KEY_FILE" "$file_path" <<'PY'
 import hashlib
 import hmac
@@ -395,15 +364,10 @@ import sys
 
 key_path = sys.argv[1]
 file_path = sys.argv[2]
-try:
-    with open(key_path, "rb") as handle:
-        key = handle.read()
-    with open(file_path, "rb") as handle:
-        data = handle.read()
-except OSError:
-    raise SystemExit(3)
-if not key:
-    raise SystemExit(3)
+with open(key_path, "rb") as handle:
+    key = handle.read()
+with open(file_path, "rb") as handle:
+    data = handle.read()
 print(hmac.new(key, data, hashlib.sha256).hexdigest())
 PY
 )" || die 1 "The attachment digest could not be computed from the key file at $KEY_FILE."
@@ -444,7 +408,7 @@ require_approval() {
   local fields=""
   [[ -n "$APPROVAL_REF" ]] || die 8 "A write requires --approval <ref> for a WRITE_INTENT entry in the run journal."
   [[ -f "$journal" ]] || die 8 "The run journal is missing, so the approval reference cannot be checked."
-  command -v python3 >/dev/null 2>&1 || die 1 "python3 is required to check the approval reference."
+  require_python3
   fields="$(approval_verified "$journal")" || die 8 "The run journal has no WRITE_INTENT entry for the given approval reference."
   INTENT_PAYLOAD_DIGEST=""
   INTENT_ATTACHMENT_DIGEST=""
@@ -494,18 +458,12 @@ PY
 require_payload_binding() {
   local consumed_status=0
   digest_helper "$METHOD" "$URL_PATH" "$DRY_OUTPUT"
-  if [[ -z "$INTENT_PAYLOAD_DIGEST" ]]; then
-    refuse_payload "The approved WRITE_INTENT has no payload_digest, so the write is not bound to an approved payload (PAYLOAD_MISMATCH)."
-  fi
   if [[ "$PAYLOAD_DIGEST" != "$INTENT_PAYLOAD_DIGEST" ]]; then
     refuse_payload "The writer-session payload does not match the approved payload_digest (PAYLOAD_MISMATCH)."
   fi
   ATTACHMENT_PATH="$(attachment_path)"
   if [[ -n "$ATTACHMENT_PATH" ]]; then
     attachment_digest_helper "$ATTACHMENT_PATH"
-    if [[ -z "$INTENT_ATTACHMENT_DIGEST" ]]; then
-      refuse_payload "The write forwards --file but the approved WRITE_INTENT has no attachment_digest (PAYLOAD_MISMATCH)."
-    fi
     if [[ "$ATTACHMENT_DIGEST" != "$INTENT_ATTACHMENT_DIGEST" ]]; then
       refuse_payload "The attachment bytes do not match the approved attachment_digest (PAYLOAD_MISMATCH)."
     fi
@@ -598,11 +556,9 @@ run_actual() {
   if [[ $PRINT_BODY -eq 0 ]]; then
     args+=(--output raw)
   fi
-  [[ ${#CLI_AFTER[@]} -gt 0 ]] && args+=("${CLI_AFTER[@]}")
   if [[ $OUT_SET -eq 1 ]]; then
     output_dir="${OUT_PATH%/*}"
     mkdir -p "$output_dir" || die 5 "Could not create the output folder inside migration-workspace."
-    [[ -L "$output_dir" ]] && die 5 "The output folder resolves through a symlink."
     temporary="$(mktemp "$output_dir/.moneybird-guard.XXXXXX")" || die 5 "Could not create a temporary output file."
     if "$CLI" "${args[@]}" > "$temporary"; then
       mv -f "$temporary" "$OUT_PATH"
@@ -612,19 +568,14 @@ run_actual() {
       else
         summary="no response body"
       fi
-      [[ $QUIET -eq 1 ]] || printf '%s\n' "$summary"
-      status=0
+      printf '%s\n' "$summary"
     else
       status="$?"
       rm -f "$temporary"
     fi
   elif [[ $PRINT_BODY -eq 1 ]]; then
     refuse_print_body_in_agent_session
-    if "$CLI" "${args[@]}"; then
-      status=0
-    else
-      status="$?"
-    fi
+    "$CLI" "${args[@]}" || status="$?"
   else
     tmp_dir="$ACCOUNTANT_ROOT/migration-workspace/tmp"
     (umask 077; mkdir -p "$tmp_dir") || die 5 "Could not create the summary folder inside migration-workspace."
@@ -632,14 +583,11 @@ run_actual() {
     chmod 700 "$tmp_dir" 2>/dev/null || die 5 "Could not secure the summary folder."
     temporary="$(umask 077 && mktemp "$tmp_dir/.moneybird-guard.XXXXXX")" || die 5 "Could not create a temporary summary file."
     chmod 600 "$temporary" 2>/dev/null || die 5 "Could not secure the temporary summary file."
-    if "$CLI" "${args[@]}" > "$temporary"; then
-      status=0
-    else
-      status="$?"
-    fi
+    "$CLI" "${args[@]}" > "$temporary" || status="$?"
     if [[ $status -eq 0 ]]; then
-      summary="$(summarize_body "$temporary")" || die 1 "python3 is required to summarise a response body."
-      [[ $QUIET -eq 1 ]] || printf '%s\n' "$summary"
+      require_python3
+      summary="$(summarize_body "$temporary")" || die 1 "The response body could not be summarised."
+      printf '%s\n' "$summary"
     fi
     rm -f "$temporary"
   fi
@@ -649,19 +597,18 @@ run_actual() {
 if [[ "${CLI_BEFORE[0]:-}" == "login-from-env" ]]; then
   [[ $OUT_SET -eq 0 ]] || die 2 "--out does not apply to login-from-env."
   [[ $PRINT_BODY -eq 0 ]] || die 2 "--print-body does not apply to login-from-env."
-  [[ ${#CLI_BEFORE[@]} -eq 1 && ${#CLI_AFTER[@]} -eq 0 ]] || die 2 "Use login-from-env with no CLI arguments."
+  [[ ${#CLI_BEFORE[@]} -eq 1 ]] || die 2 "Use login-from-env with no CLI arguments."
   TOKEN_FILE="$ACCOUNTANT_ROOT/.env"
   if [[ $WRITER_LOGIN -eq 1 ]]; then
     TOKEN_FILE="$ACCOUNTANT_ROOT/.env.writer"
     export MONEYBIRD_CONFIG_DIR="$WRITER_CONFIG_DIR"
   fi
-  [[ $WRITER_LOGIN -eq 1 || $WRITER_LOGIN -eq 0 ]] || die 2 "Invalid login mode."
   if ! TOKEN="$(read_env_value "$TOKEN_FILE" MONEYBIRD_API_TOKEN)" || [[ -z "$TOKEN" ]]; then
     die 1 "MONEYBIRD_API_TOKEN is unset in the selected credential file."
   fi
   if printf '%s\n' "$TOKEN" | "$CLI" login >/dev/null 2>&1; then
     unset TOKEN
-    [[ $QUIET -eq 1 ]] || printf 'Moneybird login completed. CLI output was suppressed.\n'
+    printf 'Moneybird login completed. CLI output was suppressed.\n'
     exit 0
   else
     local_status="$?"
@@ -672,7 +619,7 @@ if [[ "${CLI_BEFORE[0]:-}" == "login-from-env" ]]; then
 fi
 
 [[ $WRITER_LOGIN -eq 0 ]] || die 2 "--writer is valid only with login-from-env."
-[[ ${#CLI_BEFORE[@]} -gt 0 || ${#CLI_AFTER[@]} -gt 0 ]] || { usage >&2; exit 2; }
+[[ ${#CLI_BEFORE[@]} -gt 0 ]] || { usage >&2; exit 2; }
 [[ $PRINT_BODY -eq 0 || $OUT_SET -eq 0 ]] || die 2 "--print-body and --out cannot be combined."
 if is_passthrough; then
   [[ $OUT_SET -eq 0 ]] || die 2 "--out does not apply to passthrough commands."
@@ -688,10 +635,7 @@ if [[ $OUT_SET -eq 1 ]]; then
 fi
 
 DRY_OUTPUT=""
-DRY_STATUS=0
-if ! run_dry; then
-  exit "$DRY_STATUS"
-fi
+run_dry
 if ! parse_dry_line; then
   die 2 "The CLI dry-run did not begin with a METHOD URL line."
 fi
@@ -701,11 +645,8 @@ if [[ "$METHOD" == "GET" ]]; then
   if is_list_action && ! has_period_filter; then
     printf 'Warning: Moneybird lists default to period:this_year. Older years will be missing unless --filter includes period:.\n' >&2
   fi
-  if run_actual; then
-    exit 0
-  else
-    exit "$?"
-  fi
+  run_actual || exit "$?"
+  exit 0
 fi
 
 if [[ "${MONEYBIRD_GUARD_READ_ONLY:-}" == "1" ]]; then
@@ -727,13 +668,10 @@ fi
 
 require_writer_config
 export MONEYBIRD_CONFIG_DIR="$WRITER_CONFIG_DIR"
-if ! run_dry; then
-  exit "$DRY_STATUS"
-fi
+run_dry
 if ! parse_dry_line; then
   die 2 "The writer configuration dry-run did not begin with a METHOD URL line."
 fi
-DRY_LINE="${DRY_OUTPUT%%$'\n'*}"
 
 PILOT_ADMIN_ID="$(pilot_admin_id)"
 if [[ -z "$PILOT_ADMIN_ID" ]]; then
@@ -752,11 +690,8 @@ require_payload_binding
 if ! command -v jq >/dev/null 2>&1; then
   die 1 "jq is required to append the write log."
 fi
-if run_actual; then
-  WRITE_STATUS=0
-else
-  WRITE_STATUS="$?"
-fi
+WRITE_STATUS=0
+run_actual || WRITE_STATUS="$?"
 if [[ $WRITE_STATUS -eq 0 ]]; then
   printf 'Moneybird write succeeded: %s %s\n' "$METHOD" "$URL_PATH" >&2
   printf 'An immediate GET may return cached data. The write response status is the proof.\n' >&2

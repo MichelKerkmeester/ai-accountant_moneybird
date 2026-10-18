@@ -21,7 +21,7 @@ Use this reference when installing the CLI, selecting an operation or diagnosing
 
 `jortt-cli` is a Bash 3.2 command line client that reads Jortt OpenAPI 2.0 metadata at runtime. It exposes every operation in the supplied spec through a stable slug. It needs `curl` and `jq`.
 
-The CLI is designed for repeatable migration reads. Jortt is read-only for an agent. The CLI can call the full REST API, and a non-GET method runs only when the call carries `--allow-write`. `--allow-write` is a per-call flag on the same command and is not a read-only mode. The actual wall is `JORTT_SCOPES` holding read scopes only. Every operation also needs its documented scope in `JORTT_SCOPES`.
+The CLI is designed for repeatable migration reads. Jortt is read-only for an agent. The CLI sends GET requests only and refuses every other method with exit 3. Every read also needs its documented scope in `JORTT_SCOPES`, and a key that holds read scopes only keeps the account itself read-only.
 
 ---
 
@@ -33,7 +33,7 @@ From the `cli-jortt` directory, run:
 bash cli/jortt-cli/setup.sh
 ```
 
-The script checks Bash, `curl` and `jq`, then prints a symlink command. It does not create the link unless you pass `--link`.
+The script checks Bash, `curl` and `jq`, then prints a symlink command. It never creates the link.
 
 ```bash
 ln -s "/absolute/path/to/cli/jortt-cli/jortt-cli" "$HOME/.local/bin/jortt-cli"
@@ -83,20 +83,18 @@ jortt-cli token clear
 ```bash
 jortt-cli ops
 jortt-cli ops --tag expenses
-jortt-cli ops --writes
 jortt-cli ops --json
 ```
 
-Each row shows the slug, method, path and required scope. The JSON output also includes the tag. `--writes` lists methods other than GET.
+Each row shows the slug, method, path and required scope. The JSON output also includes the tag.
 
 ### Describe an operation
 
 ```bash
 jortt-cli describe list-expenses
-jortt-cli help list-expenses
 ```
 
-The output shows its method, path, scope, path parameters, query parameters, body schema name and an example command.
+The output shows its method, path, scope, path parameters, query parameters and an example command.
 
 ### Call an operation
 
@@ -105,17 +103,9 @@ jortt-cli call list-expenses --vat_date_from YYYY-01-01 --vat_date_till YYYY-12-
 jortt-cli call get-customer-by-id --customer_id CUSTOMER_ID --dry-run
 ```
 
-`--PARAM VALUE` names must match path or query parameters in the spec. Unknown names fail with the valid parameter list. Required parameters and basic integer, number, boolean and enum values are checked before a request. Pass request bodies with `--data JSON` or `--data-file FILE`.
+`--PARAM VALUE` names must match path or query parameters in the spec. Unknown names fail with the valid parameter list. Required parameters and basic integer, number, boolean and enum values are checked before a request.
 
-`--all` follows `_links.next.href` and merges each page's `data` array into one JSON array. The API page size is at most 100 items. `--print-body` prints the full body (pretty JSON, or raw with `--raw`). `--raw` alone only changes the form of `--print-body` output. `--dry-run` prints the method, URL and JSON body without requesting a token or calling a Jortt operation. When no OpenAPI cache exists, the spec check that runs first downloads the public spec.
-
-### Raw GET
-
-```bash
-jortt-cli get /v3/expenses vat_date_from=YYYY-01-01 --all
-```
-
-`get` accepts an API path and `name=value` query values. It always uses GET. It rejects full URLs and path traversal segments.
+`--all` follows `_links.next.href` and merges each page's `data` array into one JSON array. The API page size is at most 100 items. `--print-body` prints the full body as pretty JSON. `--dry-run` prints the method and URL without requesting a token or calling a Jortt operation. When no OpenAPI cache exists, the spec check that runs first downloads the public spec.
 
 ### Identify the organization
 
@@ -140,13 +130,13 @@ The API returns a short-lived link. Read it from the saved file. `fetch` require
 
 Every `--out` and `fetch --out` destination must resolve inside `<Accountant root>/migration-workspace/`. Relative names resolve under that directory. Absolute paths must already be inside it. The CLI creates parent directories for a real write and rejects parent traversal, symlink parents and symlink output files.
 
-The migration workspace is gitignored. `call` and `get` print a short summary by default. A list shows `HTTP 200, items: 25`. An object shows `HTTP 200, data items: 25, top-level keys: data, meta` (each array-valued key with its item count, then the top-level key names). Record content stays out of the terminal by default. `--out` saves the full body inside the workspace and prints the same summary.
+The migration workspace is gitignored. `call` prints a short summary by default. A list shows `HTTP 200, items: 25`. An object shows `HTTP 200, data items: 25, top-level keys: data, meta` (each array-valued key with its item count, then the top-level key names). Record content stays out of the terminal by default. `--out` saves the full body inside the workspace and prints the same summary.
 
 `--print-body` prints the full body to the terminal. The CLI refuses it with exit 2 when any agent session marker is set (`CLAUDECODE`, `AI_SESSION_CHILD`, `ACCOUNTANT_AGENT_SESSION` or `CODEX_SANDBOX`), and tells you to use `--out` and read the saved file instead. Agents never use `--print-body`.
 
 A non-2xx response prints only the status and safe labels to stderr. For example `jortt-cli: HTTP 422, fields: amount, customer_id.` or `jortt-cli: HTTP 401, error code: invalid_token.` Field names and short code-like error codes only, never free text. The full error body is appended to `migration-workspace/logs/jortt-errors.log` (file mode 600, gitignored), and the message says so.
 
-Jortt is read-only for an agent. A non-GET operation is a write. The CLI exits 3 unless that call includes `--allow-write`. `--allow-write` is a per-call flag on the same command and is not a read-only mode. The actual wall is `JORTT_SCOPES` holding read scopes only. The CLI exits 4 when the operation's scope is missing from `JORTT_SCOPES`. Both checks run before the network call. A dry-run write still requires the flag and scope.
+Jortt is read-only for an agent. A non-GET operation is a write, and the CLI always refuses it with exit 3. The CLI has no request-body option. The CLI exits 4 when the scope of a read is missing from `JORTT_SCOPES`. Both checks run before the network call. A dry run of a non-GET operation is refused the same way.
 
 ---
 
@@ -157,7 +147,7 @@ Jortt is read-only for an agent. A non-GET operation is a write. The CLI exits 3
 | 0 | Command completed |
 | 1 | API, HTTP or transport failure |
 | 2 | Invalid command, parameter or OpenAPI document |
-| 3 | Write blocked because `--allow-write` is missing |
+| 3 | Non-GET operation refused because Jortt is read-only |
 | 4 | Required scope is absent from `JORTT_SCOPES` |
 | 5 | Output path is outside migration-workspace or crosses a symlink |
 | 6 | Token request or authentication failure |

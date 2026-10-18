@@ -16,7 +16,7 @@ version: 1.0.0.0
 
 Runs the plan kit, privacy and skill health workflows that check this package on every push and pull request.
 
-Three workflows own the automation. `plan-kit.yml` checks the generated kit and runs the plan kit and session context suites. `privacy-gate.yml` runs the privacy self test, the tree check, the history check and the gate suite. `skill-health.yml` runs the guard and Jortt suites, the routing, reference and gate checks and every package suite and its scheduled job checks the cited source links.
+Three workflows own the automation. `plan-kit.yml` checks the generated kit. `privacy-gate.yml` runs the privacy self test, the tree check, the history check and the gate suite. `skill-health.yml` runs the guard and Jortt suites, the routing, reference and gate checks and every package suite and its scheduled job checks the cited source links.
 
 ---
 
@@ -26,7 +26,7 @@ The offline skill health job seeds the pinned tokenizer cache, runs each check a
 
 Every suite in the workflows is named on its own line, because the regression trailer check reads this file to learn which tests are registered. The workflows run on a clean checkout with read-only contents permission and no persisted credentials.
 
-The word check, the split check and the outline check reach CI through `check-route-table.py`, which runs all three as siblings in the route table step. `check-ci-suites.py` compares every suite on disk with the workflow run lines and fails a suite that no run line names, so the workflow edit that registers a new suite is the last step of adding one. A commented run line, a suite path after `echo` or `printf` and a step or job with a literal false `if:` count as no run line, while a path chained after an echo with `&&` still registers. `scannability-report.py` is a checker that `check-route-table.py` runs, not a suite of its own. `hoist-record-duties.py --check` has no workflow step of its own, and `route-table-test.sh` proves its owner section case on a repository copy. It exits 1 while a year-independent record duty still sits in the year topic files and also when the `RECORD AND INVOICE DUTIES` section 2 of `references/tax-rules/general/record-and-invoice-duties.md` is absent.
+The word check reaches CI through `check-skill-words-test.sh`, which runs it on the real tree in its own step. `check-ci-suites.py` compares every suite on disk with the workflow run lines and fails a suite that no run line names, so the workflow edit that registers a new suite is the last step of adding one.
 
 ---
 
@@ -36,7 +36,7 @@ The word check, the split check and the outline check reach CI through `check-ro
 
 | File | Layer | Role |
 |---|---|---|
-| `.github/workflows/plan-kit.yml` | Shared | Checks the generated kit and runs the plan kit and session context suites. |
+| `.github/workflows/plan-kit.yml` | Shared | Checks the generated kit. |
 | `.github/workflows/privacy-gate.yml` | Shared | Runs the privacy gate modes and its suite. |
 | `.github/workflows/skill-health.yml` | Shared | Runs the guard, Jortt, routing, reference and gate suites and the monthly link job. |
 
@@ -48,8 +48,8 @@ The word check, the split check and the outline check reach CI through `check-ro
 | `scripts/privacy-gate-test.sh` | Automated test | The suite the privacy job runs. |
 | `sk-moneybird-accountant/scripts/write-contract-test.sh` | Automated test | One of the suites the skill health job runs. |
 | `sk-moneybird-accountant/scripts/check-ci-suites.py` | Test harness | Compares every suite on disk with the skill health workflow run lines and fails a suite that no run line names. |
-| `sk-moneybird-accountant/scripts/check-ci-suites-test.sh` | Automated test | Proves the suite registration check on fixture repositories, among them a commented run line, a printed path and a disabled step. |
-| `sk-moneybird-accountant/scripts/check-route-table.py` | Test harness | Runs the route table check with the sibling word, split and outline checks in one skill health step. |
+| `sk-moneybird-accountant/scripts/check-ci-suites-test.sh` | Automated test | Proves the suite registration check on fixture repositories, among them a suite with no run line and a path in a step name alone. |
+| `sk-moneybird-accountant/scripts/check-route-table.py` | Test harness | Runs the route table check in the skill health step that also runs the write contract and fragment checks. |
 
 ---
 

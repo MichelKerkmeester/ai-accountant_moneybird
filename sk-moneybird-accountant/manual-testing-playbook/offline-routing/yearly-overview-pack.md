@@ -45,7 +45,7 @@ A year-end closing before the auditfile export can strip the profit and loss dat
 
 1. Read AGENTS.md
 2. Read sk-moneybird-accountant/SKILL.md
-3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check
+3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py
 4. Read sk-moneybird-accountant/references/yearly-overview/README.md, sk-moneybird-accountant/references/yearly-overview/preparation-checklist.md and sk-moneybird-accountant/references/yearly-overview/fiscal-reconciliation.md
 5. Have the Operator export the auditfile in the Moneybird UI first, run the close checks and the equity-continuity check, assemble the pack with the exception list and stop before the year-end closing (jaarafsluiting)
 

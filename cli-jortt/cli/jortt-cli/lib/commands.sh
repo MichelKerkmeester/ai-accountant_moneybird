@@ -2,10 +2,6 @@
 # shellcheck shell=bash
 set -euo pipefail
 
-jortt_json_param_names() {
-  jq -r '.parameters[]?.name' <<< "$1"
-}
-
 jortt_validate_params() {
   local operation="$1"
   shift
@@ -96,42 +92,24 @@ $(jq -r '.parameters[]? | select(.required == true) | .name' <<< "$operation")
 EOF_REQUIRED
 }
 
-jortt_required_scope_from_op() {
-  jq -r '.scope' <<< "$1"
-}
-
-jortt_check_write_gate() {
+# WHY: Jortt is read-only for every agent, so a non-GET operation is refused before any
+# token request. The scope check follows for the reads that remain.
+jortt_check_read_gate() {
   local operation="$1"
   local slug="$2"
-  local allow_write="$3"
-  local method scope
-  method="$(jq -r '.method' <<< "$operation")"
-  scope="$(jortt_required_scope_from_op "$operation")"
-  if [ "$method" != "GET" ] && [ "$allow_write" != "1" ]; then
-    jortt_error 3 "Write operation '$slug' requires --allow-write."
+  if [ "$(jq -r '.method' <<< "$operation")" != "GET" ]; then
+    jortt_error 3 "Write operation '$slug' is refused. Jortt is read-only and jortt-cli sends GET requests only."
   fi
-  jortt_check_scope "$scope"
-}
-
-jortt_pretty_body() {
-  local body="$1"
-  if [ -z "$body" ]; then
-    printf 'Body: none\n'
-  elif printf '%s' "$body" | jq . 2>/dev/null; then
-    :
-  else
-    printf '%s\n' "$body"
-  fi
+  jortt_check_scope "$(jq -r '.scope' <<< "$operation")"
 }
 
 jortt_page_all() {
   local method="$1"
   local url="$2"
-  local body="$3"
   local accumulated='[]'
   local next data current_path current_dir
   while :; do
-    if ! jortt_request "$method" "$url" "$body"; then return 1; fi
+    if ! jortt_request "$method" "$url"; then return 1; fi
     if ! printf '%s' "$JORTT_HTTP_BODY" | jq -e '.data | type == "array"' >/dev/null 2>&1; then
       jortt_error 1 "The response did not contain a data array for --all."
     fi
@@ -153,8 +131,6 @@ jortt_page_all() {
         url="https://api.jortt.nl$current_dir/$next"
         ;;
     esac
-    method="GET"
-    body=""
   done
   JORTT_RESULT_BODY="$accumulated"
 }
@@ -177,9 +153,8 @@ jortt_body_summary() {
 jortt_print_or_save() {
   local body="$1"
   local status="$2"
-  local raw="$3"
-  local out_path="$4"
-  local print_body="$5"
+  local out_path="$3"
+  local print_body="$4"
   if [ "$print_body" = "1" ]; then
     jortt_check_print_body_allowed
   fi
@@ -189,9 +164,7 @@ jortt_print_or_save() {
     return 0
   fi
   if [ "$print_body" = "1" ]; then
-    if [ "$raw" = "1" ]; then
-      printf '%s\n' "$body"
-    elif printf '%s' "$body" | jq . 2>/dev/null; then
+    if printf '%s' "$body" | jq . 2>/dev/null; then
       :
     else
       printf '%s\n' "$body"
@@ -202,7 +175,7 @@ jortt_print_or_save() {
 }
 
 jortt_cmd_ops() {
-  local tag='' writes=0 json=0 arg operations
+  local tag='' json=0 arg operations
   while [ "$#" -gt 0 ]; do
     arg="$1"
     shift
@@ -212,13 +185,12 @@ jortt_cmd_ops() {
         tag="$1"
         shift
         ;;
-      --writes) writes=1 ;;
       --json) json=1 ;;
       *) jortt_error 2 "Unknown ops option: $arg" ;;
     esac
   done
   jortt_ensure_spec
-  operations="$(jortt_operations_json "$JORTT_SPEC_FILE" | jq -c --arg tag "$tag" --argjson writes "$writes" '[.[] | select(($tag == "" or .tag == $tag) and ($writes == 0 or .method != "GET")) | {slug, method, path, scope, tag}]')"
+  operations="$(jortt_operations_json "$JORTT_SPEC_FILE" | jq -c --arg tag "$tag" '[.[] | select($tag == "" or .tag == $tag) | {slug, method, path, scope, tag}]')"
   if [ "$json" = "1" ]; then
     printf '%s\n' "$operations" | jq .
   else
@@ -231,13 +203,12 @@ jortt_cmd_ops() {
 
 jortt_cmd_describe() {
   local slug="$1"
-  local operation path_names query_names example body_schema scope param
+  local operation path_names query_names example scope param
   jortt_ensure_spec
   operation="$(jortt_operation "$slug")"
   [ -n "$operation" ] || jortt_error 2 "Unknown operation slug: $slug. Run jortt-cli ops to list operations."
   path_names="$(jq -r '[.parameters[]? | select(.in == "path") | .name] | if length == 0 then "none" else join(", ") end' <<< "$operation")"
   query_names="$(jq -r '[.parameters[]? | select(.in == "query") | .name] | if length == 0 then "none" else join(", ") end' <<< "$operation")"
-  body_schema="$(jq -r '.body_schema | if . == "" then "none" else . end' <<< "$operation")"
   scope="$(jq -r '.scope | if . == "" then "none" else . end' <<< "$operation")"
   example="jortt-cli call $slug"
   while IFS= read -r param; do
@@ -252,33 +223,19 @@ EOF_PATHS
   done <<EOF_QUERIES
 $(jq -r '.parameters[]? | select(.in == "query" and .required == true) | .name' <<< "$operation")
 EOF_QUERIES
-  if [ "$body_schema" != "none" ]; then example="$example --data '{}'"; fi
-  printf 'Slug: %s\nMethod: %s\nPath: %s\nScope: %s\nPath params: %s\nQuery params: %s\nBody schema: %s\nExample: %s\n' \
-    "$slug" "$(jq -r '.method' <<< "$operation")" "$(jq -r '.path' <<< "$operation")" "$scope" "$path_names" "$query_names" "$body_schema" "$example"
+  printf 'Slug: %s\nMethod: %s\nPath: %s\nScope: %s\nPath params: %s\nQuery params: %s\nExample: %s\n' \
+    "$slug" "$(jq -r '.method' <<< "$operation")" "$(jq -r '.path' <<< "$operation")" "$scope" "$path_names" "$query_names" "$example"
 }
 
 jortt_cmd_call() {
   local slug="$1"
   shift
-  local operation method path scope body_data data_set=0 all=0 raw=0 print_body=0 dry_run=0 allow_write=0 out='' names=() values=() url
+  local operation method all=0 print_body=0 dry_run=0 out='' names=() values=() url
   while [ "$#" -gt 0 ]; do
     case "$1" in
-      --data)
-        [ "$#" -ge 2 ] || jortt_error 2 "--data requires JSON."
-        [ "$data_set" -eq 0 ] || jortt_error 2 "Use only one of --data and --data-file."
-        body_data="$2"; data_set=1; shift 2
-        ;;
-      --data-file)
-        [ "$#" -ge 2 ] || jortt_error 2 "--data-file requires a path."
-        [ "$data_set" -eq 0 ] || jortt_error 2 "Use only one of --data and --data-file."
-        [ -f "$2" ] || jortt_error 2 "Data file not found."
-        body_data="$(cat "$2")"; data_set=1; shift 2
-        ;;
       --all) all=1; shift ;;
-      --raw) raw=1; shift ;;
       --print-body) print_body=1; shift ;;
       --dry-run) dry_run=1; shift ;;
-      --allow-write) allow_write=1; shift ;;
       --out)
         [ "$#" -ge 2 ] || jortt_error 2 "--out requires a file path."
         [ -z "$out" ] || jortt_error 2 "Use --out once."
@@ -315,18 +272,8 @@ jortt_cmd_call() {
     jortt_resolve_output "$out" 0
     out="$JORTT_RESOLVED_OUT"
   fi
-  jortt_check_write_gate "$operation" "$slug" "$allow_write"
+  jortt_check_read_gate "$operation" "$slug"
   method="$(jq -r '.method' <<< "$operation")"
-  path="$(jq -r '.path' <<< "$operation")"
-  scope="$(jq -r '.scope' <<< "$operation")"
-  if [ "$data_set" -eq 1 ]; then
-    printf '%s' "$body_data" | jq -e . >/dev/null 2>&1 || jortt_error 2 "Request body must be valid JSON."
-  else
-    body_data=''
-    if [ "$(jq -r '.body_required' <<< "$operation")" = "true" ]; then
-      jortt_error 2 "This operation requires --data or --data-file."
-    fi
-  fi
   if [ -n "$out" ] && [ "$dry_run" != "1" ]; then
     jortt_resolve_output "$out" 1
     out="$JORTT_RESOLVED_OUT"
@@ -344,69 +291,14 @@ jortt_cmd_call() {
   fi
   if [ "$dry_run" = "1" ]; then
     printf '%s %s\n' "$method" "$url"
-    jortt_pretty_body "$body_data"
     return 0
   fi
   if [ "$all" = "1" ]; then
-    [ "$method" = "GET" ] || jortt_error 2 "--all is supported for GET operations only."
-    jortt_page_all "$method" "$url" "$body_data" || return 1
-    jortt_print_or_save "$JORTT_RESULT_BODY" "$JORTT_HTTP_STATUS" "$raw" "$out" "$print_body"
+    jortt_page_all "$method" "$url" || return 1
+    jortt_print_or_save "$JORTT_RESULT_BODY" "$JORTT_HTTP_STATUS" "$out" "$print_body"
   else
-    jortt_request "$method" "$url" "$body_data" || return 1
-    jortt_print_or_save "$JORTT_HTTP_BODY" "$JORTT_HTTP_STATUS" "$raw" "$out" "$print_body"
-  fi
-}
-
-jortt_cmd_get() {
-  local path="$1"
-  shift
-  local all=0 raw=0 print_body=0 out='' url separator pair name value encoded
-  local pairs=()
-  case "$path" in
-    http://*|https://*|*\?*|*\#*) jortt_error 2 "get accepts an API path without a host, query string or fragment." ;;
-  esac
-  case "/$path/" in */../*) jortt_error 2 "get path must not contain parent-directory segments." ;; esac
-  while [ "$#" -gt 0 ]; do
-    case "$1" in
-      --all) all=1; shift ;;
-      --raw) raw=1; shift ;;
-      --print-body) print_body=1; shift ;;
-      --out)
-        [ "$#" -ge 2 ] || jortt_error 2 "--out requires a file path."
-        out="$2"; shift 2
-        ;;
-      *)
-        pair="$1"; shift
-        case "$pair" in *=*) name="${pair%%=*}"; value="${pair#*=}" ;; *) jortt_error 2 "GET parameters must use name=value." ;; esac
-        [ -n "$name" ] || jortt_error 2 "GET parameter names cannot be empty."
-        pairs[${#pairs[@]}]="$name"
-        pairs[${#pairs[@]}]="$value"
-        ;;
-    esac
-  done
-  if [ "$print_body" = "1" ]; then
-    jortt_check_print_body_allowed
-  fi
-  if [ -n "$out" ]; then
-    JORTT_CREATE_WORKSPACE=1
-    jortt_resolve_output "$out" "$JORTT_CREATE_WORKSPACE"
-    out="$JORTT_RESOLVED_OUT"
-  fi
-  url="https://api.jortt.nl/${path#/}"
-  separator='?'
-  while [ "${#pairs[@]}" -gt 0 ]; do
-    name="${pairs[0]}"; value="${pairs[1]}"
-    pairs=("${pairs[@]:2}")
-    encoded="$(jortt_encode "$name")=$(jortt_encode "$value")"
-    url="$url$separator$encoded"
-    separator='&'
-  done
-  if [ "$all" = "1" ]; then
-    jortt_page_all GET "$url" '' || return 1
-    jortt_print_or_save "$JORTT_RESULT_BODY" "$JORTT_HTTP_STATUS" "$raw" "$out" "$print_body"
-  else
-    jortt_request GET "$url" '' || return 1
-    jortt_print_or_save "$JORTT_HTTP_BODY" "$JORTT_HTTP_STATUS" "$raw" "$out" "$print_body"
+    jortt_request "$method" "$url" || return 1
+    jortt_print_or_save "$JORTT_HTTP_BODY" "$JORTT_HTTP_STATUS" "$out" "$print_body"
   fi
 }
 
@@ -417,7 +309,7 @@ jortt_cmd_whoami() {
   operation="$(jortt_operation "$slug")"
   [ -n "$operation" ] || jortt_error 2 "The organizations/me operation is missing from the OpenAPI file."
   jortt_check_scope "$(jq -r '.scope' <<< "$operation")"
-  jortt_request GET 'https://api.jortt.nl/organizations/me' '' || return 1
+  jortt_request GET 'https://api.jortt.nl/organizations/me' || return 1
   printf 'HTTP status: %s\n' "$JORTT_HTTP_STATUS"
   printf 'Top-level field names: %s\n' "$(printf '%s' "$JORTT_HTTP_BODY" | jq -r 'if type == "object" then keys | join(", ") else "none" end' 2>/dev/null)"
 }

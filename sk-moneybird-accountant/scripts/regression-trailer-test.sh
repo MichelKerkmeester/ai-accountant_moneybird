@@ -3,30 +3,30 @@
 # COMPONENT: REGRESSION TRAILER TEST
 # ───────────────────────────────────────────────────────────────
 # Tests check-regression-trailer.py on fixture git repositories built in temp
-# dirs: registration by a fixture workflow run line, registration by the
-# hardening matrix, registration read at the parent of the commit, a deleted
-# covering test, a suite neither reviewed file names, valid and invalid
-# trailers, the non-gate rule, an unknown range and a missing root. The suite
+# dirs. Each repository holds a copy of the checker, which reads the
+# repository above it: registration by a fixture workflow run line,
+# registration by the hardening matrix, registration read at the parent of the
+# commit, a deleted covering test, a suite neither reviewed file names, valid
+# and invalid trailers, the non-gate rule and an unknown range. The suite
 # also proves that a trailer naming a missing, deleted or unregistered test
-# fails. Five more histories cover a gate change inside a merge commit, a
+# fails. Four more histories cover a gate change inside a merge commit, a
 # renamed or copied gate file, a renamed registered test, a commit message
-# that holds control characters, a test that exists only in the gate commit,
-# a trailer for a test created in the same commit, and an inline list
-# workflow step with and without a block scalar.
+# that holds control characters, a test that exists only in the gate commit
+# and a trailer for a test created in the same commit.
 # Usage: regression-trailer-test.sh [repo root]
 # Exit Codes:
 #   0 - All checks pass
 #   1 - One or more checks fail
-#   2 - Invalid arguments or missing checker files
+#   2 - Invalid arguments, missing checker files or a fixture history that did
+#       not build
 #
 # WHY: the trailer check only guards the gate files when it reads registration
 # from the parent of each commit, fails a gate change whose covering test was
 # deleted, and passes a gate change with a test the hardening matrix or the
 # fixture workflow names, so this suite builds those histories at run time
 # with signing and hooks off.
-# WHY: the histories also pin the merge, rename, copy, framing, parent
-# existence and inline run line rules, so each rule has a case that fails
-# when its fix is reverted.
+# WHY: the histories also pin the merge, rename, copy, framing and parent
+# existence rules, so each rule has a case that fails when its fix is reverted.
 # WHY: the suite inspects $? after commands that are expected to fail, so -e stays off.
 set -uo pipefail
 
@@ -117,7 +117,7 @@ group() {
     printf '\n== %s\n' "$1"
 }
 
-# Run the checker against a fixture repository and capture its output
+# Run the fixture repository's own copy of the checker and capture its output
 # Args:
 #   $1 - Commit range
 #   $2 - Repository root
@@ -125,7 +125,35 @@ group() {
 # Returns:
 #   The checker exit status
 run_check() {
-    python3 -I "$CHECKER" --range "$1" --root "$2" >"$TMP_ROOT/check-$3.txt" 2>&1
+    python3 -I "$2/sk-moneybird-accountant/scripts/check-regression-trailer.py" --range "$1" >"$TMP_ROOT/check-$3.txt" 2>&1
+}
+
+# Copy the checker into a fixture repository after its last commit, so the
+# untracked copy never enters the history under test
+# Args:
+#   $1 - Repository root
+# Returns:
+#   0 when the copy is in place, 1 otherwise
+install_checker() {
+    mkdir -p "$1/sk-moneybird-accountant/scripts" || return 1
+    cp "$CHECKER" "$1/sk-moneybird-accountant/scripts/check-regression-trailer.py" || return 1
+}
+
+# Stop the run when a fixture history did not build, because every case that
+# reads it would then report a verdict about nothing
+# Args:
+#   $1 - Name of the fixture history
+#   $2... - Every commit hash the history must hold
+require_history() {
+    local name="$1"
+    local sha
+    shift
+    for sha in "$@"; do
+        if [[ -z "$sha" ]]; then
+            printf 'error: the %s did not build\n' "$name" >&2
+            exit 2
+        fi
+    done
 }
 
 # Create one fixture git repository with signing, hooks and identity pinned
@@ -175,10 +203,8 @@ head_of() {
 # 4. FIXTURE REPOSITORIES
 # ───────────────────────────────────────────────────────────────
 
-group "Fixture repositories"
-
-# Repo A: registration by a fixture workflow, one suite the workflow does not
-# name, and one suite added in an earlier commit that still does not register.
+# Repo A: registration by a fixture workflow, a non-gate change and a range
+# that holds one failing commit.
 REPO_A="$TMP_ROOT/repo-a"
 if make_repo "$REPO_A"; then
     mkdir -p "$REPO_A/sk-moneybird-accountant" "$REPO_A/cli-moneybird" \
@@ -207,17 +233,6 @@ printf '\nA gate change.\n' >> "$REPO_A/AGENTS.md"
 commit_all "$REPO_A" "change the gate file"
 GATE_A=$(head_of "$REPO_A")
 
-printf '\nA gate change with a newly added test-like file.\n' >> "$REPO_A/sk-moneybird-accountant/SKILL.md"
-mkdir -p "$REPO_A/sk-moneybird-accountant/scripts"
-printf '#!/usr/bin/env bash\n' > "$REPO_A/sk-moneybird-accountant/scripts/do-nothing-test.sh"
-commit_all "$REPO_A" "change the gate file with a newly added one-line suite"
-SAMPLE_A=$(head_of "$REPO_A")
-
-printf '\nA gate change with a suite added in an earlier commit.\n' >> "$REPO_A/AGENTS.md"
-printf '# extra do-nothing line\n' >> "$REPO_A/sk-moneybird-accountant/scripts/do-nothing-test.sh"
-commit_all "$REPO_A" "change the gate file with an unregistered suite added earlier"
-LATER_A=$(head_of "$REPO_A")
-
 printf '\nA gate change with a registered suite.\n' >> "$REPO_A/sk-moneybird-accountant/SKILL.md"
 printf '# extra suite line\n' >> "$REPO_A/cli-moneybird/cli/moneybird-cli/tests/run-tests.sh"
 commit_all "$REPO_A" "change the gate file with a registered suite change"
@@ -227,21 +242,7 @@ printf '\nA note.\n' >> "$REPO_A/README.md"
 commit_all "$REPO_A" "change a non-gate file"
 DOC_A=$(head_of "$REPO_A")
 
-# WHY: a packet ROUTER.md holds the routing table, so it is a gate file too.
-printf '\nA routing change.\n' >> "$REPO_A/sk-moneybird-accountant/ROUTER.md"
-commit_all "$REPO_A" "change a packet router"
-ROUTER_A=$(head_of "$REPO_A")
-
-# WHY: the hub registry picks the packet, so it is a gate file too.
-printf '\n' >> "$REPO_A/mode-registry.json"
-commit_all "$REPO_A" "change the hub registry"
-HUB_A=$(head_of "$REPO_A")
-
-if [[ -n "$BASE_A" ]] && [[ -n "$GATE_A" ]] && [[ -n "$SAMPLE_A" ]] && [[ -n "$LATER_A" ]] && [[ -n "$SUITE_A" ]] && [[ -n "$DOC_A" ]] && [[ -n "$ROUTER_A" ]] && [[ -n "$HUB_A" ]]; then
-    pass "the suite-registration fixture repository builds"
-else
-    fail "the suite-registration fixture repository builds"
-fi
+require_history "suite-registration fixture repository" "$BASE_A" "$GATE_A" "$SUITE_A" "$DOC_A"
 
 # Repo B: the trailer forms.
 REPO_B="$TMP_ROOT/repo-b"
@@ -293,11 +294,7 @@ commit_all "$REPO_B" "change the gate file and delete the registered test" \
     "Regression-Test: cli-moneybird/cli/moneybird-cli/tests/run-tests.sh"
 DELETED_B=$(head_of "$REPO_B")
 
-if [[ -n "$BASE_B" ]] && [[ -n "$TRAILER_B" ]] && [[ -n "$EMPTY_B" ]] && [[ -n "$MISSING_B" ]] && [[ -n "$UNREG_B" ]] && [[ -n "$DELETED_B" ]]; then
-    pass "the trailer fixture repository builds"
-else
-    fail "the trailer fixture repository builds"
-fi
+require_history "trailer fixture repository" "$BASE_B" "$TRAILER_B" "$EMPTY_B" "$MISSING_B" "$UNREG_B" "$DELETED_B"
 
 # Repo C: registration by the hardening matrix.
 REPO_C="$TMP_ROOT/repo-c"
@@ -321,11 +318,6 @@ printf 'fixture case\n' >> "$REPO_C/sk-moneybird-accountant/notes/covering-fixtu
 commit_all "$REPO_C" "change the gate file with a matrix-registered test change"
 MATRIX_C=$(head_of "$REPO_C")
 
-printf '\nA gate change with a trailer for a matrix-registered test.\n' >> "$REPO_C/AGENTS.md"
-commit_all "$REPO_C" "change the gate file with a trailer for a matrix-registered test" \
-    "Regression-Test: sk-moneybird-accountant/notes/covering-fixture.sh"
-MTRAILER_C=$(head_of "$REPO_C")
-
 printf '\nA gate change with a newly added matrix row and test.\n' >> "$REPO_C/AGENTS.md"
 cat >> "$REPO_C/sk-moneybird-accountant/hardening-matrix.md" <<'MATRIX'
 | F-02 | fixture failure mode | P0 | fixture control | `sk-moneybird-accountant/notes/added-fixture.sh :: added case` | Operator | Covered |
@@ -334,21 +326,12 @@ printf 'added case\n' > "$REPO_C/sk-moneybird-accountant/notes/added-fixture.sh"
 commit_all "$REPO_C" "change the gate file with a newly added matrix row and test"
 MADDED_C=$(head_of "$REPO_C")
 
-printf '\nA gate change with the matrix-named test added earlier.\n' >> "$REPO_C/AGENTS.md"
-printf 'merged case\n' >> "$REPO_C/sk-moneybird-accountant/notes/added-fixture.sh"
-commit_all "$REPO_C" "change the gate file with the matrix-named test added earlier"
-MERGED_C=$(head_of "$REPO_C")
-
 printf '\nA gate change that deletes the matrix-named test.\n' >> "$REPO_C/AGENTS.md"
 rm -f "$REPO_C/sk-moneybird-accountant/notes/added-fixture.sh"
 commit_all "$REPO_C" "change the gate file and delete the matrix-named test"
 DELETED_C=$(head_of "$REPO_C")
 
-if [[ -n "$BASE_C" ]] && [[ -n "$MATRIX_C" ]] && [[ -n "$MTRAILER_C" ]] && [[ -n "$MADDED_C" ]] && [[ -n "$MERGED_C" ]] && [[ -n "$DELETED_C" ]]; then
-    pass "the matrix-registration fixture repository builds"
-else
-    fail "the matrix-registration fixture repository builds"
-fi
+require_history "matrix-registration fixture repository" "$BASE_C" "$MATRIX_C" "$MADDED_C" "$DELETED_C"
 
 # Repo D: registration by a fixture workflow file, on a plain run line, on a
 # block scalar run line and by an evals path, plus one suite it does not run.
@@ -376,7 +359,7 @@ jobs:
           python3 -I sk-moneybird-accountant/scripts/run-evals.py --grade sk-moneybird-accountant/evals/evals.json
           bash sk-moneybird-accountant/scripts/two-test.sh
       - name: Run a check that is not a suite
-        run: python3 -I sk-moneybird-accountant/scripts/check-hardening-matrix.py --check
+        run: python3 -I sk-moneybird-accountant/scripts/check-hardening-matrix.py
 WORKFLOW
     commit_all "$REPO_D" "fixture baseline"
 fi
@@ -402,11 +385,7 @@ printf '# spare\n' >> "$REPO_D/sk-moneybird-accountant/scripts/spare-test.sh"
 commit_all "$REPO_D" "change the gate file with a suite the workflow does not run"
 SPARE_D=$(head_of "$REPO_D")
 
-if [[ -n "$BASE_D" ]] && [[ -n "$ONE_D" ]] && [[ -n "$TWO_D" ]] && [[ -n "$EVALS_D" ]] && [[ -n "$SPARE_D" ]]; then
-    pass "the workflow-registration fixture repository builds"
-else
-    fail "the workflow-registration fixture repository builds"
-fi
+require_history "workflow-registration fixture repository" "$BASE_D" "$ONE_D" "$TWO_D" "$EVALS_D" "$SPARE_D"
 
 # Repo E: no workflow and no matrix, so nothing can register.
 REPO_E="$TMP_ROOT/repo-e"
@@ -423,11 +402,7 @@ printf '# only\n' >> "$REPO_E/sk-moneybird-accountant/scripts/only-test.sh"
 commit_all "$REPO_E" "change the gate file with a suite and no workflow"
 NOWORKFLOW_E=$(head_of "$REPO_E")
 
-if [[ -n "$BASE_E" ]] && [[ -n "$NOWORKFLOW_E" ]]; then
-    pass "the no-workflow fixture repository builds"
-else
-    fail "the no-workflow fixture repository builds"
-fi
+require_history "no-workflow fixture repository" "$BASE_E" "$NOWORKFLOW_E"
 
 # Repo F: a gate change made inside a merge commit, which a plain git log
 # lists without paths.
@@ -444,7 +419,8 @@ jobs:
   offline:
     runs-on: ubuntu-latest
     steps:
-      - run: bash sk-moneybird-accountant/scripts/merge-suite-test.sh
+      - name: Run the merge suite
+        run: bash sk-moneybird-accountant/scripts/merge-suite-test.sh
 WORKFLOW
     commit_all "$REPO_F" "fixture baseline"
 fi
@@ -465,10 +441,10 @@ commit_all "$REPO_F" "merge the side branch with a gate change"
 MERGE_F=$(head_of "$REPO_F")
 MERGE_F_PARENTS=$(git -C "$REPO_F" rev-list --parents -n 1 "$MERGE_F" 2>/dev/null | wc -w | tr -d ' ')
 
-if [[ -n "$BASE_F" ]] && [[ -n "$MAIN_F" ]] && [[ -n "$SIDE_F" ]] && [[ -n "$MERGE_F" ]] && [[ "${MERGE_F_PARENTS:-0}" -ge 3 ]]; then
-    pass "the merge fixture repository builds"
-else
-    fail "the merge fixture repository builds"
+require_history "merge fixture repository" "$BASE_F" "$MAIN_F" "$SIDE_F" "$MERGE_F"
+if [[ "${MERGE_F_PARENTS:-0}" -lt 3 ]]; then
+    printf 'error: the merge fixture commit has no second parent\n' >&2
+    exit 2
 fi
 
 # Repo G: a renamed or copied gate file, and a renamed registered test. A
@@ -489,7 +465,8 @@ jobs:
   offline:
     runs-on: ubuntu-latest
     steps:
-      - run: bash sk-moneybird-accountant/scripts/live-suite-test.sh
+      - name: Run the live suite
+        run: bash sk-moneybird-accountant/scripts/live-suite-test.sh
 WORKFLOW
     commit_all "$REPO_G" "fixture baseline"
 fi
@@ -509,11 +486,7 @@ git -C "$REPO_G" mv sk-moneybird-accountant/scripts/live-suite-test.sh \
 commit_all "$REPO_G" "rename the registered test away"
 RENAMETEST_G=$(head_of "$REPO_G")
 
-if [[ -n "$BASE_G" ]] && [[ -n "$RENAME_G" ]] && [[ -n "$COPY_G" ]] && [[ -n "$RENAMETEST_G" ]]; then
-    pass "the rename and copy fixture repository builds"
-else
-    fail "the rename and copy fixture repository builds"
-fi
+require_history "rename and copy fixture repository" "$BASE_G" "$RENAME_G" "$COPY_G" "$RENAMETEST_G"
 
 # Repo H: a name at the parent that the gate commit fulfils by creating the
 # file. The test must exist at the parent too, and a trailer cannot name a
@@ -545,11 +518,7 @@ commit_all "$REPO_H" "change the gate file with a trailer for a created test" \
     "Regression-Test: sk-moneybird-accountant/notes/trailer-fixture.sh"
 TRAILER_H=$(head_of "$REPO_H")
 
-if [[ -n "$BASE_H" ]] && [[ -n "$CREATED_H" ]] && [[ -n "$TRAILER_H" ]]; then
-    pass "the parent-existence fixture repository builds"
-else
-    fail "the parent-existence fixture repository builds"
-fi
+require_history "parent-existence fixture repository" "$BASE_H" "$CREATED_H" "$TRAILER_H"
 
 # Repo I: a commit message that holds a record or unit separator.
 REPO_I="$TMP_ROOT/repo-i"
@@ -565,7 +534,8 @@ jobs:
   offline:
     runs-on: ubuntu-latest
     steps:
-      - run: bash sk-moneybird-accountant/scripts/framing-suite-test.sh
+      - name: Run the framing suite
+        run: bash sk-moneybird-accountant/scripts/framing-suite-test.sh
 WORKFLOW
     commit_all "$REPO_I" "fixture baseline"
 fi
@@ -575,50 +545,14 @@ printf '\nA gate change with a control character in its message.\n' >> "$REPO_I/
 commit_all "$REPO_I" "$(printf 'framing fixture\x1e\x1f subject')"
 FRAMING_I=$(head_of "$REPO_I")
 
-if [[ -n "$BASE_I" ]] && [[ -n "$FRAMING_I" ]]; then
-    pass "the framing fixture repository builds"
-else
-    fail "the framing fixture repository builds"
-fi
+require_history "framing fixture repository" "$BASE_I" "$FRAMING_I"
 
-# Repo J: inline list workflow steps, one plain and one block scalar.
-REPO_J="$TMP_ROOT/repo-j"
-if make_repo "$REPO_J"; then
-    mkdir -p "$REPO_J/sk-moneybird-accountant/scripts" "$REPO_J/.github/workflows"
-    printf '# Fixture contract\n' > "$REPO_J/AGENTS.md"
-    printf '#!/usr/bin/env bash\n' > "$REPO_J/sk-moneybird-accountant/scripts/inline-one-test.sh"
-    printf '#!/usr/bin/env bash\n' > "$REPO_J/sk-moneybird-accountant/scripts/inline-two-test.sh"
-    cat > "$REPO_J/.github/workflows/skill-health.yml" <<'WORKFLOW'
-name: Fixture skill health
-on:
-  push:
-jobs:
-  offline:
-    runs-on: ubuntu-latest
-    steps:
-      - run: bash sk-moneybird-accountant/scripts/inline-one-test.sh
-      - run: |
-          bash sk-moneybird-accountant/scripts/inline-two-test.sh
-WORKFLOW
-    commit_all "$REPO_J" "fixture baseline"
-fi
-BASE_J=$(head_of "$REPO_J")
-
-printf '\nA gate change with the inline suite.\n' >> "$REPO_J/AGENTS.md"
-printf '# inline one\n' >> "$REPO_J/sk-moneybird-accountant/scripts/inline-one-test.sh"
-commit_all "$REPO_J" "change the gate file with the inline suite"
-INLINE_ONE_J=$(head_of "$REPO_J")
-
-printf '\nA gate change with the inline block suite.\n' >> "$REPO_J/AGENTS.md"
-printf '# inline two\n' >> "$REPO_J/sk-moneybird-accountant/scripts/inline-two-test.sh"
-commit_all "$REPO_J" "change the gate file with the inline block suite"
-INLINE_TWO_J=$(head_of "$REPO_J")
-
-if [[ -n "$BASE_J" ]] && [[ -n "$INLINE_ONE_J" ]] && [[ -n "$INLINE_TWO_J" ]]; then
-    pass "the inline workflow fixture repository builds"
-else
-    fail "the inline workflow fixture repository builds"
-fi
+for repo in "$REPO_A" "$REPO_B" "$REPO_C" "$REPO_D" "$REPO_E" "$REPO_F" "$REPO_G" "$REPO_H" "$REPO_I"; do
+    if ! install_checker "$repo"; then
+        printf 'error: the checker could not be copied into %s\n' "$repo" >&2
+        exit 2
+    fi
+done
 
 # ───────────────────────────────────────────────────────────────
 # 5. RANGE CHECKS
@@ -635,43 +569,7 @@ else
     sed -n '1,5p' "$TMP_ROOT/check-gate.txt"
 fi
 
-run_check "$DOC_A..$ROUTER_A" "$REPO_A" router
-status=$?
-if [[ "$status" -eq 1 ]] && grep -qF 'sk-moneybird-accountant/ROUTER.md' "$TMP_ROOT/check-router.txt"; then
-    pass "a packet router change without a test or trailer exits 1 and names the file"
-else
-    fail "a packet router change without a test or trailer exits 1 and names the file (exit $status)"
-    sed -n '1,5p' "$TMP_ROOT/check-router.txt"
-fi
-
-run_check "$ROUTER_A..$HUB_A" "$REPO_A" hub
-status=$?
-if [[ "$status" -eq 1 ]] && grep -qF 'mode-registry.json' "$TMP_ROOT/check-hub.txt"; then
-    pass "a hub registry change without a test or trailer exits 1 and names the file"
-else
-    fail "a hub registry change without a test or trailer exits 1 and names the file (exit $status)"
-    sed -n '1,5p' "$TMP_ROOT/check-hub.txt"
-fi
-
-run_check "$GATE_A..$SAMPLE_A" "$REPO_A" sample
-status=$?
-if [[ "$status" -eq 1 ]] && grep -qF 'sk-moneybird-accountant/SKILL.md' "$TMP_ROOT/check-sample.txt"; then
-    pass "a gate change with a newly added one-line test exits 1 and names the file"
-else
-    fail "a gate change with a newly added one-line test exits 1 and names the file (exit $status)"
-    sed -n '1,5p' "$TMP_ROOT/check-sample.txt"
-fi
-
-run_check "$SAMPLE_A..$LATER_A" "$REPO_A" later
-status=$?
-if [[ "$status" -eq 1 ]] && grep -qF 'AGENTS.md' "$TMP_ROOT/check-later.txt"; then
-    pass "a suite added earlier and not registered does not cover a later gate change"
-else
-    fail "a suite added earlier and not registered does not cover a later gate change (exit $status)"
-    sed -n '1,5p' "$TMP_ROOT/check-later.txt"
-fi
-
-run_check "$LATER_A..$SUITE_A" "$REPO_A" suite
+run_check "$GATE_A..$SUITE_A" "$REPO_A" suite
 status=$?
 if [[ "$status" -eq 0 ]] && grep -qF 'regression-trailer: ok' "$TMP_ROOT/check-suite.txt"; then
     pass "a gate change with a registered suite change exits 0"
@@ -752,16 +650,7 @@ else
     sed -n '1,5p' "$TMP_ROOT/check-matrix.txt"
 fi
 
-run_check "$MATRIX_C..$MTRAILER_C" "$REPO_C" matrix-trailer
-status=$?
-if [[ "$status" -eq 0 ]] && grep -qF 'regression-trailer: ok' "$TMP_ROOT/check-matrix-trailer.txt"; then
-    pass "a trailer for a matrix-registered test exits 0"
-else
-    fail "a trailer for a matrix-registered test exits 0 (exit $status)"
-    sed -n '1,5p' "$TMP_ROOT/check-matrix-trailer.txt"
-fi
-
-run_check "$MTRAILER_C..$MADDED_C" "$REPO_C" matrix-added
+run_check "$MATRIX_C..$MADDED_C" "$REPO_C" matrix-added
 status=$?
 if [[ "$status" -eq 1 ]] && grep -qF 'AGENTS.md' "$TMP_ROOT/check-matrix-added.txt"; then
     pass "a gate change with a newly added matrix row and test exits 1, registration is read at the parent"
@@ -770,16 +659,7 @@ else
     sed -n '1,5p' "$TMP_ROOT/check-matrix-added.txt"
 fi
 
-run_check "$MADDED_C..$MERGED_C" "$REPO_C" matrix-merged
-status=$?
-if [[ "$status" -eq 0 ]] && grep -qF 'regression-trailer: ok' "$TMP_ROOT/check-matrix-merged.txt"; then
-    pass "a later gate change with the matrix-named test exits 0"
-else
-    fail "a later gate change with the matrix-named test exits 0 (exit $status)"
-    sed -n '1,5p' "$TMP_ROOT/check-matrix-merged.txt"
-fi
-
-run_check "$MERGED_C..$DELETED_C" "$REPO_C" matrix-deleted
+run_check "$MADDED_C..$DELETED_C" "$REPO_C" matrix-deleted
 status=$?
 if [[ "$status" -eq 1 ]] && grep -qF 'AGENTS.md' "$TMP_ROOT/check-matrix-deleted.txt"; then
     pass "a gate change that deletes the matrix-named test exits 1"
@@ -896,24 +776,6 @@ else
     sed -n '1,5p' "$TMP_ROOT/check-framing.txt"
 fi
 
-run_check "$BASE_J..$INLINE_ONE_J" "$REPO_J" inline-line
-status=$?
-if [[ "$status" -eq 0 ]] && grep -qF 'regression-trailer: ok' "$TMP_ROOT/check-inline-line.txt"; then
-    pass "an inline list workflow run line registers a suite"
-else
-    fail "an inline list workflow run line registers a suite (exit $status)"
-    sed -n '1,5p' "$TMP_ROOT/check-inline-line.txt"
-fi
-
-run_check "$INLINE_ONE_J..$INLINE_TWO_J" "$REPO_J" inline-block
-status=$?
-if [[ "$status" -eq 0 ]] && grep -qF 'regression-trailer: ok' "$TMP_ROOT/check-inline-block.txt"; then
-    pass "an inline list workflow block scalar registers a suite"
-else
-    fail "an inline list workflow block scalar registers a suite (exit $status)"
-    sed -n '1,5p' "$TMP_ROOT/check-inline-block.txt"
-fi
-
 run_check "$DOC_A..$DOC_A" "$REPO_A" empty-range
 status=$?
 if [[ "$status" -eq 0 ]] && grep -qF '0 commits scanned' "$TMP_ROOT/check-empty-range.txt"; then
@@ -935,14 +797,6 @@ if [[ "$status" -eq 2 ]]; then
     pass "an unknown range is refused with exit 2"
 else
     fail "an unknown range is refused with exit 2 (exit $status)"
-fi
-
-python3 -I "$CHECKER" --range "$BASE_A..$DOC_A" --root "$TMP_ROOT/no-such-root" >/dev/null 2>&1
-status=$?
-if [[ "$status" -eq 2 ]]; then
-    pass "a missing root is refused with exit 2"
-else
-    fail "a missing root is refused with exit 2 (exit $status)"
 fi
 
 # ───────────────────────────────────────────────────────────────

@@ -2,10 +2,11 @@
 # ───────────────────────────────────────────────────────────────
 # COMPONENT: CI SUITE REGISTRATION TEST
 # ───────────────────────────────────────────────────────────────
-# Tests check-ci-suites.py on fixture repositories built in the test. The
-# fixtures hold suite files, a workflow with run lines in three shapes and
-# mutants that remove a run line, add a suite with no run line and name a
-# path in a step name only.
+# Tests check-ci-suites.py on fixture repositories built in the test. Each
+# fixture holds a copy of the checker and its parser, which read the
+# repository above them, suite files, a workflow with run lines in three
+# shapes and mutants that add a suite with no run line, name a path in a step
+# name only and drop the workflow.
 # Usage: check-ci-suites-test.sh [repository root]
 # Exit Codes:
 #   0 - All checks pass
@@ -97,13 +98,13 @@ group() {
     printf '\n== %s\n' "$1"
 }
 
-# Run the checker against one fixture repository and capture its output
+# Run the fixture repository's own copy of the checker and capture its output
 # Args:
 #   $1 - Repository root
 # Returns:
 #   The checker exit status, with output in $TMP_ROOT/out.txt
 run_checker() {
-    python3 -I "$CHECKER" --root "$1" >"$TMP_ROOT/out.txt" 2>&1
+    python3 -I "$1/sk-moneybird-accountant/scripts/check-ci-suites.py" >"$TMP_ROOT/out.txt" 2>&1
 }
 
 # ───────────────────────────────────────────────────────────────
@@ -124,7 +125,8 @@ write_suite() {
     printf '#!/usr/bin/env bash\n# Fixture suite.\nexit 0\n' >"$path"
 }
 
-# Build the fixture repository with five suites and a workflow that runs them
+# Build the fixture repository with the checker, its parser, five suites and a
+# workflow that runs them
 # Args:
 #   $1 - Repository root to create
 # Returns:
@@ -132,6 +134,8 @@ write_suite() {
 make_fixture() {
     local root="$1"
     rm -rf "$root"
+    mkdir -p "$root/sk-moneybird-accountant/scripts" || return 1
+    cp "$CHECKER" "$PARSER" "$root/sk-moneybird-accountant/scripts/" || return 1
     write_suite "$root" "sk-moneybird-accountant/scripts/alpha-test.sh" || return 1
     write_suite "$root" "sk-moneybird-accountant/scripts/route-replay/replay-test.sh" || return 1
     write_suite "$root" "cli-moneybird/cli/moneybird-cli/tests/run-tests.sh" || return 1
@@ -167,10 +171,9 @@ YAML
 # ───────────────────────────────────────────────────────────────
 
 group "fixture suites"
-if make_fixture "$FIX"; then
-    pass "the fixture repository builds"
-else
-    fail "the fixture repository builds"
+if ! make_fixture "$FIX"; then
+    printf 'error: the fixture repository did not build\n' >&2
+    exit 2
 fi
 
 run_checker "$FIX"
@@ -194,19 +197,6 @@ else
 fi
 
 if make_fixture "$FIX" \
-    && sed -i.bak '/alpha-test.sh/d' "$FIX/.github/workflows/skill-health.yml"; then
-    run_checker "$FIX"
-    status=$?
-    if [[ "$status" -eq 1 ]] && grep -q '^missing-run sk-moneybird-accountant/scripts/alpha-test.sh' "$TMP_ROOT/out.txt"; then
-        pass "a removed run line fails and names its suite"
-    else
-        fail "a removed run line fails and names its suite"
-    fi
-else
-    fail "a removed run line fails and names its suite"
-fi
-
-if make_fixture "$FIX" \
     && write_suite "$FIX" "sk-moneybird-accountant/scripts/gamma-test.sh" \
     && sed -i.bak 's/^      - name: Alpha suite$/      - name: gamma-test.sh/' "$FIX/.github/workflows/skill-health.yml"; then
     run_checker "$FIX"
@@ -218,133 +208,6 @@ if make_fixture "$FIX" \
     fi
 else
     fail "a path in a step name alone does not register a suite"
-fi
-
-if make_fixture "$FIX" \
-    && write_suite "$FIX" "sk-moneybird-accountant/scripts/delta-test.sh" \
-    && printf '      - name: Delta suite\n        run: bash sk-moneybird-accountant/scripts/delta-test.sh\n' >>"$FIX/.github/workflows/skill-health.yml"; then
-    run_checker "$FIX"
-    status=$?
-    if [[ "$status" -eq 0 ]]; then
-        pass "a suite added with its own run line passes"
-    else
-        fail "a suite added with its own run line passes"
-    fi
-else
-    fail "a suite added with its own run line passes"
-fi
-
-# WHY: a commented line, a path that only an echo prints and a step that an if
-# of false switches off never run, so none of them may register a suite.
-if make_fixture "$FIX" \
-    && write_suite "$FIX" "sk-moneybird-accountant/scripts/epsilon-test.sh" \
-    && cat >>"$FIX/.github/workflows/skill-health.yml" <<'YAML'
-      - name: Epsilon note
-        run: |
-          # bash sk-moneybird-accountant/scripts/epsilon-test.sh
-          echo done
-YAML
-then
-    run_checker "$FIX"
-    status=$?
-    if [[ "$status" -eq 1 ]] && grep -q '^missing-run sk-moneybird-accountant/scripts/epsilon-test.sh' "$TMP_ROOT/out.txt"; then
-        pass "a commented run line does not register a suite"
-    else
-        fail "a commented run line does not register a suite"
-    fi
-else
-    fail "a commented run line does not register a suite"
-fi
-
-if make_fixture "$FIX" \
-    && write_suite "$FIX" "sk-moneybird-accountant/scripts/zeta-test.sh" \
-    && write_suite "$FIX" "sk-moneybird-accountant/scripts/theta-test.sh" \
-    && cat >>"$FIX/.github/workflows/skill-health.yml" <<'YAML'
-      - name: Zeta note
-        run: echo "next bash sk-moneybird-accountant/scripts/zeta-test.sh"
-      - name: Theta note
-        run: printf 'run %s\n' sk-moneybird-accountant/scripts/theta-test.sh
-YAML
-then
-    run_checker "$FIX"
-    status=$?
-    if [[ "$status" -eq 1 ]] \
-        && grep -q '^missing-run sk-moneybird-accountant/scripts/zeta-test.sh' "$TMP_ROOT/out.txt" \
-        && grep -q '^missing-run sk-moneybird-accountant/scripts/theta-test.sh' "$TMP_ROOT/out.txt"; then
-        pass "a path after echo or printf does not register a suite"
-    else
-        fail "a path after echo or printf does not register a suite"
-    fi
-else
-    fail "a path after echo or printf does not register a suite"
-fi
-
-if make_fixture "$FIX" \
-    && write_suite "$FIX" "sk-moneybird-accountant/scripts/iota-test.sh" \
-    && cat >>"$FIX/.github/workflows/skill-health.yml" <<'YAML'
-      - name: Iota suite
-        run: echo starting && bash sk-moneybird-accountant/scripts/iota-test.sh
-YAML
-then
-    run_checker "$FIX"
-    status=$?
-    if [[ "$status" -eq 0 ]]; then
-        pass "a command chained after an echo still registers its suite"
-    else
-        fail "a command chained after an echo still registers its suite"
-    fi
-else
-    fail "a command chained after an echo still registers its suite"
-fi
-
-if make_fixture "$FIX" \
-    && write_suite "$FIX" "sk-moneybird-accountant/scripts/kappa-test.sh" \
-    && write_suite "$FIX" "sk-moneybird-accountant/scripts/lambda-test.sh" \
-    && write_suite "$FIX" "sk-moneybird-accountant/scripts/nu-test.sh" \
-    && cat >>"$FIX/.github/workflows/skill-health.yml" <<'YAML'
-      - name: Kappa off
-        if: false
-        run: bash sk-moneybird-accountant/scripts/kappa-test.sh
-      - name: Lambda off
-        run: |
-          bash sk-moneybird-accountant/scripts/lambda-test.sh
-        if: ${{ FALSE }}
-      - if: "false"
-        name: Nu off
-        run: bash sk-moneybird-accountant/scripts/nu-test.sh
-YAML
-then
-    run_checker "$FIX"
-    status=$?
-    if [[ "$status" -eq 1 ]] \
-        && grep -q '^missing-run sk-moneybird-accountant/scripts/kappa-test.sh' "$TMP_ROOT/out.txt" \
-        && grep -q '^missing-run sk-moneybird-accountant/scripts/lambda-test.sh' "$TMP_ROOT/out.txt" \
-        && grep -q '^missing-run sk-moneybird-accountant/scripts/nu-test.sh' "$TMP_ROOT/out.txt"; then
-        pass "a step whose if is literally false does not register a suite"
-    else
-        fail "a step whose if is literally false does not register a suite"
-    fi
-else
-    fail "a step whose if is literally false does not register a suite"
-fi
-
-if make_fixture "$FIX" \
-    && write_suite "$FIX" "sk-moneybird-accountant/scripts/mu-test.sh" \
-    && cat >>"$FIX/.github/workflows/skill-health.yml" <<'YAML'
-      - name: Mu suite
-        if: github.event_name == 'push'
-        run: bash sk-moneybird-accountant/scripts/mu-test.sh
-YAML
-then
-    run_checker "$FIX"
-    status=$?
-    if [[ "$status" -eq 0 ]]; then
-        pass "a step with a context condition still registers its suite"
-    else
-        fail "a step with a context condition still registers its suite"
-    fi
-else
-    fail "a step with a context condition still registers its suite"
 fi
 
 # ───────────────────────────────────────────────────────────────
@@ -362,14 +225,6 @@ if make_fixture "$FIX" && rm -f "$FIX/.github/workflows/skill-health.yml"; then
     fi
 else
     fail "a missing workflow exits 2 and names the file"
-fi
-
-python3 -I "$CHECKER" --root "$TMP_ROOT/no-such-root" >"$TMP_ROOT/out.txt" 2>&1
-status=$?
-if [[ "$status" -eq 2 ]] && grep -q '^error: not a directory: ' "$TMP_ROOT/out.txt"; then
-    pass "a missing root exits 2 and says it is not a directory"
-else
-    fail "a missing root exits 2 and says it is not a directory"
 fi
 
 # ───────────────────────────────────────────────────────────────

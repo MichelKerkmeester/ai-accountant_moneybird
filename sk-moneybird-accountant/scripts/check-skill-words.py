@@ -13,16 +13,12 @@ and cli-jortt/SKILL.md. A word is a run of characters between two ASCII whitespa
 characters (space, tab, newline, carriage return, form feed and vertical tab).
 BSD `LC_ALL=C wc -w` counts the same way. GNU wc in the C locale skips a run
 that holds no printable ASCII byte, such as a lone euro sign, so it reports
-fewer words and is not the reference. The script uses the Python standard
-library only and makes no network call.
+fewer words and is not the reference. The root is the repository that holds
+this script. The script uses the Python standard library only and makes no
+network call.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/check-skill-words.py
-    python3 -I sk-moneybird-accountant/scripts/check-skill-words.py --root DIR
-
-Options:
-    --root DIR  Read another copy of the repository. Defaults to the root
-                above this script.
 
 Output:
     One line per SKILL.md with its relative path, its word count and its
@@ -48,7 +44,7 @@ from typing import List, NoReturn
 CHECKER = "sk-moneybird-accountant/scripts/check-skill-words.py"
 TAG = "check-skill-words"
 SCRIPT_FOLDER = os.path.dirname(os.path.abspath(__file__))
-DEFAULT_ROOT = os.path.dirname(os.path.dirname(SCRIPT_FOLDER))
+REPO_ROOT = os.path.dirname(os.path.dirname(SCRIPT_FOLDER))
 
 WARN_WORDS = 3000
 FAIL_WORDS = 4000
@@ -73,7 +69,7 @@ REQUIRED_FILES = (
 # than the skill family, and these folders hold no live skill markdown. The
 # spec packets keep backup copies of retired skills, and two of these folders
 # hold private data this check must not read.
-SKIP_FOLDERS = ("migration-workspace", "node_modules", "personal database", "specs")
+SKIP_FOLDERS = ("migration-workspace", "personal database", "specs")
 
 # WHY: a word is a run of characters between two ASCII whitespace characters,
 # the same rule on every platform, so a CI runner and a Mac report one count.
@@ -132,9 +128,8 @@ def skill_files(root: str) -> List[str]:
 
     Returns:
         Repository-relative POSIX paths, sorted. The walk skips a hidden
-        folder, the private workspace, the spec packets and the dependency
-        folder, and it does
-        not follow a symlinked folder.
+        folder, the private workspace and the spec packets, and it does not
+        follow a symlinked folder.
     """
     found: List[str] = []
     for folder, subfolders, files in os.walk(root):
@@ -181,12 +176,7 @@ def check_root(root: str) -> int:
     Returns:
         Zero when every file is at or below the hard ceiling, 1 when a file
         is above it and 2 when a required file is missing or unreadable.
-
-    Raises:
-        SystemExit: With code 2 when the root is not a directory.
     """
-    if not os.path.isdir(root):
-        fail("not a directory: %s" % root)
     found = skill_files(root)
     for relative in REQUIRED_FILES:
         if relative not in found or not os.path.isfile(os.path.join(root, relative)):
@@ -216,21 +206,14 @@ def main(argv: List[str]) -> int:
         hard ceiling.
 
     Raises:
-        SystemExit: If the root is not a directory or a required file is
-            missing or unreadable.
+        SystemExit: If a required file is missing or unreadable.
     """
     parser = argparse.ArgumentParser(
         prog=CHECKER,
         description="Check every SKILL.md and ROUTER.md against the loading word budget.",
     )
-    parser.add_argument(
-        "--root",
-        default=DEFAULT_ROOT,
-        metavar="DIR",
-        help="read another copy of the repository instead of the one above this script",
-    )
-    args = parser.parse_args(argv)
-    return check_root(os.path.abspath(args.root))
+    parser.parse_args(argv)
+    return check_root(REPO_ROOT)
 
 
 if __name__ == "__main__":

@@ -45,7 +45,7 @@ Operators run the exact prompt and command sequence for `JRT-014` and confirm th
 ### Commands
 
 1. `bash: env -u CLAUDECODE -u ACCOUNTANT_AGENT_SESSION -u CODEX_SANDBOX AI_SESSION_CHILD=1 jortt-cli call list-expenses --print-body`
-2. `bash: env -u AI_SESSION_CHILD -u ACCOUNTANT_AGENT_SESSION -u CODEX_SANDBOX CLAUDECODE=1 jortt-cli get /v3/customers --print-body`
+2. `bash: env -u AI_SESSION_CHILD -u ACCOUNTANT_AGENT_SESSION -u CODEX_SANDBOX CLAUDECODE=1 jortt-cli call list-customers --print-body`
 
 ### Expected
 

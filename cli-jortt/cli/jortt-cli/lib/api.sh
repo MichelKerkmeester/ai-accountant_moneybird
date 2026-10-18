@@ -90,11 +90,7 @@ jortt_token_status() {
       printf 'warning: JORTT_SCOPES came from .env.example and may not match the configured key\n' >&2
       ;;
   esac
-  if [ -n "${JORTT_SCOPES_SOURCE:-}" ]; then
-    printf 'scope source: %s\n' "$JORTT_SCOPES_SOURCE"
-  else
-    printf 'scope source: unset\n'
-  fi
+  printf 'scope source: %s\n' "$JORTT_SCOPES_SOURCE"
   if ! jortt_token_paths || [ ! -f "$JORTT_TOKEN_FILE" ]; then
     printf 'Cached token: no\nRemaining minutes: 0\n'
     return 0
@@ -117,16 +113,11 @@ jortt_token_status() {
 jortt_raw_request() {
   local method="$1"
   local url="$2"
-  local body_data="$3"
   local headers_file result
   headers_file="${TMPDIR:-/tmp}/jortt-cli-headers-$$"
   rm -f "$headers_file"
   jortt_throttle
-  if [ -n "$body_data" ]; then
-    result="$(printf '%s' "$body_data" | curl -sS -D "$headers_file" -w $'\n%{http_code}' --config <(printf 'url = "%s"\nrequest = "%s"\nheader = "Authorization: Bearer %s"\nheader = "Accept: application/json"\nheader = "Content-Type: application/json"\n' "$(jortt_curl_quote "$url")" "$method" "$(jortt_curl_quote "$JORTT_ACCESS_TOKEN")") --data-binary @- 2>/dev/null || true)"
-  else
-    result="$(curl -sS -D "$headers_file" -w $'\n%{http_code}' --config <(printf 'url = "%s"\nrequest = "%s"\nheader = "Authorization: Bearer %s"\nheader = "Accept: application/json"\n' "$(jortt_curl_quote "$url")" "$method" "$(jortt_curl_quote "$JORTT_ACCESS_TOKEN")") 2>/dev/null || true)"
-  fi
+  result="$(curl -sS -D "$headers_file" -w $'\n%{http_code}' --config <(printf 'url = "%s"\nrequest = "%s"\nheader = "Authorization: Bearer %s"\nheader = "Accept: application/json"\n' "$(jortt_curl_quote "$url")" "$method" "$(jortt_curl_quote "$JORTT_ACCESS_TOKEN")") 2>/dev/null || true)"
   JORTT_HTTP_STATUS="${result##*$'\n'}"
   JORTT_HTTP_BODY="${result%$'\n'*}"
   JORTT_RETRY_AFTER="$(awk 'BEGIN { IGNORECASE = 1 } /^Retry-After:/ { sub(/^[^:]*:[[:space:]]*/, ""); sub(/[[:space:]]*\r$/, ""); print; exit }' "$headers_file" 2>/dev/null || true)"
@@ -230,11 +221,10 @@ jortt_retry_delay() {
 jortt_request() {
   local method="$1"
   local url="$2"
-  local body_data="$3"
   local auth_retry=0 rate_retry=0 delay
   jortt_get_token
   while :; do
-    jortt_raw_request "$method" "$url" "$body_data"
+    jortt_raw_request "$method" "$url"
     if [ "$JORTT_HTTP_STATUS" = "401" ] && [ "$auth_retry" -eq 0 ]; then
       if jortt_token_paths; then rm -f "$JORTT_TOKEN_FILE"; fi
       JORTT_ACCESS_TOKEN=""

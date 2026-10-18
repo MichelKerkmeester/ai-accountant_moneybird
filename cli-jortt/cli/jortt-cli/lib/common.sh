@@ -259,8 +259,6 @@ jortt_operations_json() {
           tag: ($op.tags[0] // "untagged"),
           scope: ([$op.security[]? | .OAuth2[]?] | unique | join(" ")),
           parameters: [$op.parameters[]? | select(.in == "path" or .in == "query") | {name: .name, in: .in, required: (.required // false), type: (.type // .schema.type // "string")}],
-          body_schema: ([$op.parameters[]? | select(.in == "body") | .schema as $schema | if ($schema."$ref" // "") != "" then ($schema."$ref" | split("/") | last) elif ($schema.type // "") != "" then $schema.type else "object" end][0] // ""),
-          body_required: ([$op.parameters[]? | select(.in == "body") | (.required // false)][0] // false),
           priority: rank($path.key)
         }
     ]

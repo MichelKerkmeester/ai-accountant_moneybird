@@ -32,10 +32,6 @@ while [[ $# -gt 0 ]]; do
       ADMIN_ID="$2"
       shift 2
       ;;
-    --output|--select|--fields|--child-id)
-      [[ $# -ge 2 ]] || exit 2
-      shift 2
-      ;;
     --*)
       if [[ $# -ge 2 && "$2" != --* ]]; then
         shift 2
@@ -53,6 +49,7 @@ done
 if [[ $LOGIN -eq 1 ]]; then
   IFS= read -r TOKEN_INPUT || true
   [[ -n "$STUB_LOG" ]] && printf 'LOGIN %s\n' "${MONEYBIRD_CONFIG_DIR:-default}" >> "$STUB_LOG"
+  [[ -n "$STUB_LOG" ]] && printf 'TOKEN %s\n' "${TOKEN_INPUT:-}" >> "$STUB_LOG"
   printf 'stub accepted token: %s\n' "${TOKEN_INPUT:-}"
   exit 0
 fi
@@ -92,10 +89,6 @@ if [[ $DRY_RUN -eq 1 ]]; then
   if [[ "${MONEYBIRD_TEST_FAULT:-}" == "bad-dry-line" ]]; then
     printf 'stub fault: this line is not a METHOD URL pair\n'
     exit 0
-  fi
-  if [[ -n "${MONEYBIRD_TEST_DRY_STATUS:-}" ]]; then
-    printf 'stub dry-run failure\n' >&2
-    exit "$MONEYBIRD_TEST_DRY_STATUS"
   fi
   printf '%s %s\n' "$METHOD" "$URL"
   if [[ "$METHOD" == "POST" || "$METHOD" == "PATCH" ]]; then

@@ -58,17 +58,8 @@ for command_name in bash curl jq git; do
 done
 
 log "-- official CLI --"
-if command -v moneybird-cli >/dev/null 2>&1; then
-  log "moneybird-cli on PATH: yes"
-else
-  log "moneybird-cli on PATH: no"
-fi
-setup_result=""
-if setup_result="$(bash "$SETUP_SCRIPT" --check 2>&1)"; then
-  log "$setup_result"
-else
-  log "$setup_result"
-fi
+setup_result="$(bash "$SETUP_SCRIPT" --check 2>&1)" || true
+log "$setup_result"
 
 READER_CONFIG_DIR="${MONEYBIRD_CONFIG_DIR:-$HOME/.config/moneybird-cli}"
 WRITER_CONFIG_DIR="${MONEYBIRD_WRITER_CONFIG_DIR:-$HOME/.config/moneybird-cli-writer}"
@@ -111,9 +102,6 @@ EOF
 )"; then
       http_status="${curl_output##*$'\n'}"
       response_body="${curl_output%$'\n'*}"
-      if [[ "$curl_output" == "$http_status" ]]; then
-        response_body=""
-      fi
       if administration_count="$(printf '%s' "$response_body" | jq -er 'if type == "array" then length else error("not an array") end' 2>/dev/null)"; then
         log "Administrations HTTP status: $http_status"
         log "Administrations count: $administration_count"

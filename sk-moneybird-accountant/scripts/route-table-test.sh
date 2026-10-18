@@ -24,7 +24,6 @@ SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd -P) || exit 1
 SKILL_DIR=$(dirname "$SCRIPT_DIR")
 REPO_ROOT=$(dirname "$SKILL_DIR")
 CHECKER="$SCRIPT_DIR/check-route-table.py"
-WORD_CHECKER="$SCRIPT_DIR/check-skill-words.py"
 SKILL_MD="$SKILL_DIR/SKILL.md"
 ROUTER_MD="$SKILL_DIR/ROUTER.md"
 SIGNALS_MD="$SKILL_DIR/references/routing-signals.md"
@@ -32,10 +31,6 @@ GRAPH_METADATA="$SKILL_DIR/graph-metadata.json"
 
 if [[ ! -f "$CHECKER" ]]; then
     printf 'error: missing scripts/check-route-table.py next to this test\n' >&2
-    exit 2
-fi
-if [[ ! -f "$WORD_CHECKER" ]]; then
-    printf 'error: missing scripts/check-skill-words.py next to this test\n' >&2
     exit 2
 fi
 if [[ ! -f "$SKILL_MD" ]]; then
@@ -64,17 +59,21 @@ fi
 # ───────────────────────────────────────────────────────────────
 
 TMP_ROOT=$(mktemp -d "${TMPDIR:-/tmp}/route-table-test.XXXXXX") || exit 2
-# The symlink mutant needs a link inside the real skill folder, because the checker resolves read paths there
-SYMLINK_PATH="$SKILL_DIR/references/route-table-test-alias.md"
 
-# Remove the temp root and the mutant symlink on exit so no fixture survives the run
+# The checker reads the files beside its own folder, so every mutant lives in
+# a throwaway copy of the repository and the real tree stays untouched
+COPY_ROOT="$TMP_ROOT/repo-copy"
+COPY_SKILL="$COPY_ROOT/sk-moneybird-accountant"
+COPY_CHECKER="$COPY_SKILL/scripts/check-route-table.py"
+COPY_ROUTER="$COPY_SKILL/ROUTER.md"
+COPY_SIGNALS="$COPY_SKILL/references/routing-signals.md"
+COPY_METADATA="$COPY_SKILL/graph-metadata.json"
+
+# Remove the temp root on exit so no fixture survives the run
 # shellcheck disable=SC2329  # the EXIT trap calls it
 cleanup() {
     if [[ -n "${TMP_ROOT:-}" ]] && [[ -d "$TMP_ROOT" ]]; then
         rm -rf "$TMP_ROOT"
-    fi
-    if [[ -L "$SYMLINK_PATH" ]]; then
-        rm -f "$SYMLINK_PATH"
     fi
 }
 trap cleanup EXIT
@@ -88,7 +87,7 @@ failed=0
 
 # Record a passing check and print its report line
 # Args:
-#   $1 - Check description
+#   $1 - Check name
 pass() {
     passed=$((passed + 1))
     printf 'PASS %s\n' "$1"
@@ -96,133 +95,49 @@ pass() {
 
 # Record a failing check and print its report line
 # Args:
-#   $1 - Check description
+#   $1 - Check name
 fail() {
     failed=$((failed + 1))
     printf 'FAIL %s\n' "$1"
 }
 
-# Run the checker against a mutated ROUTER.md copy expected to fail with exit 1
+# Put the real router, signals file and graph metadata back into the copy
+restore_copy() {
+    cp "$ROUTER_MD" "$COPY_ROUTER"
+    cp "$SIGNALS_MD" "$COPY_SIGNALS"
+    cp "$GRAPH_METADATA" "$COPY_METADATA"
+}
+
+# Run the copied checker after one edit to the copied tree, expect exit 1 and
+# put the copy back afterwards
 # Args:
 #   $1 - Check name
-#   $2 - Markdown copy to check
+#   $2 - Text the failure report must name, optional
 mutant() {
     local name="$1"
-    local file="$2"
-    python3 -I "$CHECKER" --router "$file" >"$TMP_ROOT/out.txt" 2>&1
+    local marker="${2:-}"
+    python3 -I "$COPY_CHECKER" >"$TMP_ROOT/out.txt" 2>&1
     status=$?
-    if [[ "$status" -eq 1 ]]; then
+    if [[ "$status" -eq 1 ]] && { [[ -z "$marker" ]] || grep -qF "$marker" "$TMP_ROOT/out.txt"; }; then
         pass "$name"
     else
         fail "$name"
+        cat "$TMP_ROOT/out.txt"
     fi
-}
-
-# Run the checker against a mutated signals file expected to fail with exit 1
-# Args:
-#   $1 - Check name
-#   $2 - Signals file copy to check
-signals_mutant() {
-    local name="$1"
-    local file="$2"
-    python3 -I "$CHECKER" --signals "$file" >"$TMP_ROOT/out.txt" 2>&1
-    status=$?
-    if [[ "$status" -eq 1 ]]; then
-        pass "$name"
-    else
-        fail "$name"
-    fi
-}
-
-# Run the checker against a drifted markdown copy expected to exit 1 and name a text
-# Args:
-#   $1 - Check name
-#   $2 - Markdown copy to check
-#   $3 - Text the failure report must name
-drift_mutant() {
-    local name="$1"
-    local file="$2"
-    local marker="$3"
-    python3 -I "$CHECKER" --router "$file" >"$TMP_ROOT/out.txt" 2>&1
-    status=$?
-    if [[ "$status" -eq 1 ]] && grep -qF "$marker" "$TMP_ROOT/out.txt"; then
-        pass "$name"
-    else
-        fail "$name"
-    fi
-}
-
-# Run the checker against a mutated graph metadata file expected to fail with exit 1
-# Args:
-#   $1 - Check name
-#   $2 - Graph metadata copy to check
-metadata_mutant() {
-    local name="$1"
-    local file="$2"
-    python3 -I "$CHECKER" --graph-metadata "$file" >"$TMP_ROOT/out.txt" 2>&1
-    status=$?
-    if [[ "$status" -eq 1 ]]; then
-        pass "$name"
-    else
-        fail "$name"
-    fi
-}
-
-# Run the checker against a drifted graph metadata copy expected to exit 1 and name a text
-# Args:
-#   $1 - Check name
-#   $2 - Graph metadata copy to check
-#   $3 - Text the failure report must name
-metadata_drift_mutant() {
-    local name="$1"
-    local file="$2"
-    local marker="$3"
-    python3 -I "$CHECKER" --graph-metadata "$file" >"$TMP_ROOT/out.txt" 2>&1
-    status=$?
-    if [[ "$status" -eq 1 ]] && grep -qF "$marker" "$TMP_ROOT/out.txt"; then
-        pass "$name"
-    else
-        fail "$name"
-    fi
-}
-
-# Run the checker against a mutated calibration file expected to fail with exit 1
-# Args:
-#   $1 - Check name
-#   $2 - Calibration file copy to check
-calibration_mutant() {
-    local name="$1"
-    local file="$2"
-    python3 -I "$CHECKER" --calibration "$file" >"$TMP_ROOT/out.txt" 2>&1
-    status=$?
-    if [[ "$status" -eq 1 ]]; then
-        pass "$name"
-    else
-        fail "$name"
-    fi
+    restore_copy
 }
 
 # ───────────────────────────────────────────────────────────────
 # 4. REAL SKILL MARKDOWN
 # ───────────────────────────────────────────────────────────────
 
-python3 -I "$CHECKER" --check >"$TMP_ROOT/out.txt" 2>&1
+python3 -I "$CHECKER" >"$TMP_ROOT/out.txt" 2>&1
 status=$?
 if [[ "$status" -eq 0 ]]; then
     pass "real ROUTER.md and routing-signals.md pass"
 else
     fail "real ROUTER.md and routing-signals.md pass"
     cat "$TMP_ROOT/out.txt"
-fi
-
-# The generated router block must read the session context and hold no old level name
-ROUTER_SECTION=$(sed -n '/^### Smart Router Pseudocode/,/^### Migration Phase Routing/p' "$ROUTER_MD")
-if grep -qF 'session-context.json' <<<"$ROUTER_SECTION" \
-    && ! grep -qiE 'zzp question|cli action|live bookkeeping|resource loading levels' <<<"$ROUTER_SECTION" \
-    && ! grep -qF 'migration-workspace' <<<"$ROUTER_SECTION"; then
-    pass "router block reads the session context and drops the old level names"
-else
-    fail "router block reads the session context and drops the old level names"
 fi
 
 # WHY: a selector that never reads the bootstrap sees only the description and
@@ -241,251 +156,156 @@ else
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 5. MUTANTS
+# 5. REPOSITORY COPY
 # ───────────────────────────────────────────────────────────────
 
-copy() {
-    cp "$ROUTER_MD" "$TMP_ROOT/ROUTER.md"
-    printf '%s\n' "$TMP_ROOT/ROUTER.md"
-}
+# Build a throwaway repository that holds the checker, the router, the
+# metadata, the reference tree and the hub files the checker reads
+mkdir -p "$COPY_SKILL/scripts" "$COPY_ROOT/cli-moneybird" "$COPY_ROOT/cli-jortt"
+cp "$CHECKER" "$COPY_CHECKER"
+cp "$SCRIPT_DIR/token-baseline.py" "$COPY_SKILL/scripts/token-baseline.py"
+cp "$SKILL_MD" "$COPY_SKILL/SKILL.md"
+cp "$ROUTER_MD" "$COPY_ROUTER"
+cp "$GRAPH_METADATA" "$COPY_METADATA"
+cp -R "$SKILL_DIR/references" "$COPY_SKILL/references"
+cp "$REPO_ROOT/cli-moneybird/SKILL.md" "$COPY_ROOT/cli-moneybird/SKILL.md"
+cp "$REPO_ROOT/cli-jortt/SKILL.md" "$COPY_ROOT/cli-jortt/SKILL.md"
+cp "$REPO_ROOT/cli-moneybird/ROUTER.md" "$COPY_ROOT/cli-moneybird/ROUTER.md"
+cp "$REPO_ROOT/cli-jortt/ROUTER.md" "$COPY_ROOT/cli-jortt/ROUTER.md"
+for hub_file in SKILL.md mode-registry.json hub-router.json; do
+    cp "$REPO_ROOT/$hub_file" "$COPY_ROOT/$hub_file"
+done
 
-# Blank the budget cell of the T1 row
-sed 's/| `tok:T1` | Beats T2/|  | Beats T2/' "$(copy)" >"$TMP_ROOT/m-budget.md"
-mutant "budget cell blanked" "$TMP_ROOT/m-budget.md"
-
-# Empty the Dutch cell of the T2 row
-sed 's/`migratie`, `overzetten`, `historische administratie`, `categorie`, `valkuil`, `welke rekening` \| migrate, mapping/ \| migrate, mapping/' "$(copy)" >"$TMP_ROOT/m-dutch.md"
-mutant "Dutch cell emptied" "$TMP_ROOT/m-dutch.md"
-
-# Delete the T9 row
-sed '/^| T9 | onboarding |/d' "$(copy)" >"$TMP_ROOT/m-row.md"
-mutant "T9 row deleted" "$TMP_ROOT/m-row.md"
-
-# Delete the T12 row, which every table must now carry
-sed '/^| T12 | prepare the income tax return |/d' "$(copy)" >"$TMP_ROOT/m-row-t12.md"
-mutant "T12 row deleted" "$TMP_ROOT/m-row-t12.md"
-
-# Point a read path at a file that does not exist
-sed 's|references/purchase-invoices\.md|references/purchase-invoices-missing.md|' "$(copy)" >"$TMP_ROOT/m-path.md"
-mutant "read path missing" "$TMP_ROOT/m-path.md"
-
-# Point a read path outside the skill folder
-sed 's|`!references/purchase-invoices\.md`|`!../AGENTS.md`|' "$(copy)" >"$TMP_ROOT/m-path-escape.md"
-drift_mutant "read path escapes the skill folder" "$TMP_ROOT/m-path-escape.md" "row T4 read path escapes the skill folder"
-
-# Point a read path at a file that is not markdown
-sed 's|`!references/purchase-invoices\.md`|`!references/index.json`|' "$(copy)" >"$TMP_ROOT/m-path-nonmd.md"
-drift_mutant "read path is not markdown" "$TMP_ROOT/m-path-nonmd.md" "row T4 read path is not markdown"
-
-# Name a read path outside backticks, which the generated read set would drop
-sed 's|`!references/purchase-invoices\.md`|!references/purchase-invoices.md|' "$(copy)" >"$TMP_ROOT/m-path-bare.md"
-drift_mutant "read path not backticked" "$TMP_ROOT/m-path-bare.md" "row T4 read path is not backticked"
-
-# Name an absolute read path outside backticks
-sed 's|`!references/purchase-invoices\.md`|!/tmp/purchase-invoices.md|' "$(copy)" >"$TMP_ROOT/m-path-bare-abs.md"
-drift_mutant "absolute read path not backticked" "$TMP_ROOT/m-path-bare-abs.md" "row T4 read path is not backticked"
-
-# Name a read path with an uppercase extension outside backticks
-sed 's|`!references/purchase-invoices\.md`|!references/purchase-invoices.MD|' "$(copy)" >"$TMP_ROOT/m-path-bare-upper.md"
-drift_mutant "uppercase read path not backticked" "$TMP_ROOT/m-path-bare-upper.md" "row T4 read path is not backticked"
-
-# Name a UNC read path and two other document extensions outside backticks
-sed 's|`!references/purchase-invoices\.md`|!//server/share/README.md|' "$(copy)" >"$TMP_ROOT/m-path-bare-unc.md"
-drift_mutant "UNC read path not backticked" "$TMP_ROOT/m-path-bare-unc.md" "row T4 read path is not backticked"
-sed 's|`!references/purchase-invoices\.md`|!references/purchase-invoices.rst|' "$(copy)" >"$TMP_ROOT/m-path-bare-rst.md"
-drift_mutant "rst read path not backticked" "$TMP_ROOT/m-path-bare-rst.md" "row T4 read path is not backticked"
-sed 's|`!references/purchase-invoices\.md`|!references/purchase-invoices.mdx|' "$(copy)" >"$TMP_ROOT/m-path-bare-mdx.md"
-drift_mutant "mdx read path not backticked" "$TMP_ROOT/m-path-bare-mdx.md" "row T4 read path is not backticked"
-
-# Point a read path at a markdown-named symlink to a file that is not markdown
-ln -s index.json "$SYMLINK_PATH"
-sed 's|`!references/purchase-invoices\.md`|`!references/route-table-test-alias.md`|' "$(copy)" >"$TMP_ROOT/m-path-symlink.md"
-drift_mutant "read path is a markdown symlink to a non-markdown file" "$TMP_ROOT/m-path-symlink.md" "row T4 read path is not markdown"
-rm -f "$SYMLINK_PATH"
-
-# Point a required read at a file that does not exist, which must fail
-sed 's|`!references/migration/shared-mechanisms\.md`|`!references/migration/shared-mechanisms-missing.md`|' "$(copy)" >"$TMP_ROOT/m-required-missing.md"
-drift_mutant "required read path missing" "$TMP_ROOT/m-required-missing.md" "row T1 read path missing: references/migration/shared-mechanisms-missing.md"
-
-# Name a section anchor the target file does not hold
-sed 's|`!references/migration/jortt-to-moneybird-mapping\.md`|`!references/migration/jortt-to-moneybird-mapping.md@no-such-heading`|' "$(copy)" >"$TMP_ROOT/m-anchor.md"
-drift_mutant "read anchor missing" "$TMP_ROOT/m-anchor.md" "row T2 read anchor not found"
-
-# Drop the mark from a backticked read path
-sed 's|`!references/purchase-invoices\.md`|`references/purchase-invoices.md`|' "$(copy)" >"$TMP_ROOT/m-unmarked.md"
-drift_mutant "read item without a mark" "$TMP_ROOT/m-unmarked.md" "row T4 read item is not marked with ! or ?"
-
-# Remove the ROUTE_MARGIN line
-sed '/ROUTE_MARGIN/d' "$(copy)" >"$TMP_ROOT/m-margin.md"
-mutant "ROUTE_MARGIN line removed" "$TMP_ROOT/m-margin.md"
-
-# Route the T2 row to a tool skill the table does not define
-sed 's/| migrate, mapping, category, which account, trap | `none` |/| migrate, mapping, category, which account, trap | `cli-notion` |/' "$(copy)" >"$TMP_ROOT/m-route.md"
-mutant "T2 tool route unknown" "$TMP_ROOT/m-route.md"
-
-# Delete the T6 margin override bullet
-sed '/^- Margin override T6:/d' "$(copy)" >"$TMP_ROOT/m-override-gone.md"
-mutant "T6 override bullet deleted" "$TMP_ROOT/m-override-gone.md"
-
-# Give the T6 override bullet a value that is neither default nor a number
-sed 's/^- Margin override T6: `default`$/- Margin override T6: `abc`/' "$(copy)" >"$TMP_ROOT/m-override-value.md"
-mutant "T6 override set to abc" "$TMP_ROOT/m-override-value.md"
-
-# Give the T2 margin override bullet a type the table does not allow
-sed 's/^- Margin override T2: `default`$/- Margin override T7: `default`/' "$(copy)" >"$TMP_ROOT/m-override-type.md"
-mutant "override bullet names T7" "$TMP_ROOT/m-override-type.md"
-
-# Remove the Ties and Abstain heading
-sed '/^### Ties and Abstain$/d' "$(copy)" >"$TMP_ROOT/m-tie-heading.md"
-mutant "Ties and Abstain heading removed" "$TMP_ROOT/m-tie-heading.md"
-
-# Drop the pointer line that names the signal sources file
-sed '/Signal sources, the `tok:Tn` keys and their Belastingdienst pages: `references\/routing-signals\.md`\./d' "$(copy)" >"$TMP_ROOT/m-pointer.md"
-mutant "signal sources pointer removed" "$TMP_ROOT/m-pointer.md"
-
-# ───────────────────────────────────────────────────────────────
-# 6. SIGNALS FILE MUTANTS
-# ───────────────────────────────────────────────────────────────
-
-# Copy the signals file to a temp path so the original stays untouched
-cp "$SIGNALS_MD" "$TMP_ROOT/routing-signals.md"
-
-# Remove every source line from the signals file
-sed '/^- /d' "$TMP_ROOT/routing-signals.md" >"$TMP_ROOT/m-signals-lines.md"
-signals_mutant "signal source lines removed" "$TMP_ROOT/m-signals-lines.md"
-
-# Drop the belastingdienst link from the administration terms source line
-sed 's|: https://www\.belastingdienst\.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/|: missing|' "$TMP_ROOT/routing-signals.md" >"$TMP_ROOT/m-signals-link.md"
-signals_mutant "belastingdienst link removed" "$TMP_ROOT/m-signals-link.md"
-
-# Delete the whole signals file by pointing the checker at an absent path
-signals_mutant "signals file deleted" "$TMP_ROOT/no-such-routing-signals.md"
-
-# Copy the real signals file, whose Documented gaps table is the ledger
-# under test, then mutate one of its rows per problem.
-cp "$SIGNALS_MD" "$TMP_ROOT/gaps.md"
-
-# A valid ledger passes and reports its row count
-python3 -I "$CHECKER" --signals "$TMP_ROOT/gaps.md" >"$TMP_ROOT/out.txt" 2>&1
+# The untouched copy must pass, or every mutant below could fail for the wrong reason
+python3 -I "$COPY_CHECKER" >"$TMP_ROOT/out.txt" 2>&1
 status=$?
-if [[ "$status" -eq 0 ]] && grep -qE 'gaps: [0-9]+ rows' "$TMP_ROOT/out.txt"; then
-    pass "a valid gap ledger passes"
+if [[ "$status" -eq 0 ]] && grep -qF 'route-table: ok' "$TMP_ROOT/out.txt"; then
+    pass "the untouched repository copy passes"
 else
-    fail "a valid gap ledger passes"
+    fail "the untouched repository copy passes"
     cat "$TMP_ROOT/out.txt"
 fi
 
+# ───────────────────────────────────────────────────────────────
+# 6. ROUTER MUTANTS
+# ───────────────────────────────────────────────────────────────
+
+# Blank the budget cell of the T1 row
+sed 's/| `tok:T1` | Beats T2/|  | Beats T2/' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "budget cell blanked"
+
+# Empty the Dutch cell of the T2 row
+sed 's/`migratie`, `overzetten`, `historische administratie`, `categorie`, `valkuil`, `welke rekening` \| migrate, mapping/ \| migrate, mapping/' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "Dutch cell emptied"
+
+# Delete the T9 row
+sed '/^| T9 | onboarding |/d' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "T9 row deleted"
+
+# Point a read path outside the skill folder
+sed 's|`!references/purchase-invoices\.md`|`!../AGENTS.md`|' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "read path escapes the skill folder" "row T4 read path escapes the skill folder"
+
+# Point a read path at a file that is not markdown
+sed 's|`!references/purchase-invoices\.md`|`!references/index.json`|' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "read path is not markdown" "row T4 read path is not markdown"
+
+# Name a read path outside backticks, which the generated read set would drop
+sed 's|`!references/purchase-invoices\.md`|!references/purchase-invoices.md|' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "read path not backticked" "row T4 read path is not backticked"
+
+# Point a read path at a markdown-named symlink to a file that is not markdown
+SYMLINK_PATH="$COPY_SKILL/references/route-table-test-alias.md"
+ln -s index.json "$SYMLINK_PATH"
+sed 's|`!references/purchase-invoices\.md`|`!references/route-table-test-alias.md`|' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "read path is a markdown symlink to a non-markdown file" "row T4 read path is not markdown"
+rm -f "$SYMLINK_PATH"
+
+# Point a required read at a file that does not exist, which must fail
+sed 's|`!references/migration/shared-mechanisms\.md`|`!references/migration/shared-mechanisms-missing.md`|' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "required read path missing" "row T1 read path missing: references/migration/shared-mechanisms-missing.md"
+
+# Name a section anchor the target file does not hold
+sed 's|`!references/migration/jortt-to-moneybird-mapping\.md`|`!references/migration/jortt-to-moneybird-mapping.md@no-such-heading`|' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "read anchor missing" "row T2 read anchor not found"
+
+# Drop the mark from a backticked read path
+sed 's|`!references/purchase-invoices\.md`|`references/purchase-invoices.md`|' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "read item without a mark" "row T4 read item is not marked with ! or ?"
+
+# Remove the ROUTE_MARGIN line
+sed '/ROUTE_MARGIN/d' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "ROUTE_MARGIN line removed"
+
+# List the weak signal btw as a T10 signal
+sed 's/^| T10 | prepare the VAT return | `/| T10 | prepare the VAT return | `btw`, `/' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "a row that lists a weak signal fails" "T10 lists the weak signal btw"
+
+# Change the margin in the router alone
+sed 's/`ROUTE_MARGIN = 0.25`/`ROUTE_MARGIN = 0.3`/' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "ROUTE_MARGIN differs from the signal sources file" "route margin 0.3 differs from the signal sources file"
+
+# Route the T2 row to a tool skill the table does not define
+sed 's/| migrate, mapping, category, which account, trap | `none` |/| migrate, mapping, category, which account, trap | `cli-notion` |/' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "T2 tool route unknown"
+
+# Drop the pointer line that names the signal sources file
+sed '/Signal sources, the `tok:Tn` keys and their Belastingdienst pages: `references\/routing-signals\.md`\./d' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "signal sources pointer removed"
+
+# A ROUTER.md that drops the glossary read rule fails
+sed 's#`references/glossary/README.md`#the glossary#' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "a ROUTER.md without the glossary read rule fails" "the glossary read rule is missing"
+
+# ───────────────────────────────────────────────────────────────
+# 7. SIGNALS FILE MUTANTS
+# ───────────────────────────────────────────────────────────────
+
+# Remove every source line from the signals file
+sed '/^- /d' "$SIGNALS_MD" >"$COPY_SIGNALS"
+mutant "signal source lines removed"
+
+# Drop the belastingdienst link from the administration terms source line
+sed 's|: https://www\.belastingdienst\.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/administratie/|: missing|' "$SIGNALS_MD" >"$COPY_SIGNALS"
+mutant "belastingdienst link removed"
+
+# Delete the whole signals file
+rm -f "$COPY_SIGNALS"
+mutant "signals file deleted"
+
+# The Documented gaps table of the real signals file is the ledger under test,
+# so each mutant breaks one of its rows.
+
 # Empty the owner cell of the first ledger row
-sed 's|references/vat-return/README.md| |' "$TMP_ROOT/gaps.md" >"$TMP_ROOT/m-gap-owner.md"
-signals_mutant "gap row without an owner" "$TMP_ROOT/m-gap-owner.md"
+sed 's|references/vat-return/README.md| |' "$SIGNALS_MD" >"$COPY_SIGNALS"
+mutant "gap row without an owner"
 
 # Give every ledger row a coverage value outside the allowed set. The rows may all be
 # covered by now, so match either value and refuse a mutant that changed nothing
-sed -E 's/\| (gap|covered) \|/| unknown |/' "$TMP_ROOT/gaps.md" >"$TMP_ROOT/m-gap-coverage.md"
-if cmp -s "$TMP_ROOT/gaps.md" "$TMP_ROOT/m-gap-coverage.md"; then
+sed -E 's/\| (gap|covered) \|/| unknown |/' "$SIGNALS_MD" >"$COPY_SIGNALS"
+if cmp -s "$SIGNALS_MD" "$COPY_SIGNALS"; then
     fail "gap coverage mutant changed nothing"
 fi
-signals_mutant "gap row with an unknown coverage" "$TMP_ROOT/m-gap-coverage.md"
+mutant "gap row with an unknown coverage"
 
 # Repeat a topic in the ledger
-sed 's/| yearly-overview |/| vat-return |/' "$TMP_ROOT/gaps.md" >"$TMP_ROOT/m-gap-duplicate.md"
-signals_mutant "gap ledger with a repeated topic" "$TMP_ROOT/m-gap-duplicate.md"
+sed 's/| yearly-overview |/| vat-return |/' "$SIGNALS_MD" >"$COPY_SIGNALS"
+mutant "gap ledger with a repeated topic"
 
 # ───────────────────────────────────────────────────────────────
-# 7. CALIBRATION MUTANTS
-# ───────────────────────────────────────────────────────────────
-
-CALIBRATION="$SKILL_DIR/assets/route-calibration.json"
-
-# Build one mutant record per mismatch from the real record
-python3 - "$CALIBRATION" "$TMP_ROOT" <<'PY'
-import json
-import os
-import sys
-
-source = sys.argv[1]
-target = sys.argv[2]
-with open(source, "r", encoding="utf-8") as handle:
-    data = json.load(handle)
-
-def copy():
-    return json.loads(json.dumps(data))
-
-margin = copy()
-margin["route_margin"] = 0.5
-with open(os.path.join(target, "cal-margin.json"), "w", encoding="utf-8") as handle:
-    json.dump(margin, handle, indent=2)
-floor = copy()
-floor["fallback_floor"] = 0.85
-with open(os.path.join(target, "cal-floor.json"), "w", encoding="utf-8") as handle:
-    json.dump(floor, handle, indent=2)
-rate = copy()
-rate["held_out"] = dict(data["held_out"], false_abstain_rate=0.5)
-with open(os.path.join(target, "cal-rate.json"), "w", encoding="utf-8") as handle:
-    json.dump(rate, handle, indent=2)
-sweep_gone = copy()
-sweep_gone.pop("sweep", None)
-with open(os.path.join(target, "cal-sweep-gone.json"), "w", encoding="utf-8") as handle:
-    json.dump(sweep_gone, handle, indent=2)
-sweep_beheaded = copy()
-sweep_beheaded["sweep"]["candidates"] = [
-    candidate for candidate in sweep_beheaded["sweep"]["candidates"]
-    if candidate["floor"] != data["fallback_floor"]
-]
-with open(os.path.join(target, "cal-sweep-beheaded.json"), "w", encoding="utf-8") as handle:
-    json.dump(sweep_beheaded, handle, indent=2)
-sweep_off = copy()
-sweep_off["sweep"]["candidates"][0]["false_abstains"] = 3
-with open(os.path.join(target, "cal-sweep-off.json"), "w", encoding="utf-8") as handle:
-    json.dump(sweep_off, handle, indent=2)
-sweep_frozen = copy()
-sweep_frozen["calibration"] = dict(data["calibration"], route_matches=31)
-with open(os.path.join(target, "cal-sweep-frozen.json"), "w", encoding="utf-8") as handle:
-    json.dump(sweep_frozen, handle, indent=2)
-sweep_twin = copy()
-sweep_twin["sweep"]["candidates"].append(dict(data["sweep"]["candidates"][0]))
-with open(os.path.join(target, "cal-sweep-twin.json"), "w", encoding="utf-8") as handle:
-    json.dump(sweep_twin, handle, indent=2)
-PY
-
-calibration_mutant "calibration margin differs from the table" "$TMP_ROOT/cal-margin.json"
-calibration_mutant "calibration floor differs from the table" "$TMP_ROOT/cal-floor.json"
-calibration_mutant "calibration false-abstain rate above the cap" "$TMP_ROOT/cal-rate.json"
-calibration_mutant "calibration file deleted" "$TMP_ROOT/no-such-calibration.json"
-calibration_mutant "calibration sweep missing" "$TMP_ROOT/cal-sweep-gone.json"
-calibration_mutant "calibration chosen floor not swept" "$TMP_ROOT/cal-sweep-beheaded.json"
-calibration_mutant "calibration sweep rate disagrees with its counts" "$TMP_ROOT/cal-sweep-off.json"
-calibration_mutant "calibration frozen block differs from the sweep" "$TMP_ROOT/cal-sweep-frozen.json"
-calibration_mutant "calibration sweep holds a duplicate floor" "$TMP_ROOT/cal-sweep-twin.json"
-
-# A table that states values the record does not match fails the check
-python3 - "$(copy)" "$TMP_ROOT/m-table-margin.md" "$TMP_ROOT/m-table-floor.md" <<'PY'
-import sys
-
-with open(sys.argv[1], "r", encoding="utf-8") as handle:
-    text = handle.read()
-with open(sys.argv[2], "w", encoding="utf-8") as handle:
-    handle.write(text.replace("ROUTE_MARGIN = 0.25", "ROUTE_MARGIN = 0.50"))
-with open(sys.argv[3], "w", encoding="utf-8") as handle:
-    handle.write(text.replace("- `FALLBACK_FLOOR = 0.5`, frozen on the calibration split.", "- `FALLBACK_FLOOR = 0.85`, frozen on the calibration split."))
-PY
-mutant "table margin differs from the record" "$TMP_ROOT/m-table-margin.md"
-mutant "table floor differs from the record" "$TMP_ROOT/m-table-floor.md"
-
-# ───────────────────────────────────────────────────────────────
-# 7. ROUTER BLOCK DRIFT
+# 8. ROUTER BLOCK DRIFT
 # ───────────────────────────────────────────────────────────────
 
 # Edit one table signal cell and leave the generated block stale
-sed 's/| migrate, mapping, category, which account, trap |/| migrate, mapping, category, which account, traps |/' "$(copy)" >"$TMP_ROOT/m-signal-drift.md"
-drift_mutant "table signal changed without regeneration" "$TMP_ROOT/m-signal-drift.md" "row T2"
+sed 's/| migrate, mapping, category, which account, trap |/| migrate, mapping, category, which account, traps |/' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "table signal changed without regeneration" "row T2"
 
 # Hand edit one line inside the generated block
-sed 's/raise ValueError("local markdown only")/raise ValueError("markdown only")/' "$(copy)" >"$TMP_ROOT/m-hand-edit.md"
-mutant "hand edit inside the router block" "$TMP_ROOT/m-hand-edit.md"
+sed 's/raise ValueError("local markdown only")/raise ValueError("markdown only")/' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "hand edit inside the router block"
 
 # Hand edit one row inside the generated REQUIRED_READS structure
-python3 - "$(copy)" "$TMP_ROOT/m-required-edit.md" <<'PY'
+python3 - "$ROUTER_MD" "$COPY_ROUTER" <<'PY'
 import sys
 
 with open(sys.argv[1], "r", encoding="utf-8") as handle:
@@ -503,10 +323,10 @@ for line in lines:
 with open(sys.argv[2], "w", encoding="utf-8") as handle:
     handle.write("\n".join(out) + "\n")
 PY
-drift_mutant "hand edit inside REQUIRED_READS" "$TMP_ROOT/m-required-edit.md" "row T2"
+mutant "hand edit inside REQUIRED_READS" "row T2"
 
 # Drop one multi-word table signal from the intent list
-python3 - "$GRAPH_METADATA" "$TMP_ROOT/m-intent.json" <<'PY'
+python3 - "$GRAPH_METADATA" "$COPY_METADATA" <<'PY'
 import json
 import sys
 
@@ -517,10 +337,10 @@ with open(sys.argv[2], "w", encoding="utf-8") as handle:
     json.dump(data, handle, indent=2)
     handle.write("\n")
 PY
-metadata_mutant "intent signal missing from the list" "$TMP_ROOT/m-intent.json"
+mutant "intent signal missing from the list" "migration phase"
 
 # Drop one curated advisor signal from the intent list
-python3 - "$GRAPH_METADATA" "$TMP_ROOT/m-curated.json" <<'PY'
+python3 - "$GRAPH_METADATA" "$COPY_METADATA" <<'PY'
 import json
 import sys
 
@@ -534,10 +354,10 @@ with open(sys.argv[2], "w", encoding="utf-8") as handle:
     json.dump(data, handle, indent=2)
     handle.write("\n")
 PY
-metadata_drift_mutant "curated advisor signal missing from the list" "$TMP_ROOT/m-curated.json" "help me review a dutch sole trader yearly close"
+mutant "curated advisor signal missing from the list" "help me review a dutch sole trader yearly close"
 
 # ───────────────────────────────────────────────────────────────
-# 8. WRITE MODE STABILITY
+# 9. WRITE MODE STABILITY
 # ───────────────────────────────────────────────────────────────
 
 # Build a throwaway skill copy that holds the script, the router, the
@@ -580,50 +400,29 @@ else
     fail "a second write leaves both files byte-identical"
 fi
 
-# ───────────────────────────────────────────────────────────────
-# 9. WORD CHECK ENFORCEMENT
-# ───────────────────────────────────────────────────────────────
-
-# The check runs the sibling word check, so this mutant lives in a throwaway
-# repository copy and the real tree stays untouched
-WORD_COPY="$TMP_ROOT/word-copy"
-mkdir -p "$WORD_COPY/sk-moneybird-accountant/scripts" "$WORD_COPY/cli-moneybird" "$WORD_COPY/cli-jortt"
-cp "$CHECKER" "$WORD_COPY/sk-moneybird-accountant/scripts/check-route-table.py"
-cp "$SCRIPT_DIR/token-baseline.py" "$WORD_COPY/sk-moneybird-accountant/scripts/token-baseline.py"
-cp "$WORD_CHECKER" "$WORD_COPY/sk-moneybird-accountant/scripts/check-skill-words.py"
-cp "$SKILL_DIR/scripts/split-topic-files.py" "$WORD_COPY/sk-moneybird-accountant/scripts/split-topic-files.py"
-cp "$SKILL_DIR/scripts/outline-check.py" "$WORD_COPY/sk-moneybird-accountant/scripts/outline-check.py"
-cp "$SKILL_DIR/scripts/scannability-report.py" "$WORD_COPY/sk-moneybird-accountant/scripts/scannability-report.py"
-mkdir -p "$WORD_COPY/sk-moneybird-accountant/scripts/route-replay" "$WORD_COPY/sk-moneybird-accountant/benchmark"
-cp "$SKILL_DIR/scripts/route-replay/routing-gold.json" "$WORD_COPY/sk-moneybird-accountant/scripts/route-replay/routing-gold.json"
-cp -R "$SKILL_DIR/benchmark/." "$WORD_COPY/sk-moneybird-accountant/benchmark/"
-cp "$SKILL_MD" "$WORD_COPY/sk-moneybird-accountant/SKILL.md"
-cp "$ROUTER_MD" "$WORD_COPY/sk-moneybird-accountant/ROUTER.md"
-cp "$GRAPH_METADATA" "$WORD_COPY/sk-moneybird-accountant/graph-metadata.json"
-cp -R "$SKILL_DIR/references" "$WORD_COPY/sk-moneybird-accountant/references"
-cp -R "$SKILL_DIR/assets" "$WORD_COPY/sk-moneybird-accountant/assets"
-cp "$REPO_ROOT/cli-moneybird/SKILL.md" "$WORD_COPY/cli-moneybird/SKILL.md"
-cp "$REPO_ROOT/cli-jortt/SKILL.md" "$WORD_COPY/cli-jortt/SKILL.md"
-cp "$REPO_ROOT/cli-moneybird/ROUTER.md" "$WORD_COPY/cli-moneybird/ROUTER.md"
-cp "$REPO_ROOT/cli-jortt/ROUTER.md" "$WORD_COPY/cli-jortt/ROUTER.md"
-for hub_file in SKILL.md mode-registry.json hub-router.json; do
-    cp "$REPO_ROOT/$hub_file" "$WORD_COPY/$hub_file"
-done
-WORD_CHECKER_COPY="$WORD_COPY/sk-moneybird-accountant/scripts/check-route-table.py"
-
-# The untouched copy proves the word check is wired and passes on its own
-python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+# A router without its block markers is refused, because the write has no
+# heading to fall back on and must not guess where the block belongs
+sed -e '/^<!-- router-block:start -->$/d' -e '/^<!-- router-block:end -->$/d' "$WRITE_COPY/ROUTER.md" >"$TMP_ROOT/write-nomarkers.md"
+cp "$TMP_ROOT/write-nomarkers.md" "$WRITE_COPY/ROUTER.md"
+python3 -I "$WRITE_COPY/scripts/check-route-table.py" --write >"$TMP_ROOT/out.txt" 2>&1
 status=$?
-if [[ "$status" -eq 0 ]] && grep -qF 'check-skill-words: ' "$TMP_ROOT/out.txt"; then
-    pass "the repository copy runs the word check and passes"
+if [[ "$status" -eq 2 ]] \
+    && grep -qF "router block start marker missing" "$TMP_ROOT/out.txt" \
+    && grep -qF "router block end marker missing" "$TMP_ROOT/out.txt" \
+    && cmp -s "$TMP_ROOT/write-nomarkers.md" "$WRITE_COPY/ROUTER.md"; then
+    pass "a write refuses a router without its block markers and leaves it unchanged"
 else
-    fail "the repository copy runs the word check and passes"
+    fail "a write refuses a router without its block markers and leaves it unchanged"
     cat "$TMP_ROOT/out.txt"
 fi
 
+# ───────────────────────────────────────────────────────────────
+# 10. READ SET AND GLOSSARY CASES ON THE REPOSITORY COPY
+# ───────────────────────────────────────────────────────────────
+
 # A conditional read that names an absent file is recorded and never fails.
 # The copy needs a write run first so the generated block matches the cell.
-python3 - "$WORD_COPY/sk-moneybird-accountant/ROUTER.md" <<'PY'
+python3 - "$COPY_ROUTER" <<'PY'
 import sys
 
 with open(sys.argv[1], "r", encoding="utf-8") as handle:
@@ -632,8 +431,8 @@ text = text.replace("`?references/mixed-use-costs.md`", "`?references/mixed-use-
 with open(sys.argv[1], "w", encoding="utf-8") as handle:
     handle.write(text)
 PY
-python3 -I "$WORD_CHECKER_COPY" --write >"$TMP_ROOT/out.txt" 2>&1
-python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+python3 -I "$COPY_CHECKER" --write >"$TMP_ROOT/out.txt" 2>&1
+python3 -I "$COPY_CHECKER" >"$TMP_ROOT/out.txt" 2>&1
 status=$?
 if [[ "$status" -eq 0 ]] && grep -qF 'missing: T4 references/mixed-use-costs-missing.md' "$TMP_ROOT/out.txt"; then
     pass "an absent conditional read is reported and passes"
@@ -641,104 +440,14 @@ else
     fail "an absent conditional read is reported and passes"
     cat "$TMP_ROOT/out.txt"
 fi
-
-# The same copy carries the split proof, so one changed byte in a part body
-# fails the route table check through the wired split check
-SPLIT_PART="$WORD_COPY/sk-moneybird-accountant/references/tax-rules/2025/vat/rules.md"
-cp "$SPLIT_PART" "$TMP_ROOT/split-part.keep"
-printf 'x' >>"$SPLIT_PART"
-python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
-status=$?
-cp "$TMP_ROOT/split-part.keep" "$SPLIT_PART"
-if [[ "$status" -ne 0 ]] && grep -qF 'vat/rules.md' "$TMP_ROOT/out.txt"; then
-    pass "a drifted split part fails the route table check"
-else
-    fail "a drifted split part fails the route table check"
-    cat "$TMP_ROOT/out.txt"
-fi
-
-# The same copy carries the outline proof, so a decision step with no
-# alternative branch fails the route table check through the wired check
-OUTLINE_PART="$WORD_COPY/sk-moneybird-accountant/references/tax-rules/general/vat.md"
-cp "$OUTLINE_PART" "$TMP_ROOT/outline-part.keep"
-printf '\n- Does the cost straddle the period boundary?\n' >>"$OUTLINE_PART"
-python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
-status=$?
-cp "$TMP_ROOT/outline-part.keep" "$OUTLINE_PART"
-if [[ "$status" -ne 0 ]] && grep -qF 'no-alternative-branch' "$TMP_ROOT/out.txt"; then
-    pass "a decision step with no branch fails the route table check"
-else
-    fail "a decision step with no branch fails the route table check"
-    cat "$TMP_ROOT/out.txt"
-fi
-
-# The same copy carries the scannability report, so a denominator that no
-# longer matches the gold rows fails the route table check
-SCAN_REPORT="$WORD_COPY/sk-moneybird-accountant/benchmark/reports/scannability/report.md"
-cp "$SCAN_REPORT" "$TMP_ROOT/scan-report.keep"
-sed -i.bak -e 's/ of \([0-9][0-9]*\) rows name a tax figures file/ of 1\1 rows name a tax figures file/' "$SCAN_REPORT" && rm -f "$SCAN_REPORT.bak"
-python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
-status=$?
-cp "$TMP_ROOT/scan-report.keep" "$SCAN_REPORT"
-if [[ "$status" -ne 0 ]] && grep -qiF 'scannability' "$TMP_ROOT/out.txt"; then
-    pass "a stale scannability report fails the route table check"
-else
-    fail "a stale scannability report fails the route table check"
-    cat "$TMP_ROOT/out.txt"
-fi
-
-# The report counts the gold rows that carry a section label, so three
-# labelled held-out rows must read as three in the hit rate row
-SCAN_GOLD="$WORD_COPY/sk-moneybird-accountant/scripts/route-replay/routing-gold.json"
-cp "$SCAN_GOLD" "$TMP_ROOT/scan-gold.keep"
-python3 -I - "$SCAN_GOLD" <<'PY'
-import json
-import sys
-
-path = sys.argv[1]
-data = json.load(open(path, encoding="utf-8"))
-held = [row for row in data["rows"] if row.get("split") == "held-out"][:3]
-for row in held:
-    row["expected_sections"] = ["1-overview"]
-open(path, "w", encoding="utf-8").write(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
-PY
-python3 -I "$WORD_COPY/sk-moneybird-accountant/scripts/scannability-report.py" >"$TMP_ROOT/out.txt" 2>&1
-status=$?
-labelled_line=$(grep -F '| Section hit rate | held-out |' "$SCAN_REPORT")
-cp "$TMP_ROOT/scan-gold.keep" "$SCAN_GOLD"
-cp "$TMP_ROOT/scan-report.keep" "$SCAN_REPORT"
-if [[ "$status" -eq 0 ]] && [[ "$labelled_line" == *"| 3 of "*" rows carry a section label |"* ]]; then
-    pass "the scannability report counts the labelled gold rows"
-else
-    fail "the scannability report counts the labelled gold rows (exit $status)"
-    printf '  %s\n' "$labelled_line"
-fi
-
-# A hoist count of 0 beside a missing owner section would read as a landed
-# hoist, so the check fails when the owner heading is gone
-HOIST_COPY="$WORD_COPY/sk-moneybird-accountant/scripts/hoist-record-duties.py"
-OWNER_FILE="$WORD_COPY/sk-moneybird-accountant/references/tax-rules/general/record-and-invoice-duties.md"
-cp "$SKILL_DIR/scripts/hoist-record-duties.py" "$HOIST_COPY"
-cp "$OWNER_FILE" "$TMP_ROOT/owner.keep"
-python3 -I "$HOIST_COPY" --check >"$TMP_ROOT/hoist-clean.txt" 2>&1
-clean_status=$?
-sed -i.bak -e 's/^\(## [0-9][0-9]*\.\) RECORD AND INVOICE DUTIES/\1 OTHER DUTIES/' "$OWNER_FILE" && rm -f "$OWNER_FILE.bak"
-python3 -I "$HOIST_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
-status=$?
-cp "$TMP_ROOT/owner.keep" "$OWNER_FILE"
-if [[ "$clean_status" -eq 0 ]] && [[ "$status" -eq 1 ]] && grep -qiF 'owner section' "$TMP_ROOT/out.txt"; then
-    pass "a missing record duties owner section fails the hoist check"
-else
-    fail "a missing record duties owner section fails the hoist check (clean exit $clean_status, mutant exit $status)"
-    cat "$TMP_ROOT/out.txt"
-fi
+restore_copy
 
 # The year token expands over the year folders under references/tax-rules, so
 # a missing year README is a read-set problem. A root-only listing would find
 # no year folder and pass.
-YEAR_README="$WORD_COPY/sk-moneybird-accountant/references/tax-rules/2020/README.md"
+YEAR_README="$COPY_SKILL/references/tax-rules/2020/README.md"
 mv "$YEAR_README" "$TMP_ROOT/year-readme.bak"
-python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+python3 -I "$COPY_CHECKER" >"$TMP_ROOT/out.txt" 2>&1
 status=$?
 mv "$TMP_ROOT/year-readme.bak" "$YEAR_README"
 if [[ "$status" -eq 1 ]] \
@@ -751,9 +460,9 @@ fi
 
 # A required map expansion must exist in every year folder, so a topic
 # figures file missing from one year fails.
-YEAR_FIGURES="$WORD_COPY/sk-moneybird-accountant/references/tax-rules/2020/vat/figures.md"
+YEAR_FIGURES="$COPY_SKILL/references/tax-rules/2020/vat/figures.md"
 mv "$YEAR_FIGURES" "$TMP_ROOT/year-figures.bak"
-python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+python3 -I "$COPY_CHECKER" >"$TMP_ROOT/out.txt" 2>&1
 status=$?
 mv "$TMP_ROOT/year-figures.bak" "$YEAR_FIGURES"
 if [[ "$status" -eq 1 ]] \
@@ -766,9 +475,9 @@ fi
 
 # The glossary read rule needs a glossary file for every topic folder, so a
 # missing topic file fails.
-GLOSSARY_COPY="$WORD_COPY/sk-moneybird-accountant/references/glossary"
+GLOSSARY_COPY="$COPY_SKILL/references/glossary"
 mv "$GLOSSARY_COPY/vat.md" "$TMP_ROOT/glossary-vat.bak"
-python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+python3 -I "$COPY_CHECKER" >"$TMP_ROOT/out.txt" 2>&1
 status=$?
 mv "$TMP_ROOT/glossary-vat.bak" "$GLOSSARY_COPY/vat.md"
 if [[ "$status" -eq 1 ]] \
@@ -781,7 +490,7 @@ fi
 
 # Every category file must be linked from the router, so an unlinked file fails
 printf '# Extra\n' >"$GLOSSARY_COPY/extra.md"
-python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+python3 -I "$COPY_CHECKER" >"$TMP_ROOT/out.txt" 2>&1
 status=$?
 rm -f "$GLOSSARY_COPY/extra.md"
 if [[ "$status" -eq 1 ]] \
@@ -792,58 +501,40 @@ else
     cat "$TMP_ROOT/out.txt"
 fi
 
-# A ROUTER.md that drops the glossary read rule fails
-sed 's#`references/glossary/README.md`#the glossary#' "$ROUTER_MD" >"$TMP_ROOT/m-glossary-rule.md"
-drift_mutant "a ROUTER.md without the glossary read rule fails" "$TMP_ROOT/m-glossary-rule.md" \
-    "the glossary read rule is missing"
+# ───────────────────────────────────────────────────────────────
+# 11. HUB AND ROW RULE CASES ON THE REPOSITORY COPY
+# ───────────────────────────────────────────────────────────────
 
 # The hub check reads the repository root, so each hub mutant edits the
-# throwaway word copy of the repository and restores it before the next case.
+# throwaway copy of the repository and restores it before the next case.
 
-# Run the copied checker after one hub edit and expect exit 1 naming a text
-# Args:
-#   $1 - Check name
-#   $2 - Text the failure report must name
-hub_mutant() {
-    local name="$1"
-    local marker="$2"
-    python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
-    status=$?
-    if [[ "$status" -eq 1 ]] && grep -qF "$marker" "$TMP_ROOT/out.txt"; then
-        pass "$name"
-    else
-        fail "$name"
-        cat "$TMP_ROOT/out.txt"
-    fi
-}
+mv "$COPY_ROOT/hub-router.json" "$TMP_ROOT/hub-router.bak"
+mutant "a missing hub file fails" "missing hub file: hub-router.json"
+mv "$TMP_ROOT/hub-router.bak" "$COPY_ROOT/hub-router.json"
 
-mv "$WORD_COPY/hub-router.json" "$TMP_ROOT/hub-router.bak"
-hub_mutant "a missing hub file fails" "missing hub file: hub-router.json"
-mv "$TMP_ROOT/hub-router.bak" "$WORD_COPY/hub-router.json"
+cp "$COPY_ROOT/mode-registry.json" "$TMP_ROOT/registry.bak"
+sed 's/"packet": "cli-jortt"/"packet": "cli-absent"/' "$TMP_ROOT/registry.bak" >"$COPY_ROOT/mode-registry.json"
+mutant "a registry packet with no folder fails" "registry packet has no SKILL.md: cli-absent"
+sed 's/"default": false/"default": true/' "$TMP_ROOT/registry.bak" >"$COPY_ROOT/mode-registry.json"
+mutant "a registry with two default packets fails" "needs exactly one default mode, found 3"
+cp "$TMP_ROOT/registry.bak" "$COPY_ROOT/mode-registry.json"
 
-cp "$WORD_COPY/mode-registry.json" "$TMP_ROOT/registry.bak"
-sed 's/"packet": "cli-jortt"/"packet": "cli-absent"/' "$TMP_ROOT/registry.bak" >"$WORD_COPY/mode-registry.json"
-hub_mutant "a registry packet with no folder fails" "registry packet has no SKILL.md: cli-absent"
-sed 's/"default": false/"default": true/' "$TMP_ROOT/registry.bak" >"$WORD_COPY/mode-registry.json"
-hub_mutant "a registry with two default packets fails" "needs exactly one default mode, found 3"
-cp "$TMP_ROOT/registry.bak" "$WORD_COPY/mode-registry.json"
+cp "$COPY_ROOT/hub-router.json" "$TMP_ROOT/hub-router.bak"
+sed 's/"defaultMode": "accountant"/"defaultMode": "cli-jortt"/' "$TMP_ROOT/hub-router.bak" >"$COPY_ROOT/hub-router.json"
+mutant "a stage one default that is not the registry default fails" "defaultMode cli-jortt is not the registry default accountant"
+cp "$TMP_ROOT/hub-router.bak" "$COPY_ROOT/hub-router.json"
 
-cp "$WORD_COPY/hub-router.json" "$TMP_ROOT/hub-router.bak"
-sed 's/"defaultMode": "accountant"/"defaultMode": "cli-jortt"/' "$TMP_ROOT/hub-router.bak" >"$WORD_COPY/hub-router.json"
-hub_mutant "a stage one default that is not the registry default fails" "defaultMode cli-jortt is not the registry default accountant"
-cp "$TMP_ROOT/hub-router.bak" "$WORD_COPY/hub-router.json"
+cp "$COPY_ROOT/cli-jortt/SKILL.md" "$TMP_ROOT/jortt-skill.bak"
+printf '\n<!-- router-block:start -->\n' >>"$COPY_ROOT/cli-jortt/SKILL.md"
+mutant "a router left in a packet SKILL.md fails" "packet SKILL.md embeds a router: cli-jortt/SKILL.md"
+cp "$TMP_ROOT/jortt-skill.bak" "$COPY_ROOT/cli-jortt/SKILL.md"
 
-cp "$WORD_COPY/cli-jortt/SKILL.md" "$TMP_ROOT/jortt-skill.bak"
-printf '\n<!-- router-block:start -->\n' >>"$WORD_COPY/cli-jortt/SKILL.md"
-hub_mutant "a router left in a packet SKILL.md fails" "packet SKILL.md embeds a router: cli-jortt/SKILL.md"
-cp "$TMP_ROOT/jortt-skill.bak" "$WORD_COPY/cli-jortt/SKILL.md"
-
-mv "$WORD_COPY/cli-jortt/ROUTER.md" "$TMP_ROOT/jortt-router.bak"
-hub_mutant "a packet without a ROUTER.md fails" "packet has no router: cli-jortt/ROUTER.md"
-sed 's/^router_state: active$/router_state: draft/' "$TMP_ROOT/jortt-router.bak" >"$WORD_COPY/cli-jortt/ROUTER.md"
-hub_mutant "a packet ROUTER.md that is not active fails" "cli-jortt/ROUTER.md frontmatter lacks: router_state: active"
-cp "$TMP_ROOT/jortt-router.bak" "$WORD_COPY/cli-jortt/ROUTER.md"
-python3 -I - "$TMP_ROOT/jortt-router.bak" "$WORD_COPY/cli-jortt/ROUTER.md" <<'PY'
+mv "$COPY_ROOT/cli-jortt/ROUTER.md" "$TMP_ROOT/jortt-router.bak"
+mutant "a packet without a ROUTER.md fails" "packet has no router: cli-jortt/ROUTER.md"
+sed 's/^router_state: active$/router_state: draft/' "$TMP_ROOT/jortt-router.bak" >"$COPY_ROOT/cli-jortt/ROUTER.md"
+mutant "a packet ROUTER.md that is not active fails" "cli-jortt/ROUTER.md frontmatter lacks: router_state: active"
+cp "$TMP_ROOT/jortt-router.bak" "$COPY_ROOT/cli-jortt/ROUTER.md"
+python3 -I - "$TMP_ROOT/jortt-router.bak" "$COPY_ROOT/cli-jortt/ROUTER.md" <<'PY'
 import sys
 
 with open(sys.argv[1], "r", encoding="utf-8") as handle:
@@ -852,27 +543,22 @@ closing = text.index("\n---\n", 4) + len("\n---\n")
 with open(sys.argv[2], "w", encoding="utf-8") as handle:
     handle.write(text[:closing])
 PY
-hub_mutant "a packet ROUTER.md emptied to its frontmatter fails" "cli-jortt/ROUTER.md lacks its routing section, intent model or resource map"
-cp "$TMP_ROOT/jortt-router.bak" "$WORD_COPY/cli-jortt/ROUTER.md"
+mutant "a packet ROUTER.md emptied to its frontmatter fails" "cli-jortt/ROUTER.md lacks its routing section, intent model or resource map"
+cp "$TMP_ROOT/jortt-router.bak" "$COPY_ROOT/cli-jortt/ROUTER.md"
 
-cp "$WORD_COPY/cli-jortt/SKILL.md" "$TMP_ROOT/jortt-skill.bak"
-printf '\nINTENT_MODEL = {}\n' >>"$WORD_COPY/cli-jortt/SKILL.md"
-hub_mutant "an intent model left in a packet SKILL.md fails" "packet SKILL.md embeds a router: cli-jortt/SKILL.md holds INTENT_MODEL"
-cp "$TMP_ROOT/jortt-skill.bak" "$WORD_COPY/cli-jortt/SKILL.md"
+cp "$COPY_ROOT/SKILL.md" "$TMP_ROOT/hub-skill.bak"
+sed 's#(cli-jortt/ROUTER.md)#(cli-jortt/README.md)#g' "$TMP_ROOT/hub-skill.bak" >"$COPY_ROOT/SKILL.md"
+mutant "a hub SKILL.md that drops a packet router link fails" "hub SKILL.md does not link the packet router: cli-jortt/ROUTER.md"
+cp "$TMP_ROOT/hub-skill.bak" "$COPY_ROOT/SKILL.md"
 
-cp "$WORD_COPY/SKILL.md" "$TMP_ROOT/hub-skill.bak"
-sed 's#(cli-jortt/ROUTER.md)#(cli-jortt/README.md)#g' "$TMP_ROOT/hub-skill.bak" >"$WORD_COPY/SKILL.md"
-hub_mutant "a hub SKILL.md that drops a packet router link fails" "hub SKILL.md does not link the packet router: cli-jortt/ROUTER.md"
-cp "$TMP_ROOT/hub-skill.bak" "$WORD_COPY/SKILL.md"
+mkdir -p "$COPY_ROOT/cli-extra"
+printf -- '---\nname: cli-extra\n---\n' >"$COPY_ROOT/cli-extra/SKILL.md"
+mutant "a packet folder missing from the registry fails" "packet folder is not in mode-registry.json: cli-extra"
+rm -rf "$COPY_ROOT/cli-extra"
 
-mkdir -p "$WORD_COPY/cli-extra"
-printf -- '---\nname: cli-extra\n---\n' >"$WORD_COPY/cli-extra/SKILL.md"
-hub_mutant "a packet folder missing from the registry fails" "packet folder is not in mode-registry.json: cli-extra"
-rm -rf "$WORD_COPY/cli-extra"
-
-sed 's/"packetSkillName": "cli-jortt"/"packetSkillName": "cli-wrong"/' "$TMP_ROOT/registry.bak" >"$WORD_COPY/mode-registry.json"
-hub_mutant "a registry packetSkillName that differs from the SKILL.md name fails" "registry packetSkillName of cli-jortt does not match its SKILL.md name"
-python3 -I - "$TMP_ROOT/registry.bak" "$WORD_COPY/mode-registry.json" <<'PY'
+sed 's/"packetSkillName": "cli-jortt"/"packetSkillName": "cli-wrong"/' "$TMP_ROOT/registry.bak" >"$COPY_ROOT/mode-registry.json"
+mutant "a registry packetSkillName that differs from the SKILL.md name fails" "registry packetSkillName of cli-jortt does not match its SKILL.md name"
+python3 -I - "$TMP_ROOT/registry.bak" "$COPY_ROOT/mode-registry.json" <<'PY'
 import sys
 
 with open(sys.argv[1], "r", encoding="utf-8") as handle:
@@ -880,20 +566,18 @@ with open(sys.argv[1], "r", encoding="utf-8") as handle:
 with open(sys.argv[2], "w", encoding="utf-8") as handle:
     handle.write(text.replace('"packetKind": "tool"', '"packetKind": "bogus"', 1))
 PY
-hub_mutant "a registry packetKind outside the two kinds fails" "registry packetKind of cli-moneybird is bogus, expected tool"
-cp "$TMP_ROOT/registry.bak" "$WORD_COPY/mode-registry.json"
+mutant "a registry packetKind outside the two kinds fails" "registry packetKind of cli-moneybird is bogus, expected tool"
+cp "$TMP_ROOT/registry.bak" "$COPY_ROOT/mode-registry.json"
 
 # WHY: the resolver depends on three row rules and the budget keys on the
 # ladder, so dropping any of them must fail by name.
-ACCOUNTANT_ROUTER="$WORD_COPY/sk-moneybird-accountant/ROUTER.md"
-cp "$ACCOUNTANT_ROUTER" "$TMP_ROOT/accountant-router.bak"
-sed 's/full file 15,000\./full file 16,000./' "$TMP_ROOT/accountant-router.bak" >"$ACCOUNTANT_ROUTER"
-hub_mutant "a ladder number that differs from its sources fails" "ladder value 16000 differs from the signal sources file"
-sed 's/Additive and never wins alone/Additive and wins alone/' "$TMP_ROOT/accountant-router.bak" >"$ACCOUNTANT_ROUTER"
-hub_mutant "a T7 row that may win alone fails" "T7 on tie cell lacks: never wins alone"
-sed 's/Loses to every typed row/Beats every typed row/' "$TMP_ROOT/accountant-router.bak" >"$ACCOUNTANT_ROUTER"
-hub_mutant "a T9 row that beats a typed row fails" "T9 on tie cell lacks: Loses to every typed row"
-python3 -I - "$TMP_ROOT/accountant-router.bak" "$ACCOUNTANT_ROUTER" <<'PY'
+sed 's/full file 15,000\./full file 16,000./' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "a ladder number that differs from its sources fails" "ladder value 16000 differs from the signal sources file"
+sed 's/Additive and never wins alone/Additive and wins alone/' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "a T7 row that may win alone fails" "T7 on tie cell lacks: never wins alone"
+sed 's/Loses to every typed row/Beats every typed row/' "$ROUTER_MD" >"$COPY_ROUTER"
+mutant "a T9 row that beats a typed row fails" "T9 on tie cell lacks: Loses to every typed row"
+python3 -I - "$ROUTER_MD" "$COPY_ROUTER" <<'PY'
 import sys
 
 with open(sys.argv[1], "r", encoding="utf-8") as handle:
@@ -903,11 +587,10 @@ cell = text.index("| `none` |", start)
 with open(sys.argv[2], "w", encoding="utf-8") as handle:
     handle.write(text[:cell] + "| `cli-moneybird` |" + text[cell + len("| `none` |"):])
 PY
-hub_mutant "a T8 row that names a tool route fails" "T8 tool route must be"
-cp "$TMP_ROOT/accountant-router.bak" "$ACCOUNTANT_ROUTER"
+mutant "a T8 row that names a tool route fails" "T8 tool route must be"
 
-cp "$WORD_COPY/hub-router.json" "$TMP_ROOT/hub-router.bak"
-python3 -I - "$TMP_ROOT/hub-router.bak" "$WORD_COPY/hub-router.json" <<'PY'
+cp "$COPY_ROOT/hub-router.json" "$TMP_ROOT/hub-router.bak"
+python3 -I - "$TMP_ROOT/hub-router.bak" "$COPY_ROOT/hub-router.json" <<'PY'
 import json
 import sys
 
@@ -917,8 +600,8 @@ data["signals"]["cli-jortt"] = []
 with open(sys.argv[2], "w", encoding="utf-8") as handle:
     json.dump(data, handle, indent=2)
 PY
-hub_mutant "an empty stage one signal list for a non-default mode fails" "hub-router.json signals for cli-jortt are empty and it is not the default"
-python3 -I - "$TMP_ROOT/hub-router.bak" "$WORD_COPY/hub-router.json" <<'PY'
+mutant "an empty stage one signal list for a non-default mode fails" "hub-router.json signals for cli-jortt are empty and it is not the default"
+python3 -I - "$TMP_ROOT/hub-router.bak" "$COPY_ROOT/hub-router.json" <<'PY'
 import json
 import sys
 
@@ -928,29 +611,11 @@ data["signals"]["cli-jortt"] = "jortt-cli"
 with open(sys.argv[2], "w", encoding="utf-8") as handle:
     json.dump(data, handle, indent=2)
 PY
-hub_mutant "a stage one signal value that is not a list fails" "hub-router.json signals for cli-jortt are not a list of phrases"
-cp "$TMP_ROOT/hub-router.bak" "$WORD_COPY/hub-router.json"
-
-# Grow one sibling SKILL.md past the hard ceiling, so only the word check fails
-python3 -I - "$WORD_COPY/cli-jortt/SKILL.md" <<'PY'
-import sys
-
-with open(sys.argv[1], "a", encoding="utf-8") as handle:
-    handle.write("\n" + "\n".join(["word"] * 4100) + "\n")
-PY
-
-python3 -I "$WORD_CHECKER_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
-status=$?
-if [[ "$status" -eq 1 ]] && grep -qF 'check-skill-words: cli-jortt/SKILL.md' "$TMP_ROOT/out.txt" \
-    && grep -qF 'fail above 4,000' "$TMP_ROOT/out.txt"; then
-    pass "a SKILL.md above the hard ceiling fails the route table check"
-else
-    fail "a SKILL.md above the hard ceiling fails the route table check"
-    cat "$TMP_ROOT/out.txt"
-fi
+mutant "a stage one signal value that is not a list fails" "hub-router.json signals for cli-jortt are not a list of phrases"
+cp "$TMP_ROOT/hub-router.bak" "$COPY_ROOT/hub-router.json"
 
 # ───────────────────────────────────────────────────────────────
-# 10. SUMMARY
+# 12. SUMMARY
 # ───────────────────────────────────────────────────────────────
 
 printf '\n%d passed, %d failed\n' "$passed" "$failed"

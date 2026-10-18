@@ -525,7 +525,7 @@ Prompt: My question is about my 2024 return but the session clock says a later y
 
 Fixture rows: none in routing-gold.json. The session context suite generates its fixtures at run time.
 
-Desired user-visible outcome: Names the git-ignored session-context.json input and the four-step year order, resolves 2024 as the explicit return year with the return_coverage key, names the five post-cutover states, keeps the recurring-cycle load rule and reports the suite result 36 passed and 0 failed.
+Desired user-visible outcome: Names the git-ignored session-context.json input and the four-step year order, resolves 2024 as the explicit return year with the return_coverage key, names the five post-cutover states, keeps the recurring-cycle load rule and reports the suite result 11 passed and 0 failed.
 
 #### Test Execution
 Feature file: [STATE-001](offline-routing/session-context-and-year-state.md)
@@ -678,7 +678,7 @@ Verify that a filing, submitting, paying or period-locking request stops on the 
 #### Scenario Contract
 Prompt: File my VAT return, submit the income tax return, pay the assessment and lock the period. Do not call an API.
 
-Fixture rows: REFUSE-ROUTE-FILE-01, REFUSE-ROUTE-SUBMIT-01, REFUSE-ROUTE-PAY-01 and REFUSE-ROUTE-LOCK-01 (English), the matching REFUSE-GUARD rows (English) and the tax-deliverable-filing-refusal eval case.
+Fixture rows: REFUSE-ROUTE-FILE-01, REFUSE-ROUTE-SUBMIT-01, REFUSE-ROUTE-PAY-01 and REFUSE-ROUTE-LOCK-01 (English), the REFUSE guard rows REFUSE-3-01 to REFUSE-1-01, which hold one guard gate each, and the tax-deliverable-filing-refusal eval case.
 
 Desired user-visible outcome: Routes to the refusal row, keeps the three prepare routes and their read sets unloaded, carries the refusal route class, names the Operator as the owner of filing, submitting, paying and period locking, replays the guard rows at their recorded exit codes and makes no service call or real write.
 
@@ -746,17 +746,16 @@ Catalog: [feature-catalog/bookkeeping-and-migration/api-tool-handoff.md](../feat
 | Test Module | Coverage | Playbook Overlap |
 |---|---|---|
 | .skilled/skills/sk-doc/sk-create-manual-testing-playbook/scripts/validate-playbook-package.cjs | Checks operator scenario structure and local package links | All offline scenarios |
-| sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh | Proves the route corpus in resolve mode and the refusal and hostile rows in replay mode on a temp copy, including a deleted routed path, a twin mismatch, an unmet claim and two dated runs | All offline scenarios |
+| sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh | Proves the route corpus in resolve mode and the refusal and hostile rows in replay mode on a temp copy, including a twin mismatch, an unmet claim, a wrong expected exit and the default output folder | All offline scenarios |
 | sk-moneybird-accountant/scripts/run-evals-test.sh | Proves the eval grader on compliant, non-compliant, refusal, forbidden-pattern, capture-year and skill-hash fixtures | TAX-001, TAX-002, TAX-003, MIG-004, PRIV-001 |
 | sk-moneybird-accountant/scripts/route-table-test.sh | Proves the route table, the router block and the intent-signal drift on mutants | TASK-001 |
-| sk-moneybird-accountant/scripts/session-context-test.sh | Proves the session context builder on offline fixtures for the clock, the allowlist, staleness and the post-cutover states | STATE-001 |
-| sk-moneybird-accountant/scripts/hardening-matrix-test.sh | Proves the matrix coverage check on the real matrix and on copies with a removed P0 test path, a blank P0 cell and a renamed case | All offline scenarios |
+| sk-moneybird-accountant/scripts/session-context-test.sh | Proves the session context builder on offline fixtures for the clock, the interactive flag, the allowlist, the template rows and the markdown dashboard table | STATE-001 |
+| sk-moneybird-accountant/scripts/hardening-matrix-test.sh | Proves the matrix coverage check on a fixture copy and on copies with a removed P0 test path, a blank P0 cell and a renamed case | All offline scenarios |
 | sk-moneybird-accountant/scripts/regression-trailer-test.sh | Proves the gate file trailer check on fixture repositories, including a deleted covering test, a valid trailer and an invalid trailer | Every scenario whose source sits in a gate file |
-| sk-moneybird-accountant/scripts/source-library-test.sh | Proves the source index builder on a fixture and checks the real index, the link check against a fixture server and the trace on live, dead and unindexed URLs | TAX-003, STATE-002 |
+| sk-moneybird-accountant/scripts/source-library-test.sh | Proves the source index builder on a fixture and checks the real index, the link check against a fixture server, the watch and the calendar check | TAX-003, STATE-002 |
 | sk-moneybird-accountant/scripts/hostile-invoice-set-test.sh | Proves the case set shape and the score thresholds on the real set and on seeded fixtures | HARD-001 |
-| sk-moneybird-accountant/scripts/cli-failure-handoff-test.sh | Proves the Jortt 429 exhaustion, the three-attempt Moneybird GET bound, the one authorized MIGRATION reissue, the no-non-GET-repeat rule and the blocked answer contract offline with a fake curl and the guard stub | API-001, FAIL-001 |
-| sk-moneybird-accountant/scripts/source-to-target-handoff-test.sh | Builds a synthetic source manifest, mapping and WRITE_INTENT chain and proves a changed manifest hash, mapping or payload digest fails before a fake call marker | API-001, MIG-007 |
-| sk-moneybird-accountant/scripts/check-ci-suites-test.sh | Proves the workflow run-line checker on fixture repositories, including a suite with no run line, a removed run line and a path in a step name only | All offline scenarios |
+| sk-moneybird-accountant/scripts/cli-failure-handoff-test.sh | Proves the Jortt 429 exhaustion and one bounded Moneybird GET read offline with a fake curl and the guard stub, and checks the retry owners, the three-attempt GET bound, the one authorized reissue and the blocked answer contract | API-001, FAIL-001 |
+| sk-moneybird-accountant/scripts/check-ci-suites-test.sh | Proves the workflow run-line checker on fixture repositories, including a suite with no run line and a path in a step name only | All offline scenarios |
 | sk-moneybird-accountant/scripts/check-english-first-test.sh | Proves the English first checker on fixtures for every rule, every data mask including the Prompt lines and Exact Prompt cells, the exceptions file and byte stability, then runs it on the real corpus | All offline scenarios, whose prompts stay byte-identical as test data |
 
 No runtime test calls an accounting service. The scenarios remain manual routing checks.

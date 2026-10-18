@@ -45,7 +45,7 @@ An income tax return (aangifte inkomstenbelasting) is assembled from administrat
 
 1. Read AGENTS.md
 2. Read sk-moneybird-accountant/SKILL.md
-3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check
+3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py
 4. Read sk-moneybird-accountant/references/income-tax-return/README.md, sk-moneybird-accountant/references/income-tax-return/procedure.md and sk-moneybird-accountant/references/income-tax-return/operator-inputs.md
 5. Assemble the review pack with the Operator input list, the VIA comparison sheet, the dated per-asset register and the labelled residual unknowns, then stop before any filing action
 

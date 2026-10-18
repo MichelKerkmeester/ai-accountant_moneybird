@@ -24,7 +24,7 @@ The tree sits at `references/tax-rules/`. Every figure lives in one topic file o
 
 ### The year folders and the four part files
 
-Eight year folders cover 2020 to 2027. Each year folder holds twelve topic folders, a year README with its topic table, a correction log and the year change note. Every topic folder holds `figures.md`, `rules.md`, `examples.md` and `notes.md`. A figure question resolves the year first, then reads the year README and the one part the README names, starting at the KEY FIGURES section. The part split is the subject of the topic file split entry, and `split-manifest.json` hashes every part.
+Eight year folders cover 2020 to 2027. Each year folder holds twelve topic folders, a year README with its topic table, a correction log and the year change note. Every topic folder holds `figures.md`, `rules.md`, `examples.md` and `notes.md`. A figure question resolves the year first, then reads the year README and the one part the README names, starting at the KEY FIGURES section.
 
 ### The general files and the cross-year files
 
@@ -32,7 +32,7 @@ The general topics of the entry guide sit as one file per topic under `general/`
 
 ### The checks around the tree
 
-`check-route-table.py` runs the split check beside the route table check, so a drifted part fails the skill health job. `check-fragments.py` resolves every relative link and fragment into and inside the tree. The year and state resolver fixes the year and the state of a value before any figure is used, and an unsettled value is refused rather than answered.
+`check-fragments.py` resolves every relative link and fragment into and inside the tree. The year and state resolver fixes the year and the state of a value before any figure is used, and an unsettled value is refused rather than answered.
 
 ---
 
@@ -48,18 +48,15 @@ The general topics of the entry guide sit as one file per topic under `general/`
 | `sk-moneybird-accountant/references/tax-rules/year-changes.md` | Shared | The generated overview of every year change note, newest first. |
 | `sk-moneybird-accountant/references/tax-rules/year-rollover.md` | Shared | The yearly rollover runbook, the release calendar and the carry-forward authoring rule. |
 | `sk-moneybird-accountant/references/tax-rules/source-library.md` | Shared | Every cited official source with its access result, mirrored to `assets/source-library.json`. |
-| `sk-moneybird-accountant/references/tax-rules/split-manifest.json` | Shared | The part hashes, the entry hash and the line map of the topic split. |
 | `sk-moneybird-accountant/references/tax-rules/general/` | Shared | The 13 general topic files one cross-year question is routed through. |
 
 ### Validation And Tests
 
 | File | Type | Role |
 |---|---|---|
-| `sk-moneybird-accountant/scripts/check-route-table.py` | Test harness | Runs the split check beside the route table check, so a drifted part fails CI. |
 | `sk-moneybird-accountant/scripts/check-fragments.py` | Test harness | Resolves every relative link and fragment into and inside the tree. |
-| `sk-moneybird-accountant/scripts/split-topic-files-test.sh` | Automated test | Proves the part hashes, the citation remap and the byte-stable second write on a fixture repository. |
 | `sk-moneybird-accountant/manual-testing-playbook/offline-routing/current-year-zzp-question.md` | Manual playbook | Routes a current-year figure question through the year README and one topic part offline. |
-| `.github/workflows/skill-health.yml` | Test harness | Runs the route table check, and with it the split check, on push and pull request. |
+| `.github/workflows/skill-health.yml` | Test harness | Runs the fragment check on push and pull request. |
 
 ---
 
@@ -70,6 +67,5 @@ The general topics of the entry guide sit as one file per topic under `general/`
 - Feature file path: reference-and-state/tax-knowledge-base.md
 
 Related references:
-- [topic-file-split.md](topic-file-split.md) - The split that created the four part files and the general files.
 - [year-rollover-runbook.md](year-rollover-runbook.md) - The runbook that carries the tree into the next tax year.
 - [reference-entry-surfaces.md](reference-entry-surfaces.md) - The generated entry surfaces that make the tree cheap to open.

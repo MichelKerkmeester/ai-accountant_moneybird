@@ -29,7 +29,7 @@ Operators run the exact prompt and command sequence for `JRT-001` and confirm th
 - Objective: Confirm the doctor checks local prerequisites and setup state without network access or printed secrets.
 - Real user request: `Run the cli-jortt doctor offline and tell me whether the CLI and prerequisites are present.`
 - Prompt: `Run the cli-jortt doctor offline and tell me whether the CLI and prerequisites are present.`
-- Expected execution process: The agent runs the doctor without `--live` and summarizes tool availability and setting presence.
+- Expected execution process: The agent runs the doctor and summarizes tool availability and setting presence.
 - Expected signals: Step 1: the report lists `bash`, `curl` and `jq`, prints `set` or `unset` for each Jortt setting and ends with `Mode: offline. No network calls were made.`
 - Desired user-visible outcome: The operator learns which prerequisites and settings are present without seeing any credential value.
 - Pass/fail: PASS if the script exits 0, ends with the offline line and prints no credential value, FAIL if it starts a live API check or prints a credential value.

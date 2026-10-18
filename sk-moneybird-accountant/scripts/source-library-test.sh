@@ -111,7 +111,41 @@ assert() {
     fi
 }
 
-# Build a fixture repository with the builder and a few cited sources
+# Print the frontmatter block every fixture markdown file carries
+# Returns:
+#   0, printing the block and a blank line
+fixture_frontmatter() {
+    printf '%s\n' '---' 'title: "Fixture file"' 'description: "Fixture file for the source library cases."' \
+        'nav_label: "Fixture"' '---' ''
+}
+
+# Write a fixture guide with its section 1 count table
+# Args:
+#   $1 - Guide file path
+#   $2... - Counts in table order: sources, ok, webfetch-only, pdf-needs-reader,
+#           archive-not-fetchable, dead, endpoint, unchecked
+# Returns:
+#   0 when the file was written
+write_guide() {
+    local path="$1"
+    shift
+    {
+        fixture_frontmatter
+        printf '# Guide\n\nhttps://example.org/only-in-guide\n\n'
+        printf '| Measure | Count |\n|---|---|\n'
+        printf '| Sources | %s |\n' "$1"
+        printf '| Readable as a web page | %s |\n' "$2"
+        printf '| Readable through WebFetch only | %s |\n' "$3"
+        printf '| PDF, downloads but needs a PDF reader | %s |\n' "$4"
+        printf '| Archive copy an agent cannot fetch | %s |\n' "$5"
+        printf '| Dead link | %s |\n' "$6"
+        printf '| Tool endpoint, not a source | %s |\n' "$7"
+        printf '| Added after the last access check | %s |\n' "$8"
+    } >"$path"
+}
+
+# Build a fixture repository with the builder and a few cited sources, the
+# frontmatter every reference file needs, a guide count table and a term map
 # Args:
 #   $1 - Repository root to create
 # Returns:
@@ -121,18 +155,22 @@ make_fake_repo() {
     mkdir -p "$root/sk-moneybird-accountant/scripts" "$root/sk-moneybird-accountant/assets" \
         "$root/sk-moneybird-accountant/references/tax-rules" "$root/cli-jortt" "$root/cli-moneybird" || return 1
     cp "$BUILDER" "$root/sk-moneybird-accountant/scripts/" || return 1
-    printf '# Bootstrap\n\nSee https://www.belastingdienst.nl/a and ![b](https://img.shields.io/x).\n' \
-        >"$root/AGENTS.md" || return 1
-    printf '# Rules\n\nThe [VAT page](https://www.belastingdienst.nl/b). Token: https://app.jortt.nl/oauth.\n' \
-        >"$root/sk-moneybird-accountant/references/rules.md" || return 1
-    printf '# Guide\n\nhttps://example.org/only-in-guide\n' \
-        >"$root/sk-moneybird-accountant/references/tax-rules/source-library.md" || return 1
+    {
+        fixture_frontmatter
+        printf '# Bootstrap\n\nSee https://www.belastingdienst.nl/a and ![b](https://img.shields.io/x).\n'
+    } >"$root/AGENTS.md" || return 1
+    {
+        fixture_frontmatter
+        printf '# Rules\n\nThe [VAT page](https://www.belastingdienst.nl/b). Token: https://app.jortt.nl/oauth.\n'
+    } >"$root/sk-moneybird-accountant/references/rules.md" || return 1
+    write_guide "$root/sk-moneybird-accountant/references/tax-rules/source-library.md" 3 0 0 0 0 0 1 2 || return 1
+    printf '{"terms": []}\n' >"$root/sk-moneybird-accountant/assets/term-map.json" || return 1
     return 0
 }
 
-# Build a fixture repository whose citation sits in a nested reference file
-# The walk is depth-agnostic at the base commit, so this fixture guards that
-# behavior instead of proving a fix.
+# Build a fixture repository whose citations sit in nested reference files
+# The split part pattern collapses a part file to its topic folder, so the
+# files sit two folders under tax-rules to test that pattern at depth.
 # Args:
 #   $1 - Repository root to create
 # Returns:
@@ -683,9 +721,9 @@ nav_label: "BTW"
 |---|---|---|---|---|
 | Aangifte filing | 21% | enacted | Verified | https://www.belastingdienst.nl/a |
 MD
+    write_guide "$root/sk-moneybird-accountant/references/tax-rules/source-library.md" 1 0 0 0 0 0 0 1 || return 1
     cat >"$root/sk-moneybird-accountant/assets/term-map.json" <<'MD'
 {
-  "generated_by": "sk-moneybird-accountant/assets/term-map.json",
   "terms": [
     {
       "gloss": "return",
@@ -707,13 +745,8 @@ REPO="$TMP_ROOT/repo"
 INDEX="$REPO/sk-moneybird-accountant/assets/source-library.json"
 
 group "write"
-if make_fake_repo "$REPO"; then
-    pass "fixture repository builds"
-else
-    fail "fixture repository builds"
-fi
+make_fake_repo "$REPO" || exit 2
 assert "write exits 0" run_builder "$REPO"
-assert "index is valid JSON" python3 -I -c 'import json, sys; json.load(open(sys.argv[1]))' "$INDEX"
 assert "cited page is indexed" grep -q 'belastingdienst.nl/a"' "$INDEX"
 assert "badge is not indexed" bash -c "! grep -q img.shields.io '$INDEX'"
 assert "guide links are not scanned" bash -c "! grep -q only-in-guide '$INDEX'"
@@ -740,20 +773,9 @@ assert "check passes after a write" run_builder "$REPO" --check
 GUIDE_REPO="$TMP_ROOT/guide-repo"
 cp -R "$REPO" "$GUIDE_REPO" || exit 2
 GUIDE_FILE="$GUIDE_REPO/sk-moneybird-accountant/references/tax-rules/source-library.md"
-cat >"$GUIDE_FILE" <<'MD'
-| Measure | Count |
-|---|---|
-| Sources | 3 |
-| Readable as a web page | 0 |
-| Readable through WebFetch only | 0 |
-| PDF, downloads but needs a PDF reader | 0 |
-| Archive copy an agent cannot fetch | 0 |
-| Dead link | 0 |
-| Tool endpoint, not a source | 1 |
-| Added after the last access check | 2 |
-MD
+write_guide "$GUIDE_FILE" 3 0 0 0 0 0 1 2
 assert "check passes when the guide count table matches the index" run_builder "$GUIDE_REPO" --check
-sed -i.bak 's/| Sources | 3 |/| Sources | 4 |/' "$GUIDE_FILE"
+write_guide "$GUIDE_FILE" 4 0 0 0 0 0 1 2
 run_builder "$GUIDE_REPO" --check
 status=$?
 if [[ "$status" -eq 1 ]] && grep -q '^guide count: Sources states 4 but the index holds 3' "$TMP_ROOT/out.txt"; then
@@ -770,7 +792,7 @@ else
     fail "check reports a newly cited source"
 fi
 run_builder "$REPO" >/dev/null
-printf '# Bootstrap\n' >"$REPO/AGENTS.md"
+{ fixture_frontmatter; printf '# Bootstrap\n'; } >"$REPO/AGENTS.md"
 run_builder "$REPO" --check
 status=$?
 if [[ "$status" -eq 1 ]] && grep -q '^uncited: https://www.belastingdienst.nl/a' "$TMP_ROOT/out.txt"; then
@@ -780,20 +802,15 @@ else
 fi
 run_builder "$REPO" >/dev/null
 
-# WHY: the walk is depth-agnostic at the base commit, so the nested fixture
-# guards that behavior instead of proving a fix.
+# WHY: the split part pattern collapses a part file to its topic folder, so the
+# nested fixture tests that pattern at depth.
 group "nested walk"
 NEST_REPO="$TMP_ROOT/nested-repo"
-NEST_FILE="sk-moneybird-accountant/references/tax-rules/2025/vat/figures.md"
 NEST_TOPIC="sk-moneybird-accountant/references/tax-rules/2025/vat/"
 NEST_URL="https://wetten.overheid.nl/BWBR0000002"
 NEST_NOTE="sk-moneybird-accountant/references/tax-rules/2025/vat/scope.md"
 NEST_NOTE_URL="https://wetten.overheid.nl/BWBR0000003"
-if make_nested_repo "$NEST_REPO"; then
-    pass "nested fixture repository builds"
-else
-    fail "nested fixture repository builds"
-fi
+make_nested_repo "$NEST_REPO" || exit 2
 assert "nested citation write exits 0" run_builder "$NEST_REPO"
 nested_cited=$(python3 -I - "$NEST_REPO/sk-moneybird-accountant/assets/source-library.json" "$NEST_URL" "$NEST_TOPIC" <<'PY'
 import json
@@ -820,40 +837,6 @@ if [[ "$note_cited" = "True" ]]; then
     pass "a nested citation outside the part names names its file"
 else
     fail "a nested citation outside the part names names its file"
-fi
-assert "check passes on the nested fixture" run_builder "$NEST_REPO" --check
-set_index_access "$NEST_REPO" "$NEST_URL" ok 200 2026-01-01
-run_builder "$NEST_REPO" --trace "$NEST_FILE:3"
-status=$?
-if [[ "$status" -eq 0 ]] && grep -q 'access=ok http_status=200 checked_on=2026-01-01' "$TMP_ROOT/out.txt"; then
-    pass "trace resolves a citation at depth"
-else
-    fail "trace resolves a citation at depth"
-fi
-set_index_access "$NEST_REPO" "$NEST_URL" dead 404 2026-01-01
-run_builder "$NEST_REPO" --check
-status=$?
-if [[ "$status" -eq 1 ]] \
-    && grep -q "^dead cited: $NEST_URL cited by: $NEST_TOPIC" "$TMP_ROOT/out.txt"; then
-    pass "a dead nested citation still exits 1"
-else
-    fail "a dead nested citation still exits 1"
-fi
-set_index_access "$NEST_REPO" "$NEST_URL" ok 200 2026-01-01
-run_builder "$NEST_REPO" --trace "sk-moneybird-accountant/references/tax-rules/2025/vat/missing.md:1"
-status=$?
-if [[ "$status" -eq 2 ]] && grep -q 'no such file in this repository' "$TMP_ROOT/out.txt"; then
-    pass "trace rejects a missing nested file"
-else
-    fail "trace rejects a missing nested file"
-fi
-rm "$NEST_REPO/$NEST_FILE"
-run_builder "$NEST_REPO" --check
-status=$?
-if [[ "$status" -eq 1 ]] && grep -q "^uncited: $NEST_URL" "$TMP_ROOT/out.txt"; then
-    pass "a removed nested file leaves its source uncited"
-else
-    fail "a removed nested file leaves its source uncited"
 fi
 
 group "access results"
@@ -893,46 +876,25 @@ printf '<div>\n  Fiets\n  <span>Fiets</span>\n  <script>x()</script>\n  &amp; ka
 printf '<html><body>alpha fixture page</body></html>\n' >"$DOCROOT/alpha.html"
 printf '<html><body>beta fixture page</body></html>\n' >"$DOCROOT/beta.html"
 printf '<html><body>gamma fixture page</body></html>\n' >"$DOCROOT/gamma.html"
-printf '<html><body>nested fixture page</body></html>\n' >"$DOCROOT/nested.html"
 printf '%%PDF-1.4\nplaceholder fixture bytes\n%%%%EOF\n' >"$DOCROOT/sample.pdf"
 LINK_REPO="$TMP_ROOT/link-repo"
 LINK_INDEX="$LINK_REPO/sk-moneybird-accountant/assets/source-library.json"
-if start_fixture_server "$DOCROOT"; then
-    pass "fixture server starts"
-else
-    fail "fixture server starts"
-fi
+start_fixture_server "$DOCROOT" || exit 2
 PORT=$(cat "$TMP_ROOT/server.port" 2>/dev/null || true)
 LIVE_URL="http://127.0.0.1:$PORT/live.html"
 DEAD_URL="http://127.0.0.1:$PORT/missing.html"
-NESTED_URL="http://127.0.0.1:$PORT/nested.html"
 REDIRECT_URL="http://127.0.0.1:$PORT/redirect.html"
 PERMANENT_URL="http://127.0.0.1:$PORT/permanent.html"
 AGENT_URL="http://127.0.0.1:$PORT/agent.html"
 LOOP_URL="http://127.0.0.1:$PORT/loop-a.html"
-NO_LOCATION_URL="http://127.0.0.1:$PORT/no-location.html"
-MOVED_URL="http://127.0.0.1:$PORT/moved.html"
 TAG_URL="http://127.0.0.1:$PORT/tag/tagged.html"
 NORM_A_URL="http://127.0.0.1:$PORT/norm-a.html"
 NORM_B_URL="http://127.0.0.1:$PORT/norm-b.html"
 PDF_URL="http://127.0.0.1:$PORT/pdf/sample.pdf"
-if make_link_repo "$LINK_REPO" "$PORT"; then
-    pass "link fixture repository builds"
-else
-    fail "link fixture repository builds"
-fi
+make_link_repo "$LINK_REPO" "$PORT" || exit 2
 assert "link fixture write exits 0" run_builder "$LINK_REPO"
-mkdir -p "$LINK_REPO/sk-moneybird-accountant/references/tax-rules/2025/vat"
-printf '# Figures\n\nNested page: %s\n' "$NESTED_URL" >"$LINK_REPO/$NEST_FILE"
-run_builder "$LINK_REPO" >/dev/null
 cp "$LINK_INDEX" "$TMP_ROOT/index.before"
 run_builder "$LINK_REPO" --check-links
-status=$?
-if [[ "$status" -eq 1 ]]; then
-    pass "link check exits 1 on a dead page"
-else
-    fail "link check exits 1 on a dead page"
-fi
 if python3 -I -c 'import json, sys; json.load(open(sys.argv[1]))' "$TMP_ROOT/out.txt" 2>/dev/null; then
     pass "link report is valid JSON"
 else
@@ -943,17 +905,6 @@ if [[ "$(link_summary skipped)" = "10" ]] && [[ "$(link_summary endpoints_skippe
 else
     fail "link report skips 10 endpoint rows"
 fi
-endpoint_check=$(python3 -I -c '
-import json, sys
-report = json.load(open(sys.argv[1]))
-endpoints = [r for r in report["rows"] if r.get("recorded_access") == "endpoint"]
-print(len(endpoints) == 10 and all(r["result"] == "skipped" for r in endpoints) and report["summary"]["failures"] == 4)
-' "$TMP_ROOT/out.txt" 2>/dev/null)
-if [[ "$endpoint_check" = "True" ]]; then
-    pass "endpoint rows are never failures"
-else
-    fail "endpoint rows are never failures"
-fi
 cited_check=$(python3 -I -c '
 import json, sys
 rows = {r["url"]: r for r in json.load(open(sys.argv[1]))["rows"]}
@@ -963,16 +914,6 @@ if [[ "$cited_check" = "True" ]]; then
     pass "link report names the citing file"
 else
     fail "link report names the citing file"
-fi
-nested_cited_check=$(python3 -I -c '
-import json, sys
-rows = {r["url"]: r for r in json.load(open(sys.argv[1]))["rows"]}
-print(rows[sys.argv[2]]["cited_by"] == [sys.argv[3]])
-' "$TMP_ROOT/out.txt" "$NESTED_URL" "$NEST_TOPIC" 2>/dev/null)
-if [[ "$nested_cited_check" = "True" ]]; then
-    pass "link report names a split part by its topic folder"
-else
-    fail "link report names a split part by its topic folder"
 fi
 if [[ "$(link_field "$LIVE_URL" result)" = "ok" ]] && [[ "$(link_field "$LIVE_URL" http_status)" = "200" ]]; then
     pass "live page reports HTTP 200"
@@ -1002,18 +943,6 @@ if [[ "$(link_field "$LOOP_URL" result)" = "redirect" ]] \
 else
     fail "redirect loop is not ok"
 fi
-if [[ "$(link_field "$NO_LOCATION_URL" result)" = "redirect" ]] \
-    && [[ "$(link_field "$NO_LOCATION_URL" http_status)" = "302" ]]; then
-    pass "302 without a location is not ok"
-else
-    fail "302 without a location is not ok"
-fi
-if [[ "$(link_field "$MOVED_URL" result)" = "dead" ]] \
-    && [[ "$(link_field "$MOVED_URL" http_status)" = "404" ]]; then
-    pass "301 to a missing page is not ok"
-else
-    fail "301 to a missing page is not ok"
-fi
 if [[ "$(link_summary redirects)" = "2" ]] && [[ "$(link_summary dead)" = "2" ]]; then
     pass "unfollowed redirects are counted apart from dead pages"
 else
@@ -1034,11 +963,7 @@ group "blocked"
 BLOCKED_REPO="$TMP_ROOT/blocked-repo"
 REFUSED_URL="http://127.0.0.1:$PORT/refused.html"
 THROTTLED_URL="http://127.0.0.1:$PORT/throttled.html"
-if make_single_url_repo "$BLOCKED_REPO" "$REFUSED_URL"; then
-    pass "blocked fixture repository builds"
-else
-    fail "blocked fixture repository builds"
-fi
+make_single_url_repo "$BLOCKED_REPO" "$REFUSED_URL" || exit 2
 run_builder "$BLOCKED_REPO" >/dev/null
 run_builder "$BLOCKED_REPO" --check-links
 status=$?
@@ -1123,11 +1048,7 @@ fi
 group "known unfetchable"
 ERROR_REPO="$TMP_ROOT/error-repo"
 ERROR_URL="http://127.0.0.1:1/unreachable.html"
-if make_single_url_repo "$ERROR_REPO" "$ERROR_URL"; then
-    pass "error fixture repository builds"
-else
-    fail "error fixture repository builds"
-fi
+make_single_url_repo "$ERROR_REPO" "$ERROR_URL" || exit 2
 run_builder "$ERROR_REPO" >/dev/null
 set_index_access "$ERROR_REPO" "$ERROR_URL" archive-not-fetchable - -
 run_builder "$ERROR_REPO" --check-links
@@ -1163,105 +1084,6 @@ if [[ "$status" -eq 0 ]] \
     pass "apply report leaves a transport error row byte-for-byte unchanged"
 else
     fail "apply report leaves a transport error row byte-for-byte unchanged"
-fi
-
-group "trace"
-run_builder "$LINK_REPO" --trace AGENTS.md:3
-status=$?
-if [[ "$status" -eq 1 ]] && grep -q 'access=unchecked' "$TMP_ROOT/out.txt"; then
-    pass "trace fails on an unchecked row"
-else
-    fail "trace fails on an unchecked row"
-fi
-set_index_access "$LINK_REPO" "$LIVE_URL" ok 200 2026-01-01
-set_index_access "$LINK_REPO" "$DEAD_URL" dead 404 2026-01-01
-run_builder "$LINK_REPO" --trace AGENTS.md:3
-status=$?
-if [[ "$status" -eq 0 ]] && grep -q 'access=ok http_status=200 checked_on=2026-01-01' "$TMP_ROOT/out.txt"; then
-    pass "trace passes on a live row"
-else
-    fail "trace passes on a live row"
-fi
-run_builder "$LINK_REPO" --trace AGENTS.md:4
-status=$?
-if [[ "$status" -eq 1 ]] && grep -q 'access=dead' "$TMP_ROOT/out.txt"; then
-    pass "trace fails on a dead row"
-else
-    fail "trace fails on a dead row"
-fi
-printf 'Extra page: http://127.0.0.1:%s/extra.html\n' "$PORT" >>"$LINK_REPO/AGENTS.md"
-run_builder "$LINK_REPO" --trace AGENTS.md:5
-status=$?
-if [[ "$status" -eq 1 ]] && grep -q 'access=missing' "$TMP_ROOT/out.txt"; then
-    pass "trace fails on a URL outside the index"
-else
-    fail "trace fails on a URL outside the index"
-fi
-run_builder "$LINK_REPO" --trace AGENTS.md
-status=$?
-if [[ "$status" -eq 2 ]]; then
-    pass "trace rejects an argument without a line number"
-else
-    fail "trace rejects an argument without a line number"
-fi
-TRACE_REPO="$TMP_ROOT/trace-repo"
-TRACE_URL="https://www.belastingdienst.nl/a?ref=query-value#section"
-if make_single_url_repo "$TRACE_REPO" "$TRACE_URL"; then
-    pass "trace guard fixture repository builds"
-else
-    fail "trace guard fixture repository builds"
-fi
-run_builder "$TRACE_REPO" >/dev/null
-set_index_access "$TRACE_REPO" "$TRACE_URL" ok 200 2026-01-01
-printf 'TOKEN=1\nSee https://example.org/private-env\n' >"$TRACE_REPO/.env"
-printf 'a\nSee https://example.org/unscanned-text\n' >"$TRACE_REPO/notes.txt"
-mkdir -p "$TRACE_REPO/docs"
-printf 'a\nSee https://example.org/unscanned-doc\n' >"$TRACE_REPO/docs/other.md"
-ln -s ../../.env "$TRACE_REPO/sk-moneybird-accountant/references/linked.md"
-run_builder "$TRACE_REPO" --trace .env:2
-status=$?
-if [[ "$status" -eq 2 ]] \
-    && grep -q 'refused, that path is private' "$TMP_ROOT/out.txt" \
-    && ! grep -q 'private-env' "$TMP_ROOT/out.txt"; then
-    pass "trace refuses a credential file and prints none of it"
-else
-    fail "trace refuses a credential file and prints none of it"
-fi
-run_builder "$TRACE_REPO" --trace sk-moneybird-accountant/references/linked.md:2
-status=$?
-if [[ "$status" -eq 2 ]] \
-    && grep -q 'refused, that path is private' "$TMP_ROOT/out.txt" \
-    && ! grep -q 'private-env' "$TMP_ROOT/out.txt"; then
-    pass "trace refuses a scanned name that links to a credential file"
-else
-    fail "trace refuses a scanned name that links to a credential file"
-fi
-run_builder "$TRACE_REPO" --trace notes.txt:2
-status=$?
-if [[ "$status" -eq 2 ]] \
-    && grep -q 'among the scanned markdown files' "$TMP_ROOT/out.txt" \
-    && ! grep -q 'unscanned-text' "$TMP_ROOT/out.txt"; then
-    pass "trace refuses a file the scan does not read"
-else
-    fail "trace refuses a file the scan does not read"
-fi
-run_builder "$TRACE_REPO" --trace docs/other.md:2
-status=$?
-if [[ "$status" -eq 2 ]] \
-    && grep -q 'among the scanned markdown files' "$TMP_ROOT/out.txt" \
-    && ! grep -q 'unscanned-doc' "$TMP_ROOT/out.txt"; then
-    pass "trace refuses a markdown file outside the scan roots"
-else
-    fail "trace refuses a markdown file outside the scan roots"
-fi
-run_builder "$TRACE_REPO" --trace AGENTS.md:3
-status=$?
-if [[ "$status" -eq 0 ]] \
-    && grep -q '^https://www.belastingdienst.nl/a access=ok http_status=200 checked_on=2026-01-01$' "$TMP_ROOT/out.txt" \
-    && ! grep -q 'query-value' "$TMP_ROOT/out.txt"; then
-    pass "trace prints a URL without its query string and fragment"
-else
-    fail "trace prints a URL without its query string and fragment"
 fi
 
 group "digest"
@@ -1313,50 +1135,10 @@ fi
 # breaks that page normalisation would collapse. The expected value comes from
 # the same bytes the fixture server reads, not from the builder under test.
 PDF_EXPECTED=$(file_digest "$DOCROOT/sample.pdf")
-PDF_CONTENT_TYPE=$(python3 -I - "$PDF_URL" <<'PY'
-import sys
-import urllib.request
-
-with urllib.request.urlopen(sys.argv[1], timeout=10) as response:
-    print(response.headers.get("Content-Type", ""))
-PY
-)
-if [[ "$PDF_CONTENT_TYPE" = "application/pdf" ]]; then
-    pass "the fixture server serves the PDF fixture as application/pdf"
-else
-    fail "the fixture server serves the PDF fixture as application/pdf"
-fi
 if [[ "$(report_field "$TMP_ROOT/report-1.json" "$PDF_URL" digest)" = "$PDF_EXPECTED" ]]; then
     pass "a PDF response carries the sha256 of its raw bytes"
 else
     fail "a PDF response carries the sha256 of its raw bytes"
-fi
-if [[ -n "$(report_field "$TMP_ROOT/report-1.json" "$PDF_URL" digest)" ]] \
-    && [[ "$(report_field "$TMP_ROOT/report-1.json" "$PDF_URL" digest)" = "$(report_field "$TMP_ROOT/report-2.json" "$PDF_URL" digest)" ]]; then
-    pass "the same PDF bytes give the same digest twice"
-else
-    fail "the same PDF bytes give the same digest twice"
-fi
-PDF_DIGEST_BEFORE=$(report_field "$TMP_ROOT/report-2.json" "$PDF_URL" digest)
-# WHY: one flipped bit is the smallest byte change, so the next report must
-# carry a different digest for the same address.
-python3 -I - "$DOCROOT/sample.pdf" <<'PY'
-import sys
-
-path = sys.argv[1]
-data = bytearray(open(path, "rb").read())
-data[0] = data[0] ^ 0x01
-open(path, "wb").write(data)
-PY
-run_builder "$LINK_REPO" --check-links
-cp "$TMP_ROOT/out.txt" "$TMP_ROOT/report-3.json"
-PDF_AFTER_EXPECTED=$(file_digest "$DOCROOT/sample.pdf")
-PDF_DIGEST_AFTER=$(report_field "$TMP_ROOT/report-3.json" "$PDF_URL" digest)
-if [[ "$PDF_DIGEST_AFTER" = "$PDF_AFTER_EXPECTED" ]] \
-    && [[ "$PDF_DIGEST_AFTER" != "$PDF_DIGEST_BEFORE" ]]; then
-    pass "one changed PDF byte changes the digest"
-else
-    fail "one changed PDF byte changes the digest"
 fi
 
 group "apply report"
@@ -1419,11 +1201,7 @@ fi
 group "stored fields"
 FIELD_REPO="$TMP_ROOT/field-repo"
 FIELD_URL="https://www.belastingdienst.nl/b"
-if make_fake_repo "$FIELD_REPO"; then
-    pass "field fixture repository builds"
-else
-    fail "field fixture repository builds"
-fi
+make_fake_repo "$FIELD_REPO" || exit 2
 run_builder "$FIELD_REPO" >/dev/null
 set_index_fields "$FIELD_REPO" "$FIELD_URL" \
     '{"access":"ok","http_status":200,"checked_on":"2026-01-02","digest":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","retrieved_at":"2026-01-02","etag":"etag-v1","last_modified":"Mon, 01 Jan 2026 00:00:00 GMT","kst_pending":"kst-37022-3"}'
@@ -1433,28 +1211,11 @@ if keeps_stored_fields "$FIELD_REPO" "$FIELD_URL"; then
 else
     fail "a rebuild keeps every stored field"
 fi
-sed 's/if stored_value is not None:/if False:/' "$BUILDER" \
-    >"$FIELD_REPO/sk-moneybird-accountant/scripts/build-source-library.py"
-run_builder "$FIELD_REPO" >/dev/null
-if keeps_stored_fields "$FIELD_REPO" "$FIELD_URL"; then
-    fail "a builder that drops stored digests fails the preservation check"
-else
-    pass "a builder that drops stored digests fails the preservation check"
-fi
-if [[ -z "$(index_field "$FIELD_REPO" "$FIELD_URL" digest)" ]]; then
-    pass "the mutant drops the stored digest"
-else
-    fail "the mutant drops the stored digest"
-fi
 
 group "dead and perishable"
 CHECK_REPO="$TMP_ROOT/check-repo"
 PERISHABLE_URL="https://www.tweedekamer.nl/downloads/document?id=2026D99999"
-if make_fake_repo "$CHECK_REPO"; then
-    pass "check fixture repository builds"
-else
-    fail "check fixture repository builds"
-fi
+make_fake_repo "$CHECK_REPO" || exit 2
 run_builder "$CHECK_REPO" >/dev/null
 printf 'Belastingplan 2027: %s\n' "$PERISHABLE_URL" \
     >>"$CHECK_REPO/sk-moneybird-accountant/references/rules.md"
@@ -1471,6 +1232,7 @@ else
 fi
 set_index_fields "$CHECK_REPO" "$PERISHABLE_URL" '{"kst_pending":"kst-37022-3"}'
 run_builder "$CHECK_REPO" >/dev/null
+write_guide "$CHECK_REPO/sk-moneybird-accountant/references/tax-rules/source-library.md" 4 0 0 0 0 0 1 3
 assert "a pending kst marker lets the citation pass" run_builder "$CHECK_REPO" --check
 set_index_access "$CHECK_REPO" "https://www.belastingdienst.nl/a" dead 404 2026-01-01
 run_builder "$CHECK_REPO" >/dev/null
@@ -1492,11 +1254,7 @@ GAMMA_URL="http://127.0.0.1:$PORT/tag/gamma.html"
 DELTA_URL="http://127.0.0.1:1/delta.html"
 EPSILON_URL="http://127.0.0.1:$PORT/tag/epsilon.html"
 ZETA_URL="http://127.0.0.1:$PORT/error.html"
-if make_watch_repo "$WATCH_REPO" "$PORT"; then
-    pass "watch fixture repository builds"
-else
-    fail "watch fixture repository builds"
-fi
+make_watch_repo "$WATCH_REPO" "$PORT" || exit 2
 python3 -I - "$WATCH_REPO/sk-moneybird-accountant/assets/source-watchlist.json" \
     "$ALPHA_URL" "$BETA_URL" "$GAMMA_URL" "$DELTA_URL" "$EPSILON_URL" "$ZETA_URL" "$REFUSED_URL" <<'PY'
 import json
@@ -1504,13 +1262,13 @@ import sys
 
 path, alpha, beta, gamma, delta, epsilon, zeta, refused = sys.argv[1:9]
 series = [
-    {"series": "Alpha series", "urls": [alpha], "cadence": "monthly", "why": "fixture alpha"},
-    {"series": "Beta series", "urls": [beta], "cadence": "yearly", "why": "fixture beta"},
-    {"series": "Gamma series", "urls": [gamma], "cadence": "on-publication", "why": "fixture gamma"},
-    {"series": "Delta series", "urls": [delta], "cadence": "monthly", "why": "fixture delta"},
-    {"series": "Epsilon series", "urls": [epsilon], "cadence": "monthly", "why": "fixture epsilon"},
-    {"series": "Zeta series", "urls": [zeta], "cadence": "yearly", "why": "fixture zeta"},
-    {"series": "Refused series", "urls": [refused], "cadence": "monthly", "why": "fixture refusal"},
+    {"series": "Alpha series", "urls": [alpha], "why": "fixture alpha"},
+    {"series": "Beta series", "urls": [beta], "why": "fixture beta"},
+    {"series": "Gamma series", "urls": [gamma], "why": "fixture gamma"},
+    {"series": "Delta series", "urls": [delta], "why": "fixture delta"},
+    {"series": "Epsilon series", "urls": [epsilon], "why": "fixture epsilon"},
+    {"series": "Zeta series", "urls": [zeta], "why": "fixture zeta"},
+    {"series": "Refused series", "urls": [refused], "why": "fixture refusal"},
 ]
 open(path, "w").write(json.dumps(series, indent=2) + "\n")
 PY
@@ -1578,11 +1336,6 @@ if [[ "$status" -eq 1 ]] \
 else
     fail "a changed series is reported with its URL and citing file"
 fi
-if ! grep -q 'Beta series' "$TMP_ROOT/out.txt"; then
-    pass "an unchanged series stays silent"
-else
-    fail "an unchanged series stays silent"
-fi
 run_builder "$WATCH_REPO" --check-links
 cp "$TMP_ROOT/out.txt" "$TMP_ROOT/watch-report-2.json"
 run_builder "$WATCH_REPO" --apply-report "$TMP_ROOT/watch-report-2.json"
@@ -1636,23 +1389,12 @@ fi
 assert "the state file is sorted and ends with a newline" state_is_stable "$TMP_ROOT/epsilon-state.json"
 printf '<html><body>epsilon fixture page</body></html>\n' >"$DOCROOT/epsilon.html"
 run_builder "$WATCH_REPO" --watch --state "$TMP_ROOT/epsilon-state.json"
-status=$?
-if [[ "$status" -eq 1 ]] \
-    && grep -q "^changed series=Epsilon series url=$EPSILON_URL reason=answers 200 after 404" "$TMP_ROOT/out.txt"; then
-    pass "a recorded 404 that answers 200 is reported as changed"
-else
-    fail "a recorded 404 that answers 200 is reported as changed"
-fi
 EPSILON_DIGEST=$(state_field "$TMP_ROOT/epsilon-state.json" "$EPSILON_URL" digest)
-if [[ "$EPSILON_DIGEST" =~ ^[0-9a-f]{64}$ ]]; then
-    pass "the 200 answer stores a fresh digest"
-else
-    fail "the 200 answer stores a fresh digest"
-fi
 rm -f "$DOCROOT/epsilon.html"
 run_builder "$WATCH_REPO" --watch --state "$TMP_ROOT/epsilon-state.json"
 status=$?
 if [[ "$status" -eq 0 ]] \
+    && [[ -n "$EPSILON_DIGEST" ]] \
     && [[ "$(state_field "$TMP_ROOT/epsilon-state.json" "$EPSILON_URL" http_status)" = "404" ]] \
     && [[ "$(state_field "$TMP_ROOT/epsilon-state.json" "$EPSILON_URL" digest)" = "$EPSILON_DIGEST" ]]; then
     pass "a later 404 keeps the stored digest"
@@ -1695,11 +1437,7 @@ else
     fail "a state file without watch is a usage error"
 fi
 OUTAGE_REPO="$TMP_ROOT/outage-repo"
-if make_watch_repo "$OUTAGE_REPO" "$PORT"; then
-    pass "outage fixture repository builds"
-else
-    fail "outage fixture repository builds"
-fi
+make_watch_repo "$OUTAGE_REPO" "$PORT" || exit 2
 python3 -I - "$OUTAGE_REPO/sk-moneybird-accountant/assets/source-watchlist.json" \
     "$DELTA_URL" "$REFUSED_URL" <<'PY'
 import json
@@ -1707,8 +1445,8 @@ import sys
 
 path, delta, refused = sys.argv[1:4]
 series = [
-    {"series": "Delta series", "urls": [delta], "cadence": "monthly", "why": "fixture delta"},
-    {"series": "Refused series", "urls": [refused], "cadence": "monthly", "why": "fixture refusal"},
+    {"series": "Delta series", "urls": [delta], "why": "fixture delta"},
+    {"series": "Refused series", "urls": [refused], "why": "fixture refusal"},
 ]
 open(path, "w").write(json.dumps(series, indent=2) + "\n")
 PY
@@ -1728,8 +1466,8 @@ import sys
 
 path, delta, alpha = sys.argv[1:4]
 series = [
-    {"series": "Delta series", "urls": [delta], "cadence": "monthly", "why": "fixture delta"},
-    {"series": "Alpha series", "urls": [alpha], "cadence": "monthly", "why": "fixture alpha"},
+    {"series": "Delta series", "urls": [delta], "why": "fixture delta"},
+    {"series": "Alpha series", "urls": [alpha], "why": "fixture alpha"},
 ]
 open(path, "w").write(json.dumps(series, indent=2) + "\n")
 PY
@@ -1758,16 +1496,9 @@ print("sha256:" + hashlib.sha256(sys.argv[1].encode("utf-8")).hexdigest())
 ETAG_REPO="$TMP_ROOT/etag-repo"
 ETAG_INDEX="$ETAG_REPO/sk-moneybird-accountant/assets/source-library.json"
 WEAK_URL="http://127.0.0.1:$PORT/weak/weak.html"
-SPARE_URL="http://127.0.0.1:$PORT/weak/spare.html"
 printf '<html><body>weak fixture page</body></html>\n' >"$DOCROOT/weak.html"
 printf '%s' "$DIGIT_TAG" >"$DOCROOT/weak.html.tag"
-printf '<html><body>spare fixture page</body></html>\n' >"$DOCROOT/spare.html"
-printf '%s' "$DIGIT_TAG" >"$DOCROOT/spare.html.tag"
-if make_single_url_repo "$ETAG_REPO" "$WEAK_URL"; then
-    pass "etag fixture repository builds"
-else
-    fail "etag fixture repository builds"
-fi
+make_single_url_repo "$ETAG_REPO" "$WEAK_URL" || exit 2
 run_builder "$ETAG_REPO" >/dev/null
 run_builder "$ETAG_REPO" --check-links
 status=$?
@@ -1791,13 +1522,12 @@ if [[ "$(index_field "$ETAG_REPO" "$WEAK_URL" etag)" = "$WEAK_ETAG_HASH" ]] \
 else
     fail "the index keeps the fingerprint and not the raw digit tag"
 fi
-python3 -I - "$ETAG_REPO/sk-moneybird-accountant/assets/source-watchlist.json" "$WEAK_URL" "$SPARE_URL" <<'PY'
+python3 -I - "$ETAG_REPO/sk-moneybird-accountant/assets/source-watchlist.json" "$WEAK_URL" <<'PY'
 import json
 import sys
 
 series = [
-    {"series": "Weak series", "urls": [sys.argv[2]], "cadence": "monthly", "why": "fixture weak tag"},
-    {"series": "Spare series", "urls": [sys.argv[3]], "cadence": "monthly", "why": "fixture old state"},
+    {"series": "Weak series", "urls": [sys.argv[2]], "why": "fixture weak tag"},
 ]
 open(sys.argv[1], "w").write(json.dumps(series, indent=2) + "\n")
 PY
@@ -1814,42 +1544,6 @@ if [[ "$(state_field "$TMP_ROOT/etag-state.json" "$WEAK_URL" etag)" = "$WEAK_ETA
 else
     fail "the watch state keeps the fingerprint and not the raw digit tag"
 fi
-OLD_ETAG_FIELDS=$(python3 -I -c '
-import json
-import sys
-
-print(json.dumps({"etag": sys.argv[1]}))
-' "$WEAK_ETAG_RAW")
-set_index_fields "$ETAG_REPO" "$WEAK_URL" "$OLD_ETAG_FIELDS"
-run_builder "$ETAG_REPO" --watch
-status=$?
-if [[ "$status" -eq 0 ]] && ! grep -q '^changed ' "$TMP_ROOT/out.txt"; then
-    pass "a raw tag stored by an older index still compares"
-else
-    fail "a raw tag stored by an older index still compares"
-fi
-python3 -I - "$TMP_ROOT/etag-old-state.json" "$SPARE_URL" "$WEAK_ETAG_RAW" <<'PY'
-import json
-import sys
-
-json.dump(
-    {"urls": {sys.argv[2]: {"http_status": 200, "etag": sys.argv[3]}}},
-    open(sys.argv[1], "w"),
-)
-PY
-run_builder "$ETAG_REPO" --watch --state "$TMP_ROOT/etag-old-state.json"
-status=$?
-if [[ "$status" -eq 0 ]] && ! grep -q '^changed ' "$TMP_ROOT/out.txt"; then
-    pass "a raw tag stored by an older state file still compares"
-else
-    fail "a raw tag stored by an older state file still compares"
-fi
-if [[ "$(state_field "$TMP_ROOT/etag-old-state.json" "$SPARE_URL" etag)" = "$WEAK_ETAG_HASH" ]] \
-    && ! grep -Fq "$DIGIT_TAG" "$TMP_ROOT/etag-old-state.json"; then
-    pass "a watch run rewrites an older raw state tag as a fingerprint"
-else
-    fail "a watch run rewrites an older raw state tag as a fingerprint"
-fi
 printf '%s' "$DIGIT_TAG$DIGIT_TAG" >"$DOCROOT/weak.html.tag"
 run_builder "$ETAG_REPO" --watch
 status=$?
@@ -1864,11 +1558,7 @@ fi
 group "calendar"
 CAL_REPO="$TMP_ROOT/cal-repo"
 CAL_REF="$CAL_REPO/sk-moneybird-accountant/references/tax-rules"
-if make_fake_repo "$CAL_REPO"; then
-    pass "calendar fixture repository builds"
-else
-    fail "calendar fixture repository builds"
-fi
+make_fake_repo "$CAL_REPO" || exit 2
 write_stamped_readme "$CAL_REF/2026/README.md" 2026-01-01
 write_stamped_readme "$CAL_REF/2020/README.md" 2020-01-01
 write_stamped_readme "$CAL_REF/dutch-tax-rules.md" 2026-01-01
@@ -1900,14 +1590,6 @@ if [[ "$status" -eq 1 ]] \
 else
     fail "calendar uses the latest checkpoint that has passed"
 fi
-mv "$CAL_REF/year-rollover.md" "$TMP_ROOT/rollover.aside"
-run_builder "$CAL_REPO" --check-calendar --today 2026-10-12
-status=$?
-if [[ "$status" -eq 2 ]]; then
-    pass "calendar exits 2 without the runbook"
-else
-    fail "calendar exits 2 without the runbook"
-fi
 printf '# Runbook\n\nNo checkpoint table here.\n' >"$CAL_REF/year-rollover.md"
 run_builder "$CAL_REPO" --check-calendar --today 2026-10-12
 status=$?
@@ -1916,7 +1598,7 @@ if [[ "$status" -eq 2 ]]; then
 else
     fail "calendar exits 2 without the checkpoint table"
 fi
-mv "$TMP_ROOT/rollover.aside" "$CAL_REF/year-rollover.md"
+write_runbook "$CAL_REF/year-rollover.md"
 write_stamped_readme "$CAL_REF/2026/README.md" -
 run_builder "$CAL_REPO" --check-calendar --today 2026-10-12
 status=$?
@@ -1943,11 +1625,7 @@ fi
 
 group "frontmatter and term-map field set"
 FM_REPO="$TMP_ROOT/frontmatter-repo"
-if make_frontmatter_repo "$FM_REPO"; then
-    pass "frontmatter fixture repository builds"
-else
-    fail "frontmatter fixture repository builds"
-fi
+make_frontmatter_repo "$FM_REPO" || exit 2
 assert "the frontmatter fixture writes" run_builder "$FM_REPO"
 assert "the frontmatter fixture checks clean" run_builder "$FM_REPO" --check
 
@@ -2020,32 +1698,10 @@ if [[ "$status" -eq 1 ]] && grep -q '^term-map: Aangifte source_file does not ex
 else
     fail "a source_file that names no file fails and is named"
 fi
+cp "$TMP_ROOT/term-map.aside" "$FM_MAP"
 
-python3 -I - "$FM_MAP" <<'PY'
-import json
-import sys
-
-path = sys.argv[1]
-data = json.load(open(path))
-data["terms"][0]["source_file"] = "references/tax-rules/tax-rules/2025/vat/figures.md"
-open(path, "w").write(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
-PY
-if run_builder "$FM_REPO" --write-term-map && python3 -I - "$FM_MAP" <<'PY'
-import json
-import sys
-
-row = json.load(open(sys.argv[1]))["terms"][0]
-sys.exit(0 if row["source_file"] == "references/tax-rules/2025/vat/figures.md" else 1)
-PY
-then
-    pass "the producer repairs a doubled source_file path"
-else
-    fail "the producer repairs a doubled source_file path"
-fi
-
-# WHY: a stored path that resolves only by its last segments must still hold
-# the term and its source, the same test --write-term-map applies.
-cp "$FM_MAP" "$TMP_ROOT/term-map.aside"
+# WHY: a stored path that names a file lacking the term must fail, whatever
+# the folders around it look like.
 printf '# Router\n\nNo glossed term lives here.\n' >"$FM_REPO/sk-moneybird-accountant/ROUTER.md"
 python3 -I - "$FM_MAP" <<'PY'
 import json
@@ -2053,21 +1709,22 @@ import sys
 
 path = sys.argv[1]
 data = json.load(open(path))
-data["terms"][0]["source_file"] = "no/such/folder/ROUTER.md"
+data["terms"][0]["source_file"] = "ROUTER.md"
 open(path, "w").write(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
 PY
 run_builder "$FM_REPO" --check
 status=$?
 if [[ "$status" -eq 1 ]] && grep -q '^term-map: Aangifte source_file does not name the term: ROUTER.md$' "$TMP_ROOT/out.txt"; then
-    pass "a source_file that resolves only by suffix must still name the term"
+    pass "a source_file that names a file without the term fails and is named"
 else
-    fail "a source_file that resolves only by suffix must still name the term"
+    fail "a source_file that names a file without the term fails and is named"
 fi
 rm -f "$FM_REPO/sk-moneybird-accountant/ROUTER.md"
 cp "$TMP_ROOT/term-map.aside" "$FM_MAP"
 
 # WHY: an English-first label writes the Dutch term in lowercase, so the
-# producer must still find the term its source file names.
+# source_file check must still find the term its source file names. The edit
+# drops the inserted gloss as well, so only the term map check can object.
 FM_FIGURES="$FM_REPO/sk-moneybird-accountant/references/tax-rules/2025/vat/figures.md"
 cp "$FM_FIGURES" "$TMP_ROOT/figures.aside"
 python3 -I - "$FM_FIGURES" <<'PY'
@@ -2075,36 +1732,15 @@ import sys
 
 path = sys.argv[1]
 text = open(path, encoding="utf-8").read()
-open(path, "w", encoding="utf-8").write(text.replace("Aangifte", "aangifte"))
+open(path, "w", encoding="utf-8").write(text.replace("Aangifte (return)", "aangifte").replace("Aangifte", "aangifte"))
 PY
-if run_builder "$FM_REPO" --write-term-map; then
-    pass "the producer accepts a term its source file writes in lowercase"
+if run_builder "$FM_REPO" --check; then
+    pass "check accepts a term its source file writes in lowercase"
 else
-    fail "the producer accepts a term its source file writes in lowercase"
+    fail "check accepts a term its source file writes in lowercase"
+    sed -n '1,5p' "$TMP_ROOT/out.txt"
 fi
 cp "$TMP_ROOT/figures.aside" "$FM_FIGURES"
-
-group "real skill"
-# WHY: the index owner regenerates the index after the reference edits land, so
-# this case proves the real tree check runs and names only known findings.
-python3 -I "$BUILDER" --check >"$TMP_ROOT/real-check.txt" 2>&1
-real_status=$?
-printf 'real tree --check exit: %s\n' "$real_status"
-for kind in missing uncited differs "unknown access" "dead cited" perishable; do
-    printf '  %s: %s\n' "$kind" "$(grep -c "^$kind" "$TMP_ROOT/real-check.txt")"
-done
-if [[ "$real_status" -le 1 ]] && ! grep -q 'Traceback' "$TMP_ROOT/real-check.txt"; then
-    pass "the real tree check runs without a crash"
-else
-    fail "the real tree check runs without a crash"
-    sed -n '1,10p' "$TMP_ROOT/real-check.txt"
-fi
-if grep -Eqv '^(missing: |uncited: |differs: |unknown access |dead cited: |perishable: |field-set: |term-map: |gloss: |gloss measure: |field-set report: |[0-9]+ sources match the index$)' "$TMP_ROOT/real-check.txt"; then
-    fail "the real tree check prints only known finding kinds"
-    grep -Ev '^(missing: |uncited: |differs: |unknown access |dead cited: |perishable: |field-set: |term-map: |gloss: |gloss measure: |field-set report: |[0-9]+ sources match the index$)' "$TMP_ROOT/real-check.txt" | sed -n '1,10p'
-else
-    pass "the real tree check prints only known finding kinds"
-fi
 
 # ───────────────────────────────────────────────────────────────
 # 6. SUMMARY

@@ -36,13 +36,13 @@ The CLI reads `JORTT_SCOPES` from the environment first. When it is empty, it re
 | File | Layer | Role |
 |---|---|---|
 | [`cli/jortt-cli/lib/common.sh`](../../cli/jortt-cli/lib/common.sh) | Shared | `jortt_load_config`, `jortt_has_scope` and `jortt_check_scope` resolve and compare scopes. |
-| [`cli/jortt-cli/lib/commands.sh`](../../cli/jortt-cli/lib/commands.sh) | Handler | `jortt_check_write_gate` and `jortt_cmd_whoami` call the scope check. |
+| [`cli/jortt-cli/lib/commands.sh`](../../cli/jortt-cli/lib/commands.sh) | Handler | `jortt_check_read_gate` and `jortt_cmd_whoami` call the scope check. |
 
 ### Validation And Tests
 
 | File | Type | Role |
 |---|---|---|
-| [`cli/jortt-cli/tests/run-tests.sh`](../../cli/jortt-cli/tests/run-tests.sh) | Automated test | Checks that a write with the flag but a read scope exits 4 and names the write scope. |
+| [`cli/jortt-cli/tests/run-tests.sh`](../../cli/jortt-cli/tests/run-tests.sh) | Automated test | Checks that a read whose scope is missing exits 4 and names the missing scope. |
 | [`manual-testing-playbook/auth-and-scopes/write-lock.md`](../../manual-testing-playbook/auth-and-scopes/write-lock.md) | Manual playbook | JRT-002 covers the missing scope step. |
 
 ---

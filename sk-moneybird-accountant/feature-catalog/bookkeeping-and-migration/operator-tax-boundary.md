@@ -42,8 +42,8 @@ A request to file, submit, send, transmit, upload, pay or lock a return, or to m
 | File | Type | Role |
 |---|---|---|
 | sk-moneybird-accountant/manual-testing-playbook/offline-routing/operator-tax-boundary.md | Manual playbook | Offline routing scenario for this feature. |
-| sk-moneybird-accountant/manual-testing-playbook/offline-routing/tax-deliverable-filing-refusal.md | Manual playbook | Scenario REFUSAL-001 with the four route and guard fixtures and the tax-deliverable-filing-refusal eval case. |
-| sk-moneybird-accountant/scripts/route-replay/routing-gold.json | Fixture | The REFUSE-ROUTE and REFUSE-GUARD rows for file, submit, pay and lock, replayed through the guard stub. |
+| sk-moneybird-accountant/manual-testing-playbook/offline-routing/tax-deliverable-filing-refusal.md | Manual playbook | Scenario REFUSAL-001 with the four routing fixtures, the guard replay rows and the tax-deliverable-filing-refusal eval case. |
+| sk-moneybird-accountant/scripts/route-replay/routing-gold.json | Fixture | The four REFUSE-ROUTE rows for file, submit, pay and lock and the REFUSE guard rows replayed through the guard stub. |
 | sk-moneybird-accountant/evals/evals.json | Fixture | The tax-deliverable-filing-refusal case, whose forbidden patterns catch a claimed filing action. |
 
 ---

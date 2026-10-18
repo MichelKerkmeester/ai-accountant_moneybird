@@ -14,17 +14,9 @@ scan stays offline and its output is sorted and byte-stable.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/check-english-first.py
-    python3 -I sk-moneybird-accountant/scripts/check-english-first.py --root DIR
-    python3 -I sk-moneybird-accountant/scripts/check-english-first.py --summary
 
 Options:
-    --root DIR   Read another copy of the repository. Defaults to the root
-                 above this script.
-    --rule NAME  Report only this rule, repeatable. One of residual,
-                 first-use, doubled, reversed, unglossed and duplicate. A stale
-                 exception is reported only when residual or first-use is
-                 selected.
-    --summary    Print one count per rule and per area instead of the lines.
+    None.
 
 Output:
     One line per problem as path, line, rule and term, then a count line.
@@ -78,18 +70,11 @@ PROMPT_LINE_RE = re.compile(r"^(\s*(?:[-*]\s+)?(?:Prompt|Real user request):)(.*
 # WHY: only a file under one of these folders holds prompts as data. A prompt
 # label in a reference file is prose, so the same Dutch there must still be labelled.
 PROMPT_FOLDERS = frozenset(("manual-testing-playbook", "evals"))
-RULES = ("residual", "first-use", "doubled", "reversed", "unglossed", "duplicate")
 STALE_RULE = "stale-exception"
 SUPPRESSION_CHECKS = ("residual", "first-use")
 OFFICIAL_NOTE = "official name"
 PLAIN_NOTE = "plain"
 ABBREVIATION_NOTE = "abbreviation"
-
-AREA_GENERAL = "tax-rules general and root"
-AREA_OUTSIDE = "outside tax-rules"
-TAX_RULES_PREFIX = "sk-moneybird-accountant/references/tax-rules/"
-DUTCH_TAX_RULES_ROOT = "sk-moneybird-accountant/references/dutch-tax-rules.md"
-YEAR_DIR_RE = re.compile(r"^\d{4}$")
 
 GLOSSARY_HEADER_RE = re.compile(r"^\|\s*English\s*\|\s*Dutch\s*\|\s*Note\s*\|\s*$", re.IGNORECASE)
 DELIMITER_RE = re.compile(r"^\s*\|?[\s:|\-]*-[\s:|\-]*\|?\s*$")
@@ -833,27 +818,6 @@ def corpus_files(root: str) -> List[str]:
     return sorted(found)
 
 
-def area_of(relative_path: str) -> str:
-    """Name the report area of one file.
-
-    Args:
-        relative_path: Path relative to the repository root.
-
-    Returns:
-        The year folder name for a tax year file, the general area name
-        for the rest of the tax rules and the outside area name for every
-        other file.
-    """
-    if relative_path == DUTCH_TAX_RULES_ROOT:
-        return AREA_GENERAL
-    if relative_path.startswith(TAX_RULES_PREFIX):
-        head = relative_path[len(TAX_RULES_PREFIX):].split("/", 1)[0]
-        if YEAR_DIR_RE.match(head):
-            return "tax-rules %s" % head
-        return AREA_GENERAL
-    return AREA_OUTSIDE
-
-
 # ───────────────────────────────────────────────────────────────
 # 7. RULES
 # ───────────────────────────────────────────────────────────────
@@ -1086,9 +1050,8 @@ def check_file(
     dutch_words: Set[str],
     english_words: Set[str],
     dutch_terms: Set[str],
-    selected: Set[str],
 ) -> List[Problem]:
-    """Check one markdown file against the selected rules.
+    """Check one markdown file against every rule.
 
     Args:
         relative_path: Path relative to the repository root.
@@ -1101,7 +1064,6 @@ def check_file(
         dutch_words: Lowercased words of every glossary Dutch term.
         english_words: Lowercased words of every glossary English term.
         dutch_terms: Lowercased Dutch terms of both glossaries.
-        selected: Rule names to run.
 
     Returns:
         The problems found, each as path, line number, rule and term.
@@ -1109,68 +1071,58 @@ def check_file(
     problems: List[Problem] = []
     masked = masked_lines(path, carries_prompts(relative_path))
 
-    if "residual" in selected:
-        for number, line in enumerate(masked, 1):
-            residual = mask_parentheses(mask_data_codes(line))
-            # WHY: "opgaaf" inside the form name "Opgaaf startende onderneming" is part of that name.
-            dutch_matches = find_matches(split_pieces(residual), dutch_index)
-            for row_position, _, _ in outermost(dutch_matches, dutch_matches):
-                english, dutch, note = rows[row_position]
-                # WHY: an official name or an abbreviation such as BV may stand alone after its first use.
-                if note.strip().lower() in (OFFICIAL_NOTE, ABBREVIATION_NOTE):
+    for number, line in enumerate(masked, 1):
+        residual = mask_parentheses(mask_data_codes(line))
+        # WHY: "opgaaf" inside the form name "Opgaaf startende onderneming" is part of that name.
+        dutch_matches = find_matches(split_pieces(residual), dutch_index)
+        for row_position, _, _ in outermost(dutch_matches, dutch_matches):
+            english, dutch, note = rows[row_position]
+            # WHY: an official name or an abbreviation such as BV may stand alone after its first use.
+            if note.strip().lower() in (OFFICIAL_NOTE, ABBREVIATION_NOTE):
+                continue
+            if dutch.lower() == english.lower():
+                continue
+            problems.append((relative_path, number, "residual", dutch))
+
+    # WHY: an official name is labelled once per file, a term once per section.
+    name_seen: Set[int] = set()
+    name_dutch_seen: Set[str] = set()
+    for section in split_sections(masked):
+        seen: Set[int] = set()
+        dutch_seen: Set[str] = set()
+        for number, line in section:
+            pieces = split_pieces(line)
+            # WHY: two Dutch spellings of one English name both satisfy its label.
+            for row_position, _, _ in find_matches(pieces, dutch_index):
+                dutch_seen.add(rows[row_position][0].lower())
+                name_dutch_seen.add(rows[row_position][0].lower())
+            containers = find_matches(pieces, english_index)
+            for row_position, _, _ in outermost(find_matches(pieces, first_index), containers):
+                official = rows[row_position][2].strip().lower() == OFFICIAL_NOTE
+                first_seen, labels = (name_seen, name_dutch_seen) if official else (seen, dutch_seen)
+                if row_position in first_seen:
                     continue
-                if dutch.lower() == english.lower():
-                    continue
-                problems.append((relative_path, number, "residual", dutch))
+                first_seen.add(row_position)
+                if rows[row_position][0].lower() not in labels:
+                    problems.append((relative_path, number, "first-use", rows[row_position][1]))
 
-    if "first-use" in selected:
-        # WHY: an official name is labelled once per file, a term once per section.
-        name_seen: Set[int] = set()
-        name_dutch_seen: Set[str] = set()
-        for section in split_sections(masked):
-            seen: Set[int] = set()
-            dutch_seen: Set[str] = set()
-            for number, line in section:
-                pieces = split_pieces(line)
-                # WHY: two Dutch spellings of one English name both satisfy its label.
-                for row_position, _, _ in find_matches(pieces, dutch_index):
-                    dutch_seen.add(rows[row_position][0].lower())
-                    name_dutch_seen.add(rows[row_position][0].lower())
-                containers = find_matches(pieces, english_index)
-                for row_position, _, _ in outermost(find_matches(pieces, first_index), containers):
-                    official = rows[row_position][2].strip().lower() == OFFICIAL_NOTE
-                    first_seen, labels = (name_seen, name_dutch_seen) if official else (seen, dutch_seen)
-                    if row_position in first_seen:
-                        continue
-                    first_seen.add(row_position)
-                    if rows[row_position][0].lower() not in labels:
-                        problems.append((relative_path, number, "first-use", rows[row_position][1]))
-
-    if "doubled" in selected:
-        for number, line in enumerate(masked, 1):
-            for span in doubled_spans(line):
-                problems.append((relative_path, number, "doubled", span))
-
-    if "reversed" in selected:
-        for number, line in enumerate(masked, 1):
-            for row_position, _, end in find_matches(split_pieces(line), dutch_index):
-                if tails[row_position].match(line[end:]):
-                    problems.append((relative_path, number, "reversed", rows[row_position][1]))
-
-    if "unglossed" in selected:
-        for number, line in enumerate(masked, 1):
-            for span in unglossed_spans(line, dutch_words, english_words, dutch_terms):
-                problems.append((relative_path, number, "unglossed", span))
+    for number, line in enumerate(masked, 1):
+        for span in doubled_spans(line):
+            problems.append((relative_path, number, "doubled", span))
+        for row_position, _, end in find_matches(split_pieces(line), dutch_index):
+            if tails[row_position].match(line[end:]):
+                problems.append((relative_path, number, "reversed", rows[row_position][1]))
+        for span in unglossed_spans(line, dutch_words, english_words, dutch_terms):
+            problems.append((relative_path, number, "unglossed", span))
 
     return problems
 
 
-def check_corpus(root: str, selected: Set[str]) -> List[Problem]:
-    """Check every file in the corpus against the selected rules.
+def check_corpus(root: str) -> List[Problem]:
+    """Check every file in the corpus against every rule.
 
     Args:
         root: Repository root.
-        selected: Rule names to run.
 
     Returns:
         Every remaining problem, sorted and without duplicates.
@@ -1218,29 +1170,22 @@ def check_corpus(root: str, selected: Set[str]) -> List[Problem]:
                 dutch_words,
                 english_words,
                 dutch_terms,
-                selected,
             )
         )
 
-    suppression = {rule for rule in SUPPRESSION_CHECKS if rule in selected}
-    exception_keys = {
-        (row.file, row.term, row.check) for row in exceptions if row.check in suppression
-    }
+    exception_keys = {(row.file, row.term, row.check) for row in exceptions}
     used: Set[Tuple[str, str, str]] = set()
-    problems: List[Problem] = duplicate_pairs(root) if "duplicate" in selected else []
+    problems: List[Problem] = duplicate_pairs(root)
     for relative_path, number, rule, term in findings:
         key = (relative_path, term.lower(), rule)
-        if rule in suppression and key in exception_keys:
+        if key in exception_keys:
             used.add(key)
             continue
         problems.append((relative_path, number, rule, term))
 
-    if suppression:
-        for row in exceptions:
-            if row.check not in suppression:
-                continue
-            if (row.file, row.term, row.check) not in used:
-                problems.append((row.file, 0, STALE_RULE, row.term))
+    for row in exceptions:
+        if (row.file, row.term, row.check) not in used:
+            problems.append((row.file, 0, STALE_RULE, row.term))
 
     return sorted(set(problems))
 
@@ -1259,26 +1204,6 @@ def print_lines(problems: List[Problem]) -> None:
         print("%s:%d: %s: %s" % (relative_path, number, rule, term))
 
 
-def print_summary(problems: List[Problem], rule_order: List[str]) -> None:
-    """Print one count per rule and one count per area.
-
-    Args:
-        problems: Every remaining problem.
-        rule_order: Rule names to count, in report order.
-    """
-    counts = {rule: 0 for rule in rule_order}
-    areas: Dict[str, int] = {}
-    for relative_path, _, rule, _ in problems:
-        if rule in counts:
-            counts[rule] += 1
-        area = area_of(relative_path)
-        areas[area] = areas.get(area, 0) + 1
-    for rule in rule_order:
-        print("%s: %d" % (rule, counts[rule]))
-    for area in sorted(areas):
-        print("%s: %d" % (area, areas[area]))
-
-
 # ───────────────────────────────────────────────────────────────
 # 9. ENTRY POINT
 # ───────────────────────────────────────────────────────────────
@@ -1291,45 +1216,14 @@ def main(argv: List[str]) -> int:
 
     Returns:
         Zero when no problem remains, one otherwise.
-
-    Raises:
-        SystemExit: If the root is not a directory.
     """
     parser = argparse.ArgumentParser(
         prog=GENERATOR,
         description="Check that the skill family writes English first and labels every term.",
     )
-    parser.add_argument(
-        "--root",
-        default=REPO_ROOT,
-        metavar="DIR",
-        help="read another copy of the repository instead of the one above this script",
-    )
-    parser.add_argument(
-        "--rule",
-        action="append",
-        choices=list(RULES),
-        metavar="NAME",
-        help="report only this rule, repeatable",
-    )
-    parser.add_argument(
-        "--summary",
-        action="store_true",
-        help="print one count per rule and per area instead of the lines",
-    )
-    args = parser.parse_args(argv)
-    root = os.path.abspath(args.root)
-    if not os.path.isdir(root):
-        fail("not a directory: %s" % args.root)
-    selected = set(args.rule) if args.rule else set(RULES)
-    problems = check_corpus(root, selected)
-    if args.summary:
-        rule_order = [rule for rule in RULES if rule in selected]
-        if any(rule in selected for rule in SUPPRESSION_CHECKS):
-            rule_order.append(STALE_RULE)
-        print_summary(problems, rule_order)
-    else:
-        print_lines(problems)
+    parser.parse_args(argv)
+    problems = check_corpus(REPO_ROOT)
+    print_lines(problems)
     print("%d problems" % len(problems))
     return 1 if problems else 0
 

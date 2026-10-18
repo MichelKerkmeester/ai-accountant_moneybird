@@ -4,7 +4,6 @@
       "leaves": [
         "feature-catalog/api-calls/call-operation.md",
         "feature-catalog/api-calls/organization-check.md",
-        "feature-catalog/api-calls/raw-get.md",
         "feature-catalog/api-calls/signed-download-fetch.md",
         "feature-catalog/diagnostics/offline-doctor.md",
         "feature-catalog/diagnostics/setup-check.md",
@@ -34,7 +33,6 @@
         "manual-testing-playbook/extraction/call-operation-offline.md",
         "manual-testing-playbook/extraction/output-workspace-guard.md",
         "manual-testing-playbook/extraction/paged-extract-to-workspace.md",
-        "manual-testing-playbook/extraction/raw-get-path-guard.md",
         "manual-testing-playbook/extraction/receipt-download.md",
         "manual-testing-playbook/operation-discovery/list-and-describe-operations.md",
         "manual-testing-playbook/operation-discovery/spec-info-offline.md",

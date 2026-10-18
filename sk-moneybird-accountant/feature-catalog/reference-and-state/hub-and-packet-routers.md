@@ -52,7 +52,7 @@ A request starts in the accountant packet, the registry default. A request that 
 | File | Type | Role |
 |---|---|---|
 | `sk-moneybird-accountant/scripts/check-route-table.py` | Check | Checks the route table in `ROUTER.md` and the hub. |
-| `sk-moneybird-accountant/scripts/route-table-test.sh` | Automated test | Proves nineteen of the hub failures on a throwaway copy of the repository. |
+| `sk-moneybird-accountant/scripts/route-table-test.sh` | Automated test | Proves fourteen of the hub failures on a throwaway copy of the repository. |
 | `sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh` | Automated test | Scores every gold row from `ROUTER.md`, and fails the HUB rows on a dropped hub signal or a missing mode registry. |
 | `sk-moneybird-accountant/scripts/route-replay/routing-gold.json` | Fixture | Holds the HUB rows and their gold packet chains. |
 

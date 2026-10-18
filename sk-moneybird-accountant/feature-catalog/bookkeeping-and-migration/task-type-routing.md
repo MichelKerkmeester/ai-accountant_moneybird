@@ -39,7 +39,6 @@ Every read-set cell uses the `!`, `?`, `@section-id`, `{year}`, `{phase-file}` a
 |---|---|---|
 | sk-moneybird-accountant/ROUTER.md | Shared | Defines the Task-Type Table, the tie rules, the abstain margin and the route record. |
 | sk-moneybird-accountant/scripts/check-route-table.py | Shared | Generates the router block and the multi-word intent signals from the table and fails on drift. |
-| sk-moneybird-accountant/assets/route-calibration.json | Shared | Holds the frozen route margin, fallback floor and calibration record. |
 | sk-moneybird-accountant/graph-metadata.json | Shared | Carries the generated intent signals and the curated routing vocabulary. |
 
 ### Validation And Tests
@@ -50,7 +49,7 @@ Every read-set cell uses the `!`, `?`, `@section-id`, `{year}`, `{phase-file}` a
 | sk-moneybird-accountant/scripts/route-replay/route-replay.py | Test harness | Scores the routing corpus offline and replays each refusal through the guard and the stub. |
 | sk-moneybird-accountant/scripts/route-replay/routing-gold.json | Fixture | The corpus with the T10 to T12 rows, the VAT branch rows, the pack rows and the refusal rows. |
 | sk-moneybird-accountant/evals/evals.json | Fixture | The eval cases for the branch, pack and refusal routes. |
-| sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh | Automated test | Checks the harness with a deleted path, a twin mismatch, two dated runs and one pass case per new row. |
+| sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh | Automated test | Checks the harness with a twin mismatch, an unmet claim, a wrong expected exit, the default output folder and one pass case per new row. |
 | sk-moneybird-accountant/scripts/run-evals.py | Test harness | Grades captured answers against the eval cases in `evals/evals.json`. |
 | sk-moneybird-accountant/scripts/route-table-test.sh | Automated test | Checks the route table, the T10 to T12 rows, the read-set grammar, the ladder, the T7, T8 and T9 row rules, the gap ledger, the router block and the intent-signal drift on mutants. |
 

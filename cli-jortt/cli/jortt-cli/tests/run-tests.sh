@@ -38,7 +38,7 @@ if printf '%s' "$OPS" | jq -e --argjson expected "$SPEC_OPERATIONS" 'length == $
 if printf '%s' "$OPS" | jq -e '([.[] | select(.path == "/customers" and .method == "GET")][0].slug == "list-customers") and ([.[] | select(.path == "/v1/customers" and .method == "GET")][0].slug == "list-customers-v1")' >/dev/null 2>&1; then record "collision prefers unversioned path over v1" 1; else record "collision prefers unversioned path over v1" 0; fi
 
 DESCRIBE="$(run_cli describe list-expenses)"
-if printf '%s' "$DESCRIBE" | grep -q 'Path: /v3/expenses' && printf '%s' "$DESCRIBE" | grep -q 'vat_date_from' && printf '%s' "$DESCRIBE" | grep -q 'Body schema: none'; then record "describe includes operation details" 1; else record "describe includes operation details" 0; fi
+if printf '%s' "$DESCRIBE" | grep -q 'Path: /v3/expenses' && printf '%s' "$DESCRIBE" | grep -q 'vat_date_from'; then record "describe includes operation details" 1; else record "describe includes operation details" 0; fi
 
 DRY="$(run_cli call list-expenses --vat_date_from 2023-01-01 --vat_date_till 2023-12-31 --dry-run)"
 if printf '%s' "$DRY" | grep -q 'GET https://api.jortt.nl/v3/expenses?vat_date_from=2023-01-01&vat_date_till=2023-12-31'; then record "dry-run builds URL with query parameters" 1; else record "dry-run builds URL with query parameters" 0; fi
@@ -47,13 +47,13 @@ set +e
 OUTPUT="$(env JORTT_OPENAPI_FILE="$SPEC" JORTT_SCOPES=expenses:write JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null "$CLI" call create-an-expense --dry-run 2>&1)"
 CODE=$?
 set -e
-if [ "$CODE" -eq 3 ] && printf '%s' "$OUTPUT" | grep -q -- '--allow-write'; then record "write without allow flag exits 3" 1; else record "write without allow flag exits 3" 0; fi
+if [ "$CODE" -eq 3 ] && printf '%s' "$OUTPUT" | grep -q 'is refused'; then record "write operation exits 3" 1; else record "write operation exits 3" 0; fi
 
 set +e
-OUTPUT="$(env JORTT_OPENAPI_FILE="$SPEC" JORTT_SCOPES=expenses:read JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null "$CLI" call create-an-expense --allow-write --dry-run 2>&1)"
+OUTPUT="$(env JORTT_OPENAPI_FILE="$SPEC" JORTT_SCOPES=customers:read JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null "$CLI" call list-expenses --dry-run 2>&1)"
 CODE=$?
 set -e
-if [ "$CODE" -eq 4 ] && printf '%s' "$OUTPUT" | grep -q 'expenses:write'; then record "missing write scope exits 4" 1; else record "missing write scope exits 4" 0; fi
+if [ "$CODE" -eq 4 ] && printf '%s' "$OUTPUT" | grep -q 'expenses:read'; then record "missing read scope exits 4" 1; else record "missing read scope exits 4" 0; fi
 
 # WHY: token status must report where JORTT_SCOPES came from without exposing the value.
 set +e
@@ -101,18 +101,6 @@ CODE=$?
 set -e
 if [ "$CODE" -eq 5 ]; then record "out-of-workspace call output exits 5" 1; else record "out-of-workspace call output exits 5" 0; fi
 
-VALID_OUTPUT="$(
-  ACCOUNTANT_ROOT="$TEMP_ROOT/accountant"
-  mkdir -p "$ACCOUNTANT_ROOT/migration-workspace"
-  # shellcheck disable=SC2329
-  jortt_error() { local error_code="$1"; shift; printf '%s\n' "$*" >&2; exit "$error_code"; }
-  # shellcheck disable=SC1091
-  . "$HERE/../lib/workspace.sh"
-  jortt_resolve_output migration-workspace/export.json 0
-  printf '%s' "$JORTT_RESOLVED_OUT"
-)"
-if [ "$VALID_OUTPUT" = "$TEMP_ROOT/accountant/migration-workspace/export.json" ]; then record "in-workspace output resolves to its destination" 1; else record "in-workspace output resolves to its destination" 0; fi
-
 set +e
 OUTPUT="$(run_cli fetch https://example.invalid/never-request.bin --out "$TEMP_ROOT/outside.bin" 2>&1)"
 CODE=$?
@@ -133,7 +121,6 @@ cat > "$STUB_DIR/curl" <<'STUB_CURL'
 set -euo pipefail
 config_file=''
 destination=''
-read_stdin=0
 while [ "$#" -gt 0 ]; do
   case "$1" in
     --config)
@@ -152,9 +139,6 @@ while [ "$#" -gt 0 ]; do
       shift 2
       ;;
     --data-binary)
-      case "$2" in
-        @-) read_stdin=1 ;;
-      esac
       shift 2
       ;;
     -fsSL|-sS|-L|-f|-S)
@@ -168,9 +152,6 @@ while [ "$#" -gt 0 ]; do
       ;;
   esac
 done
-if [ "$read_stdin" = "1" ]; then
-  cat >/dev/null 2>&1 || true
-fi
 url="$(awk -F'"' '/^url = "/ { print $2; exit }' "$config_file" 2>/dev/null)" || url=''
 case "$url" in
   https://app.jortt.nl/oauth-provider/oauth/token*)
@@ -204,13 +185,14 @@ run_fake() {
   env -u CLAUDECODE -u AI_SESSION_CHILD -u ACCOUNTANT_AGENT_SESSION -u CODEX_SANDBOX \
     PATH="$STUB_DIR:$PATH" TMPDIR="$TEMP_ROOT/tmp" \
     STUB_HTTP_BODY_FILE="$FAKE_ROOT/response.json" STUB_HTTP_STATUS="${STUB_HTTP_STATUS:-200}" \
-    JORTT_OPENAPI_FILE="$SPEC" JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null \
+    JORTT_OPENAPI_FILE="$SPEC" JORTT_SCOPES='customers:read expenses:read' \
+    JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null \
     "$FAKE_CLI" "$@"
 }
 
 fake_body '{"data":[{"id":1,"name":"Secret Customer"},{"id":2,"name":"Other Customer"}],"_links":{"next":null}}'
 set +e
-SUMMARY="$(run_fake get /customers 2>&1)"
+SUMMARY="$(run_fake call list-customers 2>&1)"
 SUMMARY_CODE=$?
 set -e
 if [ "$SUMMARY_CODE" -eq 0 ] \
@@ -224,7 +206,7 @@ else
 fi
 
 set +e
-SAVE_OUTPUT="$(run_fake get /customers --out migration-workspace/exports/customers.json 2>&1)"
+SAVE_OUTPUT="$(run_fake call list-customers --out migration-workspace/exports/customers.json 2>&1)"
 SAVE_CODE=$?
 set -e
 SAVED_FILE="$FAKE_ROOT/migration-workspace/exports/customers.json"
@@ -238,7 +220,7 @@ else
 fi
 
 set +e
-BODY_OUTPUT="$(run_fake get /customers --print-body 2>&1)"
+BODY_OUTPUT="$(run_fake call list-customers --print-body 2>&1)"
 BODY_CODE=$?
 set -e
 if [ "$BODY_CODE" -eq 0 ] \
@@ -268,22 +250,22 @@ done
 if [ "$MARKER_FAILURES" -eq 0 ]; then record "--print-body is refused with a one-line reason for every marker" 1; else record "--print-body is refused with a one-line reason for every marker" 0; fi
 
 set +e
-GET_MARKER_OUTPUT="$(env CLAUDECODE=1 PATH="$STUB_DIR:$PATH" TMPDIR="$TEMP_ROOT/tmp" \
+CALL_MARKER_OUTPUT="$(env CLAUDECODE=1 PATH="$STUB_DIR:$PATH" TMPDIR="$TEMP_ROOT/tmp" \
   STUB_HTTP_BODY_FILE="$FAKE_ROOT/response.json" \
   JORTT_OPENAPI_FILE="$SPEC" JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null \
-  "$FAKE_CLI" get /customers --print-body 2>&1)"
-GET_MARKER_CODE=$?
+  "$FAKE_CLI" call list-customers --print-body 2>&1)"
+CALL_MARKER_CODE=$?
 set -e
-if [ "$GET_MARKER_CODE" -eq 2 ] && printf '%s' "$GET_MARKER_OUTPUT" | grep -q -- '--print-body'; then
-  record "get refuses --print-body in an agent session" 1
+if [ "$CALL_MARKER_CODE" -eq 2 ] && printf '%s' "$CALL_MARKER_OUTPUT" | grep -q -- '--print-body'; then
+  record "call refuses --print-body in an agent session" 1
 else
-  record "get refuses --print-body in an agent session" 0
+  record "call refuses --print-body in an agent session" 0
 fi
 
 fake_body '{"message":"Secret Customer is invalid","errors":{"vat_number":["is not valid"]}}'
 export STUB_HTTP_STATUS=422
 set +e
-ERROR_OUTPUT="$(run_fake get /customers 2>&1)"
+ERROR_OUTPUT="$(run_fake call list-customers 2>&1)"
 ERROR_CODE=$?
 set -e
 unset STUB_HTTP_STATUS
@@ -302,14 +284,14 @@ else
   record "API errors hide message text and log the full body at mode 600" 0
 fi
 
-# Fault injection: one case per exit code, 1 to 6. The stub answers and the
-# trimmed spec drive codes 1, 2 and 6, and the CLI's own gates drive 3, 4 and 5.
+# Fault injection: the stub answers and the trimmed spec drive exit codes 1, 2 and 6.
+# The write, scope and output gates for 3, 4 and 5 are covered by the cases above.
 
 # An upstream server error exits 1.
 fake_body '{"message":"the stub answered with a server error"}'
 export STUB_HTTP_STATUS=500
 set +e
-FAULT_1_OUTPUT="$(run_fake get /customers 2>&1)"
+FAULT_1_OUTPUT="$(run_fake call list-customers 2>&1)"
 FAULT_1_CODE=$?
 set -e
 unset STUB_HTTP_STATUS
@@ -332,44 +314,11 @@ else
   record "fault case 2: a broken OpenAPI file exits 2" 0
 fi
 
-# A write without --allow-write exits 3.
-set +e
-FAULT_3_OUTPUT="$(env JORTT_OPENAPI_FILE="$SPEC" JORTT_SCOPES=expenses:write JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null "$CLI" call create-an-expense --dry-run 2>&1)"
-FAULT_3_CODE=$?
-set -e
-if [ "$FAULT_3_CODE" -eq 3 ] && printf '%s' "$FAULT_3_OUTPUT" | grep -q -- '--allow-write'; then
-  record "fault case 3: a write without --allow-write exits 3" 1
-else
-  record "fault case 3: a write without --allow-write exits 3" 0
-fi
-
-# A write without its scope exits 4.
-set +e
-FAULT_4_OUTPUT="$(env JORTT_OPENAPI_FILE="$SPEC" JORTT_SCOPES=expenses:read JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null "$CLI" call create-an-expense --allow-write --dry-run 2>&1)"
-FAULT_4_CODE=$?
-set -e
-if [ "$FAULT_4_CODE" -eq 4 ] && printf '%s' "$FAULT_4_OUTPUT" | grep -q 'expenses:write'; then
-  record "fault case 4: a write without its scope exits 4" 1
-else
-  record "fault case 4: a write without its scope exits 4" 0
-fi
-
-# An output path outside the workspace exits 5.
-set +e
-FAULT_5_OUTPUT="$(run_cli call list-expenses --out "$TEMP_ROOT/outside.json" --dry-run 2>&1)"
-FAULT_5_CODE=$?
-set -e
-if [ "$FAULT_5_CODE" -eq 5 ] && printf '%s' "$FAULT_5_OUTPUT" | grep -q 'must resolve inside migration-workspace'; then
-  record "fault case 5: an output path outside the workspace exits 5" 1
-else
-  record "fault case 5: an output path outside the workspace exits 5" 0
-fi
-
 # A refused token request exits 6.
 run_fake token clear >/dev/null 2>&1
 export STUB_TOKEN_STATUS=401
 set +e
-FAULT_6_OUTPUT="$(run_fake get /customers 2>&1)"
+FAULT_6_OUTPUT="$(run_fake call list-customers 2>&1)"
 FAULT_6_CODE=$?
 set -e
 unset STUB_TOKEN_STATUS

@@ -11,11 +11,6 @@
   },
   {
     "workflowMode": "cli-jortt",
-    "leafResourceId": "feature-catalog/api-calls/raw-get.md",
-    "diskPath": "feature-catalog/api-calls/raw-get.md"
-  },
-  {
-    "workflowMode": "cli-jortt",
     "leafResourceId": "feature-catalog/api-calls/signed-download-fetch.md",
     "diskPath": "feature-catalog/api-calls/signed-download-fetch.md"
   },
@@ -158,11 +153,6 @@
     "workflowMode": "cli-jortt",
     "leafResourceId": "manual-testing-playbook/extraction/paged-extract-to-workspace.md",
     "diskPath": "manual-testing-playbook/extraction/paged-extract-to-workspace.md"
-  },
-  {
-    "workflowMode": "cli-jortt",
-    "leafResourceId": "manual-testing-playbook/extraction/raw-get-path-guard.md",
-    "diskPath": "manual-testing-playbook/extraction/raw-get-path-guard.md"
   },
   {
     "workflowMode": "cli-jortt",

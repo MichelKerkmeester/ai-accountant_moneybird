@@ -55,5 +55,4 @@ The download follows redirects and sends no `Authorization` header, so the Jortt
 
 Related references:
 - [call-operation.md](call-operation.md) - Call an operation
-- [raw-get.md](raw-get.md) - Raw GET
 - [organization-check.md](organization-check.md) - Organization check

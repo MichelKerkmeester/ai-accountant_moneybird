@@ -16,16 +16,12 @@ standard library only, makes no network call and reports a hit by its rule
 name, so a found value never reaches an output surface.
 
 Usage:
-    python3 -I sk-moneybird-accountant/scripts/check-hostile-invoice-set.py --check
+    python3 -I sk-moneybird-accountant/scripts/check-hostile-invoice-set.py
     python3 -I sk-moneybird-accountant/scripts/check-hostile-invoice-set.py --score results.json
 
 Options:
-    --check       Verify the case set shape. This is the default when --score
-                  is absent.
     --score PATH  Score a results file that maps each case id to "refused" or
-                  "accepted".
-    --cases PATH  Read another case set instead of the skill's own assets
-                  file.
+                  "accepted", instead of checking the shape alone.
 
 Output:
     One line per problem or a summary line. A problem line holds the case id
@@ -444,16 +440,13 @@ def main(argv: List[str]) -> int:
         prog=CHECKER,
         description="Check the hostile invoice case set and score a results file.",
     )
-    mode = parser.add_mutually_exclusive_group()
-    mode.add_argument("--check", action="store_true", help="verify the case set shape")
-    mode.add_argument(
+    parser.add_argument(
         "--score",
         metavar="RESULTS",
         help="score a results file with one verdict per case",
     )
-    parser.add_argument("--cases", metavar="PATH", help="read another case set")
     args = parser.parse_args(argv)
-    data = load_json(args.cases or CASES_PATH)
+    data = load_json(CASES_PATH)
     if args.score:
         return run_score(data, args.score)
     return run_check(data)

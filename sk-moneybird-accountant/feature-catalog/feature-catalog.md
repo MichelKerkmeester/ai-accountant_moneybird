@@ -207,7 +207,7 @@ Entry index for preparing a Dutch sole-trader yearly overview in Moneybird. The 
 
 #### Current Reality
 
-The T11 row routes a prepare-the-yearly-overview request into `references/yearly-overview/`. The README holds the ordered close steps and the ten Dutch close signals, and a supplementary return (suppletie) routes to the VAT return row instead. The checklist puts the auditfile export before the year-end closing (jaarafsluiting) as an evidence gate, and the close checks cover the equity continuity and the exception list. The fiscal reconciliation file holds the reconciliation template, the three-column hand-off template and the prepared-not-filed stop. `assets/yearly-overview/yearly-overview-template.html` is the printable A4 layout with bilingual labels and a braced placeholder for every value. Scenario PACK-001, gold row PACK-YEARLY-01 and eval case yearly-overview-pack prove the offline route and the pack blocks. The yearly-overview-template suite proves the template structure: a synthetic fill leaves no brace token, no remote asset and no unescaped value, the repeat blocks expand to the requested count and the prepared-not-filed line stays. Outside the migration route contract and the LIVE workflows of phases 19 to 21 the auditfile export is the Operator's UI export. The folder prepares and never files.
+The T11 row routes a prepare-the-yearly-overview request into `references/yearly-overview/`. The README holds the ordered close steps and the ten Dutch close signals, and a supplementary return (suppletie) routes to the VAT return row instead. The checklist puts the auditfile export before the year-end closing (jaarafsluiting) as an evidence gate, and the close checks cover the equity continuity and the exception list. The fiscal reconciliation file holds the reconciliation template, the three-column hand-off template and the prepared-not-filed stop. `assets/yearly-overview/yearly-overview-template.html` is the printable A4 layout with bilingual labels and a braced placeholder for every value. Scenario PACK-001, gold row PACK-YEARLY-01 and eval case yearly-overview-pack prove the offline route and the pack blocks. The yearly-overview-template suite proves the template structure: a synthetic fill leaves no brace token and no remote asset, every repeat block holds a token of its own and the prepared-not-filed line stays. Outside the migration route contract and the LIVE workflows of phases 19 to 21 the auditfile export is the Operator's UI export. The folder prepares and never files.
 
 #### Source Files
 
@@ -303,7 +303,7 @@ Lists every external source the skill family cites, with its authority and how a
 
 #### Current Reality
 
-The source library reference groups the cited sources by authority, names the most-cited statutes and pages and records any dead link. A generated index holds one row per source with its access result, digest and citing files and a builder checks it for drift, for cited dead rows and for perishable parliamentary links without any network call. The builder also checks the reference frontmatter field set and the sourced term map, where every row carries its English gloss and the source the owning year file cites. A row fails when its `source_file` lacks the term or the source. A trace refuses a private or unscanned file and prints each URL without its query string and fragment, and the report write leaves a blocked or unreachable row unchanged. A monthly job watches the publication series in the watchlist and checks the year files against the release calendar in the year rollover runbook. A watch where every fetched URL failed exits 1, so the job opens its issue. The corresponding manual scenario checks the route to the library and the access method without API access.
+The source library reference groups the cited sources by authority, names the most-cited statutes and pages and records any dead link. A generated index holds one row per source with its access result, digest and citing files and a builder checks it for drift, for cited dead rows and for perishable parliamentary links without any network call. The builder also checks the reference frontmatter field set and the sourced term map, where every row carries its English gloss and the source the owning year file cites. A row fails when its `source_file` lacks the term or the source. The report write leaves a blocked or unreachable row unchanged. A monthly job watches the publication series in the watchlist and checks the year files against the release calendar in the year rollover runbook. A watch where every fetched URL failed exits 1, so the job opens its issue. The corresponding manual scenario checks the route to the library and the access method without API access.
 
 #### Source Files
 
@@ -367,7 +367,7 @@ Leaves return filing and final tax judgement with the operator or a bookkeeper.
 
 #### Current Reality
 
-The skill can organize evidence and explain general rules, but it does not file returns or present personal tax conclusions as final. A request to file, submit, send, transmit, upload, pay or lock a return, or to mark or want it filed, that names the VAT return, the yearly overview or the income tax return routes to T8 and receives the refusal, never a prepared return. T8 then wins over every row. A lock or pay request next to another task, such as a bank review, keeps that task's route, and the lock or payment stays an Operator UI action. A question that asks the assistant nothing, a request for information such as tell me when it must be submitted, a reminder, a filing deadline (aangiftetermijn), a purpose such as so I can file it myself, a time the user or another person acts in such as before I send it, a recipient that is no filing destination such as the accountant and a user or third person subject keep the preparation route. Each guard is anchored to the filing verb, so a clause that only sets a time, as in when you are ready, still asks to file, and so do a question that addresses the assistant, as in can we file it today?, and a sentence that opens with the verb, as in file it, ok?. The refusal fixtures replay the four forms through the guard stub and the eval case forbids a claimed filing action. The corresponding manual scenario checks route selection and the stated boundary without API access.
+The skill can organize evidence and explain general rules, but it does not file returns or present personal tax conclusions as final. A request to file, submit, send, transmit, upload, pay or lock a return, or to mark or want it filed, that names the VAT return, the yearly overview or the income tax return routes to T8 and receives the refusal, never a prepared return. T8 then wins over every row. A lock or pay request next to another task, such as a bank review, keeps that task's route, and the lock or payment stays an Operator UI action. A question that asks the assistant nothing, a request for information such as tell me when it must be submitted, a reminder, a filing deadline (aangiftetermijn), a purpose such as so I can file it myself, a time the user or another person acts in such as before I send it, a recipient that is no filing destination such as the accountant and a user or third person subject keep the preparation route. A we statement such as now we file it, a question such as is it possible to file it today? and an order after a kept mention such as so do it still refuse, while we'll file it ourselves keeps the route. Each guard is anchored to the filing verb, so a clause that only sets a time, as in when you are ready, still asks to file, and so do a question that addresses the assistant, as in can we file it today?, and a sentence that opens with the verb, as in file it, ok?. The routing fixtures score the four forms, the guard rows replay each guard gate through the stub and the eval case forbids a claimed filing action. The corresponding manual scenario checks route selection and the stated boundary without API access.
 
 #### Source Files
 
@@ -385,7 +385,7 @@ Holds the Dutch tax knowledge base tree with the eight year folders, the general
 
 #### Current Reality
 
-The tree sits at `references/tax-rules/`. Eight year folders cover 2020 to 2027, each with twelve topic folders, a year README, a correction log and a year change note. Every topic folder holds `figures.md`, `rules.md`, `examples.md` and `notes.md`, and `split-manifest.json` hashes every part. The 13 general topic files sit under `general/`. A figure question resolves the year first, then reads the year README and the one part it names. A cross-year rule question reads section 3 of `dutch-tax-rules.md` and then only the one general file its table names. `check-route-table.py` runs the split check and `check-fragments.py` resolves every link into and inside the tree.
+The tree sits at `references/tax-rules/`. Eight year folders cover 2020 to 2027, each with twelve topic folders, a year README, a correction log and a year change note. Every topic folder holds `figures.md`, `rules.md`, `examples.md` and `notes.md`. The 13 general topic files sit under `general/`. A figure question resolves the year first, then reads the year README and the one part it names. A cross-year rule question reads section 3 of `dutch-tax-rules.md` and then only the one general file its table names. `check-fragments.py` resolves every link into and inside the tree.
 
 #### Source Files
 
@@ -401,7 +401,7 @@ Writes the git-ignored session context from the clock and a migration projection
 
 #### Current Reality
 
-The builder writes the git-ignored `session-context.json` from the allowlisted fields of the migration config and the phase dashboard, and it reads the template `fields` rows of the config too, with `PENDING` or an empty value as null. When the file is missing, `AGENTS.md` has the agent run the builder first. The reference resolves `year_key`, refuses an out-of-range or unsettled figure and computes the post-cutover state. The offline suite covers the clock, the allowlist, staleness and the state names.
+The builder writes the git-ignored `session-context.json` from the allowlisted fields of the migration config and the phase dashboard, and it reads the template `fields` rows of the config, with `PENDING` or an empty value as null. When the file is missing, `AGENTS.md` has the agent run the builder first. The reference resolves `year_key`, refuses an out-of-range or unsettled figure and computes the post-cutover state. The offline suite covers the clock, the interactive flag, the allowlist, the template rows and the markdown dashboard table.
 
 #### Source Files
 
@@ -413,11 +413,11 @@ See [`reference-and-state/session-context-and-year-state.md`](reference-and-stat
 
 #### Description
 
-Regenerates the reference nav blocks, the index, the year README tables and the year changes overview from the files that own them.
+Regenerates the reference index, the year README tables and the year changes overview from the files that own them.
 
 #### Current Reality
 
-The generator owns the nav blocks, `references/index.json`, the year README tables, the year-figure rows in the general topic files, the year change blocks, `references/tax-rules/year-changes.md` and the reachability report. A check run reports drift without writing and the offline suite proves the fence rules and byte stability.
+The generator owns `references/index.json`, the year README tables, the year-figure rows in the general topic files, the year change blocks, `references/tax-rules/year-changes.md` and the reachability report. A check run reports drift without writing and the offline suite proves the fence rules and byte stability.
 
 #### Source Files
 
@@ -429,11 +429,11 @@ See [`reference-and-state/reference-index-and-year-changes.md`](reference-and-st
 
 #### Description
 
-Publishes the generated reference landing page, the key figure item index, the answer surface field and labels, the sourced term glosses and the scannability report that measures the first answer.
+Publishes the generated reference landing page, the key figure item index, the answer surface field and labels and the sourced term glosses.
 
 #### Current Reality
 
-`build-reference-index.py` writes `references/README.md` with three per-group blocks, one item index row per value row inside every value table and an `answerSurface` object with `section`, `rows` and `tokens` on every record in `references/index.json`. Every reference markdown file carries a `nav_label`. `assets/term-map.json` holds one row per Dutch term with its English gloss and the source the owning year file cites, and `build-source-library.py` checks the map. `benchmark/reports/scannability/report.md` publishes the tokens to first answer, the answer position inside the section and the section hit rate, each with the denominator of its own split.
+`build-reference-index.py` writes `references/README.md` with three per-group blocks, one item index row per value row inside every value table and an `answerSurface` object with `section`, `rows` and `tokens` on every record in `references/index.json`. Every reference markdown file carries a `nav_label`. `assets/term-map.json` holds one row per Dutch term with its English gloss and the source the owning year file cites, and `build-source-library.py` checks the map.
 
 #### Source Files
 
@@ -449,7 +449,7 @@ Reads the `pdf-needs-reader` rows of the source library through poppler so a sou
 
 #### Current Reality
 
-`scripts/read-pdf-source.py` accepts a URL only when `assets/source-library.json` records it with access `pdf-needs-reader`, downloads it into a fresh temp directory, extracts the text with `pdftotext -layout -enc UTF-8` and prints it, with an optional page range. `--file` reads a saved PDF with no network call, `--list` prints the 29 rows offline and a missing `pdftotext` exits 3 and names `brew install poppler`. It reads the text layer only, so no OCR runs, and an extraction that holds only whitespace exits 4 with the HTML page or the Operator named as a fallback. The reader never writes inside the repository and the offline suite proves the argument passing, the refusals, the 29 rows and a loopback download.
+`scripts/read-pdf-source.py` accepts a URL only when `assets/source-library.json` records it with access `pdf-needs-reader`, downloads it into a fresh temp directory, extracts the text with `pdftotext -layout -enc UTF-8` and prints it. `--file` reads a saved PDF with no network call, `--list` prints the 29 rows offline and a missing `pdftotext` exits 3 and names `brew install poppler`. It reads the text layer only, so no OCR runs, and an extraction that holds only whitespace exits 4 with the HTML page or the Operator named as a fallback. The reader never writes inside the repository and the offline suite proves the argument passing, the refusals, the `--list` rows and a loopback download.
 
 #### Source Files
 
@@ -489,22 +489,6 @@ See [`reference-and-state/glossary-router.md`](reference-and-state/glossary-rout
 
 ---
 
-### Topic file split
-
-#### Description
-
-Holds every year topic as four part files and the general topics as 13 files, and proves with a hashed manifest that no part drifted after the split.
-
-#### Current Reality
-
-Each year topic is a folder of `figures.md`, `rules.md`, `examples.md` and `notes.md`, and the general topics of `dutch-tax-rules.md` sit in `references/tax-rules/general/`. Every citation names the part that holds its line or heading, and a bare topic path points at `figures.md`. Tracked names use their English form and a reviewed rename lands through the accept-renames mode. The manifest hashes each part body and header and the kept entry file, and `check-route-table.py` runs the check so CI fails on a drifted part.
-
-#### Source Files
-
-See [`reference-and-state/topic-file-split.md`](reference-and-state/topic-file-split.md) for source and validation anchors.
-
----
-
 ### Year rollover runbook
 
 #### Description
@@ -513,7 +497,7 @@ Runs the yearly corpus rollover and keeps the year files checked against the rel
 
 #### Current Reality
 
-The runbook carries the corpus into the next tax year with its sources and checked dates. The calendar check compares the year files with the release checkpoints and the monthly watch reports a changed publication series or a page that goes live and exits 1 when every fetched URL failed. The runbook also owns the carry-forward rule, which states that every condition names its alternative or its default, and `outline-check.py` enforces the rule over the year and general topic files.
+The runbook carries the corpus into the next tax year with its sources and checked dates. The calendar check compares the year files with the release checkpoints and the monthly watch reports a changed publication series or a page that goes live and exits 1 when every fetched URL failed. The runbook also owns the carry-forward rule, which states that every condition names its alternative or its default.
 
 #### Source Files
 
@@ -531,27 +515,11 @@ Resolves every relative link and fragment in the skill family and enforces the y
 
 #### Current Reality
 
-The check resolves every relative link and fragment across the bootstrap, the README and the skill markdown. It rejects a duplicate-suffix slug and reports a missing or out-of-order year section id. The twelve ordinal pointers in the top layer are fragment links the check resolves by path and heading slug. It also counts the sections that open with a positional reference and prints the count with a threshold on an informational line that never changes the exit code. An empty tree exits 2. The offline suite proves both directions on fixtures and the real corpus.
+The check resolves every relative link and fragment across the bootstrap, the README and the skill markdown. It rejects a duplicate-suffix slug and reports a missing or out-of-order year section id. The twelve ordinal pointers in the top layer are fragment links the check resolves by path and heading slug. The offline suite proves both directions on a fixture repository and on a copy of the real tree.
 
 #### Source Files
 
 See [`quality-gates/fragment-link-check.md`](quality-gates/fragment-link-check.md) for source and validation anchors.
-
----
-
-### Outline check
-
-#### Description
-
-Checks the carry-forward rule over the year and general topic files and reports every decision step that names no alternative or default branch.
-
-#### Current Reality
-
-`outline-check.py` reads the split part files below `references/tax-rules/`, a flat year topic file and the general topic files beside them, skips the year README, the changelog, the change note and fenced code blocks, and requires a branch on every decision step without judging it. The rule it enforces is stated in `references/tax-rules/year-rollover.md`. The run prints one line per step that names no branch and then the count line. `check-route-table.py` runs the check beside the word and split checks, so the skill health job fails on a decision step that names none, and `outline-check-test.sh` proves the accepted and rejected shapes on a fixture repository.
-
-#### Source Files
-
-See [`quality-gates/outline-check.md`](quality-gates/outline-check.md) for source and validation anchors.
 
 ---
 
@@ -595,7 +563,7 @@ Pins the token counts of the reference corpus and fails when a reference change 
 
 #### Current Reality
 
-The baseline counts the reference corpus and the named units in the pinned encodings and fails when a reference change moves a budgeted row or when the hub `SKILL.md`, the accountant `ROUTER.md` and the accountant `SKILL.md`, the three skill files read after `AGENTS.md`, together pass a 12,000 token request line. The canary covers the car-question route and its token ceiling. A sibling word check holds each `SKILL.md` and `ROUTER.md` at a 3,000-word loading budget with a 4,000-word ceiling and `check-route-table.py` runs it beside the baseline check.
+The baseline counts the reference corpus, the corpus total and the three request files in the pinned encodings and fails when a reference change moves a budgeted row or when the hub `SKILL.md`, the accountant `ROUTER.md` and the accountant `SKILL.md`, the three skill files read after `AGENTS.md`, together pass a 12,000 token request line. The canary covers a swapped encoding, a router past the request line and a stale baseline. A sibling word check holds each `SKILL.md` and `ROUTER.md` at a 3,000-word loading budget with a 4,000-word ceiling, and its suite runs it on the real tree.
 
 #### Source Files
 
@@ -627,7 +595,7 @@ Scores the routing corpus offline and replays the refusal and hostile rows throu
 
 #### Current Reality
 
-The harness builds a router snapshot from the table, the routing constants and the resource map. Resolve mode scores the corpus and replay mode runs the guard against the stub and the suite proves both modes on a temp copy. The corpus covers the T10 to T12 prepare rows, the five VAT branch rows, the two pack rows, the four refusal forms with their guard twins and the HUB rows, which score the hub packet chain.
+The harness reads the table and the route margin from ROUTER.md. Resolve mode scores the corpus and replay mode runs the guard against the stub and the suite proves both modes on a temp copy. Each run writes its files to a fresh temp folder and names it on its last line, unless `--out` names a folder. The corpus covers the T10 to T12 prepare rows, the five VAT branch rows, the two pack rows, the four refusal forms and the HUB rows, which score the hub packet chain. Replay mode runs nine guard gate rows and the hostile invoice cases.
 
 #### Source Files
 
@@ -659,7 +627,7 @@ Fails a P0 matrix row whose test path or case name no longer exists.
 
 #### Current Reality
 
-The matrix holds one row per failure mode with its control, test, owner and status. The check fails a P0 row whose test path is missing or whose case name no longer occurs in that file as a quoted test name, and a row whose test path is absolute, climbs with `..` or resolves outside the repository.
+The matrix holds one row per failure mode with its control, test, owner and status. The check fails a P0 row with no test, any row whose named test path is missing or whose case name no longer occurs in that file as a quoted test name, and a row whose test path resolves outside the repository.
 
 #### Source Files
 
@@ -675,7 +643,7 @@ Requires a covering test or a Regression-Test trailer when a guarded file change
 
 #### Current Reality
 
-A commit that changes a guarded file needs a covering test change or a `Regression-Test:` trailer naming a registered test that exists at that commit. A commented run line, a path after `echo` or `printf` and a step or job with a literal false `if:` register nothing. The suite proves the refusal, the valid trailer and the deleted-test case on fixture repositories.
+A commit that changes a guarded file needs a covering test change or a `Regression-Test:` trailer naming a registered test that exists at that commit. The suite proves the refusal, the valid trailer and the deleted-test case on fixture repositories.
 
 #### Source Files
 

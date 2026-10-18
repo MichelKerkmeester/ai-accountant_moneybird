@@ -22,9 +22,9 @@ Requires a covering test or a Regression-Test trailer when a guarded file change
 
 ## 2. HOW IT WORKS
 
-The guarded set covers the bootstrap, the accountant skill file, the two tool skill files, the Moneybird guard and the shared mechanisms file. The registered test set is read from the parent of the commit and holds the test paths the hardening matrix names plus the test files the skill health workflow runs. A named test registers only when it exists both at the parent and at the commit, so a test created in the commit under check cannot cover it. A deleted path never counts as a test change, while a rename reads as a deletion of its source and an addition of its destination, so both paths reach the gate match. The workflow parser reads run lines only. A comment line, a test path after `echo` or `printf` and every line of a step or job whose `if:` is literally false register nothing, while a step with a context condition such as an event name still registers its suite.
+The guarded set covers the bootstrap, the accountant skill file, the two tool skill files, the Moneybird guard and the shared mechanisms file. The registered test set is read from the parent of the commit and holds the test paths the hardening matrix names plus the test files the skill health workflow runs. A named test registers only when it exists both at the parent and at the commit, so a test created in the commit under check cannot cover it. A deleted path never counts as a test change, while a rename reads as a deletion of its source and an addition of its destination, so both paths reach the gate match. The workflow parser reads the run lines: a plain run line, a `&&` chain and a block scalar all register their suites.
 
-The suite builds fixture repositories with signing and hooks off and proves a missing trailer fails, a valid trailer passes, a deleted covering test does not register and an unknown range or missing root is refused.
+The suite builds fixture repositories with signing and hooks off and proves a missing trailer fails, a valid trailer passes, a deleted covering test does not register and an unknown range is refused.
 
 ---
 

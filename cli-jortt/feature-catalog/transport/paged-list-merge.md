@@ -29,7 +29,7 @@ With `--all`, the CLI requests the first page, appends its `data` array and foll
 
 ### Link Handling
 
-An absolute next link must use HTTPS on `api.jortt.nl`. A plain HTTP link or another host exits 1. A path or query-only link is resolved against the current request. `call --all` on a non-GET operation exits 2 before any request.
+An absolute next link must use HTTPS on `api.jortt.nl`. A plain HTTP link or another host exits 1. A path or query-only link is resolved against the current request. `call --all` on a non-GET operation exits 3 before any request, like every other write.
 
 ---
 

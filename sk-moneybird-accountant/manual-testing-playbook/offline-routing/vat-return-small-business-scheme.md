@@ -45,7 +45,7 @@ The small businesses scheme (KOR) is an exemption, not a reduction. A small busi
 
 1. Read AGENTS.md
 2. Read sk-moneybird-accountant/SKILL.md
-3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check
+3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py
 4. Read sk-moneybird-accountant/references/vat-return/README.md, sk-moneybird-accountant/references/vat-return/return-boxes.md and sk-moneybird-accountant/references/tax-rules/2026/vat/figures.md
 5. Apply the small businesses scheme (kleineondernemersregeling) rules, keep the reverse-charged line in the return, assemble the review pack and stop before any filing action
 

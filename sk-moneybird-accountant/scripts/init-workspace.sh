@@ -69,10 +69,6 @@ while [[ "$#" -gt 0 ]]; do
             SPEC_NAME="$2"
             shift 2
             ;;
-        --spec-name=*)
-            SPEC_NAME="${1#--spec-name=}"
-            shift
-            ;;
         -h|--help)
             usage
             exit 0
@@ -159,7 +155,7 @@ copy_file() {
     local src="$SKILL_DIR/$src_rel"
     local dst="$REPO_ROOT/$dst_rel"
     if [[ ! -f "$src" ]]; then
-        fail "missing $SKILL_NAME/$src_rel, run scripts/generate-plan-kit.py first"
+        fail "missing $SKILL_NAME/$src_rel, run $SKILL_NAME/scripts/generate-plan-kit.py first"
     fi
     if [[ -e "$dst" ]] || [[ -L "$dst" ]]; then
         skipped_files=$((skipped_files + 1))
@@ -226,10 +222,10 @@ is_ignored() {
 # ───────────────────────────────────────────────────────────────
 
 if [[ ! -d "$ASSETS" ]]; then
-    fail "missing $SKILL_NAME/assets/migration, run scripts/generate-plan-kit.py first"
+    fail "missing $SKILL_NAME/assets/migration, run $SKILL_NAME/scripts/generate-plan-kit.py first"
 fi
 if [[ ! -f "$FOLDER_LIST" ]]; then
-    fail "missing $SKILL_NAME/assets/migration/workspace-folders.txt, run scripts/generate-plan-kit.py first"
+    fail "missing $SKILL_NAME/assets/migration/workspace-folders.txt, run $SKILL_NAME/scripts/generate-plan-kit.py first"
 fi
 
 # WHY: a symlinked workspace could redirect writes outside the ignored folder.
@@ -261,7 +257,7 @@ if ! is_ignored "$SPEC_DIR_REL"; then
 fi
 
 if [[ ! -d "$SPEC_TEMPLATE" ]]; then
-    fail "missing $SPEC_TEMPLATE_REL, run scripts/generate-plan-kit.py first"
+    fail "missing $SPEC_TEMPLATE_REL, run $SKILL_NAME/scripts/generate-plan-kit.py first"
 fi
 
 # ───────────────────────────────────────────────────────────────

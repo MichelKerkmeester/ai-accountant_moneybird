@@ -37,7 +37,7 @@ Diagnose with read-only checks first. Never widen scopes or consent to make an e
 3. Run `jortt-cli spec info`. If the spec is stale or missing, update it when network use is allowed.
 4. Check `jortt-cli token status`. It prints presence and remaining minutes only.
 5. Run `jortt-cli whoami` when an API check is appropriate. It shows status and field names only.
-6. Run `bash scripts/doctor.sh` for local checks. It is offline unless `--live` is passed.
+6. Run `bash scripts/doctor.sh` for local checks. It is always offline.
 
 ---
 
@@ -47,7 +47,7 @@ Diagnose with read-only checks first. Never widen scopes or consent to make an e
 |---|---|---|
 | `HTTP 401` | Token was rejected. The CLI clears its cache and retries once. | If it repeats, run `jortt-cli token clear` and verify the client credentials with the operator. |
 | `invalid_scope` | The configured scope string is not accepted for this key. | Compare the requested read scopes with the key configuration in `JORTT_SCOPES`. Do not add write scopes to fix a read error. |
-| Exit 3 | A non-GET operation lacks `--allow-write`. | Stop. Jortt is read-only, and no write path exists for an agent. Hand the change to the Operator for the Jortt UI. |
+| Exit 3 | The call named a non-GET operation and the CLI refuses every one. | Stop. Jortt is read-only, and no write path exists for an agent. Hand the change to the Operator for the Jortt UI. |
 | Exit 4 | The operation's required scope is absent. | Name the missing scope and ask the operator to update key scopes only when the task requires it. |
 | Exit 5 | An output path is outside migration-workspace or crosses a symlink. | Choose a destination inside the ignored workspace. |
 | HTTP 403 | The token is authenticated but lacks permission or access to the resource. | Check the operation scope and account access. Do not retry with broader access without instruction. |

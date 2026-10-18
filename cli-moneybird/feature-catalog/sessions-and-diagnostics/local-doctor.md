@@ -23,7 +23,7 @@ The doctor is the first check after setup and the first step of troubleshooting.
 
 ## 2. HOW IT WORKS
 
-The offline run reports whether `bash`, `curl`, `jq` and `git` exist, whether `moneybird-cli` is on PATH and what `setup.sh --check` says. It reports whether the reader and writer config folders exist, whether `.env` and `.env.writer` exist and whether the main Moneybird variables are set in the process environment. It never opens the credential files and never prints a value.
+The offline run reports whether `bash`, `curl`, `jq` and `git` exist and what `setup.sh --check` says, which includes whether `moneybird-cli` is on PATH. It reports whether the reader and writer config folders exist, whether `.env` and `.env.writer` exist and whether the main Moneybird variables are set in the process environment. It never opens the credential files and never prints a value.
 
 With `--live` and a token in the process environment, it calls the administrations endpoint once and prints the HTTP status, the administration count and a yes or no for each configured administration ID without printing the IDs. The doctor always exits 0 and writes no scratch files.
 

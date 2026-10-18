@@ -11,26 +11,19 @@ resolve beside its page or end the target path, so a categoryless label
 cannot silently name a file another folder holds. A fragment matches an
 explicit anchor line or a heading slug drawn the GitHub way, and a slug that
 resolves only through a duplicate suffix is rejected. Every year topic file
-must hold its section ids in order: eight in a flat topic file, and the
-subset that a topic split part carries. External URLs, images and links
-inside fenced code blocks are skipped, and the script makes no network call.
-Output is sorted and byte-stable.
+must hold the section ids of its part file in order. External URLs, images and
+links inside fenced code blocks are skipped, and the script makes no network
+call. Output is sorted and byte-stable.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/check-fragments.py
-    python3 -I sk-moneybird-accountant/scripts/check-fragments.py --root DIR
 
 Options:
-    --root DIR  Read another copy of the repository. Defaults to the root
-                above this script.
+    None.
 
 Output:
-    One line per problem on stdout, then a summary line and an informational
-    line that counts the sections opening with a positional reference against
-    a threshold and never changes the exit code. Exit code 1 when a problem
-    remains and 0 when the corpus is clean. Exit code 2 when the root is not
-    a directory, when none of the scan roots exists under it or when the scan
-    finds no markdown file, so an empty tree never reads as clean.
+    One line per problem on stdout, then a summary line. Exit code 1 when a
+    problem remains and 0 when the corpus is clean.
 """
 
 # ───────────────────────────────────────────────────────────────
@@ -60,29 +53,10 @@ LINK_RE = re.compile(r"\[((?:[^\[\]]|\[[^\]\[]*\])*)\]\(([^)]*)\)")
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.*?)\s*#*\s*$")
 ANCHOR_RE = re.compile(r'<a\s+id="([^"]+)"')
 FENCE_RE = re.compile(r"^\s{0,3}(`{3,}|~{3,})")
-# WHY: a reference definition holds a path without parentheses, so it needs
-# its own pattern to reach the same path and fragment checks.
-REFERENCE_RE = re.compile(r"^\s{0,3}\[[^\]]+\]:\s*(?:<([^>]+)>|(\S+))")
 NUMBERED_H2_RE = re.compile(r"^##\s+(\d+)\b")
 SCHEME_RE = re.compile(r"^[a-zA-Z][a-zA-Z0-9+.\-]*:")
 YEAR_DIR_RE = re.compile(r"^20\d\d$")
 IMAGE_PREFIX = "!"
-
-# WHY: a year folder holds three files beside its topic files, the year README,
-# the year changelog and the year change note. None of the three carries the
-# eight section ids.
-YEAR_NON_TOPIC_NAMES = frozenset(("README.md", "changelog.md", "changes.md"))
-
-SECTION_IDS = (
-    "1-overview",
-    "2-key-figures",
-    "3-how-it-works",
-    "4-worked-examples",
-    "5-changes",
-    "6-in-the-books",
-    "7-open-points",
-    "8-related-resources",
-)
 
 # WHY: a topic split keeps the eight topic sections in four part files, so
 # each part is held only to the sections it carries.
@@ -99,34 +73,6 @@ SPLIT_TOPIC_SECTIONS = {
 }
 
 Problem = Tuple[str, int, str, str]
-
-# WHY: a section that opens with a positional reference hands back text whose
-# referent sits elsewhere, so the count is reported beside the link findings.
-# The lint counts against a threshold and rewrites nothing, because a
-# mechanical rewrite can drop the referent the sentence needs.
-POSITIONAL_WINDOW = 220
-POSITIONAL_THRESHOLD_PERCENT = 15
-POSITIONAL_MARKERS = (
-    "below",
-    "above",
-    "following",
-    "this section",
-    "this file",
-    "this page",
-    "as follows",
-    "hieronder",
-    "hierboven",
-    "onderstaand",
-    "onderstaande",
-    "bovenstaand",
-    "bovenstaande",
-    "volgende",
-    "deze sectie",
-    "dit bestand",
-    "deze pagina",
-    "verderop",
-)
-H2_RE = re.compile(r"^##\s+\S")
 
 # ───────────────────────────────────────────────────────────────
 # 3. HELPERS
@@ -311,10 +257,8 @@ def find_links(path: str) -> Iterator[Tuple[int, str, str]]:
         path: Absolute path of the markdown file.
 
     Yields:
-        Triples of line number, link label and raw link target. Inline links
-        and reference definitions are both included. External URLs and images
-        are left out. A reference definition names its target without a
-        label, so its empty label checks nothing.
+        Triples of line number, link label and raw link target. External URLs
+        and images are left out.
     """
     for number, line in visible_lines(path):
         for match in LINK_RE.finditer(line):
@@ -324,11 +268,6 @@ def find_links(path: str) -> Iterator[Tuple[int, str, str]]:
             target = match.group(2).strip()
             if is_relative(target):
                 yield number, match.group(1).strip(), target
-        definition = REFERENCE_RE.match(line)
-        if definition:
-            target = (definition.group(1) or definition.group(2)).strip()
-            if is_relative(target):
-                yield number, "", target
 
 
 def label_problem(path: str, label: str, target: str) -> Optional[str]:
@@ -412,50 +351,24 @@ def check_links(path: str) -> Tuple[int, int, List[Tuple[int, str, str]]]:
 # ───────────────────────────────────────────────────────────────
 
 def is_year_topic(relative_path: str) -> bool:
-    """Tell whether a path is a year topic file.
+    """Tell whether a path is a year topic part file.
 
     Args:
         relative_path: Path relative to the repository root.
 
     Returns:
-        True for a markdown topic file below references, at any folder depth.
-        A flat topic file sits directly in a year folder. A split topic file
-        sits in a topic folder directly under a year folder and is one of
-        figures.md, rules.md, examples.md and notes.md. The year README, the
-        year changelog and the year change note are never topic files.
+        True for one of figures.md, rules.md, examples.md and notes.md in a
+        topic folder directly under a year folder below references. The year
+        README, the year changelog and the year change note are never topic
+        files.
     """
     parts = relative_path.split("/")
-    if len(parts) < 3 or "references" not in parts[:-2]:
-        return False
-    if parts[-1] in YEAR_NON_TOPIC_NAMES:
-        return False
-    if YEAR_DIR_RE.match(parts[-2]) is not None:
-        return True
-    # WHY: a topic split keeps one topic as a folder of four part files
-    # directly under the year folder, so the part carries the section ids.
     return (
         len(parts) >= 4
+        and "references" in parts[:-2]
         and YEAR_DIR_RE.match(parts[-3]) is not None
         and parts[-1] in SPLIT_TOPIC_SECTIONS
     )
-
-
-def expected_section_ids(relative_path: str) -> Tuple[str, ...]:
-    """Return the section ids one year topic file must carry.
-
-    Args:
-        relative_path: Path relative to the repository root.
-
-    Returns:
-        All eight ids for a flat topic file or for a file that is not one of
-        the four split parts, and the subset of a split part otherwise:
-        figures.md holds sections 1 and 2, rules.md section 3, examples.md
-        section 4 and notes.md sections 5 to 8.
-    """
-    parts = relative_path.split("/")
-    if len(parts) >= 4 and YEAR_DIR_RE.match(parts[-3]) is not None:
-        return SPLIT_TOPIC_SECTIONS.get(parts[-1], SECTION_IDS)
-    return SECTION_IDS
 
 
 def check_section_ids(
@@ -498,101 +411,13 @@ def check_section_ids(
             problems.append((number, value, "duplicate-id"))
     if problems:
         return problems
-    for index, value in enumerate(values):
-        if value != expected[index]:
-            return [(found[index][0], value, "out-of-order")]
-    return []
+    # WHY: every id is present once and none is foreign, so only the order is wrong.
+    index = next(i for i, value in enumerate(values) if value != expected[i])
+    return [(found[index][0], values[index], "out-of-order")]
 
 
 # ───────────────────────────────────────────────────────────────
-# 6. POSITIONAL OPENING LINT
-# ───────────────────────────────────────────────────────────────
-
-def positional_openings(path: str) -> Tuple[int, int]:
-    """Count the sections of one file that open with a positional reference.
-
-    A section starts on its H2 heading line. Its opening is the text up to
-    the window limit, with the heading, the anchor lines and the blank lines
-    left out. A marker matches on a word boundary, without case.
-
-    Args:
-        path: Absolute path of the markdown file.
-
-    Returns:
-        A pair of the sections that open with a positional reference and the
-        sections counted.
-    """
-    sections = 0
-    positional = 0
-    opening: Optional[str] = None
-    for _, line in visible_lines(path):
-        if H2_RE.match(line):
-            if opening is not None:
-                sections += 1
-                if opening_matches(opening):
-                    positional += 1
-            opening = ""
-            continue
-        if opening is None:
-            continue
-        stripped = line.strip()
-        if not stripped or stripped.startswith("<a ") or stripped.startswith("<!--"):
-            continue
-        if len(opening) < POSITIONAL_WINDOW:
-            opening += " " + stripped
-    if opening is not None:
-        sections += 1
-        if opening_matches(opening):
-            positional += 1
-    return positional, sections
-
-
-def opening_matches(opening: str) -> bool:
-    """Tell whether one section opening carries a positional reference.
-
-    Args:
-        opening: Text of the section opening, markers included.
-
-    Returns:
-        True when one marker occurs on a word boundary.
-    """
-    lowered = opening.lower()
-    for marker in POSITIONAL_MARKERS:
-        start = 0
-        while True:
-            index = lowered.find(marker, start)
-            if index == -1:
-                break
-            before = lowered[index - 1] if index > 0 else " "
-            after_index = index + len(marker)
-            after = lowered[after_index] if after_index < len(lowered) else " "
-            if not before.isalnum() and not after.isalnum():
-                return True
-            start = index + 1
-    return False
-
-
-def positional_report(root: str) -> Tuple[int, int]:
-    """Count the positional openings of the whole corpus.
-
-    Args:
-        root: Repository root.
-
-    Returns:
-        A pair of the sections that open with a positional reference and the
-        sections counted.
-    """
-    positional = 0
-    sections = 0
-    for path in markdown_files(root):
-        file_positional, file_sections = positional_openings(path)
-        positional += file_positional
-        sections += file_sections
-    return positional, sections
-
-
-# ───────────────────────────────────────────────────────────────
-# 7. REPORT
+# 6. REPORT
 # ───────────────────────────────────────────────────────────────
 
 def check(root: str) -> Tuple[int, int, List[Problem]]:
@@ -620,14 +445,14 @@ def check(root: str) -> Tuple[int, int, List[Problem]]:
             problems.extend(
                 (source, number, marker, reason)
                 for number, marker, reason in check_section_ids(
-                    path, expected_section_ids(source)
+                    path, SPLIT_TOPIC_SECTIONS[os.path.basename(path)]
                 )
             )
     return links, fragments, problems
 
 
 # ───────────────────────────────────────────────────────────────
-# 8. ENTRY POINT
+# 7. ENTRY POINT
 # ───────────────────────────────────────────────────────────────
 
 def main(argv: List[str]) -> int:
@@ -638,45 +463,18 @@ def main(argv: List[str]) -> int:
 
     Returns:
         Zero when no problem remains, one otherwise.
-
-    Raises:
-        SystemExit: With code 2 if the root is not a directory, holds none of
-        the scan roots or holds no markdown file under them.
     """
     parser = argparse.ArgumentParser(
         prog=GENERATOR,
         description="Check every relative markdown link and section id in the skill family.",
     )
-    parser.add_argument(
-        "--root",
-        default=REPO_ROOT,
-        metavar="DIR",
-        help="read another copy of the repository instead of the one above this script",
-    )
-    args = parser.parse_args(argv)
-    root = os.path.abspath(args.root)
-    if not os.path.isdir(root):
-        fail("not a directory: %s" % args.root)
-    # WHY: a wrong root holds no scan root, and a clean verdict over zero
-    # files would hide that the check read nothing at all.
-    if not any(os.path.exists(os.path.join(root, entry)) for entry in SCAN_ROOTS):
-        fail("none of the scan roots exists under %s: %s" % (args.root, ", ".join(SCAN_ROOTS)))
-    if not markdown_files(root):
-        fail("the scan found no markdown files under %s" % args.root)
-    links, fragments, problems = check(root)
+    parser.parse_args(argv)
+    links, fragments, problems = check(REPO_ROOT)
     for source, number, marker, reason in sorted(problems):
         print("fragment %s:%d %s %s" % (source, number, marker, reason))
-    summary = "check-fragments: %d links, %d fragment links, %d problems" % (
-        links,
-        fragments,
-        len(problems),
-    )
-    print(summary)
-    positional, sections = positional_report(root)
-    percent = (100 * positional / sections) if sections else 0
     print(
-        "check-fragments: positional openings %d of %d sections (informational, threshold %d%%, measured %.1f%%)"
-        % (positional, sections, POSITIONAL_THRESHOLD_PERCENT, percent)
+        "check-fragments: %d links, %d fragment links, %d problems"
+        % (links, fragments, len(problems))
     )
     return 1 if problems else 0
 

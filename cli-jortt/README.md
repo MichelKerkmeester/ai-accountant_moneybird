@@ -86,7 +86,7 @@ Expected: an HTTP status and an item count. The file lands inside `migration-wor
 
 ## 4. HOW IT WORKS
 
-`ops` lists the operations and `describe` shows one operation's scope and parameters. `call` checks parameter names, required parameters and basic types before it makes any request. `--all` follows the next links and merges every page into one JSON array. `call` and `get` print a short summary by default, for example `HTTP 200, items: 25`. Record content stays out of the terminal by default. `--out` saves the full body inside the workspace and prints the same summary. `--print-body` prints the full body and is refused with exit 2 when an agent session marker is set. Agents never use `--print-body`.
+`ops` lists the operations and `describe` shows one operation's scope and parameters. `call` checks parameter names, required parameters and basic types before it makes any request. `--all` follows the next links and merges every page into one JSON array. `call` prints a short summary by default, for example `HTTP 200, items: 25`. Record content stays out of the terminal by default. `--out` saves the full body inside the workspace and prints the same summary. `--print-body` prints the full body and is refused with exit 2 when an agent session marker is set. Agents never use `--print-body`.
 
 The UI stays the only source for XAF, annual accounts (jaarrekening) and filed VAT returns.
 
@@ -105,7 +105,7 @@ ROUTER.md routing (the operation decides the surface)
 
 Every `call` passes three local checks before the CLI asks for a token.
 
-- A call that is not a GET needs `--allow-write`.
+- A call that is not a GET is refused with exit 3.
 - The operation's scope must appear in `JORTT_SCOPES`.
 - Any `--out` path must resolve inside `migration-workspace/`.
 
@@ -133,7 +133,7 @@ Use `cli-jortt` for Jortt source records, source documents and Jortt API diagnos
 |---|---|---|
 | `jortt-cli` not found | The CLI is not on your `PATH` yet | Run `bash cli-jortt/cli/jortt-cli/setup.sh` and apply the symlink command it prints |
 | The API description is missing | No cached copy exists | Run `jortt-cli spec update` when you have network access |
-| Exit 3 | A write call lacks `--allow-write` | Stop. Jortt is read-only and no write path exists for an agent |
+| Exit 3 | A non-GET operation was refused | Stop. Jortt is read-only and no write path exists for an agent |
 | Exit 4 | The key lacks the operation's scope | Name the scope and ask the Operator before changing key scopes |
 | Exit 5 | The output path leaves `migration-workspace/` | Use a relative name inside the workspace |
 
@@ -145,7 +145,7 @@ Use `cli-jortt` for Jortt source records, source documents and Jortt API diagnos
 
 **Q: Can an agent write to Jortt?**
 
-No. Jortt is read-only and no write path exists for an agent. A write call without `--allow-write` exits 3.
+No. Jortt is read-only and no write path exists for an agent. Every non-GET call exits 3.
 
 **Q: Do the offline checks call Jortt?**
 
@@ -163,7 +163,7 @@ The offline checks use a local copy of the API description and never call Jortt.
 
 | Check | Result |
 |---|---|
-| CLI contract | `bash cli-jortt/cli/jortt-cli/tests/run-tests.sh` ends with `Result: 26 passed, 0 failed`, including one fault case per Jortt exit code 1 to 6 |
+| CLI contract | `bash cli-jortt/cli/jortt-cli/tests/run-tests.sh` ends with `Result: 22 passed, 0 failed`, including fault cases for Jortt exit codes 1, 2 and 6 |
 | Offline doctor | `bash cli-jortt/scripts/doctor.sh` ends with `Mode: offline. No network calls were made.` |
 | Operator scenarios | The [manual testing playbook](manual-testing-playbook/manual-testing-playbook.md) holds the scenario contract. A recorded run lands under `benchmark/reports/` |
 

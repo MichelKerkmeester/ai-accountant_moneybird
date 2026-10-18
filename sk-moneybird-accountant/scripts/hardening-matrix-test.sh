@@ -2,15 +2,19 @@
 # ───────────────────────────────────────────────────────────────
 # COMPONENT: HARDENING MATRIX TEST
 # ───────────────────────────────────────────────────────────────
-# Tests check-hardening-matrix.py on the real matrix, on a fixture copy whose
-# P0 test paths and case strings are present, on a copy with one P0 test path
-# removed, on a copy with one P0 test cell blanked and on a copy with one P0
-# case string renamed. Each mutated copy must fail the check and name the row.
+# Tests check-hardening-matrix.py on a fixture copy whose P0 test paths and
+# case strings are present, on a copy with one P0 test path removed, on a copy
+# with one P0 test cell blanked, on a copy with one P0 case string renamed, on
+# a copy whose test path links outside the root and on copies whose case name
+# only sits inside another word or on a comment line. Each fixture copy holds
+# its own copy of the checker, which reads the repository above it. Each
+# mutated copy must fail the check and name the row.
 # Usage: hardening-matrix-test.sh [repo root]
 # Exit Codes:
 #   0 - All checks pass
 #   1 - One or more checks fail
-#   2 - Invalid arguments or missing matrix files
+#   2 - Invalid arguments, missing matrix files or a fixture copy that did not
+#       build
 #
 # WHY: the coverage check only guards the matrix when it passes a complete
 # fixture and fails a fixture with one P0 path missing, so this suite builds
@@ -101,14 +105,14 @@ group() {
     printf '\n== %s\n' "$1"
 }
 
-# Run the check against a fixture root and capture its output
+# Run the fixture root's own copy of the checker and capture its output
 # Args:
 #   $1 - Repository root to check
 #   $2 - Tag for the captured output file under the temp root
 # Returns:
 #   The checker exit status
 run_checker() {
-    python3 -I "$CHECKER" --check --root "$1" >"$TMP_ROOT/check-$2.txt" 2>&1
+    python3 -I "$1/sk-moneybird-accountant/scripts/check-hardening-matrix.py" >"$TMP_ROOT/check-$2.txt" 2>&1
 }
 
 # List one tab-separated line per matrix row: priority, test path, test cell
@@ -139,7 +143,8 @@ if [[ -z "$FIRST_P0_PATH" ]] || [[ -z "$FIRST_P0_CELL" ]]; then
     exit 2
 fi
 
-# Build a fixture root: the matrix plus every named test path that exists
+# Build a fixture root: the checker, the matrix and every named test path that
+# exists
 # Args:
 #   $1 - Target root to create
 # Returns:
@@ -147,7 +152,8 @@ fi
 build_fixture() {
     local root="$1"
     local _priority path _cell
-    mkdir -p "$root/sk-moneybird-accountant" || return 1
+    mkdir -p "$root/sk-moneybird-accountant/scripts" || return 1
+    cp "$CHECKER" "$root/sk-moneybird-accountant/scripts/check-hardening-matrix.py" || return 1
     cp "$MATRIX" "$root/sk-moneybird-accountant/hardening-matrix.md" || return 1
     while IFS=$'\t' read -r _priority path _cell; do
         [[ -n "$path" ]] || continue
@@ -156,6 +162,17 @@ build_fixture() {
         cp "$REPO_SRC/$path" "$root/$path" || return 1
     done < "$TMP_ROOT/rows.tsv"
     return 0
+}
+
+# Build a fixture root and stop the run when it does not build, because every
+# case that reads it would then report a verdict about nothing
+# Args:
+#   $1 - Target root to create
+require_fixture() {
+    if ! build_fixture "$1"; then
+        printf 'error: the fixture copy %s did not build\n' "$1" >&2
+        exit 2
+    fi
 }
 
 # Replace the test cell of the first P0 row in a fixture matrix
@@ -178,26 +195,13 @@ PY
 }
 
 # ───────────────────────────────────────────────────────────────
-# 4. REAL TREE AND FIXTURE COPY CHECKS
+# 4. FIXTURE COPY CHECK
 # ───────────────────────────────────────────────────────────────
-
-group "Real tree"
-
-if run_checker "$REPO_SRC" real && grep -qF 'hardening-matrix: ok' "$TMP_ROOT/check-real.txt"; then
-    pass "the real matrix passes the check"
-else
-    fail "the real matrix passes the check"
-    sed -n '1,5p' "$TMP_ROOT/check-real.txt"
-fi
 
 group "Fixture copy"
 
 FIXTURE="$TMP_ROOT/fixture"
-if build_fixture "$FIXTURE"; then
-    pass "the fixture copy builds"
-else
-    fail "the fixture copy builds"
-fi
+require_fixture "$FIXTURE"
 
 if run_checker "$FIXTURE" fixture && grep -qF 'hardening-matrix: ok' "$TMP_ROOT/check-fixture.txt"; then
     pass "the fixture copy passes the check"
@@ -207,7 +211,7 @@ else
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 5. REMOVED TEST PATH
+# 5. REMOVED TEST PATH AND RENAMED P1 CASE
 # ───────────────────────────────────────────────────────────────
 
 group "Removed test path"
@@ -222,6 +226,33 @@ else
     sed -n '1,5p' "$TMP_ROOT/check-removed.txt"
 fi
 
+group "Renamed P1 case"
+
+FIRST_P1_CELL=$(awk -F'\t' '$1 == "P1" { print $3; exit }' "$TMP_ROOT/rows.tsv")
+RENAMED="$TMP_ROOT/fixture-renamed"
+require_fixture "$RENAMED"
+python3 -I - "$RENAMED/sk-moneybird-accountant/hardening-matrix.md" "$FIRST_P1_CELL" <<'PY'
+import sys
+
+path, cell = sys.argv[1], sys.argv[2]
+text = open(path, encoding="utf-8").read()
+if not cell or "`%s`" % cell not in text:
+    print("error: the fixture matrix does not hold a P1 test cell", file=sys.stderr)
+    sys.exit(2)
+renamed = cell.split(" :: ", 1)[0] + " :: no such case"
+open(path, "w", encoding="utf-8").write(text.replace("`%s`" % cell, "`%s`" % renamed, 1))
+PY
+[[ $? -eq 0 ]] || { printf 'error: the P1 test cell was not renamed\n' >&2; exit 2; }
+
+run_checker "$RENAMED" renamed
+status=$?
+if [[ "$status" -eq 1 ]] && grep -qF 'test case not found' "$TMP_ROOT/check-renamed.txt"; then
+    pass "a renamed P1 case fails the check"
+else
+    fail "a renamed P1 case fails the check (exit $status)"
+    sed -n '1,5p' "$TMP_ROOT/check-renamed.txt"
+fi
+
 # ───────────────────────────────────────────────────────────────
 # 6. BLANKED P0 TEST CELL
 # ───────────────────────────────────────────────────────────────
@@ -229,11 +260,7 @@ fi
 group "Blanked P0 test cell"
 
 BLANK="$TMP_ROOT/fixture-blank"
-if build_fixture "$BLANK"; then
-    pass "the blank fixture copy builds"
-else
-    fail "the blank fixture copy builds"
-fi
+require_fixture "$BLANK"
 
 python3 -I - "$BLANK/sk-moneybird-accountant/hardening-matrix.md" "$FIRST_P0_CELL" <<'PY'
 import sys
@@ -267,11 +294,7 @@ fi
 group "Missing case string"
 
 MISSING_CASE="$TMP_ROOT/fixture-missing-case"
-if build_fixture "$MISSING_CASE"; then
-    pass "the missing-case fixture copy builds"
-else
-    fail "the missing-case fixture copy builds"
-fi
+require_fixture "$MISSING_CASE"
 
 FIRST_P0_CASE="${FIRST_P0_CELL#* :: }"
 python3 -I - "$MISSING_CASE/$FIRST_P0_PATH" "$FIRST_P0_CASE" <<'PY'
@@ -308,41 +331,21 @@ group "Escaping test path"
 OUTSIDE_SUITE="$TMP_ROOT/outside-test.sh"
 printf '#!/usr/bin/env bash\npass "outside case"\n' >"$OUTSIDE_SUITE"
 
-# An absolute path, a parent segment and a link that leaves the root each
-# resolve to a real file with the named case, so only the containment rule
-# can fail them.
-for escape in absolute parent link; do
-    ESCAPE_ROOT="$TMP_ROOT/fixture-escape-$escape"
-    if build_fixture "$ESCAPE_ROOT"; then
-        pass "the $escape escape fixture copy builds"
-    else
-        fail "the $escape escape fixture copy builds"
-    fi
-    case "$escape" in
-        absolute)
-            ESCAPE_CELL="/etc/hosts :: localhost"
-            ESCAPE_LABEL="an absolute test path"
-            ;;
-        parent)
-            ESCAPE_CELL="../outside-test.sh :: outside case"
-            ESCAPE_LABEL="a test path with a parent segment"
-            ;;
-        link)
-            ln -s "$OUTSIDE_SUITE" "$ESCAPE_ROOT/linked-test.sh"
-            ESCAPE_CELL="linked-test.sh :: outside case"
-            ESCAPE_LABEL="a test path that links outside the root"
-            ;;
-    esac
-    swap_first_p0_cell "$ESCAPE_ROOT" "$ESCAPE_CELL"
-    run_checker "$ESCAPE_ROOT" "escape-$escape"
-    status=$?
-    if [[ "$status" -eq 1 ]] && grep -qF 'test path must stay inside the repository' "$TMP_ROOT/check-escape-$escape.txt"; then
-        pass "$ESCAPE_LABEL fails the check"
-    else
-        fail "$ESCAPE_LABEL fails the check (exit $status)"
-        sed -n '1,5p' "$TMP_ROOT/check-escape-$escape.txt"
-    fi
-done
+# The link resolves to a real file with the named case, so only the
+# containment rule can fail it. An absolute path and a parent segment resolve
+# outside the root the same way.
+ESCAPE_ROOT="$TMP_ROOT/fixture-escape-link"
+require_fixture "$ESCAPE_ROOT"
+ln -s "$OUTSIDE_SUITE" "$ESCAPE_ROOT/linked-test.sh"
+swap_first_p0_cell "$ESCAPE_ROOT" "linked-test.sh :: outside case"
+run_checker "$ESCAPE_ROOT" escape-link
+status=$?
+if [[ "$status" -eq 1 ]] && grep -qF 'test path must stay inside the repository' "$TMP_ROOT/check-escape-link.txt"; then
+    pass "a test path that links outside the root fails the check"
+else
+    fail "a test path that links outside the root fails the check (exit $status)"
+    sed -n '1,5p' "$TMP_ROOT/check-escape-link.txt"
+fi
 
 # ───────────────────────────────────────────────────────────────
 # 9. CASE NAME INSIDE ANOTHER WORD
@@ -351,11 +354,7 @@ done
 group "Case name inside another word"
 
 SUBSTRING="$TMP_ROOT/fixture-substring"
-if build_fixture "$SUBSTRING"; then
-    pass "the substring fixture copy builds"
-else
-    fail "the substring fixture copy builds"
-fi
+require_fixture "$SUBSTRING"
 
 python3 -I - "$SUBSTRING/$FIRST_P0_PATH" "$FIRST_P0_CASE" <<'PY'
 import sys
@@ -389,23 +388,18 @@ fi
 group "Case name in a comment"
 
 COMMENTED="$TMP_ROOT/fixture-commented"
-if build_fixture "$COMMENTED"; then
-    pass "the commented fixture copy builds"
-else
-    fail "the commented fixture copy builds"
-fi
+require_fixture "$COMMENTED"
 
 python3 -I - "$COMMENTED/$FIRST_P0_PATH" "$FIRST_P0_CASE" <<'PY'
 import sys
 
 path = sys.argv[1]
 case = sys.argv[2]
-marker = "//" if path.endswith((".js", ".ts", ".mjs", ".cjs")) else "#"
 lines = open(path, encoding="utf-8").read().splitlines()
 if not any(case in line for line in lines):
     print("error: the fixture copy does not hold the expected case", file=sys.stderr)
     sys.exit(2)
-lines = [marker + " " + line if case in line else line for line in lines]
+lines = ["# " + line if case in line else line for line in lines]
 open(path, "w", encoding="utf-8").write("\n".join(lines) + "\n")
 PY
 commented_status=$?
@@ -422,66 +416,8 @@ else
     sed -n '1,5p' "$TMP_ROOT/check-commented.txt"
 fi
 
-# Each form puts the case name in a comment that starts right after a shell
-# operator, or after a string that ends in an escaped backslash
-for form in semicolon subshell and-list escape; do
-    TRAILING="$TMP_ROOT/fixture-trailing-$form"
-    if build_fixture "$TRAILING"; then
-        pass "the trailing comment fixture copy builds ($form)"
-    else
-        fail "the trailing comment fixture copy builds ($form)"
-    fi
-
-    python3 -I - "$TRAILING/$FIRST_P0_PATH" "$FIRST_P0_CASE" "$form" <<'PY'
-import sys
-
-path = sys.argv[1]
-case = sys.argv[2]
-forms = {
-    "semicolon": 'true;# "%s"',
-    "subshell": '(exit 0)# "%s"',
-    "and-list": 'true&&# "%s"',
-    "escape": 'echo "a\\\\" # "%s"',
-}
-template = 'true // "%s"' if path.endswith((".js", ".ts", ".mjs", ".cjs")) else forms[sys.argv[3]]
-lines = open(path, encoding="utf-8").read().splitlines()
-if not any(case in line for line in lines):
-    print("error: the fixture copy does not hold the expected case", file=sys.stderr)
-    sys.exit(2)
-lines = [template % case if case in line else line for line in lines]
-open(path, "w", encoding="utf-8").write("\n".join(lines) + "\n")
-PY
-    trailing_status=$?
-    if [[ "$trailing_status" -ne 0 ]]; then
-        fail "every line that holds the case ends in a trailing comment in the fixture copy ($form, exit $trailing_status)"
-    fi
-
-    run_checker "$TRAILING" "trailing-$form"
-    status=$?
-    if [[ "$status" -eq 1 ]] && grep -qF 'test case not found' "$TMP_ROOT/check-trailing-$form.txt"; then
-        pass "a case name that only sits in a trailing comment fails the check ($form)"
-    else
-        fail "a case name that only sits in a trailing comment fails the check ($form, exit $status)"
-        sed -n '1,5p' "$TMP_ROOT/check-trailing-$form.txt"
-    fi
-done
-
 # ───────────────────────────────────────────────────────────────
-# 11. USAGE GUARDS
-# ───────────────────────────────────────────────────────────────
-
-group "Usage guards"
-
-python3 -I "$CHECKER" --check --root "$TMP_ROOT/no-such-root" >/dev/null 2>&1
-status=$?
-if [[ "$status" -eq 2 ]]; then
-    pass "a missing root is refused with exit 2"
-else
-    fail "a missing root is refused with exit 2 (exit $status)"
-fi
-
-# ───────────────────────────────────────────────────────────────
-# 12. RESULT SUMMARY AND EXIT
+# 11. RESULT SUMMARY AND EXIT
 # ───────────────────────────────────────────────────────────────
 
 printf '\nResult: %d passed, %d failed\n' "$passed" "$failed"

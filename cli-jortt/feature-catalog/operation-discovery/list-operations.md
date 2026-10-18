@@ -5,7 +5,7 @@ trigger_phrases:
   - "List operations"
   - "jortt-cli ops"
   - "find a Jortt operation slug"
-  - "list Jortt write operations"
+  - "list Jortt operations by tag"
 version: 1.0.0.0
 ---
 
@@ -25,7 +25,7 @@ Every other command addresses an operation by the slug this list shows, so `ops`
 
 ### Core Behavior
 
-`jortt-cli ops` loads the OpenAPI document and prints a table with the columns `SLUG`, `METHOD`, `PATH` and `SCOPE`. The scope column is the OAuth scope the operation declares. `--tag TAG` keeps one API tag, `--writes` keeps every method other than GET and `--json` prints an array of objects that also carries the tag.
+`jortt-cli ops` loads the OpenAPI document and prints a table with the columns `SLUG`, `METHOD`, `PATH` and `SCOPE`. The scope column is the OAuth scope the operation declares. `--tag TAG` keeps one API tag and `--json` prints an array of objects that also carries the tag.
 
 ### Slug Rules
 

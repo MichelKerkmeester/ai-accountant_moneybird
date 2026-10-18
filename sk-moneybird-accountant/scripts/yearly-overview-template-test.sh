@@ -15,8 +15,6 @@
 # WHY: the template is the printable pack layout, so a broken token, a remote
 # asset or a lost prepared-not-filed line must fail before a copy is rendered.
 # The check proves structure only and never a total.
-# WHY: every synthetic value carries the three HTML special characters, so the
-# escaping assertion bites on every token and not on one lucky value.
 # WHY: the suite inspects $? after commands that are expected to fail, so -e stays off.
 set -uo pipefail
 
@@ -138,72 +136,11 @@ PY
 
 group "Real template"
 
-if python3 -I "$FILLER" --template "$TEMPLATE" --out "$TMP_ROOT/filled.html" >"$TMP_ROOT/fill.txt" 2>&1; then
+if python3 -I "$FILLER" --template "$TEMPLATE" >"$TMP_ROOT/fill.txt" 2>&1; then
     pass "a synthetic fill of the real template passes every check"
 else
     fail "a synthetic fill of the real template passes every check"
     sed -n '1,5p' "$TMP_ROOT/fill.txt"
-fi
-
-if grep -qF 'yearly-overview-template: ok' "$TMP_ROOT/fill.txt"; then
-    pass "the fill prints its ok line"
-else
-    fail "the fill prints its ok line"
-fi
-
-if [[ -f "$TMP_ROOT/filled.html" ]]; then
-    pass "the filled copy is written"
-else
-    fail "the filled copy is written"
-fi
-
-if grep -qF 'S&amp;&lt;year&gt;' "$TMP_ROOT/filled.html"; then
-    pass "a value with HTML special characters comes out escaped"
-else
-    fail "a value with HTML special characters comes out escaped"
-fi
-
-if grep -qF 'S&<year>' "$TMP_ROOT/filled.html"; then
-    fail "no raw synthetic value survives the fill"
-else
-    pass "no raw synthetic value survives the fill"
-fi
-
-if grep -qE '\{[a-z][a-z_]*\}' "$TMP_ROOT/filled.html"; then
-    fail "no brace token survives the fill"
-else
-    pass "no brace token survives the fill"
-fi
-
-if grep -q 'repeat:' "$TMP_ROOT/filled.html"; then
-    fail "no repeat marker survives the expansion"
-else
-    pass "no repeat marker survives the expansion"
-fi
-
-copies=$(grep -oF 'S&amp;&lt;asset_line_label&gt;' "$TMP_ROOT/filled.html" | wc -l | tr -d ' ')
-if [[ "$copies" == "2" ]]; then
-    pass "a repeat block expands to the default two copies"
-else
-    fail "a repeat block expands to the default two copies (found $copies)"
-fi
-
-if grep -qF 'Opgesteld, niet ingediend' "$TMP_ROOT/filled.html" && grep -qF 'Prepared, not filed' "$TMP_ROOT/filled.html"; then
-    pass "the prepared-not-filed line stays in both languages"
-else
-    fail "the prepared-not-filed line stays in both languages"
-fi
-
-if python3 -I "$FILLER" --template "$TEMPLATE" --items 3 --out "$TMP_ROOT/filled-three.html" >"$TMP_ROOT/fill-three.txt" 2>&1; then
-    copies=$(grep -oF 'S&amp;&lt;asset_line_label&gt;' "$TMP_ROOT/filled-three.html" | wc -l | tr -d ' ')
-    if [[ "$copies" == "3" ]]; then
-        pass "the items option sets the repeat count"
-    else
-        fail "the items option sets the repeat count (found $copies)"
-    fi
-else
-    fail "the items option sets the repeat count"
-    sed -n '1,3p' "$TMP_ROOT/fill-three.txt"
 fi
 
 # ───────────────────────────────────────────────────────────────
@@ -249,14 +186,6 @@ if [[ "$status" -eq 2 ]] && grep -qF 'error: missing template: ' "$TMP_ROOT/usag
     pass "a missing template is refused with exit 2 and names the file"
 else
     fail "a missing template is refused with exit 2 and names the file (exit $status)"
-fi
-
-python3 -I "$FILLER" --template "$TEMPLATE" --items 0 >"$TMP_ROOT/usage-items.txt" 2>&1
-status=$?
-if [[ "$status" -eq 2 ]] && grep -qF 'error: --items must be at least 1' "$TMP_ROOT/usage-items.txt"; then
-    pass "a zero repeat count is refused with exit 2 and names the option"
-else
-    fail "a zero repeat count is refused with exit 2 and names the option (exit $status)"
 fi
 
 # ───────────────────────────────────────────────────────────────

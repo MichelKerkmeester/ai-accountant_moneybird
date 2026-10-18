@@ -25,7 +25,7 @@ Extracted bookkeeping is personal financial data. The guard keeps it out of trac
 
 ### Core Behavior
 
-The `--out` option of `call`, `get` and `fetch` resolves against `<Accountant root>/migration-workspace/`. A relative name such as `expenses.json` lands directly inside it, and a leading `migration-workspace/` prefix is accepted. An absolute path must already point inside the workspace. Anything else exits 5.
+The `--out` option of `call` and `fetch` resolves against `<Accountant root>/migration-workspace/`. A relative name such as `expenses.json` lands directly inside it, and a leading `migration-workspace/` prefix is accepted. An absolute path must already point inside the workspace. Anything else exits 5.
 
 ### Edge Cases
 
@@ -50,7 +50,7 @@ With `--out` set, stdout shows only the summary line: `HTTP 200, items: 25` for 
 
 | File | Type | Role |
 |---|---|---|
-| [`cli/jortt-cli/tests/run-tests.sh`](../../cli/jortt-cli/tests/run-tests.sh) | Automated test | Checks that outside paths exit 5 for `call` and `fetch` and that an inside path resolves. |
+| [`cli/jortt-cli/tests/run-tests.sh`](../../cli/jortt-cli/tests/run-tests.sh) | Automated test | Checks that outside paths exit 5 for `call` and `fetch` and that an inside path saves its file. |
 | [`manual-testing-playbook/extraction/paged-extract-to-workspace.md`](../../manual-testing-playbook/extraction/paged-extract-to-workspace.md) | Manual playbook | JRT-003 saves a paged extract inside the workspace. |
 
 ---

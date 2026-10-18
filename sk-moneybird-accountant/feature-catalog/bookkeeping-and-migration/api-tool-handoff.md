@@ -43,8 +43,7 @@ Before any CLI action, the agent loads the sibling tool skill that owns the requ
 |---|---|---|
 | sk-moneybird-accountant/manual-testing-playbook/offline-routing/api-tool-handoff.md | Manual playbook | Offline routing scenario for this feature. |
 | sk-moneybird-accountant/manual-testing-playbook/offline-routing/cli-failure-blocked.md | Manual playbook | Offline blocked answer scenario after an exhausted CLI read. |
-| sk-moneybird-accountant/scripts/cli-failure-handoff-test.sh | Automated test | Proves the Jortt 429 exhaustion, the bounded Moneybird GET attempts, the one authorized migration reissue and the blocked answer contract with a fake curl and the guard stub. |
-| sk-moneybird-accountant/scripts/source-to-target-handoff-test.sh | Automated test | Builds a synthetic source manifest, mapping and WRITE_INTENT chain and proves a changed hash or digest fails before a fake call marker. |
+| sk-moneybird-accountant/scripts/cli-failure-handoff-test.sh | Automated test | Proves the Jortt 429 exhaustion and one bounded Moneybird GET read offline with a fake curl and the guard stub, and checks the documented retry owners, the three-attempt GET bound, the one authorized reissue and the blocked answer contract. |
 | sk-moneybird-accountant/evals/evals.json | Automated test | Holds the cli-read-exhausted-blocked and retry-owner-split cases. |
 
 ---

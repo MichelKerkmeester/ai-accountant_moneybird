@@ -16,16 +16,11 @@ the CLI skill or unknown to the canonical set and a second differing
 read-back definition. The
 guard's own exit codes are read from the guard script and must stay a subset
 of the canonical set, so the check keeps passing while a guard change is in
-flight. The script uses the Python standard library only and makes no network
-call.
+flight. The script reads the repository above it, uses the Python standard
+library only and makes no network call.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/write-contract-check.py
-    python3 -I sk-moneybird-accountant/scripts/write-contract-check.py --root DIR
-
-Options:
-    --root DIR  Read another copy of the repository. Defaults to the root
-                above this script.
 
 Output:
     "write-contract: ok" on stdout when the tree matches, one line per problem
@@ -420,24 +415,13 @@ def main(argv: List[str]) -> int:
 
     Returns:
         Zero when the tree matches, one on drift.
-
-    Raises:
-        SystemExit: If the root is not a directory.
     """
     parser = argparse.ArgumentParser(
         prog=CHECKER,
         description="Check the write contract restatements against the canonical contract.",
     )
-    parser.add_argument(
-        "--root",
-        default=REPO_ROOT,
-        metavar="DIR",
-        help="read another copy of the repository instead of the one above this script",
-    )
-    args = parser.parse_args(argv)
-    root = os.path.abspath(args.root)
-    if not os.path.isdir(root):
-        fail("not a directory: %s" % args.root)
+    parser.parse_args(argv)
+    root = REPO_ROOT
 
     canonical = read_text(root, CANONICAL_REL)
     gate_flags, exits, sentence = canonical_parts(canonical)

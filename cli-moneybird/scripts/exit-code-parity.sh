@@ -3,7 +3,7 @@
 # COMPONENT: EXIT CODE PARITY
 # ───────────────────────────────────────────────────────────────
 # Checks the guard die exit codes against the documentation surfaces.
-# Usage: exit-code-parity.sh [--root DIR]
+# Usage: exit-code-parity.sh
 # Exit Codes:
 #   0 - Every guard code, and only guard codes, appear on every surface
 #   1 - A surface misses a guard code or names a code the guard never emits
@@ -23,30 +23,14 @@ set -uo pipefail
 # ───────────────────────────────────────────────────────────────
 
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd -P) || exit 2
-DEFAULT_ROOT=$(cd "$SCRIPT_DIR/../.." && pwd -P) || exit 2
+ROOT=$(cd "$SCRIPT_DIR/../.." && pwd -P) || exit 2
 
 # ───────────────────────────────────────────────────────────────
-# 2. ARGUMENT AND ROOT VALIDATION
+# 2. ARGUMENT VALIDATION
 # ───────────────────────────────────────────────────────────────
 
-ROOT_ARG=""
-while [[ "$#" -gt 0 ]]; do
-    if [[ "$1" == "--root" ]]; then
-        if [[ "$#" -lt 2 ]]; then
-            printf 'error: usage: exit-code-parity.sh [--root DIR]\n' >&2
-            exit 2
-        fi
-        ROOT_ARG="$2"
-        shift 2
-    else
-        printf 'error: usage: exit-code-parity.sh [--root DIR]\n' >&2
-        exit 2
-    fi
-done
-
-ROOT="${ROOT_ARG:-$DEFAULT_ROOT}"
-if ! ROOT=$(cd "$ROOT" 2>/dev/null && pwd -P); then
-    printf 'error: root folder not found\n' >&2
+if [[ "$#" -gt 0 ]]; then
+    printf 'error: usage: exit-code-parity.sh\n' >&2
     exit 2
 fi
 
@@ -54,27 +38,14 @@ fi
 # 3. INPUT FILES
 # ───────────────────────────────────────────────────────────────
 
-GUARD=""
-for candidate in \
-    "$ROOT/cli-moneybird/cli/moneybird-cli/bin/moneybird-guard" \
-    "$ROOT/cli-moneybird/cli/moneybird-cli/moneybird-guard"; do
-    if [[ -f "$candidate" ]]; then
-        GUARD="$candidate"
-        break
-    fi
-done
-if [[ -z "$GUARD" ]]; then
-    printf 'error: missing moneybird-guard under %s\n' "$ROOT" >&2
-    exit 2
-fi
-
+GUARD="$ROOT/cli-moneybird/cli/moneybird-cli/moneybird-guard"
 CLI_DOC="$ROOT/cli-moneybird/references/cli.md"
 TROUBLESHOOTING_DOC="$ROOT/cli-moneybird/references/troubleshooting.md"
 SKILL_DOC="$ROOT/cli-moneybird/SKILL.md"
 ROUTER_DOC="$ROOT/cli-moneybird/ROUTER.md"
 
 missing_input=0
-for path in "$CLI_DOC" "$TROUBLESHOOTING_DOC" "$SKILL_DOC" "$ROUTER_DOC"; do
+for path in "$GUARD" "$CLI_DOC" "$TROUBLESHOOTING_DOC" "$SKILL_DOC" "$ROUTER_DOC"; do
     if [[ ! -f "$path" ]]; then
         printf 'error: missing %s\n' "$path" >&2
         missing_input=1

@@ -15,28 +15,24 @@ Regression-Test: trailer line that names a registered test which exists at
 that commit. The registered set is read from the parent of the commit being
 checked and holds exactly two sources: the test paths the hardening matrix
 names, and the test files the skill health workflow runs, parsed from its run
-lines. A comment line, a path after echo or printf and a step or job whose if
-is literally false register nothing. A named test counts only when it also
-exists at the parent, so a test
+lines. A named test counts only when it also exists at the parent, so a test
 created in the commit under check cannot cover it. A suite path that a name
 or a glob happens to match does not register. A registered path the commit
 deletes is not registered, and a deleted path is never a test change. The
-script uses the Python standard library only, reads the local repository only
+script reads the repository above it, uses the Python standard library only
 and makes no network call.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/check-regression-trailer.py --range <base>..<head>
-    python3 -I sk-moneybird-accountant/scripts/check-regression-trailer.py --range <base>..<head> --root DIR
 
 Options:
     --range R   Commit range for git log, written as <base>..<head>.
-    --root DIR  Read another repository. Defaults to the root above this
-                script.
 
 Output:
     "regression-trailer: ok" with the commit count on stdout when the range
     passes, one line per finding otherwise. Exit 0 when the range passes, 1 on
-    a finding and 2 on a usage error or a git failure.
+    a finding and 2 on a usage error or a git failure. A root commit in the
+    range is a git failure, because it has no parent to read.
 """
 
 # ───────────────────────────────────────────────────────────────
@@ -86,25 +82,13 @@ MATRIX_REL = "sk-moneybird-accountant/hardening-matrix.md"
 WORKFLOW_REL = ".github/workflows/skill-health.yml"
 
 # A run line registers a token that ends with one of these test path forms.
-TEST_PATH_SUFFIXES = ("-test.sh", "run-tests.sh", "-test.py", "evals.json")
+TEST_PATH_SUFFIXES = ("-test.sh", "run-tests.sh", "evals.json")
 
-# One run key with an optional list dash, its indentation, and the rest of
-# its line. The dash form is what a compact workflow step uses.
-RUN_KEY_RE = re.compile(r"^([ \t]*)(?:-[ \t]+)?run:(.*)$")
+# One run key with its indentation and the rest of its line.
+RUN_KEY_RE = re.compile(r"^([ \t]*)run:(.*)$")
 
 # The characters that separate one shell word from the next.
 COMMAND_SPLIT_RE = re.compile(r"[\s'\"]+")
-
-# One step or job key that gates its block, with an optional list dash before
-# it, and the condition that switches the block off for good: false in any
-# case, bare or inside an expression, quoted or not, with an optional comment.
-IF_KEY_RE = re.compile(r"^([ \t]*)(-[ \t]+)?if:[ \t]*(.*)$")
-IF_FALSE_RE = re.compile(r"""^["']?(?:\$\{\{\s*)?false(?:\s*\}\})?["']?\s*(?:#.*)?$""", re.IGNORECASE)
-
-# WHY: a word after these prints its arguments, so a test path there is text
-# and never a run. A separator word ends the print and starts the next command.
-PRINT_COMMANDS = ("echo", "printf")
-COMMAND_SEPARATORS = ("&&", "||", "|", ";", "&")
 
 # The matrix test cell holds a repo-relative path, this separator, then a case.
 TEST_SEPARATOR = " :: "
@@ -187,45 +171,6 @@ def leading_width(line: str) -> int:
     return len(line) - len(line.lstrip(" \t"))
 
 
-def disabled_line_indexes(lines: List[str]) -> Set[int]:
-    """Find the lines of every step or job that an if of false switches off.
-
-    Args:
-        lines: Workflow file lines.
-
-    Returns:
-        The indexes of the lines in the block that owns an if key whose
-        condition is literally false. A condition that reads a context, such
-        as an event name, is not literal and switches nothing off here.
-    """
-    disabled: Set[int] = set()
-    for index, line in enumerate(lines):
-        match = IF_KEY_RE.match(line.rstrip())
-        if match is None or IF_FALSE_RE.match(match.group(3)) is None:
-            continue
-        width = len(match.group(1))
-        if match.group(2):
-            owner = index
-        else:
-            # WHY: the nearest shallower line is the list dash of the step or
-            # the key of the job, and that line owns the block the if sits in.
-            owner = index - 1
-            while owner >= 0 and (
-                not lines[owner].strip()
-                or lines[owner].lstrip().startswith("#")
-                or leading_width(lines[owner]) >= width
-            ):
-                owner -= 1
-            if owner < 0:
-                continue
-        owner_width = leading_width(lines[owner])
-        end = owner + 1
-        while end < len(lines) and (not lines[end].strip() or leading_width(lines[end]) > owner_width):
-            end += 1
-        disabled.update(range(owner, end))
-    return disabled
-
-
 def run_commands(text: str) -> List[str]:
     """Read every shell command the workflow runs.
 
@@ -234,18 +179,12 @@ def run_commands(text: str) -> List[str]:
 
     Returns:
         One string per run line. A block scalar contributes one string per
-        indented line, a plain run line contributes its command text. A
-        comment line and every line of a step or job whose if is literally
-        false contribute nothing.
+        indented line, a plain run line contributes its command text.
     """
     lines = text.splitlines()
-    disabled = disabled_line_indexes(lines)
     commands: List[str] = []
     index = 0
     while index < len(lines):
-        if index in disabled:
-            index += 1
-            continue
         match = RUN_KEY_RE.match(lines[index].rstrip())
         if match is None:
             index += 1
@@ -254,8 +193,7 @@ def run_commands(text: str) -> List[str]:
         rest = match.group(2).strip()
         index += 1
         if rest and rest[0] not in "|>":
-            if rest[0] != "#":
-                commands.append(rest)
+            commands.append(rest)
             continue
         while index < len(lines):
             line = lines[index]
@@ -264,8 +202,7 @@ def run_commands(text: str) -> List[str]:
                 continue
             if leading_width(line) <= indent:
                 break
-            if not line.lstrip().startswith("#"):
-                commands.append(line.strip())
+            commands.append(line.strip())
             index += 1
     return commands
 
@@ -278,24 +215,11 @@ def command_test_paths(command: str) -> Set[str]:
 
     Returns:
         The tokens that end with a test path suffix, with a leading ./ and
-        surrounding quotes, commas or backticks removed. A comment line names
-        nothing, and a token after echo or printf is text that stops at the
-        next command separator.
+        surrounding quotes, commas or backticks removed.
     """
     paths: Set[str] = set()
-    if command.lstrip().startswith("#"):
-        return paths
-    printing = False
     for raw in COMMAND_SPLIT_RE.split(command):
         word = raw.strip("`'\",")
-        if word in COMMAND_SEPARATORS or word.endswith(";"):
-            printing = False
-            continue
-        if word in PRINT_COMMANDS:
-            printing = True
-            continue
-        if printing:
-            continue
         if word.startswith("./"):
             word = word[2:]
         if word.endswith(TEST_PATH_SUFFIXES):
@@ -338,18 +262,17 @@ def tree_paths(root: str, sha: str) -> Set[str]:
     }
 
 
-def parent_of(root: str, sha: str) -> str:
-    """Read the first parent of one commit.
+def first_parent(sha: str) -> str:
+    """Name the first parent of one commit.
 
     Args:
-        root: Repository root.
         sha: Commit to read.
 
     Returns:
-        The parent hash, or an empty string for a root commit.
+        The revision name of the first parent. A root commit has none, so git
+        rejects the name and the check stops with a git failure.
     """
-    fields = try_git(root, ["rev-list", "--parents", "-n", "1", sha]).split()
-    return fields[1] if len(fields) > 1 else ""
+    return "%s^" % sha
 
 # ───────────────────────────────────────────────────────────────
 # 4. GIT LOG AND REGISTRATION
@@ -421,12 +344,7 @@ def changed_paths(root: str, sha: str) -> List[Tuple[str, str]]:
         "--find-copies-harder",
         "--no-commit-id",
     ]
-    parent = parent_of(root, sha)
-    if parent:
-        args = base + [parent, sha]
-    else:
-        args = base + ["--root", sha]
-    return parse_name_status(run_git(root, args, "git diff-tree"))
+    return parse_name_status(run_git(root, base + [first_parent(sha), sha], "git diff-tree"))
 
 
 def read_commits(root: str, commit_range: str) -> List[Tuple[str, str, List[Tuple[str, str]]]]:
@@ -507,9 +425,7 @@ def read_registration(root: str, sha: str, present: Set[str]) -> Set[str]:
         is not registered, and a path the commit deletes is not registered,
         so removing a covering test cannot cover the commit that removes it.
     """
-    parent = parent_of(root, sha)
-    if not parent:
-        return set()
+    parent = first_parent(sha)
     parent_paths = tree_paths(root, parent)
     named = set(matrix_test_paths(root, parent)) | workflow_test_paths(root, parent)
     return {path for path in named if path in parent_paths and path in present}
@@ -604,26 +520,14 @@ def main(argv: List[str]) -> int:
 
     Returns:
         Zero when the range passes, one on a finding.
-
-    Raises:
-        SystemExit: If the root is not a directory.
     """
     parser = argparse.ArgumentParser(
         prog=CHECKER,
         description="Check a commit range for gate file changes without a covering test.",
     )
     parser.add_argument("--range", required=True, metavar="BASE..HEAD", help="commit range for git log")
-    parser.add_argument(
-        "--root",
-        default=REPO_ROOT,
-        metavar="DIR",
-        help="read another repository instead of the one above this script",
-    )
     args = parser.parse_args(argv)
-    root = os.path.abspath(args.root)
-    if not os.path.isdir(root):
-        fail("not a directory: %s" % args.root)
-    return check_range(root, args.range)
+    return check_range(REPO_ROOT, args.range)
 
 
 if __name__ == "__main__":

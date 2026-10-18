@@ -19,7 +19,7 @@ version: 1.0.0.0
 
 Current state:
 
-- The CLI supports the complete local API catalogue. Every non-GET operation is blocked until the call includes `--allow-write` and the configured key has the required scope.
+- The CLI supports the complete local API catalogue. Every non-GET operation is refused with exit 3, and every read needs its scope in `JORTT_SCOPES`.
 - Response summaries stay on by default. The full body goes to the terminal only with `--print-body`, or to a file inside the ignored migration workspace with `--out`.
 - The CLI runs on Bash 3.2 or newer with curl and jq.
 
@@ -33,7 +33,7 @@ Run from this directory:
 bash setup.sh
 ```
 
-Expected: prerequisite checks and a symlink command. The script writes nothing unless you pass `--link`.
+Expected: prerequisite checks and a symlink command. The script writes nothing.
 
 Review the printed path, then create the link yourself:
 
@@ -79,10 +79,10 @@ cli/jortt-cli/
 |---|---|
 | `jortt-cli` | Parses the command line, loads the spec and dispatches every command |
 | `lib/common.sh` | Loads configuration, parses the spec into slugs, checks scopes and prints errors |
-| `lib/commands.sh` | Implements `ops`, `describe`, `call`, `get`, `whoami` and `fetch` and validates parameters and required values |
+| `lib/commands.sh` | Implements `ops`, `describe`, `call`, `whoami` and `fetch` and validates parameters and required values |
 | `lib/api.sh` | Fetches and caches the OAuth token, sends authenticated requests, retries a 401 and a 429 and downloads signed links |
 | `lib/workspace.sh` | Resolves every `--out` path inside `migration-workspace/` and rejects escapes and symlinks |
-| `setup.sh` | Checks Bash, curl and jq, then prints the symlink command. `--link` creates the link and never replaces an existing path |
+| `setup.sh` | Checks Bash, curl and jq, then prints the symlink command and never creates the link |
 | `tests/run-tests.sh` | Runs the offline contract suite against the trimmed OpenAPI fixture |
 | `tests/fixtures/openapi-trimmed.json` | The trimmed Swagger 2.0 fixture the suite reads by default |
 
@@ -92,10 +92,9 @@ cli/jortt-cli/
 
 | Command | Purpose |
 |---|---|
-| `ops [--tag TAG] [--writes] [--json]` | List spec operations and required scopes |
-| `describe SLUG` | Print method, path, scope, parameters, body schema and example |
+| `ops [--tag TAG] [--json]` | List spec operations and required scopes |
+| `describe SLUG` | Print method, path, scope, parameters and example |
 | `call SLUG ...` | Call a spec operation with validated parameters |
-| `get PATH [name=value ...]` | Make a raw API GET |
 | `fetch URL --out FILE` | Fetch an HTTPS signed download link without a bearer token |
 | `whoami` | Call organizations/me and print only status and top-level keys |
 | `spec update` | Fetch and cache the Swagger document |
@@ -103,7 +102,7 @@ cli/jortt-cli/
 | `token status` | Print token cache presence and remaining minutes |
 | `token clear` | Delete the token cache entry for the configured client and scopes |
 
-`call` accepts `--PARAM VALUE`, `--data JSON`, `--data-file FILE`, `--all`, `--out FILE`, `--print-body`, `--raw`, `--dry-run` and `--allow-write`. See [`../../references/cli.md`](../../references/cli.md) for full details.
+`call` accepts `--PARAM VALUE`, `--all`, `--out FILE`, `--print-body` and `--dry-run`. See [`../../references/cli.md`](../../references/cli.md) for full details.
 
 ---
 
@@ -111,8 +110,8 @@ cli/jortt-cli/
 
 - Client credentials travel to curl through a private config stream, not process arguments.
 - The token cache uses owner-only permissions and never prints the token.
-- A write needs both `--allow-write` and its declared operation scope.
-- `--dry-run` prints the method, URL and body without fetching a token or calling a Jortt operation.
+- Every non-GET operation is refused with exit 3, and a read needs its declared operation scope.
+- `--dry-run` prints the method and URL without fetching a token or calling a Jortt operation.
 - `--all` follows next links and merges `data` arrays.
 - `--out` and `fetch --out` reject paths outside migration-workspace.
 - `--print-body` prints the full body but is refused with exit 2 when any agent session marker is set, and the message says to use `--out` and read the saved file.
@@ -125,7 +124,7 @@ cli/jortt-cli/
 | 0 | Success |
 | 1 | API or transport failure |
 | 2 | Usage, input or spec error |
-| 3 | Write blocked because `--allow-write` is missing |
+| 3 | Non-GET operation refused because Jortt is read-only |
 | 4 | Required scope is missing |
 | 5 | Output path is outside the workspace |
 | 6 | Token or authentication failure |
@@ -140,7 +139,7 @@ Run from the repository root. The suite is offline and reads the trimmed fixture
 bash cli-jortt/cli/jortt-cli/tests/run-tests.sh
 ```
 
-Expected result: `Result: 26 passed, 0 failed`, including one fault case per Jortt exit code 1 to 6.
+Expected result: `Result: 22 passed, 0 failed`, including fault cases for Jortt exit codes 1, 2 and 6.
 
 ---
 

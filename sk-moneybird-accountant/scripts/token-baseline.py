@@ -6,21 +6,13 @@
 
 Walks every markdown file under sk-moneybird-accountant/references/ and counts
 its UTF-8 bytes and its tokens in cl100k_base and o200k_base, whole file and
-per H2 section. It adds the named units, the corpus total, the 2026 car
-figures part, the 2026 year README, the accountant SKILL.md, the hub SKILL.md
-and the accountant ROUTER.md that every route now reads, the two car routes, and the
-overhead rows for the generated nav, toc and key figure index block bodies and
-for references/index.json.
+per H2 section. It adds the named units, the corpus total, the accountant
+SKILL.md, the hub SKILL.md and the accountant ROUTER.md that every route reads.
 The run writes one JSON file or checks it and is offline and byte-stable.
 
-The baseline also records the line ranges that the nav and toc fences report,
-one row per part and per entry, with the bytes and the token count of the
-range. The token count covers the range with every generated block body left
-out, so a value the generator copies from the baseline never changes the value
-it states. --check asserts that every fence states the value its baseline row
-holds, that no reference file passes the 15,000-token full-topic-file line and
-that the hub SKILL.md, the accountant ROUTER.md and the accountant SKILL.md
-together stay within the 12,000-token request line.
+--check asserts that no reference file passes the 15,000-token full-topic-file
+line and that the hub SKILL.md, the accountant ROUTER.md and the accountant
+SKILL.md together stay within the 12,000-token request line.
 
 The Operator chose o200k_base as the stand-in for the executing models on
 2026-10-12, with cl100k_base kept as a second column. Both encodings are
@@ -52,8 +44,8 @@ Options:
 
 Output:
     sk-moneybird-accountant/benchmark/token-baseline.json in write mode, the
-    named unit rows and the car route ratio in both modes, and one drift line
-    per stale row in check mode. Exit 0 when the file is written or matches,
+    named unit rows in both modes, and one drift line per stale row in check
+    mode. Exit 0 when the file is written or matches,
     1 on drift, and 2 on a missing encoding cache, a pin mismatch, an
     unreadable file or a write error.
 """
@@ -71,7 +63,7 @@ import site
 import sys
 import tempfile
 import warnings
-from typing import Any, Dict, List, NoReturn, Optional, Tuple
+from typing import Any, Dict, List, NoReturn, Tuple
 
 # ───────────────────────────────────────────────────────────────
 # 2. CONFIGURATION
@@ -82,7 +74,6 @@ GENERATOR = "sk-moneybird-accountant/scripts/token-baseline.py"
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SKILL_ROOT = os.path.join(REPO_ROOT, "sk-moneybird-accountant")
 REFERENCES_ROOT = os.path.join(SKILL_ROOT, "references")
-INDEX_PATH = os.path.join(REFERENCES_ROOT, "index.json")
 BASELINE_PATH = os.path.join(SKILL_ROOT, "benchmark", "token-baseline.json")
 
 MARKDOWN_SUFFIX = ".md"
@@ -90,19 +81,6 @@ CODE_FENCE_PREFIXES = ("```", "~~~")
 HEADING_RE = re.compile(r"^(#{1,6})[ \t]+(.*?)[ \t]*$")
 SLUG_RE = re.compile(r"[^\w\s-]", re.UNICODE)
 SPACE_RE = re.compile(r"\s+")
-
-# A generated block sits between two marker lines that each stand alone. The
-# body is what a reader loads, so the overhead rows count the bytes between
-# the markers and never the markers themselves.
-FENCE_START_RE = re.compile(r"^<!-- GENERATED:([a-z0-9][a-z0-9._-]*):start -->$")
-FENCE_END_RE = re.compile(r"^<!-- GENERATED:([a-z0-9][a-z0-9._-]*):end -->$")
-NAV_BLOCK_ID = "nav"
-TOC_BLOCK_ID = "toc"
-ITEM_INDEX_BLOCK_ID = "key-figure-index"
-BLOCK_IDS = (NAV_BLOCK_ID, TOC_BLOCK_ID, ITEM_INDEX_BLOCK_ID)
-# WHY: the fence token values are measured with the generated block bodies
-# left out, so writing a value never changes the value it states.
-FENCE_COUNTED_BLOCK_IDS = (NAV_BLOCK_ID, TOC_BLOCK_ID)
 
 # The reference ladder's full-topic-file line. A reference file over it fails
 # the check by name, so a growing file is reported instead of drifting up.
@@ -114,10 +92,6 @@ FILE_TOKEN_LIMIT = 15000
 # reported instead of drifting up. AGENTS.md is the bootstrap and not counted.
 REQUEST_TOKEN_LIMIT = 12000
 REQUEST_PATHS = ("SKILL.md", "sk-moneybird-accountant/ROUTER.md", "sk-moneybird-accountant/SKILL.md")
-
-# The nav plan and the toc list report a token count per part and per entry.
-NAV_PART_RE = re.compile(r"^Part (\d+): lines (\d+)-(\d+), (\d+) bytes(?:, (\d+) ([A-Za-z0-9_]+) tokens)?,")
-TOC_ENTRY_RE = re.compile(r"^- (.*): lines (\d+)-(\d+)(?:, (\d+) ([A-Za-z0-9_]+) tokens)?$")
 
 # The pin. The url is the data URL tiktoken asks for, the sha1 of that url is
 # the cache file name, and the sha256 is the hash of the file itself.
@@ -140,14 +114,7 @@ LIBRARY_NAME = "tiktoken"
 LIBRARY_VERSION = "0.11.0"
 CACHE_ENV = "TIKTOKEN_CACHE_DIR"
 
-NAV_NAME = "nav block bodies"
-TOC_NAME = "toc block bodies"
-ITEM_INDEX_NAME = "key figure index block bodies"
-INDEX_NAME = "references/index.json"
 CORPUS_NAME = "corpus total"
-CAR_CURRENT_NAME = "car route current"
-CAR_PROPOSED_NAME = "car route proposed"
-CAR_SECTION_ANCHOR = "2-key-figures"
 
 REMEASURE_RULE = "re-measure on every reference change"
 PROXY_NOTE = (
@@ -372,18 +339,6 @@ def token_text(counts: Dict[str, int]) -> str:
     return ", ".join("%s %d" % (name, counts[name]) for name in order)
 
 
-def ratio_text(ratios: Dict[str, float]) -> str:
-    """Render the route ratio per encoding, the lead encoding first.
-
-    Args:
-        ratios: Ratio by encoding name.
-
-    Returns:
-        One comma separated list of name and ratio.
-    """
-    order = [LEAD_ENCODING] + [name for name in ENCODING_NAMES if name != LEAD_ENCODING]
-    return ", ".join("%s %.4f" % (name, ratios[name]) for name in order)
-
 # ───────────────────────────────────────────────────────────────
 # 4. CACHE PIN
 # ───────────────────────────────────────────────────────────────
@@ -531,317 +486,6 @@ def file_row(path: str, encoders: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
-def block_bodies(text: str, path: str) -> Dict[str, List[str]]:
-    """Collect the body of every nav and toc block in one file.
-
-    Args:
-        text: File text.
-        path: Absolute path of the file, for the error message.
-
-    Returns:
-        Mapping of block id to its bodies, in file order.
-
-    Raises:
-        SystemExit: When a start marker has no end marker.
-    """
-    bodies: Dict[str, List[str]] = {}
-    lines = line_spans(text)
-    index = 0
-    while index < len(lines):
-        match = FENCE_START_RE.match(lines[index][1])
-        if not match or match.group(1) not in BLOCK_IDS:
-            index += 1
-            continue
-        block_id = match.group(1)
-        stop = index + 1
-        while stop < len(lines):
-            end = FENCE_END_RE.match(lines[stop][1])
-            if end and end.group(1) == block_id:
-                break
-            stop += 1
-        if stop == len(lines):
-            fail("unmatched block marker %s in %s" % (block_id, relative_path(path)))
-        bodies.setdefault(block_id, []).append(text[lines[index][3]:lines[stop][2]])
-        index = stop + 1
-    return bodies
-
-
-def overhead_rows(paths: List[str], encoders: Dict[str, Any]) -> List[Dict[str, Any]]:
-    """Count the generated block bodies and the reference index.
-
-    Args:
-        paths: Markdown files under the references root.
-        encoders: Mapping of encoding name to an encoder.
-
-    Returns:
-        One row for the nav bodies, one for the toc bodies and one for
-        references/index.json.
-    """
-    totals = {name: 0 for name in BLOCK_IDS}
-    blocks = {name: 0 for name in BLOCK_IDS}
-    holders = {name: 0 for name in BLOCK_IDS}
-    tokens = {name: {encoding: 0 for encoding in ENCODING_NAMES} for name in BLOCK_IDS}
-    for path in paths:
-        found = block_bodies(read_text(path), path)
-        for block_id in BLOCK_IDS:
-            bodies = found.get(block_id, [])
-            if bodies:
-                holders[block_id] += 1
-            for body in bodies:
-                blocks[block_id] += 1
-                totals[block_id] += count_bytes(body)
-                counts = count_tokens(body, encoders)
-                for encoding in ENCODING_NAMES:
-                    tokens[block_id][encoding] += counts[encoding]
-    index_text = read_text(INDEX_PATH)
-    label = {
-        NAV_BLOCK_ID: NAV_NAME,
-        TOC_BLOCK_ID: TOC_NAME,
-        ITEM_INDEX_BLOCK_ID: ITEM_INDEX_NAME,
-    }
-    rows = [
-        {
-            "blocks": blocks[block_id],
-            "bytes": totals[block_id],
-            "files": holders[block_id],
-            "name": label[block_id],
-            "tokens": tokens[block_id],
-        }
-        for block_id in BLOCK_IDS
-    ]
-    rows.append(
-        {
-            "blocks": 1,
-            "bytes": count_bytes(index_text),
-            "files": 1,
-            "name": INDEX_NAME,
-            "tokens": count_tokens(index_text, encoders),
-        }
-    )
-    return rows
-
-
-def fence_body_ranges(text: str) -> List[Tuple[int, int]]:
-    """Return the byte range of every generated block body.
-
-    Args:
-        text: File text.
-
-    Returns:
-        One (start, end) offset pair per block body, in file order. The
-        markers themselves stay outside the range.
-    """
-    ranges: List[Tuple[int, int]] = []
-    opened: Optional[int] = None
-    for _, content, start, end in line_spans(text):
-        if opened is None:
-            if FENCE_START_RE.match(content):
-                opened = end
-            continue
-        if FENCE_END_RE.match(content):
-            ranges.append((opened, start))
-            opened = None
-    return ranges
-
-
-def content_slice(
-    text: str, start: int, end: int, ranges: List[Tuple[int, int]]
-) -> str:
-    """Cut one line range out of a file with every block body left out.
-
-    Args:
-        text: File text.
-        start: Start offset of the range.
-        end: End offset of the range.
-        ranges: Result of fence_body_ranges().
-
-    Returns:
-        The slice text with every overlapping block body removed, so the
-        count does not depend on the digits a fence states.
-    """
-    pieces: List[str] = []
-    position = start
-    for body_start, body_end in ranges:
-        if body_end <= start or body_start >= end:
-            continue
-        low = max(body_start, start)
-        high = min(body_end, end)
-        if low > position:
-            pieces.append(text[position:low])
-        position = max(position, high)
-    if position < end:
-        pieces.append(text[position:end])
-    return "".join(pieces)
-
-
-def fence_rows(paths: List[str], encoders: Dict[str, Any]) -> List[Dict[str, Any]]:
-    """Measure the line ranges that the nav and toc fences report.
-
-    The token count of one row covers its line range with every generated
-    block body left out, so a written value never changes the value it
-    states. The bytes stay the read size of the range.
-
-    Args:
-        paths: Markdown files under the references root.
-        encoders: Mapping of encoding name to an encoder.
-
-    Returns:
-        One row per file that carries a nav or a toc fence, with the block,
-        the path and one record per part or entry.
-    """
-    rows: List[Dict[str, Any]] = []
-    for path in paths:
-        text = read_text(path)
-        ranges = fence_body_ranges(text)
-        spans = line_spans(text)
-        bodies = block_bodies(text, path)
-        for block_id in FENCE_COUNTED_BLOCK_IDS:
-            parts: List[Dict[str, Any]] = []
-            for body in bodies.get(block_id, []):
-                for line in body.splitlines():
-                    if block_id == NAV_BLOCK_ID:
-                        match = NAV_PART_RE.match(line)
-                        if not match:
-                            continue
-                        first, last = int(match.group(2)), int(match.group(3))
-                        record: Dict[str, Any] = {"lines": "%d-%d" % (first, last)}
-                    else:
-                        match = TOC_ENTRY_RE.match(line)
-                        if not match:
-                            continue
-                        first, last = int(match.group(2)), int(match.group(3))
-                        record = {
-                            "anchor": slugify(match.group(1)),
-                            "lines": "%d-%d" % (first, last),
-                        }
-                    start = spans[first - 1][2]
-                    end = spans[last - 1][3]
-                    record["bytes"] = count_bytes(text[start:end])
-                    record["tokens"] = count_tokens(
-                        content_slice(text, start, end, ranges), encoders
-                    )
-                    parts.append(record)
-            if parts:
-                rows.append(
-                    {
-                        "block": block_id,
-                        "path": relative_path(path),
-                        "parts": parts,
-                    }
-                )
-    return rows
-
-
-def stated_fence_rows(text: str) -> List[Dict[str, Any]]:
-    """Read the token values a nav or toc fence states.
-
-    Args:
-        text: File text.
-
-    Returns:
-        One record per stated row, with the block, the part number or the
-        anchor and the token value and encoding when the line states one.
-    """
-    rows: List[Dict[str, Any]] = []
-    bodies = block_bodies(text, "fence-scan")
-    for block_id in FENCE_COUNTED_BLOCK_IDS:
-        for body in bodies.get(block_id, []):
-            for line in body.splitlines():
-                if block_id == NAV_BLOCK_ID:
-                    match = NAV_PART_RE.match(line)
-                    if not match:
-                        continue
-                    rows.append(
-                        {
-                            "block": block_id,
-                            "part": int(match.group(1)),
-                            "tokens": int(match.group(5)) if match.group(5) else None,
-                            "encoding": match.group(6) or "",
-                        }
-                    )
-                else:
-                    match = TOC_ENTRY_RE.match(line)
-                    if not match:
-                        continue
-                    rows.append(
-                        {
-                            "block": block_id,
-                            "anchor": slugify(match.group(1)),
-                            "tokens": int(match.group(4)) if match.group(4) else None,
-                            "encoding": match.group(5) or "",
-                        }
-                    )
-    return rows
-
-
-def fence_value_problems(rows: List[Dict[str, Any]]) -> List[str]:
-    """List the fences whose stated token value differs from its baseline row.
-
-    Args:
-        rows: Result of fence_rows().
-
-    Returns:
-        One line per file and row that states another number, a value in an
-        encoding the pin does not name, or no value while the baseline holds
-        one.
-    """
-    problems: List[str] = []
-    for row in rows:
-        path = row["path"]
-        text = read_text(os.path.join(REPO_ROOT, path))
-        stated = stated_fence_rows(text)
-        expected: Dict[str, int] = {}
-        for index, part in enumerate(row["parts"], 1):
-            key = "part-%d" % index if row["block"] == NAV_BLOCK_ID else part["anchor"]
-            expected[key] = part["tokens"][LEAD_ENCODING]
-        for item in stated:
-            if item["block"] != row["block"]:
-                continue
-            key = "part-%d" % item["part"] if row["block"] == NAV_BLOCK_ID else item["anchor"]
-            want = expected.get(key)
-            if want is None:
-                continue
-            if item["encoding"] and item["encoding"] != LEAD_ENCODING:
-                problems.append(
-                    "fence %s %s %s states %s, the baseline names %s"
-                    % (path, row["block"], key, item["encoding"], LEAD_ENCODING)
-                )
-            elif item["tokens"] != want:
-                problems.append(
-                    "fence %s %s %s states %s, the baseline row says %d"
-                    % (path, row["block"], key, item["tokens"], want)
-                )
-    return problems
-
-
-def unrecorded_fence_problems(paths: List[str], rows: List[Dict[str, Any]]) -> List[str]:
-    """List the nav and toc fences the baseline holds no row for.
-
-    A fence body that produced no row makes the value comparison vacuous, so
-    a fence marker without a recorded row fails the check by name instead of
-    passing silently.
-
-    Args:
-        paths: Markdown files under the references root.
-        rows: Result of fence_rows().
-
-    Returns:
-        One line per fence body without a recorded row.
-    """
-    recorded = {
-        (row.get("path"), row.get("block")) for row in rows if isinstance(row, dict)
-    }
-    problems: List[str] = []
-    for path in paths:
-        found = block_bodies(read_text(path), path)
-        relative = relative_path(path)
-        for block_id in FENCE_COUNTED_BLOCK_IDS:
-            for _ in found.get(block_id, []):
-                if (relative, block_id) not in recorded:
-                    problems.append("fence not recorded %s %s" % (relative, block_id))
-    return problems
-
-
 def file_limit_problems(files: List[Dict[str, Any]]) -> List[str]:
     """List the reference files over the full-topic-file token line.
 
@@ -854,8 +498,8 @@ def file_limit_problems(files: List[Dict[str, Any]]) -> List[str]:
     """
     problems: List[str] = []
     for row in files:
-        tokens = row["tokens"].get(LEAD_ENCODING)
-        if isinstance(tokens, int) and tokens > FILE_TOKEN_LIMIT:
+        tokens = row["tokens"][LEAD_ENCODING]
+        if tokens > FILE_TOKEN_LIMIT:
             problems.append(
                 "over token line %s %d of %d" % (row["path"], tokens, FILE_TOKEN_LIMIT)
             )
@@ -872,14 +516,7 @@ def request_limit_problems(units: List[Dict[str, Any]]) -> List[str]:
         One line when the lead count of the three skill files every
         accountant request reads passes REQUEST_TOKEN_LIMIT, else none.
     """
-    counts = {
-        str(unit.get("name")): unit["tokens"].get(LEAD_ENCODING)
-        for unit in units
-        if unit.get("name") in REQUEST_PATHS
-    }
-    if len(counts) != len(REQUEST_PATHS) or not all(isinstance(value, int) for value in counts.values()):
-        return ["request files not counted: %s" % ", ".join(REQUEST_PATHS)]
-    total = sum(counts.values())
+    total = sum(unit["tokens"][LEAD_ENCODING] for unit in units if unit["name"] in REQUEST_PATHS)
     if total > REQUEST_TOKEN_LIMIT:
         return ["over request line %s %d of %d" % (" + ".join(REQUEST_PATHS), total, REQUEST_TOKEN_LIMIT)]
     return []
@@ -908,74 +545,18 @@ def unit_row(name: str, reads: List[str], parts: List[Dict[str, Any]]) -> Dict[s
     }
 
 
-def file_unit(path: str, rows: Dict[str, Dict[str, Any]], encoders: Dict[str, Any]) -> Dict[str, Any]:
+def file_unit(path: str, encoders: Dict[str, Any]) -> Dict[str, Any]:
     """Build the unit row of one named file.
 
     Args:
         path: Path relative to the repository root.
-        rows: File rows of the corpus keyed by their path, which hold the
-            reference files only.
         encoders: Mapping of encoding name to an encoder.
 
     Returns:
-        The unit row. A named file outside the references root is counted on
-        the spot.
+        The unit row, counted on the spot because a named file sits outside
+        the references root.
     """
-    row = rows.get(path)
-    if row is None:
-        row = file_row(os.path.join(REPO_ROOT, path), encoders)
-    return unit_row(path, [path], [row])
-
-
-def section_part(path: str, anchor: str, rows: Dict[str, Dict[str, Any]]) -> Dict[str, Any]:
-    """Build one part from the H2 section of a named file.
-
-    The part runs from the heading line of the section to the line before the
-    next H2, the same slice the section rows use.
-
-    Args:
-        path: Path relative to the repository root.
-        anchor: Anchor of the section.
-        rows: File rows keyed by their path.
-
-    Returns:
-        A part with the byte count and the token counts.
-
-    Raises:
-        SystemExit: When the file or the section is missing.
-    """
-    row = rows.get(path)
-    if row is None:
-        fail("named unit file is not in the corpus: %s" % path)
-    for section in row["sections"]:
-        if section["anchor"] == anchor:
-            return {"bytes": section["bytes"], "tokens": section["tokens"]}
-    fail("named unit section is not in %s: %s" % (path, anchor))
-
-
-def car_ratio(units: List[Dict[str, Any]]) -> Dict[str, float]:
-    """Return the proposed route over the current route, per encoding.
-
-    Args:
-        units: Unit rows, holding the two car route rows.
-
-    Returns:
-        The ratio by encoding name, rounded to four decimals.
-
-    Raises:
-        SystemExit: When a route row is missing or the current route is empty.
-    """
-    found = {row["name"]: row["tokens"] for row in units}
-    current = found.get(CAR_CURRENT_NAME)
-    proposed = found.get(CAR_PROPOSED_NAME)
-    if current is None or proposed is None:
-        fail("car route rows are missing")
-    ratios: Dict[str, float] = {}
-    for encoding in ENCODING_NAMES:
-        if current[encoding] == 0:
-            fail("car route current is empty in %s" % encoding)
-        ratios[encoding] = round(proposed[encoding] / current[encoding], 4)
-    return ratios
+    return unit_row(path, [path], [file_row(os.path.join(REPO_ROOT, path), encoders)])
 
 
 def pin_block() -> Dict[str, Any]:
@@ -1011,12 +592,9 @@ def build_baseline(encoders: Dict[str, Any]) -> Dict[str, Any]:
         encoders: Mapping of encoding name to an encoder.
 
     Returns:
-        The baseline with the pin block, the file rows, the named units, the
-        overhead rows and the car route ratio.
+        The baseline with the pin block, the file rows and the named units.
     """
-    paths = markdown_files()
-    files = [file_row(path, encoders) for path in paths]
-    rows = {row["path"]: row for row in files}
+    files = [file_row(path, encoders) for path in markdown_files()]
     corpus = {
         "bytes": sum(row["bytes"] for row in files),
         "files": len(files),
@@ -1028,44 +606,10 @@ def build_baseline(encoders: Dict[str, Any]) -> Dict[str, Any]:
             for encoding in ENCODING_NAMES
         },
     }
-    readme_path = "sk-moneybird-accountant/references/tax-rules/2026/README.md"
-    topic_path = "sk-moneybird-accountant/references/tax-rules/2026/costs-and-car/figures.md"
-    # WHY: the current route reads the whole topic. After the split that is
-    # the figures part plus its three sibling parts, so the ratio keeps
-    # measuring the KEY FIGURES section against the whole topic.
-    topic_paths = [topic_path] + [
-        topic_path.replace("figures.md", "%s.md" % part)
-        for part in ("rules", "examples", "notes")
-    ]
-    skill_path = "sk-moneybird-accountant/SKILL.md"
-    # WHY: every route reads the hub file and the router before the packet, so their cost is recorded too.
-    hub_paths = ("SKILL.md", "sk-moneybird-accountant/ROUTER.md")
-    readme = file_unit(readme_path, rows, encoders)
-    topic = file_unit(topic_path, rows, encoders)
-    topic_parts = [file_unit(path, rows, encoders) for path in topic_paths]
-    units = [
-        corpus,
-        topic,
-        readme,
-        file_unit(skill_path, rows, encoders),
-    ] + [file_unit(path, rows, encoders) for path in hub_paths] + [
-        unit_row(CAR_CURRENT_NAME, [readme_path] + topic_paths, [readme] + topic_parts),
-        unit_row(
-            CAR_PROPOSED_NAME,
-            [readme_path, "%s#%s" % (topic_path, CAR_SECTION_ANCHOR)],
-            [readme, section_part(topic_path, CAR_SECTION_ANCHOR, rows)],
-        ),
-    ]
+    units = [corpus] + [file_unit(path, encoders) for path in REQUEST_PATHS]
     return {
-        "car_route": {
-            "current": CAR_CURRENT_NAME,
-            "proposed": CAR_PROPOSED_NAME,
-            "ratio": car_ratio(units),
-        },
-        "fences": fence_rows(paths, encoders),
         "files": files,
         "generator": GENERATOR,
-        "overhead": overhead_rows(paths, encoders),
         "pin": pin_block(),
         "units": units,
     }
@@ -1100,7 +644,7 @@ def render(data: Dict[str, Any]) -> str:
 # ───────────────────────────────────────────────────────────────
 
 def report(data: Dict[str, Any]) -> None:
-    """Print the named unit rows and the car route ratio.
+    """Print the named unit rows.
 
     Args:
         data: Result of build_baseline().
@@ -1110,7 +654,6 @@ def report(data: Dict[str, Any]) -> None:
             "%s: unit %s: %d bytes, %s"
             % (PROGRAM, row["name"], row["bytes"], token_text(row["tokens"]))
         )
-    print("%s: %s: %s" % (PROGRAM, "car route ratio", ratio_text(data["car_route"]["ratio"])))
 
 
 def drift_lines(stored_text: str, expected: Dict[str, Any]) -> List[str]:
@@ -1121,33 +664,18 @@ def drift_lines(stored_text: str, expected: Dict[str, Any]) -> List[str]:
         expected: Result of build_baseline().
 
     Returns:
-        One line per drifted row, or one line when only the shape differs.
+        One line per drifted row, or one line when only the layout differs.
     """
     try:
         stored = json.loads(stored_text)
     except ValueError as exc:
         return ["the baseline file is not valid JSON: %s" % exc]
-    if not isinstance(stored, dict):
-        return ["the baseline file holds no JSON object"]
-    lines = ["%s: row differs" % key for key in ("generator", "pin") if stored.get(key) != expected[key]]
-    stored_files = stored.get("files")
-    if isinstance(stored_files, list) and all(isinstance(row, dict) for row in stored_files):
-        old = {row.get("path"): row for row in stored_files}
-        new = {row["path"]: row for row in expected["files"]}
-        lines += ["files: added %s" % path for path in sorted(set(new) - set(old))]
-        lines += ["files: removed %s" % path for path in sorted(set(old) - set(new))]
-        lines += [
-            "files: changed %s" % path
-            for path in sorted(set(old) & set(new))
-            if old[path] != new[path]
-        ]
-    else:
-        lines.append("files: row differs")
-    lines += [
-        "%s: row differs" % key
-        for key in ("units", "overhead", "fences", "car_route")
-        if stored.get(key) != expected[key]
-    ]
+    lines = ["%s: row differs" % key for key in ("generator", "pin", "units") if stored.get(key) != expected[key]]
+    old = {row["path"]: row for row in stored.get("files", [])}
+    new = {row["path"]: row for row in expected["files"]}
+    lines += ["files: added %s" % path for path in sorted(set(new) - set(old))]
+    lines += ["files: removed %s" % path for path in sorted(set(old) - set(new))]
+    lines += ["files: changed %s" % path for path in sorted(set(old) & set(new)) if old[path] != new[path]]
     if not lines:
         lines.append("output differs but no row changed, rerun without --check")
     return lines
@@ -1155,24 +683,6 @@ def drift_lines(stored_text: str, expected: Dict[str, Any]) -> List[str]:
 # ───────────────────────────────────────────────────────────────
 # 7. CHECK AND WRITE
 # ───────────────────────────────────────────────────────────────
-
-def read_stored() -> Optional[str]:
-    """Read the baseline file as text.
-
-    Returns:
-        The file text, or None when the file does not exist.
-
-    Raises:
-        SystemExit: When the file cannot be read.
-    """
-    if not os.path.isfile(BASELINE_PATH):
-        return None
-    try:
-        with open(BASELINE_PATH, "r", encoding="utf-8", newline="") as handle:
-            return handle.read()
-    except OSError as exc:
-        fail("cannot read %s: %s" % (relative_path(BASELINE_PATH), exc))
-
 
 def write_baseline(text: str, data: Dict[str, Any]) -> int:
     """Write the baseline when it changed.
@@ -1187,7 +697,7 @@ def write_baseline(text: str, data: Dict[str, Any]) -> int:
     Raises:
         SystemExit: When the file cannot be written.
     """
-    if read_stored() == text:
+    if os.path.exists(BASELINE_PATH) and read_text(BASELINE_PATH) == text:
         print(
             "%s: baseline unchanged, %d files, %d sections"
             % (PROGRAM, len(data["files"]), section_count(data))
@@ -1222,12 +732,9 @@ def write_baseline(text: str, data: Dict[str, Any]) -> int:
 def check_baseline(text: str, data: Dict[str, Any]) -> int:
     """Compare the baseline file with the recomputed one.
 
-    Three extra assertions run beside the row comparison: every reference file
-    must stay under the full-topic-file token line, the three skill files every
-    accountant request reads must stay under the request line, and every nav or toc
-    fence must state the value its baseline row holds. A fence that produced
-    no row at all is reported too, so an empty fence list cannot pass while
-    a fence stands in the tree.
+    Two extra assertions run beside the row comparison: every reference file
+    must stay under the full-topic-file token line, and the three skill files
+    every accountant request reads must stay under the request line.
 
     Args:
         text: Baseline text a write would produce.
@@ -1236,15 +743,10 @@ def check_baseline(text: str, data: Dict[str, Any]) -> int:
     Returns:
         Zero when the file matches and both assertions hold, one otherwise.
     """
-    problems = file_limit_problems(data["files"]) + fence_value_problems(data["fences"])
-    problems += request_limit_problems(data["units"])
-    problems += unrecorded_fence_problems(markdown_files(), data["fences"])
+    problems = file_limit_problems(data["files"]) + request_limit_problems(data["units"])
     for line in problems:
         print("%s: over: %s" % (PROGRAM, line))
-    stored = read_stored()
-    if stored is None:
-        print("%s: drift: the baseline file is missing" % PROGRAM)
-        return 1
+    stored = read_text(BASELINE_PATH)
     if stored != text:
         for line in drift_lines(stored, data):
             print("%s: drift: %s" % (PROGRAM, line))

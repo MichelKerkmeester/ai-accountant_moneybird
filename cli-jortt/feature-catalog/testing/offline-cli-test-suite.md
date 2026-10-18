@@ -27,7 +27,7 @@ The suite is the repeatable proof that slugs, gates, output handling, redaction 
 
 ### Coverage
 
-The suite checks unique slugs and the collision rule, the description output, the dry-run URL, the write and scope gates, the token scope source labels and the fallback warning, parameter name and type checks, the output workspace guard for `call` and `fetch`, the summary and full-body output modes, the print body guard for every marker and API error redaction with its private log. It also injects one fault per exit code the script defines. A paging path and the token and request path run against a stub `curl`, so the tests stay offline.
+The suite checks unique slugs and the collision rule, the description output, the dry-run URL, the write and scope gates, the token scope source labels and the fallback warning, parameter name and type checks, the output workspace guard for `call` and `fetch`, the summary and full-body output modes, the print body guard for every marker and API error redaction with its private log. It also injects faults for the upstream, spec and token exit codes. A paging path and the token and request path run against a stub `curl`, so the tests stay offline.
 
 ### Fixture
 

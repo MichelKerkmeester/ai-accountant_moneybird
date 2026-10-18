@@ -29,8 +29,8 @@ Operators run the exact prompt and command sequence for `JRT-013` and confirm th
 - Objective: Confirm the setup script checks prerequisites and prints the symlink command without changing any file.
 - Real user request: `Check whether this machine is ready for jortt-cli and show me how to install it, but do not change anything.`
 - Prompt: `Check whether this machine is ready for jortt-cli and show me how to install it, but do not change anything.`
-- Expected execution process: The agent runs the setup script without `--link` and relays the printed symlink command.
-- Expected signals: Step 1: `CLI file: ready`, a Bash version, `curl: available`, `jq: available`, a `Manual symlink command:` line and `No files changed. Pass --link to create this symlink.`
+- Expected execution process: The agent runs the setup script and relays the printed symlink command.
+- Expected signals: Step 1: `CLI file: ready`, a Bash version, `curl: available`, `jq: available`, a `Manual symlink command:` line and `No files changed. Run the symlink command yourself to install the link.`
 - Desired user-visible outcome: The operator gets a readiness report and an install command to review.
 - Pass/fail: PASS if the script exits 0 and ends with the no-change line, FAIL if a symlink is created or a prerequisite line is missing.
 
@@ -48,7 +48,7 @@ Operators run the exact prompt and command sequence for `JRT-013` and confirm th
 
 ### Expected
 
-- Step 1: `CLI file: ready`, a Bash version, `curl: available`, `jq: available`, a `Manual symlink command:` line and `No files changed. Pass --link to create this symlink.`
+- Step 1: `CLI file: ready`, a Bash version, `curl: available`, `jq: available`, a `Manual symlink command:` line and `No files changed. Run the symlink command yourself to install the link.`
 
 ### Evidence
 
@@ -61,7 +61,7 @@ The transcript with the absolute path redacted and the exit code.
 
 ### Failure Triage
 
-1. Check that `--link` was not passed.
+1. Check that no symlink exists at the path the script printed.
 2. Inspect `cli/jortt-cli/setup.sh` and the install order in `INSTALL-GUIDE.md`.
 
 ---

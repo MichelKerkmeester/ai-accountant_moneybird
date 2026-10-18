@@ -16,15 +16,15 @@ version: 1.0.0.0
 
 Fails a P0 matrix row whose test path or case name no longer exists.
 
-`hardening-matrix.md` holds one row per failure mode with its priority, control, test, owner and status. `scripts/check-hardening-matrix.py --check` parses that table and verifies every row.
+`hardening-matrix.md` holds one row per failure mode with its priority, control, test, owner and status. `scripts/check-hardening-matrix.py` parses that table and verifies every row.
 
 ---
 
 ## 2. HOW IT WORKS
 
-Every row must name a failure mode, a priority, a control, a test, an owner and a status. A P0 row must name an existing test path as `path :: case name` and the case name must occur in that file as a quoted test name, so a deleted test, a renamed case, a quoted mention on a comment line or after a trailing `#` or `//` comment, also one that starts right after a shell operator such as `)` or `&&`, and a name inside another word fail the check. A test path must stay inside the repository. An absolute path, a path with a `..` segment and a path that resolves outside the root through a symlink fail on any row. P1 and P2 rows with a missing test path are reported as notes instead.
+Every row must name a failure mode, a priority, a control, a test, an owner and a status. A P0 row must name an existing test path as `path :: case name` and the case name must occur in that file as a quoted test name, so a deleted test, a renamed case, a quoted mention on a comment line and a name inside another word fail the check. A test path must stay inside the repository. A path that resolves outside the root, as an absolute path, a `..` segment or a symlink does, fails on any row. A P1 or P2 row may write `-` for no test, and a test it names must exist like a P0 one.
 
-The suite builds fixture copies with a removed P0 test path, a blanked P0 cell, a renamed case, an absolute path, a parent segment, a symlink out of the root and a case name that only sits inside another word and requires each to fail and name its row.
+The suite builds fixture copies with a removed P0 test path, a blanked P0 cell, a renamed case, a symlink out of the root, a case name that only sits inside another word and a case name that only sits on a comment line and requires each to fail.
 
 ---
 
@@ -34,14 +34,14 @@ The suite builds fixture copies with a removed P0 test path, a blanked P0 cell, 
 
 | File | Layer | Role |
 |---|---|---|
-| `sk-moneybird-accountant/scripts/check-hardening-matrix.py` | Script | Parses the matrix and checks every row, with the hard rule for P0. |
+| `sk-moneybird-accountant/scripts/check-hardening-matrix.py` | Script | Parses the matrix and checks every row and every named test. |
 | `sk-moneybird-accountant/hardening-matrix.md` | Shared | Holds one row per failure mode with its control, test, owner and status. |
 
 ### Validation And Tests
 
 | File | Type | Role |
 |---|---|---|
-| `sk-moneybird-accountant/scripts/hardening-matrix-test.sh` | Automated test | Seeds a removed test path, a blank cell, a renamed case, three path escapes and a case inside another word and requires each to fail. |
+| `sk-moneybird-accountant/scripts/hardening-matrix-test.sh` | Automated test | Seeds a removed test path, a blank cell, a renamed case, a symlink out of the root, a case inside another word and a case on a comment line and requires each to fail. |
 | `.github/workflows/skill-health.yml` | Test harness | Runs the matrix check and the suite on push and pull request. |
 
 ---

@@ -2,13 +2,14 @@
 # ───────────────────────────────────────────────────────────────
 # COMPONENT: ENGLISH FIRST CHECK TEST
 # ───────────────────────────────────────────────────────────────
-# Tests check-english-first.py against a fixture repository, a
-# summary fixture and the real corpus.
+# Tests check-english-first.py against a fixture repository and the real
+# corpus. The fixture holds its own copy of the checker, which reads the root
+# above its own folder.
 # Usage: check-english-first-test.sh [skill folder]
 # Exit Codes:
 #   0 - All checks pass
 #   1 - One or more checks fail
-#   2 - Invalid arguments or missing skill files
+#   2 - Invalid arguments, missing skill files or a fixture that cannot be built
 #
 # WHY: a rule earns trust only when it reports a bad fixture and accepts the
 # fixed one. This suite proves that for every rule, for the masked regions
@@ -43,8 +44,6 @@ if [[ ! -f "$CHECKER" ]]; then
     printf 'error: missing scripts/check-english-first.py in the skill folder\n' >&2
     exit 2
 fi
-
-REPO_ROOT=$(dirname "$SKILL_SRC")
 
 # ───────────────────────────────────────────────────────────────
 # 3. TEMP ROOT AND CLEANUP
@@ -84,6 +83,14 @@ fail() {
     printf 'FAIL %s\n' "$1"
 }
 
+# Stop the run when a fixture cannot be built, because every case after it would test nothing
+# Args:
+#   $1 - Description of the fixture step that failed
+abort_setup() {
+    printf 'error: %s\n' "$1" >&2
+    exit 2
+}
+
 # Print a section heading before the next block of checks
 # Args:
 #   $1 - Group title
@@ -91,16 +98,13 @@ group() {
     printf '\n== %s\n' "$1"
 }
 
-# Run the checker against one repository and capture its output
+# Run the checker copy that sits inside one repository root and capture its output
 # Args:
 #   $1 - Repository root
-#   $2... - Extra checker arguments
 # Returns:
 #   The checker exit status, with output in $TMP_ROOT/out.txt
 run_checker() {
-    local root="$1"
-    shift
-    python3 -I "$CHECKER" --root "$root" "$@" >"$TMP_ROOT/out.txt" 2>&1
+    python3 -I "$1/sk-moneybird-accountant/scripts/check-english-first.py" >"$TMP_ROOT/out.txt" 2>&1
 }
 
 # Run a command as a check and record whether it passes
@@ -253,7 +257,7 @@ check_exit() {
     fi
 }
 
-# Build the fixture repository with both glossaries, an exceptions file and a case file
+# Build the fixture repository with both glossaries, an exceptions file, a case file and a copy of the checker
 # Args:
 #   $1 - Repository root to create
 # Returns:
@@ -262,6 +266,8 @@ make_fixture() {
     local root="$1"
     mkdir -p "$root/sk-moneybird-accountant/references" || return 1
     mkdir -p "$root/sk-moneybird-accountant/assets" || return 1
+    mkdir -p "$root/sk-moneybird-accountant/scripts" || return 1
+    cp "$CHECKER" "$root/sk-moneybird-accountant/scripts/check-english-first.py" || return 1
     write_glossaries "$root" || return 1
     printf '{"exceptions": []}\n' \
         >"$root/sk-moneybird-accountant/assets/english-first-exceptions.json" || return 1
@@ -270,33 +276,12 @@ make_fixture() {
     return 0
 }
 
-# Build the summary fixture with one year file and one outside file
-# Args:
-#   $1 - Repository root to create
-# Returns:
-#   0 when the fixture is ready, 1 when a write fails
-make_summary_fixture() {
-    local root="$1"
-    local references="$root/sk-moneybird-accountant/references"
-    mkdir -p "$references/tax-rules/2024" || return 1
-    write_glossaries "$root" || return 1
-    printf '# Topic\n\nThe navorderingsaanslag arrives.\n' \
-        >"$references/tax-rules/2024/topic.md" || return 1
-    printf '# Outside\n\nThe provisional assessment is due.\n' \
-        >"$references/outside.md" || return 1
-    return 0
-}
-
 # ───────────────────────────────────────────────────────────────
 # 6. FIXTURE CORPUS
 # ───────────────────────────────────────────────────────────────
 
 group "fixture corpus"
-if make_fixture "$FIX"; then
-    pass "fixture repository builds"
-else
-    fail "fixture repository builds"
-fi
+make_fixture "$FIX" || abort_setup "the fixture repository cannot be built"
 check_clean "the clean fixture corpus passes"
 
 # ───────────────────────────────────────────────────────────────
@@ -653,68 +638,14 @@ else
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 15. SUMMARY
-# ───────────────────────────────────────────────────────────────
-
-group "summary"
-SUM="$TMP_ROOT/summary"
-make_summary_fixture "$SUM"
-cat >"$TMP_ROOT/summary-expected.txt" <<'TEXT'
-residual: 1
-first-use: 1
-doubled: 0
-reversed: 0
-unglossed: 0
-duplicate: 0
-stale-exception: 0
-outside tax-rules: 1
-tax-rules 2024: 1
-2 problems
-TEXT
-if run_checker "$SUM" --summary; then
-    fail "the summary counts every rule and area"
-elif cmp -s "$TMP_ROOT/summary-expected.txt" "$TMP_ROOT/out.txt"; then
-    pass "the summary counts every rule and area"
-else
-    fail "the summary counts every rule and area"
-fi
-
-# ───────────────────────────────────────────────────────────────
-# 16. RULE FILTER
-# ───────────────────────────────────────────────────────────────
-
-group "rule filter"
-write_case <<'MARKDOWN'
-# Case
-
-The voorlopige aanslag arrives.
-MARKDOWN
-write_exceptions_empty
-run_checker "$FIX" --rule doubled
-status=$?
-if [[ "$status" -eq 0 ]]; then
-    pass "a rule filter that matches nothing passes"
-else
-    fail "a rule filter that matches nothing passes"
-fi
-run_checker "$FIX" --rule residual
-status=$?
-if [[ "$status" -eq 1 ]] && grep -qF "residual: voorlopige aanslag" "$TMP_ROOT/out.txt" \
-    && ! grep -qF "first-use" "$TMP_ROOT/out.txt"; then
-    pass "a rule filter reports only that rule"
-else
-    fail "a rule filter reports only that rule"
-fi
-
-# ───────────────────────────────────────────────────────────────
-# 17. REAL CORPUS
+# 15. REAL CORPUS
 # ───────────────────────────────────────────────────────────────
 
 group "real corpus"
-assert "the real corpus is clean" python3 -I "$CHECKER" --root "$REPO_ROOT"
+assert "the real corpus is clean" python3 -I "$CHECKER"
 
 # ───────────────────────────────────────────────────────────────
-# 18. SUMMARY
+# 16. SUMMARY
 # ───────────────────────────────────────────────────────────────
 
 printf '\n%d passed, %d failed\n' "$passed" "$failed"

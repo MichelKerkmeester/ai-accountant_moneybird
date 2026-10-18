@@ -23,7 +23,7 @@ Use this catalog as the current-state inventory for the Jortt extraction skill. 
 | Area | What it covers |
 |---|---|
 | Operation discovery | Find an operation and its contract in the local OpenAPI document before any request is made. |
-| API calls | Read records through a validated operation call, a raw path or a signed download link. |
+| API calls | Read records through a validated operation call or a signed download link. |
 | Safety gates | Local checks that run before a token is requested and stop unsafe calls with a distinct exit code. |
 | Transport | Paging, token handling, retries, request pacing and error reporting between the CLI and the Jortt API. |
 | Diagnostics | Local checks that confirm the setup without printing secrets. |
@@ -47,7 +47,7 @@ Lists every operation in the local OpenAPI document with its stable slug, method
 
 #### Current Reality
 
-`ops` prints one row per operation. `--tag` narrows the list to one API tag, `--writes` keeps only non-GET operations and `--json` returns the same rows with the tag as JSON.
+`ops` prints one row per operation. `--tag` narrows the list to one API tag and `--json` returns the same rows with the tag as JSON.
 
 #### Source Files
 
@@ -59,11 +59,11 @@ See [`operation-discovery/list-operations.md`](operation-discovery/list-operatio
 
 #### Description
 
-Prints one operation's method, path, scope, path and query parameters, body schema and an example call.
+Prints one operation's method, path, scope, path and query parameters and an example call.
 
 #### Current Reality
 
-`describe SLUG` and `help SLUG` print the same contract. An unknown slug exits 2 and points at `jortt-cli ops`.
+`describe SLUG` prints the contract. An unknown slug exits 2 and points at `jortt-cli ops`.
 
 #### Source Files
 
@@ -89,37 +89,21 @@ See [`operation-discovery/openapi-spec-cache.md`](operation-discovery/openapi-sp
 
 ## 3. API CALLS
 
-Read records through a validated operation call, a raw path or a signed download link.
+Read records through a validated operation call or a signed download link.
 
 ### Call an operation
 
 #### Description
 
-Calls any spec operation by slug after validating parameter names, required values, types, enums and the JSON body.
+Calls any spec GET operation by slug after validating parameter names, required values, types and enums.
 
 #### Current Reality
 
-`call SLUG` accepts `--PARAM VALUE`, `--data`, `--data-file`, `--all`, `--out`, `--print-body`, `--raw`, `--dry-run` and `--allow-write`. It prints a short summary by default and keeps record content out of the terminal. `--print-body` is refused when an agent session marker is set. Every input check runs before a token is requested.
+`call SLUG` accepts `--PARAM VALUE`, `--all`, `--out`, `--print-body` and `--dry-run`. It prints a short summary by default and keeps record content out of the terminal. `--print-body` is refused when an agent session marker is set. Every input check runs before a token is requested.
 
 #### Source Files
 
 See [`api-calls/call-operation.md`](api-calls/call-operation.md) for full implementation and test file listings.
-
----
-
-### Raw GET
-
-#### Description
-
-Sends a GET to an API path with name=value query pairs for endpoints that are easier to address by path.
-
-#### Current Reality
-
-`get PATH` builds the URL from a path and `name=value` pairs. It rejects full URLs, query strings, fragments and parent-directory segments with exit 2.
-
-#### Source Files
-
-See [`api-calls/raw-get.md`](api-calls/raw-get.md) for full implementation and test file listings.
 
 ---
 
@@ -163,11 +147,11 @@ Local checks that run before a token is requested and stop unsafe calls with a d
 
 #### Description
 
-Blocks every non-GET operation with exit 3 unless the call carries --allow-write.
+Refuses every non-GET operation with exit 3, because Jortt is read-only for every agent.
 
 #### Current Reality
 
-The lock runs inside `call` before the scope check, before a token is requested and before a dry run prints. `ops --writes` lists every operation it guards.
+The lock runs inside `call` before the scope check, before a token is requested and before a dry run prints. The CLI has no flag that lifts it.
 
 #### Source Files
 
@@ -215,7 +199,7 @@ Refuses --print-body with exit 2 when an agent session marker is set, so a full 
 
 #### Current Reality
 
-`call` and `get` refuse `--print-body` with exit 2 when `CLAUDECODE`, `AI_SESSION_CHILD`, `ACCOUNTANT_AGENT_SESSION` or `CODEX_SANDBOX` is set, and point at `--out` for a supported record read.
+`call` refuses `--print-body` with exit 2 when `CLAUDECODE`, `AI_SESSION_CHILD`, `ACCOUNTANT_AGENT_SESSION` or `CODEX_SANDBOX` is set, and the refusal points at `--out` for a supported record read.
 
 #### Source Files
 
@@ -235,7 +219,7 @@ Follows _links.next.href across pages and merges each page's data array into one
 
 #### Current Reality
 
-`--all` works for GET operations and raw GETs. A page without a `data` array or a next link outside `https://api.jortt.nl` stops the run with exit 1.
+`--all` works for GET operations. A page without a `data` array or a next link outside `https://api.jortt.nl` stops the run with exit 1.
 
 #### Source Files
 
@@ -287,7 +271,7 @@ Checks the CLI file, Bash, curl and jq, then prints the symlink command without 
 
 #### Current Reality
 
-`setup.sh` exits 1 when a prerequisite is missing. It creates the symlink only with `--link` and refuses to replace an existing path.
+`setup.sh` exits 1 when a prerequisite is missing. It prints the symlink command and never creates the link.
 
 #### Source Files
 
@@ -303,7 +287,7 @@ Reports tool availability, CLI location, credential presence and spec state with
 
 #### Current Reality
 
-The doctor prints `set` or `unset` for each Jortt setting and whether the configured scopes contain a write scope. `--live` adds `whoami`.
+The doctor prints `set` or `unset` for each Jortt setting and whether the configured scopes contain a write scope. It makes no network call.
 
 #### Source Files
 
@@ -411,7 +395,7 @@ Runs the jortt-cli contract against a local OpenAPI file with fake credentials a
 
 #### Current Reality
 
-The suite runs each case with a local Swagger file and fake credentials against a stub network, checks every gate and injects one fault for each exit code the script defines.
+The suite runs each case with a local Swagger file and fake credentials against a stub network, checks every gate and injects faults for the upstream, spec and token exit codes.
 
 #### Source Files
 

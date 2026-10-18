@@ -16,7 +16,7 @@ contextType: "general"
 
 ## 1. OVERVIEW
 
-This folder indexes the completed benchmark runs for `sk-moneybird-accountant`. No dated run folder has been recorded, so the index below is empty. The [`route-replay/report.md`](./route-replay/report.md) beside this index is the generated resolve-mode output of the offline route replay, not a dated run folder.
+This folder indexes the completed benchmark runs for `sk-moneybird-accountant`. No dated run folder has been recorded, so the index below is empty. The route replay harness writes its output to a fresh temp folder and prints the path, so it adds nothing here.
 
 Add one row per completed run folder, newest first. Do not treat an empty index as evidence that a live migration has passed.
 
@@ -45,4 +45,3 @@ The grammar and the report file set are owned by `create-benchmark`. This index 
 |---|---|
 | [`../README.md`](../README.md) | Parent benchmark guide |
 | [`../../manual-testing-playbook/manual-testing-playbook.md`](../../manual-testing-playbook/manual-testing-playbook.md) | Playbook whose scenario runs land in this index |
-| [`./route-replay/report.md`](./route-replay/report.md) | Generated resolve-mode route report |

@@ -83,7 +83,7 @@ All saved extracts and downloads belong under `AI Systems/Moneybird Accountant/m
 | Check token metadata | `jortt-cli token status` |
 | Diagnose offline | `bash scripts/doctor.sh` |
 
-Use relative output names under `migration-workspace/`. Keep `--allow-write` off for migration extraction.
+Use relative output names under `migration-workspace/`.
 
 ---
 
@@ -101,7 +101,7 @@ Use relative output names under `migration-workspace/`. Keep `--allow-write` off
 
 ### ❌ NEVER
 
-- Never add a `:write` scope, pass `--allow-write` or choose `Read and write` on consent. This holds even when the Operator asks, because Jortt writes happen only in the Jortt UI.
+- Never add a `:write` scope or choose `Read and write` on consent. This holds even when the Operator asks, because Jortt writes happen only in the Jortt UI.
 - Never write extracted data outside `migration-workspace/`.
 - Never paste personal financial data into tracked files, commits or prompts to other services.
 - Never touch `AI Systems/Moneybird Accountant/personal database`.
@@ -117,7 +117,7 @@ Use relative output names under `migration-workspace/`. Keep `--allow-write` off
 
 ### Tool-level wall
 
-The CLI refuses a non-GET call without `--allow-write`. That flag is a per-call flag on the same command and is not a read-only mode. The actual wall is `JORTT_SCOPES` holding read scopes only, so a non-GET call fails the scope check even with the flag. An agent has no Jortt write path, with or without Operator permission.
+The CLI refuses every non-GET call with exit 3 and has no request-body option. The scope check still applies to reads, and `JORTT_SCOPES` holding read scopes only keeps the key itself read-only. An agent has no Jortt write path, with or without Operator permission.
 
 ---
 

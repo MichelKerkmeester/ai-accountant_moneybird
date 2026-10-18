@@ -300,7 +300,7 @@ cli/moneybird-cli/tests/run-tests.sh exercises the guard against a local CLI stu
 
 #### Current Reality
 
-The suite sets the test-only overrides, points every CLI call at the stub and removes the temporary root on exit. It covers the period warning, the write gates, the payload and attachment digests, the single-use rule, the write log, the DELETE caution, the output guard, both logins and one injected fault per guard exit code. It makes no network call.
+The suite sets the test-only overrides, points every CLI call at the stub and removes the temporary root on exit. It covers the period warning, the write gates, the payload and attachment digests, the single-use rule, the write log, the DELETE caution, the output guard, both logins, a quoted token and two injected stub faults. It makes no network call.
 
 #### Source Files
 

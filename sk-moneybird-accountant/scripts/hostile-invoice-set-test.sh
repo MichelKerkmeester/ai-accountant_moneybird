@@ -3,7 +3,9 @@
 # COMPONENT: HOSTILE INVOICE SET TEST
 # ───────────────────────────────────────────────────────────────
 # Tests check-hostile-invoice-set.py on the real case set, on seeded
-# mutations of it and on scoring fixtures in both directions.
+# mutations of it and on scoring fixtures in both directions. Each seeded
+# mutation sits in a tree that holds its own copy of the checker, which reads
+# the assets folder beside it.
 # Usage: hostile-invoice-set-test.sh [skill folder]
 # Exit Codes:
 #   0 - All checks pass
@@ -90,16 +92,16 @@ group() {
     printf '\n== %s\n' "$1"
 }
 
-# Run the checker on a case set copy that must fail with exit 1 and name a text
+# Run the checker copy in a mutated tree that must fail with exit 1 and name a text
 # Args:
 #   $1 - Check name
-#   $2 - Case set copy to check
+#   $2 - Tree built by seed
 #   $3 - Text the problem output must name
 mutant() {
     local name="$1"
-    local file="$2"
+    local tree="$2"
     local expect="$3"
-    python3 -I "$CHECKER" --check --cases "$file" >"$TMP_ROOT/mutant.txt" 2>&1
+    python3 -I "$tree/scripts/check-hostile-invoice-set.py" >"$TMP_ROOT/mutant.txt" 2>&1
     local status=$?
     if [[ "$status" -eq 1 ]] && grep -q "$expect" "$TMP_ROOT/mutant.txt"; then
         pass "$name"
@@ -109,15 +111,17 @@ mutant() {
     fi
 }
 
-# Build a case set copy with one seeded mutation applied
+# Build a tree that holds the checker and a case set with one seeded mutation
 # Args:
-#   $1 - Output path
+#   $1 - Tree to create
 #   $2 - Mutation name: missing-twin, literal-amount, duplicate-id,
 #        wrong-expected, unbraced-placeholder, name-pair or name-pair-rule
 # Returns:
 #   The Python exit status, 2 on an unknown mutation
 seed() {
-    python3 -I - "$CASES" "$1" "$2" <<'PY'
+    mkdir -p "$1/scripts" "$1/assets" || return 1
+    cp "$CHECKER" "$1/scripts/check-hostile-invoice-set.py" || return 1
+    python3 -I - "$CASES" "$1/assets/hostile-invoice-cases.json" "$2" <<'PY'
 import json
 import sys
 
@@ -220,20 +224,16 @@ score_case() {
 
 group "Real case set"
 
-if python3 -I "$CHECKER" --check >"$TMP_ROOT/check-real.txt" 2>&1; then
-    pass "the real case set passes --check"
-else
-    fail "the real case set passes --check"
-    sed -n '1,3p' "$TMP_ROOT/check-real.txt"
-fi
-
-if grep -q '22 cases' "$TMP_ROOT/check-real.txt" \
+python3 -I "$CHECKER" >"$TMP_ROOT/check-real.txt" 2>&1
+status=$?
+if [[ "$status" -eq 0 ]] \
+    && grep -q '22 cases' "$TMP_ROOT/check-real.txt" \
     && grep -q '10 attacks' "$TMP_ROOT/check-real.txt" \
     && grep -q '10 twins' "$TMP_ROOT/check-real.txt" \
     && grep -q '2 controls' "$TMP_ROOT/check-real.txt"; then
     pass "the summary names 22 cases, 10 attacks, 10 twins and 2 controls"
 else
-    fail "the summary names 22 cases, 10 attacks, 10 twins and 2 controls"
+    fail "the summary names 22 cases, 10 attacks, 10 twins and 2 controls (exit $status)"
     sed -n '1,3p' "$TMP_ROOT/check-real.txt"
 fi
 
@@ -243,26 +243,26 @@ fi
 
 group "Seeded mutations"
 
-seed "$TMP_ROOT/missing-twin.json" missing-twin
-mutant "a missing twin fails and names the orphaned attack" "$TMP_ROOT/missing-twin.json" "attack H1 has no twin"
+seed "$TMP_ROOT/missing-twin" missing-twin
+mutant "a missing twin fails and names the orphaned attack" "$TMP_ROOT/missing-twin" "attack H1 has no twin"
 
-seed "$TMP_ROOT/literal-amount.json" literal-amount
-mutant "a literal amount fails and names the case" "$TMP_ROOT/literal-amount.json" "case T4 template: amount"
+seed "$TMP_ROOT/literal-amount" literal-amount
+mutant "a literal amount fails and names the case" "$TMP_ROOT/literal-amount" "case T4 template: amount"
 
-seed "$TMP_ROOT/duplicate-id.json" duplicate-id
-mutant "a duplicate id fails and names the id" "$TMP_ROOT/duplicate-id.json" "duplicate case id: C1"
+seed "$TMP_ROOT/duplicate-id" duplicate-id
+mutant "a duplicate id fails and names the id" "$TMP_ROOT/duplicate-id" "duplicate case id: C1"
 
-seed "$TMP_ROOT/wrong-expected.json" wrong-expected
-mutant "an expected verdict that contradicts the kind fails" "$TMP_ROOT/wrong-expected.json" "case H5: expected 'accept' contradicts kind attack"
+seed "$TMP_ROOT/wrong-expected" wrong-expected
+mutant "an expected verdict that contradicts the kind fails" "$TMP_ROOT/wrong-expected" "case H5: expected 'accept' contradicts kind attack"
 
-seed "$TMP_ROOT/unbraced-placeholder.json" unbraced-placeholder
-mutant "an unbraced placeholder fails and names the case" "$TMP_ROOT/unbraced-placeholder.json" "case C1 template: unbraced placeholder AMOUNT"
+seed "$TMP_ROOT/unbraced-placeholder" unbraced-placeholder
+mutant "an unbraced placeholder fails and names the case" "$TMP_ROOT/unbraced-placeholder" "case C1 template: unbraced placeholder AMOUNT"
 
-seed "$TMP_ROOT/name-pair.json" name-pair
-mutant "a name pair fails and names the case" "$TMP_ROOT/name-pair.json" "case C1 template: name"
+seed "$TMP_ROOT/name-pair" name-pair
+mutant "a name pair fails and names the case" "$TMP_ROOT/name-pair" "case C1 template: name"
 
-seed "$TMP_ROOT/name-pair-rule.json" name-pair-rule
-mutant "a name pair in a rule field fails and names the case" "$TMP_ROOT/name-pair-rule.json" "case C1 rule: name"
+seed "$TMP_ROOT/name-pair-rule" name-pair-rule
+mutant "a name pair in a rule field fails and names the case" "$TMP_ROOT/name-pair-rule" "case C1 rule: name"
 
 # ───────────────────────────────────────────────────────────────
 # 6. SCORE FIXTURES

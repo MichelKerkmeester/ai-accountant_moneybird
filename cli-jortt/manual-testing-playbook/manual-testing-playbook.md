@@ -142,7 +142,7 @@ This section records how to split the scenarios across workers. It is not a runt
 ### Operational Rules
 
 1. Reserve one coordinator.
-2. Run every offline scenario in the first wave: JRT-001, JRT-002, JRT-005, JRT-006, JRT-007, JRT-008, JRT-009, JRT-010, JRT-011, JRT-013, JRT-014 and JRT-016.
+2. Run every offline scenario in the first wave: JRT-001, JRT-002, JRT-005, JRT-006, JRT-007, JRT-008, JRT-010, JRT-011, JRT-013, JRT-014 and JRT-016.
 3. Run the live read scenarios JRT-003, JRT-004, JRT-012 and JRT-015 in a second wave, one worker at a time, so requests stay under the rate limit.
 4. Pre-assign scenario IDs and their per-feature files to each worker before execution.
 5. After each wave, record verdicts and evidence paths before starting the next wave.
@@ -171,7 +171,7 @@ Confirm the doctor checks local prerequisites and setup state without network ac
 
 Prompt: `Run the cli-jortt doctor offline and tell me whether the CLI and prerequisites are present.`
 
-The agent runs the doctor without `--live` and summarizes tool availability and setting presence.
+The agent runs the doctor and summarizes tool availability and setting presence.
 
 Desired user-visible outcome: The operator learns which prerequisites and settings are present without seeing any credential value.
 
@@ -184,15 +184,15 @@ Desired user-visible outcome: The operator learns which prerequisites and settin
 
 #### Description
 
-Confirm a write without its explicit flag exits 3 and a write with the flag but a missing scope exits 4 before any network request.
+Confirm a non-GET operation exits 3 and a read with a missing scope exits 4 before any network request.
 
 #### Scenario Contract
 
-Prompt: `Show the dry-run for a Jortt expense creation without sending a request.`
+Prompt: `Show that jortt-cli refuses a Jortt expense creation and stops a read that lacks its scope, without sending a request.`
 
 The agent runs both dry-run commands, reads each exit code and explains which gate stopped the call.
 
-Desired user-visible outcome: The operator sees that the write flag is checked first and the scope second, with no request sent.
+Desired user-visible outcome: The operator sees that every write is refused first and that a read needs its scope, with no request sent.
 
 #### Test Execution
 
@@ -291,7 +291,7 @@ Confirm the setup script checks prerequisites and prints the symlink command wit
 
 Prompt: `Check whether this machine is ready for jortt-cli and show me how to install it, but do not change anything.`
 
-The agent runs the setup script without `--link` and relays the printed symlink command.
+The agent runs the setup script and relays the printed symlink command.
 
 Desired user-visible outcome: The operator gets a readiness report and an install command to review.
 
@@ -348,7 +348,7 @@ Desired user-visible outcome: The operator sees which spec is in use and how a m
 
 ## 10. EXTRACTION
 
-Scenarios: JRT-003, JRT-004, JRT-009, JRT-011, JRT-016.
+Scenarios: JRT-003, JRT-004, JRT-011, JRT-016.
 
 ### JRT-003 | Paged extract to workspace
 
@@ -388,25 +388,6 @@ Desired user-visible outcome: The API call returns a signed URL and fetch saves 
 > **Feature File:** [JRT-004](extraction/receipt-download.md)
 > **Catalog:** [api-calls/signed-download-fetch.md](../feature-catalog/api-calls/signed-download-fetch.md)
 
-### JRT-009 | Raw GET path guard
-
-#### Description
-
-Confirm the raw GET command rejects a full URL, a parent-directory segment and a malformed query pair before any request.
-
-#### Scenario Contract
-
-Prompt: `Try a few unsafe raw Jortt GET requests and show me that jortt-cli refuses them.`
-
-The agent runs three invalid `get` commands and reads each refusal and exit code.
-
-Desired user-visible outcome: The operator sees three clear refusals and no request.
-
-#### Test Execution
-
-> **Feature File:** [JRT-009](extraction/raw-get-path-guard.md)
-> **Catalog:** [api-calls/raw-get.md](../feature-catalog/api-calls/raw-get.md)
-
 ### JRT-011 | Call an operation offline
 
 #### Description
@@ -430,7 +411,7 @@ Desired user-visible outcome: The operator sees the exact request shape and a cl
 
 #### Description
 
-Confirm `call`, `get` and `fetch` reject an output path outside the migration workspace and accept a name inside it without writing.
+Confirm `call` and `fetch` reject an output path outside the migration workspace and accept a name inside it without writing.
 
 #### Scenario Contract
 
@@ -493,11 +474,13 @@ Desired user-visible outcome: The agent hands off the request without calling Jo
 
 | Test Module | Coverage | Playbook Overlap |
 |---|---|---|
-| [`cli/jortt-cli/tests/run-tests.sh`](../cli/jortt-cli/tests/run-tests.sh) | Unique slugs, slug collision choice, describe output, dry-run URL, write lock, scope check, parameter validation and output path guard, all offline against the trimmed fixture OpenAPI by default, plus one fault case per Jortt exit code 1 to 6 | JRT-002, JRT-003, JRT-004, JRT-007 |
+| [`cli/jortt-cli/tests/run-tests.sh`](../cli/jortt-cli/tests/run-tests.sh) | Unique slugs, slug collision choice, describe output, dry-run URL, write lock, scope check, parameter validation and output path guard, all offline against the trimmed fixture OpenAPI by default, plus fault cases for Jortt exit codes 1, 2 and 6 | JRT-002, JRT-003, JRT-004, JRT-007 |
 
 ---
 
 ## 13. FEATURE CATALOG CROSS-REFERENCE INDEX
+
+IDs stay stable once written. JRT-009 is retired with the raw GET command it tested, so the list skips it.
 
 | Feature ID | Feature Name | Category | Feature File | Catalog Entry |
 |---|---|---|---|---|
@@ -509,7 +492,6 @@ Desired user-visible outcome: The agent hands off the request without calling Jo
 | JRT-006 | Moneybird request is deferred | Routing | [JRT-006](routing/moneybird-request-deferred.md) | [surfaces/surface-routing.md](../feature-catalog/surfaces/surface-routing.md) |
 | JRT-007 | List and describe operations | Operation discovery | [JRT-007](operation-discovery/list-and-describe-operations.md) | [operation-discovery/list-operations.md](../feature-catalog/operation-discovery/list-operations.md) |
 | JRT-008 | Spec info without network | Operation discovery | [JRT-008](operation-discovery/spec-info-offline.md) | [operation-discovery/openapi-spec-cache.md](../feature-catalog/operation-discovery/openapi-spec-cache.md) |
-| JRT-009 | Raw GET path guard | Extraction | [JRT-009](extraction/raw-get-path-guard.md) | [api-calls/raw-get.md](../feature-catalog/api-calls/raw-get.md) |
 | JRT-010 | Token cache status | Auth and scopes | [JRT-010](auth-and-scopes/token-status.md) | [transport/token-cache-and-retry.md](../feature-catalog/transport/token-cache-and-retry.md) |
 | JRT-011 | Call an operation offline | Extraction | [JRT-011](extraction/call-operation-offline.md) | [api-calls/call-operation.md](../feature-catalog/api-calls/call-operation.md) |
 | JRT-012 | Organization check prints field names only | Auth and scopes | [JRT-012](auth-and-scopes/whoami-field-names.md) | [api-calls/organization-check.md](../feature-catalog/api-calls/organization-check.md) |

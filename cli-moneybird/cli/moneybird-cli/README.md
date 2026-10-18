@@ -126,7 +126,7 @@ bash cli/moneybird-cli/setup.sh --check
 bash cli/moneybird-cli/tests/run-tests.sh
 ```
 
-Expected: the check reports source presence, the pin match and the PATH status. The stub suite ends with `Pass: 58  Fail: 0`.
+Expected: the check reports source presence, the pin match and the PATH status. The stub suite ends with `Pass: 53  Fail: 0`.
 
 ---
 

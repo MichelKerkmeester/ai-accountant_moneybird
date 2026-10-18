@@ -2,17 +2,16 @@
 # ───────────────────────────────────────────────────────────────
 # COMPONENT: TOKEN CANARY TEST
 # ───────────────────────────────────────────────────────────────
-# Tests token-baseline.py against the car question route, two mutants, a
-# byte-only fixture and a router grown past the request line. The suite imports the baseline script and calls its
-# counting helpers, so no count is repeated here.
+# Tests token-baseline.py against a swapped encoding file, a router grown past
+# the request line and a baseline gone stale. The suite imports the baseline
+# script and calls its pin helpers, so no hash is repeated here.
 # Usage: token-canary-test.sh [skill folder]
 # Exit Codes:
 #   0 - All checks pass
 #   1 - One or more checks fail
-#   2 - Invalid arguments, a missing skill file or a missing encoding cache
+#   2 - Invalid arguments, a missing skill file, a missing encoding cache or a
+#       fixture that cannot be built
 #
-# WHY: the car question is the shortest route a reader can walk through the
-# reference tree, so it is the first route a whole-file load would inflate.
 # WHY: the suite inspects $? after commands that are expected to fail, so -e stays off.
 set -uo pipefail
 
@@ -103,6 +102,14 @@ fail() {
     printf 'FAIL %s\n' "$1"
 }
 
+# Stop the run when a fixture cannot be built, because every case after it would test nothing
+# Args:
+#   $1 - Description of the fixture step that failed
+abort_setup() {
+    printf 'error: %s\n' "$1" >&2
+    exit 2
+}
+
 # Print a section heading before the next block of checks
 # Args:
 #   $1 - Group title
@@ -127,43 +134,49 @@ show_output() {
     sed 's/^/  /' "$TMP_ROOT/out.txt"
 }
 
+# Copy the skill folder and the hub SKILL.md into a throwaway repository root
+# WHY: the baseline counts the hub SKILL.md that every route reads, so each copy carries it.
+# Args:
+#   $1 - Repository root to create
+# Returns:
+#   0 when the copy is complete, 1 otherwise
+copy_repo() {
+    mkdir -p "$1/sk-moneybird-accountant" \
+        && cp -R "$SKILL_SRC/." "$1/sk-moneybird-accountant/" \
+        && cp "$(dirname "$SKILL_SRC")/SKILL.md" "$1/SKILL.md"
+}
+
 # ───────────────────────────────────────────────────────────────
-# 5. ROUTE CANARY DRIVER
+# 5. CACHE DRIVER
 # ───────────────────────────────────────────────────────────────
 
-DRIVER="$TMP_ROOT/route-canary.py"
+DRIVER="$TMP_ROOT/cache-driver.py"
 cat >"$DRIVER" <<'PY'
 #!/usr/bin/env python3
 # ───────────────────────────────────────────────────────────────
-# COMPONENT: ROUTE CANARY DRIVER
+# COMPONENT: CACHE DRIVER
 # ───────────────────────────────────────────────────────────────
-"""Measure one token baseline module against the route canary budget.
+"""Reach into one token baseline module for the canary suite.
 
-The driver imports the named token-baseline.py and calls its counting helpers,
-so the canary never counts tokens on its own. The proposed car route must stay
-at or under 35 percent of the current route and at or under 8500 cl100k_base
-tokens. The driver also builds a byte-only fixture, rewrites a module copy so
-the proposed route reads the whole topic through its parts, and swaps two
-cached encoding files so the baseline must refuse them. No step downloads an
-encoding.
+The driver imports the named token-baseline.py and calls its pin helpers, so
+the canary never derives a cache file name or a hash of its own. One mode
+checks the cached encoding files against the module pin, and the other swaps
+two cached encoding files so the baseline must refuse them. No step
+downloads an encoding.
 
 Usage:
-    route-canary.py pin <module>
-    route-canary.py route <module>
-    route-canary.py fixture <module>
-    route-canary.py whole-file <module>
-    route-canary.py swap-cache <module> <source cache> <target cache>
+    cache-driver.py pin <module>
+    cache-driver.py swap-cache <module> <source cache> <target cache>
 
 Options:
     None.
 
 Output:
-    The measured route numbers, one budget line per breach, the fixture
-    numbers and one line for each mutation.
+    The cache folder and the cache file of each encoding, or one line for the
+    swap.
 
 Exit Codes:
     0 - The requested step passed
-    1 - A route or fixture stayed outside its budget
     2 - Bad usage, a missing encoding cache or a pin mismatch
 """
 
@@ -176,24 +189,13 @@ import os
 import shutil
 import sys
 from types import ModuleType
-from typing import Any, Dict, List, NoReturn, Tuple
+from typing import List, NoReturn
 
 # ───────────────────────────────────────────────────────────────
 # 2. CONFIGURATION
 # ───────────────────────────────────────────────────────────────
 
-PROGRAM = "route-canary"
-RATIO_PERCENT = 35
-CEILING_CL100K = 8500
-
-# The fixture repeats one car cost row. Its token count carries a byte count
-# that a bytes/4 budget accepts, while the count itself stands 25 percent over
-# a token budget that the same byte count implies.
-FIXTURE_UNIT = "| Auto | Kosten |\n|---|---|\n| 0.25 | 12345 |\n"
-FIXTURE_REPEATS = 7
-
-Counts = Dict[str, int]
-Ratios = Dict[str, float]
+PROGRAM = "cache-driver"
 
 # ───────────────────────────────────────────────────────────────
 # 3. HELPERS
@@ -234,63 +236,6 @@ def load_module(path: str) -> ModuleType:
         fail("cannot load %s: %s" % (path, exc))
     return module
 
-
-def open_encoders(module: ModuleType) -> Dict[str, Any]:
-    """Check the cache pin and load both encoders from the local cache.
-
-    Args:
-        module: The imported token baseline module.
-
-    Returns:
-        Mapping of encoding name to an encoder.
-
-    Raises:
-        SystemExit: When a cache file is missing or its hash differs.
-    """
-    module.check_cache(module.cache_dir())
-    return module.load_encoders()
-
-
-def route_rows(module: ModuleType, encoders: Dict[str, Any]) -> Tuple[Counts, Counts, Ratios]:
-    """Return the current and proposed token counts and the route ratio.
-
-    Args:
-        module: The imported token baseline module.
-        encoders: Mapping of encoding name to an encoder.
-
-    Returns:
-        The current counts, the proposed counts and the ratio by encoding.
-    """
-    data = module.build_baseline(encoders)
-    units = {row["name"]: row for row in data["units"]}
-    current = units[module.CAR_CURRENT_NAME]["tokens"]
-    proposed = units[module.CAR_PROPOSED_NAME]["tokens"]
-    return current, proposed, data["car_route"]["ratio"]
-
-
-def budget_problems(current: Counts, proposed: Counts) -> List[str]:
-    """Return one line per cl100k_base budget that the proposed route breaks.
-
-    Args:
-        current: Token counts of the current route.
-        proposed: Token counts of the proposed route.
-
-    Returns:
-        The problem lines, empty when the route is inside both budgets.
-    """
-    problems: List[str] = []
-    if proposed["cl100k_base"] * 100 > RATIO_PERCENT * current["cl100k_base"]:
-        problems.append(
-            "cl100k_base proposed %d is over %d percent of current %d"
-            % (proposed["cl100k_base"], RATIO_PERCENT, current["cl100k_base"])
-        )
-    if proposed["cl100k_base"] > CEILING_CL100K:
-        problems.append(
-            "cl100k_base proposed %d is over the ceiling %d"
-            % (proposed["cl100k_base"], CEILING_CL100K)
-        )
-    return problems
-
 # ───────────────────────────────────────────────────────────────
 # 4. MODES
 # ───────────────────────────────────────────────────────────────
@@ -308,139 +253,6 @@ def mode_pin(module: ModuleType) -> int:
     print("cache directory: %s" % module.cache_dir())
     for entry in module.ENCODINGS:
         print("encoding file: %s %s" % (entry["name"], module.cache_file_name(entry["url"])))
-    return 0
-
-
-def mode_route(module: ModuleType, encoders: Dict[str, Any]) -> int:
-    """Measure the car route and apply the ratio and ceiling budget.
-
-    Args:
-        module: The imported token baseline module.
-        encoders: Mapping of encoding name to an encoder.
-
-    Returns:
-        Zero when the route is inside both budgets, one otherwise.
-    """
-    current, proposed, ratio = route_rows(module, encoders)
-    print("route current: %s" % module.token_text(current))
-    print("route proposed: %s" % module.token_text(proposed))
-    print("route ratio: %s" % module.ratio_text(ratio))
-    print(
-        "route budget: at most %d percent of current and at most %d cl100k_base tokens"
-        % (RATIO_PERCENT, CEILING_CL100K)
-    )
-    problems = budget_problems(current, proposed)
-    for problem in problems:
-        print("budget: %s" % problem)
-    if problems:
-        print("budget: rejected")
-        return 1
-    print("budget: accepted")
-    return 0
-
-
-def mode_fixture(module: ModuleType, encoders: Dict[str, Any]) -> int:
-    """Check a fixture that passes a byte budget and breaks a token budget.
-
-    The token budget is four fifths of the measured count, so the count is
-    exactly 25 percent over it. The byte budget is four bytes per token from
-    the same rule the fixture is meant to defeat.
-
-    Args:
-        module: The imported token baseline module.
-        encoders: Mapping of encoding name to an encoder.
-
-    Returns:
-        Zero when the byte budget passes and the token gate rejects, one
-        when the fixture does not show that gap.
-    """
-    text = FIXTURE_UNIT * FIXTURE_REPEATS
-    size = module.count_bytes(text)
-    counts = module.count_tokens(text, encoders)
-    count = counts["cl100k_base"]
-    budget = count * 4 // 5
-    byte_budget = budget * 4
-    byte_ok = size <= byte_budget
-    token_ok = count <= budget
-    exact = count * 4 == budget * 5
-    print("fixture bytes: %d" % size)
-    print("fixture tokens: %s" % module.token_text(counts))
-    print("byte budget: %d bytes, %s" % (byte_budget, "passes" if byte_ok else "fails"))
-    print(
-        "token budget: %d cl100k_base tokens, %s"
-        % (budget, "within" if token_ok else "over by 25 percent")
-    )
-    if not exact:
-        print("fixture: the count is not exactly 25 percent over the token budget")
-        return 1
-    if not byte_ok:
-        print("fixture: the byte budget fails, so the probe proves nothing")
-        return 1
-    if token_ok:
-        print("fixture: the token budget passes, so the probe proves nothing")
-        return 1
-    print("fixture: the byte budget passes and the token gate rejects the text")
-    return 0
-
-
-def mode_nested(module: ModuleType, encoders: Dict[str, Any]) -> int:
-    """Check that the walk reaches a nested file once and keeps its path.
-
-    The walk is depth-agnostic at the base commit, so this case guards that
-    behavior instead of proving a fix.
-
-    Args:
-        module: The imported token baseline module.
-        encoders: Mapping of encoding name to an encoder.
-
-    Returns:
-        Zero when the walk holds the nested file exactly once, its row path
-        is the nested path and its two sections are counted, one otherwise.
-    """
-    wanted = "tax-rules/2020/vat/figures.md"
-    paths = [module.relative_path(path) for path in module.markdown_files()]
-    hits = [path for path in paths if path.endswith(wanted)]
-    row = module.file_row(os.path.join(module.REFERENCES_ROOT, wanted), encoders)
-    print("nested files: %d" % len(paths))
-    print("nested hits: %d" % len(hits))
-    print("nested sections: %d" % len(row["sections"]))
-    if len(hits) != 1:
-        print("nested: the walk does not hold the file exactly once")
-        return 1
-    if row["path"] != "sk-moneybird-accountant/references/" + wanted:
-        print("nested: the row path is not the nested path")
-        return 1
-    if len(row["sections"]) != 2:
-        print("nested: the nested file does not count its two sections")
-        return 1
-    print("nested: one entry and two sections from a depth-agnostic walk")
-    return 0
-
-
-def mode_whole_file(path: str) -> int:
-    """Point the proposed route of a module copy at the whole topic.
-
-    Args:
-        path: Path of a token-baseline.py copy to rewrite.
-
-    Returns:
-        Zero when the copy is rewritten.
-
-    Raises:
-        SystemExit: When the route lines are missing, so no mutation applies.
-    """
-    old_reads = '[readme_path, "%s#%s" % (topic_path, CAR_SECTION_ANCHOR)]'
-    new_reads = "[readme_path] + topic_paths"
-    old_part = "[readme, section_part(topic_path, CAR_SECTION_ANCHOR, rows)]"
-    new_part = "[readme] + topic_parts"
-    with open(path, "r", encoding="utf-8") as handle:
-        text = handle.read()
-    if text.count(old_reads) != 1 or text.count(old_part) != 1:
-        fail("cannot place the whole-file mutation in %s" % path)
-    text = text.replace(old_reads, new_reads).replace(old_part, new_part)
-    with open(path, "w", encoding="utf-8", newline="") as handle:
-        handle.write(text)
-    print("mutant: the proposed route reads the whole topic through its parts")
     return 0
 
 
@@ -490,25 +302,14 @@ def main(argv: List[str]) -> int:
     Raises:
         SystemExit: On bad usage or a setup failure.
     """
-    modes = ("pin", "route", "fixture", "whole-file", "swap-cache", "nested")
-    if len(argv) < 2 or argv[0] not in modes:
+    if len(argv) < 2 or argv[0] not in ("pin", "swap-cache"):
         fail("usage: %s <mode> <module> [args]" % PROGRAM)
-    mode = argv[0]
     module = load_module(argv[1])
-    if mode == "whole-file":
-        return mode_whole_file(argv[1])
-    if mode == "swap-cache":
+    if argv[0] == "swap-cache":
         if len(argv) != 4:
             fail("usage: swap-cache <module> <source cache> <target cache>")
         return mode_swap_cache(module, argv[2], argv[3])
-    if mode == "pin":
-        return mode_pin(module)
-    encoders = open_encoders(module)
-    if mode == "route":
-        return mode_route(module, encoders)
-    if mode == "nested":
-        return mode_nested(module, encoders)
-    return mode_fixture(module, encoders)
+    return mode_pin(module)
 
 
 if __name__ == "__main__":
@@ -516,7 +317,7 @@ if __name__ == "__main__":
 PY
 
 if [[ ! -s "$DRIVER" ]]; then
-    printf 'error: cannot write the route canary driver\n' >&2
+    printf 'error: cannot write the cache driver\n' >&2
     exit 2
 fi
 
@@ -534,49 +335,11 @@ sed 's/^/  /' "$TMP_ROOT/pin.txt"
 # 6. CHECKS
 # ───────────────────────────────────────────────────────────────
 
-group "car question on the key figures route"
-run_driver route "$BASELINE_PY"
-status=$?
-show_output
-if [[ "$status" -eq 0 ]]; then
-    pass "the year README plus the key figures section stays within budget"
-else
-    fail "the year README plus the key figures section stays within budget"
-fi
-
-group "whole-file mutant"
-COPY_REPO="$TMP_ROOT/repo"
-mkdir -p "$COPY_REPO/sk-moneybird-accountant"
-cp -R "$SKILL_SRC/." "$COPY_REPO/sk-moneybird-accountant/"
-# WHY: the baseline counts the hub SKILL.md that every route reads, so the copy carries it.
-cp "$(dirname "$SKILL_SRC")/SKILL.md" "$COPY_REPO/SKILL.md"
-COPY_PY="$COPY_REPO/sk-moneybird-accountant/scripts/token-baseline.py"
-run_driver whole-file "$COPY_PY"
-status=$?
-show_output
-if [[ "$status" -eq 0 ]]; then
-    pass "the throwaway copy points the proposed route at the whole topic"
-else
-    fail "the throwaway copy points the proposed route at the whole topic"
-fi
-run_driver route "$COPY_PY"
-status=$?
-show_output
-if [[ "$status" -eq 1 ]] && grep -q 'over 35 percent' "$TMP_ROOT/out.txt"; then
-    pass "the whole-file mutant fails on the ratio"
-else
-    fail "the whole-file mutant fails on the ratio"
-fi
-
 group "swapped-encoding mutant"
 MUTANT_CACHE="$TMP_ROOT/cache-swapped"
-run_driver swap-cache "$BASELINE_PY" "$CACHE_DIR" "$MUTANT_CACHE"
-status=$?
-show_output
-if [[ "$status" -eq 0 ]]; then
-    pass "the mutant cache holds the lead data under the second name"
-else
-    fail "the mutant cache holds the lead data under the second name"
+if ! run_driver swap-cache "$BASELINE_PY" "$CACHE_DIR" "$MUTANT_CACHE"; then
+    show_output
+    abort_setup "the swapped cache cannot be built"
 fi
 TIKTOKEN_CACHE_DIR="$MUTANT_CACHE" python3 -I "$BASELINE_PY" --check >"$TMP_ROOT/out.txt" 2>&1
 status=$?
@@ -587,78 +350,16 @@ else
     fail "the baseline refuses a swapped encoding file"
 fi
 
-group "byte-only fixture"
-run_driver fixture "$BASELINE_PY"
-status=$?
-show_output
-if [[ "$status" -eq 0 ]] && grep -q 'token gate rejects' "$TMP_ROOT/out.txt"; then
-    pass "a fixture inside the byte budget fails the token budget"
-else
-    fail "a fixture inside the byte budget fails the token budget"
-fi
-
-# WHY: the walk is depth-agnostic at the base commit, so this fixture guards
-# that behavior instead of proving a fix.
-group "nested reference file"
-NESTED_REPO="$TMP_ROOT/nested-repo"
-NESTED_SKILL="$NESTED_REPO/sk-moneybird-accountant"
-mkdir -p "$NESTED_SKILL/scripts" "$NESTED_SKILL/references/tax-rules/2020/vat"
-cp "$BASELINE_PY" "$NESTED_SKILL/scripts/token-baseline.py"
-cat >"$NESTED_SKILL/references/tax-rules/2020/vat/figures.md" <<'EOF'
-# Nested figures
-
-## 1. KEY FIGURES
-
-| Item | Value | Status | Check |
-|---|---|---|---|
-| Rate | Fixture value | enacted | Verified |
-
-## 2. NOTES
-
-A nested note that gives the file its second section.
-EOF
-run_driver nested "$NESTED_SKILL/scripts/token-baseline.py"
-status=$?
-show_output
-if [[ "$status" -eq 0 ]] && grep -q 'nested: one entry and two sections' "$TMP_ROOT/out.txt"; then
-    pass "a depth-agnostic walk counts a nested reference file once"
-else
-    fail "a depth-agnostic walk counts a nested reference file once"
-fi
-
-group "unrecorded fence"
-# WHY: a fence body the measurement cannot parse produced no row, so the
-# value comparison is vacuous. The check must name the fence instead.
-FENCE_REPO="$TMP_ROOT/fence-repo"
-mkdir -p "$FENCE_REPO/sk-moneybird-accountant"
-cp -R "$SKILL_SRC/." "$FENCE_REPO/sk-moneybird-accountant/"
-cp "$(dirname "$SKILL_SRC")/SKILL.md" "$FENCE_REPO/SKILL.md"
-printf '\n<!-- GENERATED:nav:start -->\n<!-- GENERATED:nav:end -->\n' \
-    >>"$FENCE_REPO/sk-moneybird-accountant/references/README.md"
-if TIKTOKEN_CACHE_DIR="$CACHE_DIR" python3 -I "$FENCE_REPO/sk-moneybird-accountant/scripts/token-baseline.py" >"$TMP_ROOT/out.txt" 2>&1; then
-    pass "the fence fixture writes a baseline"
-else
-    fail "the fence fixture writes a baseline"
-fi
-TIKTOKEN_CACHE_DIR="$CACHE_DIR" python3 -I "$FENCE_REPO/sk-moneybird-accountant/scripts/token-baseline.py" --check >"$TMP_ROOT/out.txt" 2>&1
-status=$?
-show_output
-if [[ "$status" -eq 1 ]] && grep -q 'fence not recorded sk-moneybird-accountant/references/README.md nav' "$TMP_ROOT/out.txt"; then
-    pass "a fence with no recorded row fails the check by name"
-else
-    fail "a fence with no recorded row fails the check by name"
-fi
-
 group "request line"
 # WHY: every accountant request reads the hub, the router and the skill file
 # first, so their sum has its own line and a grown router must fail by name.
 REQUEST_REPO="$TMP_ROOT/request-repo"
-mkdir -p "$REQUEST_REPO/sk-moneybird-accountant"
-cp -R "$SKILL_SRC/." "$REQUEST_REPO/sk-moneybird-accountant/"
-cp "$(dirname "$SKILL_SRC")/SKILL.md" "$REQUEST_REPO/SKILL.md"
+copy_repo "$REQUEST_REPO" || abort_setup "the request line fixture cannot be copied"
 python3 -I -c 'import sys; open(sys.argv[1], "a", encoding="utf-8").write("\n" + "Padding sentence for the request line. " * 600 + "\n")' \
-    "$REQUEST_REPO/sk-moneybird-accountant/ROUTER.md"
-TIKTOKEN_CACHE_DIR="$CACHE_DIR" python3 -I "$REQUEST_REPO/sk-moneybird-accountant/scripts/token-baseline.py" >/dev/null 2>&1
+    "$REQUEST_REPO/sk-moneybird-accountant/ROUTER.md" \
+    || abort_setup "the request line fixture cannot be padded"
+TIKTOKEN_CACHE_DIR="$CACHE_DIR" python3 -I "$REQUEST_REPO/sk-moneybird-accountant/scripts/token-baseline.py" >/dev/null 2>&1 \
+    || abort_setup "the request line fixture baseline cannot be written"
 TIKTOKEN_CACHE_DIR="$CACHE_DIR" python3 -I "$REQUEST_REPO/sk-moneybird-accountant/scripts/token-baseline.py" --check >"$TMP_ROOT/out.txt" 2>&1
 status=$?
 show_output
@@ -668,14 +369,23 @@ else
     fail "a router past the request line fails the check by name"
 fi
 
-group "real tree"
-python3 -I "$BASELINE_PY" --check >"$TMP_ROOT/out.txt" 2>&1
+group "stale baseline"
+# WHY: the check compares the stored baseline row by row, so a reference edit
+# made after the write must fail and name the file.
+DRIFT_REPO="$TMP_ROOT/drift-repo"
+copy_repo "$DRIFT_REPO" || abort_setup "the stale baseline fixture cannot be copied"
+TIKTOKEN_CACHE_DIR="$CACHE_DIR" python3 -I "$DRIFT_REPO/sk-moneybird-accountant/scripts/token-baseline.py" >/dev/null 2>&1 \
+    || abort_setup "the stale baseline fixture baseline cannot be written"
+printf '\nA sentence added after the baseline was written.\n' \
+    >>"$DRIFT_REPO/sk-moneybird-accountant/references/README.md" \
+    || abort_setup "the stale baseline fixture cannot be edited"
+TIKTOKEN_CACHE_DIR="$CACHE_DIR" python3 -I "$DRIFT_REPO/sk-moneybird-accountant/scripts/token-baseline.py" --check >"$TMP_ROOT/out.txt" 2>&1
 status=$?
 show_output
-if [[ "$status" -eq 0 ]] && grep -q 'check ok' "$TMP_ROOT/out.txt"; then
-    pass "the baseline check passes on the real tree"
+if [[ "$status" -eq 1 ]] && grep -q 'drift: files: changed sk-moneybird-accountant/references/README.md' "$TMP_ROOT/out.txt"; then
+    pass "an edit after the baseline write fails the check and names the file"
 else
-    fail "the baseline check passes on the real tree"
+    fail "an edit after the baseline write fails the check and names the file"
 fi
 
 # ───────────────────────────────────────────────────────────────

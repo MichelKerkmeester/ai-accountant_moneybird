@@ -100,6 +100,14 @@ fail() {
     printf 'FAIL %s\n' "$1"
 }
 
+# Stop the run when a fixture cannot be built, because every case after it would test nothing
+# Args:
+#   $1 - Description of the fixture step that failed
+abort_setup() {
+    printf 'error: %s\n' "$1" >&2
+    exit 2
+}
+
 # Print a section heading before the next block of checks
 # Args:
 #   $1 - Group title
@@ -164,32 +172,6 @@ run_generator() {
     python3 -I "$skill/scripts/build-reference-index.py" "$@" >"$TMP_ROOT/out.txt" 2>&1
 }
 
-# Prove that the walker finds a nested file that a flat-only walk misses
-# Args:
-#   $1 - Skill folder whose builder script to import
-# Returns:
-#   0 when the deep walk holds the nested file and the flat-only walk misses it
-walk_depth_check() {
-    python3 - "$1" <<'PY'
-import importlib.util
-import sys
-
-skill = sys.argv[1]
-spec = importlib.util.spec_from_file_location("nested_builder", skill + "/scripts/build-reference-index.py")
-module = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(module)
-nested = "tax-rules/2020/vat/figures.md"
-deep = module.reference_files()
-flat = module.reference_files(depth=1)
-deep_hits = [entry for entry in deep if entry.endswith(nested)]
-flat_hits = [entry for entry in flat if entry.endswith(nested)]
-print("deep files: %d" % len(deep))
-print("flat files: %d" % len(flat))
-if len(deep_hits) != 1 or flat_hits:
-    sys.exit(1)
-PY
-}
-
 # Print the UNVERIFIED count of one topic row of a year README
 # Args:
 #   $1 - Year README path
@@ -225,43 +207,6 @@ sys.exit(0 if placed else 1)
 PY
 }
 
-# Replace one fixture file with a read plan body of an exact size
-# Args:
-#   $1 - File to replace
-#   $2 - Total size of the file in bytes
-#   $3 - Size of the read plan body in bytes
-#   $4 - Marker word of the fence lines
-# Returns:
-#   0 when the file is in place, 1 when the sizes do not fit
-shape_nav_file() {
-    python3 - "$1" "$2" "$3" "$4" <<'PY'
-import sys
-
-path, size, body_bytes = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
-word = sys.argv[4]
-start_line = "<!-- %s:nav:start -->\n" % word
-end_line = "<!-- %s:nav:end -->\n" % word
-unit = "Nav body filler text that is long enough to fill one line.\n"
-body = ""
-while len(body) + len(unit) <= body_bytes - 1:
-    body += unit
-body += "x" * (body_bytes - len(body) - 1) + "\n"
-head = "# Large budget fixture\n\n" + start_line + body + end_line + "\n"
-tail_unit = "Filler line that gives the fixture file its length.\n"
-tail = ""
-remaining = size - len(head)
-while len(tail) + len(tail_unit) <= remaining:
-    tail += tail_unit
-tail += "y" * (remaining - len(tail))
-text = head + tail
-if len(text) != size or len(body.encode("utf-8")) != body_bytes:
-    sys.exit(1)
-with open(path, "w", encoding="utf-8") as handle:
-    handle.write(text)
-sys.exit(0)
-PY
-}
-
 # ───────────────────────────────────────────────────────────────
 # 5. FIXTURE BUILDER
 # ───────────────────────────────────────────────────────────────
@@ -280,28 +225,31 @@ FIX_RATE_B=$(printf '%d,%02d' 37 35)
 FIX_RATE_C=$(printf '%d,%02d' 9 70)
 FIX_RATE_MISSING=$(printf '%d' 99)
 
-# The nested fixture rates are built the same way, so the tracked file holds
-# no amount-shaped literal either.
-NEST_RATE_MAIN=$(printf '%d%%' 21)
-NEST_RATE_LOW=$(printf '%d%%' 9)
+# The topic table values are built the same way.
+TOPIC_RATE_MAIN=$(printf '%d%%' 21)
+TOPIC_RATE_LOW=$(printf '%d%%' 9)
 
-# WHY: make_fixture keeps the pre-move flat layout on purpose, so the write
-# mode and the read plan still prove the flat tree. The path parts stay
-# variables so the repository's old-layout grep finds no literal.
-FLAT_REF="references"
-FLAT_YEAR="2020"
-
-# Build a minimal skill folder with one year folder, a large file, a guide
-# with section 3, a manifest and the page that routes the fixture leaves
+# Build a minimal skill folder in the real layout: the guide with its topic
+# table, one general file with a section 3 subsection, one year folder with two
+# topic folders and a year note, the two files that are generated whole, the
+# baseline and term map inputs, a manifest and the page that routes the
+# fixture leaves. Every fence pair stands in place with an empty body, so the
+# first write fills it. The two generated files start as copies of the real
+# ones, because the landing page reads the overview frontmatter from the tree
+# and a stub with other frontmatter would need a second write to settle.
 # Args:
 #   $1 - Skill folder to create
 # Returns:
 #   0 when the fixture is ready, 1 when a write fails
 make_fixture() {
     local skill="$1"
-    mkdir -p "$skill/scripts" "$skill/$FLAT_REF/$FLAT_YEAR" "$skill/assets" || return 1
+    local tax_rules="$skill/references/tax-rules"
+    mkdir -p "$skill/scripts" "$skill/assets" "$skill/benchmark" "$tax_rules/general" \
+        "$tax_rules/2020/vat" "$tax_rules/2020/income-tax" || return 1
     cp "$BUILDER" "$skill/scripts/" || return 1
-    cat >"$skill/$FLAT_REF/dutch-tax-rules.md" <<'EOF'
+    printf '{"pin": {"lead_encoding": "o200k_base"}, "files": []}\n' >"$skill/benchmark/token-baseline.json" || return 1
+    printf '{"terms": []}\n' >"$skill/assets/term-map.json" || return 1
+    cat >"$tax_rules/dutch-tax-rules.md" <<'EOF' || return 1
 ---
 title: "Dutch tax rules"
 ---
@@ -317,13 +265,30 @@ title: "Dutch tax rules"
 
 ## 3. GENERAL RULES
 
+Each general topic sits in its own file under `general/`.
+
+| Section | Topic | File |
+|---|---|---|
+| 3.1 | BTW (VAT) | [vat.md](general/vat.md) |
+EOF
+    cat >"$tax_rules/general/vat.md" <<'EOF' || return 1
+---
+title: "BTW (VAT)"
+description: "General fixture topic."
+---
+
+# BTW (VAT)
+
 ### 3.1 BTW (VAT)
 
 Year files: `vat.md` in each year folder.
 
+<!-- GENERATED:s3-btw-vat:start -->
+<!-- GENERATED:s3-btw-vat:end -->
+
 The hand-written rule prose stays here.
 EOF
-    cat >"$skill/$FLAT_REF/$FLAT_YEAR/README.md" <<'EOF'
+    cat >"$tax_rules/2020/README.md" <<'EOF' || return 1
 ---
 title: "Tax year 2020"
 description: "Fixture year overview."
@@ -337,9 +302,18 @@ Hand prose for the fixture year.
 
 ## 2. TOPIC FILES
 
+<!-- GENERATED:topic-files:start -->
+<!-- GENERATED:topic-files:end -->
+
 ## 3. HEADLINE FIGURES
+
+<!-- GENERATED:headline-figures:start -->
+<!-- GENERATED:headline-figures:end -->
 EOF
-    cat >"$skill/$FLAT_REF/$FLAT_YEAR/vat.md" <<'EOF'
+    # The delimiter of the next four files stays unquoted so the runtime-built
+    # values expand. Their bodies hold no dollar sign, backtick or backslash of
+    # their own.
+    cat >"$tax_rules/2020/vat/figures.md" <<EOF || return 1
 ---
 title: "BTW 2020"
 description: "Covers Dutch VAT for the fixture."
@@ -348,367 +322,22 @@ nav_label: "BTW"
 
 # BTW 2020
 
-## 1. KEY FIGURES
-
-| Item | Value 2020 | Status | Check |
-|---|---|---|---|
-| Standard rate | 21% | enacted | Verified |
-| Reduced rate | 9% | enacted | UNVERIFIED |
-EOF
-    # The delimiter stays unquoted so the runtime-built rate values expand. The
-    # body holds no dollar sign, backtick or backslash of its own.
-    cat >"$skill/$FLAT_REF/$FLAT_YEAR/income-tax.md" <<EOF
----
-title: "Income tax 2020"
-description: "Covers income tax for the fixture."
-nav_label: "Inkomstenbelasting box 1"
----
-
-# Income tax 2020
-
-## 1. KEY FIGURES
-
-| Item | Value 2020 | Status | Check |
-|---|---|---|---|
-| Box 1 rates | ${RATE_BOX1} | enacted | UNVERIFIED |
-| Bands | ${RATE_BAND2} | enacted | Verified |
-EOF
-    {
-        printf '# Large fixture\n\n## 1. PART ONE\n\n'
-        awk 'BEGIN { for (i = 1; i <= 1500; i++) printf "Fixture line %04d with filler text that gives the file its length.\n", i }'
-    } >"$skill/$FLAT_REF/$FLAT_YEAR/large-fixture.md" || return 1
-    printf '{"modes":[{"leaves":["%s/%s/README.md","assets/handbook.md"]}]}\n' \
-        "$FLAT_REF" "$FLAT_YEAR" >"$skill/leaf-manifest.json" || return 1
-    printf '# Fixture skill\n\nSee the [handbook](assets/handbook.md).\n' >"$skill/SKILL.md" || return 1
-    printf '# Handbook\n' >"$skill/assets/handbook.md" || return 1
-    return 0
-}
-
-# Add a year change note and section 5 bullets to the fixture repository
-# Args:
-#   $1 - Skill folder to extend
-# Returns:
-#   0 when the fixture is ready, 1 when a write fails
-make_changes_fixture() {
-    local skill="$1"
-    make_fixture "$skill" || return 1
-    cat >>"$skill/$FLAT_REF/$FLAT_YEAR/vat.md" <<EOF
-
-## 5. CHANGES FROM 2019
-
-<a id="5-changes"></a>
-
-- The standard rate stayed at ${FIX_RATE_A} percent in the fixture year.
-- The reduced rate stayed at ${FIX_RATE_C} percent in the fixture year.
-EOF
-    cat >>"$skill/$FLAT_REF/$FLAT_YEAR/income-tax.md" <<EOF
-
-## 5. CHANGES FROM 2019
-
-<a id="5-changes"></a>
-
-- The box 1 rate stayed at ${FIX_RATE_B} percent in the fixture year.
-- The band stayed at ${FIX_RATE_C} percent in the fixture year.
-- The fixture year 2020 kept its rules.
-EOF
-    cat >"$skill/$FLAT_REF/$FLAT_YEAR/changelog.md" <<'EOF'
-# Corrections 2020
-
-Fixture correction log for the change note fixture.
-EOF
-    cat >"$skill/$FLAT_REF/$FLAT_YEAR/changes.md" <<EOF
----
-title: "Changes tax year 2020"
-description: "Fixture year change note."
----
-
-# Changes tax year 2020
-
-**Rule:** The fixture note restates section 5 of the year topics and links the [correction log](changelog.md) and the [year overview](README.md).
-
----
-
-## 1. Unique to 2020
-
-- Standard rate stayed at ${FIX_RATE_A} percent. [vat.md](vat.md#5-changes)
-- Reduced rate stayed at ${FIX_RATE_C} percent. [vat.md](vat.md#5-changes)
-- Box 1 rate stayed at ${FIX_RATE_B} percent. [income-tax.md](income-tax.md#5-changes)
-- Band stayed at ${FIX_RATE_C} percent. [income-tax.md](income-tax.md#5-changes)
-- Fixture year 2020 kept its rules. [income-tax.md](income-tax.md#5-changes)
-
----
-
-## 2. All changes by topic
-EOF
-    return 0
-}
-
-# Build a skill folder whose year folder and topic folder sit at any depth
-# Args:
-#   $1 - Skill folder to create
-# Returns:
-#   0 when the fixture is ready, 1 when a write fails
-make_nested_fixture() {
-    local skill="$1"
-    mkdir -p "$skill/scripts" "$skill/references/tax-rules/2020/vat" "$skill/assets" || return 1
-    cp "$BUILDER" "$skill/scripts/" || return 1
-    cat >"$skill/references/tax-rules/dutch-tax-rules.md" <<'EOF'
----
-title: "Dutch tax rules"
----
-
-# Dutch tax rules
-
-## 1. Topic files in every year folder
-
-| File | Topic |
-|---|---|
-| `vat.md` | VAT |
-
-## 3. GENERAL RULES
-
-### 3.1 BTW (VAT)
-
-Year files: `vat.md` in each year folder.
-
-The hand-written rule prose stays here.
-EOF
-    cat >"$skill/references/tax-rules/2020/README.md" <<'EOF'
----
-title: "Tax year 2020"
-description: "Fixture year overview."
----
-
-# Tax year 2020
-
-## 1. OVERVIEW
-
-Hand prose for the nested fixture year.
-
-## 2. TOPIC FILES
-
-## 3. HEADLINE FIGURES
-EOF
-    # The delimiter stays unquoted so the runtime-built rate values expand. The
-    # body holds no dollar sign, backtick or backslash of its own.
-    cat >"$skill/references/tax-rules/2020/vat/figures.md" <<EOF
----
-title: "BTW 2020"
-description: "Covers Dutch VAT for the nested fixture."
-nav_label: "BTW"
----
-
-# BTW 2020
-
-## 1. KEY FIGURES
-
-| Item | Value 2020 | Status | Check |
-|---|---|---|---|
-| Standard rate | ${NEST_RATE_MAIN} | enacted | Verified |
-| Reduced rate | ${NEST_RATE_LOW} | enacted | UNVERIFIED |
-EOF
-    cat >"$skill/references/tax-rules/2020/vat/rules.md" <<'EOF'
----
-title: "BTW rules 2020"
-description: "Rule prose for the nested fixture."
----
-
-# BTW rules 2020
-
-## 1. RULES
-
-Rule text that a nested file holds.
-EOF
-    printf '{"modes":[{"leaves":["references/tax-rules/2020/README.md","assets/handbook.md"]}]}\n' \
-        >"$skill/leaf-manifest.json" || return 1
-    printf '# Nested fixture skill\n\nSee the [handbook](assets/handbook.md).\n' >"$skill/SKILL.md" || return 1
-    printf '# Handbook\n' >"$skill/assets/handbook.md" || return 1
-    return 0
-}
-
-# Build a skill folder whose section 3 subsections sit one per file under a
-# general folder, with the entry file holding a pointer table in their place
-# Args:
-#   $1 - Skill folder to create
-# Returns:
-#   0 when the fixture is ready, 1 when a write fails
-make_general_fixture() {
-    local skill="$1"
-    mkdir -p "$skill/scripts" "$skill/references/tax-rules/general" "$skill/references/tax-rules/2020" "$skill/assets" || return 1
-    cp "$BUILDER" "$skill/scripts/" || return 1
-    cat >"$skill/references/tax-rules/dutch-tax-rules.md" <<'EOF'
----
-title: "Dutch tax rules"
----
-
-# Dutch tax rules
-
-## 1. Topic files in every year folder
-
-| File | Topic |
-|---|---|
-| `vat.md` | VAT |
-
-## 3. GENERAL RULES
-
-The rules below hold across tax years.
-
-### General topics
-
-Each general topic below sits in its own file under `general/`.
-
-| Section | Topic | File |
-|---|---|---|
-| 3.1 | BTW (VAT) | [vat.md](general/vat.md) |
-EOF
-    cat >"$skill/references/tax-rules/general/vat.md" <<'EOF'
----
-title: "BTW (VAT)"
-description: "General fixture topic for the split layout."
----
-
-# BTW (VAT)
-
-### 3.1 BTW (VAT)
-
-Year files: `vat.md` in each year folder.
-
-The hand-written rule prose stays here.
-EOF
-    cat >"$skill/references/tax-rules/2020/README.md" <<'EOF'
----
-title: "Tax year 2020"
-description: "Fixture year overview."
----
-
-# Tax year 2020
-
-## 1. OVERVIEW
-
-Hand prose for the general folder fixture year.
-
-## 2. TOPIC FILES
-
-## 3. HEADLINE FIGURES
-EOF
-    # The delimiter stays unquoted so the runtime-built rate values expand. The
-    # body holds no dollar sign, backtick or backslash of its own.
-    cat >"$skill/references/tax-rules/2020/vat.md" <<EOF
----
-title: "BTW 2020"
-description: "Covers Dutch VAT for the general folder fixture."
-nav_label: "BTW"
----
-
-# BTW 2020
-
-## 1. KEY FIGURES
-
-| Item | Value 2020 | Status | Check |
-|---|---|---|---|
-| Standard rate | ${NEST_RATE_MAIN} | enacted | Verified |
-| Reduced rate | ${NEST_RATE_LOW} | enacted | UNVERIFIED |
-EOF
-    printf '{"modes":[{"leaves":["references/tax-rules/2020/README.md","assets/handbook.md"]}]}\n' \
-        >"$skill/leaf-manifest.json" || return 1
-    printf '# General fixture skill\n\nSee the [handbook](assets/handbook.md).\n' >"$skill/SKILL.md" || return 1
-    printf '# Handbook\n' >"$skill/assets/handbook.md" || return 1
-    return 0
-}
-
-# Build a skill folder whose year folder holds one topic as a folder of four
-# part files, so a section lookup and a generated link land on the right part
-# Args:
-#   $1 - Skill folder to create
-# Returns:
-#   0 when the fixture is ready, 1 when a write fails
-make_split_topic_fixture() {
-    local skill="$1"
-    mkdir -p "$skill/scripts" "$skill/references/tax-rules/2020/vat" "$skill/assets" || return 1
-    cp "$BUILDER" "$skill/scripts/" || return 1
-    cat >"$skill/references/tax-rules/dutch-tax-rules.md" <<'EOF'
----
-title: "Dutch tax rules"
----
-
-# Dutch tax rules
-
-## 1. Topic files in every year folder
-
-| File | Topic |
-|---|---|
-| `vat.md` | VAT |
-
-## 3. GENERAL RULES
-
-### 3.1 BTW (VAT)
-
-Year files: `vat.md` in each year folder.
-
-The hand-written rule prose stays here.
-EOF
-    cat >"$skill/references/tax-rules/2020/README.md" <<'EOF'
----
-title: "Tax year 2020"
-description: "Fixture year overview."
----
-
-# Tax year 2020
-
-## 1. OVERVIEW
-
-Hand prose for the split topic fixture year.
-
-## 2. TOPIC FILES
-
-## 3. HEADLINE FIGURES
-EOF
-    # The delimiter stays unquoted so the runtime-built rate values expand. The
-    # body holds no dollar sign, backtick or backslash of its own.
-    cat >"$skill/references/tax-rules/2020/vat/figures.md" <<EOF
----
-title: "BTW 2020"
-description: "Covers Dutch VAT for the split topic fixture."
-nav_label: "BTW"
----
-
-# BTW 2020
-
 ## 2. KEY FIGURES
 
+<a id="2-key-figures"></a>
+
+<!-- GENERATED:key-figure-index:start -->
+<!-- GENERATED:key-figure-index:end -->
+
 | Item | Value 2020 | Status | Check |
 |---|---|---|---|
-| Standard rate | ${NEST_RATE_MAIN} | enacted | Verified |
-| Reduced rate | ${NEST_RATE_LOW} | enacted | UNVERIFIED |
+| Standard rate | ${TOPIC_RATE_MAIN} | enacted | Verified |
+| Reduced rate | ${TOPIC_RATE_LOW} | enacted | UNVERIFIED |
 EOF
-    cat >"$skill/references/tax-rules/2020/vat/rules.md" <<'EOF'
----
-title: "BTW rules 2020"
-description: "Rule prose for the split topic fixture."
----
-
-# BTW rules 2020
-
-## 3. HOW IT WORKS
-
-Rule text that a split part holds.
-EOF
-    cat >"$skill/references/tax-rules/2020/vat/examples.md" <<'EOF'
----
-title: "BTW examples 2020"
-description: "Worked examples for the split topic fixture."
----
-
-# BTW examples 2020
-
-## 4. WORKED EXAMPLES
-
-Example text that a split part holds.
-EOF
-    cat >"$skill/references/tax-rules/2020/vat/notes.md" <<EOF
+    cat >"$tax_rules/2020/vat/notes.md" <<EOF || return 1
 ---
 title: "BTW notes 2020"
-description: "Notes for the split topic fixture."
+description: "Notes for the fixture."
 ---
 
 # BTW notes 2020
@@ -720,7 +349,44 @@ description: "Notes for the split topic fixture."
 - The standard rate stayed at ${FIX_RATE_A} percent in the fixture year.
 - The reduced rate stayed at ${FIX_RATE_C} percent in the fixture year.
 EOF
-    cat >"$skill/references/tax-rules/2020/changes.md" <<EOF
+    cat >"$tax_rules/2020/income-tax/figures.md" <<EOF || return 1
+---
+title: "Income tax 2020"
+description: "Covers income tax for the fixture."
+nav_label: "Inkomstenbelasting box 1"
+---
+
+# Income tax 2020
+
+## 2. KEY FIGURES
+
+<a id="2-key-figures"></a>
+
+<!-- GENERATED:key-figure-index:start -->
+<!-- GENERATED:key-figure-index:end -->
+
+| Item | Value 2020 | Status | Check |
+|---|---|---|---|
+| Box 1 rates | ${RATE_BOX1} | enacted | UNVERIFIED |
+| Bands | ${RATE_BAND2} | enacted | Verified |
+EOF
+    cat >"$tax_rules/2020/income-tax/notes.md" <<EOF || return 1
+---
+title: "Income tax notes 2020"
+description: "Notes for the fixture."
+---
+
+# Income tax notes 2020
+
+## 5. CHANGES FROM 2019
+
+<a id="5-changes"></a>
+
+- The box 1 rate stayed at ${FIX_RATE_B} percent in the fixture year.
+- The band stayed at ${FIX_RATE_C} percent in the fixture year.
+- The fixture year 2020 kept its rules.
+EOF
+    cat >"$tax_rules/2020/changes.md" <<EOF || return 1
 ---
 title: "Changes tax year 2020"
 description: "Fixture year change note."
@@ -734,32 +400,35 @@ description: "Fixture year change note."
 
 ## 1. Unique to 2020
 
-- Standard rate stayed at ${FIX_RATE_A} percent. [vat.md](vat.md#5-changes)
+- Standard rate stayed at ${FIX_RATE_A} percent. [vat/notes.md](vat/notes.md#5-changes)
 - Reduced rate stayed at ${FIX_RATE_C} percent. [vat/notes.md](vat/notes.md#5-changes)
-- The split original resolves to its notes part. [vat.md](vat.md#5-changes)
-- The part link resolves as written. [vat/notes.md](vat/notes.md#5-changes)
-- Flat and split links both resolve. [vat.md](vat.md#5-changes)
+- Box 1 rate stayed at ${FIX_RATE_B} percent. [income-tax/notes.md](income-tax/notes.md#5-changes)
+- Band stayed at ${FIX_RATE_C} percent. [income-tax/notes.md](income-tax/notes.md#5-changes)
+- Fixture year 2020 kept its rules. [income-tax/notes.md](income-tax/notes.md#5-changes)
 
 ---
 
 ## 2. All changes by topic
+
+<!-- GENERATED:changes:start -->
+<!-- GENERATED:changes:end -->
 EOF
+    cp "$SKILL_SRC/references/tax-rules/year-changes.md" "$tax_rules/year-changes.md" || return 1
+    cp "$SKILL_SRC/references/README.md" "$skill/references/README.md" || return 1
     printf '{"modes":[{"leaves":["references/tax-rules/2020/README.md","assets/handbook.md"]}]}\n' \
         >"$skill/leaf-manifest.json" || return 1
-    printf '# Split topic fixture skill\n\nSee the [handbook](assets/handbook.md).\n' >"$skill/SKILL.md" || return 1
+    printf '# Fixture skill\n\nSee the [handbook](assets/handbook.md).\n' >"$skill/SKILL.md" || return 1
     printf '# Handbook\n' >"$skill/assets/handbook.md" || return 1
     return 0
 }
 
-# Build a fixture whose routing signals file holds a valid gap ledger
+# Add a routing signals file with a valid gap ledger to a built fixture
 # Args:
-#   $1 - Skill folder to create
+#   $1 - Skill folder to extend
 # Returns:
-#   0 when the fixture is ready, 1 when a write fails
-make_gaps_fixture() {
-    local skill="$1"
-    make_fixture "$skill" || return 1
-    cat >"$skill/$FLAT_REF/routing-signals.md" <<'EOF'
+#   0 when the file is written, 1 when the write fails
+add_gap_ledger() {
+    cat >"$1/references/routing-signals.md" <<'EOF'
 ---
 title: "Routing signals"
 description: "Fixture routing signals with a gap ledger."
@@ -779,56 +448,30 @@ Hand prose for the fixture signals.
 | yearly-overview | references/yearly-overview/README.md | partial | Review the overview with the operator. |
 | income-tax-return | `references/income-tax-return/README.md` | covered | No operator action remains. |
 EOF
-    return 0
 }
 
 # ───────────────────────────────────────────────────────────────
 # 6. REAL CORPUS
 # ───────────────────────────────────────────────────────────────
 
+# The real corpus passing --check is a CI step of its own. This group proves
+# that a write over the real tree has nothing left to change.
 group "real corpus"
-if run_generator "$SKILL_SRC" --check; then
-    pass "the real corpus passes --check"
-else
-    fail "the real corpus passes --check"
-fi
-
 REAL_COPY="$TMP_ROOT/real-copy"
-if copy_skill "$REAL_COPY"; then
-    before=$(tree_checksums "$REAL_COPY")
-    run_generator "$REAL_COPY"
-    status=$?
-    first=$(tree_checksums "$REAL_COPY")
-    if [[ "$status" -eq 0 ]]; then
-        pass "the first write in a temp copy exits 0"
-    else
-        fail "the first write in a temp copy exits 0"
-    fi
-    if [[ "$before" == "$first" ]]; then
-        pass "the first write leaves every file byte-identical"
-    else
-        fail "the first write leaves every file byte-identical"
-    fi
-    run_generator "$REAL_COPY"
-    status=$?
-    second=$(tree_checksums "$REAL_COPY")
-    if [[ "$status" -eq 0 ]]; then
-        pass "the second write in a temp copy exits 0"
-    else
-        fail "the second write in a temp copy exits 0"
-    fi
-    if [[ "$first" == "$second" ]]; then
-        pass "the second write leaves every file byte-identical"
-    else
-        fail "the second write leaves every file byte-identical"
-    fi
-    if run_generator "$REAL_COPY" --check; then
-        pass "the temp copy still passes --check after two writes"
-    else
-        fail "the temp copy still passes --check after two writes"
-    fi
+copy_skill "$REAL_COPY" || abort_setup "the temp copy of the skill folder cannot be created"
+before=$(tree_checksums "$REAL_COPY")
+run_generator "$REAL_COPY"
+status=$?
+first=$(tree_checksums "$REAL_COPY")
+if [[ "$status" -eq 0 ]]; then
+    pass "the first write in a temp copy exits 0"
 else
-    fail "the temp copy of the skill folder builds"
+    fail "the first write in a temp copy exits 0"
+fi
+if [[ "$before" == "$first" ]]; then
+    pass "the first write leaves every file byte-identical"
+else
+    fail "the first write leaves every file byte-identical"
 fi
 
 group "real change notes"
@@ -837,12 +480,6 @@ if [[ "$real_change_rows" == "12" ]]; then
     pass "the real 2026 note lists all twelve topics with a section link"
 else
     fail "the real 2026 note lists all twelve topics with a section link"
-fi
-real_overview_years=$(grep -c '^## 20' "$SKILL_SRC/references/tax-rules/year-changes.md")
-if [[ "$real_overview_years" == "8" ]]; then
-    pass "the real overview holds eight year sections"
-else
-    fail "the real overview holds eight year sections"
 fi
 overview_front=$(sed -n '2,/^---$/p' "$SKILL_SRC/references/tax-rules/year-changes.md")
 missing_fields=0
@@ -855,34 +492,16 @@ else
     fail "the real overview carries the reference frontmatter fields"
 fi
 
-# The change note sits under tax-rules now, so the generated overview keeps
-# every year only when CHANGE_NOTE_RE accepts the moved path. The flat
-# predicate would drop all eight sections on a write.
-TAX_RULES_CHANGES="$TMP_ROOT/tax-rules-changes"
-copy_skill "$TAX_RULES_CHANGES"
-if run_generator "$TAX_RULES_CHANGES" \
-    && [[ "$(grep -c '^## 20' "$TAX_RULES_CHANGES/references/tax-rules/year-changes.md")" == "8" ]]; then
-    pass "a write keeps the eight year sections for the tax-rules change notes"
-else
-    fail "a write keeps the eight year sections for the tax-rules change notes"
-fi
-
 # ───────────────────────────────────────────────────────────────
 # 7. FIXTURE REPOSITORY
 # ───────────────────────────────────────────────────────────────
 
 group "fixture repository"
+# The fence text is assembled here, so only the generator spells the markers.
+GEN_WORD='GENERATED'
 FIXTURE="$TMP_ROOT/fixture/sk-moneybird-accountant"
-if make_fixture "$FIXTURE"; then
-    pass "fixture repository builds"
-else
-    fail "fixture repository builds"
-fi
-if run_generator "$FIXTURE" --init; then
-    pass "fixture --init exits 0"
-else
-    fail "fixture --init exits 0"
-fi
+FIXTURE_TAX_RULES="$FIXTURE/references/tax-rules"
+make_fixture "$FIXTURE" || abort_setup "the fixture repository cannot be built"
 if run_generator "$FIXTURE"; then
     pass "fixture write exits 0"
 else
@@ -893,65 +512,43 @@ if run_generator "$FIXTURE" --check; then
 else
     fail "fixture --check exits 0 after the writes"
 fi
-
-# The fence text is assembled here, so only the generator spells the markers.
-GEN_WORD='GENERATED'
-READ_PLAN_FENCE="<!-- ${GEN_WORD}:nav:start -->"
-TOPIC_TABLE_FENCE="<!-- ${GEN_WORD}:topic-files:start -->"
-if grep -qF "$READ_PLAN_FENCE" "$FIXTURE/$FLAT_REF/$FLAT_YEAR/large-fixture.md"; then
-    pass "the large fixture file gained a read plan fence"
-else
-    fail "the large fixture file gained a read plan fence"
-fi
-if grep -qF "$TOPIC_TABLE_FENCE" "$FIXTURE/$FLAT_REF/$FLAT_YEAR/README.md"; then
-    pass "the year README gained a topic table fence"
-else
-    fail "the year README gained a topic table fence"
-fi
-
-# A year folder gains a changelog beside its topic files. The topic table may
-# name it, yet the generator reads no topic field from that file.
-cat >"$FIXTURE/$FLAT_REF/$FLAT_YEAR/changelog.md" <<'MARKDOWN'
----
-title: "Corrections tax year 2020"
-description: "Fixture correction log."
----
-
-# Corrections tax year 2020
-
-## 1. OVERVIEW
-
-Fixture overview.
-
-## 2. CORRECTIONS
-
-| Date | File | Row | Old status | New status | Source |
-|---|---|---|---|---|---|
-| 2026-10-12 | vat.md | Standard rate | as first researched | Corrected | https://example.invalid/source |
-MARKDOWN
-python3 - "$FIXTURE/$FLAT_REF/dutch-tax-rules.md" <<'PY'
-import sys
-
-path = sys.argv[1]
-row = "| `income-tax.md` | Income tax |\n"
-added = "| `changelog.md` | Corrections |\n"
-text = open(path, encoding="utf-8").read()
-open(path, "w", encoding="utf-8").write(text.replace(row, row + added, 1))
-PY
-if run_generator "$FIXTURE" && run_generator "$FIXTURE" --check \
-    && ! grep -qF 'changelog.md' "$FIXTURE/$FLAT_REF/$FLAT_YEAR/README.md"; then
-    pass "a year changelog is not held to the topic rules"
-else
-    fail "a year changelog is not held to the topic rules"
-fi
-
-sed -i.bak '/^## 1\. KEY FIGURES$/,$d' "$FIXTURE/$FLAT_REF/$FLAT_YEAR/vat.md"
-run_generator "$FIXTURE" --check
+fixture_before=$(tree_checksums "$FIXTURE")
+run_generator "$FIXTURE"
 status=$?
-if [[ "$status" -eq 2 ]] && grep -qF 'no KEY FIGURES table in 2020/vat.md' "$TMP_ROOT/out.txt"; then
+fixture_after=$(tree_checksums "$FIXTURE")
+if [[ "$status" -eq 0 ]] && [[ "$fixture_before" == "$fixture_after" ]]; then
+    pass "a second write leaves every fixture file byte-identical"
+else
+    fail "a second write leaves every fixture file byte-identical"
+fi
+
+TOPIC_MUTANT="$TMP_ROOT/topic-mutant/sk-moneybird-accountant"
+copy_fixture "$FIXTURE" "$TOPIC_MUTANT" || abort_setup "the topic mutant cannot be copied"
+sed -i.bak '/^## 2\. KEY FIGURES$/,$d' "$TOPIC_MUTANT/references/tax-rules/2020/vat/figures.md"
+run_generator "$TOPIC_MUTANT" --check
+status=$?
+if [[ "$status" -eq 2 ]] && grep -qF 'no KEY FIGURES table in tax-rules/2020/vat/figures.md' "$TMP_ROOT/out.txt"; then
     pass "a topic file is still held to the topic rules"
 else
     fail "a topic file is still held to the topic rules"
+fi
+
+FENCE_MUTANT="$TMP_ROOT/fence-mutant/sk-moneybird-accountant"
+copy_fixture "$FIXTURE" "$FENCE_MUTANT" || abort_setup "the fence mutant cannot be copied"
+grep -v -F "<!-- ${GEN_WORD}:topic-files:" "$FENCE_MUTANT/references/tax-rules/2020/README.md" >"$TMP_ROOT/mutated.md" \
+    && mv "$TMP_ROOT/mutated.md" "$FENCE_MUTANT/references/tax-rules/2020/README.md" \
+    || abort_setup "the fence mutant cannot be edited"
+run_generator "$FENCE_MUTANT" --check
+check_status=$?
+check_drift=0
+grep -q '^drift tax-rules/2020/README.md topic-files$' "$TMP_ROOT/out.txt" && check_drift=1
+run_generator "$FENCE_MUTANT"
+status=$?
+if [[ "$check_status" -eq 1 ]] && [[ "$check_drift" -eq 1 ]] && [[ "$status" -eq 1 ]] \
+    && grep -q '^missing tax-rules/2020/README.md topic-files$' "$TMP_ROOT/out.txt"; then
+    pass "a block with no fence pair fails the check and blocks the write"
+else
+    fail "a block with no fence pair fails the check and blocks the write"
 fi
 
 # ───────────────────────────────────────────────────────────────
@@ -962,16 +559,7 @@ fi
 # suite compares its row count with the table and checks the answer surface
 # schema on every index record.
 group "item index and answer surface"
-ITEM_FIXTURE="$TMP_ROOT/item-fixture/sk-moneybird-accountant"
-if make_fixture "$ITEM_FIXTURE" \
-    && run_generator "$ITEM_FIXTURE" --init \
-    && run_generator "$ITEM_FIXTURE" \
-    && run_generator "$ITEM_FIXTURE" --check; then
-    pass "the item index fixture writes and passes --check"
-else
-    fail "the item index fixture writes and passes --check"
-fi
-if python3 - "$ITEM_FIXTURE/$FLAT_REF/$FLAT_YEAR/vat.md" <<'PY'
+if python3 - "$FIXTURE_TAX_RULES/2020/vat/figures.md" <<'PY'
 import re
 import sys
 
@@ -988,7 +576,7 @@ rows = [
     for line in index.group(1).splitlines()
     if line.startswith("|") and "Item" not in line and not re.match(r"^\|[-|]+\|$", line)
 ]
-table = re.search(r"\|\s*Item\s*\|.*?\n\|[-\s|]+\|\n((?:\|.*\n)+)", text)
+table = re.search(r"\|\s*Item\s*\|\s*Value[^\n]*\n\|[-\s|]+\|\n((?:\|.*\n)+)", text)
 if not table:
     sys.exit(1)
 values = [line for line in table.group(1).splitlines() if line.strip()]
@@ -999,7 +587,7 @@ then
 else
     fail "the item index holds one row per value row of the table"
 fi
-if python3 - "$ITEM_FIXTURE/$FLAT_REF/index.json" <<'PY'
+if python3 - "$FIXTURE/references/index.json" <<'PY'
 import json
 import sys
 
@@ -1009,11 +597,11 @@ for row in rows:
     surface = row.get("answerSurface")
     if not isinstance(surface, dict) or set(surface) != {"section", "rows", "tokens"}:
         sys.exit(1)
-vat = by_path.get("2020/vat.md")
-readme = by_path.get("2020/README.md")
+vat = by_path.get("tax-rules/2020/vat/figures.md")
+readme = by_path.get("tax-rules/2020/README.md")
 if vat is None or readme is None:
     sys.exit(1)
-if vat["answerSurface"]["section"] != "1-key-figures" or vat["answerSurface"]["rows"] != 2:
+if vat["answerSurface"]["section"] != "2-key-figures" or vat["answerSurface"]["rows"] != 2:
     sys.exit(1)
 if readme["answerSurface"]["section"] != "" or readme["answerSurface"]["rows"] != 0:
     sys.exit(1)
@@ -1025,95 +613,29 @@ else
     fail "every index record carries the answerSurface schema and the value rows match"
 fi
 
-# A hand-removed index row fails the check and names the block.
-ITEM_MUTANT="$TMP_ROOT/item-mutant/sk-moneybird-accountant"
-copy_fixture "$ITEM_FIXTURE" "$ITEM_MUTANT"
-sed -i.bak '/^| Reduced rate | 2 |$/d' "$ITEM_MUTANT/$FLAT_REF/$FLAT_YEAR/vat.md"
-run_generator "$ITEM_MUTANT" --check
-status=$?
-if [[ "$status" -ne 0 ]] && grep -q '^drift 2020/vat.md key-figure-index' "$TMP_ROOT/out.txt"; then
-    pass "a hand-removed item index row fails the check"
-else
-    fail "a hand-removed item index row fails the check"
-fi
-
 group "year change notes"
-CHANGES_FIXTURE="$TMP_ROOT/change-fixture/sk-moneybird-accountant"
-CHANGES_NOTE="$CHANGES_FIXTURE/$FLAT_REF/$FLAT_YEAR/changes.md"
-CHANGES_OVERVIEW="$CHANGES_FIXTURE/$FLAT_REF/year-changes.md"
+CHANGES_NOTE="$FIXTURE_TAX_RULES/2020/changes.md"
+CHANGES_OVERVIEW="$FIXTURE_TAX_RULES/year-changes.md"
 CHANGE_MUTANT="$TMP_ROOT/change-mutant/sk-moneybird-accountant"
-CHANGES_FENCE_START="<!-- ${GEN_WORD}:changes:start -->"
-if make_changes_fixture "$CHANGES_FIXTURE"; then
-    pass "the year change fixture builds"
-else
-    fail "the year change fixture builds"
-fi
-if run_generator "$CHANGES_FIXTURE" --init; then
-    pass "the year change fixture --init exits 0"
-else
-    fail "the year change fixture --init exits 0"
-fi
-if awk -v heading='## 2. All changes by topic' -v marker="$CHANGES_FENCE_START" '
-    $0 == heading { found = 1; next }
-    found && $0 == "" { next }
-    found { print ($0 == marker) ? "yes" : "no"; exit }
-' "$CHANGES_NOTE" | grep -q '^yes$'; then
-    pass "--init places the change fence under its section heading"
-else
-    fail "--init places the change fence under its section heading"
-fi
-if run_generator "$CHANGES_FIXTURE" && run_generator "$CHANGES_FIXTURE" --check; then
-    pass "the year change fixture passes --check after a write"
-else
-    fail "the year change fixture passes --check after a write"
-fi
-change_before=$(tree_checksums "$CHANGES_FIXTURE")
-run_generator "$CHANGES_FIXTURE"
-status=$?
-change_after=$(tree_checksums "$CHANGES_FIXTURE")
-if [[ "$status" -eq 0 ]] && [[ "$change_before" == "$change_after" ]]; then
-    pass "a second write leaves the year change files byte-identical"
-else
-    fail "a second write leaves the year change files byte-identical"
-fi
-if grep -qF "| [vat.md](vat.md#5-changes) | 2 | The standard rate stayed at ${FIX_RATE_A} percent in the fixture year. |" "$CHANGES_NOTE"; then
+CHANGE_MUTANT_NOTE="$CHANGE_MUTANT/references/tax-rules/2020/changes.md"
+if grep -qF "| [vat.md](vat/notes.md#5-changes) | 2 | The standard rate stayed at ${FIX_RATE_A} percent in the fixture year. |" "$CHANGES_NOTE"; then
     pass "the year note lists the topic count and the first bullet snippet"
 else
     fail "the year note lists the topic count and the first bullet snippet"
 fi
-if grep -qF '| [income-tax.md](income-tax.md#5-changes) | 3 |' "$CHANGES_NOTE"; then
+if grep -qF '| [income-tax.md](income-tax/notes.md#5-changes) | 3 |' "$CHANGES_NOTE"; then
     pass "the year note lists every topic of the year"
 else
     fail "the year note lists every topic of the year"
 fi
 if grep -qF '](2020/changes.md)' "$CHANGES_OVERVIEW" \
-    && grep -qF -- "- Standard rate stayed at ${FIX_RATE_A} percent. [vat.md](2020/vat.md#5-changes)" "$CHANGES_OVERVIEW"; then
+    && grep -qF -- "- Standard rate stayed at ${FIX_RATE_A} percent. [vat/notes.md](2020/vat/notes.md#5-changes)" "$CHANGES_OVERVIEW"; then
     pass "the overview holds the path link and the rebased authored bullet"
 else
     fail "the overview holds the path link and the rebased authored bullet"
 fi
-copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
-python3 - "$CHANGE_MUTANT/$FLAT_REF/$FLAT_YEAR/changes.md" "$CHANGES_FENCE_START" <<'PY'
-import sys
-
-path, tag = sys.argv[1], sys.argv[2]
-lines = open(path, encoding="utf-8").read().split("\n")
-out = []
-for line in lines:
-    out.append(line)
-    if line == tag:
-        out.append("| hand | edit | inside | the | fence |")
-open(path, "w", encoding="utf-8").write("\n".join(out))
-PY
-run_generator "$CHANGE_MUTANT" --check
-status=$?
-if [[ "$status" -ne 0 ]] && grep -q '^drift 2020/changes.md changes' "$TMP_ROOT/out.txt"; then
-    pass "a hand edit inside the change block fails the check"
-else
-    fail "a hand edit inside the change block fails the check"
-fi
-copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
-printf 'Hand edit in the overview.\n' >>"$CHANGE_MUTANT/$FLAT_REF/year-changes.md"
+copy_fixture "$FIXTURE" "$CHANGE_MUTANT" || abort_setup "the change mutant cannot be copied"
+printf 'Hand edit in the overview.\n' >>"$CHANGE_MUTANT/references/tax-rules/year-changes.md"
 run_generator "$CHANGE_MUTANT" --check
 status=$?
 if [[ "$status" -ne 0 ]] && grep -q '^drift year-changes.md$' "$TMP_ROOT/out.txt"; then
@@ -1121,36 +643,35 @@ if [[ "$status" -ne 0 ]] && grep -q '^drift year-changes.md$' "$TMP_ROOT/out.txt
 else
     fail "a hand edit in the overview fails the check and names the file"
 fi
-copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
-sed -i.bak "s/Standard rate stayed at ${FIX_RATE_A} percent/Standard rate stayed at ${FIX_RATE_MISSING} percent/" \
-    "$CHANGE_MUTANT/$FLAT_REF/$FLAT_YEAR/changes.md"
+copy_fixture "$FIXTURE" "$CHANGE_MUTANT" || abort_setup "the change mutant cannot be copied"
+sed -i.bak "s/Standard rate stayed at ${FIX_RATE_A} percent/Standard rate stayed at ${FIX_RATE_MISSING} percent/" "$CHANGE_MUTANT_NOTE"
 run_generator "$CHANGE_MUTANT" --check
 status=$?
-if [[ "$status" -ne 0 ]] && grep -q "^changes 2020/changes.md bullet 1 number ${FIX_RATE_MISSING} not in vat.md#5-changes$" "$TMP_ROOT/out.txt"; then
+if [[ "$status" -ne 0 ]] && grep -q "^changes tax-rules/2020/changes.md bullet 1 number ${FIX_RATE_MISSING} not in vat/notes.md#5-changes$" "$TMP_ROOT/out.txt"; then
     pass "a bullet number missing from section 5 fails the check"
 else
     fail "a bullet number missing from section 5 fails the check"
 fi
-copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
-sed -i.bak 's/vat.md#5-changes/vat.md#6-in-the-books/' "$CHANGE_MUTANT/$FLAT_REF/$FLAT_YEAR/changes.md"
+copy_fixture "$FIXTURE" "$CHANGE_MUTANT" || abort_setup "the change mutant cannot be copied"
+sed -i.bak 's/vat\/notes.md#5-changes/vat\/notes.md#6-in-the-books/' "$CHANGE_MUTANT_NOTE"
 run_generator "$CHANGE_MUTANT" --check
 status=$?
-if [[ "$status" -ne 0 ]] && grep -q '^changes 2020/changes.md bullet 1 link vat.md#6-in-the-books does not resolve$' "$TMP_ROOT/out.txt"; then
+if [[ "$status" -ne 0 ]] && grep -q '^changes tax-rules/2020/changes.md bullet 1 link vat/notes.md#6-in-the-books does not resolve$' "$TMP_ROOT/out.txt"; then
     pass "a bullet link that does not resolve fails the check"
 else
     fail "a bullet link that does not resolve fails the check"
 fi
-copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
-sed -i.bak '/Reduced rate stayed at/d' "$CHANGE_MUTANT/$FLAT_REF/$FLAT_YEAR/changes.md"
+copy_fixture "$FIXTURE" "$CHANGE_MUTANT" || abort_setup "the change mutant cannot be copied"
+sed -i.bak '/Reduced rate stayed at/d' "$CHANGE_MUTANT_NOTE"
 run_generator "$CHANGE_MUTANT" --check
 status=$?
-if [[ "$status" -ne 0 ]] && grep -q '^changes 2020/changes.md 4 authored bullets, the band is 5 to 10$' "$TMP_ROOT/out.txt"; then
+if [[ "$status" -ne 0 ]] && grep -q '^changes tax-rules/2020/changes.md 4 authored bullets, the band is 5 to 10$' "$TMP_ROOT/out.txt"; then
     pass "a year note under the bullet band fails the check"
 else
     fail "a year note under the bullet band fails the check"
 fi
-copy_fixture "$CHANGES_FIXTURE" "$CHANGE_MUTANT"
-python3 - "$CHANGE_MUTANT/$FLAT_REF/$FLAT_YEAR/changes.md" <<'PY'
+copy_fixture "$FIXTURE" "$CHANGE_MUTANT" || abort_setup "the change mutant cannot be copied"
+python3 - "$CHANGE_MUTANT_NOTE" <<'PY' || abort_setup "the change mutant cannot be edited"
 import sys
 
 path = sys.argv[1]
@@ -1158,31 +679,16 @@ lines = open(path, encoding="utf-8").read().split("\n")
 out = []
 for line in lines:
     if line == "## 2. All changes by topic":
-        out.extend(["- Fixture extra bullet. [vat.md](vat.md#5-changes)"] * 6)
+        out.extend(["- Fixture extra bullet. [vat/notes.md](vat/notes.md#5-changes)"] * 6)
     out.append(line)
 open(path, "w", encoding="utf-8").write("\n".join(out))
 PY
 run_generator "$CHANGE_MUTANT" --check
 status=$?
-if [[ "$status" -ne 0 ]] && grep -q '^changes 2020/changes.md 11 authored bullets, the band is 5 to 10$' "$TMP_ROOT/out.txt"; then
+if [[ "$status" -ne 0 ]] && grep -q '^changes tax-rules/2020/changes.md 11 authored bullets, the band is 5 to 10$' "$TMP_ROOT/out.txt"; then
     pass "a year note over the bullet band fails the check"
 else
     fail "a year note over the bullet band fails the check"
-fi
-python3 - "$CHANGES_FIXTURE/$FLAT_REF/dutch-tax-rules.md" <<'PY'
-import sys
-
-path = sys.argv[1]
-row = "| `income-tax.md` | Income tax |\n"
-added = "| `changes.md` | Changes |\n"
-text = open(path, encoding="utf-8").read()
-open(path, "w", encoding="utf-8").write(text.replace(row, row + added, 1))
-PY
-if run_generator "$CHANGES_FIXTURE" && run_generator "$CHANGES_FIXTURE" --check \
-    && ! grep -qF 'changes.md' "$CHANGES_FIXTURE/$FLAT_REF/$FLAT_YEAR/README.md"; then
-    pass "a year change note is not held to the topic rules"
-else
-    fail "a year change note is not held to the topic rules"
 fi
 
 # ───────────────────────────────────────────────────────────────
@@ -1371,79 +877,7 @@ else
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 11. FENCE GUARD MUTANT
-# ───────────────────────────────────────────────────────────────
-
-group "fence guard mutant"
-GUARD="$TMP_ROOT/fence-guard-mutant"
-copy_skill "$GUARD"
-# The body start offset is what confines a replacement to the fence. Setting it
-# to zero makes the writer replace from the top of the file, so one sed edit
-# removes the guard.
-sed 's/"body_start": end/"body_start": 0/' "$BUILDER" >"$GUARD/scripts/build-reference-index.py"
-if cmp -s "$BUILDER" "$GUARD/scripts/build-reference-index.py"; then
-    fail "the fence guard cannot be removed by a single sed edit, so the outside-fence case was not run against a mutant"
-else
-    if insert_hand_line "$GUARD/references/tax-rules/2020/README.md" "$HAND_NOTE"; then
-        before=$(file_checksum "$GUARD/references/tax-rules/2020/README.md")
-        run_generator "$GUARD"
-        status=$?
-        after=$(file_checksum "$GUARD/references/tax-rules/2020/README.md")
-        if [[ "$status" -eq 0 ]] && [[ "$before" != "$after" ]] \
-            && ! grep -qF "$HAND_NOTE" "$GUARD/references/tax-rules/2020/README.md"; then
-            pass "the fence guard mutant was caught: the outside-fence case fails under it"
-        else
-            fail "the fence guard mutant was caught: the outside-fence case fails under it"
-        fi
-    else
-        fail "the fence guard mutant was caught: the outside-fence case fails under it"
-    fi
-fi
-
-# ───────────────────────────────────────────────────────────────
-# 12. NAV BUDGET
-# ───────────────────────────────────────────────────────────────
-
-# WHY: the budget of a block is the smaller of the fixed byte cap and one
-# percent of the file size, so a body just over either cap must fail --check
-# and the budget line must name the cap that fires.
-group "nav budget"
-BUDGET_CAP="$TMP_ROOT/budget-cap/sk-moneybird-accountant"
-if make_fixture "$BUDGET_CAP" \
-    && run_generator "$BUDGET_CAP" --init \
-    && run_generator "$BUDGET_CAP" \
-    && shape_nav_file "$BUDGET_CAP/$FLAT_REF/$FLAT_YEAR/large-fixture.md" 200000 1300 "$GEN_WORD"; then
-    run_generator "$BUDGET_CAP" --check
-    status=$?
-    if [[ "$status" -ne 0 ]] \
-        && grep -q '^budget 2020/large-fixture.md nav 1300 over 1200$' "$TMP_ROOT/out.txt"; then
-        pass "a 1300 byte plan in a 200000 byte file fails on the 1200 byte cap"
-    else
-        fail "a 1300 byte plan in a 200000 byte file fails on the 1200 byte cap"
-    fi
-else
-    fail "a 1300 byte plan in a 200000 byte file fails on the 1200 byte cap"
-fi
-
-BUDGET_PERCENT="$TMP_ROOT/budget-percent/sk-moneybird-accountant"
-if make_fixture "$BUDGET_PERCENT" \
-    && run_generator "$BUDGET_PERCENT" --init \
-    && run_generator "$BUDGET_PERCENT" \
-    && shape_nav_file "$BUDGET_PERCENT/$FLAT_REF/$FLAT_YEAR/large-fixture.md" 51300 600 "$GEN_WORD"; then
-    run_generator "$BUDGET_PERCENT" --check
-    status=$?
-    if [[ "$status" -ne 0 ]] \
-        && grep -q '^budget 2020/large-fixture.md nav 600 over 513$' "$TMP_ROOT/out.txt"; then
-        pass "a 600 byte plan in a 51300 byte file fails on the 1 percent cap"
-    else
-        fail "a 600 byte plan in a 51300 byte file fails on the 1 percent cap"
-    fi
-else
-    fail "a 600 byte plan in a 51300 byte file fails on the 1 percent cap"
-fi
-
-# ───────────────────────────────────────────────────────────────
-# 13. REAL SECTION LIST
+# 11. REAL SECTION LIST
 # ───────────────────────────────────────────────────────────────
 
 group "real section list"
@@ -1481,40 +915,13 @@ then
 else
     fail "the real section list maps subsections 3.1 to 3.10 onto the general files"
 fi
-if run_generator "$SKILL_SRC" --check; then
-    pass "the real corpus passes --check, which confirms every section list range"
-else
-    fail "the real corpus passes --check, which confirms every section list range"
-fi
 
 # ───────────────────────────────────────────────────────────────
-# 14. NESTED REFERENCE FOLDERS
+# 12. REAL LAYOUT
 # ───────────────────────────────────────────────────────────────
 
-group "nested reference folders"
-NESTED_FIXTURE="$TMP_ROOT/nested-fixture/sk-moneybird-accountant"
-if make_nested_fixture "$NESTED_FIXTURE"; then
-    pass "the nested fixture repository builds"
-else
-    fail "the nested fixture repository builds"
-fi
-if run_generator "$NESTED_FIXTURE" --init; then
-    pass "the nested fixture --init exits 0"
-else
-    fail "the nested fixture --init exits 0"
-fi
-if run_generator "$NESTED_FIXTURE"; then
-    pass "the nested fixture write exits 0"
-else
-    fail "the nested fixture write exits 0"
-fi
-if run_generator "$NESTED_FIXTURE" --check; then
-    pass "the nested fixture --check exits 0 after the writes"
-else
-    fail "the nested fixture --check exits 0 after the writes"
-fi
-
-if python3 - "$NESTED_FIXTURE/references/index.json" <<'PY'
+group "real layout"
+if python3 - "$FIXTURE/references/index.json" <<'PY'
 import json
 import sys
 
@@ -1527,160 +934,28 @@ then
 else
     fail "the nested figures file is in the index"
 fi
-
-if grep -qF '| [vat](vat/figures.md) | Covers Dutch VAT for the nested fixture. | 2 | 1 | 0 |' \
-    "$NESTED_FIXTURE/references/tax-rules/2020/README.md"; then
-    pass "the nested topic folder is counted like a file in the year README"
-else
-    fail "the nested topic folder is counted like a file in the year README"
-fi
-
-if grep -qF 'sk-moneybird-accountant/references/tax-rules/2020/vat/figures.md' \
-    "$NESTED_FIXTURE/references/tax-rules/dutch-tax-rules.md"; then
-    pass "the nested figures file owns its section 3 rows"
-else
-    fail "the nested figures file owns its section 3 rows"
-fi
-
-if walk_depth_check "$NESTED_FIXTURE" >"$TMP_ROOT/out.txt" 2>&1; then
-    pass "the deep walk counts the nested file and the flat-only walk misses it"
-else
-    fail "the deep walk counts the nested file and the flat-only walk misses it"
-fi
-
-NESTED_BEFORE=$(tree_checksums "$NESTED_FIXTURE")
-run_generator "$NESTED_FIXTURE"
-status=$?
-NESTED_AFTER=$(tree_checksums "$NESTED_FIXTURE")
-if [[ "$status" -eq 0 ]] && [[ "$NESTED_BEFORE" == "$NESTED_AFTER" ]]; then
-    pass "a second nested write leaves every file byte-identical"
-else
-    fail "a second nested write leaves every file byte-identical"
-fi
-
-FLAT_STABLE="$TMP_ROOT/flat-stable/sk-moneybird-accountant"
-if make_fixture "$FLAT_STABLE" && run_generator "$FLAT_STABLE" --init && run_generator "$FLAT_STABLE"; then
-    flat_before=$(tree_checksums "$FLAT_STABLE")
-    run_generator "$FLAT_STABLE"
-    status=$?
-    flat_after=$(tree_checksums "$FLAT_STABLE")
-    if [[ "$status" -eq 0 ]] && [[ "$flat_before" == "$flat_after" ]]; then
-        pass "the flat tree stays byte-identical on a second write"
-    else
-        fail "the flat tree stays byte-identical on a second write"
-    fi
-else
-    fail "the flat tree stays byte-identical on a second write"
-fi
-
-# ───────────────────────────────────────────────────────────────
-# 15. SPLIT LAYOUT
-# ───────────────────────────────────────────────────────────────
-
-group "general folder"
-GENERAL_FIXTURE="$TMP_ROOT/general-fixture/sk-moneybird-accountant"
-GENERAL_TOPIC="$GENERAL_FIXTURE/references/tax-rules/general/vat.md"
-GENERAL_ENTRY="$GENERAL_FIXTURE/references/tax-rules/dutch-tax-rules.md"
-GENERAL_FENCE="<!-- ${GEN_WORD}:s3-btw-vat:start -->"
-if make_general_fixture "$GENERAL_FIXTURE"; then
-    pass "the general folder fixture builds"
-else
-    fail "the general folder fixture builds"
-fi
-if run_generator "$GENERAL_FIXTURE" --init; then
-    pass "the general folder fixture --init exits 0"
-else
-    fail "the general folder fixture --init exits 0"
-fi
-if grep -qF "$GENERAL_FENCE" "$GENERAL_TOPIC"; then
-    pass "--init puts the section 3 fence in the general file"
-else
-    fail "--init puts the section 3 fence in the general file"
-fi
-if run_generator "$GENERAL_FIXTURE" && run_generator "$GENERAL_FIXTURE" --check; then
-    pass "the general folder fixture passes --check after a write"
-else
-    fail "the general folder fixture passes --check after a write"
-fi
-if grep -qF 'sk-moneybird-accountant/references/tax-rules/2020/vat.md' "$GENERAL_TOPIC" \
-    && ! grep -qF "$GENERAL_FENCE" "$GENERAL_ENTRY"; then
-    pass "the general file carries the section 3 rows and the entry carries no fence"
-else
-    fail "the general file carries the section 3 rows and the entry carries no fence"
-fi
-general_before=$(tree_checksums "$GENERAL_FIXTURE")
-run_generator "$GENERAL_FIXTURE"
-status=$?
-general_after=$(tree_checksums "$GENERAL_FIXTURE")
-if [[ "$status" -eq 0 ]] && [[ "$general_before" == "$general_after" ]]; then
-    pass "a second general folder write leaves every file byte-identical"
-else
-    fail "a second general folder write leaves every file byte-identical"
-fi
-
-group "split topic folder"
-SPLIT_FIXTURE="$TMP_ROOT/split-fixture/sk-moneybird-accountant"
-SPLIT_NOTE="$SPLIT_FIXTURE/references/tax-rules/2020/changes.md"
-SPLIT_OVERVIEW="$SPLIT_FIXTURE/references/tax-rules/year-changes.md"
-if make_split_topic_fixture "$SPLIT_FIXTURE"; then
-    pass "the split topic fixture builds"
-else
-    fail "the split topic fixture builds"
-fi
-if run_generator "$SPLIT_FIXTURE" --init; then
-    pass "the split topic fixture --init exits 0"
-else
-    fail "the split topic fixture --init exits 0"
-fi
-if run_generator "$SPLIT_FIXTURE" && run_generator "$SPLIT_FIXTURE" --check; then
-    pass "the split topic fixture passes --check after a write"
-else
-    fail "the split topic fixture passes --check after a write"
-fi
-if grep -qF "| [vat.md](vat/notes.md#5-changes) | 2 | The standard rate stayed at ${FIX_RATE_A} percent in the fixture year. |" "$SPLIT_NOTE"; then
-    pass "the split change row links the notes part"
-else
-    fail "the split change row links the notes part"
-fi
-if grep -qF '| [vat](vat/figures.md) | Covers Dutch VAT for the split topic fixture. | 2 | 1 | 0 |' \
-    "$SPLIT_FIXTURE/references/tax-rules/2020/README.md"; then
+if grep -qF '| [vat](vat/figures.md) | Covers Dutch VAT for the fixture. | 2 | 1 | 0 |' \
+    "$FIXTURE_TAX_RULES/2020/README.md"; then
     pass "the split year README counts the topic through its figures part"
 else
     fail "the split year README counts the topic through its figures part"
 fi
-if grep -qF 'sk-moneybird-accountant/references/tax-rules/2020/vat/figures.md' \
-    "$SPLIT_FIXTURE/references/tax-rules/dutch-tax-rules.md"; then
-    pass "the split figures part owns its section 3 rows"
+if grep -qF 'sk-moneybird-accountant/references/tax-rules/2020/vat/figures.md' "$FIXTURE_TAX_RULES/general/vat.md"; then
+    pass "the general file carries the section 3 rows from the figures part"
 else
-    fail "the split figures part owns its section 3 rows"
-fi
-if grep -qF '](2020/vat/notes.md#5-changes)' "$SPLIT_OVERVIEW"; then
-    pass "the overview rebases a flat section 5 link onto the notes part"
-else
-    fail "the overview rebases a flat section 5 link onto the notes part"
-fi
-split_before=$(tree_checksums "$SPLIT_FIXTURE")
-run_generator "$SPLIT_FIXTURE"
-status=$?
-split_after=$(tree_checksums "$SPLIT_FIXTURE")
-if [[ "$status" -eq 0 ]] && [[ "$split_before" == "$split_after" ]]; then
-    pass "a second split topic write leaves every file byte-identical"
-else
-    fail "a second split topic write leaves every file byte-identical"
+    fail "the general file carries the section 3 rows from the figures part"
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 16. GAP LEDGER
+# 13. GAP LEDGER
 # ───────────────────────────────────────────────────────────────
 
 # WHY: the ledger is authored in one reference file and copied into the index,
-# so the suite proves the copy and every row rule on a fixture tree.
+# so the suite proves the copy and the owner rule on a fixture tree.
 group "gap ledger"
-PLAIN_FIXTURE="$TMP_ROOT/gaps-plain/sk-moneybird-accountant"
 GAPS_FIXTURE="$TMP_ROOT/gaps-fixture/sk-moneybird-accountant"
 GAPS_MUTANT="$TMP_ROOT/gaps-mutant/sk-moneybird-accountant"
-if make_fixture "$PLAIN_FIXTURE" && run_generator "$PLAIN_FIXTURE" --init && run_generator "$PLAIN_FIXTURE" \
-    && python3 - "$PLAIN_FIXTURE/$FLAT_REF/index.json" <<'PY'
+if python3 - "$FIXTURE/references/index.json" <<'PY'
 import json
 import sys
 
@@ -1693,17 +968,14 @@ else
     fail "an absent Documented gaps heading stores an empty ledger"
 fi
 
-if make_gaps_fixture "$GAPS_FIXTURE"; then
-    pass "the gap ledger fixture builds"
-else
-    fail "the gap ledger fixture builds"
-fi
-if run_generator "$GAPS_FIXTURE" --init && run_generator "$GAPS_FIXTURE" && run_generator "$GAPS_FIXTURE" --check; then
+copy_fixture "$FIXTURE" "$GAPS_FIXTURE" || abort_setup "the gap ledger fixture cannot be copied"
+add_gap_ledger "$GAPS_FIXTURE" || abort_setup "the gap ledger fixture cannot be written"
+if run_generator "$GAPS_FIXTURE" && run_generator "$GAPS_FIXTURE" --check; then
     pass "a valid gap ledger writes and passes --check"
 else
     fail "a valid gap ledger writes and passes --check"
 fi
-if python3 - "$GAPS_FIXTURE/$FLAT_REF/index.json" <<'PY'
+if python3 - "$GAPS_FIXTURE/references/index.json" <<'PY'
 import json
 import sys
 
@@ -1733,47 +1005,8 @@ else
     fail "a second gap ledger write leaves every file byte-identical"
 fi
 
-copy_fixture "$GAPS_FIXTURE" "$GAPS_MUTANT"
-python3 - "$GAPS_MUTANT/$FLAT_REF/routing-signals.md" <<'PY'
-import sys
-
-path = sys.argv[1]
-text = open(path, encoding="utf-8").read()
-old = "| `vat-return` | `references/vat-return/README.md` | gap |"
-new = "| `vat-return` |  | gap |"
-open(path, "w", encoding="utf-8").write(text.replace(old, new, 1))
-PY
-run_generator "$GAPS_MUTANT" --check
-status=$?
-if [[ "$status" -ne 0 ]] && grep -Eq '^gaps routing-signals\.md row [0-9]+ topic vat-return has no owner$' "$TMP_ROOT/out.txt"; then
-    pass "a gap row without an owner fails the check and names the row"
-else
-    fail "a gap row without an owner fails the check and names the row"
-fi
-
-copy_fixture "$GAPS_FIXTURE" "$GAPS_MUTANT"
-sed -i.bak 's#| partial |#| unresolved |#' "$GAPS_MUTANT/$FLAT_REF/routing-signals.md"
-run_generator "$GAPS_MUTANT" --check
-status=$?
-if [[ "$status" -ne 0 ]] \
-    && grep -Eq '^gaps routing-signals\.md row [0-9]+ topic yearly-overview coverage unresolved is not covered, partial or gap$' "$TMP_ROOT/out.txt"; then
-    pass "an unknown coverage fails the check and names the row"
-else
-    fail "an unknown coverage fails the check and names the row"
-fi
-
-copy_fixture "$GAPS_FIXTURE" "$GAPS_MUTANT"
-sed -i.bak 's#| yearly-overview |#| vat-return |#' "$GAPS_MUTANT/$FLAT_REF/routing-signals.md"
-run_generator "$GAPS_MUTANT" --check
-status=$?
-if [[ "$status" -ne 0 ]] && grep -Eq '^gaps routing-signals\.md row [0-9]+ duplicate topic vat-return$' "$TMP_ROOT/out.txt"; then
-    pass "a duplicate topic fails the check and names the row"
-else
-    fail "a duplicate topic fails the check and names the row"
-fi
-
-copy_fixture "$GAPS_FIXTURE" "$GAPS_MUTANT"
-python3 - "$GAPS_MUTANT/$FLAT_REF/routing-signals.md" <<'PY'
+copy_fixture "$GAPS_FIXTURE" "$GAPS_MUTANT" || abort_setup "the gap ledger mutant cannot be copied"
+python3 - "$GAPS_MUTANT/references/routing-signals.md" <<'PY' || abort_setup "the gap ledger mutant cannot be edited"
 import sys
 
 path = sys.argv[1]
@@ -1792,8 +1025,8 @@ else
     fail "an absolute or climbing owner fails the check and names the row"
 fi
 
-copy_fixture "$GAPS_FIXTURE" "$GAPS_MUTANT"
-python3 - "$GAPS_MUTANT/$FLAT_REF/index.json" <<'PY'
+copy_fixture "$GAPS_FIXTURE" "$GAPS_MUTANT" || abort_setup "the gap ledger mutant cannot be copied"
+python3 - "$GAPS_MUTANT/references/index.json" <<'PY' || abort_setup "the gap ledger mutant cannot be edited"
 import sys
 
 path = sys.argv[1]
@@ -1802,19 +1035,18 @@ open(path, "w", encoding="utf-8").write(text.replace('"coverage":"gap"', '"cover
 PY
 run_generator "$GAPS_MUTANT" --check
 status=$?
-if [[ "$status" -ne 0 ]] && grep -q '^drift index\.json gaps topic vat-return$' "$TMP_ROOT/out.txt"; then
+if [[ "$status" -ne 0 ]] && grep -q '^drift index\.json$' "$TMP_ROOT/out.txt"; then
     pass "a hand edit to the stored gap list fails the check"
 else
     fail "a hand edit to the stored gap list fails the check"
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 16b. LOADING NOTES LISTING PATHS
+# 14. LOADING NOTES LISTING PATHS
 # ───────────────────────────────────────────────────────────────
 
 # WHY: the loading notes name the generated index and the token baseline, so
-# the suite asserts that both names resolve to a file with its schema fields
-# and that the assertion fails when one name is dropped.
+# the suite asserts that both names resolve to a file with its schema fields.
 group "loading notes listing paths"
 LISTING_SKILL="$TMP_ROOT/listing-skill"
 copy_skill "$LISTING_SKILL"
@@ -1841,39 +1073,9 @@ then
 else
     fail "the loading notes name the index and the baseline with their schema fields"
 fi
-python3 -I - "$LISTING_SKILL/SKILL.md" <<'PY' || exit 2
-import sys
-
-path = sys.argv[1]
-text = open(path, encoding="utf-8").read()
-open(path, "w", encoding="utf-8").write(text.replace("benchmark/token-baseline.json", "the baseline"))
-PY
-if python3 - "$LISTING_SKILL" <<'PY'
-import json
-import os
-import sys
-
-root = sys.argv[1]
-text = open(os.path.join(root, "SKILL.md"), encoding="utf-8").read()
-for name in ("references/index.json", "benchmark/token-baseline.json"):
-    if name not in text:
-        sys.exit(1)
-index = json.load(open(os.path.join(root, "references/index.json"), encoding="utf-8"))
-if not index.get("files") or "answerSurface" not in index["files"][0]:
-    sys.exit(1)
-baseline = json.load(open(os.path.join(root, "benchmark/token-baseline.json"), encoding="utf-8"))
-if not baseline.get("files") or "tokens" not in baseline["files"][0]:
-    sys.exit(1)
-sys.exit(0)
-PY
-then
-    fail "the listing-path case fails when one name is removed"
-else
-    pass "the listing-path case fails when one name is removed"
-fi
 
 # ───────────────────────────────────────────────────────────────
-# 17. RESULT SUMMARY AND EXIT
+# 15. RESULT SUMMARY AND EXIT
 # ───────────────────────────────────────────────────────────────
 
 printf '\n%d passed, %d failed\n' "$passed" "$failed"

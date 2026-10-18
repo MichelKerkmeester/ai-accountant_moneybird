@@ -106,9 +106,9 @@ bash cli-moneybird/cli/moneybird-cli/tests/run-tests.sh
 | Check | Last line you should see |
 |---|---|
 | Jortt doctor | `Mode: offline. No network calls were made.` |
-| Jortt CLI tests | `Result: 26 passed, 0 failed` |
+| Jortt CLI tests | `Result: 22 passed, 0 failed` |
 | Moneybird doctor | `Doctor is read-only. Credential files were checked for presence only.` |
-| Moneybird guard tests | `Pass: 58  Fail: 0` |
+| Moneybird guard tests | `Pass: 53  Fail: 0` |
 
 The Jortt tests read the trimmed API description fixture beside them, so they need no network and no cache. The Moneybird tests use a local stub.
 
@@ -191,7 +191,7 @@ The offline checks then show what still points at the old tool or market: broken
 
 ## 8. 🔒 SAFETY AND PRIVACY
 
-- **Jortt is read-only.** `jortt-cli` refuses a non-GET call without `--allow-write`, and its scopes are read-only, so a write fails the scope check even with that flag. There is no write path for an agent. XAF auditfiles, annual accounts (jaarrekening) and filed VAT returns come from you, through the Jortt UI.
+- **Jortt is read-only.** `jortt-cli` refuses every non-GET call with exit 3, and its scopes are read-only. There is no write path for an agent. XAF auditfiles, annual accounts (jaarrekening) and filed VAT returns come from you, through the Jortt UI.
 - **Every Moneybird call goes through `moneybird-guard`.** Read sessions set `MONEYBIRD_GUARD_READ_ONLY=1`. The guard then blocks every non-GET call before it reaches the official CLI.
 - **A write needs five things.** A passed phase gate, your approval, a flushed `WRITE_INTENT` journal record, `--confirm-write` and `--approval <ref>` naming that entry. The guard checks the reference against the run journal, needs the writer session and never falls back to the reader session. A production batch also needs your approval for that batch and `--production`.
 - **Migration data stays in `migration-workspace/`.** Git ignores it. Both CLIs refuse to save output anywhere else.
@@ -206,11 +206,11 @@ The doctors are offline by default. The Jortt tests check the CLI contract again
 | Check | What it covers |
 |---|---|
 | `cli-jortt/scripts/doctor.sh` | Local tools, whether `jortt-cli` is available, which Jortt settings are set and the API description cache |
-| `cli-jortt/cli/jortt-cli/tests/run-tests.sh` | Operation slugs, parameter checks, the write gate, the scope gate, the output boundary, summary output and redacted errors |
+| `cli-jortt/cli/jortt-cli/tests/run-tests.sh` | Operation slugs, parameter checks, the non-GET refusal, the scope gate, the output boundary, summary output and redacted errors |
 | `cli-moneybird/scripts/doctor.sh` | Local tools, the pinned official CLI, config folders and whether credential files and settings exist |
 | `cli-moneybird/cli/moneybird-cli/tests/run-tests.sh` | Period warning, write confirmation, the pilot gate, the approval check, the writer session, the read-only lock, delete caution, the output boundary, summary output and logins |
 | `cli-moneybird/scripts/exit-code-parity.sh` | The guard exit codes against the exit table, the troubleshooting rows and the router keywords, in both directions |
-| `sk-moneybird-accountant/scripts/check-route-table.py` | The task-type route table with its marked read sets, plus the skill word check, the split-topic manifest and the carry-forward outline check |
+| `sk-moneybird-accountant/scripts/check-route-table.py` | The task-type route table with its marked read sets, the generated router block, the hub files and the route margin |
 | `sk-moneybird-accountant/scripts/check-fragments.py` | Every relative link and section anchor in the skill family |
 | `sk-moneybird-accountant/scripts/check-english-first.py` | English first wording: every Dutch term has an English lead, every first use in a section carries its Dutch label and every label is a glossary row |
 | `sk-moneybird-accountant/scripts/build-reference-index.py --check`, `token-baseline.py --check` and `build-source-library.py --check` | The generated reference index, the pinned token baseline and the source library |

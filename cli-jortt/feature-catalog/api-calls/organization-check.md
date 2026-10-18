@@ -17,7 +17,7 @@ version: 1.0.0.0
 
 Confirms the configured key reaches the API and prints only the HTTP status and top-level field names.
 
-Use it as the live connection check. The doctor calls it only when `--live` is passed.
+Use it as the live connection check. The doctor never calls it.
 
 ---
 
@@ -43,7 +43,6 @@ No value from the response is printed, so the output is safe to share as evidenc
 | File | Type | Role |
 |---|---|---|
 | [`manual-testing-playbook/auth-and-scopes/whoami-field-names.md`](../../manual-testing-playbook/auth-and-scopes/whoami-field-names.md) | Manual playbook | JRT-012 runs the live read and checks that no values print. |
-| [`scripts/doctor.sh`](../../scripts/doctor.sh) | Test harness | Runs `whoami` when `--live` is passed. |
 
 ---
 
@@ -55,5 +54,4 @@ No value from the response is printed, so the output is safe to share as evidenc
 
 Related references:
 - [call-operation.md](call-operation.md) - Call an operation
-- [raw-get.md](raw-get.md) - Raw GET
 - [signed-download-fetch.md](signed-download-fetch.md) - Signed download fetch

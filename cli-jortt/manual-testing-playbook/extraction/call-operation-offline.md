@@ -30,9 +30,9 @@ Operators run the exact prompt and command sequence for `JRT-011` and confirm th
 - Real user request: `Show me how jortt-cli would call the expense list and stop invalid parameters before sending anything.`
 - Prompt: `Show me how jortt-cli would call the expense list and stop invalid parameters before sending anything.`
 - Expected execution process: The agent runs one valid dry run and three invalid calls, then names the check that stopped each invalid call.
-- Expected signals: Step 1: the printed `GET` URL carries both `vat_date_from` and `vat_date_till`, followed by `Body: none`. Steps 2 to 4: exit 2 with the unknown-parameter, integer-type and missing-required-parameter messages. No step requests a token.
+- Expected signals: Step 1: the printed `GET` URL carries both `vat_date_from` and `vat_date_till`. Steps 2 to 4: exit 2 with the unknown-parameter, integer-type and missing-required-parameter messages. No step requests a token.
 - Desired user-visible outcome: The operator sees the exact request shape and a clear local refusal for each bad input.
-- Pass/fail: PASS if step 1 exits 0 with the dry-run URL and `Body: none`, steps 2 to 4 exit 2 with the expected messages and no step reaches the network, FAIL if a step exits with another code, prints another message or sends a request.
+- Pass/fail: PASS if step 1 exits 0 with the dry-run URL, steps 2 to 4 exit 2 with the expected messages and no step reaches the network, FAIL if a step exits with another code, prints another message or sends a request.
 
 ---
 
@@ -51,7 +51,7 @@ Operators run the exact prompt and command sequence for `JRT-011` and confirm th
 
 ### Expected
 
-- Step 1: `GET https://api.jortt.nl/v3/expenses?vat_date_from=YYYY-01-01&vat_date_till=YYYY-12-31` followed by `Body: none`.
+- Step 1: `GET https://api.jortt.nl/v3/expenses?vat_date_from=YYYY-01-01&vat_date_till=YYYY-12-31`.
 - Step 2: exit 2 with `Unknown parameter 'unknown_filter'.` and the valid parameter list.
 - Step 3: exit 2 with `Parameter 'page' must be an integer.`
 - Step 4: exit 2 with `Required parameter 'id' is missing.` No step requests a token.
@@ -62,7 +62,7 @@ The four output blocks and their exit codes.
 
 ### Pass / Fail
 
-- **Pass**: Step 1 exits 0 with the dry-run URL and `Body: none`, steps 2 to 4 exit 2 with the expected messages and no step reaches the network.
+- **Pass**: Step 1 exits 0 with the dry-run URL, steps 2 to 4 exit 2 with the expected messages and no step reaches the network.
 - **Fail**: A step exits with another code, prints another message or sends a request.
 
 ### Failure Triage

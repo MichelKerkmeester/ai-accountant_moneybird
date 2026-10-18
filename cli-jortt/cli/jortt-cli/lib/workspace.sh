@@ -2,22 +2,6 @@
 # shellcheck shell=bash
 set -euo pipefail
 
-jortt_workspace_root() {
-  local workspace="$ACCOUNTANT_ROOT/migration-workspace"
-  if [ -L "$workspace" ]; then
-    jortt_error 5 "migration-workspace must not be a symlink."
-  fi
-  if [ ! -d "$workspace" ]; then
-    if [ "${JORTT_CREATE_WORKSPACE:-0}" = "1" ]; then
-      mkdir -p "$workspace" || jortt_error 5 "Could not create migration-workspace."
-    else
-      printf '%s\n' "$workspace"
-      return 0
-    fi
-  fi
-  (cd -P "$workspace" >/dev/null 2>&1 && pwd -P) || jortt_error 5 "migration-workspace is not accessible."
-}
-
 jortt_resolve_output() {
   local requested="$1"
   local create_dirs="$2"
@@ -95,7 +79,6 @@ jortt_resolve_output() {
   if [ -e "$current/$basename" ] && [ -d "$current/$basename" ]; then
     jortt_error 5 "Output path names a directory."
   fi
-  [ -n "$basename" ] || jortt_error 5 "Output path must name a file inside migration-workspace."
   # shellcheck disable=SC2034
   JORTT_RESOLVED_OUT="$current/$basename"
 }

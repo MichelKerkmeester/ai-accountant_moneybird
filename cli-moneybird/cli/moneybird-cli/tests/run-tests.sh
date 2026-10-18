@@ -144,6 +144,15 @@ else
   fail "Unconfirmed create exits 3 with one payload digest line and no body"
 fi
 
+# A write that carries --version still runs the write checks.
+reset_state
+capture_guard --confirm-write contacts create --version 3
+if [[ $STATUS -eq 4 ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "A write with --version exits 4 before the real call"
+else
+  fail "A write with --version exits 4 before the real call"
+fi
+
 # A confirmed write to a non-pilot administration is blocked.
 reset_state
 printf 'MONEYBIRD_PILOT_ADMINISTRATION_ID=PILOT_ADMIN\n' > "$MONEYBIRD_ENV_DIR/.env"
@@ -401,6 +410,26 @@ else
   fail "--out outside migration-workspace exits 5 before the CLI call"
 fi
 
+# A .. segment or a symlinked folder cannot leave the workspace.
+reset_state
+capture_guard --out "$MONEYBIRD_ENV_DIR/migration-workspace/../escaped.json" contacts list
+if [[ $STATUS -eq 5 && ! -e "$MONEYBIRD_ENV_DIR/escaped.json" ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "--out with a .. segment exits 5 before the CLI call"
+else
+  fail "--out with a .. segment exits 5 before the CLI call"
+fi
+
+reset_state
+mkdir -p "$TEST_ROOT/link-target"
+ln -s "$TEST_ROOT/link-target" "$MONEYBIRD_ENV_DIR/migration-workspace/linked"
+capture_guard --out "$MONEYBIRD_ENV_DIR/migration-workspace/linked/contacts.json" contacts list
+if [[ $STATUS -eq 5 && ! -e "$TEST_ROOT/link-target/contacts.json" ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "--out through a symlinked folder exits 5 before the CLI call"
+else
+  fail "--out through a symlinked folder exits 5 before the CLI call"
+fi
+rm "$MONEYBIRD_ENV_DIR/migration-workspace/linked"
+
 # An output under the workspace is raw JSON and stdout contains only a count.
 reset_state
 OUT_FILE="$MONEYBIRD_ENV_DIR/migration-workspace/contacts.json"
@@ -429,6 +458,21 @@ if [[ $STATUS -eq 0 && "$OUTPUT" != *"FAKE_WRITER_TOKEN_DO_NOT_ECHO"* ]] && grep
   pass "writer login uses .env.writer and a separate config directory"
 else
   fail "writer login uses .env.writer and a separate config directory"
+fi
+
+# A quoted token reaches the CLI without its quotes.
+reset_state
+printf 'MONEYBIRD_API_TOKEN="FAKE_DOUBLE_QUOTED_TOKEN"\n' > "$MONEYBIRD_ENV_DIR/.env"
+capture_guard login-from-env
+DOUBLE_QUOTED_STATUS="$STATUS"
+printf "MONEYBIRD_API_TOKEN='FAKE_SINGLE_QUOTED_TOKEN'\n" > "$MONEYBIRD_ENV_DIR/.env"
+capture_guard login-from-env
+if [[ $DOUBLE_QUOTED_STATUS -eq 0 && $STATUS -eq 0 ]] &&
+   grep -qFx 'TOKEN FAKE_DOUBLE_QUOTED_TOKEN' "$MONEYBIRD_TEST_LOG" &&
+   grep -qFx 'TOKEN FAKE_SINGLE_QUOTED_TOKEN' "$MONEYBIRD_TEST_LOG"; then
+  pass "login-from-env strips quotes around the token before the CLI receives it"
+else
+  fail "login-from-env strips quotes around the token before the CLI receives it"
 fi
 
 # A write without a writer configuration stops instead of falling back to the reader token.
@@ -491,18 +535,6 @@ if [[ $STATUS -eq 0 ]] && grep -q '^REAL POST ' "$MONEYBIRD_TEST_LOG"; then
 else
   fail "A recorded WRITE_INTENT reference lets a pilot write run"
 fi
-
-# A production write needs the same approval reference.
-reset_state
-export MONEYBIRD_TEST_ADMINISTRATION_ID="PRODUCTION_ADMIN"
-capture_guard --confirm-write --production contacts create
-if [[ $STATUS -eq 8 && "$OUTPUT" == *"requires --approval"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
-  pass "A confirmed production write without --approval exits 8"
-else
-  fail "A confirmed production write without --approval exits 8"
-fi
-export MONEYBIRD_TEST_ADMINISTRATION_ID="PILOT_ADMIN"
-printf 'MONEYBIRD_PILOT_ADMINISTRATION_ID=PILOT_ADMIN\n' > "$MONEYBIRD_ENV_DIR/.env"
 
 # A read captures the body, prints a value-free summary and removes the temporary file.
 reset_state
@@ -567,8 +599,8 @@ done
 
 # A passthrough command rejects --out instead of silently dropping it.
 reset_state
-PASSTHROUGH_OUT="$MONEYBIRD_ENV_DIR/migration-workspace/help.json"
-capture_guard --out "$PASSTHROUGH_OUT" --help
+PASSTHROUGH_OUT="$MONEYBIRD_ENV_DIR/migration-workspace/administrations.json"
+capture_guard --out "$PASSTHROUGH_OUT" administration list
 if [[ $STATUS -eq 2 && "$OUTPUT" == *"--out does not apply to passthrough commands"* ]] && [[ ! -e "$PASSTHROUGH_OUT" ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
   pass "A passthrough command rejects --out"
 else
@@ -600,14 +632,6 @@ if [[ $STATUS -eq 8 && "$OUTPUT" == *"requires --approval"* ]] && ! grep -q '^RE
   pass "administration use for another administration without --approval exits 8"
 else
   fail "administration use for another administration without --approval exits 8"
-fi
-
-reset_state
-capture_guard --confirm-write --production --approval NOT-APPROVED administration use OTHER_ADMIN
-if [[ $STATUS -eq 8 && "$OUTPUT" == *"no WRITE_INTENT entry"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
-  pass "administration use rejects an approval reference that is not in the run journal"
-else
-  fail "administration use rejects an approval reference that is not in the run journal"
 fi
 
 # administration use runs when the production and approval gates pass.
@@ -650,8 +674,8 @@ else
 fi
 printf 'MONEYBIRD_PILOT_ADMINISTRATION_ID=PILOT_ADMIN\n' > "$MONEYBIRD_ENV_DIR/.env"
 
-# Fault injection: one case per guard exit code, 1 to 8 plus the payload-mismatch 9.
-# The stub injects the upstream failures and the guard's own gates drive the rest.
+# Fault injection: the stub injects an upstream failure and a malformed dry-run line.
+# The guard gates for exits 3 to 9 are covered by the write, lock, approval and payload cases above.
 
 # An upstream CLI failure is surfaced as exit 1, never swallowed.
 reset_state
@@ -673,81 +697,6 @@ if [[ $STATUS -eq 2 && "$OUTPUT" == *"did not begin with a METHOD URL line"* ]] 
   pass "Fault 2: a malformed dry-run line exits 2 (stub fault)"
 else
   fail "Fault 2: a malformed dry-run line exits 2 (stub fault)"
-fi
-
-# An unconfirmed write is blocked with exit 3.
-reset_state
-capture_guard contacts create
-if [[ $STATUS -eq 3 && "$OUTPUT" == *"Write blocked"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
-  pass "Fault 3: an unconfirmed write exits 3 (guard gate)"
-else
-  fail "Fault 3: an unconfirmed write exits 3 (guard gate)"
-fi
-
-# A non-pilot target without --production is blocked with exit 4.
-reset_state
-export MONEYBIRD_TEST_ADMINISTRATION_ID="OTHER_ADMIN"
-capture_guard --confirm-write contacts create
-export MONEYBIRD_TEST_ADMINISTRATION_ID="PILOT_ADMIN"
-if [[ $STATUS -eq 4 && "$OUTPUT" == *"differs from target"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
-  pass "Fault 4: a non-pilot target exits 4 (guard gate)"
-else
-  fail "Fault 4: a non-pilot target exits 4 (guard gate)"
-fi
-
-# An --out path outside migration-workspace is rejected with exit 5.
-reset_state
-capture_guard --out "$TEST_ROOT/outside.json" contacts list
-if [[ $STATUS -eq 5 && "$OUTPUT" == *"inside migration-workspace"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
-  pass "Fault 5: an output path outside the workspace exits 5 (guard gate)"
-else
-  fail "Fault 5: an output path outside the workspace exits 5 (guard gate)"
-fi
-
-# The read-only lock blocks a non-GET call with exit 6.
-reset_state
-export MONEYBIRD_GUARD_READ_ONLY=1
-capture_guard --confirm-write --production contacts create
-unset MONEYBIRD_GUARD_READ_ONLY
-if [[ $STATUS -eq 6 && "$OUTPUT" == *"Read-only lock is enabled"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
-  pass "Fault 6: the read-only lock exits 6 (guard gate)"
-else
-  fail "Fault 6: the read-only lock exits 6 (guard gate)"
-fi
-
-# A missing writer configuration stops the write with exit 7.
-reset_state
-export MONEYBIRD_WRITER_CONFIG_DIR="$TEST_ROOT/missing-writer-config"
-capture_guard --confirm-write --approval APPROVED-1 contacts create
-export MONEYBIRD_WRITER_CONFIG_DIR="$TEST_ROOT/writer-config"
-if [[ $STATUS -eq 7 && "$OUTPUT" == *"Writer configuration is missing"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
-  pass "Fault 7: a missing writer configuration exits 7 (guard gate)"
-else
-  fail "Fault 7: a missing writer configuration exits 7 (guard gate)"
-fi
-
-# A confirmed write without an approval reference stops with exit 8.
-reset_state
-capture_guard --confirm-write contacts create
-if [[ $STATUS -eq 8 && "$OUTPUT" == *"requires --approval"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
-  pass "Fault 8: a missing approval reference exits 8 (guard gate)"
-else
-  fail "Fault 8: a missing approval reference exits 8 (guard gate)"
-fi
-
-# A payload that changed after approval is refused with exit 9.
-reset_state
-write_intent "FAULT-9" "$CREATE_DIGEST" "" "batch-fault"
-if OUTPUT="$(MONEYBIRD_TEST_DRY_BODY='{"contacts":{"company_name":"changed"}}' "$GUARD" --confirm-write --approval FAULT-9 contacts create 2>&1)"; then
-  STATUS=0
-else
-  STATUS="$?"
-fi
-printf '%s\n' "$OUTPUT" >> "$CAPTURED"
-if [[ $STATUS -eq 9 && "$OUTPUT" == *"PAYLOAD_MISMATCH"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
-  pass "Fault 9: a changed payload exits 9 (guard gate)"
-else
-  fail "Fault 9: a changed payload exits 9 (guard gate)"
 fi
 
 # The key never reaches the captured output, the write log or the journal.

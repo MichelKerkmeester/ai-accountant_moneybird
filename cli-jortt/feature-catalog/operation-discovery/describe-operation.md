@@ -1,10 +1,10 @@
 ---
 title: "Describe an operation"
-description: "Prints one operation's method, path, scope, path and query parameters, body schema and an example call."
+description: "Prints one operation's method, path, scope, path and query parameters and an example call."
 trigger_phrases:
   - "Describe an operation"
   - "jortt-cli describe"
-  - "jortt-cli help slug"
+  - "jortt-cli describe slug"
   - "Jortt operation parameters"
 version: 1.0.0.0
 ---
@@ -15,7 +15,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-Prints one operation's method, path, scope, path and query parameters, body schema and an example call.
+Prints one operation's method, path, scope, path and query parameters and an example call.
 
 Use it before a call to confirm the exact parameter names the CLI will accept and the scope the key needs.
 
@@ -23,9 +23,9 @@ Use it before a call to confirm the exact parameter names the CLI will accept an
 
 ## 2. HOW IT WORKS
 
-`jortt-cli describe SLUG` prints `Slug`, `Method`, `Path`, `Scope`, `Path params`, `Query params`, `Body schema` and `Example`. An empty list prints `none`. The example names every required path and query parameter as `--NAME VALUE` and adds `--data '{}'` when the operation takes a body.
+`jortt-cli describe SLUG` prints `Slug`, `Method`, `Path`, `Scope`, `Path params`, `Query params` and `Example`. An empty list prints `none`. The example names every required path and query parameter as `--NAME VALUE`.
 
-`jortt-cli help SLUG` is an alias. An unknown slug stops with exit 2 and the message `Unknown operation slug`, so a typo never reaches the network.
+An unknown slug stops with exit 2 and the message `Unknown operation slug`, so a typo never reaches the network.
 
 ---
 
@@ -37,13 +37,13 @@ Use it before a call to confirm the exact parameter names the CLI will accept an
 |---|---|---|
 | [`cli/jortt-cli/lib/commands.sh`](../../cli/jortt-cli/lib/commands.sh) | Handler | `jortt_cmd_describe` builds the description and example call. |
 | [`cli/jortt-cli/lib/common.sh`](../../cli/jortt-cli/lib/common.sh) | Shared | `jortt_operation` resolves one slug from the derived operation list. |
-| [`cli/jortt-cli/jortt-cli`](../../cli/jortt-cli/jortt-cli) | Handler | Routes `describe` and `help SLUG` to the same handler. |
+| [`cli/jortt-cli/jortt-cli`](../../cli/jortt-cli/jortt-cli) | Handler | Routes `describe` to its handler. |
 
 ### Validation And Tests
 
 | File | Type | Role |
 |---|---|---|
-| [`cli/jortt-cli/tests/run-tests.sh`](../../cli/jortt-cli/tests/run-tests.sh) | Automated test | Checks that the expense list description includes its path, a filter and an empty body schema. |
+| [`cli/jortt-cli/tests/run-tests.sh`](../../cli/jortt-cli/tests/run-tests.sh) | Automated test | Checks that the expense list description includes its path and a filter. |
 | [`manual-testing-playbook/operation-discovery/list-and-describe-operations.md`](../../manual-testing-playbook/operation-discovery/list-and-describe-operations.md) | Manual playbook | JRT-007 describes a receipt download operation. |
 
 ---

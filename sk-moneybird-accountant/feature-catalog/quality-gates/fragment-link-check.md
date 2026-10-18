@@ -26,7 +26,7 @@ A fragment that matches only a duplicate-suffixed slug fails as `duplicate-suffi
 
 In a year topic file the checker also reports a missing, unexpected, duplicate or out-of-order section id by name. The year README, the correction log and the change note are exempt from that rule, so only the topic files carry the fixed id set.
 
-The twelve ordinal pointers in the top layer are fragment links the check resolves by path and heading slug. It also counts the sections that open with a positional reference, prints the count with a threshold on a line labelled informational that never changes the exit code and rewrites nothing, so the measurement reports a number and a human decides. A root that holds none of the scan roots and a scan that finds no markdown file exit 2, so an empty tree never reads as clean.
+The twelve ordinal pointers in the top layer are fragment links the check resolves by path and heading slug. The last output line counts the links, the fragment links and the problems, and the exit code is 1 while a problem remains.
 
 ---
 
@@ -44,7 +44,7 @@ The twelve ordinal pointers in the top layer are fragment links the check resolv
 
 | File | Type | Role |
 |---|---|---|
-| `sk-moneybird-accountant/scripts/fragment-check-test.sh` | Automated test | Seeds a renamed heading, a renamed id, a missing file and a duplicate-suffix slug and proves each is caught, beside the fragment links of the top layer, the exit 2 for an empty tree and the informational threshold line. |
+| `sk-moneybird-accountant/scripts/fragment-check-test.sh` | Automated test | Seeds a renamed heading, a renamed id, a missing file and a duplicate-suffix slug and proves each is caught, beside a topic part with a missing or misordered section id, a link into a nested topic part and a renamed heading in a copy of the real tree. |
 | `.github/workflows/skill-health.yml` | Test harness | Runs the check and the suite before every merge. |
 
 ---

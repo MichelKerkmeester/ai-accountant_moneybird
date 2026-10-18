@@ -27,7 +27,6 @@ instructions.
 Usage:
     python3 -I sk-moneybird-accountant/scripts/read-pdf-source.py --list
     python3 -I sk-moneybird-accountant/scripts/read-pdf-source.py --url <url>
-    python3 -I sk-moneybird-accountant/scripts/read-pdf-source.py --url <url> --first 2 --last 3
     python3 -I sk-moneybird-accountant/scripts/read-pdf-source.py --file <path.pdf>
 
 Options:
@@ -40,9 +39,6 @@ Options:
                       host for the test. The download is capped and lands in a
                       temp directory that is removed after the run.
     --file <path.pdf> Read a local PDF the Operator saved. No network.
-    --first <n>       First page to extract, counted from 1.
-    --last <m>        Last page to extract, counted from 1. Both default to
-                      the whole document.
 
 Output:
     --list prints one "url<TAB>title" line per row. --url and --file print the
@@ -173,7 +169,7 @@ def checked_local_path(path: str) -> str:
         SystemExit: With code 2 when the given path or its resolved target
         names a private folder or a credential file.
     """
-    # WHY: the term list is expanded, because a tilde in an .env path would
+    # WHY: the path is expanded, because a tilde in an .env path would
     # otherwise hide the file name from the guard.
     absolute = os.path.abspath(os.path.expanduser(path))
     # WHY: a symlink with a harmless name can point into a private folder, so
@@ -324,32 +320,21 @@ def download(url: str, folder: str) -> str:
     return path
 
 
-def extract(pdf_path: str, first: Optional[int], last: Optional[int]) -> str:
+def extract(pdf_path: str) -> str:
     """Run pdftotext over one PDF and return its text.
 
     Args:
         pdf_path: PDF to read.
-        first: First page, or None to start at the beginning.
-        last: Last page, or None to read to the end.
 
     Returns:
         The text pdftotext wrote to stdout, decoded as UTF-8.
 
     Raises:
-        SystemExit: With code 3 when the tool cannot be run, with code 1 when
-        pdftotext reports an extraction failure and with code 4 when the
-        extraction holds only whitespace.
+        SystemExit: With code 1 when pdftotext reports an extraction failure
+        and with code 4 when the extraction holds only whitespace.
     """
-    command = ["pdftotext", "-layout", "-enc", "UTF-8"]
-    if first is not None:
-        command += ["-f", str(first)]
-    if last is not None:
-        command += ["-l", str(last)]
-    command += [pdf_path, "-"]
-    try:
-        result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    except (FileNotFoundError, OSError) as exc:
-        fail("cannot run pdftotext (%s). %s" % (exc, POPPLER_HINT), 3)
+    command = ["pdftotext", "-layout", "-enc", "UTF-8", pdf_path, "-"]
+    result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if result.returncode != 0:
         message = result.stderr.decode("utf-8", errors="replace").strip()
         fail("pdftotext failed (exit %d) on %s: %s" % (
@@ -396,13 +381,11 @@ def list_rows() -> int:
     return 0
 
 
-def read_url(url: str, first: Optional[int], last: Optional[int]) -> int:
+def read_url(url: str) -> int:
     """Download and extract one indexed PDF.
 
     Args:
         url: URL given on the command line.
-        first: First page, or None.
-        last: Last page, or None.
 
     Returns:
         Zero.
@@ -426,18 +409,16 @@ def read_url(url: str, first: Optional[int], last: Optional[int]) -> int:
     require_pdftotext()
     with tempfile.TemporaryDirectory(prefix="read-pdf-source.") as folder:
         path = download(url, folder)
-        text = extract(path, first, last)
+        text = extract(path)
     print_text(text)
     return 0
 
 
-def read_file(path: str, first: Optional[int], last: Optional[int]) -> int:
+def read_file(path: str) -> int:
     """Extract a local PDF without a network call.
 
     Args:
         path: Path given on the command line.
-        first: First page, or None.
-        last: Last page, or None.
 
     Returns:
         Zero.
@@ -449,7 +430,7 @@ def read_file(path: str, first: Optional[int], last: Optional[int]) -> int:
     if not os.path.isfile(absolute):
         fail("no such file: %s" % path)
     require_pdftotext()
-    print_text(extract(absolute, first, last))
+    print_text(extract(absolute))
     return 0
 
 # ───────────────────────────────────────────────────────────────
@@ -473,24 +454,14 @@ def main(argv: List[str]) -> int:
     mode.add_argument("--list", action="store_true", help="print the pdf-needs-reader rows, offline")
     mode.add_argument("--url", metavar="<url>", help="download one pdf-needs-reader row and print its text")
     mode.add_argument("--file", metavar="<path.pdf>", help="read a local PDF and print its text")
-    parser.add_argument("--first", type=int, metavar="<n>", help="first page to extract")
-    parser.add_argument("--last", type=int, metavar="<m>", help="last page to extract")
     args = parser.parse_args(argv)
-    if args.list and (args.first is not None or args.last is not None):
-        fail("usage: --first and --last need --url or --file")
-    for name in ("first", "last"):
-        value = getattr(args, name)
-        if value is not None and value < 1:
-            fail("usage: --%s wants a page number of 1 or more" % name)
-    if args.first is not None and args.last is not None and args.first > args.last:
-        fail("usage: --first must not be after --last")
     if args.list:
         return list_rows()
     # WHY: an empty --url is still a URL option, so it reaches the library
     # lookup and its refusal instead of falling through to the file reader.
     if args.url is not None:
-        return read_url(args.url, args.first, args.last)
-    return read_file(args.file, args.first, args.last)
+        return read_url(args.url)
+    return read_file(args.file)
 
 
 if __name__ == "__main__":

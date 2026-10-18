@@ -19,11 +19,6 @@ makes no network call.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/check-ci-suites.py
-    python3 -I sk-moneybird-accountant/scripts/check-ci-suites.py --root DIR
-
-Options:
-    --root DIR  Read another repository. Defaults to the root above this
-                script.
 
 Output:
     "check-ci-suites: ok, N suites registered" on stdout when every suite has
@@ -204,25 +199,13 @@ def main(argv: List[str]) -> int:
 
     Returns:
         Exit code reported by the check.
-
-    Raises:
-        SystemExit: If the root is not a directory.
     """
     parser = argparse.ArgumentParser(
         prog=CHECKER,
         description="Check that every offline suite has a run line in the skill health workflow.",
     )
-    parser.add_argument(
-        "--root",
-        default=REPO_ROOT,
-        metavar="DIR",
-        help="read another repository instead of the one above this script",
-    )
-    args = parser.parse_args(argv)
-    root = os.path.abspath(args.root)
-    if not os.path.isdir(root):
-        fail("not a directory: %s" % args.root)
-    return check(root, load_parser())
+    parser.parse_args(argv)
+    return check(REPO_ROOT, load_parser())
 
 
 if __name__ == "__main__":

@@ -24,11 +24,7 @@ Writes the git-ignored session context from the clock and a migration projection
 
 ### Context fields
 
-The builder reads the migration config and the phase dashboard, projects a fixed set of allowlisted fields onto the context file and drops everything else. The config may hold a nested mapping, a literal dotted key or the template shape, a `fields` list of rows that each carry a `field` and a `value`. A `PENDING` or empty value in a template row reads as null. The phase statuses come from a JSON dashboard list when one exists, else from the phase table of the markdown dashboard that `init-workspace.sh` copies into `Plans/`, where a status such as `GATE PASSED` reads as `GATE_PASSED`. A date or year field is kept only in its exact stored form. Output is stable for a given clock and inputs, so two runs with the same inputs produce the same bytes. The clock comes from `SOURCE_DATE_EPOCH` when it holds an integer, otherwise from the runtime UTC clock.
-
-### Check and route state
-
-The check mode reads an existing context file and reports every rule breach, one line per problem. It confirms the allowlist, the dashboard vocabulary, the staleness window, the date and gate field shapes and the absence of a path, amount or name in a string value. The route-state mode prints exactly one post-cutover state for the router, computed from the file alone and never written back.
+The builder reads the migration config and the phase dashboard, projects a fixed set of allowlisted fields onto the context file and drops everything else. The config holds the template shape, a `fields` list of rows that each carry a `field` and a `value`. A `PENDING` or empty value in a row reads as null. The phase statuses come from the phase table of the markdown dashboard that `init-workspace.sh` copies into `Plans/`, where a status such as `GATE PASSED` reads as `GATE_PASSED`. A date or year field is kept only in its exact stored form. Output is stable for a given clock and inputs, so two runs with the same inputs produce the same bytes. The clock comes from `SOURCE_DATE_EPOCH` when it holds an integer, otherwise from the runtime UTC clock.
 
 ### Year resolution
 
@@ -42,7 +38,7 @@ The router resolves the year as `year_key`: an explicit year, else the period un
 
 | File | Layer | Role |
 |---|---|---|
-| `sk-moneybird-accountant/scripts/build-session-context.py` | Script | Writes and checks the session context and prints the route state. |
+| `sk-moneybird-accountant/scripts/build-session-context.py` | Script | Writes the session context. |
 | `sk-moneybird-accountant/references/tax-rules/year-and-state.md` | Shared | Holds the year resolver, the refusal states and the post-cutover predicate. |
 | `sk-moneybird-accountant/references/routing-signals.md` | Shared | Names the signal sources and tie mechanics the router reads. |
 | `sk-moneybird-accountant/ROUTER.md` | Shared | Routes the resolved year and state through the Task-Type Table. |
@@ -52,8 +48,8 @@ The router resolves the year as `year_key`: an explicit year, else the period un
 
 | File | Type | Role |
 |---|---|---|
-| `sk-moneybird-accountant/scripts/session-context-test.sh` | Automated test | Runs the builder against offline fixtures for the clock, the allowlist, the template `fields` rows, staleness and the post-cutover states. |
-| `.github/workflows/plan-kit.yml` | Test harness | Runs the session context suite on push and pull request. |
+| `sk-moneybird-accountant/scripts/session-context-test.sh` | Automated test | Runs the builder against offline fixtures for the clock, the interactive flag, the allowlist, the template `fields` rows and the markdown dashboard table. |
+| `.github/workflows/skill-health.yml` | Test harness | Runs the suite as the `Suite session-context` step on push and pull request. |
 
 ---
 

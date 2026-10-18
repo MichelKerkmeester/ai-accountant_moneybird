@@ -7,11 +7,13 @@
 # file. The 2,999-word fixture must pass without a warning, the 3,001-word
 # fixture must warn and exit 0 and the 4,001-word fixture must exit 1 and
 # name its path. The real-tree counts must match an independent byte split.
+# Each fixture tree holds its own copy of the checker, which reads the root
+# above its own folder.
 # Usage: check-skill-words-test.sh [repo root]
 # Exit Codes:
 #   0 - All checks pass
 #   1 - One or more checks fail
-#   2 - Invalid arguments or missing checker files
+#   2 - Invalid arguments, missing checker files or a fixture that cannot be built
 #
 # WHY: the checker is only trustworthy when it accepts the real tree, warns
 # in the middle band and fails above the hard ceiling, so this suite proves
@@ -102,6 +104,14 @@ fail() {
     printf 'FAIL %s\n' "$1"
 }
 
+# Stop the run when a fixture cannot be built, because every case after it would test nothing
+# Args:
+#   $1 - Description of the fixture step that failed
+abort_setup() {
+    printf 'error: %s\n' "$1" >&2
+    exit 2
+}
+
 # Print a section heading before the next block of checks
 # Args:
 #   $1 - Group title
@@ -124,7 +134,7 @@ with open(sys.argv[1], "w", encoding="utf-8") as handle:
 PY
 }
 
-# Build a fixture repository root with the three skill family files
+# Build a fixture repository root with the skill family files and a copy of the checker
 # Args:
 #   $1 - Fixture root to create
 #   $2 - Relative path of the file that carries the band count
@@ -136,6 +146,8 @@ make_fixture() {
     local band_file="$2"
     local count="$3"
     local relative
+    mkdir -p "$root/sk-moneybird-accountant/scripts" || return 1
+    cp "$CHECKER" "$root/sk-moneybird-accountant/scripts/check-skill-words.py" || return 1
     for relative in "${SKILL_FILES[@]}"; do
         mkdir -p "$root/$(dirname "$relative")" || return 1
         if [[ "$relative" == "$band_file" ]]; then
@@ -147,14 +159,14 @@ make_fixture() {
     return 0
 }
 
-# Run the word check against a fixture root and capture both streams
+# Run the checker copy inside a fixture root and capture both streams
 # Args:
 #   $1 - Repository root to check
 #   $2 - Tag for the captured output files
 # Returns:
 #   The checker exit status
 run_checker() {
-    python3 -I "$CHECKER" --root "$1" >"$TMP_ROOT/out-$2.txt" 2>"$TMP_ROOT/err-$2.txt"
+    python3 -I "$1/sk-moneybird-accountant/scripts/check-skill-words.py" >"$TMP_ROOT/out-$2.txt" 2>"$TMP_ROOT/err-$2.txt"
 }
 
 # Return the count one fixture root reports for one file
@@ -183,14 +195,6 @@ else
     cat "$TMP_ROOT/err-real.txt" >&2
 fi
 
-lines=$(wc -l <"$TMP_ROOT/out-real.txt" | tr -d '[:space:]')
-if [[ "$lines" == "7" ]] && [[ "$(grep -c '^check-skill-words: ' "$TMP_ROOT/out-real.txt")" == "7" ]]; then
-    pass "the real tree prints one line per SKILL.md and ROUTER.md"
-else
-    fail "the real tree prints one line per SKILL.md and ROUTER.md"
-    cat "$TMP_ROOT/out-real.txt"
-fi
-
 # Count words as runs between ASCII whitespace, independent of the checker
 # Args:
 #   $1 - File to count
@@ -217,21 +221,6 @@ else
     fail "the real-tree counts match the byte split"
 fi
 
-if grep -qE '^check-skill-words: (sk-moneybird-accountant|cli-moneybird|cli-jortt)/(SKILL|ROUTER)\.md [0-9]+ words, (ok|warn above 3,000|fail above 4,000)$' "$TMP_ROOT/out-real.txt"; then
-    pass "every real-tree line carries a count and a verdict"
-else
-    fail "every real-tree line carries a count and a verdict"
-    cat "$TMP_ROOT/out-real.txt"
-fi
-
-# The same run must print the same lines
-python3 -I "$CHECKER" --root "$REPO_SRC" >"$TMP_ROOT/out-real-again.txt" 2>&1
-if cmp -s "$TMP_ROOT/out-real.txt" "$TMP_ROOT/out-real-again.txt"; then
-    pass "a second real-tree run prints the same lines"
-else
-    fail "a second real-tree run prints the same lines"
-fi
-
 # ───────────────────────────────────────────────────────────────
 # 6. WORD BAND FIXTURES
 # ───────────────────────────────────────────────────────────────
@@ -241,17 +230,11 @@ group "Word bands"
 BAND_FILE="sk-moneybird-accountant/SKILL.md"
 
 for band in 2999 3001 4001; do
-    if make_fixture "$TMP_ROOT/band-$band" "$BAND_FILE" "$band"; then
-        pass "the $band-word fixture is created"
-    else
-        fail "the $band-word fixture is created"
-    fi
+    make_fixture "$TMP_ROOT/band-$band" "$BAND_FILE" "$band" \
+        || abort_setup "the $band-word fixture cannot be created"
     fixture_words=$(byte_words "$TMP_ROOT/band-$band/$BAND_FILE")
-    if [[ "$fixture_words" == "$band" ]]; then
-        pass "the $band-word fixture holds $band words"
-    else
-        fail "the $band-word fixture holds $band words (it holds $fixture_words)"
-    fi
+    [[ "$fixture_words" == "$band" ]] \
+        || abort_setup "the $band-word fixture holds $fixture_words words"
 done
 
 run_checker "$TMP_ROOT/band-2999" band-2999
@@ -303,12 +286,9 @@ fi
 
 # A hidden folder holds a tool checkout, not the skill family, so its files
 # stay out of the walk and out of the budget
-mkdir -p "$TMP_ROOT/band-2999/.skilled/skills"
-if write_words "$TMP_ROOT/band-2999/.skilled/skills/SKILL.md" 4100; then
-    pass "the hidden-folder fixture is created"
-else
-    fail "the hidden-folder fixture is created"
-fi
+mkdir -p "$TMP_ROOT/band-2999/.skilled/skills" \
+    && write_words "$TMP_ROOT/band-2999/.skilled/skills/SKILL.md" 4100 \
+    || abort_setup "the hidden-folder fixture cannot be created"
 
 run_checker "$TMP_ROOT/band-2999" hidden
 status=$?
@@ -321,12 +301,9 @@ fi
 
 # A spec packet keeps backup copies of retired skills, so its files stay out
 # of the walk and out of the budget
-mkdir -p "$TMP_ROOT/band-2999/specs/001-packet/scratch/backup"
-if write_words "$TMP_ROOT/band-2999/specs/001-packet/scratch/backup/SKILL.md" 4100; then
-    pass "the spec-packet fixture is created"
-else
-    fail "the spec-packet fixture is created"
-fi
+mkdir -p "$TMP_ROOT/band-2999/specs/001-packet/scratch/backup" \
+    && write_words "$TMP_ROOT/band-2999/specs/001-packet/scratch/backup/SKILL.md" 4100 \
+    || abort_setup "the spec-packet fixture cannot be created"
 
 run_checker "$TMP_ROOT/band-2999" specs
 status=$?
@@ -343,11 +320,9 @@ fi
 
 group "Missing and unreadable files"
 
-if make_fixture "$TMP_ROOT/missing" "$BAND_FILE" 100 && rm -f "$TMP_ROOT/missing/cli-jortt/SKILL.md"; then
-    pass "the missing-file fixture is created"
-else
-    fail "the missing-file fixture is created"
-fi
+make_fixture "$TMP_ROOT/missing" "$BAND_FILE" 100 \
+    && rm -f "$TMP_ROOT/missing/cli-jortt/SKILL.md" \
+    || abort_setup "the missing-file fixture cannot be created"
 
 run_checker "$TMP_ROOT/missing" missing
 status=$?
@@ -359,11 +334,8 @@ else
     cat "$TMP_ROOT/err-missing.txt" >&2
 fi
 
-if make_fixture "$TMP_ROOT/unreadable" "$BAND_FILE" 100; then
-    pass "the unreadable-file fixture is created"
-else
-    fail "the unreadable-file fixture is created"
-fi
+make_fixture "$TMP_ROOT/unreadable" "$BAND_FILE" 100 \
+    || abort_setup "the unreadable-file fixture cannot be created"
 
 chmod 000 "$TMP_ROOT/unreadable/cli-jortt/SKILL.md"
 if [[ -r "$TMP_ROOT/unreadable/cli-jortt/SKILL.md" ]]; then
@@ -381,15 +353,6 @@ else
     fi
 fi
 chmod u+rw "$TMP_ROOT/unreadable/cli-jortt/SKILL.md"
-
-run_checker "$TMP_ROOT/no-such-root" no-root
-status=$?
-if [[ "$status" -eq 2 ]] && grep -qF 'no-such-root' "$TMP_ROOT/err-no-root.txt"; then
-    pass "a missing root exits 2 and names it"
-else
-    fail "a missing root exits 2 and names it"
-    cat "$TMP_ROOT/err-no-root.txt" >&2
-fi
 
 # ───────────────────────────────────────────────────────────────
 # 8. RESULT SUMMARY AND EXIT

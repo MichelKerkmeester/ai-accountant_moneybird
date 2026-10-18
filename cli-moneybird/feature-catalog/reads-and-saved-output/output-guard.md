@@ -23,9 +23,9 @@ Saved Moneybird data stays inside the ignored migration workspace and out of the
 
 ## 2. HOW IT WORKS
 
-`--out FILE` accepts an absolute path or a relative path that resolves against the Accountant folder. The resolved file must sit below `migration-workspace/`. The guard checks this before any CLI call and exits 5 for a path outside the workspace, a `..` segment, a symlink anywhere on the way, a file used as a folder or a directory target. The guard refuses `--out` on a passthrough command (`help`, `--help`, `--version`, `administration list`, `administration current` or `administration use <id>`) with exit 2.
+`--out FILE` accepts an absolute path or a relative path that resolves against the Accountant folder. The resolved file must sit below `migration-workspace/`. The guard checks this before any CLI call and exits 5 for a path outside the workspace, a `..` segment, a symlink anywhere on the way, a file used as a folder or a directory target. The guard refuses `--out` on a passthrough command (`administration list`, `administration current` or `administration use <id>`) with exit 2.
 
-On a valid path the guard adds `--output raw`, writes the response to a temporary file in the target folder and moves it into place when the call succeeds. Stdout then shows only `items: N` for an array, `keys:` with the top-level keys for an object or a short no-body message. Without `--out` the guard captures the body to a private temporary file under `migration-workspace/tmp/`, with private folder and file permissions the guard sets, prints the summary and deletes the file. The summary is one line. It shows the byte size and then a record count for a list or the top-level field names for an object. `references/cli.md` shows the line format. Record content does not reach the terminal by default. `--quiet` hides the summary. A failed call removes the temporary file.
+On a valid path the guard adds `--output raw`, writes the response to a temporary file in the target folder and moves it into place when the call succeeds. Stdout then shows only `items: N` for an array, `keys:` with the top-level keys for an object or a short no-body message. Without `--out` the guard captures the body to a private temporary file under `migration-workspace/tmp/`, with private folder and file permissions the guard sets, prints the summary and deletes the file. The summary is one line. It shows the byte size and then a record count for a list or the top-level field names for an object. `references/cli.md` shows the line format. Record content does not reach the terminal by default. A failed call removes the temporary file.
 
 `--print-body` streams the full body to the terminal. It is for the Operator only and agents never use it. The guard refuses it with exit 2 when any agent session marker is set (`CLAUDECODE`, `AI_SESSION_CHILD`, `ACCOUNTANT_AGENT_SESSION` or `CODEX_SANDBOX`) or when `--out` is present. The markers are a speed bump, not a boundary. `--print-body` does not apply to `login-from-env`.
 
@@ -38,7 +38,7 @@ On a valid path the guard adds `--output raw`, writes the response to a temporar
 | File | Layer | Role |
 |---|---|---|
 | [`cli/moneybird-cli/moneybird-guard`](../../cli/moneybird-cli/moneybird-guard) | Script | Validates the path and saves the raw response |
-| [`references/cli.md`](../../references/cli.md) | Shared | Documents --out, --quiet and exit 5 |
+| [`references/cli.md`](../../references/cli.md) | Shared | Documents --out and exit 5 |
 
 ### Validation And Tests
 

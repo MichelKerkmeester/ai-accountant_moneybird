@@ -62,7 +62,7 @@ The CLI supports `list`, `get`, `create`, `update` and `delete` where the spec e
 | `RESOURCE sync` | Reads synchronization IDs and versions when that resource supports synchronization |
 | `RESOURCE sync_fetch --ids JSON` | Fetches a batch of synchronized records |
 
-The CLI's normal success status is zero for an HTTP 2xx response. Its request, route, auth, dependency and non-2xx failures return a nonzero status. Help and version commands return zero. The guard passes through the CLI status except for its own safety exits.
+The CLI's normal success status is zero for an HTTP 2xx response. Its request, route, auth, dependency and non-2xx failures return a nonzero status. The guard passes through the CLI status except for its own safety exits.
 
 ### Login Without an Argument
 
@@ -75,11 +75,11 @@ The CLI's default configuration is `${MONEYBIRD_CONFIG_DIR:-$HOME/.config/moneyb
 ## 3. GUARD COMMAND
 
 ```text
-moneybird-guard [--confirm-write] [--production] [--approval <ref>] [--out FILE] [--print-body] [--quiet] <moneybird-cli args...>
+moneybird-guard [--confirm-write] [--production] [--approval <ref>] [--out FILE] [--print-body] <moneybird-cli args...>
 moneybird-guard login-from-env [--writer]
 ```
 
-Guard flags are recognized anywhere before a literal `--`. Every other CLI argument is passed through. For API calls, the guard adds `--dry-run`, reads the first `METHOD URL` line and classifies the request.
+Guard flags are recognized anywhere in the arguments. Every other CLI argument is passed through. For API calls, the guard adds `--dry-run`, reads the first `METHOD URL` line and classifies the request.
 
 The guard root is always the guard's own repository root, three folders above the script. The CLI binary is always `moneybird-cli` on `PATH`. The writer configuration folder is always `$HOME/.config/moneybird-cli-writer`. The pilot administration ID comes only from the `MONEYBIRD_PILOT_ADMINISTRATION_ID=` line in the root `.env` file.
 
@@ -114,13 +114,13 @@ Any other exit code is passed through from `moneybird-cli`.
 
 A successful write prints the method and path, notes that an immediate GET may be cached and appends a JSONL record with the time, method, path, administration ID, exit status, approval reference, batch key and payload digest. It holds no request or response body. Confirmed write attempts also record their exit status.
 
-Without `--out`, the guard captures the response body to a private temporary file under `migration-workspace/tmp/`. The folder uses mode 700 and the file uses mode 600. The guard prints one summary line and deletes the file. The summary line looks like `response: 2048 bytes, records: 12` for a list or `response: 512 bytes, fields: id,name` for an object. `--quiet` hides the summary. Record content does not reach the terminal by default.
+Without `--out`, the guard captures the response body to a private temporary file under `migration-workspace/tmp/`. The folder uses mode 700 and the file uses mode 600. The guard prints one summary line and deletes the file. The summary line looks like `response: 2048 bytes, records: 12` for a list or `response: 512 bytes, fields: id,name` for an object. Record content does not reach the terminal by default.
 
 `--out FILE` accepts only a file inside `<Accountant root>/migration-workspace/`. The CLI uses `--output raw`. The full body is saved to the file and stdout holds only an item count, the top-level keys or a no-body message, such as `items: 12`.
 
 `--print-body` streams the full body to the terminal. It is for the Operator only. The guard refuses it with exit 2 when any agent session marker is set: `CLAUDECODE`, `AI_SESSION_CHILD`, `ACCOUNTANT_AGENT_SESSION` or `CODEX_SANDBOX`. The markers are a speed bump, not a boundary. Agents never use `--print-body`. `--print-body` with `--out` is refused with exit 2. It does not apply to `login-from-env`.
 
-`--out` on a passthrough command (`help`, `--help`, `--version`, `administration list`, `administration current` and `administration use <id>`) is refused with exit 2.
+`--out` on a passthrough command (`administration list`, `administration current` and `administration use <id>`) is refused with exit 2.
 
 ---
 

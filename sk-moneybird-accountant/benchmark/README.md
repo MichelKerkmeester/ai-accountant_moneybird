@@ -30,24 +30,23 @@ benchmark/
 +-- README.md                    # This guide
 +-- token-baseline.json          # Pinned token counts
 `-- reports/
-    +-- README.md                # Index of completed run folders
-    `-- route-replay/
-        `-- report.md            # Generated resolve-mode route report
+    `-- README.md                # Index of completed run folders
 ```
 
 | Path | Contents |
 |---|---|
-| [`reports/`](./reports/) | Run index plus the generated route replay report |
-| [`reports/route-replay/report.md`](./reports/route-replay/report.md) | Resolve-mode output of the offline route replay |
-| [`token-baseline.json`](./token-baseline.json) | Pinned token counts for the reference corpus, the named units, the overhead rows and the car route |
+| [`reports/`](./reports/) | Run index for completed run folders |
+| [`token-baseline.json`](./token-baseline.json) | Pinned token counts for the reference corpus, the corpus total and the three skill files every request reads |
 
 The manual scenario corpus is in [`manual-testing-playbook/`](../manual-testing-playbook/manual-testing-playbook.md). The corpus is an input and is not rewritten by a run.
+
+The route replay harness keeps no report in this folder. Each run of `../scripts/route-replay/route-replay.py` writes `results.csv` and `report.md` to a fresh temp folder and prints `route-replay: output in <dir>` as its last line. Pass `--out DIR` to write to a folder you name. Copy the files into a dated run folder under `reports/` to keep them.
 
 ---
 
 ## 3. TOKEN BASELINE
 
-`token-baseline.json` is the pinned token measure of the reference corpus. `../scripts/token-baseline.py` writes it, and `--check` compares it. The file holds one row per reference file with its H2 sections, the named units, the overhead rows, the encoding pin and the car route ratio. It carries no timestamp.
+`token-baseline.json` is the pinned token measure of the reference corpus. `../scripts/token-baseline.py` writes it, and `--check` compares it. The file holds one row per reference file with its H2 sections, the corpus total, the three skill files every accountant request reads and the encoding pin. It carries no timestamp.
 
 The read budget ladder, in tokens:
 
@@ -72,12 +71,9 @@ Re-measure rule: on every reference change, run `token-baseline.py` and commit t
 
 ```text
 token-baseline: check ok, 476 files, 1427 sections
-token-baseline: car route ratio: o200k_base 0.2952, cl100k_base 0.2953
 ```
 
-Scannability: `../scripts/scannability-report.py` publishes three metrics in [`reports/scannability/report.md`](./reports/scannability/report.md), each row with its own denominator. Tokens to first answer counts the lead-encoding tokens of the KEY FIGURES section of the first tax figures file a replay row names. Answer position inside the section reports where that section sits among the sections of its file, as a fraction of the file's section count. Section hit rate reports the share of rows whose loaded set holds the section a fact came from, and it needs a section label on every replay row, so while a gold row carries none its row records the labelled row count as its denominator instead of a number. The report reads the same token baseline as the canary, so a drift in either one fails its own check.
-
-Canary: `../scripts/token-canary-test.sh` covers the 2026 car question on the KEY FIGURES route. The proposed route must stay at or under 35 percent of the current route and at or under 8,500 `cl100k_base` tokens, which is 500 tokens above the year README row plus the one section row. A whole-file load fails the gate, and the suite ends with `11 passed, 0 failed`.
+Canary: `../scripts/token-canary-test.sh` proves the gate in a throwaway copy. A swapped encoding file stops the run, a router grown past the request line of 12,000 `o200k_base` tokens fails the check and a reference file edited after the baseline write fails the check by name. The suite ends with `3 passed, 0 failed`.
 
 ---
 
@@ -98,6 +94,15 @@ TIKTOKEN_CACHE_DIR=<cache> python3 -I sk-moneybird-accountant/scripts/token-base
 ```
 
 Expected: `token-baseline: check ok, 476 files, 1427 sections`.
+
+Score the routing corpus offline. Run from the repository root:
+
+```bash
+TIKTOKEN_CACHE_DIR=<cache> python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode resolve
+python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode replay
+```
+
+Expected: `route-replay: ok, 445 rows passed` and `route-replay: ok, 31 replay rows passed`, each followed by a `route-replay: output in <dir>` line that names the folder holding `results.csv` and `report.md`.
 
 ---
 

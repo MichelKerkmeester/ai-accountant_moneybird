@@ -64,7 +64,7 @@ M12 gate: runner ready 1, script sandbox canary pass 1, OS read-boundary canary 
 - [ ] SG-0.3: config fields due by Phase 0 in the Needed by column populated 100%, unapproved threshold rows 0, next expiry date recorded 1.
 - [ ] SG-0.4: the Operator UI completes an approved test auditfile export in Phase 0 1, product version, XAF version and year match the approved request 1, receipt and artifact SHA-256 recorded 1.
 - [ ] SG-0.5: synchronization with timestamp and completion counts or a complete paginated fallback with page counts is verified 1, Operator-approved cache-wait value and source basis recorded 1, Independent Auditor verification 1.
-- [ ] SG-0.6: provider scope evidence shows read-only access 1, a local non-GET `jortt-cli call` without `--allow-write` exits 3 before any token request as documented in `cli-jortt/README.md` 1, API request count 0, real Jortt write calls 0.
+- [ ] SG-0.6: provider scope evidence shows read-only access 1, a local non-GET `jortt-cli call` exits 3 before any token request as documented in `cli-jortt/README.md` 1, API request count 0, real Jortt write calls 0.
 - [ ] SG-0.7: M12 route proof: runner ready 1, script sandbox canary pass 1, OS read-boundary canary pass 1, egress canary pass 1, planted private values blocked 100%, both route canary dispatches complete 2 of 2, agents.* config populated 100%, work units with Verifier PASS or Operator disposition 100%, payload-scan prohibited fields 0, phase-entry boundary canary passed 1, Final review PASS 1.
 <!-- /ANCHOR:completion -->
 

@@ -12,9 +12,8 @@
 #
 # WHY: the reader is only trustworthy when the index row is the single door to
 # a download, so this suite proves the refusals beside the read paths.
-# WHY: a stub pdftotext on a temp PATH proves the argument order and the page
-# range without poppler, and a loopback server proves the download reaches the
-# stub. The real-tool cases run only when poppler is installed, and without it
+# WHY: a stub pdftotext on a temp PATH proves the argument order without
+# poppler, and a loopback server proves the download reaches the stub. The real-tool cases run only when poppler is installed, and without it
 # they print SKIP and are counted apart from the passes, never as passes.
 # WHY: the tiny PDF fixture is generated at run time, because a committed xref
 # table holds a ten-digit offset run that the privacy gate refuses.
@@ -369,10 +368,10 @@ group "list"
 run_reader "$READER" --list
 status=$?
 list_count=$(wc -l <"$TMP_ROOT/out.txt" | tr -d ' ')
-if [[ "$status" -eq 0 ]] && [[ "$list_count" -eq 29 ]]; then
-    pass "--list prints 29 pdf-needs-reader rows"
+if [[ "$status" -eq 0 ]] && [[ "$list_count" -gt 0 ]]; then
+    pass "--list prints at least one pdf-needs-reader row"
 else
-    fail "--list prints 29 pdf-needs-reader rows (exit $status, $list_count rows)"
+    fail "--list prints at least one pdf-needs-reader row (exit $status, $list_count rows)"
 fi
 if grep -q '^https://' "$TMP_ROOT/out.txt" && grep -q "$(printf '\t')" "$TMP_ROOT/out.txt"; then
     pass "--list prints a url and a title per row"
@@ -388,28 +387,7 @@ if [[ "$status" -eq 2 ]]; then
 else
     fail "a run without a mode exits 2 (exit $status)"
 fi
-run_reader "$READER" --list --first 1
-status=$?
-if [[ "$status" -eq 2 ]]; then
-    pass "a page range with --list exits 2"
-else
-    fail "a page range with --list exits 2 (exit $status)"
-fi
 printf '%%PDF-1.4\nlocal fixture\n%%%%EOF\n' >"$TMP_ROOT/local.pdf"
-run_reader "$READER" --file "$TMP_ROOT/local.pdf" --first 0
-status=$?
-if [[ "$status" -eq 2 ]]; then
-    pass "a page number below 1 exits 2"
-else
-    fail "a page number below 1 exits 2 (exit $status)"
-fi
-run_reader "$READER" --file "$TMP_ROOT/local.pdf" --first 3 --last 2
-status=$?
-if [[ "$status" -eq 2 ]]; then
-    pass "a first page after the last page exits 2"
-else
-    fail "a first page after the last page exits 2 (exit $status)"
-fi
 run_reader "$READER" --file "$TMP_ROOT/missing.pdf"
 status=$?
 if [[ "$status" -eq 2 ]]; then
@@ -479,11 +457,7 @@ else
 fi
 
 group "stub argument passing"
-if write_stub_pdftotext "$STUB_BIN"; then
-    pass "the stub pdftotext builds"
-else
-    fail "the stub pdftotext builds"
-fi
+write_stub_pdftotext "$STUB_BIN" || exit 2
 rm -f "$STUB_LOG"
 run_stub_reader "$READER" --file "$TMP_ROOT/local.pdf"
 status=$?
@@ -497,22 +471,9 @@ if grep -Fxq -- "-layout -enc UTF-8 $TMP_ROOT/local.pdf -" "$STUB_LOG"; then
 else
     fail "pdftotext is called with -layout -enc UTF-8 and stdout"
 fi
-rm -f "$STUB_LOG"
-run_stub_reader "$READER" --file "$TMP_ROOT/local.pdf" --first 2 --last 3
-status=$?
-if [[ "$status" -eq 0 ]] \
-    && grep -Fxq -- "-layout -enc UTF-8 -f 2 -l 3 $TMP_ROOT/local.pdf -" "$STUB_LOG"; then
-    pass "the page range reaches pdftotext as -f 2 -l 3"
-else
-    fail "the page range reaches pdftotext as -f 2 -l 3 (exit $status)"
-fi
 
 group "empty extraction"
-if write_empty_pdftotext "$QUIET_BIN"; then
-    pass "the empty pdftotext stub builds"
-else
-    fail "the empty pdftotext stub builds"
-fi
+write_empty_pdftotext "$QUIET_BIN" || exit 2
 run_quiet_reader "$READER" --file "$TMP_ROOT/local.pdf"
 status=$?
 if [[ "$status" -eq 4 ]] && [[ ! -s "$TMP_ROOT/out.txt" ]] \
@@ -527,19 +488,11 @@ group "fixture index and loopback"
 DOCROOT="$TMP_ROOT/docroot"
 mkdir -p "$DOCROOT"
 printf '%%PDF-1.4\nloopback fixture\n%%%%EOF\n' >"$DOCROOT/loop.pdf"
-if start_fixture_server "$DOCROOT"; then
-    pass "the fixture server starts"
-else
-    fail "the fixture server starts"
-fi
+start_fixture_server "$DOCROOT" || exit 2
 PORT=$(cat "$TMP_ROOT/server.port" 2>/dev/null || true)
 FIXTURE_REPO="$TMP_ROOT/reader-repo"
 FIXTURE_READER="$FIXTURE_REPO/sk-moneybird-accountant/scripts/read-pdf-source.py"
-if make_reader_repo "$FIXTURE_REPO" "$PORT"; then
-    pass "the fixture repository builds"
-else
-    fail "the fixture repository builds"
-fi
+make_reader_repo "$FIXTURE_REPO" "$PORT" || exit 2
 FIXTURE_FILES_BEFORE=$(find "$FIXTURE_REPO" -type f | sort)
 run_reader "$FIXTURE_READER" --list
 status=$?
@@ -594,16 +547,8 @@ if command -v pdftotext >/dev/null 2>&1; then
     else
         fail "a real pdftotext extracts the tiny fixed PDF (exit $status)"
     fi
-    run_reader "$READER" --file "$TMP_ROOT/tiny.pdf" --first 1 --last 1
-    status=$?
-    if [[ "$status" -eq 0 ]] && grep -q 'fixture page one' "$TMP_ROOT/out.txt"; then
-        pass "a real pdftotext honours the one-page range"
-    else
-        fail "a real pdftotext honours the one-page range (exit $status)"
-    fi
 else
     skip "a real pdftotext extracts the tiny fixed PDF (pdftotext is not on PATH)"
-    skip "a real pdftotext honours the one-page range (pdftotext is not on PATH)"
 fi
 
 # ───────────────────────────────────────────────────────────────

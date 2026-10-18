@@ -17,9 +17,7 @@ A digest is the sha256 of the page text after normalisation: script and style
 blocks and every tag are removed, entities are unescaped and whitespace is
 collapsed. A PDF row hashes the raw bytes, so it needs no reader. An entity tag
 is stored as the sha256 of the header value with a `sha256:` prefix, so a raw
-tag holding a long digit run never reaches a committed file. A stored tag
-without that prefix is hashed when it is read, so an index or a state file
-written earlier still compares.
+tag holding a long digit run never reaches a committed file.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/build-source-library.py
@@ -28,8 +26,6 @@ Usage:
     python3 -I sk-moneybird-accountant/scripts/build-source-library.py --apply-report <file>
     python3 -I sk-moneybird-accountant/scripts/build-source-library.py --watch [--state <file>]
     python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-calendar [--today YYYY-MM-DD]
-    python3 -I sk-moneybird-accountant/scripts/build-source-library.py --trace <file>:<line>
-    python3 -I sk-moneybird-accountant/scripts/build-source-library.py --write-term-map
 
 Options:
     --check       Verify the index without writing it. Reports every cited URL
@@ -37,8 +33,9 @@ Options:
                   cited row recorded dead, a perishable Tweede Kamer download
                   address without a pending kst marker and a count in the
                   guide's section 1 table that disagrees with the index. It
-                  also fails a term map row whose resolved source_file does
-                  not hold the term and its source.
+                  also fails a term map row whose source_file names no file
+                  under the skill root or does not hold the term and its
+                  source.
     --check-links Fetch every row a plain fetch can reach and print a JSON
                   report with the status, the digest, the retrieval date, the
                   entity tag fingerprint and the last modification date per
@@ -76,21 +73,12 @@ Options:
                   and the checkpoint dates from the rollover runbook. Exits 1
                   when a current or future year is older than the latest passed
                   checkpoint or carries no stamp. Offline.
-    --trace       Print the index result for every URL on one line of one file,
-                  and fail on a dead, unchecked or unindexed URL. It reads only
-                  a file the scan reads, refuses a private path and prints each
-                  URL without its query string and fragment.
-    --write-term-map Rewrite assets/term-map.json with every source_file
-                  resolved to a file under the skill root. A stored path that
-                  repeats a folder is collapsed, the resolved file must hold
-                  the term and its source, and the map is left untouched on a
-                  failure.
 
 Output:
     sk-moneybird-accountant/assets/source-library.json and a summary on stdout.
     --check-links prints only its JSON report. --watch exits 0 when nothing
     changed, 1 when a series changed or no watched URL could be checked and 2
-    on a usage error. --trace exits 2 for a refused or unscanned file.
+    on a usage error.
 """
 
 # ───────────────────────────────────────────────────────────────
@@ -126,12 +114,6 @@ ROLLOVER_PATH = os.path.join(REFERENCES_DIR, "tax-rules", "year-rollover.md")
 
 # WHY: an allowlist of scan roots keeps the private folders out by construction.
 SCAN_ROOTS = ("AGENTS.md", "README.md", "sk-moneybird-accountant", "cli-jortt", "cli-moneybird")
-
-# WHY: the trace reads one file by name, so it refuses the two private
-# locations and the credential files the way the PDF reader does.
-PROTECTED_SEGMENTS = ("personal database", "migration-workspace")
-PROTECTED_NAMES = (".privacy-denylist",)
-PROTECTED_PREFIXES = (".env",)
 
 # WHY: a year topic is split into four part files, and listing each part in
 # cited_by grew the index past the privacy gate's file size limit. The topic
@@ -201,9 +183,6 @@ GUIDE_COUNT_MEASURES = (
     ("Added after the last access check", "unchecked"),
 )
 
-# Cadences a watched series may carry.
-CADENCES = ("monthly", "yearly", "on-publication")
-
 # A browser-like agent is what public hosts answer without a challenge.
 USER_AGENT = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
               "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
@@ -216,9 +195,6 @@ DIGEST_MAX_BYTES = 24 * 1024 * 1024
 
 # Rows a plain fetch cannot reach, so the link check reports them as skipped.
 SKIP_FETCH_ACCESS = ("endpoint", "webfetch-only")
-
-# Access values that fail the trace, beside a URL the index does not hold.
-TRACE_FAIL_ACCESS = ("dead", "unchecked")
 
 # WHY: a host that turns this client away still serves the page to others, so
 # a refusal is its own result and never a missing page.
@@ -235,7 +211,6 @@ ETAG_PREFIX = "sha256:"
 
 # The checkpoint table sits under this header in the rollover runbook.
 CHECKPOINT_HEADER = ("Checkpoint", "Date", "Refresh")
-DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 YEAR_RE = re.compile(r"^\d{4}$")
 
 # A Tweede Kamer download address is perishable, so a file may cite it only
@@ -263,7 +238,6 @@ FRONTMATTER_ALLOWED = frozenset(
         "contextType",
         "version",
         "checked_on",
-        "_memory",
     )
 )
 FRONTMATTER_FIELD_RE = re.compile(r"^([A-Za-z_][A-Za-z0-9_-]*):")
@@ -274,7 +248,7 @@ CLI_DOCUMENTS = ("cli-moneybird/SKILL.md", "cli-jortt/SKILL.md")
 BOOTSTRAP_DOCUMENT = "AGENTS.md"
 CLI_FRONTMATTER_REQUIRED = ("name", "description", "allowed-tools", "version", "nav_label")
 CLI_FRONTMATTER_ALLOWED = frozenset(
-    ("name", "description", "allowed-tools", "version", "nav_label", "license")
+    ("name", "description", "allowed-tools", "version", "nav_label")
 )
 TERM_MAP_PATH = os.path.join(SKILL_ROOT, "assets", "term-map.json")
 GENERATED_START_RE = re.compile(r"^<!-- GENERATED:([a-z0-9][a-z0-9._-]*):start -->$")
@@ -429,23 +403,18 @@ def digest_page(body: bytes, kind: str) -> str:
     return hashlib.sha256(payload).hexdigest()
 
 
-def etag_fingerprint(value: Any) -> Optional[str]:
-    """Reduce an entity tag to the fingerprint the index stores.
+def etag_fingerprint(value: Optional[str]) -> Optional[str]:
+    """Reduce an entity tag header to the fingerprint the index stores.
 
     Args:
-        value: Raw entity tag, or a fingerprint read from the index or the
-            state file.
+        value: Raw ETag header value, or None when the response had none.
 
     Returns:
-        None when the value is missing or not text. The value itself when it
-        already carries the prefix. Otherwise the prefix followed by the
-        sha256 hex of the value, so a raw tag from an older file still
-        compares.
+        None when the header is missing or empty. Otherwise the prefix
+        followed by the sha256 hex of the value.
     """
-    if not isinstance(value, str) or not value:
+    if not value:
         return None
-    if value.startswith(ETAG_PREFIX):
-        return value
     return ETAG_PREFIX + hashlib.sha256(value.encode("utf-8")).hexdigest()
 
 
@@ -626,44 +595,6 @@ def build_text(found: Dict[str, Dict[str, Any]], stored: Dict[str, Dict[str, Any
 # 5. FRONTMATTER, TERM MAP AND GLOSS CHECKS
 # ───────────────────────────────────────────────────────────────
 
-def resolve_source_file(source_file: Any) -> Optional[str]:
-    """Resolve one stored source_file to a path under the skill root.
-
-    The stored value is relative to the skill root. A value that repeats a
-    folder, as a doubled references/tax-rules segment does, is collapsed
-    before it is resolved, so the producer can repair a stored path without
-    inventing a new attribution.
-
-    Args:
-        source_file: Stored value.
-
-    Returns:
-        The path relative to the skill root, or None when no normalized
-        candidate is a file.
-    """
-    if not isinstance(source_file, str) or not source_file:
-        return None
-    parts = [part for part in source_file.replace("\\", "/").split("/") if part not in ("", ".")]
-    if not parts or ".." in parts:
-        return None
-    collapsed: List[str] = []
-    for part in parts:
-        if not collapsed or collapsed[-1] != part:
-            collapsed.append(part)
-    candidates = [parts]
-    if collapsed != parts:
-        candidates.append(collapsed)
-    for candidate in candidates:
-        for start in range(len(candidate)):
-            text = "/".join(candidate[start:])
-            if not text:
-                continue
-            absolute = os.path.abspath(os.path.join(SKILL_ROOT, text))
-            if os.path.isfile(absolute) and absolute.startswith(SKILL_ROOT + os.sep):
-                return os.path.relpath(absolute, SKILL_ROOT).replace(os.sep, "/")
-    return None
-
-
 def checked_cited_files(stored: Dict[str, Dict[str, Any]]) -> List[str]:
     """List the citing paths of every source that was checked.
 
@@ -728,7 +659,6 @@ def one_frontmatter_problems(
     stored: Dict[str, Dict[str, Any]],
     checked_cited: List[str],
     kind: str,
-    require_block: bool,
 ) -> List[str]:
     """List the field-set problems of one markdown file.
 
@@ -737,7 +667,6 @@ def one_frontmatter_problems(
         stored: Index rows keyed by URL.
         checked_cited: Result of checked_cited_files().
         kind: "reference" or "cli".
-        require_block: True when the file must carry a frontmatter block.
 
     Returns:
         One problem line per missing, unknown or unsupported field.
@@ -750,12 +679,7 @@ def one_frontmatter_problems(
         fail("cannot read %s: %s" % (relative, exc))
     lines = text.splitlines()
     if not lines or lines[0].strip() != "---":
-        # WHY: a reference file without a frontmatter block carries no field
-        # set, so it is left out. The three CLI documents must carry one, so
-        # a silently absent block is reported by name there.
-        if require_block:
-            return ["field-set: %s has no frontmatter block" % relative]
-        return []
+        return ["field-set: %s has no frontmatter block" % relative]
     fields: List[str] = []
     closed = False
     for line in lines[1:]:
@@ -800,45 +724,26 @@ def frontmatter_problems(stored: Dict[str, Dict[str, Any]]) -> List[str]:
     problems: List[str] = []
     checked_cited = checked_cited_files(stored)
     for path in reference_files():
-        problems += one_frontmatter_problems(path, stored, checked_cited, "reference", False)
+        problems += one_frontmatter_problems(path, stored, checked_cited, "reference")
     bootstrap = os.path.join(REPO_ROOT, BOOTSTRAP_DOCUMENT)
     if os.path.isfile(bootstrap):
-        problems += one_frontmatter_problems(bootstrap, stored, checked_cited, "reference", False)
+        problems += one_frontmatter_problems(bootstrap, stored, checked_cited, "reference")
     for document in CLI_DOCUMENTS:
         path = os.path.join(REPO_ROOT, document)
         if os.path.isfile(path):
-            problems += one_frontmatter_problems(path, stored, checked_cited, "cli", True)
+            problems += one_frontmatter_problems(path, stored, checked_cited, "cli")
     return problems
-
-
-def top_layer_documents() -> List[str]:
-    """List the top-layer documents the field-set check covers.
-
-    Returns:
-        The bootstrap document and the two CLI documents that exist.
-    """
-    found: List[str] = []
-    bootstrap = os.path.join(REPO_ROOT, BOOTSTRAP_DOCUMENT)
-    if os.path.isfile(bootstrap):
-        found.append(bootstrap)
-    for document in CLI_DOCUMENTS:
-        path = os.path.join(REPO_ROOT, document)
-        if os.path.isfile(path):
-            found.append(path)
-    return found
 
 
 def term_map_rows() -> List[Dict[str, Any]]:
     """Read the sourced term map.
 
     Returns:
-        The term rows, empty when the tree holds no map.
+        The term rows.
 
     Raises:
-        SystemExit: If the file cannot be read or holds invalid JSON.
+        SystemExit: If the file is missing, unreadable or holds invalid JSON.
     """
-    if not os.path.isfile(TERM_MAP_PATH):
-        return []
     try:
         with open(TERM_MAP_PATH, "r", encoding="utf-8") as handle:
             data = json.load(handle)
@@ -849,12 +754,12 @@ def term_map_rows() -> List[Dict[str, Any]]:
     return [row for row in data.get("terms", []) if isinstance(row, dict)]
 
 
-def source_file_problem(row: Dict[str, Any], resolved: str) -> Optional[str]:
-    """Tell why a resolved source_file does not back its term map row.
+def source_file_problem(row: Dict[str, Any], source_file: str) -> Optional[str]:
+    """Tell why a source_file does not back its term map row.
 
     Args:
         row: Term map row with a term and a source.
-        resolved: Path of the resolved file, relative to the skill root.
+        source_file: Stored path of the file, relative to the skill root.
 
     Returns:
         The problem line, or None when the file names the term and cites the
@@ -866,16 +771,16 @@ def source_file_problem(row: Dict[str, Any], resolved: str) -> Optional[str]:
     term = row.get("term")
     name = term if isinstance(term, str) and term else "unnamed term"
     try:
-        with open(os.path.join(SKILL_ROOT, resolved), "r", encoding="utf-8", errors="replace") as handle:
+        with open(os.path.join(SKILL_ROOT, source_file), "r", encoding="utf-8", errors="replace") as handle:
             body = handle.read()
     except OSError as exc:
-        fail("cannot read %s: %s" % (resolved, exc))
+        fail("cannot read %s: %s" % (source_file, exc))
     # WHY: an English-first label writes the term in lowercase, as in "return (aangifte)".
     if isinstance(term, str) and term and term.lower() not in body.lower():
-        return "term-map: %s source_file does not name the term: %s" % (name, resolved)
+        return "term-map: %s source_file does not name the term: %s" % (name, source_file)
     source = row.get("source")
     if isinstance(source, str) and source and source not in body:
-        return "term-map: %s source_file does not cite its source: %s" % (name, resolved)
+        return "term-map: %s source_file does not cite its source: %s" % (name, source_file)
     return None
 
 
@@ -884,10 +789,9 @@ def term_map_problems() -> List[str]:
 
     Returns:
         One problem line per entry without a term, a gloss, a source or a
-        resolvable source_file, and per entry whose resolved file does not
-        hold the term and its source. This is the test --write-term-map
-        applies, so a path that only resolves by suffix, a gloss that no Dutch
-        source uses and a path that names no file never land.
+        source_file, per entry whose source_file names no file under the
+        skill root and per entry whose file does not hold the term and its
+        source.
     """
     problems: List[str] = []
     for row in term_map_rows():
@@ -904,80 +808,14 @@ def term_map_problems() -> List[str]:
         if not isinstance(source_file, str) or not source_file:
             problems.append("term-map: %s has no source_file" % name)
         else:
-            resolved = resolve_source_file(source_file)
-            if resolved is None:
+            absolute = os.path.abspath(os.path.join(SKILL_ROOT, source_file))
+            if not (absolute.startswith(SKILL_ROOT + os.sep) and os.path.isfile(absolute)):
                 problems.append("term-map: %s source_file does not exist: %s" % (name, source_file))
                 continue
-            contained = source_file_problem(row, resolved)
+            contained = source_file_problem(row, source_file)
             if contained is not None:
                 problems.append(contained)
     return problems
-
-
-def write_term_map() -> int:
-    """Rewrite the term map with every source_file resolved.
-
-    The producer keeps the authored term, gloss and source of a row and
-    rewrites only its source_file, so the path a previous run wrote is the
-    only value that changes. A path that does not resolve, or a resolved file
-    that does not hold the term and its source, fails the run and writes
-    nothing.
-
-    Returns:
-        Zero on success.
-
-    Raises:
-        SystemExit: When the map is missing or a row does not resolve.
-    """
-    relative = os.path.relpath(TERM_MAP_PATH, REPO_ROOT)
-    if not os.path.isfile(TERM_MAP_PATH):
-        fail("no term map: %s" % relative)
-    try:
-        with open(TERM_MAP_PATH, "r", encoding="utf-8") as handle:
-            document = json.load(handle)
-    except (OSError, json.JSONDecodeError) as exc:
-        fail("cannot read %s: %s" % (relative, exc))
-    if not isinstance(document, dict) or not isinstance(document.get("terms"), list):
-        fail("%s holds no term list" % relative)
-    repaired = 0
-    for row in document["terms"]:
-        if not isinstance(row, dict):
-            fail("the term map holds a row that is not an object")
-        term = row.get("term")
-        name = term if isinstance(term, str) and term else "unnamed term"
-        resolved = resolve_source_file(row.get("source_file"))
-        if resolved is None:
-            fail("term-map: %s source_file does not resolve: %s" % (name, row.get("source_file")))
-        contained = source_file_problem(row, resolved)
-        if contained is not None:
-            fail(contained)
-        if row.get("source_file") != resolved:
-            row["source_file"] = resolved
-            repaired += 1
-    document["generated_by"] = GENERATOR
-    text = json.dumps(document, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
-    current = None
-    try:
-        with open(TERM_MAP_PATH, "r", encoding="utf-8", newline="") as handle:
-            current = handle.read()
-    except OSError as exc:
-        fail("cannot read %s: %s" % (relative, exc))
-    if current == text:
-        print(
-            "term-map: unchanged, %d rows, %d paths repaired"
-            % (len(document["terms"]), repaired)
-        )
-        return 0
-    try:
-        with open(TERM_MAP_PATH, "w", encoding="utf-8", newline="\n") as handle:
-            handle.write(text)
-    except OSError as exc:
-        fail("cannot write %s: %s" % (relative, exc))
-    print(
-        "term-map: wrote %s, %d rows, %d paths repaired"
-        % (relative, len(document["terms"]), repaired)
-    )
-    return 0
 
 
 def generated_block(text: str, block_id: str) -> Optional[str]:
@@ -1168,15 +1006,15 @@ def generated_bodies(path: str) -> List[str]:
     return bodies
 
 
-def gloss_problems() -> Tuple[int, int, List[str]]:
-    """Measure the first-use glosses of every generated table.
+def gloss_problems() -> List[str]:
+    """Check the first-use glosses of every generated table.
 
     A first use counts once per mapped term and per generated table. It is
     glossed when the term text is followed by its map gloss in parentheses.
 
     Returns:
-        The glossed count, the first-use count and one problem line per
-        first use without its gloss.
+        One problem line per first use without its gloss and per inserted
+        gloss that no term-map row explains.
     """
     terms = term_map_rows()
     pairs = sorted(
@@ -1189,8 +1027,6 @@ def gloss_problems() -> Tuple[int, int, List[str]]:
         ),
         key=lambda pair: (-len(pair[0]), pair[0]),
     )
-    glossed = 0
-    total = 0
     problems: List[str] = []
     for path in reference_files():
         relative = os.path.relpath(path, REPO_ROOT)
@@ -1201,13 +1037,10 @@ def gloss_problems() -> Tuple[int, int, List[str]]:
                 match = re.search(r"(?<!\w)" + re.escape(term) + r"(?!\w)", body)
                 if match is None:
                     continue
-                total += 1
-                if body[match.end():match.end() + len(gloss) + 3] == " (%s)" % gloss:
-                    glossed += 1
-                else:
+                if body[match.end():match.end() + len(gloss) + 3] != " (%s)" % gloss:
                     problems.append("gloss: %s first use of %s carries no gloss" % (relative, term))
     problems += unowned_gloss_problems(pairs)
-    return glossed, total, problems
+    return problems
 
 
 # ───────────────────────────────────────────────────────────────
@@ -1269,12 +1102,12 @@ def guide_count_problems(stored: Dict[str, Dict[str, Any]]) -> List[str]:
         stored: Result of load_index().
 
     Returns:
-        One problem line per measure that disagrees. A guide without the table
-        is left alone, and a guide that states one measure must state them all,
-        because a half-refreshed table is drift as well.
+        One problem line per measure that disagrees. A guide must state every
+        measure, because a half-refreshed table is drift as well.
+
+    Raises:
+        SystemExit: With code 2 when the guide cannot be read.
     """
-    if not os.path.isfile(GUIDE_PATH):
-        return []
     try:
         with open(GUIDE_PATH, "r", encoding="utf-8", errors="replace") as handle:
             text = handle.read()
@@ -1297,10 +1130,6 @@ def guide_count_problems(stored: Dict[str, Dict[str, Any]]) -> List[str]:
             break
         value = cells[1].replace(",", "").strip()
         stated[cells[0]] = int(value) if value.isdigit() else None
-    # WHY: a fixture guide without the table is not this check's business, but
-    # one stated measure means the table is in play and must agree in full.
-    if not stated:
-        return []
     problems = []
     for label, access in GUIDE_COUNT_MEASURES:
         if label not in stated:
@@ -1345,8 +1174,7 @@ def check_index(found: Dict[str, Dict[str, Any]], stored: Dict[str, Dict[str, An
     problems += guide_count_problems(stored)
     problems += frontmatter_problems(stored)
     problems += term_map_problems()
-    glossed, first_uses, gloss_lines = gloss_problems()
-    problems += gloss_lines
+    problems += gloss_problems()
     current = None
     if os.path.isfile(INDEX_PATH):
         with open(INDEX_PATH, "r", encoding="utf-8", newline="") as handle:
@@ -1358,11 +1186,6 @@ def check_index(found: Dict[str, Dict[str, Any]], stored: Dict[str, Dict[str, An
             print(problem)
         return 1
     print("%d sources match the index" % len(cited))
-    print("gloss measure: glossed %d of %d strict first uses" % (glossed, first_uses))
-    print(
-        "field-set report: %d reference files and %d top-layer documents carry the required fields"
-        % (len(reference_files()), len(top_layer_documents()))
-    )
     return 0
 
 
@@ -1465,15 +1288,10 @@ def apply_report(path: str) -> int:
         row["http_status"] = entry.get("http_status")
         row["checked_on"] = checked_on
         if result == "ok":
-            for key in ("digest", "retrieved_at", "last_modified"):
+            for key in ("digest", "retrieved_at", "etag", "last_modified"):
                 value = entry.get(key)
                 if value is not None:
                     row[key] = value
-            # WHY: a report from an earlier run may hold a raw header value, so
-            # the index always stores the fingerprint of it.
-            etag = etag_fingerprint(entry.get("etag"))
-            if etag is not None:
-                row["etag"] = etag
         updated += 1
     expected = render_index(document["sources"])
     current = None
@@ -1500,7 +1318,7 @@ def apply_report(path: str) -> int:
     return 0
 
 # ───────────────────────────────────────────────────────────────
-# 7. LINK CHECK AND TRACE
+# 7. LINK CHECK
 # ───────────────────────────────────────────────────────────────
 
 class PermanentRedirectHandler(urllib.request.HTTPRedirectHandler):
@@ -1710,111 +1528,6 @@ def check_links(stored: Dict[str, Dict[str, Any]]) -> int:
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 1 if summary["failures"] else 0
 
-
-def checked_trace_path(path: str) -> str:
-    """Resolve a --trace path and refuse anything the scan does not read.
-
-    Args:
-        path: File path as given on the command line.
-
-    Returns:
-        The absolute path with every symlink resolved.
-
-    Raises:
-        SystemExit: With code 2 when the given path or its resolved target
-        names a private folder or a credential file, or when the resolved file
-        is not one of the files the scan reads.
-    """
-    absolute = os.path.normpath(os.path.join(REPO_ROOT, path))
-    # WHY: a symlink with a harmless name can point at a private file, so the
-    # guard checks the given path and the path every link resolves to.
-    resolved = os.path.realpath(absolute)
-    for candidate in (absolute, resolved):
-        name = os.path.basename(candidate).casefold()
-        parts = [part.casefold() for part in candidate.replace(os.sep, "/").split("/") if part]
-        if name in PROTECTED_NAMES or name.startswith(PROTECTED_PREFIXES):
-            fail("refused, that path is private: %s" % path)
-        if any(part in PROTECTED_SEGMENTS for part in parts):
-            fail("refused, that path is private: %s" % path)
-    # WHY: the trace prints cited URLs from the file it reads, so the scan
-    # allowlist is the only set it may open. One message covers a missing file
-    # and an unscanned one, so the answer never tells whether a file exists.
-    root = os.path.realpath(REPO_ROOT)
-    scanned = {os.path.realpath(candidate) for candidate in markdown_files()}
-    if resolved not in scanned or not resolved.startswith(root + os.sep):
-        fail("no such file in this repository among the scanned markdown files: %s" % path)
-    return resolved
-
-
-def display_url(url: str) -> str:
-    """Cut the query string and the fragment off a URL before it is printed.
-
-    Args:
-        url: Cleaned URL.
-
-    Returns:
-        The URL up to the first question mark or number sign, because a query
-        string can carry a token and the trace output lands in logs.
-    """
-    return re.split(r"[?#]", url, maxsplit=1)[0]
-
-
-def trace_line(target: str, stored: Dict[str, Dict[str, Any]]) -> int:
-    """Print the index result for every URL on one line of one file.
-
-    Args:
-        target: File path and line number, as <file>:<line>.
-        stored: Result of load_index().
-
-    Returns:
-        Zero when every cited URL is usable, one when one is dead, unchecked
-        or missing from the index.
-
-    Raises:
-        SystemExit: With code 2 on a usage error or a refused path.
-    """
-    path, separator, number_text = target.rpartition(":")
-    if not separator or not number_text.isdigit() or int(number_text) < 1:
-        fail("usage: --trace <file>:<line>")
-    line_number = int(number_text)
-    resolved = checked_trace_path(path)
-    with open(resolved, "r", encoding="utf-8", errors="replace") as handle:
-        lines = handle.readlines()
-    if line_number > len(lines):
-        fail("%s has no line %d" % (path, line_number))
-    # WHY: badges and donation links never enter the index, so the trace ignores them too.
-    urls = []
-    for raw in URL_RE.findall(lines[line_number - 1]):
-        url = clean_url(raw)
-        if not is_skipped(url) and url not in urls:
-            urls.append(url)
-    print("%s:%d" % (os.path.relpath(os.path.join(REPO_ROOT, path), REPO_ROOT), line_number))
-    if not urls:
-        print("no URLs on that line")
-        return 0
-    problems = []
-    for url in urls:
-        row = stored.get(url)
-        if row is None:
-            print("%s access=missing http_status=- checked_on=-" % display_url(url))
-            problems.append("missing")
-            continue
-        access = row.get("access", "unchecked")
-        status = row.get("http_status")
-        print("%s access=%s http_status=%s checked_on=%s" % (
-            display_url(url),
-            access,
-            status if status is not None else "-",
-            row.get("checked_on") or "-",
-        ))
-        if access in TRACE_FAIL_ACCESS:
-            problems.append(access)
-    if problems:
-        print("failed: %d of %d URLs (%s)" % (len(problems), len(urls), ", ".join(sorted(set(problems)))))
-        return 1
-    print("%d URLs, all usable" % len(urls))
-    return 0
-
 # ───────────────────────────────────────────────────────────────
 # 8. WATCH
 # ───────────────────────────────────────────────────────────────
@@ -1823,7 +1536,7 @@ def load_watchlist() -> List[Dict[str, Any]]:
     """Read the watched series from the source watchlist.
 
     Returns:
-        The list of series, each with a name, URLs, a cadence and a reason.
+        The list of series, each with a name, URLs and a reason.
 
     Raises:
         SystemExit: With code 2 when the file is missing or invalid.
@@ -1835,14 +1548,9 @@ def load_watchlist() -> List[Dict[str, Any]]:
             data = json.load(handle)
     except (OSError, ValueError) as exc:
         fail("cannot read the watchlist: %s" % exc)
-    if isinstance(data, list):
-        series = data
-    elif isinstance(data, dict):
-        series = data.get("series")
-    else:
-        series = None
-    if not isinstance(series, list) or not series:
+    if not isinstance(data, list) or not data:
         fail("the watchlist holds no series")
+    series = data
     for entry in series:
         if not isinstance(entry, dict):
             fail("a watched series is not an object")
@@ -1852,8 +1560,6 @@ def load_watchlist() -> List[Dict[str, Any]]:
         urls = entry.get("urls")
         if not isinstance(urls, list) or not urls or not all(isinstance(url, str) for url in urls):
             fail("watched series %r has no URL list" % name)
-        if entry.get("cadence") not in CADENCES:
-            fail("watched series %r has cadence %r" % (name, entry.get("cadence")))
     return series
 
 
@@ -1878,7 +1584,7 @@ def load_state(path: Optional[str]) -> Dict[str, Dict[str, Any]]:
         fail("cannot read the state file: %s" % exc)
     if not isinstance(data, dict):
         fail("the state file is not an object")
-    urls = data.get("urls", data)
+    urls = data.get("urls")
     if not isinstance(urls, dict):
         fail("the state file holds no URL map")
     for url, values in urls.items():
@@ -1937,9 +1643,6 @@ def watch(state_path: Optional[str], stored: Dict[str, Dict[str, Any]]) -> int:
                 recorded = stored[url]
             else:
                 recorded = state.get(url) or {}
-            if is_endpoint(url) or recorded.get("access") in SKIP_FETCH_ACCESS:
-                print("skipped series=%s url=%s reason=%s" % (name, url, recorded.get("access") or "endpoint"))
-                continue
             fetched = fetch_page(url, guess_type(url))
             fetched_count += 1
             status = fetched["status"]
@@ -1958,10 +1661,7 @@ def watch(state_path: Optional[str], stored: Dict[str, Dict[str, Any]]) -> int:
             if 200 <= status < 300:
                 if recorded.get("access") == "dead" or recorded.get("http_status") == 404:
                     reasons.append("answers 200 after 404")
-                # WHY: the stored value may be a raw tag from an older index,
-                # so both sides are compared as fingerprints.
-                if recorded.get("etag") and fetched["etag"] \
-                        and etag_fingerprint(recorded["etag"]) != etag_fingerprint(fetched["etag"]):
+                if recorded.get("etag") and fetched["etag"] and recorded["etag"] != fetched["etag"]:
                     reasons.append("etag changed")
                 if recorded.get("last_modified") and fetched["last_modified"] \
                         and recorded["last_modified"] != fetched["last_modified"]:
@@ -1982,7 +1682,7 @@ def watch(state_path: Optional[str], stored: Dict[str, Dict[str, Any]]) -> int:
                 # stays and a later 200 can still be compared.
                 state[url] = {
                     "http_status": status,
-                    "etag": fetched["etag"] if fetched["etag"] is not None else etag_fingerprint(recorded.get("etag")),
+                    "etag": fetched["etag"] if fetched["etag"] is not None else recorded.get("etag"),
                     "last_modified": fetched["last_modified"] if fetched["last_modified"] is not None else recorded.get("last_modified"),
                     "digest": fetched["digest"] if fetched["digest"] is not None else recorded.get("digest"),
                     "retrieved_at": fetched["retrieved_at"] if fetched["retrieved_at"] is not None else recorded.get("retrieved_at"),
@@ -2018,8 +1718,6 @@ def load_checkpoints() -> Optional[List[Tuple[str, datetime.date]]]:
         One (name, date) pair per checkpoint, or None when the runbook, its
         header row or every dated row is missing.
     """
-    if not os.path.isfile(ROLLOVER_PATH):
-        return None
     try:
         with open(ROLLOVER_PATH, "r", encoding="utf-8", errors="replace") as handle:
             lines = handle.readlines()
@@ -2148,16 +1846,6 @@ def main(argv: List[str]) -> int:
         action="store_true",
         help="check the year files against the rollover calendar",
     )
-    mode.add_argument(
-        "--trace",
-        metavar="<file>:<line>",
-        help="print the index result for the URLs on one line of one file",
-    )
-    mode.add_argument(
-        "--write-term-map",
-        action="store_true",
-        help="rewrite assets/term-map.json with every source_file resolved",
-    )
     parser.add_argument(
         "--state",
         metavar="<file>",
@@ -2173,8 +1861,6 @@ def main(argv: List[str]) -> int:
         fail("usage: --state needs --watch")
     if args.today and not args.check_calendar:
         fail("usage: --today needs --check-calendar")
-    if args.write_term_map:
-        return write_term_map()
     if args.check_calendar:
         return check_calendar(args.today)
     stored = load_index()
@@ -2186,8 +1872,6 @@ def main(argv: List[str]) -> int:
         return check_links(stored)
     if args.apply_report:
         return apply_report(args.apply_report)
-    if args.trace:
-        return trace_line(args.trace, stored)
     found = scan()
     expected = build_text(found, stored)
     if args.check:

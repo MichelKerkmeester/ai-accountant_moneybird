@@ -20,7 +20,6 @@ Modes:
     --self-test-patterns    Run the built-in pattern checks
 
 Options:
-    --config-ref <rev>      Read the rules from this revision
     --trusted-code          The running copy is the remote anchor copy
     --transcript <file>     With --answer, also check the loaded context
 
@@ -62,7 +61,6 @@ DENYLIST_FILE = ".privacy-denylist"
 APPROVAL_ENV = "PRIVACY_GATE_CHANGE_APPROVED"
 MIN_TERM_LENGTH = 4
 TRUSTED_CODE = "--trusted-code"
-CONFIG_REF = "--config-ref"
 GATE_SCRIPT = "scripts/privacy-gate.py"
 GATE_TRAILER = "Privacy-Gate-Change: approved"
 
@@ -94,11 +92,14 @@ IDENTITY_SUFFIX = "@users.noreply.github.com"
 # Assembled so this file scans clean under its own email rule.
 IDENTITY_EXACT = "noreply@" + "github.com"
 
+# Rename detection is off because a rename lists only its destination, which
+# would hide the gate file it removes.
 GIT_CONFIG = [
     "-c", "core.quotepath=false",
     "-c", "color.ui=false",
     "-c", "diff.noprefix=false",
     "-c", "diff.mnemonicPrefix=false",
+    "-c", "diff.renames=false",
 ]
 
 # ───────────────────────────────────────────────────────────────
@@ -202,21 +203,21 @@ def usage() -> NoReturn:
         "usage: python3 -I scripts/privacy-gate.py\n"
         "       (--staged|--push <remote>|--tree|--history|"
         "--message <file>|--answer <file>|--self-test-patterns)\n"
-        "       [--config-ref <rev>] [--trusted-code] [--transcript <file>]\n"
+        "       [--trusted-code] [--transcript <file>]\n"
     )
     sys.exit(2)
 
 
 def parse_args(
     argv: List[str],
-) -> Tuple[str, Optional[str], Optional[str], bool, Optional[str]]:
-    """Return the mode, its argument, the config ref, the code flag and the transcript.
+) -> Tuple[str, Optional[str], bool, Optional[str]]:
+    """Return the mode, its argument, the code flag and the transcript.
 
     Args:
         argv: The full command line, the program name included.
 
     Returns:
-        Tuple of (mode, argument, config ref, trusted code flag, transcript).
+        Tuple of (mode, argument, trusted code flag, transcript).
 
     Raises:
         SystemExit: When the arguments do not match a known mode.
@@ -231,15 +232,6 @@ def parse_args(
             usage()
         rest.remove(TRUSTED_CODE)
         trusted_code = True
-    config_ref = None
-    if CONFIG_REF in rest:
-        if mode not in (TREE, HISTORY):
-            usage()
-        index = rest.index(CONFIG_REF)
-        if index + 1 >= len(rest):
-            usage()
-        config_ref = rest[index + 1]
-        del rest[index:index + 2]
     transcript = None
     if TRANSCRIPT in rest:
         if mode != ANSWER:
@@ -255,13 +247,13 @@ def parse_args(
     if mode == PUSH:
         # The remote name is new. An older hook may still call without it, so
         # the fall back is every remote instead of a silent skip.
-        return mode, argument, config_ref, trusted_code, transcript
+        return mode, argument, trusted_code, transcript
     if mode in (MESSAGE, ANSWER):
         if argument is None:
             usage()
-        return mode, argument, config_ref, trusted_code, transcript
+        return mode, argument, trusted_code, transcript
     if mode in (STAGED, TREE, HISTORY, SELF_TEST) and argument is None:
-        return mode, argument, config_ref, trusted_code, transcript
+        return mode, argument, trusted_code, transcript
     usage()
 
 # ───────────────────────────────────────────────────────────────
@@ -1081,8 +1073,8 @@ def list_tree(root: str, rev: str) -> List[Tuple[str, str, str]]:
 def parse_name_status(raw: bytes) -> List[str]:
     """Return the paths of a `diff-tree --name-status -z` listing.
 
-    With -z the record is `status NUL path NUL`. A tab separated token is
-    accepted as well so a format change cannot turn into an empty path list.
+    With -z the record is `status NUL path NUL`. A tab inside a path is part of
+    the path, because the pair rule consumes the path token whole.
 
     Args:
         raw: Raw bytes of the listing
@@ -1097,12 +1089,6 @@ def parse_name_status(raw: bytes) -> List[str]:
         token = tokens[index]
         if not token or token == b"\n":
             index += 1
-            continue
-        if b"\t" in token:
-            fields = token.split(b"\t")
-            index += 1
-            if len(fields) >= 2:
-                paths.append(fields[1].decode("utf-8", "replace"))
             continue
         status = token.decode("utf-8", "replace")
         if STATUS_RE.match(status) and index + 1 < len(tokens):
@@ -2059,7 +2045,7 @@ def main(argv: List[str]) -> int:
     Raises:
         SystemExit: When the arguments, the repository or the rules are unusable
     """
-    mode, argument, config_ref, trusted_code, transcript = parse_args(argv)
+    mode, argument, trusted_code, transcript = parse_args(argv)
     if mode == SELF_TEST:
         return run_self_test()
 
@@ -2073,7 +2059,7 @@ def main(argv: List[str]) -> int:
             if status is not None:
                 return status
     else:
-        anchor = config_ref or "HEAD"
+        anchor = "HEAD"
     config = load_config(root, anchor)
     present, denylist, ignored_terms = load_denylist(root)
     checker = Checker(config, denylist)

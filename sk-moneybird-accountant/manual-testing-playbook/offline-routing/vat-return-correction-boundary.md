@@ -45,7 +45,7 @@ A correction at or below the boundary belongs in the next regular return while a
 
 1. Read AGENTS.md
 2. Read sk-moneybird-accountant/SKILL.md
-3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py --check
+3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py
 4. Read sk-moneybird-accountant/references/vat-return/README.md, sk-moneybird-accountant/references/vat-return/year-end-and-corrections.md and sk-moneybird-accountant/references/tax-rules/2026/vat/figures.md
 5. Name the next regular return for the correction below the boundary and the supplementary return route for the correction above it, assemble the review pack and stop before any filing action
 

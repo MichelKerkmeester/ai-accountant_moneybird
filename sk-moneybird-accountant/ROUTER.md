@@ -77,11 +77,8 @@ Per-row routes:
 
 ### Ties and Abstain
 
-- `ROUTE_MARGIN = 0.25`, with a 0.08 warning band.
-- `FALLBACK_FLOOR = 0.5`, frozen on the calibration split.
+- `ROUTE_MARGIN = 0.25`.
 - A tie with no deciding clause abstains through tier B.
-- Margin override T2: `default`
-- Margin override T6: `default`
 
 ### Year and State
 

@@ -32,7 +32,7 @@ Before the rules run the checker blanks the places where Dutch is data: frontmat
 
 ### The output and the CI route
 
-The run prints one sorted line per problem as path, line, rule and term, then the count line, for example `0 problems`. `--summary` prints one count per rule instead. It exits 0 on a clean corpus, 1 when a problem remains and 2 on a usage error, and it makes no network call. The skill health workflow runs `check-english-first-test.sh`, which ends with the real corpus, so a new unlabelled term fails the job.
+The run prints one sorted line per problem as path, line, rule and term, then the count line, for example `0 problems`. It exits 0 on a clean corpus, 1 when a problem remains and 2 on a usage error, and it makes no network call. The skill health workflow runs `check-english-first-test.sh`, which ends with the real corpus, so a new unlabelled term fails the job.
 
 ---
 
@@ -50,7 +50,7 @@ The run prints one sorted line per problem as path, line, rule and term, then th
 
 | File | Type | Role |
 |---|---|---|
-| `sk-moneybird-accountant/scripts/check-english-first-test.sh` | Automated test | Proves each rule on a bad and a fixed fixture, every mask, the prompt masks in a playbook folder and not in a reference file, the exceptions file, byte stability and the summary, then runs the checker on the real corpus. |
+| `sk-moneybird-accountant/scripts/check-english-first-test.sh` | Automated test | Proves each rule on a bad and a fixed fixture, every mask, the prompt masks in a playbook folder and not in a reference file, the exceptions file and byte stability, then runs the checker on the real corpus. |
 | `.github/workflows/skill-health.yml` | Test harness | Runs the suite as the `Suite check-english-first` step on push and pull request. |
 
 ---
@@ -62,6 +62,5 @@ The run prints one sorted line per problem as path, line, rule and term, then th
 - Feature file path: quality-gates/english-first-check.md
 
 Related references:
-- [outline-check.md](outline-check.md) - The sibling wording check over the year and general topic files.
 - [fragment-link-check.md](fragment-link-check.md) - The structural check that keeps relabelled headings linkable.
 - [repository-ci-gates.md](repository-ci-gates.md) - The CI workflows that run the suite.

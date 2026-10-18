@@ -29,7 +29,7 @@ Operators run the exact prompt and command sequence for `JRT-015` and confirm th
 - Objective: Confirm a failed request prints only the HTTP status and safe labels and appends the full response to a private workspace log.
 - Real user request: `Trigger one safe Jortt API error and show me that only the status and field names print.`
 - Prompt: `Trigger one safe Jortt API error and show me that only the status and field names print.`
-- Expected execution process: The agent confirms the operator approved a live read, sends one GET to a path that does not exist, then reads the log tail and the log mode.
+- Expected execution process: The agent confirms the operator approved a live read, sends one GET for a customer ID that does not exist, then reads the log tail and the log mode.
 - Expected signals: Step 1: exit 1 and a stderr line of the form `jortt-cli: HTTP 4xx` with only safe field or code labels after it, naming `migration-workspace/logs/jortt-errors.log`. Step 2: the log tail holds the probe URL and the full response. Step 3: the mode prints as 600. No response free text and no record content appears on the terminal.
 - Desired user-visible outcome: The operator sees a safe terminal line, the full response in the private log and a 600 mode on that log.
 - Pass/fail: PASS if step 1 exits 1 with a status-only line, step 2 shows the full response in the log and step 3 prints 600, FAIL if response free text or record content prints on the terminal, the exit code is another value or the log is missing or has another mode.
@@ -44,14 +44,14 @@ Operators run the exact prompt and command sequence for `JRT-015` and confirm th
 
 ### Commands
 
-1. `bash: jortt-cli get /v3/playbook-error-probe`
+1. `bash: jortt-cli call get-customer-by-id --customer_id playbook-error-probe`
 2. `bash: tail -n 5 migration-workspace/logs/jortt-errors.log`
 3. `bash: stat -c '%a' migration-workspace/logs/jortt-errors.log || stat -f '%Lp' migration-workspace/logs/jortt-errors.log`
 
 ### Expected
 
 - Step 1: exit 1 with `jortt-cli: HTTP 4xx` and only safe field or code labels after the status, and a note that names `migration-workspace/logs/jortt-errors.log`.
-- Step 2: the log tail holds `GET https://api.jortt.nl/v3/playbook-error-probe` and the full response body.
+- Step 2: the log tail holds `GET https://api.jortt.nl/customers/playbook-error-probe` and the full response body.
 - Step 3: `600`. No response free text and no record content appears on the terminal.
 
 ### Evidence
@@ -66,7 +66,7 @@ The stderr line and exit code, the log tail and the printed mode. Do not copy re
 ### Failure Triage
 
 1. Mark the scenario SKIP with the blocker named when live credentials are unavailable or not approved.
-2. On exit 6, refresh the token per `references/troubleshooting.md`. On another status, confirm the probe path is the one written in step 1.
+2. On exit 6, refresh the token per `references/troubleshooting.md`. On another status, confirm the probe call is the one written in step 1.
 
 ---
 

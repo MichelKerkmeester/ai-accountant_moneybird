@@ -110,8 +110,8 @@ Main flow for a push:
 | `python3 -I scripts/privacy-gate.py --push <remote> [--trusted-code]` | CLI | Scans the commits a push sends, with refs on stdin. The `pre-push` hook runs it. `--trusted-code` marks the running copy as the remote's anchor copy, so the gate does not re-run it. The gate passes the flag itself when it re-runs that copy |
 | `python3 -I scripts/privacy-gate.py --message <file>` | CLI | Scans a commit message before the commit exists. The `commit-msg` hook runs it |
 | `python3 -I scripts/privacy-gate.py --answer <file> [--transcript <file>]` | CLI | Scans a drafted answer, and the context it was written from, before it is sent. Any hit blocks the answer. An amount passes only when the answer cites an amount-allowed reference that holds the same figure |
-| `python3 -I scripts/privacy-gate.py --tree [--config-ref <rev>]` | CLI | Scans every tracked file at `HEAD`. `--config-ref <rev>` reads the rules from that revision instead of `HEAD` |
-| `python3 -I scripts/privacy-gate.py --history [--config-ref <rev>]` | CLI | Scans every commit, message and tag in history. `--config-ref <rev>` reads the rules from that revision instead of `HEAD` |
+| `python3 -I scripts/privacy-gate.py --tree` | CLI | Scans every tracked file at `HEAD` |
+| `python3 -I scripts/privacy-gate.py --history` | CLI | Scans every commit, message and tag in history |
 | `python3 -I scripts/privacy-gate.py --self-test-patterns` | CLI | Checks the detection patterns against generated values |
 | `bash scripts/install-hooks.sh` | CLI | Installs the hooks once per clone |
 

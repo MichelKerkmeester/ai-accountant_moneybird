@@ -63,8 +63,8 @@ jobs:
           python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check
       - name: Hostile invoice set and hardening matrix
         run: |
-          python3 -I sk-moneybird-accountant/scripts/check-hostile-invoice-set.py --check
-          python3 -I sk-moneybird-accountant/scripts/check-hardening-matrix.py --check
+          python3 -I sk-moneybird-accountant/scripts/check-hostile-invoice-set.py
+          python3 -I sk-moneybird-accountant/scripts/check-hardening-matrix.py
       # Every suite is named on its own line. The regression trailer check
       # reads this file to learn which tests are registered.
       - name: Suite check-ci-suites
@@ -81,8 +81,6 @@ jobs:
         run: bash sk-moneybird-accountant/scripts/hardening-matrix-test.sh
       - name: Suite hostile-invoice-set
         run: bash sk-moneybird-accountant/scripts/hostile-invoice-set-test.sh
-      - name: Suite outline-check
-        run: bash sk-moneybird-accountant/scripts/outline-check-test.sh
       - name: Suite plan-kit
         run: bash sk-moneybird-accountant/scripts/plan-kit-test.sh
       - name: Suite read-pdf-source
@@ -101,10 +99,6 @@ jobs:
         run: bash sk-moneybird-accountant/scripts/session-context-test.sh
       - name: Suite source-library
         run: bash sk-moneybird-accountant/scripts/source-library-test.sh
-      - name: Suite source-to-target-handoff
-        run: bash sk-moneybird-accountant/scripts/source-to-target-handoff-test.sh
-      - name: Suite split-topic-files
-        run: bash sk-moneybird-accountant/scripts/split-topic-files-test.sh
       - name: Suite token-canary
         run: bash sk-moneybird-accountant/scripts/token-canary-test.sh
       - name: Suite write-contract

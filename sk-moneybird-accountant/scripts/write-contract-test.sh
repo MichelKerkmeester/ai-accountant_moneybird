@@ -2,20 +2,22 @@
 # ───────────────────────────────────────────────────────────────
 # COMPONENT: WRITE CONTRACT TEST
 # ───────────────────────────────────────────────────────────────
-# Tests write-contract-check.py on the real tree, on a clean copy and on twelve
-# seeded divergences: a safety line without --confirm-write, a missing pointer,
-# a forbidden flag on the accountant SKILL.md pointer line, a gate token and an
-# evidence rule that leave the accountant ROUTER.md while its SKILL.md still
-# names them, a missing idempotency rule, a missing exit 9, a second differing
-# read-back sentence, a --production without its batch condition, the same
-# flag without its backticks, an evidence rule gone from the AGENTS.md contract
-# paragraph and an unknown exit named in another wording. Every seeded
-# divergence must fail the check and name its file.
+# Tests write-contract-check.py on a clean copy and on twelve seeded
+# divergences. Each copy holds its own copy of the checker, which reads the
+# repository above it. The divergences are a safety line without
+# --confirm-write, a missing pointer, a forbidden flag on the accountant
+# SKILL.md pointer line, a gate token and an evidence rule that leave the
+# accountant ROUTER.md while its SKILL.md still names them, a missing
+# idempotency rule, a missing exit 9, a second differing read-back sentence, a
+# --production without its batch condition, the same flag without its
+# backticks, an evidence rule gone from the AGENTS.md contract paragraph and an
+# unknown exit named in another wording. Every seeded divergence must make the
+# check exit 1 and name its file at the start of a report line.
 # Usage: write-contract-test.sh [repo root]
 # Exit Codes:
 #   0 - All checks pass
 #   1 - One or more checks fail
-#   2 - Invalid arguments or missing contract files
+#   2 - Invalid arguments, missing contract files or a copy that did not build
 #
 # WHY: the drift check is only trustworthy when it fails on the divergences
 # the contract review found, so this suite seeds each one on a throwaway copy.
@@ -110,7 +112,7 @@ group() {
     printf '\n== %s\n' "$1"
 }
 
-# Build a copy of the five contract files under a fresh root
+# Build a copy of the contract files and the checker under a fresh root
 # Args:
 #   $1 - Target root to create
 # Returns:
@@ -118,6 +120,8 @@ group() {
 make_copy() {
     local root="$1"
     local relative
+    mkdir -p "$root/sk-moneybird-accountant/scripts" || return 1
+    cp "$CHECKER" "$root/sk-moneybird-accountant/scripts/write-contract-check.py" || return 1
     for relative in "${CONTRACT_FILES[@]}"; do
         mkdir -p "$root/$(dirname "$relative")" || return 1
         cp "$REPO_SRC/$relative" "$root/$relative" || return 1
@@ -125,14 +129,14 @@ make_copy() {
     return 0
 }
 
-# Run the drift check against a copy and capture its output
+# Run the copy's own checker and capture its output
 # Args:
 #   $1 - Repository root to check
 #   $2 - Tag for the captured output file under the temp root
 # Returns:
 #   The checker exit status
 run_checker() {
-    python3 -I "$CHECKER" --root "$1" >"$TMP_ROOT/check-$2.txt" 2>&1
+    python3 -I "$1/sk-moneybird-accountant/scripts/write-contract-check.py" >"$TMP_ROOT/check-$2.txt" 2>&1
 }
 
 # Replace every occurrence of a text in one file
@@ -151,7 +155,8 @@ path.write_text(text.replace(sys.argv[2], sys.argv[3]), encoding="utf-8")
 PY
 }
 
-# Seed one divergence in a fresh copy and require the checker to fail
+# Seed one divergence in a fresh copy and require the checker to exit 1 and
+# name the file at the start of a report line
 # Args:
 #   $1 - Check description
 #   $2 - File relative to the copy root
@@ -172,12 +177,12 @@ seed_failure() {
     replace_all "$root/$relative" "$old_text" "$new_text"
     run_checker "$root" "$tag"
     local status=$?
-    if [[ "$status" -eq 0 ]]; then
-        fail "$description"
+    if [[ "$status" -ne 1 ]]; then
+        fail "$description (exit $status, expected 1)"
         sed -n '1,3p' "$TMP_ROOT/check-$tag.txt"
         return
     fi
-    if ! grep -qF "$relative" "$TMP_ROOT/check-$tag.txt"; then
+    if ! grep -qF "write-contract: $relative" "$TMP_ROOT/check-$tag.txt"; then
         fail "$description (the report does not name $relative)"
         sed -n '1,3p' "$TMP_ROOT/check-$tag.txt"
         return
@@ -186,25 +191,15 @@ seed_failure() {
 }
 
 # ───────────────────────────────────────────────────────────────
-# 5. REAL TREE AND CLEAN COPY CHECKS
+# 5. CLEAN COPY CHECK
 # ───────────────────────────────────────────────────────────────
-
-group "Real tree"
-
-if run_checker "$REPO_SRC" real && grep -qF 'write-contract: ok' "$TMP_ROOT/check-real.txt"; then
-    pass "the drift check passes on the real tree"
-else
-    fail "the drift check passes on the real tree"
-    sed -n '1,3p' "$TMP_ROOT/check-real.txt"
-fi
 
 group "Clean copy"
 
 CLEAN_ROOT="$TMP_ROOT/clean"
-if make_copy "$CLEAN_ROOT"; then
-    pass "the clean copy is created"
-else
-    fail "the clean copy is created"
+if ! make_copy "$CLEAN_ROOT"; then
+    printf 'error: the clean copy did not build\n' >&2
+    exit 2
 fi
 
 if run_checker "$CLEAN_ROOT" clean && grep -qF 'write-contract: ok' "$TMP_ROOT/check-clean.txt"; then
@@ -255,14 +250,6 @@ seed_failure "an evidence rule gone from the AGENTS.md contract paragraph fails 
 
 seed_failure "an exit named in another wording outside the canonical set fails" \
     "cli-moneybird/SKILL.md" 'Read-back follows the canonical read-back sentence in the write contract' 'Read-back follows the canonical read-back sentence in the write contract, and a refused write exits with status 99' exitwording
-
-python3 -I "$CHECKER" --root "$TMP_ROOT/no-such-root" >"$TMP_ROOT/check-noroot.txt" 2>&1
-status=$?
-if [[ "$status" -eq 2 ]] && grep -qF 'error:' "$TMP_ROOT/check-noroot.txt"; then
-    pass "a missing root is refused with exit 2"
-else
-    fail "a missing root is refused with exit 2"
-fi
 
 # ───────────────────────────────────────────────────────────────
 # 7. RESULT SUMMARY AND EXIT

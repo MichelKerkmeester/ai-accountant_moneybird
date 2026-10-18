@@ -15,9 +15,7 @@ version: 1.0.0.0
 
 `cli-jortt/scripts/` holds the local doctor for the Jortt skill. Nothing here calls Jortt unless you ask for it.
 
-`doctor.sh` checks command availability, CLI location, spec cache state and whether the named Jortt settings are present in the environment or the configured `.env` file. It reads those settings in memory and prints set or unset status only. By default it makes no network call.
-
-Pass `--live` only when you want the `whoami` check. It calls the Jortt API when the client values and the local CLI are present.
+`doctor.sh` checks command availability, CLI location, spec cache state and whether the named Jortt settings are present in the environment or the configured `.env` file. It reads those settings in memory and prints set or unset status only. It makes no network call. Run `jortt-cli whoami` for a live check.
 
 ---
 
@@ -25,7 +23,7 @@ Pass `--live` only when you want the `whoami` check. It calls the Jortt API when
 
 | File | Responsibility |
 |---|---|
-| `doctor.sh` | Reports Bash, curl, jq and CLI availability, the three named Jortt settings, whether the configured scopes contain `:write` and the OpenAPI cache state. It exits 0 offline and adds `whoami` with `--live` |
+| `doctor.sh` | Reports Bash, curl, jq and CLI availability, the three named Jortt settings, whether the configured scopes contain `:write` and the OpenAPI cache state. It exits 0 and makes no network call |
 
 ---
 
@@ -38,12 +36,6 @@ bash cli-jortt/scripts/doctor.sh
 ```
 
 Expected result: a read-only diagnostic report that ends with `Mode: offline. No network calls were made.` The doctor reports whether `.env` exists and checks only the three named settings. The CLI itself can read the configured environment file when an API call needs credentials.
-
-```bash
-bash cli-jortt/scripts/doctor.sh --live
-```
-
-Expected result: the same offline report plus the `whoami` result when the client values and the local CLI are present.
 
 ---
 

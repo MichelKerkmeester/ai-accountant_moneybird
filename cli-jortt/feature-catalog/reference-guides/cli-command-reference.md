@@ -45,7 +45,6 @@ The reference states each command, its flags and its output shape, then the conf
 | File | Type | Role |
 |---|---|---|
 | [`manual-testing-playbook/auth-and-scopes/write-lock.md`](../../manual-testing-playbook/auth-and-scopes/write-lock.md) | Manual playbook | JRT-002 confirms the gate codes and messages offline. |
-| [`manual-testing-playbook/extraction/raw-get-path-guard.md`](../../manual-testing-playbook/extraction/raw-get-path-guard.md) | Manual playbook | JRT-009 confirms the raw GET guards offline. |
 
 ---
 
