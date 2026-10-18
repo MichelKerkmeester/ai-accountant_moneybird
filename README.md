@@ -6,7 +6,7 @@
 
 > Like it? https://buymeacoffee.com/michelkerkmeester
 
----
+&nbsp;
 
 ## 1. 📝 SUMMARY
 
@@ -25,7 +25,7 @@ The assistant prepares and explains. It never files a return and never gives fin
 - **A privacy gate** - stops names, amounts, account numbers and other personal data from reaching a commit or an outside model
 - **Offline checks** - the tools and the skill are tested without an accounting login
 
----
+&nbsp;
 
 ## 2. 💼 WHAT IT HELPS WITH
 
@@ -41,7 +41,7 @@ The assistant prepares and explains. It never files a return and never gives fin
 
 Ask in English or Dutch. A request to file, submit, pay or lock a period is refused, and the assistant explains what you need to do yourself.
 
----
+&nbsp;
 
 ## 3. 🗺️ HOW IT WORKS
 
@@ -66,7 +66,7 @@ Your request
 
 The routes are written in one place, the Task-Type Table in section 2 of [`sk-moneybird-accountant/ROUTER.md`](sk-moneybird-accountant/ROUTER.md). If the task is unclear, the assistant asks one question instead of guessing. It takes the tax year from the system clock before it uses any rate or threshold, never from a date written in a document.
 
----
+&nbsp;
 
 ## 4. 🚀 QUICK START
 
@@ -86,7 +86,7 @@ Then switch on the privacy gate and add your own private terms:
 bash scripts/install-hooks.sh
 ```
 
-This points Git at the repo's `.githooks/` and creates `.privacy-denylist`. Put your name variants, client and supplier names, IBANs, KvK, VAT and BSN numbers, address and email there, one per line. Git ignores that file and it stays on your machine.
+This points Git at the repo's `.githooks/` and creates `.privacy-denylist`. Put your client and supplier names, IBANs, KvK, VAT and BSN numbers, home address and private email addresses there, one per line. Your own name needs no entry. Git ignores that file and it stays on your machine.
 
 ### Install the two CLIs
 
@@ -122,7 +122,7 @@ Help me review my current Moneybird bookkeeping.
 
 For historical work, name the migration task or the last gate that passed. If the mode or phase is unclear, the assistant asks before it picks a route.
 
----
+&nbsp;
 
 ## 5. 🇳🇱 DUTCH TAX KNOWLEDGE
 
@@ -134,7 +134,7 @@ The tax knowledge lives in [`references/tax-rules/`](sk-moneybird-accountant/ref
 
 Three procedures turn that knowledge into a prepared deliverable: the [VAT return](sk-moneybird-accountant/references/vat-return/README.md), the [yearly overview](sk-moneybird-accountant/references/yearly-overview/README.md) and the [income tax return](sk-moneybird-accountant/references/income-tax-return/README.md). Each one ends with a pack for your review, not a filing.
 
----
+&nbsp;
 
 ## 6. 🛤️ MIGRATION MODE
 
@@ -163,7 +163,7 @@ bash sk-moneybird-accountant/scripts/init-workspace.sh
 
 This builds the git-ignored `migration-workspace/` with every folder the plan uses, a `MIGRATION_CONFIG.json` with each field marked `PENDING` and a phase dashboard. It also copies the spec-kit template packet `specs/000-migration-template/` to the git-ignored `specs/001-migration/`: a phase parent plus one Level 3 packet per phase, each with a spec, plan, tasks, acceptance criteria, decision record, implementation summary and nested goal. Fill the bracketed placeholders with your own context as you work each phase. The script never overwrites a file you already filled in, so you can run it again safely. Add `--spec-name 002-my-books` to pick another packet name and `--dry-run` to see what it would create.
 
----
+&nbsp;
 
 ## 7. 🔁 ADAPTING TO ANOTHER TOOL OR MARKET
 
@@ -187,7 +187,7 @@ The assistant is built from parts with one job each. The routing, the human deci
 
 The offline checks then show what still points at the old tool or market: broken links, route rows without a reference and gold routing cases that no longer resolve.
 
----
+&nbsp;
 
 ## 8. 🔒 SAFETY AND PRIVACY
 
@@ -305,7 +305,7 @@ No. A connection needs separate current evidence from the relevant CLI. The defa
 
 Not as it ships. The tax knowledge covers the Dutch sole-trader system. Section 7 lists the parts to replace for another country.
 
----
+&nbsp;
 
 ## 12. 🔧 TROUBLESHOOTING
 
@@ -366,7 +366,7 @@ The Jortt API does not provide them. Download them yourself from the Jortt UI.
 - **[→ Source Library](sk-moneybird-accountant/references/tax-rules/source-library.md)** - every external source the skills cite, by authority, with how an agent can reach it
 - **[→ Jortt to Moneybird Mapping](sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md)** - concept matches and migration traps
 
----
+&nbsp;
 
 ## 14. 📄 LICENSE
 
