@@ -21,7 +21,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-At session start `scripts/build-session-context.py` writes `session-context.json` at the repository root. The router reads that one file. It never opens a path under `migration-workspace/`. Git ignores the generated file, so it never ships with the skill.
+At session start `scripts/build-session-context.py` writes `session-context.json` at the repository root. `AGENTS.md` runs it when the file is missing, and a context with no year makes the agent ask for the year. The router reads that one file. It never opens a path under `migration-workspace/`. Git ignores the generated file, so it never ships with the skill.
 
 The file holds an allowlist of field names, dates, gate numbers and enum statuses. It carries the clock, the `interactive` flag and a narrow migration projection. The generator is the only reader of the migration config and the phase dashboard.
 

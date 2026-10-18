@@ -53,7 +53,7 @@ The year rules behind steps 6 to 9 are in the year files, for example [Income ta
 
 One row per input on the official return checklist plus the business figures (cijfers) list. The evidence class is Moneybird, the books outside Moneybird, the year corpus or the Operator and the pre-filled tax return (vooraf ingevulde aangifte). A Moneybird row names what the guarded read shows. Every figure is a link into the year corpus and never copied here.
 
-| Return part or figure | Where it comes from | Evidence class | Year file that owns the rule |
+| Return part or figure | Where it comes from | Evidence class | Year file that owns the rule, for example the 2026 file |
 |---|---|---|---|
 | Commercial result and profit and loss categories | Moneybird profit and loss statement (resultatenrekening) with its category reports | Moneybird | [The year README](../tax-rules/2026/README.md) |
 | Balance-sheet lines | Moneybird balance sheet (balans) computed from all bookings, period-end figures | Moneybird | [The year README](../tax-rules/2026/README.md) |

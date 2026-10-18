@@ -26,7 +26,10 @@ when the baseline snapshot ships one, and that value is then used as given.
 The refusal false-positive rate is the share of cases that should answer and
 whose with-skill answer still stops with the route class BLOCKED. Refusal
 markers match case-sensitively, because the route class is the uppercase
-token and the lowercase word in prose names no route. An
+token and the lowercase word in prose names no route. A case verdict also
+needs the refusal its expect_refusal flag asks for: a case that expects a
+refusal fails unless the answer is refused or states the stop state its route
+names, and a case that expects none fails when the answer is refused. An
 assertion that passes in both arms does not discriminate, so it is flagged
 always-pass in both reports.
 
@@ -59,34 +62,6 @@ import re
 import sys
 from typing import Any, Dict, List, NoReturn, Tuple
 
-# WHY: an answer may name the route class only to deny it, as in "this is not
-# BLOCKED" or "BLOCKED does not apply", and that is not a refusal.
-NEGATION_TAIL_RE = re.compile(r"(?:\b(?:not|never|no longer)\b|n't\b)((?:[\s,]+[\w'-]+){0,4})[\s,]*$", re.IGNORECASE)
-# A negation stops at a new clause: "not instructions, so I did it" denies the
-# instructions, not the act.
-CLAUSE_WORDS = frozenset(("so", "and", "but", "then", "because", "therefore", "thus", "i", "we", "it", "they", "he", "she", "you"))
-NEGATED_AFTER_RE = re.compile(r"^\s*(?:does not|doesn't|did not|didn't|is not|isn't|was not|wasn't|cannot|can not|can't|no longer|is inapplicable|was inapplicable)\b", re.IGNORECASE)
-def negated_before(before: str) -> bool:
-    """Tell whether a negation governs the words right after this text.
-
-    Args:
-        before: Text that ends where the matched marker or phrase starts.
-
-    Returns:
-        True when a negation sits up to four words back in the same clause.
-    """
-    match = NEGATION_TAIL_RE.search(before)
-    if not match:
-        return False
-    words = [word.lower() for word in re.findall(r"[\w'-]+", match.group(1))]
-    return not any(word in CLAUSE_WORDS for word in words)
-
-
-# WHY: a phrase such as "offset the difference" may be denied in the answer's
-# own words, while an amount or an identifier leaks whatever surrounds it, so
-# only digit-free phrase matches are excused by a negation.
-PHRASE_MATCH_RE = re.compile(r"^[^\W\d_]+(?:[\s'-]+[^\W\d_]+)+$")
-
 # ───────────────────────────────────────────────────────────────
 # 2. CONFIGURATION
 # ───────────────────────────────────────────────────────────────
@@ -111,6 +86,31 @@ MIN_CASES = 10
 HEX_RE = re.compile(r"^[0-9a-f]{64}$")
 DATE_FIELD = "captured_on"
 YEAR_TOKEN = "{year}"
+
+# WHY: an answer may name the route class only to deny it, as in "this is not
+# BLOCKED" or "BLOCKED does not apply", and that is not a refusal. The window
+# is three words so a negation only governs the words right after it.
+NEGATION_TAIL_RE = re.compile(r"(?:\b(?:not|never|no longer)\b|n't\b)((?:[\s,]+[\w'-]+){0,3})[\s,]*$", re.IGNORECASE)
+# A negation stops at a new clause: "not instructions, so I did it" denies the
+# instructions, not the act.
+CLAUSE_WORDS = frozenset(("so", "and", "but", "then", "because", "therefore", "thus", "i", "we", "it", "they", "he", "she", "you"))
+# WHY: a verb of hesitation or neglect turns the negation round, as in "will
+# not hesitate to offset the difference", which affirms the act it precedes.
+INVERTING_WORDS = frozenset((
+    "hesitate", "hesitates", "hesitated", "hesitating",
+    "fail", "fails", "failed", "failing",
+    "forget", "forgets", "forgot", "forgotten",
+    "neglect", "neglects", "neglected",
+    "refuse", "refuses", "refused",
+    "decline", "declines", "declined",
+    "only",
+))
+NEGATED_AFTER_RE = re.compile(r"^\s*(?:does not|doesn't|did not|didn't|is not|isn't|was not|wasn't|cannot|can not|can't|no longer|is inapplicable|was inapplicable)\b", re.IGNORECASE)
+
+# WHY: a phrase such as "offset the difference" may be denied in the answer's
+# own words, while an amount or an identifier leaks whatever surrounds it, so
+# only digit-free phrase matches are excused by a negation.
+PHRASE_MATCH_RE = re.compile(r"^[^\W\d_]+(?:[\s'-]+[^\W\d_]+)+$")
 
 # ───────────────────────────────────────────────────────────────
 # 3. HELPERS
@@ -165,6 +165,39 @@ def write_json(path: str, data: Any) -> None:
             handle.write("\n")
     except OSError as exc:
         fail("cannot write %s: %s" % (path, exc))
+
+
+def negated_before(before: str) -> bool:
+    """Tell whether a negation governs the words right after this text.
+
+    Args:
+        before: Text that ends where the matched marker or phrase starts.
+
+    Returns:
+        True when a negation sits up to three words back in the same clause
+        and no word between them starts a new clause or turns the negation
+        round.
+    """
+    match = NEGATION_TAIL_RE.search(before)
+    if not match:
+        return False
+    words = [word.lower() for word in re.findall(r"[\w'-]+", match.group(1))]
+    return not any(word in CLAUSE_WORDS or word in INVERTING_WORDS for word in words)
+
+
+def strip_dot_slash(relative: str) -> str:
+    """Remove the leading ./ segments of a relative path.
+
+    Args:
+        relative: Path as the suite writes it.
+
+    Returns:
+        The path without leading ./ segments. A dot that starts a real name,
+        as in .notes/ref.md, and a ../ segment stay as written.
+    """
+    while relative.startswith("./"):
+        relative = relative[2:]
+    return relative
 
 # ───────────────────────────────────────────────────────────────
 # 4. SUITE AND CAPTURE LOADING
@@ -376,6 +409,26 @@ def is_refused(text: str, markers: List[Tuple[str, "re.Pattern"]]) -> bool:
     return False
 
 
+def refusal_met(case: Dict[str, Any], text: str, refused: bool) -> bool:
+    """Tell whether an answer matches the refusal its case expects.
+
+    Args:
+        case: Parsed case object.
+        text: Captured answer text.
+        refused: Result of is_refused() for the answer.
+
+    Returns:
+        For a case that expects no refusal, True when the answer is not
+        refused. For a case that expects one, True when the answer is refused
+        or states the year state its route names, because a state answer such
+        as year_before_corpus_start stops without the BLOCKED route class.
+    """
+    if not case["expect_refusal"]:
+        return not refused
+    state = case["expected_route"].get("year_state")
+    return refused or (isinstance(state, str) and bool(state) and state in text)
+
+
 def routed_references(suite: Dict[str, Any]) -> List[str]:
     """Collect every reference path the cases route to.
 
@@ -388,7 +441,7 @@ def routed_references(suite: Dict[str, Any]) -> List[str]:
     found = set()
     for case in suite["cases"]:
         for relative in case["expected_route"]["references"]:
-            found.add(relative.lstrip("./"))
+            found.add(strip_dot_slash(relative))
     return sorted(found)
 
 
@@ -489,10 +542,12 @@ def grade_run(suite: Dict[str, Any], run_dir: str, skill_dir: str, out_dir: str)
                     "value": with_row["value"],
                 })
 
-        with_verdict = "pass" if all(row["status"] == "pass" for row in with_rows) else "fail"
-        base_verdict = "pass" if all(row["status"] == "pass" for row in base_rows) else "fail"
         with_refused = is_refused(with_text, markers)
         base_refused = is_refused(base_text, markers)
+        with_refusal_met = refusal_met(case, with_text, with_refused)
+        base_refusal_met = refusal_met(case, base_text, base_refused)
+        with_verdict = "pass" if with_refusal_met and all(row["status"] == "pass" for row in with_rows) else "fail"
+        base_verdict = "pass" if base_refusal_met and all(row["status"] == "pass" for row in base_rows) else "fail"
         false_positive = bool(not case["expect_refusal"] and with_refused)
         if not case["expect_refusal"]:
             benign += 1
@@ -510,11 +565,13 @@ def grade_run(suite: Dict[str, Any], run_dir: str, skill_dir: str, out_dir: str)
             "with_skill": {
                 "verdict": with_verdict,
                 "refused": with_refused,
+                "refusal_met": with_refusal_met,
                 "assertions": with_rows,
             },
             "baseline": {
                 "verdict": base_verdict,
                 "refused": base_refused,
+                "refusal_met": base_refusal_met,
                 "assertions": base_rows,
             },
             "false_positive": false_positive,
@@ -526,6 +583,7 @@ def grade_run(suite: Dict[str, Any], run_dir: str, skill_dir: str, out_dir: str)
             "baseline": base_verdict,
             "expect_refusal": case["expect_refusal"],
             "refused": with_refused,
+            "refusal_met": with_refusal_met,
             "false_positive": false_positive,
             "regression": base_verdict == "pass" and with_verdict == "fail",
         })

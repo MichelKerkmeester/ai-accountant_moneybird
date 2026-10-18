@@ -77,8 +77,8 @@ DECISION_LEADS = (
     "bepaal",
 )
 
-# WHY: the branch markers are the alternative and default vocabulary the
-# 015 research measured. The check requires one of them and never reads the
+# WHY: the branch markers are the alternative and default vocabulary that the
+# decision sections use. The check requires one of them and never reads the
 # branch, so a short pointer to the default is enough.
 BRANCH_MARKERS = (
     "otherwise",

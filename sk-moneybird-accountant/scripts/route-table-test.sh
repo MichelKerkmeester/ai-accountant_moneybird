@@ -254,7 +254,7 @@ sed 's/| `tok:T1` | Beats T2/|  | Beats T2/' "$(copy)" >"$TMP_ROOT/m-budget.md"
 mutant "budget cell blanked" "$TMP_ROOT/m-budget.md"
 
 # Empty the Dutch cell of the T2 row
-sed 's/`migratie`, `overzetten`, `historische administratie`, `categorie`, `valkuil`, `welke rekening` \| mapping/ \| mapping/' "$(copy)" >"$TMP_ROOT/m-dutch.md"
+sed 's/`migratie`, `overzetten`, `historische administratie`, `categorie`, `valkuil`, `welke rekening` \| migrate, mapping/ \| migrate, mapping/' "$(copy)" >"$TMP_ROOT/m-dutch.md"
 mutant "Dutch cell emptied" "$TMP_ROOT/m-dutch.md"
 
 # Delete the T9 row
@@ -320,7 +320,7 @@ sed '/ROUTE_MARGIN/d' "$(copy)" >"$TMP_ROOT/m-margin.md"
 mutant "ROUTE_MARGIN line removed" "$TMP_ROOT/m-margin.md"
 
 # Route the T2 row to a tool skill the table does not define
-sed 's/| mapping, category, which account, trap | `none` |/| mapping, category, which account, trap | `cli-notion` |/' "$(copy)" >"$TMP_ROOT/m-route.md"
+sed 's/| migrate, mapping, category, which account, trap | `none` |/| migrate, mapping, category, which account, trap | `cli-notion` |/' "$(copy)" >"$TMP_ROOT/m-route.md"
 mutant "T2 tool route unknown" "$TMP_ROOT/m-route.md"
 
 # Delete the T6 margin override bullet
@@ -477,7 +477,7 @@ mutant "table floor differs from the record" "$TMP_ROOT/m-table-floor.md"
 # ───────────────────────────────────────────────────────────────
 
 # Edit one table signal cell and leave the generated block stale
-sed 's/| mapping, category, which account, trap |/| mapping, category, which account, traps |/' "$(copy)" >"$TMP_ROOT/m-signal-drift.md"
+sed 's/| migrate, mapping, category, which account, trap |/| migrate, mapping, category, which account, traps |/' "$(copy)" >"$TMP_ROOT/m-signal-drift.md"
 drift_mutant "table signal changed without regeneration" "$TMP_ROOT/m-signal-drift.md" "row T2"
 
 # Hand edit one line inside the generated block
@@ -545,12 +545,13 @@ metadata_drift_mutant "curated advisor signal missing from the list" "$TMP_ROOT/
 WRITE_COPY="$TMP_ROOT/write-copy"
 mkdir -p "$WRITE_COPY/scripts"
 cp "$CHECKER" "$WRITE_COPY/scripts/check-route-table.py"
+cp "$SCRIPT_DIR/token-baseline.py" "$WRITE_COPY/scripts/token-baseline.py"
 cp "$ROUTER_MD" "$WRITE_COPY/ROUTER.md"
 cp "$GRAPH_METADATA" "$WRITE_COPY/graph-metadata.json"
 cp -R "$SKILL_DIR/references" "$WRITE_COPY/references"
 
 # Seed one table change so the first write has work to do in both files
-sed 's/| mapping, category, which account, trap |/| mapping, category, which account, mapping trap |/' "$WRITE_COPY/ROUTER.md" >"$TMP_ROOT/write-seed.md"
+sed 's/| migrate, mapping, category, which account, trap |/| migrate, mapping, category, which account, mapping trap |/' "$WRITE_COPY/ROUTER.md" >"$TMP_ROOT/write-seed.md"
 cp "$TMP_ROOT/write-seed.md" "$WRITE_COPY/ROUTER.md"
 
 python3 -I "$WRITE_COPY/scripts/check-route-table.py" --write >"$TMP_ROOT/out.txt" 2>&1
@@ -588,6 +589,7 @@ fi
 WORD_COPY="$TMP_ROOT/word-copy"
 mkdir -p "$WORD_COPY/sk-moneybird-accountant/scripts" "$WORD_COPY/cli-moneybird" "$WORD_COPY/cli-jortt"
 cp "$CHECKER" "$WORD_COPY/sk-moneybird-accountant/scripts/check-route-table.py"
+cp "$SCRIPT_DIR/token-baseline.py" "$WORD_COPY/sk-moneybird-accountant/scripts/token-baseline.py"
 cp "$WORD_CHECKER" "$WORD_COPY/sk-moneybird-accountant/scripts/check-skill-words.py"
 cp "$SKILL_DIR/scripts/split-topic-files.py" "$WORD_COPY/sk-moneybird-accountant/scripts/split-topic-files.py"
 cp "$SKILL_DIR/scripts/outline-check.py" "$WORD_COPY/sk-moneybird-accountant/scripts/outline-check.py"
@@ -682,6 +684,52 @@ if [[ "$status" -ne 0 ]] && grep -qiF 'scannability' "$TMP_ROOT/out.txt"; then
     pass "a stale scannability report fails the route table check"
 else
     fail "a stale scannability report fails the route table check"
+    cat "$TMP_ROOT/out.txt"
+fi
+
+# The report counts the gold rows that carry a section label, so three
+# labelled held-out rows must read as three in the hit rate row
+SCAN_GOLD="$WORD_COPY/sk-moneybird-accountant/scripts/route-replay/routing-gold.json"
+cp "$SCAN_GOLD" "$TMP_ROOT/scan-gold.keep"
+python3 -I - "$SCAN_GOLD" <<'PY'
+import json
+import sys
+
+path = sys.argv[1]
+data = json.load(open(path, encoding="utf-8"))
+held = [row for row in data["rows"] if row.get("split") == "held-out"][:3]
+for row in held:
+    row["expected_sections"] = ["1-overview"]
+open(path, "w", encoding="utf-8").write(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+PY
+python3 -I "$WORD_COPY/sk-moneybird-accountant/scripts/scannability-report.py" >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+labelled_line=$(grep -F '| Section hit rate | held-out |' "$SCAN_REPORT")
+cp "$TMP_ROOT/scan-gold.keep" "$SCAN_GOLD"
+cp "$TMP_ROOT/scan-report.keep" "$SCAN_REPORT"
+if [[ "$status" -eq 0 ]] && [[ "$labelled_line" == *"| 3 of "*" rows carry a section label |"* ]]; then
+    pass "the scannability report counts the labelled gold rows"
+else
+    fail "the scannability report counts the labelled gold rows (exit $status)"
+    printf '  %s\n' "$labelled_line"
+fi
+
+# A hoist count of 0 beside a missing owner section would read as a landed
+# hoist, so the check fails when the owner heading is gone
+HOIST_COPY="$WORD_COPY/sk-moneybird-accountant/scripts/hoist-record-duties.py"
+OWNER_FILE="$WORD_COPY/sk-moneybird-accountant/references/tax-rules/general/record-and-invoice-duties.md"
+cp "$SKILL_DIR/scripts/hoist-record-duties.py" "$HOIST_COPY"
+cp "$OWNER_FILE" "$TMP_ROOT/owner.keep"
+python3 -I "$HOIST_COPY" --check >"$TMP_ROOT/hoist-clean.txt" 2>&1
+clean_status=$?
+sed -i.bak -e 's/^\(## [0-9][0-9]*\.\) RECORD AND INVOICE DUTIES/\1 OTHER DUTIES/' "$OWNER_FILE" && rm -f "$OWNER_FILE.bak"
+python3 -I "$HOIST_COPY" --check >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+cp "$TMP_ROOT/owner.keep" "$OWNER_FILE"
+if [[ "$clean_status" -eq 0 ]] && [[ "$status" -eq 1 ]] && grep -qiF 'owner section' "$TMP_ROOT/out.txt"; then
+    pass "a missing record duties owner section fails the hoist check"
+else
+    fail "a missing record duties owner section fails the hoist check (clean exit $clean_status, mutant exit $status)"
     cat "$TMP_ROOT/out.txt"
 fi
 
@@ -821,6 +869,42 @@ mkdir -p "$WORD_COPY/cli-extra"
 printf -- '---\nname: cli-extra\n---\n' >"$WORD_COPY/cli-extra/SKILL.md"
 hub_mutant "a packet folder missing from the registry fails" "packet folder is not in mode-registry.json: cli-extra"
 rm -rf "$WORD_COPY/cli-extra"
+
+sed 's/"packetSkillName": "cli-jortt"/"packetSkillName": "cli-wrong"/' "$TMP_ROOT/registry.bak" >"$WORD_COPY/mode-registry.json"
+hub_mutant "a registry packetSkillName that differs from the SKILL.md name fails" "registry packetSkillName of cli-jortt does not match its SKILL.md name"
+python3 -I - "$TMP_ROOT/registry.bak" "$WORD_COPY/mode-registry.json" <<'PY'
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    text = handle.read()
+with open(sys.argv[2], "w", encoding="utf-8") as handle:
+    handle.write(text.replace('"packetKind": "tool"', '"packetKind": "bogus"', 1))
+PY
+hub_mutant "a registry packetKind outside the two kinds fails" "registry packetKind of cli-moneybird is bogus, expected tool"
+cp "$TMP_ROOT/registry.bak" "$WORD_COPY/mode-registry.json"
+
+# WHY: the resolver depends on three row rules and the budget keys on the
+# ladder, so dropping any of them must fail by name.
+ACCOUNTANT_ROUTER="$WORD_COPY/sk-moneybird-accountant/ROUTER.md"
+cp "$ACCOUNTANT_ROUTER" "$TMP_ROOT/accountant-router.bak"
+sed 's/full file 15,000\./full file 16,000./' "$TMP_ROOT/accountant-router.bak" >"$ACCOUNTANT_ROUTER"
+hub_mutant "a ladder number that differs from its sources fails" "ladder value 16000 differs from the signal sources file"
+sed 's/Additive and never wins alone/Additive and wins alone/' "$TMP_ROOT/accountant-router.bak" >"$ACCOUNTANT_ROUTER"
+hub_mutant "a T7 row that may win alone fails" "T7 on tie cell lacks: never wins alone"
+sed 's/Loses to every typed row/Beats every typed row/' "$TMP_ROOT/accountant-router.bak" >"$ACCOUNTANT_ROUTER"
+hub_mutant "a T9 row that beats a typed row fails" "T9 on tie cell lacks: Loses to every typed row"
+python3 -I - "$TMP_ROOT/accountant-router.bak" "$ACCOUNTANT_ROUTER" <<'PY'
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    text = handle.read()
+start = text.index("| T8 |")
+cell = text.index("| `none` |", start)
+with open(sys.argv[2], "w", encoding="utf-8") as handle:
+    handle.write(text[:cell] + "| `cli-moneybird` |" + text[cell + len("| `none` |"):])
+PY
+hub_mutant "a T8 row that names a tool route fails" "T8 tool route must be"
+cp "$TMP_ROOT/accountant-router.bak" "$ACCOUNTANT_ROUTER"
 
 cp "$WORD_COPY/hub-router.json" "$TMP_ROOT/hub-router.bak"
 python3 -I - "$TMP_ROOT/hub-router.bak" "$WORD_COPY/hub-router.json" <<'PY'

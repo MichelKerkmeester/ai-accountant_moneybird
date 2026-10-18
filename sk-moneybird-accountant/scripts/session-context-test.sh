@@ -564,6 +564,61 @@ else
     printf '  write exit %s, last_locked_year %s\n' "$write_status" "$locked_year"
 fi
 
+# WHY: the migration config template stores each field as a row in a fields
+# list, and a cell nobody filled in yet holds PENDING. A filled row must reach
+# the projection and a placeholder must read as null.
+TEMPLATE_DIR="$TMP_ROOT/template-shape"
+TEMPLATE_OUT="$TMP_ROOT/template-shape.json"
+if ! make_workspace "$TEMPLATE_DIR" \
+    '[{"phase": 12, "status": "GATE_PASSED"}, {"phase": 17, "status": "GATE_PASSED"}, {"phase": 18, "status": "IN_PROGRESS"}, {"phase": 22, "status": "NOT_STARTED"}]' \
+    '{"config_version": 1, "status": "DRAFT", "fields": [{"field": "configured_start_date", "value": "2019-01-01"}, {"field": "last_locked_year", "value": 2024}, {"field": "monitoring.start_date", "value": "2026-01-05"}, {"field": "monitoring.end_date", "value": "PENDING"}]}'; then
+    printf 'error: cannot write the fixture workspace\n' >&2
+    exit 2
+fi
+SOURCE_DATE_EPOCH=$EPOCH_A run_builder --config "$TEMPLATE_DIR/MIGRATION_CONFIG.json" --dashboard "$TEMPLATE_DIR/dashboard.json" --out "$TEMPLATE_OUT"
+write_status=$?
+if [[ "$write_status" -eq 0 ]] \
+    && [[ "$(context_field "$TEMPLATE_OUT" configured_start_date)" = "2019-01-01" ]] \
+    && [[ "$(context_field "$TEMPLATE_OUT" last_locked_year)" = "2024" ]] \
+    && [[ "$(context_field "$TEMPLATE_OUT" monitoring_start_date)" = "2026-01-05" ]] \
+    && [[ "$(context_field "$TEMPLATE_OUT" monitoring_end_date)" = "null" ]]; then
+    pass "template fields rows reach the projection and PENDING reads as null"
+else
+    fail "template fields rows reach the projection and PENDING reads as null"
+    printf '  write exit %s, configured_start_date %s, last_locked_year %s, monitoring_start_date %s, monitoring_end_date %s\n' \
+        "$write_status" "$(context_field "$TEMPLATE_OUT" configured_start_date)" \
+        "$(context_field "$TEMPLATE_OUT" last_locked_year)" "$(context_field "$TEMPLATE_OUT" monitoring_start_date)" \
+        "$(context_field "$TEMPLATE_OUT" monitoring_end_date)"
+fi
+
+# WHY: init-workspace.sh copies the generated markdown dashboard, so the builder
+# must read its phase table, where a status cell is written with a space.
+MARKDOWN_DIR="$TMP_ROOT/markdown-dashboard"
+MARKDOWN_OUT="$TMP_ROOT/markdown-dashboard.json"
+mkdir -p "$MARKDOWN_DIR"
+python3 -I - "$SKILL_SRC/assets/migration/phase-dashboard.template.md" "$MARKDOWN_DIR/phase-dashboard.md" <<'PY'
+import re
+import sys
+
+text = open(sys.argv[1], encoding="utf-8").read()
+text = re.sub(r"^(\| 12 \|[^|]*\|) NOT STARTED \|", r"\1 GATE PASSED |", text, count=1, flags=re.M)
+text = re.sub(r"^(\| 18 \|[^|]*\|) NOT STARTED \|", r"\1 IN PROGRESS |", text, count=1, flags=re.M)
+open(sys.argv[2], "w", encoding="utf-8").write(text)
+PY
+SOURCE_DATE_EPOCH=$EPOCH_A run_builder --config "$TEMPLATE_DIR/MIGRATION_CONFIG.json" --dashboard "$MARKDOWN_DIR/phase-dashboard.md" --out "$MARKDOWN_OUT"
+write_status=$?
+if [[ "$write_status" -eq 0 ]] \
+    && [[ "$(context_field "$MARKDOWN_OUT" phase_18_status)" = "IN_PROGRESS" ]] \
+    && [[ "$(context_field "$MARKDOWN_OUT" phase_22_status)" = "NOT_STARTED" ]] \
+    && [[ "$(context_field "$MARKDOWN_OUT" last_passed_gate)" = "12" ]]; then
+    pass "the markdown dashboard table reaches the projection"
+else
+    fail "the markdown dashboard table reaches the projection"
+    printf '  write exit %s, phase_18_status %s, phase_22_status %s, last_passed_gate %s\n' \
+        "$write_status" "$(context_field "$MARKDOWN_OUT" phase_18_status)" \
+        "$(context_field "$MARKDOWN_OUT" phase_22_status)" "$(context_field "$MARKDOWN_OUT" last_passed_gate)"
+fi
+
 # ───────────────────────────────────────────────────────────────
 # 6. CHECK MODE
 # ───────────────────────────────────────────────────────────────

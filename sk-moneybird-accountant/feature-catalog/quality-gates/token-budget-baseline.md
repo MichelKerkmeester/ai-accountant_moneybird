@@ -22,7 +22,9 @@ Pins the token counts of the reference corpus and fails when a reference change 
 
 ## 2. HOW IT WORKS
 
-The read budget ladder the table rows use is owned by `scripts/README.md` and `ROUTER.md`. The baseline checks that each pinned encoding data file exists and matches its recorded hash before it loads an encoder, so a missing or changed file stops the run instead of downloading anything.
+The read budget ladder the table rows use is owned by `scripts/README.md` and `ROUTER.md`, and `check-route-table.py` fails when the ladder sentence in `ROUTER.md` differs from section 5 of `references/routing-signals.md` or from the file line in `token-baseline.py`. The baseline checks that each pinned encoding data file exists and matches its recorded hash before it loads an encoder, so a missing or changed file stops the run instead of downloading anything.
+
+`--check` also holds the three skill files every accountant request reads after the repository `AGENTS.md`, the hub `SKILL.md`, the accountant `ROUTER.md` and the accountant `SKILL.md`, within a request line of 12,000 `o200k_base` tokens. `AGENTS.md` is the bootstrap and stays outside the line. It names the three files and the sum when they pass it.
 
 The canary suite runs the car-question route through the year README and one topic section and asserts the proposed route stays under its ratio and its token ceiling. Three mutants prove the gate: a route pointed at the whole topic file, a swapped encoding in the cache and a fixture that passes one budget and fails the other.
 
@@ -45,7 +47,7 @@ A sibling word check holds each `SKILL.md` and `ROUTER.md` at a 3,000-word loadi
 
 | File | Type | Role |
 |---|---|---|
-| `sk-moneybird-accountant/scripts/token-canary-test.sh` | Automated test | Runs the car-question route and three budget mutants. |
+| `sk-moneybird-accountant/scripts/token-canary-test.sh` | Automated test | Runs the car-question route, three budget mutants and a router grown past the request line. |
 | `sk-moneybird-accountant/scripts/check-skill-words.py` | Test harness | Holds each `SKILL.md` and `ROUTER.md` at the 3,000-word budget with the 4,000-word ceiling and is run by the route table step. |
 | `sk-moneybird-accountant/scripts/check-skill-words-test.sh` | Automated test | Proves the 2,999-word, 3,001-word and 4,001-word bands and the missing file exit. |
 | `.github/workflows/skill-health.yml` | Test harness | Seeds the pinned tokenizer cache and runs the baseline check. |

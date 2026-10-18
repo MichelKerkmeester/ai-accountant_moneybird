@@ -28,7 +28,7 @@ A Dutch term reads as the English name with the Dutch in brackets at its first u
 
 ### The masks and the exceptions
 
-Before the rules run the checker blanks the places where Dutch is data: frontmatter, code fences, inline code, generated blocks, HTML comments, links, quotes, legal citations, Source and Title columns, VAT return box (rubriek) codes and every playbook `Prompt:` line, `Real user request:` line and Exact Prompt cell. A term the rules must keep goes in `assets/english-first-exceptions.json` with its file, the check it suppresses, an E1, E2 or E3 rule and a reason. A row that suppresses nothing is reported as `stale-exception`.
+Before the rules run the checker blanks the places where Dutch is data: frontmatter, code fences, inline code, generated blocks, HTML comments, links, quotes, legal citations, Source and Title columns, VAT return box (rubriek) codes. In a file under `manual-testing-playbook/` or `evals/` it also blanks every `Prompt:` line, `Real user request:` line and Exact Prompt cell, because those folders hold prompts as data. A prompt label in a reference file is prose, so the same Dutch there must still carry its English lead. A term the rules must keep goes in `assets/english-first-exceptions.json` with its file, the check it suppresses, an E1, E2 or E3 rule and a reason. A row that suppresses nothing is reported as `stale-exception`.
 
 ### The output and the CI route
 
@@ -50,7 +50,7 @@ The run prints one sorted line per problem as path, line, rule and term, then th
 
 | File | Type | Role |
 |---|---|---|
-| `sk-moneybird-accountant/scripts/check-english-first-test.sh` | Automated test | Proves each rule on a bad and a fixed fixture, every mask, the exceptions file, byte stability and the summary, then runs the checker on the real corpus. |
+| `sk-moneybird-accountant/scripts/check-english-first-test.sh` | Automated test | Proves each rule on a bad and a fixed fixture, every mask, the prompt masks in a playbook folder and not in a reference file, the exceptions file, byte stability and the summary, then runs the checker on the real corpus. |
 | `.github/workflows/skill-health.yml` | Test harness | Runs the suite as the `Suite check-english-first` step on push and pull request. |
 
 ---

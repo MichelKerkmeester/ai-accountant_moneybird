@@ -25,8 +25,12 @@ Options:
                 above this script.
 
 Output:
-    One line per problem on stdout, then a summary line. Exit code 1 when a
-    problem remains and 0 when the corpus is clean.
+    One line per problem on stdout, then a summary line and an informational
+    line that counts the sections opening with a positional reference against
+    a threshold and never changes the exit code. Exit code 1 when a problem
+    remains and 0 when the corpus is clean. Exit code 2 when the root is not
+    a directory, when none of the scan roots exists under it or when the scan
+    finds no markdown file, so an empty tree never reads as clean.
 """
 
 # ───────────────────────────────────────────────────────────────
@@ -623,7 +627,7 @@ def check(root: str) -> Tuple[int, int, List[Problem]]:
 
 
 # ───────────────────────────────────────────────────────────────
-# 7. ENTRY POINT
+# 8. ENTRY POINT
 # ───────────────────────────────────────────────────────────────
 
 def main(argv: List[str]) -> int:
@@ -636,7 +640,8 @@ def main(argv: List[str]) -> int:
         Zero when no problem remains, one otherwise.
 
     Raises:
-        SystemExit: If the root is not a directory.
+        SystemExit: With code 2 if the root is not a directory, holds none of
+        the scan roots or holds no markdown file under them.
     """
     parser = argparse.ArgumentParser(
         prog=GENERATOR,
@@ -652,6 +657,12 @@ def main(argv: List[str]) -> int:
     root = os.path.abspath(args.root)
     if not os.path.isdir(root):
         fail("not a directory: %s" % args.root)
+    # WHY: a wrong root holds no scan root, and a clean verdict over zero
+    # files would hide that the check read nothing at all.
+    if not any(os.path.exists(os.path.join(root, entry)) for entry in SCAN_ROOTS):
+        fail("none of the scan roots exists under %s: %s" % (args.root, ", ".join(SCAN_ROOTS)))
+    if not markdown_files(root):
+        fail("the scan found no markdown files under %s" % args.root)
     links, fragments, problems = check(root)
     for source, number, marker, reason in sorted(problems):
         print("fragment %s:%d %s %s" % (source, number, marker, reason))
@@ -664,7 +675,7 @@ def main(argv: List[str]) -> int:
     positional, sections = positional_report(root)
     percent = (100 * positional / sections) if sections else 0
     print(
-        "check-fragments: positional openings %d of %d sections (threshold %d%%, measured %.1f%%)"
+        "check-fragments: positional openings %d of %d sections (informational, threshold %d%%, measured %.1f%%)"
         % (positional, sections, POSITIONAL_THRESHOLD_PERCENT, percent)
     )
     return 1 if problems else 0

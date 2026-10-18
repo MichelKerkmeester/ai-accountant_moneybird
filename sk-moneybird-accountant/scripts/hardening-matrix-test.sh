@@ -158,6 +158,25 @@ build_fixture() {
     return 0
 }
 
+# Replace the test cell of the first P0 row in a fixture matrix
+# Args:
+#   $1 - Fixture root
+#   $2 - New test cell text, without backticks
+# Returns:
+#   0 when the cell is replaced, 1 otherwise
+swap_first_p0_cell() {
+    python3 -I - "$1/sk-moneybird-accountant/hardening-matrix.md" "$FIRST_P0_CELL" "$2" <<'PY'
+import sys
+
+path, old, new = sys.argv[1:4]
+text = open(path, encoding="utf-8").read()
+if "`%s`" % old not in text:
+    print("error: the fixture matrix does not hold the expected test cell", file=sys.stderr)
+    sys.exit(2)
+open(path, "w", encoding="utf-8").write(text.replace("`%s`" % old, "`%s`" % new, 1))
+PY
+}
+
 # ───────────────────────────────────────────────────────────────
 # 4. REAL TREE AND FIXTURE COPY CHECKS
 # ───────────────────────────────────────────────────────────────
@@ -281,7 +300,174 @@ else
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 8. USAGE GUARDS
+# 8. ESCAPING TEST PATHS
+# ───────────────────────────────────────────────────────────────
+
+group "Escaping test path"
+
+OUTSIDE_SUITE="$TMP_ROOT/outside-test.sh"
+printf '#!/usr/bin/env bash\npass "outside case"\n' >"$OUTSIDE_SUITE"
+
+# An absolute path, a parent segment and a link that leaves the root each
+# resolve to a real file with the named case, so only the containment rule
+# can fail them.
+for escape in absolute parent link; do
+    ESCAPE_ROOT="$TMP_ROOT/fixture-escape-$escape"
+    if build_fixture "$ESCAPE_ROOT"; then
+        pass "the $escape escape fixture copy builds"
+    else
+        fail "the $escape escape fixture copy builds"
+    fi
+    case "$escape" in
+        absolute)
+            ESCAPE_CELL="/etc/hosts :: localhost"
+            ESCAPE_LABEL="an absolute test path"
+            ;;
+        parent)
+            ESCAPE_CELL="../outside-test.sh :: outside case"
+            ESCAPE_LABEL="a test path with a parent segment"
+            ;;
+        link)
+            ln -s "$OUTSIDE_SUITE" "$ESCAPE_ROOT/linked-test.sh"
+            ESCAPE_CELL="linked-test.sh :: outside case"
+            ESCAPE_LABEL="a test path that links outside the root"
+            ;;
+    esac
+    swap_first_p0_cell "$ESCAPE_ROOT" "$ESCAPE_CELL"
+    run_checker "$ESCAPE_ROOT" "escape-$escape"
+    status=$?
+    if [[ "$status" -eq 1 ]] && grep -qF 'test path must stay inside the repository' "$TMP_ROOT/check-escape-$escape.txt"; then
+        pass "$ESCAPE_LABEL fails the check"
+    else
+        fail "$ESCAPE_LABEL fails the check (exit $status)"
+        sed -n '1,5p' "$TMP_ROOT/check-escape-$escape.txt"
+    fi
+done
+
+# ───────────────────────────────────────────────────────────────
+# 9. CASE NAME INSIDE ANOTHER WORD
+# ───────────────────────────────────────────────────────────────
+
+group "Case name inside another word"
+
+SUBSTRING="$TMP_ROOT/fixture-substring"
+if build_fixture "$SUBSTRING"; then
+    pass "the substring fixture copy builds"
+else
+    fail "the substring fixture copy builds"
+fi
+
+python3 -I - "$SUBSTRING/$FIRST_P0_PATH" "$FIRST_P0_CASE" <<'PY'
+import sys
+
+path = sys.argv[1]
+case = sys.argv[2]
+text = open(path, encoding="utf-8").read()
+if case not in text:
+    print("error: the fixture copy does not hold the expected case", file=sys.stderr)
+    sys.exit(2)
+open(path, "w", encoding="utf-8").write(text.replace(case, "pre-%s-post" % case))
+PY
+substring_status=$?
+if [[ "$substring_status" -ne 0 ]]; then
+    fail "the case string is wrapped in other words in the fixture copy (exit $substring_status)"
+fi
+
+run_checker "$SUBSTRING" substring
+status=$?
+if [[ "$status" -eq 1 ]] && grep -qF 'test case not found' "$TMP_ROOT/check-substring.txt"; then
+    pass "a case name that only sits inside another word fails the check"
+else
+    fail "a case name that only sits inside another word fails the check (exit $status)"
+    sed -n '1,5p' "$TMP_ROOT/check-substring.txt"
+fi
+
+# ───────────────────────────────────────────────────────────────
+# 10. CASE NAME IN A COMMENT
+# ───────────────────────────────────────────────────────────────
+
+group "Case name in a comment"
+
+COMMENTED="$TMP_ROOT/fixture-commented"
+if build_fixture "$COMMENTED"; then
+    pass "the commented fixture copy builds"
+else
+    fail "the commented fixture copy builds"
+fi
+
+python3 -I - "$COMMENTED/$FIRST_P0_PATH" "$FIRST_P0_CASE" <<'PY'
+import sys
+
+path = sys.argv[1]
+case = sys.argv[2]
+marker = "//" if path.endswith((".js", ".ts", ".mjs", ".cjs")) else "#"
+lines = open(path, encoding="utf-8").read().splitlines()
+if not any(case in line for line in lines):
+    print("error: the fixture copy does not hold the expected case", file=sys.stderr)
+    sys.exit(2)
+lines = [marker + " " + line if case in line else line for line in lines]
+open(path, "w", encoding="utf-8").write("\n".join(lines) + "\n")
+PY
+commented_status=$?
+if [[ "$commented_status" -ne 0 ]]; then
+    fail "every line that holds the case is a comment in the fixture copy (exit $commented_status)"
+fi
+
+run_checker "$COMMENTED" commented
+status=$?
+if [[ "$status" -eq 1 ]] && grep -qF 'test case not found' "$TMP_ROOT/check-commented.txt"; then
+    pass "a case name that only sits in a comment fails the check"
+else
+    fail "a case name that only sits in a comment fails the check (exit $status)"
+    sed -n '1,5p' "$TMP_ROOT/check-commented.txt"
+fi
+
+# Each form puts the case name in a comment that starts right after a shell
+# operator, or after a string that ends in an escaped backslash
+for form in semicolon subshell and-list escape; do
+    TRAILING="$TMP_ROOT/fixture-trailing-$form"
+    if build_fixture "$TRAILING"; then
+        pass "the trailing comment fixture copy builds ($form)"
+    else
+        fail "the trailing comment fixture copy builds ($form)"
+    fi
+
+    python3 -I - "$TRAILING/$FIRST_P0_PATH" "$FIRST_P0_CASE" "$form" <<'PY'
+import sys
+
+path = sys.argv[1]
+case = sys.argv[2]
+forms = {
+    "semicolon": 'true;# "%s"',
+    "subshell": '(exit 0)# "%s"',
+    "and-list": 'true&&# "%s"',
+    "escape": 'echo "a\\\\" # "%s"',
+}
+template = 'true // "%s"' if path.endswith((".js", ".ts", ".mjs", ".cjs")) else forms[sys.argv[3]]
+lines = open(path, encoding="utf-8").read().splitlines()
+if not any(case in line for line in lines):
+    print("error: the fixture copy does not hold the expected case", file=sys.stderr)
+    sys.exit(2)
+lines = [template % case if case in line else line for line in lines]
+open(path, "w", encoding="utf-8").write("\n".join(lines) + "\n")
+PY
+    trailing_status=$?
+    if [[ "$trailing_status" -ne 0 ]]; then
+        fail "every line that holds the case ends in a trailing comment in the fixture copy ($form, exit $trailing_status)"
+    fi
+
+    run_checker "$TRAILING" "trailing-$form"
+    status=$?
+    if [[ "$status" -eq 1 ]] && grep -qF 'test case not found' "$TMP_ROOT/check-trailing-$form.txt"; then
+        pass "a case name that only sits in a trailing comment fails the check ($form)"
+    else
+        fail "a case name that only sits in a trailing comment fails the check ($form, exit $status)"
+        sed -n '1,5p' "$TMP_ROOT/check-trailing-$form.txt"
+    fi
+done
+
+# ───────────────────────────────────────────────────────────────
+# 11. USAGE GUARDS
 # ───────────────────────────────────────────────────────────────
 
 group "Usage guards"
@@ -295,7 +481,7 @@ else
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 9. RESULT SUMMARY AND EXIT
+# 12. RESULT SUMMARY AND EXIT
 # ───────────────────────────────────────────────────────────────
 
 printf '\nResult: %d passed, %d failed\n' "$passed" "$failed"

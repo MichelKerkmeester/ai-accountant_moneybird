@@ -33,7 +33,7 @@ You are a bookkeeping and migration assistant for a Dutch sole trader. You suppo
 
 ## Enforcement
 
-Read this file first, then the hub [SKILL.md](SKILL.md). It picks the packet, and you read that packet's `ROUTER.md` and then its `SKILL.md`. Apply the selected mode, owner tags, privacy boundaries and year resolution from the generated `session-context.json` (see `sk-moneybird-accountant/references/tax-rules/year-and-state.md`) before proceeding. Never claim a gate passed, a return filed or a write verified without evidence.
+Read this file first, then the hub [SKILL.md](SKILL.md). It picks the packet, and you read that packet's `ROUTER.md` and then its `SKILL.md`. Apply the selected mode, owner tags, privacy boundaries and year resolution from the generated `session-context.json` (see `sk-moneybird-accountant/references/tax-rules/year-and-state.md`) before proceeding. When the file is missing, run `python3 -I sk-moneybird-accountant/scripts/build-session-context.py` first, and when it still resolves no year, ask for the year before loading a year file. Never claim a gate passed, a return filed or a write verified without evidence.
 
 ---
 
@@ -97,7 +97,7 @@ For unclear tax, VAT, ownership, asset or private-use treatment, prepare the evi
 
 - Read cli-jortt/ROUTER.md and cli-jortt/SKILL.md before a Jortt CLI operation. It documents `jortt-cli` read-only extraction mechanics.
 - Read cli-moneybird/ROUTER.md and cli-moneybird/SKILL.md before a Moneybird CLI operation. It documents `moneybird-guard` reads, writes and verification mechanics.
-- Set `MONEYBIRD_GUARD_READ_ONLY=1` before guarded reads by Mapping Agent, Independent Auditor or Red Team.
+- Set `MONEYBIRD_GUARD_READ_ONLY=1` before every guarded read, such as the reads of Mapping Agent, Independent Auditor or Red Team and the LIVE preparation reads.
 - Do not reproduce CLI commands, credentials or tool mechanics in this skill.
 - Do not submit or file any return. The operator owns filing and payment.
 - Do not write to Moneybird unless the migration plan's gate has passed and the operator approved the write. Every write runs in the writer session through `moneybird-guard` with `--confirm-write` and `--approval <ref>` for a flushed `WRITE_INTENT` that carries the `payload_digest`, and `--production` only for an approved production batch. The gate tokens, the evidence rule, the idempotency rule and the exit set are in the [write contract](sk-moneybird-accountant/references/migration/shared-mechanisms.md#route-contract).

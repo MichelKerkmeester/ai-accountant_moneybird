@@ -737,14 +737,47 @@ else
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 10. REAL CORPUS
+# 10. EMPTY SCAN
+# ───────────────────────────────────────────────────────────────
+
+group "empty scan"
+EMPTY_ROOT="$TMP_ROOT/empty-root"
+mkdir -p "$EMPTY_ROOT"
+run_checker "$EMPTY_ROOT"
+status=$?
+if [[ "$status" -eq 2 ]] && grep -qF 'none of the scan roots exists' "$TMP_ROOT/out.txt"; then
+    pass "a root with no scan root exits 2 and says so"
+else
+    fail "a root with no scan root exits 2 and says so (exit $status)"
+fi
+
+NO_MARKDOWN_ROOT="$TMP_ROOT/no-markdown-root"
+mkdir -p "$NO_MARKDOWN_ROOT/sk-moneybird-accountant"
+printf 'notes\n' >"$NO_MARKDOWN_ROOT/sk-moneybird-accountant/notes.txt"
+run_checker "$NO_MARKDOWN_ROOT"
+status=$?
+if [[ "$status" -eq 2 ]] && grep -qF 'the scan found no markdown files' "$TMP_ROOT/out.txt"; then
+    pass "a scan that finds no markdown file exits 2 and says so"
+else
+    fail "a scan that finds no markdown file exits 2 and says so (exit $status)"
+fi
+
+run_checker "$FIX"
+if grep -qE '^check-fragments: positional openings [0-9]+ of [0-9]+ sections \(informational, threshold ' "$TMP_ROOT/out.txt"; then
+    pass "the positional threshold line is labelled informational"
+else
+    fail "the positional threshold line is labelled informational"
+fi
+
+# ───────────────────────────────────────────────────────────────
+# 11. REAL CORPUS
 # ───────────────────────────────────────────────────────────────
 
 group "real corpus"
 assert "the real corpus is clean" python3 -I "$CHECKER" --root "$REPO_ROOT"
 
 # ───────────────────────────────────────────────────────────────
-# 11. RENAMED HEADING IN A COPY OF THE REAL TREE
+# 12. RENAMED HEADING IN A COPY OF THE REAL TREE
 # ───────────────────────────────────────────────────────────────
 
 group "renamed heading in a copy"
@@ -774,7 +807,7 @@ else
 fi
 
 # ───────────────────────────────────────────────────────────────
-# 12. SUMMARY
+# 13. SUMMARY
 # ───────────────────────────────────────────────────────────────
 
 printf '\n%d passed, %d failed\n' "$passed" "$failed"

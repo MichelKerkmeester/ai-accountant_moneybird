@@ -24,7 +24,7 @@ Runs the yearly corpus rollover and keeps the year files checked against the rel
 
 The Operator follows the runbook in order against the newest year folder. Every step names the path it touches and a figure stays in the year file that owns it. The runbook includes the reference-index check, the source-library check and the calendar check.
 
-The monthly job watches the publication series in `assets/source-watchlist.json` and compares each answer with the state file. `build-source-library.py --check-calendar` reads the checked dates from the year READMEs and the rules file and fails when a current or future year predates the latest passed checkpoint. A watch change or a stale year is reported to the Operator as an issue and does not fail the skill.
+The monthly job watches the publication series in `assets/source-watchlist.json` and compares each answer with the state file. `build-source-library.py --check-calendar` reads the checked dates from the year READMEs and the rules file and fails when a current or future year predates the latest passed checkpoint. A watch change, a watch where every fetched URL failed or was refused and a stale year are reported to the Operator as an issue and do not fail the skill. The watch exits 1 in the second case and prints `the watch could not check N of M watched URLs`, so an outage never reads as a quiet run.
 
 The runbook also owns the carry-forward rule, which states that every condition names its alternative or its default, so a decision step carries a branch. `outline-check.py` enforces the rule over the year and general topic files, requires a branch and never judges it, and `check-route-table.py` runs it beside the word and split checks.
 

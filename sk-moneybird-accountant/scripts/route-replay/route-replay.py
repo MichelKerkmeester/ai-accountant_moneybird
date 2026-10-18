@@ -32,7 +32,7 @@ Usage:
     TIKTOKEN_CACHE_DIR=<cache> python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode resolve
     TIKTOKEN_CACHE_DIR=<cache> python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode resolve --out /tmp/route-replay
     python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode replay
-    python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode replay --rev f5ba1f5 --covers 006/REQ-002
+    python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode replay --rev HEAD~1 --covers <tag>
 
 Options:
     --mode       resolve scores pure route resolution. replay runs the guard
@@ -147,7 +147,7 @@ BASE_COLUMNS = (
 )
 
 # WHY: only resolve mode resolves a packet chain, so the replay columns omit it.
-RESULT_COLUMNS = BASE_COLUMNS + ("packets",)
+RESULT_COLUMNS = BASE_COLUMNS + ("packets", "tier")
 
 REPLAY_COLUMNS = BASE_COLUMNS + (
     "command",
@@ -195,11 +195,294 @@ OUT_OF_SCOPE_PATTERNS = (
     r"\bfiling\b",
     r"\baangifte\b",
     r"private database",
+    r"personal database",
+    r"persoonlijke database",
     r"priv[eé]database",
     r"non-dutch tax",
     r"german income tax",
 )
-NEGATION_RE = re.compile(r"(?:\bno\b|\bnot\b|\bnever\b|\bgeen\b|\bniet\b|\bzonder\b)\s*$", re.IGNORECASE)
+NEGATION_RE = re.compile(
+    r"(?:\bno\b|\bnot\b|\bnever\b|n['\u2019\u00b4`\u02bc]t\b|\bdont\b|\bwithout\b|\bgeen\b|\bniet\b|\bzonder\b"
+    r"|\bniets\b|\bniks\b|\bnothing\b)\s*$",
+    re.IGNORECASE,
+)
+# WHY: a CLI name keeps its negation across one verb, so "do not use jortt-cli"
+# and "gebruik geen jortt-cli" name no CLI to start in.
+TOOL_NEGATION_RE = re.compile(
+    r"(?:\bno\b|\bnot\b|\bnever\b|n['\u2019\u00b4`\u02bc]t\b|\bdont\b|\bwithout\b|\bgeen\b|\bniet\b|\bzonder\b)"
+    r"(?:\s+\w+)?\s*$",
+    re.IGNORECASE,
+)
+# WHY: "not only", "niet alleen" and "don't forget" add a tool rather than
+# exclude it, so they negate nothing.
+NEGATION_EXEMPT_RE = re.compile(
+    r"(?:\bnot\s+only|\bniet\s+alleen|\bniet\s+enkel|n['\u2019\u00b4`\u02bc]t\s+forget|\bnot\s+forget|\bnever\s+forget"
+    r"|\bvergeet\s+niet|\bniet\s+vergeten)\b(?:\s+\w+)?\s*$",
+    re.IGNORECASE,
+)
+# WHY: a boundary word such as "personal database" keeps its negation across a
+# few words, so "without reading my personal database" names no boundary. A
+# filing verb does not, because "don't forget to file it" asks to file.
+BOUNDARY_NEGATION_RE = re.compile(
+    r"(?:\bno\b|\bnot\b|\bnever\b|n['\u2019\u00b4`\u02bc]t\b|\bdont\b|\bwithout\b|\bgeen\b|\bniet\b|\bzonder\b)"
+    r"(?:\s+\S+){0,4}\s*$",
+    re.IGNORECASE,
+)
+# WHY: a gap of up to sixty characters inside one clause lets a few words
+# stand between two grammar parts without crossing a clause break.
+CLAUSE_GAP_CHARS = 60
+CLAUSE_GAP = r"[^,.;:!?]{0,%d}" % CLAUSE_GAP_CHARS
+# WHY: "I can't file it myself" says the user cannot file, and negates no request.
+USER_CANNOT_RE = re.compile(
+    r"\b(?:i|we)\s+can['\u2019\u00b4`\u02bc]?t(?:\s+\w+)?\s*$"
+    r"|\b(?:ik|wij|we)\s+(?:kan|kunnen|durf|durven)\b" + CLAUSE_GAP + r"\bniet(?:\s+zelf)?\s*$",
+    re.IGNORECASE,
+)
+BOUNDARY_SIGNAL_RE = re.compile(r"\b(?:database|non dutch tax)\b")
+# WHY: a filing verb keeps its negation across adverbs, a wish such as "want
+# you to" and an alternative verb, so "do not ever submit it", "I don't want you
+# to submit it" and "do not file or submit it" request no filing. An "and"
+# starts a new request, as in "don't wait and submit it".
+FILING_NEGATION_RE = re.compile(
+    r"(?:\bno\b|\bnot\b|\bnever\b|n['\u2019\u00b4`\u02bc]t\b|\bdont\b|\bwithout\b|\bgeen\b|\bniet\b|\bzonder\b"
+    r"|\bniets\b|\bniks\b|\bnothing\b|\bunder no circumstances\b|\bin no case\b|\bonder geen beding\b"
+    r"|\bin geen geval\b)"
+    r"(?:\s+(?:ever|yet|now|actually|really|under any circumstances|in any case|ooit|nog|meer|zomaar))*"
+    r"(?:\s+(?:want|need|wish|expect|ask|allowed|permitted|supposed)(?:\s+(?:you|u|je))?)?(?:\s+to)?"
+    r"(?:\s+dat(?:\s+(?:je|u|jij|jullie|de|het|ze|hij|zij))?)?"
+    r"(?:\s+(?:it|them|hem|het|die|iets|anything))?(?:\s+\S+\s+(?:or|of))?\s*$",
+    re.IGNORECASE,
+)
+# WHY: each guard is anchored to the filing verb. A question word, a time word,
+# a purpose or a deadline counts only when it governs the verb, so "after I
+# approve, please submit it" and "the deadline is Friday so file it" still ask
+# to file while "before I send it in" and "the deadline to file" do not.
+FILING_FRAME_RE = re.compile(
+    r"\b(?:when|how|what|which|where|wanneer|hoe|wat|welke|waar)\b(?:\s+\S+){0,3}?\s+"
+    r"(?:do|does|did|must|should|can|could|shall|will|would|have|has|am|is|are|need"
+    r"|moet|moeten|kan|kunnen|mag|mogen|zal|zullen|hoef|hoeven)\s+(?:i|we|ik|wij|je|u|one)\b(?:\s+\S+){0,5}\s*$"
+    r"|\b(?:wanneer|hoe|waar)\s+(?:ik|wij|we)"
+    r"(?:\s+(?!(?:ben|bent|is|zijn|was|waren|heb|hebt|heeft|hebben|had|word|wordt)\b)\S+){0,4}\s*$"
+    r"|\b(?:when|how|where|wanneer|hoe|waar)\s+(?:to|i|we|ik|wij)(?:\s+(?:am|are|is|have|has|had|do|does|did|can|could|should|must|need|needs|ought|supposed|allowed"
+    r"|going|to|will|would|shall|may|might|always|usually|actually|ever|then|also|just|even|moet"
+    r"|moeten|kan|kunnen|mag|mogen|hoef|hoeven|zal|zullen|ga|gaan|nu|dan|ook|zelf|altijd|meestal)){0,4}\s*$"
+    r"|\b(?:hoe|wanneer|waar)\s*$"
+    r"|^\s*(?:do|does|did|am|is|are|must|should|shall|need|have|moet|moeten|ben|hoef|hoeven|mag|mogen)"
+    r"\s+(?:i|ik|one|it|het)\b(?![^?]*\b(?:you|je|jij|u|jullie)\b)(?:\s+\S+){0,6}\s*$"
+    r"|^\s*(?:do|does|did|are|must|need|have|moeten|hoeven)\s+(?:we|wij)\b(?:\s+\S+){0,6}\s*$"
+    r"|\b(?:before|after|until|once|if|when|voor|voordat|nadat|totdat|als|zodra|wanneer)"
+    r"\s+(?:i|we|ik|wij|he|she|they|hij|zij|ze|(?:my|our|the|mijn|onze|de)\s+\w+)"
+    r"(?:\s+(?:can|will|have|do|kan|ga|it|them|hem|het|die|zelf|then|daarna|actually))*\s*$"
+    r"|\b(?:when|wanneer)\s+(?:you|je|u)\s*$"
+    r"|\bso\s+(?:that\s+)?(?:i|we|he|she|they|my\s+\w+|our\s+\w+|the\s+\w+)\s+(?:can|could|may|will)"
+    r"(?:\s+(?:then|later|also|still|easily|myself|ourselves|herself|himself|get|have|\S+\s+(?:and|en)))*\s*$"
+    r"|\b(?:the|my|our|de|mijn|onze)\s+(?!assistant\b|assistent\b)\w+\s+"
+    r"(?:will|can|could|may|shall|kan|zal|gaat|moet|is going to|has to|needs to)"
+    r"(?:\s+(?:hem|het|die|zelf|morgen|vandaag|nog|\w+dag))*\s*$"
+    r"|^\s*(?!(?:you|je|jij|u|who|wie|assistant|assistent|claude|it|this|that|there)\b)\w+\s+"
+    r"(?:will|shall|zal|gaat|is going to|has to|needs to)"
+    r"(?:\s+(?:hem|het|die|zelf|morgen|vandaag|nog|\w+dag))*\s*$"
+    r"|\b(?:prepare|check|review|bereid|controleer)\b[^,.;:!?]*\bin order to\s*$"
+    r"|\bzodat\s+(?:ik|we|wij|hij|zij|ze|mijn\s+\w+|onze\s+\w+)(?:\s+\S+){0,4}\s*$"
+    r"|\bfor\s+(?:me|us|my\s+\w+)\s+to\s*$|\bvoor\s+(?:mij|ons)\s+om(?:\s+\S+){0,4}\s*$"
+    r"|\b(?:deadline|due date|last date|date|datum|uiterste datum|termijn|aangiftetermijn)\s+(?:to|for|om|voor)"
+    r"(?:\s+\S+){0,5}\s*$"
+    r"|(?<!\bnow\s)(?<!\bso\s)(?<!\bnu\s)\b(?:that|which|die|dat)\s+(?:i|ik|we|wij|my\s+\w+|our\s+\w+|mijn\s+\w+|onze\s+\w+|the\s+\w+|de\s+\w+)"
+    r"(?:\s+(?!and\b|en\b|or\b|of\b)\S+){0,3}\s*$"
+    r"|\b(?:forgot|forgotten|vergeten|vergat|missed|failed)\b(?:\s+(?!so\b|dus\b|and\b|en\b|but\b|maar\b)\S+){0,5}\s*$"
+    r"|\b(?:steps?|stappen|checklist|documents?|documenten|stukken|needed|required"
+    r"|(?<!\bje\s)(?<!\bjou\s)(?<!\bu\s)nodig|instructions|instructies)\b"
+    r"(?:\s+(?!(?:is|are|was|wordt)\b)\S+){0,4}?\s+(?:om|to)\b(?:\s+\S+){0,5}\s*$"
+    r"|\b(?:(?:tell|show|vertel|laat)\s+(?:me|mij|us|ons)(?:\s+(?:weten|know|zien))?|laat\s+zien|show|explain"
+    r"|leg\s+uit|uitleggen)\s+(?:when|how|what|where|who|why|whether|if|wanneer|hoe|wat|waar|wie|waarom|of)\b"
+    r"(?:\s+(?!and\b|en\b|then\b|dan\b|daarna\b|but\b|maar\b)\S+){0,8}\s*$"
+    r"|\b(?:remind|herinner|ask|vraag|tell|vertel)\s+(?:my|mijn|the|de|our|onze)\s+\w+\b"
+    r"(?:\s+(?!and\b|en\b|then\b|dan\b)\S+){0,8}\s*$"
+    r"|\b(?:not\s+(?:yet\s+)?|almost\s+|nearly\s+)ready\s+to\s*$|\b(?:bijna|nog niet)\s+klaar\s+om\b(?:\s+\S+){0,5}\s*$"
+    r"|\bop het punt\b(?:\s+\S+){0,5}\s*$"
+    r"|\b(?:remind|herinner)\s+(?:me|mij|us|ons)\b(?:\s+(?!and\b|en\b|then\b|dan\b|daarna\b|but\b|maar\b)\S+){0,8}\s*$"
+    r"|\b(?:add|create|make|set|schedule|plan|new|maak|zet|voeg)\b(?:\s+\S+){0,3}?\s+"
+    r"(?:reminder|herinnering|task|taak|todo|to do)\b(?:\s+\S+){0,8}\s*$"
+    r"|\b(?:reminder|herinnering)\s*$"
+    r"|\b(?:i|we|ik)\s+(?:remember|onthoud|onthouden)\s+(?:to|om)\s*$"
+    r"|\bhelp\s+(?:me|us|mij|ons)\s+(?:prepare|get ready|voorbereiden|klaar)\b(?:\s+\S+){0,6}\s*$"
+    r"|\b(?:i want to know|i wonder|i would like to know|ik wil weten|ik vraag me af|ik wil graag weten)"
+    r"\s+(?:when|how|what|where|whether|if|wanneer|hoe|wat|waar|of)\b(?:\s+\S+){0,8}\s*$",
+    re.IGNORECASE,
+)
+# WHY: a user subject right before the verb, or right after it in a Dutch
+# inversion, names the user as the one who files, as does a third person.
+# An auxiliary before the subject asks the question "can we file it?".
+FILING_SUBJECT_BEFORE_RE = re.compile(
+    r"(?:\b(?:i|ik)|(?<!\bcan\s)(?<!\bcould\s)(?<!\bshall\s)(?<!\bshould\s)(?<!\bmay\s)(?<!\bwill\s)(?<!\bdon't\s)(?<!\bdont\s)"
+    r"\b(?:we|wij|he|she|they|hij|zij|ze))(?:['\u2019\u00b4`\u02bc](?:ll|d|m|re))?"
+    r"(?:\s+(?:then|daarna|zelf|myself|ourselves|always|altijd|usually|meestal|will|shall|ga|gaan|can|kan"
+    r"|kunnen|zal|zullen|moet|moeten|wil|willen|am|are|is|going|to|plan|plans|want|wants|intend|have|has"
+    r"|need|needs|should|must|would|like|prefer|rather|just|also|ook|ourselves|himself|herself|hem|het|die"
+    r"|morgen|vandaag|nog|straks|later|tomorrow|today|about|ready|hoping|trying|planning|aiming|looking|getting"
+    r"|starting|preparing|not|bijna|klaar|probably|maybe|eventually|soon))*\s*$",
+    re.IGNORECASE,
+)
+# WHY: a note or a reminder before a colon, as in "reminder: file it in May",
+# writes the filing down and asks for none, while "todo:" and "task:" assign it.
+FILING_NOTE_RE = re.compile(r"\b(?:reminder|herinnering|note|notitie)\s*:\s*$")
+# WHY: a Dutch subclause puts its verb last, so a finite filing verb after one,
+# as in "wanneer ik akkoord geef dien de aangifte in", opens the main clause.
+DUTCH_FINITE_VERBS = ("dien", "stuur", "verstuur", "verzend", "lever", "betaal", "vergrendel", "sluit", "meld", "doe")
+DUTCH_SUBCLAUSE_RE = re.compile(r"\b(?:wanneer|als|zodra|voordat|nadat|totdat|zodat)\s+\S+(?:\s+\S+)*\s*$")
+FILING_SUBJECT_AFTER_RE = re.compile(r"^\s+(?:ik|wij|we)\b", re.IGNORECASE)
+# WHY: a filing noun after a preposition, such as "before filing" or "voor het
+# indienen", names the act and requests none. So does a noun that the user owns
+# or that is the subject, as in "leave the filing to me" or "filing happens later".
+FILING_NOUN_BEFORE_RE = re.compile(
+    r"\b(?:before|prior to|after|(?<!how\s)(?<!what\s)about|on|of|for|with|until|without|how|voor|na|van|over|bij|tot|met|zonder|hoe)"
+    r"(?:\s+(?:the|het|de|een|a|niet|op tijd))*\s*$",
+    re.IGNORECASE,
+)
+FILING_NOUN_AFTER_RE = re.compile(
+    r"^(?:\s+\S+){0,3}?\s+(?:to me|aan mij|myself|ik zelf|doe ik|is up to me|up to me)\b"
+    r"|^\s+(?:happens|gebeurt|comes|follows|volgt|is|stays|remains|rests|blijft|ligt|doet|does)\b",
+    re.IGNORECASE,
+)
+FILING_NOUN_SIGNALS = ("filing", "indienen", "het indienen")
+FILING_REQUEST_LEAD_RE = re.compile(
+    r"^\s*(?:(?:please|graag|gewoon|even|now|nu)\s+)*(?:go ahead|go on|proceed|continue|start|begin|get started|take care|carry on"
+    r"|ga door|ga verder|zorg|regel|neem|verzorg)\b",
+    re.IGNORECASE,
+)
+# WHY: a real question asks about filing unless it asks the assistant to file,
+# as in "can you file it?", "can we file it today?" or "how about you file it".
+QUESTION_REQUEST_RE = re.compile(
+    r"\b(?:can|could|would|will|kun|kunt|kan|wil|zou|zal)\s+(?:you|je|jij|u)\b"
+    r"|\b(?:you|jij|jullie)\b|\b(?:wilt|kunt|dient|heeft|bent|zou|zouden|willen|kunnen)\s+(?:u|je|jij|jullie)\b"
+    r"|\b(?:dat|als)\s+(?:u|je)\b|\b(?:heb|durf|ga|doe|dien)\s+je\b|\blukt het\b|\bfor me\b|\bvoor (?:mij|me)\b"
+    r"|\b(?:can|could|shall|should|kunnen|mogen|gaan|zullen)\s+(?:we|wij)\b"
+    r"|\b(?:u|je)\s+(?:vragen|verzoeken)\b|\bwould it be possible\b|\b(?:ok|okay|oke|ok\u00e9|yes|right|goed|ja)\s*\?"
+    r"|\b(?:ga|gaat)\s+(?:je|jij|u)\b|\bare you going to\b|\bwhat if you\b|\bwat als je\b"
+    r"|\bhow about\b|\bwhat about\b|\bwhy (?:don't|dont|not)\b|\bplease\b|\balsjeblieft\b|\bgraag\b",
+    re.IGNORECASE,
+)
+SENTENCE_BREAK_RE = re.compile(r"[.!?]")
+# WHY: a bounded clause keeps one long request without punctuation from
+# scanning the whole text for each filing verb.
+CLAUSE_SPAN_CHARS = 200
+FILING_DEADLINE_RE = re.compile(r"^\s*(?:deadline|date|datum|termijn)\b", re.IGNORECASE)
+CLAUSE_BREAK_RE = re.compile(r"[,.;:!?]")
+# WHY: a conjunction or a subordinator starts a new clause part, so the "niet"
+# in "dien hem in en vergeet niet de bijlagen" and in "dien hem in als ik niet
+# reageer" negates another verb.
+CLAUSE_CONJUNCTION_RE = re.compile(
+    r"\b(?:en|maar|of|zodat|want|omdat|terwijl|dan|als|zodra|nu|aangezien|tenzij|voordat|nadat|dat"
+    r"|and|but|or|so|if|when|unless|because|since|before|after)\b"
+)
+# WHY: a Dutch separable verb puts its negation before the particle, as in
+# "dien daarna mijn aangifte niet in", and "hand in nothing" negates the object.
+POST_NEGATION_RE = re.compile(
+    r"^(?:\s+\S+){0,4}?\s+(?:niet(?:\s+(?:in|op|af|aan))?|niets(?:\s+(?:in|op|af|aan))?|niks|nothing"
+    r"|geen(?:\s+\S+){0,2}?(?:\s+(?:in|op|af|aan))?)(?:\s+(?:naar|bij|aan|to)\b[^,.;:!?]*)?\s*$",
+    re.IGNORECASE,
+)
+# WHY: the direct object follows the verb with at most a separable particle and
+# a few modifiers, so a preposition or a recipient before the object, as in
+# "send me a summary of the VAT return", names another object.
+GRAMMAR_PARTICLE_RE = re.compile(r"^\s*(?:in|op|af|aan|door)\b")
+GRAMMAR_GAP_STOP_RE = re.compile(
+    r"\b(?:of|van|for|from|uit|about|over|with|met|on|me|mij|us|ons|him|her|haar|een samenvatting|a summary)\b"
+)
+# WHY: a recipient that is no filing destination, as in "send it to the
+# accountant", "stuur hem naar Jan", "file it in the archive folder" or "send it
+# via email", names another receiver. A "to" before a verb, as in "file it to
+# meet the deadline", states a purpose and names none.
+GRAMMAR_RECIPIENT_RE = re.compile(
+    r"\b(?:to\s+(?:(?:the|a|an|my|our|your|his|her|their|this|that)\s+\w+|(?:me|us|him|her|them)\b|\S*@|\w+['\u2019]s\b"
+    r"|(?!(?:meet|avoid|make|get|be|keep|stay|prevent|ensure|comply|finish|save|beat|catch|hit|reach|do|have"
+    r"|start|close|pay|file|submit|stop)\b)\w+(?:\s+\w+){0,3}\s*$)|(?:over|along|door|verder|terug)\s*$|(?:into|onto|naar|aan)\s+\S+|bij\s+\w+|(?:under|onder)\s+\w+"
+    r"|(?:in)\s+(?:the|de|het|a|een|my|mijn|our|onze|map|folder)\b"
+    r"|(?:via|by|per|as|als|through)\s+(?:an?\s+|the\s+)?(?:e-?mail|mail|post|pdf|attachment|bijlage|whatsapp|slack|teams|link|zip|csv|excel)\b"
+    r"|ter\s+(?:controle|review|inzage|goedkeuring)\b|for\s+(?:review|approval|checking|a check|your review)\b"
+    r"|here\b|back\b)[^,.;:!?]*"
+)
+# WHY: a negation or a second clause between a want, status or passive trigger
+# and the filed state, as in "make sure it is not filed" or "markeer de aangifte
+# als klaar en de facturen als verstuurd", sets no filing object to a filed state.
+GRAMMAR_SPAN_STOP_RE = re.compile(
+    r"\b(?:not|niet|geen|never|nooit|nothing|niets|niks|and|en|but|maar)\b|n['\u2019\u00b4`\u02bc]t\b"
+)
+# WHY: a quarter or a period followed by another noun, as in "betaal de Q3
+# factuur" and "pay the period's rent", is no filing object.
+PERIOD_FILLER = frozenset((
+    "the", "het", "de", "een", "a", "an", "this", "that", "these", "those", "dit", "deze", "die", "my", "mijn", "our",
+    "onze", "your", "jouw", "last", "previous", "vorig", "vorige", "laatste", "current", "huidige", "next", "volgend",
+    "volgende", "whole", "hele", "complete", "gehele", "entire", "all", "alle", "first", "second", "third", "fourth",
+    "eerste", "tweede", "derde", "vierde", "1st", "2nd", "3rd", "4th", "1e", "2e", "3e", "4e", "1de", "2de", "3de", "4de",
+))
+GRAMMAR_PERIOD_OBJECTS = ("period", "periode", "quarter", "kwartaal", "q1", "q2", "q3", "q4")
+GRAMMAR_PERIOD_FOLLOW = (
+    r"(?=\s*(?:$|[,.;:!?]|(?:in|op|af|aan|door|for|of|van|voor|over|from|to|met|with|as|als|bij|on|at|and|en"
+    r"|then|dan|now|today|nu|vandaag|morgen|tomorrow|ook|too|please|graag|\d{4})\b))"
+)
+# WHY: "return" heads no filing object in a compound such as "return label".
+GRAMMAR_RETURN_COMPOUND_RE = re.compile(
+    r"^\s+(?:form|label|deposit|policy|shipment|request|flight|ticket|trip|journey|address|package|parcel"
+    r"|item|items|order|slip|value|email|mail)\b"
+)
+# WHY: "stuur hem als PDF" names a format, and "als" also starts a clause, so
+# the format is read past the clause cut.
+GRAMMAR_CHANNEL_RE = re.compile(
+    r"^[^,.;:!?]*?\b(?:als|as)\s+(?:an?\s+|een\s+)?(?:pdf|bijlage|attachment|e-?mail|csv|excel|zip)\b"
+)
+GRAMMAR_SERVICE_RE = re.compile(
+    r"^\s+(?:helpdesk|help desk|support|klantenservice|customer service|chat|website|site|newsletter|nieuwsbrief)\b"
+)
+# WHY: a verb at the start of its clause gives an order, so "file the VAT
+# return, ok?" asks to file however the sentence ends.
+GRAMMAR_LEAD_RE = re.compile(r"^\s*(?:(?:please|now|just|so|then|ok|okay|gewoon|even|nu|dus|graag)\s+)*$")
+GRAMMAR_LABELS = {
+    "filing verbs": "verbs",
+    "verb-final forms": "finals",
+    "filing objects": "objects",
+    "object pronouns": "pronouns",
+    "filing destinations": "destinations",
+    "status verbs": "status",
+    "want verbs": "want",
+    "filed states": "states",
+}
+GRAMMAR_HEADING_RE = re.compile(r"^## \d+\. FILING GRAMMAR\s*$", re.M)
+# WHY: a tool name is no task signal, so "jortt-cli" scores no point for the
+# migration signal Jortt.
+TOOL_NAME_RE = re.compile(
+    r"(?<!\w)(?:jortt[- ]cli|cli[- ]jortt|cli[- ]moneybird|moneybird[- ]guard|moneybird[- ]cli)(?!\w)",
+    re.IGNORECASE,
+)
+JORTT_TOOL_RE = re.compile(r"(?<!\w)(?:jortt[- ]cli|cli[- ]jortt)(?!\w)", re.IGNORECASE)
+# WHY: a move verb next to a CLI name moves records between the systems, and a
+# write verb next to the Jortt CLI asks for a Jortt write.
+MIGRATION_VERB_RE = re.compile(
+    r"\b(?:migrat\w*|migreer\w*|move|moving|copy|copies|copying|import\w*|transfer\w*|push\w*|book|boek"
+    r"|overzet\w*|verplaats\w*|kopieer\w*|kopi[e\u00eb]ren|across|new (?:administration|system)"
+    r"|nieuwe (?:administratie|systeem))\b"
+    r"|\bzet\w*\s+(?:\S+\s+){0,5}?over\b(?!\s+\d)",
+    re.IGNORECASE,
+)
+JORTT_WRITE_RE = re.compile(
+    r"(?<![\w-])(?:write|update|delete|edit|change|create|remove|add|modify|cancel|post|approve|schrijf\w*"
+    r"|wijzig\w*|verwijder\w*|bewerk\w*|aanmaken|aan te maken|toevoegen|toe te voegen|voeg|annuleer\w*"
+    r"|keur\w*)(?![\w-])",
+    re.IGNORECASE,
+)
+# WHY: a write verb with a local output, as in "write the summary to a file",
+# or a write word used as a noun, as in "the change history" or "the latest
+# update", writes nothing to Jortt.
+JORTT_LOCAL_OUTPUT_RE = re.compile(
+    r"^(?:\s+\S+){0,3}?\s+(?:summary|samenvatting|file|bestand|report|rapport|csv|overview|overzicht|note|notes"
+    r"|notitie|list|lijst|table|tabel)\b"
+    r"|^\s+(?:history|log|logboek|geschiedenis|date|datum)\b",
+    re.IGNORECASE,
+)
+JORTT_WRITE_NOUN_RE = re.compile(r"\b(?:the|a|an|de|het|een|latest|last|recent|laatste)\s*$", re.IGNORECASE)
+MONEYBIRD_NAME_RE = re.compile(r"(?<!\w)moneybird(?!\w)", re.IGNORECASE)
+# WHY: "edit nothing" and "wijzig niets" name a write only to rule it out.
+JORTT_WRITE_NEGATED_RE = re.compile(r"^\s+(?:nothing|anything|niets|niks)\b", re.IGNORECASE)
 
 INVOICE_RE = re.compile(r"\b(inkoopfactuur|bonnetje|invoice|receipt|supplier|leverancier)\b", re.IGNORECASE)
 GATE_RE = re.compile(r"\b(gate|poort)\b", re.IGNORECASE)
@@ -254,7 +537,7 @@ GLOSSARY_GENERAL_TOPICS = {
     "work-relationship-and-procedure.md": ("work-relationship", "procedure"),
 }
 
-# WHY: the yearly-overview README authors these eleven close signals, so the
+# WHY: the yearly-overview README authors these ten close signals, so the
 # T11 row carries them and the resolver loads the year README on a close
 # request. route-replay-test.sh fails when one is missing from the T11 cells.
 CLOSE_SIGNALS = (
@@ -268,13 +551,12 @@ CLOSE_SIGNALS = (
     "vooruitbetaalde kosten",
     "toerekenen",
     "privé-opnamen",
-    "suppletie",
 )
 
 # WHY: the additive row names the sibling skill it appends, so an answer
 # says which tool owns the read and a refused request stays blocked.
-JORTT_DESTINATION_TERMS = ("jortt", "jortt-cli", "read jortt", "haal op")
-MONEYBIRD_DESTINATION_TERMS = ("moneybird", "moneybird-guard", "boek in", "synchroniseer")
+JORTT_DESTINATION_TERMS = ("jortt", "jortt-cli", "cli-jortt", "read jortt", "haal op")
+MONEYBIRD_DESTINATION_TERMS = ("moneybird", "moneybird-guard", "cli-moneybird", "boek in", "synchroniseer")
 
 # WHY: routing-signals.md section 4 documents one clause per tie pair, so
 # the resolver, the corpus tie list and the prose must name the same pairs.
@@ -286,6 +568,7 @@ SPECIFICITY_PAIRS = (
     ("T6", "T4"),
     ("T1", "T2"),
     ("T1", "T3"),
+    ("T1", "T4"),
     ("T10", "T3"),
     ("T11", "T3"),
     ("T12", "T5"),
@@ -338,13 +621,13 @@ TOOL_ROUTE_SPLIT_RE = re.compile(r"\s*\+\s*")
 TOPIC_SIGNALS = (
     (("kilometer", "mileage", "auto", "car", "thuiswerk", "home office", "kosten", "costs", "study", "studie"), "costs-and-car"),
     (("zelfstandigenaftrek", "ondernemersaftrek", "urencriterium", "mkb", "startersaftrek"), "business-deductions"),
-    (("btw", "vat", "tarief", "rate", "voorbelasting", "kor"), "vat"),
+    (("btw", "vat", "tarief", "rate", "voorbelasting", "kor", "kleineondernemersregeling"), "vat"),
     (("box 3", "box3", "heffingsvrij", "vermogen", "savings"), "box-3"),
     (("box 2", "aanmerkelijk belang", "gebruikelijk loon"), "box-2"),
     (("vennootschapsbelasting", "vpb", "bv "), "private-company-and-corporate-tax"),
     (("pensioen", "lijfrente", "jaarruimte", "aov"), "pension-and-disability-insurance"),
     (("arbeidsrelatie", "dba", "opdracht", "loondienst"), "work-relationship"),
-    (("investering", "kia", "eia", "mia", "afschrijving"), "investments"),
+    (("investering", "kleinschaligheidsinvesteringsaftrek", "kia", "eia", "mia", "afschrijving"), "investments"),
     (("zvw",), "health-insurance-contribution"),
     (("bewaarplicht", "deadline", "aangifte", "bezwaar", "procedure"), "procedure"),
     (("box 1", "inkomstenbelasting", "heffingskorting"), "income-tax"),
@@ -1451,7 +1734,7 @@ def topic_file(text: str) -> str:
     """
     for terms, name in TOPIC_SIGNALS:
         for term in terms:
-            if phrase_matches(text, term) or term in text:
+            if phrase_matches(text, term):
                 return name
     return "costs-and-car"
 
@@ -1540,6 +1823,8 @@ def specificity_winner(
         return "T1"
     if pair == {"T1", "T3"} and (PHASE_RE.search(text) or GATE_RE.search(text)):
         return "T1"
+    if pair == {"T1", "T4"} and (PHASE_RE.search(text) or GATE_RE.search(text)):
+        return "T1"
     if pair == {"T10", "T3"}:
         return "T10" if row_signal_hit(route_rows, "T10", text) else "T3"
     if pair == {"T11", "T3"}:
@@ -1547,6 +1832,91 @@ def specificity_winner(
     if pair == {"T12", "T5"}:
         return "T12" if row_signal_hit(route_rows, "T12", text) else "T5"
     return None
+
+
+def jortt_write_named(text: str) -> bool:
+    """Tell whether a request names a write it does not rule out.
+
+    Args:
+        text: Lower case request text.
+
+    Returns:
+        True when a write verb stands without a negation before it,
+        without `nothing` or `niets` after it, without a local output such
+        as a summary or a file and not as a noun.
+    """
+    for match in JORTT_WRITE_RE.finditer(text):
+        before = text[max(0, match.start() - 32):match.start()]
+        after = text[match.end():match.end() + 80]
+        if TOOL_NEGATION_RE.search(before) or JORTT_WRITE_NEGATED_RE.search(after):
+            continue
+        if JORTT_LOCAL_OUTPUT_RE.match(after) or JORTT_WRITE_NOUN_RE.search(before):
+            continue
+        return True
+    return False
+
+
+def tool_negated(text: str, start: int) -> bool:
+    """Tell whether a negation governs the tool name that starts at one index.
+
+    Args:
+        text: Lower case request text.
+        start: Start of the tool name.
+
+    Returns:
+        True when a negation stands up to one word before the name and is no
+        phrase such as `not only` that adds the tool.
+    """
+    window = text[max(0, start - 32):start]
+    return TOOL_NEGATION_RE.search(window) is not None and NEGATION_EXEMPT_RE.search(window) is None
+
+
+def mask_negated_tools(text: str) -> str:
+    """Blank every tool name a negation governs.
+
+    Args:
+        text: Lower case request text.
+
+    Returns:
+        The text with each negated tool name replaced by a space, so
+        "do not use jortt-cli" names no tool to hand off to.
+    """
+    spans = [
+        match.span()
+        for match in TOOL_NAME_RE.finditer(text)
+        if tool_negated(text, match.start())
+    ]
+    for start, end in reversed(spans):
+        text = text[:start] + " " + text[end:]
+    return text
+
+
+def scoring_text(text: str) -> str:
+    """Return the text the task rows are scored on.
+
+    A tool name scores no row. When the request names the Jortt CLI and
+    neither Moneybird, a move verb, a phase number nor a write it does not
+    rule out, the word Jortt names the source the CLI reads, not a
+    migration, so it scores no row either.
+
+    Args:
+        text: Lower case request text.
+
+    Returns:
+        The text with the tool names, and with the Jortt CLI the system name
+        Jortt, replaced by a space.
+    """
+    jortt_tool = JORTT_TOOL_RE.search(text) is not None
+    text = TOOL_NAME_RE.sub(" ", text)
+    moves = (
+        MONEYBIRD_NAME_RE.search(text)
+        or MIGRATION_VERB_RE.search(text)
+        or PHASE_RE.search(text)
+        or jortt_write_named(text)
+    )
+    if jortt_tool and not moves:
+        text = re.sub(r"(?<!\w)jortt(?!\w)", " ", text)
+    return text
 
 
 def out_of_scope_hit(text: str) -> bool:
@@ -1560,45 +1930,344 @@ def out_of_scope_hit(text: str) -> bool:
     Returns:
         True when the boundary is named.
     """
+    folded = fold_text(text)
     for pattern in OUT_OF_SCOPE_PATTERNS:
         match = re.search(pattern, text)
         if not match:
             continue
-        before = text[max(0, match.start() - 24):match.start()]
-        if NEGATION_RE.search(before):
+        boundary = BOUNDARY_SIGNAL_RE.search(fold_text(match.group(0))) is not None
+        if not boundary:
+            # WHY: a question, a frame or a user subject keeps the fallback
+            # as it keeps a table signal.
+            hit = re.search(pattern, folded)
+            if hit and filing_clause_kept(folded, hit.start(), hit.end(), False):
+                continue
+        clause_start = text[:match.start()]
+        breaks = list(CLAUSE_BREAK_RE.finditer(clause_start))
+        before = (clause_start[breaks[-1].end():] if breaks else clause_start)[-48:]
+        negation = BOUNDARY_NEGATION_RE if boundary else NEGATION_RE
+        if negation.search(before) and not NEGATION_EXEMPT_RE.search(before):
+            continue
+        rest = text[match.end():]
+        stop = CLAUSE_BREAK_RE.search(rest)
+        after = rest[:stop.start()] if stop else rest
+        joint = CLAUSE_CONJUNCTION_RE.search(after)
+        if re.search(r"\b(?:niet|geen)\b", (after[:joint.start()] if joint else after)[:48]):
             continue
         return True
     return False
 
 
-def t8_signal_hit(route_rows: List[Dict[str, str]], text: str) -> bool:
-    """Tell whether any signal of the refusal row matches one request.
+def t8_pattern(phrase: str) -> str:
+    """Build the whole-word pattern of one refusal signal.
+
+    Args:
+        phrase: Refusal signal from the T8 row.
+
+    Returns:
+        The regular expression of the phrase on folded text.
+    """
+    return r"(?<!\w)" + re.escape(fold_text(phrase)) + r"(?!\w)"
+
+
+def parse_filing_grammar(signals_text: str) -> Dict[str, Tuple[str, ...]]:
+    """Read the filing grammar out of the signal reference.
+
+    Args:
+        signals_text: routing-signals.md text.
+
+    Returns:
+        Mapping of each grammar part to its folded terms, empty when the
+        reference holds no filing grammar section.
+
+    Raises:
+        SystemExit: When the section exists but misses a part.
+    """
+    heading = GRAMMAR_HEADING_RE.search(signals_text)
+    if heading is None:
+        return {}
+    body = signals_text[heading.end():]
+    stop = re.search(r"^## ", body, re.M)
+    body = body[:stop.start()] if stop else body
+    grammar: Dict[str, Tuple[str, ...]] = {}
+    for line in body.splitlines():
+        match = re.match(r"^- ([A-Za-z -]+): (.+)$", line.strip())
+        if match and match.group(1).lower() in GRAMMAR_LABELS:
+            spans = [fold_text(span.strip()) for span in BACKTICK_RE.findall(match.group(2)) if span.strip()]
+            grammar[GRAMMAR_LABELS[match.group(1).lower()]] = tuple(spans)
+    missing = [label for label, key in GRAMMAR_LABELS.items() if not grammar.get(key)]
+    if missing:
+        fail("filing grammar in %s misses: %s" % (os.path.basename(SIGNALS_NAME), ", ".join(missing)))
+    return grammar
+
+
+_GRAMMAR_CACHE: Dict[str, Dict[str, Tuple[str, ...]]] = {}
+
+
+def load_filing_grammar(skill_root: str) -> Dict[str, Tuple[str, ...]]:
+    """Read the filing grammar of one skill folder once.
+
+    Args:
+        skill_root: Absolute skill folder.
+
+    Returns:
+        The parsed grammar, empty when the reference has none.
+    """
+    if skill_root not in _GRAMMAR_CACHE:
+        path = join_skill(skill_root, SIGNALS_NAME)
+        text = read_text(path) if os.path.isfile(path) else ""
+        _GRAMMAR_CACHE[skill_root] = parse_filing_grammar(text)
+    return _GRAMMAR_CACHE[skill_root]
+
+
+def term_pattern(terms: Sequence[str], plural: bool = False) -> str:
+    """Build one whole-word alternation over folded terms.
+
+    Args:
+        terms: Folded terms.
+        plural: True to let each term take a plural s.
+
+    Returns:
+        The regular expression body, longest term first.
+    """
+    ordered = sorted(terms, key=len, reverse=True)
+    tail = r"s?(?!\w)" if plural else r"(?!\w)"
+    return r"(?<!\w)(?:" + "|".join(re.escape(term) for term in ordered) + r")" + tail
+
+
+def clause_part(folded: str, start: int, end: int) -> Tuple[str, str]:
+    """Return the clause part before and after one match.
+
+    Args:
+        folded: Folded request text.
+        start: Start of the match.
+        end: End of the match.
+
+    Returns:
+        The text from the last clause break or conjunction up to the match,
+        and the text after the match up to the next one.
+    """
+    head = folded[max(0, start - CLAUSE_SPAN_CHARS):start]
+    breaks = list(CLAUSE_BREAK_RE.finditer(head)) + list(CLAUSE_CONJUNCTION_RE.finditer(head))
+    cut = max((item.end() for item in breaks), default=0)
+    rest = folded[end:end + CLAUSE_SPAN_CHARS]
+    stops = [item.start() for item in (CLAUSE_BREAK_RE.search(rest), CLAUSE_CONJUNCTION_RE.search(rest)) if item]
+    return head[cut:], rest[:min(stops)] if stops else rest
+
+
+def other_recipient(text: str, destinations: str) -> bool:
+    """Tell whether a text names a receiver that is no filing destination.
+
+    Args:
+        text: Folded clause text after a filing object or pronoun.
+        destinations: Pattern of the filing destinations.
+
+    Returns:
+        True when one recipient phrase is not a destination.
+    """
+    heads = {term.split()[-1] for term in re.findall(r"[a-z][a-z ]+[a-z]", destinations.replace("\\", ""))}
+    for match in GRAMMAR_RECIPIENT_RE.finditer(text):
+        landed = re.match(destinations, text[match.start():])
+        if landed and not GRAMMAR_SERVICE_RE.match(text[match.start() + landed.end():]):
+            continue
+        if not landed and heads & set(re.findall(r"\w+", match.group(0))[:3]):
+            continue
+        if not landed and re.search(r"\b(?:portal|portaal|online)\b", match.group(0)):
+            continue
+        return True
+    return False
+
+
+def grammar_hits(folded: str, grammar: Dict[str, Tuple[str, ...]]) -> List[Tuple[int, int, str]]:
+    """List the filing requests the grammar finds in one request.
+
+    Args:
+        folded: Folded request text.
+        grammar: Parsed filing grammar.
+
+    Returns:
+        One (start, end, kind) entry per hit, anchored on its verb. The kind
+        is `action` for a verb, `want` for a want or passive request.
+    """
+    if not grammar:
+        return []
+    period = [term for term in grammar["objects"] if term in GRAMMAR_PERIOD_OBJECTS]
+    plain = [term for term in grammar["objects"] if term not in period]
+    objects = r"(?:" + term_pattern(plain, plural=True) + r"(?!['\u2019]s\b)"
+    if period:
+        objects += "|" + term_pattern(period, plural=True) + GRAMMAR_PERIOD_FOLLOW
+    objects += ")"
+    pronouns = term_pattern(grammar["pronouns"])
+    destinations = term_pattern(grammar["destinations"])
+    states = term_pattern(grammar["states"])
+    # WHY: a quarter alone names no return, so "stuur hem in Q3" files nothing.
+    named = re.search(term_pattern(plain, plural=True), folded) is not None
+    hits: List[Tuple[int, int, str]] = []
+    for match in re.finditer(term_pattern(grammar["verbs"]), folded):
+        _, after = clause_part(folded, match.start(), match.end())
+        target = re.search(destinations, after)
+        if target and not GRAMMAR_SERVICE_RE.match(after[target.end():]):
+            hits.append((match.start(), match.end(), "action"))
+            continue
+        wide = folded[match.end():match.end() + CLAUSE_SPAN_CHARS]
+        if GRAMMAR_CHANNEL_RE.match(wide):
+            continue
+        tail = GRAMMAR_PARTICLE_RE.sub("", after, count=1)
+        found = re.match(r"^\s*((?:\S+\s+){0,3}?)(" + objects + r")", tail)
+        if found and re.match(term_pattern(period, plural=True), found.group(2)) and any(
+            word not in PERIOD_FILLER and not re.fullmatch(r"\d{1,4}|q[1-4]", word) for word in re.findall(r"[\w']+", found.group(1))
+        ):
+            found = None
+        if found and GRAMMAR_RETURN_COMPOUND_RE.match(tail[found.end():]):
+            found = None
+        if found and not GRAMMAR_GAP_STOP_RE.search(found.group(1)):
+            if not other_recipient(tail[found.end():], destinations):
+                hits.append((match.start(), match.end(), "action"))
+                continue
+        if named and re.match(r"^\s*" + pronouns, tail):
+            if not other_recipient(tail, destinations):
+                hits.append((match.start(), match.end(), "action"))
+    for match in re.finditer(term_pattern(grammar["finals"]), folded):
+        before, after = clause_part(folded, match.start(), match.end())
+        nominal = not before.strip() and re.match(r"^\s+van\s+(?:\S+\s+){0,3}?" + objects, after)
+        object_before = re.search(objects, before) or re.search(pronouns + r"\s*$", before)
+        if (nominal or object_before) and not other_recipient(before + after, destinations):
+            hits.append((match.start(), match.end(), "action"))
+    gap = CLAUSE_GAP + "?"
+    status_target = objects + "|" + pronouns if named else objects
+    status = r"(?P<t>" + term_pattern(grammar["status"]) + r")" + gap + r"(?:" + status_target + r")" + gap + r"(?P<s>" + states + r")"
+    want = (
+        r"(?P<t>" + term_pattern(grammar["want"]) + r"(?:\s+dat)?)(?:\s+\S+){0,3}?\s+" + objects
+        + r"(?:\s+\S+){0,4}?\s+(?P<s>" + states + r")"
+    )
+    passive = r"(?P<t>" + objects + r")(?:\s+\S+){0,2}?\s+(?:moet|must|has to|needs to)(?:\s+\S+){0,3}?\s+(?P<s>" + states + r")"
+    for pattern, kind in ((status, "action"), (want, "want"), (passive, "want")):
+        for match in re.finditer(pattern, folded):
+            if not GRAMMAR_SPAN_STOP_RE.search(folded[match.end("t"):match.end()]):
+                tail = folded[match.end():match.end() + CLAUSE_SPAN_CHARS]
+                stop = CLAUSE_BREAK_RE.search(tail)
+                before = re.sub(r"\b(?:to|te)\s+(?:be|have|get|zijn|worden|hebben)\s*$", " ", folded[match.start():match.start("s")])
+                scope = before + " " + (tail[:stop.start()] if stop else tail)
+                if other_recipient(scope, destinations):
+                    continue
+                hits.append((match.start(), match.start() + 1, kind))
+    return hits
+
+
+def filing_clause_kept(folded: str, start: int, end: int, boundary: bool, kind: str = "action") -> bool:
+    """Tell whether one refusal signal match keeps the request.
+
+    Args:
+        folded: Folded request text.
+        start: Start of the signal match.
+        end: End of the signal match.
+        boundary: True for a boundary word, which keeps a wider negation.
+        kind: `action` for a filing verb, `want` for a want or passive
+            request, which skips the user subject guard.
+
+    Returns:
+        True when a negation, a question, a purpose, a time, a deadline, a
+        relative clause or a user subject governs the match, so it requests
+        no filing.
+    """
+    clause_start = folded[max(0, start - 4 * CLAUSE_SPAN_CHARS):start]
+    breaks = list(CLAUSE_BREAK_RE.finditer(clause_start))
+    clause = (clause_start[breaks[-1].end():] if breaks else clause_start)[-CLAUSE_SPAN_CHARS:]
+    window = clause[-80:]
+    if boundary:
+        negated = BOUNDARY_NEGATION_RE.search(window) is not None
+    else:
+        negated = FILING_NEGATION_RE.search(window) is not None
+    if negated and not NEGATION_EXEMPT_RE.search(window) and not USER_CANNOT_RE.search(window):
+        return True
+    window_start = max(0, start - 4 * CLAUSE_SPAN_CHARS)
+    sentence_start = max((item.end() + window_start for item in SENTENCE_BREAK_RE.finditer(folded[window_start:start])), default=window_start)
+    sentence_end = SENTENCE_BREAK_RE.search(folded, end, end + 4 * CLAUSE_SPAN_CHARS)
+    if sentence_end and sentence_end.group(0) == "?":
+        sentence = folded[sentence_start:sentence_end.end()]
+        head, _ = clause_part(folded, start, end)
+        ordered = kind == "action" and GRAMMAR_LEAD_RE.match(head) is not None
+        if not ordered and not QUESTION_REQUEST_RE.search(sentence):
+            return True
+    if breaks and breaks[-1].group(0) == ":" and FILING_NOTE_RE.search(clause_start[:breaks[-1].end()]):
+        return True
+    main = folded[start:end] in DUTCH_FINITE_VERBS and DUTCH_SUBCLAUSE_RE.search(clause) is not None
+    if not main and FILING_FRAME_RE.search(clause):
+        return True
+    if not main and kind == "action" and FILING_SUBJECT_BEFORE_RE.search(clause):
+        return True
+    rest = folded[end:end + 4 * CLAUSE_SPAN_CHARS]
+    stop = CLAUSE_BREAK_RE.search(rest)
+    after = rest[:stop.start()] if stop else rest
+    if kind == "action" and FILING_SUBJECT_AFTER_RE.search(after):
+        return True
+    if FILING_DEADLINE_RE.search(after):
+        return True
+    if folded[start:end] in FILING_NOUN_SIGNALS:
+        if (FILING_NOUN_BEFORE_RE.search(clause) and not FILING_REQUEST_LEAD_RE.match(clause)) or FILING_NOUN_AFTER_RE.search(after):
+            return True
+    joint = CLAUSE_CONJUNCTION_RE.search(after)
+    governed = after[:joint.start()] if joint else after
+    return POST_NEGATION_RE.search(governed) is not None
+
+
+def table_recipient(folded: str, end: int, grammar: Dict[str, Tuple[str, ...]]) -> bool:
+    """Tell whether a `file the` signal sends its object to another receiver.
+
+    Args:
+        folded: Folded request text.
+        end: End of the signal match.
+        grammar: Parsed filing grammar.
+
+    Returns:
+        True when the clause after the signal names a receiver that is no
+        filing destination, as in `file the return in the archive folder`.
+    """
+    rest = folded[end:end + CLAUSE_SPAN_CHARS]
+    stop = CLAUSE_BREAK_RE.search(rest)
+    return other_recipient(rest[:stop.start()] if stop else rest, term_pattern(grammar["destinations"]))
+
+
+def t8_signal_hit(
+    route_rows: List[Dict[str, str]],
+    text: str,
+    grammar: Optional[Dict[str, Tuple[str, ...]]] = None,
+) -> bool:
+    """Tell whether one request asks to file, or names the boundary.
 
     The scorer reads the filing verbs and the boundary words from the T8
-    signal cells. It keeps no list of its own. A signal matches whole words
-    on both sides, so `dien` misses `diensten` and `submit` misses
-    `submitted`. A short negation before the signal, or just after a Dutch
-    separable verb such as `dien die niet in`, keeps the request.
+    signal cells and the filing grammar of the signal reference. A signal
+    matches whole words on both sides, so `dien` misses `diensten` and
+    `submit` misses `submitted`. A match keeps the request when a negation
+    governs it, when its sentence is a question that asks the assistant to
+    do nothing, and when its clause asks when, how or what the user files,
+    names a deadline for it, states a purpose, sets a time the user acts
+    in, holds a relative clause with another subject or names the user as
+    the subject. A boundary word keeps a negation a few words away, as in
+    `without reading my personal database`.
 
     Args:
         route_rows: Parsed task-type rows.
         text: Lower case request text.
+        grammar: Parsed filing grammar, None for the table signals only.
 
     Returns:
-        True when one T8 signal matches.
+        True when one signal or one grammar hit asks to file.
     """
     folded = fold_text(text)
     for row in route_rows:
         if row["type"] != "T8":
             continue
         for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"]):
-            pattern = r"(?<!\w)" + re.escape(fold_text(phrase)) + r"(?!\w)"
-            for match in re.finditer(pattern, folded):
-                before = folded[max(0, match.start() - 24):match.start()]
-                after = folded[match.end():match.end() + 24]
-                if NEGATION_RE.search(before) or re.search(r"\b(?:niet|geen)\b", after):
+            boundary = BOUNDARY_SIGNAL_RE.search(fold_text(phrase)) is not None
+            for match in re.finditer(t8_pattern(phrase), folded):
+                if grammar and phrase.lower().startswith("file ") and table_recipient(folded, match.end(), grammar):
                     continue
-                return True
+                if not filing_clause_kept(folded, match.start(), match.end(), boundary):
+                    return True
+    for start, end, kind in grammar_hits(folded, grammar or {}):
+        if not filing_clause_kept(folded, start, end, False, kind):
+            return True
     return False
 
 
@@ -1610,11 +2279,16 @@ def t7_destination(text: str, blocked: bool) -> str:
         blocked: True when the filing gate or the boundary refuses the request.
 
     Returns:
-        `cli-jortt`, `cli-moneybird` or `blocked`.
+        `cli-jortt`, `cli-moneybird` or `blocked`, which a refusal and a
+        write against Jortt alone return.
     """
     if blocked or out_of_scope_hit(text):
         return "blocked"
     if any(phrase_matches(text, term) for term in JORTT_DESTINATION_TERMS):
+        # WHY: Jortt is read only, so a write that names no Moneybird target
+        # asks for a Jortt write.
+        if jortt_write_named(text) and not MONEYBIRD_NAME_RE.search(TOOL_NAME_RE.sub(" ", text)):
+            return "blocked"
         return "cli-jortt"
     if any(phrase_matches(text, term) for term in MONEYBIRD_DESTINATION_TERMS):
         return "cli-moneybird"
@@ -1734,19 +2408,22 @@ def decide_route(
         additive flag, the destination, the warning band gap and the
         candidate types.
     """
-    text = prompt.lower()
+    text = mask_negated_tools(prompt.lower())
     explicit_year = YEAR_RE.search(text) is not None
-    scores = score_candidates(route_rows, text, weak_signals)
+    scores = score_candidates(route_rows, scoring_text(text), weak_signals)
     t7_hit = any(
         phrase_matches(text, phrase)
         for row in route_rows
         if row["type"] == "T7"
         for phrase in signal_phrases(row["dutch"]) + signal_phrases(row["english"])
     )
-    t8_hit = t8_signal_hit(route_rows, text)
+    t8_hit = t8_signal_hit(route_rows, text, load_filing_grammar(skill_root))
     destination = t7_destination(text, t8_hit) if t7_hit else ""
-    # WHY: a filing signal wins over the preparation rows whatever they score.
+    # WHY: a filing signal wins over the preparation rows whatever they score,
+    # and over every row once the request names the deliverable it would file.
     if t8_hit:
+        if any(route_type in scores for route_type in PREPARE_TYPES):
+            scores = {}
         for route_type in PREPARE_TYPES:
             scores.pop(route_type, None)
     ordered = sorted(scores.items(), key=lambda item: (-item[1], item[0]))
@@ -1908,6 +2585,22 @@ def hub_signal_pattern(phrase: str) -> str:
     return r"(?<!\w)" + signal_pattern(phrase) + r"(?!\w)"
 
 
+def hub_signal_named(text: str, phrase: str) -> bool:
+    """Tell whether one request names a stage one signal it does not negate.
+
+    Args:
+        text: Lower case request text.
+        phrase: Signal phrase.
+
+    Returns:
+        True when one match of the phrase has no negation before it.
+    """
+    for match in re.finditer(hub_signal_pattern(phrase), text):
+        if not tool_negated(text, match.start()):
+            return True
+    return False
+
+
 def strip_phrase(text: str, phrase: str) -> str:
     """Blank every match of one signal phrase in a text.
 
@@ -1952,9 +2645,13 @@ def resolve_packets(
 ) -> List[str]:
     """Pick the packets one request reads, in the order it reads them.
 
-    A request that names a CLI signal and holds no accountant task once the
-    CLI signals and the system names are set aside starts in that CLI
-    packet. Every other request starts in the default packet, which hands
+    A request that names a CLI signal it does not negate and holds no
+    accountant task once the CLI signals and the system names are set aside
+    starts in that CLI packet, or in each named CLI packet in registry
+    order. A request that names both systems, where a CLI name stands for
+    its system, and holds a bare system name or a move verb, that names a
+    phase number or whose route is a migration row with a move verb, holds
+    a migration task. Every other request starts in the default packet, which hands
     off to each packet its winning tool route names and to the destination
     of an additive T7 hit. A refusal stays in the default packet with no
     handoff, and so does a request that names a CLI and is a refusal once
@@ -1981,15 +2678,28 @@ def resolve_packets(
     named = [
         mode
         for mode in others
-        if any(re.search(hub_signal_pattern(phrase), text) for phrase in hub["signals"][mode])
+        if any(hub_signal_named(text, phrase) for phrase in hub["signals"][mode])
     ]
     if named:
         rest = text
         for mode in others:
             for phrase in hub["signals"][mode]:
                 rest = strip_phrase(rest, phrase)
+        # WHY: a request that names both systems or a phase number moves records
+        # between them, which is a migration task for the accountant. A CLI
+        # name stands for its system, so "jortt-cli ... into Moneybird" names
+        # both. Two CLI names alone need a move verb, because "list my contacts
+        # with both CLIs" moves nothing.
+        unnegated = mask_negated_tools(text)
+        bare = TOOL_NAME_RE.sub(" ", unnegated)
+        both_systems = all(re.search(hub_signal_pattern(name), unnegated) for name in HUB_SYSTEM_NAMES)
+        bare_name = any(re.search(hub_signal_pattern(name), bare) for name in HUB_SYSTEM_NAMES)
+        migration_route = route.get("type") in ("T1", "T2") and MIGRATION_VERB_RE.search(text)
+        if (both_systems and (bare_name or MIGRATION_VERB_RE.search(text))) or PHASE_RE.search(rest) or migration_route:
+            named = []
         for name in HUB_SYSTEM_NAMES:
             rest = strip_phrase(rest, name)
+    if named:
         remainder = resolve_rest(rest)
         # WHY: a filing request that names a CLI can route to a task row on the
         # system name, so the refusal is read on the text left after the strip.
@@ -2260,6 +2970,10 @@ def score_row(
         problems.append("mode %s expected %s" % (route["mode"], row.get("gold_mode")))
     if route["type"] != row.get("gold_task_type"):
         problems.append("task type %s expected %s" % (route["type"], row.get("gold_task_type")))
+    # WHY: tier C has the mode and type of a normal answer, so only the tier
+    # tells a missing-year question from an answer that skipped it.
+    if "tier" in row and str(route.get("tier", "")) != str(row.get("tier", "")):
+        problems.append("tier %s expected %s" % (route.get("tier", "") or "none", row.get("tier", "") or "none"))
     if missing_paths:
         problems.append("paths not loaded %s" % ", ".join(missing_paths))
     if hit_forbidden:
@@ -2500,7 +3214,7 @@ def write_report(
     )
     monthly = "calibration: pending" if constants.get("fallback_floor_pending") else str(constants.get("fallback_floor"))
     languages = ("en", "nl", "mixed")
-    splits = ("calibration", "held-out")
+    splits = ("calibration", "held-out", "regression")
     languages_accuracy = {
         language: accuracy(rows, results, lambda row, _result, value=language: row.get("lang") == value)
         for language in languages

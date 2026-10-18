@@ -234,6 +234,119 @@ else
     fail "a suite added with its own run line passes"
 fi
 
+# WHY: a commented line, a path that only an echo prints and a step that an if
+# of false switches off never run, so none of them may register a suite.
+if make_fixture "$FIX" \
+    && write_suite "$FIX" "sk-moneybird-accountant/scripts/epsilon-test.sh" \
+    && cat >>"$FIX/.github/workflows/skill-health.yml" <<'YAML'
+      - name: Epsilon note
+        run: |
+          # bash sk-moneybird-accountant/scripts/epsilon-test.sh
+          echo done
+YAML
+then
+    run_checker "$FIX"
+    status=$?
+    if [[ "$status" -eq 1 ]] && grep -q '^missing-run sk-moneybird-accountant/scripts/epsilon-test.sh' "$TMP_ROOT/out.txt"; then
+        pass "a commented run line does not register a suite"
+    else
+        fail "a commented run line does not register a suite"
+    fi
+else
+    fail "a commented run line does not register a suite"
+fi
+
+if make_fixture "$FIX" \
+    && write_suite "$FIX" "sk-moneybird-accountant/scripts/zeta-test.sh" \
+    && write_suite "$FIX" "sk-moneybird-accountant/scripts/theta-test.sh" \
+    && cat >>"$FIX/.github/workflows/skill-health.yml" <<'YAML'
+      - name: Zeta note
+        run: echo "next bash sk-moneybird-accountant/scripts/zeta-test.sh"
+      - name: Theta note
+        run: printf 'run %s\n' sk-moneybird-accountant/scripts/theta-test.sh
+YAML
+then
+    run_checker "$FIX"
+    status=$?
+    if [[ "$status" -eq 1 ]] \
+        && grep -q '^missing-run sk-moneybird-accountant/scripts/zeta-test.sh' "$TMP_ROOT/out.txt" \
+        && grep -q '^missing-run sk-moneybird-accountant/scripts/theta-test.sh' "$TMP_ROOT/out.txt"; then
+        pass "a path after echo or printf does not register a suite"
+    else
+        fail "a path after echo or printf does not register a suite"
+    fi
+else
+    fail "a path after echo or printf does not register a suite"
+fi
+
+if make_fixture "$FIX" \
+    && write_suite "$FIX" "sk-moneybird-accountant/scripts/iota-test.sh" \
+    && cat >>"$FIX/.github/workflows/skill-health.yml" <<'YAML'
+      - name: Iota suite
+        run: echo starting && bash sk-moneybird-accountant/scripts/iota-test.sh
+YAML
+then
+    run_checker "$FIX"
+    status=$?
+    if [[ "$status" -eq 0 ]]; then
+        pass "a command chained after an echo still registers its suite"
+    else
+        fail "a command chained after an echo still registers its suite"
+    fi
+else
+    fail "a command chained after an echo still registers its suite"
+fi
+
+if make_fixture "$FIX" \
+    && write_suite "$FIX" "sk-moneybird-accountant/scripts/kappa-test.sh" \
+    && write_suite "$FIX" "sk-moneybird-accountant/scripts/lambda-test.sh" \
+    && write_suite "$FIX" "sk-moneybird-accountant/scripts/nu-test.sh" \
+    && cat >>"$FIX/.github/workflows/skill-health.yml" <<'YAML'
+      - name: Kappa off
+        if: false
+        run: bash sk-moneybird-accountant/scripts/kappa-test.sh
+      - name: Lambda off
+        run: |
+          bash sk-moneybird-accountant/scripts/lambda-test.sh
+        if: ${{ FALSE }}
+      - if: "false"
+        name: Nu off
+        run: bash sk-moneybird-accountant/scripts/nu-test.sh
+YAML
+then
+    run_checker "$FIX"
+    status=$?
+    if [[ "$status" -eq 1 ]] \
+        && grep -q '^missing-run sk-moneybird-accountant/scripts/kappa-test.sh' "$TMP_ROOT/out.txt" \
+        && grep -q '^missing-run sk-moneybird-accountant/scripts/lambda-test.sh' "$TMP_ROOT/out.txt" \
+        && grep -q '^missing-run sk-moneybird-accountant/scripts/nu-test.sh' "$TMP_ROOT/out.txt"; then
+        pass "a step whose if is literally false does not register a suite"
+    else
+        fail "a step whose if is literally false does not register a suite"
+    fi
+else
+    fail "a step whose if is literally false does not register a suite"
+fi
+
+if make_fixture "$FIX" \
+    && write_suite "$FIX" "sk-moneybird-accountant/scripts/mu-test.sh" \
+    && cat >>"$FIX/.github/workflows/skill-health.yml" <<'YAML'
+      - name: Mu suite
+        if: github.event_name == 'push'
+        run: bash sk-moneybird-accountant/scripts/mu-test.sh
+YAML
+then
+    run_checker "$FIX"
+    status=$?
+    if [[ "$status" -eq 0 ]]; then
+        pass "a step with a context condition still registers its suite"
+    else
+        fail "a step with a context condition still registers its suite"
+    fi
+else
+    fail "a step with a context condition still registers its suite"
+fi
+
 # ───────────────────────────────────────────────────────────────
 # 7. REFUSALS
 # ───────────────────────────────────────────────────────────────
@@ -251,10 +364,12 @@ else
     fail "a missing workflow exits 2 and names the file"
 fi
 
-if python3 -I "$CHECKER" --root "$TMP_ROOT/no-such-root" >"$TMP_ROOT/out.txt" 2>&1; then
-    fail "a missing root is refused"
+python3 -I "$CHECKER" --root "$TMP_ROOT/no-such-root" >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+if [[ "$status" -eq 2 ]] && grep -q '^error: not a directory: ' "$TMP_ROOT/out.txt"; then
+    pass "a missing root exits 2 and says it is not a directory"
 else
-    pass "a missing root is refused"
+    fail "a missing root exits 2 and says it is not a directory"
 fi
 
 # ───────────────────────────────────────────────────────────────

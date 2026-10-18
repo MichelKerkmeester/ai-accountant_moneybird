@@ -216,8 +216,11 @@ check_mutant() {
     local name="$1"
     local expected="$2"
     local out="$TMP_ROOT/mutant-$name.txt"
-    if python3 -I "$FILLER" --template "$TMP_ROOT/$name.html" >"$out" 2>&1; then
-        fail "the $name mutant fails"
+    local status
+    python3 -I "$FILLER" --template "$TMP_ROOT/$name.html" >"$out" 2>&1
+    status=$?
+    if [[ "$status" -ne 1 ]]; then
+        fail "the $name mutant exits 1 (exit $status)"
         return
     fi
     if grep -qF "$expected" "$out"; then
@@ -240,16 +243,20 @@ check_mutant "unused" "the body never uses it"
 
 group "Usage errors"
 
-if python3 -I "$FILLER" --template "$TMP_ROOT/absent.html" >/dev/null 2>&1; then
-    fail "a missing template is refused"
+python3 -I "$FILLER" --template "$TMP_ROOT/absent.html" >"$TMP_ROOT/usage-absent.txt" 2>&1
+status=$?
+if [[ "$status" -eq 2 ]] && grep -qF 'error: missing template: ' "$TMP_ROOT/usage-absent.txt"; then
+    pass "a missing template is refused with exit 2 and names the file"
 else
-    pass "a missing template is refused"
+    fail "a missing template is refused with exit 2 and names the file (exit $status)"
 fi
 
-if python3 -I "$FILLER" --template "$TEMPLATE" --items 0 >/dev/null 2>&1; then
-    fail "a zero repeat count is refused"
+python3 -I "$FILLER" --template "$TEMPLATE" --items 0 >"$TMP_ROOT/usage-items.txt" 2>&1
+status=$?
+if [[ "$status" -eq 2 ]] && grep -qF 'error: --items must be at least 1' "$TMP_ROOT/usage-items.txt"; then
+    pass "a zero repeat count is refused with exit 2 and names the option"
 else
-    pass "a zero repeat count is refused"
+    fail "a zero repeat count is refused with exit 2 and names the option (exit $status)"
 fi
 
 # ───────────────────────────────────────────────────────────────

@@ -26,7 +26,7 @@ The offline skill health job seeds the pinned tokenizer cache, runs each check a
 
 Every suite in the workflows is named on its own line, because the regression trailer check reads this file to learn which tests are registered. The workflows run on a clean checkout with read-only contents permission and no persisted credentials.
 
-The word check, the split check and the outline check reach CI through `check-route-table.py`, which runs all three as siblings in the route table step. `check-ci-suites.py` compares every suite on disk with the workflow run lines and fails a suite that no run line names, so the workflow edit that registers a new suite is the last step of adding one. `scannability-report.py` and `hoist-record-duties.py` are checkers that a suite covers, not suites of their own.
+The word check, the split check and the outline check reach CI through `check-route-table.py`, which runs all three as siblings in the route table step. `check-ci-suites.py` compares every suite on disk with the workflow run lines and fails a suite that no run line names, so the workflow edit that registers a new suite is the last step of adding one. A commented run line, a suite path after `echo` or `printf` and a step or job with a literal false `if:` count as no run line, while a path chained after an echo with `&&` still registers. `scannability-report.py` is a checker that `check-route-table.py` runs, not a suite of its own. `hoist-record-duties.py --check` has no workflow step of its own, and `route-table-test.sh` proves its owner section case on a repository copy. It exits 1 while a year-independent record duty still sits in the year topic files and also when the `RECORD AND INVOICE DUTIES` section 2 of `references/tax-rules/general/record-and-invoice-duties.md` is absent.
 
 ---
 
@@ -48,7 +48,7 @@ The word check, the split check and the outline check reach CI through `check-ro
 | `scripts/privacy-gate-test.sh` | Automated test | The suite the privacy job runs. |
 | `sk-moneybird-accountant/scripts/write-contract-test.sh` | Automated test | One of the suites the skill health job runs. |
 | `sk-moneybird-accountant/scripts/check-ci-suites.py` | Test harness | Compares every suite on disk with the skill health workflow run lines and fails a suite that no run line names. |
-| `sk-moneybird-accountant/scripts/check-ci-suites-test.sh` | Automated test | Proves the suite registration check on fixture repositories. |
+| `sk-moneybird-accountant/scripts/check-ci-suites-test.sh` | Automated test | Proves the suite registration check on fixture repositories, among them a commented run line, a printed path and a disabled step. |
 | `sk-moneybird-accountant/scripts/check-route-table.py` | Test harness | Runs the route table check with the sibling word, split and outline checks in one skill health step. |
 
 ---

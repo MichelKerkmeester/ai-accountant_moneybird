@@ -102,7 +102,7 @@ STEP 5: Later read-back
 
 Trial or package expiry is the Operator's check before STEP 2. See `sk-moneybird-accountant/SKILL.md` for the phase gates. The write contract, the evidence rule, the idempotency rule, the exit set and the canonical read-back sentence are in [shared mechanisms](../sk-moneybird-accountant/references/migration/shared-mechanisms.md#route-contract).
 
-Writes target the pilot administration unless the plan's gate allows a production batch and the operator gives an explicit go for that batch. Every write runs in the writer session through `moneybird-guard` with `--confirm-write` and `--approval "$APPROVAL_REF"` for a flushed `WRITE_INTENT` that carries the `payload_digest`, with `--production` only for an approved production batch. The [write contract](../sk-moneybird-accountant/references/migration/shared-mechanisms.md#route-contract) owns the command shape, the gate order, the evidence rule, the idempotency rule and the exit set.
+Every guarded read runs with `MONEYBIRD_GUARD_READ_ONLY=1`. Outside the LIVE workflows of migration phases 19 to 21, a LIVE Moneybird write is an Operator UI action. Writes target the pilot administration unless the plan's gate allows a production batch and the operator gives an explicit go for that batch. Every write runs in the writer session through `moneybird-guard` with `--confirm-write` and `--approval "$APPROVAL_REF"` for a flushed `WRITE_INTENT` that carries the `payload_digest`, with `--production` only for an approved production batch. The [write contract](../sk-moneybird-accountant/references/migration/shared-mechanisms.md#route-contract) owns the command shape, the gate order, the evidence rule, the idempotency rule and the exit set.
 
 ### Output Location
 

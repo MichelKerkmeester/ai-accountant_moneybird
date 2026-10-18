@@ -24,7 +24,7 @@ Writes the git-ignored session context from the clock and a migration projection
 
 ### Context fields
 
-The builder reads the migration config and the phase dashboard, projects a fixed set of allowlisted fields onto the context file and drops everything else. A date or year field is kept only in its exact stored form. Output is stable for a given clock and inputs, so two runs with the same inputs produce the same bytes. The clock comes from `SOURCE_DATE_EPOCH` when it holds an integer, otherwise from the runtime UTC clock.
+The builder reads the migration config and the phase dashboard, projects a fixed set of allowlisted fields onto the context file and drops everything else. The config may hold a nested mapping, a literal dotted key or the template shape, a `fields` list of rows that each carry a `field` and a `value`. A `PENDING` or empty value in a template row reads as null. The phase statuses come from a JSON dashboard list when one exists, else from the phase table of the markdown dashboard that `init-workspace.sh` copies into `Plans/`, where a status such as `GATE PASSED` reads as `GATE_PASSED`. A date or year field is kept only in its exact stored form. Output is stable for a given clock and inputs, so two runs with the same inputs produce the same bytes. The clock comes from `SOURCE_DATE_EPOCH` when it holds an integer, otherwise from the runtime UTC clock.
 
 ### Check and route state
 
@@ -46,12 +46,13 @@ The router resolves the year as `year_key`: an explicit year, else the period un
 | `sk-moneybird-accountant/references/tax-rules/year-and-state.md` | Shared | Holds the year resolver, the refusal states and the post-cutover predicate. |
 | `sk-moneybird-accountant/references/routing-signals.md` | Shared | Names the signal sources and tie mechanics the router reads. |
 | `sk-moneybird-accountant/ROUTER.md` | Shared | Routes the resolved year and state through the Task-Type Table. |
+| `AGENTS.md` | Shared | Tells the agent to run the builder when `session-context.json` is missing and to ask for the year when none resolves. |
 
 ### Validation And Tests
 
 | File | Type | Role |
 |---|---|---|
-| `sk-moneybird-accountant/scripts/session-context-test.sh` | Automated test | Runs the builder against offline fixtures for the clock, the allowlist, staleness and the post-cutover states. |
+| `sk-moneybird-accountant/scripts/session-context-test.sh` | Automated test | Runs the builder against offline fixtures for the clock, the allowlist, the template `fields` rows, staleness and the post-cutover states. |
 | `.github/workflows/plan-kit.yml` | Test harness | Runs the session context suite on push and pull request. |
 
 ---

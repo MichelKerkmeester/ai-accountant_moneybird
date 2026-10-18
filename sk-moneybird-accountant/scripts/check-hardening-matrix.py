@@ -7,11 +7,13 @@
 Reads sk-moneybird-accountant/hardening-matrix.md and parses the table between
 its markers. Every row must name a failure mode, a priority, a control, a test,
 an owner and a status. A P0 row must name an existing test path in the form
-"path :: case name" and the case name must occur in that file, so a deleted
-test file or a renamed case fails the check instead of leaving a silent gap.
-P1 and P2 rows with a missing test path are reported as notes and do not fail
-the check. The script uses the Python standard library only and makes no
-network call.
+"path :: case name" and the case name must occur in that file as a quoted test
+name, so a deleted test file or a renamed case fails the check instead of
+leaving a silent gap. A test path must stay inside the repository: an absolute
+path, a path with a parent segment and a path that resolves outside the root
+fail the check on any row. P1 and P2 rows with a missing test path are
+reported as notes and do not fail the check. The script uses the Python
+standard library only and makes no network call.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/check-hardening-matrix.py
@@ -35,6 +37,7 @@ Output:
 
 import argparse
 import os
+import re
 import sys
 from typing import Dict, List, NoReturn
 
@@ -108,6 +111,101 @@ def split_cells(line: str) -> List[str]:
         The cell texts without the outer pipes.
     """
     return [cell.strip() for cell in line.strip().strip("|").split("|")]
+
+
+def stays_inside(root: str, path: str) -> bool:
+    """Tell whether a matrix test path stays inside the repository.
+
+    Args:
+        root: Repository root.
+        path: Test path as the matrix cell wrote it.
+
+    Returns:
+        False for an absolute path, a path with a parent segment and a path
+        whose resolved target lies outside the resolved root.
+    """
+    if os.path.isabs(path) or ".." in path.replace("\\", "/").split("/"):
+        return False
+    resolved = os.path.realpath(os.path.join(root, path))
+    return resolved.startswith(os.path.realpath(root) + os.sep)
+
+
+COMMENT_LINE_RE = re.compile(r"^\s*(?:#|//)")
+# WHY: a shell word starts after a blank or an operator, so "(exit 0)# x" and
+# "true&&# x" end in a comment while "$#" and "${#list}" do not.
+COMMENT_START_AFTER = " \t;&|()<>"
+
+
+def strip_trailing_comment(line: str) -> str:
+    """Cut a trailing comment that stands outside a quoted string.
+
+    A `#` that starts a word opens a shell or Python comment: after the start
+    of the line, a space, a tab, a semicolon or another shell operator such as
+    a closing parenthesis, `&` or `|`. A `//` after a space or a tab opens a
+    script comment. A backslash inside a quoted string escapes the next
+    character, so `"a\\\\"` closes after the second backslash.
+
+    Args:
+        line: One line of a test file.
+
+    Returns:
+        The line up to its comment, or the whole line when it holds none.
+    """
+    quote = ""
+    escaped = False
+    for index, char in enumerate(line):
+        if quote:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == quote:
+                quote = ""
+            continue
+        if char in "\"'":
+            quote = char
+            continue
+        previous = line[index - 1] if index else " "
+        if char == "#" and previous in COMMENT_START_AFTER:
+            return line[:index]
+        if char == "/" and line[index:index + 2] == "//" and previous in " \t":
+            return line[:index]
+    return line
+
+
+def code_lines(text: str) -> str:
+    """Drop the comments from a test file.
+
+    Args:
+        text: Test file text.
+
+    Returns:
+        The text without whole comment lines and without a trailing comment
+        that stands outside a quoted string.
+    """
+    kept: List[str] = []
+    for line in text.splitlines():
+        if COMMENT_LINE_RE.match(line):
+            continue
+        kept.append(strip_trailing_comment(line))
+    return "\n".join(kept)
+
+
+def declares_case(text: str, case: str) -> bool:
+    """Tell whether a test file declares a case by name.
+
+    Args:
+        text: Test file text.
+        case: Case name from the matrix cell.
+
+    Returns:
+        True when the case sits right after an opening quote and is followed
+        by the same closing quote or by a space inside a longer quoted name.
+        The suites and the eval file name a case as a quoted string. A quoted
+        mention in a comment and a name inside another word do not count.
+    """
+    pattern = r"""(["'])""" + re.escape(case) + r"""(?:\1|(?=[ \t]))"""
+    return re.search(pattern, code_lines(text)) is not None
 
 
 # ───────────────────────────────────────────────────────────────
@@ -211,6 +309,9 @@ def check_row(row: Dict[str, str], root: str, problems: List[str], notes: List[s
     if not path or not case:
         problems.append("row %s: test cell %r needs both a path and a case name" % (label, cell))
         return
+    if not stays_inside(root, path):
+        problems.append("row %s: test path must stay inside the repository: %s" % (label, path))
+        return
     file_path = os.path.join(root, path)
     if not os.path.isfile(file_path):
         if row["Priority"] == "P0":
@@ -224,7 +325,7 @@ def check_row(row: Dict[str, str], root: str, problems: List[str], notes: List[s
     except OSError as exc:
         problems.append("row %s: cannot read test file %s: %s" % (label, path, exc))
         return
-    if case not in file_text:
+    if not declares_case(file_text, case):
         if row["Priority"] == "P0":
             problems.append("row %s: test case not found in %s: %s" % (label, path, case))
         else:

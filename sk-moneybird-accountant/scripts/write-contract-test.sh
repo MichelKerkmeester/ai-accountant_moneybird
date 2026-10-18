@@ -2,13 +2,15 @@
 # ───────────────────────────────────────────────────────────────
 # COMPONENT: WRITE CONTRACT TEST
 # ───────────────────────────────────────────────────────────────
-# Tests write-contract-check.py on the real tree, on a clean copy and on eight
+# Tests write-contract-check.py on the real tree, on a clean copy and on twelve
 # seeded divergences: a safety line without --confirm-write, a missing pointer,
 # a forbidden flag on the accountant SKILL.md pointer line, a gate token and an
 # evidence rule that leave the accountant ROUTER.md while its SKILL.md still
-# names them, a missing idempotency rule, a missing exit 9 and a second
-# differing read-back sentence. Every seeded divergence must fail the check and
-# name its file.
+# names them, a missing idempotency rule, a missing exit 9, a second differing
+# read-back sentence, a --production without its batch condition, the same
+# flag without its backticks, an evidence rule gone from the AGENTS.md contract
+# paragraph and an unknown exit named in another wording. Every seeded
+# divergence must fail the check and name its file.
 # Usage: write-contract-test.sh [repo root]
 # Exit Codes:
 #   0 - All checks pass
@@ -242,10 +244,24 @@ seed_failure "a missing exit 9 fails" \
 seed_failure "a second differing read-back sentence fails" \
     "cli-moneybird/SKILL.md" 'Read-back follows the canonical read-back sentence in the write contract' 'Read-back is a direct GET after the write' readback
 
-if python3 -I "$CHECKER" --root "$TMP_ROOT/no-such-root" >/dev/null 2>&1; then
-    fail "a missing root is refused"
+seed_failure "a production flag without its batch condition fails" \
+    "sk-moneybird-accountant/ROUTER.md" 'and `--approval`, with `--production` only for an approved production batch.' ', `--approval` and `--production`.' production
+
+seed_failure "a production flag without backticks or its batch condition fails" \
+    "sk-moneybird-accountant/ROUTER.md" 'and `--approval`, with `--production` only for an approved production batch.' ', `--approval` and --production.' productionbare
+
+seed_failure "an evidence rule gone from the AGENTS.md contract paragraph fails while other lines name evidence" \
+    "AGENTS.md" 'The gate tokens, the evidence rule, ' 'The gate tokens, ' agentsevidence
+
+seed_failure "an exit named in another wording outside the canonical set fails" \
+    "cli-moneybird/SKILL.md" 'Read-back follows the canonical read-back sentence in the write contract' 'Read-back follows the canonical read-back sentence in the write contract, and a refused write exits with status 99' exitwording
+
+python3 -I "$CHECKER" --root "$TMP_ROOT/no-such-root" >"$TMP_ROOT/check-noroot.txt" 2>&1
+status=$?
+if [[ "$status" -eq 2 ]] && grep -qF 'error:' "$TMP_ROOT/check-noroot.txt"; then
+    pass "a missing root is refused with exit 2"
 else
-    pass "a missing root is refused"
+    fail "a missing root is refused with exit 2"
 fi
 
 # ───────────────────────────────────────────────────────────────

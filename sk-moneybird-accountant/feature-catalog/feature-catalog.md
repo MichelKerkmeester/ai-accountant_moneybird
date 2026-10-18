@@ -191,7 +191,7 @@ Entry index for preparing a Dutch VAT period from Moneybird. The folder holds th
 
 #### Current Reality
 
-The T10 row routes a prepare-the-VAT-return request into `references/vat-return/`. The folder offers the ordered period procedure steps 0 to 12, the section (rubriek) table 1a to 5b with its derivation map and its reverse-charge, small businesses scheme (kleineondernemersregeling, KOR), ICP and OSS rules, the four year-end settlements, the correction routing and the review pack P1 to P9. Every figure is a link into the year files and every human decision carries an `[Operator]` marker. The five branch scenarios VAT-001 to VAT-005, the gold rows VAT-BRANCH-Q1-01 to VAT-BRANCH-COR-01 and the matching eval cases prove the branches offline. The folder prepares and never files, submits or pays.
+The T10 row routes a prepare-the-VAT-return request into `references/vat-return/`. The folder offers the ordered period procedure steps 0 to 12, the section (rubriek) table 1a to 5b with its derivation map and its reverse-charge, small businesses scheme (kleineondernemersregeling, KOR), ICP and OSS rules, the four year-end settlements, the correction routing and the review pack P1 to P9. The correction phrases `suppletie`, `correctie vorige periode`, `VAT correction`, `correct a VAT error` and `supplementary return` route here and not to the yearly overview (jaaroverzicht). Every figure is a link into the year files and every human decision carries an `[Operator]` marker. The five branch scenarios VAT-001 to VAT-005, the gold rows VAT-BRANCH-Q1-01 to VAT-BRANCH-COR-01 and the matching eval cases prove the branches offline. The folder prepares and never files, submits or pays.
 
 #### Source Files
 
@@ -207,7 +207,7 @@ Entry index for preparing a Dutch sole-trader yearly overview in Moneybird. The 
 
 #### Current Reality
 
-The T11 row routes a prepare-the-yearly-overview request into `references/yearly-overview/`. The README holds the ordered close steps and the eleven Dutch close signals, the checklist puts the auditfile export before the year-end closing (jaarafsluiting) as an evidence gate, and the close checks cover the equity continuity and the exception list. The fiscal reconciliation file holds the reconciliation template, the three-column hand-off template and the prepared-not-filed stop. `assets/yearly-overview/yearly-overview-template.html` is the printable A4 layout with bilingual labels and a braced placeholder for every value. Scenario PACK-001, gold row PACK-YEARLY-01 and eval case yearly-overview-pack prove the offline route and the pack blocks. The yearly-overview-template suite proves the template structure: a synthetic fill leaves no brace token, no remote asset and no unescaped value, the repeat blocks expand to the requested count and the prepared-not-filed line stays. Outside the migration route contract and the LIVE workflows of phases 19 to 21 the auditfile export is the Operator's UI export. The folder prepares and never files.
+The T11 row routes a prepare-the-yearly-overview request into `references/yearly-overview/`. The README holds the ordered close steps and the ten Dutch close signals, and a supplementary return (suppletie) routes to the VAT return row instead. The checklist puts the auditfile export before the year-end closing (jaarafsluiting) as an evidence gate, and the close checks cover the equity continuity and the exception list. The fiscal reconciliation file holds the reconciliation template, the three-column hand-off template and the prepared-not-filed stop. `assets/yearly-overview/yearly-overview-template.html` is the printable A4 layout with bilingual labels and a braced placeholder for every value. Scenario PACK-001, gold row PACK-YEARLY-01 and eval case yearly-overview-pack prove the offline route and the pack blocks. The yearly-overview-template suite proves the template structure: a synthetic fill leaves no brace token, no remote asset and no unescaped value, the repeat blocks expand to the requested count and the prepared-not-filed line stays. Outside the migration route contract and the LIVE workflows of phases 19 to 21 the auditfile export is the Operator's UI export. The folder prepares and never files.
 
 #### Source Files
 
@@ -223,7 +223,7 @@ Entry index for preparing a Dutch sole-trader income tax return from Moneybird. 
 
 #### Current Reality
 
-The T12 row routes a prepare-the-income-tax-return request into `references/income-tax-return/`. The procedure runs the ordered cross-year steps with a source map, the evidence gates, the review pack and the stop rules. The Operator input checklist gives every item one disposition from `supplied`, `reconciled`, `confirmed`, `not applicable` or `unresolved`, and an item that cannot be settled stays `unresolved` instead of being filled from memory. The investment and claim register is the dated per-asset record with braced placeholder amounts and the residual open points stay named. Scenario PACK-002, gold row PACK-INCOME-01 and eval case income-tax-return-pack prove the pack offline. Filing and payment stay Operator-only.
+The T12 row routes a prepare-the-income-tax-return request into `references/income-tax-return/` and names `cli-moneybird` as its tool route for the guarded reads. The procedure runs the ordered cross-year steps with a source map, the evidence gates, the review pack and the stop rules. The Operator input checklist gives every item one disposition from `supplied`, `reconciled`, `confirmed`, `not applicable` or `unresolved`, and an item that cannot be settled stays `unresolved` instead of being filled from memory. The investment and claim register is the dated per-asset record with braced placeholder amounts and the residual open points stay named. Scenario PACK-002, gold row PACK-INCOME-01 and eval case income-tax-return-pack prove the pack offline. Filing and payment stay Operator-only.
 
 #### Source Files
 
@@ -303,7 +303,7 @@ Lists every external source the skill family cites, with its authority and how a
 
 #### Current Reality
 
-The source library reference groups the cited sources by authority, names the most-cited statutes and pages and records any dead link. A generated index holds one row per source with its access result, digest and citing files and a builder checks it for drift, for cited dead rows and for perishable parliamentary links without any network call. The builder also checks the reference frontmatter field set and the sourced term map, where every row carries its English gloss and the source the owning year file cites. A monthly job watches the publication series in the watchlist and checks the year files against the release calendar in the year rollover runbook. The corresponding manual scenario checks the route to the library and the access method without API access.
+The source library reference groups the cited sources by authority, names the most-cited statutes and pages and records any dead link. A generated index holds one row per source with its access result, digest and citing files and a builder checks it for drift, for cited dead rows and for perishable parliamentary links without any network call. The builder also checks the reference frontmatter field set and the sourced term map, where every row carries its English gloss and the source the owning year file cites. A row fails when its `source_file` lacks the term or the source. A trace refuses a private or unscanned file and prints each URL without its query string and fragment, and the report write leaves a blocked or unreachable row unchanged. A monthly job watches the publication series in the watchlist and checks the year files against the release calendar in the year rollover runbook. A watch where every fetched URL failed exits 1, so the job opens its issue. The corresponding manual scenario checks the route to the library and the access method without API access.
 
 #### Source Files
 
@@ -319,7 +319,7 @@ Classifies each request to a task type that decides the tool route, read set, to
 
 #### Current Reality
 
-The skill scores the Dutch and English signal columns of the Task-Type Table in ROUTER.md section 2 and routes each request to exactly one task type of that table. The table holds twelve rows. T10 prepares the VAT return, T11 prepares the yearly overview and T12 prepares the income tax return, each with a marked read set and a tie outcome. T8 wins over all three when an explicit file, submit, pay or lock request is present. Each row names its tool route, its read set, a token budget key such as `tok:T3` and a tie rule that settles overlaps before the route margin is applied. A read-set cell uses the `!`, `?`, `@section-id`, `{year}`, `{phase-file}` and `{topic-figures}` grammar and `check-route-table.py` fails a missing required path or anchor and lists a missing conditional read. A near tie abstains, names the candidate rows and asks one question. The CLI action row is additive and never wins alone. Every answer ends with a route record that names the selected row, the references read and the boundary result. The corresponding manual scenarios check route selection and the stated boundary without API access. The router block in ROUTER.md section 2 and the advisor intent signals are generated from the table by `check-route-table.py --write` and its check fails on drift. The route replay harness, the eval grader and the route table suite test the same routes and refusals on every push.
+The skill scores the Dutch and English signal columns of the Task-Type Table in ROUTER.md section 2 and routes each request to exactly one task type of that table. The table holds twelve rows. T10 prepares the VAT return, T11 prepares the yearly overview and T12 prepares the income tax return, each with a marked read set and a tie outcome. T8 wins over all three when an explicit file, submit, pay or lock request is present. Each row names its tool route, its read set, a token budget key such as `tok:T3` and a tie rule that settles overlaps before the route margin is applied. A read-set cell uses the `!`, `?`, `@section-id`, `{year}`, `{phase-file}` and `{topic-figures}` grammar and `check-route-table.py` fails a missing required path or anchor and lists a missing conditional read. It also fails a read budget ladder that differs from the signal sources file or the baseline file line and a T7, T8 or T9 row that drops its rule. A near tie abstains, names the candidate rows and asks one question. The CLI action row is additive and never wins alone. Every answer ends with a route record that names the selected row, the references read and the boundary result. The corresponding manual scenarios check route selection and the stated boundary without API access. The router block in ROUTER.md section 2 and the advisor intent signals are generated from the table by `check-route-table.py --write` and its check fails on drift. The route replay harness, the eval grader and the route table suite test the same routes and refusals on every push.
 
 #### Source Files
 
@@ -367,7 +367,7 @@ Leaves return filing and final tax judgement with the operator or a bookkeeper.
 
 #### Current Reality
 
-The skill can organize evidence and explain general rules, but it does not file returns or present personal tax conclusions as final. A file, submit, pay or lock request routes to T8 and receives the refusal, never a prepared return, and T8 wins over T10, T11 and T12. The refusal fixtures replay the four forms through the guard stub and the eval case forbids a claimed filing action. The corresponding manual scenario checks route selection and the stated boundary without API access.
+The skill can organize evidence and explain general rules, but it does not file returns or present personal tax conclusions as final. A request to file, submit, send, transmit, upload, pay or lock a return, or to mark or want it filed, that names the VAT return, the yearly overview or the income tax return routes to T8 and receives the refusal, never a prepared return. T8 then wins over every row. A lock or pay request next to another task, such as a bank review, keeps that task's route, and the lock or payment stays an Operator UI action. A question that asks the assistant nothing, a request for information such as tell me when it must be submitted, a reminder, a filing deadline (aangiftetermijn), a purpose such as so I can file it myself, a time the user or another person acts in such as before I send it, a recipient that is no filing destination such as the accountant and a user or third person subject keep the preparation route. Each guard is anchored to the filing verb, so a clause that only sets a time, as in when you are ready, still asks to file, and so do a question that addresses the assistant, as in can we file it today?, and a sentence that opens with the verb, as in file it, ok?. The refusal fixtures replay the four forms through the guard stub and the eval case forbids a claimed filing action. The corresponding manual scenario checks route selection and the stated boundary without API access.
 
 #### Source Files
 
@@ -401,7 +401,7 @@ Writes the git-ignored session context from the clock and a migration projection
 
 #### Current Reality
 
-The builder writes the git-ignored `session-context.json` from the allowlisted fields of the migration config and the phase dashboard. The reference resolves `year_key`, refuses an out-of-range or unsettled figure and computes the post-cutover state. The offline suite covers the clock, the allowlist, staleness and the state names.
+The builder writes the git-ignored `session-context.json` from the allowlisted fields of the migration config and the phase dashboard, and it reads the template `fields` rows of the config too, with `PENDING` or an empty value as null. When the file is missing, `AGENTS.md` has the agent run the builder first. The reference resolves `year_key`, refuses an out-of-range or unsettled figure and computes the post-cutover state. The offline suite covers the clock, the allowlist, staleness and the state names.
 
 #### Source Files
 
@@ -465,7 +465,7 @@ Makes the repository root a hub that picks the accountant, Moneybird CLI or Jort
 
 #### Current Reality
 
-The root `SKILL.md` picks the packet from `mode-registry.json` and `hub-router.json`, with the accountant packet as the default. Each packet holds its routing in `ROUTER.md` and its contract in `SKILL.md`, so a request reads only the routing of the packets it uses. `check-route-table.py` reads the route table from `sk-moneybird-accountant/ROUTER.md` and fails on a missing hub file, a packet without a router, a stage one default the registry does not name or a router left in a packet `SKILL.md`. `route-replay.py` scores the packet chain of the HUB gold rows.
+The root `SKILL.md` picks the packet from `mode-registry.json` and `hub-router.json`, with the accountant packet as the default. Each packet holds its routing in `ROUTER.md` and its contract in `SKILL.md`, so a request reads only the routing of the packets it uses. `check-route-table.py` reads the route table from `sk-moneybird-accountant/ROUTER.md` and fails on a missing hub file, a packet without a router, a stage one default the registry does not name or a router left in a packet `SKILL.md`. `route-replay.py` scores the packet chain of the HUB gold rows, and a negated CLI name keeps the accountant packet. So does a request that names a phase number, or both systems with a bare system name or a move verb, where a CLI name counts for its system.
 
 #### Source Files
 
@@ -513,7 +513,7 @@ Runs the yearly corpus rollover and keeps the year files checked against the rel
 
 #### Current Reality
 
-The runbook carries the corpus into the next tax year with its sources and checked dates. The calendar check compares the year files with the release checkpoints and the monthly watch reports a changed publication series or a page that goes live. The runbook also owns the carry-forward rule, which states that every condition names its alternative or its default, and `outline-check.py` enforces the rule over the year and general topic files.
+The runbook carries the corpus into the next tax year with its sources and checked dates. The calendar check compares the year files with the release checkpoints and the monthly watch reports a changed publication series or a page that goes live and exits 1 when every fetched URL failed. The runbook also owns the carry-forward rule, which states that every condition names its alternative or its default, and `outline-check.py` enforces the rule over the year and general topic files.
 
 #### Source Files
 
@@ -531,7 +531,7 @@ Resolves every relative link and fragment in the skill family and enforces the y
 
 #### Current Reality
 
-The check resolves every relative link and fragment across the bootstrap, the README and the skill markdown. It rejects a duplicate-suffix slug and reports a missing or out-of-order year section id. The twelve ordinal pointers in the top layer are fragment links the check resolves by path and heading slug. It also counts the sections that open with a positional reference and prints the count with a threshold beside its own findings. The offline suite proves both directions on fixtures and the real corpus.
+The check resolves every relative link and fragment across the bootstrap, the README and the skill markdown. It rejects a duplicate-suffix slug and reports a missing or out-of-order year section id. The twelve ordinal pointers in the top layer are fragment links the check resolves by path and heading slug. It also counts the sections that open with a positional reference and prints the count with a threshold on an informational line that never changes the exit code. An empty tree exits 2. The offline suite proves both directions on fixtures and the real corpus.
 
 #### Source Files
 
@@ -563,7 +563,7 @@ Checks that the skill family writes English first and reports every Dutch term w
 
 #### Current Reality
 
-`check-english-first.py` reads every category file in `references/glossary/`, scans its router README as prose and reads `assets/english-first-exceptions.json`, blanks the places where Dutch is data, such as code, links, quotes, legal citations, Source columns and the playbook prompts, and then reports residual, first-use, doubled, reversed, unglossed and duplicate problems plus any exception that suppresses nothing. The run prints sorted lines and a count line and makes no network call. The skill health workflow runs `check-english-first-test.sh`, which proves every rule and mask on fixtures and ends with the real corpus.
+`check-english-first.py` reads every category file in `references/glossary/`, scans its router README as prose and reads `assets/english-first-exceptions.json`, blanks the places where Dutch is data, such as code, links, quotes, legal citations and Source columns, and the prompts under the playbook and eval folders only, and then reports residual, first-use, doubled, reversed, unglossed and duplicate problems plus any exception that suppresses nothing. The run prints sorted lines and a count line and makes no network call. The skill health workflow runs `check-english-first-test.sh`, which proves every rule and mask on fixtures and ends with the real corpus.
 
 #### Source Files
 
@@ -579,7 +579,7 @@ Checks every write-contract restatement in the bootstrap and skill files against
 
 #### Current Reality
 
-The shared mechanisms file owns the canonical contract. The check parses the canonical parts and reads each restatement file on its own. It fails a restatement that drops a gate token or a rule, changes the read-back sentence or names an exit outside the canonical set, even when another file still names the dropped token.
+The shared mechanisms file owns the canonical contract. The check parses the canonical parts and reads each restatement file on its own. It fails a restatement whose contract paragraph drops a gate token or a rule, names `--production` without its production batch condition, changes the read-back sentence or names an exit outside the canonical set, even when another line or file still names the dropped token.
 
 #### Source Files
 
@@ -595,7 +595,7 @@ Pins the token counts of the reference corpus and fails when a reference change 
 
 #### Current Reality
 
-The baseline counts the reference corpus and the named units in the pinned encodings and fails when a reference change moves a budgeted row. The canary covers the car-question route and its token ceiling. A sibling word check holds each `SKILL.md` and `ROUTER.md` at a 3,000-word loading budget with a 4,000-word ceiling and `check-route-table.py` runs it beside the baseline check.
+The baseline counts the reference corpus and the named units in the pinned encodings and fails when a reference change moves a budgeted row or when the hub `SKILL.md`, the accountant `ROUTER.md` and the accountant `SKILL.md`, the three skill files read after `AGENTS.md`, together pass a 12,000 token request line. The canary covers the car-question route and its token ceiling. A sibling word check holds each `SKILL.md` and `ROUTER.md` at a 3,000-word loading budget with a 4,000-word ceiling and `check-route-table.py` runs it beside the baseline check.
 
 #### Source Files
 
@@ -643,7 +643,7 @@ Grades captured answers against the eval assertion blocks and writes the pass ra
 
 #### Current Reality
 
-The grader checks the required tokens and forbidden patterns of every eval case and writes the per-case rows, the pass rates and the skill hash. The case set covers the five VAT branches, the yearly overview (jaaroverzicht) pack, the income tax return (aangifte inkomstenbelasting) pack and the tax-deliverable filing refusal. No model judges an answer, so a captured run still gets a human read.
+The grader checks the required tokens and forbidden patterns of every eval case, checks that the answer matches the refusal the case expects and writes the per-case rows, the pass rates and the skill hash. A negation excuses a forbidden phrase only within three words, and a verb such as hesitate or fail turns it round. The case set covers the five VAT branches, the yearly overview (jaaroverzicht) pack, the income tax return (aangifte inkomstenbelasting) pack and the tax-deliverable filing refusal. No model judges an answer, so a captured run still gets a human read.
 
 #### Source Files
 
@@ -659,7 +659,7 @@ Fails a P0 matrix row whose test path or case name no longer exists.
 
 #### Current Reality
 
-The matrix holds one row per failure mode with its control, test, owner and status. The check fails a P0 row whose test path is missing or whose case name no longer occurs in that file.
+The matrix holds one row per failure mode with its control, test, owner and status. The check fails a P0 row whose test path is missing or whose case name no longer occurs in that file as a quoted test name, and a row whose test path is absolute, climbs with `..` or resolves outside the repository.
 
 #### Source Files
 
@@ -675,7 +675,7 @@ Requires a covering test or a Regression-Test trailer when a guarded file change
 
 #### Current Reality
 
-A commit that changes a guarded file needs a covering test change or a `Regression-Test:` trailer naming a registered test that exists at that commit. The suite proves the refusal, the valid trailer and the deleted-test case on fixture repositories.
+A commit that changes a guarded file needs a covering test change or a `Regression-Test:` trailer naming a registered test that exists at that commit. A commented run line, a path after `echo` or `printf` and a step or job with a literal false `if:` register nothing. The suite proves the refusal, the valid trailer and the deleted-test case on fixture repositories.
 
 #### Source Files
 

@@ -9,7 +9,9 @@ block between its markers. The
 check validates the header, the row types, the Dutch and English cells, the
 budget cells, the tool routes, the read-set grammar, the read-set paths and
 their guard, the glossary read rule with a glossary file for every topic,
-the routing constants, the warning band, the abstain wording, the margin
+the routing constants, the read budget ladder against the signal sources
+file and the file line of token-baseline.py, the T7, T8 and T9 row rules the
+resolver depends on, the warning band, the abstain wording, the margin
 override bullets, the pointer to the signal sources file, the
 source lines of that file, the documented-gap ledger of that file and the
 frozen calibration record in assets/route-calibration.json. Each read item
@@ -27,8 +29,9 @@ from its manifest fails it too, the sibling outline-check.py, so a decision
 step with no alternative branch fails it as well, and the sibling
 scannability-report.py in its check mode, so a stale scannability report
 fails it. It checks the hub as well: the root SKILL.md, mode-registry.json
-and hub-router.json exist, every registry packet has a SKILL.md and an active
-ROUTER.md that points back to it, stage one names one default packet and no
+and hub-router.json exist, every registry packet has a SKILL.md whose name is
+its packetSkillName, the packetKind of its role and an active ROUTER.md that
+points back to it, stage one names one default packet and no
 packet SKILL.md embeds a router again. The script uses the Python
 standard library only and makes no network call.
 
@@ -223,6 +226,28 @@ SLUG_STRIP_RE = re.compile(r"[^\w\s-]", re.UNICODE)
 SLUG_SPACE_RE = re.compile(r"\s")
 PHASE_ROW_RE = re.compile(r"^\|\s*(\d+)\s*\|[^|]*\|\s*\[[^\]]+\]\(\./([^)]+)\)\s*\|")
 SEPARATOR_RE = re.compile(r"^:?-{3,}:?$")
+
+# WHY: the read budget ladder names the three units every budget key is built
+# from, and token-baseline.py holds the full file unit as its file line, so the
+# ladder sentence, the signal sources file and that line must agree.
+LADDER_RE = re.compile(
+    r"Read budget ladder in o200k_base tokens: year README ([0-9,]+), one section ([0-9,]+), full file ([0-9,]+)\."
+)
+LADDER_SOURCE_RES = (
+    re.compile(r"A README or index file: ([0-9,]+) tokens"),
+    re.compile(r"One section: ([0-9,]+) tokens"),
+    re.compile(r"One full reference file: ([0-9,]+) tokens"),
+)
+FILE_LIMIT_RE = re.compile(r"^FILE_TOKEN_LIMIT = ([0-9]+)$", re.MULTILINE)
+# WHY: three rows carry a rule the resolver depends on, so the table may not
+# drop it: T7 only appends, T9 loses to every typed row and T8 calls no tool.
+ROW_RULES = (
+    ("T7", "on_tie", "never wins alone"),
+    ("T9", "on_tie", "Loses to every typed row"),
+    ("T8", "tool_route", "`none`"),
+)
+PACKET_KINDS = ("workflow", "tool")
+FRONTMATTER_NAME_RE = re.compile(r"^name:\s*(.+?)\s*$", re.MULTILINE)
 
 # ───────────────────────────────────────────────────────────────
 # 3. HELPERS
@@ -925,6 +950,13 @@ def check_hub(problems: List[str]) -> None:
         if not os.path.isfile(skill):
             problems.append("registry packet has no SKILL.md: %s" % packet)
             continue
+        kind = mode.get("packetKind")
+        expected_kind = PACKET_KINDS[0] if mode.get("default") is True else PACKET_KINDS[1]
+        if kind != expected_kind:
+            problems.append("registry packetKind of %s is %s, expected %s" % (packet, kind, expected_kind))
+        declared = FRONTMATTER_NAME_RE.search(read_file_text(skill))
+        if not declared or mode.get("packetSkillName") != declared.group(1).strip("\"'"):
+            problems.append("registry packetSkillName of %s does not match its SKILL.md name" % packet)
         if mode.get("router") != "%s/ROUTER.md" % packet:
             problems.append("registry router is not %s/ROUTER.md: %s" % (packet, mode.get("router")))
         header = router_header(os.path.join(REPO_ROOT, packet, "ROUTER.md"))
@@ -1191,6 +1223,60 @@ def write_intent_signals(data: Dict[str, Any], signals: List[str]) -> Tuple[List
 # ───────────────────────────────────────────────────────────────
 # 6. PROSE CHECKS
 # ───────────────────────────────────────────────────────────────
+
+def check_row_rules(rows: List[Dict[str, str]], problems: List[str]) -> None:
+    """Check the row rules the resolver depends on.
+
+    Args:
+        rows: Table rows in table order.
+        problems: Problem list to append to.
+    """
+    by_type = {row["type"]: row for row in rows}
+    for row_type, field, phrase in ROW_RULES:
+        row = by_type.get(row_type)
+        if row is None:
+            continue
+        if field == "tool_route" and row[field].strip() != phrase:
+            problems.append("%s tool route must be %s" % (row_type, phrase))
+        elif field != "tool_route" and phrase not in row[field]:
+            problems.append("%s on tie cell lacks: %s" % (row_type, phrase))
+
+
+def ladder_number(value: str) -> int:
+    """Read one ladder number written with thousands commas.
+
+    Args:
+        value: Number text such as `15,000`.
+
+    Returns:
+        The integer value.
+    """
+    return int(value.replace(",", ""))
+
+
+def check_ladder(text: str, signals_path: str, problems: List[str]) -> None:
+    """Check the read budget ladder against its sources and the file line.
+
+    Args:
+        text: Full markdown text of the router.
+        signals_path: Path of the signal sources file.
+        problems: Problem list to append to.
+    """
+    match = LADDER_RE.search(text)
+    if not match:
+        problems.append("router lacks the read budget ladder sentence")
+        return
+    ladder = [ladder_number(value) for value in match.groups()]
+    signals_text = read_file_text(signals_path)
+    for value, pattern in zip(ladder, LADDER_SOURCE_RES):
+        source = pattern.search(signals_text)
+        if not source or ladder_number(source.group(1)) != value:
+            problems.append("ladder value %d differs from the signal sources file: %s" % (value, pattern.pattern))
+    baseline_text = read_file_text(os.path.join(os.path.dirname(os.path.abspath(__file__)), "token-baseline.py"))
+    limit = FILE_LIMIT_RE.search(baseline_text)
+    if not limit or int(limit.group(1)) != ladder[2]:
+        problems.append("ladder full file %d differs from FILE_TOKEN_LIMIT in token-baseline.py" % ladder[2])
+
 
 def check_required_tokens(text: str, problems: List[str]) -> None:
     """Check that the routing constants and outcomes are named in the file.
@@ -1845,6 +1931,8 @@ def main(argv: List[str]) -> int:
     check_glossary(text, problems)
     check_hub(problems)
     check_required_tokens(text, problems)
+    check_row_rules(rows, problems)
+    check_ladder(text, args.signals, problems)
     check_overrides(lines, problems)
     check_signals_pointer(lines, problems)
     check_signal_sources(args.signals, problems)

@@ -18,7 +18,9 @@ one row per part and per entry, with the bytes and the token count of the
 range. The token count covers the range with every generated block body left
 out, so a value the generator copies from the baseline never changes the value
 it states. --check asserts that every fence states the value its baseline row
-holds and that no reference file passes the 15,000-token full-topic-file line.
+holds, that no reference file passes the 15,000-token full-topic-file line and
+that the hub SKILL.md, the accountant ROUTER.md and the accountant SKILL.md
+together stay within the 12,000-token request line.
 
 The Operator chose o200k_base as the stand-in for the executing models on
 2026-10-12, with cl100k_base kept as a second column. Both encodings are
@@ -105,6 +107,13 @@ FENCE_COUNTED_BLOCK_IDS = (NAV_BLOCK_ID, TOC_BLOCK_ID)
 # The reference ladder's full-topic-file line. A reference file over it fails
 # the check by name, so a growing file is reported instead of drifting up.
 FILE_TOKEN_LIMIT = 15000
+
+# WHY: after the repository AGENTS.md, every accountant request reads the hub
+# SKILL.md, the accountant ROUTER.md and the accountant SKILL.md before any
+# reference, so their sum is held under one line and a growing router is
+# reported instead of drifting up. AGENTS.md is the bootstrap and not counted.
+REQUEST_TOKEN_LIMIT = 12000
+REQUEST_PATHS = ("SKILL.md", "sk-moneybird-accountant/ROUTER.md", "sk-moneybird-accountant/SKILL.md")
 
 # The nav plan and the toc list report a token count per part and per entry.
 NAV_PART_RE = re.compile(r"^Part (\d+): lines (\d+)-(\d+), (\d+) bytes(?:, (\d+) ([A-Za-z0-9_]+) tokens)?,")
@@ -853,6 +862,29 @@ def file_limit_problems(files: List[Dict[str, Any]]) -> List[str]:
     return problems
 
 
+def request_limit_problems(units: List[Dict[str, Any]]) -> List[str]:
+    """List the problem of an accountant request over its token line.
+
+    Args:
+        units: Named unit rows of the baseline.
+
+    Returns:
+        One line when the lead count of the three skill files every
+        accountant request reads passes REQUEST_TOKEN_LIMIT, else none.
+    """
+    counts = {
+        str(unit.get("name")): unit["tokens"].get(LEAD_ENCODING)
+        for unit in units
+        if unit.get("name") in REQUEST_PATHS
+    }
+    if len(counts) != len(REQUEST_PATHS) or not all(isinstance(value, int) for value in counts.values()):
+        return ["request files not counted: %s" % ", ".join(REQUEST_PATHS)]
+    total = sum(counts.values())
+    if total > REQUEST_TOKEN_LIMIT:
+        return ["over request line %s %d of %d" % (" + ".join(REQUEST_PATHS), total, REQUEST_TOKEN_LIMIT)]
+    return []
+
+
 def unit_row(name: str, reads: List[str], parts: List[Dict[str, Any]]) -> Dict[str, Any]:
     """Build one named unit row out of its read set.
 
@@ -1190,8 +1222,9 @@ def write_baseline(text: str, data: Dict[str, Any]) -> int:
 def check_baseline(text: str, data: Dict[str, Any]) -> int:
     """Compare the baseline file with the recomputed one.
 
-    Two extra assertions run beside the row comparison: every reference file
-    must stay under the full-topic-file token line, and every nav or toc
+    Three extra assertions run beside the row comparison: every reference file
+    must stay under the full-topic-file token line, the three skill files every
+    accountant request reads must stay under the request line, and every nav or toc
     fence must state the value its baseline row holds. A fence that produced
     no row at all is reported too, so an empty fence list cannot pass while
     a fence stands in the tree.
@@ -1204,6 +1237,7 @@ def check_baseline(text: str, data: Dict[str, Any]) -> int:
         Zero when the file matches and both assertions hold, one otherwise.
     """
     problems = file_limit_problems(data["files"]) + fence_value_problems(data["fences"])
+    problems += request_limit_problems(data["units"])
     problems += unrecorded_fence_problems(markdown_files(), data["fences"])
     for line in problems:
         print("%s: over: %s" % (PROGRAM, line))

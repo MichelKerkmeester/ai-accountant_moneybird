@@ -50,9 +50,12 @@ Usage:
 Options:
     --config P       Read the migration config from this path. The default is
                      migration-workspace/MIGRATION_CONFIG.json under the repo root.
-    --dashboard P    Read the dashboard from this path. The file holds a JSON
-                     list of phase rows. The default is
-                     migration-workspace/dashboard.json under the repo root.
+    --dashboard P    Read the dashboard from this path. A .md file holds the
+                     phase table that init-workspace.sh copies from the plan
+                     kit, any other file a JSON list of phase rows. The default
+                     is migration-workspace/dashboard.json under the repo root
+                     when it exists, else migration-workspace/Plans/
+                     phase-dashboard.md.
     --out P          Write the session context to this path, or read the file
                      in check or route-state mode. The default is
                      session-context.json at the repo root.
@@ -96,6 +99,9 @@ GENERATOR = "sk-moneybird-accountant/scripts/build-session-context.py"
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DEFAULT_CONFIG = os.path.join(REPO_ROOT, "migration-workspace", "MIGRATION_CONFIG.json")
 DEFAULT_DASHBOARD = os.path.join(REPO_ROOT, "migration-workspace", "dashboard.json")
+# WHY: init-workspace.sh copies the generated markdown dashboard, so a workspace
+# built by the documented flow has the table and no JSON list.
+DEFAULT_DASHBOARD_MD = os.path.join(REPO_ROOT, "migration-workspace", "Plans", "phase-dashboard.md")
 DEFAULT_OUT = os.path.join(REPO_ROOT, "session-context.json")
 
 # WHY: only these five statuses are valid on a dashboard row.
@@ -127,6 +133,10 @@ PROJECTION_KEYS = (
 
 # WHY: a sentinel keeps a real JSON null apart from a key that is absent.
 MISSING = object()
+
+# WHY: the migration config template lists its fields as rows with a value
+# cell, and a cell nobody filled in yet holds this placeholder text.
+PENDING_VALUE = "PENDING"
 
 # WHY: clock and date values may hold separators such as a slash only by
 # accident. Every other string is a candidate for the path check.
@@ -333,7 +343,7 @@ def read_json(path: str) -> Any:
         return None
 
 
-def lookup(config: Any, path: str) -> Any:
+def lookup_mapping(config: Any, path: str) -> Any:
     """Find a config value by nested mapping or by literal dotted key.
 
     Args:
@@ -347,12 +357,55 @@ def lookup(config: Any, path: str) -> Any:
         return MISSING
     head, _, tail = path.partition(".")
     if tail:
-        nested = lookup(config.get(head), tail)
+        nested = lookup_mapping(config.get(head), tail)
         if nested is not MISSING:
             return nested
     if path in config:
         return config[path]
     return MISSING
+
+
+def lookup_field_row(config: Dict[str, Any], path: str) -> Any:
+    """Find a config value in the template shape of a fields list.
+
+    Args:
+        config: Parsed config mapping that may hold a "fields" list.
+        path: Dotted key such as "monitoring.start_date".
+
+    Returns:
+        The value of the row whose "field" equals the key, None when that
+        value is blank or still the placeholder, or MISSING when no row
+        names the key.
+    """
+    rows = config.get("fields")
+    if not isinstance(rows, list):
+        return MISSING
+    for row in rows:
+        if isinstance(row, dict) and row.get("field") == path:
+            value = row.get("value")
+            if isinstance(value, str) and value.strip() in ("", PENDING_VALUE):
+                return None
+            return value
+    return MISSING
+
+
+def lookup(config: Any, path: str) -> Any:
+    """Find a config value in a nested mapping, a literal dotted key or a fields list.
+
+    Args:
+        config: Parsed config value.
+        path: Dotted key such as "monitoring.start_date".
+
+    Returns:
+        The stored value, or MISSING when no shape holds it. A placeholder in
+        a fields row reads as None.
+    """
+    if not isinstance(config, dict):
+        return MISSING
+    found = lookup_mapping(config, path)
+    if found is not MISSING:
+        return found
+    return lookup_field_row(config, path)
 
 
 def config_text(config: Any, path: str) -> Optional[str]:
@@ -466,16 +519,59 @@ def resolve_interactive(override: Optional[bool]) -> bool:
     return sys.stdin.isatty()
 
 
+def read_markdown_dashboard(path: str) -> Dict[int, str]:
+    """Read the phase table of a markdown dashboard keyed by phase number.
+
+    Args:
+        path: Markdown dashboard file to read.
+
+    Returns:
+        Mapping of phase number to a valid status, empty when the file is
+        missing or holds no table with a Phase and a Status column. A status
+        cell such as `GATE PASSED` reads as `GATE_PASSED`, and a row whose
+        status is outside the vocabulary is dropped.
+    """
+    if not os.path.isfile(path):
+        return {}
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            lines = handle.read().splitlines()
+    except (OSError, ValueError):
+        return {}
+    rows: Dict[int, str] = {}
+    columns: Optional[Tuple[int, int]] = None
+    for line in lines:
+        if not line.lstrip().startswith("|"):
+            columns = None
+            continue
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        if columns is None:
+            names = [cell.lower() for cell in cells]
+            if "phase" in names and "status" in names:
+                columns = (names.index("phase"), names.index("status"))
+            continue
+        phase_cell = cells[columns[0]] if columns[0] < len(cells) else ""
+        status_cell = cells[columns[1]] if columns[1] < len(cells) else ""
+        if not phase_cell.isdigit():
+            continue
+        status = re.sub(r"\s+", "_", status_cell.upper())
+        if status in STATUSES:
+            rows[int(phase_cell)] = status
+    return rows
+
+
 def read_dashboard(path: str) -> Dict[int, str]:
     """Read the dashboard rows keyed by phase number.
 
     Args:
-        path: Dashboard file to read.
+        path: Dashboard file to read, a markdown table or a JSON list.
 
     Returns:
         Mapping of phase number to a valid status, empty when the file is
         missing or unusable. Invalid rows are dropped.
     """
+    if path.lower().endswith(".md"):
+        return read_markdown_dashboard(path)
     data = read_json(path)
     rows: Dict[int, str] = {}
     if not isinstance(data, list):
@@ -764,7 +860,7 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
         description="Write or check the session context projection for a migration run.",
     )
     parser.add_argument("--config", default=DEFAULT_CONFIG, metavar="PATH", help="migration config to read")
-    parser.add_argument("--dashboard", default=DEFAULT_DASHBOARD, metavar="PATH", help="dashboard JSON list to read")
+    parser.add_argument("--dashboard", default=None, metavar="PATH", help="dashboard markdown table or JSON list to read")
     parser.add_argument("--out", default=DEFAULT_OUT, metavar="PATH", help="session context file to write or read")
     parser.add_argument("--interactive", choices=("true", "false"), metavar="true|false", help="force the interactive flag")
     parser.add_argument("--check", action="store_true", help="verify the session context file without writing it")
@@ -801,7 +897,10 @@ def main(argv: List[str]) -> int:
     clock_utc, clock_source = resolve_clock()
     interactive = resolve_interactive(override)
     config = read_json(args.config)
-    dashboard = read_dashboard(args.dashboard)
+    dashboard_path = args.dashboard
+    if dashboard_path is None:
+        dashboard_path = DEFAULT_DASHBOARD if os.path.isfile(DEFAULT_DASHBOARD) else DEFAULT_DASHBOARD_MD
+    dashboard = read_dashboard(dashboard_path)
     context = build_context(clock_utc, clock_source, interactive, config, dashboard)
     return write_context(context, args.out)
 

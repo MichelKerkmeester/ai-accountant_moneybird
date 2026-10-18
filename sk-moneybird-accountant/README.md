@@ -54,8 +54,7 @@ Then run the offline checks. None of them calls an accounting API.
 
 ```bash
 bash cli-jortt/scripts/doctor.sh
-JORTT_OPENAPI_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/jortt-cli/openapi.json" \
-  bash cli-jortt/cli/jortt-cli/tests/run-tests.sh
+bash cli-jortt/cli/jortt-cli/tests/run-tests.sh
 bash cli-moneybird/scripts/doctor.sh
 bash cli-moneybird/cli/moneybird-cli/tests/run-tests.sh
 ```
@@ -165,7 +164,7 @@ The [feature catalog](feature-catalog/feature-catalog.md) lists what the skill d
 | What you see | Likely cause | Next step |
 |---|---|---|
 | `jortt-cli` is not found | The CLI is not on your `PATH` | Follow the [Jortt install guide](../cli-jortt/INSTALL-GUIDE.md). |
-| The Jortt tests cannot find their API description | The local cache is missing | Run `jortt-cli spec update` with network access, then run the tests again. |
+| `jortt-cli` cannot find its API description | The local cache is missing | Run `jortt-cli spec update` with network access. The offline tests read their own fixture. |
 | Moneybird results leave out older records | The API defaults to the current year | Add an explicit period. Use synchronization for a complete bulk read. |
 | A Moneybird read looks unchanged after a write | The API can return cached data | Do not repeat the write. Confirm it in a later synchronization read. |
 | A Moneybird write is blocked | The read-only lock or the write gate is active | Keep the lock for reader work. For migration, stop and follow the phase approval route. |

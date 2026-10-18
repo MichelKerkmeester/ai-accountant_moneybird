@@ -2,8 +2,8 @@
 # ───────────────────────────────────────────────────────────────
 # COMPONENT: TOKEN CANARY TEST
 # ───────────────────────────────────────────────────────────────
-# Tests token-baseline.py against the car question route, two mutants and a
-# byte-only fixture. The suite imports the baseline script and calls its
+# Tests token-baseline.py against the car question route, two mutants, a
+# byte-only fixture and a router grown past the request line. The suite imports the baseline script and calls its
 # counting helpers, so no count is repeated here.
 # Usage: token-canary-test.sh [skill folder]
 # Exit Codes:
@@ -647,6 +647,25 @@ if [[ "$status" -eq 1 ]] && grep -q 'fence not recorded sk-moneybird-accountant/
     pass "a fence with no recorded row fails the check by name"
 else
     fail "a fence with no recorded row fails the check by name"
+fi
+
+group "request line"
+# WHY: every accountant request reads the hub, the router and the skill file
+# first, so their sum has its own line and a grown router must fail by name.
+REQUEST_REPO="$TMP_ROOT/request-repo"
+mkdir -p "$REQUEST_REPO/sk-moneybird-accountant"
+cp -R "$SKILL_SRC/." "$REQUEST_REPO/sk-moneybird-accountant/"
+cp "$(dirname "$SKILL_SRC")/SKILL.md" "$REQUEST_REPO/SKILL.md"
+python3 -I -c 'import sys; open(sys.argv[1], "a", encoding="utf-8").write("\n" + "Padding sentence for the request line. " * 600 + "\n")' \
+    "$REQUEST_REPO/sk-moneybird-accountant/ROUTER.md"
+TIKTOKEN_CACHE_DIR="$CACHE_DIR" python3 -I "$REQUEST_REPO/sk-moneybird-accountant/scripts/token-baseline.py" >/dev/null 2>&1
+TIKTOKEN_CACHE_DIR="$CACHE_DIR" python3 -I "$REQUEST_REPO/sk-moneybird-accountant/scripts/token-baseline.py" --check >"$TMP_ROOT/out.txt" 2>&1
+status=$?
+show_output
+if [[ "$status" -eq 1 ]] && grep -q 'over request line SKILL.md + sk-moneybird-accountant/ROUTER.md + sk-moneybird-accountant/SKILL.md' "$TMP_ROOT/out.txt"; then
+    pass "a router past the request line fails the check by name"
+else
+    fail "a router past the request line fails the check by name"
 fi
 
 group "real tree"

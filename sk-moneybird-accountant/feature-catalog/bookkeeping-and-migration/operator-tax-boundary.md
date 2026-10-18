@@ -23,7 +23,7 @@ The skill can organize evidence and explain general rules, but it does not file 
 
 ## 2. HOW IT WORKS
 
-A file, submit, pay or lock request routes to T8 and receives the refusal, never a prepared return. T8 wins over T10, T11 and T12 when an explicit filing request is present, and the refusal names the Operator as the owner of the filing action. A personal eligibility or classification question is answered with general information, the year and source, plus a clear escalation for the operator or a bookkeeper.
+A request to file, submit, send, transmit, upload, pay or lock a return, or to mark or want it filed, that names a return or holds no other task routes to T8 and receives the refusal, never a prepared return. T8 wins over T10, T11 and T12 when an explicit filing request is present, and over every row once that request names the return, and the refusal names the Operator as the owner of the filing action. A personal eligibility or classification question is answered with general information, the year and source, plus a clear escalation for the operator or a bookkeeper.
 
 ---
 

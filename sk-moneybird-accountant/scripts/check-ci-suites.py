@@ -167,6 +167,9 @@ def workflow_suite_paths(root: str, parser: Any) -> Set[str]:
         paths.update(parser.command_test_paths(command))
     return paths
 
+# ───────────────────────────────────────────────────────────────
+# 4. CHECK
+# ───────────────────────────────────────────────────────────────
 
 def check(root: str, parser: Any) -> int:
     """Report every suite that no workflow run line names.
@@ -189,6 +192,9 @@ def check(root: str, parser: Any) -> int:
     print("check-ci-suites: ok, %d suites registered" % len(suites))
     return 0
 
+# ───────────────────────────────────────────────────────────────
+# 5. ENTRY POINT
+# ───────────────────────────────────────────────────────────────
 
 def main(argv: List[str]) -> int:
     """Parse arguments and run the check.

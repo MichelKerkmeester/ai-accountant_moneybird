@@ -486,7 +486,9 @@ def main(argv: List[str]) -> int:
         fail("usage: --first must not be after --last")
     if args.list:
         return list_rows()
-    if args.url:
+    # WHY: an empty --url is still a URL option, so it reaches the library
+    # lookup and its refusal instead of falling through to the file reader.
+    if args.url is not None:
         return read_url(args.url, args.first, args.last)
     return read_file(args.file, args.first, args.last)
 

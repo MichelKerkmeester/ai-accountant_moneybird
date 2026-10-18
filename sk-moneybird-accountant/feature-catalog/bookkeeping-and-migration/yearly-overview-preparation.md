@@ -24,7 +24,7 @@ The T11 task-type row routes a prepare-the-yearly-overview request into `referen
 
 ### The ordered close and the auditfile gate
 
-The README holds the ordered steps and the eleven Dutch close signals. The auditfile export stands before the year-end closing (jaarafsluiting) as an evidence gate, followed by the close checks, the equity-continuity check and the exception list. The T11 row reads the procedure README, the costs-and-car figures and the investments figures of the tax year as its required set and declares no conditional read. For an ordinary LIVE year the Operator runs the export in the Moneybird UI and the AI only checks the artifact and records its year, version and SHA-256. A migrated year inside phases 10 to 16 keeps its SG-10.2 route and a year inside phases 19 to 21 keeps its journal-backed route.
+The README holds the ordered steps and the ten Dutch close signals. A supplementary return (suppletie) is no close signal. It corrects a VAT return (btw-aangifte) and routes to T10. The auditfile export stands before the year-end closing (jaarafsluiting) as an evidence gate, followed by the close checks, the equity-continuity check and the exception list. The T11 row reads the procedure README, the costs-and-car figures and the investments figures of the tax year as its required set and declares no conditional read. For an ordinary LIVE year the Operator runs the export in the Moneybird UI and the AI only checks the artifact and records its year, version and SHA-256. A migrated year inside phases 10 to 16 keeps its SG-10.2 route and a year inside phases 19 to 21 keeps its journal-backed route.
 
 ### The pack, the template and the boundary
 

@@ -51,7 +51,7 @@ This skill is a packet of the repository hub. Its routing lives in [`ROUTER.md`]
 2. Load the matching phase file and [shared mechanisms](./references/migration/shared-mechanisms.md). Use M12 for the Agent runner, Implementer, Verifier, Final reviewer and separate Migration Writer seats. Load the control framework for any gate, risk, exception, stop or year lock. Work the phase from its packet in the Operator's spec-kit copy, `specs/001-migration/` by default, copied by `scripts/init-workspace.sh` from `specs/000-migration-template/`. After editing a phase reference, run `python3 -I scripts/generate-plan-kit.py` and confirm `--check` passes.
 3. Keep the phase contract's exact owner tags. The Operator owns approvals, UI exports, bank imports, period locks, return filing and accounting decisions.
 4. Route Jortt reads through jortt-cli, Moneybird reads and approved writes through moneybird-guard, keeping `MONEYBIRD_GUARD_READ_ONLY=1` in every reader session. Non-GET calls run in a separate approved writer session. Read-back follows the canonical read-back sentence in the [write contract](./references/migration/shared-mechanisms.md#route-contract).
-5. Before every Moneybird non-GET batch, verify trial or package expiry, phase gate, Operator approval, and a flushed `WRITE_INTENT`. Use stable local write keys and journal every state change.
+5. Before every Moneybird non-GET batch, verify trial or package expiry, phase gate, Operator approval and a flushed `WRITE_INTENT`. Use stable local write keys and journal every state change.
 6. Keep work in migration-workspace/. Stop on any failed gate or open stop condition and resume from the last verified journal state. After Phase 18 passes, use the phase 19 to 21 contracts for recurring cycles until Phase 22.
 
 ### LIVE Mode
@@ -107,7 +107,7 @@ Answer order: load no unneeded record content, then scan the draft with the gate
 4. Never put migration data in skill references, chat summaries or any folder outside migration-workspace/.
 5. Never request Jortt write access or use a Jortt write operation.
 6. Never write to Moneybird without the active migration gate, current access check and required Operator approval.
-7. Never cancel Jortt before Phase 22 passes. Never clear the read-only lock in a reader session. Use the guarded report-export route only in migration phases 19 to 21.
+7. Never cancel Jortt before Phase 22 passes. Never clear the read-only lock in a reader session. Use the guarded report-export route only after a passed phase gate in a migration phase whose file names it, such as the Phase 10 year-end check, and in the LIVE workflows of migration phases 19 to 21.
 8. Never invent a passed gate, reconciled value, source record or tax eligibility.
 9. Never duplicate a Jortt category into Moneybird by label alone. Map by accounting purpose and tax treatment.
 10. Never expose credentials, account identifiers, personal names, amounts or private source records in documentation.
@@ -134,7 +134,7 @@ Answer order: load no unneeded record content, then scan the draft with the gate
 - [Control framework](./references/migration/control-framework.md) - roles, risk and exceptions.
 - [Migration overview and setup](./references/migration/overview-and-setup.md) - workspace and `MIGRATION_CONFIG`.
 - [Dutch tax rules](./references/tax-rules/dutch-tax-rules.md) - rules across years.
-- [Tax rules index](./references/tax-rules/README.md) - the eight tax year folders from 2020 to 2027, one sourced file per topic, and the five cross-year files.
+- [Tax rules index](./references/tax-rules/README.md) - the eight tax year folders from 2020 to 2027 with a sourced folder per topic, and the five cross-year files.
 - [Moneybird bookkeeping](./references/moneybird-bookkeeping.md) - ZZP accounting treatment.
 - [Purchase invoices](./references/purchase-invoices.md) - booking and VAT per case.
 - [Mixed-use costs](./references/mixed-use-costs.md) - the business share, the VAT split and the private booking.

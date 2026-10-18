@@ -1150,6 +1150,20 @@ if [[ "$status" -eq 1 ]] \
 else
     fail "an erroring ok row still fails"
 fi
+cp "$TMP_ROOT/out.txt" "$TMP_ROOT/error-report.json"
+run_builder "$ERROR_REPO" >/dev/null
+ERROR_ROW_BEFORE=$(index_row "$ERROR_REPO" "$ERROR_URL")
+run_builder "$ERROR_REPO" --apply-report "$TMP_ROOT/error-report.json"
+status=$?
+if [[ "$status" -eq 0 ]] \
+    && grep -q '^0 rows updated' "$TMP_ROOT/out.txt" \
+    && grep -q '^1 unreachable rows left unchanged' "$TMP_ROOT/out.txt" \
+    && [[ -n "$ERROR_ROW_BEFORE" ]] \
+    && [[ "$(index_row "$ERROR_REPO" "$ERROR_URL")" = "$ERROR_ROW_BEFORE" ]]; then
+    pass "apply report leaves a transport error row byte-for-byte unchanged"
+else
+    fail "apply report leaves a transport error row byte-for-byte unchanged"
+fi
 
 group "trace"
 run_builder "$LINK_REPO" --trace AGENTS.md:3
@@ -1189,6 +1203,65 @@ if [[ "$status" -eq 2 ]]; then
     pass "trace rejects an argument without a line number"
 else
     fail "trace rejects an argument without a line number"
+fi
+TRACE_REPO="$TMP_ROOT/trace-repo"
+TRACE_URL="https://www.belastingdienst.nl/a?ref=query-value#section"
+if make_single_url_repo "$TRACE_REPO" "$TRACE_URL"; then
+    pass "trace guard fixture repository builds"
+else
+    fail "trace guard fixture repository builds"
+fi
+run_builder "$TRACE_REPO" >/dev/null
+set_index_access "$TRACE_REPO" "$TRACE_URL" ok 200 2026-01-01
+printf 'TOKEN=1\nSee https://example.org/private-env\n' >"$TRACE_REPO/.env"
+printf 'a\nSee https://example.org/unscanned-text\n' >"$TRACE_REPO/notes.txt"
+mkdir -p "$TRACE_REPO/docs"
+printf 'a\nSee https://example.org/unscanned-doc\n' >"$TRACE_REPO/docs/other.md"
+ln -s ../../.env "$TRACE_REPO/sk-moneybird-accountant/references/linked.md"
+run_builder "$TRACE_REPO" --trace .env:2
+status=$?
+if [[ "$status" -eq 2 ]] \
+    && grep -q 'refused, that path is private' "$TMP_ROOT/out.txt" \
+    && ! grep -q 'private-env' "$TMP_ROOT/out.txt"; then
+    pass "trace refuses a credential file and prints none of it"
+else
+    fail "trace refuses a credential file and prints none of it"
+fi
+run_builder "$TRACE_REPO" --trace sk-moneybird-accountant/references/linked.md:2
+status=$?
+if [[ "$status" -eq 2 ]] \
+    && grep -q 'refused, that path is private' "$TMP_ROOT/out.txt" \
+    && ! grep -q 'private-env' "$TMP_ROOT/out.txt"; then
+    pass "trace refuses a scanned name that links to a credential file"
+else
+    fail "trace refuses a scanned name that links to a credential file"
+fi
+run_builder "$TRACE_REPO" --trace notes.txt:2
+status=$?
+if [[ "$status" -eq 2 ]] \
+    && grep -q 'among the scanned markdown files' "$TMP_ROOT/out.txt" \
+    && ! grep -q 'unscanned-text' "$TMP_ROOT/out.txt"; then
+    pass "trace refuses a file the scan does not read"
+else
+    fail "trace refuses a file the scan does not read"
+fi
+run_builder "$TRACE_REPO" --trace docs/other.md:2
+status=$?
+if [[ "$status" -eq 2 ]] \
+    && grep -q 'among the scanned markdown files' "$TMP_ROOT/out.txt" \
+    && ! grep -q 'unscanned-doc' "$TMP_ROOT/out.txt"; then
+    pass "trace refuses a markdown file outside the scan roots"
+else
+    fail "trace refuses a markdown file outside the scan roots"
+fi
+run_builder "$TRACE_REPO" --trace AGENTS.md:3
+status=$?
+if [[ "$status" -eq 0 ]] \
+    && grep -q '^https://www.belastingdienst.nl/a access=ok http_status=200 checked_on=2026-01-01$' "$TMP_ROOT/out.txt" \
+    && ! grep -q 'query-value' "$TMP_ROOT/out.txt"; then
+    pass "trace prints a URL without its query string and fragment"
+else
+    fail "trace prints a URL without its query string and fragment"
 fi
 
 group "digest"
@@ -1621,6 +1694,54 @@ if [[ "$status" -eq 2 ]]; then
 else
     fail "a state file without watch is a usage error"
 fi
+OUTAGE_REPO="$TMP_ROOT/outage-repo"
+if make_watch_repo "$OUTAGE_REPO" "$PORT"; then
+    pass "outage fixture repository builds"
+else
+    fail "outage fixture repository builds"
+fi
+python3 -I - "$OUTAGE_REPO/sk-moneybird-accountant/assets/source-watchlist.json" \
+    "$DELTA_URL" "$REFUSED_URL" <<'PY'
+import json
+import sys
+
+path, delta, refused = sys.argv[1:4]
+series = [
+    {"series": "Delta series", "urls": [delta], "cadence": "monthly", "why": "fixture delta"},
+    {"series": "Refused series", "urls": [refused], "cadence": "monthly", "why": "fixture refusal"},
+]
+open(path, "w").write(json.dumps(series, indent=2) + "\n")
+PY
+run_builder "$OUTAGE_REPO" --watch
+status=$?
+if [[ "$status" -eq 1 ]] \
+    && grep -q '^the watch could not check 2 of 2 watched URLs$' "$TMP_ROOT/out.txt" \
+    && ! grep -q '^no watched URL changed' "$TMP_ROOT/out.txt"; then
+    pass "a watch where every URL failed or was blocked exits 1"
+else
+    fail "a watch where every URL failed or was blocked exits 1"
+fi
+python3 -I - "$OUTAGE_REPO/sk-moneybird-accountant/assets/source-watchlist.json" \
+    "$DELTA_URL" "$ALPHA_URL" <<'PY'
+import json
+import sys
+
+path, delta, alpha = sys.argv[1:4]
+series = [
+    {"series": "Delta series", "urls": [delta], "cadence": "monthly", "why": "fixture delta"},
+    {"series": "Alpha series", "urls": [alpha], "cadence": "monthly", "why": "fixture alpha"},
+]
+open(path, "w").write(json.dumps(series, indent=2) + "\n")
+PY
+run_builder "$OUTAGE_REPO" --watch
+status=$?
+if [[ "$status" -eq 0 ]] \
+    && ! grep -q 'could not check' "$TMP_ROOT/out.txt" \
+    && grep -q '^no watched URL changed' "$TMP_ROOT/out.txt"; then
+    pass "a watch with one answering URL beside a failed one still exits 0"
+else
+    fail "a watch with one answering URL beside a failed one still exits 0"
+fi
 
 group "etag fingerprint"
 # WHY: a server may send a weak tag holding a long digit run, and the gate
@@ -1921,6 +2042,29 @@ then
 else
     fail "the producer repairs a doubled source_file path"
 fi
+
+# WHY: a stored path that resolves only by its last segments must still hold
+# the term and its source, the same test --write-term-map applies.
+cp "$FM_MAP" "$TMP_ROOT/term-map.aside"
+printf '# Router\n\nNo glossed term lives here.\n' >"$FM_REPO/sk-moneybird-accountant/ROUTER.md"
+python3 -I - "$FM_MAP" <<'PY'
+import json
+import sys
+
+path = sys.argv[1]
+data = json.load(open(path))
+data["terms"][0]["source_file"] = "no/such/folder/ROUTER.md"
+open(path, "w").write(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
+PY
+run_builder "$FM_REPO" --check
+status=$?
+if [[ "$status" -eq 1 ]] && grep -q '^term-map: Aangifte source_file does not name the term: ROUTER.md$' "$TMP_ROOT/out.txt"; then
+    pass "a source_file that resolves only by suffix must still name the term"
+else
+    fail "a source_file that resolves only by suffix must still name the term"
+fi
+rm -f "$FM_REPO/sk-moneybird-accountant/ROUTER.md"
+cp "$TMP_ROOT/term-map.aside" "$FM_MAP"
 
 # WHY: an English-first label writes the Dutch term in lowercase, so the
 # producer must still find the term its source file names.

@@ -22,9 +22,9 @@ Checks every write-contract restatement in the bootstrap and skill files against
 
 ## 2. HOW IT WORKS
 
-The checker reads each restatement file on its own, so a gate token or a rule that leaves `ROUTER.md` fails even while `SKILL.md` still names it. It confirms that the pointer anchor resolves, that every gate token appears, that a flag named on a pointer line belongs to the canonical set, that the two named rules for evidence and idempotency are present and that no exit outside the canonical set is named. No line may define read-back differently from the canonical sentence. The guard's own die codes must stay a subset of the canonical set. `SKILL.md` only points at the contract, so it is checked for its pointer, its pointer line flags, its exits and its read-back line.
+The checker reads the paragraphs of each restatement file that point at the contract, so a gate token or a rule that leaves the contract paragraph fails even while another line or `SKILL.md` still names it. It confirms that the pointer anchor resolves, that every gate token appears there, that `--production` there carries its condition `only for an approved production batch`, that a flag named on a pointer line belongs to the canonical set, that the two named rules for evidence and idempotency are present and that no exit outside the canonical set is named, in the wordings `exit 9`, `exits 9`, `exit code 9` and `exits with status 9`. No line may define read-back differently from the canonical sentence. The guard's own die codes must stay a subset of the canonical set. `SKILL.md` only points at the contract, so it is checked for its pointer, its pointer line flags, its exits and its read-back line.
 
-A clean run prints one ok line. The test suite seeds the divergences the contract review found and requires each seeded copy to fail and name its file and a missing root is refused.
+A clean run prints one ok line. The test suite seeds the divergences the contract review found and requires each seeded copy to fail and name its file, and a missing root is refused with exit 2.
 
 ---
 

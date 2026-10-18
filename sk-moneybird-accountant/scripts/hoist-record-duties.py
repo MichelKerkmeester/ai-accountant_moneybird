@@ -2,20 +2,22 @@
 # ───────────────────────────────────────────────────────────────
 # COMPONENT: RECORD DUTY HOIST
 # ───────────────────────────────────────────────────────────────
-"""Match the year-independent record duties and report what a hoist would move.
+"""Match the year-independent record duties and report whether a hoist has landed.
 
-The 015 research measured 288 year-independent record duties inside the
-section 6 IN THE BOOKS bullets of the year topic files, each repeated in up
-to eight year folders. This script performs the mechanical match and reports
-the result. It rewrites no section: a transform that cannot match every duty
-reports the unmatched bullet and lands nothing, which is the failing branch
-the phase plan names.
+The section 6 IN THE BOOKS bullets of the year topic files can repeat one
+duty in up to eight year folders, and a duty that holds in every year belongs
+once in the general rules. This script performs the mechanical match and
+reports the result. It rewrites no section: a bullet that only one or two
+years carry is reported as unmatched and nothing moves.
 
 The match compares two normalised forms of a bullet: the text with every
 number and every link target removed. A bullet that normalises to the same
-text in three or more year folders is year-independent. The owner section
-lives in references/moneybird-bookkeeping.md and the count over the year
-topic files must print 0 once a hoist has landed.
+text in three or more year folders is year-independent. The owner section is
+the RECORD AND INVOICE DUTIES section of
+references/tax-rules/general/record-and-invoice-duties.md. A hoist has landed
+when the count over the year topic files prints 0 and the owner section is
+present, because a count of 0 beside a missing owner would also read as a
+landed hoist.
 
 Usage:
     python3 -I sk-moneybird-accountant/scripts/hoist-record-duties.py
@@ -23,13 +25,15 @@ Usage:
 
 Options:
     --check     Print the count of year-independent duties that still sit in
-                the year topic files and exit 1 when it is not zero.
+                the year topic files and exit 1 when it is not zero or when
+                the owner section is absent.
 
 Output:
     One "match" line per matched duty with its year count, one "unmatched"
     line per bullet that only one or two years carry, then the count line.
-    Exit 0 when the count is zero, 1 when a duty still sits in the year
-    files, and 2 on a read error.
+    Exit 0 when the count is zero and the owner section is present, 1 when a
+    duty still sits in the year files or the owner section is absent, and 2
+    on a read error.
 """
 
 # ───────────────────────────────────────────────────────────────
@@ -49,7 +53,12 @@ from typing import Dict, List, NoReturn, Tuple
 GENERATOR = "sk-moneybird-accountant/scripts/hoist-record-duties.py"
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 TAX_RULES_ROOT = os.path.join(REPO_ROOT, "sk-moneybird-accountant", "references", "tax-rules")
-OWNER_PATH = os.path.join(REPO_ROOT, "sk-moneybird-accountant", "references", "moneybird-bookkeeping.md")
+OWNER_PATH = os.path.join(
+    REPO_ROOT, "sk-moneybird-accountant", "references", "tax-rules", "general", "record-and-invoice-duties.md"
+)
+# WHY: the owner file also carries a title and a routing list, so only its own
+# numbered section proves that the hoisted duties have a home.
+OWNER_HEADING_RE = re.compile(r"^## \d+\. RECORD AND INVOICE DUTIES[ \t]*$", re.M)
 YEAR_RE = re.compile(r"^20\d\d$")
 # WHY: a split part renumbers its headings from 1, so the topic-wide section
 # number survives only in the explicit anchor under the heading. A flat topic
@@ -63,6 +72,9 @@ LINK_RE = re.compile(r"\[([^\]]*)\]\([^)]*\)")
 SPACE_RE = re.compile(r"\s+")
 YEAR_INDEPENDENT_MIN = 3
 
+# ───────────────────────────────────────────────────────────────
+# 3. HELPERS
+# ───────────────────────────────────────────────────────────────
 
 def fail(message: str) -> NoReturn:
     """Print an error and stop with exit code 2.
@@ -91,6 +103,9 @@ def normalise(bullet: str) -> str:
     text = NUMBER_RE.sub("N", text)
     return SPACE_RE.sub(" ", text).strip().lower()
 
+# ───────────────────────────────────────────────────────────────
+# 4. MATCH
+# ───────────────────────────────────────────────────────────────
 
 def record_duties() -> List[Tuple[str, str, str]]:
     """Read every section 6 bullet of the year topic files.
@@ -143,6 +158,25 @@ def matches(rows: List[Tuple[str, str, str]]) -> Dict[str, List[Tuple[str, str]]
     return grouped
 
 
+def owner_section_present() -> bool:
+    """Tell whether the owner file holds the record duties section.
+
+    Returns:
+        True when the owner file exists and carries a numbered RECORD AND
+        INVOICE DUTIES section heading.
+    """
+    if not os.path.isfile(OWNER_PATH):
+        return False
+    try:
+        with open(OWNER_PATH, "r", encoding="utf-8", errors="replace") as handle:
+            return OWNER_HEADING_RE.search(handle.read()) is not None
+    except OSError as exc:
+        fail("cannot read %s: %s" % (os.path.relpath(OWNER_PATH, REPO_ROOT), exc))
+
+# ───────────────────────────────────────────────────────────────
+# 5. ENTRY POINT
+# ───────────────────────────────────────────────────────────────
+
 def main(argv: List[str]) -> int:
     """Run the report or check mode.
 
@@ -150,8 +184,8 @@ def main(argv: List[str]) -> int:
         argv: Command line arguments without the program name.
 
     Returns:
-        Zero when no year-independent duty sits in the year files, one when
-        one does.
+        Zero when no year-independent duty sits in the year files and the
+        owner section is present, one otherwise.
     """
     parser = argparse.ArgumentParser(
         prog=GENERATOR,
@@ -173,15 +207,12 @@ def main(argv: List[str]) -> int:
         for key in sorted(grouped):
             if key not in independent:
                 print("unmatched %s" % key[:90])
-    owner = "absent"
-    if os.path.isfile(OWNER_PATH):
-        with open(OWNER_PATH, "r", encoding="utf-8", errors="replace") as handle:
-            owner = "present" if "record duties" in handle.read().lower() else "no owner section"
+    owner = owner_section_present()
     print(
         "record duties: %d bullets, %d unique, %d year-independent, owner section %s"
-        % (len(rows), len(grouped), len(independent), owner)
+        % (len(rows), len(grouped), len(independent), "present" if owner else "absent")
     )
-    return 1 if independent else 0
+    return 1 if independent or not owner else 0
 
 
 if __name__ == "__main__":

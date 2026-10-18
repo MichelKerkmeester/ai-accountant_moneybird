@@ -15,7 +15,9 @@ Regression-Test: trailer line that names a registered test which exists at
 that commit. The registered set is read from the parent of the commit being
 checked and holds exactly two sources: the test paths the hardening matrix
 names, and the test files the skill health workflow runs, parsed from its run
-lines. A named test counts only when it also exists at the parent, so a test
+lines. A comment line, a path after echo or printf and a step or job whose if
+is literally false register nothing. A named test counts only when it also
+exists at the parent, so a test
 created in the commit under check cannot cover it. A suite path that a name
 or a glob happens to match does not register. A registered path the commit
 deletes is not registered, and a deleted path is never a test change. The
@@ -93,6 +95,17 @@ RUN_KEY_RE = re.compile(r"^([ \t]*)(?:-[ \t]+)?run:(.*)$")
 # The characters that separate one shell word from the next.
 COMMAND_SPLIT_RE = re.compile(r"[\s'\"]+")
 
+# One step or job key that gates its block, with an optional list dash before
+# it, and the condition that switches the block off for good: false in any
+# case, bare or inside an expression, quoted or not, with an optional comment.
+IF_KEY_RE = re.compile(r"^([ \t]*)(-[ \t]+)?if:[ \t]*(.*)$")
+IF_FALSE_RE = re.compile(r"""^["']?(?:\$\{\{\s*)?false(?:\s*\}\})?["']?\s*(?:#.*)?$""", re.IGNORECASE)
+
+# WHY: a word after these prints its arguments, so a test path there is text
+# and never a run. A separator word ends the print and starts the next command.
+PRINT_COMMANDS = ("echo", "printf")
+COMMAND_SEPARATORS = ("&&", "||", "|", ";", "&")
+
 # The matrix test cell holds a repo-relative path, this separator, then a case.
 TEST_SEPARATOR = " :: "
 
@@ -162,6 +175,57 @@ def try_git(root: str, args: List[str]) -> str:
     return result.stdout if result.returncode == 0 else ""
 
 
+def leading_width(line: str) -> int:
+    """Count the indentation of one line.
+
+    Args:
+        line: Line of text.
+
+    Returns:
+        The number of leading spaces and tabs.
+    """
+    return len(line) - len(line.lstrip(" \t"))
+
+
+def disabled_line_indexes(lines: List[str]) -> Set[int]:
+    """Find the lines of every step or job that an if of false switches off.
+
+    Args:
+        lines: Workflow file lines.
+
+    Returns:
+        The indexes of the lines in the block that owns an if key whose
+        condition is literally false. A condition that reads a context, such
+        as an event name, is not literal and switches nothing off here.
+    """
+    disabled: Set[int] = set()
+    for index, line in enumerate(lines):
+        match = IF_KEY_RE.match(line.rstrip())
+        if match is None or IF_FALSE_RE.match(match.group(3)) is None:
+            continue
+        width = len(match.group(1))
+        if match.group(2):
+            owner = index
+        else:
+            # WHY: the nearest shallower line is the list dash of the step or
+            # the key of the job, and that line owns the block the if sits in.
+            owner = index - 1
+            while owner >= 0 and (
+                not lines[owner].strip()
+                or lines[owner].lstrip().startswith("#")
+                or leading_width(lines[owner]) >= width
+            ):
+                owner -= 1
+            if owner < 0:
+                continue
+        owner_width = leading_width(lines[owner])
+        end = owner + 1
+        while end < len(lines) and (not lines[end].strip() or leading_width(lines[end]) > owner_width):
+            end += 1
+        disabled.update(range(owner, end))
+    return disabled
+
+
 def run_commands(text: str) -> List[str]:
     """Read every shell command the workflow runs.
 
@@ -170,12 +234,18 @@ def run_commands(text: str) -> List[str]:
 
     Returns:
         One string per run line. A block scalar contributes one string per
-        indented line, a plain run line contributes its command text.
+        indented line, a plain run line contributes its command text. A
+        comment line and every line of a step or job whose if is literally
+        false contribute nothing.
     """
     lines = text.splitlines()
+    disabled = disabled_line_indexes(lines)
     commands: List[str] = []
     index = 0
     while index < len(lines):
+        if index in disabled:
+            index += 1
+            continue
         match = RUN_KEY_RE.match(lines[index].rstrip())
         if match is None:
             index += 1
@@ -184,16 +254,18 @@ def run_commands(text: str) -> List[str]:
         rest = match.group(2).strip()
         index += 1
         if rest and rest[0] not in "|>":
-            commands.append(rest)
+            if rest[0] != "#":
+                commands.append(rest)
             continue
         while index < len(lines):
             line = lines[index]
             if not line.strip():
                 index += 1
                 continue
-            if len(line) - len(line.lstrip(" \t")) <= indent:
+            if leading_width(line) <= indent:
                 break
-            commands.append(line.strip())
+            if not line.lstrip().startswith("#"):
+                commands.append(line.strip())
             index += 1
     return commands
 
@@ -206,11 +278,24 @@ def command_test_paths(command: str) -> Set[str]:
 
     Returns:
         The tokens that end with a test path suffix, with a leading ./ and
-        surrounding quotes, commas or backticks removed.
+        surrounding quotes, commas or backticks removed. A comment line names
+        nothing, and a token after echo or printf is text that stops at the
+        next command separator.
     """
     paths: Set[str] = set()
+    if command.lstrip().startswith("#"):
+        return paths
+    printing = False
     for raw in COMMAND_SPLIT_RE.split(command):
         word = raw.strip("`'\",")
+        if word in COMMAND_SEPARATORS or word.endswith(";"):
+            printing = False
+            continue
+        if word in PRINT_COMMANDS:
+            printing = True
+            continue
+        if printing:
+            continue
         if word.startswith("./"):
             word = word[2:]
         if word.endswith(TEST_PATH_SUFFIXES):

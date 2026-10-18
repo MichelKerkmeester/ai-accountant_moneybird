@@ -75,6 +75,9 @@ SOURCE_HEADERS = frozenset(("source", "sources", "bron", "title"))
 # WHY: a playbook prompt is sent verbatim to the router, so its Dutch is test data (E1), never prose to label.
 PROMPT_HEADERS = frozenset(("exact prompt",))
 PROMPT_LINE_RE = re.compile(r"^(\s*(?:[-*]\s+)?(?:Prompt|Real user request):)(.*)$")
+# WHY: only a file under one of these folders holds prompts as data. A prompt
+# label in a reference file is prose, so the same Dutch there must still be labelled.
+PROMPT_FOLDERS = frozenset(("manual-testing-playbook", "evals"))
 RULES = ("residual", "first-use", "doubled", "reversed", "unglossed", "duplicate")
 STALE_RULE = "stale-exception"
 SUPPRESSION_CHECKS = ("residual", "first-use")
@@ -510,16 +513,31 @@ def mask_cells(line: str, columns: Set[int]) -> str:
     return "".join(chars)
 
 
-def mask_table_cells(lines: List[str]) -> List[str]:
+def carries_prompts(relative_path: str) -> bool:
+    """Tell whether a file sits in a folder that holds prompts as data.
+
+    Args:
+        relative_path: Path relative to the repository root, with forward slashes.
+
+    Returns:
+        True when a folder of the path is a playbook or an eval folder.
+    """
+    return any(part in PROMPT_FOLDERS for part in relative_path.split("/")[:-1])
+
+
+def mask_table_cells(lines: List[str], prompt_data: bool) -> List[str]:
     """Blank every body cell under a Source, Sources, Bron, Title or Exact Prompt header.
 
     Args:
         lines: Lines of the markdown file.
+        prompt_data: Whether the file holds prompts as data, so the Exact
+            Prompt column is masked too.
 
     Returns:
-        The lines with the named source, title and prompt columns replaced
-        by spaces until the table ends.
+        The lines with the named source, title and, in a prompt file, prompt
+        columns replaced by spaces until the table ends.
     """
+    masked_headers = SOURCE_HEADERS | PROMPT_HEADERS if prompt_data else SOURCE_HEADERS
     masked: List[str] = []
     index = 0
     while index < len(lines):
@@ -533,7 +551,7 @@ def mask_table_cells(lines: List[str]) -> List[str]:
             columns = {
                 position
                 for position, cell in enumerate(header)
-                if cell.strip().lower() in SOURCE_HEADERS | PROMPT_HEADERS
+                if cell.strip().lower() in masked_headers
             }
             masked.append(line)
             masked.append(lines[index + 1])
@@ -567,11 +585,13 @@ def mask_prompt_line(line: str) -> str:
     return match.group(1) + " " * len(match.group(2))
 
 
-def masked_lines(path: str) -> List[str]:
+def masked_lines(path: str, prompt_data: bool) -> List[str]:
     """Read a markdown file and blank every region the rules ignore.
 
     Args:
         path: Absolute path of the markdown file.
+        prompt_data: Whether the file holds prompts as data, so the prompt
+            lines and the Exact Prompt column are blanked too.
 
     Returns:
         The lines with masked characters replaced by spaces, so line
@@ -582,12 +602,13 @@ def masked_lines(path: str) -> List[str]:
     lines = mask_code_fences(lines)
     lines = mask_generated_blocks(lines)
     lines = mask_html_comments(lines)
-    lines = [mask_prompt_line(line) for line in lines]
+    if prompt_data:
+        lines = [mask_prompt_line(line) for line in lines]
     lines = [mask_inline_code(line) for line in lines]
     lines = [mask_links(line) for line in lines]
     lines = [mask_quotes(line) for line in lines]
     lines = [mask_citations(line) for line in lines]
-    return mask_table_cells(lines)
+    return mask_table_cells(lines, prompt_data)
 
 
 def mask_data_codes(line: str) -> str:
@@ -1086,7 +1107,7 @@ def check_file(
         The problems found, each as path, line number, rule and term.
     """
     problems: List[Problem] = []
-    masked = masked_lines(path)
+    masked = masked_lines(path, carries_prompts(relative_path))
 
     if "residual" in selected:
         for number, line in enumerate(masked, 1):

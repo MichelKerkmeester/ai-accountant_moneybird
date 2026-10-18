@@ -117,7 +117,7 @@ Use relative output names under `migration-workspace/`. Keep `--allow-write` off
 
 ### Tool-level wall
 
-The CLI refuses every non-GET call. `--allow-write` is a per-call flag on the same command and is not a read-only mode. The actual wall is `JORTT_SCOPES` holding read scopes only. An agent has no Jortt write path, with or without Operator permission.
+The CLI refuses a non-GET call without `--allow-write`. That flag is a per-call flag on the same command and is not a read-only mode. The actual wall is `JORTT_SCOPES` holding read scopes only, so a non-GET call fails the scope check even with the flag. An agent has no Jortt write path, with or without Operator permission.
 
 ---
 

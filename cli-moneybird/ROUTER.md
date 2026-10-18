@@ -23,10 +23,10 @@ This file holds the routing of the Moneybird CLI packet: the operation table, re
 
 ### Primary Detection Signal
 
-The operation the request names picks the guarded CLI route or the Moneybird UI. Read-only roles set `MONEYBIRD_GUARD_READ_ONLY=1` before CLI reads. The pseudocode below then picks the resources to load. Commands use shell variables for identifiers, periods, files and payloads.
+The operation the request names picks the guarded CLI route or the Moneybird UI. Every guarded read sets `MONEYBIRD_GUARD_READ_ONLY=1`. The pseudocode below then picks the resources to load. Commands use shell variables for identifiers, periods, files and payloads.
 
-| Operation | CLI route or boundary |
-|---|---|
+| Operation | CLI route | Boundary |
+|---|---|---|
 | Administration sessions | `moneybird-guard administration list`, `moneybird-guard administration current` (Read Step Contract) or `moneybird-guard administration use "$ADMIN_ID"` | Select the intended administration and verify it before a write. Switching to the pilot passes. Any other switch is blocked by the read-only lock and otherwise needs `--confirm-write`, the writer configuration, `--production` and `--approval`. |
 | Contacts | `moneybird-guard contacts list` (Read Step Contract) or `moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$ADMIN_ID" contacts create --...` | Reads use the guard. Create or update only through the guarded CLI. |
 | Ledger accounts | `moneybird-guard ledger_accounts list` (Read Step Contract) or `moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$ADMIN_ID" ledger_accounts create --rgs_code "$RGS_CODE"` | `rgs_code` is required on create. |
@@ -36,7 +36,7 @@ The operation the request names picks the guarded CLI route or the Moneybird UI.
 | Receipt and attachment | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" documents receipts create --...` then `moneybird-guard --confirm-write --approval "$APPROVAL_REF" documents receipts attachments "$DOCUMENT_ID" --file "$PDF"` | Guard every write and verify it with a later read. |
 | General journal document | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" documents general_journal_documents create --journal_type "$JOURNAL_TYPE" --"$ENTRY_FIELD" "$ENTRIES_JSON"` | The body field name is `UNVERIFIED` until confirmed with pinned CLI help. |
 | Financial statement mutations | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" financial_statements create --"$MUTATION_FIELD" "$MUTATIONS_JSON"` | Do not use for bank statement imports. Resolve the JSON field from pinned CLI help. |
-| Bank transactions to match | `MONEYBIRD_GUARD_READ_ONLY=1 moneybird-guard financial_mutations list --filter "period:YYYY,state:unprocessed"` (Read Step Contract). The list defaults to `period:this_year` since API version `v2-20260710`, and a passed filter replaces every default. The comma filter form and the `unprocessed` state match the pinned CLI's OpenAPI spec. The read covers `unprocessed` mutations only, never `auto_booked` mutations or private accounts. Past 100 records, read through `financial_mutations sync` and `sync_fetch` and filter the state locally. Linking is the separate gated write row "Link a payment". |
+| Bank transactions to match | `MONEYBIRD_GUARD_READ_ONLY=1 moneybird-guard financial_mutations list --filter "period:YYYY,state:unprocessed"` (Read Step Contract). The list defaults to `period:this_year` since API version `v2-20260710`, and a passed filter replaces every default. The comma filter form and the `unprocessed` state match the pinned CLI's OpenAPI spec. The read covers `unprocessed` mutations only, never `auto_booked` mutations or private accounts. Past 100 records, read through `financial_mutations sync` and `sync_fetch` and filter the state locally. | Read only. Linking is the separate gated write row "Link a payment". |
 | Financial accounts | `MONEYBIRD_GUARD_READ_ONLY=1 moneybird-guard financial_accounts list` (Read Step Contract) | Needed before narrowing to one account. The pinned CLI routes it to `GET /{administration_id}/financial_accounts.json`. |
 | Link a payment | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" financial_mutations link_booking "$MUTATION_ID"` | Request body fields are `UNVERIFIED` until confirmed with pinned CLI help. |
 | Document payment | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" documents purchase_invoices payments "$DOCUMENT_ID" --"$PAYMENT_FIELD" "$PAYMENT_JSON"` | Resolve body fields from CLI help. |

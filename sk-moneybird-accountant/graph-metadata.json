@@ -103,7 +103,20 @@
     "law text",
     "balans opmaken",
     "overlopende posten",
-    "vooruitbetaalde kosten"
+    "vooruitbetaalde kosten",
+    "doe aangifte",
+    "persoonlijke database",
+    "file this",
+    "file our",
+    "personal database",
+    "waar begin ik",
+    "waar moet ik beginnen",
+    "eerste keer",
+    "correctie vorige periode",
+    "VAT correction",
+    "correct a VAT error",
+    "supplementary return",
+    "KOR limit"
   ],
   "derived": {
     "trigger_phrases": [

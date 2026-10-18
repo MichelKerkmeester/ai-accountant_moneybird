@@ -24,7 +24,7 @@ The T12 task-type row routes a prepare-the-income-tax-return request into `refer
 
 ### The procedure and the disposition vocabulary
 
-The procedure runs the ordered cross-year steps with one owner tag per step and a source map, followed by the evidence gates, the review pack and the stop rules. The Operator input checklist gives every item one disposition from `supplied`, `reconciled`, `confirmed`, `not applicable` or `unresolved`. An item that cannot be settled stays `unresolved` with the evidence that would settle it named, and it is never filled from memory.
+The procedure runs the ordered cross-year steps with one owner tag per step and a source map, followed by the evidence gates, the review pack and the stop rules. The Operator input checklist gives every item one disposition from `supplied`, `reconciled`, `confirmed`, `not applicable` or `unresolved`. An item that cannot be settled stays `unresolved` with the evidence that would settle it named, and it is never filled from memory. The T12 row names `cli-moneybird` as its tool route, so the hub hands the request to that packet for the guarded reads, which run under `MONEYBIRD_GUARD_READ_ONLY=1`.
 
 ### The register, the open points and the boundary
 

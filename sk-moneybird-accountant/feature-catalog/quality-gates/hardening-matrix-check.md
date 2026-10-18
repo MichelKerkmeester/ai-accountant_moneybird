@@ -22,9 +22,9 @@ Fails a P0 matrix row whose test path or case name no longer exists.
 
 ## 2. HOW IT WORKS
 
-Every row must name a failure mode, a priority, a control, a test, an owner and a status. A P0 row must name an existing test path as `path :: case name` and the case name must occur in that file, so a deleted test or a renamed case fails the check. P1 and P2 rows with a missing test path are reported as notes instead.
+Every row must name a failure mode, a priority, a control, a test, an owner and a status. A P0 row must name an existing test path as `path :: case name` and the case name must occur in that file as a quoted test name, so a deleted test, a renamed case, a quoted mention on a comment line or after a trailing `#` or `//` comment, also one that starts right after a shell operator such as `)` or `&&`, and a name inside another word fail the check. A test path must stay inside the repository. An absolute path, a path with a `..` segment and a path that resolves outside the root through a symlink fail on any row. P1 and P2 rows with a missing test path are reported as notes instead.
 
-The suite builds fixture copies with a removed P0 test path, a blanked P0 cell and a renamed case and requires each to fail and name its row.
+The suite builds fixture copies with a removed P0 test path, a blanked P0 cell, a renamed case, an absolute path, a parent segment, a symlink out of the root and a case name that only sits inside another word and requires each to fail and name its row.
 
 ---
 
@@ -41,7 +41,7 @@ The suite builds fixture copies with a removed P0 test path, a blanked P0 cell a
 
 | File | Type | Role |
 |---|---|---|
-| `sk-moneybird-accountant/scripts/hardening-matrix-test.sh` | Automated test | Seeds a removed test path, a blank cell and a renamed case and requires each to fail. |
+| `sk-moneybird-accountant/scripts/hardening-matrix-test.sh` | Automated test | Seeds a removed test path, a blank cell, a renamed case, three path escapes and a case inside another word and requires each to fail. |
 | `.github/workflows/skill-health.yml` | Test harness | Runs the matrix check and the suite on push and pull request. |
 
 ---

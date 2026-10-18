@@ -562,7 +562,9 @@ Article 11 lid 1 onderdelen a to w exempts it.
 MARKDOWN
 check_clean "a plural onderdelen citation is data, not a residual"
 
-write_case <<'MARKDOWN'
+# WHY: a playbook prompt is test data, but the same label in a reference file
+# is prose, so the mask applies only inside the playbook folders.
+PROMPT_CASE=$(cat <<'MARKDOWN'
 # Case
 
 - Prompt: Book the voorlopige aanslag for this year.
@@ -572,7 +574,24 @@ write_case <<'MARKDOWN'
 |---|---|---|
 | T-1 | Book the voorlopige aanslag for this year. | none |
 MARKDOWN
+)
+PLAYBOOK_CASE="$FIX/sk-moneybird-accountant/manual-testing-playbook/case.md"
+mkdir -p "$(dirname "$PLAYBOOK_CASE")"
+printf '%s\n' "$PROMPT_CASE" >"$PLAYBOOK_CASE"
 check_clean "a playbook prompt is test data, not a residual"
+rm -rf "$FIX/sk-moneybird-accountant/manual-testing-playbook"
+
+printf '%s\n' "$PROMPT_CASE" >"$CASE"
+run_checker "$FIX"
+status=$?
+if [[ "$status" -eq 1 ]] \
+    && grep -qF 'sk-moneybird-accountant/references/case.md:3: residual: voorlopige aanslag' "$TMP_ROOT/out.txt" \
+    && grep -qF 'sk-moneybird-accountant/references/case.md:4: residual: voorlopige aanslag' "$TMP_ROOT/out.txt" \
+    && grep -qF 'sk-moneybird-accountant/references/case.md:8: residual: voorlopige aanslag' "$TMP_ROOT/out.txt"; then
+    pass "a Prompt label in a reference file is a finding"
+else
+    fail "a Prompt label in a reference file is a finding"
+fi
 
 write_case <<'MARKDOWN'
 # Case

@@ -7,7 +7,7 @@
   },
   "signals": {
     "accountant": [],
-    "cli-moneybird": ["moneybird-guard", "moneybird-cli", "moneybird cli"],
-    "cli-jortt": ["jortt-cli", "jortt cli"]
+    "cli-moneybird": ["cli-moneybird", "moneybird-guard", "moneybird-cli", "moneybird cli"],
+    "cli-jortt": ["cli-jortt", "jortt-cli", "jortt cli"]
   }
 }

@@ -43,11 +43,11 @@ Run the checks in this order. Each check names its evidence, the year file that 
 | Check | What it proves | Year file |
 |---|---|---|
 | Resolve the year and the mode | `year_key`, the administration and the migrated or LIVE state are unambiguous. | [Year and state resolution](../tax-rules/year-and-state.md) |
-| Capture the commercial reports | The balance at the closing date, the profit and loss account (winst- en verliesrekening) for the year, the trial balance (kolommenbalans) and the journal detail are captured with their dates. | [The year README for the resolved year](../tax-rules/2026/README.md) |
+| Capture the commercial reports | The balance at the closing date, the profit and loss account (winst- en verliesrekening) for the year, the trial balance (kolommenbalans) and the journal detail are captured with their dates. | The year README for the resolved year, for example [the 2026 year README](../tax-rules/2026/README.md) |
 | Resolve the bank and suspense balances | Every item still to classify (te rubriceren) and every unprocessed bank transaction is matched or listed as an exception. | [Bank reconciliation](../moneybird-bookkeeping.md#6-bank-reconciliation) |
 | Tie the opening balance | Each prior closing line opens immediately before the Moneybird start period, including the bank and the open receivables and payables. | [Opening balance](../moneybird-bookkeeping.md#5-assets-and-opening-balance) |
-| Tie the asset register | The register's cost, prior depreciation and the year's write-off tie to the balance and the profit and loss account. | [Fixed assets](../fixed-assets.md) and [Investments 2026 figures](../tax-rules/2026/investments/figures.md) |
-| Reconcile VAT | Each filed period matches its period report. Every correction is routed. | [VAT return preparation](../vat-return/README.md) and [VAT 2026 figures](../tax-rules/2026/vat/figures.md) |
+| Tie the asset register | The register's cost, prior depreciation and the year's write-off tie to the balance and the profit and loss account. | [Fixed assets](../fixed-assets.md) and the year file, for example [Investments 2026 figures](../tax-rules/2026/investments/figures.md) |
+| Reconcile VAT | Each filed period matches its period report. Every correction is routed. | [VAT return preparation](../vat-return/README.md) and the year file, for example [VAT 2026 figures](../tax-rules/2026/vat/figures.md) |
 | Build the cut-off list | Each prepaid or accrued item names the period it belongs to and the treatment, consistent with the prior policy. | [Year attribution in year and state resolution](../tax-rules/year-and-state.md#2-year-resolution) |
 | Assemble the pack | Every part is present. Every exception has an owner and a status. Every figure names the year file it came from. | [Fiscal reconciliation](fiscal-reconciliation.md) and [year and state resolution](../tax-rules/year-and-state.md) |
 

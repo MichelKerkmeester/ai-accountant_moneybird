@@ -447,6 +447,14 @@ if [[ "$status" -eq 2 ]]; then
 else
     fail "a URL outside the library exits 2 (exit $status)"
 fi
+run_reader "$READER" --url ""
+status=$?
+if [[ "$status" -eq 2 ]] && grep -q 'refused, not a source library row' "$TMP_ROOT/err.txt" \
+    && ! grep -q 'Traceback' "$TMP_ROOT/err.txt"; then
+    pass "an empty --url is refused with exit 2"
+else
+    fail "an empty --url is refused with exit 2 (exit $status)"
+fi
 NOT_PDF_URL=$("$PYTHON" -I -c '
 import json, sys
 rows = json.load(open(sys.argv[1]))["sources"]

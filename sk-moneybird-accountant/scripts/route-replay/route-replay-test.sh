@@ -274,7 +274,7 @@ else
     fail "the clean run writes report.md"
 fi
 
-if grep -q '^scenario_id,lang,split,gold_mode,gold_task_type,score,verdict,reason,tokens_loaded,t7,destination,reads,packets$' "$OUT_CLEAN/results.csv" 2>/dev/null; then
+if grep -q '^scenario_id,lang,split,gold_mode,gold_task_type,score,verdict,reason,tokens_loaded,t7,destination,reads,packets,tier$' "$OUT_CLEAN/results.csv" 2>/dev/null; then
     pass "results.csv carries the fixed column order"
 else
     fail "results.csv carries the fixed column order"
@@ -929,6 +929,7 @@ samples = {
     ("T6", "T4"): "since when did the rule change",
     ("T1", "T2"): "phase 3",
     ("T1", "T3"): "the gate",
+    ("T1", "T4"): "the invoices for phase 4",
     ("T10", "T3"): "the VAT return",
     ("T11", "T3"): "the yearly overview",
     ("T12", "T5"): "the income tax return",
@@ -1260,7 +1261,56 @@ fi
 cp "$TMP_ROOT/ROUTER.md.bak" "$COPY/ROUTER.md"
 
 # ───────────────────────────────────────────────────────────────
-# 11. RESULT SUMMARY AND EXIT
+# 11. SCORING HOLES
+# ───────────────────────────────────────────────────────────────
+
+# WHY: each case breaks one scored field in a corpus copy, so a scorer that
+# stops reading that field passes the row and fails the case.
+# Args:
+#   $1 - Case tag
+#   $2 - Row id to mutate
+#   $3 - Python statement that edits `row`
+mutate_row() {
+    local tag="$1"
+    local row_id="$2"
+    local statement="$3"
+    python3 -I - "$COPY_CORPUS" "$TMP_ROOT/hole-$tag.json" "$row_id" "$statement" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    data = json.load(handle)
+for row in data["rows"]:
+    if row.get("id") == sys.argv[3]:
+        exec(sys.argv[4])
+with open(sys.argv[2], "w", encoding="utf-8") as handle:
+    json.dump(data, handle, indent=2, ensure_ascii=False)
+PY
+    python3 -I "$COPY_HARNESS" --mode resolve --corpus "$TMP_ROOT/hole-$tag.json" --out "$TMP_ROOT/out-hole-$tag" >"$TMP_ROOT/hole-$tag.log" 2>&1
+}
+
+mutate_row tier TIER-C-01 'row["tier"] = ""'
+row_fails "$TMP_ROOT/out-hole-tier/results.csv" "TIER-C-01" "a gold tier that differs from the route tier fails the row"
+
+mutate_row ceiling HUB-004 'row["token_ceiling"] = 1'
+row_fails "$TMP_ROOT/out-hole-ceiling/results.csv" "HUB-004" "a read set above the token ceiling fails the row"
+
+mutate_row forbidden HUB-004 'row["forbidden_paths"] = row["forbidden_paths"] + ["references/purchase-invoices.md"]'
+row_fails "$TMP_ROOT/out-hole-forbidden/results.csv" "HUB-004" "a loaded forbidden path fails the row"
+
+mutate_row turn TWO-TURN-01 'row["previous_gold_task_type"] = "T3"'
+row_fails "$TMP_ROOT/out-hole-turn/results.csv" "TWO-TURN-01" "a first turn that differs from its gold fails the follow-up row"
+
+mutate_row readset HUB-004-nl 'row["prompt"] = row["prompt"] + " Ik gebruik de laptop deels privé."'
+if grep -qF 'parity mismatch HUB-004-nl against HUB-004' "$TMP_ROOT/hole-readset.log"; then
+    pass "a twin that reads a different set fails parity"
+else
+    fail "a twin that reads a different set fails parity"
+    sed -n '1,3p' "$TMP_ROOT/hole-readset.log"
+fi
+
+# ───────────────────────────────────────────────────────────────
+# 12. RESULT SUMMARY AND EXIT
 # ───────────────────────────────────────────────────────────────
 
 printf '\nResult: %d passed, %d failed\n' "$passed" "$failed"

@@ -59,11 +59,11 @@ The full checklist is in [the preparation checklist](preparation-checklist.md). 
 
 ---
 
-## 4. THE ELEVEN CLOSE SIGNALS AND THE TWO CONDITIONAL READS
+## 4. THE TEN CLOSE SIGNALS AND THE TWO CONDITIONAL READS
 
 This list is authored here. The route table that consumes it belongs to the routing owner, `ROUTER.md` and `references/routing-signals.md`, so this folder edits no route row.
 
-The eleven Dutch close signals are:
+The ten Dutch close signals are:
 
 - `jaaroverzicht`
 - `jaarrekening`
@@ -75,7 +75,8 @@ The eleven Dutch close signals are:
 - `vooruitbetaalde kosten`
 - `toerekenen`
 - `privé-opnamen`
-- `suppletie`
+
+A supplementary return (suppletie) corrects a VAT return (btw-aangifte), so it is a [VAT return correction phrase](../vat-return/return-boxes.md#8-correction-phrases) and routes to the VAT return row.
 
 A close request that arrives through this list reads the year file `references/tax-rules/{year}/README.md` and, when an asset, an investment or depreciation is in scope, the fixed-assets reference `references/fixed-assets.md`. The two reads are conditional. The year file is required before any year figure is used. Read the concrete files for the resolved `year_key`, for example [the 2026 year README](../tax-rules/2026/README.md) and [the fixed assets reference](../fixed-assets.md).
 

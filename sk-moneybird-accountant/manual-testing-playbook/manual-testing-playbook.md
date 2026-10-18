@@ -525,7 +525,7 @@ Prompt: My question is about my 2024 return but the session clock says a later y
 
 Fixture rows: none in routing-gold.json. The session context suite generates its fixtures at run time.
 
-Desired user-visible outcome: Names the git-ignored session-context.json input and the four-step year order, resolves 2024 as the explicit return year with the return_coverage key, names the five post-cutover states, keeps the recurring-cycle load rule and reports the suite result 34 passed and 0 failed.
+Desired user-visible outcome: Names the git-ignored session-context.json input and the four-step year order, resolves 2024 as the explicit return year with the return_coverage key, names the five post-cutover states, keeps the recurring-cycle load rule and reports the suite result 36 passed and 0 failed.
 
 #### Test Execution
 Feature file: [STATE-001](offline-routing/session-context-and-year-state.md)
@@ -695,7 +695,7 @@ Verify that the hub picks one packet for a request and that the request reads on
 #### Scenario Contract
 Prompt: List my Jortt customers with jortt-cli.
 
-Fixture rows: HUB-001 to HUB-010 score the packet chain in `routing-gold.json`. HUB-001 is this prompt, and HUB-003 scores the chain of a tax figure request like the second.
+Fixture rows: HUB-001 to HUB-030 score the packet chain in `routing-gold.json`. HUB-001 is this prompt, and HUB-003 scores the chain of a tax figure request like the second.
 
 Desired user-visible outcome: The hub picks the Jortt packet, which reads `cli-jortt/ROUTER.md` and `cli-jortt/SKILL.md`, and a tax figure request reads `sk-moneybird-accountant/ROUTER.md` and no CLI router.
 

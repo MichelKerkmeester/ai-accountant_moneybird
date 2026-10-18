@@ -98,8 +98,7 @@ Run these from the repository root. None of them calls Jortt or Moneybird.
 
 ```bash
 bash cli-jortt/scripts/doctor.sh
-JORTT_OPENAPI_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/jortt-cli/openapi.json" \
-  bash cli-jortt/cli/jortt-cli/tests/run-tests.sh
+bash cli-jortt/cli/jortt-cli/tests/run-tests.sh
 bash cli-moneybird/scripts/doctor.sh
 bash cli-moneybird/cli/moneybird-cli/tests/run-tests.sh
 ```
@@ -111,7 +110,7 @@ bash cli-moneybird/cli/moneybird-cli/tests/run-tests.sh
 | Moneybird doctor | `Doctor is read-only. Credential files were checked for presence only.` |
 | Moneybird guard tests | `Pass: 58  Fail: 0` |
 
-The Jortt tests need a local copy of the Jortt API description. If the cache file is missing, run `jortt-cli spec update` once with network access, then run the tests again. The Moneybird tests use a local stub.
+The Jortt tests read the trimmed API description fixture beside them, so they need no network and no cache. The Moneybird tests use a local stub.
 
 ### First use
 
@@ -192,7 +191,7 @@ The offline checks then show what still points at the old tool or market: broken
 
 ## 8. 🔒 SAFETY AND PRIVACY
 
-- **Jortt is read-only.** `jortt-cli` uses read scopes only and refuses every non-GET call. There is no write path for an agent. XAF auditfiles, annual accounts (jaarrekening) and filed VAT returns come from you, through the Jortt UI.
+- **Jortt is read-only.** `jortt-cli` refuses a non-GET call without `--allow-write`, and its scopes are read-only, so a write fails the scope check even with that flag. There is no write path for an agent. XAF auditfiles, annual accounts (jaarrekening) and filed VAT returns come from you, through the Jortt UI.
 - **Every Moneybird call goes through `moneybird-guard`.** Read sessions set `MONEYBIRD_GUARD_READ_ONLY=1`. The guard then blocks every non-GET call before it reaches the official CLI.
 - **A write needs five things.** A passed phase gate, your approval, a flushed `WRITE_INTENT` journal record, `--confirm-write` and `--approval <ref>` naming that entry. The guard checks the reference against the run journal, needs the writer session and never falls back to the reader session. A production batch also needs your approval for that batch and `--production`.
 - **Migration data stays in `migration-workspace/`.** Git ignores it. Both CLIs refuse to save output anywhere else.
@@ -314,9 +313,9 @@ Not as it ships. The tax knowledge covers the Dutch sole-trader system. Section 
 
 The CLI is not on your `PATH`. Run `bash cli-jortt/cli/jortt-cli/setup.sh` and apply the symlink command it prints.
 
-**The Jortt tests say `JORTT_OPENAPI_FILE` is missing**
+**`jortt-cli` says the API description is missing**
 
-The local API description is absent. Run `jortt-cli spec update` with network access, then run the tests again.
+The local cache is absent. Run `jortt-cli spec update` with network access. The offline tests do not need the cache.
 
 **A Moneybird list leaves out older records**
 

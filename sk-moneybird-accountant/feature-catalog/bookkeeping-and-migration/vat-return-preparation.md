@@ -24,7 +24,7 @@ The T10 task-type row routes a prepare-the-VAT-return request into `references/v
 
 ### The period route
 
-A request that names the VAT return (btw-aangifte), a quarterly return or a preparation of either wins T10 and reads the folder README, the resolved year VAT figures and, when a deadline, a correction or tax interest (belastingrente) applies, the year procedure figures. The mode is LIVE. The administration data is read at run time with moneybird-guard under `MONEYBIRD_GUARD_READ_ONLY=1`, following `cli-moneybird/SKILL.md`. Period unlocking, tax-rate creation and filing stay UI and Operator actions.
+A request that names the VAT return (btw-aangifte), a quarterly return or a preparation of either wins T10 and reads the folder README, the resolved year VAT figures and, when a deadline, a correction or tax interest (belastingrente) applies, the year procedure figures. The mode is LIVE. The administration data is read at run time with moneybird-guard under `MONEYBIRD_GUARD_READ_ONLY=1`, following `cli-moneybird/SKILL.md`. Period unlocking, tax-rate creation and filing stay UI and Operator actions. A supplementary return (suppletie) corrects a VAT return, so `suppletie`, `correctie vorige periode`, `VAT correction`, `correct a VAT error` and `supplementary return` are T10 signals. They route here and never to the yearly overview (jaaroverzicht).
 
 ### The review pack and the boundary
 

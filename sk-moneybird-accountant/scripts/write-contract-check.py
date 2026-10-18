@@ -8,10 +8,12 @@ Reads the canonical write contract in the migration shared mechanisms file and
 parses its gate token sentence, its exit code sentence and its canonical
 read-back sentence. Then it checks AGENTS.md, the accountant ROUTER.md and the
 CLI SKILL.md each on its own, and the pointer lines of the accountant
-SKILL.md, for drift: a missing pointer, a gate token missing from a
-restatement, a flag named on a pointer line that the canonical set lacks, an
-exit code that is missing from the CLI skill or unknown to the canonical set,
-a second differing read-back definition and the two named contract rules. The
+SKILL.md, for drift: a missing pointer, a gate token or one of the two named
+contract rules missing from the paragraphs that point at the contract, a
+`--production` there without its production batch condition, a flag named on
+a pointer line that the canonical set lacks, an exit code that is missing from
+the CLI skill or unknown to the canonical set and a second differing
+read-back definition. The
 guard's own exit codes are read from the guard script and must stay a subset
 of the canonical set, so the check keeps passing while a guard change is in
 flight. The script uses the Python standard library only and makes no network
@@ -50,9 +52,10 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fi
 
 CANONICAL_REL = "sk-moneybird-accountant/references/migration/shared-mechanisms.md"
 
-# WHY: the three restatements of the write contract. Each file must carry the
-# full set of gate tokens and both rules on its own, so a token that leaves one
-# file is caught even when another file still names it.
+# WHY: the three restatements of the write contract. The paragraphs of each
+# file that point at the contract must carry the full set of gate tokens and
+# both rules, so a token that leaves the contract paragraph is caught even
+# when another file or another line of the same file still names it.
 RESTATEMENTS = (
     "AGENTS.md",
     "sk-moneybird-accountant/ROUTER.md",
@@ -83,7 +86,15 @@ EXIT_SENTENCE_RE = re.compile(r"exits with ([^.]*)\.")
 READBACK_SENTENCE_RE = re.compile(r"Read-back means [^.]*\.")
 BACKTICK_RE = re.compile(r"`([^`]+)`")
 FLAG_RE = re.compile(r"`(--[a-z][a-z0-9-]*)`")
-EXIT_MENTION_RE = re.compile(r"exit\s+([0-9]+)")
+EXIT_MENTION_RE = re.compile(r"\bexit(?:s|ed|ing)?(?:\s+(?:with|code|status))*\s+([0-9]+)")
+# WHY: the canonical contract allows `--production` only for an approved
+# production batch, so a restatement that lists it without that condition
+# tells an agent to set it on a pilot write.
+PRODUCTION_FLAG = "--production"
+PRODUCTION_CONDITION_RE = re.compile(r"`?--production`?\s+only for an approved production batch")
+# WHY: the flag counts with or without backticks, so dropping the ticks does
+# not hide an unconditional `--production` from the check.
+PRODUCTION_MENTION_RE = re.compile(r"(?<![\w-])--production(?![\w-])")
 DIE_RE = re.compile(r"\bdie\s+([0-9]+)")
 HEADING_RE = re.compile(r"^#{1,6}\s+(.*?)\s*$")
 NUMBER_RE = re.compile(r"[0-9]+")
@@ -234,11 +245,39 @@ def check_pointer(relative: str, text: str, anchors: Set[str], problems: List[st
     return pointer_lines
 
 
+def contract_paragraphs(text: str, pointer_lines: List[int]) -> str:
+    """Join the paragraphs of one file that point at the contract.
+
+    A paragraph is a run of non-blank lines, so a bullet list counts as one.
+
+    Args:
+        text: Full text of the file.
+        pointer_lines: Line numbers that carry a pointer.
+
+    Returns:
+        The text of every paragraph that holds a pointer line, in file order.
+    """
+    lines = text.splitlines()
+    chosen: List[int] = []
+    for number in pointer_lines:
+        start = number - 1
+        while start > 0 and lines[start - 1].strip():
+            start -= 1
+        end = number - 1
+        while end + 1 < len(lines) and lines[end + 1].strip():
+            end += 1
+        for index in range(start, end + 1):
+            if index not in chosen:
+                chosen.append(index)
+    return "\n".join(lines[index] for index in sorted(chosen))
+
+
 def check_gate_flags(relative: str, text: str, gate_flags: Set[str], pointer_lines: List[int], problems: List[str]) -> None:
     """Check the gate tokens of one restatement.
 
-    Every canonical token must appear in the restatement, and a flag named on
-    a pointer line must belong to the canonical set.
+    Every canonical token must appear in the paragraphs that point at the
+    contract, `--production` there must carry its production batch condition,
+    and a flag named on a pointer line must belong to the canonical set.
 
     Args:
         relative: Path of the restatement, used in problem lines.
@@ -247,9 +286,13 @@ def check_gate_flags(relative: str, text: str, gate_flags: Set[str], pointer_lin
         pointer_lines: Line numbers that carry a pointer.
         problems: Problem list to append to.
     """
+    paragraphs = contract_paragraphs(text, pointer_lines)
     for flag in sorted(gate_flags):
-        if flag not in text:
-            problems.append("%s: gate token missing: %s" % (relative, flag))
+        if flag not in paragraphs:
+            problems.append("%s: gate token missing from the contract paragraph: %s" % (relative, flag))
+    named = len(PRODUCTION_MENTION_RE.findall(paragraphs))
+    if named and len(PRODUCTION_CONDITION_RE.findall(paragraphs)) < named:
+        problems.append("%s: %s named without its production batch condition" % (relative, PRODUCTION_FLAG))
     check_pointer_flags(relative, text, gate_flags, pointer_lines, problems)
 
 
@@ -271,17 +314,19 @@ def check_pointer_flags(relative: str, text: str, gate_flags: Set[str], pointer_
                 problems.append("%s:%d: gate token not in the canonical set: %s" % (relative, number, flag))
 
 
-def check_elements(relative: str, text: str, problems: List[str]) -> None:
-    """Check that one restatement names the two contract rules.
+def check_elements(relative: str, text: str, pointer_lines: List[int], problems: List[str]) -> None:
+    """Check that the contract paragraphs of one restatement name the two rules.
 
     Args:
         relative: Path of the restatement, used in problem lines.
         text: Full text of the restatement.
+        pointer_lines: Line numbers that carry a pointer.
         problems: Problem list to append to.
     """
+    paragraphs = contract_paragraphs(text, pointer_lines)
     for word in ELEMENT_WORDS:
-        if word not in text:
-            problems.append("%s: contract rule missing: %s" % (relative, word))
+        if word not in paragraphs:
+            problems.append("%s: contract rule missing from the contract paragraph: %s" % (relative, word))
 
 
 def check_exits(relative: str, text: str, exits: Set[int], problems: List[str]) -> None:
@@ -410,7 +455,7 @@ def main(argv: List[str]) -> int:
         pointer_lines = check_pointer(relative, text, anchors, problems)
         if relative in RESTATEMENTS:
             check_gate_flags(relative, text, gate_flags, pointer_lines, problems)
-            check_elements(relative, text, problems)
+            check_elements(relative, text, pointer_lines, problems)
         else:
             check_pointer_flags(relative, text, gate_flags, pointer_lines, problems)
         check_exits(relative, text, exits, problems)

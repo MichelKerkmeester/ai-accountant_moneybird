@@ -14,8 +14,8 @@ writes benchmark/reports/scannability/report.md. The three metrics are:
 2. answer position inside the section, the place of the answer surface among
    the sections of its file, as a fraction of the file's sections.
 3. section hit rate, the share of rows whose read set holds the section a
-   fact came from. The gold rows carry no section label yet, so the metric
-   records the missing denominator instead of a number.
+   fact came from. While a gold row carries no section label the metric
+   records the labelled row count as its denominator instead of a number.
 
 Every metric row carries the denominator of its own split, so a reader can
 tell a measured value from a vacuous one. The run is offline, byte-stable and
@@ -58,9 +58,12 @@ REPORT_DIR = os.path.join(SKILL_ROOT, "benchmark", "reports", "scannability")
 REPORT_PATH = os.path.join(REPORT_DIR, "report.md")
 ANSWER_ANCHOR = "2-key-figures"
 FIGURE_SUFFIX = "/figures.md"
-SPLITS = ("calibration", "held-out")
+SPLITS = ("calibration", "held-out", "regression")
 SECTION_LABEL_FIELD = "expected_sections"
 
+# ───────────────────────────────────────────────────────────────
+# 3. HELPERS
+# ───────────────────────────────────────────────────────────────
 
 def fail(message: str) -> NoReturn:
     """Print an error and stop with exit code 2.
@@ -95,9 +98,8 @@ def read_json(path: str) -> Any:
     except (OSError, json.JSONDecodeError) as exc:
         fail("cannot read %s: %s" % (os.path.relpath(path, REPO_ROOT), exc))
 
-
 # ───────────────────────────────────────────────────────────────
-# 3. METRICS
+# 4. METRICS
 # ───────────────────────────────────────────────────────────────
 
 def file_rows(baseline: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
@@ -213,6 +215,9 @@ def split_metrics(rows: List[Dict[str, Any]], files: Dict[str, Dict[str, Any]], 
         "labelled": labelled,
     }
 
+# ───────────────────────────────────────────────────────────────
+# 5. REPORT
+# ───────────────────────────────────────────────────────────────
 
 def render(metrics: Dict[str, Dict[str, Any]], lead: str) -> str:
     """Render the scannability report.
@@ -249,9 +254,14 @@ def render(metrics: Dict[str, Dict[str, Any]], lead: str) -> str:
             "| Answer position inside the section | %s | %.3f of the file's sections | %d of %d rows name a tax figures file |"
             % (split, data["position_mean"], data["position_rows"], data["rows"])
         )
+        hit_value = (
+            "no number, the gold rows carry no section label"
+            if not data["labelled"]
+            else "no number, the metric is not computed yet"
+        )
         lines.append(
-            "| Section hit rate | %s | no number, the gold rows carry no section label | 0 of %d rows carry a section label |"
-            % (split, data["rows"])
+            "| Section hit rate | %s | %s | %d of %d rows carry a section label |"
+            % (split, hit_value, data["labelled"], data["rows"])
         )
     lines.append("")
     lines.append("## What each metric means")
@@ -268,9 +278,9 @@ def render(metrics: Dict[str, Dict[str, Any]], lead: str) -> str:
     )
     lines.append(
         "- Section hit rate: the share of rows whose loaded set holds the section a "
-        "fact came from. It needs a section label on every replay row, and the gold "
-        "rows carry none yet, so this row records the missing denominator rather than "
-        "a number."
+        "fact came from. It needs a section label on every replay row, so while a "
+        "gold row carries none this row records the labelled row count as its "
+        "denominator rather than a number."
     )
     lines.append("")
     return "\n".join(lines)
@@ -296,6 +306,9 @@ def build_report() -> Tuple[str, Dict[str, Dict[str, Any]]]:
         )
     return render(metrics, lead), metrics
 
+# ───────────────────────────────────────────────────────────────
+# 6. ENTRY POINT
+# ───────────────────────────────────────────────────────────────
 
 def main(argv: List[str]) -> int:
     """Run the write or check mode.

@@ -24,7 +24,7 @@ Reads the PDF-only external sources through poppler's pdftotext so a source behi
 
 ### The index gate
 
-The reader looks the URL up in the index before any network call. A URL outside the index, a row with another access value and a plain HTTP address that is not a loopback host are refused with exit 2, so the reader cannot become a general fetcher. A redirect is followed only to https on the same host, and any other redirect stops with exit 2 before a byte reaches pdftotext. The download is capped at 64 MB and must carry a PDF header.
+The reader looks the URL up in the index before any network call. A URL outside the index, an empty `--url`, a row with another access value and a plain HTTP address that is not a loopback host are refused with exit 2, so the reader cannot become a general fetcher. A redirect is followed only to https on the same host, and any other redirect stops with exit 2 before a byte reaches pdftotext. The download is capped at 64 MB and must carry a PDF header.
 
 ### The extraction
 

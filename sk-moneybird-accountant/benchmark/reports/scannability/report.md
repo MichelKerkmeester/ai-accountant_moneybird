@@ -14,9 +14,12 @@ Every row carries its own denominator. A metric whose prerequisite is missing re
 | Tokens to first answer | held-out | 4982 o200k_base tokens | 53 of 115 rows name a tax figures file |
 | Answer position inside the section | held-out | 1.000 of the file's sections | 53 of 115 rows name a tax figures file |
 | Section hit rate | held-out | no number, the gold rows carry no section label | 0 of 115 rows carry a section label |
+| Tokens to first answer | regression | 5041 o200k_base tokens | 108 of 262 rows name a tax figures file |
+| Answer position inside the section | regression | 1.000 of the file's sections | 108 of 262 rows name a tax figures file |
+| Section hit rate | regression | no number, the gold rows carry no section label | 0 of 262 rows carry a section label |
 
 ## What each metric means
 
 - Tokens to first answer: the lead-encoding token count of the KEY FIGURES section of the first tax figures file a row names. A smaller count means the answer surface is cheaper to open.
 - Answer position inside the section: the place of that section among the sections of its file, as a fraction of the file's section count. A value near the top means the answer surface sits early in the file.
-- Section hit rate: the share of rows whose loaded set holds the section a fact came from. It needs a section label on every replay row, and the gold rows carry none yet, so this row records the missing denominator rather than a number.
+- Section hit rate: the share of rows whose loaded set holds the section a fact came from. It needs a section label on every replay row, so while a gold row carries none this row records the labelled row count as its denominator rather than a number.

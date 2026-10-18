@@ -2806,10 +2806,10 @@
       "source": "sk-moneybird-accountant/references/tax-rules/2024/box-3.md"
     },
     {
-      "body_sha256": "f50122ad0eec2069506f40d3984f1259026a06cfae4d48a4a3399398bd5c8d98",
+      "body_sha256": "17f2a57e2842c42135b1969cada21f7a2447e2b27b5c7332c0ece8b7d2072fa2",
       "parts": [
         {
-          "body_sha256": "e98c3788d2f6ff9fbda3fa35e93d3cdea9dab52949e6efd3abbdc1d7523de678",
+          "body_sha256": "685eeabe1761c3e30c5bbd17105536794da182177d3c05d656a422939ee862aa",
           "header_sha256": "65bd399c2e1784ea1cf5079c96806a487328ad110415cf90fcde7e13d8bcdc41",
           "line_offset": 0,
           "path": "sk-moneybird-accountant/references/tax-rules/2024/vat/figures.md",
@@ -2857,7 +2857,7 @@
           "source_start_line": 337
         }
       ],
-      "rejoin_sha256": "f50122ad0eec2069506f40d3984f1259026a06cfae4d48a4a3399398bd5c8d98",
+      "rejoin_sha256": "17f2a57e2842c42135b1969cada21f7a2447e2b27b5c7332c0ece8b7d2072fa2",
       "source": "sk-moneybird-accountant/references/tax-rules/2024/vat.md"
     },
     {

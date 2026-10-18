@@ -22,7 +22,7 @@ Grades captured answers against the eval assertion blocks and writes the pass ra
 
 ## 2. HOW IT WORKS
 
-The grader checks the required tokens and the forbidden patterns of every case. A required entry written as a list passes when any one of its alternative phrasings appears. Refusal markers match case-sensitively, so only the uppercase route class counts as a refusal and a marker is excused when a negation sits next to it in the same sentence. An amount or an identifier is never excused.
+The grader checks the required tokens and the forbidden patterns of every case. A required entry written as a list passes when any one of its alternative phrasings appears. Refusal markers match case-sensitively, so only the uppercase route class counts as a refusal. A marker is excused when a negation sits up to three words before it in the same clause or follows it, and a forbidden phrase is excused by the same preceding negation. A verb that turns the negation round excuses nothing, such as hesitate, fail, forget, neglect, refuse or decline. The word only does the same, so "will not hesitate to offset the difference" still trips the pattern. An amount or an identifier is never excused. A case also needs the refusal its `expect_refusal` flag asks for. A case that expects a refusal fails unless the answer is refused or states the year state token its route names, such as `year_before_corpus_start`, and a case that expects none fails when the answer is refused.
 
 `grading.json` holds the per-case assertion rows and the always-pass count. `benchmark.json` holds the pass rate, the baseline pass rate, the refusal false-positive rate and the always-pass list. Both record the skill hash of `SKILL.md` plus every routed reference and the model id. No model judges an answer, so a pass means no listed contradiction appeared and a captured run still gets a read by the Operator or a reviewer.
 
@@ -46,7 +46,7 @@ The case set covers the five VAT branches, the yearly overview (jaaroverzicht) p
 
 | File | Type | Role |
 |---|---|---|
-| `sk-moneybird-accountant/scripts/run-evals-test.sh` | Automated test | Builds capture fixtures for a compliant run, a broken answer, a refuse-everything run and the branch, pack and refusal cases. |
+| `sk-moneybird-accountant/scripts/run-evals-test.sh` | Automated test | Builds capture fixtures for a compliant run, a broken answer, a refuse-everything run and the branch, pack and refusal cases, including a missed refusal and a refused answer. |
 | `sk-moneybird-accountant/hardening-matrix.md` | Reference | Names the eval cases that cover the routing failure modes. |
 | `.github/workflows/skill-health.yml` | Test harness | Parses the eval file and runs the grader suite. |
 
