@@ -120,7 +120,7 @@ Prove the complete controlled write and verification path in the one empty trial
 ### 2. Nested sub-goals
 
 - **SG-7.1**: Pilot each source document type and attachment path. Check: PDF and UBL are piloted separately where present, required field matrices match sources 100%, attachment bytes and SHA-256 match 100%, target attachment read route verified 1.
-- **SG-7.2**: Prove duplicate control under an uncertain response. Check: stable local key and mapping schema version beside it 100%, durable WRITE_INTENT flushed before every non-GET call 100%, source reference and planned payload fields match before ID adoption 100%, ambiguous results stopped 100%.
+- **SG-7.2**: Prove duplicate control under an uncertain response. Check: stable local key and mapping schema version beside it 100%, durable WRITE_INTENT flushed before every non-GET call other than a synchronization fetch 100%, source reference and planned payload fields match before ID adoption 100%, ambiguous results stopped 100%.
 - **SG-7.3**: Rehearse crash resume at the write boundary. Check: forced interruption after WRITE_INTENT, after response loss and after read-back 3, each resumes from the last verified journal state 100%, blind replay count 0.
 - **SG-7.4**: Rehearse safe compensation. Check: approved undo or linked correction rehearsal passes 1, independent read confirms final state 1.
 - **SG-7.5**: Test the item-level AR/AP target representation. Check: representative opening item and settlement link read-back pass 1, source item and target link coverage 100%.
@@ -138,7 +138,7 @@ Pilot records, mapping hash, source hashes, pre-write report, risk review, openi
 
 ### 5. Owner-tagged actions
 
-[Operator] approves the exact batch and performs bank-file import in UI. [Migration Writer] records and flushes WRITE_INTENT before every non-GET call and journals returned IDs. [Operator] approves the temporary pilot lock and a disposable probe record for each used record class, with a correction path for any probe that succeeds. [Independent Auditor] reads back records, verifies every attachment byte hash and AR/AP settlement link, and confirms lock probe results and final lock state. [Red Team] challenges duplicates and field mapping. [Operator + AI] selects pilot items for crash and compensation rehearsals. Gate verifier: [Independent Auditor] verifies read-back, payload fields, attachment bytes, settlement linkage, lock coverage and resume states.
+[Operator] approves the exact batch and performs bank-file import in UI. [Migration Writer] records and flushes WRITE_INTENT before every non-GET call, a synchronization fetch excepted, and journals returned IDs. [Operator] approves the temporary pilot lock and a disposable probe record for each used record class, with a correction path for any probe that succeeds. [Independent Auditor] reads back records, verifies every attachment byte hash and AR/AP settlement link, and confirms lock probe results and final lock state. [Red Team] challenges duplicates and field mapping. [Operator + AI] selects pilot items for crash and compensation rehearsals. Gate verifier: [Independent Auditor] verifies read-back, payload fields, attachment bytes, settlement linkage, lock coverage and resume states.
 
 [Agent runner] runs the M12 loop for every sub-goal. [Implementer] drafts the pilot batch builder, pre-write report and read-back comparer. [Verifier] checks the pre-write report and read-back comparison. [Final reviewer] reviews the phase before Operator approvals.
 
@@ -196,7 +196,7 @@ Rebuild approved historical records in controlled batches and reconcile each bat
 ### 2. Nested sub-goals
 
 - **SG-8.1**: Freeze input and recompute immediately before write. Check: approved input hashes match pre-write hashes 100%.
-- **SG-8.2**: Track each source object through write and read-back. Check: objects with terminal state 100%, flushed WRITE_INTENT events before non-GET calls 100%, source-reference and planned-field equality before ID adoption 100%, WRITE_UNKNOWN count 0 before gate.
+- **SG-8.2**: Track each source object through write and read-back. Check: objects with terminal state 100%, flushed WRITE_INTENT events before non-GET calls other than synchronization fetches 100%, source-reference and planned-field equality before ID adoption 100%, WRITE_UNKNOWN count 0 before gate.
 - **SG-8.3**: Reconcile counts, pilot identity and balances. Check: every source key already verified in the pilot reuses its matching target ID and is excluded from the historical write set 100%, exact source reference and planned fields match 100%, duplicates across pilot and historical key manifests 0, unexplained differences 0, write-key duplicates 0.
 - **SG-8.4**: Verify every target attachment. Check: source and target byte counts and SHA-256 match 100%, unavailable attachment reads 0, mismatches 0.
 - **SG-8.5**: Track opening AR/AP through settlement. Check: each cut-over item has settled-with-link, still-open-with-aging or approved-exception status 100%, settled items link to the same source key 100%, unexplained open items 0.
@@ -234,7 +234,7 @@ Frozen canonical records, batch manifest, prior journal state, mapping, bank fil
 
 ### 6. Tool route
 
-Before every non-GET call, flush WRITE_INTENT with the stable key, mapping schema version, source reference, planned payload hash and approval reference. Moneybird writes use guarded CLI with --confirm-write and --approval for that reference, against the payload file the local payload assembler built. Keep within general and reports request limits. Retry decisions use a timestamped synchronization read or wait beyond the Operator-approved, Independent Auditor verified `bulk_read.cache_horizon` in `MIGRATION_CONFIG`, then a complete paginated read. Missing or unapproved horizon blocks a wait-based retry. Bank-file imports are Operator UI-only.
+Before every non-GET call except a synchronization fetch, flush WRITE_INTENT with the stable key, mapping schema version, source reference, planned payload hash and approval reference. Moneybird writes use guarded CLI with --confirm-write and --approval for that reference, against the payload file the local payload assembler built. Keep within general and reports request limits. Retry decisions use a timestamped synchronization read or wait beyond the Operator-approved, Independent Auditor verified `bulk_read.cache_horizon` in `MIGRATION_CONFIG`, then a complete paginated read. Missing or unapproved horizon blocks a wait-based retry. Bank-file imports are Operator UI-only.
 
 ### 7. Outputs and evidence artifacts
 

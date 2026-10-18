@@ -60,7 +60,7 @@ Config fields due by Phase 0 populated 100%, selector equality 1, second adminis
 M12 gate: runner ready 1, script sandbox canary pass 1, OS read-boundary canary pass 1, egress canary pass 1, planted private values blocked 100%, both route canary dispatches complete 2 of 2, agents.* config populated 100%, work units with Verifier PASS or Operator disposition 100%, Final review PASS 1, payload-scan prohibited fields 0, phase-entry boundary canary passed 1.
 
 - [ ] SG-0.1: both selector values resolve to the same administration, equality count 1, separate pilot administration count 0.
-- [ ] SG-0.2: local stub suite cli-moneybird/cli/moneybird-cli/tests/run-tests.sh passes 1, an official CLI non-GET invocation under MONEYBIRD_GUARD_READ_ONLY=1 returns exit code 6 before any real call 1, real call count 0.
+- [ ] SG-0.2: local stub suite cli-moneybird/cli/moneybird-cli/tests/run-tests.sh passes 1, an official CLI non-GET write under MONEYBIRD_GUARD_READ_ONLY=1 returns exit code 6 before any real call 1, real call count 0.
 - [ ] SG-0.3: config fields due by Phase 0 in the Needed by column populated 100%, unapproved threshold rows 0, next expiry date recorded 1.
 - [ ] SG-0.4: the Operator UI completes an approved test auditfile export in Phase 0 1, product version, XAF version and year match the approved request 1, receipt and artifact SHA-256 recorded 1.
 - [ ] SG-0.5: synchronization with timestamp and completion counts or a complete paginated fallback with page counts is verified 1, Operator-approved cache-wait value and source basis recorded 1, Independent Auditor verification 1.

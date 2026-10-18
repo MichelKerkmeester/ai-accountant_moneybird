@@ -32,7 +32,7 @@ Build a controlled migration workspace and establish the single empty Moneybird 
 ### 2. Nested sub-goals
 
 - **SG-0.1**: Record the administration selector relationship. Check: both selector values resolve to the same administration, equality count 1, separate pilot administration count 0.
-- **SG-0.2**: Prove the guard boundary. Check: local stub suite cli-moneybird/cli/moneybird-cli/tests/run-tests.sh passes 1, an official CLI non-GET invocation under MONEYBIRD_GUARD_READ_ONLY=1 returns exit code 6 before any real call 1, real call count 0.
+- **SG-0.2**: Prove the guard boundary. Check: local stub suite cli-moneybird/cli/moneybird-cli/tests/run-tests.sh passes 1, an official CLI non-GET write under MONEYBIRD_GUARD_READ_ONLY=1 returns exit code 6 before any real call 1, real call count 0.
 - **SG-0.3**: Set threshold and expiry fields. Check: config fields due by Phase 0 in the Needed by column populated 100%, unapproved threshold rows 0, next expiry date recorded 1.
 - **SG-0.4**: Verify the Phase 0 auditfile UI export route. Check: the Operator UI completes an approved test auditfile export in Phase 0 1, product version, XAF version and year match the approved request 1, receipt and artifact SHA-256 recorded 1.
 - **SG-0.5**: Verify a complete Moneybird bulk-read route. Check: synchronization with timestamp and completion counts or a complete paginated fallback with page counts is verified 1, Operator-approved cache-wait value and source basis recorded 1, Independent Auditor verification 1.
@@ -42,7 +42,7 @@ Build a controlled migration workspace and establish the single empty Moneybird 
 
 ### 3. Entry criteria
 
-The frozen gap register and approved source scope are recorded. No Phase 1 evidence is required to begin Phase 0. No ledger mutation or guarded API non-GET call is authorized before a phase gate passes. Phase 0 may use the approved Operator UI auditfile export for its test artifact.
+The frozen gap register and approved source scope are recorded. No Phase 1 evidence is required to begin Phase 0. No ledger mutation or guarded API non-GET call is authorized before a phase gate passes. A synchronization fetch only reads and is not such a call. Phase 0 may use the approved Operator UI auditfile export for its test artifact.
 
 ### 4. Inputs
 

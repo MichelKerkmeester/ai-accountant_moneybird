@@ -1,6 +1,6 @@
 ---
 title: "MBD-013 -- Read-only lock blocks writes"
-description: "This scenario validates that MONEYBIRD_GUARD_READ_ONLY=1 allows GET calls and blocks non-GET methods even with write flags."
+description: "This scenario validates that MONEYBIRD_GUARD_READ_ONLY=1 allows GET calls and blocks a non-GET write even with write flags."
 id: MBD-013
 catalog_applicable: true
 version: 1.0.0.0
@@ -26,7 +26,7 @@ Moneybird tokens do not separate read and write scopes. The local lock gives rea
 
 Operators run the exact prompt and command sequence for MBD-013 and confirm the expected signals without contradictory evidence.
 
-- Objective: Confirm that MONEYBIRD_GUARD_READ_ONLY=1 allows GET and blocks a non-GET method even with the write flags.
+- Objective: Confirm that MONEYBIRD_GUARD_READ_ONLY=1 allows GET and blocks a non-GET write even with the write flags.
 - Real user request: Check that a read-only Moneybird session can read contacts but cannot create one, even with the write flags.
 - Prompt: Check that a read-only Moneybird session can read contacts but cannot create one, even with the write flags.
 - Expected execution process: Set the lock in a temporary scenario environment, run a GET against the packaged stub, then run a confirmed production create against the stub.

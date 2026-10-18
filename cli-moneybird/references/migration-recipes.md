@@ -179,7 +179,7 @@ moneybird-guard reports journal_entries "${REPORT_DATE_ARGS[@]}" --out "migratio
 moneybird-guard reports tax "${REPORT_DATE_ARGS[@]}" --out "migration-workspace/$YEAR-tax.json"
 ```
 
-Confirm `START_DATE_FIELD` and `END_DATE_FIELD` from pinned CLI help before running the example. Those field names are `UNVERIFIED` until confirmed. Each report covers the requested year. Use `sync` and `sync_fetch` in ID batches of no more than 100 for full record reads. `sync_fetch` is a POST that the read-only lock refuses, so ask the Operator before that pull, as the Bulk reads row says.
+Confirm `START_DATE_FIELD` and `END_DATE_FIELD` from pinned CLI help before running the example. Those field names are `UNVERIFIED` until confirmed. Each report covers the requested year. Use `sync` and `sync_fetch` in ID batches of no more than 100 for full record reads.
 
 ---
 

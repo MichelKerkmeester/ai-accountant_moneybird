@@ -108,7 +108,7 @@ bash cli-moneybird/cli/moneybird-cli/tests/run-tests.sh
 | Jortt doctor | `Mode: offline. No network calls were made.` |
 | Jortt CLI tests | `Result: 28 passed, 0 failed` |
 | Moneybird doctor | `Doctor is read-only. Credential files were checked for presence only.` |
-| Moneybird guard tests | `Pass: 58  Fail: 0` |
+| Moneybird guard tests | `Pass: 62  Fail: 0` |
 
 The Jortt tests read the trimmed API description fixture beside them, so they need no network and no cache. The Moneybird tests use a local stub.
 
@@ -192,7 +192,7 @@ The offline checks then show what still points at the old tool or market: broken
 ## 8. 🔒 SAFETY AND PRIVACY
 
 - **Jortt is read-only.** `jortt-cli` refuses every non-GET call with exit 3, and its scopes are read-only. There is no write path for an agent. XAF auditfiles, annual accounts (jaarrekening) and filed VAT returns come from you, through the Jortt UI.
-- **Every Moneybird call goes through `moneybird-guard`.** Read sessions set `MONEYBIRD_GUARD_READ_ONLY=1`. The guard then blocks every non-GET call before it reaches the official CLI.
+- **Every Moneybird call goes through `moneybird-guard`.** Read sessions set `MONEYBIRD_GUARD_READ_ONLY=1`. The guard then blocks every non-GET call, except a synchronization fetch, which only reads, before it reaches the official CLI.
 - **A write needs five things.** A passed phase gate, your approval, a flushed `WRITE_INTENT` journal record, `--confirm-write` and `--approval <ref>` naming that entry. The guard checks the reference against the run journal, needs the writer session and never falls back to the reader session. A production batch also needs your approval for that batch and `--production`.
 - **Migration data stays in `migration-workspace/`.** Git ignores it. Both CLIs refuse to save output anywhere else.
 - **A private finance folder stays unread.** The assistant never lists, searches or opens it. The one exception is a single file you name during a migration phase.

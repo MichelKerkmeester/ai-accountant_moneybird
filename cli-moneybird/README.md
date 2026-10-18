@@ -78,7 +78,7 @@ bash scripts/doctor.sh
 bash cli/moneybird-cli/tests/run-tests.sh
 ```
 
-Expected: the doctor reports your local state without a network call. The stub suite ends with `Pass: 58  Fail: 0`.
+Expected: the doctor reports your local state without a network call. The stub suite ends with `Pass: 62  Fail: 0`.
 
 **Step 4: Read the rules before any write.**
 
@@ -93,7 +93,7 @@ Open `SKILL.md` and `references/migration-recipes.md`. Use the pilot administrat
 The skill routes each request by operation. REST work goes through the official CLI behind `moneybird-guard`. The guard asks the CLI for a dry run, reads the method and URL and then decides:
 
 - A GET call runs.
-- A non-GET call is blocked when `MONEYBIRD_GUARD_READ_ONLY=1` is set.
+- A non-GET call is blocked when `MONEYBIRD_GUARD_READ_ONLY=1` is set, except a synchronization fetch, which only reads.
 - Otherwise a non-GET call needs `--confirm-write`, an existing writer configuration folder and the pilot administration as its target. It also needs `--approval <ref>` matching the `approval_reference` of a `WRITE_INTENT` entry in `migration-workspace/RunJournal/run-journal.jsonl` whose `payload_digest` equals the keyed digest of the writer-session dry run. The reference and digest pair must not be consumed yet.
 - A production batch needs the same checks plus `--production`, after the Operator approves that batch.
 
@@ -198,7 +198,7 @@ No. They do not prove live access, production access or a reconciled ledger.
 | Check | How to run it |
 |---|---|
 | Offline diagnostics | `bash scripts/doctor.sh` reports local checks and does not call the API |
-| Guard behavior | `bash cli/moneybird-cli/tests/run-tests.sh` ends with `Pass: 58  Fail: 0` |
+| Guard behavior | `bash cli/moneybird-cli/tests/run-tests.sh` ends with `Pass: 62  Fail: 0` |
 | Guard exit codes | `bash scripts/exit-code-parity.sh` checks the guard exit codes against the exit table, the troubleshooting rows, the router keywords and the gate ladder |
 | Migration evidence | Rehearse a pilot write and its undo, then check later synchronization reads |
 

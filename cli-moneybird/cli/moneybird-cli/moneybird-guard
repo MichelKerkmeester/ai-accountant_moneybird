@@ -215,6 +215,14 @@ parse_dry_line() {
   return 0
 }
 
+# WHY: A synchronization fetch sends its id list as a POST body but only reads
+# records, so it runs as a read. Only the exact resource synchronization path
+# qualifies, and every other POST still meets the write gates.
+is_sync_fetch() {
+  [[ "$METHOD" == "POST" ]] || return 1
+  [[ "$URL_PATH" =~ ^/api/v2/[^/]+/[a-z_]+/synchronization(\.json)?$ ]]
+}
+
 has_period_filter() {
   local i=0
   local arg=""
@@ -662,7 +670,7 @@ if ! parse_dry_line; then
 fi
 DRY_LINE="${DRY_OUTPUT%%$'\n'*}"
 
-if [[ "$METHOD" == "GET" ]]; then
+if [[ "$METHOD" == "GET" ]] || is_sync_fetch; then
   if is_list_action && ! has_period_filter; then
     printf 'Warning: Moneybird lists default to period:this_year. Older years will be missing unless --filter includes period:.\n' >&2
   fi

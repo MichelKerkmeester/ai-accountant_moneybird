@@ -21,7 +21,7 @@ This package adopts `moneybird/moneybird-cli` and does not rewrite it. The offic
 
 Current state:
 
-- Every API call goes through `moneybird-guard`, which previews the request first and holds non-GET calls behind the confirmation, pilot and approval gates.
+- Every API call goes through `moneybird-guard`, which previews the request first and holds non-GET calls behind the confirmation, pilot and approval gates. A synchronization fetch only reads and runs like a GET.
 - `setup.sh` prints a plan by default and changes the machine only when an Operator passes `--install`.
 - The offline suite in `tests/` runs against a local stub and never touches the real CLI session, `.env` or `.env.writer`.
 
@@ -67,11 +67,11 @@ cli/moneybird-cli/
 | Test overrides | `MONEYBIRD_ENV_DIR`, `MONEYBIRD_CLI`, `MONEYBIRD_WRITER_CONFIG_DIR`, `MONEYBIRD_HMAC_KEY_FILE` and the `MONEYBIRD_PILOT_ADMINISTRATION_ID` environment variable are honored only when `MONEYBIRD_GUARD_TEST=1` is set. That flag exists for the offline test suite only, and agents and Operators never set it in real use |
 | Output | `--out` must resolve to a file inside `migration-workspace/` and outside its `.secrets/`, `RunJournal/` and `logs/` folders, otherwise the guard exits 5 |
 
-For an API call, the guard first adds `--dry-run`. It blocks non-GET calls without `--confirm-write`. A write also needs an existing writer configuration folder, or the guard exits 7 and never falls back to the reader session. The target must be the pilot administration, or `--production` after Operator approval. `--approval <ref>` must match the `approval_reference` of a `WRITE_INTENT` event in `migration-workspace/RunJournal/run-journal.jsonl`, or the guard exits 8. The matched event must also carry a `payload_digest` equal to the keyed HMAC-SHA256 digest of the writer-session dry run, or the guard exits 9, and a `--file` write binds the file bytes to the event's `attachment_digest` the same way. The exit-3 preview prints the digest to copy into the event. A reference and digest pair that already has a write-log row is refused with exit 8 as consumed. This applies to pilot writes and production writes alike.
+For an API call, the guard first adds `--dry-run`. It blocks non-GET calls without `--confirm-write`, except a synchronization fetch, which only reads. A write also needs an existing writer configuration folder, or the guard exits 7 and never falls back to the reader session. The target must be the pilot administration, or `--production` after Operator approval. `--approval <ref>` must match the `approval_reference` of a `WRITE_INTENT` event in `migration-workspace/RunJournal/run-journal.jsonl`, or the guard exits 8. The matched event must also carry a `payload_digest` equal to the keyed HMAC-SHA256 digest of the writer-session dry run, or the guard exits 9, and a `--file` write binds the file bytes to the event's `attachment_digest` the same way. The exit-3 preview prints the digest to copy into the event. A reference and digest pair that already has a write-log row is refused with exit 8 as consumed. This applies to pilot writes and production writes alike.
 
 Without `--out`, the guard prints one summary line and keeps the response body in a private temporary file under `migration-workspace/tmp/`. `--print-body` is for the Operator only and the guard refuses it in an agent session.
 
-Set `MONEYBIRD_GUARD_READ_ONLY=1` to block every non-GET method before the real CLI call. GET calls still run. This lock takes precedence over `--confirm-write` and `--production`, exits 6 and prints the dry-run line with a clear message. Any other value leaves the lock off.
+Set `MONEYBIRD_GUARD_READ_ONLY=1` to block every non-GET method before the real CLI call. GET calls and a synchronization fetch, which only reads, still run. This lock takes precedence over `--confirm-write` and `--production`, exits 6 and prints the dry-run line with a clear message. Any other value leaves the lock off.
 
 `administration use <id>` is gated. Switching to the pilot administration passes. Switching to any other administration is blocked by the read-only lock. Otherwise it needs `--confirm-write`, the writer configuration, `--production` and `--approval`, the same as a production write.
 
@@ -126,7 +126,7 @@ bash cli/moneybird-cli/setup.sh --check
 bash cli/moneybird-cli/tests/run-tests.sh
 ```
 
-Expected: the check reports source presence, the pin match and the PATH status. The stub suite ends with `Pass: 58  Fail: 0`.
+Expected: the check reports source presence, the pin match and the PATH status. The stub suite ends with `Pass: 62  Fail: 0`.
 
 ---
 

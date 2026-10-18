@@ -44,7 +44,7 @@ The canonical exit-code table lives in [`cli.md`](cli.md) section 3. The rows be
 | `moneybird-cli` is not found | The CLI is missing or its symlink directory is not on `PATH` | Review `setup.sh` output. An operator can run `setup.sh --install` and add `$HOME/.local/bin` to `PATH`. |
 | Pin check fails | The local source is not at the reviewed commit | Review the diff before pin changes. Reinstall the reviewed commit with the setup script. |
 | Guard exit 2 | A usage error, including a malformed dry-run header, `--print-body` in an agent session or `--print-body` with `--out` | Use `--out` and read the saved file. Agents never use `--print-body`. |
-| Guard exit 3 | A non-GET call lacks `--confirm-write` | Review the dry-run line and approved batch. Retry only after explicit operator approval. |
+| Guard exit 3 | A non-GET call other than a synchronization fetch lacks `--confirm-write` | Review the dry-run line and approved batch. Retry only after explicit operator approval. |
 | Guard exit 4 | The target differs from the pilot or the pilot is unset | Set the intended pilot ID in the `MONEYBIRD_PILOT_ADMINISTRATION_ID=` line of the root `.env` file. Use `--production` only after the operator approves that batch. |
 | Guard exit 5 | `--out` is outside `migration-workspace/`, crosses a symlink, names a folder or points into the guard's `.secrets/`, `RunJournal/` or `logs/` folder | Choose a file path below `<Accountant root>/migration-workspace/` outside those three folders. |
 | Guard exit 6 | `MONEYBIRD_GUARD_READ_ONLY=1` blocks a non-GET method | Keep the lock set for read-only work. Use a write role only when the migration gate requires a write. |
@@ -77,7 +77,7 @@ The API rejected a field, value or write in a locked period. Check the pinned CL
 
 Wait for the response's `Retry-After` value. Keep under 150 requests per five minutes and under 50 requests per five minutes for reports. Do not retry immediately or increase concurrency.
 
-The Read Step Contract in `cli-moneybird/SKILL.md` section 3 owns the retry rule. It allows a GET retry only. Wait for `Retry-After` first. Never retry a non-GET call.
+The Read Step Contract in `cli-moneybird/SKILL.md` section 3 owns the retry rule. It allows a GET retry only, and a synchronization fetch counts as a GET. Wait for `Retry-After` first. Never retry a non-GET call.
 
 ---
 

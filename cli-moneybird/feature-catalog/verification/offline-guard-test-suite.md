@@ -29,7 +29,7 @@ The suite creates a temporary Accountant root, points `MONEYBIRD_ENV_DIR`, `MONE
 
 ### Coverage
 
-The cases cover the period warning, the confirmation lock, the read-only lock, the writer configuration and pilot gates, the approval reference, the payload and attachment digests, the single-use rule, the write log, the DELETE caution, the output guard with its state-folder and trailing-slash refusals, the summary output, the `--print-body` refusal under an agent marker and its place before the write gates, the `--out` refusal on a passthrough command, the ignored environment overrides without the test flag, the `administration use` gate, both logins, a quoted token, the doctor's pinned writer folder and two injected stub faults.
+The cases cover the period warning, the confirmation lock, the read-only lock and its synchronization fetch exception, the writer configuration and pilot gates, the approval reference, the payload and attachment digests, the single-use rule, the write log, the DELETE caution, the output guard with its state-folder and trailing-slash refusals, the summary output, the `--print-body` refusal under an agent marker and its place before the write gates, the `--out` refusal on a passthrough command, the ignored environment overrides without the test flag, the `administration use` gate, both logins, a quoted token, the doctor's pinned writer folder and two injected stub faults.
 
 ### Reporting
 

@@ -80,7 +80,7 @@ The operator creates credentials locally. Do not put a token in a prompt, termin
 - `.env.writer` is the separate writer file. From the pilot phase onward, put the write token there under `MONEYBIRD_API_TOKEN`.
 - Set `MONEYBIRD_PILOT_ADMINISTRATION_ID` in the root `.env` file before the pilot write. The guard reads the pilot administration from that file only, not from the environment.
 - Set `MONEYBIRD_ADMINISTRATION_ID` only when the migration plan needs a specific administration for a read.
-- Set `MONEYBIRD_GUARD_READ_ONLY=1` for read-only sessions. The guard then blocks every non-GET call before the real call, even when write flags are present.
+- Set `MONEYBIRD_GUARD_READ_ONLY=1` for read-only sessions. The guard then blocks every non-GET call before the real call, even when write flags are present, except a synchronization fetch, which only reads.
 
 Both files are ignored by Git. The skill does not open or print them. The guard reads a token file only during `login-from-env`.
 

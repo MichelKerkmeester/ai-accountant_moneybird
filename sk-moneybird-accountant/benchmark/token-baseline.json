@@ -1393,7 +1393,7 @@
       }
     },
     {
-      "bytes": 26029,
+      "bytes": 26126,
       "path": "sk-moneybird-accountant/references/migration/overview-and-setup.md",
       "sections": [
         {
@@ -1420,13 +1420,13 @@
         },
         {
           "anchor": "tool-and-access-boundaries",
-          "bytes": 6620,
+          "bytes": 6670,
           "line": 40,
           "lines": 51,
           "title": "Tool and access boundaries",
           "tokens": {
-            "cl100k_base": 1365,
-            "o200k_base": 1367
+            "cl100k_base": 1374,
+            "o200k_base": 1376
           }
         },
         {
@@ -1442,13 +1442,13 @@
         },
         {
           "anchor": "required-migration_config-fields",
-          "bytes": 11943,
+          "bytes": 11984,
           "line": 113,
           "lines": 78,
           "title": "Required `MIGRATION_CONFIG` fields",
           "tokens": {
-            "cl100k_base": 2821,
-            "o200k_base": 2802
+            "cl100k_base": 2829,
+            "o200k_base": 2810
           }
         },
         {
@@ -1464,19 +1464,19 @@
         },
         {
           "anchor": "phase-0-setup-sequence",
-          "bytes": 2415,
+          "bytes": 2421,
           "line": 208,
           "lines": 15,
           "title": "Phase 0 setup sequence",
           "tokens": {
-            "cl100k_base": 518,
-            "o200k_base": 516
+            "cl100k_base": 519,
+            "o200k_base": 517
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 5781,
-        "o200k_base": 5760
+        "cl100k_base": 5799,
+        "o200k_base": 5778
       }
     },
     {
@@ -1512,7 +1512,7 @@
       }
     },
     {
-      "bytes": 25244,
+      "bytes": 25298,
       "path": "sk-moneybird-accountant/references/migration/phases-0-to-2.md",
       "sections": [
         {
@@ -1528,13 +1528,13 @@
         },
         {
           "anchor": "phase-0-safety-and-system-setup",
-          "bytes": 10046,
+          "bytes": 10100,
           "line": 24,
           "lines": 74,
           "title": "Phase 0: Safety and system setup",
           "tokens": {
-            "cl100k_base": 2279,
-            "o200k_base": 2271
+            "cl100k_base": 2291,
+            "o200k_base": 2283
           }
         },
         {
@@ -1561,8 +1561,8 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 5567,
-        "o200k_base": 5532
+        "cl100k_base": 5579,
+        "o200k_base": 5544
       }
     },
     {
@@ -1815,7 +1815,7 @@
       }
     },
     {
-      "bytes": 30151,
+      "bytes": 30287,
       "path": "sk-moneybird-accountant/references/migration/phases-6-to-9.md",
       "sections": [
         {
@@ -1842,24 +1842,24 @@
         },
         {
           "anchor": "phase-7-pilot-migration",
-          "bytes": 8780,
+          "bytes": 8850,
           "line": 112,
           "lines": 76,
           "title": "Phase 7: Pilot migration",
           "tokens": {
-            "cl100k_base": 1910,
-            "o200k_base": 1898
+            "cl100k_base": 1922,
+            "o200k_base": 1910
           }
         },
         {
           "anchor": "phase-8-historical-migration-per-period",
-          "bytes": 7525,
+          "bytes": 7591,
           "line": 188,
           "lines": 77,
           "title": "Phase 8: Historical migration per period",
           "tokens": {
-            "cl100k_base": 1641,
-            "o200k_base": 1631
+            "cl100k_base": 1650,
+            "o200k_base": 1640
           }
         },
         {
@@ -1875,12 +1875,12 @@
         }
       ],
       "tokens": {
-        "cl100k_base": 6571,
-        "o200k_base": 6525
+        "cl100k_base": 6592,
+        "o200k_base": 6546
       }
     },
     {
-      "bytes": 32922,
+      "bytes": 33106,
       "path": "sk-moneybird-accountant/references/migration/shared-mechanisms.md",
       "sections": [
         {
@@ -1907,13 +1907,13 @@
         },
         {
           "anchor": "m2-stable-local-write-keys-and-uncertain-outcomes",
-          "bytes": 1986,
+          "bytes": 2113,
           "line": 30,
           "lines": 8,
           "title": "M2. Stable local write keys and uncertain outcomes",
           "tokens": {
-            "cl100k_base": 381,
-            "o200k_base": 380
+            "cl100k_base": 412,
+            "o200k_base": 412
           }
         },
         {
@@ -2028,19 +2028,19 @@
         },
         {
           "anchor": "route-contract",
-          "bytes": 4470,
+          "bytes": 4527,
           "line": 173,
           "lines": 23,
           "title": "Route contract",
           "tokens": {
-            "cl100k_base": 973,
-            "o200k_base": 978
+            "cl100k_base": 984,
+            "o200k_base": 989
           }
         }
       ],
       "tokens": {
-        "cl100k_base": 6829,
-        "o200k_base": 6847
+        "cl100k_base": 6871,
+        "o200k_base": 6890
       }
     },
     {
@@ -20482,7 +20482,7 @@
   },
   "units": [
     {
-      "bytes": 7332769,
+      "bytes": 7333240,
       "files": 476,
       "name": "corpus total",
       "reads": [
@@ -20490,8 +20490,8 @@
       ],
       "sections": 1427,
       "tokens": {
-        "cl100k_base": 2136412,
-        "o200k_base": 2030808
+        "cl100k_base": 2136505,
+        "o200k_base": 2030902
       }
     },
     {
@@ -20517,14 +20517,14 @@
       }
     },
     {
-      "bytes": 14011,
+      "bytes": 14169,
       "name": "sk-moneybird-accountant/SKILL.md",
       "reads": [
         "sk-moneybird-accountant/SKILL.md"
       ],
       "tokens": {
-        "cl100k_base": 3232,
-        "o200k_base": 3215
+        "cl100k_base": 3261,
+        "o200k_base": 3244
       }
     }
   ]

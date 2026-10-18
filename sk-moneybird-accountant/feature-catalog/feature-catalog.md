@@ -95,7 +95,7 @@ Defines stable local write keys and append-only run-journal evidence for each mi
 
 #### Current Reality
 
-Every non-GET call requires a flushed `WRITE_INTENT`. Uncertain outcomes require source-reference and planned-field read-back before any retry. The offline crash scenario checks journal-based resume and no blind replay.
+Every non-GET call except a synchronization fetch, which only reads, requires a flushed `WRITE_INTENT`. Uncertain outcomes require source-reference and planned-field read-back before any retry. The offline crash scenario checks journal-based resume and no blind replay.
 
 #### Source Files
 
@@ -123,7 +123,7 @@ See [`bookkeeping-and-migration/migration-archive-decommission-gate.md`](bookkee
 
 #### Description
 
-Checks trial or paid-package coverage before each non-GET batch and before final verification.
+Checks trial or paid-package coverage before each non-GET batch, a synchronization fetch excepted, and before final verification.
 
 #### Current Reality
 

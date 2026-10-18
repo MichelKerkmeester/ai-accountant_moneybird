@@ -17,7 +17,7 @@ version: 1.0.0.0
 
 Uses a stable local write key and an append-only journal to make each migration write traceable and recoverable.
 
-The plan requires a durable `WRITE_INTENT` before every non-GET call. An uncertain result is reconciled with source-reference and planned-field read-back before any retry.
+The plan requires a durable `WRITE_INTENT` before every non-GET call except a synchronization fetch, which only reads. An uncertain result is reconciled with source-reference and planned-field read-back before any retry.
 
 ---
 

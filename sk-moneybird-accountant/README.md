@@ -40,7 +40,7 @@ The skill routes historical Jortt work by phase and gate. It also reviews the cu
 
 ### Operating Boundary
 
-Jortt access is read-only. Moneybird calls go through `moneybird-guard`. Reader sessions set `MONEYBIRD_GUARD_READ_ONLY=1`, which blocks every non-GET call before it reaches the official CLI. A write needs the writer configuration, the phase gate, Operator approval, `--confirm-write` and `--approval <ref>` for a flushed `WRITE_INTENT` journal entry (memoriaal). A write to a non-pilot administration also needs `--production`.
+Jortt access is read-only. Moneybird calls go through `moneybird-guard`. Reader sessions set `MONEYBIRD_GUARD_READ_ONLY=1`, which blocks every non-GET call, except a synchronization fetch, which only reads, before it reaches the official CLI. A write needs the writer configuration, the phase gate, Operator approval, `--confirm-write` and `--approval <ref>` for a flushed `WRITE_INTENT` journal entry (memoriaal). A write to a non-pilot administration also needs `--production`.
 
 ---
 
@@ -201,7 +201,7 @@ No. A connection needs separate, current evidence from the relevant CLI.
 | English first wording | `python3 -I sk-moneybird-accountant/scripts/check-english-first.py` reports `0 problems` |
 | Plan kit drift | `python3 -I sk-moneybird-accountant/scripts/generate-plan-kit.py --check` reports a match line such as `166 generated files match` |
 | Jortt offline checks | `bash cli-jortt/scripts/doctor.sh` ends with `Mode: offline. No network calls were made.` and `bash cli-jortt/cli/jortt-cli/tests/run-tests.sh` ends with `Result: 28 passed, 0 failed` |
-| Moneybird offline checks | `bash cli-moneybird/scripts/doctor.sh` checks the local state and `bash cli-moneybird/cli/moneybird-cli/tests/run-tests.sh` ends with `Pass: 58  Fail: 0` |
+| Moneybird offline checks | `bash cli-moneybird/scripts/doctor.sh` checks the local state and `bash cli-moneybird/cli/moneybird-cli/tests/run-tests.sh` ends with `Pass: 62  Fail: 0` |
 
 The checks prove the routes, links, anchors and offline tool behavior. They do not prove live credentials, service access or a reconciled ledger.
 

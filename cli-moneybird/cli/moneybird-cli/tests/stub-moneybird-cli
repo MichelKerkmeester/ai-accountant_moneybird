@@ -62,6 +62,7 @@ case "$ACTION" in
   create) METHOD="POST" ;;
   update) METHOD="PATCH" ;;
   delete) METHOD="DELETE" ;;
+  sync_fetch) METHOD="POST" ;;
   *) METHOD="GET" ;;
 esac
 # WHY: A forwarded file makes the request a multipart write, so the guard's
@@ -70,7 +71,9 @@ if [[ -n "$FILE_PATH" ]]; then
   METHOD="POST"
 fi
 
-if [[ "$ACTION" == "list" || "$ACTION" == "create" ]]; then
+if [[ "$ACTION" == "sync" || "$ACTION" == "sync_fetch" ]]; then
+  URL="https://moneybird.com/api/v2/$ADMIN_ID/$RESOURCE/synchronization.json"
+elif [[ "$ACTION" == "list" || "$ACTION" == "create" ]]; then
   URL="https://moneybird.com/api/v2/$ADMIN_ID/$RESOURCE.json"
 else
   URL="https://moneybird.com/api/v2/$ADMIN_ID/$RESOURCE/$RECORD_ID.json"

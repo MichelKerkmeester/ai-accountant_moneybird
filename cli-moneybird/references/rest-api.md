@@ -30,7 +30,7 @@ The official CLI reads the token from its selected session. Never paste a token 
 
 The API authentication page lists six area scopes: `sales_invoices`, `documents`, `estimates`, `bank`, `time_entries` and `settings`. None separates read access from write access. The downloads page and OpenAPI sources also mention `contacts`. These sources disagree about a `contacts` scope. Treat the scope requirement as `UNVERIFIED` until the operator confirms the token's effective access.
 
-Tokens with these scopes can change Moneybird records. Keep the writer token in `.env.writer` after the pilot begins and use the separate writer CLI config directory. Set `MONEYBIRD_GUARD_READ_ONLY=1` for read-only sessions so the guard blocks every non-GET method.
+Tokens with these scopes can change Moneybird records. Keep the writer token in `.env.writer` after the pilot begins and use the separate writer CLI config directory. Set `MONEYBIRD_GUARD_READ_ONLY=1` for read-only sessions so the guard blocks every non-GET method, except a synchronization fetch, which only reads.
 
 ---
 
@@ -95,7 +95,7 @@ The comma filter form and the `unprocessed` state match the pinned CLI's OpenAPI
 | Processed | `processed` |
 | Booked from a suggestion | `auto_booked` |
 
-A filtered bank list caps at 100 records. When the list returns 100 records, treat the count as capped and fall back to `financial_mutations sync` plus `financial_mutations sync_fetch --ids JSON`, then filter the state locally on the returned records. Keep each synchronization ID batch within the cap of 100. `sync_fetch` is a POST that the read-only lock refuses, so ask the Operator before that pull, as the Bulk reads row says.
+A filtered bank list caps at 100 records. When the list returns 100 records, treat the count as capped and fall back to `financial_mutations sync` plus `financial_mutations sync_fetch --ids JSON`, then filter the state locally on the returned records. Keep each synchronization ID batch within the cap of 100.
 
 This read and its fallback follow the Read Step Contract in `cli-moneybird/SKILL.md` section 3.
 
@@ -107,7 +107,7 @@ Moneybird caches API responses. An immediate GET after a write can return stale 
 
 `GET /{resource}/synchronization` returns record IDs and versions. `POST /{resource}/synchronization` accepts IDs and returns records in batches of at most 100. Synchronization is documented for sales invoices, financial mutations and document types.
 
-The CLI exposes these routes as `RESOURCE sync` and `RESOURCE sync_fetch --ids JSON`. Keep each ID batch within the API cap. The pinned CLI sends `sync_fetch` as `POST /synchronization`, so the guard treats it as a write. The read-only lock refuses it with exit 6, and without the lock it needs the full write path. Escalate to the Operator before a bulk fetch. Do not use `GET /financial_mutations` as a complete export because that endpoint is capped at 100 records.
+The CLI exposes these routes as `RESOURCE sync` and `RESOURCE sync_fetch --ids JSON`. Keep each ID batch within the API cap. The pinned CLI sends `sync_fetch` as `POST /synchronization`. The guard runs exactly that path as a read, so it passes the read-only lock and needs no write gate. Every other POST stays a write. Do not use `GET /financial_mutations` as a complete export because that endpoint is capped at 100 records.
 
 ### Delete Response
 

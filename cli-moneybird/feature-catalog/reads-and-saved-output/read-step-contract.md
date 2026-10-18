@@ -25,7 +25,7 @@ The contract exists because a list read can succeed and still be incomplete. An 
 
 ### Read Lock
 
-Every guarded read sets `MONEYBIRD_GUARD_READ_ONLY=1`, so the guard blocks a non-GET method before its real call. The lock covers Moneybird calls only. Local workspace writes and attachment downloads are not blocked by it.
+Every guarded read sets `MONEYBIRD_GUARD_READ_ONLY=1`, so the guard blocks a non-GET method before its real call, except a synchronization fetch, which only reads. The lock covers Moneybird calls only. Local workspace writes and attachment downloads are not blocked by it.
 
 ### Period And Completeness
 
@@ -33,11 +33,11 @@ Every list names an explicit period, because Moneybird defaults to `period:this_
 
 ### Caps And Bulk Reads
 
-A list endpoint is capped, so a larger read uses `sync` and `sync_fetch` within the batch cap. `sync_fetch` is a POST, so the guard treats it as a write and the read-only lock refuses it. A bulk fetch escalates to the Operator. A report covers a bounded window, and a longer report splits into parts that each record period and count and reconcile to the whole. The exact caps and the window are in `references/rest-api.md` and `SKILL.md` section 3.
+A list endpoint is capped, so a larger read uses `sync` and `sync_fetch` within the batch cap. `sync_fetch` is a POST, and the guard runs it as a read, so the read-only lock lets it through. A report covers a bounded window, and a longer report splits into parts that each record period and count and reconcile to the whole. The exact caps and the window are in `references/rest-api.md` and `SKILL.md` section 3.
 
 ### Staleness And Retry
 
-An immediate GET after a write can return cached data, so the write response status is the first proof and a later synchronization read is the verification. Retries are GET only, wait for `Retry-After` first and otherwise use capped exponential backoff with full jitter and a bounded attempt count. A failed GET that exhausts the attempts stops the read for the Operator. A non-GET call is never retried.
+An immediate GET after a write can return cached data, so the write response status is the first proof and a later synchronization read is the verification. Retries are GET only, and a synchronization fetch counts as a GET, wait for `Retry-After` first and otherwise use capped exponential backoff with full jitter and a bounded attempt count. A failed GET that exhausts the attempts stops the read for the Operator. A non-GET call is never retried.
 
 ---
 

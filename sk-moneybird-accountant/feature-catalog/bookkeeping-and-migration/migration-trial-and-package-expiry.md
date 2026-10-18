@@ -1,6 +1,6 @@
 ---
 title: Migration trial and package expiry
-description: Checks trial or paid-package coverage before each non-GET batch and before final verification.
+description: Checks trial or paid-package coverage before each non-GET batch, a synchronization fetch excepted, and before final verification.
 trigger_phrases:
   - Migration trial and package expiry
   - trial expiry before write batch
@@ -15,7 +15,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-Checks the observed trial or package state and expiry before each Moneybird non-GET batch.
+Checks the observed trial or package state and expiry before each Moneybird non-GET batch. A synchronization fetch only reads and is not such a batch.
 
 The access window must cover the write, synchronization, read-back and verification. Before Phase 17, the active paid package must cover the next live VAT period and year close.
 

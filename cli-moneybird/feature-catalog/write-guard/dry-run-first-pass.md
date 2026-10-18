@@ -55,6 +55,6 @@ Every other call runs the CLI once with `--dry-run`. The guard keeps the first o
 - Feature file path: `write-guard/dry-run-first-pass.md`
 
 Related references:
-- [write-confirmation-lock.md](write-confirmation-lock.md) - The next gate for a non-GET request
+- [write-confirmation-lock.md](write-confirmation-lock.md) - The next gate for a write
 - [pilot-administration-gate.md](pilot-administration-gate.md) - Uses the administration read from the preview
 - [feature-catalog.md](../feature-catalog.md) - Root catalog for every feature

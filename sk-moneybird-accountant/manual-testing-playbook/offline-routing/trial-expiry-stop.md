@@ -94,7 +94,7 @@ Check whether access covers the complete write and verification window. If expir
 |---|---|
 | sk-moneybird-accountant/references/migration/shared-mechanisms.md | Defines access-window checks before writes and verification. |
 | sk-moneybird-accountant/references/migration/overview-and-setup.md | Defines expiry, evidence, renewal owner and alert config fields. |
-| sk-moneybird-accountant/SKILL.md | Requires a current expiry check before every non-GET batch. |
+| sk-moneybird-accountant/SKILL.md | Requires a current expiry check before every non-GET batch, a synchronization fetch excepted. |
 
 ---
 

@@ -86,7 +86,7 @@ A non-GET request without --confirm-write prints its dry-run line and its payloa
 
 #### Current Reality
 
-The lock applies to every non-GET method, including deletes and custom actions. The printed dry-run line lets the operator review the method, path and administration before repeating the command with `--confirm-write`.
+The lock applies to every non-GET method, including deletes and custom actions, except a synchronization fetch, which only reads. The printed dry-run line lets the operator review the method, path and administration before repeating the command with `--confirm-write`.
 
 #### Source Files
 
@@ -96,7 +96,7 @@ See [`write-guard/write-confirmation-lock.md`](write-guard/write-confirmation-lo
 
 #### Description
 
-When `MONEYBIRD_GUARD_READ_ONLY=1`, the guard blocks every non-GET method before the real call and exits 6, even when `--confirm-write` or `--production` is present. GET calls still run.
+When `MONEYBIRD_GUARD_READ_ONLY=1`, the guard blocks every non-GET method before the real call and exits 6, even when `--confirm-write` or `--production` is present. GET calls and a synchronization fetch, which only reads, still run.
 
 #### Current Reality
 

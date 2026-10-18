@@ -127,7 +127,7 @@ Read each input from Jortt or from the previous phase. Jortt stays read-only.
 | ID | Requirement | Check |
 |----|-------------|-------|
 | REQ-001 | SG-8.1: Freeze input and recompute immediately before write. | approved input hashes match pre-write hashes 100%. |
-| REQ-002 | SG-8.2: Track each source object through write and read-back. | objects with terminal state 100%, flushed WRITE_INTENT events before non-GET calls 100%, source-reference and planned-field equality before ID adoption 100%, WRITE_UNKNOWN count 0 before gate. |
+| REQ-002 | SG-8.2: Track each source object through write and read-back. | objects with terminal state 100%, flushed WRITE_INTENT events before non-GET calls other than synchronization fetches 100%, source-reference and planned-field equality before ID adoption 100%, WRITE_UNKNOWN count 0 before gate. |
 | REQ-003 | SG-8.3: Reconcile counts, pilot identity and balances. | every source key already verified in the pilot reuses its matching target ID and is excluded from the historical write set 100%, exact source reference and planned fields match 100%, duplicates across pilot and historical key manifests 0, unexplained differences 0, write-key duplicates 0. |
 | REQ-004 | SG-8.4: Verify every target attachment. | source and target byte counts and SHA-256 match 100%, unavailable attachment reads 0, mismatches 0. |
 | REQ-005 | SG-8.5: Track opening AR/AP through settlement. | each cut-over item has settled-with-link, still-open-with-aging or approved-exception status 100%, settled items link to the same source key 100%, unexplained open items 0. |

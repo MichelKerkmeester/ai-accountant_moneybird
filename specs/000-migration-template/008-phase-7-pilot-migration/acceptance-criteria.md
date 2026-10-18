@@ -51,7 +51,7 @@ One row per criterion. `AC-ID` is stable once written: supersede a criterion, ne
 | ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | PDF and UBL are piloted separately where present, required field matrices match sources 100%, attachment bytes and SHA-256 match 100%, target attachment read route verified 1. | PENDING | PENDING |
-| AC-002 | stable local key and mapping schema version beside it 100%, durable WRITE_INTENT flushed before every non-GET call 100%, source reference and planned payload fields match before ID adoption 100%, ambiguous results stopped 100%. | PENDING | PENDING |
+| AC-002 | stable local key and mapping schema version beside it 100%, durable WRITE_INTENT flushed before every non-GET call other than a synchronization fetch 100%, source reference and planned payload fields match before ID adoption 100%, ambiguous results stopped 100%. | PENDING | PENDING |
 | AC-003 | forced interruption after WRITE_INTENT, after response loss and after read-back 3, each resumes from the last verified journal state 100%, blind replay count 0. | PENDING | PENDING |
 | AC-004 | approved undo or linked correction rehearsal passes 1, independent read confirms final state 1. | PENDING | PENDING |
 | AC-005 | representative opening item and settlement link read-back pass 1, source item and target link coverage 100%. | PENDING | PENDING |

@@ -386,7 +386,43 @@ if [[ $STATUS -eq 0 ]] && grep -q '^REAL GET ' "$MONEYBIRD_TEST_LOG"; then
 else
   fail "Read-only lock allows GET calls"
 fi
+
+# A synchronization fetch is a POST that only reads, so the lock lets it through.
+reset_state
+capture_guard sales_invoices sync_fetch --ids '["1","2"]'
+if [[ $STATUS -eq 0 ]] && grep -Eq '^REAL POST https://moneybird.com/api/v2/[^/]+/sales_invoices/synchronization.json$' "$MONEYBIRD_TEST_LOG"; then
+  pass "Read-only lock allows a synchronization fetch"
+else
+  fail "Read-only lock allows a synchronization fetch"
+fi
+
+# A POST to a path that only resembles synchronization stays blocked.
+reset_state
+capture_guard synchronization create
+if [[ $STATUS -eq 6 ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "Read-only lock blocks a POST to a resource named synchronization"
+else
+  fail "Read-only lock blocks a POST to a resource named synchronization"
+fi
+
+# A synchronization path with an extra segment is not a resource fetch and stays blocked.
+reset_state
+capture_guard contacts/extra sync_fetch --ids '["1"]'
+if [[ $STATUS -eq 6 ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "Read-only lock blocks a synchronization path with an extra segment"
+else
+  fail "Read-only lock blocks a synchronization path with an extra segment"
+fi
 unset MONEYBIRD_GUARD_READ_ONLY
+
+# Without the lock a synchronization fetch still runs as a read, with no write flag.
+reset_state
+capture_guard sales_invoices sync_fetch --ids '["1"]'
+if [[ $STATUS -eq 0 ]] && grep -Eq '^REAL POST https://moneybird.com/api/v2/[^/]+/sales_invoices/synchronization.json$' "$MONEYBIRD_TEST_LOG"; then
+  pass "A synchronization fetch runs as a read without --confirm-write"
+else
+  fail "A synchronization fetch runs as a read without --confirm-write"
+fi
 
 # DELETE retains the 204 and separate-read warning.
 reset_state

@@ -50,8 +50,8 @@ This skill is a packet of the repository hub. Its routing lives in [`ROUTER.md`]
 1. Read the migration index for the next phase past the last verified gate.
 2. Load the matching phase file and [shared mechanisms](./references/migration/shared-mechanisms.md). Use M12 for the Agent runner, Implementer, Verifier, Final reviewer and separate Migration Writer seats. Load the control framework for any gate, risk, exception, stop or year lock. Work the phase from its packet in the Operator's spec-kit copy, `specs/001-migration/` by default, copied by `scripts/init-workspace.sh` from `specs/000-migration-template/`. After editing a phase reference, run `python3 -I scripts/generate-plan-kit.py` and confirm `--check` passes.
 3. Keep the phase contract's exact owner tags. The Operator owns approvals, UI exports, bank imports, period locks, return filing and accounting decisions.
-4. Route Jortt reads through jortt-cli, Moneybird reads and approved writes through moneybird-guard, keeping `MONEYBIRD_GUARD_READ_ONLY=1` in every reader session. Non-GET calls run in a separate approved writer session. Read-back follows the canonical read-back sentence in the [write contract](./references/migration/shared-mechanisms.md#route-contract).
-5. Before every Moneybird non-GET batch, verify trial or package expiry, phase gate, Operator approval and a flushed `WRITE_INTENT`. Use stable local write keys and journal every state change.
+4. Route Jortt reads through jortt-cli, Moneybird reads and approved writes through moneybird-guard, keeping `MONEYBIRD_GUARD_READ_ONLY=1` in every reader session. Non-GET calls run in a separate approved writer session. A synchronization fetch only reads and runs in a reader session. Read-back follows the canonical read-back sentence in the [write contract](./references/migration/shared-mechanisms.md#route-contract).
+5. Before every Moneybird non-GET batch, a synchronization fetch excepted, verify trial or package expiry, phase gate, Operator approval and a flushed `WRITE_INTENT`. Use stable local write keys and journal every state change.
 6. Keep work in migration-workspace/. Stop on any failed gate or open stop condition and resume from the last verified journal state. After Phase 18 passes, use the phase 19 to 21 contracts for recurring cycles until Phase 22.
 
 ### LIVE Mode
@@ -91,7 +91,7 @@ Answer order: load no unneeded record content, then scan the draft with the gate
 2. Distinguish confirmed rules, product documentation, conflicting values and unverified points.
 3. Route every Jortt CLI read through jortt-cli, following cli-jortt/SKILL.md.
 4. Route every Moneybird CLI read or write through moneybird-guard, following cli-moneybird/SKILL.md. Every read session sets `MONEYBIRD_GUARD_READ_ONLY=1`.
-5. Require the passed phase gate, Operator approval, the current access window, a stable local write key and a flushed `WRITE_INTENT` for every non-GET batch. See the [write contract](./references/migration/shared-mechanisms.md#route-contract).
+5. A synchronization fetch only reads and needs none of this. Require the passed phase gate, Operator approval, the current access window, a stable local write key and a flushed `WRITE_INTENT` for every non-GET batch. See the [write contract](./references/migration/shared-mechanisms.md#route-contract).
 6. Use the auditfile export route its mode names. Never weaken the global read-only lock for an analysis session.
 7. Keep migration records and evidence in migration-workspace/. Record exceptions rather than making unexplained balancing entries.
 8. Keep exact phase owner tags and stop at a failed gate. Resume from the last verified run-journal state.
