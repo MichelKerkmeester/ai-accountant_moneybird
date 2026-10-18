@@ -9,6 +9,10 @@
 #   2 - Invalid arguments
 set -euo pipefail
 
+# ───────────────────────────────────────────────────────────────
+# 1. ARGUMENTS
+# ───────────────────────────────────────────────────────────────
+
 LIVE=0
 case "${1:-}" in
   "") ;;
@@ -22,6 +26,10 @@ case "${1:-}" in
     ;;
 esac
 
+# ───────────────────────────────────────────────────────────────
+# 2. SCRIPT PATHS
+# ───────────────────────────────────────────────────────────────
+
 SOURCE="${BASH_SOURCE[0]}"
 while [[ -h "$SOURCE" ]]; do
   SOURCE_DIR="$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd -P)"
@@ -32,14 +40,23 @@ while [[ -h "$SOURCE" ]]; do
   esac
 done
 SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd -P)"
+readonly SCRIPT_DIR
 SKILL_ROOT="$(cd -P "$SCRIPT_DIR/.." >/dev/null 2>&1 && pwd -P)"
+readonly SKILL_ROOT
 ACCOUNTANT_ROOT="$(cd -P "$SKILL_ROOT/.." >/dev/null 2>&1 && pwd -P)"
-SETUP_SCRIPT="$SKILL_ROOT/cli/moneybird-cli/setup.sh"
+readonly ACCOUNTANT_ROOT
+readonly SETUP_SCRIPT="$SKILL_ROOT/cli/moneybird-cli/setup.sh"
 
+# ───────────────────────────────────────────────────────────────
+# 3. REPORT HELPERS
+# ───────────────────────────────────────────────────────────────
+
+# Print one report line to stdout.
 log() {
   printf '%s\n' "$*"
 }
 
+# Print yes or no for whether a command resolves on PATH.
 yes_no_command() {
   local command_name="$1"
   if command -v "$command_name" >/dev/null 2>&1; then
@@ -49,6 +66,7 @@ yes_no_command() {
   fi
 }
 
+# Report an environment variable as set or unset, never its value.
 report_env() {
   local name="$1"
   local value="$2"
@@ -59,6 +77,10 @@ report_env() {
   fi
 }
 
+# ───────────────────────────────────────────────────────────────
+# 4. OFFLINE REPORT
+# ───────────────────────────────────────────────────────────────
+
 log "== cli-moneybird doctor (read-only) =="
 for command_name in bash curl jq git; do
   log "$command_name: $(yes_no_command "$command_name")"
@@ -68,10 +90,10 @@ log "-- official CLI --"
 setup_result="$(bash "$SETUP_SCRIPT" --check 2>&1)" || true
 log "$setup_result"
 
-READER_CONFIG_DIR="${MONEYBIRD_CONFIG_DIR:-$HOME/.config/moneybird-cli}"
+readonly READER_CONFIG_DIR="${MONEYBIRD_CONFIG_DIR:-$HOME/.config/moneybird-cli}"
 # WHY: The guard pins the writer folder and ignores MONEYBIRD_WRITER_CONFIG_DIR, so the
 # doctor reports the folder a write will actually use.
-WRITER_CONFIG_DIR="$HOME/.config/moneybird-cli-writer"
+readonly WRITER_CONFIG_DIR="$HOME/.config/moneybird-cli-writer"
 if [[ -d "$READER_CONFIG_DIR" ]]; then
   log "Reader config directory: yes"
 else
@@ -100,6 +122,10 @@ report_env "MONEYBIRD_PILOT_ADMINISTRATION_ID" "${MONEYBIRD_PILOT_ADMINISTRATION
 report_env "MONEYBIRD_CONFIG_DIR" "${MONEYBIRD_CONFIG_DIR:-}"
 report_env "MONEYBIRD_WRITER_CONFIG_DIR" "${MONEYBIRD_WRITER_CONFIG_DIR:-}"
 
+# ───────────────────────────────────────────────────────────────
+# 5. LIVE ADMINISTRATIONS CHECK
+# ───────────────────────────────────────────────────────────────
+
 if [[ $LIVE -eq 1 ]]; then
   if [[ -n "${MONEYBIRD_API_TOKEN:-}" ]]; then
     escaped_token="${MONEYBIRD_API_TOKEN//\\/\\\\}"
@@ -111,14 +137,18 @@ EOF
 )"; then
       http_status="${curl_output##*$'\n'}"
       response_body="${curl_output%$'\n'*}"
-      if administration_count="$(printf '%s' "$response_body" | jq -er 'if type == "array" then length else error("not an array") end' 2>/dev/null)"; then
+      if administration_count="$(printf '%s' "$response_body" |
+        jq -er 'if type == "array" then length else error("not an array") end' 2>/dev/null)"; then
         log "Administrations HTTP status: $http_status"
         log "Administrations count: $administration_count"
+        # Print yes when the requested administration id appears in the live response.
         check_id() {
           local requested_id="$1"
           local match="false"
           if [[ -n "$requested_id" ]]; then
-            match="$(printf '%s' "$response_body" | jq -r --arg id "$requested_id" 'any(.[]; (.id | tostring) == $id)' 2>/dev/null || printf 'false')"
+            match="$(printf '%s' "$response_body" |
+              jq -r --arg id "$requested_id" 'any(.[]; (.id | tostring) == $id)' 2>/dev/null ||
+              printf 'false')"
           fi
           if [[ "$match" == "true" ]]; then
             printf 'yes'
@@ -146,6 +176,10 @@ EOF
   fi
 
 fi
+
+# ───────────────────────────────────────────────────────────────
+# 6. CLOSING NOTE AND EXIT
+# ───────────────────────────────────────────────────────────────
 
 log "Doctor is read-only. Credential files were checked for presence only."
 exit 0

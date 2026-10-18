@@ -1,6 +1,14 @@
-# WHY: Shared helpers keep spec parsing and credential handling consistent.
+#!/usr/bin/env bash
+# ───────────────────────────────────────────────────────────────
+# COMPONENT: JORTT CLI COMMON LIBRARY
+# ───────────────────────────────────────────────────────────────
+# Shared helpers keep spec parsing and credential handling consistent.
 # shellcheck shell=bash
 set -euo pipefail
+
+# ───────────────────────────────────────────────────────────────
+# 1. ERROR REPORTING
+# ───────────────────────────────────────────────────────────────
 
 jortt_error() {
   local code="$1"
@@ -8,6 +16,10 @@ jortt_error() {
   printf 'jortt-cli: %s\n' "$*" >&2
   exit "$code"
 }
+
+# ───────────────────────────────────────────────────────────────
+# 2. SESSION AND TOOL GUARDS
+# ───────────────────────────────────────────────────────────────
 
 # WHY: Agent session markers are a speed bump, not a security boundary. An agent
 # can unset them, and AGENTS.md forbids agents from using --print-body at all.
@@ -17,7 +29,7 @@ JORTT_AGENT_SESSION_MARKERS="CLAUDECODE AI_SESSION_CHILD ACCOUNTANT_AGENT_SESSIO
 jortt_print_body_blocked_by() {
   local marker
   for marker in $JORTT_AGENT_SESSION_MARKERS; do
-    if [ -n "${!marker:-}" ]; then
+    if [[ -n "${!marker:-}" ]]; then
       printf '%s' "$marker"
       return 0
     fi
@@ -37,8 +49,12 @@ jortt_need_tools() {
   command -v curl >/dev/null 2>&1 || jortt_error 2 "curl is required. Install curl and retry."
 }
 
+# ───────────────────────────────────────────────────────────────
+# 3. SPEC FILE HANDLING
+# ───────────────────────────────────────────────────────────────
+
 jortt_cache_path() {
-  if [ -n "${XDG_CACHE_HOME:-}" ]; then
+  if [[ -n "${XDG_CACHE_HOME:-}" ]]; then
     printf '%s/jortt-cli/openapi.json\n' "${XDG_CACHE_HOME%/}"
   else
     printf '%s/.cache/jortt-cli/openapi.json\n' "$HOME"
@@ -51,7 +67,7 @@ jortt_stat_mtime() {
 }
 
 jortt_spec_file() {
-  if [ -n "${JORTT_OPENAPI_FILE:-}" ]; then
+  if [[ -n "${JORTT_OPENAPI_FILE:-}" ]]; then
     printf '%s\n' "$JORTT_OPENAPI_FILE"
   else
     jortt_cache_path
@@ -60,13 +76,13 @@ jortt_spec_file() {
 
 jortt_validate_spec_file() {
   local file="$1"
-  [ -f "$file" ] || jortt_error 2 "OpenAPI file not found. Run jortt-cli spec update or set JORTT_OPENAPI_FILE."
+  [[ -f "$file" ]] || jortt_error 2 "OpenAPI file not found. Run jortt-cli spec update or set JORTT_OPENAPI_FILE."
   jq -e '(.swagger == "2.0") and (.paths | type == "object")' "$file" >/dev/null 2>&1 || jortt_error 2 "OpenAPI file is not a readable Swagger 2.0 document."
 }
 
 jortt_spec_update() {
   jortt_need_tools
-  if [ -n "${JORTT_OPENAPI_FILE:-}" ]; then
+  if [[ -n "${JORTT_OPENAPI_FILE:-}" ]]; then
     jortt_validate_spec_file "$JORTT_OPENAPI_FILE"
     printf 'Using OpenAPI file: %s\n' "$JORTT_OPENAPI_FILE"
     return 0
@@ -92,8 +108,8 @@ jortt_ensure_spec() {
   jortt_need_tools
   local file
   file="$(jortt_spec_file)"
-  if [ ! -f "$file" ]; then
-    if [ -n "${JORTT_OPENAPI_FILE:-}" ]; then
+  if [[ ! -f "$file" ]]; then
+    if [[ -n "${JORTT_OPENAPI_FILE:-}" ]]; then
       jortt_error 2 "OpenAPI file not found: JORTT_OPENAPI_FILE does not resolve to a file."
     fi
     jortt_spec_update
@@ -107,7 +123,7 @@ jortt_spec_info() {
   jortt_need_tools
   local file mtime now age paths operations
   file="$(jortt_spec_file)"
-  if [ ! -f "$file" ]; then
+  if [[ ! -f "$file" ]]; then
     printf 'OpenAPI file: missing\nPath count: unavailable\nOperation count: unavailable\nCache age: unavailable\n'
     return 0
   fi
@@ -117,16 +133,20 @@ jortt_spec_info() {
   mtime="$(jortt_stat_mtime "$file")"
   now="$(date +%s)"
   age=$(( (now - mtime) / 60 ))
-  [ "$age" -ge 0 ] || age=0
+  [[ "$age" -ge 0 ]] || age=0
   printf 'OpenAPI file: %s\nPath count: %s\nOperation count: %s\nCache age: %s minutes\n' "$file" "$paths" "$operations" "$age"
 }
+
+# ───────────────────────────────────────────────────────────────
+# 4. CONFIGURATION AND SCOPES
+# ───────────────────────────────────────────────────────────────
 
 jortt_read_env_value() {
   local file="$1"
   local wanted="$2"
   local line value
-  [ -f "$file" ] || return 0
-  while IFS= read -r line || [ -n "$line" ]; do
+  [[ -f "$file" ]] || return 0
+  while IFS= read -r line || [[ -n "$line" ]]; do
     case "$line" in
       "$wanted"=*)
         value="${line#*=}"
@@ -146,22 +166,22 @@ jortt_load_config() {
   local env_file example_file found
   env_file="${JORTT_ENV_FILE:-$ACCOUNTANT_ROOT/.env}"
   example_file="$ACCOUNTANT_ROOT/.env.example"
-  if [ -z "${JORTT_CLIENT_ID:-}" ]; then
+  if [[ -z "${JORTT_CLIENT_ID:-}" ]]; then
     found="$(jortt_read_env_value "$env_file" JORTT_CLIENT_ID)"
-    [ -n "$found" ] && JORTT_CLIENT_ID="$found"
+    [[ -n "$found" ]] && JORTT_CLIENT_ID="$found"
   fi
-  if [ -z "${JORTT_CLIENT_SECRET:-}" ]; then
+  if [[ -z "${JORTT_CLIENT_SECRET:-}" ]]; then
     found="$(jortt_read_env_value "$env_file" JORTT_CLIENT_SECRET)"
-    [ -n "$found" ] && JORTT_CLIENT_SECRET="$found"
+    [[ -n "$found" ]] && JORTT_CLIENT_SECRET="$found"
   fi
-  if [ -z "${JORTT_SCOPES:-}" ]; then
+  if [[ -z "${JORTT_SCOPES:-}" ]]; then
     found="$(jortt_read_env_value "$env_file" JORTT_SCOPES)"
     JORTT_SCOPES_SOURCE='env file'
-    if [ -z "$found" ]; then
+    if [[ -z "$found" ]]; then
       found="$(jortt_read_env_value "$example_file" JORTT_SCOPES)"
       JORTT_SCOPES_SOURCE='.env.example fallback'
     fi
-    if [ -z "$found" ]; then
+    if [[ -z "$found" ]]; then
       JORTT_SCOPES_SOURCE='unset'
     fi
     JORTT_SCOPES="$found"
@@ -173,8 +193,8 @@ jortt_load_config() {
 
 jortt_require_credentials() {
   jortt_load_config
-  [ -n "${JORTT_CLIENT_ID:-}" ] || jortt_error 2 "JORTT_CLIENT_ID is unset. Set it in the environment or the configured environment file."
-  [ -n "${JORTT_CLIENT_SECRET:-}" ] || jortt_error 2 "JORTT_CLIENT_SECRET is unset. Set it in the environment or the configured environment file."
+  [[ -n "${JORTT_CLIENT_ID:-}" ]] || jortt_error 2 "JORTT_CLIENT_ID is unset. Set it in the environment or the configured environment file."
+  [[ -n "${JORTT_CLIENT_SECRET:-}" ]] || jortt_error 2 "JORTT_CLIENT_SECRET is unset. Set it in the environment or the configured environment file."
   case "${JORTT_CLIENT_ID}${JORTT_CLIENT_SECRET}" in
     *$'\n'*|*$'\r'*) jortt_error 2 "Credential values must not contain line breaks." ;;
   esac
@@ -199,6 +219,10 @@ jortt_check_scope() {
   done
 }
 
+# ───────────────────────────────────────────────────────────────
+# 5. TOKEN CACHE PATHS
+# ───────────────────────────────────────────────────────────────
+
 jortt_sha256() {
   if command -v shasum >/dev/null 2>&1; then
     shasum -a 256 | awk '{print $1}'
@@ -211,7 +235,7 @@ jortt_sha256() {
 
 jortt_token_paths() {
   jortt_load_config
-  [ -n "${JORTT_CLIENT_ID:-}" ] || return 1
+  [[ -n "${JORTT_CLIENT_ID:-}" ]] || return 1
   local key cache_root
   key="$(printf '%s\000%s' "$JORTT_CLIENT_ID" "${JORTT_SCOPES:-}" | jortt_sha256)"
   cache_root="${TMPDIR:-/tmp}/jortt-cli-$(id -u)"
@@ -222,6 +246,10 @@ jortt_token_paths() {
   return 0
 }
 
+# ───────────────────────────────────────────────────────────────
+# 6. REQUEST HELPERS
+# ───────────────────────────────────────────────────────────────
+
 jortt_curl_quote() {
   local value="$1"
   case "$value" in
@@ -231,6 +259,10 @@ jortt_curl_quote() {
   value="${value//\"/\\\"}"
   printf '%s' "$value"
 }
+
+# ───────────────────────────────────────────────────────────────
+# 7. OPERATION LOOKUP
+# ───────────────────────────────────────────────────────────────
 
 jortt_operations_json() {
   local file="$1"

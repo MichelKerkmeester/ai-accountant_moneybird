@@ -1,6 +1,15 @@
-# WHY: Every saved extraction and downloaded document stays inside the ignored workspace.
+#!/usr/bin/env bash
+# ───────────────────────────────────────────────────────────────
+# COMPONENT: JORTT CLI WORKSPACE LIBRARY
+# ───────────────────────────────────────────────────────────────
+# Every saved extraction and downloaded document stays inside the ignored
+# workspace.
 # shellcheck shell=bash
 set -euo pipefail
+
+# ───────────────────────────────────────────────────────────────
+# 1. OUTPUT PATH RESOLUTION
+# ───────────────────────────────────────────────────────────────
 
 jortt_resolve_output() {
   local requested="$1"
@@ -16,7 +25,7 @@ jortt_resolve_output() {
       ;;
     *)
       relative="$requested"
-      while [ "${relative#./}" != "$relative" ]; do relative="${relative#./}"; done
+      while [[ "${relative#./}" != "$relative" ]]; do relative="${relative#./}"; done
       case "$relative" in
         migration-workspace/*) relative="${relative#migration-workspace/}" ;;
       esac
@@ -28,11 +37,11 @@ jortt_resolve_output() {
   case "$relative" in
     ""|.|./) jortt_error 5 "Output path must name a file inside migration-workspace." ;;
   esac
-  if [ -L "$workspace" ]; then
+  if [[ -L "$workspace" ]]; then
     jortt_error 5 "migration-workspace must not be a symlink."
   fi
-  if [ ! -d "$workspace" ]; then
-    if [ "$create_dirs" = "1" ]; then
+  if [[ ! -d "$workspace" ]]; then
+    if [[ "$create_dirs" == "1" ]]; then
       mkdir -p "$workspace" || jortt_error 5 "Could not create migration-workspace."
     else
       JORTT_RESOLVED_OUT="$workspace/$relative"
@@ -42,25 +51,25 @@ jortt_resolve_output() {
   workspace="$(cd -P "$workspace" >/dev/null 2>&1 && pwd -P)" || jortt_error 5 "migration-workspace is not accessible."
   parent="${relative%/*}"
   basename="${relative##*/}"
-  if [ "$parent" = "$relative" ]; then parent=""; fi
-  [ -n "$basename" ] || jortt_error 5 "Output path must name a file inside migration-workspace."
+  if [[ "$parent" == "$relative" ]]; then parent=""; fi
+  [[ -n "$basename" ]] || jortt_error 5 "Output path must name a file inside migration-workspace."
   current="$workspace"
-  if [ -n "$parent" ]; then
+  if [[ -n "$parent" ]]; then
     remaining="$parent"
-    while [ -n "$remaining" ]; do
+    while [[ -n "$remaining" ]]; do
       component="${remaining%%/*}"
-      if [ "$remaining" = "$component" ]; then remaining=""; else remaining="${remaining#*/}"; fi
+      if [[ "$remaining" == "$component" ]]; then remaining=""; else remaining="${remaining#*/}"; fi
       case "$component" in
         ""|.) continue ;;
         ..) jortt_error 5 "Output path must not escape migration-workspace." ;;
       esac
       current="$current/$component"
-      if [ -L "$current" ]; then
+      if [[ -L "$current" ]]; then
         jortt_error 5 "Output path crosses a symlink."
       fi
-      if [ -e "$current" ]; then
-        [ -d "$current" ] || jortt_error 5 "Output parent is not a directory."
-      elif [ "$create_dirs" = "1" ]; then
+      if [[ -e "$current" ]]; then
+        [[ -d "$current" ]] || jortt_error 5 "Output parent is not a directory."
+      elif [[ "$create_dirs" == "1" ]]; then
         mkdir "$current" 2>/dev/null || jortt_error 5 "Could not create an output directory."
       else
         continue
@@ -73,15 +82,19 @@ jortt_resolve_output() {
       esac
     done
   fi
-  if [ -L "$current/$basename" ]; then
+  if [[ -L "$current/$basename" ]]; then
     jortt_error 5 "Output file must not be a symlink."
   fi
-  if [ -e "$current/$basename" ] && [ -d "$current/$basename" ]; then
+  if [[ -e "$current/$basename" ]] && [[ -d "$current/$basename" ]]; then
     jortt_error 5 "Output path names a directory."
   fi
   # shellcheck disable=SC2034
   JORTT_RESOLVED_OUT="$current/$basename"
 }
+
+# ───────────────────────────────────────────────────────────────
+# 2. OUTPUT WRITING
+# ───────────────────────────────────────────────────────────────
 
 jortt_write_output() {
   local destination="$1"

@@ -125,7 +125,7 @@ run_parity() {
 # Delete one keyword token from the TROUBLESHOOT line in a copied ROUTER.md
 # Args:
 #   $1 - Path to the copied ROUTER.md
-#   $2 - Token to delete with its quotes and comma, such as "exit 2", 
+#   $2 - Token to delete with its quotes and comma, such as "exit 2",
 # Returns:
 #   0 when the edited file is written, 1 when the token is not found or awk fails
 remove_keyword() {
@@ -235,7 +235,9 @@ else
     if remove_keyword "$DOC_3" '"exit 2", '; then
         run_parity "$FIXTURE_3" 3
         status_3=$?
-        if [[ "$status_3" -ne 0 ]] && grep -q 'missing exit 2 in cli-moneybird/ROUTER.md TROUBLESHOOT keywords' "$TMP_ROOT/parity-3.txt"; then
+        if [[ "$status_3" -ne 0 ]] && grep -q \
+            'missing exit 2 in cli-moneybird/ROUTER.md TROUBLESHOOT keywords' \
+            "$TMP_ROOT/parity-3.txt"; then
             pass "a removed keyword code is caught and names exit 2"
         else
             fail "a removed keyword code is caught and names exit 2"
@@ -254,7 +256,9 @@ else
     if remove_keyword "$DOC_4" '"--print-body", '; then
         run_parity "$FIXTURE_4" 4
         status_4=$?
-        if [[ "$status_4" -ne 0 ]] && grep -q 'missing --print-body in cli-moneybird/ROUTER.md TROUBLESHOOT keywords' "$TMP_ROOT/parity-4.txt"; then
+        if [[ "$status_4" -ne 0 ]] && grep -q \
+            'missing --print-body in cli-moneybird/ROUTER.md TROUBLESHOOT keywords' \
+            "$TMP_ROOT/parity-4.txt"; then
             pass "a removed --print-body keyword is caught"
         else
             fail "a removed --print-body keyword is caught"
@@ -292,7 +296,9 @@ else
     if add_row_after "$DOC_6" '^[|] 9 [|]' '| 10 | Placeholder row used only by the parity test fixture |'; then
         run_parity "$FIXTURE_6" 6
         status_6=$?
-        if [[ "$status_6" -ne 0 ]] && grep -q 'extra exit 10 in cli-moneybird/references/cli.md exit table' "$TMP_ROOT/parity-6.txt"; then
+        if [[ "$status_6" -ne 0 ]] && grep -q \
+            'extra exit 10 in cli-moneybird/references/cli.md exit table' \
+            "$TMP_ROOT/parity-6.txt"; then
             pass "an added table row is caught and names extra exit 10"
         else
             fail "an added table row is caught and names extra exit 10"
@@ -311,7 +317,9 @@ else
     if delete_lines "$DOC_7" '^[|] Guard exit [0-9]+ [|]'; then
         run_parity "$FIXTURE_7" 7
         status_7=$?
-        if [[ "$status_7" -ne 0 ]] && grep -q 'no exit codes found in cli-moneybird/references/troubleshooting.md exit rows' "$TMP_ROOT/parity-7.txt"; then
+        if [[ "$status_7" -ne 0 ]] && grep -q \
+            'no exit codes found in cli-moneybird/references/troubleshooting.md exit rows' \
+            "$TMP_ROOT/parity-7.txt"; then
             pass "a troubleshooting file with no exit rows is caught"
         else
             fail "a troubleshooting file with no exit rows is caught"

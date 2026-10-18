@@ -1,25 +1,49 @@
-# WHY: Auth and request handling never put credentials or bearer tokens in command arguments.
+#!/usr/bin/env bash
+# ───────────────────────────────────────────────────────────────
+# COMPONENT: JORTT CLI API LIBRARY
+# ───────────────────────────────────────────────────────────────
+# Auth and request handling never put credentials or bearer tokens in
+# command arguments.
 # shellcheck shell=bash
 set -euo pipefail
+
+# ───────────────────────────────────────────────────────────────
+# 1. CONFIGURATION
+# ───────────────────────────────────────────────────────────────
+
+# Ten requests per second is a polite ceiling for a read-only client.
+JORTT_THROTTLE_SECONDS=0.11
+# A cached token this close to expiry is treated as expired.
+JORTT_TOKEN_EXPIRY_SKEW_SECONDS=60
+# A 429 gets this many retries before the call exits 1.
+JORTT_MAX_429_RETRIES=3
+
+# ───────────────────────────────────────────────────────────────
+# 2. REQUEST THROTTLE
+# ───────────────────────────────────────────────────────────────
 
 JORTT_LAST_REQUEST=0
 
 jortt_throttle() {
-  if [ "$JORTT_LAST_REQUEST" -ne 0 ]; then
-    sleep 0.11
+  if [[ "$JORTT_LAST_REQUEST" -ne 0 ]]; then
+    sleep "$JORTT_THROTTLE_SECONDS"
   fi
   JORTT_LAST_REQUEST=1
 }
 
+# ───────────────────────────────────────────────────────────────
+# 3. TOKEN LIFECYCLE
+# ───────────────────────────────────────────────────────────────
+
 jortt_token_cache_ready() {
   local cached_token expires now
   jortt_token_paths || return 1
-  [ -f "$JORTT_TOKEN_FILE" ] || return 1
+  [[ -f "$JORTT_TOKEN_FILE" ]] || return 1
   IFS= read -r cached_token < "$JORTT_TOKEN_FILE" || return 1
   expires="$(sed -n '2p' "$JORTT_TOKEN_FILE")"
   case "$expires" in ''|*[!0-9]*) return 1 ;; esac
   now="$(date +%s)"
-  if [ "$((expires - now))" -le 60 ]; then
+  if [[ "$((expires - now))" -le "$JORTT_TOKEN_EXPIRY_SKEW_SECONDS" ]]; then
     return 1
   fi
   JORTT_ACCESS_TOKEN="$cached_token"
@@ -37,13 +61,13 @@ jortt_fetch_token() {
   case "$status" in
     2??) ;;
     *)
-      if [ -n "$body" ] && jq -e . >/dev/null 2>&1 <<EOF_BODY
+      if [[ -n "$body" ]] && jq -e . >/dev/null 2>&1 <<EOF_BODY
 $body
 EOF_BODY
       then
         local api_message
         api_message="$(printf '%s' "$body" | jq -r '(.error_description // .message // .error // "") | if type == "string" then . else tostring end' 2>/dev/null)"
-        if [ -n "$api_message" ]; then
+        if [[ -n "$api_message" ]]; then
           printf 'jortt-cli: token request failed with HTTP %s: %s\n' "$status" "$api_message" >&2
         else
           printf 'jortt-cli: token request failed with HTTP %s.\n' "$status" >&2
@@ -57,8 +81,8 @@ EOF_BODY
   token="$(printf '%s' "$body" | jq -r '.access_token // empty' 2>/dev/null)"
   expires_in="$(printf '%s' "$body" | jq -r '.expires_in // 0' 2>/dev/null)"
   case "$expires_in" in ''|*[!0-9]*) expires_in=0 ;; esac
-  [ -n "$token" ] || jortt_error 6 "Token response did not contain an access token."
-  [ "$expires_in" -gt 0 ] || jortt_error 6 "Token response did not contain a valid expiry."
+  [[ -n "$token" ]] || jortt_error 6 "Token response did not contain an access token."
+  [[ "$expires_in" -gt 0 ]] || jortt_error 6 "Token response did not contain a valid expiry."
   expires=$(( $(date +%s) + expires_in ))
   jortt_token_paths || jortt_error 6 "Could not prepare the private token cache."
   (umask 077; mkdir -p "$JORTT_TOKEN_DIR"; chmod 700 "$JORTT_TOKEN_DIR"; temp_file="$JORTT_TOKEN_FILE.tmp.$$"; printf '%s\n%s\n' "$token" "$expires" > "$temp_file"; chmod 600 "$temp_file"; mv -f "$temp_file" "$JORTT_TOKEN_FILE") || jortt_error 6 "Could not save the private token cache."
@@ -82,7 +106,7 @@ jortt_token_clear() {
 
 jortt_token_status() {
   local expires now remaining
-  if [ -z "${JORTT_SCOPES_SOURCE:-}" ]; then
+  if [[ -z "${JORTT_SCOPES_SOURCE:-}" ]]; then
     jortt_load_config
   fi
   case "${JORTT_SCOPES_SOURCE:-}" in
@@ -91,7 +115,7 @@ jortt_token_status() {
       ;;
   esac
   printf 'scope source: %s\n' "$JORTT_SCOPES_SOURCE"
-  if ! jortt_token_paths || [ ! -f "$JORTT_TOKEN_FILE" ]; then
+  if ! jortt_token_paths || [[ ! -f "$JORTT_TOKEN_FILE" ]]; then
     printf 'Cached token: no\nRemaining minutes: 0\n'
     return 0
   fi
@@ -103,12 +127,16 @@ jortt_token_status() {
   esac
   now="$(date +%s)"
   remaining=$(( (expires - now) / 60 ))
-  if [ "$remaining" -le 0 ]; then
+  if [[ "$remaining" -le 0 ]]; then
     printf 'Cached token: no\nRemaining minutes: 0\n'
   else
     printf 'Cached token: yes\nRemaining minutes: %s\n' "$remaining"
   fi
 }
+
+# ───────────────────────────────────────────────────────────────
+# 4. RAW REQUEST
+# ───────────────────────────────────────────────────────────────
 
 jortt_raw_request() {
   local method="$1"
@@ -128,6 +156,10 @@ jortt_raw_request() {
     *) JORTT_HTTP_STATUS=000 ;;
   esac
 }
+
+# ───────────────────────────────────────────────────────────────
+# 5. ERROR REPORTING
+# ───────────────────────────────────────────────────────────────
 
 # WHY: Error bodies can carry customer data, so the terminal shows codes and field
 # names only while the full text goes to the ignored workspace log.
@@ -158,7 +190,7 @@ jortt_error_log_path() {
     umask 077
     jortt_resolve_output 'migration-workspace/logs/jortt-errors.log' 1 >/dev/null 2>&1 && printf '%s' "$JORTT_RESOLVED_OUT"
   )" || return 1
-  [ -n "$resolved" ] || return 1
+  [[ -n "$resolved" ]] || return 1
   printf '%s' "$resolved"
 }
 
@@ -168,7 +200,7 @@ jortt_log_api_error() {
   local body="$3"
   local log_path
   log_path="$(jortt_error_log_path)" || return 1
-  if [ ! -f "$log_path" ]; then
+  if [[ ! -f "$log_path" ]]; then
     (umask 077; : > "$log_path") 2>/dev/null || return 1
   fi
   chmod 600 "$log_path" 2>/dev/null || return 1
@@ -183,19 +215,23 @@ jortt_api_error_report() {
   local detail log_note
   detail="$(jortt_error_detail "$body")"
   log_note=''
-  if [ -n "$body" ]; then
+  if [[ -n "$body" ]]; then
     if jortt_log_api_error "$context" "$status" "$body"; then
       log_note=' Full response logged to migration-workspace/logs/jortt-errors.log'
     else
       log_note=' Full response could not be logged.'
     fi
   fi
-  if [ -n "$detail" ]; then
+  if [[ -n "$detail" ]]; then
     printf '%sHTTP %s, %s.%s\n' "$prefix" "$status" "$detail" "$log_note" >&2
   else
     printf '%sHTTP %s.%s\n' "$prefix" "$status" "$log_note" >&2
   fi
 }
+
+# ───────────────────────────────────────────────────────────────
+# 6. RETRY AND REQUEST LOOP
+# ───────────────────────────────────────────────────────────────
 
 jortt_retry_delay() {
   local retry_after="$1"
@@ -212,7 +248,7 @@ jortt_retry_delay() {
         *)
           now="$(date +%s)"
           delay=$((retry_epoch - now))
-          [ "$delay" -gt 0 ] || delay=1
+          [[ "$delay" -gt 0 ]] || delay=1
           ;;
       esac
       ;;
@@ -228,14 +264,14 @@ jortt_request() {
   jortt_get_token
   while :; do
     jortt_raw_request "$method" "$url"
-    if [ "$JORTT_HTTP_STATUS" = "401" ] && [ "$auth_retry" -eq 0 ]; then
+    if [[ "$JORTT_HTTP_STATUS" == "401" ]] && [[ "$auth_retry" -eq 0 ]]; then
       if jortt_token_paths; then rm -f "$JORTT_TOKEN_FILE"; fi
       JORTT_ACCESS_TOKEN=""
       jortt_fetch_token
       auth_retry=1
       continue
     fi
-    if [ "$JORTT_HTTP_STATUS" = "429" ] && [ "$rate_retry" -lt 3 ]; then
+    if [[ "$JORTT_HTTP_STATUS" == "429" ]] && [[ "$rate_retry" -lt "$JORTT_MAX_429_RETRIES" ]]; then
       delay="$(jortt_retry_delay "$JORTT_RETRY_AFTER" "$rate_retry")"
       sleep "$delay"
       rate_retry=$((rate_retry + 1))
@@ -251,6 +287,10 @@ jortt_request() {
       ;;
   esac
 }
+
+# ───────────────────────────────────────────────────────────────
+# 7. DOWNLOADS
+# ───────────────────────────────────────────────────────────────
 
 jortt_download() {
   local url="$1"

@@ -1,11 +1,28 @@
 #!/usr/bin/env bash
-# WHY: Verify moneybird-guard with a local stub and a temporary workspace only.
+# ───────────────────────────────────────────────────────────────
+# COMPONENT: MONEYBIRD GUARD TEST SUITE
+# ───────────────────────────────────────────────────────────────
+# Verifies moneybird-guard against a stub CLI inside a temporary workspace.
+# WHY: the suite never touches the network or a real credential, so the write
+# gates can be rehearsed offline.
+#
+# Usage: run-tests.sh
+#
+# Exit Codes:
+#   0 - Every guard case passed
+#   1 - A case failed or the harness itself broke
 set -euo pipefail
 
+# ───────────────────────────────────────────────────────────────
+# 1. TEST ENVIRONMENT
+# ───────────────────────────────────────────────────────────────
+
 TESTS_DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd -P)"
+readonly TESTS_DIR
 SKILL_ROOT="$(cd -P "$TESTS_DIR/../../.." >/dev/null 2>&1 && pwd -P)"
-GUARD="$SKILL_ROOT/cli/moneybird-cli/moneybird-guard"
-STUB="$TESTS_DIR/stub-moneybird-cli"
+readonly SKILL_ROOT
+readonly GUARD="$SKILL_ROOT/cli/moneybird-cli/moneybird-guard"
+readonly STUB="$TESTS_DIR/stub-moneybird-cli"
 TMP_PARENT="${TMPDIR:-/tmp}"
 TEST_ROOT="$(mktemp -d "$TMP_PARENT/moneybird-guard-tests.XXXXXX")"
 trap 'rm -rf "$TEST_ROOT"' EXIT
@@ -34,14 +51,25 @@ WRITE_LOG="$MONEYBIRD_ENV_DIR/migration-workspace/logs/moneybird-writes.jsonl"
 
 JOURNAL_DIR="$MONEYBIRD_ENV_DIR/migration-workspace/RunJournal"
 JOURNAL="$JOURNAL_DIR/run-journal.jsonl"
+
+# ───────────────────────────────────────────────────────────────
+# 2. JOURNAL AND DIGEST HELPERS
+# ───────────────────────────────────────────────────────────────
+
+# Replace the run journal with the given lines.
 write_journal() {
   mkdir -p "$JOURNAL_DIR"
   printf '%s\n' "$@" > "$JOURNAL"
 }
+
+# Write one WRITE_INTENT journal row for an approval reference and its digests.
 write_intent() {
   mkdir -p "$JOURNAL_DIR"
-  printf '{"approval_reference":"%s","new_state":"WRITE_INTENT","payload_digest":"%s","attachment_digest":"%s","batch_key":"%s"}\n' "$1" "$2" "${3:-}" "${4:-batch-test}" > "$JOURNAL"
+  printf '{"approval_reference":"%s","new_state":"WRITE_INTENT","payload_digest":"%s",'\
+'"attachment_digest":"%s","batch_key":"%s"}\n' "$1" "$2" "${3:-}" "${4:-batch-test}" > "$JOURNAL"
 }
+
+# Compute the guard's canonical HMAC for a method, URL and body.
 payload_digest() {
   python3 -I - "$KEY_FILE" "$1" "$2" "$3" <<'PY'
 import hashlib
@@ -66,6 +94,8 @@ for line in lines:
 print(hmac.new(key, canonical.encode("utf-8"), hashlib.sha256).hexdigest())
 PY
 }
+
+# Compute the guard's HMAC over raw attachment bytes.
 attachment_digest() {
   python3 -I - "$KEY_FILE" "$1" <<'PY'
 import hashlib
@@ -79,7 +109,15 @@ with open(sys.argv[2], "rb") as handle:
 print(hmac.new(key, data, hashlib.sha256).hexdigest())
 PY
 }
-write_journal '{"approval_reference":"APPROVED-1","new_state":"WRITE_INTENT"}' 'this line is not json' '[{"approval_reference":"APPROVED-1","new_state":"WRITE_INTENT"}]'
+
+# ───────────────────────────────────────────────────────────────
+# 3. SEEDED JOURNAL AND RESULT HELPERS
+# ───────────────────────────────────────────────────────────────
+
+# Seed the journal with valid, non-JSON and wrong-shape lines to prove the parser skips noise.
+write_journal '{"approval_reference":"APPROVED-1","new_state":"WRITE_INTENT"}' \
+  'this line is not json' \
+  '[{"approval_reference":"APPROVED-1","new_state":"WRITE_INTENT"}]'
 
 CREATE_URL="https://moneybird.com/api/v2/PILOT_ADMIN/contacts.json"
 CREATE_BODY='{"contacts":{}}'
@@ -90,6 +128,7 @@ FAIL_COUNT=0
 OUTPUT=""
 STATUS=0
 
+# Run the guard, capture merged output and record its exit status.
 capture_guard() {
   if OUTPUT="$("$GUARD" "$@" 2>&1)"; then
     STATUS=0
@@ -99,24 +138,32 @@ capture_guard() {
   printf '%s\n' "$OUTPUT" >> "$CAPTURED"
 }
 
+# Record and print a passing case.
 pass() {
   PASS_COUNT=$((PASS_COUNT + 1))
   printf 'PASS: %s\n' "$1"
 }
 
+# Record and print a failing case.
 fail() {
   FAIL_COUNT=$((FAIL_COUNT + 1))
   printf 'FAIL: %s\n' "$1"
 }
 
+# Clear the stub invocation log before a case.
 reset_state() {
   : > "$MONEYBIRD_TEST_LOG"
 }
 
+# ───────────────────────────────────────────────────────────────
+# 4. GUARD CASES
+# ───────────────────────────────────────────────────────────────
+
 # Lists warn about the API's default period while preserving the read.
 reset_state
 capture_guard contacts list
-if [[ $STATUS -eq 0 && "$OUTPUT" == *"default to period:this_year"* ]] && grep -q '^REAL GET ' "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 0 && "$OUTPUT" == *"default to period:this_year"* ]] &&
+  grep -q '^REAL GET ' "$MONEYBIRD_TEST_LOG"; then
   pass "GET list warns about the default period and runs"
 else
   fail "GET list warns about the default period and runs"
@@ -125,7 +172,8 @@ fi
 # An explicit period filter suppresses that warning.
 reset_state
 capture_guard contacts list --filter period:2023
-if [[ $STATUS -eq 0 && "$OUTPUT" != *"default to period:this_year"* ]] && grep -q '^REAL GET ' "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 0 && "$OUTPUT" != *"default to period:this_year"* ]] &&
+  grep -q '^REAL GET ' "$MONEYBIRD_TEST_LOG"; then
   pass "GET list with a period filter runs without a warning"
 else
   fail "GET list with a period filter runs without a warning"
@@ -158,7 +206,9 @@ reset_state
 printf 'MONEYBIRD_PILOT_ADMINISTRATION_ID=PILOT_ADMIN\n' > "$MONEYBIRD_ENV_DIR/.env"
 export MONEYBIRD_TEST_ADMINISTRATION_ID="OTHER_ADMIN"
 capture_guard --confirm-write contacts create
-if [[ $STATUS -eq 4 && "$OUTPUT" == *"Pilot administration 'PILOT_ADMIN' differs from target 'OTHER_ADMIN'"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 4 &&
+  "$OUTPUT" == *"Pilot administration 'PILOT_ADMIN' differs from target 'OTHER_ADMIN'"* ]] &&
+  ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
   pass "Non-pilot create exits 4"
 else
   fail "Non-pilot create exits 4"
@@ -170,8 +220,14 @@ export MONEYBIRD_TEST_ADMINISTRATION_ID="PILOT_ADMIN"
 printf 'MONEYBIRD_PILOT_ADMINISTRATION_ID=PILOT_ADMIN\n' > "$MONEYBIRD_ENV_DIR/.env"
 write_intent "APPROVED-1" "$CREATE_DIGEST" "" "batch-pilot"
 capture_guard --confirm-write --approval APPROVED-1 contacts create
-if [[ $STATUS -eq 0 ]] && [[ "$(grep -c '^REAL ' "$MONEYBIRD_TEST_LOG" || true)" -eq 1 ]] && [[ -f "$WRITE_LOG" ]] &&
-   printf '%s\n' "$(tail -n1 "$WRITE_LOG")" | jq -e --arg ref "APPROVED-1" --arg digest "$CREATE_DIGEST" 'has("approval_reference") and has("batch_key") and has("payload_digest") and (has("body") | not) and .method == "POST" and .administration_id == "PILOT_ADMIN" and .exit_status == 0 and .approval_reference == $ref and .batch_key == "batch-pilot" and .payload_digest == $digest' >/dev/null; then
+if [[ $STATUS -eq 0 ]] && [[ "$(grep -c '^REAL ' "$MONEYBIRD_TEST_LOG" || true)" -eq 1 ]] &&
+   [[ -f "$WRITE_LOG" ]] &&
+   printf '%s\n' "$(tail -n1 "$WRITE_LOG")" |
+     jq -e --arg ref "APPROVED-1" --arg digest "$CREATE_DIGEST" \
+       'has("approval_reference") and has("batch_key") and has("payload_digest")
+        and (has("body") | not) and .method == "POST" and .administration_id == "PILOT_ADMIN"
+        and .exit_status == 0 and .approval_reference == $ref and .batch_key == "batch-pilot"
+        and .payload_digest == $digest' >/dev/null; then
   pass "A matching payload writes once and logs the join keys without a body"
 else
   fail "A matching payload writes once and logs the join keys without a body"
@@ -190,14 +246,17 @@ fi
 # A changed body is refused before the real call.
 reset_state
 write_intent "CHANGED-1" "$CREATE_DIGEST" "" "batch-changed"
-if OUTPUT="$(MONEYBIRD_TEST_DRY_BODY='{"contacts":{"company_name":"changed"}}' "$GUARD" --confirm-write --approval CHANGED-1 contacts create 2>&1)"; then
+if OUTPUT="$(MONEYBIRD_TEST_DRY_BODY='{"contacts":{"company_name":"changed"}}' \
+  "$GUARD" --confirm-write --approval CHANGED-1 contacts create 2>&1)"; then
   STATUS=0
 else
   STATUS="$?"
 fi
 printf '%s\n' "$OUTPUT" >> "$CAPTURED"
-CHANGED_DIGEST_LINES="$(printf '%s\n' "$OUTPUT" | grep -cE '^payload-digest: [0-9a-f]{64}$' || true)"
-if [[ $STATUS -eq 9 && "$OUTPUT" == *"PAYLOAD_MISMATCH"* && "$CHANGED_DIGEST_LINES" -eq 1 ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+CHANGED_DIGEST_LINES="$(printf '%s\n' "$OUTPUT" |
+  grep -cE '^payload-digest: [0-9a-f]{64}$' || true)"
+if [[ $STATUS -eq 9 && "$OUTPUT" == *"PAYLOAD_MISMATCH"* && "$CHANGED_DIGEST_LINES" -eq 1 ]] &&
+  ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
   pass "A changed body exits 9 with one payload digest line"
 else
   fail "A changed body exits 9 with one payload digest line"
@@ -207,7 +266,8 @@ fi
 reset_state
 ORDERED_DIGEST="$(payload_digest POST "$CREATE_URL" '{"contacts":{"id":"1","name":"stub"}}')"
 write_intent "REORDERED-1" "$ORDERED_DIGEST" "" "batch-reordered"
-if OUTPUT="$(MONEYBIRD_TEST_DRY_BODY='{"contacts":{"name":"stub","id":"1"}}' "$GUARD" --confirm-write --approval REORDERED-1 contacts create 2>&1)"; then
+if OUTPUT="$(MONEYBIRD_TEST_DRY_BODY='{"contacts":{"name":"stub","id":"1"}}' \
+  "$GUARD" --confirm-write --approval REORDERED-1 contacts create 2>&1)"; then
   STATUS=0
 else
   STATUS="$?"
@@ -224,13 +284,15 @@ reset_state
 CRLF_BODY=$'{"contacts":{}}\r\nnote=stub'
 LF_BODY=$'{"contacts":{}}\nnote=stub'
 write_intent "CRLF-1" "$(payload_digest POST "$CREATE_URL" "$LF_BODY")" "" "batch-crlf"
-if OUTPUT="$(MONEYBIRD_TEST_DRY_BODY="$CRLF_BODY" "$GUARD" --confirm-write --approval CRLF-1 contacts create 2>&1)"; then
+if OUTPUT="$(MONEYBIRD_TEST_DRY_BODY="$CRLF_BODY" \
+  "$GUARD" --confirm-write --approval CRLF-1 contacts create 2>&1)"; then
   STATUS=0
 else
   STATUS="$?"
 fi
 printf '%s\n' "$OUTPUT" >> "$CAPTURED"
-if [[ $STATUS -eq 0 ]] && [[ "$(grep -c '^REAL POST ' "$MONEYBIRD_TEST_LOG" || true)" -eq 1 ]]; then
+if [[ $STATUS -eq 0 ]] &&
+  [[ "$(grep -c '^REAL POST ' "$MONEYBIRD_TEST_LOG" || true)" -eq 1 ]]; then
   pass "CRLF line endings digest the same as the LF form and write once"
 else
   fail "CRLF line endings digest the same as the LF form and write once"
@@ -265,7 +327,8 @@ capture_guard --confirm-write --approval REPLAY-1 contacts create
 FIRST_STATUS="$STATUS"
 reset_state
 capture_guard --confirm-write --approval REPLAY-1 contacts create
-if [[ $FIRST_STATUS -eq 0 && $STATUS -eq 8 && "$OUTPUT" == *"already consumed"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+if [[ $FIRST_STATUS -eq 0 && $STATUS -eq 8 && "$OUTPUT" == *"already consumed"* ]] &&
+  ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
   pass "A replayed reference and digest pair exits 8 as consumed"
 else
   fail "A replayed reference and digest pair exits 8 as consumed"
@@ -282,7 +345,9 @@ reset_state
 capture_guard documents receipts attachments stub-document --file "$ATTACHMENT"
 PREVIEW_PAYLOAD_DIGEST="$(printf '%s\n' "$OUTPUT" | sed -n 's/^payload-digest: //p')"
 PREVIEW_ATTACHMENT_DIGEST="$(printf '%s\n' "$OUTPUT" | sed -n 's/^attachment-digest: //p')"
-if [[ $STATUS -eq 3 && "$PREVIEW_PAYLOAD_DIGEST" == "$ATTACHMENT_PAYLOAD_DIGEST" && "$PREVIEW_ATTACHMENT_DIGEST" == "$ATTACHMENT_BYTES_DIGEST" ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 3 && "$PREVIEW_PAYLOAD_DIGEST" == "$ATTACHMENT_PAYLOAD_DIGEST" ]] &&
+  [[ "$PREVIEW_ATTACHMENT_DIGEST" == "$ATTACHMENT_BYTES_DIGEST" ]] &&
+  ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
   pass "An attachment preview prints both digests"
 else
   fail "An attachment preview prints both digests"
@@ -325,7 +390,8 @@ write_intent "NOKEY-1" "$CREATE_DIGEST" "" "batch-nokey"
 mv "$KEY_FILE" "$KEY_FILE.away"
 capture_guard --confirm-write --approval NOKEY-1 contacts create
 mv "$KEY_FILE.away" "$KEY_FILE"
-if [[ $STATUS -eq 1 && "$OUTPUT" == *"$KEY_FILE"* && "$OUTPUT" != *"$TEST_KEY"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 1 && "$OUTPUT" == *"$KEY_FILE"* && "$OUTPUT" != *"$TEST_KEY"* ]] &&
+  ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
   pass "A missing key file exits 1 before the real call"
 else
   fail "A missing key file exits 1 before the real call"
@@ -347,7 +413,8 @@ write_intent "ROTATED-2" "$(payload_digest POST "$CREATE_URL" "$CREATE_BODY")" "
 capture_guard --confirm-write --approval ROTATED-2 contacts create
 ROTATED_RECOVERY_STATUS="$STATUS"
 printf '%s' "$OLD_KEY" > "$KEY_FILE"
-if [[ $ROTATED_REFUSED -eq 1 && $ROTATED_RECOVERY_STATUS -eq 0 ]] && [[ "$(grep -c '^REAL POST ' "$MONEYBIRD_TEST_LOG" || true)" -eq 1 ]]; then
+if [[ $ROTATED_REFUSED -eq 1 && $ROTATED_RECOVERY_STATUS -eq 0 ]] &&
+  [[ "$(grep -c '^REAL POST ' "$MONEYBIRD_TEST_LOG" || true)" -eq 1 ]]; then
   pass "A rotated key refuses the old digest with exit 9 and a new intent writes once"
 else
   fail "A rotated key refuses the old digest with exit 9 and a new intent writes once"
@@ -372,7 +439,8 @@ reset_state
 export MONEYBIRD_GUARD_READ_ONLY=1
 export MONEYBIRD_TEST_ADMINISTRATION_ID="PRODUCTION_ADMIN"
 capture_guard --confirm-write --production contacts create
-if [[ $STATUS -eq 6 && "$OUTPUT" == *"Read-only lock is enabled. Non-GET POST calls are blocked."* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 6 && "$OUTPUT" == *"Read-only lock is enabled. Non-GET POST calls are blocked."* ]] &&
+  ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
   pass "Read-only lock blocks a confirmed production write before the real call"
 else
   fail "Read-only lock blocks a confirmed production write before the real call"
@@ -390,7 +458,9 @@ fi
 # A synchronization fetch is a POST that only reads, so the lock lets it through.
 reset_state
 capture_guard sales_invoices sync_fetch --ids '["1","2"]'
-if [[ $STATUS -eq 0 ]] && grep -Eq '^REAL POST https://moneybird.com/api/v2/[^/]+/sales_invoices/synchronization.json$' "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 0 ]] && grep -Eq \
+  '^REAL POST https://moneybird.com/api/v2/[^/]+/sales_invoices/synchronization.json$' \
+  "$MONEYBIRD_TEST_LOG"; then
   pass "Read-only lock allows a synchronization fetch"
 else
   fail "Read-only lock allows a synchronization fetch"
@@ -418,7 +488,9 @@ unset MONEYBIRD_GUARD_READ_ONLY
 # Without the lock a synchronization fetch still runs as a read, with no write flag.
 reset_state
 capture_guard sales_invoices sync_fetch --ids '["1"]'
-if [[ $STATUS -eq 0 ]] && grep -Eq '^REAL POST https://moneybird.com/api/v2/[^/]+/sales_invoices/synchronization.json$' "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 0 ]] && grep -Eq \
+  '^REAL POST https://moneybird.com/api/v2/[^/]+/sales_invoices/synchronization.json$' \
+  "$MONEYBIRD_TEST_LOG"; then
   pass "A synchronization fetch runs as a read without --confirm-write"
 else
   fail "A synchronization fetch runs as a read without --confirm-write"
@@ -431,7 +503,8 @@ export MONEYBIRD_TEST_ADMINISTRATION_ID="PILOT_ADMIN"
 DELETE_URL="https://moneybird.com/api/v2/PILOT_ADMIN/contacts/stub-record.json"
 write_intent "APPROVED-1" "$(payload_digest DELETE "$DELETE_URL" "")" "" "batch-delete"
 capture_guard --confirm-write --approval APPROVED-1 contacts delete stub-record
-if [[ $STATUS -eq 0 && "$OUTPUT" == *"204 can mean nothing was deleted"* ]] && [[ "$OUTPUT" == *"separate read"* ]]; then
+if [[ $STATUS -eq 0 && "$OUTPUT" == *"204 can mean nothing was deleted"* ]] &&
+  [[ "$OUTPUT" == *"separate read"* ]]; then
   pass "DELETE prints the 204 caution and separate-read instruction"
 else
   fail "DELETE prints the 204 caution and separate-read instruction"
@@ -470,7 +543,8 @@ rm "$MONEYBIRD_ENV_DIR/migration-workspace/linked"
 reset_state
 OUT_FILE="$MONEYBIRD_ENV_DIR/migration-workspace/contacts.json"
 capture_guard --out "$OUT_FILE" contacts list --filter period:2023
-if [[ $STATUS -eq 0 && "$OUTPUT" == "items: 1" && -f "$OUT_FILE" ]] && jq -e '.[0].id == "stub-record"' "$OUT_FILE" >/dev/null; then
+if [[ $STATUS -eq 0 && "$OUTPUT" == "items: 1" && -f "$OUT_FILE" ]] &&
+  jq -e '.[0].id == "stub-record"' "$OUT_FILE" >/dev/null; then
   pass "--out inside migration-workspace writes JSON and prints only the item count"
 else
   fail "--out inside migration-workspace writes JSON and prints only the item count"
@@ -479,8 +553,11 @@ fi
 # A saved response never replaces the key, the run journal or the write log, whatever the case.
 reset_state
 STATE_INTACT=1
-for STATE_PAIR in .secrets/alias-hmac.key:.secrets/alias-hmac.key RunJournal/run-journal.jsonl:RunJournal/run-journal.jsonl \
-  logs/moneybird-writes.jsonl:logs/moneybird-writes.jsonl Logs/moneybird-writes.jsonl:logs/moneybird-writes.jsonl; do
+for STATE_PAIR in \
+  .secrets/alias-hmac.key:.secrets/alias-hmac.key \
+  RunJournal/run-journal.jsonl:RunJournal/run-journal.jsonl \
+  logs/moneybird-writes.jsonl:logs/moneybird-writes.jsonl \
+  Logs/moneybird-writes.jsonl:logs/moneybird-writes.jsonl; do
   STATE_FILE="$MONEYBIRD_ENV_DIR/migration-workspace/${STATE_PAIR#*:}"
   STATE_BEFORE="$(cksum < "$STATE_FILE")"
   capture_guard --out "migration-workspace/${STATE_PAIR%%:*}" contacts list --filter period:2023
@@ -498,7 +575,8 @@ fi
 reset_state
 rm -rf "$MONEYBIRD_ENV_DIR/migration-workspace/logs"
 capture_guard --out "migration-workspace/logs" contacts list --filter period:2023
-if [[ $STATUS -eq 5 && ! -e "$MONEYBIRD_ENV_DIR/migration-workspace/logs" ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 5 && ! -e "$MONEYBIRD_ENV_DIR/migration-workspace/logs" ]] &&
+  ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
   pass "--out naming a missing guard state folder exits 5"
 else
   fail "--out naming a missing guard state folder exits 5"
@@ -506,7 +584,8 @@ fi
 
 reset_state
 capture_guard --out "migration-workspace/new-folder/" contacts list --filter period:2023
-if [[ $STATUS -eq 5 && ! -e "$MONEYBIRD_ENV_DIR/migration-workspace/new-folder" ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 5 && ! -e "$MONEYBIRD_ENV_DIR/migration-workspace/new-folder" ]] &&
+  ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
   pass "--out with a trailing slash exits 5 before the CLI call"
 else
   fail "--out with a trailing slash exits 5 before the CLI call"
@@ -516,7 +595,8 @@ fi
 reset_state
 printf 'MONEYBIRD_API_TOKEN=FAKE_READER_TOKEN_DO_NOT_ECHO\n' > "$MONEYBIRD_ENV_DIR/.env"
 capture_guard login-from-env
-if [[ $STATUS -eq 0 && "$OUTPUT" != *"FAKE_READER_TOKEN_DO_NOT_ECHO"* ]] && grep -q '^LOGIN default$' "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 0 && "$OUTPUT" != *"FAKE_READER_TOKEN_DO_NOT_ECHO"* ]] &&
+  grep -q '^LOGIN default$' "$MONEYBIRD_TEST_LOG"; then
   pass "login-from-env keeps the reader token out of output and argv"
 else
   fail "login-from-env keeps the reader token out of output and argv"
@@ -526,7 +606,8 @@ fi
 reset_state
 printf 'MONEYBIRD_API_TOKEN=FAKE_WRITER_TOKEN_DO_NOT_ECHO\n' > "$MONEYBIRD_ENV_DIR/.env.writer"
 capture_guard login-from-env --writer
-if [[ $STATUS -eq 0 && "$OUTPUT" != *"FAKE_WRITER_TOKEN_DO_NOT_ECHO"* ]] && grep -q "^LOGIN $MONEYBIRD_WRITER_CONFIG_DIR$" "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 0 && "$OUTPUT" != *"FAKE_WRITER_TOKEN_DO_NOT_ECHO"* ]] &&
+  grep -q "^LOGIN $MONEYBIRD_WRITER_CONFIG_DIR$" "$MONEYBIRD_TEST_LOG"; then
   pass "writer login uses .env.writer and a separate config directory"
 else
   fail "writer login uses .env.writer and a separate config directory"
@@ -554,7 +635,8 @@ export MONEYBIRD_TEST_ADMINISTRATION_ID="PILOT_ADMIN"
 export MONEYBIRD_WRITER_CONFIG_DIR="$TEST_ROOT/missing-writer-config"
 capture_guard --confirm-write --approval APPROVED-1 contacts create
 export MONEYBIRD_WRITER_CONFIG_DIR="$TEST_ROOT/writer-config"
-if [[ $STATUS -eq 7 && "$OUTPUT" == *"Writer configuration is missing"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 7 && "$OUTPUT" == *"Writer configuration is missing"* ]] &&
+  ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
   pass "A write without a writer configuration stops"
 else
   fail "A write without a writer configuration stops"
@@ -600,7 +682,11 @@ fi
 
 # A recorded WRITE_INTENT reference with a matching digest lets a pilot write run even beside malformed journal lines.
 reset_state
-write_journal 'this line is not json' '[{"approval_reference":"APPROVED-1","new_state":"WRITE_INTENT"}]' "{\"approval_reference\":\"APPROVED-2\",\"new_state\":\"WRITE_INTENT\",\"payload_digest\":\"$CREATE_DIGEST\",\"batch_key\":\"batch-journal\"}"
+APPROVED_2_INTENT="{\"approval_reference\":\"APPROVED-2\",\"new_state\":\"WRITE_INTENT\","
+APPROVED_2_INTENT+="\"payload_digest\":\"$CREATE_DIGEST\",\"batch_key\":\"batch-journal\"}"
+write_journal 'this line is not json' \
+  '[{"approval_reference":"APPROVED-1","new_state":"WRITE_INTENT"}]' \
+  "$APPROVED_2_INTENT"
 capture_guard --confirm-write --approval APPROVED-2 contacts create
 if [[ $STATUS -eq 0 ]] && grep -q '^REAL POST ' "$MONEYBIRD_TEST_LOG"; then
   pass "A recorded WRITE_INTENT reference lets a pilot write run"
@@ -614,10 +700,13 @@ capture_guard contacts list --filter period:2023
 SUMMARY_TMP="$MONEYBIRD_ENV_DIR/migration-workspace/tmp"
 SUMMARY_MODE="missing"
 if [[ -d "$SUMMARY_TMP" ]]; then
-  SUMMARY_MODE="$(stat -c '%a' "$SUMMARY_TMP" 2>/dev/null || stat -f '%Lp' "$SUMMARY_TMP" 2>/dev/null || printf 'unknown')"
+  SUMMARY_MODE="$(stat -c '%a' "$SUMMARY_TMP" 2>/dev/null ||
+    stat -f '%Lp' "$SUMMARY_TMP" 2>/dev/null || printf 'unknown')"
 fi
-if [[ $STATUS -eq 0 && "$OUTPUT" == *"response: 23 bytes"* && "$OUTPUT" == *"records: 1"* && "$OUTPUT" != *"stub-record"* ]] &&
-   grep -q '^REAL GET ' "$MONEYBIRD_TEST_LOG" && [[ "$SUMMARY_MODE" == "700" && -z "$(ls -A "$SUMMARY_TMP")" ]]; then
+if [[ $STATUS -eq 0 && "$OUTPUT" == *"response: 23 bytes"* ]] &&
+   [[ "$OUTPUT" == *"records: 1"* && "$OUTPUT" != *"stub-record"* ]] &&
+   grep -q '^REAL GET ' "$MONEYBIRD_TEST_LOG" &&
+   [[ "$SUMMARY_MODE" == "700" && -z "$(ls -A "$SUMMARY_TMP")" ]]; then
   pass "A read prints a value-free summary and removes the temporary file"
 else
   fail "A read prints a value-free summary and removes the temporary file"
@@ -626,7 +715,8 @@ fi
 # A JSON object body summarises field names and a nested record count without values.
 reset_state
 capture_guard contacts get stub-record
-if [[ $STATUS -eq 0 && "$OUTPUT" == *"fields: id,company_name,contacts"* && "$OUTPUT" == *"records: 1"* && "$OUTPUT" != *"Secret Name"* ]]; then
+if [[ $STATUS -eq 0 && "$OUTPUT" == *"fields: id,company_name,contacts"* ]] &&
+  [[ "$OUTPUT" == *"records: 1"* && "$OUTPUT" != *"Secret Name"* ]]; then
   pass "An object body summarises field names and a nested record count without values"
 else
   fail "An object body summarises field names and a nested record count without values"
@@ -662,7 +752,8 @@ for MARKER in CLAUDECODE AI_SESSION_CHILD ACCOUNTANT_AGENT_SESSION CODEX_SANDBOX
   else
     STATUS="$?"
   fi
-  if [[ $STATUS -eq 2 && "$OUTPUT" == *"--print-body is refused while $MARKER is set"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  if [[ $STATUS -eq 2 && "$OUTPUT" == *"--print-body is refused while $MARKER is set"* ]] &&
+    ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
     pass "--print-body is refused while $MARKER is set"
   else
     fail "--print-body is refused while $MARKER is set"
@@ -676,7 +767,8 @@ if OUTPUT="$(CLAUDECODE=1 MONEYBIRD_GUARD_READ_ONLY=1 "$GUARD" --print-body cont
 else
   STATUS="$?"
 fi
-if [[ $STATUS -eq 2 && "$OUTPUT" == *"--print-body is refused while CLAUDECODE is set"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 2 && "$OUTPUT" == *"--print-body is refused while CLAUDECODE is set"* ]] &&
+  ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
   pass "--print-body in an agent session exits 2 before the write gates"
 else
   fail "--print-body in an agent session exits 2 before the write gates"
@@ -686,7 +778,8 @@ fi
 reset_state
 PASSTHROUGH_OUT="$MONEYBIRD_ENV_DIR/migration-workspace/administrations.json"
 capture_guard --out "$PASSTHROUGH_OUT" administration list
-if [[ $STATUS -eq 2 && "$OUTPUT" == *"--out does not apply to passthrough commands"* ]] && [[ ! -e "$PASSTHROUGH_OUT" ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 2 && "$OUTPUT" == *"--out does not apply to passthrough commands"* ]] &&
+  [[ ! -e "$PASSTHROUGH_OUT" ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
   pass "A passthrough command rejects --out"
 else
   fail "A passthrough command rejects --out"
@@ -704,7 +797,8 @@ fi
 # administration use for another administration needs --production.
 reset_state
 capture_guard --confirm-write administration use OTHER_ADMIN
-if [[ $STATUS -eq 4 && "$OUTPUT" == *"is not the pilot administration"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 4 && "$OUTPUT" == *"is not the pilot administration"* ]] &&
+  ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
   pass "administration use for another administration without --production exits 4"
 else
   fail "administration use for another administration without --production exits 4"
@@ -740,7 +834,11 @@ printf 'MONEYBIRD_PILOT_ADMINISTRATION_ID=PINNED_PILOT\n' > "$PINNED_REPO/.env"
 printf 'MONEYBIRD_PILOT_ADMINISTRATION_ID=DECOY_PILOT\n' > "$MONEYBIRD_ENV_DIR/.env"
 reset_state
 export MONEYBIRD_TEST_ADMINISTRATION_ID="PILOT_ADMIN"
-if OUTPUT="$(MONEYBIRD_GUARD_TEST='' MONEYBIRD_PILOT_ADMINISTRATION_ID=ENV_PILOT MONEYBIRD_CLI="$TEST_ROOT/decoy-cli" MONEYBIRD_WRITER_CONFIG_DIR="$TEST_ROOT/decoy-writer" MONEYBIRD_HMAC_KEY_FILE="$TEST_ROOT/decoy-key" PATH="$PINNED_BIN:$PATH" "$PINNED_REPO/cli-moneybird/cli/moneybird-cli/moneybird-guard" --confirm-write contacts create 2>&1)"; then
+if OUTPUT="$(MONEYBIRD_GUARD_TEST='' MONEYBIRD_PILOT_ADMINISTRATION_ID=ENV_PILOT \
+  MONEYBIRD_CLI="$TEST_ROOT/decoy-cli" MONEYBIRD_WRITER_CONFIG_DIR="$TEST_ROOT/decoy-writer" \
+  MONEYBIRD_HMAC_KEY_FILE="$TEST_ROOT/decoy-key" PATH="$PINNED_BIN:$PATH" \
+  "$PINNED_REPO/cli-moneybird/cli/moneybird-cli/moneybird-guard" \
+  --confirm-write contacts create 2>&1)"; then
   STATUS=0
 else
   STATUS="$?"
@@ -751,7 +849,8 @@ if [[ $STATUS -eq 4 && "$OUTPUT" == *"Pilot administration 'PINNED_PILOT' differ
    [[ "$OUTPUT" == *"MONEYBIRD_WRITER_CONFIG_DIR is ignored"* ]] &&
    [[ "$OUTPUT" == *"MONEYBIRD_PILOT_ADMINISTRATION_ID is ignored"* ]] &&
    [[ "$OUTPUT" == *"MONEYBIRD_HMAC_KEY_FILE is ignored"* ]] &&
-   [[ "$OUTPUT" != *"ENV_PILOT"* && "$OUTPUT" != *"DECOY_PILOT"* && "$OUTPUT" != *"decoy-cli"* && "$OUTPUT" != *"decoy-writer"* && "$OUTPUT" != *"decoy-key"* ]] &&
+   [[ "$OUTPUT" != *"ENV_PILOT"* && "$OUTPUT" != *"DECOY_PILOT"* ]] &&
+   [[ "$OUTPUT" != *"decoy-cli"* && "$OUTPUT" != *"decoy-writer"* && "$OUTPUT" != *"decoy-key"* ]] &&
    ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
   pass "The pinned root, binary, writer config, key file and pilot id ignore environment overrides"
 else
@@ -778,7 +877,8 @@ reset_state
 export MONEYBIRD_TEST_FAULT=bad-dry-line
 capture_guard contacts list --filter period:2023
 unset MONEYBIRD_TEST_FAULT
-if [[ $STATUS -eq 2 && "$OUTPUT" == *"did not begin with a METHOD URL line"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+if [[ $STATUS -eq 2 && "$OUTPUT" == *"did not begin with a METHOD URL line"* ]] &&
+  ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
   pass "Fault 2: a malformed dry-run line exits 2 (stub fault)"
 else
   fail "Fault 2: a malformed dry-run line exits 2 (stub fault)"
@@ -789,7 +889,8 @@ DOCTOR_REPO="$TEST_ROOT/doctor-repo"
 mkdir -p "$DOCTOR_REPO/cli-moneybird/scripts" "$DOCTOR_REPO/cli-moneybird/cli/moneybird-cli" "$TEST_ROOT/doctor-home"
 cp "$SKILL_ROOT/scripts/doctor.sh" "$DOCTOR_REPO/cli-moneybird/scripts/doctor.sh"
 cp "$SKILL_ROOT/cli/moneybird-cli/setup.sh" "$DOCTOR_REPO/cli-moneybird/cli/moneybird-cli/setup.sh"
-if OUTPUT="$(HOME="$TEST_ROOT/doctor-home" MONEYBIRD_API_TOKEN='' bash "$DOCTOR_REPO/cli-moneybird/scripts/doctor.sh" 2>&1)"; then
+if OUTPUT="$(HOME="$TEST_ROOT/doctor-home" MONEYBIRD_API_TOKEN='' \
+  bash "$DOCTOR_REPO/cli-moneybird/scripts/doctor.sh" 2>&1)"; then
   STATUS=0
 else
   STATUS="$?"
@@ -802,11 +903,16 @@ fi
 
 # The key never reaches the captured output, the write log or the journal.
 KEY_HITS="$(grep -rlF "$TEST_KEY" "$MONEYBIRD_ENV_DIR/migration-workspace" 2>/dev/null | grep -v '/\.secrets/' || true)"
-if [[ -z "$KEY_HITS" ]] && ! grep -Fq "$TEST_KEY" "$CAPTURED" && ! grep -Fq "$TEST_KEY" "$WRITE_LOG" && ! grep -Fq "$TEST_KEY" "$JOURNAL"; then
+if [[ -z "$KEY_HITS" ]] && ! grep -Fq "$TEST_KEY" "$CAPTURED" &&
+  ! grep -Fq "$TEST_KEY" "$WRITE_LOG" && ! grep -Fq "$TEST_KEY" "$JOURNAL"; then
   pass "The key never reaches the captured output, the write log or the journal"
 else
   fail "The key never reaches the captured output, the write log or the journal"
 fi
+
+# ───────────────────────────────────────────────────────────────
+# 5. RESULT
+# ───────────────────────────────────────────────────────────────
 
 printf 'Pass: %s  Fail: %s\n' "$PASS_COUNT" "$FAIL_COUNT"
 [[ $FAIL_COUNT -eq 0 ]]

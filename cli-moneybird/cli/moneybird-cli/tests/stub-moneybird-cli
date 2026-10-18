@@ -1,6 +1,26 @@
 #!/usr/bin/env bash
-# WHY: Provide deterministic Moneybird CLI responses without network access.
+# ───────────────────────────────────────────────────────────────
+# COMPONENT: STUB MONEYBIRD CLI
+# ───────────────────────────────────────────────────────────────
+# Answers moneybird-guard with deterministic Moneybird CLI responses so the
+# offline suite can rehearse reads, writes, digests and upstream faults.
+# WHY: nothing here touches the network or a real credential. Observable calls
+# land in the test log through MONEYBIRD_TEST_LOG.
+#
+# Usage: stub-moneybird-cli [--dry-run] [--file PATH] [--administration ID]
+#          <resource> <action> [record]
+#        stub-moneybird-cli login
+#
+# Exit Codes:
+#   0 - Stub response produced
+#   1 - Injected upstream fault (MONEYBIRD_TEST_FAULT=upstream-fail)
+#   2 - A flag missed its value
+# Other codes pass through from MONEYBIRD_TEST_REAL_STATUS for real-call rehearsal.
 set -euo pipefail
+
+# ───────────────────────────────────────────────────────────────
+# 1. STUB CONFIGURATION
+# ───────────────────────────────────────────────────────────────
 
 STUB_LOG="${MONEYBIRD_TEST_LOG:-}"
 ADMIN_ID="${MONEYBIRD_TEST_ADMINISTRATION_ID:-PILOT_ADMIN}"
@@ -11,6 +31,10 @@ FILE_PATH=""
 DRY_RUN=0
 LOGIN=0
 ARGS=()
+
+# ───────────────────────────────────────────────────────────────
+# 2. ARGUMENT PARSING
+# ───────────────────────────────────────────────────────────────
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -46,6 +70,10 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
+# ───────────────────────────────────────────────────────────────
+# 3. LOGIN SHORT-CIRCUIT
+# ───────────────────────────────────────────────────────────────
+
 if [[ $LOGIN -eq 1 ]]; then
   IFS= read -r TOKEN_INPUT || true
   [[ -n "$STUB_LOG" ]] && printf 'LOGIN %s\n' "${MONEYBIRD_CONFIG_DIR:-default}" >> "$STUB_LOG"
@@ -53,6 +81,10 @@ if [[ $LOGIN -eq 1 ]]; then
   printf 'stub accepted token: %s\n' "${TOKEN_INPUT:-}"
   exit 0
 fi
+
+# ───────────────────────────────────────────────────────────────
+# 4. REQUEST SHAPING
+# ───────────────────────────────────────────────────────────────
 
 RESOURCE="${ARGS[0]:-contacts}"
 ACTION="${ARGS[1]:-list}"
@@ -78,6 +110,10 @@ elif [[ "$ACTION" == "list" || "$ACTION" == "create" ]]; then
 else
   URL="https://moneybird.com/api/v2/$ADMIN_ID/$RESOURCE/$RECORD_ID.json"
 fi
+
+# ───────────────────────────────────────────────────────────────
+# 5. FAULT INJECTION AND DRY-RUN
+# ───────────────────────────────────────────────────────────────
 
 # WHY: MONEYBIRD_TEST_FAULT injects a named upstream failure so the guard's
 # error paths are rehearsed offline. upstream-fail stops the call before any
@@ -106,6 +142,10 @@ if [[ $DRY_RUN -eq 1 ]]; then
   fi
   exit 0
 fi
+
+# ───────────────────────────────────────────────────────────────
+# 6. REAL CALL
+# ───────────────────────────────────────────────────────────────
 
 [[ -n "$STUB_LOG" ]] && printf 'REAL %s %s\n' "$METHOD" "$URL" >> "$STUB_LOG"
 if [[ -n "${MONEYBIRD_TEST_REAL_STATUS:-}" ]]; then

@@ -1,8 +1,26 @@
 #!/usr/bin/env bash
-# WHY: Install only the reviewed official Moneybird CLI at its pinned commit.
+# ───────────────────────────────────────────────────────────────
+# COMPONENT: MONEYBIRD CLI SETUP
+# ───────────────────────────────────────────────────────────────
+# Installs, checks or lists removal steps for the official Moneybird CLI and
+# links moneybird-guard beside it.
+# WHY: the clone is pinned to one reviewed commit, so an install never tracks a
+# moving upstream branch.
+#
+# Usage: setup.sh [--install|--check|--uninstall]
+#
+# Exit Codes:
+#   0 - Plan printed, install finished, removal steps listed or check passed
+#   1 - A required command is missing, an existing path blocks a link, or the
+#       check found an incomplete or unpinned install
+#   2 - Invalid arguments
 set -euo pipefail
 
-PINNED_COMMIT="2e34e5190f6e918b6f8a60d4f583452c7d0828aa"
+# ───────────────────────────────────────────────────────────────
+# 1. PINNED SOURCE AND LINK PATHS
+# ───────────────────────────────────────────────────────────────
+
+readonly PINNED_COMMIT="2e34e5190f6e918b6f8a60d4f583452c7d0828aa"
 CLI_HOME="${MONEYBIRD_CLI_HOME:-$HOME/.moneybird-cli}"
 CLI_BIN="${MONEYBIRD_CLI_BIN:-$HOME/.local/bin}"
 
@@ -11,8 +29,14 @@ case "$CLI_BIN" in /*) ;; *) CLI_BIN="$PWD/$CLI_BIN" ;; esac
 CLI_LINK="$CLI_BIN/moneybird-cli"
 CLI_SOURCE="$CLI_HOME/moneybird-cli"
 GUARD_SOURCE="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)/moneybird-guard"
+readonly GUARD_SOURCE
 GUARD_LINK="$CLI_BIN/moneybird-guard"
 
+# ───────────────────────────────────────────────────────────────
+# 2. PLAN, CHECK AND LINK FUNCTIONS
+# ───────────────────────────────────────────────────────────────
+
+# Print the accepted options.
 usage() {
   cat <<'USAGE'
 Usage: setup.sh [--install|--check|--uninstall]
@@ -21,6 +45,7 @@ With no option, setup.sh prints the install plan and changes nothing.
 USAGE
 }
 
+# Print the commands an install would run without changing anything.
 print_plan() {
   printf 'Install plan for the official Moneybird CLI at the pinned commit.\n'
   printf 'git clone https://github.com/moneybird/moneybird-cli.git %q\n' "$CLI_HOME"
@@ -31,6 +56,7 @@ print_plan() {
   printf 'Run with --install to install.\n'
 }
 
+# Report the install state and return nonzero while any part is missing or unpinned.
 check_install() {
   local installed="no"
   local pinned="no"
@@ -59,6 +85,7 @@ check_install() {
   [[ "$installed" == "yes" && "$pinned" == "yes" && "$on_path" == "yes" && "$guard_on_path" == "yes" ]]
 }
 
+# Link the guard beside the CLI, refusing to replace a foreign path.
 link_guard() {
   if [[ -L "$GUARD_LINK" ]]; then
     if [[ "$(readlink "$GUARD_LINK")" != "$GUARD_SOURCE" ]]; then
@@ -72,6 +99,10 @@ link_guard() {
     ln -s "$GUARD_SOURCE" "$GUARD_LINK"
   fi
 }
+
+# ───────────────────────────────────────────────────────────────
+# 3. COMMAND DISPATCH
+# ───────────────────────────────────────────────────────────────
 
 case "${1:-}" in
   "")

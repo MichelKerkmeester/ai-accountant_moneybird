@@ -1,11 +1,23 @@
 #!/usr/bin/env bash
-# WHY: Exercise the CLI contract against the local OpenAPI file without network access.
+# ───────────────────────────────────────────────────────────────
+# COMPONENT: JORTT CLI TEST SUITE
+# ───────────────────────────────────────────────────────────────
+# Exercise the CLI contract against the local OpenAPI file without network
+# access.
+#
+# Usage: bash tests/run-tests.sh
+#
+# Exit Codes:
+#   0 - Every check passed
+#   1 - At least one check failed
+#   2 - OpenAPI spec file missing
+
 set -euo pipefail
 
 HERE="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 CLI="$(cd -P "$HERE/.." >/dev/null 2>&1 && pwd)/jortt-cli"
 SPEC="${JORTT_OPENAPI_FILE:-$HERE/fixtures/openapi-trimmed.json}"
-if [ ! -f "$SPEC" ]; then
+if [[ ! -f "$SPEC" ]]; then
   printf 'OpenAPI file not found. Set JORTT_OPENAPI_FILE or restore the trimmed fixture under tests/fixtures/.\n' >&2
   exit 2
 fi
@@ -18,7 +30,7 @@ FAIL=0
 record() {
   local name="$1"
   local passed="$2"
-  if [ "$passed" = "1" ]; then
+  if [[ "$passed" == "1" ]]; then
     PASS=$((PASS + 1))
     printf 'PASS %s\n' "$name"
   else
@@ -47,20 +59,20 @@ set +e
 OUTPUT="$(env JORTT_OPENAPI_FILE="$SPEC" JORTT_SCOPES=expenses:write JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null "$CLI" call create-an-expense --dry-run 2>&1)"
 CODE=$?
 set -e
-if [ "$CODE" -eq 3 ] && printf '%s' "$OUTPUT" | grep -q 'is refused'; then record "write operation exits 3" 1; else record "write operation exits 3" 0; fi
+if [[ "$CODE" -eq 3 ]] && printf '%s' "$OUTPUT" | grep -q 'is refused'; then record "write operation exits 3" 1; else record "write operation exits 3" 0; fi
 
 set +e
 OUTPUT="$(env JORTT_OPENAPI_FILE="$SPEC" JORTT_SCOPES=customers:read JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null "$CLI" call list-expenses --dry-run 2>&1)"
 CODE=$?
 set -e
-if [ "$CODE" -eq 4 ] && printf '%s' "$OUTPUT" | grep -q 'expenses:read'; then record "missing read scope exits 4" 1; else record "missing read scope exits 4" 0; fi
+if [[ "$CODE" -eq 4 ]] && printf '%s' "$OUTPUT" | grep -q 'expenses:read'; then record "missing read scope exits 4" 1; else record "missing read scope exits 4" 0; fi
 
 # WHY: token status must report where JORTT_SCOPES came from without exposing the value.
 set +e
 OUTPUT="$(env JORTT_OPENAPI_FILE="$SPEC" JORTT_SCOPES=expenses:read JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null "$CLI" token status 2>&1)"
 CODE=$?
 set -e
-if [ "$CODE" -eq 0 ] && printf '%s' "$OUTPUT" | grep -q 'scope source: environment'; then record "token status reports the environment scope source" 1; else record "token status reports the environment scope source" 0; fi
+if [[ "$CODE" -eq 0 ]] && printf '%s' "$OUTPUT" | grep -q 'scope source: environment'; then record "token status reports the environment scope source" 1; else record "token status reports the environment scope source" 0; fi
 
 ENV_FILE="$(mktemp "$TEMP_ROOT/scopes-env.XXXXXX")"
 printf 'JORTT_SCOPES=expenses:read\n' > "$ENV_FILE"
@@ -68,14 +80,14 @@ set +e
 OUTPUT="$(env -u JORTT_SCOPES JORTT_OPENAPI_FILE="$SPEC" JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE="$ENV_FILE" "$CLI" token status 2>&1)"
 CODE=$?
 set -e
-if [ "$CODE" -eq 0 ] && printf '%s' "$OUTPUT" | grep -q 'scope source: env file'; then record "token status reports the env file scope source" 1; else record "token status reports the env file scope source" 0; fi
+if [[ "$CODE" -eq 0 ]] && printf '%s' "$OUTPUT" | grep -q 'scope source: env file'; then record "token status reports the env file scope source" 1; else record "token status reports the env file scope source" 0; fi
 rm -f "$ENV_FILE"
 
 set +e
 OUTPUT="$(env -u JORTT_SCOPES JORTT_OPENAPI_FILE="$SPEC" JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null "$CLI" token status 2>"$TEMP_ROOT/fallback-stderr.txt")"
 CODE=$?
 set -e
-if [ "$CODE" -eq 0 ] \
+if [[ "$CODE" -eq 0 ]] \
   && printf '%s' "$OUTPUT" | grep -q 'scope source: .env.example fallback' \
   && grep -q 'warning: JORTT_SCOPES came from .env.example and may not match the configured key' "$TEMP_ROOT/fallback-stderr.txt"; then
   record "token status warns for the .env.example fallback scope source" 1
@@ -87,25 +99,25 @@ set +e
 OUTPUT="$(run_cli call list-expenses --unknown_filter value --dry-run 2>&1)"
 CODE=$?
 set -e
-if [ "$CODE" -eq 2 ] && printf '%s' "$OUTPUT" | grep -q 'vat_date_from'; then record "unknown parameter lists valid parameters" 1; else record "unknown parameter lists valid parameters" 0; fi
+if [[ "$CODE" -eq 2 ]] && printf '%s' "$OUTPUT" | grep -q 'vat_date_from'; then record "unknown parameter lists valid parameters" 1; else record "unknown parameter lists valid parameters" 0; fi
 
 set +e
 OUTPUT="$(run_cli call list-expenses --page invalid --dry-run 2>&1)"
 CODE=$?
 set -e
-if [ "$CODE" -eq 2 ] && printf '%s' "$OUTPUT" | grep -q 'must be an integer'; then record "parameter type follows the spec" 1; else record "parameter type follows the spec" 0; fi
+if [[ "$CODE" -eq 2 ]] && printf '%s' "$OUTPUT" | grep -q 'must be an integer'; then record "parameter type follows the spec" 1; else record "parameter type follows the spec" 0; fi
 
 set +e
 OUTPUT="$(run_cli call list-expenses --out "$TEMP_ROOT/outside.json" --dry-run 2>&1)"
 CODE=$?
 set -e
-if [ "$CODE" -eq 5 ]; then record "out-of-workspace call output exits 5" 1; else record "out-of-workspace call output exits 5" 0; fi
+if [[ "$CODE" -eq 5 ]]; then record "out-of-workspace call output exits 5" 1; else record "out-of-workspace call output exits 5" 0; fi
 
 set +e
 OUTPUT="$(run_cli fetch https://example.invalid/never-request.bin --out "$TEMP_ROOT/outside.bin" 2>&1)"
 CODE=$?
 set -e
-if [ "$CODE" -eq 5 ]; then record "out-of-workspace fetch exits 5" 1; else record "out-of-workspace fetch exits 5" 0; fi
+if [[ "$CODE" -eq 5 ]]; then record "out-of-workspace fetch exits 5" 1; else record "out-of-workspace fetch exits 5" 0; fi
 
 STUB_DIR="$TEMP_ROOT/bin"
 FAKE_ROOT="$TEMP_ROOT/repo"
@@ -122,7 +134,7 @@ set -euo pipefail
 config_file=''
 destination=''
 headers_file=''
-while [ "$#" -gt 0 ]; do
+while [[ "$#" -gt 0 ]]; do
   case "$1" in
     --config)
       config_file="$2"
@@ -161,7 +173,7 @@ done
 url="$(awk -F'"' '/^url = "/ { print $2; exit }' "$config_file" 2>/dev/null)" || url=''
 case "$url" in
   https://app.jortt.nl/oauth-provider/oauth/token*)
-    if [ -n "${STUB_TOKEN_STATUS:-}" ]; then
+    if [[ -n "${STUB_TOKEN_STATUS:-}" ]]; then
       body='{"error":"invalid_client"}'
       status="$STUB_TOKEN_STATUS"
     else
@@ -173,18 +185,18 @@ case "$url" in
     body="$(cat "${STUB_HTTP_BODY_FILE:?}")"
     status="${STUB_HTTP_STATUS:-200}"
     # WHY: a body sequence, one JSON document per line, lets one run serve several pages.
-    if [ -n "${STUB_BODY_SEQUENCE_FILE:-}" ] && [ -s "$STUB_BODY_SEQUENCE_FILE" ]; then
+    if [[ -n "${STUB_BODY_SEQUENCE_FILE:-}" ]] && [[ -s "$STUB_BODY_SEQUENCE_FILE" ]]; then
       body="$(sed -n '1p' "$STUB_BODY_SEQUENCE_FILE")"
       sed '1d' "$STUB_BODY_SEQUENCE_FILE" > "$STUB_BODY_SEQUENCE_FILE.next"
       mv -f "$STUB_BODY_SEQUENCE_FILE.next" "$STUB_BODY_SEQUENCE_FILE"
     fi
     # WHY: a status sequence lets one run answer a retry with a different status.
-    if [ -n "${STUB_STATUS_SEQUENCE_FILE:-}" ] && [ -s "$STUB_STATUS_SEQUENCE_FILE" ]; then
+    if [[ -n "${STUB_STATUS_SEQUENCE_FILE:-}" ]] && [[ -s "$STUB_STATUS_SEQUENCE_FILE" ]]; then
       status="$(sed -n '1p' "$STUB_STATUS_SEQUENCE_FILE")"
       sed '1d' "$STUB_STATUS_SEQUENCE_FILE" > "$STUB_STATUS_SEQUENCE_FILE.next"
       mv -f "$STUB_STATUS_SEQUENCE_FILE.next" "$STUB_STATUS_SEQUENCE_FILE"
     fi
-    if [ "$status" = "429" ] && [ -n "$headers_file" ] && [ -n "${STUB_RETRY_AFTER:-}" ]; then
+    if [[ "$status" == "429" ]] && [[ -n "$headers_file" ]] && [[ -n "${STUB_RETRY_AFTER:-}" ]]; then
       printf 'retry-after: %s\r\n' "$STUB_RETRY_AFTER" > "$headers_file"
     fi
     ;;
@@ -193,7 +205,7 @@ case "$url" in
   https://app.jortt.nl/*) printf 'token\n' >> "${STUB_CALL_LOG:-/dev/null}" ;;
   *) printf 'api\n' >> "${STUB_CALL_LOG:-/dev/null}" ;;
 esac
-if [ -n "$destination" ]; then
+if [[ -n "$destination" ]]; then
   printf '%s' "$body" > "$destination"
   printf '%s' "$status"
 else
@@ -227,7 +239,7 @@ set +e
 SUMMARY="$(run_fake call list-customers 2>&1)"
 SUMMARY_CODE=$?
 set -e
-if [ "$SUMMARY_CODE" -eq 0 ] \
+if [[ "$SUMMARY_CODE" -eq 0 ]] \
   && printf '%s' "$SUMMARY" | grep -q 'HTTP 200' \
   && printf '%s' "$SUMMARY" | grep -q 'data items: 2' \
   && printf '%s' "$SUMMARY" | grep -q 'top-level keys: _links, data' \
@@ -242,7 +254,7 @@ SAVE_OUTPUT="$(run_fake call list-customers --out migration-workspace/exports/cu
 SAVE_CODE=$?
 set -e
 SAVED_FILE="$FAKE_ROOT/migration-workspace/exports/customers.json"
-if [ "$SAVE_CODE" -eq 0 ] \
+if [[ "$SAVE_CODE" -eq 0 ]] \
   && printf '%s' "$SAVE_OUTPUT" | grep -q 'data items: 2' \
   && jq -e '.data | length == 2' "$SAVED_FILE" >/dev/null 2>&1 \
   && grep -q 'Secret Customer' "$SAVED_FILE"; then
@@ -255,7 +267,7 @@ set +e
 BODY_OUTPUT="$(run_fake call list-customers --print-body 2>&1)"
 BODY_CODE=$?
 set -e
-if [ "$BODY_CODE" -eq 0 ] \
+if [[ "$BODY_CODE" -eq 0 ]] \
   && printf '%s' "$BODY_OUTPUT" | grep -q 'Secret Customer' \
   && printf '%s' "$BODY_OUTPUT" | grep -q '"name"'; then
   record "--print-body prints the full body without session markers" 1
@@ -275,11 +287,11 @@ for MARKER in CLAUDECODE AI_SESSION_CHILD ACCOUNTANT_AGENT_SESSION CODEX_SANDBOX
   case "$MARKER_OUTPUT" in
     *$'\n'*) MARKER_FAILURES=$((MARKER_FAILURES + 1)) ;;
   esac
-  if [ "$MARKER_CODE" -ne 2 ] || ! printf '%s' "$MARKER_OUTPUT" | grep -q -- '--print-body'; then
+  if [[ "$MARKER_CODE" -ne 2 ]] || ! printf '%s' "$MARKER_OUTPUT" | grep -q -- '--print-body'; then
     MARKER_FAILURES=$((MARKER_FAILURES + 1))
   fi
 done
-if [ "$MARKER_FAILURES" -eq 0 ]; then record "--print-body is refused with a one-line reason for every marker" 1; else record "--print-body is refused with a one-line reason for every marker" 0; fi
+if [[ "$MARKER_FAILURES" -eq 0 ]]; then record "--print-body is refused with a one-line reason for every marker" 1; else record "--print-body is refused with a one-line reason for every marker" 0; fi
 
 fake_body '{"message":"Secret Customer is invalid","errors":{"vat_number":["is not valid"]}}'
 export STUB_HTTP_STATUS=422
@@ -290,13 +302,13 @@ set -e
 unset STUB_HTTP_STATUS
 ERROR_LOG="$FAKE_ROOT/migration-workspace/logs/jortt-errors.log"
 ERROR_LOG_MODE="$(stat -c '%a' "$ERROR_LOG" 2>/dev/null || stat -f '%Lp' "$ERROR_LOG" 2>/dev/null || printf '')"
-if [ "$ERROR_CODE" -eq 1 ] \
+if [[ "$ERROR_CODE" -eq 1 ]] \
   && printf '%s' "$ERROR_OUTPUT" | grep -q 'HTTP 422' \
   && printf '%s' "$ERROR_OUTPUT" | grep -q 'fields: vat_number' \
   && ! printf '%s' "$ERROR_OUTPUT" | grep -q 'Secret Customer' \
   && ! printf '%s' "$ERROR_OUTPUT" | grep -q 'is not valid' \
   && printf '%s' "$ERROR_OUTPUT" | grep -q 'jortt-errors.log' \
-  && [ "$ERROR_LOG_MODE" = "600" ] \
+  && [[ "$ERROR_LOG_MODE" == "600" ]] \
   && grep -q 'Secret Customer is invalid' "$ERROR_LOG"; then
   record "API errors hide message text and log the full body at mode 600" 1
 else
@@ -314,7 +326,7 @@ FAULT_1_OUTPUT="$(run_fake call list-customers 2>&1)"
 FAULT_1_CODE=$?
 set -e
 unset STUB_HTTP_STATUS
-if [ "$FAULT_1_CODE" -eq 1 ] && printf '%s' "$FAULT_1_OUTPUT" | grep -q 'HTTP 500'; then
+if [[ "$FAULT_1_CODE" -eq 1 ]] && printf '%s' "$FAULT_1_OUTPUT" | grep -q 'HTTP 500'; then
   record "fault case 1: an upstream 500 exits 1" 1
 else
   record "fault case 1: an upstream 500 exits 1" 0
@@ -327,7 +339,7 @@ set +e
 FAULT_2_OUTPUT="$(env JORTT_OPENAPI_FILE="$BAD_SPEC" JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null "$CLI" ops --json 2>&1)"
 FAULT_2_CODE=$?
 set -e
-if [ "$FAULT_2_CODE" -eq 2 ] && printf '%s' "$FAULT_2_OUTPUT" | grep -q 'not a readable Swagger 2.0 document'; then
+if [[ "$FAULT_2_CODE" -eq 2 ]] && printf '%s' "$FAULT_2_OUTPUT" | grep -q 'not a readable Swagger 2.0 document'; then
   record "fault case 2: a broken OpenAPI file exits 2" 1
 else
   record "fault case 2: a broken OpenAPI file exits 2" 0
@@ -341,7 +353,7 @@ FAULT_6_OUTPUT="$(run_fake call list-customers 2>&1)"
 FAULT_6_CODE=$?
 set -e
 unset STUB_TOKEN_STATUS
-if [ "$FAULT_6_CODE" -eq 6 ] && printf '%s' "$FAULT_6_OUTPUT" | grep -q 'token request failed with HTTP 401'; then
+if [[ "$FAULT_6_CODE" -eq 6 ]] && printf '%s' "$FAULT_6_OUTPUT" | grep -q 'token request failed with HTTP 401'; then
   record "fault case 6: a refused token request exits 6" 1
 else
   record "fault case 6: a refused token request exits 6" 0
@@ -356,7 +368,7 @@ set +e
 PAGED_OUTPUT="$(run_fake call list-customers --all --out paged/customers.json 2>&1)"
 PAGED_CODE=$?
 set -e
-if [ "$PAGED_CODE" -eq 0 ] && printf '%s' "$PAGED_OUTPUT" | grep -q 'HTTP 200, items: 3' \
+if [[ "$PAGED_CODE" -eq 0 ]] && printf '%s' "$PAGED_OUTPUT" | grep -q 'HTTP 200, items: 3' \
   && jq -e '[.[].id] == [1, 2, 3]' "$FAKE_ROOT/migration-workspace/paged/customers.json" >/dev/null 2>&1; then
   record "--all follows next links and merges every page" 1
 else
@@ -368,7 +380,7 @@ set +e
 OFFHOST_OUTPUT="$(run_fake call list-customers --all 2>&1)"
 OFFHOST_CODE=$?
 set -e
-if [ "$OFFHOST_CODE" -eq 1 ] && printf '%s' "$OFFHOST_OUTPUT" | grep -q 'outside api.jortt.nl'; then
+if [[ "$OFFHOST_CODE" -eq 1 ]] && printf '%s' "$OFFHOST_OUTPUT" | grep -q 'outside api.jortt.nl'; then
   record "--all refuses a next link outside api.jortt.nl" 1
 else
   record "--all refuses a next link outside api.jortt.nl" 0
@@ -398,7 +410,7 @@ set +e
 RETRY_401_OUTPUT="$(run_fake call list-customers 2>&1)"
 RETRY_401_CODE=$?
 set -e
-if [ "$RETRY_401_CODE" -eq 0 ] && [ "$(count_calls api)" -eq 2 ] && [ "$(count_calls token)" -eq 2 ] \
+if [[ "$RETRY_401_CODE" -eq 0 ]] && [[ "$(count_calls api)" -eq 2 ]] && [[ "$(count_calls token)" -eq 2 ]] \
   && printf '%s' "$RETRY_401_OUTPUT" | grep -q 'HTTP 200'; then
   record "a 401 fetches a new token and retries once" 1
 else
@@ -412,7 +424,7 @@ set +e
 RETRY_429_OUTPUT="$(run_fake call list-customers 2>&1)"
 RETRY_429_CODE=$?
 set -e
-if [ "$RETRY_429_CODE" -eq 0 ] && [ "$(count_calls api)" -eq 2 ] && grep -qx '7' "$STUB_SLEEP_LOG" \
+if [[ "$RETRY_429_CODE" -eq 0 ]] && [[ "$(count_calls api)" -eq 2 ]] && grep -qx '7' "$STUB_SLEEP_LOG" \
   && printf '%s' "$RETRY_429_OUTPUT" | grep -q 'HTTP 200'; then
   record "a 429 waits for a lowercase retry-after header" 1
 else
@@ -430,7 +442,7 @@ RETRY_DATE_CODE=$?
 set -e
 unset TZ
 RETRY_DATE_WAIT="$(grep -E '^[0-9]+$' "$STUB_SLEEP_LOG" | head -n 1 || true)"
-if [ "$RETRY_DATE_CODE" -eq 0 ] && [ -n "$RETRY_DATE_WAIT" ] && [ "$RETRY_DATE_WAIT" -ge 20 ] && [ "$RETRY_DATE_WAIT" -le 40 ]; then
+if [[ "$RETRY_DATE_CODE" -eq 0 ]] && [[ -n "$RETRY_DATE_WAIT" ]] && [[ "$RETRY_DATE_WAIT" -ge 20 ]] && [[ "$RETRY_DATE_WAIT" -le 40 ]]; then
   record "a 429 retry-after HTTP date is read as GMT" 1
 else
   record "a 429 retry-after HTTP date is read as GMT" 0
@@ -443,7 +455,7 @@ set +e
 RETRY_LIMIT_OUTPUT="$(run_fake call list-customers 2>&1)"
 RETRY_LIMIT_CODE=$?
 set -e
-if [ "$RETRY_LIMIT_CODE" -eq 1 ] && [ "$(count_calls api)" -eq 4 ] && printf '%s' "$RETRY_LIMIT_OUTPUT" | grep -q 'HTTP 429'; then
+if [[ "$RETRY_LIMIT_CODE" -eq 1 ]] && [[ "$(count_calls api)" -eq 4 ]] && printf '%s' "$RETRY_LIMIT_OUTPUT" | grep -q 'HTTP 429'; then
   record "a 429 stops after three retries with exit 1" 1
 else
   record "a 429 stops after three retries with exit 1" 0
@@ -457,7 +469,7 @@ set +e
 run_fake fetch https://example.invalid/signed.pdf --out migration-workspace/fetched/signed.pdf >/dev/null 2>&1
 FETCH_CODE=$?
 set -e
-if [ "$FETCH_CODE" -eq 0 ] && grep -qx 'proto-redir =https' "$STUB_ARGS_LOG" && [ -f "$FAKE_ROOT/migration-workspace/fetched/signed.pdf" ]; then
+if [[ "$FETCH_CODE" -eq 0 ]] && grep -qx 'proto-redir =https' "$STUB_ARGS_LOG" && [[ -f "$FAKE_ROOT/migration-workspace/fetched/signed.pdf" ]]; then
   record "fetch limits redirects to HTTPS" 1
 else
   record "fetch limits redirects to HTTPS" 0
@@ -465,4 +477,4 @@ fi
 unset STUB_ARGS_LOG
 
 printf 'Result: %s passed, %s failed\n' "$PASS" "$FAIL"
-[ "$FAIL" -eq 0 ]
+[[ "$FAIL" -eq 0 ]]

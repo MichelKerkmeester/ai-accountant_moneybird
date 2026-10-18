@@ -3,26 +3,46 @@
 # COMPONENT: MONEYBIRD GUARD
 # ───────────────────────────────────────────────────────────────
 # Previews every Moneybird API call and holds writes behind a pilot-aware confirmation.
-# Exit codes: 0 success, 1 tool or dependency failure, 2 to 9 the guard refusals in the
-# canonical table in references/cli.md. Any other code is passed through from moneybird-cli.
+#
+# Usage: moneybird-guard [--confirm-write] [--production] [--approval REF]
+#          [--out FILE] [--print-body] <moneybird-cli args...>
+#        moneybird-guard login-from-env [--writer]
+#
+# Exit Codes:
+#   0 - Success
+#   1 - Tool or dependency failure
+#   2-9 - Guard refusals, named in the canonical table in references/cli.md
+# Other codes pass through from moneybird-cli unchanged.
 set -euo pipefail
 
+# ───────────────────────────────────────────────────────────────
+# 1. USAGE AND ERROR HELPERS
+# ───────────────────────────────────────────────────────────────
+
+# Print the accepted guard flags and the passthrough contract.
 usage() {
   cat <<'USAGE'
-Usage: moneybird-guard [--confirm-write] [--production] [--approval REF] [--out FILE] [--print-body] <moneybird-cli args...>
+Usage: moneybird-guard [--confirm-write] [--production] [--approval REF]
+       [--out FILE] [--print-body] <moneybird-cli args...>
        moneybird-guard login-from-env [--writer]
 
 Guard flags are read anywhere in the arguments. Other arguments pass to moneybird-cli.
-Without --out the response body is captured and only a summary is printed. --print-body streams the body for an operator.
+Without --out the response body is captured and only a summary is printed.
+--print-body streams the body for an operator.
 USAGE
 }
 
+# Print a refusal or failure to stderr and exit with the given status.
 die() {
   local status="$1"
   shift
   printf 'moneybird-guard: %s\n' "$*" >&2
   exit "$status"
 }
+
+# ───────────────────────────────────────────────────────────────
+# 2. PINNED PATHS AND TEST OVERRIDES
+# ───────────────────────────────────────────────────────────────
 
 SOURCE="${BASH_SOURCE[0]}"
 while [[ -h "$SOURCE" ]]; do
@@ -34,13 +54,16 @@ while [[ -h "$SOURCE" ]]; do
   esac
 done
 SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd -P)"
+readonly SCRIPT_DIR
 DEFAULT_ENV_DIR="$(cd -P "$SCRIPT_DIR/../../.." >/dev/null 2>&1 && pwd -P)"
+readonly DEFAULT_ENV_DIR
 # WHY: The guard pins its own repository root, the CLI binary and the writer configuration. The
 # overrides exist for the test suite only, so an agent with a shell cannot redirect them.
 GUARD_TEST=0
 if [[ "${MONEYBIRD_GUARD_TEST:-}" == "1" ]]; then
   GUARD_TEST=1
 fi
+# Warn that an environment override only applies inside the test suite.
 warn_ignored_var() {
   printf 'moneybird-guard: %s is ignored unless MONEYBIRD_GUARD_TEST=1.\n' "$1" >&2
 }
@@ -73,6 +96,11 @@ if [[ -n "$KEY_FILE_OVERRIDE" ]]; then
 else
   KEY_FILE="$ACCOUNTANT_ROOT/migration-workspace/.secrets/alias-hmac.key"
 fi
+
+# ───────────────────────────────────────────────────────────────
+# 3. GUARD FLAG PARSING
+# ───────────────────────────────────────────────────────────────
+
 CONFIRM_WRITE=0
 PRODUCTION=0
 WRITER_LOGIN=0
@@ -124,6 +152,11 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
+# ───────────────────────────────────────────────────────────────
+# 4. CREDENTIAL FILE HELPERS
+# ───────────────────────────────────────────────────────────────
+
+# Print the value of one key in an env file, tolerating CRLF, export and quotes.
 read_env_value() {
   local file="$1"
   local key="$2"
@@ -150,6 +183,7 @@ read_env_value() {
   return 1
 }
 
+# Print the pilot administration id.
 # WHY: The pilot administration id is read from the pinned root, never from an environment an
 # agent can edit.
 pilot_admin_id() {
@@ -165,6 +199,11 @@ pilot_admin_id() {
   printf '%s' "$value"
 }
 
+# ───────────────────────────────────────────────────────────────
+# 5. PASSTHROUGH AND DRY-RUN
+# ───────────────────────────────────────────────────────────────
+
+# Whether the command is an administration call that skips the dry-run gates.
 is_passthrough() {
   if [[ "${CLI_BEFORE[0]:-}" == "administration" ]]; then
     case "${CLI_BEFORE[1]:-}" in
@@ -177,11 +216,13 @@ is_passthrough() {
   return 1
 }
 
+# Run the passthrough command and exit with its status.
 run_passthrough() {
   "$CLI" ${CLI_BEFORE[@]+"${CLI_BEFORE[@]}"} || exit "$?"
   exit 0
 }
 
+# Capture the CLI dry-run output and exit with its status when it fails.
 run_dry() {
   local -a args=()
   [[ ${#CLI_BEFORE[@]} -gt 0 ]] && args+=("${CLI_BEFORE[@]}")
@@ -194,6 +235,7 @@ run_dry() {
   fi
 }
 
+# Parse the first dry-run line into the globals METHOD, URL_PATH and ADMIN_ID.
 parse_dry_line() {
   local dry_line="${DRY_OUTPUT%%$'\n'*}"
   local extra=""
@@ -215,6 +257,11 @@ parse_dry_line() {
   return 0
 }
 
+# ───────────────────────────────────────────────────────────────
+# 6. REQUEST SHAPE CHECKS
+# ───────────────────────────────────────────────────────────────
+
+# Whether the parsed request is the read-only synchronization fetch.
 # WHY: A synchronization fetch sends its id list as a POST body but only reads
 # records, so it runs as a read. Only the exact resource synchronization path
 # qualifies, and every other POST still meets the write gates.
@@ -223,6 +270,7 @@ is_sync_fetch() {
   [[ "$URL_PATH" =~ ^/api/v2/[^/]+/[a-z_]+/synchronization(\.json)?$ ]]
 }
 
+# Whether the CLI arguments carry an explicit period filter.
 has_period_filter() {
   local i=0
   local arg=""
@@ -243,6 +291,7 @@ has_period_filter() {
   return 1
 }
 
+# Whether the CLI arguments request a list action.
 is_list_action() {
   local arg=""
   for arg in ${CLI_BEFORE[@]+"${CLI_BEFORE[@]}"}; do
@@ -251,6 +300,11 @@ is_list_action() {
   return 1
 }
 
+# ───────────────────────────────────────────────────────────────
+# 7. OUTPUT PATH VALIDATION
+# ───────────────────────────────────────────────────────────────
+
+# Resolve --out into the global OUT_PATH or refuse when it leaves the workspace.
 validate_out_path() {
   local candidate=""
   local relative=""
@@ -314,12 +368,18 @@ validate_out_path() {
   return 0
 }
 
+# ───────────────────────────────────────────────────────────────
+# 8. WRITE PREREQUISITES
+# ───────────────────────────────────────────────────────────────
+
+# Stop a write when the separate writer configuration is missing.
 require_writer_config() {
   if [[ ! -d "$WRITER_CONFIG_DIR" ]]; then
     die 7 "Writer configuration is missing. A write needs the writer session and never falls back to the reader token."
   fi
 }
 
+# Print the --file argument when the CLI call carries an attachment.
 attachment_path() {
   local i=0
   local arg=""
@@ -342,11 +402,18 @@ attachment_path() {
   return 0
 }
 
+# Exit early when python3 is missing.
 # WHY: Every digest, approval and summary step runs through python3, so one test names the gap.
 require_python3() {
-  command -v python3 >/dev/null 2>&1 || die 1 "python3 is required to compute digests, check approvals and summarise bodies."
+  command -v python3 >/dev/null 2>&1 ||
+    die 1 "python3 is required to compute digests, check approvals and summarise bodies."
 }
 
+# ───────────────────────────────────────────────────────────────
+# 9. DIGEST AND APPROVAL BINDING
+# ───────────────────────────────────────────────────────────────
+
+# Compute the HMAC that binds an approval to this exact method, path and body.
 digest_helper() {
   local method="$1"
   local url_path="$2"
@@ -380,6 +447,7 @@ PY
 )" || die 1 "The payload digest could not be computed from the key file at $KEY_FILE."
 }
 
+# Compute the HMAC of the raw attachment bytes into ATTACHMENT_DIGEST.
 attachment_digest_helper() {
   local file_path="$1"
   if [[ ! -f "$file_path" || ! -r "$file_path" ]]; then
@@ -401,6 +469,7 @@ PY
 )" || die 1 "The attachment digest could not be computed from the key file at $KEY_FILE."
 }
 
+# Print the digest fields of the WRITE_INTENT row for the approval reference.
 approval_verified() {
   local journal="$1"
   python3 -I - "$journal" "$APPROVAL_REF" <<'PY'
@@ -431,13 +500,15 @@ raise SystemExit(1)
 PY
 }
 
+# Load the approved digest fields for --approval or stop the write.
 require_approval() {
   local journal="$ACCOUNTANT_ROOT/migration-workspace/RunJournal/run-journal.jsonl"
   local fields=""
   [[ -n "$APPROVAL_REF" ]] || die 8 "A write requires --approval <ref> for a WRITE_INTENT entry in the run journal."
   [[ -f "$journal" ]] || die 8 "The run journal is missing, so the approval reference cannot be checked."
   require_python3
-  fields="$(approval_verified "$journal")" || die 8 "The run journal has no WRITE_INTENT entry for the given approval reference."
+  fields="$(approval_verified "$journal")" ||
+    die 8 "The run journal has no WRITE_INTENT entry for the given approval reference."
   INTENT_PAYLOAD_DIGEST=""
   INTENT_ATTACHMENT_DIGEST=""
   INTENT_BATCH_KEY=""
@@ -446,11 +517,13 @@ require_approval() {
   IFS=$'\x1f' read -r INTENT_PAYLOAD_DIGEST INTENT_ATTACHMENT_DIGEST INTENT_BATCH_KEY <<< "$fields"
 }
 
+# Print the payload digest to stderr and exit 9 with the refusal reason.
 refuse_payload() {
   printf 'payload-digest: %s\n' "$PAYLOAD_DIGEST" >&2
   die 9 "$1"
 }
 
+# Whether the write log already holds this approval reference and digest pair.
 approval_consumed() {
   local log="$1"
   local reference="$2"
@@ -483,6 +556,7 @@ raise SystemExit(1)
 PY
 }
 
+# Refuse the write unless the payload and attachment match the approved digests.
 require_payload_binding() {
   local consumed_status=0
   digest_helper "$METHOD" "$URL_PATH" "$DRY_OUTPUT"
@@ -500,10 +574,16 @@ require_payload_binding() {
     die 8 "The approval reference is already consumed for this payload digest. A retry needs a new WRITE_INTENT entry."
   else
     consumed_status="$?"
-    [[ "$consumed_status" -eq 1 ]] || die 1 "The write log at $LOG_FILE could not be read, so the approval reference cannot be checked for reuse."
+    [[ "$consumed_status" -eq 1 ]] ||
+      die 1 "The write log at $LOG_FILE could not be read, so the approval reference cannot be checked for reuse."
   fi
 }
 
+# ───────────────────────────────────────────────────────────────
+# 10. WRITE AND SESSION GATES
+# ───────────────────────────────────────────────────────────────
+
+# Gate an administration switch behind the pilot, write and approval checks.
 gate_administration_use() {
   local target="${CLI_BEFORE[2]:-}"
   local pilot_id=""
@@ -514,12 +594,16 @@ gate_administration_use() {
   if [[ "${MONEYBIRD_GUARD_READ_ONLY:-}" == "1" ]]; then
     die 6 "Read-only lock is enabled. Switching to a non-pilot administration is blocked."
   fi
-  [[ $CONFIRM_WRITE -eq 1 ]] || die 3 "Administration switch blocked. Re-run with --confirm-write after reviewing the target."
+  [[ $CONFIRM_WRITE -eq 1 ]] ||
+    die 3 "Administration switch blocked. Re-run with --confirm-write after reviewing the target."
   require_writer_config
-  [[ $PRODUCTION -eq 1 ]] || die 4 "Administration '$target' is not the pilot administration '${pilot_id:-unset}'. Pass --production only after operator approval."
+  [[ $PRODUCTION -eq 1 ]] ||
+    die 4 "Administration '$target' is not the pilot administration '${pilot_id:-unset}'." \
+      "Pass --production only after operator approval."
   require_approval
 }
 
+# Refuse --print-body inside a marked agent session.
 refuse_print_body_in_agent_session() {
   # WHY: A marker is a speed bump, not a boundary. An agent can unset a marker, so the pinned root,
   # the writer configuration and the approval journal remain the real controls.
@@ -533,6 +617,11 @@ refuse_print_body_in_agent_session() {
   done
 }
 
+# ───────────────────────────────────────────────────────────────
+# 11. RESPONSE HANDLING
+# ───────────────────────────────────────────────────────────────
+
+# Print a value-free summary of a saved response body.
 summarize_body() {
   python3 -I - "$1" <<'PY'
 import json
@@ -572,6 +661,7 @@ print("response: " + ", ".join(parts))
 PY
 }
 
+# Run the real CLI call, save or summarize the body and remove temporary files.
 run_actual() {
   local status=0
   local summary=""
@@ -591,7 +681,9 @@ run_actual() {
     if "$CLI" "${args[@]}" > "$temporary"; then
       mv -f "$temporary" "$OUT_PATH"
       if [[ -s "$OUT_PATH" ]]; then
-        summary="$(jq -r 'if type == "array" then "items: \(length)" elif type == "object" then "keys: \((keys | join(",")))" else "top-level type: \(type)" end' "$OUT_PATH" 2>/dev/null || true)"
+        summary="$(jq -r 'if type == "array" then "items: \(length)"
+          elif type == "object" then "keys: \((keys | join(",")))"
+          else "top-level type: \(type)" end' "$OUT_PATH" 2>/dev/null || true)"
         [[ -n "$summary" ]] || summary="response body saved"
       else
         summary="no response body"
@@ -608,8 +700,10 @@ run_actual() {
     (umask 077; mkdir -p "$tmp_dir") || die 5 "Could not create the summary folder inside migration-workspace."
     [[ -L "$tmp_dir" ]] && die 5 "The summary folder resolves through a symlink."
     chmod 700 "$tmp_dir" 2>/dev/null || die 5 "Could not secure the summary folder."
-    temporary="$(umask 077 && mktemp "$tmp_dir/.moneybird-guard.XXXXXX")" || die 5 "Could not create a temporary summary file."
-    chmod 600 "$temporary" 2>/dev/null || die 5 "Could not secure the temporary summary file."
+    temporary="$(umask 077 && mktemp "$tmp_dir/.moneybird-guard.XXXXXX")" ||
+      die 5 "Could not create a temporary summary file."
+    chmod 600 "$temporary" 2>/dev/null ||
+      die 5 "Could not secure the temporary summary file."
     "$CLI" "${args[@]}" > "$temporary" || status="$?"
     if [[ $status -eq 0 ]]; then
       require_python3
@@ -620,6 +714,10 @@ run_actual() {
   fi
   return "$status"
 }
+
+# ───────────────────────────────────────────────────────────────
+# 12. LOGIN DISPATCH
+# ───────────────────────────────────────────────────────────────
 
 if [[ "${CLI_BEFORE[0]:-}" == "login-from-env" ]]; then
   [[ $OUT_SET -eq 0 ]] || die 2 "--out does not apply to login-from-env."
@@ -638,12 +736,17 @@ if [[ "${CLI_BEFORE[0]:-}" == "login-from-env" ]]; then
     printf 'Moneybird login completed. CLI output was suppressed.\n'
     exit 0
   else
-    local_status="$?"
+    login_status="$?"
     unset TOKEN
-    printf 'Moneybird login failed with exit status %s. Check the selected credential file and CLI setup.\n' "$local_status" >&2
-    exit "$local_status"
+    printf 'Moneybird login failed with exit status %s. Check the selected credential file and CLI setup.\n' \
+      "$login_status" >&2
+    exit "$login_status"
   fi
 fi
+
+# ───────────────────────────────────────────────────────────────
+# 13. MAIN FLOW
+# ───────────────────────────────────────────────────────────────
 
 [[ $WRITER_LOGIN -eq 0 ]] || die 2 "--writer is valid only with login-from-env."
 [[ ${#CLI_BEFORE[@]} -gt 0 ]] || { usage >&2; exit 2; }
@@ -659,7 +762,8 @@ if is_passthrough; then
 fi
 if [[ $OUT_SET -eq 1 ]]; then
   if ! validate_out_path; then
-    die 5 "--out must resolve to a file inside migration-workspace, outside its .secrets, RunJournal and logs folders, and cannot cross a symlink."
+    die 5 "--out must resolve to a file inside migration-workspace, outside its .secrets," \
+      "RunJournal and logs folders, and cannot cross a symlink."
   fi
 fi
 
@@ -672,7 +776,8 @@ DRY_LINE="${DRY_OUTPUT%%$'\n'*}"
 
 if [[ "$METHOD" == "GET" ]] || is_sync_fetch; then
   if is_list_action && ! has_period_filter; then
-    printf 'Warning: Moneybird lists default to period:this_year. Older years will be missing unless --filter includes period:.\n' >&2
+    printf 'Warning: Moneybird lists default to period:this_year. '\
+'Older years will be missing unless --filter includes period:.\n' >&2
   fi
   run_actual || exit "$?"
   exit 0
@@ -705,10 +810,12 @@ fi
 PILOT_ADMIN_ID="$(pilot_admin_id)"
 if [[ -z "$PILOT_ADMIN_ID" ]]; then
   if [[ $PRODUCTION -ne 1 ]]; then
-    die 4 "Pilot administration is unset and target '$ADMIN_ID' is treated as production. Pass --production only after operator approval."
+    die 4 "Pilot administration is unset and target '$ADMIN_ID' is treated as production." \
+      "Pass --production only after operator approval."
   fi
 elif [[ "$ADMIN_ID" != "$PILOT_ADMIN_ID" && $PRODUCTION -ne 1 ]]; then
-  die 4 "Pilot administration '$PILOT_ADMIN_ID' differs from target '$ADMIN_ID'. Pass --production only after operator approval."
+  die 4 "Pilot administration '$PILOT_ADMIN_ID' differs from target '$ADMIN_ID'." \
+    "Pass --production only after operator approval."
 fi
 
 LOG_DIR="$ACCOUNTANT_ROOT/migration-workspace/logs"
@@ -729,7 +836,19 @@ if [[ $WRITE_STATUS -eq 0 ]]; then
   fi
 fi
 LOG_TIMESTAMP="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-LOG_RECORD="$(jq -cn --arg timestamp "$LOG_TIMESTAMP" --arg method "$METHOD" --arg path "$URL_PATH" --arg administration_id "$ADMIN_ID" --argjson exit_status "$WRITE_STATUS" --arg approval_reference "$APPROVAL_REF" --arg batch_key "$INTENT_BATCH_KEY" --arg payload_digest "$PAYLOAD_DIGEST" '{timestamp:$timestamp,method:$method,path:$path,administration_id:$administration_id,exit_status:$exit_status,approval_reference:$approval_reference,batch_key:$batch_key,payload_digest:$payload_digest}')"
+LOG_RECORD="$(jq -cn \
+  --arg timestamp "$LOG_TIMESTAMP" \
+  --arg method "$METHOD" \
+  --arg path "$URL_PATH" \
+  --arg administration_id "$ADMIN_ID" \
+  --argjson exit_status "$WRITE_STATUS" \
+  --arg approval_reference "$APPROVAL_REF" \
+  --arg batch_key "$INTENT_BATCH_KEY" \
+  --arg payload_digest "$PAYLOAD_DIGEST" \
+  '{timestamp:$timestamp,method:$method,path:$path,
+    administration_id:$administration_id,exit_status:$exit_status,
+    approval_reference:$approval_reference,batch_key:$batch_key,
+    payload_digest:$payload_digest}')"
 if (umask 077; mkdir -p "$LOG_DIR" && printf '%s\n' "$LOG_RECORD" >> "$LOG_FILE"); then
   chmod 600 "$LOG_FILE" 2>/dev/null || true
 else
