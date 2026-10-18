@@ -79,7 +79,7 @@ Copy the template from the Accountant root:
 cp ".env.example" ".env"
 ```
 
-Fill `JORTT_CLIENT_ID` and `JORTT_CLIENT_SECRET` from the API keys area at `app.jortt.nl`. Keep the read-only `JORTT_SCOPES` value from the template for migration extraction. Do not add any `:write` scope. `.env` is gitignored. Never paste its values into terminal captures, tracked files or chat.
+The Operator fills `JORTT_CLIENT_ID` and `JORTT_CLIENT_SECRET` from the API keys area at `app.jortt.nl`. An agent never reads `.env`. Keep the read-only `JORTT_SCOPES` value from the template for migration extraction. Do not add any `:write` scope. `.env` is gitignored. Never paste its values into terminal captures, tracked files or chat.
 
 The CLI reads these three assignments from `.env` without sourcing it as shell code. Set `JORTT_ENV_FILE` if you keep the file elsewhere. The default scope list is read from `.env.example` when no scopes are configured.
 
@@ -92,13 +92,9 @@ jortt-cli whoami
 
 Expected: `OpenAPI cache updated:` followed by the cache path, then `HTTP status: 200` and a `Top-level field names:` line. `spec update` makes a network request. `whoami` calls the Jortt API.
 
-### Optional Official Jortt MCP
+### Official Jortt MCP
 
-Jortt provides an official MCP connection, but this system does not use it. To re-add it in the local project, run:
-
-```bash
-claude mcp add --transport http --scope local jortt https://mcp.jortt.nl/mcp
-```
+Jortt offers an official MCP server at `https://mcp.jortt.nl/mcp`. This system does not use it. Do not add it, because the read-only wall covers `jortt-cli` only.
 
 ---
 
@@ -108,10 +104,10 @@ Run offline checks first:
 
 ```bash
 bash "cli-jortt/scripts/doctor.sh"
-JORTT_OPENAPI_FILE="/path/to/swagger.json" bash "cli-jortt/cli/jortt-cli/tests/run-tests.sh"
+bash "cli-jortt/cli/jortt-cli/tests/run-tests.sh"
 ```
 
-Expected: the doctor ends with `Mode: offline. No network calls were made.` and the CLI tests end with `Result: 22 passed, 0 failed`. The tests need a local Swagger file and use fake credentials. They do not make network calls.
+Expected: the doctor ends with `Mode: offline. No network calls were made.` and the CLI tests end with `Result: 28 passed, 0 failed`. The tests read the trimmed fixture under `cli/jortt-cli/tests/fixtures/` unless `JORTT_OPENAPI_FILE` names another Swagger file. They use fake credentials and a stub network, and make no network calls.
 
 For live verification, use `jortt-cli whoami` after credentials and network access are ready. It prints only HTTP status and top-level field names.
 

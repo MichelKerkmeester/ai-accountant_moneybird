@@ -78,7 +78,7 @@ bash scripts/doctor.sh
 bash cli/moneybird-cli/tests/run-tests.sh
 ```
 
-Expected: the doctor reports your local state without a network call. The stub suite ends with `Pass: 53  Fail: 0`.
+Expected: the doctor reports your local state without a network call. The stub suite ends with `Pass: 58  Fail: 0`.
 
 **Step 4: Read the rules before any write.**
 
@@ -166,7 +166,7 @@ cli-moneybird/
 |---|---|---|
 | Guard exits 3 | The write lacks confirmation | Review the preview. Repeat with `--confirm-write` only after approval |
 | Guard exits 4 | The target is not the pilot or no pilot is configured | Check the target and the pilot ID in the root `.env` file. Use `--production` only after the Operator approves that batch |
-| Guard exits 5 | The `--out` path leaves `migration-workspace/` | Choose a path inside the workspace |
+| Guard exits 5 | The `--out` path leaves `migration-workspace/` or points into a guard state folder | Choose a file path inside the workspace, outside `.secrets/`, `RunJournal/` and `logs/` |
 | Guard exits 6 | The read-only lock blocks a non-GET call | Keep the lock for read-only work. Use a write session only when the approved migration gate requires a write |
 | Guard exits 7 | The writer configuration folder is missing | Run `moneybird-guard login-from-env --writer` after the pilot gate |
 | Guard exits 8 | The write lacks `--approval`, the reference is not in the run journal or the reference and digest pair is consumed | Check the `WRITE_INTENT` entry and repeat with `--approval "$APPROVAL_REF"`. A consumed pair needs a new entry |
@@ -198,8 +198,8 @@ No. They do not prove live access, production access or a reconciled ledger.
 | Check | How to run it |
 |---|---|
 | Offline diagnostics | `bash scripts/doctor.sh` reports local checks and does not call the API |
-| Guard behavior | `bash cli/moneybird-cli/tests/run-tests.sh` ends with `Pass: 53  Fail: 0` |
-| Guard exit codes | `bash scripts/exit-code-parity.sh` checks the guard exit codes against the exit table, the troubleshooting rows and the skill keywords |
+| Guard behavior | `bash cli/moneybird-cli/tests/run-tests.sh` ends with `Pass: 58  Fail: 0` |
+| Guard exit codes | `bash scripts/exit-code-parity.sh` checks the guard exit codes against the exit table, the troubleshooting rows, the router keywords and the gate ladder |
 | Migration evidence | Rehearse a pilot write and its undo, then check later synchronization reads |
 
 The local checks do not prove live access, production access or a reconciled ledger.

@@ -24,7 +24,7 @@ jortt_validate_param_value() {
   local name="$2"
   local value="$3"
   local type enum_count enum_match
-  type="$(jq -r --arg name "$name" '.parameters[] | select(.name == $name) | (.type // (.schema // {} | .type) // "string")' <<< "$operation" | head -n 1)"
+  type="$(jq -r --arg name "$name" '.parameters[] | select(.name == $name) | .type' <<< "$operation" | head -n 1)"
   case "$type" in
     integer)
       if ! jq -ne --arg value "$value" 'try (($value | tonumber) % 1 == 0) catch false' >/dev/null 2>&1; then
@@ -155,9 +155,6 @@ jortt_print_or_save() {
   local status="$2"
   local out_path="$3"
   local print_body="$4"
-  if [ "$print_body" = "1" ]; then
-    jortt_check_print_body_allowed
-  fi
   if [ -n "$out_path" ]; then
     jortt_write_output "$out_path" "$body"
     printf 'HTTP %s, %s\n' "$status" "$(jortt_body_summary "$body")"
@@ -265,7 +262,6 @@ jortt_cmd_call() {
     done
     jortt_check_required_params "$operation" "${names[@]}"
   else
-    jortt_validate_params "$operation"
     jortt_check_required_params "$operation"
   fi
   if [ -n "$out" ]; then

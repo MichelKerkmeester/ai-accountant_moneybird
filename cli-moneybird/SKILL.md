@@ -59,7 +59,7 @@ This skill is a packet of the repository hub. Its routing lives in [`ROUTER.md`]
 
 ### Reader and Writer Sessions
 
-The reader token lives in `.env` and, from the pilot phase onward, the write token lives in `.env.writer`. `moneybird-guard login-from-env` logs in the reader. Adding `--writer` logs in the writer under `~/.config/moneybird-cli-writer`, a session separate from the reader. The guard pins its own repository root, the `moneybird-cli` binary on PATH and the writer configuration folder. It reads the pilot administration ID only from the root `.env` file. `MONEYBIRD_GUARD_TEST=1` is a test-only flag. The variables `MONEYBIRD_ENV_DIR`, `MONEYBIRD_CLI`, `MONEYBIRD_WRITER_CONFIG_DIR` and `MONEYBIRD_PILOT_ADMINISTRATION_ID` are honored only when that flag is set. Real sessions never set it. Without the flag the guard warns that an override is ignored and carries on with the pinned value. The guard never puts a token in CLI arguments and suppresses the CLI login output.
+The reader token lives in `.env` and, from the pilot phase onward, the write token lives in `.env.writer`. `moneybird-guard login-from-env` logs in the reader. Adding `--writer` logs in the writer under `~/.config/moneybird-cli-writer`, a session separate from the reader. The guard pins its own repository root, the `moneybird-cli` binary on PATH and the writer configuration folder. It reads the pilot administration ID only from the root `.env` file. `MONEYBIRD_GUARD_TEST=1` is a test-only flag. The variables `MONEYBIRD_ENV_DIR`, `MONEYBIRD_CLI`, `MONEYBIRD_WRITER_CONFIG_DIR`, `MONEYBIRD_HMAC_KEY_FILE` and `MONEYBIRD_PILOT_ADMINISTRATION_ID` are honored only when that flag is set. Real sessions never set it. Without the flag the guard warns that an override is ignored and carries on with the pinned value. The guard never puts a token in CLI arguments and suppresses the CLI login output.
 
 Moneybird token scopes do not separate read from write. Read-only roles set `MONEYBIRD_GUARD_READ_ONLY=1` before guarded CLI reads. The lock blocks every non-GET method even if write flags are present. The lock covers Moneybird calls only: local state changes, such as journal and workspace files, and attachment downloads, which are GET reads that land in `migration-workspace/` only, are not blocked by it.
 
@@ -68,9 +68,9 @@ Moneybird token scopes do not separate read from write. Read-only roles set `MON
 - **Lock** Set `MONEYBIRD_GUARD_READ_ONLY=1` on every guarded read.
 - **Period** Pass an explicit period on every list.
 - **Paging** Prove completeness. Page until a short page, dedupe by record id and record the count.
-- **Caps** A list caps at 100 records, so larger reads use synchronization. A report longer than twelve months splits into parts that each record period and count and reconcile to the whole. Reports are limited to 50 per five minutes.
+- **Caps** A list caps at 100 records, so larger reads use synchronization. The pinned CLI sends `sync_fetch` as `POST /synchronization`, so the guard treats it as a write. The read-only lock refuses it with exit 6, and without the lock it needs the full write path. Escalate to the Operator before a bulk fetch. A report longer than twelve months splits into parts that each record period and count and reconcile to the whole. Reports are limited to 50 per five minutes.
 - **Staleness** LIVE: the write response is first proof. Read-back follows the canonical read-back sentence in the write contract. A wait-based read-back needs an Operator-recorded horizon, so LIVE read-back runs by synchronization only, and MIGRATION keeps the M2 and M5 approved horizon.
-- **Retry** One owner per tool, GET only. Wait for `Retry-After` first. Otherwise use capped exponential backoff with full jitter and a bounded attempt count `LIVE_GET_MAX_ATTEMPTS` of 3 and a backoff ceiling `LIVE_GET_BACKOFF_CEILING` of 60 seconds. A third failed GET stops the read for the Operator. Never retry a non-GET call.
+- **Retry** The guard and the official CLI never retry, so the caller owns every retry, GET only. Wait for `Retry-After` first. In LIVE work, otherwise use capped exponential backoff with full jitter and a bounded attempt count `LIVE_GET_MAX_ATTEMPTS` of 3 and a backoff ceiling `LIVE_GET_BACKOFF_CEILING` of 60 seconds. A third failed GET stops the read for the Operator. In MIGRATION work a 429 follows the `HTTP_429` row of the shared mechanisms, which allows one Orchestrator-authorized reissue for a read. Never retry a non-GET call.
 
 ### Write Path
 
@@ -82,11 +82,11 @@ STEP 1b: Preconditions: the trial or package has not expired, the phase gate has
 STEP 2: Guarded dry-run reads the first METHOD URL line
        ↓
 STEP 3: Gates, in this order (canonical exit-code table: references/cli.md)
-       ├─ Argument conflict, or --out on a passthrough command: exit 2
-       ├─ --out outside migration-workspace or through a symlink: exit 5
+       ├─ Argument conflict, --out on a passthrough command or --print-body in an agent session: exit 2
+       ├─ --out outside migration-workspace or through a symlink, or into its .secrets, RunJournal or logs folder: exit 5
        ├─ Dry-run did not start with a METHOD URL line: exit 2
        ├─ Read-only lock on: exit 6
-       ├─ No --confirm-write: print the preview and exit 3
+       ├─ No --confirm-write: print the preview and its payload digest and exit 3 (a missing HMAC key exits 1 here)
        ├─ Writer configuration folder missing: exit 7
        ├─ Target is not the pilot and no --production: exit 4
        ├─ Missing or unmatched --approval: exit 8
@@ -100,7 +100,7 @@ STEP 5: Later read-back
        └─ Read-back follows the canonical read-back sentence in the write contract
 ```
 
-Trial or package expiry is the Operator's check before STEP 2. See `sk-moneybird-accountant/SKILL.md` for the phase gates. The write contract, the evidence rule, the idempotency rule, the exit set and the canonical read-back sentence are in [shared mechanisms](../sk-moneybird-accountant/references/migration/shared-mechanisms.md#route-contract).
+See `sk-moneybird-accountant/SKILL.md` for the phase gates. The write contract, the evidence rule, the idempotency rule, the exit set and the canonical read-back sentence are in [shared mechanisms](../sk-moneybird-accountant/references/migration/shared-mechanisms.md#route-contract).
 
 Every guarded read runs with `MONEYBIRD_GUARD_READ_ONLY=1`. Outside the LIVE workflows of migration phases 19 to 21, a LIVE Moneybird write is an Operator UI action. Writes target the pilot administration unless the plan's gate allows a production batch and the operator gives an explicit go for that batch. Every write runs in the writer session through `moneybird-guard` with `--confirm-write` and `--approval "$APPROVAL_REF"` for a flushed `WRITE_INTENT` that carries the `payload_digest`, with `--production` only for an approved production batch. The [write contract](../sk-moneybird-accountant/references/migration/shared-mechanisms.md#route-contract) owns the command shape, the gate order, the evidence rule, the idempotency rule and the exit set.
 
@@ -211,21 +211,9 @@ The official `moneybird/moneybird-cli` owns REST routing from the OpenAPI spec. 
 | Log in with the reader token | `moneybird-guard login-from-env` |
 | Log in with the writer token | `moneybird-guard login-from-env --writer` |
 | Inspect an API route | `moneybird-cli contacts create --help` |
-| Read a year of invoices | `moneybird-guard sales_invoices list --filter period:YYYY` |
-| Bulk read a resource | `moneybird-guard sales_invoices sync` then `moneybird-guard sales_invoices sync_fetch --ids "$ID_BATCH_JSON"` |
+| Read a year of invoices | `MONEYBIRD_GUARD_READ_ONLY=1 moneybird-guard sales_invoices list --filter period:YYYY` |
+| List synchronization IDs | `MONEYBIRD_GUARD_READ_ONLY=1 moneybird-guard sales_invoices sync` |
 | Preview a write | `moneybird-guard contacts create --...` |
 | Run offline diagnostics | `bash scripts/doctor.sh` |
 | Run offline guard tests | `bash cli/moneybird-cli/tests/run-tests.sh` |
-| Run a read-only session | `MONEYBIRD_GUARD_READ_ONLY=1 moneybird-guard contacts list --filter period:YYYY` |
 
----
-
-## 9. REFERENCES AND RELATED RESOURCES
-
-The router discovers reference, catalog and playbook docs dynamically. Start with `references/cli.md`, then follow [`ROUTER.md`](ROUTER.md) section 2.
-
-Scripts: `scripts/doctor.sh` and `cli/moneybird-cli/setup.sh` plus `moneybird-guard` beside it.
-
-Related skills: `cli-jortt` reads the Jortt source data that this skill writes into Moneybird.
-
-Install guide: [INSTALL-GUIDE.md](INSTALL-GUIDE.md).

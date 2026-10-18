@@ -94,7 +94,7 @@ Use relative output names under `migration-workspace/`.
 - Keep migration calls read-only and use only scopes required for the selected extraction.
 - Use `--all` for paged list operations. Treat an empty array as a valid result.
 - Save extracts with `--out` inside `migration-workspace/` and fetch signed links promptly.
-- Respect the 10 requests per second limit and the 100 item page limit.
+- Run one `jortt-cli` process at a time. Its pacing keeps one process under 10 requests per second, and a list page holds at most 100 items.
 - Treat every Jortt request as a read. If a task seems to need a write, stop and hand it to the Operator for the Jortt UI.
 - Mark behavior absent from the local facts as `UNVERIFIED`.
 - Ask the operator for XAF and other UI-only documents.
@@ -103,6 +103,7 @@ Use relative output names under `migration-workspace/`.
 
 - Never add a `:write` scope or choose `Read and write` on consent. This holds even when the Operator asks, because Jortt writes happen only in the Jortt UI.
 - Never write extracted data outside `migration-workspace/`.
+- Never pass `--print-body`. The CLI refuses it with exit 2 in an agent session. Use `--out` and read the saved file.
 - Never paste personal financial data into tracked files, commits or prompts to other services.
 - Never touch `AI Systems/Moneybird Accountant/personal database`.
 - Never treat a VAT summary as a filed return or another report as a general ledger (grootboek) export.
@@ -156,7 +157,7 @@ A Jortt extraction is ready for migration review when:
 
 ### Validation Success
 
-- ✅ `cli/jortt-cli/tests/run-tests.sh` passes against the local Swagger file.
+- ✅ `cli/jortt-cli/tests/run-tests.sh` passes against its trimmed fixture.
 - ✅ The manual testing playbook scenarios that apply to the change report `PASS`.
 
 A successful local test does not prove a live account connection. Report live status only after current API evidence.
@@ -175,7 +176,7 @@ Use [`../cli-moneybird/`](../cli-moneybird/) for Moneybird API calls, imports an
 
 ### Credentials and Outputs
 
-Copy the local `.env.example` to `.env` and fill the Jortt client values from `app.jortt.nl` API keys. Keep `JORTT_SCOPES` read-only for migration extraction. The CLI reads `.env` or the file selected by `JORTT_ENV_FILE`. The `.env` file is gitignored.
+The Operator copies `.env.example` to `.env` and fills the Jortt client values from `app.jortt.nl` API keys. Keep `JORTT_SCOPES` read-only for migration extraction. The CLI reads `.env` or the file selected by `JORTT_ENV_FILE`. An agent never reads `.env`, and the file is gitignored.
 
 ### External Tools
 
@@ -183,12 +184,6 @@ Copy the local `.env.example` to `.env` and fill the Jortt client values from `a
 
 ---
 
-## 8. REFERENCES AND RELATED RESOURCES
+## 8. SCRIPTS
 
-The router discovers reference, catalog and playbook docs at call time. Start with `references/cli.md` and `references/rest-api.md`, then load task-specific resources according to [`ROUTER.md`](ROUTER.md) section 2.
-
-Scripts: `scripts/doctor.sh` for the offline doctor and `cli/jortt-cli/setup.sh` for the CLI prerequisite check.
-
-Related skills: `cli-moneybird` for target-side Moneybird work.
-
-Install guide: [INSTALL-GUIDE.md](INSTALL-GUIDE.md) for credentials, CLI setup and rollback.
+`scripts/doctor.sh` runs the offline doctor and `cli/jortt-cli/setup.sh` checks the CLI prerequisites.

@@ -15,11 +15,9 @@ jortt_error() {
 JORTT_AGENT_SESSION_MARKERS="CLAUDECODE AI_SESSION_CHILD ACCOUNTANT_AGENT_SESSION CODEX_SANDBOX"
 
 jortt_print_body_blocked_by() {
-  local marker value
+  local marker
   for marker in $JORTT_AGENT_SESSION_MARKERS; do
-    value=''
-    eval "value=\${$marker-}"
-    if [ -n "$value" ]; then
+    if [ -n "${!marker:-}" ]; then
       printf '%s' "$marker"
       return 0
     fi

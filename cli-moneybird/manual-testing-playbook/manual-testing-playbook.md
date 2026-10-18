@@ -78,7 +78,6 @@ Coverage note: offline scenarios exercise `moneybird-guard`, `setup.sh` and `doc
 
 - Guard commands shown as `moneybird-guard <guard flags> <moneybird-cli args>`.
 - CLI help shown as `moneybird-cli <resource> <action> --help`.
-- Guard calls shown as `moneybird-guard <guard flags> <moneybird-cli args>`.
 - Bash commands shown as `bash: <command>`.
 - Agent prompts shown as `agent: <instruction>`.
 - `->` separates sequential steps.
@@ -527,7 +526,7 @@ Desired user-visible outcome: The operator sees that the documented exit codes m
 
 | Test Module | Coverage | Playbook Overlap |
 |---|---|---|
-| [`cli/moneybird-cli/tests/run-tests.sh`](../cli/moneybird-cli/tests/run-tests.sh) | Offline guard suite for the period warning, the confirmation lock, the pilot gate, the writer configuration gate, the approval gate, the payload digest binding, the single-use check, the attachment digest, the write log, the DELETE caution, the output guard, the summary output, the `--print-body` refusal under an agent marker, the `--out` refusal on a passthrough, the ignored environment overrides without the test flag, the `administration use` gate, both logins, a quoted token and two stub fault cases for guard exits 1 and 2 | MBD-002, MBD-003, MBD-004, MBD-005, MBD-009, MBD-010, MBD-011, MBD-013, MBD-014, MBD-017 |
+| [`cli/moneybird-cli/tests/run-tests.sh`](../cli/moneybird-cli/tests/run-tests.sh) | Offline guard suite for the period warning, the confirmation lock, the pilot gate, the writer configuration gate, the approval gate, the payload digest binding, the single-use check, the attachment digest, the write log, the DELETE caution, the output guard with its state-folder and trailing-slash refusals, the summary output, the `--print-body` refusal under an agent marker, the `--out` refusal on a passthrough, the ignored environment overrides without the test flag, the `administration use` gate, both logins, a quoted token, the doctor's pinned writer folder and two stub fault cases for guard exits 1 and 2 | MBD-002, MBD-003, MBD-004, MBD-005, MBD-009, MBD-010, MBD-011, MBD-013, MBD-014, MBD-017 |
 | [`cli/moneybird-cli/tests/stub-moneybird-cli`](../cli/moneybird-cli/tests/stub-moneybird-cli) | Deterministic CLI stand-in that prints dry-run lines and logs real calls, with `MONEYBIRD_TEST_FAULT` for the upstream failure and the malformed dry-run line | Every offline guard scenario |
 | [`scripts/exit-code-parity.sh`](../scripts/exit-code-parity.sh) and [`scripts/exit-code-parity-test.sh`](../scripts/exit-code-parity-test.sh) | Exit-code parity between the guard and every documented surface, with a fault-injection self-test that must fail each mutant | MBD-018 |
 

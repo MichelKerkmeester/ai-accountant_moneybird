@@ -87,7 +87,7 @@ The bank read names the state and an explicit period:
 moneybird-guard financial_mutations list --filter "period:YYYY,state:unprocessed"
 ```
 
-The comma filter form is `UNVERIFIED` until pinned CLI help confirms it. The state values are:
+The comma filter form and the `unprocessed` state match the pinned CLI's OpenAPI spec. The state values are:
 
 | Bookkeeping outcome | State value |
 |---|---|
@@ -95,7 +95,7 @@ The comma filter form is `UNVERIFIED` until pinned CLI help confirms it. The sta
 | Processed | `processed` |
 | Booked from a suggestion | `auto_booked` |
 
-A filtered bank list caps at 100 records. When the list returns 100 records, treat the count as capped and fall back to `financial_mutations sync` plus `financial_mutations sync_fetch --ids JSON`, then filter the state locally on the returned records. Keep each synchronization ID batch within the cap of 100.
+A filtered bank list caps at 100 records. When the list returns 100 records, treat the count as capped and fall back to `financial_mutations sync` plus `financial_mutations sync_fetch --ids JSON`, then filter the state locally on the returned records. Keep each synchronization ID batch within the cap of 100. `sync_fetch` is a POST that the read-only lock refuses, so ask the Operator before that pull, as the Bulk reads row says.
 
 This read and its fallback follow the Read Step Contract in `cli-moneybird/SKILL.md` section 3.
 
@@ -107,7 +107,7 @@ Moneybird caches API responses. An immediate GET after a write can return stale 
 
 `GET /{resource}/synchronization` returns record IDs and versions. `POST /{resource}/synchronization` accepts IDs and returns records in batches of at most 100. Synchronization is documented for sales invoices, financial mutations and document types.
 
-The CLI exposes these routes as `RESOURCE sync` and `RESOURCE sync_fetch --ids JSON`. Keep each ID batch within the API cap. Do not use `GET /financial_mutations` as a complete export because that endpoint is capped at 100 records.
+The CLI exposes these routes as `RESOURCE sync` and `RESOURCE sync_fetch --ids JSON`. Keep each ID batch within the API cap. The pinned CLI sends `sync_fetch` as `POST /synchronization`, so the guard treats it as a write. The read-only lock refuses it with exit 6, and without the lock it needs the full write path. Escalate to the Operator before a bulk fetch. Do not use `GET /financial_mutations` as a complete export because that endpoint is capped at 100 records.
 
 ### Delete Response
 

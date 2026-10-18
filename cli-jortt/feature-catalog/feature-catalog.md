@@ -131,7 +131,7 @@ Saves a short-lived signed download link into the migration workspace without se
 
 #### Current Reality
 
-`fetch URL --out FILE` resolves the output path first, accepts HTTPS links only and saves the file through a temporary copy. A failed download says the link may have expired.
+`fetch URL --out FILE` resolves the output path first, accepts HTTPS links only, follows redirects to HTTPS only and saves the file through a temporary copy. A failed download says the link may have expired.
 
 #### Source Files
 

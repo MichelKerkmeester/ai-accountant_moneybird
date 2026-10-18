@@ -33,7 +33,7 @@ The CLI requests a token with the client credentials grant at `https://app.jortt
 
 ### Retry And Pacing
 
-A 401 clears the cached token, requests a new one and retries the request. A 429 waits for the `Retry-After` value in seconds or as an HTTP date, or falls back to the backoff schedule when the header is absent, within the retry budget in the implementation. The CLI also pauses between requests to stay under the API rate limit, which [`references/rest-api.md`](../../references/rest-api.md) owns.
+A 401 clears the cached token, requests a new one and retries the request once. A 429 waits for the `Retry-After` value in seconds or as an HTTP date, read as GMT, or backs off 1, 2 and 4 seconds when the header is absent. After three retries the call exits 1. The header name matches in any case, because HTTP/2 sends it in lowercase. The CLI also pauses between requests to stay under the API rate limit, which [`references/rest-api.md`](../../references/rest-api.md) owns.
 
 ---
 
@@ -51,6 +51,7 @@ A 401 clears the cached token, requests a new one and retries the request. A 429
 
 | File | Type | Role |
 |---|---|---|
+| [`cli/jortt-cli/tests/run-tests.sh`](../../cli/jortt-cli/tests/run-tests.sh) | Automated test | Checks the scope source labels, a refused token request, the single 401 retry, the `Retry-After` wait in seconds and as a date, and the three-retry 429 budget. |
 | [`manual-testing-playbook/auth-and-scopes/token-status.md`](../../manual-testing-playbook/auth-and-scopes/token-status.md) | Manual playbook | JRT-010 reads token status and clears the cache offline. |
 | [`references/troubleshooting.md`](../../references/troubleshooting.md) | Reference | Maps 401 and 429 behavior to operator actions. |
 

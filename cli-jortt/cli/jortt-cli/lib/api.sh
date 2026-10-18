@@ -114,13 +114,14 @@ jortt_raw_request() {
   local method="$1"
   local url="$2"
   local headers_file result
-  headers_file="${TMPDIR:-/tmp}/jortt-cli-headers-$$"
-  rm -f "$headers_file"
+  headers_file="$(mktemp "${TMPDIR:-/tmp}/jortt-cli-headers.XXXXXX")" || jortt_error 1 "Could not create a private headers file."
   jortt_throttle
   result="$(curl -sS -D "$headers_file" -w $'\n%{http_code}' --config <(printf 'url = "%s"\nrequest = "%s"\nheader = "Authorization: Bearer %s"\nheader = "Accept: application/json"\n' "$(jortt_curl_quote "$url")" "$method" "$(jortt_curl_quote "$JORTT_ACCESS_TOKEN")") 2>/dev/null || true)"
   JORTT_HTTP_STATUS="${result##*$'\n'}"
   JORTT_HTTP_BODY="${result%$'\n'*}"
-  JORTT_RETRY_AFTER="$(awk 'BEGIN { IGNORECASE = 1 } /^Retry-After:/ { sub(/^[^:]*:[[:space:]]*/, ""); sub(/[[:space:]]*\r$/, ""); print; exit }' "$headers_file" 2>/dev/null || true)"
+  # WHY: HTTP/2 sends header names in lowercase, and BSD awk and mawk ignore
+  # IGNORECASE, so the match lowercases the line itself.
+  JORTT_RETRY_AFTER="$(awk 'tolower($0) ~ /^retry-after:/ { sub(/^[^:]*:[[:space:]]*/, ""); sub(/[[:space:]]*\r$/, ""); print; exit }' "$headers_file" 2>/dev/null || true)"
   rm -f "$headers_file"
   case "$JORTT_HTTP_STATUS" in
     [0-9][0-9][0-9]) ;;
@@ -203,7 +204,9 @@ jortt_retry_delay() {
   case "$retry_after" in
     '' ) delay=$((1 << retry_index)) ;;
     *[!0-9]*)
-      retry_epoch="$(date -j -f '%a, %d %b %Y %H:%M:%S GMT' "$retry_after" '+%s' 2>/dev/null || date -d "$retry_after" '+%s' 2>/dev/null || printf '')"
+      # WHY: BSD date reads the parsed time as local time and the day and month
+      # names in the current locale, so the parse pins UTC and the C locale.
+      retry_epoch="$(LC_ALL=C TZ=UTC date -j -f '%a, %d %b %Y %H:%M:%S GMT' "$retry_after" '+%s' 2>/dev/null || LC_ALL=C date -d "$retry_after" '+%s' 2>/dev/null || printf '')"
       case "$retry_epoch" in
         ''|*[!0-9]*) delay=$((1 << retry_index)) ;;
         *)
@@ -252,17 +255,16 @@ jortt_request() {
 jortt_download() {
   local url="$1"
   local destination="$2"
-  local headers_file status temp_file
+  local status temp_file
   case "$url" in
     https://*) ;;
     *) jortt_error 2 "fetch accepts HTTPS links only." ;;
   esac
   temp_file="$destination.tmp.$$"
-  headers_file="${TMPDIR:-/tmp}/jortt-cli-download-headers-$$"
-  rm -f "$temp_file" "$headers_file"
+  rm -f "$temp_file"
   jortt_throttle
-  status="$(curl -sS -L -D "$headers_file" -o "$temp_file" -w '%{http_code}' --config <(printf 'url = "%s"\n' "$(jortt_curl_quote "$url")") 2>/dev/null || true)"
-  rm -f "$headers_file"
+  # WHY: a signed link may redirect, and a redirect must not leave HTTPS.
+  status="$(curl -sS -L --proto-redir =https -o "$temp_file" -w '%{http_code}' --config <(printf 'url = "%s"\n' "$(jortt_curl_quote "$url")") 2>/dev/null || true)"
   case "$status" in
     2??)
       mv -f "$temp_file" "$destination" || { rm -f "$temp_file"; jortt_error 5 "Could not save the downloaded file."; }

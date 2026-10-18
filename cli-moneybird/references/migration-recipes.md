@@ -156,7 +156,7 @@ The export endpoint is `POST /reports/export/auditfile`. The body takes a year a
 moneybird-cli reports export auditfile --help
 moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" reports export auditfile --year "$YEAR" --version "$AUDITFILE_VERSION"
 moneybird-cli downloads get --help
-moneybird-guard downloads get "$DOWNLOAD_ID" --out migration-workspace/auditfile-download
+MONEYBIRD_GUARD_READ_ONLY=1 moneybird-guard downloads get "$DOWNLOAD_ID" --out migration-workspace/auditfile-download
 ```
 
 Expected: the create status confirms the export request. Use the returned download reference for the later fetch. Confirm any additional file retrieval step from pinned CLI help. Keep the export under the migration workspace.
@@ -165,9 +165,10 @@ Expected: the create status confirms the export request. Use the returned downlo
 
 ## 10. PER-YEAR VERIFICATION READS
 
-Set the year explicitly for each verification list. Reports cover at most twelve months per request.
+Set the year explicitly for each verification list. Reports cover at most twelve months per request. Every read runs in a reader session under the read-only lock, per the Read Step Contract in `SKILL.md` section 3.
 
 ```bash
+export MONEYBIRD_GUARD_READ_ONLY=1
 moneybird-guard sales_invoices list --filter "period:$YEAR" --out "migration-workspace/$YEAR-sales-invoices.json"
 moneybird-guard financial_mutations sync --out "migration-workspace/$YEAR-mutation-sync.json"
 REPORT_DATE_ARGS=(--"$START_DATE_FIELD" "$YEAR-01-01" --"$END_DATE_FIELD" "$YEAR-12-31")
@@ -178,7 +179,7 @@ moneybird-guard reports journal_entries "${REPORT_DATE_ARGS[@]}" --out "migratio
 moneybird-guard reports tax "${REPORT_DATE_ARGS[@]}" --out "migration-workspace/$YEAR-tax.json"
 ```
 
-Confirm `START_DATE_FIELD` and `END_DATE_FIELD` from pinned CLI help before running the example. Those field names are `UNVERIFIED` until confirmed. Each report covers the requested year. Use `sync` and `sync_fetch` in ID batches of no more than 100 for full record reads.
+Confirm `START_DATE_FIELD` and `END_DATE_FIELD` from pinned CLI help before running the example. Those field names are `UNVERIFIED` until confirmed. Each report covers the requested year. Use `sync` and `sync_fetch` in ID batches of no more than 100 for full record reads. `sync_fetch` is a POST that the read-only lock refuses, so ask the Operator before that pull, as the Bulk reads row says.
 
 ---
 
@@ -187,7 +188,7 @@ Confirm `START_DATE_FIELD` and `END_DATE_FIELD` from pinned CLI help before runn
 The migration plan rehearses an undo in the pilot before production work. Stop the batch when the write response differs from the approved record.
 
 1. Record the wrong write as an exception in the migration workspace.
-2. Find the record ID in the approved batch's WriteJournal. Do not infer it from a cached list response.
+2. Find the record ID in the approved batch's `migration-workspace/WriteJournal/` entry. Do not infer it from a cached list response.
 3. For a wrong record that must be removed, use a guarded DELETE against the pilot.
 4. Run a separate GET or synchronization read to confirm removal. A `204` response alone is not proof.
 5. Recreate the corrected record from the approved source batch and verify it through synchronization later.
@@ -195,7 +196,7 @@ The migration plan rehearses an undo in the pilot before production work. Stop t
 
 ```bash
 moneybird-guard --confirm-write --approval "$APPROVAL_REF" --administration "$MONEYBIRD_PILOT_ADMINISTRATION_ID" "$RESOURCE" delete "$RECORD_ID"
-moneybird-guard "$RESOURCE" get "$RECORD_ID"
+MONEYBIRD_GUARD_READ_ONLY=1 moneybird-guard "$RESOURCE" get "$RECORD_ID"
 ```
 
 For an update, inspect the matching resource help and use the guarded `update` action with the approved fields. Keep every correction on the pilot until the migration gate permits production.

@@ -36,7 +36,7 @@ bash cli/jortt-cli/setup.sh
 The script checks Bash, `curl` and `jq`, then prints a symlink command. It never creates the link.
 
 ```bash
-ln -s "/absolute/path/to/cli/jortt-cli/jortt-cli" "$HOME/.local/bin/jortt-cli"
+ln -s "/absolute/path/to/cli-jortt/cli/jortt-cli/jortt-cli" "$HOME/.local/bin/jortt-cli"
 jortt-cli --version
 ```
 
@@ -65,7 +65,7 @@ Set `JORTT_CLIENT_ID`, `JORTT_CLIENT_SECRET` and `JORTT_SCOPES` in the environme
 
 When `JORTT_SCOPES` is empty, the CLI reads the read-only scope list from `.env.example`. Token requests use the client credentials grant at `https://app.jortt.nl/oauth-provider/oauth/token`. Credentials travel through a private curl config stream. They do not appear in curl arguments or CLI output.
 
-The bearer token is cached under `${TMPDIR:-/tmp}/jortt-cli-$(id -u)/` with mode `0600`. The cache key is the SHA-256 of the client ID and the configured scopes. A scope change therefore gives a new cache entry. The old entry stays until it expires or `jortt-cli token clear` runs. The CLI refreshes a token when it is within sixty seconds of expiry. A 401 clears the cache and retries once.
+The bearer token is cached under `${TMPDIR:-/tmp}/jortt-cli-$(id -u)/` with mode `0600`. The cache key is the SHA-256 of the client ID and the configured scopes. A scope change therefore gives a new cache entry. The old entry stays until it expires or `jortt-cli token clear` runs. The CLI refreshes a token when it is within sixty seconds of expiry. A 401 clears the cache, fetches a new token and retries once.
 
 ```bash
 jortt-cli token status
@@ -105,7 +105,7 @@ jortt-cli call get-customer-by-id --customer_id CUSTOMER_ID --dry-run
 
 `--PARAM VALUE` names must match path or query parameters in the spec. Unknown names fail with the valid parameter list. Required parameters and basic integer, number, boolean and enum values are checked before a request.
 
-`--all` follows `_links.next.href` and merges each page's `data` array into one JSON array. The API page size is at most 100 items. `--print-body` prints the full body as pretty JSON. `--dry-run` prints the method and URL without requesting a token or calling a Jortt operation. When no OpenAPI cache exists, the spec check that runs first downloads the public spec.
+`--all` follows `_links.next.href` and merges each page's `data` array into one JSON array. The API page size is at most 100 items. `--print-body` prints the full body as pretty JSON. With `--out`, the body goes to the file only and the terminal shows the summary. `--dry-run` prints the method and URL without requesting a token or calling a Jortt operation. When no OpenAPI cache exists, the spec check that runs first downloads the public spec.
 
 ### Identify the organization
 
@@ -122,7 +122,11 @@ jortt-cli call download-url-for-a-receipt --id RECEIPT_ID --out receipt-url.json
 jortt-cli fetch SIGNED_HTTPS_URL --out receipt.pdf
 ```
 
-The API returns a short-lived link. Read it from the saved file. `fetch` requires HTTPS and does not send an authorization header to the signed URL.
+The API returns a short-lived link. Read it from the saved file. `fetch` requires HTTPS, follows a redirect only to another HTTPS link and does not send an authorization header to the signed URL.
+
+### Pacing and retries
+
+The CLI pauses about 0.11 seconds between requests to stay under 10 requests per second. The pause holds within one process only, so run one `jortt-cli` process at a time. A 429 waits for the `Retry-After` value, in seconds or as an HTTP date, or backs off 1, 2 and 4 seconds when the header is absent. After three retries the call fails with exit 1. The CLI is the only retry layer. Never wrap it in a second retry loop.
 
 ---
 

@@ -25,11 +25,11 @@ Each trap is paired with the route the skill uses instead, so an agent can follo
 
 ### Reads That Look Complete
 
-Lists default to `period:this_year`, so every verification list names its period. An immediate GET after a write can return cached data, so the write response status is the first proof and synchronization is the later read. `GET /financial_mutations` is capped, so complete pulls use `sync` and `sync_fetch`. The cap and the batch rule are in `references/rest-api.md` and the Read Step Contract.
+Lists default to `period:this_year`, so every verification list names its period. An immediate GET after a write can return cached data, so the write response status is the first proof and synchronization is the later read. `GET /financial_mutations` is capped, so complete pulls use `sync` and `sync_fetch`. `sync_fetch` is a POST that the read-only lock refuses, so ask the Operator before that pull, as the Bulk reads row says. The cap and the batch rule are in `references/rest-api.md` and the Read Step Contract.
 
 ### Unmatched Bank Transactions
 
-An unmatched bank transaction reports `state:unprocessed`, a processed one `state:processed` and one booked from a suggestion `state:auto_booked`. The bank read uses the "Bank transactions to match" row in section 2 of `cli-moneybird/ROUTER.md` and names the state with an explicit period. The bank list defaults to `period:this_year`, and a passed filter replaces every default. The comma filter form `--filter "period:$YEAR,state:unprocessed"` is `UNVERIFIED` until pinned CLI help confirms it. The bank list is capped, so a larger read goes through `sync` and `sync_fetch` with a local state filter. The cap is in `references/rest-api.md`, and the read and its fallback follow the Read Step Contract in `cli-moneybird/SKILL.md` section 3.
+An unmatched bank transaction reports `state:unprocessed`, a processed one `state:processed` and one booked from a suggestion `state:auto_booked`. The bank read uses the "Bank transactions to match" row in section 2 of `cli-moneybird/ROUTER.md` and names the state with an explicit period. The bank list defaults to `period:this_year`, and a passed filter replaces every default. The comma filter form `--filter "period:$YEAR,state:unprocessed"` matches the pinned CLI's OpenAPI spec. The bank list is capped, so a larger read goes through `sync` and `sync_fetch` with a local state filter. `sync_fetch` is a POST that the read-only lock refuses, so ask the Operator before that pull, as the Bulk reads row says. The cap is in `references/rest-api.md`, and the read and its fallback follow the Read Step Contract in `cli-moneybird/SKILL.md` section 3.
 
 ### Writes That Look Successful
 

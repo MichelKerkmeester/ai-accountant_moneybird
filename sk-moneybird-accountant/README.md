@@ -200,8 +200,8 @@ No. A connection needs separate, current evidence from the relevant CLI.
 | Links and section anchors | `python3 -I sk-moneybird-accountant/scripts/check-fragments.py` reports `0 problems` |
 | English first wording | `python3 -I sk-moneybird-accountant/scripts/check-english-first.py` reports `0 problems` |
 | Plan kit drift | `python3 -I sk-moneybird-accountant/scripts/generate-plan-kit.py --check` reports a match line such as `166 generated files match` |
-| Jortt offline checks | `bash cli-jortt/scripts/doctor.sh` ends with `Mode: offline. No network calls were made.` and `bash cli-jortt/cli/jortt-cli/tests/run-tests.sh` ends with `Result: 22 passed, 0 failed` |
-| Moneybird offline checks | `bash cli-moneybird/scripts/doctor.sh` checks the local state and `bash cli-moneybird/cli/moneybird-cli/tests/run-tests.sh` ends with `Pass: 53  Fail: 0` |
+| Jortt offline checks | `bash cli-jortt/scripts/doctor.sh` ends with `Mode: offline. No network calls were made.` and `bash cli-jortt/cli/jortt-cli/tests/run-tests.sh` ends with `Result: 28 passed, 0 failed` |
+| Moneybird offline checks | `bash cli-moneybird/scripts/doctor.sh` checks the local state and `bash cli-moneybird/cli/moneybird-cli/tests/run-tests.sh` ends with `Pass: 58  Fail: 0` |
 
 The checks prove the routes, links, anchors and offline tool behavior. They do not prove live credentials, service access or a reconciled ledger.
 

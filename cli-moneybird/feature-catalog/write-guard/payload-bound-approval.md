@@ -27,7 +27,7 @@ The exit-3 preview prints `payload-digest: <hex>` for the dry run and, for a `--
 
 Before a confirmed write reaches the real call, the guard recomputes the digest over the writer-session dry run with the Operator-owned key file `migration-workspace/.secrets/alias-hmac.key` and compares it with the entry. A missing digest or a mismatch exits 9 (`PAYLOAD_MISMATCH`) and prints one digest line. A `--file` write also compares the keyed digest of the file bytes with the entry's `attachment_digest` and exits 9 on a mismatch or a missing digest. A missing or unreadable key file exits 1 before the real call and names the location only.
 
-The digest is a keyed HMAC-SHA256 over the method, the URL path without query or fragment and every dry-run line after the first, normalized to LF with one trailing newline. A bare hash is not used.
+The digest is a keyed HMAC-SHA256 over the method, the URL path without query or fragment and every dry-run line after the first, each line closed by one LF and a trailing CR dropped. A bare hash is not used.
 
 Single use is enforced through the guard-owned write log. Before the real call the guard refuses a reference and digest pair that already has a row in `migration-workspace/logs/moneybird-writes.jsonl`, whatever the row's exit status, and exits 8 with a consumed message. A retry needs a new `WRITE_INTENT` entry. Each logged row holds the time, method, path, administration ID, exit status, approval reference, batch key and payload digest, and no request or response body.
 

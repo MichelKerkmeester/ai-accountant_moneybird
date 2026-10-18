@@ -1,6 +1,6 @@
 ---
 title: "jortt-cli: Jortt REST API CLI"
-description: "OpenAPI-driven Bash CLI for the Jortt REST API, with read-first migration extraction and gated writes."
+description: "OpenAPI-driven Bash CLI for the Jortt REST API, built for read-only migration extraction. Every non-GET operation is refused."
 trigger_phrases:
   - "jortt cli install"
   - "jortt-cli command"
@@ -80,7 +80,7 @@ cli/jortt-cli/
 | `jortt-cli` | Parses the command line, loads the spec and dispatches every command |
 | `lib/common.sh` | Loads configuration, parses the spec into slugs, checks scopes and prints errors |
 | `lib/commands.sh` | Implements `ops`, `describe`, `call`, `whoami` and `fetch` and validates parameters and required values |
-| `lib/api.sh` | Fetches and caches the OAuth token, sends authenticated requests, retries a 401 and a 429 and downloads signed links |
+| `lib/api.sh` | Fetches and caches the OAuth token, sends authenticated requests, retries a 401 once and a 429 up to three times and downloads signed links |
 | `lib/workspace.sh` | Resolves every `--out` path inside `migration-workspace/` and rejects escapes and symlinks |
 | `setup.sh` | Checks Bash, curl and jq, then prints the symlink command and never creates the link |
 | `tests/run-tests.sh` | Runs the offline contract suite against the trimmed OpenAPI fixture |
@@ -113,6 +113,7 @@ cli/jortt-cli/
 - Every non-GET operation is refused with exit 3, and a read needs its declared operation scope.
 - `--dry-run` prints the method and URL without fetching a token or calling a Jortt operation.
 - `--all` follows next links and merges `data` arrays.
+- A 429 waits for `Retry-After` or backs off 1, 2 and 4 seconds, for at most three retries. The CLI is the only retry layer.
 - `--out` and `fetch --out` reject paths outside migration-workspace.
 - `--print-body` prints the full body but is refused with exit 2 when any agent session marker is set, and the message says to use `--out` and read the saved file.
 - Signed downloads use HTTPS and do not receive the Jortt bearer token.
@@ -139,7 +140,7 @@ Run from the repository root. The suite is offline and reads the trimmed fixture
 bash cli-jortt/cli/jortt-cli/tests/run-tests.sh
 ```
 
-Expected result: `Result: 22 passed, 0 failed`, including fault cases for Jortt exit codes 1, 2 and 6.
+Expected result: `Result: 28 passed, 0 failed`, including fault cases for Jortt exit codes 1, 2 and 6, plus the 401 and 429 retries and paging.
 
 ---
 

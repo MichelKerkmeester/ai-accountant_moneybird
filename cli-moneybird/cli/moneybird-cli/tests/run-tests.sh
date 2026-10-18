@@ -440,6 +440,42 @@ else
   fail "--out inside migration-workspace writes JSON and prints only the item count"
 fi
 
+# A saved response never replaces the key, the run journal or the write log, whatever the case.
+reset_state
+STATE_INTACT=1
+for STATE_PAIR in .secrets/alias-hmac.key:.secrets/alias-hmac.key RunJournal/run-journal.jsonl:RunJournal/run-journal.jsonl \
+  logs/moneybird-writes.jsonl:logs/moneybird-writes.jsonl Logs/moneybird-writes.jsonl:logs/moneybird-writes.jsonl; do
+  STATE_FILE="$MONEYBIRD_ENV_DIR/migration-workspace/${STATE_PAIR#*:}"
+  STATE_BEFORE="$(cksum < "$STATE_FILE")"
+  capture_guard --out "migration-workspace/${STATE_PAIR%%:*}" contacts list --filter period:2023
+  if [[ $STATUS -ne 5 || "$(cksum < "$STATE_FILE")" != "$STATE_BEFORE" ]]; then
+    STATE_INTACT=0
+  fi
+done
+if [[ $STATE_INTACT -eq 1 ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "--out into a guard state folder exits 5 and leaves the file intact"
+else
+  fail "--out into a guard state folder exits 5 and leaves the file intact"
+fi
+
+# A trailing slash names a folder, so the save is refused instead of landing under a hidden name.
+reset_state
+rm -rf "$MONEYBIRD_ENV_DIR/migration-workspace/logs"
+capture_guard --out "migration-workspace/logs" contacts list --filter period:2023
+if [[ $STATUS -eq 5 && ! -e "$MONEYBIRD_ENV_DIR/migration-workspace/logs" ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "--out naming a missing guard state folder exits 5"
+else
+  fail "--out naming a missing guard state folder exits 5"
+fi
+
+reset_state
+capture_guard --out "migration-workspace/new-folder/" contacts list --filter period:2023
+if [[ $STATUS -eq 5 && ! -e "$MONEYBIRD_ENV_DIR/migration-workspace/new-folder" ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "--out with a trailing slash exits 5 before the CLI call"
+else
+  fail "--out with a trailing slash exits 5 before the CLI call"
+fi
+
 # Reader login reads a token through stdin and suppresses all CLI output.
 reset_state
 printf 'MONEYBIRD_API_TOKEN=FAKE_READER_TOKEN_DO_NOT_ECHO\n' > "$MONEYBIRD_ENV_DIR/.env"
@@ -597,6 +633,19 @@ for MARKER in CLAUDECODE AI_SESSION_CHILD ACCOUNTANT_AGENT_SESSION CODEX_SANDBOX
   fi
 done
 
+# The agent session refusal is an argument check, so it wins over the read-only lock.
+reset_state
+if OUTPUT="$(CLAUDECODE=1 MONEYBIRD_GUARD_READ_ONLY=1 "$GUARD" --print-body contacts create 2>&1)"; then
+  STATUS=0
+else
+  STATUS="$?"
+fi
+if [[ $STATUS -eq 2 && "$OUTPUT" == *"--print-body is refused while CLAUDECODE is set"* ]] && ! grep -q '^REAL ' "$MONEYBIRD_TEST_LOG"; then
+  pass "--print-body in an agent session exits 2 before the write gates"
+else
+  fail "--print-body in an agent session exits 2 before the write gates"
+fi
+
 # A passthrough command rejects --out instead of silently dropping it.
 reset_state
 PASSTHROUGH_OUT="$MONEYBIRD_ENV_DIR/migration-workspace/administrations.json"
@@ -697,6 +746,22 @@ if [[ $STATUS -eq 2 && "$OUTPUT" == *"did not begin with a METHOD URL line"* ]] 
   pass "Fault 2: a malformed dry-run line exits 2 (stub fault)"
 else
   fail "Fault 2: a malformed dry-run line exits 2 (stub fault)"
+fi
+
+# The doctor reports the pinned writer folder the guard uses, not the ignored override.
+DOCTOR_REPO="$TEST_ROOT/doctor-repo"
+mkdir -p "$DOCTOR_REPO/cli-moneybird/scripts" "$DOCTOR_REPO/cli-moneybird/cli/moneybird-cli" "$TEST_ROOT/doctor-home"
+cp "$SKILL_ROOT/scripts/doctor.sh" "$DOCTOR_REPO/cli-moneybird/scripts/doctor.sh"
+cp "$SKILL_ROOT/cli/moneybird-cli/setup.sh" "$DOCTOR_REPO/cli-moneybird/cli/moneybird-cli/setup.sh"
+if OUTPUT="$(HOME="$TEST_ROOT/doctor-home" MONEYBIRD_API_TOKEN='' bash "$DOCTOR_REPO/cli-moneybird/scripts/doctor.sh" 2>&1)"; then
+  STATUS=0
+else
+  STATUS="$?"
+fi
+if [[ $STATUS -eq 0 && -d "$MONEYBIRD_WRITER_CONFIG_DIR" && "$OUTPUT" == *"Writer config directory: no"* ]]; then
+  pass "The doctor reports the pinned writer folder and ignores the override"
+else
+  fail "The doctor reports the pinned writer folder and ignores the override"
 fi
 
 # The key never reaches the captured output, the write log or the journal.

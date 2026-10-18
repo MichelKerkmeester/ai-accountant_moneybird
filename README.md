@@ -106,9 +106,9 @@ bash cli-moneybird/cli/moneybird-cli/tests/run-tests.sh
 | Check | Last line you should see |
 |---|---|
 | Jortt doctor | `Mode: offline. No network calls were made.` |
-| Jortt CLI tests | `Result: 22 passed, 0 failed` |
+| Jortt CLI tests | `Result: 28 passed, 0 failed` |
 | Moneybird doctor | `Doctor is read-only. Credential files were checked for presence only.` |
-| Moneybird guard tests | `Pass: 53  Fail: 0` |
+| Moneybird guard tests | `Pass: 58  Fail: 0` |
 
 The Jortt tests read the trimmed API description fixture beside them, so they need no network and no cache. The Moneybird tests use a local stub.
 

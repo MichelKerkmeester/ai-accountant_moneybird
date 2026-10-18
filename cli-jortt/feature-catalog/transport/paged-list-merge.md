@@ -46,6 +46,7 @@ An absolute next link must use HTTPS on `api.jortt.nl`. A plain HTTP link or ano
 
 | File | Type | Role |
 |---|---|---|
+| [`cli/jortt-cli/tests/run-tests.sh`](../../cli/jortt-cli/tests/run-tests.sh) | Automated test | Checks that two pages merge into one array and that a next link outside `api.jortt.nl` exits 1. |
 | [`manual-testing-playbook/extraction/paged-extract-to-workspace.md`](../../manual-testing-playbook/extraction/paged-extract-to-workspace.md) | Manual playbook | JRT-003 checks a merged array inside the workspace. |
 | [`references/rest-api.md`](../../references/rest-api.md) | Reference | Documents page size and next-link paging. |
 

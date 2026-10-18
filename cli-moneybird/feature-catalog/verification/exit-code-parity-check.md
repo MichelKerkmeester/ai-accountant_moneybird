@@ -29,7 +29,7 @@ The check derives the guard's exit codes from the guard script rather than a har
 
 ### Coverage Surfaces
 
-The compared surfaces are the canonical exit table in `references/cli.md`, the guard exit rows in `references/troubleshooting.md`, the TROUBLESHOOT keyword line in `SKILL.md` and the gate ladder in `SKILL.md` section 3. The check also requires the `--print-body` keyword and the `references/cli.md` pointer in that ladder. `references/cli.md` owns the canonical table, so the check points there rather than restating the numbers.
+The compared surfaces are the canonical exit table in `references/cli.md`, the guard exit rows in `references/troubleshooting.md`, the TROUBLESHOOT keyword line in `ROUTER.md` and the gate ladder in `SKILL.md` section 3. The check also requires the `--print-body` keyword in that keyword line and the `references/cli.md` pointer in `SKILL.md` section 3. `references/cli.md` owns the canonical table, so the check points there rather than restating the numbers.
 
 ### Self-Test
 

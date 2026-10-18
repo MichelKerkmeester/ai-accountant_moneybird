@@ -23,7 +23,7 @@ Receipt, invoice and attachment downloads return a signed link from a `call`. `f
 
 ## 2. HOW IT WORKS
 
-`jortt-cli fetch SIGNED_HTTPS_URL --out receipt.pdf` requires `--out`. The output path is checked against the migration workspace before anything else, so an outside path exits 5 even for a bad link. A link that is not HTTPS exits 2.
+`jortt-cli fetch SIGNED_HTTPS_URL --out receipt.pdf` requires `--out`. The output path is checked against the migration workspace before anything else, so an outside path exits 5 even for a bad link. A link that is not HTTPS exits 2, and a redirect is followed only to another HTTPS link.
 
 The download follows redirects and sends no `Authorization` header, so the Jortt token never reaches the storage host. A 2xx response prints `HTTP 200, file saved` and moves the temporary file into place. Any other status removes the temporary file, prints a message that the link may have expired and exits 1. Request a fresh link and fetch it promptly.
 
@@ -36,13 +36,13 @@ The download follows redirects and sends no `Authorization` header, so the Jortt
 | File | Layer | Role |
 |---|---|---|
 | [`cli/jortt-cli/lib/commands.sh`](../../cli/jortt-cli/lib/commands.sh) | Handler | `jortt_cmd_fetch` requires `--out` and resolves the destination. |
-| [`cli/jortt-cli/lib/api.sh`](../../cli/jortt-cli/lib/api.sh) | Shared | `jortt_download` enforces HTTPS and downloads without a bearer header. |
+| [`cli/jortt-cli/lib/api.sh`](../../cli/jortt-cli/lib/api.sh) | Shared | `jortt_download` enforces HTTPS, limits redirects to HTTPS and downloads without a bearer header. |
 
 ### Validation And Tests
 
 | File | Type | Role |
 |---|---|---|
-| [`cli/jortt-cli/tests/run-tests.sh`](../../cli/jortt-cli/tests/run-tests.sh) | Automated test | Checks that a fetch to a path outside the workspace exits 5. |
+| [`cli/jortt-cli/tests/run-tests.sh`](../../cli/jortt-cli/tests/run-tests.sh) | Automated test | Checks that a fetch to a path outside the workspace exits 5 and that a fetch limits redirects to HTTPS. |
 | [`manual-testing-playbook/extraction/receipt-download.md`](../../manual-testing-playbook/extraction/receipt-download.md) | Manual playbook | JRT-004 downloads one receipt into the workspace. |
 
 ---

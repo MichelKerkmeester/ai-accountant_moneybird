@@ -33,7 +33,7 @@ Every list names an explicit period, because Moneybird defaults to `period:this_
 
 ### Caps And Bulk Reads
 
-A list endpoint is capped, so a larger read uses `sync` and `sync_fetch` within the batch cap. A report covers a bounded window, and a longer report splits into parts that each record period and count and reconcile to the whole. The exact caps and the window are in `references/rest-api.md` and `SKILL.md` section 3.
+A list endpoint is capped, so a larger read uses `sync` and `sync_fetch` within the batch cap. `sync_fetch` is a POST, so the guard treats it as a write and the read-only lock refuses it. A bulk fetch escalates to the Operator. A report covers a bounded window, and a longer report splits into parts that each record period and count and reconcile to the whole. The exact caps and the window are in `references/rest-api.md` and `SKILL.md` section 3.
 
 ### Staleness And Retry
 

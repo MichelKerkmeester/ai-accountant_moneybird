@@ -66,7 +66,7 @@ bash cli/moneybird-cli/setup.sh --install
 bash cli/moneybird-cli/setup.sh --check
 ```
 
-Expected: the first command checks dependencies, clones the official repository, checks out the pinned commit and creates the `moneybird-cli` symlink. The second reports whether the CLI is installed, whether its commit matches the pin and whether the command is on `PATH`.
+Expected: the first command checks dependencies, clones the official repository, checks out the pinned commit and creates the `moneybird-cli` and `moneybird-guard` symlinks. The second reports whether the CLI is installed, whether its commit matches the pin and whether each command is on `PATH`.
 
 The installer never pipes a remote script into a shell. It refuses to replace an unrelated existing CLI directory or symlink.
 
@@ -82,7 +82,7 @@ The operator creates credentials locally. Do not put a token in a prompt, termin
 - Set `MONEYBIRD_ADMINISTRATION_ID` only when the migration plan needs a specific administration for a read.
 - Set `MONEYBIRD_GUARD_READ_ONLY=1` for read-only sessions. The guard then blocks every non-GET call before the real call, even when write flags are present.
 
-Both files are ignored by Git. The skill does not open or print them. The pinned CLI reads tokens only during `login-from-env`.
+Both files are ignored by Git. The skill does not open or print them. The guard reads a token file only during `login-from-env`.
 
 ### Login
 

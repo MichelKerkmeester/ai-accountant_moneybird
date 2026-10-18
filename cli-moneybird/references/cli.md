@@ -60,7 +60,7 @@ The CLI supports `list`, `get`, `create`, `update` and `delete` where the spec e
 | `administration use ID` | Selects a local CLI administration. A switch to the pilot administration passes. Any other switch needs the same confirmation, writer configuration, `--production` and approval as a production write, without a payload digest |
 | `administration current` | Prints the selected local CLI administration |
 | `RESOURCE sync` | Reads synchronization IDs and versions when that resource supports synchronization |
-| `RESOURCE sync_fetch --ids JSON` | Fetches a batch of synchronized records |
+| `RESOURCE sync_fetch --ids JSON` | Fetches a batch of synchronized records through `POST /synchronization`. The guard treats it as a write, so the read-only lock refuses it with exit 6 |
 
 The CLI's normal success status is zero for an HTTP 2xx response. Its request, route, auth, dependency and non-2xx failures return a nonzero status. The guard passes through the CLI status except for its own safety exits.
 
@@ -89,13 +89,13 @@ Set `MONEYBIRD_GUARD_READ_ONLY=1` to refuse every non-GET method before its real
 
 A write passes these gates in order. First the read-only lock must be off, or the guard exits 6. Then `--confirm-write` is required, or the guard exits 3 after printing the preview and one `payload-digest:` line. Then the writer configuration folder must exist, or the write stops with exit 7. The guard never falls back to the reader session. Then the target must be the pilot administration, or `--production` after Operator approval, or the guard exits 4. Then `--approval <ref>` must match the `approval_reference` of a `WRITE_INTENT` event in `migration-workspace/RunJournal/run-journal.jsonl`. A missing flag, a missing journal or no matching entry stops the write with exit 8. Then the guard recomputes the payload digest of the writer-session dry run and compares it with the `payload_digest` of the matched entry. A missing digest or a mismatch exits 9 (`PAYLOAD_MISMATCH`). A write that forwards `--file` also binds the attachment bytes to the `attachment_digest` of the entry, with exit 9 on a mismatch or a missing digest. Then the reference and digest pair must not already have a write-log row, or the guard exits 8 with a consumed message. This applies to pilot writes and production writes alike.
 
-The payload digest is a keyed HMAC-SHA256 over the canonical writer-session dry run: the method, the URL path without query or fragment and every dry-run line after the first, each line closed by one LF. The key is read by the guard process from the Operator-owned key file `migration-workspace/.secrets/alias-hmac.key`. A missing or unreadable key stops a write with exit 1 before the real call, and the key never appears in the journal, the write log, the preview or an argument. The exit-3 preview prints `payload-digest: <hex>` so the Operator can copy it into the `WRITE_INTENT`. A `--file` write also prints `attachment-digest: <hex>`, computed over the file bytes.
+The payload digest is a keyed HMAC-SHA256 over the canonical writer-session dry run: the method, the URL path without query or fragment and every dry-run line after the first, each line closed by one LF. The key is read by the guard process from the Operator-owned key file `migration-workspace/.secrets/alias-hmac.key`. A missing or unreadable key stops the preview and a confirmed write with exit 1 before the real call, and the key never appears in the journal, the write log, the preview or an argument. The exit-3 preview prints `payload-digest: <hex>` so the Operator can copy it into the `WRITE_INTENT`. A `--file` write also prints `attachment-digest: <hex>`, computed over the file bytes.
 
 The write command shape is `moneybird-guard --confirm-write --approval "$APPROVAL_REF" <moneybird-cli args...>`, plus `--production` for a non-pilot administration.
 
 `administration use <id>` is gated. Switching to the pilot administration passes. Switching to any other administration is blocked by the read-only lock with exit 6. Otherwise it needs `--confirm-write`, the writer configuration, `--production` and `--approval`. A switch sends no payload, so no payload digest is computed for it.
 
-The table below is the one canonical exit-code table, the target of the gate ladder above, the TROUBLESHOOT keywords in `cli-moneybird/SKILL.md` and the rows in `references/troubleshooting.md`, and `scripts/exit-code-parity.sh` checks those surfaces against the guard.
+The table below is the one canonical exit-code table, the target of the gate ladder above, the TROUBLESHOOT keywords in `cli-moneybird/ROUTER.md` and the rows in `references/troubleshooting.md`, and `scripts/exit-code-parity.sh` checks those surfaces against the guard.
 
 | Exit | Meaning |
 |---:|---|
@@ -116,9 +116,9 @@ A successful write prints the method and path, notes that an immediate GET may b
 
 Without `--out`, the guard captures the response body to a private temporary file under `migration-workspace/tmp/`. The folder uses mode 700 and the file uses mode 600. The guard prints one summary line and deletes the file. The summary line looks like `response: 2048 bytes, records: 12` for a list or `response: 512 bytes, fields: id,name` for an object. Record content does not reach the terminal by default.
 
-`--out FILE` accepts only a file inside `<Accountant root>/migration-workspace/`. The CLI uses `--output raw`. The full body is saved to the file and stdout holds only an item count, the top-level keys or a no-body message, such as `items: 12`.
+`--out FILE` accepts only a file inside `<Accountant root>/migration-workspace/`. A relative path resolves against the Accountant root. The guard refuses a path through a symlink, a folder target or a trailing slash, and any path into the guard's own `.secrets/`, `RunJournal/` or `logs/` folders in any letter case, all with exit 5. The CLI uses `--output raw`. The full body is saved to the file and stdout holds only an item count, the top-level keys or a no-body message, such as `items: 12`.
 
-`--print-body` streams the full body to the terminal. It is for the Operator only. The guard refuses it with exit 2 when any agent session marker is set: `CLAUDECODE`, `AI_SESSION_CHILD`, `ACCOUNTANT_AGENT_SESSION` or `CODEX_SANDBOX`. The markers are a speed bump, not a boundary. Agents never use `--print-body`. `--print-body` with `--out` is refused with exit 2. It does not apply to `login-from-env`.
+`--print-body` streams the full body to the terminal. It is for the Operator only. The guard refuses it with exit 2, before the dry-run and every other gate, when any agent session marker is set: `CLAUDECODE`, `AI_SESSION_CHILD`, `ACCOUNTANT_AGENT_SESSION` or `CODEX_SANDBOX`. The markers are a speed bump, not a boundary. Agents never use `--print-body`. `--print-body` with `--out` is refused with exit 2. It does not apply to `login-from-env`.
 
 `--out` on a passthrough command (`administration list`, `administration current` and `administration use <id>`) is refused with exit 2.
 

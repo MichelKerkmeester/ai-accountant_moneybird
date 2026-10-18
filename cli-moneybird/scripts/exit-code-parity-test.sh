@@ -122,9 +122,9 @@ run_parity() {
     bash "$1/$PARITY_REL" >"$TMP_ROOT/parity-$2.txt" 2>&1
 }
 
-# Delete one keyword token from the TROUBLESHOOT line in a copied SKILL.md
+# Delete one keyword token from the TROUBLESHOOT line in a copied ROUTER.md
 # Args:
-#   $1 - Path to the copied SKILL.md
+#   $1 - Path to the copied ROUTER.md
 #   $2 - Token to delete with its quotes and comma, such as "exit 2", 
 # Returns:
 #   0 when the edited file is written, 1 when the token is not found or awk fails

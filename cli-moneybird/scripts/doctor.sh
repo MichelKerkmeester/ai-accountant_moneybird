@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
-# WHY: Report local Moneybird setup without opening credential files or printing secrets.
+# ───────────────────────────────────────────────────────────────
+# COMPONENT: MONEYBIRD DOCTOR
+# ───────────────────────────────────────────────────────────────
+# Reports the local Moneybird setup without opening credential files or printing secrets.
+# Usage: doctor.sh [--live]
+# Exit Codes:
+#   0 - Report printed, whatever the findings
+#   2 - Invalid arguments
 set -euo pipefail
 
 LIVE=0
@@ -62,7 +69,9 @@ setup_result="$(bash "$SETUP_SCRIPT" --check 2>&1)" || true
 log "$setup_result"
 
 READER_CONFIG_DIR="${MONEYBIRD_CONFIG_DIR:-$HOME/.config/moneybird-cli}"
-WRITER_CONFIG_DIR="${MONEYBIRD_WRITER_CONFIG_DIR:-$HOME/.config/moneybird-cli-writer}"
+# WHY: The guard pins the writer folder and ignores MONEYBIRD_WRITER_CONFIG_DIR, so the
+# doctor reports the folder a write will actually use.
+WRITER_CONFIG_DIR="$HOME/.config/moneybird-cli-writer"
 if [[ -d "$READER_CONFIG_DIR" ]]; then
   log "Reader config directory: yes"
 else

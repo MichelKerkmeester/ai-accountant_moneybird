@@ -33,7 +33,7 @@ The local Swagger document is the authority. A behavior it does not describe sta
 
 ## 2. AUTHENTICATION AND REQUEST RULES
 
-The API base is `https://api.jortt.nl`. OAuth uses the client credentials grant at `https://app.jortt.nl/oauth-provider/oauth/token`. The client ID and secret use HTTP Basic auth for the token request. The returned bearer token lasts two hours. The CLI caches it privately and retries once after a 401.
+The API base is `https://api.jortt.nl`. OAuth uses the client credentials grant at `https://app.jortt.nl/oauth-provider/oauth/token`. The client ID and secret use HTTP Basic auth for the token request. The returned bearer token lasts two hours. The CLI caches it privately, retries once after a 401 and retries a 429 at most three times.
 
 The rate limit is 10 requests per second. A list page contains at most 100 items. Follow `_links.next.href` until it is absent. `jortt-cli --all` performs that loop and merges each page `data` array.
 
@@ -65,12 +65,12 @@ organizations:read customers:read invoices:read expenses:read receipts:read fina
 | `organizations:write` | 5 | Create labels and request attachment upload links. |
 | `payroll:read` | 2 | Read payroll journal entries. |
 | `payroll:write` | 6 | Create, update or delete payroll journal entries. |
-| `receipts:read` | 3 | Operation scope from the OpenAPI document. |
-| `reconciling:read` | 1 | Listed as a default read scope in the local environment template. No operation in this Swagger snapshot names it directly. |
-| `reconciling:write` | 2 | Operation scope from the OpenAPI document. |
+| `receipts:read` | 3 | Read receipts, inbox receipts and receipt download links. |
+| `reconciling:read` | 1 | Read payments for a payment sink (`list-payments-v3`). |
+| `reconciling:write` | 2 | Register or deregister a payment. |
 | `reports:read` | 12 | Read report summaries and profit and loss or balance reports. |
 
-The default list contains `reconciling:read`, but this snapshot assigns no operation directly to that scope. The CLI checks the scope string exactly as the operation declares it.
+The CLI checks the scope string exactly as the operation declares it.
 
 ---
 

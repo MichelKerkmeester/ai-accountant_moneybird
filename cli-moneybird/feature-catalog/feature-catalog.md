@@ -52,7 +52,7 @@ setup.sh prints the install plan by default and changes the machine only when an
 
 #### Current Reality
 
-`--install` checks its required commands, clones the official repository, checks out the pinned commit and links `moneybird-cli` into a bin folder. It refuses to replace an unrelated directory or symlink. `--check` reports source presence, commit match and PATH status. `--uninstall` prints the removal commands without running them.
+`--install` checks its required commands, clones the official repository, checks out the pinned commit and links `moneybird-cli` and `moneybird-guard` into a bin folder. It refuses to replace an unrelated directory or symlink. `--check` reports source presence, commit match and whether each command is on PATH. `--uninstall` prints the removal commands without running them.
 
 #### Source Files
 
@@ -70,7 +70,7 @@ Every guarded API call first runs the official CLI with --dry-run and reads its 
 
 #### Current Reality
 
-Help, version and local administration commands pass straight through. `administration use <id>` is gated: switching to the pilot administration passes, and switching to any other administration is treated as a production write. Every other call is previewed first. A preview that does not start with a `METHOD URL` line under `/api/v2/` stops the guard with exit 2. A GET runs after the preview and any other method moves on to the write gates.
+Only `administration list`, `administration current` and `administration use <id>` skip the preview. Help and version arguments run through the preview like any other call, so `moneybird-cli` answers them directly. `administration use <id>` is gated: switching to the pilot administration passes, and switching to any other administration is treated as a production write. Every other call is previewed first. A preview that does not start with a `METHOD URL` line under `/api/v2/` stops the guard with exit 2. A GET runs after the preview and any other method moves on to the write gates.
 
 #### Source Files
 
@@ -82,7 +82,7 @@ See [`write-guard/dry-run-first-pass.md`](write-guard/dry-run-first-pass.md) for
 
 #### Description
 
-A non-GET request without --confirm-write prints its dry-run line and exits 3 before any real call.
+A non-GET request without --confirm-write prints its dry-run line and its payload digest and exits 3 before any real call.
 
 #### Current Reality
 
@@ -100,7 +100,7 @@ When `MONEYBIRD_GUARD_READ_ONLY=1`, the guard blocks every non-GET method before
 
 #### Current Reality
 
-The lock replaces the read-only boundary for read-only roles. Moneybird API tokens do not offer separate read and write scopes. Any environment value other than `1` leaves the lock off.
+The lock is the read-only boundary for read-only roles, because Moneybird API tokens do not offer separate read and write scopes. Any environment value other than `1` leaves the lock off.
 
 #### Source Files
 
@@ -194,11 +194,11 @@ See [`reads-and-saved-output/period-filter-warning.md`](reads-and-saved-output/p
 
 #### Description
 
---out saves the raw response only to a file inside migration-workspace and prints an item count or top-level keys instead of the records. Without --out the guard prints a one-line summary and no records. Any other path exits 5.
+--out saves the raw response only to a file inside migration-workspace, outside the guard's .secrets, RunJournal and logs folders, and prints an item count or top-level keys instead of the records. Without --out the guard prints a one-line summary and no records. Any other path exits 5.
 
 #### Current Reality
 
-The path is checked before any CLI call. Parent traversal, a symlink on the way and a directory target are all refused. The response is written to a temporary file in the target folder and moved into place after the call succeeds.
+The path is checked before any CLI call. Parent traversal, a symlink on the way, a directory target, a trailing slash and a guard state folder are all refused. The response is written to a temporary file in the target folder and moved into place after the call succeeds.
 
 #### Source Files
 
@@ -244,7 +244,7 @@ See [`sessions-and-diagnostics/reader-and-writer-login.md`](sessions-and-diagnos
 
 #### Description
 
-scripts/doctor.sh reports commands, the CLI pin, config folders and credential-file presence without opening credentials and calls the network only with --live.
+scripts/doctor.sh reports commands, the CLI pin, the reader and pinned writer config folders and credential-file presence without opening credentials and calls the network only with --live.
 
 #### Current Reality
 
@@ -300,7 +300,7 @@ cli/moneybird-cli/tests/run-tests.sh exercises the guard against a local CLI stu
 
 #### Current Reality
 
-The suite sets the test-only overrides, points every CLI call at the stub and removes the temporary root on exit. It covers the period warning, the write gates, the payload and attachment digests, the single-use rule, the write log, the DELETE caution, the output guard, both logins, a quoted token and two injected stub faults. It makes no network call.
+The suite sets the test-only overrides, points every CLI call at the stub and removes the temporary root on exit. It covers the period warning, the write gates, the payload and attachment digests, the single-use rule, the write log, the DELETE caution, the output guard, the `--print-body` refusal, the pinned overrides, both logins, a quoted token, the doctor's writer folder and two injected stub faults. It makes no network call.
 
 #### Source Files
 

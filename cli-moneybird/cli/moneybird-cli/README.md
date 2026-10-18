@@ -65,7 +65,7 @@ cli/moneybird-cli/
 | Writer configuration | Always `$HOME/.config/moneybird-cli-writer`, never the reader session |
 | Pilot ID | Read only from the `MONEYBIRD_PILOT_ADMINISTRATION_ID=` line in the root `.env` file |
 | Test overrides | `MONEYBIRD_ENV_DIR`, `MONEYBIRD_CLI`, `MONEYBIRD_WRITER_CONFIG_DIR`, `MONEYBIRD_HMAC_KEY_FILE` and the `MONEYBIRD_PILOT_ADMINISTRATION_ID` environment variable are honored only when `MONEYBIRD_GUARD_TEST=1` is set. That flag exists for the offline test suite only, and agents and Operators never set it in real use |
-| Output | `--out` must resolve to a file inside `migration-workspace/`, otherwise the guard exits 5 |
+| Output | `--out` must resolve to a file inside `migration-workspace/` and outside its `.secrets/`, `RunJournal/` and `logs/` folders, otherwise the guard exits 5 |
 
 For an API call, the guard first adds `--dry-run`. It blocks non-GET calls without `--confirm-write`. A write also needs an existing writer configuration folder, or the guard exits 7 and never falls back to the reader session. The target must be the pilot administration, or `--production` after Operator approval. `--approval <ref>` must match the `approval_reference` of a `WRITE_INTENT` event in `migration-workspace/RunJournal/run-journal.jsonl`, or the guard exits 8. The matched event must also carry a `payload_digest` equal to the keyed HMAC-SHA256 digest of the writer-session dry run, or the guard exits 9, and a `--file` write binds the file bytes to the event's `attachment_digest` the same way. The exit-3 preview prints the digest to copy into the event. A reference and digest pair that already has a write-log row is refused with exit 8 as consumed. This applies to pilot writes and production writes alike.
 
@@ -126,7 +126,7 @@ bash cli/moneybird-cli/setup.sh --check
 bash cli/moneybird-cli/tests/run-tests.sh
 ```
 
-Expected: the check reports source presence, the pin match and the PATH status. The stub suite ends with `Pass: 53  Fail: 0`.
+Expected: the check reports source presence, the pin match and the PATH status. The stub suite ends with `Pass: 58  Fail: 0`.
 
 ---
 

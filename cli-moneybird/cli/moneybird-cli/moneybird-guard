@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
-# WHY: Preview every Moneybird API call and hold writes behind a pilot-aware confirmation.
+# ───────────────────────────────────────────────────────────────
+# COMPONENT: MONEYBIRD GUARD
+# ───────────────────────────────────────────────────────────────
+# Previews every Moneybird API call and holds writes behind a pilot-aware confirmation.
+# Exit codes: 0 success, 1 tool or dependency failure, 2 to 9 the guard refusals in the
+# canonical table in references/cli.md. Any other code is passed through from moneybird-cli.
 set -euo pipefail
 
 usage() {
@@ -244,6 +249,7 @@ validate_out_path() {
   local segment=""
   local rest=""
   local cursor=""
+  local depth=0
   local workspace_root="$ACCOUNTANT_ROOT/migration-workspace"
   if [[ "$OUT_ARG" == /* ]]; then
     candidate="$OUT_ARG"
@@ -258,6 +264,11 @@ validate_out_path() {
   fi
   case "/$candidate/" in
     *"/../"*) return 1 ;;
+  esac
+  # WHY: A trailing slash names a folder, and a folder target would save the body
+  # under a hidden temporary name instead of the requested file.
+  case "$candidate" in
+    */|*/.) return 1 ;;
   esac
   case "$candidate" in
     "$workspace_root"/*) ;;
@@ -275,6 +286,15 @@ validate_out_path() {
       rest=""
     fi
     [[ -z "$segment" || "$segment" == "." ]] && continue
+    depth=$((depth + 1))
+    # WHY: The guard keeps its key, its approval journal and its write log in these
+    # folders, so a saved response must never replace them. The match ignores case
+    # because the default macOS file system does.
+    if [[ $depth -eq 2 ]]; then
+      case "$(printf '%s' "$segment" | tr '[:upper:]' '[:lower:]')" in
+        .secrets|runjournal|logs) return 1 ;;
+      esac
+    fi
     cursor="$cursor/$segment"
     [[ -L "$cursor" ]] && return 1
     if [[ -e "$cursor" && -n "$rest" && ! -d "$cursor" ]]; then
@@ -574,7 +594,6 @@ run_actual() {
       rm -f "$temporary"
     fi
   elif [[ $PRINT_BODY -eq 1 ]]; then
-    refuse_print_body_in_agent_session
     "$CLI" "${args[@]}" || status="$?"
   else
     tmp_dir="$ACCOUNTANT_ROOT/migration-workspace/tmp"
@@ -621,6 +640,8 @@ fi
 [[ $WRITER_LOGIN -eq 0 ]] || die 2 "--writer is valid only with login-from-env."
 [[ ${#CLI_BEFORE[@]} -gt 0 ]] || { usage >&2; exit 2; }
 [[ $PRINT_BODY -eq 0 || $OUT_SET -eq 0 ]] || die 2 "--print-body and --out cannot be combined."
+# WHY: The refusal is an argument check, so it runs before the dry-run and every gate.
+[[ $PRINT_BODY -eq 0 ]] || refuse_print_body_in_agent_session
 if is_passthrough; then
   [[ $OUT_SET -eq 0 ]] || die 2 "--out does not apply to passthrough commands."
   if [[ "${CLI_BEFORE[0]:-}" == "administration" && "${CLI_BEFORE[1]:-}" == "use" ]]; then
@@ -630,7 +651,7 @@ if is_passthrough; then
 fi
 if [[ $OUT_SET -eq 1 ]]; then
   if ! validate_out_path; then
-    die 5 "--out must resolve to a file inside migration-workspace and cannot cross a symlink."
+    die 5 "--out must resolve to a file inside migration-workspace, outside its .secrets, RunJournal and logs folders, and cannot cross a symlink."
   fi
 fi
 

@@ -121,6 +121,7 @@ cat > "$STUB_DIR/curl" <<'STUB_CURL'
 set -euo pipefail
 config_file=''
 destination=''
+headers_file=''
 while [ "$#" -gt 0 ]; do
   case "$1" in
     --config)
@@ -128,7 +129,8 @@ while [ "$#" -gt 0 ]; do
       shift 2
       ;;
     -D)
-      : > "$2"
+      headers_file="$2"
+      : > "$headers_file"
       shift 2
       ;;
     -o)
@@ -145,6 +147,10 @@ while [ "$#" -gt 0 ]; do
       shift
       ;;
     --retry)
+      shift 2
+      ;;
+    --proto-redir)
+      printf 'proto-redir %s\n' "$2" >> "${STUB_ARGS_LOG:-/dev/null}"
       shift 2
       ;;
     *)
@@ -166,7 +172,26 @@ case "$url" in
   *)
     body="$(cat "${STUB_HTTP_BODY_FILE:?}")"
     status="${STUB_HTTP_STATUS:-200}"
+    # WHY: a body sequence, one JSON document per line, lets one run serve several pages.
+    if [ -n "${STUB_BODY_SEQUENCE_FILE:-}" ] && [ -s "$STUB_BODY_SEQUENCE_FILE" ]; then
+      body="$(sed -n '1p' "$STUB_BODY_SEQUENCE_FILE")"
+      sed '1d' "$STUB_BODY_SEQUENCE_FILE" > "$STUB_BODY_SEQUENCE_FILE.next"
+      mv -f "$STUB_BODY_SEQUENCE_FILE.next" "$STUB_BODY_SEQUENCE_FILE"
+    fi
+    # WHY: a status sequence lets one run answer a retry with a different status.
+    if [ -n "${STUB_STATUS_SEQUENCE_FILE:-}" ] && [ -s "$STUB_STATUS_SEQUENCE_FILE" ]; then
+      status="$(sed -n '1p' "$STUB_STATUS_SEQUENCE_FILE")"
+      sed '1d' "$STUB_STATUS_SEQUENCE_FILE" > "$STUB_STATUS_SEQUENCE_FILE.next"
+      mv -f "$STUB_STATUS_SEQUENCE_FILE.next" "$STUB_STATUS_SEQUENCE_FILE"
+    fi
+    if [ "$status" = "429" ] && [ -n "$headers_file" ] && [ -n "${STUB_RETRY_AFTER:-}" ]; then
+      printf 'retry-after: %s\r\n' "$STUB_RETRY_AFTER" > "$headers_file"
+    fi
     ;;
+esac
+case "$url" in
+  https://app.jortt.nl/*) printf 'token\n' >> "${STUB_CALL_LOG:-/dev/null}" ;;
+  *) printf 'api\n' >> "${STUB_CALL_LOG:-/dev/null}" ;;
 esac
 if [ -n "$destination" ]; then
   printf '%s' "$body" > "$destination"
@@ -176,6 +201,13 @@ else
 fi
 STUB_CURL
 chmod +x "$STUB_DIR/curl"
+
+# WHY: a logging sleep makes the retry delay observable without waiting for it.
+cat > "$STUB_DIR/sleep" <<'STUB_SLEEP'
+#!/usr/bin/env bash
+printf '%s\n' "$1" >> "${STUB_SLEEP_LOG:-/dev/null}"
+STUB_SLEEP
+chmod +x "$STUB_DIR/sleep"
 
 fake_body() {
   printf '%s' "$1" > "$FAKE_ROOT/response.json"
@@ -249,19 +281,6 @@ for MARKER in CLAUDECODE AI_SESSION_CHILD ACCOUNTANT_AGENT_SESSION CODEX_SANDBOX
 done
 if [ "$MARKER_FAILURES" -eq 0 ]; then record "--print-body is refused with a one-line reason for every marker" 1; else record "--print-body is refused with a one-line reason for every marker" 0; fi
 
-set +e
-CALL_MARKER_OUTPUT="$(env CLAUDECODE=1 PATH="$STUB_DIR:$PATH" TMPDIR="$TEMP_ROOT/tmp" \
-  STUB_HTTP_BODY_FILE="$FAKE_ROOT/response.json" \
-  JORTT_OPENAPI_FILE="$SPEC" JORTT_CLIENT_ID=test-client JORTT_CLIENT_SECRET=test-secret JORTT_ENV_FILE=/dev/null \
-  "$FAKE_CLI" call list-customers --print-body 2>&1)"
-CALL_MARKER_CODE=$?
-set -e
-if [ "$CALL_MARKER_CODE" -eq 2 ] && printf '%s' "$CALL_MARKER_OUTPUT" | grep -q -- '--print-body'; then
-  record "call refuses --print-body in an agent session" 1
-else
-  record "call refuses --print-body in an agent session" 0
-fi
-
 fake_body '{"message":"Secret Customer is invalid","errors":{"vat_number":["is not valid"]}}'
 export STUB_HTTP_STATUS=422
 set +e
@@ -327,6 +346,123 @@ if [ "$FAULT_6_CODE" -eq 6 ] && printf '%s' "$FAULT_6_OUTPUT" | grep -q 'token r
 else
   record "fault case 6: a refused token request exits 6" 0
 fi
+
+# Paging cases: a body sequence serves one page per request.
+export STUB_BODY_SEQUENCE_FILE="$TEMP_ROOT/body-sequence.txt"
+printf '%s\n' \
+  '{"data":[{"id":1},{"id":2}],"_links":{"next":{"href":"/customers?page=2"}}}' \
+  '{"data":[{"id":3}],"_links":{"next":null}}' > "$STUB_BODY_SEQUENCE_FILE"
+set +e
+PAGED_OUTPUT="$(run_fake call list-customers --all --out paged/customers.json 2>&1)"
+PAGED_CODE=$?
+set -e
+if [ "$PAGED_CODE" -eq 0 ] && printf '%s' "$PAGED_OUTPUT" | grep -q 'HTTP 200, items: 3' \
+  && jq -e '[.[].id] == [1, 2, 3]' "$FAKE_ROOT/migration-workspace/paged/customers.json" >/dev/null 2>&1; then
+  record "--all follows next links and merges every page" 1
+else
+  record "--all follows next links and merges every page" 0
+fi
+
+printf '%s\n' '{"data":[{"id":1}],"_links":{"next":{"href":"https://example.invalid/customers?page=2"}}}' > "$STUB_BODY_SEQUENCE_FILE"
+set +e
+OFFHOST_OUTPUT="$(run_fake call list-customers --all 2>&1)"
+OFFHOST_CODE=$?
+set -e
+if [ "$OFFHOST_CODE" -eq 1 ] && printf '%s' "$OFFHOST_OUTPUT" | grep -q 'outside api.jortt.nl'; then
+  record "--all refuses a next link outside api.jortt.nl" 1
+else
+  record "--all refuses a next link outside api.jortt.nl" 0
+fi
+unset STUB_BODY_SEQUENCE_FILE
+
+# Retry cases: a status sequence answers the first request with a 401 or a 429.
+export STUB_STATUS_SEQUENCE_FILE="$TEMP_ROOT/status-sequence.txt"
+export STUB_CALL_LOG="$TEMP_ROOT/calls.log"
+export STUB_SLEEP_LOG="$TEMP_ROOT/sleep.log"
+fake_body '{"data":[],"_links":{"next":null}}'
+
+reset_retry_logs() {
+  printf '%s\n' "$@" > "$STUB_STATUS_SEQUENCE_FILE"
+  : > "$STUB_CALL_LOG"
+  : > "$STUB_SLEEP_LOG"
+}
+
+count_calls() {
+  grep -c "^$1\$" "$STUB_CALL_LOG" || true
+}
+
+# A 401 clears the cached token, fetches a new one and retries once.
+run_fake token clear >/dev/null 2>&1
+reset_retry_logs 401 200
+set +e
+RETRY_401_OUTPUT="$(run_fake call list-customers 2>&1)"
+RETRY_401_CODE=$?
+set -e
+if [ "$RETRY_401_CODE" -eq 0 ] && [ "$(count_calls api)" -eq 2 ] && [ "$(count_calls token)" -eq 2 ] \
+  && printf '%s' "$RETRY_401_OUTPUT" | grep -q 'HTTP 200'; then
+  record "a 401 fetches a new token and retries once" 1
+else
+  record "a 401 fetches a new token and retries once" 0
+fi
+
+# A lowercase HTTP/2 retry-after header sets the wait.
+reset_retry_logs 429 200
+export STUB_RETRY_AFTER=7
+set +e
+RETRY_429_OUTPUT="$(run_fake call list-customers 2>&1)"
+RETRY_429_CODE=$?
+set -e
+if [ "$RETRY_429_CODE" -eq 0 ] && [ "$(count_calls api)" -eq 2 ] && grep -qx '7' "$STUB_SLEEP_LOG" \
+  && printf '%s' "$RETRY_429_OUTPUT" | grep -q 'HTTP 200'; then
+  record "a 429 waits for a lowercase retry-after header" 1
+else
+  record "a 429 waits for a lowercase retry-after header" 0
+fi
+
+# A retry-after HTTP date is GMT, so a host time zone west of UTC must not stretch the wait.
+RETRY_EPOCH=$(( $(date +%s) + 30 ))
+STUB_RETRY_AFTER="$(LC_ALL=C date -u -r "$RETRY_EPOCH" '+%a, %d %b %Y %H:%M:%S GMT' 2>/dev/null || LC_ALL=C date -u -d "@$RETRY_EPOCH" '+%a, %d %b %Y %H:%M:%S GMT')"
+reset_retry_logs 429 200
+export TZ=America/Los_Angeles
+set +e
+run_fake call list-customers >/dev/null 2>&1
+RETRY_DATE_CODE=$?
+set -e
+unset TZ
+RETRY_DATE_WAIT="$(grep -E '^[0-9]+$' "$STUB_SLEEP_LOG" | head -n 1 || true)"
+if [ "$RETRY_DATE_CODE" -eq 0 ] && [ -n "$RETRY_DATE_WAIT" ] && [ "$RETRY_DATE_WAIT" -ge 20 ] && [ "$RETRY_DATE_WAIT" -le 40 ]; then
+  record "a 429 retry-after HTTP date is read as GMT" 1
+else
+  record "a 429 retry-after HTTP date is read as GMT" 0
+fi
+
+# The 429 budget is three retries, then the call fails with exit 1.
+reset_retry_logs 429 429 429 429 200
+export STUB_RETRY_AFTER=0
+set +e
+RETRY_LIMIT_OUTPUT="$(run_fake call list-customers 2>&1)"
+RETRY_LIMIT_CODE=$?
+set -e
+if [ "$RETRY_LIMIT_CODE" -eq 1 ] && [ "$(count_calls api)" -eq 4 ] && printf '%s' "$RETRY_LIMIT_OUTPUT" | grep -q 'HTTP 429'; then
+  record "a 429 stops after three retries with exit 1" 1
+else
+  record "a 429 stops after three retries with exit 1" 0
+fi
+unset STUB_STATUS_SEQUENCE_FILE STUB_CALL_LOG STUB_SLEEP_LOG STUB_RETRY_AFTER
+
+# A signed-link download allows redirects to HTTPS only.
+export STUB_ARGS_LOG="$TEMP_ROOT/args.log"
+: > "$STUB_ARGS_LOG"
+set +e
+run_fake fetch https://example.invalid/signed.pdf --out migration-workspace/fetched/signed.pdf >/dev/null 2>&1
+FETCH_CODE=$?
+set -e
+if [ "$FETCH_CODE" -eq 0 ] && grep -qx 'proto-redir =https' "$STUB_ARGS_LOG" && [ -f "$FAKE_ROOT/migration-workspace/fetched/signed.pdf" ]; then
+  record "fetch limits redirects to HTTPS" 1
+else
+  record "fetch limits redirects to HTTPS" 0
+fi
+unset STUB_ARGS_LOG
 
 printf 'Result: %s passed, %s failed\n' "$PASS" "$FAIL"
 [ "$FAIL" -eq 0 ]
