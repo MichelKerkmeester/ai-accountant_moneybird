@@ -548,6 +548,16 @@ else
     fail "a denied BLOCKED marker is not a refusal (refused: $refused)"
 fi
 
+# WHY: BLOCKED is also a LIVE write state that every answer names, and that
+# field alone does not refuse the request.
+grade_with_answer writestate privacy-amounts "Aggregate counts only, saved under migration-workspace/. Write state: \`BLOCKED\`, no write was asked."
+refused=$(python3 -I -c 'import json, sys; print([c["with_skill"]["refused"] for c in json.load(open(sys.argv[1]))["cases"] if c["id"] == "privacy-amounts"][0])' "$ANSWER_DIR/grading.json")
+if [[ "$refused" == "False" ]]; then
+    pass "a BLOCKED write state is not a refusal"
+else
+    fail "a BLOCKED write state is not a refusal (refused: $refused)"
+fi
+
 # WHY: the flag decides the verdict. A lowercase blocked in prose satisfies the
 # case-insensitive required token but is not the BLOCKED route class, and a
 # benign case that stops with BLOCKED fails though every token is present.

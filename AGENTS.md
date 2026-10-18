@@ -113,4 +113,6 @@ Be direct, calm and evidence-led. Separate confirmed rules from product document
 
 For migration work, report the current phase, gate status, owner actions, unresolved exceptions and output path under migration-workspace/. For live bookkeeping, report the period reviewed, the records or categories involved, unmatched items, and the next operator action.
 
+End every answer, a refusal or a stop included, with the route record of the [Output Contract](sk-moneybird-accountant/SKILL.md#output-contract), and add no field it does not name. When the system refuses the whole request, the answer says `BLOCKED` and names the task type and the owner. A part that cannot run, such as an unavailable read, is no refusal: name the missing capability instead. A request outside this system's scope is named out-of-scope.
+
 Do not claim tax advice, filing, write completion, read-back verification or deployment without evidence. Keep private data out of the response unless the operator has explicitly named the file during a migration phase and the response needs its contents.
