@@ -46,7 +46,7 @@ Deducting all the VAT or booking the private part as a business cost overstates 
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| LIVE-004 | Mixed-use cost booking | Route a partly private phone subscription to the mixed-use cost reference, its business share and its VAT split. | How do I book my phone subscription that I use partly privately? Which booking steps and references apply? Keep this as an offline routing check. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/mixed-use-costs.md -> 4. Report the selected mode, the business share, the VAT split, the private account and the write boundary without calling an API | Selects LIVE, names the mixed-use cost reference, records the business share and its basis, splits the document in Moneybird with the private part on an equity category, deducts only the business share of the VAT with the private use (privégebruik) settled in the last return of the year and says a write needs a passed gate and Operator approval. | Capture the prompt, selected mode, reference path, business share, VAT split, private account and no-API confirmation. | PASS if The response routes to the mixed-use cost reference, splits business and private and keeps the write behind the gate. FAIL if The response deducts all the VAT, books the private part as a business cost, skips the reference or calls a Moneybird API. | Check the T4 purchase invoice (inkoopfactuur) row of the Task-Type Table in the skill's `ROUTER.md`, the conditional mixed-use read in that row and the decision table in the reference. Repeat without tool access. |
+| LIVE-004 | Mixed-use cost booking | Route a partly private phone subscription to the mixed-use cost reference, its business share and its VAT split. | How do I book my phone subscription that I use partly privately? Which booking steps and references apply? Keep this as an offline routing check. | 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/mixed-use-costs.md -> 4. Report the selected mode, the business share, the VAT split, the private account and the write boundary without calling an API | Selects LIVE, names the mixed-use cost reference, records the business share and its basis, splits the document in Moneybird with the private part on an equity category, deducts only the business share of the VAT with the private use (privégebruik) settled in the last return of the year and says a write needs a passed gate and Operator approval. | Capture the prompt, selected mode, reference path, business share, VAT split, private account and no-API confirmation. | PASS if The response routes to the mixed-use cost reference, splits business and private and keeps the write behind the gate. FAIL if The response deducts all the VAT, books the private part as a business cost, skips the reference or calls a Moneybird API. | Check the T4 purchase invoice (inkoopfactuur) row of the Task-Type Table in the skill's `ROUTER.md`, the conditional mixed-use read in that row and the decision table in the reference. Repeat without tool access. |
 
 ### Prompt
 
@@ -54,7 +54,7 @@ Deducting all the VAT or booking the private part as a business cost overstates 
 
 ### Commands
 
-1. Read AGENTS.md
+1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Read sk-moneybird-accountant/references/mixed-use-costs.md
 4. Report the selected mode, the business share, the VAT split, the private account and the write boundary without calling an API
@@ -104,6 +104,6 @@ Check the T4 purchase invoice row of the Task-Type Table in the skill's `ROUTER.
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/mixed-use-cost-booking.md
 
-**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/mixed-use-costs.md -> 4. Report the selected mode, the business share, the VAT split, the private account and the write boundary without calling an API
+**Exact command sequence:** 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/mixed-use-costs.md -> 4. Report the selected mode, the business share, the VAT split, the private account and the write boundary without calling an API
 
 **Expected resources:** sk-moneybird-accountant/references/mixed-use-costs.md

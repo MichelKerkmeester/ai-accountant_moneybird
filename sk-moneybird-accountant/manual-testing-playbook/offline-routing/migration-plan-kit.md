@@ -46,7 +46,7 @@ A new user has the phase references but no working files. Routing them to the ki
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| MIG-006 | Migration plan kit | Route a first-time user to the plan kit. | I just cloned this repo and want to start the migration. Where do I start? Do not read records or call an API. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/README.md -> 4. Read sk-moneybird-accountant/references/migration/overview-and-setup.md -> 5. Read sk-moneybird-accountant/assets/migration/README.md -> 6. Report the setup command, created files, no-overwrite rule and no-call status | Names init-workspace.sh, the config template, the dashboard, the 23 phase packets and the no-overwrite rule | Capture prompt, references, the setup command and no-call status | PASS if the setup command and working packet are named and no service call occurs. FAIL if the kit is skipped or a service call occurs. | Check the Phase 0 setup sequence in overview-and-setup.md and the kit README, then repeat offline. |
+| MIG-006 | Migration plan kit | Route a first-time user to the plan kit. | I just cloned this repo and want to start the migration. Where do I start? Do not read records or call an API. | 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/README.md -> 4. Read sk-moneybird-accountant/references/migration/overview-and-setup.md -> 5. Read sk-moneybird-accountant/assets/migration/README.md -> 6. Report the setup command, created files, no-overwrite rule and no-call status | Names init-workspace.sh, the config template, the dashboard, the 23 phase packets and the no-overwrite rule | Capture prompt, references, the setup command and no-call status | PASS if the setup command and working packet are named and no service call occurs. FAIL if the kit is skipped or a service call occurs. | Check the Phase 0 setup sequence in overview-and-setup.md and the kit README, then repeat offline. |
 
 ### Prompt
 
@@ -54,7 +54,7 @@ A new user has the phase references but no working files. Routing them to the ki
 
 ### Commands
 
-1. Read AGENTS.md
+1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Read sk-moneybird-accountant/references/migration/README.md
 4. Read sk-moneybird-accountant/references/migration/overview-and-setup.md
@@ -107,7 +107,7 @@ Check step 3 of the Phase 0 setup sequence and the kit README. Repeat the scenar
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/migration-plan-kit.md
 
-**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/README.md -> 4. Read sk-moneybird-accountant/references/migration/overview-and-setup.md -> 5. Read sk-moneybird-accountant/assets/migration/README.md -> 6. Report the setup command, created files, no-overwrite rule and no-call status
+**Exact command sequence:** 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/README.md -> 4. Read sk-moneybird-accountant/references/migration/overview-and-setup.md -> 5. Read sk-moneybird-accountant/assets/migration/README.md -> 6. Report the setup command, created files, no-overwrite rule and no-call status
 
 **Expected resources:** AGENTS.md, sk-moneybird-accountant/SKILL.md, sk-moneybird-accountant/references/migration/README.md, sk-moneybird-accountant/references/migration/overview-and-setup.md, sk-moneybird-accountant/assets/migration/README.md
 

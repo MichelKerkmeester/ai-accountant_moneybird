@@ -43,7 +43,7 @@ A year-end closing before the auditfile export can strip the profit and loss dat
 
 ### Commands
 
-1. Read AGENTS.md
+1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py
 4. Read sk-moneybird-accountant/references/yearly-overview/README.md, sk-moneybird-accountant/references/yearly-overview/preparation-checklist.md and sk-moneybird-accountant/references/yearly-overview/fiscal-reconciliation.md

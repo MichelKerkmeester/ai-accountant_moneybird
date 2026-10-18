@@ -46,7 +46,7 @@ A local-only check can confirm that the skill chooses its mode and references wh
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| LIVE-002 | Quarterly and yearly bookkeeping | Route VAT review and annual close work to the period workflow and current-year guidance. | Help me prepare my quarterly VAT review and year-end close. Do not submit a return and do not call an API. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/moneybird-bookkeeping.md -> 4. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md and sk-moneybird-accountant/references/tax-rules/YYYY/vat/figures.md for the period's tax year -> 5. Report quarterly and yearly checks, the current-year rule and the return-filing boundary | Selects LIVE, separates quarterly VAT from yearly close, requires a year check and says the operator files the return. | Capture the requested period tasks, selected references, tax-year note, filing boundary and no-API confirmation. | PASS if Both cadences are covered, current-year figures are checked and return filing remains operator-only. FAIL if The response merges the periods, gives an unsourced figure, submits a return or calls an API. | Check the selected cadence, then the tax reference, then the filing rule. Repeat offline. |
+| LIVE-002 | Quarterly and yearly bookkeeping | Route VAT review and annual close work to the period workflow and current-year guidance. | Help me prepare my quarterly VAT review and year-end close. Do not submit a return and do not call an API. | 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/moneybird-bookkeeping.md -> 4. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md and sk-moneybird-accountant/references/tax-rules/YYYY/vat/figures.md for the period's tax year -> 5. Report quarterly and yearly checks, the current-year rule and the return-filing boundary | Selects LIVE, separates quarterly VAT from yearly close, requires a year check and says the operator files the return. | Capture the requested period tasks, selected references, tax-year note, filing boundary and no-API confirmation. | PASS if Both cadences are covered, current-year figures are checked and return filing remains operator-only. FAIL if The response merges the periods, gives an unsourced figure, submits a return or calls an API. | Check the selected cadence, then the tax reference, then the filing rule. Repeat offline. |
 
 ### Prompt
 
@@ -54,7 +54,7 @@ A local-only check can confirm that the skill chooses its mode and references wh
 
 ### Commands
 
-1. Read AGENTS.md
+1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Read sk-moneybird-accountant/references/moneybird-bookkeeping.md
 4. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md and sk-moneybird-accountant/references/tax-rules/YYYY/vat/figures.md for the period's tax year
@@ -104,6 +104,6 @@ Check the selected cadence, then the tax reference, then the filing rule. Repeat
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/quarterly-yearly-bookkeeping.md
 
-**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/moneybird-bookkeeping.md -> 4. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md and sk-moneybird-accountant/references/tax-rules/YYYY/vat/figures.md for the period's tax year -> 5. Report quarterly and yearly checks, the current-year rule and the return-filing boundary
+**Exact command sequence:** 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/moneybird-bookkeeping.md -> 4. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md and sk-moneybird-accountant/references/tax-rules/YYYY/vat/figures.md for the period's tax year -> 5. Report quarterly and yearly checks, the current-year rule and the return-filing boundary
 
 **Expected resources:** sk-moneybird-accountant/references/moneybird-bookkeeping.md, sk-moneybird-accountant/references/tax-rules/YYYY/README.md and sk-moneybird-accountant/references/tax-rules/YYYY/vat/figures.md for the period's tax year

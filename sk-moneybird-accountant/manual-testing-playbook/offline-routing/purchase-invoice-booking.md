@@ -46,7 +46,7 @@ A wrong VAT rate (btw-tarief) on a reverse-charged invoice drops VAT that is owe
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| LIVE-003 | Purchase invoice (inkoopfactuur) booking | Route a reverse-charged EU purchase invoice to the purchase invoice reference and its VAT case. | Book this purchase invoice from an EU software supplier. It shows 0% VAT and says reverse charge. Which steps, VAT rate and references apply? Keep this as an offline routing check. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/purchase-invoices.md -> 4. Report the selected mode, the case, the VAT rate (btw-tarief), the return sections (rubrieken) and the write boundary without calling an API | Selects LIVE, names the purchase invoice reference, classifies the invoice as EU reverse charge, picks the Within the EU (Binnen EU) rate, reports rubriek 4b with the deduction in 5b, flags a small businesses scheme (kleineondernemersregeling) or exempt business as different and says a write needs a passed gate and Operator approval. | Capture the prompt, selected mode, reference path, case, rate, sections (rubrieken) and no-API confirmation. | PASS if The response routes to the purchase invoice reference, picks the EU reverse-charge case and keeps the write behind the gate. FAIL if The response books the invoice with the No VAT (Geen btw) rate or a Dutch rate, skips the reference or calls a Moneybird API. | Check the T4 purchase invoice row of the Task-Type Table in the skill's `ROUTER.md`, the routing line in the bootstrap and the decision table in the reference. Repeat without tool access. |
+| LIVE-003 | Purchase invoice (inkoopfactuur) booking | Route a reverse-charged EU purchase invoice to the purchase invoice reference and its VAT case. | Book this purchase invoice from an EU software supplier. It shows 0% VAT and says reverse charge. Which steps, VAT rate and references apply? Keep this as an offline routing check. | 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/purchase-invoices.md -> 4. Report the selected mode, the case, the VAT rate (btw-tarief), the return sections (rubrieken) and the write boundary without calling an API | Selects LIVE, names the purchase invoice reference, classifies the invoice as EU reverse charge, picks the Within the EU (Binnen EU) rate, reports rubriek 4b with the deduction in 5b, flags a small businesses scheme (kleineondernemersregeling) or exempt business as different and says a write needs a passed gate and Operator approval. | Capture the prompt, selected mode, reference path, case, rate, sections (rubrieken) and no-API confirmation. | PASS if The response routes to the purchase invoice reference, picks the EU reverse-charge case and keeps the write behind the gate. FAIL if The response books the invoice with the No VAT (Geen btw) rate or a Dutch rate, skips the reference or calls a Moneybird API. | Check the T4 purchase invoice row of the Task-Type Table in the skill's `ROUTER.md`, the routing line in the bootstrap and the decision table in the reference. Repeat without tool access. |
 
 ### Prompt
 
@@ -54,7 +54,7 @@ A wrong VAT rate (btw-tarief) on a reverse-charged invoice drops VAT that is owe
 
 ### Commands
 
-1. Read AGENTS.md
+1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Read sk-moneybird-accountant/references/purchase-invoices.md
 4. Report the selected mode, the case, the VAT rate, the return sections (rubrieken) and the write boundary without calling an API
@@ -104,6 +104,6 @@ Check the T4 purchase invoice row of the Task-Type Table in the skill's `ROUTER.
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/purchase-invoice-booking.md
 
-**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/purchase-invoices.md -> 4. Report the selected mode, the case, the VAT rate (btw-tarief), the return sections (rubrieken) and the write boundary without calling an API
+**Exact command sequence:** 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/purchase-invoices.md -> 4. Report the selected mode, the case, the VAT rate (btw-tarief), the return sections (rubrieken) and the write boundary without calling an API
 
 **Expected resources:** sk-moneybird-accountant/references/purchase-invoices.md

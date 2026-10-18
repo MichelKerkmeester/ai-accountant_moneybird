@@ -46,7 +46,7 @@ Expensing an asset or depreciating it outside the yearly limit changes the profi
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| LIVE-005 | Fixed asset booking | Route a large purchase to the fixed asset reference, the cost-or-asset test and the depreciation steps. | I bought a laptop for 1200 and want to depreciate it. Which steps and references apply? Keep this as an offline routing check. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/fixed-assets.md -> 4. Report the selected mode, the cost-or-asset outcome, the depreciation fields, the VAT treatment and the write boundary without calling an API | Selects LIVE, names the fixed asset reference, states when a purchase is capitalised rather than expensed, names the acquisition cost (aanschafwaarde), the useful life (gebruiksduur) and the residual value (restwaarde) on the asset (bezitting), keeps the yearly depreciation within the limit, places the purchase VAT in the return for the invoice period and says a write needs a passed gate and Operator approval. | Capture the prompt, selected mode, reference path, cost-or-asset outcome, depreciation fields, VAT treatment and no-API confirmation. | PASS if The response routes to the fixed asset reference, applies the cost-or-asset test and keeps the write behind the gate. FAIL if The response expenses the purchase, skips the reference, invents a depreciation figure or calls a Moneybird API. | Check the T4 purchase invoice (inkoopfactuur) row of the Task-Type Table in the skill's `ROUTER.md`, the conditional fixed-asset read in that row and the decision table in the reference. Repeat without tool access. |
+| LIVE-005 | Fixed asset booking | Route a large purchase to the fixed asset reference, the cost-or-asset test and the depreciation steps. | I bought a laptop for 1200 and want to depreciate it. Which steps and references apply? Keep this as an offline routing check. | 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/fixed-assets.md -> 4. Report the selected mode, the cost-or-asset outcome, the depreciation fields, the VAT treatment and the write boundary without calling an API | Selects LIVE, names the fixed asset reference, states when a purchase is capitalised rather than expensed, names the acquisition cost (aanschafwaarde), the useful life (gebruiksduur) and the residual value (restwaarde) on the asset (bezitting), keeps the yearly depreciation within the limit, places the purchase VAT in the return for the invoice period and says a write needs a passed gate and Operator approval. | Capture the prompt, selected mode, reference path, cost-or-asset outcome, depreciation fields, VAT treatment and no-API confirmation. | PASS if The response routes to the fixed asset reference, applies the cost-or-asset test and keeps the write behind the gate. FAIL if The response expenses the purchase, skips the reference, invents a depreciation figure or calls a Moneybird API. | Check the T4 purchase invoice (inkoopfactuur) row of the Task-Type Table in the skill's `ROUTER.md`, the conditional fixed-asset read in that row and the decision table in the reference. Repeat without tool access. |
 
 ### Prompt
 
@@ -54,7 +54,7 @@ Expensing an asset or depreciating it outside the yearly limit changes the profi
 
 ### Commands
 
-1. Read AGENTS.md
+1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Read sk-moneybird-accountant/references/fixed-assets.md
 4. Report the selected mode, the cost-or-asset outcome, the depreciation fields, the VAT treatment and the write boundary without calling an API
@@ -104,6 +104,6 @@ Check the T4 purchase invoice row of the Task-Type Table in the skill's `ROUTER.
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/fixed-asset-booking.md
 
-**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/fixed-assets.md -> 4. Report the selected mode, the cost-or-asset outcome, the depreciation fields, the VAT treatment and the write boundary without calling an API
+**Exact command sequence:** 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/fixed-assets.md -> 4. Report the selected mode, the cost-or-asset outcome, the depreciation fields, the VAT treatment and the write boundary without calling an API
 
 **Expected resources:** sk-moneybird-accountant/references/fixed-assets.md

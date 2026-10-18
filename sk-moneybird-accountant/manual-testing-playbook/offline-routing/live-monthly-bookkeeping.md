@@ -46,7 +46,7 @@ A local-only check can confirm that the skill chooses its mode and references wh
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| LIVE-001 | Live monthly bookkeeping | Route a current-period reconciliation request into LIVE monthly bookkeeping. | Help me review this month's Moneybird bookkeeping. Which steps and reference apply? Keep this as an offline routing check. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/moneybird-bookkeeping.md -> 4. Report the selected mode, monthly checks and relevant reference without calling an API | Selects LIVE, lists sales, purchase records, bank matching, private movements and exceptions and names the bookkeeping reference. | Capture the prompt, selected mode, listed monthly checks, reference path and no-API confirmation. | PASS if The response routes to LIVE monthly work and names the required checks without external access. FAIL if The response selects MIGRATION, skips the bookkeeping reference or calls a Moneybird API. | Check the monthly intent, the LIVE section and the reference-loading instructions. Repeat without tool access. |
+| LIVE-001 | Live monthly bookkeeping | Route a current-period reconciliation request into LIVE monthly bookkeeping. | Help me review this month's Moneybird bookkeeping. Which steps and reference apply? Keep this as an offline routing check. | 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/moneybird-bookkeeping.md -> 4. Report the selected mode, monthly checks and relevant reference without calling an API | Selects LIVE, lists sales, purchase records, bank matching, private movements and exceptions and names the bookkeeping reference. | Capture the prompt, selected mode, listed monthly checks, reference path and no-API confirmation. | PASS if The response routes to LIVE monthly work and names the required checks without external access. FAIL if The response selects MIGRATION, skips the bookkeeping reference or calls a Moneybird API. | Check the monthly intent, the LIVE section and the reference-loading instructions. Repeat without tool access. |
 
 ### Prompt
 
@@ -54,7 +54,7 @@ A local-only check can confirm that the skill chooses its mode and references wh
 
 ### Commands
 
-1. Read AGENTS.md
+1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Read sk-moneybird-accountant/references/moneybird-bookkeeping.md
 4. Report the selected mode, monthly checks and relevant reference without calling an API
@@ -103,6 +103,6 @@ Check the monthly intent, the LIVE section and the reference-loading instruction
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/live-monthly-bookkeeping.md
 
-**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/moneybird-bookkeeping.md -> 4. Report the selected mode, monthly checks and relevant reference without calling an API
+**Exact command sequence:** 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/moneybird-bookkeeping.md -> 4. Report the selected mode, monthly checks and relevant reference without calling an API
 
 **Expected resources:** sk-moneybird-accountant/references/moneybird-bookkeeping.md

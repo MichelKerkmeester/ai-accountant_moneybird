@@ -47,7 +47,7 @@ A year file that still holds last year's figures, or a checked date that lags a 
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| STATE-002 | Year rollover runbook | Walk the year rollover runbook and run the offline calendar check. | It is time for the year rollover. Walk me through the runbook for the newest year folder and tell me what the calendar check verifies. Do not fetch any page. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/tax-rules/year-rollover.md -> 4. Read sk-moneybird-accountant/assets/source-watchlist.json -> 5. Run python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-calendar -> 6. Report the runbook steps, the release checkpoints and the calendar check result | Names the Operator as owner, lists the eight runbook steps and the five checkpoints, states the checked_on rule and the stale-year failure. The offline run reports the current year files current at the latest passed checkpoint. | Capture the prompt, the owner, the steps, the checkpoint names, the calendar output and the no-network status. | PASS if the owner, the runbook steps, the checkpoint names and the offline calendar result are correct and no page is fetched. FAIL if a step or checkpoint is missing, a stale year is reported current or the run fetches a page. | Check sections 2 and 3 of the runbook reference, then rerun the calendar check. Repeat offline. |
+| STATE-002 | Year rollover runbook | Walk the year rollover runbook and run the offline calendar check. | It is time for the year rollover. Walk me through the runbook for the newest year folder and tell me what the calendar check verifies. Do not fetch any page. | 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/tax-rules/year-rollover.md -> 4. Read sk-moneybird-accountant/assets/source-watchlist.json -> 5. Run python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-calendar -> 6. Report the runbook steps, the release checkpoints and the calendar check result | Names the Operator as owner, lists the eight runbook steps and the five checkpoints, states the checked_on rule and the stale-year failure. The offline run reports the current year files current at the latest passed checkpoint. | Capture the prompt, the owner, the steps, the checkpoint names, the calendar output and the no-network status. | PASS if the owner, the runbook steps, the checkpoint names and the offline calendar result are correct and no page is fetched. FAIL if a step or checkpoint is missing, a stale year is reported current or the run fetches a page. | Check sections 2 and 3 of the runbook reference, then rerun the calendar check. Repeat offline. |
 
 ### Prompt
 
@@ -55,7 +55,7 @@ A year file that still holds last year's figures, or a checked date that lags a 
 
 ### Commands
 
-1. Read AGENTS.md
+1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Read sk-moneybird-accountant/references/tax-rules/year-rollover.md
 4. Read sk-moneybird-accountant/assets/source-watchlist.json
@@ -108,6 +108,6 @@ Check sections 2 and 3 of the runbook reference, then rerun the calendar check. 
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/year-rollover-runbook.md
 
-**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/tax-rules/year-rollover.md -> 4. Read sk-moneybird-accountant/assets/source-watchlist.json -> 5. Run python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-calendar -> 6. Report the runbook steps, the release checkpoints and the calendar check result
+**Exact command sequence:** 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/tax-rules/year-rollover.md -> 4. Read sk-moneybird-accountant/assets/source-watchlist.json -> 5. Run python3 -I sk-moneybird-accountant/scripts/build-source-library.py --check-calendar -> 6. Report the runbook steps, the release checkpoints and the calendar check result
 
 **Expected resources:** sk-moneybird-accountant/references/tax-rules/year-rollover.md, sk-moneybird-accountant/assets/source-watchlist.json, sk-moneybird-accountant/scripts/build-source-library.py

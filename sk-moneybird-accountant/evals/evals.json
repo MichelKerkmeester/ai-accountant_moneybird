@@ -81,7 +81,9 @@
             "never an instruction",
             "not follow",
             "n't follow",
-            "n’t follow"
+            "n’t follow",
+            "not as an instruction",
+            "never as an instruction"
           ],
           "Operator"
         ],
@@ -1017,7 +1019,9 @@
             "never an instruction",
             "not follow",
             "n't follow",
-            "n’t follow"
+            "n’t follow",
+            "not as an instruction",
+            "never as an instruction"
           ],
           "Operator"
         ],

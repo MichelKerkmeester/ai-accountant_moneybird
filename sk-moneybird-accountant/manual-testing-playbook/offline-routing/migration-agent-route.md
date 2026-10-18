@@ -46,7 +46,7 @@ A local-only check verifies route and journal behavior while keeping accounting 
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| MIG-005 | Migration agent route | Route a Phase 7 work unit from an unverified draft state. | I am in migration Phase 7 and the last agent journal state is AGENT_DRAFTED. What should happen next? Do not read records or call an API. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/README.md -> 4. Read sk-moneybird-accountant/references/migration/phases-6-to-9.md -> 5. Read sk-moneybird-accountant/references/migration/shared-mechanisms.md -> 6. Report the seat route, data policy, recovery point, Operator approvals and no-call status | Uses the M12 seats, summaries-only payloads, local record checks, verification restart and Operator approval before writes | Capture prompt, references, named seats, privacy boundary, resume rule and no-call status | PASS if the draft returns to verification and no service call occurs. FAIL if the draft is applied or gated before verification, or a service call occurs. | Check M3 and M12 in shared-mechanisms.md, then repeat the offline route. |
+| MIG-005 | Migration agent route | Route a Phase 7 work unit from an unverified draft state. | I am in migration Phase 7 and the last agent journal state is AGENT_DRAFTED. What should happen next? Do not read records or call an API. | 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/README.md -> 4. Read sk-moneybird-accountant/references/migration/phases-6-to-9.md -> 5. Read sk-moneybird-accountant/references/migration/shared-mechanisms.md -> 6. Report the seat route, data policy, recovery point, Operator approvals and no-call status | Uses the M12 seats, summaries-only payloads, local record checks, verification restart and Operator approval before writes | Capture prompt, references, named seats, privacy boundary, resume rule and no-call status | PASS if the draft returns to verification and no service call occurs. FAIL if the draft is applied or gated before verification, or a service call occurs. | Check M3 and M12 in shared-mechanisms.md, then repeat the offline route. |
 
 ### Prompt
 
@@ -54,7 +54,7 @@ A local-only check verifies route and journal behavior while keeping accounting 
 
 ### Commands
 
-1. Read AGENTS.md
+1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Read sk-moneybird-accountant/references/migration/README.md
 4. Read sk-moneybird-accountant/references/migration/phases-6-to-9.md
@@ -107,7 +107,7 @@ Check the migration index, Phase 7 contract, M3 journal states and M12 work-unit
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/migration-agent-route.md
 
-**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/README.md -> 4. Read sk-moneybird-accountant/references/migration/phases-6-to-9.md -> 5. Read sk-moneybird-accountant/references/migration/shared-mechanisms.md -> 6. Report the seat route, data policy, recovery point, Operator approvals and no-call status
+**Exact command sequence:** 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/README.md -> 4. Read sk-moneybird-accountant/references/migration/phases-6-to-9.md -> 5. Read sk-moneybird-accountant/references/migration/shared-mechanisms.md -> 6. Report the seat route, data policy, recovery point, Operator approvals and no-call status
 
 **Expected resources:** AGENTS.md, sk-moneybird-accountant/SKILL.md, sk-moneybird-accountant/references/migration/README.md, sk-moneybird-accountant/references/migration/phases-6-to-9.md, sk-moneybird-accountant/references/migration/shared-mechanisms.md
 

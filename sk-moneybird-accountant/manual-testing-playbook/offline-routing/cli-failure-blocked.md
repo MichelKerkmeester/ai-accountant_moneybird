@@ -46,7 +46,7 @@ A failed read is easy to hide behind a value from memory. This check confirms th
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| FAIL-001 | CLI tool handoff | Route an exhausted CLI read to the blocked answer and keep every retry with its documented owner. | A required Moneybird contacts read is rate limited and stops after three attempts. What does the answer say and what may be retried? Keep this as an offline routing check. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/shared-mechanisms.md -> 4. Read cli-moneybird/SKILL.md -> 5. Read cli-jortt/SKILL.md -> 6. Report blocked, the missing capability and each retry owner | Answers blocked, names the missing contacts read as the missing capability, says one guard invocation makes one call, keeps the three-attempt bounded GET loop with the parent, keeps the one authorized read reissue with the migration orchestrator, keeps the Jortt 429 retries with jortt-cli and repeats no non-GET call. | Capture the prompt, the blocked answer, the named capability and the retry owners. | PASS if the answer stops with blocked, names the missing capability and keeps each retry with its owner. FAIL if the answer invents a value, retries a non-GET call or adds a second retry layer around a CLI. | Check the CLI failure route class in the skill, then section M5 of the shared mechanisms. Repeat with both CLIs unavailable. |
+| FAIL-001 | CLI tool handoff | Route an exhausted CLI read to the blocked answer and keep every retry with its documented owner. | A required Moneybird contacts read is rate limited and stops after three attempts. What does the answer say and what may be retried? Keep this as an offline routing check. | 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/shared-mechanisms.md -> 4. Read cli-moneybird/SKILL.md -> 5. Read cli-jortt/SKILL.md -> 6. Report blocked, the missing capability and each retry owner | Answers blocked, names the missing contacts read as the missing capability, says one guard invocation makes one call, keeps the three-attempt bounded GET loop with the parent, keeps the one authorized read reissue with the migration orchestrator, keeps the Jortt 429 retries with jortt-cli and repeats no non-GET call. | Capture the prompt, the blocked answer, the named capability and the retry owners. | PASS if the answer stops with blocked, names the missing capability and keeps each retry with its owner. FAIL if the answer invents a value, retries a non-GET call or adds a second retry layer around a CLI. | Check the CLI failure route class in the skill, then section M5 of the shared mechanisms. Repeat with both CLIs unavailable. |
 
 ### Prompt
 
@@ -54,7 +54,7 @@ A failed read is easy to hide behind a value from memory. This check confirms th
 
 ### Commands
 
-1. Read AGENTS.md
+1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Read sk-moneybird-accountant/references/migration/shared-mechanisms.md
 4. Read cli-moneybird/SKILL.md
@@ -110,6 +110,6 @@ Check the CLI failure route class in the skill, then section M5 of the shared me
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/cli-failure-blocked.md
 
-**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/shared-mechanisms.md -> 4. Read cli-moneybird/SKILL.md -> 5. Read cli-jortt/SKILL.md -> 6. Report blocked, the missing capability and each retry owner
+**Exact command sequence:** 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/shared-mechanisms.md -> 4. Read cli-moneybird/SKILL.md -> 5. Read cli-jortt/SKILL.md -> 6. Report blocked, the missing capability and each retry owner
 
 **Expected resources:** sk-moneybird-accountant/references/migration/shared-mechanisms.md

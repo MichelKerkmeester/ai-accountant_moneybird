@@ -46,7 +46,7 @@ A local-only check can confirm that a term request reads the one small glossary 
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| GLOSS-001 | Glossary term request | Route a request that asks what a Dutch term means to the glossary file of the topic its route loads. | What is the business mileage rate for the current tax year, and what does kilometervergoeding mean in English? | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md and sk-moneybird-accountant/references/tax-rules/YYYY/costs-and-car/figures.md -> 4. Read sk-moneybird-accountant/references/glossary/README.md, sk-moneybird-accountant/references/glossary/costs-and-car.md and sk-moneybird-accountant/references/glossary/general.md -> 5. Report the selected row, the reads and the English name | Loads the figures part of the topic, then the glossary router, that topic's glossary file and `general.md` for the year README, and gives the English name with the Dutch in brackets. | Capture the prompt, the read list and the glossary row cited. | PASS if The route reads the router, the costs-and-car glossary and `general.md` and names "mileage allowance (kilometervergoeding)". FAIL if The route reads no glossary file, the wrong topic's glossary or a glossary for a request that asks no meaning. | Check the term request words in the resolver and the topic of each read. Repeat with only local documents. |
+| GLOSS-001 | Glossary term request | Route a request that asks what a Dutch term means to the glossary file of the topic its route loads. | What is the business mileage rate for the current tax year, and what does kilometervergoeding mean in English? | 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md and sk-moneybird-accountant/references/tax-rules/YYYY/costs-and-car/figures.md -> 4. Read sk-moneybird-accountant/references/glossary/README.md, sk-moneybird-accountant/references/glossary/costs-and-car.md and sk-moneybird-accountant/references/glossary/general.md -> 5. Report the selected row, the reads and the English name | Loads the figures part of the topic, then the glossary router, that topic's glossary file and `general.md` for the year README, and gives the English name with the Dutch in brackets. | Capture the prompt, the read list and the glossary row cited. | PASS if The route reads the router, the costs-and-car glossary and `general.md` and names "mileage allowance (kilometervergoeding)". FAIL if The route reads no glossary file, the wrong topic's glossary or a glossary for a request that asks no meaning. | Check the term request words in the resolver and the topic of each read. Repeat with only local documents. |
 
 ### Prompt
 
@@ -54,7 +54,7 @@ A local-only check can confirm that a term request reads the one small glossary 
 
 ### Commands
 
-1. Read AGENTS.md
+1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md and sk-moneybird-accountant/references/tax-rules/YYYY/costs-and-car/figures.md
 4. Read sk-moneybird-accountant/references/glossary/README.md, sk-moneybird-accountant/references/glossary/costs-and-car.md and sk-moneybird-accountant/references/glossary/general.md
@@ -94,7 +94,7 @@ Check the term request words in the resolver and the topic of each read. Repeat 
 |---|---|
 | sk-moneybird-accountant/ROUTER.md | States the glossary read rule |
 | sk-moneybird-accountant/references/glossary/README.md | Lists the category files and the placement rule |
-| sk-moneybird-accountant/scripts/route-replay/routing-gold.json | Holds the twelve GLOSS rows |
+| sk-moneybird-accountant/scripts/route-replay/routing-gold.json | Holds the seventeen GLOSS rows |
 
 ---
 
@@ -106,6 +106,6 @@ Check the term request words in the resolver and the topic of each read. Repeat 
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/glossary-term-request.md
 
-**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md and sk-moneybird-accountant/references/tax-rules/YYYY/costs-and-car/figures.md -> 4. Read sk-moneybird-accountant/references/glossary/README.md, sk-moneybird-accountant/references/glossary/costs-and-car.md and sk-moneybird-accountant/references/glossary/general.md -> 5. Report the selected row, the reads and the English name
+**Exact command sequence:** 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/tax-rules/YYYY/README.md and sk-moneybird-accountant/references/tax-rules/YYYY/costs-and-car/figures.md -> 4. Read sk-moneybird-accountant/references/glossary/README.md, sk-moneybird-accountant/references/glossary/costs-and-car.md and sk-moneybird-accountant/references/glossary/general.md -> 5. Report the selected row, the reads and the English name
 
 **Expected resources:** sk-moneybird-accountant/references/glossary/README.md, sk-moneybird-accountant/references/glossary/costs-and-car.md and sk-moneybird-accountant/references/glossary/general.md after the topic figures part

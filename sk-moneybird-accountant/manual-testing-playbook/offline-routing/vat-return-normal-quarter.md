@@ -43,7 +43,7 @@ A quarter without a reverse-charged purchase, a KOR case or a year-end settlemen
 
 ### Commands
 
-1. Read AGENTS.md
+1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py
 4. Read sk-moneybird-accountant/references/vat-return/README.md and sk-moneybird-accountant/references/tax-rules/2026/vat/figures.md

@@ -46,7 +46,7 @@ A category name can match across Jortt and Moneybird while the ledger account or
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| MIG-007 | Jortt to Moneybird mapping | Route a Jortt concept question to the mapping reference and name the export traps. | Which Jortt category should my software costs map to in Moneybird, and which export traps should I check? Do not call an API. | 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md -> 4. Report the mapping rule, the export traps and the API-free status | Selects MIGRATION, uses the T2 migration concept row, maps by accounting purpose and tax treatment, names the attachment, asset list and category and opening balance traps, keeps the phase unchanged and makes no API call. | Capture the prompt, the selected route, the reference path, the mapping rule, the named traps and the no-call status. | PASS if the mapping reference is named, the mapping rule and the three export traps are correct, no phase advances and no API is called. FAIL if a category is mapped by label alone, a trap is skipped, an unmapped field is invented or an API is called. | Check the T2 row in the Task-Type Table, then sections 2 and 3 of the mapping reference. Repeat offline. |
+| MIG-007 | Jortt to Moneybird mapping | Route a Jortt concept question to the mapping reference and name the export traps. | Which Jortt category should my software costs map to in Moneybird, and which export traps should I check? Do not call an API. | 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md -> 4. Report the mapping rule, the export traps and the API-free status | Selects MIGRATION, uses the T2 migration concept row, maps by accounting purpose and tax treatment, names the attachment, asset list and category and opening balance traps, keeps the phase unchanged and makes no API call. | Capture the prompt, the selected route, the reference path, the mapping rule, the named traps and the no-call status. | PASS if the mapping reference is named, the mapping rule and the three export traps are correct, no phase advances and no API is called. FAIL if a category is mapped by label alone, a trap is skipped, an unmapped field is invented or an API is called. | Check the T2 row in the Task-Type Table, then sections 2 and 3 of the mapping reference. Repeat offline. |
 
 ### Prompt
 
@@ -54,7 +54,7 @@ A category name can match across Jortt and Moneybird while the ledger account or
 
 ### Commands
 
-1. Read AGENTS.md
+1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Read sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md
 4. Report the mapping rule, the export traps and the API-free status
@@ -104,6 +104,6 @@ Check the T2 row in the Task-Type Table, then sections 2 and 3 of the mapping re
 - Canonical root source: manual-testing-playbook.md
 - Feature file path: offline-routing/jortt-to-moneybird-mapping.md
 
-**Exact command sequence:** 1. Read AGENTS.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md -> 4. Report the mapping rule, the export traps and the API-free status
+**Exact command sequence:** 1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md -> 2. Read sk-moneybird-accountant/SKILL.md -> 3. Read sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md -> 4. Report the mapping rule, the export traps and the API-free status
 
 **Expected resources:** sk-moneybird-accountant/references/migration/jortt-to-moneybird-mapping.md

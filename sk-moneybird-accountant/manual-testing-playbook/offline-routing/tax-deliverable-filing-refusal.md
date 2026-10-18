@@ -43,7 +43,7 @@ The three prepare routes must never be mistaken for filing capability. A request
 
 ### Commands
 
-1. Read AGENTS.md
+1. Read AGENTS.md, the hub SKILL.md and sk-moneybird-accountant/ROUTER.md
 2. Read sk-moneybird-accountant/SKILL.md
 3. Run python3 -I sk-moneybird-accountant/scripts/check-route-table.py
 4. Run python3 -I sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode resolve
