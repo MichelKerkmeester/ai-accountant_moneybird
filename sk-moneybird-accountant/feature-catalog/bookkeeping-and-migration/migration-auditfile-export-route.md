@@ -42,7 +42,7 @@ Verify the export route in Phase 0. For a later auditfile request, load the docu
 
 | File | Type | Role |
 |---|---|---|
-| sk-moneybird-accountant/manual-testing-playbook/offline-routing/auditfile-read-only-route.md | Manual playbook | Offline auditfile routing and lock-preservation scenario. |
+| sk-moneybird-accountant/manual-testing-playbook/migration/auditfile-read-only-route.md | Manual playbook | Offline auditfile routing and lock-preservation scenario. |
 
 ---
 

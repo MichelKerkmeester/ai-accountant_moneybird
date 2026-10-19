@@ -42,7 +42,7 @@ A request to cancel Jortt before Phase 22 passes is refused and routed to the on
 
 | File | Type | Role |
 |---|---|---|
-| sk-moneybird-accountant/manual-testing-playbook/offline-routing/jortt-decommission-gate.md | Manual playbook | Offline refusal and Phase 22 routing scenario. |
+| sk-moneybird-accountant/manual-testing-playbook/migration/jortt-decommission-gate.md | Manual playbook | Offline refusal and Phase 22 routing scenario. |
 
 ---
 

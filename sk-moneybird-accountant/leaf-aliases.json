@@ -16,6 +16,11 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/income-tax-return-preparation.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/income-tax-return-preparation.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "feature-catalog/bookkeeping-and-migration/jortt-to-moneybird-mapping.md",
     "diskPath": "feature-catalog/bookkeeping-and-migration/jortt-to-moneybird-mapping.md"
   },
@@ -91,8 +96,23 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/vat-return-preparation.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/vat-return-preparation.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md",
     "diskPath": "feature-catalog/bookkeeping-and-migration/year-specific-zzp-guidance.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/bookkeeping-and-migration/yearly-overview-preparation.md",
+    "diskPath": "feature-catalog/bookkeeping-and-migration/yearly-overview-preparation.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/quality-gates/english-first-check.md",
+    "diskPath": "feature-catalog/quality-gates/english-first-check.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -146,6 +166,26 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/reference-and-state/glossary-router.md",
+    "diskPath": "feature-catalog/reference-and-state/glossary-router.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/reference-and-state/hub-and-packet-routers.md",
+    "diskPath": "feature-catalog/reference-and-state/hub-and-packet-routers.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/reference-and-state/pdf-source-reader.md",
+    "diskPath": "feature-catalog/reference-and-state/pdf-source-reader.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/reference-and-state/reference-entry-surfaces.md",
+    "diskPath": "feature-catalog/reference-and-state/reference-entry-surfaces.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "feature-catalog/reference-and-state/reference-index-and-year-changes.md",
     "diskPath": "feature-catalog/reference-and-state/reference-index-and-year-changes.md"
   },
@@ -156,733 +196,373 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "feature-catalog/reference-and-state/tax-knowledge-base.md",
+    "diskPath": "feature-catalog/reference-and-state/tax-knowledge-base.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "feature-catalog/reference-and-state/year-rollover-runbook.md",
     "diskPath": "feature-catalog/reference-and-state/year-rollover-runbook.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/answer-privacy.md",
-    "diskPath": "manual-testing-playbook/offline-routing/answer-privacy.md"
+    "leafResourceId": "manual-testing-playbook/live-bookkeeping/fixed-asset-booking.md",
+    "diskPath": "manual-testing-playbook/live-bookkeeping/fixed-asset-booking.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/api-tool-handoff.md",
-    "diskPath": "manual-testing-playbook/offline-routing/api-tool-handoff.md"
+    "leafResourceId": "manual-testing-playbook/live-bookkeeping/live-monthly-bookkeeping.md",
+    "diskPath": "manual-testing-playbook/live-bookkeeping/live-monthly-bookkeeping.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/auditfile-read-only-route.md",
-    "diskPath": "manual-testing-playbook/offline-routing/auditfile-read-only-route.md"
+    "leafResourceId": "manual-testing-playbook/live-bookkeeping/mixed-use-cost-booking.md",
+    "diskPath": "manual-testing-playbook/live-bookkeeping/mixed-use-cost-booking.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/current-year-zzp-question.md",
-    "diskPath": "manual-testing-playbook/offline-routing/current-year-zzp-question.md"
+    "leafResourceId": "manual-testing-playbook/live-bookkeeping/purchase-invoice-booking.md",
+    "diskPath": "manual-testing-playbook/live-bookkeeping/purchase-invoice-booking.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/fixed-asset-booking.md",
-    "diskPath": "manual-testing-playbook/offline-routing/fixed-asset-booking.md"
+    "leafResourceId": "manual-testing-playbook/live-bookkeeping/quarterly-yearly-bookkeeping.md",
+    "diskPath": "manual-testing-playbook/live-bookkeeping/quarterly-yearly-bookkeeping.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/hostile-invoice-set.md",
-    "diskPath": "manual-testing-playbook/offline-routing/hostile-invoice-set.md"
+    "leafResourceId": "manual-testing-playbook/migration/auditfile-read-only-route.md",
+    "diskPath": "manual-testing-playbook/migration/auditfile-read-only-route.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/jortt-decommission-gate.md",
-    "diskPath": "manual-testing-playbook/offline-routing/jortt-decommission-gate.md"
+    "leafResourceId": "manual-testing-playbook/migration/jortt-decommission-gate.md",
+    "diskPath": "manual-testing-playbook/migration/jortt-decommission-gate.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/jortt-to-moneybird-mapping.md",
-    "diskPath": "manual-testing-playbook/offline-routing/jortt-to-moneybird-mapping.md"
+    "leafResourceId": "manual-testing-playbook/migration/jortt-to-moneybird-mapping.md",
+    "diskPath": "manual-testing-playbook/migration/jortt-to-moneybird-mapping.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/live-monthly-bookkeeping.md",
-    "diskPath": "manual-testing-playbook/offline-routing/live-monthly-bookkeeping.md"
+    "leafResourceId": "manual-testing-playbook/migration/migration-agent-route.md",
+    "diskPath": "manual-testing-playbook/migration/migration-agent-route.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/migration-agent-route.md",
-    "diskPath": "manual-testing-playbook/offline-routing/migration-agent-route.md"
+    "leafResourceId": "manual-testing-playbook/migration/migration-phase-routing.md",
+    "diskPath": "manual-testing-playbook/migration/migration-phase-routing.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/migration-phase-routing.md",
-    "diskPath": "manual-testing-playbook/offline-routing/migration-phase-routing.md"
+    "leafResourceId": "manual-testing-playbook/migration/migration-plan-kit.md",
+    "diskPath": "manual-testing-playbook/migration/migration-plan-kit.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/migration-plan-kit.md",
-    "diskPath": "manual-testing-playbook/offline-routing/migration-plan-kit.md"
+    "leafResourceId": "manual-testing-playbook/migration/migration-stop-and-resume.md",
+    "diskPath": "manual-testing-playbook/migration/migration-stop-and-resume.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/mixed-use-cost-booking.md",
-    "diskPath": "manual-testing-playbook/offline-routing/mixed-use-cost-booking.md"
+    "leafResourceId": "manual-testing-playbook/migration/trial-expiry-stop.md",
+    "diskPath": "manual-testing-playbook/migration/trial-expiry-stop.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/operator-tax-boundary.md",
-    "diskPath": "manual-testing-playbook/offline-routing/operator-tax-boundary.md"
+    "leafResourceId": "manual-testing-playbook/migration/write-journal-crash-resume.md",
+    "diskPath": "manual-testing-playbook/migration/write-journal-crash-resume.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/privacy-boundary.md",
-    "diskPath": "manual-testing-playbook/offline-routing/privacy-boundary.md"
+    "leafResourceId": "manual-testing-playbook/quality-gates/english-first-check.md",
+    "diskPath": "manual-testing-playbook/quality-gates/english-first-check.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/purchase-invoice-booking.md",
-    "diskPath": "manual-testing-playbook/offline-routing/purchase-invoice-booking.md"
+    "leafResourceId": "manual-testing-playbook/quality-gates/eval-grader.md",
+    "diskPath": "manual-testing-playbook/quality-gates/eval-grader.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/quarterly-yearly-bookkeeping.md",
-    "diskPath": "manual-testing-playbook/offline-routing/quarterly-yearly-bookkeeping.md"
+    "leafResourceId": "manual-testing-playbook/quality-gates/fragment-link-check.md",
+    "diskPath": "manual-testing-playbook/quality-gates/fragment-link-check.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/session-context-and-year-state.md",
-    "diskPath": "manual-testing-playbook/offline-routing/session-context-and-year-state.md"
+    "leafResourceId": "manual-testing-playbook/quality-gates/hardening-matrix-check.md",
+    "diskPath": "manual-testing-playbook/quality-gates/hardening-matrix-check.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/source-lookup.md",
-    "diskPath": "manual-testing-playbook/offline-routing/source-lookup.md"
+    "leafResourceId": "manual-testing-playbook/quality-gates/regression-trailer-check.md",
+    "diskPath": "manual-testing-playbook/quality-gates/regression-trailer-check.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/task-type-routing.md",
-    "diskPath": "manual-testing-playbook/offline-routing/task-type-routing.md"
+    "leafResourceId": "manual-testing-playbook/quality-gates/repository-ci-gates.md",
+    "diskPath": "manual-testing-playbook/quality-gates/repository-ci-gates.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/trial-expiry-stop.md",
-    "diskPath": "manual-testing-playbook/offline-routing/trial-expiry-stop.md"
+    "leafResourceId": "manual-testing-playbook/quality-gates/route-replay-harness.md",
+    "diskPath": "manual-testing-playbook/quality-gates/route-replay-harness.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/write-journal-crash-resume.md",
-    "diskPath": "manual-testing-playbook/offline-routing/write-journal-crash-resume.md"
+    "leafResourceId": "manual-testing-playbook/quality-gates/token-budget-baseline.md",
+    "diskPath": "manual-testing-playbook/quality-gates/token-budget-baseline.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "manual-testing-playbook/offline-routing/year-rollover-runbook.md",
-    "diskPath": "manual-testing-playbook/offline-routing/year-rollover-runbook.md"
+    "leafResourceId": "manual-testing-playbook/quality-gates/write-contract-check.md",
+    "diskPath": "manual-testing-playbook/quality-gates/write-contract-check.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/README.md",
-    "diskPath": "references/tax-rules/2020/README.md"
+    "leafResourceId": "manual-testing-playbook/routing-and-state/glossary-term-request.md",
+    "diskPath": "manual-testing-playbook/routing-and-state/glossary-term-request.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/work-relationship/figures.md",
-    "diskPath": "references/tax-rules/2020/work-relationship/figures.md"
+    "leafResourceId": "manual-testing-playbook/routing-and-state/hub-packet-selection.md",
+    "diskPath": "manual-testing-playbook/routing-and-state/hub-packet-selection.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/box-2/figures.md",
-    "diskPath": "references/tax-rules/2020/box-2/figures.md"
+    "leafResourceId": "manual-testing-playbook/routing-and-state/reference-entry-surfaces.md",
+    "diskPath": "manual-testing-playbook/routing-and-state/reference-entry-surfaces.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/box-3/figures.md",
-    "diskPath": "references/tax-rules/2020/box-3/figures.md"
+    "leafResourceId": "manual-testing-playbook/routing-and-state/reference-index-and-year-changes.md",
+    "diskPath": "manual-testing-playbook/routing-and-state/reference-index-and-year-changes.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/vat/figures.md",
-    "diskPath": "references/tax-rules/2020/vat/figures.md"
+    "leafResourceId": "manual-testing-playbook/routing-and-state/session-context-and-year-state.md",
+    "diskPath": "manual-testing-playbook/routing-and-state/session-context-and-year-state.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/private-company-and-corporate-tax/figures.md",
-    "diskPath": "references/tax-rules/2020/private-company-and-corporate-tax/figures.md"
+    "leafResourceId": "manual-testing-playbook/routing-and-state/task-type-routing.md",
+    "diskPath": "manual-testing-playbook/routing-and-state/task-type-routing.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/changelog.md",
-    "diskPath": "references/tax-rules/2020/changelog.md"
+    "leafResourceId": "manual-testing-playbook/routing-and-state/tax-knowledge-base.md",
+    "diskPath": "manual-testing-playbook/routing-and-state/tax-knowledge-base.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/changes.md",
-    "diskPath": "references/tax-rules/2020/changes.md"
+    "leafResourceId": "manual-testing-playbook/routing-and-state/year-rollover-runbook.md",
+    "diskPath": "manual-testing-playbook/routing-and-state/year-rollover-runbook.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/income-tax/figures.md",
-    "diskPath": "references/tax-rules/2020/income-tax/figures.md"
+    "leafResourceId": "manual-testing-playbook/safety-and-privacy/answer-privacy.md",
+    "diskPath": "manual-testing-playbook/safety-and-privacy/answer-privacy.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/investments/figures.md",
-    "diskPath": "references/tax-rules/2020/investments/figures.md"
+    "leafResourceId": "manual-testing-playbook/safety-and-privacy/api-tool-handoff.md",
+    "diskPath": "manual-testing-playbook/safety-and-privacy/api-tool-handoff.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/costs-and-car/figures.md",
-    "diskPath": "references/tax-rules/2020/costs-and-car/figures.md"
+    "leafResourceId": "manual-testing-playbook/safety-and-privacy/cli-failure-blocked.md",
+    "diskPath": "manual-testing-playbook/safety-and-privacy/cli-failure-blocked.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/business-deductions/figures.md",
-    "diskPath": "references/tax-rules/2020/business-deductions/figures.md"
+    "leafResourceId": "manual-testing-playbook/safety-and-privacy/hostile-invoice-set.md",
+    "diskPath": "manual-testing-playbook/safety-and-privacy/hostile-invoice-set.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/pension-and-disability-insurance/figures.md",
-    "diskPath": "references/tax-rules/2020/pension-and-disability-insurance/figures.md"
+    "leafResourceId": "manual-testing-playbook/safety-and-privacy/privacy-boundary.md",
+    "diskPath": "manual-testing-playbook/safety-and-privacy/privacy-boundary.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/procedure/figures.md",
-    "diskPath": "references/tax-rules/2020/procedure/figures.md"
+    "leafResourceId": "manual-testing-playbook/tax-guidance-and-sources/current-year-zzp-question.md",
+    "diskPath": "manual-testing-playbook/tax-guidance-and-sources/current-year-zzp-question.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2020/health-insurance-contribution/figures.md",
-    "diskPath": "references/tax-rules/2020/health-insurance-contribution/figures.md"
+    "leafResourceId": "manual-testing-playbook/tax-guidance-and-sources/operator-tax-boundary.md",
+    "diskPath": "manual-testing-playbook/tax-guidance-and-sources/operator-tax-boundary.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/README.md",
-    "diskPath": "references/tax-rules/2021/README.md"
+    "leafResourceId": "manual-testing-playbook/tax-guidance-and-sources/pdf-source-list.md",
+    "diskPath": "manual-testing-playbook/tax-guidance-and-sources/pdf-source-list.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/work-relationship/figures.md",
-    "diskPath": "references/tax-rules/2021/work-relationship/figures.md"
+    "leafResourceId": "manual-testing-playbook/tax-guidance-and-sources/source-lookup.md",
+    "diskPath": "manual-testing-playbook/tax-guidance-and-sources/source-lookup.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/box-2/figures.md",
-    "diskPath": "references/tax-rules/2021/box-2/figures.md"
+    "leafResourceId": "manual-testing-playbook/vat-and-tax-returns/income-tax-return-pack.md",
+    "diskPath": "manual-testing-playbook/vat-and-tax-returns/income-tax-return-pack.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/box-3/figures.md",
-    "diskPath": "references/tax-rules/2021/box-3/figures.md"
+    "leafResourceId": "manual-testing-playbook/vat-and-tax-returns/tax-deliverable-filing-refusal.md",
+    "diskPath": "manual-testing-playbook/vat-and-tax-returns/tax-deliverable-filing-refusal.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/vat/figures.md",
-    "diskPath": "references/tax-rules/2021/vat/figures.md"
+    "leafResourceId": "manual-testing-playbook/vat-and-tax-returns/vat-return-correction-boundary.md",
+    "diskPath": "manual-testing-playbook/vat-and-tax-returns/vat-return-correction-boundary.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/private-company-and-corporate-tax/figures.md",
-    "diskPath": "references/tax-rules/2021/private-company-and-corporate-tax/figures.md"
+    "leafResourceId": "manual-testing-playbook/vat-and-tax-returns/vat-return-last-quarter.md",
+    "diskPath": "manual-testing-playbook/vat-and-tax-returns/vat-return-last-quarter.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/changelog.md",
-    "diskPath": "references/tax-rules/2021/changelog.md"
+    "leafResourceId": "manual-testing-playbook/vat-and-tax-returns/vat-return-normal-quarter.md",
+    "diskPath": "manual-testing-playbook/vat-and-tax-returns/vat-return-normal-quarter.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/changes.md",
-    "diskPath": "references/tax-rules/2021/changes.md"
+    "leafResourceId": "manual-testing-playbook/vat-and-tax-returns/vat-return-reverse-charge.md",
+    "diskPath": "manual-testing-playbook/vat-and-tax-returns/vat-return-reverse-charge.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/income-tax/figures.md",
-    "diskPath": "references/tax-rules/2021/income-tax/figures.md"
+    "leafResourceId": "manual-testing-playbook/vat-and-tax-returns/vat-return-small-business-scheme.md",
+    "diskPath": "manual-testing-playbook/vat-and-tax-returns/vat-return-small-business-scheme.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/investments/figures.md",
-    "diskPath": "references/tax-rules/2021/investments/figures.md"
+    "leafResourceId": "manual-testing-playbook/vat-and-tax-returns/yearly-overview-pack.md",
+    "diskPath": "manual-testing-playbook/vat-and-tax-returns/yearly-overview-pack.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/costs-and-car/figures.md",
-    "diskPath": "references/tax-rules/2021/costs-and-car/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/business-deductions/figures.md",
-    "diskPath": "references/tax-rules/2021/business-deductions/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/pension-and-disability-insurance/figures.md",
-    "diskPath": "references/tax-rules/2021/pension-and-disability-insurance/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/procedure/figures.md",
-    "diskPath": "references/tax-rules/2021/procedure/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2021/health-insurance-contribution/figures.md",
-    "diskPath": "references/tax-rules/2021/health-insurance-contribution/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/README.md",
-    "diskPath": "references/tax-rules/2022/README.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/work-relationship/figures.md",
-    "diskPath": "references/tax-rules/2022/work-relationship/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/box-2/figures.md",
-    "diskPath": "references/tax-rules/2022/box-2/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/box-3/figures.md",
-    "diskPath": "references/tax-rules/2022/box-3/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/vat/figures.md",
-    "diskPath": "references/tax-rules/2022/vat/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/private-company-and-corporate-tax/figures.md",
-    "diskPath": "references/tax-rules/2022/private-company-and-corporate-tax/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/changelog.md",
-    "diskPath": "references/tax-rules/2022/changelog.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/changes.md",
-    "diskPath": "references/tax-rules/2022/changes.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/income-tax/figures.md",
-    "diskPath": "references/tax-rules/2022/income-tax/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/investments/figures.md",
-    "diskPath": "references/tax-rules/2022/investments/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/costs-and-car/figures.md",
-    "diskPath": "references/tax-rules/2022/costs-and-car/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/business-deductions/figures.md",
-    "diskPath": "references/tax-rules/2022/business-deductions/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/pension-and-disability-insurance/figures.md",
-    "diskPath": "references/tax-rules/2022/pension-and-disability-insurance/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/procedure/figures.md",
-    "diskPath": "references/tax-rules/2022/procedure/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2022/health-insurance-contribution/figures.md",
-    "diskPath": "references/tax-rules/2022/health-insurance-contribution/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/README.md",
-    "diskPath": "references/tax-rules/2023/README.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/work-relationship/figures.md",
-    "diskPath": "references/tax-rules/2023/work-relationship/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/box-2/figures.md",
-    "diskPath": "references/tax-rules/2023/box-2/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/box-3/figures.md",
-    "diskPath": "references/tax-rules/2023/box-3/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/vat/figures.md",
-    "diskPath": "references/tax-rules/2023/vat/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/private-company-and-corporate-tax/figures.md",
-    "diskPath": "references/tax-rules/2023/private-company-and-corporate-tax/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/changelog.md",
-    "diskPath": "references/tax-rules/2023/changelog.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/changes.md",
-    "diskPath": "references/tax-rules/2023/changes.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/income-tax/figures.md",
-    "diskPath": "references/tax-rules/2023/income-tax/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/investments/figures.md",
-    "diskPath": "references/tax-rules/2023/investments/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/costs-and-car/figures.md",
-    "diskPath": "references/tax-rules/2023/costs-and-car/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/business-deductions/figures.md",
-    "diskPath": "references/tax-rules/2023/business-deductions/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/pension-and-disability-insurance/figures.md",
-    "diskPath": "references/tax-rules/2023/pension-and-disability-insurance/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/procedure/figures.md",
-    "diskPath": "references/tax-rules/2023/procedure/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2023/health-insurance-contribution/figures.md",
-    "diskPath": "references/tax-rules/2023/health-insurance-contribution/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/README.md",
-    "diskPath": "references/tax-rules/2024/README.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/work-relationship/figures.md",
-    "diskPath": "references/tax-rules/2024/work-relationship/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/box-2/figures.md",
-    "diskPath": "references/tax-rules/2024/box-2/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/box-3/figures.md",
-    "diskPath": "references/tax-rules/2024/box-3/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/vat/figures.md",
-    "diskPath": "references/tax-rules/2024/vat/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/private-company-and-corporate-tax/figures.md",
-    "diskPath": "references/tax-rules/2024/private-company-and-corporate-tax/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/changelog.md",
-    "diskPath": "references/tax-rules/2024/changelog.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/changes.md",
-    "diskPath": "references/tax-rules/2024/changes.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/income-tax/figures.md",
-    "diskPath": "references/tax-rules/2024/income-tax/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/investments/figures.md",
-    "diskPath": "references/tax-rules/2024/investments/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/costs-and-car/figures.md",
-    "diskPath": "references/tax-rules/2024/costs-and-car/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/business-deductions/figures.md",
-    "diskPath": "references/tax-rules/2024/business-deductions/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/pension-and-disability-insurance/figures.md",
-    "diskPath": "references/tax-rules/2024/pension-and-disability-insurance/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/procedure/figures.md",
-    "diskPath": "references/tax-rules/2024/procedure/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2024/health-insurance-contribution/figures.md",
-    "diskPath": "references/tax-rules/2024/health-insurance-contribution/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/README.md",
-    "diskPath": "references/tax-rules/2025/README.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/work-relationship/figures.md",
-    "diskPath": "references/tax-rules/2025/work-relationship/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/box-2/figures.md",
-    "diskPath": "references/tax-rules/2025/box-2/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/box-3/figures.md",
-    "diskPath": "references/tax-rules/2025/box-3/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/vat/figures.md",
-    "diskPath": "references/tax-rules/2025/vat/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/private-company-and-corporate-tax/figures.md",
-    "diskPath": "references/tax-rules/2025/private-company-and-corporate-tax/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/changelog.md",
-    "diskPath": "references/tax-rules/2025/changelog.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/changes.md",
-    "diskPath": "references/tax-rules/2025/changes.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/income-tax/figures.md",
-    "diskPath": "references/tax-rules/2025/income-tax/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/investments/figures.md",
-    "diskPath": "references/tax-rules/2025/investments/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/costs-and-car/figures.md",
-    "diskPath": "references/tax-rules/2025/costs-and-car/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/business-deductions/figures.md",
-    "diskPath": "references/tax-rules/2025/business-deductions/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/pension-and-disability-insurance/figures.md",
-    "diskPath": "references/tax-rules/2025/pension-and-disability-insurance/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/procedure/figures.md",
-    "diskPath": "references/tax-rules/2025/procedure/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2025/health-insurance-contribution/figures.md",
-    "diskPath": "references/tax-rules/2025/health-insurance-contribution/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/README.md",
-    "diskPath": "references/tax-rules/2026/README.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/work-relationship/figures.md",
-    "diskPath": "references/tax-rules/2026/work-relationship/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/box-2/figures.md",
-    "diskPath": "references/tax-rules/2026/box-2/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/box-3/figures.md",
-    "diskPath": "references/tax-rules/2026/box-3/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/vat/figures.md",
-    "diskPath": "references/tax-rules/2026/vat/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/private-company-and-corporate-tax/figures.md",
-    "diskPath": "references/tax-rules/2026/private-company-and-corporate-tax/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/changelog.md",
-    "diskPath": "references/tax-rules/2026/changelog.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/changes.md",
-    "diskPath": "references/tax-rules/2026/changes.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/income-tax/figures.md",
-    "diskPath": "references/tax-rules/2026/income-tax/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/investments/figures.md",
-    "diskPath": "references/tax-rules/2026/investments/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/costs-and-car/figures.md",
-    "diskPath": "references/tax-rules/2026/costs-and-car/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/business-deductions/figures.md",
-    "diskPath": "references/tax-rules/2026/business-deductions/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/pension-and-disability-insurance/figures.md",
-    "diskPath": "references/tax-rules/2026/pension-and-disability-insurance/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/procedure/figures.md",
-    "diskPath": "references/tax-rules/2026/procedure/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2026/health-insurance-contribution/figures.md",
-    "diskPath": "references/tax-rules/2026/health-insurance-contribution/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/README.md",
-    "diskPath": "references/tax-rules/2027/README.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/work-relationship/figures.md",
-    "diskPath": "references/tax-rules/2027/work-relationship/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/box-2/figures.md",
-    "diskPath": "references/tax-rules/2027/box-2/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/box-3/figures.md",
-    "diskPath": "references/tax-rules/2027/box-3/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/vat/figures.md",
-    "diskPath": "references/tax-rules/2027/vat/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/private-company-and-corporate-tax/figures.md",
-    "diskPath": "references/tax-rules/2027/private-company-and-corporate-tax/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/changelog.md",
-    "diskPath": "references/tax-rules/2027/changelog.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/changes.md",
-    "diskPath": "references/tax-rules/2027/changes.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/income-tax/figures.md",
-    "diskPath": "references/tax-rules/2027/income-tax/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/investments/figures.md",
-    "diskPath": "references/tax-rules/2027/investments/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/costs-and-car/figures.md",
-    "diskPath": "references/tax-rules/2027/costs-and-car/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/business-deductions/figures.md",
-    "diskPath": "references/tax-rules/2027/business-deductions/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/pension-and-disability-insurance/figures.md",
-    "diskPath": "references/tax-rules/2027/pension-and-disability-insurance/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/procedure/figures.md",
-    "diskPath": "references/tax-rules/2027/procedure/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/2027/health-insurance-contribution/figures.md",
-    "diskPath": "references/tax-rules/2027/health-insurance-contribution/figures.md"
-  },
-  {
-    "workflowMode": "sk-moneybird-accountant",
-    "leafResourceId": "references/tax-rules/dutch-tax-rules.md",
-    "diskPath": "references/tax-rules/dutch-tax-rules.md"
+    "leafResourceId": "references/README.md",
+    "diskPath": "references/README.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "references/fixed-assets.md",
     "diskPath": "references/fixed-assets.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/README.md",
+    "diskPath": "references/glossary/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/abbreviations.md",
+    "diskPath": "references/glossary/abbreviations.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/bookkeeping.md",
+    "diskPath": "references/glossary/bookkeeping.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/box-2.md",
+    "diskPath": "references/glossary/box-2.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/box-3.md",
+    "diskPath": "references/glossary/box-3.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/business-deductions.md",
+    "diskPath": "references/glossary/business-deductions.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/costs-and-car.md",
+    "diskPath": "references/glossary/costs-and-car.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/general.md",
+    "diskPath": "references/glossary/general.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/health-insurance-contribution.md",
+    "diskPath": "references/glossary/health-insurance-contribution.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/income-tax.md",
+    "diskPath": "references/glossary/income-tax.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/investments.md",
+    "diskPath": "references/glossary/investments.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/official-names.md",
+    "diskPath": "references/glossary/official-names.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/pension-and-disability-insurance.md",
+    "diskPath": "references/glossary/pension-and-disability-insurance.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/private-company-and-corporate-tax.md",
+    "diskPath": "references/glossary/private-company-and-corporate-tax.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/procedure.md",
+    "diskPath": "references/glossary/procedure.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/vat.md",
+    "diskPath": "references/glossary/vat.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/glossary/work-relationship.md",
+    "diskPath": "references/glossary/work-relationship.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/income-tax-return/README.md",
+    "diskPath": "references/income-tax-return/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/income-tax-return/investment-and-claim-register.md",
+    "diskPath": "references/income-tax-return/investment-and-claim-register.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/income-tax-return/operator-inputs.md",
+    "diskPath": "references/income-tax-return/operator-inputs.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/income-tax-return/procedure.md",
+    "diskPath": "references/income-tax-return/procedure.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/income-tax-return/risks-and-open-points.md",
+    "diskPath": "references/income-tax-return/risks-and-open-points.md"
   },
   {
     "workflowMode": "sk-moneybird-accountant",
@@ -971,6 +651,2121 @@
   },
   {
     "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/README.md",
+    "diskPath": "references/tax-rules/2020/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/box-2/examples.md",
+    "diskPath": "references/tax-rules/2020/box-2/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/box-2/figures.md",
+    "diskPath": "references/tax-rules/2020/box-2/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/box-2/notes.md",
+    "diskPath": "references/tax-rules/2020/box-2/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/box-2/rules.md",
+    "diskPath": "references/tax-rules/2020/box-2/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/box-3/examples.md",
+    "diskPath": "references/tax-rules/2020/box-3/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/box-3/figures.md",
+    "diskPath": "references/tax-rules/2020/box-3/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/box-3/notes.md",
+    "diskPath": "references/tax-rules/2020/box-3/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/box-3/rules.md",
+    "diskPath": "references/tax-rules/2020/box-3/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/business-deductions/examples.md",
+    "diskPath": "references/tax-rules/2020/business-deductions/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/business-deductions/figures.md",
+    "diskPath": "references/tax-rules/2020/business-deductions/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/business-deductions/notes.md",
+    "diskPath": "references/tax-rules/2020/business-deductions/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/business-deductions/rules.md",
+    "diskPath": "references/tax-rules/2020/business-deductions/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/changelog.md",
+    "diskPath": "references/tax-rules/2020/changelog.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/changes.md",
+    "diskPath": "references/tax-rules/2020/changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/costs-and-car/examples.md",
+    "diskPath": "references/tax-rules/2020/costs-and-car/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/costs-and-car/figures.md",
+    "diskPath": "references/tax-rules/2020/costs-and-car/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/costs-and-car/notes.md",
+    "diskPath": "references/tax-rules/2020/costs-and-car/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/costs-and-car/rules.md",
+    "diskPath": "references/tax-rules/2020/costs-and-car/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/health-insurance-contribution/examples.md",
+    "diskPath": "references/tax-rules/2020/health-insurance-contribution/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/health-insurance-contribution/figures.md",
+    "diskPath": "references/tax-rules/2020/health-insurance-contribution/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/health-insurance-contribution/notes.md",
+    "diskPath": "references/tax-rules/2020/health-insurance-contribution/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/health-insurance-contribution/rules.md",
+    "diskPath": "references/tax-rules/2020/health-insurance-contribution/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/income-tax/examples.md",
+    "diskPath": "references/tax-rules/2020/income-tax/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/income-tax/figures.md",
+    "diskPath": "references/tax-rules/2020/income-tax/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/income-tax/notes.md",
+    "diskPath": "references/tax-rules/2020/income-tax/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/income-tax/rules.md",
+    "diskPath": "references/tax-rules/2020/income-tax/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/investments/examples.md",
+    "diskPath": "references/tax-rules/2020/investments/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/investments/figures.md",
+    "diskPath": "references/tax-rules/2020/investments/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/investments/notes.md",
+    "diskPath": "references/tax-rules/2020/investments/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/investments/rules.md",
+    "diskPath": "references/tax-rules/2020/investments/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/pension-and-disability-insurance/examples.md",
+    "diskPath": "references/tax-rules/2020/pension-and-disability-insurance/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/pension-and-disability-insurance/figures.md",
+    "diskPath": "references/tax-rules/2020/pension-and-disability-insurance/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/pension-and-disability-insurance/notes.md",
+    "diskPath": "references/tax-rules/2020/pension-and-disability-insurance/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/pension-and-disability-insurance/rules.md",
+    "diskPath": "references/tax-rules/2020/pension-and-disability-insurance/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/private-company-and-corporate-tax/examples.md",
+    "diskPath": "references/tax-rules/2020/private-company-and-corporate-tax/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/private-company-and-corporate-tax/figures.md",
+    "diskPath": "references/tax-rules/2020/private-company-and-corporate-tax/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/private-company-and-corporate-tax/notes.md",
+    "diskPath": "references/tax-rules/2020/private-company-and-corporate-tax/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/private-company-and-corporate-tax/rules.md",
+    "diskPath": "references/tax-rules/2020/private-company-and-corporate-tax/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/procedure/examples.md",
+    "diskPath": "references/tax-rules/2020/procedure/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/procedure/figures.md",
+    "diskPath": "references/tax-rules/2020/procedure/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/procedure/notes.md",
+    "diskPath": "references/tax-rules/2020/procedure/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/procedure/rules.md",
+    "diskPath": "references/tax-rules/2020/procedure/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/vat/examples.md",
+    "diskPath": "references/tax-rules/2020/vat/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/vat/figures.md",
+    "diskPath": "references/tax-rules/2020/vat/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/vat/notes.md",
+    "diskPath": "references/tax-rules/2020/vat/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/vat/rules.md",
+    "diskPath": "references/tax-rules/2020/vat/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/work-relationship/examples.md",
+    "diskPath": "references/tax-rules/2020/work-relationship/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/work-relationship/figures.md",
+    "diskPath": "references/tax-rules/2020/work-relationship/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/work-relationship/notes.md",
+    "diskPath": "references/tax-rules/2020/work-relationship/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2020/work-relationship/rules.md",
+    "diskPath": "references/tax-rules/2020/work-relationship/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/README.md",
+    "diskPath": "references/tax-rules/2021/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/box-2/examples.md",
+    "diskPath": "references/tax-rules/2021/box-2/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/box-2/figures.md",
+    "diskPath": "references/tax-rules/2021/box-2/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/box-2/notes.md",
+    "diskPath": "references/tax-rules/2021/box-2/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/box-2/rules.md",
+    "diskPath": "references/tax-rules/2021/box-2/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/box-3/examples.md",
+    "diskPath": "references/tax-rules/2021/box-3/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/box-3/figures.md",
+    "diskPath": "references/tax-rules/2021/box-3/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/box-3/notes.md",
+    "diskPath": "references/tax-rules/2021/box-3/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/box-3/rules.md",
+    "diskPath": "references/tax-rules/2021/box-3/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/business-deductions/examples.md",
+    "diskPath": "references/tax-rules/2021/business-deductions/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/business-deductions/figures.md",
+    "diskPath": "references/tax-rules/2021/business-deductions/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/business-deductions/notes.md",
+    "diskPath": "references/tax-rules/2021/business-deductions/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/business-deductions/rules.md",
+    "diskPath": "references/tax-rules/2021/business-deductions/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/changelog.md",
+    "diskPath": "references/tax-rules/2021/changelog.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/changes.md",
+    "diskPath": "references/tax-rules/2021/changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/costs-and-car/examples.md",
+    "diskPath": "references/tax-rules/2021/costs-and-car/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/costs-and-car/figures.md",
+    "diskPath": "references/tax-rules/2021/costs-and-car/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/costs-and-car/notes.md",
+    "diskPath": "references/tax-rules/2021/costs-and-car/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/costs-and-car/rules.md",
+    "diskPath": "references/tax-rules/2021/costs-and-car/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/health-insurance-contribution/examples.md",
+    "diskPath": "references/tax-rules/2021/health-insurance-contribution/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/health-insurance-contribution/figures.md",
+    "diskPath": "references/tax-rules/2021/health-insurance-contribution/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/health-insurance-contribution/notes.md",
+    "diskPath": "references/tax-rules/2021/health-insurance-contribution/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/health-insurance-contribution/rules.md",
+    "diskPath": "references/tax-rules/2021/health-insurance-contribution/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/income-tax/examples.md",
+    "diskPath": "references/tax-rules/2021/income-tax/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/income-tax/figures.md",
+    "diskPath": "references/tax-rules/2021/income-tax/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/income-tax/notes.md",
+    "diskPath": "references/tax-rules/2021/income-tax/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/income-tax/rules.md",
+    "diskPath": "references/tax-rules/2021/income-tax/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/investments/examples.md",
+    "diskPath": "references/tax-rules/2021/investments/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/investments/figures.md",
+    "diskPath": "references/tax-rules/2021/investments/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/investments/notes.md",
+    "diskPath": "references/tax-rules/2021/investments/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/investments/rules.md",
+    "diskPath": "references/tax-rules/2021/investments/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/pension-and-disability-insurance/examples.md",
+    "diskPath": "references/tax-rules/2021/pension-and-disability-insurance/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/pension-and-disability-insurance/figures.md",
+    "diskPath": "references/tax-rules/2021/pension-and-disability-insurance/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/pension-and-disability-insurance/notes.md",
+    "diskPath": "references/tax-rules/2021/pension-and-disability-insurance/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/pension-and-disability-insurance/rules.md",
+    "diskPath": "references/tax-rules/2021/pension-and-disability-insurance/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/private-company-and-corporate-tax/examples.md",
+    "diskPath": "references/tax-rules/2021/private-company-and-corporate-tax/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/private-company-and-corporate-tax/figures.md",
+    "diskPath": "references/tax-rules/2021/private-company-and-corporate-tax/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/private-company-and-corporate-tax/notes.md",
+    "diskPath": "references/tax-rules/2021/private-company-and-corporate-tax/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/private-company-and-corporate-tax/rules.md",
+    "diskPath": "references/tax-rules/2021/private-company-and-corporate-tax/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/procedure/examples.md",
+    "diskPath": "references/tax-rules/2021/procedure/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/procedure/figures.md",
+    "diskPath": "references/tax-rules/2021/procedure/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/procedure/notes.md",
+    "diskPath": "references/tax-rules/2021/procedure/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/procedure/rules.md",
+    "diskPath": "references/tax-rules/2021/procedure/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/vat/examples.md",
+    "diskPath": "references/tax-rules/2021/vat/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/vat/figures.md",
+    "diskPath": "references/tax-rules/2021/vat/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/vat/notes.md",
+    "diskPath": "references/tax-rules/2021/vat/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/vat/rules.md",
+    "diskPath": "references/tax-rules/2021/vat/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/work-relationship/examples.md",
+    "diskPath": "references/tax-rules/2021/work-relationship/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/work-relationship/figures.md",
+    "diskPath": "references/tax-rules/2021/work-relationship/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/work-relationship/notes.md",
+    "diskPath": "references/tax-rules/2021/work-relationship/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2021/work-relationship/rules.md",
+    "diskPath": "references/tax-rules/2021/work-relationship/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/README.md",
+    "diskPath": "references/tax-rules/2022/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/box-2/examples.md",
+    "diskPath": "references/tax-rules/2022/box-2/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/box-2/figures.md",
+    "diskPath": "references/tax-rules/2022/box-2/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/box-2/notes.md",
+    "diskPath": "references/tax-rules/2022/box-2/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/box-2/rules.md",
+    "diskPath": "references/tax-rules/2022/box-2/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/box-3/examples.md",
+    "diskPath": "references/tax-rules/2022/box-3/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/box-3/figures.md",
+    "diskPath": "references/tax-rules/2022/box-3/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/box-3/notes.md",
+    "diskPath": "references/tax-rules/2022/box-3/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/box-3/rules.md",
+    "diskPath": "references/tax-rules/2022/box-3/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/business-deductions/examples.md",
+    "diskPath": "references/tax-rules/2022/business-deductions/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/business-deductions/figures.md",
+    "diskPath": "references/tax-rules/2022/business-deductions/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/business-deductions/notes.md",
+    "diskPath": "references/tax-rules/2022/business-deductions/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/business-deductions/rules.md",
+    "diskPath": "references/tax-rules/2022/business-deductions/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/changelog.md",
+    "diskPath": "references/tax-rules/2022/changelog.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/changes.md",
+    "diskPath": "references/tax-rules/2022/changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/costs-and-car/examples.md",
+    "diskPath": "references/tax-rules/2022/costs-and-car/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/costs-and-car/figures.md",
+    "diskPath": "references/tax-rules/2022/costs-and-car/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/costs-and-car/notes.md",
+    "diskPath": "references/tax-rules/2022/costs-and-car/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/costs-and-car/rules.md",
+    "diskPath": "references/tax-rules/2022/costs-and-car/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/health-insurance-contribution/examples.md",
+    "diskPath": "references/tax-rules/2022/health-insurance-contribution/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/health-insurance-contribution/figures.md",
+    "diskPath": "references/tax-rules/2022/health-insurance-contribution/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/health-insurance-contribution/notes.md",
+    "diskPath": "references/tax-rules/2022/health-insurance-contribution/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/health-insurance-contribution/rules.md",
+    "diskPath": "references/tax-rules/2022/health-insurance-contribution/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/income-tax/examples.md",
+    "diskPath": "references/tax-rules/2022/income-tax/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/income-tax/figures.md",
+    "diskPath": "references/tax-rules/2022/income-tax/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/income-tax/notes.md",
+    "diskPath": "references/tax-rules/2022/income-tax/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/income-tax/rules.md",
+    "diskPath": "references/tax-rules/2022/income-tax/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/investments/examples.md",
+    "diskPath": "references/tax-rules/2022/investments/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/investments/figures.md",
+    "diskPath": "references/tax-rules/2022/investments/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/investments/notes.md",
+    "diskPath": "references/tax-rules/2022/investments/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/investments/rules.md",
+    "diskPath": "references/tax-rules/2022/investments/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/pension-and-disability-insurance/examples.md",
+    "diskPath": "references/tax-rules/2022/pension-and-disability-insurance/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/pension-and-disability-insurance/figures.md",
+    "diskPath": "references/tax-rules/2022/pension-and-disability-insurance/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/pension-and-disability-insurance/notes.md",
+    "diskPath": "references/tax-rules/2022/pension-and-disability-insurance/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/pension-and-disability-insurance/rules.md",
+    "diskPath": "references/tax-rules/2022/pension-and-disability-insurance/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/private-company-and-corporate-tax/examples.md",
+    "diskPath": "references/tax-rules/2022/private-company-and-corporate-tax/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/private-company-and-corporate-tax/figures.md",
+    "diskPath": "references/tax-rules/2022/private-company-and-corporate-tax/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/private-company-and-corporate-tax/notes.md",
+    "diskPath": "references/tax-rules/2022/private-company-and-corporate-tax/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/private-company-and-corporate-tax/rules.md",
+    "diskPath": "references/tax-rules/2022/private-company-and-corporate-tax/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/procedure/examples.md",
+    "diskPath": "references/tax-rules/2022/procedure/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/procedure/figures.md",
+    "diskPath": "references/tax-rules/2022/procedure/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/procedure/notes.md",
+    "diskPath": "references/tax-rules/2022/procedure/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/procedure/rules.md",
+    "diskPath": "references/tax-rules/2022/procedure/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/vat/examples.md",
+    "diskPath": "references/tax-rules/2022/vat/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/vat/figures.md",
+    "diskPath": "references/tax-rules/2022/vat/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/vat/notes.md",
+    "diskPath": "references/tax-rules/2022/vat/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/vat/rules.md",
+    "diskPath": "references/tax-rules/2022/vat/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/work-relationship/examples.md",
+    "diskPath": "references/tax-rules/2022/work-relationship/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/work-relationship/figures.md",
+    "diskPath": "references/tax-rules/2022/work-relationship/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/work-relationship/notes.md",
+    "diskPath": "references/tax-rules/2022/work-relationship/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2022/work-relationship/rules.md",
+    "diskPath": "references/tax-rules/2022/work-relationship/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/README.md",
+    "diskPath": "references/tax-rules/2023/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/box-2/examples.md",
+    "diskPath": "references/tax-rules/2023/box-2/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/box-2/figures.md",
+    "diskPath": "references/tax-rules/2023/box-2/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/box-2/notes.md",
+    "diskPath": "references/tax-rules/2023/box-2/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/box-2/rules.md",
+    "diskPath": "references/tax-rules/2023/box-2/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/box-3/examples.md",
+    "diskPath": "references/tax-rules/2023/box-3/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/box-3/figures.md",
+    "diskPath": "references/tax-rules/2023/box-3/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/box-3/notes.md",
+    "diskPath": "references/tax-rules/2023/box-3/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/box-3/rules.md",
+    "diskPath": "references/tax-rules/2023/box-3/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/business-deductions/examples.md",
+    "diskPath": "references/tax-rules/2023/business-deductions/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/business-deductions/figures.md",
+    "diskPath": "references/tax-rules/2023/business-deductions/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/business-deductions/notes.md",
+    "diskPath": "references/tax-rules/2023/business-deductions/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/business-deductions/rules.md",
+    "diskPath": "references/tax-rules/2023/business-deductions/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/changelog.md",
+    "diskPath": "references/tax-rules/2023/changelog.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/changes.md",
+    "diskPath": "references/tax-rules/2023/changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/costs-and-car/examples.md",
+    "diskPath": "references/tax-rules/2023/costs-and-car/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/costs-and-car/figures.md",
+    "diskPath": "references/tax-rules/2023/costs-and-car/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/costs-and-car/notes.md",
+    "diskPath": "references/tax-rules/2023/costs-and-car/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/costs-and-car/rules.md",
+    "diskPath": "references/tax-rules/2023/costs-and-car/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/health-insurance-contribution/examples.md",
+    "diskPath": "references/tax-rules/2023/health-insurance-contribution/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/health-insurance-contribution/figures.md",
+    "diskPath": "references/tax-rules/2023/health-insurance-contribution/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/health-insurance-contribution/notes.md",
+    "diskPath": "references/tax-rules/2023/health-insurance-contribution/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/health-insurance-contribution/rules.md",
+    "diskPath": "references/tax-rules/2023/health-insurance-contribution/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/income-tax/examples.md",
+    "diskPath": "references/tax-rules/2023/income-tax/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/income-tax/figures.md",
+    "diskPath": "references/tax-rules/2023/income-tax/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/income-tax/notes.md",
+    "diskPath": "references/tax-rules/2023/income-tax/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/income-tax/rules.md",
+    "diskPath": "references/tax-rules/2023/income-tax/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/investments/examples.md",
+    "diskPath": "references/tax-rules/2023/investments/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/investments/figures.md",
+    "diskPath": "references/tax-rules/2023/investments/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/investments/notes.md",
+    "diskPath": "references/tax-rules/2023/investments/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/investments/rules.md",
+    "diskPath": "references/tax-rules/2023/investments/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/pension-and-disability-insurance/examples.md",
+    "diskPath": "references/tax-rules/2023/pension-and-disability-insurance/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/pension-and-disability-insurance/figures.md",
+    "diskPath": "references/tax-rules/2023/pension-and-disability-insurance/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/pension-and-disability-insurance/notes.md",
+    "diskPath": "references/tax-rules/2023/pension-and-disability-insurance/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/pension-and-disability-insurance/rules.md",
+    "diskPath": "references/tax-rules/2023/pension-and-disability-insurance/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/private-company-and-corporate-tax/examples.md",
+    "diskPath": "references/tax-rules/2023/private-company-and-corporate-tax/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/private-company-and-corporate-tax/figures.md",
+    "diskPath": "references/tax-rules/2023/private-company-and-corporate-tax/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/private-company-and-corporate-tax/notes.md",
+    "diskPath": "references/tax-rules/2023/private-company-and-corporate-tax/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/private-company-and-corporate-tax/rules.md",
+    "diskPath": "references/tax-rules/2023/private-company-and-corporate-tax/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/procedure/examples.md",
+    "diskPath": "references/tax-rules/2023/procedure/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/procedure/figures.md",
+    "diskPath": "references/tax-rules/2023/procedure/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/procedure/notes.md",
+    "diskPath": "references/tax-rules/2023/procedure/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/procedure/rules.md",
+    "diskPath": "references/tax-rules/2023/procedure/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/vat/examples.md",
+    "diskPath": "references/tax-rules/2023/vat/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/vat/figures.md",
+    "diskPath": "references/tax-rules/2023/vat/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/vat/notes.md",
+    "diskPath": "references/tax-rules/2023/vat/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/vat/rules.md",
+    "diskPath": "references/tax-rules/2023/vat/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/work-relationship/examples.md",
+    "diskPath": "references/tax-rules/2023/work-relationship/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/work-relationship/figures.md",
+    "diskPath": "references/tax-rules/2023/work-relationship/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/work-relationship/notes.md",
+    "diskPath": "references/tax-rules/2023/work-relationship/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2023/work-relationship/rules.md",
+    "diskPath": "references/tax-rules/2023/work-relationship/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/README.md",
+    "diskPath": "references/tax-rules/2024/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/box-2/examples.md",
+    "diskPath": "references/tax-rules/2024/box-2/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/box-2/figures.md",
+    "diskPath": "references/tax-rules/2024/box-2/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/box-2/notes.md",
+    "diskPath": "references/tax-rules/2024/box-2/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/box-2/rules.md",
+    "diskPath": "references/tax-rules/2024/box-2/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/box-3/examples.md",
+    "diskPath": "references/tax-rules/2024/box-3/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/box-3/figures.md",
+    "diskPath": "references/tax-rules/2024/box-3/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/box-3/notes.md",
+    "diskPath": "references/tax-rules/2024/box-3/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/box-3/rules.md",
+    "diskPath": "references/tax-rules/2024/box-3/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/business-deductions/examples.md",
+    "diskPath": "references/tax-rules/2024/business-deductions/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/business-deductions/figures.md",
+    "diskPath": "references/tax-rules/2024/business-deductions/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/business-deductions/notes.md",
+    "diskPath": "references/tax-rules/2024/business-deductions/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/business-deductions/rules.md",
+    "diskPath": "references/tax-rules/2024/business-deductions/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/changelog.md",
+    "diskPath": "references/tax-rules/2024/changelog.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/changes.md",
+    "diskPath": "references/tax-rules/2024/changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/costs-and-car/examples.md",
+    "diskPath": "references/tax-rules/2024/costs-and-car/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/costs-and-car/figures.md",
+    "diskPath": "references/tax-rules/2024/costs-and-car/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/costs-and-car/notes.md",
+    "diskPath": "references/tax-rules/2024/costs-and-car/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/costs-and-car/rules.md",
+    "diskPath": "references/tax-rules/2024/costs-and-car/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/health-insurance-contribution/examples.md",
+    "diskPath": "references/tax-rules/2024/health-insurance-contribution/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/health-insurance-contribution/figures.md",
+    "diskPath": "references/tax-rules/2024/health-insurance-contribution/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/health-insurance-contribution/notes.md",
+    "diskPath": "references/tax-rules/2024/health-insurance-contribution/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/health-insurance-contribution/rules.md",
+    "diskPath": "references/tax-rules/2024/health-insurance-contribution/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/income-tax/examples.md",
+    "diskPath": "references/tax-rules/2024/income-tax/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/income-tax/figures.md",
+    "diskPath": "references/tax-rules/2024/income-tax/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/income-tax/notes.md",
+    "diskPath": "references/tax-rules/2024/income-tax/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/income-tax/rules.md",
+    "diskPath": "references/tax-rules/2024/income-tax/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/investments/examples.md",
+    "diskPath": "references/tax-rules/2024/investments/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/investments/figures.md",
+    "diskPath": "references/tax-rules/2024/investments/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/investments/notes.md",
+    "diskPath": "references/tax-rules/2024/investments/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/investments/rules.md",
+    "diskPath": "references/tax-rules/2024/investments/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/pension-and-disability-insurance/examples.md",
+    "diskPath": "references/tax-rules/2024/pension-and-disability-insurance/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/pension-and-disability-insurance/figures.md",
+    "diskPath": "references/tax-rules/2024/pension-and-disability-insurance/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/pension-and-disability-insurance/notes.md",
+    "diskPath": "references/tax-rules/2024/pension-and-disability-insurance/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/pension-and-disability-insurance/rules.md",
+    "diskPath": "references/tax-rules/2024/pension-and-disability-insurance/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/private-company-and-corporate-tax/examples.md",
+    "diskPath": "references/tax-rules/2024/private-company-and-corporate-tax/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/private-company-and-corporate-tax/figures.md",
+    "diskPath": "references/tax-rules/2024/private-company-and-corporate-tax/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/private-company-and-corporate-tax/notes.md",
+    "diskPath": "references/tax-rules/2024/private-company-and-corporate-tax/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/private-company-and-corporate-tax/rules.md",
+    "diskPath": "references/tax-rules/2024/private-company-and-corporate-tax/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/procedure/examples.md",
+    "diskPath": "references/tax-rules/2024/procedure/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/procedure/figures.md",
+    "diskPath": "references/tax-rules/2024/procedure/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/procedure/notes.md",
+    "diskPath": "references/tax-rules/2024/procedure/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/procedure/rules.md",
+    "diskPath": "references/tax-rules/2024/procedure/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/vat/examples.md",
+    "diskPath": "references/tax-rules/2024/vat/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/vat/figures.md",
+    "diskPath": "references/tax-rules/2024/vat/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/vat/notes.md",
+    "diskPath": "references/tax-rules/2024/vat/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/vat/rules.md",
+    "diskPath": "references/tax-rules/2024/vat/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/work-relationship/examples.md",
+    "diskPath": "references/tax-rules/2024/work-relationship/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/work-relationship/figures.md",
+    "diskPath": "references/tax-rules/2024/work-relationship/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/work-relationship/notes.md",
+    "diskPath": "references/tax-rules/2024/work-relationship/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2024/work-relationship/rules.md",
+    "diskPath": "references/tax-rules/2024/work-relationship/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/README.md",
+    "diskPath": "references/tax-rules/2025/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/box-2/examples.md",
+    "diskPath": "references/tax-rules/2025/box-2/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/box-2/figures.md",
+    "diskPath": "references/tax-rules/2025/box-2/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/box-2/notes.md",
+    "diskPath": "references/tax-rules/2025/box-2/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/box-2/rules.md",
+    "diskPath": "references/tax-rules/2025/box-2/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/box-3/examples.md",
+    "diskPath": "references/tax-rules/2025/box-3/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/box-3/figures.md",
+    "diskPath": "references/tax-rules/2025/box-3/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/box-3/notes.md",
+    "diskPath": "references/tax-rules/2025/box-3/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/box-3/rules.md",
+    "diskPath": "references/tax-rules/2025/box-3/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/business-deductions/examples.md",
+    "diskPath": "references/tax-rules/2025/business-deductions/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/business-deductions/figures.md",
+    "diskPath": "references/tax-rules/2025/business-deductions/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/business-deductions/notes.md",
+    "diskPath": "references/tax-rules/2025/business-deductions/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/business-deductions/rules.md",
+    "diskPath": "references/tax-rules/2025/business-deductions/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/changelog.md",
+    "diskPath": "references/tax-rules/2025/changelog.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/changes.md",
+    "diskPath": "references/tax-rules/2025/changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/costs-and-car/examples.md",
+    "diskPath": "references/tax-rules/2025/costs-and-car/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/costs-and-car/figures.md",
+    "diskPath": "references/tax-rules/2025/costs-and-car/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/costs-and-car/notes.md",
+    "diskPath": "references/tax-rules/2025/costs-and-car/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/costs-and-car/rules.md",
+    "diskPath": "references/tax-rules/2025/costs-and-car/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/health-insurance-contribution/examples.md",
+    "diskPath": "references/tax-rules/2025/health-insurance-contribution/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/health-insurance-contribution/figures.md",
+    "diskPath": "references/tax-rules/2025/health-insurance-contribution/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/health-insurance-contribution/notes.md",
+    "diskPath": "references/tax-rules/2025/health-insurance-contribution/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/health-insurance-contribution/rules.md",
+    "diskPath": "references/tax-rules/2025/health-insurance-contribution/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/income-tax/examples.md",
+    "diskPath": "references/tax-rules/2025/income-tax/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/income-tax/figures.md",
+    "diskPath": "references/tax-rules/2025/income-tax/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/income-tax/notes.md",
+    "diskPath": "references/tax-rules/2025/income-tax/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/income-tax/rules.md",
+    "diskPath": "references/tax-rules/2025/income-tax/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/investments/examples.md",
+    "diskPath": "references/tax-rules/2025/investments/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/investments/figures.md",
+    "diskPath": "references/tax-rules/2025/investments/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/investments/notes.md",
+    "diskPath": "references/tax-rules/2025/investments/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/investments/rules.md",
+    "diskPath": "references/tax-rules/2025/investments/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/pension-and-disability-insurance/examples.md",
+    "diskPath": "references/tax-rules/2025/pension-and-disability-insurance/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/pension-and-disability-insurance/figures.md",
+    "diskPath": "references/tax-rules/2025/pension-and-disability-insurance/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/pension-and-disability-insurance/notes.md",
+    "diskPath": "references/tax-rules/2025/pension-and-disability-insurance/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/pension-and-disability-insurance/rules.md",
+    "diskPath": "references/tax-rules/2025/pension-and-disability-insurance/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/private-company-and-corporate-tax/examples.md",
+    "diskPath": "references/tax-rules/2025/private-company-and-corporate-tax/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/private-company-and-corporate-tax/figures.md",
+    "diskPath": "references/tax-rules/2025/private-company-and-corporate-tax/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/private-company-and-corporate-tax/notes.md",
+    "diskPath": "references/tax-rules/2025/private-company-and-corporate-tax/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/private-company-and-corporate-tax/rules.md",
+    "diskPath": "references/tax-rules/2025/private-company-and-corporate-tax/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/procedure/examples.md",
+    "diskPath": "references/tax-rules/2025/procedure/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/procedure/figures.md",
+    "diskPath": "references/tax-rules/2025/procedure/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/procedure/notes.md",
+    "diskPath": "references/tax-rules/2025/procedure/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/procedure/rules.md",
+    "diskPath": "references/tax-rules/2025/procedure/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/vat/examples.md",
+    "diskPath": "references/tax-rules/2025/vat/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/vat/figures.md",
+    "diskPath": "references/tax-rules/2025/vat/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/vat/notes.md",
+    "diskPath": "references/tax-rules/2025/vat/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/vat/rules.md",
+    "diskPath": "references/tax-rules/2025/vat/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/work-relationship/examples.md",
+    "diskPath": "references/tax-rules/2025/work-relationship/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/work-relationship/figures.md",
+    "diskPath": "references/tax-rules/2025/work-relationship/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/work-relationship/notes.md",
+    "diskPath": "references/tax-rules/2025/work-relationship/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2025/work-relationship/rules.md",
+    "diskPath": "references/tax-rules/2025/work-relationship/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/README.md",
+    "diskPath": "references/tax-rules/2026/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/box-2/examples.md",
+    "diskPath": "references/tax-rules/2026/box-2/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/box-2/figures.md",
+    "diskPath": "references/tax-rules/2026/box-2/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/box-2/notes.md",
+    "diskPath": "references/tax-rules/2026/box-2/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/box-2/rules.md",
+    "diskPath": "references/tax-rules/2026/box-2/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/box-3/examples.md",
+    "diskPath": "references/tax-rules/2026/box-3/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/box-3/figures.md",
+    "diskPath": "references/tax-rules/2026/box-3/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/box-3/notes.md",
+    "diskPath": "references/tax-rules/2026/box-3/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/box-3/rules.md",
+    "diskPath": "references/tax-rules/2026/box-3/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/business-deductions/examples.md",
+    "diskPath": "references/tax-rules/2026/business-deductions/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/business-deductions/figures.md",
+    "diskPath": "references/tax-rules/2026/business-deductions/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/business-deductions/notes.md",
+    "diskPath": "references/tax-rules/2026/business-deductions/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/business-deductions/rules.md",
+    "diskPath": "references/tax-rules/2026/business-deductions/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/changelog.md",
+    "diskPath": "references/tax-rules/2026/changelog.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/changes.md",
+    "diskPath": "references/tax-rules/2026/changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/costs-and-car/examples.md",
+    "diskPath": "references/tax-rules/2026/costs-and-car/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/costs-and-car/figures.md",
+    "diskPath": "references/tax-rules/2026/costs-and-car/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/costs-and-car/notes.md",
+    "diskPath": "references/tax-rules/2026/costs-and-car/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/costs-and-car/rules.md",
+    "diskPath": "references/tax-rules/2026/costs-and-car/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/health-insurance-contribution/examples.md",
+    "diskPath": "references/tax-rules/2026/health-insurance-contribution/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/health-insurance-contribution/figures.md",
+    "diskPath": "references/tax-rules/2026/health-insurance-contribution/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/health-insurance-contribution/notes.md",
+    "diskPath": "references/tax-rules/2026/health-insurance-contribution/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/health-insurance-contribution/rules.md",
+    "diskPath": "references/tax-rules/2026/health-insurance-contribution/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/income-tax/examples.md",
+    "diskPath": "references/tax-rules/2026/income-tax/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/income-tax/figures.md",
+    "diskPath": "references/tax-rules/2026/income-tax/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/income-tax/notes.md",
+    "diskPath": "references/tax-rules/2026/income-tax/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/income-tax/rules.md",
+    "diskPath": "references/tax-rules/2026/income-tax/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/investments/examples.md",
+    "diskPath": "references/tax-rules/2026/investments/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/investments/figures.md",
+    "diskPath": "references/tax-rules/2026/investments/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/investments/notes.md",
+    "diskPath": "references/tax-rules/2026/investments/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/investments/rules.md",
+    "diskPath": "references/tax-rules/2026/investments/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/pension-and-disability-insurance/examples.md",
+    "diskPath": "references/tax-rules/2026/pension-and-disability-insurance/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/pension-and-disability-insurance/figures.md",
+    "diskPath": "references/tax-rules/2026/pension-and-disability-insurance/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/pension-and-disability-insurance/notes.md",
+    "diskPath": "references/tax-rules/2026/pension-and-disability-insurance/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/pension-and-disability-insurance/rules.md",
+    "diskPath": "references/tax-rules/2026/pension-and-disability-insurance/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/private-company-and-corporate-tax/examples.md",
+    "diskPath": "references/tax-rules/2026/private-company-and-corporate-tax/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/private-company-and-corporate-tax/figures.md",
+    "diskPath": "references/tax-rules/2026/private-company-and-corporate-tax/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/private-company-and-corporate-tax/notes.md",
+    "diskPath": "references/tax-rules/2026/private-company-and-corporate-tax/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/private-company-and-corporate-tax/rules.md",
+    "diskPath": "references/tax-rules/2026/private-company-and-corporate-tax/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/procedure/examples.md",
+    "diskPath": "references/tax-rules/2026/procedure/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/procedure/figures.md",
+    "diskPath": "references/tax-rules/2026/procedure/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/procedure/notes.md",
+    "diskPath": "references/tax-rules/2026/procedure/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/procedure/rules.md",
+    "diskPath": "references/tax-rules/2026/procedure/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/vat/examples.md",
+    "diskPath": "references/tax-rules/2026/vat/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/vat/figures.md",
+    "diskPath": "references/tax-rules/2026/vat/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/vat/notes.md",
+    "diskPath": "references/tax-rules/2026/vat/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/vat/rules.md",
+    "diskPath": "references/tax-rules/2026/vat/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/work-relationship/examples.md",
+    "diskPath": "references/tax-rules/2026/work-relationship/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/work-relationship/figures.md",
+    "diskPath": "references/tax-rules/2026/work-relationship/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/work-relationship/notes.md",
+    "diskPath": "references/tax-rules/2026/work-relationship/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2026/work-relationship/rules.md",
+    "diskPath": "references/tax-rules/2026/work-relationship/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/README.md",
+    "diskPath": "references/tax-rules/2027/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/box-2/examples.md",
+    "diskPath": "references/tax-rules/2027/box-2/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/box-2/figures.md",
+    "diskPath": "references/tax-rules/2027/box-2/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/box-2/notes.md",
+    "diskPath": "references/tax-rules/2027/box-2/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/box-2/rules.md",
+    "diskPath": "references/tax-rules/2027/box-2/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/box-3/examples.md",
+    "diskPath": "references/tax-rules/2027/box-3/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/box-3/figures.md",
+    "diskPath": "references/tax-rules/2027/box-3/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/box-3/notes.md",
+    "diskPath": "references/tax-rules/2027/box-3/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/box-3/rules.md",
+    "diskPath": "references/tax-rules/2027/box-3/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/business-deductions/examples.md",
+    "diskPath": "references/tax-rules/2027/business-deductions/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/business-deductions/figures.md",
+    "diskPath": "references/tax-rules/2027/business-deductions/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/business-deductions/notes.md",
+    "diskPath": "references/tax-rules/2027/business-deductions/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/business-deductions/rules.md",
+    "diskPath": "references/tax-rules/2027/business-deductions/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/changelog.md",
+    "diskPath": "references/tax-rules/2027/changelog.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/changes.md",
+    "diskPath": "references/tax-rules/2027/changes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/costs-and-car/examples.md",
+    "diskPath": "references/tax-rules/2027/costs-and-car/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/costs-and-car/figures.md",
+    "diskPath": "references/tax-rules/2027/costs-and-car/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/costs-and-car/notes.md",
+    "diskPath": "references/tax-rules/2027/costs-and-car/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/costs-and-car/rules.md",
+    "diskPath": "references/tax-rules/2027/costs-and-car/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/health-insurance-contribution/examples.md",
+    "diskPath": "references/tax-rules/2027/health-insurance-contribution/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/health-insurance-contribution/figures.md",
+    "diskPath": "references/tax-rules/2027/health-insurance-contribution/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/health-insurance-contribution/notes.md",
+    "diskPath": "references/tax-rules/2027/health-insurance-contribution/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/health-insurance-contribution/rules.md",
+    "diskPath": "references/tax-rules/2027/health-insurance-contribution/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/income-tax/examples.md",
+    "diskPath": "references/tax-rules/2027/income-tax/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/income-tax/figures.md",
+    "diskPath": "references/tax-rules/2027/income-tax/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/income-tax/notes.md",
+    "diskPath": "references/tax-rules/2027/income-tax/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/income-tax/rules.md",
+    "diskPath": "references/tax-rules/2027/income-tax/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/investments/examples.md",
+    "diskPath": "references/tax-rules/2027/investments/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/investments/figures.md",
+    "diskPath": "references/tax-rules/2027/investments/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/investments/notes.md",
+    "diskPath": "references/tax-rules/2027/investments/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/investments/rules.md",
+    "diskPath": "references/tax-rules/2027/investments/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/pension-and-disability-insurance/examples.md",
+    "diskPath": "references/tax-rules/2027/pension-and-disability-insurance/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/pension-and-disability-insurance/figures.md",
+    "diskPath": "references/tax-rules/2027/pension-and-disability-insurance/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/pension-and-disability-insurance/notes.md",
+    "diskPath": "references/tax-rules/2027/pension-and-disability-insurance/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/pension-and-disability-insurance/rules.md",
+    "diskPath": "references/tax-rules/2027/pension-and-disability-insurance/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/private-company-and-corporate-tax/examples.md",
+    "diskPath": "references/tax-rules/2027/private-company-and-corporate-tax/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/private-company-and-corporate-tax/figures.md",
+    "diskPath": "references/tax-rules/2027/private-company-and-corporate-tax/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/private-company-and-corporate-tax/notes.md",
+    "diskPath": "references/tax-rules/2027/private-company-and-corporate-tax/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/private-company-and-corporate-tax/rules.md",
+    "diskPath": "references/tax-rules/2027/private-company-and-corporate-tax/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/procedure/examples.md",
+    "diskPath": "references/tax-rules/2027/procedure/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/procedure/figures.md",
+    "diskPath": "references/tax-rules/2027/procedure/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/procedure/notes.md",
+    "diskPath": "references/tax-rules/2027/procedure/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/procedure/rules.md",
+    "diskPath": "references/tax-rules/2027/procedure/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/vat/examples.md",
+    "diskPath": "references/tax-rules/2027/vat/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/vat/figures.md",
+    "diskPath": "references/tax-rules/2027/vat/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/vat/notes.md",
+    "diskPath": "references/tax-rules/2027/vat/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/vat/rules.md",
+    "diskPath": "references/tax-rules/2027/vat/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/work-relationship/examples.md",
+    "diskPath": "references/tax-rules/2027/work-relationship/examples.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/work-relationship/figures.md",
+    "diskPath": "references/tax-rules/2027/work-relationship/figures.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/work-relationship/notes.md",
+    "diskPath": "references/tax-rules/2027/work-relationship/notes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/2027/work-relationship/rules.md",
+    "diskPath": "references/tax-rules/2027/work-relationship/rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/README.md",
+    "diskPath": "references/tax-rules/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/dutch-tax-rules.md",
+    "diskPath": "references/tax-rules/dutch-tax-rules.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/general/box-2-and-the-substantial-interest.md",
+    "diskPath": "references/tax-rules/general/box-2-and-the-substantial-interest.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/general/box-3-savings-and-investments.md",
+    "diskPath": "references/tax-rules/general/box-3-savings-and-investments.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/general/business-deductions-and-sme-profit-exemption.md",
+    "diskPath": "references/tax-rules/general/business-deductions-and-sme-profit-exemption.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/general/costs-and-the-car.md",
+    "diskPath": "references/tax-rules/general/costs-and-the-car.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/general/income-tax-box-1-and-the-health-insurance-contribution.md",
+    "diskPath": "references/tax-rules/general/income-tax-box-1-and-the-health-insurance-contribution.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/general/investment-deductions-and-depreciation.md",
+    "diskPath": "references/tax-rules/general/investment-deductions-and-depreciation.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/general/open-points-and-gaps.md",
+    "diskPath": "references/tax-rules/general/open-points-and-gaps.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/general/pension-annuities-and-disability-insurance.md",
+    "diskPath": "references/tax-rules/general/pension-annuities-and-disability-insurance.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/general/record-and-invoice-duties.md",
+    "diskPath": "references/tax-rules/general/record-and-invoice-duties.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/general/settled-source-conflicts.md",
+    "diskPath": "references/tax-rules/general/settled-source-conflicts.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/general/the-private-company-and-corporate-tax.md",
+    "diskPath": "references/tax-rules/general/the-private-company-and-corporate-tax.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/general/vat.md",
+    "diskPath": "references/tax-rules/general/vat.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/tax-rules/general/work-relationship-and-procedure.md",
+    "diskPath": "references/tax-rules/general/work-relationship-and-procedure.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "references/tax-rules/source-library.md",
     "diskPath": "references/tax-rules/source-library.md"
   },
@@ -988,5 +2783,50 @@
     "workflowMode": "sk-moneybird-accountant",
     "leafResourceId": "references/tax-rules/year-rollover.md",
     "diskPath": "references/tax-rules/year-rollover.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/vat-return/README.md",
+    "diskPath": "references/vat-return/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/vat-return/preparation.md",
+    "diskPath": "references/vat-return/preparation.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/vat-return/return-boxes.md",
+    "diskPath": "references/vat-return/return-boxes.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/vat-return/review-pack.md",
+    "diskPath": "references/vat-return/review-pack.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/vat-return/year-end-and-corrections.md",
+    "diskPath": "references/vat-return/year-end-and-corrections.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/yearly-overview/README.md",
+    "diskPath": "references/yearly-overview/README.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/yearly-overview/fiscal-reconciliation.md",
+    "diskPath": "references/yearly-overview/fiscal-reconciliation.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/yearly-overview/preparation-checklist.md",
+    "diskPath": "references/yearly-overview/preparation-checklist.md"
+  },
+  {
+    "workflowMode": "sk-moneybird-accountant",
+    "leafResourceId": "references/yearly-overview/report-and-export-limits.md",
+    "diskPath": "references/yearly-overview/report-and-export-limits.md"
   }
 ]

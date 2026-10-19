@@ -47,7 +47,7 @@ Every phase uses the route contract in `shared-mechanisms.md`. Jortt reads run t
 
 | File | Type | Role |
 |---|---|---|
-| sk-moneybird-accountant/manual-testing-playbook/offline-routing/migration-phase-routing.md | Manual playbook | Offline phase map and routing scenario. |
+| sk-moneybird-accountant/manual-testing-playbook/migration/migration-phase-routing.md | Manual playbook | Offline phase map and routing scenario. |
 
 ---
 

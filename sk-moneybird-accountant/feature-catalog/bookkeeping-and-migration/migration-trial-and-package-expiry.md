@@ -41,7 +41,7 @@ Record state, expiry date, evidence source, observation time, renewal owner and 
 
 | File | Type | Role |
 |---|---|---|
-| sk-moneybird-accountant/manual-testing-playbook/offline-routing/trial-expiry-stop.md | Manual playbook | Offline access-expiry stop scenario. |
+| sk-moneybird-accountant/manual-testing-playbook/migration/trial-expiry-stop.md | Manual playbook | Offline access-expiry stop scenario. |
 
 ---
 

@@ -51,7 +51,7 @@ The builder also checks the reference frontmatter field set and the sourced term
 | File | Type | Role |
 |---|---|---|
 | sk-moneybird-accountant/scripts/source-library-test.sh | Automated test | Proves the builder on a fixture repository and checks the real index. |
-| sk-moneybird-accountant/manual-testing-playbook/offline-routing/source-lookup.md | Manual playbook | Offline routing scenario for this feature. |
+| sk-moneybird-accountant/manual-testing-playbook/tax-guidance-and-sources/source-lookup.md | Manual playbook | Offline routing scenario for this feature. |
 
 ---
 

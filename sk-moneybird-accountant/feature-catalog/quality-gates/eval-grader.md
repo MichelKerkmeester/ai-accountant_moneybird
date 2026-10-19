@@ -50,6 +50,7 @@ CI grades only fixture answers, so before a release a real capture is graded too
 |---|---|---|
 | `sk-moneybird-accountant/scripts/run-evals-test.sh` | Automated test | Builds capture fixtures for a compliant run, a broken answer, a refuse-everything run and the branch, pack and refusal cases, including a missed refusal and a refused answer. |
 | `sk-moneybird-accountant/hardening-matrix.md` | Reference | Names the eval cases that cover the routing failure modes. |
+| `sk-moneybird-accountant/manual-testing-playbook/quality-gates/eval-grader.md` | Manual playbook | Scenario GATE-002, the grader suite run. |
 | `.github/workflows/skill-health.yml` | Test harness | Parses the eval file and runs the grader suite. |
 
 ---

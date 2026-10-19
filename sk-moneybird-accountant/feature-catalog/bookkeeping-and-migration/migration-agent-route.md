@@ -40,7 +40,7 @@ Every seat receives typed allowlisted summaries only. Local role sessions and sa
 
 | File | Type | Role |
 |---|---|---|
-| sk-moneybird-accountant/manual-testing-playbook/offline-routing/migration-agent-route.md | Manual playbook | Checks the M12 seats, summaries-only boundary and verified-state resume rule without service calls. |
+| sk-moneybird-accountant/manual-testing-playbook/migration/migration-agent-route.md | Manual playbook | Checks the M12 seats, summaries-only boundary and verified-state resume rule without service calls. |
 
 ---
 

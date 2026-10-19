@@ -55,6 +55,7 @@ Every file record in `references/index.json` carries an `answerSurface` object w
 |---|---|---|
 | `sk-moneybird-accountant/scripts/reference-index-test.sh` | Automated test | Proves the item index holds one row per value row and the `answerSurface` schema and values on fixture repositories. |
 | `sk-moneybird-accountant/scripts/source-library-test.sh` | Automated test | Proves the frontmatter field set and the term map checks: a glossed term with no row, a `source_file` that names no file and one that lacks the term. |
+| `sk-moneybird-accountant/manual-testing-playbook/routing-and-state/reference-entry-surfaces.md` | Manual playbook | Scenario REF-001, the entry surface checks over the real corpus. |
 | `.github/workflows/skill-health.yml` | Test harness | Runs the reference index check and the source library check on push and pull request. |
 
 ---

@@ -44,6 +44,7 @@ The suite builds fixture repositories with signing and hooks off and proves a mi
 | File | Type | Role |
 |---|---|---|
 | `sk-moneybird-accountant/scripts/regression-trailer-test.sh` | Automated test | Builds fixture repositories for a valid trailer, a deleted covering test and an unknown range. |
+| `sk-moneybird-accountant/manual-testing-playbook/quality-gates/regression-trailer-check.md` | Manual playbook | Scenario GATE-005, the empty-range check and the fixture suite. |
 | `.github/workflows/skill-health.yml` | Test harness | Runs the check on the pushed range. |
 
 ---

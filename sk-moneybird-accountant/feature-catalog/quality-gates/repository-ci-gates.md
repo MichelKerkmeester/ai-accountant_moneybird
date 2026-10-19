@@ -50,6 +50,7 @@ The word check reaches CI through `check-skill-words-test.sh`, which runs it on 
 | `sk-moneybird-accountant/scripts/check-ci-suites.py` | Test harness | Compares every suite on disk with the skill health workflow run lines and fails a suite that no run line names. |
 | `sk-moneybird-accountant/scripts/check-ci-suites-test.sh` | Automated test | Proves the suite registration check on fixture repositories, among them a suite with no run line and a path in a step name alone. |
 | `sk-moneybird-accountant/scripts/check-route-table.py` | Test harness | Runs the route table check in the skill health step that also runs the write contract and fragment checks. |
+| `sk-moneybird-accountant/manual-testing-playbook/quality-gates/repository-ci-gates.md` | Manual playbook | Scenario GATE-006, the suite registration check. |
 
 ---
 

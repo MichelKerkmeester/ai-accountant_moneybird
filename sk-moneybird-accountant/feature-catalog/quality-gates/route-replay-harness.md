@@ -50,6 +50,7 @@ The suite copies the skill and the two hub files to a temp root and proves both 
 |---|---|---|
 | `sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh` | Automated test | Proves both modes on a temp copy, including a missing cache, the default output folder and one pass case per new row with three seeded mutants. |
 | `sk-moneybird-accountant/scripts/route-replay/routing-gold.json` | Fixture | The branch, pack, refusal and HUB rows the suite scores and replays. |
+| `sk-moneybird-accountant/manual-testing-playbook/quality-gates/route-replay-harness.md` | Manual playbook | Scenario GATE-007, the replay suite run with the pinned cache. |
 | `.github/workflows/skill-health.yml` | Test harness | Runs both replay modes on push and pull request. |
 
 ---

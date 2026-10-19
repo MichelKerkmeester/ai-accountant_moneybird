@@ -42,7 +42,7 @@ The agent establishes the business share and records its basis, then books the d
 
 | File | Type | Role |
 |---|---|---|
-| sk-moneybird-accountant/manual-testing-playbook/offline-routing/mixed-use-cost-booking.md | Manual playbook | Offline routing scenario for this feature. |
+| sk-moneybird-accountant/manual-testing-playbook/live-bookkeeping/mixed-use-cost-booking.md | Manual playbook | Offline routing scenario for this feature. |
 
 ---
 

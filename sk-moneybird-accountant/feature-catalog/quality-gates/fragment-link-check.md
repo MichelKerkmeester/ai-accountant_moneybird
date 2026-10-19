@@ -45,6 +45,7 @@ The twelve ordinal pointers in the top layer are fragment links the check resolv
 | File | Type | Role |
 |---|---|---|
 | `sk-moneybird-accountant/scripts/fragment-check-test.sh` | Automated test | Seeds a renamed heading, a renamed id, a missing file and a duplicate-suffix slug and proves each is caught, beside a topic part with a missing or misordered section id, a link into a nested topic part and a renamed heading in a copy of the real tree. |
+| `sk-moneybird-accountant/manual-testing-playbook/quality-gates/fragment-link-check.md` | Manual playbook | Scenario GATE-003, the checker run over the skill family. |
 | `.github/workflows/skill-health.yml` | Test harness | Runs the check and the suite before every merge. |
 
 ---

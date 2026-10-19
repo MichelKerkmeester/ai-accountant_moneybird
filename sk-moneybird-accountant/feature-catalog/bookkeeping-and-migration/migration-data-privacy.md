@@ -40,7 +40,7 @@ A request to search private data without naming one specific file is refused wit
 
 | File | Type | Role |
 |---|---|---|
-| sk-moneybird-accountant/manual-testing-playbook/offline-routing/privacy-boundary.md | Manual playbook | Offline routing scenario for this feature. |
+| sk-moneybird-accountant/manual-testing-playbook/safety-and-privacy/privacy-boundary.md | Manual playbook | Offline routing scenario for this feature. |
 
 ---
 

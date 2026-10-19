@@ -50,7 +50,7 @@ The fiscal reconciliation file holds the reconciliation template, the three-colu
 
 | File | Type | Role |
 |---|---|---|
-| `sk-moneybird-accountant/manual-testing-playbook/offline-routing/yearly-overview-pack.md` | Manual playbook | Scenario PACK-001 with gold row PACK-YEARLY-01 and eval case yearly-overview-pack, including the auditfile-before-year-end-closing (jaarafsluiting) order, the Operator UI export and the phase 19 to 21 twin. |
+| `sk-moneybird-accountant/manual-testing-playbook/vat-and-tax-returns/yearly-overview-pack.md` | Manual playbook | Scenario PACK-001 with gold row PACK-YEARLY-01 and eval case yearly-overview-pack, including the auditfile-before-year-end-closing (jaarafsluiting) order, the Operator UI export and the phase 19 to 21 twin. |
 | `sk-moneybird-accountant/scripts/route-replay/routing-gold.json` | Fixture | The PACK-YEARLY-01 row with its token ceiling. |
 | `sk-moneybird-accountant/evals/evals.json` | Fixture | The yearly-overview-pack case, the LIVE UI export case with its forbidden writer patterns and the phase 19 to 21 twin case. |
 | `sk-moneybird-accountant/scripts/yearly-overview-template-fill.py` | Script | Fills the template with synthetic values from its declared token list and checks the closed list, the repeat markers, the remote assets and the prepared-not-filed line. |

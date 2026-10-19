@@ -55,7 +55,8 @@ The general topics of the entry guide sit as one file per topic under `general/`
 | File | Type | Role |
 |---|---|---|
 | `sk-moneybird-accountant/scripts/check-fragments.py` | Test harness | Resolves every relative link and fragment into and inside the tree. |
-| `sk-moneybird-accountant/manual-testing-playbook/offline-routing/current-year-zzp-question.md` | Manual playbook | Routes a current-year figure question through the year README and one topic part offline. |
+| `sk-moneybird-accountant/manual-testing-playbook/tax-guidance-and-sources/current-year-zzp-question.md` | Manual playbook | Routes a current-year figure question through the year README and one topic part offline. |
+| `sk-moneybird-accountant/manual-testing-playbook/routing-and-state/tax-knowledge-base.md` | Manual playbook | Scenario REF-003, the figure read path and the fragment check over the tree. |
 | `.github/workflows/skill-health.yml` | Test harness | Runs the fragment check on push and pull request. |
 
 ---

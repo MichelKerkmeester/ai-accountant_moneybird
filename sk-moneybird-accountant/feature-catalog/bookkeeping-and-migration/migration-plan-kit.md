@@ -42,7 +42,7 @@ The plan kit turns the phase references into working files. A user who clones th
 | File | Type | Role |
 |---|---|---|
 | sk-moneybird-accountant/scripts/plan-kit-test.sh | Automated test | Checks generation, drift detection, folder creation, no-overwrite and refusals. |
-| sk-moneybird-accountant/manual-testing-playbook/offline-routing/migration-plan-kit.md | Manual playbook | Checks that a new user is routed to the setup script and the phase packets. |
+| sk-moneybird-accountant/manual-testing-playbook/migration/migration-plan-kit.md | Manual playbook | Checks that a new user is routed to the setup script and the phase packets. |
 
 ---
 

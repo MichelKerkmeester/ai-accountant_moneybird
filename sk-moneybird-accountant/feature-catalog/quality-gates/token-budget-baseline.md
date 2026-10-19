@@ -50,6 +50,7 @@ A sibling word check holds each `SKILL.md` and `ROUTER.md` at a 3,000-word loadi
 | `sk-moneybird-accountant/scripts/token-canary-test.sh` | Automated test | Runs a swapped-encoding mutant, a router grown past the request line and a baseline gone stale. |
 | `sk-moneybird-accountant/scripts/check-skill-words.py` | Test harness | Holds each `SKILL.md` and `ROUTER.md` at the 3,000-word budget with the 4,000-word ceiling and runs on the real tree inside its suite. |
 | `sk-moneybird-accountant/scripts/check-skill-words-test.sh` | Automated test | Proves the 2,999-word, 3,001-word and 4,001-word bands and the missing file exit. |
+| `sk-moneybird-accountant/manual-testing-playbook/quality-gates/token-budget-baseline.md` | Manual playbook | Scenario GATE-008, the baseline check run with the pinned cache. |
 | `.github/workflows/skill-health.yml` | Test harness | Seeds the pinned tokenizer cache and runs the baseline check. |
 
 ---

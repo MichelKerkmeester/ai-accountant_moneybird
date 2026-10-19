@@ -44,7 +44,7 @@ The agent reviews sales, purchase records, bank transactions, private movements 
 
 | File | Type | Role |
 |---|---|---|
-| sk-moneybird-accountant/manual-testing-playbook/offline-routing/live-monthly-bookkeeping.md | Manual playbook | Offline routing scenario for this feature. |
+| sk-moneybird-accountant/manual-testing-playbook/live-bookkeeping/live-monthly-bookkeeping.md | Manual playbook | Offline routing scenario for this feature. |
 
 ---
 

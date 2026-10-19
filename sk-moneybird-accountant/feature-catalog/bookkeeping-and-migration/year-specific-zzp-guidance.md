@@ -52,7 +52,7 @@ The year folders sit under `references/tax-rules/`, where each topic is a folder
 
 | File | Type | Role |
 |---|---|---|
-| sk-moneybird-accountant/manual-testing-playbook/offline-routing/current-year-zzp-question.md | Manual playbook | Offline routing scenario for this feature. |
+| sk-moneybird-accountant/manual-testing-playbook/tax-guidance-and-sources/current-year-zzp-question.md | Manual playbook | Offline routing scenario for this feature. |
 
 ---
 

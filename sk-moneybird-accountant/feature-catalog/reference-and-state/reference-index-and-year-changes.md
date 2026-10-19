@@ -57,6 +57,7 @@ A year change note holds authored bullets in its unique-to-the-year section and 
 | File | Type | Role |
 |---|---|---|
 | `sk-moneybird-accountant/scripts/reference-index-test.sh` | Automated test | Proves the fence rules, drift detection, byte stability and the change-note mutants on fixtures and the real corpus. |
+| `sk-moneybird-accountant/manual-testing-playbook/routing-and-state/reference-index-and-year-changes.md` | Manual playbook | Scenario REF-002, the index check over the generated blocks. |
 | `.github/workflows/skill-health.yml` | Test harness | Runs the index check and its suite on push and pull request. |
 
 ---

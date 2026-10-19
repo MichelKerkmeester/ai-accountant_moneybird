@@ -46,6 +46,7 @@ A clean run prints one ok line. The test suite seeds the divergences the contrac
 | File | Type | Role |
 |---|---|---|
 | `sk-moneybird-accountant/scripts/write-contract-test.sh` | Automated test | Seeds a missing flag, a missing pointer, a forbidden pointer flag, a token and a rule gone from `ROUTER.md` only, a missing rule, a missing exit and a second read-back sentence and requires each to fail. |
+| `sk-moneybird-accountant/manual-testing-playbook/quality-gates/write-contract-check.md` | Manual playbook | Scenario GATE-009, the contract check run over the restatements. |
 | `.github/workflows/skill-health.yml` | Test harness | Runs the check and the suite on push and pull request. |
 
 ---

@@ -42,6 +42,7 @@ The suite builds fixture copies with a removed P0 test path, a blanked P0 cell, 
 | File | Type | Role |
 |---|---|---|
 | `sk-moneybird-accountant/scripts/hardening-matrix-test.sh` | Automated test | Seeds a removed test path, a blank cell, a renamed case, a symlink out of the root, a case inside another word and a case on a comment line and requires each to fail. |
+| `sk-moneybird-accountant/manual-testing-playbook/quality-gates/hardening-matrix-check.md` | Manual playbook | Scenario GATE-004, the matrix check run over the real rows. |
 | `.github/workflows/skill-health.yml` | Test harness | Runs the matrix check and the suite on push and pull request. |
 
 ---

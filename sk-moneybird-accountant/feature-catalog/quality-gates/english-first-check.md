@@ -51,6 +51,7 @@ The run prints one sorted line per problem as path, line, rule and term, then th
 | File | Type | Role |
 |---|---|---|
 | `sk-moneybird-accountant/scripts/check-english-first-test.sh` | Automated test | Proves each rule on a bad and a fixed fixture, every mask, the prompt masks in a playbook folder and not in a reference file, the exceptions file and byte stability, then runs the checker on the real corpus. |
+| `sk-moneybird-accountant/manual-testing-playbook/quality-gates/english-first-check.md` | Manual playbook | Scenario GATE-001, the checker run over the real corpus. |
 | `.github/workflows/skill-health.yml` | Test harness | Runs the suite as the `Suite check-english-first` step on push and pull request. |
 
 ---

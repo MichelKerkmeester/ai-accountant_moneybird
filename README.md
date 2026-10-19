@@ -64,7 +64,7 @@ Your request
 | **LIVE** | Day-to-day bookkeeping in Moneybird, from the monthly review to the yearly close |
 | **MIGRATION** | Moving historical records from Jortt into Moneybird |
 
-The routes are written in one place, the Task-Type Table in section 2 of [`sk-moneybird-accountant/ROUTER.md`](sk-moneybird-accountant/ROUTER.md). If the task is unclear, the assistant asks one question instead of guessing. It takes the tax year from the system clock before it uses any rate or threshold, never from a date written in a document.
+The routes are written in one place, the Task-Type Table in section 2 of [`sk-moneybird-accountant/ROUTER.md`](sk-moneybird-accountant/ROUTER.md). If the task is unclear, the assistant asks one question instead of guessing. It resolves the tax year before it uses any rate or threshold: an explicit year first, then the period under review, then the return-year mapping and only then the clock year from the generated `session-context.json`, never a date written in a document.
 
 &nbsp;
 
@@ -126,7 +126,7 @@ For historical work, name the migration task or the last gate that passed. If th
 
 ## 5. 🇳🇱 DUTCH TAX KNOWLEDGE
 
-The tax knowledge lives in [`references/tax-rules/`](sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md). Each tax year from 2020 to 2027 has its own folder, and each topic in it has four files: figures, rules, examples and notes. Topics cover VAT, income tax (inkomstenbelasting), business deductions, costs and the car, investments, the health insurance (zorgverzekering) contribution, pensions, box 2 and box 3, the private company and the work relationship.
+The tax knowledge lives in [`references/tax-rules/`](sk-moneybird-accountant/references/tax-rules/dutch-tax-rules.md). Each tax year from 2020 to 2027 has its own folder, and each topic in it has four files: figures, rules, examples and notes. Topics cover VAT, income tax (inkomstenbelasting), business deductions, costs and the car, investments, the health insurance (zorgverzekering) contribution, pensions, box 2 and box 3, the private company, the work relationship and tax return (aangifte, belastingaangifte) procedure. The year files `year-and-state.md`, `year-changes.md` and `year-rollover.md` resolve the tax year, gather what changed each year and carry the corpus into a new year.
 
 - **Claims cite their source.** The [source library](sk-moneybird-accountant/references/tax-rules/source-library.md) lists each external source by authority.
 - **Changes are tracked per year.** Each year folder records what changed and why.
@@ -196,7 +196,7 @@ The offline checks then show what still points at the old tool or market: broken
 - **A write needs five things.** A passed phase gate, your approval, a flushed `WRITE_INTENT` journal record, `--confirm-write` and `--approval <ref>` naming that entry. The guard checks the reference against the run journal, needs the writer session and never falls back to the reader session. A production batch also needs your approval for that batch and `--production`.
 - **Migration data stays in `migration-workspace/`.** Git ignores it. Both CLIs refuse to save output anywhere else.
 - **A private finance folder stays unread.** The assistant never lists, searches or opens it. The one exception is a single file you name during a migration phase.
-- **A privacy gate guards every commit and push.** `scripts/privacy-gate.py` blocks a commit or push that adds a path from the private folders, a file type outside the allowlist, a binary or a large file, or content that looks like an IBAN, a BSN, a Dutch VAT ID (btw-id), an email address, a long ID number, a home-folder path, a euro amount outside the tax references, a secret, or a term from your local `.privacy-denylist`. It reports where, never the value. A commit that changes a gate file needs you to set `PRIVACY_GATE_CHANGE_APPROVED=1` for that commit and the commit message to carry the trailer `Privacy-Gate-Change: approved`. A GitHub Action reruns it over the whole history on every push.
+- **A privacy gate guards every commit and push.** `scripts/privacy-gate.py` blocks a commit or push that adds a path from the private folders, a file type outside the allowlist, a binary or a large file, or content that looks like an IBAN, a BSN, a Dutch VAT ID (btw-id), an email address, a long ID number, a home-folder path, a euro amount outside the tax references, a secret, or a term from your local `.privacy-denylist`. It reports where, never the value. A commit that changes a gate file needs you to set `PRIVACY_GATE_CHANGE_APPROVED=1` for that commit and the commit message to carry the trailer `Privacy-Gate-Change: approved`. A GitHub Action reruns it over the whole history on every push and pull request.
 - **Tax decisions stay with you.** The assistant explains general rules with their year and source. It does not file returns and does not present a case-specific conclusion as final.
 
 ## 9. 🧪 CHECKS
@@ -209,13 +209,13 @@ The doctors are offline by default. The Jortt tests check the CLI contract again
 | `cli-jortt/cli/jortt-cli/tests/run-tests.sh` | Operation slugs, parameter checks, the non-GET refusal, the scope gate, the output boundary, summary output and redacted errors |
 | `cli-moneybird/scripts/doctor.sh` | Local tools, the pinned official CLI, config folders and whether credential files and settings exist |
 | `cli-moneybird/cli/moneybird-cli/tests/run-tests.sh` | Period warning, write confirmation, the pilot gate, the approval check, the writer session, the read-only lock, delete caution, the output boundary, summary output and logins |
-| `cli-moneybird/scripts/exit-code-parity.sh` | The guard exit codes against the exit table, the troubleshooting rows and the router keywords, in both directions |
+| `cli-moneybird/scripts/exit-code-parity.sh` and `cli-moneybird/scripts/exit-code-parity-test.sh` | The guard exit codes against the exit table, the troubleshooting rows and the router keywords, in both directions, and the parity check itself |
 | `sk-moneybird-accountant/scripts/check-route-table.py` | The task-type route table with its marked read sets, the generated router block, the hub files and the route margin |
 | `sk-moneybird-accountant/scripts/check-fragments.py` | Every relative link and section anchor in the skill family |
 | `sk-moneybird-accountant/scripts/check-english-first.py` | English first wording: every Dutch term has an English lead, every first use in a section carries its Dutch label and every label is a glossary row |
 | `sk-moneybird-accountant/scripts/build-reference-index.py --check`, `token-baseline.py --check` and `build-source-library.py --check` | The generated reference index, the pinned token baseline and the source library |
 | `sk-moneybird-accountant/scripts/route-replay/route-replay.py --mode resolve` and `--mode replay` | The routing gold rows for every task type |
-| The offline suite set under `sk-moneybird-accountant/scripts/` | The route table, route replay, reference index, regression trailer, session context, source library, token canary, write contract, hardening matrix, hostile invoice set, evals and fragment checks |
+| The offline suite set under `sk-moneybird-accountant/scripts/` | The route table, route replay, reference index, regression trailer, session context, source library, token canary, write contract, hardening matrix, hostile invoice set, evals, fragment checks, English first, the skill word budget, the CI suite registration, the CLI failure handoff, the PDF source reader and the yearly overview (jaaroverzicht) template |
 | `sk-moneybird-accountant/scripts/plan-kit-test.sh` | Phase packet generation, the drift check, workspace and packet setup, no-overwrite and the refusals |
 | `scripts/privacy-gate-test.sh` | Every privacy-gate rule, that no blocked value is ever printed, the commit, merge and push modes, and the gate change trailer |
 | Manual testing playbooks | Offline routing and guard scenarios in each skill folder, plus operator-approved live Jortt reads and one live Moneybird pilot write |
@@ -228,7 +228,7 @@ A passing local test does not prove a live connection. For Jortt, `jortt-cli who
 .
 ├── .env.example                          local configuration template, no credentials
 ├── .githooks/                            privacy gate before commit, merge and push, forwards to your global hooks
-├── .github/workflows/                    runs the privacy gate, plan kit and skill health checks on every push
+├── .github/workflows/                    runs the privacy gate, plan kit and skill health checks on every push and pull request, plus a monthly source-link check
 ├── .gitignore                            keeps secrets and private work data out of Git
 ├── .privacy-denylist.example             template for your local list of private terms
 ├── .privacy-gate.json                    privacy-gate allowlists and blocked paths
@@ -273,6 +273,8 @@ A passing local test does not prove a live connection. For Jortt, `jortt-cli who
     ├── references/yearly-overview/       the yearly overview preparation procedure
     ├── references/income-tax-return/     the income tax return preparation procedure
     ├── references/migration/             the migration plan, its phases and the shared controls
+    ├── references/glossary/              the term lists the English-first check reads, one file per topic
+    ├── references/index.json             the generated index over the reference tree
     ├── references/                       the bookkeeping, invoice, asset and routing guides
     └── scripts/                          plan kit generator, workspace setup, checks and their tests
 ```
@@ -327,7 +329,7 @@ The API can return cached data. Do not repeat the write. Check the write's own r
 
 **The guard blocks a write**
 
-Exit 3 means `--confirm-write` is missing. Exit 4 means the target is not the pilot and `--production` is missing. Exit 6 means `MONEYBIRD_GUARD_READ_ONLY=1` is set. Keep that lock for read-only work. Exit 7 means the writer configuration folder is missing. Exit 8 means `--approval` is missing or its reference is not in the run journal. Review the preview first, and write only after your approval.
+Exit 3 means `--confirm-write` is missing. Exit 4 means the target is not the pilot and `--production` is missing. Exit 5 means `--out` points outside the allowed `migration-workspace/` paths. Exit 6 means `MONEYBIRD_GUARD_READ_ONLY=1` is set. Keep that lock for read-only work. Exit 7 means the writer configuration folder is missing. Exit 8 means `--approval` is missing or its reference is not in the run journal. Exit 9 means the payload or attachment does not match the approved digest. Review the preview first, and write only after your approval.
 
 **You need a Jortt auditfile or a filed return**
 

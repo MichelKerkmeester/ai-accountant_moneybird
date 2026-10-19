@@ -41,7 +41,8 @@ Classify the stop as an unknown write, rate limit, validation failure, missing s
 
 | File | Type | Role |
 |---|---|---|
-| sk-moneybird-accountant/manual-testing-playbook/offline-routing/write-journal-crash-resume.md | Manual playbook | Offline interrupted-write and resume scenario. |
+| sk-moneybird-accountant/manual-testing-playbook/migration/write-journal-crash-resume.md | Manual playbook | Offline interrupted-write and resume scenario. |
+| sk-moneybird-accountant/manual-testing-playbook/migration/migration-stop-and-resume.md | Manual playbook | Scenario MIG-008, the stop-state classification and verified-state resume. |
 
 ---
 

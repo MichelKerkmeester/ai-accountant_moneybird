@@ -41,7 +41,7 @@ The writer records the source and target aliases, object type, source key, schem
 
 | File | Type | Role |
 |---|---|---|
-| sk-moneybird-accountant/manual-testing-playbook/offline-routing/write-journal-crash-resume.md | Manual playbook | Offline crash and uncertain-outcome routing scenario. |
+| sk-moneybird-accountant/manual-testing-playbook/migration/write-journal-crash-resume.md | Manual playbook | Offline crash and uncertain-outcome routing scenario. |
 
 ---
 

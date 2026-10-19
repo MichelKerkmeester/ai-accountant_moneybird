@@ -41,7 +41,7 @@ The agent checks the document first: invoice or order, invoice requirements, sup
 
 | File | Type | Role |
 |---|---|---|
-| sk-moneybird-accountant/manual-testing-playbook/offline-routing/purchase-invoice-booking.md | Manual playbook | Offline routing scenario for this feature. |
+| sk-moneybird-accountant/manual-testing-playbook/live-bookkeeping/purchase-invoice-booking.md | Manual playbook | Offline routing scenario for this feature. |
 
 ---
 

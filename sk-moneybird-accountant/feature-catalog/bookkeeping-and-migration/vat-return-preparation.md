@@ -50,11 +50,11 @@ Every figure, rate, threshold and deadline is a link into `references/tax-rules/
 
 | File | Type | Role |
 |---|---|---|
-| `sk-moneybird-accountant/manual-testing-playbook/offline-routing/vat-return-normal-quarter.md` | Manual playbook | Scenario VAT-001, the normal quarter with gold row VAT-BRANCH-Q1-01 and eval case vat-return-normal-quarter. |
-| `sk-moneybird-accountant/manual-testing-playbook/offline-routing/vat-return-reverse-charge.md` | Manual playbook | Scenario VAT-002, the reverse-charge quarter with gold row VAT-BRANCH-RC-01. |
-| `sk-moneybird-accountant/manual-testing-playbook/offline-routing/vat-return-small-business-scheme.md` | Manual playbook | Scenario VAT-003, the small businesses scheme (KOR) quarter with a reverse-charged purchase and gold row VAT-BRANCH-KOR-01. |
-| `sk-moneybird-accountant/manual-testing-playbook/offline-routing/vat-return-last-quarter.md` | Manual playbook | Scenario VAT-004, the final quarter of the year with gold row VAT-BRANCH-YE-01. |
-| `sk-moneybird-accountant/manual-testing-playbook/offline-routing/vat-return-correction-boundary.md` | Manual playbook | Scenario VAT-005, the correction above and below the boundary with gold row VAT-BRANCH-COR-01. |
+| `sk-moneybird-accountant/manual-testing-playbook/vat-and-tax-returns/vat-return-normal-quarter.md` | Manual playbook | Scenario VAT-001, the normal quarter with gold row VAT-BRANCH-Q1-01 and eval case vat-return-normal-quarter. |
+| `sk-moneybird-accountant/manual-testing-playbook/vat-and-tax-returns/vat-return-reverse-charge.md` | Manual playbook | Scenario VAT-002, the reverse-charge quarter with gold row VAT-BRANCH-RC-01. |
+| `sk-moneybird-accountant/manual-testing-playbook/vat-and-tax-returns/vat-return-small-business-scheme.md` | Manual playbook | Scenario VAT-003, the small businesses scheme (KOR) quarter with a reverse-charged purchase and gold row VAT-BRANCH-KOR-01. |
+| `sk-moneybird-accountant/manual-testing-playbook/vat-and-tax-returns/vat-return-last-quarter.md` | Manual playbook | Scenario VAT-004, the final quarter of the year with gold row VAT-BRANCH-YE-01. |
+| `sk-moneybird-accountant/manual-testing-playbook/vat-and-tax-returns/vat-return-correction-boundary.md` | Manual playbook | Scenario VAT-005, the correction above and below the boundary with gold row VAT-BRANCH-COR-01. |
 | `sk-moneybird-accountant/scripts/route-replay/routing-gold.json` | Fixture | The five VAT-BRANCH rows with their token ceilings. |
 | `sk-moneybird-accountant/evals/evals.json` | Fixture | The five VAT branch eval cases with their required-token and forbidden-pattern lists. |
 | `sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh` | Automated test | One pass case per branch row plus the seeded mutants. |

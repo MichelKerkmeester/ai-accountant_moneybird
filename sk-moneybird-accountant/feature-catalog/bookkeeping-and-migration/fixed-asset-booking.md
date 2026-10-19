@@ -43,7 +43,7 @@ The agent checks whether the business uses the purchase for more than one year a
 
 | File | Type | Role |
 |---|---|---|
-| sk-moneybird-accountant/manual-testing-playbook/offline-routing/fixed-asset-booking.md | Manual playbook | Offline routing scenario for this feature. |
+| sk-moneybird-accountant/manual-testing-playbook/live-bookkeeping/fixed-asset-booking.md | Manual playbook | Offline routing scenario for this feature. |
 
 ---
 

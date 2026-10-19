@@ -52,7 +52,7 @@ SHARED="$REPO_SRC/sk-moneybird-accountant/references/migration/shared-mechanisms
 SKILL_PAGE="$REPO_SRC/sk-moneybird-accountant/SKILL.md"
 ROUTER_PAGE="$REPO_SRC/sk-moneybird-accountant/ROUTER.md"
 EVALS="$REPO_SRC/sk-moneybird-accountant/evals/evals.json"
-SCENARIO="$REPO_SRC/sk-moneybird-accountant/manual-testing-playbook/offline-routing/cli-failure-blocked.md"
+SCENARIO="$REPO_SRC/sk-moneybird-accountant/manual-testing-playbook/safety-and-privacy/cli-failure-blocked.md"
 
 for required in "$GUARD" "$STUB" "$JORTT_COMMON" "$JORTT_API" "$JORTT_SKILL" \
     "$MONEYBIRD_SKILL" "$SHARED" "$SKILL_PAGE" "$EVALS" "$SCENARIO"; do

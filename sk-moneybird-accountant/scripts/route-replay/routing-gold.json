@@ -1,6 +1,6 @@
 {
   "corpus": "routing-gold",
-  "scenario_basis": "One row per routing scenario under sk-moneybird-accountant/manual-testing-playbook/offline-routing. The two check-runner scenarios run their own suites instead of a route.",
+  "scenario_basis": "One row per routing scenario under sk-moneybird-accountant/manual-testing-playbook. The two check-runner scenarios run their own suites instead of a route.",
   "parity_rule": "Route equality only. A Dutch twin and its English pair share one gold route, one read set and one fallback tier. Answer text is never compared.",
   "split_rule": "The calibration and held-out labels were written into this file before any signal tuning. Held-out rows are scored apart and stay out of tuning. Regression rows were written after a review to pin a fixed case, so the signals were tuned on them and they are scored apart from both.",
   "rows": [

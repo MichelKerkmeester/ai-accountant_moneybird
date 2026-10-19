@@ -43,7 +43,7 @@ The route never maps a Jortt category to Moneybird by label alone. It maps by ac
 | File | Type | Role |
 |---|---|---|
 | `sk-moneybird-accountant/scripts/check-route-table.py` | Test harness | Checks the T2 read set that names this reference. |
-| `sk-moneybird-accountant/manual-testing-playbook/offline-routing/api-tool-handoff.md` | Manual playbook | Reads the mapping guide as part of its offline command sequence. |
+| `sk-moneybird-accountant/manual-testing-playbook/safety-and-privacy/api-tool-handoff.md` | Manual playbook | Reads the mapping guide as part of its offline command sequence. |
 
 ---
 
