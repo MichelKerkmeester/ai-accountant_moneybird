@@ -19948,35 +19948,35 @@
       }
     },
     {
-      "bytes": 10327,
+      "bytes": 10328,
       "path": "sk-moneybird-accountant/references/vat-return/return-boxes.md",
       "sections": [
         {
           "anchor": "1-overview",
-          "bytes": 403,
+          "bytes": 370,
           "line": 21,
-          "lines": 7,
+          "lines": 6,
           "title": "1. OVERVIEW",
           "tokens": {
-            "cl100k_base": 105,
-            "o200k_base": 104
+            "cl100k_base": 92,
+            "o200k_base": 92
           }
         },
         {
           "anchor": "2-the-section-rubriek-table",
-          "bytes": 2727,
-          "line": 28,
-          "lines": 23,
+          "bytes": 2761,
+          "line": 27,
+          "lines": 25,
           "title": "2. THE SECTION (RUBRIEK) TABLE",
           "tokens": {
-            "cl100k_base": 718,
-            "o200k_base": 707
+            "cl100k_base": 731,
+            "o200k_base": 719
           }
         },
         {
           "anchor": "3-the-derivation-map",
           "bytes": 1267,
-          "line": 51,
+          "line": 52,
           "lines": 15,
           "title": "3. THE DERIVATION MAP",
           "tokens": {
@@ -19987,7 +19987,7 @@
         {
           "anchor": "4-the-run-time-rate-step",
           "bytes": 789,
-          "line": 66,
+          "line": 67,
           "lines": 11,
           "title": "4. THE RUN-TIME RATE STEP",
           "tokens": {
@@ -19998,7 +19998,7 @@
         {
           "anchor": "5-the-reverse-charge-branch",
           "bytes": 972,
-          "line": 77,
+          "line": 78,
           "lines": 15,
           "title": "5. THE REVERSE-CHARGE BRANCH",
           "tokens": {
@@ -20009,7 +20009,7 @@
         {
           "anchor": "6-the-kor-branch",
           "bytes": 1072,
-          "line": 92,
+          "line": 93,
           "lines": 14,
           "title": "6. THE KOR BRANCH",
           "tokens": {
@@ -20020,7 +20020,7 @@
         {
           "anchor": "7-the-sales-rule-3b-to-icp-and-oss",
           "bytes": 1036,
-          "line": 106,
+          "line": 107,
           "lines": 14,
           "title": "7. THE SALES RULE: 3B TO ICP AND OSS",
           "tokens": {
@@ -20031,7 +20031,7 @@
         {
           "anchor": "8-correction-phrases",
           "bytes": 661,
-          "line": 120,
+          "line": 121,
           "lines": 12,
           "title": "8. CORRECTION PHRASES",
           "tokens": {
@@ -20042,7 +20042,7 @@
         {
           "anchor": "9-related-resources",
           "bytes": 470,
-          "line": 132,
+          "line": 133,
           "lines": 8,
           "title": "9. RELATED RESOURCES",
           "tokens": {
@@ -20482,7 +20482,7 @@
   },
   "units": [
     {
-      "bytes": 7333240,
+      "bytes": 7333241,
       "files": 476,
       "name": "corpus total",
       "reads": [

@@ -1,5 +1,5 @@
 ---
-title: Yearly overview preparation
+title: Yearly overview (jaaroverzicht) preparation
 description: Entry index for preparing a Dutch sole-trader yearly overview in Moneybird. The folder holds the ordered close steps, the preparation checklist, the fiscal reconciliation and the report and export limits. It prepares and never files.
 trigger_phrases:
   - yearly overview preparation
@@ -53,7 +53,7 @@ The fiscal reconciliation file holds the reconciliation template, the three-colu
 | `sk-moneybird-accountant/manual-testing-playbook/vat-and-tax-returns/yearly-overview-pack.md` | Manual playbook | Scenario PACK-001 with gold row PACK-YEARLY-01 and eval case yearly-overview-pack, including the auditfile-before-year-end-closing (jaarafsluiting) order, the Operator UI export and the phase 19 to 21 twin. |
 | `sk-moneybird-accountant/scripts/route-replay/routing-gold.json` | Fixture | The PACK-YEARLY-01 row with its token ceiling. |
 | `sk-moneybird-accountant/evals/evals.json` | Fixture | The yearly-overview-pack case, the LIVE UI export case with its forbidden writer patterns and the phase 19 to 21 twin case. |
-| `sk-moneybird-accountant/scripts/yearly-overview-template-fill.py` | Script | Fills the template with synthetic values from its declared token list and checks the closed list, the repeat markers, the remote assets and the prepared-not-filed line. |
+| `sk-moneybird-accountant/scripts/yearly-overview-template-fill.py` | Automated test | Fills the template with synthetic values from its declared token list and checks the closed list, the repeat markers, the remote assets and the prepared-not-filed line. |
 | `sk-moneybird-accountant/scripts/yearly-overview-template-test.sh` | Automated test | Runs the fill on the real template and on five mutants: a broken repeat marker, a remote asset, a missing prepared-not-filed line, an undeclared token and a declared token the body never uses. |
 | `sk-moneybird-accountant/scripts/route-replay/route-replay-test.sh` | Automated test | The pass case for the pack row. |
 

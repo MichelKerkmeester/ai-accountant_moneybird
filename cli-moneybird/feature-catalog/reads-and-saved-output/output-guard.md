@@ -1,6 +1,6 @@
 ---
 title: "Output guard"
-description: "--out saves the raw response only to a file inside migration-workspace and prints an item count or top-level keys instead of the records. Without --out the guard prints a one-line summary and no records. Any other path exits 5."
+description: "--out saves the raw response only to a file inside migration-workspace, outside the guard's .secrets, RunJournal and logs folders, and prints an item count or top-level keys instead of the records. Without --out the guard prints a one-line summary and no records. Any other path exits 5."
 trigger_phrases:
   - "output guard"
   - "moneybird output guard"
@@ -15,7 +15,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
---out saves the raw response only to a file inside migration-workspace and prints an item count or top-level keys instead of the records. Without --out the guard prints a one-line summary and no records. Any other path exits 5.
+--out saves the raw response only to a file inside migration-workspace, outside the guard's .secrets, RunJournal and logs folders, and prints an item count or top-level keys instead of the records. Without --out the guard prints a one-line summary and no records. Any other path exits 5.
 
 Saved Moneybird data stays inside the ignored migration workspace and out of the chat. The terminal only shows the shape of what was saved.
 

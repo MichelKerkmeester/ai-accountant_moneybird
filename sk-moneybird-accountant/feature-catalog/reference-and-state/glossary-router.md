@@ -50,8 +50,8 @@ The accountant `ROUTER.md` states one rule: a request that asks what a Dutch ter
 
 | File | Type | Role |
 |---|---|---|
-| `sk-moneybird-accountant/scripts/route-replay/routing-gold.json` | Gold corpus | Seventeen GLOSS rows. GLOSS-001, GLOSS-002 and GLOSS-006 with their Dutch twins prove the reads on a topic route, a bookkeeping route and an abstained request, GLOSS-007 an abbreviation, GLOSS-008 a two-topic general file, GLOSS-010 a request waiting on the tax year, GLOSS-012 a comma after the term, GLOSS-013 a term in two files and GLOSS-014 a CLI action. GLOSS-003, GLOSS-004, GLOSS-005, GLOSS-009 and GLOSS-011 prove that a plain request, "answer in English", "wat betekent dit", a refusal and a task that ends on "in English" read none. |
-| `sk-moneybird-accountant/scripts/check-route-table.py` | Check | Fails on a missing rule, glossary file or router link. |
+| `sk-moneybird-accountant/scripts/route-replay/routing-gold.json` | Fixture | Seventeen GLOSS rows. GLOSS-001, GLOSS-002 and GLOSS-006 with their Dutch twins prove the reads on a topic route, a bookkeeping route and an abstained request, GLOSS-007 an abbreviation, GLOSS-008 a two-topic general file, GLOSS-010 a request waiting on the tax year, GLOSS-012 a comma after the term, GLOSS-013 a term in two files and GLOSS-014 a CLI action. GLOSS-003, GLOSS-004, GLOSS-005, GLOSS-009 and GLOSS-011 prove that a plain request, "answer in English", "wat betekent dit", a refusal and a task that ends on "in English" read none. |
+| `sk-moneybird-accountant/scripts/check-route-table.py` | Test harness | Fails on a missing rule, glossary file or router link. |
 | `sk-moneybird-accountant/scripts/route-table-test.sh` | Automated test | Proves each of the three glossary failures. |
 | `sk-moneybird-accountant/scripts/check-english-first-test.sh` | Automated test | Proves the folder read, the router exclusion and the duplicate rule. |
 

@@ -8,7 +8,7 @@
 
 &nbsp;
 
-## 1. 📝 SUMMARY
+## 1. 📖 OVERVIEW
 
 Moneybird Accountant is an AI bookkeeping assistant for Moneybird. You open the folder in a terminal agent such as Claude Code, and the agent reads `AGENTS.md` and works as your bookkeeping assistant. It knows Dutch tax rules, uses guarded command line tools to read from and write to Moneybird, and has a migration mode for bringing your history over from another tool.
 

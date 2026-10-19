@@ -24,8 +24,9 @@ The return is organised as five sections (rubrieken). A business that trades onl
 
 ---
 
-<a id="2-the-rubriek-table"></a>
 ## 2. THE SECTION (RUBRIEK) TABLE
+
+<a id="2-the-rubriek-table"></a>
 
 | Section (Rubriek) | What it reports (law) | Moneybird source |
 |---|---|---|

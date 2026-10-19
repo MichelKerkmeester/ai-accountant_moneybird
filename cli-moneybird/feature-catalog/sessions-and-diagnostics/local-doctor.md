@@ -1,6 +1,6 @@
 ---
 title: "Local doctor"
-description: "scripts/doctor.sh reports commands, the CLI pin, config folders and credential-file presence without opening credentials and calls the network only with --live."
+description: "scripts/doctor.sh reports commands, the CLI pin, the reader and pinned writer config folders and credential-file presence without opening credentials and calls the network only with --live."
 trigger_phrases:
   - "local doctor"
   - "moneybird doctor"
@@ -15,7 +15,7 @@ version: 1.0.0.0
 
 ## 1. OVERVIEW
 
-scripts/doctor.sh reports commands, the CLI pin, config folders and credential-file presence without opening credentials and calls the network only with --live.
+scripts/doctor.sh reports commands, the CLI pin, the reader and pinned writer config folders and credential-file presence without opening credentials and calls the network only with --live.
 
 The doctor is the first check after setup and the first step of troubleshooting. Its offline mode is safe for an agent to run because it reads no credential.
 

@@ -1,5 +1,5 @@
 ---
-title: Income tax return preparation
+title: Income tax return (aangifte inkomstenbelasting) preparation
 description: Entry index for preparing a Dutch sole-trader income tax return from Moneybird. The folder holds the ordered procedure, the Operator input checklist, the investment and claim register and the residual open points. It prepares and never files, submits or pays.
 trigger_phrases:
   - income tax return preparation

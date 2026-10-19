@@ -82,7 +82,7 @@ See [`write-guard/dry-run-first-pass.md`](write-guard/dry-run-first-pass.md) for
 
 #### Description
 
-A non-GET request without --confirm-write prints its dry-run line and its payload digest and exits 3 before any real call.
+A non-GET request without --confirm-write prints its dry-run line and its payload digest and exits 3 before any real call. A synchronization fetch only reads and runs like a GET.
 
 #### Current Reality
 

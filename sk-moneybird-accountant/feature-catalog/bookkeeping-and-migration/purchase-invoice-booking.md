@@ -1,6 +1,6 @@
 ---
-title: Purchase invoice booking
-description: Routes the booking of a purchase invoice, receipt or order to the flow and VAT rate that fit the invoice.
+title: Purchase invoice (inkoopfactuur) booking
+description: Routes the booking of a purchase invoice, receipt or order to the flow and VAT rate (btw-tarief) that fit the invoice.
 trigger_phrases:
   - Purchase invoice booking
   - book a purchase invoice in Moneybird

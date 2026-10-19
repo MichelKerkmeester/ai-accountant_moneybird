@@ -470,6 +470,8 @@ Desired user-visible outcome: The agent hands off the request without calling Jo
 > **Feature File:** [JRT-006](routing/moneybird-request-deferred.md)
 > **Catalog:** [surfaces/surface-routing.md](../feature-catalog/surfaces/surface-routing.md)
 
+---
+
 ## 12. AUTOMATED TEST CROSS-REFERENCE
 
 | Test Module | Coverage | Playbook Overlap |
