@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 12: Continuity between years, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:55.051Z",
-    "last_save_at": "2026-10-24T15:39:35.071Z",
+    "last_save_at": "2026-10-24T16:20:59.296Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,7 +206,7 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:4618214d143d4e108cd5a305092ceb0edc2f32859cf373a723212e02bfcc6f2b",
+    "source_fingerprint": "sha256:24fb705d894a98405103ad84c49e4a658fe71d58092203121ed9f56f1cb2e42e",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
       "spec.md": "815fd4faf50dd748901815217cdd90979841fffe2fb1e77bdc6a0bb16329b17b",

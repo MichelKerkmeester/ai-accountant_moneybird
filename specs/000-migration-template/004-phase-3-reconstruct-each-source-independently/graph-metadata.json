@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 3: Reconstruct each source independently, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:53.471Z",
-    "last_save_at": "2026-10-24T15:39:35.218Z",
+    "last_save_at": "2026-10-24T16:20:59.224Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,7 +206,7 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:2ea5c16699d5445cde1e7443afe3df2e5eda3847ce5681d60bb5ed1466c9fd73",
+    "source_fingerprint": "sha256:410008e476b57f0dabe1bd187fbf3ce9b43d0c95f50fe5061bf0afb96d2af748",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
       "spec.md": "2f206bfaf00fb7b0785a914b20992498f93ea9ee7125b49aaea082fea2858491",

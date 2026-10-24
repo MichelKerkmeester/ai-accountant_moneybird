@@ -816,7 +816,7 @@ def subgoal_acceptance(subgoals: list[dict[str, str]], start: int) -> str:
     rows = []
     number = start
     for subgoal in subgoals:
-        rows.append("| %s | %s | PENDING | PENDING |"
+        rows.append("| %s | %s | PENDING | PENDING | - |"
                     % (row_identifier("AC", number), subgoal["check"]))
         number += 1
     return "\n".join(rows)

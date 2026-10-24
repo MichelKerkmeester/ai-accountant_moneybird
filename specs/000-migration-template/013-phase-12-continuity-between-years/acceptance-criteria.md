@@ -25,7 +25,7 @@ _memory:
 
 > This document decides whether the packet may close. A packet is closeable when
 > every row below is `Met`, `Waived` or `Superseded`. A `Waived` or `Superseded`
-> row MUST name an ADR in its Evidence cell, and that ADR must exist in
+> row MUST name an ADR in its Waiver cell, and that ADR must exist in
 > `decision-record.md`.
 
 ---
@@ -48,15 +48,15 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| AC-ID | Criterion | Status | Evidence |
-|----|-----------|--------|----------|
-| AC-001 | mapped account coverage 100%, unexplained account differences 0. | PENDING | PENDING |
-| AC-002 | settled items linked to the same source item 100%, still-open items have aging and status coverage 100%, future settlements not yet due remain explicitly open, duplicate links 0. | PENDING | PENDING |
-| AC-003 | account lines and source components compared 100%, pre-business funds treatment approved 1, unexplained opening lines 0. | PENDING | PENDING |
-| AC-004 | M12 checks: work units with Verifier PASS or Operator disposition 100%, account-by-account continuity check coverage 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. | PENDING | PENDING |
-| AC-900 | The exit gate in spec.md section 5 passes with evidence filed under migration-workspace/ | PENDING | PENDING |
-| AC-901 | Open stop conditions in spec.md section 6: 0 | PENDING | PENDING |
-| AC-902 | Operator approval recorded for this phase in decision-record.md | PENDING | PENDING |
+| AC-ID | Criterion | Status | Evidence | Waiver |
+|----|-----------|--------|----------|--------|
+| AC-001 | mapped account coverage 100%, unexplained account differences 0. | PENDING | PENDING | - |
+| AC-002 | settled items linked to the same source item 100%, still-open items have aging and status coverage 100%, future settlements not yet due remain explicitly open, duplicate links 0. | PENDING | PENDING | - |
+| AC-003 | account lines and source components compared 100%, pre-business funds treatment approved 1, unexplained opening lines 0. | PENDING | PENDING | - |
+| AC-004 | M12 checks: work units with Verifier PASS or Operator disposition 100%, account-by-account continuity check coverage 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. | PENDING | PENDING | - |
+| AC-900 | The exit gate in spec.md section 5 passes with evidence filed under migration-workspace/ | PENDING | PENDING | - |
+| AC-901 | Open stop conditions in spec.md section 6: 0 | PENDING | PENDING | - |
+| AC-902 | Operator approval recorded for this phase in decision-record.md | PENDING | PENDING | - |
 
 ### Status values
 
@@ -64,12 +64,12 @@ One row per criterion. `AC-ID` is stable once written: supersede a criterion, ne
 |-------|---------|
 | `Met` | Verified. The Evidence cell names evidence that was actually observed. |
 | `Unmet` | Not yet satisfied. Blocks closure. |
-| `Waived` | Deliberately not pursued. The Evidence cell names an ADR in decision-record.md. |
-| `Superseded` | Replaced by a different criterion or decision. The Evidence cell names an ADR in decision-record.md. |
+| `Waived` | Deliberately not pursued. The Waiver cell names an ADR in decision-record.md. |
+| `Superseded` | Replaced by a different criterion or decision. The Waiver cell names an ADR in decision-record.md. |
 
 ### Waiver cell
 
-The waiver lives in the Evidence cell. Write `-` when the row is `Met` or `Unmet`.
+The waiver lives in the Waiver cell. Write `-` when the row is `Met` or `Unmet`.
 Write `ADR-NNN` when the row is `Waived` or `Superseded`, naming a decision
 record that exists in `decision-record.md`. A waiver naming an ADR that is not
 there fails validation. The point of a waiver is that someone recorded the

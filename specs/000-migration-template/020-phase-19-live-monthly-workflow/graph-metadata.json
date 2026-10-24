@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 19: Live monthly workflow, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:56.248Z",
-    "last_save_at": "2026-10-24T15:39:34.810Z",
+    "last_save_at": "2026-10-24T16:20:59.311Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,7 +206,7 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:7d353b4208bf5ccb5f25254bfc3ddd0824a600a271032b41198c70b5ce9085b2",
+    "source_fingerprint": "sha256:6db3dd63c5b73ced2813864f59de1651726e6f8f3def461065a4b3843ad3b1a9",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
       "spec.md": "8e53e472a6c6945c7596133581e13f848cd0f678c0b90d4291f69122a0490a2b",

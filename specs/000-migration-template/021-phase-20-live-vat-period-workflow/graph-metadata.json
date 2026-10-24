@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 20: Live VAT-period workflow, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:56.420Z",
-    "last_save_at": "2026-10-24T15:39:34.798Z",
+    "last_save_at": "2026-10-24T16:20:59.351Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,7 +206,7 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:445bbb2e308ca18e144e9107d4c5db541d8e01b5c35914d1e3667443fbb6651b",
+    "source_fingerprint": "sha256:7c96344a2beab8ea8e1e39e5af58ebd766c080c9fac9c4aaf1c53f6ec688965c",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
       "spec.md": "45c199a37bfebf0e07e2d44ba1944aa7a80be4ee4d4d9632f19a5999bf307fc0",

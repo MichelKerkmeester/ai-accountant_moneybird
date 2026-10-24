@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 22: Migration completion and Jortt decommission, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:56.774Z",
-    "last_save_at": "2026-10-24T15:39:35.164Z",
+    "last_save_at": "2026-10-24T16:20:59.290Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,7 +206,7 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:0188709d82c416b227e281663ccc9485f537a2d298a3e89fb8456c72b0e4642d",
+    "source_fingerprint": "sha256:fec7c8d73704ae68afdd3dd6996a96e674e83cbb3dc16d2ce0154e2835a442be",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
       "spec.md": "21141a70d65b21431347a1ed7cc95befc6ff84f62c864c012d856ccf9d694ddb",

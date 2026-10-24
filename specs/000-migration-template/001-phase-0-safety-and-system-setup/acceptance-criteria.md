@@ -25,7 +25,7 @@ _memory:
 
 > This document decides whether the packet may close. A packet is closeable when
 > every row below is `Met`, `Waived` or `Superseded`. A `Waived` or `Superseded`
-> row MUST name an ADR in its Evidence cell, and that ADR must exist in
+> row MUST name an ADR in its Waiver cell, and that ADR must exist in
 > `decision-record.md`.
 
 ---
@@ -48,18 +48,18 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| AC-ID | Criterion | Status | Evidence |
-|----|-----------|--------|----------|
-| AC-001 | both selector values resolve to the same administration, equality count 1, separate pilot administration count 0. | PENDING | PENDING |
-| AC-002 | local stub suite cli-moneybird/cli/moneybird-cli/tests/run-tests.sh passes 1, an official CLI non-GET write under MONEYBIRD_GUARD_READ_ONLY=1 returns exit code 6 before any real call 1, real call count 0. | PENDING | PENDING |
-| AC-003 | config fields due by Phase 0 in the Needed by column populated 100%, unapproved threshold rows 0, next expiry date recorded 1. | PENDING | PENDING |
-| AC-004 | the Operator UI completes an approved test auditfile export in Phase 0 1, product version, XAF version and year match the approved request 1, receipt and artifact SHA-256 recorded 1. | PENDING | PENDING |
-| AC-005 | synchronization with timestamp and completion counts or a complete paginated fallback with page counts is verified 1, Operator-approved cache-wait value and source basis recorded 1, Independent Auditor verification 1. | PENDING | PENDING |
-| AC-006 | provider scope evidence shows read-only access 1, a local non-GET `jortt-cli call` exits 3 before any token request as documented in `cli-jortt/README.md` 1, API request count 0, real Jortt write calls 0. | PENDING | PENDING |
-| AC-007 | M12 route proof: runner ready 1, script sandbox canary pass 1, OS read-boundary canary pass 1, egress canary pass 1, planted private values blocked 100%, both route canary dispatches complete 2 of 2, agents.* config populated 100%, work units with Verifier PASS or Operator disposition 100%, payload-scan prohibited fields 0, phase-entry boundary canary passed 1, Final review PASS 1. | PENDING | PENDING |
-| AC-900 | The exit gate in spec.md section 5 passes with evidence filed under migration-workspace/ | PENDING | PENDING |
-| AC-901 | Open stop conditions in spec.md section 6: 0 | PENDING | PENDING |
-| AC-902 | Operator approval recorded for this phase in decision-record.md | PENDING | PENDING |
+| AC-ID | Criterion | Status | Evidence | Waiver |
+|----|-----------|--------|----------|--------|
+| AC-001 | both selector values resolve to the same administration, equality count 1, separate pilot administration count 0. | PENDING | PENDING | - |
+| AC-002 | local stub suite cli-moneybird/cli/moneybird-cli/tests/run-tests.sh passes 1, an official CLI non-GET write under MONEYBIRD_GUARD_READ_ONLY=1 returns exit code 6 before any real call 1, real call count 0. | PENDING | PENDING | - |
+| AC-003 | config fields due by Phase 0 in the Needed by column populated 100%, unapproved threshold rows 0, next expiry date recorded 1. | PENDING | PENDING | - |
+| AC-004 | the Operator UI completes an approved test auditfile export in Phase 0 1, product version, XAF version and year match the approved request 1, receipt and artifact SHA-256 recorded 1. | PENDING | PENDING | - |
+| AC-005 | synchronization with timestamp and completion counts or a complete paginated fallback with page counts is verified 1, Operator-approved cache-wait value and source basis recorded 1, Independent Auditor verification 1. | PENDING | PENDING | - |
+| AC-006 | provider scope evidence shows read-only access 1, a local non-GET `jortt-cli call` exits 3 before any token request as documented in `cli-jortt/README.md` 1, API request count 0, real Jortt write calls 0. | PENDING | PENDING | - |
+| AC-007 | M12 route proof: runner ready 1, script sandbox canary pass 1, OS read-boundary canary pass 1, egress canary pass 1, planted private values blocked 100%, both route canary dispatches complete 2 of 2, agents.* config populated 100%, work units with Verifier PASS or Operator disposition 100%, payload-scan prohibited fields 0, phase-entry boundary canary passed 1, Final review PASS 1. | PENDING | PENDING | - |
+| AC-900 | The exit gate in spec.md section 5 passes with evidence filed under migration-workspace/ | PENDING | PENDING | - |
+| AC-901 | Open stop conditions in spec.md section 6: 0 | PENDING | PENDING | - |
+| AC-902 | Operator approval recorded for this phase in decision-record.md | PENDING | PENDING | - |
 
 ### Status values
 
@@ -67,12 +67,12 @@ One row per criterion. `AC-ID` is stable once written: supersede a criterion, ne
 |-------|---------|
 | `Met` | Verified. The Evidence cell names evidence that was actually observed. |
 | `Unmet` | Not yet satisfied. Blocks closure. |
-| `Waived` | Deliberately not pursued. The Evidence cell names an ADR in decision-record.md. |
-| `Superseded` | Replaced by a different criterion or decision. The Evidence cell names an ADR in decision-record.md. |
+| `Waived` | Deliberately not pursued. The Waiver cell names an ADR in decision-record.md. |
+| `Superseded` | Replaced by a different criterion or decision. The Waiver cell names an ADR in decision-record.md. |
 
 ### Waiver cell
 
-The waiver lives in the Evidence cell. Write `-` when the row is `Met` or `Unmet`.
+The waiver lives in the Waiver cell. Write `-` when the row is `Met` or `Unmet`.
 Write `ADR-NNN` when the row is `Waived` or `Superseded`, naming a decision
 record that exists in `decision-record.md`. A waiver naming an ADR that is not
 there fails validation. The point of a waiver is that someone recorded the

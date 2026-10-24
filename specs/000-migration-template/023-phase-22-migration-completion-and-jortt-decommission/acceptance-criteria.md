@@ -25,7 +25,7 @@ _memory:
 
 > This document decides whether the packet may close. A packet is closeable when
 > every row below is `Met`, `Waived` or `Superseded`. A `Waived` or `Superseded`
-> row MUST name an ADR in its Evidence cell, and that ADR must exist in
+> row MUST name an ADR in its Waiver cell, and that ADR must exist in
 > `decision-record.md`.
 
 ---
@@ -48,18 +48,18 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| AC-ID | Criterion | Status | Evidence |
-|----|-----------|--------|----------|
-| AC-001 | every post-freeze source change is represented in the final delta manifest with source totals, links, bytes and hashes 100%, unexplained delta items 0. | PENDING | PENDING |
-| AC-002 | Independent Auditor restore and readability evidence covers every required class 100%, failed class restores 0. | PENDING | PENDING |
-| AC-003 | current Operator-approved source basis and rule cover 100% of classes, Independent Auditor recomputes each duration and start event to confirm the end date, archive location, owner and readability evidence 100%, unsupported or unapproved rules 0. | PENDING | PENDING |
-| AC-004 | required reconciliations and filed-return bridges 100%, unexplained differences 0, accepted exceptions complete 100%, historical years locked 100%, cutover approval 1, live ownership 100%. | PENDING | PENDING |
-| AC-005 | current dashboard rows 23 of 23, missing owners, evidence links, due dates, exception counts or resume checkpoints 0. | PENDING | PENDING |
-| AC-006 | decision is exactly cancel or keep and is supported by the completed evidence packet 1. | PENDING | PENDING |
-| AC-007 | M12 checks: work units with Verifier PASS or Operator disposition 100%, definition-of-done items verified 100%, archive recheck pass 1, retention recheck pass 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. | PENDING | PENDING |
-| AC-900 | The exit gate in spec.md section 5 passes with evidence filed under migration-workspace/ | PENDING | PENDING |
-| AC-901 | Open stop conditions in spec.md section 6: 0 | PENDING | PENDING |
-| AC-902 | Operator approval recorded for this phase in decision-record.md | PENDING | PENDING |
+| AC-ID | Criterion | Status | Evidence | Waiver |
+|----|-----------|--------|----------|--------|
+| AC-001 | every post-freeze source change is represented in the final delta manifest with source totals, links, bytes and hashes 100%, unexplained delta items 0. | PENDING | PENDING | - |
+| AC-002 | Independent Auditor restore and readability evidence covers every required class 100%, failed class restores 0. | PENDING | PENDING | - |
+| AC-003 | current Operator-approved source basis and rule cover 100% of classes, Independent Auditor recomputes each duration and start event to confirm the end date, archive location, owner and readability evidence 100%, unsupported or unapproved rules 0. | PENDING | PENDING | - |
+| AC-004 | required reconciliations and filed-return bridges 100%, unexplained differences 0, accepted exceptions complete 100%, historical years locked 100%, cutover approval 1, live ownership 100%. | PENDING | PENDING | - |
+| AC-005 | current dashboard rows 23 of 23, missing owners, evidence links, due dates, exception counts or resume checkpoints 0. | PENDING | PENDING | - |
+| AC-006 | decision is exactly cancel or keep and is supported by the completed evidence packet 1. | PENDING | PENDING | - |
+| AC-007 | M12 checks: work units with Verifier PASS or Operator disposition 100%, definition-of-done items verified 100%, archive recheck pass 1, retention recheck pass 1, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. | PENDING | PENDING | - |
+| AC-900 | The exit gate in spec.md section 5 passes with evidence filed under migration-workspace/ | PENDING | PENDING | - |
+| AC-901 | Open stop conditions in spec.md section 6: 0 | PENDING | PENDING | - |
+| AC-902 | Operator approval recorded for this phase in decision-record.md | PENDING | PENDING | - |
 
 ### Status values
 
@@ -67,12 +67,12 @@ One row per criterion. `AC-ID` is stable once written: supersede a criterion, ne
 |-------|---------|
 | `Met` | Verified. The Evidence cell names evidence that was actually observed. |
 | `Unmet` | Not yet satisfied. Blocks closure. |
-| `Waived` | Deliberately not pursued. The Evidence cell names an ADR in decision-record.md. |
-| `Superseded` | Replaced by a different criterion or decision. The Evidence cell names an ADR in decision-record.md. |
+| `Waived` | Deliberately not pursued. The Waiver cell names an ADR in decision-record.md. |
+| `Superseded` | Replaced by a different criterion or decision. The Waiver cell names an ADR in decision-record.md. |
 
 ### Waiver cell
 
-The waiver lives in the Evidence cell. Write `-` when the row is `Met` or `Unmet`.
+The waiver lives in the Waiver cell. Write `-` when the row is `Met` or `Unmet`.
 Write `ADR-NNN` when the row is `Waived` or `Superseded`, naming a decision
 record that exists in `decision-record.md`. A waiver naming an ADR that is not
 there fails validation. The point of a waiver is that someone recorded the

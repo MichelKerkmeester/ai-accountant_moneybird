@@ -25,7 +25,7 @@ _memory:
 
 > This document decides whether the packet may close. A packet is closeable when
 > every row below is `Met`, `Waived` or `Superseded`. A `Waived` or `Superseded`
-> row MUST name an ADR in its Evidence cell, and that ADR must exist in
+> row MUST name an ADR in its Waiver cell, and that ADR must exist in
 > `decision-record.md`.
 
 ---
@@ -48,16 +48,16 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| AC-ID | Criterion | Status | Evidence |
-|----|-----------|--------|----------|
-| AC-001 | next historical year is the first unlocked year at or after the configured start year 1, current mirror year is the actual calendar year only when it is at or after the configured start date and is not locked 1, hard-coded current-year labels 0. | PENDING | PENDING |
-| AC-002 | a positive minimum cycle count or duration and rationale are approved in `MIGRATION_CONFIG` as `parallel.cycles_required`, completed cycles meet that minimum 100%, unresolved differences 0. | PENDING | PENDING |
-| AC-003 | Operator-set freeze date and time, delta schema and source-total method recorded 100%. The actual freeze, its last source key and delta capture occur in Phase 17. | PENDING | PENDING |
-| AC-004 | numeric trigger thresholds and named decision owner 100%, rehearsal scenarios complete 100%, post-cutover write reconciliation rehearsal 100%. | PENDING | PENDING |
-| AC-005 | M12 checks: work units with Verifier PASS or Operator disposition 100%, parallel delta checks independently pass 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. | PENDING | PENDING |
-| AC-900 | The exit gate in spec.md section 5 passes with evidence filed under migration-workspace/ | PENDING | PENDING |
-| AC-901 | Open stop conditions in spec.md section 6: 0 | PENDING | PENDING |
-| AC-902 | Operator approval recorded for this phase in decision-record.md | PENDING | PENDING |
+| AC-ID | Criterion | Status | Evidence | Waiver |
+|----|-----------|--------|----------|--------|
+| AC-001 | next historical year is the first unlocked year at or after the configured start year 1, current mirror year is the actual calendar year only when it is at or after the configured start date and is not locked 1, hard-coded current-year labels 0. | PENDING | PENDING | - |
+| AC-002 | a positive minimum cycle count or duration and rationale are approved in `MIGRATION_CONFIG` as `parallel.cycles_required`, completed cycles meet that minimum 100%, unresolved differences 0. | PENDING | PENDING | - |
+| AC-003 | Operator-set freeze date and time, delta schema and source-total method recorded 100%. The actual freeze, its last source key and delta capture occur in Phase 17. | PENDING | PENDING | - |
+| AC-004 | numeric trigger thresholds and named decision owner 100%, rehearsal scenarios complete 100%, post-cutover write reconciliation rehearsal 100%. | PENDING | PENDING | - |
+| AC-005 | M12 checks: work units with Verifier PASS or Operator disposition 100%, parallel delta checks independently pass 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. | PENDING | PENDING | - |
+| AC-900 | The exit gate in spec.md section 5 passes with evidence filed under migration-workspace/ | PENDING | PENDING | - |
+| AC-901 | Open stop conditions in spec.md section 6: 0 | PENDING | PENDING | - |
+| AC-902 | Operator approval recorded for this phase in decision-record.md | PENDING | PENDING | - |
 
 ### Status values
 
@@ -65,12 +65,12 @@ One row per criterion. `AC-ID` is stable once written: supersede a criterion, ne
 |-------|---------|
 | `Met` | Verified. The Evidence cell names evidence that was actually observed. |
 | `Unmet` | Not yet satisfied. Blocks closure. |
-| `Waived` | Deliberately not pursued. The Evidence cell names an ADR in decision-record.md. |
-| `Superseded` | Replaced by a different criterion or decision. The Evidence cell names an ADR in decision-record.md. |
+| `Waived` | Deliberately not pursued. The Waiver cell names an ADR in decision-record.md. |
+| `Superseded` | Replaced by a different criterion or decision. The Waiver cell names an ADR in decision-record.md. |
 
 ### Waiver cell
 
-The waiver lives in the Evidence cell. Write `-` when the row is `Met` or `Unmet`.
+The waiver lives in the Waiver cell. Write `-` when the row is `Met` or `Unmet`.
 Write `ADR-NNN` when the row is `Waived` or `Superseded`, naming a decision
 record that exists in `decision-record.md`. A waiver naming an ADR that is not
 there fails validation. The point of a waiver is that someone recorded the

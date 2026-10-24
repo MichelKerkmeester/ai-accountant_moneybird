@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 10: Year-end check, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:54.688Z",
-    "last_save_at": "2026-10-24T15:39:35.112Z",
+    "last_save_at": "2026-10-24T16:20:59.294Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,7 +206,7 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:be2872c9b5f615f9314dcb053c9e745528fb18ab5fd49a36040f8ec531f5437f",
+    "source_fingerprint": "sha256:b7fbd37886d5e0ee22e772dca0bd9acef653e4a5748f19a06030d91150b546ad",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
       "spec.md": "a2731d6d3d7dc14258c27efb2df0775859226959dc02d81ee7f7527732ba0c03",

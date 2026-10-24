@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 9: VAT verification loop, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:54.519Z",
-    "last_save_at": "2026-10-24T15:39:35.102Z",
+    "last_save_at": "2026-10-24T16:20:59.326Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,7 +206,7 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:15e8b5b6376dad153f1d1b829d5c53a70329219c1dfb38793efbcc15c931d04c",
+    "source_fingerprint": "sha256:b124c157c1f169c17093d0955552a38e1b80c21dacc58555d4dabb194d1ababf",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
       "spec.md": "9690400834b7c9d24285386fb7e07f5fbe3160078b03fa404111e9ac680b04fb",

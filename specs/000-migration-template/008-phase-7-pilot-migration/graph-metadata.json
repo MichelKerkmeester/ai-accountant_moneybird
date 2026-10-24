@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 7: Pilot migration, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:54.178Z",
-    "last_save_at": "2026-10-24T15:39:35.099Z",
+    "last_save_at": "2026-10-24T16:20:59.339Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,7 +206,7 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:8491b89fc05c8abbb0bf19814735a0ad06308470c7ec104e950b5eae436a3fd5",
+    "source_fingerprint": "sha256:81310473c41c9423d90bab057e1d5ad1abee47952d41d14549ea9057d8a7fefb",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
       "spec.md": "7b80e3bb6621b1fc98c52b44a01ec8a9b99be7f06fd2cc8259f114dc2eb6e253",

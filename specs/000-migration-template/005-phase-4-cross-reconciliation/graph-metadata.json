@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 4: Cross-reconciliation, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:53.643Z",
-    "last_save_at": "2026-10-24T15:39:35.010Z",
+    "last_save_at": "2026-10-24T16:20:59.325Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,7 +206,7 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:92a63f1399f64d479ff3c4220a8ee5af719b3ee86562062c46e4a706b9755f03",
+    "source_fingerprint": "sha256:e8abdb0516d145a9a9b8feb9e6825a7580b31d04e2cfcd88aa7dc4f5ce1a79be",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
       "spec.md": "e91e4d785a695da2ff0fa5ebbadd332fdb3fa27bf5e3fc2bd91edf81f8cd92e5",

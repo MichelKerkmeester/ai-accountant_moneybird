@@ -195,7 +195,7 @@
     ],
     "causal_summary": "At the start of Phase 0: Safety and system setup, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:52.960Z",
-    "last_save_at": "2026-10-24T15:39:35.127Z",
+    "last_save_at": "2026-10-24T16:20:59.329Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -207,7 +207,7 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:52b56d4da4d8cf01784c060ee07a09954762709ae9eab4e0b37a452ab88f0e11",
+    "source_fingerprint": "sha256:958c0be2ce4e54b09723c540976f8254445e18d0417789fa811ecb50b626a3f0",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
       "spec.md": "2e3e7ebfe467d54111c155e9e2735a30fef8449cda47f2e197bec6edabcf1f3d",

@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 13: Year Red Team, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:55.221Z",
-    "last_save_at": "2026-10-24T15:39:35.062Z",
+    "last_save_at": "2026-10-24T16:20:59.227Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,7 +206,7 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:78ac325972235e1ec74b0d936855f12133c61000e702b1d6c075bb9ba19931d8",
+    "source_fingerprint": "sha256:973aaf2896452f32295f2438975df84bf8ad509331c6799ec8b08699018d9897",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
       "spec.md": "0982d051946b94b680e431772cc344d3de022ce0d90b695c24842b734c24fd64",

@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 8: Historical migration per period, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:54.347Z",
-    "last_save_at": "2026-10-24T15:39:34.756Z",
+    "last_save_at": "2026-10-24T16:20:59.324Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,7 +206,7 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:0e9a9b0d7c75e3fc77ad44dcb752dc36c813fe6a48390dbe65ec90254a885665",
+    "source_fingerprint": "sha256:e85bd3f0e9d19a417c732bad5c3a0db7175be35779aee371bf164ebc204f6b27",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
       "spec.md": "25d4fcb36cb2d98f66cd67a8429ce52ccd561bfda5907de56032f17b581636ac",

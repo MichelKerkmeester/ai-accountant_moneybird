@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 17: Source freeze and archive readiness, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:55.906Z",
-    "last_save_at": "2026-10-24T15:39:35.160Z",
+    "last_save_at": "2026-10-24T16:20:59.295Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,7 +206,7 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:e6a87a3074a54b8e0946117bc008ad3cd3724877ba9100da37fd69dc2a524458",
+    "source_fingerprint": "sha256:987a39f9df11032a782e34ae7e4455895449393b84475da645e621656086b455",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
       "spec.md": "55cbf9a38a16f0190c3e6f0a87b496ae97e61704fdce9a54de370dc48ba4be19",

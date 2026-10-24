@@ -25,7 +25,7 @@ _memory:
 
 > This document decides whether the packet may close. A packet is closeable when
 > every row below is `Met`, `Waived` or `Superseded`. A `Waived` or `Superseded`
-> row MUST name an ADR in its Evidence cell, and that ADR must exist in
+> row MUST name an ADR in its Waiver cell, and that ADR must exist in
 > `decision-record.md`.
 
 ---
@@ -48,16 +48,16 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| AC-ID | Criterion | Status | Evidence |
-|----|-----------|--------|----------|
-| AC-001 | prerequisite gates passed 100%, open exceptions above approved threshold 0. | PENDING | PENDING |
-| AC-002 | snapshot includes the `MIGRATION_CONFIG` hash and source-manifest references 100%, snapshot artifacts with matching hashes 100%, read-only state after lock 1, missing source-manifest links 0. | PENDING | PENDING |
-| AC-003 | Phase 7 lock matrix covers every used record class 100%, current lock read-back 1, live non-GET probes in the locked year 0. | PENDING | PENDING |
-| AC-004 | exception, evidence, Operator or adviser filing decision, authorized unlock, linked correction, fresh read-back, and relock evidence present 100%. | PENDING | PENDING |
-| AC-005 | M12 checks: work units with Verifier PASS or Operator disposition 100%, snapshot hash recomputation matches 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. | PENDING | PENDING |
-| AC-900 | The exit gate in spec.md section 5 passes with evidence filed under migration-workspace/ | PENDING | PENDING |
-| AC-901 | Open stop conditions in spec.md section 6: 0 | PENDING | PENDING |
-| AC-902 | Operator approval recorded for this phase in decision-record.md | PENDING | PENDING |
+| AC-ID | Criterion | Status | Evidence | Waiver |
+|----|-----------|--------|----------|--------|
+| AC-001 | prerequisite gates passed 100%, open exceptions above approved threshold 0. | PENDING | PENDING | - |
+| AC-002 | snapshot includes the `MIGRATION_CONFIG` hash and source-manifest references 100%, snapshot artifacts with matching hashes 100%, read-only state after lock 1, missing source-manifest links 0. | PENDING | PENDING | - |
+| AC-003 | Phase 7 lock matrix covers every used record class 100%, current lock read-back 1, live non-GET probes in the locked year 0. | PENDING | PENDING | - |
+| AC-004 | exception, evidence, Operator or adviser filing decision, authorized unlock, linked correction, fresh read-back, and relock evidence present 100%. | PENDING | PENDING | - |
+| AC-005 | M12 checks: work units with Verifier PASS or Operator disposition 100%, snapshot hash recomputation matches 100%, payload-scan prohibited fields 0, boundary canary at phase entry passed 1, Final review PASS 1. | PENDING | PENDING | - |
+| AC-900 | The exit gate in spec.md section 5 passes with evidence filed under migration-workspace/ | PENDING | PENDING | - |
+| AC-901 | Open stop conditions in spec.md section 6: 0 | PENDING | PENDING | - |
+| AC-902 | Operator approval recorded for this phase in decision-record.md | PENDING | PENDING | - |
 
 ### Status values
 
@@ -65,12 +65,12 @@ One row per criterion. `AC-ID` is stable once written: supersede a criterion, ne
 |-------|---------|
 | `Met` | Verified. The Evidence cell names evidence that was actually observed. |
 | `Unmet` | Not yet satisfied. Blocks closure. |
-| `Waived` | Deliberately not pursued. The Evidence cell names an ADR in decision-record.md. |
-| `Superseded` | Replaced by a different criterion or decision. The Evidence cell names an ADR in decision-record.md. |
+| `Waived` | Deliberately not pursued. The Waiver cell names an ADR in decision-record.md. |
+| `Superseded` | Replaced by a different criterion or decision. The Waiver cell names an ADR in decision-record.md. |
 
 ### Waiver cell
 
-The waiver lives in the Evidence cell. Write `-` when the row is `Met` or `Unmet`.
+The waiver lives in the Waiver cell. Write `-` when the row is `Met` or `Unmet`.
 Write `ADR-NNN` when the row is `Waived` or `Superseded`, naming a decision
 record that exists in `decision-record.md`. A waiver naming an ADR that is not
 there fails validation. The point of a waiver is that someone recorded the
