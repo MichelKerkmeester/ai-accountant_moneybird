@@ -201,6 +201,7 @@ case "$url" in
     fi
     ;;
 esac
+printf '%s\n' "$url" >> "${STUB_URL_LOG:-/dev/null}"
 case "$url" in
   https://app.jortt.nl/*) printf 'token\n' >> "${STUB_CALL_LOG:-/dev/null}" ;;
   *) printf 'api\n' >> "${STUB_CALL_LOG:-/dev/null}" ;;
@@ -374,6 +375,40 @@ if [[ "$PAGED_CODE" -eq 0 ]] && printf '%s' "$PAGED_OUTPUT" | grep -q 'HTTP 200,
 else
   record "--all follows next links and merges every page" 0
 fi
+
+# WHY: two pages whose merge passes the OS argument limit once saved an empty file with exit 0.
+LARGE_PAD="$(printf '%0100d' 0)"
+jq -cn --arg pad "$LARGE_PAD" '{data: [range(0; 6000) | {id: ., pad: $pad}], _links: {next: {href: "/customers?page=2"}}}' > "$STUB_BODY_SEQUENCE_FILE"
+jq -cn --arg pad "$LARGE_PAD" '{data: [range(6000; 12000) | {id: ., pad: $pad}], _links: {next: null}}' >> "$STUB_BODY_SEQUENCE_FILE"
+set +e
+LARGE_OUTPUT="$(run_fake call list-customers --all --out paged/large.json 2>&1)"
+LARGE_CODE=$?
+set -e
+if [[ "$LARGE_CODE" -eq 0 ]] && printf '%s' "$LARGE_OUTPUT" | grep -q 'HTTP 200, items: 12000' \
+  && jq -e 'length == 12000 and .[11999].id == 11999' "$FAKE_ROOT/migration-workspace/paged/large.json" >/dev/null 2>&1; then
+  record "--all merges pages larger than the argument limit" 1
+else
+  record "--all merges pages larger than the argument limit" 0
+fi
+
+# WHY: Jortt next links drop the request filters, so a filtered list returned unfiltered pages.
+export STUB_URL_LOG="$TEMP_ROOT/urls.log"
+: > "$STUB_URL_LOG"
+printf '%s\n' \
+  '{"data":[{"id":1}],"_links":{"next":{"href":"https://api.jortt.nl/v3/expenses?page=2"}}}' \
+  '{"data":[{"id":2}],"_links":{"next":null}}' > "$STUB_BODY_SEQUENCE_FILE"
+set +e
+FILTER_OUTPUT="$(run_fake call list-expenses --vat_date_from 2023-01-01 --vat_date_till 2023-12-31 --all 2>&1)"
+FILTER_CODE=$?
+set -e
+FILTER_PAGE_2="$(grep 'page=2' "$STUB_URL_LOG" || true)"
+if [[ "$FILTER_CODE" -eq 0 ]] && printf '%s' "$FILTER_OUTPUT" | grep -q 'items: 2' \
+  && [[ "$FILTER_PAGE_2" == *"vat_date_from=2023-01-01"* ]] && [[ "$FILTER_PAGE_2" == *"vat_date_till=2023-12-31"* ]]; then
+  record "--all keeps the request filters on every page" 1
+else
+  record "--all keeps the request filters on every page" 0
+fi
+unset STUB_URL_LOG
 
 printf '%s\n' '{"data":[{"id":1}],"_links":{"next":{"href":"https://example.invalid/customers?page=2"}}}' > "$STUB_BODY_SEQUENCE_FILE"
 set +e

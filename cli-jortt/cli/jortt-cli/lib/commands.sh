@@ -127,14 +127,22 @@ jortt_page_all() {
   local method="$1"
   local url="$2"
   local accumulated='[]'
-  local next data current_path current_dir
+  local next data current_path current_dir base_query="" param name
+  local -a params=()
+  if [[ "$url" == *\?* ]]; then base_query="${url#*\?}"; fi
   while :; do
     if ! jortt_request "$method" "$url"; then return 1; fi
     if ! printf '%s' "$JORTT_HTTP_BODY" | jq -e '.data | type == "array"' >/dev/null 2>&1; then
       jortt_error 1 "The response did not contain a data array for --all."
     fi
     data="$(printf '%s' "$JORTT_HTTP_BODY" | jq -c '.data')"
-    accumulated="$(jq -cn --argjson left "$accumulated" --argjson right "$data" '$left + $right')"
+    # WHY: the merged pages grow past the OS argument limit on large lists, so they reach
+    # jq on stdin. A failed merge stops the run, because an empty result saved with exit 0
+    # reads as a complete extract.
+    if ! accumulated="$(printf '%s\n%s\n' "$accumulated" "$data" | jq -cs '.[0] + .[1]')" \
+      || [[ -z "$accumulated" ]]; then
+      jortt_error 1 "Merging the --all pages failed, so no partial result was saved."
+    fi
     next="$(printf '%s' "$JORTT_HTTP_BODY" | jq -r '._links.next.href // empty' 2>/dev/null)"
     [[ -n "$next" ]] || break
     case "$next" in
@@ -151,6 +159,20 @@ jortt_page_all() {
         url="https://api.jortt.nl$current_dir/$next"
         ;;
     esac
+    # WHY: Jortt's next links keep only page=N and drop the request filters, so every page
+    # after the first would return unfiltered records. Carry each original filter forward.
+    if [[ -n "$base_query" ]]; then
+      read -r -a params <<< "${base_query//&/ }"
+      for param in "${params[@]}"; do
+        name="${param%%=*}"
+        [[ "$name" != "page" ]] || continue
+        case "$url" in
+          *\?"$name"=*|*\&"$name"=*) ;;
+          *\?*) url="$url&$param" ;;
+          *) url="$url?$param" ;;
+        esac
+      done
+    fi
   done
   JORTT_RESULT_BODY="$accumulated"
 }
