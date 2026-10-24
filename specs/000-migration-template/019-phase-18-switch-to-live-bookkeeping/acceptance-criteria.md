@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | source and target delta coverage 100%, duplicate delta keys 0. | PENDING | PENDING |
 | AC-002 | boundary date 1, opening and closing balance continuity by account 100%. | PENDING | PENDING |

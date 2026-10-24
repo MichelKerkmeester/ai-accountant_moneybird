@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | prerequisite gates passed 100%, open exceptions above approved threshold 0. | PENDING | PENDING |
 | AC-002 | snapshot includes the `MIGRATION_CONFIG` hash and source-manifest references 100%, snapshot artifacts with matching hashes 100%, read-only state after lock 1, missing source-manifest links 0. | PENDING | PENDING |

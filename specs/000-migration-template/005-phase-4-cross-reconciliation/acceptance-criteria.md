@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | in-scope source items linked or explicitly excepted 100%. | PENDING | PENDING |
 | AC-002 | key collisions 0 and duplicate source keys 0. | PENDING | PENDING |

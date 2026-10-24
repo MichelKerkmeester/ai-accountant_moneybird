@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | next historical year is the first unlocked year at or after the configured start year 1, current mirror year is the actual calendar year only when it is at or after the configured start date and is not locked 1, hard-coded current-year labels 0. | PENDING | PENDING |
 | AC-002 | a positive minimum cycle count or duration and rationale are approved in `MIGRATION_CONFIG` as `parallel.cycles_required`, completed cycles meet that minimum 100%, unresolved differences 0. | PENDING | PENDING |

@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | approved mapping coverage 100%, unmapped write candidates 0. | PENDING | PENDING |
 | AC-002 | separate PDF and UBL field matrices cover each source type present 100%, unknown field names 0. | PENDING | PENDING |

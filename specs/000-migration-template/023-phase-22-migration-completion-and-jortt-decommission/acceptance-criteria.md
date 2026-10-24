@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | every post-freeze source change is represented in the final delta manifest with source totals, links, bytes and hashes 100%, unexplained delta items 0. | PENDING | PENDING |
 | AC-002 | Independent Auditor restore and readability evidence covers every required class 100%, failed class restores 0. | PENDING | PENDING |

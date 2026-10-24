@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | applicable monthly and filing-period checks passed 100%. | PENDING | PENDING |
 | AC-002 | account and bridge coverage 100%, unexplained differences 0. | PENDING | PENDING |

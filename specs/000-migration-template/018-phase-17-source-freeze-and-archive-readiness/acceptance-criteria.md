@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | Operator-approved freeze date and time recorded 1, last included source key at the freeze boundary recorded 1, new Jortt entries after that boundary 0 or captured in a dated delta 100%. | PENDING | PENDING |
 | AC-002 | source page, record, attachment and control-total coverage 100%, unexplained delta items 0. | PENDING | PENDING |

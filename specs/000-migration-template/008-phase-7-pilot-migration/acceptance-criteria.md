@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | PDF and UBL are piloted separately where present, required field matrices match sources 100%, attachment bytes and SHA-256 match 100%, target attachment read route verified 1. | PENDING | PENDING |
 | AC-002 | stable local key and mapping schema version beside it 100%, durable WRITE_INTENT flushed before every non-GET call other than a synchronization fetch 100%, source reference and planned payload fields match before ID adoption 100%, ambiguous results stopped 100%. | PENDING | PENDING |

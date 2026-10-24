@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | every mandatory source class in Phase 1 is present or has an approved exception 100%, actual filed VAT return (btw-aangifte) and confirmation evidence for every filed VAT period or evidence-backed not-applicable status 100%, exceptions waiving filed VAT return evidence 0, income-tax returns and assessments present or carrying the approved unavailability status that Phase 11 accepts 100%, unexplained missing classes 0. | PENDING | PENDING |
 | AC-002 | covered account-year pairs 100%, unexplained exceptions 0. | PENDING | PENDING |

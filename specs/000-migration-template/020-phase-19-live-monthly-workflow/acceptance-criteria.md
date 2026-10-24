@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | linked or excepted records 100%, unexplained records 0. | PENDING | PENDING |
 | AC-002 | bank statement transactions linked or excepted 100%, unexplained bank items 0. | PENDING | PENDING |

@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | approved input hashes match pre-write hashes 100%. | PENDING | PENDING |
 | AC-002 | objects with terminal state 100%, flushed WRITE_INTENT events before non-GET calls other than synchronization fetches 100%, source-reference and planned-field equality before ID adoption 100%, WRITE_UNKNOWN count 0 before gate. | PENDING | PENDING |

@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | canonical records with risk class 100%. | PENDING | PENDING |
 | AC-002 | high-risk reviewed count equals high-risk population, coverage 100%. | PENDING | PENDING |

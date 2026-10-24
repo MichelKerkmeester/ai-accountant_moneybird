@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | mapped account coverage 100%, unexplained account differences 0. | PENDING | PENDING |
 | AC-002 | settled items linked to the same source item 100%, still-open items have aging and status coverage 100%, future settlements not yet due remain explicitly open, duplicate links 0. | PENDING | PENDING |

@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | required challenge population reviewed 100%. | PENDING | PENDING |
 | AC-002 | approved population and selection rule match 1, sample meets the configured minimum size 1, sample completed 100%, unexplained mismatches 0, sample configuration hash matches 1. | PENDING | PENDING |

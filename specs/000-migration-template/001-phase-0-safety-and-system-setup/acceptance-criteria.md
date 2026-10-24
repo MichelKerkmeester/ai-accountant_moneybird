@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | both selector values resolve to the same administration, equality count 1, separate pilot administration count 0. | PENDING | PENDING |
 | AC-002 | local stub suite cli-moneybird/cli/moneybird-cli/tests/run-tests.sh passes 1, an official CLI non-GET write under MONEYBIRD_GUARD_READ_ONLY=1 returns exit code 6 before any real call 1, real call count 0. | PENDING | PENDING |

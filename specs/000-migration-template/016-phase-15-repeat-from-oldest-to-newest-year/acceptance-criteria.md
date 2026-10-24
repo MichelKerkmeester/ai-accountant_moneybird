@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | completed year sequence has no skips, skipped year count 0. | PENDING | PENDING |
 | AC-002 | locked years advanced 100%, overlapping active year batches 0. | PENDING | PENDING |

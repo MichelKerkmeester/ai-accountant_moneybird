@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | commercial-to-tax bridge rows with evidence 100%. | PENDING | PENDING |
 | AC-002 | available evidence links 100%, each unavailable item has NOT_AVAILABLE or PENDING status with Operator or adviser approval 100%, unapproved evidence gaps 0. | PENDING | PENDING |

@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | assigned-period calendar coverage 100%, actual filing evidence or evidence-backed not-applicable status 100%, unclassified periods 0. | PENDING | PENDING |
 | AC-002 | box comparisons 100%, unexplained boxes 0. | PENDING | PENDING |

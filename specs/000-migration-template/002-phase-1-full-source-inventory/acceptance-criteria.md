@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | invoices, expenses, receipts, each attachment class, loose Inbox items, bank files, XAF files, annual accounts (jaarrekening), filed returns, assessments and reconstructed asset schedules have inventory rows 100%, unclassified classes 0. | PENDING | PENDING |
 | AC-002 | account-year pairs with a file or explicit exception 100%, unexplained unmatched pairs 0. | PENDING | PENDING |

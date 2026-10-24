@@ -48,7 +48,7 @@ _memory:
 
 One row per criterion. `AC-ID` is stable once written: supersede a criterion, never renumber it.
 
-| ID | Criterion | Status | Evidence |
+| AC-ID | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
 | AC-001 | role folders with schema and checksum manifest 100%, VAT folder contains original invoices only 100%, Jortt booking exports in VAT inputs 0, unapproved files 0. | PENDING | PENDING |
 | AC-002 | in-scope source items assigned a terminal register status 100%. | PENDING | PENDING |
