@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 22: Migration completion and Jortt decommission, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:56.774Z",
-    "last_save_at": "2026-10-11T15:08:47.987Z",
+    "last_save_at": "2026-10-24T15:39:35.164Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,13 +206,13 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:31fc3e1c1ed82fc5457c4f790c53e8cacf6502870474dbed9ebd31ae4e98473c",
+    "source_fingerprint": "sha256:0188709d82c416b227e281663ccc9485f537a2d298a3e89fb8456c72b0e4642d",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
-      "spec.md": "7fc307ad5b64a768a7272633cf7c1905d6d6ffb3922c50e2d1251322e25277eb",
-      "plan.md": "d9caa7bc5074d5bb7ef1b646f86886b70d8cff90d1f1032a4ff96a5260be04aa",
-      "tasks.md": "5997018eafaec4d57f12de98631e8c3d4a4e18ab006d86074017b9f899cd840c",
-      "decision-record.md": "9cd1b966fb05c7d36b2f1bab845bd05bcb49615e64820f6498b2e396e309ed17",
+      "spec.md": "21141a70d65b21431347a1ed7cc95befc6ff84f62c864c012d856ccf9d694ddb",
+      "plan.md": "ac8123e63eeaa1ed9ad76a2034e86ea1d1f3bc7a204dff6b55fc9e60b7f73296",
+      "tasks.md": "b270a11716f7ae663bf7f3cc16663d6a6363f906a2cb5ef3370f715c8cfdcfd2",
+      "decision-record.md": "755c3734e1b4d36e502a075e8f89b9f1005d376e51e6066e74bb672398e51d80",
       "implementation-summary.md": "ff288c9dfd1e18ac62d90ed5ab0d9caf4bf1b8649079dbb1088dab5e352f97dd"
     },
     "last_active_child_id": null,

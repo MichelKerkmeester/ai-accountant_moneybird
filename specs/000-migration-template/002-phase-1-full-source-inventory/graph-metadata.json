@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 1: Full source inventory, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:53.128Z",
-    "last_save_at": "2026-10-11T15:08:41.445Z",
+    "last_save_at": "2026-10-24T15:39:35.150Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,13 +206,13 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:15464f82e73331272c53aac87f2d13035dcf7cf77bb71ef3d9242e16cdf5d8e7",
+    "source_fingerprint": "sha256:ce8b744edd58a16a44d844a1a222b79e1cbb13761711c1512717398cbfdb4f95",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
-      "spec.md": "537d41f0b486803c7bc5e35857d6da43748d3e7f0d5bb7ebc1b004080276793d",
-      "plan.md": "1b91bf0f6dc6c0861eac597d9a9888fd65425b7bdea48f904df41870b8529ba3",
-      "tasks.md": "359514f26082e9a284a319fd56a5f7f465d001cc96d70037a19adc6f8efa5f43",
-      "decision-record.md": "9d433049de1337259cf1f63c8104b7c9c25a5708125f4a82ee35e2ab4a288560",
+      "spec.md": "cc9d70e47e122a409c0afeedd2237b44a5ee834497701b9b391300b7d3474abc",
+      "plan.md": "2f316ffb41960e47d62fc5a5e303b3c1b323ea5d646eea7e889f9fd85f43cddc",
+      "tasks.md": "1be48d78b557bb55e8530a3fdd3fc9143472b3726eee792e60618b647c62553a",
+      "decision-record.md": "cc8f2e03ccbe4f388d38dc45d18b0ca7818f0a520509fa4850bbc33f8c0e8b4e",
       "implementation-summary.md": "bbc95d612456f59e38890ae4c53f5574f8e5d15da12b772efdef9aea1ec8fe17"
     },
     "last_active_child_id": null,

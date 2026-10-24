@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 6: Design the Moneybird mapping, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:54.005Z",
-    "last_save_at": "2026-10-11T15:08:43.021Z",
+    "last_save_at": "2026-10-24T15:39:35.042Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,11 +206,11 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:0bd0b267c321ba93890ebaafd469c260761b4354b431ba3f840cbb7c0c43c3ff",
+    "source_fingerprint": "sha256:35e737221924d5b5145472c2afd1d55dc222c470821f069faebad02980359a25",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
-      "spec.md": "b2ba15b4ccd3c082690d0b11dd454d6fdcdfaa511b096e3984d57cf9f4b08d00",
-      "plan.md": "e8ad0432903652f618a84c40824f2265f8a69681392e7610e28f07e3abfdf4fb",
+      "spec.md": "062cc58c9a1d0d2c26b14656d018a32b2379e815b38cadebf42f1757304bcc68",
+      "plan.md": "131b499c5793935f3a7fc76d3ae6d622a1c8c37b1c1eb4ad7108eaafd8540601",
       "tasks.md": "9f6c3eda6090afd310a711027d21ee4a7646ba4976427dec9dd5dd120a8172cc",
       "decision-record.md": "71bcc2d4dc10026c7187f245fd6582b41fa0ff63ed60cf846c2cc4411cf843ab",
       "implementation-summary.md": "b9883a34cda05cb41a51238b520f30fb41877608624434b19f2fdf179f844dda"

@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 2: Collect missing sources and seed archive, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:53.301Z",
-    "last_save_at": "2026-10-11T15:08:41.757Z",
+    "last_save_at": "2026-10-24T15:39:34.824Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,13 +206,13 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:f748633db5d51b88d6e0f91dc54de1c150a162b3dbc0b4d2114710cd7caa9cf5",
+    "source_fingerprint": "sha256:0abc43c18574b0c36198a145c6f4c74e50fe5aa6a9579cbc6ffb606bdb7cd135",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
-      "spec.md": "ae7127cecce1bc8649d8b1e31cd1e156db1907245ddc22aef08d0d8ad5c24071",
-      "plan.md": "40f3a80db0d1d1d651d82f5b9b0d990311abe42111c11c349bd5fb342d346a7d",
-      "tasks.md": "be688ae5a394bf43325703d8989db146ba5e984f99fd0351457aeb5f2ba9c78b",
-      "decision-record.md": "4ad94575020a2a28755e91f2fe93c491b34dd877098d8a8f15215c5d9a111726",
+      "spec.md": "2771bda12819104770f8256a132c17e93ce93210e7de25665ddf6d10a72cf44a",
+      "plan.md": "a0c0b6d8a1ab1493e2b454993d668af3f9f1c4db93bb0dc7b9d97792e9b42766",
+      "tasks.md": "bfb5057a666653360c807460013e445621c60de91eeaee881ae4f10effaff0cb",
+      "decision-record.md": "53c44f78809680fcfa3b2afe26d3445884565cc928cf49bcad859e3ea81a8500",
       "implementation-summary.md": "53a45db513fae8811701eace80187f4425075ba2168423255e636e304f61841e"
     },
     "last_active_child_id": null,

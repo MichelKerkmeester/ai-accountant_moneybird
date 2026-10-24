@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 14: Year lock, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:55.391Z",
-    "last_save_at": "2026-10-11T15:08:45.536Z",
+    "last_save_at": "2026-10-24T15:39:35.064Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,13 +206,13 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:4d6bb1e6a090c4a5861184a7b0765ef316a5d3e77c4690f87d5630593aaa316a",
+    "source_fingerprint": "sha256:a2923df867731d2f97d3007519442976f3de88aeeb1bde5c736a022c30d3ba80",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
-      "spec.md": "29fa0f1a86df628b46cb8f40cdbbb3af1c06134bd297579b1e54f7e500cf0985",
-      "plan.md": "b8757b7fd0c8a80c67678199675ba18b6d69d20f965694df279f0428bf7cf8fc",
+      "spec.md": "c4cf42869480f6f2d9fb82cf9a21f04e2c99f01a1194e615f8438f1d98ff2117",
+      "plan.md": "d52ed7717224337de734469adba988456eac6d353221bfd1f9dd7f45af1a2eca",
       "tasks.md": "f373d72821fa74d0ef3b39f0e1784799f06fd0ee6579f124ccf916ffc002c1e2",
-      "decision-record.md": "c6fb3fecb23fe05ffbbd8a50f29f1b771c9b3c0cdf404b68599c59bd92bd0273",
+      "decision-record.md": "2024714c42d29695184d550eb0c0b5c64619d5c25138d94814896df0c6da6819",
       "implementation-summary.md": "186466d06ba48780f768ffae79c93be526c511fc963e8c117d7dedac64681648"
     },
     "last_active_child_id": null,

@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 15: Repeat from oldest to newest year, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:55.561Z",
-    "last_save_at": "2026-10-11T15:08:45.847Z",
+    "last_save_at": "2026-10-24T15:39:35.111Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,11 +206,11 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:ca591acb4ebd8a1ac26f60f1f9526a581f7bcbdb51b53cfbee802077de08c40a",
+    "source_fingerprint": "sha256:b53891c3e417e08d83c896476a13875764bf0b2e8e730a56b898798acb7bad1e",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
-      "spec.md": "c35f093353d17b56382a1e837f1294fb390a929acdb3750dcc78bdcbe9602400",
-      "plan.md": "51c38953d98ddc61ec258360284cd100923e931524dace8c6810002582821c00",
+      "spec.md": "94c54e6472e46007130cfaa1226467c6a1122c39a4077d750013006fb3cccf73",
+      "plan.md": "a8b29062cd99f9d256de858f4e03e8f4156aa190c948cb350aaf24cd188e5c08",
       "tasks.md": "a90b5b386e5a8696a06a31d7620904fb554271977111416926ee1bf53298ccc4",
       "decision-record.md": "9a081ec68081e39ac24c0a44a8e77a304f7b297a011f6a31c14e6a3264e82013",
       "implementation-summary.md": "0998cd4c2a7c3771b22a3681e89dddaeaebf0ffd7354359c1e98c633db25e235"

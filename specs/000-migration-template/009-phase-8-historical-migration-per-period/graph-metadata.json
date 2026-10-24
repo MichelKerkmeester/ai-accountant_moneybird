@@ -194,7 +194,7 @@
     ],
     "causal_summary": "At the start of Phase 8: Historical migration per period, the migration cannot move on because the purpose of this phase is not yet met",
     "created_at": "2026-10-11T14:34:54.347Z",
-    "last_save_at": "2026-10-11T16:43:42.423Z",
+    "last_save_at": "2026-10-24T15:39:34.756Z",
     "save_lineage": "graph_only",
     "last_accessed_at": null,
     "source_docs": [
@@ -206,12 +206,12 @@
       "decision-record.md",
       "implementation-summary.md"
     ],
-    "source_fingerprint": "sha256:8fc07a2b02b231c78014f3a4553bf745180321eebe68a099556880368b9892d9",
+    "source_fingerprint": "sha256:0e9a9b0d7c75e3fc77ad44dcb752dc36c813fe6a48390dbe65ec90254a885665",
     "source_fingerprint_docset": 3,
     "source_doc_hashes": {
-      "spec.md": "bd6e5212f7f8dc68d9d7df897afaa2333abeb768259c3b8e8283c283eec5c46b",
-      "plan.md": "37411276fb2ba5525415d9243f10eb91ec2a998d08827d33cf019fddce1224f0",
-      "tasks.md": "abae170d0014ee5d17f372195ac696c761169ed2d6c3cd4133c3e84e14862e0e",
+      "spec.md": "25d4fcb36cb2d98f66cd67a8429ce52ccd561bfda5907de56032f17b581636ac",
+      "plan.md": "61368fd8de0349df60539e1db3c81c6d73e37ee9665494ab424ba63aae3fe64f",
+      "tasks.md": "b1b85ff88d8452010653b61efdacd756d2f58e462f4091e387f9a0a347650940",
       "decision-record.md": "d28237baa2c8c2557789cb71f2f15fb2905c3c01568ff07fba3498248d4b4e0d",
       "implementation-summary.md": "ae6e194fac83f7176614811e14fb6a7143532754608c263acd8884acd628e971"
     },
