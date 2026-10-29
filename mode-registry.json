@@ -1,6 +1,19 @@
 {
   "version": "1.0.0.0",
   "hub": "moneybird-accountant",
+  "extensions": {
+    "repo-root-hub": {
+      "description": "The hub is the Moneybird Accountant repository root. repoPaths lists the top-level entries that belong to the repository rather than the skill: the spec packets, the repository scripts, the private data folders and the repository files beside them. The skilled checkers skip them, and the hub id is the folder name Moneybird Accountant in kebab case.",
+      "repoPaths": [
+        "specs",
+        "scripts",
+        "personal database",
+        "migration-workspace",
+        "AGENTS.md",
+        "LICENSE"
+      ]
+    }
+  },
   "modes": [
     {
       "workflowMode": "accountant",

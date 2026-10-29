@@ -46,6 +46,8 @@ Keyword triggers: `moneybird`, `moneybird-cli`, `moneybird-guard`, Moneybird RES
 
 This skill is a packet of the repository hub. Its routing lives in [`ROUTER.md`](ROUTER.md) beside this file: the operation table, read-only access, phase detection, the resource loading levels and the router pseudocode. Read the hub [`SKILL.md`](../SKILL.md) first, then `ROUTER.md`, then this file.
 
+Read [`ROUTER.md`](./ROUTER.md) before selecting skill-local resources; open only the matched files.
+
 ---
 
 ## 3. HOW IT WORKS

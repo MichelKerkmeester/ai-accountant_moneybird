@@ -19,7 +19,30 @@ This file holds the routing of the Jortt CLI packet: the operation table, the re
 
 ---
 
-## 2. SMART ROUTING
+## 2. INTENT MODEL
+
+### Detection Order
+
+1. Refuse a Jortt write or a `--print-body` request before any CLI call.
+2. Route UI-only export requests to the operator guidance before trying an API operation.
+3. Route ordinary record extraction to `jortt-cli` and load the matching API reference.
+4. Send Moneybird-side work to the sibling `cli-moneybird` skill.
+5. Load troubleshooting guidance when the user reports a failure.
+
+### Resource Domains
+
+The router discovers markdown at call time from three local trees and one root document.
+
+- `references/` holds the CLI, REST, export and troubleshooting guidance.
+- `feature-catalog/` holds the current-state inventory of every CLI command, safety gate and surface.
+- `manual-testing-playbook/` holds the operator scenarios that validate that behavior.
+- `INSTALL-GUIDE.md` is the one routable root document. It carries setup and rollback.
+
+---
+
+## 3. MACHINE ROUTER
+
+The machine-readable part of this router, kept verbatim: the operation table, the loading levels and the Smart Router Pseudocode. This section is the last in the file.
 
 ### Primary Detection Signal
 
@@ -54,15 +77,6 @@ The operation decides the route. Use `jortt-cli` for supported reads. UI-only ta
 
 All relative `--out` names resolve inside `<Accountant root>/migration-workspace/`, which is gitignored. A command without `--out` prints a summary, not the record content. Use `--out` for migration extracts.
 
-### Resource Domains
-
-The router discovers markdown at call time from three local trees and one root document.
-
-- `references/` holds the CLI, REST, export and troubleshooting guidance.
-- `feature-catalog/` holds the current-state inventory of every CLI command, safety gate and surface.
-- `manual-testing-playbook/` holds the operator scenarios that validate that behavior.
-- `INSTALL-GUIDE.md` is the one routable root document. It carries setup and rollback.
-
 ### Resource Loading Levels
 
 | Level | When to load | Resources |
@@ -72,14 +86,6 @@ The router discovers markdown at call time from three local trees and one root d
 | CONDITIONAL | UI export or API limit | `references/exports-and-limits.md` |
 | CONDITIONAL | Capability question or manual test run | `feature-catalog/feature-catalog.md` or `manual-testing-playbook/manual-testing-playbook.md` |
 | ON_DEMAND | Setup or error | `INSTALL-GUIDE.md` and `references/troubleshooting.md` |
-
-### Detection Order
-
-1. Refuse a Jortt write or a `--print-body` request before any CLI call.
-2. Route UI-only export requests to the operator guidance before trying an API operation.
-3. Route ordinary record extraction to `jortt-cli` and load the matching API reference.
-4. Send Moneybird-side work to the sibling `cli-moneybird` skill.
-5. Load troubleshooting guidance when the user reports a failure.
 
 ### Smart Router Pseudocode
 

@@ -44,6 +44,8 @@ Use this skill when the user asks to:
 
 This skill is a packet of the repository hub. Its routing lives in [`ROUTER.md`](ROUTER.md) beside this file: the operation table, the resource domains and loading levels, the detection order and the router pseudocode. Read the hub [`SKILL.md`](../SKILL.md) first, then `ROUTER.md`, then this file.
 
+Read [`ROUTER.md`](./ROUTER.md) before selecting skill-local resources; open only the matched files.
+
 ---
 
 ## 3. HOW IT WORKS

@@ -1,6 +1,6 @@
 ---
 name: sk-moneybird-accountant
-description: Routes Dutch ZZP bookkeeping and VAT returns, yearly overviews, income tax returns and Jortt to Moneybird migration. No filing, no legal advice.
+description: Routes Dutch ZZP bookkeeping, VAT returns, yearly overviews, income tax returns and Jortt migration. No filing, no legal advice.
 allowed-tools: [Read, Write, Edit, Bash, Glob, Grep]
 version: 1.0.0.0
 ---
@@ -40,6 +40,8 @@ Do not use this skill to file an income-tax or VAT return, make a final tax deci
 ## 2. SMART ROUTING
 
 This skill is a packet of the repository hub. Its routing lives in [`ROUTER.md`](ROUTER.md) beside this file: the task-type table, the route classes, ties and abstain, year and state, the generated router block and migration phase routing. Read the hub [`SKILL.md`](../SKILL.md) first, then `ROUTER.md`, then this file.
+
+Read [`ROUTER.md`](./ROUTER.md) before selecting skill-local resources; open only the matched files.
 
 ---
 

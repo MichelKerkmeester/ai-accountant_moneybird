@@ -64,7 +64,7 @@ Your request
 | **LIVE** | Day-to-day bookkeeping in Moneybird, from the monthly review to the yearly close |
 | **MIGRATION** | Moving historical records from Jortt into Moneybird |
 
-The routes are written in one place, the Task-Type Table in section 2 of [`sk-moneybird-accountant/ROUTER.md`](sk-moneybird-accountant/ROUTER.md). If the task is unclear, the assistant asks one question instead of guessing. It resolves the tax year before it uses any rate or threshold: an explicit year first, then the period under review, then the return-year mapping and only then the clock year from the generated `session-context.json`, never a date written in a document.
+The routes are written in one place, the Task-Type Table in section 3 of [`sk-moneybird-accountant/ROUTER.md`](sk-moneybird-accountant/ROUTER.md). If the task is unclear, the assistant asks one question instead of guessing. It resolves the tax year before it uses any rate or threshold: an explicit year first, then the period under review, then the return-year mapping and only then the clock year from the generated `session-context.json`, never a date written in a document.
 
 &nbsp;
 

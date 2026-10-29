@@ -19,13 +19,57 @@ This file holds the routing of the accountant packet: the task-type table, the r
 
 ---
 
-## 2. SMART ROUTING
+## 2. INTENT MODEL
 
 ### Primary Detection Signal
 
 MIGRATION covers historical records, Jortt exports, a migration phase, reconciliation, pilot writes, year locks and moving records into Moneybird. LIVE covers bookkeeping cadence, an ordinary income or cost event, a VAT period, an annual close and an ad hoc ZZP question.
 
 If ambiguous, ask one question: historical migration or current bookkeeping? Do not guess a phase or year.
+
+### Route Classes
+
+- `KNOWLEDGE`: reference files only.
+- `JORTT_READ`: jortt-cli reads only.
+- `MONEYBIRD_READ`: moneybird-guard reads under `MONEYBIRD_GUARD_READ_ONLY=1` per the Read Step Contract.
+- `MONEYBIRD_GATED_WRITE`: a guarded write after a passed gate and Operator approval, within LIVE write authority.
+- `OPERATOR_UI`: the Operator acts in the Moneybird UI.
+- `BLOCKED`: stops before any CLI call or dry-run, records the refusal and names the owner. Members: a Jortt write, a return filing, a Moneybird write without a passed gate and approval, `--production` without the per-batch go, a read under `personal database/`, `--print-body`, a LIVE write without recorded authority.
+- `CLI_FAILURE`: on any nonzero CLI or guard exit, stop the call sequence, load the tool skill's `references/troubleshooting.md`, follow its row and never reissue the call unchanged. It is separate from the unknown-request fallback and loads no migration file.
+
+Per-row routes:
+
+- T3: MONEYBIRD_READ through the [Bank transactions to match](../cli-moneybird/ROUTER.md#3-machine-router) row in `cli-moneybird/ROUTER.md`.
+- T4: KNOWLEDGE, then MONEYBIRD_READ `tax_rates list`, then MONEYBIRD_GATED_WRITE through the "Purchase invoice (inkoopfactuur) and attachment" row, else OPERATOR_UI.
+
+### Ties and Abstain
+
+- `ROUTE_MARGIN = 0.25`.
+- A tie with no deciding clause abstains through tier B.
+
+### Year and State
+
+- Resolve the year as `year_key`: an explicit year, else the period under review, else the return-year mapping, else the clock year from `session-context.json`. A year with no folder is "no year file, unverified".
+- T10, T11 and T12 use `year_key = return_coverage`.
+- A figure or cross-year question before the corpus returns `year_before_corpus_start`.
+- One after the corpus returns `year_after_corpus_end`. MIGRATION routing is never refused by year.
+- A figure supported only by `proposed`, `unknown`, `UNVERIFIED` or `adopted-not-yet-in-force` is refused with `value_not_settled`. Keep "adopted but not yet in the Staatsblad" apart from "not adopted".
+- The post-cutover state is `pre_cutover`, `monitoring_active`, `monitoring_lapsed_phase22_open`, `migration_complete` or `gate_window_conflict`. Only `monitoring_active` and `monitoring_lapsed_phase22_open` load the recurring-cycle files.
+- When `interactive` is false, a tie or missing year returns the candidate routes with the question text.
+
+Details: `references/tax-rules/year-and-state.md`.
+
+### Migration Phase Routing
+
+`references/migration/README.md` maps every phase. Advance only on the last verified exit gate, never on work that appears complete.
+
+A Moneybird read runs with `MONEYBIRD_GUARD_READ_ONLY=1`. A write needs a passed gate, Operator approval, a flushed `WRITE_INTENT`, `payload_digest`, `--confirm-write` and `--approval`, with `--production` only for an approved production batch. The gate tokens, the evidence rule, the idempotency rule and the exit set are in the [write contract](./references/migration/shared-mechanisms.md#route-contract).
+
+---
+
+## 3. MACHINE ROUTER
+
+The machine-readable part of this router, kept verbatim: the Task-Type Table and the router block `scripts/check-route-table.py --write` generates from it. This section is the last in the file, so the generated block always lands in it.
 
 ### Task-Type Table
 
@@ -59,38 +103,6 @@ The generated [reference library](./references/README.md) lists the tax year fol
 Signal sources, the `tok:Tn` keys and their Belastingdienst pages: `references/routing-signals.md`.
 
 T8 answers in two ways. A request outside scope gets the out-of-scope refusal. A requested yearly deliverable whose procedure is not written gets the documented gap answer from the `gaps` list in `references/index.json`, naming the topic, the owner path and the Operator action. Every tax-portal action stays Operator-only.
-
-### Route Classes
-
-- `KNOWLEDGE`: reference files only.
-- `JORTT_READ`: jortt-cli reads only.
-- `MONEYBIRD_READ`: moneybird-guard reads under `MONEYBIRD_GUARD_READ_ONLY=1` per the Read Step Contract.
-- `MONEYBIRD_GATED_WRITE`: a guarded write after a passed gate and Operator approval, within LIVE write authority.
-- `OPERATOR_UI`: the Operator acts in the Moneybird UI.
-- `BLOCKED`: stops before any CLI call or dry-run, records the refusal and names the owner. Members: a Jortt write, a return filing, a Moneybird write without a passed gate and approval, `--production` without the per-batch go, a read under `personal database/`, `--print-body`, a LIVE write without recorded authority.
-- `CLI_FAILURE`: on any nonzero CLI or guard exit, stop the call sequence, load the tool skill's `references/troubleshooting.md`, follow its row and never reissue the call unchanged. It is separate from the unknown-request fallback and loads no migration file.
-
-Per-row routes:
-
-- T3: MONEYBIRD_READ through the [Bank transactions to match](../cli-moneybird/ROUTER.md#2-smart-routing) row in `cli-moneybird/ROUTER.md`.
-- T4: KNOWLEDGE, then MONEYBIRD_READ `tax_rates list`, then MONEYBIRD_GATED_WRITE through the "Purchase invoice (inkoopfactuur) and attachment" row, else OPERATOR_UI.
-
-### Ties and Abstain
-
-- `ROUTE_MARGIN = 0.25`.
-- A tie with no deciding clause abstains through tier B.
-
-### Year and State
-
-- Resolve the year as `year_key`: an explicit year, else the period under review, else the return-year mapping, else the clock year from `session-context.json`. A year with no folder is "no year file, unverified".
-- T10, T11 and T12 use `year_key = return_coverage`.
-- A figure or cross-year question before the corpus returns `year_before_corpus_start`.
-- One after the corpus returns `year_after_corpus_end`. MIGRATION routing is never refused by year.
-- A figure supported only by `proposed`, `unknown`, `UNVERIFIED` or `adopted-not-yet-in-force` is refused with `value_not_settled`. Keep "adopted but not yet in the Staatsblad" apart from "not adopted".
-- The post-cutover state is `pre_cutover`, `monitoring_active`, `monitoring_lapsed_phase22_open`, `migration_complete` or `gate_window_conflict`. Only `monitoring_active` and `monitoring_lapsed_phase22_open` load the recurring-cycle files.
-- When `interactive` is false, a tie or missing year returns the candidate routes with the question text.
-
-Details: `references/tax-rules/year-and-state.md`.
 
 ### Smart Router Pseudocode
 
@@ -253,9 +265,3 @@ def load_if_available(relative_path, inventory, loaded, missing):
 
 ```
 <!-- router-block:end -->
-
-### Migration Phase Routing
-
-`references/migration/README.md` maps every phase. Advance only on the last verified exit gate, never on work that appears complete.
-
-A Moneybird read runs with `MONEYBIRD_GUARD_READ_ONLY=1`. A write needs a passed gate, Operator approval, a flushed `WRITE_INTENT`, `payload_digest`, `--confirm-write` and `--approval`, with `--production` only for an approved production batch. The gate tokens, the evidence rule, the idempotency rule and the exit set are in the [write contract](./references/migration/shared-mechanisms.md#route-contract).

@@ -19,7 +19,35 @@ This file holds the routing of the Moneybird CLI packet: the operation table, re
 
 ---
 
-## 2. SMART ROUTING
+## 2. INTENT MODEL
+
+### Read-only Access
+
+Moneybird token scopes do not separate read access from write access. Read-only roles set `MONEYBIRD_GUARD_READ_ONLY=1` so every non-GET CLI call except a synchronization fetch is blocked before the real request. Historical sales invoices use `external_sales_invoices` and its attachment route.
+
+Body fields and report date arguments that the supplied facts do not name stay `UNVERIFIED` until pinned CLI help and a dry-run confirm them. Never guess a field name.
+
+### Phase Detection
+
+```text
+MONEYBIRD REQUEST
+    |
+    +- STEP 0: Detect the operation and pick the guarded CLI route or UI handoff
+    +- STEP 1: Score intents (top-2 when close)
+    +- Phase 1: Read or plan with explicit periods and a dry-run
+    +- Phase 2: Confirmed pilot write or a UI handoff
+    +- Phase 3: Verify by write status, then a later sync read
+```
+
+### Resource Domains
+
+The references are flat, so the routing key selects a `RESOURCE_MAP` entry rather than a keyed folder. Discovery covers `references/` for operational guidance, `feature-catalog/` for the current-state inventory, `manual-testing-playbook/` for operator scenarios and the root `INSTALL-GUIDE.md`. Runtime code in `scripts/` and `cli/` is never routed.
+
+---
+
+## 3. MACHINE ROUTER
+
+The machine-readable part of this router, kept verbatim: the operation table, the loading levels and the Smart Router Pseudocode. This section is the last in the file.
 
 ### Primary Detection Signal
 
@@ -45,28 +73,6 @@ The operation the request names picks the guarded CLI route or the Moneybird UI.
 | Bulk reads | `moneybird-guard sales_invoices sync` then `moneybird-guard sales_invoices sync_fetch --ids "$ID_BATCH_JSON"` (Read Step Contract) | Use REST synchronization for complete bulk pulls. `sync_fetch` is a POST, and the guard runs it as a read, so the read-only lock lets it through. |
 | Auditfile export | `moneybird-guard --confirm-write --approval "$APPROVAL_REF" reports export auditfile --year "$YEAR" --version "$AUDITFILE_VERSION"` then fetch the returned download through the confirmed downloads route | Applies to the migration route contract and to the LIVE workflows of phases 19 to 21 only, per [LIVE write authority](../sk-moneybird-accountant/SKILL.md#live-write-authority). An ordinary LIVE year uses the Operator UI export. Confirm the route with pinned CLI help. |
 | CAMT.053 or MT940 import, tax rate creation, period lock or a historical VAT return (btw-aangifte) | Moneybird UI only. Mark VAT returns filed with **Submit manually (Handmatig indienen)** in chronological order. | Operator action. |
-
-### Read-only Access
-
-Moneybird token scopes do not separate read access from write access. Read-only roles set `MONEYBIRD_GUARD_READ_ONLY=1` so every non-GET CLI call except a synchronization fetch is blocked before the real request. Historical sales invoices use `external_sales_invoices` and its attachment route.
-
-Body fields and report date arguments that the supplied facts do not name stay `UNVERIFIED` until pinned CLI help and a dry-run confirm them. Never guess a field name.
-
-### Phase Detection
-
-```text
-MONEYBIRD REQUEST
-    |
-    +- STEP 0: Detect the operation and pick the guarded CLI route or UI handoff
-    +- STEP 1: Score intents (top-2 when close)
-    +- Phase 1: Read or plan with explicit periods and a dry-run
-    +- Phase 2: Confirmed pilot write or a UI handoff
-    +- Phase 3: Verify by write status, then a later sync read
-```
-
-### Resource Domains
-
-The references are flat, so the routing key selects a `RESOURCE_MAP` entry rather than a keyed folder. Discovery covers `references/` for operational guidance, `feature-catalog/` for the current-state inventory, `manual-testing-playbook/` for operator scenarios and the root `INSTALL-GUIDE.md`. Runtime code in `scripts/` and `cli/` is never routed.
 
 ### Resource Loading Levels
 

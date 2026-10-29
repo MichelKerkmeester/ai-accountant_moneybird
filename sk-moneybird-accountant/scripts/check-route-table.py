@@ -22,9 +22,10 @@ topic map and the table's multi-word signals and curated advisor signals with
 graph-metadata.json, and the write mode regenerates both surfaces. It checks
 the hub as well: the root SKILL.md, mode-registry.json and hub-router.json
 exist, every registry packet has a SKILL.md whose name is its packetSkillName,
-the packetKind of its role and an active ROUTER.md that points back to it,
-stage one names one default packet and no packet SKILL.md embeds a router
-again. The script uses the Python standard library only and makes no network
+the packetKind of its role and an active ROUTER.md that points back to it and
+ends with its machine router section, stage one names one default packet and
+no packet SKILL.md embeds a router again. The hub's packet links are read from
+the root SKILL.md and from the root ROUTER.md it links, when one exists. The script uses the Python standard library only and makes no network
 call.
 
 Usage:
@@ -73,7 +74,13 @@ EMBEDDED_ROUTER_MARKS = (
 )
 # WHY: a router emptied to its frontmatter still passes the header check, so
 # its body must keep the routing section, an intent model and a resource map.
+# The routing section is the older "## 2. SMART ROUTING" or, in the skilled
+# router shape, a "## 3. MACHINE ROUTER" that is the router's last H2, so the
+# generated block and the tables it is checked against stay in that section.
 ROUTER_SECTION = "## 2. SMART ROUTING"
+MACHINE_ROUTER_SECTION = "## 3. MACHINE ROUTER"
+# WHY: a packet SKILL.md reaches its router only through a relative link.
+PACKET_POINTERS = ("](ROUTER.md)", "](./ROUTER.md)")
 ROUTER_INTENT_MARKS = ("INTENT_MODEL", "INTENT_SIGNALS")
 ROUTER_STATE_LINE = "router_state: active"
 SKILL_POINTER_LINE = "skill_pointer: SKILL.md"
@@ -864,6 +871,50 @@ def router_header(path: str) -> List[str]:
     return lines[1:lines.index("---", 1)]
 
 
+def h2_headings(text: str) -> List[Tuple[int, str]]:
+    """List the H2 headings of a markdown text that sit outside a fence.
+
+    Args:
+        text: Markdown text.
+
+    Returns:
+        (line index, heading line) pairs in document order.
+    """
+    headings: List[Tuple[int, str]] = []
+    fence = ""
+    for index, line in enumerate(text.splitlines()):
+        stripped = line.strip()
+        if stripped.startswith(("```", "~~~")):
+            marker = stripped[:3]
+            fence = "" if fence == marker else (fence or marker)
+        elif not fence and line.startswith("## "):
+            headings.append((index, line.rstrip()))
+    return headings
+
+
+def router_section_problem(packet: str, router_text: str) -> Optional[str]:
+    """Name what is wrong with the routing section of one packet router.
+
+    Args:
+        packet: Packet folder name.
+        router_text: Text of the packet's ROUTER.md.
+
+    Returns:
+        A problem line, or None when the router keeps its routing section.
+    """
+    headings = h2_headings(router_text)
+    if any(heading == MACHINE_ROUTER_SECTION for _index, heading in headings):
+        if headings[-1][1] != MACHINE_ROUTER_SECTION:
+            return "%s/ROUTER.md: %s is not its last H2" % (packet, MACHINE_ROUTER_SECTION)
+        lines = router_text.splitlines()
+        if ROUTER_START in lines and lines.index(ROUTER_START) < headings[-1][0]:
+            return "%s/ROUTER.md: the generated router block sits outside %s" % (packet, MACHINE_ROUTER_SECTION)
+        return None
+    if ROUTER_SECTION in router_text:
+        return None
+    return "%s/ROUTER.md lacks its routing section, intent model or resource map" % packet
+
+
 def check_hub(problems: List[str]) -> None:
     """Check the hub files, the registry, stage one and each packet router.
 
@@ -887,6 +938,21 @@ def check_hub(problems: List[str]) -> None:
         problems.append("mode-registry.json needs exactly one default mode, found %d" % len(defaults))
     names = []
     hub_text = read_file_text(os.path.join(REPO_ROOT, "SKILL.md"))
+    # WHY: the hub may move its routing prose into a root ROUTER.md that its
+    # SKILL.md links, so the packet router links are read from both files.
+    hub_router_path = os.path.join(REPO_ROOT, "ROUTER.md")
+    hub_router_text = read_file_text(hub_router_path)
+    hub_text += "\n" + hub_router_text
+    if os.path.isfile(hub_router_path):
+        hub_header = router_header(hub_router_path)
+        for line in (ROUTER_STATE_LINE, SKILL_POINTER_LINE):
+            if line not in hub_header:
+                problems.append("ROUTER.md frontmatter lacks: %s" % line)
+        headings = h2_headings(hub_router_text)
+        if not headings or headings[-1][1] != MACHINE_ROUTER_SECTION:
+            problems.append("ROUTER.md: %s is not its last H2" % MACHINE_ROUTER_SECTION)
+        if not any(pointer in read_file_text(os.path.join(REPO_ROOT, "SKILL.md")) for pointer in PACKET_POINTERS):
+            problems.append("hub SKILL.md does not point to its router: ROUTER.md")
     packets = set()
     for mode in modes:
         if not isinstance(mode, dict):
@@ -916,19 +982,29 @@ def check_hub(problems: List[str]) -> None:
                 problems.append("%s/ROUTER.md frontmatter lacks: %s" % (packet, line))
         router_text = read_file_text(os.path.join(REPO_ROOT, packet, "ROUTER.md"))
         if header and (
-            ROUTER_SECTION not in router_text
-            or "RESOURCE_MAP" not in router_text
+            "RESOURCE_MAP" not in router_text
             or not any(mark in router_text for mark in ROUTER_INTENT_MARKS)
         ):
             problems.append("%s/ROUTER.md lacks its routing section, intent model or resource map" % packet)
+        elif header:
+            section_problem = router_section_problem(packet, router_text)
+            if section_problem:
+                problems.append(section_problem)
         if "(%s/ROUTER.md)" % packet not in hub_text:
             problems.append("hub SKILL.md does not link the packet router: %s/ROUTER.md" % packet)
+        # WHY: the hub ROUTER.md names the registry modes in its machine block,
+        # so a mode the registry gains or renames must show up there too.
+        if hub_router_text and (
+            '"workflowMode": "%s"' % name not in hub_router_text
+            or '"router": "%s/ROUTER.md"' % packet not in hub_router_text
+        ):
+            problems.append("ROUTER.md machine block does not name the registry mode %s and its router" % name)
         with open(skill, encoding="utf-8") as handle:
             packet_text = handle.read()
         for mark in EMBEDDED_ROUTER_MARKS:
             if mark in packet_text:
                 problems.append("packet SKILL.md embeds a router: %s/SKILL.md holds %s" % (packet, mark))
-        if "](ROUTER.md)" not in packet_text:
+        if not any(pointer in packet_text for pointer in PACKET_POINTERS):
             problems.append("packet SKILL.md does not point to its router: %s/SKILL.md" % packet)
     for entry in sorted(os.listdir(REPO_ROOT)):
         if entry.startswith(".") or entry in packets:

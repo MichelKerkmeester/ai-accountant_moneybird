@@ -1,6 +1,6 @@
 ---
 name: moneybird-accountant
-description: Hub for the Moneybird Accountant packets. Picks the accountant, Moneybird CLI or Jortt CLI packet for a request and hands stage two routing to that packet's ROUTER.md.
+description: Moneybird Accountant hub: picks the accountant, Moneybird CLI or Jortt CLI packet and hands stage two to that packet's ROUTER.md.
 allowed-tools: [Read, Write, Edit, Bash, Glob, Grep]
 version: 1.0.0.0
 ---
@@ -27,15 +27,9 @@ The repository root is a parent hub over three packets. This file picks the pack
 
 ## 2. SMART ROUTING
 
-Routing has two stages. Stage one picks the packet here, from `mode-registry.json` and `hub-router.json`. Stage two is the packet's `ROUTER.md`.
+Routing has two stages. Stage one picks the packet from `mode-registry.json` and `hub-router.json`, and stage two is the packet's `ROUTER.md`. A request starts in the accountant packet, the registry default, unless it names a CLI operation and nothing else, and when no packet fits the hub asks one question before loading anything.
 
-1. A request starts in the accountant packet, the registry default.
-2. A request that names a CLI operation and nothing else, such as a `moneybird-guard` read or a `jortt-cli` call, starts in that CLI packet, or in each CLI it names in registry order. Nothing else means no accountant task is left once the CLI names in `hub-router.json` and the system names Jortt and Moneybird are set aside. Any task row signal but the weak word `btw` counts, so `moneybird-guard` with bank accounts starts in the accountant packet. So does a phase number, or both systems with a bare system name or a move verb, where a CLI name counts for its system, and so does a migration route that holds a move verb, as in `use jortt-cli to copy the Jortt export`. A CLI name matches whole words only, so `jortt cli` is not `Jortt clients`. A negated name such as `do not use jortt-cli` starts no CLI packet, but a tool route that names it still hands off.
-3. An accountant route whose tool route names `cli-moneybird` or `cli-jortt` hands off to that packet, in the order the tool route names them, and then to the CLI its CLI action names. Read its `ROUTER.md` and its `SKILL.md` before the CLI runs.
-4. A refusal stays in the accountant packet and hands off to no CLI packet, even when it names a CLI. So does a request whose accountant rows tie, until its question is answered.
-5. When no packet fits, ask one question before loading anything.
-
-The registry holds each packet's folder and router. `sk-moneybird-accountant/scripts/check-route-table.py` checks that the hub files, the registry packets and their routers agree, and that no packet `SKILL.md` embeds a router again. `route-replay.py` scores the packet chain of the HUB gold rows against these rules.
+Run the stage one rules in [`ROUTER.md`](./ROUTER.md) before selecting hub resources.
 
 ---
 
@@ -65,6 +59,10 @@ Each packet keeps its own `graph-metadata.json`, leaf manifest, references, scri
 ### ⛔ NEVER
 - **NEVER** put a route table, a router block or a router map back into a packet `SKILL.md`.
 - **NEVER** edit the generated router block in `sk-moneybird-accountant/ROUTER.md` by hand.
+
+### ⚠️ ESCALATE IF
+- No packet fits the request. Ask one question before loading anything, as `hub-router.json` sets as the fallback.
+- A request falls under When NOT to Use. The accountant packet refuses it and says why.
 
 ---
 
