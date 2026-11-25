@@ -46,7 +46,7 @@ Moneybird Accountant/
   cli-jortt/                 Jortt CLI packet: SKILL.md, ROUTER.md
 ```
 
-Each packet keeps its own `graph-metadata.json`, leaf manifest, references, scripts and tests. The CLI packets keep their install guides, because each CLI is set up on its own.
+The accountant packet keeps the hub's `graph-metadata.json` and leaf manifest, which its route-table and reference-index checks read. Each packet keeps its own references, scripts and tests. The CLI packets keep their install guides, because each CLI is set up on its own.
 
 ---
 
