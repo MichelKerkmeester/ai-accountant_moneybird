@@ -20495,14 +20495,14 @@
       }
     },
     {
-      "bytes": 3728,
+      "bytes": 3824,
       "name": "SKILL.md",
       "reads": [
         "SKILL.md"
       ],
       "tokens": {
-        "cl100k_base": 1016,
-        "o200k_base": 1020
+        "cl100k_base": 1034,
+        "o200k_base": 1038
       }
     },
     {
